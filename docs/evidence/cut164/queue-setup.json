@@ -1,0 +1,19 @@
+{
+  "scope": "Prospective sequential mechanical acceptance, no completed results asserted",
+  "controller_cell": "1747",
+  "waiting_on_client_session": 80724,
+  "requires_client_exit": 0,
+  "source_guard_files": 502,
+  "sequence": [
+    "actor-paid-actions",
+    "actor-resume",
+    "actor16 original22rows/16seeds/fail-fast",
+    "full-routine18/metrics/wire/shipping-WASM",
+    "shipping-whole-client"
+  ],
+  "stop_on": "first nonzero terminal status or guarded source change",
+  "native_session": "not started at setup",
+  "actor_adopted": false,
+  "score_certified": false,
+  "deployed": false
+}
