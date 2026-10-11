@@ -1,0 +1,95 @@
+{
+  "status": "prospective only; no player released, no build frozen",
+  "preparedUtc": "2026-10-11T17:08:09.646762+00:00",
+  "prerequisites": [
+    "terminal unchanged-bar native acceptance",
+    "terminal complete shipping-WASM client acceptance",
+    "experimental actor adopted only after acceptance",
+    "shipping assets and bridge verified on immutable served directory",
+    "transcript-first QA and full interactive QA complete; lapse list resolved or explicit justified deviation",
+    "same-sitting calibration drift at most five"
+  ],
+  "qa": {
+    "transcript": {
+      "seed": 149,
+      "brief": "eval/QA_TRANSCRIPT_PROMPT.md",
+      "minimumMinutes": 15
+    },
+    "interactive": {
+      "seed": 223,
+      "brief": "eval/QA_PROMPT.md",
+      "minimumActivePhases": [
+        40,
+        5,
+        5,
+        20
+      ]
+    }
+  },
+  "blind": {
+    "agents": "two fresh fork_turns=none; separate from QA and prior raters",
+    "seeds": [
+      137,
+      211
+    ],
+    "sameImmutableBuild": true,
+    "minimumActivePhases": [
+      40,
+      5,
+      5,
+      20
+    ],
+    "plannedActivePhases": [
+      45,
+      6,
+      6,
+      22
+    ],
+    "absences": [
+      "20m",
+      "4h",
+      "8h"
+    ],
+    "firstTenActuallyUnnoted": true,
+    "completedOwnRuleEditsRequired": 2,
+    "deathsReadRequired": 3,
+    "normalWatchesRequired": 2,
+    "perNormalWatchMinimumMinutes": 3,
+    "toolsPerRaterMaximum": 1000,
+    "imageReadsPerRaterMaximum": 120,
+    "audio": "unassessed",
+    "delayedRecall": "empty until next-day follow-up",
+    "excludeActiveCredit": [
+      "infrastructure/loading",
+      "unattended sleep",
+      "blocked tool waiting",
+      "buffered watch collection",
+      "card writing"
+    ],
+    "firstVisitOnly": "fresh=1&menu=1; later loads retain saved game and omit both",
+    "alwaysRuns1": true,
+    "blindWhitelist": [
+      "eval/RATING.md",
+      "docs/FUN_EVAL_IDLE.md",
+      "../eval-fun/docs/FRAMEWORK.md sections1-3",
+      "eval/SCORECARD.template.json"
+    ],
+    "neverSupply": [
+      "desired score",
+      "previous cards or results",
+      "QA notes",
+      "source/design history",
+      "seed-specific play guidance"
+    ],
+    "locks": "both raw cards locked and hashed before either is inspected/scored; never repair raw cards",
+    "audit": "prove each phase, first10 sequence, complete edits/death/watch requirements from operation/evidence ledger; gaps mean incomplete, not a score certificate"
+  },
+  "decision": {
+    "minimumMeanAfterApplicableMeasuredCaps": 80,
+    "minimumReliabilityAlpha": 0.8,
+    "killCriteria": "all false",
+    "unmeasuredBotProxies": "na",
+    "goalStillUnverified": true,
+    "deploy": false
+  }
+}

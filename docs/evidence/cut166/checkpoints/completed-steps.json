@@ -1,0 +1,48 @@
+{
+  "scope": "Only paid-action unit checks and exact resume parity completed; actor16 and remaining acceptance still running/pending",
+  "observedUtc": "2026-10-11T17:10:17.899095+00:00",
+  "steps": [
+    {
+      "name": "actor-paid-actions",
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "session_chore_tests"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T17:02:29.221538+00:00",
+      "pid": 3535983,
+      "exit_code": 0,
+      "elapsed_seconds": 30.588756485143676,
+      "finished_utc": "2026-10-11T17:02:59.811164+00:00"
+    },
+    {
+      "name": "actor-resume",
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "checkpoint_tests::resume_preserves_complete_bot_outputs_and_game"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T17:02:59.846228+00:00",
+      "pid": 3536182,
+      "exit_code": 0,
+      "elapsed_seconds": 85.8021681199316,
+      "finished_utc": "2026-10-11T17:04:25.648767+00:00"
+    }
+  ]
+}
