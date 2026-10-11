@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 23.345,
+  "failed": 0,
+  "results": [
+    {
+      "n": "ui:stall",
+      "code": 0,
+      "out": "ok   ▶▶| in a never-ending stall moves the picture each press, within its wall budget (+729 ticks in 0.5 s · +303 ticks in 0.1 s)\nstall rate diagnostic {\"originalSpeed\":48,\"state\":{\"fixture\":{\"firstTurn\":30,\"turn\":55422,\"depth\":1,\"stalling\":true},\"watch\":{\"mode\":\"fights\",\"fights\":\"0\",\"card\":\"0\",\"foldPlan\":\"\",\"frame\":\"map\",\"frontier\":\"55322\",\"world\":\"55322\",\"span\":\"Infinity:-Infinity:0:0:55322\",\"spans\":\"\",\"progress\":\"0\",\"speed\":\"48\",\"scene\":\"0\",\"tick\":\"53599\",\"pulses\":\"593\",\"why\":\"quiet\",\"dead\":\"1\",\"jumps\":\"14\",\"held\":\"0\"},\"stake\":\"Carried $0 · Secured $0 · Path blocked\"}}\nok   a stalling run plays at the flat rate (48×)\nok   `fast` runs flat through a stall (128×)\nui: ok (3 checks · 22.5s)\n",
+      "ms": 23345,
+      "own": 23018
+    }
+  ]
+}

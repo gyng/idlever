@@ -326,9 +326,9 @@ async function stallSkip() {
   await page.evaluate(() => {
     const r = window.__riddle, orig = r.engine.step.bind(r.engine); let S = null, T = 0;
     r.engine.step = async (n) => {
-      if (S) { T += n; await new Promise((x) => setTimeout(x, 30)); return { snapshot: { ...S, turn: T, stake: { ...(S.stake ?? {}), stalling: true } }, events: [], run_over: false }; }
+      if (S) { T += n; await new Promise((x) => setTimeout(x, 30)); window.__stallProbe = { firstTurn:S.turn,turn:T,depth:S.depth,stalling:true }; return { snapshot: { ...S, turn: T, stake: { ...(S.stake ?? {}), stalling: true } }, events: [], run_over: false }; }
       const res = await orig(n);
-      if (res.snapshot.turn > 20 && !res.run_over && !res.events.some((e) => e.k === "exit" || e.k === "die")) { S = res.snapshot; T = S.turn; res.snapshot = { ...S, stake: { ...(S.stake ?? {}), stalling: true } }; }
+      if (res.snapshot.turn > 20 && !res.run_over && !res.events.some((e) => e.k === "exit" || e.k === "die")) { S = res.snapshot; T = S.turn; window.__stallProbe = { firstTurn:S.turn,turn:T,depth:S.depth,stalling:true }; res.snapshot = { ...S, stake: { ...(S.stake ?? {}), stalling: true } }; }
       return res;
     };
   });
@@ -345,6 +345,8 @@ async function stallSkip() {
   check(res.every((x) => x.dt > 300 && x.ms < 8000), `▶▶| in a never-ending stall moves the picture each press, within its wall budget (${res.map((x) => `+${x.dt} ticks in ${(x.ms / 1000).toFixed(1)} s`).join(" · ")})`);
   await sleep(600);
   const sp = await page.evaluate(() => Number(document.querySelector("main.watch")?.dataset.speed ?? 0));
+  // Preserve the original600ms observation before logging mutable state.
+  console.log("stall rate diagnostic " + JSON.stringify({ originalSpeed:sp, state:await page.evaluate(() => ({ fixture:window.__stallProbe, watch:{...document.querySelector("main.watch")?.dataset}, stake:document.querySelector("main.watch .stake")?.getAttribute("aria-label") })) }));
   check(sp >= 16, `a stalling run plays at the flat rate (${sp}×)`);
   if (!(await page.locator('.watch-options [data-tile=fast]').isVisible())) await page.locator('.cmd [data-tile=speed]').click({ timeout: 5000 });
   await page.locator(".watch-options [data-tile=fast]").click({ timeout: 5000 }); await sleep(600);

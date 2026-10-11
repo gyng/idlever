@@ -1,0 +1,18 @@
+{
+  "scope": "Read-only diagnosis preflight during live V7; no source edits, reproductions, acceptance or fix claimed",
+  "checkedUtc": "2026-10-11T21:34:30.123014+00:00",
+  "observedFailure": "ui:stall observed8x where unchanged assertion requires>=16 after600ms; full V7 remains live",
+  "source": {
+    "watchSha256": "c0f96168fb9f247329f6ed709115d937d439c8d16e3728c67e1468369261c811",
+    "testSha256": "f4180fbf9f4d5ba33d0686202e25a150ec5bd360637507bdc2538730fdd124ed"
+  },
+  "finding": "baseRate0 computes flat from stalling(), but dead-stretch return precedes the flat-aware mode path. deadStretch base uses EARLY_TRAVEL=8 on early floors regardless of confirmed stalling.",
+  "hypothesis": "A quiet stretch reset/landing can expose8x despite a confirmed stall; needs fixture snapshot/turn, DOM mode/why/dead/frame and rate observations before a production correction.",
+  "retainedRequirements": [
+    "two skip presses each advance>300ticks within8s",
+    "600ms original rate observation",
+    "Fights and Fast stalling rate>=16",
+    "all cage/beat/exit/pause and dead-news deadlines"
+  ],
+  "next": "Wait SAME33971 and28456 terminal; inspect complete report and unchanged isolated ui:stall evidence before guarded source edits."
+}
