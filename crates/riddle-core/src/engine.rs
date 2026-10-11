@@ -8113,6 +8113,13 @@ fn automatic_pack_plan(l: &LineageState) -> Vec<String> {
     let fill: Vec<String> = crate::packages::pack_kinds(l).into_iter().filter(|k| !qm.contains(k)).collect();
     let mut want = qm;
     want.extend(fill.iter().cycle().take(if fill.is_empty() { 0 } else { l.supply_cap().min(crate::packages::PACK_FILL) }).cloned());
+    // A tactic's counter must not reduce the stance's healing when the pack has
+    // room. These are paid automatic entries, subject to the usual restock caps.
+    if fill.iter().any(|kind| kind == "heal") {
+        let missing = crate::packages::PACK_FILL.saturating_sub(want.iter().filter(|kind| *kind == "heal").count());
+        let room = l.supply_cap().saturating_sub(want.len());
+        want.extend(std::iter::repeat_n("heal".to_string(), missing.min(room)));
+    }
     want
 }
 

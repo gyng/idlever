@@ -5,6 +5,35 @@ use crate::engine::{ExitTier, Game};
 use crate::packages;
 use crate::rules::{Cond, Row, RuleSet, Verb};
 
+#[test]
+fn a_counter_tactic_keeps_two_heals_when_space_and_funds_allow() {
+    for pack in [0, 2] {
+        let mut g = Game::new_resident(163);
+        g.lineage.supplies.clear();
+        g.lineage.gold_move(1000 - g.lineage.gold, "fixture");
+        g.lineage.kit.insert("pack".into(), pack);
+        for kind in ["fire", "heal"] {
+            g.lineage.forge.entry(kind.into()).or_default().craftable = true;
+            if let Some(f) = crate::item::ident_fact(&g.lineage.flavours, kind) { g.lineage.facts.insert(f); }
+        }
+        g.lineage.pkg.owned.insert("reflect_read".into());
+        g.lineage.pkg.tactics.push("reflect_read".into());
+        packages::recompile(&mut g.lineage);
+        let price = |kind: &str| g.supply_catalogue().iter().find(|s| s.kind == kind).unwrap().price;
+        let expected = price("fire") + 2 * price("heal");
+        let before = g.lineage.gold;
+        g.restock();
+        assert_eq!(g.lineage.supplies.iter().filter(|i| i.kind == "heal").count(), 2);
+        assert_eq!(g.lineage.supplies.iter().filter(|i| i.kind == "fire").count(), 1);
+        assert!(g.lineage.supplies.iter().all(|i| i.auto_packed));
+        assert_eq!(before - g.lineage.gold, expected, "each supply paid at its real price");
+        assert!(g.lineage.supplies.len() <= g.lineage.supply_cap());
+        let saved = g.save();
+        assert!(g.restock().is_empty());
+        assert_eq!(g.save(), saved, "no repeat purchases for an already filled pack");
+    }
+}
+
 fn origins(g: &Game) -> Vec<String> {
     // (Cut 119's default tame row is the companions' drill, not a package's: tests_cut119)
     g.lineage.rules().rows.iter().map(|r| r.origin.clone().unwrap_or_default()).filter(|o| o != crate::pets::TAME_ORIGIN).collect()

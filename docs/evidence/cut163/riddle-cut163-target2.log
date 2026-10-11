@@ -1,0 +1,22 @@
+dayplayer: targeted rows outpace,porter,scout,automation-pays — configurations IDLE,PICKED,RANDOM,HANDS,AWAY,AWAY-nodes
+dayplayer: HANDS s1 done in 2s 
+dayplayer: HANDS s2 done in 2s 
+dayplayer: RANDOM s2 done in 2s 
+dayplayer: RANDOM s1 done in 2s 
+dayplayer: PICKED s1 done in 42s 
+dayplayer: PICKED s2 done in 43s 
+dayplayer: IDLE s2 done in 59s 
+dayplayer: IDLE s1 done in 65s 
+dayplayer --fail-fast: outpace settled PASS after IDLE s1 (day 14) (65s): 100–100% (14/14 pairs, 0 seeds left)
+dayplayer: AWAY s2 done in 70s 
+dayplayer: AWAY s1 done in 73s 
+dayplayer: AWAY-nodes s2 done in 71s 
+dayplayer: AWAY-nodes s1 done in 75s 
+bar (targeted)                                                                value  result
+IDLE never out-paces PICKED                                                 settled  PASS
+    settled early: 100–100% (14/14 pairs, 0 seeds left)
+Porter bought ≤ min 12 (PICKED median), every seed ≤ min 15       11.4 · worst 12.1  PASS
+Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot) med 8.7 · worst 12.1 min, 3 sends  PASS
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 48 h · mean best 28.71 vs 28.50  PASS
+dayplayer (targeted: outpace,porter,scout,automation-pays, fail-fast, 81s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `outpace,porter,scout,automation-pays` (fail-fast) PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
