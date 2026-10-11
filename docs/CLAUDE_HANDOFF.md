@@ -1,3 +1,7 @@
+# Post-lock rules-export infrastructure — 2026-10-11
+
+A latest infrastructure: cold40.05 and20m5.08 complete,4h2.47/5 underway,8h remains; relay responsive/same frozen profile. B raw card locked/unread, export cleanup still live. B requested Rules export syntax after no download/dialog; source verified settings writes textarea.value/clipboard. Supplied existing driver5381 read-only eval await window.__riddle.engine.exportRules(), explicitly post-lock only/no save/import/ticks/changes. Returns plain rules text, preserve exact value with format label; do not claim parsed RuleSet JSON. Restricted relay remains unchanged. Give A same post-lock export help if needed after lock. Wait both final reports/cards before content/hash/audit/scoring. Goal active/unproven, no deployment.
+
 # First raw-card lock — 2026-10-11
 
 B reports immutable eval/cards/d34605e.blind-b.json lock, SHA816433e8bbb9b8efa0c7222b94a1a95bcdcfdb4baf7ac1a339c07a6f4cfed025. Root confirmed file exists ONLY, no content/opinions read; raw file not staged by root yet. Reported73.85517625 actual-active minutes, phases41.04587625/5.96933333/6.31305/20.52691667, pending independent interval audit. B completing permitted read-only rules export/own-driver cleanup. A still live; await BOTH locked cards and final reports before reading/hash/audit/scoring. No score claim or gameplay feedback shared. Goal active/unproven; wind GPU and polish integration pending until cohort releases machine; no deployment.
