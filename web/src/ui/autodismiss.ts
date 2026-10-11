@@ -66,7 +66,7 @@ function fit(t: Timer, track: Element): void {
 }
 
 function paused(t: Timer): boolean {
-  if (document.hidden || pressing) return true;
+  if (document.hidden || pressing || document.body.classList.contains("menu-open")) return true;
   if (!autoEnabled()) return true;
   if (mouse && (t.el.matches(":hover") || t.scope.matches(":hover"))) return true;
   const tip = document.getElementById("kw-tip"); if (tip && !tip.hidden) return true;   // a keyword tooltip open (docs/TOOLTIPS.md)

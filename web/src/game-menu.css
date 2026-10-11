@@ -1,0 +1,30 @@
+/* Moonlit title screen; the existing game art supplies the setting. */
+.game-menu {
+  position: fixed; inset: 0; z-index: 700; overflow: auto;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom));
+  background: linear-gradient(180deg, rgba(9,12,21,.48), rgba(9,12,21,.75) 65%, #090c15), url('/ui/backdrops/death.webp') center 35% / cover;
+  color: var(--bone); isolation: isolate;
+}
+.game-menu::before { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(184,148,72,.35); pointer-events: none; }
+.menu-ornament { width: 28px; height: 28px; margin: 8px 0 24px; border: 1px solid var(--gilt); transform: rotate(45deg); background: #17212e; box-shadow: inset 0 0 0 5px #0d0c14, 0 0 35px rgba(164,188,214,.16); flex-shrink: 0; }
+.menu-panel { width: min(100%, 360px); display: flex; flex-direction: column; gap: 12px; text-align: center; padding: 12px 14px 22px; }
+.menu-title { font: 600 clamp(48px, 10vw, 92px)/1.05 var(--display); margin: 0 0 4px; letter-spacing: .045em; text-shadow: 0 3px 0 #090c15, 0 0 30px rgba(184,148,72,.16); }
+.menu-kicker { font-size: 14px; letter-spacing: .15em; text-transform: uppercase; color: var(--mist); margin: 0 0 22px; }
+.menu-action { min-height: 52px; padding: 10px 20px; font: 500 24px/1.15 var(--display); border: 1px solid #566071; border-radius: 3px; background: linear-gradient(#202632, #141822); box-shadow: inset 0 1px rgba(234,223,197,.09), 0 3px 12px #080b12; }
+.menu-action.primary { border-color: var(--gilt); background: linear-gradient(#383127, #221e1a); color: #f4dfb3; }
+.menu-action:hover { border-color: var(--bone); }
+.menu-action:focus-visible, .menu-preferences button:focus-visible { outline: 2px solid var(--bone); outline-offset: 4px; }
+.menu-action.danger { color: #f0a4ab; border-color: #913b4b; }
+.menu-action:disabled { opacity: .5; }
+.menu-note, .menu-footer { color: var(--mist); font-size: 13px; letter-spacing: .06em; margin: 10px 0 0; }
+.menu-footer { margin: 14px 0; text-transform: uppercase; letter-spacing: .2em; }
+.menu-preferences { text-align: left; padding: 12px; border: 1px solid #3c4656; background: rgba(10,14,24,.85); }
+.menu-preferences .srow { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 8px 0; }
+.menu-preferences .label { margin: 0; color: var(--mist); }
+.menu-preferences .btn { min-width: 70px; min-height: 44px; padding: 7px 12px; }
+.menu-credit { padding: 16px 4px; border-bottom: 1px solid #455064; color: var(--mist); }
+.menu-credit span { display: block; font: 24px var(--display); color: var(--bone); margin-top: 6px; }
+@media (max-height: 620px) { .game-menu { justify-content: flex-start; } .menu-ornament { margin-bottom: 12px; } .menu-kicker { margin-bottom: 10px; } }
+.menu-open > .sheet-wrap { z-index: 710; }
+html.skin-button .menu-action.primary { min-height: 64px; border: solid transparent; border-width: 11px 28px; padding: 0 8px; background: none; box-shadow: none; border-image: url('/ui/frames/button.png') 22 56 22 56 fill / 11px 28px stretch; }

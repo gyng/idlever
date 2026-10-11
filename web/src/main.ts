@@ -6,11 +6,12 @@ import "./death.css";   // death screen v2: what · why · what now, the rest un
 import "./chrome.css";   // shared chunky windows, controls, sockets and typography
 import "./juice";   // juice (docs/JUICE.md): UI motion switch + purse count-up (juice.css)
 import { installWashChrome } from "./render/wash";
-import { start, type DevOptions } from "./app";
+import type { DevOptions } from "./app";
+import { bootWithMenu } from "./ui/game-menu";
 import { installDiagnostics } from "./debug";
 installDiagnostics();
 installWashChrome();   // docs/ART_DIRECTION.md §9: the `?look=wash` prototype's chrome (a no-op without the flag)
-start(readDevParams());
+bootWithMenu(readDevParams());
 
 /** Dev-only URL params, honoured in a dev build or anywhere with `?dev=1` (tools/dev.sh, tools/playtest.mjs):
  *    ?seed=N        new lineage with that seed on a fresh boot (ignored while a save exists, unless &fresh=1)

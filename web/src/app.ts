@@ -1304,7 +1304,7 @@ const sameSet = (a: RuleSet, b: RuleSet): boolean => a.rows.length === b.rows.le
 
 /** `dev` is non-null in dev builds or with `?dev=1` (main.ts): boot options plus `window.__riddle` for inspection
  *  (`__riddle.screen`, `__riddle.text()`, `__riddle.engineBusy`, `__riddle.booted`, and the App itself). */
-export function start(dev: DevOptions | null = null): void {
+export function start(dev: DevOptions | null = null): App {
   const root = document.getElementById("app") ?? document.body.appendChild(document.createElement("div"));
   root.id = "app";
   applySkin();   // Cut 17: the frames packed in web/public/ui (tools/ui-skin.py); absent ones keep the flat CSS
@@ -1316,6 +1316,9 @@ export function start(dev: DevOptions | null = null): void {
   Object.defineProperty(window, "__audio", { value: audio, writable: false, configurable: true });
   void app.boot().catch((e) => console.error("boot failed", e));
   if (import.meta.env.PROD && "serviceWorker" in navigator) {
-    window.addEventListener("load", () => { navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`, { scope: import.meta.env.BASE_URL }).catch(() => { /* offline-first is best effort */ }); });
+    const register = (): void => { navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`, { scope: import.meta.env.BASE_URL }).catch(() => { /* offline-first is best effort */ }); };
+    if (document.readyState === "complete") register();
+    else window.addEventListener("load", register, { once: true });
   }
+  return app;
 }
