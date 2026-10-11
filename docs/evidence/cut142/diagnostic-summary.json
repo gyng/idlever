@@ -1,0 +1,128 @@
+{
+  "scope": "bounded read-only observation of real WASM, no score or GPU timing claim; original A freeze unresolved",
+  "rows": [
+    {
+      "artifact": "late-real-watch.json",
+      "width": 400,
+      "setup": {
+        "kind": "wasm",
+        "start": 9,
+        "startError": "Error: D24 not lit",
+        "prepared": {
+          "depth": 27,
+          "turn": 29400,
+          "hero": 36
+        },
+        "batches": 147,
+        "attempts": 0
+      },
+      "sampleCount": 240,
+      "durationMs": 60006.40000009537,
+      "plateaus": {
+        "allCountersPlateauMs": 0,
+        "playheadPlateauMs": 0,
+        "combatLogPlateauMs": 5500.099999904633
+      },
+      "initialFoldPlan": "27,28,29,30,31,32",
+      "finalFoldPlan": "27,28,29,30,31,32",
+      "errors": [],
+      "warnings": [
+        "[.WebGL-0x3c1400159600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x3c14103ac200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x3c14103ac200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x3c14103ac200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ]
+    },
+    {
+      "artifact": "late-real-watch.json",
+      "width": 1440,
+      "setup": {
+        "kind": "wasm",
+        "start": 9,
+        "startError": "Error: D24 not lit",
+        "prepared": {
+          "depth": 27,
+          "turn": 29400,
+          "hero": 36
+        },
+        "batches": 147,
+        "attempts": 0
+      },
+      "sampleCount": 240,
+      "durationMs": 60000.09999990463,
+      "plateaus": {
+        "allCountersPlateauMs": 0,
+        "playheadPlateauMs": 0,
+        "combatLogPlateauMs": 5244.599999904633
+      },
+      "initialFoldPlan": "27,28,29,30,31,32",
+      "finalFoldPlan": "27,28,29,30,31,32",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "artifact": "swift-override-ignored.json",
+      "width": 400,
+      "setup": {
+        "kind": "wasm",
+        "start": 9,
+        "startError": "Error: D24 not lit",
+        "prepared": {
+          "depth": 28,
+          "turn": 31800,
+          "hero": 31
+        },
+        "batches": 159,
+        "attempts": 1
+      },
+      "sampleCount": 240,
+      "durationMs": 60008.89999985695,
+      "plateaus": {
+        "allCountersPlateauMs": 0,
+        "playheadPlateauMs": 0,
+        "combatLogPlateauMs": 5251.0
+      },
+      "initialFoldPlan": "28,29,30,31,32",
+      "finalFoldPlan": "28,29,30,31,32",
+      "errors": [],
+      "warnings": [
+        "[.WebGL-0x189c00159a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x189c06cbc000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x189c06cbc000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x189c06cbc000]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ]
+    },
+    {
+      "artifact": "queen-visible.json",
+      "width": 400,
+      "setup": {
+        "kind": "wasm",
+        "start": 9,
+        "startError": "Error: D24 not lit",
+        "prepared": {
+          "depth": 28,
+          "turn": 31800,
+          "hero": 31
+        },
+        "batches": 159,
+        "attempts": 1
+      },
+      "sampleCount": 240,
+      "durationMs": 60003.799999952316,
+      "plateaus": {
+        "allCountersPlateauMs": 0,
+        "playheadPlateauMs": 0,
+        "combatLogPlateauMs": 3237.7000000476837
+      },
+      "initialFoldPlan": "",
+      "finalFoldPlan": "",
+      "errors": [],
+      "warnings": [
+        "[.WebGL-0x9a40015a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x9a40015a200]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x9a4100f4800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x9a4100f4800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ]
+    }
+  ]
+}

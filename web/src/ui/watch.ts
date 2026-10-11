@@ -143,7 +143,7 @@ import { rationChip } from "./feats";   // Cut 122 §5: the hunger's answer besi
 import { laneTitle, seenForks } from "./route";
 import { oathBeat } from "./oaths";
 import { lastRun, markEnd, recordRun } from "./runlog";
-import { FoldTally, carriedOf, foldFloors, stretchShare } from "./fold";
+import { FoldTally, carriedOf, foldFloors, foldOff, stretchShare } from "./fold";
 import { foldFloorsOf, openFoldReplay } from "./replay";
 import { audio, type CueName, type CueOpts } from "../audio";
 import { controlPanel } from "./control";   // take control (a secondary mode): the hero by hand
@@ -2877,7 +2877,7 @@ export function renderWatch(app: App): Mounted {
     { const f = app.forecastOfRules(); startDepth = s.run.start ?? s.depth; if (f && (f.start ?? 1) === startDepth) foldSet = foldFloors(f, startDepth);
       // Cut 118 §5: the swift floors (a band boss cleared 3×: `Snapshot.swift`, the core's `feats.swift_to`) fold too — one beat, its line
       // (exclusive: `swift_to` is the boss's floor, feats.rs `depth < swift_to` — the floors above it fold, his own never does)
-      if (s.swift) { const to = app.lineage.feats?.swift_to ?? s.depth + 1; for (let d = s.depth; d < to; d++) foldSet.add(d); swiftTo = to - 1 >= s.depth ? to - 1 : 0; if (swiftTo) el.dataset.swift = String(swiftTo); }
+      if (s.swift && !foldOff()) { const to = app.lineage.feats?.swift_to ?? s.depth + 1; for (let d = s.depth; d < to; d++) foldSet.add(d); swiftTo = to - 1 >= s.depth ? to - 1 : 0; if (swiftTo) el.dataset.swift = String(swiftTo); }
       el.dataset.foldPlan = [...foldSet].join(","); }
     const { viewer: v0 } = await makeViewer(canvas);
     if (disposed) { v0.dispose(); return; }

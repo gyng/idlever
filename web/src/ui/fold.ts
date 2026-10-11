@@ -47,7 +47,7 @@ export function stretchShare(f: Forecast | null, a: number, b: number, start: nu
   const top = r(a), end = r(b + 1);
   return top && end !== undefined ? Math.max(0, Math.min(1, end / top)) : undefined;
 }
-const foldOff = (): boolean => { try { return new URLSearchParams(location.search).get("fold") === "0"; } catch { return false; } };
+export const foldOff = (): boolean => { try { return new URLSearchParams(location.search).get("fold") === "0"; } catch { return false; } };
 
 /** The kinds of state change a fold line must carry (the gate's list: each that happened on a folded floor is a chip). */
 export type FoldKind = "stolen" | "found" | "took" | "pet" | "level" | "max_hp" | "bones" | "learned" | "boss" | "hp" | "situation";

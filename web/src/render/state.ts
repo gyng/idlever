@@ -112,6 +112,7 @@ export class ReplayState {
   onEvent: ((ev: Ev) => void) | null = null;
   private bulk = false;
   private ended = false;
+  private restFailureSeen = false;
   private snap: Snapshot | null = null;
   private queue: Ev[] = [];
   private log: Ev[] = [];     // applied since load, in order (for seek)
@@ -156,6 +157,7 @@ export class ReplayState {
     this.caption = null;
     this.tacticTick = -Infinity; this.heroAttack = null; this.tacticTarget = null;
     this.ended = false;
+    this.restFailureSeen = false;
     this.screenShake = null;
     this.leash = null;
     this.projectiles = [];
@@ -393,6 +395,7 @@ export class ReplayState {
         break;
       }
       case "rule": {
+        if (ev.verb?.v === "rest") this.restFailureSeen = false;
         if (!this.ended && ev.verb.v === 'attack' && this.meaningfulRows.has(ev.row)) {
           this.tacticTick = t;
           if (this.heroAttack?.t === t) this.tacticTarget = { t, id: this.heroAttack.dst };
@@ -476,6 +479,12 @@ export class ReplayState {
         this.fadeTarget = EXIT_DIM;
         break;
       case "callout":
+        // Routine unsafe-rest fallthrough should not cover every exchange.
+        // Its original events and observer/trace evidence remain intact.
+        if (/^rest\s+✗\s+not safe$/i.test(ev.text.trim())) {
+          if (this.restFailureSeen) break;
+          this.restFailureSeen = true;
+        }
         if (/^Gunner\s+✗/.test(ev.text)) break; // Ordinary automatic fallback is not a combat failure.
         if (ev.text === "choose one") break;   // Cut 19 §1: the cage is the watch's beat (`took mail`), never a `CHOOSE ONE` over the hero
         // Cut 22 (AH: the boss moment's "clutter of overlapping text"): a boss's break is the watch's beat (`WARLORD BREAKS` on the line

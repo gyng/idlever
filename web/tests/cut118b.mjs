@@ -326,6 +326,23 @@ try {
     // exclusive (feats.rs `depth < swift_to`): swift_to 3 is the boss's floor — D1–2 fold, D3 (his) never folds as swift
     check(s.swift === "2" && /\b1\b/.test(s.plan ?? "") && /\b2\b/.test(s.plan ?? ""), `the swift floors above the boss fold (swift to D${s.swift} · plan ${s.plan})`);
     await p2.close();
+    const p3 = await fresh("swift-disabled");
+    const disabled = await p3.evaluate(async () => {
+      history.replaceState(null, "", `${location.pathname}${location.search}&fold=0`);
+      const a = window.__riddle, fx = window.__fx;
+      a.lineage = fx.home({ ...a.lineage, feats: fx.feats({ swift_to: 3 }) });
+      const send = a.engine.send;
+      a.engine.send = async () => ({ ...(await send()), swift: true });
+      a.go({ kind: "watch" });
+      for (let i = 0; i < 40 && !document.querySelector(".watch")?.dataset.foldPlan; i++) {
+        if (document.querySelector(".watch")?.dataset.foldPlan === "") break;
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
+      const w = document.querySelector(".watch");
+      return { plan: w?.dataset.foldPlan, swift: w?.dataset.swift };
+    });
+    check(disabled.plan === "" && disabled.swift === undefined, "fold=0 disables Swift as well as forecast skips");
+    await p3.close();
   }
   if (parts.includes("taps")) {
     const page = await fresh("taps");

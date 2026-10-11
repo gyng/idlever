@@ -1,0 +1,36 @@
+{
+  "scope": "bounded real-WASM diagnostic; this probe started atD14 and actual watched logs D9\u2013D12, not the requested D28 reproduction",
+  "rows": [
+    {
+      "width": 400,
+      "setup": {
+        "kind": "wasm",
+        "start": 14,
+        "startError": "Error: D24 not lit"
+      },
+      "samples": 240,
+      "durationMs": 60039,
+      "maxCounterPlateauMs": 249.89999985694885,
+      "pageErrors": [],
+      "consoleWarnings": [
+        "[.WebGL-0x30a400bc5800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x30a400bcdc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x30a400bcdc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+        "[.WebGL-0x30a400bcdc00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+      ]
+    },
+    {
+      "width": 1440,
+      "setup": {
+        "kind": "wasm",
+        "start": 14,
+        "startError": "Error: D24 not lit"
+      },
+      "samples": 240,
+      "durationMs": 60067.200000047684,
+      "maxCounterPlateauMs": 256.40000009536743,
+      "pageErrors": [],
+      "consoleWarnings": []
+    }
+  ]
+}
