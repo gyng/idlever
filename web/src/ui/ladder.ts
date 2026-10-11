@@ -78,7 +78,7 @@ export function controlLadder(app: App, doors: Partial<Record<RungId, () => void
       ...rungs.flatMap((r, i) => [i ? h("span", { class: "ladder-step", "aria-hidden": "true" }, "›") : "",
         rungTip(h("span", { class: `ladder-rung${r.lit ? " lit" : ""}${r === next ? " next" : ""}`, role: "listitem", "data-rung": r.id, "data-retires": r.retires, "data-lit-by": r.litBy ?? "" }, h("span", { class: "ladder-pip", "aria-hidden": "true" }),
           r.lit && doors[r.id] ? h("button", { class: "ladder-door", "data-door": r.id, onclick: (e: Event) => { e.stopPropagation(); doors[r.id]!(); } }, r.label) : r.label), r)])),
-      h("small", { class: "ladder-next num", "data-rung": next!.id }, next!.cond));
+      h("small", { class: "ladder-next num", "data-rung": next!.id }, `${next!.label} · ${next!.cond}`));
   };
   paint();
   const off = app.onChange(paint);

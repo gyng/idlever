@@ -131,7 +131,7 @@ try {
     check(r.early === "weights- orders- workers- pen-" && r.cond === "first bank", `a fresh ladder is dark, the first rung names its condition (${r.early} · ${r.cond})`);
     check(r.mid === "weights- orders+ workers+ pen-" && r.all === "weights+ orders+ workers+ pen+", `rungs light as earned, in any order (${r.mid} | ${r.all})`);
     check(r.w.retires === "chests by hand" && r.w.litBy === "3 chests" && r.every, `each rung names the chore it retires and what lit it (${JSON.stringify(r.w)})`);
-    check(r.shown.rungs.join() === "tactics,orders,workers,pen" && r.shown.next === "first bank" && r.gone, `the rail: four words and one condition; gone when all lit (${JSON.stringify(r.shown)} · ${r.gone})`);
+    check(r.shown.rungs.join() === "tactics,orders,workers,pen" && r.shown.next === "tactics · first bank" && r.gone, `the rail names the next rung with its condition; gone when all lit (${JSON.stringify(r.shown)} · ${r.gone})`);
     await page.close();
   }
   if (parts.includes("crier")) {
