@@ -1,3 +1,7 @@
+# Cut168 acceptance verified wait — 2026-10-12
+
+Previous turn progressed:16seed King tuningPASS and original guarded acceptance started; this turn verified SAME exec19481/live native worker3559383(parent3559356) at17:56:25UTC. Binary9b8b2dbafa3df99673a4c3a6b8164b606cdffecb13fda1a1978da0d61efdb074/runtime2df75dbabfdb69d8; all680guardedsource files unchanged, no behavior overrides. New docs/evidence/cut168/live-actor16.json records this live observation only. Paid3/resume parity remain terminalPASS; original22row acceptance stillLIVE, early bounded idle passes do not prove whole result. Poll tools.write_stdin19481 and scratchpad/cut168/run-state.json/queue.log/actor16.log. Do not restart or edit guarded sources. Coordinator checklist prepared under docs/evidence/cut168, prospective only; no QA/blind players released, no accepted freeze or fun certificate. Candidate Rust/actor stilldirtyunadopted. No deployment.
+
 # Cut168 targeted PASS / guarded acceptance LIVE — 2026-10-12
 
 Previous goal turn made progress: routine tier verified, failed Cut166 acceptance archived/pushed061b1db. This turn same King tuning job finished terminalPASS2/2 in415s,16seeds: median7.0days,minimum5,16/16slain; Legacy day3spending98%/earned78594. Original thresholds unchanged. Runtime2df75dbabfdb69d8/jobsrcff43ce12e7cd70d1;16 exact full14day cache records verified/archived under docs/evidence/cut168/targeted. Setup/source guard680files and candidate diff under docs/evidence/cut168/setup. Targeted pass is not acceptance or fun certification.
