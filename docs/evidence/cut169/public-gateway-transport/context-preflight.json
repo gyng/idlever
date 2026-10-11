@@ -1,0 +1,133 @@
+{
+  "scope": "Prospective blind-context isolation, no agent released or assets frozen",
+  "preparedUtc": "2026-10-11T21:00:47.198501+00:00",
+  "priorExposureEvidence": [
+    "eval/cards/d34605e.blind-a.json:blindnessViolations",
+    "eval/cards/d34605e.blind-b.json:blindnessViolations"
+  ],
+  "finding": "Prior cards record inherited/automatically supplied user AGENTS; copied read-only permitted references avoid accidental framework overread",
+  "cliHelpObserved": {
+    "binary": "/home/g/.local/bin/codex",
+    "supports": [
+      "exec",
+      "--cd",
+      "--skip-git-repo-check",
+      "--ephemeral",
+      "--ignore-user-config",
+      "--json"
+    ],
+    "agentStarted": false
+  },
+  "neutralReferenceDirectory": "/tmp/riddle-blind-reference-preflight",
+  "containsOnlyPermittedReferences": true,
+  "references": [
+    {
+      "file": "RATING.md",
+      "bytes": 5106,
+      "sha256": "216bb02904ea15bb8c954be75951109f9122b4d0204e4b349f0b39eb9408d9d2"
+    },
+    {
+      "file": "FUN_EVAL_IDLE.md",
+      "bytes": 11744,
+      "sha256": "957a6b441eeb795c31586dc5c4678945f69446497e1742cfde8ede3e30b67dad"
+    },
+    {
+      "file": "FRAMEWORK-1-3.md",
+      "bytes": 12833,
+      "sha256": "d245dbf0624d3d7ab645fa84e8a8d55d193619cbdb1fbed5b12a197ac6d357f7"
+    },
+    {
+      "file": "SCORECARD.template.json",
+      "bytes": 2826,
+      "sha256": "dc960ddc252203945c09145bdd87fd4780ec513ce9ee5a094a0851fba9929984"
+    }
+  ],
+  "prospectiveIsolation": "Fresh independent subprocess in neutral working root without resume/fork or repository ancestors; configuration and automatically injected context must be disclosed/verified before play",
+  "stillUnverified": [
+    "fresh CLI auth/capability",
+    "actual automatically injected context",
+    "public-only driver interface",
+    "same immutable accepted served build",
+    "mechanical acceptance and QA prerequisites",
+    "complete independent rating horizons"
+  ],
+  "restriction": "No game source, desired score, prior cards/results, QA notes or seed-specific strategy supplied to new raters; no earlier card reused",
+  "instructionDiscoveryReadOnly": {
+    "checkedUtc": "2026-10-11T21:06:15.159138+00:00",
+    "officialUrl": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+    "finding": "Global instructions are read separately from project instructions; neutral cwd alone does not guarantee absence of global guidance. Global AGENTS is currently empty. Actual injected context remains unverified.",
+    "paths": [
+      {
+        "path": "/home/g/.codex/AGENTS.md",
+        "exists": true,
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/home/g/.codex/AGENTS.override.md",
+        "exists": false
+      },
+      {
+        "path": "/tmp/AGENTS.md",
+        "exists": false
+      },
+      {
+        "path": "/tmp/AGENTS.override.md",
+        "exists": false
+      },
+      {
+        "path": "/AGENTS.md",
+        "exists": false
+      },
+      {
+        "path": "/AGENTS.override.md",
+        "exists": false
+      }
+    ]
+  },
+  "driverReview": {
+    "file": "tools/driver.mjs",
+    "finding": "Existing driver exposes arbitrary eval/js and internal screen in state/watch output; must give blind players a public DOM-only operation interface. No players released; no isolation certificate."
+  },
+  "gatewayPreflight": {
+    "path": "scratchpad/cut169/public-blind-gateway.mjs",
+    "sha256": "dfc1b9759886f26e0863fbe6e8ae13f13d3828eaaf3d1060a89b9c2ce45d828e",
+    "scope": "Prospective public-operation gateway; no live browser integration or player isolation verified",
+    "checks": "Seven prohibited operation payloads rejected; permitted click and one-second watch retained; internal screen field stripped from watch end. Does not certify complete input validation or active time.",
+    "started": false
+  },
+  "referenceRecheckUtc": "2026-10-11T21:07:15.739216+00:00",
+  "frameworkRecheck": {
+    "exactCurrentSections1to3": true,
+    "sha256": "d245dbf0624d3d7ab645fa84e8a8d55d193619cbdb1fbed5b12a197ac6d357f7"
+  },
+  "featureLookup": {
+    "checkedUtc": "2026-10-11T21:29:05.749855+00:00",
+    "command": [
+      "codex",
+      "features",
+      "list"
+    ],
+    "observedWithCurrentUserConfiguration": {
+      "memories": false,
+      "external_agent_memory_import": false,
+      "goals": true
+    },
+    "doesNotProveFreshExecDefaults": true,
+    "execOnlyFlagNote": "--ignore-user-config is an exec flag, rejected on root CLI features invocation; no agent started.",
+    "prospectiveFreshExecFlags": [
+      "--ignore-user-config",
+      "--disable",
+      "memories",
+      "--disable",
+      "external_agent_memory_import",
+      "--disable",
+      "goals"
+    ],
+    "actualInjectionStillUnverified": true
+  },
+  "participantBrief": {
+    "path": "scratchpad/cut169/blind-participant-brief.template.md",
+    "status": "Draft only; URL/seed/endpoints unassigned, no participant released; prospective alternative still needs protocol amendment after prerequisites."
+  }
+}

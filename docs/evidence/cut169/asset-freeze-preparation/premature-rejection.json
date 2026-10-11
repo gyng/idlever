@@ -1,0 +1,8 @@
+{
+  "checkedUtc": "2026-10-11T21:10:37.449219+00:00",
+  "scope": "Premature freeze rejected against actual live acceptance; no snapshot created",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/home/g/p/riddle/scratchpad/cut169/freeze-accepted.py\", line 39, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/home/g/p/riddle/scratchpad/cut169/freeze-accepted.py\", line 11, in main\n    state=json.loads((accepted/'run-state.json').read_text());report=json.loads((accepted/'shipping-client-results.json').read_text());guard=json.loads((accepted/'source-identity.json').read_text())\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g/.pyenv/versions/3.12.4/lib/python3.12/pathlib.py\", line 1027, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/g/.pyenv/versions/3.12.4/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/g/p/riddle/scratchpad/cut169/revalidation-v6/shipping-client-results.json'\n",
+  "destinationExists": false
+}

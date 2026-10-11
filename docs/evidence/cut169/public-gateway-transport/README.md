@@ -1,0 +1,7 @@
+Prospective preparation only. No QA/rating agent, game browser or accepted immutable build was started. The local transport test used a mock driver and mock cohort URLs.
+
+Twenty-six checks passed: prohibited script/internal-state routes, browser developer/address shortcuts, forced clicks, screenshot path traversal and long buffered watches were rejected without forwarding; initial and absence visits were consumed once in order; saved reload and visible editing/game controls remained available; internal screen metadata was stripped. Public-operation attempts, including rejected payloads, are recorded. No active-time credit is inferred from transport duration. The operation ledger is preserved alongside the historical raw result.
+
+Local feature listing under the current user configuration reported memories=false, external_agent_memory_import=false, goals=true. The exec-only ignore-user-config option is not accepted by the root features command. Explicit disable flags for known memories/import/goals features are prospective; no fresh exec session or authentication probe occurred, and actual injected context remains unverified.
+
+The participant brief is a draft; URL, seed and endpoints are unassigned. It supplies no desired award, former card, QA observation, source, or seed-specific strategy. Existing cohort still requires a prospective fresh-process amendment, complete mechanical acceptance, source adoption, immutable assets, QA, calibration, actual context audit and two complete independent horizons before a score can count.
