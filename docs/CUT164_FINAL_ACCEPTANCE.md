@@ -61,3 +61,23 @@ pkg is excluded from the source guard because shipping packaging is explicit.
 The runner does not adopt an actor, freeze a cohort, grant a score or deploy.
 Source/runner setup evidence in docs/evidence/cut164; no completed queue result
 is asserted by this setup artifact.
+
+Terminal checkpoint: initial fast-WASM whole-client session80724 FAIL165/166
+in1688.0s. clarity:paint fake-lag first forecast1266ms/retry1327ms exceeds
+unchanged1200ms; recorded retry load28.3/32cores. Controller1747 terminal
+client_failed, native_started=false. No paid/16seed/full/shipping-client command
+started. Whole failure log preserved under evidence/cut164/results.
+Post-failure host inspection finds a separate armee unit-test process consuming
+26-28 cores; no external process modified. This does not prove causation or
+exact PID overlap with failed measurements. Investigate/profile original paint
+check, retaining its bar and failure; a focused pass cannot rewrite this full
+run into green. Revalidate full client before the existing queue can proceed.
+
+Focused unchanged-source/bar clarity:paint reproduction86754 terminalPASS5
+checks/32.6s. Original full failure remains authoritative. No product patch
+is justified by this result alone; full-client revalidation required.
+
+Full revalidation58153 now LIVE, owned by functions controller1767. Only its
+terminalexit0 starts the same guarded acceptance runner. Original failed run
+and controller1747 remain terminal/immutable; narrow success does not permit
+adoption. Shipping sources/502-file guard unchanged.

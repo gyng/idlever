@@ -1,0 +1,17 @@
+{
+  "scope": "Read-only host inspection after terminal failure; does not prove causation or exact PID overlap with failed measurement",
+  "pid": 3427595,
+  "command": "armee_core-07a5",
+  "cwd": "/home/g/p/armee/crates/armee-core",
+  "binary": "/tmp/armee-roles-verify/debug/deps/armee_core-07a561a44d553db1",
+  "cpu_percent_observations": [
+    2647,
+    2829
+  ],
+  "elapsed_seconds_later": 43,
+  "load_1m": 28.29,
+  "load_5m": 24.78,
+  "load_15m": 18.31,
+  "process_modified": false,
+  "interpretation": "Separate project consuming roughly26-28CPU cores during post-failure inspection; inspect/profile failed timing without assuming product regression or stopping external work."
+}
