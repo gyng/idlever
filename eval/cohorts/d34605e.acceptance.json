@@ -503,5 +503,22 @@
     "servedSubsetFiles": 6,
     "servedMismatches": [],
     "scope": "All261 immutable disk assets; live HTTP subset checks indexHTML, mainJS/CSS, shippingWASM and both painted grass sources. No browser session, unfinished observations or raw cards read."
+  },
+  "provisionalRawCardLocks": {
+    "b": {
+      "path": "eval/cards/d34605e.blind-b.json",
+      "raterReportedSha256": "816433e8bbb9b8efa0c7222b94a1a95bcdcfdb4baf7ac1a339c07a6f4cfed025",
+      "coordinatorObservedUtc": "2026-10-11T08:19:37.729374+00:00",
+      "fileExists": true,
+      "contentsRead": false,
+      "reportedConservativeActiveMinutes": 73.85517625,
+      "reportedPhaseMinutes": [
+        41.04587625,
+        5.96933333,
+        6.31305,
+        20.52691667
+      ],
+      "scope": "Rater-reported immutable lock and timing totals; coordinator confirmed file existence only. Rules export/cleanup underway. Await A locked card and both final reports before hashing/interval audit/scoring."
+    }
   }
 }

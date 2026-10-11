@@ -1,3 +1,7 @@
+# First raw-card lock — 2026-10-11
+
+B reports immutable eval/cards/d34605e.blind-b.json lock, SHA816433e8bbb9b8efa0c7222b94a1a95bcdcfdb4baf7ac1a339c07a6f4cfed025. Root confirmed file exists ONLY, no content/opinions read; raw file not staged by root yet. Reported73.85517625 actual-active minutes, phases41.04587625/5.96933333/6.31305/20.52691667, pending independent interval audit. B completing permitted read-only rules export/own-driver cleanup. A still live; await BOTH locked cards and final reports before reading/hash/audit/scoring. No score claim or gameplay feedback shared. Goal active/unproven; wind GPU and polish integration pending until cohort releases machine; no deployment.
+
 # Return-navigation infrastructure checkpoint — 2026-10-11
 
 Fresh reports: A cold39.87/40 active minutes, no returns yet; B8h return9.4517 exact at07:58:08UTC,~10.5–11 currently, previous phases complete. Both relays responsive/no pending, same profiles/frozen5269. A requested goto syntax; supplied tracked-relay-verified same-origin public dev=1&runs=1&absent=20m/4h/8h to both equally, no seed/fresh/menu, navigation/setup excluded, pending handles polled without duplication. B explicitly told not to repeat completed returns. No cards/opinions/awards read; counts provisional, audit pending. Goal active/unproven, isolated polish/GPU check pending, no deployment.
