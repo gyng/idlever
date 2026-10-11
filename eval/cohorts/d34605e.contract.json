@@ -79,5 +79,15 @@
   "agents": {
     "a": "/root/blind_d346_a",
     "b": "/root/blind_d346_b"
-  }
+  },
+  "operationalAmendments": [
+    {
+      "utc": "2026-10-11T06:16:47.200178+00:00",
+      "stage": "Both sessions live; neither raw card locked; no gameplay opinions or awards shared with coordinator.",
+      "change": "Driver-operation/tool-call allowance260 ->1000 for both independent raters; image reads120 retained.",
+      "reason": "Existing watch/send_and_watch HTTP endpoints buffer observations until completion. Long unattended waits excluded from active credit; short inspected observations exhaust the initial budget before70 actual active minutes.",
+      "scope": "Operational allowance only, prospectively supplied equally. Immutable build, blindness,70-minute phase horizon, active-time exclusions, criterion-before-axes, anchors, kill criteria and decision requirements unchanged.",
+      "evidenceLimit": "Record amendment in each ledger; a complete horizon remains unproven until interval/exclusion audit. No retrospective passive-time credit; if still unattainable file incomplete."
+    }
+  ]
 }
