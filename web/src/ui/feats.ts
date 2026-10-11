@@ -177,12 +177,26 @@ export function rationChip(app: App, H: HungerForecast, after?: () => void): HTM
   if (H.packed) return h("span", { class: "ration packed num dim", "data-ration": "packed", title: tip }, /* copy:callout */ `ration packed · +${kept} hp`);
   if (!app.engine.buyRation) return h("span", { class: "ration num dim", title: tip }, /* copy:callout */ `ration keeps +${kept} hp`);
   const act = (): void => {
+    b.disabled = true;
+    b.classList.remove("armed");
+    replace(b, /* copy:label */ "Packing…");
+    b.setAttribute("aria-label", /* copy:label */ "Packing…");
     let why = "";
     void app.mutate(async () => { try { return await app.engine.buyRation!(); } catch (e) { why = e instanceof Error ? e.message : String(e); throw e; } }, /* copy:callout */ "ration").then((ok) => {
-      if (ok) { audio.cue("unlock"); toast(/* copy:callout */ "ration packed"); after?.(); } else app.refused(why, /* copy:callout */ "ration refused");
+      if (ok) {
+        replace(b, /* copy:callout */ `ration packed · +${kept} hp`);
+        b.setAttribute("aria-label", /* copy:label */ "ration packed");
+        b.dataset.ration = "packed";
+        audio.cue("unlock"); toast(/* copy:callout */ "ration packed"); after?.();
+      } else {
+        b.disabled = (app.lineage.gold ?? 0) < H.price;
+        replace(b, /* copy:callout */ `ration keeps +${kept} hp`, ` · $${H.price}`);
+        b.setAttribute("aria-label", b.textContent ?? "");
+        app.refused(why, /* copy:callout */ "ration refused");
+      }
     });
   };
-  const b = twoTap([document.createTextNode(/* copy:callout */ `ration keeps +${kept} hp`), h("small", { class: "dim" }, ` · $${H.price}`)], /* copy:button */ `ok $${H.price}`, act,
+  const b = twoTap([document.createTextNode(/* copy:callout */ `ration keeps +${kept} hp`), h("small", { class: "dim" }, ` · $${H.price}`)], /* copy:button */ `Pack $${H.price}`, act,
     { class: "chip mini ration num", key: `ration:${H.price}`, disabled: (app.lineage.gold ?? 0) < H.price });
   b.dataset.ration = "buy"; b.title = tip;
   return b;

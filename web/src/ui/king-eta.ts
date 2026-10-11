@@ -52,6 +52,8 @@ export const kingShare = (L: Pick<Lineage, "best_depth" | "king_pct">): number =
 /** Cut 122 §3 (core: `walls[].slain` and `king_eta_h` read this descent): the King is slain only in the descent on screen — the core's
  *  `king_eta_h` (0 = slain) when it sends one, else its walls; the lineage-wide trophy (any descent) only for an older save without either. */
 export const kingSlain = (L: Pick<Lineage, "walls" | "ended" | "trophies" | "king_eta_h">): boolean => {
+  const king = L.walls?.find((w) => w.boss === "mirror_king");
+  if (king) return king.slain;
   if (typeof L.king_eta_h === "number") return L.king_eta_h === 0 || !!L.ended;
   if (L.walls?.length) return !!L.ended || L.walls.some((w) => w.boss === "mirror_king" && w.slain);
   return !!L.ended || (L.trophies ?? []).some((t) => /mirror_king/.test(t));
@@ -63,12 +65,12 @@ export const kingSlain = (L: Pick<Lineage, "walls" | "ended" | "trophies" | "kin
 export function kingLine(L: Parameters<typeof kingEta>[0] & Pick<Lineage, "king_pct">, cls = ""): HTMLElement | null {
   const slain = kingSlain(L);
   const e = slain ? null : kingEta(L);
-  if (!slain && !e) return null;
-  const pct = Math.round(kingShare(L) * 100);
-  return h("span", { class: `king-eta num ${cls}`.trim(), "data-day": slain ? "slain" : e!.far ? "far" : e!.day, "data-pct": slain ? 100 : pct,
+  if (!slain && !e && L.best_depth < KING_DEPTH) return null;
+  const pct = Math.min(slain ? 100 : 99, Math.round(kingShare(L) * 100));
+  return h("span", { class: `king-eta num ${cls}`.trim(), "data-day": slain ? "slain" : !e ? "reached" : e.far ? "far" : e.day, "data-pct": slain ? 100 : pct,
     "data-src": typeof L.king_eta_h === "number" ? "core" : "client",
     title: typeof L.king_eta_h === "number" ? /* copy:tooltip */ "current pace carried on · not a promise" : /* copy:tooltip */ "crude · current pace carried on · not a promise" },
-    h("b", null, /* copy:label */ "King"), " · ", slain ? /* copy:callout */ "slain" : e!.far ? /* copy:callout */ "far off" : /* copy:callout */ `~day ${e!.day}`,
+    h("b", null, /* copy:label */ "King"), " · ", slain ? /* copy:callout */ "slain" : !e ? /* copy:callout */ "reached" : e.far ? /* copy:callout */ "far off" : /* copy:callout */ `~day ${e.day}`,
     h("span", { class: "king-bar", role: "img", "aria-label": `${slain ? 100 : pct}%` }, h("span", { class: "fill", style: `width:${slain ? 100 : pct}%` })),
     h("small", { class: "king-pct" }, `${slain ? 100 : pct}%`),
     h("small", { class: "king-after dim", title: /* copy:tooltip */ "ascension · harder dungeon · same bloodline" }, " · ", /* copy:callout */ "next: harder dungeon"));

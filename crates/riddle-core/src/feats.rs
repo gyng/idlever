@@ -855,7 +855,7 @@ pub fn grant_wish(l: &mut LineageState) -> Result<String, String> {
 
 // ---------------------------------------------------------------- the King's horizon
 
-/// The hours until the King may fall at the current pace (`None` slain, or no pace yet): the lineage's hours
+/// The hours until the King may fall at the current pace (`0` slain, `None` no pace yet): the lineage's hours
 /// per floor so far, the floors left weighted deeper (a floor at the bottom takes twice the walk's mean).
 pub fn king_eta_h(l: &LineageState) -> Option<u32> {
     if l.slain_here("mirror_king") {
@@ -869,7 +869,9 @@ pub fn king_eta_h(l: &LineageState) -> Option<u32> {
     let pace = age / f64::from(best);
     let end = f64::from(crate::descent::ENDING_DEPTH - 1);
     let left: f64 = ((best + 1)..=(crate::descent::ENDING_DEPTH - 1)).map(|d| 1.0 + f64::from(d) / end).sum();
-    Some((pace * left).ceil() as u32)
+    // Reaching his floor is not a victory. The empty remaining-floor sum must
+    // never produce the zero sentinel reserved for a slain King.
+    Some(((pace * left).ceil() as u32).max(1))
 }
 
 /// The record as a share of the way to the King (percent).

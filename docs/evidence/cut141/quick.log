@@ -1,0 +1,26 @@
+test result: ok. 797 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 48.27s
+copy-lint: 86 files, 2352 tagged literals, 0 violations
+✔ saved-camp checks reject incomplete or ambiguous requests (1.987556ms)
+✔ references bind exact inputs and workloads and require uncorrupted full bytes (1.227173ms)
+✔ save comparison detects adjacent integers that Number rounds together (1.729473ms)
+✔ comparison preserves safe counters, floats, arrays and quoted seed-like text (0.299921ms)
+✔ shared wallet matches equal-valued exits by bloodline and retains intervening movements (2.131077ms)
+✔ native bridge covers every client method and rejects unsupported bindings (12.310878ms)
+✔ checkpoint memento accounts for every serde-skipped engine field (4.413515ms)
+✔ native sessions isolate, order calls, recover from request errors and preserve state across rebuild (113.086444ms)
+✔ native transport rejects remote connections and cross-origin requests (712.22067ms)
+✔ native edits coalesce, serialize and rebuild edits that arrive during a build (81.83016ms)
+✔ failed builds surface errors, recover on an edit and stop after close (62.671469ms)
+✔ only compilation inputs trigger builds, not generated outputs or browser assets (0.996179ms)
+✔ test-only edits skip rebuilds only with current cfg declaration and compiler proof (49.824836ms)
+✔ real compiler separates unit tests from runtime and included inputs (3457.200502ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3557.761812
+PASS: completed legs reused; corrupt/legacy-null caches rerun; SIGSEGV reported and not cached; numeric failure preserved. No game simulations were tested.
+verify --quick: green in 131s

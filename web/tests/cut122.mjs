@@ -171,6 +171,8 @@ try {
       check(!kingSlain({ king_eta_h: 30, trophies: ["slain:mirror_king"], walls: [{ boss: "mirror_king", slain: false }] }), "a new descent: the trophy of an old one is no kill here");
       check(!kingSlain({ walls: [{ boss: "mirror_king", slain: false }], trophies: ["mirror_king"] }), "the core's walls read this descent");
       check(kingSlain({ king_eta_h: 0 }) && kingSlain({ walls: [{ boss: "mirror_king", slain: true }] }) && kingSlain({ trophies: ["mirror_king"] }), "slain here (or an older save's trophy)");
+      const atKing = { age_h: 8, best_depth: 33, king_eta_h: 0, king_pct: 99, walls: [{ boss: "mirror_king", slain: false }], trophies: ["mirror_king"] };
+      check(!kingSlain(atKing) && kingLine(atKing)?.dataset.pct === "99" && /King · reached/.test(kingLine(atKing)?.textContent ?? ""), "an unslain current King overrides a zero estimate and old trophy");
       check(!/slain/.test(kingLine({ age_h: 100, best_depth: 20, king_eta_h: 30, king_pct: 60, trophies: ["mirror_king"], walls: [] })?.textContent ?? ""), "no `King · slain` line in a descent that has not felled him");
 
       // §2 unowned counters: never written, refused out loud; the guide's `wear`, the forecast's try
@@ -202,11 +204,21 @@ try {
       const chip = rationChip(app, H); document.body.appendChild(chip);
       check(chip.textContent === "ration keeps +172 hp · $40" && chip.tagName === "BUTTON", `the ration chip (${chip.textContent})`);
       check(rationChip(app, { ...H, packed: true }).textContent === "ration packed · +172 hp", "packed");
-      const br = engine.buyRation; let bought = 0; engine.buyRation = async () => { bought++; return app.lineage; };
-      if (!chip.disabled) { chip.click(); chip.click(); await tick(60); check(bought === 1 && document.body.dataset.toast === "ration packed", `two taps buy one ration (${bought} · ${document.body.dataset.toast})`); }
+      const br = engine.buyRation; let bought = 0, finishPurchase;
+      engine.buyRation = () => { bought++; return new Promise(resolve => { finishPurchase = resolve; }); };
+      check(!chip.disabled, "the fixture can afford its ration");
+      const beforeRation = app.lineage.gold;
+      chip.click();
+      check(bought === 0 && app.lineage.gold === beforeRation && chip.textContent === "Pack $40", "first tap offers Pack and pays nothing");
+      chip.click(); await tick();
+      check(bought === 1 && chip.disabled && chip.textContent === "Packing…", "confirmed purchase waits visibly");
+      chip.click(); check(bought === 1, "pending ration cannot be purchased twice");
+      finishPurchase(app.lineage); await tick(60);
+      check(chip.dataset.ration === "packed" && document.body.dataset.toast === "ration packed", "success alone shows packed");
       engine.buyRation = async () => { throw new Error("ration packed"); };
       const chip2 = rationChip(app, H); document.body.appendChild(chip2);
       if (!chip2.disabled) { chip2.click(); chip2.click(); await tick(60); check(document.body.dataset.toast === "ration refused" && document.body.dataset.refused === "ration packed", `a refused ration says why (${document.body.dataset.toast} · ${document.body.dataset.refused})`); }
+      check(!chip2.disabled && chip2.dataset.ration === "buy" && /keeps/.test(chip2.textContent), "refusal restores an unpaid retry");
       engine.buyRation = br; chip.remove(); chip2.remove();
       check(typeof engine.buyRation === "function", "the engine proxies buyRation");
       // the forecast panel: `starving −237 · ration keeps +172 hp · $40` (the fake's hunger under fake_drain)

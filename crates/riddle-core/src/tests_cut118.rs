@@ -412,6 +412,20 @@ fn the_wire_fields_the_client_asked_for() {
     assert_eq!(feats::king_eta_h(&g.lineage), Some(0));
 }
 
+#[test]
+fn reaching_the_kings_floor_is_not_slaying_him() {
+    let mut g = Game::new_resident(141);
+    g.lineage.clock_s = 8 * 3600;
+    for best in [32, 33, 34] {
+        g.lineage.best_depth = best;
+        assert!(feats::king_eta_h(&g.lineage).is_some_and(|h| h > 0));
+        assert!(feats::king_pct(&g.lineage) < 100);
+    }
+    g.lineage.kills.insert("mirror_king".into());
+    assert_eq!(feats::king_eta_h(&g.lineage), Some(0));
+    assert_eq!(feats::king_pct(&g.lineage), 100);
+}
+
 /// IDLE never spends a token, opts into a trial or grants a wish: a fortnight's absences leave the order, the trial
 /// and the wishes untouched (tokens only bank).
 #[test]

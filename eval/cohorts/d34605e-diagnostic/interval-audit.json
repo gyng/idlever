@@ -1,0 +1,96 @@
+{
+  "scope": "locked raw cards and archived public-operation interval audit, no raw mutations",
+  "raters": {
+    "a": {
+      "calculatedPhaseMinutes": {
+        "cold": 40.04946363333333,
+        "return20m": 5.083333333333333,
+        "return4h": 4.866666666666666,
+        "return8h": 20.066666666666666
+      },
+      "claimedPhaseMinutes": {
+        "cold": 40.04946363333333,
+        "return20m": 5.083333333333333,
+        "return4h": 4.866666666666666,
+        "return8h": 20.066666666666666
+      },
+      "arithmeticMatches": true,
+      "calculatedTotalMinutes": 70.0661303,
+      "phaseRequirementsMet": {
+        "cold": true,
+        "return20m": true,
+        "return4h": false,
+        "return8h": true
+      },
+      "creditCount": 258,
+      "archivedOperationCountIncludingDuplicates": 591,
+      "intervalIssues": [],
+      "creditedOverlapWithExcludedSeconds": 0,
+      "creditedOverlapWithArchivedOperations": [
+        {
+          "creditStart": "2026-10-11T09:07:10Z",
+          "opStart": "2026-10-11T09:07:09.330Z",
+          "seconds": 0.253,
+          "op": {
+            "op": "shot",
+            "name": "8h-rook-king-final-death"
+          }
+        }
+      ],
+      "criterionArchiveMatches": true,
+      "probeArchiveMatches": true,
+      "axes16": true,
+      "everyAxisHasQuotedProbe": true,
+      "unmeasuredCapsRemainNA": true,
+      "audioUnassessed": {
+        "assessment": "unassessed",
+        "reason": "Agent cannot listen; no human listening note read. Visual consequences and atmosphere assessed independently."
+      },
+      "delayedRecallEmpty": true,
+      "blindnessViolations": [
+        "Inherited user AGENTS.md contained game intent, invariants and repository operating instructions before blind play; it was not voluntarily reopened as design evidence.",
+        "Initial read of permitted FRAMEWORK accidentally extended into sections4\u20136 via an overlong sed range. Only generic protocol, no other cards/QA/calibration/source read.",
+        "Permitted RATING.md itself includes QA/coordinator workflow and permitted FUN_EVAL_IDLE.md includes generic calibration examples; no referenced calibration artifacts read."
+      ]
+    },
+    "b": {
+      "calculatedPhaseMinutes": {
+        "cold": 41.04587625,
+        "return20m": 5.969333333333334,
+        "return4h": 6.3130500000000005,
+        "return8h": 20.52691666666667
+      },
+      "claimedPhaseMinutes": {
+        "cold": 41.04587625,
+        "return20m": 5.969333333333334,
+        "return4h": 6.3130500000000005,
+        "return8h": 20.52691666666667
+      },
+      "arithmeticMatches": true,
+      "calculatedTotalMinutes": 73.85517625000001,
+      "phaseRequirementsMet": {
+        "cold": true,
+        "return20m": true,
+        "return4h": true,
+        "return8h": true
+      },
+      "creditCount": 312,
+      "archivedOperationCountIncludingDuplicates": 364,
+      "intervalIssues": [],
+      "creditedOverlapWithExcludedSeconds": 0,
+      "creditedOverlapWithArchivedOperations": [],
+      "criterionArchiveMatches": true,
+      "probeArchiveMatches": true,
+      "axes16": true,
+      "everyAxisHasQuotedProbe": true,
+      "unmeasuredCapsRemainNA": true,
+      "audioUnassessed": "UNASSESSED: agent cannot listen; no audible cues or audio quality awarded.",
+      "delayedRecallEmpty": true,
+      "blindnessViolations": [
+        "Initial combined read accidentally printed FRAMEWORK sections4\u20137 beyond permitted1\u20133. No game source, other cards, QA or coordinator goal inspected.",
+        "Prescribed state/text exposes camp navigation not visible in screenshots; attempted PEN and ORDERS selection from those strings before recognizing hidden navigation. No hidden game data API used.",
+        "The automatically supplied AGENTS.md operating manual was present in the conversation context; I did not open its HANDOFF/PLAN/CUT references and did not award from its implementation or invariant claims."
+      ]
+    }
+  }
+}
