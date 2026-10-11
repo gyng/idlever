@@ -1,0 +1,13 @@
+# Cut137 — illustrated main menu
+
+Owner requested stronger menu art and subtle effects. Baseline product d34605e uses the death backdrop behind centered controls; reuse the approved existing title.png (red-cloaked hero, moonlit ruins) with a dedicated responsive composition. Prepared in isolated /tmp/riddle-menu-polish while the independent d34605e cohort plays; preserve its frozen261 assets and browser profiles.
+
+Desktop: controls at left, ruins and hero at right. Phone: scene above the title, controls over an ink fade. Sparse cold motes and slow mist/light variation use CSS opacity/transform only. No new raster assets, animation loop, renderer, engine or save writes. Existing typography and ink/moon/blood palette remain authoritative.
+
+Numeric acceptance: public menu regression81 checks pass at320/400/1440; zero page errors or horizontal overflow on all three. Controls at least44px; keyboard focus, save replacement/cancellation, settings and saved-load bypass unchanged. Full:16 motes plus mist/light; low:4 motes; off and OS reduced-motion:zero running decorative animations. Hidden tabs pause all animations; closing menu removes its scene. Title asset uses BASE_URL and falls back to the ink background if missing. Capture400/1440 before/after and settings plus320 compact viewport. Typecheck/copy lint/build pass. One short headless menu-only screenshot/check session and the focused public menu regression run sequentially on a separate port; no GPU/tuning/full-suite workload alongside the independent cohort. No performance claim from these checks.
+
+Status: focused acceptance PASS in isolated checkout. Public regression81 checks PASS320/400/1440 using real shipping WASM; typecheck/copy lint0 violations/build PASS. Static visual checks:18 animations full,4 low,0 off/reduced motion, targets52px minimum, no overflow/errors, no engine/save on title. Before/after phone and desktop screenshots posted. Actual hidden-tab suspension is implemented via visibilitychange/CSS; no measured performance or full-suite claim. Kept separate from the frozen d34605e cohort; integration after that cohort. No deployment. Existing blind scores apply solely to d34605e, never this change.
+
+First isolated regression failed because the new checkout omitted the ignored generated engine/pkg; New game fell back to fake. Initial build likewise rejected the missing production engine. Preserve those failures; copy the existing shipping package as a real directory (no rebuild or gameplay change) and rerun both checks.
+
+Evidence: docs/evidence/cut137/menu-atmosphere.json, menu-regression.log and build.log. Local captures: scratchpad/menu-polish/{before,after,settings}-{320,400,1440}.png. No new raster generation; original title art remains byte-identical.

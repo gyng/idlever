@@ -1,0 +1,13 @@
+{
+  "menuRegression": {
+    "exitCode": 1,
+    "assertion": "'fake' !== 'wasm'",
+    "location": "web/tests/game-menu.mjs:31"
+  },
+  "build": {
+    "exitCode": 1,
+    "error": "Production engine missing: run tools/wasm.sh --ship before building the site"
+  },
+  "cause": "Ignored shipping engine/pkg absent in isolated checkout; supplied a real directory copied from the existing shipping package, no rebuild.",
+  "wasmSha256": "e007e5a3631341679e4f92f5b421fbe877920cb530a96fb41a34cbd03faa79b5"
+}
