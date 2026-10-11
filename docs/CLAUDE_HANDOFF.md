@@ -1,3 +1,15 @@
+# Current lantern candidate acceptance — 2026-10-11
+
+Product candidate **d34605e** committed/pushed. Cut134 human monochrome lanterns implemented and scoped validated, screenshots posted inline. Full158-group acceptance **LIVE exec1808**, log `/tmp/riddle-d34605e-client-full.log`, TEST_JOBS3/HEAVY_WIDTH1. Poll same handle; no source/test edits or heavy browser/native work until terminal. Old824 acceptance stopped130 for owner request, zero groups. No whole-green claim or fresh blind release.
+
+Immutable preview **5269 exec96044**, `scratchpad/blind-d34605e-frozen/dist`,261assets manifestSHA5cc04312ac9eabc449215428c0ce9417e44b13eb9bf86f16b1d8f8b4a27be376.261 served hashes exact; shippingWASM unchanged. Production privateGPU400/1440 first-menu→new-game→saved-reload PASS, realWASM, D3D12 NVIDIA3080, pageerrors0. Actual local13:10 Singapore yields night0. Unreleased new briefs seeds313/317 drivers5380/5381 in freeze; cohort contract/acceptance `eval/cohorts/d34605e.*.json`.
+
+Lanterns: six visible humans in built-town night fixture, none at noon; pets/ghost workers excluded; movement/arrival opacity preserved; neutral white light prioritizes people within32-light shader. GL/Canvas400/1440 exactsave/cache pass. Scoped4/4 renderer gates60.6s, types/copy/build pass. Warm built-town25walker GPU59.45fps CPU-p950.9ms,31 visible lamps. Earlier smaller camera count24 failed>=25 assertion despite59.67fps; preserved, not a product-fix claim. Evidence `scratchpad/qa-cut134-lanterns/` and contractCUT134.
+
+Persistent verified fun≥80 goal remains active/unproven; no new cards/raters. After terminal current158 PASS: archive/recheckfreeze, same-sitting calibration/release record, then two authorized fresh fork-none independent raters brief-only; full70active horizon/20m4h8h returns, raw immutable cards, measured caps, α≥.8/mean≥80 required. No deployment. Native limitations unchanged; see prior records below. Owner authorizes commit/push.
+
+---
+
 # Character night lantern revision — 2026-10-11
 
 Owner requested monochrome character lanterns. Whole acceptance33239 stopped130 before source changes, zero completed groups. Cut134 implemented/scoped PASS: GL/Canvas400/1440 day/night, exact save/cache,4/4 renderer gates60.6s, types/copy/build. Warm built-town25-walker GPU passes (see contract/evidence). Candidate8246877 held; next new freeze/current158 acceptance before blind release. Screenshots posted inline.
