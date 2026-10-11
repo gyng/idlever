@@ -1,0 +1,332 @@
+{
+  "candidate": "8246877",
+  "applicationCommits": [
+    "9004023",
+    "72e90fd",
+    "d96bad1",
+    "4663abf",
+    "8246877"
+  ],
+  "status": "complete158-group client acceptance running; no fresh raters released",
+  "includes": "First-visit menus/direct saved loads, corrected Normal-speed selection/resumption, original-style painted landscape, continuous local wall-clock lighting.",
+  "frozen": {
+    "dir": "scratchpad/blind-8246877-frozen/dist",
+    "url": "http://127.0.0.1:5268/",
+    "files": 261,
+    "manifestSha256": "938ba3f4d296ef87915606eb9136bc2b4d11fdf01f9415be25722f80a3b0879d",
+    "servedHashes": "261/261",
+    "shippingWasmSha256": "e007e5a3631341679e4f92f5b421fbe877920cb530a96fb41a34cbd03faa79b5",
+    "previewExecSession": 68782,
+    "coldSmoke": {
+      "utc": "2026-10-11T04:59:14.357Z",
+      "records": [
+        {
+          "width": 400,
+          "first": {
+            "kind": "wasm",
+            "screen": "camp",
+            "localTime": "Sun Oct 11 2026 12:59:05 GMT+0800 (Singapore Standard Time)",
+            "night": 0,
+            "menu": false
+          },
+          "returning": {
+            "kind": "wasm",
+            "screen": "camp",
+            "localTime": "Sun Oct 11 2026 12:59:06 GMT+0800 (Singapore Standard Time)",
+            "night": 0,
+            "menu": false,
+            "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)"
+          },
+          "errors": []
+        },
+        {
+          "width": 1440,
+          "first": {
+            "kind": "wasm",
+            "screen": "camp",
+            "localTime": "Sun Oct 11 2026 12:59:13 GMT+0800 (Singapore Standard Time)",
+            "night": 0,
+            "menu": false
+          },
+          "returning": {
+            "kind": "wasm",
+            "screen": "camp",
+            "localTime": "Sun Oct 11 2026 12:59:13 GMT+0800 (Singapore Standard Time)",
+            "night": 0,
+            "menu": false,
+            "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)"
+          },
+          "errors": []
+        }
+      ]
+    }
+  },
+  "native": {
+    "cargoTests": "796 passed",
+    "clippy": "clean",
+    "gates": "routine full --fresh: all PASS but the 2-seed outpace row 86% (recorded); PICKED+L King median 7 (min 5)",
+    "deviations": [
+      "outpace 2-seed row",
+      "automation-pays (Cut 110 \u00a74)",
+      "the King 700 hp / 21-27 (smooth curve)",
+      "top Legacy ranks exceed a day's income late"
+    ],
+    "reuseReason": "Only renderer, regression and evidence changed since906990f; no Rust/bridge/art inputs changed. Existing shipping package matches original frozen WASM byte for byte. Original native full log preserved; source key0f1f86e2ec058e24.",
+    "fullGateDisposition": "Original native routine full exited1 on the two-seed outpace row; never described as unqualified full green.",
+    "log": "scratchpad/blind-906990f-frozen/acceptance-resume/claude-native-full.log",
+    "targeted16": {
+      "result": "PASS requested rows; outpace97%; targeted check, not a full gate",
+      "log": "scratchpad/blind-b6df4f2-frozen/acceptance/claude-native-targeted16.log",
+      "sha256": "ee18c18a23186347ddf79181ab7827318ec176de5b721c84b27cf5a8e57429a6"
+    }
+  },
+  "browser": {
+    "clockMenuFocused": "PASS2/2 in21.8s: local clock36checks, menus81checks",
+    "landscapeFocused": "PASS3/3 in69.5s: cut30town,ctxloss19,town-save39; isolated terrain source06f19ec",
+    "landscapeLifecycle": [
+      {
+        "ok": true,
+        "label": "single paint across viewport and lighting changes",
+        "data": {
+          "initial": {
+            "fps": 3,
+            "frames": 4,
+            "cpuMs": 8.399999856948853,
+            "cpuP95": 141.30000019073486,
+            "walkers": 1,
+            "mode": "gl",
+            "glLost": false,
+            "k": 1.375,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 120.5,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              303,
+              107,
+              291,
+              364
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          },
+          "resized": {
+            "fps": 3,
+            "frames": 5,
+            "cpuMs": 0.7999999523162842,
+            "cpuP95": 141.30000019073486,
+            "walkers": 1,
+            "mode": "gl",
+            "glLost": false,
+            "k": 1.375,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 120.5,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              303,
+              107,
+              291,
+              364
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          }
+        }
+      },
+      {
+        "ok": true,
+        "label": "context loss retains terrain and cache",
+        "data": {
+          "fps": 2,
+          "frames": 7,
+          "cpuMs": 0.9000000953674316,
+          "cpuP95": 141.30000019073486,
+          "walkers": 1,
+          "mode": "2d",
+          "glLost": true,
+          "k": 1.375,
+          "night": 0,
+          "idle": false,
+          "running": true,
+          "terrainPaints": 1,
+          "terrainPaintMs": 120.5,
+          "buildings": [
+            "blacksmith",
+            "bank",
+            "storehouse",
+            "kennel"
+          ],
+          "markers": [
+            "rune@blacksmith",
+            "rune@bank",
+            "rune@storehouse"
+          ],
+          "view": [
+            303,
+            107,
+            291,
+            364
+          ],
+          "workers": [
+            "quartermaster"
+          ],
+          "ranks": {},
+          "colours": 1795
+        }
+      },
+      {
+        "ok": true,
+        "label": "context restore uploads same terrain",
+        "data": {
+          "fps": 2,
+          "frames": 8,
+          "cpuMs": 98.5,
+          "cpuP95": 141.30000019073486,
+          "walkers": 1,
+          "mode": "gl",
+          "glLost": false,
+          "k": 1.375,
+          "night": 0,
+          "idle": false,
+          "running": true,
+          "terrainPaints": 1,
+          "terrainPaintMs": 120.5,
+          "buildings": [
+            "blacksmith",
+            "bank",
+            "storehouse",
+            "kennel"
+          ],
+          "markers": [
+            "rune@blacksmith",
+            "rune@bank",
+            "rune@storehouse"
+          ],
+          "view": [
+            303,
+            107,
+            291,
+            364
+          ],
+          "workers": [
+            "quartermaster"
+          ],
+          "ranks": {}
+        }
+      },
+      {
+        "ok": true,
+        "label": "render changes preserve exact core save"
+      },
+      {
+        "ok": true,
+        "label": "actual GPU warm busy town CPU-p95 below 8ms",
+        "data": {
+          "fps": 60.02143622722401,
+          "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+          "stats": {
+            "fps": 61,
+            "frames": 561,
+            "cpuMs": 0.7999999523162842,
+            "cpuP95": 1,
+            "walkers": 25,
+            "mode": "gl",
+            "glLost": false,
+            "k": 1.375,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 120.5,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              303,
+              107,
+              291,
+              364
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          }
+        }
+      },
+      {
+        "ok": true,
+        "label": "no page errors",
+        "data": []
+      }
+    ],
+    "typeScript": "PASS",
+    "copyLint": "2354 tagged literals;0 violations",
+    "build": "PASS",
+    "basePath": "terrain agent /riddle/ build verified emitted asset URLs",
+    "full": {
+      "status": "RUNNING",
+      "execSession": 33239,
+      "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
+      "expectedGroups": 158,
+      "log": "/tmp/riddle-8246877-client-full.log",
+      "recordedUtc": "2026-10-11T05:00:40.390294+00:00"
+    }
+  },
+  "artifacts": {
+    "scratchpad/blind-8246877-frozen/acceptance/build.log": "297d264e6212e1ce1ad5d2e931fe87687ab99d247427ef6ad65b262db0a08307",
+    "scratchpad/blind-8246877-frozen/acceptance/camp-1440.png": "9d1aec1d04993d842f2431bdaafc8e207db648a10da59a69c2da163456cf9405",
+    "scratchpad/blind-8246877-frozen/acceptance/camp-400.png": "aa59daaac8a7228394d00bc6ad88ab05b6d8cfe649718a75278338784744df09",
+    "scratchpad/blind-8246877-frozen/acceptance/clock-menu.log": "f6438d7e0dd96a6d840933ee75cccea6c5065486f8f56f7744112531e2013f6b",
+    "scratchpad/blind-8246877-frozen/acceptance/cold-smoke.json": "00e5a16c25f08a17f490527ced8d943dcfaaf2ced5892dfce3bb80dce03d61f1",
+    "scratchpad/blind-8246877-frozen/acceptance/cold-smoke.mjs": "0052d2394f01c705bf10a34166a07872e2ea251e8b1ca5ad851bddb093146269",
+    "scratchpad/blind-8246877-frozen/acceptance/menu-1440.png": "79f2b11094117431ca719a9c6f78094891c5dfde650762efd11cc6c20e68488f",
+    "scratchpad/blind-8246877-frozen/acceptance/menu-400.png": "817c9acd3012c9eccd6a9f31c13d56119e54e0f27b88cdf91707a20778e0245e",
+    "scratchpad/blind-8246877-frozen/acceptance/served-recheck.json": "edebd8cf85c9c41b8860dbec0e9bed6e3987c55fb2039b5e7b1794b85aa1522f"
+  },
+  "limits": [
+    "No new whole-client pass until terminal full-suite evidence.",
+    "No new fun cards or score; independent raters remain held.",
+    "Day/night populated images are four-built diagnostic fixtures; cold production smoke uses real local wall clock.",
+    "Cold ground paint120-140ms separately from warm GPU CPU-p951.0ms/60fps.",
+    "Existing native failure/deviations remain; no exhaustive audit certification.",
+    "No deployment; push approval pending."
+  ]
+}

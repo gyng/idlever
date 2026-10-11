@@ -19,3 +19,5 @@ Acceptance:
 - TypeScript/copy/build and complete settled client suite pass before ratings.
   Landscape visual review belongs to Cut132; diagnostic clock overrides are
   never described as natural-time play or scored experience.
+
+Focused validation on integrated landscape8246877: town-clock36checks and game-menu81checks PASS2/2 in21.8s. GL/Canvas/local-time/resume/cache/exact-save verified without setHour overrides. Full158-group acceptance is still pending.
