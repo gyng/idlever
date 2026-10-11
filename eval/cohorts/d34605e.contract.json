@@ -1,6 +1,6 @@
 {
   "candidate": "d34605e",
-  "status": "precommitted; character lantern scoped proofs pass; whole acceptance pending",
+  "status": "release eligible; all precommitted conditions satisfied",
   "url": "http://127.0.0.1:5269/",
   "manifestSha256": "5cc04312ac9eabc449215428c0ce9417e44b13eb9bf86f16b1d8f8b4a27be376",
   "preset": "idle-hybrid",
@@ -67,5 +67,12 @@
     "scoreLimitation": "A human-only score may be reported as such; measured gate failures that map to a fun-axis cap must be reflected in separate derived cards.",
     "rawCardsImmutable": true
   },
-  "menuEntry": "First cold visit only includes menu=1 alongside seed/fresh. Returning absence URLs omit menu/fresh and load straight into saved game."
+  "menuEntry": "First cold visit only includes menu=1 alongside seed/fresh. Returning absence URLs omit menu/fresh and load straight into saved game.",
+  "releaseEvidence": {
+    "client": "corrected158/158 PASS1404.3s; original157/158 FAIL retained",
+    "manifest": "261/261 hashes match",
+    "gpu": "private Xvfb D3D12 NVIDIA RTX3080",
+    "calibration": "74 drift0, knowledge-based no fresh direct play",
+    "utc": "2026-10-11T06:02:14.203646+00:00"
+  }
 }

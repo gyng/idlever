@@ -8,7 +8,7 @@
     "8246877",
     "d34605e"
   ],
-  "status": "original full FAIL157/158 retained; corrected complete158-group rerun live; no fresh raters",
+  "status": "corrected whole158/158 PASS; release conditions satisfied; fresh independent raters ready",
   "includes": "First-visit menus/direct saved loads, corrected Normal-speed selection/resumption, original-style painted landscape, continuous local wall-clock lighting. Monochrome personal lanterns for town humans at dusk/night.",
   "frozen": {
     "dir": "scratchpad/blind-d34605e-frozen/dist",
@@ -324,14 +324,18 @@
       "productChange": "none"
     },
     "correctedFull": {
-      "status": "RUNNING",
+      "status": "PASS",
       "execSession": 67909,
       "testSetupCommit": "6cc3ff5",
       "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
       "expectedGroups": 158,
       "log": "/tmp/riddle-d34605e-client-settled.log",
       "utc": "2026-10-11T05:37:39.067370+00:00",
-      "applicationUnchanged": "d34605e frozen261assets retained"
+      "applicationUnchanged": "d34605e frozen261assets retained",
+      "exitCode": 0,
+      "passedGroups": 158,
+      "failedGroups": [],
+      "seconds": 1404.3
     }
   },
   "artifacts": {
@@ -347,7 +351,11 @@
     "scratchpad/blind-d34605e-frozen/acceptance/client-full-original.log": "ff3811f24b49fc88be655c14eadfab1bb253ed7b10b131a96aacc1d61a21380e",
     "scratchpad/blind-d34605e-frozen/acceptance/startup.log": "29d3662db4a6684637766178b86e112081bf309ae4f15a97ab88f745176640e9",
     "scratchpad/blind-d34605e-frozen/acceptance/grounding-fixed.log": "5ecac85ebe479010285054c0159a4f7a91f673555b1642837867f3c80d05472d",
-    "scratchpad/blind-d34605e-frozen/acceptance/grounding-original.log": "9f8ec37f33edb893776df4e5c173f3db487cd7618cb1a4f59aa5023d9146b0d7"
+    "scratchpad/blind-d34605e-frozen/acceptance/grounding-original.log": "9f8ec37f33edb893776df4e5c173f3db487cd7618cb1a4f59aa5023d9146b0d7",
+    "scratchpad/blind-d34605e-frozen/acceptance/gpu-final.log": "29487ee0a75cee41c343bd72181aace9198fecfae1a94c3de99f80a37f04c276",
+    "scratchpad/blind-d34605e-frozen/acceptance/served-final.json": "60ebd38fad737df1a159801f7af831f7e6fdc4e90787b94c2b8d579b61a504a9",
+    "scratchpad/blind-d34605e-frozen/acceptance/client-full-corrected.log": "f747c477460b753a134cb120af6c3b38e67be241df21d26ef275800457427384",
+    "scratchpad/blind-d34605e-frozen/acceptance/calibration-score.json": "abf01ad5fa7de7fc2ea500da80d62994e3365e998b8f4855ed90e6ea1b33cc55"
   },
   "limits": [
     "No new whole-client pass until terminal full-suite evidence.",
@@ -357,5 +365,12 @@
     "Existing native failure/deviations remain; no exhaustive audit certification.",
     "No deployment. Owner explicitly authorized commit/push after the prior review rejection."
   ],
-  "lanternProof": "eval/cohorts/cut134-lantern.acceptance.json"
+  "lanternProof": "eval/cohorts/cut134-lantern.acceptance.json",
+  "calibration": {
+    "card": "eval/calibration/loop-hero.d34605e.reanchor.json",
+    "score": 74,
+    "drift": 0,
+    "basis": "same-sitting knowledge calibration and official description, no fresh empirical play"
+  },
+  "releaseEligibleUtc": "2026-10-11T06:02:14.203646+00:00"
 }
