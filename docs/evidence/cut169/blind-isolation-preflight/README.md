@@ -1,0 +1,7 @@
+Prospective context isolation only. No rating player, browser or gateway has been started. No asset freeze, QA completion, horizon, score or purity is certified.
+
+Read-only checks found the global Codex AGENTS file is empty (zero bytes), but neutral working directory by itself does not remove global instruction lookup. Official reference: https://learn.chatgpt.com/docs/agent-configuration/agents-md. Local CLI help states --ignore-user-config skips config.toml, while auth still uses CODEX_HOME; no environment override or auth inspection was performed. Actual injected context remains to be audited before a future cohort.
+
+The existing driver exposes eval/js and internal screen identifiers. The prospective gateway rejects those operations, forced clicks, path traversal screenshot names, non-cohort navigation and long buffered watches. Offline validation exercised seven rejected payloads, a permitted click and one-second watch, and internal-screen stripping. It is preparation, not live integration acceptance or a complete isolation boundary. Active time cannot be inferred from operation duration.
+
+Three neutral reference copies match current originals byte for byte. The Framework copy exactly equals current sections 1 through 3. A future fresh-process approach still needs a prospective protocol amendment, actual context audit, and all mechanical/QA prerequisites before release; no existing card is reused.
