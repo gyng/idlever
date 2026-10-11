@@ -1,0 +1,34 @@
+{
+  "scope": "Terminal original22-row16-seed targeted fail-fast plan, not full gate acceptance or fun certification",
+  "rowsPassed": 22,
+  "rowsFailed": 0,
+  "exitCode": 0,
+  "elapsedSeconds": 1320.3038216850255,
+  "command": [
+    "node",
+    "tools/gates.mjs",
+    "--full",
+    "--rows",
+    "idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,hands-idle,automation-pays,picked-l-king,picked-l-purse,porter,scout",
+    "--fail-fast",
+    "--seeds",
+    "16",
+    "--tuned-seeds",
+    "16",
+    "--loo-seeds",
+    "16"
+  ],
+  "runtimeKey": "2df75dbabfdb69d8",
+  "exactJobSourceKey": "srcff43ce12e7cd70d1",
+  "cachedFullLengthRecordsVerified": 96,
+  "earlyBoundedRows": "See original log; bounds are not exact all16seed statistics",
+  "kingMedianDay": 7.0,
+  "kingMinDay": 5,
+  "workersMeanBest": [
+    29.0,
+    28.35
+  ],
+  "fullRoutineStatusAtSnapshot": "running",
+  "shippingClientStarted": false,
+  "experimentalActorAdopted": false
+}
