@@ -1,0 +1,138 @@
+{
+  "target": "http://127.0.0.1:40483/?dev=1&runs=1",
+  "harnessCommit": "ade4b127b78bb75cbc088c9e35d607f1618c7696",
+  "harnessSha256": "0dd8565e37e244a0b9153ce5f8288d18c70a97de73692d325a27601641d64622",
+  "seed": 149,
+  "absent": "8h",
+  "wallSeconds": 33.108,
+  "result": "PASS",
+  "wasm": [
+    {
+      "url": "http://127.0.0.1:40483/assets/riddle_wasm_bg-6yIPgVpl.wasm",
+      "status": 200,
+      "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+    },
+    {
+      "url": "http://127.0.0.1:40483/assets/riddle_wasm_bg-6yIPgVpl.wasm",
+      "status": 200,
+      "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+    },
+    {
+      "url": "http://127.0.0.1:40483/assets/riddle_wasm_bg-6yIPgVpl.wasm",
+      "status": 200,
+      "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+    },
+    {
+      "url": "http://127.0.0.1:40483/assets/riddle_wasm_bg-6yIPgVpl.wasm",
+      "status": 200,
+      "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+    },
+    {
+      "url": "http://127.0.0.1:40483/assets/riddle_wasm_bg-6yIPgVpl.wasm",
+      "status": 200,
+      "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+    }
+  ],
+  "checkpoints": [
+    {
+      "screen": "camp",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/01-camp.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/01-camp.txt",
+      "note": "",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "home",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/02-home.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/02-home.txt",
+      "note": "",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "watch",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/03-watch.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/03-watch.txt",
+      "note": "foe jackal 24 px · map k12",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "watch",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/04-watch.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/04-watch.txt",
+      "note": "",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "watch",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/05-watch.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/05-watch.txt",
+      "note": "final frame",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "exit",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/06-exit.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/06-exit.txt",
+      "note": "",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "report",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/07-report.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/07-report.txt",
+      "note": "returned",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "camp",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/08-camp.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/08-camp.txt",
+      "note": "",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "camp",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/09-camp.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/09-camp.txt",
+      "note": "scout hired · 2 extra manual sends",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    },
+    {
+      "screen": "report",
+      "image": "/home/g/p/riddle/scratchpad/cut169/qa-walk/10-report.png",
+      "text": "/home/g/p/riddle/scratchpad/cut169/qa-walk/10-report.txt",
+      "note": "offline 8h → 1.9s",
+      "viewport": {
+        "width": 400,
+        "height": 800
+      }
+    }
+  ]
+}
