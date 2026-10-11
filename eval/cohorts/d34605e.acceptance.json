@@ -461,5 +461,25 @@
     },
     "source": "Infrastructure-only agent messages before raw-card lock; no gameplay opinions or awards shared. Root has not read response archives before lock.",
     "scope": "Live transport confirmed by both operators; actual70-minute horizons and score still unproven."
+  },
+  "lastInfrastructureStatus": {
+    "coordinatorObservedUtc": "2026-10-11T07:31:14.840474+00:00",
+    "a": {
+      "agent": "/root/blind_d346_a",
+      "phase": "cold",
+      "reportedCreditedMinutes": 28.28,
+      "absencePhasesBegun": false,
+      "relaySession": 66516,
+      "pendingOrBlocked": false
+    },
+    "b": {
+      "agent": "/root/blind_d346_b",
+      "phase": "20m return",
+      "reportedColdMinutesApprox": 41,
+      "reportedReturnMinutesApprox": 1.5,
+      "relaySession": 21401,
+      "pendingOrBlocked": false
+    },
+    "scope": "Infrastructure-only messages, no opinions/awards requested or read. These are provisional rater reports, not audited horizon certificates. Both existing agents confirmed running by collaboration.list_agents; profiles/build unchanged."
   }
 }
