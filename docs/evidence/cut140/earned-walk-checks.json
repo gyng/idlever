@@ -1,0 +1,42 @@
+{
+  "scope": "eight real native manual sends from an existing earned diagnostic camp; no grants or changed configuration",
+  "source": "scratchpad/cut147-early/PICKED-s1-d1-c0.json",
+  "source_sha256": "99a9bf9a45547c17a9f8abc2a2a71d7c71b398947b46a2af99b1e54fa0b4503d",
+  "walk_sha256": "31bfc2dc7e007b9081f7ab6f097807858754de246f8acd68037fcf7001457447",
+  "repeat_byte_identical": true,
+  "run_ids": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "pending_sheets": 1,
+  "settled_fate_rows": 86,
+  "unsettled_sheet_rows": 0,
+  "exit_tiers": {
+    "bank": 1,
+    "return": 7,
+    "death": 0
+  },
+  "limitations": [
+    "One prompt is a distinct-kind conflict, not the synthetic routine prompt",
+    "No death in these eight exits",
+    "No keeper trigger/fallback audit",
+    "No complete36-case accepted implementation",
+    "No8h or multi-hero parity",
+    "No responsive UI claim",
+    "No full gate or fun-score claim"
+  ],
+  "build": {
+    "command": "cargo build -q --profile fast -p riddle-core --example keep_walk",
+    "exit_status": 0
+  },
+  "clippy": {
+    "command": "cargo clippy -q --profile fast -p riddle-core --example keep_walk -- -D warnings",
+    "exit_status": 0
+  }
+}
