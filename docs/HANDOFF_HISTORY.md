@@ -1,0 +1,5744 @@
+# Cut168 acceptance verified wait — 2026-10-12
+
+Previous turn progressed:16seed King tuningPASS and original guarded acceptance started; this turn verified SAME exec19481/live native worker3559383(parent3559356) at17:56:25UTC. Binary9b8b2dbafa3df99673a4c3a6b8164b606cdffecb13fda1a1978da0d61efdb074/runtime2df75dbabfdb69d8; all680guardedsource files unchanged, no behavior overrides. New docs/evidence/cut168/live-actor16.json records this live observation only. Paid3/resume parity remain terminalPASS; original22row acceptance stillLIVE, early bounded idle passes do not prove whole result. Poll tools.write_stdin19481 and scratchpad/cut168/run-state.json/queue.log/actor16.log. Do not restart or edit guarded sources. Coordinator checklist prepared under docs/evidence/cut168, prospective only; no QA/blind players released, no accepted freeze or fun certificate. Candidate Rust/actor stilldirtyunadopted. No deployment.
+
+# Cut168 targeted PASS / guarded acceptance LIVE — 2026-10-12
+
+Previous goal turn made progress: routine tier verified, failed Cut166 acceptance archived/pushed061b1db. This turn same King tuning job finished terminalPASS2/2 in415s,16seeds: median7.0days,minimum5,16/16slain; Legacy day3spending98%/earned78594. Original thresholds unchanged. Runtime2df75dbabfdb69d8/jobsrcff43ce12e7cd70d1;16 exact full14day cache records verified/archived under docs/evidence/cut168/targeted. Setup/source guard680files and candidate diff under docs/evidence/cut168/setup. Targeted pass is not acceptance or fun certification.
+
+LIVE continuation exec19481 owns the single guarded acceptance queue; poll SAME handle with tools.write_stdin19481. Controller scratchpad/cut168/continue-after-tune.py, /tmp/riddle-cut168-continuation.log and continuation-state.json. Targeted job3551283/3551511 is TERMINAL, do not poll/restart it. Acceptance PythonPID3558863; scratchpad/cut168/run-state.json and queue.log are current progress sources. Sequence paid-actions/resume/original22row16seed/fullroutine18metricswire+shippingbuild/all166shippingclient stopsfirstfail/sourcechange. First paid checks terminalPASS3/1.4s; exact resume/save parity terminalPASS79.9s; original actor16 nowLIVE. Preserve guarded sources unchanged; experimental actor and King change remain DIRTY/unadopted pending required acceptance. Full QA/freeze/TWO fresh complete blind ratings still required; >=80 unverified. No deployment.
+
+# Cut166 terminal / Cut168 targeted tuning LIVE — 2026-10-12
+
+Routine validation speed work is complete and pushed: `pnpm test` selects 37 unchanged critical journey groups; latest PASS37/37 in215s versus1770.4s for full (12.1% time). `pnpm test:full` and no-argument client runner retain complete discovery. Risk-based coverage is not a measured80% defect-detection claim. See docs/DEV_VALIDATION_TIERS.md and preserved evidence.
+
+Native queue28602 is TERMINAL FAIL, not live. Paid-action checks PASS3/30.6s; exact resume/save checks PASS85.8s; original22row16seed actor plan finished21/22PASS in1774s. Only failure: PICKED+L King median6.5 days below unchanged7-day minimum (min4 meets4;16/16 slain). Workers and porter/scout pass. Full routine/build/shipping client did not start. Terminal logs/status/cache identities preserved in docs/evidence/cut166/terminal (currently uncommitted). Experimental dayplayer remains dirty/unadopted.
+
+New UNADOPTED Cut168 candidate changes only Mirror King attack21–27 to22–28, retaining700HP and original gates. Contract docs/CUT168_KING_SUSTAIN.md. SAME targeted `tools/tune.sh picked-l-king,picked-l-purse` is LIVE: shell3551282, gates3551283, dayplayer3551511 as of this checkpoint; log /tmp/riddle-cut168-king-tune.log. Initial exec result was context-truncated, so its session handle is unknown; inspect these exact processes/log before any restart. No runtime/build/client acceptance or tuning pass claimed. Keep game sources unchanged while it runs. No QA/rater released or immutable freeze. Goal remains unverified; no deployment.
+
+# Cut166 completed early checks / actor16 LIVE — 2026-10-12
+
+Previous goal turn made progress: watch fix461562f pushed, final routine37/37 PASS215s, focused unchanged-bar checks PASS. This turn polled SAME native acceptance28602 and confirmed LIVE. Paid-action3checks terminalPASS30.6s; exact uninterrupted/resumed bot outputs+complete saves terminalPASS85.8s for IDLE/RANDOM/PICKED/AWAY, rejecting wrong runtime/seed/corrupt/truncated checkpoints. Immutable terminal artifacts docs/evidence/cut166/checkpoints. actor16 stillRUNNING (started17:04:25UTC), partial completed jobs and idle median bounded rows do not certify whole acceptance or exact all16seed statistics. Do not restart. /tmp/riddle-cut166-queue.log, scratchpad/cut166/actor16.log and run-state.json are current progress sources; tools.write_stdin28602 owns live queue.
+
+Prospective next-evaluation plan docs/evidence/cut166/prospective-evaluation.json: QA then TWO fresh forkNONE blind agents, no target/history supplied; wholephase/first10/edits/deaths/normalwatch audit; rawcards locked before inspection. No QA/rater released, no assets frozen, no scoreclaimed. Acceptance guard680 unchanged; no guardedsource edits while queue runs. Remaining original22row16seed +fullroutine18/metrics/wire +all166shippingclient remain pending. Experimental dayplayer stillDIRTY/unadopted/excluded. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut166 watch fix / native acceptance LIVE — 2026-10-12
+
+Previous goal turn made progress: measured routine tier committed/pushed20d9180, raw full failures retained. This turn unchanged serial reproduction PASS Cut12 26/take-control58; isolated routine FAILED Normal dead picture12.2s vs12s, preserved. Product fix continues a budgeted dead search after250ms when no progress found, retaining2500ms discovery delay and existing beat/cage/vault/exit guards. Final focused4groups PASS157.9s (watch live10: Fights6.9s/Normal8.8s; normalnews6; control58; Cut12 26). Types PASS, copy2354/zero, harness8 PASS. Final routine37/37 PASS215.0s (12.1% of1770.4s full). Screenshot docs/evidence/cut166/phone-360-control.png shown at checkpoint. No bar relaxed. Cut12 remains nonreproduced; failure diagnostic added rather than claiming a product fix.
+
+NEW native acceptance exec session28602 LIVE, log /tmp/riddle-cut166-queue.log; state scratchpad/cut166/run-state.json. Poll SAME28602 via tools.write_stdin, do not restart or poll completed client87394/45056/68531/53894. Guard680 source+harness files includes new watch change; no edits to guarded sources while running. Sequence paid action3/resume test/original22row16seed fail-fast/fullroutine18metricswire+shippingbuild/all166 shipping client explicitly --full with JSONreport. This omits duplicate pre-native fast-WASM whole browser pass, NOT final whole acceptance. Stopsfirstfail. No actor adoption, releasefreeze or score certification yet. Experimental dayplayer DIRTY/unadopted/excluded from commits. Next inspect exact terminal native/shipping results, preserve logs/job identities, adopt actor only if all required gates; then QA/freeze/TWO fresh complete blind ratings. Goal>=80 ACTIVE/unverified; NO DEPLOYMENT.
+
+# Validation speed tier COMPLETE — 2026-10-12
+
+Owner requested 20% time / useful routine coverage. Routine benchmark23932 TERMINAL PASS37/37,205.7s (3m26s); complete revalidation58153 TERMINAL FAIL163/166,1770.4s (29m30s). Routine uses11.6% of new full /12.2% of original1688s baseline. Eight harness checks PASS. pnpm test now routine37journey groups; pnpm test:full and no-argument runner retain all166 and future discovery. --list/--report expose scope/timings/raw results; no assertions or game source changed. docs/DEV_VALIDATION_TIERS.md and docs/evidence/validation-tiers preserve exact coverage and raw terminal results. Coverage is risk-based, not measured80% defect/assertion coverage. Initial Node subprocess EPERM resolved escalation; initial pnpm -- separator error corrected and tested.
+
+Next original goal work: investigate full failures cut12 locator .fc-refine missing, take-control availability, watch-live-edge timing. Smoke watch-live-edge PASS on separate run does not rewrite whole FAIL. No native acceptance queue launched; controller1767 terminated; do not poll completed23932/58153. Experimental dayplayer remains dirty/unadopted; goal>=80 ACTIVE/unverified, complete native acceptance/QA/freeze/TWO fresh complete blind ratings still required. No deployment.
+
+# Validation tier benchmark LIVE — 2026-10-12
+
+Complete revalidation58153 TERMINAL exit1: 163/166,1770.4s. Failed cut12, take-control, watch-live-edge; clarity:paint PASS. Raw log docs/evidence/validation-tiers/full-revalidation.log. No native queue launched; controller1767 terminated. Do not poll finished handles. Routine benchmark session23932 LIVE, /tmp/riddle-validation-smoke.log, JSON scratchpad/validation-tiers/smoke-results.json; pnpm test -- --report now supported (initial separator parsing error corrected). Preserve terminal evidence, measure target <=337.6s, finish docs/commit harness only. Release acceptance remains blocked by full failures, goal>=80 ACTIVE/unverified, no deploy. Do not adopt dirty dayplayer.
+
+# Validation speed tier work — 2026-10-12
+
+Latest owner request: target 20% time / most useful routine coverage. New uncommitted routine client tier selects 37 of 166 unchanged groups across ten critical journey areas; pnpm test uses smoke, pnpm test:full and no-argument node tests/run.mjs retain complete discovery. Added --list and JSON --report. Five selection/CLI contract tests PASS after sandbox subprocess EPERM was resolved with escalation. Product sources/assertion bars unchanged. See docs/DEV_VALIDATION_TIERS.md; benchmark pending, do not claim achieved runtime yet.
+
+Controller cell1767 was deliberately terminated to prevent launching the CPU-heavy native queue during the routine benchmark. Underlying COMPLETE client revalidation session58153 remains LIVE, directly owned via tools.write_stdin; log /tmp/riddle-cut164-whole-client-revalidation.log. Do not wait1767 or restart58153. No native queue has launched. Once full run finishes, preserve its terminal result and benchmark smoke alone with --report; then update docs/evidence and commit only harness/docs, excluding experimental dayplayer and scratchpad. Full release/pre-blind acceptance remains required. Prior goal >=80 ACTIVE/unverified; no deployment.
+
+# Cut164 focused pass / complete revalidation LIVE — 2026-10-12
+
+Original whole-client80724 FAIL165/166/1688s preserved. Functions controller1747 TERMINAL with client exit1/native_started=false, no native queued job launched. Focused unchanged-source/bar clarity:paint86754 terminalPASS5 checks32.6s. Source audit fake-lag forecast350ms, refine2500ms, app debounce30ms; no product or timing-bar changes. Post-failure unrelated armee26-28CPU cores observed, no external process modified; exact overlap/causation not proved. Full failure is not rewritten green by narrow pass.
+
+NEW COMPLETE client revalidation session58153 /tmp/riddle-cut164-whole-client-revalidation.log LIVE on fresh suite-owned no-HMR server. Owning functions controller cell1767 polls SAME58153. Use functions.wait1767, DO NOT concurrently poll58153; old1747 alreadyfinished. Only current revalidation terminalexit0 launches existing guarded Python native queue. Actual native exec session then printed/stored cut164.acceptance_session; result in cut164.revalidation_controller/terminal only after controller completion. Queue source guard502files unchanged; no source edits during suite. New setup/docs/evidence/cut164/results preserve original failed full log, terminalscope, postfailure inspection, narrowpasslog/scope and new live setup (no new terminal claim). Original setup manifest unchanged.
+
+NEXT waitcell1767, inspect exact full terminal result/failures, archive it. If queue starts poll exactactualexecsession and scratchpad/cut164/run-state.json; sequencepaid-actions/resume/original22rows16seeds/fullroutine18metricswire/shipping-WASM wholeclient stopsfirstfail. No actor adoption until required acceptance. Then QA/prospective immutablefreeze/TWO FRESH complete independent blind ratings. Goal>=80 ACTIVE/unverified; old75.2/incomplete cohort untouched. No deployment. Experimental dayplayer DIRTY/unadopted/excluded. Existing frontend/core remain e96607f; no late paint source patch.
+
+# Cut164 whole-client terminal failure — 2026-10-12
+
+Controller functions cell1747 TERMINAL: client80724 exit1,165/166 in1688.0s. Only failure clarity:paint fake-lag first forecast1266ms/retry1327ms vs1200; load28.3/32cores. Complete log/status preserved docs/evidence/cut164/results; original setup archive unchanged. NO native queue launched: no run-state or queue log; runner not started. Store cut164.controller=client_failed and client_terminal records available. Do not poll finished handles or restart merely because quiet.
+
+Post-failure host read-only ps shows unrelated /home/g/p/armee/crates/armee-core unit-test PID3427595 using2647->2829%CPU, load28.29. No external process modified; do not assume exact overlap/causation from later snapshot. Next investigate original fake-lag timing with focused profiling/reproduction; keep1200ms and preserve each failure. A focused success is diagnostic, not full suite green. Revalidate complete client before guarded acceptance queue proceeds. Experimental actor remains dirty/unadopted; native16/full/ship-client and QA/freeze/TWO fresh complete blind ratings still required. Goal>=80 ACTIVE/unverified. No deployment. Acceptance plan/setup pushed a8690a9; current terminal evidence not yet committed.
+
+# Cut164 acceptance queue — 2026-10-11
+
+Cut163 component correction/evidence committed and pushed e96607f. Previous goal turn made progress: four actual native/WASM earned sends passed,39 evidence hashes verified/staged, component product committed; original two-seed PASS is still only diagnostic. No actor adoption or fun certification. No deployment.
+
+CURRENT LIVE observation controller functions cell1747 owns polling client session80724. Do NOT poll session80724 simultaneously: use functions.wait cell1747 to observe its continuation. Controller waits for SAME client terminal result; only exit0 launches Python sequential acceptance. On launch it stores cut164.acceptance_session and cut164.controller through functions store/load and prints actual exec session. If client fails it starts nothing and preserves terminal result. A quiet observation is not termination.
+
+Prospective docs/CUT164_FINAL_ACCEPTANCE.md. Runner scratchpad/cut164/run-acceptance.py guards502 current source/public files; setup evidence docs/evidence/cut164. After client PASS it runs current actor paid-action tests, exact resume test, original22row targeted16seed plan with bars/configs unchanged, tools/verify.sh --full routine18/metrics/wire/shipping WASM, then NEW whole-client against shipping WASM. Commands sequential; stops on first failure/source change. State/step logs scratchpad/cut164/run-state.json and *.log, queue stdout /tmp/riddle-cut164-queue.log. No terminal native/client/score claim from setup. Keep source frozen; docs edits/commits safe. Experimental dayplayer still DIRTY/unadopted/excluded until full acceptance.
+
+NEXT poll cell1747; inspect any client failure and retain whole log. Once queue starts poll its exact printed/stored exec handle and inspect run-state/logs. Archive terminal evidence without overwriting initial setup manifest. If current source passes, audit/adopt actor, perform eval/RATING.md transcript/full interactive QA, resolve lapses, immutable accepted shipping freeze/production smoke/screenshots and TWO FRESH complete independent blind ratings. Old75.2/incomplete cohort immutable; >=80 ACTIVE/unverified. Do not deploy.
+
+# Cut163 sustain packing correction — 2026-10-11
+
+Current shipping change: automatic_pack_plan retains two existing package heals when counter kinds leave room; existing prices/caps/manual origins preserved. Eleven synthetic catalogue cases (eight exact unchanged/three intended changes), four actual earned sends/source/reload checks and complete one/three-slot earned8h Session/save/report sliced/reload parity PASS. Extra day3 heal costs26; net Send purse changes38/31 include existing projected passage changes150->138/155->150. Actual earned capacity5; earlier Cut162 narrative4 was wrong, raw evidence unchanged. Initial synthetic oath refresh and net-purse assertion failures preserved/diagnosed in Cut163 evidence.
+
+Quick806Rust/6ignored, tooling14/types/copy2354zero PASS177s; all-target Clippy, pack example Clippy/build, realWASM6372698B SHA37c98823e0d12fe313ce2773251e63a567fc7c2390018ef6cabbfb86ac570f74 and webbuild PASS. Original unchanged-bar TWO-SEED diagnostic PASS81s: outpace100%/14pairs; porter11.4/worst12.1, scout12.1min/3sends; workers D1848/48h mean28.71vs28.50. This is NOT full acceptance or actor adoption. Runtime45fbf4844985b660/jobsrc410b6c9767310b58/five completed jobs preserved.
+
+LIVE whole-client session80724 /tmp/riddle-cut163-whole-client.log, suite-owned no-HMR server with fresh realWASM; currently first timing groups pass. Poll SAME handle, never restart solely because quiet. Earned real-WASM bridge78409 terminalPASS: four actual sends; complete hero, paid count/coins and purse/supply fields match native, exact WASM reload/send and unchanged source lineage query. Full native/WASM Session parity/performance not claimed. No final claim until terminal. Shipping core/UI frozen during suite. Evidence archived docs/evidence/cut163; manifest excludes still-live logs. No deployment.
+
+NEXT: finalize bridge/client terminal results; preserve failures. After client completes (avoid native CPU contention with timing checks), run original targeted16seed progression/engagement/TUNED/RANDOM/King/automation plus porter/scout rows unchanged, then complete tools/verify.sh --full routine18/metrics/wire. Experimental dayplayer remains DIRTY/unadopted/excluded until required acceptance. Product/component changes may be committed with this scope; do not substitute two-seed PASS for final checks. Immutable release freeze and TWO FRESH complete independent blind ratings required for>=80. Old75.2 diagnostic remains unchanged; goalACTIVE/unverified. Menu title/credits user request already implemented/pushed58a8d2a; screenshot reposted, no new menu edit.
+
+# Cut162 faithful check-ins / sustain packing evidence — 2026-10-11
+
+Read-only recapture original automation-pays seeds1/2 terminalFAIL46s unchanged mean28.43vs28.50/D1848vs48h. All56actual pre-absence camps recorded, all four COMPLETE14d cache records byte-identical to Cut161 originals; actual actor/runtime unchanged. Shipping core/UI/WASM and experimental dayplayer untouched. New read-only start_check/supply_check examples build/focusedclippyPASS, all16paired comparisons/repeats terminal. Evidence/source/runtime hashes docs/evidence/cut162.
+
+Seed1 early worker loses depth-area9 (396vs405), seed2 gains7 (400vs393). Beforeday2 seed1worker best13/start9 vs manual11/start5, matched forgedkit2/2/2/storedaxe1. Eight isolated public start5 comparisons from same worker camps(days2/3,seeds1/2,24/48h) mixed; selected seed2/day3 24h D24->28 fullJSONrepeat exact. No blanket guide change justified.
+
+Actual day3 worker Send has ONE automatic heal plus fire after Mirror read arrived, despite capacity4; manual cohort two heals. automatic_pack_plan cycles all non-drill package kinds within PACK_FILL2, so a new fire tactic displaces one heal. Eight actual paid$26extraheal probes: s1d2 24h22->23/48h23->25; s1d3 23->24/25->24; s2d2 23->27/24->28; s2d3 24->24/26->28. Six improve/one tie/one worsen. Selected s2d2 48h fullJSONrepeat exact. Day2 first Send has THREEheals (2auto+1manual); day3 TWO(1auto+1manual). These probes are NOT the proposed automatic plan or acceptance and do not prove every new case improves. Source files unchanged; manual repeat origin is preserved.
+
+PublicrealWASM actual earned seed1/day3 camp400px screenshot posted, headlessvisual only/no performance or full-save parity claim. Initial day1 optional kit inspection KeyError corrected with default handling, sources unchanged. No product change/score/deployment this checkpoint. All jobs terminal.
+
+NEXT concrete work: prospective docs/CUT163_SUSTAIN_PACK.md already queued BEFORE implementation. Preserve baseline automatic pack cases, then maintain2 automatic heals when active packages already name heal and cap/funds permit, while retaining counters, prices, manual/found origins, surplus-auto replacement and offline caps. Directly test actual earned sends and settlement/transport parity, original unchanged-bar diagnostics, required16seed actor rows/full routine18case metrics/wire +wholeclient. Do NOT substitute extra-manual-heal probes or guide changes as acceptance. Experimental dayplayer remains unadopted/dirty/excluded. Immutable release freeze/TWO FRESH complete independent blind ratings still required for>=80; old75.2 diagnostic untouched. GoalACTIVE/unverified. No deployment.
+
+# Cut161 brought ordinary upgrades corrected — 2026-10-11
+
+Best-gear automatic orders now replace strictly weaker brought ordinary gear of the same category. Replaced pending id removed from keep ids (not a nonexistent vault eviction); existing salvage pays once. Ties/weaker/cross-category/forged/gun/kit/none/unknown/zero-slot/newly selected find protections and explicit manual selection unchanged. Worker selection/insurance/eligibility/coin rate unchanged.
+
+Actual earned bank98 now sword+2 kept and old axe+1 salvaged once/$8, source/preview unchanged, exact reload/idempotence, explicit manual axe still available.42synthetic cases:39 whole outcomes unchanged,3 intended brought upgrades; all preview/reload/repeat checksPASS. Protected/tie/secondary/multi-slot testPASS. Quick805Rust/6ignored/tooling14/types/copy2354zeroPASS133s; all-targetclippy/buildPASS. RealWASM6371092B SHA87300e835e1f3f47e946295d66ebed2ed56c9985d262d45eace8e3f3ededd727; webbuild/old2keep UIchecksPASS42.8s. Actual earned pending native/WASM gear/currency/fates/manual/reload/idempotencePASS (transport clock metadata excluded). Initial browser harness step(0) called ensure_run on snapshotless pending save and auto-settled it; manual reuse and then preview expectation failed. Both scripts/logs preserved; accepted bridge check settles original pending clones directly; pure preview verified natively.
+
+Independent earned same-camp48h still D24/25 enabled/paused;72h nowD28/26 vs old24/26. Original unchanged-bar2seed diagnostic23851 terminalFAIL69s: outpace100%/14pairs,porter11.4/worst12.1,scout12.1min/3sends PASS; awayD1848/48h,mean28.43vs28.50FAIL. Gap improves but acceptance NOT achieved. Actual runtimejobkeysrc3237241c9c6bb7af/five completed14d jobs preserved. Experimental dayplayer remains unadopted/dirty/excluded. All checkpoint jobs terminal. Evidence/hash manifest docs/evidence/cut161; contract CUT161_BROUGHT_UPGRADES.md.
+
+Next inspect remaining automation progression gap against actual earned early/daily check-ins and worker actions, preserving original bars. Do not count off-worker probes or substitute configurations as acceptance. Full original native/client acceptance, immutable shipping freeze and TWO FRESH complete independent blind ratings required for >=80. Old75.2 diagnostic unchanged. GoalACTIVE/unverified. No deployment.
+
+# Cut160 earned armourer retention gap — 2026-10-11
+
+Read-only diagnostic complete. Independent same-earned-camp8/24/36/48/60h enabled/paused depths23/19,23/19,24/19,24/25,24/25. Negative48h full JSON repeat byte-identical SHA9a84d980769cbb21c6957cd9a5e575c060a6e4c4a1f3da057a7efe5e77a6cc37. Production1s trace with final0s finish matches independently normal48h COMPLETE saved states in both branches; extended traces same outcomes. First equipment divergence run52 axe+1 vs forged sword+2. Enabled branch has NO returned axe+2: do not claim that specific upgrade loss.
+
+Actual enabled bank98 pending capture: best_weapon/one slot; brought axe+1 value40 protects its slot against eligible sword+2 value45. Plan keeps axe only; sword salvaged. Production tick/finish/keep clone vault and found fates exactly equal faithful transport record (whole clock/save parity not claimed for focused clone). Bank119 repeats sword+2 salvage. This proves a retention gap, NOT cause/resolution of original automation gate. All example build/clippy and captures terminal PASS. Raw evidence/hash manifest docs/evidence/cut160; prospective CUT160_ARMOURER_DIVERGENCE.md. Shipping core/WASM/UI and dirty experimental dayplayer unchanged.
+
+Next prospective best-order upgrade correction preserving explicit manual choices and ordinary settlement accounting; verify actual bank98, protected/tie/zero-slot/death/multi-slot cases, original progression bars and required full acceptance. Experimental harness remains unadopted. Full native/client acceptance, immutable release freeze and TWO FRESH complete independent blind ratings still required. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut159 forecast equipment corrected — 2026-10-11
+
+Shared EXISTING armourer selection/insurance between real worker and fresh forecast packs. Real worker order/count/payments unchanged; forecast only projects the pack into its clone, records no act and runs no other worker shopping/training. Cache identity includes derived pack/rank insurance. Direct sim_clone/start_run historical replay path unchanged; supplied historical rows remain literal in sim_game.
+
+Six preserved earned first-send comparisons now equipment-equal and whole actual-send saved bytes exactly Cut158 baseline; original source bytes unchanged. Twelve explicit ownership/pause/literal/bones/ledger/rank/weak armour/manual-id/insurance fixture heroes, gold and brought ids match real sends. Cache/fresh/prefix/sequential/threaded checks PASS. Quick804Rust/6ignored, tooling14/types/copy2354zero PASS145s (tests103.67s), all-targetclippy/build PASS. Fast realWASM6369495B. Five existing focused client gatesPASS25.7s. Native/WASM earned camp parity9 full bridge replies (forecast/package/wall/save/8h catchup etc) identical; public real-WASM camp after eight-sample forecast query400/1440 leaves full source save unchanged, screenshots show camp, not opened forecast table. All checkpoint jobs terminal;37 artifact hashes verified cut159.
+
+Original unchanged-bar two-seed diagnostic27863 terminalFAIL125s: outpace100%/14pairs, porter11.4/worst12.1, scout worst12.1/3sends PASS; away D1848/48h/mean27.96vs28.14FAIL unchanged. Current runtime keysrc5d542b66fb2d3f3d, five actual completed cache entries preserved (do not label twelve log-finished legs full fourteen-day jobs). This correction does NOT establish or resolve the progression failure. Experimental dayplayer unadopted/dirty and excluded from product commit.
+
+Next investigate the actual longer-horizon armourer downside independently: Cut158 original24h pairs helped, but seed2/day2 identical-camp72h repeats D24 enabled/D26 paused, while other two pairs improve. Locate first divergence using independent elapsed-horizon clones and retained death/equipment evidence; no silent worker disabling, unmeasured gear changes or weakened bars. Complete original full native/client acceptance and immutable shipping freeze before TWO FRESH complete independent blind raters. Old75.2 diagnostic/short phase unchanged. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut158 same-camp horizon / forecast equipment mismatch — 2026-10-11
+
+Read-only diagnostic completed, all jobs terminal. Three preserved earned Cut153 camps, no grants/manual purchases/rules/loadout changes, public armourer enabled/paused: actual72h depths28/27,21/19,24/26; deaths24/13,20/11,18/14. Third negative pair repeated complete bytes exactly SHA29480989f1b5876e9110c08862115ec8cc55f5e4f7f87869de629475e710d8ae. Source hashes unchanged. Other worker actions remain normally enabled. This diagnoses a longer-horizon downside; both first kits identical, no selection bug yet proved.
+
+New read-only examples/send_loadout_check.rs compares actual start_run with production forecast::sim_game under identical seed formula. Original3camps equipment match. Their3enabled72h outcomes: actual armoured nextsend wears stored axe+2/+1/+1, simulation forged sword+2/plain/+2; starting stones equal. Empty chosen loadouts plus sim-clone worker suppression establish a real forecast equipment mismatch, not its cause of the original failed progression bar. Both example builds/focused clippyPASS. Evidence/source/captures/checks/runtime hashes verified docs/evidence/cut158; original inspection optional-kit KeyError recorded. No shipping game/WASM/browser or dayplayer change, no score/acceptance claim.
+
+Next concrete work: prospective contract for camp forecast projection of EXISTING armourer pack, preserving live selection/payments/insurance/manual choices/paused ownership/historical replay semantics, source immutability and cache keys. Do not blanket-enable worker training/purchases in sims. Verify true next-send equipment and package outcomes, then original unchanged-bar progression/automation diagnostics. Experimental dayplayer still unadopted; full native/client acceptance/immutable release/fresh TWO complete independent blind ratings remain required. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut157 manual salvage receipt — 2026-10-11
+
+Cut156 committed/pushed cda51a9 with69 verified evidence hashes, experimental dayplayer excluded. Cut157 fixes the remaining manual report gap: actual keep response carries transient Rust per-kind salvage count/gold, including displaced stored items. Bridge preserves Session hero metadata; ordinary lineage/save omit receipt; native bridge regenerated. Production keep/currency/retention/equipment untouched; new helper calls old keep once.
+
+45 explicit bank/return/death ×5cases ×3fractional-carry fixtures compare complete saved state byte-for-byte with old manual keep; source/reload outcomes, known/hidden names, prior batch isolation, zero-paid death and second-call error tested. Tests pass. Quick accepted802Rust/6ignored, tooling14/types/copy2354zero PASS58s. Initial sandbox quick failed native-host localhost test; isolated unsandboxed test2/2PASS and full authorized quickPASS, failure preserved. All-target clippy and final webbuild PASS; fast realWASM rebuilt6368833B.
+
+Initial new UI check wrongly used automatic settlement baseline: manual actual$2/carry87 versus auto$3/carry-13. Actual manual result exactly equals preserved Cut156 original manual result; report now$2 and dagger×1/$2. Corrected test uses original manual observations, not automatic preview. Initial failure capture preserved. Final eight synthetic real-WASM flows400/1440 PASS; old ui:keep gate2checks PASS41.7s. All checkpoint jobs terminal. Original manual before/after gold/carry/vault/pending exact at both widths; hashes in cut157 manifest verified.
+
+Still required: resolve original-bar away-worker failure (Cut156 two-seed diagnostic mean27.96vs28.14FAIL), keep experimental dayplayer unadopted until required evidence, current full native/client acceptance, immutable release freeze, then TWO FRESH complete independent blind ratings. Old75.2/short-phase cohort remains diagnostic. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut156 routine gear / automatic salvage report — 2026-10-11
+
+Implemented ordinary same-kind copies/upgrades settling automatically by EXISTING keep plan; different gear/firearm/forged/kit choices remain reviewable. No currency/retention/eviction/equipment changes. Added Rust ExitPending.auto_salvaged, settling a clone and reporting exact per-kind differences including evicted stored gear; watch uses it on automatic settlement (legacy fallback retained). Explicitly known item flags respected; unknown flavours not revealed. Initial test key-order, selector and known-label-vs-canonical-kind failures plus actual missing automatic salvage report preserved; see CUT156_ROUTINE_KEEP.md.
+
+Final42 catalogue before/after saves/plans/currency/forge/found exact original;18/18 routine no prompts; keeper conflicts owned/paused work; preview source unchanged and coins/counts exact. Final quick801RustPASS/6ignored/tooling14/copy2354zero109s, all-target clippy/build PASS; includes keeper2manual/sale/30h unchanged-price and one/three-hero8h whole/sliced/reloaded complete save/report parity. Earned eight-run walk identical settled saves/all fates, same one genuine prompt. RealWASM fast rebuilt6350232B, final8 synthetic UIflows400/1440 PASS; presenter injects Send preview + exit notification, classification/settlement from actualWASM. Do NOT label this earned combat/death eligibility. Existing2 keep/menu gatesPASS41.4s before last potion-name fix, not current whole-client certification.
+
+Current native diagnostic43517 terminalFAIL49s on changed core: outpace100%, porter11.4/worst12.1, scout12.1/3sends PASS; away mean27.96vs28.14/D1848vs48 stillFAIL. Experimental dayplayer remains unadopted/dirty. No sourcejobs remain live from this checkpoint. Full native/client acceptance/newfreeze/fresh independent ratings remain required; goal>=80 ACTIVE/unverified, no deployment.
+
+Next concrete gap: MANUAL distinct-kind swap fixture pays$2 and keeps bow+1, but report still shows$0 earned/no SALVAGED for evicted stored dagger. Automatic receipt is fixed; manual needs actual Rust settlement receipt because its eviction rules differ. Evidence in accepted UI observations preserves both widths. Also resolve original-bar away-worker failure; do not disable a worker/substitute probe configurations/weaken bars/adopt harness silently. Continue required full acceptance then TWO FRESH complete blind raters; old75.2 diagnostic unchanged.
+
+# Cut155 effective death fix visibility — 2026-10-11
+
+Real-WASM actual earned death387 at400/1440: Apply already targeted silence, but neutral Quiet steps TRY appeared above it; phone selected fix fell behind fixed console. UI now places the Rust gem fix before a tactic when its same-wall improvement clearly dominates beyond supplied uncertainty, with no higher death change; keeps alternatives/actions/prices and player selection unchanged. Compact paid patch names$39. Existing initial exact-baseline attempt failed40/50sample97.5/98% mismatch; corrected comparison uses reported bands and changes. Second test capture assertion failed on unpriced foreground history reread; final captures actual authoritative Rust pricing reply. Both failures preserved.
+
+Final focused13 comparison boundaries and actual phone/desktop order/price/state/onecall checks PASS; existing4focused price-lanes/history-price/death-actions/King-scope PASS33.6s; types/build/copy2354zero PASS. Baseline/final screenshots, source snapshots,WASMhash and15artifact hashes verified docs/evidence/cut155. Product change UI only, no game truth/harness adoption/deployment. Full native/client acceptance and fresh complete independent blind ratings remain pending; goal>=80 ACTIVE/unverified. Next finish observed gameplay/refinement gaps and original-bar acceptance, with known unadopted harness worker failure below still unresolved.
+
+# Cut153 unadopted / Cut154 actual paid D28 lever — 2026-10-11
+
+Cut153 scout-first strategy remains UNADOPTED: original2seed diagnostic terminalFAIL50s with outpace100%, porter11.4min/worst12.1, scout12.1min/3sends PASS; away D1848/48h,mean27.96vs28.14 FAIL. Original full Cut152 failure remains authoritative. Baseline14day92s replay matches; worker-off diagnostics armourer28.57, drillmaster27.71 do NOT substitute into acceptance. All prior sessions45141/27979/2057 are terminal (handles missing, logs complete); bounded capture73260 terminal0. Initial early save directories missing; bounded2day recapture supplies actual early camps. No remaining baseline/probe jobs.
+
+Read-only examples/armourer_check.rs (build/clippy PASS) compares public worker on/off from SAME earned camps: three early24h pairs benefit with armourer (D16vs13,D23vs19,D22vs20); three later pairs outcomes identical, with dozens of D28 lurker deaths. Missing s1/day7 file rejected before simulation, not counted. No item-selection patch justified/adopted. Actual next8h package comparisons all remainD28; Skittish lowers deaths15→11. Death387/388 audit prices silence$39, pastD28 forecast0→85%. New examples/silence_check.rs public buy_supply/production apply_patch/set_rules from actual sim=false camp verifies paid next8hD33/13runs/9deaths/net414 versus unchangedD28/20runs/15deaths/net0. No King clear. Raw source/camps/fullreports/source+binary hashes archived docs/evidence/cut153 and cut154; see CUT154_EARNED_D28_DISCOVERY.md. No shipping behavior change this checkpoint.
+
+Next inspect primary Quiet steps recommendation versus demonstrated affordable silence patch; any fix needs a prospective contract/current-camp evidence. Do not disable workers, silently adopt actor strategy, weaken bars or claim visual-watch stall reproduced. Complete current full native and client acceptance, immutable shipping freeze, then TWO FRESH complete independent blind raters. Goal>=80 ACTIVE/unverified; no deployment.
+
+# Cut152 full native FAILURE / Cut140 earned-exit checkpoint — 2026-10-11
+
+Current harness is UNADOPTED. Targeted20rows/16seed-plan20497 terminalPASS1979s, but required routine full46520 terminalFAIL source336ae0d287a23c8a: outpace93% nowPASS; porter median12.9min>12 (worst13.5<15), away worker D18 48vs36h/mean best28.14vs28.46 FAIL. Do not waive either bar or use sixteen-seed awayPASS as a replacement.797 Rust/6ignored, tooling14, types/copy2354zero, workspace all-target clippy, release WASM/web build PASS; genuine matching-runtime cached metrics/wire PASS. Full failure/log/runtime identities docs/evidence/cut152/full-native-failure.{json,log}; all sixteen evidence files hashed. No full acceptance/new freeze/blind score certificate.
+
+Fixture queue7735 terminalPASS: only Savings cfg(test) fixture changed after the frozen target ended (explicit all apprentice to isolate banking). Three paid-action checksPASS; existing full-output/save resumed parity1/1PASS86.44s (IDLE/RANDOM/PICKED/AWAY). Exact runtime source outside that test module is unchanged from the targeted snapshot. No remaining20497/7735/46520 jobs. Next inspect actual hire timestamps versus the newly charged post-hire chores and early chore ordering against the documented onboarding policy; any changed bot strategy must have a prospective contract and original-bar diagnostics before adoption. Do not silently delay choices or special-case failing seeds. Shipping game truth remains unchanged; only evaluation harness is experimental.
+
+Cut140 earned walk committed/pushede7c9dec: public core send/step/auto_keep from actual Cut147 PICKEDs1 earned camp, eight runs15–22 (7return/1bank/0death), one distinct-kind prompt and seven automatic settlements.86 current-exit fate rows all settled; repeat byte-identical SHA31bfc2dc7e007b9081f7ab6f097807858754de246f8acd68037fcf7001457447. Source unchanged, no grants/config/loadout/purchases. Initial last_exit:null reporting capture retained; final selects exact run id from settled batch and separates per-run salvage delta from total. Native build/exampleclippyPASS; compressed source/captures/manifest/checks docs/evidence/cut140. Does NOT reproduce routine same-kind prompts, prove death eligibility/keeper-access/8h/multi-hero/publicUI or implement a flow change. Goal>=80active/unverified, no deployment.
+
+# Cut140 synthetic keep catalogue checkpoint — 2026-10-11
+
+Committed/pushed0a74f1e and1ed8337 add read-only examples/keep_check.rs and36 synthetic pending-exit cases (12×bank/return/death). Actual production settlement matches saved/reloaded settlement36/36 and repeated settlement is a no-op36/36; salvage whole gold/fractional carry reconcile36/36. Prospective routine zero-sheet bar baselineFAIL6/18: same-kind excess/upgrade still ask at every share. Protected stored heal retained; owned/paused keeper fixture suppresses/restores its sheet. No shipping core/client behavior change. Raw initial/final saves/plans/gold/forge summaries and hashed evidence docs/evidence/cut140; build/clippyPASS. Does NOT prove earned death eligibility, complete report fates, keeper2-act/30h access,8h one/three-hero parity or responsive public flows. Implementation remains pending. Push validates/builds only; deployment requires workflow_dispatch and was not invoked.
+
+Cut152 session20497 remainsLIVE, most recent pollconfirmed. IDLE all16 now complete: d8/stall/gold/king/stalls-idle settledPASS16/16; idle-d13/d23/stages also alreadysettledPASS. More PICKED/TUNED/PICKED+L/AWAY cases remain; do not infer targeted/full terminal success. Preserve frozen dayplayer runtime before unitfixture edit; next steps below unchanged. Goal>=80active/unverified.
+
+# Cut152 first-session harness audit — LIVE, 2026-10-11
+
+Uncommitted dayplayer repair adds the documented paid manual chores during HANDS/engaged first sessions, using existing later-check-in policies and5s per successful tap. IDLE/RANDOM, gameplay Rust and WASM unchanged. Original two-seed outpace targeted diagnostic PASS93% (13/14), not acceptance; original full nativeFAIL86% remains authoritative until the corrected full gate completes. Contract docs/CUT152_SESSION_CHORES.md. Shared PICKED/TUNED45min is an explicit preexisting Cut30_5§6 deviation, not an unresolved90min discrepancy.
+
+Targeted16seed20row fail-fast check LIVE session20497, log /tmp/riddle-cut152-target16-accepted.log. Revalidated live by write_stdin; host dayplayer2524539 actively uses32cores. Latest completed PICKEDs1 / PICKED+Ls3,s8,s11 and more IDLE/HANDS/RANDOM/AWAY cases. No terminal result; do not restart on quiet intervals or call this full acceptance. Frozen run source gzip and source/binary SHA identities in docs/evidence/cut152/target16-running-artifact.json. Preserve this runtime until terminal before editing dayplayer again.
+
+Three session_chore unit tests currently2/3FAIL: Savings disabled-bank fixture still permits six manual forge steps. Fix fixture isolation after target terminal: explicitly set apprentice order all and grant apprentice in the unit fixture BEFORE cloning original; do not change helper/game policy to force the assertion. Initial count-id vs chore-name failure, second Savings-cap assertion failure and third forge-isolation failure all retained. Then run three tests and existing resume_preserves_complete_bot_outputs_and_game; inspect target16 actual results/deviations, finish unchanged-bar routine full18/wire/metrics, final whole client and immutable shipping freeze before fresh independent ratings. No deployment;>=80 remains active/unverified.
+
+Menu owner request already implemented in Cut139. Fresh real-WASM game-menu recheck81/81PASS at320/400/1440 and current screenshot /tmp/riddle-menu-current.png confirms Credits absent/generated title; no source change or new score claim.
+
+# Cuts148–151 rejected recovery experiments / paid first-session action — 2026-10-11
+
+Three recovery candidates fail prewritten paired-camp gate and are REJECTED: L2rest45 givesPICKED D7/IDLE D10;rest50 givesD8/D7. Safe-rest-before-dry atoriginal40 givesD7/D8 despite actual rest healing; meaningful safe/unsafe/L1/critical behavior test1/1PASS0.11s but outcome gate fails. Combined safe-priority/rest50 givesD8/D7. Full patch/raw saves/profiles/test retained; packages.rs and temporary test exactly reverted toHEAD. No shipping threshold/order/WASM edit. Rebuilt native baseline gives exact original reports/saves for both camps/all three item cases; restored parity evidence hashed.
+
+New optional train diagnostic in loadout_check uses actual earned marks/public spend_level only. PICKED initial savedcamp:12marks paidSteadyL5 ->D8/15runs/onearcher death vs baselineD7/16runs/no deaths. IDLE training14marks ->D7/16runs/twodeaths; actualIDLE stays unchangedD8. Original three cases equal prior complete reports/saves and source bytes unchanged. No grants, trait changes, bot or numeric bar edits. Evidence docs/evidence/cut148..151/ contracts retain failures; current source product unchanged.
+
+Next audit first_session against Cut30_5§4 listed manual chores before any model repair. Its loop currently hires/builds/wears but does not spend levels/forge/pick, whereas later check-ins do. Paid levels improve one actual engaged camp, but do not certify a corrected first-session budget/cadence/disabled-system policy or full native acceptance. Keep IDLE unchanged; do not silently strengthen PICKED or edit bars/seeds. Cut147 full remainsFAIL86% vs90; full final client/freeze/complete independent ratings still required. Goal>=80 ACTIVE/unverified; no deployment.
+
+# Cut147 native regression confirmed / early diagnostic — 2026-10-11
+
+Routine full on af152eb terminalFAIL source6df5888846e389b8: outpace86% vs90 sole failed selected bar; dayplayer294.2s, metrics119.0s/wire40.1s PASS. Exact completed current IDLE/PICKED jobs match old milestone hours: seed1 IDLE D8/D18 at8/24h vs PICKED16/32h, later picked faster. Original source0f1f86e2ec058e24 fullfailure/job bytes preserved, not rewritten as green.
+
+Bounded actual seed1 two-day verbose diagnostic (not a gate, exits1 on partial-horizon bars) locates D8 delay BEFORE first package swap: PICKED Steady first8h best7, then Guarded. Read-only new loadout_check actual earned camps/no grants: PICKED saved/+1axe, no brought item, all earned item allD7/16runs/no deaths after8h. IDLE original/no-item D8/16runs/no deaths; bringing earnedaxe D9/17runs/4deaths. Removing axe is NOT a solution. Sources also differ in first-session duration/heir/trait: IDLE heir2 cowardly/fighterL2, PICKED heir1 curious/fighterL3. No demonstrated game-mechanic cause or tuning edit. Source camps/full output gzip, raw logs and exact completed jobs hashed docs/evidence/cut147.
+
+Next audit early first-session/heir/package behavior and the authoritative routine/statistical acceptance scope before proposing a change; never lower90%, change seeds or silently alter bot decisions. Full native acceptance remains FAIL, whole final client still pending. No new freeze/ratings/score certificate. Goal>=80 ACTIVE/unverified. No deployment.
+
+# Cut146 completed TRY prices — 2026-10-11
+
+Native saved King237 audit returns a valid price; browser background deathDeltas priced its mirror while foreground death reread stayed pending. Lanes now retain the same-mirror Rust pick for matching generation/run/id/variant only (four records), clear on mutations, reject in-flight stale results/failures, and keep independent replies. Historical screens refresh using the same one patch-pricing request. Price/name/arrow use explicit tablet rows to prevent phone crowding. No Rust game source changes; diagnostic death_check now includes refreshed pick/cache fields.
+
+Focused6/6PASS22.5s (new snapshot13 and real-WASM history price plus unchanged package19/cut12294/death-actions/King scope). Final geometry assertion1/1PASS18.5s:400=4013ms,1440=3798ms, one request each, exact Rust pastD33 0→0% / death88→50%, price below label, gold/heir/best/rules unchanged. Typecheck/build PASS; copy2354 zero. Original pending/crowded captures, logs and harness errors preserved docs/evidence/cut146 with hashes. No claim of a King winning lever or current full-suite/fun-score certification. Prior menu recheck81 PASS is verification progress; this turn fixes authoritative UI behavior.
+
+Next: resolve current full native regression/outpace evidence and actual affordable King winning choices, then gain attribution/return budgets. Original D28 plateau and unavailable rated Rook Session remain unresolved. Raw75.2/short4h cohort unchanged. Goal>=80 ACTIVE/unverified; finish full acceptance, immutable shipping freeze and fresh complete independent ratings. No deployment.
+
+# Cut145 King advice scope / rejected rhythm experiment — 2026-10-11
+
+Archived original A relay0471: Rook54hp, counter cut off below45%, no heals, none beats1/12. Original Session unavailable; do not claim exact replay. Different actual paid campaign saved King deaths228/237/238/239 audited via new examples/death_check.rs;237 local0/12/none improves, yet next-run D33-arrival0→89% ±22%, King-clear0→0%. Legal cadence next8h comparison:5runs/D33/$3221/2Kingdeaths vs6runs/D28/$552/5deaths; no clear. Resulting actual cadence deaths261/262 audited.
+
+Experiment ungated cadence after safety guards changed actions but no meaningful outcome gain; REVERTED. No-counter report/save exact; restored both cases match original report/save exactly. Patch/rawoutputs/source compressed and manifests preserved docs/evidence/cut145, source SHA7bdaff91d8677149e85e5c32f4f7341433ab353e8f1e0daec2e00ae9b17b3e6e. Product only scopes advice to Last moments/original survived count/no replay gain; samples, prices, fold/dim/gem eligibility unchanged. Real-WASM400/1440 captures show local0/12 with arrival0→89%; TRY still measuring in early capture, not price-completion proof. Focused5/5PASS63.8s (newKing scope/cut20/qa92/cut28/cut122), types/copy2354zero/build. No game Rust source diff, diagnostic example added; no package rebuild needed after exact mechanic revert.
+
+Next: actual affordable King winning levers and whether current TRY price completes, then gain attribution/return budgets. Original Rook lever still unresolved; source differs, do not turn rejected hypothesis into claimed fix. Original D28 plateau and full mechanical/native regression remain pending. Prior75.2/phase-short raw cohort untouched; goal>=80 ACTIVE/unverified. Finish required full acceptance and new immutable shipping freeze before fresh complete independent raters. No deployment.
+
+# Cut144 authored-rule focus — 2026-10-11
+
+Full editor collapses packages by default once penned rows exist; empty pen and compact tablets remain exposed. Counted44px Packages disclosure, authored +44px, state survives refresh, package highlight/compact Why-edit reveal target. DOM indices/priority/card locks/shadow metadata unchanged; dragging ignores hidden rects. Footer tactic count excludes compiled packages. Real-WASM imported earned-clear diagnostic plus legal + rule:1 authored/16 package rows, before2742.3px/2408px at400/1440, after122.3px/100px. Final7/7PASS38.4s (new disclosure/add/promote/highlight/drag checks plus unchanged pen-edit/lanes/selection/paired/cut23/cut12), types/copy2353zero/build. Evidence docs/evidence/cut144 includes original harness errors and partial captures; accepted is final. Phone/desktop screenshots posted. No Rust edit/deployment/full candidate or fun-score certification.
+
+Next: reproduce actual King death advice (none beats1/12 as-is despite repeated deaths), cheap available levers and gain attribution/return-budget clarity. Preserve raw75.2 cards and short4h phase; goal>=80 remains active/unverified. Finish required full current mechanical acceptance including known native regression failure, then immutable shipping freeze and two fresh complete independent ratings. Do not deploy.
+
+# Cut143 automatic watch control visibility — 2026-10-11
+
+Real-WASM fresh seed611 painted baseline at360/400/1440: pad.hidden=true overridden by author display:grid; nine unwanted movement tiles,178px slab. CSS respects hidden children/whole slab; inactive toggle flex slot and24px icon prevent inherited desktop78px grid row. Automatic84px/one tile at all widths; manual178px/nine movement-wait plus four actions, >=44px targets. Release collapses; absent snapshot0px. Final focused4/4PASS77.1s (unchanged manual58 checks, console, keepout plus new visibility), types/copy2352zero/build pass. Evidence CUT143_WATCH_CONTROLS.md and evidence/cut143, including desktop110px first failure and harness errors. Phone/desktop screenshots posted. No Rust edit/deployment/full candidate certification.
+
+Next: package editor clutter (keep authored rows and add action visible, preserve actual priority/compiled indices and package promotion), then actual King death levers/gain attribution/return budget clarity. Prior75.2 pair remains diagnostic with A4h shortfall; >=80 goal active and unverified. Finish full current mechanical acceptance, resolve genuine regression failures, freeze a new shipping candidate, then fresh complete independent ratings. Do not deploy.
+
+**OWNER REQUESTED CLAUDE HANDOFF / PAUSE — 2026-10-07:**
+
+Read [CLAUDE_HANDOFF.md](CLAUDE_HANDOFF.md) first for the concise current state.
+No independent blind raters launched. Existing bounded browser acceptance
+PID2199466/session80085 is left running; do not mistake its partial log for
+terminal success or restart it solely on a quiet interval. Owner requested
+pause; resume goal work only when asked. Detailed history below is retained.
+
+**CURRENT THREE BROWSER FAILURES / UNCHANGED RECHECKS — 2026-10-07:**
+
+Corrected wholeclient79585 TERMINALFAIL126/129863.3s, log
+/tmp/riddle-ad71-client-accepted.log. Failures: clarity:hold seed7 only4card
+samples/90 vsminimum5 (no HUD mismatches); cut22 canvas rallied! persisted
+under WARLORD BREAKS; hero-appearance desktop105.5x18.4 vs44min. Original
+failures retained, no assertion weakened. UNCHANGED serialized rechecks7669
+TERMINALPASS3/3 in108.6s, log/tmp/riddle-ad71-failed-rechecks.log. Concurrency
+interference suspected, rootcause not proven. No application/test edits.
+
+NEW whole bounded client80085 LIVE:TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node
+ tests/run.mjs, log/tmp/riddle-ad71-client-settled.log. Poll SAMEhandle and
+read live log with escalation; do not restart on observationtimeout. Complete
+current whole green required before blind agents, per precommitted contract.
+App candidate ad71e72 unchanged; nativefull/fresh18case already genuinePASS,
+originalSIGSEGV retainedunresolved. Main previously285556d allpushed. New
+acceptance metadata records failure/recheck/live queue. No score/cards/95.
+
+User explicitly reaffirmed approval for independentagentraters. Freshblind
+forknone agents NOT spawned yet; old QA rater_a/b completedmustnotreuse.
+Preparedbriefs scratchpad/blind-ad71-frozen/briefs/a.txt,b.txt, seeds73/89,
+ports5354/5355; immutable realshippingpreview5252/session35869. When full
+terminalgreen:recheck servedmanifest+same-sittingreanchor+privateGPU evidence,
+update contract acceptance/release then spawn2FRESH independentagents with
+briefonly(no goal/designhistory). Actual70active min40+5+5+20, honestlocked
+pen attempts, no fabricatededits/audio/nextdayrecall. No deployment.
+WSLfocusfixconfirmed inlauncher:headless default/privateXheaded/WAYLANDblank,
+no DISPLAY0fallback; earlierD3D12NVIDIA3080probePASS. Avoid otherbrowser/native
+load during bounded suite andraters. No app/source/WASM changes midwhole.
+
+**REMOTE RECOVERED / LIVE CORRECTED ACCEPTANCE CHECKPOINT:**
+
+GitHub finallyaccepted allpending commits:38594terminal0 remote29e5866→
+dcc5311 (Cut107604850f/Cut108c181669/freshacceptance dcc5311). Earlier4server
+errors retained; no forcepush/approval needed. Mainapplication source remains
+ad71e72; no web/src/crates/art/public differences fromcandidate.
+
+Corrected wholeclient79585 LIVE hostrunner2172857 log
+/tmp/riddle-ad71-client-accepted.log, at289.4s fights48/cut1377/claritydeep2
+PASS, otherheavytests forthcoming. Don'trestart; no sourcechanges duringrun.
+Only remainingmechanicalcondition before2freshblindagents: terminal129/129
+currentwhole. Freshnative30634terminal0 all18cases/10wire/8metricsPASS203.9s;
+currentfullverifygreen47s. OriginalunreproducedSIGSEGV remains explicitly
+recorded engineering observation inacceptance.json, notclaimedfixed.
+
+Frozenpreview35869:5252 all248manifesthashesverified realshippingWASM.
+Firsthousediagnostic29034terminal0 realwasmseed103:publicBuildhousefree yields
+AldenAsh bloodline1FighterL1XP0/60Ready, screenshotduringHeroarriving animation
+scratchpad/blind-ad71-frozen/house-103-desktop.png showninline. Earliercold101
+Emptytown screenshotshown. Separate diagnosticseeds, notscoredplay/grants.
+No ratersspawned; briefs prepareda/b,seeds73/89ports5354/5355. Verifyfullterminal,
+refreshpre-playcalibration+manifest/contractrelease thenfreshforknoneagents.
+No deployment/focusstealing; goal95active/unverified. Next stepcurrentlivewait,
+then independentreal70activehorizon. ExistingQAagentscompletednotforreuse.
+
+**CURRENT NATIVE ACCEPTANCE GREEN / CORRECTED BROWSER LIVE:**
+
+26736oldclientTERMINALFAIL128/1291178.9s, ONLYoldthisnight heading. Cut108
+scoped10checksPASS5.2s, numericgatesretained+exact900secs. Afterthat30634
+TERMINAL0:fullverify--fullgreen47s /tmp/riddle-cut107-full-verify.log,
+686Rust/1ignored+14helpers+newrecovery/clippy/types/copy1768zero/shipbuild;
+thenGENUINEfresh concurrent fullgatesPASS /tmp/riddle-ad71-native-fresh.log:
+metrics8rows83.4s,qa10seeds56.6s,dayplayer18cases203.9s, all exit0. Not
+historical272caseaudit. Original37.7sSIGSEGVunexplained; do NOTclaimfixed.
+Reasoned unresolved engineering observation in eval/cohorts/ad71e72.acceptance.json
+with exactbinaryhash/runtimekey/genuinecompletedrechecks, no gateweakened.
+
+NEW correctedwholebrowser79585 LIVE hostrunner2172857 (outer2116123),
+/tmp/riddle-ad71-client-accepted.log. Default7pool/heavy1; firstheavyfights
+runsalone166s soinitiallogempty. No app/source/WASM edits. Needterminal129/129
+beforefresh2blindraters; agentbriefsa/b prepared,notreleased. Session35869
+frozenpreview5252stilllive; all248hashesm atch, original5251preserved.
+
+604850fCut107 andc181669Cut108 LOCALcommits;4pushtries GitHubInternalServerError
+includingHTTP1. Remote still29e5866;gitconnectivityfsckPASS. Continuelocal,
+retryremote later, noforcepush/permissionneeded. Currentgoalturn concrete
+progress recoveryrepair+newmeterexpectation+freshnativeacceptance+frozenasset
+validation. Goal95active/unverified;nodeployment;privateheadedD3D12focus-safe.
+
+**CUT108 REPORT TEST EXPECTATION / ACCEPTANCE QUEUES — 2026-10-07:**
+
+Cut107 committed604850f LOCAL ONLY:3authorizedgitpushattempts GitHubInternal
+ServerError (latestremote29e5866). Commit safe; noapprovalrejection. Continue
+localgoal; retryremote later, don'taskpermission/forcepush. Cut107recoveryhost
+finalPASS0.49s; verifyhelperadded. No nativecrashfix claimed.
+
+Current oldwholeclient26736/PID2089539LIVE:throughportraitfallback948.9s,
+onlyknownFAILcut29 oldthisnight label afterapprovedCompletedruns. Original
+numeric15m,$20/min,fight13%,travel67%unchanged. NewownedCut108 TESTONLY expectation
+matchesCompletedruns and ADDSexactdata-seconds900. Scoped61064terminalPASS
+Cut29:meters10functionalchecks5.2s. Noapp/WASMchange, frozenad71unchanged.
+Neverclaimoldwholegreen; it failedoldtitle. Newwholecurrentqueued AFTER
+nativequeuePID2094359 exits; execsession ID nexttoolresult. Testpooldefault7,
+heavy1; output/tmp/riddle-ad71-client-accepted.log, alltimeoutsgatesunchanged.
+
+Nativeverification/freshqueue30634hostPID2094359 STILLWAITING oldclientPID
+2089539. Aftergone:tools/verify.sh--full /tmp/riddle-cut107-full-verify.log;
+ifverifygreen thennodegates--full--fresh /tmp/riddle-ad71-native-fresh.log.
+Needactualterminal andpreservedoriginalSIGSEGV before anyblindrelease.
+Thennewwholecurrentstartswhenqueue2094359goneeveniffailure; both independent
+conditionsmustgreen to release. Don'trestartqueuesonobservationtimeout.
+
+Frozenpreview35869:5252 248servedhashesPASS; shippingcold12765terminal0 real
+kindwasm seed101 Emptytown GOLD0 BuildhouseFree. Shotcold-101.png showninline,
+separate diagnosticseed notblindplay. Prepared blindbriefs a/b in
+scratchpad/blind-ad71-frozen/briefs; agentsNOTSPAWNED/NOTRELEASED. They insist
+real70active40+5+5+20, honestlockedpenattempts, nogoal/designhistory, no score
+hint, read16probes/criterionbeforeaxes, rawcardsimmutable, idle-hybrid,
+nextdayrecallEMPTY, audioUNASSESSED, privateGPU/focus. Need finalmechanical/
+manifest/reanchor beforefreshblind2raters. No deployment; goal95activeunverified.
+
+**CUT107 GATE SIGNAL RECOVERY / LIVE ACCEPTANCE — 2026-10-07:**
+
+Last turn29e5866 pushed2QAfixes anddebuggerevidence. Currentturn Cut107:
+readResult requiresintegerexit/stringoutput; writes skipstatusnull, oldnull
+cachemiss; termination signalprinted (including targeted). Gate thresholds,
+seeds/runtimekeys/sims unchanged; crashnotfixed/waived. Existing recovery test
+fixturemissingruntime-key stub corrected, nowtests interruption/completedreuse/
+corruptcache/oldnull/SIGSEGV evenPASSoutput/nocache/retryonlyunfinished/
+completednumericfailure preserved. HosttestPASS0.75s; defaultsandbox hides
+childstderr (minimalprobe1/empty) so diagnosticasserthostrequired. Addedtest
+into verify sidechecks; shell/node syntax anddiffPASS.
+
+Actualrecovered fullgatesPASS0.15s /tmp/riddle-cut107-gate-recovery.log;
+metrics8rows/qa10seed cachedgenuinepass, dayplayer18barsfrom completed same
+binary/key debuggerjobs. OriginalSIGSEGV37.7s stillunexplained. Copied original
+statusnull+fullverifyfailurelog scratchpad/qa-cut107-native. Never promote this
+cache recovery to a fix for native memory failure.
+
+LIVE wholeclient session26736 hostrunnerPID2089539 /tmp/riddle-ad71-client-full.log:
+first fights48/cut1377/claritydeep/card/corewatch/hold/qaj PASS sofar. Initially
+logemptybecausefirstfights166s; don'trestart. Appsourceunchanged duringrun.
+NEW dependentacceptance session30634 waits ONLYhostPID2089539gone then
+GATES_THREADS16 tools/verify.sh--full /tmp/riddle-cut107-full-verify.log;
+ifgreen, fullGATES_THREADS16 node tools/gates.mjs--full--fresh to
+/tmp/riddle-ad71-native-fresh.log. Needterminalfresh evidence beforeblind.
+No heavy native work alongside clienttiming. Verifyqueuecanrun evenbrowser
+failed (independentchecks); blindneedsBOTHterminalgreen.
+
+Frozen localpreviewsession35869 :5252, dirscratchpad/blind-ad71-frozen/dist,
+248assets allservedhashes verified. Manifestbb923bc23c32d6824a64f16c265a8911d133bd03b28594eab1b3ff919d86ae7e;
+shippingWASM5c065978c9a8014f8cde3b6d14dd1e73c7a5deb575a44019bd0c39b08f1b87fd
+4280168bytes. Original396f6ed5251unchanged. Cohortcontractstate frozenlocally/
+acceptanceincomplete/no playerreleased; freshseeds73/89,drivers5354/5355.
+Coldshippingdiagnostic session12765 /tmp/riddle-ad71-cold.log separateseed101,
+shot scratchpad/blind-ad71-frozen/cold-101.png pendinginspect. No QA/scoring
+agents spawned; existingQA agentscompletedmustNOTreuseforblind. Goal95active
+unverified;nodeployment/focusstealing. Nativeerrorreportedcandidly.
+
+**ACCEPTANCE CHECKPOINT UPDATE:** Debugger52707 nowTERMINAL0. Log confirms
+same compiled18case dayplayer allPASS and inferior exitednormally. Original
+SIGSEGV remains unexplained, notfixed/waived. Wholebrowser queue session26736
+waits GDBPID2084701 (nowgone); log /tmp/riddle-ad71-client-full.log. Revalidate
+live actualrunner before reportingstarted; initial logempty. Do not restart
+queue on timeout. Preserve original failedlegcache until copying evidence;
+failedstatusnull isn't acceptance. Metadata-only5c77a9d pushed, app candidate
+stillad71e72. Next diagnose transient native failure and complete broad client.
+
+**CURRENT ACCEPTANCE / NATIVE SEGFAULT INVESTIGATION — 2026-10-07:**
+
+Previous turnprogress Cut104 pushedc61b4cc. This turn Cut1055f50217 andCut106
+ad71e72909bba18cd06e2f8185302ea57f2d0a4b pushed. QAledgerremainingempty with
+original uncertainty preserved. Report duration scoped; failed same-unit hero
+portrait fallback verified. No scored card, no95certificate/deployment.
+
+Fullverify74170 now TERMINALFAIL: /tmp/riddle-cut106-full-verify.log.686Rust
+PASS/1ignored,14JShelpers/types/copyPASS,clippy passed,shippingWASM buildPASS
+4280168bytes,webbuildPASS. Currentmetrics8rowsPASS60.2s andQA10seedsPASS46.4s.
+Native dayplayer exitednull37.7s: dmesgCONFIRMS SIGSEGV11 atlibc memcpy4bytes,
+pid2083680. Memory42Gi available afterward; notprovenOOM/rootcause. Fullgate
+notgreen. Gatecache target/gates/dayplayer-794e9d58acfa00ac.txt contains
+statusnull/stdoutempty; preservefailureevidence, don't callcached resultPASS.
+No unsafe in core/examples; dependencies serde/serde_json. Need genuine root
+investigation, no gateweakening. Original fullbrowser dependent queue5695
+TERMINALFAIL becausefullverifyfailed, browserdidNOTstart there.
+
+Task-localgdb15.1 extracted /tmp/riddle-native-debugger/root, missinglibs also
+extracted there, no systeminstall. LIVE debugger execsession52707, hostgdbPID
+2084701/dayplayer2084711. Exactcompiledsamebinary/key56cb431b61e4251a andargs
+--gate --routine --no-share --seeds2 --resume --loo-seeds2 --tuned-seeds2
+--threads16, command sets RIDDLE_SRC_KEY andLD_LIBRARY_PATH tolocalgdb libs.
+Log /tmp/riddle-ad71-dayplayer-gdb.log. At75s no reproducedcrash; HANDS/IDLE/
+RANDOM/AWAY jobsfinish, others stillplaying. Poll SAMEhandle; don't restart
+on observationtimeout. GDB batchrun thenthreadapplyallbt16 onSIGSEGV, symbols
+nativefastdebug0 butfunctions present. Need capturetrace/terminal first.
+
+Independent wholeclient acceptance queued NEWsession described in nexttool
+result (waits hostgdbPID2084701 gone then TEST_JOBS3 TEST_HEAVY_WIDTH1 full
+node tests/run.mjs); output/tmp/riddle-ad71-client-full.log. This browser
+acceptance is independent evidence; raters NOTreleased untilnativegreen too.
+Do not edit app source whilefullsuite runs orcallmixedstatewholegreen.
+
+Isolated headed GPUprobe16712terminalPASS: D3D12NVIDIA3080,scale1.5, log
+/tmp/riddle-ad71-gpu-probe.log. Closed ORPHANrootCut78driver5351 viaquit;
+verifiedPIDs1579331/1579365/1579407gone. Frozenoriginal396f6ed5251 preserved.
+OnlyQAagentscompleted; nofreshblindagents spawned. New pre-playdraft
+ eval/cohorts/ad71e72.contract.json statuspreparing/no release,manifestnull;
+seeds73/89 drivers5354/5355,70ACTUALactive40+5+5+20, honestlockedpenattempts,
+first10no notes, rawcardsimmutable, idle-hybrid, alpha.8for decision,
+nextdayrecallEMPTY, audioUNASSESSED. It is NOT acceptance/scorecertification.
+New calibration loop-hero.ad71e72.reanchor.json same74/drift0, reassessed all
+anchors knowledge+officialfeaturedescription; no freshdirectplay. Official
+Steamreopened; onlyfeatureclaims supported, neverRiddleawards. Reassess again
+if newcandidate aftercrashfix changescontext. No deployment/focusstealing.
+Goal95active/unverified; currentturnprogress includes2pushedQAfixes + new
+crash evidence/debugger and acceptance pipeline, notblocked.
+
+**CUT106 FAILED PORTRAIT FALLBACK VERIFIED — 2026-10-07:**
+
+Cut1055f50217 pushed report whole-run/assigned-rest scope. Current Cut106
+shared unitIcon replaces failed listed image with SAME-unit atlas/primitive;
+healthy image unchanged. Original QA-b root cause unproven; original goblin
+killer visible, blank Corin hero frame. Failed request reproduces lack of
+fallback before repair95867FAIL0/1. After72728 terminal4/4PASS10.1s log
+/tmp/riddle-cut106-client.log:portrait-fallback/unit-icons/death-hero/actions;
+320/400/1440healthy rogue decode, abort→hero_rogue atlas, unknownprimitive,
+frame64/historytext/exactsave. Build35682/typesPASS/copy1768zero/diffPASS.
+Screens scratchpad/qa-cut106-portrait/fallback-{320,400,1440}.png phoneinline.
+
+QAledger remainingItems nowempty; repairs preserve all original observations
+and original uncertainty. Neither QA is a score or blanket protocolcertificate.
+NEXT current fullverify (Rust/wire/bounded18cases/shippingWASM) then fullclient
+on stable source, fresh immutable local preview+manifest and fresh blind two
+raters. Avoid nativeheavy sims alongside client timing checks. Frozen396f6ed
+5251 preserved. No deployment, goal95active/unverified; focus-safe isolation.
+
+**CUT105 REPORT TIME SCOPE VERIFIED — 2026-10-07:**
+
+Previous turn Cut104c61b4cc pushed. Current Cut105 report meters Completed runs
+with Includes before away (absence) or Whole runs, Camp rest separate; rest
+Rest assigned/Includes pending. Core values unchanged: whole run added at exit,
+assigned rest not elapsed home rest. Optional meterPanel scope parameter only
+report uses. Fragment copy budgets unchanged;callouts3/labels2.
+
+43890 terminal5/5PASS9.2s /tmp/riddle-cut105-client.log: report-time-scope,
+report-reading/actions/exit-depth/death-actions.320/400/1440 fixture20m away,
+1h whole run/30m assigned rest, aggregate and single-exit fallback, exactsave.
+Build51375/typesPASS/copy1768zero/diffPASS. Diagnostic screenshots
+scratchpad/qa-cut105-time/time-{320,400,1440}.png;400inline. No scores.
+
+RemainingQA: empty historical HERO frame beside Corin, not goblin art (visible
+in original). Original request state unrecorded. Cut106 contract/test currently
+uncommitted: deliberately abort hero_rogue portrait on actual death component
+and expect same hero_rogue atlas fallback; original unitIcon has no onerror.
+Failed-before run95867 pending, no component edits yet. Healthy portrait first
+decodes; frame/text/save retained; unknown identity primitive check. Need inspect
+terminal then fix generic unitIcon same-unit fallback, actual checks/screenshots.
+After QA list empty, current broad client + bounded18cases and shippingWASM
+freeze before fresh blind2raters. Original frozen396f6ed:5251 preserved.
+No deployment; goal95active/unverified; isolation keeps desktop focus safe.
+
+**CUT104 COMBAT LOG SIGNAL VERIFIED — 2026-10-07:**
+
+User reaffirmed approval for two independent raters. Use fresh blind agents
+only after remaining QA repairs and current broad acceptance/shipping freeze.
+Previous independent QA agents must not be reused for scoring.
+
+Cut104 hurt source → recipient matches attack; captures hero identity even in
+hurt-only batches. Owned style/tactic/drill rule text quiet because existing
+released observer icons/counts/details carry decisions. Raw events unchanged,
+all actual outcomes and unowned custom text retained; disabled observer stops
+suppressing rules. Rust/saves/progression unchanged since Cut100.
+
+Final96661 terminal5/5PASS40.1s /tmp/riddle-cut104-client.log: combat identity,
+combat rules, watch log, gunner observer, tactic observer. Includes hurt-only
+paused frozen name, exact duplicate counts, owned release count/nonowned text/
+disabled restoration and original outcomes/ring/scroll/plain layout. Types
+93460PASS/copy1765zero/build56996PASS/diffPASS. Initial expected-wording and
+getter-only fixture assignment errors corrected; numeric gates not reduced.
+Synthetic screenshots scratchpad/qa-cut104-combat/combat-{400,1440}.png,
+phone shown inline explicitly as test fixture, not scored play.
+
+Remaining ledger: return meter duration scope; unreproduced empty death hero
+portrait. Viewed original death-two-verdict.png: goblin killer art IS visible,
+empty frame is historical hero identity next to Corin. Do not misdiagnose foe.
+unitPortrait(d.hero.class,64,true) uses existing hero_rogue.webp; investigate
+actual loading/fallback. Core meter adds WHOLE completed run meters at exit
+(engine.rs5669), not just absence portion; offline rested_s is assigned rest
+of those runs (offline.rs138), possibly pending. Clarify scope without changing
+elapsed/core math. Then broad current client + bounded18cases, shipping-WASM,
+fresh immutable build and fresh blind2raters. Frozen396f6ed:5251 preserved.
+No cards/scores/deployment; goal95active/unverified. Focus isolation preserved.
+
+**CUT103 SETUP/RESOURCE/FORGE LABELS VERIFIED — 2026-10-07:**
+
+CurrentturnCut102 pushedfebb4c0 with realScout-on pre-purchase warning and
+existingScoutsettings route. Currentcopyrepair names savedtabsgroup Savedsetups
+(no persisted rename), blacksmith gear shortcut Forge (samebuildingid/action),
+Legacy Hero upgrades and token Classes/styles fragments. Own screenshot found
+reporttoken/fullhaul had genericstairs fallback: added existingmark/gold asset
+aliases. No Rust/progression/amounts change, no extra controls/tutorialparagraph.
+
+5453 terminalexisting4/4PASS26.8s: legacyearned/reportclassXP/townsave/UIframe;
+types91246PASS/copy1765zero/diffPASS/build19075 andfinal69048PASS. Actualearned
+realWASM diagnostics42303/61711/1974terminalPASS:400/1440 savedsetnames remain
+[fighter,null,null], actualclassGunner; forgeariaLabel; real20m returns each
+1run/28tokens/1Legacy. Lastmobile screenshot actualwellscroll showsSavedsetups
+visible, document400pxwide; desktopstillclosedpen labelnotvisible, preserve
+lock and do NOT claim a visible desktopeditor. Artifacts
+scratchpad/qa-cut103-copy/{camp,report}-{400,1440}.png, finalphoneimagesinline;
+/tmp/riddle-cut103-inspect.log. These are diagnostics, not scoredplays.
+
+RemainingQAledgeritems: combatdamage source/recipient ambiguity; returnmeter
+duration scope; unreproducedemptygoblin portrait; repetitivecorridortacticlog.
+OriginalQAobservations retained; bothreportsfiled, no scores/cards. Next combat
+log clarity/filter with meaningful event preservation, then scope/portrait,
+currentbroadacceptance and freshshippingWASM frozenbuild before independent
+blind2raters. RustunchangedCut100/pkg5521523bytes. Frozen396f6ed:5251 preserved.
+No deployment; goal95active/unverified. QAactive-time precisionlimitations
+remain explicit; do not promote reports to blanketprotocolcertification.
+
+**CUT102 NEW-BLOODLINE SCOUT WARNING VERIFIED — 2026-10-07:**
+
+Previous turnprogressCut100128c8a3 andCut10199ac3b5pushed. Current UI change
+Newbloodline with actual wiretree.auto_send opens centered price/warning
+Scout sends immediately BEFORE mutation. Found buys; Escape spendsnothing;
+Scoutsettings opens EXISTING settings worker toggles (openWorks has NOtoggles,
+so do not route there). OffScout retains immediate Ready founding. No game,
+workers, roster price, auto-send or core change. Existingrunsui:heroes adjusted
+to click confirmation whenpresent; sameprice/cap/identity checks retained.
+
+1529 existingheroesPASS18.7s; firstnewtestfailed CSS-transformed innerText
+heading comparison, rawtextContent convention corrected. Final66417 terminal
+newrealWASM320/400/1440PASS17.4s: exactsave opening/Escape/settingsreading,
+publicScouttoggle/directReady/confirmedprice/cap/heading. Types50109PASS,
+copy1762zero/diffPASS/build84943PASS. Settled screenshots
+scratchpad/qa-cut102-founding/founding-{320,400,1440}.png, 320showninline.
+Rustunchanged sinceCut100; pkg realfastWASM5521523bytes preserved. No current
+whole-suite/boundednative reacceptanceyet; required before scoringfreeze.
+
+RemainingQAitems: savedsetupfighter misread; Legacy/upgrade-token distinction;
+forge shortcut worker misread; combatdamage source/target; returnduration
+scope; unreproducedemptygoblinportrait; repetitivecorridorlog. Bothreports
+tracked, originalobservations preserved; frozen396f6ed:5251 unchanged. No
+cards/scores or newblindcohort. Next clarify savedsetup/forge/currency purpose
+then combatlog and remainingitems. Goal95active/unverified; no deployment.
+
+**CUT101 REPORT READING POSITION VERIFIED — 2026-10-07:**
+
+Prior turnprogressCut99pushed8aec134; currentturnCut100pushed128c8a3 with
+core-owned accurate tactic locks and readable class prerequisites. Current
+Cut101 repairs QA-a reportdetails collapsing after each death: weak UI memory
+per app/report retains expanded state and .report-well scrollTop; mount RAF
+restores/cancels ondispose, differentreport startsfolded, explicitcollapse
+retained. Actual verdict origin and deathBack retain absence flag too. No
+engine persistence/progression/state change; Rust unchanged sinceCut100.
+Regression99836failed-before actualBackcollapse. After56204 terminal4/4PASS
+8.9s: newreportreading320/400/1440 twoactualverdict/backcycles,scroll±2px,
+absence/collapse/newreport/exactsave; existingreportactions/deathactions/
+reportexitdepth alsoPASS. Types64180PASS/copy1758zero/diffPASS/build65703PASS.
+No new whole-client/native18case certification; required before blindscore.
+
+RemainingQAledger396f6ed.remediation.json: Scout sends newslot before setup;
+savedsetupfighter misread; Legacy/token distinction; forge shortcut worker
+misread; damage source/target; return duration scopes; unreproduced emptygoblin
+portrait; repetitivecorridorlog. Originalreports preserved. Next address
+newbloodline first-setup surprise then other remaininglapses. BothQAagents
+finishedclosedownbrowser; no scores/cards. Frozen396f6ed:5251 unchanged.
+Userauthorizes independentfreshblindraters only after remediatedQA/acceptance.
+No deployment; goal95active andunverified. QAactive-time precisionlimitations
+explicit in reports; never promoteQAto score or blanketprotocolcertification.
+
+**CUT100 CLASS/TACTIC LOCKS VERIFIED — 2026-10-07:**
+
+Current work repairs two independent QA lapses without granting anything:
+shared classUnlockReason shows actual catalogue needs outside disabled class
+buttons in town and older camp picker; dark existing ink-text fixes parchment
+contrast observed in initial screenshot. Tactic wire uses same pure
+pending_arrivals extracted from original arrive calculation: before Warlord
+still slayWarlord, afterward nextsend if eligible or bossesordays when waiting;
+cadence unchanged. Mutation order/prices/progression unchanged.
+
+Targeted corePASS, all686RusttestsPASS/oneignored. Complete verify--quick79175
+terminalPASS69s /tmp/riddle-cut100-quick.log, JS14helpersPASS. Clippy34537PASS,
+types17988PASS/copy1758zero/diffPASS/build69037PASS. FastrealWASM27838PASS
+5521523bytes. Scoped39735 terminal3/3PASS27.4s: newclasslocks320/400/1440,
+existingclassswitch and18packagechecks. Readable-color recheck2958PASS7.2s;
+screenshots scratchpad/qa-cut100-class-locks/class-locks-{320,400,1440}.png,
+phone showninline. Broad current18case/client acceptance required before
+new scoring candidate; historical exhaustiveaudit unverified.
+
+Prior Cut99 pushed8aec134. Both frozen QA reports tracked and original
+lapses retained in396f6ed.remediation.json. Remaining: Scout sends newslot
+before setup; reportdetails collapse after own death view; savedsetupfighter
+misread; Legacy/tokens distinction; forge shortcut worker misread; damage
+source/target; return duration scopes; unreproduced emptygoblin portrait;
+repetitivecorridorlog. Next report fold retention, then remaininglapses before
+freshblind2raters. Frozen396f6ed:5251 preserved; bothQAagentsclosedownbrowser.
+No scores, no deployment, goal95active/unverified. Active-time precision
+limitations remain explicitly in reports; do not callQA blanketcertification.
+
+**CUT99 RULES LOCK VERIFIED / BOTH QA REPORTS FILED — 2026-10-07:**
+
+Prior turn made concrete progress: Cut98 targeted watch check8749d4e and
+terminal-check ledgerae69232 pushed. Current Cut99 shows Read only and a
+Custom rules lock control only within expanded package rows. Existing centered
+chunky window displays Rust-authored pen_needs; actual trigger/age/readiness
+shared, no TS unlock calculation, no early pen/progression/save change.
+New optional defaulted PackagesWire field, older wire fallback Locked.
+Core685testsPASS/oneignored incl unmet/age/fallback/queued/open/literal paths;
+clippy19115PASS; typesPASS/copy1758zero/diffPASS. Existing package18/pen5 checks
+PASS. Actual lock UI320/400/1440 PASS center/Escape/exactsave/no-visible-editor/
+openpen-nolock. Settled screenshot run60778 PASS7.8s (screen capture overhead);
+scratchpad/qa-cut99-rules-lock/rules-lock-{320,400,1440}.png, phone showninline.
+Fast real WASM21695PASS5519218bytes, webbuild3669PASS. Quick27237 terminalFAIL
+only sandbox native-host helper, allRust testsPASS50.85s; unchanged escalated
+native-host retryPASS2tests. Initial new UI test setup issues recorded inCut99;
+no gate weakened. Current broad acceptance still required before scoring.
+
+Both agents finished and closed ONLY their own drivers5352/5353. Reports:
+eval/qa/396f6ed.qa-a.md (3defect/1misread/4unexplained/1friction),
+eval/qa/396f6ed.qa-b.md (3defect/3misread/6unexplained/1friction).
+QA-a conservatively estimates70+active, exact seconds/toolcounts uninstrumented;
+QA-b credits70conservativeactive with less precise early attribution. Both
+4honestpenattempts/0writtenedits; older traces/storage reorder incomplete.
+Reports are lapse evidence, NOT scores/blanket protocolcertification. Original
+blank portrait observation independently resolved after exactserver restoration.
+Frozen396f6ed:5251 preserved, no scoring cohorts spawned, no deployment.
+
+Remaining QA remediation is tracked in396f6ed.remediation.json: class needs;
+tactic locked after kill with stale slayWarlord trigger; Scout sends newslot
+before setup; reportfold resets after death; savedsetup fighter misread;
+Legacy/token distinction; forge shortcut worker misread; damage source/target;
+return duration scopes; unreproduced emptygoblin portrait; repetitivecorridorlog.
+Next inspect core trigger_now/class availability and repair explanatory copy
+without granting locked content. Then finish other QA lapses, currentmechanical
+acceptance/shipping-WASM frozenlocalbuild, and fresh blind2raters. Goal95active
+and unverified. Do not reuse QA agents as blind scorers.
+
+**CUT98 TARGETED WATCH CHECK VERIFIED — 2026-10-07:**
+
+Cut97 pushed38004cc. Current owned Cut98 extracts the identical boss-break
+fixture into shared checkBossBreak and supports fights:break. Targeted six
+assertions PASS9.5s; full default fights all48 PASS175.4s. Serialized current
+fights/qa21/enemy-tips/captive-fact-copy terminal4/4PASS203.4s,
+/tmp/riddle-cut98-full-watch-recheck.log (session98792 now closed). No app, Rust,
+timeout or numeric assertion changes. Types/build remain prior Cut97 results;
+node syntax/diff pass for this harness-only extraction.
+
+Earlier broad client55143 terminal120/122 in1278.5s: fast break missing
+assertion and qa21 forecast visible locator timeout. QA21 separately17checks
+PASS17.3s; both pass unchanged in serialized recheck. Preserve initial failures;
+root cause not proven and current whole-suite green is not certified.
+
+Two independent QA agents remain in final8h/20actual-active-minute phases on
+unchanged396f6ed:5251. No finished70min reports/cards yet. Pen discoverability
+may need remediation: both made honest row-entry attempts but no visible pen
+or lock explanation. Core unlock remains Mother+72h or120h; do not grant
+early editing to satisfy evaluation. Await complete reports before fresh blind
+scoring cohort. Frozen preview28032 preserved; no deployment, goal95 unverified.
+
+**CUT97 CAPTIVE FACT CLARITY VERIFIED / FULL CLIENT STILL LIVE — 2026-10-07:**
+
+QA-a's captive·ally then attack/fell observation is explained by existing core:
+neutral chained captive carries learnable ally tag; free_captive actually sets
+ally=true, while adjacent blocker can be attacked. No evidence an actual freed
+ally was attacked. Report facts/enemy traits now display potentialally through
+one helper; all rawfacts/tags/targeting/rules remain unchanged. Original QA
+observation retained. Regression failed before; actualreport/tooltip/exactsave
+PASS after. Scoped captive/reportactions/reportbossesPASS session90627, existing
+enemytips failed immediate click-visibility in parallel (not a tag/knowledge
+assertion). Single-suite recheck70618 terminalPASS320/400/1440 unchangedchecks,
+/tmp/riddle-cut97-enemy-recheck.log; not fully quiet as broader suite stilllive.
+Types42037PASS/copy1754zero/build80811PASS/diffPASS. No Rust change.
+
+Full client LIVE55143 /tmp/riddle-cut93-96-client-full.log; firstfights missing
+fastWARLORDBREAKS, others through Cut30passed sofar. Added diagnostics to existing
+fights fixture (injectionturn/depth, last12actualheldbeats, actualDOMstate); same
+25s/2s assertions, no app/gate relaxation. Await terminal, then isolatedrepro.
+Suite began before Cut97; new copy test not in its ALL snapshot. Do not claim
+current whole-suitegreen even if all remaining checks pass.
+
+QA-a completed40actualcold minutes with exclusions,20mreturn accounting3runs/
+1659gold exactly2625→4284, Legacy+6 andXP+300; upgradedhealth/damage/kitearchers,
+third honestpenattempt noeditor. QA-b completed40cold+20m5min+4h5min, started8h
+final20minute return:8runs/D23/7886gold,4full/2returns/2deaths, Rogue2268XP/+1level,
+Legacy+49(56→105).8hsettled screenshot shown (reportscroll positionedmidpage).
+No completed70min/cards yet. Same frozen5251 and restoredserver28032, no hints.
+Goal95 unverified; no deployment. Owned pending Cut97+diagnostic/handoff commit.
+
+**FROZEN QA SERVER RESTORED / FULL CURRENT CLIENT LIVE — 2026-10-07:**
+
+Second-slot blank portrait investigation found actual preview stopped: original
+session41197 terminal143, PID1814406 absent. Termination reason unknown. Restored
+SAME unchanged frozen396f6ed directory at SAME127.0.0.1:5251 via Vite preview,
+LIVE session28032. Verified all248manifest hashes unchanged, servedindex matches
+25d94294 exactly. No QA browser reload/save mutation or build replacement.
+Separate headless image probe /tmp/riddle-portrait-network-restored.log: female/
+male/cat fighter images HTTP200/256x256/decodePASS, no failed requests. QA-a
+independently confirms femaledecode; visible existing-session portrait check still
+pending. Treat original blank observations as infrastructure lapse, not proven
+app failure; retain evidence and exclude recovery time from active horizon.
+
+QA-b completed40actualcold minutes (~43.5elapsed after exclusions),3deathsread,
+2fights/2fast,scout/porter/4+choices;20mabsence now completed1run/D21/$9479,
+BloatMother/Lich defeated, Rogue+649XP/+1level/+22Legacy. Return screenshot
+scratchpad/fun-396f6ed-qa-b/shots/return-20m.png shown;5minreturn audit underway.
+No complete70min horizon/cards. QA-a trainedcounter normalrun actually cleared
+Warlord/D12; unresolved earlier captive·ally vs D11 attackcaptive/fell without
+observed allegiancechange, not yet established bug. Preserve independent report. QA-a continuing cold after exclusions. Both remain active
+on immutable396f6ed; no game/source hints, only same-server recovery notice.
+Remediation ledger eval/qa/396f6ed.remediation.json records4repairs/provenance,
+no score or complete-QA claim. Full current source client regression LIVE
+session55143 /tmp/riddle-cut93-96-client-full.log, TEST_JOBS3/HEAVY1 to reduce
+QA contention. First fights terminalFAIL179.5s: fast Warlordbreak neverseen (oneassertion,
+zeroerrors), other suites stilllive; must await terminal then quietrepro, do not
+weaken gate or assume contention. Hostlog read via escalatedexec shows failure;
+defaultsandbox tail appeared empty. Hostps confirms parent1862614/Vite1862621
+live and cut13child1865090active. Poll samehandle, no duplicate suite.
+Rust unchanged/currentbounded
+nativePASS stands; historical exhaustive audit uncertified. Goal95 unverified.
+No deployment; shared browser focus isolation unchanged.
+
+**CUT96 SECOND-HERO REPORT DEPTH VERIFIED — 2026-10-07:**
+
+QA-a earned QuillD6 report's log captionD3 rootcause: report.exitDepth selected
+first shared-ledger depth, including otherbloodline exits. Now prefer actual
+positive wire reached; old-wire fallback filters ownedbloodline and selects last
+exit, duplicate skips scoped samebloodline. Failed interleaved regression before;
+8checksPASS after incl actualDOM captionD6, oldwire/noledger/zero fallback and
+exactengine save unchanged. Newtest first suite invocation used wrongcwd for
+dev.sh; corrected testroot, not assertion. Terminal scoped4/4PASS12.8s31485,
+/tmp/riddle-cut96-checks-final.log; reportactions32/gold135/checkpoint27checks
+alongside new8. Type86594PASS/copy1753zero/diffPASS. Webbuild6382terminalPASS,
+/tmp/riddle-cut96-build.log.
+No Rust change. No broad currentwhole-suite claim;121/121was396f6ed.
+
+QA players remain independently on frozen396f6ed:5251. Both >26–28actualactive
+cold minutes but incomplete70min horizons, no scores. QA-a second-slot blank
+portraits observed in quill-first-normal-01.png (header+footer), notfixedyet.
+Actual frozen hero_fighter_male.webp exists/valid; requested read-only displayed
+class/computedfaceURL/data-art/networkfail evidence without source hints or
+changing gameplay. Do not guess art-filename/identity bug without that evidence.
+No deployment. Goal95 stillunverified. Prior turnprogress: b10b651portraitfix
+pushed plus failed-before/passed-after second-hero report regression completed.
+
+**CUT95 REPELLED BOSS IDENTITY VERIFIED — 2026-10-07:**
+
+Restored recorded drive-off boss identity, excluded by death.ts before: art and
+rich enemy tooltip now use line.driven.boss, not display title. Shared112px framed
+portrait stays above centered text; known ordinary deaths and stalls preserved,
+unknown drive-off ids use primitive fallback. Regression failed before exactboss
+check. Terminal4/4PASS22s session21947 (/tmp/riddle-cut95-checks.log):108death-action
+checks,27historical-identity checks, Cut30death5/Cut26advanced24. Updated visual
+suite11215 terminalPASS, adds actual hover at3sizes: canonical GoblinWarlord,
+historical knowledge Unavailable, never Defeated. TS21135PASS, copy1753zero,
+webbuild63691PASS, diffPASS. Settled320/400/1440screens in scratchpad/qa-cut95-
+portrait;400/1440repelled-portrait shown. UI fixtures, not earned play/scores.
+
+QA-a further independently found earned Quill second-slot D6 report with a D3
+log caption (actual447gold log correct), screenshot shots/quill-report-depth-
+mismatch.png in scratchpad/fun-396f6ed-qa-a. Also second-slot portraits blank.
+Need investigate report exitDepth ledger matching and hero look art fallback.
+QA-b reports ~28actualactive cold minutes,2deaths read/replayed,2fights/2fast,
+>4config changes and scout/porter hired; no absences/cards. Both still live on
+immutable396f6ed:5251, preserve contexts and no hints. Goal95 still unverified.
+No deployment; all browser work uses focus-isolated shared launcher.
+
+**CUT94 EARLY DEFEAT TAPS VERIFIED — 2026-10-07:**
+
+QA-a's actual early Warlord drive-off enabled cause/seal taps targeted unmounted
+advanced controls. Cut94 keeps advanced/replay paths but early fallbacks open a
+centered game window with recorded cause/HP, existing verdict gloss, recorded
+boss defence, historical action and actual next-run lever. No new editor/trace/
+patch controls. Regression reproduced the original inert cause before repair.
+Initial save assertion incorrectly compared async promises; corrected to await
+both actual saves, without weakening exact equality. Terminal scoped3/3PASS
+22.3s session20353 /tmp/riddle-cut94-checks-final.log:96death-action checks across
+320/400/1440, Cut30death5 and Cut26advanced24. TS PASS51864/copy1753zero/diffPASS.
+Visual/Escape run96892 terminalPASS; final settled-animation capture20662PASS,
+scratchpad/qa-cut94-defeat/repelled-explanation-{320,400,1440}.png;400/1440 shown.
+Screens are fake-engine UI fixtures. Web build PASS session50222 terminal0,
+/tmp/riddle-cut94-build.log (existing chunk-size advisory).
+No Rust change; full121/121 is still prior396f6ed, not a new whole-suite claim.
+
+Independent QA-a active ~26min cold, earned Scout/Porter, Warlord tactic training
+revocable On row, second bloodline paid250. Four-plus config choices and2honest
+pen attempts, no deaths yet. QA-b still live; no completed70min horizons/cards.
+Preserve immutable5251 and drivers5352/5353. No hinting/source leakage to raters.
+Goal95 unverified. No deployment; focus-isolated shared launcher preserved.
+Next inspect QA lists, early Repelled missing boss portrait (explicit drove
+exclusion in death.ts) and second-slot autosend before class choice; do not
+assume either is a gameplay defect without checking intended semantics.
+
+**CUT93 LOCKED PLOT FEEDBACK VERIFIED — 2026-10-07:**
+
+Independent QA-a and QA-b on frozen396f6ed both reproduced inert next-plot taps.
+Locked map target/label now open the existing centered chunky window with the
+actual building/unlock condition. Ready plots retain manual construction.
+Cut30town regression failed before the repair and passes after, including exact
+engine-save equality and Escape close. Scoped town/first-plot/town-save3/3PASS
+27.9s (/tmp/riddle-cut93-checks.log); TS PASS session14938; copy1752zero.
+Screenshot build-stage checks terminalPASS session84083; mobile and desktop
+images scratchpad/qa-cut93-plot/town-locked-plot-{mobile,desktop}.png shown inline.
+These are fake-engine UI fixtures, not earned-player gameplay. No Rust change.
+Full121/121 applies to prior396f6ed; no full rerun for this small patch yet.
+
+QA agents continue on unchanged immutable5251/396f6ed, actual70active-minute
+horizons incomplete, no scores. Preserve their browsers and frozen assets.
+QA-a also found enabled early Repelled cause/seal buttons do nothing; source
+confirms cause fallback gated by prePen and seal targets unmounted patches.
+Not repaired yet. Need concrete explanation action or honest noninteractive
+state without exposing the late editor. No deployment. Goal95 unverified.
+Shared launcher still headless or private headedX/Wayland disabled, no focus.
+
+**QA LIVE / EARNED D19 DIAGNOSTICS RECORDED — 2026-10-07:**
+
+Both QA players continue independently on396f6ed:5251. QA-a cold started
+12:25:05UTC; reports first two runs/gold reconciliation, four config choices
+and forge purchase, fast plus fights watched, no deaths yet. No full horizon
+or score claimed. Await actual complete reports; do not leak their observations
+to one another. Existing full121/121 and boundednativePASS stand.
+
+Coordinator read-only diagnostic on original earnedD19 input:8h baseline
+7runs/D19/$4880/1death/26Legacy; Steady7/D21/$9061/1/28; kite1 6/D22/$7897/1/28;
+Light hands7/D21/$7153/1/28. Baseline no stuck returns, Steady one stuckD19;
+D18ogre death after drain removed47maxHP leaving6. Full outcome tables and
+limits docs/D19_PROGRESS_DIAGNOSTIC.md. No simulated case counts as playedgain.
+Evidence scratchpad/qa-cut92-d19-eight-hour-choices; session53124terminal0.
+Pack break unowned was refused upfront, not included; no input grants/changes.
+
+Actual shippingWASM quick8h profile terminal0 session29074, threefresh runs
+1.956/1.987/1.941s with identical report/save hashes, same55f72484WASM. Evidence
+scratchpad/qa-cut92-d19-profile. Headed uses privateX display/Wayland disabled;
+no desktop focus. QA contexts were active; no quiet paired benchmark/gain claim.
+Stripped symbols, hottestleaf function67/17.25% unnamed for exactcurrentbinary;
+do not map older symbols by number. No perf candidate landed. Goal95 unverified.
+
+**CUT92 FULL GREEN / INDEPENDENT QA RELEASED — 2026-10-07:**
+
+Full browser session40296 terminal0:121/121PASS632.6s,
+/tmp/riddle-cut92-client-full.log. All strict overlap/spacing/watch/refusal and
+screen checks passed. Native bounded full remainsPASS, same Rust/shippingWASM;
+exhaustive historical/system-removal audit not certified. Main2d8392e pushed
+calibration and precommitted QA contract (game candidate unchanged396f6ed).
+Loop Hero reanchor eval/calibration/loop-hero.396f6ed.reanchor.json explicitly
+knowledge/official-description only, not new directplay. Same idle-hybrid prior
+and reassessment74.0, drift0; archived card unchanged. Not a Riddle score.
+
+Both QA agents explicitly RELEASED via followup_task after terminalfullgreen.
+Frozen396f6ed http://127.0.0.1:5251/, preview41197; immutable manifest248assets
+unchanged. QA-a transcript11screens reviewed, LIVE cold started12:25:05UTC,
+seed41/runs1/driver5352, scratchpad/fun-396f6ed-qa-a; first-home shot01 shown.
+QA-b confirms fresh headless400x800/2x on5251, seed57/runs1/driver5353,
+scratchpad/fun-396f6ed-qa-b, free house built/hero arriving; first-home.png
+captured. Both actually started; active horizon still unverified. Report paths
+eval/qa/396f6ed.qa-a.md and .qa-b.md. Full70actual-active-minute horizons;
+absences20m/4h/8h, no manufactured unlocks/idle-wait padding, no scores/cards.
+Do not leak one agent's lapses/evidence to the other or send source explanations.
+
+Next: let independent QA complete, inspect each lapse and reconcile actual
+horizons; repair or reasoned deviation, then reship freeze only if changes
+needed. Fresh blind scoring agents after QA list addressed; these QA sessions
+never certify95. No deployment. Goal95 remains active/unverified. Previous
+turn progress: full regression terminal green, precommitted calibration/QA
+contract pushed, independent QA released with first actual-start evidence.
+
+**CUT92 PUSHED / FROZEN396f6ed ON5251 / FULL CLIENT LIVE — 2026-10-07:**
+
+Main396f6edfd724988eb4641c646d792c96b7c7c68c pushed. Tracked source clean;
+only mine.bars/scratchpad untracked. Full client LIVE session40296,
+/tmp/riddle-cut92-client-full.log. Poll samehandle: early Cut13/clarity core,
+watch/card/deep PASS; need terminal121-suite review before QA release. Native
+bounded full previously passed; Rust/shippingWASM unchanged by Cut91/92.
+
+Immutable candidate http://127.0.0.1:5251/ preview LIVE session41197;
+scratchpad/qa-cut92-frozen-396f6ed/dist,248hashed assets, servedindex verified
+25d94294b9bb73ed045655e6fd7ea0efff71a2be934637cb1a5162f4404f3b5d.
+ShippingWASM55f724843bc57e68dc8970e5af72f0e3889d12fa13d16efe3e8c694f04a2d20e.
+Superseded5250 verified VitePID1782037 stopped; original5244/driver5351 untouched.
+Clean headless real-WASM walk41 terminal34.1s/11dumps/noerrors, source manifest
+and dumps scratchpad/qa-cut92-frozen-396f6ed/walk-41.04-watch.png shown inline.
+No performance claim from that walk; no deployment.
+
+QA-a/rater_a seed41/driver5352 now report eval/qa/396f6ed.qa-a.md; transcript
+review of walk41 first then full70active-minute horizon. QA-b/rater_b seed57/
+driver5353 report eval/qa/396f6ed.qa-b.md, full70min. Both given replacementURL
+but ON HOLD awaiting explicit release after terminal fullclientreview. They
+have no gameplay/cards/active minutes. Do not leak defects/source/otherreports.
+Fresh independent blind scoring agents only after QA lapse list fixed. Goal95
+unverified. Previous turn progress: deterministic message/nameplate regression
+failed before and passed after;6scoped suites/type/copy/build pass, repairpushed.
+
+**CUT92 MESSAGE COLLISION REPAIR VERIFIED / FULL CLIENT LIVE — 2026-10-07:**
+
+Previous goal turn progress:06ab785 pushed, helper Cut13/clarity/screens/RunsUI
+4/4PASS. Repeated Cut28w diagnostic terminalFAIL session9568 shows plate y489,
+message “alert1/8” y490.8125/h25.1875, actual top HUD y0/h67.1875. This is the
+lower ticker in the growing message stack, not the HUD. Added focused actual
+DOM keep-out regression: failed before (before2/after2/reserved label true),
+passes after immediate colliding DOM tag removal; debug labels follow actual
+hidden tags. Release batch now refreshes geometry after all its DOM mutations.
+No engine/rate changes, additional renderer frame or per-frame layout reads.
+
+Scoped6/6PASS72.6s: new watch-keepout, zero-overlap Cut28w, watch-log/status/
+console, tactic observer; /tmp/riddle-cut92-checks.log, session8489terminal0.
+TS/copy1750zero/build PASS. Full headless client LIVE now; obtain handle from
+current turn (/tmp/riddle-cut92-client-full.log). Need terminal review before
+QA release. Source Cut92 pendingcommit, then freeze new5251 candidate from
+clean build with manifest. Preserve immutable5250 until replacement verified.
+QA-a also read transcript-first brief and will review supplied same-build walk
+dumps before its full70min play; QA-b full70min interactive. Both ON HOLD.
+No deployment, no independent score; goal95 remains active.
+
+**CUT91 VERIFIED / OVERLAP INVESTIGATION STILL OPEN — 2026-10-07:**
+
+Single-operation visible watch helper passes unchanged Cut13 77 checks,
+clarity:core,watch43 checks, screens58 checks and RunsUI:4/4PASS195.5s
+(session47667 terminal0, /tmp/riddle-cut91-control-checks.log). Original helper
+failed isolated clarity's late Skip dispatch while actual ending flow passed.
+No app engine/control change, ended-run refusal retained.
+
+Cut28w coordinate diagnostic passed6checks65.0s (session65764terminal0);
+intermittent full-suite goblin/alert overlap remains unresolved. Repeat LIVE
+session9568, /tmp/riddle-cut90-overlap-diagnostic-repeat.log. Diagnostic now
+includes actual plate, DOM and parent HUD rectangles; gate remains zero.
+QA agents still ON HOLD, candidate5250 unchanged ef8de67. Full browser result
+118/120 remains the latest full result; no score or deployment claim.
+
+**CUT91 IN PROGRESS / CLIENT TERMINAL118/120 — 2026-10-07:**
+
+Full browser session16452 terminalFAIL118/120 in636.2s; remaining clarity:
+core,watch and Cut28w one goblin/alert overlap. Original quiet clarity session
+28066 and direct25971 reproduce Skip dispatch failure: resumed replay377/420
+then helper's many round trips allow endingFrom400 to disable Skip. Actual
+ending still lands and death flow passes; keep ended-run refusal intact.
+Cut91 tools/watch-control.mjs now opens Speed/presses visible enabled option/
+closes own menu in one page operation, no engine shortcut. Contract
+CUT91_WATCH_CONTROL_DISPATCH.md added. Scoped checks LIVE session47667,
+/tmp/riddle-cut91-control-checks.log; Cut13 unchanged77PASS64.2s so far; poll
+samehandle for clarity/RunsUI/screens. Uncommitted helper/contract/handoff.
+
+Cut28w diagnostic only adds coordinates to existing overlap failure output;
+zero-overlap assertion unchanged. LIVE session65764,
+/tmp/riddle-cut90-overlap-diagnostic.log. Need establish stale-render vs HUD
+bounds before changing app again. Frozen5250 still ef8de67, QA agents ON HOLD.
+No independent score or full-green claim; no deployment.
+
+**CUT89/90 PUSHED / FROZEN QA CANDIDATE / CLIENT LIVE — 2026-10-07:**
+
+Source ef8de67d91d3554275a271bc7c4ccb4b9c96b6d4 pushed main; tracked
+worktree clean before this handoff update. Cut89 corridor progress repair and
+Cut90 HUD change refresh committed25adb8f; accidental CUT90 source dump removed
+in ef8de67. Fast verify684core/14tools/TS/copy PASS, Clippy PASS; rebuilt shipping
+WASM and clean web build PASS. Bounded native full gates terminal PASS (session
+38489, /tmp/riddle-cut89-90-full-gates.log); omitted system-removal/historical
+migration audit is NOT certified.
+
+Full browser suite LIVE session16452, /tmp/riddle-cut89-90-client-full.log.
+Early clarity:core,watch has two failures (frontier tick320 but speed0/card0;
+visible Skip dispatch refused later). Await terminal and quiet reproduction;
+do not restart the running suite or claim full green. Other affected Chrome,
+Cut30 and watch suites passed earlier scoped checks; current Chrome184PASS.
+
+Immutable local candidate URL http://127.0.0.1:5250/ (preview session95545).
+Directory scratchpad/qa-cut89-90-frozen-ef8de67/dist;248 hashed assets. Shipping
+WASM55f724843bc57e68dc8970e5af72f0e3889d12fa13d16efe3e8c694f04a2d20e;
+served index96367b7129ed50dfc51dbb46ef64704cf506f7a9d400b38de596fbd5cc622071.
+First-home screenshot shown inline. Superseded5249 stopped by verified PID;
+original earned5244/driver5351 preserved. No deployment.
+
+User confirmed independent agent raters. Current rater_a/rater_b assignments
+are full QA first, ON HOLD/unplayed while browser preflight finishes. Seeds41/57,
+own drivers5352/5353, reports eval/qa/ef8de67.qa-a.md and .qa-b.md. Explicit
+release still required; frozen candidate may be replaced if real defect found.
+After QA lapses fixed use fresh blind scoring agents, not these QA sessions.
+Goal95 remains unverified.
+
+**CUT89/90 CORE + WATCH VERIFIED / GATES LIVE — 2026-10-07:**
+
+Previous goal turn progress:3245061 pushed. User explicitly approved two
+independent agent raters. rater_a/rater_b exist, blind/unplayed and ON HOLD.
+Project requires QA first: changed their first assignment to QA-a/QA-b (no
+scores/cards), headless400x800/2x full70active-minute protocol. They read only
+rating/rubric/QA briefs; both disclosed accidentally reading framework4–7
+(general rubric only, no game implementation). After full QA lapses repaired,
+spawn fresh blind scoring agents. Neither first QA session certifies95.
+A's only private5352 headed driver closed via own quit; B not launched yet.
+Do not release on old74ae19b candidate; replacement build/URL needed.
+
+Full client on3245061 terminal116/120 in616.9s (session75928), failures Chrome,
+Cut30death, heroappearance, Cut28w. Quiet Chrome184PASS and heroappearancePASS;
+Cut30 old source-only assertion aligned with deathAction; HUD content changes
+force keep-out refresh. Four affected watch/tactics suites4/4PASS117s; Chrome
+184PASS27.9s after actual ResizeObserver synchronization (same2px/numeric gates).
+Original whole-header change alone did not remove every transition overlap.
+
+Earned original driver5351 remains baseline2270503 at4h report:9runs/D6,
+8stuckreturns after corridor slot1 equip + Guarded3/Bossfocus2. Gold2410/Legacy13.
+Correct ORIGINAL ORIGIN is127.0.0.1:5244, notlocalhost; wrong-origin empty town
+was separate and original save remained intact. Actual trained snapshot and
+readonly native input in scratchpad/qa-cut78-interactive. Diagnostic before
+9runs/D6/$360/8stuck vs onlykite1 3runs/D22/$5655. Cut89 shares existing pack
+progress safeguards with corridor, retains corridor-only hold; failed archer
+regression then9seamPASS. After same4h input:3runs/D19/$2002/0stuck/1death.
+No played-new-source or performance benchmark claim. Mock/cached placement gate
+retained and strengthened to stall0/earliest5 (old7 assumption no longer true).
+
+Fast verify684corePASS/oneignored,14tools,TS/copy green101s; fast all-target
+ClippyPASS. SHIPPINGWASM completed session75238; current pkg contains fix.
+Bounded full native gates LIVE session38489, log/tmp/riddle-cut89-90-full-gates.log,
+GATES_THREADS8. Need poll samehandle, terminal results and new fullclient run.
+Current changes uncommitted (ownedCut89/90 files); needcommit/push/cleanwebbuild,
+freeze fresh candidate on5250 for QA. Current immutable5249/session17809 is
+74ae19b (248assets/manifest/index verified, OLDCORE); do not rate it. Superseded
+5248 verified VitePID1634235 stopped; original5244 preserved. No deployment.
+Goal95 still unverified. Continue gameplay/content based on earned stall, rather
+than treating mechanical scoped checks as a rating.
+
+**CUT85–88 PUSHED / FULL CLIENT LIVE — 2026-10-07:**
+
+Source3245061 committed and pushed main. Build/type/copy/diff PASS; complete
+Cut29 46checks PASS37.7s and five watch suites PASS175.7s; prior scoped
+comparison/restock suites PASS. No deployment. Full headless client suite now
+LIVE session75928, log/tmp/riddle-cut85-88-client-full.log. Poll that handle;
+observation timeout is not terminal and must not trigger a duplicate run.
+No new frozen candidate yet (current5248still87c32bc); preserve originalearned
+5244/driver5351. EarnedheroD19 Armour3/ClearLungs, Legacy4/gold1951, actual
+snapshot checkpoint-d19-clear-lungs.json. Fullgreen and independent95 unverified.
+Next: finish fullresults, freeze source3245061 for QA, then publicD19 progression
+and clear remaining content/copy lapses (Control/Debilitate ticks; core10ticks/s).
+
+**CUT85–88 COMPLETE SCOPED CHECKS — 2026-10-07:**
+
+WholeCut29 46checks PASS37.7s, log/tmp/riddle-cut85-88-cut29-confirmed.log.
+All comparison/restock/watch scoped suites passed; caption app unchanged after
+geometry disproved speculative timer fix. Current owned source ready to commit;
+final rebuildsession68276/log/tmp/riddle-cut85-88-final-build.log. Next full
+client rerun justified by actual pending/header fixes and corrected stale
+fixtures. No fullgreen/95score/deployment claim. EarnedD19 snapshot preserved;
+next progression/content task should follow actualD19 wall and Legacy tick copy.
+
+**CUT85–88 / WHOLE TOWN REGRESSION — 2026-10-07:**
+
+Previous status turn yielded fresh headed/headless verification; progress.
+Cut87/88 five watch suites terminalPASS175.7s. EarnedD19 Armour3/ClearLungs
+bought9+18 Legacy31→4; actual541845-byte snapshot and screenshot shown.
+WholeCut29 revealed stale fixtures (challenge active copy, completed depth
+for repeat/reorder/concept visibility, forecastEstimate missing260/135 override).
+Corrected without reducing numeric/interaction gates. Caption probe proves
+empty-town marks had zero-size geometry; proposed timer fix disproved and
+removed. Caption implementation unchanged. Complete Cut29 session28702 LIVE,
+log/tmp/riddle-cut85-88-cut29-confirmed.log; need terminal verdict. Latest build
+PASS, copy1750literals zero. Need commit/push owned files and fullclientrerun.
+Nothing deployed; goal95unverified. Next actual gameplay copy lapse: core Legacy
+Control/Debilitate effects say ticks; derive seconds from10ticks/s for nextcut.
+
+**CUT85–88 VERIFIED CHECKPOINT — 2026-10-07:**
+
+Current owned changes: honest selected-choice comparison pending state;
+No restock / Restock on-off terminology; reserve whole top watch HUD against
+creature nameplates; snapshot public Next click in replay QA to avoid stale
+locator retry. Package/selection/requests, Cut29 orders and Cut21 5/5 PASS25.5s;
+restock qa21/qa778/ui:qa 3/3 PASS38.5s; exact ui:cut19 transaction PASS15.7s.
+Watch cut28w/runsui/status/console/combat-identity 5/5 PASS175.7s, preserving
+zero overlap and exact replay hashes. TypeScript/build/copy/diff passed.
+Complete Cut29 currently running session76714, log/tmp/riddle-cut85-88-cut29.log.
+Full previous suite111/120 remains historical, not current full certification.
+
+Earned original2270503 private browser5351: Boss focus replacing kite archers,
+Apprentice upgrades and additional2h absence cleared Mother/Lich toD19.
+Gold7555 earned/header1951 reconciles exact8278 spending; Legacy31.
+Actual saves and milestone screenshot under scratchpad/qa-cut78-interactive;
+QA report appended. No grants/edited save, independent score or full active
+horizon claim. Source currently uncommitted; no deployment. Focus re-probed:
+headed private X11 retains D3D12/NVIDIA; windowless headless SwiftShader.
+Goal95 remains unverified and active.
+
+**CUT83/84 FROZEN LOCAL PREVIEW — 2026-10-07:**
+
+87c32bc committed/pushed. Fresh clean build PASS, 248 assets copied to
+scratchpad/qa-cut83-84-frozen-87c32bc/dist; full SHA256 manifest, unchanged
+shipping WASM6c36dcd8... Current immutable preview5248/session77413 live,
+served index verified against manifest. Superseded5247 stopped by verified
+Vite PID. Original earned2270503 preview5244/driver5351 preserved. No deploy.
+Full suite111/120, quiet chrome/recent checks passed, Cut30packages still fails.
+Next: inspect the actual comparison selection and hidden pending states; then
+remaining full-suite failures, earned progression and independent evaluation.
+No verified95/horizon/agent approval yet. Goalactive.
+
+**CUT83/84 / FULL HEADLESS RESOURCE RECOVERY — 2026-10-07:**
+
+Previous goal turn made verified progress: Cut82 committed/pushed d1a3321.
+This turn completed actual20m/4h/8h absence series and3death reads on unchanged
+2270503 baseline, but active cold/return minutes and independent score remain
+unverified. Current original driver5351/session75328 on baseline5244; Tactics
+window open after buying fire26/heal26. Gold4474, Legacy4, marks54, bestD13.
+Latest earned snapshot checkpoint-after-8h-recovery-tree.json before supplies.
+Actual current HeroNiallL4 XP849/1600; Health3/Damage3/Armour2/Restoration1,
+kite archers1/Guarded2. Apprentice600 hired, Storehouse manually builtfree.
+One upgraded actual run returnedD13 (413gold/+138XP/+1Legacy), Bloat Mother
+still blocking. Fire supply says no row under current tactics; further public
+choice/unused-item wording audit remains. No grants/edited earned save.
+
+Cut83 numbered pack labels use existing loadout artwork. Existing catalogue
+suite117checks per320/400/1440 +missing-art fallback PASS12.9s. Cut84 death
+uses existing compact console: no4empty cells/report ellipsis. Death actions
+25checks per320/400/1440 PASS3.5s. Actual earned ogre death render-only clones
+all3sizes: same engine save, no empty slots, report/town fit, >=44px targets,
+no horizontal overflow; screenshot400shown. Export wrapper string comparison
+was false because last_seen Date.now changes; corrected engine.save comparison
+is true. Current5219 dev build label is staleOct5, so freeze a fresh build for
+future cohort. Old original played2270503 remains deliberately unchanged.
+
+Headless resource failures reproduced even alone. Requestpeak61/total~832,
+modest memory/fds; WSL/tmp filesystem was100%/593MBfree. Removed only generated
+Rust caches after confirming no compiler active: debug/incremental, temporary
+riddle-root-target, drill-priority/target and master-sustain/target. Preserved
+sources/saves/screenshots/activefastcache;9.8GBfree after. Same headless screens,
+Cut13,hero-presence3/3PASS58.2s. Full headless rerun111/120 in635.1s, zero prior
+resource crash pattern; not green. Log/tmp/riddle-cut84-client-full.log.
+Remaining failures: clarity core/watch, chrome, cut22, cut30, cut29, cut28w,
+legacy-tree,recent-progress,runsui. Quiet chrome184PASS26.8s; recent-progress
+old wording assertion aligned with precommitted Cut77 exact Recent full hauls/
+returns (all numeric tests retained),20checks per3sizesPASS3.1s. Cut30packages
+stillFAIL13.3s waiting for prices: likely comparison selection/hidden pending
+state; investigate actual DOM rather than relaxing. Quiet log
+/tmp/riddle-cut84-quiet-rechecks.log. Other failures still require targeted work.
+Type/copy/build/diff checks and commit/push next. No deployment/95score/agents.
+
+**FOCUS ISOLATION RECHECK / CUT82 — 2026-10-07:**
+
+User requested status on browser focus stealing. Shared launcher remains intact:
+all headed launches allocate private X11 display, disable desktop Wayland and
+fail without desktop fallback. Fresh CDP probe confirmed headed display :100,
+X11 and D3D12/NVIDIA RTX3080; headless confirmed headless platform/SwiftShader.
+Only tools/browser.mjs launches Chromium in tools/web/tests. Nothing deployed.
+
+Original earned QA seed27 now completed4habsence:5runs, D13, Goblin Warlord
+slain; Gold2868earned=2358collected+393returned+117sales, header3651; Legacy24.
+Screenshot4h-return shown. Second death read WarlordD8/Lark Ash4HP; Forge sheet
+open, sword+1 upgrade200 not yet purchased. Driver5351/private headed session75328
+and baseline5244 remain; current frozen candidate5247 remains. No8hreturn/full
+horizon/independent score yet. Full headless suite remains72/120, not green.
+
+Cut82 fixes stale accessible rest status on existing onLive callback. Regression
+failed before (20m status unchanged after60s), passes after; hero row agrees,
+engine save unchanged, original scout/rest-send checks retained. Scoped rests
+suitePASS12.4s, TypeScript/copy/diffPASS. No Rust/wire/save changes. Goalactive.
+
+**CUT80/81 FROZEN CANDIDATE — 2026-10-07:**
+
+956f892 pushed; cleanbuildPASS, frozen248assets at
+scratchpad/qa-cut80-81-frozen-956f892/dist with fullhashmanifest. Current immutable
+preview5247/session69448 live; servedindexSHA matchesmanifest, releaseWASMexact
+priorhash. Superseded5246 intentionallystopped. Original2270503 preview5244 and
+private WSLGPU driver5351/session75328 preserved for consistent exploratoryQA;
+currentlytown after20mreturn/Damageupgrade/Tactics6rows inspection, rest≈15m.
+Actualsavedcheckpoint-after-20m.json supportsresumption. No independent-agent
+permissionanswer, no agentsspawned/score/deployment; fullheadless72/120 remains
+failing. Longer4h/8h returns and fullsuitefailure diagnosis remain. Goalactive.
+
+**CUT80/81 REPLAY / BOSS SUBJECT VERIFIED — 2026-10-07:**
+
+Exploratory frozen2270503 session5351/session75328 continues unchanged. Public
+Porterfree/Scout100 hired (745→645); actual20mabsence1run/D7/138earned=114coins
++24sales/header783; ClassXP+54/Legacy+8→16. Damage3Legacy purchase16→13 is fourth
+configuration change. Tactics Details compiledGuarded6rows inspected; no pen
+entry/edit available,1inspectionattempt/0completed edits. Actual earned save
+checkpoint-after-20m.json captured220254bytes. Horizon/active minutes incomplete.
+
+Cut80 deathclip now visible Replay/Playing/Loading, static Still frame fallback;
+internaltick removed from chrome, exact data/window untouched. QAJclips13PASS
+24.0s after restoring caption fixture's intentional setSpeed0 (same10s cap).
+Actual342302byte earnedrun3 render-only at320/400/1440 exact40tick/pause/keyboard/
+44px/bounds/disposal/unchangedlineage PASS; screenshot shown, fresh-townbackground
+explicit. Cut81 MaxHP−5%→BossHP−5% names enemy reduction, actualcoretruthverified.
+Boss counters23checks/sizesPASS9.6s; initial unsupportedbridge check included
+inert closingclones, reads now active-window scoped, allassertions retained.
+TS/copy1749zero/build/diffPASS; no core/wire. Next commit/cleanfrozenbuild, then
+4h/8h earnedreturn QA and fullclient resource diagnosis. Resource inventory:
+48GBWSL/43GBavailable;11Vites total but only5Riddle, so no memory/cause claim.
+Native5594/main5219 and originalQA5244 preserved; fixed5246 soon superseded.
+No independentagents (permissionpending), deployment or95score. Goalactive.
+
+**CUT79 FROZEN / FIRST DEATH CHECKPOINT — 2026-10-07:**
+
+038e6d0 pushed; cleanbuildPASS, frozen248assets manifest at
+scratchpad/qa-cut79-frozen-038e6d0/dist; current fixed immutable5246/session79118
+liveHTTP200, identical releaseWASM hash. Mutable5245 stopped. Keep baseline
+5244/session19177 deliberately: driver5351/session75328 remains on original
+2270503 for consistent ongoing exploratoryQA. Third earned run died at D8
+warlord, header745gold/8Legacy/15marks; death names foe/floor/hero2hp and Forge
+sword+1 recommendation. Screenshotfirst-death shown, cause opened by actualmouse
+click (continuous banner motion makes locator stability wait; not inertUI).
+Cause view goblinwarlord/D8/t13375, inspection remainsnext. Three completedruns,
+3configurationchanges/1deathread/0penattempts/0absences, active minutes not
+tracked; incomplete coordinatorQA only. No independentagents/95score/deploy.
+Fullclient72/120 still failing. Independent-agent permissionpending. Goalactive.
+
+**CUT79 PURCHASE FRONTIER / INTERACTIVE CHECKPOINT — 2026-10-07:**
+
+Original frozen2270503 interactive seed27 driver5351/session75328 remainslive;
+private WSL GPU, no focus stealing. Earnedhouse→firstD4/259gold→freeforge→armour
+200→Health3Legacy→secondD5→equipGuarded→thirdliveD8/Fast. No grants/absencesyet,
+3deliberate configuration changes,0death/pen reads; active minutes not tracked.
+Coordinator exploratory evidence eval/qa/2270503.coordinator-interactive.md is
+incomplete, not full/independent horizon. Found actual Forged D1same below D5
+forecast: lmove oldcomparison onlyD1, UI fallback chose it. Cut79 restricts to
+actual frontier/wall; raw data/uncertainty/sims unchanged. QA AA17/17 PASS8.1s;
+TS/copy1746zero/build/diffPASS. Same earned fresh public repro baselineFAIL30.9s,
+patchedPASS31.1s/9dumps/0errors; corrected screenshot shown. Temporary fixed
+client preview5245/session11265 live; baseline5244 preserved for runningQA.
+Next commit/push corrected source, freeze freshassets for futureQA, stop only
+mutable5245. Independent-agent permission still pending, no agents spawned.
+Full headless72/120 still failing; no deployment/95score. Goal active.
+
+**CUT78 IMMUTABLE BUILD — 2026-10-07:**
+
+Source2270503 pushed. Clean production build PASS, frozen248assets at
+scratchpad/qa-cut78-frozen-2270503/dist with full sha256 manifest; shipping WASM
+exactly matches prior release. Current immutable local preview5244/session19177
+live, HTTP200. Obsolete5242 and mutable5243 previews stopped after verifying
+command line/port/repo cwd; keep current only. Independent agents permission
+still pending; no agents spawned, no deployment or score. Full headless72/120
+remains failing; continue longer QA on current frozen assets. Goal active.
+
+**CUT78 REPORT GOLD CLARITY VERIFIED — 2026-10-07:**
+
+Actual frozen40a19a8 first report ledger87collected+19salvage=106; stored sword
+and sold sword separate, no accounting defect. Cut78 summary Gold earned now
+includes coins+sales before spending, excludes heir grants/current balance;
+native button opens existing ledger, rich tooltip names components. No core/
+wire/save mutation. Test320/400/1440 supply+gold exact/old-wire/zero/pointer/
+keyboard/save PASS16.2s; clarity core26PASS16.4s; hero19/action16PASS; QA92report
+8PASS6.4s after Cut77 Recent full hauls expectation migration (same13/floor6).
+Initial fixture invalid exits lacked text; corrected complete records pass.
+TS/copy1746zero/build/diffPASS. Actual earned opening/scout/8h walk35.3s PASS;
+settled capture37.0s PASS/0errors, header and tile106 screenshot shown. All
+headed browsers private WSL GPU display; no focus stealing or deployment.
+Artifacts scratchpad/qa-cut78-gold/settled; /tmp/riddle-cut78-*logs. Independent
+agent QA/rater permission requested asynchronously, no answer/agents yet. Full
+headless72/120 still failing; no independent95score; goal active. Next clean
+frozen Cut78 assets and longer QA, preserve explicit runs=1 on every navigation.
+
+**CUT77 FROZEN CANDIDATE VERIFIED — 2026-10-07:**
+
+Source40a19a8 pushed; immutable248asset candidate at
+scratchpad/qa-cut77-frozen-40a19a8/dist; local preview5242/session28461 live.
+Older mutable5240 and baseline5241 previews intentionally stopped. Final walk
+session64662 TERMINAL0 PASS33.4s/10dumps/0browser errors; manual free house,
+public earned scout after2extra sends, actual8hcatch-up1.9s. Recent returns
+prefix confirmed in10-report screenshot and shown to owner. All6fetched WASM
+hashes match frozen candidate and baseline shipping WASM. No Rust/wire changes.
+Every headed browser uses private X11 display under WSL; D3D12/NVIDIA retained,
+no desktop fallback or focus stealing. Full headless72/120 still failing;
+short preflight is not full-horizon/independent QA or95score. Gold87vs106
+provenance remains to inspect via actual ledger. No deployment. Goal active.
+
+**CUT77 RECENT RUN SCOPE / FROZEN PREFLIGHT — 2026-10-07:**
+
+30seed native wireQA session44029 TERMINAL0 allPASS122.3s. Local release6d75824
+built with --ship; frozen248asset manifest scratchpad/qa-cut76-frozen-6d75824.
+Immutable preview live5241 via session1345; source mutable preview5240 also
+started this turn. Frozen walk14337 TERMINAL0:32.7s/10dumps/0errors, actual
+house/public earned scout/8h catch-up1.9s, fetchedWASM matchesmanifest. Screenshot
+return shown. Preflight eval/qa/6d75824.coordinator-preflight.md is short
+transcript-only, not independent QA/horizon/score.15runs/D8 vs “Returned home ·
+8runs, none beyondfloor7” lacks recent-window context: Cut77 uses Recent returns/
+Recent full hauls, all counts/depth retained.6core forms numeric equality PASS,
+existing report19+16checks2/2PASS14.7s, TS/copy1742zero/build/diffPASS. No Rust/
+wire change; shippingWASM exactbaselinehash. First reportGoldhome87 vsheader106
+likely otherledgerflows; inspect actualdetails before claiming/fixingaccounting.
+Evaluator URLs now explicit runs=1 across navigation, unchanged full horizon/
+scoring. Next new committed frozenbuild/earned8h screenshot, then actual full
+QA and independent raters. Full headless72/120 still failing, no deploy/95claim.
+
+**CUT76 END/LEGACY CHECKS VERIFIED — 2026-10-07:**
+
+Scope Legacy respec reviews to real visible sheet-wrap, excluding inert exit
+clones; full12node purchase/fork/tooltips/cancel/refusal/exact refund/one-call/
+stale/away/mobile-fold test PASS31.1s at320/400/1440. End reason test uses visible
+Skip helper and normal Next/Keep; first fix still races vanished Next53.3s.
+Dispatch once to visible connected Next (no successor retry); full legible
+PASS50.0s,3actualRust reason equality + original manual-building milestones.
+No gameplay changes. Looks isolated PASS16checks from previous run. All headed
+runs now private WSL displays. Logs/tmp/riddle-cut76-legible-legacy-final.log,
+/tmp/riddle-cut76-legible-current.log.30seed Rust QA live session44029, log
+/tmp/riddle-cut76-wire-qa.log; poll same handle. Next immutable local shipping
+build/walk and full-horizon QA prep. Full headless72/120 remains failing; no
+deployment or independent95 score. Goal active.
+
+**NO DESKTOP FOCUS STEALING / WSL GPU — 2026-10-07:**
+
+Owner explicitly requires no focus stealing for any browser purpose; headed
+is allowed. tools/browser.mjs now starts private xvfb-run displays for ALL
+headed launches, pins X11/DISPLAY/Xauthority after caller overrides, covers
+explicit headless:false, and cleans server on close/launch failure. Never
+fallback to active WSLg desktop. WSL probe PASS D3D12/NVIDIA RTX3080, scale1.5.
+Concurrent real-town render + CDP private:99/:100 + desktop override refusal
+PASS; failed executable cleanup PASS; no owned Xvfb remaining. Syntax/diff PASS.
+
+Previous isolated headed legible/looks/legacy-tree job83791 TERMINAL1:1/3 in
+92.7s; looks PASS16checks. Legible tries disabled ended Speed (48.7s); Legacy
+fixture gets2 legacy-respec-confirm matches (inert exit ghost likely;18.6s).
+Log/tmp/riddle-cut76-specific-gpu.log. Next reproduce/fix those fixtures via
+isolated launcher, retain exact gates, then full-horizon QA. Full headless
+72/120 remains failing; no deployment/independent95 claim. Goal active.
+
+**CUT76 SCREEN LINT / FEEDBACK VERIFIED — 2026-10-07:**
+
+Corrected Screens GPU walk PASS57checks/9screens/30clicks/0errors in50.0s.
+Dungeon click now requires actual watch navigation within5s before text hash,
+respecting existing650ms entrance walk; no skip or animation/game change.
+Log/tmp/riddle-cut76-screens-final.log. Earlier repeat loaded old file and
+failed inert dungeon in102.6s; not evidence for corrected file. Runner emits
+completed tests immediately; temp streaming probe PASS, failure-output3/3,
+syntax/diff PASS. Full headless audit TERMINAL72/120 in523.8s remains failing;
+2-browser probe FAIL1/3 with resource errors, so concurrency alone not fixed.
+No deployment or independent95score. Next: isolate legible/looks/Legacy-tree
+and other concrete failures on GPU, then immutable full-horizon QA/rating.
+
+**CUT76 FULL AUDIT TERMINAL / EARLY FEEDBACK — 2026-10-07:**
+
+Full session12370 TERMINAL1:72/120 in523.8s on1fc8c82. Current full-suite result
+supersedes old99/117; do not restart the finished audit or claim suite green.
+Log/tmp/riddle-cut76-client-audit.log. Widespread resource/Target crashed/WebGL
+errors;2-browser control FAIL1/3 in53.4s, presence passes, Cut13 still48 resource
+errors, screens loses page at goto. Pool width alone is not a fix. Screens
+alone/GPU completes48.2s,1 assertion/0errors: dungeon sampled280ms before its
+650ms entrance animation completes. Require actual watch navigation within5s
+on dungeon click before sampling; corrected final walk still pending. Runner
+now prints job results immediately; temp fixture verifies early failure before
+slow1.2s, exactly one per-job result/diagnostics,2/3 exit1. No gate filtering,
+no changed scheduling, no game truth change. Goal95 active/unverified.
+
+**CUT76 ACTIVE HEROES / FULL RUNUI — 2026-10-07:**
+
+Fix actual open Heroes window: retain Active heroes heading after paid founding
+and repaint from existing roster onChange/onLive. Earn scout through public
+sends/hires; verify rest launch, actual2h report/history and house Details→log.
+Replace retired fake4lanes with actual earned-save paid1→3 bloodlines at320/
+400/1440: exact gold costs, cap refusal/save preservation, identities/XP/icons,
+selection/Details and unchanged slot Legacy, desktop left/mobile<=12functions.
+Display-only mixed-state refresh leaves Rust save identical. Active sheet-wrap
+selectors exclude inert exit ghosts. Ready automated slots have actual rests
+wire state with zero time, not manual waits; assert actual state and action.
+All7RunUI sections PASS64.2s isolated/headedGPU. Build/TS/copy1742zero/syntax/
+diff/watch-helper PASS. Screenshots scratchpad/qa-cut76-heroes shown. Full client
+audit live via unified session12370, log/tmp/riddle-cut76-client-audit.log;
+poll same handle, do not restart on silence. Previous99/117 remains full audit
+evidence until terminal result. No Rust/WASM/deploy/95claim; goal active.
+
+**CUT76 WATCH/OPENING QA CHECKPOINT — 2026-10-07:**
+
+Restore original disabled purchase opacity .4 through chunky CSS. Harness allows
+modeless loot HUD actions and protects caller modals. Actual ended Speed entry
+stayed enabled: disable with run controls; refused Fast/Skip verified. Migrate
+Cut13 to Path blocked and explicit More samples (larger sample count, numeric
+bands, rough quality/progress inside heading), Forge Details, scoped report
+accounting tiles. GPU rectangle rounding326.000007629vs326 needs only1e-4px
+comparison tolerance; actual layout fine. Cut13 PASS77checks77.4s.
+
+Qaj repeated full fast-cage fixture failures retained; partial old invocation
+started before split saved and actually ran whole suite. Add eight selectable
+sections, default all checks, failure diagnostics and actual menu Skip for
+clip setup. Synthetic cage capped to real nearby8-tick sampling (source-based
+fixture diagnosis, not proven game bug); timing/8s cap unchanged. Final full
+PASS34checks89.2s, real manual opening PASS6.0s, sequential2/2 in95.5s. Manual
+requires actual first house/no grants, empty start/Ready resident/XP/Details/
+manual Send/no early log; <=5mainfunctions/<=12controls. Count mouth/Send as
+same function, as existing budget specifies. Real-WASM live PASS18.4s: same
+run ID, town clock advances, Hero jump resumes, manual one-run limit and Details
+→Run log record. Replay PASS19.1s: actual menu/exit flow, completed run required
+(no forced camp fallback), exact watched/replay hash and full playback.
+
+Build/TS/syntax/copy1742zero/diff PASS, existing chunk warning. Controlled GPU
+ended-watch400/1440 nooverflow/errors and sampling400 screenshots shown;
+scratchpad/qa-cut76 and /tmp/riddle-cut76-* logs. No Rust/WASM/deployment/95claim.
+RunUI rests/log/density/heroes still need migration; full historic99/117 remains
+authoritative. Next: finish those real automation/history/Hero paths, then
+immutable full-horizon QA/independent rating preparation. Goal95 active.
+
+**BUILD MARKER SHADOW — 2026-10-07:**
+
+Owner asks shadow to follow painted border. Move packed button frame to isolated
+::after background, with alpha drop-shadow on that layer only; parent brightness
+retains hover/press feedback. Transparent layout border preserves hit area;
+connector/text no longer cast frame shadow. Real-WASM GPU first-plot checks PASS
+320/400/1440: visibility, bounds, manual construction and busy dedup. TypeScript
+and diff checks PASS. Screenshots scratchpad/qa-build-shadow shown. No deployment.
+Current watch QA migration remains unfinished/uncommitted; latest isolated qaj
+98s fails purchase opacity only (1 assertion, 0 errors); its CSS correction was
+not present in that built test. Goal95 remains unverified.
+
+**CUT75 REDUCED WINDOW MOTION / DIAGNOSIS CORRECTION — 2026-10-07:**
+
+Cut74 capture suggests opaque surface bug; computed inspection proves centered
+window is already opaque #e1d6bd at rest. Legacy unfold runs under reduce and
+capture catches opacity0.219512. Settled before-change opacity1; panel/scroll
+PNG center alpha253/255, no persistent material defect established. Fix shared
+CSS reduce media rule for sheets/camp panels, preserving normal settle/frame/
+centering/nestednavigation. Built GPU42actual cases(7types×3widths×2prefs)PASS:
+reduce immediate none/opacity1/identity; normal j-settle/j-sheet2≤.5s andsettle1;
+six entire earned saves exact/nooverflow/errors. Normal first inspector falsely
+expects animation before existing two-frame arrived gate; corrected wait, bounds
+unchanged. Initial inspector hiddenparent strictviolation retained/corrected.
+Corrected opaque card screenshot shown, scratchpad/qa-cut75. Dedicated built window fallback320/400/1440 PASS: remove panel/scroll skin
+classes, opaque rgb207/197/171, immediate opacity1/identity/noanimation, exact
+save/nooverflow/errors; phone visually inspected. Not all primitive assets. Three client jobsPASS
+15.5s chunky-controls/run-card-gold/post-clear-town; build/TS/copy1742zero/diff
+PASS existingchunkwarning. qaj isolated terminalFAIL87.6s at retired +1vault
+selector (now +1storage slot), no assertionfailures beforeabort; furtherchecks
+unverified. Full historical99/117 remains authoritative. Logs/tmp/riddle-cut75-*.
+Owned5436 stopped;shared5219 retained. No material/core/deployment/95claim.
+Next: finish current run-log/watch QA migration (qaj/cut13/runsui), then immutable
+full-horizon QA preparation. Goal95 active/unverified.
+
+**CUT74 RUN HISTORY/GOLD CLARITY — 2026-10-07:**
+
+Actual new-town run cards still label chest from porter state despite direct
+Gold collection. Use authoritative town.auto_collect for Gold destination;
+manual chest/porter old-save wording remains; amount/secured gold untouched.
+Built QA reveals Town's run-log entry disappeared with lane retirement. Add
+Run log inside selected hero Details only after a completed run. Read-only
+existing history/replay screen, no new empty-town control. Earned real-WASM
+Details→Run log→card exact save/amount/nooverflow/errors320/400/1440 PASS.
+Three-job suite3/3PASS11.5s (gold45cases/width, hero-summary, first-plot).
+Literal ui:frame63 and actual current first-plot hidden advanced tablets before/
+after build PASS2/2 24.6s. qa77812checks PASS5.4s: current estimate/detailed mocks,
+full-haul/log words, Escape modal before underlying panel; original comparison/
+layout/accounting assertions retained. Runclear absence/rarity sections PASS;
+web build/TS/copy1742zero/diff pass, existing chunk warning. Built GPU card
+captures scratchpad/qa-cut74; logs /tmp/riddle-cut74-*. Initial five-job triage
+failsall due to retired lanes/fixtures and cut13 resource/qaj target crash;
+only scoped repaired cases green, full historical99/117 remains authoritative.
+First built capture source-module import fails, corrected visible navigation.
+Owned5435 stopped, shared5219 retained. No Rust/deployment/95claim.
+Next meaningful visible issue: parchment windows show distracting underlying
+scenery through their text; shared opaque content-surface fix. Remaining runsui
+migration/cut13/qaj isolated checks then immutable full-horizon QA preparation.
+Goal95 remains active/unverified.
+
+**CUT72/CUT73 MIRROR WALL CHOICE — 2026-10-07:**
+
+Seven paid owned Boss Focus/Fighter seed5 stance/temperament cases fail48h;
+Unbowed reachesD33, cautious variantsD28. Real cautious trace is one run due
+to pending exit, returning60%carry at23%HP. Aggressive actual King trace fires
+old generic Warlord attacks during mirrors. Retain original deep drill timing.
+Add optional post-clear Mirror rhythm to normal Tactics: existing cadence
+verb, mirror-only guarded row ahead of generic drills, yields to heal threshold,
+no autoequip/pen/stat/XP grants. Old cleared availability is read-only; explicit
+choose persists ownership; original six tactic drip unchanged. Paid inherited162
+and Fireward216/Bold/Unbowed cases clear first8h sample/13runs/playedD34.
+Inherited exact Boss Focus baseline fails48h; Fireward baseline has different
+policy, not a paired causal claim. One seed diagnostic, not all-Fighter balance.
+
+Four scoped core tests PASS; workspace682PASS/1ignored, quick44s, fast all-target
+Clippy, real-WASM build/TS/copy1740zero PASS. Routine18-case full gate terminal0
+source e0b465287f4053a0, metrics/10wire/selected dayplayer pass; broad exhaustive
+balance/migration/system-removal omitted. Final five browser jobs5/5PASS17.1s:
+Mirror availability/equip/icon/cancel/reload320/400/1440, post-clear-town,
+package-requests82, tactic-observer, numbered-descents. Earlier missing module/
+icon/optionalwire and sandbox native-host failures retained with corrected runs.
+Real earned live checkpoint obtained solely by advance(1000), living awake
+King after6184seconds; built GPU actual named activation320/400/1440, icon,
+details/nooverflow/errors. Replace raw tactic cadence with alternate attacks
+and singular activation count. Artifacts scratchpad/qa-cut73 and mirror-rhythm-
+cut73-*; raw logs /tmp/riddle-cut73-*. No deployment or independent95 claim.
+Full historical client audit remains99/117FAIL, not superseded by scoped passes.
+Next: current immutable cohort/horizon preparation and remaining mechanical
+run-log/manual-opening QA, then broader earned late-game choices if evidence
+supports them. Goal95 remains active and unverified.
+
+**CUT70/CUT71 EARNED CHOICES AND POST-CLEAR TOWN — 2026-10-07:**
+
+Cut70 finishes27 legally earned Ascension1 comparisons: three inherited162-point
+builds plus eight paid216-point branches each. Ranger5 Mending+Brace clears8h
+vs inherited32h; Ranger3 Brace16h vs Fireward24–40h; Fighter5 no clear48h,
+Fireward playsD33 vs BraceD28. Venom/Debilitate pairs have the same observed
+outcomes, not proof of zero activation. Two explicit Boss Focus Fighter cases
+also do not clear48h. No blanket stat/XP change justified. Reusable example
+legacy_campaign SAVE NEW_OUT [--build ID] [--tactic OWNED_ID] records meters,
+paid actions/full saves/source preservation. Filtered Ranger rerun is byte-exact
+with original case; fast build/scoped Clippy pass. CUT70 records sources/hashes.
+
+Built app QA exposes victory trap: all camp requests redirect to victory and
+no Town button. Cut71 adds explicit Town return for cleared home review;
+Next descent gem/mouth/watch guards reopen victory without sending. Normal
+ending redirect preserved; Begin descent still needs existing confirmation.
+Final five-job suite5/5PASS15.4s: post-clear-town, numbered-descents,
+ascension-refusal, legacy-tree, first-plot. Real earned320/400/1440 navigation
+exact saves/call guards;400 actual refund216/purchaseHealth3/core runnull/
+endedtrue/durable reload PASS. Multihero follow-up1/1PASS12.3s: purchase/send
+second slot with owned gold, select cleared first, actual Town/Legacy exact
+entire two-slot save preserved, second remains live; no extra send/begin calls.
+New test initial optional-live null expectation
+fails then corrected to absent wire+full core run check. Logs retained.
+Built GPU400/1440 Town/Legacy actual clicks read-only/nooverflow/errors PASS;
+corrected phone victory screenshot shown. Initial native-import wrapper omits
+UI runs counter (shows0), corrected to actual359 completed totals; core unchanged.
+Untrimmed earned fixture273805bytes/hash recorded in CUT71. Web build/TS,
+copy1739zero/syntax/diff pass; existing chunk warning; wrong root build invocation
+recorded before correct web build. Owned5433 stopped; shared5219 retained.
+Artifacts scratchpad/legacy-campaign-cut70*, scratchpad/qa-cut70; logs
+/tmp/riddle-cut70-* and /tmp/riddle-cut71-*. No deployment/Rust library change/
+independent95 claim. Full99/117 audit remains original evidence. Next substantive
+work: meter/trace the earned late Fighter wall and Control choice usage before
+new powers; remaining run-log/manual-opening QA and immutable cohort preparation.
+Goal95 remains active and unverified.
+
+**CUT69 FIRST-SESSION READABILITY AND QA — 2026-10-07:**
+
+Fresh built GPU phone seed7 walk finds actual split header ordinal: `1st`/`heir`
+are separate column-flex items. Group ordinal tooltip/text in nowrap inline
+span; real construction checks320/400/1440 verify same-line geometry, glossary,
+exact text and no overflow. Four opening/worker jobs PASS110.8s after retiring
+obsolete required crate/Works surfaces from legacy fake day0 QA; retain≤5/≤12
+budgets, exact current membership, actual Heroes open/Escape/save checks.
+First-plot extension PASS14.3s; shared claritycore26PASS; qa92 current-wire
+40PASS13.8s. Two qa92 intermediate failures were missing deepest fixture and
+old Details best label; exact order retained with current labels, logs preserved.
+Built/TS/copy1737zero/syntax/diff pass (root build invocation initially fails,
+correct web build passes; existing chunk warning). Fresh scripted real-WASM
+phone walk28.5s: manual house, death, Town, two more sends, earned Scout,20m
+return, nine captures/no browser errors. Trunk uses public engine calls; QA,
+not full rating horizon. Rebuilt phone ordinal/save/nooverflow/errors PASS.
+Corrected first-home screenshot shown. Artifacts scratchpad/qa-cut69-*;
+logs /tmp/riddle-cut69-*. Owned5432 stopped; shared5219 retained.
+No deployment or independent95 claim. Full audit99/117 remains authoritative;
+remaining current run-log/first-session QA routes then immutable cohort prep.
+Late Legacy depth remains a substantive content gap from earned class campaign,
+not fixed by this header/QA cut. Goal95 remains active and unverified.
+
+**CUT67/CUT68 VISIBLE PATHS AND BUILD SHADOW — 2026-10-07:**
+
+Cut67 restores report Details and explicit More samples QA, preserving original
+scene/verdict assertions. Actual mobile legacy badge overlap fixed by reserving
+32px within the command grid below1024px. Five scoped jobs PASS36.8s;
+controlled legacy-wire geometry320/400/1000/1440 passes, Heroes reachable,
+exact save unchanged. Early real-town fixture lacked legacy plate and timed out;
+logs retained. This is compatibility coverage, not earned progression.
+Cut68 owner-requested Build shadow follows border-image alpha via drop-shadow;
+painted skin has no rectangular box shadow. Hover/press/busy brightness composes
+with shadow. Fresh real-WASM400/1440 checks: focus/target/save/errors PASS;
+desktop screenshot shown. Build/TS/copy1737zero/diff pass, existing chunk warning.
+Raw logs /tmp/riddle-cut67-* and /tmp/riddle-build-shadow-*; scratchpad captures.
+No deployment or independent95 claim. Full audit remains authoritative99/117.
+Owned preview5431 stopped after QA; shared5219 retained.
+
+**CUT66 REPORT/FORECAST CLARITY — 2026-10-07:**
+
+Fixed two actual report gaps: visible summary getsabsenceentry class; missing
+deepest oldwire usesRecord instead of claimingplayeddepth. Nonjuicefade honours
+reducedmotion; juicyplaque style retained. Primarythree/currentdetail order,
+actualvalues, latestexit arithmetic andoldwiremotion checked. Cut12 usescurrent
+boundedfullhaul/turnback copy andvisible explicitMore samples, asserts actual
+positivefake-engine ends.return ratherthanautorefinement. Alloriginalchecks
+retained,no simulator/timeouts/scoring changes. SixjobsPASS22.9s: claritycore26,
+cut12 26+fourreportjobs; build/TS/copy1737zero/diffpass, existingchunkwarning.
+FreshbuiltWASM5430 publicearnedcamp actual20m report400/1440:1runD13$698,
+separatehistoricalD19, exactrawsavereadonly/nooverflow/pageerrors. Oldwire
+diagnosticRecord/reducedmotionnone; actualnonjuiceabsencefadein/watchednone
+computedstyle PASS. Phonescreenshotshown; CUT66artifacts/rawlogs.
+Owned5430stopped;shared5219retained. No deployment/currentindependent95claim.
+Fullauditauthoritative99/117 remains; nextsample/Details/order/manualopening
+routes andresourcefailurestriage, then currentimmutablecohort/content work.
+
+**CUT65 CURRENT DEATH QA — 2026-10-07:**
+
+Full audit53404 terminalFAIL99/117 in1069.8s; /tmp/riddle-cut63-full-client.log.
+No longer live; preserve failures/resource errors, no full-green claim. Repaired
+currentTown vsobsoleteedit expectations inqa9/qa92/qaAA/cut20, unsupportedwhy
+fixture inui:qa; ranking/folds/wordlimits/evidence checks retained. Added visible
+historicalTown click/exactsave/reopen/Escape, no-gain/harmfulTown exactsave.
+First scoped4/5fails broadTownbuttoncount; specificnav fixes. Soloqa9 passes
+assertions but races vanishedSkip locator (30s implicitretry). Sharedwatchcontrol
+snapshotsconnectedvisibleenablednodes; deterministicinline/menu disposal and
+originalownership casesPASS. Final5/5PASS52.6s, syntax/diffpass. CUT65rawlogs.
+Followup screens57/claritywatch17/deathactions22×2 allPASS3/3 in37.5s;
+log /tmp/riddle-cut65-helper-client.log. No live ownedserver/job remains.
+No shippingruntime/core/assetschange,
+deployment orindependent95 claim. Next triage currentreport/explicitsampling/
+manualopening routes andresource failures; lateLegacy content contractqueued.
+
+**CUT64 BROADER CLASS PACING REVIEW — 2026-10-07:**
+
+Owner asks current progression/pacing review. Added example-only class_campaign
+with legal unlock waiting, paid preparation, per-class saved evidence and
+seed/class/owned-tactic filters. Three earned camps ×4classes complete; fresh
+Rogue/Ranger/Caster mastery88–104h afterswitch, all playedD13within8h. Fighter
+startsL4–5 and masters72–96h. Casterseed3 unlockwait16h separately. Threebase
+clears128–160h; nine no clearwithin168h, not a gate failure for this policy.
+TwoBossFocus comparisons: Fightermastery88→112h/noclear; Rogue104→112h,
+best28→33/noclear. No blanket XP/pricing/cap/gameplay changes justified.
+FinalLegacy377–981points after162spent; fulltree216max. Deeperpostclearchoices
+remain highestprogressioncontentpriority, under separate balancecontract.
+First harnessstopsaftersevenclasses atlockedCaster, rawfailure retained;
+final14campaignsPASS, fastbuild/scopedClippy/diffpass. CurrentbuiltWASMseed11
+opening/Scout/20mreturnwalk37s noerrors; earnedmatureRoguehero sheet400/1440
+exactreadonly/nooverflow/errors, desktopshown. Owned5429previewstoppedafterQA;
+5219retained. CUT64details/provenance. No deployment.
+At Cut64 handoff fullclientaudit53404 wasrunning; it is now terminalFAIL99/117.
+Log /tmp/riddle-cut63-full-client.log; Cut65above hascurrenttriage/results.
+
+**CUT63 MANUAL DEATH CONTINUE — 2026-10-07:**
+
+Prior turn progressed QA controls6f1b3b5. Found actual manual-opening defect:
+default death timer could pressSend beforeScout. Runtime target nowTown when
+Rust tree.auto_send=false (also pausedScout); hiredScout continuation retained,
+oldwire compatibility retained. Manual Send still available, no clock/duration
+or core changes. Initial fake manual fixture was migrated withScout; explicit
+manual/hired flags now asserted. Fullautodismiss29PASS, four scopedjobsPASS100.8s:
+deathactions22×2,wallpreparation39×3,firstplot×3; build/TS/copy1736zero/diffPASS.
+RealWASM public-earned first-run preScout save +earnedScoutcamp diagnostic
+Deaths400/1440: timerTown/0sends/exactmanualsave; hiredSend/1send. Settled
+screens showkiller/depth/nooverflow/errors. Early captures intro motion; added
+textcheck initially omittedD4 suffix, corrected diagnostic. CUT63 recordsprovenance.
+Owned5428 stopped;shared5219retained. No deployment; standingpushapproval.
+
+**FULL CLIENT AUDIT COMPLETED (Cut65 followup):** exact exec session53404,
+log /tmp/riddle-cut63-full-client.log; TEST_JOBS=3 TEST_HEAVY_WIDTH=1.
+TerminalFAIL99/117 in1069.8s; preserve rawfailures, do not updatefromscopedpasses.
+FullcurrentQA/independentrating95 stillunverified.
+
+**CUT62 CURRENT QA CONTROLS — 2026-10-07:**
+
+Prior goal turn made progress: pacing fix210777a pushed, full shipping verify
+and targeted16seed evidence. This continuation repairs two reproduced stale
+QA paths. Clarity watch looked for removed Skip glyph without dispatch proof;
+uses visible Speed helper and asserts six dispatches, original frontier/ending
+limits retained. Cut22 uses current estimate/comparison methods, explicit More
+samples, correct full-haul and simple Send wording; original31 arithmetic/
+uncertainty/call assertions retained, inline zero-call check covers both methods.
+Final quartet4/4PASS73.9s: claritywatch17,cut22 31,forecastrequests16×2,
+watchconsole; syntax/diff pass. Real earned WASM400/1440 8→33sample explicit
+forecasts preserve exact save/nooverflow/errors; screenshots shown. Immediate
+unfilled bars were entry animation; settled capture normal, no CSS fix.
+Owned5427 stopped;5219 retained. CUT62 contains failed fixture iterations.
+No runtime/scoring/protocol changes or deployment. Broad98/117 baseline still
+latest, claritycore/other legacy routes/resource failures open;95unverified.
+
+**CUT61 PROGRESSION/PACING — 2026-10-07:**
+
+Reviewed earned opening, first-week walls, class training, Legacy and harder
+descents. Fixed baseline seed8 five-day D20 stall: Steady L3+ safe recovery60%
+after historicalD18; earlier50%, L2 40%, guards/training/XP/Legacy unchanged.
+Seed8 D28 day8→day5, preD23 stall5→2. Global55/60 trials rejected for early
+D8/training regressions. Late trial13 targeted rows/16seed configurationsPASS
+202s; full shipping verify green435s (678Rust,14tooling,18routinecases).
+Sandbox native-host failure passes outside sandbox; final full rerun green.
+Exact27 native/WASM replies across3earned camps incl8h/rawsave; fresh5426
+mobile/desktop read-only UI thresholds/nooverflow/errorsPASS, screenshots shown.
+Owned preview stopped;5219 retained. Six fresh earned Gunner continuations:
+D13≤8h afterswitch, clears16–56h, mastery96–136h; no broad-class claim.
+Legacy surplus/deeper choices and high-tier variety queued. CUT61 records
+trial provenance and fixture corrections. Broad272 audit/independent95 remain
+unverified. No deployment; standing push approval.
+
+**CUT60 HOME BUILDING SHADOW — 2026-10-07:**
+
+Inspected current earned home400/1440; normal hit-target shadows none. Found
+4.6s arrived-state rectangular gold box glow on invisible click target; removed
+CSS only. Construction renderer glint and arrival label remain, keyboard outline
+retained. Explicit arrived-state400/1440 styling/screenshot check and build
+PASS; scratchpad/home-shadow, CUT60. No sprite/gameplay changes or deploy.
+
+**CUT59 SIMPLER DEATH — 2026-10-07:**
+
+Owner does not understand Prepare/no rule for it. Remove generic fallback;
+unknown why hidden, keep specific causal evidence. Death actions visible under
+Next run, omit duplicate killer; only1recommended patch initially, others under
+Details. No-fix gem Town accurately reflects destination. Shared report heading
+Next run. Current earned WASM save+explicit diagnostic deaths320/400/1440 check
+unknown why/concrete heal/next-run actions/Details/hero routing/exact read-only
+save/early lever/no overflow or errors. Existing death-actions22×2 and
+wall-preparation39×3:2/2PASS6s. Build/TS/copy1736zero/diff pass. Screens shown;
+scratchpad/death-cut59; CUT59. Final Town DOM-label/three-width captures PASS (first check
+mistook uppercase innerText for DOM text). Historical clarity/cut13 copy
+expectations changed, unrelated earlier failures remain unverified. No deploy.
+
+**CUT58 LIVE WATCH CHUNKY AUDIT — 2026-10-07:**
+
+Owner explicit remaining chunky UI audit. Eleven earned management windows at
+400/1440 recaptured:22 views, save equality, no overflow/page errors. Watch
+Speed popup tiles outside `.cmd` lose packed material:6px radius, no frame,
+17/18px labels. Explicit shared game-control for6commands; openWindow centered,
+3-column groups,24px icons,14px labels. Real-WASM320/400/1440 initialized-watch
+captures:6framed80px controls, min78.65px width; Fast closes own window and saves
+mode, Town returns to live run after asynchronous refresh; no page errors.
+Screens shown, scratchpad/chunky-cut58/watch-real-settled. Earlier diagnostic
+immediate-live assertions failed before send/lineage initialized; retained logs.
+Build/TS/copy1740zero/diff pass. qa9/screens/chunky-controls attempt stopped
+at machine file-descriptor exhaustion, no completed result; exact owned runner
+1118639/server1118646 stopped, shared5219 retained. Short chunky-controls follow-up1/1PASS12.5s (320/400/1440 actual
+run tabs/folds/appearance/rename reload/read-only behavior).
+No deployment. CUT58/UI_MATERIALS. Cut57 baseline fights/cut13 failed(crash/old
+stake); DEBUG isolated fights48PASS173.9s, original crash unexplained. Forecast
+fixtures await current routing fixes. Standing push approval; independent95
+remains unverified.
+
+**CUT55/56 RAT, DEATH WALK AND CURRENT FULL CLIENT BASELINE — 2026-10-07:**
+
+Cut55 rat authored runtime20→24texels, same master/camera/hero; pack495frames,
+artQC zero, atlas.png unchanged, only rat atlas metadata changes. Actual headed
+400px seed5 map24px/fight28px, hero48/56; screenshots/raw geometry shown,
+scratchpad/gameplay-cut55/rat-*. Existing hero-grounding400/1440PASS. Build/TS/
+copy1740zero/diff/syntax PASS. Playtest current Speed helper and death Town tile
+when no patch (retired Edit removed): real built seed7 wholewalk28.6s9dumps,
+first Warlord death→town→scout→20mreport noerrors. Seed5 concurrent full-suite
+walk47s10dumps completes but94 WebGL warnings retained; no clean universalgfx
+or timing claim. Owned5425 preview1071967 closed. Cut55 committed64624aa.
+
+Cut56 full current client terminal1:98/117PASS553.5s. Authoritative current broad
+baseline /tmp/riddle-current-client-full.log, replaces historical91/112 only as
+current coverage evidence (different suite count). Nineteen failures initially;
+resourcecrash in fights/cut13, oldreport/control fixtures, geometry and watch
+issues. Single-job initial chrome/cut28w/screens/qa9 all fail174s; source shows
+endFold reserves overlays before restoringHUD. Reorder forced keep-out paint
+after HUD/frame update. Screens/qa9 Escape afterSkip couldclose newlootchoice;
+use tested sharedhelper, retain5disabledcontrols, all original52/57 assertions.
+Chrome diagnostic assertion adds geometry, threshold2px unchanged; intermittent
+100ms restore failure retained, nextsolo184PASS, final quartet4/4PASS184.6s:
+cut28w6/screens57+9lints+30clicks/qa952/chrome184. Raw logs /tmp/riddle-cut56-*.
+No retroactive all-green broadclaim. Remaining15jobs in CUT56 require triage;
+next priority fights/cut13 single-browser resource replays, then literal old
+fixtures/report labels/routes without weakening numerical/gameplay assertions.
+
+QA briefs now describe tactics-first/manual town/latepen, explicit attempted vs
+completed handwritten edits, and interactive three-absence RATING horizon.
+Scoring/RATING/framework/template/presets unchanged. This is readiness work,
+not permission to spawn agents or independent95 proof. No deployment; standing
+push approval. Shared5219 kept. Full/isolated jobs terminal; no QA servers left.
+Independent current rating route preference remains unanswered; goal active.
+
+**CUT53/54 CURRENT CONTROLS AND REMAINING CHUNKY UI — 2026-10-07:**
+
+User remaining UI audit: companions Breed/Hatch/select/rules/dismiss, death
+Details/Send again/Morgue, patch Others and next-worker shortcut now explicitly
+share game-control; readable pet text, portrait remains outside, disabled shared
+material. Mobile Heroes missed packed skin despite bevel fallback; explicit
+class fixes it. No Rust/progression/save changes. Seven scoped checks PASS21.3s;
+final Heroes follow-up roster/first-plot/companions3/3PASS12.2s. Build/TS/copy1740
+zero/syntax/diff PASS. Screens companion/death/town/finalHeroes shown. Diagnostic
+fake companion/death captures at320/400/1440, not independently earned pets.
+Actual built headed seed5 complete walk34.5s10dumps noerrors through manualhouse/
+three sends/scout/20m; seed7 Warlord D8 captured then retained stale Edit harness
+failure. docs/CUT54_COMPANION_CHROME.md, scratchpad/chunky-cut54, /tmp/riddle-cut54-*.
+
+Restored compound driver current Speed mode/Skip, own-menu close keeps new loot
+choice, actual-watch wait. Synthetic visible-DOM modes/disabled/dialog tests PASS.
+Default Send must target actual gem: worker shortcut can also say send. Actual
+headed final first Fast+Skip ends on keep12.898s, second remembered mode ends
+report11.986s, no rater __riddle/wire control reads. Intermediate ambiguity failure
+retained. CUT53, scratchpad/chunky-cut53-final; /tmp/riddle-cut53-*-final.json.
+Owned5423 preview/5424 driver closed; shared5219 preserved.
+No deployment; standing commit/push approval. Independent95,
+broad client/balance and rat23px visual finding remain unverified/outstanding.
+Next: fix seed7 playtest retired Edit lookup, inspect small rat, then fresh content/
+gameplay evidence and independent immutable-build eval. Pending rating route
+preference unanswered; do not infer delegation approval.
+
+**CUT52 LEGACY EARNINGS — 2026-10-07:**
+
+Fresh played QA found reports expose class XP gain but only total Legacy. Rust
+now records existing earned points on each real exit and Batch, reports sum
+them globally and by bloodline. Watched reports copy the exit; client merge
+preserves historical owners and unknown old fields. Compact Legacy earned rows
+before preparation, separate from Class XP. No award/pricing/RNG/rules changes.
+
+Final core678 PASS/one existing ignored,39.74s; all-target fast Clippy clean.
+Original c70ffd182d4080f1 gameplay digest retained by stripping only new numeric
+observation. First projection missed the first object field; placed beside XP,
+original hash passes. New six bank/return/death×sim cases reconcile awarded
+points/exit/batch and duplicate finish; existing single8h and multi2h full-state/
+report partition tests strengthen real balance checks. Raw failures retained.
+
+Five report/choices/bosses/classXP/preparation jobs PASS30.7s; final compact
+layout/current WASM Legacy/classXP2/2 PASS43.4s during compilation.320/400/1440
+actual earned fixture, actual paid additional slots on400: +38/+36/+27 Legacy,
+101 total, actual points reconcile, full save unchanged by inspection, no
+horizontal overflow/page errors; owner/merge/unknown-wire11 assertions each.
+Final packaged8h solo and paidthree-slot five-path whole/30min/uneven/reload/
+complete-api exact complete-save/report parity terminal0, 4/34 runs,38/101Legacy.
+TS/build/copy1740 zero/JS/diff pass. No deployment.
+
+Final built headed freshseed5 first watched D4 report +5 Legacy; manual three
+sends/scout then20m returns +1,total9.36.1s10 dumps, noerrors. First rat capture
+23px vs24px existing visual bar: next renderer inspection, not universal pass.
+Played seed7: first WarlorddeathD8; manual forge/Damage/sword/Guarded choice,
+next hero returnsD8 withgold. Bounded QA, not independent40m/three-absence rating
+or a paired statistical claim. Old driver send_and_watch Skip timedout52s;
+actual visible Speed choice worked. Restore compound current Speed navigation
+next for faster interactive QA; do not treat that timeout as gameplay lag.
+
+Artifacts scratchpad/gameplay-cut52/{walk,interactive,walk-ready,
+earned-reports-ready,solo-parity-ready,multi-parity-ready}; logs in CUT52.
+Owned5420/5421/5422 closed after checks; shared5219 retained. Standingpush
+approval, NOdeploy. Independent95 and broad balance/client suite remain unverified.
+NEXT: fix stale compound driver and investigate measured small rat rendering,
+then continue fresh gameplay/content observations and immutable independent eval.
+
+**CUT51 CURRENT SCREEN QA — 2026-10-07:**
+
+Restored the retired screens/qa9 entrypoints after the chunky UI audit. Actual
+Heroes→Chronicle, Hero→Class and Speed menu routes; explicit legacy fake hero
+slot; visible duplicate lookup, full death return context, current Gold/log
+labels, parent navigation excluded from content counts, forecastEstimate slow
+fixture, map highlight included in observable changes. Keep original arithmetic,
+refusal, trace and salvage reconciliation checks and drive limits. Capture five
+actual run controls to verify disabled state after exit; sample before skipping.
+
+A genuine production defect surfaced: town paint revealed the Workers shortcut
+when no worker tree existed, producing a blank inert button. Visibility now
+requires both the house and worker tree. Explicit no-tree assertion plus the
+original all-button lint catch it. No game progression or save behavior changes.
+
+Final 4/4 screens/qa9/first-plot/chunky-controls PASS in 52.9s, terminal0:
+/tmp/riddle-cut51-final.log. Screens57 checks/9 lints/30 clicks; qa9 all52 checks.
+TS/build/copy1739 zero/JS syntax/diff PASS. Raw failures retained in Cut51 docs,
+including disabled-button races corrected by actual menu timing/dispatch checks.
+No Rust/WASM change or deployment. Runner-owned isolated server closed; shared
+5219 retained. Cut50's actual26-view visual audit remains current; its desktop
+Runs/mobile Forge screenshots shown again at this checkpoint.
+
+NEXT: fresh played content/gameplay evaluation and remaining broad regression
+coverage. Independent95 remains unverified; scoped success does not supersede
+historical broad91/112. Standing push approval; NO deployment until instructed.
+
+**CUT50 CHUNKY UI AUDIT — 2026-10-07:**
+
+User audit implemented across actual earned11 management windows×400/1440 plus
+Supplies/Stored Gear anchored panels×400/1440:26views nooverflow/errors, full
+save unchanged by inspection. Shared .game-control/.game-inset recipes extend
+existing tablet/parchment material; no new art. Runs tabs/folds/replay controls,
+Chronicle actionable rows, centered Appearance choices/rename, recessed inputs,
+framed inventory buttons/titleplates/lit rarity labels. panel-host z6 nowabove
+maptagsz3/edgeoverlayz5; previouslylabels paintedover inventory. All handlers/
+labels/save semantics retained. Unbuilt Companions source-reviewed; attempted
+command timeout retained, not claimed earned. Keep silhouettes unboxed, plain
+combat log, gems/studs/map hits/chart/token exceptions.
+
+Actual320/400/1440 tabs/fold close/reopen,44px framedcontrols, Appearance/current
+parent return/read-only save, Enter rename→actualRustname/unchangedrows→reload
+PASS. Final5/5 chunky-controls/chrome184/appearance/class-switch/item-icons114
+PASS31.2s; final tiny card material mapping checked bybuild/screens. Current
+screens shown, scratchpad/chunky-cut50/reviewed{,-panels}; reviewed log terminal0
+andpanels errors[]/save true bothwidths. TS/build/copy1739zero/diffPASS, noRust/
+WASM changes/deploy. EarlierCSSspecificityfailure fixed, unsettledappearance
+rectangle fixedbywaitinganimation (unchanged44pxthreshold), chromeHUDresize
+failure raw retained/finalpass, HMRintermediateauditfailed/freshfinalpass.
+
+See CUT50_CHUNKY_AUDIT.md and UI_MATERIALS.md for shared recipes/coverage boundaries.
+Owned5409–5415 servers closed; shared5219 kept. Remaining hidden-state/broad QA
+and independent95 are notcertified. Next focus fresh played gameplay/content,
+remaining retired screens/qa9 entrypoints; standingpush approval, NOdeploy.
+
+**CUT49 HERO MENU SUMMARY — 2026-10-07:**
+
+Continued home polish: Hero level/XP prominent and distinct from class training
+in folded Details;72×84 framed portrait, shared exact presence helper, readable
+parchment status. Class/Appearance moved above Legacy tree. Menu observes existing
+onChange/onLive, preserves expanded Details and removes listeners on close.
+Final6/6 summary/presence/names/appearance/class-switch/stylesPASS26.3s. Prior
+appearance touch failure retained; isolated/final concurrent unchanged44px checks
+pass; diagnostic error now includes exact geometry. New summary diagnostic had
+wrong creation path then unscoped Chronicle selector; fixed harness, raw logs kept.
+Actual earned400/1440 screenshots/full-save read-only equality; unequal hero/class
+XP and combat/rest transitions explicitly controlled presentation only.9eachwidth.
+Build/TS/copy1739zero/diffPASS, no Rust/WASM changes/deploy. First-session real
+headed walk31.5s9shots noerrors throughhouse/manualsends/scout/8h; see CUT49.
+Owned5406/5407/5408 closed after QA, shared5219 retained.
+
+NEXT: remaining retired screen/qa9 entrypoints and fresh content/gameplay QA,
+independent immutable-build rating.95unverified; broad historical91/112 remains
+uncertified by scoped passes. Standing commit/push approval; do not deploy.
+
+**CUT48 HOME BASE POLISH — 2026-10-07:**
+
+User home base request implemented: shared chunky chrome ridge roster/portrait
+frames; larger64×76 desktop and40×48 mobile portraits; quiet actual slot XP rail,
+clearer name/class/status hierarchy, presence colours and pointer-transparent town
+edge finish. No gameplay state edits or new controls. Existing first-plot,
+persistent-camp, layout54/live-roster gates4/4PASS91.4s isolated server. Final
+fresh/built/earned actualWASM400/1440 six screenshots nooverflow/errors, exact
+read-only save equality, Details44px/Heroes≥44px. Manual house clicked for built
+case. Screens shown, artifacts home-cut48-final and /tmp/riddle-home-final.log.
+TS/build, copy1734/zero, diffPASS. No Rust/WASM changes, no deploy.
+Initial after-shots had stale transforms; use fresh current/final evidence only.
+Owned5403/5404/5405 closed after QA; shared5219 preserved.
+
+NEXT: keep polishing interaction/content from fresh played QA, audit remaining
+retired screen entrypoints, and seek independent immutable-build fun rating.
+95 unverified; historical broad91/112 not superseded by scoped passes.
+
+**CUT47 CLASS RULE FRESHNESS — 2026-10-07:**
+
+Adopt actual Rust class replies before refresh writes rules back. Baseline earned
+Gunner→Fighter had no gun rule in reply, then stale client rows restored it as
+player. Rebuild Heroes return during tab paints, including before extra tabs
+unlock; class origins no longer consume player rule budget (matches Rust).
+Actual earned400/1440 round trip verifies first paint, rendered row, exact rules,
+player/drills, one call, refusal, save/reload and read-only Edit/return. Early-tab
+case explicitly controlled presentation. Final5/5 class/patch/locked/package/
+roster PASS27.9s; return/first-plot2/2PASS24.1s; earlier7/7PASS92.9s. TS/build,
+copy1734/zero, diff, headed shots PASS. See CUT47 and artifacts/raw failures.
+No Rust/WASM changes, no deploy, independent95 remains unverified.
+
+NEXT USER PRIORITY: polish home base desktop/mobile; inspect actual home, improve
+chunky roster/portrait/action hierarchy and town presentation, show screenshots.
+Then continue current-screen QA and independent fun rating; historical broad
+91/112 is not superseded by these scoped passes. Preserve shared5219.
+
+**CUT46 REPORT PATCH DETAILS — 2026-10-07:**
+
+Baseline patch-overflow terminal1/11.9s; diagnostic full transcript proves all
+preceding death drop/cancel/card/held checks alreadypass. Actual failure is
+final report replacement, correctly folded under Details. Gate nowclicksactual
+Details before suggestion; all original25assertions unchanged andPASS. Cut20
+16each400/1440 and report-choices23eachwidth alsoPASS3/3 in11.7s terminal0,
+/tmp/riddle-cut46-client.log. No production or Rust/WASM changes.
+
+Real earned Gunner WASM400/1440 +one actually written player rule; diagnostic
+report suggestion targetingthatownrule. Details inspection fullsave byte-exact;
+exact17semanticrows (including unchanged generateddrills) persist after intended
+replacement/flush/reload, zeroerrors. Screens shown, explicit diagnostic reports
+not actual earnedrunoutcomes. scratchpad/patch-cut46-20261007/report-results.json;
+/tmp/riddle-cut46-real-player-report.log terminal0. Firstfixture wronglytargeted
+generateddrill afterclassswitch; recompile restoredmanageddrill, rawfailure kept
+in report-first.mjs and /tmp/riddle-cut46-real-report.log. No silent normalization.
+Current App.setClass usesmutate withoutadopt despiteclass-dependentcompiledrows;
+inspectactualclassswitch/editor freshness next before anyfix. Do not treatthe
+failed generated-row fixture as passed or proofthat manageddrills shoulddrop.
+
+JSsyntax/diffPASS. Owned5399 closed; shared5219 kept. Remaining mechanical
+failures: screens/qa9 retired class/lanes log entrypoints, others in broad91/112
+historical verdict. Preserve checks and currentmanual/latepen UX; then fresh
+playedQA and independent immutable-build rating.95stillunverified, no deploy.
+
+**CUT45 LEGACY EDITOR VISIBILITY — 2026-10-07:**
+
+Production2-condition fix: simplified first-load main/command hiding only for
+onPackages lineage; legacy/literal wires whose penOpen alreadytrue keep editor
+reachable. Homeless gating independent and unchanged. Current new idle town
+still empty → manual free house → resident/Send, editor/pen remains locked.
+No saves, rules, currency or simulation edits; no Rust/WASM inputs changed.
+
+Original locked-cond19PASS unchanged. Four legacy diagnostics terminal1/1of4:
+patch-overflow now aborts at hidden patch; screens old lanes log/class controls;
+qa9 retired lanes log. /tmp/riddle-cut45-editor.log13.9s. Preserve these failures;
+next inspect actual visible current Chronicle/class/patch controls and maintain
+all original arithmetic, overflow/no silent drop, text/inert/title assertions.
+Current first-plot/town-save39/persistent-camp15each/layout54 all4PASS88.5s;
+/tmp/riddle-cut45-current-home.log terminal0. TS/build/copy1734zero/diffPASS.
+Actual WASM400/1440 opening retains locked editor; explicit legacy fake400/1440
+click Edit displaysrows, completeengineSave unchanged; zeroerrors. Settled
+screens shown, scratchpad/editor-cut45-20261007/results.json and
+/tmp/riddle-cut45-real-settled.log terminal0. Owned5398 closed, shared5219 kept.
+
+Broad91/112 remains latest historical full-client verdict; narrower greens do
+not certify full suite/balance/independent95. Continue current mechanical QA,
+then played immutable-build QA and independent rating. Goal active, no deploy.
+
+**CUT44 CURRENT LEGIBILITY CHECK — 2026-10-07:**
+
+Retired gate aborted at hidden Send before house, baseline terminal1/32.2s.
+Current check builds free home, verifies resident, uses visible Speed / Skip,
+observes exact Rust exit events including fold.step without changing responses,
+and reads report Details. Three actual watched sends: hurt / collected,
+hurt / went home, no heals / collected; report and Rust reasons match with
+only intentional banked → collected copy mapping. All reasons actually seen.
+Later construction checks use explicit diagnostic milestone saves, not earned
+progression: four offers remain unbuilt until actual ready-marker click, each
+arrival names exact trigger and glows; later locked tags and completed hidden
+next tag verified. Initial locked forge stays hidden per minimal opening;
+retired day-zero tag deviation documented in Cut44, not auto-build restored.
+
+Headless legible PASS63.7s, /tmp/riddle-cut44-legible-current.log. Final headed
+33 assertions PASS, /tmp/riddle-cut44-shots-clean.log; screenshot capture waits for sheet ghosts.
+No production edits; syntax/diff checks pass. Screens shown; artifacts
+scratchpad/legibility-cut44-20261007. Older failure logs retained, including
+consumed last_exit, folded exit scope, hidden initial plot and too-short headed
+click stability timeout. Final Skip uses5s stability allowance, same actions.
+
+Next: remaining old early-Edit helpers / screens coverage under the current
+late-pen and manual-house design. Preserve lint, inert-control, exact-wire and
+numeric checks; use current controls and explicitly earned or diagnostic
+fixtures. Then current played QA and independent immutable-build rating.
+Broad91/112 remains latest historical verdict; no new full balance suite or
+independent95 rating. Owned screenshot5397 closed; shared5219 kept. Goal active/unverified; no deploy.
+
+**CUT43 GUN NAMES AND CLASS ICONS — 2026-10-07:**
+
+Rifle / Scattergun replace player-facing long / short gun names in forge,
+played HUD, item labels and provenance. Persistent IDs, mechanics, costs and
+old reason aliases remain stable. Shared painted class symbols cover five base
+classes and Sentinel/Hexbinder paths in choices, roster, details and XP reports.
+Fighter shield / Rogue shadow corrected after screenshot readability review;
+picker 30 px, roster 18 px / mobile 14 px. Primitive fallback preserved.
+
+677 Rust PASS / 1 ignored, 48.07 s; fast all-target clippy, TS/copy (1734/zero),
+real fast WASM 5478683 bytes, web build/diff PASS. Actual earned 400/1440 QA:
+five unique assets loaded; inspecting classes leaves complete save byte-exact;
+paid Scattergun deducts exactly275, persists short_gun ownership after reload;
+actual live watch announces Scattergun. No overflow/errors. Screens shown;
+scratchpad/class-icons-cut43-20261007, /tmp/riddle-cut43-real-watch.log.
+Final scoped client 4/4 PASS15.4s: report-class-xp, live-roster, class-styles,
+gunner-observer at400/1440. Owned5395/5396 closed; shared5219 kept. Latest broad verdict
+remains91/112, no independent95 certification or new balance audit. No deploy.
+
+**CUT42 RECORDED FLOOR HEALTH RECOVERY — 2026-10-07:**
+
+Rustdescend alreadyrestores5maxHP/cappedbase; nowexistinghero_max_hp records
+actualpositive gain only, cause recovery. Actual earnedlogprevious58→31/drain−27
+contradictedlast10turn52/52 because recoverywasmissing fromfoldedmaxsteps.
+Current52→52/last52; existingUIhidesnet-zeroarc, noTSsuppression. Gameplay
+arithmetic/timing unchanged. Coretestactualdescent31→36/38→40/40→40 verifies
+exactevent/snapshot/run+exittrace andnoeventatcap.
+
+676RustPASS/1ignored36.71s. Initialquickterminal1: native-host requireslocal
+socket access;6otherfiles+TS/copy passed. Hostrerun2PASS; finalall7toolfiles
+withlocalaccess14/14PASS3.08s terminal0 /tmp/riddle-cut42-tools-final.log. Fast alltargetclippy0,
+copy1734zero, realfastWASM5482294bytes, webbuild/diffPASS. Originalcut28d17,
+cut2016, checkpointgold9each400/1440:3/3PASS23.2s terminal0. No numeric bars
+relaxed; no broadbalance/fullclient certification inferred.
+
+Pairedactualearned8hGunner4runsreport/fullsave equal EXCEPT max_stepsaudit and
+exactnamed renderablecounters24batch/11deatharchive/7floorstart. Firstfailed
+comparison retained; engineeventcount references inspected, accountingonly.
+Explicitallowlist assertsdeltas; no arbitrarycounter/gameplayexclusion. Allgold,
+XP, Legacy, kit, outcomes, RNG andtiming retained. Candidatephone/desktopraw
+report/savefullyequal. Evidence scratchpad/health-recovery-cut42-20261007;
+comparison.json/compare.py, /tmp/riddle-cut42-candidate-wasm.log terminal0.
+10displayedturnIDs/headerexact; inspect/close savebyte-exact; nooverflow/errors.
+Screensshown. Olderclient91/112 remainslatest failingbroadverdict; routine18
+balancepredatescoretraceedit.95goalactive/unverified, no deployment.
+
+Next: currentmanual-house/Speed/latepen/report coverage forlegible/screens and
+remainingbroadfailures, thenfreshplayedidle-hybridQA/cohort. Noindependent95
+scoreverified. Rawcardsneverrewritten. Owned5393/5394cleaned; shared5219kept.
+
+**CUT41 REPORT LOG TAPS — 2026-10-07:**
+
+Actual failed test clickedy861 on800px screen; no hit/no sheet, raw baseline
+/tmp/riddle-cut41-report-baseline.log. Current Details then scroll actuallog;
+center/top-edge checks preserve separation and assert exact decision-log title,
+exitheader, turns10/20/30/nearest rather than oldTraceword. Carried/Secured
+replaces owner-retiredbank/deathchrome. All16cut20 +checkpointgold9checksper
+400/1440PASS18.5s,2/2 /tmp/riddle-cut41-client.log terminal0. No production
+changes. Real earned8hWASM report4runs:10turnIDs and exitheader exact, fullsave
+unchanged opening/closing, zerooverflow/errors. Screens shown, evidence
+scratchpad/report-cut41-20261007, /tmp/riddle-cut41-real.log terminal0.
+
+Found actual attribution defect: maxHPsummary58→31/drain−27 but last10turns
+52/52. Rust turn::descend restores5maxHP per floor without hero_max_hp event/
+trace step; folded losses alone invent startingHP58 and omit recovery. Next
+Cut42 record exact floor recovery through existinghero_max_hp onlywhenchanged,
+meaningful coretest +earnedWASMpairedreports/save gameplay equality excluding
+intentionalrecovery audit fields. Do not infer coregameplaychange or95score.
+Broad91/112 remains latest failing verdict; scopedlayout/qa21/cut20 nowgreen.
+No deployment.
+
+**CUT40 NEXT PLOT TOOLTIP — 2026-10-07:**
+
+Screenshot found actual retired track tooltip on unbuilt town plot (“40 stages”).
+Existing shared rich tooltip now reads actual next building/trigger; readyhouse
+“Ready to build · Free”, earnedkennel“first tame”. Host and visible plot marker
+share dynamic current state. Click construction unchanged/manual; no added
+simulation/automatic work. RealWASM400/1440 hover/fullsaveexact; trusted phone
+long-press pinnedtip/fullsaveexact, zerooverflow/errors. ActualRusttown.next/
+next_trigger matched. Screens shown, scratchpad/plot-tooltip-20261007;
+/tmp/riddle-cut40-real-touch.log terminal0. Diagnosticmouseholdtimeout retained,
+not a game defect: sharedtooltip ignores mouse long-press by design.
+
+Sharedtips70/70 and enemy-tips2widthsPASS,2/2gates137.3s terminal0;
+/tmp/riddle-cut40-tips.log. TS/copy1734zero/webbuild/diffPASS. NoRustchanges/
+WASM inputs; realpkg unchanged. Broad91/112 failing verdict remains latest;
+post-suite layout57 and qa2117 now scopedgreen.95fun active/unverified.
+
+Next report investigation: cut20 uses page.mouse coordinates below the viewport
+on expanded report; inspect/scroll actual chip before center/top-edge tests.
+Current traceSheet label is decision log; preserve table/exit-header/navigation
+checks, don't substitute a gold-sheet pass. Current watchedgold contract is
+Carried/Secured per owner; replace old banks/death-newcarry wording with exact
+snapshot gold assertions. Latepen/currentFullforecast report and screens coverage
+still incomplete before new idle-hybrid played QA/cohort. No deployment.
+
+**CUT39 EXPLICIT FORECAST COVERAGE — 2026-10-07:**
+
+qa21 all17PASS12.2s, terminal0 /tmp/riddle-cut39-qa21.log. Current visible
+Full forecast→More samples replaces retired automatic-refine wait. Same first/
+detailed shaft-panel generation and percentage checks, nonempty floors, original
+15s bound; new detail generation strictly newer. No production changes.
+Forecast-request lifecycle400/1440 each16checksPASS5.6s; explicit only, stale
+reply rejection, retry and same-state detail retention remain intact.
+/tmp/riddle-cut39-requests.log terminal0. Latest broad91/112 remains failing;
+layout and qa21 scoped passes don't substitute.95unverified, no deploy.
+
+**CUT38 CURRENT OPENING / EARNED LAYOUT — 2026-10-07:**
+
+Latest broad client source c8187a5 terminal1:91/112PASS811.4s, session75668,
+/tmp/riddle-post-cut37-all-client.log. Supersedes prior80/111 broad result;
+one extra hero-grounding case.21failed jobs remain; audit records next checks.
+
+Layout current owner flow57/57PASS89.3s headed, isolated /tmp/riddle-cut38,
+/tmp/riddle-cut38-layout-established.log. Fresh400/1440 noSend/resident; direct
+Rust Send refusal leaves complete save identical. Visible manual house then
+resident/send/watch. Established desktop tests defaultHeroes then explicitRules
+on a committed unmodified normally earned real Gunner home; no XP/gold grants.
+SHA2565eef774a85264b7d9d7cb39d097c3bdf6c6f65dbe54404bc592e0bd567b28115.
+First-home depth forecast intentionally hidden, so earned home exercises those
+columns. All original geometry/HUD/overflow thresholds retained; current Speed
+menu for Skip. Source UI/core unchanged. Screens in scratchpad/current-opening-
+layout-20261007. No deployment;95fun goal active/unverified.
+
+Next actual unknown: qa21 forecast waits for retired automatic refine. Current
+larger samples explicit-only: test visible More samples and synchronized panel/
+shaft result. Then report/trace/runsui and late-pen coverage before played
+idle-hybrid QA/cohort. Broad remaining failures still not certified green.
+
+**CUT37 CURRENT REFUND CONTROL / FALLBACK READBACK — 2026-10-07:**
+
+Run setup Auto restock off now uses shared twoTap: refundN? first, exactly one
+order second. Paid nonfound supplies count; free/found excluded. Already off
+is a no-op; empty shelf needs one tap. Old badge shares count; no hidden tile
+restored/force-clicked. Fixture builds opening house and models the earlierD8
+completed run, then uses visible Run setup. Final qaAC18/18PASS12.1s, preserving
+other15checks and adding repeated/empty shelf checks. Old failure/probe retained.
+
+Real QA exposed anchored desktop bodybottom780.4 crossing console764. Run setup
+uses existing centered game-window; final400bottom626.5/console762,1440bottom
+585.33/764, no overflow/errors. Labels standing orders→Run setup, repeat pack→
+Auto restock. Final actualWASM screenshots shown, source/scratchpad/supply-confirm-
+real-20261007; /tmp/riddle-supply-confirm-copy-real-final.log. Actual earned two
+paid heals26each +freeleash: first tap engine.save byte-exact; confirmed gold
+48536→48588, freeleash100631 retained; flush/reload exact both400/1440. Additional
+earned seed5shortD20camp has paidheal/fire and foundheal/freeleash:3561→3613,
+found5013+free100136 survive flush/reload. No grants; source
+scratchpad/gunner-close-finish-paid48-20261007/seed5-short_gun-after.json;
+/tmp/riddle-supply-found-real-final.log. UI count additionally excludes found in
+four-supply mock. Native refund semantics unchanged.
+
+Procedural fallback canvas uses read-friendly storage before first context.
+Matched coldGPU reads150.843/187.636→17.044/16.057ms; median169.2395→16.5505,
+90.22% reduction in remaining sampled getImageData work. Complete atlas/normal
+pixels byte-identical. Context394–452ms/shader473–527ms still dominate. No sim,
+FPS/overall startup claim. Candidate2 overlapped pixel QA, excluded; isolated3
+substituted. Evidence scratchpad/watch-timeline-20261007/fallback-comparison.json.
+
+Current scoped verification: trio3/3PASS45.4s (qaAC18, hero-grounding400/1440,
+watch-console5widths) before final labels; final label qaAC18PASS12.1s and real
+WASM above. Quiet final clarity:card14/14PASS66.4s,1200ms unchanged, no other
+browser/compiler; earlier real-QA-overlapped seed5161208ms failure retained as
+contention evidence. Do not infer arbitrary-load/full-suite acceptance from
+quiet pass. TS/copy1733zero/webbuild/diffPASS,5482237byteWASM, no Rust changes.
+
+Next: fresh broad client suite after this commit; old baseline80/111 remains
+latest broad verdict until that run completes. Then resolve actual unknown
+first-load/report/trace/replay/forecast failures and resume played idle-hybrid
+fun evaluation.95active/unverified. No deployment. Owned5386/7/8/9 closed;
+shared5219 preserved. Record the next runner's live session/results before
+restart; no silent full-suite certification from scoped checks.
+
+**CUT36 PROFILED WATCH / CAGE / CORNER VISIBILITY — 2026-10-07 (PARTIAL):**
+
+Atlas read-friendly storage reduces matched headed cold getImageData samples
+1109.63→150.93ms median (86.40%); full env/sprite/normal RGBA hashes identical.
+This is sampled graphics readback, not sim/build/FPS or overall latency speedup.
+Remaining driver/context/shader/fallback costs documented in CUT36. Temporary
+watch state probe removed; raw immutable trace and CPU profiles retained under
+scratchpad/watch-timeline-20261007.
+
+Cage vaultFrom now applies its frame before restoring speed: trace previously
+advanced30→70→110 across614ms before the cage had ever shown. Original timers,
+card pacing, skip behavior and numeric bars retained. Hero overlap calculation
+now shares grounded stack position with drawing. Identical diagonal corner
+boss coverage84.375%→0%, sprite sizes unchanged. New hero-grounding400/1440PASS
+8.8s, confirmed baselineFAIL84.375%, bounded5s frame readiness.
+
+FINAL /tmp/riddle-watch-cut36-final.log terminal1: fights48checksPASS200.1s;
+clarity:card stillFAIL2/14 at1218/1237ms (bar1200 unchanged), cage/other checks
+pass. Earlier atlas/cage candidate card14PASS65.3s is NOT repeatable acceptance.
+Do not claim card timing settled. Cut28w6checksPASS73.8s on corrected renderer;
+watch-console5widthsPASS on same controls before geometry change. Next inspect
+residual cold GPU/context/shader stalls and actual card scheduling, without
+reintroducing rejected goLive/card timeout experiments blindly.
+
+Fights clock wait now observes engine ending AND clock advance within original
+20s: ending flag can precede async picture seek. Trace actual viewer.tick shows
+Skip works; original end/jump assertions retained. Final48checks includes
+coverage and ending. No production skip behavior changed.
+
+Real earned Gunner WASM400/1440 Fast→Town→reloadPASS, no overflow/pageerrors/HUD
+overlap. Final screenshots shown from scratchpad/watch-grounded-real-20261007.
+TS/copy1730zero/webbuild/diff/test syntaxPASS; realWASM5482237bytes unchanged.
+No core changes; no new balance audit or full-client verdict. Baseline80/111
+still the latest broad result; scoped resolutions only.95fun active/unverified.
+
+Next supply audit: qaAC15/16, hidden legacy badge0×0. Actual Run setup repeat-off
+calls setOrders→set_restock(false), refunds paid supplies without confirmation.
+CUT37_SUPPLY_CONFIRM specifies current-path guard/real-save proof; implementation
+pending. Raw /tmp/riddle-restock-probe.log and current-repeat log retained.
+Owned5383/5384/5385 closed; final runner terminal and owns/closes its server.
+Shared5219 preserved. No deployment.
+
+**COMPACT WATCH / READABLE SPEED / TEXT COLLISIONS — 2026-10-07 (PARTIAL):**
+
+Retained production fixes: selected Speed mode has dark inset contrast on
+parchment; inspection App.screen no longer calls the Speed menu an exit;
+renderer keep-out reserves the full fold docking animation, including opacity0,
+refreshes immediately at docking and ticker text changes. Inactive invisible
+UI still skips reservation. One fold rectangle replaces individual chip reads.
+
+Final retained-source GPU checks2/2PASS102.1s:cut28w6checks75.5s and
+watch-console5widths26.2s. Original render thresholds and zero-collision bar
+retained; selected mode contrast now >=4.5. Persistence selects Normal, checks
+unchanged lineage synchronously at selection, active menu closure, Town/reload.
+Ignore inert closing ghosts. Fold fixture explicitly requests deferred forecast,
+uses existing GOOD rules and supported client-fold path. CUT28 amendment names
+owner compact controls; core fold cut27 is still unresolved, not certified here.
+
+Real earned Gunner WASM400/1440 Speed Fast→Town→reload PASS, no pageerrors,
+overflow or HUD overlap; final readable screenshots shown. Evidence
+scratchpad/watch-menu-qa-20261007 and /tmp/riddle-watch-menu-real-final.log.
+Source CSS/inspection state matches screenshots; later ticker reservation only.
+TS/copy1730zero/build PASS. Final build /tmp/riddle-watch-safe-build.log.
+
+IMPORTANT: card timeout experiments REVERTED, not accepted. Removing queued
+fight/cardWait exemptions and then goLive produced partial timing passes but
+not repeatable acceptance. Fresh sequential repeat still failed card1355ms,
+synthetic cage and ending-jump219→219. Original pacing preserved. Cage hook
+now installs before Send; two-name renderer fixture clears unrelated crowd
+actors; controls exclude inert close ghosts. Numeric assertions remain and
+those modules are still NOT green. Inspect actual per-frame card/held/cage
+state and first engine batches next; do not blindly alter timing bounds.
+
+Raw failure history and scope: docs/CLIENT_GATE_AUDIT_20261007.md,
+/tmp/riddle-watch-{final-gates,final-repeat,preserve-replay}.log. Final accepted
+focused run /tmp/riddle-watch-safe-checkpoint.log terminal0. No new full-client
+verdict: baseline80/111, with scoped resolutions only. Core/WASM inputs unchanged.
+No deploy;95fun active/unverified. Final runner closes its owned ephemeral
+server; owned5381/5382 closed; shared5219 preserved.
+
+**SHARED WINDOW CENTERING / CURRENT RUN-CLEAR AND APPEARANCE GATES — 2026-10-07:**
+
+Actual defect fixed in chrome.css: old framed-sheet rule overrode centered
+window bottom padding with0. At320px it shifted window64px down and overlapped
+console (bottom836 vs console788). Explicit centered bottom HUD inset+16px
+gutter now wins. Unchanged chrome184checks PASS at320/400/768/1440 (expansion,
+HUD resize, viewport resize). Real earned WASM Tactics320/400/1440 centererror
+<2px, no overlap/overflow/pageerrors; screenshots shown. Evidence
+scratchpad/window-audit-20261007; /tmp/riddle-chrome-{audit,fixed}.log.
+
+Looks test builds house manually and uses Hero Details → Appearance rather
+than hidden camp portrait stud; all16appearance/save/reload/renderer checks
+PASS7.7s. Runclear builds house before Send, asserts exact data-why Rust reason
+and current collected wording. Allparts GPU PASS125.7s, retaining20word,
+rarity/silhouettes, exit/reason/death/report/autodismiss bars. Failed old/first
+reruns retained. TS/copy1730zero/build PASS; no Rust or WASM input changes.
+
+Full suite still not green: baseline80/111. Six formerly failing modules now
+have focused passes across the last two checkpoints; not a new full verdict.
+Next audit current Speed/editor/report/trace/replay/restock/first-load selectors
+and actual failures in docs/CLIENT_GATE_AUDIT_20261007.md; don't restore removed
+controls or weaken numeric bars. No deploy;95fun active/unverified. OwnQA5380
+closed after screenshots; shared5219 preserved. No pending owned checks.
+
+**CUT35 PUBLIC GUNNER / CLIENT FAILURE AUDIT — 2026-10-07:**
+
+UI_READY=true; missing LABEL.gunner fixed so public unowned hero picker shows
+the fifth Rust offer (CLASSES remains4 default/fake IDs). Actual earned seed3
+unlock camp1440/400/320: public button pays8marks/selects Gunner, short gun
+pays275 once, class/gun/marks persist through real page reload, no overflow or
+pageerrors. Seven selected-class skill chips visible. Screenshots shown; QA in
+scratchpad/gunner-public-qa-20261007. No grants, deployment or95score claim.
+
+New public-offer test checks locked fresh, earned available, cost/ownership and
+duplicate full-save refusal; old hidden-offer assertion replaced with available
+offer and unchanged-save assertion (missing XP/pay/refusal checks retained).
+675corePASS/oneignored,14toolsPASS134s; TS/copy1730zero, fast all-targetclippy,
+webbuildPASS; realWASM5482237B. Fresh routine18-caseFULL PASS, source
+5a82e7f17f85d591, session63334 terminal0. Sixoldfixture fullsaves/advance exact
+except prior intentionalmeters. Broader exhaustive audit uncertified.
+
+IMPORTANT: old fullclient session65678 is TERMINAL1:80/111PASS581.6s, not
+pending/green. Raw /tmp/riddle-gunner-current-all-client.log. It started before
+public exposure. Audit docs/CLIENT_GATE_AUDIT_20261007.md records31failures,
+stale selectors/wording and unclassified actual regressions. No cases removed.
+First corrections: live-roster now exactD1/D7 Delving on old activity-free wire
+plus bounded first-request wait, all19identity/dedup/stale checks retained.
+Quiet clarity:paint PASS5checks with unchanged3s bar. Reduced-motion diagnostic
+shows wide query true before event delivery at100ms; await actual query/layer
+transition within1s. Final ambient+roster2/2PASS10.3s at400/1440. Production
+particle code unchanged. Preserve failed baseline and raw diagnostic.
+
+Next highest priority: audit/fix remaining fullclient failures against current
+manual-house/late-pen/compact-Speed contracts; unknown chrome/trace/report/replay/
+restock failures need actual inspection. Do not restore unwanted controls or
+claim all-client green from scoped passes. Then fresh played idle-hybrid fun
+evaluation;95 still active/unverified. All ownQA5378/5379 closed; shared5219
+preserved. No owned pending jobs from this checkpoint.
+
+**CUT35 CURRENT CAMPAIGNS / CATCH-UP / ROUTINE GATE — 2026-10-07 (PARTIAL):**
+
+Backup/Forge pushed as7e59c96. Current normal earned unlock camps with paid
+ordinary upkeep, no optional backup: all6 actualD13 at8h; mastery long/short
+seed1=136/96h,3=128/104h,5=104/96h. All6 within7days, superseding old pre-
+captive-fix misses. Tier0 clears16/24h,48/56h,40/32h. Evidence
+scratchpad/gunner-campaign-current-20261007/results.json.
+
+Bothguns1/3-slot8h actual reload-start: native/WASM report/save exact at every
+whole/half-hour/uneven slice and save/reload boundary; final acrossmode reports
+and saves exact. ExtraFighters legally bought, not3earnedGunners. Alternating
+equal-work controlledL3 profile versus50016d8,4warmups/256samples: long+5.61%,
+short+4.69%; completeStep/save exact, noadjacentretreat. Not generalperf claim.
+Sixoldfourclassfixture loaded/advanced saves exact, advance gameplay exact
+excluding intentionalmetersfield. Evidence gunner-backup-acceptance-20261007.
+
+Routine18caseFULL PASS/source0928ba96bca640dd; session49806 terminal0,
+/tmp/riddle-gunner-current-full-gates.log. Broad statistical/system-removal
+audit separate. Focusedclass/XP/GunHUD3/3PASS. Earned death/replay1440/400/320
+PASS, real worker/screens-confirmed log/json. Initial QA assertions counted
+inert150ms sheet-closing ghost; actual sheet closure now checked separately.
+Replay gunHUD contrast on parchment fixed with dark inset; fresh5377 computed
+style/screens1440/400/320 PASS and web build PASS. Fullclient session65678
+still pending (/tmp/riddle-gunner-current-all-client.log). OwnQA5376 closed;
+own5377 closed after fresh screenshots; shared5219preserved.
+
+PublicUI_READY=false. Finish fullclient/latest polishedscreens then legal public
+unlock/choice flow before exposing Gunner. No deploy;95fun unverified.
+
+**CUT35 OPTIONAL PAID MELEE BACKUP / REVERSIBLE PACK / COMPACT FORGE — 2026-10-07 (PARTIAL):**
+
+Home-only Gunner `gun_sidearm` costs one locked kit unit once. Free Pack/Stow
+retains ownership; selected backup is a reserved permanent-kit sword at the
+existing weapon enchant. Learned reflection uses the ordinary melee action;
+gun restoration retains kit despite full inventory. Found swords still drop.
+Workers and baseline paid upkeep exclude optional purchases. Exact refusal,
+actual send/retention, save-load, free toggle and full-pack tests pass.
+
+Six earned fixedTier5 paid builds ALL clear at first8h check-in; no grants or
+later manual spending. Locked prices seed1/3/5=225/275/200. Baseline remains
+40/32h,24/8h,FAIL48/24h. Initial backup experiment regressed seed3long; full-pack
+restoration retention fixes it. Preserve all three result sets under
+scratchpad/gunner-fixed-{no-sidearm,sidearm,sidearm-retained}-20261007.
+New permanent gunner_fixed example loads earned sources; gunner_support only
+buys normal KIT_SLOTS. Baseline source gunner-earned-descents-captive-fix-20261007.
+
+Quick674corePASS/oneignored,14toolsPASS119s; all-target fast clippyPASS.
+Six full actual first-run Step/save native/WASM comparisons exact with positive
+gun/reload/melee events; actual Pack/Stow and away refusal parity. WASM5479893B.
+Final TS/copy1729zero/buildPASS. Focused Gunner/merge2/2; Forge requests34checks
+at400/1440PASS. Real headed Forge1440/400/320 buys exact price, freeStow/Pack,
+no overflow/errors. Finished upgrades moved into Details. Screenshots shown;
+scripts/evidence scratchpad/gunner-sidearm-qa-20261007.
+
+UI_READY=false. Next remeasure actual initial-kit/mastery campaign using current
+runtime (old seed1 mastery168/152h,other4miss was before captive correction),
+then full choice/death/replay, one/three-slot8h parity/perf and current18gate.
+No deploy. Fun95unverified. Shared5219 must stay up; temporary5375 is own QA.
+
+**CUT35 ALL ACTION ART / SKILL CHIPS / VALID RULE SHARES — 2026-10-07 (PARTIAL):**
+
+Six action bitmap masters/packed96px icons complete; existing fire equipment
+icon used. Four new built-in images (reload,fast_reload,smoke,finish) truealpha,
+24/32px dark-background inspected; all117 prioricons pixel-identical. Sources/
+full prompts art/prompts/gunner-actions-20261007.md. Shared classSkillChip now
+used by both class pickers; Gunner display ladder added (was missing, initial
+QA caught zerochips). Activeclassfirst keeps all7Gunnerchips above the fold.
+CLASSES remains4/defaultcatalogue and coreUI_READY=false. Initial TS unused
+verbLabel removed. Actual earnedTier5 worker1440/400/320 all7icons/nooverflow/
+pageerror/tap tipsPASS; screenshots shown. Art QA under gunner-actions-final-
+20261007; temporary5375closed/shared5219preserved.
+
+Rule counts can exceed actions (guard/chore events in one action). Corewire and
+clientmerge now divide fires by ALLrule fires, preserving everycount/action and
+oldrawsaves. Rawactivation denominator, no clamp or sim-input change. Hover
+shows counts/denominator; desktopactualchores100% replaces113%. Coretest for
+multi-rule/action+restoredcounts; clientmerge3checks PASS. Fullquick672corePASS/
+oneignored,14toolsPASS108s; fastworkspace/alltargetclippyPASS; final TS/copy1721
+zero/buildPASS. Focused merge/Gunner2/2PASS. RealWASM5479094bytes. SixFULLearned
+Tier5 native/WASM event+save comparisons exact, each positive firing/reloading.
+Events long/short:1=7471/7052,3=6949/11053,5=6488/6427. Pre-change first10000
+tick gameplay events exact after removing only meters. No new generalperf/full
+current18gate certification. Preserved scripts/evidence gunner-meter-replays-
+20261007 and gunner-actions-final-20261007.
+
+Remaining seed5long actualTier5-after replay D18deathLich:5 reflected shots,
+no sidearm/gun-ready. Initialinv fire/heal/heal/leash; no carriedmelee; vaultonly
+bow. Existing correct sidearm counter requires carriedowned melee. Next make
+earned backup preparation accessible/observable; don't grantstats or bypass
+reflection to forcebaselinepass. Full classchoice/death/replay/initialkit+18gate
+acceptance stillopen. Current5/6Tier5pass retained. No deploy;95fun unverified.
+
+**CUT35 CHAINED-GATE FIX / EARNED TIER5 / AIM-BURST ART — 2026-10-07 (PARTIAL):**
+
+Authoritative new baseline/captive-fix descent results are in scratchpad/
+gunner-earned-descents-{baseline,captive-fix}-20261007. Six unchanged baseline
+336h climbs all failed to ownTier5. Five camps' recent60runs had53–56 stuck
+returns. Actual seed1long full replay: D10 return at57/57HP, chained captive
+blocking stairs. Firearm/aim required hostile, although ordinary attack view
+admits adjacent chained captives. gun_target_alive now matches that exact gate
+rule; distant/un-chained neutrals/allies remain protected. No stats/timers/grants
+changed. Test verifies both guns, actual killed gate/no-friends event, restore
+exactness, refused protected targets exact, real prepared shot. Initial fixture
+was two tiles away; next attempt tried prepare twice rather than prepare/fire;
+both corrected. Full quick671corePASS/oneignored, TS/copy1721zero. Native-host
+tool test sandbox failure; local-server rerun2/2PASS. Other6tool filesPASS.
+Final workspace/alltarget fast clippyPASS (initial spacing lint corrected).
+Build/focused client3/3PASS. No new full/current18gate or perf certification.
+
+Same seed1 saved replay now reachesD18/deathLich. All4632events/finalsave
+native/WASM exact. Six real earned Tier5 send/10000tick/fullsave samples exact;
+fastWASM5473814bytes. All six now actually earnTier5: climb long/short hours
+seed1=80/144,3=88/152,5=88/112 (partially played initialTier1, not fresh times).
+Fixed paidTier5 clears long/short:1=40/32,3=24/8,5=FAIL48/24. Five-of-six,
+not full acceptance. Next investigate seed5long real Lich counter/build behavior.
+Permanent gunner_descents retains public earned tier choices/failures;
+gunner_trace records actual saved run events. Existing paid camp moved verbatim
+to examples/gunner_support/mod.rs, verified against HEAD source.
+
+Aim/burst built-in generated masters copied to art/ui/icons/v_gun_{aim,burst}.png,
+packed96px, wired verbIcon; basefire uses existing it_long_gun. 115oldicons
+pixel-identical. Prompt/source provenance art/prompts/gunner-actions-20261007.md;
+32px dark-background inspection. Remaining4action icons pending. Actual headed
+Tier5 worker1440/400/320 nooverflow/errors/tipsPASS; screenshots shown. Own5375
+closed, shared5219 preserved. UI screenshot Rules chores113% needs accounting
+investigation; do not call it resolved. UI_READY=false; no deploy;95fun unverified.
+
+**CUT35 RELOAD RETREAT / GUN-BOW MATCHUPS / QUIET ACTUAL COMBAT LOG — 2026-10-07 (PARTIAL):**
+
+Accepted change: active default Gunner reload spends its ordinary scheduled
+otherwise-idle action on retreat only when an adjacent hostile/legal step exists.
+No movement on reload-start, no early fire/refill, no new stat/field or shortened
+20/15timer. Safety/player/drills/chosen policy retain precedence. Earned L5 Smoke
+remains distinct/higher priority with its blindness/cooldown; normal retreat grants
+neither. Blocked/distant reload waits retain full save exactly. Two meaningful
+tests: actual tick10 moves, tick19fire refuses/full-save unchanged, tick20loads/
+fires; restored execution exact; blocked/distant quiet waits. Updated existing
+Smoke test differentiates ordinary movement from blindness. Focused34 firearm
+PASS; initial test log included setup shot/failed assertion before event buffer
+was cleared, retained in close-aim-20261007/reload-test-initial.log; finalPASS.
+
+Both close-aim experiments rejected/preserved: all-adjacent skip helps seed1/3
+but regresses5; normal-max finishing skip regresses1/5. Patches/data under
+close-aim*, close-finish*. Production aiming policy restored. Explicit owned
+Corridor fighting and Unbowed also fail seed1long48h; artifacts owned-{corridor,
+unbowed}-20261007. Do not hide failures or claim those builds solve the wall.
+
+Permanent examples/gunner_matchups.rs: controlled open-room paired32seed tests,
+L3/L10, long/short guns and BOTH sustained/kite-first bows. Explicit fixture
+HP/armour/light/class levels, no grant-free campaign claim. Living unstunned foes,
+1200tick timeout, separate failures/conditional clear medians, paired ranking
+(clear first, time then harm; all failures tie). First kite-only bow comparator
+was weak (close pack0/32); sustained policy added, old results retained.
+Final reload-retreat L3 close-pack clears long27/32 vs prior21, short32vs30;
+median clear harm22vs26 /9vs12, long time130vs100ticks (safer/slower).
+AtL10 all sustained builds clear all fixtures: armoured median long90/short170/
+bow330; close pack90/30/70; crossfire50/80/40ticks. Long wins armour29/32 vs
+short, short wins close30/32 vs long, bow beats long20/32 and short32/32 in
+crossfire. Scoped distinct strengths/non-dominance, not optimal Ranger/Tier5.
+Final files gunner-matchups-retreat-l{3,10}-20261007, baseline policies-l{3,10}.
+
+Current paid earned48/168h: D13 seed1 long/short16/16h, seed3=48/8,seed5=48/8:
+ALL6PASS48h. Mastery1long168h and1short152h, other4miss7days/L9. All6 Tier0
+actually clear within7days at128/144/128/80/136/88h, then explicitly restart
+owned descents at check-in, reaching playedD34. Seed5long slower than prior16h;
+no universal speedup. Data gunner-reload-retreat-paid{48,168}-20261007, paid
+choices unchanged/no grants. Earlier five-of-six/one136h numbers superseded.
+
+Full quick670corePASS/oneignored,14toolsPASS,115s; workspace/alltarget fast
+clippyPASS. Rebuilt realWASM5481152bytes. Six earned send/10000tick/full save
+nativeWASM exact, shots31/58,36/44,59/56 and completions31/26,35/20,59/25.
+Four full8h active-reload parity cases PASS: both guns one/threebloodlines;
+extra slots are legally bought Fighters, not three earned Gunners. Whole,
+half-hour, uneven/save-reload: every report/fullsave exact nativeWASM and final
+variants exact. Actual one-tick L3 close-pack retreat positive nativeWASM exact:
+long tick40 x4→3 deadline50/20; short tick30 y6→5 deadline35/15. Controlled
+fixtures, not earned progression. Old6save/event+2numbered fixtures exact.
+Equal-work native256alternating samples pergun vs retained50016d8 native-before
+(hash saved): real shots/aim/reload, identical fullStep/save; long+1.41%,short
++1.98% dispatch medians incl serialization, no transport/load. Excludes new
+intentional close-retreat work; not a universal/fresh shipping perf audit.
+Evidence scripts/results under gunner-reload-retreat-qa-20261007.
+
+Actual screenshot caught remaining automatic rules in plain log and ordinary
+Gunner✗no target fallthrough warnings. TS now suppresses automatic handler logs
+and routine fallback warnings in watch/render, retains authored fire refusals,
+actual shot/aimed/burst/finisher names and selected rules; whitelist real reload/
+completion/aim/Smoke callouts; hit/hurt dedup and basic colours intact. Native
+truth/events unchanged by display cleanup. Focused gun/HUD/clock/log63, combat
+rule coalescing30 and end-caption19 assertions PASS3/3 after this edit; latest
+TS/copy1721zero/buildPASS.
+Headed actual earned worker1440/400/320 QA: no overflow/errors/tap tips. Initial
+QA transient interstitial click raced animation/intercepted, log retained;
+use stable pause after card naturally hides, not forced clicks. Latest desktop
+and phone checkpoints shown to owner; ownQA5375 closed/shared5219 preserved.
+
+Next: Tier5 preparations/owned descent climbs, action art/readability, full
+class choice/death/replay UI and routine18-case acceptance before public class
+exposure. UI_READY=false, no deployment.95fun active/unverified. Do not equate
+these controlled/scoped checks with full A–E or actual fun evaluation.
+
+**CUT35 CHOSEN POLICY ACTS / FULL EARNED HORIZON / ACTIVE-RELOAD PARITY — 2026-10-07 (PARTIAL):**
+
+Moved automatic class:gunner below selected tactics/temperaments, above generic
+stance fallback. Pen/drills/stance safety order retained. Previously automatic
+handling swallowed choices (including reload waits). Direct attack helpers now
+return actual success; all eight direct attack branches inside tactic cards
+propagate firearm refusals, so empty/reloading guns do not fake card success
+and starve the reload row. Non-firearm resolution remains true/unchanged.
+Two meaningful scheduled-action tests (both gun variants; loaded/reloading
+Skittish) verify selected Rule events, ammo spending, reload fallthrough,
+no phantom damage and original deadline. Native full quick668pass/oneignored,
+14tool checks,110s; fast workspace/alltarget clippy, TS/copy1717/zero, codegen,
+web build and focused client2/2 green. Fast actualWASM5481230bytes. No full gate
+or new performance certification. Earlier gunner_tests filter matched zero;
+correct firearm::class_tests actually ran14tests, including both new tests;
+full quick covers all668. Earlier recorded30focus tests remain historical.
+
+Permanent gunner_campaign now accepts --seed/--gun/--tactic OWNED_ID and
+--temperament OWNED_ID|none via public home actions, with explicit build fields.
+No grants, no Pen edits. All defaults still unchanged. New default paid48h
+results: seed1long FAIL(max11),short16h;seed3long48h,short8h;seed5long16h,short8h.
+Full168h: seed1long D13 at56h (FAIL48h), mastery136h (PASS7days), max32;
+other five miss mastery (levels9/7/9/9/8), depths34/17/34/34/34. Earlier
+smoke35 six-of-six/short168h numbers belong to prior runtime and are superseded
+for current balance. Preserve artifacts gunner-chosen-policy-paid{48,168}-20261007.
+Explicit owned Boss focus and removing temperament each also fail seed1long48h;
+artifacts gunner-chosen-policy-{boss-focus,no-temper}-20261007. Do not blame
+Light hands alone or claim a universal improvement. No numeric gate weakened.
+
+Six earned normal starts/send/10000tick StepResults/full saves remain exact
+native/WASM; positive shots39/42,55/63,59/65 and completions39/18,55/28,59/27.
+Eight-hour acceptance script gunner-chosen-policy-20261007/eight-hour-parity.mjs
+begins an actual reload, compares each native/WASM report/full save and reloads
+between uneven slices; whole/half-hour/uneven final saves/reports must match.
+It buys additional slots with owned gold: one Gunner plus two new Fighter slots,
+not three earned Gunners. Both guns, one/three-slot results PASS (four cases), recorded there.
+Old four-class fixtures: six full save/event cases and two numbered saves exact.
+Headed actual rebuilt worker1440/400/320: no overflow/errors, actual tap tips;
+watch screenshots/qa.json in gunner-chosen-policy-20261007, phone shown to owner.
+Own QA server5375 closed; shared5219 preserved. Class still UI_READY=false;
+no deployment;95fun remains active/unverified.
+
+Next: improve actual long-gun shot/preparation choices against close threats
+without changing20tick reload/shot stats or hiding chosen policy; measure paired
+normal campaigns, preserve failures. Seed3long D17 wall remains; arenas/Tier5,
+action icons, equal-work positive performance, current18case gate and actual
+fun evaluation still open. Read current results before using older checkpoints.
+
+**CUT35 NORMAL EARNED CAMPAIGNS / RELOAD SMOKE / QUIETER WATCH — 2026-10-07 (PARTIAL):**
+
+Permanent examples/gunner_campaign.rs begins empty Session towns on seeds1/3/5,
+manually builds houses/sends/hire workers and buys only offered paid kit/Legacy.
+No seed/depth/XP/currency/kit/fact grants or Pen edits. Earned Tier0 unlock camps
+at16/24/16 offline-checkin hours (first manual session separately logged): parent
+records19/13/19, class levels5/4/4, kits1/1/1,2/2/2,1/1/1. Files under gunner-
+normal-unlock-20261007; all before King, no prior Gunner XP. Historical record
+survives a class switch: checking lineage.best_depth is a false-pass trap.
+Both preparation tools now measure report.deepest (actual completed run depth),
+not inherited record. New campaign records paid actions, complete starts/afters,
+actual gun at send and positive first10000tick shots/reload completions. A1000tick
+assertion originally stopped the first trials because reload could occur later;
+failed directories retained, sample bounded10000 and accurately labelled. That
+proof clone never advances campaign XP/gold. Counts reports skip optional analysis.
+--unlock-only / --from earned dirs / --hours48 / --seed3 --gun long_gun give
+bounded tuning without replaying the whole unlock or every case. Diagnostic,
+not the routine gate; targeted/short horizons cannot certify three seeds/mastery.
+
+Baseline pre-smoke current earned fixed kit168h: D13 long/short1=16/16h,
+3=56/128h,5=8/none; mastery all fail. Paid upkeep baseline D13 all six<=48h,
+one short seed1 mastered160h; five builds cleared but four other mastery
+observations stopped early at clear, so do NOT call those complete7day failures.
+Rejected automatic reload-smoke below50% experiment: some gains, multiple
+regressions. Preserve patch gunner-normal-smoke-trial-20261007/smoke50.patch
+and fixed/upkeep-smoke artifacts. Accepted policy retains original35% threshold,
+permits an earned Smoke during active reload, still below safety/player/drills;
+empty uncommitted guns retain reload-first order. Real action, level/cooldown,
+blindness/movement, refusal/full-save and original20tick completion tested.
+No ammo refill, new damage/stat/XP bonus or additional scan on negative ticks.
+
+Final35% campaign also explicitly begins/repeats owned descents after a clear,
+so mastery observation continues to168h. Paid upkeep D13 long/short:
+seed1=32/16h,seed3=48/8h,seed5=16/8h (all six pass48h with declared paid choices).
+Short seed1 masters168h; remaining five fail (L9/7/9/9/8 at168h).
+First Tier0 clears short3/96h,long5/152h,short5/72h; no universal speedup claim.
+Fixed initial kit48h: only long1/16h,short1/16h,long5/8h pass; both3 andshort5
+fail. This shorter fixed run does not certify7day mastery. Exact files in gunner-
+normal-{fixed,upkeep}-smoke35-20261007. Full C also needs arenas/Tier5; A–E open.
+
+UI automatic Gun handler no longer floods ticker/map with gunner tactic/Gunner
+rat; actual damage/log/ammo and positive aim/smoke/reload callouts remain.
+Explicit fire rows retain captions. Meters/rules say Gun handling. Empty chambers
+say Empty instead of Ready. Fresh client42Gun assertions+19end-caption pass.
+Real headed Tier0 earned import1440/400/320: no overflow/errors, actual tap tips,
+map/screenshots under gunner-normal-smoke-trial-20261007/watch-*.png/qa.json.
+Full quick666core PASS/one ignored,14tool PASS,80s;30focused0.09s; fast all-target
+clippy/codegen/TS/copy1717zero/build green, real fastWASM5473711B. Six new earned
+normal camp/send/10000tick/full-save native/WASM exact, positive shots39/42,55/63,
+59/65 and completions39/18,55/28,59/27. Not8h/three-bloodline proof. Six old full
+save/event fixtures and two numbered saves exact. No new perf/routine18case audit.
+Public UI_READY=false; no deployment;95fun still active/unverified.
+
+Next highest-impact investigation: packages::compile places class:gunner before
+chosen tactics/temperaments (line539). gunner_tactic normally succeeds, including
+reload waits; this can prevent chosen cards/temperaments from acting. Inspect
+and restore meaningful chosen-policy precedence before default gun handling,
+while retaining safety/drills/player order and ammo commitments. Then explicitly
+owned boss/counter builds for seed3 long's D17 wall, arena comparisons/Tier5,
+action art/full8h one/three-slot parity/perf/routine gates and a real fun evaluation.
+
+**CUT35 PLAYED GUN STATE / COMPACT WATCH AND REPLAY — 2026-10-07 (PARTIAL):**
+
+ObservedGun compares actual worn equipment/chambers, damage, aim and absolute
+reload deadline around real ticks. Copy-only negative path; no allocation,
+inventory/enemy scan or per-tick countdown event. Positive changes emit boxed
+Ev::Gun (explicit null when stowed/lost); Ev remains80B, metadata events excluded
+from renderable-density gates. Snapshot/event share Rust-owned metadata.
+Reload duration saved with default/zero omission for old prototypes; fast reload
+reports actual10/8 ticks rather than20/15. Existing absolute commitment unchanged.
+29focused firearm/class tests PASS: burst fanout produces one chamber event,
+quiet countdown emits none, actual completion/aim/fire/sidearm clear/restore,
+save/load event equality and80B event size. These arenas are not earned progression.
+
+Shared gunStatus component under watch portrait and beside death-trace replay
+caption:1/1 or2/2, Ready/Aim/Reload and tiny reload track. Renderer stores played
+Gun state and rebuilds it on forward/backward seek; watch/replay read the picture
+clock, never later camp gear. Same state getter in GPU and2D fallback. Rich existing
+stat tooltip supplies damage, tile range, reload seconds and armour piercing;
+hover/focus/tap through detailHost. Replay indicator initialized immediately.
+Headed real-WASM earned seed3/tier1 app at1440/400/320: no overflow/page errors,
+visible portrait chambers and actual tap tooltips. Fresh no-HMR client checks:
+33gun state/HUD/tooltip and19existing end-caption assertions pass. Actual played reload captured in400px watch/replay:
+0/1 Reload in both. Artifacts scratchpad/gunner-observer-20261007/{watch-*,reload-
+400,replay-400}.png, qa.json/reload-qa.json; not normal pre-King campaign proof.
+Synthetic browser state/clock checks are separately labelled web/tests/gunner-
+observer.mjs; run via tests/run.mjs fresh no-HMR server (shared HMR server may
+hold multiple tooltip module instances after edits). Retain failed QA artifacts.
+
+Full quick665core PASS/one ignored,14tool PASS, TS/copy1716/zero,149s. Fast
+all-target clippy warnings denied, codegen/build PASS; real fastWASM5473673B.
+Six old tier0/challenge loaded/advanced/events and two numbered saves exact.
+New controlled native/WASM61tick both-gun steps/saves and every uneven3/7/1/10/
+5/17/18 slice/save/reload exact (gunner-observer-combat-20261007), not8h/three
+bloodline acceptance. No new positive<=10% perf profile or routine18case suite.
+Public Gunner UI_READY remains false; original C35 A–E/mastery failures remain.
+No deployment;95fun active/unverified. Next actually earned normal pre-King camps,
+class balance/matchups/mastery/Tier5, action icons, full8h parity/perf/gates.
+Investigated wall-preparation-20261006/early-outcomes: actual seed3Tier0 homes
+but bestD8, so cannot legally unlock Gunner yet; do not relabel as D13 camps.
+
+**CUT35 GUNNER OPPORTUNITIES/SIDEARM/ART — 2026-10-07 (PARTIAL):**
+
+IMPORTANT CORRECTION: the original earned source camp explicitly selected
+bow100253. Earlier gunner-earned/opportunities/renewal/steady results measured
+Gunner-class play with a selected bow overriding the starting gun; they do not
+certify sustained firearm progression. Preserve all artifacts/failures. Permanent
+gunner_prepare now legally deselects only selected weapons via public loadout,
+retains non-weapon finds/authored rows, asserts real selected gun at first send,
+and records positive1000tick shots/reload completions. No XP/currency/stat grants.
+
+Default Gunner skips preparation when ordinary minimum damage finishes a foe;
+burst uses a tough primary or an actual legal forward neighbour needing damage,
+not unrelated visibility. Authored cadence/fire precedence unchanged. Forge
+offers derive damage through real Hero level/Legacy calculation (previously
+omitted inherited damage); button wording Selected/Select accurately refers to
+starting gun preference, with explicit selected finds still authoritative.
+
+Known ranged reflection now draws an owned carried melee sidearm for automatic
+Gunner/generic attack (one named sidearm action), using existing bow_swap parked
+weapon storage. No new save field. Direct authored fire retains reflection risk;
+unknown reflection does not silently know its counter. Same gun/chambers return
+once no ranged reflector is visible, gun ready callout; absolute reload survives
+parking, save/load and completion. Other classes retain old restore semantics.
+27focused tests pass, including real melee hits, unknown/direct-fire precedence,
+parked ammo, save/load, restoration and active20tick completion while parked.
+
+Current actual-kit earned seed3/tier1 campaigns, not normal pre-King seed1/3/5
+acceptance: gunner-sidearm-baseline longD13/40h, bestD23/L8 at168h; shortD13/8h,
+bestD15/L7. Paid Renewal/Brace respec: longD13/48h bestD13/L7; shortD13/24h,
+bestD23/L8. Mastery remains FAIL for both on current runtime. Sidearm opens D23
+for specific builds; no universal speedup claim. Earlier actual-kit short reached
+mastery160h before sidearm but current state does not. Rejected long14–22 damage
+trial worsened D13 to64/160h and missed mastery; damage restored6–10. All failed
+trials retained under gunner-{actual-kit,long14-kit,sidearm}-{baseline,renewal}
+directories. Need appropriate actually earned normal unlock camps and measured
+build/counter tuning; never weaken48h/7day/three-seed/Tier5 A–E acceptance.
+
+New built-in-imagegen Gunner sprite and portrait, distinct hunter hat/long gun,
+existing moonlit ink-and-wash direction. Source default/male aliases copied
+into art/generated and art/ui/portraits; exact prompts/provenance
+art/prompts/gunner-character-20261007.md. Atlas495frames QC zero warnings/fails;
+all493old frame dimensions/RGBA pixels exact.115icons/25portraits; primitive
+Gun size/colour fallback added. Real headed worker QA1440/400/320, actual earned
+loadout import, correct Gunner portrait/live sprite, no overflow/page errors;
+art-{forge,watch}-*.png and art-qa.json in gunner-actual-kit-baseline-20261007.
+Action icons/chamber-reload HUD/played replay updates/full D still pending.
+Class UI_READY=false, no deployment,95fun goal active/unverified.
+
+Current full quick663core PASS/one ignored,14tool PASS, TS/copy1716/zero,120s;
+latest27focused0.08s, fast all-target clippy warnings denied, codegen/web build
+green (existing bundle advisory), real fastWASM5467369bytes. Native/WASM
+complete loaded camp, send snapshot and1000tick full StepResult bytes exact:
+long3shots/3completions, short5shots/2completions, artifacts gunner-sidearm-
+baseline-20261007/parity.{mjs,json}. Not8h/multihero acceptance. Six old tier0/
+challenge event/save fixtures and two numbered migration saves exact. No new
+routine18case/full perf audit. Logs /tmp/riddle-gunner-sidearm-* and art-*.
+Temporary QA5373 closed after checks; shared5219 retained. Next complete actual
+normal progression/matchups, action art and observable played gun state.
+
+**CUT35 GUNNER CLASS/PROGRESSION/FORGE — 2026-10-07 (PARTIAL, EARNED GUN CLAIMS SUPERSEDED ABOVE):**
+
+Fifth Class::Gunner, paid8marks/historicalD13/home/house unlock, inherited
+separate classXP (missing old maps unchanged), home-only class switches. Real
+long/short owned kit preference/forge selection; short costs one existing unit
+once, owned switches free, explicit loadout wins. Named class:gunner default
+below authored/drill/stance guards and above ordinary tactics. Actual L3aim/
+burst, L5smoke, L7fast reload, L9finisher and L10gunslinger; all have numeric
+effects/gates/refusal coverage. Authored cadence preserved across switching,
+uses real firearm commitments, never Ranger ammunition-free helpers.
+
+New permanent gunner_prepare example uses actual earned seed3/tier1 source
+scratchpad/class-prepare-core-final-20261006/sentinel-start.json. No grants or
+authored-row deletion;21x8h. Both gunsD13 at8h, D18 later. Seven-day mastery
+FAIL: longL7/1262XP, shortL8/4178XP. Evidence scratchpad/gunner-earned-20261007/
+results.json and full start/after saves. Do not overwrite these failures or
+claim three-seed, Tier5, arena comparisons or full CUT35 acceptance. Next tune
+explicitly owned builds/progression and investigate common stuck returns from
+saved traces; then class portrait/sprite/action art, actual watch/replay chamber/
+aim/reload UI, 8h native/WASM one/three slots, perf and routine18case gates.
+
+Forge UI uses actual Rust offers; unframed silhouettes, readable gun names,
+completed kit uses actual owned icon. Headed real-worker earned import QA at
+1440/400/320: no page errors/horizontal overflow,225 gold short purchase exact,
+free owned switch. Screenshots forge-{1440,400,320}.png, forge-qa.json/script
+in earned artifact directory. Temporary QA5373 closed after checks,5219 retained.
+Gun UI_READY remains false: public offers hidden until complete art/UI/acceptance.
+No deployment;95fun goal active and unverified.
+
+Final quick661core PASS/one ignored,14tool PASS, TS/copy1716/zero,145s including
+compilation. Fast all-workspace/all-target clippy warnings denied, native
+codegen check, web build PASS (existing bundle-size advisory). Real fastWASM
+5466844bytes. Six old tier0/challenge complete event/save fixtures and two
+numbered migration saves exact; no new Tier5 or routine18case full gate here.
+Logs /tmp/riddle-gunner-progression-final2-{quick,clippy,wasm,web}.log,
+progression-{codegen,old-compat}.log and /tmp/riddle-gunner-forge-final-qa.log.
+New gunner_tests include positive normal first-send fire/reload, numeric real
+skills/refusals and authored cadence aim/burst/reload. Initial catalogue47
+assert legitimately updated48 plus Gunner8/tier3/marks price assertions. An
+earlier sandbox tool-host check failed; final complete quick ran with permitted
+native-host process access and passes. No gate/XP threshold weakened.
+
+**CUT35 FIREARM COMBAT/SCHEDULER CHECKPOINT — 2026-10-07 (PARTIAL):**
+
+Real firearm actions now fire/reload/L3 close_burst on actual equipped items.
+Pure target selection/LOS/range/hostile validation precedes chamber/RNG/memory
+mutation. Shared hit resolver retains ranged reflection, King rhythm, shields,
+marked damage and ordinary death/kill attribution; long gun ignores2 armour.
+Aimed primary shots do not bypass a secondary Warlord's shield wall; positive
+real interception is tested separately, with incidental pellets unaimed.
+Short gun fixed3target forward-neighbour spread; burst reserves2 chambers and
+uses one doubled damage roll per target. Generic/direct attack cannot bypass
+empty guns. Existing non-gun defence/RNG calculation stays unchanged.
+
+One saved Run.gun_reload item/deadline stops quiet batches before expiry; actual
+tick completes before hero actions, emits loaded once. State survives stowing,
+dropping/stolen ownership and saves. No inventory/monster scan on ordinary
+negative ticks; ownership lookup only at a positive completion deadline. No
+other gun can fire during a commitment. Snapshot GunSnap/TS expose actual worn
+item, chambers, damage/range/pierce, duration/remaining ticks; old heroes omit.
+
+17focused tests PASS; final quick653core PASS/one ignored,14tool PASS, TS/copy
+1705/zero green110s; final all-workspace/all-target fast clippy warnings denied,
+codegen check and web build PASS (existing bundle advisory). Real fastWASM
+5393860B rebuilt. Six old tier0/challenge complete event/save fixtures and all
+12older Tier5 style/base campaigns retain exact bytes. These are specified
+fixtures, not certification of all four classes or optional exhaustive audit.
+No fresh routine18case/full-Gunner perf gate run at this partial checkpoint.
+
+Permanent examples/gun_check.rs uses controlled literal reload/fire arenas;
+both guns fire/reload positively, active commitment starts at the checkpoint.
+61actual ticks, 2shots/2completions each. Whole versus uneven sliced/reloaded
+native saves exact; native/WASM every whole/slice StepResult and full save bytes
+match, including reload timer/GunSnap. Artifact source
+scratchpad/gunner-combat-shield-final-20261007/, parity script/report
+scratchpad/gunner-combat-qa-20261007/. This is not earned class/progression,
+48h/7day/Tier5 viability or8h one/three-bloodline acceptance. Logs
+/tmp/riddle-gunner-combat-{final-quick,final2-clippy,final-wasm,
+shield-parity,shield-old-compat,shield-lower-tier,shield-web,codegen,
+shield-fixtures}.log. Earlier failed tests used an invalid
+always-condition fixture; fixed to existing unconditional hold rows, no bars
+weakened. 17final focused tests in shield-focused.log.
+
+Gunner STILL NOT SELECTABLE. Next actual fifth class/home-only paid unlock,
+forge ownership/gun preference and named first-send class tactics; then real
+L3aim/L5smoke/L7fast-reload/L9finisher, art/watch/replay/UI and full CUT35 A–E.
+No new rendered screen to screenshot; capture real app at the visible class/UI
+milestone. No deployment. Keep-going95fun goal remains active/unverified.
+
+**CUT35 GUNNER SAVED-WEAPON FOUNDATION — 2026-10-07 (PARTIAL):**
+
+Per-item optional firearm state in item.rs; firearm.rs owns long/short profiles,
+absolute20/15tick reload deadlines, checked overflow, chamber reservation and
+short90-degree forward spread geometry. Gun definitions are deliberately
+outside legacy ITEMS/global loot/token enumeration. Existing bow is not a gun.
+Seven focused tests cover boundary/refusal/swap/serialization/burst/geometry/
+old-item JSON; full quick643core PASS/one ignored,14tool PASS, TS/copy1705/zero,
+235s including rebuild contention. Final all-target fast clippy warnings denied
+passes. Real fastWASM5383173B rebuilt. Six original tier0/challenge complete
+loaded/advanced event/save fixtures and all twelve older Tier5 style/base
+seed1/3/5 campaigns retain exact bytes. Logs /tmp/riddle-gunner-state-
+{quick,final-clippy,wasm,old-compat,lower-tier}.log. These fixture comparisons
+do not certify all four classes or the optional exhaustive audit.
+
+This is NOT a playable Gunner checkpoint. No class enum/unlock/forge selection,
+combat firing/damage/counters, timer scheduler or UI integrated yet. Saved state
+primitives alone do not prove whole/sliced gameplay parity. Next connect real
+combat and scheduler (batch stops at deadlines; emit completion once), then
+class/ownership/default policy and full CUT35 A–E delivery. Initialise actual
+run guns loaded at send without refilling ordinary swaps or retained live saves.
+No new rendered screen, no deployment. Keep-going95fun goal remains active.
+
+**CUT34 CONTENT/PERFORMANCE CHECKPOINT; GUNNER NEXT — 2026-10-07:**
+
+
+Leeching is implemented, with Rust-owned Tier6+ preview/catalogue, saved elite
+identity, real on-hit recovery, death metadata, replay HP and green plain-text
+combat log. Tier0–5 selection/catalogue stays exact. Five new meaningful tests
+cover birth hash/exclusions, real10→2/1→1/missing-HP/overkill, poison/Hex/
+Riposte/mirror and hazard/ranged/ally exclusions, saved/split/tame identity.
+Existing absence test additionally covers Tier6. Full final quick636core PASS/
+one ignored plus14tool tests, TS/copy1705 green160s under competing work.
+All-target fast clippy warnings denied, codegen check, build and real fastWASM
+5380527B pass; existing bundle advisory. Routine18case gate source
+fccfd9ac8d76acb4 terminal0, no cached legs: wire50.2s, metrics84.7s,
+dayplayer203.5s/all selected bars PASS. Current-source recheck confirms the
+same compiled-runtime key and all three genuine completed cached legs. Test-
+only trace assertion dereference preserves the complete comparison.
+
+Six Tier6 cases use the same actual earned parent XP/owned kit/policy and162
+paid Legacy from Cut33, synthetic seed1/3/5 and tier eligibility, no campaign
+grants/edits. Sentinel clears16/24/24game-hours,72/133/146 recoveries,
+75/145/168 enemy HP restored. Hexbinder16/16/16,53/75/38 recoveries,
+61/87/42 enemy HP restored. All reachD34 within48h. This is fixed-build
+viability, not legally earned Tier6 progression or every higher-tier balance.
+Permanent examples/leech_check.rs; artifacts scratchpad/leeching-20261007/.
+A separate normal stepped D19 encounter from that diagnostic preparation
+contains a Leeching iron golem recovering1HP after an actual1HP strike; no
+arena/encounter/HP overrides. Entire native/WASM step/snapshot and before/
+after save bytes equal the original recorded checkpoint after optimization.
+
+Final real-worker tests320/400/1440 prove actual recovery, whole-step/save
+reload equality, poison counter, replay HP including seek, green log entry,
+three-elite Ascension6 preview/cancel full-save read-only and tooltip details.
+Actual headed GPU watch screenshots at all three widths load the full source
+exactly, show the normal recovery log, have no errors/overflow and preserve
+existing elite marking. History entry was explicitly scrolled into view for
+final images; earlier screenshots had it outside the visible three-line history.
+Temporary5482 and browser cleaned up, shared5219 retained. Capture pre-compaction
+JSON remains byte-exact under the final engine, so played screenshots represent
+identical event/state behaviour. Artifacts scratchpad/leeching-qa-20261007/.
+
+Final native/WASM8h whole/half-hour/uneven-reloaded entire reports/saves match
+both selected classes with one/three legally funded bloodlines; each slice
+response/save exact. Six original tier0/challenge loaded/advanced complete
+WASM baselines exact. All twelve older Tier5 style/base seed1/3/5 full campaign
+start/after saves remain exact, including8/16/24h outcomes. These verify the
+specified fixtures, not an exhaustive migration/system-removal audit.
+
+Initial positive-hit microbenchmark failed23.12%; allocation-free recovery
+source alone still failed21.62%, both results retained. Spawn Entity and exit
+Trace payloads are now boxed, preserving JSON while reducing native Ev from
+208 to80bytes. Rare spawn/exit allocations replace excess storage on every
+ordinary event; recovery source is a bounded enum, not a per-hit String.
+Final equal-work500tick/damage calls,32foes,101samples,9counterbalanced rounds
+versus e2e74c7: median ns/call tier0 none517.400→510.860 (−1.26%);
+tier5 none540.020→534.920 (−0.94%); tier6 none546.740→535.560 (−2.04%);
+positive Leeching537.080→543.120 (+1.12%). All meet10%, each500-hit positive
+sample restores exactly1000 extra enemy HP. Same9hero resets included; parsing/
+map generation excluded. No full catch-up/FPS claim. Permanent leech_perf.rs;
+source/binary hashes and full interleaved rounds retained in perf.json.
+
+Cut34 is complete within these acceptance boundaries. No deployment; optional
+exhaustive/statistical/historical audits remain separate. Owner now explicitly
+requests Gunner with distinct long/short guns: CUT35_GUNNER.md is next priority
+before Rogue/Ranger styles. Contract and transparent equipment icons prepared;
+Gunner gameplay/unlock/class/portraits/forge/reload UI are NOT implemented yet.
+Keep-going goal remains active. mine.bars and scratchpad remain unstaged.
+
+**CUT33 APP/ART/GAMEPLAY VERIFICATION CHECKPOINT — 2026-10-07:**
+
+
+Rust-owned offers now expose parent XP, level/depth gates, effect, duration,
+cooldown and default row. Native, WASM and actual worker methods choose/remove
+styles. Chunky Hero review, explicit override priority, remembered presence,
+Hex enemy status and dedicated transparent icons are implemented. First-town
+choices stay hidden. Live presence uses the sent hero snapshot. Failed Hex
+range/sight validation now preserves the remembered target exactly.
+
+Final quick:631 core PASS/one ignored,14 tool tests, TS and copy checks green
+in219s under competing work;15 focused specialization tests PASS. All-target
+fast clippy warnings denied, codegen check, fast WASM5378837B, web build and
+copy-lint1705/zero violations pass. Existing bundle advisory remains. Final
+routine18-case suite terminal0, source388e1612426bc870, no cached legs:
+wire75.4s, metrics129.3s, dayplayer226.3s/all selected bars PASS. Optional
+exhaustive/statistical/system-removal/historical audits remain uncertified.
+
+Permanent style_check.rs pairs seeds1/3/5 on the same earned parent XP, owned
+gear/policy and162 paid Legacy points; seed and Tier5 eligibility are synthetic.
+No campaign purchases or policy edits. Fighter base clears8/8/8 game-hours;
+Sentinel8/8/16, with716/627/1308 actions and460/426/758 counters. Caster base
+8/24/16; Hexbinder8/8/8 with932/1156/912 Hex actions. All twelve reachD34 and
+unlock6; all six selected cases meet48h. Sentinel is slower on seed5. This is a
+fixed-policy comparison, not an optimized base-policy search or proof of every
+higher-tier build. Final artifacts: scratchpad/class-balance-final-20261007/.
+
+Actual earned native/WASM replay JSON matches completely: Sentinel run181,
+72 exclusive actions/30 counters, hash687f35dac044b4d3; Hexbinder run244,
+27 actions, hash1b05d4e7f2d30e84. Removing the camp style preserves the entire
+existing replay. Whole8h,16 half-hour slices and uneven reloaded slices match
+entire saves/reports for both styles and one/three legally funded bloodlines;
+each native/WASM slice response/save also matches. Six older complete WASM
+baselines and two numbered native saves remain exact. Capsules are not newly
+persisted across page reload; this proof concerns existing replay capsules.
+
+Meaningful real-worker UI tests cover320/400/1440, locks, preview/cancel,
+stale class review, actual away refusal, one-call confirmation, adopted tactic,
+remove/retained XP, exact durable reload, keyboard details and inner identity
+bounds. Tactic tests cover old/new icon sizing and named style activation.
+Actual earned headed screenshots at all three widths preserve entire read-only
+saves, have no errors/overflow, and restore remove/rechoose state exactly.
+The320 identity clipping and oversized live cue icons found during QA are fixed.
+Artifacts: scratchpad/class-ui-20261006/; exact built-in imagegen prompts:
+art/prompts/class-styles-20261006.md. Sources art/ui/icons/style_*.png, packed
+web/public/ui/icons/style_*.png, existing packer validates alpha corners.
+
+Permanent style_perf.rs uses equal32-foe arenas,500 tick/damage calls,101
+samples, same9 hero resets and nine counterbalanced old/new rounds versus
+a39e4d7. Median ns/call: tier0 none492.840→509.020 (+3.28%); tier5 none
+514.762→538.822 (+4.67%); actual Riposte527.680→563.642 (+6.82%); actual Hex
+520.360→545.380 (+4.81%). All meet10%; positive effects verified. Parsing and
+map generation excluded; identical reset/clone work included. This isolates
+tick/status/damage overhead, not catch-up, rendering or whole-combat pacing.
+Source/binary hashes, full rounds and parity/replay artifacts retained alongside.
+
+Cut33 is implemented and verified within these acceptance boundaries. No
+deployment. Broader content work remains: audit base-class default/training
+friction before adding more classes, expand elite/boss/loot mechanics for higher
+tiers, then optional Rogue/Ranger specializations with demonstrated distinct
+roles. Preserve the failed generic-Bolt14day preparation; do not grant XP or
+silently replace authored rules. Keep-going goal remains active.
+
+Earlier core-only checkpoints below are historical.
+
+**CUT33 CLASS SPECIALIZATION CORE CHECKPOINT — 2026-10-06:**
+Sentinel/Fighter and Hexbinder/Caster implemented in Rust only. Parent level10,
+historical D23, explicit free home choice/remove, per-parent bloodline memory,
+send-snapshotted abilities. Named automatic style row below guards/drills/pen;
+custom player overrides remain explicit. Riposte20ticks/CD60 halves one melee
+hit (ceil), counters8 if alive; respects normal reflection and King rhythm.
+Hex40ticks/CD60 reduces that enemy's attacks2. Zero/empty new save fields omitted.
+Forecast cache includes only current active style; remove restores base key.
+No new base classes, XP grants, currency or automatic style assignment.
+
+Final quick628 core PASS/one ignored plus14 tool tests/TS/copy,141s under
+competing work. Twelve new meaningful tests include numeric actual damage,
+exclusions, King reflection, choice/refusal/memory, one/three-slot full8h
+whole/sliced/reloaded raw saves/reports for both parent classes. Controlled
+fixtures, not earned campaigns. Clippy all-target warnings denied, web build,
+fast WASM5357456B and codegen checks pass; existing bundle advisory retained.
+Final routine18-case gate terminal0 source596967ebcc35f5eb, no cached legs:
+metrics113.2s, wire80.5s, dayplayer191.1s/all selected bars PASS. Exhaustive,
+system-removal and historical audits not run. Six old complete WASM save/advance
+baselines and two numbered native saves exact. Both earned styles: complete
+native/WASM load/send/uneven advance/reload/8h report-save parity passes.
+
+Permanent diagnostic examples/style_prepare.rs spends existing points/marks
+and uses owned rules only. Preserve failed generic-Bolt baseline: Caster level9
+after14days; paid Recovery/Warding alone level10 at296h. Owned boss counters
+80h, added known ranged reflection counter40h. Final latter preparation earns
+Caster10 in40 game-hours with no XP/gear/currency grants, root upgrades54 plus
+Recovery/Warding108 actual Legacy, Caster unlock8 owned marks. Explicitly
+removing ordinary training Bolt override after10 lets selected Hex default fire;
+never delete player overrides automatically on style choice. Final8h Tier1
+earned campaigns: Sentinel656 actions/296 counters/8runs/clear; Hexbinder774
+actions/11runs/clear. Raw saves and full earned event streams retained in
+scratchpad/class-prepare-core-final-20261006/; parity script/artifacts in
+scratchpad/class-core-20261006/. Failed variants retained alongside.
+
+CUT33_CLASS_STYLES.md remains OPEN: no app bridge/class-choice UI/icons yet,
+no Tier5 paired style/base comparisons or equal-work class overhead result.
+Next implement Rust-owned offers and native/WASM/worker methods, chunky choice
+review/parent XP/default tactic preview, readable icons/presence/Hex tooltips,
+real-worker responsive320/400/1440 earned screenshot checkpoint, six paired
+Tier5 cases and <=10% equal-work benchmark against a39e4d7. Do not call this
+core checkpoint full contract completion. Shared5219 retained, no deployment.
+Keep-going goal active; no subagents. mine.bars/scratchpad remain unstaged.
+
+**CUT32 BLOODLINE LEGACY TREE IMPLEMENTED/VERIFIED — 2026-10-06:**
+Twelve Rust-owned nodes, old three roots/ranks/prices preserved, historical D8/D18
+access, three exclusive forks. Nine real effects on send-snapshotted Hero u16
+mask, omitted at0. Gas protection includes tagged bursts/Bloat attacks. Free
+home checked-refund respec, no changes to wallet/classes/history/other slots.
+Rust wire provides node/prerequisite/effect/owned-total and respec refund/total/
+eligibility; native/WASM and actual worker proxy all expose respec. Responsive
+chunky Hero tree: three desktop columns, collapsed phone paths, packed icons,
+keyboard/tap detail, visible refusal, stale review and one-call confirmation.
+
+Thirteen new meaningful core tests pass; final quick616 core/one ignored plus
+14 tool tests/typecheck/copy1678,143s under competing work. All-target fast
+clippy/build/codegen/diff pass, existing bundle advisory. Tree/worker UI checks
+and old hero/report/training checks pass320/400/1440. Exact entire native/WASM
+lineage/send/advance/live-reload/respec/purchase parity for three chosen builds;
+six old load/advance/save baselines and two numbered native saves unchanged.
+Native whole/30min/uneven/reloaded8h complete raw saves/reports match one/three
+slots with new effects. These unit fixtures are controlled, not earned campaigns.
+
+Final9 paid Tier5 build comparisons use the same earned814-point preparation,
+108 actual points per build, synthetic seed/tier eligibility, no other grants:
+Mending seeds1/3/5 all8h; Venom8/8/16h; Fireward8/16/8h. AllD34/unlock6.
+Earlier pre-gas-tag measurements retained separately. Paired action tests
+demonstrate effects; do not claim every leaf fires in that unchanged policy.
+Permanent examples legacy_check.rs and legacy_perf.rs. Actual earned Tier5
+start real-WASM headed screenshots320/400/1440: full read-only save exact,
+no errors/overflow. Actual57-point Mending purchase→review→respec→durable save→
+page reload passes; refunded full UI save equals native. Screenshots shown.
+Artifacts scratchpad/legacy-ui-20261006/, legacy-balance-final-20261006/.
+
+Final routine18-case gate terminal0 source70342eb7d0cd8298, no cached legs;
+metrics111.4s, wireQA76.4s, dayplayer202.4s/all selected bars pass. Optional
+exhaustive/system-removal/historical audit not run. Quiet equal-work old44da245/
+new tick/status+gas benchmark nine interleaved rounds,101×500ticks/32 enemies:
+tier0 645.318/626.362ns, tier5 683.922/655.938ns, selected perks677.262/667.918ns.
+Within10% bar; no general speedup/full catch-up/FPS claim. Initial5000-tick
+fixture invalid because natural pressure grew enemies32→41, no timings used;
+fixed500ticks before pressure, identical sources/sample count checks. No perk
+tick allocations. WASM5336294B. Shared5219 retained, temporary screenshot server
+5473 cleaned, no deployment. Keep-going goal remains active. Next two class
+specializations: contract/actual exclusive actions/tactics/icons/replay proof,
+reuse current class XP, preserve unselected-class and tier0 behavior. No subagents.
+
+**CUT31 SCOPED VERIFICATION + LEGACY TREE CONTRACT — 2026-10-06:**
+Previous goal turn progress: pushed27749eb income/clock continuations. This turn
+routinefull18case gate terminal0(session38577), metrics84.4s0,qa51.7s0,
+dayplayer all selected barsPASS; sourcea21a8fdf0ffd38a6/no cached legs. Optional
+system-removal/statistical/historical/exhaustive audit not run. Current-tier0
+requirements unchanged; original unchanged-build14dayfail has explicit justified
+deviation inCut31, never certify that barPASS. D scoped checks completed;
+overall keep-going goal remains active. Four new actual counter comparisons
+seeds1/3/5 PASS: Shielded verbpair extra0/0/2; poison40ticks HPdifference12 each;
+Swift/Frenzied30ticks attacks3→2 each, damage6/6,6/3,7/5; King20actions repeats
+19reflections/HP−288,306,324 vs cadence0reflections/0damage. Bash/King direct
+verb sequences, not scheduler/pacing; Slow/poison use actualticks. Initial
+King2actionseed1HP0/0 was a missed reflected hit, documented extended-window
+amendment before rerun, ordinary RNG/stats unchanged. First tests didn't
+compile Shared<Option> assignment, fixed .into; clippy negative-assignment
+spacingfixed. Final quick603corePASS/oneignored35.74s+14side/TS/copy1659 green79s;
+clippy alltargets fast warningsdeniedPASS. Onlytests/docs changed, runtimeWASM
+unchanged. Logs /tmp/riddle-endgame-counter-comparisons{,2}.log,
+/tmp/riddle-cut31-d-counter-quick.log and-clippy2.log. Fresh headed real-WASM
+earnedTier5ending→Tier6review400/1440 screenshotcheckpoint on shared5219,
+fullsource-saveexact read-only/noerrors/overflow; screenshots viewed/shown.
+Artifacts scratchpad/endgame-d-checkpoint-20261006/. No new server/deploy/UI.
+Next **implement CUT32_LEGACY_TREE.md**: new12node contract, not shipped.
+Three old roots kept,3one-rankfollowups18points,6one-rankleaves36points,
+two mutuallyexclusiveleaves/branch; historicalD8/D18 gates from retained
+hero_legacy bests, parentrank1. Nineeffects: rest+1, heal+25%, naturalherokill+1,
+stun/slow+5, poison+1/pulse, slow+15 further, gas/poison−2, firehalf, lowHP−2.
+Snapshot neweffects onHero atsend (suggest u16mask default/omit0; oldroots
+unchanged), no per-tickalloc/Ctx additions needed. Freehomecheckedrefundrespec,
+preserveold9ranks/points/spent, fork/away/locked/refused exactsaveproofs.
+Then12offerwire/groupedchunkyHeroUI, newrespec bridge(native/WASM/codegen),
+realphone/desktop screenshots, threeearnedbuild comparisons, parity/perf/gates.
+Do not expose inactive nodes. Two classspecializations follow separately.
+No pending gate process; don't redo Cut31 checks without new reason. Shared
+5219 retained, no deploy. All authored changes pushed; mine.bars/scratchpad
+remain unstaged. Inspect final git status before continuing.
+
+**ENDGAME CATCH-UP CONTINUATIONS + BUILD COMPARISON — 2026-10-06:**
+Cut31 D remains open; overall keep-going goal active, Legacy/classes next.
+Exact-integer offline checker (raw saves preserved) caught stale guide quotes
+losing passage gold after reload and inserted hourly-worker actions during a
+transport-split rest. Save current quote for solo/multi, persist rest continuation;
+whole-path outcomes unchanged. Mixed1/3/5 Rust test found fractional-clock loss
+after reload: save nonzero advance_rem, omitted/default0 otherwise. Five new
+meaningful core regressions. Earned solo Tier1/3/5 plus real legally added
+three-slot Tier1/0/0: whole/30min/uneven/reload/complete API8h all full raw saves
+and final reports exact (including u64 RNG); solo runs12/7/12,multi40.
+Artifacts endgame-parity-d-fixed2-tier{1,3,5}/ and endgame-parity-d-fixed-multi/.
+Six old complete WASM save/advance baselines +two numbered native saves exact.
+Headed actual fast-WASM8h profiles3reps/tier: medians0.8082/0.6912/0.9980s;
+save/report hashes identical. Engine calls, not FPS/shipping/equal-work claim.
+Passage forecasts Tier1/5 inclusive42.4/27.3% of entire load/run/save profile.
+Artifacts endgame-profile-d-tier{1,3,5}/. Previous native6.82% overhead retained.
+Unchanged common earned preparation9seed/tier cases: Tier5failsall after14days
+(D31/30/33); barFAILED, explicit justified deviation recorded inCut31, never
+call original barPASS. Comparative owned54of814Legacy points buys existing9
+ranks; same9casesallclear8–16h, no stat/currency grant/new policy/floor bypass.
+Permanent diagnostic ascension_check.rs -- SAVE NEW_DIR [--spend-legacy].
+Artifacts endgame-balance-d[-legacy]-20261006/. Five successive earned clears
+frompreviouscheckpoint remain actual campaign proof; altered seeds/tier
+eligibility in common-build diagnostic explicitly synthetic.
+Final verify--quick599corePASS/oneignored35s +TS/copy1659 +14side tests green39s;
+restricted sandbox native-host test failed initially, same test and whole quick
+suite pass host environment. Clippy alltargets/profilefastPASS, webbuildPASS
+existing bundle advisory, fastWASM5321443B, diffclean. No runtime/UI release.
+Routine18-case current-game fullgate RUNNING session38577, log
+/tmp/riddle-cut31-d-gates-full.log; do not infer result, poll before more core
+changes. D fixed-combat numeric comparisons still pending. Exhaustive audit
+not run. No UI changes/no new screenshot milestone; shared5219HTTP200, no new
+task servers, no deploy. Then branch Legacy migration/respec,2specializations.
+
+**NUMBERED ENDGAME UI + FIVE EARNED CLEARS — 2026-10-06:**
+Cut31 A/B/C implemented; D/overall keep-going goal remains active. WASM/native
+preview and beginDescent, optional eligible Lineage.endgame, main next-tier
+ending choice and constant-size replay stepper; old challenge restarts folded.
+Rust previews actual modifiers/counters; numbered path removes old active
+challenge rules (explicit contract amendment), retains survivor/kit/loadout/
+gold/Legacy/classes/town/other games. Gold diamond on hostile elite map plates
+within existing density/placement limits; no ally elite markings. Grudge bonus
+also capped at extreme positive tiers; ordinary tier0 behavior unchanged.
+594 core PASS/one existing ignored39.04s; clippy alltargets PASS; adapter codegen
+PASS; new UI320/400/1440 preview/cancel/stale/locked/refusal/duplicate/metadata
+failure PASS6.0s; old ascension39/frame63/QA41 PASS. Six old complete WASM
+load/advance/after baselines exact, two numbered reset saves exact, five B
+positive encounter native/WASM parity cases exact. Fast WASM5320487B; build/
+typecheck/copy1659/diff clean, existing bundle advisory.
+Normal earned seed3 TUNED source ->five legally started/cleared tiers, no depth
+bypass or new manual tuning. Tier/check-ins/runs:1/1/12,2/2/25,3/4/51,4/16/319,
+5/10/183. Actual D34 unlocks next each time; one build/seed, not balance claim.
+Headed real-WASM earned ending/preview/camp320/400/1440 transitions tier1 and
+tier6: full native and durable save bytes exact; selected hero/gold retained,
+both other full live games untouched. Screenshots viewed; source counters
+restored with raw engine state for accurate UI, no display/gameplay overrides.
+Artifacts endgame-loop-20261006/ and endgame-selection-20261006/; temp example
+source copied/removed. Next D fixed-seed/build comparisons, whole/sliced/
+reloaded absence parity one/three bloodlines, full catch-up profiles, then
+branching Legacy/classes. No deploy. Visible D3 Frenzied jackal from natural Tier1 send (turn5667) GPU render
+diagnostic: gold diamond within viewport, ally projection removes mark, exact
+save unchanged/no errors; screenshot viewed. Task preview groups2401891(5465)/2480098(5467) cleaned; shared5219 HTTP200.
+
+**ENDGAME ENCOUNTER MECHANICS — 2026-10-06:**
+Cut31 B implemented alongside A; C/D and overall keep-going goal remain open.
+Three bounded rotating affixes, two deterministic elite abilities, scaled births
+without gameplay RNG consumption or extra population; second-repeat King
+reflection, cadence/ally rhythm, split inheritance and tame normalization.
+Snapshot/entity/exact fatal-source metadata and Rust catalogue; read-only boss
+and death tooltips. App selection bridge and elite map marking still pending C.
+591 core tests PASS/one existing ignored; clippy alltargets PASS; focused tooltip
+320/400/1440 PASS6.0s; enemy/unit/frame63/QA41 PASS. Old six complete WASM
+save/advance baselines unchanged, two earlier reset saves exact, five new
+native/WASM full load/advance/save cases exact. Actual earned source legally
+starts tier1 and clears King in first eight-hour absence (13 runs, heir34);
+cleared1/unlocked2. Separate D33 debug fixture clearly labelled, not progression.
+Interleaved equal-work benchmark old354.142/newtier0 356.622/newtier5 378.282
+ns/tick (+0.70%/+6.82%); scheduler/status only, broader profiling open D.
+Fast WASM5281348B; typecheck/build/copy1634 clean, existing bundle advisory.
+Artifacts scratchpad/endgame-encounters-20261006/; temporary probe examples
+copied and removed. See CUT31_ASCENSIONS.md B for exact scope and provenance.
+Actual earned Warlord tooltip headed400/1440 captured/viewed; no errors or
+overflow, phone paused on floor card. Task preview5465 remains for next C;
+shared5219 retained. Do not deploy. Next C ending/tier preview bridge and UI, then D balance/absence
+checks, then deeper Legacy/classes. Shared Vite5219 retained.
+
+**NUMBERED ENDGAME CORE FOUNDATION — 2026-10-06:**
+CUT31_ASCENSIONS.md implementation contract, A only; B/C/D open, whole goal active.
+endgame.rs Progress selected/unlocked/cleared per bloodline; no inference from
+old challenge counts. Optional save field/default omitted Run.difficulty0,
+run/history/capsule tier snapshot, positive-tier forecast key. Separate new
+begin_descent validates before mutation, retains survivor/heir/gold/class XP/
+Legacy/kit/supplies/policy/town/other slots, resets selected depth/checkpoints/
+freshness/presentation caches. Old ascend behavior unchanged, returns to tier0
+if optional numbered progress exists. New API hidden from app bridges/UI until
+modifiers; positive tiers have no encounter mechanics yet. Load validation.
+Eight new tests; full workspace578PASS/1ignored37.01s; clippy alltargets PASS.
+Earned actual King/heir33 single + legally added two live others new reset:
+full other Game unchanged, gold2850/450 respectively, class/Legacy/kit/heir
+retained; complete native reload and numbered native/WASM save bytes exact.
+First earned probe revealed stale generated D35 bank guard became D2 only on
+load; fixed immediate recompile, regression included. Six prior-WASM earned
+ending/old four variants/multi complete saves,1s advance responses and after
+saves byte-identical rebuilt WASM. No new tier victory/modifier claim.
+Fast WASM5258334B, build/typecheck/copy1630/diff clean; bundle advisory existing.
+Artifacts scratchpad/endgame-foundation-20261006/; temporary Rust diagnostic
+example removed after source copy. No deploy/full statistical gate/profile
+claim; no UI changes/screenshots this checkpoint. Next Cut31 B mechanical
+modifiers and authoritative metadata, then UI and higher-tier verification;
+Legacy tree/classes remain queued. Shared Vite5219 retained.
+
+**ENDGAME OWNER STEERING — 2026-10-06:**
+Owner asks endless ascensions after clear, affixes/elites/bosses, classes and
+Legacy skill trees. ENDGAME_ASCENSIONS.md is a proposal, not shipped mechanics:
+bloodline tiers first, twelve-node Legacy tree, two specializations; explicit
+reset/migration contract required, tier0 invariants preserved, performance
+budget and deterministic offline/replay checks. New loop recommends retaining
+shared gold; current old ascension still clears it. NEXT_WORK priority updated.
+Camp controls committed285484c, verified as below; no deployment.
+
+**PERSISTENT CAMP CONTROLS — 2026-10-06:**
+UX_PERSISTENT_CAMP.md. Audit corrected earlier assumption: Workers accessible,
+not gated; nextPill always opensWorks but tree.next system fallback says
+automations/meetLich. Render Workers+actual hired count for unrelated system/
+none fallback only; real worker/send/chest/early goals intact, managementfocus
+undefined. Remove alltopbar class-offer chips/orphanCSS, preserve HeroDetails
+Changeclass/XP/coreoffer/portraitaccess. Presentation-only, no Rust/WASM/balance.
+15checks each320/400/1440 +owner-amendedCut16 17 PASS2jobs6.8s; Cut28 27,
+frame63/QA41 pass. Initialsuite missingfile/oldclass assertions corrected.
+Cut305 singleexisting day0 failure (missing crate/works abovefold, fouractual
+mouth/tent/Heroes/send) reproduced identically isolated previousHEAD camp/works;
+remainingchecks pass107.8s; no gate weakened/fullsuiteclaim. Actual earned
+Hunted3bloodline400/1440 Workers11hired, no classbar, worker/classpanels read-only
+fullsaveexact/noerrors/overflow; headed screenshots viewed/shown artifacts
+scratchpad/persistent-camp-20261006/. Next first-home day0 visibility/fixture
+audit remains queued. Owner now prioritizes escalating endgame and deeper
+bloodline/class progression; see ENDGAME_ASCENSIONS.md (proposal, not runtime).
+Notdeployed; goalactive. Final build/typecheck/copy1630/diff clean.
+Task preview5457 group2167170; diagnosticdev5459 group2168328 and5461 group
+2171421; actualbaseline5463 group2172850 all cleaned; shared5219 HTTP200.
+
+**EARNED ENDING + REAL ASCENSION PROOF — 2026-10-06:**
+Normal TUNED seed3 kills Mirror King on day4. Bounded dayplayer5day job stopped
+at check-in12 via DP_CHECKPOINT_STOP_AFTER (exit75 diagnostic, not gatePASS).
+Exact original checkpoint and float-bit-decoded/integer-preserving Game export
+retained scratchpad/earned-ending-20261006/, provenance hashes in
+UX_ASCENSION_CONSEQUENCES.md. Earned heir33/D34,173runs/32deaths/$2850/204facts;
+ended and mirror_king kill confirmed, no display/balance overrides. Earlier
+60day search terminated after capture; first-victory reproduction authoritative.
+Four actual UI-confirmed WASM variants and Hunted with legally purchased two
+other bloodlines already sent: full resulting saves byte-identical to native
+and durable storage, reviews/Escape fullsave unchanged, other games/live runs
+integer-exact unchanged (Python final check). Headed400/1440 earned ending/
+review/newcamp screenshots viewed/shown, noerrors/overflow. Scripts/full saves
+and verification JSON retained. No runtime/UI/art/balance change or deployment;
+long-term variant progression/full gates uncertified. Fixed-choice14d six-case
+diagnostic90.7s onlyD23, no ending, distinguished from tuned victory.
+Post-ascension camp capture reveals retained XP/class bar plus automation
+meet-Lich gate despite retained workers; next audit persistent management
+controls vs reset progression before content-variety/optional-reset proposal.
+Goal active; task preview5455 group2162224 cleaned; shared5219 HTTP200.
+
+**EXPLAINED ENDING + ASCENSION REVIEW — 2026-10-06:**
+UX_ASCENSION_CONSEQUENCES.md UI implemented. Shared chunky ending panel,
+actual Mirror King portrait, four concise explained challenges. Short list/
+Bones only display as Six rules/No vault, IDs unchanged. Selection read-only;
+centered existing parchment review shows bloodline, carry/reset and actual
+shared gold→0, other heroes continue when multi. Cancel focused/close restores
+choice focus; explicit Start again retains app/UI refusal+single-flight.
+Shared centering now works outside framed camp, gold text contrast corrected.
+Final39checks each320×568/400×900/1440×900/800×400 +frame63/QA41 PASS3jobs24.9s;
+build/typecheck/copy1630/diff clean, existing bundle advisory. Headed400/1440
+real-WASM diagnostic ending/review captures viewed/shown; full save exact after
+open/cancel, noerrors/overflow. Labelled simulated ending: only app display
+overrides ended/D34 on earned D21; actual223 runs from source exit counters.
+Visual review fixed wrong king key, transparent panel and bottom-aligned sheet.
+No Rust/WASM/balance/deploy changes; earned King/successful actual WASM ascension
+proof remains outstanding. Next obtain earned ending then content variety and
+scoped optional-reset proposal; goal active. Artifacts scratchpad/ending-review-
+20261006/. Task preview5453 group2145362 cleaned; shared5219 HTTP200.
+
+**ASCENSION CONSEQUENCES AUDIT — 2026-10-06:**
+UX_ASCENSION_CONSEQUENCES.md source matrix and two new Session regression tests.
+All four variants × three selected slots: Legacy/upgrades, class XP, facts,
+trained packages, town/workers/Savings/forge salvage preserved; selected heir/
+record/kit reset, shared gold clears, ledger subtracts cleared gold. Other games
+unchanged in full before synchronization and after replacing only town fields;
+switch cannot recover stale gold. Six premature/unknown exact-save refusals.
+Eight focused fast native tests PASS; diff clean. Initial tree ledger equality
+and omitted zero clock fixture assertions corrected, no runtime changes.
+Synthetic ended fixtures prove API contract, not earned King/variant progression.
+No UI/WASM/runtime changes, full gate claim or deploy; shared5219 HTTP200.
+Next earned King/ending UI, variant explanations and explicit shared-gold review;
+then existing-content variety and scoped optional-reset proposal. Goal active.
+
+**ITEM COVERAGE + ASCENSION REFUSAL — 2026-10-06:**
+UX_ITEM_ICON_COVERAGE.md + UX_ASCENSION_REFUSAL.md implemented. All43 Rust item
+kinds now resolve to packaged art, tests require images rather than glyphs.
+Gold reuses coin art; built-in imagegen transparentbones/trap masters saved
+art/ui/icons/it_{bones,trap}.png; promptset art/prompts/item_silhouettes_20261006.json;
+packed96px/15.5+15.8KB via tools/ui-skin.py, skin111icons. Bones concept reuses
+new art; visual review removed duplicate skull marker. ItemIcon failed-image
+handler retains primitive/name/kind/rarity; unknown/future fallback preserved,
+unidentified potion/scroll family art unchanged. Final114checks each320/400/1440
++blocked-file check PASS2jobs5.2s. Initial6related item/unit/training/death/report
+jobs7.2s; frame/ascension4jobs24.6s; later5report/QA/ascension jobs23.2s PASS.
+Finalbuild/typecheck/copy1616/diff clean, existing bundle advisory. No Rust/WASM/
+balance edits or full-suite certification. Actual earned headed WASM400/1440
+recovered packs report, coins and labelled43-item diagnostic gallery captured,
+viewed/shown;46images including3subjects load,noerrors/overflow/fullsaveunchanged.
+Gallery is reference, not fabricated inventory. Artifacts scratchpad/item-icons-
+20261006/. Masters copied into workspace, generated originals retained.
+Ending audit found app.ascend any refusal silently called again/newtown. Fixed:
+returns success, app+UI single-flight, rejected/missing bridge retain game,
+choices re-enable/Try again. Successful core transition persists/openscamp even
+if follow-up metadata fails, no repeated ascension.12checks each320/400/1440
+PASS. Actual WASM rejects prematureHunted on earnedD21/gold53038/Legacy536:
+complete engine AND durable save byte parity, stillcamp,noerrors. No earned
+King/successfulvariant gameplay claim. Next: full earned King/ending layout and
+four variant explanations, verify exact carry/reset with multiplebloodlines
+before copy; then existingcontent variety +one scoped optional-reset proposal.
+Push approved, no deployment; broad goal remains active.
+Task preview5441 group2124502 cleaned; shared5219 HTTP200.
+
+**DIRECT PREPARATION — 2026-10-06:** UX_WALL_PREPARATION.md implemented.
+Shared report/death links: actual affordable Legacy/current Bloodline, ready
+free forge construction or built-forge upgrades, owned tactics beside actual
+stall/repeated death. Death collapsed Prepare retains core primary lever;
+spend/pending forge links review construction instead of opening unbuilt Forge.
+No automatic spend/equip/build/new forecasts. Readiness/refusal/single-flight/
+engine start+completion guards; key includes kit count; subscriptions disposed.
+Shared chrome frames both screens; named obstacle shared unit icon/tooltip.
+14client jobs47.1s/all132UI PASS; final frame4jobs7.5s; final38checks each
+320/400/1440 guard PASS3.9s. Build/typecheck/copy1611/diff clean, existingbundle
+advisory. Initial harness cwd mistakes corrected, mock rule-sync isolated after
+it replaced authored fixture; no bars weakened. Actual earned headed WASM
+400/1440 report/death/default-fold/build review/manual build/health rank captured,
+viewed/shown scratchpad/wall-preparation-20261006/. Opening full-save bytes exact;
+death RPC cache settled separately after initial mixed-scope assertion failed,
+no saved-field filtering; exact raw integers preserved. Freeforge gold53038/
+Legacy536 unchanged; explicithealth3points536→533/rank1/next6/gold unchanged.
+No errors/overflow. Same late town8h Steady9runs/D19/$2225/0deaths vs owned
+Guarded7/D23/$4360/2deaths, actual goal reached; native+WASM full reports/saves
+exact. All54Legacy aloneD20/$3125/0deaths; combinedGuardedD20/$1807/1death.
+Other owned alternativesD6/18/19; no universal ranking. Early27points rejects
+all54; health18onlyD8 unchanged/income lower. Late24h allD20vs19, deaths4vs1.
+Bold unavailable correctly rejected, actual owned alternatives used. No Rust/
+WASM/balance/deployment changes or full gate claim. Push approved; goal active.
+Next remaining gold/bones/trap icons and earned ending/ascension presentation,
+then existing-content variety and one scoped optional-reset proposal.
+Task preview5439 group2107388 cleaned, shared5219 HTTP200.
+
+**PROGRESSION GOAL — 2026-10-06:** UX_PROGRESS_GOAL.md implemented.
+Separate Next encounter from selected bloodline Goal and actual Rust bounty
+reward, fallback next record; no goal before house/first record or after ending.
+Shared row desktop depth/phone shaft/phone report, no unseen boss names or RPC.
+Goal updates without forecast change and independently of watched floor.
+Original320px including challenge kept by reducing spacing, portrait24px,
+unchanged fonts. Final9client jobs42.2s/all132UI +compact/watch-status/report
+PASS; build/typecheck/copy1594/diff clean, existing bundle advisory. Actual
+headed earned WASM earlyD7/goal8,lateD21/goal23,multiD20/goal22;400/1440 camp,
+400report no errors/overflow. Screens shown scratchpad/progress-goal-20261006/.
+No Rust/WASM/simulation changes; full balance uncertified. User tactic question:
+existing cb1c4f8 quiet icon/target cues verified and screenshot shown again.
+Next direct useful preparation from actual obstacle, then remaining icons,
+ending/variety/scoped optional reset queue. Push approved, no deployment.
+Broad keep-going scope remains open.
+
+**OFFLINE SLICE FIX — 2026-10-06:** PERF_OFFLINE_SLICE_BOUNDARIES.md
+implemented. Saved Game.offline_absence cumulative budget/consumed/hour/report
+baselines; actual boundary initializes once and settles rewards/reel once.
+Intermediate pending acknowledgements have zero counts; final whole report once.
+Single clock commits final; run stamps use consumed ticks. Multi shared-clock
+advance retains wallet order; final completes at most one outstanding run/slot
+in sorted slot order, all return to camp. Save/load restores passage/bounty,
+serializes row_tally and skips mid-absence oath refresh/home recompilation.
+Complete/count APIs remain distinct from new Session::run_offline_slice; bridge,
+native generated methods/API rebuilt. Literal direct harness alone keeps old
+sampling; current-game and transport simulation exact. No bar edits.
+Client skips pending reports, missing-method-only fallback (not runtime failures),
+zero returns valid report. Autosave/pagehide and failed-batch guards retain
+previous durable absence timestamp; open ticks halt on failed batch; normal
+absence persists after adoption. Raw engine slices resumable. Current stale
+ordinary additive-report cores still merge. New five Rust tests cover seeds1/3/5,
+manual home/run/rest/zero/day/worker/quest/reveal groups/three-wallet slots.
+Final quick568tests/1ignored +12tool checks green90s, clippy/build/typecheck/
+copy1591/diff green; first incorrect one-feature reveal assertion corrected
+against systems trigger-group contract. Final8client jobs50.5s all132UI plus
+catchup/merge9checks/scout/report PASS. Picker test timer race fixed by explicit
+mock release, same assertions. Cut30.5 report test updated to owner simpler
+layout: first worker announcement lead, growth before recurring workers Details.
+Intermediate selector mistakenly targeted button, corrected to report-details.
+FinalWASM5233480bytes SHA96fabde7c726366d23ee582a882b028a414171b37eb776270ba83578e1b1d8e1.
+Earned seed3+160h all5paths exact complete saves AND final reports:203runs,
+heir20,D21, rank4, oldwhole hash601715d83abccaac4d75358d15b7a7d6baec35cf6025ddcdd25869060344473b;
+320/378slice/reload and complete API now identical. Candidate+8h16runs exact.
+Final earned3bloodline+8h42runs exact all5; finalemptyzero all5 exact. Diagnostic
+now checks complete final reports too, no field normalization. Artifacts
+scratchpad/offline-boundaries-final-20261006-{160h,multi,zero}/; previousbaseline
+retained. Fresh targeted idle-d23 s1/2/3 PASS11s/median6.33day/allby12d, notgate.
+Actual headed WASM app320calls1440/400 return203/heir20/D21 noerrors/overflow;
+screens viewed/shown scratchpad/offline-boundaries-20261006/. No timing claims,
+full client/balance suites uncertified. Push authorized, no deployment.
+Next audit queue: readable milestone/wall reward/preparation; distinguish next
+travel encounter (currentlyD8 beside recordD21) from progress goal. Then icons,
+ending presentation, variety and one scoped optional early-reset proposal.
+Broad keep-going goal remains active. Task preview5435 process group2033261
+cleaned; shared5219 verified HTTP200.
+
+**OFFLINE SLICE REGRESSION BASELINE — 2026-10-06:** New contract
+PERF_OFFLINE_SLICE_BOUNDARIES.md and tools/offline-slice-check.mjs compare full
+canonical saves for one final slice,30min,uneven,reloaded30min and complete API;
+record input/WASM SHA256, full reports, differences, additive elapsed/runs.
+Nonzero mismatch exit intentional; diagnostic, not performance/balance gate.
+Earned seed3 eight-hour save +8h: whole/30min both16runs/gold3837 but
+renown708/rank2 vs2149/rank4. Uneven18runs/gold4041/rank4. Renown/report
+side effects require whole-absence scope, not just stopping extra run finishes.
++160h: whole203runs/heir20/rank4;30min480/heir47/rank33;uneven572/heir73/rank33.
+All clock_s606920. Reload30min totals same but batch.bounty and
+lineage.row_stats[9][1].sends differ from uninterrupted. Zero allfivePASS.
+Artifacts scratchpad/offline-boundaries-20261006-{8h,160h,zero}/, final8h
+rerun -8h-final verifies added reload comparison. Current WASM unchanged.
+No Rust/UI/gameplay fix yet. Next implement true resumable absence context,
+including saved/rest/run/day/report state; keep complete/count APIs distinct
+from transport controls. report_with mutates renown,systems,reel_pairs;
+advance clears in_absence each call; save::load refreshes oath/bounty and
+recompiles at home. Native bindings generated from WASM lib via native-codegen.
+Do not fake parity by filtering gameplay fields or weaken idle-d23 bar.
+Push authorized; no deployment; shared5219 preserved; broad goal remains active.
+
+**CONTENT/CHECKPOINT AUDIT — 2026-10-06:** Document
+CONTENT_CHECKPOINT_AUDIT_20261006.md enumerates7biomes/37unit definitions/
+6band bosses/43item definitions/4classes/14packages/11workers/3bloodlines/
+Legacy/D34+4ascension variants. All37sprite candidates packed; gold/bones/trap
+itemIcon glyph fallback remains. Months-long expedition/glory/era/dynasty,
+advanced classes/relic sets are reserved/deferred design, not implemented.
+Primary-source Melvor/Idleon/Stone Story comparisons fetched today, no rank or
+invented timings. Code/test evidence distinguished from actual earned checks.
+3fresh WASM no-choice towns seed1/3/5, house+3manualsend+porter/scout, longcalls
+8/24/72/168/336h: allD21 at336h, no other builds/picks. Canonical targeted
+idle-d23 --seeds3 --fresh PASS10s,seed1/2/3 allby12d/median6.33; not gate.
+Controlled same earnedseed3 eight-hour save +exact160h: wholeD21/heir20,
+24hD22/heir23,8hD28/heir28,client0.5h runOfflineSlice320callsD28/heir47.
+Wallclock168.59h all; total_turns/10 hours169.23/169.91/191.60/305.52.
+ROOT: offline::run_offline_with finishes a live run beyond budget each call;
+app::runOfflineChunked uses30min slices, so gifting whole run completions at
+each transport boundary, plus rest clamp/reveal_left reset. last flag currently
+only suppresses stall verdict, not simulation boundary. age_h=max(clock_s,
+total_turns/10) accelerates age gates as a consequence. This is next P0 fix;
+write contract and verify one boundary/reveal budget per actual absence,
+intermediate live/rest persistence, exact simulation state parity/age,
+1/3bloodlines/pre-scout/load/day/worker/quest/report merge and real-return
+convenience. Do not weakenD23 bar, claim this is forecast noise, or certify
+full balance. Profile equivalent outcomes before speed claims.
+Actual earned400/1440 empty/day1/coarseweek2 and exact client-sizedweek1
+screens captured, viewed/shown; no errors/overflow. ArtifactJSON/rawsaves/
+hashes/scripts scratchpad/content-audit-20261006/. Preview5433 cleaned;
+shared5219 preserved. Doc-only repo changes/no deployment. NEXT_WORK points
+toP0 then readable milestone/reward/preparation/icons/ending/variety/one scoped
+optional early reset. Broad goal remains active.
+
+**TACTIC OBSERVABILITY — 2026-10-06:** Small existing-art icon row above plain
+history, style/tactic/personality/boss-counter order. Known origins only;
+snapshot rows/catalog at mount. Counts/cues release at picture clock; fallback
+attacks (including stance foes>=1) quiet and do not replace last meaningful
+choice.850ms glow/1200ms cooldown, hover count/condition, tap read-only existing
+parchment. Known floating row captions replaced; unknown/literal/trait/chore
+behavior/history intact. Death/exit ends cues; legacy bail prepend disables
+mapping. Exact same-tick meaningful attack row +hero attack destination gets
+5tick contact ring/WebGL or ellipse/Canvas2D; excludes non-attacks, wrong ticks,
+enemy attacks, ended/dying/remembered. No extra RPC/forced layout reads.
+13related jobs45.4s/all132UI green; final28observer checks each320/400/1440
++end19/spacing3jobs14.1s pass. Build/typecheck/copy1591/diff clean, existing
+bundle advisory. Actual earned earlyGuarded400/1440D7 icons/tap details, paused
+counts hold1.4s; late3bloodlineHunter1440D8 real ranged archerid71 survives,
+Hunter lit/counter12/target marked, no errors/overflow. Screens shown. Early
+Bold target60s attempt failed to observe; later earnedHunter provides success.
+No synthetic gameplay screenshot. UX_TACTIC_OBSERVABILITY.md; artifacts
+scratchpad/tactic-observer-20261006/. Preview5431 cleaned/shared5219 preserved.
+No Rust/WASM/gameplay/deploy changes; full client/balance uncertified.
+NEXT_WORK content/checkpoint audit now next. Broad goal active. Compare real
+implemented/earned content against contracts/owner amendments and selected
+idle games using current primary sources; impact-ordered scoped queue.
+
+**HERO PRESENCE — 2026-10-06:** Rust LiveRun presentation activity now combat/
+exploring/returning from existing run state. Roster shows D13 In combat etc,
+quiet colour, HP/run tooltip; rests0 Ready. Selected watch snapshots update
+presence without extra RPCs; mounted slot/run/heir/turn checks reject stale
+or misattributed updates. Older wire falls back Delving/Starting run. Presence
+is live-core frontier, independently of paused footage. No gameplay/save/RNG
+mutation. Core563 tests pass/1ignored, clippy/wasm/build/typecheck/copy1587 clean;
+quick native-host localhost sandbox failure rerun authorized2/2 pass (original
+quick invocation not green). All132 UI checks plus focused10jobs41.5s; final
+Ready presence16checks each320/400/1440 +appearance18each2jobs5.1s pass.
+Four8h old/new WASM exact raw save AND report parity (3early +3bloodline camp),
+not timing evidence. Actual headed WASM combat1440 D4 In combat and400/1440
+single/multi camp/watch no pageerrors/overflow; two other slots Ready. Screens
+shown. Artifacts scratchpad/hero-presence-20261006/; UX_HERO_PRESENCE.md.
+No deploy; full client/balance suite uncertified. Next tactic observability:
+real rule-row ownership already in PackagesWire.rows labels/shadowing, event
+row/verb. Small icon glow/repeat merge/condition-action-count tooltip at picture
+clock; no default swing flood or new captions. Metadata must belong to watched
+run, not newer hero/equipment. Then content/checkpoint comparison audit.
+
+**COMPACT DESKTOP DEPTH — 2026-10-06:** Desktop shaft now three rows:
+watched/live/start floor, record, next boss/bonus (else next record), unit icon/
+tooltip, probability/uncertainty/estimate label and Full forecast action.
+Phone retains old ladder. Desktop reference opens/closes/disposes; hints read
+only, no mid-run patch application. Watch source follows HUD picture, not core
+frontier or new heir. Keyed summary writes, no new frame layout reads. Missing
+forecast summary remains visible (old cut29 visibility hid it). Challenge badge
+retained; initial325px padding conflict fixed,320px gate unchanged.
+Final compact/status/console +full UI132 checks9jobs40.7s green; build/typecheck/
+copy1581/diff clean, existing bundle advisory. Actual headed WASM earnedseed3
+Steady1440/1920 camp/watch/reference +400camp: record13, watched4/summary4,
+nextD8warlord38%±34estimate, no errors/overflow. Source forecast/raw results
+scratchpad/compact-depth-20261006/; screenshots shown. No Rust/WASM/gameplay/
+deploy. Preview5427 cleaned/shared5219 preserved. UX_COMPACT_DESKTOP_DEPTH.md.
+NEXT_WORK item1 implemented; next rich hero presence plus owner's requested
+tactic observability via small icons/event reactions/tooltips/log, avoiding
+caption flood. Real screenshot still rosterLiveD1 vs watchedD4: inspect stale
+slot summary ownership before phase labels. Then remaining-content/checkpoint
+comparison audit with current primary game sources. Broad goal active; full
+client/balance suite not certified. No deploy until owner instructs.
+
+**DEFAULT LOCAL UI SPEED + OWNER QUEUE — 2026-10-06:** Quiet unchanged
+serial/split/split/serial UI benchmark all132 checks green:132.6/132.5s serial,
+41.3/38.9s split. Median132.5→40.1s,69.73% reduction/about3.30x for this UI
+suite alone. Shared tests/lib/ui-parts.mjs now supplies full serial walk and
+runner ui/default discovery; six sections within existing bounded pool.
+Longest-first hints updated; timing headroom/retries/failure output/assertions
+unchanged. Implemented bare runner ui passes all132 in41.7s. Syntax/diff clean.
+No runtime/Rust/WASM/build/deploy changes; full-suite timing not measured.
+Contracts DEV_UI_PARTS_DEFAULT.md and DEV_LEGACY_UI_PATHS.md; raw benchmark
+scratchpad/ui-parts-bench-20261006/. Prior watch caption a2e780f pushed.
+Owner queued next: (1) compact desktop right depth UI, (2) rich Steam-like hero
+presence (D13/combat/etc), (3) remaining-content and checkpoint audit against
+leading idle games with current primary-source research. NEXT_WORK.md records
+scope and code pointers. HeroSlot LiveRun currently lacks phase; don't infer
+other heroes' activity from selected replay/HP deltas. Desktop watch shaft
+opener currently no-op; add a real reference path when compacting. Next work
+starts compact depth, actual screenshots, then presence/audit. No deploy until
+owner tells us. Broad goal remains active; full client/balance uncertified.
+
+**WATCH END ACTION CAPTION — 2026-10-06:** Real death screenshot retained
+HIT WEAKEST SPECTRAL above its outcome. ReplayState now clears action caption
+at watched hero death/exit and ignores later rule captions until reset; enemy
+deaths retain actions, seek/load restore normal behavior. No core/wire change.
+New19 clock/three-exit/late-event/seek/reset checks and log/status/frame63 pass,
+four suites28.9s; build/typecheck/copy1570 clean. Actual headed WASM seed3 owned
+Bold400/1440 run66D6death: no caption, Run ended +cause/history8px gap, no
+errors/overflow, viewed2nd/engine3rd/gold8443. Fast-skip actual control; held only
+verdict presentation then released. Recaptured after closing Speed sheet.
+Contract UX_WATCH_END_CAPTION.md; scratchpad/watch-end-caption-20261006/.
+No deployment. Preview5425 cleaned/shared5219 preserved. Broad goal active;
+next measure original fullui vs all six restored sections in a bounded pool,
+then improve default local test iteration if equivalent checks remain green.
+Full client/balance suite not certified.
+
+**LIVE WATCH READING — 2026-10-06:** Speed tile now shows selected mode
+inside its face; still exactly two console actions. Run ended badge remains
+visible on the final picture. Plain combat history holds its visible older
+text as incoming entries trim the80-entry ring; Latest resumes following,
+keyboard history focus added. Actual removed-row height measured only when
+reading older entries; no animation-loop reads or game state/Rust changes.
+Five targeted suites pass48.4s (log/status/console/spacing/QA+stall44); frame63
+also passes. Build/typecheck/copy1570/diff clean, existing bundle advisory.
+Actual headed WASM earnedseed3 ownedBold400/1440 live/paused and realD6death
+screens shown; no errors/overflow, watched2nd vs engine3rd, gold8443 consistent.
+Final captures hold only verdict presentation then release to real death screen.
+Combined pause/end capture exceeded60s; separate captures completed. Contract
+UX_WATCH_LIVE_READING.md, scratchpad/watch-experience-20261006/. No deployment.
+Preview5423 cleaned; shared5219 preserved. Broad goal remains active; next
+local iteration opportunity remains measured UI part parallelism; gameplay
+balance evidence before tuning. Full client/balance suite not certified.
+
+**WATCH MESSAGE SPACING — 2026-10-06:** Phone endcause overlappedlog from
+independentbottom offsets. Transparentflexstack nowholds tip/ticker/cause/log,
+wrappedheight +8px gaps; inactive/suppressedfight/cut/emptylog rows collapse.
+Existingcolours/3visible80retainedhistory/pointerhandlers preserved. Renderer
+keepout includescause; no perframe layoutread/state/wire/Rust changes. New
+320/400/1440 tests wrapped4rows/gaps/bounds/plainstyles/hide/ticker/historywheel/
+Speed; fivewatchsuites27.8s, QA41/stall3/meters24.5s pass. Finalnew+console14.1s
+passafterhiddenrowedit; build/typecheck/copy1562/diffclean, existingbundleadvisory.
+ActualheadedWASM seed3 ownedBold run66D6death400/1440:8px gap, no errors/overflow,
+header2nd/engine3rd/gold8443; heldonlyverdictpresentation forcapture thenreleased.
+Screenshots shown. UX_WATCH_MESSAGE_SPACING.md; scratchpad/watch-message-spacing-
+20261006/. WASM unchanged. No deploy. Preview5421 cleaned/shared5219 preserved.
+Broadgoalactive; next localiterationspeed: consider defaultui partparallelism
+now all132legacychecks are restored, measure quiet paired runs first; then
+broader stance/gameplay evidence beforetuning. Fullclientsuite notcertified.
+
+**WATCH FINAL-FRAME IDENTITY — 2026-10-06:** Explicit exitbar.paint reread
+nextheir despite freeze. Bar now captures mountedliveheir orselectedheir +trait;
+current resources/exit flow unchanged. Originalframe63checks nowgreen; full
+legacyui132checks135.4s, watchconsole/metersgreen; priorfive watchstatus/log/
+deathhero/slotlooks/frame26.7s green. Build/typecheck/copy1562/diffclean; WASM
+85366c7b… unchanged. ActualheadedWASM earnedseed3 legalBold run66 diesD6:
+400/1440 engine2→3, watchedheader2nd, gold8443matchesrefresh, no pageerrors/
+overflow. Held onlyverdictpresentation forcapture, thenrealdeathscreen2nd while
+lineage3; screenshots shown. ContractUX_WATCH_HERO_IDENTITY.md, scratchpad/watch-
+identity-20261006/. InitialQA ordinalassertincorrect2th fixedcanonicalheirOrd;
+repeatedboth. No core/balance/deploy. Preview5419 cleaned; shared5219 preserved.
+Broadgoalactive; next observedphone finalcause text overlapscombatlog atbottom:
+fixspacing preservingplainoverlay andcause, thencontinuegameplay evidence.
+Fullclient suite notcertified bytargeted/legacyui checks.
+
+**LEGACY UI PATHS + TARGETED ITERATION — 2026-10-06:** cut21 shelf now
+enginebacked establishedcamp and actualhealrule;19checks pass. ui firstadvanced
+hidden, currentHeroChronicle/Class/Edit/Speed navigation, currentcopy/numeric
+spacing and realforecastEstimate interception. Splitoptionalparts frame/qa/
+stall/keep/cut18/cut19, baredefaultall unchanged; independentfixtures, qaK/L
+both included. Directassertionsstream; runner prioritizesblockinglocator/cause
+and stripsANSI/bounds20lines, formattertests pass. Independentqa41/stall3/keep2/
+cut18 11/cut19 12/cut21 19 allpass; sevenjobs39.3s, notpairedspeedbenchmark.
+Frame retainsoneFAIL5th→6thheir onfinalwatch; do not weaken. renderWatch uses
+renderBar watch:true only, so currentL.heir repaint changes identity afterdeath.
+Next captureviewedrun identity throughrefresh, realWASM checkpoint. Current
+firstplot/heroappearance/supplyreport3/3pass10.8s, syntax/diffclean. Contract
+DEV_LEGACY_UI_PATHS.md; docsITERATION_SPEED updated. No playerUI/core/balance/
+WASM/deploy changes. Broadgoalactive; fullclient suite notcertified.
+
+**AWAY SUPPLY BUDGET FEEDBACK — 2026-10-06:** Auto sustain skips now set
+existing restock_capped flag like manual repeat; no spending/purchase/RNG change.
+Report says Supplies limited + reported budget, tooltip/ledger link; knownzero
+income gets main notice, positive/unknown underDetails. Fullquick562pass/1ignored
+77s, alltargetclippy, rebuiltWASM5250773 SHA85366c7b…; webbuild/copy1562 clean.
+Four targeted reportsuites pass;320/400/1440 controls/oldwire/bounds checked.
+Six earned seed1/3/5 Steady/Bold8h reports/finalsaves exactly prior afterdropping
+onlyrestock_capped; six currentnative/WASM fullpairs exact, desktopseed3repeat.
+Actualscreenshots shown; scratchpad/supply-limit-20261006/. Legacyui aborts at
+hiddencompacteditor before report; cut21 reportassertions pass then hidden
+loadoutclick/shelf fails. No broad UIgate successclaim; exploratory fixture
+changes removed. ContractUX_SUPPLY_LIMIT_REPORT.md. No balance/deploy. Broadgoal
+active. Next migrate those legacytest paths to establishedtown/currentmenus,
+then broader stance evidence before anycontenttuning. Shared5219 retained.
+
+**NATIVE LEGACY COMPARISON ITERATION — 2026-10-06:** choice-check now takes
+--upgrades health,armour,damage,all: Rust actual offers/purchases independently
+cap requested paths for selected slot, validates fullcrossproduct before sim,
+then original +requestedchoices for everypath. Original modev1/filenames/shape
+preserved; expandedv2 has spend/before-after ownership metadata and all hashes.
+30 expandedreport/rawsave pairs exactly equal priorWASM audit; final10rechecked.
+Native3tests partial/cap/refusal/selected1+2; CLI2 tests malformed/duplicates/
+missing/overwrite; actual insufficientnegative has no artifacts/sourcewrite.
+Clippy/syntax/diff clean; WASM rebuilt hash47e7a896… unchanged. Fivecommands→one,
+no browserpreparation;3paired warm10case medians5.74→5.36s (~6.6%); first build
+15.33s excluded. No simshortcut/gateclaim/balance/playerUI/deploy. Contracts
+DEV_LEGACY_CHOICE_CHECK.md, updatedDEV_CHOICE_CHECK.md; scratchpad/native-legacy-
+choice-20261006/. Broadgoalactive; next away sustainbudget audit againstabsence
+contract, and broader stance evidence before anycontent tuning.
+
+**LEGACY GAMEPLAY + UPGRADE FEEDBACK — 2026-10-06:** Earned seed1/3/5 towns:
+none/health3/armour3/damage3/all3 via legal core purchases (18single/54all),
+Steady/Bold next8h:30 native cases exactly equal WASM complete reports/rawsaves;
+all artifact/inputSHA verified; unchanged six controls reproduce prior audit.
+Damage lets seed3 BoldD18/$4660 vsD13/$0; full upgrades seed3D18/$6170 and
+seed5D20/$2377/Lich. Still9/10 and8/9deaths; no universalranking/nerf from3towns.
+Steady full upgrades improves depth/gold all3. Warmnative batch0.54–1.29s.
+Actualhero sheet exposed ambiguous rank/effect and repeatedaccessible actions;
+now Rank/Next distinct, own upgrade names/price descriptions. Also fixed stale
+sheet: watches points/offers/away/classprogress/currenthistory besides identity,
+preserves Details, turn-only no repaint, refusedbuy re-enables.5UI suites pass
+7.9s; build/typecheck/copy1560/diff clean. ActualWASM400/1440 open no savewrite,
+health88→85Legacy/rank1/nextprice6/goldunchanged; screenshots shown. Contracts
+GAMEPLAY_LEGACY_CHOICE_AUDIT.md +UX_LEGACY_UPGRADE_FEEDBACK.md;
+scratchpad/legacy-choice-20261006/. No core/balance/newart/WASM/deploy. Broadgoal
+active; broader stance evidence beforecontent edits and away sustainbudget audit.
+
+**RECOVERY/SUPPLY GAMEPLAY EXPERIMENT — 2026-10-06:** Followed earlystyle
+seed1/3/5 immutable towns. Bold heal25/35/45 crossed with original/legal-filled
+packs;18 native two-case batches/36absences plus6 WASM supplied cases. All6
+reports/rawfinalsaves exactnative/WASM; all36 artifact/sourceSHA verified;
+Steady controls exact and seed5 alreadyfull unchanged at everythreshold.
+Seeds1/3 bought2heals for$52, seed5 buys0. Steady purchases yield D13/$3399
+andD16/$4776/Mother; Bold still all-death/$0 in3/5 everycombo. Filled25 seed1
+D19/$8898/Mother+Lich but11deaths. Earlier healing does not solve attrition;
+45 can worsen depth/gold. No shipping tune from3states. Inspected intentional
+boss-on-hurt-before-heal/bankafterrecord and income-capped sustain restock;
+not called bugs or changed. Warm batch0.47–1.20s, feature-switch2.71s.
+GAMEPLAY_RECOVERY_SUPPLY_AUDIT.md; scratchpad/recovery-supply-20261006/;
+actualWASM report screenshot shown. No core/UI/balance/WASM/deploy. Next legal
+Legacyhealth/armour comparison, then broader affectedstance requirements before
+content edit. Broad goal remains active.
+
+**EARNED TRAINING ICONS — 2026-10-06:** Closed text-only Training gap from
+style audit. Report/death badges now shared unitLabel32px/8px gap; existing
+unboxed packageIcon silhouettes for levels, own canonical boss_short portrait
+for drill. Unknown future names generic progress art/exact text; no selected
+loadout/facts borrowing. Six boss mappings verified against Rust; long labels
+wrap. Trainingicons +runtraining/bloodlinetraining/reportbosses/deathhero5/5
+pass7.7s; build/typecheck/copy1556/diff clean. Prior actual earned seed3 Guarded/
+Bold8h reports rendered in current WASM400/1440: save byte-identical onopen,
+art decoded/bounded/noerrors; screenshots shown. GFX_TRAINING_ICONS.md;
+scratchpad/training-icons-20261006/. No core/balance/newart/deploy. Keep broad
+goal active; next gameplay evidence remains recovery/supply experiment from
+immutable earned towns before any content tuning.
+
+**INTERACTIVE AMBIENT MOTES + FRAMED DEATH PORTRAITS — 2026-10-06:** Owner
+asked for moving air/pointer interaction and bigger framed death portraits.
+Replaced uniform CSS tile with16–36 prepainted transform sprites at~30Hz,
+independent inertial currents/rise speeds and100px mouse wake fading1.2s.
+No per-frame layout, game writes or input interception. Hidden/reduced-motion/
+watch/off remove layer and cancel loop; screen replacement cancels old sprites.
+Enemy112px/hero64px shared unitPortrait uses packed iron well; historical art,
+centered-above-cause and tooltip/trace preserved. Stale desktop banner widths
+removed:290px/native3:4 keeps lever visible. Six UI suites pass14.2s; build/
+typecheck/copy1556/diff clean. Actual WASM400/1440 screenshots +motion WebM.
+RTX3080 D3D12, unrecorded desktop5s: both old/new16.8ms p95, zero layouts;
+new adds~191ms whole-page JS/5s. Brief single-machine sample only. Contracts
+GFX_AMBIENT_MOTES.md/GFX_DEATH_PORTRAITS.md; scratchpad respective20261006 dirs.
+No core/newart/deploy.
+
+**CHRONICLE HISTORICAL PORTRAITS — 2026-10-06:** Continued unitlabel audit.
+Archivedhero entries use32px sharedunitLabel from own hero_legacy.class/name;
+old/other-slot entries parse only canonical printedheader class (verified Rust
+chronicle_heir_at), never selectedliveclass. Unknownold entries textonly.
+Keptdeath links andotherslotbuttons unchanged; caret has separateflexspace.
+Checks320/400/1440 metadata/owner/fallback/input/id17/gap8/center±1px pass;
+unitlabel/deathidentity/report3/3pass4.6s; build/typecheck/copy1556/diff clean.
+ActualheadedWASM15entries400/1440 correctclass/gap/center/bounds; immediate
+save/selected2 unchangedonopen; screenshots shown. UX_CHRONICLE_UNIT_LABELS.md;
+scratchpad/chronicle-unit-labels-20261006/. No core/newart/deploy.
+
+**SHARED UNIT LABEL COMPONENT — 2026-10-06:** Owner asked for uniticon next
+to text elsewhere and spacing verification. Added unitLabel to unit-icon.ts:
+8px gap, fixed art +wrapping text,min-width0,max-width100%; optional existingart,
+hero class andsurfaceclass. Migrated guide, reportbosses, historicalheroidentity,
+enemytipheaders, forecastkillers/bosses/walls/shaft andliveboss(existingportrait).
+Deathkiller remains centered ABOVEtext. Guideunseen/environment untouched.
+Component48geometry checks320/400/1440; targeted9/9pass23.1s; finalcomponent+
+claritypaint2/2pass29.4s (5paintchecks). ActualheadedWASM phone14/desktop18
+visiblelabels gap8px/center±1px/bounds verified; screenshots shown. Build/
+typecheck/copy1556/diff clean. UX_UNIT_LABEL_COMPONENT.md;
+scratchpad/unit-label-20261006/. No core/newart/deploy.
+
+**DEATH BANNER PROPORTIONS — 2026-10-06:** Owner correction: cloth squashed,
+enemy above text centered. Restored3:4 native384×512 aspect, background100% auto
+avoids stretching; centered vertical portrait/name stack inside cause trace
+button.48px enemy atallwidths. New geometry assertsratio±.01, center±1px,
+portraitabove text320/400/1440. Uniticons/deathinput/identity/actions4/4 pass14.7s;
+build/typecheck/copy1555/diff clean. ActualheadedWASM Warlorddeath400/1440 ratio
+verified/no warnings/overflow; screenshots shown. UX_DEATH_BANNER_PROPORTIONS.md;
+scratchpad/death-banner-20261006/. No core/newart/deploy.
+
+**UNIT ICONS BESIDE NAMES — 2026-10-06:** Owner requested death screens and
+unit reference art icons. Added unitIcon shared packedportrait→atlas→primitive.
+Seen enemyguide names now carry34px art; unseen rows stay ?. Killer48px (40phone)
+moved into death causebutton beside name; hero identity34px uses recordedclass,
+never currentheir. Same tooltip/trace input retained; nonunit causes nofakeart.
+Guide narrow columns32px, nameswrap. New uniticons checks320/400/1440 +death
+input/identity/action4/4 pass13.1s; build/typecheck/copy1555/diff clean. Headed
+actualWASM guide/Warlorddeath400/1440 no warnings/overflow; screenshots shown.
+UX_UNIT_ICONS.md;scratchpad/unit-icons-20261006/. No core/newart/deploy.
+
+**ENCOUNTER FALLBACK FIX — 2026-10-06:** Missing enemy knowledge now says
+Encounter Unavailable rather than Unseen. Final enemy-surfaces/enemy-tips2/2
+pass18.1s; build/typecheck/copy1555 pass. Same actualWASM screenshot recaptured.
+
+**LIVE/DEATH ENEMY TOOLTIPS — 2026-10-06:** Extended enemyHost to live boss
+name (once per kind, not per HP tick) and death killer portrait/cause button.
+Normal cause tap still opens trace; hover/longpress details; unknown historical
+owner or another bloodline uses unavailable rather than selected facts. Stalls
+and environmental causes no invented enemy. New enemy-surfaces checks320/400/
+1440 cover input/owner/environment/livekind. Death identity/action +watch
+status/log4/4 pass21.4s; build/typecheck/copy1554 pass. Actual headedWASM old
+Warlord record400/1440 shows correct unavailable knowledge with no warnings/
+overflow; screenshots shown. UX_ENEMY_TOOLTIP_SURFACES.md;
+scratchpad/enemy-surfaces-20261006/. No core/balance/art/deploy.
+
+**OWNING BLOODLINE BOSS TOOLTIPS — 2026-10-06:** Victory reports now retain
+bounded per-boss facts/ledger/wall snapshots from the winning slot. Hovering
+an unselected hero's victory shows its knowledge without selecting it. Merge
+keeps snapshots within owners across slices; old wire falls back safely.
+Custom detail hosts override nested glossary labels. Real earned2hero8h WASM
+report (minus new snapshots) and finalsave exactly match old fixture; own
+facts/ledger/wall exact; hover selection/save unchanged;400/1440 screenshots.
+Core561pass/1ignored, clippy clean, rebuiltWASM5250760; enemy320/400/1440 and
+report54 and sharedtips70/70 pass; build/typecheck/copy1554 pass. UX_BOSS_KNOWLEDGE.md;
+scratchpad/boss-knowledge-20261006/. No balance/deploy. Keep broadergoalactive.
+
+**DETAILED ENEMY TOOLTIPS — 2026-10-06:** Owner asked hoverBloatMother/etc.
+Addedshared detailHost WeakMap callbacks to existing singletooltipplate/input/
+placement; no perrowlisteners. Reportbossportrait/name, seenenemyguidenames,
+forecastkillers/bosses/walls now show art/name, knownfloor, encounter/study,
+learnedtraits/counter fromLineage. Otherbloodlinereward knowledgeUnavailable,
+notselectedherofacts; explicitvictoryDefeated. Counter“throw fire, boss”→“throw
+fire at boss”. NoinventedHP/attack/floortable. Hover/tap/longpress/focus/Escape
+reuseexistingbehavior. Headedactualearnedseed3Mother400/1440 clean/finalscreens
+shown. Enemyfixtures320/400/1440input/bounds/ownerisolationpass; boss54pass;
+existingtips70/70pass123.1s; finalenemy+boss7.7s. Finalbuild/typecheck/copy1554
+pass,bundleadvisory. UX_ENEMY_TOOLTIPS.md;scratchpad/enemy-tooltips-20261006/.
+No core/balance/newart/WASM/deploy. Keep broadergoalactive; followownerfeedback
+on depthofdetails ratherthan inventingstats, preserve separatebloodlineknowledge.
+
+**EARNED EARLY STYLE AUDIT — 2026-10-06:** Predeterminedseeds1/3/5 actual
+shippedWASM newhouse/3manualsends/earnedporter+scout, then8hcheckins; allBold/
+BossFocus/KiteArchers ownedby32h. No gold/unlocks/stats forged, noextra buildings/
+upgrades/hires. Sparseplayerstates best11/13/18. Fiveindependentnext8hcases each
+baseline/Guarded/BossFocus/KiteArchers/Bold; all15reports +exactfinalsaves match
+native/WASM; immutableinput/executable/outputSHA bound. Nativebatches1.99/1.35/
+2.88s,warmbuild0.04–0.06 (fixtureonly). Bold11–13deaths/$0in2towns, stillMother
+winseeds1/3 and$5781seed1; Guardednewboss/goldall3, deeperthanbaseline1/5.
+Threecaseaudit notgeneralbalance; no tune/nerf/gatechanges. Headedseed3reports
+clean/screenshotBoldshown: Mother+Gold0, deathsunderDetails. EARLY_STYLE_AUDIT.md
++scratchpad/early-style-audit-20261006/. WASM7554108…unchanged. No app/core/WASM/
+balance/deploychanges. Next: recovery/supply experiment on immutablestates and
+broader earlywalltargetedfullseedrequirements beforecontentedit. Also audit
+reportTraining presentation against existingicon requirement (BoldL2 currently
+text-only), if owner continues graphics; do not regenerate traitart speculatively.
+Keepgoalactive.
+
+**METER QA CURRENT PATH RESTORED — 2026-10-06:** Old cut29meters queried
+removedcommandbar meter tile; now opens Speed→Run controls, retains units/
+toggle assertions and closes sheet. Two completedmeters fixturehadbest0 so
+currentfirstload intentionallyhidcampmain; fixturebest4 now representsprogress.
+Originalnumericmerge/death/report/phone checksunchanged; fivedesktopfold/
+duration/keyboard/opencomparisonchecksadded. Finalisolatedmeters+merge12checks
+and townday0/desk pass4.4s. Watchsyntheticzero checksunits/toggle, notactual
+throughput. PreviousactualWASMfirst/secondreturncamp evidence remainsseparate.
+Syntax/diffpass; test-only noappbuild/art/core/WASM/deploy/screenshot.
+QA_METERS_PATH.md;scratchpad/meter-qa-path-20261006/. Keepgoalactive; next actual
+content/gameplay work should use legalearned fixture andfastchoicecheck.
+
+**CAMP DIAGNOSTICS SIMPLIFIED — 2026-10-06:** Real firstreturndesktop exposed
+DPS/time/rules before nextbuildingchoice. Campmeter now nativeclosed Run details
++latestduration, carved existingbuttonframe; existingone/tworunpanelsinside.
+Phone slot remains hidden; othermeter surfaces unchanged. Headed actualWASM
+seed3firstreturn400/1440: closed7.5m/keyboardopenclose; legalsecondsend produces
+existingcomparison; cleanoverflow/errors, final screenshotshown. Townday0/desk
++selection28 pass3.8s; build/typecheck/copy1541 pass,bundleadvisory. Oldcut29:meters
+abortedatwatchtilefixture beforecamp/zeroassertions, notpassing; no broadmeter
+regressionclaim. UX_CAMP_RUN_DETAILS.md;scratchpad/camp-run-details-20261006/.
+No core/WASM/balance/art/deploy. Forecasthex is existingchancegem, deliberately
+unchanged; don't invent missingfoe icon. Keepgoalactive, next highestimpact
+actualgameplay/content ratherthan further speculative minorchrome.
+
+**TESTER DUMP → FAST CHOICE DIAGNOSTIC — 2026-10-06:** Export already built;
+choice-check now accepts versioned tester dumps directly via readDebug,
+validates before Cargo and sends exact embedded engine string to Rust (no JS
+integer roundtrip). Rawsave behavior retained. Manifest sourceSHA +engineSHA,
+capture/build metadata and current native binarySHA; runs current code, does
+not recreate captured executable. Actual2hero/exportselected2 in-flightbefore
+scout: baseline/Steady1h report/finalsave exact vsraw; source/runtime hashpass.
+Warmdump0.09s(build0.06)/raw0.08s; pre-scout1run, no general timingclaim.
+Badformat/schema/missingengine reject beforecompile/output; syntax/diff pass.
+DEV_DUMP_CHOICE_CHECK.md; scratchpad/dump-choice-check-20261006/. No app/core/
+WASM/deploy, CLI-only no screenshot. Keep broad goal active; next actualearned
+content comparisons can start directly from tester reports.
+
+**CONSTRUCTION FINISH / REDUCED MOTION — 2026-10-06:** House now shares
+later buildings' completion glint. All construction timers skip reduced motion,
+so later buildings no longer play scaffold/dust/glint against that preference.
+Ready plots no longer draw old tiny renderer plot under painted UI foundation.
+Manual actions/housearrival timing/core unchanged. Headed actualWASM seed3
+400/1440normal/reduced house→legal send/earned forge/manualbuild, four cases
+pass; QA-only TownAtlas sprite trace confirms scaffold/building/glint normal,
+immediatebuilding/no scaffold/glint reduced. House completion screenshot shown.
+Firstplot320/400/1440 +save39 +readyplots24 pass14.3s; build/typecheck/copy1540
+pass with existing bundle advisory. GFX_CONSTRUCTION_FINISH.md; scratchpad/
+construction-finish-20261006/. No new art/runtimeinstrumentation/core/WASM/
+balance/deploy. Keep goal active, avoid further speculative icon changes.
+
+**READY PLOT GRAPHICS CONSISTENT — 2026-10-06:** Actual seed3 first return
+D4/143 gold exposed old tiny forge plot/long trigger tablet. All ready plots now
+reuse painted foundation + carved Build/name/Free marker; forge matches menu
+name. Rust construction remains free/manual; readiness comes from wire only.
+Scale foundation near edges, clamp marker, flip above when needed, connector
+points to physical plot. Full foundation click area/keyboard/busy/prepaint save
+preserved; locked plots retain trigger. Headed actual400/1440 legal first return,
+free forge build and menu pass, screenshots shown. Layout fixtures24 across
+all4 later positions/320/400/1440/resize/art failure, locked construction pass;
+explicit renderer resize settles fixtures. Firstplot separation permits either
+side/no overlap; persistence39/selection28/town day0+desk pass. Build/typecheck/
+copy1540 pass, existing bundle advisory. GFX_READY_PLOTS.md and scratchpad/
+ready-plots-20261006/. No Rust/WASM/balance/deploy/performance claim. Actualfirst
+session walk37.9s/10dumps clean; worker/absence portion accelerated by engine,
+not human fun study. Keep broader goal active; next gameplay uses fast savedtown
+choice diagnostics rather than full balance gates.
+
+**MANUAL CONSTRUCTION SAVED BEFORE COMPLETION — 2026-10-06:** Reproduced
+realWASM immediate navigation from firsthomechange: restoredempty/0heroes before
+1sdebouncedsave. App.mutate optional saveBeforePaint checkpoint; townbuild opts
+in for everymanualplot. Worker snapshotcached/written before change listeners
+canexposecompletion; guard heldthroughsave. Othermutationfastpaint unchanged;
+normalrulesrefreshmaypersistlater. Beforefalse/0→aftertrue/1, no testflush.
+Final39persistencechecks400/1440normal/reduced, exactslots, delay/dedup/refusal;
+firstplot320/400/1440 +selection28+death44pass11.7s. Build/typecheck/copy1535
+pass,bundleadvisory. Headedafter screenshotshown(artloaded after immediate state
+assertion). UX_TOWN_SAVE.md; scratchpad/town-save-20261006/. NoRust/balance/
+WASM/deploy/performanceclaim. Storage failure retains existingplay-onhandling.
+Next: actualfirstsession gameplay/content followthrough using legalmanualsends
+and earnedchoices, nowfirsthousegraphics/persistencehandled. Keepgoalactive,
+followownerfeedback ratherthan redoing iconart without newevidence.
+
+**FIRST HOUSE GFX + V7 ICON READABILITY — 2026-10-06:** Owner rejected v6
+readability; all8 now broad pixel silhouettes/dark contours/bone highlights,
+unframed44–52px, no portraits/mascots. Built-in imagegen9separateassets; exact
+prompts art/prompts/readable-traits-v7/ +house_plot_v2.txt; sources art/ui/icons/
++art/ui/deco/house_plot_v2.png. Plot packed384×247WebP27056bytes/164×108CSS,
+SVG fallback. Carved existingbutton frame connects to empty foundation; entire
+plot +plaque sharemanualbusyguard and accessiblebuildlabel. House0.5s scaffold
+then dust/1.22sheroarrival/Send1.8s; reducedmotion immediate/no reveal onexisting
+town. Unbuilt campfire no longer emits smoke/embers. Realheaded320/400/1440
+manual+busy checks; night/fallback/reduced/compact320×640 clean; reloadafterflush
+(the existingsave debounce still applies). Screenshotsshown. All8decoded/no
+overlap/overflow/errors; finalfirstplot+selection28+death44+desk pass12.4s;
+validtownday0/desk4.2s. Build/typecheck/copy1535 pass,bundleadvisory. No core/
+balance/deploy/performance claim. GFX_FIRST_PLOT.md; scratchpad/house-traits-
+20261006/. Stop repacking whilebrowserQA runs (skinHMR temporarilyunmountsDOM).
+Next: follow owner feedback on the shown icons/first-town scene; don't assume
+readability without user review. Broad gameplay next uses choice-check savedtown
+comparisons ratherthan hours-long gates. Previousbossreturn work09d7f27complete.
+
+**FIRST BOSS VICTORIES VISIBLE — 2026-10-06:** Explicit boss bests now above
+Details, existing foe art/readable labels, no invented gold reward. Per-slot
+BloodlineReturn.bests defaulted, merged byowner; selected top-level compatible.
+Known empty suppresses oldfallback; unknownoldreports show unownedtopbests.
+Workspace560pass/1ignored,clippy; clients172pass/build/copy1534. WASM5237180
+SHA7554108a1f234dc3597d9473e5d5ca5b2fb552319541fb28786c065ae4fc1acd.
+Real Bold firstMother12deaths/$0; real2slot8h29runs, unselected1Motherwin
+correctlyowned while2selected/no bossgain. Headed400/1440 clean.
+UX_BOSS_REWARDS.md; scratchpad/boss-rewards-20261006/. No deploy/fullbalance.
+Owner steering: trait icons still unreadable; improve build-house plot/marker
+and match target UI/juice/polish. This is current work, not more reportchrome.
+
+**ACTUAL SAVED-TOWN CHOICE COMMAND — 2026-10-06:** Native Session diagnostic
+now ready: node tools/choice-check.mjs SAVE --choices boss_focus,kite_archers,bold
+--hours 8 --out NEW_DIR; baseline+independent selected-hero choices, all active
+bloodlines continue normally. SLOT means tactic equipment slot, not hero id.
+Immutable source/executable copies, SHA manifest/raw reports/final saves; no
+extra hires/builds/upgrades scripted. Rust validated dev-balance optional;
+default clears inherited JSON. 1–336h bound, all choices validated before sims,
+refuse output overwrite. Diagnostic only, no acceptance gate reduction.
+Final4×8h2.20s(build0.09s); priorwarm1.11/1.12/1.37s. All4final report/rawsave
+exact vsWASM firstboss32hseed3. Already-equippedSteady exactbaseline5case2.00s.
+Pinned2hero31runs/bothreports exactstates,2cases1.15s. Profiledefault exact;
+changedBoldheal50 changesoutput,invalid101rejects; defaultafterprofile/inherited
+garbage exact restored. Firstfeaturebuild53.75s,warm0.04–0.06s. Invalid/unowned/
+duplicate/hours0/337(nativealso)/missing/overwrite/inputimmutabilitypass.
+Clippy/JS/diffpass; rebuiltWASM5236591/hashae07…unchanged. No UI/runtime-lib/
+tuning/deploy/fullbalanceclaim. DEV_CHOICE_CHECK.md, ITERATION_SPEED savedcamp
+section and AGENTS command. Source/logs scratchpad/choice-check-release-20261006/.
+Original browser death summary corrected to sumcause counts(Bold12,not7kinds).
+Next fresh gameplay evidence: Bold firstkillsBloatMother despite12deaths/$0home,
+but victory hidden underDetails. Review actual boss rewards/progress framing
+from saved report on400/1440; don't add genericchrome or tunefromonefixture.
+Both temporary5396/5397 alreadycleaned; shared5219preserved.
+
+**READABLE GOTHIC STYLE/TRAIT ICONS — 2026-10-06:** Owner rejected sports
+mascot look, then rejected human portrait traits after game-size screenshot.
+Final v6 uses one large pale silhouette: upright sword/shield/striking blade/
+crossbow; retreating boot/fist breaking chain/hand taking coin/iron-bound potion.
+Built-in imagegen8 final calls, exact prompts art/prompts/readable-traits-v6/;
+sources art/ui/icons/pkg_*_v6.png, packed96px, corneralpha0. Portraitv5 discarded
+to scratch only. Existing unframed44–52px module retained, v6 preference and
+fallbacks; ART_DIRECTION7.3 records tiny-size symbols over portrait details.
+Headed fake all-owned320/400/1440 all8 decoded/no overlap/overflow/page errors;
+phone+desktop screenshotsshown. Selection28+death44pass3.5s, build/typecheck/
+copy1532/diffpass; bundle advisory. No recognition-study/gameplay/perf/deploy
+claim. GFX_GOTHIC_TRAIT_ICONS.md; scratchpad/gothic-traits-20261006/.
+Next: finish the queued native choice-check diagnostic, currently untracked
+choice_check.rs/tools/choice-check.mjs/DEV_CHOICE_CHECK.md. Four actual8h native
+cases exactreport/save match WASM firstbossfixture; warm1.11s then1.37s; multi
+2heroes31runs, unavailable/duplicate/hours0/overwrite/inputimmutability pass.
+Clippy passed; rebuilt WASM hashunchangedae07… . Final docs/link/commit pending;
+no balance tuning. Source and logs scratchpad/earned-tactic-comparison-20261006/.
+Then fresh gameplay evidence: Bloat Mother firstkill hidden underDetails in
+Bold $0 report; do not assume BossFocus helps from one unchanged-savedtown test.
+
+**EARNED TACTICS VISIBLE ON RETURN — 2026-10-06:** Freshseed3houseUI,
+3engine manual sends+porter/scout, unchangedSteady/no upgrades, four8hQuick
+absences: D7/8/8/13; Warlord firstslain in24–32hinterval. +Bold/+bossfocus/
++kitearchers hiddenunderreportdetails. Newchoices now visibleiconbuttons,
+reportbeats only/currentcataloguekind, no inferredlevels orautoequip. Click
+selectsreportedowner andopensmatchingalternatives directly; soleactive-slot
+fallbackforoldsingle reports, ambiguousoldmultiherodisplayonly, removedowner/
+supersededselectionguard. Live topologycachepreservesbuttonDOM. Finalownership
+46pass2.8s; initialcombined44+XP40+selection28+actions32pass4.5s, finalfixture
+additiononly. Build/typecheck/copy1532/diffpass,bundleadvisory. Realheaded400/
+1440rewardallthreevisible, BossFocus openswithoutchange, manuallyequipped/
+save-loadretained,noerrors/overflow; WASMhashae07e9503204d65d236072dbe0183b8fd
+8608d0376dfd70f6411fc41528047c6. Screenshotsshown. AcceleratedengineQA, nohuman
+32h/fun/balance/perfclaim. UX_REPORT_NEW_CHOICES.md; scratchpad/first-boss-rewards-
+20261006/. NoRust/WASM/deploy. Temporary5395 cleaned/shared5219preserved.
+Next: paired next-absence savedtown gameplay comparison with earnedtactic versus
+sameuntouchedsave, inspect actualdecisions/rewards; don't assumeBossFocushelps
+nextwall. Stopreportchrome polish unlessfreshplayevidence demandsit.
+
+**BOSS APPROACH FRAMING — 2026-10-06:** Recorded desktopWarlord settledsprite
+clippedy−128/645px. Boss-aware natural spritebounds choosewiderfightscale,
+lockwidestbodyframeforencounter; drop gets temporary36unitspace thenclosecut.
+Actualcamera constrainedjointbounds+top96px+existinghero margin; hidden/
+remembered/allybossesexcluded, fixedfocuspreserved. Resetonfloorload/resize.
+Pairedrecord desktopk16→10,bossy93.3h160/heroy440h80; phonek8unchanged.
+DebugRect addsdrawn lift/squashbounds, naturaldiagnosticsretained. Newtool
+boss-framing-check46cases/124GPUcontainedsamples, expectedbaselinefailsreal
+record; hero30cases/174samples, fights46+warning34pass157s. Build/typecheck/
+copy1528/diffpass,bundleadvisory. RealheadedWASM fromadvancedpreboss save:
+phone7917/desktop7906,k8, bothfigurescontainedwithfullHUD/log;noerrors/overflow,
+screenshotsshown. Differentticks/notpairedFPS/notfresh-playerbalance.
+GFX_BOSS_FRAMING.md + scratchpad/boss-framing-20261006/; noRust/WASM/deploy.
+Next: first-boss defeat choices/content review usingfreshlegal player path;
+actualadvancedWarlordvictoryalreadyrecorded8154 lastturn, don'trepeatentryQA
+unlessnew evidence. Temporary5394 cleaned; shared5219preserved.
+
+**BOSS WARNING WORDS — 2026-10-06:** Real headed WASM advanced savedcamp,
+legalD5start/diagnostic steppingtoD8 thennormalwatch at400/1440: Warlord rally
+7862/7902, break8109, die8154; noerrors/overflow. Notfresh-playerbalance orfull
+run/rewardcoverage. Known Warlord/Captain nameplates+combatlogs now `calls goblins`
+instead of `rallies`; sharedformatter, otheractors/mechanicsraw, warning words
+capturedperbatchbeforedelayedrelease. Coreevents/flavourcallouts/countersunchanged.
+Renderer34+combatidentity52checks pass29.6s; initialfixture reuseddamageID,
+correcteduniqueIDs, no production workaround. Build/typecheck/copy1528/diffpass,
+bundleadvisory. Headed400/1440 recordedactualrally snapshot labels verified,
+screenshotshown; isolatedrendererwithoutappchrome, notnewliveplaythrough.
+UX_BOSS_WARNING_WORDS.md; scratchpad/warlord-watch-20261006/. NoRust/WASM/deploy.
+Next actualgfxissue: desktop boss entrance at7889 extendsabovecanvas; hero is
+contained but spriteunion682.7CSSpx atcurrentzoom. Lateradjacentfight fits.
+Investigatezoom/framing duringbossapproach with paired recordedreal replay;
+keep hero visible and don't confuse entrance lift with camera clipping.
+
+**CLASS GROWTH VISIBLE ON RETURN — 2026-10-06:** Freshreal seed3 firstreport
+hid39FighterXP underdetails. CompactClassXP rewardnowbeforefold; earnedXP/level
+counts only, separateLegacy/noinferredcurrentlevel. BloodlineReturn.xp arrays
+fromeachslotRustreport; selectedtopXPunchanged. Clientmerges slot+class deltas,
+never rewritesoldclassto latestselection. Oldmissingwiredefaultempty/rawclient
+fallbacktopXPwithoutinferredowner; knownslotarrayssuppressfallback.
+Core Fighter/Rogue gainownership+selectedwaits/roundtrip/old/no-repeat pass;
+workspace559pass33.34s/1ignored, clippyclean. Selectedwaits fixtureaddedafterfull
+suite, expandedtarget0.07spass. WASM5236591/hashae07e9503204d65d236072dbe0183b8fd
+8608d0376dfd70f6411fc41528047c6. Final40UIchecks400/1440pass3.0s; initial34+
+report32+progress40pass3.6s. Build/typecheck/copy1527/diffpass,bundleadvisory.
+RealrebuiltWASM phone400/desktop1280firstreport+39XP,8h+372XP/+1level, screenshots
+shown,10checkpointwalks30.7/31.9s/noerrors. Scouttrunk two extra engine sends/
+hiring scripted, no humanfun/performance/fullbalance/deployclaim. UX_REPORT_CLASS_XP.md
+scope/evidence; scratchpad/report-class-xp-20261006/. Next: actual content/gameplay
+review of first boss encounter/reward choices; report growth now visible, stop
+polishing low-impact report chrome unless fresh play evidence demands it.
+
+**CHECKPOINT GOLD IS NOT A SWAP — 2026-10-06:** Verifiedrealphone703carry6/
+secured0→747carry0/secured6, swapped0omitted; UIblamedrecentfoldedscrollpickup.
+Rustcheckpoint transfersrun.loot→secured, snapshotdeath_keep=keptDeath. Watch
+now offsets netcarryfall bysame-runsecuredincrease; positiveswapcounterdelta
+stillauthoritative, genuine residual losses/oldwirefallback preserved. Prior
+legitloss mayretain2.5slifetime. TScomment documentsomitted0. Final18mounted
+checks400/1440pass7.7s; initial14+meter16+decisions30+watchstatuspass18.0s,
+latercasesfixtureonly, finalproductionchangescomments. Build/typecheck/copy1524/
+diffpass,bundleadvisory. RealnormalbatchedD2newcarry9/11secured6noswaploss;
+exactphoneQAone-tickstepping+syncpauseviewer745core740carry0secured6 shows
+clean`Carried$0·Secured$6`, screenshots shown/noerrors/overflow. Exactstepping
+harnessonly, no performance/gameplay/Rust/WASM/deployclaim. UX_CHECKPOINT_GOLD.md
+limits/evidence; scratchpad/checkpoint-gold-20261006/. Next: return to a full
+first-session content/gameplay/gfx review now the concrete watch clarity bugs
+are handled; use actual new-town path and inspect report/reward/hero growth.
+
+**COUNTED COMBAT DECISIONS — 2026-10-06:** Consecutive identical displayed
+policy rows share×N byfloor/row/text/verb/arg; anyotherlogged event inclhidden
+negative-row rule breaksgroup. Acrossbatches, onlyreleaseattheviewertick;first/
+latest tickattrs retained. Raw events/combat/items untouched, plain overlay.
+New combat-rules30mountedchecks400/1440pass16.3s; initialcombined28+identity48+
+meter16+watch-statuspass30.7s; finalextra paused-count testfixtureonly. Build/
+typecheck/copy1524/diffpass,bundleadvisory. RealheadedWASMseed2house/sendboth
+`attack monkey×3`ticks560→580; hit/kill retained, noerrors/overflow, events
+unchanged. ScreenshotsscrolledtohistoricalD1rows, desktopalreadyD2.
+UX_COMBAT_RULE_COUNTS.md evidence/limits; no Rust/WASM/deployment/perfclaim.
+Next screenshot issue to investigate: D2checkpoint Secured$6/Carried$0 also
+shows `−$6 swap → folded scroll?`. Verify Rust stake.swapped/carry/secured
+transitions before assuming a swap: checkpoint securing must not masquerade
+as lost money. Then return to content/gameplay/gfx after concrete clarity bugs.
+
+**TRAILING WATCH METER PAINT — 2026-10-06:** Source audit: log per-eventtick,
+meters final snapshot tick; prior paused hit/zero screenshot can legitimately
+sit between those ticks. Separate verified bug:400ms throttle dropped final
+paint with no later released snapshot. Mounted baseline failed paused12hp.
+Single trailing timeout reads only last reached lastMeters; coalesces, clears
+on force/dispose, no engine/poll calls. Final16mountedchecks400/1440pass7.2s:
+6→rapid12/18→paused18 while core999 queued→resume999→dispose pending888,
+detached meter unchanged. Fixture corrected to monotonic ticks; code unchanged.
+Initial combined12+watch-status+roster38pass15.5s, later fixture-only additions.
+Build/typecheck/copy1524/diffpass,bundleadvisory. Headed realWASMseed2house/send
+400/1440noerrors/overflow; desktop6hp checkpoint shown, phone compactoffdefault.
+UX_WATCH_METERS.md evidence/limits; no Rust/WASM/gameplay/deployment. Next:
+repeated policy rows still consume3line overlay; inspect coalescing consecutive
+identical decisions, preserve changed actions/targets and all damage/items.
+
+**COMPACT COMBAT HIT ROWS — 2026-10-06:** Watch-only filtering removes later
+hurt identical to positive successful attack on tick/destination/amount/source
+cause, one-to-one; known source kind or hero, never infer unknown. Modified
+amounts/hazards/misses/zero/extra hurts/different tick or cause preserved. Raw
+events untouched for renderer/audio/meters. Spawn names/kinds captured before
+log scheduling, final snapshot names win. New ui/combat-log.ts; existing watch
+identity test expanded10→24/width (48pass29.8s); prior combined44+watch-status+
+roster38pass30.2s, final two checks fixture-only. Build/typecheck/copy1524/diff
+pass, bundle advisory. Real headed WASMseed2 house/send400/1440 each first hit
+rawHurt1→displayHurt0 while attack retained, events byte-identical, no errors/
+overflow, screenshots shown. Phone stillFoe when no snapshot/spawn identity;
+spawned-and-slain names proved controlled only. UX_COMBAT_LOG_ROWS.md evidence/
+limits; no Rust/WASM/gameplay/deployment. Next: repeated rule rows still consume
+the three-line overlay; inspect useful policy decisions versus repeated attacks
+without hiding distinct actions or hazards. Also watch meters' delayed picture
+may show zero damage beside first actual hit—inspect clock ownership first.
+
+**TRAIT PERSONALITY FOLLOW-UP — 2026-10-06:** Latest owner icon request:
+Unbowed v4 badger confident chin-up/chest tap, Light Hands v4 magpie sly gaze
+and smaller palmed coin. Two built-in imagegen edits; exact prompts/source
+paths in GFX_TRAIT_PERSONALITY.md. RGBA1254alpha corners0, runtime96px, only two
+manifest additions; existing v4 preference, other six assets/sizing preserved.
+Headed fake all-unlocked320/400/1440 eight44–52px decoded/unframed/no overlap/
+overflow; phone+desktop screenshots shown. Selection28+death44pass3.7s,
+build/typecheck/copy1524/diffpass, existing bundle advisory. No gameplay/Rust/
+WASM/deployment. Evidence scratchpad/trait-personality-20261006/.
+Next evidence-led UI work: duplicate attack/hurt rows; source inspection shows
+counters/shields change actual Hurt amounts, so only suppress proven identical
+same-tick/destination/damage/source-cause pairs one-to-one; preserve differing
+amounts, hazards, unknown-source damage and misses. No production log edits yet.
+
+**WATCH HERO CONTAINMENT — 2026-10-06:** Actual rendered camera constrained
+by full hero sprite bounds after spring and on snapped load/seek/fight change;
+room holds/targets/spring retained in normal range, constrained axis velocity
+reset. Real headed seed2 firstwatch40samples/width400/1440: prior9/40+17/40
+clipped→0/40+0/40; same wallclock protocol, different sampled replay ticks.
+AfterD2screens hero visible, shown. New manual GPU watch-framing-check30cases/
+174samples covers map/fight fast travel, fixed focus, load/seeks/resize/stationary;
+previous renderer fails (hero y842 in660px view). Temporary baseline removed.
+Fixture movement spacing/stationary setup corrected, no weakened containment.
+Existing watch-status/GPUdiagnostics741/live-roster38pass15.3s; build/typecheck/
+copy1524/diffpass,bundleadvisory. GFX_WATCH_FRAMING.md for evidence/limits.
+No Rust/WASM/art/sim-speed/FPS/deployment claim. Temporary5384 confirmed and
+stopped. Next: actual duplicate attack/hurt log rows and first-batch missing actor
+identity; preserve environmental damage and unknown fallback, avoid generic UI.
+
+**LIVE ROSTER AFTER SEND — 2026-10-06:** Immediate Rust slot read after send,
+before viewer load. Existing1s human watch poll reuses same guarded method;
+no extra polling timer/clock advance. In-flight same-view/selection read shared;
+late departed-watch/changed-selection replies rejected, old completion cannot
+clear newer read.38 controlled checks400/1440pass2.6s; existing hero-names30
+and watch-statuspass15.5s in initial run. Fixture initially queried nonexistent
+mobile watch roster/camp container; explicit roster mounted, final allpass.
+Real seed2WASM house/send400/1440 runs=1: first viewer slot live/desktopLiveD1;
+paused picturedD1/currentrosterD2 correct; no errors/overflow, desktopshot shown.
+Mobile underlying slot verified, no roster added to mobile watch. Build/typecheck/
+copy1524/diffpass,bundleadvisory. UX_LIVE_ROSTER.md for scope. No Rust/deployment.
+Prior screenshot's persistent Ready was amplified by webdriver clock-off;
+human app already polled1s, concrete gap immediate send stale state+reply race.
+Next: GPU camera/actor audit of first-watch framing; screenshots show scenery
+with hero near/beyond edge. Also known first-batch Foe fallback/duplicate damage.
+
+**NAMED COMBAT ACTORS — 2026-10-06:** Snapshot.hero.name now Rust stable
+identity from run.heir+game bloodline, existing optional Entity.name wire.
+Watch remembers companions as well as foes; immutable actor names captured for
+delayed rows (only referenced actors; movement batches copy no map). No inference
+from current selected heir.558 fast tests36.77s/1ignored, clippy, rebuiltWASM
+5240576, final build/typecheck/copy1524/diff pass; bundle advisory. Final isolated
+combat20+watch-status pass24.4s. Headed real seed2 manual house/send400/1440
+named attack/pickups, pause, no page errors/overflow, screenshots shown. Companion
+identity tested controlled stream, not real pet walkthrough. Unknown first-batch
+slain actor retainsFoe; overlay scrolled to named row for screenshot. Harness
+wrong engine.version and uppercaseSend lookups corrected; final runs terminalPASS.
+UX_COMBAT_IDENTITY.md for limits/evidence. Temporary5382 confirmed/killed.
+No gameplay/deployment. Next: actual desktop watch roster still Ready during
+live run; inspect onLive/state ownership and fix. Later: first-batch missing foe
+identity/duplicate damage rows and first-watch hero framing from screenshots.
+
+**STYLE EXPRESSIONS AT GAME SIZE — 2026-10-06:** Owner follow-up: stronger
+Guarded suspicious side-eye and Hunter plotting gesture via two individual
+built-in imagegen v4 edits. Other six expressive v3 assets preserved. All eight
+52px choices/44px mobile equipped, alpha unboxed; no icon/text intersections
+or overflow320/400/1440 headed fixture, screenshots shown. Package selection28
++death actions44 pass isolated3.2s; exact expected Guarded asset updatedv4.
+Shared-server selection cleanup failure resolved by unchanged isolated test.
+Build/typecheck/copy1523/diff pass, bundle advisory. GFX_STYLE_READABILITY.md
+has source/prompt/evidence paths. No gameplay/deployment. Real seed2 first-town
+walk completed34.1s/10checkpoints/offline8h2.1s/no errors; Scout hiring portion
+scripted engine harness. Next: continue evidence-led content/gameplay/gfx;
+watch log's generic Hero actor may obscure named hero identity, inspect source
+and watched historical ownership before changing labels.
+
+**HISTORICAL CAMP QA RESTORED — 2026-10-06:** qa92 full40checks passes
+13.9s; report-only8checks3.0s, combined13.9s. Explicit rough-estimate label,
+rough/refined classes+data flags and exact uncertainty bands replace obsolete
+ellipsis expectations; normalize panel leading whitespace. Current Restock
+supplies label/selector restores complete walk. Original timeout was restock
+lookup, not counted rule card. All prior behaviors retained, no checks removed,
+timeouts raised or default sections skipped; advanced legacy fake fixture
+unchanged. Build/typecheck/copy1523/diff/JS syntax pass, chunk advisory. Updated
+stale forecast source comment only; no runtime/gameplay changes. DEV_QA92.md
+records scope; not a full client-suite/balance/real-playtest certification.
+Prior qa92 failure queue resolved. No deployment. Next: resume real first-session
+content/gameplay/gfx evaluation; avoid more harness/UI work without evidence.
+
+**RECENT PROGRESS CLARITY — 2026-10-06:** Report Details now labels
+stored record and recent-window best separately; actual record20/recent13.
+Known bank/return causes read collected gold/returned home with original
+current/earlier run counts and floor; legacy fallback intact. Suggested changes
+use plain action+condition, all thresholds preserved, exact patch application
+unchanged. Mobile numbers beneath action avoid cramped three-line title.
+60checks320/400/1440 +qa92report8 +actions32 pass4.0s; build/typecheck/
+copy1523/diff pass, chunk advisory. Headed actual camp3/8h Details400/1440
+source values/action no warnings/overflow, final screenshots shown. First
+hidden-title screenshot attempt and fixture selector corrected. Full qa92 has
+pre-existing camp ellipsis/obsolete unlock selector failures+timeout, reproduced
+with untouched HEAD test before report. Added explicit --part=report, default
+all sections retained; exact stale report tile labels updated, no assertions
+removed. UX_RECENT_PROGRESS.md for scope/limits. Corrected prior actions48
+count to32(two widths); upgrade57 remains. No Rust/WASM/tuning/deployment.
+Next: repair historical camp QA fixtures/selectors for trustworthy fast iteration,
+then resume concrete content/gameplay/gfx improvements; avoid generic layout loops.
+
+**BOUNDED QUICK PLATEAU — 2026-10-06:** Quick reports now cap paired
+plateau base at12seeds (same450ktick budget/min5), candidates use achieved base
+count/same ordered seeds. Full reports/direct stall_verdict retain50cap. Cache
+key includes cap; one result slot, base memo retained across mode switches.
+38case quality32literal seeds(hp<35return)+6progressed camp states:13/13strong
+firsts match full positive set;18/19all offered firsts match. Matching deltas
+median error6.7pts/max24.3pts, one camp extra+8.3pt suggestion; approximate,
+not field-calibrated. First22case sample only5strong, expanded rather than
+lowering6minimum. Exact raw saves/other report fields all38native and70WASM
+calls. Seven quiet headedfast pairs progressed2:2039.3→1405.2ms31.09%,
+3:2258.2→1617.5ms28.37%;early effectivelyunchanged. Native forecast work
+69/1375344→36/749619 sims/ticks, no native timingclaim.
+557fast tests39.57s/1ignored,clippy/WASM5240670/build/typecheck/copy1511/diff
+pass; chunk advisory. UIactions32/upgrade57pass10.6s; actual real-WASM
+camp3/8h Details400/1440 no warnings/overflow, source extra suggestion/screens
+shown, no patch applied. Test count/cache assumptions and misplaced cfg caught/
+corrected, full checks rerun. PERF_PLATEAU_FORECAST.md for hashes/limits.
+New plateau_perf diagnostic/fixtures; compare tool strict default preserved,
+explicit estimate flag permits only stall.patches changes. No deployment/
+shipping/full balance or exhaustive audit. Next: assess concrete content/gameplay
+feedback from actual screenshots (record floor20 vs recent-run plateau13 and
+raw rule syntax still need clarity); avoid another generic UI polish pass.
+
+**NEXT PROFILE TARGET — 2026-10-06:** Progressed3hero candidate fastWASM
+five fresh8h runs median2.2734s, repeated report/save equals paired series.
+Selected plateau stall_verdict50.89% of all samples/run_offline_mode82.41%
+(~62% of sampled engine time); town_from0.21%. Samples include load/save/idle;
+nested percentages not additive. Next: contract bounded paired plateau forecast
+or safe cache reuse; owner allows approximate estimates, preserve gameplay/save
+progression and unchanged balance gates. Details PERF_MULTIHERO_CATCHUP.md.
+No follow-up implementation yet; content/gameplay/gfx queue remains.
+
+**MULTIHERO CATCH-UP — 2026-10-06:** Profiled legal Scout camps; retained
+copy-on-write Town/hired/done/paused/acts/ranks and clone_from allocation no-op.
+No changes to gold, worker order, clock or serialized values. First map-only
+candidate6.47% missed10% target; expanded containers rather than weakening it.
+Seven alternating headed fast-WASM pairs: early2 heroes419.5→359.9ms14.21%,
+3 heroes654.1→533.6ms18.42%;1 hero168.7→168.6ms unchanged. Progressed2/3
+heroes4.10/6.09% (still~2s). Five native pairs:early3 +13.39%,later2/3
++1.83/2.84%. Exact raw original/candidate report+save all five fixtures in
+both runtimes. New Session diagnostic avoids old sim_perf selected-Game-only
+pitfall; paired browser tool preserves original artifacts. Baseline native/
+WASM phrase-index difference traced to existing64bit gate vs32bit app wording;
+optional RIDDLE_SHIPPING_WORDS=1 matches originalWASM exact raw output for1
+fixture (not all-five cross-runtime claim).556fast tests35.14s/1ignored,
+clippy/WASM5240610/build/typecheck/copy1511/diff pass. UI training63/worker60
+pass; mistyped worker suite corrected. Headed actual legal2slot/two12h79runs/
+thirdslot/reload400/1440 no warnings/overflow, roster shown. See
+PERF_MULTIHERO_CATCHUP.md for hashes/method/limits. No shipping/full balance
+or exhaustive audit/deploy. Next: profile progressed camp report/forecast
+cost before more sync work; content/gameplay/gfx queue remains active.
+
+**NEW BLOODLINE APPEARANCE — 2026-10-06:** New residents choose first
+unused existing cosmetic among currently resolved looks (usually male/female/
+cat), preserving current choices, initial class defaults and old saves. Chosen
+appearance remains inherited/editable.555 fast tests36.84s/1ignored, clippy/
+rebuiltWASM5244053bytes/build/typecheck/copy1511/diff pass; chunk advisory. Core
+same three-run report and full Session state except lineage.look equals clone
+with cleared cosmetics; default/custom/class-default/load/select/old missing/
+heir/full-slot checks. Existing UI slot/report54 +Appearance45 pass5.7s across
+320/400/1440. Headed real savedseed15/legal second slot/two12h/legal third:
+core male/female/cat asset ids, female hero menu, exact reload/select/new-slot
+retains choices, no warnings/overflow400/1440/screens shown. Existing portraits
+subtle anime/cat-ears art, no new art/geometry/backfill. GFX_NEW_BLOODLINE_LOOKS.md.
+No stats/RNG/default first hero/deployment change. Next: measure actual current
+multihero catch-up cost and shared clock synchronization before optimization;
+old single-hero timing does not prove scaling. Content/gameplay queue persists.
+
+**HERO FAMILY IDENTITY — 2026-10-06:** Real two-slot screenshot had
+Niall twice. Preserve pure given-name derivation; append persistent slot family
+Ash/Thorn/Flint (numbered fallback imported ids). Roster/lifetime wire/new deaths
+share full identity; stored nonempty historical names preserved, empty legacy
+records decorate cloned reads/no raw mutation. Families guarantee different
+complete generated names across active slots, independent of heir ordinal;
+given names still cycle24/across towns.554 fast tests38.55s/1ignored, clippy/
+WASM5241995bytes/build/typecheck/copy1511/diff pass; chunk advisory. UI identity30
+checks320/400/1440 incl full menu child bounds4.4s; historical death27 passes.
+Headed real savedseed15camp/legal slot2/two12h79runs reproduces Niall Ash/Thorn,
+exact reload/2→1 stable; legal slot3 Bryn Flint doesn't rename either.400/1440
+roster/menu match core/no warnings/overflow/screens shown. Death naming core/UI
+coverage only, no new real death walk. CONTENT_HERO_FAMILIES.md records scope.
+No stats/balance/RNG/default portraits/deployment change. Next: visible hero
+individuality still limited by identical default portraits; evaluate variety
+using existing looks alongside content/gameplay feedback, not generic layout.
+
+**BLOODLINE TRAINING — 2026-10-06:** Away report discarded unselected
+training. BloodlineReturn now retains each own bounded package beats (explicit
+[] is known empty, old wire optional). Per-id sliced merge retains highest core
+level/unique drill; stable report Bloodline labels, no current-heir inference;
+selected top-level/backcompat/Details maintained.553 fast Rust pass34.32s/
+1ignored, clippy/rebuiltWASM5246299bytes, UI63+54+57 pass4.9s320/400/1440,
+build/typecheck/copy1511/diff pass; chunk advisory. Headed savedseed15camp/legal
+second slot/save-load/two12h slices:79runs, slot1SteadyL3 from first slice,
+slot2SteadyL2 plus second-slice Warlord tactic; exact source/group and core
+run/gold sums, no warnings/overflow400/1440/screens shown. Gold home excludes
+salvage as before. Mandatory UI fixture salvage/XP/renown corrected. See
+CONTENT_BLOODLINE_TRAINING.md for five-beat cap and unchanged other facts/finds/
+XP/death aggregation limitations. No tuning/full audit/deployment.
+Next: real screenshots show both active heroes named Niall; improve simultaneous
+hero individuality while preserving deterministic stable historical identities.
+Content/gameplay/perf queue remains; no repeated generic window polish.
+
+**STYLE / TRAIT PERSONALITY — 2026-10-06:** Owner requests more expressive
+creature icons. Built-in imagegen eight individual v3 edits of v2, stronger
+asymmetric expressions/gestures (calming bear paw, wary shell peek, laughing
+lion, hawk tilt, startled hare, defiant badger, winking magpie, potion-licking
+goat). Keep v2; packageIcon prefers v3 with existing fallbacks. Source art and
+96px packed icons committed; prompts art/prompts/style-personality-v3.
+Headed all-unlocked visual fixture400/1440 all eight decode34–44px, alpha/
+unframed/no overflow; screenshots shown. Build/typecheck/copy1511/diff pass,
+existing chunk advisory. Selection28/death-actions44 pass; corrected wrong
+selection test filename. No gameplay change/deployment. GFX_STYLE_PERSONALITY.md.
+Per-bloodline training changes remain uncommitted pending real headed away
+proof: core553pass34.32s/1ignored, WASM5246299bytes, clippy pass, UI63 checks
+320/400/1440; fixture mandatory salvage/XP/renown omissions corrected. Earlier
+run-training54/report-upgrade57 green. See CONTENT_BLOODLINE_TRAINING.md.
+
+**BOSS COUNTER CLARITY — 2026-10-06:** Tactics Details now uses chunky
+boss cards with existing art, readable learned actions/item silhouettes, core
+card carries gloss, explicit On/Off and accessible enable/disable labels.
+Exact Max HP −N% replaces hardcoded scar/5 counts; scar-only bosses get no
+invented tactic. Missing bridge disabled, pending click guarded.69 checks320/
+400/1440 pass3.7s, selection28/chrome184 pass, build/typecheck/copy1510/diff
+clean; chunk advisory. Actual headed savedcamp1 four counters400/1440: Warlord
+Off/save-load/On, other drills enabled, expanded Details retained, no warnings/
+overflow; corrected screens shown. Queen/non5% fixture coverage. Contrast/CSS
+write mistake caught and corrected before final build/layout checks. Contract
+UX_BOSS_COUNTERS.md records evidence. No Rust/WASM/tuning/full audit/deploy.
+Next: multihero progression attribution and concrete first-wall gameplay choice
+feedback; stop generic repeated report/window polish absent new evidence.
+
+**RUN TRAINING FEEDBACK — 2026-10-06:** Watched reports dropped core
+style levels/drills. Add bounded per-run ExitLine.packages to last_exit/batch/
+death copies; watch copies into report. Shared Training before Details/death
+actions shows exact levels and boss tactic, remaining package/grew facts stay
+in Details without duplicates. Empty/old wire stays compact.552 fast tests
+36.23s/1 ignored, UI54 +upgrade57/worker60/actions44/deathhero27 pass13.6s;
+clippy/build/typecheck/copy1507/diff pass, chunk advisory. Old gameplay fixture
+hash remains c70ffd182d4080f1 after existing normalizer excludes new display
+metadata; separate payload tests. Rebuilt WASM5,245,585 bytes. Headed400/1440
+freshseed2 nine manual runs+tenth Fast/Skip watch -> report STEADY L2; seed15
+existingcamp24h -> STEADY L3, no warnings/overflow/screens shown.8h sample
+correctly had no level gain. Drill/death feedback Rust/UI coverage, no new real
+drill/death walk. CONTENT_RUN_TRAINING.md records scope. No tuning/full audit/
+deploy. Next: gameplay/content reasons to engage at first walls; avoid further
+generic report polish. Multihero progression attribution deserves own contract.
+
+**HISTORICAL DEATH HERO — 2026-10-06:** Death records now capture optional
+Rust name/heir/class/bloodline identity at creation; screen shows it above
+banner. Uses run heir/class, no current-hero inference/backfill for old records.
+Owner You died seal and stall/action/verdict behaviour retained.551 fast tests
+34.64s/1 ignored, UI27 at320/400/1440 plus death-actions44 pass5.1s; clippy/
+build/typecheck/copy1505/diff pass, chunk advisory. Rebuilt WASM5,240,080 bytes.
+Headed real seed15 old camp/new8h recorded Iris heir4/current5 death identity
+persists save-load400/1440, no warnings/overflow/screens shown. Other-selected
+hero isolation is UI fixture/Rust slot-id coverage. CONTENT_DEATH_HERO.md
+records scope. No tuning/historical portrait/full audit/deploy. Next: concrete
+content/gameplay feedback from first-run/away walks beyond further layout passes.
+
+**COMBAT STYLE / TRAIT SILHOUETTES — 2026-10-06:** Existing expressive
+bear/tortoise/lion/hawk and hare/badger/magpie/goat now render without square
+icon frames, at44px (equipped mobile34px). Shared packageIcon marks only
+packed expressive assets; chunky cards/selected gold outline remain. No art
+regeneration/gameplay changes. Headed400/1440 all-unlocked fixture all eight
+decoded/unframed/no overflow/screens shown. Selection28/chrome184 pass27.6s,
+build/typecheck/copy1504/diff pass; chunk advisory. UX_STYLE_SILHOUETTES.md
+records scope. No Rust/WASM/full audit/deploy. Next broader content/gameplay/
+graphics queue remains; avoid another icon pass absent new user evidence.
+
+**HERO APPEARANCE ENTRY — 2026-10-06:** Hero details now offers Appearance
+beside Change class, reusing existing three-portrait picker. Parent updates
+on identity/look/name change while retaining expanded Details; closes release
+subscription. No-op/dismiss writes nothing, unsupported bridge disables action,
+cosmetics allowed away.45 checks320/400/1440 pass5.4s; existing appearance54/
+names27/report57 pass. Build/typecheck/copy1504/diff clean; chunk advisory.
+Headed actual real-WASM400/1440 Wren female/Vale cat UI choices persist reload,
+gold49/class/XP/Legacy unchanged, no warnings/overflow/screens shown. Details
+expansion tested by fixture. UX_HERO_APPEARANCE.md records scope. No Rust/WASM/
+full audit/deploy. Next: combat style/trait silhouette clarity per owner.
+
+**PER-BLOODLINE PORTRAITS — 2026-10-06:** Existing12 male/female/cat
+class portraits were ignored by roster; report Upgrade hero also ignored look.
+HeroSlot now carries its own resolved Rust cosmetic look; roster paint/repaint
+key uses it. Report portrait/key use selected Lineage.look.550 Rust tests
+35.95s/1 ignored,12 tooling/type/copy/quick107s, clippy/build/rebuilt WASM
+5,221,684 bytes pass; chunk advisory.54 UI appearance checks320/400/1440 incl
+12 ids/fallback/appearance-only refresh +names27/report57 pass5.2s batch.
+Actual headed seed2 female Wren/cat Vale API choices survive exact reload/
+2→1 selection, correct active portraits400/1440/menu, no warnings/overflow;
+screens shown. This honors choices, not new default variety or picker UI walk.
+GFX_HERO_SLOT_LOOKS.md records scope. No art/stat/default/full audit/deploy.
+Next: existing appearance picker reachability from hero details (camp hides
+console portrait); use existing art/module before new portrait generation.
+
+**NAMED HEROES — 2026-10-06:** Active slots now show a Rust-derived
+person name first, Bloodline/class beneath, preserving persistent Legacy slot.
+Hero menu/selected Chronicle use same names; raw chronicle lines still drive
+kept death links. Fixed24-name pool, pure seed/heir lookup/no RNG consumption;
+consecutive heirs differ, names cycle24 and may coincide across slots. Query
+only decorates cloned wire records; empty saved names omitted, read/save
+unchanged. Old/fake wire falls back. Missing roster name invalidation caught
+and fixed.549 core tests37.62s/1 ignored,12 tooling/typecheck/copy1503/quick
+125s (includes compile), clippy/build/rebuilt WASM pass; chunk advisory remains.
+27 UI checks320/400/1440 +existing report57 pass. Actual headed seed2 Wren/
+Vale400/1440 names stable across exact save-load and2→1 selection, correct
+menu/Legacy, no warnings/overflow/screens shown. Past name/death-link tested
+via UI fixture/Rust history, no new real death walk. CONTENT_HERO_NAMES.md
+records scope. No portraits/gameplay-stat/full audit/deploy. Prefix read found
+existing exact reuse intact; prior setup<2% profile means no setup rewrite
+speed claim. Next: gameplay/graphics personality beyond repeated UI polish;
+portrait/sprite variation and first-run visible feedback remain promising.
+
+**MEASURED CORE BUILD/TEST PATH — 2026-10-06:** Isolated current1d76e86
+fast native warm edit10.302/10.475s, restore10.466/10.228s; both restores match
+original native executable hash. Main source untouched. Core frontend3.36s/
+codegen6.475s median dominate, bridge/example~0.5s. Cold prime54.48s separate.
+Full unchanged suite Cargo35.211s, Nextest8=35.937s/16=36.622s, all548 pass/
+1 ignored. One sample per runner; no demonstrated win, keep Cargo/no omitted
+checks. Concurrent case timings identify forecast prefix29.799s and quiet
+catch-up equality26.473s; not isolated CPU attribution. PERF_BUILD_TIMING.md
+records method/artifacts; derived504MiB target reclaimed after binary retained.
+Copy1503/diff pass; no optimization settings, game/UI changes or deploy/full
+balance audit. Next: measure actual ordered forecast/tick paths while retaining
+existing equality checks; compiler/linker tweaks unlikely to beat this path.
+Gameplay/graphics objectives persist; avoid another generic report layout pass.
+
+**SKIP TEST-ONLY NATIVE REBUILDS — 2026-10-06:** Watcher previously
+queued Cargo for every cfg(test) module edit. Now skips only root test modules
+with exclusive current cfg(test) declaration AND exclusion in Cargo native
+example dep-info. Missing/ambiguous/escaped/custom-target proof keeps rebuilds;
+runtime includes, lib/bridge/presets/manifests remain invalidating. Actual10
+repo test modules now0 queued builds (previous coalesced1), runtime tree edit
+still1.9 watcher/host/bridge/real-compiler identity checks3.31s, tsc/copy1503/
+diff pass. No tests/gates removed; no Rust/WASM/UI/deploy. Scope is avoided
+queue entries, not full-check speed claim; no native5367/5368 server listening
+at inspection, so prior72s cannot be attributed to native contention. Docs
+PERF_NATIVE_TEST_EDITS.md/NATIVE_DEV.md and diagnostic classification record
+proof/fallbacks. Existing native servers require restart to load watcher.
+Next: profile a real core edit/build with explicit Cargo timing instead of
+attributing slow checks to an unverified overlap; gameplay/gfx work remains.
+
+**SCOUT ACT LEDGER — 2026-10-06:** Automatic sends previously enabled
+runs without recording scout acts. Offline/live-clock new runs now increment
+existing worker ledger through hired/on/non-sim/non-literal helper; manual
+send/resume/preview excluded. Wire says sent N; persisted first flag shown
+by existing first-worker report, later acts stay in Details. Counter only;
+serialized game excluding acts unchanged. Fast548 tests33.21s (1 ignored),
+quick host/typecheck/copy green72s, clippy/build clean; initial sandbox host
+test failed, full host-access rerun passed. Rebuilt real WASM5,218,820 bytes;
+existing worker UI60 checks pass. Headed400/1440 actual seed2 first8h16runs:
+scout sent16 first=true visible, later8h16sent first=false/no repeat; no
+warnings/overflow/screens shown. Counts actual starts, not extrapolated
+records. SCOUT_ACTS.md records scope. No balance tuning/full audit/deployment.
+Next: gameplay/graphics feedback for the first few runs; avoid another generic
+report layout pass. Local quick72s still includes native auto-rebuild/test
+contention: inspect measured compiler overlap before claiming build speed.
+
+**FIRST WORKER ACTS VISIBLE — 2026-10-06:** Simple report had hidden
+all core first worker acts in collapsed Details. Core-marked first positive
+acts now appear under Workers started with existing icon/name/exact act;
+every first worker shown, routine/chest stay folded, no duplicate entries.
+Three result cards/upgrade route retained.60 scoped checks320/400/1440 incl
+five workers/merge/no-repeat/old wire pass4.3s; existing report-upgrade57/
+report-actions32 also pass4.9s batch. Build/typecheck/copy1503/diff pass;
+existing chunk advisory. Headed real-WASM legal seed2 first8h report actual
+porter first haul$1287 visible400/1440, laterhaul$1433 first=false/no repeated
+announcement, zero warnings/overflow; screens shown. Core gross haul is
+separate from net Gold home$974, not recalculated. Reopening same historical
+report retains first record. UX_WORKER_FIRST_ACT.md records evidence/scope;
+no Rust/full audit/deployment. Next: content/gameplay feedback for new heroes
+and worker actions; inspect core actual action coverage before adding claims
+(scout/quartermaster do not currently appear in tree::report_acts inputs).
+
+**REPORT → HERO UPGRADES — 2026-10-06:** Return report now offers
+Upgrade hero only for selected core affordable upgrades with known Legacy
+balance/bridge support. Existing hero sheet opens without spending; slot/live
+changes refresh CTA and disposal removes both subscriptions. Three results/
+details retained. Report opts into compact footer; complete labels/no empty
+slots.57 scoped UI checks320/400/1440 pass3.5s; report-actions32/chrome184,
+production build/typecheck/copy1502/diff pass. Separate headed real-WASM400/
+1440 legal seed2 scout/8h16runs,D7,$974home/32Legacy verifies route and Health
+purchase3Legacy: first32→29/rank1, second remains0. No warnings/overflow;
+screens shown. Initial harness selected fading inert clone, corrected active
+sheet selector. Four-control footer geometry uses module fixture, not actual
+four-command report. Existing chunk advisory; no Rust/full audit/deployment.
+UX_REPORT_HERO_UPGRADE.md records scope/evidence. Next: first-session feedback
+for worker/hero choices; favor concrete gameplay/content gaps from playtests
+rather than another generic layout pass.
+
+**READABLE ENEMY WARNINGS — 2026-10-06:** Exact real-WASM
+Captain first rally tick650 captured via diagnostic save/1-tick replay after
+visibility-filtered discovery. Existing Captain sprite/name work; far horn/
+glyph can sit at viewport edge. Existing nameplate now says captain · rallies
+in warm text; active warnings prioritized within same5/quiet1 hostile budget.
+Snapshot/live event supply warning, existing glyph lifetime/attack/move hides
+it; visibility, boss/ally suppression and stack culling retained. No art, zoom,
+camera, clock or simulation changes. Exact wire fixture~21KiB checked in.
+Headed recorded before/after1000 and after400 screens shown/no warnings;
+not new full-app boss victory/progression coverage. Renderer30 checks5.9s,
+existing fights46 checks154s, tsc/build/copy1500/diff pass. Existing chunk
+advisory remains. UX_TELEGRAPH_NAMES.md records scope/fixture corrections;
+no full balance audit/deployment. Next: fresh first-session/away-return content/
+graphics walk; stop repeated Captain audits absent new evidence.
+
+**HONEST WATCH STATUS — 2026-10-06:** Badge distinguishes Live
+delve, Watch paused, Watching D5 / Live D6, and Run ended / Watching D5.
+Picture/log retain ordered historical floor; roster retains actual live core
+floor. Pause freezes picture while core continues, unchanged. Badge DOM only
+changes when displayed state changes; neutral non-pulsing dot for held/earlier/
+ended states; final exit still hides badge. Scoped400/1440 actual UI batches
+prove core D6/picture D5, synchronous earlier label on resume, catch-up and
+pending ending14.6s; watch-console five-width controls pass14.5s. Actual headed
+WASM pause/resume400/1440 screens clean/no overflow, shown; those real captures
+stay D5 (no independent real cross-floor proof). tsc/build/copy1500/diff pass;
+existing chunk advisory remains. UX_WATCH_STATUS.md records scope. No clock/
+simulation/roster changes/full balance audit/deployment. Captain already has
+own atlas slot/name fallback; no art replacement based on crowded late frame.
+Next: exact recorded Captain rally/nameplate audit, then player-facing graphics/
+content based on that evidence rather than repeated blind boss waits.
+
+**COMPACT WATCH CONSOLE — 2026-10-06:** Shared console now has
+optional compact command card; watch uses two real action tiles without six
+empty slots. Mobile Speed/Town menu labels fit at existing font sizes;320px
+stacks icon/text tiles, wider views use two columns. Chunky frames, portrait,
+round gem, all actions and other screen defaults retained. Five320–1440 walks
+pass labels/touch/geometry/speed/pause/town17.6s; chrome184 checks28.8s;
+tsc/build/copy1492/diff pass. Actual headed WASM400/1440 screens shown,
+zero console warnings. No simulation changes/full balance audit/deployment.
+Captain diagnostic via real Fast control: camp-0 ends before capture;
+stronger saved camp-1 legal D5 shows visible Captain/rally17.2s desktop,
+with strict visible/living/on-screen predicate. Initial fogged-entity capture
+rejected; not full victory/mobile boss coverage. UX_WATCH_CONSOLE.md records
+scope/artifacts. Next: Captain identity/readability, and engine live-floor
+vs delayed watched-picture semantics (one capture Live D6/picture D5).
+
+**WATCH LOG FLOORS / MISSING EVENTS — 2026-10-06:** Real legal D5
+send previously logged combat as D1 because log initialized from stale camp
+state. Now starts from send snapshot's actual depth; resume/fallback and later
+playback descents covered. Existing log could render warnings/healing/pickups,
+but caller filtered them out; those now reach plain-text overlay, retaining
+colours/item silhouettes/80-line bound. Six400/1440 UI cases pass17.2s;
+real headed WASM D5 desktop/mobile consistent log/HUD, desktop roster Live D5,
+zero console warnings/mobile overflow; screens shown. tsc/build/copy1492/diff
+pass, existing chunk advisory remains. UX_WATCH_LOG_FLOORS.md records scope.
+No simulation changes/full balance audit/deployment. Diagnostic Resting label
+was runs=0 disabling refresh; runs=1 confirms existing roster code works.
+Captain encounter still uncertified. Next: mobile footer label clipping, then
+live boss coverage with actual speed controls; no more unchanged90s waits.
+
+**READABLE DEATH ACTION / RECOMMENDATION ICONS — 2026-10-06:**
+Saved Warlord deaths now name the historical action as `Steady · attack nearest`
+rather than exposing row syntax. Core-selected cause row wins; missing rules
+use its matching trace verb, missing history retains source only. Current camp
+edits cannot rewrite historical action. Spend recommendations use shared item
+silhouettes; identified style recommendations use expressive emblems. Targeted
+consumable rules now select item kind before comma-separated target. Controls,
+rules, rarity and late-pen verdicts unchanged. Client44/item214/geometry184,
+build/copy1492/diff pass; real WASM400/1440 screenshots show decoded sword,
+no warnings/overflow. Contract/evidence UX_DEATH_ACTIONS.md. No deployment.
+Separate live Captain capture timed out after90s; no live-boss coverage claim.
+Next: inspect live-watch state before retrying that diagnostic.
+
+**RELIABLE GPU DIAGNOSTICS — 2026-10-06:** Fixed real GPU timer enum
+bug (EXT constants used with WebGL2 API), unreachable full-ring timeout,
+disjoint/lifetime cleanup and stale timing stats on context loss. Real headed
+WASM clean run now has finite GPU latest/p95 readings and zero warnings; not
+an FPS/sim-speedup claim. Also fixed sprite-normal canvas300×150 allocation
+receiving512×512 upload: initialize to atlas size and replace texture on resize.
+Protocol + GL grow/shrink741 checks, context-loss19 checks(26.9s), tsc/build/
+copy1492/diff pass. Context harness now follows manual house/hero opening and
+Speed-menu Jump; all recovery/exit bounds retained. PERF_GPU_DIAGNOSTICS.md
+records trace, scope, artifacts and earlier failed harness checks. No deploy.
+Actual saved Warlord death400/1440 warning-free/no overflow; screenshots shown.
+Next: raw last-action rule copy and missing item icon in death recommendation,
+then live boss audit. Saved death coverage does not certify live boss flow.
+
+**EXPRESSIVE STYLE/TRAIT ICONS — 2026-10-06:** Owner requested more
+personality. Four combat styles now have expressive creature emblems: calm
+bear/armoured tortoise/charging lion/focused hawk. Traits: anxious hare,
+defiant battered badger, coin-stealing magpie, curious goat with potion.
+Eight transparent versioned imagegen masters/prompts saved; existing original
+icons retained as fallbacks. Shared packageIcon uses listed v2 assets; existing
+packer outputs96px PNGs (~164KiB total). Names/rules/UI dimensions unchanged.
+Desktop/mobile all-unlocked visual fixture8 icons decoded at28–38px, screenshots
+inspected/shown; selection28/geometry184, tsc/build/copy1492/diff pass. Contract
+and evidence docs/UX_STYLE_PERSONALITY.md. No simulation changes or deployment.
+Next broader queue remains live boss/death clarity and renderer warnings.
+
+**FIRST-HOUSE GRAPHICS — 2026-10-06:** Shifted from query optimization
+to the actual opening experience. Empty house plot now has a code-native chalk
+foundation/four stakes and shared chunky Build house/Free control with hammer
+fallback. Construction stays manual/Rust-authoritative; shared pending guard
+prevents repeated keyboard/map actions. Real WASM400/1440 acceptance passes,
+existing town day0/desktop passes, tsc/build/copy1492/diff pass. Generated
+preview-only desktop/mobile target and exact built-in imagegen prompt are in
+docs/targets/; not shipped scene art. Management windows follow HUD/footer
+resizes; geometry test awaits opening animation,184 checks pass headed.
+Actual first-session/scout/8h walks32.8/29.7s; return3.0/3.5s, no page/console
+errors. Two pre-existing WebGL warnings remain. Seed1 has no worst death;
+live boss/death coverage remains next, along with renderer warnings and
+content/gameplay choices from those walks. docs/UX_FIRST_PLOT.md records
+scope/artifacts. No Rust simulation changes, full balance audit or deployment.
+
+**SELECTED TACTICS / GRAPHICS SHIFT — 2026-10-06:** Explicit comparison
+now prices opened combat styles and only the selected tactic slot, skipping
+hidden groups/level previews. Rust owns legal candidates, samples and results;
+new read-only subset API preserves full-query answers and native execution
+policy. Background keys include method/choices; stale hero/rule/selection
+answers clear, retry works and close releases subscriptions. Release-WASM nine
+cold-game pairs: medians516→169,2448→944,2574→455ms (67/61/82% less query
+time); replies/saves/subsequent30min outputs exact. Core546 tests(one ignored),
+clippy, client28/82/19/176, tsc/copy1492/build/native bridge pass. Release WASM
+rebuilt; real400/1440 controls/screens pass. Also moved estimates below card
+descriptions, fixing squeezed Bold text. PERF_TACTICS_SELECTION.md records
+scope; eighteen-case/full exhaustive progression audit not rerun. No deploy.
+Owner says move to content/gameplay/graphics as gains diminish. Next: actual
+first-session/8h-check-in/live-boss walk, then highest-impact player gap and
+chunky target-screen consistency. Avoid another speculative micro-optimization.
+
+**TESTER DEBUG EXPORT IMPLEMENTED — 2026-10-06:** Settings → Debug export
+now downloads a versioned diagnostic JSON with fresh complete Rust Session
+save, all bloodlines, build/engine identity, separate UI drafts/screen/replay
+context and bounded errors/actions. Save-only capture, no stale fallback;
+changing state retries and failure stays explicit. Copy/manual fallback remains
+available. tools/debug-export.mjs extracts an importable save + context file
+without overwriting. Actual shipping-WASM400/1440 tests cover exact multihero
+and in-flight restore, subsequent offline results, immediate purchase/catch-up,
+error/retry/fallback/optional metadata; export gate ~5s. Settings stack/report,
+tsc/build/copy1492 pass. Headed screenshots shown. Contract/evidence:
+docs/TESTER_STATE_EXPORT.md. No Rust or deployment. Next: selected Tactics
+query work and remaining target-screen consistency; broad goal remains active.
+
+**QUEUED TESTER DEBUG EXPORT — 2026-10-06:** Owner requested a state dump
+for testers/debugging. Next tester-support feature, ahead of further Tactics
+query optimization: Settings → Debug export, one downloadable versioned JSON
+with fresh complete save, build/engine version, bloodline/rules, screen/run
+context and bounded recent errors; mobile fallback and local reproduction
+reader. Existing export serializes cached lastSave, so fresh coherent capture
+and explicit failure are required. Contract: docs/TESTER_STATE_EXPORT.md.
+Queued only, not implemented. No deployment. Existing optimization/UI queue
+continues afterwards.
+
+**READABLE REPORT ACTIONS — 2026-10-06:** Report news/reel/pending now
+show readable unlock names; pending uses actual catalogue currency/price once
+loaded, with no initial zero/free promise. Wall offers show Reach next floor,
+samples, Before/With fix odds, changed start and a collapsible exact current/
+suggested ordered-rule comparison with item icons. Apply behavior is unchanged.
+Actual shipping400/1440 walks pass with exact offered rules/start. Focused32,
+report20, wall3, geometry176, paint5, tsc/copy1485/build pass. Historical Cut25
+now follows the simpler report, one-tap Forge and single Speed menu; full22
+checks pass in124s with original drain/black-frame limits. Section-level checks
+and explicit mature fixtures reduce local report/Forge checks to9s and Speed
+to8s. UX_REPORT_ACTIONS.md records scope and evidence. No Rust or deployment.
+Round Send remains86×86 mobile/108×108 desktop, proportional art (e2f23a7).
+Next: selected Tactics group query work, then remaining target-screen/design
+consistency audit. All gate cases within minutes remains unfinished.
+
+**ITEM SILHOUETTES / ROUND SEND — 2026-10-06:** Owner requires item icons
+and no boxes around silhouettes. Extended the shared item module to Forge
+salvage/future/current kit, shops/repeat/sell, item rules, report item lists and
+learned identities, and tiny live-log item marks. Unknown potion/scroll labels
+use their visible family; all unpacked kinds keep glyph fallbacks. Removed
+frames/wells/rectangular glints at every rarity; names retain rarity colours.
+Mobile Forge/shop rows wrap names/counts/prices instead of clipping. The old
+.send flex:1 stretched gem art96×86/124×108; flex:none + contain restores
+86×86/108×108. Real shipping400/1440 controls/screens,214 item checks,
+Forge33/report20/geometry176/lifecycle68/paint5 and Rust rarity checks pass;
+tsc/copy/build pass. UX_ITEM_ICONS.md records coverage/limits/artifacts.
+No Rust changes, no deployment. Next raw report unlock IDs/wall-edit copy,
+then selected Tactics groups. Historical Cut25 remains disclosed as failing
+old report/armed-purchase expectations, not resolved by these changes.
+
+**FORGE CACHE OWNERSHIP — 2026-10-06:** Preview reuse is scoped to App and
+engine, with full lineage/rules/loadout keys and four completed camps retained.
+Open Forge clears stale answers on changes without starting simulations;
+stale successes/failures cannot paint over newer requests. Closing releases
+subscriptions. Actual shipping400/1440 checks: three taps including reopen
+use one Rust query; purchase clears results, next explicit tap uses query two.
+Tsc/copy/build and scoped Forge33/20, geometry176, forecast lifecycle32 and
+Forge lifecycle68 checks pass. Broad historical Cut25 remains failing at its
+old watched-run tile expectation/retired kit-next purchase selector; not
+claimed green. PERF_FORGE_CACHE.md records scope and artifacts. Owner now
+requires icons for all items: audit Forge salvage/ladders, supply shops and
+report item lines first, reuse existing item art/fallback system. No deployment.
+
+**ROUGH CAMP/FORGE PREVIEWS — 2026-10-06:** Camp and paired edit previews
+use eight samples; Forge's explicit Forecast uses eight outcome-only samples.
+No automatic larger camp pass after paint/edit: More samples is explicit,
+deduplicated, retryable and rejects stale hero/rule/lineage replies. Rough
+answers remain readable; same-state detailed answers stay cached. Shipping
+three alternating cold pairs/camp: forecast early286→45 ms, late460→127 ms,
+tuned835→379 ms (55–84% faster); Forge1266→204,1896→597,3382→783 ms
+(69–84%). Approximate probabilities can differ materially: max reach35 points
+in these fixtures, not ground truth. All12 subsequent full/refined/Forge/8h
+reply/save pairs exact. Full verifier:545 tests, one ignored,11 tooling tests,
+clippy/build/copy and fresh18 selected fortnight cases,470s total; whole
+progression table exact except elapsed header. Client lifecycle32, Forge33,
+geometry176, shipping paint5, Cut24/28 gates20/27 pass. Actual shipping400/1440
+preview/refinement/Forge controls/screens pass. PERF_ROUGH_PREVIEWS.md records
+scope, uncertainty, raw artifacts and no whole-app/FPS speed claim.
+Next: per-engine/hero complete-state Forge memoization and stale reply guards;
+raw report unlock IDs/wall-edit wording; selected Tactics group queries. All
+cases within minutes remains unfinished. Push authorized; no deployment.
+
+**WALL SEARCH OUTCOMES — 2026-10-06:** Depth-only wall search now skips the
+unused passage-gold ledger per candidate, retaining12/48 samples and owned
+screening prefixes. Shipping three alternating cold pairs/camp: early
+0.440→0.342s; late7.865→4.396s; tuned27.591→15.377s (heavy44% faster).
+All12 complete offer/save pairs exact; nine post-search shipping sequences
+match normal/refined forecasts and direct8h offline saves. Producer finished
+all artifacts then exited143; independent artifact recheck terminal0 exact.
+Real shipping400/1440 report Details→offer→apply controls/screens pass.
+Full verifier terminal0:544 tests, one ignored,11 tooling tests, clippy/build,
+fresh18 selected fortnight cases;429s total includes compilation. Dayplayer
+printout exact except elapsed header, no causal whole-suite speed claim.
+PERF_WALL_OUTCOMES.md records source/hashes, test scope and acceptance.
+Next reduce first-pass camp/Forge preview cost and reserve100-sample refinement
+for explicit demand (still auto-scheduled in App). Screenshot exposed old raw
+report `unlock supply_cap_5 (0)` and opaque wall edits; wording audit remains.
+Push authorized; publication still requires an explicit user request.
+
+**LARGER TACTICS OUTCOMES — 2026-10-06:** Ordinary Tactics queries below100
+samples now omit unused passage-gold work. Complete priced prefixes can feed
+outcome queries; incomplete deep-start outcomes cannot feed gold forecasts.
+D1 outcomes are complete and share the normal cache. Explicit100 refinement
+retains its serialized quality metadata. Final shipping tuned32 query
+10.126→7.242s (28.5% faster),50 query12.328→9.241s (25.0% faster), three
+alternating pairs after warmup. D1 cases essentially neutral; documented
+retention deviation in PERF_TACTICS_OUTCOMES.md, no broad speed claim.
+All15 shipping workload/save pairs exact; full verification passes543 tests,
+one ignored, clippy/build and fresh18 selected fortnight cases (513s total).
+Whole dayplayer printout exact except elapsed line. Real shipping400/1440
+controls/screens pass. Next inspect wall-search outcome projection, then small
+camp/Forge previews and explicit refinement; preserve actual run/gold/offline
+truth. Push authorized, no deployment requested. Private artifacts:
+scratchpad/tactics-outcomes-20261005/.
+
+**OUTCOME-ONLY FORECASTS — 2026-10-05:** Eight-sample Tactics queries now skip
+unused passage-gold pricing, with outcome panels cached under outcomes:.
+Regular gold forecasts, real sends and offline progress retain their prior
+calculations. Three alternating named fast-WASM pairs/camp: early0.988→0.471s,
+late2.801→2.283s, tuned5.588→2.491s; all12 complete price/save pairs exact.
+Two native cache/send/work/parallel tests pass. Nine larger-panel/offline pairs
+match in fast WASM and nine in shipping WASM after estimates run first.
+Shipping400/1440 controls pass, screenshots shown. Full verification green:
+540 core tests, one ignored, clippy, shipping build, tool tests and fresh selected
+full gates. Stable verifier rerun46s uses completed caches; not a fresh runtime.
+Fixed verifier filter hiding totals like540 passed. PERF_FAST_ESTIMATES.md
+records the rejected sized-gold probe, acceptance and limits. Next extend
+outcome-only work to larger Tactics requests (dayplayer uses32), then isolate
+smaller first camp/Forge panels from actual progress. No deployment authorized.
+
+**FAST ESTIMATES — 2026-10-05:** Owner accepts approximate forecasts. Tactics
+now requests8 instead of24 samples, labels rough estimate and rounds ≈ deltas
+to five points. Conservative noise filter uses both candidate/baseline variance
+and five samples (wire lacks actual count). Three alternating named fast-WASM
+pairs/camp: early1.507→0.927s, late8.044→2.854s, tuned8.806→5.649s.
+All saves unchanged. Raw mean delta differences4–7 points, maxima25–33; final
+visible estimates0/1/2 have no sign reversals versus24 samples in these fixtures.
+Not ground truth or a shipping latency claim. PERF_FAST_ESTIMATES.md has contract
+and limits. Rule allocation probe parked/restored, no Rust/WASM runtime changes.
+Next fixed passage20-sample overhead and larger camp/Forge panels; keep actual
+passage gold/runs/offline unchanged. Manual publication policy still applies.
+
+**COLD TACTICS PROFILE — 2026-10-05:** PERF_COLD_TACTICS.md profiles the
+current24-simulation cold query. Named fast WASM median8.121s on late camp;
+setup1.53%,clone0.41%,set_rules0.06%; tick-batch94.27% inclusive. Definition
+wrapper inlining is rejected after three alternating pairs/camp: late+0.65%,
+tuned−1.25%,early−3.14%, all12 full price/save pairs exact. defs.rs restored
+byte-for-byte; no retained engine change or shipping speedup claimed. Profile
+tool accepts --sims and records inclusive shares, with warm-up/load boundaries
+and artifact provenance. Next repeated hero/chore work, especially shadows
+allocation, ahead of clone architecture. Private scratchpad/cold-profile-20261005;
+manual deployment policy remains below.
+
+**LOCAL QA MAINTENANCE — 2026-10-05:** QA_CURRENT_UI.md updates the historical
+Cut23 Forge phase to owner-approved item/price/direct purchase and explicit
+forecast behavior. Kit queries instrumented before opening: zero on open/buy,
+one for requested Forecast. Exact prices, one rung/one spend, disabled
+unaffordable controls and stable position pass. Report pending link now opens
+its real Details fold. Whole gate33/33 PASS27.0s, including preserved uncertainty,
+why-not, anchored picker, outside-tap, supply confirmation and live/death gloss
+checks. No runtime/Rust change; no rebuild or deployment needed.
+
+**DEPLOYMENT POLICY — 2026-10-05:** Owner: "don't need to deploy until i tell
+you". Push permission remains, publication requires a fresh explicit request.
+Pages now builds on pushes/PRs and deploys only via workflow_dispatch on main.
+Do not dispatch until requested. UI source81873c2 is pushed; build37322014020
+passed, but its queued deployment was cancelled at the owner's instruction.
+Public verification stopped; no public UI validation claimed for this release.
+Latest verified public release remains43c9a09. UI local/shipping acceptance
+and target art follow below.
+
+**CHUNKY UI — 2026-10-05:** Read UX_CHUNKY_UI.md and
+art/ui/targets/README.md. Built-in imagegen targets cover Tactics and
+Hero/Forge/Workers/Settings using SC2/WC3 construction with the current painted
+art. Existing panel/tablet nine-slices now form shared centered management
+windows, bevel controls, inset sockets and gauges. Standard-width Fira Sans
+body; Grenze titles; consistent 14px command labels. Main windows use
+openWindow, while token pickers and live loot retain openSheet behavior.
+Layout gates176 PASS across320/400/768/1440, real shipping controls36 PASS,
+shipping first-load/live/report/offline walk PASS. Copy/tsc/build PASS; unchanged
+engine's full numeric table revalidated from caches. Tooltip copy shortened to
+budget; activating a control now closes its preceding tooltip. Tooltip70/70 PASS; deployment cancelled per policy above. Private captures:
+scratchpad/chunky-ui-20261005; never stage scratchpad or mine.bars.
+
+**TERMINOLOGY / TACTICS FOLLOW-UP — 2026-10-05:** Read UX_TERMINOLOGY.md,
+UX_TACTICS.md and PERF_PACKAGE_REFRESH.md. Tactics leads with equipped combat
+style/extra tactics/personality and Rust-owned descriptions; alternatives open
+under Change, counters/rules under Details. Compare outcomes explicitly starts
+24 sims; opening/choosing starts no price query. Whole-query Rust key includes
+ordered candidates/prices, execution settings and balance profile; bounded
+per-engine lane memo coalesces, clones replies, drops failures and clears on
+native rebuild. Same mirror owns key+query. 16 lifecycle/46 request checks pass;
+FULL623s PASS:538 core/1ignored,11 tooling, fresh metrics/QA/18 selected cases.
+All24 shipping cold full price/save pairs exact, seven pairs/camp within5% guard.
+Real late shipping first query9046.8ms; refresh median10.1ms, appearance86.4ms
+(three each), exact vectors. No FPS/offline/whole-app claim. Sheet content
+ResizeObserver fixes expanding mobile controls. Terminology maps opaque labels
+to their contents; Chronicle/lore names/raw rules/save keys remain. Passive
+building captions become Build buttons only when ready; numeric density gates
+unchanged. Private scratchpad/package-refresh-20261005 and mine.bars never stage.
+Native36 and shipping36 real controls400/1440 PASS, all scoped client gates
+PASS. Owner explicitly approved pushing after automatic review initially rejected
+the combined publication. Published source43c9a09, Pages37314788570 SUCCESS.
+Public HTML/JS/WASM match CI bytes exactly. Public36 real controls400/1440
+PASS; no page errors. Both settled public screenshots shown inline.
+Deployed WASM SHA256:87e47150c4863f18bae924af07de95ab316e2d1ba340d2b6898d3e1dfd062746.
+Prior release described below.
+
+**PERFORMANCE FOLLOW-THROUGH — 2026-10-05:** Published source2b48e00,
+Pages37301872292 SUCCESS. Query-local package forecast grouping preserves every
+move, slot, purchase price and stable ordering, while computing equivalent
+own/wall/raw-policy panels once. Seven native pairs: early13.39%,late36.27%,
+tuned8.20% quicker; shipping browser12.07/37.14/8.04%. Late17.884→11.242s in
+shipping browser;1461→911 simulations,38→24 panels. All60 complete native
+outputs and24 paired shipping price/save cases match. Offline within1.1%; no
+catch-up/frame-rate/whole-app speedup claim. Read PERF_PACKAGE_PANELS.md.
+FULL460s PASS:537 core/1ignored,11 tooling, tsc/copy/clippy/shipping site;
+fresh metrics108.6s,QA44.0s,all18 selected fortnight cases. Client38 race/retry
+checks+17 package checks; real native10,shipping10,public10 controls400/1440;
+58 exact complete bridge replies,14 recovery tests58.24s PASS. Public complete
+price vectors and upgrade results match native at both widths; no page errors.
+Public HTML/JS/WASM match CI bytes exactly. Deployed WASM SHA256:
+5c8ba5dffc017976016f7114344e53c4a56024669147ac0bcaeae043398f6d2a.
+Both public screenshots shown inline. Private evidence under
+scratchpad/flood-perf-20261005/panel-reuse; never stage it or mine.bars.
+First local compiler/linker attempts failed; scoped core fast-profile cache
+clean repaired generated objects, unchanged source/flags then passed FULL.
+Keep frozen executables outside Cargo targets; do not infer crash causation
+from hardlinked incremental objects alone. Shipping/native-dev caches preserved.
+Earlier source76a75ae fixes pending package reopens3→1 queries, per App/engine/
+lineage/rules/loadout snapshot; hero/Legacy changes invalidate, stale replies
+cannot repaint, failures retry on reopen. Public accepted; PERF_PACKAGE_REQUESTS.md.
+Parent-only/stack first-step flood probes remain rejected: late/tuned1.06/1.32%
+and1.04/3.51% below2% each despite exact outputs; production pathfinding unchanged.
+Cumulative allocation traffic−18/−65% is not peak memory or latency evidence.
+Read PERF_PATHFIND.md. Next measure harmless camp refreshes before introducing
+Rust-owned whole-query fingerprints, including candidates and purchase prices;
+current client snapshot invalidation is conservative. Existing approval persists.
+Owner requested orphan cleanup:49 stale Riddle listeners including5365 stopped;
+closed ports verified,91 associated processes targeted with SIGTERM. Keep5219
+(main),5594(current native),5264(shipping preview); all respond200. Other projects
+and Codex excluded. Evidence:server-cleanup.json under scratchpad/flood-perf-20261005.
+
+**CURRENT OWNER FOLLOW-UP — 2026-10-05:** Legacy is spendable hero-upgrade
+currency. Read docs/UX_LEGACY_UPGRADES.md (supersedes the no-spending and old
+manual-chest clauses below). Three ranks each: Health +3 HP, Damage +1,
+Armour +1; costs3/6/9. Updated owner direction: read UX_BLOODLINES.md.
+Slots are persistent bloodlines; Legacy/upgrades survive heir death. Multiple
+heroes run independently, with shared town gold. Desktop roster/mobile sheet,
+class controls in Details, past heroes in Chronicle.
+Rust owns offers/purchases/stats and rejects away/poor/capped/unknown buys.
+Forecast keys include ranks, not unused points. All player saves collect gold
+automatically; versioned migration releases the old chest without duplicating
+currency/ledger entries. Savings remains separate. Topbar Legacy opens hero
+upgrades; history/class XP fold under Details; collected replaces banked in
+presentation while raw persisted exit keys remain stable for run accounting.
+Local acceptance:536 core tests/1ignored,14 dayplayer recovery tests,11 tooling;
+tsc/copy/clippy/shipping build. Routine FULL561s: metrics111.4s,QA46.5s and18
+fortnight cases PASS. Native/shipping58 exact complete bridge replies, including
+multihero live state, shared wallet, Legacy, refusal and migrations. Real native
+and shipping UI29 bloodline checks+65 first-session/Legacy/forge checks400/1440.
+The canonical100ms multihero clock is independent of elapsed chunk size and
+selected bloodline; singlehero offline/replay behavior remains unchanged.
+Watched multihero ticks advance all slot clocks; shared Savings pays once per
+20 completed runs. Combined salvage/lost/spent reports sum across bloodlines;
+replay/verdict IDs and class XP remain scoped to the selected hero.
+Private evidence scratchpad/legacy-upgrades-20261005; never stage it or mine.bars.
+Scoped watch gate:fights46 checks153.8s; clarity:paint5 checks58.3s. Initial
+headless attempts failed with resource errors/tab crash; after reclaiming1.73GiB
+of stale generated example/probe caches, the unchanged headless fights pass.
+Published source07ae69c; Pages37255798391 SUCCESS. Public94 real-engine UI checks
+(29 bloodline+65 first-session)400/1440 pass; settled screenshots shown inline.
+Public index matches CI exactly; deployed WASM SHA256:
+3adfbebe739b0b468f94a1ab0c7a5f0ee3000cde97fd421a54af335e23e18bef.
+Quiet public8h catch-up fixture (seed1,10000 gold,scout):1/2/3 heroes16/32/49
+runs262/404/602ms. Exact native/public saves match each case. Single samples,
+early fixture, engine-call timings only. See UX_BLOODLINES.md.
+Public GPU walk9 dumps31.8s, no console/page errors;2 WebGL driver warnings.
+Native compiler follow-through: warm equivalent core edit25.696→9.396s,
+restore26.006→9.259s by defaulting fast.debug=0, retaining opt3/CGU16.
+Actual dev watcher ready9.475–9.744s across two edit/restore pairs. CGU32/64
+were slower; opt2 hurt late simulation speed. All nine complete saved-camp/
+multihero outputs match and measured runtimes stay within5%. Line-level CPU
+profiling is explicitly available with debug1 in a separate target; see
+NATIVE_DEV.md and PERF_COMPILE.md. Fast WASM already omitted debug info.
+Shipping release settings and local packaged WASM bytes are unchanged.
+Native-profile acceptance PASS:536 core tests/1ignored,14 recovery tests,
+11 tooling, tsc/copy/clippy/shipping build; fresh routine FULL571s with all18
+selected player cases PASS. Native/shipping58 complete replies match. This is
+not a full-suite speedup claim. Published08f764a, Pages37289223600 SUCCESS.
+Public index/WASM match CI exactly; entire site matches the previously accepted
+bloodline-release artifact byte-for-byte. Public WASM remains3adfbebe…6bef;
+the94 public UI checks remain applicable. Evidence:PERF_COMPILE.md.
+Next work stays in impact order in ITERATION_SPEED.md: refreshed expensive
+simulation/search work. Current named fast-WASM profile and rejected predicate
+specialization are recorded in PERF_PATHFIND.md (all36 complete outputs match;
+late2.03% lower, tuned0.49%, below acceptance). Production pathfinding unchanged.
+Quantify repeated flood/allocation work next. Do not weaken simulation budgets or overlap
+compiler benchmarking with GPU measurements.
+
+**PREVIOUS PUBLISHED OWNER UX — 2026-10-05:** Empty town → free house → hero arrives →
+Send is implemented. Read docs/UX_FIRST_HOME.md; it supersedes the old fresh-Send
+contract without a Cut31/cohort. House eligibility and per-hero Legacy live in
+Rust. Legacy earns 1/run plus new personal depth floors, archives on death,
+never changes XP/class XP/stats; no spending yet. Old saves retain residents
+and manual chests. New towns automatically collect returned gold; the free
+porter counts three positive returned hauls. Watch shows Gold/Legacy totals and
+Carried/Secured gold; savings labelled separately; actual transfers animate.
+Forge shows three compact next-upgrade cards, one-click buys; forecasts are
+explicit under Details, never requested automatically after a report/refine.
+WASM construction adapter was missing: fixed and included in adapter coverage.
+Dev playback parameters set mode before mounting (no hidden-button dependency).
+
+Acceptance: 528 engine tests/1ignored;14 dayplayer recovery tests;10 tooling;
+tsc/copy/clippy/shipping build. Fresh routine full verification336s: metrics109.7s,
+QA47.1s and18 player-fortnight cases pass; final cached verification39s. Scoped
+client tests: fights46 checks155.2s and clarity:paint5 checks27.3s pass. Updated
+fixtures explicitly construct the free house; timing/numeric bars unchanged.
+Real native/shipping UX51 checks at400/1440 incl one-click forge gold accounting
+and zero forge forecasts. 25 complete native/shipping replies match byte-for-byte
+incl refusal, offline, Legacy, reload and missing-field migrations. Shipping GPU
+walk9 dumps54.7s/no page errors. Broad historical/system-removal audit not run.
+Private evidence scratchpad/first-home-20261005; never stage it or mine.bars.
+Published source c515281: Pages37223080074 succeeded. Public real-engine UX51
+checks at400/1440, settled screenshots shown inline; public GPU walk9 screens
+32.5s/no page errors. Fetched public WASM matches the exact CI artifact:
+829d168a4da628236b24f5e10aba62b4591439c36ce14c3a1f7dcc4165ecc91b.
+Local reduced-motion check845.3ms to enabled Send (no1.6s arrival wait), zero
+coin particles during a real return; single observation, not a timing median.
+Next optimisation remains core code-generation settings
+(runtime tradeoffs with exact saved-camp outputs); forge no longer queues an
+unrequested expensive simulation. Existing publication approval remains valid.
+
+**LATEST FOLLOW-THROUGH — 2026-10-05:** owner "keep going": local checkpoint
+codec improvement, shipping simulation/UI unchanged. Read docs/PERF_CHECKPOINT.md,
+docs/PERF_VISION.md and updated docs/ITERATION_SPEED.md. Clipped vision candidate
+REJECTED (tuned screen regression; complete outputs and LOS oracle match), private
+patch/evidence saved. Do not revive it as an accepted speedup.
+
+Retained: JSON float-bit codec traverses containers in place and serializes a
+borrowed envelope instead of cloning the tree. Seven quiet real8.8MB checkpoint
+pairs encode0.422908→0.291354s median (31.11% lower); all complete file bytes match.
+Three fresh14day IDLE/IDLE30 pairs:66.5639→63.9735s median (+3.89%), exact complete
+bot results; individual gains0.81–7.14%, not a general suite guarantee. Frozen
+warm read/decode0.2207s, encodingmedian0.2917s; no recovery speedup comparison.
+New --checkpoint-bench/--repeats/--output diagnostic, explicitly not acceptance;
+DP_PHASES now includes checkpoint CPU. Initial stdout comparison stopped on CLI
+elapsed text, excluded; final proof compares complete serialized results.
+
+Acceptance PASS:14 harness tests100.29s incl complete recovered outputs/raw saves,
+corruption/wrong-key and nested float/marker checks. Canonical verify --full447s:
+524engine tests/1ignored,10toolingtests,tsc/copy/clippy, shipping/web; new metrics
+84.2s and18case dayplayer234.8s; QA genuine cache hit. Broad historical/system
+removal audit not run. Runtime production core and wire unchanged.
+Fresh current-public GPU screenshot/basic overlay check PASS; screenshot shown
+inline. Evidence scratchpad/checkpoint-perf-20261005 (private, do not stage).
+
+Quiet auto-native core edit28.125s edit-to-ready, source restoration28.859s;
+original stable executable SHA restored exactly, zero active lanes. One equivalent
+Tile::blocks_sight edit/restore pair; not cold build or general median. The2.24s
+previous result is adapter-only. Next highest-impact iteration investigation:
+core code-generation settings/runtime tradeoffs, then other vision/pathfinding
+work using exact-output controls. Cargo timing confirms core27.04s = frontend2.84s + codegen24.20s; adapter0.50s.
+Original source/executable restored after this second diagnostic as well.
+Main4207fb9 pushed; Pages37219034232 currently running. NoCut31/cohort/goal/schedule. Publication already
+authorized. Never stage mine.bars/scratchpad; no new approval or agents needed.
+
+**LATEST FOLLOW-THROUGH — 2026-10-04:** owner's "keep going" and transparent
+colored combat-log refinement published at https://gyng.github.io/riddle/. Read
+docs/PERF_PICKER.md. Production simulation code is unchanged. CPU sampling:
+43,147 named fast-WASM package samples; vision/pathfinding/hero decisions lead.
+Native gprofng timer warning invalidates its partial samples. Separate allocation
+probe50.2M allocations/8.6M reallocations; requested bytes are cumulative traffic,
+not peak memory. Stack-rule-list probe reduces churn but seven quiet exact-output
+pairs give late+0.35%, tuned+2.45%: rejected for inconsistent gain. Private patch
+and complete evidence kept; no production budget/seed change.
+
+Native Rust edits now rebuild automatically after250ms debounce, one build at
+a time; edits during builds queue one follow-up. Dev page exposes build errors
+and retains old executable; Cargo JSON diagnostics are forwarded. Client bridge
+metadata publishes only after successful atomic executable replacement. Actual
+GPU browser failure/recovery/replacement checks preserve an isolated real lane's
+complete save; adapter example edit-to-ready2.24s, not cold/arbitrary core timing.
+Default5367 has the watcher; temporary5373 validated and closed to avoid
+duplicate rebuilds. Launcher rejects
+another watcher configuration; RIDDLE_NATIVE_WATCH=0 disables watching.
+
+Combat log: plain transparent text over map, no box/header, small font/shadow,
+three visible lines and80-entry ordered history. Hero damage red, outgoing
+damage/coins gold, healing green, items blue; pickups included. Real31 UI checks
+at400/1440 PASS; explicit CSS check backgroundtransparent,border0,noheader,
+height54px PASS. Local real-WASM8screenwalk PASS33.6s; no console/page errors.
+Final canonical verify --full PASS149s:524engine tests/1ignored,10tooling tests,
+tsc/copy/clippy, shipping/web and all genuine routine gate cache hits.
+
+Fresh shipping mobile/desktop/offline checks PASS;8screenwalk PASS33.8s,
+all7 fetched WASM responses match the exact local artifact.
+
+Release e9c30ef (watcher/plain overlay), completed by frontend correction
+b59a7e9717820f8ccd3d30e59c40fbeeed4dc768 (real Heal and Telegraph events).
+Pages37214761882 SUCCESS. Public mobile/desktop/offline reload PASS; headed
+8screenwalk PASS34.5s, no console/page errors, all7 fetched WASM loads match
+exact CI artifact9dcb97fc6d6c089bbdcc144bc70c7e3bf2b02ec86c225ec384695a04c3ad51d1.
+Actual public colored-damage screenshot validates transparentbackground,border0,
+noheader,height54px; shown inline. Evidence scratchpad/picker-perf-20261004/
+publication.json, public-colors.png, public-walk and public-artifact. Documentation
+follow-up does not change shipping code. Never stage mine.bars/scratchpad.
+No new approvals needed; do not spawnagents. Next local work remains ranked in
+docs/ITERATION_SPEED.md.
+
+**LATEST STATE — 2026-10-04:** manual construction and simplified UI implemented;
+published at https://gyng.github.io/riddle/. Read docs/UX_SIMPLE.md, docs/NATIVE_DEV.md and
+docs/PERF_IMPACT.md. Routine --full selects18 current-player14-day cases
+(2seeds ×9configurations),10QA seeds and current-game metrics; --exhaustive
+retains272 cases and the original broad balance bars. Fresh routine table PASS
+247.5s (4m8s), metrics99.6s, QA43.2s alongside. Canonical routine --full PASS76s
+warm:524engine tests/1ignored, tsc/copy, tooling, clippy, shipping/web and gates.
+The original16-seed audit stopped at roughly205 matching records on owner
+instruction, not accepted as complete. Intermediate34-case and legacy-metric
+failures remain documented in UX_SIMPLE; routine success omits those comparisons.
+
+Final native/WASM parity27 complete rawreplies/saves PASS; local shipping WASM
+03c5ec7d7630b4a24a62db8dee88b2dfeffeb73ac07d1f1562f8b25a0baa3ca6.
+Quiet native package calls6.6/7.4/7.5×, latewall4.2×, forecast5.1–11.1×;
+engine-call timings, not shipping/whole-app speed. Final13 harness tests,
+all-feature clippy and current tuning-binary live profile reload/rejection PASS.
+Default and tuning binaries isolated, generated bridge current (buildTown).
+Direct feature-enabled one-day cache probes use distinct actual executable/profile
+namespaces; expected inapplicable fortnight bars fail, no acceptance claim.
+
+UI: fresh/manual Town flag including missing old-save flags; built plots preserved.
+Build action is explicit; engaged test bots construct atcamp, IDLE doesnot.
+Quiet first camp, Live delve/continues away, Town menu and Pause, Speed sheet;
+combat log80 real scheduled events, threevisiblelines; three reportstats and
+Details fold. Real native UI31 checks at400/1440 PASS inclmanualbuild/persistence,
+menu preserving run, reportcontrast/fold and logorder. Shipping local/public
+checks and screenshot evidence are in scratchpad/native-dev-20261004.
+
+Local shipping mobile/desktop/offline checks PASS; headed shipping walk8screens
+PASS32.9s, all7 fetched WASM responses match the exact local shipping artifact.
+
+Release commit8a9419c4db0394bddd01f315b6c8132b56ec397e; Pages workflow
+37205677160 SUCCESS. Public mobile/desktop and scoped-assets/offline reload PASS;
+headed public walk8screens PASS33.9s, no console/page errors. All7 fetched WASM
+responses match the exact CI artifact9dcb97fc6d6c089bbdcc144bc70c7e3bf2b02ec86c225ec384695a04c3ad51d1
+(CI toolchain differs from local). Remote watch/report screenshots shown inline.
+Evidence: scratchpad/native-dev-20261004/publication.json, ux-public-check,
+ux-public-walk and public-artifact. This handoff-only follow-up does not change
+shipping code. Never stage mine.bars or scratchpad. NoCut31/cohort. Next local
+optimization work is ranked in docs/ITERATION_SPEED.md: profile package-picker
+hot phases, debounced native rebuild watcher, checkpoint serialization/recovery.
+No automatic schedule created. Historic notes below describe superseded intermediate states.
+
+**NEW OWNER STEERING, 2026-10-04:** "Compact.and reduce full gate cases60min too long";
+manual buildings (especially start), fewer speed controls, combat log, obvious
+live-watch/menu exit, quieter first load and simpler report. Original impact
+ordered perf work remains uncommitted; integrate/release it with this refinement.
+Read docs/UX_SIMPLE.md (new owner contract). User expressly authorizes fewer
+full cases, overriding old exhaustive-by-default constraints. New tools/gates
+logic is implemented but untested: --full two seeds all17 configurations34cases,
+--no-share; tenQA seeds; --fast metrics (current game, omits retired progression).
+--exhaustive preserves original272cases/30QA/fullmetrics. Targeted --full --rows
+still16seeds by default. tools/verify --exhaustive added. Need update stale docs.
+
+Original final audit deliberately STOPPED (SIGTERM2421310) on owner instruction,
+about205complete exact baseline matches; preserved all completed/checkpoints.
+Exit143 expected; finish-acceptance.sh stops, no canonical acceptance from it.
+No claim272passed. No active heavy simulations now. Existing metric/QA receipts
+remain valid for old runtime. Final13harness tests PASS189.50s, all-featureclippy
+PASS, livebalance PASS, browser reload3xcleanup PASS, production-profile override
+reject PASS, camp reference-profile mismatch beforecompile PASS.
+
+Next implementation: town.rs update automatically creates buildings; add manual
+construction for fresh games (legacy-save behavior must be intentional), wire
+readiness + Game/building API + wasm/types/proxy/native regeneration and UI plot
+build action. Camp suppress secondary panels until first run; watch one speed
+selector, clear Live delve + Back to town (leaveWatch keeps run live), bounded
+combat log released through existing at(ev.t) scheduler; report move nonessential
+blocks under existing Details. Tests/client layouts/screenshots, routine full
+measure, exhaustive opt-in docs/AGENTS/PLAN contract amendments, exact stage/commit
+all intendedfiles excluding mine.bars/scratchpad, approved main push and public
+CI-artifact hash /realWASM/SW/offline/headed capture. No new approval needed.
+
+**In progress: impact-ordered dev iteration, 2026-10-04.** Read
+`docs/NATIVE_DEV.md` and `docs/PERF_IMPACT.md`. New uncommitted native app adapter,
+Rust-owned dev balance profiles, previous-failure scheduling and complete
+internal check-in snapshots are implemented. Native default/tuning binaries
+are isolated under target/native-dev; ordinary core artifact shared by default.
+Three final quiet native/WASM rounds match all27 replies/saves each; packages
+6.5–7.8×, late wall7.040→1.723s, forecasts5.1–11.0×, warm native build0.19s.
+Live balance reload/reject/recovery test passes without compilation. Known failed
+home32 candidate rejects3.81→1.26s with seed4 first; default numeric/priority
+reductions remain16/16. Four-bot resume test exact outputs/raw games passes;
+three real interrupted/uninterrupted records match. Shipping bundles exclude
+native transport. Native local headed walk34.8s, eight captures/no errors under
+verification load; functional only. New shipping WASM abef660672b9d272daca83c07621e6ea33a9bf5c2c2ed7c5cdd7f8541b1d2a65;
+width-one final shipping parity also passes (under gate load, no timing claim).
+
+Legacy native event fixture remains untouched: adapter processes alone select
+shipping32-bit words, ordinary native gates retain64-bit fingerprint. First
+full test failed on global normalization, corrected;523 engine tests/one ignored,
+copy/tsc/tooling/clippy/shipping/web pass in full-final.log. The first long-case
+leg was interrupted to correct cache binding. No acceptance yet. Default
+production runtime source d9edb7fe128f7fe0, FINAL primitive prefix
+srcd7ce4c265843bde1: checkpoint helper AND cache codec bound, plus exact profiles
+and skip-twist for direct invocations. Old records are not relabeled.
+
+Active final dayplayer: detached PID2421310 (wrapper2421309), log
+scratchpad/native-dev-20261004/dayplayer-complete-binding.log, same directory
+-exit.txt upon completion. Full16-seed17-config272-case table, all bars unchanged,
+--resume,32 threads, explicit RIDDLE_SRC_KEY=d9edb7fe128f7fe0. Rust/harness frozen.
+Earlier full session61072 finished: METRICS PASS1360.6s and QA PASS227.1s saved,
+log full-final.log; its dayplayer was deliberately stopped and overall result
+is FAIL. Preserve its valid completed metrics/QA legs; do not duplicate them.
+Launcher84824 returned143 after175 complete cases; resumed with unchanged binary
+SHA502d002d4ad856f867cf0b4f30e224002862b0cbb84006f441731ef5f6188036
+and identical parameters using resume-final.sh. Log confirms genuine saved
+check-ins loaded. Final13 harness tests pass189.50s under load. Three browser
+reloads release sessions, profile/reference mismatch rejects before compiling.
+After final direct dayplayer finishes, run canonical tools/verify.sh --full:
+new dayplayer leg is derived from genuine final-prefix complete records;
+metrics/QA should hit their accepted completed legs. Never rename old records.
+Then compare all272 final decoded records to accepted src4fd4d0e184912ad3;
+run final harness tests, profile-key rejection proofs, UI/client checks, fresh
+shipping local/public screenshots/provenance, docs and approved commit/push.
+No Cut31/cohort. Earlier 05c65bd Pages run37183119595 succeeded.
+
+Proof under scratchpad/native-dev-20261004. Private scratchpad/mine.bars never
+stage. There have been client/native-host cleanup edits after initial full-side
+tests; final-tooling.log and tsc pass; rerun canonical quick/full side checks.
+Native reload releases lane processes via pagehide; loopback/same-origin enforced.
+Default native URL http://localhost:5367/?engine=native; launch configuration
+mismatches reject, use another port for a different balance profile.
+
+**Local iteration follow-up, 2026-10-04:** `docs/PERF_DEV_LOOP.md`;
+new `tools/camp-check.mjs` builds the native diagnostic once, snapshots saved
+camp inputs, and runs fresh processes per workload. `--record DIR` refuses an
+existing reference; `--compare DIR` binds inputs/workloads and checks complete
+raw bytes, including repeat determinism. Default8h offline; optional packages,
+wall, clone/setup modes. Three representative camps: final4.05s total warm,
+build0.04s; three repeats12.08s, all outputs exact. Not a full acceptance gate.
+Four real rejection cases pass (overwrite/missing/input mismatch/corruption).
+Quick validation33s:522 tests/one ignored, tsc/copy and three tooling tests;
+diagnostic clippy passes; full table retains all three genuine accepted leg hits.
+Native/WASM runtime and public UI are unchanged. No fresh full rerun required
+for these diagnostic/tooling edits. Proof under scratchpad/dev-loop-20261004
+and scratchpad/sim-work-20261004/dev-loop-*.log; private saves never stage.
+
+Clone/setup diagnostics in examples/sim_perf.rs:4096 operations ×3 per camp,
+setup107/186/207µs, cloning30/75/83µs. Indicative initial preparation share
+~1–2% of previous heavy searches; not a strict bound or a later-floor profile.
+Next options ranked in docs/ITERATION_SPEED.md: saved failure canaries and seed
+priority, native-backed dev UI, data-driven balance with explicit hashes, and
+same-runtime resumable check-ins. Fresh full suite still64.5min, no claim that
+all fresh cases now finish within minutes. No Cut31/cohort started.
+
+**Warlord news clarification, 2026-10-04:** owner meant the report's
+`warlord counter: attack boss` line. Client-only3483692 changes it to
+`Warlord weakness learned` / `Target the boss · bypass shields`, preserving other known counter
+verbs. No engine/wire/policy changes. Copy/tsc/build, qa92(40)/cut24(20), real
+shipping headed eight-capture local walk PASS29.3s, no errors. Local screenshot
+inline. Pages run37181476197 succeeded. Public real-WASM/SW/offline400/1440
+check and eight-capture headed walk PASS32.1s, no errors. Public Warlord words
+verified and every fetched WASM response equals the exact CI artifact
+a940f439eee3… (same unchanged engine). Fresh public report screenshot captured.
+
+**Sim-work accepted and published, 2026-10-04:** contract
+`docs/PERF_SIM_WORK.md`. Retained arbitrary exact panel prefixes; TOP3 wall
+screening panels survive cache eviction; owned short event text and borrowed
+short clamp avoid allocations. New diagnostic examples/sim_perf.rs. BFS scratch
+and private shared-policy-prefix prototype rejected after exact-output pairs:
+the latter saves54/1250232 tuned ticks and is slower on real camps. All four
+requested candidates assessed. Native heavy search +13.79%/+8.64%; shipping
+heavy search +10.17%/+8.51%. Early/catch-up neutral or noisy, no general gain.
+Targets15%/10% missed on some workloads; low-risk exact gains retained by recorded
+deviation. No fresh-five-minute claim. No Cut31.
+
+Continuing local-iteration work: native primitive cache identity is actual
+production rlib/profile/features/manifests/lock/compiler (native-core-rlib-v1);
+no old records relabeled. Real compiler proof2.91s: standalone tests/harness edits
+preserve key; runtime/include/flags/manifests/compiler invalidate; broken unit
+tests still execute. Proof now runs in verify.sh alongside tsc/copy lint.
+Frozen full verification PASS3870s:522 engine tests/one ignored,tooling,clippy,
+shipping/web,QA225.8s,metrics1455.7s,all dayplayer bars. Source8eb5723c2442502e,
+primitive prefixsrc4fd4d0e184912ad3; compare-cases.py verifies all272 decoded
+records exact vs accepted src7b74699adc230110. Cached full table PASS0.43s,
+genuine three-leg hits. All proof under scratchpad/sim-work-20261004.
+
+Shipping WASM9fd7f12a53f5b645cec1c21d34afab8506b0042111b6d21c6ff83965eb30b1ca.
+Local real-WASM/SW/offline/400/1440 pages check and eight-capture headed seed1
+send/scout/8h walk PASS,no errors,two existing WebGL warnings.82.4s under gate
+load is functional only. Captured module hash matches; camp/report images inline.
+Static candidate on OS-assigned localhost:36655, private site/serve.py; first
+attempted5369 was occupied and its failed check kept separately. Do not use5369.
+
+Performance commit dff6b70 published on main; Pages run37175468562 succeeded.
+Public real-WASM/SW/offline/400/1440 check PASS. Exact CI artifact module:
+a940f439eee3b4112c607bce9a3da64e096baa1486edc0031e12eefa90133986.
+Public headed seed1 send/scout/8h walk PASS29.9s, eight captures, no errors;
+all fetched modules match the exact CI artifact. Local and CI compiler outputs differ;
+compare public to CI, never assume the local shipping hash is the public one.
+
+Owner requested a readable plateau section. Client-only commit82c68e0 replaces
+jargon with Progress stopped / floor N and Returned home / no deeper runs;
+news stays on separate rows, ending-rule numbers/floors spelled out, patches
+labelled Suggested changes. Copy/tsc/web build and qa92(39)/cut28(26), layout(35), legible and
+cut24(20) PASS;
+headed real-engine eight-capture local walk PASS30.4s, no errors. Screenshot
+shown inline. Pages run37180585406 succeeded; public real-WASM/SW/offline
+400/1440 check and headed eight-capture walk PASS29.9s, no errors.
+Public wording checked and all fetched modules match the exact CI artifact
+(same a940f439eee3… engine as the performance release). Public screenshot inline.
+Next queue: package-picking phase CPU/allocation profiling, immutable map/policy
+preparation and clone costs; preserve exact outputs and unchanged gate budgets.
+Private mine.bars/scratchpad never stage. No Rust changes since frozen validation.
+Next queued profiling: immutable forecast inputs/clone costs in package picking,
+per-phase CPU first. Existing default sandbox ps cannot see escalated detached
+processes; full log heartbeat/host ps is authoritative, no duplicate run.
+
+# Handoff — Riddle
+
+**Verified quiet-tick fix, 2026-10-04:** exact batching in offline, advance,
+run-to-end and forecast loops; `docs/PERF_CATCHUP.md`. Three differential tests
+and full verification pass (3906s, resumed nine real completed cases after
+SIGTERM). All272 fortnight records match the previous accepted records exactly.
+Seven headed shipping-WASM pairs per camp give3.21% /6.09% /3.50% gains
+(early/late/tuned); every report/save matches. Target15% missed; retained as a
+consistent small gain with exact reference/gate agreement. No tuning speedup
+claimed. The complete cached table passed in1.32s (all three genuine leg hits).
+Core source `97a4dba1715763c3`, local shipping SHA256
+`3451f53c3654c1d11063bee831d4815a3a6ca08d560c0b9411884dcca5a3a132`.
+Evidence: `scratchpad/tick-batch-20261004/{full-resumed.log,full-exit.txt,
+completed-case-comparison.json,cached-full.log,cached-full-time.txt}`.
+Local shipping real-WASM/SW/offline/400/1440 and the eight-capture headed
+send/scout/8h walk pass; screenshots shown inline. Walk104s under full-gate load:
+functional evidence only. Core commit `9292f49` deployed successfully in CI run
+`37143883486`:520 native tests/one ignored and11 dayplayer tests pass. Public
+real-WASM/SW/offline/400/1440 checks pass; public eight-capture headed walk
+passed in29.5s (8h absence2.4s, functional evidence only; no paired whole-app
+speed claim). No console/page errors; the two existing WebGL warnings remain.
+Public WASM SHA256
+`029b2160dd0620e13c508f942411356b1c211e52de04a1842163a1a33d077bf8`
+matches the CI artifact exactly; local packaging has a different toolchain hash.
+Public camp/report screenshots shown inline. Proof and capture manifest:
+`scratchpad/tick-batch-20261004/{public-verification.json,public-walk/checkpoints.json}`.
+Owner asks all gates/cases within minutes: plan at the top of
+`docs/ITERATION_SPEED.md`. Split safe test-only dependencies first; fresh runtime
+runs require major exact forecast-work reduction, not more worker threads.
+
+**2026-10-03: Cut 30.5 and local iteration pass deployed; hold before Cut 31.** Read `PLAN.md`,
+`docs/CUT30_5.md`, then `AGENTS.md`. The works tree, worker art, manual first
+sends, run-clear/runs UI and Pages release are integrated. The first porter is
+free; sends stay manual until the scout. Record checkpoints secure carried
+gold without ending the run. Offline is uncapped after the scout.
+
+The Cut 30.5 baseline `tools/verify.sh --full` passed in 437s with warm primitive
+caches. The local performance follow-up passed genuinely fresh in 4679s, then
+again in 111s with all three simulation legs cached (including test-artifact
+rebuilds): 517 tests, one ignored,
+TypeScript/copy lint, all-target Clippy, shipping WASM/web build, 30-seed engine
+and trace/wire checks, all 272 fortnight cases. Focused client 88/88 and
+real-WASM/SW/offline/headed 400/1440 release checks pass. Existing full client,
+headed send/scout/8-hour walkthrough and 493-frame art QC passed earlier;
+frontend/art inputs stayed unchanged.
+
+Pre-optimization core source `2822afe224cb289b`, content commit `5386ab4`: Guarded L5 dry
+exit 44%, heal45/hurt25 unchanged. Queen-scope fix `7fe1229` narrows generated
+silence to learned brood; explicit rows/raw templates/counter facts stay intact.
+Quartermaster requests stop only once the chosen start passes the boss.
+Actual income/upfront guide pricing and checkpoint accounting repairs remain.
+
+All 16 no-forge pairs meet48h, and companions add value:10.58349% deaths/send
+with vs10.98394% without. Away workers27.26 vs27.14 mean best; daily27.52 vs27.41.
+Pre-optimization shipping WASM3929188bytes SHA256
+`2210c7a151a1887817ccc349cc04b006f9377d43317b0c623fcd8298c8a47a3b`.
+Private evidence: `scratchpad/cut30_5-check-pack`; final log
+`/tmp/riddle-final-verify-full.log`. Rejected probes and bounded causal audits
+are retained there; no fabricated caches or weakened gates were used.
+
+Next: owner fun review, then cohort25 when approved. **Do not begin Cut31.**
+The public alpha is live at `https://gyng.github.io/riddle/`, repository
+`https://github.com/gyng/riddle`, deployed core commit `ef316dd`. CI run `37128479275` passed;
+headed public-site checks passed real WASM, scoped assets/service worker, dated
+alpha banner, phone/desktop layout and offline reload. Public screenshots and
+CI evidence are under `scratchpad/perf-20261003/`. Publication was explicitly
+approved in the current chat on 2026-10-03.
+
+Owner requested inline screenshots at milestones and queued performance/iteration
+work after this checkpoint. The prioritized follow-up is at the top of
+`docs/ITERATION_SPEED.md`: current measurements, QA checkpoint automation, gate
+scheduling/reuse, remaining history allocations, then shipping-WASM catch-up.
+Owner then requested continuing optimization, with local work ahead of CI.
+The active measured runtime contract is `docs/PERF_LOCAL.md`.
+Local tooling now provides `tools/tune.sh <rows>` (full seed counts and fail-fast;
+`--list` for row IDs), independent completed-leg persistence/progress, checked
+shipping-WASM packaging reuse, and direct-URL screenshot manifests. Fresh
+`idle-d8` passed 16/16 in 6.12s; a checked no-edit shipping build took 1.88s.
+The small healing-allocation core optimization is fully verified: fresh full
+verification passed in 4679s (all 272 fortnight cases), then canonical verification
+with all three genuine cached legs passed in 111s, including rebuilding affected
+test artifacts. Current core source is `d84ba387fbdb62da`; shipping WASM SHA256
+`5c1b05d077df71c0d166e1ed46df051b68e20afb260611d4907eb2e7222dde5d`.
+Reports/saves and eight-seed fingerprint `35cb82317410f64e` are unchanged.
+Native catch-up gain is 2–5%, with no measured WASM gain. A quiet native tuning
+repeat did not confirm the earlier contended improvement (CPU15.52→15.88s);
+no tuning speedup is claimed. Core commit `ef316dd` deployed successfully; public
+real-WASM/SW/offline/400/1440 checks and an eight-capture headed walk passed.
+The walk took29.6s with no console/page errors; two pre-existing WebGL warnings
+remain. Evidence: `scratchpad/perf-20261003/core-public-{checkpoint,walk}`. Tooling commits
+`cfed378` and `be1283f` passed public CI and deployed successfully.
+This engineering queue does not start Cut 31 or a new cohort.
+
+Catch-up profiling follow-up, 2026-10-04: `docs/PERF_CATCHUP.md` records actual
+shipping-WASM and symbolized browser profiles, exact report/save comparisons and
+rejected compiler/vision-cache probes. The vision candidate gave 3.95% in seven
+headed pairs, below the 15% target, and was not promoted. Production core source
+and live behavior remain unchanged. New reusable tool:
+`node tools/profile-catchup.mjs SAVE --out scratchpad/profile`.
+
+The dated sections below preserve earlier decisions and implementation history; this resume note supersedes
+older "next" and branch-status statements.
+
+
+> **Status, 2026-09-30.** **Cut 29 is merged to `main`** (merge `dc285a1` + the client fix `2f1bc77`):
+> `node tools/gates.mjs --full` passes, 225 rows — progression unlock days 10.5, marks 8, stall ≤ 3 on
+> 14/18, purse 0.76×; the dayplayer 10.0 unlock days, 3-day stall. The bars sit right at their thresholds —
+> a small core change can flip them (runs move ±2 lineages). **Art direction phase 2** (the approved
+> Bloodlust × Downwell × 80s-watercolour guide, `docs/ART_DIRECTION.md`) is in progress on `cut29-wip`
+> (heroes, bestiary, UI done; tiles, pets/items, town next) and merges when whole. **Next: Cut 30**
+> (`docs/CUT30.md`, the idle-first pivot) — then **hold before Cut 31**.
+
+
+*Written 2026-09-27 at the end of a long session. Read this, then `AGENTS.md`, then `docs/CUT29.md`.*
+
+
+## 0. Owner decisions, 2026-09-28 — the idle-first pivot (read first)
+
+- **Adopted: idle-first** (`docs/IDLE_FIRST.md`). Fun and a sense of progression are the north star.
+  Idling alone progresses; rules and builds help and are fun but are never required. Rules become a
+  late-game unlock for micro-tweaks; traits/arts/stances become **packages** (pre-written rule bundles that
+  level from runs). Progression is four parallel tracks that open stage by stage: **character** (one
+  default warrior → classes → pets → advanced classes), **items** (inventory → blacksmith → loot),
+  **scale** (one hero → many → aggregate), **town** (tavern, bank, houses…). Start simple; add simple,
+  coherent, fun systems.
+- **Order**: finish **Cut 29 as written** (the owner's choice), then **Cut 30 = the pivot's first cut**
+  (IDLE_FIRST.md's draft: the idle floor, packages, a day-0 camp → town strip with a bank, a tracks panel,
+  the new gates). **Hold before Cut 31** and update this doc. The hard invariants in AGENTS.md/PLAN.md
+  ("policy is never optional", DEFAULT must fail, ~20 "not engaging fails" rows) are **replaced in Cut 30**
+  by the idle gates (idle alone reaches D8 on day 1 and D23 by day 12, gold every day; packages ≥ 1.5×
+  faster; rules ≥ 1.5× again; nothing required) — not before, so Cut 29's gates stay as written.
+- **Scoring preset: `idle-hybrid`** (`eval/presets.json`, the mean of idle-roguelike and idle-rpg). Cards
+  from the pivot on use `"genre": "idle-hybrid"` (update `eval/SCORECARD.template.json` and the rater
+  prompt when cohorts resume). Cohort 24 re-scored under it: 74.6 · 71.1 = **72.85**. Run a control
+  cohort on the pre-pivot build under `idle-hybrid` before judging Cut 30.
+- The earlier Cut 30 traits design (`docs/TRAITS.md`) is superseded: its data, wake cards and reveal are
+  reused as packages. Cut 31 (specialisation forks, weapon properties) needs re-scoping under the pivot.
+- **Oaths are still unclear to the owner** (2026-09-28), even after the Cut 28b clarity pass whose
+  blind probe scored 9/9 — an agent-reader pass is not a human pass. In Cut 30, redesign oaths as a
+  simple **quest board**: one plain goal line (`reach D10 · no return`), the reward as a picture, a
+  progress bar; no stake mechanic; arriving late on the ladder, or cut if it doesn't fit the four tracks.
+  Validate with the owner, not only blind agent readers.
+- Death screen: the `gap` seal reads **YOU DIED** (score screen only; `no rule for it` stays under it).
+
+## Latest live gate finding (2026-10-03)
+
+Integration `d1fef1d`, raw core `5f72af3420faf66d`, combines the Master sustain/canonical copied-counter order repair with automatic pack-plan deduplication, remembered automatic-slot refresh and protected manual-slot provenance. All **502 native tests pass (one ignored)**, the two self-contained dayplayer example tests pass, and all-target clippy passes. Shipping WASM remains the older 759c build and must be rebuilt after the final core freeze.
+
+The isolated combined no-forge seed 1 reaches D23/D28 at 104 h and D29/D33 at 256 h. Its exact same-source IDLE control reaches D23 at 160 h and D28 at 176 h, but never reaches D29 in 14 days. Earlier 759c IDLE numbers are not a valid control for this new source. The exact 16-seed IDLE-only subset passes bounded D13 delta (−4 h) and other idle bars but fails the pre-D23 stall cap: seed 7 holds D20 for five days (allowed four). Master-only d0 reproduces that trajectory exactly; pack-only 243f has a three-day stall. A scope-restoration prototype keeps the current heal guard plus the original D19+ restriction, with `attack tag:buffer` supplying target filtering within two conditions. It remains isolated pending behavioral tests and a bounded seed-7 pair.
+
+A controlled proof exposes prospective edit forecasts simulating raw row placement while public `set_rules` compiles authored pen rows before packages. A suggested generated-row move can also compile back to its original position. The scoped prospective repair (`af9dc52e419cbbbd`) passes five behavioral tests, all-target clippy and an actual saved-camp proof: every measured candidate equals public application, with archived fights unchanged. The example consumer repair passes six tests and clippy: landed non-harming gems, positive report-stall measures and faithful move/remove/replace/drop operations. Both are applied to integration (uncommitted); **507 native tests pass (one ignored)**. Example/integration lint checks are pending.
+
+The retained complete gate session 87510 remains the **759c comparison**, not the current integration source. It completed all 272 jobs with exit 1. Metrics and QA (30 seeds) pass; TUNED/PICKED D33 ratio 1.67, workers and IDLE bounded delta −4 h pass. Its two remaining balance failures are no-forge seed 1 D23 (192 h versus 136 h, +56 h against a 48 h cap) and the complete 16 pet pairs (20.9534% deaths with pets versus 17.8967% without). Evidence is `pet-waystone-final-*` in the check pack. Do not merge or publish before current-source verification is green.
+
+The retained older `f3b0f27564074581` comparison unexpectedly exited with SIGTERM 143; no owned comparison process remains. Its 233 completed job caches and partial log are retained as `supply-interrupted-*`, without a full verdict. Avoid non-TTY ETX stops during parallel checks. Rejected trace sustain and owned-counter maintenance prototypes remain unapplied.
+
+## 1. The goal and the honest target
+
+The owner's standing goal: keep cutting, improve the UI (WC3/SC2 skeuomorphic skin, UX/IA), speed up
+iteration, and tune for fun "until 95". `docs/PATH_TO_95.md` shows 95 is above every calibrated title on
+this scorer (Hades/Balatro 90.3, Chess 90.9, Stardew 88.5, Celeste 85.9, Into the Breach 83.6; Loop Hero,
+the nearest comparable, 74.1). Every axis at 0.8 = 80.0; ~86.5 adds 1.0 on decisions/failure/return/
+attribution. The owner has been told; the loop continues toward 95 regardless.
+
+## 2. Scores (blind cohorts, two raters each; `docs/PLATEAU.md` has every read)
+
+| Cohort | Build | Protocol | Mean | Note |
+|---|---|---|---|---|
+| 15 | fba365b | one absence | 74.35 | old best |
+| 19–21 | 4b15a61 … 307dbed | one absence | 71.65 · 74.35 · 72.15 | plateau |
+| control | 307dbed | **three absences** (20m/4h/8h) | 65.7 | the protocol costs ~6.5 |
+| 22 | 420f27c (Cut 26 fork) | three | 68.65 | +2.95 vs control |
+| 23 | 631fe23 (Cut 27 fold/scene + juice + perf) | three | 71.6 | +5.9 |
+| 24 | 9720ff7 (Cut 28 oaths) | three | **73.25** (AW 75.1, session best) | +7.55; expression, tension, autonomy reach 0.8 |
+
+Compare new cohorts against the control (65.7), not the old one-absence numbers.
+
+## 3. The loop (unchanged; it works)
+
+contract `docs/CUT<n>.md` → core agent (crates/, wire fields in `web/src/engine/{types,fake}.ts` first) ∥
+client agent (web/src/ui) → full verify → commit → `tools/ship.sh --preview` → 2 QA players
+(`eval/QA_TRANSCRIPT_PROMPT.md`, `eval/QA_PROMPT.md`, briefs via `sed` into `scratchpad/<qa>/brief.md`) →
+one full-stack fix agent for both lists → commit → `tools/ship.sh` → 2 blind raters (`eval/RATER_PROMPT.md`,
+three absences, seeds `N01/N02`, ports `57x1/57x2`) → `eval/score.sh` + `node ../eval-fun/tools/fun-reliability.mjs`
+→ PLATEAU entry → next contract. Screenshots to the owner at each milestone (they asked).
+
+Verify before any commit: `cargo test -q --workspace --profile fast`, `cargo clippy --workspace
+--all-targets -- -D warnings`, `tools/wasm.sh`, `node tools/gates.mjs --full` (≈ 8 min; per-leg cache),
+`cd web && npx tsc --noEmit -p . && node ../tools/copy-lint.mjs && pnpm -s test` (own Vite server per run,
+≈ 5 min), `node tools/playtest.mjs --seed N` (headed walk).
+
+## 4. State of the working tree at handoff
+
+**Branches.** `main` stays at the last green commit (`56d680e` + this doc). Everything below is committed
+on **`cut29-wip`** — check it out to resume. It is not shippable yet (§6 Cut 29 core item 3), and
+`node tools/gates.mjs --full` fails only on the rows Cut 29 made hard. When those pass, merge it to main,
+then QA → cohort 25. On the branch:
+- **Cut 28b — oath clarity** (done, verified by its agent): the deal as a formula, `stake`, OATH
+  KEPT/BROKEN beats (`Ev::Oath`), the board revealed at the first plateau/boss wall. Blind probe 1/9 → 9/9.
+- **Copy pass** (`docs/COPY.md`): rules named by their words everywhere (no R1/R2 — `tokens.ruleName`,
+  `tokens.nameRefs` rewrites core `R2` at render), `luck`/`rule`/`repelled` seals, `N/12 replays survive`,
+  `vs last run`, `15th heir`, `best D8`. Blind comprehension 64.5 % → ~88 %; stands-alone 73 → 88 %.
+- **Gfx/UI eval rounds** (`docs/JUICE.md` §10, `tools/gfx-eval.mjs`, `tools/gfx-round.sh`): blind visual
+  mean 4.90 → 5.97 (bar 8.0); the desktop three-column frame (`web/src/wide.css`), WebGL context-loss
+  fallback (`render/view2d.ts`, `render/fallback.ts`, `web/tests/ctxloss.mjs`), mobile layout check
+  (`web/tests/layout.mjs`), boss plates, slash arcs, lit fog edges, icon plaques, audio ducking.
+- **Cut 29 core** (built, gates NOT yet passing — §6): frontier mark removed, daily mark, tiers T0–T6,
+  prices ≤ ◆8, condition words free, automations to gold, oath slots/draws/commissions, 23 systems
+  opening one at a time (`systems.rs`), diagnostics meters (`meters.rs`, qa: totals == event sums), the
+  wall search (`wall.rs`, breaks the D17 wall → D28–33), keep sheet only when close, standing orders,
+  fallen companions named, tamed grudges close as `tamed`, `ForecastEnds.passage`.
+- **Cut 29 client**: only the pack-4 fix (`camp.ts` reads `supply_cap`) — the rest is §6.
+
+## 5. The owner's decisions this session (all binding)
+
+- Dying is fine; progression must still work on an all-death night. Nothing punishes absence.
+- Hero looks: male/female/cat per class, swap on the portrait (done, `ui/look.ts`).
+- Oaths must be self-explanatory (done, Cut 28b).
+- Copy must be human-friendly: **no rule ids anywhere**; name a rule by what it says. Blind tests show
+  one screen at a time ("stands alone"). Labels/buttons/verdicts may use **2 words** (callouts ≤ 3, no
+  sentences). World concepts get **an icon + a one-time ≤ 3-word caption**. Misread numbers are
+  **restyled, not dropped** (± as a noise band, the move as a signed chip, `12/12` beside its fix).
+- Keep iterating agents until a good score (copy ≥ 90 % per surface; visuals ≥ 8.0 mean, no moment
+  < 7.0); stop only after three sub-threshold rounds, and then report blockers to be unblocked.
+- Gfx agent cleared to: fix sprite scale vs tiles (zoom first, else re-author ~60 sprites via Codex),
+  lit fog look, bigger ambient motion on still screens, fix the report's 0.6 s empty arrival, use real
+  saves (web/tests/fixtures/deep.json) not the fake engine.
+- Wanted next: diagnostics meters (dps/hps/"tps"), desktop IA, "a tap is a decision" (no busywork),
+  progressive unlocks of the game's *systems* (rules not fully open at start), a trait system with
+  proc-gen traits (Cut 30), specialisation forks + weapon/armour properties (Cut 31).
+
+## 6. Open work, in order
+
+### Cut 29 core (2026-09-30: every gate passes — ready to merge; the history below)
+**Final (c51f613 core + the two client fixes below):** `node tools/gates.mjs --full` exit 0 — 225 PASS, 0 FAIL (30 seeds,
+1957 s): progression unlock days 10.5 · marks 8 · stall 14/18 · purse 0.76× · frontier 0; dayplayer unlock days 10.0 · stall 3
+· marks 8; FULL ≥ D29 93 %, FULL−D33 100 %, dice 4.7 %, lever with every oath reward 4/4, oath gates 19/19; qa all PASS.
+`cargo test` 453 (+1 ignored), clippy -D warnings, wasm rebuilt. Client suite (`pnpm -s test`) 36/37 with `clarity:card` a
+timing flake (passes alone ×2). Client fixes: an anchored sheet re-places itself when its anchor moves (`ui/sheet.ts`;
+cut23's `R1's verb sheet leaves the row in view` failed 3 of 4 runs — the camp repainted under the open sheet, R1 rose
+63 px); `clarity:core,watch` expected `· killer:` on the try row, which gfx round 18 (83a1e6d) removed on purpose
+(failing since bdb9d25; the counter is the gate, the killer now optional).
+**2026-09-30 (core agent, resuming the list below).** Baseline re-measured at `bdb9d25`: the progression run is
+deterministic (8.3 · 13 · 11/18 · 1.82×, exactly the 28th's). Checkpoint 1 (items 1, 2, 4):
+- **Record spikes** (`wall.rs`): the wall's search measures from the deepest lit waystone at or above the record
+  (the offer carries `WallEdit.start`, its first edit `start D24`; the client's apply and the harnesses set it), past
+  `wall_floor` — the record, or the floor the set reaches on ≥ 25 % of its sends when the record was one lucky send's
+  (AP s1 d10: `start D24 · R6 → boss → cadence` past D33 0 → 43 %). The counters/stock rows are gated to that floor.
+  **The last exit row is never dropped or written over**: AO s1 / AR s1 lost their only bank to a wall edit and
+  earned nothing for 8–9 days (every send died).
+- **Cadence** strikes a boss in view first (the old `cadence-boss.patch`); FULL rows unchanged (D34 9.7 % vs 9.9 %,
+  FULL−D33 still 0 past D33).
+- **Commissions** priced against income: min(10 units × 1.25ⁿ, max(one day's net, 5 units)) (`kit::COMMISSION_FLOOR`).
+- Measured: progression unlock days 8.3 → **9.2**, marks 13 → **9**, stall 11 → **15/18 PASS**, purse 1.82 → **0.85× PASS**;
+  dayplayer unlock days 7.0 → **10.0 PASS**, stall 9 → **4** (seed 3 at the Queen D28, days 7–10).
+- Remaining: marks (AP s1 / AS s2 at 9: draws fail once the oath pool is dry — item 3), unlock days (AS s2 5,
+  AS-stall s1 6, AV s1 6: late days with nothing left to buy and oaths sworn that the set never keeps), dayplayer stall.
+  Diagnostics: `PROG_MARKS=1` / `PROG_OATHS=1` on `examples/progression` print the check-ins over ◆8 and each day's oaths.
+
+Checkpoint 2 (item 3 + the oath a player keeps):
+- **Titles come again, numbered** (`oath::next_title`: `Bold at D34`, `Bold at D34 II`, … — the first of its line
+  neither owned nor on the board); a numbered title stands while its line is the kind's line. A draw may re-draw the
+  replaced oath's own kind when it gives something else (AP s1 at D33: every other kind's reward already on the
+  board → `no oath to draw`, ◆9). The ◆2 draw is now a sink that never dries.
+- **The replay's player reads the oath line before swearing** (`progression_lib::pick_oath`, the day's first
+  check-in): the unsworn oath the set keeps most on the camp's panel, when a night keeps it ≥ 50 %. It swore the
+  board's first oath whatever the set could keep (`Warlord · fire` nine days by a set with no fire; `tame · a new
+  kind` 53 times on empty days by sets with no tame row) — PROGRESSION.md §7's projection assumed kept oaths.
+- Measured (p3): unlock days **10.2 PASS**, marks **8 PASS**, purse **0.93× PASS**, stall **11/18 FAIL** (was 14–15:
+  chaotic — kept oaths grant waystones/routes; the stalls are the Queen D28 ×3, the King D33, and walls after an
+  ascension: AU s1 D28 5 d, AQ s2 D23 5 d). Dayplayer unchanged (10.0 PASS, stall 4). `WALL_DAYS` 1 was tried on
+  the dayplayer: stall 4 → 6 (reverted). The Queen: from D24, 48 % reach her floor and 0 past on every candidate
+  (21 of 32 deaths to her lurkers); FULL passes her on ~23 % of the sends that reach her.
+
+Checkpoint 3 (the walls and the purse — every progression and dayplayer bar passes):
+- **The wall's start is chosen, not assumed** (`wall::search`): the wall floor is the deeper of the set's floor from
+  its own start and from the deepest lit stone, and the stone is offered only when it passes that floor more often (a
+  deep start skips the shallow finds and levels: the dayplayer from D19 met the Foundry at D19–20 while its D1 sends
+  met the Queen at D28, and the offer optimised past D19). Every band boss's known counter between the floor and the
+  record is weighed (AS-stall s1 at D33 read a D31 floor and never weighed `cadence` for four days). Stock: `hp < 90%
+  → noise discipline` and `summoned → attack summoned` (the Queen's brood shields and mends her).
+- **Commissions at half a day's net** (floor 5 units): at a whole day's net a purse keeping tomorrow's oath beside it
+  sat at 1.02× (AS s2: $3078, a $2020 work, a $930 oath). `PROG_PURSE=1` prints check-ins over 0.9 of the bar.
+- Measured (p6): progression unlock days **10.5**, marks **8**, stall **14/18**, purse **0.76×**, frontier 0 — all PASS;
+  dayplayer (dp7) **all PASS**: unlock days 10.0, stall 3, marks 8 (every seed passes D34 and ascends by day 11).
+- Harness gaps found (not changed): the replays never buy supplies (a `read silence` / `throw fire` row packs only
+  what is found; the repeat's `+ fire · for throw fire` offer is never tapped); an absence fields the vault only on
+  its first send (`start_run` takes `Game.loadout`), so the camp's panel (fielded) overstates the night.
+
+State at `08a880b` (2026-09-28, core agent): 450 cargo tests (+1 ignored), clippy -D warnings (incl. examples), wasm rebuilt, qa all
+PASS, every bot / lever / oath / dice / stall / dance / lane / divergence / return gate PASS (FULL−D23/28/33 held 100 %,
+kitted too; COUNTERED ≥ D14 70 %; lever with every oath reward 4/4). `node tools/gates.mjs --full` exits 1 on exactly
+these rows (final run, 30 seeds, 1776 s):
+
+| Row | Handoff (27th) | Now | Bar |
+|---|---|---|---|
+| Dayplayer: days with an unlock / oath kept / system opened | 7.3 | 7.0 (9 · 7 · 5) | ≥ 10/14 |
+| Dayplayer: longest stall, counter known | 8 d | 9 d (final best D29 · 28 · 28) | ≤ 3 |
+| Progression: unlock days (18 rater lineages) | 5.5 (6.3 on the 28th's first run) | 8.3 | ≥ 10 |
+| Progression: stall ≤ 3 d | 2/18 | 11/18 | ≥ 13/18 |
+| Progression: marks unspent after day 2 | 11 (8 on the 28th's first run) | 13 | ≤ 8 |
+| Progression: purse vs the day's net | 1.11× (1.35×) | 1.82× | ≤ 1 |
+
+Rater lineages now end D20–D33 (were all D22–23): the stall and unlock rows moved; marks and purse got worse because the
+lineages now stand at the D33 wall with the whole catalogue bought (marks pile, no oath reward left to draw) and the
+commission price (10 units × 1.25ⁿ) outruns the purse bar's floor (10 units).
+
+Done (in order of commits on `cut29-wip`):
+1. `9ac89d0` **Lazy wall search** — `Game::wall_edit()` / wasm `wallEdit()` (once a day at a wall, then cached as
+   `Lineage.wall`); `ReturnReport.wall` gone (`mergeReports` line dropped); `wallEdit` on a background lane (`lanes.ts`,
+   mirror reload after). 8 h offline on `deep.json` at a wall: 4.9 s in wasm; `wallEdit` alone 67 s — ask it after the
+   report paints, never block on it. The dayplayer and `progression_lib` call it after each report.
+2. `775540c` **Queen silence slot** (`turn.rs` `queen_wants/queen_slot/queen_keeps`, from D24): held silence at D28 0/40 →
+   40/42 on a D28 snapshot, past D28 0 → 28/48 with the counter row; FULL−D28 still held 100 %. The 307dbed save hash
+   re-recorded (event diff: first difference is that pickup, send 6, D28).
+   **No telegraph retreat against a countered boss** (`trace::telegraph_row` takes the facts).
+3. `a52fc21` **Foundry wall** — probe (rater snapshots): the wall is iron golems at D19–20 (reflect_melee), not the
+   Master; every lineage owned `reflect_read` and knew the tag, no goal set wrote it, no death offered it. With the card at
+   R1: reach D23 0.3 % → 90 %. `buffer · D19+ → attack buffer` is harmful (0/320). Fix: the card in the wall stock
+   (owned, not in the set) and pinned on a reflect-melee death (`trace::card_counter`). `PROG_SNAP=dir` snapshots.
+4. `08a880b` The wall stock carries the wall boss's known counter (plain and floor-gated): stall 9 → 11/18.
+Tried and reverted (patches in the session scratchpad `wall-fullmeasure-pin.patch`, `cadence-boss.patch`): measuring the
+wall's candidates on every sim (the camp's tick budget keeps ~9 of 48 at D33), `WALL_BAR` 0.10 → 0.06, and always
+measuring the floor-gated counter in full — 8–9/18, no better than 11 (noise ±2 between runs). `cadence` striking a boss
+in view first (tests green, not gate-measured) — see next 2.
+
+Next, in order (measure each with `target/fast/examples/progression --bars --dp-seeds 0 --jobs 18`, ~25 min; single runs
+move ±2 lineages, so compare two runs before believing a move):
+1. **Record spikes.** Most remaining stalls are a lucky record, not a wall: e.g. rater AP s1 reached D33 on day 4 with a
+   set that reaches D33 on ~0–2 % of its sends (day 6), 14 % by day 10; the dayplayer's D28s come from sets that reach D28
+   on 0–1 % of sends (its later patches degrade the set: `always → cadence` and `telegraph → retreat` rows). The wall
+   search is blind there (share past/reaching the record ≈ 0 for every candidate). Options: a smoother search objective
+   (mean depth toward the record), or measure a wall from the deepest lit waystone below it.
+2. **Bare `cadence` card** (the client inserts a bought card bare: `always → cadence`): it pre-empts `boss focus` and hits
+   the Warlord's shield-goblins until he drives the hero off (dayplayer seed 3, every send, nine days). `cadence-boss.patch`
+   makes its plain blow go to a boss in view first; gate it (FULL's D33/D34 rows) before keeping.
+3. **Marks at the deepest wall**: once the catalogue is bought and the oath pool is dry (bold/lean titles are per depth,
+   fire per boss), draws fail and marks pile (AP s1: 25). Needs a repeatable late sink (e.g. `fire` naming any met boss
+   without its title; escalating titles), or the D33 wall passing (ascension resets the catalogue).
+4. **Purse**: the commission's 1.25ⁿ price outruns the bar's 10-unit floor at a stall (AS s1 $5959 on day 5). Price
+   commissions against income (e.g. ≤ one day's net) or record a deviation — never loosen the bar.
+5. Unlock days (item 5 of the old list) and the dayplayer bars were not worked on directly this session.
+Also done earlier: `noise_discipline` is earnable (a blind foe in view teaches `foe:<kind>:blind`); the repeat offers a
+`throw` row's kind as one tap (`Lineage.repeat_added`).
+
+### Art direction phase 2 (2026-09-30, the owner approved docs/ART_DIRECTION.md: regenerate the library to the guide)
+Owner decisions: the primary/SEND gem is BLOOD; "the hero must be readable" — the proportion is picked by a blind read at game size.
+Pipeline (all under `art/`): `make_prompts.py` `header3()` puts the guide's STYLE PREAMBLE (read verbatim from `prompts/style_targets.txt`)
+first in every sprite prompt and points Codex at the style targets; briefs are `brief3` in `manifest.json` (heroes; `phase2_briefs.py`
+the bestiary; `phase2_ui.py` UI/portraits/items/town; `painted.py p2` the tiles, `BRIEF3` for the places that are not masonry).
+Sprites come back on alpha or a MAGENTA key (`pack.key_source` reads the key off the corners; blue still works). `art/p2sheet.py`
+makes the before/after sheets (`scratchpad/style/phase2/`) and `qc` composites every sprite with the hero into its biome's dressed room
+and runs `art-qc.py --style`. Codex batches: `art/prompts/p2_*.txt`, logs `art/logs/p2_*.log`, ~8 concurrent, ~10 min a batch.
+
+1. **Heroes** (4 classes × man/woman/cat + the 4 default-look aliases, 16 portraits). Blind read test (`scratchpad/style/phase2/readtest/`:
+   fighter-man, rogue-woman, ranger-cat at 1/4, 1/5 and 1/6.5 head, 18 panels at true device size on two floors, random facing and
+   hurt; two fresh screenshot-only readers): class 12/12 at every proportion, look **5/12 · 7/12 · 11/12**, facing 10 · 12 · 12, hurt
+   12 · 12 · 12 — overall **81 % · 90 % · 98 %**, so the long 1/6.5 figure ships (its BONE face patch and MIST blade rim carry the
+   read; the chunky 1/4 figure's face and ears drowned in the dark kit). The three tested sprites are the shipped ones; the other nine
+   were drawn against them. Every hero wears the BLOOD cloak (the rogue's retried once: 0.1 % blood in a frame). Style QC: every hero
+   frame passes in the Warrens.
+2. **Foes and bosses** (29 monsters, 2 summons, 6 bosses + their 6 death poses, the captive and the goblin bosses' portraits; the
+   killer portraits re-cut by `tools/foe-portraits.py`). One pass, no retries: goblins INK-and-DUSK skin with BONE eyes (the old
+   bright green gone), ghosts (wraith, spectral blade/hound, echo) in MIST and BONE, the Warlord a gaunt king in a BLOOD-and-INK
+   mantle. Known weak: the bell sentinel's bell reads dark (not GILT), the acolyte bows less than briefed, the Foundry Master carries
+   a lot of bronze. Style QC: every foe frame (with the hero, in the Warrens room) passes.
+3. **The painted tile register** (7 places × 20 pieces + the Fens' own 7): `painted.py p2` with the place's tinted DUSK/MOON hexes
+   in every prompt and `BRIEF3` for the places that are not masonry — the **Fens** a boardwalk of long planks over black water with a
+   log palisade (its first pass came back as teal flagstones: the shared "flagstone" briefs had won), the **Burrows** packed ochre
+   earth with timber shoring, the **Deep** unworked cave rock; the Warrens, Crypt, Foundry and Sanctum keep masonry. The D5 fork's
+   two lanes read apart (earth vs planks over water). The 8-colour ramps (`make_tiles.style_ramp`, the fallback register, the decals,
+   `atlas.json meta.palettes`, `palette.ts`) are now the palette with each place's tint; the foundry's orange remap is gone. Style QC:
+   the Fens, the Burrows, the Deep and the Foundry never reached a moonlit highlight in a room frame (p99 L* 48–59), so
+   `painted.convert` lifts their lit edges toward MIST (`MOON_LIFT`; the Burrows' earth floors kept calm, its ledges carry the moon)
+   after one Codex retry each for the Fens and the Burrows. Every room passes, and all **413 sprite frames** (every hero and foe with
+   the hero, in all 7 rooms) pass `art-qc.py --style`.
+4. **UI**: 16 frames (bar, console, panel, tablets, tiles, well, the **BLOOD SEND gem** and a darker cracked CLOT danger gem,
+   the death banner, gauge, stud, seal, the carved button, the scroll), 35 BONE ink icons, the death/report backdrops, pillar/brazier/
+   candle, the boss shield + shards, the title key art (the camp's vista: the hero on the stair down, a moon shaft). CSS on the palette
+   (a fork's pass: tokens `--ink … --gilt` in `:root`; `--acc` GILT for trim/text, the primary action BLOOD, `--hp` BLOOD, ok/info MIST,
+   warn EMBER; ~900 literals moved by role; EMBER kept only where a flame is; the old `--ink` text token is `--ink-text`). Style QC
+   on the walked screens: death, report and the second camp pass; the first camp sits at p99 L* 60 (bar 62).
+5. **Pets, items, effects**: the pet portraits (rat, jackal, monkey, goblin; the pet sprites are the bestiary's), the item glyphs
+   (potion, scroll, sword, breastplate, coins), the torch (EMBER, retried once: its flame read as a red stick), the BLOOD banner and
+   blood decals, shrine, vault / open vault, nest, bones, moss, crack, rubble — the shared hue assets and ramp decals (`p2_items*`).
+6. **The town** (docs/TOWN.md §7, enough for Cut 30's town v1): the dungeon mouth ×3 (cave · timber · gatehouse), campfire ×2
+   frames, tent, supply crate, staked plot, scaffold; blacksmith, storehouse, kennel and bank × 3 looks (built · improved · grand);
+   townsfolk (smith, merchant, child, carter), the mule cart, a dog, loot sacks ×2, a glowing chest, a BLOOD flag ×2 frames; a walk
+   frame per class (`walk_<class>`, the default look); the town terrain as painted tiles (`envp_town_*` → `town_env_*`: grass ×4,
+   dirt ×3 + edge, plaza ×2, water, cliff, fence, low wall, gate, bridge, two trees); the `!` rune marker (`icons/alert`) and the
+   minimap / roster plaques (`frames/plaque_*`, 9-slice 64). All keyed sprites are `kind: "town"` in the manifest (art-qc treats an
+   undrawn one as optional: the town scene draws a block + its icon). Nothing renders them yet — Cut 30 wires the scene.
+7. **The look is the default** (`web/src/render/wash.ts`, `blit.ts`, `index.ts`, `tags.ts`): the wash pass on for FX > 0 (`?look=off`),
+   reworked for on-palette art; moonlit grades, EMBER torches everywhere, a MIST hero light, moon pools; in-world plates on the palette.
+   **Blind round 27** (JUICE §10.15, raters BG and BI against the style targets): **6.60** vs round 26's 6.84 (−0.24). Camp +0.35,
+   desktop camp +0.30, bosses held; the dungeon watches fell (Warrens 5.80 → 5.30, Fens 6.00 → 5.10, scene 6.35 → 5.30): darker frame,
+   the long hero reads small, the Fens' planks shimmer under the grain. Next, in order: calm the Fens floor (fewer stripes; no grain on
+   world texels under motion), lift the watch's ambient a step and the hero's MIST light, lighten the scene insets, bevel the navy
+   plaques, forecast bars back to a hot fill; then the camera-on-the-exchange blocker (needs the rule's target on the wire).
+   Before/after sheets: `scratchpad/style/phase2/` (`batch1_heroes_sprites`, `batch2_foes`, `batch3_tiles`, `rooms7`,
+   `phase2_before_after_phone`, `phase2_before_after_desktop`, `readtest/`).
+
+### Gfx/UI eval (stopped on the rule again after round 26: 6.84, the best on the motion-aware harness — JUICE §10.14 has the blockers)
+Rounds 24–26 since the resume: 6.74 · 6.75 · 6.84. Kept: carved EDIT + candle + desktop sheet (edit 7.45), two-pane scene, plaque slams,
+slash arcs, desktop meters in the side column (d-watch 6.2), darker memory and warmer torches. The closer zoom was reverted. The floor
+is the map watch (Warrens 5.8): the camera needs the rule's target on the wire to frame the encounter ahead of time.
+Round 24: the carved EDIT + candle + desktop sheet kept (edit 7.2, d-edit 7.0); the closer zoom (80/58) reverted (every watch moment fell).
+Earlier (stopped on the rule 2026-09-30 after round 23: 6.77 · 6.77; boss break 7.70, Fens 6.00; JUICE §10.12–10.13 has the blockers)
+Round 23 (raters AY, AZ): 6.77 again (−0.06, +0.09, +0.00: three rounds under +0.2). The floor is the map watch (Warrens 5.8, desktop 6.0):
+raters want a closer zoom (a PHONE_TEXELS call against the fights gates), a carved EDIT button and bigger desktop sheet, a side-by-side scene.
+Round 22 (raters AW, AX): Fens props (7 Codex pieces) + a warmer pool, the boss break re-staged (shield above him, white-hot crack, arcs),
+the map camera frames the seen floor, the vista grows under the phone scene. Round 23's changes are committed unscored (camera hold,
+OPENED medallions, desktop meters 16 px, Fens fog + ghost wisps). The stop rule's count: 21 (−0.06), 22 (+0.09) — two rounds under +0.2.
+Earlier:
+The harness now shows raters full-resolution motion (`-motion.png`: changed pixels in red) and each moment's intended movement; round 20's
+build re-rated under it is the new baseline **6.74** (death 7.90, boss entrance 7.70, forecast 7.40). Round 21 (c6008ad: 35 more painted
+props, denser dressing, deeper wall-foot shadow, pixel-register boss shield, coin sprites) scored **6.68**. Bar 8.0 not met.
+`docs/JUICE.md` §10.10–10.11 has the tables. Next, in order: the Fens (5.50: its own props, a warmer hero pool); the boss break (the pixel
+shield muddles him: offset the split above him, bigger halves, a crack flash); early-floor camera framing; the IA asks (report OPENED chips,
+the scene inset over the route row, desktop meters). The oath board is skipped: Cut 30 redesigns it as a quest board (the reward vignettes
+painted for it wait, uncommitted, in `art/ui/oath/`).
+Resume: `tools/gfx-round.sh scratchpad/gfx-eval/roundN`, two fresh raters (`roundN/rater/prompt.txt`), `python3 scratchpad/gfx-eval/score.py roundN`.
+
+### Cut 29 client (2026-09-28 — every numbered item below is closed and committed on cut29-wip; `web/tests/cut29.mjs`, 34 checks)
+**Closed:** 1 `mergeReports` (`ui/meters.ts mergeMeters`) · 2 keep sheet (`decide`/`note`; a full vault's decision is a `swap`
+sheet) · 3 systems (`ui/systems.ts`; reveal steps follow `Lineage.systems`; reorder/vs/divergence/walls/route/automations/tags/
+exit verbs gated; report `opened` plaques; `seenSystems` at the next send — a mutating call mid-edit cost clarity:paint ~1 s; the
+proxy lists the Cut 29 methods; fake `?systems=all|none`, the older suites run with `none`) · 4 meters (watch toggle, death
+fight, report night, forecast two-run compare, desktop slot) · 5 standing orders (one tablet + sheet, `setOrders`) · 6 oath
+slots/draw/forswear-by-id/works · 7 `repeat_added` one tap · 8 passage (`~$125/run +$135 passage`) · 9 fallen lines · 10 wall
+edit as a patch (`ui/wall.ts`, lazy `wallEdit()` after the paint, `App.applyRules`) · 11 automation/tier labels, long-press
+reorder any distance · owner copy: YOU DIED seal (death screen only), budgets 2 words (`allowPhrases`), `runs banked`/`fights
+only`, concept icons + one-time captions (`ui/concepts.ts`), the ± as a noise band + the move as a signed chip, the gem says
+`apply` (count on its fix) · gfx raters' layout asks (opened under plaques, hex gems in the forecast panel, no `?` column,
+the scene never mid-row, headline wraps by segment, sheets meet their anchor). Blind protocol pass 9: `scratchpad/copy/pass9`.
+Known: core `keep()` on a full vault evicts the weakest item of any category (the swap sheet follows it; `auto_keep` evicts
+same-category only) — a core call.
+Done earlier: `web/src/ui/camp.ts` reads `Lineage.supply_cap` (the pack 4 → 3/3 bug). The rest below is open;
+the fake engine (`web/src/engine/fake.ts` ~2082–2195) already has Cut 29 stand-ins, so build against it:
+1. `mergeReports` in `app.ts` must carry the Cut 29 fields (sum `night_marks`, union `systems_opened`,
+   concat `oaths_kept`/`fallen`, last slice's `wall`, `meters` field by field) — else offline reports drop them.
+2. Keep sheet (`ui/watch.ts` `pendingExit` ~457, `finish()` ~2014): skip when `exit_pending.decide` is
+   false → `autoKeep` + show `note`. Check the full-vault swap semantics against core `keep()` (engine.rs ~5139).
+3. Systems: gate tiles by `systems[].open` alongside `reveal.ts`, glint `systems_opened`, call `seenSystems`.
+4. Meters (one module for watch toggle, death `Death.fight`, report, camp two-run compare, desktop
+   `metersSlot()` in `frame.ts`); units always; rules via `tokens.ruleName`.
+5. Standing-orders panel (`setOrders`); oath slots/`drawOath`/`forswearOathId`/commissions in `oaths.ts`;
+   `repeat_added` one-tap; `~$X/run +$P passage` from `ends.passage`; `fallen` lines; the `wall` edit as a
+   patch; tier cards read `meet Warlord`, automations `$N more`; drop `◆+1 frontier`; long-press reorder
+   any distance.
+6. The owner's copy decisions (§5): budgets to 2 words in `eval/copy-budgets.json` (copy-lint reads it),
+   reword `GAP`/`BANKED`/`highlights`…, concept icons + one-time caption, restyle the forecast move and
+   move `12/12` beside its fix; rerun the blind protocol (`scratchpad/copy/capture.mjs`).
+7. `web/tests/cut29.mjs`, full suite on a quiet box, headed screenshots.
+
+
+## 7. Queued cuts
+
+- **Cut 30 — idle first: the hero climbs on his own** (`docs/CUT30.md`, contract 2026-09-30; after Cut 29
+  merges). Eight parts: (1) the idle floor — the `Steady` school stance, drills at a boss's second meeting,
+  scars, the quartermaster packing known counters (IDLE: D8 day 1, D23 by day 12, gold every day); (2)
+  packages v1 — 4 stances, 6 tactics (today's cards), 4 temperaments (the trait core's mapped shapes: lexicon,
+  fact learning, wake cards, ladder arrival, neutral bots, old-save mapping), levelling from runs; the editor
+  becomes the pen, a late stage; (3) the town hub v1 (`docs/TOWN.md`: camp → blacksmith, storehouse, kennel,
+  bank; walkers; the mouth = send; a three.js `town` scene with DOM targets); (4) the tracks panel; (5) oaths
+  as a one-quest board with no stake, or deferred; (6) the replacement invariants (IDLE/PICKED/TUNED/RANDOM,
+  1.5× · 1.5×, nothing required) with the exact AGENTS.md/PLAN.md edits, made at merge; (7) a control cohort on
+  the pre-pivot build under `idle-hybrid` first (can run now), then cohort 25; (8) the owner checks each new
+  system (agent readers only filter). Hold before Cut 31. The superseded traits draft is
+  `docs/CUT30-traits-superseded.md`.
+- **Cut 31 — to re-scope under the pivot**: parallel heroes (houses, tavern, expedition board, aggregated
+  report) first; specialisation forks and weapon/armour properties (reach, cleave, stagger, bleed, pin; quiet,
+  fireproof) return as packages/loot later, not as rows to write.
+- The owner's listening pass (`eval/AUDIO.md`) would let raters score audio for the first time.
+
+## 8. Gotchas learned the hard way
+
+- **Never `pgrep -f`/`pkill -f` in a Bash tool call** — the pattern matches the tool's own `bash -c`
+  wrapper: waiters spin forever (several spun 1–6 h this session), kills kill your own shell. Wait on
+  PIDs (`while kill -0 $PID`), and give every `until grep` waiter a PID exit.
+- Never `cargo fmt` (the repo isn't rustfmt-formatted). Never stage from `/home/g`.
+- Never run `tools/ship.sh` or heavy gates while raters play :5230 (feel/frame time is rated); cap
+  threads (`RIDDLE_THREADS=8`, `nice -n 15`) when agents share the box.
+- A full gate run is CPU-bound (~8 min, 32 threads); concurrent agents' runs push load to 60+ and make
+  client timing suites flaky — rerun a failing timing suite alone before believing it.
+- `tools/playtest.mjs` right after `tools/ship.sh` can abort (the pkg rebuild reloads Vite) — rerun it.
+- Agents sharing the tree: give each an owned area, "targeted edits only, re-read before editing".
