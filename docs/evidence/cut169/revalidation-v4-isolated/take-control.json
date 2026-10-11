@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 70.789,
+  "failed": 1,
+  "results": [
+    {
+      "n": "take-control",
+      "code": 1,
+      "out": "ok   real wasm engine\nok   the watch offers take control\nok   the control tile's tooltip names it and its key (\"drive him by hand · M\")\nok   the world waits for an order (engine 69 → 69)\nok   the badge reads Hand, its tip hand control · awaits order\nok   the picture stays at the frontier after d (79 ≤ 79)\nok   the picture stays at the frontier after a (89 ≤ 89)\nok   the picture stays at the frontier after x (99 ≤ 99)\nok   the picture stays at the frontier after w (109 ≤ 109)\nok   the picture stays at the frontier after s (119 ≤ 119)\nok   the picture stays at the frontier after e (129 ≤ 129)\nok   the picture stays at the frontier after z (139 ≤ 139)\nok   the picture stays at the frontier after ArrowRight (149 ≤ 149)\nok   the picture stays at the frontier after ArrowLeft (159 ≤ 159)\nok   the picture stays at the frontier after Numpad5 (169 ≤ 169)\nok   the picture stays at the frontier after . (179 ≤ 179)\nok   each key is one action — the pad grid, arrows, numpad (11/11 advanced the world)\nok   the last order reads its outcome (\"waited\")\nok   every tile's tooltip names its key (14/14)\nok   a mouse sees each key in its tile's corner\nok   key f is one order (\"attack ✓\")\nok   key g is one order (\"can't · no foe\")\nok   key h is one order (\"can't · no item\")\nok   key t is one order (\"can't · no item\")\nok   key > is one order (\"descend ✓\")\nok   key Enter is one order (\"descend ✓\")\nok   `c` releases him\nok   verb keys do nothing out of hand\nok   `c` takes him again\nok   keys inside a field drive nothing\nok   a held arrow repeats (7 steps in 1.6 s, open run 8)\nok   the repeat stops on release (0 after)\nok   a far floor tile on screen to walk to (9 steps)\nok   a move cursor over the floor\nok   the hovered tile is marked\nok   a click walks several tiles, one order a turn (9 orders for 9 steps)\nok   the walk ends at the tile, a new foe, or a refusal (there)\nFAIL a click on him stops the walk\nok   descend resolves visibly (\"descend ✓\")\nok   the panel offers attack until\nok   released: the panel reads off\nok   released: the rules play on (574 → 1121)\nok   the rules find a foe\nok   (the foe sits under undefined: the click case skipped)\nok   a right-click acts (\"foe down\")\nok   no browser menu over the map in hand (true)\nok   in hand, the run that ended leaves the watch (no dead state)\nok   the panel is gone once the run is over\nok   no take-control panel over a run that is over (0 reads)\nok   360 px: every tile ≥ 44 px (14 tiles)\nok   360 px: nothing past the edge (scroll 360 / 360, slab 0–360)\nok   a phone shows the key hints too (owner 2026-10-10)\nok   the pad kills double-tap zoom (touch-action manipulation)\n     screenshot /home/g/p/riddle/scratchpad/take-control/phone-360-control.png\nok   a tile on the phone's map to tap\nok   a tap steps one tile toward it ((19,22) → (18,22), toward (17,22))\nok   a held touch on an arrow steps and stops on release (5 held, 0 after)\ntake-control: FAIL (1 assertion(s), 0 error(s))\n",
+      "ms": 70788,
+      "own": 70456
+    }
+  ]
+}

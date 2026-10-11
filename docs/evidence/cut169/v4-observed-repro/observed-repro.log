@@ -1,0 +1,7 @@
+client suite: targeted (2/166 groups)
+ok   run-training    6.2s (5.5s)  1440 18 run training visibility checks PASS
+FAIL take-control    96.9s (90.7s)  take-control: FAIL (0 assertion(s), 1 error(s))
+     take-control: FAIL (0 assertion(s), 1 error(s))
+         at boot (/home/g/p/riddle/web/tests/take-control.mjs:27:14)
+         at async file:///home/g/p/riddle/web/tests/take-control.mjs:82:3
+FAIL: 1/2 client gates in 96.9s

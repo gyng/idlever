@@ -1,0 +1,78 @@
+{
+  "scope": "Same V4 product candidate plus observer-only boot/control diagnostics after164/166 failure; full166 required; no cause/fix/score/freeze/adoption",
+  "status": "failed",
+  "steps": [
+    {
+      "name": "types",
+      "command": [
+        "pnpm",
+        "-s",
+        "exec",
+        "tsc",
+        "--noEmit"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:41:41.301452+00:00",
+      "pid": 3800278,
+      "exit_code": 0,
+      "elapsed_seconds": 5.1407477769535035,
+      "finished_utc": "2026-10-11T20:41:46.442491+00:00"
+    },
+    {
+      "name": "copy",
+      "command": [
+        "node",
+        "tools/copy-lint.mjs"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:41:46.514604+00:00",
+      "pid": 3800320,
+      "exit_code": 0,
+      "elapsed_seconds": 0.11882468685507774,
+      "finished_utc": "2026-10-11T20:41:46.633834+00:00"
+    },
+    {
+      "name": "web-build",
+      "command": [
+        "pnpm",
+        "-s",
+        "build"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:41:46.707389+00:00",
+      "pid": 3800327,
+      "exit_code": 0,
+      "elapsed_seconds": 6.004449228057638,
+      "finished_utc": "2026-10-11T20:41:52.712141+00:00"
+    },
+    {
+      "name": "shipping-whole-client",
+      "command": [
+        "node",
+        "tests/run.mjs",
+        "--full",
+        "--report",
+        "/home/g/p/riddle/scratchpad/cut169/revalidation-v5/shipping-client-results.json"
+      ],
+      "status": "failed",
+      "started_utc": "2026-10-11T20:41:52.787237+00:00",
+      "pid": 3800450,
+      "exit_code": -15,
+      "elapsed_seconds": 117.51136832404882,
+      "finished_utc": "2026-10-11T20:43:50.298961+00:00"
+    }
+  ],
+  "prerequisite_status": "terminal reports inspected",
+  "shipping_wasm": {
+    "bytes": 4879943,
+    "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+  },
+  "updated_utc": "2026-10-11T20:43:50.338523+00:00",
+  "focused_evidence": {
+    "final_focused": "/home/g/p/riddle/scratchpad/cut169/yield-final-focused.json",
+    "final_stress85": "/home/g/p/riddle/scratchpad/cut169/yield-final-stress85.json",
+    "observer_series": "/home/g/p/riddle/scratchpad/cut169/control-diagnostic-series/results.json",
+    "scope": "Does not clear previous full failures"
+  },
+  "current": "shipping-whole-client"
+}

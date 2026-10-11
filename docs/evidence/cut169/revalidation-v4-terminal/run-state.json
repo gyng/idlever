@@ -1,0 +1,76 @@
+{
+  "scope": "Final responsive-search candidate after complete163/166 failure; focused loss/control/meter/watch and stress85 prerequisites then types/copy/build/full166; no score/freeze/adoption",
+  "status": "failed",
+  "steps": [
+    {
+      "name": "types",
+      "command": [
+        "pnpm",
+        "-s",
+        "exec",
+        "tsc",
+        "--noEmit"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:00:30.720087+00:00",
+      "pid": 3760842,
+      "exit_code": 0,
+      "elapsed_seconds": 6.884320971090347,
+      "finished_utc": "2026-10-11T20:00:37.604839+00:00"
+    },
+    {
+      "name": "copy",
+      "command": [
+        "node",
+        "tools/copy-lint.mjs"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:00:37.702825+00:00",
+      "pid": 3760938,
+      "exit_code": 0,
+      "elapsed_seconds": 0.15359260304830968,
+      "finished_utc": "2026-10-11T20:00:37.856832+00:00"
+    },
+    {
+      "name": "web-build",
+      "command": [
+        "pnpm",
+        "-s",
+        "build"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T20:00:37.936319+00:00",
+      "pid": 3760946,
+      "exit_code": 0,
+      "elapsed_seconds": 7.84360916307196,
+      "finished_utc": "2026-10-11T20:00:45.780320+00:00"
+    },
+    {
+      "name": "shipping-whole-client",
+      "command": [
+        "node",
+        "tests/run.mjs",
+        "--full",
+        "--report",
+        "/home/g/p/riddle/scratchpad/cut169/revalidation-v4/shipping-client-results.json"
+      ],
+      "status": "failed",
+      "started_utc": "2026-10-11T20:00:45.875808+00:00",
+      "pid": 3761138,
+      "exit_code": 1,
+      "elapsed_seconds": 1583.217400426045,
+      "finished_utc": "2026-10-11T20:27:09.093719+00:00"
+    }
+  ],
+  "prerequisite_status": "terminal reports inspected",
+  "shipping_wasm": {
+    "bytes": 4879943,
+    "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+  },
+  "updated_utc": "2026-10-11T20:27:09.134828+00:00",
+  "focused_evidence": {
+    "final_focused": "/home/g/p/riddle/scratchpad/cut169/yield-final-focused.json",
+    "final_stress85": "/home/g/p/riddle/scratchpad/cut169/yield-final-stress85.json"
+  },
+  "current": "shipping-whole-client"
+}

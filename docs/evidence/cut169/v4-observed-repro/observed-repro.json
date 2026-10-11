@@ -1,0 +1,23 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 2,
+  "elapsedSeconds": 96.899,
+  "failed": 1,
+  "results": [
+    {
+      "n": "run-training",
+      "code": 0,
+      "out": "320 18 run training visibility checks PASS\n400 18 run training visibility checks PASS\n1440 18 run training visibility checks PASS\n",
+      "ms": 6150,
+      "own": 5539
+    },
+    {
+      "n": "take-control",
+      "code": 1,
+      "out": "\npage.waitForFunction: Timeout 90000ms exceeded.\n    at boot (/home/g/p/riddle/web/tests/take-control.mjs:27:14)\n    at async file:///home/g/p/riddle/web/tests/take-control.mjs:82:3\ntake-control: FAIL (0 assertion(s), 1 error(s))\n",
+      "ms": 96898,
+      "own": 90748
+    }
+  ]
+}

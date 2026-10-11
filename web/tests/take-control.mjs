@@ -21,10 +21,30 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** Boot a fresh game, build the house if offered, send, and land on the watch; every engine step's snapshot kept (`__lastSnap`). */
 const booted = new WeakSet();
+const bootDiagnostics = new WeakMap();
 async function boot(page) {
-  if (!booted.has(page)) { booted.add(page); page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`)); }
+  if (!booted.has(page)) {
+    booted.add(page); const events=[]; bootDiagnostics.set(page,events);
+    page.on("pageerror", (e) => { errors.push(`pageerror: ${e.message}`); events.push({kind:'pageerror',message:e.message}); });
+    page.on('requestfailed',r=>events.push({kind:'requestfailed',url:r.url(),failure:r.failure()}));
+    page.on('console',m=>{if(m.type()==='error')events.push({kind:'console',text:m.text()});});
+  }
   await page.goto(`${url}?dev=1&fresh=1&seed=611`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 }).catch(async e=>{
+    out.push(`     boot diagnostic ${JSON.stringify({url:page.url(),events:bootDiagnostics.get(page),state:await Promise.race([page.evaluate(()=>({ready:document.readyState,app:!!window.__riddle,booted:window.__riddle?.booted,kind:window.__riddle?.kind,text:document.body.innerText.slice(0,1600)})).catch(err=>({error:err.message})),new Promise(r=>setTimeout(()=>r({observationTimedOut:true}),2000))])})}`);
+    throw e;
+  });
+  await page.evaluate(() => {
+    window.__controlPointerTrace = [];
+    document.addEventListener('pointerdown', (e) => {
+      const cv = document.querySelector('canvas.view'), r = window.__viewer?.debugRects?.().find((q) => q.hero);
+      if (!cv || !r) return;
+      const c = cv.getBoundingClientRect(), b = r.drawn ?? r, x = e.clientX-c.left, y = e.clientY-c.top;
+      const trace = window.__controlPointerTrace;
+      trace.push({ at: performance.now(), x:e.clientX, y:e.clientY, target:e.target?.className, hero:{x:c.left+b.x,y:c.top+b.y,w:b.w,h:b.h}, hitHero:x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h, drive:document.querySelector('.ctl')?.dataset.drive });
+      if(trace.length>30)trace.shift();
+    }, true);
+  });
   await page.evaluate(() => { const e = window.__riddle.engine, step = e.step.bind(e); e.step = async (...a) => { const r = await step(...a); window.__lastSnap = r.snapshot; return r; }; });
   const house = page.locator(".town-tag[data-next=house]");
   if (await house.count()) { await house.first().click(); await sleep(800); const b = page.locator("button", { hasText: /^build|Build/ }); if (await b.count()) await b.first().click(); await sleep(4000); }
@@ -151,6 +171,7 @@ try {
     for (let i = 0; i < 80; i++) { await sleep(150); const d = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive); if (d === "walk") walked = true; if (walked && !d) break; }
     const w1 = await acts(page), s1 = await snapOf(page);
     const there = s1.x === goal.x && s1.y === goal.y, newFoe = s1.foes.some((f) => !s0.foes.some((g) => g.id === f.id)), refusedW = /^can't/.test(s1.order ?? "");
+    if(w1-w0<2)out.push(`     walk diagnostic ${JSON.stringify({start:s0,end:s1,goal,orders:w1-w0,panel:await page.evaluate(()=>({stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
     check(w1 - w0 >= 2, `a click walks several tiles, one order a turn (${w1 - w0} orders for ${goal.d} steps)`);
     check(there || newFoe || refusedW || s1.foes.some((f) => Math.max(Math.abs(f.x - s1.x), Math.abs(f.y - s1.y)) <= 1),
       `the walk ends at the tile, a new foe, or a refusal (${there ? "there" : newFoe ? "a foe showed" : refusedW ? s1.order : "close foe"})`);
@@ -161,9 +182,20 @@ try {
   let stopTile = null; for (const t of far) { const at = await tileAt(page, t.x, t.y); if (at.free) { stopTile = at; break; } }
   if (stopTile) {
     await page.mouse.click(stopTile.sx, stopTile.sy); await sleep(200);
-    const at = await page.evaluate(() => { const r = window.__viewer.debugRects().find((q) => q.hero), c = document.querySelector("canvas.view").getBoundingClientRect(), b = r.drawn ?? r; return { sx: c.left + b.x + b.w / 2, sy: c.top + b.y + b.h / 2 }; });
-    await page.mouse.click(at.sx, at.sy); await sleep(200);
-    check(!(await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive)), "a click on him stops the walk");
+    // The sprite moves while a coordinate crosses the browser/Node boundary.
+    // Sample and dispatch this pointer gesture together so it actually hits him.
+    const at = await page.evaluate(() => {
+      const canvas=document.querySelector('canvas.view'),r=window.__viewer.debugRects().find(q=>q.hero),c=canvas.getBoundingClientRect(),b=r.drawn??r;
+      const sx=c.left+b.x+b.w/2,sy=c.top+b.y+b.h/2,init={bubbles:true,pointerType:'mouse',pointerId:1,isPrimary:true,clientX:sx,clientY:sy,button:0};
+      canvas.dispatchEvent(new PointerEvent('pointerdown',{...init,buttons:1}));
+      canvas.dispatchEvent(new PointerEvent('pointerup',{...init,buttons:0}));
+      return {sx,sy,hitHero:window.__controlPointerTrace.at(-1)?.hitHero};
+    });
+    check(at.hitHero===true,'the stop pointer hits the currently drawn hero');
+    await sleep(200);
+    const stillWalking = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive);
+    if(stillWalking)out.push(`     stop diagnostic ${JSON.stringify({aim:at,originalDrive:stillWalking,panel:await page.evaluate(()=>({drive:document.querySelector('.ctl')?.dataset.drive,stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
+    check(!stillWalking, "a click on him stops the walk");
     await page.keyboard.press("Escape");
   }
   // release, then the old checks (the rules play on)
