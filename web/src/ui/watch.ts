@@ -2167,8 +2167,13 @@ export function renderWatch(app: App): Mounted {
     if (beat && !beat.shown && beat.from >= v) n = Math.min(n, beat.from);
     return n;
   }
-  function applySpeed(): void {
-    const n = eased(rate());
+  function applySpeed(immediate = false): void {
+    const target = rate();
+    // Returning from a quiet stretch to Normal's live clock must also land at
+    // 1× immediately; a carried fall ramp would keep those live frames faster.
+    const direct = immediate || (mode === "one" && target === 1 && rateWhy === "");
+    const n = direct ? target : eased(target);
+    if (direct) riseAt = performance.now();
     if (n === speed) { paintRate(); paintWhy(); return; }
     if (!viewer?.tick) viewerTick();          // placeholder clock: bank the ticks run at the old rate first
     speed = n; viewer?.setSpeed(n);
@@ -2218,7 +2223,9 @@ export function renderWatch(app: App): Mounted {
     // Cut 14 §6: leaving the card (`fights` → `fast`) lands live — the travel under it was the world's skip, not a replay owed
     if (wasCard && m !== "fights" && !held && !exitTier) goLive();
     for (const k of Object.keys(modeBtn) as Mode[]) modeBtn[k].classList.toggle("on", k === m);
-    paintPause(); paintCard(frame); applySpeed();
+    // Normal is an explicit clock choice: don't carry the previous mode's
+    // faster rate through the automatic fall ramp after the tap.
+    paintPause(); paintCard(frame); applySpeed(m === "one");
   }
   function togglePause(): void { freeze(!paused, hidden); paintPause(); applySpeed(); }
   const frozen = (): boolean => paused || hidden;
