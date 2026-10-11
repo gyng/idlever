@@ -1,0 +1,3932 @@
+{
+  "game": "Riddle",
+  "build": "d34605e",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "profile": null,
+  "tier": 1,
+  "evaluator": "blind-a / fresh independent agent / seed313",
+  "seed": 313,
+  "rawCard": true,
+  "immutable": true,
+  "killCriteria": {
+    "crashOrDataLoss": false,
+    "feltInputLatencyInCoreAct": false,
+    "firstSessionWithoutCoreAct": false,
+    "darkPatternInLoop": false,
+    "defaultRulesBeatEveryEdit": false,
+    "unfairDeathShareAbove10pct": false,
+    "returnWithNothingToDecide": false
+  },
+  "killCriteriaEvidence": "No crash, observed data loss, paid wait or empty return. Package/configuration actions occurred in the first session. All five deaths read had available vocabulary or equipment levers; this is a small human sample, not a statistical audit. Default-vs-edited comparison and bot caps unassessed; false does not certify statistical proxies. Public D28 replay stalled despite responsive reads, but configuration input itself did not visibly stall.",
+  "criterion": {
+    "fun_1to7": 5,
+    "playAgainTomorrow_1to7": 6,
+    "recommend_0to10": 6,
+    "checkInTomorrowUnprompted_1to7": 5,
+    "delayedRecall": ""
+  },
+  "humanProbes": {
+    "clarity": "I could follow the next-floor goal, but \u201cKing \u00b7 slain 100%\u201d appeared while my lineage had only died to him and still showed D34 behind him.",
+    "decisions": "I kept the unknown-scroll patch that replayed \u201c9/12\u201d instead of a return patch that saved \u201c12/12\u201d but cut Mother reach from \u201c83\u219217%,\u201d because I wanted progress as well as safety.",
+    "mastery": "I now distinguish arrival from victory: switching to \u201cmirror read L5\u201d raised D33 arrival \u201c13\u219263%\u201d while D34 remained \u201c<13%,\u201d so I kept a separate King rhythm counter.",
+    "tension": "I watched Petra at \u201c3/18 hp\u201d with gas damage and no heals, then her emergency scroll sequence banked \u201c$584,\u201d which made the saved carry feel earned.",
+    "feel": "The armour purchase responded visibly and the sword arcs, hit numbers and \u201cBLOCKED\u201d made impacts readable, though I did not hear audio and did not click just for its sensation.",
+    "surprise": "Mother gas forced an unknown-scroll bailout, Queen summons forced \u201cread silence,\u201d and wardens reflecting melee made me replace archer kiting with \u201cmirror read.\u201d",
+    "expression": "My cautious build used \u201cdepth \u226528 \u2192 read silence,\u201d \u201cdepth \u226533 \u2192 second wind,\u201d early heals, a low-health recall and a corridor rule above two mirror packages.",
+    "story": "Petra went into Mother's gas with no heals; my last-resort unknown scroll first enchanted and then recalled her; she escaped with \u201cbanked $584\u201d instead of becoming the next heir.",
+    "pacing": "I wanted another King attempt, but a D28 \u201cLive\u201d view stopped changing until pause/resume, and long rule lists made my return decisions slower than the compact reports.",
+    "failure": "Rook lost after \u201csecond wind \u00b7 no use,\u201d an empty heal slot and \u201cbank at44% \u00b7 going home\u201d at16/54, then an18-damage King hit finished him, so my preparation and thresholds mattered.",
+    "social": "I kept old guard ogre Drul after \u201cserved 3\u201d and his grudge because he had survived several heirs, but I played with no other person.",
+    "autonomy": "I chose to retain \u201cGUARD \u00b732HP\u201d Drul instead of the newly tamed \u201cSCOUT \u00b724HP\u201d eel, and tested scroll bailouts rather than opting into the offered Lich trial.",
+    "progression": "Runs grew carry and an \u201caxe +13,\u201d persistent growth reached FighterL7 and six custom slots, and hired workers removed sending, packing, forging and training chores, including \u201cDrillmaster +9 levels.\u201d",
+    "aesthetic": "The torchlit crypts, red Foundry and grey Sanctum made the descent feel like a place, though the little hero and enemies sometimes overlapped and the phone header truncated \u201cunbow\u2026\u201d.",
+    "return": "I returned to a new D31 record after20m, a Queen death and \u201c\u2212$9000 \u00b7 forge\u201d after4h, and \u201c4 runs \u00b7 +$13121\u201d plus King failures after8h, then chose patches, counters and supplies rather than wishing I had stayed.",
+    "attribution": "I deliberately reserved silence for \u201cdepth \u226528\u201d and saw \u201cboss \u2192 read silence\u201d wipe Queen's summoned lurkers; my scoped second wind was consumed by a D33 warden and was unavailable against the King."
+  },
+  "axes": [
+    {
+      "id": "clarity",
+      "human": 0.6,
+      "bot": "na",
+      "note": "\u201cKing \u00b7 slain100%\u201d contradicted two King death screens and a still-unreachedD34 goal; I could proceed, but milestones and locked-bank wording needed interpretation.",
+      "probe": "I could follow the next-floor goal, but \u201cKing \u00b7 slain 100%\u201d appeared while my lineage had only died to him and still showed D34 behind him."
+    },
+    {
+      "id": "decisions",
+      "human": 0.8,
+      "bot": "na",
+      "note": "The Mother patch choice traded \u201c12/12\u201d safe returns against \u201c83\u219217%\u201d boss reach, while my9/12 scroll patch preserved the attempt; lapse: several purchase and forecast changes grouped their effects, obscuring which edit caused the delta.",
+      "probe": "I kept the unknown-scroll patch that replayed \u201c9/12\u201d instead of a return patch that saved \u201c12/12\u201d but cut Mother reach from \u201c83\u219217%,\u201d because I wanted progress as well as safety."
+    },
+    {
+      "id": "mastery",
+      "human": 0.8,
+      "bot": "na",
+      "note": "\u201cD33 13\u219263%\u201d with D34still\u201c<13%\u201d taught me to separate reaching the King from defeating him and combine two mirror counters; lapse: I could not resolve his low-health cadence cutoff into a winning setup during this horizon.",
+      "probe": "I now distinguish arrival from victory: switching to \u201cmirror read L5\u201d raised D33 arrival \u201c13\u219263%\u201d while D34 remained \u201c<13%,\u201d so I kept a separate King rhythm counter."
+    },
+    {
+      "id": "tension",
+      "human": 0.8,
+      "bot": "na",
+      "note": "Petra survived gas at \u201c3/18hp\u201d and secured \u201c$584\u201d through my emergency scroll rule; lapse: early familiar floors became highly safe Swift sections with little uncertainty before the next wall.",
+      "probe": "I watched Petra at \u201c3/18 hp\u201d with gas damage and no heals, then her emergency scroll sequence banked \u201c$584,\u201d which made the saved carry feel earned."
+    },
+    {
+      "id": "feel",
+      "human": 0.6,
+      "bot": "na",
+      "note": "Visible sword arcs, spark hits and \u201cBLOCKED\u201d amplified fights, and gear/rule controls responded; routine targeting was sometimes crowded and did not invite interaction for its own pleasure. Audio unassessed: no listening evidence.",
+      "probe": "The armour purchase responded visibly and the sword arcs, hit numbers and \u201cBLOCKED\u201d made impacts readable, though I did not hear audio and did not click just for its sensation."
+    },
+    {
+      "id": "surprise",
+      "human": 0.8,
+      "bot": "na",
+      "note": "\u201cboss \u2192 read silence\u201d changed how I handled Queen summons after gas, stunlock and reflective wardens had demanded different responses; lapse: repeated Queen wave clearing became familiar in consecutive normal watches.",
+      "probe": "Mother gas forced an unknown-scroll bailout, Queen summons forced \u201cread silence,\u201d and wardens reflecting melee made me replace archer kiting with \u201cmirror read.\u201d"
+    },
+    {
+      "id": "expression",
+      "human": 0.8,
+      "bot": "na",
+      "note": "My five custom rules included \u201cdepth\u226528\u2192read silence\u201d and \u201chp<30%\u2192read recall\u201d rather than an untouched default, backed by two mirror packages; lapse: many redundant locked package rows swamped the small authored part of the editor.",
+      "probe": "My cautious build used \u201cdepth \u226528 \u2192 read silence,\u201d \u201cdepth \u226533 \u2192 second wind,\u201d early heals, a low-health recall and a corridor rule above two mirror packages."
+    },
+    {
+      "id": "story",
+      "human": 0.8,
+      "bot": "na",
+      "note": "Petra at the Mother went from no heals and gas to \u201cread unknown,\u201d an enchant and a recall that saved the carry; lapse: bulk absence summaries reduced some later runs to totals rather than preserving their turns. Same-day recollection only; delayed recall remains pending.",
+      "probe": "Petra went into Mother's gas with no heals; my last-resort unknown scroll first enchanted and then recalled her; she escaped with \u201cbanked $584\u201d instead of becoming the next heir."
+    },
+    {
+      "id": "pacing",
+      "human": 0.6,
+      "bot": "na",
+      "note": "In-run: normal combats gave changing tactical traces, with automatic quiet4x and Swift familiar floors, but D28\u201cLive\u201d once held an unchanged trace until pause/resume. Check-in: read/report decisions fit the5/20minute returns but long editors and modal purchasing added friction. Cadence:20m brought a record,4h a death/workforce spend,8h deeper failures/training; tool-buffer and infrastructure waits excluded.",
+      "probe": "I wanted another King attempt, but a D28 \u201cLive\u201d view stopped changing until pause/resume, and long rule lists made my return decisions slower than the compact reports."
+    },
+    {
+      "id": "failure",
+      "human": 0.8,
+      "bot": "na",
+      "note": "Rook at \u201c16/54hp\u201d had \u201csecond wind\u00b7no use,\u201d \u201cdrink heal\u00b7no item,\u201d and \u201cbank at44%\u00b7going home\u201d before the fatal18hit; cheap next heirs kept retries available. Lapse: the final King screen offered five fixes but \u201cnone beats1/12 as is,\u201d giving weak help for my next revision.",
+      "probe": "Rook lost after \u201csecond wind \u00b7 no use,\u201d an empty heal slot and \u201cbank at44% \u00b7 going home\u201d at16/54, then an18-damage King hit finished him, so my preparation and thresholds mattered."
+    },
+    {
+      "id": "social",
+      "human": 0,
+      "bot": "na",
+      "weight": 0,
+      "note": "Weight0; probe still recorded. Drul served multiple heirs, but this preset does not award social evidence.",
+      "probe": "I kept old guard ogre Drul after \u201cserved 3\u201d and his grudge because he had survived several heirs, but I played with no other person."
+    },
+    {
+      "id": "autonomy",
+      "human": 0.6,
+      "bot": "na",
+      "note": "I kept \u201cGUARD32HP\u201d Drul over a new \u201cSCOUT24HP\u201d and chose rescue/recall experiments or ignored the offered Lich trial; the main route remained a mostly linear descent and package ordering was constrained.",
+      "probe": "I chose to retain \u201cGUARD \u00b732HP\u201d Drul instead of the newly tamed \u201cSCOUT \u00b724HP\u201d eel, and tested scroll bailouts rather than opting into the offered Lich trial."
+    },
+    {
+      "id": "progression",
+      "human": 0.8,
+      "bot": "na",
+      "note": "Within runs I gained carry, depths and \u201caxe+13\u201d; across runs FighterL7, six custom slots and learned vocabulary persisted; Scout, Quartermaster, Apprentice and \u201cDrillmaster+9levels\u201d removed chores. Lapse: queued forge spending of\u201c$9000\u201d outweighed one absence\u2019s earnings without a clear advance budget estimate I could retain.",
+      "probe": "Runs grew carry and an \u201caxe +13,\u201d persistent growth reached FighterL7 and six custom slots, and hired workers removed sending, packing, forging and training chores, including \u201cDrillmaster +9 levels.\u201d"
+    },
+    {
+      "id": "aesthetic",
+      "human": 0.8,
+      "bot": "na",
+      "note": "Torchlit crypts, red Foundry and grey Sanctum plus framed town/rule art stayed coherent throughout. Lapse: phone headers truncated\u201cunbow\u2026\u201d and overlapping combat sprites sometimes hid individual actors. Visual atmosphere assessed; sound unassessed.",
+      "probe": "The torchlit crypts, red Foundry and grey Sanctum made the descent feel like a place, though the little hero and enemies sometimes overlapped and the phone header truncated \u201cunbow\u2026\u201d."
+    },
+    {
+      "id": "return",
+      "human": 0.8,
+      "bot": "na",
+      "note": "\u201c1run\u201d to a D31 record after20m, two runs with a Queen death after4h, then \u201c4runs\u00b7+$13121\u201d and King failures after8h each prompted different configuration choices. Lapse: I could not predict the scale of net returns before leaving, especially after worker expenditures.",
+      "probe": "I returned to a new D31 record after20m, a Queen death and \u201c\u2212$9000 \u00b7 forge\u201d after4h, and \u201c4 runs \u00b7 +$13121\u201d plus King failures after8h, then chose patches, counters and supplies rather than wishing I had stayed."
+    },
+    {
+      "id": "attribution",
+      "human": 0.8,
+      "bot": "na",
+      "note": "My reserved\u201cdepth\u226528\u2192read silence\u201d erased Queen summons, while my \u201cdepth\u226533\u2192second wind\u201d fired on a warden before the King and then showed\u201cno use.\u201d Lapse: the decisive low-health King turns fell through to package defaults whose priority I could not freely reorder.",
+      "probe": "I deliberately reserved silence for \u201cdepth \u226528\u201d and saw \u201cboss \u2192 read silence\u201d wipe Queen's summoned lurkers; my scoped second wind was consumed by a D33 warden and was unavailable against the King."
+    }
+  ],
+  "sameDayRetelling": "I sent Petra into Mother's gas with an early-heal rule and a last-resort unknown-scroll rule, then watched her run out of heals at 3/18 HP. My emergency scroll first enchanted her weapon and then recalled her instead of letting the gas finish her. I banked $584 and took that narrow escape into the next heir's Queen and mirror-counter planning.",
+  "audio": {
+    "assessment": "unassessed",
+    "reason": "Agent cannot listen; no human listening note read. Visual consequences and atmosphere assessed independently."
+  },
+  "blindnessViolations": [
+    "Inherited user AGENTS.md contained game intent, invariants and repository operating instructions before blind play; it was not voluntarily reopened as design evidence.",
+    "Initial read of permitted FRAMEWORK accidentally extended into sections4\u20136 via an overlong sed range. Only generic protocol, no other cards/QA/calibration/source read.",
+    "Permitted RATING.md itself includes QA/coordinator workflow and permitted FUN_EVAL_IDLE.md includes generic calibration examples; no referenced calibration artifacts read."
+  ],
+  "evidence": {
+    "directory": "scratchpad/d34605e-blind-a",
+    "criterionArchive": "scratchpad/d34605e-blind-a/criterion-before-axes.json",
+    "probeArchive": "scratchpad/d34605e-blind-a/human-probes-before-awards.json",
+    "legacyLedger": "scratchpad/d34605e-blind-a/active-intervals.jsonl",
+    "relayLedger": "scratchpad/d34605e-blind-a/relay-active-intervals.json",
+    "publicOperations": "scratchpad/d34605e-blind-a/relay/",
+    "screenshots": "scratchpad/d34605e-blind-a/shots/",
+    "requiredScreenshots": "First-minute/menu, first death, first attempt, all three returns and post-return configurations captured where available and inspected once; final Rook death and Sable configuration also captured."
+  },
+  "limitations": [
+    "Exact4h active budget short by8seconds before8h navigation; no later time relabelled or absence repeated. Overall active70minutes exceeded, but frozen phase protocol is incomplete.",
+    "Initial gameplay from06:03:11 through06:27:26.758192UTC excluded entirely because timing reconstruction uncertain; lineage retained, so game progressed during excluded wall time.",
+    "Buffered watch executions and unattended pending/tool-delivery intervals receive zero active credit. Only inspected observations/decisions between returned operations credited; boundaries excluded and each window capped54seconds.",
+    "Simulated absences are not natural next-day returns. Delayed recall intentionally empty; same-day retelling separately labelled.",
+    "Driver long-pending responses were timing-uncertain, not proof of product freeze. Separately observed D28 unchanged Live trace recovered after pause/resume; no root cause inferred.",
+    "Runs continued during excluded reading/tool/admin time. Rook's final death occurred while compaction was excluded; its death screen and trace were actively read afterwards.",
+    "Operational budget prospectively amended equally from260 to1000 by coordinator, to permit repeated short observations; image cap120 and chunks<=60seconds unchanged.",
+    "Post-lock rule export only; no save imports, grants, hidden game reads, mutating diagnostic APIs, source edits, restarts or alternate profile."
+  ],
+  "highlights": [
+    "The Mother scroll bailout converted my rule into a memorable saved-carry moment.",
+    "Distinct absence reports brought new records, an heir death, worker gear spending and meaningful mirror-counter planning.",
+    "Queen silence and safer Warden attacks let me connect configuration choices to visible fight outcomes."
+  ],
+  "gripes": [
+    "The report labelled the King slain100% even though the observed lineage had only died to him.",
+    "One D28 Live watch stopped changing until pause/resume; long lists and cramped phone controls also interrupted watching.",
+    "King replay fixes all reported no gain, and package priorities/locked wording made the next useful revision harder to infer."
+  ],
+  "horizon": {
+    "activeMinutes": 70.0661303,
+    "phaseActiveMinutes": {
+      "cold": 40.04946363333333,
+      "return20m": 5.083333333333333,
+      "return4h": 4.866666666666666,
+      "return8h": 20.066666666666666
+    },
+    "requiredPhaseMinutes": {
+      "cold": 40,
+      "return20m": 5,
+      "return4h": 5,
+      "return8h": 20
+    },
+    "protocolComplete": false,
+    "status": "Incomplete prescribed phase coverage:4h short8seconds; overall70actualminutes and full8h20minutes achieved.",
+    "sessionStart": "2026-10-11T06:03:11Z",
+    "observationEnd": "2026-10-11T09:17:21Z",
+    "absences": [
+      {
+        "duration": "20m",
+        "navigationStart": "2026-10-11T08:01:01.171Z",
+        "navigationEnd": "2026-10-11T08:01:03.136Z",
+        "creditedMinutes": 5.083333333333333
+      },
+      {
+        "duration": "4h",
+        "navigationStart": "2026-10-11T08:12:16.812Z",
+        "navigationEnd": "2026-10-11T08:12:18.561Z",
+        "creditedMinutes": 4.866666666666666,
+        "shortfallSeconds": 8
+      },
+      {
+        "duration": "8h",
+        "navigationStart": "2026-10-11T08:27:07.495Z",
+        "navigationEnd": "2026-10-11T08:27:09.182Z",
+        "creditedMinutes": 20.066666666666666
+      }
+    ],
+    "runsWatched": 15,
+    "runsWatchedCountMethod": "Conservative lower bound:11cold plus one4h-return Quill and three8h-return Rook/Rook/Sable runs; some only partly watched.",
+    "runsOffline": 7,
+    "runsOfflineCountMethod": "Sum of displayed returned run counts1+2+4; includes completion of an in-flight run and is not mutually exclusive with partially watched counts.",
+    "deathsRead": 5,
+    "deathDetails": [
+      "Niall:ghoulVrogD14",
+      "Orin:BloatMotherD13 gas",
+      "Petra:QueenD28 summoned lurkers",
+      "Quill:MirrorKingD33",
+      "Rook:MirrorKingD33"
+    ],
+    "ruleEdits": 13,
+    "ruleEditsCountMethod": "Conservative verified lower bound of hero-row additions/patches/conditions/action changes/deletion; excludes additional reorder operations and two pet-rule edits.",
+    "ruleEditAttemptsAtLeast": 15,
+    "initialLockedAttempts": 2,
+    "finalCustomHeroRows": 5,
+    "additionalPetEdits": 2,
+    "normalSpeedWatchesAtLeast": 2,
+    "normalSpeedEvidence": "Two consecutive Rook runs remained Normal, observed for several meaningful minutes through Queen/Sanctum/King approach via inspected short samples, with automatic quiet4x, scene acceleration and Swift known-floor skipping explicitly retained; Sable also watched Normal. No buffered wait counted.",
+    "firstTenWithoutNotes": "No gameplay notes during first10creditedminutes; threshold fell in legacy interval06:41:26.186296\u201306:42:03.975271UTC. Initial uncredited play also had no gameplay notes.",
+    "activeIntervals": [
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:27:29.863380+00:00",
+        "end": "2026-10-11T06:27:53.491734+00:00",
+        "seconds": 23.628354,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 23.628354,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:28:01.523344+00:00",
+        "end": "2026-10-11T06:28:26.603796+00:00",
+        "seconds": 25.080452,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 25.080452,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:28:33.370305+00:00",
+        "end": "2026-10-11T06:28:49.505747+00:00",
+        "seconds": 16.135442,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 16.135442,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:28:56.279542+00:00",
+        "end": "2026-10-11T06:29:21.428473+00:00",
+        "seconds": 25.148931,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 25.148931,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:29:29.214964+00:00",
+        "end": "2026-10-11T06:29:37.778195+00:00",
+        "seconds": 8.563231,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 8.563231,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:29:43.792472+00:00",
+        "end": "2026-10-11T06:29:47.959177+00:00",
+        "seconds": 4.166705,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 4.166705,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:29:54.752391+00:00",
+        "end": "2026-10-11T06:30:42.512791+00:00",
+        "seconds": 47.7604,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 47.7604,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:30:49.280342+00:00",
+        "end": "2026-10-11T06:30:55.865614+00:00",
+        "seconds": 6.585272,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 6.585272,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:31:02.628167+00:00",
+        "end": "2026-10-11T06:31:29.595014+00:00",
+        "seconds": 26.966847,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 26.966847,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:31:36.382623+00:00",
+        "end": "2026-10-11T06:31:50.204028+00:00",
+        "seconds": 13.821405,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 13.821405,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:31:58.484706+00:00",
+        "end": "2026-10-11T06:32:21.397539+00:00",
+        "seconds": 22.912833,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 22.912833,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:33:24.594999+00:00",
+        "end": "2026-10-11T06:34:07.001063+00:00",
+        "seconds": 42.406064,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 42.406064,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:34:13.768366+00:00",
+        "end": "2026-10-11T06:34:39.528455+00:00",
+        "seconds": 25.760089,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 25.760089,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:34:47.061514+00:00",
+        "end": "2026-10-11T06:35:04.892983+00:00",
+        "seconds": 17.831469,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 17.831469,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:35:10.907618+00:00",
+        "end": "2026-10-11T06:35:19.738066+00:00",
+        "seconds": 8.830448,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 8.830448,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:35:26.504539+00:00",
+        "end": "2026-10-11T06:35:52.763287+00:00",
+        "seconds": 26.258748,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 26.258748,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:35:58.778379+00:00",
+        "end": "2026-10-11T06:36:06.577339+00:00",
+        "seconds": 7.79896,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 7.79896,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:36:14.358357+00:00",
+        "end": "2026-10-11T06:36:32.930739+00:00",
+        "seconds": 18.572382,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 18.572382,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:36:39.699655+00:00",
+        "end": "2026-10-11T06:36:49.420290+00:00",
+        "seconds": 9.720635,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 9.720635,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:36:56.185414+00:00",
+        "end": "2026-10-11T06:37:15.808437+00:00",
+        "seconds": 19.623023,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 19.623023,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:37:23.353797+00:00",
+        "end": "2026-10-11T06:37:51.387802+00:00",
+        "seconds": 28.034005,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 28.034005,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:38:01.353711+00:00",
+        "end": "2026-10-11T06:38:28.932912+00:00",
+        "seconds": 27.579201,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 27.579201,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:38:36.961679+00:00",
+        "end": "2026-10-11T06:38:59.765994+00:00",
+        "seconds": 22.804315,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 22.804315,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:39:06.545936+00:00",
+        "end": "2026-10-11T06:39:36.954596+00:00",
+        "seconds": 30.40866,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 30.40866,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:39:44.986110+00:00",
+        "end": "2026-10-11T06:40:07.045101+00:00",
+        "seconds": 22.058991,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 22.058991,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:40:15.074016+00:00",
+        "end": "2026-10-11T06:40:41.057973+00:00",
+        "seconds": 25.983957,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 25.983957,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:40:49.086757+00:00",
+        "end": "2026-10-11T06:41:18.157585+00:00",
+        "seconds": 29.070828,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 29.070828,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:41:26.186296+00:00",
+        "end": "2026-10-11T06:42:03.975271+00:00",
+        "seconds": 37.788975,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 37.788975,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:42:12.004359+00:00",
+        "end": "2026-10-11T06:42:35.314598+00:00",
+        "seconds": 23.310239,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 23.310239,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:42:44.267653+00:00",
+        "end": "2026-10-11T06:43:07.276045+00:00",
+        "seconds": 23.008392,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 23.008392,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:43:14.054175+00:00",
+        "end": "2026-10-11T06:43:31.045455+00:00",
+        "seconds": 16.99128,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 16.99128,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:46:03.255183+00:00",
+        "end": "2026-10-11T06:46:03.765525+00:00",
+        "seconds": 0.510342,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 0.510342,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:46:10.419388+00:00",
+        "end": "2026-10-11T06:46:11.396643+00:00",
+        "seconds": 0.977255,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 0.977255,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:46:17.408409+00:00",
+        "end": "2026-10-11T06:46:18.838826+00:00",
+        "seconds": 1.430417,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 1.430417,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:48:35.675930+00:00",
+        "end": "2026-10-11T06:48:35.743614+00:00",
+        "seconds": 0.067684,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 0.067684,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:48:42.505790+00:00",
+        "end": "2026-10-11T06:48:45.431514+00:00",
+        "seconds": 2.925724,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 2.925724,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:48:52.956787+00:00",
+        "end": "2026-10-11T06:48:54.131795+00:00",
+        "seconds": 1.175008,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 1.175008,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:49:00.144684+00:00",
+        "end": "2026-10-11T06:49:04.047789+00:00",
+        "seconds": 3.903105,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 3.903105,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:49:10.818360+00:00",
+        "end": "2026-10-11T06:49:11.186110+00:00",
+        "seconds": 0.36775,
+        "kind": "Visible observation read and gameplay deliberation between calls; six seconds of boundary overhead conservatively excluded",
+        "creditedSeconds": 0.36775,
+        "source": "legacy already trimmed; do not subtract boundary again"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:49:59Z",
+        "end": "2026-10-11T06:50:03Z",
+        "creditedSeconds": 4.0,
+        "kind": "read visible tactic rule order and screenshot; deliberate archer versus boss priority",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:50:13Z",
+        "end": "2026-10-11T06:50:14Z",
+        "creditedSeconds": 1.0,
+        "kind": "inspect public rule access after earned Warlord victory",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:50:24Z",
+        "end": "2026-10-11T06:50:36Z",
+        "creditedSeconds": 12.0,
+        "kind": "read locked hero custom rules; compare prospective kit and Legacy spending against hunger",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:51:12Z",
+        "end": "2026-10-11T06:51:17Z",
+        "creditedSeconds": 5.0,
+        "kind": "compare Health +3, Damage +1, Armour +1 costs; choose armour to reduce repeated incoming hits and recovery",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:51:35Z",
+        "end": "2026-10-11T06:51:44Z",
+        "creditedSeconds": 9.0,
+        "kind": "read armour rank confirmation and improved forecast; consider companion outcome from report",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:51:54Z",
+        "end": "2026-10-11T06:51:57Z",
+        "creditedSeconds": 3.0,
+        "kind": "read camp and select companion roster",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:52:14Z",
+        "end": "2026-10-11T06:52:24Z",
+        "creditedSeconds": 10.0,
+        "kind": "read Drak survival and new Vrar guard; consider using caster-specific companion actions",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:53:00Z",
+        "end": "2026-10-11T06:53:06Z",
+        "creditedSeconds": 6.0,
+        "kind": "read companion actions limited to attack, follow and recall; retain attack rather than assume a caster spell",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:53:38Z",
+        "end": "2026-10-11T06:53:39Z",
+        "creditedSeconds": 1.0,
+        "kind": "retain edited retreat priority while leaving companion attack unchanged",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:54:07Z",
+        "end": "2026-10-11T06:54:11Z",
+        "creditedSeconds": 4.0,
+        "kind": "select forge preparation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:54:23Z",
+        "end": "2026-10-11T06:54:27Z",
+        "creditedSeconds": 4.0,
+        "kind": "read forge costs $900 versus $450 pack route; compare armour, damage, accuracy and travel pace",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:54:41Z",
+        "end": "2026-10-11T06:54:43Z",
+        "creditedSeconds": 2.0,
+        "kind": "inspect forge choices through visible controls",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:54:54Z",
+        "end": "2026-10-11T06:54:55Z",
+        "creditedSeconds": 1.0,
+        "kind": "compare spending nearly entire purse on another combat upgrade versus adding pack capacity",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:55:13Z",
+        "end": "2026-10-11T06:55:16Z",
+        "creditedSeconds": 3.0,
+        "kind": "inspect forge confirmation; additional exclusion for infrastructure status message",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:55:27Z",
+        "end": "2026-10-11T06:55:37Z",
+        "creditedSeconds": 10.0,
+        "kind": "read purchased pack increase, unchanged floor forecast, and newly offered apprentice worker",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:56:09Z",
+        "end": "2026-10-11T06:56:21Z",
+        "creditedSeconds": 12.0,
+        "kind": "read one leash restock and potion prices; choose healing to activate Guarded recovery rather than banking whenever no heal remains",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:56:44Z",
+        "end": "2026-10-11T06:56:54Z",
+        "creditedSeconds": 10.0,
+        "kind": "read +38 floor-chance estimate from adding a heal and decide to carry another heal before the next attempt",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:57:24Z",
+        "end": "2026-10-11T06:57:27Z",
+        "creditedSeconds": 3.0,
+        "kind": "send with selected Guarded, archer tactic, armour rank and supplied kit",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:57:58Z",
+        "end": "2026-10-11T06:58:07Z",
+        "creditedSeconds": 9.0,
+        "kind": "read sampled archer and Warlord combat after armour upgrade; note reduced incoming damage and normal speed",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:58:19Z",
+        "end": "2026-10-11T06:58:38Z",
+        "creditedSeconds": 19.0,
+        "kind": "inspect normal-speed combat screenshot, dungeon geometry, corpse and conjurer, hero health and loot at risk",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T06:59:37Z",
+        "end": "2026-10-11T06:59:54Z",
+        "creditedSeconds": 17.0,
+        "kind": "read Guarded resting under gas and repeated attacks; consider safety versus time/hunger before changing stance",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:00:04Z",
+        "end": "2026-10-11T07:00:19Z",
+        "creditedSeconds": 15.0,
+        "kind": "read D12 gas harming wraith and hero, second heal +18, record-secured carry, and initial hunger",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:00:31Z",
+        "end": "2026-10-11T07:00:49Z",
+        "creditedSeconds": 18.0,
+        "kind": "read D12 archer handling, depleted heals and D13 arrival with HP16 and secured $595; assess risk of the safety bank rule",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:01:00Z",
+        "end": "2026-10-11T07:01:23Z",
+        "creditedSeconds": 23.0,
+        "kind": "read D13 continuation, checkpoint $969, and combat/rest behavior; distinguish between-fight recovery from rule text alone",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:01:32Z",
+        "end": "2026-10-11T07:02:06Z",
+        "creditedSeconds": 34.0,
+        "kind": "read repeated ogre/gas encounters and health recovery; consider which persistent upgrade would address later hunger rather than already-small archer hits",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:02:15Z",
+        "end": "2026-10-11T07:02:29Z",
+        "creditedSeconds": 14.0,
+        "kind": "read new D14 skeleton/ghoul swarm, repeated heal consumption, and hero at 5HP with secured $1422",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:02:38Z",
+        "end": "2026-10-11T07:03:02Z",
+        "creditedSeconds": 24.0,
+        "kind": "inspect first true death screenshot: Niall fell to ghoul D14 at1/40HP, new best and retained town gold",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:03:14Z",
+        "end": "2026-10-11T07:03:16Z",
+        "creditedSeconds": 2.0,
+        "kind": "inspect ghoul death details opened from banner",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:03:26Z",
+        "end": "2026-10-11T07:03:29Z",
+        "creditedSeconds": 3.0,
+        "kind": "read first death cause and available fix/trace affordance; distinguish replay from explanation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:03:49Z",
+        "end": "2026-10-11T07:03:53Z",
+        "creditedSeconds": 4.0,
+        "kind": "inspect replay overlay and return to the death explanation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:04:15Z",
+        "end": "2026-10-11T07:04:18Z",
+        "creditedSeconds": 3.0,
+        "kind": "close replay overlay to inspect death trace",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:04:46Z",
+        "end": "2026-10-11T07:05:34Z",
+        "creditedSeconds": 48.0,
+        "kind": "read full first death trace: ghoul paralysis, blocked bank/return, no heal item, kite card idle; consider proactive crowd handling instead of below-bar retreat patch",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:05:44Z",
+        "end": "2026-10-11T07:05:49Z",
+        "creditedSeconds": 5.0,
+        "kind": "select town after first death",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:05:59Z",
+        "end": "2026-10-11T07:06:01Z",
+        "creditedSeconds": 2.0,
+        "kind": "read death affordances and go to town to try the earned pen",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:06:09Z",
+        "end": "2026-10-11T07:06:16Z",
+        "creditedSeconds": 7.0,
+        "kind": "use the visible town gem on death screen",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:06:36Z",
+        "end": "2026-10-11T07:06:39Z",
+        "creditedSeconds": 3.0,
+        "kind": "inspect town after first death and new heir/pen availability",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:06:49Z",
+        "end": "2026-10-11T07:07:09Z",
+        "creditedSeconds": 20.0,
+        "kind": "read new heir Orin, crypt route, high death forecast, and now-visible edit control after Mother slain/first death",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:07:18Z",
+        "end": "2026-10-11T07:07:21Z",
+        "creditedSeconds": 3.0,
+        "kind": "inspect earned hero rule editor for proactive anti-pack policy",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:07:31Z",
+        "end": "2026-10-11T07:07:37Z",
+        "creditedSeconds": 6.0,
+        "kind": "read four earned custom rule slots alongside nine tactic rows and choose to add a crowd-response row",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:07:48Z",
+        "end": "2026-10-11T07:07:49Z",
+        "creditedSeconds": 1.0,
+        "kind": "inspect editable versus tactic-provided rows and create a custom row",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:07:59Z",
+        "end": "2026-10-11T07:08:07Z",
+        "creditedSeconds": 8.0,
+        "kind": "inspect newly created custom hero rule and its priority",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:08:18Z",
+        "end": "2026-10-11T07:08:23Z",
+        "creditedSeconds": 5.0,
+        "kind": "read custom row default hp<50 attack lowest above packages; change its trigger to proactive pack size",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:08:35Z",
+        "end": "2026-10-11T07:08:36Z",
+        "creditedSeconds": 1.0,
+        "kind": "inspect condition vocabulary for crowd handling",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:08:46Z",
+        "end": "2026-10-11T07:08:53Z",
+        "creditedSeconds": 7.0,
+        "kind": "read learned pack/paralyse traits and available foe count condition; choose a general crowd trigger rather than only a named monster",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:09:02Z",
+        "end": "2026-10-11T07:09:03Z",
+        "creditedSeconds": 1.0,
+        "kind": "inspect foe-count parameter choices",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:09:15Z",
+        "end": "2026-10-11T07:09:17Z",
+        "creditedSeconds": 2.0,
+        "kind": "choose crowd trigger at three foes, early enough to avoid four-ghoul surround",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:09:36Z",
+        "end": "2026-10-11T07:09:43Z",
+        "creditedSeconds": 7.0,
+        "kind": "select visible three-foe parameter in the condition chooser",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:09:53Z",
+        "end": "2026-10-11T07:09:57Z",
+        "creditedSeconds": 4.0,
+        "kind": "verify the edited crowd condition before choosing an action",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:10:07Z",
+        "end": "2026-10-11T07:10:29Z",
+        "creditedSeconds": 22.0,
+        "kind": "verify condition still unchanged, close accidentally opened forge, reopen crowd trigger chooser",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:10:46Z",
+        "end": "2026-10-11T07:10:49Z",
+        "creditedSeconds": 3.0,
+        "kind": "choose the condition chooser's visible three-foe parameter",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:11:05Z",
+        "end": "2026-10-11T07:11:38Z",
+        "creditedSeconds": 33.0,
+        "kind": "read available to corridor, cleave, shield bash and target-trait actions; choose proactive crowd positioning while planning earlier healing",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:11:53Z",
+        "end": "2026-10-11T07:12:17Z",
+        "creditedSeconds": 24.0,
+        "kind": "inspect first custom corridor row screenshot and add an earlier healing safeguard to keep custom crowd response from displacing healing",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:12:31Z",
+        "end": "2026-10-11T07:12:45Z",
+        "creditedSeconds": 14.0,
+        "kind": "configure second custom row to heal at50% and place it before corridor response",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:13:07Z",
+        "end": "2026-10-11T07:13:32Z",
+        "creditedSeconds": 25.0,
+        "kind": "verify earlier heal now outranks corridor and shadows packaged heal; plan adjacent-foe cleave as crowd damage fallback",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:14:03Z",
+        "end": "2026-10-11T07:14:15Z",
+        "creditedSeconds": 12.0,
+        "kind": "verify editor changed the corridor trigger rather than the new cleave trigger; correct both visible custom conditions",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:15:14Z",
+        "end": "2026-10-11T07:15:37Z",
+        "creditedSeconds": 23.0,
+        "kind": "read verified three-row configuration; exclude timing administration",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:16:12Z",
+        "end": "2026-10-11T07:16:46Z",
+        "creditedSeconds": 34.0,
+        "kind": "read Keeper/Armourer prerequisites and Apprentice offer; choose paid forge automation over another wholly manual purchase",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:16:59Z",
+        "end": "2026-10-11T07:17:16Z",
+        "creditedSeconds": 17.0,
+        "kind": "read paid apprentice hire and projected full-haul change; inspect town's take-two reward affordance",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:17:30Z",
+        "end": "2026-10-11T07:17:59Z",
+        "creditedSeconds": 29.0,
+        "kind": "inspect companions after Drak's recorded death before choosing Orin's next run partner",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:18:12Z",
+        "end": "2026-10-11T07:18:36Z",
+        "creditedSeconds": 24.0,
+        "kind": "read roster retaining Drak and adding heavy/telegraph Guard Drul32HP; choose the sturdier guard for the crypt crowd problem",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:18:52Z",
+        "end": "2026-10-11T07:19:24Z",
+        "creditedSeconds": 32.0,
+        "kind": "read guard role description and forecast change, defer kennel-hand expense to preserve forge budget, send Orin with authored crowd rules",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:19:39Z",
+        "end": "2026-10-11T07:20:21Z",
+        "creditedSeconds": 42.0,
+        "kind": "read Orin's first run log with authored cleave and corridor callouts, guard-directed attacks, and full HP after safe floors",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:20:30Z",
+        "end": "2026-10-11T07:21:24Z",
+        "creditedSeconds": 54,
+        "kind": "read corridor firing repeatedly against conjurer/spectral blades and Warlord Enraged; assess loss of boss visibility versus crowd safety",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:21:41Z",
+        "end": "2026-10-11T07:22:35Z",
+        "creditedSeconds": 54,
+        "kind": "read Armoured Mother, repeated authored HP47/26% heal calls, hunger-reduced19 maxHP and low-health attempted homeward exit",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:22:53Z",
+        "end": "2026-10-11T07:23:40Z",
+        "creditedSeconds": 47.0,
+        "kind": "read Orin's Mother-gas death, lost pack $344, new boss try bonus and five available fixes",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:23:57Z",
+        "end": "2026-10-11T07:24:35Z",
+        "creditedSeconds": 38.0,
+        "kind": "read second death trace and all five fixes; choose last-chance unknown scrolls over retreating early because the safer patch sacrifices Mother reach",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:24:50Z",
+        "end": "2026-10-11T07:24:55Z",
+        "creditedSeconds": 5.0,
+        "kind": "review selected 9/12 survival scroll fix before applying it to the next heir",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:25:29Z",
+        "end": "2026-10-11T07:26:23Z",
+        "creditedSeconds": 54,
+        "kind": "read confirmed fourth scroll contingency, heir/route forecasts and deliberate next risk; status administration excluded",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:27:43Z",
+        "end": "2026-10-11T07:28:10Z",
+        "creditedSeconds": 27.0,
+        "kind": "read Savings plot locked behind a night's purse; inspect Recovery upgrades to address hunger/recovery loss",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:28:25Z",
+        "end": "2026-10-11T07:28:29Z",
+        "creditedSeconds": 4.0,
+        "kind": "leave locked Savings plot and inspect hero Recovery alternatives",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:28:49Z",
+        "end": "2026-10-11T07:29:12Z",
+        "creditedSeconds": 23.0,
+        "kind": "read Recovery's later700/1800 Legacy alternatives; choose current Damage+1 instead of Health+3 because Mother's last fight dealt93 before gas exhaustion",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:29:27Z",
+        "end": "2026-10-11T07:30:21Z",
+        "creditedSeconds": 54,
+        "kind": "read Damage rank1 confirmation and changed crypt estimates; send Petra to test scroll fallback and stronger attacks",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:30:53Z",
+        "end": "2026-10-11T07:31:45Z",
+        "creditedSeconds": 52.0,
+        "kind": "read Petra's swift safe-floor haul and increased attack damage after Legacy purchase; compare this heir's start to Orin's",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:34:57Z",
+        "end": "2026-10-11T07:35:08Z",
+        "creditedSeconds": 11.0,
+        "kind": "read Petra full-haul D9 report: no-heals bank, pet DPS, class XP and loot; consider safety row limiting crypt attempts",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:35:29Z",
+        "end": "2026-10-11T07:35:30Z",
+        "creditedSeconds": 1.0,
+        "kind": "read Petra camp forecast and locked no-heal banking row; seek public package choice to permit a riskier crypt test",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:35:42Z",
+        "end": "2026-10-11T07:35:43Z",
+        "creditedSeconds": 1.0,
+        "kind": "read package GuardedL1 upgrades and personality traits; inspect alternative combat styles before replacing safety policy",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:36:03Z",
+        "end": "2026-10-11T07:36:05Z",
+        "creditedSeconds": 2.0,
+        "kind": "compare available styles limited to Steady versus Guarded; choose Steady while retaining authored early-heal and crowd rows to test banking behavior",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:36:21Z",
+        "end": "2026-10-11T07:36:30Z",
+        "creditedSeconds": 9.0,
+        "kind": "read Steady worsens Mother38to0 forecast and retains no-heal bank at40%; reject style change and plan another healing supply instead",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:36:56Z",
+        "end": "2026-10-11T07:36:57Z",
+        "creditedSeconds": 1.0,
+        "kind": "read carried two heals and leash with one free slot; plan a third heal rather than speculative combat consumable",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:37:07Z",
+        "end": "2026-10-11T07:37:11Z",
+        "creditedSeconds": 4.0,
+        "kind": "inspect public supply purchase controls and confirm third heal costs26 within four-slot pack",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:37:31Z",
+        "end": "2026-10-11T07:37:33Z",
+        "creditedSeconds": 2.0,
+        "kind": "read third heal purchase and uncertain sampled forecast; choose available HealthI to improve starting and hunger-reduced HP",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:38:25Z",
+        "end": "2026-10-11T07:38:39Z",
+        "creditedSeconds": 14.0,
+        "kind": "inspect Petra normal screenshot: stone halls, torch, knight/archer, attack icons, crowd geometry and oversized manual-control panel; assess companion visibility",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:38:57Z",
+        "end": "2026-10-11T07:39:03Z",
+        "creditedSeconds": 6.0,
+        "kind": "read Warlord kill and Drul monkey intercepts; observe authored corridor NO PATH and packaged rest NOT SAFE feedback with fallback attacks",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:39:13Z",
+        "end": "2026-10-11T07:39:25Z",
+        "creditedSeconds": 12.0,
+        "kind": "read Petra full-health but hunger-lowered31HP atD12, Drul sustaining wraith attacks, and450 ration promising15HP; choose ration before Mother",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:39:55Z",
+        "end": "2026-10-11T07:39:56Z",
+        "creditedSeconds": 1.0,
+        "kind": "read worsening hunger atD12 from31to16maxHP, gas repeatedly hitting despite armour, and ration purchase confirmation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:40:11Z",
+        "end": "2026-10-11T07:40:13Z",
+        "creditedSeconds": 2.0,
+        "kind": "read ration purchase450 and packed15HP while Petra entersD13 at13/18; observe whether improved food reserve prevents Mother's previous gas death",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:40:31Z",
+        "end": "2026-10-11T07:40:52Z",
+        "creditedSeconds": 21.0,
+        "kind": "read D13 ogre fight and14/18HP; compare last Mother death against current food, heals and newly applied unknown-scroll contingency",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:41:02Z",
+        "end": "2026-10-11T07:41:14Z",
+        "creditedSeconds": 12.0,
+        "kind": "read Petra near-death Mother fight: own unknown-scroll row first enchants then recalls, banks584at3/18HP; inspect axe2 keep decision and contrast with Orin's gas death",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:41:31Z",
+        "end": "2026-10-11T07:41:34Z",
+        "creditedSeconds": 3.0,
+        "kind": "read recall run result624gold and FighterL4 unlock; prepare camp changes to address gas while preserving successful scroll contingency",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:42:02Z",
+        "end": "2026-10-11T07:42:23Z",
+        "creditedSeconds": 21.0,
+        "kind": "read FighterL4 and ration forecasts liftingD15 chance88%; recognize take2 is1575 forge confirmation, defer it to observe hired Apprentice and choose Keeper automation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:42:37Z",
+        "end": "2026-10-11T07:42:39Z",
+        "creditedSeconds": 2.0,
+        "kind": "read Keeper sorts finds never asks, completed2sorts prerequisites, and existing quartermaster/porter/scout/apprentice; purchase automation to remove next-run keep dialog",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:42:54Z",
+        "end": "2026-10-11T07:43:14Z",
+        "creditedSeconds": 20.0,
+        "kind": "read Keeper hire450 and remaining1233; plan a fifth authored fire response for Mother's visible throw-fire counter instead of more armour against gas",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:43:55Z",
+        "end": "2026-10-11T07:43:56Z",
+        "creditedSeconds": 1.0,
+        "kind": "read three public unlock purchases; use plentiful48tokens for fifth custom slot and throw action while reserving1233gold for town automation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:44:43Z",
+        "end": "2026-10-11T07:44:46Z",
+        "creditedSeconds": 3.0,
+        "kind": "verify purchased fifth rule slot4/5 and45tokens; reopen throw-action unlock",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:45:36Z",
+        "end": "2026-10-11T07:45:50Z",
+        "creditedSeconds": 14.0,
+        "kind": "read throw unlock costs3tokens and add-row control; plan boss plus depth13 trigger to conserve fire through the earlier Warlord",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:46:13Z",
+        "end": "2026-10-11T07:46:18Z",
+        "creditedSeconds": 5.0,
+        "kind": "read expanded condition vocabulary including boss/gas, depth, known consumables and locked facts; choose boss trigger for a reserved Mother fire response",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:46:42Z",
+        "end": "2026-10-11T07:46:50Z",
+        "creditedSeconds": 8.0,
+        "kind": "read depth parameter2\u201316 and forecast warning from unfinished attack-lowest row; complete depth13 and fire action before sending",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:47:10Z",
+        "end": "2026-10-11T07:47:27Z",
+        "creditedSeconds": 17.0,
+        "kind": "read throwfire action alongside fire-at-feet and unknowns; place boss-depth13 fire response before crowd movement while keeping healing and recall first",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:48:05Z",
+        "end": "2026-10-11T07:48:12Z",
+        "creditedSeconds": 7.0,
+        "kind": "verify fifth authored boss-depth13 throw-fire row atpriority3; read carried leash plus three heals and choose to replace leash with fire for this attempt",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:49:05Z",
+        "end": "2026-10-11T07:49:06Z",
+        "creditedSeconds": 1.0,
+        "kind": "read Petra third run45maxHP atL4, Normal mode and rest/gas behavior with newly supplied fire",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:49:48Z",
+        "end": "2026-10-11T07:50:12Z",
+        "creditedSeconds": 24.0,
+        "kind": "read third Petra Warlord and ogre fight at35/45HP; compare unbuffed attack9 versus earlier potion13 and notice no named Drul callouts",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:50:38Z",
+        "end": "2026-10-11T07:50:44Z",
+        "creditedSeconds": 6.0,
+        "kind": "read live-town camp duringD13 combat and next-send supply indicator; inspect companion state without assuming mid-run changes apply",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:51:00Z",
+        "end": "2026-10-11T07:51:12Z",
+        "creditedSeconds": 12.0,
+        "kind": "read companion roster showing active Drul32/32 despite absent recent callouts; avoid inferring death from log silence and return to live Mother fight",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:51:55Z",
+        "end": "2026-10-11T07:52:14Z",
+        "creditedSeconds": 19.0,
+        "kind": "read returned watch atD13 with39/40HP and ogre telegraph; compare food reserve on third Petra run against previous18maxHP",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:52:35Z",
+        "end": "2026-10-11T07:52:45Z",
+        "creditedSeconds": 10.0,
+        "kind": "read Petra reachesCryptD14 at42/45HP, auto-identifies enchant and strength, fires authored cleave against spectral blades; anticipate previous ghoul pack wall",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:52:55Z",
+        "end": "2026-10-11T07:53:21Z",
+        "creditedSeconds": 26.0,
+        "kind": "inspect Crypt screenshot's blue stone, tombstones, bone remains, cleave sparks and hero health; observe visual biome change and prepare for the earlier ghoul wall",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:53:32Z",
+        "end": "2026-10-11T07:53:57Z",
+        "creditedSeconds": 25.0,
+        "kind": "read Petra kills named grudge Vrog atD14 then reachesrecordD15 and permanently secures464; distinguish visible revenge callback from unproven causal role of custom rows",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:54:17Z",
+        "end": "2026-10-11T07:54:37Z",
+        "creditedSeconds": 20.0,
+        "kind": "read D16 full45HP, carry1566 secured1003 and repeat450 ration offer; note food effects are not yet clearly explained and choose reserve for continuing record push",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:55:02Z",
+        "end": "2026-10-11T07:55:25Z",
+        "creditedSeconds": 23.0,
+        "kind": "read D17 new checkpoint secured1598 of2223, potion/enchant-supported attacks16 and ration packed13HP; assess carried-risk versus already-secured gold",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:55:40Z",
+        "end": "2026-10-11T07:56:02Z",
+        "creditedSeconds": 22.0,
+        "kind": "read new D18 checkpoint2256, corridor and cleave responding to spectral blades/ghoul packs, and food keeping max44 despite accumulating starvation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:56:26Z",
+        "end": "2026-10-11T07:56:50Z",
+        "creditedSeconds": 24.0,
+        "kind": "read D18 jackal and ghoul packs: corridor creates separation and cleave damages two foes, while most hits block; compare this durable Petra build to Niall's paralysis death",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:57:03Z",
+        "end": "2026-10-11T07:57:25Z",
+        "creditedSeconds": 22.0,
+        "kind": "read first LichSwift encounter and ATTACK SUMMONED counter; observe own boss-fire row throws at nearest skeleton and also hurts Petra, so avoid claiming a clean Mother-targeted fire outcome",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:57:40Z",
+        "end": "2026-10-11T07:58:02Z",
+        "creditedSeconds": 22.0,
+        "kind": "inspect intended Lich shot already showingD19 Foundry, smith/sentinel and red metal halls; recognize Lich passed during buffered capture and retain only inspected visible outcome",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:58:21Z",
+        "end": "2026-10-11T07:58:44Z",
+        "creditedSeconds": 23.0,
+        "kind": "read FoundryD20 new smith, bell sentinel, slag crawler and forge imp behavior; observe3751 secured gold while town wallet remains787 and assess escalating carry versus survival",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:58:56Z",
+        "end": "2026-10-11T07:59:20Z",
+        "creditedSeconds": 24.0,
+        "kind": "read Foundry alert8/8 and repeated summon/sentinel fighting at44/45HP; deliberate whether a future alert-based exit rule would reduce extended exposure while preserving checkpoint gold",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T07:59:42Z",
+        "end": "2026-10-11T08:00:14Z",
+        "creditedSeconds": 32.0,
+        "kind": "read D21 Foundry fire harming foes, checkpoint4564 of5514, and available recall; deliberate next return's pending run versus secured town resources",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "cold",
+        "start": "2026-10-11T08:00:45Z",
+        "end": "2026-10-11T08:00:56Z",
+        "creditedSeconds": 11.0,
+        "kind": "read D22 bell warning, lastD21 gas burst and22HP heal, secured5550; extra6s exclusion for received navigation infrastructure message",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:01:35Z",
+        "end": "2026-10-11T08:01:58Z",
+        "creditedSeconds": 23.0,
+        "kind": "read first20m return screenshot: D31newbest,20017gold, three boss kills, Motherfell2tries and sleeper blanket; choose to inspect unseen Lurker Queen kill",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:02:19Z",
+        "end": "2026-10-11T08:02:52Z",
+        "creditedSeconds": 33.0,
+        "kind": "inspect LurkerQueen kill reel: crowded purple foes, drink cue and Queen-listens behavior; read retained boss portraits and consider return reward options",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:03:15Z",
+        "end": "2026-10-11T08:03:42Z",
+        "creditedSeconds": 27.0,
+        "kind": "read full20m report: D31 collected19957, fiveheals/twofire, Drul served three heirs, Motherbane line, bones recovered and warden6HP bank; distinguish no death this run",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:03:53Z",
+        "end": "2026-10-11T08:04:10Z",
+        "creditedSeconds": 17.0,
+        "kind": "read earned return choices and new tactics; choose Legacy reward and inspect mirror-read tactic for newly seen reflect-melee warden wall",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:04:35Z",
+        "end": "2026-10-11T08:04:54Z",
+        "creditedSeconds": 19.0,
+        "kind": "read mirror-read description shoot or burn reflectors never melee, earned second tactic slot and27Legacy reward; choose it for the new warden rather than obsolete gas wall",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:05:24Z",
+        "end": "2026-10-11T08:05:58Z",
+        "creditedSeconds": 34.0,
+        "kind": "read after-return configuration: mirror card includes shoot, throw-fire boss, adjacent attack-nearest and retreat; observe D32forecast50% and red death+50 while purse20726 permits new workers",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:06:10Z",
+        "end": "2026-10-11T08:06:36Z",
+        "creditedSeconds": 26.0,
+        "kind": "read kennel-hand fields best pets with2/2fielded requirement; buy675 automation before four-hour return, retaining mirror tactic as a test of the new reflect wall",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:06:48Z",
+        "end": "2026-10-11T08:06:55Z",
+        "creditedSeconds": 7.0,
+        "kind": "read paid kennel-hand confirmation and earned-looking Lich/rest reward affordances; inspect the town crier before claiming or changing next run",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:07:07Z",
+        "end": "2026-10-11T08:07:29Z",
+        "creditedSeconds": 22.0,
+        "kind": "read hero diary celebrating three boss kills, two-try Mother and Motherbane line; recognize crier+5 counts diary entries and inspect the optional rest wish",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:07:46Z",
+        "end": "2026-10-11T08:08:02Z",
+        "creditedSeconds": 16.0,
+        "kind": "read rest wish requires437 confirmation rather than free reward; choose affordable paid rest benefit to test recovery before four-hour absence",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:08:15Z",
+        "end": "2026-10-11T08:08:26Z",
+        "creditedSeconds": 11.0,
+        "kind": "read rest wish result437spent, Legacy27to29 and unchangedD32forecast; correct earlier expectation of a recovery bonus and prepare the four-hour absence",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:08:55Z",
+        "end": "2026-10-11T08:09:09Z",
+        "creditedSeconds": 14.0,
+        "kind": "read stored axe3, one-slot capacity and keep-for-heirs choices; inspect how wearing stored gear differs from merely retaining it",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:09:24Z",
+        "end": "2026-10-11T08:09:40Z",
+        "creditedSeconds": 16.0,
+        "kind": "read selected axe3 warning and75 insurance offer; insure the earned enchanted weapon before unattended runs rather than infer stored means insured",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:10:03Z",
+        "end": "2026-10-11T08:10:06Z",
+        "creditedSeconds": 3.0,
+        "kind": "read unchanged19614purse after insurance click, so insurance not confirmed; exclude status-message handling and prepare final insurance check",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:10:35Z",
+        "end": "2026-10-11T08:10:44Z",
+        "creditedSeconds": 9.0,
+        "kind": "verify axe3 remains uninsured with75 offer; inspect the purchase confirmation rather than claim payment from click success",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:11:17Z",
+        "end": "2026-10-11T08:11:24Z",
+        "creditedSeconds": 7.0,
+        "kind": "verify actual75 insurance payment and new Armourer225 offer; choose paid equipment automation to preserve and field finds across four-hour absence",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return20m",
+        "start": "2026-10-11T08:11:43Z",
+        "end": "2026-10-11T08:12:04Z",
+        "creditedSeconds": 21.0,
+        "kind": "inspect final20m town screenshot confirming19314gold afterArmourer225 hire, nextDrillmaster0/2or30h, restingPetra and insured gear; leave scout to handle the next absence",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:12:57Z",
+        "end": "2026-10-11T08:13:21Z",
+        "creditedSeconds": 24.0,
+        "kind": "read four-hour return screenshot: two runs, one died,D28,4223earned but9000worker spending, FighterL5 and Queenfell2tries; inspect death and automatic purchases",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:13:34Z",
+        "end": "2026-10-11T08:13:58Z",
+        "creditedSeconds": 24.0,
+        "kind": "read four-hour detailed report: apprentice6steps9000, GuardedL2earned, Quillnextheir, Petra diedlurkerD28 then bones1373recovered; open third actual death verdict",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:14:13Z",
+        "end": "2026-10-11T08:14:26Z",
+        "creditedSeconds": 13.0,
+        "kind": "read third true death: Petra1/45HP killedbyQueen-summonedlurkerD28, pack1373, no silence left, suggested quietsteps replacingmirrorread; inspect fulltrace and fixes",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:14:40Z",
+        "end": "2026-10-11T08:15:05Z",
+        "creditedSeconds": 25.0,
+        "kind": "read third death fulltrace:11lurkers, confusion, no corridor path/heal/unknown/fire; choose silence39 patch10/12 survival with lower per-run death over retreat trade-offs that stopD29progress",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:15:25Z",
+        "end": "2026-10-11T08:15:38Z",
+        "creditedSeconds": 13.0,
+        "kind": "read explicit drop-choice dialog after39 silence purchase; replace custom boss-fire row, preserving earlyheal/unknown/corridor/cleave, then verify new policy",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:16:00Z",
+        "end": "2026-10-11T08:16:22Z",
+        "creditedSeconds": 22.0,
+        "kind": "verify applied silence row nowpriority1 replacingbossfire, new QuillGhost withGuardedL2 and6supplies; refine silence trigger toQueen depth to avoid spending sole scroll onWarlord",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:16:42Z",
+        "end": "2026-10-11T08:17:09Z",
+        "creditedSeconds": 27.0,
+        "kind": "read depth chooser nowextends33; reserve silence forQueen at28 rather thanWarlord8, while Scout departure countdown reaches36s",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:20:47Z",
+        "end": "2026-10-11T08:20:54Z",
+        "creditedSeconds": 7.0,
+        "kind": "inspect4hconfiguration screenshot once: QuillGhost L5, silence depth28 priority1, watchauto D2, floorQueen75 andD32same feedback",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:21:05Z",
+        "end": "2026-10-11T08:21:09Z",
+        "creditedSeconds": 4.0,
+        "kind": "read liveQuillD18 full43HP aftercampwatch; inspectspeed choices tofollowLich fight atNormal",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:21:26Z",
+        "end": "2026-10-11T08:21:30Z",
+        "creditedSeconds": 4.0,
+        "kind": "readD21\u201323 eventtrace/quiet4x, plentifulblocksand18\u201321damage; starvation\u221244 andration19HP875; Normalopenedactuallowercasechoice",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:21:54Z",
+        "end": "2026-10-11T08:22:12Z",
+        "creditedSeconds": 18.0,
+        "kind": "inspectNormal1x QuillMasterdownD23shot once; headinghome17/50starving44, rationpacked19HP875paid; sceneorange/metalfoes, manualcontrol paneloccupieslargephonearea",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:22:26Z",
+        "end": "2026-10-11T08:22:36Z",
+        "creditedSeconds": 10.0,
+        "kind": "readQuillreport1runD23gold1206Legacy+1, no death; weighs drillkite+10runs vsLegacy+6 vsdiscountpack7 againstalready6slots and875ration cost",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:22:48Z",
+        "end": "2026-10-11T08:22:57Z",
+        "creditedSeconds": 9.0,
+        "kind": "readexpandedQuillD23report: noheals collected100%1168, heal5/strength3/enchant1, axe8kept, silence2salvaged6; 6032damage390rest+59regen+21pet, thievesstole6andSword, ClassXP1293",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:23:18Z",
+        "end": "2026-10-11T08:23:32Z",
+        "creditedSeconds": 14.0,
+        "kind": "readtactics andGhost forecastdropQueen38/32floor13 despiteaxe8, GuardedL2learned, current96tokens; considersmanualGuarded3telegraphheal andkite2 tostrengthen andearnDrillmaster2levels",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:23:47Z",
+        "end": "2026-10-11T08:23:51Z",
+        "creditedSeconds": 4.0,
+        "kind": "inspectupgradeconfirmationdidnotspend: Guardedstill2kite1tokens96, kiteok2armed; realizesclickanotheroptioncancelledGuardedconfirmation",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:24:23Z",
+        "end": "2026-10-11T08:24:28Z",
+        "creditedSeconds": 5.0,
+        "kind": "verifyGuarded3 andkite2 spent5tokens91, newtelegraphhealrow, Queenforecast38\u219250butD32same13; Drillmasternowearned675 vs24hpreviouslock",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:24:46Z",
+        "end": "2026-10-11T08:25:02Z",
+        "creditedSeconds": 16.0,
+        "kind": "readworkers/unlocks: earnedDrillmaster2/2levels675automatesstance, Herald4502swaps optional, Motherdrilledslot andnightpurseBankstillfuture; choosesDrillmaster",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:25:33Z",
+        "end": "2026-10-11T08:25:49Z",
+        "creditedSeconds": 16.0,
+        "kind": "readnextpackfire+silence+3heals5/6, Restockheld143; hire675 confirmed11942; usesextra6thslotheal becauseD23exitandQueenlossbothhealexhaustion, reservesilence28",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:26:12Z",
+        "end": "2026-10-11T08:26:30Z",
+        "creditedSeconds": 18.0,
+        "kind": "inspectfinal4hcamp image once: integratedpixel town litbuildings, Ghost portrait samebloodline, Queenbanebanner, sixsuppliesheld169; forecastQueen63,D3225butBUYD32same stalecomparison",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return4h",
+        "start": "2026-10-11T08:26:43Z",
+        "end": "2026-10-11T08:27:02Z",
+        "creditedSeconds": 19.0,
+        "kind": "readQuesthomeD9done1001done and re-evaluate17priorities: customcleave/corridor abovebossdrill/mirrorcanconsumeactions; silence28 priority1 shouldcounterQueenbeforeconfusion, deliberatelyleavefor8hreturntest",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:28:12Z",
+        "end": "2026-10-11T08:28:29Z",
+        "creditedSeconds": 17.0,
+        "kind": "read8hexpandedreport4runs1diedbest33gold13121net6048, Kingline1try100 andwaydownslain conflictsreelKingdeath; Drillmaster9levelsGuarded5and2more, mirror4%firedsilence6heal25",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:28:45Z",
+        "end": "2026-10-11T08:28:51Z",
+        "creditedSeconds": 6.0,
+        "kind": "readQuilltrueKingdeathD33at9/50lost2147, +7Legacytry1+2%, return25neverfired; confirmsreportKingslainlinecannottrustasvictory; pendingfixmeasuring",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:29:09Z",
+        "end": "2026-10-11T08:29:27Z",
+        "creditedSeconds": 18.0,
+        "kind": "readQuillKing5sdeathtrace50\u219231\u21929\u21920 mirror19/22/15, bossattackabovecounter, ownsilenceoncefired; fixesreturn70saves10/12butD14reach0, chooseslearnedMirror rhythmratherthanescalatebail",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:29:43Z",
+        "end": "2026-10-11T08:30:10Z",
+        "creditedSeconds": 27.0,
+        "kind": "verifypublicrecommendationimmediatelyinstalledMirror rhythm replacingmirrorread: mirrorHP45cadenceattack/bash/cleave/fire/hold abovebossdrill, newRookL6sameGhost; forecastQueen25king<13, packagecounterlearnedfromactualdeath",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:30:24Z",
+        "end": "2026-10-11T08:30:50Z",
+        "creditedSeconds": 26.0,
+        "kind": "readGuarded5kite5Mirrorrhythm1, cadence alternates belowcustomcleave, Quillfirstmirrorhit19leaves62%aboveheal50andtelegraph60; designsdeepKinghp70healrule preservingearlyunknownrecallstory",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:32:04Z",
+        "end": "2026-10-11T08:32:08Z",
+        "creditedSeconds": 4.0,
+        "kind": "inspectexpandedMore menu publicunlocks/enemyguide; lastcustomrowdowndisabledpackagesfixedbelowpen, so cannotmoveowncleave belowMirror; choosesextraKinghealslot",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:32:40Z",
+        "end": "2026-10-11T08:32:50Z",
+        "creditedSeconds": 10.0,
+        "kind": "readearnedunlocks6thrule4tokensor1125, throwowned/reflectowned/cadenceowned(add); chooses4tokenpurchase forKingonlyhealbefore62%fatalreflection",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:33:04Z",
+        "end": "2026-10-11T08:33:12Z",
+        "creditedSeconds": 8.0,
+        "kind": "readslotpurchaseconfirmrows5\u21926cost4tokenscash1125next5/2250; chooses tokens insteadcash to preservefutureforge andcounterbudget",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:33:28Z",
+        "end": "2026-10-11T08:33:34Z",
+        "creditedSeconds": 6.0,
+        "kind": "verify4tokenpurchase59and5/6slot, nextslotrequiresfill; prepnewKinghealingrow independently fromgenericreturn70 recommendedavoidance",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:34:16Z",
+        "end": "2026-10-11T08:34:27Z",
+        "creditedSeconds": 11.0,
+        "kind": "readconditionpicker broadlearnedtaxonomy/lockedfacts; newdefault50attacklowest changesforecast fullhaul75\u219213 temporarily; choosesquick75% forKingheal tocover62% afterfirst19damage",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:35:02Z",
+        "end": "2026-10-11T08:35:12Z",
+        "creditedSeconds": 10.0,
+        "kind": "inspectintermediateheal75forecastD19drops75\u219238, so binddepth33 toavoidearlysuppliesburn; chooserlearneddepth2\u201335 permitsKing-onlylateheal",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:35:52Z",
+        "end": "2026-10-11T08:36:13Z",
+        "creditedSeconds": 21.0,
+        "kind": "verifycompleted6thauthoredrulehp75depth33healpriority2 andreturnearlyforecastrestoredafterremovinggeneric75, mirrorscadencebelowcustom; preparespublicLegacyupgradebody ratherthanavoidKing",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:36:31Z",
+        "end": "2026-10-11T08:36:51Z",
+        "creditedSeconds": 20.0,
+        "kind": "readRookLegacy71bodypathSentinelL10lockedand6sRiposte, healthrank2next110tooexpensive, damage/armourrank1next40each; choosesarmour40 tocounter19/22mirrorhits ratherthanpush reflecteddamage",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:37:09Z",
+        "end": "2026-10-11T08:37:14Z",
+        "creditedSeconds": 5.0,
+        "kind": "verifyArmourIIspent40Legacy31rank2+2, next110; forecastD1825improves andD33now13, sentinelstillL10locked",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:38:06Z",
+        "end": "2026-10-11T08:38:13Z",
+        "creditedSeconds": 7.0,
+        "kind": "readcheckinchoiceLegacy9/skittish16runs/discountedge2160; choosingLegacy9brings31\u219240toaffordDamageII, whileforgedaxe8inherited andcadencecontrolsrepeats",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:38:42Z",
+        "end": "2026-10-11T08:39:02Z",
+        "creditedSeconds": 20.0,
+        "kind": "verifycheckin9andDamageII40Legacy0, Mirrortrainingauto14tokens59\u219245, forecastKing13\u219250/+38 and THIS CHANGE0\u219250; rank2allthreebodyupgrades, choosesRooktrialmanualsend",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:39:23Z",
+        "end": "2026-10-11T08:39:48Z",
+        "creditedSeconds": 25.0,
+        "kind": "inspect8hconfigurationimageonce: RookGhostL6, savedfighter6rules, upgradeD33+38, noLegacy and45tokens; fourgravesQueenbanebanner, optionalLichtrialheldwithoutoptin",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:40:08Z",
+        "end": "2026-10-11T08:40:34Z",
+        "creditedSeconds": 26.0,
+        "kind": "verify6packexactfire+foundsilencefree+4healsheld130, keepsQueenreservedcounterandKingcadencefire; considersPack7fifthhealbeforeKing afterQuillhealed6only in5sfight",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:40:58Z",
+        "end": "2026-10-11T08:41:11Z",
+        "creditedSeconds": 13.0,
+        "kind": "readForgeforksSword4aim4orEdge2cost3600, Mail2orPace8cost4950, Pack7cost3600; preferscapacityforheals/silence/fire overweaponSwordunusedinsuredaxe8",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:41:26Z",
+        "end": "2026-10-11T08:41:52Z",
+        "creditedSeconds": 26.0,
+        "kind": "verifyPack7paid3600wallet14364capacity6/7andpackforgecompleted; considersMail2defence4950vsPace8starvation/travel77tradeoff, choosesdefencetoQueenmanysmallhits",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:42:12Z",
+        "end": "2026-10-11T08:42:23Z",
+        "creditedSeconds": 11.0,
+        "kind": "verifyMail2paid4950wallet9414nextPlate7200, forecastKing50\u219225despiteFORGEDsame delta; uncertainupgradeeffect acknowledged andproceedwithfifthheal andrealrun insteadfurtherpurchases",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:43:05Z",
+        "end": "2026-10-11T08:43:26Z",
+        "creditedSeconds": 21.0,
+        "kind": "readRookactualNormal1xD8afterknownfloors1\u20137swift, inheritedaxe25\u201328damageDrulguardactive+4heal, owncleave/corridorfires; sevenpack/52HP distinguishesnewbody andgashits3",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:43:49Z",
+        "end": "2026-10-11T08:44:22Z",
+        "creditedSeconds": 33.0,
+        "kind": "inspectRookNormalwatchandshotonce: Warlord\u221294slain, Drultankedgoblinsandpetheal4, hero48/52; Normalshowsquiet4xautoboostpickup3, roomtorchlighting/corpses/shieldslashicons",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:44:41Z",
+        "end": "2026-10-11T08:45:05Z",
+        "creditedSeconds": 24.0,
+        "kind": "readNormalautoD9\u201327swift50%skippedahead, D28full52starving17,budget2225carry925rationkeeps22; choosesrationbeforeQueen/King withwallet9388notafterrunexit",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:45:38Z",
+        "end": "2026-10-11T08:46:12Z",
+        "creditedSeconds": 34.0,
+        "kind": "inspectD28blueDeepNormal1xshotonce andration925paid8463packed22, butshortwatchnoaddedandD28firstmiss/blockunchangedacross60s; investigatepublicpause/resume ratherthaninferdriverdelay",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:46:33Z",
+        "end": "2026-10-11T08:46:39Z",
+        "creditedSeconds": 6.0,
+        "kind": "verifypublicpausebuttonrespondsPaused andtriangle while unchangedD28; priorLivewasnotuserpause, resumeusingvisibletriangle tocheckactualfightprogress",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:47:06Z",
+        "end": "2026-10-11T08:47:25Z",
+        "creditedSeconds": 19.0,
+        "kind": "readresumedQueenfightNormal1x: ownbossSilencefires2/silentlurkersvanish8, queen\u221289/\u2212100slain, HP40/52rest12; pause/resumerecoveredpriorLiveD28stall, nohiddenfreezeinference",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:48:10Z",
+        "end": "2026-10-11T08:48:45Z",
+        "creditedSeconds": 35.0,
+        "kind": "inspectSanctumNormalD29watch/shotonce: wardenphase shifts9damage, acolyteHEALS cue andoverlappingwardenspritehero, customheal50at23/52, quietspeedautoboostobserved; rationstillpacked22notcurrentHP",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:49:01Z",
+        "end": "2026-10-11T08:49:26Z",
+        "creditedSeconds": 25.0,
+        "kind": "readD29\u201330wardensshift9damage/corridor/cleave and acolytekilled; heroends23thenrest29to52, HP51now; notassumeHEALSlabelownhealpotion sinceeventtraceonlyrest",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:49:43Z",
+        "end": "2026-10-11T08:50:19Z",
+        "creditedSeconds": 36.0,
+        "kind": "inspectD31Normalwatch/shotonce:52max/51current, Behindbadgewhilequiet4xdescend5callout, acolyteNO FRIENDS andherohit29clippedright; familiarSanctumroomsbutclearwardenshift/gazeidentity",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:50:33Z",
+        "end": "2026-10-11T08:50:58Z",
+        "creditedSeconds": 25.0,
+        "kind": "readD32wardens10/8damage andrest19/13, owncorridor/cleavehitsacolytes, tamefailednonecallout, 51/52and3115carryapproachKing; waitsfornewcounteractualtrigger withoutdriveinputs",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:51:12Z",
+        "end": "2026-10-11T08:51:45Z",
+        "creditedSeconds": 33.0,
+        "kind": "readNormalD32reflectionburstRook16/52carry3196, Wardenshift9reflecthits despiteArmourII/Mail2; customheal50notappearinglikelynoitems, bankmin34locksbutreturn25notyet16>13; evaluatesriskbeforeKing",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:52:01Z",
+        "end": "2026-10-11T08:52:39Z",
+        "creditedSeconds": 38.0,
+        "kind": "inspectRookD32reportshotonce no death3234earnedL7wallet11567; correction: packagebanklockoncampdidnotpreventcollect100noheals exit, so do notclaimbankruntimeunavailablebeforegoal34",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:52:51Z",
+        "end": "2026-10-11T08:53:21Z",
+        "creditedSeconds": 30.0,
+        "kind": "readRookD32fullreport: sixthhealusedall, ownSilence2works, collected3196safe100, axe13storage; learnedSecond windL7, tameddeepeel, Kingstillfalseslainlineevennotvisitedthisrun",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:53:57Z",
+        "end": "2026-10-11T08:54:24Z",
+        "creditedSeconds": 27.0,
+        "kind": "readRookL7XP968/4900HeropathstillSentinel10locked, Legacy1/armour2/damage2health2 andQueenforecast88; newlylearnedSecond wind offeredasnewtool fordeephealingwhenpotionsalreadyused",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:54:41Z",
+        "end": "2026-10-11T08:54:50Z",
+        "creditedSeconds": 9.0,
+        "kind": "readnewearnedSecond wind inactionpicker alongsidebash/cleave/taunt andprayer/tactics; broadverbslearnednotallassessed, changesKingheal75toSecond wind toavoiditemexhaustion",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:55:10Z",
+        "end": "2026-10-11T08:55:48Z",
+        "creditedSeconds": 38.0,
+        "kind": "verifyearnedSecond windKing75depth33priority2 imageonce; Queen88,D3350butD34same<13 andfullhaul38, correctrulecount6 supply7 held156; plansnextrealrunwithcurrentbestpet",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:56:01Z",
+        "end": "2026-10-11T08:56:33Z",
+        "creditedSeconds": 32.0,
+        "kind": "readcompanionsnewThusk24HPwaterScout, Drul32oldhoundgrudgeKingvsDrak10Thim5; retainfamiliarGuardDruldespiteearlyfallrisk becauseKinggrudge andpreventsheroWarlorddamage",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:56:54Z",
+        "end": "2026-10-11T08:57:22Z",
+        "creditedSeconds": 28.0,
+        "kind": "readsecondRookmanualrunNormal1x54HPvsprior52, DrultanksD7manyhits3petheal, knownfloorsswift; SecondwindKingrulekept andnewrunseedvariation127gold",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:58:17Z",
+        "end": "2026-10-11T08:59:07Z",
+        "creditedSeconds": 50.0,
+        "kind": "readsecondRookQueenSilence3wavecounters and89/93bosscrits, D29wardensreflect8/10hurt36/54, starvation5ration26vsprior17/22; noticesMirror rhythmKing-taglostgenericmirrorreadWardencounter andconsidersreplacekite",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T08:59:24Z",
+        "end": "2026-10-11T09:00:00Z",
+        "creditedSeconds": 36.0,
+        "kind": "inspectsecondRookD29watchandshotonce: ownHP46drink27thenanother27, wardsreflect9\u201310, 52/54healthyrest/shieldhighlight; currentrunhealsstillavailableunlikeprevious andpacketstakesdiffer",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:00:15Z",
+        "end": "2026-10-11T09:00:50Z",
+        "creditedSeconds": 35.0,
+        "kind": "readsecondRookD29bloatgasburstself12/hero3repeatedandrest30, D30wardens10/8reflectpartdamage withrest18; newroomtrapmixinsteadpureSanctum, hero36/54Normalquiet4x",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:01:07Z",
+        "end": "2026-10-11T09:01:48Z",
+        "creditedSeconds": 41.0,
+        "kind": "inspectsecondRookD31watchshotonce: foundhealD30rest17, full54\u219253afterblockedWarden, swingarcblueimpactandreadablelowenemyHP; twoNormalrunsobservedovermanyminuteswithquiet4xretained",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:02:03Z",
+        "end": "2026-10-11T09:02:54Z",
+        "creditedSeconds": 51.0,
+        "kind": "readD31/32actual52/54and1965carry withWardenblockedthenlow1 andrest18, evaluatescustomcleave/corridorshadowingcadenceifKing2adjacent; testsremainingratherthanassumelearnedcounterguaranteeswin",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:06:20Z",
+        "end": "2026-10-11T09:06:22Z",
+        "creditedSeconds": 2.0,
+        "kind": "Read fifth heir King death summary; compared health16/54 with scoped second-wind rule and equipment worker spending.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:06:37Z",
+        "end": "2026-10-11T09:06:44Z",
+        "creditedSeconds": 7.0,
+        "kind": "Read complete Rook King trace: cleave first, potion25/54, cadence52/54, bank44 going home at16/54, second wind no use; inspected all rejection reasons.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:07:10Z",
+        "end": "2026-10-11T09:07:18Z",
+        "creditedSeconds": 8.0,
+        "kind": "Read five no-gain King patches and costly retreat tradeoff; death screen screenshot acquisition excluded.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:07:24Z",
+        "end": "2026-10-11T09:07:37Z",
+        "creditedSeconds": 13.0,
+        "kind": "Inspected final death screenshot and compared corpse, bones9items, five no-gain patch layout; considered cleave priority interfering with Mirror rhythm.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:08:10Z",
+        "end": "2026-10-11T09:08:26Z",
+        "creditedSeconds": 16.0,
+        "kind": "Read Sable sixth heir rules and forecast; identified custom cleave above locked Mirror cadence and King13% forecast/new heirD24\u221250.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:08:43Z",
+        "end": "2026-10-11T09:08:47Z",
+        "creditedSeconds": 4.0,
+        "kind": "Compared public tactic options; chose replacing archer kite with learned Mirror readL5 while retaining Mirror rhythm for King.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:09:10Z",
+        "end": "2026-10-11T09:09:14Z",
+        "creditedSeconds": 4.0,
+        "kind": "Read Mirror read swap result: D33 arrival13\u219263%, D34still<13 and full haul same; interpreted arrival versus win distinction, two complementary mirrors choices.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:10:16Z",
+        "end": "2026-10-11T09:10:26Z",
+        "creditedSeconds": 10.0,
+        "kind": "Read deletion result: King arrival63\u219225%, full haul25\u219238; decided simpler mirror priority improved escape tradeoff but not win forecast. Kept five custom rows.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:10:43Z",
+        "end": "2026-10-11T09:10:52Z",
+        "creditedSeconds": 9.0,
+        "kind": "Read final seven-item loadout and restock ceiling195; considered reliable recall bail versus empty unknown-scroll rule at King.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:11:38Z",
+        "end": "2026-10-11T09:11:42Z",
+        "creditedSeconds": 4.0,
+        "kind": "Read full action chooser; distinguish read recall from recall and skill second wind. Recall supply forecast full haul25\u219275% without King-arrival change.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:12:03Z",
+        "end": "2026-10-11T09:12:08Z",
+        "creditedSeconds": 5.0,
+        "kind": "Read five final custom rules and complementary Mirror read/rhythm; recall nowexplicithp30. Compared full haul75% with D34<13% and prepared next send.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:12:23Z",
+        "end": "2026-10-11T09:12:31Z",
+        "creditedSeconds": 8.0,
+        "kind": "Inspected final setup image: readable pairedcondition/action cards beside shaft; cramped truncated companion header and bottom controls; reviewed recall haul forecast before send.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:13:00Z",
+        "end": "2026-10-11T09:13:08Z",
+        "creditedSeconds": 8.0,
+        "kind": "Observed Sable normal1x D8 arrival after SwiftD1\u20137; own corridor versus3+ repeatedly attempts then jackal falls; no manual hero control used.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:13:27Z",
+        "end": "2026-10-11T09:13:37Z",
+        "creditedSeconds": 10.0,
+        "kind": "Read Sable Warlord fight, repeated armour blocks and boss-directed23/19/25/20 damage; summon adds killed without cleave, tame failed no leash.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:13:57Z",
+        "end": "2026-10-11T09:14:03Z",
+        "creditedSeconds": 6.0,
+        "kind": "Observed SwiftD9\u201327 at25% forecast to D28, healthy48/49 despite starvation5; normal1x lurker battle advanced, no repeat of earlier D28 stucktrace.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:14:23Z",
+        "end": "2026-10-11T09:14:29Z",
+        "creditedSeconds": 6.0,
+        "kind": "Read Queen summon swarm and scoped boss silence killing6lurkers; corridor repeated during blocked hits, health32/49 and rest17; scene auto1.5x despite Normal1x.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:14:49Z",
+        "end": "2026-10-11T09:14:56Z",
+        "creditedSeconds": 7.0,
+        "kind": "Observed Queen swift counter overlay, another silencewave sevenkills and boss-directed24/20/27/22 hits; Sable41/49 armourblocking while alert3/8.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:15:18Z",
+        "end": "2026-10-11T09:15:34Z",
+        "creditedSeconds": 16.0,
+        "kind": "Observed Queen slain followed by surviving lurker danger, HP44% own heal24 and rest14 restore49; two unknown scrolls found; reached D29 chainscry.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:16:00Z",
+        "end": "2026-10-11T09:16:16Z",
+        "creditedSeconds": 16.0,
+        "kind": "Read Sable D29 Warden shifts and safe10/25/26 attacks, contrasted earlier self-reflection; remains47/49, free unknown-scroll loot. Considered uncertain causation of tactic swap.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:16:35Z",
+        "end": "2026-10-11T09:16:42Z",
+        "creditedSeconds": 7.0,
+        "kind": "Read Sable D29 captive killed after chainscry rather than rescued; D30 Warden8/6 shots then26/28 without reflection, health48/49, scroll loot. Considered future free-captive rule.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      },
+      {
+        "phase": "return8h",
+        "start": "2026-10-11T09:17:06Z",
+        "end": "2026-10-11T09:17:21Z",
+        "creditedSeconds": 15.0,
+        "kind": "Read multiple D30 Warden shift cycles: low ranged7\u201310 then23\u201325 attacks, no displayed self-reflection, Sable46/49. Compared with Rook potion burnout and bank32; horizon final observation.",
+        "source": "relay returned-observation window; boundary excluded,54second cap"
+      }
+    ],
+    "excludedIntervals": [
+      {
+        "start": "2026-10-11T06:03:11Z",
+        "end": "2026-10-11T06:27:29.863380Z",
+        "seconds": 1458.86338,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:27:53.491734Z",
+        "end": "2026-10-11T06:28:01.523344Z",
+        "seconds": 8.03161,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:28:26.603796Z",
+        "end": "2026-10-11T06:28:33.370305Z",
+        "seconds": 6.766509,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:28:49.505747Z",
+        "end": "2026-10-11T06:28:56.279542Z",
+        "seconds": 6.773795,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:29:21.428473Z",
+        "end": "2026-10-11T06:29:29.214964Z",
+        "seconds": 7.786491,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:29:37.778195Z",
+        "end": "2026-10-11T06:29:43.792472Z",
+        "seconds": 6.014277,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:29:47.959177Z",
+        "end": "2026-10-11T06:29:54.752391Z",
+        "seconds": 6.793214,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:30:42.512791Z",
+        "end": "2026-10-11T06:30:49.280342Z",
+        "seconds": 6.767551,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:30:55.865614Z",
+        "end": "2026-10-11T06:31:02.628167Z",
+        "seconds": 6.762553,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:31:29.595014Z",
+        "end": "2026-10-11T06:31:36.382623Z",
+        "seconds": 6.787609,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:31:50.204028Z",
+        "end": "2026-10-11T06:31:58.484706Z",
+        "seconds": 8.280678,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:32:21.397539Z",
+        "end": "2026-10-11T06:33:24.594999Z",
+        "seconds": 63.19746,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:34:07.001063Z",
+        "end": "2026-10-11T06:34:13.768366Z",
+        "seconds": 6.767303,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:34:39.528455Z",
+        "end": "2026-10-11T06:34:47.061514Z",
+        "seconds": 7.533059,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:35:04.892983Z",
+        "end": "2026-10-11T06:35:10.907618Z",
+        "seconds": 6.014635,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:35:19.738066Z",
+        "end": "2026-10-11T06:35:26.504539Z",
+        "seconds": 6.766473,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:35:52.763287Z",
+        "end": "2026-10-11T06:35:58.778379Z",
+        "seconds": 6.015092,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:36:06.577339Z",
+        "end": "2026-10-11T06:36:14.358357Z",
+        "seconds": 7.781018,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:36:32.930739Z",
+        "end": "2026-10-11T06:36:39.699655Z",
+        "seconds": 6.768916,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:36:49.420290Z",
+        "end": "2026-10-11T06:36:56.185414Z",
+        "seconds": 6.765124,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:37:15.808437Z",
+        "end": "2026-10-11T06:37:23.353797Z",
+        "seconds": 7.54536,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:37:51.387802Z",
+        "end": "2026-10-11T06:38:01.353711Z",
+        "seconds": 9.965909,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:38:28.932912Z",
+        "end": "2026-10-11T06:38:36.961679Z",
+        "seconds": 8.028767,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:38:59.765994Z",
+        "end": "2026-10-11T06:39:06.545936Z",
+        "seconds": 6.779942,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:39:36.954596Z",
+        "end": "2026-10-11T06:39:44.986110Z",
+        "seconds": 8.031514,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:40:07.045101Z",
+        "end": "2026-10-11T06:40:15.074016Z",
+        "seconds": 8.028915,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:40:41.057973Z",
+        "end": "2026-10-11T06:40:49.086757Z",
+        "seconds": 8.028784,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:41:18.157585Z",
+        "end": "2026-10-11T06:41:26.186296Z",
+        "seconds": 8.028711,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:42:03.975271Z",
+        "end": "2026-10-11T06:42:12.004359Z",
+        "seconds": 8.029088,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:42:35.314598Z",
+        "end": "2026-10-11T06:42:44.267653Z",
+        "seconds": 8.953055,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:43:07.276045Z",
+        "end": "2026-10-11T06:43:14.054175Z",
+        "seconds": 6.77813,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:43:31.045455Z",
+        "end": "2026-10-11T06:46:03.255183Z",
+        "seconds": 152.209728,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:46:03.765525Z",
+        "end": "2026-10-11T06:46:10.419388Z",
+        "seconds": 6.653863,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:46:11.396643Z",
+        "end": "2026-10-11T06:46:17.408409Z",
+        "seconds": 6.011766,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:46:18.838826Z",
+        "end": "2026-10-11T06:48:35.675930Z",
+        "seconds": 136.837104,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:48:35.743614Z",
+        "end": "2026-10-11T06:48:42.505790Z",
+        "seconds": 6.762176,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:48:45.431514Z",
+        "end": "2026-10-11T06:48:52.956787Z",
+        "seconds": 7.525273,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:48:54.131795Z",
+        "end": "2026-10-11T06:49:00.144684Z",
+        "seconds": 6.012889,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:49:04.047789Z",
+        "end": "2026-10-11T06:49:10.818360Z",
+        "seconds": 6.770571,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:49:11.186110Z",
+        "end": "2026-10-11T06:49:59Z",
+        "seconds": 47.81389,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:50:03Z",
+        "end": "2026-10-11T06:50:13Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:50:14Z",
+        "end": "2026-10-11T06:50:24Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:50:36Z",
+        "end": "2026-10-11T06:51:12Z",
+        "seconds": 36.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:51:17Z",
+        "end": "2026-10-11T06:51:35Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:51:44Z",
+        "end": "2026-10-11T06:51:54Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:51:57Z",
+        "end": "2026-10-11T06:52:14Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:52:24Z",
+        "end": "2026-10-11T06:53:00Z",
+        "seconds": 36.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:53:06Z",
+        "end": "2026-10-11T06:53:38Z",
+        "seconds": 32.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:53:39Z",
+        "end": "2026-10-11T06:54:07Z",
+        "seconds": 28.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:54:11Z",
+        "end": "2026-10-11T06:54:23Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:54:27Z",
+        "end": "2026-10-11T06:54:41Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:54:43Z",
+        "end": "2026-10-11T06:54:54Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:54:55Z",
+        "end": "2026-10-11T06:55:13Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:55:16Z",
+        "end": "2026-10-11T06:55:27Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:55:37Z",
+        "end": "2026-10-11T06:56:09Z",
+        "seconds": 32.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:56:21Z",
+        "end": "2026-10-11T06:56:44Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:56:54Z",
+        "end": "2026-10-11T06:57:24Z",
+        "seconds": 30.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:57:27Z",
+        "end": "2026-10-11T06:57:58Z",
+        "seconds": 31.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:58:07Z",
+        "end": "2026-10-11T06:58:19Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:58:38Z",
+        "end": "2026-10-11T06:59:37Z",
+        "seconds": 59.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T06:59:54Z",
+        "end": "2026-10-11T07:00:04Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:00:19Z",
+        "end": "2026-10-11T07:00:31Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:00:49Z",
+        "end": "2026-10-11T07:01:00Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:01:23Z",
+        "end": "2026-10-11T07:01:32Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:02:06Z",
+        "end": "2026-10-11T07:02:15Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:02:29Z",
+        "end": "2026-10-11T07:02:38Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:03:02Z",
+        "end": "2026-10-11T07:03:14Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:03:16Z",
+        "end": "2026-10-11T07:03:26Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:03:29Z",
+        "end": "2026-10-11T07:03:49Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:03:53Z",
+        "end": "2026-10-11T07:04:15Z",
+        "seconds": 22.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:04:18Z",
+        "end": "2026-10-11T07:04:46Z",
+        "seconds": 28.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:05:34Z",
+        "end": "2026-10-11T07:05:44Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:05:49Z",
+        "end": "2026-10-11T07:05:59Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:06:01Z",
+        "end": "2026-10-11T07:06:09Z",
+        "seconds": 8.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:06:16Z",
+        "end": "2026-10-11T07:06:36Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:06:39Z",
+        "end": "2026-10-11T07:06:49Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:07:09Z",
+        "end": "2026-10-11T07:07:18Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:07:21Z",
+        "end": "2026-10-11T07:07:31Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:07:37Z",
+        "end": "2026-10-11T07:07:48Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:07:49Z",
+        "end": "2026-10-11T07:07:59Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:08:07Z",
+        "end": "2026-10-11T07:08:18Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:08:23Z",
+        "end": "2026-10-11T07:08:35Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:08:36Z",
+        "end": "2026-10-11T07:08:46Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:08:53Z",
+        "end": "2026-10-11T07:09:02Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:09:03Z",
+        "end": "2026-10-11T07:09:15Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:09:17Z",
+        "end": "2026-10-11T07:09:36Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:09:43Z",
+        "end": "2026-10-11T07:09:53Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:09:57Z",
+        "end": "2026-10-11T07:10:07Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:10:29Z",
+        "end": "2026-10-11T07:10:46Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:10:49Z",
+        "end": "2026-10-11T07:11:05Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:11:38Z",
+        "end": "2026-10-11T07:11:53Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:12:17Z",
+        "end": "2026-10-11T07:12:31Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:12:45Z",
+        "end": "2026-10-11T07:13:07Z",
+        "seconds": 22.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:13:32Z",
+        "end": "2026-10-11T07:14:03Z",
+        "seconds": 31.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:14:15Z",
+        "end": "2026-10-11T07:15:14Z",
+        "seconds": 59.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:15:37Z",
+        "end": "2026-10-11T07:16:12Z",
+        "seconds": 35.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:16:46Z",
+        "end": "2026-10-11T07:16:59Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:17:16Z",
+        "end": "2026-10-11T07:17:30Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:17:59Z",
+        "end": "2026-10-11T07:18:12Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:18:36Z",
+        "end": "2026-10-11T07:18:52Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:19:24Z",
+        "end": "2026-10-11T07:19:39Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:20:21Z",
+        "end": "2026-10-11T07:20:30Z",
+        "seconds": 9.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:21:24Z",
+        "end": "2026-10-11T07:21:41Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:22:35Z",
+        "end": "2026-10-11T07:22:53Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:23:40Z",
+        "end": "2026-10-11T07:23:57Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:24:35Z",
+        "end": "2026-10-11T07:24:50Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:24:55Z",
+        "end": "2026-10-11T07:25:29Z",
+        "seconds": 34.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:26:23Z",
+        "end": "2026-10-11T07:27:43Z",
+        "seconds": 80.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:28:10Z",
+        "end": "2026-10-11T07:28:25Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:28:29Z",
+        "end": "2026-10-11T07:28:49Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:29:12Z",
+        "end": "2026-10-11T07:29:27Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:30:21Z",
+        "end": "2026-10-11T07:30:53Z",
+        "seconds": 32.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:31:45Z",
+        "end": "2026-10-11T07:34:57Z",
+        "seconds": 192.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:35:08Z",
+        "end": "2026-10-11T07:35:29Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:35:30Z",
+        "end": "2026-10-11T07:35:42Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:35:43Z",
+        "end": "2026-10-11T07:36:03Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:36:05Z",
+        "end": "2026-10-11T07:36:21Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:36:30Z",
+        "end": "2026-10-11T07:36:56Z",
+        "seconds": 26.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:36:57Z",
+        "end": "2026-10-11T07:37:07Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:37:11Z",
+        "end": "2026-10-11T07:37:31Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:37:33Z",
+        "end": "2026-10-11T07:38:25Z",
+        "seconds": 52.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:38:39Z",
+        "end": "2026-10-11T07:38:57Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:39:03Z",
+        "end": "2026-10-11T07:39:13Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:39:25Z",
+        "end": "2026-10-11T07:39:55Z",
+        "seconds": 30.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:39:56Z",
+        "end": "2026-10-11T07:40:11Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:40:13Z",
+        "end": "2026-10-11T07:40:31Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:40:52Z",
+        "end": "2026-10-11T07:41:02Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:41:14Z",
+        "end": "2026-10-11T07:41:31Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:41:34Z",
+        "end": "2026-10-11T07:42:02Z",
+        "seconds": 28.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:42:23Z",
+        "end": "2026-10-11T07:42:37Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:42:39Z",
+        "end": "2026-10-11T07:42:54Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:43:14Z",
+        "end": "2026-10-11T07:43:55Z",
+        "seconds": 41.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:43:56Z",
+        "end": "2026-10-11T07:44:43Z",
+        "seconds": 47.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:44:46Z",
+        "end": "2026-10-11T07:45:36Z",
+        "seconds": 50.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:45:50Z",
+        "end": "2026-10-11T07:46:13Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:46:18Z",
+        "end": "2026-10-11T07:46:42Z",
+        "seconds": 24.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:46:50Z",
+        "end": "2026-10-11T07:47:10Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:47:27Z",
+        "end": "2026-10-11T07:48:05Z",
+        "seconds": 38.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:48:12Z",
+        "end": "2026-10-11T07:49:05Z",
+        "seconds": 53.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:49:06Z",
+        "end": "2026-10-11T07:49:48Z",
+        "seconds": 42.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:50:12Z",
+        "end": "2026-10-11T07:50:38Z",
+        "seconds": 26.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:50:44Z",
+        "end": "2026-10-11T07:51:00Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:51:12Z",
+        "end": "2026-10-11T07:51:55Z",
+        "seconds": 43.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:52:14Z",
+        "end": "2026-10-11T07:52:35Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:52:45Z",
+        "end": "2026-10-11T07:52:55Z",
+        "seconds": 10.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:53:21Z",
+        "end": "2026-10-11T07:53:32Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:53:57Z",
+        "end": "2026-10-11T07:54:17Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:54:37Z",
+        "end": "2026-10-11T07:55:02Z",
+        "seconds": 25.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:55:25Z",
+        "end": "2026-10-11T07:55:40Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:56:02Z",
+        "end": "2026-10-11T07:56:26Z",
+        "seconds": 24.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:56:50Z",
+        "end": "2026-10-11T07:57:03Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:57:25Z",
+        "end": "2026-10-11T07:57:40Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:58:02Z",
+        "end": "2026-10-11T07:58:21Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:58:44Z",
+        "end": "2026-10-11T07:58:56Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T07:59:20Z",
+        "end": "2026-10-11T07:59:42Z",
+        "seconds": 22.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:00:14Z",
+        "end": "2026-10-11T08:00:45Z",
+        "seconds": 31.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:00:56Z",
+        "end": "2026-10-11T08:01:35Z",
+        "seconds": 39.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:01:58Z",
+        "end": "2026-10-11T08:02:19Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:02:52Z",
+        "end": "2026-10-11T08:03:15Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:03:42Z",
+        "end": "2026-10-11T08:03:53Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:04:10Z",
+        "end": "2026-10-11T08:04:35Z",
+        "seconds": 25.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:04:54Z",
+        "end": "2026-10-11T08:05:24Z",
+        "seconds": 30.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:05:58Z",
+        "end": "2026-10-11T08:06:10Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:06:36Z",
+        "end": "2026-10-11T08:06:48Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:06:55Z",
+        "end": "2026-10-11T08:07:07Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:07:29Z",
+        "end": "2026-10-11T08:07:46Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:08:02Z",
+        "end": "2026-10-11T08:08:15Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:08:26Z",
+        "end": "2026-10-11T08:08:55Z",
+        "seconds": 29.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:09:09Z",
+        "end": "2026-10-11T08:09:24Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:09:40Z",
+        "end": "2026-10-11T08:10:03Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:10:06Z",
+        "end": "2026-10-11T08:10:35Z",
+        "seconds": 29.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:10:44Z",
+        "end": "2026-10-11T08:11:17Z",
+        "seconds": 33.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:11:24Z",
+        "end": "2026-10-11T08:11:43Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:12:04Z",
+        "end": "2026-10-11T08:12:57Z",
+        "seconds": 53.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:13:21Z",
+        "end": "2026-10-11T08:13:34Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:13:58Z",
+        "end": "2026-10-11T08:14:13Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:14:26Z",
+        "end": "2026-10-11T08:14:40Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:15:05Z",
+        "end": "2026-10-11T08:15:25Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:15:38Z",
+        "end": "2026-10-11T08:16:00Z",
+        "seconds": 22.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:16:22Z",
+        "end": "2026-10-11T08:16:42Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:17:09Z",
+        "end": "2026-10-11T08:20:47Z",
+        "seconds": 218.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:20:54Z",
+        "end": "2026-10-11T08:21:05Z",
+        "seconds": 11.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:21:09Z",
+        "end": "2026-10-11T08:21:26Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:21:30Z",
+        "end": "2026-10-11T08:21:54Z",
+        "seconds": 24.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:22:12Z",
+        "end": "2026-10-11T08:22:26Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:22:36Z",
+        "end": "2026-10-11T08:22:48Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:22:57Z",
+        "end": "2026-10-11T08:23:18Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:23:32Z",
+        "end": "2026-10-11T08:23:47Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:23:51Z",
+        "end": "2026-10-11T08:24:23Z",
+        "seconds": 32.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:24:28Z",
+        "end": "2026-10-11T08:24:46Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:25:02Z",
+        "end": "2026-10-11T08:25:33Z",
+        "seconds": 31.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:25:49Z",
+        "end": "2026-10-11T08:26:12Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:26:30Z",
+        "end": "2026-10-11T08:26:43Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:27:02Z",
+        "end": "2026-10-11T08:28:12Z",
+        "seconds": 70.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:28:29Z",
+        "end": "2026-10-11T08:28:45Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:28:51Z",
+        "end": "2026-10-11T08:29:09Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:29:27Z",
+        "end": "2026-10-11T08:29:43Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:30:10Z",
+        "end": "2026-10-11T08:30:24Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:30:50Z",
+        "end": "2026-10-11T08:32:04Z",
+        "seconds": 74.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:32:08Z",
+        "end": "2026-10-11T08:32:40Z",
+        "seconds": 32.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:32:50Z",
+        "end": "2026-10-11T08:33:04Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:33:12Z",
+        "end": "2026-10-11T08:33:28Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:33:34Z",
+        "end": "2026-10-11T08:34:16Z",
+        "seconds": 42.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:34:27Z",
+        "end": "2026-10-11T08:35:02Z",
+        "seconds": 35.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:35:12Z",
+        "end": "2026-10-11T08:35:52Z",
+        "seconds": 40.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:36:13Z",
+        "end": "2026-10-11T08:36:31Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:36:51Z",
+        "end": "2026-10-11T08:37:09Z",
+        "seconds": 18.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:37:14Z",
+        "end": "2026-10-11T08:38:06Z",
+        "seconds": 52.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:38:13Z",
+        "end": "2026-10-11T08:38:42Z",
+        "seconds": 29.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:39:02Z",
+        "end": "2026-10-11T08:39:23Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:39:48Z",
+        "end": "2026-10-11T08:40:08Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:40:34Z",
+        "end": "2026-10-11T08:40:58Z",
+        "seconds": 24.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:41:11Z",
+        "end": "2026-10-11T08:41:26Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:41:52Z",
+        "end": "2026-10-11T08:42:12Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:42:23Z",
+        "end": "2026-10-11T08:43:05Z",
+        "seconds": 42.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:43:26Z",
+        "end": "2026-10-11T08:43:49Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:44:22Z",
+        "end": "2026-10-11T08:44:41Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:45:05Z",
+        "end": "2026-10-11T08:45:38Z",
+        "seconds": 33.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:46:12Z",
+        "end": "2026-10-11T08:46:33Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:46:39Z",
+        "end": "2026-10-11T08:47:06Z",
+        "seconds": 27.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:47:25Z",
+        "end": "2026-10-11T08:48:10Z",
+        "seconds": 45.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:48:45Z",
+        "end": "2026-10-11T08:49:01Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:49:26Z",
+        "end": "2026-10-11T08:49:43Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:50:19Z",
+        "end": "2026-10-11T08:50:33Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:50:58Z",
+        "end": "2026-10-11T08:51:12Z",
+        "seconds": 14.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:51:45Z",
+        "end": "2026-10-11T08:52:01Z",
+        "seconds": 16.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:52:39Z",
+        "end": "2026-10-11T08:52:51Z",
+        "seconds": 12.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:53:21Z",
+        "end": "2026-10-11T08:53:57Z",
+        "seconds": 36.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:54:24Z",
+        "end": "2026-10-11T08:54:41Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:54:50Z",
+        "end": "2026-10-11T08:55:10Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:55:48Z",
+        "end": "2026-10-11T08:56:01Z",
+        "seconds": 13.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:56:33Z",
+        "end": "2026-10-11T08:56:54Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:57:22Z",
+        "end": "2026-10-11T08:58:17Z",
+        "seconds": 55.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T08:59:07Z",
+        "end": "2026-10-11T08:59:24Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:00:00Z",
+        "end": "2026-10-11T09:00:15Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:00:50Z",
+        "end": "2026-10-11T09:01:07Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:01:48Z",
+        "end": "2026-10-11T09:02:03Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:02:54Z",
+        "end": "2026-10-11T09:06:20Z",
+        "seconds": 206.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:06:22Z",
+        "end": "2026-10-11T09:06:37Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:06:44Z",
+        "end": "2026-10-11T09:07:10Z",
+        "seconds": 26.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:07:18Z",
+        "end": "2026-10-11T09:07:24Z",
+        "seconds": 6.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:07:37Z",
+        "end": "2026-10-11T09:08:10Z",
+        "seconds": 33.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:08:26Z",
+        "end": "2026-10-11T09:08:43Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:08:47Z",
+        "end": "2026-10-11T09:09:10Z",
+        "seconds": 23.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:09:14Z",
+        "end": "2026-10-11T09:10:16Z",
+        "seconds": 62.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:10:26Z",
+        "end": "2026-10-11T09:10:43Z",
+        "seconds": 17.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:10:52Z",
+        "end": "2026-10-11T09:11:38Z",
+        "seconds": 46.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:11:42Z",
+        "end": "2026-10-11T09:12:03Z",
+        "seconds": 21.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:12:08Z",
+        "end": "2026-10-11T09:12:23Z",
+        "seconds": 15.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:12:31Z",
+        "end": "2026-10-11T09:13:00Z",
+        "seconds": 29.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:13:08Z",
+        "end": "2026-10-11T09:13:27Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:13:37Z",
+        "end": "2026-10-11T09:13:57Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:14:03Z",
+        "end": "2026-10-11T09:14:23Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:14:29Z",
+        "end": "2026-10-11T09:14:49Z",
+        "seconds": 20.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:14:56Z",
+        "end": "2026-10-11T09:15:18Z",
+        "seconds": 22.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:15:34Z",
+        "end": "2026-10-11T09:16:00Z",
+        "seconds": 26.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:16:16Z",
+        "end": "2026-10-11T09:16:35Z",
+        "seconds": 19.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      },
+      {
+        "start": "2026-10-11T09:16:42Z",
+        "end": "2026-10-11T09:17:06Z",
+        "seconds": 24.0,
+        "kind": "Uncredited complement: setup/tools/buffered execution or delivery/admin/uncertain timing/boundary trimming; no passive credit"
+      }
+    ],
+    "exclusionRule": "These disjoint complement intervals plus all setup before sessionStart and all card-writing after observationEnd are excluded. Relay sampling/execution is buffered, so its wait is never active credit. Administrative gaps and uncertain initial timing receive no passive credit.",
+    "driverOperationsDocumented": 590,
+    "operationCountLimitation": "Initial setup/public calls before the exact ledger and wrapper polling not fully reconstructed; documented driver operations below amended1000 cap. No exact total tool-call certification claimed.",
+    "shotFiles": 38,
+    "imageReadLimitation": "Required shots viewed once; image-read cap120 retained; exact tool image-read total not reconstructed.",
+    "browser": {
+      "driver": 5380,
+      "relaySession": 66516,
+      "engineUrl": "http://127.0.0.1:5269/",
+      "lineage": "same persistent fresh seed313, no restart",
+      "mode": "private-display headed GPU,D3D12",
+      "viewport": "phone400x800 at3x requested"
+    }
+  },
+  "lockedUtc": "2026-10-11T09:23:26.151645+00:00"
+}
