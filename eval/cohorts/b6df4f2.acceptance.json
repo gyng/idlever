@@ -4,7 +4,7 @@
     "906990f",
     "b6df4f2"
   ],
-  "status": "preparing; whole current client suite running on test revision ea3c820",
+  "status": "client acceptance PASS; cohort unreleased, held for owner-requested Cut129 terrain and Cut130 menus",
   "includes": "Cut 122: smooth Legacy curve (8 ranks) + King 700hp, advice priced at its wall (trade-offs), King truth per descent, 'own rule' vs 'picked', rations vs hunger, refusals shown, walks home/quiet floors folded, vs-line causes, Legacy progress, stable dock, compare names walls; Cut123 immediate held-beat callout/caption clearing",
   "frozen": {
     "dir": "scratchpad/blind-b6df4f2-frozen/dist",
@@ -185,14 +185,19 @@
       ]
     },
     "fullCut128": {
-      "status": "RUNNING; no whole-suite acceptance yet",
+      "status": "TERMINAL PASS156/156",
       "testRevision": "ea3c820",
       "applicationCandidate": "b6df4f2",
       "execSession": 63523,
       "log": "/tmp/riddle-b6df4f2-cut128-client-full.log",
       "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
       "expectedGroups": 156,
-      "recordedUtc": "2026-10-11T03:50:55.994786+00:00"
+      "recordedUtc": "2026-10-11T03:50:55.994786+00:00",
+      "exitCode": 0,
+      "seconds": 1400.3,
+      "preservedLog": "scratchpad/blind-b6df4f2-frozen/acceptance/cut128-client-full.log",
+      "logSha256": "3dd39f20f8c3dc24f93f3f2cc106a3c9437ecb813b206e6e41ce4c8ecc3db3a4",
+      "finishedUtc": "2026-10-11T04:13:13.863246+00:00"
     }
   },
   "cohort": {
