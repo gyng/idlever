@@ -16,8 +16,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let original = session.deaths.get(&id).ok_or("missing death")?.clone();
         let death = session.death(id).ok_or("unavailable verdict")?;
         let deltas = session.death_deltas(id).ok_or("unavailable deltas")?;
+        let refreshed = session.death(id).ok_or("unavailable refreshed verdict")?;
         let checkpoint = original.t10.as_ref().map(|r| json!({"hp":r.hero.hp,"max_hp":r.hero.max_hp,"tick":r.turn,"depth":r.depth}));
-        results.push(json!({"id":id,"checkpoint":checkpoint,"death_tick":original.death_tick,"recorded_rules":original.rules,"verdict":death,"priced_patches":deltas}));
+        results.push(json!({"id":id,"checkpoint":checkpoint,"death_tick":original.death_tick,"recorded_rules":original.rules,"verdict":death,"priced_patches":deltas,"refreshed_pick":refreshed.pick,"original_camp_key":original.camp_key,"original_pick_price":original.pick_price,"priced_camp_key":session.deaths[&id].camp_key,"cached_pick_price":session.deaths[&id].pick_price}));
     }
     println!("{}",serde_json::to_string_pretty(&results)?);
     Ok(())

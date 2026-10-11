@@ -104,6 +104,10 @@
 .death .death-pick .lever-kind, .death .death-lever .lever-kind { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
 .death .death-pick b, .death .death-lever b { color: var(--acc); font-size: 17px; }
 .death .death-lever .lever-go { color: var(--mist); font-size: 20px; }
+.death .death-pick .lever-kind, .death .death-lever .lever-kind { grid-column: 1; grid-row: 1; }
+.death .death-pick .lever-name, .death .death-lever .lever-name { grid-column: 2; grid-row: 1; min-width: 0; }
+.death .death-pick .lever-go, .death .death-lever .lever-go { grid-column: 3; grid-row: 1; }
+.death .death-pick .lever-price, .death .death-lever .lever-price { grid-column: 2 / -1; grid-row: 2; min-width: 0; overflow-wrap: anywhere; }
 .cmd .tile[data-tile="packages"] .tl { font-size: 10.5px; letter-spacing: -.03em; }
 .death.prepen .death-why { color: var(--mist); }
 

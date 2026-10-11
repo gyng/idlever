@@ -4,7 +4,7 @@
 // the result does not depend on), so they run on a second engine — a mirror loaded from the first's `save()` whenever the
 // first has changed since (bit-identical answers: same seed, same state) — and the foreground (`forecast`, `setRules`,
 // `step`, …) never waits behind them. The fake shares one state and needs no mirror (`mirror: false`).
-import type { AsyncEngine } from "./types";
+import type { AsyncEngine, Death } from "./types";
 
 // Cut 24 §4 (AK: "each edit makes you wait 3–7 s for the forecast to settle") — a third lane for the refine: behind the forge's and the
 // unlocks' measures (3 s and 2 s each in wasm) on the one background lane, an edit's refine waited for them, and every edit in a burst
@@ -23,7 +23,7 @@ export const BACKGROUND = new Set<string>(["forecastRefine", "unlockDeltas", "ca
 const MEASURE_LANE: Record<string, number> = { unlockDeltas: 0, kitDeltas: 1, kitEstimates: 1, startForecast: 1, forkForecast: 1, cageForecast: 2, deathDeltas: 2, forecastRefine: 2, forecastVs: 2, forecastVsEstimate: 2, divergence: 2, forecastMove: 1, packageOptions: 1, packageOptionsFor: 1 };   // (Cut 28 §2: the move after a send on the forge's lane — beside the edits' vs and divergence on lane 2 it held the refine after a burst)
 const MEASURE_LANES = typeof navigator !== "undefined" && (navigator.hardwareConcurrency ?? 4) >= 6 ? 3 : 1;
 /** Foreground calls that leave the lineage as it was (the mirror stays in sync across them). */
-const READ_ONLY = new Set<string>(["save", "vocabulary", "forecast", "forecastEstimate", "forecastVs", "forecastVsEstimate", "lineage", "exportRules", "importRules", "unlocks", "supplyCatalogue", "companionVocabulary", "packageOptionsKey", "packageOptionsForKey"]);
+const READ_ONLY = new Set<string>(["death", "save", "vocabulary", "forecast", "forecastEstimate", "forecastVs", "forecastVsEstimate", "lineage", "exportRules", "importRules", "unlocks", "supplyCatalogue", "companionVocabulary", "packageOptionsKey", "packageOptionsForKey"]);
 
 type Calls = Record<string, (...a: unknown[]) => Promise<unknown>>;
 
@@ -67,6 +67,8 @@ export function twoLanes(fg: AsyncEngine, bgOf: () => Promise<AsyncEngine | null
   // `gen` counts the foreground's mutations; `fullGen` is the last that was not a `setRules` (Cut 24 §4: a mirror synced since then
   // takes the latest rules alone — an edit's refine starts at once, no 1 MB save through two workers)
   let gen = 0, fullGen = 0, lastRules: unknown[] | null = null;
+  // Rust prices live on the measuring mirror, never in the active engine.
+  const deathPrices = new Map<number, { gen: number; pick: NonNullable<Death["pick"]> }>();
   /** One mirrored engine and its sync state: a call on it reloads the foreground's save first when the lineage changed since. */
   type Mirror = ((m: string, a: unknown[]) => Promise<unknown>) & { cheap?: () => boolean };
   const mirrorOf = (of: () => Promise<AsyncEngine | null>): Mirror => {
@@ -83,7 +85,19 @@ export function twoLanes(fg: AsyncEngine, bgOf: () => Promise<AsyncEngine | null
         mirrorGen = at;
       }
       ready = true;
+      const measuredGen = opts.mirror ? mirrorGen : gen;
+      if (m === "deathDeltas" && opts.mirror && typeof b.death === "function") {
+        deathPrices.delete(a[0] as number);
+        await b.death(...a);
+      }
       const r = (m === "packageOptions" || m === "packageOptionsFor") && opts.mirror ? await packages.run(b, a, m) : await b[m](...a);
+      if (m === "deathDeltas" && opts.mirror && typeof b.death === "function") {
+        const d = await b.death(...a) as Death;
+        if (gen === measuredGen && d.pick?.price && !d.pick.pending) {
+          deathPrices.set(a[0] as number, { gen: measuredGen, pick: structuredClone(d.pick) });
+          if (deathPrices.size > 4) deathPrices.delete(deathPrices.keys().next().value!);
+        }
+      }
       if (opts.mirror && (m === "deathDeltas" || m === "wallEdit")) mirrorGen = -1;   // `&mut` (it caches the verdict / the day's search): the next sync reloads
       return r;
     };
@@ -110,8 +124,16 @@ export function twoLanes(fg: AsyncEngine, bgOf: () => Promise<AsyncEngine | null
   // the foreground is busy, an edit's `forecast` runs on an idle measure lane already in step but for the rules (bit-identical answers)
   let fgBusy = 0;
   const onFg = (m: string, a: unknown[]): Promise<unknown> => {
-    if (!READ_ONLY.has(m)) { gen++; if (m === "setRules") lastRules = a; else fullGen = gen; }
-    fgBusy++; const p = F[m](...a); void p.catch(() => undefined).finally(() => { fgBusy--; }); return p;
+    if (!READ_ONLY.has(m)) { deathPrices.clear(); gen++; if (m === "setRules") lastRules = a; else fullGen = gen; }
+    const at = gen;
+    fgBusy++; const p = F[m](...a).then(r => {
+      if (m !== "death") return r;
+      const d = r as Death, priced = deathPrices.get(a[0] as number);
+      if (gen === at && priced?.gen === at && d.pick?.id === priced.pick.id && d.pick?.variant === priced.pick.variant) {
+        return { ...d, pick: structuredClone(priced.pick) };
+      }
+      return r;
+    }); void p.catch(() => undefined).finally(() => { fgBusy--; }); return p;
   };
   for (const m of Object.keys(F)) {
     if (refineLane && REFINE.has(m)) out[m] = (...a: unknown[]) => refineLane(m, a);

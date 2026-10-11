@@ -529,7 +529,7 @@ export function renderDeath(app: App, d: Death, lost: string[] = [], kept = fals
   }
   // Cut 122 §2 (core): the tactic pick (the TRY tablet, or the pre-pen lever) is priced at the wall once `deathDeltas` lands (`pending`
   // until then): the deltas, then `death(id)` again — the tablet takes its price, a trade-off sinks below the fixes and leaves the gem
-  const pricing = !kept && app.engine.deathDeltas && ((!prePen && !drove && !!d.pick?.pending) || (prePen && !!lever?.pending));
+  const pricing = app.engine.deathDeltas && ((!prePen && !drove && !!d.pick?.pending) || (prePen && !!lever?.pending));
   if (pricing) setTimeout(() => {
     if (gone) return;
     void (deltasP ?? app.engine.deathDeltas!(d.run_id)).then(() => (gone ? null : app.engine.death(d.run_id))).then((d2) => {

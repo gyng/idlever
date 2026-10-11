@@ -1,3 +1,11 @@
+# Cut146 completed TRY prices — 2026-10-11
+
+Native saved King237 audit returns a valid price; browser background deathDeltas priced its mirror while foreground death reread stayed pending. Lanes now retain the same-mirror Rust pick for matching generation/run/id/variant only (four records), clear on mutations, reject in-flight stale results/failures, and keep independent replies. Historical screens refresh using the same one patch-pricing request. Price/name/arrow use explicit tablet rows to prevent phone crowding. No Rust game source changes; diagnostic death_check now includes refreshed pick/cache fields.
+
+Focused6/6PASS22.5s (new snapshot13 and real-WASM history price plus unchanged package19/cut12294/death-actions/King scope). Final geometry assertion1/1PASS18.5s:400=4013ms,1440=3798ms, one request each, exact Rust pastD33 0→0% / death88→50%, price below label, gold/heir/best/rules unchanged. Typecheck/build PASS; copy2354 zero. Original pending/crowded captures, logs and harness errors preserved docs/evidence/cut146 with hashes. No claim of a King winning lever or current full-suite/fun-score certification. Prior menu recheck81 PASS is verification progress; this turn fixes authoritative UI behavior.
+
+Next: resolve current full native regression/outpace evidence and actual affordable King winning choices, then gain attribution/return budgets. Original D28 plateau and unavailable rated Rook Session remain unresolved. Raw75.2/short4h cohort unchanged. Goal>=80 ACTIVE/unverified; finish full acceptance, immutable shipping freeze and fresh complete independent ratings. No deployment.
+
 # Cut145 King advice scope / rejected rhythm experiment — 2026-10-11
 
 Archived original A relay0471: Rook54hp, counter cut off below45%, no heals, none beats1/12. Original Session unavailable; do not claim exact replay. Different actual paid campaign saved King deaths228/237/238/239 audited via new examples/death_check.rs;237 local0/12/none improves, yet next-run D33-arrival0→89% ±22%, King-clear0→0%. Legal cadence next8h comparison:5runs/D33/$3221/2Kingdeaths vs6runs/D28/$552/5deaths; no clear. Resulting actual cadence deaths261/262 audited.
