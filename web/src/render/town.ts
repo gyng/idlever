@@ -124,6 +124,8 @@ export type TownOpts = { board?: boolean; seen?: string[]; opened?: string[]; ki
 
 const hashN = (...xs: number[]): number => { let h = 2166136261; for (const x of xs) { h ^= x | 0; h = Math.imul(h, 16777619); h ^= h >>> 13; } return h >>> 0; };
 export const localDay = (now = new Date()): number => Math.floor((now.getTime() - now.getTimezoneOffset() * 60000) / 86400000);
+/** Local wall clock, sampled once; lighting stays continuous across minute boundaries. */
+export const localHour = (now = new Date()): number => now.getHours() + now.getMinutes() / 60 + now.getSeconds() / 3600 + now.getMilliseconds() / 3600000;
 const PARTIES_MAX = 6;
 /** Cut 109: the hero's house grows with the town (cottage · lean-to · two storeys at 2 and 4 buildings standing) — a look, no rule */
 export const houseLook = (s: { stage: number }): number => (s.stage >= 4 ? 3 : s.stage >= 2 ? 2 : 1);
@@ -626,7 +628,7 @@ export function createTownView(host: HTMLElement): TownView {
   function frame(): void {
     const s = state!;
     F.n = 0; F.lights.length = 0;
-    const hour = hourOverride ?? (new Date().getHours() + new Date().getMinutes() / 60);
+    const hour = hourOverride ?? localHour();
     F.night = nightOf(hour); F.amb = ambientOf(F.night);
     const night = F.night;
     ground();
