@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 93.011,
+  "failed": 0,
+  "results": [
+    {
+      "n": "qaj",
+      "code": 0,
+      "out": "ok   COLLECTED shows at the exit only (exit t800 D2; seen at t806 D2, t808 D2, t810 D2, t812 D2)\nok   the run log has links to test (D3 snap t0 first t10 · D4 snap t760 first t700)\nok   a seek drops a caption from before its tick (none) and keeps one at it (yyy at)\nok   paused clip offers Replay without internal tick chrome\nok   visible Replay appears only after original window ends\nok   pointer Replay restarts exact window and refuses duplicate clicks\nok   keyboard Replay starts same clip\nok   a link before its floor's snapshot finds its floor, never another depth's (t520 D2 → D2, t520 D3 → none, t650 D2 → D2)\nok   D3 t230 (floor snap t0, first t10): the clip is on D3, t210–t250\nok   D3 t230: captions from the window only (attack nearest)\nok   D4 t750 (floor snap t760, first t700): the clip is on D4, t730–t770\nok   D4 t750: captions from the window only (none)\nok   D4 t760 (floor snap t760, first t700): the clip is on D4, t740–t780\nok   D4 t760: captions from the window only (attack nearest)\nok   seed 516: one card per floor (D1 ×1 · D2 ×1)\nok   seed 516: no card over a fight (5 cards)\nok   seed 7: one card per floor (D1 ×1 · D2 ×1)\nok   seed 7: no card over a fight (3 cards)\nok   three cards bought on a full set (corridor_fighting, kite_archers, pack_break)\nok   the tab counts own rows: \"fighter · 4 rules\" beside \"4/4 rules + 3 tactics\" (7 rows listed, no sheet)\nok   a disabled ◆ buy is not the accent fill (bg rgba(255, 249, 223, 0.18), opacity 0.4)\nok   both disabled buys look alike (◆ rgba(255, 249, 223, 0.18) rgb(69, 94, 135) · $ rgba(255, 249, 223, 0.18) rgb(69, 94, 135))\nok   a short $ buy says so: \"$330 short\" ($120 of $450)\nok   fast: the override marks the preference's pick (sword)\nok   fast: the sheet reads \"loot choice\"\nok   fast: ⏸ takes the tap under the cage and keeps the sheet (▶, sheet true)\nok   fast: ▶▶| takes the tap, closes the sheet and picks nothing (sheet false, chose null)\nok   fast: a pick the player did not make is named on the ticker (took sword)\nok   fights: the override marks the preference's pick (sword)\nok   fights: the sheet reads \"loot choice\", \"storage full → sold\"\nok   fights: ⏸ takes the tap under the cage and keeps the sheet (▶, sheet true)\nok   fights: ▶▶| takes the tap, closes the sheet and picks nothing (sheet false, chose null)\nok   fights: a pick the player did not make is named on the ticker (took sword)\nok   the lit chip reads its rate with ×: \"13×\"\nok   all rows at 0 fires: none marked\nok   the × closes the drop sheet, the death screen stays (0 sheets, death)\nok   two rows tied at the minimum: none marked\nok   a unique minimum is marked (1)\nqaj: ok (38 checks)\n",
+      "ms": 93010,
+      "own": 92676
+    }
+  ]
+}

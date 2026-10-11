@@ -1,0 +1,10 @@
+client suite: targeted (5/166 groups)
+ok   fights:break    7.3s (7.0s)  fights: ok (6 checks)
+FAIL fights          202.8s (195.5s)  fights: FAIL (2 assertion(s), 0 error(s))
+     fights: FAIL (2 assertion(s), 0 error(s))
+     FAIL fast travels at 32× from the first tick (speed NaN)
+     FAIL fast watches a fight at 4× (speed NaN, frame undefined)
+ok   qaj:loot        210.3s (7.5s)  qaj: ok (10 checks)
+ok   legacy-tree     222.8s (12.5s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   watch-live-edge 249.7s (26.9s)  watch-live-edge: ok (10 checks)
+FAIL: 4/5 client gates in 249.7s

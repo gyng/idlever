@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 41.958,
+  "failed": 1,
+  "results": [
+    {
+      "n": "watch-live-edge",
+      "code": 1,
+      "out": "ok   fights: no dead stretch over 6 s without news (worst 3917 ms at {\"tick\":\"1169\",\"frontier\":\"1770\",\"speed\":\"48\",\"frame\":\"fight\"})\nok   fights: the standoff jumps (4 jumps; 12.6 s dead over a 17.4 s watch)\nFAIL fights: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (12.6 s; was ~18 s; step delay 85ms; transitions [{\"ms\":0,\"progress\":\"0\",\"tick\":\"0\",\"frontier\":\"80\"},{\"ms\":311,\"dead\":\"1\",\"progress\":\"0\",\"tick\":\"70\",\"frontier\":\"80\"},{\"ms\":3344,\"dead\":\"0\",\"progress\":\"0\",\"tick\":\"110\",\"frontier\":\"130\"},{\"ms\":4330,\"dead\":\"0\",\"progress\":\"190\",\"tick\":\"190\",\"frontier\":\"290\"},{\"ms\":7878,\"dead\":\"1\",\"progress\":\"190\",\"tick\":\"262\",\"frontier\":\"300\"},{\"ms\":11839,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"190\",\"tick\":\"1973\",\"frontier\":\"1970\"},{\"ms\":13417,\"dead\":\"1\",\"jumps\":\"2\",\"progress\":\"190\",\"tick\":\"3223\",\"frontier\":\"3220\"},{\"ms\":15044,\"dead\":\"1\",\"jumps\":\"3\",\"progress\":\"190\",\"tick\":\"3823\",\"frontier\":\"4460\"},{\"ms\":16897,\"dead\":\"1\",\"jumps\":\"4\",\"progress\":\"190\",\"tick\":\"5943\",\"frontier\":\"5940\"}])\nok   fights: the clock eases up — never one step past 64× from under half of it (none; top 48×)\nok   fights: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nok   one: no dead stretch over 6 s without news (worst 3729 ms at {\"tick\":\"372\",\"frontier\":\"1360\",\"speed\":\"4\",\"frame\":\"fight\"})\nok   one: the standoff jumps (6 jumps; 14.1 s dead over a 21.1 s watch)\nFAIL one: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (14.1 s; was ~18 s; step delay 85ms; transitions [{\"ms\":0,\"dead\":\"1\",\"progress\":\"0\",\"tick\":\"73\",\"frontier\":\"100\"},{\"ms\":2815,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"0\",\"tick\":\"113\",\"frontier\":\"150\"},{\"ms\":3054,\"dead\":\"0\",\"jumps\":\"1\",\"progress\":\"120\",\"tick\":\"120\",\"frontier\":\"150\"},{\"ms\":6465,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"120\",\"tick\":\"155\",\"frontier\":\"170\"},{\"ms\":7383,\"dead\":\"0\",\"jumps\":\"1\",\"progress\":\"190\",\"tick\":\"191\",\"frontier\":\"220\"},{\"ms\":10872,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"190\",\"tick\":\"227\",\"frontier\":\"240\"},{\"ms\":14665,\"dead\":\"1\",\"jumps\":\"2\",\"progress\":\"190\",\"tick\":\"1460\",\"frontier\":\"1460\"},{\"ms\":16391,\"dead\":\"1\",\"jumps\":\"3\",\"progress\":\"190\",\"tick\":\"2700\",\"frontier\":\"2700\"},{\"ms\":17924,\"dead\":\"1\",\"jumps\":\"4\",\"progress\":\"190\",\"tick\":\"2762\",\"frontier\":\"3850\"},{\"ms\":19551,\"dead\":\"1\",\"jumps\":\"5\",\"progress\":\"190\",\"tick\":\"5190\",\"frontier\":\"5190\"},{\"ms\":20744,\"dead\":\"1\",\"jumps\":\"6\",\"progress\":\"190\",\"tick\":\"5238\",\"frontier\":\"5940\"}])\nok   one: the clock eases up — never one step past 64× from under half of it (none; top 4×)\nok   one: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nwatch-live-edge: FAIL (2 assertion(s), 0 error(s))\n",
+      "ms": 41957,
+      "own": 41627
+    }
+  ]
+}
