@@ -1,7 +1,7 @@
 // Cut 30 §3 — the town hub (docs/TOWN.md, targets art/ui/targets/town/): the camp as a place. A fixed tile map with named plots and
 // a path graph; `townState(lineage, absence)` turns the core's `Lineage.town` into what stands and what walks (buildings with their
 // look, the next plot staked, the hero's loop, the absence's parties walking out of the mouth, pets, markers); the view draws it in
-// the pixel pipeline's register — one low-res target of town texels (instanced quads, `layers.ts`), upscaled k× with nearest
+// the pixel pipeline's register — one low-res target of town texels (a cached terrain bitmap and instanced sprite quads, `layers.ts`), upscaled k× with nearest
 // sampling, lit by a small light pass (the fire, the mouth's torches, the forge, windows at night; day and night from the local
 // clock). The Canvas-2D fallback (`view2d.ts` `drawTown2D`) draws the same frame while the GL context is lost or when none exists.
 //
@@ -12,6 +12,7 @@ import * as THREE from "three";
 import { QuadLayer, BAYER_GLSL } from "./layers";
 import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
+import { paintTownTerrain } from "./town-terrain";
 import LIGHTS from "./town_lights.json";   // a copy of art/town_lights.json (`python3 art/town_lights.py`): each sprite's painted warm emitters
 
 export const TILE = 16;
@@ -339,7 +340,7 @@ function drawPrimitive(g: CanvasRenderingContext2D, id: string, x: number, y: nu
 
 export type Quad = { s: Slot; x: number; y: number; z: number; w: number; h: number; flip: boolean; dim: number; fade: number };
 export type Light = { x: number; y: number; r: number; c: [number, number, number] };
-export type TownFrame = { x0: number; y0: number; w: number; h: number; k: number; W: number; H: number; quads: Quad[]; n: number; ground: Quad[]; groundKey: string; lights: Light[]; amb: [number, number, number]; night: number; live: number };
+export type TownFrame = { x0: number; y0: number; w: number; h: number; k: number; W: number; H: number; quads: Quad[]; n: number; terrain: HTMLCanvasElement | null; groundKey: string; lights: Light[]; amb: [number, number, number]; night: number; live: number };
 
 /** hour (0..24) → night 0..1: day 7–17, dusk 17–21, night 21–5, dawn 5–7 */
 export function nightOf(hour: number): number {
@@ -360,7 +361,6 @@ type Leg = { t0: number; t1: number; a: Pt; b: Pt };
 type Walker = { id: string; sprite: string[]; walk: string[]; h: number; legs: Leg[]; from: number; to: number; carry?: string; carryH?: number; lag: number;
   follow?: Walker; emerge?: boolean; vanish?: boolean; extend?: (w: Walker) => void; pet?: boolean };
 const SPEED = 40;
-const PATH_DIM = 0.75;   // the path graded down a step (the art note: brighter and stripier than the buildings beside the dark grass; the tile itself is calmer and darker since Cut 30 integration, so less of it here)   // texels a second (~2 tiles)
 function legsAlong(pts: Pt[], t0: number, speed = SPEED, out: Leg[] = []): number {
   let t = t0;
   for (let i = 1; i < pts.length; i++) { const d = dist(pts[i - 1]!, pts[i]!); if (d < 0.01) continue; out.push({ t0: t, t1: t + d / speed, a: pts[i - 1]!, b: pts[i]! }); t += d / speed; }
@@ -388,7 +388,7 @@ const SMOKE = ["9a958c", "7d7a74", "b4afa4"], EMBER = ["ffb04a", "ff7a2a", "ffd7
 // ---- the view ---------------------------------------------------------------------------------------------------------------------
 
 export type TownStats = { fps: number; frames: number; cpuMs: number; cpuP95: number; walkers: number; mode: "gl" | "2d"; glLost: boolean; k: number; night: number; idle: boolean; running: boolean;
-  buildings: string[]; staked?: string; markers: string[]; view: [number, number, number, number]; chest?: string; workers: string[]; ranks: Record<string, number> };
+  terrainPaints: number; terrainPaintMs: number; buildings: string[]; staked?: string; markers: string[]; view: [number, number, number, number]; chest?: string; workers: string[]; ranks: Record<string, number> };
 export type TownView = {
   readonly el: HTMLElement;
   setState(s: TownState): void;
@@ -448,7 +448,8 @@ export function createTownView(host: HTMLElement): TownView {
   let walkingIn: { t0: number; t1: number; done: () => void } | null = null;
   let stressN = 0;
   const arrive = new Map<string, Leg[]>();   // Cut 30.5: a worker hired on this mount walks out of the tent to his post
-  const F: TownFrame = { x0: 0, y0: 0, w: 1, h: 1, k: 1, W: 1, H: 1, quads: [], n: 0, ground: [], groundKey: "", lights: [], amb: [1, 1, 1], night: 0, live: 0 };
+  const F: TownFrame = { x0: 0, y0: 0, w: 1, h: 1, k: 1, W: 1, H: 1, quads: [], n: 0, terrain: null, groundKey: "", lights: [], amb: [1, 1, 1], night: 0, live: 0 };
+  let terrainPaints = 0, terrainPaintMs = 0;
   const rng = (n: number): number => (hashN(state?.seed ?? 1, n) % 100000) / 100000;
 
   // -- the walkers of a state --
@@ -531,58 +532,26 @@ export function createTownView(host: HTMLElement): TownView {
     if (!inView(x, y, s.w, s.h)) return;
     push(s, Math.round(x), Math.round(y), o.z ?? zOf(y), !!o.flip, o.dim ?? 1, o.fade ?? 0);
   }
-  /** the terrain (rebuilt when the stage, the view or the atlas changes) */
+  /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
   function ground(): void {
-    const s = state!; const key = `${atlas.version}|${s.stage}|${s.buildings.map((b) => b.id).join(",")}|${s.staked?.id ?? ""}`;
+    const s = state!, key = `${s.home}|${s.stage}|${s.buildings.map((b) => b.id).sort().join(",")}`;
     if (key === F.groundKey) return;
-    F.groundKey = key; F.ground = [];
-    const plaza = s.stage >= 4;
-    const standing = new Set(s.buildings.map((b) => DOOR[b.id]));   // a building's spur is trodden once it stands
-    // the path cells (the dirt along the graph's edges and round the fire; the plaza counts as path), then each cell's tile by the
-    // art's picking rule (art/town-ids.md: the sides whose neighbour is grass name the edge, corner, end or inner piece)
-    const path = new Uint8Array(MAP_W * MAP_H);
-    for (let y = 5 + OY; y < MAP_H; y++) for (let x = 0; x < MAP_W; x++) {
-      const c = { x: (x + 0.5) * TILE, y: (y + 0.5) * TILE };
-      if (dist(c, PLOTS.fire) / TILE < (plaza ? 2.1 : 1.6) || onPath(c, standing)) path[y * MAP_W + x] = 1;
-    }
-    const at = (x: number, y: number): boolean => x < 0 || x >= MAP_W || y >= MAP_H ? false : y < 5 + OY || !!path[y * MAP_W + x];
-    const pathTile = (x: number, y: number, hh: number): string => {
-      const n = !at(x, y - 1), e = !at(x + 1, y), so = !at(x, y + 1), w = !at(x - 1, y);
-      const k = (n ? 1 : 0) + (e ? 1 : 0) + (so ? 1 : 0) + (w ? 1 : 0);
-      if (k === 0) {
-        const d = !at(x + 1, y - 1) ? "ne" : !at(x - 1, y - 1) ? "nw" : !at(x + 1, y + 1) ? "se" : !at(x - 1, y + 1) ? "sw" : "";
-        return d ? `town_env_dirt_inner_${d}` : `town_env_dirt_${hh < 0.5 ? 0 : hh < 0.85 ? 1 : 2}`;
-      }
-      if (k === 1) return `town_env_dirt_edge_${n ? "n" : e ? "e" : so ? "s" : "w"}`;
-      if (k === 2) { if (n && so) return "town_env_dirt_edge_ns"; if (e && w) return "town_env_dirt_edge_ew"; return `town_env_dirt_corner_${n ? "n" : "s"}${e ? "e" : "w"}`; }
-      if (k === 3) return `town_env_dirt_end_${!n ? "s" : !e ? "w" : !so ? "n" : "e"}`;
-      return "town_env_dirt_isle";
-    };
-    for (let y = 0; y < MAP_H; y++) for (let x = 0; x < MAP_W; x++) {
-      const c = { x: (x + 0.5) * TILE, y: (y + 0.5) * TILE };
-      const hh = hashN(x, y, 5) % 1000 / 1000;
-      let id: string;
-      const fire = dist(c, PLOTS.fire) / TILE;
-      if (y < hillFoot(x)) id = "town_env_cliff";
-      else if (x <= CX - 18 && x >= CX - 19) id = "town_env_water";
-      else if (plaza && fire < 2.1) id = `town_env_plaza_${hh < 0.6 ? 0 : 1}`;
-      else if (path[y * MAP_W + x]) id = pathTile(x, y, hh);
-      else id = `town_env_grass_${hh < 0.62 ? 0 : hh < 0.84 ? 1 : hh < 0.95 ? 2 : 3}`;
-      const sl = atlas.get([id, "town_env_dirt_0"], TILE);
-      // the hillside above the mouth falls away into the dark toward the top (its shoulder against the night), each cell flipped by
-      // its hash so the boulders never line up in rows (the coordinator: the band read as a striped wall or water)
-      const hill = y < hillFoot(x) ? hillDim(y) : 1;
-      F.ground.push({ s: sl, x: x * TILE + TILE / 2, y: (y + 1) * TILE, z: 0, w: TILE, h: TILE, flip: hill < 1 && hh > 0.5, dim: id.includes("dirt") ? PATH_DIM : id.includes("plaza") ? 0.85 : hill, fade: 0 });
-    }
+    F.groundKey = key;
+    const standing = new Set(s.buildings.map((b) => DOOR[b.id]));
+    const started = performance.now();
+    F.terrain = paintTownTerrain({ width: MAP_W * TILE, height: MAP_H * TILE,
+      trails: EDGES.filter(([, b]) => !SPURS.has(b) || standing.has(b)).map(([a, b, r]) => ({ a: NODES[a]!, b: NODES[b]!, r: r * TILE })),
+      fire: PLOTS.fire, plaza: s.stage >= 4,
+      aprons: [...(s.home ? [PLOTS.house] : []), ...s.buildings.map((b) => PLOTS[b.id])], hillFoot, shadows: trees });
+    terrainPaintMs = performance.now() - started; terrainPaints++;
   }
   /** the hill's foot: a ragged line (runs of two columns, one in three, a tile further down, never by the mouth), not a ruled edge */
   const hillFoot = (x: number): number => 5 + OY + (Math.abs(x - CX) > 4 && hashN(x >> 1, 0, 7) % 3 === 0 ? 1 : 0);
   const hillDim = (y: number): number => 0.3 + 0.7 * Math.pow(Math.min(1, (y + 1) / (5 + OY)), 1.6);
   const DOOR: Record<string, string> = { blacksmith: "smith", bank: "bank", storehouse: "store", kennel: "kennel" };
   const SPURS = new Set(Object.values(DOOR));
-  const onPath = (c: Pt, standing: Set<string>): boolean => EDGES.some(([a, b, r]) => (!SPURS.has(b) || standing.has(b)) && segDist(c, NODES[a]!, NODES[b]!) <= r * TILE);
   /** the forest: trees on a jittered grid, cleared from the paths, the plots and the cliff */
-  let trees: (Pt & { k: boolean; d?: number })[] = [];
+  let trees: (Pt & { k: boolean; h: number; d?: number })[] = [];
   function forest(): void {
     trees = [];
     const keep = (p: Pt): boolean => {
@@ -601,14 +570,14 @@ export function createTownView(host: HTMLElement): TownView {
       const j = hashN(Math.round(gx * 10), Math.round(gy * 10), 9);
       const p = { x: (gx + ((j % 100) / 100 - 0.5) * 0.9) * TILE, y: (gy + (((j >> 8) % 100) / 100 - 0.5) * 0.8) * TILE };
       if ((j >> 16) % 100 < 18) continue;
-      if (keep(p)) trees.push({ ...p, k: (j >> 4) % 3 === 0 });
+      if (keep(p)) trees.push({ ...p, k: (j >> 4) % 3 === 0, h: 24 + (j % 4) * 4, d: .88 + ((j >> 8) % 4) * .04 });
     }
     // a thin wood up the hillside (dimmed with the slope), clear of the mouth: the band reads as a hill, not a wall
     for (let gy = 2.2; gy < 5.4 + OY; gy += 1.5) for (let gx = 0.5; gx < MAP_W; gx += 1.6) {
       const j = hashN(Math.round(gx * 10), Math.round(gy * 10), 13);
       const p = { x: (gx + ((j % 100) / 100 - 0.5) * 1.2) * TILE, y: (gy + (((j >> 8) % 100) / 100 - 0.5) * 0.9) * TILE };
       if ((j >> 16) % 100 < 55 || Math.abs(p.x - PLOTS.mouth.x) < 4.6 * TILE) continue;
-      trees.push({ ...p, k: (j >> 4) % 2 === 0, d: hillDim(p.y / TILE - 0.5) * 0.85 });
+      trees.push({ ...p, k: (j >> 4) % 2 === 0, h: 24 + (j % 4) * 4, d: hillDim(p.y / TILE - 0.5) * 0.85 });
     }
     trees.sort((a, b) => a.y - b.y);
   }
@@ -662,8 +631,7 @@ export function createTownView(host: HTMLElement): TownView {
     const night = F.night;
     ground();
     // trees (two kinds), the cliff's rim of trees
-    const t0s = atlas.get("town_env_tree_0", 32), t1s = atlas.get("town_env_tree_1", 24);
-    for (let i = 0; i < trees.length; i++) { const p = trees[i]!, sl = p.k ? t1s : t0s; if (inView(p.x, p.y, sl.w, sl.h)) push(sl, Math.round(p.x), Math.round(p.y), zOf(p.y), false, p.d ?? 1); }
+    for (let i = 0; i < trees.length; i++) { const p = trees[i]!, sl = atlas.get(p.k ? "town_env_tree_1" : "town_env_tree_0", p.h); if (inView(p.x, p.y, sl.w, sl.h)) push(sl, Math.round(p.x), Math.round(p.y), zOf(p.y), false, p.d ?? 1); }
     // the mouth, its torches, the depth plaque's light
     const m = PLOTS.mouth;
     sprite(["town_mouth_cave"], m.h, m.x, m.y);
@@ -851,7 +819,6 @@ export function createTownView(host: HTMLElement): TownView {
       const c0 = performance.now();
       fit();
       frame();
-      if (atlas.version !== atlasSeen) { atlasSeen = atlas.version; F.groundKey = F.groundKey + "*"; }
       if (gl && !glLost) { gl.render(F); if (c2d) c2d.style.display = "none"; }
       else { const c = view2d(); c.style.display = "block"; drawTown2D(c, F, atlas.canvas); }
       cpu.push(performance.now() - c0); if (cpu.length > 120) cpu.shift();
@@ -861,7 +828,6 @@ export function createTownView(host: HTMLElement): TownView {
     }
     raf = requestAnimationFrame(loop);
   }
-  let atlasSeen = -1;
   const start = (): void => { if (!raf && !disposed) { last = performance.now(); raf = requestAnimationFrame(loop); } };
   const onVis = (): void => { if (!document.hidden) start(); };
   document.addEventListener("visibilitychange", onVis);
@@ -941,7 +907,7 @@ export function createTownView(host: HTMLElement): TownView {
       const s = state;
       const sorted = [...cpu].sort((a, b) => a - b);
       return { fps: fpsWin.length, frames, cpuMs: cpu[cpu.length - 1] ?? 0, cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0, walkers: F.live, mode: gl && !glLost ? "gl" : "2d", glLost, k: F.k, night: F.night, idle: performance.now() - lastInput > IDLE_MS, running: !!raf,
-        buildings: s?.buildings.map((b) => b.id) ?? [], staked: s?.staked?.id, markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [], view: [F.x0, F.y0, F.w, F.h],
+        terrainPaints, terrainPaintMs, buildings: s?.buildings.map((b) => b.id) ?? [], staked: s?.staked?.id, markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [], view: [F.x0, F.y0, F.w, F.h],
         chest: s?.chest?.state, workers: s?.workers.map((w) => `${w.id}${w.lit ? "(lit)" : w.paused ? "(off)" : ""}`) ?? [],
         ranks: Object.fromEntries((s?.workers ?? []).filter((w) => !w.lit && w.rank > 1).map((w) => [w.id, w.rank])) };
     },
@@ -1017,6 +983,7 @@ class GLTown {
   private scene = new THREE.Scene();
   private camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 200);
   private tex: THREE.CanvasTexture;
+  private terrainTex: THREE.CanvasTexture;
   private groundL: QuadLayer; private objL: QuadLayer;
   private blitScene = new THREE.Scene(); private blitCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private mat: THREE.ShaderMaterial;
@@ -1031,7 +998,9 @@ class GLTown {
     this.rt = new THREE.WebGLRenderTarget(4, 4, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, generateMipmaps: false, depthBuffer: true, stencilBuffer: false, colorSpace: THREE.NoColorSpace });
     this.tex = new THREE.CanvasTexture(atlas.canvas);
     Object.assign(this.tex, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, generateMipmaps: false, colorSpace: THREE.NoColorSpace, flipY: true, premultiplyAlpha: false });
-    this.groundL = new QuadLayer(this.tex, MAP_W * MAP_H + 16, 1, 0);
+    this.terrainTex = new THREE.CanvasTexture(document.createElement("canvas"));
+    Object.assign(this.terrainTex, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, generateMipmaps: false, colorSpace: THREE.NoColorSpace, flipY: true });
+    this.groundL = new QuadLayer(this.terrainTex, 1, 1, 0);
     this.objL = new QuadLayer(this.tex, 1600, 1, 1);
     this.scene.add(this.groundL.mesh, this.objL.mesh);
     this.camera.position.set(0, 0, 100);
@@ -1040,7 +1009,7 @@ class GLTown {
         uL: { value: this.lv }, uC: { value: this.lc }, uN: { value: 0 }, uOrigin: { value: new THREE.Vector2() }, uTime: { value: 0 } } });
     this.blitScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.mat));
   }
-  restored(): void { this.groundKey = ""; this.atlasV = -1; this.tex.needsUpdate = true; }
+  restored(): void { this.groundKey = ""; this.atlasV = -1; this.tex.needsUpdate = true; this.terrainTex.needsUpdate = true; }
   /** the GL context is gone (forced lost on dispose, or by the browser) */
   isLost(): boolean { return this.renderer.getContext().isContextLost(); }
   render(F: TownFrame): void {
@@ -1050,7 +1019,10 @@ class GLTown {
     if (this.atlas.version !== this.atlasV) { this.atlasV = this.atlas.version; this.tex.needsUpdate = true; }
     if (F.groundKey !== this.groundKey) {
       this.groundKey = F.groundKey; const L = this.groundL; L.begin();
-      for (const q of F.ground) L.push(q.x, -q.y, 0, q.w, q.h, q.s.u0, q.s.v0, q.s.u1, q.s.v1);
+      if (F.terrain) {
+        this.terrainTex.image = F.terrain; this.terrainTex.needsUpdate = true;
+        L.push(MAP_W * TILE / 2, -MAP_H * TILE, 0, MAP_W * TILE, MAP_H * TILE, 0, 0, 1, 1);
+      }
       L.end();
     }
     const O = this.objL; O.begin();
@@ -1067,5 +1039,5 @@ class GLTown {
   }
   // (the context is let go, not left for the browser to reap: a camp mounted a dozen times held a dozen contexts, and Chrome's cap
   // then forced the oldest live one — the watch's — lost)
-  dispose(): void { this.groundL.dispose(); this.objL.dispose(); this.mat.dispose(); this.rt.dispose(); this.tex.dispose(); this.renderer.dispose(); this.renderer.forceContextLoss(); }
+  dispose(): void { this.groundL.dispose(); this.objL.dispose(); this.mat.dispose(); this.rt.dispose(); this.tex.dispose(); this.terrainTex.dispose(); this.renderer.dispose(); this.renderer.forceContextLoss(); }
 }
