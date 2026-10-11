@@ -1,0 +1,46 @@
+{
+  "candidate": "72e90fd",
+  "status": "ABORTED after confirmed Cut25 normal-speed failure; no whole acceptance or raters",
+  "frozen": {
+    "dir": "scratchpad/blind-72e90fd-frozen/dist",
+    "url": "http://127.0.0.1:5266/",
+    "files": 252,
+    "manifestSha256": "3425833e76eb1a05a1b693b578ca415ff1eeddc250737a72f4b8d6854c48687d",
+    "servedHashes": "252/252 match",
+    "shippingWasmSha256": "e007e5a3631341679e4f92f5b421fbe877920cb530a96fb41a34cbd03faa79b5",
+    "previewExecSession": 77243
+  },
+  "native": {
+    "cargoTests": "796 passed",
+    "clippy": "clean",
+    "gates": "routine full --fresh: all PASS but the 2-seed outpace row 86% (recorded); PICKED+L King median 7 (min 5)",
+    "deviations": [
+      "outpace 2-seed row",
+      "automation-pays (Cut 110 \u00a74)",
+      "the King 700 hp / 21-27 (smooth curve)",
+      "top Legacy ranks exceed a day's income late"
+    ],
+    "reuseReason": "Only renderer, regression and evidence changed since906990f; no Rust/bridge/art inputs changed. Existing shipping package matches original frozen WASM byte for byte. Original native full log preserved; source key0f1f86e2ec058e24.",
+    "fullGateDisposition": "Original native routine full exited1 on the two-seed outpace row; never described as unqualified full green.",
+    "log": "scratchpad/blind-906990f-frozen/acceptance-resume/claude-native-full.log",
+    "targeted16": {
+      "result": "PASS requested rows; outpace97%; targeted check, not a full gate",
+      "log": "scratchpad/blind-b6df4f2-frozen/acceptance/claude-native-targeted16.log",
+      "sha256": "ee18c18a23186347ddf79181ab7827318ec176de5b721c84b27cf5a8e57429a6"
+    }
+  },
+  "browser": {
+    "full": {
+      "status": "ABORTED130 after confirmed assertion failure",
+      "execSession": 75628,
+      "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
+      "expectedGroups": 157,
+      "failure": "Cut25 plain1x measured1.9 then1",
+      "log": "scratchpad/blind-72e90fd-frozen/acceptance/client-aborted-cut25.log",
+      "sha256": "c402889987e285e4ee7fb2fb5100b293f987f88ea30933f7a670f0ed681aea3e",
+      "finishedUtc": "2026-10-11T04:36:31.270193+00:00",
+      "completedGroups": 22,
+      "stoppedChildren": "pgrep node tests/ returned no processes"
+    }
+  }
+}
