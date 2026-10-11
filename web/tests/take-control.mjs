@@ -155,48 +155,61 @@ try {
   const h1 = await acts(page); await sleep(1200); const h2 = await acts(page);
   check(h1 - h0 > 1, `a held arrow repeats (${h1 - h0} steps in 1.6 s, open run ${Math.max(...runs)})`);
   check(h2 - h1 <= 1, `the repeat stops on release (${h2 - h1} after)`);
-  // the mouse: a click on the floor walks there — one step a turn — until he arrives, a new foe shows, or an order is refused
-  await awaiting(page); await settle(page);
-  const s0 = await snapOf(page);
-  let goal = null;
-  for (const t of (await reachable(page)).filter((t) => t.d >= 3).sort((p, q) => q.d - p.d)) { const at = await tileAt(page, t.x, t.y); if (at.free) { goal = { ...t, ...at }; break; } }
-  check(!!goal, `a far floor tile on screen to walk to (${goal ? `${goal.d} steps` : "none"})`);
-  if (goal) {
-    const w0 = await acts(page);
-    await page.mouse.move(goal.sx, goal.sy); await sleep(100);
-    check(await page.evaluate(() => document.querySelector("canvas.view")?.dataset.ctlCursor) === "move", "a move cursor over the floor");
-    check(await page.evaluate(() => { const hv = document.querySelector(".ctl-hover"); return !!hv && !hv.hidden; }), "the hovered tile is marked");
-    await page.mouse.click(goal.sx, goal.sy);
-    let walked = false;
-    for (let i = 0; i < 80; i++) { await sleep(150); const d = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive); if (d === "walk") walked = true; if (walked && !d) break; }
-    const w1 = await acts(page), s1 = await snapOf(page);
-    const there = s1.x === goal.x && s1.y === goal.y, newFoe = s1.foes.some((f) => !s0.foes.some((g) => g.id === f.id)), refusedW = /^can't/.test(s1.order ?? "");
-    if(w1-w0<2)out.push(`     walk diagnostic ${JSON.stringify({start:s0,end:s1,goal,orders:w1-w0,panel:await page.evaluate(()=>({stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
-    check(w1 - w0 >= 2, `a click walks several tiles, one order a turn (${w1 - w0} orders for ${goal.d} steps)`);
-    check(there || newFoe || refusedW || s1.foes.some((f) => Math.max(Math.abs(f.x - s1.x), Math.abs(f.y - s1.y)) <= 1),
-      `the walk ends at the tile, a new foe, or a refusal (${there ? "there" : newFoe ? "a foe showed" : refusedW ? s1.order : "close foe"})`);
-  }
-  // a click on him stops a walk
-  await awaiting(page);
-  const far = (await reachable(page)).filter((t) => t.d >= 4);
-  let stopTile = null; for (const t of far) { const at = await tileAt(page, t.x, t.y); if (at.free) { stopTile = at; break; } }
-  if (stopTile) {
-    await page.mouse.click(stopTile.sx, stopTile.sy); await sleep(200);
-    // The sprite moves while a coordinate crosses the browser/Node boundary.
-    // Sample and dispatch this pointer gesture together so it actually hits him.
-    const at = await page.evaluate(() => {
-      const canvas=document.querySelector('canvas.view'),r=window.__viewer.debugRects().find(q=>q.hero),c=canvas.getBoundingClientRect(),b=r.drawn??r;
-      const sx=c.left+b.x+b.w/2,sy=c.top+b.y+b.h/2,init={bubbles:true,pointerType:'mouse',pointerId:1,isPrimary:true,clientX:sx,clientY:sy,button:0};
-      canvas.dispatchEvent(new PointerEvent('pointerdown',{...init,buttons:1}));
-      canvas.dispatchEvent(new PointerEvent('pointerup',{...init,buttons:0}));
-      return {sx,sy,hitHero:window.__controlPointerTrace.at(-1)?.hitHero};
-    });
+  // Multi-step walking needs an uninterrupted path. The preceding combat/held
+  // inputs can leave a foe two tiles away; its next move correctly stops the
+  // drive after one order. Exercise the same >=2-order bar on an independent
+  // fresh real-WASM run, before those inputs alter its state. No state grants.
+  {
+    const page = await browser.newPage({ viewport: { width: 400, height: 800 } });
+    await boot(page);
+    check(await page.evaluate(() => window.__riddle.kind) === "wasm", "the independent walk fixture uses real wasm");
+    await page.click(".ctl-toggle");
+    // the mouse: a click on the floor walks there — one step a turn — until he arrives, a new foe shows, or an order is refused
+    await awaiting(page); await settle(page);
+    const s0 = await snapOf(page);
+    let goal = null;
+    for (const t of (await reachable(page)).filter((t) => t.d >= 3).sort((p, q) => q.d - p.d)) { const at = await tileAt(page, t.x, t.y); if (at.free) { goal = { ...t, ...at }; break; } }
+    check(!!goal, `a far floor tile on screen to walk to (${goal ? `${goal.d} steps` : "none"})`);
+    if (goal) {
+      const w0 = await acts(page);
+      await page.mouse.move(goal.sx, goal.sy); await sleep(100);
+      check(await page.evaluate(() => document.querySelector("canvas.view")?.dataset.ctlCursor) === "move", "a move cursor over the floor");
+      check(await page.evaluate(() => { const hv = document.querySelector(".ctl-hover"); return !!hv && !hv.hidden; }), "the hovered tile is marked");
+      await page.mouse.click(goal.sx, goal.sy);
+      let walked = false;
+      for (let i = 0; i < 80; i++) { await sleep(150); const d = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive); if (d === "walk") walked = true; if (walked && !d) break; }
+      const w1 = await acts(page), s1 = await snapOf(page);
+      const there = s1.x === goal.x && s1.y === goal.y, newFoe = s1.foes.some((f) => !s0.foes.some((g) => g.id === f.id)), refusedW = /^can't/.test(s1.order ?? "");
+      if(w1-w0<2)out.push(`     walk diagnostic ${JSON.stringify({start:s0,end:s1,goal,orders:w1-w0,panel:await page.evaluate(()=>({stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
+      check(w1 - w0 >= 2, `a click walks several tiles, one order a turn (${w1 - w0} orders for ${goal.d} steps)`);
+      check(there || newFoe || refusedW || s1.foes.some((f) => Math.max(Math.abs(f.x - s1.x), Math.abs(f.y - s1.y)) <= 1),
+        `the walk ends at the tile, a new foe, or a refusal (${there ? "there" : newFoe ? "a foe showed" : refusedW ? s1.order : "close foe"})`);
+    }
+    // a click on him stops a walk
+    await awaiting(page);
+    const far = (await reachable(page)).filter((t) => t.d >= 4);
+    let stopTile = null; for (const t of far) { const at = await tileAt(page, t.x, t.y); if (at.free) { stopTile = at; break; } }
+    if (stopTile) {
+      await page.mouse.click(stopTile.sx, stopTile.sy); await sleep(200);
+      // The sprite moves while a coordinate crosses the browser/Node boundary.
+      // Sample and dispatch this pointer gesture together so it actually hits him.
+      const at = await page.evaluate(() => {
+        const canvas=document.querySelector('canvas.view'),r=window.__viewer.debugRects().find(q=>q.hero),c=canvas.getBoundingClientRect(),b=r.drawn??r;
+        const sx=c.left+b.x+b.w/2,sy=c.top+b.y+b.h/2,init={bubbles:true,pointerType:'mouse',pointerId:1,isPrimary:true,clientX:sx,clientY:sy,button:0};
+        canvas.dispatchEvent(new PointerEvent('pointerdown',{...init,buttons:1}));
+        canvas.dispatchEvent(new PointerEvent('pointerup',{...init,buttons:0}));
+        const trace = window.__controlPointerTrace.at(-1);
+        return {sx,sy,hitHero:trace?.hitHero,wasWalking:trace?.drive === "walk"};
+      });
+      check(at.wasWalking===true,'the hero click interrupts an active walk');
     check(at.hitHero===true,'the stop pointer hits the currently drawn hero');
-    await sleep(200);
-    const stillWalking = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive);
-    if(stillWalking)out.push(`     stop diagnostic ${JSON.stringify({aim:at,originalDrive:stillWalking,panel:await page.evaluate(()=>({drive:document.querySelector('.ctl')?.dataset.drive,stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
-    check(!stillWalking, "a click on him stops the walk");
-    await page.keyboard.press("Escape");
+      await sleep(200);
+      const stillWalking = await page.evaluate(() => document.querySelector(".ctl")?.dataset.drive);
+      if(stillWalking)out.push(`     stop diagnostic ${JSON.stringify({aim:at,originalDrive:stillWalking,panel:await page.evaluate(()=>({drive:document.querySelector('.ctl')?.dataset.drive,stop:document.querySelector('.ctl')?.dataset.stop,note:document.querySelector('.ctl-note')?.textContent,trace:window.__controlPointerTrace.slice(-3)}))})}`);
+      check(!stillWalking, "a click on him stops the walk");
+      await page.keyboard.press("Escape");
+    }
+    await page.close();
   }
   // release, then the old checks (the rules play on)
   await page.keyboard.press("Escape");
