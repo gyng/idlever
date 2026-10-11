@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "source": "art/menu/title-wordmark-v1.png",
+  "runtime": "web/public/art/title-wordmark-v1.webp",
+  "size": [
+    2048,
+    768
+  ],
+  "mode": "RGBA",
+  "alphaCorners": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "generationPrompt": "art/prompts/p139_title_wordmark.txt",
+  "edit": "Remove surrounding fog/haze only; retain letters/palette/spacing/texture.",
+  "sourceSha256": "95fe93658ec6cf03205930b989ab0655bd6f0da5ae1f67db8873d87afe81fcd1",
+  "runtimeSha256": "e849d66361939b9d06fbdc91bd54660522e2b154dae53e4630083f7e12974463",
+  "processing": "Lanczos resample to1024x384, then lossless WebP encoding; generated alpha preserved",
+  "runtimeSize": [
+    1024,
+    384
+  ],
+  "editPrompt": "art/prompts/p139_title_wordmark_edit.txt"
+}
