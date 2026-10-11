@@ -1,3 +1,11 @@
+# Cut147 native regression confirmed / early diagnostic — 2026-10-11
+
+Routine full on af152eb terminalFAIL source6df5888846e389b8: outpace86% vs90 sole failed selected bar; dayplayer294.2s, metrics119.0s/wire40.1s PASS. Exact completed current IDLE/PICKED jobs match old milestone hours: seed1 IDLE D8/D18 at8/24h vs PICKED16/32h, later picked faster. Original source0f1f86e2ec058e24 fullfailure/job bytes preserved, not rewritten as green.
+
+Bounded actual seed1 two-day verbose diagnostic (not a gate, exits1 on partial-horizon bars) locates D8 delay BEFORE first package swap: PICKED Steady first8h best7, then Guarded. Read-only new loadout_check actual earned camps/no grants: PICKED saved/+1axe, no brought item, all earned item allD7/16runs/no deaths after8h. IDLE original/no-item D8/16runs/no deaths; bringing earnedaxe D9/17runs/4deaths. Removing axe is NOT a solution. Sources also differ in first-session duration/heir/trait: IDLE heir2 cowardly/fighterL2, PICKED heir1 curious/fighterL3. No demonstrated game-mechanic cause or tuning edit. Source camps/full output gzip, raw logs and exact completed jobs hashed docs/evidence/cut147.
+
+Next audit early first-session/heir/package behavior and the authoritative routine/statistical acceptance scope before proposing a change; never lower90%, change seeds or silently alter bot decisions. Full native acceptance remains FAIL, whole final client still pending. No new freeze/ratings/score certificate. Goal>=80 ACTIVE/unverified. No deployment.
+
 # Cut146 completed TRY prices — 2026-10-11
 
 Native saved King237 audit returns a valid price; browser background deathDeltas priced its mirror while foreground death reread stayed pending. Lanes now retain the same-mirror Rust pick for matching generation/run/id/variant only (four records), clear on mutations, reject in-flight stale results/failures, and keep independent replies. Historical screens refresh using the same one patch-pricing request. Price/name/arrow use explicit tablet rows to prevent phone crowding. No Rust game source changes; diagnostic death_check now includes refreshed pick/cache fields.
