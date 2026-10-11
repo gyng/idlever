@@ -6,4 +6,4 @@ Update only test setup to click the public New game button before awaiting boot.
 
 The first separate production startup diagnostic incorrectly waited on window.__riddle without dev=1, where the debug object is intentionally absent. Its timeout is diagnostic error, not evidence of product startup failure. Corrected diagnostic enables inspection without bypassing the first-visit title.
 
-Corrected scoped checks PASS2/2 in16.6s: grounding both widths, menus81 checks. Production diagnostic title/no-engine→New game/real-WASM/camp PASS. Original whole and unchanged serialized failures retained. New complete158-group run pending.
+Corrected scoped checks PASS2/2 in12.8s: grounding both widths, menus81 checks. Production diagnostic title/no-engine→New game/real-WASM/camp PASS. Original whole and unchanged serialized failures retained. New complete158-group run LIVE67909, log /tmp/riddle-d34605e-client-settled.log.

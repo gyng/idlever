@@ -8,7 +8,7 @@
     "8246877",
     "d34605e"
   ],
-  "status": "original full FAILED157/158; grounding/menu scoped correction passes; complete rerun pending",
+  "status": "original full FAIL157/158 retained; corrected complete158-group rerun live; no fresh raters",
   "includes": "First-visit menus/direct saved loads, corrected Normal-speed selection/resumption, original-style painted landscape, continuous local wall-clock lighting. Monochrome personal lanterns for town humans at dusk/night.",
   "frozen": {
     "dir": "scratchpad/blind-d34605e-frozen/dist",
@@ -320,8 +320,18 @@
       "contract": "docs/CUT135_GROUNDING_MENU_SETUP.md",
       "unchangedReproduction": "FAIL0/1 in31.3s at boot wait",
       "correction": "Public New game action before boot; original overlap/Z/count/error assertions unchanged.",
-      "scoped": "PASS2/2, grounding2widths and menu81checks",
+      "scoped": "PASS2/2 in12.8s, grounding2widths and menu81checks",
       "productChange": "none"
+    },
+    "correctedFull": {
+      "status": "RUNNING",
+      "execSession": 67909,
+      "testSetupCommit": "6cc3ff5",
+      "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
+      "expectedGroups": 158,
+      "log": "/tmp/riddle-d34605e-client-settled.log",
+      "utc": "2026-10-11T05:37:39.067370+00:00",
+      "applicationUnchanged": "d34605e frozen261assets retained"
     }
   },
   "artifacts": {

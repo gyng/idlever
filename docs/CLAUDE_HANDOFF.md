@@ -1,3 +1,7 @@
+# Corrected full acceptance live — 2026-10-11
+
+Current **67909 LIVE**, log `/tmp/riddle-d34605e-client-settled.log`, TEST_JOBS3/HEAVY_WIDTH1,158groups. Poll same handle; do not restart on quiet output. No source/test/art edits or other heavy browser/native work while it runs. Product remains frozen d34605e on5269/session96044; only grounding setup changed in6cc3ff5, pushed. Original complete1808 FAIL157/1581432.7s and unchanged61239 FAIL0/131.3s retained. Corrected scoped57261 PASS2/2 **12.8s** (earlier prose16.6 corrected), groundingbothwidths/menu81. Original assertions untouched. No blind release until current whole terminalPASS. No new cards/raters or deployment. Prepared brief-only fresh pair seeds313/317 drivers5380/5381 still unreleased. Goal≥80 remains active/unproven.
+
 # Complete original acceptance and grounding setup correction — 2026-10-11
 
 Original full1808 terminalFAIL157/158 in1432.7s. Sole failurehero-grounding waits for boot on a fresh plain URL without choosing New game. Unchanged isolated61239 alsoFAIL0/1 in31.3s. Public-entry correction only test setup now clicks New game, unchanged overlap/Z/hero/count/errors checks pass bothwidths; menus81 pass. Scoped57261 terminalPASS2/2. ContractCUT135. Original full/repro logs preserved under `scratchpad/blind-d34605e-frozen/acceptance` and metadata; no app/source/art/WASM changes. New complete158 acceptance needed before blind release. No new raters/cards/deploy.
