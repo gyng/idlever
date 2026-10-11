@@ -1,3 +1,19 @@
+# Validation speed tier COMPLETE — 2026-10-12
+
+Owner requested 20% time / useful routine coverage. Routine benchmark23932 TERMINAL PASS37/37,205.7s (3m26s); complete revalidation58153 TERMINAL FAIL163/166,1770.4s (29m30s). Routine uses11.6% of new full /12.2% of original1688s baseline. Eight harness checks PASS. pnpm test now routine37journey groups; pnpm test:full and no-argument runner retain all166 and future discovery. --list/--report expose scope/timings/raw results; no assertions or game source changed. docs/DEV_VALIDATION_TIERS.md and docs/evidence/validation-tiers preserve exact coverage and raw terminal results. Coverage is risk-based, not measured80% defect/assertion coverage. Initial Node subprocess EPERM resolved escalation; initial pnpm -- separator error corrected and tested.
+
+Next original goal work: investigate full failures cut12 locator .fc-refine missing, take-control availability, watch-live-edge timing. Smoke watch-live-edge PASS on separate run does not rewrite whole FAIL. No native acceptance queue launched; controller1767 terminated; do not poll completed23932/58153. Experimental dayplayer remains dirty/unadopted; goal>=80 ACTIVE/unverified, complete native acceptance/QA/freeze/TWO fresh complete blind ratings still required. No deployment.
+
+# Validation tier benchmark LIVE — 2026-10-12
+
+Complete revalidation58153 TERMINAL exit1: 163/166,1770.4s. Failed cut12, take-control, watch-live-edge; clarity:paint PASS. Raw log docs/evidence/validation-tiers/full-revalidation.log. No native queue launched; controller1767 terminated. Do not poll finished handles. Routine benchmark session23932 LIVE, /tmp/riddle-validation-smoke.log, JSON scratchpad/validation-tiers/smoke-results.json; pnpm test -- --report now supported (initial separator parsing error corrected). Preserve terminal evidence, measure target <=337.6s, finish docs/commit harness only. Release acceptance remains blocked by full failures, goal>=80 ACTIVE/unverified, no deploy. Do not adopt dirty dayplayer.
+
+# Validation speed tier work — 2026-10-12
+
+Latest owner request: target 20% time / most useful routine coverage. New uncommitted routine client tier selects 37 of 166 unchanged groups across ten critical journey areas; pnpm test uses smoke, pnpm test:full and no-argument node tests/run.mjs retain complete discovery. Added --list and JSON --report. Five selection/CLI contract tests PASS after sandbox subprocess EPERM was resolved with escalation. Product sources/assertion bars unchanged. See docs/DEV_VALIDATION_TIERS.md; benchmark pending, do not claim achieved runtime yet.
+
+Controller cell1767 was deliberately terminated to prevent launching the CPU-heavy native queue during the routine benchmark. Underlying COMPLETE client revalidation session58153 remains LIVE, directly owned via tools.write_stdin; log /tmp/riddle-cut164-whole-client-revalidation.log. Do not wait1767 or restart58153. No native queue has launched. Once full run finishes, preserve its terminal result and benchmark smoke alone with --report; then update docs/evidence and commit only harness/docs, excluding experimental dayplayer and scratchpad. Full release/pre-blind acceptance remains required. Prior goal >=80 ACTIVE/unverified; no deployment.
+
 # Cut164 focused pass / complete revalidation LIVE — 2026-10-12
 
 Original whole-client80724 FAIL165/166/1688s preserved. Functions controller1747 TERMINAL with client exit1/native_started=false, no native queued job launched. Focused unchanged-source/bar clarity:paint86754 terminalPASS5 checks32.6s. Source audit fake-lag forecast350ms, refine2500ms, app debounce30ms; no product or timing-bar changes. Post-failure unrelated armee26-28CPU cores observed, no external process modified; exact overlap/causation not proved. Full failure is not rewritten green by narrow pass.

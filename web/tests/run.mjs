@@ -1,19 +1,25 @@
 #!/usr/bin/env node
-// `pnpm test`: every client gate at once, each in its own headless browser against the dev server
-// (tools/dev.sh starts or reuses it). Output is printed per test as it finishes; exit 1 if any failed.
+// `pnpm test`: critical journey smoke; `pnpm test:full` / no-argument runner: all client gates.
+// Each test uses its own headless browser against a suite-owned no-HMR Vite server.
+// Output is printed as each finishes; exit 1 if any failed.
 //   node tests/run.mjs [name…]        e.g. node tests/run.mjs fights cut12 clarity:paint
 // A name `file:parts` runs `tests/<file>.mjs --part=<parts>` (clarity's four parts run side by side: the whole walk was one
 // 4-minute test the suite waited on — docs/ITERATION_SPEED.md, round 3); bare `clarity` and `ui` run all their parts.
 import { spawn } from "node:child_process";
 import { failureOutput } from "./lib/failure-output.mjs";
-import { UI_PARTS } from "./lib/ui-parts.mjs";
-import { readdirSync } from "node:fs";
+import { expand, selectSuite, SMOKE_AREAS } from "./lib/suites.mjs";
+import { readdirSync, mkdirSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 import net from "node:net";
 // Every tests/*.mjs but this runner, screen-time.mjs and town-gpu.mjs (timing gates the coordinator runs on the GPU).
-const PARTS = { ui: UI_PARTS.map(part => `ui:${part}`), clarity: ["clarity:core,watch", "clarity:hold", "clarity:card", "clarity:paint", "clarity:deep"] };
-const expand = (n) => PARTS[n] ?? [n];
 const ALL = readdirSync("tests").filter((f) => f.endsWith(".mjs") && !["run.mjs", "screen-time.mjs", "town-gpu.mjs"].includes(f)).map((f) => f.slice(0, -4)).sort().flatMap(expand);
-const names = process.argv.slice(2).length ? process.argv.slice(2).flatMap(expand) : ALL;
+const selected = selectSuite(process.argv.slice(2), ALL);
+const { names } = selected;
+if (selected.list) {
+  console.log(JSON.stringify({ ...selected, areas: selected.suite === "smoke" ? SMOKE_AREAS : undefined }, null, 2));
+  process.exit(0);
+}
+console.log(`client suite: ${selected.suite} (${names.length}/${ALL.length} groups)${selected.suite === "smoke" ? "; critical journeys, not full acceptance" : ""}`);
 const t0 = Date.now();
 // The suite's own dev server (tests/vite.test.config.ts: no watcher, no HMR) on a free port, for this run only — the shared
 // :5219 server reloads every page on any edit in web/src (other agents' work) and a stale one serves old transforms. The
@@ -32,12 +38,12 @@ if (!process.env.RIDDLE_PORT) {
 // timing gates (clarity's rates, fights' holds) into flakes; the timing gates start first, then the rest
 // longest first (`OWN`: each test's own seconds in a quiet suite, 2026-09-26 — cut25's real-wasm watch
 // started last and ended the suite alone), sharing the remaining slots (`TEST_JOBS` overrides the width).
-const TIMING = ["fights", "cut13", "clarity:deep", "clarity:card", "clarity:core,watch"];
+const TIMING = ["fights:break", "fights", "cut13", "clarity:deep", "clarity:card", "clarity:core,watch"];
 const OWN = { cut25: 180, fights: 128, qaj: 88, "ui:keep": 40, "ui:frame": 28, "ui:stall": 25, "ui:qa": 22, "ui:cut18": 19, "ui:cut19": 18, "clarity:hold": 81, "clarity:deep": 66, cut13: 61, "clarity:card": 55, qa9: 52, screens: 47, "clarity:core,watch": 42, cut27: 38, cut23: 36, "clarity:paint": 30 };
 const own = (n) => OWN[n] ?? 20;
 const SOLO = ["clarity:paint"];   // (below: last, alone)
 const order = [...names].sort((a, b) => (SOLO.includes(a) ? 1 : 0) - (SOLO.includes(b) ? 1 : 0) || (TIMING.includes(b) ? 1 : 0) - (TIMING.includes(a) ? 1 : 0) || (TIMING.includes(a) ? TIMING.indexOf(a) - TIMING.indexOf(b) : own(b) - own(a)));
-const width = Number(process.env.TEST_JOBS ?? 7);
+const width = Number(process.env.TEST_JOBS ?? (selected.suite === "smoke" ? 4 : 7));
 const run1 = (n) => new Promise((resolve) => {
   const start = Date.now();
   const [file, parts] = n.split(":");
@@ -59,7 +65,7 @@ const printResult = (r) => {
 // beside and a retry (1.3 s at a load of 31) — they run last, with nothing beside, ~30 s, on a server the other tests
 // have warmed (first on a cold one its refine read 3.4 s where it reads 1.9 s warm). (The deep fixture's timings are
 // notes unless RIDDLE_DEEP_GATE=1, which wants a quiet headed machine: `clarity:deep` runs as a heavy.)
-const HEAVY = ["clarity:card", "clarity:deep", "clarity:core,watch", "fights", "cut13"], HEAVY_WIDTH = Number(process.env.TEST_HEAVY_WIDTH ?? 3);
+const HEAVY = ["fights:break", "clarity:card", "clarity:deep", "clarity:core,watch", "fights", "cut13"], HEAVY_WIDTH = Number(process.env.TEST_HEAVY_WIDTH ?? (selected.suite === "smoke" ? 1 : 3));
 const queue = [...order], done = [];
 let heavyLive = 0, othersLive = 0, soloLive = 0;
 const nextJob = () => {
@@ -83,5 +89,10 @@ await Promise.all(Array.from({ length: Math.min(width, queue.length) }, async ()
 const results = names.map((n) => done.find((r) => r.n === n));
 const failed = results.filter(r => r.code !== 0).length;
 console.log(`${failed ? "FAIL" : "ok"}: ${results.length - failed}/${results.length} client gates in ${((Date.now() - t0) / 1000).toFixed(1)}s`);
+if (selected.report) {
+  mkdirSync(dirname(selected.report), { recursive: true });
+  writeFileSync(selected.report, JSON.stringify({ suite: selected.suite, fullCount: ALL.length, selectedCount: names.length,
+    elapsedSeconds: (Date.now() - t0) / 1000, failed, results }, null, 2) + "\n");
+}
 vite?.kill();
 process.exit(failed ? 1 : 0);
