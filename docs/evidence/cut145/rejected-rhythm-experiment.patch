@@ -1,0 +1,35 @@
+diff --git a/crates/riddle-core/src/packages.rs b/crates/riddle-core/src/packages.rs
+index b9d5939..f6d336c 100644
+--- a/crates/riddle-core/src/packages.rs
++++ b/crates/riddle-core/src/packages.rs
+@@ -636,10 +636,15 @@ pub fn compile(l: &LineageState) -> RuleSet {
+     }
+     let level = p.level(&p.stance);
+     let heal = heal_pct(&p.stance, level);
+-    // An explicitly chosen mirror counter must precede generic learned boss attacks,
+-    // while yielding to the same heal threshold as learned counter drills.
+-    if p.tactics.iter().any(|id| id == "cadence") {
+-        rows.extend(tagged(vec![r(vec![tag("mirror"), n("hp>", heal)], Verb::arg("tactic", "cadence"))], "tactic:cadence"));
++    let origin = format!("stance:{}", p.stance);
++    let (guard, fallback) = if p.stance == CUSTOM { (p.custom.clone(), Vec::new()) } else { stance_rows(&p.stance, level, best) };
++    let rhythm = p.tactics.iter().any(|id| id == "cadence");
++    let rhythm_guard = |row: &Row| matches!(row.verb.v.as_str(), "drink" | "bank" | "return" | "rest" | "retreat" | "back_corridor" | "descend");
++    // A worn mirror counter yields to executable safety actions, then remains available when heals/escape fail.
++    // An hp gate alone discarded it with an empty pack and handed the King repeated ordinary attacks.
++    if rhythm {
++        rows.extend(tagged(guard.iter().filter(|row| rhythm_guard(row)).cloned().collect(), &origin));
++        rows.extend(tagged(vec![r(vec![tag("mirror")], Verb::arg("tactic", "cadence"))], "tactic:cadence"));
+     }
+     // Later counter drills precede older generic boss attacks. Player rows remain above them.
+     for d in p.drills.iter().rev().filter(|d| !d.revoked) {
+@@ -650,9 +655,7 @@ pub fn compile(l: &LineageState) -> RuleSet {
+     for t in &p.tactics {
+         rows.extend(tagged(tactic_lead_rows(t, p.variants.get(t).copied().unwrap_or(0)), &format!("tactic:{t}")));
+     }
+-    let origin = format!("stance:{}", p.stance);
+-    let (guard, fallback) = if p.stance == CUSTOM { (p.custom.clone(), Vec::new()) } else { stance_rows(&p.stance, level, best) };
+-    rows.extend(tagged(guard, &origin));
++    rows.extend(tagged(guard.into_iter().filter(|row| !rhythm || !rhythm_guard(row)).collect(), &origin));
+     if let Some(row)=crate::specialization::row(l) {rows.push(row);}
+     for t in &p.tactics {
+         if t == "cadence" { continue; }

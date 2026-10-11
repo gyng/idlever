@@ -124,7 +124,7 @@ try {
   await sleep(300);
   const nb = await page.evaluate(() => { const b = document.querySelector(".death .patches"); const vis = [...b.querySelectorAll("button.patch")].filter((x) => x.getClientRects().length);
     return { head: b.querySelector(".patches-head")?.textContent, visible: vis.length, all: b.querySelectorAll("button.patch").length, dim: [...b.querySelectorAll("button.patch")].every((x) => x.classList.contains("below")), more: b.querySelector(".patches-more")?.textContent?.replace(/\s+/g, " ").trim(), gem: document.querySelector(".death .gem")?.textContent?.trim() }; });
-  check(nb.head === "none beats 100% as is" && nb.visible === 0 && nb.all === 3 && nb.dim && /^others 3$/.test(nb.more ?? "") && /^town$/i.test(nb.gem ?? ""), `under \`nothing beats base\` no patch shows as one: folded behind \`${nb.more}\`, dim, the gem \`${nb.gem}\` (${nb.visible}/${nb.all} visible)`);
+  check(nb.head === "Last moments · 100% survived · no replay gain" && nb.visible === 0 && nb.all === 3 && nb.dim && /^others 3$/.test(nb.more ?? "") && /^town$/i.test(nb.gem ?? ""), `under \`nothing beats base\` no patch shows as one: folded behind \`${nb.more}\`, dim, the gem \`${nb.gem}\` (${nb.visible}/${nb.all} visible)`);
   await shot("cut20-nothing-beats");
   await page.locator(".death .patches-more").click({ timeout: 3000 }); await sleep(200);
   const nb2 = await page.evaluate(() => [...document.querySelectorAll(".death .patches button.patch")].filter((x) => x.getClientRects().length).length);

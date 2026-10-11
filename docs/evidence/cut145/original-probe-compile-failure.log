@@ -1,0 +1,10 @@
+error[E0599]: no method named `max_hp` found for struct `riddle_core::hero::Hero` in the current scope
+  --> crates/riddle-core/examples/death_check.rs:19:94
+   |
+19 |         let checkpoint = original.t10.as_ref().map(|r| json!({"hp":r.hero.hp,"max_hp":r.hero.max_hp(),"tick":r.turn,"depth":r.depth}));
+   |                                                                                              ^^^^^^-- help: remove the arguments
+   |                                                                                              |
+   |                                                                                              field, not a method
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `riddle-core` (example "death_check") due to 1 previous error

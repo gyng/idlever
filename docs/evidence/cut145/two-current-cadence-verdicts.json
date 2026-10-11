@@ -1,0 +1,5011 @@
+[
+  {
+    "checkpoint": {
+      "depth": 33,
+      "hp": 40,
+      "max_hp": 63,
+      "tick": 52180
+    },
+    "death_tick": 52387,
+    "id": 261,
+    "priced_patches": [
+      {
+        "exits": true,
+        "forecast_delta": -0.46153846153846156,
+        "forecast_depth": 28,
+        "forecast_pm": 0.2820634030029586,
+        "insert_at": 0,
+        "row": {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 50
+            }
+          ],
+          "verb": {
+            "v": "return"
+          }
+        },
+        "survive": 1.0,
+        "whole": {
+          "death": -0.7692307692307693,
+          "death_from": 0.7692307692307693,
+          "death_pm": 0.23838708515115475,
+          "depth": 28,
+          "price": {
+            "death_from": 0.769,
+            "death_pm": 0.238,
+            "death_to": 0.0,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 13
+          },
+          "reach": -0.46153846153846156,
+          "reach_from": 1.0,
+          "reach_pm": 0.2820634030029586,
+          "reach_to": 0.5384615384615384
+        }
+      },
+      {
+        "below_bar": true,
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "insert_at": 0,
+        "moves_from": 15,
+        "no_gain": true,
+        "row": {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 60
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "rest"
+          }
+        },
+        "survive": 0.9166666666666666,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      },
+      {
+        "below_bar": true,
+        "exits": true,
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "insert_at": 0,
+        "moves_from": 10,
+        "no_gain": true,
+        "row": {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "bank"
+          }
+        },
+        "survive": 0.75,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      },
+      {
+        "below_bar": true,
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "insert_at": 0,
+        "moves_from": 12,
+        "no_gain": true,
+        "row": {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 40
+            }
+          ],
+          "origin": "temper:unbowed",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        "survive": 0.75,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      }
+    ],
+    "recorded_rules": {
+      "name": "fighter",
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "mirror"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "tactic:cadence",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "reflect_melee"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:foundry_master",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "depth>=",
+              "n": 19
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:foundry_master",
+          "verb": {
+            "a": "tag:buffer",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:lich",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:lich",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "gas"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:bloat_mother",
+          "verb": {
+            "a": "fire,tag:boss",
+            "v": "throw"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:goblin_warlord",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "a": "heal",
+            "v": "drink"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            },
+            {
+              "k": "depth>=",
+              "n": 34
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "bank"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "return"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "bank"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "telegraph"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "retreat"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 40
+            }
+          ],
+          "origin": "temper:unbowed",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "origin": "drill:tame",
+          "verb": {
+            "a": "open",
+            "v": "tame"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "a": "nearest",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 60
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "rest"
+          }
+        }
+      ]
+    },
+    "verdict": {
+      "baseline": 0.9166666666666666,
+      "boss": "mirror_king",
+      "cause": "mirror_king",
+      "chain": [
+        {
+          "depth": 32,
+          "t": 50649,
+          "text": "warden slain D32"
+        },
+        {
+          "depth": 33,
+          "t": 52382,
+          "text": "never met"
+        },
+        {
+          "depth": 23,
+          "t": 36495,
+          "text": "skeleton slain D23"
+        },
+        {
+          "depth": 29,
+          "t": 47849,
+          "text": "bloat slain D29"
+        },
+        {
+          "depth": 33,
+          "t": 52170,
+          "text": "R8 drank heal at 9/63 hp"
+        },
+        {
+          "depth": 33,
+          "t": 52373,
+          "text": "foes on every side"
+        }
+      ],
+      "credit": "default",
+      "depth": 33,
+      "difficulty": 1,
+      "fight": {
+        "actions": 2,
+        "credit": [
+          {
+            "credit": "default",
+            "fires": 2,
+            "share": 1.0
+          }
+        ],
+        "dealt": {
+          "foes": 18,
+          "hero": 32,
+          "pets": 0
+        },
+        "dps_dealt": {
+          "foes": 12.0,
+          "hero": 21.333,
+          "pets": 0.0
+        },
+        "dps_taken": {
+          "foes": 21.333,
+          "hero": 12.0,
+          "pets": 0.0
+        },
+        "fights": 1,
+        "gold": 0,
+        "gold_per_min": 0.0,
+        "healed": [],
+        "hits_hero": 1,
+        "hits_pets": 0,
+        "hps": 0.0,
+        "rows": [
+          {
+            "fires": 2,
+            "row": 14,
+            "share": 1.0
+          }
+        ],
+        "seconds": 1.5,
+        "supplies": {},
+        "taken": {
+          "foes": 32,
+          "hero": 18,
+          "pets": 0
+        },
+        "time": {
+          "chores": 0,
+          "fight": 15,
+          "rest": 0,
+          "travel": 0
+        },
+        "time_s": {
+          "chores": 0.0,
+          "fight": 1.5,
+          "rest": 0.0,
+          "travel": 0.0
+        }
+      },
+      "hero": {
+        "bloodline_id": 1,
+        "class": "fighter",
+        "heir": 38,
+        "name": "Petra Ash"
+      },
+      "line": {
+        "bones": [
+          {
+            "kind": "fire",
+            "n": 2
+          },
+          {
+            "kind": "gilded scroll?",
+            "n": 1
+          },
+          {
+            "kind": "silence",
+            "n": 2
+          },
+          {
+            "kind": "torn scroll?",
+            "n": 1
+          },
+          {
+            "kind": "poison",
+            "n": 1
+          },
+          {
+            "kind": "bow",
+            "n": 3
+          },
+          {
+            "kind": "scale",
+            "n": 1
+          }
+        ],
+        "carried": 1654,
+        "cause": "the King",
+        "end": "death",
+        "finds": [
+          {
+            "free": false,
+            "id": 510,
+            "kind": "scale",
+            "known": true,
+            "label": "scale +2",
+            "rarity": "epic"
+          },
+          {
+            "free": false,
+            "id": 280,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "rarity": "rare"
+          },
+          {
+            "free": false,
+            "id": 694,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "rarity": "rare"
+          },
+          {
+            "free": false,
+            "id": 514,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "rarity": "uncommon"
+          },
+          {
+            "free": false,
+            "id": 569,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "rarity": "uncommon"
+          },
+          {
+            "free": false,
+            "id": 578,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "rarity": "uncommon"
+          }
+        ],
+        "found": [
+          {
+            "fate": "left",
+            "kind": "waxen scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "sword",
+            "n": 2
+          },
+          {
+            "fate": "used",
+            "kind": "heal",
+            "n": 3
+          },
+          {
+            "fate": "left",
+            "kind": "torn scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "leather",
+            "n": 1
+          },
+          {
+            "fate": "used",
+            "kind": "leash",
+            "n": 2
+          },
+          {
+            "fate": "bones",
+            "kind": "fire",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "gilded scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "axe",
+            "n": 4
+          },
+          {
+            "fate": "bones",
+            "kind": "bow",
+            "n": 3
+          },
+          {
+            "fate": "left",
+            "kind": "bow",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "silence",
+            "n": 2
+          },
+          {
+            "fate": "bones",
+            "kind": "scale",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "torn scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "mossy scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "pearly potion?",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "poison",
+            "n": 1
+          }
+        ],
+        "found_n": 27,
+        "keep_pct": 0,
+        "kept": 0,
+        "legacy_earned": 1,
+        "meters": {
+          "actions": 4638,
+          "credit": [
+            {
+              "credit": "picked",
+              "fires": 135,
+              "share": 0.029
+            },
+            {
+              "credit": "taught",
+              "fires": 479,
+              "share": 0.103
+            },
+            {
+              "credit": "default",
+              "fires": 1144,
+              "share": 0.247
+            },
+            {
+              "credit": "chores",
+              "fires": 2874,
+              "share": 0.62
+            }
+          ],
+          "dealt": {
+            "foes": 639,
+            "hero": 12893,
+            "pets": 0
+          },
+          "dps_dealt": {
+            "foes": 0.122,
+            "hero": 2.461,
+            "pets": 0.0
+          },
+          "dps_taken": {
+            "foes": 2.427,
+            "hero": 0.126,
+            "pets": 0.0
+          },
+          "fights": 223,
+          "gold": 0,
+          "gold_per_min": 0.0,
+          "healed": [
+            {
+              "per_s": 0.09,
+              "src": "regen",
+              "total": 469
+            },
+            {
+              "per_s": 0.023,
+              "src": "rest",
+              "total": 119
+            }
+          ],
+          "hits_hero": 566,
+          "hits_pets": 0,
+          "hps": 0.112,
+          "rows": [
+            {
+              "fires": 2874,
+              "row": -2,
+              "share": 0.62
+            },
+            {
+              "fires": 135,
+              "row": 0,
+              "share": 0.029
+            },
+            {
+              "fires": 79,
+              "row": 1,
+              "share": 0.017
+            },
+            {
+              "fires": 96,
+              "row": 2,
+              "share": 0.021
+            },
+            {
+              "fires": 289,
+              "row": 3,
+              "share": 0.062
+            },
+            {
+              "fires": 3,
+              "row": 4,
+              "share": 0.001
+            },
+            {
+              "fires": 12,
+              "row": 6,
+              "share": 0.003
+            },
+            {
+              "fires": 5,
+              "row": 7,
+              "share": 0.001
+            },
+            {
+              "fires": 3,
+              "row": 9,
+              "share": 0.001
+            },
+            {
+              "fires": 11,
+              "row": 10,
+              "share": 0.002
+            },
+            {
+              "fires": 2,
+              "row": 11,
+              "share": 0.0
+            },
+            {
+              "fires": 3,
+              "row": 13,
+              "share": 0.001
+            },
+            {
+              "fires": 1098,
+              "row": 14,
+              "share": 0.237
+            },
+            {
+              "fires": 22,
+              "row": 15,
+              "share": 0.005
+            }
+          ],
+          "seconds": 5238.7,
+          "supplies": {
+            "heal potion": 5
+          },
+          "taken": {
+            "foes": 12712,
+            "hero": 662,
+            "pets": 0
+          },
+          "time": {
+            "chores": 79,
+            "fight": 17620,
+            "rest": 2,
+            "travel": 34686
+          },
+          "time_s": {
+            "chores": 7.9,
+            "fight": 1762.0,
+            "rest": 0.2,
+            "travel": 3468.6
+          }
+        },
+        "news": [
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Thak"
+          },
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Skim"
+          },
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Krix"
+          }
+        ],
+        "reached": 33,
+        "reason": "slain · King",
+        "run_id": 261,
+        "spent": 78,
+        "spent_on": [
+          "fire",
+          "heal",
+          "heal"
+        ],
+        "start": 1,
+        "text": "died $0 · $1654 lost · bones: 11 items on D33"
+      },
+      "margin": "12 hp short",
+      "memorial": {
+        "epitaph": "fell to the King, D33",
+        "grave_gold": 1654,
+        "lead": "+2 Legacy · King try 1 · +2%",
+        "legacy": 2,
+        "name": "Petra",
+        "siege": {
+          "best_pct": 52,
+          "boss": "mirror_king",
+          "depth": 33,
+          "edge_pct": 4,
+          "heirs": [
+            "Petra",
+            "Quill"
+          ],
+          "title": "King",
+          "tries": 2
+        }
+      },
+      "modifier_catalogue": [
+        {
+          "counter": "Poison or fire",
+          "effect": "+1 armour",
+          "id": "armoured",
+          "mask": 1,
+          "name": "Armoured"
+        },
+        {
+          "counter": "Slow",
+          "effect": "+2 speed",
+          "id": "swift",
+          "mask": 2,
+          "name": "Swift"
+        },
+        {
+          "counter": "Poison or sustained damage",
+          "effect": "+1 HP each second while awake and unpoisoned",
+          "id": "regenerating",
+          "mask": 4,
+          "name": "Regenerating"
+        },
+        {
+          "counter": "Stun or paralyse",
+          "effect": "+2 armour unless stunned or paralysed",
+          "id": "shielded",
+          "mask": 0,
+          "name": "Shielded"
+        },
+        {
+          "counter": "Slow or burst damage",
+          "effect": "+2 damage and +3 speed at half HP or lower",
+          "id": "frenzied",
+          "mask": 0,
+          "name": "Frenzied"
+        },
+        {
+          "counter": "Alternate attacks",
+          "effect": "Second repeated attack reflects",
+          "id": "tight_mirror",
+          "mask": 0,
+          "name": "Quick mirror"
+        }
+      ],
+      "modifiers": {
+        "affixes": 1,
+        "tier": 1,
+        "tight_mirror": true
+      },
+      "moment_hp": 7,
+      "moment_max_hp": 63,
+      "morgue": "Riddle morgue · seed 5 · heir 38 · run 261\nD33 (sanctum) · tick 52387 · slain by Mirror King · blow 18 at 7 hp\nclass fighter L10 · trait brave\nrules:\n  R1 mirror · HP>35% → cadence\n  R2 reflect_melee · HP>35% → reflect read\n  R3 D19+ · HP>35% → hit buffer\n  R4 summoned · HP>35% → hit summoned\n  R5 undead · HP>35% → hit boss\n  R6 gas · HP>35% → throw fire\n  R7 boss · HP>35% → hit boss\n  R8 HP<35% → drink heal\n  R9 HP<25% · D34+ → bank\n  R10 HP<25% → return\n  R11 no heal · HP<35% → bank\n  R12 telegraph · HP<35% → retreat\n  R13 boss · HP>40% → hit boss\n  R14 foes 1+ → tame\n  R15 foes 1+ → attack\n  R16 HP<60% → rest\ntrace:\n  t52300 R15 attack hp 20 foes 3  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 not in view · R8 no item · R9 hp not <25% · R10 hp not <25% · R11 no way · R12 not in view · R13 same as R7 · R14 no leash\n  t52309 R15 attack hp 20 foes 3  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 hp not <25% · R10 hp not <25% · R11 no way · R12 no path · R13 same as R7 · R14 no leash\n  t52319 R12 retreat hp 21 foes 3 king mirrors R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 hp not <25% · R10 hp not <25% · R11 no way\n  t52328 R15 attack hp 6 foes 3  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34 · R10 no way · R11 no way · R12 no path · R13 same as R7 · R14 no leash\n  t52337 R10 return hp 7 foes 2  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34\n  t52346 R10 return hp 7 foes 3 king mirrors R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34\n  t52355 R10 return hp 7 foes 3  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34\n  t52364 R12 retreat hp 7 foes 3 king mirrors R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34 · R10 no way · R11 no way\n  t52373 R15 attack hp 7 foes 3  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34 · R10 no way · R11 no way · R12 no path · R13 same as R7 · R14 no leash\n  t52382 R15 attack hp 7 foes 3 king mirrors R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 depth not ≥34 · R10 no way · R11 no way · R12 no path · R13 same as R7 · R14 no leash\nnotes:\n  t48512 D31: the Sanctum.\n  t50312 A den of thieves.\n  t50424 The den wakes: hands everywhere.\n  t50437 D32: the Sanctum.\n  t51387 D33: the Sanctum.\n  t52087 The Mirror King is back.\n  t52327 Down to 6 HP.\n  t52387 Slain by Mirror King on D33.\nrules json: {\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"mirror\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"tactic\",\"a\":\"cadence\"},\"origin\":\"tactic:cadence\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":34}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:steady\"}],\"name\":\"fighter\"}\n",
+      "notes": [
+        "The Mirror King is back."
+      ],
+      "nothing_beats_base": false,
+      "package": "Steady · foes 1+ → attack",
+      "patches": [
+        {
+          "camp_pending": true,
+          "exits": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "row": {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 50
+              }
+            ],
+            "verb": {
+              "v": "return"
+            }
+          },
+          "survive": 1.0
+        },
+        {
+          "below_bar": true,
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 15,
+          "no_gain": true,
+          "row": {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "rest"
+            }
+          },
+          "survive": 0.9166666666666666
+        },
+        {
+          "below_bar": true,
+          "camp_pending": true,
+          "exits": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 10,
+          "no_gain": true,
+          "row": {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "bank"
+            }
+          },
+          "survive": 0.75
+        },
+        {
+          "below_bar": true,
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 12,
+          "no_gain": true,
+          "row": {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "origin": "temper:unbowed",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          "survive": 0.75
+        }
+      ],
+      "pick": {
+        "id": "boss_focus",
+        "kind": "tactic",
+        "pending": true,
+        "text": "boss focus · boss first",
+        "variant": 1
+      },
+      "replays": 12,
+      "rules": {
+        "name": "fighter",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "mirror"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "tactic:cadence",
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "reflect_melee"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:foundry_master",
+            "verb": {
+              "a": "reflect_read",
+              "v": "tactic"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "depth>=",
+                "n": 19
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:foundry_master",
+            "verb": {
+              "a": "tag:buffer",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "summoned"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:lich",
+            "verb": {
+              "a": "tag:summoned",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "undead"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:lich",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "gas"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:bloat_mother",
+            "verb": {
+              "a": "fire,tag:boss",
+              "v": "throw"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:goblin_warlord",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "a": "heal",
+              "v": "drink"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 25
+              },
+              {
+                "k": "depth>=",
+                "n": 34
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "bank"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 25
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "return"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "bank"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "telegraph"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "origin": "temper:unbowed",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "origin": "drill:tame",
+            "verb": {
+              "a": "open",
+              "v": "tame"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "rest"
+            }
+          }
+        ]
+      },
+      "run_id": 261,
+      "trace": {
+        "blow": {
+          "by": "mirror_king",
+          "dmg": 18,
+          "hp": 0,
+          "t": 52387
+        },
+        "hp_healed": 538,
+        "hp_lost": [
+          {
+            "by": "lurker",
+            "dmg": 156
+          },
+          {
+            "by": "mirror_king",
+            "dmg": 87
+          },
+          {
+            "by": "skeleton",
+            "dmg": 61
+          },
+          {
+            "by": "lurker_queen",
+            "dmg": 45
+          },
+          {
+            "by": "ghoul",
+            "dmg": 33
+          },
+          {
+            "by": "gas",
+            "dmg": 25
+          },
+          {
+            "by": "mirror_shade",
+            "dmg": 24
+          },
+          {
+            "by": "cave_troll",
+            "dmg": 19
+          },
+          {
+            "by": "bell_sentinel",
+            "dmg": 17
+          },
+          {
+            "by": "warden",
+            "dmg": 15
+          },
+          {
+            "by": "smith",
+            "dmg": 13
+          },
+          {
+            "by": "deep_eel",
+            "dmg": 12
+          },
+          {
+            "by": "goblin_archer",
+            "dmg": 12
+          },
+          {
+            "by": "jackal",
+            "dmg": 12
+          },
+          {
+            "by": "goblin_conjurer",
+            "dmg": 11
+          },
+          {
+            "by": "eel",
+            "dmg": 9
+          },
+          {
+            "by": "spectral_blade",
+            "dmg": 9
+          },
+          {
+            "by": "ogre",
+            "dmg": 8
+          },
+          {
+            "by": "wraith",
+            "dmg": 8
+          },
+          {
+            "by": "pink_jelly",
+            "dmg": 6
+          },
+          {
+            "by": "burst",
+            "dmg": 5
+          },
+          {
+            "by": "echo",
+            "dmg": 4
+          },
+          {
+            "by": "sentinel",
+            "dmg": 4
+          },
+          {
+            "by": "lich",
+            "dmg": 2
+          },
+          {
+            "by": "goblin",
+            "dmg": 1
+          },
+          {
+            "by": "iron_golem",
+            "dmg": 1
+          },
+          {
+            "by": "siren",
+            "dmg": 1
+          },
+          {
+            "by": "slag_crawler",
+            "dmg": 1
+          }
+        ],
+        "max_steps": [
+          {
+            "cause": "recovery",
+            "delta": 0,
+            "max": 63,
+            "t": 32070
+          }
+        ],
+        "provenance": [
+          {
+            "depth": 3,
+            "t": 3045,
+            "text": "found fire on D3"
+          },
+          {
+            "depth": 3,
+            "t": 3134,
+            "text": "found leash on D3"
+          },
+          {
+            "depth": 4,
+            "t": 5223,
+            "text": "leash spent on tame"
+          },
+          {
+            "depth": 5,
+            "t": 5356,
+            "text": "found heal on D5"
+          },
+          {
+            "depth": 6,
+            "t": 6428,
+            "text": "found sword +1 on D6"
+          },
+          {
+            "depth": 7,
+            "t": 11200,
+            "text": "swapped for the enchant"
+          },
+          {
+            "depth": 7,
+            "t": 11200,
+            "text": "found gilded scroll? on D7"
+          },
+          {
+            "depth": 12,
+            "t": 18578,
+            "text": "goblin archer last seen D12"
+          },
+          {
+            "depth": 15,
+            "t": 22384,
+            "text": "ogre last seen D15"
+          },
+          {
+            "depth": 16,
+            "t": 23856,
+            "text": "swapped for the bow"
+          },
+          {
+            "depth": 18,
+            "t": 27253,
+            "text": "found bow +1 on D18"
+          },
+          {
+            "depth": 18,
+            "t": 27937,
+            "text": "ghoul last seen D18"
+          },
+          {
+            "depth": 18,
+            "t": 28459,
+            "text": "goblin conjurer last seen D18"
+          },
+          {
+            "depth": 19,
+            "t": 29803,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 19,
+            "t": 29837,
+            "text": "iron golem last seen D19"
+          },
+          {
+            "depth": 19,
+            "t": 29892,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 21,
+            "t": 32359,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 23,
+            "t": 34792,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 23,
+            "t": 35726,
+            "text": "bell sentinel last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 35948,
+            "text": "skeleton last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 36445,
+            "text": "smith last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 36469,
+            "text": "forge imp last seen D23"
+          },
+          {
+            "depth": 26,
+            "t": 38839,
+            "text": "found axe +1 on D26"
+          },
+          {
+            "depth": 26,
+            "t": 39023,
+            "text": "swapped for the silence"
+          },
+          {
+            "depth": 26,
+            "t": 39578,
+            "text": "found scale +2 on D26"
+          },
+          {
+            "depth": 27,
+            "t": 40153,
+            "text": "jackal last seen D27"
+          },
+          {
+            "depth": 28,
+            "t": 42537,
+            "text": "R8 drank heal at 22/63 hp"
+          },
+          {
+            "depth": 28,
+            "t": 43204,
+            "text": "R8 drank heal at 22/63 hp"
+          },
+          {
+            "depth": 28,
+            "t": 43962,
+            "text": "found bow +1 on D28"
+          },
+          {
+            "depth": 28,
+            "t": 44308,
+            "text": "R8 drank heal at 22/63 hp"
+          },
+          {
+            "depth": 28,
+            "t": 44629,
+            "text": "lurker queen last seen D28"
+          },
+          {
+            "depth": 28,
+            "t": 44629,
+            "text": "lurker last seen D28"
+          },
+          {
+            "depth": 28,
+            "t": 45159,
+            "text": "R8 drank heal at 22/63 hp"
+          },
+          {
+            "depth": 28,
+            "t": 46212,
+            "text": "found torn scroll? on D28"
+          },
+          {
+            "depth": 28,
+            "t": 46274,
+            "text": "found mossy scroll? on D28"
+          },
+          {
+            "depth": 28,
+            "t": 46374,
+            "text": "found pearly potion? on D28"
+          },
+          {
+            "depth": 28,
+            "t": 46687,
+            "text": "swapped for the silence"
+          },
+          {
+            "depth": 28,
+            "t": 46687,
+            "text": "found silence on D28"
+          },
+          {
+            "depth": 29,
+            "t": 47349,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 29,
+            "t": 47437,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 29,
+            "t": 47487,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 29,
+            "t": 47574,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 30,
+            "t": 48169,
+            "text": "siren last seen D30"
+          },
+          {
+            "depth": 31,
+            "t": 48637,
+            "text": "swapped for the poison"
+          },
+          {
+            "depth": 31,
+            "t": 48637,
+            "text": "found poison on D31"
+          },
+          {
+            "depth": 31,
+            "t": 48649,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 48712,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 48912,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 48999,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 49449,
+            "text": "warden last seen D31"
+          },
+          {
+            "depth": 31,
+            "t": 49512,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 50437,
+            "text": "monkey last seen D31"
+          },
+          {
+            "depth": 32,
+            "t": 50549,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 32,
+            "t": 50887,
+            "text": "sentinel last seen D32"
+          },
+          {
+            "depth": 33,
+            "t": 51787,
+            "text": "acolyte last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 52133,
+            "text": "used shield bash"
+          },
+          {
+            "depth": 33,
+            "t": 52152,
+            "text": "used cleave"
+          },
+          {
+            "depth": 33,
+            "t": 52170,
+            "text": "R8 drank heal at 9/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 52200,
+            "text": "found bow +2 on D33"
+          },
+          {
+            "depth": 33,
+            "t": 52209,
+            "text": "echo last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 52209,
+            "text": "mirror shade last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 52282,
+            "text": "mirror king last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 52373,
+            "text": "foes on every side"
+          },
+          {
+            "depth": 33,
+            "t": 52373,
+            "text": "foes on every side"
+          }
+        ],
+        "turns": [
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3",
+            "hp": 20,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52300,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52282,
+                  "text": "mirror king last seen D33"
+                },
+                "row": 6,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52300,
+                  "text": "foes on every side"
+                },
+                "row": 10,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52282,
+                  "text": "mirror king last seen D33"
+                },
+                "row": 11,
+                "why": "not in view"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 2,
+            "t": 52300,
+            "telegraphs": [],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 20,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52309,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52300,
+                  "text": "foes on every side"
+                },
+                "row": 10,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52309,
+                  "text": "foes on every side"
+                },
+                "row": 11,
+                "why": "no path"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52309,
+            "telegraphs": [],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 21,
+            "max_hp": 63,
+            "row": 11,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52319,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52300,
+                  "text": "foes on every side"
+                },
+                "row": 10,
+                "why": "no way"
+              }
+            ],
+            "rule_foes": 2,
+            "t": 52319,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "blows": [
+              {
+                "by": "mirror_king",
+                "dmg": 15,
+                "hp": 6,
+                "t": 52327
+              }
+            ],
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 6,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52328,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52328,
+                  "text": "king holds the way"
+                },
+                "row": 9,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52328,
+                  "text": "king holds the way"
+                },
+                "row": 10,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52328,
+                  "text": "foes hold the way"
+                },
+                "row": 11,
+                "why": "no path"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52328,
+            "telegraphs": [],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 2,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 9,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52337,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              }
+            ],
+            "rule_foes": 2,
+            "t": 52337,
+            "telegraphs": [],
+            "verb": {
+              "v": "return"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 9,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52346,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              }
+            ],
+            "rule_foes": 2,
+            "t": 52346,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "v": "return"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 9,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52355,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52355,
+            "telegraphs": [],
+            "verb": {
+              "v": "return"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 11,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52364,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52364,
+                  "text": "echo holds the way"
+                },
+                "row": 9,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52364,
+                  "text": "echo holds the way"
+                },
+                "row": 10,
+                "why": "no way"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52364,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 9,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 10,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 11,
+                "why": "no path"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52373,
+            "telegraphs": [],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 3,
+            "gift": "quick +3 · guard +1",
+            "hp": 7,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 32,
+                  "t": 50649,
+                  "text": "warden slain D32"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52382,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 23,
+                  "t": 36495,
+                  "text": "skeleton slain D23"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 29,
+                  "t": 47849,
+                  "text": "bloat slain D29"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52170,
+                  "text": "R8 drank heal at 9/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "depth not ≥34"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 9,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 10,
+                "why": "no way"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 52373,
+                  "text": "foes on every side"
+                },
+                "row": 11,
+                "why": "no path"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 3,
+            "t": 52382,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          }
+        ]
+      },
+      "verdict": "dice"
+    }
+  },
+  {
+    "checkpoint": {
+      "depth": 33,
+      "hp": 35,
+      "max_hp": 63,
+      "tick": 59970
+    },
+    "death_tick": 60050,
+    "id": 262,
+    "priced_patches": [
+      {
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "gem": true,
+        "insert_at": 0,
+        "moves_from": 11,
+        "row": {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "telegraph"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "retreat"
+          }
+        },
+        "survive": 0.9166666666666666,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      },
+      {
+        "exits": true,
+        "forecast_delta": -0.8,
+        "forecast_depth": 23,
+        "forecast_pm": 0.17986193535452047,
+        "insert_at": 0,
+        "row": {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 60
+            }
+          ],
+          "verb": {
+            "v": "return"
+          }
+        },
+        "survive": 0.8333333333333334,
+        "whole": {
+          "death": -0.75,
+          "death_from": 0.75,
+          "death_pm": 0.19470625648856144,
+          "depth": 23,
+          "price": {
+            "death_from": 0.75,
+            "death_pm": 0.195,
+            "death_to": 0.0,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 20
+          },
+          "reach": -0.8,
+          "reach_from": 1.0,
+          "reach_pm": 0.17986193535452047,
+          "reach_to": 0.19999999999999996
+        }
+      },
+      {
+        "below_bar": true,
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "insert_at": 0,
+        "moves_from": 6,
+        "no_gain": true,
+        "row": {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:goblin_warlord",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        "survive": 0.0,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      },
+      {
+        "below_bar": true,
+        "forecast_delta": 0.0,
+        "forecast_depth": 33,
+        "insert_at": 0,
+        "moves_from": 12,
+        "no_gain": true,
+        "row": {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 40
+            }
+          ],
+          "origin": "temper:unbowed",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        "survive": 0.0,
+        "whole": {
+          "death": 0.0,
+          "death_from": 0.7,
+          "death_pm": 0.0,
+          "depth": 33,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.0,
+            "death_to": 0.7,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10
+          },
+          "reach": 0.0,
+          "reach_from": 0.6,
+          "reach_pm": 0.0,
+          "reach_to": 0.6
+        }
+      },
+      {
+        "forecast_delta": -0.1,
+        "forecast_depth": 33,
+        "forecast_pm": 0.3518307673994543,
+        "insert_at": 0,
+        "row": {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 40
+            },
+            {
+              "k": "foes>=",
+              "n": 2
+            }
+          ],
+          "verb": {
+            "v": "retreat"
+          }
+        },
+        "survive": 0.6666666666666666,
+        "whole": {
+          "death": 0.3,
+          "death_from": 0.7,
+          "death_pm": 0.29939494540378153,
+          "depth": 33,
+          "harms": true,
+          "price": {
+            "death_from": 0.7,
+            "death_pm": 0.299,
+            "death_to": 1.0,
+            "depth": 33,
+            "past_from": 0.0,
+            "past_pm": 0.0,
+            "past_to": 0.0,
+            "sims": 10,
+            "trade_off": true
+          },
+          "reach": -0.1,
+          "reach_from": 0.6,
+          "reach_pm": 0.3518307673994543,
+          "reach_to": 0.5,
+          "trade_off": true
+        }
+      }
+    ],
+    "recorded_rules": {
+      "name": "fighter",
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "mirror"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "tactic:cadence",
+          "verb": {
+            "a": "cadence",
+            "v": "tactic"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "reflect_melee"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:foundry_master",
+          "verb": {
+            "a": "reflect_read",
+            "v": "tactic"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "depth>=",
+              "n": 19
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:foundry_master",
+          "verb": {
+            "a": "tag:buffer",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "summoned"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:lich",
+          "verb": {
+            "a": "tag:summoned",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "undead"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:lich",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "gas"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:bloat_mother",
+          "verb": {
+            "a": "fire,tag:boss",
+            "v": "throw"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "origin": "drill:goblin_warlord",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "a": "heal",
+            "v": "drink"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            },
+            {
+              "k": "depth>=",
+              "n": 34
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "bank"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "return"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "bank"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "telegraph"
+            },
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "retreat"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 40
+            }
+          ],
+          "origin": "temper:unbowed",
+          "verb": {
+            "a": "tag:boss",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "origin": "drill:tame",
+          "verb": {
+            "a": "open",
+            "v": "tame"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "a": "nearest",
+            "v": "attack"
+          }
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 60
+            }
+          ],
+          "origin": "stance:steady",
+          "verb": {
+            "v": "rest"
+          }
+        }
+      ]
+    },
+    "verdict": {
+      "baseline": 0.0,
+      "boss": "mirror_king",
+      "cause": "mirror_king",
+      "cause_row": 11,
+      "chain": [
+        {
+          "depth": 33,
+          "t": 58008,
+          "text": "warden slain D33"
+        },
+        {
+          "depth": 33,
+          "t": 60045,
+          "text": "never met"
+        },
+        {
+          "depth": 22,
+          "t": 37408,
+          "text": "skeleton slain D22"
+        },
+        {
+          "depth": 30,
+          "t": 56220,
+          "text": "bloat slain D30"
+        },
+        {
+          "depth": 33,
+          "t": 59958,
+          "text": "R8 drank heal at 11/63 hp"
+        }
+      ],
+      "credit": "default",
+      "depth": 33,
+      "difficulty": 1,
+      "fight": {
+        "actions": 43,
+        "credit": [
+          {
+            "credit": "picked",
+            "fires": 33,
+            "share": 0.767
+          },
+          {
+            "credit": "default",
+            "fires": 7,
+            "share": 0.163
+          },
+          {
+            "credit": "chores",
+            "fires": 3,
+            "share": 0.07
+          }
+        ],
+        "dealt": {
+          "foes": 212,
+          "hero": 387,
+          "pets": 0
+        },
+        "dps_dealt": {
+          "foes": 3.919,
+          "hero": 7.153,
+          "pets": 0.0
+        },
+        "dps_taken": {
+          "foes": 8.262,
+          "hero": 4.14,
+          "pets": 0.0
+        },
+        "fights": 1,
+        "gold": 0,
+        "gold_per_min": 0.0,
+        "healed": [
+          {
+            "per_s": 2.828,
+            "src": "regen",
+            "total": 153
+          }
+        ],
+        "hits_hero": 20,
+        "hits_pets": 0,
+        "hps": 2.828,
+        "rows": [
+          {
+            "fires": 3,
+            "row": -2,
+            "share": 0.07
+          },
+          {
+            "fires": 33,
+            "row": 0,
+            "share": 0.767
+          },
+          {
+            "fires": 4,
+            "row": 7,
+            "share": 0.093
+          },
+          {
+            "fires": 1,
+            "row": 10,
+            "share": 0.023
+          },
+          {
+            "fires": 2,
+            "row": 14,
+            "share": 0.047
+          }
+        ],
+        "seconds": 54.1,
+        "supplies": {
+          "fire potion": 2,
+          "heal potion": 4
+        },
+        "taken": {
+          "foes": 447,
+          "hero": 224,
+          "pets": 0
+        },
+        "time": {
+          "chores": 0,
+          "fight": 541,
+          "rest": 0,
+          "travel": 0
+        },
+        "time_s": {
+          "chores": 0.0,
+          "fight": 54.1,
+          "rest": 0.0,
+          "travel": 0.0
+        }
+      },
+      "hero": {
+        "bloodline_id": 1,
+        "class": "fighter",
+        "heir": 39,
+        "name": "Quill Ash"
+      },
+      "line": {
+        "bones": [
+          {
+            "kind": "gilded scroll?",
+            "n": 2
+          },
+          {
+            "kind": "silence",
+            "n": 1
+          },
+          {
+            "kind": "bow",
+            "n": 1
+          },
+          {
+            "kind": "plate",
+            "n": 1
+          }
+        ],
+        "carried": 2042,
+        "cause": "the King",
+        "end": "death",
+        "finds": [
+          {
+            "free": false,
+            "id": 173,
+            "kind": "plate",
+            "known": true,
+            "label": "plate +2",
+            "rarity": "rare"
+          },
+          {
+            "free": false,
+            "id": 59,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "rarity": "rare"
+          },
+          {
+            "free": false,
+            "id": 552,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "rarity": "uncommon"
+          },
+          {
+            "free": false,
+            "hint": "benevolent",
+            "id": 178,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?"
+          },
+          {
+            "free": false,
+            "id": 344,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?"
+          }
+        ],
+        "found": [
+          {
+            "fate": "used",
+            "kind": "heal",
+            "n": 3
+          },
+          {
+            "fate": "stolen",
+            "kind": "leather",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "dagger",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "caustic",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "ashen scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "sealed scroll?",
+            "n": 2
+          },
+          {
+            "fate": "left",
+            "kind": "poison",
+            "n": 2
+          },
+          {
+            "fate": "left",
+            "kind": "sword",
+            "n": 2
+          },
+          {
+            "fate": "bones",
+            "kind": "bow",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "torn scroll?",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "crimson scroll?",
+            "n": 1
+          },
+          {
+            "fate": "used",
+            "kind": "fire",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "waxen scroll?",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "gilded scroll?",
+            "n": 2
+          },
+          {
+            "fate": "bones",
+            "kind": "plate",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "silence",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "axe",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "bow",
+            "n": 1
+          },
+          {
+            "fate": "left",
+            "kind": "regen",
+            "n": 1
+          },
+          {
+            "fate": "bones",
+            "kind": "silence",
+            "n": 1
+          }
+        ],
+        "found_n": 26,
+        "keep_pct": 0,
+        "kept": 0,
+        "legacy_earned": 34,
+        "meters": {
+          "actions": 5127,
+          "credit": [
+            {
+              "credit": "picked",
+              "fires": 107,
+              "share": 0.021
+            },
+            {
+              "credit": "taught",
+              "fires": 361,
+              "share": 0.07
+            },
+            {
+              "credit": "default",
+              "fires": 1135,
+              "share": 0.221
+            },
+            {
+              "credit": "chores",
+              "fires": 3524,
+              "share": 0.687
+            }
+          ],
+          "dealt": {
+            "foes": 425,
+            "hero": 12571,
+            "pets": 5
+          },
+          "dps_dealt": {
+            "foes": 0.071,
+            "hero": 2.093,
+            "pets": 0.001
+          },
+          "dps_taken": {
+            "foes": 2.069,
+            "hero": 0.076,
+            "pets": 0.005
+          },
+          "fights": 219,
+          "gold": 0,
+          "gold_per_min": 0.0,
+          "healed": [
+            {
+              "per_s": 0.064,
+              "src": "regen",
+              "total": 387
+            },
+            {
+              "per_s": 0.001,
+              "src": "rest",
+              "total": 8
+            }
+          ],
+          "hits_hero": 240,
+          "hits_pets": 10,
+          "hps": 0.066,
+          "rows": [
+            {
+              "fires": 3524,
+              "row": -2,
+              "share": 0.687
+            },
+            {
+              "fires": 107,
+              "row": 0,
+              "share": 0.021
+            },
+            {
+              "fires": 93,
+              "row": 1,
+              "share": 0.018
+            },
+            {
+              "fires": 82,
+              "row": 2,
+              "share": 0.016
+            },
+            {
+              "fires": 169,
+              "row": 3,
+              "share": 0.033
+            },
+            {
+              "fires": 8,
+              "row": 4,
+              "share": 0.002
+            },
+            {
+              "fires": 9,
+              "row": 6,
+              "share": 0.002
+            },
+            {
+              "fires": 5,
+              "row": 7,
+              "share": 0.001
+            },
+            {
+              "fires": 1,
+              "row": 10,
+              "share": 0.0
+            },
+            {
+              "fires": 1129,
+              "row": 14,
+              "share": 0.22
+            }
+          ],
+          "seconds": 6005.0,
+          "supplies": {
+            "fire potion": 2,
+            "heal potion": 5
+          },
+          "taken": {
+            "foes": 12427,
+            "hero": 456,
+            "pets": 31
+          },
+          "time": {
+            "chores": 74,
+            "fight": 17341,
+            "rest": 1,
+            "travel": 42634
+          },
+          "time_s": {
+            "chores": 7.4,
+            "fight": 1734.1,
+            "rest": 0.1,
+            "travel": 4263.4
+          }
+        },
+        "news": [
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Grog"
+          },
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Zelusk"
+          },
+          {
+            "day": 9,
+            "k": "named",
+            "text": "slew Vrusk"
+          }
+        ],
+        "reached": 33,
+        "reason": "slain · King",
+        "run_id": 262,
+        "spent": 78,
+        "spent_on": [
+          "fire",
+          "heal",
+          "heal"
+        ],
+        "start": 1,
+        "stolen": [
+          "leather +2"
+        ],
+        "stolen_gold": 8,
+        "text": "died $0 · $2042 lost · bones: 5 items on D33"
+      },
+      "margin": "10 hp short",
+      "memorial": {
+        "epitaph": "fell to the King, D33",
+        "grave_gold": 2042,
+        "lead": "+35 Legacy · King try 2 · +4%",
+        "legacy": 35,
+        "name": "Quill",
+        "siege": {
+          "best_pct": 52,
+          "boss": "mirror_king",
+          "depth": 33,
+          "edge_pct": 4,
+          "heirs": [
+            "Petra",
+            "Quill"
+          ],
+          "title": "King",
+          "tries": 2
+        }
+      },
+      "modifier_catalogue": [
+        {
+          "counter": "Poison or fire",
+          "effect": "+1 armour",
+          "id": "armoured",
+          "mask": 1,
+          "name": "Armoured"
+        },
+        {
+          "counter": "Slow",
+          "effect": "+2 speed",
+          "id": "swift",
+          "mask": 2,
+          "name": "Swift"
+        },
+        {
+          "counter": "Poison or sustained damage",
+          "effect": "+1 HP each second while awake and unpoisoned",
+          "id": "regenerating",
+          "mask": 4,
+          "name": "Regenerating"
+        },
+        {
+          "counter": "Stun or paralyse",
+          "effect": "+2 armour unless stunned or paralysed",
+          "id": "shielded",
+          "mask": 0,
+          "name": "Shielded"
+        },
+        {
+          "counter": "Slow or burst damage",
+          "effect": "+2 damage and +3 speed at half HP or lower",
+          "id": "frenzied",
+          "mask": 0,
+          "name": "Frenzied"
+        },
+        {
+          "counter": "Alternate attacks",
+          "effect": "Second repeated attack reflects",
+          "id": "tight_mirror",
+          "mask": 0,
+          "name": "Quick mirror"
+        }
+      ],
+      "modifiers": {
+        "affixes": 1,
+        "tier": 1,
+        "tight_mirror": true
+      },
+      "moment_hp": 3,
+      "moment_max_hp": 63,
+      "morgue": "Riddle morgue · seed 5 · heir 39 · run 262\nD33 (sanctum) · tick 60050 · slain by Mirror King · blow 12 at 3 hp\nclass fighter L10 · trait cowardly\nrules:\n  R1 mirror · HP>35% → cadence\n  R2 reflect_melee · HP>35% → reflect read\n  R3 D19+ · HP>35% → hit buffer\n  R4 summoned · HP>35% → hit summoned\n  R5 undead · HP>35% → hit boss\n  R6 gas · HP>35% → throw fire\n  R7 boss · HP>35% → hit boss\n  R8 HP<35% → drink heal\n  R9 HP<25% · D34+ → bank\n  R10 HP<25% → return\n  R11 no heal · HP<35% → bank\n  R12 telegraph · HP<35% → retreat\n  R13 boss · HP>40% → hit boss\n  R14 foes 1+ → tame\n  R15 foes 1+ → attack\n  R16 HP<60% → rest\ntrace:\n  t59933 R1 cadence hp 24 foes 1  \n  t59945 R1 cadence hp 24 foes 1 king mirrors \n  t59958 R8 drink heal hp 11 foes 1  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35%\n  t59970 R1 cadence hp 49 foes 1 king mirrors \n  t59983 R1 cadence hp 35 foes 1  \n  t59995 R1 cadence hp 35 foes 1  \n  t60008 R1 cadence hp 35 foes 1 king mirrors \n  t60020 R11 bank hp 20 foes 1  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 hp not <25% · R10 hp not <25%\n  t60033 R15 attack hp 20 foes 2  R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 hp not <25% · R10 hp not <25% · R11 going home · R12 going home · R13 same as R7 · R14 no leash\n  t60045 R15 attack hp 20 foes 2 king mirrors R1 hp not >35% · R2 not in view · R3 hp not >35% · R4 not in view · R5 not in view · R6 not in view · R7 hp not >35% · R8 no item · R9 hp not <25% · R10 hp not <25% · R11 going home · R12 going home · R13 same as R7 · R14 no leash\nnotes:\n  t57020 D32: the Sanctum.\n  t57020 Coins in a dry font.\n  t57670 A den of thieves. Whispers, then quiet.\n  t57758 The den wakes: they were never asleep.\n  t57770 D33: the Sanctum.\n  t59483 The Mirror King is back.\n  t59890 Down to 6 HP.\n  t60050 Slain by Mirror King on D33.\nrules json: {\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"mirror\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"tactic\",\"a\":\"cadence\"},\"origin\":\"tactic:cadence\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":35}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":34}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":35}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:steady\"}],\"name\":\"fighter\"}\n",
+      "notes": [
+        "The Mirror King is back."
+      ],
+      "nothing_beats_base": false,
+      "order_over": 0,
+      "package": "Steady · telegraph · HP<35% → retreat",
+      "patches": [
+        {
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 11,
+          "row": {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "telegraph"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          "survive": 0.9166666666666666
+        },
+        {
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "row": {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 40
+              },
+              {
+                "k": "foes>=",
+                "n": 2
+              }
+            ],
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          "survive": 0.6666666666666666
+        },
+        {
+          "camp_pending": true,
+          "exits": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "row": {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "verb": {
+              "v": "return"
+            }
+          },
+          "survive": 0.8333333333333334
+        },
+        {
+          "below_bar": true,
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 6,
+          "no_gain": true,
+          "row": {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:goblin_warlord",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          "survive": 0.0
+        },
+        {
+          "below_bar": true,
+          "camp_pending": true,
+          "forecast_delta": 0.0,
+          "insert_at": 0,
+          "moves_from": 12,
+          "no_gain": true,
+          "row": {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "origin": "temper:unbowed",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          "survive": 0.0
+        }
+      ],
+      "pick": {
+        "id": "boss_focus",
+        "kind": "tactic",
+        "pending": true,
+        "text": "boss focus · boss first",
+        "variant": 1
+      },
+      "replays": 12,
+      "rules": {
+        "name": "fighter",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "mirror"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "tactic:cadence",
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "reflect_melee"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:foundry_master",
+            "verb": {
+              "a": "reflect_read",
+              "v": "tactic"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "depth>=",
+                "n": 19
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:foundry_master",
+            "verb": {
+              "a": "tag:buffer",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "summoned"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:lich",
+            "verb": {
+              "a": "tag:summoned",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "undead"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:lich",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "gas"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:bloat_mother",
+            "verb": {
+              "a": "fire,tag:boss",
+              "v": "throw"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "origin": "drill:goblin_warlord",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "a": "heal",
+              "v": "drink"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 25
+              },
+              {
+                "k": "depth>=",
+                "n": 34
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "bank"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 25
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "return"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "bank"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "telegraph"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "retreat"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "origin": "temper:unbowed",
+            "verb": {
+              "a": "tag:boss",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "origin": "drill:tame",
+            "verb": {
+              "a": "open",
+              "v": "tame"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "origin": "stance:steady",
+            "verb": {
+              "v": "rest"
+            }
+          }
+        ]
+      },
+      "run_id": 262,
+      "trace": {
+        "blow": {
+          "by": "mirror_king",
+          "dmg": 12,
+          "hp": 0,
+          "t": 60050
+        },
+        "blows": [
+          {
+            "by": "mirror_king",
+            "dmg": 17,
+            "hp": 3,
+            "t": 60045
+          },
+          {
+            "by": "mirror_king",
+            "dmg": 12,
+            "hp": 0,
+            "t": 60050
+          }
+        ],
+        "hp_healed": 161,
+        "hp_lost": [
+          {
+            "by": "mirror_king",
+            "dmg": 212
+          },
+          {
+            "by": "fire",
+            "dmg": 12
+          }
+        ],
+        "max_steps": [
+          {
+            "cause": "recovery",
+            "delta": 0,
+            "max": 63,
+            "t": 31008
+          }
+        ],
+        "provenance": [
+          {
+            "depth": 4,
+            "t": 5430,
+            "text": "swapped for the bow"
+          },
+          {
+            "depth": 4,
+            "t": 5430,
+            "text": "found bow +2 on D4"
+          },
+          {
+            "depth": 5,
+            "t": 6720,
+            "text": "found torn scroll? on D5"
+          },
+          {
+            "depth": 6,
+            "t": 8304,
+            "text": "monkey took the leather +2, D6"
+          },
+          {
+            "depth": 6,
+            "t": 8370,
+            "text": "found crimson scroll? on D6"
+          },
+          {
+            "depth": 6,
+            "t": 8720,
+            "text": "goblin last seen D6"
+          },
+          {
+            "depth": 7,
+            "t": 9940,
+            "text": "swapped for the blink"
+          },
+          {
+            "depth": 7,
+            "t": 9940,
+            "text": "found sealed scroll? on D7"
+          },
+          {
+            "depth": 8,
+            "t": 10130,
+            "text": "found sword +1 on D8"
+          },
+          {
+            "depth": 9,
+            "t": 11540,
+            "text": "swapped for the fire"
+          },
+          {
+            "depth": 9,
+            "t": 11540,
+            "text": "found fire on D9"
+          },
+          {
+            "depth": 9,
+            "t": 11790,
+            "text": "swapped for the poison"
+          },
+          {
+            "depth": 9,
+            "t": 11790,
+            "text": "found poison on D9"
+          },
+          {
+            "depth": 10,
+            "t": 14240,
+            "text": "swapped for the summon ally"
+          },
+          {
+            "depth": 10,
+            "t": 14240,
+            "text": "found waxen scroll? on D10"
+          },
+          {
+            "depth": 11,
+            "t": 15660,
+            "text": "swapped for the enchant"
+          },
+          {
+            "depth": 11,
+            "t": 16170,
+            "text": "found plate +2 on D11"
+          },
+          {
+            "depth": 14,
+            "t": 20245,
+            "text": "swapped for the silence"
+          },
+          {
+            "depth": 14,
+            "t": 20245,
+            "text": "found silence on D14"
+          },
+          {
+            "depth": 16,
+            "t": 25033,
+            "text": "bloat last seen D16"
+          },
+          {
+            "depth": 17,
+            "t": 27083,
+            "text": "wraith last seen D17"
+          },
+          {
+            "depth": 17,
+            "t": 28708,
+            "text": "goblin conjurer last seen D17"
+          },
+          {
+            "depth": 18,
+            "t": 30748,
+            "text": "ghoul last seen D18"
+          },
+          {
+            "depth": 19,
+            "t": 31708,
+            "text": "skeleton last seen D19"
+          },
+          {
+            "depth": 20,
+            "t": 32545,
+            "text": "found axe +1 on D20"
+          },
+          {
+            "depth": 20,
+            "t": 33108,
+            "text": "found gilded scroll? on D20"
+          },
+          {
+            "depth": 20,
+            "t": 34008,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 20,
+            "t": 34083,
+            "text": "iron golem last seen D20"
+          },
+          {
+            "depth": 20,
+            "t": 34133,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 22,
+            "t": 37333,
+            "text": "found bow +1 on D22"
+          },
+          {
+            "depth": 23,
+            "t": 38633,
+            "text": "forge imp last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 38820,
+            "text": "bell sentinel last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 39370,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 23,
+            "t": 39908,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 23,
+            "t": 40383,
+            "text": "foundry master last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 40390,
+            "text": "smith last seen D23"
+          },
+          {
+            "depth": 23,
+            "t": 40408,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 28,
+            "t": 51970,
+            "text": "R8 drank heal at 20/63 hp"
+          },
+          {
+            "depth": 28,
+            "t": 52020,
+            "text": "found regen on D28"
+          },
+          {
+            "depth": 28,
+            "t": 52308,
+            "text": "swapped for the silence"
+          },
+          {
+            "depth": 28,
+            "t": 52308,
+            "text": "found silence on D28"
+          },
+          {
+            "depth": 28,
+            "t": 53229,
+            "text": "lurker last seen D28"
+          },
+          {
+            "depth": 29,
+            "t": 54183,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 29,
+            "t": 55208,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 29,
+            "t": 55283,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 31,
+            "t": 56398,
+            "text": "echo last seen D31"
+          },
+          {
+            "depth": 32,
+            "t": 57233,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 32,
+            "t": 57308,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 32,
+            "t": 57770,
+            "text": "acolyte last seen D32"
+          },
+          {
+            "depth": 32,
+            "t": 57770,
+            "text": "monkey last seen D32"
+          },
+          {
+            "depth": 33,
+            "t": 57783,
+            "text": "warden last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 57883,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 33,
+            "t": 57983,
+            "text": "bow up, in hand"
+          },
+          {
+            "depth": 33,
+            "t": 58258,
+            "text": "jackal last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 58920,
+            "text": "foes hold the way"
+          },
+          {
+            "depth": 33,
+            "t": 59520,
+            "text": "mirror shade last seen D33"
+          },
+          {
+            "depth": 33,
+            "t": 59695,
+            "text": "R1 threw fire at 30/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59708,
+            "text": "R8 drank heal at 13/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59783,
+            "text": "R8 drank heal at 21/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59883,
+            "text": "R1 threw fire at 24/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59895,
+            "text": "R8 drank heal at 6/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59958,
+            "text": "R8 drank heal at 11/63 hp"
+          },
+          {
+            "depth": 33,
+            "t": 59983,
+            "text": "used shield bash"
+          },
+          {
+            "depth": 33,
+            "t": 60008,
+            "text": "used cleave"
+          }
+        ],
+        "turns": [
+          {
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 24,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 59933,
+            "telegraphs": [],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 24,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 59945,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "blows": [
+              {
+                "by": "mirror_king",
+                "dmg": 13,
+                "hp": 11,
+                "t": 59950
+              }
+            ],
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 11,
+            "max_hp": 63,
+            "row": 7,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 58008,
+                  "text": "warden slain D33"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 59958,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 22,
+                  "t": 37408,
+                  "text": "skeleton slain D22"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 30,
+                  "t": 56220,
+                  "text": "bloat slain D30"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              }
+            ],
+            "rule_foes": 1,
+            "t": 59958,
+            "telegraphs": [],
+            "verb": {
+              "a": "heal",
+              "v": "drink"
+            }
+          },
+          {
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 49,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 59970,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "blows": [
+              {
+                "by": "mirror_king",
+                "dmg": 14,
+                "hp": 35,
+                "t": 59970
+              }
+            ],
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 35,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 59983,
+            "telegraphs": [],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 35,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 59995,
+            "telegraphs": [],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 35,
+            "max_hp": 63,
+            "row": 0,
+            "rule_foes": 1,
+            "t": 60008,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "a": "cadence",
+              "v": "tactic"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "blows": [
+              {
+                "by": "mirror_king",
+                "dmg": 15,
+                "hp": 20,
+                "t": 60010
+              }
+            ],
+            "foes": 1,
+            "gift": "guard +1",
+            "hp": 20,
+            "max_hp": 63,
+            "row": 10,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 58008,
+                  "text": "warden slain D33"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 60020,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 22,
+                  "t": 37408,
+                  "text": "skeleton slain D22"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 30,
+                  "t": 56220,
+                  "text": "bloat slain D30"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 59958,
+                  "text": "R8 drank heal at 11/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              }
+            ],
+            "rule_foes": 1,
+            "t": 60020,
+            "telegraphs": [],
+            "verb": {
+              "v": "bank"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 2,
+            "gift": "guard +1",
+            "hp": 20,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 58008,
+                  "text": "warden slain D33"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 60033,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 22,
+                  "t": 37408,
+                  "text": "skeleton slain D22"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 30,
+                  "t": 56220,
+                  "text": "bloat slain D30"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 59958,
+                  "text": "R8 drank heal at 11/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 10,
+                "why": "going home"
+              },
+              {
+                "row": 11,
+                "why": "going home"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 1,
+            "t": 60033,
+            "telegraphs": [],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          },
+          {
+            "blocked": "R8 drink heal ✗ no item",
+            "foes": 2,
+            "gift": "guard +1",
+            "hp": 20,
+            "max_hp": 63,
+            "row": 14,
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 58008,
+                  "text": "warden slain D33"
+                },
+                "row": 1,
+                "why": "not in view"
+              },
+              {
+                "row": 2,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 60045,
+                  "text": "never met"
+                },
+                "row": 3,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 22,
+                  "t": 37408,
+                  "text": "skeleton slain D22"
+                },
+                "row": 4,
+                "why": "not in view"
+              },
+              {
+                "because": {
+                  "depth": 30,
+                  "t": 56220,
+                  "text": "bloat slain D30"
+                },
+                "row": 5,
+                "why": "not in view"
+              },
+              {
+                "row": 6,
+                "why": "hp not >35%"
+              },
+              {
+                "because": {
+                  "depth": 33,
+                  "t": 59958,
+                  "text": "R8 drank heal at 11/63 hp"
+                },
+                "row": 7,
+                "why": "no item"
+              },
+              {
+                "row": 8,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 9,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 10,
+                "why": "going home"
+              },
+              {
+                "row": 11,
+                "why": "going home"
+              },
+              {
+                "row": 12,
+                "why": "same as R7"
+              },
+              {
+                "row": 13,
+                "why": "no leash"
+              }
+            ],
+            "rule_foes": 2,
+            "t": 60045,
+            "telegraphs": [
+              "king mirrors"
+            ],
+            "verb": {
+              "a": "nearest",
+              "v": "attack"
+            }
+          }
+        ]
+      },
+      "verdict": "order"
+    }
+  }
+]

@@ -113,7 +113,7 @@ function plainPatchRow(row: Row): HTMLElement {
 }
 export function patchRows(app: App, patches: Patch[], baseline?: number, trace?: Trace, opts: PatchOpts = {}): HTMLElement {
   const head = opts.nothingBeatsBase && patches.length
-    ? h("div", { class: "patches-head num dim" }, /* copy:death_line */ `none beats ${replayShare(baseline ?? 1, opts.replays)} as is`) : null;
+    ? h("div", { class: "patches-head num dim" }, /* copy:death_line */ `Last moments · ${replayShare(baseline ?? 1, opts.replays)} survived · no replay gain`) : null;
   // QA 778fa1b (qaU: PLATEAU `base 8%` on patch 1, `base 9%` on patch 2 — "two bases for one lineage"): a stall block has one base, the
   // unpatched reach (the first patch's reach less its move, unrounded), and each patch's move is its rounded reach less it
   const lead = baseline === undefined ? patches.find((p) => !p.below_bar) : undefined;
@@ -160,7 +160,7 @@ export function patchRows(app: App, patches: Patch[], baseline?: number, trace?:
       ? /* copy:callout */ "already written"
       // Cut 26 §6 (control rater AQ: `nothing beats unpatched 12/12` over a tablet reading `survives 12/12`): a candidate that does not
       // beat the unpatched replays was tried, not a help — its count never reads as a headline
-      : opts.nothingBeatsBase ? /* copy:callout */ "replayed · no gain"
+      : opts.nothingBeatsBase ? /* copy:callout */ "no replay gain"
       : p.below_bar
       // QA 308f045 (qaAD: `move R6 above R4 … tried · 0/12 · below bar` — "I never tried it"): the replays tried it — `replayed`
       ? /* copy:callout */ `replayed · ${rs(p.survive)} · below bar`
@@ -223,7 +223,7 @@ export function patchRows(app: App, patches: Patch[], baseline?: number, trace?:
     const nm = ruleName(names, pi);
     if (card) btn.dataset.gem = wear ? /* copy:button */ "wear" : /* copy:button */ "unlock";
     btn.dataset.short = unlock ? /* copy:button */ `buy ${p.root?.text ?? nm}` : move ? /* copy:button */ `move ${nm} up` : p.remove ? /* copy:button */ `cut ${nm}` : p.restores !== undefined ? /* copy:button */ `restore ${nm}` : p.buys ? `+ ${p.buys.label} · ${nm}` : `+ ${nm}`;
-    btn.dataset.eff = unlock ? "" : isTradeOff(p.whole) ? /* copy:callout */ "trade-off" : held >= 0 ? /* copy:callout */ "already written" : noGain || opts.nothingBeatsBase ? /* copy:callout */ "no gain" : p.below_bar ? /* copy:callout */ "below bar"
+    btn.dataset.eff = unlock ? "" : isTradeOff(p.whole) ? /* copy:callout */ "trade-off" : held >= 0 ? /* copy:callout */ "already written" : opts.nothingBeatsBase ? /* copy:callout */ "no replay gain" : noGain ? /* copy:callout */ "no gain" : p.below_bar ? /* copy:callout */ "below bar"
       : opts.stall ? /* copy:callout */ `unstuck ${rs(p.survive)}` : baseline === undefined ? /* copy:callout */ `reach ${pct(p.survive)}` : /* copy:callout */ `survives ${rs(p.survive)}`;
     patchOf.set(btn, p);
     quietMoves(btn);
