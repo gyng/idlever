@@ -1,0 +1,486 @@
+{
+  "cases": 36,
+  "synthetic": true,
+  "settlement_roundtrip_and_idempotence": 36,
+  "salvage_fractional_conservation": 36,
+  "routine_confirmations": 6,
+  "routine_cases": 18,
+  "cut140_routine_zero_confirmation_bar": "FAIL baseline (6/18); implementation pending",
+  "limitations": [
+    "No earned-run eligibility proof",
+    "No complete report fate fixture",
+    "No one/three-hero8h parity",
+    "No keeper trigger/fallback audit",
+    "No responsive client proof"
+  ],
+  "checks": [
+    {
+      "case": "empty",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "empty",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "empty",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "zero_slots",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 87
+    },
+    {
+      "case": "zero_slots",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "zero_slots",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "free_one",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "free_one",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "free_one",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "same_kind_excess",
+      "tier": "bank",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          12
+        ]
+      },
+      "salvage_gold": 5,
+      "fractional_carry": 37
+    },
+    {
+      "case": "same_kind_excess",
+      "tier": "return",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          12
+        ]
+      },
+      "salvage_gold": 3,
+      "fractional_carry": 37
+    },
+    {
+      "case": "same_kind_excess",
+      "tier": "death",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          12
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "same_kind_upgrade",
+      "tier": "bank",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 87
+    },
+    {
+      "case": "same_kind_upgrade",
+      "tier": "return",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "same_kind_upgrade",
+      "tier": "death",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "weaker_same_kind",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 87
+    },
+    {
+      "case": "weaker_same_kind",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "weaker_same_kind",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "distinct_kind",
+      "tier": "bank",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 3,
+      "fractional_carry": -13
+    },
+    {
+      "case": "distinct_kind",
+      "tier": "return",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "distinct_kind",
+      "tier": "death",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "preferred_fallback",
+      "tier": "bank",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 4,
+      "fractional_carry": 12
+    },
+    {
+      "case": "preferred_fallback",
+      "tier": "return",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 62
+    },
+    {
+      "case": "preferred_fallback",
+      "tier": "death",
+      "asks": true,
+      "plan": {
+        "evict": [],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "brought",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          100001
+        ]
+      },
+      "salvage_gold": 6,
+      "fractional_carry": 62
+    },
+    {
+      "case": "brought",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          100001
+        ]
+      },
+      "salvage_gold": 4,
+      "fractional_carry": 12
+    },
+    {
+      "case": "brought",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": [
+          100001
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "none",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 4,
+      "fractional_carry": 87
+    },
+    {
+      "case": "none",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 3,
+      "fractional_carry": 7
+    },
+    {
+      "case": "none",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [],
+        "retain": []
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "keeper",
+      "tier": "bank",
+      "asks": false,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 87
+    },
+    {
+      "case": "keeper",
+      "tier": "return",
+      "asks": false,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "keeper",
+      "tier": "death",
+      "asks": false,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    },
+    {
+      "case": "paused_keeper",
+      "tier": "bank",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 2,
+      "fractional_carry": 87
+    },
+    {
+      "case": "paused_keeper",
+      "tier": "return",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 1,
+      "fractional_carry": 87
+    },
+    {
+      "case": "paused_keeper",
+      "tier": "death",
+      "asks": true,
+      "plan": {
+        "evict": [
+          100001
+        ],
+        "retain": [
+          10
+        ]
+      },
+      "salvage_gold": 0,
+      "fractional_carry": 37
+    }
+  ]
+}
