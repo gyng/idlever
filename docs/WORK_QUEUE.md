@@ -1,6 +1,6 @@
 # Content and refinement queue — 2026-10-11
 
-Owner requested more content and refinement work. This is the current prospective implementation queue; older `NEXT_WORK.md` entries are historical. None of the work below is claimed delivered. Current product candidate is `d34605e` (menus, painted home landscape, local-clock lighting and character lanterns). Its complete158-group acceptance is running; no fresh blind ratings exist yet.
+Owner requested more content and refinement work. This is the current prospective implementation queue; older `NEXT_WORK.md` entries are historical. None of the work below is claimed delivered. Current product candidate is `d34605e` (menus, painted home landscape, local-clock lighting and character lanterns). Its corrected complete acceptance passed158/158 in1404.3s; the original157/158 failure remains preserved. Two fresh independent blind sessions are running; no locked ratings exist yet.
 
 Keep that candidate fixed through acceptance and independent play. Read-only inventory and draft contracts may proceed now. Source, tests, assets, native tuning and browser captures wait for the current acceptance/rating workload to release the machine. Blind-session problems can reorder this queue. The verified fun≥80 goal remains the priority; adding catalogue size alone does not satisfy it.
 
