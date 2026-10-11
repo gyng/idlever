@@ -1,3 +1,9 @@
+# Cut168 targeted PASS / guarded acceptance LIVE — 2026-10-12
+
+Previous goal turn made progress: routine tier verified, failed Cut166 acceptance archived/pushed061b1db. This turn same King tuning job finished terminalPASS2/2 in415s,16seeds: median7.0days,minimum5,16/16slain; Legacy day3spending98%/earned78594. Original thresholds unchanged. Runtime2df75dbabfdb69d8/jobsrcff43ce12e7cd70d1;16 exact full14day cache records verified/archived under docs/evidence/cut168/targeted. Setup/source guard680files and candidate diff under docs/evidence/cut168/setup. Targeted pass is not acceptance or fun certification.
+
+LIVE continuation exec19481 owns the single guarded acceptance queue; poll SAME handle with tools.write_stdin19481. Controller scratchpad/cut168/continue-after-tune.py, /tmp/riddle-cut168-continuation.log and continuation-state.json. Targeted job3551283/3551511 is TERMINAL, do not poll/restart it. Acceptance PythonPID3558863; scratchpad/cut168/run-state.json and queue.log are current progress sources. Sequence paid-actions/resume/original22row16seed/fullroutine18metricswire+shippingbuild/all166shippingclient stopsfirstfail/sourcechange. First paid checks terminalPASS3/1.4s; exact resume/save parity terminalPASS79.9s; original actor16 nowLIVE. Preserve guarded sources unchanged; experimental actor and King change remain DIRTY/unadopted pending required acceptance. Full QA/freeze/TWO fresh complete blind ratings still required; >=80 unverified. No deployment.
+
 # Cut166 terminal / Cut168 targeted tuning LIVE — 2026-10-12
 
 Routine validation speed work is complete and pushed: `pnpm test` selects 37 unchanged critical journey groups; latest PASS37/37 in215s versus1770.4s for full (12.1% time). `pnpm test:full` and no-argument client runner retain complete discovery. Risk-based coverage is not a measured80% defect-detection claim. See docs/DEV_VALIDATION_TIERS.md and preserved evidence.

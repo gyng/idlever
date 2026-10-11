@@ -1,0 +1,22 @@
+dayplayer: targeted rows picked-l-king,picked-l-purse — configurations PICKED+L
+dayplayer: PICKED+L s10 done in 336s 
+dayplayer: PICKED+L s16 done in 346s 
+dayplayer: PICKED+L s6 done in 347s 
+dayplayer: PICKED+L s2 done in 352s 
+dayplayer: PICKED+L s7 done in 354s 
+dayplayer: PICKED+L s5 done in 357s 
+dayplayer: PICKED+L s15 done in 359s 
+dayplayer: PICKED+L s3 done in 362s 
+dayplayer: PICKED+L s8 done in 367s 
+dayplayer: PICKED+L s9 done in 370s 
+dayplayer: PICKED+L s13 done in 372s 
+dayplayer: PICKED+L s12 done in 373s 
+dayplayer: PICKED+L s11 done in 375s 
+dayplayer: PICKED+L s1 done in 376s 
+dayplayer: PICKED+L s14 done in 377s 
+dayplayer: PICKED+L s4 done in 415s 
+bar (targeted)                                                                value  result
+PICKED+L King no sooner than day 7 (median), never before day 4  7.0 · min 5 (16/16 slain)  PASS
+PICKED+L purse at day 3 spent ≥ 50 % of income since Kit complete 98% (16/16 seeds · earned $78594)  PASS
+dayplayer (targeted: picked-l-king,picked-l-purse, fail-fast, 415s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `picked-l-king,picked-l-purse` (fail-fast) PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
