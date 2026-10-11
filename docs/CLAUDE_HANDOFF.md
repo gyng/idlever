@@ -1,3 +1,14 @@
+# Current owner terrain/menu checkpoint — 2026-10-11
+
+- Persistent goal remains verified fun≥80 by complete fresh blind cards; unachieved. No raters released, no deployment.
+- Cut128 predecessor b6df4f2 whole client suite **TERMINAL PASS156/156**,1400.3s,exec63523 exit0; final log/hash archived in its acceptance JSON. It does not certify later menu/terrain source changes.
+- Current main application **9004023**: Cut130 game menus integrated from isolated menus/cut130 e88be2e. Cold visits show title/settings/credits without starting an engine; existing saves load straight into game/catch-up. In-game settings → Main menu → Continue; confirmed New game clean-boots, Cancel retains exact save. Shared preferences and persistent settings, keyboard focus/escape, deferred offline registration.
+- Menu validation **81 real-WASM checks PASS320/400/1440**, TypeScript/copy2354zero/build PASS. Private GPU phone/desktop main menu and settings screenshots posted inline. Artifacts `scratchpad/qa-cut130-menu/`; hashes/limits `eval/cohorts/cut130-menu.acceptance.json`. No unqualified new whole acceptance.
+- Terrain agent `/root/home_terrain` still active in `/tmp/riddle-home-terrain`, branch terrain/cut129, ports5394 baseline/5395after. Has browser/GPU priority after root menu checks finished; root must not run heavy work alongside final performance checks. First/revised empty-town images posted; latest small review softens rock seams/adds slate grain. Wait final screenshots/GPU/lifecycle/scoped checks and commit IDs, review, then cherry-pick. Main source scopes do not overlap.
+- After terrain integration: appropriate shared settings/town regressions, build new immutable preview, complete new whole157-group client acceptance before fresh blind cohort release. Keep old b6df4f2 freeze/cohort immutable and unreleased. New brief must include title on first cold visit (`menu=1` alongside diagnostic seed/fresh), later loads omit menu/fresh. Preserve80/α≥.8/70 actual-minute criteria and native limitations below.
+
+---
+
 # Current resume checkpoint — Cut128, 2026-10-11
 
 - Owner steering: explicitly requested a subagent to improve home-base terrain graphics and screenshots at milestones. Agent `/root/home_terrain` is implementing Cut129 in isolated `/tmp/riddle-home-terrain`, branch `terrain/cut129`, based on b0b5d4a. Main source and frozen b6df4f2 preview remain untouched. Acceptance63523 is now terminal; terrain agent has the first browser/GPU validation slot. Hold blind-rater release for terrain review/integration and a new immutable candidate; the b6df4f2 cohort remains unreleased historical preparation. Capture and show actual before/after screenshots once the timing suite is terminal. Do not deploy.

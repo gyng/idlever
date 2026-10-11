@@ -1,0 +1,51 @@
+{
+  "cut": 130,
+  "implementation": "9004023",
+  "status": "focused acceptance PASS; combined application whole acceptance pending",
+  "recordedUtc": "2026-10-11T04:19:16.718371+00:00",
+  "checks": {
+    "realWasmMenu": 81,
+    "widths": [
+      320,
+      400,
+      1440
+    ],
+    "build": "PASS",
+    "typeScript": "PASS",
+    "copyLint": "2354 tagged literals, zero violations",
+    "pageErrors": []
+  },
+  "capture": {
+    "utc": "2026-10-11T04:16:14.165Z",
+    "records": [
+      {
+        "width": 400,
+        "kind": "wasm",
+        "screen": "camp",
+        "errors": [],
+        "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)"
+      },
+      {
+        "width": 1440,
+        "kind": "wasm",
+        "screen": "camp",
+        "errors": [],
+        "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)"
+      }
+    ]
+  },
+  "artifacts": {
+    "scratchpad/qa-cut130-menu/menu-test.log": "e8dfc9c1d2d80e7270aada80ae11fdaa2614474262be8b1f028563863c0d9277",
+    "scratchpad/qa-cut130-menu/build.log": "49d24ead1750039450f864b3bab8577d8f11531f60b03699000d6cb3fdbda6d0",
+    "scratchpad/qa-cut130-menu/capture.json": "f84683a020596bd053bab15d7d86f929a47cfa2c155166647314d05105e8d4c1",
+    "scratchpad/qa-cut130-menu/menu-400.png": "0c9e4bb947d0f7af25067f986d6b6f92a88db4ce0542cd549e9d52e49d439150",
+    "scratchpad/qa-cut130-menu/settings-400.png": "90f8e2b5bced5b8e4e844325d4df50ad9f00f6e4fc6b72264bb3badf08a65171",
+    "scratchpad/qa-cut130-menu/menu-1440.png": "79f2b11094117431ca719a9c6f78094891c5dfde650762efd11cc6c20e68488f",
+    "scratchpad/qa-cut130-menu/settings-1440.png": "27049cb1e33f7b20458fd450159306033e97f68067a80a559741a0f87422fe0e"
+  },
+  "limitations": [
+    "Screenshots are isolated development-preview diagnostics, not blind scores.",
+    "Earlier156/156 whole-client acceptance belongs to b6df4f2 before menu/terrain application changes.",
+    "No deployment."
+  ]
+}
