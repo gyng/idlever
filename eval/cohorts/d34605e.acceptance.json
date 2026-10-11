@@ -526,7 +526,21 @@
         6.31305,
         20.52691667
       ],
-      "scope": "Rater-reported immutable lock and timing totals; coordinator confirmed file existence only. Rules export/cleanup underway. Await A locked card and both final reports before hashing/interval audit/scoring."
+      "scope": "Rater lock/export/cleanup report received; files exist, card/export contents unread and independent hash/interval audit pending until A also locks. Final report automatically delivered three highlights/gripes to coordinator before A lock; no awards supplied. No B opinions shared with A, no gameplay guidance or product changes made from them.",
+      "rulesPath": "eval/cards/d34605e.blind-b.rules.json",
+      "raterReportedRulesSha256": "cd27f1a0bac5d0f6f99139f60fbaa43128de718971812daa103dc9525c7ab72e",
+      "rulesFormat": "riddle-rules-text",
+      "reportedBrowserLauncherSession": 95509,
+      "reportedBrowserExitCode": 0,
+      "reportedOwnDriverQuitOk": true,
+      "reportedOwnRelayStopped": true,
+      "finalReportReceived": true
     }
+  },
+  "coordinatorExposureBeforeBothLocks": {
+    "recordedUtc": "2026-10-11T08:24:45.349527+00:00",
+    "source": "B final answer automatically delivered after raw lock, before A lock.",
+    "exposure": "Three highlights and three gripes received; raw card and awards remain unread.",
+    "handling": "Coordinator requested metadata-only final handoff, but final arrived with opinions. Preserve final report; do not share with A or act on opinions until both cards locked. Frozen product unchanged."
   }
 }

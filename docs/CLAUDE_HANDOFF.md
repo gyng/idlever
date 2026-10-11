@@ -1,3 +1,7 @@
+# B export and cleanup terminal — 2026-10-11
+
+B rules export eval/cards/d34605e.blind-b.rules.json exists, exact returned string labeled riddle-rules-text, reportedSHAcd27f1a0bac5d0f6f99139f60fbaa43128de718971812daa103dc9525c7ab72e. Raw card reportedhash unchanged; contents still unread by root. B own driver5381 quitOK/browser launcher95509 exit0/relay21401 stopped, final report received; A still live. B final automatically delivered three highlights/gripes before A lock despite root metadata-only handoff request; no awards/card content read. Explicit exposure retained in acceptance; no opinions shared with A or product edits made from them. Await A lock/final before joint hash/audit/scoring and GPU work. Goal active/unproven; no deployment.
+
 # Post-lock rules-export infrastructure — 2026-10-11
 
 A latest infrastructure: cold40.05 and20m5.08 complete,4h2.47/5 underway,8h remains; relay responsive/same frozen profile. B raw card locked/unread, export cleanup still live. B requested Rules export syntax after no download/dialog; source verified settings writes textarea.value/clipboard. Supplied existing driver5381 read-only eval await window.__riddle.engine.exportRules(), explicitly post-lock only/no save/import/ticks/changes. Returns plain rules text, preserve exact value with format label; do not claim parsed RuleSet JSON. Restricted relay remains unchanged. Give A same post-lock export help if needed after lock. Wait both final reports/cards before content/hash/audit/scoring. Goal active/unproven, no deployment.
