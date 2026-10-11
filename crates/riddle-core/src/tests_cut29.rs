@@ -186,9 +186,10 @@ fn a_tap_is_a_decision() {
         i.known = true;
         i
     };
-    // a one-slot vault holding leather; a leather +1 found beats it: a decision
-    let vault = vec![it(1, "leather", 0)];
-    assert!(crate::engine::keep_is_a_decision(&pending(vec![it(2, "leather", 1)]), &vault, 1));
+    // a one-slot vault holding leather; an ordinary same-kind upgrade settles by order
+    let vault = vec![it(100_001, "leather", 0)];
+    assert!(!crate::engine::keep_is_a_decision(&pending(vec![it(100_002, "leather", 1)]), &vault, 1));
+    assert!(crate::engine::keep_is_a_decision(&pending(vec![it(100_002, "mail", 1)]), &vault, 1), "distinct armour remains a choice");
     // a worse find: no decision
     assert!(!crate::engine::keep_is_a_decision(&pending(vec![it(3, "dagger", 0)]), &vault, 1));
     // an empty vault with room for the one find: no decision; the note names the keep

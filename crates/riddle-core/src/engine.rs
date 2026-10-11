@@ -4724,14 +4724,29 @@ impl Game {
     }
 
     pub fn exit_pending_wire(&self) -> Option<ExitPending> {
-        self.pending_exit.as_ref().map(|p| ExitPending {
+        self.pending_exit.as_ref().map(|p| {
+            let mut settled = self.clone();
+            settled.auto_keep();
+            let auto_salvaged = settled.batch.salvaged.iter().filter_map(|(kind, (n, _))| {
+                let prior = self.batch.salvaged.get(kind).map_or(0, |(n, _)| *n);
+                let count = n.saturating_sub(prior);
+                (count > 0).then(|| crate::wire::SalvageRow {
+                    kind: if p.items.iter().chain(self.lineage.vault.iter()).any(|i| i.kind == *kind && i.is_known(&settled.lineage.facts, &settled.lineage.flavours)) {
+                        crate::item::kind_name(kind)
+                    } else { settled.lineage.wire_name(kind).replace('_', " ") }, n: count,
+                    gold: settled.batch.salvaged_coins.get(kind).copied().unwrap_or(0)
+                        - self.batch.salvaged_coins.get(kind).copied().unwrap_or(0),
+                })
+            }).collect();
+            ExitPending {
+            auto_salvaged,
             items: p.items.iter().map(|i| to_inv(i, &self.lineage.facts, &self.lineage.flavours)).collect(),
             tier: p.tier.name().into(),
             worth: salvage_coins(&p.items, p.pct, self.lineage.gold_carry),
             auto_keep: auto_keep_plan(p, &self.lineage.vault, self.lineage.vault_slots(), &self.lineage.keep_pref, true).0,
             decide: keep_is_a_decision(p, &self.lineage.vault, self.lineage.vault_slots()) && !crate::tree::on(&self.lineage, "keeper"),
             note: keep_note(p, &self.lineage, &auto_keep_plan(p, &self.lineage.vault, self.lineage.vault_slots(), &self.lineage.keep_pref, true).0),
-        })
+        }})
     }
 
     /// One turn of the live run. Records history for verdicts when not simulating.
@@ -7980,17 +7995,21 @@ fn past(tier: &str) -> String {
 /// `auto_keep`'s decision: the pending ids that go to the vault and the vault ids they replace
 /// (see `Game::auto_keep` for the precedence). Never plans past `slots`.
 /// Cut 29 §4 (AW: "one ▲ per tap"; the keep sheet asked on every exit): the keep sheet is a
-/// decision only when a find beats something in a full vault (a find of its category worth more),
-/// or a caged item came home (Cut 28 §4: the player's choice). Otherwise the exit settles by the
-/// standing order (`auto_keep`) and says so in one line (`keep_note`).
+/// decision when the storage contest contains different gear choices. Plain same-kind copies
+/// and enchantment upgrades settle by the standing order; per-instance gun/forged behavior
+/// still requires a choice. Settlement itself and its value/order rules remain unchanged.
 pub fn keep_is_a_decision(p: &PendingExit, vault: &[Item], slots: usize) -> bool {
     if slots == 0 {
         return false;
     }
     let finds: Vec<&Item> = p.items.iter().filter(|i| !p.brought.contains(&i.id) && matches!(i.cat(), Cat::Weapon | Cat::Armour)).collect();
     let full = vault.len() >= slots;
-    let beats = finds.iter().any(|f| vault.iter().any(|v| v.cat() == f.cat() && f.value() > v.value()));
-    let room_contest = !full && finds.len() > slots - vault.len();
+    let same_plain_kind = |a: &Item, b: &Item| a.kind == b.kind
+        && a.firearm.is_none() && b.firearm.is_none() && a.forged.is_none() && b.forged.is_none()
+        && !crate::kit::is_kit_id(a.id) && !crate::kit::is_kit_id(b.id);
+    let beats = finds.iter().any(|f| vault.iter().any(|v| v.cat() == f.cat() && f.value() > v.value() && !same_plain_kind(f, v)));
+    let room_contest = !full && finds.len() > slots - vault.len()
+        && finds.first().is_some_and(|first| finds.iter().any(|f| !same_plain_kind(first, f)));
     (full && beats) || room_contest
 }
 

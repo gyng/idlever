@@ -1,0 +1,18 @@
+400 same_kind_excess real-WASM fixture flow PASS
+400 same_kind_upgrade real-WASM fixture flow PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 20000ms exceeded.
+Call log:
+[2m  - waiting for locator('.sheet-wrap .keep-picker') to be visible[22m
+
+    at /home/g/p/riddle/web/tests/routine-keep.mjs:32:51 {
+  log: [
+    "  - waiting for locator('.sheet-wrap .keep-picker') to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.5.0

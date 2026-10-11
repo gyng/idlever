@@ -1,0 +1,10 @@
+400 same_kind_excess real-WASM fixture flow PASS
+file:///home/g/p/riddle/web/tests/routine-keep.mjs:13
+const check=(ok,msg)=>{if(!ok)throw Error(msg);};
+                                    ^
+
+Error: retained and actual salvage visible in report details
+    at check (file:///home/g/p/riddle/web/tests/routine-keep.mjs:13:37)
+    at file:///home/g/p/riddle/web/tests/routine-keep.mjs:49:4
+
+Node.js v26.5.0

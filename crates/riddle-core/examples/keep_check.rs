@@ -12,7 +12,7 @@ fn item(id: u32, kind: &str, enchant: i32) -> Item {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let output = std::env::args().nth(1).ok_or("keep_check OUTPUT.json")?;
     let mut cases = Vec::new();
-    for name in ["empty", "zero_slots", "free_one", "same_kind_excess", "same_kind_upgrade", "weaker_same_kind", "distinct_kind", "preferred_fallback", "brought", "none", "keeper", "paused_keeper"] {
+    for name in ["empty", "zero_slots", "free_one", "same_kind_excess", "same_kind_upgrade", "weaker_same_kind", "distinct_kind", "preferred_fallback", "brought", "none", "keeper", "paused_keeper", "keeper_conflict", "paused_keeper_conflict"] {
         for (tier, pct) in [(ExitTier::Bank, 100), (ExitTier::Return, 60), (ExitTier::Death, 0)] {
             let mut g = Game::new_literal(140);
             g.lineage.gold_carry = 37;
@@ -32,7 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     g.lineage.vault = vec![item(100_001, "dagger", 2)];
                     vec![item(10, "dagger", 0)]
                 },
-                "distinct_kind" => {
+                "distinct_kind" | "keeper_conflict" | "paused_keeper_conflict" => {
                     g.lineage.vault = vec![item(100_001, "dagger", 0)];
                     vec![item(10, "bow", 1)]
                 },
@@ -46,14 +46,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "none" => { g.lineage.keep_pref = "none".into(); vec![item(10, "dagger", 1), item(11, "heal", 0)] },
                 _ => unreachable!(),
             };
-            if matches!(name, "keeper" | "paused_keeper") {
+            if matches!(name, "keeper" | "paused_keeper" | "keeper_conflict" | "paused_keeper_conflict") {
                 riddle_core::tree::grant(&mut g.lineage, &["keeper"]); // Explicit unit fixture only.
-                if name == "paused_keeper" { g.set_worker("keeper", false)?; }
+                if matches!(name, "paused_keeper" | "paused_keeper_conflict") { g.set_worker("keeper", false)?; }
             }
             let found = items.iter().filter(|it| !brought.contains(&it.id)).map(|it| (it.id, it.kind.clone())).collect();
             g.pending_exit = Some(PendingExit { run_id: 1, tier, items, pct, brought, found, stalled: false });
             let before = g.save();
             let pending = g.exit_pending_wire().unwrap();
+            let preview_source_unchanged = before == g.save();
             let p = g.pending_exit.as_ref().unwrap();
             let (retained_ids, evicted_ids) = auto_keep_plan(p, &g.lineage.vault, g.lineage.vault_slots(), &g.lineage.keep_pref, true);
             g.auto_keep();
@@ -65,12 +66,25 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let serialized_settlement_equal = after == restored.save();
             cases.push(json!({"case":name,"tier":tier.name(),"fixture":true,"slots":g.lineage.vault_slots(),"pending":pending,
                 "plan":{"retain":retained_ids,"evict":evicted_ids},"before":before,"after":after,
-                "settlement_idempotent":idempotent,"serialized_settlement_equal":serialized_settlement_equal,
+                "settlement_idempotent":idempotent,"serialized_settlement_equal":serialized_settlement_equal,"preview_source_unchanged":preview_source_unchanged,
                 "settled":{"vault":g.lineage.vault,"gold":g.lineage.gold,"fractional_carry":g.lineage.gold_carry,
                     "forge":g.lineage.forge,"salvaged":g.batch.salvaged,"salvaged_coins":g.batch.salvaged_coins,"salvage_gold":g.batch.salvage_gold,"found":g.batch.found}}));
         }
     }
+    let mut presentation = Vec::new();
+    for case in cases.iter().filter(|c| c["tier"] == "bank" && matches!(c["case"].as_str(), Some("same_kind_excess" | "same_kind_upgrade" | "distinct_kind" | "preferred_fallback" | "none"))) {
+        let mut g = Game::load(case["before"].as_str().unwrap())?;
+        // Explicit completed-exit presentation fixture. The snapshot comes from a separate
+        // actual Send clone; the pending fixture stays untouched by that preview send.
+        let snapshot = g.clone().send();
+        g.last_snapshot = Some(snapshot.clone());
+        g.lineage.pkg.literal = false;
+        if riddle_core::tree::hired(&g.lineage, "scout") { g.set_worker("scout", false)?; }
+        g.lineage.tree.sent = false;
+        let pending = g.step(0).exit_pending.ok_or("presentation fixture lost pending exit")?;
+        presentation.push(json!({"case":case["case"],"synthetic":true,"save":g.save(),"snapshot":snapshot,"pending":pending}));
+    }
     std::fs::write(output, serde_json::to_vec_pretty(&json!({"synthetic_fixtures":true,"earned_play":false,"balance_gate":false,
-        "limitation":"Pending-exit fixtures isolate storage settlement; they do not prove which finds a real death makes eligible or a complete run report.","cases":cases}))?)?;
+        "limitation":"Pending-exit fixtures isolate storage settlement; they do not prove which finds a real death makes eligible or a complete run report.","cases":cases,"presentation":presentation}))?)?;
     Ok(())
 }

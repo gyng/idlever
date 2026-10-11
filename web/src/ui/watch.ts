@@ -698,7 +698,7 @@ export function renderWatch(app: App): Mounted {
   // viewer behind the world slows where the events are, not where the engine is (`slowUntil` / `sceneUntil` stay the world's)
   const nearTicks: number[] = [], scenes: { from: number; until: number }[] = [];
   let exitTier: Tier | null = null, exitAt = 0;
-  let pendingExit: { items: InvItem[]; tier: string; worth?: number[]; auto_keep?: number[]; decide?: boolean; note?: string } | undefined;
+  let pendingExit: { items: InvItem[]; tier: string; worth?: number[]; auto_keep?: number[]; auto_salvaged?: { kind: string; n: number; gold: number }[]; decide?: boolean; note?: string } | undefined;
   // what the exit sheet let go, at the engine's worth — the report's `salvaged` rows (QA on 952e306: "camp $76 after
   // 'Returned with $57'; only the gold sheet shows +$19 salvage"); the deepest floor this send reached (its `deepest` tile)
   let salvagedRows: { kind: string; n: number; gold: number }[] = [];
@@ -2697,7 +2697,7 @@ export function renderWatch(app: App): Mounted {
         const kept = new Set<number>();
         const gained = app.lineage.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.kind);
         for (const kind of gained) { const it = skipped.items.find((x) => x.kind === kind && !kept.has(x.id)); if (it) kept.add(it.id); }
-        salvagedRows = letGoRows(skipped, kept);
+        salvagedRows = skipped.auto_salvaged ?? letGoRows(skipped, kept);
         keptLabels = app.lineage.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label);
       }
     } finally { /* guard cleared on every normal path below */ }

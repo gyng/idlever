@@ -1,0 +1,20 @@
+
+running 4 tests
+. 1/4
+tests_cut156::automatic_salvage_preserves_known_and_hidden_item_names --- FAILED
+..
+failures:
+
+---- tests_cut156::automatic_salvage_preserves_known_and_hidden_item_names stdout ----
+
+thread 'tests_cut156::automatic_salvage_preserves_known_and_hidden_item_names' (80) panicked at crates/riddle-core/src/tests_cut156.rs:43:5:
+known item stays named
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests_cut156::automatic_salvage_preserves_known_and_hidden_item_names
+
+test result: FAILED. 3 passed; 1 failed; 0 ignored; 0 measured; 803 filtered out; finished in 4.29s
+
+error: test failed, to rerun pass `-p riddle-core --lib`

@@ -678,6 +678,10 @@ impl Ev {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct ExitPending {
+    /// Exact automatic settlement's per-kind salvage, including evicted stored gear.
+    /// Computed on a clone; the real pending exit remains untouched.
+    #[serde(default)]
+    pub auto_salvaged: Vec<SalvageRow>,
     pub items: Vec<InvItem>,
     pub tier: String,
     /// What each item (by position) salvages at this exit, in coins — the engine's own

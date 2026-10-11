@@ -1,0 +1,19 @@
+400 same_kind_excess real-WASM fixture flow PASS
+400 same_kind_upgrade real-WASM fixture flow PASS
+400 distinct_kind real-WASM fixture flow PASS
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Error: strict mode violation: getByRole('button', { name: 'details' }) resolved to 2 elements:
+    1) <button aria-expanded="false" class="details-fold num">…</button> aka getByRole('button', { name: 'details', exact: true })
+    2) <button class="hero-details" aria-label="Bloodline 1 details">Details</button> aka getByRole('button', { name: 'Bloodline 1 details' })
+
+Call log:
+[2m  - waiting for getByRole('button', { name: 'details' })[22m
+
+    at /home/g/p/riddle/web/tests/routine-keep.mjs:37:63 {
+  log: [ "  - waiting for getByRole('button', { name: 'details' })" ]
+}
+
+Node.js v26.5.0

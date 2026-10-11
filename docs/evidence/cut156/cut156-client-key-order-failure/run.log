@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/web/tests/routine-keep.mjs:12
+const check=(ok,msg)=>{if(!ok)throw Error(msg);};
+                                    ^
+
+Error: exact Rust automatic gold/carry/storage
+    at check (file:///home/g/p/riddle/web/tests/routine-keep.mjs:12:37)
+    at file:///home/g/p/riddle/web/tests/routine-keep.mjs:46:4
+
+Node.js v26.5.0

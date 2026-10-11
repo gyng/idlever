@@ -219,6 +219,7 @@ export type StepResult = { events: Ev[]; snapshot: Snapshot; run_over: boolean;
                             *  (1× keeps fights and beats at 1×). Absent when the step had none. */
                            calm?: [number, number][];
                            exit_pending?: { items: InvItem[]; tier: string; worth?: number[]; auto_keep?: number[];
+                                            auto_salvaged?: { kind: string; n: number; gold: number }[];
                                             decide?: boolean;   // Cut 29 §4 (core): the sheet is a decision — a find beats something in the full vault (or finds outnumber its free slots); false → settle it (`autoKeep()`) without a sheet and show `note`
                                             note?: string } };  // Cut 29 §4 (core): the settled exit's one line (`kept leather +1`); absent when it keeps nothing new                     // Addendum D; `worth`: each item's salvage at this exit, in coins
 
