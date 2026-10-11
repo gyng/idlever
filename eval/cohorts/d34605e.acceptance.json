@@ -479,14 +479,18 @@
     "scope": "Live transport confirmed by both operators; actual70-minute horizons and score still unproven."
   },
   "lastInfrastructureStatus": {
-    "coordinatorObservedUtc": "2026-10-11T08:01:15.020304+00:00",
+    "coordinatorObservedUtc": "2026-10-11T08:28:21.833950+00:00",
     "a": {
       "agent": "/root/blind_d346_a",
-      "phase": "cold",
+      "phase": "8h return",
       "reportedCreditedMinutes": 39.87,
       "absencePhasesBegun": false,
       "relaySession": 66516,
-      "pendingOrBlocked": false
+      "pendingOrBlocked": false,
+      "reportedColdMinutes": 40.05,
+      "reported20mReturnMinutes": 5.08,
+      "reported4hReturnMinutes": 4.87,
+      "reported4hMinimumMet": false
     },
     "b": {
       "agent": "/root/blind_d346_b",
@@ -542,5 +546,15 @@
     "source": "B final answer automatically delivered after raw lock, before A lock.",
     "exposure": "Three highlights and three gripes received; raw card and awards remain unread.",
     "handling": "Coordinator requested metadata-only final handoff, but final arrived with opinions. Preserve final report; do not share with A or act on opinions until both cards locked. Frozen product unchanged."
-  }
+  },
+  "reportedProtocolDeviations": [
+    {
+      "recordedUtc": "2026-10-11T08:28:21.833950+00:00",
+      "rater": "a",
+      "stage": "A still live, raw card not locked; B locked and cleanup complete.",
+      "reportedSequence": "Navigated from4h return to8h return when4h ledger showed4.87 conservative active minutes, about8seconds below required5. Cold40.05/20m5.08 reported complete.",
+      "handling": "Preserve exact sequence/shortfall; never backdate or relabel later active time into prior phase. Continue full20 active minutes in existing8h phase, lock raw card with explicit timing deviation; no repeat/restart to hide it.",
+      "coverageStatus": "Required4h phase not proven complete; reported count contradicts5-minute minimum. Total70 alone cannot establish the separately precommitted phases. Exact interval audit remains pending after both locks; no completion/score certification or gate waiver."
+    }
+  ]
 }

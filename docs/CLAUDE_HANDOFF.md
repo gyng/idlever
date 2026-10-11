@@ -1,3 +1,7 @@
+# Reported prior-phase timing deviation — 2026-10-11
+
+A reports cold40.05/20m5.08 complete, but navigated4h→8h at4.87 active minutes,~8seconds below required5. A still live/no pending/same relay/profile/frozen build. Root instructed preserve exact sequence, never backdate/relabel later time, finish full20 active minutes after8h, lock independent raw card with explicit deviation; no repeat/restart to hide it. Required4h phase is not proven and reported credit contradicts its minimum; total70 alone does not meet separately precommitted phase coverage. No gate waiver or success claim. Await both locks and exact interval audit; objective active, certification unproven. B locked/exported/cleanup terminal, cards unread by root (B final highlights/gripes incidental exposure recorded, unshared with A). No deployment.
+
 # B export and cleanup terminal — 2026-10-11
 
 B rules export eval/cards/d34605e.blind-b.rules.json exists, exact returned string labeled riddle-rules-text, reportedSHAcd27f1a0bac5d0f6f99139f60fbaa43128de718971812daa103dc9525c7ab72e. Raw card reportedhash unchanged; contents still unread by root. B own driver5381 quitOK/browser launcher95509 exit0/relay21401 stopped, final report received; A still live. B final automatically delivered three highlights/gripes before A lock despite root metadata-only handoff request; no awards/card content read. Explicit exposure retained in acceptance; no opinions shared with A or product edits made from them. Await A lock/final before joint hash/audit/scoring and GPU work. Goal active/unproven; no deployment.
