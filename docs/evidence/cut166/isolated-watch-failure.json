@@ -1,0 +1,268 @@
+{
+  "suite": "smoke",
+  "fullCount": 166,
+  "selectedCount": 37,
+  "elapsedSeconds": 240.392,
+  "failed": 1,
+  "results": [
+    {
+      "n": "game-menu",
+      "code": 0,
+      "out": "320 real-WASM cold title/preferences/direct reload/cancel/Continue/confirmed reset PASS\n400 real-WASM cold title/preferences/direct reload/cancel/Continue/confirmed reset PASS\n1440 real-WASM cold title/preferences/direct reload/cancel/Continue/confirmed reset PASS\n81 game menu checks PASS\n",
+      "ms": 27177,
+      "own": 19621
+    },
+    {
+      "n": "debug-export",
+      "code": 0,
+      "out": "400 shipping debug export, restore, live watch and recovery PASS\n1440 shipping debug export, restore, live watch and recovery PASS\n",
+      "ms": 16365,
+      "own": 8806
+    },
+    {
+      "n": "first-plot",
+      "code": 0,
+      "out": "320 first plot visibility, controls, busy dedup and real construction PASS\n400 first plot visibility, controls, busy dedup and real construction PASS\n1440 first plot visibility, controls, busy dedup and real construction PASS\n",
+      "ms": 28798,
+      "own": 12433
+    },
+    {
+      "n": "town-save",
+      "code": 0,
+      "out": "400 reduce immediate navigation retains completed house and exact hero PASS\n400 no-preference immediate navigation retains completed house and exact hero PASS\n1440 reduce immediate navigation retains completed house and exact hero PASS\n1440 no-preference immediate navigation retains completed house and exact hero PASS\nDelayed save keeps build pending, deduplicated, then reloads completed home PASS\nRefused construction retains empty town/save and releases guard PASS\n39 manual construction persistence checks PASS\n",
+      "ms": 43967,
+      "own": 16790
+    },
+    {
+      "n": "worker-purchases",
+      "code": 0,
+      "out": "400 7 worker purchase checks PASS\n1440 7 worker purchase checks PASS\n",
+      "ms": 34799,
+      "own": 6001
+    },
+    {
+      "n": "worker-first-act",
+      "code": 0,
+      "out": "320 20 worker first-act checks PASS\n400 20 worker first-act checks PASS\n1440 20 worker first-act checks PASS\n",
+      "ms": 41909,
+      "own": 7110
+    },
+    {
+      "n": "bloodline-founding",
+      "code": 0,
+      "out": "320 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS\n400 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS\n1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS\n",
+      "ms": 61866,
+      "own": 23858
+    },
+    {
+      "n": "bloodline-training",
+      "code": 0,
+      "out": "320 22 bloodline training attribution checks PASS\n400 22 bloodline training attribution checks PASS\n1440 22 bloodline training attribution checks PASS\n",
+      "ms": 48738,
+      "own": 6828
+    },
+    {
+      "n": "package-selection",
+      "code": 0,
+      "out": "400 15 selected Tactics checks PASS\n1440 15 selected Tactics checks PASS\n",
+      "ms": 48766,
+      "own": 4799
+    },
+    {
+      "n": "package-paired",
+      "code": 0,
+      "out": "package-paired 400: 26 checks PASS\npackage-paired 1440: 26 checks PASS\npackage-paired: 52 checks PASS\n",
+      "ms": 52145,
+      "own": 4520
+    },
+    {
+      "n": "pen-edit",
+      "code": 0,
+      "out": "ok   the pen starts empty above the packages (end 0, own 0)\nok   package rows carry no × (false,false,false,false)\nok   a package row has no ▼ (its order is the package's)\nok   ▲ on a package row takes it into the pen as the player's (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the move persists in the core and on screen (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the package's copy yields to the pen's (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the pen's last row has no ▼ (it never sits under a package)\nok   the pen's end reads `packages below` on its ▼ and its row, once ({\"title\":\"packages below\",\"note\":\"▼ packages below\",\"others\":1})\nok   after `edit` the editor's first row is in view, uncovered ({\"top\":94,\"bottom\":198,\"wellTop\":82,\"wellBottom\":612,\"vh\":800,\"onRow\":true})\nok   `+` fills the pen above the packages (4/4, end 4)\nok   on a full set a package row's ▲ is off\nok   a move patch on a package row takes a row — on a full set it asks first ({\"takes\":true,\"full\":true})\nok   over a drop the move lands in the pen, never over the cap ({\"at\":0,\"own\":4,\"max\":4,\"over\":false,\"origin\":\"patch\",\"same\":true})\nok   send is not blocked by the cap (sendauto)\nok   the added row is the pen's last, marked new and focused ({\"i\":\"0\",\"note\":\"new\",\"focus\":true,\"n\":1})\nok   the first × tap arms it in sight — `drop`, the tablet ringed, the row kept ({\"cls\":true,\"text\":\"drop\",\"color\":\"rgb(255, 196, 190)\",\"ring\":\"solid\",\"rows\":5})\nok   the second tap deletes it (5 → 4)\nok   no console errors (0)\npen-edit: all ok\n",
+      "ms": 64712,
+      "own": 15974
+    },
+    {
+      "n": "forecast-requests",
+      "code": 0,
+      "out": "400 16 forecast lifecycle checks PASS\n1440 16 forecast lifecycle checks PASS\n",
+      "ms": 56318,
+      "own": 7552
+    },
+    {
+      "n": "clarity:paint",
+      "code": 0,
+      "out": "ok   an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (735 ms)\nok   the refine lands after the first paint (3559 ms)\nok   the real engine answers (wasm)\nok   real wasm (wasm): an edit's first pass paints ≤ 1 s (quiet 96/122/120 ms, median 120; after a burst 159; slow measures in flight 78)\nok   real wasm: the refine lands ≤ 3 s (quiet 948/949/1012 ms; after a burst 1150; slow measures in flight 869)\nclarity paint: ok (5 checks)\n",
+      "ms": 202725,
+      "own": 27705
+    },
+    {
+      "n": "fights:break",
+      "code": 0,
+      "out": "ok   fights: the boss bar under the hero's while he is in view (\"warlord\" 47% · 14/30)\nok   fights: the break is a beat — the fight frame with \"WARLORD BREAKS\" (fight frame)\nok   fights: the break beat holds the frame and the line 2 s on (fight, \"WARLORD BREAKS\")\nok   fast: the boss bar under the hero's while he is in view (\"warlord\" 47% · 14/30)\nok   fast: the break is a beat — the fight frame with \"WARLORD BREAKS\" (fight frame)\nok   fast: the break beat holds the frame and the line 2 s on (fight, \"WARLORD BREAKS\")\nfights: ok (6 checks)\n",
+      "ms": 7435,
+      "own": 7099
+    },
+    {
+      "n": "watch-console",
+      "code": 0,
+      "out": "320 labels/touch/geometry/speed/pause/Town PASS\n360 labels/touch/geometry/speed/pause/Town PASS\n400 labels/touch/geometry/speed/pause/Town PASS\n840 labels/touch/geometry/speed/pause/Town PASS\n1440 labels/touch/geometry/speed/pause/Town PASS\n",
+      "ms": 76662,
+      "own": 24517
+    },
+    {
+      "n": "watch-live-edge",
+      "code": 1,
+      "out": "ok   fights: no dead stretch over 6 s without news (worst 3866 ms at {\"tick\":\"1767\",\"frontier\":\"4480\",\"speed\":\"48\",\"frame\":\"fight\"})\nok   fights: the standoff jumps (2 jumps; 10 s dead over a 14.7 s watch)\nok   fights: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (10 s; was ~18 s)\nok   fights: the clock eases up — never one step past 64× from under half of it (none; top 48×)\nok   fights: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nok   one: no dead stretch over 6 s without news (worst 3714 ms at {\"tick\":\"370\",\"frontier\":\"2960\",\"speed\":\"4\",\"frame\":\"fight\"})\nok   one: the standoff jumps (3 jumps; 12.2 s dead over a 19.1 s watch)\nFAIL one: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (12.2 s; was ~18 s)\nok   one: the clock eases up — never one step past 64× from under half of it (none; top 4×)\nok   one: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nwatch-live-edge: FAIL (1 assertion(s), 0 error(s))\n",
+      "ms": 240391,
+      "own": 37666
+    },
+    {
+      "n": "watch-log",
+      "code": 0,
+      "out": "400 5 ordered floor attribution and80-entry bound PASS\n400 14 ordered floor attribution and80-entry bound PASS\n400 1 ordered floor attribution and80-entry bound PASS\n1440 5 ordered floor attribution and80-entry bound PASS\n1440 14 ordered floor attribution and80-entry bound PASS\n1440 1 ordered floor attribution and80-entry bound PASS\n",
+      "ms": 93058,
+      "own": 36740
+    },
+    {
+      "n": "ctxloss",
+      "code": 0,
+      "out": "ok   lost: stats().glLost (true)\nok   lost: GPU timings are explicitly unavailable\nok   lost: the 2D view is drawn over the canvas (shown true, 423 colours)\nok   lost: the watch keeps advancing (tick 24 → 63, watch)\nok   restored: GL frames again (glLost false, 6 draw calls)\nok   restored: the 2D view hidden (false)\nok   restored: the watch advances (tick 71 → 82)\nok   lost again: ▶▶| reaches the run's exit (8837 ms, screen report)\nok   real engine, lost: stats().glLost\nok   real engine, lost: ▶▶| reaches the run's exit (6328 ms, screen death)\nok   no GL: the camp's town is drawn in 2D (2d, shown true, 940 colours)\nok   no GL: the 2D viewer mounted (glLost true)\nok   no GL: the tick advances (0 → 80)\nok   no GL: the map is drawn in 2D (591 colours)\nok   no GL: ▶▶| reaches the run's exit (11691 ms, screen exit)\nok   town lost: stats().glLost (true, 2d)\nok   town lost: the 2D view draws the town (shown true, 1455 colours)\nok   town lost: the scene runs on (frames 5 → 7)\nok   town restored: GL again, the 2D view hidden (gl, 2D shown false)\nctxloss: ok (19 checks)\n",
+      "ms": 118249,
+      "own": 56383
+    },
+    {
+      "n": "checkpoint-gold",
+      "code": 0,
+      "out": "400 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS\n1440 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS\n",
+      "ms": 75458,
+      "own": 10746
+    },
+    {
+      "n": "routine-keep",
+      "code": 0,
+      "out": "400 same_kind_excess real-WASM fixture flow PASS\n400 same_kind_upgrade real-WASM fixture flow PASS\n400 distinct_kind real-WASM fixture flow PASS\n400 none real-WASM fixture flow PASS\n1440 same_kind_excess real-WASM fixture flow PASS\n1440 same_kind_upgrade real-WASM fixture flow PASS\n1440 distinct_kind real-WASM fixture flow PASS\n1440 none real-WASM fixture flow PASS\n",
+      "ms": 140144,
+      "own": 64686
+    },
+    {
+      "n": "exit-keep-close",
+      "code": 0,
+      "out": "ok   gem: a return with loot opens the keep sheet\nok   gem: closing the keep sheet goes on to the next screen (report)\nok   gem: the close keeps the ticked pick once ([[1002]], pick 1002)\nok   escape: a return with loot opens the keep sheet\nok   escape: closing the keep sheet goes on to the next screen (report)\nok   escape: the close keeps the ticked pick once ([[1002]], pick 1002)\nok   stud: a return with loot opens the keep sheet\nok   stud: closing the keep sheet goes on to the next screen (report)\nok   stud: the close keeps the ticked pick once ([[1002]], pick 1002)\nexit-keep-close: ok (9 checks)\n",
+      "ms": 140933,
+      "own": 64271
+    },
+    {
+      "n": "report-supply-limit",
+      "code": 0,
+      "out": "320 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS\n400 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS\n1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS\n",
+      "ms": 106709,
+      "own": 13651
+    },
+    {
+      "n": "forge-requests",
+      "code": 0,
+      "out": "400 34 Forge request checks PASS\n1440 34 Forge request checks PASS\n",
+      "ms": 116257,
+      "own": 9548
+    },
+    {
+      "n": "death-actions",
+      "code": 0,
+      "out": "320 41 death action/illustration checks PASS\n320 recorded boss tooltip PASS\n400 41 death action/illustration checks PASS\n400 recorded boss tooltip PASS\n1440 41 death action/illustration checks PASS\n1440 recorded boss tooltip PASS\n",
+      "ms": 131596,
+      "own": 15336
+    },
+    {
+      "n": "death-fix-discovery",
+      "code": 0,
+      "out": "400 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS\n1440 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS\n",
+      "ms": 154667,
+      "own": 36418
+    },
+    {
+      "n": "king-advice-scope",
+      "code": 0,
+      "out": "400 King replay scope/count/price/eligibility checks PASS\n1440 King replay scope/count/price/eligibility checks PASS\n",
+      "ms": 160794,
+      "own": 29198
+    },
+    {
+      "n": "report-reading",
+      "code": 0,
+      "out": "320 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n400 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n",
+      "ms": 147078,
+      "own": 6933
+    },
+    {
+      "n": "report-class-xp",
+      "code": 0,
+      "out": "400 20 class XP/visible rewards/slot identity/slice merges/old wire PASS\n1440 20 class XP/visible rewards/slot identity/slice merges/old wire PASS\n",
+      "ms": 144615,
+      "own": 3682
+    },
+    {
+      "n": "numbers-agree",
+      "code": 0,
+      "out": "10 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS\n",
+      "ms": 148078,
+      "own": 3463
+    },
+    {
+      "n": "class-switch",
+      "code": 0,
+      "out": "400 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS\n1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS\n",
+      "ms": 173498,
+      "own": 26420
+    },
+    {
+      "n": "gunner-observer",
+      "code": 0,
+      "out": "320 21 gun picture-clock/seek/HUD checks PASS\n400 21 gun picture-clock/seek/HUD checks PASS\n1440 21 gun picture-clock/seek/HUD checks PASS\n",
+      "ms": 154919,
+      "own": 6841
+    },
+    {
+      "n": "legacy-wire",
+      "code": 0,
+      "out": "real WASM worker respec bridge, Rust refusal and complete save unchanged PASS\n",
+      "ms": 157019,
+      "own": 2351
+    },
+    {
+      "n": "numbered-descents",
+      "code": 0,
+      "out": "320 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n400 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n",
+      "ms": 164360,
+      "own": 9441
+    },
+    {
+      "n": "post-clear-town",
+      "code": 0,
+      "out": "320 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS\n400 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS\n1440 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS\n",
+      "ms": 173360,
+      "own": 16341
+    },
+    {
+      "n": "screens",
+      "code": 0,
+      "out": "ok   the lineage took marks, gold and an identified heal\nok   camp: text lint\nok   chronicle: sheet titled \"chronicle\"\nok   ledger: sheet titled \"enemy guide\"\nok   forge: sheet titled \"Forge\"\nok   settings: sheet titled \"Settings\"\nok   class: sheet titled \"Class\"\nok   gold: sheet titled \"gold $300\"\nok   the header's $300 equals the gold sheet's $300\nok   cond picker: sheet titled \"condition\"\nok   verb picker: sheet titled \"action\"\nok   unlock card: sheet titled \"action: throw ◆2 or $300\"\nok   rename: sheet titled \"name\"\nok   the worker shortcut stays hidden when no worker tree exists\nok   camp · Gold$300: sheet titled \"gold $300\"\nok   camp · gear stud: sheet titled \"Settings\"\nok   camp · hero: sheet titled \"Bloodline 1\"\nok   camp · rename: sheet titled \"name\"\nok   camp · Details: sheet titled \"Bloodline 1\"\nok   camp · Heroes: sheet titled \"Active heroes\"\nok   camp · forge3: sheet titled \"Forge\"\nok   camp · enemy guide: sheet titled \"enemy guide\"\nok   camp: 19 buttons each change the screen\nok   watch: text lint\nok   ▶▶| reached the run's end (3 presses, death)\nok   death: text lint\nok   death · Gold$300: sheet titled \"gold $300\"\nok   death · gear stud: sheet titled \"Settings\"\nok   death · Forge gear3 upgrades ready: sheet titled \"Forge\"\nok   death: 5 buttons each change the screen\nok   camp (after the run): text lint\nok   cond picker (edit): sheet titled \"condition\"\nok   number picker: sheet titled \"condition\"\nok   verb picker (edit): sheet titled \"action\"\nok   two rows edited through the pickers: \"hp > 50% + → return\" · \"hp < 30% + → attack nearest\"\nok   camp (edited): text lint\nok   an affordable unlock is on the shelf\nok   unlock sheet · +1 party: sheet titled \"+1 party ◆4 or $600\"\nok   the sheet shows both prices and two buys (\"◆4 or $600\": ◆ buy | $ buy)\nok   bought \"+1 party\" (marks 14 → 10)\nok   camp (bought): text lint\nok   unlock sheet (gold): sheet titled \"+1 storage slot ◆3 or $4\"\nok   $ buy spent $450, not marks: header $5000 ◆10 → $4550 ◆10\nok   the next gold price climbs ($1687 > $1350 at the base rate)\nok   owned sheet: sheet titled \"action: tame\"\nok   a supply dropped (1 → 0)\nok   camp (supply dropped): text lint\nok   report (8 h): text lint\nok   report (8 h) · Gold$4550: sheet titled \"gold $4550\"\nok   report (8 h) · gear stud: sheet titled \"Settings\"\nok   report (8 h) · $0Gold earned: sheet titled \"gold $4550\"\nok   report (8 h) · gold: sheet titled \"gold $4550\"\nok   report (8 h) · enemy guide: sheet titled \"enemy guide\"\nok   report (8 h): 8 buttons each change the screen\nok   the stalled tile carries its cost: \"2/3 runs stalled $201 lost\"\nok   the lines' chips read their exit: D1 · returned · log · returned · log · D1 · returned · log\nok   report (stalls): text lint\nscreens: ok (57 checks · 9 screens linted · 32 buttons clicked · 39.6s)\n",
+      "ms": 47624,
+      "own": 40189
+    },
+    {
+      "n": "ui:frame",
+      "code": 0,
+      "out": "ok   a fresh lineage (heir 1, nothing earned)\nok   a fresh camp shows ≤ 8 interactive elements at 400 × 800 (8: Gold$0−$120 | settings | ✓ curioustries unknown 1 | greedygrabs loot 1×/floo | dungeon | hero | Heroes | send)\nok   the bar shows $ only (num stat gold)\nok   two compact tablets, the shaft at D1 alone, no gems (2 tablets, notches D1, ends false)\nok   the gem SEND and nothing else: no tile, no set tab, no class picker (gem \"send\", 0 tiles)\nok   the literal legacy fixture retains its authoring controls\nok   before first death: no `edit` tile (none)\nok   the lineage took first death\nok   first death carves the `edit` tile, glinting (edit*)\nok   the first death puts the class picker on the portrait\nok   before first gold home: no `loadout` tile (edit)\nok   the lineage took first gold home\nok   first gold home carves the `loadout` tile, glinting (edit* · loadout*)\nok   before first mark: no `unlocks` tile (edit · loadout)\nok   the lineage took first mark\nok   first mark carves the `unlocks` tile, glinting (edit* · loadout* · unlocks*)\nok   the first mark puts ◆ on the bar (◆1)\nok   before an item worth keeping: no `vault` tile (edit · loadout · unlocks)\nok   the lineage took an item worth keeping\nok   an item worth keeping carves the `vault` tile, glinting (edit · loadout* · unlocks* · vault*)\nok   before first salvage: no `forge` tile (edit · loadout · unlocks · vault)\nok   the lineage took first salvage\nok   first salvage carves the `forge` tile, glinting (edit · loadout · unlocks* · vault* · forge*)\nok   before a companion: no `party` tile (edit · loadout · unlocks · vault · forge)\nok   the lineage took a companion\nok   a companion carves the `party` tile, glinting (edit · loadout · unlocks · vault* · forge* · party*)\nok   a repaint keeps the carved tiles without a glint (edit · loadout · unlocks · vault · forge · party)\nok   before a 3rd row: the shaft has no gems\nok   a 3rd row lights the shaft's gems (QA 778fa1b: `…` on the first pass): full haul <13% · return <13% · death >87% · avg $0/run\nok   before the 5th heir: no ledger, no chronicle, no set tabs\nok   the lineage took its 5th heir\nok   the 5th heir carves the ledger, the log (the chronicle's heirs) and the set tabs (edit · loadout · unlocks · vault · forge · party · ledger; log true)\nok   the command card at the ladder's top: 7 tiles, the chronicle's slot gone to the log (7 tiles)\nok   the unlock panel lists the next three, `more` under them (3 cards, more 1)\nok   `more` opens the catalogue (28 cards)\nok   the unlocks panel has a close stud, and it closes the panel\nok   the loadout panel has a close stud, and it closes the panel\nok   the vault panel has a close stud, and it closes the panel\nok   the party panel has a close stud, and it closes the panel\nok   the shaft opens the forecast panel, with its stud\nok   Escape closes the open panel\nok   the settings sheet has one close stud, and it closes the sheet\nok   the gold sheet has one close stud, and it closes the sheet\nok   the forge sheet has one close stud, and it closes the sheet\nok   the ledger sheet has one close stud, and it closes the sheet\nok   the log sheet has one close stud, and it closes the sheet\nok   the class sheet has one close stud, and it closes the sheet\nok   the cond picker sheet has one close stud, and it closes the sheet\nok   the verb picker sheet has one close stud, and it closes the sheet\nok   the rename sheet has one close stud, and it closes the sheet\nok   an unlock card's sheet has its close stud\nok   every tile sinks while held (7 tiles)\nok   camp: bar + console, `send` in the gem ({\"text\":\"send\",\"cls\":\"gem pulse send\",\"visible\":true})\nok   watch: bar + console, ⏸ in the gem ({\"text\":\"⏸\",\"cls\":\"gem hud-btn\",\"visible\":true})\nok   watch: Speed groups controls and Town menu stays visible (Speed Fights only8× · Town menu)\nok   the watch's last frame keeps the heir that ran on the bar (5th heir → 5th heir)\nok   the HUD names the alert (`alert 3`), never `!!!`\nok   the last frame's gem slot holds the stilled pause through the walk-out, then a gem, `verdict` / `report`, no corner label (⏸ · verdict)\nok   death: bar + console, the top patch in the gem ({\"text\":\"100%apply\",\"cls\":\"gem pulse patch-gem kw-open\",\"visible\":true}, 1 lit patch)\nok   death: the line on the banner, the verdict in the seal, camp on the card, the morgue under details (edit · town; morgue true)\nok   the morgue sheet has its close stud\nok   report: bar + console, `camp` in the gem, the counts as plaques on parchment (9 plaques)\nok   the report's `open` tile opens the worst death\nui: ok (63 checks · 29.8s)\n",
+      "ms": 38008,
+      "own": 30455
+    },
+    {
+      "n": "town-clock",
+      "code": 0,
+      "out": "Asia/Singapore GL local dawn/day/dusk/night, resume/cache/save PASS\nAsia/Singapore Canvas2D local dawn/day/dusk/night, resume/cache/save PASS\nAmerica/New_York GL local dawn/day/dusk/night, resume/cache/save PASS\nAmerica/New_York Canvas2D local dawn/day/dusk/night, resume/cache/save PASS\ntown-clock: PASS (36 checks)\n",
+      "ms": 175020,
+      "own": 14226
+    }
+  ]
+}

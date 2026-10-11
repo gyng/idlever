@@ -30,7 +30,10 @@ async function boot(page) {
   if (await house.count()) { await house.first().click(); await sleep(800); const b = page.locator("button", { hasText: /^build|Build/ }); if (await b.count()) await b.first().click(); await sleep(4000); }
   await page.locator(".camp-gem, .gem").first().click();
   await page.waitForFunction(() => window.__riddle.screen === "watch", null, { timeout: 30_000 });
-  await sleep(1500);
+  // Screen navigation precedes the first live snapshot; a fixed sleep can
+  // observe the deliberately hidden control while WASM is still starting.
+  await page.waitForFunction(() => window.__lastSnap && document.querySelector('.ctl')?.hidden === false,
+    null, { timeout: 30_000 });
 }
 const awaiting = (page) => page.waitForFunction(() => document.querySelector(".ctl")?.dataset.awaiting === "1" && document.querySelector(".ctl")?.dataset.on === "1", null, { timeout: 20_000 });
 const acts = (page) => page.evaluate(() => Number(document.querySelector(".ctl")?.dataset.acts ?? 0));

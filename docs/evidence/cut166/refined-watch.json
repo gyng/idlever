@@ -1,0 +1,37 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 4,
+  "elapsedSeconds": 157.9,
+  "failed": 0,
+  "results": [
+    {
+      "n": "watch-live-edge",
+      "code": 0,
+      "out": "ok   fights: no dead stretch over 6 s without news (worst 3510 ms at {\"tick\":\"1677\",\"frontier\":\"5560\",\"speed\":\"48\",\"frame\":\"fight\"})\nok   fights: the standoff jumps (1 jumps; 6.9 s dead over a 11.7 s watch)\nok   fights: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (6.9 s; was ~18 s)\nok   fights: the clock eases up — never one step past 64× from under half of it (none; top 48×)\nok   fights: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nok   one: no dead stretch over 6 s without news (worst 3792 ms at {\"tick\":\"375\",\"frontier\":\"4660\",\"speed\":\"4\",\"frame\":\"fight\"})\nok   one: the standoff jumps (3 jumps; 8.8 s dead over a 15.7 s watch)\nok   one: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (8.8 s; was ~18 s)\nok   one: the clock eases up — never one step past 64× from under half of it (none; top 4×)\nok   one: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nwatch-live-edge: ok (10 checks)\n",
+      "ms": 157899,
+      "own": 30546
+    },
+    {
+      "n": "watch-normal-news",
+      "code": 0,
+      "out": "ok   Normal (unseen blows): no stretch over 10 s without news (worst 7359 ms at {\"tick\":\"300\",\"frontier\":\"3890\",\"speed\":\"4\",\"dead\":\"1\"}; 11.5 s watched)\nok   Normal (unseen blows): unseen blows and a see-saw are no moves — the stalemate is jumped (3 jumps)\nok   Normal (unseen blows): a jump says \"skipped ahead\" (2 said)\nok   Normal (a boss see-saw): no stretch over 10 s without news (worst 7339 ms at {\"tick\":\"291\",\"frontier\":\"890\",\"speed\":\"4\",\"dead\":\"1\"}; 21.8 s watched)\nok   Normal (a boss see-saw): unseen blows and a see-saw are no moves — the stalemate is jumped (8 jumps)\nok   Normal (a boss see-saw): a jump says \"skipped ahead\" (7 said)\nwatch-normal-news: ok (6 checks)\n",
+      "ms": 38210,
+      "own": 37563
+    },
+    {
+      "n": "take-control",
+      "code": 0,
+      "out": "ok   real wasm engine\nok   the watch offers take control\nok   the control tile's tooltip names it and its key (\"drive him by hand · M\")\nok   the world waits for an order (engine 79 → 79)\nok   the badge reads Hand, its tip hand control · awaits order\nok   the picture stays at the frontier after d (89 ≤ 89)\nok   the picture stays at the frontier after a (99 ≤ 99)\nok   the picture stays at the frontier after x (109 ≤ 109)\nok   the picture stays at the frontier after w (119 ≤ 119)\nok   the picture stays at the frontier after s (129 ≤ 129)\nok   the picture stays at the frontier after e (139 ≤ 139)\nok   the picture stays at the frontier after z (149 ≤ 149)\nok   the picture stays at the frontier after ArrowRight (159 ≤ 159)\nok   the picture stays at the frontier after ArrowLeft (169 ≤ 169)\nok   the picture stays at the frontier after Numpad5 (179 ≤ 179)\nok   the picture stays at the frontier after . (189 ≤ 189)\nok   each key is one action — the pad grid, arrows, numpad (11/11 advanced the world)\nok   the last order reads its outcome (\"waited\")\nok   every tile's tooltip names its key (14/14)\nok   a mouse sees each key in its tile's corner\nok   key f is one order (\"attack ✓\")\nok   key g is one order (\"can't · no foe\")\nok   key h is one order (\"can't · no item\")\nok   key t is one order (\"can't · no item\")\nok   key > is one order (\"descend ✓\")\nok   key Enter is one order (\"descend ✓\")\n     (a fresh run for the release checks: hp 33/36)\nok   `c` releases him\nok   verb keys do nothing out of hand\nok   `c` takes him again\nok   keys inside a field drive nothing\nok   a held arrow repeats (7 steps in 1.6 s, open run 8)\nok   the repeat stops on release (0 after)\nok   a far floor tile on screen to walk to (3 steps)\nok   a move cursor over the floor\nok   the hovered tile is marked\nok   a click walks several tiles, one order a turn (2 orders for 3 steps)\nok   the walk ends at the tile, a new foe, or a refusal (close foe)\nok   a click on him stops the walk\nok   descend resolves visibly (\"descend ✓\")\nok   the panel offers attack until\nok   released: the panel reads off\nok   released: the rules play on (236 → 357)\nok   the rules find a foe\nok   (the foe sits under undefined: the click case skipped)\nok   a right-click acts (\"can't · no way\")\nok   no browser menu over the map in hand (true)\nok   in hand, the run that ended leaves the watch (no dead state)\nok   the panel is gone once the run is over\nok   no take-control panel over a run that is over (0 reads)\nok   360 px: every tile ≥ 44 px (14 tiles)\nok   360 px: nothing past the edge (scroll 360 / 360, slab 0–360)\nok   a phone shows the key hints too (owner 2026-10-10)\nok   the pad kills double-tap zoom (touch-action manipulation)\n     screenshot /home/g/p/riddle/scratchpad/take-control/phone-360-control.png\nok   a tile on the phone's map to tap\nok   a tap steps one tile toward it ((19,22) → (18,22), toward (17,22))\nok   a held touch on an arrow steps and stops on release (5 held, 0 after)\ntake-control: ok (58 checks)\n",
+      "ms": 111852,
+      "own": 73641
+    },
+    {
+      "n": "cut12",
+      "code": 0,
+      "out": "ok   the lineage took marks, facts and gold\nok   the preset reads 2/4, 2 rows\nok   the yours line names the combo: \"written: 0 of 2 rules · gambler\"\nok   the forecast's bounded run outcomes: \"run outcomes full haul <13% · turn back <13% · death >87% · avg $0/run\"\nok   +1 row waits on the rows at 2/4, as a requirement: \"+1 rule slot⊘ fill rules◆2 or $350\"\nok   the kennel's leash reads free (QA 92eb880: kennel was unexplained): \"leash · free ×\"\nok   the catalogue says the card goes before the attack row (insert_at 1)\nok   the card sits at R2, above attack: hp < 30% + → drink unkno | [card] thief guard foe:  | foes ≥ 1 + → attack near\nok   the chip counts own rows and the card beside: \"2/4 rules + 1 tactic\"\nok   yours counts own rows, no \"card R2 first\" (a card sits before attack on purpose): \"written: 0 of 2 rules\"\nok   the second card also sits above attack: hp < 30% + → drink unkno | [card] thief guard foe:  | [card] pack break foe: p | foes ≥ 1 + → attack near\nok   two cards, still 2/4: \"2/4 rules + 2 tactics\", send enabled\nok   with a return row explicit sampling measures a positive turn-back share (0.23): \"run outcomes full haul <1% · turn back 23% · death 77% ±8 · avg $3/run\"\nok   4 own + 2 cards: \"4/4 rules + 2 tactics\", send enabled, no +\nok   +1 row lifted at 4/4 without a run: \"+1 rule slot◆2 or $350\"\nok   the engine took all six rows (6)\nok   the fifth own row: \"5/4 rules + 2 tactics\" red, send \"5/4 · drop one\"\nok   the drop mark is on the last own row, never a card\nok   after ×: \"4/4 rules + 2 tactics\", send enabled\nok   cards the set holds are not offered (no cards)\nok   the freed card is offered again, the held one is not\nok   picking a card verb cleared the conds: \"[card] thief guard foe: thief → attack t\"\nok   the row moved from own to card: \"3/4 rules + 2 tactics\"\nok   three lines on the shelf (leash · free × / heal potion × / strength ×)\nok   × took the heal only: leash · free × / strength ×\nok   without dropSupply: the strength line is gone, the free leash with it until the next exit (empty)\ncut12: ok (26 checks)\n",
+      "ms": 127353,
+      "own": 15501
+    }
+  ]
+}

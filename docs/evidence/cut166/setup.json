@@ -1,0 +1,17 @@
+{
+  "prepared_utc": "2026-10-11T16:51:22.166506+00:00",
+  "scope": "Prospective acceptance, not actor adoption, release freeze or fun certification",
+  "native_started": false,
+  "reason": "Avoid duplicate fast-WASM whole browser pass; complete shipping-WASM browser pass remains mandatory after native acceptance. Previous full failures remain unresolved until scoped evidence proves otherwise.",
+  "balance_environment_present": {
+    "DP_OFF": false,
+    "RIDDLE_BALANCE_JSON": false,
+    "RIDDLE_BALANCE_FILE": false
+  },
+  "harness_changes": [
+    "take-control setup waits for live snapshot instead of fixed sleep",
+    "watch-live-edge gets isolated wall-clock execution",
+    "Cut12 locator failures include actual panel/forecast state"
+  ],
+  "actor": "Unadopted experimental dayplayer.rs remains excluded from commits"
+}

@@ -1,0 +1,43 @@
+$ node tests/run.mjs --smoke -- --report /home/g/p/riddle/scratchpad/cut166/smoke-isolated-watch.json
+client suite: smoke (37/166 groups); critical journeys, not full acceptance
+ok   fights:break    7.4s (7.1s)  fights: ok (6 checks)
+ok   debug-export    16.4s (8.8s)  1440 shipping debug export, restore, live watch and recovery PASS
+ok   game-menu       27.2s (19.6s)  81 game menu checks PASS
+ok   first-plot      28.8s (12.4s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   worker-purchases 34.8s (6.0s)  1440 7 worker purchase checks PASS
+ok   ui:frame        38.0s (30.5s)  ui: ok (63 checks · 29.8s)
+ok   worker-first-act 41.9s (7.1s)  1440 20 worker first-act checks PASS
+ok   town-save       44.0s (16.8s)  39 manual construction persistence checks PASS
+ok   screens         47.6s (40.2s)  screens: ok (57 checks · 9 screens linted · 32 buttons clicked · 39.6s)
+ok   bloodline-training 48.7s (6.8s)  1440 22 bloodline training attribution checks PASS
+ok   package-selection 48.8s (4.8s)  1440 15 selected Tactics checks PASS
+ok   package-paired  52.1s (4.5s)  package-paired: 52 checks PASS
+ok   forecast-requests 56.3s (7.6s)  1440 16 forecast lifecycle checks PASS
+ok   bloodline-founding 61.9s (23.9s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+ok   pen-edit        64.7s (16.0s)  pen-edit: all ok
+ok   checkpoint-gold 75.5s (10.7s)  1440 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS
+ok   watch-console   76.7s (24.5s)  1440 labels/touch/geometry/speed/pause/Town PASS
+ok   watch-log       93.1s (36.7s)  1440 1 ordered floor attribution and80-entry bound PASS
+ok   report-supply-limit 106.7s (13.7s)  1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS
+ok   forge-requests  116.3s (9.5s)  1440 34 Forge request checks PASS
+ok   ctxloss         118.2s (56.4s)  ctxloss: ok (19 checks)
+ok   death-actions   131.6s (15.3s)  1440 recorded boss tooltip PASS
+ok   routine-keep    140.1s (64.7s)  1440 none real-WASM fixture flow PASS
+ok   exit-keep-close 140.9s (64.3s)  exit-keep-close: ok (9 checks)
+ok   report-class-xp 144.6s (3.7s)  1440 20 class XP/visible rewards/slot identity/slice merges/old wire PASS
+ok   report-reading  147.1s (6.9s)  1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   numbers-agree   148.1s (3.5s)  10 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   death-fix-discovery 154.7s (36.4s)  1440 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS
+ok   gunner-observer 154.9s (6.8s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   legacy-wire     157.0s (2.4s)  real WASM worker respec bridge, Rust refusal and complete save unchanged PASS
+ok   king-advice-scope 160.8s (29.2s)  1440 King replay scope/count/price/eligibility checks PASS
+ok   numbered-descents 164.4s (9.4s)  1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS
+ok   post-clear-town 173.4s (16.3s)  1440 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS
+ok   class-switch    173.5s (26.4s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+ok   town-clock      175.0s (14.2s)  town-clock: PASS (36 checks)
+ok   clarity:paint   202.7s (27.7s)  clarity paint: ok (5 checks)
+FAIL watch-live-edge 240.4s (37.7s)  watch-live-edge: FAIL (1 assertion(s), 0 error(s))
+     watch-live-edge: FAIL (1 assertion(s), 0 error(s))
+     FAIL one: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (12.2 s; was ~18 s)
+FAIL: 36/37 client gates in 240.4s
+[ELIFECYCLE] Test failed. See above for more details.

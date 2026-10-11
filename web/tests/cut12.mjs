@@ -167,6 +167,15 @@ try {
   check(c.supplies.length === 0 && c.supplyCount === "0/3", `without dropSupply: the strength line is gone, the free leash with it until the next exit (${c.supplies.join(" / ") || "empty"})`);
 } catch (e) {
   errors.push(`walk aborted: ${e.message}`);
+  // Preserve the state behind a locator failure: whether a panel closed,
+  // remounted, remained stale, or lost its refinement capability.
+  const diagnostic = await page.evaluate(() => ({ screen: window.__riddle?.screen,
+    forecast: window.__riddle?.forecastOfRules(), busy: window.__riddle?.engineBusy,
+    panels: [...document.querySelectorAll('.panel')].map(p => ({ name: p.dataset.panel, text: p.innerText })),
+    refinements: [...document.querySelectorAll('.fc-refine')].map(b => ({ hidden: b.hidden,
+      disabled: b.disabled, rendered: b.getClientRects().length > 0, text: b.textContent }))
+  })).catch(() => null);
+  errors.push(`failure state: ${JSON.stringify(diagnostic)}`);
 } finally {
   await browser.close().catch(() => {});
 }

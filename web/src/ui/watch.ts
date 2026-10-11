@@ -212,6 +212,7 @@ const DEAD_TICKS_ONE = 35;
 // steps ahead in big batches (≤ DEAD_JUMP_WALL_MS) to the next move, the stairs, a beat or the end, and the picture lands JUMP_LAND
 // ticks before it; with none found it lands on the frontier and plays on (another jump DEAD_JUMP_MS later)
 const DEAD_JUMP_MS = 2500, DEAD_JUMP_WALL_MS = 1200, JUMP_LAND = 15;
+const DEAD_RETRY_MS = 250;          // a budgeted search found no news: yield a frame, then continue the confirmed dead stretch
 const KILL_LEAD = 3;                // blind 5331f40: a jump that meets a boss's unshown kill lands this many ticks before it
 // blind 7f7fc2b (A: three 55–90 s static stretches after the fold line; B: the hero static > 30 s with the run over): a jump held short
 // of an unshown kill waits at most KILL_WAIT_MS of wall time for the picture to play it — then the kill lapses and the jump goes on
@@ -1854,7 +1855,12 @@ export function renderWatch(app: App): Mounted {
       // blind 5331f40 (A): in `one` the picture never ramps past ONE_MAX — a jump over a dead stretch says so
       if (mode === "one") { jumpsSaid++; el.dataset.jumpsSaid = String(jumpsSaid); callout(/* copy:callout */ "skipped ahead", "beat"); }
     }
-    jumps++; el.dataset.jumps = String(jumps); lastJumpAt = performance.now();
+    jumps++; el.dataset.jumps = String(jumps);
+    // The budget can expire inside a long, unchanged fight. Waiting the full
+    // discovery interval again replays the same dead picture between searches.
+    // A found event keeps the ordinary cadence; cages, beats and exits retain
+    // their existing pump guards.
+    lastJumpAt = performance.now() - (ahead() === Infinity ? DEAD_JUMP_MS - DEAD_RETRY_MS : 0);
     applyFrame(); applySpeed();
   }
   /** Cut 122 §7: the playhead is on a folded walk home not yet jumped (and nothing the world waits on holds it). */

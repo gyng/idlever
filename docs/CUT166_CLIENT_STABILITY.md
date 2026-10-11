@@ -1,0 +1,11 @@
+# Cut 166 — client acceptance stability
+
+The complete revalidation at 20d9180 reported three failures in 1770.4 seconds: Cut12 could not find the visible forecast refinement control; take-control briefly reported an invisible toggle before completing the remaining flow; watch-live-edge exceeded its dead-picture limits. The routine 37-group run passed separately in 205.7 seconds. Neither result replaces the other.
+
+Investigate each failure against the actual UI lifecycle. Preserve all original logs and every reproduction. Prefer readiness predicates over fixed sleeps in setup; do not remove functional assertions or relax measured gameplay limits. Capture the forecast panel's state if its locator fails again. Give wall-clock watch checks the same scheduler headroom as other timing checks.
+
+The unchanged serial reproduction passed Cut12's 26 checks and take-control's 58. After isolating the wall-clock test, the routine run still failed Normal's dead picture limit at 12.2 seconds; this is preserved as a separate failure. A budgeted dead-jump search with no progress was waiting another 2500 ms before searching again. It now yields 250 ms before continuing that confirmed dead stretch. Finding progress retains the ordinary delay; the existing beat, cage, vault and exit guards still control whether the next search can run. This improves the observed standoff rather than increasing its allowed duration.
+
+Acceptance remains: Cut12's 26 assertions, take-control's complete real-WASM desktop and phone flow, watch-live-edge's ten checks (no dead-news stretch above 6000 ms, dead picture at most 12 seconds, at least one jump, smooth acceleration and blocked-hit copy), and unchanged clarity:paint limits. Follow focused validation with complete release client acceptance. The original paid-action/native progression gates, QA, immutable freeze and two complete fresh independent blind ratings remain outstanding; a focused green result does not certify the fun-score objective.
+
+Focused final checks PASS: watch-live-edge10 (Fights dead6.9s/Normal8.8s), watch-normal-news6, take-control58, Cut12 26. Types PASS, copy2354/zero violations, harness8 PASS. Final routine37/37 PASS215.0s, including isolated watch timing. Complete native/shipping acceptance is starting and remains uncertified.

@@ -41,7 +41,7 @@ if (!process.env.RIDDLE_PORT) {
 const TIMING = ["fights:break", "fights", "cut13", "clarity:deep", "clarity:card", "clarity:core,watch"];
 const OWN = { cut25: 180, fights: 128, qaj: 88, "ui:keep": 40, "ui:frame": 28, "ui:stall": 25, "ui:qa": 22, "ui:cut18": 19, "ui:cut19": 18, "clarity:hold": 81, "clarity:deep": 66, cut13: 61, "clarity:card": 55, qa9: 52, screens: 47, "clarity:core,watch": 42, cut27: 38, cut23: 36, "clarity:paint": 30 };
 const own = (n) => OWN[n] ?? 20;
-const SOLO = ["clarity:paint"];   // (below: last, alone)
+const SOLO = ["clarity:paint", "watch-live-edge"]; // edit latency and wall-clock playback need an idle browser pool
 const order = [...names].sort((a, b) => (SOLO.includes(a) ? 1 : 0) - (SOLO.includes(b) ? 1 : 0) || (TIMING.includes(b) ? 1 : 0) - (TIMING.includes(a) ? 1 : 0) || (TIMING.includes(a) ? TIMING.indexOf(a) - TIMING.indexOf(b) : own(b) - own(a)));
 const width = Number(process.env.TEST_JOBS ?? (selected.suite === "smoke" ? 4 : 7));
 const run1 = (n) => new Promise((resolve) => {
