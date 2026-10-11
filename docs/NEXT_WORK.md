@@ -1,3 +1,9 @@
+# Current queue
+
+See [WORK_QUEUE.md](WORK_QUEUE.md) for the owner-requested content/refinement queue dated2026-10-11. The notes below are retained implementation history and contain superseded tasks/statuses. Current acceptance and evaluation state is in [CLAUDE_HANDOFF.md](CLAUDE_HANDOFF.md).
+
+---
+
 Cut59 death simplification: removed unsupported no-rule fallback, concrete
 next-run actions visible, one initial patch, full Details retained, no-fix Town
 gem. Diagnostic current-WASM-save320/400/1440 and2related client gates pass;

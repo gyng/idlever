@@ -1,3 +1,7 @@
+# Owner requested additional work queue — 2026-10-11
+
+Queued prospective content/refinement in `docs/WORK_QUEUE.md`; `NEXT_WORK.md` now points there and preserves history. Priorities: existing-biome encounter variety, earned class/loot comparisons, lived-in home activities, biome landmarks; refinements from blind evidence, menus/settings, lighting consistency, cold-paint profiling and existing progression. These are queued, not implemented. Acceptance1808 remains live; no source/tests/assets changed for this queue. Preserve the frozen candidate through acceptance and blind horizon; independent raters must not receive this queue. Standing commit/push authorization, no deployment.
+
 # Current lantern candidate acceptance — 2026-10-11
 
 Product candidate **d34605e** committed/pushed. Cut134 human monochrome lanterns implemented and scoped validated, screenshots posted inline. Full158-group acceptance **LIVE exec1808**, log `/tmp/riddle-d34605e-client-full.log`, TEST_JOBS3/HEAVY_WIDTH1. Poll same handle; no source/test edits or heavy browser/native work until terminal. Old824 acceptance stopped130 for owner request, zero groups. No whole-green claim or fresh blind release.
