@@ -482,6 +482,11 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
             out.scout_min = Some(t / 60.0);
             out.scout_sends = riddle_core::tree::count(&g.lineage, "scout");
         }
+        // Introductory sends prioritize the scout; paid camp chores follow that unlock.
+        // Hire timestamps exclude later chores, whose real tap costs still extend the session.
+        if (arm == 2 || arm == 3) && riddle_core::tree::auto_send(&g.lineage) {
+            t += HIRE_S * first_session_chores(g, ask) as f64;
+        }
         note_nodes(g, out, t / 3600.0);
         if riddle_core::tree::auto_send(&g.lineage) && t >= stay {
             break;
@@ -575,22 +580,48 @@ fn guide_pick(g: &Game) -> Option<u32> {
 
 /// The chores HANDS, PICKED and TUNED do by hand until a worker does them: the herald's swap (a quest from an
 /// earlier day still unkept), the guide's start, the pets fielded (asked when the kennel has one to field).
-fn by_hand_rest(g: &mut Game, ask: &Ask) {
+fn by_hand_rest(g: &mut Game, ask: &Ask) -> u32 {
+    let mut taps = 0;
     use riddle_core::tree;
     let l = &g.lineage;
     if !tree::on(l, "herald") && riddle_core::town::quests_open(l) && l.town.quest.as_ref().is_some_and(|q| !q.done && q.day < riddle_core::town::today(l)) && l.town.swap_day != Some(l.day) {
-        let _ = g.swap_quest();
+        taps += u32::from(g.swap_quest().is_ok());
     }
     // (`DP_OFF=guide`: a probe without the guide's starts at all, by hand or by the worker)
     if !tree::on(&g.lineage, "guide") && !std::env::var("DP_OFF").is_ok_and(|v| v.split(',').any(|x| x == "guide")) {
         if let Some(s) = guide_pick(g) {
-            let _ = g.set_start(s);
+            taps += u32::from(g.set_start(s).is_ok());
         }
     }
     let l = &g.lineage;
     if !tree::on(l, "kennel_hand") && l.party.len() < l.party_slots() as usize && !l.kennel.is_empty() && ask.has("pets") {
+        let before = g.lineage.party.len();
         field_kennel(g);
+        taps += (g.lineage.party.len() - before) as u32;
     }
+    taps
+}
+
+/// The documented first-session chores, paid from earned resources and charged as actual taps.
+fn first_session_chores(g: &mut Game, ask: &Ask) -> u32 {
+    let mut taps = 0;
+    let stance = g.lineage.pkg.stance.clone();
+    if riddle_core::packages::level_price(&g.lineage, &stance).is_some_and(|price| price <= g.lineage.marks) && ask.has("packages") {
+        while riddle_core::packages::level_price(&g.lineage, &stance).is_some_and(|price| price <= g.lineage.marks) {
+            if g.spend_level(&stance).is_err() { break; }
+            taps += 1;
+        }
+    }
+    let reserve = 3 * riddle_core::kit::unit(g.lineage.best_depth) as i32;
+    let apprentice_all = riddle_core::tree::on(&g.lineage, "apprentice") && riddle_core::tree::forge_share(&g.lineage).is_none();
+    if !apprentice_all && forge_due(g, reserve) && ask.has("forge") { taps += forge(g, reserve); }
+    taps += by_hand_rest(g, ask);
+    if riddle_core::town::built(&g.lineage, "bank") && !riddle_core::tree::on(&g.lineage, "clerk") && ask.has("bank") {
+        let next = riddle_core::kit::ladders(&g.lineage).iter().filter_map(|l| l.next.as_ref().map(|x| x.price as i32)).min().unwrap_or(0);
+        let spare = g.lineage.gold - next - reserve;
+        if spare > 0 && g.bank_deposit(spare).is_ok() { taps += 1; }
+    }
+    taps
 }
 
 /// HANDS: every open chore by hand at a check-in — the forge's steps keeping the shelf's money, a deposit
@@ -833,6 +864,78 @@ mod checkpoint_tests {
         assert_eq!(seen, vec![5,1,2,3,4,6]);
         seen.sort(); assert_eq!(seen, (1..=6).collect::<Vec<_>>());
     }
+}
+
+#[cfg(test)]
+mod session_chore_tests {
+    use super::*;
+    #[test]
+    fn session_levels_are_paid_and_disabled_packages_do_nothing() {
+        let cfg = Cfg { bot: Bot::Picked, without: Some("forge") };
+        let mut g = Game::new_resident(7);
+        g.lineage.marks = 14; // Unit fixture, not an earned evaluation.
+        let taps = first_session_chores(&mut g, &Ask::new(&cfg));
+        assert_eq!(taps, 4);
+        assert_eq!(g.lineage.marks, 0);
+        assert_eq!(g.lineage.pkg.level("steady"), 5);
+        assert_eq!(HIRE_S * taps as f64, 20.0);
+        let off = Cfg { bot: Bot::Tuned, without: Some("packages") };
+        let mut untouched = Game::new_resident(7);
+        untouched.lineage.marks = 14;
+        let before = untouched.save();
+        assert_eq!(first_session_chores(&mut untouched, &Ask::new(&off)), 0);
+        assert_eq!(untouched.save(), before);
+    }
+    #[test]
+    fn session_forge_keeps_reserve_and_respects_disabled_or_automated_work() {
+        let cfg = Cfg { bot: Bot::Picked, without: Some("packages") };
+        let mut g = Game::new_resident(7);
+        g.lineage.gold = 2000; // Unit fixture only.
+        g.lineage.banked_depths.insert(1);
+        g.build_town("blacksmith").unwrap();
+        let original = g.clone();
+        let before = riddle_core::tree::count(&g.lineage, "apprentice");
+        let taps = first_session_chores(&mut g, &Ask::new(&cfg));
+        assert!(taps > 0);
+        assert_eq!(taps, riddle_core::tree::count(&g.lineage, "apprentice") - before);
+        assert!(g.lineage.gold >= 3 * riddle_core::kit::unit(g.lineage.best_depth) as i32);
+        assert!(g.lineage.gold < original.lineage.gold);
+        let off = Cfg { bot: Bot::Tuned, without: Some("forge") };
+        let mut disabled = original.clone();
+        assert_eq!(first_session_chores(&mut disabled, &Ask::new(&off)), 0);
+        assert_eq!(disabled.lineage.gold, original.lineage.gold);
+        let mut automated = original;
+        automated.lineage.orders.forge = "all".into();
+        riddle_core::tree::grant(&mut automated.lineage, &["apprentice"]);
+        let gold = automated.lineage.gold;
+        assert_eq!(first_session_chores(&mut automated, &Ask::new(&cfg)), 0);
+        assert_eq!(automated.lineage.gold, gold);
+    }
+    #[test]
+    fn session_savings_respects_disabled_bank_and_keeps_next_forge_step() {
+        let cfg = Cfg { bot: Bot::Picked, without: Some("forge") };
+        let mut g = Game::new_resident(7);
+        g.lineage.gold = 2000;
+        g.lineage.last_night_net = 100;
+        g.build_town("bank").unwrap();
+        // Isolate Savings from manual forge purchases in both configurations (unit fixture only).
+        g.lineage.orders.forge = "all".into();
+        riddle_core::tree::grant(&mut g.lineage, &["apprentice"]);
+        let original = g.clone();
+        let wealth = g.lineage.gold + g.lineage.town.bank;
+        let next = riddle_core::kit::ladders(&g.lineage).iter().filter_map(|l| l.next.as_ref().map(|x| x.price as i32)).min().unwrap_or(0);
+        assert_eq!(first_session_chores(&mut g, &Ask::new(&cfg)), 1);
+        assert!(g.lineage.town.bank > 0);
+        assert!(g.lineage.gold >= next + 3 * riddle_core::kit::unit(g.lineage.best_depth) as i32);
+        assert_eq!(g.lineage.town.bank, riddle_core::town::BANK_NIGHTS * g.lineage.last_night_net);
+        assert_eq!(g.lineage.gold + g.lineage.town.bank, wealth);
+        let off = Cfg { bot: Bot::Tuned, without: Some("bank") };
+        let mut disabled = original;
+        assert_eq!(first_session_chores(&mut disabled, &Ask::new(&off)), 0);
+        assert_eq!(disabled.lineage.town.bank, 0);
+        assert_eq!(disabled.lineage.gold, wealth);
+    }
+
 }
 
 impl Play {

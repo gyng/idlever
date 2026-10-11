@@ -28,7 +28,7 @@ import { fileURLToPath } from "node:url";
 import { launchBrowser } from "../../tools/browser.mjs";
 import { measured } from "./lib/load.mjs";
 import { tagCollisionFixture } from "./lib/tag-collision.mjs";
-import { fastStartFrames } from "./lib/fast-start-frames.mjs";
+import { fastStartFrames, installFastStartCapture } from "./lib/fast-start-frames.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
@@ -113,9 +113,37 @@ async function checkBossBreak() {
 
 }
 
+async function checkFastStart() {
+  // Cut 12 §6: a second run in `fast` (seed 157, rater P's): travel 16×, fights 2×; QA on 50bb162: ▶▶| reaches the END
+  await installFastStartCapture(page);
+  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=157&autosend=1&speed=fast`, { waitUntil: "domcontentloaded" });
+  let s = await waitFor((x) => x?.booted && inRun(x) && x.mode === "fast", "the fast run");
+  check(s.mode === "fast" && s.card === "0", `fast from boot (card ${s.card})`);
+  const fastFrames = await fastStartFrames(page);
+  s = fastFrames.travel;
+  check(s.speed >= 32, `fast travel reaches 32× (speed ${s.speed}; first paint ${fastFrames.firstMap?.speed}×)`);   // Cut 20 §3: 32×, was 16× ramping
+  // Cut 18 §1: `fast` frames what `fights` frames, a chore stretch inside the frame at its flat rate — the blows at 4×
+  s = fastFrames.fight;
+  check(inRun(s) && s.frame === "fight" && s.speed === 4, `fast watches a fight at 4× (speed ${s.speed}, frame ${s.frame})`);   // Cut 14: 4×, was 2×
+  // ▶▶| once, inside the fight: the run's end — the viewer lands at the ending (its last 30 ticks play at 1×, `ending`), then
+  // the exit flow; the press used to reach the fight's end / the next fight (read as "plays faster" by five players)
+  if (inRun(s)) {
+    const before = s.tick, t = Date.now();
+    await press("▶▶|");
+    // The engine can finish before the skip has sought the picture to the ending.
+    // Observe both completion and the clock landing, within the original budget.
+    s = await waitFor((x) => !inRun(x) || (x.ending && x.tick > before), "the ending after ▶▶| in fast", 20_000).catch(() => s);
+    check(!inRun(s) || s.ending, `one ▶▶| in fast reaches the run's end (tick ${before} → ${s.tick}, ${s.ending ? "ending" : s.screen}, ${Date.now() - t} ms)`);
+    check(!inRun(s) || s.tick > before, `the clock jumped to the ending (${before} → ${s.tick})`);
+    s = await waitFor((x) => x && x.screen !== "watch", "the end of the fast run", 60_000);
+    check(["exit", "death", "report", "camp"].includes(s.screen), `the fast run left the watch (${s.screen})`);
+  }
+}
+
 const breakOnly = process.argv.includes("--part=break");
+const fastStartOnly = process.argv.includes("--part=fast-start");
 try {
-  if (breakOnly) { await checkBossBreak(); } else {
+  if (breakOnly) { await checkBossBreak(); } else if (fastStartOnly) { await checkFastStart(); } else {
   // Cut 20 §3: on D1–D3 `fights` shows no card — the travel at 8×, every fight at 1.5× (early runs were card-skipped travel "too short
   // to follow"); the card's own checks below turn that off (`early=0`)
   await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=157&autosend=1`, { waitUntil: "domcontentloaded" });
@@ -186,29 +214,7 @@ try {
   s = await waitFor((x) => x && x.screen !== "watch", "the run's end", 120_000);
   check(["exit", "death", "report", "camp"].includes(s.screen), `the run reached its end (${s.screen})`);
 
-  // Cut 12 §6: a second run in `fast` (seed 157, rater P's): travel 16×, fights 2×; QA on 50bb162: ▶▶| reaches the END
-  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=157&autosend=1&speed=fast`, { waitUntil: "domcontentloaded" });
-  s = await waitFor((x) => x?.booted && inRun(x) && x.mode === "fast", "the fast run");
-  check(s.mode === "fast" && s.card === "0", `fast from boot (card ${s.card})`);
-  const fastFrames = await fastStartFrames(page);
-  s = fastFrames.travel;
-  check(s.speed >= 32, `fast travels at 32× from the first tick (speed ${s.speed})`);   // Cut 20 §3: 32×, was 16× ramping
-  // Cut 18 §1: `fast` frames what `fights` frames, a chore stretch inside the frame at its flat rate — the blows at 4×
-  s = fastFrames.fight;
-  check(inRun(s) && s.frame === "fight" && s.speed === 4, `fast watches a fight at 4× (speed ${s.speed}, frame ${s.frame})`);   // Cut 14: 4×, was 2×
-  // ▶▶| once, inside the fight: the run's end — the viewer lands at the ending (its last 30 ticks play at 1×, `ending`), then
-  // the exit flow; the press used to reach the fight's end / the next fight (read as "plays faster" by five players)
-  if (inRun(s)) {
-    const before = s.tick, t = Date.now();
-    await press("▶▶|");
-    // The engine can finish before the skip has sought the picture to the ending.
-    // Observe both completion and the clock landing, within the original budget.
-    s = await waitFor((x) => !inRun(x) || (x.ending && x.tick > before), "the ending after ▶▶| in fast", 20_000).catch(() => s);
-    check(!inRun(s) || s.ending, `one ▶▶| in fast reaches the run's end (tick ${before} → ${s.tick}, ${s.ending ? "ending" : s.screen}, ${Date.now() - t} ms)`);
-    check(!inRun(s) || s.tick > before, `the clock jumped to the ending (${before} → ${s.tick})`);
-    s = await waitFor((x) => x && x.screen !== "watch", "the end of the fast run", 60_000);
-    check(["exit", "death", "report", "camp"].includes(s.screen), `the fast run left the watch (${s.screen})`);
-  }
+  await checkFastStart();
   // in `fights` the press stays the next fight (checked above on seed 5)
 
   // Cut 14 §3: a stack fans in the map frame and its names take two rows — two foes put on the hero's tile in the viewer (the

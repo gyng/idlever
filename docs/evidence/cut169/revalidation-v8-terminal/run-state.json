@@ -1,0 +1,77 @@
+{
+  "scope": "Confirmed-stall rate floor corrected; original deadlines and complete166 required; exact native/WASM reused; no score/freeze/adoption",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "types",
+      "command": [
+        "pnpm",
+        "-s",
+        "exec",
+        "tsc",
+        "--noEmit"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T21:56:37.132335+00:00",
+      "pid": 3870746,
+      "exit_code": 0,
+      "elapsed_seconds": 4.836794144939631,
+      "finished_utc": "2026-10-11T21:56:41.969407+00:00"
+    },
+    {
+      "name": "copy",
+      "command": [
+        "node",
+        "tools/copy-lint.mjs"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T21:56:42.038313+00:00",
+      "pid": 3870828,
+      "exit_code": 0,
+      "elapsed_seconds": 0.10354728391394019,
+      "finished_utc": "2026-10-11T21:56:42.142173+00:00"
+    },
+    {
+      "name": "web-build",
+      "command": [
+        "pnpm",
+        "-s",
+        "build"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T21:56:42.212400+00:00",
+      "pid": 3870835,
+      "exit_code": 0,
+      "elapsed_seconds": 5.6046217400580645,
+      "finished_utc": "2026-10-11T21:56:47.817328+00:00"
+    },
+    {
+      "name": "shipping-whole-client",
+      "command": [
+        "node",
+        "tests/run.mjs",
+        "--full",
+        "--report",
+        "/home/g/p/riddle/scratchpad/cut169/revalidation-v8/shipping-client-results.json"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T21:56:47.889028+00:00",
+      "pid": 3870965,
+      "exit_code": 0,
+      "elapsed_seconds": 1483.384708127007,
+      "finished_utc": "2026-10-11T22:21:31.274068+00:00"
+    }
+  ],
+  "prerequisite_status": "terminal reports inspected",
+  "shipping_wasm": {
+    "bytes": 4879943,
+    "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+  },
+  "updated_utc": "2026-10-11T22:21:31.312585+00:00",
+  "focused_evidence": {
+    "current_focused": "/home/g/p/riddle/scratchpad/cut169/stall-floor-focused.json",
+    "current_control_stress85": "/home/g/p/riddle/scratchpad/cut169/stall-floor-control-stress.json",
+    "scope": "Focused current-source checks do not replace complete166 acceptance"
+  },
+  "current": "shipping-whole-client"
+}

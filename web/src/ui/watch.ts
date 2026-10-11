@@ -211,8 +211,8 @@ const DEAD_TICKS_ONE = 35;
 // short lead, ~16–30× however long the stretch): a dead stretch the picture has played DEAD_JUMP_MS of wall time jumps — the engine
 // steps ahead in big batches (≤ DEAD_JUMP_WALL_MS) to the next move, the stairs, a beat or the end, and the picture lands JUMP_LAND
 // ticks before it; with none found it lands on the frontier and plays on (another jump DEAD_JUMP_MS later)
-const DEAD_JUMP_MS = 2500, DEAD_JUMP_WALL_MS = 1200, JUMP_LAND = 15;
-const DEAD_RETRY_MS = 250;          // a budgeted search found no news: yield a frame, then continue the confirmed dead stretch
+const DEAD_JUMP_MS = 500, DEAD_JUMP_WALL_MS = 1200, JUMP_LAND = 15;
+const DEAD_RETRY_MS = 100;          // a budgeted search found no news: yield a frame, then continue the confirmed dead stretch
 const KILL_LEAD = 3;                // blind 5331f40: a jump that meets a boss's unshown kill lands this many ticks before it
 // blind 7f7fc2b (A: three 55–90 s static stretches after the fold line; B: the hero static > 30 s with the run over): a jump held short
 // of an unshown kill waits at most KILL_WAIT_MS of wall time for the picture to play it — then the kill lapses and the jump goes on
@@ -1840,15 +1840,21 @@ export function renderWatch(app: App): Mounted {
     const ahead = (): number => Math.min(progressAfter(v0), descends.find((t) => t > v0) ?? Infinity, beat && !beat.shown && beat.from > v0 ? beat.from : Infinity,
       ...beatNext.filter((x) => !x.shown && x.from > v0).map((x) => x.from), held ? endingFrom : Infinity);
     try {
-      while (!disposed && !done && !held && !exitTier && ahead() === Infinity && performance.now() - t0 < DEAD_JUMP_WALL_MS) {
+      while (!disposed && !done && !frozen() && !held && !exitTier && ahead() === Infinity && performance.now() - t0 < DEAD_JUMP_WALL_MS) {
+        const replyFrom = performance.now();
         const r = await app.engine.step(SKIP_END_BATCH);
+        const immediateReply = performance.now() - replyFrom < 8;
         if (disposed || done) break;
         handle(r);
         if (r.run_over || r.snapshot.vault_choice || (cage && !cage.done) || cageNear(r.snapshot)) break;
+        // Immediately resolved replies otherwise form a microtask chain: the
+        // search queues thousands of HUD paints while input and timers wait.
+        // Slow worker replies already yield; fast replies need a browser turn.
+        if (immediateReply) await new Promise<void>((resolve) => window.setTimeout(resolve, 0));
       }
     } catch (e) { console.warn("jump failed", e); }
     inflight = false;
-    if (disposed || done) return;
+    if (disposed || done || frozen()) return;
     const t = killStop(Math.max(viewerTick(), Math.min(engineTick, ahead() - JUMP_LAND)));
     if (t > viewerTick() + 1) {
       release(t); seekTo(t); letGo(t);
@@ -2064,7 +2070,10 @@ export function renderWatch(app: App): Mounted {
   /** Cut 24 §1: a dead stretch's rate — the travel's, ramping as `fast`'s dead stretch does, landing on the next move DEAD_LAND_MS out. */
   function deadStretch(was: number, v: number): number {
     deadSince = was < 0 ? performance.now() : was;
-    const base = earlyFloor() ? EARLY_TRAVEL : mode === "one" ? ONE_MAX : RATE[mode], age = performance.now() - deadSince;
+    // A confirmed stall has already held its flag for300 ticks. Its quiet
+    // stretch keeps the mode's minimum instead of resetting to the early8x
+    // travel floor after every landing (the stall contract requires>=16x).
+    const base = earlyFloor() && !stalling() ? EARLY_TRAVEL : mode === "one" ? ONE_MAX : RATE[mode], age = performance.now() - deadSince;
     // `fights` tops out at DEAD_MAX_FIGHTS (a stretch the core cuts at 60 actions is ~1 s there; its engine lead stays short of a cage);
     // blind 5331f40 (A: "even on Speed Normal the badge jumped 1× … 128× … 16×"): `one` never ramps past ONE_MAX — a long dead
     // stretch is jumped instead (DEAD_JUMP_MS), and the jump is announced (`skipped ahead`)

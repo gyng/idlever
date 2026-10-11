@@ -1,0 +1,53 @@
+{
+  "scope": "Mechanical source acceptance only; no fun certificate, QA, asset freeze or deployment",
+  "checkedUtc": "2026-10-11T22:22:35.801348+00:00",
+  "fullClientGroups": 166,
+  "fullClientFailed": 0,
+  "elapsedSeconds": 1483.384708127007,
+  "fullDiscoveryExactMatch": true,
+  "controlBranchesVerified": [
+    "ok   a click walks several tiles",
+    "ok   the hero click interrupts an active walk",
+    "ok   the stop pointer hits the currently drawn hero",
+    "ok   a click on him stops the walk"
+  ],
+  "watchFixtureDelayMs": 15,
+  "sourceGuardFiles": 680,
+  "nativeInputsUnchangedSinceAcceptedCut168": true,
+  "changedSinceAcceptedNativeGuard": [
+    "web/src/ui/watch.ts",
+    "web/tests/cut119.mjs",
+    "web/tests/fights.mjs",
+    "web/tests/lib/fast-start-frames.mjs",
+    "web/tests/run-training.mjs",
+    "web/tests/take-control.mjs",
+    "web/tests/ui.mjs",
+    "web/tests/watch-live-edge.mjs"
+  ],
+  "nativeEvidenceArtifactsVerified": [
+    "docs/evidence/cut168/actor16-terminal/actor16.log",
+    "docs/evidence/cut168/actor16-terminal/cache-inventory.json",
+    "docs/evidence/cut168/actor16-terminal/matching-cached-jobs.tar.gz",
+    "docs/evidence/cut168/actor16-terminal/queue.log",
+    "docs/evidence/cut168/actor16-terminal/run-state.json",
+    "docs/evidence/cut168/actor16-terminal/status.json",
+    "docs/evidence/cut168/full-verify-terminal/full-routine.log",
+    "docs/evidence/cut168/full-verify-terminal/queue.log",
+    "docs/evidence/cut168/full-verify-terminal/run-state.json",
+    "docs/evidence/cut168/full-verify-terminal/status.json"
+  ],
+  "nativeCoverage": "original22-row16-seed targeted plan plus full routine806Rust/6ignored,8metrics,10wire,18current-player cases; omitted exhaustive audit not certified",
+  "shippingWasm": {
+    "bytes": 4879943,
+    "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+  },
+  "pkgRealDirectory": true,
+  "sourceAdoption": "authorized after this audit; commit still pending",
+  "stillRequired": [
+    "clean committed frontend rebuild",
+    "actual immutable asset manifest and real-WASM/GPU smoke",
+    "transcript and full interactive QA",
+    "same-sitting calibration",
+    "two fresh complete independent blind ratings with raw locks, horizons, applicable caps and reliability"
+  ]
+}
