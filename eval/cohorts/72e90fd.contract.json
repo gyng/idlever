@@ -1,0 +1,71 @@
+{
+  "candidate": "72e90fd",
+  "status": "preparing; combined whole client acceptance running, not released",
+  "url": "http://127.0.0.1:5266/",
+  "manifestSha256": "3425833e76eb1a05a1b693b578ca415ff1eeddc250737a72f4b8d6854c48687d",
+  "preset": "idle-hybrid",
+  "tier": 1,
+  "profile": null,
+  "horizon": {
+    "coldActiveMinutes": 40,
+    "returns": [
+      {
+        "absence": "20m",
+        "activeMinutes": 5
+      },
+      {
+        "absence": "4h",
+        "activeMinutes": 5
+      },
+      {
+        "absence": "8h",
+        "activeMinutes": 20
+      }
+    ],
+    "totalActualActiveMinutes": 70,
+    "firstTenMinutesUnnoted": true,
+    "deathsReadMinimum": 3,
+    "ruleEditAttemptsMinimum": 2,
+    "unattendedAndInfrastructureTimeExcluded": true
+  },
+  "raters": [
+    {
+      "role": "a",
+      "seed": 313,
+      "port": 5380,
+      "brief": "scratchpad/blind-72e90fd-frozen/briefs/a.txt",
+      "card": "eval/cards/72e90fd.blind-a.json"
+    },
+    {
+      "role": "b",
+      "seed": 317,
+      "port": 5381,
+      "brief": "scratchpad/blind-72e90fd-frozen/briefs/b.txt",
+      "card": "eval/cards/72e90fd.blind-b.json"
+    }
+  ],
+  "blindness": "Fresh agents, fork_turns none, brief only; no interrupted rater notes, desired score, source or coordinator design history.",
+  "audio": "unassessed",
+  "delayedRecall": "empty until next day",
+  "rawCards": "immutable",
+  "releaseConditions": [
+    "terminal whole current client acceptance",
+    "served manifest matches",
+    "private GPU probe",
+    "same-sitting calibration"
+  ],
+  "nativeLimitations": "Existing recorded routine2seed outpace86% failure; full16seed targeted outpace97% pass. No historical exhaustive audit certification.",
+  "decisionCriteria": {
+    "requiredIndependentCards": 2,
+    "bothHorizonsComplete": true,
+    "reliabilityAlphaMinimum": 0.8,
+    "combinedScore": "mean of the two independently awarded totals, after measured caps only",
+    "combinedScoreMinimum": 80,
+    "killCriteriaMustAllBeFalse": true,
+    "criterionValidity": "Report criterion scores alongside totals; record any score/return-intent disagreement.",
+    "noSyntheticCaps": "Unmeasured proxies remain na; do not assert blanket green.",
+    "scoreLimitation": "A human-only score may be reported as such; measured gate failures that map to a fun-axis cap must be reflected in separate derived cards.",
+    "rawCardsImmutable": true
+  },
+  "menuEntry": "First cold visit only includes menu=1 alongside seed/fresh. Returning absence URLs omit menu/fresh and load straight into saved game."
+}

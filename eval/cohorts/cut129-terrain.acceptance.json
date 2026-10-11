@@ -1,0 +1,266 @@
+{
+  "cut": 129,
+  "implementation": "72e90fd",
+  "isolatedCommit": "61b9b1d",
+  "status": "focused acceptance PASS; combined whole acceptance running",
+  "recordedUtc": "2026-10-11T04:24:48.950501+00:00",
+  "checks": {
+    "scopedClientGroups": "3/3 PASS in66.8s (cut30town, ctxloss, town-save)",
+    "typeScript": "PASS",
+    "copyLint": "PASS",
+    "productionBuild": "PASS",
+    "lifecycle": [
+      {
+        "ok": true,
+        "label": "single paint across viewport and lighting changes",
+        "data": {
+          "initial": {
+            "fps": 3,
+            "frames": 4,
+            "cpuMs": 8.400000095367432,
+            "cpuP95": 179,
+            "walkers": 1,
+            "mode": "gl",
+            "glLost": false,
+            "k": 3,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 157.09999990463257,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              315,
+              122,
+              267,
+              334
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          },
+          "resized": {
+            "fps": 3,
+            "frames": 5,
+            "cpuMs": 0.7999999523162842,
+            "cpuP95": 179,
+            "walkers": 1,
+            "mode": "gl",
+            "glLost": false,
+            "k": 3,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 157.09999990463257,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              315,
+              122,
+              267,
+              334
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          }
+        }
+      },
+      {
+        "ok": true,
+        "label": "context loss retains terrain and cache",
+        "data": {
+          "fps": 2,
+          "frames": 7,
+          "cpuMs": 0.7000000476837158,
+          "cpuP95": 179,
+          "walkers": 1,
+          "mode": "2d",
+          "glLost": true,
+          "k": 3,
+          "night": 0,
+          "idle": false,
+          "running": true,
+          "terrainPaints": 1,
+          "terrainPaintMs": 157.09999990463257,
+          "buildings": [
+            "blacksmith",
+            "bank",
+            "storehouse",
+            "kennel"
+          ],
+          "markers": [
+            "rune@blacksmith",
+            "rune@bank",
+            "rune@storehouse"
+          ],
+          "view": [
+            315,
+            122,
+            267,
+            334
+          ],
+          "workers": [
+            "quartermaster"
+          ],
+          "ranks": {},
+          "colours": 3371
+        }
+      },
+      {
+        "ok": true,
+        "label": "context restore uploads same terrain",
+        "data": {
+          "fps": 3,
+          "frames": 9,
+          "cpuMs": 9.200000047683716,
+          "cpuP95": 179,
+          "walkers": 1,
+          "mode": "gl",
+          "glLost": false,
+          "k": 3,
+          "night": 0,
+          "idle": false,
+          "running": true,
+          "terrainPaints": 1,
+          "terrainPaintMs": 157.09999990463257,
+          "buildings": [
+            "blacksmith",
+            "bank",
+            "storehouse",
+            "kennel"
+          ],
+          "markers": [
+            "rune@blacksmith",
+            "rune@bank",
+            "rune@storehouse"
+          ],
+          "view": [
+            315,
+            122,
+            267,
+            334
+          ],
+          "workers": [
+            "quartermaster"
+          ],
+          "ranks": {}
+        }
+      },
+      {
+        "ok": true,
+        "label": "render changes preserve exact core save"
+      },
+      {
+        "ok": true,
+        "label": "actual GPU warm busy town CPU-p95 below 8ms",
+        "data": {
+          "fps": 59.99999999999999,
+          "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+          "stats": {
+            "fps": 61,
+            "frames": 560,
+            "cpuMs": 0.5,
+            "cpuP95": 0.8999998569488525,
+            "walkers": 25,
+            "mode": "gl",
+            "glLost": false,
+            "k": 3,
+            "night": 0,
+            "idle": false,
+            "running": true,
+            "terrainPaints": 1,
+            "terrainPaintMs": 157.09999990463257,
+            "buildings": [
+              "blacksmith",
+              "bank",
+              "storehouse",
+              "kennel"
+            ],
+            "markers": [
+              "rune@blacksmith",
+              "rune@bank",
+              "rune@storehouse"
+            ],
+            "view": [
+              315,
+              122,
+              267,
+              334
+            ],
+            "workers": [
+              "quartermaster"
+            ],
+            "ranks": {}
+          }
+        }
+      },
+      {
+        "ok": true,
+        "label": "no page errors",
+        "data": []
+      }
+    ]
+  },
+  "artifacts": {
+    "scratchpad/qa-cut129-home-terrain/after-cold-1440.png": "aa8a6c426d18084ac3b5e5734658e5965810582dae1b0f8733e1151f0210d367",
+    "scratchpad/qa-cut129-home-terrain/after-cold-320.png": "2174f2f1bd67390925611298269ad999263bbe2d1fe5f05bfc591028d5a23400",
+    "scratchpad/qa-cut129-home-terrain/after-cold-400.png": "6c70efa1ef2313f4952d45bb72c567e247c067466d5c493fbb6d83959990e4fc",
+    "scratchpad/qa-cut129-home-terrain/after-house-1440.png": "50a3c3e0ace5e7b413844c73f43c3077ba5a82957b3fb4ba30778ee7ca89a70c",
+    "scratchpad/qa-cut129-home-terrain/after-house-320.png": "e7acf9e9220932cb24dab19e2c5b79c65ce7c5c8e67303aec73ff368c1a6e134",
+    "scratchpad/qa-cut129-home-terrain/after-house-400.png": "da42a6ce14ce322b6acd8b67042b9a17e6691e01708629e1ececda48c9036b17",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-1440-day.png": "4c8acc8ce1c25f8f5db48e8e0799b912b5b00da38a34b7c440e3cfe1ffddeda6",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-1440-night.png": "d62d0ad50c641d0c3640f245fb4adac2ca4bb387c2fc096dd0d0fc2ab6fdd83c",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-320-day.png": "16e1a1a2afcf3eb675fb83339351f568f8caa3165bcd62224bd08c45e6afeda5",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-320-night.png": "447527bb4ff20df973f0fb87e796921de9d19fa6c026433b98dfb8356b03ceae",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-400-day.png": "041dd01a644d819d546deb18f7fbba9261fdfff1c399db0e82cc8fdf0c57f08a",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-400-fallback.png": "17e71bf7b24f2e683956436ee5ceb890f716474483f3d3c584bb7601a8d2a7c2",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-400-night.png": "d1de4077e31d077358a006e1d7eaa5cfb8b37672c479aa2eb56977497afef4d2",
+    "scratchpad/qa-cut129-home-terrain/after-populated-fixture-400-restored.png": "6217bcc68253cfcd0572021b8912912eeff6a985c3766eb83235e7c0fbefdb72",
+    "scratchpad/qa-cut129-home-terrain/before-cold-1440.png": "57dac59b4df13d10eca33d89728a57447fc86feea610235b826eebf89f6054cb",
+    "scratchpad/qa-cut129-home-terrain/before-cold-320.png": "47657b491f6354645dca16598144368581e50bedf75b8f656e5bb506e6a8033d",
+    "scratchpad/qa-cut129-home-terrain/before-cold-400.png": "1a303a8aa6e95916dc8b05b225850a613e3dc4cbd2cb697f3587017f2fe2f7b9",
+    "scratchpad/qa-cut129-home-terrain/before-house-1440.png": "bb3a2923436b8046488d2592cf2f54395cc4a3f6bdf88d640b26bebd34e1025a",
+    "scratchpad/qa-cut129-home-terrain/before-house-320.png": "c60dba11db9189f9d3b0b5590c008491597616292b82463741f49c35557ddc40",
+    "scratchpad/qa-cut129-home-terrain/before-house-400.png": "6f1461e25220238a731e5061cbd892d7c4175309a0de04e650f172cd45a3963e",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-1440-day.png": "0d65aa8f86a88207d5820adf68215d339e007b15cc559d744e246d7d39afa8b5",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-1440-night.png": "2a4634c5cf5324479d83b7f485cbf8634caf0d532ace3709b8c835d2673df791",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-320-day.png": "cf6fbf0b3ee9c269cb48eb19e896c108be15be1248ca61420bb215ee662e8d99",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-320-night.png": "c17a18b871011dd2214ad285b8ac8b4bb290516bfb029ad1a6f482acedff1dad",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-400-day.png": "4ac9ce92c3059514f76a7fc999ecad72e0947c4876d0ec65f6a7b30a7b30c74e",
+    "scratchpad/qa-cut129-home-terrain/before-populated-fixture-400-night.png": "7af1df09c4fb23d8b22d5c735bedfdef29e09a2503fc63607af790db36013c92",
+    "scratchpad/qa-cut129-home-terrain/capture.json": "71cd5a8ee7090297b565ca3237c2bc012672a4eb40a1ae4886c0b0750b5fc04d",
+    "scratchpad/qa-cut129-home-terrain/capture.mjs": "9e6bb2e4c7cce62f016bf01c3e2831fa58da7da3d3e77e29100d014f9c5cafc5",
+    "scratchpad/qa-cut129-home-terrain/engine-proof.json": "4b240f24361159b22e33f238ff793d8c4f1ed370337063381417373279d8b1e5",
+    "scratchpad/qa-cut129-home-terrain/lifecycle.json": "12e5bedf4ab7b15443fc17486e684a5d14366d2aba9fed23c1c750745bf9aefa",
+    "scratchpad/qa-cut129-home-terrain/lifecycle.mjs": "f88aa5dc7f42ac679a5d57aab194827e840ad42938188fc6f18273bd50144627",
+    "scratchpad/qa-cut129-home-terrain/probe.mjs": "08db11f94278cebe7d50a653691f4b1238f1beadb3c9f5794d26b621f844e4c8"
+  },
+  "limitations": [
+    "Populated screenshots are construction diagnostic fixtures, not earned gameplay or blind ratings.",
+    "Initial terrain paint157.1ms; warm busy-town GPU CPU p95 0.90ms and60fps. Screenshot reduced-motion cap is not GPU performance evidence.",
+    "No deployment; combined whole157-group acceptance pending."
+  ]
+}
