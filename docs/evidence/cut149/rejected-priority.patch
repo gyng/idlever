@@ -1,0 +1,57 @@
+diff --git a/crates/riddle-core/src/packages.rs b/crates/riddle-core/src/packages.rs
+index b9d5939..907f56a 100644
+--- a/crates/riddle-core/src/packages.rs
++++ b/crates/riddle-core/src/packages.rs
+@@ -353,14 +353,13 @@ pub fn stance_rows(id: &str, level: u32, best: u32) -> (Vec<Row>, Vec<Row>) {
+             if level >= 5 {
+                 g.push(r(vec![tag("telegraph"), n("hp<", 35)], Verb::new("retreat")));
+             }
+-            let mut f = vec![attack];
+             if level >= 2 {
+                 // Preserve the first-session run/training cadence; deeper floors need more recovery.
+                 let rest = crate::balance::get().steady_rest[usize::from(level >= 3)];
+                 let rest = if best < 18 { rest.min(STEADY_REST_L3) } else { rest };
+-                f.push(r(vec![n("hp<", rest)], Verb::new("rest")));
++                g.insert(3, r(vec![n("hp<", rest)], Verb::new("rest")));
+             }
+-            (g, f)
++            (g, vec![attack])
+         }
+         // heal 40 %, home hurt under 30 %, bank out of heals under 45 % when recovery is unsafe, and recover fully
+         // between fights. L2 heals at 45 %, L3 meets a telegraphed blow with a drink. L4 backs into a corridor
+diff --git a/crates/riddle-core/src/tests_cut305.rs b/crates/riddle-core/src/tests_cut305.rs
+index 7941b26..59e2dd8 100644
+--- a/crates/riddle-core/src/tests_cut305.rs
++++ b/crates/riddle-core/src/tests_cut305.rs
+@@ -972,3 +972,31 @@ fn apprentice_half_order_spends_half_the_hauls_since_hire() {
+     }
+     assert!(checked >= 3 && reported, "checked {checked} absences, reported {reported}");
+ }
++
++/// Steady's learned recovery must act with an empty pack, while unsafe/critical exits keep priority.
++#[test]
++fn learned_steady_recovers_before_its_dry_exit_only_when_safe() {
++    for (runs, hp, poison, recover) in [(10, 35, false, true), (40, 35, false, true),
++        (10, 35, true, false), (0, 35, false, false), (10, 20, false, false)] {
++        let mut g = Game::new_resident(7);
++        g.lineage.pkg.runs.insert("steady".into(), runs);
++        crate::packages::recompile(&mut g.lineage);
++        g.send();
++        let r = g.run.as_mut().unwrap();
++        r.monsters.clear();
++        r.hero.inv.retain(|item| item.kind != "heal");
++        r.hero.max_hp = 100;
++        r.hero.hp = hp;
++        r.hero.energy = 100;
++        if poison { r.hero.poison = (1, 100); }
++        g.tick();
++        let r = g.run.as_ref().unwrap();
++        if recover {
++            assert!(r.hero.hp > hp, "L2+ heals a safely recoverable empty-pack hero");
++            assert!(r.homeward.is_none() && r.over.is_none(), "safe recovery precedes the dry exit");
++        } else {
++            assert!(r.homeward.is_some() || r.over.is_some(), "unsafe, unlearned or critical recovery keeps the exit");
++            assert!(r.hero.hp <= hp, "the hero did not rest");
++        }
++    }
++}

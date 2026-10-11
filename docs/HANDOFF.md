@@ -1,3 +1,11 @@
+# Cuts148–151 rejected recovery experiments / paid first-session action — 2026-10-11
+
+Three recovery candidates fail prewritten paired-camp gate and are REJECTED: L2rest45 givesPICKED D7/IDLE D10;rest50 givesD8/D7. Safe-rest-before-dry atoriginal40 givesD7/D8 despite actual rest healing; meaningful safe/unsafe/L1/critical behavior test1/1PASS0.11s but outcome gate fails. Combined safe-priority/rest50 givesD8/D7. Full patch/raw saves/profiles/test retained; packages.rs and temporary test exactly reverted toHEAD. No shipping threshold/order/WASM edit. Rebuilt native baseline gives exact original reports/saves for both camps/all three item cases; restored parity evidence hashed.
+
+New optional train diagnostic in loadout_check uses actual earned marks/public spend_level only. PICKED initial savedcamp:12marks paidSteadyL5 ->D8/15runs/onearcher death vs baselineD7/16runs/no deaths. IDLE training14marks ->D7/16runs/twodeaths; actualIDLE stays unchangedD8. Original three cases equal prior complete reports/saves and source bytes unchanged. No grants, trait changes, bot or numeric bar edits. Evidence docs/evidence/cut148..151/ contracts retain failures; current source product unchanged.
+
+Next audit first_session against Cut30_5§4 listed manual chores before any model repair. Its loop currently hires/builds/wears but does not spend levels/forge/pick, whereas later check-ins do. Paid levels improve one actual engaged camp, but do not certify a corrected first-session budget/cadence/disabled-system policy or full native acceptance. Keep IDLE unchanged; do not silently strengthen PICKED or edit bars/seeds. Cut147 full remainsFAIL86% vs90; full final client/freeze/complete independent ratings still required. Goal>=80 ACTIVE/unverified; no deployment.
+
 # Cut147 native regression confirmed / early diagnostic — 2026-10-11
 
 Routine full on af152eb terminalFAIL source6df5888846e389b8: outpace86% vs90 sole failed selected bar; dayplayer294.2s, metrics119.0s/wire40.1s PASS. Exact completed current IDLE/PICKED jobs match old milestone hours: seed1 IDLE D8/D18 at8/24h vs PICKED16/32h, later picked faster. Original source0f1f86e2ec058e24 fullfailure/job bytes preserved, not rewritten as green.

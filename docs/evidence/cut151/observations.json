@@ -1,0 +1,341 @@
+[
+  {
+    "bot": "PICKED",
+    "original_three_cases_exact": true,
+    "source_unchanged": true,
+    "source_sha256": "99a9bf9a45547c17a9f8abc2a2a71d7c71b398947b46a2af99b1e54fa0b4503d",
+    "binary_sha256": "5f06365256d21c9e2ca3dd69499e202427ed75a9478aa12a47dd21ed9866fdc1",
+    "trained": {
+      "level": 5,
+      "marks_spent": 12,
+      "stance": "steady"
+    },
+    "best": 8,
+    "runs": 15,
+    "deaths": [
+      {
+        "cause": "goblin_archer",
+        "n": 1
+      }
+    ],
+    "gold": {
+      "earned": 2152,
+      "fetched": 13,
+      "home": 1197,
+      "ledger": {
+        "earned": 2152,
+        "net": 1583,
+        "spent": 569,
+        "terms": [
+          {
+            "amount": 2085,
+            "label": "carried"
+          },
+          {
+            "amount": -569,
+            "label": "lost"
+          },
+          {
+            "amount": 54,
+            "label": "recovered"
+          },
+          {
+            "amount": 13,
+            "label": "fetched"
+          }
+        ]
+      },
+      "lost": 569,
+      "net": 1583,
+      "recovered": 54,
+      "salvage": 319,
+      "spent": 0,
+      "spent_by_workers": 0,
+      "unkept": 502,
+      "wake": 0,
+      "wake_cap": 40,
+      "wake_n": 0
+    },
+    "meters": {
+      "actions": 11198,
+      "credit": [
+        {
+          "credit": "default",
+          "fires": 2186,
+          "share": 0.195
+        },
+        {
+          "credit": "chores",
+          "fires": 9013,
+          "share": 0.805
+        }
+      ],
+      "dealt": {
+        "foes": 744,
+        "hero": 4513,
+        "pets": 518
+      },
+      "dps_dealt": {
+        "foes": 0.065,
+        "hero": 0.394,
+        "pets": 0.045
+      },
+      "dps_taken": {
+        "foes": 0.44,
+        "hero": 0.068,
+        "pets": 0.006
+      },
+      "fights": 321,
+      "gold": 1197,
+      "gold_per_min": 6.265,
+      "healed": [
+        {
+          "per_s": 0.002,
+          "src": "pet",
+          "total": 19
+        },
+        {
+          "per_s": 0.027,
+          "src": "rest",
+          "total": 312
+        }
+      ],
+      "hits_hero": 430,
+      "hits_pets": 28,
+      "hps": 0.029,
+      "rows": [
+        {
+          "fires": 9013,
+          "row": -2,
+          "share": 0.805
+        },
+        {
+          "fires": 55,
+          "row": 2,
+          "share": 0.005
+        },
+        {
+          "fires": 47,
+          "row": 3,
+          "share": 0.004
+        },
+        {
+          "fires": 149,
+          "row": 4,
+          "share": 0.013
+        },
+        {
+          "fires": 61,
+          "row": 5,
+          "share": 0.005
+        },
+        {
+          "fires": 1268,
+          "row": 6,
+          "share": 0.113
+        },
+        {
+          "fires": 587,
+          "row": 7,
+          "share": 0.052
+        },
+        {
+          "fires": 19,
+          "row": 8,
+          "share": 0.002
+        }
+      ],
+      "seconds": 11462.8,
+      "supplies": {},
+      "taken": {
+        "foes": 5045,
+        "hero": 781,
+        "pets": 65
+      },
+      "time": {
+        "chores": 332,
+        "fight": 22912,
+        "rest": 12,
+        "travel": 91372
+      },
+      "time_s": {
+        "chores": 33.2,
+        "fight": 2291.2,
+        "rest": 1.2,
+        "travel": 9137.2
+      }
+    }
+  },
+  {
+    "bot": "IDLE",
+    "original_three_cases_exact": true,
+    "source_unchanged": true,
+    "source_sha256": "3c5292c4075c942697fa69b165804a104f084bd36b96f0a78d049846151b31b9",
+    "binary_sha256": "5f06365256d21c9e2ca3dd69499e202427ed75a9478aa12a47dd21ed9866fdc1",
+    "trained": {
+      "level": 5,
+      "marks_spent": 14,
+      "stance": "steady"
+    },
+    "best": 7,
+    "runs": 16,
+    "deaths": [
+      {
+        "cause": "goblin",
+        "n": 1
+      },
+      {
+        "cause": "jackal",
+        "n": 1
+      }
+    ],
+    "gold": {
+      "earned": 1737,
+      "home": 809,
+      "ledger": {
+        "earned": 1737,
+        "net": 1260,
+        "spent": 477,
+        "terms": [
+          {
+            "amount": 1567,
+            "label": "carried"
+          },
+          {
+            "amount": -477,
+            "label": "lost"
+          },
+          {
+            "amount": 170,
+            "label": "recovered"
+          }
+        ]
+      },
+      "lost": 477,
+      "net": 1260,
+      "recovered": 170,
+      "salvage": 281,
+      "spent": 0,
+      "spent_by_workers": 0,
+      "unkept": 307,
+      "wake": 0,
+      "wake_cap": 40,
+      "wake_n": 0
+    },
+    "meters": {
+      "actions": 9099,
+      "credit": [
+        {
+          "credit": "default",
+          "fires": 1619,
+          "share": 0.178
+        },
+        {
+          "credit": "chores",
+          "fires": 7478,
+          "share": 0.822
+        }
+      ],
+      "dealt": {
+        "foes": 803,
+        "hero": 3061,
+        "pets": 59
+      },
+      "dps_dealt": {
+        "foes": 0.087,
+        "hero": 0.333,
+        "pets": 0.006
+      },
+      "dps_taken": {
+        "foes": 0.34,
+        "hero": 0.085,
+        "pets": 0.009
+      },
+      "fights": 252,
+      "gold": 809,
+      "gold_per_min": 5.274,
+      "healed": [
+        {
+          "per_s": 0.001,
+          "src": "pet",
+          "total": 13
+        },
+        {
+          "per_s": 0.03,
+          "src": "rest",
+          "total": 272
+        }
+      ],
+      "hits_hero": 432,
+      "hits_pets": 39,
+      "hps": 0.031,
+      "rows": [
+        {
+          "fires": 7478,
+          "row": -2,
+          "share": 0.822
+        },
+        {
+          "fires": 68,
+          "row": 2,
+          "share": 0.007
+        },
+        {
+          "fires": 88,
+          "row": 3,
+          "share": 0.01
+        },
+        {
+          "fires": 54,
+          "row": 4,
+          "share": 0.006
+        },
+        {
+          "fires": 12,
+          "row": 5,
+          "share": 0.001
+        },
+        {
+          "fires": 369,
+          "row": 6,
+          "share": 0.041
+        },
+        {
+          "fires": 971,
+          "row": 7,
+          "share": 0.107
+        },
+        {
+          "fires": 57,
+          "row": 8,
+          "share": 0.006
+        }
+      ],
+      "seconds": 9204.5,
+      "supplies": {
+        "caustic potion": 1,
+        "fire potion": 1,
+        "poison potion": 1,
+        "speed potion": 1,
+        "strength potion": 11
+      },
+      "taken": {
+        "foes": 3129,
+        "hero": 780,
+        "pets": 80
+      },
+      "time": {
+        "chores": 313,
+        "fight": 14052,
+        "rest": 3,
+        "travel": 77677
+      },
+      "time_s": {
+        "chores": 31.3,
+        "fight": 1405.2,
+        "rest": 0.3,
+        "travel": 7767.7
+      }
+    }
+  }
+]
