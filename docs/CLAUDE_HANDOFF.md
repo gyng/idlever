@@ -1,3 +1,13 @@
+# Owner landscape/style and local-clock steering —2026-10-11
+
+- Owner rejected actual fresh-town screenshot: "The home screen base looks worse now in that sshot". Clarified "Follow original art style direction and make it more detailed but following direction", "Add some landscape too", and "Support time of day synced to wall clock for home screen gfx and lighting". Do not treat accepted test results as visual acceptance.
+- Root stopped exec71663 before source changes: terminal130, log currently0 completed groups, pgrep node tests/ no children. Preserve original d96bad1 freeze/acceptance as unreleased. No fresh raters until new visual revision and complete acceptance.
+- Authorized terrain subagent `/root/home_terrain` resumed in `/tmp/riddle-home-terrain` (terrain/cut129). NewCut132 uses approved original painted material masters, darker moss/cool slate, richer ground sampling; natural rock/moss banks and forest landscape composition. Owner-style authority `docs/ART_DIRECTION.md` (moonlit ink/wash) over older art/ART.md register guidance. It has browser/GPU priority; root must not run browser/heavy tests until release. First settled400×800/DPR1 same-state phone proof before commit. Keep original rejected artifacts/source. No push/deploy.
+- Root owns prepared Cut133: localHour helper uses one local Date with fractionalseconds instead of two minute-only samples, renderer hour computation replaced; existing dawn5–7/day7–17/dusk17–21/night21–5 preserved. New `web/tests/town-clock.mjs` controlled actualwallclock/timezones GL+Canvas+visibilityresume/exactsave/cache checks prepared but NOT RUN while terrain agent owns slot. Main source edits currently uncommitted; terrain agent knows to leave localDay/hour hunks alone so cherry-pick stays clean. Future complete suite158groups. New contract `docs/CUT133_HOME_CLOCK.md`.
+- Menus and Normal speed fix remain scope; no core/simulation change. Push approval still pending after auto-review rejection; do not retry without answer. Fun≥80 goal active, no new scores/raters/deploy.
+
+---
+
 # Current Cut131 checkpoint —2026-10-11
 
 - Goal fun≥80 remains active/unverified; no cards or fresh raters released; no deployment.

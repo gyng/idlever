@@ -1,6 +1,6 @@
 {
   "candidate": "d96bad1",
-  "status": "whole157-group client acceptance running; no raters released",
+  "status": "unreleased; acceptance aborted for owner-requested terrain/art-direction revision",
   "frozen": {
     "dir": "scratchpad/blind-d96bad1-frozen/dist",
     "url": "http://127.0.0.1:5267/",
@@ -70,12 +70,19 @@
     "copyLint": "2354 tagged literals;0 violations",
     "build": "PASS",
     "full": {
-      "status": "RUNNING",
+      "status": "ABORTED130 for owner requested revision; no whole acceptance",
       "execSession": 71663,
       "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
       "expectedGroups": 157,
       "log": "/tmp/riddle-d96bad1-client-full.log",
-      "recordedUtc": "2026-10-11T04:39:47.069425+00:00"
+      "recordedUtc": "2026-10-11T04:39:47.069425+00:00",
+      "exitCode": 130,
+      "stopReason": "Owner judged the fresh cold-phone terrain worse and requested original art direction/detail/landscape/time of day. Stop before application changes, not test failure or observation timeout.",
+      "finishedUtc": "2026-10-11T04:46:40.202480+00:00",
+      "preservedLog": "scratchpad/blind-d96bad1-frozen/acceptance/client-aborted-owner-terrain.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "completedGroups": 0,
+      "children": "pgrep node tests/ returned no processes"
     }
   },
   "predecessor": "72e90fd aborted acceptance retained; Cut25 speed actual product fall-ramp defect fixed, passive browser-frame proof archived",
