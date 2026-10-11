@@ -6,6 +6,7 @@ import { h, replace } from "./dom";
 import { closeEverything } from "./sheet";
 import { applySkin } from "./skin";
 import { openSettings, preferenceRows } from "./settings";
+import { effectsLevel } from "../render/fxpref";
 
 /** Title only on a genuinely new visit; saved towns keep the normal boot/catch-up. */
 export function bootWithMenu(dev: DevOptions | null): void {
@@ -22,6 +23,14 @@ export function bootWithMenu(dev: DevOptions | null): void {
   let pane = "main", busy = false;
   let returnFocus: HTMLElement | null = null;
   const root = document.getElementById("app")!;
+  const syncAtmosphere = (): void => {
+    if (!menu) return;
+    menu.dataset.effects = effectsLevel();
+    menu.dataset.hidden = String(document.hidden);
+  };
+  window.addEventListener("riddle:effects", syncAtmosphere);
+  window.addEventListener("storage", syncAtmosphere);
+  document.addEventListener("visibilitychange", syncAtmosphere);
   const play = (): void => {
     closeEverything();
     menu?.remove(); menu = null;
@@ -96,8 +105,15 @@ export function bootWithMenu(dev: DevOptions | null): void {
           }).finally(() => { busy = false; });
         }, "danger"));
     }
-    replace(menu, h("div", { class: "menu-ornament", "aria-hidden": "true" }), content,
+    const scene = h("div", { class: "menu-scene", "aria-hidden": "true" },
+      h("img", { class: "menu-key-art", src: `${import.meta.env.BASE_URL}art/title.png`, alt: "", draggable: "false", decoding: "async" }),
+      h("div", { class: "menu-moonlight" }), h("div", { class: "menu-mist" }),
+      ...Array.from({ length: 16 }, (_, i) => h("span", { class: "menu-mote",
+        style: `--x:${12 + (i * 37 % 79)}%;--y:${8 + (i * 23 % 73)}%;--drift:${(i % 3 - 1) * 18}px;--duration:${14 + i % 7 * 3}s;--delay:-${i * 2.7}s;--size:${i % 4 === 0 ? 2 : 1}px` })));
+    menu.dataset.pane = next;
+    replace(menu, scene, h("div", { class: "menu-ornament", "aria-hidden": "true" }), content,
       h("div", { class: "menu-footer" }, /* copy:label */ "Alpha"));
+    syncAtmosphere();
     menu.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
   };
   document.addEventListener("keydown", (e) => {
