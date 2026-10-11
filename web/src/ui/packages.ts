@@ -17,7 +17,7 @@ import { rowLabel, verbLabel } from "./tokens";
 import { packageIcon, foeSrc, icon, verbIcon } from "./skin";
 import { itemIcon } from "./items";
 import { sysOpen } from "./systems";
-import { kw, kwHost } from "./tips";
+import { detailHost, kw, kwHost } from "./tips";
 import { roleGlyph } from "./pets";   // Cut 119: the tame drill's glyph
 import { penWaits, type Term } from "./concepts";
 
@@ -365,7 +365,10 @@ export function openPackages(app: App, anchor?: HTMLElement | null, initialKind?
         P.build.effect ? h("small", { class: "build-effect dim" }, ` · ${P.build.effect}`) : "",
         // Cut 119 §5: a pet + build pair formed (`Falconer`), its effect on hover
         P.build.pet_synergy ? h("small", { class: "build-pet-synergy", "data-pet-synergy": P.build.pet_synergy, title: P.build.pet_effect }, ` · ${P.build.pet_synergy}`) : "") : "";
-      replace(body, h("div", { class: "pkg-top" }, h("div", { class: "label row-label" }, kw("package", /* copy:label */ "tactics")), head ? h("b", { class: "pkg-headline num" }, kw("reach", head)) : ""), build, ...secs, compareButton, opts ? h("small", { class: "dim pkg-estimate", title: opts.some((o) => o.n) ? /* copy:tooltip */ "same seeds both sides · a send better or worse" : /* copy:tooltip */ "Small sample · minor differences unclear" }, compareSummary(opts)) : "", deeper, more);
+      const criterion = opts?.some((o) => o.n) ? detailHost(h("small", { class: "dim pkg-criterion" }, /* copy:callout */ "depth then exit"), () => [
+        h("div", { class: "kw-tip-head" }, /* copy:label */ "Compared outcomes"),
+        h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "Deeper first; equal depth: full haul > return > death")]) : "";
+      replace(body, h("div", { class: "pkg-top" }, h("div", { class: "label row-label" }, kw("package", /* copy:label */ "tactics")), head ? h("b", { class: "pkg-headline num" }, kw("reach", head)) : ""), build, ...secs, compareButton, opts ? h("small", { class: "dim pkg-estimate", title: opts.some((o) => o.n) ? /* copy:tooltip */ "same seeds · deeper first, then exit" : /* copy:tooltip */ "Small sample · minor differences unclear" }, compareSummary(opts)) : "", criterion, deeper, more);
     };
     const changed = (): void => { compare = false; reading = null; paint(); };
     const offChange = app.onChange?.(changed), offRules = app.onRules?.(changed);

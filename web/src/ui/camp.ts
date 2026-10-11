@@ -48,7 +48,7 @@ import { openOathBoard, paintOathTab } from "./oaths";
 import { anchorPanel, buildingTile, exposeTown, markOpened, openBank, openHero, renderTown, townBuilt } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages";   // Cut 30 §2: the packages, the pen gated late
 import { openQuest, questShown } from "./quest";   // Cut 30 §5: the quest board
-import { sendMark } from "./works";
+import { openWorks, sendMark } from "./works";
 import { itemIcon, itemName, itemChip } from "./items";   // run-clear: items in their rarity rims
 import { kwHost } from "./tips";
 import { returnPick } from "./return-pick";   // Cut 113 §3: the return's pick waits on the camp
@@ -257,7 +257,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // Cut 121 §1: the ascension under way on the camp — `Ascension 1 · from D14 · foes +5% hp · +2% dmg`, its modifiers under it
   const descentSlot = h("div", { class: "descent-slot", hidden: true });
   const paintDescent = (): void => { const d = descentLine(app.lineage, "camp-descent"); descentSlot.hidden = !d; replace(descentSlot, d ?? ""); };
-  const ladder = controlLadder(app, { orders: () => openOrders() });   // Cut 120 §8: the orders rung opens the orders sheet
+  const ladder = controlLadder(app, { orders: () => openOrders(), workers: () => openWorks(app) });
   const feats = campFeats(app);
   const offer = orderOffer(app);
   const well = h("div", { class: "well camp-well" }, busyStrip, town.el, pick.el, batch.el, ladder.el, feats.el, offer.el, tabs, h("div", { class: "camp-main" }, h("div", { class: "tablets" }, descentSlot, pkgStrip.el, routeTab, editor.el, cageTab, startTab, ordersTab, wallBox, repeatAdd, oathTab), shaft.el, metersSlot(campMeters(app))));

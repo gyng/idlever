@@ -170,6 +170,18 @@ for (const V of VIEWS) {
       check(opened && (await tipOpen()) === null, `${V.name} · a tap on a keyword host runs the button, no tip (panel ${!!opened})`);
       await page.evaluate(() => { for (const s of document.querySelectorAll(".sheet .close-stud, .sheet .sheet-x")) s.click(); }); await sleep(300);
     } else check(false, `${V.name} · a keyword host on a button on the mid-game camp`);
+    // The real rail has a button nested inside a detail host, not a host on the button.
+    await page.evaluate(async () => {
+      const { detailHost } = await import('/src/ui/tips.ts');
+      const host = document.createElement('div'), button = document.createElement('button');
+      host.id = 'nested-detail-control'; host.style.cssText = 'position:fixed;top:100px;left:30px;z-index:9999';
+      button.textContent = 'Open orders'; button.onclick = () => host.dataset.acted = 'yes';
+      host.append(button); document.body.append(detailHost(host, () => [document.createTextNode('Rail explanation')]));
+    });
+    await tapOrClick('#nested-detail-control button');
+    check(await page.locator('#nested-detail-control').getAttribute('data-acted') === 'yes' && (await tipOpen()) === null,
+      `${V.name} · a nested detail-host button keeps its action without a tooltip`);
+    await page.evaluate(() => document.querySelector('#nested-detail-control').remove());
     await closeTip();
     await longPress('.cmd .tile[data-tile="packages"]');
     const lp = { tip: await tipOpen(), panel: await page.evaluate(() => !!document.querySelector(".pkg-panel")) };

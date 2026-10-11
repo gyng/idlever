@@ -34,7 +34,7 @@ import { closeAllSheets } from "./sheet";
 import { pickedLine } from "./report";
 import { shaftOath } from "./oaths";
 import { progressGoal, progressGoalRow } from "./progress-goal";
-import { kw } from "./tips";
+import { detailHost, kw } from "./tips";
 
 const sameRow = (a: Row, b: Row): boolean =>
   a.verb.v === b.verb.v && (a.verb.a ?? "") === (b.verb.a ?? "") && a.conds.length === b.conds.length &&
@@ -176,11 +176,14 @@ export function moveOf(m: VsMove | number | undefined): { pts: number; text: str
  *  (its width the spread's points, its text kept for readers and tools), the move as a signed chip. */
 export const bandW = (pm: number): string => `--pmw:${Math.min(36, Math.max(4, pm * 2))}`;
 /** Cut 22 §3: a notch's or a gem's move as a tiny mark — `▲6`, `▼3` (nothing inside its ±). */
-export function moveMark(m: VsMove | number | undefined, bare = false, worse = false): HTMLElement | "" {
+export function moveMark(m: VsMove | number | undefined, bare = false, worse = false, baseline?: string): HTMLElement | "" {
   // a move inside its ± marks nothing on a notch, a bar or a gem (a column of `≈` is noise); the line's `D8 ≈` says it
   const v = moveOf(m); if (!v || v.dir === "flat") return "";
   // `bare`: the arrow alone (a gem in the narrow shaft; its number is on the line under it)
-  return h("i", { class: `vsm dlt ${tone(v.dir, worse)}` }, bare ? (v.dir === "up" ? "▲" : "▼") : `${v.dir === "up" ? "+" : "−"}${Math.abs(v.pts)}`);
+  const mark = h("i", { class: `vsm dlt ${tone(v.dir, worse)}` }, bare ? (v.dir === "up" ? "▲" : "▼") : `${v.dir === "up" ? "+" : "−"}${Math.abs(v.pts)}`);
+  return baseline ? detailHost(mark, () => [h("div", { class: "kw-tip-head" }, baseline),
+    h("div", { class: "num" }, /* copy:callout */ `${v.text} points`),
+    h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "Change in percentage points")]) : mark;
 }
 /** QA 778fa1b (qaV: `death −90` and `death 9% ▼` drawn red — "a drop in death drawn as good"): the colour says good or bad, the arrow
  *  and the sign say which way — a share where more is worse (death) takes the other colour. */
@@ -418,7 +421,7 @@ export function renderForecast(app: App, opts: { readOnly?: boolean } = {}): { e
         h("span", { class: "d num" }, h("span", { class: "hex", style: `--reach:${d.reach.toFixed(3)}`, "aria-hidden": "true" }), `D${d.depth}`),
         tr ? h("span", { class: "track-cell" }, track, tryHint(app, tr)) : track,
         // a `try` row keeps one line (its hint rides the track; the boss beside the number, as before)
-        h("span", { class: "n num" }, share(d.reach, lowOf(f)), dpm !== undefined ? h("small", { class: "dim pm band", style: bandW(dpm), title: `±${dpm}` }, /* copy:none */ ` ±${dpm}${first}`) : "", moveMark(vsBy.get(d.depth)), ...(tr ? why.filter((w) => w instanceof HTMLElement && (w.classList.contains("boss-here") || w.classList.contains("wall"))) : [])),   // gfx round 18 (raters: "the D8 row crams a pill, deltas and tags"): a try row keeps only whose floor it is
+        h("span", { class: "n num" }, share(d.reach, lowOf(f)), dpm !== undefined ? h("small", { class: "dim pm band", style: bandW(dpm), title: `±${dpm}` }, /* copy:none */ ` ±${dpm}${first}`) : "", moveMark(vsBy.get(d.depth), false, false, app.vsLabel()), ...(tr ? why.filter((w) => w instanceof HTMLElement && (w.classList.contains("boss-here") || w.classList.contains("wall"))) : [])),   // gfx round 18 (raters: "the D8 row crams a pill, deltas and tags"): a try row keeps only whose floor it is
         // QA 778fa1b (qaU: a leading `· goblin archer` under the D1 bar): on a line of its own the first cause drops its separator
         !tr && why.length ? h("span", { class: "why num" }, ...why.map((w) => { if (w instanceof HTMLElement && w.firstChild?.nodeType === 3 && /^ · /.test(w.firstChild.textContent ?? "")) { w.firstChild.textContent = (w.firstChild.textContent ?? "").slice(3); w.prepend(h("i", { class: "sep" }, " · ")); } return w; })) : "",
       ];
