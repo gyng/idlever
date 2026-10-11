@@ -1,3 +1,7 @@
+# Final active phase done / card writing — 2026-10-11
+
+A reports8h20.0667 complete,total70.0661; phases40.0495/5.0833/4.8667/20.0667, prior4h shortfall remains. No pending,same relay/profile/frozen build; card writing excluded. Criterion archived scratchpad/d34605e-blind-a/criterion-before-axes.json before axes, root has not read. A requested missing allowed preset metadata: source verified eval/presets.json only social weight0.0; supplied only that zero-weight axis metadata per existing brief (social human0/weight0 plus quoted probe), other15 positive, no weights/awards/goal/other-rater score. No B raw mutation requested. Await A raw lock/export/cleanup/final before joint hash/audit/scoring/GPU. Goal active/unproven,no gate waiver,no deployment.
+
 # Current remaining horizon — 2026-10-11
 
 A infrastructure-only report:8h return3.15/20 conservative active minutes, no pending/blocker, same relay66516/profile5380/frozen5269. Cold40.05/20m5.08 complete;4h4.87 shortfall preserved and cannot be repaired by later surplus/backdating. B card/export locked/browser-relay closed, files unread by root; incidental final highlight/gripe exposure recorded/unshared. Await A full remaining20 active-minute phase and raw lock/final cleanup, then hash/interval/criteria/anchors/caps/reliability audit. No goal certification or gate waiver. Prepared isolated grass GPU harness not executed, polish not integrated, no deployment.
