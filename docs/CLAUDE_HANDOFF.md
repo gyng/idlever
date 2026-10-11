@@ -1,3 +1,7 @@
+# Character night lantern revision — 2026-10-11
+
+Owner requested monochrome character lanterns. Whole acceptance33239 stopped130 before source changes, zero completed groups. Cut134 implemented/scoped PASS: GL/Canvas400/1440 day/night, exact save/cache,4/4 renderer gates60.6s, types/copy/build. Warm built-town25-walker GPU passes (see contract/evidence). Candidate8246877 held; next new freeze/current158 acceptance before blind release. Screenshots posted inline.
+
 # Current integrated landscape/clock candidate — 2026-10-11
 
 - Persistent goal verified fun≥80 remains active and unproven. No new rating cards or fresh raters released. Do not deploy. User rejected the earlier terrain and requested original art direction/detail, landscape and local wall-clock lighting; those revisions are now implemented and scoped-validated.

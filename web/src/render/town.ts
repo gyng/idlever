@@ -329,6 +329,11 @@ function drawPrimitive(g: CanvasRenderingContext2D, id: string, x: number, y: nu
   else if (/^town_flag/.test(id)) { R("#4a321f", 0, 0, 1, h); R(/_1$/.test(id) ? "#a01a28" : "#c01530", 1, 1, w - 1, h * 0.4); }
   else if (/^env_torch/.test(id)) { R("#4a321f", w * 0.4, h * 0.4, w * 0.2, h * 0.6); R(/_1$/.test(id) ? "#ffcf5a" : "#f08a2a", w * 0.25, 0, w * 0.5, h * 0.45); }
   else if (/^fx_glint/.test(id)) { const c = Math.floor(w / 2); R("#fffbe8", c, 0, 1, h); R("#fffbe8", 0, c, w, 1); R("#ffffff", c - 1, c - 1, 3, 3); }
+  else if (id === "town_mono_lantern") {
+    // Small ink cage and pale wick, shared by GL and Canvas.
+    R("#697078", 1, 0, 3, 1); R("#33383d", 1, 1, 1, 3); R("#33383d", 3, 1, 1, 3);
+    R("#e4e4e4", 2, 1, 1, 3); R("#929292", 1, 4, 3, 1);
+  }
   else if (/^fx_dot_/.test(id)) R(`#${id.slice(7)}`, 0, 0, w, h);
   else if (/^(hero_|walk_)/.test(id)) {
     const body = /rogue/.test(id) ? "#4a3a5a" : /ranger/.test(id) ? "#3f5a32" : /caster/.test(id) ? "#3a4a7a" : "#8a8f98";
@@ -389,7 +394,7 @@ const SMOKE = ["9a958c", "7d7a74", "b4afa4"], EMBER = ["ffb04a", "ff7a2a", "ffd7
 
 // ---- the view ---------------------------------------------------------------------------------------------------------------------
 
-export type TownStats = { fps: number; frames: number; cpuMs: number; cpuP95: number; walkers: number; mode: "gl" | "2d"; glLost: boolean; k: number; night: number; idle: boolean; running: boolean;
+export type TownStats = { fps: number; frames: number; cpuMs: number; cpuP95: number; walkers: number; mode: "gl" | "2d"; glLost: boolean; k: number; night: number; characterLights: number; lights: number; idle: boolean; running: boolean;
   terrainPaints: number; terrainPaintMs: number; buildings: string[]; staked?: string; markers: string[]; view: [number, number, number, number]; chest?: string; workers: string[]; ranks: Record<string, number> };
 export type TownView = {
   readonly el: HTMLElement;
@@ -595,18 +600,28 @@ export function createTownView(host: HTMLElement): TownView {
       F.lights.push({ x: p.x + dx! * scale, y: p.y + dy! * scale, r: r * (0.7 + 0.3 * (k ?? 1)) + night * 12, c: [1.0 * a, 0.64 * a, 0.3 * a] });
     }
   }
+  const characterLights: Light[] = [];
+  function lantern(x: number, y: number, flip: boolean, night: number, fade = 0): void {
+    const strength = Math.max(0, Math.min(1, (night - 0.15) / 0.65)) * (1 - fade);
+    if (strength <= 0 || !inView(x, y, 24, 30)) return;
+    const lx = x + (flip ? -6 : 6), ly = y - 8;
+    sprite("town_mono_lantern", 5, lx, ly + 2, { z: zOf(y) + 0.0004, fade: 1 - strength });
+    const a = strength * 0.85;
+    characterLights.push({ x: lx, y: ly, r: 23, c: [a, a, a] });
+  }
   /** Cut 109: the townsfolk — the smith at the forge's door from the first building, a child about the fire and the well from the
    *  second, the merchant at the stall from the third, the carter up and down the south road from the fourth; a step bob, no walk frames */
   function folk(s: TownState, night: number): void {
     if (!s.home) return;
     const bob = (ph: number, rate = 1.3): number => (Math.floor(t * rate + ph) & 1);
-    if (s.buildings.some((b) => b.id === "blacksmith")) { const p = FOLK_AT.smith; sprite("town_smith", 23, p.x, p.y - bob(0.3, 2.2), { flip: false }); }
-    if (s.stage >= 3) { const p = FOLK_AT.merchant; sprite("town_merchant", 22, p.x, p.y - bob(0.7, 0.9), { flip: true }); }
+    if (s.buildings.some((b) => b.id === "blacksmith")) { const p = FOLK_AT.smith; sprite("town_smith", 23, p.x, p.y - bob(0.3, 2.2), { flip: false }); lantern(p.x, p.y - bob(0.3, 2.2), false, night); }
+    if (s.stage >= 3) { const p = FOLK_AT.merchant; sprite("town_merchant", 22, p.x, p.y - bob(0.7, 0.9), { flip: true }); lantern(p.x, p.y - bob(0.7, 0.9), true, night); }
     for (const w of townsfolk) {
       if (w.minStage > s.stage) continue;
       const at = walkerAt(w, t); if (!at) continue;
       const step = at.moving && (Math.floor(t * 6 + w.lag) & 1) === 1;
       sprite(w.sprite, w.h, at.x, at.y - (step ? 1 : 0), { flip: at.dx < -0.01 });
+      lantern(at.x, at.y - (step ? 1 : 0), at.dx < -0.01, night);
       if (w.carry) sprite(w.carry, w.carryH ?? 14, at.x + (at.dx < -0.01 ? 13 : -13), at.y, { flip: at.dx < -0.01, z: zOf(at.y) - 0.0002 });
     }
     // fireflies from dusk: a dozen motes drifting over the grass, each blinking on its own beat
@@ -627,7 +642,7 @@ export function createTownView(host: HTMLElement): TownView {
   }
   function frame(): void {
     const s = state!;
-    F.n = 0; F.lights.length = 0;
+    F.n = 0; F.lights.length = 0; characterLights.length = 0;
     const hour = hourOverride ?? localHour();
     F.night = nightOf(hour); F.amb = ambientOf(F.night);
     const night = F.night;
@@ -713,8 +728,7 @@ export function createTownView(host: HTMLElement): TownView {
       else sprite(workerIds(w.id, frameN), 24, x, y - (step ? 1 : 0), { flip, dim: w.paused ? 0.7 : 1 });
       // week 2: his rank, quiet — a gilt pip over his head per rank past the first (II ·, III ··)
       if (!w.lit && w.rank > 1) for (let r = 0; r < w.rank - 1; r++) sprite("fx_dot_d8b45a", 2, x - (w.rank - 2) * 1.5 + r * 3, y - 26 - (step ? 1 : 0), { z: zOf(y) + 0.0003 });
-      // at night the walkers' small MIST light: the dark coats would sink into the night grass
-      if (night > 0.3 && F.lights.length < MAX_LIGHTS) F.lights.push({ x, y: y - 20, r: 18, c: [0.64 * 0.35 * night, 0.74 * 0.35 * night, 0.84 * 0.35 * night] });
+      if (!w.lit) lantern(x, y - (step ? 1 : 0), flip, night);
     }
     // the pen: penned pets lie by the kennel
     s.penned.forEach((k, j) => { const p = PLOTS.kennel; sprite([k, "town_dog"], 10, p.x - 20 + j * 12, p.y + 8, { flip: j % 2 === 1 }); });
@@ -733,6 +747,7 @@ export function createTownView(host: HTMLElement): TownView {
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
       const ids = step ? w.walk : w.sprite;
       sprite(ids, w.h, x, y - (step ? 1 : 0), { flip, fade });
+      if (!w.pet) lantern(x, y - (step ? 1 : 0), flip, night, fade);
       if (w.carry) {
         const back = (flip ? -1 : 1) * (w.carry === "town_chest_glow" ? 6 : 7);
         sprite(w.carry, w.carryH ?? 6, x + back, y - 8 + (w.carryH ?? 6) - (step ? 1 : 0), { z: zOf(y) + 0.0002, flip, fade });
@@ -748,6 +763,8 @@ export function createTownView(host: HTMLElement): TownView {
       sprite(`fx_dot_${p.c}`, p.s, p.x, p.y, { z: p.kind === "smoke" ? 2.5 : 2.6, fade: p.kind === "smoke" ? Math.max(0, life * 1.3 - 0.3) : Math.max(0, life * 1.6 - 0.6) });
       if (p.kind === "spark" && night > 0.5 && F.lights.length < MAX_LIGHTS) F.lights.push({ x: p.x, y: p.y, r: 6, c: [1, 0.6, 0.2] });
     }
+    // Prioritize people over decorative motes within the existing shader budget.
+    F.lights.unshift(...characterLights); F.lights.length = Math.min(F.lights.length, MAX_LIGHTS);
   }
   let emitT = 0, sparkT = 0, chimT = 0;
   function tickParts(night: number): void {
@@ -908,7 +925,7 @@ export function createTownView(host: HTMLElement): TownView {
     stats() {
       const s = state;
       const sorted = [...cpu].sort((a, b) => a - b);
-      return { fps: fpsWin.length, frames, cpuMs: cpu[cpu.length - 1] ?? 0, cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0, walkers: F.live, mode: gl && !glLost ? "gl" : "2d", glLost, k: F.k, night: F.night, idle: performance.now() - lastInput > IDLE_MS, running: !!raf,
+      return { fps: fpsWin.length, frames, cpuMs: cpu[cpu.length - 1] ?? 0, cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0, walkers: F.live, mode: gl && !glLost ? "gl" : "2d", glLost, k: F.k, night: F.night, characterLights: characterLights.length, lights: F.lights.length, idle: performance.now() - lastInput > IDLE_MS, running: !!raf,
         terrainPaints, terrainPaintMs, buildings: s?.buildings.map((b) => b.id) ?? [], staked: s?.staked?.id, markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [], view: [F.x0, F.y0, F.w, F.h],
         chest: s?.chest?.state, workers: s?.workers.map((w) => `${w.id}${w.lit ? "(lit)" : w.paused ? "(off)" : ""}`) ?? [],
         ranks: Object.fromEntries((s?.workers ?? []).filter((w) => !w.lit && w.rank > 1).map((w) => [w.id, w.rank])) };

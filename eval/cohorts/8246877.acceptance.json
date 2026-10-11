@@ -7,7 +7,7 @@
     "4663abf",
     "8246877"
   ],
-  "status": "complete158-group client acceptance running; no fresh raters released",
+  "status": "held for owner-requested character night lanterns; no fresh raters released",
   "includes": "First-visit menus/direct saved loads, corrected Normal-speed selection/resumption, original-style painted landscape, continuous local wall-clock lighting.",
   "frozen": {
     "dir": "scratchpad/blind-8246877-frozen/dist",
@@ -302,12 +302,15 @@
     "build": "PASS",
     "basePath": "terrain agent /riddle/ build verified emitted asset URLs",
     "full": {
-      "status": "RUNNING",
+      "status": "ABORTED",
       "execSession": 33239,
       "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
       "expectedGroups": 158,
       "log": "/tmp/riddle-8246877-client-full.log",
-      "recordedUtc": "2026-10-11T05:00:40.390294+00:00"
+      "recordedUtc": "2026-10-11T05:00:40.390294+00:00",
+      "exitCode": 130,
+      "reason": "Owner requested character night lanterns; stopped before source edits.",
+      "completedGroups": 0
     }
   },
   "artifacts": {

@@ -1,0 +1,67 @@
+{
+  "contract": "docs/CUT134_TOWN_CHARACTER_LIGHTS.md",
+  "scoped": "4/4 PASS60.6s",
+  "gpu": {
+    "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+    "fps": 59.45481863060743,
+    "stats": {
+      "fps": 60,
+      "frames": 616,
+      "cpuMs": 0.7000000476837158,
+      "cpuP95": 0.9000000953674316,
+      "walkers": 26,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1.375,
+      "night": 1,
+      "characterLights": 31,
+      "lights": 32,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 124.70000004768372,
+      "buildings": [
+        "blacksmith",
+        "bank",
+        "storehouse",
+        "kennel"
+      ],
+      "markers": [
+        "rune@blacksmith",
+        "rune@bank",
+        "rune@storehouse"
+      ],
+      "view": [
+        303,
+        107,
+        291,
+        364
+      ],
+      "workers": [
+        "quartermaster"
+      ],
+      "ranks": {}
+    }
+  },
+  "limits": [
+    "Diagnostic built-town screenshots, not earned gameplay.",
+    "Earlier small-camera count assertion failed; original proof preserved.",
+    "Whole158 acceptance pending; no new blind cards."
+  ],
+  "artifacts": {
+    "scratchpad/qa-cut134-lanterns/gpu-small-camera.json": "438950b52303b42f4e119cf807e63a73547cf9d42862fdbd2db9c1a59f4a41aa",
+    "scratchpad/qa-cut134-lanterns/gl-400-night.png": "cc976b7c35fd486120dfdf3789ea23ad34a5434fe43ecd630b3b8b1876231edc",
+    "scratchpad/qa-cut134-lanterns/gpu.mjs": "a63eb7a3a85755acfd62c334bb15513d7d1f3dfa91fb1c534fa5eab41f45f479",
+    "scratchpad/qa-cut134-lanterns/gpu.json": "97e7ed555827a300e7d59e5061236256e212d8e0791996bb0cdb70de115813ba",
+    "scratchpad/qa-cut134-lanterns/canvas-1440-day.png": "68e0c9e5598090a009f972dda291cc479d44fb8c0490dbb78185ccc0c6a02d03",
+    "scratchpad/qa-cut134-lanterns/canvas-400-day.png": "17a241c6affe260b94a190c0bace6b4a890eabc6e962132622ae89a32e8e9353",
+    "scratchpad/qa-cut134-lanterns/gl-1440-day.png": "a937d8736b00b0a10f1df645875a497959b2305bdaff7fddc8f6ebdea88bacf3",
+    "scratchpad/qa-cut134-lanterns/check.mjs": "8697f1bf64bd85cfeaec2b3386a33b90b2a14b66813d191bc61c8af732a7745d",
+    "scratchpad/qa-cut134-lanterns/check.json": "06b83c5154c99ff0b0750b89832798c1190a8ba15167b88e24c7282a3738eea2",
+    "scratchpad/qa-cut134-lanterns/canvas-400-night.png": "094ebda4b6c6383bcb2de4feff5c35ef8c41c7f5576b8680c33b0108afaffe8a",
+    "scratchpad/qa-cut134-lanterns/gl-400-day.png": "720139e7b091fe5e1799ff88fd03e131f83947b332cd2c03598b5dbeae0d8938",
+    "scratchpad/qa-cut134-lanterns/gl-1440-night.png": "b31c16063f09270f052ab3fe3d879f3a6ece7e817c2bf1f0a27e21fafa758628",
+    "scratchpad/qa-cut134-lanterns/gpu-small-camera.log": "0fa4085c56a945b3e16f4381b57b3979cd9793e2000122815d579a1d677756cf",
+    "scratchpad/qa-cut134-lanterns/canvas-1440-night.png": "c23f9cca8378f5deccb8bc0e17ac0a10c24de9a10deab964d66be958ec3fd8be"
+  }
+}
