@@ -674,6 +674,43 @@ fn blow_worth(w: &crate::item::Item) -> i64 {
     (lo + hi) as i64 * hit * (10 + w.def().speed) as i64
 }
 
+/// Existing armourer order, shared by real sends and prospective pack projection.
+/// Selection is pure and respects manually selected ids; no other worker acts here.
+pub(crate) fn armourer_plan(game: &Game) -> Vec<u32> {
+    let l = &game.lineage;
+    let (n, died) = l.tree.sends;
+    if l.pkg.literal || l.variant_is("bones_only") || !on(l, "armourer") || l.vault.is_empty()
+        || !(4 * died < n.max(1) || bonus_rank(l, "armourer") > 0) {
+        return Vec::new();
+    }
+    let mut add = Vec::new();
+    let mut kit = crate::hero::Hero::new(l.class, crate::geom::Pos::new(0, 0));
+    crate::kit::equip(l, &mut kit);
+    for cat in [crate::defs::Cat::Weapon, crate::defs::Cat::Armour] {
+        if let Some(it) = l.vault.iter().filter(|v| v.cat() == cat).max_by_key(|v| (v.value(), std::cmp::Reverse(v.id))) {
+            let better = match cat {
+                crate::defs::Cat::Weapon => kit.weapon.as_ref().is_none_or(|k| blow_worth(it) > blow_worth(k)),
+                _ => it.def().speed >= 0 && kit.armour.as_ref().is_none_or(|k| it.def_bonus() > k.def_bonus()),
+            };
+            if better && !game.loadout.contains(&it.id) { add.push(it.id); }
+        }
+    }
+    add
+}
+
+/// Apply only the existing pack/insurance order. Forecasts use a clone and record no act.
+pub(crate) fn pack_armourer(game: &mut Game, record_act: bool) {
+    let add = armourer_plan(game);
+    if add.is_empty() { return; }
+    if bonus_rank(&game.lineage, "armourer") > 0 {
+        for id in &add {
+            if !game.lineage.insured.contains(id) { game.lineage.insured.push(*id); }
+        }
+    }
+    if record_act { act(game, "armourer", add.len() as u32); }
+    game.loadout.extend(add);
+}
+
 /// The workers act continuously (the owner, 2026-10-02): at each hour of an absence, between the sends, as at
 /// a send — the armourer's pack is a send's alone.
 pub fn at_hour(game: &mut Game) {
@@ -822,41 +859,7 @@ fn workers_act(game: &mut Game, send: bool) {
             act(game, "guide", 1);
         }
     }
-    // the armourer: the vault's best weapon and armour go with each send — each only when it beats the forged kit
-    // the hero would wear (a weaker one rides in the pack and takes a find's slot)
-    // (and only while the sends come home: at a wall, where half of them die, the find stays safe in the storehouse —
-    // a death's insurance is paid again at every send, and an uninsured find is lost to the bones)
-    // (week 2: from rank II the armourer insures what it brings itself — it brings it at a wall too)
-    let (n, died) = game.lineage.tree.sends;
-    if send && on(&game.lineage, "armourer") && !game.lineage.vault.is_empty() && (4 * died < n.max(1) || bonus_rank(&game.lineage, "armourer") > 0) {
-        let mut add = Vec::new();
-        let mut kit = crate::hero::Hero::new(game.lineage.class, crate::geom::Pos::new(0, 0));
-        crate::kit::equip(&game.lineage, &mut kit);
-        for cat in [crate::defs::Cat::Weapon, crate::defs::Cat::Armour] {
-            if let Some(it) = game.lineage.vault.iter().filter(|v| v.cat() == cat).max_by_key(|v| (v.value(), std::cmp::Reverse(v.id))) {
-                // (truly better: a blow's worth with its aim and its pace, or more armour at no drag — the
-                // pack's own choice weighs the blow alone, and a found arm over a forged one lost the aim)
-                let better = match cat {
-                    crate::defs::Cat::Weapon => kit.weapon.as_ref().is_none_or(|k| blow_worth(it) > blow_worth(k)),
-                    _ => it.def().speed >= 0 && kit.armour.as_ref().is_none_or(|k| it.def_bonus() > k.def_bonus()),
-                };
-                if better && !game.loadout.contains(&it.id) {
-                    add.push(it.id);
-                }
-            }
-        }
-        if !add.is_empty() && !game.lineage.variant_is("bones_only") {
-            if bonus_rank(&game.lineage, "armourer") > 0 {
-                for id in &add {
-                    if !game.lineage.insured.contains(id) {
-                        game.lineage.insured.push(*id);
-                    }
-                }
-            }
-            act(game, "armourer", add.len() as u32);
-            game.loadout.extend(add);
-        }
-    }
+    if send { pack_armourer(game, true); }
 }
 
 // ---------------------------------------------------------------- Cut 120: the orders that fill the automation

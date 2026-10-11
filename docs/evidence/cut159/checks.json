@@ -1,0 +1,67 @@
+{
+  "scope": "Forecast equipment correction, not full acceptance or a fun-score certificate",
+  "earned_send_comparisons": [
+    {
+      "case": "AWAY-s1-d2-c0-72h-camp-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    },
+    {
+      "case": "AWAY-s1-d2-c0-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    },
+    {
+      "case": "AWAY-s2-d1-c0-72h-camp-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    },
+    {
+      "case": "AWAY-s2-d1-c0-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    },
+    {
+      "case": "AWAY-s2-d2-c0-72h-camp-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    },
+    {
+      "case": "AWAY-s2-d2-c0-send-audit.json",
+      "equipment_equal": true,
+      "actual_complete_save_equal_baseline": true,
+      "source_unchanged": true
+    }
+  ],
+  "unit_fixture_cases": 12,
+  "cache_prefix_thread_checks_passed": true,
+  "quick_exit": 0,
+  "rust_passed": 804,
+  "rust_ignored": 6,
+  "tooling_passed": 14,
+  "clippy_exit": 0,
+  "wasm_exit": 0,
+  "wasm_bytes": 6369495,
+  "build_exit": 0,
+  "focused_client_gates": 5,
+  "client_exit": 0,
+  "native_wasm_equal_replies": 9,
+  "parity_exit": 0,
+  "source_unchanged_public_camp_queries": 2,
+  "target2_exit": 1,
+  "target2_runtime_key": "src5d542b66fb2d3f3d",
+  "target2_cached_entries": 5,
+  "target2_away_mean": [
+    27.96,
+    28.14
+  ],
+  "experimental_harness_adopted": false,
+  "full_acceptance": false,
+  "verified_fun_score": false,
+  "deployed": false
+}

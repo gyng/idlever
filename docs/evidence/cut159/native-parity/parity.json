@@ -1,0 +1,83 @@
+{
+  "binarySha256": "69ba79b65730f82ea6f9612b427d1a370570b33a09b0523a50b353c4b61d8cc3",
+  "wasmSha256": "ee975f8a17faf488ae14e900ccac800d3649e6886cb1604baff195f89d1be231",
+  "bridgeSha256": "bcb686e09eb4dcedec4ed067222bc2a0cdac6683718f6295d57a5014ca5010f5",
+  "harnessSha256": "1eadf3e3f79ff55a3db73730c9711f50d4cd6220062f6ca0ec582f8db5630b56",
+  "browserVersion": "151.0.7922.34",
+  "threads": 8,
+  "scope": "Each round loads fresh games; calls run in the recorded order. Native timing includes ordered process IPC; WASM timing covers the direct bridge call. No whole-app speed claim.",
+  "rows": [
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "load",
+      "nativeSeconds": 0.11502717500000018,
+      "wasmSeconds": 0.20789999985694885,
+      "replySha256": "7a9230735939f2eaed0f5eb59cfd222df17f2435f9dcb2020a8714bf0341f513"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "lineage",
+      "nativeSeconds": 0.002939061000000038,
+      "wasmSeconds": 0.0017999999523162843,
+      "replySha256": "7a9230735939f2eaed0f5eb59cfd222df17f2435f9dcb2020a8714bf0341f513"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "vocabulary",
+      "nativeSeconds": 0.0008831449999997858,
+      "wasmSeconds": 0.001,
+      "replySha256": "bc2333cde9f0deddc3b6abf7896851acf66ed52738dc536f6b7512b7098e361d"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "forecast",
+      "nativeSeconds": 0.35316277100000026,
+      "wasmSeconds": 2.176,
+      "replySha256": "5a015806ab0ed8502cf44325acc1ffe22a0287c2280c259451c1ff3227aa8147"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "packageOptions",
+      "nativeSeconds": 0.929765042,
+      "wasmSeconds": 6.569599999904632,
+      "replySha256": "612759676f5311cbb027474c034822c6ceca227fa5b278e70636f1f8eed8fafc"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "wallEdit",
+      "nativeSeconds": 0.000340621999999712,
+      "wasmSeconds": 0.00019999980926513672,
+      "replySha256": "f072cbec3bf8841871d4284230c5e983dc211a56837aed862487148f947d1a1f"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "save",
+      "nativeSeconds": 0.04353081799999927,
+      "wasmSeconds": 0.023,
+      "replySha256": "08fa1883cd76817bfb3ef4cebd262e1f983a3d45a06b436b9d736f46aa298a8b"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "runOfflineQuick",
+      "nativeSeconds": 0.7599625150000011,
+      "wasmSeconds": 2.6499000000953674,
+      "replySha256": "ab7b226575b8fba89d5713c13dd2888516822c5ea00788044757f66e3ba6bf5e"
+    },
+    {
+      "save": "/home/g/p/riddle/scratchpad/cut159/AWAY-s2-d2-c0-72h-camp.json",
+      "inputSha256": "30a58dd41c18244566de0cab55fe853343e8096b4f463f101666abc544be4342",
+      "method": "save",
+      "nativeSeconds": 0.05106618700000035,
+      "wasmSeconds": 0.020200000047683717,
+      "replySha256": "618b54701b7b0981daf6ad2c29f116b0d69ef8f081c2af89d02c053222929666"
+    }
+  ]
+}

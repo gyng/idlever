@@ -1,0 +1,422 @@
+[
+  {
+    "width": 400,
+    "kind": "wasm",
+    "best": 24,
+    "forecast": {
+      "depths": [
+        {
+          "depth": 1,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 2,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 3,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 4,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 5,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 6,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 7,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 8,
+          "reach": 1,
+          "pm": 0,
+          "boss": "goblin_warlord",
+          "affix": "brood"
+        },
+        {
+          "depth": 9,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 10,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 11,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 12,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 13,
+          "reach": 1,
+          "pm": 0,
+          "boss": "bloat_mother",
+          "affix": "brood",
+          "clear": 0.75
+        },
+        {
+          "depth": 14,
+          "reach": 0.75,
+          "pm": 0.3000624934909393,
+          "clear": 0.8333333333333334
+        },
+        {
+          "depth": 15,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 16,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 17,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 18,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "boss": "lich",
+          "affix": "swift",
+          "clear": 0.4
+        },
+        {
+          "depth": 19,
+          "reach": 0.25,
+          "pm": 0.3000624934909393,
+          "try": {
+            "boss": "lich",
+            "row": {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "summoned"
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "tag:summoned"
+              }
+            },
+            "text": "attack summoned",
+            "met": 18,
+            "owned": true
+          },
+          "clear": 0.5
+        },
+        {
+          "depth": 20,
+          "reach": 0.125,
+          "pm": 0.2291765149399039,
+          "clear": 1
+        },
+        {
+          "depth": 21,
+          "reach": 0.125,
+          "pm": 0.2291765149399039,
+          "clear": 0
+        },
+        {
+          "depth": 22,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 23,
+          "reach": 0,
+          "pm": 0,
+          "boss": "foundry_master",
+          "affix": "enraged"
+        },
+        {
+          "depth": 24,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 25,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 26,
+          "reach": 0,
+          "pm": 0,
+          "bounty": true
+        }
+      ],
+      "causes": [],
+      "known_to": 25,
+      "ends": {
+        "bank": 0.625,
+        "return": 0.375,
+        "death": 0,
+        "stall": 0,
+        "gold": 331.25,
+        "pm": 0,
+        "passage": 119,
+        "death_lo": 0,
+        "death_hi": 0.3244156195108769,
+        "gold_lo": 264.4252194167463,
+        "gold_hi": 398.0747805832537
+      },
+      "refined": false,
+      "start": 9,
+      "sims": 8,
+      "low": 13,
+      "fold_to": 12,
+      "hunger": {
+        "lost": 10.13,
+        "unfed": 10.13,
+        "fed": 2.88,
+        "kept": 7.25,
+        "packed": false,
+        "price": 700
+      }
+    },
+    "sourceUnchanged": true,
+    "errors": [],
+    "text": "ALPHA\nbuild 2026-10-05\nBloodline 1\n28th heir\nlight hands\nGOLD\n$43504\nLEGACY\n655\n◆\n49\n★\n5\nbest D24\ndungeon\nhero\nsupplies\nforge\n$1800\nstored gear\ncompanions\nsavings\nnext worker\n$600\napprentice · $600\n+23\nLichbane\npick\n◇◇◇◇◇\ntake 2\nseek Master\n×3\n✧\na pet\n· +2\nTRIAL Warlord D8 · +10 Legacy\nno corridor fighting\nanswers · steady, guarded, bold, hunter, boss focus, kite archers, thief guard, gas step, pack break, cadence, reflect read, noise discipline, deep march\nopt in\nLegacy auto-spend\nbalanced\nnot now\nSAVED SETUPS\nfighter\nrename\nset 2\nset 3\nroute\nD5\nburrows\n·\nD9\nfens\n·\nD14\ncrypt\nPRIORITY\n1\nfoe: boss · hp > 45% → attack boss\n2\nhp < 45% → drink heal\n3\nhp < 25% · depth ≥ 25 → bank\n4\nhp < 25% → return\n5\nhp < 100% → rest\n6\nlacks heal · hp < 44% → bank⊘ locked · locked\n7\nfoe: telegraph · hp < 60% → drink heal\n8\nfoes ≥ 3 · hp < 60% → to corridor\n9\nfoe: reflects melee → tactic reflect read\n10\nin: deep · hp < 90% → tactic noise discipline\n11\non kill · hp > 50% → pick up\n12\nfoes ≥ 1 → tame open\n13\nfoes ≥ 1 → attack nearest\nrun setup keep weapon · loot → weapon\nFLOOR CHANCE\nD9–18\n100–63%\nD19\nfoundry\n→ D23\n25%±25\nD20\n13%±13\nD21\n13%±13\nD22\n<13%\nD23\n· master\n<13%\nD24\ndeep\n→ D28\n<13%\n✝ Alden's pack · $584\nD25\n<13%\nD26\nbounty 2× gold\n<13%\nD27+ ?\nfull haul\n63%\nreturn\n38%\ndeath\n<32%\n$150–280/run\n+$119 passage\nGoal\nD26\n2× gold · item\nBryn Ash\nBloodline 1 · Fighter\nGuarded reader\nL9 · XP 3633/8100\nDeparts 6m\nDetails\nHeroes\ndeparts 6m\nforge\n3\nstored gear\ncompanions\nsavings\ntactics\nedit\nsupplies\n2/5\nRestock on · held ≤$52\nmore\nSEND\nauto"
+  },
+  {
+    "width": 1440,
+    "kind": "wasm",
+    "best": 24,
+    "forecast": {
+      "depths": [
+        {
+          "depth": 1,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 2,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 3,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 4,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 5,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 6,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 7,
+          "reach": 1,
+          "pm": 0
+        },
+        {
+          "depth": 8,
+          "reach": 1,
+          "pm": 0,
+          "boss": "goblin_warlord",
+          "affix": "brood"
+        },
+        {
+          "depth": 9,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 10,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 11,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 12,
+          "reach": 1,
+          "pm": 0,
+          "clear": 1
+        },
+        {
+          "depth": 13,
+          "reach": 1,
+          "pm": 0,
+          "boss": "bloat_mother",
+          "affix": "brood",
+          "clear": 0.75
+        },
+        {
+          "depth": 14,
+          "reach": 0.75,
+          "pm": 0.3000624934909393,
+          "clear": 0.8333333333333334
+        },
+        {
+          "depth": 15,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 16,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 17,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "clear": 1
+        },
+        {
+          "depth": 18,
+          "reach": 0.625,
+          "pm": 0.33548006647191425,
+          "boss": "lich",
+          "affix": "swift",
+          "clear": 0.4
+        },
+        {
+          "depth": 19,
+          "reach": 0.25,
+          "pm": 0.3000624934909393,
+          "try": {
+            "boss": "lich",
+            "row": {
+              "conds": [
+                {
+                  "k": "foe_tag",
+                  "t": "summoned"
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "tag:summoned"
+              }
+            },
+            "text": "attack summoned",
+            "met": 18,
+            "owned": true
+          },
+          "clear": 0.5
+        },
+        {
+          "depth": 20,
+          "reach": 0.125,
+          "pm": 0.2291765149399039,
+          "clear": 1
+        },
+        {
+          "depth": 21,
+          "reach": 0.125,
+          "pm": 0.2291765149399039,
+          "clear": 0
+        },
+        {
+          "depth": 22,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 23,
+          "reach": 0,
+          "pm": 0,
+          "boss": "foundry_master",
+          "affix": "enraged"
+        },
+        {
+          "depth": 24,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 25,
+          "reach": 0,
+          "pm": 0
+        },
+        {
+          "depth": 26,
+          "reach": 0,
+          "pm": 0,
+          "bounty": true
+        }
+      ],
+      "causes": [],
+      "known_to": 25,
+      "ends": {
+        "bank": 0.625,
+        "return": 0.375,
+        "death": 0,
+        "stall": 0,
+        "gold": 331.25,
+        "pm": 0,
+        "passage": 119,
+        "death_lo": 0,
+        "death_hi": 0.3244156195108769,
+        "gold_lo": 264.4252194167463,
+        "gold_hi": 398.0747805832537
+      },
+      "refined": false,
+      "start": 9,
+      "sims": 8,
+      "low": 13,
+      "fold_to": 12,
+      "hunger": {
+        "lost": 10.13,
+        "unfed": 10.13,
+        "fed": 2.88,
+        "kept": 7.25,
+        "packed": false,
+        "price": 700
+      }
+    },
+    "sourceUnchanged": true,
+    "errors": [],
+    "text": "ALPHA\nbuild 2026-10-05\nBloodline 1\n28th heir\nlight hands\nGOLD\n$43504\nLEGACY\n655\n◆\n49\n★\n5\nbest D24\ndungeon\nhero\nsupplies\nforge\n$1800\nstored gear\ncompanions\nsavings\nnext worker\n$600\napprentice · $600\n+23\nLichbane\npick\n◇◇◇◇◇\ntake 2\nseek Master\n×3\n✧\na pet\n· +2\nTRIAL Warlord D8 · +10 Legacy\nno corridor fighting\nanswers · steady, guarded, bold, hunter, boss focus, kite archers, thief guard, gas step, pack break, cadence, reflect read, noise discipline, deep march\nopt in\nLegacy auto-spend\nbalanced\nnot now\nDepth\nStarts at\nD9\nRecord\nD24\nNext encounter\nD13\nmother\nFloor chance 100% · estimate\nGoal\nD26\n2× gold · item\nFull forecast ›\nRun details\n21.1m\nHeroes\nRules\nBryn Ash\nBloodline 1 · Fighter\nGuarded reader\nL9 · XP 3633/8100\nDeparts 6m\nUpgrade ready\nDetails\nNew bloodline\n$250\nChronicle\ndeparts 6m\nforge\n3\nstored gear\ncompanions\nsavings\ntactics\nedit\nsupplies\n2/5\nRestock on · held ≤$52\nmore\nSEND\nauto"
+  }
+]
