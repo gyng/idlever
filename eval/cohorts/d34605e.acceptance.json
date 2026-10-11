@@ -8,7 +8,7 @@
     "8246877",
     "d34605e"
   ],
-  "status": "complete158-group acceptance running; no fresh raters released",
+  "status": "original full FAILED157/158; grounding/menu scoped correction passes; complete rerun pending",
   "includes": "First-visit menus/direct saved loads, corrected Normal-speed selection/resumption, original-style painted landscape, continuous local wall-clock lighting. Monochrome personal lanterns for town humans at dusk/night.",
   "frozen": {
     "dir": "scratchpad/blind-d34605e-frozen/dist",
@@ -303,12 +303,25 @@
     "build": "PASS",
     "basePath": "terrain agent /riddle/ build verified emitted asset URLs",
     "full": {
-      "status": "RUNNING",
+      "status": "FAIL",
       "execSession": 1808,
       "command": "TEST_JOBS=3 TEST_HEAVY_WIDTH=1 node tests/run.mjs",
       "expectedGroups": 158,
       "log": "/tmp/riddle-d34605e-client-full.log",
-      "recordedUtc": "2026-10-11T05:11:08.914175+00:00"
+      "recordedUtc": "2026-10-11T05:11:08.914175+00:00",
+      "exitCode": 1,
+      "passedGroups": 157,
+      "failedGroups": [
+        "hero-grounding"
+      ],
+      "seconds": 1432.7
+    },
+    "groundingSetupCorrection": {
+      "contract": "docs/CUT135_GROUNDING_MENU_SETUP.md",
+      "unchangedReproduction": "FAIL0/1 in31.3s at boot wait",
+      "correction": "Public New game action before boot; original overlap/Z/count/error assertions unchanged.",
+      "scoped": "PASS2/2, grounding2widths and menu81checks",
+      "productChange": "none"
     }
   },
   "artifacts": {
@@ -320,7 +333,11 @@
     "scratchpad/blind-d34605e-frozen/acceptance/served-recheck.json": "55510c5f268697f328c76bc67430e6064bfed4e2f43c4f2ae6be20381659d525",
     "scratchpad/blind-d34605e-frozen/acceptance/scoped.log": "f466985249a03fff577f6515fb6ade18cdc5eb55905ccca2c857b4308ad5995a",
     "scratchpad/blind-d34605e-frozen/acceptance/menu-400.png": "817c9acd3012c9eccd6a9f31c13d56119e54e0f27b88cdf91707a20778e0245e",
-    "scratchpad/blind-d34605e-frozen/acceptance/camp-400.png": "62417906972f7089d38ebe394e1ce334452b1f2d658ef85e851b7f1c1465e45a"
+    "scratchpad/blind-d34605e-frozen/acceptance/camp-400.png": "62417906972f7089d38ebe394e1ce334452b1f2d658ef85e851b7f1c1465e45a",
+    "scratchpad/blind-d34605e-frozen/acceptance/client-full-original.log": "ff3811f24b49fc88be655c14eadfab1bb253ed7b10b131a96aacc1d61a21380e",
+    "scratchpad/blind-d34605e-frozen/acceptance/startup.log": "29d3662db4a6684637766178b86e112081bf309ae4f15a97ab88f745176640e9",
+    "scratchpad/blind-d34605e-frozen/acceptance/grounding-fixed.log": "5ecac85ebe479010285054c0159a4f7a91f673555b1642837867f3c80d05472d",
+    "scratchpad/blind-d34605e-frozen/acceptance/grounding-original.log": "9f8ec37f33edb893776df4e5c173f3db487cd7618cb1a4f59aa5023d9146b0d7"
   },
   "limits": [
     "No new whole-client pass until terminal full-suite evidence.",

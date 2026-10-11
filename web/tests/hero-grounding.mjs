@@ -13,6 +13,8 @@ try {
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.goto(url);
+    // First visits now wait at the title; enter through the public control.
+    await page.getByRole("button", { name: "New game", exact: true }).click();
     await page.waitForFunction(() => window.__riddle?.booted);
     const rects = await page.evaluate(async () => {
       document.body.innerHTML = '<canvas style="width:100vw;height:100vh"></canvas>';
