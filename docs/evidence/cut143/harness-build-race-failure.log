@@ -1,0 +1,5 @@
+FAIL control-visibility 34.8s (34.5s)  Node.js v26.5.0
+       - waiting for locator('button').filter({ hasText: /^build|Build/ }).first()
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/control-visibility.mjs:27:96 {
+FAIL: 0/1 client gates in 34.8s

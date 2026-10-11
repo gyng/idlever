@@ -1,0 +1,8 @@
+FAIL control-visibility 1.8s (1.5s)  Node.js v26.5.0
+     const check=(ok,message)=>{if(!ok)throw Error(message);};
+     Error: real WASM required
+         at check (file:///home/g/p/riddle/web/tests/control-visibility.mjs:16:41)
+         at file:///home/g/p/riddle/web/tests/control-visibility.mjs:22:3
+         at runNextTicks (node:internal/process/task_queues:65:5)
+         at process.processImmediate (node:internal/timers:502:9)
+FAIL: 0/1 client gates in 1.8s
