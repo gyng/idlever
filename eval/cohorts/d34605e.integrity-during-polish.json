@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-11T07:36:02.760256+00:00",
+  "candidate": "d34605e",
+  "manifestSha256": "5cc04312ac9eabc449215428c0ce9417e44b13eb9bf86f16b1d8f8b4a27be376",
+  "diskFiles": 261,
+  "diskMismatches": [],
+  "servedSubset": [
+    {
+      "path": "art/landscape/grass_0.png",
+      "expected": "dc04bc647b29eed011d5634f16fde73aab93e302bcd93bd8955a66b44d6b6517",
+      "actual": "dc04bc647b29eed011d5634f16fde73aab93e302bcd93bd8955a66b44d6b6517",
+      "match": true
+    },
+    {
+      "path": "art/landscape/grass_3.png",
+      "expected": "8b8972118d604c438e812632304cf644a86a9606b4bbc864fc7814826eafbf0b",
+      "actual": "8b8972118d604c438e812632304cf644a86a9606b4bbc864fc7814826eafbf0b",
+      "match": true
+    },
+    {
+      "path": "assets/index-9E7j1zI0.css",
+      "expected": "1998b2458483358c2633dc8f4eff4d51d18e574ec3b626bda0d25ad02f7afc1b",
+      "actual": "1998b2458483358c2633dc8f4eff4d51d18e574ec3b626bda0d25ad02f7afc1b",
+      "match": true
+    },
+    {
+      "path": "assets/index-Br14ms0s.js",
+      "expected": "148c57ed98e886de2126d4ef6c9269e5f301435f1c2d5fc4ea30d4d4e9b8613c",
+      "actual": "148c57ed98e886de2126d4ef6c9269e5f301435f1c2d5fc4ea30d4d4e9b8613c",
+      "match": true
+    },
+    {
+      "path": "assets/riddle_wasm_bg-DqfGhYMB.wasm",
+      "expected": "e007e5a3631341679e4f92f5b421fbe877920cb530a96fb41a34cbd03faa79b5",
+      "actual": "e007e5a3631341679e4f92f5b421fbe877920cb530a96fb41a34cbd03faa79b5",
+      "match": true
+    },
+    {
+      "path": "index.html",
+      "expected": "c3fb3f0e4d9373cd304c031a173e9fd33cd1c38c67c546d28d76977983b85d2c",
+      "actual": "c3fb3f0e4d9373cd304c031a173e9fd33cd1c38c67c546d28d76977983b85d2c",
+      "match": true
+    }
+  ],
+  "scope": "All261 immutable disk assets; live HTTP subset checks indexHTML, mainJS/CSS, shippingWASM and both painted grass sources. No browser session, unfinished observations or raw cards read."
+}
