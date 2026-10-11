@@ -1,6 +1,6 @@
 {
   "candidate": "d34605e",
-  "status": "release eligible; all precommitted conditions satisfied",
+  "status": "fresh independent raters released; initial private-display sandbox setup failures excluded from play",
   "url": "http://127.0.0.1:5269/",
   "manifestSha256": "5cc04312ac9eabc449215428c0ce9417e44b13eb9bf86f16b1d8f8b4a27be376",
   "preset": "idle-hybrid",
@@ -74,5 +74,10 @@
     "gpu": "private Xvfb D3D12 NVIDIA RTX3080",
     "calibration": "74 drift0, knowledge-based no fresh direct play",
     "utc": "2026-10-11T06:02:14.203646+00:00"
+  },
+  "releasedUtc": "2026-10-11T06:03:27.241685+00:00",
+  "agents": {
+    "a": "/root/blind_d346_a",
+    "b": "/root/blind_d346_b"
   }
 }
