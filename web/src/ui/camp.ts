@@ -167,7 +167,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // editing (`app.editing`): the tablets carry the editor (chips, ▲▼, ×, `+`); off, each is one carved tablet
   const editor = renderEditor(heroBinding(app), highlight, {
     compact: () => !app.editing,
-    onTablet: (i) => { app.editing = true; closePanel(); editor.refresh(); paintTiles(); flashRow(i); },
+    onTablet: (i) => { app.editing = true; closePanel(); editor.reveal(i); paintTiles(); flashRow(i); },
   });
   // Cut 19 §1: the cage is a camp decision — its own tablet under the rules (`cage → armour`), revealed once a cage was seen; the
   // tap opens the picker with each preference's forecast delta

@@ -52,7 +52,7 @@ export function moveTarget(rows: Row[], from: number, to: number, end: number, f
 
 const CLICK_EV = "cli" + "ck";   // (the event name, spelled so copy-lint's forbidden-word check — for player copy — passes it)
 const LONG_MS = 450;   // Cut 29 §4: a press held this long on a tablet lifts it
-export type Editor = { el: HTMLElement; refresh(): void; paintShadow(): void };
+export type Editor = { el: HTMLElement; refresh(): void; paintShadow(): void; reveal(i: number): void };
 /** Cut 17 §2: the camp's tablets. `compact()` true: each row is one carved tablet (`R1  hp < 30% → drink unknown`), a single
  *  tap target that calls `onTablet(i)` (the camp turns editing on at that row) — a fresh lineage's camp before the `edit` tile;
  *  false: the tablet carries the editor — chips, ▲▼, ×, and `+` under the rows. */
@@ -133,8 +133,14 @@ export function dropRows(rows: Row[], max: number): Set<number> {
 export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts = {}): Editor {
   const list = h("div", { class: "rows" });
   const foot = h("div", { class: "rows-foot" });
+  let packagesShown: boolean | null = null;
+  const packagesToggle = h("button", { class: "btn ghost package-rows-toggle", hidden: true, "aria-expanded": "false", onclick: () => {
+    packagesShown = !(packagesShown ?? penEnd() === 0);
+    if (!packagesShown && hl !== undefined && hl >= penEnd()) hl = undefined;
+    paintPackages(false);
+  } });
   // docs/COPY.md pass 5 (the tablets' `1`, `2` read as order, never as which acts first — 6/6): the column says what its numbers are
-  const el = h("section", { class: "editor" }, h("small", { class: "rows-head dim" }, kw("priority")), list, foot);
+  const el = h("section", { class: "editor" }, h("small", { class: "rows-head dim" }, kw("priority")), list, foot, packagesToggle);
   let hl = highlight;
   let hlUntil = highlight !== undefined ? performance.now() + 2400 : 0; // survives the camp's repaint right after mount
   const vocab = (): Vocabulary => bind.vocab();
@@ -143,6 +149,20 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
   function rows(): Row[] { return bind.rules().rows; }
   /** The first package row's index (the set's length off packages). */
   function penEnd(): number { return Math.min(bind.penEnd?.() ?? rows().length, rows().length); }
+  // Keep the compiled DOM indices intact for combos, shadow marks and promotion; fold only their presentation.
+  function paintPackages(compact: boolean): void {
+    const end = penEnd(), count = bind.penEnd ? rows().length - end : 0;
+    const shown = compact || (packagesShown ?? end === 0);
+    packagesToggle.hidden = compact || count === 0;
+    packagesToggle.setAttribute("aria-expanded", String(shown));
+    packagesToggle.textContent = /* copy:button */ `${shown ? "▾" : "▸"} Packages ${count}`;
+    [...list.children].forEach((row, i) => { (row as HTMLElement).hidden = count > 0 && i >= end && !shown; });
+  }
+  function reveal(i: number): void {
+    hl = i; hlUntil = performance.now() + 1600;
+    if (bind.penEnd && i >= penEnd()) packagesShown = true;
+    refresh();
+  }
   /** Moves row `from` toward `to` as the core will keep it (`moveTarget`); a package row taken into the pen is the player's. */
   function moveRow(from: number, to: number): void {
     const rs = rows(), end = penEnd(), at = moveTarget(rs, from, to, end, ownRowCount(rs) >= vocab().max_rows);
@@ -168,10 +188,10 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
       rows().forEach((row, i) => { const b: HTMLButtonElement = h("button", { class: `row tablet compact${isCardRow(row) ? " locked" : ""}`, "data-i": i,
         onclick: () => { const w = bind.rowWhy?.()[i]; if (w) openWhy(i, b, () => opts.onTablet?.(i)); else opts.onTablet?.(i); } },
         h("span", { class: "rn num" }, `${i + 1}`), h("span", { class: "rtext" }, ...row.conds.map(condItem), verbItem(row.verb), rowLabel(row)), verbPlaque(row)); list.appendChild(b); });
-      paintShadow();
+      paintPackages(true); paintShadow();
       return;
     }
-    const n = ownRowCount(rows()), cards = rows().length - n, max = vocab().max_rows, over = n > max;
+    const n = ownRowCount(rows()), cards = penEnd() - n, max = vocab().max_rows, over = n > max;
     const drop = over ? dropRows(rows(), max) : new Set<number>();
     rows().forEach((row, i) => list.appendChild(rowEl(row, i, drop.has(i))));
     // Cut 8B §4: the bracket sits on the pair's first row and reaches the second (`data-combo` is the name, engine data)
@@ -192,7 +212,8 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
       n < max ? h("button", { class: "btn ghost", onclick: () => { const rs = rows(), at = penEnd(), row = defaultRow(); rs.splice(at, 0, row); fresh = row; hl = at; hlUntil = performance.now() + 1600; commit();
         (list.querySelector<HTMLElement>(".row.fresh .chip.verb") ?? null)?.focus({ preventScroll: true }); } }, "+") : "",
     );
-    paintShadow();
+    if (hl !== undefined && hl >= penEnd() && performance.now() < hlUntil) packagesShown = true;
+    paintPackages(false); paintShadow();
     if (hl !== undefined && performance.now() < hlUntil) { const r = list.children[hl] as HTMLElement | undefined; if (r) { flash(r, "hl", Math.max(600, hlUntil - performance.now())); r.scrollIntoView({ block: "center" }); } }
     else hl = undefined;
   }
@@ -419,7 +440,7 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
     grip.setPointerCapture(e.pointerId);
     const y0 = e.clientY; let to = from;
     me.classList.add("dragging");
-    const others = rowEls.filter((r) => r !== me);
+    const others = rowEls.filter((r) => r !== me && !r.hidden);
     // Cut 29 §4: any distance — near the scroller's edge the list scrolls under the lifted tablet
     const scroller = (() => { for (let p = me.parentElement; p; p = p.parentElement) { const o = getComputedStyle(p).overflowY; if ((o === "auto" || o === "scroll") && p.scrollHeight > p.clientHeight) return p; } return null; })();
     const top0 = scroller?.scrollTop ?? 0;
@@ -445,7 +466,7 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
   }
 
   refresh();
-  return { el, refresh, paintShadow };
+  return { el, refresh, paintShadow, reveal };
 }
 
 /** QA e75ec29: the earlier row that pre-empts row `j` by its form alone — an attack row (`attack nearest`, or the same target) whose

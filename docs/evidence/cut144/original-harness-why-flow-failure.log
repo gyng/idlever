@@ -1,0 +1,13 @@
+FAIL editor-packages 3.1s (2.8s)  Node.js v26.5.0
+     page.evaluate: Error: compact package tablet opens full target
+         at verify (eval at evaluate (:311:30), <anonymous>:3:41)
+         at eval (eval at evaluate (:311:30), <anonymous>:12:4)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/editor-packages.mjs:47:27 {
+ok   pen-edit        14.4s (11.2s)  pen-edit: all ok
+ok   package-lanes   15.7s (1.4s)  package-lanes: 19 checks PASS
+ok   package-selection 18.7s (2.9s)  1440 15 selected Tactics checks PASS
+ok   cut23           20.1s (19.8s)  cut23: ok (33 checks)
+ok   package-paired  21.9s (3.2s)  package-paired: 52 checks PASS
+ok   cut12           35.4s (15.3s)  cut12: ok (26 checks)
+FAIL: 6/7 client gates in 35.4s

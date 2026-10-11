@@ -1,0 +1,15 @@
+ok   pen-edit        14.1s (13.7s)  pen-edit: all ok
+ok   package-lanes   15.6s (1.5s)  package-lanes: 19 checks PASS
+ok   package-selection 19.1s (3.5s)  1440 15 selected Tactics checks PASS
+ok   package-paired  22.3s (3.1s)  package-paired: 52 checks PASS
+FAIL editor-packages 33.9s (33.5s)  Node.js v26.5.0
+       - waiting for locator('.camp .editor .rows > .row[data-i="1"] .step.up')
+           - element is not enabled
+           - element is not enabled
+            - element is not enabled
+         '      - element is not enabled',
+         '      - element is not enabled',
+         '       - element is not enabled',
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/editor-packages.mjs:38:73 {
+FAIL: 4/5 client gates in 33.9s

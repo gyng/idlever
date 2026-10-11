@@ -1,0 +1,11 @@
+# Cut144 evidence
+
+Baseline96c5e24; fixture web/tests/fixtures/earned-first-ascension-clear.json imported into real WASM, normal after-clear Town view, then one legal rule added through the existing + button. No earned-play or rating claim: the saved clear predates this UI change. Seed144,400/1440. No absence or gameplay grants.
+
+before shows one authored row plus16 compiled package rows:2742.296875px at400 and2408px at1440. accepted shows only that authored row by default:122.296875px/100px. Opening Packages reveals all17 row nodes with identical indices and rule JSON. Disclosure visibility only; package order and game truth unchanged. After promotion two authored rows remain visible; + produces and focuses the third. Tactic cards remain non-promotable. Null-package, empty, legacy and companion bindings keep all rows visible. Package highlight and compact Why → edit reveal target. Real pointer drag over cloned current wire rows changes the clone exactly once to the correct authored index, leaving actual engine rules unchanged; hidden package rects are ignored.
+
+Final accepted7/7 PASS38.4s: editor-packages, unchanged pen-edit, package-lanes19, package-selection30 paired viewport checks, package-paired52, cut23 33 and cut12 26. Typecheck/copy2353 zero/build pass. Add and Packages controls >=44px. No horizontal overflow.
+
+Original harness failures preserved: go(camp) on a cleared game correctly redirects to Ending; capture needed existing afterClear:true Town mode. Attempting promotion of a tactic card correctly refused; harness now separately verifies refusal and chooses the first enabled legal rule. Compact tablet first opens Why when a row explanation exists; harness now follows its edit action. after/final directories are retained partial diagnostic captures; accepted is the final complete evidence. No product gate was weakened.
+
+All row nodes remain direct children in original compiled order. Only hidden presentation changes. Footer tactic count excludes package rows. Empty pens still expose packages; compact camp tablets unchanged. No Rust changes or deployment. This UI checkpoint does not certify full candidate acceptance or fun>=80. Prior diagnostic75.2 pair and incomplete phase remain unchanged.
