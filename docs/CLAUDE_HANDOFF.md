@@ -1,3 +1,7 @@
+# Return-navigation infrastructure checkpoint — 2026-10-11
+
+Fresh reports: A cold39.87/40 active minutes, no returns yet; B8h return9.4517 exact at07:58:08UTC,~10.5–11 currently, previous phases complete. Both relays responsive/no pending, same profiles/frozen5269. A requested goto syntax; supplied tracked-relay-verified same-origin public dev=1&runs=1&absent=20m/4h/8h to both equally, no seed/fresh/menu, navigation/setup excluded, pending handles polled without duplication. B explicitly told not to repeat completed returns. No cards/opinions/awards read; counts provisional, audit pending. Goal active/unproven, isolated polish/GPU check pending, no deployment.
+
 # Live8h return / pending GPU harness — 2026-10-11
 
 Fresh equal infrastructure-only replies: A cold34.30/40 credited minutes, no returns begun; B cold41.0459,20m5.9693,4h6.31305 complete,8h~2 underway (began07:44:28.348UTC). Both relays66516/21401 responsive/no pending or blocker, same profiles5380/5381 and frozen5269; counts provisional, exact interval audit pending. No cards/opinions read. Both agents confirmed running; wait complete locked cards before scoring. Root prepared syntax-checked one-off /tmp/riddle-menu-polish/scratchpad/grass-wind/gpu-check.mjs, guarded --cohort-released: real-WASM400/1440 night with24 cosmetic walkers,>=95% concurrent display rAF, warmCPU p95<8ms, save/cache and visibility checks. Not executed; wait both browser releases. Goal>=80 active/unproven, isolated polish not integrated, no deployment.
