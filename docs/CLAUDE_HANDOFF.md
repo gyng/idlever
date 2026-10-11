@@ -1,3 +1,7 @@
+# Current remaining horizon — 2026-10-11
+
+A infrastructure-only report:8h return3.15/20 conservative active minutes, no pending/blocker, same relay66516/profile5380/frozen5269. Cold40.05/20m5.08 complete;4h4.87 shortfall preserved and cannot be repaired by later surplus/backdating. B card/export locked/browser-relay closed, files unread by root; incidental final highlight/gripe exposure recorded/unshared. Await A full remaining20 active-minute phase and raw lock/final cleanup, then hash/interval/criteria/anchors/caps/reliability audit. No goal certification or gate waiver. Prepared isolated grass GPU harness not executed, polish not integrated, no deployment.
+
 # Reported prior-phase timing deviation — 2026-10-11
 
 A reports cold40.05/20m5.08 complete, but navigated4h→8h at4.87 active minutes,~8seconds below required5. A still live/no pending/same relay/profile/frozen build. Root instructed preserve exact sequence, never backdate/relabel later time, finish full20 active minutes after8h, lock independent raw card with explicit deviation; no repeat/restart to hide it. Required4h phase is not proven and reported credit contradicts its minimum; total70 alone does not meet separately precommitted phase coverage. No gate waiver or success claim. Await both locks and exact interval audit; objective active, certification unproven. B locked/exported/cleanup terminal, cards unread by root (B final highlights/gripes incidental exposure recorded, unshared with A). No deployment.

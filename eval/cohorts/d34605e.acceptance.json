@@ -479,33 +479,32 @@
     "scope": "Live transport confirmed by both operators; actual70-minute horizons and score still unproven."
   },
   "lastInfrastructureStatus": {
-    "coordinatorObservedUtc": "2026-10-11T08:28:21.833950+00:00",
+    "coordinatorObservedUtc": "2026-10-11T08:37:50.900489+00:00",
     "a": {
       "agent": "/root/blind_d346_a",
       "phase": "8h return",
-      "reportedCreditedMinutes": 39.87,
-      "absencePhasesBegun": false,
-      "relaySession": 66516,
-      "pendingOrBlocked": false,
       "reportedColdMinutes": 40.05,
       "reported20mReturnMinutes": 5.08,
       "reported4hReturnMinutes": 4.87,
-      "reported4hMinimumMet": false
+      "reported4hMinimumMet": false,
+      "reported8hReturnMinutes": 3.15,
+      "relaySession": 66516,
+      "pendingOrBlocked": false,
+      "profileAndBuildUnchanged": true
     },
     "b": {
       "agent": "/root/blind_d346_b",
-      "phase": "8h return",
-      "reportedColdMinutes": 41.0459,
-      "reported20mReturnMinutes": 5.9693,
-      "reported4hReturnMinutes": 6.31305,
-      "reported8hReturnMinutesApprox": "10.5\u201311",
-      "reported8hPhaseStartedUtc": "2026-10-11T07:44:28.348Z",
-      "relaySession": 21401,
-      "pendingOrBlocked": false,
-      "reported8hReturnMinutes": 9.4517,
-      "reported8hExactCountAtUtc": "2026-10-11T07:58:08Z"
+      "phase": "card/export locked, browser and relay closed",
+      "reportedPhaseMinutes": [
+        41.04587625,
+        5.969333333333334,
+        6.31305,
+        20.52691666666667
+      ],
+      "reportedTotalMinutes": 73.85517625,
+      "rawAndRulesContentsReadByCoordinator": false
     },
-    "scope": "Fresh infrastructure-only replies from both raters, with no opinions/awards requested or read. Provisional rater counts only, not audited horizon certificates. Both agents running, existing relay/profile/frozen build unchanged and no pending or blocked handle; buffered waits, status administration and boundary uncertainty excluded. Both complete locked cards are still required before audit/scoring."
+    "scope": "Infrastructure-only current A report plus completed B lock/cleanup report. Counts provisional until joint exact interval audit. A prior4h timing shortfall remains; do not treat total70 or later surplus as prior-phase coverage. Goal active/unproven, no scoring before both cards locked."
   },
   "integrityDuringIsolatedPolish": {
     "utc": "2026-10-11T07:36:02.760256+00:00",
