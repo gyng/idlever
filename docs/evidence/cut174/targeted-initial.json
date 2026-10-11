@@ -1,0 +1,37 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 4,
+  "elapsedSeconds": 18.964,
+  "failed": 1,
+  "results": [
+    {
+      "n": "cut30:death",
+      "code": 0,
+      "out": "ok   before the pen the death shows exactly one lever (1 lever: `trainSteady L2›`, 0 fixes)\nok   no trace, no details, no gap/dice, no replays (trace false, details false, seal you died)\nok   the cause, the package row that acted, the gem the lever's act (Steady; gem send)\nok   recorded pre-pen death exposes the blocked exit and killing blow (goblin archer · D6 · hero at 1 hptrulehpfoes100bank at D211101goblin archer −101return at 20% no path)\nok   reading an early trace neither edits rules nor opens the pen\nok   closing the early trace keeps the death and its one lever\nok   cause without a retained replay opens its recorded trace\nok   a spend lever opens the forge (forge)\nok   with the pen: the fixes and the details, no lever (0 levers, 1 fixes)\ncut30: ok (9 checks)\n",
+      "ms": 3082,
+      "own": 2753
+    },
+    {
+      "n": "death-actions",
+      "code": 1,
+      "out": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\npage.evaluate: Error: ordinary early death has fallback explanation\n    at check (eval at evaluate (:311:30), <anonymous>:2:200)\n    at eval (eval at evaluate (:311:30), <anonymous>:25:89)\n    at async <anonymous>:337:30\n    at /home/g/p/riddle/web/tests/death-actions.mjs:5:224 {\n  log: []\n}\n\nNode.js v26.5.0\n",
+      "ms": 2179,
+      "own": 1848
+    },
+    {
+      "n": "death-fix-discovery",
+      "code": 0,
+      "out": "400 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS\n1440 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS\n",
+      "ms": 18964,
+      "own": 18631
+    },
+    {
+      "n": "report-reading",
+      "code": 0,
+      "out": "320 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n400 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n",
+      "ms": 5710,
+      "own": 5375
+    }
+  ]
+}

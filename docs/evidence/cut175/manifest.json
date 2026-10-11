@@ -1,0 +1,26 @@
+{
+  "scope": "Focused checks only; full final client acceptance, complete QA and independent ratings still required.",
+  "notes": "Real-WASM free-house town copy matches main screen and preserves original URL/engine/local save exactly. First driver start hit occupied5357; that existing service was untouched. Used41417; then browser closed.",
+  "artifacts": [
+    {
+      "path": "copy-check.json",
+      "bytes": 29211,
+      "sha256": "ddbfd38176ea46cb2fd7d33f0bbe18596592492101900621d16a13e39846c128"
+    },
+    {
+      "path": "copy-check.log",
+      "bytes": 108,
+      "sha256": "20c6aa73284f4b8d4faab131fc029fe6accdad4918bfa3552bb99ea559739aad"
+    },
+    {
+      "path": "copy-check.mjs",
+      "bytes": 1518,
+      "sha256": "95a700a6ab2dfeba593f5622821160c360a28b55eef3c5acd6b0f8504e57e263"
+    },
+    {
+      "path": "occupied-port-start.log",
+      "bytes": 625,
+      "sha256": "a71ad75aada8ea47a9b5a2b59e5bcec2d9d9bbff151afee97d7903c907ea5258"
+    }
+  ]
+}

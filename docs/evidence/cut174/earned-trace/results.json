@@ -1,0 +1,928 @@
+{
+  "scope": "Coordinator diagnostic on genuine earned seed149 save. Storage origin retargeted and last_seen stamped current to avoid added absence; runs=0 intentionally pauses this rendering check. Historical death selected through coordinator API; Details and cause exercised by public pointer controls. Not player QA coverage, active horizon, or score.",
+  "originalStorageSha256": "0b988f097ef28b30198d2a72937ce93720449ec273e48ffb8672087adf85f510",
+  "results": [
+    {
+      "width": 400,
+      "depth": 5,
+      "cause": "goblin_archer",
+      "gold": 2319,
+      "hero": {
+        "name": "Quill Ash",
+        "bloodline_id": 1,
+        "heir": 1,
+        "class": "fighter"
+      },
+      "trace": {
+        "turns": [
+          {
+            "t": 4640,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes fleeing"
+              },
+              {
+                "row": 5,
+                "why": "foes fleeing"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4650,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 5,
+                "why": "foes not ≥1"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4660,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 3,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes fleeing"
+              },
+              {
+                "row": 5,
+                "why": "foes fleeing"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4670,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 12,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R5 tame ✗ none weak",
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4680,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 9,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4670,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 10
+              },
+              {
+                "t": 4670,
+                "by": "goblin_archer",
+                "dmg": 1,
+                "hp": 9
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4690,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 9,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4700,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 5,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4690,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 7
+              },
+              {
+                "t": 4690,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 5
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4710,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 5,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4720,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 1,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4710,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 3
+              },
+              {
+                "t": 4710,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 1
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4730,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 1,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "max_hp": 36
+          }
+        ],
+        "provenance": [
+          {
+            "text": "jackal last seen D1",
+            "t": 80,
+            "depth": 1
+          },
+          {
+            "text": "found folded scroll? on D1",
+            "t": 710,
+            "depth": 1
+          },
+          {
+            "text": "found black potion? on D1",
+            "t": 880,
+            "depth": 1
+          },
+          {
+            "text": "found violet potion? on D3",
+            "t": 2300,
+            "depth": 3
+          },
+          {
+            "text": "chase given up",
+            "t": 3320,
+            "depth": 4
+          },
+          {
+            "text": "goblin archer last seen D4",
+            "t": 3540,
+            "depth": 4
+          },
+          {
+            "text": "found dagger on D4",
+            "t": 3560,
+            "depth": 4
+          },
+          {
+            "text": "found silver scroll? on D5",
+            "t": 4110,
+            "depth": 5
+          },
+          {
+            "text": "found leash on D5",
+            "t": 4230,
+            "depth": 5
+          },
+          {
+            "text": "monkey took the folded scroll?, D5",
+            "t": 4437,
+            "depth": 5
+          },
+          {
+            "text": "monkey last seen D5",
+            "t": 4704,
+            "depth": 5
+          }
+        ],
+        "blow": {
+          "t": 4730,
+          "by": "goblin_archer",
+          "dmg": 1,
+          "hp": 0
+        },
+        "hp_lost": [
+          {
+            "by": "goblin_archer",
+            "dmg": 27
+          },
+          {
+            "by": "rat",
+            "dmg": 5
+          },
+          {
+            "by": "jackal",
+            "dmg": 3
+          },
+          {
+            "by": "monkey",
+            "dmg": 1
+          }
+        ]
+      },
+      "text": "goblin archer · D5 · hero at 1/36 hp\nsince full hp · goblin archer −27 · rat −5 · jackal −3 · monkey −1\nt\trule\thp\tfoes\ttele\n4690\tattack nearest\t9\t3\tarcher draws · archer draws\n4690\tgoblin archer −2\t7\t\t\n4690\tgoblin archer −2\t5\t\t\n4700\tbank at 25%\t5\t3\t\n4710\tbank at 25%\t5\t2\tarcher draws · archer draws\n4710\tgoblin archer −2\t3\t\t\n4710\tgoblin archer −2\t1\t\t\n4720\tbank at 25%\t1\t2\t\n4730\tbank at 25%\t1\t2\tarcher draws · archer draws\n4730\tgoblin archer −1\t0\t2\t\ndrink heal at 30% unknown item",
+      "readOnly": {
+        "pen": false,
+        "authoring": 0
+      },
+      "lastBlowVisibleAfterScroll": true,
+      "exactEngineSaveUnchanged": true,
+      "wasmHashes": [
+        "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239",
+        "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+      ],
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "depth": 5,
+      "cause": "goblin_archer",
+      "gold": 2319,
+      "hero": {
+        "name": "Quill Ash",
+        "bloodline_id": 1,
+        "heir": 1,
+        "class": "fighter"
+      },
+      "trace": {
+        "turns": [
+          {
+            "t": 4640,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes fleeing"
+              },
+              {
+                "row": 5,
+                "why": "foes fleeing"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4650,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 5,
+                "why": "foes not ≥1"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4660,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 12,
+            "foes": 3,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "foes fleeing"
+              },
+              {
+                "row": 5,
+                "why": "foes fleeing"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4670,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 12,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R5 tame ✗ none weak",
+            "rows": [
+              {
+                "row": 0,
+                "why": "hp not <30%"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4680,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 9,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4670,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 10
+              },
+              {
+                "t": 4670,
+                "by": "goblin_archer",
+                "dmg": 1,
+                "hp": 9
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4690,
+            "row": 5,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 9,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              },
+              {
+                "row": 1,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "has heal"
+              },
+              {
+                "row": 4,
+                "why": "none weak"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4700,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 5,
+            "foes": 3,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4690,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 7
+              },
+              {
+                "t": 4690,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 5
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4710,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 5,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4720,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 1,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "blows": [
+              {
+                "t": 4710,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 3
+              },
+              {
+                "t": 4710,
+                "by": "goblin_archer",
+                "dmg": 2,
+                "hp": 1
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 4730,
+            "row": 1,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 1,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [
+              "archer draws",
+              "archer draws"
+            ],
+            "blocked": "R1 drink heal ✗ unknown item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "unknown item"
+              }
+            ],
+            "max_hp": 36
+          }
+        ],
+        "provenance": [
+          {
+            "text": "jackal last seen D1",
+            "t": 80,
+            "depth": 1
+          },
+          {
+            "text": "found folded scroll? on D1",
+            "t": 710,
+            "depth": 1
+          },
+          {
+            "text": "found black potion? on D1",
+            "t": 880,
+            "depth": 1
+          },
+          {
+            "text": "found violet potion? on D3",
+            "t": 2300,
+            "depth": 3
+          },
+          {
+            "text": "chase given up",
+            "t": 3320,
+            "depth": 4
+          },
+          {
+            "text": "goblin archer last seen D4",
+            "t": 3540,
+            "depth": 4
+          },
+          {
+            "text": "found dagger on D4",
+            "t": 3560,
+            "depth": 4
+          },
+          {
+            "text": "found silver scroll? on D5",
+            "t": 4110,
+            "depth": 5
+          },
+          {
+            "text": "found leash on D5",
+            "t": 4230,
+            "depth": 5
+          },
+          {
+            "text": "monkey took the folded scroll?, D5",
+            "t": 4437,
+            "depth": 5
+          },
+          {
+            "text": "monkey last seen D5",
+            "t": 4704,
+            "depth": 5
+          }
+        ],
+        "blow": {
+          "t": 4730,
+          "by": "goblin_archer",
+          "dmg": 1,
+          "hp": 0
+        },
+        "hp_lost": [
+          {
+            "by": "goblin_archer",
+            "dmg": 27
+          },
+          {
+            "by": "rat",
+            "dmg": 5
+          },
+          {
+            "by": "jackal",
+            "dmg": 3
+          },
+          {
+            "by": "monkey",
+            "dmg": 1
+          }
+        ]
+      },
+      "text": "goblin archer · D5 · hero at 1/36 hp\nsince full hp · goblin archer −27 · rat −5 · jackal −3 · monkey −1\nt\trule\thp\tfoes\ttele\n4690\tattack nearest\t9\t3\tarcher draws · archer draws\n4690\tgoblin archer −2\t7\t\t\n4690\tgoblin archer −2\t5\t\t\n4700\tbank at 25%\t5\t3\t\n4710\tbank at 25%\t5\t2\tarcher draws · archer draws\n4710\tgoblin archer −2\t3\t\t\n4710\tgoblin archer −2\t1\t\t\n4720\tbank at 25%\t1\t2\t\n4730\tbank at 25%\t1\t2\tarcher draws · archer draws\n4730\tgoblin archer −1\t0\t2\t\ndrink heal at 30% unknown item",
+      "readOnly": {
+        "pen": false,
+        "authoring": 0
+      },
+      "lastBlowVisibleAfterScroll": true,
+      "exactEngineSaveUnchanged": true,
+      "wasmHashes": [
+        "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239",
+        "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+      ],
+      "errors": []
+    }
+  ]
+}

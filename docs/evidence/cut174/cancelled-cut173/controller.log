@@ -1,0 +1,21 @@
+START types
+END types 0 4.8
+START copy
+END copy 0 0.1
+START web-build
+END web-build 0 5.6
+START shipping-whole-client
+Traceback (most recent call last):
+  File "/home/g/p/riddle/scratchpad/cut173/revalidate.py", line 30, in <module>
+    proc=subprocess.Popen(cmd,cwd=cwd,env=env,stdout=log,stderr=subprocess.STDOUT);entry['pid']=proc.pid;persist();code=proc.wait()
+                                                                                                                        ^^^^^^^^^^^
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/subprocess.py", line 2053, in _wait
+    (pid, sts) = self._try_wait(0)
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/g/.pyenv/versions/3.12.4/lib/python3.12/subprocess.py", line 2011, in _try_wait
+    (pid, sts) = os.waitpid(self.pid, wait_flags)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

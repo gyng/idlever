@@ -422,7 +422,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           const door = u ? h("small", { class: "num dim door" }, u.cost ? ` ◆${u.cost}` : "") : "";   // no `◆0` (QA 23ed91f); QA 0c6e126 (qaY: `rogue L1 · bank once` — no hint it is a condition): a gate still shut carries the lock mark, `⊘ bank once`
           const take = async (): Promise<void> => { if (u && !(await app.buy(cls))) return; void app.setClass(cls); close(); };
           grid.appendChild(h("div", { class: "class-row" },
-            h("button", { class: `chip verb${cls === L.class ? " on" : ""}${owned || u?.available ? "" : " off"}`, disabled: !(owned || u?.available), onclick: () => void take() }, classIcon(cls), cls, " ", h("b", { class: "num" }, `L${level}`), door), classUnlockReason(u),
+            h("button", { class: `chip verb${cls === L.class ? " on" : ""}${owned || u?.available ? "" : " off"}`, disabled: !(owned || u?.available), onclick: () => void take() }, classIcon(cls), cls, " ", h("b", { class: "num" }, `L${level}`), door), classUnlockReason(u, owned ? undefined : cls),
             ladder.length ? h("div", { class: "chips ladder" }, ...ladder) : ""));
         }
       };

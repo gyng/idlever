@@ -449,7 +449,7 @@ export function openHeroClass(app: App): void {
       replace(grid,...classList(app.lineage,cat).map(({cls,owned,level})=>{
         const u=owned?undefined:cat?.find(x=>x.id===cls);
         return h("div",{class:"class-row"},h("button",{class:`chip${cls===app.lineage.class?" on":""}`,disabled:!(owned||u?.available)||!!app.lineage.live,
-          onclick:()=>void(async()=>{if(u&&!(await app.buy(cls)))return;await app.setClass(cls);close();})()},classIcon(cls),cls,` L${level}`,u?.cost?` ◆${u.cost}`:""), classUnlockReason(u),
+          onclick:()=>void(async()=>{if(u&&!(await app.buy(cls)))return;await app.setClass(cls);close();})()},classIcon(cls),cls,` L${level}`,u?.cost?` ◆${u.cost}`:""), classUnlockReason(u,owned?undefined:cls),
           h("div",{class:"chips ladder"},...Object.entries(CLASS_VERBS[cls]??{}).flatMap(([l,verbs])=>verbs.map(v=>classSkillChip(v,Number(l),Number(l)<=level&&owned)))));
       }));
     };

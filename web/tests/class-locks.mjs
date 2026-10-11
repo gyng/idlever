@@ -30,6 +30,11 @@ try {
   if(shots){await page.waitForTimeout(400);await page.screenshot({path:`${shots}/class-locks-${width}.png`});}
   await page.keyboard.press('Escape');
   if(!await page.evaluate(async()=>await window.__riddle.engine.save()===window.__classLockSave))throw Error('Reading class locks changed save');
+  await page.evaluate(async()=>{const a=window.__riddle,cat=await a.engine.unlocks();a.engine.unlocks=async()=>cat.filter(u=>u.id!=='rogue');const{openHeroClass}=await import('/src/ui/town.ts');openHeroClass(a);});
+  await rogue.locator('.class-needs').waitFor();
+  if(!(await rogue.locator('.class-needs').innerText()).includes('first full haul')||!await rogue.getByRole('button').first().isDisabled())throw Error('Omitted free Rogue entry must explain its existing full-haul gate');
+  await page.keyboard.press('Escape');
+  if(!await page.evaluate(async()=>await window.__riddle.engine.save()===window.__classLockSave))throw Error('Reading free Rogue gate changed save');
   await page.close();console.log(`${width} gate/token-short/available/owned/viewport/exact-save PASS`);
  }
 } finally {await browser.close();}

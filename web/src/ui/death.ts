@@ -206,7 +206,7 @@ export function renderDeath(app: App, d: Death, lost: string[] = [], kept = fals
   // QA 524827b (qaAB: tapped `gas · D6` expecting the clip; it only scrolled to the trace): the cause opens the moment — the killing
   // blow's replay when this session still holds the run — else brings up the trace
   const moment = d.trace.blow ? { text: d.cause.replace(/_/g, " "), t: d.trace.blow.t, depth: d.depth } : null;
-  const onCause = (): void => { const log = lastRun(); if (moment && log && replayable(d.run_id, moment)) openReplay(log, moment); else if (prePen) explainOutcome(); else { if (!el.classList.contains("full")) more.click(); tracePanel.scrollIntoView({ block: "center", behavior: "smooth" }); } };
+  const onCause = (): void => { const log = lastRun(); if (moment && log && replayable(d.run_id, moment)) openReplay(log, moment); else if (prePen) { if (hasTrace) openEarlyTrace(); else explainOutcome(); } else { if (!el.classList.contains("full")) more.click(); tracePanel.scrollIntoView({ block: "center", behavior: "smooth" }); } };
   if (!(prePen && stamp === "you died") && VERDICT_TERM[word]) kwHost(seal, VERDICT_TERM[word]!);
   const line = h("h1", { class: "death-line" }, h("button", { class: "cause-btn", onclick: onCause }, causeEl), h("span", { class: "sep" }, " · "), seal,
     // QA 308f045 (qaAD: `GAP` over `dice-leaning` — "two verdicts on one death"): beside the stamp the lean is the count it rests on, a fact
@@ -249,6 +249,14 @@ export function renderDeath(app: App, d: Death, lost: string[] = [], kept = fals
   // no way back): a row's name opens the row's sheet over the death screen (what it did in the trace); its `edit` goes to the camp
   const onRow = sameRules && !kept ? (i: number): void => { if (i < app.rules.rows.length) openRowSheet(app, d, i); } : undefined;
   const trace = traceTable(d.trace, { rows: d.rules?.rows ?? app.rules.rows, verbs: d.rules ? undefined : morgueVerbs(d.morgue), runId: d.run_id, chain: d.chain, depth: d.depth, onRow });
+  const hasTrace = !!(d.trace.turns.length || d.trace.blow || d.trace.blows?.length);
+  const openEarlyTrace = (): void => {
+    openWindow(() => h("div", { class: "sheet-body early-death-trace" },
+      h("h3", null, causeText),
+      ...traceTable(d.trace, { rows: d.rules?.rows ?? app.rules.rows, verbs: d.rules ? undefined : morgueVerbs(d.morgue), runId: d.run_id, chain: d.chain, depth: d.depth })));
+  };
+  const earlyDetails = prePen && hasTrace ? h("button", { class: "details-fold death-more num game-control", onclick: openEarlyTrace },
+    h("span", { class: "fold-mark", "aria-hidden": "true" }, "▸ "), /* copy:button */ "details", h("small", { class: "fold-hint num" }, /* copy:callout */ " · trace")) : null;
   // Fractions 0..1 from the core: baseline (survival of the unpatched rules) is on every row (Cut 4 §2).
   // QA 1a2a4a9 (O): a tap on a tablet lights it (the gem takes its number); the gem applies the lit one — the only apply on this screen
   let picked = false;   // the player lit a tablet (the landing never moves his pick)
@@ -440,7 +448,7 @@ export function renderDeath(app: App, d: Death, lost: string[] = [], kept = fals
     fetched,
     // run-clear: the death screen is a death's card — its header carries the floor, a new best, the finds left in the bones
     kept || from ? null : clearStrip(d.line),
-    ...(prePen ? [whyEl, trainingBlock(d.line?.packages, training), now, heirs] : [whyEl, trainingBlock(d.line?.packages, training), details, now, heirs, more, tail]));
+    ...(prePen ? [whyEl, trainingBlock(d.line?.packages, training), now, heirs, earlyDetails] : [whyEl, trainingBlock(d.line?.packages, training), details, now, heirs, more, tail]));
   const wide = wideCols(app, null);   // desktop: the rules left, the shaft right (wide.css); the fight is under details
   const el = h("main", { class: `death frame${stalled ? " stalled" : ""}${drove ? " driven" : ""}${prePen ? " prepen" : ""}` }, bar.el, well, cons.el, ...wide.els);
   setWhy(); rest();

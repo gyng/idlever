@@ -7,7 +7,7 @@
 //   quest     one goal (≤ 5 words, eval/copy-budgets.json `quest_goal`), the reward a picture, a progress bar, the day's one free swap,
 //             `QUEST DONE` on the board and as the report's beat; no oath UI in play
 //   pen       no editor and no rule tablets before the pen; the editor (and its tile) once it opens
-//   death     before the pen: the cause and exactly one lever (no fixes, no trace, no `gap`/`dice`, no replays); with the pen, the fixes
+//   death     before the pen: cause, one lever, read-only recorded trace (no fixes/probability chrome); with the pen, the fixes
 //   report    the report leads with what grew on each track, the packages' beats as plaques; slices merge (`mergeGrew`)
 //
 //   node web/tests/cut30.mjs [--shots dir] [--part=a,b]      (part of `pnpm test` in web/)
@@ -240,6 +240,24 @@ try {
     check(!D.trace && !D.more && D.seal === "you died" && !/replays|1 in \d|luck|no rule for it/.test(D.text), `no trace, no details, no gap/dice, no replays (trace ${D.trace}, details ${D.more}, seal ${D.seal})`);
     check(/goblin archer · D6/.test(D.text) && D.why === "Steady" && D.gem === "send", `the cause, the package row that acted, the gem the lever's act (${D.why}; gem ${D.gem})`);
     await shot("death-prepen");
+    // A recorded early death must explain its blocked exit without unlocking authored rules.
+    const recorded = { ...base, trace: { turns: [{ t: 100, row: 2, verb: { v: "explore" }, hp: 1, foes: 1, telegraphs: [], rows: [{ row: 1, why: "no path" }] }], blow: { t: 101, by: "goblin_archer", dmg: 1, hp: 0 } } };
+    const beforeTrace = await page.evaluate(() => ({ rows: JSON.stringify(window.__riddle.rules.rows), pen: window.__riddle.lineage.packages.pen_open }));
+    await page.evaluate((d) => window.__riddle.go({ kind: "death", death: { ...d, lever: { kind: "wait", text: "Steady L2" } } }), recorded);
+    await page.locator(".death .death-more").click();
+    await page.waitForSelector(".early-death-trace .trace");
+    const readOnly = await page.evaluate(() => ({ text: document.querySelector(".early-death-trace").textContent,
+      edits: document.querySelectorAll(".early-death-trace .row-edit, .early-death-trace button.patch").length,
+      rows: JSON.stringify(window.__riddle.rules.rows), pen: window.__riddle.lineage.packages.pen_open }));
+    check(/no path/.test(readOnly.text) && /goblin archer/.test(readOnly.text) && /101/.test(readOnly.text), `recorded pre-pen death exposes the blocked exit and killing blow (${readOnly.text})`);
+    check(readOnly.edits === 0 && readOnly.rows === beforeTrace.rows && readOnly.pen === beforeTrace.pen && !readOnly.pen, "reading an early trace neither edits rules nor opens the pen");
+    await shot("death-prepen-trace");
+    await page.keyboard.press("Escape");
+    check(await page.locator(".early-death-trace").count() === 0 && await page.locator(".death-lever").count() === 1, "closing the early trace keeps the death and its one lever");
+    await page.locator(".death .cause-btn").click();
+    await page.waitForSelector(".early-death-trace .trace");
+    check(/no path/.test(await page.locator(".early-death-trace").innerText()), "cause without a retained replay opens its recorded trace");
+    await page.keyboard.press("Escape");
     // spend · package: each one tablet, its act
     await page.evaluate((d) => window.__riddle.go({ kind: "death", death: { ...d, lever: { kind: "spend", text: "sword +2" } } }), base);
     const sp = await until(() => document.querySelector(".death-lever")?.dataset.kind === "spend" ? document.querySelector(".gem")?.textContent : null, "a spend lever");

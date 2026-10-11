@@ -1,0 +1,23 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 2,
+  "elapsedSeconds": 16.875,
+  "failed": 0,
+  "results": [
+    {
+      "n": "class-locks",
+      "code": 0,
+      "out": "320 gate/token-short/available/owned/viewport/exact-save PASS\n400 gate/token-short/available/owned/viewport/exact-save PASS\n1440 gate/token-short/available/owned/viewport/exact-save PASS\n",
+      "ms": 3770,
+      "own": 3445
+    },
+    {
+      "n": "class-switch",
+      "code": 0,
+      "out": "400 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS\n1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS\n",
+      "ms": 16874,
+      "own": 16546
+    }
+  ]
+}

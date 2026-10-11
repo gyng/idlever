@@ -1,0 +1,116 @@
+{
+  "scope": "Focused checks only; full final client acceptance, complete QA and independent ratings still required.",
+  "notes": "Initial3/4 focused pass retained; intended cause behavior assertion updated and corrected death-actions passes. Saved-death diagnostic first sampled closure too early, then hit animated/offscreen cause; final waits detachment, scrolls visible cause label and verifies actual hit before pointer tap. No forced clicks. Per-attempt screenshots reused a scratch filename; final images retained, earlier inline image remains in conversation. This is paused coordinator rendering evidence, not player coverage.",
+  "artifacts": [
+    {
+      "path": "death-actions-corrected.json",
+      "bytes": 476,
+      "sha256": "a3df06dd02ee318828d29dd0d0bbf9a8977a9becbbd103c35661d050dc963f47"
+    },
+    {
+      "path": "death-actions-corrected.log",
+      "bytes": 133,
+      "sha256": "97970625fad0fbc7bf09acfd2525784d8b1c48719a00137738a76f7ed7101efa"
+    },
+    {
+      "path": "earned-trace-hitchecked.log",
+      "bytes": 127,
+      "sha256": "1bad021e5757071588a9d571231832c6e81d76f9b8ef5519e60e62a83c75c2ac"
+    },
+    {
+      "path": "earned-trace-initial-failure.log",
+      "bytes": 369,
+      "sha256": "6017d767f9fbd5994d10ae2c823102600fde9726f8f7c05e379cb3ba288a14a8"
+    },
+    {
+      "path": "earned-trace-initial.mjs",
+      "bytes": 3864,
+      "sha256": "ba7d2346dc9eb14280c4234b5928fea73a2778f79b0f6441ef135114957f9a5d"
+    },
+    {
+      "path": "earned-trace-scroll-check.log",
+      "bytes": 127,
+      "sha256": "1bad021e5757071588a9d571231832c6e81d76f9b8ef5519e60e62a83c75c2ac"
+    },
+    {
+      "path": "earned-trace-second-failure.log",
+      "bytes": 1688,
+      "sha256": "5ecb73a35b278a0b4e97823e32ffa06f010b18c0375e9c8431f5d5dd12d7c229"
+    },
+    {
+      "path": "earned-trace-second.mjs",
+      "bytes": 4002,
+      "sha256": "e882059b76dd45b583e30f9ce406c35537c7e2848a3d1866e121dd4ed4ae293b"
+    },
+    {
+      "path": "earned-trace-third-failure.log",
+      "bytes": 382,
+      "sha256": "e4a510adb43611c6ce80fd757aa77ede6bcaa4dfda06241f199a000034ec6d99"
+    },
+    {
+      "path": "earned-trace-third.mjs",
+      "bytes": 4271,
+      "sha256": "96405cd5dcef49271e654ad9ae958eb3d1e3b41dc6e12a3da76d3f1e2e4f9ff9"
+    },
+    {
+      "path": "earned-trace.mjs",
+      "bytes": 4997,
+      "sha256": "0b7632b6e4239d2a94755e2753b4d1afc5252ff869163805b5dfc73de43d6c7b"
+    },
+    {
+      "path": "targeted-initial.json",
+      "bytes": 2182,
+      "sha256": "89cc514f37f4b5622ebfb4327e0ae9b081afac36076b02446aa48be809d0d65f"
+    },
+    {
+      "path": "targeted-initial.log",
+      "bytes": 720,
+      "sha256": "fa2005e328a8f0b58b775ec92a1e5d06a7743b0a0d4b5662466905949391681f"
+    },
+    {
+      "path": "earned-trace/cause-hit-1440.json",
+      "bytes": 304,
+      "sha256": "704af32bd835cb782a36505fe8a0391359a8202ac166a90df0b73c1c3ca95f56"
+    },
+    {
+      "path": "earned-trace/cause-hit-400.json",
+      "bytes": 298,
+      "sha256": "1aec6f6a4659724025799be42776d4400b6a17d3be2312850774c98b6d91be3c"
+    },
+    {
+      "path": "earned-trace/results.json",
+      "bytes": 23070,
+      "sha256": "33c4ffb74fdb056d31e84a57a250184aea2b722dfb18de0bbc7385ac27fa94f4"
+    },
+    {
+      "path": "earned-trace/trace-1440.png",
+      "bytes": 1190330,
+      "sha256": "b2b5bcdea5a10b1c1a199d11b4bc94c2cba8e4cfe40399506f560340f6f0ae40"
+    },
+    {
+      "path": "earned-trace/trace-1440.txt",
+      "bytes": 507,
+      "sha256": "c9f7636d3cbae1e66e10e832bb85062592c7d4ede3dab66c2b4ab640ff472642"
+    },
+    {
+      "path": "earned-trace/trace-400.png",
+      "bytes": 2285158,
+      "sha256": "37370eae0662c39b8e05ddd4574351f712a1bcc81063a16e9be6e9de61be6042"
+    },
+    {
+      "path": "earned-trace/trace-400.txt",
+      "bytes": 507,
+      "sha256": "c9f7636d3cbae1e66e10e832bb85062592c7d4ede3dab66c2b4ab640ff472642"
+    },
+    {
+      "path": "earned-trace/trace-blow-1440.png",
+      "bytes": 1190167,
+      "sha256": "3c288f1797df6bbf09aab20aa7d1bcee779fd5d863e6db8d4f8f82cd6ded1032"
+    },
+    {
+      "path": "earned-trace/trace-blow-400.png",
+      "bytes": 2224527,
+      "sha256": "76c2868da4729f79c81d4f2d1f591bb001e3099d7439b4d8bee20263fa589569"
+    }
+  ]
+}

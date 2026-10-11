@@ -138,7 +138,9 @@ async function sendAndWatch(cmd) {
 
 async function sheets(cmd) {
   const max = cmd.max ?? 40, workers = cmd.workers ?? 4;
-  const url = page.url();
+  const copyUrl = new URL(page.url());
+  for (const key of ["fresh", "menu", "absent"]) copyUrl.searchParams.delete(key);
+  const url = copyUrl.href;
   const storage = await ctx.storageState();
   const mainText = await bodyText(page);
   // A copy of this page: the same saved lineage in its own context. Its save is stamped "seen now" so the

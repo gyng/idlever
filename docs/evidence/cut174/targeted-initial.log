@@ -1,0 +1,11 @@
+client suite: targeted (4/166 groups)
+FAIL death-actions   2.2s (1.8s)  Node.js v26.5.0
+     page.evaluate: Error: ordinary early death has fallback explanation
+         at check (eval at evaluate (:311:30), <anonymous>:2:200)
+         at eval (eval at evaluate (:311:30), <anonymous>:25:89)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/death-actions.mjs:5:224 {
+ok   cut30:death     3.1s (2.8s)  cut30: ok (9 checks)
+ok   report-reading  5.7s (5.4s)  1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   death-fix-discovery 19.0s (18.6s)  1440 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS
+FAIL: 3/4 client gates in 19.0s

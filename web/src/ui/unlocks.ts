@@ -253,7 +253,8 @@ export function classList(L: Lineage, catalogue: UnlockInfo[] = []): { cls: stri
 }
 
 /** A disabled class keeps its actual core requirement readable outside the dimmed button. */
-export function classUnlockReason(u: UnlockInfo | undefined): HTMLElement | "" {
-  return u && !u.owned && !u.available && u.needs
-    ? h("small", { class: "class-needs num" }, `⊘ ${u.needs.replace(/_/g, " ")}`) : "";
+export function classUnlockReason(u: UnlockInfo | undefined, unownedClass?: string): HTMLElement | "" {
+  // Free Rogue is omitted from the buy catalogue; its existing core gate is the first full haul.
+  const needs = u ? !u.owned && !u.available ? u.needs : undefined : unownedClass === "rogue" ? /* copy:callout */ "first full haul" : undefined;
+  return needs ? h("small", { class: "class-needs num" }, `⊘ ${needs.replace(/_/g, " ")}`) : "";
 }
