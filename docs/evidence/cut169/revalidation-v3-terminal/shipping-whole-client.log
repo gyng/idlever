@@ -1,0 +1,178 @@
+client suite: full (166/166 groups)
+ok   fights          190.2s (189.5s)  fights: ok (51 checks)
+ok   cut13           253.7s (63.6s)  cut13: ok (77 checks)
+ok   clarity:deep    309.3s (55.5s)  clarity deep: ok (2 checks)
+ok   clarity:card    365.9s (56.7s)  clarity card: ok (14 checks)
+ok   clarity:core,watch 408.1s (42.2s)  clarity core,watch: ok (43 checks)
+ok   clarity:hold    491.0s (82.8s)  clarity hold: ok (11 checks)
+ok   qaj             505.0s (96.8s)  qaj: ok (38 checks)
+ok   screens         539.9s (34.9s)  screens: ok (57 checks · 9 screens linted · 32 buttons clicked · 34.3s)
+ok   cut25           542.1s (134.0s)  cut25: ok (22 checks)
+ok   qa9             546.2s (55.2s)  qa9: ok (53 checks)
+ok   cut23           567.0s (20.9s)  cut23: ok (33 checks)
+ok   cut27           572.8s (30.7s)  cut27: ok (35 checks)
+ok   ui:keep         580.8s (40.8s)  ui: ok (2 checks · 40.3s)
+ok   ui:frame        595.1s (28.0s)  ui: ok (63 checks · 27.4s)
+ok   ui:stall        596.4s (23.5s)  ui: ok (3 checks · 23.0s)
+ok   ui:qa           602.2s (21.5s)  ui: ok (41 checks · 20.8s)
+ok   ascension-refusal 604.5s (8.1s)  800x400 39 ascension review/cancel/refusal/single-flight/success PASS
+ok   ambient-motes   606.8s (11.7s)  1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS
+ok   blind-77030eb   613.8s (7.0s)  blind-77030eb: ok (9 checks)
+ok   audio           624.1s (21.9s)  audio: ok (76 checks)
+ok   bloodline-training 628.7s (4.6s)  1440 22 bloodline training attribution checks PASS
+ok   bloodline-founding 629.7s (15.9s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+ok   boss-counters   634.5s (4.8s)  1440 23 boss counter clarity checks PASS
+ok   boss-beat-quiet 636.4s (7.7s)  1440 18 immediate callout/caption hold, frames, release, expiry and nameplates PASS
+ok   captive-fact-copy 638.8s (2.4s)  report traits, enemy tooltip and exact save PASS
+ok   chain           662.3s (23.6s)  chain: ok (36 checks)
+FAIL checkpoint-gold 673.9s (11.6s)  Node.js v26.5.0
+      const check=async(regex,label)=>{const t=await p.locator('.stake').getAttribute('aria-label');if(!regex.test(t))throw Error(`${label}: ${t}`);checks++;};
+     Error: swap plus checkpoint excludes secured transfer: Carried $50 · Secured $50
+         at check (file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:18:120)
+         at async file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:22:63
+ok   boss-kill-beat  690.5s (56.0s)  boss-kill-beat: ok (27 checks)
+ok   autodismiss     692.6s (88.1s)  autodismiss: 29/29 ok
+ok   chronicle-unit-labels 695.8s (5.3s)  1440 historical ownership/old fallback/spacing/read-only open/kept-death id PASS
+ok   class-locks     700.4s (4.6s)  1440 gate/token-short/available/owned/viewport/exact-save PASS
+ok   chrome          702.4s (28.5s)  chrome: 184 checks PASS
+ok   chunky-controls 706.8s (14.3s)  1440 actual run tabs/fold/material/appearance parent/read-only/rename reload PASS
+ok   class-styles    720.0s (19.5s)  1440 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+ok   class-switch    722.2s (19.8s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+ok   compact-depth   733.7s (11.6s)  1920 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS
+ok   companion-chrome 740.7s (7.0s)  1440 companion/death material/layout/select/dismiss/rules/breed/hatch/details/morgue PASS
+ok   combat-identity 746.7s (39.9s)  1440 27 combat identity/delayed actors/fallback/colours/bounds PASS
+ok   counter-name    748.8s (2.1s)  10 counter name checks PASS
+ok   control-visibility 756.0s (15.3s)  1440 automatic/manual/release/absent visibility PASS
+ok   cut115          761.8s (5.8s)  cut115: ok (9 checks)
+ok   cut117          776.3s (14.5s)  cut117: ok (22 checks)
+ok   cut118          790.3s (14.0s)  cut118: ok (19 checks)
+ok   ctxloss         799.3s (50.4s)  ctxloss: ok (19 checks)
+FAIL combat-rules    801.1s (81.1s)  Node.js v26.5.0
+       - waiting for locator('.console .gem')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/combat-rules.mjs:50:35 {
+ok   cut118b         815.1s (24.9s)  cut118b: ok (38 checks)
+ok   cut12           817.1s (16.1s)  cut12: ok (26 checks)
+ok   cut119          830.8s (31.5s)  cut119: 32 checks PASS
+ok   cut122          843.7s (12.9s)  cut122: 94 checks PASS
+ok   cut16           851.0s (7.3s)  cut16: ok (17 checks)
+ok   cut120          852.7s (37.6s)  cut120: ok (31 checks)
+ok   cut20           863.5s (12.4s)  cut20: ok (17 checks)
+ok   cut21           864.1s (11.4s)  ok cut21: 19 checks
+ok   cut22           887.9s (24.4s)  ok cut22: 31 checks
+ok   cut24           894.5s (30.3s)  cut24: ok (20 checks)
+ok   cut121          902.4s (85.2s)  cut121: ok (43 checks)
+ok   cut28d          907.2s (4.8s)  cut28d: ok (17 checks)
+ok   cut26           908.4s (20.5s)  cut26: ok (24 checks)
+ok   cut28           924.8s (30.3s)  cut28: 27/27 ok
+ok   cut30           943.6s (18.8s)  cut30: ok (42 checks)
+ok   cut29           955.7s (47.4s)  cut29: ok (46 checks)
+ok   cut28w          963.7s (56.5s)  cut28w: ok (6 checks)
+ok   cut30town       969.4s (13.7s)  cut30town: all passed
+ok   death-actions   971.7s (8.0s)  1440 recorded boss tooltip PASS
+ok   death-forecast-said 975.1s (3.5s)  1440 10 death forecast-said checks PASS
+ok   death-hero      980.0s (4.9s)  1440 9 historical death hero checks PASS
+ok   death-price-lanes 981.8s (1.7s)  death-price-lanes: 13 snapshot/cache checks PASS
+ok   debug-export    989.4s (7.6s)  1440 shipping debug export, restore, live watch and recovery PASS
+ok   death-fix-discovery 992.8s (23.4s)  1440 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS
+ok   editor-packages 995.7s (6.3s)  1440 authored/package disclosure/add/promotion/highlight/binding checks PASS
+ok   encounter-modifiers 999.2s (6.4s)  1440 encounter metadata/played state/counters/fallback/keyboard/viewport/read-only PASS
+ok   enemy-surfaces  1009.8s (14.1s)  1440 death hover/trace tap/longpress/owner/environment checks PASS
+ok   enemy-tips      1012.8s (13.5s)  1440 enemy hover/tap/keyboard/Escape/viewport and owner knowledge PASS
+ok   first-plot      1026.4s (13.7s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   forecast-requests 1034.2s (7.7s)  1440 16 forecast lifecycle checks PASS
+ok   forge-requests  1040.9s (6.8s)  1440 34 Forge request checks PASS
+ok   game-menu       1061.1s (20.1s)  81 game menu checks PASS
+ok   cut305          1061.4s (117.8s)  cut305: all passed
+ok   gpu-diagnostics 1062.9s (1.9s)  GPU diagnostics: 741 protocol checks PASS
+ok   gunner-observer 1067.1s (5.7s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   hero-appearance 1069.7s (6.8s)  1440 15 hero appearance route/lifecycle checks PASS
+ok   exit-keep-close 1070.9s (61.1s)  exit-keep-close: ok (9 checks)
+ok   hero-grounding  1071.7s (4.5s)  hero-grounding: ok (2 widths)
+ok   hero-presence   1076.5s (5.6s)  1440 16 presence/epoch/freshness/compatibility/identity checks PASS
+ok   hero-names      1076.7s (6.9s)  1440 10 hero identity checks PASS
+ok   hero-slot-looks 1077.1s (5.5s)  1440 18 slot/report appearance checks PASS
+ok   hero-upgrade-feedback 1083.5s (6.8s)  1440 upgrade names/rank/next/prices/points/away/one-buy/lifecycle/touch PASS
+ok   hero-summary    1083.5s (7.0s)  1440 9 hero/class progress and read-only live summary PASS
+ok   item-icon-fallback 1086.1s (2.5s)  failed packed image keeps identity/rarity/name and unframed primitive PASS
+ok   item-icons      1091.7s (5.6s)  1440 117 item icon checks PASS
+ok   history-pick-price 1102.3s (25.1s)  1440 historical TRY Rust price/single request/no game mutation PASS
+ok   hunger-legible  1105.0s (21.5s)  12 hunger legibility checks PASS
+ok   king-advice-scope 1116.6s (25.0s)  1440 King replay scope/count/price/eligibility checks PASS
+ok   leeching        1117.2s (12.3s)  1440 {"recoveries":2,"foeHP":14} real-worker recovery/reload/poison/replay seek/log colour/viewport PASS
+ok   legacy-tree     1132.0s (14.8s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   legacy-wire     1133.9s (1.8s)  real WASM worker respec bridge, Rust refusal and complete save unchanged PASS
+ok   legacy-earned   1137.4s (20.7s)  1440 11 Legacy owner/merge/old wire and actual WASM gain 15 PASS
+ok   live-roster     1140.6s (3.3s)  1440 20 live roster/send/poll/dedup/late reply/recovery PASS
+ok   locked-cond     1145.1s (4.5s)  locked-cond: ok (19 checks)
+ok   looks           1163.5s (18.4s)  ok: 16 checks
+ok   legible         1168.2s (34.3s)  legible: all passed
+ok   numbered-descents 1178.3s (10.1s)  1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS
+ok   numbers-agree   1182.2s (3.9s)  10 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   mirror-rhythm   1183.7s (20.2s)  1440 real first-clear lock/earned availability, visible icon/equip, no currency change, one guarded row, cancel/reload PASS
+ok   package-lanes   1187.1s (4.9s)  package-lanes: 19 checks PASS
+ok   package-paired  1193.2s (9.4s)  package-paired: 52 checks PASS
+ok   package-requests 1196.8s (9.7s)  package-requests: 88 checks PASS
+ok   package-selection 1199.6s (6.4s)  1440 15 selected Tactics checks PASS
+ok   patch-overflow  1211.7s (15.0s)  patch-overflow: ok (25 checks)
+ok   pen-edit        1216.9s (17.4s)  pen-edit: all ok
+ok   persistent-camp 1219.8s (8.1s)  1440 15 persistent camp/class placement/worker shortcut PASS
+ok   portrait-fallback 1223.9s (7.0s)  1440 healthy portrait/failure same-unit fallback/primitive/frame/historical identity/save PASS
+ok   post-clear-town 1238.0s (18.2s)  1440 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS
+ok   qa21            1240.9s (16.9s)  qa21: ok (17 checks)
+ok   qa778           1244.1s (6.1s)  qa778: ok (12 checks)
+ok   qaAA            1249.7s (5.6s)  ok: 17/17 qaAA checks
+ok   qa92            1257.2s (16.3s)  qa92: ok (40 checks · 15.7s)
+ok   qaAC            1263.7s (14.0s)  ok: 24/24 qaAC checks
+ok   recent-progress 1268.8s (5.1s)  1440 20 recent progress checks PASS
+ok   ready-plots     1272.4s (15.3s)  24 ready-plot geometry/resize/fallback cases and locked construction PASS
+ok   report-actions  1273.2s (4.4s)  1440 16 report action checks PASS
+ok   report-bosses   1277.4s (4.9s)  1440 30 boss victories/ownership/slice merge/old wire checks PASS
+ok   report-choices  1278.7s (5.5s)  1440 23 earned choice visibility/ownership/direct sections/no auto-equip PASS
+ok   layout          1280.1s (177.9s)  layout: ok (53)
+ok   report-exit-depth 1281.5s (2.8s)  8 report exit-depth checks PASS
+ok   report-class-xp 1282.1s (4.7s)  1440 20 class XP/visible rewards/slot identity/slice merges/old wire PASS
+ok   report-juice    1288.0s (6.5s)  13 level-up highlight/reveal timing/no shift/skip/settled checks PASS
+ok   report-hero-upgrade 1288.2s (8.1s)  1440 19 report upgrade/lifecycle/footer checks PASS
+ok   report-reading  1291.2s (9.1s)  1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   rest-callout    1294.2s (3.0s)  29 rest callout/observer/seek/reset checks PASS
+ok   report-time-scope 1295.4s (7.2s)  1440 completed whole runs/assigned rest/absence/aggregate/exit fallback/exact save PASS
+ok   report-supply-limit 1300.0s (12.0s)  1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS
+ok   return-pick     1300.6s (6.4s)  return-pick: ok (10 checks)
+ok   run-card-gold   1312.1s (11.5s)  1440 45 gold destination/amount/secured/old wire cases and earned historical card exact save PASS
+ok   rules-lock      1312.2s (12.2s)  1440 read-only/requirements/center/Escape/exact-save/open PASS
+ok   run-training    1319.0s (6.9s)  1440 18 run training visibility checks PASS
+ok   routine-keep    1353.8s (58.4s)  1440 none real-WASM fixture flow PASS
+ok   shaft-wrap      1362.4s (8.7s)  shaft-wrap: 8 checks PASS
+ok   tactic-change   1367.6s (5.1s)  tactic-change: ok (4 checks)
+ok   tactic-observer 1376.9s (9.3s)  1440 42 tactic ownership/clock/target/read-only checks PASS
+ok   runsui          1389.0s (70.0s)  runsui: all ok
+ok   telegraph-names 1397.5s (8.5s)  1000 17 recorded rally/priority/lifetime/visibility checks PASS
+ok   take-control    1458.0s (81.1s)  take-control: ok (58 checks)
+ok   runclear        1461.8s (149.7s)  runclear: all passed
+ok   town-clock      1471.6s (13.6s)  town-clock: PASS (36 checks)
+ok   town-save       1474.5s (12.7s)  39 manual construction persistence checks PASS
+ok   training-icons  1478.0s (6.4s)  1440 training art/text/fallback/gap/centering/wrapping PASS
+ok   unit-icons      1482.2s (7.7s)  1440 guide art/unknown concealment/fallback/death adjacency/historical class PASS
+ok   unit-label      1483.2s (5.2s)  1440 16 unit label spacing/centering/long-name/fallback PASS
+ok   wall-preparation 1487.8s (5.5s)  1440 39 wall preparation/read-only/manual/stale/lifecycle PASS
+ok   watch-end-caption 1489.7s (2.0s)  19 picture-clock/end/seek/reset caption checks PASS
+ok   watch-keepout   1493.2s (3.4s)  watch keep-out: immediate DOM nameplate removal PASS
+ok   tips            1502.3s (104.8s)  tips: 70/70 pass
+ok   watch-console   1504.4s (21.2s)  1440 labels/touch/geometry/speed/pause/Town PASS
+FAIL watch-meters    1513.6s (9.3s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at wait (/home/g/p/riddle/web/tests/watch-meters.mjs:17:23)
+         at /home/g/p/riddle/web/tests/watch-meters.mjs:25:103 {
+ok   watch-message-spacing 1517.2s (14.9s)  1440 wrapped messages/gaps/bounds/plain overlay/ticker/history/controls PASS
+ok   watch-log       1529.1s (35.9s)  1440 1 ordered floor attribution and80-entry bound PASS
+ok   watch-normal-news 1539.9s (26.3s)  watch-normal-news: ok (6 checks)
+ok   watch-speed-rate 1546.4s (29.2s)  watch-speed-rate: PASS
+ok   watch-status    1546.6s (17.5s)  1440 status/paused core progress/resume/ending PASS
+ok   worker-first-act 1547.6s (7.7s)  1440 20 worker first-act checks PASS
+ok   worker-purchases 1550.8s (4.4s)  1440 7 worker purchase checks PASS
+ok   ui:cut19        1565.6s (18.0s)  ui: ok (12 checks · 17.3s)
+ok   ui:cut18        1566.4s (19.8s)  ui: ok (11 checks · 18.9s)
+ok   clarity:paint   1595.8s (29.4s)  clarity paint: ok (5 checks)
+ok   watch-live-edge 1623.8s (28.0s)  watch-live-edge: ok (10 checks)
+FAIL: 163/166 client gates in 1623.8s

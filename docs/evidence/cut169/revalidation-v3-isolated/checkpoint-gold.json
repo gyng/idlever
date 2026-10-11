@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 12.368,
+  "failed": 1,
+  "results": [
+    {
+      "n": "checkpoint-gold",
+      "code": 1,
+      "out": "file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:18\n const check=async(regex,label)=>{const t=await p.locator('.stake').getAttribute('aria-label');if(!regex.test(t))throw Error(`${label}: ${t}`);checks++;};\n                                                                                                                       ^\n\nError: swap plus checkpoint excludes secured transfer: Carried $50 · Secured $50\n    at check (file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:18:120)\n    at async file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:22:63\n\nNode.js v26.5.0\n",
+      "ms": 12367,
+      "own": 12007
+    }
+  ]
+}

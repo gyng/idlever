@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 22.25,
+  "failed": 1,
+  "results": [
+    {
+      "n": "watch-meters",
+      "code": 1,
+      "out": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\npage.evaluate: Error: disposal did not cover a pending repaint\n    at eval (eval at evaluate (:311:30), <anonymous>:1:204)\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at /home/g/p/riddle/web/tests/watch-meters.mjs:28:10 {\n  log: []\n}\n\nNode.js v26.5.0\n",
+      "ms": 22249,
+      "own": 21897
+    }
+  ]
+}

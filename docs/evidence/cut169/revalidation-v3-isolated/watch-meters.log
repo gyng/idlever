@@ -1,0 +1,8 @@
+client suite: targeted (1/166 groups)
+FAIL watch-meters    22.2s (21.9s)  Node.js v26.5.0
+     page.evaluate: Error: disposal did not cover a pending repaint
+         at eval (eval at evaluate (:311:30), <anonymous>:1:204)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/web/tests/watch-meters.mjs:28:10 {
+FAIL: 0/1 client gates in 22.3s

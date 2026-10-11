@@ -1,0 +1,7 @@
+client suite: targeted (1/166 groups)
+FAIL checkpoint-gold 12.4s (12.0s)  Node.js v26.5.0
+      const check=async(regex,label)=>{const t=await p.locator('.stake').getAttribute('aria-label');if(!regex.test(t))throw Error(`${label}: ${t}`);checks++;};
+     Error: swap plus checkpoint excludes secured transfer: Carried $50 · Secured $50
+         at check (file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:18:120)
+         at async file:///home/g/p/riddle/web/tests/checkpoint-gold.mjs:22:63
+FAIL: 0/1 client gates in 12.4s
