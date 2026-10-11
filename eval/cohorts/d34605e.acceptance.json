@@ -463,26 +463,27 @@
     "scope": "Live transport confirmed by both operators; actual70-minute horizons and score still unproven."
   },
   "lastInfrastructureStatus": {
-    "coordinatorObservedUtc": "2026-10-11T07:41:29.379261+00:00",
+    "coordinatorObservedUtc": "2026-10-11T07:49:44.036670+00:00",
     "a": {
       "agent": "/root/blind_d346_a",
       "phase": "cold",
-      "reportedCreditedMinutes": 28.28,
+      "reportedCreditedMinutes": 34.3,
       "absencePhasesBegun": false,
       "relaySession": 66516,
       "pendingOrBlocked": false
     },
     "b": {
       "agent": "/root/blind_d346_b",
-      "phase": "4h return",
+      "phase": "8h return",
       "reportedColdMinutes": 41.0459,
       "reported20mReturnMinutes": 5.9693,
-      "reported4hReturnMinutesApprox": 4.5,
-      "eightHourReturnRemaining": true,
+      "reported4hReturnMinutes": 6.31305,
+      "reported8hReturnMinutesApprox": 2,
+      "reported8hPhaseStartedUtc": "2026-10-11T07:44:28.348Z",
       "relaySession": 21401,
       "pendingOrBlocked": false
     },
-    "scope": "Infrastructure-only messages, no opinions/awards requested or read. These are provisional rater reports, not audited horizon certificates. B reports cold and20m phases complete,4h underway,8h still required; compaction/bookkeeping excluded. Both existing agents confirmed running; profiles/build unchanged. A status retains the earlier exact report and is not a current interval audit."
+    "scope": "Fresh infrastructure-only replies from both raters, with no opinions/awards requested or read. Provisional rater counts only, not audited horizon certificates. Both agents running, existing relay/profile/frozen build unchanged and no pending or blocked handle; buffered waits, status administration and boundary uncertainty excluded. Both complete locked cards are still required before audit/scoring."
   },
   "integrityDuringIsolatedPolish": {
     "utc": "2026-10-11T07:36:02.760256+00:00",

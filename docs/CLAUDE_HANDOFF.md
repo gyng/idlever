@@ -1,3 +1,7 @@
+# Live8h return / pending GPU harness — 2026-10-11
+
+Fresh equal infrastructure-only replies: A cold34.30/40 credited minutes, no returns begun; B cold41.0459,20m5.9693,4h6.31305 complete,8h~2 underway (began07:44:28.348UTC). Both relays66516/21401 responsive/no pending or blocker, same profiles5380/5381 and frozen5269; counts provisional, exact interval audit pending. No cards/opinions read. Both agents confirmed running; wait complete locked cards before scoring. Root prepared syntax-checked one-off /tmp/riddle-menu-polish/scratchpad/grass-wind/gpu-check.mjs, guarded --cohort-released: real-WASM400/1440 night with24 cosmetic walkers,>=95% concurrent display rAF, warmCPU p95<8ms, save/cache and visibility checks. Not executed; wait both browser releases. Goal>=80 active/unproven, isolated polish not integrated, no deployment.
+
 # Live return milestone — 2026-10-11
 
 B infrastructure-only update: cold41.0459 conservative active minutes and20m return5.9693 complete;4h return~4.5 underway, compaction/bookkeeping excluded,8h still required. Relay21401 responding/no pending; same5381 profile/frozen5269. Both agents confirmed running; no raw cards locked or opinions read. Counts are provisional reports, not audited certificates. Await both complete locked cards, then audit intervals before scoring. Goal>=80 remains active/unproven; isolated polish integration and grass GPU gate remain pending. No deployment.
