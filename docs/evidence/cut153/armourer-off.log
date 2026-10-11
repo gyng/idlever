@@ -1,0 +1,21 @@
+dayplayer: targeted rows automation-pays — configurations AWAY,AWAY-nodes
+dayplayer: AWAY s1 done in 72s 
+dayplayer: AWAY s2 done in 97s 
+dayplayer: AWAY-nodes s2 done in 92s 
+dayplayer: AWAY-nodes s1 done in 94s 
+
+AWAY (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1      24     24     48     72    120    240    240  [13, 20, 25, 25, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33]  stall 0 king None left 87% ×128 L[1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+   2      24     24     48     48     72    168    168  [13, 23, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33, 33]  stall 0 king None left 56% ×196 L[1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+AWAY-nodes (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1      24     48     48     48     72    192    192  [11, 23, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33, 33, 33]  stall 0 king None left 43% ×213 L[1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+   2      24     48     48     72    120    240    240  [11, 20, 23, 24, 28, 28, 28, 28, 28, 33, 33, 33, 33, 33]  stall 0 king None left 87% ×144 L[1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+
+bots over 2 seeds × 14 days × 3/day (100s)
+
+bar (targeted)                                                                value  result
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 48 h · mean best 28.57 vs 28.14  PASS
+dayplayer (targeted: automation-pays, 100s): targeted rows PASS — not a gate pass

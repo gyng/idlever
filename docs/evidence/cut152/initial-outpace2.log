@@ -1,0 +1,13 @@
+dayplayer: targeted rows outpace — configurations IDLE,PICKED
+dayplayer: PICKED s2 done in 15s 
+dayplayer: PICKED s1 done in 19s 
+dayplayer: IDLE s2 done in 32s 
+dayplayer: IDLE s1 done in 35s 
+dayplayer --fail-fast: outpace settled PASS after IDLE s1 (day 14) (35s): 93–93% (13/14 pairs, 0 seeds left)
+fail-fast: every targeted row settled after IDLE s1 (day 14)
+
+bar (targeted, fail-fast)                                                     value  result
+IDLE never out-paces PICKED                                                 settled  PASS
+    93–93% (13/14 pairs, 0 seeds left)
+dayplayer (targeted: outpace, fail-fast, 35s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `outpace` (fail-fast) PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

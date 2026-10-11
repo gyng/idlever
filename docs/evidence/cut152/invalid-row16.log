@@ -1,0 +1,35 @@
+dayplayer --rows: `content-reach` names no row; the rows:
+  idle-d8            IDLE reaches D8 by the end of day 1
+  idle-d13           IDLE reaches D13 by day 4
+  idle-d23           IDLE reaches D23 by day 12
+  idle-stall         IDLE longest best-depth stall
+  idle-gold          IDLE net gold > 0 every day
+  idle-king          IDLE does not slay the Mirror King
+  stance             Stance L3 by day 2, L5 by day 7
+  return-pick        Every IDLE check-in offers a return pick
+  grew               Every IDLE check-in grows
+  idle-stages        Days with a stage opened: IDLE
+  picked-idle        PICKED ≥ 1.5× IDLE at D13, D18, D23
+  outpace            IDLE never out-paces PICKED
+  picked-stages      Days with a stage opened: PICKED
+  reach              Content reach: PICKED ≥ D14 by day 2
+  stalls-idle        Stalls ≤ 1 % of sends, every IDLE seed
+  stalls-picked      Stalls ≤ 1 % of sends, every PICKED seed
+  stalls-tuned       Stalls ≤ 1 % of sends, every TUNED seed
+  tuned-picked       TUNED beats PICKED by ≥ 15 % at D33
+  random-picked      RANDOM slower than PICKED at D13, D23
+  nothing-required   Nothing required: TUNED − S
+  porter             Porter bought ≤ min 12
+  scout              Scout bought ≤ min 15
+  nodes-lit          Every node whose chore exists lit by 48 h
+  nodes-bought       Every node whose chore exists bought by 72 h
+  conserved          Gold conserved
+  hands-idle         HANDS never slower than IDLE
+  automation-pays    Workers pay the away player
+  workers-daily      Workers never cost the daily player
+  nodes-required     Nothing required, S = nodes
+  idle-delta         IDLE within a bounded delta
+  picked-l-king      PICKED+L King no sooner than day 7
+  picked-l-purse     PICKED+L purse at day 3
+  each-system        Each system adds value by its own output
+gates: TARGETED — dayplayer rows `idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,content-reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,picked-l-king,picked-l-purse,hands-idle,automation-pays` (fail-fast) FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

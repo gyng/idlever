@@ -1,0 +1,40 @@
+{
+  "target_source_sha256": "fe8eb634132ceeeabcb7169fa13852e0b53221d18956a32eda84e0aafc91addf",
+  "final_source_sha256": "2d5db67107889c4e67fde0eadf92684b3808a160b2992fedd788d8a79e11214f",
+  "fixture_only_edit": true,
+  "results": {
+    "session-tests-final": {
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "session_chore_tests"
+      ],
+      "exit_status": 0,
+      "log": "docs/evidence/cut152/session-tests-final.log"
+    },
+    "resume-parity": {
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "resume_preserves_complete_bot_outputs_and_game"
+      ],
+      "exit_status": 0,
+      "log": "docs/evidence/cut152/resume-parity.log"
+    }
+  },
+  "full_acceptance": "pending"
+}

@@ -1,0 +1,26 @@
+{
+  "status": "full verification FAIL, harness not adopted",
+  "session": 46520,
+  "exit_status": 1,
+  "native_source_key": "336ae0d287a23c8a",
+  "dayplayer_seconds": 299.8,
+  "scope": "routine18fortnight cases plus genuine cached matching-runtime metrics/wire legs",
+  "passed": [
+    "797 Rust tests,6 ignored",
+    "14 tooling checks",
+    "typecheck/copy2354zero",
+    "workspace all-target lint",
+    "release WASM and web build",
+    "outpace93% versus unchanged90%"
+  ],
+  "failed": [
+    "porter median12.9min versus12; worst13.5 versus15",
+    "away workers D18 48 versus36h; mean best28.14 versus28.46"
+  ],
+  "target16": "separate targeted20rowsPASS1979s, does not replace full failure",
+  "artifacts": {
+    "crates/riddle-core/examples/dayplayer.rs": "2d5db67107889c4e67fde0eadf92684b3808a160b2992fedd788d8a79e11214f",
+    "target/fast/examples/dayplayer": "433d76e70412b00b53376ad2674be662c6e5c2b1a1d26673c99570273ab2b9e3",
+    "web/src/engine/pkg/riddle_wasm_bg.wasm": "7a158025086c2f0f990333eb529d684390758ac79aa8bfe0d38394a8a6e34a2b"
+  }
+}

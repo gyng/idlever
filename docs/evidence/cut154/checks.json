@@ -1,0 +1,43 @@
+{
+  "repeat_entire_output_exact": true,
+  "source_sim_false": true,
+  "baseline": {
+    "depth": 28,
+    "runs": 20
+  },
+  "paid": {
+    "gold": 39,
+    "depth": 33,
+    "runs": 13
+  },
+  "build_exit": 0,
+  "clippy_exit": 0,
+  "artifacts": [
+    {
+      "path": "source.save.json.gz",
+      "sha256": "5bf14e508a625f02a1ac93f5b06997d57bf2407a7cd76ffb4f064c70b0bb5518",
+      "source_sha256": "4b17e98e659593a0e92e22abde1e476023d2dd4a85e2437ff4c5ac52d45920fb"
+    },
+    {
+      "path": "paid-silence.json.gz",
+      "sha256": "4eeea81f2e509d2515590ec95e14bb228da6308fc60c2b075e15da1b407037a1",
+      "source_sha256": "0d0798d727e4c71af9b2700d200ada07a1c89c2a254da135fdfd59827c85a4d9"
+    },
+    {
+      "path": "paid-silence-repeat.json.gz",
+      "sha256": "4eeea81f2e509d2515590ec95e14bb228da6308fc60c2b075e15da1b407037a1",
+      "source_sha256": "0d0798d727e4c71af9b2700d200ada07a1c89c2a254da135fdfd59827c85a4d9"
+    },
+    {
+      "path": "death-verdicts.json.gz",
+      "sha256": "8b105c30f1092822872d61b099e89ecb78a8bb926b885de0fabed82585b58b79",
+      "source_sha256": "e8b4782dcaec7e1c3c90030c327c5dab0d6b9c1f10f0ff8d6f191ae02dcd655b"
+    },
+    {
+      "path": "silence_check-source.rs.gz",
+      "sha256": "6c22fc07741b7131db098d5f9723b1ab89acc93c1fb59333a198270ce1f31bfe",
+      "source_sha256": "80b2e278520ef783f8b95e40a24aab7d1574e89e6114d0d6b81da47e01997c3e"
+    }
+  ],
+  "binary_sha256": "637f441b9bece6b5d01ce07f6796cd3d49d97661e2c63615e078aa28d6201abc"
+}
