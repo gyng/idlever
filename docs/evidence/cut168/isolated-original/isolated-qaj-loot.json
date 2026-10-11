@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 7.947,
+  "failed": 0,
+  "results": [
+    {
+      "n": "qaj:loot",
+      "code": 0,
+      "out": "ok   fast: the override marks the preference's pick (sword)\nok   fast: the sheet reads \"loot choice\"\nok   fast: ⏸ takes the tap under the cage and keeps the sheet (▶, sheet true)\nok   fast: ▶▶| takes the tap, closes the sheet and picks nothing (sheet false, chose null)\nok   fast: a pick the player did not make is named on the ticker (took sword)\nok   fights: the override marks the preference's pick (sword)\nok   fights: the sheet reads \"loot choice\", \"storage full → sold\"\nok   fights: ⏸ takes the tap under the cage and keeps the sheet (▶, sheet true)\nok   fights: ▶▶| takes the tap, closes the sheet and picks nothing (sheet false, chose null)\nok   fights: a pick the player did not make is named on the ticker (took sword)\nqaj: ok (10 checks)\n",
+      "ms": 7946,
+      "own": 7342
+    }
+  ]
+}

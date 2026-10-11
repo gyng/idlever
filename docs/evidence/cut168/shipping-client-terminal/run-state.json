@@ -1,0 +1,106 @@
+{
+  "scope": "Current-runtime mechanical acceptance, not a blind score or actor adoption",
+  "status": "failed",
+  "steps": [
+    {
+      "name": "actor-paid-actions",
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "session_chore_tests"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T17:50:30.841492+00:00",
+      "pid": 3558864,
+      "exit_code": 0,
+      "elapsed_seconds": 1.382688726997003,
+      "finished_utc": "2026-10-11T17:50:32.224538+00:00"
+    },
+    {
+      "name": "actor-resume",
+      "command": [
+        "cargo",
+        "test",
+        "-q",
+        "--profile",
+        "fast",
+        "-p",
+        "riddle-core",
+        "--example",
+        "dayplayer",
+        "checkpoint_tests::resume_preserves_complete_bot_outputs_and_game"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T17:50:32.259225+00:00",
+      "pid": 3558938,
+      "exit_code": 0,
+      "elapsed_seconds": 79.85885571083054,
+      "finished_utc": "2026-10-11T17:51:52.118389+00:00"
+    },
+    {
+      "name": "actor16",
+      "command": [
+        "node",
+        "tools/gates.mjs",
+        "--full",
+        "--rows",
+        "idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,hands-idle,automation-pays,picked-l-king,picked-l-purse,porter,scout",
+        "--fail-fast",
+        "--seeds",
+        "16",
+        "--tuned-seeds",
+        "16",
+        "--loo-seeds",
+        "16"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T17:51:52.150772+00:00",
+      "pid": 3559356,
+      "exit_code": 0,
+      "elapsed_seconds": 1320.3038216850255,
+      "finished_utc": "2026-10-11T18:13:52.454937+00:00"
+    },
+    {
+      "name": "full-routine",
+      "command": [
+        "tools/verify.sh",
+        "--full"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-11T18:13:52.506264+00:00",
+      "pid": 3568401,
+      "exit_code": 0,
+      "elapsed_seconds": 580.9105957681313,
+      "finished_utc": "2026-10-11T18:23:33.417165+00:00"
+    },
+    {
+      "name": "shipping-whole-client",
+      "command": [
+        "node",
+        "tests/run.mjs",
+        "--full",
+        "--report",
+        "/home/g/p/riddle/scratchpad/cut168/shipping-client-results.json"
+      ],
+      "status": "failed",
+      "started_utc": "2026-10-11T18:23:33.476884+00:00",
+      "pid": 3642125,
+      "exit_code": 1,
+      "elapsed_seconds": 1709.8518106080592,
+      "finished_utc": "2026-10-11T18:52:03.332700+00:00"
+    }
+  ],
+  "updated_utc": "2026-10-11T18:52:03.398808+00:00",
+  "current": "shipping-whole-client",
+  "shipping_wasm": {
+    "bytes": 4879943,
+    "sha256": "e8596a72faeb2302e85d5a4f1b45bde1e336e3d2fac9f261dda46615ca059239"
+  }
+}

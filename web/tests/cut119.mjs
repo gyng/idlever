@@ -111,14 +111,24 @@ try {
       const hl = [...document.querySelectorAll(".report-sheet > .report-hl")].map((x) => x.dataset.hl);
       const foldPet = [...document.querySelectorAll(".report-details .report-feats .pet-line")].map((li) => li.dataset.k);
       const lead = document.querySelector(".report-sheet .report-feats .pet-line");
-      return { cardFeats, restPet, hl, foldPet, leadPet: lead ? { k: lead.dataset.k, text: lead.textContent } : null, hasFetchedTerm: !!rep.gold?.ledger?.terms?.some((t) => t.label === "fetched"), feats: (rep.feats ?? []).map((f) => f.k) };
+      const fetchLines = [...document.querySelectorAll('.report-sheet .pet-line[data-k="fetched"]')].map((li) => li.textContent);
+      return { cardFeats, restPet, hl, foldPet, fetchLines, rawFetches: (rep.feats ?? []).filter((f) => f.k === "fetched"), leadPet: lead ? { k: lead.dataset.k, text: lead.textContent } : null, hasFetchedTerm: !!rep.gold?.ledger?.terms?.some((t) => t.label === "fetched"), feats: (rep.feats ?? []).map((f) => f.k) };
     }));
     await page.locator(".report-gold").hover(); await page.waitForTimeout(900);
     r.ledgerTip = await page.evaluate(() => { const t = document.getElementById("kw-tip"); return t && !t.hidden ? t.textContent : ""; });
     const cardPets = r.cardFeats.filter((x) => x.pet).length;
     check(r.hl.length <= 3 && cardPets <= 1 && r.cardFeats.filter((x) => !x.pet).length <= 1 && (cardPets === 1 || (r.hl.length === 3 && r.foldPet.length > 0)), `the report's card: ≤ 3 highlights, one pet line there unless outranked (${r.hl.join(", ")} · card ${r.cardFeats.map((x) => x.k).join(", ")})`);
     check(!r.feats.includes("fetched") || (r.leadPet?.k === "fetched" && /brought \$\d+/.test(r.leadPet.text)), `a fetch leads the pet line (${r.leadPet?.text})`);
-    check(r.restPet.filter((k) => k === "fetched").length === 0 && r.restPet.filter((k) => k === "old_hound").length <= 1, `the pet lines condense (rest: ${r.restPet.join(", ")})`);
+    // Cut119 promises one fetch line PER PET. Two different pets may fetch in
+    // the same absence; only the leading deed belongs on the summary card.
+    const fetchedByPet = new Map();
+    for (const f of r.rawFetches) {
+      const match = /^(.+?) brought .+?'s pack · \$(\d+)\.?$/.exec(f.text);
+      if (!match) throw new Error(`Unrecognised earned fetch: ${f.text}`);
+      fetchedByPet.set(match[1], (fetchedByPet.get(match[1]) ?? 0) + Number(match[2]));
+    }
+    const expectedFetches = [...fetchedByPet].map(([pet, gold]) => `${pet} brought $${gold}`).sort();
+    check(JSON.stringify([...r.fetchLines].sort()) === JSON.stringify(expectedFetches) && r.restPet.filter((k) => k === "old_hound").length <= 1, `the pet lines condense once per pet with exact summed gold (rest: ${r.restPet.join(", ")}; fetches: ${JSON.stringify({ rendered: r.fetchLines, expected: expectedFetches, raw: r.rawFetches })})`);
     check(!r.hasFetchedTerm || /fetched[^]*packs pets carried/.test(r.ledgerTip), `the ledger tip glosses fetched (${r.hasFetchedTerm})`);
 
     // a watched death: `other heirs` where heir_traits.offer fills

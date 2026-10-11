@@ -1,0 +1,35 @@
+{
+  "scope": "Unchanged-assertion isolated diagnosis after complete shipping suite; not acceptance",
+  "status": "complete",
+  "steps": [
+    {
+      "name": "qaj:loot",
+      "status": "passed",
+      "pid": 3683099,
+      "exit_code": 0,
+      "elapsed_seconds": 7.981836091028526
+    },
+    {
+      "name": "cut119",
+      "status": "failed",
+      "pid": 3683516,
+      "exit_code": 1,
+      "elapsed_seconds": 33.18274368811399
+    },
+    {
+      "name": "legacy-tree",
+      "status": "passed",
+      "pid": 3683978,
+      "exit_code": 0,
+      "elapsed_seconds": 12.65660279407166
+    }
+  ],
+  "updated_utc": "2026-10-11T18:53:19.646525+00:00",
+  "full_failed": [
+    "cut119",
+    "legacy-tree",
+    "qaj",
+    "watch-live-edge"
+  ],
+  "full_elapsed": 1709.636
+}

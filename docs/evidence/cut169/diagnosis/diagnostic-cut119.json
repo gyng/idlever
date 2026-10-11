@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 27.112,
+  "failed": 1,
+  "results": [
+    {
+      "n": "cut119:real",
+      "code": 1,
+      "out": "ok   role first on every card, with its glyph (Ashar:mender, Zelak:guard, Ashak:scout)\nok   the core's name, the level and an XP bar\nok   a bred pup carries its generation (none bred)\nok   lame N on a lamed pet only (none lamed)\nok   tenure: heirs served, the old hound's mark (1 heir, 1 heir, 1 heir)\nok   the grudge (grudge King, grudge King, grudge King)\nok   the tip names the L3 / L5 signatures ( Ashar · pink jellymender · heals him between fightsL3 patch · L5 revive oncetam)\nok   the kennel order chip in the run setup (breed*,best,off)\nok   setOrders sets the keeper's order; off-default reads in the summary (best · keep weapon · loot → weapon · kennel best · Ascension 5)\nok   the tame drill shown and revocable (revokeTame: true → false)\nok   the report's card: ≤ 3 highlights, one pet line there unless outranked (progress, find, pet · card siege_won, fetched)\nok   a fetch leads the pet line (Ashak brought $73)\nFAIL the pet lines condense (rest: fetched, old_hound, pet; fetches: {\"rendered\":[\"Ashak brought $73\",\"Ashar brought $71\"],\"raw\":[{\"k\":\"fetched\",\"text\":\"Ashak brought Rook's pack · $73\",\"day\":13},{\"k\":\"fetched\",\"text\":\"Ashar brought Sable's pack · $71\",\"day\":13}]})\nok   the ledger tip glosses fetched (true)\nok   the death's other heirs fold on a real offer (3/3 cards, closed)\nok   one heir lit, never none (light hands)\nok   a swap sets the heir (setTrait → marsh-blood · frail)\ncut119: 1 of 17 FAIL\n",
+      "ms": 27111,
+      "own": 26784
+    }
+  ]
+}
