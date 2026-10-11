@@ -3,6 +3,46 @@ use crate::engine::Game;
 use crate::rules::{Cond, Row, Verb};
 use crate::wire::Ev;
 
+#[test]
+fn best_orders_upgrade_ordinary_brought_gear_without_evicting_a_missing_vault_item() {
+    use crate::engine::{auto_keep_plan, ExitTier, PendingExit};
+    use crate::item::Item;
+    let item = |id, kind: &str, enchant| { let mut i = Item::new(id, kind); i.enchant = enchant; i };
+    let plan = |old: Item, new: Item, pref: &str, slots, quartermaster| {
+        let p = PendingExit { run_id: 1, tier: ExitTier::Bank, brought: vec![old.id],
+            items: vec![old, new], pct: 100, found: Vec::new(), stalled: false };
+        auto_keep_plan(&p, &[], slots, pref, quartermaster)
+    };
+    for pref in ["best_weapon", "best_armour"] {
+        for (kind, stronger) in [("axe", "sword"), ("leather", "mail")] {
+            let old = item(100001, kind, 1);
+            let new = item(50, stronger, 2);
+            assert_eq!(plan(old.clone(), new.clone(), pref, 1, true), (vec![50], vec![]));
+            assert_eq!(plan(old.clone(), new.clone(), pref, 2, true), (vec![100001, 50], vec![]));
+            assert_eq!(plan(old, new, pref, 0, true), (vec![], vec![]));
+        }
+    }
+    for pref in ["none", "unknown"] {
+        assert_eq!(plan(item(100001, "axe", 1), item(50, "sword", 2), pref, 1, true), (vec![100001], vec![]));
+    }
+    for enchant in [0, 1] {
+        assert_eq!(plan(item(100001, "axe", 1), item(50, "axe", enchant), "best_weapon", 1, true), (vec![100001], vec![]));
+    }
+    assert_eq!(plan(item(100001, "axe", 1), item(50, "plate", 9), "best_weapon", 1, true), (vec![100001], vec![]));
+    assert_eq!(plan(item(100001, "leather", 1), item(50, "mail", 2), "best_weapon", 1, false), (vec![100001], vec![]));
+    assert_eq!(plan(item(100001, "leather", 1), item(50, "mail", 2), "best_armour", 1, false), (vec![50], vec![]));
+    for protected in [item(1, "axe", 1), item(100001, "short_gun", 1), {
+        let mut i = item(100001, "axe", 1); i.forged = Some([1, 0, 1]); i
+    }] {
+        assert_eq!(plan(protected.clone(), item(50, "axe", 9), "best_weapon", 1, true), (vec![protected.id], vec![]));
+    }
+    let mut gun = item(50, "axe", 9); gun.firearm = Some(crate::firearm::Chambers::loaded(crate::firearm::Profile::of("short_gun").unwrap()));
+    let mut forged = item(50, "axe", 9); forged.forged = Some([1, 0, 1]);
+    for protected in [item(1, "axe", 9), gun, forged] {
+        assert_eq!(plan(item(100001, "axe", 1), protected, "best_weapon", 1, true), (vec![100001], vec![]));
+    }
+}
+
 /// §2: a fresh lineage opens the day-0 systems only; each trigger opens its system (sticky), the
 /// wire lists every system with its trigger and the new ones glint once; a bot's `open_all` opens all.
 #[test]

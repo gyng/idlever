@@ -8073,12 +8073,18 @@ pub fn auto_keep_plan(p: &PendingExit, vault: &[Item], slots: usize, keep_pref: 
         if !upgrade {
             return;
         }
-        // The weakest vault item of the same category that this find beats; never one kept
-        // on this exit.
-        let weakest = held.iter().enumerate().filter(|(_, (id, c, v))| *c == it.cat() && *v < it.value() && !ids.contains(id)).min_by_key(|(_, (id, _, v))| (*v, *id)).map(|(i, _)| i);
+        // Best-gear orders also upgrade ordinary brought gear. A find selected on
+        // this exit and per-instance forged/gun/kit gear remain protected.
+        let ordinary = |item: &Item| item.firearm.is_none() && item.forged.is_none() && !crate::kit::is_kit_id(item.id);
+        let weakest = held.iter().enumerate().filter(|(_, (id, c, v))| {
+            *c == it.cat() && *v < it.value() && (!ids.contains(id)
+                || (p.brought.contains(id) && ordinary(it)
+                    && p.items.iter().find(|old| old.id == *id).is_some_and(ordinary)))
+        }).min_by_key(|(_, (id, _, v))| (*v, *id)).map(|(i, _)| i);
         if let Some(i) = weakest {
             let (old, _, _) = held.remove(i);
-            evict.push(old);
+            if ids.contains(&old) { ids.retain(|id| *id != old); }
+            else { evict.push(old); }
             held.push((it.id, it.cat(), it.value()));
             ids.push(it.id);
         }

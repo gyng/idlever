@@ -1,0 +1,10 @@
+file:///home/g/p/riddle/scratchpad/cut161/wasm-earned.mjs:28
+ assert.deepEqual(result.preview.auto_keep,[94]);assert.equal(result.after.pending_exit,null);
+                                 ^
+
+TypeError: Cannot read properties of undefined (reading 'auto_keep')
+    at file:///home/g/p/riddle/scratchpad/cut161/wasm-earned.mjs:28:34
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:502:9)
+
+Node.js v26.5.0

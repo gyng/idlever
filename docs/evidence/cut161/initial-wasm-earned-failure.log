@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Error: nothing to keep
+    at __wbg_Error_67e7344beaa85059 (http://localhost:37859/src/engine/pkg/riddle_wasm.js:2328:25)
+    at riddle_wasm.wasm.wasm_bindgen::__wbindgen_error_new::__wbg_Error_67e7344beaa85059::h729fae656db8b95d externref shim (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[6160]:0x553e56)
+    at riddle_wasm.wasm.wasm_bindgen::__wbindgen_error_new::hc1e13b85be22b177 (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[6546]:0x555581)
+    at riddle_wasm.wasm.riddle_wasm::Game::keep::h5c50c2e96f10f436 (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[3211]:0x4bd828)
+    at riddle_wasm.wasm.wasm_bindgen::__rt::maybe_catch_unwind::hca525fcae48b2492 (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[4723]:0x52851f)
+    at riddle_wasm.wasm.game_keep (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[4152]:0x506903)
+    at riddle_wasm.wasm.game_keep multivalue shim (http://localhost:37859/src/engine/pkg/riddle_wasm_bg.wasm:wasm-function[6007]:0x552552)
+    at Game.keep (http://localhost:37859/src/engine/pkg/riddle_wasm.js:1019:30)
+    at eval (eval at evaluate (:311:30), <anonymous>:7:56)
+    at async <anonymous>:337:30
+    at /home/g/p/riddle/scratchpad/cut161/wasm-earned.mjs:14:26 {
+  log: []
+}
+
+Node.js v26.5.0
