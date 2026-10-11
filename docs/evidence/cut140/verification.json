@@ -1,0 +1,18 @@
+{
+  "scope": "synthetic pending-exit diagnostic only",
+  "build": {
+    "command": "cargo build -q --profile fast -p riddle-core --example keep_check",
+    "exit_status": 0
+  },
+  "clippy": {
+    "command": "cargo clippy -q --profile fast -p riddle-core --example keep_check -- -D warnings",
+    "exit_status": 0
+  },
+  "catalogue_cases": 36,
+  "roundtrip_equal": 36,
+  "idempotent": 36,
+  "salvage_fractional_conservation": 36,
+  "routine_zero_confirmation_bar": "baseline FAIL6/18, implementation pending",
+  "no_shipping_core_change": true,
+  "no_deployment": true
+}
