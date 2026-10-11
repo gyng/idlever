@@ -688,10 +688,15 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
   // the forge's part of the spent: the core's `apprentice` and `forge` terms, else the workers' purchases
   const forgeGold = ledger?.terms ? -ledger.terms.filter((t) => t.label === "apprentice" || t.label === "forge").reduce((n, t) => n + Math.min(0, t.amount), 0) : boughtGold;
   const headGold = ledger ? ledger.earned : runGold + lootGold + passageGold;
+  // The core's negative total also contains carry lost before reaching the purse.
+  // Name that term separately so a death never reads as a purchase.
+  const ledgerLost = ledger?.terms ? -ledger.terms.filter((t) => t.label === "lost").reduce((n, t) => n + Math.min(0, t.amount), 0) : 0;
+  const ledgerSpent = ledger ? ledger.spent - ledgerLost : 0;
   const ledgerLine = ledger && (ledger.spent !== 0 || ledger.earned !== runGold + lootGold + passageGold) ? h("small", { class: "report-ledger num", "data-earned": ledger.earned, "data-spent": ledger.spent, "data-net": ledger.net, "data-terms": ledger.terms ? ledger.terms.length : "" },
     h("span", { class: "report-earned" }, /* copy:callout */ `earned $${ledger.earned}`), " − ",
-    h("span", { class: "report-spent" }, /* copy:callout */ `spent $${ledger.spent}`,
-      forgeGold > 0 ? h("small", { class: "report-bought dim" }, /* copy:callout */ ` (forge $${forgeGold})`) : ""), " = ",
+    h("span", { class: "report-spent" }, /* copy:callout */ `spent $${ledgerSpent}`,
+      forgeGold > 0 ? h("small", { class: "report-bought dim" }, /* copy:callout */ ` (forge $${forgeGold})`) : ""),
+    ...(ledgerLost > 0 ? [" − ", h("span", { class: "report-ledger-lost" }, /* copy:callout */ `lost $${ledgerLost}`)] : []), " = ",
     h("span", { class: "report-net" }, /* copy:callout */ `purse ${signed(ledger.net)}`)) : null;
   const termRows = (): HTMLElement[] | null => ledger?.terms ? [...ledger.terms.filter((t) => t.amount > 0), ...ledger.terms.filter((t) => t.amount < 0)]
     .map((t) => h("div", { class: "num ledger-term", "data-term": t.label, title: TERM_GLOSS[t.label] }, t.label, ` · ${signed(t.amount)}`, TERM_GLOSS[t.label] ? h("small", { class: "dim term-gloss" }, ` · ${TERM_GLOSS[t.label]}`) : "")) : null;
@@ -715,11 +720,12 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     workersGold > 0 ? h("small", { class: "report-workers-spent num dim", title: /* copy:tooltip */ "the workers' forge and works spending · their own term" }, /* copy:callout */ `−$${workersGold} workers`) : ""), () => termRows() ? [
       // Cut 117 §1: the core's named terms, inflows first — earned − spent = purse change, to the dollar
       h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Gold change")),
-      h("div", { class: "num" }, /* copy:label */ "Earned", ` · $${ledger!.earned}`, " · ", /* copy:label */ "Spent", ` · $${ledger!.spent}`),
+      h("div", { class: "num" }, /* copy:label */ "Earned", ` · $${ledger!.earned}`, " · ", /* copy:label */ "Spent", ` · $${ledgerSpent}`,
+        ...(ledgerLost > 0 ? [" · ", /* copy:label */ "Lost", ` · $${ledgerLost}`] : [])),
       ...termRows()!,
       h("div", { class: "num" }, h("b", null, /* copy:label */ "Purse change"), ` · ${signed(ledger!.net)}`),
       ...lostTip(),
-      h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "Earned before spending; purse change counts everything")] : [
+      h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "Earned before spending and losses; purse change counts everything")] : [
       h("div", { class: "kw-tip-head" }, h("b", null, ledger ? /* copy:label */ "Gold change" : /* copy:label */ "Gold earned")),
       ...(ledger ? [h("div", { class: "num" }, /* copy:label */ "Earned", ` · $${ledger.earned}`, " · ", /* copy:label */ "Spent", ` · $${ledger.spent}`)] : []),
       h("div", { class: "num" }, /* copy:label */ "Run gold", ` · $${runGold}`),

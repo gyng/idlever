@@ -1,0 +1,31 @@
+{
+  "visibleInstructionSources": {
+    "generic": [
+      "System instructions",
+      "Developer instructions",
+      "Tool definitions",
+      "Environment context",
+      "Skill catalog referencing SKILL.md files for imagegen, openai-docs, skill-creator, and skill-installer; file contents were not supplied or read"
+    ],
+    "projectInstructionFiles": []
+  },
+  "gameSpecificExposure": {
+    "visible": false,
+    "material": [],
+    "statement": "No game design, source, previous results, QA findings, game-specific conversation history, URL, or target score was visible."
+  },
+  "toolsAvailable": [
+    "Execution and filesystem tools",
+    "Web and browser tools",
+    "Image generation tools",
+    "Resource and plugin tools",
+    "User-input tools",
+    "Clock tools",
+    "Agent collaboration tools"
+  ],
+  "auditLimitations": [
+    "This audit covers only context visible to me; I cannot certify hidden context.",
+    "No tools were called and no files or credentials were read."
+  ],
+  "preflightOnly": true
+}

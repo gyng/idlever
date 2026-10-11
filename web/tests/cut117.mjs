@@ -205,7 +205,7 @@ try {
     await page.waitForFunction(() => document.querySelectorAll("#kw-tip .ledger-term").length > 0, null, { timeout: 5000 }).catch(() => {});
     c.tip = await page.evaluate(() => [...document.querySelectorAll("#kw-tip .ledger-term")].map((x) => x.textContent));
     check(c.e === 2659 && c.s === 9448 && c.n === -6789 && c.e - c.s === c.n && c.head === "+$2659" && c.terms === 5, `the core's ledger reads as sent (${c.text} · head ${c.head})`);
-    check(/earned \$2659 − spent \$9448 \(forge \$6750\) = purse −\$6789/.test(c.text ?? ""), `the forge part from the apprentice term (${c.text})`);
+    check(/earned \$2659 − spent \$6828 \(forge \$6750\) − lost \$2620 = purse −\$6789/.test(c.text ?? ""), `purchases and lost carry are separate, with the forge from the apprentice term (${c.text})`);
     check(c.tip.join("|") === "carried · +$2620|heir · +$39|lost · −$2620|apprentice · −$6750|supplies · −$78", `each term named in the tip, inflows first (${c.tip.join(" | ")})`);
     await page.close();
   }

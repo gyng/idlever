@@ -214,7 +214,7 @@ export function findsReveal(f: FindsReveal | undefined): HTMLElement | null {
   const best = f.best ?? f.finds[0];
   const el = h("div", { class: "report-reveal report-hl num", "data-hl": "find", "data-sealed": f.sealed, "data-best": best.id },
     h("span", { class: "reveal-glyph", "aria-hidden": "true" }, "✦"), " ", h("b", null, best.name), h("small", { class: "dim" }, ` · ${FIND_KIND[best.kind] ?? best.kind}`),
-    f.finds.length > 1 ? h("small", { class: "dim" }, ` +${f.finds.length - 1}`) : "",
+    f.finds.length > 1 ? h("small", { class: "dim" }, /* copy:callout */ ` +${f.finds.length - 1} finds`) : "",
     f.legacy ? h("small", { class: "up" }, /* copy:callout */ ` · +${f.legacy} Legacy`) : "",
     ...(f.sets ?? []).map((s) => h("small", { class: "reveal-set up" }, /* copy:callout */ ` · set ${s}`)));
   detailHost(el, () => [h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Away finds")),

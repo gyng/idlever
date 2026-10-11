@@ -223,7 +223,7 @@ try {
       return { kids, reveal: rv?.textContent, best: rv?.dataset.best, n: document.querySelectorAll(".report-reveal").length, sealed: rv?.dataset.sealed, head: document.querySelector(".report-summary h2")?.textContent,
         log: log ? { open: log.open, summary: log.querySelector("summary")?.textContent, lines: [...log.querySelectorAll(".set-line")].map((x) => `${x.dataset.set}:${x.querySelectorAll(".set-piece.have").length}`) } : null };
     });
-    check(r.n === 1 && r.best === "quill" && r.reveal === "✦ scholar's quill · set piece +2 · +2 Legacy · set Sleeper's rest", `one reveal, best first, never a click per find (${r.reveal})`);
+    check(r.n === 1 && r.best === "quill" && r.reveal === "✦ scholar's quill · set piece +2 finds · +2 Legacy · set Sleeper's rest", `one reveal, best first, named extra finds, never a click per find (${r.reveal})`);
     check(r.sealed === "7" && !/sealed/.test(r.head ?? ""), `the sealed count rides on the reveal, never the away head (${r.sealed} · ${r.head})`);
     check(r.kids.indexOf("report-reveal") < r.kids.indexOf("collect-send") && r.kids.indexOf("report-reveal") > r.kids.indexOf("report-summary"), `the reveal is a highlight, before collect & send (${r.kids.join(" ")})`);
     check(r.log && !r.log.open && r.log.summary === "set log 1/2" && r.log.lines.join() === "sleeper:3,scholar:1", `the set log, a closed fold under details (${JSON.stringify(r.log)})`);
