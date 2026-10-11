@@ -12,7 +12,7 @@ import * as THREE from "three";
 import { QuadLayer, BAYER_GLSL } from "./layers";
 import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
-import { paintTownTerrain } from "./town-terrain";
+import { paintTownTerrain, terrainMaterialVersion } from "./town-terrain";
 import LIGHTS from "./town_lights.json";   // a copy of art/town_lights.json (`python3 art/town_lights.py`): each sprite's painted warm emitters
 
 export const TILE = 16;
@@ -536,7 +536,7 @@ export function createTownView(host: HTMLElement): TownView {
   }
   /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
   function ground(): void {
-    const s = state!, key = `${s.home}|${s.stage}|${s.buildings.map((b) => b.id).sort().join(",")}`;
+    const s = state!, key = `${s.home}|${s.stage}|${s.buildings.map((b) => b.id).sort().join(",")}|${terrainMaterialVersion()}`;
     if (key === F.groundKey) return;
     F.groundKey = key;
     const standing = new Set(s.buildings.map((b) => DOOR[b.id]));
