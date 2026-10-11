@@ -1,3 +1,15 @@
+# Cut162 faithful check-ins / sustain packing evidence — 2026-10-11
+
+Read-only recapture original automation-pays seeds1/2 terminalFAIL46s unchanged mean28.43vs28.50/D1848vs48h. All56actual pre-absence camps recorded, all four COMPLETE14d cache records byte-identical to Cut161 originals; actual actor/runtime unchanged. Shipping core/UI/WASM and experimental dayplayer untouched. New read-only start_check/supply_check examples build/focusedclippyPASS, all16paired comparisons/repeats terminal. Evidence/source/runtime hashes docs/evidence/cut162.
+
+Seed1 early worker loses depth-area9 (396vs405), seed2 gains7 (400vs393). Beforeday2 seed1worker best13/start9 vs manual11/start5, matched forgedkit2/2/2/storedaxe1. Eight isolated public start5 comparisons from same worker camps(days2/3,seeds1/2,24/48h) mixed; selected seed2/day3 24h D24->28 fullJSONrepeat exact. No blanket guide change justified.
+
+Actual day3 worker Send has ONE automatic heal plus fire after Mirror read arrived, despite capacity4; manual cohort two heals. automatic_pack_plan cycles all non-drill package kinds within PACK_FILL2, so a new fire tactic displaces one heal. Eight actual paid$26extraheal probes: s1d2 24h22->23/48h23->25; s1d3 23->24/25->24; s2d2 23->27/24->28; s2d3 24->24/26->28. Six improve/one tie/one worsen. Selected s2d2 48h fullJSONrepeat exact. Day2 first Send has THREEheals (2auto+1manual); day3 TWO(1auto+1manual). These probes are NOT the proposed automatic plan or acceptance and do not prove every new case improves. Source files unchanged; manual repeat origin is preserved.
+
+PublicrealWASM actual earned seed1/day3 camp400px screenshot posted, headlessvisual only/no performance or full-save parity claim. Initial day1 optional kit inspection KeyError corrected with default handling, sources unchanged. No product change/score/deployment this checkpoint. All jobs terminal.
+
+NEXT concrete work: prospective docs/CUT163_SUSTAIN_PACK.md already queued BEFORE implementation. Preserve baseline automatic pack cases, then maintain2 automatic heals when active packages already name heal and cap/funds permit, while retaining counters, prices, manual/found origins, surplus-auto replacement and offline caps. Directly test actual earned sends and settlement/transport parity, original unchanged-bar diagnostics, required16seed actor rows/full routine18case metrics/wire +wholeclient. Do NOT substitute extra-manual-heal probes or guide changes as acceptance. Experimental dayplayer remains unadopted/dirty/excluded. Immutable release freeze/TWO FRESH complete independent blind ratings still required for>=80; old75.2 diagnostic untouched. GoalACTIVE/unverified. No deployment.
+
 # Cut161 brought ordinary upgrades corrected — 2026-10-11
 
 Best-gear automatic orders now replace strictly weaker brought ordinary gear of the same category. Replaced pending id removed from keep ids (not a nonexistent vault eviction); existing salvage pays once. Ties/weaker/cross-category/forged/gun/kit/none/unknown/zero-slot/newly selected find protections and explicit manual selection unchanged. Worker selection/insurance/eligibility/coin rate unchanged.
