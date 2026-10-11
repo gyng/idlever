@@ -463,7 +463,7 @@
     "scope": "Live transport confirmed by both operators; actual70-minute horizons and score still unproven."
   },
   "lastInfrastructureStatus": {
-    "coordinatorObservedUtc": "2026-10-11T07:31:14.840474+00:00",
+    "coordinatorObservedUtc": "2026-10-11T07:41:29.379261+00:00",
     "a": {
       "agent": "/root/blind_d346_a",
       "phase": "cold",
@@ -474,13 +474,15 @@
     },
     "b": {
       "agent": "/root/blind_d346_b",
-      "phase": "20m return",
-      "reportedColdMinutesApprox": 41,
-      "reportedReturnMinutesApprox": 1.5,
+      "phase": "4h return",
+      "reportedColdMinutes": 41.0459,
+      "reported20mReturnMinutes": 5.9693,
+      "reported4hReturnMinutesApprox": 4.5,
+      "eightHourReturnRemaining": true,
       "relaySession": 21401,
       "pendingOrBlocked": false
     },
-    "scope": "Infrastructure-only messages, no opinions/awards requested or read. These are provisional rater reports, not audited horizon certificates. Both existing agents confirmed running by collaboration.list_agents; profiles/build unchanged."
+    "scope": "Infrastructure-only messages, no opinions/awards requested or read. These are provisional rater reports, not audited horizon certificates. B reports cold and20m phases complete,4h underway,8h still required; compaction/bookkeeping excluded. Both existing agents confirmed running; profiles/build unchanged. A status retains the earlier exact report and is not a current interval audit."
   },
   "integrityDuringIsolatedPolish": {
     "utc": "2026-10-11T07:36:02.760256+00:00",
