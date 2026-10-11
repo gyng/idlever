@@ -222,7 +222,7 @@ export function patchRows(app: App, patches: Patch[], baseline?: number, trace?:
         stallish ? tradeOffEl(p.whole) : wholeSpan(p)));   // Cut 27 §4: a stall's patches carry their whole-run move too (the gem's guard reads it)
     const nm = ruleName(names, pi);
     if (card) btn.dataset.gem = wear ? /* copy:button */ "wear" : /* copy:button */ "unlock";
-    btn.dataset.short = unlock ? /* copy:button */ `buy ${p.root?.text ?? nm}` : move ? /* copy:button */ `move ${nm} up` : p.remove ? /* copy:button */ `cut ${nm}` : p.restores !== undefined ? /* copy:button */ `restore ${nm}` : p.buys ? `+ ${p.buys.label} · ${nm}` : `+ ${nm}`;
+    btn.dataset.short = unlock ? /* copy:button */ `buy ${p.root?.text ?? nm}` : move ? /* copy:button */ `move ${nm} up` : p.remove ? /* copy:button */ `cut ${nm}` : p.restores !== undefined ? /* copy:button */ `restore ${nm}` : p.buys ? `+ ${p.buys.label} $${p.buys.price} · ${nm}` : `+ ${nm}`;
     btn.dataset.eff = unlock ? "" : isTradeOff(p.whole) ? /* copy:callout */ "trade-off" : held >= 0 ? /* copy:callout */ "already written" : opts.nothingBeatsBase ? /* copy:callout */ "no replay gain" : noGain ? /* copy:callout */ "no gain" : p.below_bar ? /* copy:callout */ "below bar"
       : opts.stall ? /* copy:callout */ `unstuck ${rs(p.survive)}` : baseline === undefined ? /* copy:callout */ `reach ${pct(p.survive)}` : /* copy:callout */ `survives ${rs(p.survive)}`;
     patchOf.set(btn, p);

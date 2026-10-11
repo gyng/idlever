@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/web/tests/death-fix-discovery.mjs:9
+const check=(ok,msg)=>{if(!ok)throw Error(msg);};
+                                    ^
+
+Error: exact Rust wall prices
+    at check (file:///home/g/p/riddle/web/tests/death-fix-discovery.mjs:9:37)
+    at file:///home/g/p/riddle/web/tests/death-fix-discovery.mjs:47:3
+
+Node.js v26.5.0

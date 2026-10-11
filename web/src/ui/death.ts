@@ -263,7 +263,7 @@ export function renderDeath(app: App, d: Death, lost: string[] = [], kept = fals
   // worn and credited taught. Before the pen it is the lever itself.
   // Cut 122 §2: a pick priced as a trade-off at the wall sits below the fixes (never first, never the gem)
   let pickEl: HTMLElement | null = null;
-  const placePick = (pk: Lever): void => { const t = pickTablet(app, pk); if (pickEl) pickEl.remove(); pickEl = t; if (isTradeOff(pk)) patches.append(t); else patches.prepend(t); };
+  const placePick = (pk: Lever): void => { const t = pickTablet(app, pk); if (pickEl) pickEl.remove(); pickEl = t; if (isTradeOff(pk) || pickFollowsFix(pk, d.patches)) patches.append(t); else patches.prepend(t); };
   if (!prePen && !drove && d.pick?.id && app.engine.takeFix) placePick(d.pick);
   // The morgue is the shareable text of the run: show it in a sheet (the clipboard is a bonus, not the point).
   const openMorgue = (): void => {
@@ -788,6 +788,19 @@ function foldHint(patches: HTMLElement): HTMLElement {
 }
 
 /** Cut 115 §4: the death's tactic fix as a tablet above the patches — `try · gas step · burn`; a tap wears it (credited taught). */
+/** Display the core's clearly stronger gem fix before a priced tactic alternative. */
+export function pickFollowsFix(pick: Lever, fixes: Patch[]): boolean {
+  const p = pick.price;
+  if (pick.pending || !p) return false;
+  return fixes.some(f => {
+    const w = f.whole, q = w?.price;
+    if (!f.gem || f.camp_pending || !q || w?.harms || isTradeOff(w)) return false;
+    if (q.depth !== p.depth || Math.abs(q.past_from - p.past_from) > q.past_pm + p.past_pm || Math.abs(q.death_from - p.death_from) > q.death_pm + p.death_pm) return false;
+    return (q.past_to - q.past_from) - (p.past_to - p.past_from) > q.past_pm + p.past_pm
+      && q.death_to - q.death_from <= p.death_to - p.death_from;
+  });
+}
+
 export function pickTablet(app: App, pick: Lever): HTMLElement {
   const btn = h("button", { class: `death-pick tablet${isTradeOff(pick) ? " trade-off" : ""}${pick.pending ? " pending" : ""}`, "data-pick": pick.id ?? "", "data-variant": String(pick.variant ?? 0),
     onclick: () => { if (pick.id && app.engine.takeFix) void app.mutate(() => app.engine.takeFix!(pick.id!, pick.variant ?? 0), /* copy:callout */ pick.text, true).then(() => app.go({ kind: "camp" })); } },
