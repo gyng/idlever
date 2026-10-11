@@ -398,5 +398,35 @@
     "callsAfter": 1000,
     "images": 120,
     "reason": "Buffered watch waits excluded from active time; same prospective short-observation budget amendment delivered to both before raw-card lock. No gameplay/scoring changes or opinions received."
+  },
+  "infrastructureObservations": [
+    {
+      "recordedUtc": "2026-10-11T06:33:07.138511+00:00",
+      "source": "blind_d346_b infrastructure-only message before raw-card lock",
+      "operation": "Existing driver watch ms2000; same pending handle83 polled, no duplicate/restart.",
+      "reportedExecution": {
+        "watchStart": "2026-10-11T06:29:40.869Z",
+        "watchEnd": "2026-10-11T06:29:42.918Z",
+        "watchSeconds": 2.049,
+        "stateStart": "2026-10-11T06:29:45.991Z",
+        "stateEnd": "2026-10-11T06:29:46.003Z",
+        "stateSeconds": 0.012
+      },
+      "reportedExclusion": {
+        "start": "2026-10-11T06:28:05.085Z",
+        "end": "2026-10-11T06:29:46.003Z",
+        "reason": "Pending approval/tool delivery timings uncertain; conservatively excluded from actual active credit."
+      },
+      "terminal": "Success; public reads resumed; same browser/profile.",
+      "scope": "Immediate unknown-op HTTP responses establish Node-driver responsiveness only. Actual watch duration did not demonstrate browser/app freeze. Preserve independent public-visible responsiveness observations; do not erase them.",
+      "equalGuidance": "Both raters received buffered-response/no-timeout distinction and successful timestamped recovery, no gameplay/score/opinion hints."
+    }
+  ],
+  "frozenDiskDuringPlay": {
+    "utc": "2026-10-11T06:26:07.255474+00:00",
+    "kind": "frozen disk assets only; no browser or unfinished observations read",
+    "files": 261,
+    "manifestSha256": "5cc04312ac9eabc449215428c0ce9417e44b13eb9bf86f16b1d8f8b4a27be376",
+    "mismatches": []
   }
 }
