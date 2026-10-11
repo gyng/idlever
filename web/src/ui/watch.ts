@@ -2853,7 +2853,7 @@ export function renderWatch(app: App): Mounted {
       if (sent) return; sent = true; keepClose = null;
       salvagedRows = letGoRows(p, keep);
       const vaultBefore = new Set(app.lineage.vault.map((v) => v.id));
-      app.engine.keep([...keep]).then((L) => { app.lineage = L; keptLabels = L.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label); }).catch((e) => console.warn("keep", e)).finally(() => { close(); then(); });
+      app.engine.keep([...keep]).then((L) => { app.lineage = L; salvagedRows = L.keep_salvaged ?? salvagedRows; keptLabels = L.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label); }).catch((e) => console.warn("keep", e)).finally(() => { close(); then(); });
     }
   }
 

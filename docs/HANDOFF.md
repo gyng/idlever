@@ -1,3 +1,13 @@
+# Cut157 manual salvage receipt — 2026-10-11
+
+Cut156 committed/pushed cda51a9 with69 verified evidence hashes, experimental dayplayer excluded. Cut157 fixes the remaining manual report gap: actual keep response carries transient Rust per-kind salvage count/gold, including displaced stored items. Bridge preserves Session hero metadata; ordinary lineage/save omit receipt; native bridge regenerated. Production keep/currency/retention/equipment untouched; new helper calls old keep once.
+
+45 explicit bank/return/death ×5cases ×3fractional-carry fixtures compare complete saved state byte-for-byte with old manual keep; source/reload outcomes, known/hidden names, prior batch isolation, zero-paid death and second-call error tested. Tests pass. Quick accepted802Rust/6ignored, tooling14/types/copy2354zero PASS58s. Initial sandbox quick failed native-host localhost test; isolated unsandboxed test2/2PASS and full authorized quickPASS, failure preserved. All-target clippy and final webbuild PASS; fast realWASM rebuilt6368833B.
+
+Initial new UI check wrongly used automatic settlement baseline: manual actual$2/carry87 versus auto$3/carry-13. Actual manual result exactly equals preserved Cut156 original manual result; report now$2 and dagger×1/$2. Corrected test uses original manual observations, not automatic preview. Initial failure capture preserved. Final eight synthetic real-WASM flows400/1440 PASS; old ui:keep gate2checks PASS41.7s. All checkpoint jobs terminal. Original manual before/after gold/carry/vault/pending exact at both widths; hashes in cut157 manifest verified.
+
+Still required: resolve original-bar away-worker failure (Cut156 two-seed diagnostic mean27.96vs28.14FAIL), keep experimental dayplayer unadopted until required evidence, current full native/client acceptance, immutable release freeze, then TWO FRESH complete independent blind ratings. Old75.2/short-phase cohort remains diagnostic. Goal>=80 ACTIVE/unverified. No deployment.
+
 # Cut156 routine gear / automatic salvage report — 2026-10-11
 
 Implemented ordinary same-kind copies/upgrades settling automatically by EXISTING keep plan; different gear/firearm/forged/kit choices remain reviewable. No currency/retention/eviction/equipment changes. Added Rust ExitPending.auto_salvaged, settling a clone and reporting exact per-kind differences including evicted stored gear; watch uses it on automatic settlement (legacy fallback retained). Explicitly known item flags respected; unknown flavours not revealed. Initial test key-order, selector and known-label-vs-canonical-kind failures plus actual missing automatic salvage report preserved; see CUT156_ROUTINE_KEEP.md.

@@ -8,6 +8,9 @@ import {isDeepStrictEqual} from 'node:util';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const fixtures=JSON.parse(readFileSync(new URL('../../docs/evidence/cut156/presentation-fixtures.json',import.meta.url))).presentation;
 const expected=JSON.parse(readFileSync(new URL('../../docs/evidence/cut156/final-fixtures.json',import.meta.url))).cases;
+// Manual and automatic paths have different existing rounding/eviction rules.
+// Preserve the actual pre-receipt manual browser outcomes as their baseline.
+const manualExpected=JSON.parse(readFileSync(new URL('../../docs/evidence/cut156/cut156-client-accepted/observations.json',import.meta.url)));
 const out=process.env.KEEP_EVIDENCE;if(out)mkdirSync(out,{recursive:true});
 const browser=await launchBrowser(),results=[];
 const check=(ok,msg)=>{if(!ok)throw Error(msg);};
@@ -25,7 +28,7 @@ try{
    a.engine.send=async()=>fixture.snapshot;
    a.engine.step=async()=>{const r=await step(0);r.events=[{k:'exit',t:r.snapshot.turn,tier:r.exit_pending.tier,loot_kept:0}];return r;};
    a.engine.autoKeep=async()=>{window.__keepAuto++;return auto();};
-   a.engine.keep=async ids=>{window.__keepManual++;return keep(ids);};
+   a.engine.keep=async ids=>{window.__keepManual++;const result=await keep(ids);window.__keepReceipt=result.keep_salvaged;window.__keepHeroes=result.hero_slots;return result;};
    a.go({kind:'watch'});
   },fixture);
   if(name==='distinct_kind'){
@@ -39,6 +42,7 @@ try{
    const a=window.__riddle,saved=JSON.parse(await a.engine.save());
    return{auto:window.__keepAuto,manual:window.__keepManual,sheets:window.__keepSheets,
     gold:saved.lineage.gold,carry:saved.lineage.gold_carry,vault:saved.lineage.vault,pending:saved.pending_exit,
+    receipt:window.__keepReceipt,heroes:window.__keepHeroes,normalReceipt:(await a.engine.lineage()).keep_salvaged,
     text:document.body.innerText,overflow:document.documentElement.scrollWidth>innerWidth};
   });results.push({width,name,synthetic:true,...result,errors});
   if(out){writeFileSync(`${out}/observations.json`,JSON.stringify(results,null,2));await page.screenshot({path:`${out}/${width}-${name}.png`});}
@@ -48,7 +52,14 @@ try{
    check(result.gold===e.gold&&result.carry===e.fractional_carry&&isDeepStrictEqual(result.vault,e.vault),'exact Rust automatic gold/carry/storage');
    check(result.text.includes('dagger')&&/salvaged/i.test(result.text),'retained and actual salvage visible in report details');
    if(name==='none')check(result.text.includes('heal')&&!result.text.includes('oily potion?'),'known salvage keeps its name');
-  }else check(result.manual===1&&result.auto===0&&result.sheets>0,'manual conflict still resolves');
+  }else {
+   check(result.manual===1&&result.auto===0&&result.sheets>0,'manual conflict still resolves');
+   const e=manualExpected.find(e=>e.name===name&&e.width===width);
+   check(result.gold===e.gold&&result.carry===e.carry&&isDeepStrictEqual(result.vault,e.vault),'exact original manual gold/carry/storage');
+   check(isDeepStrictEqual(result.receipt,[{kind:'dagger',n:1,gold:2}]),'actual displaced dagger receipt');
+   check(result.heroes?.length===1&&!result.normalReceipt,'Session hero metadata retained and receipt transient');
+   check(/\$2\s*gold earned/i.test(result.text)&&/salvaged[\s\S]*dagger[\s\S]*\$2/i.test(result.text),'manual report names displaced gear and exact earned gold');
+  }
   check(!result.pending&&!result.overflow&&!errors.length,'settled/no overflow/errors');
   await page.close();console.log(width,name,'real-WASM fixture flow PASS');
  }

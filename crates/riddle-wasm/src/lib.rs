@@ -260,8 +260,10 @@ impl Game {
 
     pub fn keep(&mut self, ids_json: &str) -> Result<String, JsError> {
         let v = ids(ids_json)?;
-        self.inner.keep(v).map_err(err)?;
-        Ok(js(&self.inner.lineage()))
+        let receipt = self.inner.keep_with_receipt(v).map_err(err)?;
+        let mut lineage = self.inner.lineage();
+        lineage.keep_salvaged = Some(receipt);
+        Ok(js(&lineage))
     }
 
     /// QA on 308f045: take an item out of the vault — salvaged at a bank's share (the lineage).

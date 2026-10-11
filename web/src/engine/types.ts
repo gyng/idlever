@@ -577,6 +577,7 @@ export type ReturnReport = {
   fallen?: Fallen[];                                                          // Cut 29 §6 (core; AX: Greth gone with only `party −1 ogre`): each companion that fell, named — `Greth · ogre L5 · fell D12 to lurker`
 };
 export type Lineage = { bloodline?: BloodlineLegacy;
+  keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response
   feats?: FeatsWire;                     // Cut 118 (core): boss tokens, trials, the find log, swift floors, the sinks, the hero's wish
   king_eta_h?: number;                   // Cut 118 §8 (core): hours until the King may fall at the current pace (0: slain; absent: no pace yet)
   king_pct?: number;                     // Cut 118 §8 (core): the record's share of the way to the King (percent)

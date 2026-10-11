@@ -2283,7 +2283,7 @@ impl LineageState {
         self.rules().rows.iter().map(|r| self.row_stats.iter().find(|(x, _)| x.conds == r.conds && x.verb == r.verb).map(|(_, t)| crate::turn::row_stat(r, t))).collect()
     }
     pub fn to_wire(&self) -> Lineage {
-        Lineage { feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
+        Lineage { keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
             seed: self.seed,
             heir: self.heir,
             trait_: self.trait_.name().into(),
@@ -6364,6 +6364,27 @@ impl Game {
             crate::tree::did(&mut self.lineage, "keep");
         }
         self.keep_settle(ids)
+    }
+
+    /// Settle once through the existing manual path and return its exact receipt.
+    /// The receipt is transient wire data; it never changes saved game truth.
+    pub fn keep_with_receipt(&mut self, ids: Vec<u32>) -> Result<Vec<crate::wire::SalvageRow>, String> {
+        let items: Vec<Item> = self.pending_exit.as_ref().ok_or("nothing to keep")?.items.iter()
+            .chain(self.lineage.vault.iter()).cloned().collect();
+        let before = self.batch.salvaged.clone();
+        let coins = self.batch.salvaged_coins.clone();
+        self.keep(ids)?;
+        Ok(self.batch.salvaged.iter().filter_map(|(kind, (n, _))| {
+            let count = n.saturating_sub(before.get(kind).map_or(0, |(n, _)| *n));
+            (count > 0).then(|| crate::wire::SalvageRow {
+                kind: if items.iter().any(|i| i.kind == *kind && i.is_known(&self.lineage.facts, &self.lineage.flavours)) {
+                    crate::item::kind_name(kind)
+                } else { self.lineage.wire_name(kind).replace('_', " ") },
+                n: count,
+                gold: self.batch.salvaged_coins.get(kind).copied().unwrap_or(0)
+                    - coins.get(kind).copied().unwrap_or(0),
+            })
+        }).collect())
     }
 
     fn keep_settle(&mut self, ids: Vec<u32>) -> Result<(), String> {

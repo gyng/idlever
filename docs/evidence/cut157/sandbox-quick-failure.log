@@ -1,0 +1,23 @@
+test result: ok. 802 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 56.27s
+copy-lint: 86 files, 2354 tagged literals, 0 violations
+✔ ../tools/camp-check.test.mjs (73.461436ms)
+✔ ../tools/exact-json.test.mjs (60.157902ms)
+✔ ../tools/gold-range.test.mjs (417.243563ms)
+✔ ../tools/native-codegen.test.mjs (76.415027ms)
+✖ ../tools/native-host.test.mjs (416.903922ms)
+✔ ../tools/native-watch.test.mjs (243.758096ms)
+✔ ../tools/runtime-key.test.mjs (3577.93716ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3608.907264
+
+✖ failing tests:
+
+test at ../tools/native-host.test.mjs:1:1
+✖ ../tools/native-host.test.mjs (416.903922ms)
+  'test failed'

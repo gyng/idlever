@@ -2344,6 +2344,9 @@ pub struct Replay {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Lineage {
+    /// Actual manual keep receipt; populated only on the settlement response.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub keep_salvaged: Option<Vec<SalvageRow>>,
     /// Cut 118: boss tokens, trials, the find log, swift floors, the sinks, the hero's wish (`feats::wire`).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub feats: Option<crate::feats::FeatsWire>,
