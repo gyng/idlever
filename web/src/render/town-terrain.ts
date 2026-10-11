@@ -5,6 +5,9 @@ export type TerrainPlan = {
   width: number; height: number; trails: Trail[]; fire: Point; plaza: boolean;
   aprons: Point[]; shadows: Point[]; hillFoot: (x: number) => number;
 };
+export type GrassRoot = Point & { h: number; phase: number };
+const grassRoots = new WeakMap<HTMLCanvasElement, GrassRoot[]>();
+export const townGrassRoots = (terrain: HTMLCanvasElement): readonly GrassRoot[] => grassRoots.get(terrain) ?? [];
 const hash = (x: number, y: number, salt = 0): number => {
   let h = Math.imul(x + salt * 97, 374761393) ^ Math.imul(y + salt * 53, 668265263);
   h = Math.imul(h ^ (h >>> 13), 1274126177); return (h ^ (h >>> 16)) >>> 0;
@@ -79,7 +82,17 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
     const j=i*4;rgba[j]=rgb[0]!;rgba[j+1]=rgb[1]!;rgba[j+2]=rgb[2]!;rgba[j+3]=255;
   }
   g.putImageData(image,0,0);
+  // Rooted tufts only on unworn meadow, never paths, aprons, stream or cliff.
+  // Cache placement with the painted ground; wind changes only their tiny tips.
+  let roots: GrassRoot[] = [];
+  for (let gy = 18; gy < p.height - 6; gy += 18) for (let gx = 8; gx < p.width - 6; gx += 18) {
+    const n = hash(gx, gy, 83), x = gx + n % 7 - 3, y = gy + (n >>> 8) % 7 - 3;
+    const stream = 151 + Math.sin(y * .014) * 8 + (hash(0, y >> 3, 53) % 5 - 2);
+    if (y < p.hillFoot(x / 16) * 16 + 8 || Math.abs(x - stream) < 16 || wear[y * p.width + x]! > -5) continue;
+    roots.push({ x, y, h: 4 + n % 3, phase: (n % 997) / 997 * Math.PI * 2 });
+  }
   const prop=(name:string,x:number,y:number,w:number,h:number,flip=false):void=>{
+    roots = roots.filter(p => p.x < x-w/2-3 || p.x > x+w/2+3 || p.y < y-h-3 || p.y > y+5);
     const im=props[name];if(!im)return;
     g.save();g.translate(Math.round(x),Math.round(y));if(flip)g.scale(-1,1);
     g.drawImage(im,Math.round(-w/2),-h,w,h);g.restore();
@@ -95,5 +108,6 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   // Ground contact beneath the established forest; no animated decoration.
   g.fillStyle='rgba(10,18,20,.2)';
   for(const t of p.shadows){g.fillRect(Math.round(t.x-5),Math.round(t.y),13,3);}
+  grassRoots.set(c, roots);
   return c;
 }

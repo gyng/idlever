@@ -12,7 +12,8 @@ import * as THREE from "three";
 import { QuadLayer, BAYER_GLSL } from "./layers";
 import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
-import { paintTownTerrain, terrainMaterialVersion } from "./town-terrain";
+import { paintTownTerrain, terrainMaterialVersion, townGrassRoots } from "./town-terrain";
+import { effectsLevel } from "./fxpref";
 import LIGHTS from "./town_lights.json";   // a copy of art/town_lights.json (`python3 art/town_lights.py`): each sprite's painted warm emitters
 
 export const TILE = 16;
@@ -277,7 +278,17 @@ function drawPrimitive(g: CanvasRenderingContext2D, id: string, x: number, y: nu
   const R = (c: string, a: number, b: number, cw: number, ch: number): void => { g.fillStyle = c; g.fillRect(x + Math.round(a), y + Math.round(b), Math.max(1, Math.round(cw)), Math.max(1, Math.round(ch))); };
   const tri = (c: string, x0: number, y0: number, x1: number, x2: number, yb: number): void => { g.fillStyle = c; g.beginPath(); g.moveTo(x + x0, y + y0); g.lineTo(x + x1, y + yb); g.lineTo(x + x2, y + yb); g.closePath(); g.fill(); };
   const speck = (base: string, dark: string, n: number): void => { R(base, 0, 0, w, h); for (let i = 0; i < n; i++) R(dark, (hashN(i, x, y) % w), (hashN(y, i, 7) % h), 1, 1); };
-  if (/^town_env_grass/.test(id)) speck("#3d5a2a", "#2f4720", 22);
+  if (/^town_wind_grass_/.test(id)) {
+    const lean = Number(id.split("_").at(-1)) - 2;
+    // Stepped ink/wash blade clusters, five bends with the same rooted bases.
+    for (const [root, tall, bias] of [[w*.25, h*.72, -1], [w*.5, h, 0], [w*.75, h*.6, 1]]) {
+      for (let j = 0; j < tall!; j++) {
+        const bend = Math.round((lean + bias!) * Math.pow(j / tall!, 1.35));
+        R(j === Math.ceil(tall!)-1 ? "#60715e" : "#394b40", Math.max(0, Math.min(w-1, root! + bend)), h-1-j, 1, 1);
+      }
+    }
+  }
+  else if (/^town_env_grass/.test(id)) speck("#3d5a2a", "#2f4720", 22);
   else if (/^town_env_dirt/.test(id)) speck("#7a5a3a", "#5e442a", 18);
   else if (/^town_env_plaza/.test(id)) { speck("#8a8478", "#6b665c", 10); R("#5c574e", 0, 7, w, 1); R("#5c574e", 7, 0, 1, 8); }
   else if (/^town_env_cliff/.test(id)) speck("#3b3a3f", "#2a292e", 26);
@@ -395,7 +406,7 @@ const SMOKE = ["9a958c", "7d7a74", "b4afa4"], EMBER = ["ffb04a", "ff7a2a", "ffd7
 // ---- the view ---------------------------------------------------------------------------------------------------------------------
 
 export type TownStats = { fps: number; frames: number; cpuMs: number; cpuP95: number; walkers: number; mode: "gl" | "2d"; glLost: boolean; k: number; night: number; characterLights: number; lights: number; idle: boolean; running: boolean;
-  terrainPaints: number; terrainPaintMs: number; buildings: string[]; staked?: string; markers: string[]; view: [number, number, number, number]; chest?: string; workers: string[]; ranks: Record<string, number> };
+  terrainPaints: number; terrainPaintMs: number; windTufts: number; windSignature: number; buildings: string[]; staked?: string; markers: string[]; view: [number, number, number, number]; chest?: string; workers: string[]; ranks: Record<string, number> };
 export type TownView = {
   readonly el: HTMLElement;
   setState(s: TownState): void;
@@ -457,6 +468,8 @@ export function createTownView(host: HTMLElement): TownView {
   const arrive = new Map<string, Leg[]>();   // Cut 30.5: a worker hired on this mount walks out of the tent to his post
   const F: TownFrame = { x0: 0, y0: 0, w: 1, h: 1, k: 1, W: 1, H: 1, quads: [], n: 0, terrain: null, groundKey: "", lights: [], amb: [1, 1, 1], night: 0, live: 0 };
   let terrainPaints = 0, terrainPaintMs = 0;
+  let windTufts = 0, windSignature = 0;
+  const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
   const rng = (n: number): number => (hashN(state?.seed ?? 1, n) % 100000) / 100000;
 
   // -- the walkers of a state --
@@ -551,6 +564,22 @@ export function createTownView(host: HTMLElement): TownView {
       fire: PLOTS.fire, plaza: s.stage >= 4,
       aprons: [...(s.home ? [PLOTS.house] : []), ...s.buildings.map((b) => PLOTS[b.id])], hillFoot, shadows: trees });
     terrainPaintMs = performance.now() - started; terrainPaints++;
+  }
+  function grassWind(): void {
+    windTufts = 0; windSignature = 0;
+    const level = effectsLevel();
+    if (!F.terrain || level === "off" || motionPreference.matches) return;
+    const roots = townGrassRoots(F.terrain), stride = level === "low" ? 3 : 1;
+    for (let i = 0; i < roots.length; i += stride) {
+      const p = roots[i]!;
+      if (!inView(p.x, p.y, 8, p.h)) continue;
+      // A shared travelling gust plus a quieter local flutter. Bases never move.
+      const gust = Math.sin(t * .85 - p.x * .025 - p.y * .013);
+      const pose = Math.max(0, Math.min(4, 2 + Math.round((gust * .8 + Math.sin(t * 1.4 + p.phase) * .2) * 2)));
+      const slot = atlas.get(`town_wind_grass_${pose}`, p.h);
+      push(slot, p.x, p.y, .1, false, .9, .28);
+      windTufts++; windSignature = (Math.imul(windSignature, 31) + pose + i) >>> 0;
+    }
   }
   /** the hill's foot: a ragged line (runs of two columns, one in three, a tile further down, never by the mouth), not a ruled edge */
   const hillFoot = (x: number): number => 5 + OY + (Math.abs(x - CX) > 4 && hashN(x >> 1, 0, 7) % 3 === 0 ? 1 : 0);
@@ -647,6 +676,7 @@ export function createTownView(host: HTMLElement): TownView {
     F.night = nightOf(hour); F.amb = ambientOf(F.night);
     const night = F.night;
     ground();
+    grassWind();
     // trees (two kinds), the cliff's rim of trees
     for (let i = 0; i < trees.length; i++) { const p = trees[i]!, sl = atlas.get(p.k ? "town_env_tree_1" : "town_env_tree_0", p.h); if (inView(p.x, p.y, sl.w, sl.h)) push(sl, Math.round(p.x), Math.round(p.y), zOf(p.y), false, p.d ?? 1); }
     // the mouth, its torches, the depth plaque's light
@@ -926,7 +956,7 @@ export function createTownView(host: HTMLElement): TownView {
       const s = state;
       const sorted = [...cpu].sort((a, b) => a - b);
       return { fps: fpsWin.length, frames, cpuMs: cpu[cpu.length - 1] ?? 0, cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0, walkers: F.live, mode: gl && !glLost ? "gl" : "2d", glLost, k: F.k, night: F.night, characterLights: characterLights.length, lights: F.lights.length, idle: performance.now() - lastInput > IDLE_MS, running: !!raf,
-        terrainPaints, terrainPaintMs, buildings: s?.buildings.map((b) => b.id) ?? [], staked: s?.staked?.id, markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [], view: [F.x0, F.y0, F.w, F.h],
+        terrainPaints, terrainPaintMs, windTufts, windSignature, buildings: s?.buildings.map((b) => b.id) ?? [], staked: s?.staked?.id, markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [], view: [F.x0, F.y0, F.w, F.h],
         chest: s?.chest?.state, workers: s?.workers.map((w) => `${w.id}${w.lit ? "(lit)" : w.paused ? "(off)" : ""}`) ?? [],
         ranks: Object.fromEntries((s?.workers ?? []).filter((w) => !w.lit && w.rank > 1).map((w) => [w.id, w.rank])) };
     },
