@@ -72,7 +72,7 @@
       "the King 700 hp / 21-27 (smooth curve)",
       "top Legacy ranks exceed a day's income late"
     ],
-    "reuseReason": "Only renderer, regression and evidence changed since906990f; no Rust/bridge/art inputs changed. Existing shipping package matches original frozen WASM byte for byte. Original native full log preserved; source key0f1f86e2ec058e24.",
+    "reuseReason": "No Rust or engine-bridge differences between906990f and d34605e (git diff -- crates web/src/engine is empty). Shipping package remains byte-identical. UI/renderer, runtime landscape art and regressions changed; browser/visual evidence must therefore be current. Original native full source key0f1f86e2ec058e24 and failures remain preserved.",
     "fullGateDisposition": "Original native routine full exited1 on the two-seed outpace row; never described as unqualified full green.",
     "log": "scratchpad/blind-906990f-frozen/acceptance-resume/claude-native-full.log",
     "targeted16": {
