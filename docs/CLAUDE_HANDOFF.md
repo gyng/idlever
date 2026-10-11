@@ -1,3 +1,9 @@
+# Cut143 automatic watch control visibility — 2026-10-11
+
+Real-WASM fresh seed611 painted baseline at360/400/1440: pad.hidden=true overridden by author display:grid; nine unwanted movement tiles,178px slab. CSS respects hidden children/whole slab; inactive toggle flex slot and24px icon prevent inherited desktop78px grid row. Automatic84px/one tile at all widths; manual178px/nine movement-wait plus four actions, >=44px targets. Release collapses; absent snapshot0px. Final focused4/4PASS77.1s (unchanged manual58 checks, console, keepout plus new visibility), types/copy2352zero/build pass. Evidence CUT143_WATCH_CONTROLS.md and evidence/cut143, including desktop110px first failure and harness errors. Phone/desktop screenshots posted. No Rust edit/deployment/full candidate certification.
+
+Next: package editor clutter (keep authored rows and add action visible, preserve actual priority/compiled indices and package promotion), then actual King death levers/gain attribution/return budget clarity. Prior75.2 pair remains diagnostic with A4h shortfall; >=80 goal active and unverified. Finish full current mechanical acceptance, resolve genuine regression failures, freeze a new shipping candidate, then fresh complete independent ratings. Do not deploy.
+
 # Cut142 warning refinement and bounded watch investigation — 2026-10-11
 
 Rest-not-safe render bubble once per floor until successful rest, precise routine failure only; all observer events/traces retained, other failures/urgent warnings unchanged, seek reconstructs suppression. Existing devfold=0 accidentally ignoredSwift; corrected tohonorboth, defaultSwift unchanged. docs/CUT142_WATCH_REFINEMENT.md. Current focused5suitesPASS37.4s:rest29/endcaption19/cut118b38/normalnews6/liveedge10, types/copy/build. No Rust edit.

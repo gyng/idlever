@@ -370,6 +370,11 @@ button.re-body { cursor: pointer; }
 html body .ctl .cmd .tile.ctl-verb .tl, html body .ctl .cmd .tile.ctl-toggle .tl { font-size: 12px; line-height: 1.05; }
 .ctl .tile { min-height: 44px; min-width: 44px; }
 .ctl .ctl-toggle { width: 72px; min-height: 96px; }
+/* Automatic watch keeps only the hand toggle. Author grid/flex declarations must respect the panel's hidden state. */
+.ctl.ctl-slab[hidden], .ctl [hidden] { display: none; }
+.ctl[data-on="0"] .ctl-toggle { min-height: 52px; }
+.ctl[data-on="0"] .ctl-toggle-slot { display: flex; }
+.ctl[data-on="0"] .ctl-toggle .ico { width: 24px; height: 24px; }
 .ctl .ctl-pad .tile .tl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }   /* the arrow is the read; the word stays for readers */
 .ctl .ctl-pad .tile .ico { transform: rotate(var(--rot, 0deg)); width: 26px; height: 26px; image-rendering: pixelated; }
 .ctl .ctl-verb .ico { width: 20px; height: 20px; }
