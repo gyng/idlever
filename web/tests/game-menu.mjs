@@ -22,9 +22,7 @@ try {
     assert.equal(await page.evaluate(() => localStorage.getItem('riddle.effects')), 'low');
     assert.equal(await page.evaluate(() => localStorage.getItem('riddle.save')), null); checks += 3;
     await page.keyboard.press('Escape');
-    await page.getByRole('button', { name: 'Credits', exact: true }).click();
-    assert.equal(await page.locator('.menu-credit').count(), 2); checks++;
-    await page.keyboard.press('Escape');
+    assert.equal(await page.getByRole('button', { name: 'Credits', exact: true }).count(), 0); checks++;
     await page.getByRole('button', { name: 'New game', exact: true }).click();
     await page.waitForFunction(() => window.__riddle?.booted);
     assert.equal(await page.locator('.game-menu').count(), 0);
@@ -46,7 +44,7 @@ try {
     await page.getByRole('button', { name: 'Cancel', exact: true }).click();
     assert.equal(await page.evaluate(() => localStorage.getItem('riddle.save')), saved); checks++;
     await page.keyboard.press('Shift+Tab');
-    assert.equal(await page.evaluate(() => document.activeElement.textContent), 'Credits'); checks++;
+    assert.equal(await page.evaluate(() => document.activeElement.textContent), 'Settings'); checks++;
     await page.keyboard.press('Tab');
     assert.equal(await page.evaluate(() => document.activeElement.textContent), 'Continue'); checks++;
     await page.getByRole('button', { name: 'Settings', exact: true }).click();

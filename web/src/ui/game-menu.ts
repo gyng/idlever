@@ -57,15 +57,17 @@ export function bootWithMenu(dev: DevOptions | null): void {
   const render = (next: string): void => {
     if (!menu) return;
     pane = next;
-    const heading = next === "settings" ? /* copy:label */ "Settings" : next === "credits" ? /* copy:label */ "Credits" : next === "new" ? /* copy:label */ "Replace save" : /* copy:label */ "Riddle";
-    const title = h("h1", { class: "menu-title", id: "menu-title" }, heading);
+    const heading = next === "settings" ? /* copy:label */ "Settings" : next === "new" ? /* copy:label */ "Replace save" : /* copy:label */ "Riddle";
+    const title = h("h1", { class: "menu-title", id: "menu-title" }, h("span", { class: "menu-title-text" }, heading));
+    if (next === "main") title.append(h("img", { class: "menu-wordmark", src: `${import.meta.env.BASE_URL}art/title-wordmark-v1.webp`, alt: "", "aria-hidden": "true", draggable: "false",
+      width: 1024, height: 384, onload: () => title.classList.add("has-wordmark"), onerror: () => title.classList.remove("has-wordmark") }));
     menu.setAttribute("aria-labelledby", "menu-title");
     const content = h("div", { class: "menu-panel" }, title);
     if (next === "main") {
       content.append(h("div", { class: "menu-kicker" }, /* copy:label */ "Idle roguelike"));
       if (app || saved) content.append(action(/* copy:button */ "Continue", play, "primary"));
       content.append(action(/* copy:button */ "New game", () => app || saved ? render("new") : play(), app || saved ? "" : "primary"),
-        action(/* copy:button */ "Settings", () => render("settings")), action(/* copy:button */ "Credits", () => render("credits")));
+        action(/* copy:button */ "Settings", () => render("settings")));
       if (app) content.append(h("div", { class: "menu-note" }, /* copy:label */ "Runs continue"));
     } else if (next === "settings") {
       content.append(h("div", { class: "settings menu-preferences" }, ...preferenceRows(app)));
@@ -80,10 +82,6 @@ export function bootWithMenu(dev: DevOptions | null): void {
         observer.observe(document.body, { childList: true });
       }));
       content.append(action(/* copy:button */ "Back", () => render("main")));
-    } else if (next === "credits") {
-      content.append(h("div", { class: "menu-credit" }, /* copy:label */ "Game", h("span", null, /* copy:label */ "Riddle")),
-        h("div", { class: "menu-credit" }, /* copy:label */ "Typography", h("span", null, /* copy:label */ "Grenze"), h("span", null, /* copy:label */ "Fira Sans")),
-        action(/* copy:button */ "Back", () => render("main")));
     } else {
       content.append(h("div", { class: "menu-note" }, /* copy:callout */ "Current town erased"),
         action(/* copy:button */ "Cancel", () => render("main")), action(/* copy:button */ "Start over", () => {
