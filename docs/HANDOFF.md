@@ -1,3 +1,11 @@
+# Cut160 earned armourer retention gap — 2026-10-11
+
+Read-only diagnostic complete. Independent same-earned-camp8/24/36/48/60h enabled/paused depths23/19,23/19,24/19,24/25,24/25. Negative48h full JSON repeat byte-identical SHA9a84d980769cbb21c6957cd9a5e575c060a6e4c4a1f3da057a7efe5e77a6cc37. Production1s trace with final0s finish matches independently normal48h COMPLETE saved states in both branches; extended traces same outcomes. First equipment divergence run52 axe+1 vs forged sword+2. Enabled branch has NO returned axe+2: do not claim that specific upgrade loss.
+
+Actual enabled bank98 pending capture: best_weapon/one slot; brought axe+1 value40 protects its slot against eligible sword+2 value45. Plan keeps axe only; sword salvaged. Production tick/finish/keep clone vault and found fates exactly equal faithful transport record (whole clock/save parity not claimed for focused clone). Bank119 repeats sword+2 salvage. This proves a retention gap, NOT cause/resolution of original automation gate. All example build/clippy and captures terminal PASS. Raw evidence/hash manifest docs/evidence/cut160; prospective CUT160_ARMOURER_DIVERGENCE.md. Shipping core/WASM/UI and dirty experimental dayplayer unchanged.
+
+Next prospective best-order upgrade correction preserving explicit manual choices and ordinary settlement accounting; verify actual bank98, protected/tie/zero-slot/death/multi-slot cases, original progression bars and required full acceptance. Experimental harness remains unadopted. Full native/client acceptance, immutable release freeze and TWO FRESH complete independent blind ratings still required. Goal>=80 ACTIVE/unverified. No deployment.
+
 # Cut159 forecast equipment corrected — 2026-10-11
 
 Shared EXISTING armourer selection/insurance between real worker and fresh forecast packs. Real worker order/count/payments unchanged; forecast only projects the pack into its clone, records no act and runs no other worker shopping/training. Cache identity includes derived pack/rank insurance. Direct sim_clone/start_run historical replay path unchanged; supplied historical rows remain literal in sim_game.
