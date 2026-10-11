@@ -6,6 +6,8 @@ Keep that candidate fixed through acceptance and independent play. Read-only inv
 
 ## Ready next
 
+The first item now has a preparation contract in [CUT136_ENCOUNTER_CONTRAST.md](CUT136_ENCOUNTER_CONTRAST.md): six existing scenes, eighteen legal matched comparisons, then one biome's measured content change if the catalogue exposes a gap. No execution or implementation is claimed; fresh blind findings may reorder it.
+
 | Order | Work | Concrete first delivery | Evidence before shipping |
 |---|---|---|---|
 | 1 | Biome encounter variety | Audit existing room generation and earned Fens/Crypt/Foundry fights; author two contrasting encounter compositions in each of three biomes, using existing enemies first. Each composition must reward a different existing package or positioning response. Start with one biome, then expand after its results. | Fixed-seed before/after replay catalogue; identify the actual tactical counter for each composition. Determinism, death-cause attribution, current idle/engagement bounds and whole/sliced/reloaded parity for one/three heroes. Targeted tuning first, required current-game gates afterward. No statistically unsupported claim of six balanced encounters. |
