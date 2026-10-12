@@ -44,8 +44,11 @@ that loop; automatic loot and base life reduce chores and give results context.
    contract before implementation; do not silently replace existing rules.
 3. Explain “first: the cage” and why runs end. Audit the exact label and actual
    bank/retreat/death/clear causes, then show readable outcomes and transitions.
-4. Make base heroes and useful objects clickable. Add contextual `(i)` help next
-   to building names, available by click/tap and keyboard.
+4. Make base heroes and useful objects clickable. **Every home-screen building
+   needs both a tooltip and a visible hover state**, including locked/unbuilt
+   plots. Cover scene targets/nameplates/`(i)` help, with keyboard focus and
+   tap/click access; explain purpose, state and requirements without accidental
+   purchases or misleading enabled states. Audit complete building coverage.
 5. Put Legacy and Class tree in Bloodlines tabs; show their branches as connected
    nodes. Preserve cumulative learned skills and bloodline identity.
 6. Refine large-desktop font sizes, hierarchy and spacing; retain phone readability.
