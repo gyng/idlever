@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of stateWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
 const checks=await p.evaluate(async()=>{const a=window.__riddle;a.runnerOn=false;let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};
 a.lineage={...a.lineage,live:null,class_offer:[{class:'fighter',signature:'shield_bash',level:1,opens:1},{class:'rogue',signature:'vanish',level:1,opens:1}],unlocks:[...a.lineage.unlocks,'rogue'],systems:[{id:'automations',open:false,new:false,trigger:'meet Lich'}]};a.go({kind:'camp'});
 const before=await a.engine.save();check(!document.querySelector('.topbar .classes-offer,.topbar .cls-offer'),'class bar removed even with offers');

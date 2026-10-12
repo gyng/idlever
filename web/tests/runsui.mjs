@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 // Current run UI gates (docs/RUNS_UI.md §8, superseded roster: docs/UX_BLOODLINES.md).
 // Real WASM at 400×800; responsive earned bloodline checks at 320/400/1440×900.
 // RIDDLE_BROWSER=headed selects the GPU. runs=1 enables the actual open-app clock;
@@ -324,7 +325,7 @@ try {
   // ---- heroes: one and three actual paid bloodlines, mobile selection and desktop roster.
   if (part("heroes")) {
     const engine=readFileSync(resolve(ROOT,'web/tests/fixtures/earned-gunner-home.json'),'utf8');
-    for(const width of [320,400,1440]){
+    for(const width of responsiveWidths([320,400,1440])){
       await open('seed=4103&fresh=1&runs=0',{width,height:900});
       check(await page.evaluate(async engine=>window.__riddle.importSave(JSON.stringify({v:2,engine,loadout:[],last_seen:Date.now(),runs:0})),engine),'actual earned save imported without grants');
       await camp();

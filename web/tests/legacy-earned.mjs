@@ -1,3 +1,4 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 // Report ownership/old-wire checks plus actual earned WASM balance reconciliation.
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
@@ -6,7 +7,7 @@ import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const engine=readFileSync(new URL('./fixtures/earned-gunner-home.json',import.meta.url),'utf8');
 const browser=await launchBrowser();
-try {for(const width of [320,400,1440]) {
+try {for(const width of responsiveWidths([320,400,1440])) {
   const page=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`${url}?fresh=1&seed=52`);await page.waitForFunction(()=>window.__riddle?.booted);

@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();const b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of responsiveWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
 const n=await p.evaluate(async()=>{
 const {openPackages}=await import('/src/ui/packages.ts'),{closeAllSheets}=await import('/src/ui/sheet.ts');let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;},tick=()=>new Promise(r=>setTimeout(r,20)),jobs=[],change=new Set(),rules=new Set();
 const real=window.__riddle,L=structuredClone(real.lineage);L.packages.all.forEach(p=>p.owned=true);L.packages.stance='steady';L.packages.tactic_slots=2;L.packages.tactics=[];

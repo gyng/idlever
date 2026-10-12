@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "node tests/run.mjs --smoke",
-    "test:full": "node tests/run.mjs --full"
+    "test:full": "node tests/run.mjs --full",
+    "test:exhaustive": "node tests/run.mjs --exhaustive"
   },
   "devDependencies": {
     "@types/three": "^0.186.0",

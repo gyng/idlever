@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';import assert from 'node:assert/strict';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async()=>{const a=window.__riddle,{openHero}=await import('/src/ui/town.ts');window.buys=0;a.lineage={...a.lineage,live:null,selected_bloodline:1,bloodline:{points:6,spent:0,upgrades:{}},legacy_upgrades:['health','damage','armour'].map(id=>({id,rank:0,cap:3,price:3,effect:id==='health'?'+3 HP':`+1 ${id}`,affordable:true}))};a.engine.lineage=async()=>a.lineage;a.engine.upgradeHero=async id=>{window.buys++;a.lineage={...a.lineage,bloodline:{points:3,spent:3,upgrades:{[id]:1}},legacy_upgrades:a.lineage.legacy_upgrades.map(u=>u.id===id?{...u,rank:1,price:6,affordable:false}:u)};return a.lineage;};openHero(a);});
  assert.equal(await p.evaluate(()=>window.buys),0);assert.equal(await p.getByRole('button',{name:'Upgrade health',exact:true}).count(),1);

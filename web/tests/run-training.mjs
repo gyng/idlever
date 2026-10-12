@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}}),diagnostics=[];
+try{for(const width of responsiveWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}}),diagnostics=[];
 p.on('pageerror',e=>diagnostics.push({kind:'pageerror',message:e.message}));p.on('requestfailed',r=>diagnostics.push({kind:'requestfailed',url:r.url(),failure:r.failure()}));p.on('console',m=>{if(m.type()==='error')diagnostics.push({kind:'console',text:m.text()});});
 await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted).catch(async e=>{console.log('BOOT FAILURE DIAGNOSTICS',JSON.stringify({width,url:p.url(),events:diagnostics,state:await Promise.race([p.evaluate(()=>({ready:document.readyState,app:!!window.__riddle,booted:window.__riddle?.booted,kind:window.__riddle?.kind,text:document.body.innerText.slice(0,1600)})).catch(err=>({error:err.message})),new Promise(r=>setTimeout(()=>r({observationTimedOut:true}),2000))])}));throw e;});const n=await p.evaluate(async()=>{
 const a=window.__riddle;let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};a.lineage.packages.pen_open=false;

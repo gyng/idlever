@@ -1,10 +1,11 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 // Every catalogue kind renders; semantic item lists retain names/counts and identity knowledge.
 import {execFileSync} from 'node:child_process';import {readFileSync} from 'node:fs';
 import {launchBrowser} from '../../tools/browser.mjs';import {openPanel} from './lib/frame.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const kinds=[...readFileSync(new URL('../../crates/riddle-core/src/defs.rs',import.meta.url),'utf8').matchAll(/ItemDef \{ kind: "([^"]+)"/g)].map(m=>m[1]);
 const browser=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await browser.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  const checks=await p.evaluate(async kinds=>{
   const gem=document.querySelector('.gem.send').getBoundingClientRect();if(Math.abs(gem.width-gem.height)>0.5)throw Error('Send artwork stretched');

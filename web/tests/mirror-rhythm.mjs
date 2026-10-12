@@ -1,9 +1,10 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Real earned clear; choose the optional counter through the visible Tactics UI.
 import {execFileSync} from 'node:child_process';import {readFileSync} from 'node:fs';import assert from 'node:assert/strict';
 import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const source=readFileSync(new URL('./fixtures/earned-first-ascension-clear.json',import.meta.url),'utf8'),native=JSON.parse(source),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of stateWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?dev=1&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  assert.equal(await p.evaluate(()=>window.__riddle.kind),'wasm');

@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {mkdirSync} from 'node:fs';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async()=>{const a=window.__riddle;a.lineage.class='fighter';a.lineage.packages.pen_open=false;window.__portraitSave=await a.engine.save();window.__portraitDeath={run_id:1,depth:8,cause:'goblin',margin:'1 hp short',verdict:'gap',baseline:0,replays:12,patches:[],morgue:'heir1',trace:{turns:[]},hero:{name:'Corin Ash',bloodline_id:1,heir:1,class:'rogue'}};a.go({kind:'death',death:window.__portraitDeath,kept:true});});

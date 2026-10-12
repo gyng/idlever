@@ -10,18 +10,20 @@ try{for(const width of [400,1440]){
  await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3330`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(()=>{window.__riddle.lastForecast=null;window.__riddle.go({kind:'watch'});});
  await p.waitForFunction(()=>document.querySelector('.watch')?.dataset.tick);
- const read=()=>p.evaluate(()=>{const t=document.querySelector('.console [data-tile=speed]'),r=t.querySelector('.watch-speed-rate'),l=t.querySelector('.tl');
+ const capture=(normalOnly=false)=>{const t=document.querySelector('.console [data-tile=speed]'),r=t.querySelector('.watch-speed-rate'),l=t.querySelector('.tl');
   const a=r.getBoundingClientRect(),tb=t.getBoundingClientRect(),rg=document.createRange();rg.selectNodeContents(l);
   const clash=[...rg.getClientRects()].some(x=>x.width>0&&x.left<a.right&&x.right>a.left&&x.top<a.bottom&&x.bottom>a.top);
-  return{rate:r.textContent,sped:t.classList.contains('sped'),mode:t.querySelector('.watch-speed-mode').textContent,visible:a.width>0&&getComputedStyle(r).visibility!=='hidden',inside:a.left>=tb.left-1&&a.right<=tb.right+1&&a.top>=tb.top-1,clash};});
+  const state={rate:r.textContent,sped:t.classList.contains('sped'),mode:t.querySelector('.watch-speed-mode').textContent,visible:a.width>0&&getComputedStyle(r).visibility!=='hidden',inside:a.left>=tb.left-1&&a.right<=tb.right+1&&a.top>=tb.top-1,clash};return normalOnly&&state.rate!=='1×'?null:state;};
+ const read=()=>p.evaluate(capture);
  let s=await read();
  check(s.mode==='Fights only'&&/^\d+(\.\d)?×$/.test(s.rate)&&s.visible&&s.inside&&!s.clash,`default mode shows its clock on the tile (${JSON.stringify(s)})`);
  check(s.sped===(parseFloat(s.rate)>1),`lit exactly when not 1× (${JSON.stringify(s)})`);
  if(shots)await p.locator('.console').screenshot({path:`${shots}/speed-${width}.png`});
  await p.locator('[data-tile=speed]').click();await p.locator('.sheet [data-tile=one]').click();
  await p.waitForFunction(()=>document.querySelector('.watch')?.dataset.mode==='one'&&!document.querySelector('.sheet'));
- await p.waitForFunction(()=>document.querySelector('.console [data-tile=speed] .watch-speed-rate')?.textContent==='1×',null,{timeout:5000});
- s=await read();check(s.mode==='Normal'&&!s.sped,`normal reads 1× unlit (${JSON.stringify(s)})`);
+ // Capture the same1× frame that satisfies readiness; playback may advance between browser calls.
+ const normal=await p.waitForFunction(capture,true,{timeout:5000});
+ s=await normal.jsonValue();check(s.mode==='Normal'&&!s.sped,`normal reads 1× unlit (${JSON.stringify(s)})`);
  // blind 5331f40 (A: "even on Speed Normal the badge jumped 1× … 128× … 16×"): Normal keeps the picture steady — a dead stretch
  // travels at most 4× (a longer one is jumped, and the jump says `skipped ahead`)
  const seen=await p.evaluate(()=>new Promise(res=>{let max=0,dead=0;const rates=new Set();const w=document.querySelector('.watch');const t0=performance.now();

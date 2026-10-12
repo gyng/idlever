@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of stateWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  const count=await p.evaluate(async()=>{
   const a=window.__riddle;let count=0;const check=(ok,msg)=>{if(!ok)throw Error(msg);count++;};

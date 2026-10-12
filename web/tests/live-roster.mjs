@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [400,1440]){const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of stateWidths([400,1440])){const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  const n=await p.evaluate(async()=>{
   const a=window.__riddle,tick=()=>new Promise(r=>setTimeout(r,30));const until=async predicate=>{for(let i=0;i<100&&!predicate();i++)await tick();};let n=0,advances=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};
   const slot={id:1,name:'Bloodline 1',hero_name:'Wren Ash',heir:1,class:'fighter',level:1,xp:0,next:60,state:'waits',rest_s:0,legacy:{points:7,spent:0,upgrades:{}},notice:true};

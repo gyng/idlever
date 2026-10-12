@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
@@ -8,7 +9,7 @@ const out=process.env.DEATH_FIX_EVIDENCE;if(out)mkdirSync(out,{recursive:true});
 const browser=await launchBrowser(),results=[];
 const check=(ok,msg)=>{if(!ok)throw Error(msg);};
 try{
- for(const width of [400,1440]){
+ for(const width of stateWidths([400,1440])){
   const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`${url}?dev=1&fresh=1&seed=155`);
   await page.waitForFunction(()=>window.__riddle?.booted,null,{timeout:90000});

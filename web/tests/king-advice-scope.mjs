@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
@@ -7,7 +8,7 @@ const source=gunzipSync(readFileSync(new URL('../../docs/evidence/cut145/source.
 const out=process.env.KING_ADVICE_EVIDENCE;if(out)mkdirSync(out,{recursive:true});
 const browser=await launchBrowser(),results=[];
 try{
- for(const width of [400,1440]){
+ for(const width of stateWidths([400,1440])){
   const p=await browser.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
   await p.goto(`${url}?dev=1&fresh=1&runs=0&seed=145`);await p.waitForFunction(()=>window.__riddle?.booted,null,{timeout:90000});
   const death=await p.evaluate(async source=>{

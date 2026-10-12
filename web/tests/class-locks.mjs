@@ -1,3 +1,4 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';
 import {mkdirSync} from 'node:fs';
 import {launchBrowser} from '../../tools/browser.mjs';
@@ -5,7 +6,7 @@ const shots=process.env.CLASS_LOCK_SHOTS;if(shots)mkdirSync(shots,{recursive:tru
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const browser=await launchBrowser();
 try {
- for(const width of [320,400,1440]) {
+ for(const width of responsiveWidths([320,400,1440])) {
   const page=await browser.newPage({viewport:{width,height:800}});
   await page.goto(`${url}?dev=1&engine=fake&seed=3004&fresh=1&runs=0`);await page.waitForFunction(()=>window.__riddle?.booted);
   await page.evaluate(async()=>{

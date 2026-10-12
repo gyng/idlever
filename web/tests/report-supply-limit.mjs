@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';import assert from 'node:assert/strict';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(()=>{const a=window.__riddle;window.capReport={elapsed_s:28800,runs:12,sampled:false,learned:[],bests:[],found:[],deaths:[],pending:[],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[],deepest:13,restock_capped:true,gold:{home:0,salvage:0,wake:0,spent:0,lost:100}};a.lineage.gold=8443;a.go({kind:'report',report:window.capReport});});
  const notice=p.locator('.report-supply-limit');assert.equal(await notice.count(),1);assert.equal(await notice.textContent(),'Supplies limited · $0 budget');assert.ok(await notice.isVisible());assert.ok(await p.locator('.report-details').evaluate(e=>e.hidden));

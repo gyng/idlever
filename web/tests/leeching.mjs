@@ -1,7 +1,8 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 // Controlled combat fixture with real Rust/WASM worker; not an earned-clear claim.
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';import assert from 'node:assert/strict';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),browser=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`${url}?fresh=1&seed=7&runs=0&speed=1`);await page.waitForFunction(()=>window.__riddle?.booted);
  const evidence=await page.evaluate(async()=>{

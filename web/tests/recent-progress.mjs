@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of stateWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
 const n=await p.evaluate(async()=>{const a=window.__riddle,engine=a.engine,initialPackages=a.lineage.packages;let n=0;const check=(ok,msg)=>{if(!ok)throw Error(msg);n++;};
 a.engine={...engine,wallEdit:async()=>null};a.lineage={...a.lineage,best_depth:99,packages:undefined,systems:[],wall:undefined};
 a.sets[a.active]={rows:[{conds:[{k:'depth>=',n:16}],verb:{v:'bank'}}]};

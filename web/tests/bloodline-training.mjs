@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);const n=await p.evaluate(async()=>{
+try{for(const width of responsiveWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);const n=await p.evaluate(async()=>{
 const a=window.__riddle,{mergeReports}=await import('/src/app.ts');let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};a.lineage.packages.pen_open=false;
 const base={elapsed_s:300,runs:2,sampled:false,salvaged:[],xp:{class:"fighter",gained:0,level_ups:0},renown:{gained:0,rank:0,ranks_up:0},learned:[],bests:[],found:[],deaths:[],pending:[],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[],deepest:8,gold:{home:25},packages:['STEADY L2'],grew:[{track:'character',what:'Steady L2'}]};
 const slot=(id,packages)=>({id,name:`Bloodline ${id}`,runs:1,deepest:8,gold:10,packages});

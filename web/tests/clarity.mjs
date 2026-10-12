@@ -187,13 +187,15 @@ try {
     await page.emulateMedia({reducedMotion:'no-preference'});
   }
   // Cut 14 §4: a repeated chore callout coalesces on its line — `pick up ×8` — instead of eight `pick up` reads (the fake emits
-  // no chore rows, so every engine batch gets one appended; the ticker is sampled every 40 ms through the run)
+  // no chore rows, so each batch gets an explicit consecutive streak. Unrelated
+  // combat messages/floor changes must not determine whether the fixture supplies
+  // enough consecutive chores. The ticker is sampled every40ms through the run)
   {
     await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=7&autosend=1&speed=fast`, { waitUntil: "domcontentloaded" });
     await waitFor((s) => s?.booted && s.screen === "watch", "the watch");
     await page.evaluate(() => {
       const r = window.__riddle, orig = r.engine.step.bind(r.engine);
-      r.engine.step = async (n) => { const res = await orig(n); res.events.push({ t: res.snapshot.turn, k: "rule", row: -2, verb: { v: "pick_up" }, text: "pick up" }); return res; };
+      r.engine.step = async (n) => { const res = await orig(n); res.events.push(...Array.from({ length: 8 }, () => ({ t: res.snapshot.turn, k: "rule", row: -2, verb: { v: "pick_up" }, text: "pick up" }))); return res; };
     });
     const seen = new Set(); let best = 0; const t0 = Date.now();
     while (Date.now() - t0 < 12_000) {

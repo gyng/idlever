@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [400,1440]){const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3909`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of stateWidths([400,1440])){const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3909`);await p.waitForFunction(()=>window.__riddle?.booted);
  const checks=await p.evaluate(async()=>{
   const a=window.__riddle,{mergeReports}=await import('/src/app.ts'),{mergeClassXp}=await import('/src/ui/class-xp.ts');let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};
   const base={elapsed_s:0,runs:1,sampled:false,learned:[],bests:[],found:[],deaths:[],pending:[],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[],salvaged:[],xp:{class:'fighter',gained:39,level_ups:0},renown:{gained:0,rank:0,ranks_up:0},gold:{home:143},deepest:4};

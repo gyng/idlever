@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Earned read-only inspection plus controlled divergent hero/class progress.
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -7,7 +8,7 @@ const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta
 const engine=readFileSync(new URL('./fixtures/earned-gunner-home.json',import.meta.url),'utf8');
 const shots=process.env.RIDDLE_SHOTS;if(shots)mkdirSync(shots,{recursive:true});
 const b=await launchBrowser();
-try{for(const width of [400,1440]){
+try{for(const width of stateWidths([400,1440])){
  const p=await b.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?fresh=1&seed=49`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async engine=>{if(!await window.__riddle.importSave(JSON.stringify({v:2,engine,loadout:[],last_seen:Date.now(),runs:0})))throw Error('real import');},engine);

@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Cold-title, save-safe navigation and direct-load coverage on the real engine.
 import { execFileSync } from 'node:child_process';
 import { launchBrowser } from '../../tools/browser.mjs';
@@ -5,7 +6,7 @@ import assert from 'node:assert/strict';
 const url = execFileSync('bash', ['tools/dev.sh'], { cwd: new URL('../../', import.meta.url), encoding: 'utf8' }).trim();
 const browser = await launchBrowser(); let checks = 0;
 try {
-  for (const width of [320, 400, 1440]) {
+  for (const width of stateWidths([320, 400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
     const errors = []; page.on('pageerror', e => errors.push(e.message));
     // Bare URL proves normal cold routing, rather than relying on menu=1.

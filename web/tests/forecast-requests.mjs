@@ -1,7 +1,8 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Real controller with delayed replies: previews are usable; refinement is explicit.
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();const b=await launchBrowser();
-try{for(const width of [400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);await p.waitForTimeout(200);
+try{for(const width of stateWidths([400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);await p.waitForTimeout(200);
 const n=await p.evaluate(async()=>{
 const a=window.__riddle,old=a.engine;let count=0,previews=0,full=0;const pending=[];const tick=(ms=30)=>new Promise(r=>setTimeout(r,ms));const check=(v,s)=>{if(!v)throw new Error(s);count++;};
 a.lineage={...a.lineage,town:{...a.lineage.town,home:true}};a.vsBase=null;

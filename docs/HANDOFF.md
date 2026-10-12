@@ -103,11 +103,12 @@ all560 guard hashes still match. Original43 clarity and26 Cut12 checks pass.
 This diagnostic does not certify the failed full run or prove original causes.
 Archive cut180/isolated-client-reproduction/.
 
-A fresh COMPLETE166-group retry is LIVE session23909, TEST_JOBS2/heavy1;
-original source/fixtures/assertions/time limits unchanged, only host concurrency
-reduced. Outputs scratchpad/cut180/client-full-retry.log and
-client-full-retry-results.json. Do not modify shared source during this run.
-No new acceptance certificate yet.
+Fresh COMPLETE166-group retry23909 is TERMINAL0:166/166 in2447.953s,
+jobs2/heavy1/default assertions/times. All560 original recorded source inputs
+still match. Original complete acceptance archived at
+cut180/complete-client-acceptance/. Initial failed164/166 and sequential2/2
+remain separately preserved. This certifies Cut180 source, not a fun score.
+
 
 Rust/WASM unchanged. The actor-identity change is committed/pushed through
 18fbb5c but not yet adopted/frozen. Released QA continues unchanged immutable
@@ -126,17 +127,69 @@ unchanged. docs/CUT181_FULL_AUDIT_COMPACTION.md records the prospective contract
 full audit current features; original166 retained under explicit exhaustive;
 unchanged assertions/time limits, future tests included, target359.449s.
 
-Prepared selection at scratchpad/cut181/suites.proposed.mjs and prospective
-full-audit-plan.json now selects124 current groups and names43 historical/overlap
-candidates after review. It retains all37 critical journeys through the existing
-fights:break component, and keeps distinct routes/oaths/maxHP/works groups. Temporary executable selection checks pass full124/exhaustive166,
-future inclusion, both recent failures retained, targeted labels and flag
-rejection. Prospective mapping/reasons are at cut181/full-audit-scope/. Extra historical
-combinations remain explicitly exhaustive-only; equivalence of every assertion
-is not claimed. Not adopted or timed yet.
-Original full23909 remains LIVE on unchanged inputs; apply existing runner/
-registry updates after terminal, then run selection checks and measure the
-cleaned full audit. Keep routine smoke; do not add another compact command.
+Reviewed selection at scratchpad/cut181/suites.proposed.mjs is now APPLIED
+to the current runner:124 full current groups,166 exhaustive; all37 critical
+journeys included through fights:break. Distinct routes/oaths/maxHP/works and
+both recent failures stay current. Scoped mapping at cut181/full-audit-scope/
+records43 long whole-walk candidates and remaining extra-case limitations.
+No assertions/fixtures/time limits changed. Routine smoke remains37; no extra
+compact tier. test:exhaustive preserves the original inventory; future files
+join both automatically. Cut12 now runs as a timing-sensitive group, isolated
+like clarity; remaining long jobs are ordered by recorded Cut180 costs.
+
+Harness scope tests pass6/6. First current full39921 TERMINAL0:124/124 in
+620.778s; second43061 TERMINAL1:123/124 in523.583s. Both miss359.449s target.
+Both guards match all inputs; archives cut181/first-current-full-run/ and
+cut181/state-viewport-run/. Enemy-surfaces failed on known Mother facts/counter;
+unchanged all-width isolated98176 passed13.9s, but does not clear full failure.
+Controlled fixture now supplies its authored known lineage on the watch engine
+read too; corrected all-width22578 TERMINAL0. No product/assertion/timeout change.
+Measured long-job ordering updated (take-control/runsui no longer near end).
+GPU probe97223 TERMINAL0 confirms privateXvfb,D3D12 RTX3080/native1.5.
+
+GPU experiment64546 TERMINAL143, deliberately stopped after two failures
+(clarity:core,watch and runsui) and slower long-test costs. This was an execution
+experiment, not acceptance. Owned process186983 and its verified descendants
+alone stopped; partial log/plan/562matching-input guard preserved at
+cut181/gpu-experiment/. No desktop window. Established headless path retained.
+
+Headless12 run31422 TERMINAL1:123/124 in370.454s,11.005s over target;
+all562 guarded inputs match, archive cut181/headless12-run/. Only failure is
+clarity chore count3. Its controlled fixture now supplies eight consecutive
+chores in each batch; minimum4/plain<=1/12s unchanged. Whole focused group
+74055 TERMINAL0:43checks40.2s, archive cut181/chore-fixture-disposition/.
+
+Default-command39492 TERMINAL1:122/124 in386.475s, guard562matches, archive
+cut181/default-command-failure/. Remaining enemy fixture read came through
+pending seen-systems bookkeeping; controlled fixture now supplies known
+lineage on both reads and always exercises that pending path. Normal badge
+check had two browser calls (wait1x then later read4x); same-frame capture now
+preserves its original1x condition, mode/unlit assertion,5000ms and9s/max4x.
+
+Final scope124:44 historical whole walks moved/replaced; unique Cut305
+sheet/rank parts retained, other legacy combinations exhaustive.34 state
+groups400px;33 responsive triples320/1440 endpoints; all other matrices
+unchanged. Exhaustive/smoke/targeted retain original widths. Final mapping at
+cut181/final-scope/current-mapping.json supersedes earlier scope proposals.
+Focused15909 TERMINAL0:enemy/speed(all original widths)+Works parts3/3 in48.7s;
+all changedJS parses, scope7/7. Actual default full endpoint benchmark3731 is
+LIVE: scratchpad/cut181/full-endpoints.log/full-endpoints-results.json;
+endpoint-input-guard.json562files. Current default up to12 CPU-bounded workers,
+heavy1, solo checks solo. No source edits while live. Target359.449s unchanged.
+
+Original166-group acceptance evidence committed6435c3b and pushed. First push
+was automatically rejected for unverified remote ownership. Read-only remote,
+prior-push reflog and GitHub owner/admin/push-permission checks established the
+same authorized gyng/riddle destination; reviewed retry succeeded. No deploy.
+
+QA completed cold2416.452s, first20m return419.461s; prescribed4h then8h remain.
+Latest report736tools/9images, six completed written edits (five companions and
+one genuinely earned Sable hero bank row after Mother);0hero deaths. D13 genuine
+bank and Warlord slain after earned upgrades; no grants or time manufacture.
+Original20m return screenshot posted. Confirmed unlabeled companionHP/rules
+fractions will be addressed after unchanged-source benchmark terminal; keep
+new source/current UI acceptance distinct. Dungeon-send surprise is a recorded
+interpretation, not yet a defect claim. QA continues unchanged b60d282/41271.
 
 ## QA status
 
@@ -237,3 +290,49 @@ or kill flags. These prospective rules are preparation, not completed play.
 
 Automation never steals desktop focus: tools/browser.mjs privateXvfb only.
 Mechanical acceptance and QA are not verified fun80. No deployment dispatch.
+
+Latest same-save QA has finished its full horizon: cold2416.452s,20m419.461s,
+4h466.752s,8h1309.058s actual active. Agent is writing its scoreless terminal
+report; approximately1204tools/15images at last meter. One actual hero death
+fully read. Toren run23 genuinely bankedD22; earned Legacy gift9 and HealthII40
+applied. Run24 returnedD13 alive via authored return40 at38%HP; three fire
+throws. New first-hand misread: `foe:boss · depth>=13 -> throwfire` also fired
+at goblins while Mother was present. This is condition-versus-action-target
+confusion, not proof of combat logic error. Preserve the exact report and
+dispose each finding before final freeze/blinds. No retroactive QA three-death
+or Normal-watch requirement; those remain precommitted blind requirements.
+
+QA terminal report now complete: eval/qa/b60d282.qa_cut179_interactive.md.
+Full4611.723actualseconds,26earnedruns,9completed hand changes/13attempts,
+1275conservative tools/17images,oneactualheroDeath read. Fourdefects/three
+misreads/threeunexplained/onefriction;11findings. Owned browser intentionally
+closed,Scout restored on; checkpoint efa788eeb5dc7a82e7c1fd6b0046c4747bda4fdd4d7be8eb217b21b5956a706b.
+Toren bestD22,L5XP1767/2500,Legacy3,style78. Newconfirmednet-forge toast labels
+walletdelta1557 asforge spend,actual1800 offsetbynetrun243; walletcorrect.
+Bankstatus19h wraps belowbadge. Terminalearnedtown screenshot posted. Root
+must preserve report/evidence and dispose11findings before newfreeze/blinds.
+Actorfix original166accepted; other UI/reason fixes not yet implemented.
+
+Endpoint3731 TERMINAL1:123/124 in342.403s, target time met but NOT accepted.
+All562 guard inputs match; only held-message restoration failed. Original
+frame-wait durations unrecorded; expiry under load is a supported hypothesis.
+Unchanged isolated37480 TERMINAL0:18checks per originalwidth,7.0s. Timing
+classification added boss-beat-quiet to isolated heavy group; no assertion or
+fixture change. Current default full6489 LIVE outputs scratchpad/cut181/
+full-accepted.log/full-accepted-results.json, accepted-input-guard.json562files.
+No shared source edits while live. QA entire410original files archived exactly
+with hashes in cut179/complete-interactive-qa/ (22MBcompressed). No newgame
+fixes or blind players yet.
+
+Cut181 ACCEPTED: default full6489 TERMINAL0,124/124 in340.043s (5m40s),
+18.920% of fixed1797.246s baseline;359.449s target met,81.080% faster.
+Headless/default12on32cores/heavy1/solo isolated; all562 input hashes match.
+Scope7/7,focusedfixtures3/3,unchanged held-message isolated pass. Evidence
+cut181/accepted-full-audit/. No source edits after this complete pass.
+Commands: pnpm test37; pnpm test:full124; pnpm test:exhaustive166 original
+groups/widths.34 state400px,33 responsive triples320/1440;Works unique parts
+retained;44 moved/replaced historical whole walks mapped with limitations.
+No measured80% defect detection claim. All prior failures/trials preserved.
+Native/game truth unchanged by this test-harness work. Fun goal ACTIVE; QA
+terminal11findings still need dispositions/fixes and finalfreeze before two
+pure fresh blind ratings. Do not deploy.

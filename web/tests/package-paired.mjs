@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Blind c4705f9 (A, B: `compare outcomes` said `all similar` nearly every time): a price read send by send on the same seeds calls a
 // clear split (`better 7/8`), says `same` / `close` inside the noise, and the summary names what was compared.
 import {execFileSync} from 'node:child_process';
@@ -5,7 +6,7 @@ import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();
 const browser=await launchBrowser();let total=0;const errors=[];
 try{
- for(const width of [400,1440]){
+ for(const width of stateWidths([400,1440])){
   const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1});
   page.on('pageerror',e=>errors.push(e.message));
   await page.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await page.waitForFunction(()=>window.__riddle?.booted);

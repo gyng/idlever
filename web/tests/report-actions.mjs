@@ -1,6 +1,7 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim();const b=await launchBrowser();
-try{for(const width of [400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
+try{for(const width of stateWidths([400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
 const n=await p.evaluate(async()=>{
  const a=window.__riddle,original=a.engine;let checks=0,release;const check=(ok,name)=>{if(!ok)throw Error(name);checks++;};
  const report={elapsed_s:0,runs:1,sampled:false,learned:[],bests:[],found:[],deaths:[],pending:['unlock supply_cap_5 (0)','unlock vault2 (3)'],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[{text:'unlock vault2 (3)',t:1,run_id:1}],lead:[{k:'unlock',text:'unlock supply_cap_5 (0)'}]};

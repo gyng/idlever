@@ -1,3 +1,4 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 // Hidden companion controls: diagnostic fake save, actual production components.
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -6,7 +7,7 @@ import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{encoding:'utf8',cwd:new URL('../../',import.meta.url)}).trim();
 const shots=process.env.RIDDLE_QA_SHOTS;if(shots)mkdirSync(shots,{recursive:true});
 const b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?engine=fake&fresh=1&systems=none`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async()=>{

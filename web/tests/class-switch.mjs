@@ -1,3 +1,4 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Actual earned save: class replies must be adopted before the UI writes rules again.
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync} from 'node:fs';
@@ -7,7 +8,7 @@ const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta
 const engine=readFileSync(new URL('./fixtures/earned-gunner-home.json',import.meta.url),'utf8');
 const shots=process.env.RIDDLE_SHOTS;if(shots)mkdirSync(shots,{recursive:true});
 const browser=await launchBrowser();
-try{for(const width of [400,1440]){
+try{for(const width of stateWidths([400,1440])){
  const p=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?dev=1&fresh=1&seed=47`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async engine=>{const a=window.__riddle;if(a.kind!=='wasm'||!await a.importSave(JSON.stringify({v:2,engine,loadout:[],last_seen:Date.now(),runs:0})))throw Error('earned real import');a.insertRow({conds:[{k:'hp>',n:90}],verb:{v:'rest'}},0);},engine);

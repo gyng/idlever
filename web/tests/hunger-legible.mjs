@@ -1,10 +1,11 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // blind c4705f9 (B: `hp 7/25 · max -26` "from hunger I never understood"): on the watch a hunger bite names its cause once a floor
 // (`starving · no light`) and the HUD's hp keeps what the drain took this run (`starving −N`), never a bare `max −N`.
 import {execFileSync} from 'node:child_process';
 import {launchBrowser} from '../../tools/browser.mjs';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
 let n=0;const check=(ok,m)=>{if(!ok)throw Error(m);n++;};
-try{for(const width of [400,1440]){
+try{for(const width of stateWidths([400,1440])){
  const p=await b.newPage({viewport:{width,height:900}});
  await p.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=9&fake_drain=1`,{waitUntil:'domcontentloaded'});
  await p.waitForFunction(()=>window.__riddle?.booted&&window.__riddle.screen==='camp');await p.waitForTimeout(250);

@@ -1,6 +1,7 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';import assert from 'node:assert/strict';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){
+try{for(const width of responsiveWidths([320,400,1440])){
  const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async()=>{const {trainingBlock}=await import('/src/ui/tracks.ts');const host=document.createElement('div');host.style.width='min(100%,600px)';host.id='training-check';host.appendChild(trainingBlock(['BOLD L2','LIGHT HANDS L3','BOSS FOCUS L2','DRILLED · Warlord','DRILLED · Mother','DRILLED · Lich','DRILLED · Master','DRILLED · Queen','DRILLED · King','DRILLED · future boss','A VERY LONG FUTURE STYLE WITH UNBROKENNAMEABCDEFGHIJKLMNOPQRSTUV L2']));document.body.replaceChildren(host);});

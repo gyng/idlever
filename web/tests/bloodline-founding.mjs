@@ -1,3 +1,4 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';
 import {readFileSync,mkdirSync} from 'node:fs';
 import {launchBrowser} from '../../tools/browser.mjs';
@@ -7,7 +8,7 @@ const shots=process.env.BLOODLINE_SHOTS;if(shots)mkdirSync(shots,{recursive:true
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:root,encoding:'utf8'}).trim();
 const browser=await launchBrowser();
 try {
- for(const width of [320,400,1440]) {
+ for(const width of responsiveWidths([320,400,1440])) {
   const page=await browser.newPage({viewport:{width,height:900}});
   await page.goto(`${url}?dev=1&seed=4103&fresh=1&runs=0`);await page.waitForFunction(()=>window.__riddle?.booted);
   await page.evaluate(async engine=>{const a=window.__riddle;if(a.kind!=='wasm')throw Error('Real WASM required');await a.importSave(JSON.stringify({v:2,engine,loadout:[],last_seen:Date.now(),runs:0}));},engine);

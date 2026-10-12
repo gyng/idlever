@@ -1,9 +1,10 @@
+import { stateWidths } from './lib/viewport-cases.mjs';
 // Controlled unlock fixtures; real Rust/WASM worker transactions, no earned-play claim.
 import {execFileSync} from 'node:child_process';
 import {launchBrowser} from '../../tools/browser.mjs';
 import assert from 'node:assert/strict';
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),browser=await launchBrowser();
-try {for(const width of [320,400,1440]) {
+try {for(const width of stateWidths([320,400,1440])) {
  const page=await browser.newPage({viewport:{width,height:900}}),errors=[];page.on('pageerror',error=>errors.push(error.message));
  await page.goto(`${url}?fresh=1&seed=3&runs=0`);await page.waitForFunction(()=>window.__riddle?.booted);
  await page.evaluate(async()=>{

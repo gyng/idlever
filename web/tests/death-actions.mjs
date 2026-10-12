@@ -1,8 +1,9 @@
+import { responsiveWidths } from './lib/viewport-cases.mjs';
 import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
 import {mkdirSync} from 'node:fs';import {resolve} from 'node:path';
 const shots=process.env.RIDDLE_DEATH_SHOTS;if(shots)mkdirSync(shots,{recursive:true});
 const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);const n=await p.evaluate(async()=>{
+try{for(const width of responsiveWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);const n=await p.evaluate(async()=>{
  const {deathAction}=await import('/src/ui/death.ts'),{rowChips}=await import('/src/ui/editor.ts'),{closeAllSheets}=await import('/src/ui/sheet.ts');let checks=0;const check=(ok,name)=>{if(!ok)throw Error(name);checks++;};
  const rows=[{conds:[{k:'foes>=',n:1}],verb:{v:'attack',a:'nearest'},origin:'stance:steady'},{conds:[{k:'hp<',n:30}],verb:{v:'drink',a:'heal'},origin:'stance:steady'}];
  const turn=(row,verb=rows[0].verb)=>({t:10,row,verb,hp:2,foes:1,telegraphs:[]});

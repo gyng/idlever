@@ -49,7 +49,8 @@ cargo test -q --workspace --profile fast                     # ~36 s warm (CPU-b
 node tools/gates.mjs [--full|--fast] [--fresh] # routine: current-game metrics,10 wire seeds,18 current-player fortnight cases (--full); --exhaustive: original272 cases and30-seed statistical audit. --fresh ignores caches; GATES_THREADS=N caps parallelism. Each genuine completed leg and exact runtime/harness job is cached separately.
 node tools/gates.mjs [--full] --rows <ids|substrings> [--fail-fast] [--seeds 8 …]   # TARGETED, a tuning loop's check, never the gate: the dayplayer on the named rows alone — only the bots, seeds and days they read, each game stopped at its row's milestone; --fail-fast plays seeds lowest first and aborts on the first row settled FAIL (an every-seed row's first failing seed, a median the seeds left cannot rescue), naming the seed and value. `target/fast/examples/dayplayer --rows ?` lists the row ids (docs/ITERATION_SPEED.md §0h)
 (cd web && pnpm -s test)                                     # routine critical-journey client subset; docs/DEV_VALIDATION_TIERS.md
-(cd web && pnpm -s test:full)                                # all client groups; release / pre-blind acceptance
+(cd web && pnpm -s test:full)                                # current client audit (124 groups); release / pre-blind acceptance
+(cd web && pnpm -s test:exhaustive)                          # historical full client inventory (166 groups), all original widths
 tools/wasm.sh [--ship]                                       # fast wasm (~8 s after a core edit) / wasm-pack release (~2 min)
 tools/ship.sh [--preview]                                    # cohort build on :5230 (fat LTO, ~2 min); --preview: fast wasm, ~25 s, for QA rounds
 cargo run -q --profile fast -p riddle-core --example cli -- --seed 1 --rules crates/riddle-core/presets/good.json --runs 3
@@ -143,7 +144,7 @@ than opening a foreground window. Keep headless for ordinary DOM/text checks.
 
 
 `tools/browser.mjs` has two paths. `launchBrowser()` is headless Chromium (SwiftShader WebGL):
-the client gates (`pnpm test`: routine subset, four at once; `pnpm test:full`: all groups, seven at once), QA sessions and anything that reads text and
+the client gates (`pnpm test`: routine subset, four at once; `pnpm test:full`: current feature groups, up to twelve CPU-bounded workers with timing checks isolated; `pnpm test:exhaustive`: historical inventory), QA sessions and anything that reads text and
 clicks — fast to start, parallel-safe, no desktop window, audio muted. `launchGpu()` /
 `launchBrowser({ gpu: true })` is headed Chromium on a private X display in WSL with Mesa's D3D12 driver forced via
 `/usr/lib/wsl/lib`, which reaches the real GPU (`--probe` prints `D3D12 (NVIDIA …)` and `native
