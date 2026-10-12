@@ -1,50 +1,125 @@
 # Current handoff — 2026-10-12
 
-Objective remains ACTIVE/unverified: improve Riddle to a verified fun score>=80 through TWO complete fresh independent blind ratings, preserving all evidence. DO NOT DEPLOY. Commits/push and milestone screenshots authorized. Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior handoff preserved verbatim at docs/evidence/cut178/pre-adoption-handoff/HANDOFF.md; earlier handoffs remain historical.
+Goal ACTIVE: verified fun score >=80 from TWO complete fresh independent blind
+ratings, preserving failures and raw evidence. No accepted score yet. DO NOT
+DEPLOY. Commit/push and milestone screenshots authorized. The Takumar correction
+belongs to another session and is ignored.
 
-## Mechanically accepted source — adopted by this commit
+Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Historical long handoff remains at
+cut178/pre-adoption-handoff/HANDOFF.md.
 
-Cut177 fixes first bank's free Rogue grant: original grant ran before banked_depths update; grant now runs when a genuine non-timeout bank is first recorded. Meaningful original-source regression fails; corrected Bank/Return/timed-out Bank cases pass, including actual class selection.
+## Cut179 source accepted for adoption by this commit
 
-Cut178 fixes completed class changes lost on immediate reload: App.setClass uses existing saveBeforePaint. Same public earned first-bank real-WASM path now unlocks/selects/persists Rogue after immediate reload, without forced save or save-delay wait. Earlier collapsed-report, premature sample, duplicate locator and confirmed visible-completion/reload failure all preserved.
+Contract: docs/CUT179_QA_RECOVERY.md. No Rust or balance changes. Damage detail
+names hero/pets and pairs their DPS with their own HP/hits; Scout settings
+returns to current pending Found confirmation without an automatic purchase;
+fielded companion repeat tap announces its selected state without dismissing.
+Driver --checkpoint atomically preserves committed game-only browser storage;
+--restore uses unchanged earned bytes. No forced save or timestamp edits.
 
-Cut178 also fixes stale Tactics goal: missing next-floor estimate is explicit unknown; open panel subscribes to forecast publications, without automatically starting package comparisons. Responsive original-source regression fails; corrected20checks at320/400/1440 plus original class-switch pass17.4s.
+Initial complete client43243 is TERMINAL FAILED165/166 in1479.3s; its only
+failure is the old Cut29 wording expectation. All raw outputs preserved in
+cut179/initial-complete-client-failure/. Only two expectation expressions then
+changed, strengthening required hero labels and exact31/38HP totals. Complete
+Cut29 rerun46389 is TERMINAL0,46checks in42.9s. Prospectively documented derived
+acceptance retains165 original passing groups plus that fresh whole Cut29.
+All166 current unique discovered groups pass,730 inputs/WASM guarded; no other
+module imports Cut29; actual original take-control branches retained. This is
+NOT a successful single full invocation. Accepted directory:
+scratchpad/cut179/composed-acceptance-final; provenance and both derivations at
+cut179/composed-client-acceptance/. Types/copy/build passed; original3jobs,
+heavy1/default timing/fixtures unchanged. No client runner remains live.
 
-Full native verification61177 TERMINAL exit0,667s:807Rust/6ignored,types/copy/tooling14/Clippy/shippingWASM/frontend/current routine native gates including18current-player fortnight cases. Runtime d741c800b4f89962. ShippingWASM 4879984bytes SHA58f90774b8bc5531bb9463cd092c0d2a6e55a917b402a2118527a98563c8e24e. Rust/native inputs unchanged since that terminal acceptance. Broad exhaustive272/30seed and prior22-row16-seed results are NOT certified for this new runtime.
+Original strengthened report/founding regressions fail0/2; corrected3/3 plus
+final companion/founding2/2 pass. Private-GPU diagnostic report320/400/1440
+passes; its screenshots are explicitly UI fixtures, not earned play.
+cut179/focused-checks/ and cut179/diagnostic-report-layout/. Recovery smoke27049
+passes exact earned-house/seed/gold/hero-ID restoration after deliberate owned
+browser closure; original checkpoint SHA unchanged. Three synthetic unrelated
+cookie/origin/key inputs rejected before browser launch. First wrong eval-shape
+harness attempt retained, not attributed to game behavior.
 
-Current complete client38897 TERMINAL exit0:166/166 in1495.7s. Exact discovery/names/return codes,730guarded inputs and exact shippingWASM unchanged; original3jobs/heavy1/default15ms and actual control branches retained. Archive docs/evidence/cut178/complete-client/. Prior concurrent client91489 TERMINAL exit130 after actual fight-skip failure; explicit cancellation and raw historical running-state preserved in cut177/cancelled-concurrent-client/. Original isolated fights51assertions pass176.9s; isolated PASS never substitutes for the complete current result.
+Unchanged native acceptance61177 TERMINAL0,667s:807Rust/6ignored,Clippy,types,
+copy/tooling14,shippingWASM,8metrics/10wire/18current-player fortnight cases.
+Runtime d741c800b4f89962. New22-row targeted16-seed configurations also pass
+TERMINAL0 in1383.68s (cut179/current-native16/); some rows settled from provable
+bounds, not every row has16complete histories/exact medians. Exhaustive272/
+30-seed audit remains uncertified. ShippingWASM4879984bytes SHA
+58f90774b8bc5531bb9463cd092c0d2a6e55a917b402a2118527a98563c8e24e.
 
-Clean adopted source is 3cde6bc14d1b0aa444f23ef6cc5d16233b25e039, committed and pushed. Approved clean build embeds that literal commit. Immutable accepted assets are now served on41269,session12405,from /tmp/riddle-cut178-3cde6bc-frozen/assets. Manifest SHA8aae6b1f1d9a2f886655e8a9269657237b9f7c7f68f339f82e09ed44ce522c2b. Smoke96497 TERMINAL exit0:262served file hashes,exact real shippingWASM,cold/public free-house construction,saved reload straight to Town,privateGPU400/1280screens and separately labeled cosmetic23h preview. Archive cut178/accepted-freeze-checkpoint/. Initial default build lacked Git stamp(childgitEPERM),freeze rejected; incorrectly started dependent preview exited1/no assets served. Failures remain archived unchanged; approved rebuild passed unchanged validator. No guarded full client remains live; source changes still require appropriate acceptance.
+Cut177/178 genuine first-bank Rogue unlock and completed-class immediate-reload
+persistence remain accepted; exact real-WASM public regression94967 passes on
+immutable3cde6bc without a forced flush,save-delay wait or grants. Evidence
+cut178/accepted-first-bank/. Tactics missing next-floor estimates are explicit
+unknowns; open headlines subscribe to forecast publications.
 
-Original22-row16-seed targeted check is LIVE on current runtime: PID4100920,parent4100872,started2026-10-12T02:39:53UTC,verified live by approved ps. scratchpad/cut178/native16/{state.json,targeted.log}; original command/full seed counts/fail-fast, no balance overrides. It is not the exhaustive audit,full gate or a fun score. Do not restart merely because the session output was lost; verify this PID/log and terminal state.
+## QA status
 
-## QA — current state
+Old capped ade4 passes remain TERMINAL INCOMPLETE. cca75 transcript QA is
+TERMINAL18.2min actual,489/500calls,5images; original report/raw evidence at
+cut178/transcript-qa-terminal/. Its stale Tactics defect is fixed; retained
+presentation/item/worker-order limitations are individually recorded in
+cut178/transcript-qa-triage/dispositions.md. Extra2tokens come from a same-batch
+quest title reward; omission of the receipt remains explicit, not an accounting
+error or evidence that the UI explains it.
 
-Old ade4b12 capped passes remain TERMINAL INCOMPLETE and diagnostic; never reused. Reports/78artifacts under cut173/qa-terminal/.
+cca75 interactive QA is TERMINAL INCOMPLETE: cold42m actual,all returns0,
+no absences,600/2000calls,5/120images,2completed Skul companion edits,0hero
+deaths read. Browser disconnected; nonpersistent context had no earned-state
+export. Original save unavailable; no replacement or invented same-save credit.
+Only owned41423 driver quit; listener absence verified. Original report
+eval/qa/cca75f9.qa_cca75_interactive.md and18 artifacts retained at
+cut179/incomplete-interactive-qa/. Dispositions:
+cut179/interactive-qa-dispositions.md. No old cold time transfers.
 
-Fresh cca75f9 transcript QA qa_cca75_transcript TERMINAL:1093conservative actual-active seconds(18.2min),489/500calls,5images. Four actual locked hero-entry attempts, own choices/purchases/drop, same-save8h return, offered patch and later actual manually edited hero threshold. No scores. Driver41425 closed/no listener. Original report eval/qa/cca75f9.qa_cca75_transcript.md and raw ledger/game-only earned storage(sevenriddle keys/zeroCookies) sealed in cut178/transcript-qa-terminal/. Original runtime is cca75f9, not the new accepted runtime.
+Replacement qa_cut179_interactive prepared only, TERMINAL waiting release.
+Own preparation scratchpad/qa_cut179_interactive/preparation.md;10calls,
+0images/0active minutes, no browser/save/play. Operating-manual exposure and
+extended driver operational read disclosed (nonblind QA); no game source/
+history. Generic bounded Framework1–3 supplies14shared plus2idle probes.
+Planned fresh seed223/headless41433/--checkpoint/budget2000+120/full40/5/5/20.
+Follow up only after clean accepted freeze, providing exact final URL/hash.
 
-Its1defect/6misreads/4unexplained/1friction have provisional individual dispositions at cut178/transcript-qa-triage/dispositions.md. Defect stale Tactics fixed. Extra2tokens proven from same-batch quest title:17+30run tokens+2quest reward=49; report omits receipt. Other retained presentation/physical-versus-usable-item/worker-order limitations are explicit, not perfect-clarity evidence. Interactive findings still pending final triage.
+## Previews and remaining steps
 
-Fresh interactive QA qa_cca75_interactive remains LIVE on immutable cca75f9 URL41263,driver41423,seed223,2000calls/120images. Latest checkpoint cold30m20s actual(notelapsed),463calls,5images; two completed own Skul companion edits,4config changes, no simulated absence yet/no hero deaths. Do not shorten required40/5/5/20 horizons. New companion-main candidate: already-in-party tap intentionally selects idempotently(never dismisses;× removes,≡ edits), per party.ts; selected-card feedback to assess from actual image. Additional DPS/HP scope and nested worker settings navigation findings pending. No score or whole-current-runtime QA certificate.
+1. Commit accepted source/evidence, clean frontend build with approved Git
+   metadata access, then freeze with scratchpad/cut169/freeze-accepted.py using
+   accepted-dir scratchpad/cut179/composed-acceptance-final. Do not overwrite a
+   snapshot. Inspect success before starting dependent preview. Verify all
+   served hashes, exact realWASM, saved reload and private-GPU milestone smoke.
+2. Release replacement FULL fresh interactive QA; preserve every phase/actual
+   coverage/budget and resolve each lapse. No prior42-minute credit or score.
+3. Same-sitting LoopHero reanchor, drift<=5; known-reference rescoring allowed
+   but never claim fresh direct play without it.
+4. TWO NEW independent pure-context raters,137/211, SAME final immutable build.
+   Required40/5/5/20 actual active (buffers45/6/6/22), ordered20m/4h/8h SAMEsave,
+   first10actuallyunnoted,3deaths read,2completed own owner-named written edits,
+   two Normal watches each>=3min DIRECT observation. Budget1000tools/120images.
+   Exclude loading/tool waits/admin/unattended/buffered/card-writing time.
+   Always dev1&runs1; fresh/menu onlyinitial. No grants,hidden scripts or strategy.
+5. Criterion BEFORE16quoted probes/axes;audio unassessed,delayedRecall empty
+   until actual next day,unknown proxiesNA. BOTH raw cards locked/SHA BEFORE
+   EITHER inspected/scored. Audit complete exposure/phase/assets/order/budgets
+   FIRST, then measured caps,all killsfalse,reliabilityalpha>=.8,mean>=80.
 
-## Live previews / infrastructure
+Pure fresh neutral CLI alternative precommitted at cut170/blind-context-
+amendment.json. Preflights pass but each actual startup must audit its visible
+context before playing. Never reuse old incomplete/purity-broken75.2 cards.
+Unreleased templates at scratchpad/cut176/blind-launch-preparation and
+cut178/blind-launch-preparation are historical and MUST get final hash/URL and
+checkpoint-enabled driver before release. No new blind players launched.
+Only four references, no target/history/QA to raters; standard specifically
+reviewed local requests, no bypass/auth inspection/HOME overrides. Gateway
+scratchpad/cut169/public-blind-gateway.mjs blocks internal/script/reset/order
+violations and caps buffered watch1s. Lock both raw cards before inspecting.
 
-- Current accepted41269: /tmp/riddle-cut178-3cde6bc-frozen/assets,session12405; leave immutable. Manifest and smoke evidence above. No new blind players released.
-- Accepted old QA41263: /tmp/riddle-cut176-cca75f9-frozen/assets,session49600; leave unchanged/live while interactive QA uses it. All262hashes,old acceptedWASM e8596a72...,savedreload/GPU smoke and10dumpwalk verified. Evidence cut176/accepted-freeze-checkpoint/.
-- Diagnostic41265: /tmp/riddle-cut177-diagnostic/assets,session21605; pre-class-save-fix snapshot; not release.
-- Corrected diagnostic41267: /tmp/riddle-cut178-diagnostic/assets,session5342; accepted native WASM/new UI,real earned first-bank/reload PASS65514 terminal. Still dirty/unadopted metadata; not rating release.
-- Older40483 preview75087 may still live; no players there.
+Historical frozen previews remain:3cde6bc41269/session12405 at
+/tmp/riddle-cut178-3cde6bc-frozen/assets (manifest8aae6b1f...,262hash/GPU smoke
+verified);cca75f941263/session49600,no live player;diagnostics41265/session21605
+and41267/session5342;older40483/session75087 may remain. Leave frozen assets
+unchanged. New Cut179 freeze/preview are NEXT. Prior default build lacked Git
+stamp; freeze rejected and prematurely started preview exited before serving.
+That failure is preserved; use approved clean build and unchanged validator.
 
-## Remaining required work
-
-1. Current source/client/native acceptance and clean freeze/served-byte/real-WASM/privateGPU smoke are complete. Finish current22-row16-seed targeted check; preserve exact terminal scope and failures. Do not claim the omitted exhaustive audit.
-2. Complete live interactive QA and audit actual ledger/coverage/budget, individually resolve all findings. Original reports stay untouched; current-runtime QA/fix verification must be honestly scoped. No source or score guidance to actual blind players.
-3. Same-sitting LoopHero reanchor; drift<=5. Known-reference rescoring permitted but never claim fresh direct play without it.
-4. TWO NEW independent pure-context players,seeds137/211,on SAMEimmutable accepted build. Neutral fresh ephemeral CLI alternative precommitted in cut170/blind-context-amendment.json; actual context/approved-local-transport preflights pass, but EACH actual startup audits independently. Old d34605e incomplete/purity-broken75.2 cohort never reused.
-5. Full actual-active40/5/5/20(planned45/6/6/22),ordered20m/4h/8h SAMEsave,first10actuallyunnoted,3deaths read,2COMPLETE own written edits(owner named),2Normal watches each>=3min directly observed. Budget1000tools/120images. Exclude infra/loading/tool waits/unattended/buffered/cardwriting; never infer credit from elapsed operation time or invent intervals. runs=1 EVERYvisit;fresh/menu onlyinitial.
-6. Criterion BEFORE16quotedprobes/axes;audioNA,delayedRecall empty untilactualnextday,unknown proxiesNA. BOTH rawcards locked/SHA BEFORE EITHER inspected/scored; never repair raw. Audit complete horizons/purity/assets/order/budgets FIRST,then applicable measured caps,allkillfalse,reliabilityalpha>=.8,mean>=80. No accepted score yet.
-
-Unreleased neutral briefs/ordered gateway configs/CLI argv/requirement map prepared in scratchpad/cut176/blind-launch-preparation and neutral reference directories /tmp/riddle-cca75-blind-a,b; no players launched. If final accepted build changes, update their URL/build BEFORE release. No history/source/QA/targetscore/seed strategy supplied. Existing gateway rejects internal/scripts/force/unsafe paths/reset/order violations and caps buffered observations1s. Default CLI localhost fails; specific standard-reviewed local requests work. No dangerous bypass,auth inspection or HOME/CODEX_HOME override.
-
-Automation must never steal desktop focus: tools/browser.mjs privateXvfb only. Full/native/current checks and focused fixes do NOT prove fun80. No deployment dispatch.
+Automation never steals desktop focus: tools/browser.mjs privateXvfb only.
+Mechanical acceptance and QA are not verified fun80. No deployment dispatch.

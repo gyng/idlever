@@ -50,13 +50,14 @@ export function heroRoster(app:App, hooks:{focus?():void;rules?():void}={}) {
         });
       };
       if(!app.lineage.tree?.auto_send){found();return;}
-      openWindow(close=>h('div',{class:'sheet-body bloodline-founding'},
+      const confirmFound=():void=>{openWindow(close=>h('div',{class:'sheet-body bloodline-founding'},
         h('h2',null,/* copy:label */'New bloodline'),
         h('b',{class:'num gold'},`$${app.lineage.bloodline_price??250}`),
-        h('p',null,/* copy:callout */'Scout sends immediately'),
+        h('p',null,app.lineage.tree?.auto_send?/* copy:callout */'Scout sends immediately':/* copy:callout */'Send by hand'),
         h('div',{class:'chips'},
-          h('button',{class:'chip',onclick:()=>{close();openSettings(app);}},/* copy:button */'Scout settings'),
-          h('button',{class:'chip bloodline-confirm',onclick:()=>{close();found();}},/* copy:button */'Found'))));
+          h('button',{class:'chip',onclick:()=>{close();openSettings(app,confirmFound);}},/* copy:button */'Scout settings'),
+          h('button',{class:'chip bloodline-confirm',onclick:()=>{close();found();}},/* copy:button */'Found'))));};
+      confirmFound();
     }},/* copy:button */'New bloodline',h('span',{class:'num gold'},` $${L.bloodline_price??250}`));
     return h('div',{class:'hero-list'},...slots.map(row),L.town?.home===false?h('p',{class:'dim'},/* copy:callout */'Build a house'):'',slots.length<(L.bloodline_cap??1)&&L.town?.home!==false?add:'',
       h('button',{class:'chip hero-history',onclick:()=>openChronicle(app)},/* copy:button */'Chronicle'));

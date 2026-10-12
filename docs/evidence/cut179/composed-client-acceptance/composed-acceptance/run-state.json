@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "scope": "Exact Cut179 source accepted by derived coverage:165 retained current passing groups plus fresh complete Cut29; original whole invocation remains FAILED",
+  "acceptanceKind": "composed exact166 current groups; NOT a successful single full invocation",
+  "commit": "77cd3e35dbbe68dfe0758e4ffbb8ad8644d222eb",
+  "shipping_wasm": {
+    "bytes": 4879984,
+    "sha256": "58f90774b8bc5531bb9463cd092c0d2a6e55a917b402a2118527a98563c8e24e"
+  },
+  "updated_utc": "2026-10-12T03:34:52.052126+00:00",
+  "originalWholeInvocation": {
+    "status": "failed",
+    "exitCode": 1,
+    "sha256": "0c239a4cd018fcb023ba9ce5ad24f0bc19719b9111d1bfdc6a14a966e55d3ed7"
+  },
+  "validatedGroups": 166,
+  "steps": [
+    {
+      "name": "retained165 completed passing groups",
+      "status": "passed",
+      "originalReport": {
+        "path": "/home/g/p/riddle/scratchpad/cut179/revalidation/shipping-client-results.json",
+        "sha256": "ebbddba9b558b081c897f2e1d5f6aaf179cf4c21463f15009fd868afd122de77",
+        "status": "FAILED165/166"
+      }
+    },
+    {
+      "name": "fresh complete Cut29",
+      "status": "passed",
+      "exitCode": 0,
+      "originalReport": {
+        "path": "/home/g/p/riddle/scratchpad/cut179/cut29-current/results.json",
+        "sha256": "f012f57ceac875209970def3324507a245815b3a016d0d766d7e25d4bfbcf452",
+        "status": "PASS complete Cut29"
+      }
+    }
+  ]
+}

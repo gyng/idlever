@@ -1,0 +1,20 @@
+[
+  {
+    "case": "cookies",
+    "exitCode": 1,
+    "expectedDiagnostic": "must not contain cookies",
+    "browserLaunched": false
+  },
+  {
+    "case": "origin",
+    "exitCode": 1,
+    "expectedDiagnostic": "must use local game origins",
+    "browserLaunched": false
+  },
+  {
+    "case": "key",
+    "exitCode": 1,
+    "expectedDiagnostic": "contains unrelated storage",
+    "browserLaunched": false
+  }
+]

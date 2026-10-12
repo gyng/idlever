@@ -1,0 +1,11 @@
+client suite: targeted (2/166 groups)
+FAIL report-time-scope 3.0s (2.4s)  Node.js v26.5.0
+        if(!/hero 0\.4 dps · 1440 hp · pets 0\.1 dps · 360 hp/i.test(await row('dealt')))throw Error('Damage rate and total must identify the same hero/pet owner');
+     Error: Damage rate and total must identify the same hero/pet owner
+         at inspect (file:///home/g/p/riddle/web/tests/report-time-scope.mjs:21:91)
+         at async file:///home/g/p/riddle/web/tests/report-time-scope.mjs:27:2
+FAIL bloodline-founding 35.9s (35.2s)  Node.js v26.5.0
+       - waiting for locator('.bloodline-founding') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/bloodline-founding.mjs:30:54 {
+FAIL: 0/2 client gates in 35.9s

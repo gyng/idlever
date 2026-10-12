@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/tools/driver.mjs:50
+  if (state.cookies?.length) throw new Error("Game checkpoint must not contain cookies");
+                                   ^
+
+Error: Game checkpoint must not contain cookies
+    at gameStorage (file:///home/g/p/riddle/tools/driver.mjs:50:36)
+    at file:///home/g/p/riddle/tools/driver.mjs:58:15
+
+Node.js v26.5.0

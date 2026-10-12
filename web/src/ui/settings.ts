@@ -43,9 +43,11 @@ export function preferenceRows(app?: App): HTMLElement[] {
     row(/* copy:label */ "effects", effects), row(/* copy:label */ "auto continue", auto)];
 }
 
-export function openSettings(app: App): void {
+export function openSettings(app: App, onClose?: () => void): void {
+  let returnToCaller = true;
   closeEverything();   // QA 23ed91f (L: the settings sheet opened over the open UNLOCKS panel — two studs): one at a time
   openSheet((close) => {
+    const leave = (): void => { returnToCaller = false; close(); };
     const body = h("div", { class: "sheet-body settings" });
     const area = h("textarea", { class: "ta", rows: 6, spellcheck: false });
     const debugStatus = h("div", { class: "dim debug-status", role: "status" });
@@ -66,13 +68,13 @@ export function openSettings(app: App): void {
 
     const clearDebug = (): void => { debugCopy.hidden = true; replace(debugStatus); };
     const saveOut = h("button", { class: "btn", onclick: async () => { clearDebug(); const s = app.exportSave(); area.value = s; stamp(saveOut, await copyText(s)); } }, /* copy:button */ "export");
-    const saveIn = h("button", { class: "btn", onclick: async () => { const ok = await app.importSave(area.value.trim()); stamp(saveIn, ok); if (ok) close(); } }, /* copy:button */ "import");
+    const saveIn = h("button", { class: "btn", onclick: async () => { const pendingReturn = returnToCaller; returnToCaller = false; const ok = await app.importSave(area.value.trim()); stamp(saveIn, ok); if (ok) leave(); else returnToCaller = pendingReturn; } }, /* copy:button */ "import");
     const rulesOut = h("button", { class: "btn", onclick: async () => { clearDebug(); const s = await app.engine.exportRules(); area.value = s; stamp(rulesOut, await copyText(s)); } }, /* copy:button */ "export");
-    const rulesIn = h("button", { class: "btn", onclick: async () => { const t = area.value.trim(); if (!t) { stamp(rulesIn, false); return; } try { await app.setRulesText(t); stamp(rulesIn, true); close(); } catch { stamp(rulesIn, false); } } }, /* copy:button */ "import");
+    const rulesIn = h("button", { class: "btn", onclick: async () => { const t = area.value.trim(); if (!t) { stamp(rulesIn, false); return; } const pendingReturn = returnToCaller; returnToCaller = false; try { await app.setRulesText(t); stamp(rulesIn, true); leave(); } catch { returnToCaller = pendingReturn; stamp(rulesIn, false); } } }, /* copy:button */ "import");
 
     let armed = 0;
     const reset = h("button", { class: "btn danger", onclick: () => {
-      if (Date.now() - armed < 2500) { close(); void app.resetLineage(); return; }
+      if (Date.now() - armed < 2500) { leave(); void app.resetLineage(); return; }
       armed = Date.now(); replace(reset, /* copy:button */ "again"); setTimeout(() => replace(reset, /* copy:button */ "reset"), 2500);
     } }, /* copy:button */ "reset");
 
@@ -89,7 +91,7 @@ export function openSettings(app: App): void {
 
     body.append(
       h("div", { class: "label row-label" }, /* copy:label */ "Settings"),
-      row(/* copy:label */ "menu", h("button", { class: "btn main-menu-button", onclick: () => { close(); window.dispatchEvent(new Event("riddle:menu")); } }, /* copy:button */ "Main menu")),
+      row(/* copy:label */ "menu", h("button", { class: "btn main-menu-button", onclick: () => { leave(); window.dispatchEvent(new Event("riddle:menu")); } }, /* copy:button */ "Main menu")),
       hired.length ? h("div", { class: "srow workers-row" }, h("span", { class: "label" }, /* copy:label */ "workers"), h("span", { class: "chips" }, ...hired.map((n) => workerChip(n.id, n.name, !n.paused)))) : "",
       ...preferenceRows(app),
       row(/* copy:label */ "save", saveOut, saveIn),
@@ -102,5 +104,5 @@ export function openSettings(app: App): void {
       row(/* copy:label */ "lineage", h("span", { class: "num dim" }, /* copy:label */ `seed ${app.lineage.seed}`), reset),
     );
     return body;
-  }, { stay: true });
+  }, { stay: true, onClose: () => { if (returnToCaller) onClose?.(); } });
 }

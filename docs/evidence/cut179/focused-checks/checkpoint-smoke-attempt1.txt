@@ -1,0 +1,21 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ undefined
+- 'wasm'
+
+    at file:///home/g/p/riddle/scratchpad/cut179/checkpoint-smoke.mjs:20:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: 'wasm',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

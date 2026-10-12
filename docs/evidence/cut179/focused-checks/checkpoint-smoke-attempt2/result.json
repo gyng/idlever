@@ -1,0 +1,26 @@
+{
+  "scope": "Driver committed browser-storage preservation and genuine same-save recovery after deliberate browser closure; not QA horizon or score",
+  "before": {
+    "kind": "wasm",
+    "seed": 149,
+    "home": true,
+    "gold": 0,
+    "hero": [
+      1
+    ]
+  },
+  "after": {
+    "kind": "wasm",
+    "seed": 149,
+    "home": true,
+    "gold": 0,
+    "hero": [
+      1
+    ]
+  },
+  "checkpointSha": "baf34a47319240cc95733125b943026a5b1f1b8e49b79910e111f016f1807484",
+  "originalFailure": {
+    "error": "page.evaluate: Target page, context or browser has been closed"
+  },
+  "result": "PASS"
+}

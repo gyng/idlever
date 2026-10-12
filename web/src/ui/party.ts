@@ -71,7 +71,7 @@ export function renderParty(app: App): { el: HTMLElement; refresh(): void } {
         refresh(); return;
       }
       // Cut 20 §2 (AD: "tapping a pet twice toggles it off"): a tap selects; a second tap never dismisses — the card's `×` does
-      if (inParty) return;
+      if (inParty) { toast(/* copy:callout */ "Already fielded"); return; }
       const ids = app.lineage.party.map((p) => p.id);
       void app.mutate(() => app.engine.setParty([...ids, c.id].slice(-(app.lineage.party_slots || 1))));
     };
@@ -83,7 +83,7 @@ export function renderParty(app: App): { el: HTMLElement; refresh(): void } {
     const name = role
       ? h("span", { class: "name" }, role, h("span", { class: "pet-name" }, c.name), " ", h("b", { class: "num" }, `L${c.level}`))
       : h("span", { class: "name" }, nice(c.kind), " ", h("small", { class: "dim pet-name" }, c.name), " ", h("b", { class: "num" }, `L${c.level}`), h("small", { class: "dim num" }, ` g${c.gen}`));
-    const main = h("button", { class: "comp-main game-control", onclick: onTap, "data-role": c.life?.role ?? "" },
+    const main = h("button", { class: "comp-main game-control", onclick: onTap, "aria-pressed": String(breeding ? !!picked : inParty), "data-role": c.life?.role ?? "" },
       name, xpBar(c) ?? "", petMeta(app.lineage, c) ?? "",
       h("span", { class: "tags dim" }, c.tags.map(nice).join(" · ")),
       h("span", { class: "hp num dim" }, `${c.hp}/${c.max_hp} · ${c.rules.rows.length}/${c.max_rows}`));

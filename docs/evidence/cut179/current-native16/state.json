@@ -1,0 +1,23 @@
+{
+  "scope": "Original22-row16-seed targeted progression/engagement check on accepted new runtime;not exhaustive audit,full gate or fun score",
+  "command": [
+    "node",
+    "tools/gates.mjs",
+    "--full",
+    "--rows",
+    "idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,stalls-tuned,tuned-picked,random-picked,hands-idle,automation-pays,picked-l-king,picked-l-purse,porter,scout",
+    "--fail-fast",
+    "--seeds",
+    "16",
+    "--tuned-seeds",
+    "16",
+    "--loo-seeds",
+    "16"
+  ],
+  "status": "passed",
+  "startedUtc": "2026-10-12T02:39:53.370410+00:00",
+  "pid": 4100920,
+  "exitCode": 0,
+  "elapsedSeconds": 1383.680020596832,
+  "finishedUtc": "2026-10-12T03:02:57.050672+00:00"
+}

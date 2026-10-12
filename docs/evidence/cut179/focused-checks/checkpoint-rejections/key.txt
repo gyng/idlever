@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/tools/driver.mjs:54
+    if (origin.localStorage.some(item => !item.name.startsWith("riddle."))) throw new Error("Game checkpoint contains unrelated storage");
+                                                                                  ^
+
+Error: Game checkpoint contains unrelated storage
+    at gameStorage (file:///home/g/p/riddle/tools/driver.mjs:54:83)
+    at file:///home/g/p/riddle/tools/driver.mjs:58:15
+
+Node.js v26.5.0

@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/tools/driver.mjs:53
+    if (!["127.0.0.1", "localhost", "[::1]"].includes(u.hostname) || !["http:", "https:"].includes(u.protocol)) throw new Error("Game checkpoint must use local game origins");
+                                                                                                                      ^
+
+Error: Game checkpoint must use local game origins
+    at gameStorage (file:///home/g/p/riddle/tools/driver.mjs:53:119)
+    at file:///home/g/p/riddle/tools/driver.mjs:58:15
+
+Node.js v26.5.0

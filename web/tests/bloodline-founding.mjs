@@ -27,7 +27,14 @@ try {
   const scout=page.locator('.settings .worker-switch[data-worker="scout"]');await scout.waitFor();
   if(await scout.getAttribute('aria-checked')!=='true')throw Error('Route must reach existing on Scout control');
   if(!await page.evaluate(async saved=>await window.__riddle.engine.save()===saved,before.save))throw Error('Reading Scout controls changed save');
+  await page.keyboard.press('Escape');await founding.waitFor();
+  if(!(await founding.innerText()).includes('Scout sends immediately'))throw Error('Returning from Settings lost pending founding');
+  if(!await page.evaluate(async saved=>await window.__riddle.engine.save()===saved,before.save))throw Error('Returning from Settings founded or charged without confirmation');
+  await page.keyboard.press('Escape');await openRoster();
+  await page.locator(`${roster} .hero-add`).click();await founding.getByRole('button',{name:'Scout settings'}).click();await scout.waitFor();
   await scout.click();await page.waitForFunction(()=>window.__riddle.lineage.tree.auto_send===false);
+  await page.keyboard.press('Escape');await founding.waitFor();
+  if(!(await founding.innerText()).includes('Send by hand'))throw Error('Returned founding must describe the newly paused Scout');
   await page.keyboard.press('Escape');await openRoster();
   await page.locator(`${roster} .hero-add`).click();await page.waitForFunction(()=>window.__riddle.lineage.hero_slots.length===2);
   if(await founding.count())throw Error('Scout-off founding should stay direct');

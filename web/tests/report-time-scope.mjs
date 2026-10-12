@@ -7,7 +7,7 @@ try{for(const width of [320,400,1440]){
  await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
  await p.evaluate(async()=>{
   const a=window.__riddle,zero={hero:0,pets:0,foes:0},split={fight:600,travel:2800,chores:100,rest:100};
-  window.__timeMeter={seconds:3600,dealt:zero,taken:zero,dps_dealt:zero,dps_taken:zero,healed:[],hps:0,time:split,time_s:split,rows:[],actions:0,supplies:{},gold:60,gold_per_min:1,hits_hero:0,hits_pets:0,fights:0};
+  window.__timeMeter={seconds:3600,dealt:{hero:1440,pets:360,foes:0},taken:{hero:180,pets:144,foes:0},dps_dealt:{hero:0.4,pets:0.1,foes:0},dps_taken:{hero:0.05,pets:0.04,foes:0},healed:[],hps:0,time:split,time_s:split,rows:[],actions:0,supplies:{},gold:60,gold_per_min:1,hits_hero:19,hits_pets:12,fights:0};
   window.__timeReport={elapsed_s:1200,runs:1,sampled:false,learned:[],bests:[],found:[],deaths:[],pending:[],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[],rested_s:1800,meters:window.__timeMeter};
   window.__timeSave=await a.engine.save();a.go({kind:'report',report:window.__timeReport,absence:true});
  });
@@ -16,6 +16,11 @@ try{for(const width of [320,400,1440]){
   if(await p.locator('.meters').getAttribute('data-seconds')!==String(seconds))throw Error('Changed metered seconds');
   if(!(await p.locator('.mhead').textContent()).includes('Completed runs'))throw Error('Meter owner unclear');
   if(await p.locator('.meter-scope').textContent()!==scope)throw Error('Wrong duration scope');
+  if(seconds===3600){
+   const row=async label=>(await p.locator('.meters .mrow').filter({has:p.locator('.mlab',{hasText:label})}).innerText()).replace(/\s+/g,' ');
+   if(!/hero 0\.4 dps · 1440 hp · pets 0\.1 dps · 360 hp/i.test(await row('dealt')))throw Error('Damage rate and total must identify the same hero/pet owner');
+   if(!/hero 0\.05 dps · 180 hp · 19 hits · pets 0\.04 dps · 144 hp · 12 hits/i.test(await row('taken')))throw Error('Taken damage and hits must identify hero/pet owners');
+  }
   const rest=await p.locator('.rest-line').textContent();if(!/Rest assigned.*30m.*Includes pending/.test(rest))throw Error(`Rest scope: ${rest}`);
   if(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Horizontal overflow');
  }

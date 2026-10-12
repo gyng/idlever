@@ -4,7 +4,9 @@
 // (DOM text, clicks, screenshots — fast, no desktop window); `--headed` for the GPU window when
 // the session judges feel, frame rate or the render itself (docs: eval/RATING.md).
 //
-//   node tools/driver.mjs --dir scratchpad/raterQ [--port 5347] [--headed] [--wide] [--dpr N] &
+//   node tools/driver.mjs --dir scratchpad/raterQ [--port 5347] [--headed] [--wide] [--dpr N] [--checkpoint] [--restore FILE] &
+//   --checkpoint atomically preserves committed game localStorage after each operation, without forcing a game save.
+//   --restore FILE starts from that earned browser state; it never resets the game or grants progress.
 //   tools/drive.sh 5347 '{"op":"goto","url":"http://localhost:5219/?dev=1&seed=157&fresh=1"}'
 //   tools/drive.sh 5347 '{"op":"text"}'                       body innerText
 //   tools/drive.sh 5347 '{"op":"click","label":"send"}'      by visible label (exact; "nth", "selector", "force", "wait" ms)
@@ -40,18 +42,41 @@ const dir = resolve(val("--dir", "scratchpad/driver"));
 const port = Number(val("--port", "5347"));
 const headed = flag("--headed") ? true : flag("--headless") ? false : undefined;
 fs.mkdirSync(`${dir}/shots`, { recursive: true });
+const checkpointPath = flag("--checkpoint") ? `${dir}/browser-state.json` : null;
+const restorePath = val("--restore", null);
+if (restorePath && !checkpointPath) throw new Error("--restore requires --checkpoint");
+const restored = restorePath ? JSON.parse(fs.readFileSync(resolve(restorePath), "utf8")) : undefined;
+function gameStorage(state) {
+  if (state.cookies?.length) throw new Error("Game checkpoint must not contain cookies");
+  for (const origin of state.origins ?? []) {
+    const u = new URL(origin.origin);
+    if (!["127.0.0.1", "localhost", "[::1]"].includes(u.hostname) || !["http:", "https:"].includes(u.protocol)) throw new Error("Game checkpoint must use local game origins");
+    if (origin.localStorage.some(item => !item.name.startsWith("riddle."))) throw new Error("Game checkpoint contains unrelated storage");
+  }
+  return state;
+}
+if (restored) gameStorage(restored);
 
 const browser = await launchBrowser({ headed });
 const isHeaded = headed ?? process.env.RIDDLE_BROWSER === "headed";
 // Phone at 3× on the GPU, 2× headless (SwiftShader is pixel-bound; the layout is the same).
 const dpr = Number(val("--dpr", isHeaded ? "3" : "2"));
 const ctxOpts = flag("--wide") ? { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 } : { viewport: { width: 400, height: 800 }, deviceScaleFactor: dpr };
-const ctx = await browser.newContext(ctxOpts);
+const ctx = await browser.newContext({ ...ctxOpts, ...(restored ? { storageState: restored } : {}) });
 const page = await ctx.newPage();
 const log = [];
 const note = (line) => { const l = `[${new Date().toISOString()}] ${line}`; log.push(l); fs.appendFileSync(`${dir}/console.log`, l + "\n"); };
 page.on("console", (m) => { if (m.type() === "error" || m.type() === "warning") note(`console.${m.type()}: ${m.text()}`); });
 page.on("pageerror", (e) => note(`pageerror: ${e.message}`));
+browser.on("disconnected", () => note("browser disconnected; last committed checkpoint retained"));
+async function checkpoint() {
+  if (!checkpointPath || !browser.isConnected()) return;
+  const storage = gameStorage(await ctx.storageState());
+  if (!storage.origins.some(origin => origin.localStorage.length)) return;
+  const tmp = `${checkpointPath}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(storage, null, 2) + "\n", { mode: 0o600 });
+  fs.renameSync(tmp, checkpointPath);
+}
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 let shotN = 0;
 
@@ -290,6 +315,7 @@ http.createServer((req, res) => {
   req.on("end", async () => {
     let out;
     try { out = await run(JSON.parse(body || "{}")); } catch (e) { out = { error: String(e.message ?? e) }; }
+    try { await checkpoint(); } catch (e) { note(`checkpoint failed: ${e.message ?? e}`); out.checkpointError = String(e.message ?? e); }
     res.setHeader("content-type", "application/json");
     res.end(JSON.stringify(out));
   });
