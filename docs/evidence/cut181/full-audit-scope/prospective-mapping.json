@@ -1,0 +1,249 @@
+{
+  "status": "Prospective scope review; not a timing or equivalence certificate",
+  "fullGroups": 124,
+  "exhaustiveGroups": 166,
+  "historicalGroupsMovedOrReplaced": 43,
+  "allExistingCriticalJourneysRetained": true,
+  "assertionsAndFixtureLimits": "Unchanged",
+  "remainingUniqueHistoricalCases": "Historical extra combinations remain exhaustive; the reviewed distinct routes/oaths/maxHP/works checks stay in current full. No assertion equivalence certificate.",
+  "groups": [
+    {
+      "historical": [
+        "fights",
+        "clarity:card",
+        "clarity:hold",
+        "cut13"
+      ],
+      "currentFeatureChecks": [
+        "fights:break",
+        "watch-console",
+        "watch-status",
+        "watch-speed-rate",
+        "watch-live-edge",
+        "watch-normal-news",
+        "boss-beat-quiet",
+        "boss-kill-beat"
+      ],
+      "reasonAndLimits": "Repeated full-watch and held-frame walks; existing break component stays current. Extended whole-walk timing/card scenarios stay exhaustive."
+    },
+    {
+      "historical": [
+        "clarity:deep"
+      ],
+      "currentFeatureChecks": [
+        "numbered-descents",
+        "king-advice-scope",
+        "clarity:paint"
+      ],
+      "reasonAndLimits": "Deep historical fixture diagnostics; keep current endgame paths and real forecast latency. Deep fixture profiling stays exhaustive."
+    },
+    {
+      "historical": [
+        "layout",
+        "ui:qa",
+        "ui:stall",
+        "ui:cut18",
+        "ui:cut19"
+      ],
+      "currentFeatureChecks": [
+        "screens",
+        "ui:frame",
+        "watch-message-spacing",
+        "shaft-wrap",
+        "chrome"
+      ],
+      "reasonAndLimits": "Repeated screen/sheet geometry walks. Current screen matrix and feature-specific geometry remain; older combined edge cases stay exhaustive."
+    },
+    {
+      "historical": [
+        "ui:keep",
+        "runclear"
+      ],
+      "currentFeatureChecks": [
+        "routine-keep",
+        "exit-keep-close",
+        "return-pick",
+        "run-card-gold",
+        "report-actions"
+      ],
+      "reasonAndLimits": "Long watched exit/keep walks overlap current earned keep and exit checks. Additional full-flow presentation cases stay exhaustive."
+    },
+    {
+      "historical": [
+        "autodismiss"
+      ],
+      "currentFeatureChecks": [
+        "worker-first-act",
+        "worker-purchases",
+        "watch-status",
+        "exit-keep-close"
+      ],
+      "reasonAndLimits": "Current worker and exit paths stay; historical optional auto-dismiss timing matrix stays exhaustive, without claiming equivalent timeout coverage."
+    },
+    {
+      "historical": [
+        "tips",
+        "cut23"
+      ],
+      "currentFeatureChecks": [
+        "enemy-tips",
+        "enemy-surfaces",
+        "forge-requests",
+        "rules-lock",
+        "item-icons",
+        "unit-label"
+      ],
+      "reasonAndLimits": "Large cross-screen tooltip and old forge sweeps; current dedicated interaction/price/fallback checks retained. Extra tooltip variants stay exhaustive."
+    },
+    {
+      "historical": [
+        "looks"
+      ],
+      "currentFeatureChecks": [
+        "hero-appearance",
+        "hero-slot-looks",
+        "portrait-fallback"
+      ],
+      "reasonAndLimits": "Older cosmetic whole-screen replay; current appearance routes and fallback checks retained."
+    },
+    {
+      "historical": [
+        "chain",
+        "qaAA",
+        "qaAC"
+      ],
+      "currentFeatureChecks": [
+        "death-actions",
+        "death-fix-discovery",
+        "death-forecast-said",
+        "history-pick-price",
+        "patch-overflow",
+        "chronicle-unit-labels"
+      ],
+      "reasonAndLimits": "Historical chained death/advice/patch walks; current scoped advice and mutation checks retained. Extra chain combinations stay exhaustive."
+    },
+    {
+      "historical": [
+        "blind-77030eb",
+        "cut115",
+        "cut117",
+        "cut30"
+      ],
+      "currentFeatureChecks": [
+        "package-selection",
+        "package-paired",
+        "package-requests",
+        "package-lanes",
+        "wall-preparation",
+        "numbers-agree",
+        "report-choices"
+      ],
+      "reasonAndLimits": "Historical package/forecast affordance fixes; current named package and outcome checks retained. Older late-kit next-work edge remains exhaustive."
+    },
+    {
+      "historical": [
+        "cut118",
+        "cut118b",
+        "cut120",
+        "cut30town"
+      ],
+      "currentFeatureChecks": [
+        "first-plot",
+        "town-save",
+        "worker-purchases",
+        "worker-first-act",
+        "report-supply-limit",
+        "live-roster",
+        "bloodline-founding",
+        "persistent-camp"
+      ],
+      "reasonAndLimits": "Historical town/orders/automation sweeps overlap current construction/workers/roster/standing-cost checks. The distinct full works-tree check cut305 stays current; additional old orders combinations stay exhaustive."
+    },
+    {
+      "historical": [
+        "cut119",
+        "cut20"
+      ],
+      "currentFeatureChecks": [
+        "companion-chrome",
+        "bloodline-training",
+        "report-class-xp"
+      ],
+      "reasonAndLimits": "Historical companion/party whole-flow walks; current select/dismiss/rows/breed/hatch/lifecycle checks retained. Extra role/metaprogression paths stay exhaustive."
+    },
+    {
+      "historical": [
+        "cut121",
+        "cut28w",
+        "cut16",
+        "cut24",
+        "cut25"
+      ],
+      "currentFeatureChecks": [
+        "combat-identity",
+        "combat-rules",
+        "telegraph-names",
+        "rest-callout",
+        "watch-keepout",
+        "watch-end-caption",
+        "tactic-observer",
+        "watch-meters",
+        "death-actions"
+      ],
+      "reasonAndLimits": "Long old watch/death/layout sweeps; current picture-clock, identity, damage and overlay checks retained. Special old ordering/drain/full replay combinations stay exhaustive."
+    },
+    {
+      "historical": [
+        "cut21",
+        "qa21",
+        "cut22",
+        "qa778",
+        "qa92"
+      ],
+      "currentFeatureChecks": [
+        "compact-depth",
+        "forecast-requests",
+        "package-paired",
+        "report-exit-depth",
+        "clarity:core,watch"
+      ],
+      "reasonAndLimits": "Historical waystone, forecast and report sweeps; current start/reference/paired/request checks retained. Extra toll fallback and refine combinations stay exhaustive."
+    },
+    {
+      "historical": [
+        "cut27"
+      ],
+      "currentFeatureChecks": [
+        "encounter-modifiers",
+        "watch-normal-news",
+        "death-hero",
+        "hunger-legible",
+        "numbered-descents"
+      ],
+      "reasonAndLimits": "Historical solved-floor folding combinations stay exhaustive. Distinct routes(cut26), oaths(cut28) and changing-maxHP traces(cut28d) remain current."
+    },
+    {
+      "historical": [
+        "qa9",
+        "qaj",
+        "legible"
+      ],
+      "currentFeatureChecks": [
+        "game-menu",
+        "debug-export",
+        "report-reading",
+        "report-time-scope",
+        "class-switch",
+        "hero-upgrade-feedback",
+        "watch-console"
+      ],
+      "reasonAndLimits": "Old multi-screen QA transcripts/walks; current lifecycle/save/report/identity checks retained. Historical combined scenarios stay exhaustive."
+    }
+  ],
+  "reviewRetainedDistinctGroups": [
+    "cut26",
+    "cut28",
+    "cut28d",
+    "cut305"
+  ]
+}

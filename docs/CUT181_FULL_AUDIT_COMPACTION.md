@@ -13,8 +13,9 @@ test files join both automatically unless a named historical group is explicitly
 classified. Keep `pnpm test` and `test:full` distinct; do not introduce a new
 compact command or silently relabel a targeted run as full.
 
-Start from the119 current groups identified in the prospective plan. Review
-the47 historical/overlapping candidates against named current feature checks.
+The reviewed plan retains124 current groups, including all37 critical journeys
+and distinct routes/oaths/maxHP/works checks. It moves or replaces43 historical
+walks, each mapped to named current checks with extra-case limitations.
 Their extra cases remain available in the exhaustive audit; a feature mapping
 does not prove equivalence of every assertion. Keep both recent failures in
 the current full audit. Do not relax assertions, fixture truth or timing limits.

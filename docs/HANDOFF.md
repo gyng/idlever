@@ -127,11 +127,13 @@ full audit current features; original166 retained under explicit exhaustive;
 unchanged assertions/time limits, future tests included, target359.449s.
 
 Prepared selection at scratchpad/cut181/suites.proposed.mjs and prospective
-full-audit-plan.json selects119 current groups and names47 historical/overlap
-candidates. Temporary executable selection checks pass full119/exhaustive166,
+full-audit-plan.json now selects124 current groups and names43 historical/overlap
+candidates after review. It retains all37 critical journeys through the existing
+fights:break component, and keeps distinct routes/oaths/maxHP/works groups. Temporary executable selection checks pass full124/exhaustive166,
 future inclusion, both recent failures retained, targeted labels and flag
-rejection. Not adopted or timed yet; each candidate still needs its current
-feature mapping/reason, with extra unique cases honestly exhaustive-only.
+rejection. Prospective mapping/reasons are at cut181/full-audit-scope/. Extra historical
+combinations remain explicitly exhaustive-only; equivalence of every assertion
+is not claimed. Not adopted or timed yet.
 Original full23909 remains LIVE on unchanged inputs; apply existing runner/
 registry updates after terminal, then run selection checks and measure the
 cleaned full audit. Keep routine smoke; do not add another compact command.
