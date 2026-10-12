@@ -159,3 +159,20 @@ Checkpoint ready for commit/push, then goalpause perowner. No validators, rating
 players or delegated coding tasks remain running. Existing local preview
 servers may remain for review;53741 is current diagnostic source,41273 oldfreeze.
 Unrelated mine.bars andscratchpad are excluded fromcommits.
+
+## Cut186 — scoped button polish after pause
+
+Latest owner asks taller Continue and improved chunky class controls. CSS only:
+Continue/Newgame primary104px; class-picker controls64px/fullwidth; skill/reset
+and specialization review/actions56px, shared existingiron/gilt frame, clearer
+selectedclass, preservedfallbacks. No Rust, rules, XP orsavechanges. Broadgoal
+remainspaused; no ratinground orfullshippingaudit resumed.
+
+Existingtargetedgame-menu/class-locks pass2/2 (81menuchecks, all3widths),
+class-styles pass1/1 all3widths. PrivateXvfbGPUcheck320/400/1440 passesactual
+heights104/64/56, zerooverflow/errors andexactunchanged earned save. Finalmenu
+shots wait forexistingillustrationdecode (initial shotwas takenbeforeimage
+loaded; noartsourcechange). Copylintpasses. Evidence/screenshotshere:
+docs/evidence/cut186/button-ui/. PriorCut185full123/125 andshipping/balance
+limits remainunchanged, notcleared bythisscopedpolish. Nofrozenassetmutated,
+nodeployment. Commit/pushauthorized; unrelatedmine.bars/scratchpadexcluded.
