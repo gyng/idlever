@@ -1143,7 +1143,9 @@ export function renderWatch(app: App): Mounted {
     if (logged.length) {
       // Capture only actors in these rows; movement-only batches copy no names.
       const actorNames = new Map<number, string>();
-      const capture = (id: number): void => { const name = logActors.get(id); if (name) actorNames.set(id, name); };
+      // An actor known at send may die before the first batch-end snapshot.
+      // Retain that known identity; genuinely unseen IDs still use Foe.
+      const capture = (id: number): void => { const name = logActors.get(id) ?? names.get(id) ?? kinds.get(id)?.replace(/_/g, " "); if (name) actorNames.set(id, name); };
       capture(heroId); // A hurt-only batch still names its actual hero source.
       for (const ev of logged) {
         if (ev.k === "attack") { capture(ev.src); capture(ev.dst); }

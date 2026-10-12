@@ -6,7 +6,8 @@ try{for(const width of [400,1440]){
  await p.evaluate(async()=>{
   const a=window.__riddle,s=await a.engine.send();s.hero.name='Wren Ash';
   const rat={id:800,kind:'rat',name:'Nib',x:s.hero.x+1,y:s.hero.y,hp:10,max_hp:10,tags:[],ally:true};
-  const foe={...rat,id:801,kind:'goblin',name:'Scarface',ally:false};s.entities=[rat,foe];
+  const foe={...rat,id:801,kind:'goblin',name:'Scarface',ally:false};
+  const early={...foe,id:806,name:'Ember'};s.entities=[rat,foe,early];
   a.engine.send=async()=>s;a.lineage.hero_legacy=[{name:'Wrong heir',heir:999}];a.watchMode='one';a.slowdowns=false;
   let turn=s.turn,done=0;a.engine.step=async ticks=>{
    const t=turn+1;turn+=ticks;const phase=window.__logPhase||0;let events=[];
@@ -40,7 +41,10 @@ try{for(const width of [400,1440]){
     if(phase===5)events=[{k:'hurt',t,id:801,cause:'hero',dmg:13}];
     if(phase===6)events=Array.from({length:85},(_,i)=>({k:'pickup',t:t+i/100,id:s.hero.id,item:'gold $1'}));
    }
-   const snap={...s,turn,hero:{...s.hero},entities:phase>=2?[]:s.entities};
+   // The actor was known at send, but is absent even before phase1: its
+   // first-batch attack/death must not depend on a surviving final snapshot.
+   if(!window.__earlyLogged){window.__earlyLogged=true;events.unshift({k:'attack',t,src:806,dst:s.hero.id,hit:true,dmg:1},{k:'die',t,id:806,cause:'hero'});}
+   const snap={...s,turn,hero:{...s.hero},entities:phase>=2?[]:s.entities.filter(e=>e.id!==806)};
    if(phase>=2&&phase!==5)delete snap.hero.name;
    // Once the paused batch is queued, mutate subsequent snapshot names. Its
    // delayed rows must still use the names that came with their own batch.
@@ -49,6 +53,11 @@ try{for(const width of [400,1440]){
   };a.go({kind:'watch'});
  });
  await p.waitForFunction(()=>document.querySelector('.watch')?.dataset.tick);
+ await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('fell'));
+ const earlyLog=await p.locator('.combat-lines').innerText();
+ if(!earlyLog.includes('Ember → Wren Ash · −1 hp')||!earlyLog.includes('Ember · fell'))throw Error(`initial actor missing from first batch-end snapshot: ${earlyLog}`);
+ // Preserve the existing delayed-batch checks and their row-count assertions.
+ await p.evaluate(()=>document.querySelector('.combat-lines').replaceChildren());
  await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.live-badge')?.dataset.status==='paused');
  await p.evaluate(()=>window.__logPhase=1);await p.waitForFunction(()=>window.__emitted===1);
  await p.evaluate(()=>window.__renameActors=true);await p.waitForTimeout(200);

@@ -75,6 +75,24 @@ immutable3cde6bc without a forced flush,save-delay wait or grants. Evidence
 cut178/accepted-first-bank/. Tactics missing next-floor estimates are explicit
 unknowns; open headlines subscribe to forecast publications.
 
+## Cut180 observed gap — work in validation
+
+Fresh QA ui-85 contains repeated Foe-labelled attacks. Source inspection and
+strengthened existing combat-identity fixture reproduce the cause: an actor
+known at send dies before the first batch-end snapshot. Its attack/death lose
+that name despite retained initial identity. RED50916 terminal1 preserved;
+minimal capture fallback to known names/kinds now passes GREEN98261 terminal0
+at400/1440, all27 existing checks plus2 new identity assertions per width.
+Types/copy15968 terminal0. Contract docs/CUT180_COMBAT_IDENTITY.md and original
+focused evidence at cut180/focused-regression/.
+
+Complete current client acceptance session5732 is LIVE, original166 groups,
+TEST_JOBS3/heavy1/default timings, report scratchpad/cut180/client-full-results.json
+and log client-full.log. Do not modify shared source while it runs. Rust/WASM
+unchanged. This new change is not yet adopted/frozen; released QA continues
+unchanged immutable b60d282. The blind-preparation b60 bindings must be updated
+to the final newly accepted freeze before any future player release.
+
 ## QA status
 
 Old capped ade4 passes remain TERMINAL INCOMPLETE. cca75 transcript QA is
