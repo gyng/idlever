@@ -1,0 +1,45 @@
+client suite: full (124 selected; 124 current full; 166 exhaustive groups)
+Historical extra cases require --exhaustive; see docs/evidence/cut181/full-audit-scope/prospective-mapping.json
+ok   fights:break    11.1s (10.7s)  fights: ok (6 checks)
+FAIL clarity:core,watch 69.1s (58.0s)  clarity core,watch: FAIL (1 assertion(s), 0 error(s))
+     clarity core,watch: FAIL (1 assertion(s), 0 error(s))
+     FAIL slowdowns on: a fight in fast runs at 4× (no fight) [retried once: load 4.2 on 32 cores; first reading: slowdowns on: a fight in fast runs at 4× (32.666666666666664/32/32/32/32/32/32/32/4/4/4/4)]
+ok   cut12           91.0s (22.0s)  cut12: ok (26 checks)
+ok   ctxloss         162.4s (71.2s)  ctxloss: ok (19 checks)
+ok   exit-keep-close 170.1s (78.9s)  exit-keep-close: ok (9 checks)
+ok   boss-kill-beat  171.7s (80.4s)  boss-kill-beat: ok (27 checks)
+FAIL runsui          185.8s (94.6s)  runsui: 1 FAIL
+     FAIL threw: locator.click: Error: strict mode violation: locator('.bloodline-confirm') resolved to 2 elements:
+       - waiting for locator('.bloodline-confirm')
+ok   routine-keep    186.1s (94.9s)  1440 none real-WASM fixture flow PASS
+ok   combat-rules    201.4s (29.7s)  400 18 combat decisions/counts/paused release/batch and action boundaries PASS
+ok   death-fix-discovery 206.6s (20.5s)  400 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS
+ok   combat-identity 207.1s (21.3s)  400 27 combat identity/delayed actors/fallback/colours/bounds PASS
+ok   take-control    209.6s (118.4s)  take-control: ok (61 checks)
+FAIL watch-log       218.8s (12.2s)  Node.js v26.5.0
+       if(after.top!==before.top-before.removed||after.text!==before.text||!after.latest)throw Error(JSON.stringify({before,after}));
+     Error: {"before":{"text":"D6 · Hero · gold 19","top":180,"removed":19},"after":{"top":161.3333282470703,"text":"D6 · Hero · gold 19","latest":true}}
+         at file:///home/g/p/riddle/web/tests/watch-log.mjs:45:91
+ok   screens         230.9s (60.8s)  screens: ok (57 checks · 9 screens linted · 32 buttons clicked · 59.0s)
+FAIL ascension-refusal 239.8s (8.9s)  Node.js v26.5.0
+     page.evaluate: Error: focus starts on cancellation
+         at check (eval at evaluate (:311:30), <anonymous>:6:52)
+         at eval (eval at evaluate (:311:30), <anonymous>:20:9)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/ascension-refusal.mjs:10:23 {
+ok   ambient-motes   244.1s (25.2s)  1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS
+ok   chrome          245.8s (44.4s)  chrome: 184 checks PASS
+ok   cut29           245.9s (83.5s)  cut29: ok (46 checks)
+ok   cut305          249.8s (158.8s)  cut305: all passed
+ok   watch-speed-rate 254.3s (47.2s)  watch-speed-rate: PASS
+FAIL bloodline-founding 256.3s (12.2s)  Node.js v26.5.0
+     locator.waitFor: Error: strict mode violation: locator('.bloodline-founding') resolved to 2 elements:
+       - waiting for locator('.bloodline-founding') to be visible
+         at /home/g/p/riddle/web/tests/bloodline-founding.mjs:30:54 {
+ok   ui:frame        257.3s (47.7s)  ui: ok (63 checks · 46.2s)
+FAIL boss-beat-quiet 260.8s (14.8s)  Node.js v26.5.0
+     page.evaluate: Error: message visible before hold: {"text":[],"plates":[]}
+         at check (eval at evaluate (:311:30), <anonymous>:16:51)
+         at eval (eval at evaluate (:311:30), <anonymous>:27:11)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/boss-beat-quiet.mjs:15:31 {
