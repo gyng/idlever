@@ -1,0 +1,175 @@
+{
+  "game": "Loop Hero",
+  "preset": "idle-hybrid",
+  "profile": null,
+  "total": 74,
+  "verdict": "fun",
+  "gateFails": [],
+  "rows": [
+    {
+      "id": "clarity",
+      "name": "Clear goal and feedback",
+      "weight": 9.523809523809524,
+      "human": 0.8,
+      "bot": "na",
+      "award": 7.6190476190476195,
+      "capped": false,
+      "gate": false,
+      "note": "hero walks, cards placed, loop counter; lapse: many card synergies are undocumented"
+    },
+    {
+      "id": "decisions",
+      "name": "Interesting decisions",
+      "weight": 7.936507936507936,
+      "human": 0.8,
+      "bot": "na",
+      "award": 6.349206349206349,
+      "capped": false,
+      "gate": false,
+      "note": "every card placement is a trade of danger for resources; retreat-or-push at the camp tile; lapse: late game has a known optimal layout"
+    },
+    {
+      "id": "mastery",
+      "name": "Mastery curve",
+      "weight": 4.761904761904762,
+      "human": 0.8,
+      "bot": "na",
+      "award": 3.8095238095238098,
+      "capped": false,
+      "gate": false,
+      "note": "learning tile adjacency (village+vampire, mountain 3x3); lapse: plateaus once known"
+    },
+    {
+      "id": "tension",
+      "name": "Tension, risk and release",
+      "weight": 4.761904761904762,
+      "human": 0.8,
+      "bot": "na",
+      "award": 3.8095238095238098,
+      "capped": false,
+      "gate": false,
+      "note": "one more loop with 30% HP and the boss bar filling; lapse: mid-boss fights are stat checks"
+    },
+    {
+      "id": "feel",
+      "name": "Feel and juice",
+      "weight": 3.1746031746031744,
+      "human": 0.6,
+      "bot": "na",
+      "award": 1.9047619047619047,
+      "capped": false,
+      "gate": false,
+      "note": ""
+    },
+    {
+      "id": "surprise",
+      "name": "Surprise and variety",
+      "weight": 7.936507936507936,
+      "human": 0.8,
+      "bot": "na",
+      "award": 6.349206349206349,
+      "capped": false,
+      "gate": false,
+      "note": "tile combos spawn new tiles and enemies; lapse: chapter 3-4 repeats"
+    },
+    {
+      "id": "expression",
+      "name": "Expression and identity",
+      "weight": 7.936507936507936,
+      "human": 0.8,
+      "bot": "na",
+      "award": 6.349206349206349,
+      "capped": false,
+      "gate": false,
+      "note": "your loop is a map you drew; class builds; lapse: convergent gear"
+    },
+    {
+      "id": "story",
+      "name": "Story to tell",
+      "weight": 6.349206349206349,
+      "human": 0.6,
+      "bot": "na",
+      "award": 3.8095238095238093,
+      "capped": false,
+      "gate": false,
+      "note": "runs produce anecdotes about a bad tile placement; the narrative frame is thin"
+    },
+    {
+      "id": "pacing",
+      "name": "Flow and pacing",
+      "weight": 9.523809523809524,
+      "human": 0.6,
+      "bot": "na",
+      "award": 5.714285714285714,
+      "capped": false,
+      "gate": false,
+      "note": "runs are 15-40 min at 2x; camp-building check-ins are quick; lapse: late-chapter grind for resources"
+    },
+    {
+      "id": "failure",
+      "name": "Fairness and legibility of failure",
+      "weight": 6.349206349206349,
+      "human": 0.8,
+      "bot": "na",
+      "award": 5.079365079365079,
+      "capped": false,
+      "gate": false,
+      "note": "death shows the fight and the loop; retreat keeps 60/30%; lapse: some deaths are card RNG"
+    },
+    {
+      "id": "autonomy",
+      "name": "Autonomy and exploration",
+      "weight": 1.5873015873015872,
+      "human": 0.6,
+      "bot": "na",
+      "award": 0.9523809523809523,
+      "capped": false,
+      "gate": false,
+      "note": ""
+    },
+    {
+      "id": "progression",
+      "name": "Collection and progression",
+      "weight": 9.523809523809524,
+      "human": 0.8,
+      "bot": "na",
+      "award": 7.6190476190476195,
+      "capped": false,
+      "gate": false,
+      "note": "camp unlocks add new cards and classes, i.e. new decisions; lapse: resource grind"
+    },
+    {
+      "id": "aesthetic",
+      "name": "Atmosphere and audiovisual appeal",
+      "weight": 3.1746031746031744,
+      "human": 0.8,
+      "bot": "na",
+      "award": 2.5396825396825395,
+      "capped": false,
+      "gate": false,
+      "note": ""
+    },
+    {
+      "id": "return",
+      "name": "Return payoff (idle)",
+      "weight": 9.523809523809524,
+      "human": 0.6,
+      "bot": "na",
+      "award": 5.714285714285714,
+      "capped": false,
+      "gate": false,
+      "note": "you can leave it looping but the game does not reward absence; the camp is the return payoff"
+    },
+    {
+      "id": "attribution",
+      "name": "Attribution of the agent's play (idle)",
+      "weight": 7.936507936507936,
+      "human": 0.8,
+      "bot": "na",
+      "award": 6.349206349206349,
+      "capped": false,
+      "gate": false,
+      "note": "the hero died because I placed a lantern next to a spider cocoon; lapse: equipment auto-fight has no player input"
+    }
+  ]
+}

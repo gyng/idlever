@@ -400,3 +400,5 @@ finalbuild bindings/context audits. Unreleasedb60blindtemplates are stale.
 RootgoalACTIVE: all11findingdispositions accepted plus package race fix; next
 TWO purefresh complete independent ratings on same immutable source.
 Do not deploy.
+
+Cut184 release preparation: same immutable8c17acb/41273. Same-sitting LoopHero knowledge calibration74/drift0; all16rawaxes retained,15weightedrows because social0. Initial wrong16weightedrows assertion preserved/corrected, not score drift. Both exactfour-reference neutralCLIplayers started: a seed137session21960,b seed211session15244; privateGPUdrivers41427/41429 sessions39517/20680, publicgateways41428/41430 sessions26816/43859. Neutraldirs/tmp/riddle-8c17acb-blind-a,b; coordinator scratchpad/cut184/. Actual startupaudits pending, no confirmed play. CLI transcripts redirected; do not inspect awards until BOTH rawlocks. Preparation docs/evidence/cut184/blind-release/. All horizons/edits/deaths/Normalwatch/budget/order retained; no deployment. Freeze evidence ce554ce pushed.
