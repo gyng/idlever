@@ -19,6 +19,19 @@ labeled cosmetic23h preview. Archive cut179/accepted-freeze-checkpoint/.
 Initial preview used snapshot root instead of assets; verified owned process
 stopped terminal143 before any player release,then corrected. Assets unchanged.
 
+Runtime restart recovery2026-10-12: all old processes stopped and /tmp was lost.
+Twenty empty Git objects,including local HEAD79313a6,were reconstructed from
+exact index/worktree bytes and original commit metadata; every original SHA1
+matched before writing. Original Git metadata backed up locally; no index,
+refs,worktree or history rewrite. git fsck --full8046 TERMINAL0; historical
+dangling objects retained. Recovered79313a6 is pushed; local core.fsync=committed
+enabled after actual corruption. Exact original262 frozen bytes and original
+manifest restored from persistent dist/archive,without rebuild or new snapshot.
+Current preview session75653 replaces stopped84650 at the SAME41271 URL.
+All served262hashes pass; privateGPU9165 TERMINAL0,D3D12 NVIDIA RTX3080/native1.5.
+Evidence cut179/runtime-restart-recovery/; private full metadata backups at
+scratchpad/cut179/restart-recovery/original-git-metadata (not published).
+
 Contract: docs/CUT179_QA_RECOVERY.md. No Rust or balance changes. Damage detail
 names hero/pets and pairs their DPS with their own HP/hits; Scout settings
 returns to current pending Found confirmation without an automatic purchase;
@@ -86,9 +99,15 @@ fresh seed223/headless41433/--checkpoint. Own preparation
 scratchpad/qa_cut179_interactive/preparation.md;initial10calls/0images/0active
 minutes, no previous credit. First default-sandbox browser launch failed
 SIGTRAP/Operation not permitted before any visit/save/play; original driver.out
-retained. Reviewed retry succeeded: owned driverPID4155381 is bound to41433,
-headless2x with checkpoints; new earned browser-state.json exists. No transfer
-of prior credit or invented recovery. Operating-manual exposure and
+retained. Reviewed retry originally succeeded; that PID4155381 later stopped
+with runtime restart. Agent restored the SAME original earned checkpoint
+SHA2d8e039ca3f6115c06541016d7a920c312ac7d4ee16d9b019043e5d02787fbc6,
+preserved as own recovery-original-earned.json. Same41271/dev1/runs1/seed223,
+no fresh/menu/absent or timestamp edits. No new run/gold/XP on recovery;
+configuration persists. Incidental real gap gets0active credit and is separate
+from prescribed absences. Latest recovery checkpoint: cold84.525s proved,
+unproved earlyUI0,190tools/2images; most full horizon remains outstanding.
+No transfer of prior42m or invented credit. Operating-manual exposure and
 extended driver operational read disclosed (nonblind QA); no game source/
 history. Generic bounded Framework1–3 supplies14shared plus2idle probes.
 Budget2000+120/full40/5/5/20. Original report destination
@@ -126,6 +145,10 @@ gateway or blind browser launched. Each actual startup writes its own context
 audit; operational status contains no awards. CLI output must be redirected
 and not inspected for awards before BOTH raw locks. Earlier cut176/178
 templates are historical; do not release them.
+
+The four bounded neutral reference files were lost from/tmp during restart,
+then restored with exact original length/SHA256 in both neutral directories
+and /tmp/riddle-blind-reference-preflight. No player was launched or exposed.
 Only four references, no target/history/QA to raters; standard specifically
 reviewed local requests, no bypass/auth inspection/HOME overrides. Gateway
 scratchpad/cut169/public-blind-gateway.mjs blocks internal/script/reset/order
