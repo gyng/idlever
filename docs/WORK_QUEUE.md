@@ -66,6 +66,40 @@ more labels or uniformly stronger upgrades.
 | 28 | Live side depth map | Show a compact depth indicator beside the live view, like a map with points of interest and milestones: current floor, known boss depths, explored landmarks and relevant records/goals. | Prototype a side rail for one earned delve and its replay. Derive markers from actual route/floor/knowledge data, not guessed depth intervals; explain icons on hover/focus/tap. Follow selected hero and replay cursor, including seek, floor transitions, return/death/clear, route changes and offline catches. Show known information without exposing unrevealed encounters. Keep the board readable at phone/desktop sizes and avoid another oversized empty HUD strip. |
 | 29 | Subtle live movement trail | Explore faint footsteps or a short-lived trail so the player can track the hero's movement in the live scene. | Prototype one tracked hero on actual movement events, comparing footprints with a restrained trail in the original art style. Keep it short-lived, bounded and distinguishable from hazards/target cues; no neon path or persistent clutter. Follow replay time and actual known movement, including pause/speed/seek, teleports and floor changes. Clear stale traces; preserve fog/knowledge limits, reduced motion, full/low/off and GL/Canvas fallbacks. Check crowded fights, dark/light terrain and phone/desktop views with matched clips and measured costs. |
 | 30 | Hover, pressed and selected control states | Desktop buttons and controls need clear hover and active feedback. Make interactive elements feel responsive within each menu's chunky material style. | Audit main menu, town/hero/forge targets, Bloodlines tabs/trees/loadouts, journal, live controls and report disclosures. Define distinct default/hover/pressed/selected/focus-visible/disabled/locked states where applicable; selected means the real persistent choice, not merely a mouse hover. Include material-appropriate feedback, accessible toggle/tab semantics and clear disabled reasons. Check mouse, keyboard Enter/Space, touch, blur, reduced motion and phone layouts. No hover-only functions, misleading enabled states or layout/hit-target shifts. Post paired state screenshots. |
+| 31 | Guided unlocks for Tactics / Orders / Heirs | Make the bottom controls understandable as progression/unlocks, using an MMO-style journal and optional guided onboarding. Explain what each system does, what unlocks it and why it is useful for a build. | Audit the actual bottom ladder and Rust requirements. Prototype one complete first-session path with clear locked/available/unlocked states, progress, meaningful reward and a next useful action. Connect each journal entry to the relevant control/details; update automatically from real progress. Stage new systems and allow dismissal/reopening without forced modal tours, tutorial-only taps, manual reward claims or absence penalties. Coordinate with compact desktop layout and Bloodlines tabs. |
+| 32 | Remove top/bottom bar sheens | Remove the random/periodic sweeping sheen effects across the top and bottom bars; the owner finds them distracting. | Identify the actual chrome animation/FX sources and remove those sweeps. Retain readable static material treatment and useful hover/pressed/focus feedback. Do not remove requested scene effects, transaction particles or menu atmosphere as collateral. Compare idle/hover/focus screenshots or clips on phone/desktop and confirm no recurring chrome shimmer remains. |
+| 33 | Chronicle empty state | Chronicle needs a clear empty state instead of an unexplained empty sheet. Explain what belongs here and why there are no entries yet. | Source inventory: Chronicle currently records ended heirs, not every completed delve. Show concise truthful empty copy and relevant navigation to current hero/run details when available; do not imply the player must deliberately die to fill it. Cover a new town, active first heir, empty selected bloodline with other bloodline records, first ended-heir record and selection/reload. Keep loading/errors distinct from genuine emptiness and show correct hero identity. Post empty/first-record screenshots. |
+
+### Guided unlock journal — owner addition
+
+The Tactics/Orders/Heirs controls at the bottom currently fail to communicate
+that they form unlock/progression systems. Audit their actual meanings and
+requirements before choosing labels or grouping. Present a coherent unlock
+view: what is locked, what has become available, what is already unlocked,
+and what the player can gain from using it. Explain unfamiliar system names
+through concise descriptions and contextual help rather than more bare labels.
+
+Use the same MMO-style quest journal already queued, not a second tutorial app.
+Each early entry has short context, a concrete objective, actual progress and a
+truthful reward/unlock, plus navigation to the relevant hero/building/control.
+Distinguish meeting an unlock requirement from purchasing a permanent upgrade
+or equipping an unlocked option. Update completed steps from Rust-owned state;
+no repeated claims or invented progress. Offer one useful next step while
+keeping optional goals inspectable. Introduce new choices as they become useful
+for experimenting with a build; coordinate with the slower first-session pace.
+
+Guidance can highlight the relevant control or show a short contextual hint,
+but should be dismissible and available again through the journal/help. Do not
+force a tour, interrupt every delve, move the viewport unexpectedly, require
+watching a replay or add tutorial-only chores. Returning/away players must see
+their actual completed progress and current next option without replaying the
+introduction. Prototype and review one earned first-session path on phone and
+desktop before expanding the journal catalogue.
+
+This explicit owner request permits guided tutorial/journal help for the future
+pass and supersedes older blanket “no tutorial text” guidance in this scope.
+Keep concise chrome and define any journal/help copy-budget amendments in the
+implementation cut. No tutorial or unlock behavior is implemented by queueing.
 
 ### Loadouts and free unlocked items — latest owner amendment
 

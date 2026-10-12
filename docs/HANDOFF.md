@@ -127,6 +127,21 @@ that loop; automatic loot and base life reduce chores and give results context.
     chunky material identity and truthful active states; preserve keyboard/touch
     access, readable reasons for disabled states and stable hit targets/layout.
 
+27. Make bottom Tactics/Orders/Heirs clearer as unlock/progression systems.
+    Use the queued MMO-style journal for optional guided onboarding: purpose,
+    actual requirements/progress, meaningful unlock/reward and a useful next
+    action, with contextual links and clear locked/available/unlocked states.
+    Stage choices, allow dismissal/reopening, and avoid forced tours/claim chores.
+    This owner-requested guidance supersedes old blanket no-tutorial-text advice
+    for this future pass; concise chrome remains required.
+28. Remove distracting random/periodic sweeping sheens from top and bottom bars.
+    Preserve static materials and hover/focus feedback; scene/menu/gold effects
+    are separate from this targeted chrome removal.
+29. Add a truthful Chronicle empty state. It currently records ended heirs,
+    not every completed delve; explain this without encouraging deliberate death.
+    Cover empty/current/other-bloodline and first-record states with correct
+    identity and useful current-hero/run navigation.
+
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior
