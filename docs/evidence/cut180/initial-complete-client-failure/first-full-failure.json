@@ -1,0 +1,11 @@
+{
+  "observedUtc": "2026-10-12T05:00:35.285557+00:00",
+  "session": 5732,
+  "scope": "Complete166-group run still live; provisional first failure",
+  "group": "clarity:core,watch",
+  "durationSeconds": 51.9,
+  "assertion": "a repeated chore reads with a count: pick up \u00d73 (lines: pick up \u00b7 pick up \u00d73)",
+  "required": "best >=4 and plain <=1 within existing 12-second observation window",
+  "source": "web/tests/clarity.mjs:208",
+  "disposition": "Unresolved; inspect complete run then reproduce without changing thresholds or timing. Current actor identity fallback does not alter ticker coalescing. No acceptance claim."
+}

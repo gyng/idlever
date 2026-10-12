@@ -1,0 +1,15 @@
+{
+  "session": 5732,
+  "group": "cut12",
+  "status": "Original full suite still live; cause unresolved",
+  "durationSeconds": 22.6,
+  "error": "locator.click timeout5000ms .panel .fc-refine:visible",
+  "savedFailureState": {
+    "forecastSims": 100,
+    "refined": true,
+    "refineButtonRendered": true,
+    "refineButtonDisabled": true
+  },
+  "ordering": "Saved end state does not prove completion occurred before click. Click may have triggered synchronous forecast computation before tool timeout; requires isolated unchanged reproduction.",
+  "disposition": "Preserve complete output and all assertions/time limits; no automatic flaky or product classification."
+}

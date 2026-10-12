@@ -86,12 +86,30 @@ at400/1440, all27 existing checks plus2 new identity assertions per width.
 Types/copy15968 terminal0. Contract docs/CUT180_COMBAT_IDENTITY.md and original
 focused evidence at cut180/focused-regression/.
 
-Complete current client acceptance session5732 is LIVE, original166 groups,
-TEST_JOBS3/heavy1/default timings, report scratchpad/cut180/client-full-results.json
-and log client-full.log. Do not modify shared source while it runs. Rust/WASM
-unchanged. This new change is not yet adopted/frozen; released QA continues
-unchanged immutable b60d282. The blind-preparation b60 bindings must be updated
-to the final newly accepted freeze before any future player release.
+Original complete current client acceptance session5732 is TERMINAL FAILED:
+164/166 in1797.246s, TEST_JOBS3/heavy1/default timings. All560 recorded shared
+source/test/tool/core hashes still match; no source changed during the run.
+Original log/results/input guard and provisional diagnostics preserved at
+cut180/initial-complete-client-failure/. Stronger combat-identity passes in this
+whole run. Failed groups:
+- clarity:core,watch: repeated chore observed pick up×3 vs required>=4 within
+  existing12s window.
+- cut12: locator.click5000ms timeout on .panel .fc-refine:visible; saved end
+  state shows100 samples/refined/buttondisabled. That end state does not prove
+  completion preceded click; computation may have occurred during it.
+Neither is classified flaky or given a passing deviation. Sequential unchanged
+reproduction of BOTH groups is LIVE session98628, TEST_JOBS1/heavy1, original
+fixtures/assertions/times; outputs scratchpad/cut180/isolated-failures.log and
+isolated-failures-results.json. Targeted evidence cannot certify the full suite.
+
+Rust/WASM unchanged. The actor-identity change is committed/pushed through
+18fbb5c but not yet adopted/frozen. Released QA continues unchanged immutable
+b60d282. The blind-preparation bindings must be updated to a final newly
+accepted freeze before any future player release. Earned Warlord D8 repelled
+trace screenshot at cut180/qa-warlord-checkpoint/ is NOT a hero death. Latest
+reported QA1789.282cold seconds,435tools/4images,4companion edits,0hero deaths.
+Assigned2fights+2fast fulfilled; Normal watches are mandatory for the future
+blind cohort, not an added retroactive QA requirement. Allreturns pending.
 
 ## QA status
 
