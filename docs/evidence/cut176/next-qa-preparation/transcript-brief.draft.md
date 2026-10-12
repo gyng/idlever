@@ -1,0 +1,58 @@
+# QA brief, transcript-first (paste to a fresh agent; no scores, lapses only)
+
+You are a QA player for a browser game called Riddle, an auto-played roguelike whose hero runs
+on chosen combat styles/tactics and later optional written rules, with manual town
+construction, hired automation, offline runs and deaths that name their causes. You award nothing. Your job is to file **every lapse**: anything you
+misread,
+anything inert, any number that does not reconcile with another number on screen, any copy you
+could not explain from what the game showed, anything that contradicts what it said earlier.
+Read `eval/RATING.md` (the protocol) and `docs/FUN_EVAL_IDLE.md` §"human probes" so you know
+what a rater looks at. Do not read PLAN.md, research/, docs/CUT*.md, eval/cards/ or other QA
+reports.
+
+Two passes, in this order:
+
+1. **The transcript.** `{WALK}` holds a scripted walk of the whole loop on seed {SEED}: one
+   `NN-<screen>.txt` (the screen's full text) and `.png` per screen, in order, and
+   `summary.txt` (one line per dump with its wall time). Read every `.txt` in order in one
+   sitting, looking at a `.png` whenever a line's layout matters. File the lapses you can
+   see in text alone — the report's numbers against the header's, a line that repeats a
+   segment, a label with no source, a pill that names nothing, a because-link that
+   contradicts the trace, a screen with no way out. Note the dump each one is in.
+2. **The reproduction.** Start the driver from /home/g/p/riddle:
+   `node tools/driver.mjs --dir scratchpad/{QA} --port {PORT} &` (headless phone 400×800 2×;
+   `tools/drive.sh {PORT} '{"op":"text"}'`; ops: goto, text, shot, click by visible label,
+   tap, type, press, eval, js, wait, buttons, log, quit; compound: `state`, `act`, `watch`,
+   `send_and_watch` (a send watched to its end in one call) and `sheets` (every sheet a screen
+   opens, read in a copy of the page) — the file's header). Open
+   `{URL}?dev=1&runs=1&seed={SEED}&fresh=1`, then reproduce each transcript lapse once (the walk is
+   deterministic on its seed: the same sends give the same runs), and play what the walk did
+   not decide: **four configuration changes of your own** (styles/tactics, equipment or Legacy),
+   four attempted hand edits of written rules, two purchases with their sheets read,
+   a patch when offered, a supply dropped and the gear preference when available,
+   `?absent=8h` once, and the return report read line by line against its gold and
+   per-bloodline gains. If the pen or a system is locked, record its visible entry/
+   explanation and the attempted action honestly; do not inject earned state or
+   count a tactic selection as a written-row edit. ~15 minutes, not a full-hour
+   QA horizon and never evidence that the independent rating horizon passed.
+
+Keep `runs=1` on every navigation, including absence/return URLs, so the
+open-app clock behaves as it does for a player. Do not rate a paused simulation.
+
+File `eval/qa/{BUILD}.{QA}.md`: one line per lapse — `screen · what you saw (quoted) · what
+you expected · repro (seed, dump or step)` — grouped under `defect` (wrong or inert), `misread`
+(you got it wrong and the screen let you), `unexplained` (copy or number with no source on
+screen) and `friction` (more taps than the action needs); mark each `transcript` or `live`.
+End with the count per group. Do not edit any other file. Do not git commit.
+
+
+**Budget (hard):** at most 500 tool calls and 120 screenshot/image reads for the whole session. Look at each screenshot once; prefer the driver's text op over screenshots. When you reach the budget, stop and file what you have.
+
+
+Prospective launch amendment (new pass only): this draft is not a player release. The coordinator must supply a terminally accepted immutable URL and build identity before starting. Previous passes and their timings are not reused. Use one earned save, with dev=1&runs=1 on every visit; fresh/menu only at the first visit. Disclose automatically supplied operating instructions. No scores, source/design documents, prior cards, synthetic progress or hidden navigation. Own decisions remain yours.
+
+Maintain a contemporaneous ledger: UTC start/end for each direct reading/decision block, phase, operation/evidence references, and separately recorded excluded tool/loading/failed-locator/buffered-observation/waiting/report-writing time. Record uncertainty rather than filling missing time. An elapsed block is an upper bound, never automatic active credit. Use short observation calls; do not count a buffered watch's runtime. Keep an incrementing conservative tool tally from the first call, including failed calls, setup, clock, file and image operations; count wrappers as well if uncertain. Stop at the hard limit and report incomplete. First perform the required horizon; having completed the interaction checklist is not permission to stop early.
+
+Distinguish attempted entries, locked controls, actual edited fields and completed own edits. Name the rule owner (hero or companion). Preserve original entries and append corrections rather than replacing evidence. Any uncertainty or short phase remains incomplete.
+
+Plan18 actual active minutes, minimum15. Read the new accepted-build walk before live reproduction. Do not use an older walk as evidence for the new build.

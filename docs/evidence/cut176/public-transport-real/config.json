@@ -1,0 +1,12 @@
+{
+  "upstream": "http://127.0.0.1:41419/",
+  "port": 41420,
+  "ledger": "/home/g/p/riddle/scratchpad/cut176-public-transport-operations.jsonl",
+  "allowedUrls": [
+    "http://127.0.0.1:40483/?dev=1&runs=1&seed=883&fresh=1&menu=1",
+    "http://127.0.0.1:40483/?dev=1&runs=1&absent=20m",
+    "http://127.0.0.1:40483/?dev=1&runs=1&absent=4h",
+    "http://127.0.0.1:40483/?dev=1&runs=1&absent=8h"
+  ],
+  "reloadUrl": "http://127.0.0.1:40483/?dev=1&runs=1"
+}

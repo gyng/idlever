@@ -1,0 +1,74 @@
+{
+  "scope": "Coordinator real-browser preflight on older immutable ade4b12; public menu only. No player, choices, active horizon, accepted new build or score.",
+  "initialAttempt": "Failed only because check expected shot.shot; actual documented driver response is shot.path. All original requests preserved. Continued same browser/nav sequence without reset.",
+  "requests": 18,
+  "continuationRecords": [
+    {
+      "command": {
+        "op": "text"
+      },
+      "status": 200,
+      "result": {
+        "text": "Riddle\nIDLE ROGUELIKE\nNew game\nSettings\nALPHA"
+      }
+    },
+    {
+      "command": {
+        "op": "buttons"
+      },
+      "status": 200,
+      "result": {
+        "buttons": [
+          {
+            "tag": "BUTTON",
+            "text": "New game",
+            "cls": "menu-action primary",
+            "dis": false,
+            "vis": true
+          },
+          {
+            "tag": "BUTTON",
+            "text": "Settings",
+            "cls": "menu-action ",
+            "dis": false,
+            "vis": true
+          }
+        ]
+      }
+    },
+    {
+      "command": {
+        "op": "shot",
+        "name": "transport-menu-confirmed",
+        "full": false
+      },
+      "status": 200,
+      "result": {
+        "path": "/home/g/p/riddle/scratchpad/cut176-transport-driver/shots/transport-menu-confirmed.png"
+      }
+    },
+    {
+      "command": {
+        "op": "goto",
+        "url": "http://127.0.0.1:40483/?dev=1&runs=1&seed=883&fresh=1&menu=1"
+      },
+      "status": 400,
+      "result": {
+        "error": "Use each prescribed visit once, in order"
+      }
+    },
+    {
+      "command": {
+        "op": "goto",
+        "url": "http://127.0.0.1:40483/?dev=1&runs=1&absent=4h"
+      },
+      "status": 400,
+      "result": {
+        "error": "Use each prescribed visit once, in order"
+      }
+    }
+  ],
+  "ledgerMatches": true,
+  "unsafeOperationsRejected": true,
+  "noActiveCreditInferred": true
+}

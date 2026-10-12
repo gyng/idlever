@@ -1,0 +1,18 @@
+{
+  "preInteractionAudit": {
+    "instructionSourceFilenamesReferenced": ["SKILL.md", "AGENTS.md"],
+    "filesRead": false,
+    "genericInstructionsPresent": ["system", "developer", "tools", "skill catalog"],
+    "providedTask": "Read-only local transport preflight",
+    "automaticallySuppliedGameMaterial": [],
+    "visibleAuditClean": true
+  },
+  "requestSucceeded": false,
+  "publicTextResponse": null,
+  "unexpectedExposure": false,
+  "auditLimitations": [
+    "Cannot certify hidden or omitted context.",
+    "Connection to 127.0.0.1:41420 failed; no public text was received."
+  ],
+  "preflightOnly": true
+}

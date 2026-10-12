@@ -1,0 +1,25 @@
+{
+  "preInteractionAudit": {
+    "visibleInstructionSources": [
+      "System messages",
+      "Developer messages",
+      "Skill catalog SKILL.md references (not read)",
+      "User environment context",
+      "User preflight instructions"
+    ],
+    "genericInstructions": "Tool use, permissions, collaboration, and skills.",
+    "unexpectedGameSpecificMaterial": false,
+    "providedTaskAndEndpointPermitted": true
+  },
+  "requestSucceeded": true,
+  "publicTextResponse": {
+    "text": "Riddle\nIDLE ROGUELIKE\nNew game\nSettings\nALPHA"
+  },
+  "unexpectedExposure": false,
+  "limitations": [
+    "Cannot certify hidden context.",
+    "Only one public-menu request was made; no navigation, play, rating, choices, file or credential reads, source inspection, or agents.",
+    "No score or active-time credit."
+  ],
+  "preflightOnly": true
+}
