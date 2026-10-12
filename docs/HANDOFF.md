@@ -118,6 +118,24 @@ reported QA1789.282cold seconds,435tools/4images,4companion edits,0hero deaths.
 Assigned2fights+2fast fulfilled; Normal watches are mandatory for the future
 blind cohort, not an added retroactive QA requirement. Allreturns pending.
 
+## New owner direction — compact the full audit itself
+
+The owner explicitly rejected adding another compact tier. The temporary
+49-group wrapper/default change was removed; original source commands are
+unchanged. docs/CUT181_FULL_AUDIT_COMPACTION.md records the prospective contract:
+full audit current features; original166 retained under explicit exhaustive;
+unchanged assertions/time limits, future tests included, target359.449s.
+
+Prepared selection at scratchpad/cut181/suites.proposed.mjs and prospective
+full-audit-plan.json selects119 current groups and names47 historical/overlap
+candidates. Temporary executable selection checks pass full119/exhaustive166,
+future inclusion, both recent failures retained, targeted labels and flag
+rejection. Not adopted or timed yet; each candidate still needs its current
+feature mapping/reason, with extra unique cases honestly exhaustive-only.
+Original full23909 remains LIVE on unchanged inputs; apply existing runner/
+registry updates after terminal, then run selection checks and measure the
+cleaned full audit. Keep routine smoke; do not add another compact command.
+
 ## QA status
 
 Old capped ade4 passes remain TERMINAL INCOMPLETE. cca75 transcript QA is
