@@ -31,6 +31,15 @@ queue update. Backwards compatibility is not required.
 | 7 | Bloodline tabs and visible branching trees | Put Legacy and Class tree in tabs inside Bloodlines. Display parent/child branches as connected nodes, with prerequisites, learned nodes, availability and costs readable at a glance. | First show one bloodline with two working tabs and one class branch at phone/desktop sizes, then cover all classes and Legacy. Reuse delivered cumulative unlocks; keep learned parents and other branches. Preserve current bloodline identity across tabs and exact purchase/cancel/reset behavior. Existing branching data must be visible; any additional tree depth needs a separate content contract. |
 | 8 | Large-desktop typography | Refine font sizes, hierarchy and spacing on large desktop screens. Avoid phone-scale text floating in oversized panels. | Capture town, Bloodlines/trees, forge, watch and report at1440/1920/2560px and compare with320/400px phone layouts. Set font/line-length/spacing targets from the audit; verify zoom, wrapping, contrast and keyboard focus. Post matched before/after screenshots. |
 | 9 | Send → Delve | Rename the player-facing run action to **Delve** to tie it to Idlever. Update related visible instructions and accessible names consistently. | Audit town/hero controls, confirmations, reports, automation descriptions and player README. Use natural matching forms such as “Delve” and “delving.” Leave internal APIs alone unless a separate change requires them. Preserve manual/automatic behavior; post the revised action in a screenshot. |
+| 10 | Distinct chunky menu materials | Give each major menu its own physical identity in the original ink/wash art direction. Forge should feel like metalwork, not another parchment sheet. Reserve parchment for appropriate journal/report surfaces. | Audit all menus and propose a material map. Start with the forge, then revised Bloodlines and journal. Different frames, controls and details should feel related through palette, typography and interaction conventions. Compare phone/desktop screenshots; maintain text contrast, focus, touch targets, fallbacks and effects settings. Do not invest in Storehouse styling before its role is decided. |
+| 11 | Quest/progression journal | Present progression like an MMO quest journal: understandable objectives, visible progress, useful rewards and a clear reason to pursue each goal. The current labels have little meaning to the owner. | Start with the first-session journal: active/completed entries, short context, concrete objective, actual progress, reward and next useful action. Map every entry to Rust-owned game state, with honest locked/completed states and no duplicate reward claims. Explain the cage through this context. Avoid daily claim chores or a flood of simultaneous quests. |
+| 12 | Run-details scroll stability | Clicking Expand on run details currently pushes the viewport up. Keep the player's reading position stable when expanding or collapsing details. | Reproduce on the actual run-history/report surface at phone/desktop sizes. Preserve the clicked control's visual position and keyboard focus where possible, without forced scrolling to the top. Check long reports, nested panels, multiple runs, collapse and returning from a replay. This independent bug fix need not wait for the economy redesign. |
+| 13 | Song/wish purpose and busywork audit | The owner clicked a song and could not tell what it was or what happened. Audit whether wishes provide a meaningful choice or merely a recurring paid tap. | Source inventory: `feats.rs::WISHES`/`grant_wish` currently makes “a song” cost gold and award2 Legacy; the next wish is due a day later. Reproduce the actual clicked UI and verify feedback. Show purpose, price and result if retained; consider automatic handling, integration with journal/base activities, or removal if it adds only upkeep. Define the Legacy/economy impact of any change; do not silently automate gold spending. |
+| 14 | Base as an ant farm / garden | Give the player more meaningful things to observe in the base alongside delving. Heroes should have reasons to rest, train, prepare and interact rather than wander without purpose. | Start with one earned hero routine and one worker interaction, then expand the town. See the base-life brief below. Activities reflect real state and are optional to inspect; no required tending, parallel chore currency or penalties for absence. Matched day/night and phone/desktop screenshots or clips. |
+| 15 | Delving portraits over the cave | Put the portraits of heroes who are actually delving over the cave entrance, making their whereabouts immediately visible. | Correct active hero/bloodline identity, including multiple simultaneous delves. Click/tap/keyboard opens the corresponding hero's watch/details without starting a new delve. Update on send, return, death and offline catch-up; archived replay viewing must not create a false active portrait. Keep the entrance and nearby targets readable. |
+| 16 | Desktop bottom-bar space | The bar below the desktop viewport feels like wasted space. Rework its placement/height and give usable space back to the town/watch. | Audit actual desktop layouts at1440/1920/2560px before choosing a layout. Preserve necessary status/actions and navigation; do not simply make text tiny. Check scene aspect ratio, scrolling, safe areas, zoom, dialogs and phone layouts. Post before/after screenshots with viewport/chrome dimensions. |
+| 17 | Floating delve controls | The closed control bar during delving wastes space. Explore a floating compact control that expands on demand instead of reserving a strip of empty space. | First show closed/open watch controls on phone/desktop. Preserve pause, speed, manual controls and keyboard access; keep expanded controls clear of heroes, HP, telegraphs, logs and meaningful choices. Clear open/closed feedback, focus and dismissal. No accidental commands, camera gestures or changed run behavior. |
+| 18 | Compact top bar | Reduce top-bar text labels to make better use of space, especially on desktop. | Audit which labels can use familiar icons, shorter text or contextual detail. Keep meaningful values, actor identity and state legible; provide accessible names and focus/tap help for unfamiliar icons. Check long names, large values, zoom, keyboard use and phone widths. Coordinate with the desktop-font and bottom-bar passes. |
 
 ### Forge and starting-kit depth — owner addition
 
@@ -59,12 +68,46 @@ reducing the forge to a linear stat-upgrade button.
   automatic repeat delves and whole/sliced/reloaded multi-hero parity. Show the
   forge's mobile/desktop selection and comparison screens at checkpoints.
 
+### Menu materials and base life — owner additions
+
+Menus should have distinct chunky construction, not a universal parchment
+skin. Forge metalwork is the explicit owner direction. Other material ideas
+are candidates for review: iron plates/rivets and restrained forge glow;
+carved stone, heraldry or leather for Bloodlines; bound pages for the quest
+journal; a practical wood/iron treatment for ordinary settings. Preserve the
+approved painted palette and readable hierarchy. Start with paired forge and
+journal screenshots to demonstrate that the difference includes frames,
+buttons, tabs and details, while interaction conventions remain consistent.
+
+The base should be satisfying to watch like an ant farm or garden, parallel
+to the dungeon. Candidate hero reasons include recovery after a return,
+preparing the selected kit at the forge, training related to learned skills,
+and brief interactions with named workers or other available heroes. Show
+what each hero is doing and why through observable action and optional details.
+Use actual hero availability, buildings, workers and preparation state;
+do not show a hero delving and working in town at the same time. Cosmetic
+routines must not imply rewards that the simulation did not produce.
+
+Design meaningful activity before adding more random walkers or scenery.
+If a routine affects progression, Rust must own its timing/results and the cut
+must define deterministic offline/save parity. Purely cosmetic routines should
+read existing state without altering it. Do not introduce another maintenance
+loop: the town stays lively without required gardening taps, daily claims or
+missed-visit penalties. Coordinate clickable heroes, genuine delving portraits
+above the cave, building information and the revised forge with this pass.
+Keep paths, silhouettes, night lanterns and interaction targets readable;
+respect reduced motion and effects full/low/off. Review one small earned routine
+first, then a settled town with multiple heroes at day/night checkpoints.
+
 Start with a single scoped loot/economy design cut covering items1–4 and their
 dependencies. Decide what happens to Storehouse before polishing its help or
 vignettes. Then deliver coherent checkpoints, rather than changing all systems
 at once. On resume, use appropriate numeric gates and targeted checks before
 broader acceptance; do not weaken a gate to pass a redesign. Post screenshots
-at meaningful UI checkpoints. Queueing does not change canonical game rules.
+at meaningful UI checkpoints. Independent scroll/layout fixes can land as separate small checkpoints on
+resume; they need not wait for the economy cut. Coordinate journal, menu
+materials and base routines with the revised systems they explain. Queueing
+does not change canonical game rules.
 
 ## Retained visual work — after the product priorities above
 

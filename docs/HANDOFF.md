@@ -47,6 +47,26 @@ Owner requested a queue update, not resumed implementation. See
 6. Refine large-desktop font sizes, hierarchy and spacing; retain phone readability.
 7. Rename player-facing **Send → Delve**, including related copy/accessibility.
 
+8. Give different menus distinct chunky materials in the original art style:
+   Forge uses metalwork; parchment belongs on suitable journal/report surfaces.
+   Audit the full menu family and preserve common interaction conventions.
+9. Make quests/progression an MMO-style journal with meaningful objectives,
+   progress, rewards and context. The current progression labels feel empty.
+10. Fix expanding run details pushing the viewport upward; preserve reading
+    position and focus. This can be an independent small bug-fix checkpoint.
+11. Audit the unclear “song” click and recurring wish busywork. Current Rust
+    song wish spends gold for2 Legacy and schedules the next wish a day later.
+    Verify the clicked surface and make purpose/cost/result clear; consider
+    integration, automation or removal with explicit economy impact.
+12. Make base life an ant farm/garden parallel to delving: meaningful visible
+    hero recovery, training, kit preparation and interactions, driven by actual
+    state. These routines are candidates; no new tending or daily-claim chores.
+13. Show genuinely delving heroes' portraits over the cave, with matching
+    hero/watch navigation and correct multiple-hero/return/death/offline updates.
+14. Reclaim wasted desktop bottom-bar space. Explore floating collapsed delve
+    controls; keep expanded controls and necessary status readable and usable.
+15. Compact top-bar labels without losing values, actor identity or accessibility.
+
 These product priorities precede the retained class-icon/combat-FX queue.
 Content implementation and fun-rating work remain paused. No game behavior
 changed by this documentation update. No backwards compatibility is required.
