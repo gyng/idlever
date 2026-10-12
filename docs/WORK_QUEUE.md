@@ -1,35 +1,55 @@
-# Content and refinement queue — 2026-10-12
+# Content and refinement queue — 2026-10-13
 
 ## Current checkpoint and owner additions
 
-Owner amendment: publish the first alpha and repair release-driven Pages
-deployment (Cut187). This release is authorized; the content queue below and
-the broader fun-rating goal remain paused.
+Idlever alpha.2 is live at https://gyng.github.io/idlever/ from `79032ef5`.
+Release build/deployment and live real-WASM/PWA checks pass. The full client
+repeat passed125/125; its earlier timing failure is preserved in Cut190 evidence.
+The exhaustive audit and verified fun>=80 remain unfinished. Read
+[HANDOFF.md](HANDOFF.md) for exact evidence and limits.
 
-Current source checkpoint: `74e99a1` (Cut185 cumulative skills/home shadows,
-Cut186 button polish). The broader fun goal remains paused. Queue updates do
-not authorize starting another implementation or rating round while paused.
-Cut185 has 822 passing Rust tests and focused UI/effect checks; its full client
-run failed 123/125. Both failed groups passed unchanged in isolation, which does
-not clear full acceptance. Shipping/balance validation and verified fun remain
-pending at that checkpoint. Cut187/188 now has full native regression and a
-complete125/125 client repeat pass on the alpha source; an earlier class-tree
-click timeout remains unexplained. Exhaustive audits and verified fun remain
-pending. Read [HANDOFF.md](HANDOFF.md) for resume order and exact evidence.
+**Queue only. Implementation and rating work remain paused.** The owner's
+2026-10-13 feedback below takes priority on resume. It supersedes the earlier
+proposal to automatically keep useful drops and salvage only the rest: the
+preferred direction is automatic conversion of found loot into currency, with
+starting gear prepared at the forge and custom starting kits unlocked later.
+No new feature, balance change, tutorial, asset or release is delivered by this
+queue update. Backwards compatibility is not required.
 
-The owner now requests these two visual deliveries, in order, on resume:
+## Next product work — owner feedback, not started
+
+| Order | Work | Intended result | First checkpoint / acceptance |
+|---|---|---|---|
+| 1 | Automatic loot settlement; simplify Keep and Storehouse | Keep feels like a chore. Automatically convert found loot into the existing currency instead of recurring keep/storage decisions. Use that currency at the forge for starting gear; unlock custom starting kits later. Reassess whether Storehouse has a useful remaining role, and remove or merge it if it only supports the old loot workflow. | Inventory the current keep, cage, salvage, storage, forge and starting-kit paths. Write one economy contract covering found versus brought/equipped gear, consumables, currency values, forge access and optional kit choices. Routine runs require zero keep decisions and no mandatory Storehouse visit. No second salvage currency, silent equipment replacement, duplicate settlement or manual bookkeeping. Rust owns settlement; verify whole/sliced/reloaded and multi-hero outcomes. |
+| 2 | A simpler banking model | Make currency progression understandable through one consistent rule for what is earned, secured and lost. Reduce competing bank/return/checkpoint percentages and overlapping destinations; explain the actual rule through the same totals shown in town and reports. | Compare the current model with a simpler proposal before tuning. Show worked first-run, retreat, death and offline examples with reconciled currency totals. Explicitly amend affected banking/exit contracts and gates if the model changes; do not layer another wallet or retention rule on top. |
+| 3 | Stage early progression | Forge and Storehouse arriving after the first run feel too fast. Spread unlocks and choices across clear milestones; introduce a building when its purpose becomes useful in the revised economy. | Record earned first-session runs, unlock timing and simultaneous decisions across fixed seeds. Set numeric pacing/decision targets in the implementation cut. Reassess Storehouse after item1 rather than merely delaying an obsolete building. Preserve a useful first session and prompt access to autonomous play; add no artificial wait or new required chores. |
+| 4 | Explain the cage and run endings | The owner does not understand “first: the cage,” and runs appear to end abruptly. Use clear encounter/objective names and show the actual reason the hero stopped, what was earned and what happens next. | Reproduce the exact “first: the cage” surface and identify whether it names a loot encounter, objective or enemy before changing it. Review how cage choices fit automatic loot conversion. Audit bank, retreat, death and clear endings in watched/offline runs. Every ending has a correct cause and a readable transition into its outcome; summaries do not invent actions or outcomes. No blocking confirmation for routine settlement. |
+| 5 | Clickable heroes and town objects | Clicking a hero in the base opens that hero's details and relevant actions. Make useful town objects respond consistently, with visible feedback. | Start with one hero and one built building, then cover the town. Correct actor identity with multiple heroes; pointer/touch/keyboard access, accessible labels and useful feedback. Avoid accidental construction or purchases. Preserve camera gestures, readable targets and original art direction. |
+| 6 | Building information | Add an `(i)` next to building names, such as Forge, that opens a short explanation or tooltip of the building's purpose, costs and available actions. | Cover every building that remains after the economy redesign, including relevant locked/unbuilt states. Information is available by click/tap and keyboard, not hover alone; support focus, Escape and dismissal. Keep help opt-in and contextual, with concise chrome and readable help text. No forced tutorial sequence. |
+| 7 | Bloodline tabs and visible branching trees | Put Legacy and Class tree in tabs inside Bloodlines. Display parent/child branches as connected nodes, with prerequisites, learned nodes, availability and costs readable at a glance. | First show one bloodline with two working tabs and one class branch at phone/desktop sizes, then cover all classes and Legacy. Reuse delivered cumulative unlocks; keep learned parents and other branches. Preserve current bloodline identity across tabs and exact purchase/cancel/reset behavior. Existing branching data must be visible; any additional tree depth needs a separate content contract. |
+| 8 | Large-desktop typography | Refine font sizes, hierarchy and spacing on large desktop screens. Avoid phone-scale text floating in oversized panels. | Capture town, Bloodlines/trees, forge, watch and report at1440/1920/2560px and compare with320/400px phone layouts. Set font/line-length/spacing targets from the audit; verify zoom, wrapping, contrast and keyboard focus. Post matched before/after screenshots. |
+| 9 | Send → Delve | Rename the player-facing run action to **Delve** to tie it to Idlever. Update related visible instructions and accessible names consistently. | Audit town/hero controls, confirmations, reports, automation descriptions and player README. Use natural matching forms such as “Delve” and “delving.” Leave internal APIs alone unless a separate change requires them. Preserve manual/automatic behavior; post the revised action in a screenshot. |
+
+Start with a single scoped loot/economy design cut covering items1–4 and their
+dependencies. Decide what happens to Storehouse before polishing its help or
+vignettes. Then deliver coherent checkpoints, rather than changing all systems
+at once. On resume, use appropriate numeric gates and targeted checks before
+broader acceptance; do not weaken a gate to pass a redesign. Post screenshots
+at meaningful UI checkpoints. Queueing does not change canonical game rules.
+
+## Retained visual work — after the product priorities above
+
+These earlier owner requests remain queued, in this order:
 
 | Order | Work | Concrete first delivery | Acceptance |
 |---|---|---|---|
-| 1 | Dedicated class-skill icons | Give all 30 cumulative skill nodes their own readable icon, rather than borrowing the first tactic's generic verb icon. Begin with the six Fighter nodes, then complete Rogue, Ranger, Caster and Gunner. Reuse the approved ink/wash palette and class motifs; integrate tree, learning review and any shared skill-detail surfaces. | 30/30 stable skill IDs covered in the manifest and UI mapping; primitive fallback for every icon. Compare at 24/32/48px on parchment and dark UI, including learned, available and locked states. Phone/desktop screenshots; no altered unlocks, costs, labels or save data. |
-| 2 | Combat animations and FX | Audit existing combat FX first. Improve weak class distinctions with actual action/impact animations: bash/cleave, vanish/backstab/smoke, arrows/marks, bolts/wards/nova, muzzle flash/reload. Start with one Fighter fight and its relevant learned skills, then cover all five classes and enemy reactions. | Effects follow genuine action, hit/miss, damage, healing or status events and actual replay state; never imply an unused skill fired or reveal unseen enemies. Check pause, seek, replay, speed changes, multiple combatants, reduced motion and full/low/off settings. Preserve readable telegraphs, targets, HP and logs. Private-GPU before/after screenshots or short clips, GL/Canvas fallback and measured frame costs; gameplay/events/RNG and saved state unchanged. |
+| 1 | Dedicated class-skill icons | Give all30 cumulative skill nodes readable individual icons, beginning with the six Fighter nodes, then Rogue, Ranger, Caster and Gunner. Use the approved ink/wash palette and class motifs; integrate with the revised Bloodlines tabs and connected tree. | 30/30 stable skill IDs covered in manifest/UI mapping; primitive fallbacks; readable at24/32/48px on parchment and dark surfaces, including learned, available and locked states. Phone/desktop screenshots. No altered unlocks, costs or saved data. |
+| 2 | Combat animations and FX | Audit existing FX and improve class action/impact distinctions. Begin with one Fighter fight, then cover all five classes and enemy reactions. | Genuine action/hit/miss/heal/status events and replay state; truthful passive attribution. Pause/seek/speed, multiple actors, reduced motion and full/low/off settings. Readable telegraphs, targets, HP and logs; private-GPU screenshots/clips, GL/Canvas fallback and measured frame cost. No gameplay/RNG changes for this visual pass. |
 
-Write a scoped cut before execution. Passive skill bonuses need trustworthy
-event/status attribution before receiving an activation effect. These are
-queued owner requests, not implemented assets, accepted balance or rater evidence.
-Do not deploy. Earlier queue sections below are retained as historical context;
-the current handoff and these owner additions take precedence over their old
-candidate and priority claims.
+Write a scoped cut before execution. Earlier sections below are historical
+context. Their old priority claims, retention proposals and Storehouse vignette
+plans yield to these current owner additions. No implementation or deployment
+is authorized by this queue-only update.
 
 Owner requested more content and refinement work. This is the prospective queue; older NEXT_WORK entries are history. Cuts137–139 menu art/title/Credits removal and rooted grass wind are integrated, with menu81/81 and private GPU evidence. Two d34605e ratings are closed: diagnostic human-only75.2 each/all16-axis alpha1; A4h return was short8seconds. That pair cannot certify>=80, and does not rate new polish. Raw evidence remains immutable.
 

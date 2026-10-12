@@ -21,6 +21,31 @@ active crates, WASM modules, browser globals, events, storage/settings keys and
 diagnostic markers use Idlever identifiers. No old-brand aliases or migration
 code are required. Actual local checkout paths remain valid.
 
+## Latest queued feedback — 2026-10-13, not started
+
+Owner requested a queue update, not resumed implementation. See
+[WORK_QUEUE.md](WORK_QUEUE.md) for priorities, dependencies and checkpoints.
+
+1. Make Keep automatic. Preferred direction: convert all found loot into the
+   existing currency, use the forge for starting gear, and unlock custom starting
+   kits later. Reassess/remove/merge Storehouse if it no longer serves a purpose.
+   This supersedes the older useful-upgrade retention proposal.
+2. Simplify banking and currency progression. Stage early unlocks; Forge and
+   Storehouse after the first run feel too fast. Write a combined economy/pacing
+   contract before implementation; do not silently replace existing rules.
+3. Explain “first: the cage” and why runs end. Audit the exact label and actual
+   bank/retreat/death/clear causes, then show readable outcomes and transitions.
+4. Make base heroes and useful objects clickable. Add contextual `(i)` help next
+   to building names, available by click/tap and keyboard.
+5. Put Legacy and Class tree in Bloodlines tabs; show their branches as connected
+   nodes. Preserve cumulative learned skills and bloodline identity.
+6. Refine large-desktop font sizes, hierarchy and spacing; retain phone readability.
+7. Rename player-facing **Send → Delve**, including related copy/accessibility.
+
+These product priorities precede the retained class-icon/combat-FX queue.
+Content implementation and fun-rating work remain paused. No game behavior
+changed by this documentation update. No backwards compatibility is required.
+
 ## Idlever — current checkpoint
 
 GitHub is now `gyng/idlever`; origin and Pages settings use
@@ -79,7 +104,7 @@ result below remains historical. No fun>=80 verdict is certified.
 Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
 `docs/evidence/cut185/checkpoint/prior-handoff.md`.
 
-## Latest owner direction
+## Earlier owner direction — implemented and retained work
 
 1. Deeper class trees, specifically **cumulative ability unlocks**, superseding
    the initial exclusive combat-path proposal.
@@ -91,7 +116,7 @@ Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
 
 ## New visual queue — not started
 
-See [WORK_QUEUE.md](WORK_QUEUE.md), current owner additions. First deliver six
+See [WORK_QUEUE.md](WORK_QUEUE.md), current owner additions. After the latest product priorities, deliver six
 Fighter skill icons, then complete all30 skill IDs across five classes. Replace
 generic tactic icons with readable skill-specific art in the tree/reviews,
 preserving the original style, 24/32/48px readability and primitive fallbacks.
