@@ -12,8 +12,9 @@ The exhaustive audit and verified fun>=80 remain unfinished. Read
 2026-10-13 feedback below takes priority on resume. It supersedes the earlier
 proposal to automatically keep useful drops and salvage only the rest: the
 preferred direction is automatic conversion of found loot into currency, with
-starting gear prepared at the forge and deeper custom starting kits unlocked
-gradually. The forge becomes a main place for meaningful build choices as loot
+starting gear unlocked through the forge and deeper custom starting kits
+unlocked gradually. The latest owner rule is that unlocked items are free to
+equip, use and reuse; no gold charge for replenishing them on later delves. The forge becomes a main place for meaningful build choices as loot
 handling becomes automatic.
 No new feature, balance change, tutorial, asset or release is delivered by this
 queue update. Backwards compatibility is not required.
@@ -35,7 +36,7 @@ more labels or uniformly stronger upgrades.
 
 | Order | Work | Intended result | First checkpoint / acceptance |
 |---|---|---|---|
-| 1 | Automatic loot settlement; simplify Keep and Storehouse | Keep feels like a chore. Automatically convert found loot into the existing currency instead of recurring keep/storage decisions. Use that currency at the forge for starting gear; gradually unlock deeper custom starting kits with meaningful build tradeoffs. See the forge-depth brief below. Reassess whether Storehouse has a useful remaining role, and remove or merge it if it only supports the old loot workflow. | Inventory the current keep, cage, salvage, storage, forge and starting-kit paths. Write one economy contract covering found versus brought/equipped gear, consumables, currency values, forge access and optional kit choices. Routine runs require zero keep decisions and no mandatory Storehouse visit. No second salvage currency, silent equipment replacement, duplicate settlement or manual bookkeeping. Rust owns settlement; verify whole/sliced/reloaded and multi-hero outcomes. |
+| 1 | Automatic loot settlement; simplify Keep and Storehouse | Keep feels like a chore. Automatically convert found loot into the existing currency instead of recurring keep/storage decisions. Use that currency at the forge for permanent item unlocks/upgrades, with unlocked items free to equip/use; gradually unlock deeper custom starting kits with meaningful build tradeoffs. See the forge-depth brief below. Reassess whether Storehouse has a useful remaining role, and remove or merge it if it only supports the old loot workflow. | Inventory the current keep, cage, salvage, storage, forge and starting-kit paths. Write one economy contract covering found versus brought/equipped gear, consumables, currency values, forge access and optional kit choices. Routine runs require zero keep decisions and no mandatory Storehouse visit. No second salvage currency, silent equipment replacement, duplicate settlement or manual bookkeeping. Rust owns settlement; verify whole/sliced/reloaded and multi-hero outcomes. |
 | 2 | A simpler banking model | Make currency progression understandable through one consistent rule for what is earned, secured and lost. Reduce competing bank/return/checkpoint percentages and overlapping destinations; explain the actual rule through the same totals shown in town and reports. | Compare the current model with a simpler proposal before tuning. Show worked first-run, retreat, death and offline examples with reconciled currency totals. Explicitly amend affected banking/exit contracts and gates if the model changes; do not layer another wallet or retention rule on top. |
 | 3 | Stage early progression | Forge and Storehouse arriving after the first run feel too fast. Spread unlocks and choices across clear milestones; introduce a building when its purpose becomes useful in the revised economy. | Record earned first-session runs, unlock timing and simultaneous decisions across fixed seeds. Set numeric pacing/decision targets in the implementation cut. Reassess Storehouse after item1 rather than merely delaying an obsolete building. Preserve a useful first session and prompt access to autonomous play; add no artificial wait or new required chores. |
 | 4 | Explain the cage and run endings | The owner does not understand “first: the cage,” and runs appear to end abruptly. Use clear encounter/objective names and show the actual reason the hero stopped, what was earned and what happens next. | Reproduce the exact “first: the cage” surface and identify whether it names a loot encounter, objective or enemy before changing it. Review how cage choices fit automatic loot conversion. Audit bank, retreat, death and clear endings in watched/offline runs. Every ending has a correct cause and a readable transition into its outcome; summaries do not invent actions or outcomes. No blocking confirmation for routine settlement. |
@@ -53,15 +54,47 @@ more labels or uniformly stronger upgrades.
 | 16 | Desktop bottom-bar space | The bar below the desktop viewport feels like wasted space. Rework its placement/height and give usable space back to the town/watch. | Audit actual desktop layouts at1440/1920/2560px before choosing a layout. Preserve necessary status/actions and navigation; do not simply make text tiny. Check scene aspect ratio, scrolling, safe areas, zoom, dialogs and phone layouts. Post before/after screenshots with viewport/chrome dimensions. |
 | 17 | Floating delve controls | The closed control bar during delving wastes space. Explore a floating compact control that expands on demand instead of reserving a strip of empty space. | First show closed/open watch controls on phone/desktop. Preserve pause, speed, manual controls and keyboard access; keep expanded controls clear of heroes, HP, telegraphs, logs and meaningful choices. Clear open/closed feedback, focus and dismissal. No accidental commands, camera gestures or changed run behavior. |
 | 18 | Compact top bar | Reduce top-bar text labels to make better use of space, especially on desktop. | Audit which labels can use familiar icons, shorter text or contextual detail. Keep meaningful values, actor identity and state legible; provide accessible names and focus/tap help for unfamiliar icons. Check long names, large values, zoom, keyboard use and phone widths. Coordinate with the desktop-font and bottom-bar passes. |
-| 19 | Forge leash and pet progression | Review moving leash access into forge/preparation progression so it is a deliberate, understandable starting-kit choice. Bring pets into the build loop and visible base life. Consider a Petmaster class as an optional deeper pet playstyle. | Inventory existing tame, companion, kennel and leash supply behavior before adding systems; do not recreate delivered pet mechanics. Prototype one earned pet/hero combination and its forge preparation. Define leash unlock, cost/reuse, pet persistence, active-party limits and death/return behavior. Petmaster is a class proposal, not a requirement for ordinary pet access. Avoid pet feeding/upkeep chores or random leash-drop dependence for a planned build. |
+| 19 | Forge leash and pet progression | Review moving leash access into forge/preparation progression so it is a deliberate, understandable starting-kit choice. Bring pets into the build loop and visible base life. Consider a Petmaster class as an optional deeper pet playstyle. | Inventory existing tame, companion, kennel and leash supply behavior before adding systems; do not recreate delivered pet mechanics. Prototype one earned pet/hero combination and its forge preparation. Define leash unlock price, free use/reuse after unlock, pet persistence, active-party limits and death/return behavior. Petmaster is a class proposal, not a requirement for ordinary pet access. Avoid pet feeding/upkeep chores or random leash-drop dependence for a planned build. |
 | 20 | Clown class | Queue a full Clown class with a distinct build identity in the original dark-fantasy style. Explore jester tricks, misdirection, decoys or risk/reward combinations as candidate mechanics. | Start with a class concept and two contrasting build sketches, then a scoped mechanics/tree/gear/presentation contract. Demonstrate actual tactical strengths and counters, class progression, cumulative branching skills, icons/FX and forge synergies. Do not implement a rename or recolour of an existing class. |
 | 21 | Engineer class | Queue a full Engineer class focused on building combinations through gadgets or constructs. Explore traps, deployable devices or automatons as candidates, with a role distinct from Gunner. | Start with a class concept and two contrasting build sketches, then one earned playable build before expanding. Define actor/construct limits, action attribution, damage/control/support tradeoffs, branching skills and forge interactions. Check actual replay readability, multi-actor cost, determinism and offline/save parity. No manual repair or restocking busywork. |
 | 22 | Build trials and satisfying delve endings | Make preparing a build and seeing how far it reaches the central loop. Endings must show why the delve stopped and what the build achieved; healthy heroes should not appear to abandon a test abruptly. | Audit automatic bank/retreat rules and whether they prematurely cut healthy delves short. Compare proposals such as separating currency security from stopping the delve, or readable build-specific retreat policy. Record actual depth, endpoint cause, pivotal fight/weakness, rewards and comparison with that build's previous trials. Verify bank/retreat/death/clear transitions and live/offline parity; preserve honest causes and absence safety. No mandatory replay or extra confirmation between automatic delves. |
 | 23 | Diegetic live view for understanding builds | Make the live scene explain what the build is doing through actions, target intent, impacts, skills and pet behavior. Combat/skill animation and FX should expose meaningful differences between builds and explain setbacks, not just decorate the scene. | Audit a real replay and map current action/status/skill events to visible cues. First compare two earned builds at the same wall, showing why their outcomes differ. See the live-view brief below. Preserve truthful action attribution, targets, damage, unseen-enemy knowledge, pause/seek/speed and GL/Canvas fallbacks. |
 | 24 | Explain forge floating gold | The floating cash on the forge is unclear. Say what the amount is for instead of showing an unexplained currency number. | Reproduce the exact badge and identify whether it is a crafting/build/upgrade cost, available budget or another value before choosing copy. Put its purpose beside the amount, with relevant action/recipient clear; use contextual `(i)` detail for explanation. Check locked/affordable/unaffordable/complete states and updated forge progression. Do not relabel a price as stored cash or rely on hover alone. |
 | 25 | Gold transaction particles | When gold is added or removed, animate gold particles between the actual source and destination, with particle size/strength scaled to transaction value. | Cover earnings, forging/purchases and relevant bank/return/death settlement from real committed gold events. Larger values produce a visibly stronger but bounded effect; retain the exact signed amount. Map scene anchors and wallet correctly, use an honest labelled fallback when an anchor is absent, and avoid animating previews/failed/cancelled spending. Respect reduced motion and full/low/off effects, multi-hero identity and performance limits; aggregate offline batches instead of replaying thousands of effects. No duplicate rewards or changed balances. |
+| 26 | Supplies → Bloodline Loadouts | Supplies feels confusing. Consider consolidating starting gear, consumables and pet/leash choices into a clear Loadouts surface inside Bloodlines, alongside Class tree and Legacy. Forge handles permanent unlocks/upgrades; Loadouts selects the eligible unlocked kit. | Inventory what Supplies currently controls so a label change does not hide missing functions. Prototype one bloodline's saved kit, item effects, class/slot rules and locked-item route to Forge. Keep selected hero identity and free automatic reuse clear, with no mandatory shopping/stock management on every delve. |
+| 27 | Unlocked items are free to use | Firm owner rule: once an item is unlocked, it should not take gold to use it. Gold can buy permanent item unlocks/upgrades, not repeated use of the same item. | Amend the economy contract and older per-run supply/forge gates explicitly. Verify unlocked gear, consumables and leash equip/use/replenishment at zero gold, including repeat delves, death/replacement, save/reload, offline and multiple heroes. Show unlock price separately from free use; no hidden restock/repair/preparation fee. Balance build constraints and progression around this rule rather than reintroducing monetary upkeep. |
+| 28 | Live side depth map | Show a compact depth indicator beside the live view, like a map with points of interest and milestones: current floor, known boss depths, explored landmarks and relevant records/goals. | Prototype a side rail for one earned delve and its replay. Derive markers from actual route/floor/knowledge data, not guessed depth intervals; explain icons on hover/focus/tap. Follow selected hero and replay cursor, including seek, floor transitions, return/death/clear, route changes and offline catches. Show known information without exposing unrevealed encounters. Keep the board readable at phone/desktop sizes and avoid another oversized empty HUD strip. |
+
+### Loadouts and free unlocked items — latest owner amendment
+
+“Supplies” is confusing; review moving its relevant choices into a **Loadouts**
+section/tab within Bloodlines. The exact navigation is a proposal to prototype.
+The intended distinction is clear: Forge unlocks/upgrades items; a bloodline
+chooses and saves its build from eligible unlocked options. Present consumables
+and pet/leash choices where they belong in that kit, with useful effect details
+and a route to unlocking unavailable options. Preserve class/slot restrictions
+and the correct selected hero rather than simply relabelling the old stock UI.
+
+**Once an item is unlocked, it costs no gold to use.** This is an owner rule,
+not an open question. It replaces the earlier recurring kit-preparation cost
+proposal. Equip/reuse/restock/replacement of an unlocked item must not drain
+gold; include consumables and leashes in the review. Gold remains useful for
+permanent unlocks/upgrades and other explicitly defined progression purchases.
+Define ownership/persistence and allowed kit composition in the cut, then
+measure pacing and build outcomes under the new model. A previously unlocked
+build must still work at zero gold and across automatic/offline delves.
 
 ### Diegetic live view and readable gold flow — owner addition
+
+Add the owner's requested side depth map to this pass: a compact vertical
+progress rail with the current floor, known boss/POI markers, personal bests and
+relevant milestones. Use the actual route and known encounter metadata; avoid
+invented “boss everyN floors” markers or future encounter spoilers. Distinguish
+visited, current, known-ahead and achieved markers with readable symbols and
+optional details. Clicking a marker inspects its known information; it does not
+silently move the hero or change the delve. During replay/seek, the map follows
+the visible replay cursor rather than a newer background simulation. Prototype
+phone and desktop placement alongside the floating controls and compact HUD.
 
 The live view is a main way to understand and enjoy a build. Audit what a player
 can currently infer from one earned fight: who is acting, which target is chosen,
@@ -115,10 +148,12 @@ Provide a clear route to the leash's preparation source; no ambiguous “first�
 label or icon-only locked state. Verify before-leash, leash-ready, pet-tamed,
 full-party and saved/reloaded states on phone/desktop, including keyboard help.
 Explain what equipping or using a leash does, and how the selected pet
-complements the hero's skills and gear. Let pets participate in appropriate base routines when not delving.
+complements the hero's skills and gear. Once the leash item is unlocked, its use/reuse must not charge gold.
+Let pets participate in appropriate base routines when not delving.
 Petmaster is a possible specialist class; ordinary pets need not be gated
-behind selecting it. Decide pet persistence, party capacity, cost and loss
-rules explicitly rather than adding another upkeep loop.
+behind selecting it. Decide pet persistence, party capacity, permanent-unlock
+costs and loss rules explicitly, while keeping unlocked item use free and
+avoiding another upkeep loop.
 
 Clown and Engineer are requested new classes. Their mechanics above are
 candidate directions, not chosen abilities or completed content. Concept work
@@ -144,24 +179,33 @@ loot conversion. Include this in the loot/economy design cut, rather than
 reducing the forge to a linear stat-upgrade button.
 
 - Introduce a useful default kit first, then unlock additional choices gradually.
-  Keep basic delves available when the player cannot afford a custom kit.
+  Keep basic delves available before advanced items are unlocked; never require
+  a gold balance to use an already unlocked kit.
 - Explore weapon families, armour profiles and a small number of gear modifiers
   or specialisations. These are design candidates, not a committed list of new
   systems. Choices should change combat strengths, weaknesses and synergy with
-  class skills/tactics; compare alternatives at similar currency budgets.
-- Separate permanent forge capabilities from the cost of preparing a selected
-  starting kit. Define both clearly in the single-currency economy contract;
-  avoid more currencies, random reroll chores or repeated item maintenance.
+  class skills/tactics; compare alternatives at similar permanent-unlock budgets.
+- Gold purchases permanent item unlocks/forge upgrades. **Unlocked items cost
+  no gold to equip, use, replenish or reuse.** This supersedes the earlier
+  paid kit-preparation proposal. Do not recreate use fees as repairs, restocking,
+  automatic purchases or replacement charges after a death.
+- Define town versus bloodline/class unlock ownership and eligible slots in the
+  economy cut. Use build constraints and meaningful tradeoffs instead of a
+  recurring gold budget to decide what an unlocked kit may contain. Avoid more
+  currencies, random reroll chores or repeated item maintenance.
 - Let players save and reuse starting kits for their bloodlines/classes.
-  Preview the gear, relevant effects and total cost before confirming changes.
+  Preview selected gear and its relevant effects. Show unlock/upgrade prices
+  separately at the forge; changing an eligible unlocked kit is free.
   Reuse the confirmed kit automatically for later delves; customisation remains
   optional and does not require a shopping/confirmation step after every run.
-- First checkpoint: two earned, affordable Fighter kits with different strengths
-  at one actual progression wall. Show their costs, action traces and outcomes,
-  including where each loses. Then extend meaningful choices across the other
+- First checkpoint: two earned, unlocked Fighter kits with different strengths
+  at one actual progression wall. Show their permanent-unlock costs, action
+  traces and outcomes, including where each loses; both kits are free to use. Then extend meaningful choices across the other
   classes as their relevant forge options unlock. Retain a viable default.
-- Verify selected-kit persistence, explicit kit changes, insufficient funds,
-  automatic repeat delves and whole/sliced/reloaded multi-hero parity. Show the
+- Verify selected-kit persistence, explicit free kit changes, insufficient funds
+  for a new unlock, and zero-gold use/reuse of already unlocked items. Cover
+  consumables/leashes and automatic repeat delves, plus whole/sliced/reloaded
+  multi-hero parity. Show the
   forge's mobile/desktop selection and comparison screens at checkpoints.
 
 ### Menu materials and base life — owner additions

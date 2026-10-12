@@ -31,11 +31,11 @@ far they get**. Gear, class branches, Legacy, tactics and pets should support
 that loop; automatic loot and base life reduce chores and give results context.
 
 1. Make Keep automatic. Preferred direction: convert all found loot into the
-   existing currency, use the forge for starting gear, and unlock custom starting
-   kits gradually. **Deepen forge/starting-kit customisation alongside loot
+   existing currency, use the forge for permanent gear unlocks/upgrades, and
+   unlock custom starting kits gradually. Unlocked items are free to use. **Deepen forge/starting-kit customisation alongside loot
    simplification:** meaningful weapon/armour/modifier tradeoffs, class/tactic
    synergy and saved reusable kits, introduced in stages. These option types are
-   design candidates; first prove two affordable earned Fighter kits at one wall.
+   design candidates; first prove two earned unlocked Fighter kits at one wall, free to use.
    Keep a viable default and automatic reuse, with no shopping chore per delve.
    Reassess/remove/merge Storehouse if it no longer serves a purpose.
    This supersedes the older useful-upgrade retention proposal.
@@ -98,6 +98,21 @@ that loop; automatic loot and base life reduce chores and give results context.
     Scale particle size/strength with value under a cap; retain exact amounts,
     correct hero identity and accessible reduced/off-effects feedback. Aggregate
     offline batches; never animate failed purchases or change/duplicate balances.
+
+22. “Supplies” is confusing. Consider a Loadouts section/tab in Bloodlines for
+    gear, consumables and pet/leash selection, alongside Class tree and Legacy.
+    Forge owns unlocks/upgrades; Loadouts selects and saves the eligible build.
+23. **Firm rule: unlocked items are free to use.** Supersedes earlier paid kit
+    preparation. No gold charge to equip, use, restock, reuse or replace an
+    unlocked item; include consumables and leashes. Permanent unlocks/upgrades
+    may cost gold. Verify zero-gold builds, repeated/offline delves and explicit
+    ownership/slot rules; amend affected old economy gates in the design cut.
+
+24. Add a live depth map beside the scene, with current floor, known boss/POI
+    markers and relevant milestones/personal bests. Use actual route/knowledge
+    data and the selected hero/replay cursor; support floor changes, seek and
+    offline updates without future spoilers or excessive HUD space. Markers
+    offer accessible details and fit both phone and desktop layouts.
 
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
