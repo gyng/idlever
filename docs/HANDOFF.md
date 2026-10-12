@@ -162,6 +162,13 @@ that loop; automatic loot and base life reduce chores and give results context.
     existing ascensions; no routine paid respec/reroll chore or trapped early
     stat build. Define and gate the combined hero/Legacy model before coding.
 
+34. Add building construction/upgrade FX: material-appropriate assembly/reveal
+    and clear completion feedback in the original style. Start with one actual
+    purchase, then cover buildings/upgrades. Coordinate gold particles and keep
+    tooltips/targets readable. Presentation follows real successful events;
+    instant construction gains no artificial timer, cost or usability delay.
+    Cover reload/offline, day/night, motion/effects settings and renderer fallbacks.
+
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior
