@@ -57,7 +57,50 @@ more labels or uniformly stronger upgrades.
 | 20 | Clown class | Queue a full Clown class with a distinct build identity in the original dark-fantasy style. Explore jester tricks, misdirection, decoys or risk/reward combinations as candidate mechanics. | Start with a class concept and two contrasting build sketches, then a scoped mechanics/tree/gear/presentation contract. Demonstrate actual tactical strengths and counters, class progression, cumulative branching skills, icons/FX and forge synergies. Do not implement a rename or recolour of an existing class. |
 | 21 | Engineer class | Queue a full Engineer class focused on building combinations through gadgets or constructs. Explore traps, deployable devices or automatons as candidates, with a role distinct from Gunner. | Start with a class concept and two contrasting build sketches, then one earned playable build before expanding. Define actor/construct limits, action attribution, damage/control/support tradeoffs, branching skills and forge interactions. Check actual replay readability, multi-actor cost, determinism and offline/save parity. No manual repair or restocking busywork. |
 | 22 | Build trials and satisfying delve endings | Make preparing a build and seeing how far it reaches the central loop. Endings must show why the delve stopped and what the build achieved; healthy heroes should not appear to abandon a test abruptly. | Audit automatic bank/retreat rules and whether they prematurely cut healthy delves short. Compare proposals such as separating currency security from stopping the delve, or readable build-specific retreat policy. Record actual depth, endpoint cause, pivotal fight/weakness, rewards and comparison with that build's previous trials. Verify bank/retreat/death/clear transitions and live/offline parity; preserve honest causes and absence safety. No mandatory replay or extra confirmation between automatic delves. |
+| 23 | Diegetic live view for understanding builds | Make the live scene explain what the build is doing through actions, target intent, impacts, skills and pet behavior. Combat/skill animation and FX should expose meaningful differences between builds and explain setbacks, not just decorate the scene. | Audit a real replay and map current action/status/skill events to visible cues. First compare two earned builds at the same wall, showing why their outcomes differ. See the live-view brief below. Preserve truthful action attribution, targets, damage, unseen-enemy knowledge, pause/seek/speed and GL/Canvas fallbacks. |
+| 24 | Explain forge floating gold | The floating cash on the forge is unclear. Say what the amount is for instead of showing an unexplained currency number. | Reproduce the exact badge and identify whether it is a crafting/build/upgrade cost, available budget or another value before choosing copy. Put its purpose beside the amount, with relevant action/recipient clear; use contextual `(i)` detail for explanation. Check locked/affordable/unaffordable/complete states and updated forge progression. Do not relabel a price as stored cash or rely on hover alone. |
+| 25 | Gold transaction particles | When gold is added or removed, animate gold particles between the actual source and destination, with particle size/strength scaled to transaction value. | Cover earnings, forging/purchases and relevant bank/return/death settlement from real committed gold events. Larger values produce a visibly stronger but bounded effect; retain the exact signed amount. Map scene anchors and wallet correctly, use an honest labelled fallback when an anchor is absent, and avoid animating previews/failed/cancelled spending. Respect reduced motion and full/low/off effects, multi-hero identity and performance limits; aggregate offline batches instead of replaying thousands of effects. No duplicate rewards or changed balances. |
 
+### Diegetic live view and readable gold flow — owner addition
+
+The live view is a main way to understand and enjoy a build. Audit what a player
+can currently infer from one earned fight: who is acting, which target is chosen,
+what skill/tactic or pet action fired, whether it hit, what changed, and why the
+hero moved, retreated or died. Compare this with the actual replay/event trace;
+list missing or misleading cues before creating animation assets.
+
+Explore action poses/windups, directional attacks/projectiles, distinct impacts,
+block/dodge reactions, healing/status cues and brief anchored skill indicators
+where each improves understanding. Pet actions should identify the pet and its
+contribution. Passive bonuses must not look like skills activating on their own;
+only real proc/activation events may produce that effect. Class-specific motion
+should make chosen builds visibly distinct in the approved original style.
+Prefer clear in-scene behavior to extra permanent HUD bars or repeating captions;
+keep optional inspection/replay detail for exact mechanics the scene cannot show.
+
+Show important intent and transitions honestly: stairs, recovery, withdrawal,
+checkpoint security, death and clear should connect visibly to their actual
+causes and results. Coordinate with the run-stopping-policy audit; animation
+alone cannot fix an unexplained early stop. Preserve automated/offline play,
+existing fog/knowledge boundaries and readably paced effects at all replay speeds.
+First checkpoint: paired clips of two earned builds at one wall with an event
+coverage table and identified strengths/failures. Then cover remaining classes,
+relevant learned skills, pets and enemy responses. This fulfils and prioritises
+the existing combat-animation/FX request rather than creating a duplicate pass.
+Verify pause, seek, speed changes, multiple actors, full/low/off and reduced
+motion; measure private-GPU costs and preserve GL/Canvas primitive fallbacks.
+The visual pass must not alter actions, RNG, balances or saved outcomes.
+
+The forge's gold badge needs a visible purpose tied to its actual meaning.
+Gold effects should then explain a confirmed transaction spatially: earnings
+from their real source toward the wallet, or spending from the wallet toward
+the forge/building/recipient. Choose anchors from genuine transaction context,
+including the correct hero/bloodline; do not invent a money source or destination.
+Scale particle size/strength with value using a capped mapping so large totals
+remain readable and affordable to render. Keep a clear exact amount and an
+accessible equivalent with effects disabled. Initialise balances without fake
+transaction effects, and summarise legitimate offline settlement in bounded
+batches. Animations must never block subsequent delves or confirmations.
 
 ### Pets, new classes and build trials — owner addition
 
@@ -162,9 +205,11 @@ resume; they need not wait for the economy cut. Coordinate journal, menu
 materials and base routines with the revised systems they explain. Queueing
 does not change canonical game rules.
 
-## Retained visual work — after the product priorities above
+## Visual deliveries — coordinated with the product priorities above
 
-These earlier owner requests remain queued, in this order:
+These earlier owner requests remain queued. Combat FX now belongs to the
+build-focused diegetic live-view pass; do not schedule it twice. Coordinate
+skill icons with the revised Bloodlines tree and its live-view skill cues:
 
 | Order | Work | Concrete first delivery | Acceptance |
 |---|---|---|---|

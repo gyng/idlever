@@ -86,7 +86,21 @@ that loop; automatic loot and base life reduce chores and give results context.
     trials, so the player can revise the next kit. Coordinate with the simpler
     banking contract; preserve truthful outcomes and automatic/offline play.
 
-These product priorities precede the retained class-icon/combat-FX queue.
+19. Make the live view more diegetic and useful for understanding builds.
+    Audit actual action/target/skill/pet/status events and missing visible cues;
+    use appropriate combat/skill animations and FX to explain what happened and
+    why. First compare two earned builds at one wall. Integrate the prior combat
+    FX queue into this pass; retain truthful attribution, pause/seek/speed,
+    knowledge limits, readability, effects controls and GL/Canvas fallbacks.
+20. Explain floating gold on the forge: audit the badge's actual meaning and
+    label what the amount is for, visibly and with useful contextual details.
+21. Animate real gold gains/spending between their true sources/destinations.
+    Scale particle size/strength with value under a cap; retain exact amounts,
+    correct hero identity and accessible reduced/off-effects feedback. Aggregate
+    offline batches; never animate failed purchases or change/duplicate balances.
+
+Coordinate skill icons with the revised trees and live-view cues. Combat FX
+is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior
 changed by this documentation update. No backwards compatibility is required.
 
@@ -158,14 +172,15 @@ Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
    improved combat animations/FX. This request updates the queue only; the
    broader implementation/rating goal remains paused.
 
-## New visual queue — not started
+## Visual queue — not started; integrated with latest owner priorities
 
 See [WORK_QUEUE.md](WORK_QUEUE.md), current owner additions. After the latest product priorities, deliver six
 Fighter skill icons, then complete all30 skill IDs across five classes. Replace
 generic tactic icons with readable skill-specific art in the tree/reviews,
 preserving the original style, 24/32/48px readability and primitive fallbacks.
 
-Then audit and improve class combat animations/FX, starting with a Fighter fight.
+The latest diegetic live-view request now includes the combat-animation/FX
+audit, starting with matched earned builds at one wall; do not duplicate it.
 Use actual attack/impact/heal/status and replay events; distinguish hit/miss and
 active/passive effects honestly. Cover all five classes, pause/seek/speed,
 multiple actors, reduced motion and effects full/low/off. Preserve telegraph,
