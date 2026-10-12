@@ -26,6 +26,10 @@ code are required. Actual local checkout paths remain valid.
 Owner requested a queue update, not resumed implementation. See
 [WORK_QUEUE.md](WORK_QUEUE.md) for priorities, dependencies and checkpoints.
 
+Latest owner design priority: **the main fun is trying builds and seeing how
+far they get**. Gear, class branches, Legacy, tactics and pets should support
+that loop; automatic loot and base life reduce chores and give results context.
+
 1. Make Keep automatic. Preferred direction: convert all found loot into the
    existing currency, use the forge for starting gear, and unlock custom starting
    kits gradually. **Deepen forge/starting-kit customisation alongside loot
@@ -66,6 +70,21 @@ Owner requested a queue update, not resumed implementation. See
 14. Reclaim wasted desktop bottom-bar space. Explore floating collapsed delve
     controls; keep expanded controls and necessary status readable and usable.
 15. Compact top-bar labels without losing values, actor identity or accessibility.
+
+16. Review forge/preparation access for leashes and integrate pets with builds
+    and base life. Reuse existing tame/companion/kennel systems. Consider an
+    optional Petmaster class; ordinary pet access need not require that class.
+    Replace confusing “first tame” with **“Tame a pet with a leash”**, show a lock
+    while unmet, and make leash acquisition and actual taming state clear.
+17. Queue new **Clown** and **Engineer** classes with distinct build identities.
+    Tricks/decoys/risk-reward and gadgets/traps/constructs are concept candidates,
+    not selected mechanics. Show contrasting builds and weaknesses before adding
+    a full class catalogue; keep original art direction and staged unlocks.
+18. Make build trials and endings satisfying. Audit early banking/retreat rules
+    that stop healthy heroes as well as abrupt transitions. Show depth, actual
+    stopping cause, pivotal encounter, rewards and comparison to prior build
+    trials, so the player can revise the next kit. Coordinate with the simpler
+    banking contract; preserve truthful outcomes and automatic/offline play.
 
 These product priorities precede the retained class-icon/combat-FX queue.
 Content implementation and fun-rating work remain paused. No game behavior

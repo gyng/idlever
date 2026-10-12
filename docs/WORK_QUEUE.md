@@ -18,6 +18,19 @@ handling becomes automatic.
 No new feature, balance change, tutorial, asset or release is delivered by this
 queue update. Backwards compatibility is not required.
 
+## Main fun — latest owner direction
+
+The main fun should be **trying builds and seeing how far they get**. Gear,
+class branches, Legacy, tactics and pets should create distinct combinations
+that the player can prepare, run, inspect and revise. Automatic loot settlement
+and base life support that loop; routine chores should not dominate it.
+
+Treat this as the priority for the next design cuts, not a claim that the
+current game delivers it. Stage options to avoid overwhelming new players,
+retain a viable default, and make build identity and actual delve outcomes
+visible. New classes should provide different ways to build, rather than just
+more labels or uniformly stronger upgrades.
+
 ## Next product work — owner feedback, not started
 
 | Order | Work | Intended result | First checkpoint / acceptance |
@@ -40,6 +53,46 @@ queue update. Backwards compatibility is not required.
 | 16 | Desktop bottom-bar space | The bar below the desktop viewport feels like wasted space. Rework its placement/height and give usable space back to the town/watch. | Audit actual desktop layouts at1440/1920/2560px before choosing a layout. Preserve necessary status/actions and navigation; do not simply make text tiny. Check scene aspect ratio, scrolling, safe areas, zoom, dialogs and phone layouts. Post before/after screenshots with viewport/chrome dimensions. |
 | 17 | Floating delve controls | The closed control bar during delving wastes space. Explore a floating compact control that expands on demand instead of reserving a strip of empty space. | First show closed/open watch controls on phone/desktop. Preserve pause, speed, manual controls and keyboard access; keep expanded controls clear of heroes, HP, telegraphs, logs and meaningful choices. Clear open/closed feedback, focus and dismissal. No accidental commands, camera gestures or changed run behavior. |
 | 18 | Compact top bar | Reduce top-bar text labels to make better use of space, especially on desktop. | Audit which labels can use familiar icons, shorter text or contextual detail. Keep meaningful values, actor identity and state legible; provide accessible names and focus/tap help for unfamiliar icons. Check long names, large values, zoom, keyboard use and phone widths. Coordinate with the desktop-font and bottom-bar passes. |
+| 19 | Forge leash and pet progression | Review moving leash access into forge/preparation progression so it is a deliberate, understandable starting-kit choice. Bring pets into the build loop and visible base life. Consider a Petmaster class as an optional deeper pet playstyle. | Inventory existing tame, companion, kennel and leash supply behavior before adding systems; do not recreate delivered pet mechanics. Prototype one earned pet/hero combination and its forge preparation. Define leash unlock, cost/reuse, pet persistence, active-party limits and death/return behavior. Petmaster is a class proposal, not a requirement for ordinary pet access. Avoid pet feeding/upkeep chores or random leash-drop dependence for a planned build. |
+| 20 | Clown class | Queue a full Clown class with a distinct build identity in the original dark-fantasy style. Explore jester tricks, misdirection, decoys or risk/reward combinations as candidate mechanics. | Start with a class concept and two contrasting build sketches, then a scoped mechanics/tree/gear/presentation contract. Demonstrate actual tactical strengths and counters, class progression, cumulative branching skills, icons/FX and forge synergies. Do not implement a rename or recolour of an existing class. |
+| 21 | Engineer class | Queue a full Engineer class focused on building combinations through gadgets or constructs. Explore traps, deployable devices or automatons as candidates, with a role distinct from Gunner. | Start with a class concept and two contrasting build sketches, then one earned playable build before expanding. Define actor/construct limits, action attribution, damage/control/support tradeoffs, branching skills and forge interactions. Check actual replay readability, multi-actor cost, determinism and offline/save parity. No manual repair or restocking busywork. |
+| 22 | Build trials and satisfying delve endings | Make preparing a build and seeing how far it reaches the central loop. Endings must show why the delve stopped and what the build achieved; healthy heroes should not appear to abandon a test abruptly. | Audit automatic bank/retreat rules and whether they prematurely cut healthy delves short. Compare proposals such as separating currency security from stopping the delve, or readable build-specific retreat policy. Record actual depth, endpoint cause, pivotal fight/weakness, rewards and comparison with that build's previous trials. Verify bank/retreat/death/clear transitions and live/offline parity; preserve honest causes and absence safety. No mandatory replay or extra confirmation between automatic delves. |
+
+
+### Pets, new classes and build trials — owner addition
+
+Pets should be understandable parts of a build, with a clear acquisition and
+starting-kit path. Begin from existing companions/taming and kennel behavior.
+The owner suggests the forge (or another coherent preparation facility) for
+leashes; choose the exact source in the economy cut. Replace the confusing companion label “first tame” with the owner's suggested
+**“Tame a pet with a leash”**; show a lock while the requirement is unmet.
+Distinguish needing to acquire/equip a leash from actually taming a pet, and
+remove the lock/update the companion state when the real requirement is met.
+Provide a clear route to the leash's preparation source; no ambiguous “first”
+label or icon-only locked state. Verify before-leash, leash-ready, pet-tamed,
+full-party and saved/reloaded states on phone/desktop, including keyboard help.
+Explain what equipping or using a leash does, and how the selected pet
+complements the hero's skills and gear. Let pets participate in appropriate base routines when not delving.
+Petmaster is a possible specialist class; ordinary pets need not be gated
+behind selecting it. Decide pet persistence, party capacity, cost and loss
+rules explicitly rather than adding another upkeep loop.
+
+Clown and Engineer are requested new classes. Their mechanics above are
+candidate directions, not chosen abilities or completed content. Concept work
+should establish two substantially different build options per class, their
+weaknesses and forge/class-tree/pet synergies before adding a large catalogue.
+Fit the original art style and keep later unlocks paced; introduce one class
+at a time through its own numeric cut and real earned-play comparisons.
+
+Build trials should make cause and effect visible: chosen kit/skills/pet,
+depth reached, the encounter or rule that ended the delve, useful rewards and
+a concrete next build adjustment. Keep versions/history sufficiently clear to
+compare attempts without requiring a manual send, replay watch or equipment
+cleanup every time. Audit the stopping policy itself as well as the transition
+animation; a clearer results panel alone does not solve healthy heroes ending
+too early. Coordinate this with simpler banking, the quest journal and the
+existing run-details scroll fix. Screenshots/clips should show one complete
+prepare → delve → meaningful ending → compare/revise loop at a checkpoint.
 
 ### Forge and starting-kit depth — owner addition
 
