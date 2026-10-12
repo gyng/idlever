@@ -194,3 +194,14 @@ loaded; noartsourcechange). Copylintpasses. Evidence/screenshotshere:
 docs/evidence/cut186/button-ui/. PriorCut185full123/125 andshipping/balance
 limits remainunchanged, notcleared bythisscopedpolish. Nofrozenassetmutated,
 nodeployment. Commit/pushauthorized; unrelatedmine.bars/scratchpadexcluded.
+
+## README refresh
+
+Ownerrequested clearer ASD-STE100-inspired writing with personality, existing
+titlewordmark andscreenshots. README nowleads withgameplay, firststeps, five
+classes andcumulative skills, localsetup, checks anddoclinks. Threecopiedimages
+showtown, livecombat andclasstree; provenance atdocs/screenshots/README.md.
+Development-versus-hostedbuild distinction explicit. RemovedstaleCut30.5status
+andincorrectpush-autodeployclaim; currentCI requiresmanualdispatch todeploy.
+Noofficiallanguage-standardcompliance claim. Localimage/doclinks checked;
+no gameplay/artassetgeneration/deployment orbroadergoalresumption.
