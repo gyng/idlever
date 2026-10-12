@@ -16,103 +16,230 @@ import { launchBrowser } from "../../tools/browser.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const errors = [], out = [];
+const errors = [],
+  out = [];
 let failed = 0;
-const check = (ok, what) => { out.push(`${ok ? "ok  " : "FAIL"} ${what}`); if (!ok) failed++; };
+const check = (ok, what) => {
+  out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
+  if (!ok) failed++;
+};
 
 const browser = await launchBrowser();
 const page = await browser.newPage({ viewport: { width: 400, height: 800 }, deviceScaleFactor: 1 });
-page.on("console", (m) => { if (m.type() === "error") errors.push(`console.error: ${m.text()}`); });
+page.on("console", (m) => {
+  if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
+});
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
-const state = () => page.evaluate(() => { const r = window.__riddle; return r ? { screen: r.screen, booted: r.booted } : null; });
+const state = () =>
+  page.evaluate(() => {
+    const r = window.__riddle;
+    return r ? { screen: r.screen, booted: r.booted } : null;
+  });
 async function waitFor(pred, label, timeout = 20_000) {
-  const t = Date.now(); let s = null;
-  while (Date.now() - t < timeout) { s = await state(); if (pred(s)) return s; await sleep(80); }
+  const t = Date.now();
+  let s = null;
+  while (Date.now() - t < timeout) {
+    s = await state();
+    if (pred(s)) return s;
+    await sleep(80);
+  }
   throw new Error(`timeout waiting for ${label} (screen=${s?.screen})`);
 }
 
 const heal = { conds: [{ k: "hp<", n: 30 }], verb: { v: "drink", a: "heal" }, origin: "player" };
-const hit = { conds: [{ k: "foes>=", n: 1 }], verb: { v: "attack", a: "nearest" }, origin: "player" };
+const hit = {
+  conds: [{ k: "foes>=", n: 1 }],
+  verb: { v: "attack", a: "nearest" },
+  origin: "player",
+};
 const unknown = { conds: [{ k: "hp<", n: 20 }], verb: { v: "drink", a: "unknown" } };
 const rest = { conds: [{ k: "hp<", n: 20 }], verb: { v: "rest" } };
 const ret = { conds: [{ k: "hp<", n: 20 }], verb: { v: "return" } };
-const w = (death, harms, risk) => ({ reach: 0.1, reach_pm: 0.1, death, death_pm: 0.05, harms, ...(risk ? { risk } : {}) });
+const w = (death, harms, risk) => ({
+  reach: 0.1,
+  reach_pm: 0.1,
+  death,
+  death_pm: 0.05,
+  harms,
+  ...(risk ? { risk } : {}),
+});
 
 /** A death screen with `patches` (camp_pending) whose `deathDeltas` answers `filled` after 300 ms. */
 async function deathWith(patches, filled) {
-  await page.evaluate(([patches, filled, rows]) => {
-    const r = window.__riddle;
-    r.sets[r.active] = { ...r.sets[r.active], rows };
-    r.engine.deathDeltas = () => new Promise((res) => setTimeout(() => res(filled), 300));
-    r.go({ kind: "death", death: { run_id: 0, depth: 5, cause: "monkey", margin: "", verdict: "gap", baseline: 7 / 12, replays: 12, trace: { turns: [] }, morgue: "t1", rules: { rows }, patches } });
-  }, [patches, filled, [heal, hit]]);
-  await waitFor((x) => x?.screen === "death", "the death screen"); await sleep(150);
+  await page.evaluate(
+    ([patches, filled, rows]) => {
+      const r = window.__riddle;
+      r.sets[r.active] = { ...r.sets[r.active], rows };
+      r.engine.deathDeltas = () => new Promise((res) => setTimeout(() => res(filled), 300));
+      r.go({
+        kind: "death",
+        death: {
+          run_id: 0,
+          depth: 5,
+          cause: "monkey",
+          margin: "",
+          verdict: "gap",
+          baseline: 7 / 12,
+          replays: 12,
+          trace: { turns: [] },
+          morgue: "t1",
+          rules: { rows },
+          patches,
+        },
+      });
+    },
+    [patches, filled, [heal, hit]],
+  );
+  await waitFor((x) => x?.screen === "death", "the death screen");
+  await sleep(150);
 }
-const tablets = () => page.evaluate(() => [...document.querySelectorAll(".patches button.patch")].map((b) => ({
-  row: b.querySelector(".patch-main")?.textContent.trim(), rank: b.querySelector(".rank")?.textContent, top: b.classList.contains("top"),
-  harms: b.classList.contains("harms"), whole: b.querySelector(".whole")?.textContent.trim() ?? "" })));
-const head = () => page.evaluate(() => document.querySelector(".patches-moment")?.textContent.trim() ?? "");
+const tablets = () =>
+  page.evaluate(() =>
+    [...document.querySelectorAll(".patches button.patch")].map((b) => ({
+      row: b.querySelector(".patch-main")?.textContent.trim(),
+      rank: b.querySelector(".rank")?.textContent,
+      top: b.classList.contains("top"),
+      harms: b.classList.contains("harms"),
+      whole: b.querySelector(".whole")?.textContent.trim() ?? "",
+    })),
+  );
+const head = () =>
+  page.evaluate(() => document.querySelector(".patches-moment")?.textContent.trim() ?? "");
 // docs/COPY.md pass 2: the head reads `fixes · 12 replays of D5`; a tie is the head's `.tied` mark, no word (`patches tie` read "no idea")
 const tied = () => page.evaluate(() => !!document.querySelector(".patches-moment .tied"));
-const gemText = () => page.evaluate(() => document.querySelector(".patch-gem, .gem")?.textContent.trim() ?? "");
+const gemText = () =>
+  page.evaluate(() => document.querySelector(".patch-gem, .gem")?.textContent.trim() ?? "");
 
 try {
-  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=26`, { waitUntil: "domcontentloaded" });
-  await waitFor((s) => s?.booted && s.screen === "camp", "camp"); await sleep(250);
+  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=26`, {
+    waitUntil: "domcontentloaded",
+  });
+  await waitFor((s) => s?.booted && s.screen === "camp", "camp");
+  await sleep(250);
 
   // ---- a lead that harms whole runs yields; the whole-run move reads beside the count
   {
-    const ps = [{ row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true },
-                { row: rest, insert_at: 1, survive: 1, forecast_delta: 0.2, camp_pending: true },
-                { row: ret, insert_at: 0, survive: 1, forecast_delta: 0, camp_pending: true, exits: true }];
-    const filled = [{ ...ps[0], camp_pending: false, forecast_depth: 6, forecast_pm: 0.14, whole: w(0.12, true, "fire") },
-                    { ...ps[1], camp_pending: false, forecast_depth: 6, forecast_pm: 0.14, whole: w(-0.08, false) },
-                    { ...ps[2], camp_pending: false, forecast_depth: 6, forecast_pm: 0.1, whole: w(-0.8, false) }];
+    const ps = [
+      { row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true },
+      { row: rest, insert_at: 1, survive: 1, forecast_delta: 0.2, camp_pending: true },
+      { row: ret, insert_at: 0, survive: 1, forecast_delta: 0, camp_pending: true, exits: true },
+    ];
+    const filled = [
+      {
+        ...ps[0],
+        camp_pending: false,
+        forecast_depth: 6,
+        forecast_pm: 0.14,
+        whole: w(0.12, true, "fire"),
+      },
+      {
+        ...ps[1],
+        camp_pending: false,
+        forecast_depth: 6,
+        forecast_pm: 0.14,
+        whole: w(-0.08, false),
+      },
+      { ...ps[2], camp_pending: false, forecast_depth: 6, forecast_pm: 0.1, whole: w(-0.8, false) },
+    ];
     await deathWith(ps, filled);
     const before = await tablets();
-    check(before[0]?.top && /drink/.test(before[0].row ?? ""), `before the landing the verdict's lead is lit (${before.map((t) => t.row).join(" | ")})`);
-    check(/^fixes · 12 replays of D\d+$/.test(await head()) && (await tied()), `three alike are marked tied ("${await head()}", tied ${await tied()})`);
+    check(
+      before[0]?.top && /drink/.test(before[0].row ?? ""),
+      `before the landing the verdict's lead is lit (${before.map((t) => t.row).join(" | ")})`,
+    );
+    check(
+      /^fixes · 12 replays of D\d+$/.test(await head()) && (await tied()),
+      `three alike are marked tied ("${await head()}", tied ${await tied()})`,
+    );
     await sleep(700);
     const after = await tablets();
-    const lead = after[0], last = after[after.length - 1];
-    check(/rest/.test(lead?.row ?? "") && lead.top && lead.rank === "1.", `the landing: the harming tablet leaves the lead; the first that does not harm is lit (${after.map((t) => `${t.rank} ${t.row}${t.top ? "*" : ""}`).join(" | ")})`);
-    check(/drink/.test(last?.row ?? "") && last.harms && /^per run · death \+12 ±5 · risk fire$/.test(last.whole), `the harming tablet goes last, reading its whole-run move ("${last?.whole}")`);
-    check(/^per run · death −8 ±5$/.test(lead.whole), `a tablet reads its death move beside the count ("${lead.whole}")`);
+    const lead = after[0],
+      last = after[after.length - 1];
+    check(
+      /rest/.test(lead?.row ?? "") && lead.top && lead.rank === "1.",
+      `the landing: the harming tablet leaves the lead; the first that does not harm is lit (${after.map((t) => `${t.rank} ${t.row}${t.top ? "*" : ""}`).join(" | ")})`,
+    );
+    check(
+      /drink/.test(last?.row ?? "") &&
+        last.harms &&
+        /^per run · death \+12 ±5 · risk fire$/.test(last.whole),
+      `the harming tablet goes last, reading its whole-run move ("${last?.whole}")`,
+    );
+    check(
+      /^per run · death −8 ±5$/.test(lead.whole),
+      `a tablet reads its death move beside the count ("${lead.whole}")`,
+    );
   }
 
   // ---- every patch harms: the gem reads `Town` and returns without applying a patch
   {
-    const ps = [{ row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true }, { row: rest, insert_at: 1, survive: 10 / 12, forecast_delta: 0.2, camp_pending: true }];
-    const filled = ps.map((p) => ({ ...p, camp_pending: false, forecast_depth: 6, forecast_pm: 0.1, whole: w(0.2, true) }));
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" })); await waitFor((s) => s?.screen === "camp", "camp");
+    const ps = [
+      { row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true },
+      { row: rest, insert_at: 1, survive: 10 / 12, forecast_delta: 0.2, camp_pending: true },
+    ];
+    const filled = ps.map((p) => ({
+      ...p,
+      camp_pending: false,
+      forecast_depth: 6,
+      forecast_pm: 0.1,
+      whole: w(0.2, true),
+    }));
+    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await waitFor((s) => s?.screen === "camp", "camp");
     await deathWith(ps, filled);
-    check(!/tie/.test(await head()) && !(await tied()), `12/12 over 10/12 is no tie ("${await head()}", tied ${await tied()})`);
+    check(
+      !/tie/.test(await head()) && !(await tied()),
+      `12/12 over 10/12 is no tie ("${await head()}", tied ${await tied()})`,
+    );
     await sleep(700);
     const t = await tablets();
-    check(!t.some((x) => x.top) && /^town$/i.test((await gemText()).trim()), `every tablet harms: none lit, the gem reads Town ("${await gemText()}")`);
+    check(
+      !t.some((x) => x.top) && /^town$/i.test((await gemText()).trim()),
+      `every tablet harms: none lit, the gem reads Town ("${await gemText()}")`,
+    );
     const saved = await page.evaluate(() => window.__riddle.engine.save());
-    await page.locator('.death .gem').click();
-    await waitFor((s) => s?.screen === 'camp', 'Town from harmful patches');
-    check(await page.evaluate(() => window.__riddle.engine.save()) === saved, 'Town leaves the hero setup and earned state unchanged');
+    await page.locator(".death .gem").click();
+    await waitFor((s) => s?.screen === "camp", "Town from harmful patches");
+    check(
+      (await page.evaluate(() => window.__riddle.engine.save())) === saved,
+      "Town leaves the hero setup and earned state unchanged",
+    );
   }
 
   // ---- the top two tie, the third does not: `tied`
   {
-    const ps = [{ row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true }, { row: rest, insert_at: 1, survive: 10 / 12, forecast_delta: 0.2, camp_pending: true },
-                { row: ret, insert_at: 0, survive: 1, forecast_delta: 0, camp_pending: true, exits: true }];
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" })); await waitFor((s) => s?.screen === "camp", "camp");
-    await deathWith(ps, ps.map((p) => ({ ...p, camp_pending: false, whole: w(0, false) })));
-    check(/^fixes · 12 replays of D\d+$/.test(await head()) && (await tied()), `#1 and #3 both 12/12 are marked tied ("${await head()}", tied ${await tied()})`);
+    const ps = [
+      { row: unknown, insert_at: 1, survive: 1, forecast_delta: 0.4, camp_pending: true },
+      { row: rest, insert_at: 1, survive: 10 / 12, forecast_delta: 0.2, camp_pending: true },
+      { row: ret, insert_at: 0, survive: 1, forecast_delta: 0, camp_pending: true, exits: true },
+    ];
+    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await waitFor((s) => s?.screen === "camp", "camp");
+    await deathWith(
+      ps,
+      ps.map((p) => ({ ...p, camp_pending: false, whole: w(0, false) })),
+    );
+    check(
+      /^fixes · 12 replays of D\d+$/.test(await head()) && (await tied()),
+      `#1 and #3 both 12/12 are marked tied ("${await head()}", tied ${await tied()})`,
+    );
   }
 
   // ---- vs sent after a lineage move: the shown numbers; an unnamed change clears the move line
   {
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" })); await waitFor((s) => s?.screen === "camp", "camp"); await sleep(300);
+    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await waitFor((s) => s?.screen === "camp", "camp");
+    await sleep(300);
     const r = await page.evaluate(() => {
       const a = window.__riddle;
-      a.baseShown.clear(); a.baseShown.set("D6", 26);
+      a.baseShown.clear();
+      a.baseShown.set("D6", 26);
       a.lastForecast = { ...a.lastForecast, sims: 50, refined: false };
-      a.vs = { depths: [{ depth: 6, delta: 0.17 - 0.44, pm: 0.08, base: 0.44, abs_pm: 0.1 }], sims: 50, refined: false };
+      a.vs = {
+        depths: [{ depth: 6, delta: 0.17 - 0.44, pm: 0.08, base: 0.44, abs_pm: 0.1 }],
+        sims: 50,
+        refined: false,
+      };
       a.baseMoved = true;
       const moved = a.vsShown()?.depths[0];
       a.baseMoved = false;
@@ -120,36 +247,83 @@ try {
       return { moved, paired };
     });
     const pts = (m) => Math.round((m.base + m.delta) * 100) - Math.round(m.base * 100);
-    check(r.moved && Math.round(r.moved.base * 100) === 26 && pts(r.moved) === -9, `after a purchase the move is the shown 17 less the sent set's shown 26 (${r.moved && pts(r.moved)}), not the re-measured 44`);
-    check(r.paired && pts(r.paired) === -27, `with no lineage move the paired move stands (${r.paired && pts(r.paired)})`);
+    check(
+      r.moved && Math.round(r.moved.base * 100) === 26 && pts(r.moved) === -9,
+      `after a purchase the move is the shown 17 less the sent set's shown 26 (${r.moved && pts(r.moved)}), not the re-measured 44`,
+    );
+    check(
+      r.paired && pts(r.paired) === -27,
+      `with no lineage move the paired move stands (${r.paired && pts(r.paired)})`,
+    );
     const lm = await page.evaluate(async () => {
       const a = window.__riddle;
-      a.lmove = { label: "drop", rules: JSON.stringify(a.rules.rows), depths: [{ depth: 6, delta: 0.02, pm: 0.06 }] };
+      a.lmove = {
+        label: "drop",
+        rules: JSON.stringify(a.rules.rows),
+        depths: [{ depth: 6, delta: 0.02, pm: 0.06 }],
+      };
       await a.mutate(() => a.engine.lineage());
       return a.lmove;
     });
     check(lm === null, "an unnamed lineage change clears the last move's line");
     const frontier = await page.evaluate(async () => {
-      const {lmoveLine}=await import('/src/ui/forecast.ts');const a=window.__riddle;
-      const oldBest=a.lineage.best_depth,oldMove=a.lmove;a.lineage.best_depth=4;
-      const f={...a.lastForecast,start:1,depths:[{depth:1,reach:1},{depth:4,reach:1},{depth:5,reach:0.5}]};
-      const set=depths=>{a.lmove={label:'Forged',rules:JSON.stringify(a.rules.rows),depths};};
+      const { lmoveLine } = await import("/src/ui/forecast.ts");
+      const a = window.__riddle;
+      const oldBest = a.lineage.best_depth,
+        oldMove = a.lmove;
+      a.lineage.best_depth = 4;
+      const f = {
+        ...a.lastForecast,
+        start: 1,
+        depths: [
+          { depth: 1, reach: 1 },
+          { depth: 4, reach: 1 },
+          { depth: 5, reach: 0.5 },
+        ],
+      };
+      const set = (depths) => {
+        a.lmove = { label: "Forged", rules: JSON.stringify(a.rules.rows), depths };
+      };
       try {
-        set([{depth:1,delta:0,pm:0}]);const stale=lmoveLine(a,f);
-        set([{depth:5,delta:0.1,pm:0.02}]);const measured=lmoveLine(a,f)?.textContent;
-        set([{depth:4,delta:-0.12,pm:0.02}]);const wall=lmoveLine(a,{...f,depths:f.depths.map(d=>d.depth===5?{...d,reach:0.02}:d)})?.textContent;
-        set([{depth:5,delta:0,pm:0.02}]);const flat=lmoveLine(a,f)?.textContent;
-        a.lmove.rules='other rules';const mismatch=lmoveLine(a,f);const missing=lmoveLine(a,null);
-        return {stale:stale===null,measured,wall,flat,mismatch:mismatch===null,missing:missing===null};
-      } finally {a.lineage.best_depth=oldBest;a.lmove=oldMove;}
+        set([{ depth: 1, delta: 0, pm: 0 }]);
+        const stale = lmoveLine(a, f);
+        set([{ depth: 5, delta: 0.1, pm: 0.02 }]);
+        const measured = lmoveLine(a, f)?.textContent;
+        set([{ depth: 4, delta: -0.12, pm: 0.02 }]);
+        const wall = lmoveLine(a, {
+          ...f,
+          depths: f.depths.map((d) => (d.depth === 5 ? { ...d, reach: 0.02 } : d)),
+        })?.textContent;
+        set([{ depth: 5, delta: 0, pm: 0.02 }]);
+        const flat = lmoveLine(a, f)?.textContent;
+        a.lmove.rules = "other rules";
+        const mismatch = lmoveLine(a, f);
+        const missing = lmoveLine(a, null);
+        return {
+          stale: stale === null,
+          measured,
+          wall,
+          flat,
+          mismatch: mismatch === null,
+          missing: missing === null,
+        };
+      } finally {
+        a.lineage.best_depth = oldBest;
+        a.lmove = oldMove;
+      }
     });
-    check(frontier.stale,'D1-only overlap cannot describe a D5 purchase');
-    check(/Forged.*D5.*\+10/.test(frontier.measured),'measured frontier purchase keeps +10 points');
-    check(/Forged.*D4.*−12/.test(frontier.wall),'actual adjacent wall keeps its -12 points');
-    check(/Forged.*D5.*same/.test(frontier.flat),'measured flat frontier remains visible');
-    check(frontier.mismatch&&frontier.missing,'changed rules and absent forecast never show purchase comparisons');
+    check(frontier.stale, "D1-only overlap cannot describe a D5 purchase");
+    check(
+      /Forged.*D5.*\+10/.test(frontier.measured),
+      "measured frontier purchase keeps +10 points",
+    );
+    check(/Forged.*D4.*−12/.test(frontier.wall), "actual adjacent wall keeps its -12 points");
+    check(/Forged.*D5.*same/.test(frontier.flat), "measured flat frontier remains visible");
+    check(
+      frontier.mismatch && frontier.missing,
+      "changed rules and absent forecast never show purchase comparisons",
+    );
   }
-
 } catch (e) {
   errors.push(String(e?.stack ?? e));
 } finally {
@@ -158,5 +332,7 @@ try {
 for (const l of out) console.log(l);
 for (const e of errors) console.log(`FAIL ${e}`);
 const n = out.length;
-console.log(`${failed || errors.length ? "FAIL" : "ok"}: ${n - failed}/${n} qaAA checks${errors.length ? ` · ${errors.length} errors` : ""}`);
+console.log(
+  `${failed || errors.length ? "FAIL" : "ok"}: ${n - failed}/${n} qaAA checks${errors.length ? ` · ${errors.length} errors` : ""}`,
+);
 process.exit(failed || errors.length ? 1 : 0);

@@ -2,7 +2,7 @@
   <img src="web/public/art/title-wordmark-v1.webp" alt="Riddle" width="480">
 </h1>
 
-<p align="center"><strong>An idle roguelike. The hero walks. You make the plan.</strong></p>
+<p align="center"><strong>An idle roguelike with automatic combat and a town to build.</strong></p>
 
 <p align="center">
   <a href="https://gyng.github.io/riddle/">Play the alpha</a> ·
@@ -22,8 +22,8 @@ The dungeon has a bottom. A bad plan makes a short trip.
   <img src="docs/screenshots/class-skills.png" alt="The Fighter skill tree with Warden and Reaver skills ready to learn" width="240">
 </p>
 
-*Town, combat and class skills. These are development screenshots. The hosted
-alpha can use an earlier build; its banner shows the build date.*
+_Town, combat and class skills. These are development screenshots. The hosted
+alpha can use an earlier build; its banner shows the build date._
 
 ## Start small
 
@@ -73,12 +73,17 @@ Use `?engine=fake` to work on the interface without the real engine.
 Rust owns the game rules. The web client displays state and sends player choices.
 The renderer draws the town and dungeon. Every sprite has a primitive fallback.
 
-| Task | Command |
-|---|---|
-| Check engine tests, types and copy | `tools/verify.sh --quick` |
-| Check critical client journeys | `pnpm --dir web -s test` |
-| Check all current client features | `pnpm --dir web -s test:full` |
-| Run the wider client audit | `pnpm --dir web -s test:exhaustive` |
+| Task                               | Command                                                 |
+| ---------------------------------- | ------------------------------------------------------- |
+| Format client and tooling files    | `pnpm --dir web fmt`                                    |
+| Check formatting                   | `pnpm --dir web fmt:check`                              |
+| Lint client and tools              | `pnpm --dir web lint`                                   |
+| Apply safe lint fixes              | `pnpm --dir web lint:fix`                               |
+| Check Rust lints                   | `cargo clippy --workspace --all-targets -- -D warnings` |
+| Check engine tests, types and copy | `tools/verify.sh --quick`                               |
+| Check critical client journeys     | `pnpm --dir web -s test`                                |
+| Check all current client features  | `pnpm --dir web -s test:full`                           |
+| Run the wider client audit         | `pnpm --dir web -s test:exhaustive`                     |
 
 **Status: development alpha.** Some validation checks remain open. Read the
 [current handoff](docs/HANDOFF.md) before resuming work. The handoff records passing checks and unresolved failures.
@@ -87,9 +92,12 @@ Pushes, pull requests and manual workflow runs validate the site. Publish a
 versioned GitHub release to deploy its tagged build to [GitHub Pages](https://gyng.github.io/riddle/).
 Alpha releases deploy too. A push alone does not deploy.
 
-| Area | Read next |
-|---|---|
-| Design and game rules | [Plan](PLAN.md) · [Idle automation contract](docs/CUT30_5.md) |
-| Current work and priorities | [Handoff](docs/HANDOFF.md) · [Work queue](docs/WORK_QUEUE.md) |
-| Art and rendering | [Art bible](art/ART.md) · [Art direction](docs/ART_DIRECTION.md) |
-| Validation and playtesting | [Validation tiers](docs/DEV_VALIDATION_TIERS.md) · [Rating protocol](eval/RATING.md) |
+Oxfmt and Oxlint use their default rules. Generated engine files and saved test
+fixtures are excluded from formatting. CI checks formatting, lint and Clippy.
+
+| Area                        | Read next                                                                            |
+| --------------------------- | ------------------------------------------------------------------------------------ |
+| Design and game rules       | [Plan](PLAN.md) · [Idle automation contract](docs/CUT30_5.md)                        |
+| Current work and priorities | [Handoff](docs/HANDOFF.md) · [Work queue](docs/WORK_QUEUE.md)                        |
+| Art and rendering           | [Art bible](art/ART.md) · [Art direction](docs/ART_DIRECTION.md)                     |
+| Validation and playtesting  | [Validation tiers](docs/DEV_VALIDATION_TIERS.md) · [Rating protocol](eval/RATING.md) |

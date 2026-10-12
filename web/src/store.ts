@@ -4,7 +4,15 @@
 // tag the engine save does not carry.
 // `watch`: the last chosen watch mode (`fights | fast`), so the next run starts in it (QA on e0f87e7: "`fast` chosen in run 3
 // was not remembered: run 4 started on fights").
-export type SaveBlob = { v: 1 | 2; engine: string; loadout: number[]; last_seen: number; runs?: number; origins?: string[][]; watch?: "fights" | "fast" | "one" };
+export type SaveBlob = {
+  v: 1 | 2;
+  engine: string;
+  loadout: number[];
+  last_seen: number;
+  runs?: number;
+  origins?: string[][];
+  watch?: "fights" | "fast" | "one";
+};
 const KEY = "riddle.save";
 
 export function readBlob(): SaveBlob | null {
@@ -13,12 +21,24 @@ export function readBlob(): SaveBlob | null {
     if (!raw) return null;
     const b = JSON.parse(raw) as SaveBlob;
     return b && (b.v === 1 || b.v === 2) && typeof b.engine === "string" ? b : null;
-  } catch { return null; }
+  } catch {
+    return null;
+  }
 }
 export function writeBlob(b: SaveBlob): void {
-  try { localStorage.setItem(KEY, JSON.stringify(b)); } catch { /* quota or private mode: play on */ }
+  try {
+    localStorage.setItem(KEY, JSON.stringify(b));
+  } catch {
+    /* quota or private mode: play on */
+  }
 }
-export function clearBlob(): void { try { localStorage.removeItem(KEY); } catch { /* ignore */ } }
+export function clearBlob(): void {
+  try {
+    localStorage.removeItem(KEY);
+  } catch {
+    /* ignore */
+  }
+}
 export function randomSeed(): number {
   const a = new Uint32Array(1);
   crypto.getRandomValues(a);

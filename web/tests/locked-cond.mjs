@@ -20,73 +20,165 @@ import { editRows } from "./lib/frame.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const errors = [], out = [];
+const errors = [],
+  out = [];
 let failed = 0;
-const check = (ok, what) => { out.push(`${ok ? "ok  " : "FAIL"} ${what}`); if (!ok) failed++; };
+const check = (ok, what) => {
+  out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
+  if (!ok) failed++;
+};
 
 const browser = await launchBrowser();
 const page = await browser.newPage({ viewport: { width: 400, height: 800 }, deviceScaleFactor: 3 });
-page.on("console", (m) => { if (m.type() === "error") errors.push(`console.error: ${m.text()}`); });
+page.on("console", (m) => {
+  if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
+});
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
-const state = () => page.evaluate(() => { const r = window.__riddle; return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null; });
+const state = () =>
+  page.evaluate(() => {
+    const r = window.__riddle;
+    return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
+  });
 async function waitFor(pred, label, timeout = 20_000) {
-  const t = Date.now(); let s = null;
-  while (Date.now() - t < timeout) { s = await state(); if (pred(s)) return s; await sleep(100); }
+  const t = Date.now();
+  let s = null;
+  while (Date.now() - t < timeout) {
+    s = await state();
+    if (pred(s)) return s;
+    await sleep(100);
+  }
   throw new Error(`timeout waiting for ${label} (screen=${s?.screen} booted=${s?.booted})`);
 }
 /** The open sheet's tokens: offered (buttons) and locked (spans with ⊘ and a needs line). */
-const sheet = () => page.evaluate(() => {
-  const s = document.querySelector(".sheet-wrap:last-of-type .sheet-body");
-  if (!s) return null;
-  const text = (el) => el.textContent.replace(/\s+/g, " ").trim();
-  return {
-    offered: [...s.querySelectorAll("button.chip.cond")].map(text),
-    locked: [...s.querySelectorAll(".chip.cond.locked.off")].map((el) => ({ text: text(el), tag: el.tagName, needs: el.querySelector(".needs")?.textContent ?? "", glyph: el.textContent.includes("⊘"), dim: getComputedStyle(el).opacity })),
-    lockedButtons: s.querySelectorAll("button.chip.cond.locked.off").length,
-  };
-});
-const rowText = (i) => page.evaluate((i) => document.querySelectorAll(".editor .row")[i]?.querySelector(".chips").innerText.replace(/\s+/g, " ").trim() ?? "", i);
-const engineRows = () => page.evaluate(async () => JSON.stringify((await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows));
+const sheet = () =>
+  page.evaluate(() => {
+    const s = document.querySelector(".sheet-wrap:last-of-type .sheet-body");
+    if (!s) return null;
+    const text = (el) => el.textContent.replace(/\s+/g, " ").trim();
+    return {
+      offered: [...s.querySelectorAll("button.chip.cond")].map(text),
+      locked: [...s.querySelectorAll(".chip.cond.locked.off")].map((el) => ({
+        text: text(el),
+        tag: el.tagName,
+        needs: el.querySelector(".needs")?.textContent ?? "",
+        glyph: el.textContent.includes("⊘"),
+        dim: getComputedStyle(el).opacity,
+      })),
+      lockedButtons: s.querySelectorAll("button.chip.cond.locked.off").length,
+    };
+  });
+const rowText = (i) =>
+  page.evaluate(
+    (i) =>
+      document
+        .querySelectorAll(".editor .row")
+        [i]?.querySelector(".chips")
+        .innerText.replace(/\s+/g, " ")
+        .trim() ?? "",
+    i,
+  );
+const engineRows = () =>
+  page.evaluate(async () =>
+    JSON.stringify((await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows),
+  );
 
 try {
-  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=7`, { waitUntil: "domcontentloaded" });
+  await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=7`, {
+    waitUntil: "domcontentloaded",
+  });
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
-  await editRows(page);   // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
-  const vocab = await page.evaluate(() => { const v = window.__riddle.vocab; return { locked: (v.locked ?? []).map((l) => ({ k: l.cond.k, needs: l.needs })), offered: v.conds.map((c) => c.k) }; });
-  check(vocab.locked.length >= 1, `fake vocabulary carries ${vocab.locked.length} locked cond(s): ${vocab.locked.map((l) => `${l.k} (${l.needs})`).join(", ")}`);
-  check(vocab.locked.every((l) => l.needs), "every locked cond carries a needs text");
-  check(vocab.locked.every((l) => !vocab.offered.includes(l.k)), "no locked cond is also offered");
+  await editRows(page); // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
+  const vocab = await page.evaluate(() => {
+    const v = window.__riddle.vocab;
+    return {
+      locked: (v.locked ?? []).map((l) => ({ k: l.cond.k, needs: l.needs })),
+      offered: v.conds.map((c) => c.k),
+    };
+  });
+  check(
+    vocab.locked.length >= 1,
+    `fake vocabulary carries ${vocab.locked.length} locked cond(s): ${vocab.locked.map((l) => `${l.k} (${l.needs})`).join(", ")}`,
+  );
+  check(
+    vocab.locked.every((l) => l.needs),
+    "every locked cond carries a needs text",
+  );
+  check(
+    vocab.locked.every((l) => !vocab.offered.includes(l.k)),
+    "no locked cond is also offered",
+  );
 
-  const before = await rowText(0), engineBefore = await engineRows();
-  await page.locator(".editor .row").first().locator("button.chip.cond").first().click({ timeout: 5000 });
+  const before = await rowText(0),
+    engineBefore = await engineRows();
+  await page
+    .locator(".editor .row")
+    .first()
+    .locator("button.chip.cond")
+    .first()
+    .click({ timeout: 5000 });
   await sleep(200);
   const sh = await sheet();
   check(!!sh, "the cond sheet opened");
-  check(sh.locked.length === vocab.locked.length, `the sheet shows all ${vocab.locked.length} locked tokens (${sh.locked.length})`);
-  check(sh.lockedButtons === 0 && sh.locked.every((l) => l.tag === "SPAN"), "locked tokens are spans, not buttons (no handler)");
-  check(sh.locked.every((l) => l.glyph && l.needs), `each locked token carries ⊘ and its needs: ${sh.locked.map((l) => l.text).join(" | ")}`);
-  check(sh.locked.every((l) => Number(l.dim) < 0.6), "locked tokens render dim");
+  check(
+    sh.locked.length === vocab.locked.length,
+    `the sheet shows all ${vocab.locked.length} locked tokens (${sh.locked.length})`,
+  );
+  check(
+    sh.lockedButtons === 0 && sh.locked.every((l) => l.tag === "SPAN"),
+    "locked tokens are spans, not buttons (no handler)",
+  );
+  check(
+    sh.locked.every((l) => l.glyph && l.needs),
+    `each locked token carries ⊘ and its needs: ${sh.locked.map((l) => l.text).join(" | ")}`,
+  );
+  check(
+    sh.locked.every((l) => Number(l.dim) < 0.6),
+    "locked tokens render dim",
+  );
   const lockedNames = new Set(vocab.locked.map((l) => l.k));
-  check(sh.offered.length === vocab.offered.length, `the sheet offers ${sh.offered.length} tokens (vocabulary: ${vocab.offered.length})`);
-  const offeredKs = await page.evaluate(() => [...document.querySelectorAll(".sheet-wrap:last-of-type button.chip.cond")].map((b) => b.textContent.trim()));
-  const lockedLabels = await page.evaluate(() => [...document.querySelectorAll(".sheet-wrap:last-of-type .chip.cond.locked.off")].map((el) => el.firstChild && el.childNodes[1] ? el.childNodes[1].textContent.trim() : ""));
-  check(offeredKs.every((t) => !lockedLabels.includes(t)), "no offered button reads as a locked token");
+  check(
+    sh.offered.length === vocab.offered.length,
+    `the sheet offers ${sh.offered.length} tokens (vocabulary: ${vocab.offered.length})`,
+  );
+  const offeredKs = await page.evaluate(() =>
+    [...document.querySelectorAll(".sheet-wrap:last-of-type button.chip.cond")].map((b) =>
+      b.textContent.trim(),
+    ),
+  );
+  const lockedLabels = await page.evaluate(() =>
+    [...document.querySelectorAll(".sheet-wrap:last-of-type .chip.cond.locked.off")].map((el) =>
+      el.firstChild && el.childNodes[1] ? el.childNodes[1].textContent.trim() : "",
+    ),
+  );
+  check(
+    offeredKs.every((t) => !lockedLabels.includes(t)),
+    "no offered button reads as a locked token",
+  );
   // clicking a locked token does nothing: the sheet stays, the row and the engine's set are unchanged
-  await page.locator(".sheet-wrap .chip.cond.locked.off").first().click({ timeout: 5000, force: true });
+  await page
+    .locator(".sheet-wrap .chip.cond.locked.off")
+    .first()
+    .click({ timeout: 5000, force: true });
   await sleep(300);
   check(!!(await sheet()), "the sheet is still open after tapping a locked token");
   check((await rowText(0)) === before, `R1 unchanged after the tap: "${before}"`);
   check((await engineRows()) === engineBefore, "the engine's set is unchanged");
-  await page.keyboard.press("Escape"); await sleep(150);
+  await page.keyboard.press("Escape");
+  await sleep(150);
   check(!(await sheet()), "escape closes the sheet");
   // the `+` (second cond) sheet says the same
   const plus = page.locator(".editor .row").first().locator("button.chip.cond.add");
   if (await plus.count()) {
-    await plus.click({ timeout: 5000 }); await sleep(200);
+    await plus.click({ timeout: 5000 });
+    await sleep(200);
     const sh2 = await sheet();
-    check(sh2 && sh2.lockedButtons === 0 && sh2.locked.length === vocab.locked.length, "the second-cond sheet shows the locked tokens, none selectable");
-    await page.keyboard.press("Escape"); await sleep(150);
+    check(
+      sh2 && sh2.lockedButtons === 0 && sh2.locked.length === vocab.locked.length,
+      "the second-cond sheet shows the locked tokens, none selectable",
+    );
+    await page.keyboard.press("Escape");
+    await sleep(150);
   }
   check(lockedNames.size > 0, "locked set non-empty");
 
@@ -94,17 +186,35 @@ try {
   await page.evaluate(async () => {
     const r = window.__riddle;
     r.unlockCat = await r.engine.unlocks();
-    r.rules.rows.splice(0, r.rules.rows.length, { conds: [], verb: { v: "tactic", a: "pack_break" }, origin: "card" }, { conds: [{ k: "hp<", n: 40 }], verb: { v: "retreat" }, origin: "player" });
-    r.rulesChanged(); r.go({ kind: "camp" });
+    r.rules.rows.splice(
+      0,
+      r.rules.rows.length,
+      { conds: [], verb: { v: "tactic", a: "pack_break" }, origin: "card" },
+      { conds: [{ k: "hp<", n: 40 }], verb: { v: "retreat" }, origin: "player" },
+    );
+    r.rulesChanged();
+    r.go({ kind: "camp" });
   });
   await sleep(300);
   const cardRow = await rowText(0);
   // QA 912e135: the trigger rides the card's first inline row (the chip no longer repeats it)
-  check(/\[card\] pack break\b/.test(cardRow) && /foe: pack →/.test(cardRow) && (cardRow.match(/foe: pack/g) ?? []).length === 1, `card reads its name and its trigger once: "${cardRow.slice(0, 80)}"`);
+  check(
+    /\[card\] pack break\b/.test(cardRow) &&
+      /foe: pack →/.test(cardRow) &&
+      (cardRow.match(/foe: pack/g) ?? []).length === 1,
+    `card reads its name and its trigger once: "${cardRow.slice(0, 80)}"`,
+  );
   const yours = await page.evaluate(() => document.querySelector(".fc-yours")?.textContent ?? "");
-  check(/^written: 1 of 1 rule/.test(yours) && !/card R\d+ first|first/.test(yours), `yours line, no card-first suffix: "${yours}"`);
+  check(
+    yours.startsWith("written: 1 of 1 rule") && !/card R\d+ first|first/.test(yours),
+    `yours line, no card-first suffix: "${yours}"`,
+  );
   // the card below the player row: no warning
-  await page.evaluate(() => { const r = window.__riddle; r.rules.rows.reverse(); r.rulesChanged(); });
+  await page.evaluate(() => {
+    const r = window.__riddle;
+    r.rules.rows.reverse();
+    r.rulesChanged();
+  });
   await sleep(200);
   const yours2 = await page.evaluate(() => document.querySelector(".fc-yours")?.textContent ?? "");
   check(!/card R\d first/.test(yours2), `yours line without a card above: "${yours2}"`);
@@ -116,5 +226,8 @@ try {
 
 for (const l of out) console.log(l);
 for (const e of errors) console.error(e);
-if (failed || errors.length) { console.error(`locked-cond: FAIL (${failed} assertion(s), ${errors.length} error(s))`); process.exit(1); }
+if (failed || errors.length) {
+  console.error(`locked-cond: FAIL (${failed} assertion(s), ${errors.length} error(s))`);
+  process.exit(1);
+}
 console.log(`locked-cond: ok (${out.length} checks)`);

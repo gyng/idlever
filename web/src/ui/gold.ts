@@ -21,13 +21,29 @@ import { goldWords } from "./gold-words";
  *  kept nothing — its keep share alone would say `died`); a timed-out return's ledger line is `lost thread D3` or
  *  `stalled D2`. */
 const tierWord = (x: ExitLine): RegExp => {
-  const lead = /^(banked|returned|died|stalled|lost thread|driven)\b/.exec(x.text)?.[1] ?? (x.keep_pct >= 100 ? "banked" : x.keep_pct <= 0 ? "died" : "returned");
+  const lead =
+    /^(banked|returned|died|stalled|lost thread|driven)\b/.exec(x.text)?.[1] ??
+    (x.keep_pct >= 100 ? "banked" : x.keep_pct <= 0 ? "died" : "returned");
   // QA 912e135: a timed-out run's line leads with its own word (`stalled $0 · $224 lost`), the ledger's
-  return lead === "banked" ? /^banked\b/ : lead === "died" ? /^died\b/ : lead === "stalled" ? /^stalled\b/ : lead === "lost thread" ? /^lost\b/ : lead === "driven" ? /^driven\b/ : /^(returned|lost|stalled)\b/;
+  return lead === "banked"
+    ? /^banked\b/
+    : lead === "died"
+      ? /^died\b/
+      : lead === "stalled"
+        ? /^stalled\b/
+        : lead === "lost thread"
+          ? /^lost\b/
+          : lead === "driven"
+            ? /^driven\b/
+            : /^(returned|lost|stalled)\b/;
 };
-const isExit = (g: GoldLine): boolean => /^(returned|banked|died|lost|stalled|driven)\b/.test(g.why);
+const isExit = (g: GoldLine): boolean =>
+  /^(returned|banked|died|lost|stalled|driven)\b/.test(g.why);
 /** An exit's tail: its salvage and a death's wake pay, at the exit's tick (a supply bought in camp at that tick is the next run's). */
-const isTail = (g: GoldLine, exit: GoldLine): boolean => g.t === exit.t && ((g.bloodline_id||1)===(exit.bloodline_id||1)) && /^(salvage|wake pay)\b/.test(g.why);
+const isTail = (g: GoldLine, exit: GoldLine): boolean =>
+  g.t === exit.t &&
+  (g.bloodline_id || 1) === (exit.bloodline_id || 1) &&
+  /^(salvage|wake pay)\b/.test(g.why);
 
 /** The ledger index range `[from, to]` of the run that ended with `x`; `skip` = how many newer matching exits to pass over
  *  (the report's i-th exit from the end). Undefined when the ledger no longer holds the exit. */
@@ -36,14 +52,26 @@ export function runRange(ledger: GoldLine[], x: ExitLine, skip = 0): [number, nu
   let seen = 0;
   for (let i = ledger.length - 1; i >= 0; i--) {
     const g = ledger[i];
-    if (((x.bloodline_id||1)!==(g.bloodline_id||1)) || !isExit(g) || !word.test(g.why) || g.delta !== x.kept) continue;
+    if (
+      (x.bloodline_id || 1) !== (g.bloodline_id || 1) ||
+      !isExit(g) ||
+      !word.test(g.why) ||
+      g.delta !== x.kept
+    )
+      continue;
     if (seen++ < skip) continue;
     // back to the previous exit, then past that exit's own tail (its salvage, a death's wake pay: same tick, after it)
-    const ownedExit=(g:GoldLine):boolean=>isExit(g)&&((x.bloodline_id||1)===(g.bloodline_id||1));
-    let from = i; while (from > 0 && !ownedExit(ledger[from - 1])) from--;
-    if (from > 0) { const prev = ledger[from - 1]; while (from < i && isTail(ledger[from], prev)) from++; }
+    const ownedExit = (g: GoldLine): boolean =>
+      isExit(g) && (x.bloodline_id || 1) === (g.bloodline_id || 1);
+    let from = i;
+    while (from > 0 && !ownedExit(ledger[from - 1])) from--;
+    if (from > 0) {
+      const prev = ledger[from - 1];
+      while (from < i && isTail(ledger[from], prev)) from++;
+    }
     // this exit's tail lands after its line
-    let to = i; while (to + 1 < ledger.length && isTail(ledger[to + 1], g)) to++;
+    let to = i;
+    while (to + 1 < ledger.length && isTail(ledger[to + 1], g)) to++;
     // QA 23ed91f (L: the death's sheet read `died D6 $0 · … −$30 leash` under a bar that had already paid the restock's `−$80`): the
     // newest exit's run runs on to now — what the camp charged since (a restock, a refund) — so the sheet explains the bar it opens from
     if (!ledger.slice(to + 1).some(ownedExit)) to = ledger.length - 1;
@@ -53,45 +81,111 @@ export function runRange(ledger: GoldLine[], x: ExitLine, skip = 0): [number, nu
 }
 
 /** Two exits that would match the same ledger line (tier and kept sum). */
-const sameExit = (a: ExitLine, b: ExitLine): boolean => (a.bloodline_id||1)===(b.bloodline_id||1) && tierWord(a).source === tierWord(b).source && a.kept === b.kept;
+const sameExit = (a: ExitLine, b: ExitLine): boolean =>
+  (a.bloodline_id || 1) === (b.bloodline_id || 1) &&
+  tierWord(a).source === tierWord(b).source &&
+  a.kept === b.kept;
 
 /** Open the gold sheet; with `only`, filtered to that exit's run (`newer` = the exits after it in the same report, so a
  *  repeated `returned $0` claims its own line). The filter is named: two chips, the run's own ledger word (`died D4`, the exit
  *  line's `why`) and `all`, the one in force `on` — the header's `$40` over an unnamed run list read as the list's sum
  *  (QA on 50bb162: "+$30 wake pay · $0 died D4 · −$30 leash sums to $0"). */
 export function openGoldSheet(app: App, only?: ExitLine, newer: ExitLine[] = []): void {
-  const L = app.lineage; const ledger = L.gold_ledger ?? [];
-  const range = only ? runRange(ledger, only, newer.filter((y) => sameExit(y, only)).length) : undefined;
-  const runWord = range ? ledger.slice(range[0], range[1] + 1).filter(g=>isExit(g)&&(g.bloodline_id||1)===(only?.bloodline_id||1)).at(-1)?.why.replace(/_/g, " ") : undefined;
+  const L = app.lineage;
+  const ledger = L.gold_ledger ?? [];
+  const range = only
+    ? runRange(ledger, only, newer.filter((y) => sameExit(y, only)).length)
+    : undefined;
+  const runWord = range
+    ? ledger
+        .slice(range[0], range[1] + 1)
+        .filter((g) => isExit(g) && (g.bloodline_id || 1) === (only?.bloodline_id || 1))
+        .at(-1)
+        ?.why.replace(/_/g, " ")
+    : undefined;
   openSheet(() => {
     const fmt = (d: number): string => `${d < 0 ? "−" : d > 0 ? "+" : ""}$${Math.abs(d)}`;
     const list = h("div", { class: "gold-lines" });
     const body = h("div", { class: "sheet-body gold-sheet" });
     const paint = (filtered: boolean): void => {
-      const lines = (filtered && range ? ledger.slice(range[0], range[1] + 1) : ledger).slice().reverse();
+      const lines = (filtered && range ? ledger.slice(range[0], range[1] + 1) : ledger)
+        .slice()
+        .reverse();
       body.dataset.filter = filtered && range ? `${range[0]}-${range[1]}` : "";
-      const chips = range ? [
-        h("button", { class: `chip mini run${filtered ? " on" : ""}`, onclick: () => paint(true) }, runWord ? goldWords(runWord) : /* copy:label */ "run"),
-        h("button", { class: `chip mini${filtered ? "" : " on"}`, onclick: () => paint(false) }, /* copy:button */ "all"),
-      ] : [];
+      const chips = range
+        ? [
+            h(
+              "button",
+              { class: `chip mini run${filtered ? " on" : ""}`, onclick: () => paint(true) },
+              runWord ? goldWords(runWord) : /* copy:label */ "run",
+            ),
+            h(
+              "button",
+              { class: `chip mini${filtered ? "" : " on"}`, onclick: () => paint(false) },
+              /* copy:button */ "all",
+            ),
+          ]
+        : [];
       body.replaceChildren(
-        h("div", { class: "label row-label" }, /* copy:label */ "gold", " ", h("span", { class: "num gold" }, `$${L.gold}`), ...chips),
-        list);
+        h(
+          "div",
+          { class: "label row-label" },
+          /* copy:label */ "gold",
+          " ",
+          h("span", { class: "num gold" }, `$${L.gold}`),
+          ...chips,
+        ),
+        list,
+      );
       // QA e75ec29 (Q: "the default view sums to the balance it heads" — the run's lines alone came to −$30 under `$10`): the run's view
       // opens on the balance before it (`$40 start`, oldest line at the foot) and, for an older run, closes on the balance after it
       // (`$55 end`), so start + the lines = end, and the newest run's end is the header's
-      const sum = (a: number, b: number): number => ledger.slice(a, b).reduce((t, g) => t + g.delta, 0);
+      const sum = (a: number, b: number): number =>
+        ledger.slice(a, b).reduce((t, g) => t + g.delta, 0);
       const run = filtered && range;
-      const endBal = run ? L.gold - sum(range[1] + 1, ledger.length) : 0, startBal = run ? endBal - sum(range[0], range[1] + 1) : 0;
-      const bal = (n: number, word: string, cls: string): HTMLElement => h("div", { class: `lrow num bal ${cls}` }, h("span", { class: "k" }, `$${n}`), h("span", { class: "why dim" }, word));
+      const endBal = run ? L.gold - sum(range[1] + 1, ledger.length) : 0,
+        startBal = run ? endBal - sum(range[0], range[1] + 1) : 0;
+      const bal = (n: number, word: string, cls: string): HTMLElement =>
+        h(
+          "div",
+          { class: `lrow num bal ${cls}` },
+          h("span", { class: "k" }, `$${n}`),
+          h("span", { class: "why dim" }, word),
+        );
       list.replaceChildren(
         run && range[1] < ledger.length - 1 ? bal(endBal, /* copy:label */ "end", "end") : "",
-        ...lines.map((g) => h("div", { class: `lrow num${g.delta < 0 ? " down" : g.delta > 0 ? " up" : ""}`, "data-t": g.t }, h("span", { class: "k" }, fmt(g.delta)), h("span", { class: "why" }, goldWords(wakeShown(g.why.replace(/_/g, " "))), (g.bloodline_id||1)!==(L.selected_bloodline||1)?h("small",{class:"dim"},` · Bloodline ${g.bloodline_id||1}`):"", g.n && g.n > 1 ? ` ×${g.n}` : "",
-          // QA 912e135 (qaW: sixteen `$0 died D6` rows, none of the $224 a stall carried): an exit's row names what it did not keep —
-          // QA 524827b (qaAA: `returned D8 · $77 lost`): an exit that kept some says `not kept`, `lost` is a whole carry gone
-          g.lost && g.lost > 0 ? h("span", { class: "lost dim" }, g.delta > 0 ? /* copy:callout */ ` · $${g.lost} not kept` : /* copy:callout */ ` · $${g.lost} lost`) : ""))),
-        lines.length ? "" : h("div", { class: "lrow num dim empty-line" }, /* copy:callout */ "no movements"),
-        run ? bal(startBal, /* copy:label */ "start", "start") : "");   // QA 92eb880 (N: a fresh lineage's sheet read `$0 · ·`)
+        ...lines.map((g) =>
+          h(
+            "div",
+            { class: `lrow num${g.delta < 0 ? " down" : g.delta > 0 ? " up" : ""}`, "data-t": g.t },
+            h("span", { class: "k" }, fmt(g.delta)),
+            h(
+              "span",
+              { class: "why" },
+              goldWords(wakeShown(g.why.replace(/_/g, " "))),
+              (g.bloodline_id || 1) !== (L.selected_bloodline || 1)
+                ? h("small", { class: "dim" }, ` · Bloodline ${g.bloodline_id || 1}`)
+                : "",
+              g.n && g.n > 1 ? ` ×${g.n}` : "",
+              // QA 912e135 (qaW: sixteen `$0 died D6` rows, none of the $224 a stall carried): an exit's row names what it did not keep —
+              // QA 524827b (qaAA: `returned D8 · $77 lost`): an exit that kept some says `not kept`, `lost` is a whole carry gone
+              g.lost && g.lost > 0
+                ? h(
+                    "span",
+                    { class: "lost dim" },
+                    g.delta > 0
+                      ? /* copy:callout */ ` · $${g.lost} not kept`
+                      : /* copy:callout */ ` · $${g.lost} lost`,
+                  )
+                : "",
+            ),
+          ),
+        ),
+        lines.length
+          ? ""
+          : h("div", { class: "lrow num dim empty-line" }, /* copy:callout */ "no movements"),
+        run ? bal(startBal, /* copy:label */ "start", "start") : "",
+      ); // QA 92eb880 (N: a fresh lineage's sheet read `$0 · ·`)
     };
     paint(!!range);
     return body;

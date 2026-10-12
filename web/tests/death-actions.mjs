@@ -1,48 +1,355 @@
-import { responsiveWidths } from './lib/viewport-cases.mjs';
-import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
-import {mkdirSync} from 'node:fs';import {resolve} from 'node:path';
-const shots=process.env.RIDDLE_DEATH_SHOTS;if(shots)mkdirSync(shots,{recursive:true});
-const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of responsiveWidths([320,400,1440])){const p=await b.newPage({viewport:{width,height:900}});await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);const n=await p.evaluate(async()=>{
- const {deathAction}=await import('/src/ui/death.ts'),{rowChips}=await import('/src/ui/editor.ts'),{closeAllSheets}=await import('/src/ui/sheet.ts');let checks=0;const check=(ok,name)=>{if(!ok)throw Error(name);checks++;};
- const rows=[{conds:[{k:'foes>=',n:1}],verb:{v:'attack',a:'nearest'},origin:'stance:steady'},{conds:[{k:'hp<',n:30}],verb:{v:'drink',a:'heal'},origin:'stance:steady'}];
- const turn=(row,verb=rows[0].verb)=>({t:10,row,verb,hp:2,foes:1,telegraphs:[]});
- const base={run_id:1,depth:8,cause:'goblin_warlord',margin:'2 hp short',verdict:'gap',baseline:0,replays:12,patches:[],morgue:'',nothing_beats_base:true,trace:{turns:[turn(0),turn(-1,{v:'explore'})],blow:{t:11,by:'goblin_warlord',dmg:2,hp:0}},rules:{rows},package:'Steady · foes 1+ → attack',lever:{kind:'spend',text:'sword +1'}};
- check(deathAction(base)==='Steady · attack nearest','negative-row chores do not replace selected action');
- check(deathAction({...base,cause_row:1})==='Steady · drink heal at 30%','cause row wins over last trace action');
- check(deathAction({...base,cause_row:0,trace:{turns:[turn(1,rows[1].verb)]}})==='Steady · attack nearest','cause row zero is explicit');
- check(deathAction({...base,rules:undefined})==='Steady · attack nearest','missing rules use matching trace verb');
- check(deathAction({...base,cause_row:5,rules:undefined})==='Steady','missing selected-row history never invents another action');
- check(deathAction({...base,trace:{turns:[]},rules:undefined})==='Steady','missing history retains known source only');
- check(deathAction({...base,package:'drill · Warlord · foes 1+ → attack'})==='drill · Warlord · attack nearest','drill attribution retained');
- check(deathAction({...base,package:undefined})==='','no unsolicited package attribution');
- const a=window.__riddle;a.lineage.packages.pen_open=false;a.sets[a.active]={rows:[{conds:[],verb:{v:'return'}}]};check(a.rules.rows[0].verb.v==='return','camp rules really edited');a.go({kind:'death',death:base,kept:true});
- check(document.querySelector('.death-why').textContent==='Steady · attack nearest','historical death rules win over edited camp rules');
- check(!document.querySelector('.death .console .tile.empty'),'death commands have no empty slots');
- for(const button of document.querySelectorAll('.death .console .cmd button')){const label=button.querySelector('.tl'),box=button.getBoundingClientRect();check(label.scrollWidth<=label.clientWidth,'death navigation label fits');check(box.width>=44&&box.height>=44,'death navigation tap target');}
- const image=document.querySelector('.death-lever .item-pic');await image.decode();check(image.src.endsWith('/it_sword.png'),'recommendation uses sword silhouette');const icon=image.parentElement;check(getComputedStyle(icon).boxShadow==='none'&&getComputedStyle(icon).backgroundImage==='none','recommendation silhouette unframed');
- document.querySelector('.death-lever').click();check(!!document.querySelector('.sheet .forge'),'spend still opens Forge');closeAllSheets();
- const driven={...base,cause:'Warlord',verdict:'driven',trace:{turns:[]},line:{carried:90,keep_pct:60,kept:54,spent:0,spent_on:[],text:'returned $54',driven:{boss:'goblin_warlord',title:'Warlord',depth:8,verdict:'no counter',defence:'shield wall',counter:'attack boss',row:rows[0],hp:31,max_hp:36}}};
- a.go({kind:'death',death:driven,kept:true});
- const boss=document.querySelector('.death .killer .unit-icon');check(boss?.dataset.unit==='goblin_warlord','repelled result uses wire boss id rather than display title');
- await boss.decode();const art=boss.parentElement.getBoundingClientRect(),text=document.querySelector('.death .cause').getBoundingClientRect();check(art.width>=112&&art.height>=112,'repelled boss uses large framed portrait');check(text.top-art.bottom>=4,'boss portrait has space above defeat text');check(Math.abs((art.left+art.width/2)-(text.left+text.width/2))<=2,'boss portrait and text horizontally centered');
- for(const selector of ['.cause-btn','.verdict']){const saved=await a.engine.save();document.querySelector(selector).click();const dialog=document.querySelector('.sheet .outcome-explanation');check(!!dialog&&dialog.textContent.includes('shield wall')&&dialog.textContent.includes('a boss drove him out')&&dialog.textContent.includes('31 hp'),'early driven '+selector+' opens actual cause/explanation');check(!dialog.querySelector('button.patch,.patch-gem,input,textarea'),'early explanation exposes no editor/patch controls');check(await a.engine.save()===saved,'early explanation leaves exact engine save unchanged');closeAllSheets();}
- a.go({kind:'death',death:base,kept:true});const beforeTrace=await a.engine.save();document.querySelector('.cause-btn').click();const earlyTrace=document.querySelector('.sheet .early-death-trace');check(!!earlyTrace&&earlyTrace.textContent.includes('goblin warlord')&&earlyTrace.textContent.includes('11'),'ordinary early death opens its recorded trace');check(!earlyTrace.querySelector('.row-edit,button.patch,input,textarea')&&await a.engine.save()===beforeTrace,'early trace is read-only and leaves exact save unchanged');closeAllSheets();
- document.querySelector('.verdict').click();check(!!document.querySelector('.sheet .outcome-explanation'),'ordinary early verdict retains its lever explanation');closeAllSheets();
- a.go({kind:'death',death:{...base,trace:{turns:[]}},kept:true});document.querySelector('.cause-btn').click();check(!!document.querySelector('.sheet .outcome-explanation'),'empty legacy trace retains fallback explanation');closeAllSheets();
- const go=a.go.bind(a),mutate=a.mutate.bind(a),equip=a.engine.equipPackage,calls=[],dest=[];a.go=s=>dest.push(s.kind);a.mutate=async fn=>fn();a.engine.equipPackage=async(id,slot)=>{calls.push([id,slot]);return a.lineage;};
- const guard=a.lineage.packages.all.find(p=>p.id==='guarded');guard.owned=true;
- go({kind:'death',death:{...base,lever:{kind:'package',text:'Guarded'}},kept:true});check(document.querySelector('.death-lever img').src.endsWith('/pkg_guarded_v7.png'),'package recommendation uses moonlit style');document.querySelector('.death-lever').click();await new Promise(r=>setTimeout(r,20));check(JSON.stringify(calls)==='[["guarded",0]]'&&dest.at(-1)==='camp','owned recommendation equips exact package/slot');
- guard.owned=false;go({kind:'death',death:{...base,lever:{kind:'package',text:'Guarded'}},kept:true});document.querySelector('.death-lever').click();check(calls.length===1&&dest.at(-1)==='camp','unowned recommendation never equips');
- go({kind:'death',death:{...base,lever:{kind:'wait',text:'Steady L2'}},kept:true});document.querySelector('.death-lever').click();check(dest.at(-1)==='camp','historical wait cannot send');
- go({kind:'death',death:{...base,lever:{kind:'wait',text:'Steady L2'}},kept:false});document.querySelector('.death-lever').click();check(dest.at(-1)==='watch','current wait can send');
- guard.owned=true;guard.level=2;delete guard.level_price;const marks=a.lineage.marks,spend=a.engine.spendLevel,spent=[];
- go({kind:'death',death:{...base,lever:{kind:'wait',text:'Guarded L5'}},kept:false});check(document.querySelector('.death-lever .lever-kind').textContent==='train'&&document.querySelector('.death-lever .lever-name').textContent==='Guarded L5','unaffordable stance level reads as training');document.querySelector('.death-lever').click();check(dest.at(-1)==='watch','training lever sends');
- guard.level_price=3;a.lineage.marks=5;a.engine.spendLevel=async id=>{spent.push(id);return a.lineage;};
- go({kind:'death',death:{...base,lever:{kind:'wait',text:'Guarded L5'}},kept:false});check(document.querySelector('.death-lever .lever-kind').textContent==='level','affordable stance level reads as a level purchase');document.querySelector('.death-lever').click();await new Promise(r=>setTimeout(r,20));check(JSON.stringify(spent)==='["guarded"]'&&dest.at(-1)==='camp','level lever buys the level');
- guard.level=5;go({kind:'death',death:{...base,lever:{kind:'wait',text:'Guarded L5'}},kept:false});check(document.querySelector('.death-lever').textContent.replace('›','')==='sendagain','a level already worn reads send again');
- a.lineage.marks=marks;a.engine.spendLevel=spend;
- a.go=go;a.mutate=mutate;a.engine.equipPackage=equip;
- for(const [verb,kind] of [[{v:'throw',a:'fire,tag:boss'},'fire'],[{v:'drink',a:'unknown'},'potion'],[{v:'read',a:'unknown'},'scroll']]){const el=rowChips({conds:[],verb});check(el.querySelector('.item-ico').dataset.kind===kind,'targeted/unknown item family');}
- check(document.documentElement.scrollWidth<=innerWidth,'no horizontal overflow');return {checks,driven};
-});console.log(width,n.checks,'death action/illustration checks PASS');await p.evaluate(d=>window.__riddle.go({kind:'death',death:d,kept:true}),n.driven);await p.waitForTimeout(400);if(shots)await p.screenshot({path:resolve(shots,`repelled-portrait-${width}.png`)});await p.locator('.death .killer').hover();await p.locator('#kw-tip:not([hidden])').waitFor();const tip=await p.locator('#kw-tip').innerText();if(!tip.includes('Goblin Warlord')||!tip.includes('Unavailable')||tip.includes('Defeated'))throw Error('Repelled portrait tooltip inferred wrong identity or defeat');console.log(width,'recorded boss tooltip PASS');await p.mouse.move(0,0);if(shots){await p.locator('.cause-btn').click();await p.waitForTimeout(400);await p.screenshot({path:resolve(shots,`repelled-explanation-${width}.png`)});await p.keyboard.press('Escape');if(await p.locator('.outcome-explanation').count())throw Error('Escape did not close outcome explanation');}await p.close();}}finally{await b.close();}
+import { responsiveWidths } from "./lib/viewport-cases.mjs";
+import { execFileSync } from "node:child_process";
+import { launchBrowser } from "../../tools/browser.mjs";
+import { mkdirSync } from "node:fs";
+import { resolve } from "node:path";
+const shots = process.env.RIDDLE_DEATH_SHOTS;
+if (shots) mkdirSync(shots, { recursive: true });
+const url = execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim(),
+  b = await launchBrowser();
+try {
+  for (const width of responsiveWidths([320, 400, 1440])) {
+    const p = await b.newPage({ viewport: { width, height: 900 } });
+    await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
+    await p.waitForFunction(() => window.__riddle?.booted);
+    const n = await p.evaluate(async () => {
+      const { deathAction } = await import("/src/ui/death.ts"),
+        { rowChips } = await import("/src/ui/editor.ts"),
+        { closeAllSheets } = await import("/src/ui/sheet.ts");
+      let checks = 0;
+      const check = (ok, name) => {
+        if (!ok) throw Error(name);
+        checks++;
+      };
+      const rows = [
+        {
+          conds: [{ k: "foes>=", n: 1 }],
+          verb: { v: "attack", a: "nearest" },
+          origin: "stance:steady",
+        },
+        { conds: [{ k: "hp<", n: 30 }], verb: { v: "drink", a: "heal" }, origin: "stance:steady" },
+      ];
+      const turn = (row, verb = rows[0].verb) => ({
+        t: 10,
+        row,
+        verb,
+        hp: 2,
+        foes: 1,
+        telegraphs: [],
+      });
+      const base = {
+        run_id: 1,
+        depth: 8,
+        cause: "goblin_warlord",
+        margin: "2 hp short",
+        verdict: "gap",
+        baseline: 0,
+        replays: 12,
+        patches: [],
+        morgue: "",
+        nothing_beats_base: true,
+        trace: {
+          turns: [turn(0), turn(-1, { v: "explore" })],
+          blow: { t: 11, by: "goblin_warlord", dmg: 2, hp: 0 },
+        },
+        rules: { rows },
+        package: "Steady · foes 1+ → attack",
+        lever: { kind: "spend", text: "sword +1" },
+      };
+      check(
+        deathAction(base) === "Steady · attack nearest",
+        "negative-row chores do not replace selected action",
+      );
+      check(
+        deathAction({ ...base, cause_row: 1 }) === "Steady · drink heal at 30%",
+        "cause row wins over last trace action",
+      );
+      check(
+        deathAction({ ...base, cause_row: 0, trace: { turns: [turn(1, rows[1].verb)] } }) ===
+          "Steady · attack nearest",
+        "cause row zero is explicit",
+      );
+      check(
+        deathAction({ ...base, rules: undefined }) === "Steady · attack nearest",
+        "missing rules use matching trace verb",
+      );
+      check(
+        deathAction({ ...base, cause_row: 5, rules: undefined }) === "Steady",
+        "missing selected-row history never invents another action",
+      );
+      check(
+        deathAction({ ...base, trace: { turns: [] }, rules: undefined }) === "Steady",
+        "missing history retains known source only",
+      );
+      check(
+        deathAction({ ...base, package: "drill · Warlord · foes 1+ → attack" }) ===
+          "drill · Warlord · attack nearest",
+        "drill attribution retained",
+      );
+      check(
+        deathAction({ ...base, package: undefined }) === "",
+        "no unsolicited package attribution",
+      );
+      const a = window.__riddle;
+      a.lineage.packages.pen_open = false;
+      a.sets[a.active] = { rows: [{ conds: [], verb: { v: "return" } }] };
+      check(a.rules.rows[0].verb.v === "return", "camp rules really edited");
+      a.go({ kind: "death", death: base, kept: true });
+      check(
+        document.querySelector(".death-why").textContent === "Steady · attack nearest",
+        "historical death rules win over edited camp rules",
+      );
+      check(
+        !document.querySelector(".death .console .tile.empty"),
+        "death commands have no empty slots",
+      );
+      for (const button of document.querySelectorAll(".death .console .cmd button")) {
+        const label = button.querySelector(".tl"),
+          box = button.getBoundingClientRect();
+        check(label.scrollWidth <= label.clientWidth, "death navigation label fits");
+        check(box.width >= 44 && box.height >= 44, "death navigation tap target");
+      }
+      const image = document.querySelector(".death-lever .item-pic");
+      await image.decode();
+      check(image.src.endsWith("/it_sword.png"), "recommendation uses sword silhouette");
+      const icon = image.parentElement;
+      check(
+        getComputedStyle(icon).boxShadow === "none" &&
+          getComputedStyle(icon).backgroundImage === "none",
+        "recommendation silhouette unframed",
+      );
+      document.querySelector(".death-lever").click();
+      check(!!document.querySelector(".sheet .forge"), "spend still opens Forge");
+      closeAllSheets();
+      const driven = {
+        ...base,
+        cause: "Warlord",
+        verdict: "driven",
+        trace: { turns: [] },
+        line: {
+          carried: 90,
+          keep_pct: 60,
+          kept: 54,
+          spent: 0,
+          spent_on: [],
+          text: "returned $54",
+          driven: {
+            boss: "goblin_warlord",
+            title: "Warlord",
+            depth: 8,
+            verdict: "no counter",
+            defence: "shield wall",
+            counter: "attack boss",
+            row: rows[0],
+            hp: 31,
+            max_hp: 36,
+          },
+        },
+      };
+      a.go({ kind: "death", death: driven, kept: true });
+      const boss = document.querySelector(".death .killer .unit-icon");
+      check(
+        boss?.dataset.unit === "goblin_warlord",
+        "repelled result uses wire boss id rather than display title",
+      );
+      await boss.decode();
+      const art = boss.parentElement.getBoundingClientRect(),
+        text = document.querySelector(".death .cause").getBoundingClientRect();
+      check(art.width >= 112 && art.height >= 112, "repelled boss uses large framed portrait");
+      check(text.top - art.bottom >= 4, "boss portrait has space above defeat text");
+      check(
+        Math.abs(art.left + art.width / 2 - (text.left + text.width / 2)) <= 2,
+        "boss portrait and text horizontally centered",
+      );
+      for (const selector of [".cause-btn", ".verdict"]) {
+        const saved = await a.engine.save();
+        document.querySelector(selector).click();
+        const dialog = document.querySelector(".sheet .outcome-explanation");
+        check(
+          !!dialog &&
+            dialog.textContent.includes("shield wall") &&
+            dialog.textContent.includes("a boss drove him out") &&
+            dialog.textContent.includes("31 hp"),
+          "early driven " + selector + " opens actual cause/explanation",
+        );
+        check(
+          !dialog.querySelector("button.patch,.patch-gem,input,textarea"),
+          "early explanation exposes no editor/patch controls",
+        );
+        check(
+          (await a.engine.save()) === saved,
+          "early explanation leaves exact engine save unchanged",
+        );
+        closeAllSheets();
+      }
+      a.go({ kind: "death", death: base, kept: true });
+      const beforeTrace = await a.engine.save();
+      document.querySelector(".cause-btn").click();
+      const earlyTrace = document.querySelector(".sheet .early-death-trace");
+      check(
+        !!earlyTrace &&
+          earlyTrace.textContent.includes("goblin warlord") &&
+          earlyTrace.textContent.includes("11"),
+        "ordinary early death opens its recorded trace",
+      );
+      check(
+        !earlyTrace.querySelector(".row-edit,button.patch,input,textarea") &&
+          (await a.engine.save()) === beforeTrace,
+        "early trace is read-only and leaves exact save unchanged",
+      );
+      closeAllSheets();
+      document.querySelector(".verdict").click();
+      check(
+        !!document.querySelector(".sheet .outcome-explanation"),
+        "ordinary early verdict retains its lever explanation",
+      );
+      closeAllSheets();
+      a.go({ kind: "death", death: { ...base, trace: { turns: [] } }, kept: true });
+      document.querySelector(".cause-btn").click();
+      check(
+        !!document.querySelector(".sheet .outcome-explanation"),
+        "empty legacy trace retains fallback explanation",
+      );
+      closeAllSheets();
+      const go = a.go.bind(a),
+        mutate = a.mutate.bind(a),
+        equip = a.engine.equipPackage,
+        calls = [],
+        dest = [];
+      a.go = (s) => dest.push(s.kind);
+      a.mutate = async (fn) => fn();
+      a.engine.equipPackage = async (id, slot) => {
+        calls.push([id, slot]);
+        return a.lineage;
+      };
+      const guard = a.lineage.packages.all.find((p) => p.id === "guarded");
+      guard.owned = true;
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "package", text: "Guarded" } },
+        kept: true,
+      });
+      check(
+        document.querySelector(".death-lever img").src.endsWith("/pkg_guarded_v7.png"),
+        "package recommendation uses moonlit style",
+      );
+      document.querySelector(".death-lever").click();
+      await new Promise((r) => setTimeout(r, 20));
+      check(
+        JSON.stringify(calls) === '[["guarded",0]]' && dest.at(-1) === "camp",
+        "owned recommendation equips exact package/slot",
+      );
+      guard.owned = false;
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "package", text: "Guarded" } },
+        kept: true,
+      });
+      document.querySelector(".death-lever").click();
+      check(calls.length === 1 && dest.at(-1) === "camp", "unowned recommendation never equips");
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "wait", text: "Steady L2" } },
+        kept: true,
+      });
+      document.querySelector(".death-lever").click();
+      check(dest.at(-1) === "camp", "historical wait cannot send");
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "wait", text: "Steady L2" } },
+        kept: false,
+      });
+      document.querySelector(".death-lever").click();
+      check(dest.at(-1) === "watch", "current wait can send");
+      guard.owned = true;
+      guard.level = 2;
+      delete guard.level_price;
+      const marks = a.lineage.marks,
+        spend = a.engine.spendLevel,
+        spent = [];
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "wait", text: "Guarded L5" } },
+        kept: false,
+      });
+      check(
+        document.querySelector(".death-lever .lever-kind").textContent === "train" &&
+          document.querySelector(".death-lever .lever-name").textContent === "Guarded L5",
+        "unaffordable stance level reads as training",
+      );
+      document.querySelector(".death-lever").click();
+      check(dest.at(-1) === "watch", "training lever sends");
+      guard.level_price = 3;
+      a.lineage.marks = 5;
+      a.engine.spendLevel = async (id) => {
+        spent.push(id);
+        return a.lineage;
+      };
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "wait", text: "Guarded L5" } },
+        kept: false,
+      });
+      check(
+        document.querySelector(".death-lever .lever-kind").textContent === "level",
+        "affordable stance level reads as a level purchase",
+      );
+      document.querySelector(".death-lever").click();
+      await new Promise((r) => setTimeout(r, 20));
+      check(
+        JSON.stringify(spent) === '["guarded"]' && dest.at(-1) === "camp",
+        "level lever buys the level",
+      );
+      guard.level = 5;
+      go({
+        kind: "death",
+        death: { ...base, lever: { kind: "wait", text: "Guarded L5" } },
+        kept: false,
+      });
+      check(
+        document.querySelector(".death-lever").textContent.replace("›", "") === "sendagain",
+        "a level already worn reads send again",
+      );
+      a.lineage.marks = marks;
+      a.engine.spendLevel = spend;
+      a.go = go;
+      a.mutate = mutate;
+      a.engine.equipPackage = equip;
+      for (const [verb, kind] of [
+        [{ v: "throw", a: "fire,tag:boss" }, "fire"],
+        [{ v: "drink", a: "unknown" }, "potion"],
+        [{ v: "read", a: "unknown" }, "scroll"],
+      ]) {
+        const el = rowChips({ conds: [], verb });
+        check(el.querySelector(".item-ico").dataset.kind === kind, "targeted/unknown item family");
+      }
+      check(document.documentElement.scrollWidth <= innerWidth, "no horizontal overflow");
+      return { checks, driven };
+    });
+    console.log(width, n.checks, "death action/illustration checks PASS");
+    await p.evaluate((d) => window.__riddle.go({ kind: "death", death: d, kept: true }), n.driven);
+    await p.waitForTimeout(400);
+    if (shots) await p.screenshot({ path: resolve(shots, `repelled-portrait-${width}.png`) });
+    await p.locator(".death .killer").hover();
+    await p.locator("#kw-tip:not([hidden])").waitFor();
+    const tip = await p.locator("#kw-tip").innerText();
+    if (!tip.includes("Goblin Warlord") || !tip.includes("Unavailable") || tip.includes("Defeated"))
+      throw Error("Repelled portrait tooltip inferred wrong identity or defeat");
+    console.log(width, "recorded boss tooltip PASS");
+    await p.mouse.move(0, 0);
+    if (shots) {
+      await p.locator(".cause-btn").click();
+      await p.waitForTimeout(400);
+      await p.screenshot({ path: resolve(shots, `repelled-explanation-${width}.png`) });
+      await p.keyboard.press("Escape");
+      if (await p.locator(".outcome-explanation").count())
+        throw Error("Escape did not close outcome explanation");
+    }
+    await p.close();
+  }
+} finally {
+  await b.close();
+}

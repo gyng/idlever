@@ -78,7 +78,13 @@ export class QuadLayer {
   private dirty = true; // any instance value changed since the last upload
   readonly capacity: number;
 
-  constructor(texture: THREE.Texture, capacity: number, tag: number, renderOrder: number, ghost = false) {
+  constructor(
+    texture: THREE.Texture,
+    capacity: number,
+    tag: number,
+    renderOrder: number,
+    ghost = false,
+  ) {
     this.capacity = capacity;
     const base = new THREE.PlaneGeometry(1, 1);
     base.translate(0.5, 0.5, 0); // uv (0,0) at bottom-left; shader re-anchors to bottom-centre
@@ -100,53 +106,127 @@ export class QuadLayer {
     const mat = new THREE.ShaderMaterial({
       vertexShader: QUAD_VERT,
       fragmentShader: ghost ? GHOST_FRAG : FRAG,
-      uniforms: { map: { value: texture }, uTag: { value: tag }, uFlash: { value: new THREE.Color(0.98, 0.95, 0.9) } },
+      uniforms: {
+        map: { value: texture },
+        uTag: { value: tag },
+        uFlash: { value: new THREE.Color(0.98, 0.95, 0.9) },
+      },
       transparent: ghost,
       depthTest: true,
       depthWrite: !ghost,
       side: THREE.DoubleSide,
-      ...(ghost ? { blending: THREE.CustomBlending, blendEquation: THREE.AddEquation, blendSrc: THREE.SrcAlphaFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
-        blendSrcAlpha: THREE.OneFactor, blendDstAlpha: THREE.ZeroFactor } : {}),
+      ...(ghost
+        ? {
+            blending: THREE.CustomBlending,
+            blendEquation: THREE.AddEquation,
+            blendSrc: THREE.SrcAlphaFactor,
+            blendDst: THREE.OneMinusSrcAlphaFactor,
+            blendSrcAlpha: THREE.OneFactor,
+            blendDstAlpha: THREE.ZeroFactor,
+          }
+        : {}),
     });
     this.mesh = new THREE.Mesh(g, mat);
     this.mesh.frustumCulled = false;
     this.mesh.renderOrder = renderOrder;
   }
 
-  begin(): void { this.n = 0; }
+  begin(): void {
+    this.n = 0;
+  }
 
   // Compare-and-write: the GPU upload in end() is skipped when nothing changed (static floors,
   // paused replay), which is most frames for the tile/item layers.
-  push(x: number, y: number, z: number, w: number, h: number,
-       u0: number, v0: number, u1: number, v1: number,
-       dim = 1, flash = 0, fade = 0, flip = 0): void {
+  push(
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+    h: number,
+    u0: number,
+    v0: number,
+    u1: number,
+    v1: number,
+    dim = 1,
+    flash = 0,
+    fade = 0,
+    flip = 0,
+  ): void {
     if (this.n >= this.capacity) return;
     const i = this.n++;
-    const P = this.pos.array as Float32Array, S = this.size.array as Float32Array;
-    const U = this.uvr.array as Float32Array, R = this.par.array as Float32Array;
-    const p3 = i * 3, s2 = i * 2, q4 = i * 4;
-    if (P[p3] !== x || P[p3 + 1] !== y || P[p3 + 2] !== z) { P[p3] = x; P[p3 + 1] = y; P[p3 + 2] = z; this.dirty = true; }
-    if (S[s2] !== w || S[s2 + 1] !== h) { S[s2] = w; S[s2 + 1] = h; this.dirty = true; }
-    if (U[q4] !== u0 || U[q4 + 1] !== v0 || U[q4 + 2] !== u1 || U[q4 + 3] !== v1) { U[q4] = u0; U[q4 + 1] = v0; U[q4 + 2] = u1; U[q4 + 3] = v1; this.dirty = true; }
-    if (R[q4] !== dim || R[q4 + 1] !== flash || R[q4 + 2] !== fade || R[q4 + 3] !== flip) { R[q4] = dim; R[q4 + 1] = flash; R[q4 + 2] = fade; R[q4 + 3] = flip; this.dirty = true; }
+    const P = this.pos.array as Float32Array,
+      S = this.size.array as Float32Array;
+    const U = this.uvr.array as Float32Array,
+      R = this.par.array as Float32Array;
+    const p3 = i * 3,
+      s2 = i * 2,
+      q4 = i * 4;
+    if (P[p3] !== x || P[p3 + 1] !== y || P[p3 + 2] !== z) {
+      P[p3] = x;
+      P[p3 + 1] = y;
+      P[p3 + 2] = z;
+      this.dirty = true;
+    }
+    if (S[s2] !== w || S[s2 + 1] !== h) {
+      S[s2] = w;
+      S[s2 + 1] = h;
+      this.dirty = true;
+    }
+    if (U[q4] !== u0 || U[q4 + 1] !== v0 || U[q4 + 2] !== u1 || U[q4 + 3] !== v1) {
+      U[q4] = u0;
+      U[q4 + 1] = v0;
+      U[q4 + 2] = u1;
+      U[q4 + 3] = v1;
+      this.dirty = true;
+    }
+    if (R[q4] !== dim || R[q4 + 1] !== flash || R[q4 + 2] !== fade || R[q4 + 3] !== flip) {
+      R[q4] = dim;
+      R[q4 + 1] = flash;
+      R[q4 + 2] = fade;
+      R[q4 + 3] = flip;
+      this.dirty = true;
+    }
   }
 
   end(): void {
     this.geom.instanceCount = this.n;
     this.mesh.visible = this.n > 0;
-    if (!this.dirty && this.n <= this.lastN) { this.lastN = this.n; return; }
-    for (const a of [this.pos, this.size, this.uvr, this.par]) { a.needsUpdate = true; a.clearUpdateRanges(); a.addUpdateRange(0, this.n * a.itemSize); }
+    if (!this.dirty && this.n <= this.lastN) {
+      this.lastN = this.n;
+      return;
+    }
+    for (const a of [this.pos, this.size, this.uvr, this.par]) {
+      a.needsUpdate = true;
+      a.clearUpdateRanges();
+      a.addUpdateRange(0, this.n * a.itemSize);
+    }
     this.lastN = this.n;
     this.dirty = false;
   }
 
-  get count(): number { return this.n; }
+  get count(): number {
+    return this.n;
+  }
 
   /** juice pass 2: a second mesh over the same instances with another material (the sprites' normal pass, normals.ts) */
-  twin(material: THREE.Material): THREE.Mesh { const m = new THREE.Mesh(this.geom, material); m.frustumCulled = false; m.renderOrder = this.mesh.renderOrder; return m; }
+  twin(material: THREE.Material): THREE.Mesh {
+    const m = new THREE.Mesh(this.geom, material);
+    m.frustumCulled = false;
+    m.renderOrder = this.mesh.renderOrder;
+    return m;
+  }
 
   // the colour a `flash` param mixes toward (Cut 8A: the fight frame flashes hurt sprites to the palette's brightest)
-  setFlash(r: number, g: number, b: number): void { ((this.mesh.material as THREE.ShaderMaterial).uniforms.uFlash!.value as THREE.Color).setRGB(r, g, b); }
+  setFlash(r: number, g: number, b: number): void {
+    ((this.mesh.material as THREE.ShaderMaterial).uniforms.uFlash!.value as THREE.Color).setRGB(
+      r,
+      g,
+      b,
+    );
+  }
 
-  dispose(): void { this.geom.dispose(); (this.mesh.material as THREE.Material).dispose(); }
+  dispose(): void {
+    this.geom.dispose();
+    (this.mesh.material as THREE.Material).dispose();
+  }
 }

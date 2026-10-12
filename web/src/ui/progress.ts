@@ -13,10 +13,20 @@ function paint(): void {
   const text = texts.length ? texts[texts.length - 1] : "";
   // a mounted host (the camp's own strip) carries the label; the fixed bar keeps only its line there
   if (host) host.textContent = text;
-  if (!texts.length) { bar?.remove(); bar = null; label = null; return; }
+  if (!texts.length) {
+    bar?.remove();
+    bar = null;
+    label = null;
+    return;
+  }
   if (!bar) {
     label = h("span", { class: "busy-label" });
-    bar = h("div", { class: "busy", role: "progressbar" }, h("span", { class: "busy-fill" }), label);
+    bar = h(
+      "div",
+      { class: "busy", role: "progressbar" },
+      h("span", { class: "busy-fill" }),
+      label,
+    );
     document.body.appendChild(bar);
   }
   label!.textContent = text;
@@ -36,5 +46,16 @@ export function showBusy(text: string): Busy {
   const id = next++;
   active.set(id, text);
   paint();
-  return { done: () => { active.delete(id); paint(); }, set: (t) => { if (active.has(id)) { active.set(id, t); paint(); } } };
+  return {
+    done: () => {
+      active.delete(id);
+      paint();
+    },
+    set: (t) => {
+      if (active.has(id)) {
+        active.set(id, t);
+        paint();
+      }
+    },
+  };
 }

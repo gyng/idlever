@@ -13,54 +13,152 @@
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 
-const url = execFileSync("bash", ["tools/dev.sh"], { cwd: new URL("../../", import.meta.url), encoding: "utf8" }).trim();
+const url = execFileSync("bash", ["tools/dev.sh"], {
+  cwd: new URL("../../", import.meta.url),
+  encoding: "utf8",
+}).trim();
 // Optional diagnostic stress only; routine/full acceptance retains the original15ms fixture.
-const stepDelay = Number(process.argv.find((arg) => arg.startsWith("--step-delay="))?.slice(13) ?? process.env.RIDDLE_WATCH_STEP_DELAY_MS ?? 15);
-if (!Number.isFinite(stepDelay) || stepDelay < 15) throw new Error("step-delay must be at least the original15ms");
-const out = [], errors = [];
+const stepDelay = Number(
+  process.argv.find((arg) => arg.startsWith("--step-delay="))?.slice(13) ??
+    process.env.RIDDLE_WATCH_STEP_DELAY_MS ??
+    15,
+);
+if (!Number.isFinite(stepDelay) || stepDelay < 15)
+  throw new Error("step-delay must be at least the original15ms");
+const out = [],
+  errors = [];
 let failed = 0;
-const check = (ok, what) => { out.push(`${ok ? "ok  " : "FAIL"} ${what}`); if (!ok) failed++; };
+const check = (ok, what) => {
+  out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
+  if (!ok) failed++;
+};
 const browser = await launchBrowser();
 try {
   for (const mode of ["fights", "one"]) {
-    const page = await browser.newPage({ viewport: { width: 400, height: 800 }, deviceScaleFactor: 1 });
+    const page = await browser.newPage({
+      viewport: { width: 400, height: 800 },
+      deviceScaleFactor: 1,
+    });
     page.on("pageerror", (e) => errors.push(`${mode} pageerror: ${e.message}`));
-    await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=157&autosend=1&early=0&fake_god=1&fake_depth=5&fake_shrug=3000`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => window.__riddle?.screen === "watch" && document.querySelector(".watch")?.dataset.tick, null, { timeout: 30_000 });
-    if (mode !== "fights") { await page.locator("[data-tile=speed]").click(); await page.locator(`.sheet [data-tile=${mode}]`).click(); }
-    await page.waitForFunction((m) => document.querySelector(".watch")?.dataset.mode === m, mode, { timeout: 5000 });
+    await page.goto(
+      `${url}?dev=1&engine=fake&systems=none&fresh=1&seed=157&autosend=1&early=0&fake_god=1&fake_depth=5&fake_shrug=3000`,
+      { waitUntil: "domcontentloaded" },
+    );
+    await page.waitForFunction(
+      () => window.__riddle?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
+      null,
+      { timeout: 30_000 },
+    );
+    if (mode !== "fights") {
+      await page.locator("[data-tile=speed]").click();
+      await page.locator(`.sheet [data-tile=${mode}]`).click();
+    }
+    await page.waitForFunction((m) => document.querySelector(".watch")?.dataset.mode === m, mode, {
+      timeout: 5000,
+    });
     const r = await page.evaluate(async (stepDelay) => {
-      const app = window.__riddle, step = app.engine.step.bind(app.engine);
-      app.engine.step = async (n) => { await new Promise((z) => setTimeout(z, stepDelay)); return step(n); };   // the real step's cost
+      const app = window.__riddle,
+        step = app.engine.step.bind(app.engine);
+      app.engine.step = async (n) => {
+        await new Promise((z) => setTimeout(z, stepDelay));
+        return step(n);
+      }; // the real step's cost
       // blind 1fb7786 (B: "1× to 107× … jumpy"): every clock change, as the watch sets it
-      const jumps = []; let was = Number(document.querySelector(".watch")?.dataset.speed ?? 1), top = was;
-      const mo = new MutationObserver(() => { const n = Number(document.querySelector(".watch")?.dataset.speed ?? 0); if (n === was) return; if (n > 64 && n > 2.05 * Math.max(was, 16)) jumps.push(`${was}→${n}`); top = Math.max(top, n); was = n; });
-      mo.observe(document.querySelector(".watch"), { attributes: true, attributeFilter: ["data-speed"] });
-      const t0 = performance.now(); let news = "", newsAt = t0, worst = 0, worstAt = null, deadMs = 0, last = t0, zero = [];
-      const transitions = []; let transitionKey = "";
+      const jumps = [];
+      let was = Number(document.querySelector(".watch")?.dataset.speed ?? 1),
+        top = was;
+      const mo = new MutationObserver(() => {
+        const n = Number(document.querySelector(".watch")?.dataset.speed ?? 0);
+        if (n === was) return;
+        if (n > 64 && n > 2.05 * Math.max(was, 16)) jumps.push(`${was}→${n}`);
+        top = Math.max(top, n);
+        was = n;
+      });
+      mo.observe(document.querySelector(".watch"), {
+        attributes: true,
+        attributeFilter: ["data-speed"],
+      });
+      const t0 = performance.now();
+      let news = "",
+        newsAt = t0,
+        worst = 0,
+        worstAt = null,
+        deadMs = 0,
+        last = t0,
+        zero = [];
+      const transitions = [];
+      let transitionKey = "";
       while (performance.now() - t0 < 60_000) {
-        const w = document.querySelector(".watch"); if (!w || app.screen !== "watch") break;
-        const d = w.dataset, now = performance.now();
+        const w = document.querySelector(".watch");
+        if (!w || app.screen !== "watch") break;
+        const d = w.dataset,
+          now = performance.now();
         const changed = `${d.dead}|${d.jumps ?? 0}|${d.progress}`;
-        if (changed !== transitionKey) { transitionKey = changed; if (transitions.length < 40) transitions.push({ ms: Math.round(now - t0), dead: d.dead, jumps: d.jumps, progress: d.progress, tick: d.tick, frontier: d.frontier }); }
+        if (changed !== transitionKey) {
+          transitionKey = changed;
+          if (transitions.length < 40)
+            transitions.push({
+              ms: Math.round(now - t0),
+              dead: d.dead,
+              jumps: d.jumps,
+              progress: d.progress,
+              tick: d.tick,
+              frontier: d.frontier,
+            });
+        }
         const key = `${d.progress}|${d.jumps ?? 0}|${document.querySelector(".hud .depth")?.textContent}|${d.ending ?? ""}`;
-        if (key !== news || d.dead !== "1" || d.over === "1") { news = key; newsAt = now; }
-        if (now - newsAt > worst) { worst = now - newsAt; worstAt = { tick: d.tick, frontier: d.frontier, speed: d.speed, frame: d.frame }; }
+        if (key !== news || d.dead !== "1" || d.over === "1") {
+          news = key;
+          newsAt = now;
+        }
+        if (now - newsAt > worst) {
+          worst = now - newsAt;
+          worstAt = { tick: d.tick, frontier: d.frontier, speed: d.speed, frame: d.frame };
+        }
         if (d.dead === "1") deadMs += now - last;
         last = now;
-        for (const li of document.querySelectorAll(".combat-log li")) if (/[−+-]0 hp/.test(li.textContent)) zero.push(li.textContent);
+        for (const li of document.querySelectorAll(".combat-log li"))
+          if (/[−+-]0 hp/.test(li.textContent)) zero.push(li.textContent);
         if (d.over === "1") break;
         await new Promise((z) => setTimeout(z, 100));
       }
       mo.disconnect();
       const d = document.querySelector(".watch")?.dataset ?? {};
-      return { transitions, jumps2: jumps.slice(0, 4), top, worst: Math.round(worst), worstAt, deadS: Math.round(deadMs / 100) / 10, jumps: Number(d.jumps ?? 0), wall: Math.round((performance.now() - t0) / 100) / 10, zero: [...new Set(zero)].slice(0, 3), blocked: [...document.querySelectorAll(".combat-log li")].some((li) => /blocked$/.test(li.textContent)) };
+      return {
+        transitions,
+        jumps2: jumps.slice(0, 4),
+        top,
+        worst: Math.round(worst),
+        worstAt,
+        deadS: Math.round(deadMs / 100) / 10,
+        jumps: Number(d.jumps ?? 0),
+        wall: Math.round((performance.now() - t0) / 100) / 10,
+        zero: [...new Set(zero)].slice(0, 3),
+        blocked: [...document.querySelectorAll(".combat-log li")].some((li) =>
+          li.textContent.endsWith("blocked"),
+        ),
+      };
     }, stepDelay);
-    check(r.worst <= 6000, `${mode}: no dead stretch over 6 s without news (worst ${r.worst} ms at ${JSON.stringify(r.worstAt)})`);
-    check(r.jumps >= 1, `${mode}: the standoff jumps (${r.jumps} jumps; ${r.deadS} s dead over a ${r.wall} s watch)`);
-    check(r.deadS <= 12, `${mode}: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (${r.deadS} s; was ~18 s; step delay ${stepDelay}ms; transitions ${JSON.stringify(r.transitions)})`);
-    check(r.jumps2.length === 0, `${mode}: the clock eases up — never one step past 64× from under half of it (${r.jumps2.join(" · ") || "none"}; top ${r.top}×)`);
-    check(r.zero.length === 0 && r.blocked, `${mode}: no "−0 hp" in the combat log; a zero hit reads "blocked" (${r.zero.join(" / ") || "none"})`);
+    check(
+      r.worst <= 6000,
+      `${mode}: no dead stretch over 6 s without news (worst ${r.worst} ms at ${JSON.stringify(r.worstAt)})`,
+    );
+    check(
+      r.jumps >= 1,
+      `${mode}: the standoff jumps (${r.jumps} jumps; ${r.deadS} s dead over a ${r.wall} s watch)`,
+    );
+    check(
+      r.deadS <= 12,
+      `${mode}: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (${r.deadS} s; was ~18 s; step delay ${stepDelay}ms; transitions ${JSON.stringify(r.transitions)})`,
+    );
+    check(
+      r.jumps2.length === 0,
+      `${mode}: the clock eases up — never one step past 64× from under half of it (${r.jumps2.join(" · ") || "none"}; top ${r.top}×)`,
+    );
+    check(
+      r.zero.length === 0 && r.blocked,
+      `${mode}: no "−0 hp" in the combat log; a zero hit reads "blocked" (${r.zero.join(" / ") || "none"})`,
+    );
     await page.close();
   }
 } catch (e) {
@@ -70,5 +168,8 @@ try {
 }
 for (const l of out) console.log(l);
 for (const e of errors) console.error(e);
-if (failed || errors.length) { console.error(`watch-live-edge: FAIL (${failed} assertion(s), ${errors.length} error(s))`); process.exit(1); }
+if (failed || errors.length) {
+  console.error(`watch-live-edge: FAIL (${failed} assertion(s), ${errors.length} error(s))`);
+  process.exit(1);
+}
 console.log(`watch-live-edge: ok (${out.length} checks)`);

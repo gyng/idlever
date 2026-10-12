@@ -33,22 +33,63 @@ const fresh = process.argv.includes("--fresh");
 const rowsAt = process.argv.indexOf("--rows");
 const rows = rowsAt >= 0 ? process.argv[rowsAt + 1] : null;
 const failFast = process.argv.includes("--fail-fast");
-const extra = process.argv.slice(2).filter((a, i) => a !== "--full" && a !== "--exhaustive" && a !== "--fresh" && a !== "--fast" && a !== "--fail-fast" && !(rowsAt >= 0 && (i + 2 === rowsAt || i + 2 === rowsAt + 1)));
-if (rowsAt >= 0 && !rows) { console.error("gates --rows: name the rows (ids or substrings; `target/fast/examples/dayplayer --rows ?` lists them)"); process.exit(2); }
+const extra = process.argv
+  .slice(2)
+  .filter(
+    (a, i) =>
+      a !== "--full" &&
+      a !== "--exhaustive" &&
+      a !== "--fresh" &&
+      a !== "--fast" &&
+      a !== "--fail-fast" &&
+      !(rowsAt >= 0 && (i + 2 === rowsAt || i + 2 === rowsAt + 1)),
+  );
+if (rowsAt >= 0 && !rows) {
+  console.error(
+    "gates --rows: name the rows (ids or substrings; `target/fast/examples/dayplayer --rows ?` lists them)",
+  );
+  process.exit(2);
+}
 const balanceAt = extra.indexOf("--balance");
 let balance = null;
 if (balanceAt >= 0) {
-  if (!rows || !extra[balanceAt + 1]) throw new Error("--balance FILE is a targeted tuning check only (--rows required)");
-  balance = readFileSync(extra[balanceAt + 1], "utf8"); extra.splice(balanceAt, 2);
+  if (!rows || !extra[balanceAt + 1])
+    throw new Error("--balance FILE is a targeted tuning check only (--rows required)");
+  balance = readFileSync(extra[balanceAt + 1], "utf8");
+  extra.splice(balanceAt, 2);
   process.env.RIDDLE_BALANCE_JSON = balance;
-} else if (process.env.RIDDLE_BALANCE_JSON) throw new Error("use explicit --balance FILE --rows for profile tuning");
-const b = spawnSync("cargo", ["build", "-q", "--message-format=json", "--profile", "fast", "-p", "riddle-core", ...(balance ? ["--features", "dev-balance"] : []), ...(rows ? [] : ["--example", "metrics", "--example", "qa"]), "--example", "dayplayer"], { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+} else if (process.env.RIDDLE_BALANCE_JSON)
+  throw new Error("use explicit --balance FILE --rows for profile tuning");
+const b = spawnSync(
+  "cargo",
+  [
+    "build",
+    "-q",
+    "--message-format=json",
+    "--profile",
+    "fast",
+    "-p",
+    "riddle-core",
+    ...(balance ? ["--features", "dev-balance"] : []),
+    ...(rows ? [] : ["--example", "metrics", "--example", "qa"]),
+    "--example",
+    "dayplayer",
+  ],
+  { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 },
+);
 if (b.stderr) process.stderr.write(b.stderr);
 let coreArtifact;
 for (const line of (b.stdout ?? "").split("\n").filter(Boolean)) {
   const message = JSON.parse(line);
-  if (message.reason === "compiler-message" && message.message.rendered) process.stderr.write(message.message.rendered);
-  if (message.reason === "compiler-artifact" && message.target.name === "riddle_core" && message.target.kind.includes("lib") && !message.profile.test) coreArtifact = message;
+  if (message.reason === "compiler-message" && message.message.rendered)
+    process.stderr.write(message.message.rendered);
+  if (
+    message.reason === "compiler-artifact" &&
+    message.target.name === "riddle_core" &&
+    message.target.kind.includes("lib") &&
+    !message.profile.test
+  )
+    coreArtifact = message;
 }
 if (b.status !== 0) process.exit(b.status ?? 1);
 // The binaries hash every input exactly (sources, deps, rustc); the presets and the cohort cards are read at run time
@@ -64,14 +105,17 @@ const keyOf = (bin, parts) => {
 // New scheme: existing job records are not renamed or accepted under the new key.
 const compiler = spawnSync("rustc", ["-vV"], { encoding: "utf8" });
 if (compiler.status !== 0) throw new Error("cannot identify simulation compiler");
-const srcKey = runtimeKey(coreArtifact, process.cwd(), compiler.stdout) + (balance ? `:balance:${createHash("sha256").update(balance).digest("hex")}` : "");
+const srcKey =
+  runtimeKey(coreArtifact, process.cwd(), compiler.stdout) +
+  (balance ? `:balance:${createHash("sha256").update(balance).digest("hex")}` : "");
 const jobEnv = { RIDDLE_SRC_KEY: srcKey, ...(fresh ? { RIDDLE_CACHE_FRESH: "1" } : {}) };
 const readResult = (file) => {
   try {
     const r = JSON.parse(readFileSync(file, "utf8"));
     return Number.isInteger(r?.status) && typeof r.stdout === "string" ? r : null;
-  }
-  catch { return null; }   // missing/corrupt cache is a miss, never evidence
+  } catch {
+    return null;
+  } // missing/corrupt cache is a miss, never evidence
 };
 const writeResult = (file, result) => {
   if (!Number.isInteger(result.status)) return; // Signals are interruptions, not completed legs.
@@ -84,31 +128,58 @@ const writeResult = (file, result) => {
 // arguments), its full-length jobs kept and read like the gate's (`RIDDLE_SRC_KEY`). Never a gate pass: it prints
 // no `gates: all PASS` and says so.
 if (rows) {
-  const tier = full ? ["--seeds", "16", "--loo-seeds", "16", "--tuned-seeds", "16"] : ["--seeds", "2", "--loo-seeds", "1", "--tuned-seeds", "2"];
+  const tier = full
+    ? ["--seeds", "16", "--loo-seeds", "16", "--tuned-seeds", "16"]
+    : ["--seeds", "2", "--loo-seeds", "1", "--tuned-seeds", "2"];
   // (the dayplayer reads an argument's first occurrence: `extra` — `--seeds 8` … — before the tier's)
-  const args = [...extra, ...tier, "--rows", rows, ...(failFast ? ["--fail-fast"] : []), "--threads", String(Number(process.env.GATES_THREADS ?? os.availableParallelism()))];
-  const leg = `target/gates/dayplayer-rows-${keyOf("target/fast/examples/dayplayer", [["args", args.filter((a, i) => args[i - 1] !== "--threads" && a !== "--threads").join(" ")], ["src", srcKey]])}.txt`;
+  const args = [
+    ...extra,
+    ...tier,
+    "--rows",
+    rows,
+    ...(failFast ? ["--fail-fast"] : []),
+    "--threads",
+    String(Number(process.env.GATES_THREADS ?? os.availableParallelism())),
+  ];
+  const leg = `target/gates/dayplayer-rows-${keyOf("target/fast/examples/dayplayer", [
+    ["args", args.filter((a, i) => args[i - 1] !== "--threads" && a !== "--threads").join(" ")],
+    ["src", srcKey],
+  ])}.txt`;
   let res = !fresh ? readResult(leg) : null;
   const hitRows = !!res;
   if (!res) {
     res = await new Promise((resolve) => {
-      const p = spawn("target/fast/examples/dayplayer", args, { stdio: ["ignore", "pipe", "inherit"], env: { ...process.env, ...jobEnv } });
-      let out = ""; p.stdout.on("data", (d) => (out += d));
+      const p = spawn("target/fast/examples/dayplayer", args, {
+        stdio: ["ignore", "pipe", "inherit"],
+        env: { ...process.env, ...jobEnv },
+      });
+      let out = "";
+      p.stdout.on("data", (d) => (out += d));
       p.on("close", (status, signal) => resolve({ status, signal, stdout: out }));
     });
     writeResult(leg, res);
     if (res.signal) console.error(`gates: targeted dayplayer terminated by ${res.signal}`);
   }
   const out = res.stdout ?? "";
-  const from = out.lastIndexOf("\nfail-fast:") >= 0 ? out.lastIndexOf("\nfail-fast:") : out.lastIndexOf("\nbar (targeted");
+  const from =
+    out.lastIndexOf("\nfail-fast:") >= 0
+      ? out.lastIndexOf("\nfail-fast:")
+      : out.lastIndexOf("\nbar (targeted");
   process.stdout.write(from >= 0 ? out.slice(from + 1) : out);
   const ok = res.status === 0 && /targeted rows PASS/.test(out);
-  console.log(`gates: TARGETED — dayplayer rows \`${rows}\`${failFast ? " (fail-fast)" : ""} ${ok ? "PASS" : "FAIL"}; not a gate pass (the gate is \`node tools/gates.mjs [--full]\`)${hitRows ? ` (cached: ${leg}; --fresh to rerun)` : ""}`);
+  console.log(
+    `gates: TARGETED — dayplayer rows \`${rows}\`${failFast ? " (fail-fast)" : ""} ${ok ? "PASS" : "FAIL"}; not a gate pass (the gate is \`node tools/gates.mjs [--full]\`)${hitRows ? ` (cached: ${leg}; --fresh to rerun)` : ""}`,
+  );
   process.exit(ok ? 0 : 1);
 }
 const runtimeInputs = [
-  ...readdirSync("crates/riddle-core/presets").sort().map((f) => [f, readFileSync(`crates/riddle-core/presets/${f}`)]),
-  ...readdirSync("eval/cards").filter((f) => f.endsWith(".rules.json")).sort().map((f) => [f, readFileSync(`eval/cards/${f}`)]),
+  ...readdirSync("crates/riddle-core/presets")
+    .sort()
+    .map((f) => [f, readFileSync(`crates/riddle-core/presets/${f}`)]),
+  ...readdirSync("eval/cards")
+    .filter((f) => f.endsWith(".rules.json"))
+    .sort()
+    .map((f) => [f, readFileSync(`eval/cards/${f}`)]),
 ];
 // Cut 30 §6: the idle bots over 16 seeds on the full table (the owner, round 5: the ratio rows — PICKED vs
 // IDLE, RANDOM — are noisy at 8); TUNED and the leave-one-outs over 8 until the gate speed-up lands (the
@@ -116,7 +187,15 @@ const runtimeInputs = [
 const seeds = exhaustive ? 16 : 2;
 const looSeeds = exhaustive ? 16 : full ? 2 : 1;
 const tunedSeeds = exhaustive ? 16 : 2;
-const dpArgs = ["--gate", ...(!exhaustive ? ["--routine", "--no-share"] : []), "--seeds", String(seeds), ...(fast ? ["--bots", "idle", "--loo-seeds", "0"] : ["--resume", "--loo-seeds", String(looSeeds), "--tuned-seeds", String(tunedSeeds)])];
+const dpArgs = [
+  "--gate",
+  ...(!exhaustive ? ["--routine", "--no-share"] : []),
+  "--seeds",
+  String(seeds),
+  ...(fast
+    ? ["--bots", "idle", "--loo-seeds", "0"]
+    : ["--resume", "--loo-seeds", String(looSeeds), "--tuned-seeds", String(tunedSeeds)]),
+];
 const qaSeeds = exhaustive ? 30 : 10;
 const tableArgs = [...(exhaustive ? [] : ["--cut30"]), ...extra];
 const legs = {
@@ -140,7 +219,9 @@ const finishLeg = (leg, promise) => {
   return promise.then((result) => {
     if (!hit[leg]) keep(leg, result);
     pendingLegs.delete(leg);
-    console.error(`gates: ${leg} ${hit[leg] ? "cached" : `finished in ${((Date.now() - started) / 1000).toFixed(1)}s`} (exit ${result.status}${result.signal ? `; signal ${result.signal}` : ""})`);
+    console.error(
+      `gates: ${leg} ${hit[leg] ? "cached" : `finished in ${((Date.now() - started) / 1000).toFixed(1)}s`} (exit ${result.status}${result.signal ? `; signal ${result.signal}` : ""})`,
+    );
     return result;
   });
 };
@@ -151,20 +232,30 @@ const run = (bin, args, signal, env) => {
   let started;
   const ready = new Promise((r) => (started = r));
   const done = new Promise((resolve) => {
-    const p = spawn(bin, args, { stdio: ["ignore", "pipe", signal ? "pipe" : "inherit"], env: { ...process.env, ...jobEnv, ...(env ?? {}) } });
-    let out = ""; p.stdout.on("data", (d) => (out += d));
+    const p = spawn(bin, args, {
+      stdio: ["ignore", "pipe", signal ? "pipe" : "inherit"],
+      env: { ...process.env, ...jobEnv, ...env },
+    });
+    let out = "";
+    p.stdout.on("data", (d) => (out += d));
     let buf = "";
     if (signal) {
       p.stderr.on("data", (d) => {
         buf += d;
         let i;
         while ((i = buf.indexOf("\n")) >= 0) {
-          const line = buf.slice(0, i + 1); buf = buf.slice(i + 1);
-          if (line.startsWith(signal)) started(); else process.stderr.write(line);
+          const line = buf.slice(0, i + 1);
+          buf = buf.slice(i + 1);
+          if (line.startsWith(signal)) started();
+          else process.stderr.write(line);
         }
       });
     }
-    p.on("close", (status, terminationSignal) => { if (signal && buf) process.stderr.write(buf); started(); resolve({ status, signal: terminationSignal, stdout: out }); });
+    p.on("close", (status, terminationSignal) => {
+      if (signal && buf) process.stderr.write(buf);
+      started();
+      resolve({ status, signal: terminationSignal, stdout: out });
+    });
   });
   return { ready, done };
 };
@@ -178,8 +269,19 @@ const cores = Number(process.env.GATES_THREADS ?? os.availableParallelism());
 const hit = { metrics: cached("metrics"), qa: cached("qa"), dayplayer: cached("dayplayer") };
 const done = (r) => ({ ready: Promise.resolve(), done: Promise.resolve(r) });
 const dpThreads = Math.max(4, cores);
-const dayplayer = (hit.dayplayer ? done(hit.dayplayer) : run("target/fast/examples/dayplayer", [...dpArgs, "--threads", String(dpThreads)])).done;
-const table = hit.metrics ? done(hit.metrics) : run("target/fast/examples/metrics", [...tableArgs, "--threads", String(Math.max(4, cores - 1))], exhaustive ? "metrics: quiet ticks measured" : "metrics: current game ready", { METRICS_QUIET_SIGNAL: "1" });
+const dayplayer = (
+  hit.dayplayer
+    ? done(hit.dayplayer)
+    : run("target/fast/examples/dayplayer", [...dpArgs, "--threads", String(dpThreads)])
+).done;
+const table = hit.metrics
+  ? done(hit.metrics)
+  : run(
+      "target/fast/examples/metrics",
+      [...tableArgs, "--threads", String(Math.max(4, cores - 1))],
+      exhaustive ? "metrics: quiet ticks measured" : "metrics: current game ready",
+      { METRICS_QUIET_SIGNAL: "1" },
+    );
 // The invariants (a job pool of seeds and their legs) start once the table's single-threaded quiet
 // per-tick measurement is done (a few seconds), then take three quarters of the cores beside the
 // table's all-but-one: at four threads they were the gate's critical path (305 s beside a 200 s
@@ -187,25 +289,66 @@ const table = hit.metrics ? done(hit.metrics) : run("target/fast/examples/metric
 // again (docs/ITERATION_SPEED.md, round 3).
 // (a cached table leaves qa every core)
 const qaThreads = hit.metrics ? cores : Math.max(4, Math.round(cores * QA_SHARE));
-const qa = hit.qa ? Promise.resolve(hit.qa) : table.ready.then(() => run("target/fast/examples/qa", ["--seeds", String(qaSeeds), "--threads", String(qaThreads)]).done);
-console.error(`gates: ${exhaustive ? "EXHAUSTIVE audit: 272 fortnight cases" : full ? "routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in" : "local check"}; source ${srcKey}; threads metrics=${Math.max(4, cores - 1)} qa=${qaThreads} dayplayer=${dpThreads}; cache hits=${Object.entries(hit).filter(([, v]) => v).map(([k]) => k).join(",") || "none"}`);
+const qa = hit.qa
+  ? Promise.resolve(hit.qa)
+  : table.ready.then(
+      () =>
+        run("target/fast/examples/qa", ["--seeds", String(qaSeeds), "--threads", String(qaThreads)])
+          .done,
+    );
+console.error(
+  `gates: ${exhaustive ? "EXHAUSTIVE audit: 272 fortnight cases" : full ? "routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in" : "local check"}; source ${srcKey}; threads metrics=${Math.max(4, cores - 1)} qa=${qaThreads} dayplayer=${dpThreads}; cache hits=${
+    Object.entries(hit)
+      .filter(([, v]) => v)
+      .map(([k]) => k)
+      .join(",") || "none"
+  }`,
+);
 const progress = setInterval(() => {
-  if (pendingLegs.size) console.error(`gates: still running ${[...pendingLegs].map(([leg, start]) => `${leg} ${Math.round((Date.now() - start) / 1000)}s`).join(", ")}; completed legs already saved`);
+  if (pendingLegs.size)
+    console.error(
+      `gates: still running ${[...pendingLegs].map(([leg, start]) => `${leg} ${Math.round((Date.now() - start) / 1000)}s`).join(", ")}; completed legs already saved`,
+    );
 }, 30000);
 progress.unref();
-const [r, p, q] = await Promise.all([finishLeg("metrics", table.done), finishLeg("dayplayer", dayplayer), finishLeg("qa", qa)]);
+const [r, p, q] = await Promise.all([
+  finishLeg("metrics", table.done),
+  finishLeg("dayplayer", dayplayer),
+  finishLeg("qa", qa),
+]);
 clearInterval(progress);
 const say = (t) => process.stdout.write(t);
 say(r.stdout ?? "");
-if (r.status !== 0 || !/gates: all PASS/.test(r.stdout ?? "")) { console.error("gates: FAIL"); process.exit(1); }
+if (r.status !== 0 || !/gates: all PASS/.test(r.stdout ?? "")) {
+  console.error("gates: FAIL");
+  process.exit(1);
+}
 say(q.stdout ?? "");
-if (q.status !== 0 || !/qa: all PASS/.test(q.stdout ?? "")) { console.error("qa invariants: FAIL"); process.exit(1); }
+if (q.status !== 0 || !/qa: all PASS/.test(q.stdout ?? "")) {
+  console.error("qa invariants: FAIL");
+  process.exit(1);
+}
 // Fourteen-day pacing probe. Cut 29 §1: every bar is hard — the "informational until M7" carve-out for
 // the unlock days (≥ 10/14) and the stall (≤ 3 d) is gone (the descent is 34 floors; they fail for the
 // reasons docs/PROGRESSION.md measures, not for missing content).
-const out = p.stdout ?? ""; say(out.slice(out.lastIndexOf("bar ")));
-const hardFails = [...out.matchAll(/^[^\n]*\bFAIL$/gm)].map((m) => m[0]).filter((l) => !l.startsWith("dayplayer:"));
-if (hardFails.length || p.status !== 0 || !/dayplayer: all PASS/.test(out)) { console.error("dayplayer bars: FAIL\n" + hardFails.join("\n")); process.exit(1); }
-say(exhaustive ? "dayplayer: all audit bars pass\n" : "dayplayer: all selected regression bars pass; system-removal and historical migration audits not run\n");
-const legsCached = Object.entries(hit).filter(([, v]) => v).map(([k]) => k);
-if (legsCached.length) console.log(`gates: ${legsCached.join(", ")} cached (${legsCached.map((k) => legs[k]).join(" ")}; --fresh to rerun)`);
+const out = p.stdout ?? "";
+say(out.slice(out.lastIndexOf("bar ")));
+const hardFails = [...out.matchAll(/^[^\n]*\bFAIL$/gm)]
+  .map((m) => m[0])
+  .filter((l) => !l.startsWith("dayplayer:"));
+if (hardFails.length || p.status !== 0 || !/dayplayer: all PASS/.test(out)) {
+  console.error("dayplayer bars: FAIL\n" + hardFails.join("\n"));
+  process.exit(1);
+}
+say(
+  exhaustive
+    ? "dayplayer: all audit bars pass\n"
+    : "dayplayer: all selected regression bars pass; system-removal and historical migration audits not run\n",
+);
+const legsCached = Object.entries(hit)
+  .filter(([, v]) => v)
+  .map(([k]) => k);
+if (legsCached.length)
+  console.log(
+    `gates: ${legsCached.join(", ")} cached (${legsCached.map((k) => legs[k]).join(" ")}; --fresh to rerun)`,
+  );

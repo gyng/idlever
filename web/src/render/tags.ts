@@ -4,26 +4,48 @@
 // The layer is a sibling of the canvas with the canvas's offset box, so the viewer's CSS coordinates (`toCss`) are its own.
 // Pooled elements; a frame writes only what changed. The faces are the chrome's tokens (styles.css, docs/ART_DIRECTION.md §Typography).
 
-export type Tag = { id: number; text: string; x: number; y: number; w: number; hp: number; ally?: boolean; boss?: boolean; warning?: boolean; elite?:boolean;
-                    stair?: "taken" | "other" };   // Cut 26 §2: a fork floor's stair plate (its lane), the route's stair lit   // x centre, y bottom (CSS px); hp 0..1, <0 = no bar; ally: the green plate
+export type Tag = {
+  id: number;
+  text: string;
+  x: number;
+  y: number;
+  w: number;
+  hp: number;
+  ally?: boolean;
+  boss?: boolean;
+  warning?: boolean;
+  elite?: boolean;
+  stair?: "taken" | "other";
+}; // Cut 26 §2: a fork floor's stair plate (its lane), the route's stair lit   // x centre, y bottom (CSS px); hp 0..1, <0 = no bar; ally: the green plate
 
 /** QA e75ec29: an ally's plate — its kind's last word and its name (`jackal Skog`), a nameless (summoned) ally its kind alone. */
 export function allyName(kind: string, name: string): string {
-  const k = kind.replace(/^(spectral|boss)_/, "").split("_").pop() ?? kind;
-  if (!name || name === k || name.replace(/ /g, "_") === kind || name.endsWith(k)) return /* copy:callout */ k;
+  const k =
+    kind
+      .replace(/^(spectral|boss)_/, "")
+      .split("_")
+      .pop() ?? kind;
+  if (!name || name === k || name.replace(/ /g, "_") === kind || name.endsWith(k))
+    return /* copy:callout */ k;
   return /* copy:callout */ `${k} ${name}`;
 }
 
 /** gfx round 1 (the blind raters: "giant 'ATTACK NEAREST' pixel text over the sprites"; watch.png's `R2 ATTACK` plate): the callout
  *  over the hero and the fight frame's caption are a small iron plate with the serif caps and a notch pointing down at him — DOM,
  *  crisp at any k, placed by the viewer like the name tags. `CALL_*` are its CSS metrics (the viewer lays its box out from them). */
-export type Plate = { kind: "callout" | "caption" | "boss"; text: string; x: number; y: number; w: number };   // x centre, y bottom (CSS px)
-export const CALL_H = 24;        // CSS px: the plate (the notch hangs below it)
-export const CALL_CHAR = 7.2;    // CSS px per character of the 12 px display caps (Grenze 700 + .06em averages 6.5; Cinzel was 8.1 → 8.6)
-export const CALL_PAD = 20;      // CSS px of side padding
-export const TAG_H = 19;          // CSS px: the name's line (13) + the bar (4) + gaps
-export const TAG_CHAR = 6.4;      // CSS px per character of the 12 px serif (lowercase average; the plate's width estimate)
-export const TAG_PAD = 8;         // CSS px of side padding inside the plate
+export type Plate = {
+  kind: "callout" | "caption" | "boss";
+  text: string;
+  x: number;
+  y: number;
+  w: number;
+}; // x centre, y bottom (CSS px)
+export const CALL_H = 24; // CSS px: the plate (the notch hangs below it)
+export const CALL_CHAR = 7.2; // CSS px per character of the 12 px display caps (Grenze 700 + .06em averages 6.5; Cinzel was 8.1 → 8.6)
+export const CALL_PAD = 20; // CSS px of side padding
+export const TAG_H = 19; // CSS px: the name's line (13) + the bar (4) + gaps
+export const TAG_CHAR = 6.4; // CSS px per character of the 12 px serif (lowercase average; the plate's width estimate)
+export const TAG_PAD = 8; // CSS px of side padding inside the plate
 
 const CSS = `
 .rtags { position: absolute; pointer-events: none; overflow: hidden; }
@@ -115,12 +137,25 @@ import skin from "../ui/skin.json";
 const FX = new Set<string>((skin as { fx?: string[] }).fx ?? []);
 // gfx round 21 (raters: "the painted shield clashes with the pixel sprites"): the pixel-register cut (tools/ui-skin.py `_px`), drawn pixelated
 const PX = FX.has("shield_px");
-const SHIELD = PX ? `${import.meta.env.BASE_URL}ui/fx/shield_px.png` : FX.has("shield") ? `${import.meta.env.BASE_URL}ui/fx/shield.webp` : `${import.meta.env.BASE_URL}ui/icons/v_shield.png`;
-const SHARDS = [0, 1, 2, 3].filter((i) => FX.has(`shard_${i}${PX ? "_px" : ""}`)).map((i) => `${import.meta.env.BASE_URL}ui/fx/shard_${i}${PX ? "_px.png" : ".webp"}`);
+const SHIELD = PX
+  ? `${import.meta.env.BASE_URL}ui/fx/shield_px.png`
+  : FX.has("shield")
+    ? `${import.meta.env.BASE_URL}ui/fx/shield.webp`
+    : `${import.meta.env.BASE_URL}ui/icons/v_shield.png`;
+const SHARDS = [0, 1, 2, 3]
+  .filter((i) => FX.has(`shard_${i}${PX ? "_px" : ""}`))
+  .map((i) => `${import.meta.env.BASE_URL}ui/fx/shard_${i}${PX ? "_px.png" : ".webp"}`);
 let shieldOk = false;
 /** gfx round 22: how far (CSS px) the pixel shield's centre sits above the point the viewer passes (his head) */
 export const SHIELD_LIFT = 84;
-if (typeof Image !== "undefined") { const im = new Image(); im.onload = () => { shieldOk = true; }; im.src = SHIELD; for (const u of SHARDS) new Image().src = u; }
+if (typeof Image !== "undefined") {
+  const im = new Image();
+  im.onload = () => {
+    shieldOk = true;
+  };
+  im.src = SHIELD;
+  for (const u of SHARDS) new Image().src = u;
+}
 
 export class TagLayer {
   private root: HTMLDivElement | null = null;
@@ -133,7 +168,10 @@ export class TagLayer {
     const parent = canvas.parentElement;
     if (!parent || typeof document === "undefined") return;
     if (!document.getElementById("rtags-css")) {
-      const s = document.createElement("style"); s.id = "rtags-css"; s.textContent = CSS; document.head.appendChild(s);
+      const s = document.createElement("style");
+      s.id = "rtags-css";
+      s.textContent = CSS;
+      document.head.appendChild(s);
     }
     this.root = document.createElement("div");
     this.root.className = "rtags";
@@ -142,25 +180,44 @@ export class TagLayer {
 
   /** keep the layer on the canvas's box (both are positioned against the same offsetParent) */
   private place(): void {
-    const c = this.canvas, r = this.root!;
+    const c = this.canvas,
+      r = this.root!;
     const key = `${c.offsetLeft},${c.offsetTop},${c.clientWidth},${c.clientHeight}`;
     if (key === this.box) return;
     this.box = key;
-    Object.assign(r.style, { left: `${c.offsetLeft}px`, top: `${c.offsetTop}px`, width: `${c.clientWidth}px`, height: `${c.clientHeight}px` });
+    Object.assign(r.style, {
+      left: `${c.offsetLeft}px`,
+      top: `${c.offsetTop}px`,
+      width: `${c.clientWidth}px`,
+      height: `${c.clientHeight}px`,
+    });
   }
 
   sync(tags: readonly Tag[]): void {
-    const r = this.root; if (!r) return;
+    const r = this.root;
+    if (!r) return;
     this.place();
     while (this.els.length < tags.length) {
-      const el = document.createElement("div"); el.className = "rtag";
-      const name = document.createElement("b"), bar = document.createElement("i"), fill = document.createElement("s");
-      bar.appendChild(fill); el.append(name, bar); r.appendChild(el);
+      const el = document.createElement("div");
+      el.className = "rtag";
+      const name = document.createElement("b"),
+        bar = document.createElement("i"),
+        fill = document.createElement("s");
+      bar.appendChild(fill);
+      el.append(name, bar);
+      r.appendChild(el);
       this.els.push({ el, name, fill, key: "" });
     }
     for (let i = 0; i < this.els.length; i++) {
-      const e = this.els[i]!, t = tags[i];
-      if (!t) { if (e.key !== "") { e.el.style.display = "none"; e.key = ""; } continue; }
+      const e = this.els[i]!,
+        t = tags[i];
+      if (!t) {
+        if (e.key !== "") {
+          e.el.style.display = "none";
+          e.key = "";
+        }
+        continue;
+      }
       const hp = t.hp < 0 ? -1 : Math.max(0, Math.min(1, t.hp));
       const key = `${t.ally ? 1 : 0}${t.boss ? 1 : 0}${t.warning ? 1 : 0}${t.elite ? 1 : 0}|${t.stair ?? ""}|${t.text}|${Math.round(t.x)}|${Math.round(t.y)}|${Math.round(t.w)}|${hp.toFixed(2)}`;
       if (key === e.key) continue;
@@ -168,8 +225,13 @@ export class TagLayer {
       e.el.style.display = "";
       if (e.name.textContent !== t.text) e.name.textContent = t.text;
       e.el.classList.toggle("nobar", hp < 0);
-      e.el.classList.toggle("ally", !!t.ally); e.el.classList.toggle("boss", !!t.boss); e.el.classList.toggle("warning", !!t.warning);e.el.classList.toggle("elite",!!t.elite);
-      e.el.classList.toggle("stair", !!t.stair); e.el.classList.toggle("taken", t.stair === "taken"); e.el.classList.toggle("other", t.stair === "other");
+      e.el.classList.toggle("ally", !!t.ally);
+      e.el.classList.toggle("boss", !!t.boss);
+      e.el.classList.toggle("warning", !!t.warning);
+      e.el.classList.toggle("elite", !!t.elite);
+      e.el.classList.toggle("stair", !!t.stair);
+      e.el.classList.toggle("taken", t.stair === "taken");
+      e.el.classList.toggle("other", t.stair === "other");
       if (hp >= 0) e.fill.style.width = `${Math.round(hp * 100)}%`;
       e.el.style.width = `${Math.round(t.w)}px`;
       e.el.style.transform = `translate(${Math.round(t.x - t.w / 2)}px, ${Math.round(t.y - TAG_H)}px)`;
@@ -178,18 +240,41 @@ export class TagLayer {
 
   private calls: { el: HTMLDivElement; key: string; text: string }[] = [];
   /** gfx round 1: the callout / caption plates this frame (≤ 2). A plate whose text changes pops in (`fresh`). */
-  plates(list: readonly (Plate | null)[]): void {   // fixed slots (boss · callout · caption): a slot's element keeps its plate
-    const r = this.root; if (!r) return;
+  plates(list: readonly (Plate | null)[]): void {
+    // fixed slots (boss · callout · caption): a slot's element keeps its plate
+    const r = this.root;
+    if (!r) return;
     this.place();
-    while (this.calls.length < list.length) { const el = document.createElement("div"); el.className = "rcall"; el.style.display = "none"; r.appendChild(el); this.calls.push({ el, key: "", text: "" }); }
+    while (this.calls.length < list.length) {
+      const el = document.createElement("div");
+      el.className = "rcall";
+      el.style.display = "none";
+      r.appendChild(el);
+      this.calls.push({ el, key: "", text: "" });
+    }
     for (let i = 0; i < this.calls.length; i++) {
-      const c = this.calls[i]!, p = list[i];
-      if (!p) { if (c.key !== "") { c.el.style.display = "none"; c.key = ""; } continue; }
+      const c = this.calls[i]!,
+        p = list[i];
+      if (!p) {
+        if (c.key !== "") {
+          c.el.style.display = "none";
+          c.key = "";
+        }
+        continue;
+      }
       const key = `${p.kind}|${p.text}|${Math.round(p.x)}|${Math.round(p.y)}|${Math.round(p.w)}`;
       if (key === c.key) continue;
-      c.key = key; c.el.style.display = "";
-      if (c.text !== p.text) { c.text = p.text; c.el.textContent = p.text; c.el.classList.remove("fresh"); void c.el.offsetWidth; c.el.classList.add("fresh"); }
-      c.el.classList.toggle("caption", p.kind === "caption"); c.el.classList.toggle("boss", p.kind === "boss");
+      c.key = key;
+      c.el.style.display = "";
+      if (c.text !== p.text) {
+        c.text = p.text;
+        c.el.textContent = p.text;
+        c.el.classList.remove("fresh");
+        void c.el.offsetWidth;
+        c.el.classList.add("fresh");
+      }
+      c.el.classList.toggle("caption", p.kind === "caption");
+      c.el.classList.toggle("boss", p.kind === "boss");
       const H = p.kind === "boss" ? 40 : CALL_H;
       c.el.style.width = `${Math.round(p.w)}px`;
       c.el.style.transform = `translate(${Math.round(p.x - p.w / 2)}px, ${Math.round(p.y - H)}px)`;
@@ -199,41 +284,95 @@ export class TagLayer {
   /** gfx round 1 (raters: "no shield-shatter", "no clear break"): a boss's guard breaks — his shield icon splits in two over him and
    *  falls away (CSS, 0.8 s). Only once the icon has loaded (art never blocks: no icon, no shatter). */
   shatter(x: number, y: number): void {
-    const r = this.root; if (!r || !shieldOk) return;
-    const el = document.createElement("div"); el.className = PX ? "rshatter px" : "rshatter";
-    el.style.transform = `translate(${Math.round(x - (PX ? 52 : 60))}px, ${Math.round(y - (PX ? 52 + SHIELD_LIFT : 96))}px)`;   // (round 14: above his head, not over his face; round 22: clear of it)
-    for (let i = 0; i < 2; i++) { const h = document.createElement("i"); h.style.backgroundImage = `url(${SHIELD})`; el.appendChild(h); }
-    if (PX) el.appendChild(document.createElement("s"));   // gfx round 22: the crack's white-hot seam
+    const r = this.root;
+    if (!r || !shieldOk) return;
+    const el = document.createElement("div");
+    el.className = PX ? "rshatter px" : "rshatter";
+    el.style.transform = `translate(${Math.round(x - (PX ? 52 : 60))}px, ${Math.round(y - (PX ? 52 + SHIELD_LIFT : 96))}px)`; // (round 14: above his head, not over his face; round 22: clear of it)
+    for (let i = 0; i < 2; i++) {
+      const h = document.createElement("i");
+      h.style.backgroundImage = `url(${SHIELD})`;
+      el.appendChild(h);
+    }
+    if (PX) el.appendChild(document.createElement("s")); // gfx round 22: the crack's white-hot seam
     // gfx round 10 (raters: "burst the shield into big shards"): the painted shards fly out, spinning, and fall
-    SHARDS.forEach((u, i) => { const b = document.createElement("b"); b.style.backgroundImage = `url(${u})`; b.style.setProperty("--dx", `${[-70, 64, -34, 44][i]}px`); b.style.setProperty("--dy", `${[-30, -44, 60, 38][i]}px`); b.style.setProperty("--rot", `${[-220, 260, -140, 190][i]}deg`); el.appendChild(b); });
-    r.appendChild(el); setTimeout(() => el.remove(), 1600);
+    SHARDS.forEach((u, i) => {
+      const b = document.createElement("b");
+      b.style.backgroundImage = `url(${u})`;
+      b.style.setProperty("--dx", `${[-70, 64, -34, 44][i]}px`);
+      b.style.setProperty("--dy", `${[-30, -44, 60, 38][i]}px`);
+      b.style.setProperty("--rot", `${[-220, 260, -140, 190][i]}deg`);
+      el.appendChild(b);
+    });
+    r.appendChild(el);
+    setTimeout(() => el.remove(), 1600);
   }
 
   /** gfx round 10 (the coordinator approved `BROKEN` / `SLAIN`; raters: "a 'BROKEN' stamp", "a 'WARLORD SLAIN' plaque"): a word stamped
    *  over a boss at his break or his fall — slams in, holds, fades (CSS, 1.6 s) */
   stamp(text: string, x: number, y: number, kind: "broken" | "slain"): void {
-    const r = this.root; if (!r) return;
-    const el = document.createElement("div"); el.className = `rstamp ${kind}`; el.textContent = text;
+    const r = this.root;
+    if (!r) return;
+    const el = document.createElement("div");
+    el.className = `rstamp ${kind}`;
+    el.textContent = text;
     el.style.transform = `translate(${Math.round(x)}px, ${Math.round(y)}px) translate(-50%, -50%)`;
-    r.appendChild(el); setTimeout(() => el.remove(), 1700);
+    r.appendChild(el);
+    setTimeout(() => el.remove(), 1700);
   }
 
   private nums: { el: HTMLDivElement; key: string }[] = [];
   /** gfx round 6: the damage numbers (CSS px: x centre, y baseline) — pooled, the game's face with a black outline, popping (sc). */
-  numbers(list: readonly { x: number; y: number; text: string; col: readonly number[]; sc: number; a: number; big: boolean }[]): void {
-    const r = this.root; if (!r) return;
+  numbers(
+    list: readonly {
+      x: number;
+      y: number;
+      text: string;
+      col: readonly number[];
+      sc: number;
+      a: number;
+      big: boolean;
+    }[],
+  ): void {
+    const r = this.root;
+    if (!r) return;
     this.place();
-    while (this.nums.length < list.length) { const el = document.createElement("div"); el.className = "rnum"; el.style.display = "none"; r.appendChild(el); this.nums.push({ el, key: "" }); }
+    while (this.nums.length < list.length) {
+      const el = document.createElement("div");
+      el.className = "rnum";
+      el.style.display = "none";
+      r.appendChild(el);
+      this.nums.push({ el, key: "" });
+    }
     for (let i = 0; i < this.nums.length; i++) {
-      const n = this.nums[i]!, p = list[i];
-      if (!p) { if (n.key !== "") { n.el.style.display = "none"; n.key = ""; } continue; }
+      const n = this.nums[i]!,
+        p = list[i];
+      if (!p) {
+        if (n.key !== "") {
+          n.el.style.display = "none";
+          n.key = "";
+        }
+        continue;
+      }
       const c = `rgb(${Math.round(p.col[0]! * 255)},${Math.round(p.col[1]! * 255)},${Math.round(p.col[2]! * 255)})`;
       const key = `${p.text}|${c}|${p.big ? 1 : 0}`;
-      if (key !== n.key) { n.key = key; n.el.textContent = p.text; n.el.style.color = c; n.el.classList.toggle("big", p.big); n.el.style.display = ""; }
+      if (key !== n.key) {
+        n.key = key;
+        n.el.textContent = p.text;
+        n.el.style.color = c;
+        n.el.classList.toggle("big", p.big);
+        n.el.style.display = "";
+      }
       n.el.style.opacity = p.a.toFixed(2);
       n.el.style.transform = `translate(${Math.round(p.x)}px, ${Math.round(p.y)}px) translate(-50%, -100%) scale(${(p.sc / 0.75).toFixed(2)})`;
     }
   }
 
-  dispose(): void { this.root?.remove(); this.root = null; this.els = []; this.calls = []; this.nums = []; }
+  dispose(): void {
+    this.root?.remove();
+    this.root = null;
+    this.els = [];
+    this.calls = [];
+    this.nums = [];
+  }
 }

@@ -35,6 +35,12 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 10
+      - name: Install web dependencies
+        run: pnpm --dir web install --frozen-lockfile
+      - name: Check formatting and lint
+        run: |
+          pnpm --dir web fmt:check
+          pnpm --dir web lint
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
@@ -50,8 +56,6 @@ jobs:
         run: cargo install wasm-pack --locked --version 0.13.1
       - name: Build release engine
         run: tools/wasm.sh --ship
-      - name: Install web dependencies
-        run: pnpm --dir web install --frozen-lockfile
       - name: Check chrome copy
         run: node tools/copy-lint.mjs
       - name: Build site

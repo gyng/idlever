@@ -7,7 +7,8 @@ import os from "node:os";
 /** The 1-minute load average against the cores; `high` from an eighth of them (4 on 32: the suite's own three or four
  *  SwiftShader browsers beside a timed test read 4–12; an idle box reads < 2). */
 export function load() {
-  const l1 = os.loadavg()[0], cores = os.availableParallelism();
+  const l1 = os.loadavg()[0],
+    cores = os.availableParallelism();
   return { l1, cores, high: l1 >= cores / 8 };
 }
 
@@ -19,5 +20,8 @@ export async function measured(measure) {
   const l = load();
   if (!l.high) return first;
   const again = await measure();
-  return { ...again, line: `${again.line} [retried once: load ${l.l1.toFixed(1)} on ${l.cores} cores; first reading: ${first.line}]` };
+  return {
+    ...again,
+    line: `${again.line} [retried once: load ${l.l1.toFixed(1)} on ${l.cores} cores; first reading: ${first.line}]`,
+  };
 }

@@ -5,20 +5,33 @@
 import skin from "./skin.json";
 import { h } from "./dom";
 
-type Skin = { frames: Record<string, { w: number; h: number; slice?: number }>; icons: string[]; portraits?: string[]; backdrops?: string[]; deco?: string[]; foes?: string[]; fx?: string[] };
+type Skin = {
+  frames: Record<string, { w: number; h: number; slice?: number }>;
+  icons: string[];
+  portraits?: string[];
+  backdrops?: string[];
+  deco?: string[];
+  foes?: string[];
+  fx?: string[];
+};
 const S = skin as Skin;
 const ICONS = new Set(S.icons);
 const PORTRAITS = new Set(S.portraits ?? []);
 const DECO = new Set(S.deco ?? []);
-export const decorationSrc = (id: string): string | null => DECO.has(id) ? `${import.meta.env.BASE_URL}ui/deco/${id}.webp` : null;
+export const decorationSrc = (id: string): string | null =>
+  DECO.has(id) ? `${import.meta.env.BASE_URL}ui/deco/${id}.webp` : null;
 
 /** Art pass: a painted headshot (`hero_<class>`, `pet_<kind>`, `captive`, `boss_<kind>`) when packed, else null (the caller keeps
  *  its fallback — the atlas sprite crop). */
-export const portraitSrc = (id: string): string | null => (PORTRAITS.has(id) ? `${import.meta.env.BASE_URL}ui/portraits/${id}.webp` : null);
+export const portraitSrc = (id: string): string | null =>
+  PORTRAITS.has(id) ? `${import.meta.env.BASE_URL}ui/portraits/${id}.webp` : null;
 
 /** gfx round 10 (raters: "show the killer"): a foe's painted head and shoulders (tools/foe-portraits.py) by kind, else null */
 const FOES = new Set(S.foes ?? []);
-export const foeSrc = (kind: string): string | null => { const k = kind.replace(/ /g, "_"); return FOES.has(k) ? `${import.meta.env.BASE_URL}ui/foes/${k}.webp` : null; };
+export const foeSrc = (kind: string): string | null => {
+  const k = kind.replace(/ /g, "_");
+  return FOES.has(k) ? `${import.meta.env.BASE_URL}ui/foes/${k}.webp` : null;
+};
 
 export const hasFrame = (name: string): boolean => name in S.frames;
 export const hasIcon = (name: string): boolean => ICONS.has(name);
@@ -27,31 +40,63 @@ export const hasIcon = (name: string): boolean => ICONS.has(name);
 export function applySkin(): void {
   const root = document.documentElement;
   for (const name of Object.keys(S.frames)) root.classList.add(`skin-${name.replace(/_/g, "-")}`);
-  for (const name of S.backdrops ?? []) root.classList.add(`skin-bd-${name.replace(/_/g, "-")}`);   // gfx round 1: painted backdrops (a place's back wall)
+  for (const name of S.backdrops ?? []) root.classList.add(`skin-bd-${name.replace(/_/g, "-")}`); // gfx round 1: painted backdrops (a place's back wall)
   for (const name of S.deco ?? []) root.classList.add(`skin-deco-${name.replace(/_/g, "-")}`);
   // gfx round 19 (raters: the report's strip "starts as an empty black frame" — the scroll's frame decoded on first use): the frames and
   // backdrops decode at boot
-  if (typeof Image !== "undefined") for (const u of [...Object.keys(S.frames).map((n) => `${import.meta.env.BASE_URL}ui/frames/${n}.png`), ...(S.backdrops ?? []).map((n) => `${import.meta.env.BASE_URL}ui/backdrops/${n}.webp`)]) { const im = new Image(); im.decoding = "async"; im.src = u; void im.decode?.().catch(() => undefined); }   // gfx round 4: the frame's carved pillar, the camp's braziers
+  if (typeof Image !== "undefined")
+    for (const u of [
+      ...Object.keys(S.frames).map((n) => `${import.meta.env.BASE_URL}ui/frames/${n}.png`),
+      ...(S.backdrops ?? []).map((n) => `${import.meta.env.BASE_URL}ui/backdrops/${n}.webp`),
+    ]) {
+      const im = new Image();
+      im.decoding = "async";
+      im.src = u;
+      void im.decode?.().catch(() => undefined);
+    } // gfx round 4: the frame's carved pillar, the camp's braziers
 }
 
 /** An icon: the packed PNG, or a CSS-drawn glyph (no text node, so `textContent` is the caller's label alone). */
 export function icon(name: string, glyph = ""): HTMLElement {
-  if (hasIcon(name)) return h("img", { class: `ico ico-${name}`, src: `${import.meta.env.BASE_URL}ui/icons/${name}.png`, alt: "", draggable: "false", "aria-hidden": "true" });
+  if (hasIcon(name))
+    return h("img", {
+      class: `ico ico-${name}`,
+      src: `${import.meta.env.BASE_URL}ui/icons/${name}.png`,
+      alt: "",
+      draggable: "false",
+      "aria-hidden": "true",
+    });
   return h("span", { class: `ico glyph ico-${name}`, "data-glyph": glyph, "aria-hidden": "true" });
 }
 
 /** gfx round 1 (camp.png: each rule tablet ends in its action's icon plaque): the icon for a rule's action — a family per icon; null
  *  when the family's icon is not packed (the tablet then has no plaque). */
 const VERB_ICON: [RegExp, string][] = [
-  [/^(fire|gunner_tactic)$/, "it_long_gun"], [/^aimed_shot$/, "v_gun_aim"], [/^close_burst$/, "v_gun_burst"],
-  [/^reload$/, "v_gun_reload"], [/^fast_reload$/, "v_gun_fast_reload"],
-  [/^smoke_retreat$/, "v_gun_smoke"], [/^finishing_shot$/, "v_gun_finish"],
-  [/^riposte$/, "style_sentinel"], [/^hex$/, "style_hexbinder"],
-  [/^(attack|cleave|backstab|flank|ambush|feint)$/, "v_attack"], [/^(shield_bash|bulwark|ward|taunt)$/, "v_shield"],
-  [/^(drink|second_wind)$/, "v_drink"], [/^read$/, "v_read"], [/^(throw|trap)$/, "v_throw"], [/^(retreat|kite)$/, "v_retreat"],
-  [/^back_corridor$/, "v_corridor"], [/^descend$/, "v_descend"], [/^return$/, "bail"], [/^bank$/, "gold"], [/^(rest|hold|wait)$/, "v_rest"],
-  [/^(shoot|volley|double_shot|mark)$/, "v_shoot"], [/^(bolt|nova|blink|slow|drain|burst|split)$/, "v_magic"],
-  [/^(vanish|smoke|shadowstep|steal)$/, "v_shadow"], [/^(explore|pick_up|free_captive)$/, "v_explore"], [/^(tame|recall|send|follow)$/, "party"],
+  [/^(fire|gunner_tactic)$/, "it_long_gun"],
+  [/^aimed_shot$/, "v_gun_aim"],
+  [/^close_burst$/, "v_gun_burst"],
+  [/^reload$/, "v_gun_reload"],
+  [/^fast_reload$/, "v_gun_fast_reload"],
+  [/^smoke_retreat$/, "v_gun_smoke"],
+  [/^finishing_shot$/, "v_gun_finish"],
+  [/^riposte$/, "style_sentinel"],
+  [/^hex$/, "style_hexbinder"],
+  [/^(attack|cleave|backstab|flank|ambush|feint)$/, "v_attack"],
+  [/^(shield_bash|bulwark|ward|taunt)$/, "v_shield"],
+  [/^(drink|second_wind)$/, "v_drink"],
+  [/^read$/, "v_read"],
+  [/^(throw|trap)$/, "v_throw"],
+  [/^(retreat|kite)$/, "v_retreat"],
+  [/^back_corridor$/, "v_corridor"],
+  [/^descend$/, "v_descend"],
+  [/^return$/, "bail"],
+  [/^bank$/, "gold"],
+  [/^(rest|hold|wait)$/, "v_rest"],
+  [/^(shoot|volley|double_shot|mark)$/, "v_shoot"],
+  [/^(bolt|nova|blink|slow|drain|burst|split)$/, "v_magic"],
+  [/^(vanish|smoke|shadowstep|steal)$/, "v_shadow"],
+  [/^(explore|pick_up|free_captive)$/, "v_explore"],
+  [/^(tame|recall|send|follow)$/, "party"],
 ];
 export function verbIcon(v: string): string | null {
   const id = VERB_ICON.find(([re]) => re.test(v))?.[1];
@@ -60,8 +105,36 @@ export function verbIcon(v: string): string | null {
 
 /** Moonlit character/relic silhouettes for styles/traits; action icons for extra tactics. */
 export function packageIcon(id: string): HTMLElement {
-  const actions: Record<string, string> = { boss_focus: "v_attack", corridor_fighting: "v_corridor", kite_archers: "v_shoot", thief_guard: "v_shield", gas_step: "v_retreat", pack_break: "v_throw", cadence: "v_attack", reflect_read: "v_shoot", noise_discipline: "v_shadow", deep_march: "v_descend", custom: "edit" };
+  const actions: Record<string, string> = {
+    boss_focus: "v_attack",
+    corridor_fighting: "v_corridor",
+    kite_archers: "v_shoot",
+    thief_guard: "v_shield",
+    gas_step: "v_retreat",
+    pack_break: "v_throw",
+    cadence: "v_attack",
+    reflect_read: "v_shoot",
+    noise_discipline: "v_shadow",
+    deep_march: "v_descend",
+    custom: "edit",
+  };
   const expressive = [7, 6, 4, 3, 2].some((version) => hasIcon(`pkg_${id}_v${version}`));
-  const name = hasIcon(`pkg_${id}_v7`) ? `pkg_${id}_v7` : hasIcon(`pkg_${id}_v6`) ? `pkg_${id}_v6` : hasIcon(`pkg_${id}_v4`) ? `pkg_${id}_v4` : hasIcon(`pkg_${id}_v3`) ? `pkg_${id}_v3` : hasIcon(`pkg_${id}_v2`) ? `pkg_${id}_v2` : hasIcon(`pkg_${id}`) ? `pkg_${id}` : actions[id] ?? "unlocks";
-  return h("span", { class: `icon-socket${expressive ? " expressive-emblem" : ""}`, "aria-hidden": "true" }, icon(name, "✦"));
+  const name = hasIcon(`pkg_${id}_v7`)
+    ? `pkg_${id}_v7`
+    : hasIcon(`pkg_${id}_v6`)
+      ? `pkg_${id}_v6`
+      : hasIcon(`pkg_${id}_v4`)
+        ? `pkg_${id}_v4`
+        : hasIcon(`pkg_${id}_v3`)
+          ? `pkg_${id}_v3`
+          : hasIcon(`pkg_${id}_v2`)
+            ? `pkg_${id}_v2`
+            : hasIcon(`pkg_${id}`)
+              ? `pkg_${id}`
+              : (actions[id] ?? "unlocks");
+  return h(
+    "span",
+    { class: `icon-socket${expressive ? " expressive-emblem" : ""}`, "aria-hidden": "true" },
+    icon(name, "✦"),
+  );
 }

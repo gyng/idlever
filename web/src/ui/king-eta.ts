@@ -17,24 +17,36 @@ export type KingEta = { day: number; today: number; far: boolean; bend: number }
 
 /** The day (1 = the lineage's first 24 h) the King may fall at the current pace; null before there is a pace to read (best < D5, under
  *  an hour old), once he is slain, or on an ended lineage. `far` past day 99. */
-export function kingEta(L: Pick<Lineage, "age_h" | "best_depth" | "walls" | "ended" | "runs" | "clock_s" | "trophies" | "king_eta_h">): KingEta | null {
-  const age = L.age_h, best = L.best_depth;
+export function kingEta(
+  L: Pick<
+    Lineage,
+    "age_h" | "best_depth" | "walls" | "ended" | "runs" | "clock_s" | "trophies" | "king_eta_h"
+  >,
+): KingEta | null {
+  const age = L.age_h,
+    best = L.best_depth;
   // owner review 2026-10-10 (`King · ~day 3` at best D7): no pace is read before the second band boss's floor
   if (best < 13) return null;
   // the core's own pace (Cut 118 §8): hours from now; 0 means slain (the line reads `slain`)
   if (typeof L.king_eta_h === "number" && !L.ended) {
     if (L.king_eta_h <= 0) return null;
-    const now = age ?? 0, today = Math.floor(now / 24) + 1, day = Math.max(today, Math.floor((now + L.king_eta_h) / 24) + 1);
+    const now = age ?? 0,
+      today = Math.floor(now / 24) + 1,
+      day = Math.max(today, Math.floor((now + L.king_eta_h) / 24) + 1);
     return { day, today, far: day > 99, bend: 0 };
   }
   if (age === undefined || !(age >= 1) || best < 5 || L.ended) return null;
   if (kingSlain(L)) return null;
   // the bend off the log: the oldest record still held against today's best, when they are hours apart and the depth moved
   let bend = BEND;
-  const recs = (L.runs ?? []).filter((r) => r.best && r.depth > 0).sort((a, b) => a.clock_s - b.clock_s);
+  const recs = (L.runs ?? [])
+    .filter((r) => r.best && r.depth > 0)
+    .sort((a, b) => a.clock_s - b.clock_s);
   const now = L.clock_s;
   if (recs.length && now !== undefined) {
-    const r0 = recs[0], back = (now - r0.clock_s) / 3600, age0 = age - back;
+    const r0 = recs[0],
+      back = (now - r0.clock_s) / 3600,
+      age0 = age - back;
     if (back >= 3 && age0 >= 0.5 && best > r0.depth) {
       const k = Math.log(best / r0.depth) / Math.log(age / age0);
       if (Number.isFinite(k)) bend = Math.min(1, Math.max(0.2, k));
@@ -48,10 +60,16 @@ export function kingEta(L: Pick<Lineage, "age_h" | "best_depth" | "walls" | "end
 }
 
 /** Round 2 §9: how far down to the King, 0..1 (the best floor of his 33). */
-export const kingShare = (L: Pick<Lineage, "best_depth" | "king_pct">): number => Math.max(0, Math.min(1, typeof L.king_pct === "number" ? L.king_pct / 100 : L.best_depth / KING_DEPTH));
+export const kingShare = (L: Pick<Lineage, "best_depth" | "king_pct">): number =>
+  Math.max(
+    0,
+    Math.min(1, typeof L.king_pct === "number" ? L.king_pct / 100 : L.best_depth / KING_DEPTH),
+  );
 /** Cut 122 §3 (core: `walls[].slain` and `king_eta_h` read this descent): the King is slain only in the descent on screen — the core's
  *  `king_eta_h` (0 = slain) when it sends one, else its walls; the lineage-wide trophy (any descent) only for an older save without either. */
-export const kingSlain = (L: Pick<Lineage, "walls" | "ended" | "trophies" | "king_eta_h">): boolean => {
+export const kingSlain = (
+  L: Pick<Lineage, "walls" | "ended" | "trophies" | "king_eta_h">,
+): boolean => {
   const king = L.walls?.find((w) => w.boss === "mirror_king");
   if (king) return king.slain;
   if (typeof L.king_eta_h === "number") return L.king_eta_h === 0 || !!L.ended;
@@ -62,16 +80,49 @@ export const kingSlain = (L: Pick<Lineage, "walls" | "ended" | "trophies" | "kin
 /** `King · ~day 23` (`King · far off`), a thin % bar to him and what comes after him in plain words (`next: harder dungeon` — the
  *  ascension; owner review 2026-10-10: `then ascend` read as jargon); its tip names the crudeness. Slain: `King · slain · next: harder
  *  dungeon`. Null when there is nothing to say yet. */
-export function kingLine(L: Parameters<typeof kingEta>[0] & Pick<Lineage, "king_pct">, cls = ""): HTMLElement | null {
+export function kingLine(
+  L: Parameters<typeof kingEta>[0] & Pick<Lineage, "king_pct">,
+  cls = "",
+): HTMLElement | null {
   const slain = kingSlain(L);
   const e = slain ? null : kingEta(L);
   if (!slain && !e && L.best_depth < KING_DEPTH) return null;
   const pct = Math.min(slain ? 100 : 99, Math.round(kingShare(L) * 100));
-  return h("span", { class: `king-eta num ${cls}`.trim(), "data-day": slain ? "slain" : !e ? "reached" : e.far ? "far" : e.day, "data-pct": slain ? 100 : pct,
-    "data-src": typeof L.king_eta_h === "number" ? "core" : "client",
-    title: typeof L.king_eta_h === "number" ? /* copy:tooltip */ "current pace carried on · not a promise" : /* copy:tooltip */ "crude · current pace carried on · not a promise" },
-    h("b", null, /* copy:label */ "King"), " · ", slain ? /* copy:callout */ "slain" : !e ? /* copy:callout */ "reached" : e.far ? /* copy:callout */ "far off" : /* copy:callout */ `~day ${e.day}`,
-    h("span", { class: "king-bar", role: "img", "aria-label": `${slain ? 100 : pct}%` }, h("span", { class: "fill", style: `width:${slain ? 100 : pct}%` })),
+  return h(
+    "span",
+    {
+      class: `king-eta num ${cls}`.trim(),
+      "data-day": slain ? "slain" : !e ? "reached" : e.far ? "far" : e.day,
+      "data-pct": slain ? 100 : pct,
+      "data-src": typeof L.king_eta_h === "number" ? "core" : "client",
+      title:
+        typeof L.king_eta_h === "number"
+          ? /* copy:tooltip */ "current pace carried on · not a promise"
+          : /* copy:tooltip */ "crude · current pace carried on · not a promise",
+    },
+    h("b", null, /* copy:label */ "King"),
+    " · ",
+    slain
+      ? /* copy:callout */ "slain"
+      : !e
+        ? /* copy:callout */ "reached"
+        : e.far
+          ? /* copy:callout */ "far off"
+          : /* copy:callout */ `~day ${e.day}`,
+    h(
+      "span",
+      { class: "king-bar", role: "img", "aria-label": `${slain ? 100 : pct}%` },
+      h("span", { class: "fill", style: `width:${slain ? 100 : pct}%` }),
+    ),
     h("small", { class: "king-pct" }, `${slain ? 100 : pct}%`),
-    h("small", { class: "king-after dim", title: /* copy:tooltip */ "ascension · harder dungeon · same bloodline" }, " · ", /* copy:callout */ "next: harder dungeon"));
+    h(
+      "small",
+      {
+        class: "king-after dim",
+        title: /* copy:tooltip */ "ascension · harder dungeon · same bloodline",
+      },
+      " · ",
+      /* copy:callout */ "next: harder dungeon",
+    ),
+  );
 }

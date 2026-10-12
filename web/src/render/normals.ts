@@ -8,8 +8,8 @@
 import * as THREE from "three";
 import { BAYER_GLSL, QUAD_VERT } from "./layers";
 
-const R = 4;          // the bevel: texels from the edge to the dome's top
-const DETAIL = 0.35;  // the painted luma's share of the height
+const R = 4; // the bevel: texels from the edge to the dome's top
+const DETAIL = 0.35; // the painted luma's share of the height
 const SETTLE_MS = 400;
 
 const FRAG = /* glsl */ `
@@ -28,47 +28,84 @@ void main() {
 
 /** the normal map of every sprite in `src` (rgb = n * 0.5 + 0.5 in world orientation, y up; a = coverage) */
 export function deriveNormals(src: HTMLCanvasElement, out: HTMLCanvasElement): void {
-  const w = src.width, h = src.height;
+  const w = src.width,
+    h = src.height;
   const sd = src.getContext("2d", { willReadFrequently: true })!.getImageData(0, 0, w, h).data;
-  const INF = 1e6, d = new Float32Array(w * h);
+  const INF = 1e6,
+    d = new Float32Array(w * h);
   for (let i = 0; i < w * h; i++) d[i] = sd[i * 4 + 3]! >= 128 ? INF : 0;
   // chamfer (3-4) distance to the nearest uncovered texel, two passes
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-    const i = y * w + x; if (!d[i]) continue;
-    let v = d[i]!;
-    if (x > 0) v = Math.min(v, d[i - 1]! + 3); else v = Math.min(v, 3);
-    if (y > 0) { v = Math.min(v, d[i - w]! + 3); if (x > 0) v = Math.min(v, d[i - w - 1]! + 4); if (x < w - 1) v = Math.min(v, d[i - w + 1]! + 4); } else v = Math.min(v, 3);
-    d[i] = v;
-  }
-  for (let y = h - 1; y >= 0; y--) for (let x = w - 1; x >= 0; x--) {
-    const i = y * w + x; if (!d[i]) continue;
-    let v = d[i]!;
-    if (x < w - 1) v = Math.min(v, d[i + 1]! + 3); else v = Math.min(v, 3);
-    if (y < h - 1) { v = Math.min(v, d[i + w]! + 3); if (x < w - 1) v = Math.min(v, d[i + w + 1]! + 4); if (x > 0) v = Math.min(v, d[i + w - 1]! + 4); } else v = Math.min(v, 3);
-    d[i] = v;
-  }
+  for (let y = 0; y < h; y++)
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      if (!d[i]) continue;
+      let v = d[i]!;
+      if (x > 0) v = Math.min(v, d[i - 1]! + 3);
+      else v = Math.min(v, 3);
+      if (y > 0) {
+        v = Math.min(v, d[i - w]! + 3);
+        if (x > 0) v = Math.min(v, d[i - w - 1]! + 4);
+        if (x < w - 1) v = Math.min(v, d[i - w + 1]! + 4);
+      } else v = Math.min(v, 3);
+      d[i] = v;
+    }
+  for (let y = h - 1; y >= 0; y--)
+    for (let x = w - 1; x >= 0; x--) {
+      const i = y * w + x;
+      if (!d[i]) continue;
+      let v = d[i]!;
+      if (x < w - 1) v = Math.min(v, d[i + 1]! + 3);
+      else v = Math.min(v, 3);
+      if (y < h - 1) {
+        v = Math.min(v, d[i + w]! + 3);
+        if (x < w - 1) v = Math.min(v, d[i + w + 1]! + 4);
+        if (x > 0) v = Math.min(v, d[i + w - 1]! + 4);
+      } else v = Math.min(v, 3);
+      d[i] = v;
+    }
   const H = new Float32Array(w * h);
   for (let i = 0; i < w * h; i++) {
     if (!d[i]) continue;
-    const t = Math.min(1, d[i]! / 3 / R), dome = Math.sqrt(1 - (1 - t) * (1 - t));
+    const t = Math.min(1, d[i]! / 3 / R),
+      dome = Math.sqrt(1 - (1 - t) * (1 - t));
     const l = (sd[i * 4]! * 0.2126 + sd[i * 4 + 1]! * 0.7152 + sd[i * 4 + 2]! * 0.0722) / 255;
     H[i] = dome * (1 - DETAIL) + l * DETAIL;
   }
-  const ctx = out.getContext("2d")!, img = ctx.createImageData(w, h), o = img.data;
-  const at = (x: number, y: number): number => (x < 0 || y < 0 || x >= w || y >= h ? 0 : H[y * w + x]!);
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-    const i = y * w + x; if (!d[i]) continue;
-    const gx = (at(x + 1, y) - at(x - 1, y)) * 0.5, gy = (at(x, y + 1) - at(x, y - 1)) * 0.5;   // canvas y is down
-    let nx = -gx * 2.2, ny = gy * 2.2, nz = 1;                                                // world y is up
-    const k = 1 / Math.hypot(nx, ny, nz); nx *= k; ny *= k; nz *= k;
-    o[i * 4] = Math.round((nx * 0.5 + 0.5) * 255); o[i * 4 + 1] = Math.round((ny * 0.5 + 0.5) * 255); o[i * 4 + 2] = Math.round((nz * 0.5 + 0.5) * 255); o[i * 4 + 3] = 255;
-  }
+  const ctx = out.getContext("2d")!,
+    img = ctx.createImageData(w, h),
+    o = img.data;
+  const at = (x: number, y: number): number =>
+    x < 0 || y < 0 || x >= w || y >= h ? 0 : H[y * w + x]!;
+  for (let y = 0; y < h; y++)
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      if (!d[i]) continue;
+      const gx = (at(x + 1, y) - at(x - 1, y)) * 0.5,
+        gy = (at(x, y + 1) - at(x, y - 1)) * 0.5; // canvas y is down
+      let nx = -gx * 2.2,
+        ny = gy * 2.2,
+        nz = 1; // world y is up
+      const k = 1 / Math.hypot(nx, ny, nz);
+      nx *= k;
+      ny *= k;
+      nz *= k;
+      o[i * 4] = Math.round((nx * 0.5 + 0.5) * 255);
+      o[i * 4 + 1] = Math.round((ny * 0.5 + 0.5) * 255);
+      o[i * 4 + 2] = Math.round((nz * 0.5 + 0.5) * 255);
+      o[i * 4 + 3] = 255;
+    }
   ctx.putImageData(img, 0, 0);
 }
 
 /** the sprites' normal pass: a twin of the entity layer drawn into its own target (the size of the main one) */
 export class SpriteNormals {
-  readonly target = new THREE.WebGLRenderTarget(4, 4, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, generateMipmaps: false, depthBuffer: true, colorSpace: THREE.NoColorSpace });
+  readonly target = new THREE.WebGLRenderTarget(4, 4, {
+    minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
+    generateMipmaps: false,
+    depthBuffer: true,
+    colorSpace: THREE.NoColorSpace,
+  });
   readonly scene = new THREE.Scene();
   readonly material: THREE.ShaderMaterial;
   private canvas = document.createElement("canvas");
@@ -80,43 +117,72 @@ export class SpriteNormals {
 
   constructor(spriteTex: THREE.Texture) {
     const image = spriteTex.image as { width?: number; height?: number } | undefined;
-    this.canvas.width = image?.width ?? 1; this.canvas.height = image?.height ?? 1;
+    this.canvas.width = image?.width ?? 1;
+    this.canvas.height = image?.height ?? 1;
     this.tex = this.makeTexture();
-    this.material = new THREE.ShaderMaterial({ vertexShader: QUAD_VERT, fragmentShader: FRAG, uniforms: { map: { value: spriteTex }, nmap: { value: this.tex } },
-      transparent: false, depthTest: true, depthWrite: true, side: THREE.DoubleSide });
+    this.material = new THREE.ShaderMaterial({
+      vertexShader: QUAD_VERT,
+      fragmentShader: FRAG,
+      uniforms: { map: { value: spriteTex }, nmap: { value: this.tex } },
+      transparent: false,
+      depthTest: true,
+      depthWrite: true,
+      side: THREE.DoubleSide,
+    });
   }
   private makeTexture(): THREE.CanvasTexture {
     const tex = new THREE.CanvasTexture(this.canvas);
-    tex.minFilter = THREE.NearestFilter; tex.magFilter = THREE.NearestFilter; tex.generateMipmaps = false;
-    tex.colorSpace = THREE.NoColorSpace; tex.flipY = true; tex.premultiplyAlpha = false;
+    tex.minFilter = THREE.NearestFilter;
+    tex.magFilter = THREE.NearestFilter;
+    tex.generateMipmaps = false;
+    tex.colorSpace = THREE.NoColorSpace;
+    tex.flipY = true;
+    tex.premultiplyAlpha = false;
     return tex;
   }
-  add(mesh: THREE.Mesh): void { this.scene.add(mesh); }
+  add(mesh: THREE.Mesh): void {
+    this.scene.add(mesh);
+  }
   /** re-derive when the sprite sheet changed (cheap otherwise) */
   sync(sheet: { canvas: HTMLCanvasElement; version: number }, now = performance.now()): void {
     if (sheet.version === this.version) return;
     // a derivation is ~20 ms: it waits for the sheet to settle (the atlas's load allocates hundreds of slots in a burst; a new kind's
     // fallback one) — until then a new sprite simply draws unshaded (its normal texels are empty)
-    if (sheet.version !== this.seen) { this.seen = sheet.version; this.since = now; return; }
+    if (sheet.version !== this.seen) {
+      this.seen = sheet.version;
+      this.since = now;
+      return;
+    }
     if (this.version >= 0 && now - this.since < SETTLE_MS) return;
     this.version = sheet.version;
     if (this.canvas.width !== sheet.canvas.width || this.canvas.height !== sheet.canvas.height) {
       // WebGL texture storage is immutable after its first upload. Resizing the
       // canvas alone would upload a larger image into the old allocation.
-      this.tex.dispose(); this.canvas.width = sheet.canvas.width; this.canvas.height = sheet.canvas.height;
-      this.tex = this.makeTexture(); this.material.uniforms.nmap!.value = this.tex;
+      this.tex.dispose();
+      this.canvas.width = sheet.canvas.width;
+      this.canvas.height = sheet.canvas.height;
+      this.tex = this.makeTexture();
+      this.material.uniforms.nmap!.value = this.tex;
     }
     deriveNormals(sheet.canvas, this.canvas);
     this.tex.needsUpdate = true;
   }
   /** cohort 24: a GL context restore re-uploads the derived normals */
-  invalidate(): void { this.tex.needsUpdate = true; }
-  setSize(w: number, h: number): void { this.target.setSize(w, h); }
+  invalidate(): void {
+    this.tex.needsUpdate = true;
+  }
+  setSize(w: number, h: number): void {
+    this.target.setSize(w, h);
+  }
   render(renderer: THREE.WebGLRenderer, camera: THREE.Camera): void {
     renderer.setRenderTarget(this.target);
     renderer.setClearColor(this.clear, 0);
     renderer.clear(true, true, false);
     renderer.render(this.scene, camera);
   }
-  dispose(): void { this.target.dispose(); this.material.dispose(); this.tex.dispose(); }
+  dispose(): void {
+    this.target.dispose();
+    this.material.dispose();
+    this.tex.dispose();
+  }
 }

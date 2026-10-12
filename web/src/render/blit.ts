@@ -263,7 +263,7 @@ const GRADES: Record<string, [number, number, number, number, number, number]> =
   // moonlit night over it — rgb a touch toward MOON, a low ambient (~60 % of the frame in INK/UMBRA), the EMBER pools (lift) the warm
   // counterpoint. The v2 grades (warm brown Warrens, ochre Burrows) are in git history at 7253bb9.
   default: [0.96, 0.99, 1.05, 0.84, 0.95, 1],
-  warrens: [0.96, 0.98, 1.04, 0.84, 1.0, 1],   // round 28: ambient a step up (0.74; r27 "half the screen near-black")
+  warrens: [0.96, 0.98, 1.04, 0.84, 1.0, 1], // round 28: ambient a step up (0.74; r27 "half the screen near-black")
   burrows: [1, 0.98, 0.97, 0.84, 0.95, 1],
   fens: [0.94, 1, 1.05, 0.72, 1.0, 0.9],
   crypt: [0.95, 0.97, 1.06, 0.84, 0.85, 0.95],
@@ -275,9 +275,16 @@ const GRADES: Record<string, [number, number, number, number, number, number]> =
 };
 
 /** gfx round 10: the world's contrast per biome (FX > 0; the Fens' plank stripes and the Warrens' flagstones read as noise behind the cast) */
-const CONTRAST: Record<string, number> = { fens: 1.02, warrens: 1, burrows: 1, crypt: 0.9, foundry: 0.9, deep: 0.9 };   // gfx round 18: the painted register carries its own values
+const CONTRAST: Record<string, number> = {
+  fens: 1.02,
+  warrens: 1,
+  burrows: 1,
+  crypt: 0.9,
+  foundry: 0.9,
+  deep: 0.9,
+}; // gfx round 18: the painted register carries its own values
 
-const MIST: Record<string, number> = { fens: 0.18, crypt: 0.12, deep: 0.14 };   // (round 18: 0.42 "flattens the floor, walls and items together")   // gfx round 11: ground mist per biome (FX > 0)
+const MIST: Record<string, number> = { fens: 0.18, crypt: 0.12, deep: 0.14 }; // (round 18: 0.42 "flattens the floor, walls and items together")   // gfx round 11: ground mist per biome (FX > 0)
 
 export class Blit {
   readonly scene = new THREE.Scene();
@@ -300,23 +307,37 @@ export class Blit {
         uPal: { value: this.palArr },
         uPalN: { value: 8 },
         uDither: { value: 0.09 },
-        uTint: { value: 0.3 },   // was 0.5: monsters lost their painted contrast on same-hue floors
+        uTint: { value: 0.3 }, // was 0.5: monsters lost their painted contrast on same-hue floors
         uFade: { value: 0 },
         uFog: { value: new THREE.Vector2(5, 7.5) },
         uLights: { value: Array.from({ length: 12 }, () => new THREE.Vector2()) },
         uLightN: { value: 0 },
         uLightK: { value: 1 },
-        uWarm: { value: new THREE.Vector3(0.04, 0.07, 0.12) },   // phase 2: a lit sprite takes a cold MIST edge, not amber
+        uWarm: { value: new THREE.Vector3(0.04, 0.07, 0.12) }, // phase 2: a lit sprite takes a cold MIST edge, not amber
         uGrade: { value: new THREE.Vector3(1, 1, 1) },
         uAmbient: { value: 0.86 },
         uLiftK: { value: 0.6 },
-        uLightCol: { value: new THREE.Vector3(1.0, 0.62, 0.26) },   // phase 2: EMBER
-        uSat: { value: 1 }, uCon: { value: 1 }, uMist: { value: 0 }, uSprHue: { value: 0.5 },
+        uLightCol: { value: new THREE.Vector3(1.0, 0.62, 0.26) }, // phase 2: EMBER
+        uSat: { value: 1 },
+        uCon: { value: 1 },
+        uMist: { value: 0 },
+        uSprHue: { value: 0.5 },
         // juice (docs/JUICE.md): read only when FX > 0
-        uLightMap: { value: null }, uMap: { value: new THREE.Vector2(1, 1) }, uBloom: { value: null }, uBloomK: { value: 0 },
-        uTexel: { value: new THREE.Vector2(1, 1) }, uVig: { value: new THREE.Vector4(0, 0, 0, 0) }, uVigBase: { value: 0 }, uDesat: { value: 0 },
-        uAmbK: { value: 0.8 }, uTime: { value: 0 }, uNormal: { value: null }, uHeat: { value: Array.from({ length: 8 }, () => new THREE.Vector2()) }, uHeatN: { value: 0 },
-        uWashTint: { value: new THREE.Vector3(...hex3(WASH_TINT.default!)) }, uWashDpr: { value: 1 },
+        uLightMap: { value: null },
+        uMap: { value: new THREE.Vector2(1, 1) },
+        uBloom: { value: null },
+        uBloomK: { value: 0 },
+        uTexel: { value: new THREE.Vector2(1, 1) },
+        uVig: { value: new THREE.Vector4(0, 0, 0, 0) },
+        uVigBase: { value: 0 },
+        uDesat: { value: 0 },
+        uAmbK: { value: 0.8 },
+        uTime: { value: 0 },
+        uNormal: { value: null },
+        uHeat: { value: Array.from({ length: 8 }, () => new THREE.Vector2()) },
+        uHeatN: { value: 0 },
+        uWashTint: { value: new THREE.Vector3(...hex3(WASH_TINT.default!)) },
+        uWashDpr: { value: 1 },
       },
       defines: { FX: 0, LOOK: 0 },
       depthTest: false,
@@ -337,27 +358,39 @@ export class Blit {
 
   /** second art pass: the world's colour grade and light for a biome (GRADES; unknown biomes neutral) */
   setGrade(biome: string): void {
-    const g = GRADES[biome] ?? GRADES.default!, u = this.material.uniforms;
+    const g = GRADES[biome] ?? GRADES.default!,
+      u = this.material.uniforms;
     (u.uGrade!.value as THREE.Vector3).set(g[0], g[1], g[2]);
-    u.uAmbient!.value = g[3]; u.uLiftK!.value = g[4]; u.uSat!.value = g[5]; u.uCon!.value = CONTRAST[biome] ?? 1; u.uMist!.value = MIST[biome] ?? 0; u.uSprHue!.value = biome === "fens" ? 0.15 : 0.5;
+    u.uAmbient!.value = g[3];
+    u.uLiftK!.value = g[4];
+    u.uSat!.value = g[5];
+    u.uCon!.value = CONTRAST[biome] ?? 1;
+    u.uMist!.value = MIST[biome] ?? 0;
+    u.uSprHue!.value = biome === "fens" ? 0.15 : 0.5;
     (u.uWashTint!.value as THREE.Vector3).set(...hex3(WASH_TINT[biome] ?? WASH_TINT.default!));
   }
 
   /** art pass: this frame's torch flames (world env texels; the first 12 are used) and the flicker scale */
   setLights(ls: readonly (readonly [number, number])[], k = 1): void {
-    const u = this.material.uniforms, arr = u.uLights!.value as THREE.Vector2[];
+    const u = this.material.uniforms,
+      arr = u.uLights!.value as THREE.Vector2[];
     const n = Math.min(arr.length, ls.length);
     for (let i = 0; i < n; i++) arr[i]!.set(ls[i]![0], ls[i]![1]);
-    u.uLightN!.value = n; u.uLightK!.value = k;
+    u.uLightN!.value = n;
+    u.uLightK!.value = k;
   }
 
   /** juice: the effects tier compiled into the shader (0 = low: the pre-juice blit exactly; 1 = med; 2 = high) */
   setFx(level: number): void {
     const d = this.material.defines as { FX: number; LOOK: number };
-    const look = level > 0 && this.wash ? 1 : 0;   // the wash look never reaches the `low` tier
+    const look = level > 0 && this.wash ? 1 : 0; // the wash look never reaches the `low` tier
     if (d.FX === level && d.LOOK === look) return;
-    d.FX = level; d.LOOK = look; this.material.needsUpdate = true;
+    d.FX = level;
+    d.LOOK = look;
+    this.material.needsUpdate = true;
   }
 
-  dispose(): void { this.material.dispose(); }
+  dispose(): void {
+    this.material.dispose();
+  }
 }

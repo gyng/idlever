@@ -5,215 +5,691 @@
    columns a screen lacks (a phone's DOM is unchanged); sheets open beside the tile that opened them (ui/sheet.ts `placeWide`). ===== */
 
 /* the columns and the meters' slot exist on a phone only by accident (a resize across the breakpoint): never drawn there */
-.rules-col, .side-col, .meters-slot { display: none; }
+.rules-col,
+.side-col,
+.meters-slot {
+  display: none;
+}
 
 @media (min-width: 1024px) {
-  :root { --wide-l: clamp(360px, 28vw, 470px); --wide-r: clamp(230px, 17vw, 290px); }
-  body.framed { font-size: 18px; }
+  :root {
+    --wide-l: clamp(360px, 28vw, 470px);
+    --wide-r: clamp(230px, 17vw, 290px);
+  }
+  body.framed {
+    font-size: 18px;
+  }
 
   /* --- the frame: one grid, edge to edge --- */
-  main.frame, main.frame.watch { max-width: none; box-shadow: none;
+  main.frame,
+  main.frame.watch {
+    max-width: none;
+    box-shadow: none;
     grid-template-columns: var(--wide-l) minmax(0, 1fr) var(--wide-r);
     grid-template-rows: auto minmax(0, 1fr) auto;
-    grid-template-areas: "bar bar bar" "rules well side" "con con con"; }
-  main.frame > .topbar { grid-area: bar; }
-  main.frame > .console { grid-area: con; }
-  main.frame > .well, main.frame > .stage { grid-area: well; }
-  main.frame > .rules-col { grid-area: rules; }
-  main.frame > .side-col { grid-area: side; }
+    grid-template-areas: "bar bar bar" "rules well side" "con con con";
+  }
+  main.frame > .topbar {
+    grid-area: bar;
+  }
+  main.frame > .console {
+    grid-area: con;
+  }
+  main.frame > .well,
+  main.frame > .stage {
+    grid-area: well;
+  }
+  main.frame > .rules-col {
+    grid-area: rules;
+  }
+  main.frame > .side-col {
+    grid-area: side;
+  }
   /* take control: the hand-driving panel under the well, between the columns (an auto row: empty when hidden) */
-  main.frame.watch { grid-template-rows: auto minmax(0, 1fr) auto auto; grid-template-areas: "bar bar bar" "rules well side" "rules ctl side" "con con con"; }
-  main.frame > .ctl { grid-area: ctl; }
+  main.frame.watch {
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "bar bar bar" "rules well side" "rules ctl side" "con con con";
+  }
+  main.frame > .ctl {
+    grid-area: ctl;
+  }
 
   /* the side columns: carved stone (the console's own frame), the tablets / the shaft set into it */
-  .rules-col, .side-col { display: flex; flex-direction: column; gap: 10px; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
-    padding: 14px 14px 16px; position: relative; z-index: 1;
-    background: radial-gradient(ellipse at 50% 0%, rgba(170, 191, 213, .07), transparent 60%), linear-gradient(90deg, #161521, var(--umbra) 50%, #14131d);
-    box-shadow: inset 0 0 0 1px var(--ink), inset 0 0 24px rgba(13, 12, 20, .8); }
-  .skin-console :is(.rules-col, .side-col) { border: 16px solid transparent; border-image: url(/ui/frames/console.png) 48 fill / 20px stretch; background-clip: padding-box; padding: 2px 4px 6px; }
-  .rules-col { border-right: 0; }
-  .rules-col .editor { display: flex; flex-direction: column; gap: 8px; }
-  .rules-col .rows { display: flex; flex-direction: column; gap: 8px; }
-  .rules-col .row.tablet.ro { cursor: default; }
-  .rules-col .row.tablet.ro:active { filter: none; transform: none; }
-  .row.tablet .chip { font-size: 17px; }
-  .meters-slot { display: block; flex: 1 1 auto; min-height: 140px; border-radius: 4px;
-    background: repeating-linear-gradient(0deg, rgba(13, 12, 20, .18) 0 2px, transparent 2px 22px), linear-gradient(var(--ink), var(--ink));
-    box-shadow: inset 0 0 0 2px #292f4a, inset 0 0 18px rgba(13, 12, 20, .9), 0 1px 0 rgba(234, 223, 197, .08); }
-  .side-col .shaft { position: static; pointer-events: none; }
-  .side-col .shaft .shaft-head, .camp .shaft .shaft-head { font-size: 13px; }
+  .rules-col,
+  .side-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    padding: 14px 14px 16px;
+    position: relative;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(170, 191, 213, 0.07), transparent 60%),
+      linear-gradient(90deg, #161521, var(--umbra) 50%, #14131d);
+    box-shadow:
+      inset 0 0 0 1px var(--ink),
+      inset 0 0 24px rgba(13, 12, 20, 0.8);
+  }
+  .skin-console :is(.rules-col, .side-col) {
+    border: 16px solid transparent;
+    border-image: url(/ui/frames/console.png) 48 fill / 20px stretch;
+    background-clip: padding-box;
+    padding: 2px 4px 6px;
+  }
+  .rules-col {
+    border-right: 0;
+  }
+  .rules-col .editor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rules-col .rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rules-col .row.tablet.ro {
+    cursor: default;
+  }
+  .rules-col .row.tablet.ro:active {
+    filter: none;
+    transform: none;
+  }
+  .row.tablet .chip {
+    font-size: 17px;
+  }
+  .meters-slot {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 140px;
+    border-radius: 4px;
+    background:
+      repeating-linear-gradient(0deg, rgba(13, 12, 20, 0.18) 0 2px, transparent 2px 22px),
+      linear-gradient(var(--ink), var(--ink));
+    box-shadow:
+      inset 0 0 0 2px #292f4a,
+      inset 0 0 18px rgba(13, 12, 20, 0.9),
+      0 1px 0 rgba(234, 223, 197, 0.08);
+  }
+  .side-col .shaft {
+    position: static;
+    pointer-events: none;
+  }
+  .side-col .shaft .shaft-head,
+  .camp .shaft .shaft-head {
+    font-size: 13px;
+  }
 
   /* --- desktop type: the tablets, the shaft's notches, the console's words --- */
-  .row.tablet.compact { min-height: 64px; }
-  .row.tablet.compact .rtext { font-size: 20px; }
-  .row.tablet.compact .rn { font-size: 16px; }
-  .rows-head, .shaft-head { font-size: 13px; }
-  .notch { grid-template-columns: 32px 1fr; column-gap: 8px; }
-  .notch .hex { width: 32px; height: 35px; }
-  .notch .dl { font-size: 19px; }
-  .notch .dp { font-size: 14px; }
-  .notch .dl i, .notch small:not(.dp) { font-size: 13px; }
-  .shaft-ends { font-size: 15px; gap: 6px; }
-  .shaft-ends .gemdot { width: 13px; height: 17px; }
-  .topbar .stat { font-size: 21px; }
-  .topbar .stat .ico { width: 24px; height: 24px; }
-  .topbar .heir { font-size: 17px; }
+  .row.tablet.compact {
+    min-height: 64px;
+  }
+  .row.tablet.compact .rtext {
+    font-size: 20px;
+  }
+  .row.tablet.compact .rn {
+    font-size: 16px;
+  }
+  .rows-head,
+  .shaft-head {
+    font-size: 13px;
+  }
+  .notch {
+    grid-template-columns: 32px 1fr;
+    column-gap: 8px;
+  }
+  .notch .hex {
+    width: 32px;
+    height: 35px;
+  }
+  .notch .dl {
+    font-size: 19px;
+  }
+  .notch .dp {
+    font-size: 14px;
+  }
+  .notch .dl i,
+  .notch small:not(.dp) {
+    font-size: 13px;
+  }
+  .shaft-ends {
+    font-size: 15px;
+    gap: 6px;
+  }
+  .shaft-ends .gemdot {
+    width: 13px;
+    height: 17px;
+  }
+  .topbar .stat {
+    font-size: 21px;
+  }
+  .topbar .stat .ico {
+    width: 24px;
+    height: 24px;
+  }
+  .topbar .heir {
+    font-size: 17px;
+  }
 
   /* --- the console: full width, its contents one centred card (portrait · 8 tiles in a row · gem) --- */
-  .console-row { max-width: 1180px; margin: 0 auto; grid-template-columns: 124px minmax(0, 1fr) 124px; gap: 14px; }
-  .skin-console .console-row { margin: -2px auto -2px; }
-  .cmd { grid-template-columns: repeat(8, minmax(0, 1fr)); grid-auto-rows: 78px; gap: 8px; }
-  .cmd .tile .ico { width: 40px; height: 40px; }
-  .cmd .tile .tl { font-size: 14px; letter-spacing: 0; }
-  .portrait { width: 104px; height: 104px; }
-  .portrait .face { inset: 16px; }
-  .portrait .ring { inset: 11px; }
-  .portrait .plabel { font-size: 14px; max-width: 124px; }
-  .gem { width: 108px; height: 108px; min-width: 108px; font-size: 20px; }
-  .gem .ico { width: 46px; height: 46px; }
+  .console-row {
+    max-width: 1180px;
+    margin: 0 auto;
+    grid-template-columns: 124px minmax(0, 1fr) 124px;
+    gap: 14px;
+  }
+  .skin-console .console-row {
+    margin: -2px auto -2px;
+  }
+  .cmd {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-auto-rows: 78px;
+    gap: 8px;
+  }
+  .cmd .tile .ico {
+    width: 40px;
+    height: 40px;
+  }
+  .cmd .tile .tl {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .portrait {
+    width: 104px;
+    height: 104px;
+  }
+  .portrait .face {
+    inset: 16px;
+  }
+  .portrait .ring {
+    inset: 11px;
+  }
+  .portrait .plabel {
+    font-size: 14px;
+    max-width: 124px;
+  }
+  .gem {
+    width: 108px;
+    height: 108px;
+    min-width: 108px;
+    font-size: 20px;
+  }
+  .gem .ico {
+    width: 46px;
+    height: 46px;
+  }
 
   /* --- the camp: the well's wrappers dissolve into the frame's grid (rules left, vista + scene centre, shaft right) --- */
   /* (the meters' slot has a track of its own under the shaft, spanning the vs / scene / rest lines' rows without growing them) */
-  main.camp.frame { grid-template-rows: auto auto minmax(0, 1fr) 150px auto auto auto auto;
-    grid-template-areas: "bar bar bar" "tabs well side" "rules well side" "rules well meters" "rules vs meters" "rules sline meters" "rules rest meters" "con con con"; }
-  main.camp > .well-wrap, main.camp .camp-well, main.camp .camp-main { display: contents; }
-  main.camp .camp-well > .busy-strip { grid-area: well; position: relative; top: auto; right: auto; z-index: 3; justify-self: end; align-self: start; margin: 10px 14px 0; }
-  main.camp .camp-well > .tabs { grid-area: tabs; padding: 12px 14px 4px; background: #161521; box-shadow: inset -1px 0 0 var(--ink); }
-  main.camp .camp-main > .tablets { grid-area: rules; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 14px 14px 18px; gap: 8px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(170, 191, 213, .07), transparent 60%), linear-gradient(90deg, #161521, var(--umbra) 50%, #14131d);
-    box-shadow: inset 0 0 0 1px var(--ink), inset 0 0 24px rgba(13, 12, 20, .8); }
-  .skin-console main.camp .camp-main > .tablets { border: 16px solid transparent; border-image: url(/ui/frames/console.png) 48 fill / 20px stretch; background-clip: padding-box; padding: 2px 4px 8px; }
-  main.camp .camp-main > .shaft { grid-area: side; position: relative; align-self: stretch; overflow-y: auto; margin: 0; border-width: 3px; padding: 14px 12px; gap: 10px; }
-  main.camp .camp-main > .meters-slot { grid-area: meters; min-height: 0; margin: 8px 0 0; }
-  main.camp .camp-well > .vista { grid-area: well; height: auto; min-height: 0; margin: 0; background-position: center 55%;
-    box-shadow: inset 0 0 70px 16px rgba(13, 12, 20, .85), inset 0 -60px 50px -30px var(--ink), inset 0 0 0 2px var(--ink); filter: saturate(.9) brightness(.9); }
-  main.camp .well-wrap > .div-scene { grid-area: well; align-self: end; height: min(62%, 520px); margin: 0 24px 18px; }
-  main.camp .well-wrap > .panel-host { grid-area: well; }
-  main.camp .well-wrap > .shaft-vs-host { grid-area: vs; }
-  main.camp .well-wrap > .div-line { grid-area: sline; }
-  main.camp .well-wrap > .rest-line { grid-area: rest; }
-  main.camp .well-wrap > .panel-store { display: none; }
-  main.camp .panel { inset: auto 24px 14px 24px; max-height: calc(100% - 28px); max-width: 760px; margin: 0 auto; }
+  main.camp.frame {
+    grid-template-rows: auto auto minmax(0, 1fr) 150px auto auto auto auto;
+    grid-template-areas: "bar bar bar" "tabs well side" "rules well side" "rules well meters" "rules vs meters" "rules sline meters" "rules rest meters" "con con con";
+  }
+  main.camp > .well-wrap,
+  main.camp .camp-well,
+  main.camp .camp-main {
+    display: contents;
+  }
+  main.camp .camp-well > .busy-strip {
+    grid-area: well;
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: 3;
+    justify-self: end;
+    align-self: start;
+    margin: 10px 14px 0;
+  }
+  main.camp .camp-well > .tabs {
+    grid-area: tabs;
+    padding: 12px 14px 4px;
+    background: #161521;
+    box-shadow: inset -1px 0 0 var(--ink);
+  }
+  main.camp .camp-main > .tablets {
+    grid-area: rules;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 14px 14px 18px;
+    gap: 8px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(170, 191, 213, 0.07), transparent 60%),
+      linear-gradient(90deg, #161521, var(--umbra) 50%, #14131d);
+    box-shadow:
+      inset 0 0 0 1px var(--ink),
+      inset 0 0 24px rgba(13, 12, 20, 0.8);
+  }
+  .skin-console main.camp .camp-main > .tablets {
+    border: 16px solid transparent;
+    border-image: url(/ui/frames/console.png) 48 fill / 20px stretch;
+    background-clip: padding-box;
+    padding: 2px 4px 8px;
+  }
+  main.camp .camp-main > .shaft {
+    grid-area: side;
+    position: relative;
+    align-self: stretch;
+    overflow-y: auto;
+    margin: 0;
+    border-width: 3px;
+    padding: 14px 12px;
+    gap: 10px;
+  }
+  main.camp .camp-main > .meters-slot {
+    grid-area: meters;
+    min-height: 0;
+    margin: 8px 0 0;
+  }
+  main.camp .camp-well > .vista {
+    grid-area: well;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    background-position: center 55%;
+    box-shadow:
+      inset 0 0 70px 16px rgba(13, 12, 20, 0.85),
+      inset 0 -60px 50px -30px var(--ink),
+      inset 0 0 0 2px var(--ink);
+    filter: saturate(0.9) brightness(0.9);
+  }
+  main.camp .well-wrap > .div-scene {
+    grid-area: well;
+    align-self: end;
+    height: min(62%, 520px);
+    margin: 0 24px 18px;
+  }
+  main.camp .well-wrap > .panel-host {
+    grid-area: well;
+  }
+  main.camp .well-wrap > .shaft-vs-host {
+    grid-area: vs;
+  }
+  main.camp .well-wrap > .div-line {
+    grid-area: sline;
+  }
+  main.camp .well-wrap > .rest-line {
+    grid-area: rest;
+  }
+  main.camp .well-wrap > .panel-store {
+    display: none;
+  }
+  main.camp .panel {
+    inset: auto 24px 14px 24px;
+    max-height: calc(100% - 28px);
+    max-width: 760px;
+    margin: 0 auto;
+  }
 
   /* --- the watch: the stage fills the centre --- */
-  main.watch > .stage { min-width: 0; }
-  .watch .hud.top .stake { font-size: 15px; }
-  .watch .depth { font-size: 22px; }
+  main.watch > .stage {
+    min-width: 0;
+  }
+  .watch .hud.top .stake {
+    font-size: 15px;
+  }
+  .watch .depth {
+    font-size: 22px;
+  }
 
   /* --- death and report: the well centred, wide enough to breathe, never a stretched phone --- */
-  main.death > .well, main.report > .well { padding: 18px max(24px, calc((100% - 820px) / 2)) 28px; }
-  .death .banner-cloth { width: min(100%, 290px); }
-  .death .patch { font-size: 18px; }
-  .death .patch .patch-nums { font-size: 15px; }
-  .death :is(.news, .notes, .ledger, .forecast-line, .bones-line) { font-size: 16px; }
+  main.death > .well,
+  main.report > .well {
+    padding: 18px max(24px, calc((100% - 820px) / 2)) 28px;
+  }
+  .death .banner-cloth {
+    width: min(100%, 290px);
+  }
+  .death .patch {
+    font-size: 18px;
+  }
+  .death .patch .patch-nums {
+    font-size: 15px;
+  }
+  .death :is(.news, .notes, .ledger, .forecast-line, .bones-line) {
+    font-size: 16px;
+  }
 
   /* --- sheets: beside the tile that opened them (ui/sheet.ts places the panel; the backdrop stays) --- */
-  .sheet-wrap.wide-beside { display: block; }
-  .sheet-wrap.wide-beside > .sheet { position: absolute; margin: 0; width: min(560px, 42vw); max-width: none; }
+  .sheet-wrap.wide-beside {
+    display: block;
+  }
+  .sheet-wrap.wide-beside > .sheet {
+    position: absolute;
+    margin: 0;
+    width: min(560px, 42vw);
+    max-width: none;
+  }
 }
 
 /* gfx round 2 (raters: "huge empty side panels dwarf the dungeon"): on the watch the columns narrow and the stage takes the width; the
    rule that just acted glows on its tablet */
 @media (min-width: 1024px) {
-  main.frame.watch { grid-template-columns: clamp(270px, 20vw, 330px) minmax(0, 1fr) clamp(190px, 14vw, 240px); }
-  main.frame.watch .rules-col .row.tablet.compact .rtext { font-size: 17px; }
-  .rules-col .row.tablet.firing { animation: rule-fire 1.4s ease-out; }
-  @keyframes rule-fire { 0% { filter: brightness(1.6); box-shadow: 0 0 0 2px #ffaa52, 0 0 22px rgba(255, 170, 82, .8); } 100% { filter: none; box-shadow: none; } }
+  main.frame.watch {
+    grid-template-columns: clamp(270px, 20vw, 330px) minmax(0, 1fr) clamp(190px, 14vw, 240px);
+  }
+  main.frame.watch .rules-col .row.tablet.compact .rtext {
+    font-size: 17px;
+  }
+  .rules-col .row.tablet.firing {
+    animation: rule-fire 1.4s ease-out;
+  }
+  @keyframes rule-fire {
+    0% {
+      filter: brightness(1.6);
+      box-shadow:
+        0 0 0 2px #ffaa52,
+        0 0 22px rgba(255, 170, 82, 0.8);
+    }
+    100% {
+      filter: none;
+      box-shadow: none;
+    }
+  }
 }
 
 /* gfx round 3: the meters' slot waits as a carved inlay (a compass rose sunk in the stone) — no words, the meters' place kept; the desktop's
    death banner a size up; the console's tiles read at arm's length */
 @media (min-width: 1024px) {
-  .meters-slot { position: relative; overflow: hidden; }
-  .meters-slot::before { content: ""; position: absolute; left: 50%; top: 50%; width: min(150px, 70%); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; opacity: .5;
-    background: repeating-conic-gradient(from 0deg, rgba(136, 161, 194, .22) 0 2deg, transparent 2deg 45deg),
-      radial-gradient(circle, transparent 0 30%, rgba(136, 161, 194, .25) 31% 32%, transparent 33% 60%, rgba(136, 161, 194, .3) 61% 63%, transparent 64%),
-      conic-gradient(from 45deg, rgba(13, 12, 20, .35) 0 25%, rgba(223, 217, 200, .06) 0 50%, rgba(13, 12, 20, .35) 0 75%, rgba(223, 217, 200, .06) 0);
-    box-shadow: inset 0 2px 6px rgba(13, 12, 20, .9), 0 1px 0 rgba(234, 223, 197, .08); }
-  .death .banner-cloth { width: min(100%, 290px); }
-  .death .death-line { font-size: 24px; }
-  .cmd .tile .tl { font-size: 16px; }
-  .cmd .tile .ico { width: 46px; height: 46px; }
+  .meters-slot {
+    position: relative;
+    overflow: hidden;
+  }
+  .meters-slot::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(150px, 70%);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0.5;
+    background:
+      repeating-conic-gradient(from 0deg, rgba(136, 161, 194, 0.22) 0 2deg, transparent 2deg 45deg),
+      radial-gradient(
+        circle,
+        transparent 0 30%,
+        rgba(136, 161, 194, 0.25) 31% 32%,
+        transparent 33% 60%,
+        rgba(136, 161, 194, 0.3) 61% 63%,
+        transparent 64%
+      ),
+      conic-gradient(
+        from 45deg,
+        rgba(13, 12, 20, 0.35) 0 25%,
+        rgba(223, 217, 200, 0.06) 0 50%,
+        rgba(13, 12, 20, 0.35) 0 75%,
+        rgba(223, 217, 200, 0.06) 0
+      );
+    box-shadow:
+      inset 0 2px 6px rgba(13, 12, 20, 0.9),
+      0 1px 0 rgba(234, 223, 197, 0.08);
+  }
+  .death .banner-cloth {
+    width: min(100%, 290px);
+  }
+  .death .death-line {
+    font-size: 24px;
+  }
+  .cmd .tile .tl {
+    font-size: 16px;
+  }
+  .cmd .tile .ico {
+    width: 46px;
+    height: 46px;
+  }
 }
 
 /* gfx round 4 (raters: "wood-grain side panels, not carved stone", "an empty radar dial"): the side columns are the carved wall itself —
    a hooded knight in his alcove, a banner, a sconce (art/ui/deco/pillar.png) under the tablets and the shaft; the meters' slot is a
    plain recess in it (no dial) */
 @media (min-width: 1024px) {
-  .skin-deco-pillar :is(.rules-col, .side-col), .skin-deco-pillar main.camp .camp-main > .tablets {
-    background: linear-gradient(rgba(13, 12, 20, .82), rgba(13, 12, 20, .5) 38%, rgba(13, 12, 20, .1) 75%), url(/ui/deco/pillar.webp) center bottom / 100% auto no-repeat, #12111a;
-    background-clip: padding-box; border-image-slice: 48; }   /* (no `fill`: the frame's centre would paint over the wall) */
-  .meters-slot::before { content: none; }
-  .meters-slot { background: rgba(13, 12, 20, .28); box-shadow: inset 0 0 0 1px rgba(66, 90, 130, .45), inset 0 0 16px rgba(13, 12, 20, .7); }
-  .skin-deco-pillar main.camp .camp-main > .meters-slot { background: linear-gradient(rgba(13, 12, 20, .55), rgba(13, 12, 20, .1)), url(/ui/deco/pillar.webp) center bottom / 100% auto no-repeat, #12111a; }
+  .skin-deco-pillar :is(.rules-col, .side-col),
+  .skin-deco-pillar main.camp .camp-main > .tablets {
+    background:
+      linear-gradient(rgba(13, 12, 20, 0.82), rgba(13, 12, 20, 0.5) 38%, rgba(13, 12, 20, 0.1) 75%),
+      url(/ui/deco/pillar.webp) center bottom / 100% auto no-repeat,
+      #12111a;
+    background-clip: padding-box;
+    border-image-slice: 48;
+  } /* (no `fill`: the frame's centre would paint over the wall) */
+  .meters-slot::before {
+    content: none;
+  }
+  .meters-slot {
+    background: rgba(13, 12, 20, 0.28);
+    box-shadow:
+      inset 0 0 0 1px rgba(66, 90, 130, 0.45),
+      inset 0 0 16px rgba(13, 12, 20, 0.7);
+  }
+  .skin-deco-pillar main.camp .camp-main > .meters-slot {
+    background:
+      linear-gradient(rgba(13, 12, 20, 0.55), rgba(13, 12, 20, 0.1)),
+      url(/ui/deco/pillar.webp) center bottom / 100% auto no-repeat,
+      #12111a;
+  }
 }
 /* gfx round 18 (raters: the desktop meters' text clipped — "trav", "3 hit"): in the side column the meters wrap instead of running out */
 @media (min-width: 1024px) {
-  .side-col .meters, .meters-slot .meters { font-size: 13px; }
-  .side-col .meters .mrow, .meters-slot .meters .mrow { grid-template-columns: 50px minmax(0, 1fr); }
-  .side-col .meters .msplit, .meters-slot .meters .msplit { min-width: 0; }
-  .side-col .meters :is(.mval, .mrule, .msplit-key), .meters-slot .meters :is(.mval, .mrule, .msplit-key) { white-space: normal; overflow-wrap: anywhere; min-width: 0; }
+  .side-col .meters,
+  .meters-slot .meters {
+    font-size: 13px;
+  }
+  .side-col .meters .mrow,
+  .meters-slot .meters .mrow {
+    grid-template-columns: 50px minmax(0, 1fr);
+  }
+  .side-col .meters .msplit,
+  .meters-slot .meters .msplit {
+    min-width: 0;
+  }
+  .side-col .meters :is(.mval, .mrule, .msplit-key),
+  .meters-slot .meters :is(.mval, .mrule, .msplit-key) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
 }
 /* gfx round 18 (raters: "the console is a long brown shelf of empty slots"): on the wide frame the empty slots go; the tiles group by the
    portrait (a phone keeps its faint rune sockets, the target's) */
-@media (min-width: 1024px) { .console .cmd .tile.empty { display: none; } }
+@media (min-width: 1024px) {
+  .console .cmd .tile.empty {
+    display: none;
+  }
+}
 /* gfx round 22 (raters, rounds 18–22: "the side-panel stats are minuscule"): the desktop meters at desktop type */
 @media (min-width: 1024px) {
-  .side-col .meters, .meters-slot .meters { font-size: 16px; gap: 6px; line-height: 1.35; }
-  .side-col .meters .mlab, .meters-slot .meters .mlab { font-size: 12.5px; }
-  .side-col .meters .mrow, .meters-slot .meters .mrow { grid-template-columns: 62px minmax(0, 1fr); }
-  .side-col .meters .msplit, .meters-slot .meters .msplit { height: 10px; }
+  .side-col .meters,
+  .meters-slot .meters {
+    font-size: 16px;
+    gap: 6px;
+    line-height: 1.35;
+  }
+  .side-col .meters .mlab,
+  .meters-slot .meters .mlab {
+    font-size: 12.5px;
+  }
+  .side-col .meters .mrow,
+  .meters-slot .meters .mrow {
+    grid-template-columns: 62px minmax(0, 1fr);
+  }
+  .side-col .meters .msplit,
+  .meters-slot .meters .msplit {
+    height: 10px;
+  }
 }
 /* gfx round 24 (the coordinator approved; raters: "the sheet small for a 1440 screen"): the sheet beside its tile is wider and its type
    a step up on the desktop */
 @media (min-width: 1024px) {
-  .sheet-wrap.wide-beside > .sheet { width: min(700px, 50vw); font-size: 18px; }
-  .sheet-wrap.wide-beside > .sheet .why-line { font-size: 22px; }
-  .sheet-wrap.wide-beside > .sheet .why-row { font-size: 22px; }
-  .sheet-wrap.wide-beside > .sheet .why-gloss { font-size: 17px; }
+  .sheet-wrap.wide-beside > .sheet {
+    width: min(700px, 50vw);
+    font-size: 18px;
+  }
+  .sheet-wrap.wide-beside > .sheet .why-line {
+    font-size: 22px;
+  }
+  .sheet-wrap.wide-beside > .sheet .why-row {
+    font-size: 22px;
+  }
+  .sheet-wrap.wide-beside > .sheet .why-gloss {
+    font-size: 17px;
+  }
 }
 /* gfx round 26 (raters, every round: "an empty black box top right", "the meters cramped, broken-wrapped"): on the watch an unknown reach
    (no forecast yet) gives its place to the meters, and each meter's label sits over its value, the value on one line */
 @media (min-width: 1024px) {
-  main.watch .side-col .shaft.unknown { display: none; }
-  .side-col .meters .mrow { grid-template-columns: minmax(0, 1fr); gap: 1px; }
-  .side-col .meters .mrow + .mrow { margin-top: 6px; }
-  .side-col .meters .mval { white-space: nowrap; }
-  .side-col .meters .mval small { white-space: normal; }
+  main.watch .side-col .shaft.unknown {
+    display: none;
+  }
+  .side-col .meters .mrow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+  }
+  .side-col .meters .mrow + .mrow {
+    margin-top: 6px;
+  }
+  .side-col .meters .mval {
+    white-space: nowrap;
+  }
+  .side-col .meters .mval small {
+    white-space: normal;
+  }
 }
 
 /* Desktop depth is a summary plate; the full forecast remains one press away. */
-.depth-summary { display: none; }
-.progress-goal { display: grid; grid-template-columns: 1fr auto; gap: 3px 8px; }
-.progress-goal > small { font: 13px/1.3 var(--sans); color: #bfb6a5; }
-.progress-goal > b { font-size: 20px; color: #f3ce88; }
-.progress-reward { grid-column: 1 / -1; display: flex; align-items: center; gap: 5px; color: #e8ca87; font: 14px/1.3 var(--sans); }
-.progress-reward .ico { width: 18px; height: 18px; object-fit: contain; }
-.depth-mobile-goal { display: block; border-top: 1px solid #384254; padding-top: 4px; }
-.report-progress-goal { margin: 8px 0; padding: 8px; border: 6px solid transparent;
-  border-image: url('/ui/frames/tablet.png') 24 fill / 6px stretch; background: #141923; }
+.depth-summary {
+  display: none;
+}
+.progress-goal {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 8px;
+}
+.progress-goal > small {
+  font: 13px/1.3 var(--sans);
+  color: #bfb6a5;
+}
+.progress-goal > b {
+  font-size: 20px;
+  color: #f3ce88;
+}
+.progress-reward {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e8ca87;
+  font: 14px/1.3 var(--sans);
+}
+.progress-reward .ico {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+.depth-mobile-goal {
+  display: block;
+  border-top: 1px solid #384254;
+  padding-top: 4px;
+}
+.report-progress-goal {
+  margin: 8px 0;
+  padding: 8px;
+  border: 6px solid transparent;
+  border-image: url("/ui/frames/tablet.png") 24 fill / 6px stretch;
+  background: #141923;
+}
 @media (min-width: 1024px) {
-  .depth-mobile-goal, .report-progress-goal { display: none; }
-  html .shaft > :is(.shaft-head, .notches, .shaft-ends) { display: none; }
-  html .shaft .depth-summary { display: flex; flex-direction: column; gap: 2px; width: 100%; }
-  html .side-col .shaft { pointer-events: auto; }
-  html main.watch .side-col .shaft.unknown { display: flex; }
-  html .side-col > .shaft.unknown { visibility: visible; }
-  html main.camp .camp-main > .shaft { align-self: start; }
-  html .shaft:has(.depth-summary), html main.camp .camp-main > .shaft { gap: 2px; padding: 6px; border: 8px solid transparent;
-    border-image: url('/ui/frames/tablet.png') 24 fill / 8px stretch; background: #141923; }
-  .depth-heading { color: #ead4a5; font: 600 16px/1.2 var(--display); letter-spacing: .06em; }
-  .depth-summary-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 8px;
-    padding: 1px 0; border-bottom: 1px solid #384254; }
-  .depth-summary-row > small { font: 13px/1.3 var(--sans); color: #bfb6a5; }
-  .depth-summary-row > b { font-size: 20px; color: #eadfc5; }
-  .depth-current > b { font-size: 30px; color: #f3ce88; }
-  .depth-next > :is(.unit-label, .depth-bonus, span:not(.num)), .depth-next > .depth-chance { grid-column: 1 / -1; }
-  .depth-next .unit-label { font-size: 16px; }
-  .depth-bonus { color: #f3ce88; }
-  .depth-open { font: 600 14px/1.3 var(--sans); color: #e8ca87; text-align: right; padding: 3px 0; }
-  .shaft.stale .depth-next { opacity: .4; }
-  .depth-reference .forecast { min-width: 0; }
+  .depth-mobile-goal,
+  .report-progress-goal {
+    display: none;
+  }
+  html .shaft > :is(.shaft-head, .notches, .shaft-ends) {
+    display: none;
+  }
+  html .shaft .depth-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+  }
+  html .side-col .shaft {
+    pointer-events: auto;
+  }
+  html main.watch .side-col .shaft.unknown {
+    display: flex;
+  }
+  html .side-col > .shaft.unknown {
+    visibility: visible;
+  }
+  html main.camp .camp-main > .shaft {
+    align-self: start;
+  }
+  html .shaft:has(.depth-summary),
+  html main.camp .camp-main > .shaft {
+    gap: 2px;
+    padding: 6px;
+    border: 8px solid transparent;
+    border-image: url("/ui/frames/tablet.png") 24 fill / 8px stretch;
+    background: #141923;
+  }
+  .depth-heading {
+    color: #ead4a5;
+    font: 600 16px/1.2 var(--display);
+    letter-spacing: 0.06em;
+  }
+  .depth-summary-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2px 8px;
+    padding: 1px 0;
+    border-bottom: 1px solid #384254;
+  }
+  .depth-summary-row > small {
+    font: 13px/1.3 var(--sans);
+    color: #bfb6a5;
+  }
+  .depth-summary-row > b {
+    font-size: 20px;
+    color: #eadfc5;
+  }
+  .depth-current > b {
+    font-size: 30px;
+    color: #f3ce88;
+  }
+  .depth-next > :is(.unit-label, .depth-bonus, span:not(.num)),
+  .depth-next > .depth-chance {
+    grid-column: 1 / -1;
+  }
+  .depth-next .unit-label {
+    font-size: 16px;
+  }
+  .depth-bonus {
+    color: #f3ce88;
+  }
+  .depth-open {
+    font: 600 14px/1.3 var(--sans);
+    color: #e8ca87;
+    text-align: right;
+    padding: 3px 0;
+  }
+  .shaft.stale .depth-next {
+    opacity: 0.4;
+  }
+  .depth-reference .forecast {
+    min-width: 0;
+  }
 }
 /* Cut 122 §10: a tile that left the bar keeps its place (a gap, not a reflow under a pending tap) */
-@media (min-width: 1024px) { .console .cmd .tile.empty.tile-gap { display: flex; visibility: hidden; } }
+@media (min-width: 1024px) {
+  .console .cmd .tile.empty.tile-gap {
+    display: flex;
+    visibility: hidden;
+  }
+}

@@ -18,59 +18,140 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BUDGET_FILE = JSON.parse(readFileSync(join(ROOT, "eval/copy-budgets.json"), "utf8"));
 const BUDGETS = BUDGET_FILE.surfaces;
 // Cut 29: phrases the owner cleared past the forbidden words (`you died`, the death seal), matched whole and case-insensitive
-const ALLOW = (BUDGET_FILE.allowPhrases ?? []).map((p) => new RegExp(`\\b${p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi"));
+const ALLOW = (BUDGET_FILE.allowPhrases ?? []).map(
+  (p) => new RegExp(`\\b${p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi"),
+);
 const UI_DIR = join(ROOT, "web/src/ui");
 const FORBIDDEN = [/\byou\b/i, /\byour\b/i, /\bclick\b/i, /\btap\b/i, /\bthis shows\b/i];
 
 function walk(dir) {
   const out = [];
-  for (const f of readdirSync(dir)) { const p = join(dir, f); if (statSync(p).isDirectory()) out.push(...walk(p)); else if (/\.(ts|js|mts|mjs)$/.test(f)) out.push(p); }
+  for (const f of readdirSync(dir)) {
+    const p = join(dir, f);
+    if (statSync(p).isDirectory()) out.push(...walk(p));
+    else if (/\.(ts|js|mts|mjs)$/.test(f)) out.push(p);
+  }
   return out;
 }
 
 // Tokenizer: yields {type:'comment'|'string'|'punct', text, line}. Strings carry .literal (static text only).
 function tokenize(src) {
-  const toks = []; let i = 0, line = 1; const n = src.length;
+  const toks = [];
+  let i = 0,
+    line = 1;
+  const n = src.length;
   const REGEX_PREV = /[(,=:[!&|?{};+\-*%<>~^]$|\breturn$|\btypeof$|\bcase$/;
   const push = (type, text, extra = {}) => toks.push({ type, text, line, ...extra });
   let lastSig = "";
   const templateStack = []; // depth counters for ${} nesting
   while (i < n) {
-    const c = src[i], d = src[i + 1];
-    if (c === "\n") { line++; i++; continue; }
-    if (c === "/" && d === "/") { const e = src.indexOf("\n", i); const t = src.slice(i, e < 0 ? n : e); push("comment", t); i += t.length; continue; }
-    if (c === "/" && d === "*") { const e = src.indexOf("*/", i + 2); const t = src.slice(i, e < 0 ? n : e + 2); push("comment", t); line += (t.match(/\n/g) || []).length; i += t.length; continue; }
+    const c = src[i],
+      d = src[i + 1];
+    if (c === "\n") {
+      line++;
+      i++;
+      continue;
+    }
+    if (c === "/" && d === "/") {
+      const e = src.indexOf("\n", i);
+      const t = src.slice(i, e < 0 ? n : e);
+      push("comment", t);
+      i += t.length;
+      continue;
+    }
+    if (c === "/" && d === "*") {
+      const e = src.indexOf("*/", i + 2);
+      const t = src.slice(i, e < 0 ? n : e + 2);
+      push("comment", t);
+      line += (t.match(/\n/g) || []).length;
+      i += t.length;
+      continue;
+    }
     if (c === '"' || c === "'") {
-      let j = i + 1, s = "";
-      while (j < n && src[j] !== c) { if (src[j] === "\\") { s += src[j + 1]; j += 2; continue; } s += src[j++]; }
-      push("string", src.slice(i, j + 1), { literal: s }); lastSig = "s"; i = j + 1; continue;
+      let j = i + 1,
+        s = "";
+      while (j < n && src[j] !== c) {
+        if (src[j] === "\\") {
+          s += src[j + 1];
+          j += 2;
+          continue;
+        }
+        s += src[j++];
+      }
+      push("string", src.slice(i, j + 1), { literal: s });
+      lastSig = "s";
+      i = j + 1;
+      continue;
     }
     if (c === "`") {
       // template literal, with nested ${ } handled by recursive scan of the expression as plain code
-      let j = i + 1, s = "", startLine = line;
+      let j = i + 1,
+        s = "",
+        startLine = line;
       while (j < n && src[j] !== "`") {
-        if (src[j] === "\\") { s += src[j + 1]; j += 2; continue; }
+        if (src[j] === "\\") {
+          s += src[j + 1];
+          j += 2;
+          continue;
+        }
         if (src[j] === "$" && src[j + 1] === "{") {
-          let depth = 1; j += 2; s += " ";
-          while (j < n && depth) { if (src[j] === "{") depth++; else if (src[j] === "}") depth--; else if (src[j] === "`") { /* nested template: skip naively */ let k = src.indexOf("`", j + 1); j = k < 0 ? n : k; } else if (src[j] === "\n") line++; j++; }
+          let depth = 1;
+          j += 2;
+          s += " ";
+          while (j < n && depth) {
+            if (src[j] === "{") depth++;
+            else if (src[j] === "}") depth--;
+            else if (src[j] === "`") {
+              /* nested template: skip naively */ let k = src.indexOf("`", j + 1);
+              j = k < 0 ? n : k;
+            } else if (src[j] === "\n") line++;
+            j++;
+          }
           continue;
         }
         if (src[j] === "\n") line++;
         s += src[j++];
       }
-      toks.push({ type: "string", text: src.slice(i, j + 1), line: startLine, literal: s }); lastSig = "s"; i = j + 1; continue;
+      toks.push({ type: "string", text: src.slice(i, j + 1), line: startLine, literal: s });
+      lastSig = "s";
+      i = j + 1;
+      continue;
     }
     if (c === "/" && REGEX_PREV.test(lastSig.trimEnd())) {
-      let j = i + 1, cls = false;
-      while (j < n && (cls || src[j] !== "/")) { if (src[j] === "\\") j++; else if (src[j] === "[") cls = true; else if (src[j] === "]") cls = false; else if (src[j] === "\n") break; j++; }
-      j++; while (j < n && /[a-z]/.test(src[j])) j++;
-      i = j; lastSig = ")"; continue;
+      let j = i + 1,
+        cls = false;
+      while (j < n && (cls || src[j] !== "/")) {
+        if (src[j] === "\\") j++;
+        else if (src[j] === "[") cls = true;
+        else if (src[j] === "]") cls = false;
+        else if (src[j] === "\n") break;
+        j++;
+      }
+      j++;
+      while (j < n && /[a-z]/.test(src[j])) j++;
+      i = j;
+      lastSig = ")";
+      continue;
     }
-    if ("[]{}()".includes(c)) { push("punct", c); lastSig = c; i++; continue; }
-    if (/\s/.test(c)) { i++; continue; }
+    if ("[]{}()".includes(c)) {
+      push("punct", c);
+      lastSig = c;
+      i++;
+      continue;
+    }
+    if (/\s/.test(c)) {
+      i++;
+      continue;
+    }
     // identifier / number / operator run
-    let j = i; if (/[A-Za-z0-9_$]/.test(c)) { while (j < n && /[A-Za-z0-9_$]/.test(src[j])) j++; } else { j = i + 1; }
-    lastSig = src.slice(i, j); i = j;
+    let j = i;
+    if (/[A-Za-z0-9_$]/.test(c)) {
+      while (j < n && /[A-Za-z0-9_$]/.test(src[j])) j++;
+    } else {
+      j = i + 1;
+    }
+    lastSig = src.slice(i, j);
+    i = j;
   }
   void templateStack;
   return toks;
@@ -92,44 +173,89 @@ function lintFile(file) {
     const m = /copy:([a-z_]+)/.exec(t.text);
     if (!m) continue;
     const surface = m[1];
-    if (surface !== "none" && !BUDGETS[surface]) { errs.push(`${rel}:${t.line} unknown surface "${surface}"`); continue; }
+    if (surface !== "none" && !BUDGETS[surface]) {
+      errs.push(`${rel}:${t.line} unknown surface "${surface}"`);
+      continue;
+    }
     let j = i + 1;
     while (j < toks.length && toks[j].type === "comment") j++;
-    if (j >= toks.length) { errs.push(`${rel}:${t.line} dangling copy tag`); continue; }
-    if (toks[j].type === "string") { toks[j].surface = surface; tagged.add(toks[j]); continue; }
+    if (j >= toks.length) {
+      errs.push(`${rel}:${t.line} dangling copy tag`);
+      continue;
+    }
+    if (toks[j].type === "string") {
+      toks[j].surface = surface;
+      tagged.add(toks[j]);
+      continue;
+    }
     // skip to the first bracket or string, whichever first
-    while (j < toks.length && !(toks[j].type === "string" || (toks[j].type === "punct" && "[{".includes(toks[j].text)))) j++;
-    if (j >= toks.length) { errs.push(`${rel}:${t.line} dangling copy tag`); continue; }
-    if (toks[j].type === "string") { toks[j].surface = surface; tagged.add(toks[j]); continue; }
-    const open = toks[j].text, close = open === "[" ? "]" : "}"; let depth = 0;
+    while (
+      j < toks.length &&
+      !(toks[j].type === "string" || (toks[j].type === "punct" && "[{".includes(toks[j].text)))
+    )
+      j++;
+    if (j >= toks.length) {
+      errs.push(`${rel}:${t.line} dangling copy tag`);
+      continue;
+    }
+    if (toks[j].type === "string") {
+      toks[j].surface = surface;
+      tagged.add(toks[j]);
+      continue;
+    }
+    const open = toks[j].text,
+      close = open === "[" ? "]" : "}";
+    let depth = 0;
     for (let k = j; k < toks.length; k++) {
       const u = toks[k];
-      if (u.type === "punct") { if (u.text === open) depth++; else if (u.text === close) { depth--; if (!depth) break; } }
-      else if (u.type === "string") { u.surface = surface; tagged.add(u); }
+      if (u.type === "punct") {
+        if (u.text === open) depth++;
+        else if (u.text === close) {
+          depth--;
+          if (!depth) break;
+        }
+      } else if (u.type === "string") {
+        u.surface = surface;
+        tagged.add(u);
+      }
     }
   }
   for (const t of toks) {
     if (t.type !== "string") continue;
     const lit = t.literal;
     const bare = ALLOW.reduce((x, a) => x.replace(a, ""), lit);
-    for (const f of FORBIDDEN) if (f.test(bare)) errs.push(`${rel}:${t.line} forbidden word in ${t.text}`);
+    for (const f of FORBIDDEN)
+      if (f.test(bare)) errs.push(`${rel}:${t.line} forbidden word in ${t.text}`);
     if (t.surface === "none") continue;
     if (t.surface) {
-      const b = BUDGETS[t.surface]; const w = words(lit);
-      if (w.length > b.maxWords) errs.push(`${rel}:${t.line} ${t.surface}: ${w.length} words > ${b.maxWords} in ${t.text}`);
-      if (b.noSentences && hasStop(lit)) errs.push(`${rel}:${t.line} ${t.surface}: terminal punctuation in ${t.text}`);
+      const b = BUDGETS[t.surface];
+      const w = words(lit);
+      if (w.length > b.maxWords)
+        errs.push(`${rel}:${t.line} ${t.surface}: ${w.length} words > ${b.maxWords} in ${t.text}`);
+      if (b.noSentences && hasStop(lit))
+        errs.push(`${rel}:${t.line} ${t.surface}: terminal punctuation in ${t.text}`);
     } else {
       const w = words(lit);
-      if ((w.length >= 2 && /\p{Lu}/u.test(lit)) || hasStop(lit)) errs.push(`${rel}:${t.line} untagged copy ${t.text}`);
+      if ((w.length >= 2 && /\p{Lu}/u.test(lit)) || hasStop(lit))
+        errs.push(`${rel}:${t.line} untagged copy ${t.text}`);
     }
   }
   return { errs, tagged: tagged.size };
 }
 
-let total = 0, taggedN = 0, files = 0;
+let total = 0,
+  taggedN = 0,
+  files = 0;
 for (const f of walk(UI_DIR)) {
-  const { errs, tagged } = lintFile(f); files++; taggedN += tagged;
-  for (const e of errs) { console.error(e); total++; }
+  const { errs, tagged } = lintFile(f);
+  files++;
+  taggedN += tagged;
+  for (const e of errs) {
+    console.error(e);
+    total++;
+  }
 }
-console.log(`copy-lint: ${files} files, ${taggedN} tagged literals, ${total} violation${total === 1 ? "" : "s"}`);
+console.log(
+  `copy-lint: ${files} files, ${taggedN} tagged literals, ${total} violation${total === 1 ? "" : "s"}`,
+);
 process.exit(total ? 1 : 0);

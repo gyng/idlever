@@ -1,102 +1,251 @@
-import { stateWidths } from './lib/viewport-cases.mjs';
-import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';
-const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of stateWidths([400,1440])){
- const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
- await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3805`);await p.waitForFunction(()=>window.__riddle?.booted);
- await p.evaluate(async()=>{
-  const a=window.__riddle,s=await a.engine.send();s.hero.name='Wren Ash';
-  const rat={id:800,kind:'rat',name:'Nib',x:s.hero.x+1,y:s.hero.y,hp:10,max_hp:10,tags:[],ally:true};
-  const foe={...rat,id:801,kind:'goblin',name:'Scarface',ally:false};
-  const early={...foe,id:806,name:'Ember'};s.entities=[rat,foe,early];
-  a.engine.send=async()=>s;a.lineage.hero_legacy=[{name:'Wrong heir',heir:999}];a.watchMode='one';a.slowdowns=false;
-  let turn=s.turn,done=0;a.engine.step=async ticks=>{
-   const t=turn+1;turn+=ticks;const phase=window.__logPhase||0;let events=[];
-   if(phase>done){done=phase;window.__emitted=phase;
-    if(phase===1)events=[{k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:3},{k:'attack',t,src:800,dst:801,hit:true,dmg:2},{k:'hurt',t,id:s.hero.id,cause:'fire',dmg:2},{k:'heal',t,id:s.hero.id,src:'heal',amount:4},{k:'pickup',t,id:s.hero.id,item:'gold $1'}];
-    if(phase===2)events=[{k:'attack',t,src:800,dst:s.hero.id,hit:true,dmg:1}];
-    if(phase===3)events=[
-     {k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:3},{k:'hurt',t,id:801,cause:'hero',dmg:3},
-     {k:'attack',t,src:801,dst:s.hero.id,hit:true,dmg:8},{k:'hurt',t,id:s.hero.id,cause:'goblin',dmg:8},
-     {k:'hurt',t,id:s.hero.id,cause:'goblin',dmg:8},{k:'hurt',t,id:s.hero.id,cause:'fire',dmg:8},
-     {k:'attack',t,src:801,dst:s.hero.id,hit:true,dmg:6},{k:'hurt',t,id:s.hero.id,cause:'goblin',dmg:9},
-     {k:'attack',t,src:999,dst:s.hero.id,hit:true,dmg:5},{k:'hurt',t,id:s.hero.id,cause:'goblin',dmg:5},
-     {k:'attack',t,src:800,dst:s.hero.id,hit:false,dmg:4},{k:'hurt',t,id:s.hero.id,cause:'rat',dmg:4},
-     {k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:0},{k:'hurt',t,id:801,cause:'hero',dmg:0},
-     {k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:2},{k:'hurt',t:t+1,id:801,cause:'hero',dmg:2},
-     {k:'hurt',t,id:803,cause:'hero',dmg:3},{k:'hurt',t,id:801,cause:'poison',dmg:3},
-     {k:'hurt',t,id:801,cause:'hero',dmg:10},{k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:10},
-     {k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:11},{k:'attack',t,src:s.hero.id,dst:801,hit:true,dmg:11},
-     {k:'hurt',t,id:801,cause:'hero',dmg:11},{k:'hurt',t,id:801,cause:'hero',dmg:11},
-     {k:'spawn',t,e:{...rat,id:802,name:'Bram'}},
-     {k:'attack',t,src:802,dst:801,hit:true,dmg:7},{k:'hurt',t,id:801,cause:'rat',dmg:7},
-     {k:'die',t,id:802,cause:'goblin'},
-     {k:'spawn',t,e:{...foe,id:904,kind:'goblin_warlord',name:'Warlord'}},
-     {k:'telegraph',t,id:904,what:'rallies'},
-     {k:'spawn',t,e:{...foe,id:905,kind:'goblin_captain',name:'Captain'}},
-     {k:'telegraph',t,id:905,what:'rallies'},
-     {k:'telegraph',t,id:999,what:'rallies'},
-     {k:'telegraph',t,id:904,what:'winds up'},
-     {k:'pickup',t:t+2,id:s.hero.id,item:'dedup checkpoint'}
-    ];
-    if(phase===5)events=[{k:'hurt',t,id:801,cause:'hero',dmg:13}];
-    if(phase===6)events=Array.from({length:85},(_,i)=>({k:'pickup',t:t+i/100,id:s.hero.id,item:'gold $1'}));
-   }
-   // The actor was known at send, but is absent even before phase1: its
-   // first-batch attack/death must not depend on a surviving final snapshot.
-   if(!window.__earlyLogged){window.__earlyLogged=true;events.unshift({k:'attack',t,src:806,dst:s.hero.id,hit:true,dmg:1},{k:'die',t,id:806,cause:'hero'});}
-   const snap={...s,turn,hero:{...s.hero},entities:phase>=2?[]:s.entities.filter(e=>e.id!==806)};
-   if(phase>=2&&phase!==5)delete snap.hero.name;
-   // Once the paused batch is queued, mutate subsequent snapshot names. Its
-   // delayed rows must still use the names that came with their own batch.
-   if((phase===1||phase===5)&&window.__renameActors){snap.hero.name='Later heir';snap.entities=[];}
-   return{events,snapshot:snap,run_over:false};
-  };a.go({kind:'watch'});
- });
- await p.waitForFunction(()=>document.querySelector('.watch')?.dataset.tick);
- await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('fell'));
- const earlyLog=await p.locator('.combat-lines').innerText();
- if(!earlyLog.includes('Ember → Wren Ash · −1 hp')||!earlyLog.includes('Ember · fell'))throw Error(`initial actor missing from first batch-end snapshot: ${earlyLog}`);
- // Preserve the existing delayed-batch checks and their row-count assertions.
- await p.evaluate(()=>document.querySelector('.combat-lines').replaceChildren());
- await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.live-badge')?.dataset.status==='paused');
- await p.evaluate(()=>window.__logPhase=1);await p.waitForFunction(()=>window.__emitted===1);
- await p.evaluate(()=>window.__renameActors=true);await p.waitForTimeout(200);
- if(await p.locator('.combat-lines li').count())throw Error('paused rows released early');
- await p.locator('.console .gem').click();
- await p.waitForFunction(()=>document.querySelector('.combat-lines')?.children.length>=5);
- let checks=await p.evaluate(()=>{let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;},el=document.querySelector('.combat-lines'),text=el.textContent;
-  check(text.includes('Wren Ash → Scarface'),'hero and foe snapshot names');check(text.includes('Nib → Scarface'),'companion named rather than Foe');check(!/Wrong heir|Later heir|Later actor/.test(text),'delayed events retain original identities');
-  check(el.querySelector('.log-hurt')?.textContent==='−2 hp','hurt styling retained');check(el.querySelector('.log-heal')?.textContent==='+4 hp','heal styling retained');check(el.querySelector('.log-damage')?.textContent==='−3 hp','damage styling retained');check(el.querySelector('.log-gold')?.textContent==='gold $1','item styling retained');return n;
- });
- await p.evaluate(()=>window.__logPhase=2);await p.waitForFunction(()=>document.querySelector('.combat-lines')?.children.length>=6);
- const old=await p.locator('.combat-lines li').last().innerText();if(!old.includes('Nib → Hero'))throw Error(`old snapshot/remembered companion: ${old}`);checks++;
- await p.evaluate(()=>window.__logPhase=3);await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('dedup checkpoint'));
- checks+=await p.evaluate(()=>{let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};
-  const rows=[...document.querySelector('.combat-lines').children].slice(6).map(l=>l.textContent);
-  const has=s=>rows.some(r=>r.includes(s)),count=s=>rows.filter(r=>r.includes(s)).length;
-  check(count('Hero → Scarface · −3 hp')===1,'unchanged hero hit appears once');
-  check(count('goblin → Hero · −8 hp')===1,'one-to-one matching preserves extra hurt');
-  check(has('fire → Hero · −8 hp'),'same-tick same-amount environmental damage retained');
-  check(has('Scarface → Hero · −6 hp')&&has('goblin → Hero · −9 hp'),'modified damage retained');
-  check(has('Foe → Hero · −5 hp')&&has('goblin → Hero · −5 hp'),'unknown source cannot hide damage');
-  check(has('Nib → Hero · miss')&&has('rat → Hero · −4 hp'),'miss cannot hide damage');
-  check(has('Hero → Scarface · blocked')&&!rows.some(r=>/[−+]0 hp/.test(r)),'zero attack cannot hide hurt: the zero hit reads blocked, never −0 hp (QA ad71e72)');
-  check(has('Hero → Scarface · −2 hp'),'different tick damage retained');
-  check(has('Hero → Foe · −3 hp'),'different destination damage retained');
-  check(has('poison → Scarface · −3 hp'),'different cause damage retained');
-  check(has('Hero → Scarface · −10 hp'),'earlier hurt cannot pair with later attack');
-  check(count('Hero → Scarface · −11 hp')===2,'two identical hits consume two matching hurts');
-  check(has('Bram → Scarface · −7 hp')&&has('Bram · fell'),'spawned-and-slain actor named');
-  check(!has('rat → Scarface · −7 hp'),'spawn source kind matches duplicate hurt');
-  check(has('Warlord · calls goblins')&&has('Captain · calls goblins'),'known goblin warnings name summons');
-  check(has('Foe · rallies')&&has('Warlord · winds up'),'unknown actors and other mechanics retain raw words');
-  return n;
- });
- await p.locator('.console .gem').click();await p.evaluate(()=>{window.__renameActors=false;window.__logPhase=5;});await p.waitForFunction(()=>window.__emitted===5);
- await p.evaluate(()=>window.__renameActors=true);await p.waitForTimeout(200);
- await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('Wren Ash → Scarface · −13 hp'));checks++;
- await p.evaluate(()=>window.__logPhase=6);await p.waitForFunction(()=>document.querySelector('.combat-lines')?.children.length===80);
- if(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('overflow');checks+=2;
- if(errors.length)throw Error(errors.join('\n'));console.log(width,checks,'combat identity/delayed actors/fallback/colours/bounds PASS');await p.close();
-}}finally{await b.close();}
+import { stateWidths } from "./lib/viewport-cases.mjs";
+import { execFileSync } from "node:child_process";
+import { launchBrowser } from "../../tools/browser.mjs";
+const url = execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim(),
+  b = await launchBrowser();
+try {
+  for (const width of stateWidths([400, 1440])) {
+    const p = await b.newPage({ viewport: { width, height: 900 } }),
+      errors = [];
+    p.on("pageerror", (e) => errors.push(e.message));
+    await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3805`);
+    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.evaluate(async () => {
+      const a = window.__riddle,
+        s = await a.engine.send();
+      s.hero.name = "Wren Ash";
+      const rat = {
+        id: 800,
+        kind: "rat",
+        name: "Nib",
+        x: s.hero.x + 1,
+        y: s.hero.y,
+        hp: 10,
+        max_hp: 10,
+        tags: [],
+        ally: true,
+      };
+      const foe = { ...rat, id: 801, kind: "goblin", name: "Scarface", ally: false };
+      const early = { ...foe, id: 806, name: "Ember" };
+      s.entities = [rat, foe, early];
+      a.engine.send = async () => s;
+      a.lineage.hero_legacy = [{ name: "Wrong heir", heir: 999 }];
+      a.watchMode = "one";
+      a.slowdowns = false;
+      let turn = s.turn,
+        done = 0;
+      a.engine.step = async (ticks) => {
+        const t = turn + 1;
+        turn += ticks;
+        const phase = window.__logPhase || 0;
+        let events = [];
+        if (phase > done) {
+          done = phase;
+          window.__emitted = phase;
+          if (phase === 1)
+            events = [
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 3 },
+              { k: "attack", t, src: 800, dst: 801, hit: true, dmg: 2 },
+              { k: "hurt", t, id: s.hero.id, cause: "fire", dmg: 2 },
+              { k: "heal", t, id: s.hero.id, src: "heal", amount: 4 },
+              { k: "pickup", t, id: s.hero.id, item: "gold $1" },
+            ];
+          if (phase === 2)
+            events = [{ k: "attack", t, src: 800, dst: s.hero.id, hit: true, dmg: 1 }];
+          if (phase === 3)
+            events = [
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 3 },
+              { k: "hurt", t, id: 801, cause: "hero", dmg: 3 },
+              { k: "attack", t, src: 801, dst: s.hero.id, hit: true, dmg: 8 },
+              { k: "hurt", t, id: s.hero.id, cause: "goblin", dmg: 8 },
+              { k: "hurt", t, id: s.hero.id, cause: "goblin", dmg: 8 },
+              { k: "hurt", t, id: s.hero.id, cause: "fire", dmg: 8 },
+              { k: "attack", t, src: 801, dst: s.hero.id, hit: true, dmg: 6 },
+              { k: "hurt", t, id: s.hero.id, cause: "goblin", dmg: 9 },
+              { k: "attack", t, src: 999, dst: s.hero.id, hit: true, dmg: 5 },
+              { k: "hurt", t, id: s.hero.id, cause: "goblin", dmg: 5 },
+              { k: "attack", t, src: 800, dst: s.hero.id, hit: false, dmg: 4 },
+              { k: "hurt", t, id: s.hero.id, cause: "rat", dmg: 4 },
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 0 },
+              { k: "hurt", t, id: 801, cause: "hero", dmg: 0 },
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 2 },
+              { k: "hurt", t: t + 1, id: 801, cause: "hero", dmg: 2 },
+              { k: "hurt", t, id: 803, cause: "hero", dmg: 3 },
+              { k: "hurt", t, id: 801, cause: "poison", dmg: 3 },
+              { k: "hurt", t, id: 801, cause: "hero", dmg: 10 },
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 10 },
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 11 },
+              { k: "attack", t, src: s.hero.id, dst: 801, hit: true, dmg: 11 },
+              { k: "hurt", t, id: 801, cause: "hero", dmg: 11 },
+              { k: "hurt", t, id: 801, cause: "hero", dmg: 11 },
+              { k: "spawn", t, e: { ...rat, id: 802, name: "Bram" } },
+              { k: "attack", t, src: 802, dst: 801, hit: true, dmg: 7 },
+              { k: "hurt", t, id: 801, cause: "rat", dmg: 7 },
+              { k: "die", t, id: 802, cause: "goblin" },
+              { k: "spawn", t, e: { ...foe, id: 904, kind: "goblin_warlord", name: "Warlord" } },
+              { k: "telegraph", t, id: 904, what: "rallies" },
+              { k: "spawn", t, e: { ...foe, id: 905, kind: "goblin_captain", name: "Captain" } },
+              { k: "telegraph", t, id: 905, what: "rallies" },
+              { k: "telegraph", t, id: 999, what: "rallies" },
+              { k: "telegraph", t, id: 904, what: "winds up" },
+              { k: "pickup", t: t + 2, id: s.hero.id, item: "dedup checkpoint" },
+            ];
+          if (phase === 5) events = [{ k: "hurt", t, id: 801, cause: "hero", dmg: 13 }];
+          if (phase === 6)
+            events = Array.from({ length: 85 }, (_, i) => ({
+              k: "pickup",
+              t: t + i / 100,
+              id: s.hero.id,
+              item: "gold $1",
+            }));
+        }
+        // The actor was known at send, but is absent even before phase1: its
+        // first-batch attack/death must not depend on a surviving final snapshot.
+        if (!window.__earlyLogged) {
+          window.__earlyLogged = true;
+          events.unshift(
+            { k: "attack", t, src: 806, dst: s.hero.id, hit: true, dmg: 1 },
+            { k: "die", t, id: 806, cause: "hero" },
+          );
+        }
+        const snap = {
+          ...s,
+          turn,
+          hero: { ...s.hero },
+          entities: phase >= 2 ? [] : s.entities.filter((e) => e.id !== 806),
+        };
+        if (phase >= 2 && phase !== 5) delete snap.hero.name;
+        // Once the paused batch is queued, mutate subsequent snapshot names. Its
+        // delayed rows must still use the names that came with their own batch.
+        if ((phase === 1 || phase === 5) && window.__renameActors) {
+          snap.hero.name = "Later heir";
+          snap.entities = [];
+        }
+        return { events, snapshot: snap, run_over: false };
+      };
+      a.go({ kind: "watch" });
+    });
+    await p.waitForFunction(() => document.querySelector(".watch")?.dataset.tick);
+    await p.waitForFunction(() =>
+      document.querySelector(".combat-lines")?.textContent.includes("fell"),
+    );
+    const earlyLog = await p.locator(".combat-lines").innerText();
+    if (!earlyLog.includes("Ember → Wren Ash · −1 hp") || !earlyLog.includes("Ember · fell"))
+      throw Error(`initial actor missing from first batch-end snapshot: ${earlyLog}`);
+    // Preserve the existing delayed-batch checks and their row-count assertions.
+    await p.evaluate(() => document.querySelector(".combat-lines").replaceChildren());
+    await p.locator(".console .gem").click();
+    await p.waitForFunction(
+      () => document.querySelector(".live-badge")?.dataset.status === "paused",
+    );
+    await p.evaluate(() => (window.__logPhase = 1));
+    await p.waitForFunction(() => window.__emitted === 1);
+    await p.evaluate(() => (window.__renameActors = true));
+    await p.waitForTimeout(200);
+    if (await p.locator(".combat-lines li").count()) throw Error("paused rows released early");
+    await p.locator(".console .gem").click();
+    await p.waitForFunction(() => document.querySelector(".combat-lines")?.children.length >= 5);
+    let checks = await p.evaluate(() => {
+      let n = 0;
+      const check = (ok, label) => {
+          if (!ok) throw Error(label);
+          n++;
+        },
+        el = document.querySelector(".combat-lines"),
+        text = el.textContent;
+      check(text.includes("Wren Ash → Scarface"), "hero and foe snapshot names");
+      check(text.includes("Nib → Scarface"), "companion named rather than Foe");
+      check(
+        !/Wrong heir|Later heir|Later actor/.test(text),
+        "delayed events retain original identities",
+      );
+      check(el.querySelector(".log-hurt")?.textContent === "−2 hp", "hurt styling retained");
+      check(el.querySelector(".log-heal")?.textContent === "+4 hp", "heal styling retained");
+      check(el.querySelector(".log-damage")?.textContent === "−3 hp", "damage styling retained");
+      check(el.querySelector(".log-gold")?.textContent === "gold $1", "item styling retained");
+      return n;
+    });
+    await p.evaluate(() => (window.__logPhase = 2));
+    await p.waitForFunction(() => document.querySelector(".combat-lines")?.children.length >= 6);
+    const old = await p.locator(".combat-lines li").last().innerText();
+    if (!old.includes("Nib → Hero")) throw Error(`old snapshot/remembered companion: ${old}`);
+    checks++;
+    await p.evaluate(() => (window.__logPhase = 3));
+    await p.waitForFunction(() =>
+      document.querySelector(".combat-lines")?.textContent.includes("dedup checkpoint"),
+    );
+    checks += await p.evaluate(() => {
+      let n = 0;
+      const check = (ok, label) => {
+        if (!ok) throw Error(label);
+        n++;
+      };
+      const rows = [...document.querySelector(".combat-lines").children]
+        .slice(6)
+        .map((l) => l.textContent);
+      const has = (s) => rows.some((r) => r.includes(s)),
+        count = (s) => rows.filter((r) => r.includes(s)).length;
+      check(count("Hero → Scarface · −3 hp") === 1, "unchanged hero hit appears once");
+      check(count("goblin → Hero · −8 hp") === 1, "one-to-one matching preserves extra hurt");
+      check(has("fire → Hero · −8 hp"), "same-tick same-amount environmental damage retained");
+      check(
+        has("Scarface → Hero · −6 hp") && has("goblin → Hero · −9 hp"),
+        "modified damage retained",
+      );
+      check(
+        has("Foe → Hero · −5 hp") && has("goblin → Hero · −5 hp"),
+        "unknown source cannot hide damage",
+      );
+      check(has("Nib → Hero · miss") && has("rat → Hero · −4 hp"), "miss cannot hide damage");
+      check(
+        has("Hero → Scarface · blocked") && !rows.some((r) => /[−+]0 hp/.test(r)),
+        "zero attack cannot hide hurt: the zero hit reads blocked, never −0 hp (QA ad71e72)",
+      );
+      check(has("Hero → Scarface · −2 hp"), "different tick damage retained");
+      check(has("Hero → Foe · −3 hp"), "different destination damage retained");
+      check(has("poison → Scarface · −3 hp"), "different cause damage retained");
+      check(has("Hero → Scarface · −10 hp"), "earlier hurt cannot pair with later attack");
+      check(
+        count("Hero → Scarface · −11 hp") === 2,
+        "two identical hits consume two matching hurts",
+      );
+      check(has("Bram → Scarface · −7 hp") && has("Bram · fell"), "spawned-and-slain actor named");
+      check(!has("rat → Scarface · −7 hp"), "spawn source kind matches duplicate hurt");
+      check(
+        has("Warlord · calls goblins") && has("Captain · calls goblins"),
+        "known goblin warnings name summons",
+      );
+      check(
+        has("Foe · rallies") && has("Warlord · winds up"),
+        "unknown actors and other mechanics retain raw words",
+      );
+      return n;
+    });
+    await p.locator(".console .gem").click();
+    await p.evaluate(() => {
+      window.__renameActors = false;
+      window.__logPhase = 5;
+    });
+    await p.waitForFunction(() => window.__emitted === 5);
+    await p.evaluate(() => (window.__renameActors = true));
+    await p.waitForTimeout(200);
+    await p.locator(".console .gem").click();
+    await p.waitForFunction(() =>
+      document.querySelector(".combat-lines")?.textContent.includes("Wren Ash → Scarface · −13 hp"),
+    );
+    checks++;
+    await p.evaluate(() => (window.__logPhase = 6));
+    await p.waitForFunction(() => document.querySelector(".combat-lines")?.children.length === 80);
+    if (await p.evaluate(() => document.documentElement.scrollWidth > innerWidth))
+      throw Error("overflow");
+    checks += 2;
+    if (errors.length) throw Error(errors.join("\n"));
+    console.log(width, checks, "combat identity/delayed actors/fallback/colours/bounds PASS");
+    await p.close();
+  }
+} finally {
+  await b.close();
+}

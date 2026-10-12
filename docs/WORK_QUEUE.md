@@ -2,6 +2,10 @@
 
 ## Current checkpoint and owner additions
 
+Owner amendment: publish the first alpha and repair release-driven Pages
+deployment (Cut187). This release is authorized; the content queue below and
+the broader fun-rating goal remain paused.
+
 Current source checkpoint: `74e99a1` (Cut185 cumulative skills/home shadows,
 Cut186 button polish). The broader fun goal remains paused. Queue updates do
 not authorize starting another implementation or rating round while paused.

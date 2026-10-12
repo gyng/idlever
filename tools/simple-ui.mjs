@@ -1,102 +1,289 @@
 // Real-engine acceptance for the owner's simpler first session and live watch.
-import { launchGpu } from './browser.mjs';
-import { mkdirSync, writeFileSync } from 'node:fs';
-import assert from 'node:assert/strict';
-const [url='http://localhost:5367/?engine=native',out='scratchpad/simple-ui']=process.argv.slice(2);
-mkdirSync(out,{recursive:true});
-const browser=await launchGpu(), checks=[], errors=[];
-const check=(name,value)=>{assert.ok(value,name);checks.push(name);};
+import { launchGpu } from "./browser.mjs";
+import { mkdirSync, writeFileSync } from "node:fs";
+import assert from "node:assert/strict";
+const [url = "http://localhost:5367/?engine=native", out = "scratchpad/simple-ui"] =
+  process.argv.slice(2);
+mkdirSync(out, { recursive: true });
+const browser = await launchGpu(),
+  checks = [],
+  errors = [];
+const check = (name, value) => {
+  assert.ok(value, name);
+  checks.push(name);
+};
 try {
- for(const width of [400,1440]) {
-  const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:2});
-  page.on('pageerror',e=>errors.push(e.message));
-  const u=new URL(url); for(const [k,v] of Object.entries({fresh:'1',seed:'1',lanes:'0'}))u.searchParams.set(k,v);
-  await page.goto(u.href);
-  await page.waitForFunction(()=>window.__riddle?.booted&&window.__riddle.screen==='camp');
-  check(`${width}: fresh buildings empty`,await page.evaluate(()=>window.__riddle.lineage.town.buildings.length===0));
-  check(`${width}: extra camp panel hidden`,!await page.locator('.camp-main').isVisible());
-  check(`${width}: send has no speed switch`,await page.locator('.send-mode').count()===0);
-  await page.screenshot({path:`${out}/${width}-camp.png`});
-  check(`${width}: empty town has no resident or run controls`,await page.evaluate(()=>window.__riddle.lineage.town.home===false)&&!await page.locator('button.send').isVisible());
-  await page.locator('.town-tag[data-next=house]').click();
-  await page.waitForFunction(()=>!document.querySelector('button.send')?.disabled);
-  check(`${width}: free home has resident and zero Legacy`,await page.evaluate(()=>window.__riddle.lineage.town.home&&window.__riddle.lineage.gold===0&&window.__riddle.lineage.hero_legacy[0].points===0));
-  await page.screenshot({path:`${out}/${width}-home.png`});
-  await page.locator('.topbar button.legacy').click();
-  check(`${width}: three hero upgrade choices`,await page.locator('.legacy-upgrade').count()===3);
-  check(`${width}: poor hero cannot buy upgrades`,await page.locator('.legacy-buy:disabled').count()===3);
-  await page.locator('.sheet-wrap button.stud').click();
-  await page.locator('button.send').click();
-  await page.waitForSelector('main.watch');
-  check(`${width}: explicit live label`,await page.locator('.live-badge').isVisible()&&(await page.locator('.live-badge').innerText()).trim()==='Live');
-  check(`${width}: explicit carried and secured gold`,/Carried.*Secured/.test(await page.locator('.stake').getAttribute('aria-label')));
-  check(`${width}: two watch menu controls`,await page.locator('.console .cmd button.hud-btn:visible').count()===2);
-  await page.waitForFunction(()=>document.querySelectorAll('.combat-lines li').length>0,null,{timeout:30000});
-  check(`${width}: bounded ordered log`,await page.evaluate(()=>{const t=[...document.querySelectorAll('.combat-lines li')].map(x=>Number(x.dataset.tick));return t.length<=80&&t.every((x,i)=>!i||x>=t[i-1]);}));
-  await page.screenshot({path:`${out}/${width}-watch.png`});
-  await page.getByRole('button',{name:'Speed',exact:true}).click();
-  check(`${width}: run controls remain in Speed`,await page.locator('.watch-options [data-tile=skip]').count()===1&&await page.locator('.watch-options [data-tile=bail]').count()===1&&await page.locator('.watch-options [data-tile=fights].on').count()===1);
-  await page.getByRole('button',{name:'normal',exact:true}).click();
-  await page.waitForSelector(".watch-options", {state:"detached"});
-  check(`${width}: speed selection applies and closes`,await page.locator('main.watch').getAttribute('data-mode')==='one'&&await page.locator('.watch-options').count()===0);
-  const live=await page.evaluate(async()=> (await window.__riddle.engine.lineage()).live?.run_id);
-  check(`${width}: clear town exit`,(await page.locator('button[data-tile=town]').innerText()).includes('Town menu'));
-  await page.locator('button[data-tile=town]').click();
-  await page.waitForSelector('main.camp');
-  await page.waitForFunction(()=>!!window.__riddle.lineage.live);
-  check(`${width}: leaving watch keeps same run`,await page.evaluate(id=>window.__riddle.lineage.live.run_id===id,live));
-  await page.locator('.topbar button.legacy').click();
-  check(`${width}: upgrades disabled while hero away`,await page.locator('.legacy-buy:disabled').count()===3&&(await page.locator('.hero-sheet').innerText()).includes('Hero away'));
-  await page.locator('.sheet-wrap button.stud').click();
-  await page.evaluate(()=>window.__riddle.absence(3600));
-  await page.waitForSelector('main.report');
-  check(`${width}: concise report`,await page.locator('.report-basics .tile').count()===3&&!await page.locator('.report-details').isVisible());
-  check(`${width}: heading contrast`,await page.evaluate(()=>getComputedStyle(document.querySelector('.report-summary h2')).color===getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()||getComputedStyle(document.querySelector('.report-summary h2')).color==='rgb(13, 12, 20)'));
-  await page.screenshot({path:`${out}/${width}-report.png`});
-  await page.getByRole('button',{name:'details',exact:true}).click();
-  check(`${width}: details accessible`,await page.locator('.report-details').isVisible());
-  await page.locator('main.report .gem').click();
-  await page.waitForSelector('main.camp');
-  check(`${width}: automatic haul and per-hero Legacy`,await page.evaluate(()=>window.__riddle.lineage.tree.chest===0&&window.__riddle.lineage.hero_legacy.some(x=>x.runs>0&&x.points>0)));
-  check(`${width}: milestone did not auto-build`,await page.evaluate(()=>window.__riddle.lineage.town.buildings.length===0&&window.__riddle.lineage.town.next_ready));
-  await page.locator('.topbar button.legacy').click();
-  const legacyBefore=await page.evaluate(()=>{const L=window.__riddle.lineage;return {gold:L.gold,classes:JSON.stringify(L.classes),points:L.bloodline.points};});
-  check(`${width}: earned Legacy buys health`,legacyBefore.points>=3&&await page.locator('.legacy-buy[data-upgrade=health]:not(:disabled)').count()===1);
-  await page.locator('.legacy-buy[data-upgrade=health]').click();
-  await page.waitForFunction(()=>window.__riddle.lineage.legacy_upgrades.find(x=>x.id==='health').rank===1);
-  await page.waitForFunction(()=>document.querySelector('.legacy-buy[data-upgrade=health]')?.textContent.includes('6'));
-  check(`${width}: Legacy purchase debits only Legacy`,await page.evaluate(b=>{const L=window.__riddle.lineage,h=L.bloodline;return h.points===b.points-3&&h.spent===3&&L.gold===b.gold&&JSON.stringify(L.classes)===b.classes;},legacyBefore));
-  check(`${width}: next health rank costs six`,await page.locator('.legacy-buy[data-upgrade=health]').innerText().then(x=>x.includes('6')));
-  await page.screenshot({path:`${out}/${width}-legacy.png`});
-  await page.locator('.sheet-wrap button.stud').click();
-  await page.locator('button.town-tag').click();
-  await page.waitForFunction(()=>window.__riddle.lineage.town.buildings.some(b=>b.id==='blacksmith'));
-  check(`${width}: explicit build works`,await page.locator('.town-hit[data-building=blacksmith]').isVisible());
-  await page.locator('.town-hit[data-building=blacksmith]').click();
-  await page.waitForSelector('.simple-kit');
-  check(`${width}: three simple forge cards`,await page.locator('.simple-kit .kit-slot').count()===3);
-  check(`${width}: advanced forge detail folded`,!await page.locator('.forge-ladders').isVisible());
-  await page.screenshot({path:`${out}/${width}-forge.png`});
-  await page.evaluate(()=>{const app=window.__riddle;window.__kitForecastCalls=0;const original=app.engine.kitDeltas.bind(app.engine);app.engine.kitDeltas=(...args)=>{window.__kitForecastCalls++;return original(...args);};});
-  const buy=page.locator('.forge-buy:not(:disabled)').first();
-  if(await buy.count()) {
-   const slot=await buy.getAttribute('data-slot');
-   const before=await page.evaluate(slot=>{const L=window.__riddle.lineage,k=L.kit.find(x=>x.slot===slot);return {gold:L.gold,owned:k.owned,price:k.next.price};},slot);
-   await buy.click();
-   await page.waitForFunction(({slot,owned})=>window.__riddle.lineage.kit.find(x=>x.slot===slot).owned===owned+1,{slot,owned:before.owned});
-   check(`${width}: one-click forge preserves price`,await page.evaluate(b=>window.__riddle.lineage.gold===b.gold-b.price,before));
-   check(`${width}: forge buy asks for no forecast`,await page.evaluate(()=>window.__kitForecastCalls===0));
-  } else check(`${width}: unaffordable forge disables buying`,await page.locator('.forge-buy:not(:disabled)').count()===0&&await page.locator('.forge-buy:disabled').count()>=3);   // Cut 113 §2: a tier's two steps are two buttons
-  await page.locator('.sheet-wrap button.stud').click();
-  check(`${width}: no horizontal overflow`,await page.evaluate(()=>document.documentElement.scrollWidth)<=width);
-  await page.evaluate(()=>window.__riddle.flush());
-  u.searchParams.delete("fresh"); await page.goto(u.href);
-  await page.waitForFunction(()=>window.__riddle?.booted);
-  check(`${width}: construction persisted`,await page.evaluate(()=>window.__riddle.lineage.town.buildings.some(b=>b.id==='blacksmith')));
-  check(`${width}: Legacy purchase persisted`,await page.evaluate(()=>window.__riddle.lineage.legacy_upgrades.find(x=>x.id==='health').rank===1&&window.__riddle.lineage.bloodline.spent===3));
-  await page.close();
- }
- check('no page errors',errors.length===0);
- writeFileSync(`${out}/checks.json`,JSON.stringify({pass:true,checks,errors},null,2)+'\n');
- console.log(`PASS: ${checks.length} real-engine UX checks at400/1440px`);
-} finally {await browser.close();}
+  for (const width of [400, 1440]) {
+    const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 2 });
+    page.on("pageerror", (e) => errors.push(e.message));
+    const u = new URL(url);
+    for (const [k, v] of Object.entries({ fresh: "1", seed: "1", lanes: "0" }))
+      u.searchParams.set(k, v);
+    await page.goto(u.href);
+    await page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp");
+    check(
+      `${width}: fresh buildings empty`,
+      await page.evaluate(() => window.__riddle.lineage.town.buildings.length === 0),
+    );
+    check(`${width}: extra camp panel hidden`, !(await page.locator(".camp-main").isVisible()));
+    check(`${width}: send has no speed switch`, (await page.locator(".send-mode").count()) === 0);
+    await page.screenshot({ path: `${out}/${width}-camp.png` });
+    check(
+      `${width}: empty town has no resident or run controls`,
+      (await page.evaluate(() => window.__riddle.lineage.town.home === false)) &&
+        !(await page.locator("button.send").isVisible()),
+    );
+    await page.locator(".town-tag[data-next=house]").click();
+    await page.waitForFunction(() => !document.querySelector("button.send")?.disabled);
+    check(
+      `${width}: free home has resident and zero Legacy`,
+      await page.evaluate(
+        () =>
+          window.__riddle.lineage.town.home &&
+          window.__riddle.lineage.gold === 0 &&
+          window.__riddle.lineage.hero_legacy[0].points === 0,
+      ),
+    );
+    await page.screenshot({ path: `${out}/${width}-home.png` });
+    await page.locator(".topbar button.legacy").click();
+    check(
+      `${width}: three hero upgrade choices`,
+      (await page.locator(".legacy-upgrade").count()) === 3,
+    );
+    check(
+      `${width}: poor hero cannot buy upgrades`,
+      (await page.locator(".legacy-buy:disabled").count()) === 3,
+    );
+    await page.locator(".sheet-wrap button.stud").click();
+    await page.locator("button.send").click();
+    await page.waitForSelector("main.watch");
+    check(
+      `${width}: explicit live label`,
+      (await page.locator(".live-badge").isVisible()) &&
+        (await page.locator(".live-badge").innerText()).trim() === "Live",
+    );
+    check(
+      `${width}: explicit carried and secured gold`,
+      /Carried.*Secured/.test(await page.locator(".stake").getAttribute("aria-label")),
+    );
+    check(
+      `${width}: two watch menu controls`,
+      (await page.locator(".console .cmd button.hud-btn:visible").count()) === 2,
+    );
+    await page.waitForFunction(
+      () => document.querySelectorAll(".combat-lines li").length > 0,
+      null,
+      { timeout: 30000 },
+    );
+    check(
+      `${width}: bounded ordered log`,
+      await page.evaluate(() => {
+        const t = [...document.querySelectorAll(".combat-lines li")].map((x) =>
+          Number(x.dataset.tick),
+        );
+        return t.length <= 80 && t.every((x, i) => !i || x >= t[i - 1]);
+      }),
+    );
+    await page.screenshot({ path: `${out}/${width}-watch.png` });
+    await page.getByRole("button", { name: "Speed", exact: true }).click();
+    check(
+      `${width}: run controls remain in Speed`,
+      (await page.locator(".watch-options [data-tile=skip]").count()) === 1 &&
+        (await page.locator(".watch-options [data-tile=bail]").count()) === 1 &&
+        (await page.locator(".watch-options [data-tile=fights].on").count()) === 1,
+    );
+    await page.getByRole("button", { name: "normal", exact: true }).click();
+    await page.waitForSelector(".watch-options", { state: "detached" });
+    check(
+      `${width}: speed selection applies and closes`,
+      (await page.locator("main.watch").getAttribute("data-mode")) === "one" &&
+        (await page.locator(".watch-options").count()) === 0,
+    );
+    const live = await page.evaluate(
+      async () => (await window.__riddle.engine.lineage()).live?.run_id,
+    );
+    check(
+      `${width}: clear town exit`,
+      (await page.locator("button[data-tile=town]").innerText()).includes("Town menu"),
+    );
+    await page.locator("button[data-tile=town]").click();
+    await page.waitForSelector("main.camp");
+    await page.waitForFunction(() => !!window.__riddle.lineage.live);
+    check(
+      `${width}: leaving watch keeps same run`,
+      await page.evaluate((id) => window.__riddle.lineage.live.run_id === id, live),
+    );
+    await page.locator(".topbar button.legacy").click();
+    check(
+      `${width}: upgrades disabled while hero away`,
+      (await page.locator(".legacy-buy:disabled").count()) === 3 &&
+        (await page.locator(".hero-sheet").innerText()).includes("Hero away"),
+    );
+    await page.locator(".sheet-wrap button.stud").click();
+    await page.evaluate(() => window.__riddle.absence(3600));
+    await page.waitForSelector("main.report");
+    check(
+      `${width}: concise report`,
+      (await page.locator(".report-basics .tile").count()) === 3 &&
+        !(await page.locator(".report-details").isVisible()),
+    );
+    check(
+      `${width}: heading contrast`,
+      await page.evaluate(
+        () =>
+          getComputedStyle(document.querySelector(".report-summary h2")).color ===
+            getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() ||
+          getComputedStyle(document.querySelector(".report-summary h2")).color ===
+            "rgb(13, 12, 20)",
+      ),
+    );
+    await page.screenshot({ path: `${out}/${width}-report.png` });
+    await page.getByRole("button", { name: "details", exact: true }).click();
+    check(`${width}: details accessible`, await page.locator(".report-details").isVisible());
+    await page.locator("main.report .gem").click();
+    await page.waitForSelector("main.camp");
+    check(
+      `${width}: automatic haul and per-hero Legacy`,
+      await page.evaluate(
+        () =>
+          window.__riddle.lineage.tree.chest === 0 &&
+          window.__riddle.lineage.hero_legacy.some((x) => x.runs > 0 && x.points > 0),
+      ),
+    );
+    check(
+      `${width}: milestone did not auto-build`,
+      await page.evaluate(
+        () =>
+          window.__riddle.lineage.town.buildings.length === 0 &&
+          window.__riddle.lineage.town.next_ready,
+      ),
+    );
+    await page.locator(".topbar button.legacy").click();
+    const legacyBefore = await page.evaluate(() => {
+      const L = window.__riddle.lineage;
+      return { gold: L.gold, classes: JSON.stringify(L.classes), points: L.bloodline.points };
+    });
+    check(
+      `${width}: earned Legacy buys health`,
+      legacyBefore.points >= 3 &&
+        (await page.locator(".legacy-buy[data-upgrade=health]:not(:disabled)").count()) === 1,
+    );
+    await page.locator(".legacy-buy[data-upgrade=health]").click();
+    await page.waitForFunction(
+      () => window.__riddle.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1,
+    );
+    await page.waitForFunction(() =>
+      document.querySelector(".legacy-buy[data-upgrade=health]")?.textContent.includes("6"),
+    );
+    check(
+      `${width}: Legacy purchase debits only Legacy`,
+      await page.evaluate((b) => {
+        const L = window.__riddle.lineage,
+          h = L.bloodline;
+        return (
+          h.points === b.points - 3 &&
+          h.spent === 3 &&
+          L.gold === b.gold &&
+          JSON.stringify(L.classes) === b.classes
+        );
+      }, legacyBefore),
+    );
+    check(
+      `${width}: next health rank costs six`,
+      await page
+        .locator(".legacy-buy[data-upgrade=health]")
+        .innerText()
+        .then((x) => x.includes("6")),
+    );
+    await page.screenshot({ path: `${out}/${width}-legacy.png` });
+    await page.locator(".sheet-wrap button.stud").click();
+    await page.locator("button.town-tag").click();
+    await page.waitForFunction(() =>
+      window.__riddle.lineage.town.buildings.some((b) => b.id === "blacksmith"),
+    );
+    check(
+      `${width}: explicit build works`,
+      await page.locator(".town-hit[data-building=blacksmith]").isVisible(),
+    );
+    await page.locator(".town-hit[data-building=blacksmith]").click();
+    await page.waitForSelector(".simple-kit");
+    check(
+      `${width}: three simple forge cards`,
+      (await page.locator(".simple-kit .kit-slot").count()) === 3,
+    );
+    check(
+      `${width}: advanced forge detail folded`,
+      !(await page.locator(".forge-ladders").isVisible()),
+    );
+    await page.screenshot({ path: `${out}/${width}-forge.png` });
+    await page.evaluate(() => {
+      const app = window.__riddle;
+      window.__kitForecastCalls = 0;
+      const original = app.engine.kitDeltas.bind(app.engine);
+      app.engine.kitDeltas = (...args) => {
+        window.__kitForecastCalls++;
+        return original(...args);
+      };
+    });
+    const buy = page.locator(".forge-buy:not(:disabled)").first();
+    if (await buy.count()) {
+      const slot = await buy.getAttribute("data-slot");
+      const before = await page.evaluate((slot) => {
+        const L = window.__riddle.lineage,
+          k = L.kit.find((x) => x.slot === slot);
+        return { gold: L.gold, owned: k.owned, price: k.next.price };
+      }, slot);
+      await buy.click();
+      await page.waitForFunction(
+        ({ slot, owned }) =>
+          window.__riddle.lineage.kit.find((x) => x.slot === slot).owned === owned + 1,
+        { slot, owned: before.owned },
+      );
+      check(
+        `${width}: one-click forge preserves price`,
+        await page.evaluate((b) => window.__riddle.lineage.gold === b.gold - b.price, before),
+      );
+      check(
+        `${width}: forge buy asks for no forecast`,
+        await page.evaluate(() => window.__kitForecastCalls === 0),
+      );
+    } else
+      check(
+        `${width}: unaffordable forge disables buying`,
+        (await page.locator(".forge-buy:not(:disabled)").count()) === 0 &&
+          (await page.locator(".forge-buy:disabled").count()) >= 3,
+      ); // Cut 113 §2: a tier's two steps are two buttons
+    await page.locator(".sheet-wrap button.stud").click();
+    check(
+      `${width}: no horizontal overflow`,
+      (await page.evaluate(() => document.documentElement.scrollWidth)) <= width,
+    );
+    await page.evaluate(() => window.__riddle.flush());
+    u.searchParams.delete("fresh");
+    await page.goto(u.href);
+    await page.waitForFunction(() => window.__riddle?.booted);
+    check(
+      `${width}: construction persisted`,
+      await page.evaluate(() =>
+        window.__riddle.lineage.town.buildings.some((b) => b.id === "blacksmith"),
+      ),
+    );
+    check(
+      `${width}: Legacy purchase persisted`,
+      await page.evaluate(
+        () =>
+          window.__riddle.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1 &&
+          window.__riddle.lineage.bloodline.spent === 3,
+      ),
+    );
+    await page.close();
+  }
+  check("no page errors", errors.length === 0);
+  writeFileSync(
+    `${out}/checks.json`,
+    JSON.stringify({ pass: true, checks, errors }, null, 2) + "\n",
+  );
+  console.log(`PASS: ${checks.length} real-engine UX checks at400/1440px`);
+} finally {
+  await browser.close();
+}

@@ -12,9 +12,11 @@ export type Routine = { kind: "kit" | "hire"; id: string; price: number; label: 
 /** The routine buys the purse covers now (kit steps first, then hires — each priced, in the order they are taken). */
 export function routineItems(L: Pick<Lineage, "kit" | "tree" | "gold" | "live">): Routine[] {
   if (L.live) return [];
-  const kit: Routine[] = (L.kit ?? []).filter((k) => k.slot !== "gun_sidearm" && k.next?.affordable && !k.branches?.length)
+  const kit: Routine[] = (L.kit ?? [])
+    .filter((k) => k.slot !== "gun_sidearm" && k.next?.affordable && !k.branches?.length)
     .map((k) => ({ kind: "kit", id: k.slot, price: k.next!.price, label: k.next!.label }));
-  const hires: Routine[] = (L.tree?.nodes ?? []).filter((n) => n.kind === "worker" && n.state === "lit" && n.affordable !== false)
+  const hires: Routine[] = (L.tree?.nodes ?? [])
+    .filter((n) => n.kind === "worker" && n.state === "lit" && n.affordable !== false)
     .map((n) => ({ kind: "hire", id: n.id, price: n.price ?? 0, label: n.name }));
   // (what the purse covers after the kit: the chest pays a hire's rest, the core refuses what it cannot pay)
   return [...kit, ...hires];
@@ -27,8 +29,10 @@ export async function takeRoutine(app: App): Promise<number> {
   for (const it of routineItems(app.lineage)) {
     const now = routineItems(app.lineage).find((x) => x.kind === it.kind && x.id === it.id);
     if (!now) continue;
-    const ok = it.kind === "kit" ? !!app.engine.buyKit && await app.mutate(() => app.engine.buyKit!(it.id), undefined)
-      : !!app.engine.hire && await app.mutate(() => app.engine.hire!(it.id));
+    const ok =
+      it.kind === "kit"
+        ? !!app.engine.buyKit && (await app.mutate(() => app.engine.buyKit!(it.id), undefined))
+        : !!app.engine.hire && (await app.mutate(() => app.engine.hire!(it.id)));
     if (ok) n++;
   }
   return n;
@@ -42,7 +46,11 @@ export function checkinBatch(app: App): { el: HTMLElement; dispose: () => void }
     if (busy) return;
     busy = true;
     let n = 0;
-    try { n = await takeRoutine(app); } finally { busy = false; }
+    try {
+      n = await takeRoutine(app);
+    } finally {
+      busy = false;
+    }
     if (n) audio.cue("unlock");
     toast(n ? /* copy:callout */ `${n} taken` : /* copy:callout */ "nothing taken");
     paint();
@@ -52,9 +60,17 @@ export function checkinBatch(app: App): { el: HTMLElement; dispose: () => void }
     const show = items.length >= 2 && (!!app.engine.buyKit || !!app.engine.hire);
     el.hidden = !show;
     el.dataset.checkin = String(show ? items.length : 0);
-    if (!show) { replace(el); return; }
+    if (!show) {
+      replace(el);
+      return;
+    }
     const total = items.reduce((s, x) => s + x.price, 0);
-    const chip = twoTap(/* copy:button */ `take ${items.length}`, /* copy:button */ `ok $${total}`, () => void take(), { class: "chip checkin-take num", key: "checkin-take" });
+    const chip = twoTap(
+      /* copy:button */ `take ${items.length}`,
+      /* copy:button */ `ok $${total}`,
+      () => void take(),
+      { class: "chip checkin-take num", key: "checkin-take" },
+    );
     chip.title = items.map((x) => `${x.label} $${x.price}`).join(" · ");
     replace(el, chip);
   };

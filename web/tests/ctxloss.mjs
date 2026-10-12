@@ -17,33 +17,70 @@ import { launchBrowser } from "../../tools/browser.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const errors = [], out = [];
+const errors = [],
+  out = [];
 let failed = 0;
-const check = (ok, what) => { out.push(`${ok ? "ok  " : "FAIL"} ${what}`); if (!ok) failed++; };
+const check = (ok, what) => {
+  out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
+  if (!ok) failed++;
+};
 
 const browser = await launchBrowser();
 async function open(init) {
-  const page = await browser.newPage({ viewport: { width: 400, height: 800 }, deviceScaleFactor: 1 });
+  const page = await browser.newPage({
+    viewport: { width: 400, height: 800 },
+    deviceScaleFactor: 1,
+  });
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   if (init) await page.addInitScript(init);
   return page;
 }
 const screen = (p) => p.evaluate(() => window.__riddle?.screen ?? null).catch(() => null);
-const tick = (p) => p.evaluate(() => Number(document.querySelector(".watch")?.dataset.tick ?? NaN)).catch(() => NaN);
-const stats = (p) => p.evaluate(() => { const s = window.__viewer?.stats?.(); return s ? { glLost: !!s.glLost, calls: s.calls, tick: s.tick, gpuTimer: s.gpuTimer, gpuMs: s.gpuMs, gpuP95: s.gpuP95 } : null; }).catch(() => null);
-async function waitFor(p, pred, label, ms = 30000) { const t = Date.now(); while (Date.now() - t < ms) { if (await pred()) return true; await sleep(100); } throw new Error(`timeout: ${label}`); }
+const tick = (p) =>
+  p.evaluate(() => Number(document.querySelector(".watch")?.dataset.tick ?? NaN)).catch(() => NaN);
+const stats = (p) =>
+  p
+    .evaluate(() => {
+      const s = window.__viewer?.stats?.();
+      return s
+        ? {
+            glLost: !!s.glLost,
+            calls: s.calls,
+            tick: s.tick,
+            gpuTimer: s.gpuTimer,
+            gpuMs: s.gpuMs,
+            gpuP95: s.gpuP95,
+          }
+        : null;
+    })
+    .catch(() => null);
+async function waitFor(p, pred, label, ms = 30000) {
+  const t = Date.now();
+  while (Date.now() - t < ms) {
+    if (await pred()) return true;
+    await sleep(100);
+  }
+  throw new Error(`timeout: ${label}`);
+}
 /** ▶▶| pressed until the run leaves the watch (an exit's vault pick taken); ms to get there, or -1. */
 async function skipToExit(p, ms = 60000) {
   const t = Date.now();
   while (Date.now() - t < ms) {
     const s = await screen(p);
     if (s !== "watch") {
-      if (s === "exit") { await p.locator(".sheet-wrap .vault-choice .chip").first().click({ timeout: 1000 }).catch(() => {}); }
+      if (s === "exit") {
+        await p
+          .locator(".sheet-wrap .vault-choice .chip")
+          .first()
+          .click({ timeout: 1000 })
+          .catch(() => {});
+      }
       return Date.now() - t;
     }
     await p.evaluate(() => {
       if (!document.querySelector("main.watch")) return;
-      if (!document.querySelector('button[data-tile="skip"]')) document.querySelector('button[data-tile="speed"]')?.click();
+      if (!document.querySelector('button[data-tile="skip"]'))
+        document.querySelector('button[data-tile="speed"]')?.click();
       const skip = document.querySelector('button[data-tile="skip"]');
       if (!skip) throw new Error("Jump control missing from Speed menu");
       skip.click();
@@ -53,68 +90,115 @@ async function skipToExit(p, ms = 60000) {
   return -1;
 }
 /** the 2D overlay's pixels: shown, and more than one colour (a map drawn, not a cleared canvas) */
-const overlay = (p) => p.evaluate(() => {
-  const c = document.querySelector(".watch canvas.view-2d");
-  if (!c) return { shown: false, colours: 0 };
-  const g = c.getContext("2d"), d = g.getImageData(0, 0, c.width, c.height).data, set = new Set();
-  for (let i = 0; i < d.length; i += 4 * 97) set.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
-  return { shown: getComputedStyle(c).display !== "none", colours: set.size };
-});
+const overlay = (p) =>
+  p.evaluate(() => {
+    const c = document.querySelector(".watch canvas.view-2d");
+    if (!c) return { shown: false, colours: 0 };
+    const g = c.getContext("2d"),
+      d = g.getImageData(0, 0, c.width, c.height).data,
+      set = new Set();
+    for (let i = 0; i < d.length; i += 4 * 97) set.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
+    return { shown: getComputedStyle(c).display !== "none", colours: set.size };
+  });
 /** the town's 2D view: shown, and more than a few colours (the scene drawn, not a cleared canvas) */
-const town2d = (p) => p.evaluate(() => {
-  const c = document.querySelector(".town canvas.town-2d");
-  if (!c) return { shown: false, colours: 0 };
-  const g = c.getContext("2d"), d = g.getImageData(0, 0, c.width, c.height).data, set = new Set();
-  for (let i = 0; i < d.length; i += 4 * 97) set.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
-  return { shown: getComputedStyle(c).display !== "none", colours: set.size };
-});
+const town2d = (p) =>
+  p.evaluate(() => {
+    const c = document.querySelector(".town canvas.town-2d");
+    if (!c) return { shown: false, colours: 0 };
+    const g = c.getContext("2d"),
+      d = g.getImageData(0, 0, c.width, c.height).data,
+      set = new Set();
+    for (let i = 0; i < d.length; i += 4 * 97) set.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
+    return { shown: getComputedStyle(c).display !== "none", colours: set.size };
+  });
 const townStats = (p) => p.evaluate(() => window.__town?.stats() ?? null).catch(() => null);
 /** a fresh lineage's camp → send (the gem) → the watch */
 async function toWatch(p, label) {
   await p.waitForFunction(() => window.__riddle?.booted);
-  await waitFor(p, async () => ["camp", "watch"].includes(await screen(p)), `${label}: the camp`, 60000);
+  await waitFor(
+    p,
+    async () => ["camp", "watch"].includes(await screen(p)),
+    `${label}: the camp`,
+    60000,
+  );
   // Current opening: manual house construction precedes the first Send.
   if (await p.evaluate(() => window.__riddle?.lineage.town?.home === false)) {
     await p.locator('.town-tag[data-next="house"]').waitFor({ state: "visible" });
     await p.locator('.town-tag[data-next="house"]').click();
-    await waitFor(p, async () => await p.locator('button.send:enabled').count() > 0, `${label}: first hero`);
+    await waitFor(
+      p,
+      async () => (await p.locator("button.send:enabled").count()) > 0,
+      `${label}: first hero`,
+    );
   }
-  await p.evaluate(() => { window.__riddle.watchMode = "one"; });
+  await p.evaluate(() => {
+    window.__riddle.watchMode = "one";
+  });
   const t = Date.now();
-  while ((await screen(p)) === "camp" && Date.now() - t < 20000) { await p.evaluate(() => (document.querySelector("button.send") ?? document.querySelector(".gem-slot .gem"))?.click()); await sleep(700); }
+  while ((await screen(p)) === "camp" && Date.now() - t < 20000) {
+    await p.evaluate(() =>
+      (document.querySelector("button.send") ?? document.querySelector(".gem-slot .gem"))?.click(),
+    );
+    await sleep(700);
+  }
   await waitFor(p, async () => (await screen(p)) === "watch" && !!(await stats(p)), label);
 }
-const lose = (p, restore = false) => p.evaluate((restore) => {
-  const c = document.querySelector(".watch canvas.view");
-  const gl = c.getContext("webgl2") ?? c.getContext("webgl");
-  window.__lc ??= gl.getExtension("WEBGL_lose_context");
-  if (restore) window.__lc.restoreContext(); else window.__lc.loseContext();
-}, restore);
+const lose = (p, restore = false) =>
+  p.evaluate((restore) => {
+    const c = document.querySelector(".watch canvas.view");
+    const gl = c.getContext("webgl2") ?? c.getContext("webgl");
+    window.__lc ??= gl.getExtension("WEBGL_lose_context");
+    if (restore) window.__lc.restoreContext();
+    else window.__lc.loseContext();
+  }, restore);
 
 try {
   // (a) a lost context mid-watch (the fake engine: its early floors last), restored, lost again and skipped to the exit
   {
     const p = await open();
-    await p.goto(`${url}?dev=1&engine=fake&fresh=1&seed=157&runs=0`, { waitUntil: "domcontentloaded" });
+    await p.goto(`${url}?dev=1&engine=fake&fresh=1&seed=157&runs=0`, {
+      waitUntil: "domcontentloaded",
+    });
     await toWatch(p, "the watch (fake)");
     await sleep(1200);
     await lose(p);
     await sleep(600);
-    const s1 = await stats(p), o1 = await overlay(p), t1 = await tick(p);
+    const s1 = await stats(p),
+      o1 = await overlay(p),
+      t1 = await tick(p);
     check(s1?.glLost === true, `lost: stats().glLost (${s1?.glLost})`);
-    check(s1?.gpuTimer === false && Number.isNaN(s1.gpuMs) && Number.isNaN(s1.gpuP95), "lost: GPU timings are explicitly unavailable");
-    check(o1.shown && o1.colours >= 4, `lost: the 2D view is drawn over the canvas (shown ${o1.shown}, ${o1.colours} colours)`);
+    check(
+      s1?.gpuTimer === false && Number.isNaN(s1.gpuMs) && Number.isNaN(s1.gpuP95),
+      "lost: GPU timings are explicitly unavailable",
+    );
+    check(
+      o1.shown && o1.colours >= 4,
+      `lost: the 2D view is drawn over the canvas (shown ${o1.shown}, ${o1.colours} colours)`,
+    );
     await sleep(2000);
-    const t2 = await tick(p), sc = await screen(p);
+    const t2 = await tick(p),
+      sc = await screen(p);
     check(sc === "watch" && t2 > t1, `lost: the watch keeps advancing (tick ${t1} → ${t2}, ${sc})`);
     await lose(p, true);
     await sleep(800);
-    const s2 = await stats(p), o2 = await overlay(p);
-    check(s2?.glLost === false && s2.calls > 0, `restored: GL frames again (glLost ${s2?.glLost}, ${s2?.calls} draw calls)`);
+    const s2 = await stats(p),
+      o2 = await overlay(p);
+    check(
+      s2?.glLost === false && s2.calls > 0,
+      `restored: GL frames again (glLost ${s2?.glLost}, ${s2?.calls} draw calls)`,
+    );
     check(!o2.shown, `restored: the 2D view hidden (${o2.shown})`);
-    const t3 = await tick(p); await sleep(1000); const t4 = await tick(p);
-    check((await screen(p)) !== "watch" || t4 > t3, `restored: the watch advances (tick ${t3} → ${t4})`);
-    if ((await screen(p)) === "watch") { await lose(p); await sleep(300); }
+    const t3 = await tick(p);
+    await sleep(1000);
+    const t4 = await tick(p);
+    check(
+      (await screen(p)) !== "watch" || t4 > t3,
+      `restored: the watch advances (tick ${t3} → ${t4})`,
+    );
+    if ((await screen(p)) === "watch") {
+      await lose(p);
+      await sleep(300);
+    }
     const ms = await skipToExit(p);
     check(ms >= 0, `lost again: ▶▶| reaches the run's exit (${ms} ms, screen ${await screen(p)})`);
     await p.close();
@@ -126,27 +210,48 @@ try {
     await toWatch(p, "the watch");
     await lose(p);
     await sleep(500);
-    check((await stats(p))?.glLost === true || (await screen(p)) !== "watch", `real engine, lost: stats().glLost`);
+    check(
+      (await stats(p))?.glLost === true || (await screen(p)) !== "watch",
+      `real engine, lost: stats().glLost`,
+    );
     const ms = await skipToExit(p);
-    check(ms >= 0, `real engine, lost: ▶▶| reaches the run's exit (${ms} ms, screen ${await screen(p)})`);
+    check(
+      ms >= 0,
+      `real engine, lost: ▶▶| reaches the run's exit (${ms} ms, screen ${await screen(p)})`,
+    );
     await p.close();
   }
   // (b) no GL context can be made at all: the renderer's 2D viewer
   {
     const p = await open(() => {
       const get = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function (type, ...a) { return /webgl/i.test(type) ? null : get.call(this, type, ...a); };
+      HTMLCanvasElement.prototype.getContext = function (type, ...a) {
+        return /webgl/i.test(type) ? null : get.call(this, type, ...a);
+      };
     });
     await p.goto(`${url}?dev=1&fresh=1&seed=4243`, { waitUntil: "domcontentloaded" });
     await waitFor(p, async () => (await townStats(p))?.frames > 3, "the town (no GL)", 60000);
-    const ts = await townStats(p), td = await town2d(p);
-    check(ts?.mode === "2d" && td.shown && td.colours >= 8, `no GL: the camp's town is drawn in 2D (${ts?.mode}, shown ${td.shown}, ${td.colours} colours)`);
+    const ts = await townStats(p),
+      td = await town2d(p);
+    check(
+      ts?.mode === "2d" && td.shown && td.colours >= 8,
+      `no GL: the camp's town is drawn in 2D (${ts?.mode}, shown ${td.shown}, ${td.colours} colours)`,
+    );
     await toWatch(p, "the watch (no GL)");
     const s0 = await stats(p);
     check(s0?.glLost === true, `no GL: the 2D viewer mounted (glLost ${s0?.glLost})`);
-    const t1 = await tick(p); await sleep(2000); const t2 = await tick(p);
+    const t1 = await tick(p);
+    await sleep(2000);
+    const t2 = await tick(p);
     check((await screen(p)) !== "watch" || t2 > t1, `no GL: the tick advances (${t1} → ${t2})`);
-    const drawn = await p.evaluate(() => { const c = document.querySelector(".watch canvas.view"); const d = c.getContext("2d")?.getImageData(0, 0, c.width, c.height).data; if (!d) return 0; const s = new Set(); for (let i = 0; i < d.length; i += 4 * 97) s.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]); return s.size; });
+    const drawn = await p.evaluate(() => {
+      const c = document.querySelector(".watch canvas.view");
+      const d = c.getContext("2d")?.getImageData(0, 0, c.width, c.height).data;
+      if (!d) return 0;
+      const s = new Set();
+      for (let i = 0; i < d.length; i += 4 * 97) s.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
+      return s.size;
+    });
     check(drawn >= 4, `no GL: the map is drawn in 2D (${drawn} colours)`);
     const ms = await skipToExit(p);
     check(ms >= 0, `no GL: ▶▶| reaches the run's exit (${ms} ms, screen ${await screen(p)})`);
@@ -157,23 +262,38 @@ try {
     const p = await open();
     await p.goto(`${url}?dev=1&engine=fake&fresh=1&seed=158`, { waitUntil: "domcontentloaded" });
     await waitFor(p, async () => (await townStats(p))?.frames > 3, "the town", 60000);
-    const loseTown = (restore) => p.evaluate((restore) => {
-      const c = document.querySelector(".town canvas.town-gl");
-      const gl = c.getContext("webgl2") ?? c.getContext("webgl");
-      window.__tlc ??= gl.getExtension("WEBGL_lose_context");
-      if (restore) window.__tlc.restoreContext(); else window.__tlc.loseContext();
-    }, restore);
+    const loseTown = (restore) =>
+      p.evaluate((restore) => {
+        const c = document.querySelector(".town canvas.town-gl");
+        const gl = c.getContext("webgl2") ?? c.getContext("webgl");
+        window.__tlc ??= gl.getExtension("WEBGL_lose_context");
+        if (restore) window.__tlc.restoreContext();
+        else window.__tlc.loseContext();
+      }, restore);
     await loseTown(false);
     await sleep(600);
-    const s1 = await townStats(p), o1 = await town2d(p);
-    check(s1?.glLost === true && s1.mode === "2d", `town lost: stats().glLost (${s1?.glLost}, ${s1?.mode})`);
-    check(o1.shown && o1.colours >= 8, `town lost: the 2D view draws the town (shown ${o1.shown}, ${o1.colours} colours)`);
-    const f1 = s1?.frames ?? 0; await sleep(1000); const f2 = (await townStats(p))?.frames ?? 0;
+    const s1 = await townStats(p),
+      o1 = await town2d(p);
+    check(
+      s1?.glLost === true && s1.mode === "2d",
+      `town lost: stats().glLost (${s1?.glLost}, ${s1?.mode})`,
+    );
+    check(
+      o1.shown && o1.colours >= 8,
+      `town lost: the 2D view draws the town (shown ${o1.shown}, ${o1.colours} colours)`,
+    );
+    const f1 = s1?.frames ?? 0;
+    await sleep(1000);
+    const f2 = (await townStats(p))?.frames ?? 0;
     check(f2 > f1, `town lost: the scene runs on (frames ${f1} → ${f2})`);
     await loseTown(true);
     await sleep(800);
-    const s2 = await townStats(p), o2 = await town2d(p);
-    check(s2?.glLost === false && s2.mode === "gl" && !o2.shown, `town restored: GL again, the 2D view hidden (${s2?.mode}, 2D shown ${o2.shown})`);
+    const s2 = await townStats(p),
+      o2 = await town2d(p);
+    check(
+      s2?.glLost === false && s2.mode === "gl" && !o2.shown,
+      `town restored: GL again, the 2D view hidden (${s2?.mode}, 2D shown ${o2.shown})`,
+    );
     await p.close();
   }
 } catch (e) {
@@ -184,5 +304,8 @@ try {
 
 for (const l of out) console.log(l);
 for (const e of errors) console.error(e);
-if (failed || errors.length) { console.error(`ctxloss: FAIL (${failed} assertion(s), ${errors.length} error(s))`); process.exit(1); }
+if (failed || errors.length) {
+  console.error(`ctxloss: FAIL (${failed} assertion(s), ${errors.length} error(s))`);
+  process.exit(1);
+}
 console.log(`ctxloss: ok (${out.length} checks)`);

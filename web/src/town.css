@@ -1,58 +1,268 @@
 /* Cut 30 §3 — the town scene in the camp's well (docs/TOWN.md §5): the scene is the well's first screen (phone: the whole well;
    desktop: the frame's centre, where the vista stood); the canvas fills it, the hit targets lie over it, the labels hidden. */
-.town { position: relative; flex: 0 0 auto; height: var(--town-h, 520px); margin: -10px -10px 2px; overflow: hidden; background: #1b2412;
-  box-shadow: inset 0 0 0 1px var(--ink, #0d0c14), inset 0 -40px 40px -30px rgba(13, 12, 20, .8); touch-action: manipulation; }
-.town > canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; }
-.town > canvas.town-2d { z-index: 1; display: none; }
-.town-hits { position: absolute; inset: 0; z-index: 2; }
-.town-hit { position: absolute; padding: 0; margin: 0; border: 0; background: transparent; cursor: pointer; border-radius: 6px; -webkit-tap-highlight-color: transparent; }
-.town-hit:focus-visible { outline: 2px solid #e3c183; outline-offset: 1px; }
-.town-hit:active { background: rgba(227, 193, 131, .12); }
-.town-hit .vh, .vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
-.town-markers { position: absolute; left: 50%; top: -6px; transform: translate(-50%, -100%); display: flex; gap: 4px; pointer-events: none; }
-.town-marker { pointer-events: auto; display: inline-flex; align-items: center; gap: 2px; min-width: 26px; height: 26px; padding: 0 5px; border-radius: 13px;
-  background: radial-gradient(circle at 50% 35%, #3a2a1a, #14100c); box-shadow: 0 0 0 1px #8a6a2a, 0 0 10px rgba(255, 196, 90, .45); color: #f3d192; font-size: 12px;
-  animation: town-bob 1.6s ease-in-out infinite; }
-.town-marker .ico { width: 18px; height: 18px; }
-.town-marker .ico.glyph::before { content: attr(data-glyph); font-size: 14px; line-height: 18px; }
-.town-marker.mk-rune { box-shadow: 0 0 0 1px #4f8fa8, 0 0 10px rgba(110, 200, 230, .5); }
-.town-marker.mk-sword { min-height: 30px; }
-@keyframes town-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-@media (prefers-reduced-motion: reduce) { .town-marker { animation: none; } }
-.town-tag { position: absolute; z-index: 3; transform: translate(-50%, -100%); padding: 3px 8px; border-radius: 4px; white-space: nowrap; pointer-events: none;
-  background: rgba(13, 12, 20, .9); box-shadow: 0 0 0 1px #8a6a2a; color: #f3d192; font-size: 13px; }
-.town-tag[hidden] { display: none; }
-.town-tag[role="button"] { pointer-events: auto; cursor: pointer; min-height: 44px; display: flex; align-items: center; gap: 4px; }
-.town-tag .dim { color: #c4baa1; }
-.panel.town-anchored { animation: unfold .12s ease-out; }
-.bank-sheet .bank-line { font-size: 18px; margin: 4px 0; }
-.bank-bar { height: 8px; border-radius: 4px; background: rgba(38, 43, 67, .25); overflow: hidden; margin: 4px 0 8px; }
-.bank-bar .fill { display: block; height: 100%; background: linear-gradient(90deg, #b48a2a, #e3c183); }
-.bank-acts { gap: 8px; }
-.hero-sheet .hero-line { font-size: 18px; margin: 4px 0; }
+.town {
+  position: relative;
+  flex: 0 0 auto;
+  height: var(--town-h, 520px);
+  margin: -10px -10px 2px;
+  overflow: hidden;
+  background: #1b2412;
+  box-shadow:
+    inset 0 0 0 1px var(--ink, #0d0c14),
+    inset 0 -40px 40px -30px rgba(13, 12, 20, 0.8);
+  touch-action: manipulation;
+}
+.town > canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+.town > canvas.town-2d {
+  z-index: 1;
+  display: none;
+}
+.town-hits {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.town-hit {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+.town-hit:focus-visible {
+  outline: 2px solid #e3c183;
+  outline-offset: 1px;
+}
+.town-hit:active {
+  background: rgba(227, 193, 131, 0.12);
+}
+.town-hit .vh,
+.vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.town-markers {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  transform: translate(-50%, -100%);
+  display: flex;
+  gap: 4px;
+  pointer-events: none;
+}
+.town-marker {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 5px;
+  border-radius: 13px;
+  background: radial-gradient(circle at 50% 35%, #3a2a1a, #14100c);
+  box-shadow:
+    0 0 0 1px #8a6a2a,
+    0 0 10px rgba(255, 196, 90, 0.45);
+  color: #f3d192;
+  font-size: 12px;
+  animation: town-bob 1.6s ease-in-out infinite;
+}
+.town-marker .ico {
+  width: 18px;
+  height: 18px;
+}
+.town-marker .ico.glyph::before {
+  content: attr(data-glyph);
+  font-size: 14px;
+  line-height: 18px;
+}
+.town-marker.mk-rune {
+  box-shadow:
+    0 0 0 1px #4f8fa8,
+    0 0 10px rgba(110, 200, 230, 0.5);
+}
+.town-marker.mk-sword {
+  min-height: 30px;
+}
+@keyframes town-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .town-marker {
+    animation: none;
+  }
+}
+.town-tag {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -100%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  background: rgba(13, 12, 20, 0.9);
+  box-shadow: 0 0 0 1px #8a6a2a;
+  color: #f3d192;
+  font-size: 13px;
+}
+.town-tag[hidden] {
+  display: none;
+}
+.town-tag[role="button"] {
+  pointer-events: auto;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.town-tag .dim {
+  color: #c4baa1;
+}
+.panel.town-anchored {
+  animation: unfold 0.12s ease-out;
+}
+.bank-sheet .bank-line {
+  font-size: 18px;
+  margin: 4px 0;
+}
+.bank-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(38, 43, 67, 0.25);
+  overflow: hidden;
+  margin: 4px 0 8px;
+}
+.bank-bar .fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #b48a2a, #e3c183);
+}
+.bank-acts {
+  gap: 8px;
+}
+.hero-sheet .hero-line {
+  font-size: 18px;
+  margin: 4px 0;
+}
 /* the desktop (wide.css): the scene stands where the vista stood, filling the frame's centre */
 @media (min-width: 1024px) {
-  main.camp .camp-well > .town { grid-area: well; height: auto; min-height: 0; margin: 0; }
+  main.camp .camp-well > .town {
+    grid-area: well;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+  }
 }
-.town-hero-focus { position: absolute; width: 52px; height: 52px; border: 2px solid var(--acc); border-radius: 50%; transform: translate(-50%,-85%); pointer-events: none; z-index: 4; box-shadow: 0 0 14px var(--gilt); animation: hero-focus 1.8s ease-out forwards; }
-@keyframes hero-focus { to { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .town-hero-focus { animation: none; } }
+.town-hero-focus {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border: 2px solid var(--acc);
+  border-radius: 50%;
+  transform: translate(-50%, -85%);
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: 0 0 14px var(--gilt);
+  animation: hero-focus 1.8s ease-out forwards;
+}
+@keyframes hero-focus {
+  to {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .town-hero-focus {
+    animation: none;
+  }
+}
 
 /* The first home's blueprint is an overlay on Rust's staked plot, never a building. */
-.town-foundation { position: absolute; z-index: 2; pointer-events: none; transform: translate(-50%, -50%); width: 104px; height: 64px;
-  filter: drop-shadow(0 2px 2px #080b13); }
-.town-foundation[hidden] { display: none; }
-.town-foundation svg { width: 100%; height: 100%; overflow: visible; }
-.town-foundation .chalk { fill: #b79c4b18; stroke: #e3d8b4; stroke-width: 2; stroke-dasharray: 6 3; }
-.town-foundation .stake { stroke: #d1a569; stroke-width: 5; stroke-linecap: square; }
-.town-foundation .stake-cap { fill: #f0cd8d; stroke: #574027; stroke-width: 1; }
-.town-tag .build-copy { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.town-tag .build-title { white-space: nowrap; }
-.town-tag .build-copy small { font-size: 13px; }
-.awaiting-home .town-tag .build-copy { font-size: 18px; }
-.awaiting-home .town-tag .ico { width: 28px; height: 28px; }
+.town-foundation {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  width: 104px;
+  height: 64px;
+  filter: drop-shadow(0 2px 2px #080b13);
+}
+.town-foundation[hidden] {
+  display: none;
+}
+.town-foundation svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.town-foundation .chalk {
+  fill: #b79c4b18;
+  stroke: #e3d8b4;
+  stroke-width: 2;
+  stroke-dasharray: 6 3;
+}
+.town-foundation .stake {
+  stroke: #d1a569;
+  stroke-width: 5;
+  stroke-linecap: square;
+}
+.town-foundation .stake-cap {
+  fill: #f0cd8d;
+  stroke: #574027;
+  stroke-width: 1;
+}
+.town-tag .build-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.town-tag .build-title {
+  white-space: nowrap;
+}
+.town-tag .build-copy small {
+  font-size: 13px;
+}
+.awaiting-home .town-tag .build-copy {
+  font-size: 18px;
+}
+.awaiting-home .town-tag .ico {
+  width: 28px;
+  height: 28px;
+}
 
 /* Worker statuses may wrap; their background must contain every line. */
-.town-marker.mk-next { height: auto; min-height: 26px; max-width: 160px; padding-block: 4px; }
-.town-marker.mk-next .num { min-width: 0; line-height: 1.2; }
-.town-marker.mk-next .ico { flex-shrink: 0; }
+.town-marker.mk-next {
+  height: auto;
+  min-height: 26px;
+  max-width: 160px;
+  padding-block: 4px;
+}
+.town-marker.mk-next .num {
+  min-width: 0;
+  line-height: 1.2;
+}
+.town-marker.mk-next .ico {
+  flex-shrink: 0;
+}

@@ -28,7 +28,9 @@ import { execFileSync, spawn } from "node:child_process";
 function windowsScale() {
   if (process.env.WSL_SCALE) return +process.env.WSL_SCALE;
   try {
-    const m = /Xft\.dpi:\s*(\d+)/.exec(execFileSync("xrdb", ["-query"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }));
+    const m = /Xft\.dpi:\s*(\d+)/.exec(
+      execFileSync("xrdb", ["-query"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }),
+    );
     if (m) return +m[1] / 96;
   } catch {}
   return 1.5;
@@ -46,8 +48,13 @@ export const GPU_ENV = {
 // game's cues through the desk's speakers; every launch is muted at the browser (WebAudio still
 // schedules, so `window.__audio` and web/tests/audio.mjs see the cues).
 export const GPU_ARGS = [
-  "--ignore-gpu-blocklist", "--use-gl=angle", "--use-angle=gl", "--enable-gpu-rasterization",
-  `--force-device-scale-factor=${WINDOWS_SCALE}`, "--hide-scrollbars", "--mute-audio",
+  "--ignore-gpu-blocklist",
+  "--use-gl=angle",
+  "--use-angle=gl",
+  "--enable-gpu-rasterization",
+  `--force-device-scale-factor=${WINDOWS_SCALE}`,
+  "--hide-scrollbars",
+  "--mute-audio",
 ];
 
 export const HEADLESS_ARGS = ["--hide-scrollbars", "--mute-audio"];
@@ -61,47 +68,98 @@ const NO_PULSE = { PULSE_SERVER: "unix:/nonexistent" };
 async function privateDisplay() {
   // xvfb-run handles WSL's shared /tmp/.X11-unix and Xauthority, allocating a
   // free display from :99. Its child stays alive only until our stdin closes.
-  const keeper = "process.stdout.write(JSON.stringify({name:process.env.DISPLAY,authority:process.env.XAUTHORITY})+'\\n');process.stdin.resume();";
-  const server = spawn("xvfb-run", ["-a", "-s", "-screen 0 1920x1080x24 -nolisten tcp", process.execPath, "-e", keeper],
-    { stdio: ["pipe", "pipe", "pipe"] });
-  let diagnostics = "", output = "";
-  server.stderr.on("data", chunk => { diagnostics = (diagnostics + chunk).slice(-2000); });
+  const keeper =
+    "process.stdout.write(JSON.stringify({name:process.env.DISPLAY,authority:process.env.XAUTHORITY})+'\\n');process.stdin.resume();";
+  const server = spawn(
+    "xvfb-run",
+    ["-a", "-s", "-screen 0 1920x1080x24 -nolisten tcp", process.execPath, "-e", keeper],
+    { stdio: ["pipe", "pipe", "pipe"] },
+  );
+  let diagnostics = "",
+    output = "";
+  server.stderr.on("data", (chunk) => {
+    diagnostics = (diagnostics + chunk).slice(-2000);
+  });
   let stopped = false;
-  const stop = () => { if (!stopped) { stopped = true; server.stdin.end(); } };
+  const stop = () => {
+    if (!stopped) {
+      stopped = true;
+      server.stdin.end();
+    }
+  };
   try {
     const display = await new Promise((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error(`Private browser display timed out: ${diagnostics}`)), 5000);
-      const fail = error => { clearTimeout(timer); reject(error); };
+      const timer = setTimeout(
+        () => reject(new Error(`Private browser display timed out: ${diagnostics}`)),
+        5000,
+      );
+      const fail = (error) => {
+        clearTimeout(timer);
+        reject(error);
+      };
       server.once("error", fail);
-      server.once("exit", code => fail(new Error(`Private browser display exited (${code}): ${diagnostics}`)));
-      server.stdout.on("data", chunk => {
+      server.once("exit", (code) =>
+        fail(new Error(`Private browser display exited (${code}): ${diagnostics}`)),
+      );
+      server.stdout.on("data", (chunk) => {
         output += chunk;
         if (output.includes("\n")) {
           clearTimeout(timer);
-          try { resolve(JSON.parse(output.trim())); } catch (error) { reject(error); }
+          try {
+            resolve(JSON.parse(output.trim()));
+          } catch (error) {
+            reject(error);
+          }
         }
       });
     });
     return { ...display, stop };
-  } catch (error) { stop(); throw error; }
+  } catch (error) {
+    stop();
+    throw error;
+  }
 }
 
 export async function launchBrowser({ gpu = false, headed, ...extra } = {}) {
   const env = process.env.RIDDLE_BROWSER;
-  const useHeaded = extra.headless === false || (headed ?? (env === "headed" ? true : env === "headless" ? false : gpu));
+  const useHeaded =
+    extra.headless === false ||
+    (headed ?? (env === "headed" ? true : env === "headless" ? false : gpu));
   if (useHeaded) {
     const display = await privateDisplay();
-    const cleanup = () => { display.stop(); process.removeListener("exit", cleanup); };
+    const cleanup = () => {
+      display.stop();
+      process.removeListener("exit", cleanup);
+    };
     process.once("exit", cleanup);
     try {
-      const browser = await chromium.launch({ ...extra, headless: false,
+      const browser = await chromium.launch({
+        ...extra,
+        headless: false,
         args: [...(extra.args ?? GPU_ARGS), "--ozone-platform=x11", `--display=${display.name}`],
-        env: { ...process.env, ...GPU_ENV, ...NO_PULSE, ...extra.env, DISPLAY: display.name, XAUTHORITY: display.authority, WAYLAND_DISPLAY: "" } });
+        env: {
+          ...process.env,
+          ...GPU_ENV,
+          ...NO_PULSE,
+          ...extra.env,
+          DISPLAY: display.name,
+          XAUTHORITY: display.authority,
+          WAYLAND_DISPLAY: "",
+        },
+      });
       browser.once("disconnected", cleanup);
       return browser;
-    } catch (error) { cleanup(); throw error; }
+    } catch (error) {
+      cleanup();
+      throw error;
+    }
   }
-  return chromium.launch({ ...extra, headless: true, args: extra.args ?? HEADLESS_ARGS, env: { ...process.env, ...NO_PULSE, ...extra.env } });
+  return chromium.launch({
+    ...extra,
+    headless: true,
+    args: extra.args ?? HEADLESS_ARGS,
+    env: { ...process.env, ...NO_PULSE, ...extra.env },
+  });
 }
 
 /// The GPU path: headed Chromium on D3D12. For frame times, render QA and anything a person would feel.
@@ -111,17 +169,42 @@ export function launchGpu(extra = {}) {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const flags = process.argv.slice(2).filter((x) => x.startsWith("--") && x !== "--probe");
-  const [a, out = "shot.png", w = "400", h = "800", dpr = "3"] = process.argv.slice(2).filter((x) => !flags.includes(x));
-  const headed = flags.includes("--headed") ? true : flags.includes("--headless") ? false : a !== "--probe" && !!a ? false : true;
+  const [a, out = "shot.png", w = "400", h = "800", dpr = "3"] = process.argv
+    .slice(2)
+    .filter((x) => !flags.includes(x));
+  const headed = flags.includes("--headed")
+    ? true
+    : flags.includes("--headless")
+      ? false
+      : a !== "--probe" && !!a
+        ? false
+        : true;
   const b = await launchBrowser({ headed });
   const p = await b.newPage({ viewport: { width: +w, height: +h }, deviceScaleFactor: +dpr });
   if (a === "--probe" || !a) {
     await p.goto("about:blank");
-    console.log(await p.evaluate(() => { const gl = document.createElement("canvas").getContext("webgl2"); const d = gl.getExtension("WEBGL_debug_renderer_info"); return gl.getParameter(d.UNMASKED_RENDERER_WEBGL); }));
-    const n = await b.newPage({ viewport: null }); await n.goto("about:blank");
-    console.log(headed ? "headed" : "headless", "· native scale", await n.evaluate(() => devicePixelRatio), "· screen", await n.evaluate(() => `${screen.width}×${screen.height}`), headed ? `(forced ${WINDOWS_SCALE})` : "");
+    console.log(
+      await p.evaluate(() => {
+        const gl = document.createElement("canvas").getContext("webgl2");
+        const d = gl.getExtension("WEBGL_debug_renderer_info");
+        return gl.getParameter(d.UNMASKED_RENDERER_WEBGL);
+      }),
+    );
+    const n = await b.newPage({ viewport: null });
+    await n.goto("about:blank");
+    console.log(
+      headed ? "headed" : "headless",
+      "· native scale",
+      await n.evaluate(() => devicePixelRatio),
+      "· screen",
+      await n.evaluate(() => `${screen.width}×${screen.height}`),
+      headed ? `(forced ${WINDOWS_SCALE})` : "",
+    );
   } else {
-    await p.goto(a); await p.waitForTimeout(3000); await p.screenshot({ path: out }); console.log("wrote", out);
+    await p.goto(a);
+    await p.waitForTimeout(3000);
+    await p.screenshot({ path: out });
+    console.log("wrote", out);
   }
   await b.close();
 }

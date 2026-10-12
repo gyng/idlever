@@ -47,16 +47,34 @@ export class Bloom {
   private quad: THREE.Mesh;
   private bright: THREE.ShaderMaterial;
   private blur: THREE.ShaderMaterial;
-  private w = 1; private h = 1;
+  private w = 1;
+  private h = 1;
 
   constructor(source: THREE.Texture) {
-    const opt = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, generateMipmaps: false, depthBuffer: false, stencilBuffer: false, colorSpace: THREE.NoColorSpace };
+    const opt = {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      generateMipmaps: false,
+      depthBuffer: false,
+      stencilBuffer: false,
+      colorSpace: THREE.NoColorSpace,
+    };
     this.a = new THREE.WebGLRenderTarget(2, 2, opt);
     this.b = new THREE.WebGLRenderTarget(2, 2, opt);
-    this.bright = new THREE.ShaderMaterial({ vertexShader: VERT, fragmentShader: BRIGHT, depthTest: false, depthWrite: false,
-      uniforms: { tex: { value: source }, uTexel: { value: new THREE.Vector2() } } });
-    this.blur = new THREE.ShaderMaterial({ vertexShader: VERT, fragmentShader: BLUR, depthTest: false, depthWrite: false,
-      uniforms: { tex: { value: null }, uDir: { value: new THREE.Vector2() } } });
+    this.bright = new THREE.ShaderMaterial({
+      vertexShader: VERT,
+      fragmentShader: BRIGHT,
+      depthTest: false,
+      depthWrite: false,
+      uniforms: { tex: { value: source }, uTexel: { value: new THREE.Vector2() } },
+    });
+    this.blur = new THREE.ShaderMaterial({
+      vertexShader: VERT,
+      fragmentShader: BLUR,
+      depthTest: false,
+      depthWrite: false,
+      uniforms: { tex: { value: null }, uDir: { value: new THREE.Vector2() } },
+    });
     this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.bright);
     this.quad.frustumCulled = false;
     this.scene.add(this.quad);
@@ -64,23 +82,37 @@ export class Bloom {
 
   /** source size in texels (the pixel target) */
   setSize(sw: number, sh: number): void {
-    const w = Math.max(1, sw >> 1), h = Math.max(1, sh >> 1);
+    const w = Math.max(1, sw >> 1),
+      h = Math.max(1, sh >> 1);
     (this.bright.uniforms.uTexel!.value as THREE.Vector2).set(1 / sw, 1 / sh);
     if (w === this.w && h === this.h) return;
-    this.w = w; this.h = h;
-    this.a.setSize(w, h); this.b.setSize(w, h);
+    this.w = w;
+    this.h = h;
+    this.a.setSize(w, h);
+    this.b.setSize(w, h);
   }
 
   render(renderer: THREE.WebGLRenderer): void {
     this.quad.material = this.bright;
-    renderer.setRenderTarget(this.a); renderer.render(this.scene, this.camera);
+    renderer.setRenderTarget(this.a);
+    renderer.render(this.scene, this.camera);
     this.quad.material = this.blur;
-    const u = this.blur.uniforms, d = u.uDir!.value as THREE.Vector2;
-    u.tex!.value = this.a.texture; d.set(1 / this.w, 0);
-    renderer.setRenderTarget(this.b); renderer.render(this.scene, this.camera);
-    u.tex!.value = this.b.texture; d.set(0, 1 / this.h);
-    renderer.setRenderTarget(this.a); renderer.render(this.scene, this.camera);
+    const u = this.blur.uniforms,
+      d = u.uDir!.value as THREE.Vector2;
+    u.tex!.value = this.a.texture;
+    d.set(1 / this.w, 0);
+    renderer.setRenderTarget(this.b);
+    renderer.render(this.scene, this.camera);
+    u.tex!.value = this.b.texture;
+    d.set(0, 1 / this.h);
+    renderer.setRenderTarget(this.a);
+    renderer.render(this.scene, this.camera);
   }
 
-  dispose(): void { this.a.dispose(); this.b.dispose(); this.bright.dispose(); this.blur.dispose(); }
+  dispose(): void {
+    this.a.dispose();
+    this.b.dispose();
+    this.bright.dispose();
+    this.blur.dispose();
+  }
 }

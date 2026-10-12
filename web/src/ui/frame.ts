@@ -5,7 +5,13 @@ import { heroRoster } from "./heroes";
 // its frame from these parts (so `main.<screen>` holds its console: the tiles are the screen's buttons).
 import { conceptCap, type Concept, type Term } from "./concepts";
 import { kwHost, kwText } from "./tips";
-const withCap = (el: HTMLElement | "", c: Concept, words?: string): HTMLElement | "" => { if (el) { const cap = conceptCap(c, words); if (cap) el.appendChild(cap); } return el; };
+const withCap = (el: HTMLElement | "", c: Concept, words?: string): HTMLElement | "" => {
+  if (el) {
+    const cap = conceptCap(c, words);
+    if (cap) el.appendChild(cap);
+  }
+  return el;
+};
 import type { App } from "../app";
 import type { GoldLine, Row, Snapshot } from "../engine/types";
 import { h, replace } from "./dom";
@@ -25,20 +31,47 @@ import { legacyBar, legacyNext, legacyNextText } from "./legacy";
 /** docs/TOOLTIPS.md: an element's tip (a host: never marked; a control keeps its tap — long-press or hover shows it). */
 const withTip = <E extends HTMLElement>(el: E, t?: Term): E => (t ? kwHost(el, t) : el);
 /** A console tile's term (its tip on long-press / hover). */
-const TILE_TERM: Record<string, Term> = /* copy:none */ { packages: "package", quest: "quest", loadout: "pack", forge: "forge", vault: "vault", party: "kennel", bank: "bank", edit: "pen", town: "live" };   // RUNS_UI: the watch's `town` tile (the run goes on)
+const TILE_TERM: Record<string, Term> = /* copy:none */ {
+  packages: "package",
+  quest: "quest",
+  loadout: "pack",
+  forge: "forge",
+  vault: "vault",
+  party: "kennel",
+  bank: "bank",
+  edit: "pen",
+  town: "live",
+}; // RUNS_UI: the watch's `town` tile (the run goes on)
 
 // --- the top bar ---
 
-export type Bar = { el: HTMLElement; paint(): void; dispose(): void; offers: HTMLElement; freeze(): void };
+export type Bar = {
+  el: HTMLElement;
+  paint(): void;
+  dispose(): void;
+  offers: HTMLElement;
+  freeze(): void;
+};
 
 /** Decorative feedback for a real credited amount; never changes resource totals. */
 export function flyCoins(target: HTMLElement, amount: number): void {
   if (amount <= 0 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   const r = target.getBoundingClientRect();
   for (let i = 0; i < Math.min(6, 2 + Math.floor(Math.log2(amount + 1))); i++) {
-    const coin = h("i", { class: "coin-flight", "aria-hidden": "true", style: `left:${r.left + r.width / 2}px;top:${r.top + r.height / 2}px` });
+    const coin = h("i", {
+      class: "coin-flight",
+      "aria-hidden": "true",
+      style: `left:${r.left + r.width / 2}px;top:${r.top + r.height / 2}px`,
+    });
     document.body.appendChild(coin);
-    const animation = coin.animate([{ transform: `translate(${(i - 2) * 11}px, 100px) scale(.7)`, opacity: 0 }, { offset: .2, opacity: 1 }, { transform: "translate(0,0) scale(1)", opacity: 0 }], { duration: 650, delay: i * 45, easing: "cubic-bezier(.2,.7,.2,1)" });
+    const animation = coin.animate(
+      [
+        { transform: `translate(${(i - 2) * 11}px, 100px) scale(.7)`, opacity: 0 },
+        { offset: 0.2, opacity: 1 },
+        { transform: "translate(0,0) scale(1)", opacity: 0 },
+      ],
+      { duration: 650, delay: i * 45, easing: "cubic-bezier(.2,.7,.2,1)" },
+    );
     void animation.finished.catch(() => undefined).finally(() => coin.remove());
   }
 }
@@ -49,61 +82,173 @@ const purseSeen = new WeakMap<App, PurseSeen>();
 /** The ledger's word for a spend (`forge sword +3` → `forge`, `repeat heal` → `restock`, a supply kind → `supplies`). */
 export function spendWord(why: string): string {
   const w = goldWords(why).split(/\s+/)[0] ?? "";
-  if (/^(forge|hire|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(w)) return w;
+  if (/^(forge|hire|unlock|oath|insure|hatch|bloodline|waystone|savings|ascended)$/.test(w))
+    return w;
   return w === "repeat" ? /* copy:label */ "restock" : /* copy:label */ "supplies";
 }
 /** The purse's fall since `seen`, named from the ledger lines after `seen.tail` (by their spends, largest first); null on no fall. */
-export function purseDrop(seen: PurseSeen, gold: number, ledger: GoldLine[]): { text: string; title: string } | null {
+export function purseDrop(
+  seen: PurseSeen,
+  gold: number,
+  ledger: GoldLine[],
+): { text: string; title: string } | null {
   if (gold >= seen.gold) return null;
-  const same = (a: GoldLine, b: GoldLine): boolean => a.t === b.t && a.why === b.why && a.delta === b.delta && (a.bloodline_id ?? 1) === (b.bloodline_id ?? 1);
+  const same = (a: GoldLine, b: GoldLine): boolean =>
+    a.t === b.t &&
+    a.why === b.why &&
+    a.delta === b.delta &&
+    (a.bloodline_id ?? 1) === (b.bloodline_id ?? 1);
   const tail = seen.tail;
-  let at = -1; if (tail) for (let i = ledger.length - 1; i >= 0; i--) if (same(ledger[i], tail)) { at = i; break; }
+  let at = -1;
+  if (tail)
+    for (let i = ledger.length - 1; i >= 0; i--)
+      if (same(ledger[i], tail)) {
+        at = i;
+        break;
+      }
   const fresh = !tail ? [] : at >= 0 ? ledger.slice(at + 1) : ledger.filter((g) => g.t > tail.t);
   const by = new Map<string, number>();
-  for (const g of fresh) if (g.delta < 0) by.set(spendWord(g.why), (by.get(spendWord(g.why)) ?? 0) + -g.delta);
+  for (const g of fresh)
+    if (g.delta < 0) by.set(spendWord(g.why), (by.get(spendWord(g.why)) ?? 0) + -g.delta);
   const parts = [...by].sort((a, b) => b[1] - a[1]);
   const fell = seen.gold - gold;
-  return { text: parts.length ? /* copy:callout */ `−$${fell} · ${parts.length === 1 && parts[0][1] === fell ? parts[0][0] : "net"}` : /* copy:callout */ `−$${fell}`,
-    title: parts.length ? /* copy:tooltip */ parts.map(([w, n]) => `${w} −$${n}`).join(" · ") : /* copy:tooltip */ "gold ledger" };
+  return {
+    text: parts.length
+      ? /* copy:callout */ `−$${fell} · ${parts.length === 1 && parts[0][1] === fell ? parts[0][0] : "net"}`
+      : /* copy:callout */ `−$${fell}`,
+    title: parts.length
+      ? /* copy:tooltip */ parts.map(([w, n]) => `${w} −$${n}`).join(" · ")
+      : /* copy:tooltip */ "gold ledger",
+  };
 }
 /** `live`: the camp's bar (the stud the settings; the wake's offers row under it). The `$` opens the gold sheet everywhere but on
  *  the watch (`watch`): a sheet over the run reads as the exit sheet to the tooling. */
 /** Cut 122 §9: under the header's Legacy, a thin bar toward the next rank (its words on hover: `388 / 600 → Health III`); the heir now only. */
 function legacyMark(L: App["lineage"], heir?: number): HTMLElement | null {
   if (heir !== undefined && heir !== L.heir) return null;
-  const n = legacyNext(L); if (!n) return null;
-  const bar = legacyBar(n); bar.title = legacyNextText(n); bar.dataset.price = String(n.price); bar.removeAttribute("aria-hidden");
-  bar.setAttribute("role", "img"); bar.setAttribute("aria-label", legacyNextText(n));
+  const n = legacyNext(L);
+  if (!n) return null;
+  const bar = legacyBar(n);
+  bar.title = legacyNextText(n);
+  bar.dataset.price = String(n.price);
+  bar.removeAttribute("aria-hidden");
+  bar.setAttribute("role", "img");
+  bar.setAttribute("aria-label", legacyNextText(n));
   return bar;
 }
-export function renderBar(app: App, opts: { live?: boolean; heir?: number; trait?: string; watch?: boolean } = {}): Bar {
+export function renderBar(
+  app: App,
+  opts: { live?: boolean; heir?: number; trait?: string; watch?: boolean } = {},
+): Bar {
   const offers = h("div", { class: "offers", hidden: true });
   const el = h("header", { class: "strip topbar" });
   const mini = portraitMini(app);
   let previousGold = app.lineage.gold;
   function paint(): void {
-    const L = app.lineage, R = revealed(app), past = opts.heir !== undefined && opts.heir !== L.heir;
+    const L = app.lineage,
+      R = revealed(app),
+      past = opts.heir !== undefined && opts.heir !== L.heir;
     // the purse's fall since it was last shown off the watch, with what spent it (the watch neither reads nor moves the mark)
     const ledger = L.gold_ledger ?? [];
     let seen = purseSeen.get(app);
-    if (!seen) { seen = { gold: L.gold, tail: ledger[ledger.length - 1] }; purseSeen.set(app, seen); }
-    if (!opts.watch && L.gold !== seen.gold) { seen.drop = purseDrop(seen, L.gold, ledger) ?? undefined; seen.gold = L.gold; seen.tail = ledger[ledger.length - 1]; }
+    if (!seen) {
+      seen = { gold: L.gold, tail: ledger[ledger.length - 1] };
+      purseSeen.set(app, seen);
+    }
+    if (!opts.watch && L.gold !== seen.gold) {
+      seen.drop = purseDrop(seen, L.gold, ledger) ?? undefined;
+      seen.gold = L.gold;
+      seen.tail = ledger[ledger.length - 1];
+    }
     const drop = !opts.watch && L.town?.home !== false ? seen.drop : undefined;
     // the glyph (`◆` `★`) stays in the text (the tooling reads `◆7`) but the icon stands for it on screen
     // (owner check, 2026-10-02: `rank from deeds` over `levels packages` — one first-time caption on the bar at a time; the next waits
     // until this one is seen)
     let capped = false;
-    const cap1 = (el: HTMLElement | "", c: Concept, words?: string): HTMLElement | "" => { if (!el || capped) return el; withCap(el, c, words); capped = !!el.querySelector(".concept-cap"); return el; };
-    const stat = (cls: string, ico: string, glyph: string, n: string | number, on = true, term?: Term): HTMLElement | "" => on ? withTip(h("span", { class: `num stat ${cls}` }, icon(ico), glyph ? h("span", { class: "g" }, glyph) : "", String(n)), term) : "";   // docs/TOOLTIPS.md: a stat's tip on tap
-    replace(el,
-      h("div", { class: "build-banner" }, h("span", null, "alpha"), h("time", { datetime: import.meta.env.VITE_BUILD_DATE }, /* copy:label */ `build ${import.meta.env.VITE_BUILD_DATE}`)),
-      L.town?.home === false ? h("span", { class: "heir dim" }, /* copy:label */ "Empty town") : h("span", { class: "num heir" }, mini.el, h("span", {class:"heir-identity"},L.hero_slots?.length ? h("small", {class:"bloodline-label"}, /* copy:label */`Bloodline ${L.selected_bloodline??1}`):"", h("span", {class:"heir-ordinal"}, ...kwText(heirOrd(opts.heir ?? L.heir), ["heir"])))),   // a death's bar names the hero who died (QA 92eb880)
+    const cap1 = (el: HTMLElement | "", c: Concept, words?: string): HTMLElement | "" => {
+      if (!el || capped) return el;
+      withCap(el, c, words);
+      capped = !!el.querySelector(".concept-cap");
+      return el;
+    };
+    const stat = (
+      cls: string,
+      ico: string,
+      glyph: string,
+      n: string | number,
+      on = true,
+      term?: Term,
+    ): HTMLElement | "" =>
+      on
+        ? withTip(
+            h(
+              "span",
+              { class: `num stat ${cls}` },
+              icon(ico),
+              glyph ? h("span", { class: "g" }, glyph) : "",
+              String(n),
+            ),
+            term,
+          )
+        : ""; // docs/TOOLTIPS.md: a stat's tip on tap
+    replace(
+      el,
+      h(
+        "div",
+        { class: "build-banner" },
+        h("span", null, "alpha"),
+        h(
+          "time",
+          { datetime: import.meta.env.VITE_BUILD_DATE },
+          /* copy:label */ `build ${import.meta.env.VITE_BUILD_DATE}`,
+        ),
+      ),
+      L.town?.home === false
+        ? h("span", { class: "heir dim" }, /* copy:label */ "Empty town")
+        : h(
+            "span",
+            { class: "num heir" },
+            mini.el,
+            h(
+              "span",
+              { class: "heir-identity" },
+              L.hero_slots?.length
+                ? h(
+                    "small",
+                    { class: "bloodline-label" },
+                    /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`,
+                  )
+                : "",
+              h(
+                "span",
+                { class: "heir-ordinal" },
+                ...kwText(heirOrd(opts.heir ?? L.heir), ["heir"]),
+              ),
+            ),
+          ), // a death's bar names the hero who died (QA 92eb880)
       // the wake's trait chips stand in for the plain trait while the offer stands (the camp fills `offers`)
       // Cut 30 §2: on packages the bar names the worn temperament (the old trait word maps to it), none before heir 3
-      onPackages(L) ? h("span", { class: "trait" }, L.packages!.temperament ? L.packages!.all.find((p) => p.id === L.packages!.temperament)?.name ?? "" : "")
-        : opts.live && (L.trait_offer?.length ?? 0) >= 2 ? "" : h("span", { class: "trait" }, opts.heir !== undefined ? opts.trait ?? "" : L.trait),
-      (L.ascension?.level ?? 0) > 0 ? h("span", { class: "num asc" }, `↑${L.ascension!.level} ${L.ascension!.variant.replace(/_/g, " ")}`) : "",
-      h("div", { class: "stats" },
+      onPackages(L)
+        ? h(
+            "span",
+            { class: "trait" },
+            L.packages!.temperament
+              ? (L.packages!.all.find((p) => p.id === L.packages!.temperament)?.name ?? "")
+              : "",
+          )
+        : opts.live && (L.trait_offer?.length ?? 0) >= 2
+          ? ""
+          : h("span", { class: "trait" }, opts.heir !== undefined ? (opts.trait ?? "") : L.trait),
+      (L.ascension?.level ?? 0) > 0
+        ? h(
+            "span",
+            { class: "num asc" },
+            `↑${L.ascension!.level} ${L.ascension!.variant.replace(/_/g, " ")}`,
+          )
+        : "",
+      h(
+        "div",
+        { class: "stats" },
         // QA 0c6e126 (qaY: `♟14 cowardly` beside `$40 · ◆23 · D8` — "I took $40 as ♟14's purse"): a past heir's bar marks the totals as
         // the lineage's now
         // QA 524827b (qaAA: `♟13 curious · now · $40 ◆21 D8` — "I read ◆21 as that hero's"): the word says whose (`lineage`), and the
@@ -111,23 +256,97 @@ export function renderBar(app: App, opts: { live?: boolean; heir?: number; trait
         // docs/COPY.md pass 3: the word over it (`lineage`, then `family`) read "no idea" 11 of 14 times — the purse needs none
         // QA 912e135 (qaW: "the header `$40` is not a button on the death screen; on camp it opens GOLD"): the purse opens the ledger on
         // every screen but the watch (a sheet over the run is the exit sheet's place)
-        !opts.watch ? kwHost(h("button", { class: "num stat gold", onclick: () => openGoldSheet(app) }, icon("gold"), h("small", { class: "resource-label" }, /* copy:label */ "Gold"), `$${L.gold}`, drop ? h("small", { class: "gold-drop", title: drop.title }, drop.text) : ""), "gold") : h("span", { class: "num stat gold" }, icon("gold"), h("small", { class: "resource-label" }, /* copy:label */ "Gold"), `$${L.gold}`),
-        L.town?.home !== false && L.hero_legacy?.length ? h(opts.watch ? "span" : "button", { class: "num stat legacy", onclick: !opts.watch ? (e: Event) => openHero(app, e.currentTarget as HTMLElement) : undefined, "aria-label": /* copy:label */ `Hero Legacy ${L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0}` }, h("small", { class: "resource-label" }, /* copy:label */ "Legacy"), String(L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0), legacyMark(L, opts.heir)) : null,
-        cap1(stat("marks", "mark", "◆", L.marks, !opts.watch && (R.has("unlocks") || (packagesShown(L) && L.marks > 0)), "marks"), "marks", R.has("unlocks") ? undefined : /* copy:callout */ "upgrade tokens"),   // Cut 30: marks buy package levels before the pen   // Cut 29 (owner): a world concept's first-time caption
-        cap1(stat("rank", "renown", "★", L.rank ?? 0, !opts.watch && R.has("rank") && !past, "renown"), "renown"),
-        stat("best", "depth", "", /* copy:callout */ `best D${L.best_depth}`, !opts.watch && R.has("depth") && !past, "best"),   // docs/COPY.md pass 2 (`D8` read as "current depth")
+        !opts.watch
+          ? kwHost(
+              h(
+                "button",
+                { class: "num stat gold", onclick: () => openGoldSheet(app) },
+                icon("gold"),
+                h("small", { class: "resource-label" }, /* copy:label */ "Gold"),
+                `$${L.gold}`,
+                drop ? h("small", { class: "gold-drop", title: drop.title }, drop.text) : "",
+              ),
+              "gold",
+            )
+          : h(
+              "span",
+              { class: "num stat gold" },
+              icon("gold"),
+              h("small", { class: "resource-label" }, /* copy:label */ "Gold"),
+              `$${L.gold}`,
+            ),
+        L.town?.home !== false && L.hero_legacy?.length
+          ? h(
+              opts.watch ? "span" : "button",
+              {
+                class: "num stat legacy",
+                onclick: !opts.watch
+                  ? (e: Event) => openHero(app, e.currentTarget as HTMLElement)
+                  : undefined,
+                "aria-label": /* copy:label */ `Hero Legacy ${L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0}`,
+              },
+              h("small", { class: "resource-label" }, /* copy:label */ "Legacy"),
+              String(
+                L.bloodline?.points ??
+                  L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ??
+                  0,
+              ),
+              legacyMark(L, opts.heir),
+            )
+          : null,
+        cap1(
+          stat(
+            "marks",
+            "mark",
+            "◆",
+            L.marks,
+            !opts.watch && (R.has("unlocks") || (packagesShown(L) && L.marks > 0)),
+            "marks",
+          ),
+          "marks",
+          R.has("unlocks") ? undefined : /* copy:callout */ "upgrade tokens",
+        ), // Cut 30: marks buy package levels before the pen   // Cut 29 (owner): a world concept's first-time caption
+        cap1(
+          stat("rank", "renown", "★", L.rank ?? 0, !opts.watch && R.has("rank") && !past, "renown"),
+          "renown",
+        ),
+        stat(
+          "best",
+          "depth",
+          "",
+          /* copy:callout */ `best D${L.best_depth}`,
+          !opts.watch && R.has("depth") && !past,
+          "best",
+        ), // docs/COPY.md pass 2 (`D8` read as "current depth")
       ),
-      h("button", { class: "gear stud", "aria-label": "settings", onclick: () => openSettings(app) }, icon("settings", "⚙")),
+      h(
+        "button",
+        { class: "gear stud", "aria-label": "settings", onclick: () => openSettings(app) },
+        icon("settings", "⚙"),
+      ),
       offers,
     );
     mini.paint();
-    const gain = L.gold - previousGold; previousGold = L.gold;
-    if (gain > 0 && !opts.watch) requestAnimationFrame(() => { const target = el.querySelector<HTMLElement>(".gold"); if (target?.isConnected) flyCoins(target, gain); });
+    const gain = L.gold - previousGold;
+    previousGold = L.gold;
+    if (gain > 0 && !opts.watch)
+      requestAnimationFrame(() => {
+        const target = el.querySelector<HTMLElement>(".gold");
+        if (target?.isConnected) flyCoins(target, gain);
+      });
   }
   paint();
   const off = app.onChange(paint);
   // `freeze`: the bar stops following the lineage (the watch's last frame keeps the heir that ran)
-  return { el, paint, dispose: off, offers, freeze: () => { off(); } };
+  return {
+    el,
+    paint,
+    dispose: off,
+    offers,
+    freeze: () => {
+      off();
+    },
+  };
 }
 
 // --- the hero's portrait (art pass: the painted headshot `hero_<class>`; fallback the atlas sprite `hero_<class>`) ---
@@ -135,7 +354,10 @@ export function renderBar(app: App, opts: { live?: boolean; heir?: number; trait
 type Frame = { x: number; y: number; w: number; h: number };
 let atlas: Promise<{ frames: Record<string, Frame>; w: number; h: number } | null> | null = null;
 function loadAtlas(): Promise<{ frames: Record<string, Frame>; w: number; h: number } | null> {
-  atlas ??= fetch(`${import.meta.env.BASE_URL}art/atlas.json`).then((r) => r.json()).then((a) => ({ frames: a.frames, w: a.meta.atlas.w, h: a.meta.atlas.h })).catch(() => null);
+  atlas ??= fetch(`${import.meta.env.BASE_URL}art/atlas.json`)
+    .then((r) => r.json())
+    .then((a) => ({ frames: a.frames, w: a.meta.atlas.w, h: a.meta.atlas.h }))
+    .catch(() => null);
   return atlas;
 }
 /** Paints the class portrait into `face`: the painted headshot when packed (skin.json `portraits`), else a head-and-shoulders
@@ -151,7 +373,8 @@ export function paintPortrait(face: HTMLElement, id: string): boolean {
   const src = portraitSrc(id);
   face.classList.toggle("painted", !!src);
   if (!src) return false;
-  face.style.backgroundImage = `url(${src})`; face.dataset.art = id;
+  face.style.backgroundImage = `url(${src})`;
+  face.dataset.art = id;
   face.style.backgroundSize = "cover";
   face.style.backgroundPosition = "50% 30%";
   return true;
@@ -159,9 +382,11 @@ export function paintPortrait(face: HTMLElement, id: string): boolean {
 /** The fallback: a head-and-shoulders crop of the atlas frame `id` (else `alt`), `px` CSS px wide. */
 export function paintSprite(face: HTMLElement, id: string, px: number, ...alts: string[]): void {
   void loadAtlas().then((a) => {
-    const k = [id, ...alts].find((x) => a?.frames[x]); const f = k ? a?.frames[k] : undefined; if (!a || !f) return;
+    const k = [id, ...alts].find((x) => a?.frames[x]);
+    const f = k ? a?.frames[k] : undefined;
+    if (!a || !f) return;
     face.dataset.art = k!;
-    const s = px / (f.w * 0.78);   // the sprite's width minus its weapon reach fills the well
+    const s = px / (f.w * 0.78); // the sprite's width minus its weapon reach fills the well
     face.style.backgroundImage = `url(${import.meta.env.BASE_URL}art/atlas.png)`;
     face.style.backgroundSize = `${a.w * s}px ${a.h * s}px`;
     face.style.backgroundPosition = `${-(f.x + f.w * 0.1) * s}px ${-(f.y + f.h * 0.02) * s}px`;
@@ -173,19 +398,40 @@ function portraitMini(app: App): { readonly el: HTMLElement; paint(): void } {
   const face = h("span", { class: "face" });
   const el = h("span", { class: "mini-portrait", "aria-hidden": "true" }, face);
   let cls = "";
-  return { el, paint: () => { const k = `${app.lineage.class}_${app.lineage.look ?? ""}`; if (k !== cls) { cls = k; paintFace(face, app.lineage.class, 26, app.lineage.look); } } };
+  return {
+    el,
+    paint: () => {
+      const k = `${app.lineage.class}_${app.lineage.look ?? ""}`;
+      if (k !== cls) {
+        cls = k;
+        paintFace(face, app.lineage.class, 26, app.lineage.look);
+      }
+    },
+  };
 }
 
 export type Portrait = { el: HTMLElement; set(hp: number, label?: Node | string): void };
 /** The portrait well: the class sprite in a round iron ring, an hp ring around it (`hp` 0..1), a label plate under it.
  *  With `onclick` it is a button (`cls`: the camp's class picker). */
-export function portrait(app: App, o: { hp?: number; label?: Node | string; onclick?: () => void; cls?: string; dead?: boolean } = {}): Portrait {
+export function portrait(
+  app: App,
+  o: {
+    hp?: number;
+    label?: Node | string;
+    onclick?: () => void;
+    cls?: string;
+    dead?: boolean;
+  } = {},
+): Portrait {
   const face = h("span", { class: "face" });
   const label = h("span", { class: "plabel num" });
   const kids = [face, h("span", { class: "ring" }), h("span", { class: "rim" }), label];
   const cls = `portrait${o.cls ? ` ${o.cls}` : ""}${o.dead ? " dead" : ""}`;
-  const el = o.onclick ? h("button", { class: cls, onclick: o.onclick }, ...kids) : h("div", { class: cls }, ...kids);
-  paintFace(face, app.lineage.class, 66, app.lineage.look); setHeroLook(app.lineage.look);   // hero looks: the renderer's hero follows
+  const el = o.onclick
+    ? h("button", { class: cls, onclick: o.onclick }, ...kids)
+    : h("div", { class: cls }, ...kids);
+  paintFace(face, app.lineage.class, 66, app.lineage.look);
+  setHeroLook(app.lineage.look); // hero looks: the renderer's hero follows
   const set = (hp: number, text?: Node | string): void => {
     const p = Math.max(0, Math.min(1, hp));
     el.style.setProperty("--hp", p.toFixed(3));
@@ -198,18 +444,56 @@ export function portrait(app: App, o: { hp?: number; label?: Node | string; oncl
 
 // --- the console: portrait well · command card (4 × 2) · the primary gem ---
 
-export type TileSpec = { id: string; label: string; icon: string; glyph?: string; onclick: (e: Event) => void; cls?: string; on?: boolean; fresh?: boolean; disabled?: boolean };
+export type TileSpec = {
+  id: string;
+  label: string;
+  icon: string;
+  glyph?: string;
+  onclick: (e: Event) => void;
+  cls?: string;
+  on?: boolean;
+  fresh?: boolean;
+  disabled?: boolean;
+};
 /** A command tile: the icon, its one word under it. Pressed on tap (`:active`), `on` while its panel or mode is up. */
 export function tile(t: TileSpec): HTMLButtonElement {
-  return withTip(h("button", { class: `tile${t.cls ? ` ${t.cls}` : ""}${t.on ? " on" : ""}${t.fresh ? " reveal" : ""}`, "data-tile": t.id, disabled: !!t.disabled, onclick: t.onclick },
-    icon(t.icon, t.glyph), h("span", { class: `tl${/\s/.test(t.label.trim()) ? " two" : ""}` }, t.label)), TILE_TERM[t.id]);   // a two-word label steps its face down (blind pass 9: `fights o…`)
+  return withTip(
+    h(
+      "button",
+      {
+        class: `tile${t.cls ? ` ${t.cls}` : ""}${t.on ? " on" : ""}${t.fresh ? " reveal" : ""}`,
+        "data-tile": t.id,
+        disabled: !!t.disabled,
+        onclick: t.onclick,
+      },
+      icon(t.icon, t.glyph),
+      h("span", { class: `tl${/\s/.test(t.label.trim()) ? " two" : ""}` }, t.label),
+    ),
+    TILE_TERM[t.id],
+  ); // a two-word label steps its face down (blind pass 9: `fights o…`)
 }
 /** The primary gem (`red` for bail's danger), its one word laid over the stone. `pulse` while its action waits. */
-export function gem(o: { label: Node | string; onclick: (e: Event) => void; cls?: string; red?: boolean; pulse?: boolean }): HTMLButtonElement {
-  return h("button", { class: `gem${o.red ? " red" : ""}${o.pulse ? " pulse" : ""}${o.cls ? ` ${o.cls}` : ""}`, onclick: o.onclick }, o.label);
+export function gem(o: {
+  label: Node | string;
+  onclick: (e: Event) => void;
+  cls?: string;
+  red?: boolean;
+  pulse?: boolean;
+}): HTMLButtonElement {
+  return h(
+    "button",
+    {
+      class: `gem${o.red ? " red" : ""}${o.pulse ? " pulse" : ""}${o.cls ? ` ${o.cls}` : ""}`,
+      onclick: o.onclick,
+    },
+    o.label,
+  );
 }
 
-export type Console = { el: HTMLElement; setTiles(tiles: (HTMLElement | null | undefined | false)[]): void };
+export type Console = {
+  el: HTMLElement;
+  setTiles(tiles: (HTMLElement | null | undefined | false)[]): void;
+};
 const SLOTS = 8;
 /** Cut 122 §10 (B tapped `edit` and hit `quest`, unlocked a moment before): a stable bar keeps every tile where it first stood while the
  *  screen is shown — a new tile takes the next free place at the end, lit (`tile-new`); a tile that goes leaves its place empty. */
@@ -217,72 +501,210 @@ export function stableOrder(order: string[], tiles: HTMLElement[]): (HTMLElement
   const byId = new Map(tiles.map((t) => [t.dataset.tile ?? "", t]));
   const first = order.length === 0;
   for (const t of tiles) {
-    const id = t.dataset.tile ?? ""; if (order.includes(id)) continue;
-    order.push(id); if (!first) t.classList.add("tile-new", "reveal");
+    const id = t.dataset.tile ?? "";
+    if (order.includes(id)) continue;
+    order.push(id);
+    if (!first) t.classList.add("tile-new", "reveal");
   }
   const out: (HTMLElement | null)[] = order.map((id) => byId.get(id) ?? null);
   while (out.length && out[out.length - 1] === null) out.pop();
   return out;
 }
-export function renderConsole(o: { portrait: HTMLElement; tiles: (HTMLElement | null | undefined | false)[]; gem: HTMLElement; top?: HTMLElement; cls?: string; compact?: boolean; stable?: boolean }): Console {
+export function renderConsole(o: {
+  portrait: HTMLElement;
+  tiles: (HTMLElement | null | undefined | false)[];
+  gem: HTMLElement;
+  top?: HTMLElement;
+  cls?: string;
+  compact?: boolean;
+  stable?: boolean;
+}): Console {
   const cmd = h("div", { class: `cmd${o.compact ? " cmd-compact" : ""}` });
   const order: string[] = [];
   const setTiles = (tiles: (HTMLElement | null | undefined | false)[]): void => {
     const given = tiles.filter((t): t is HTMLElement => !!t);
-    const all: HTMLElement[] = o.stable ? stableOrder(order, given).map((t) => t ?? h("span", { class: "tile empty tile-gap", "aria-hidden": "true" })) : given;
+    const all: HTMLElement[] = o.stable
+      ? stableOrder(order, given).map(
+          (t) => t ?? h("span", { class: "tile empty tile-gap", "aria-hidden": "true" }),
+        )
+      : given;
     // Cut 30 integration: the town's buildings, packages and quest grew the bar past its eight slots, and the last tiles (ledger,
     // chronicle) fell off it unseen; the eighth slot is `more` then, a sheet with the rest
     const rest = all.length > SLOTS ? all.slice(SLOTS - 1) : [];
-    const live = rest.length ? [...all.slice(0, SLOTS - 1), tile({ id: "more", label: /* copy:button */ "more", icon: "more", glyph: "⋯", onclick: (e: Event) => {
-      const at = e.currentTarget as HTMLElement;
-      closeAllSheets(); openSheet(() => h("div", { class: "cmd cmd-more" }, ...rest), { anchor: at });
-    } })] : all;
-    replace(cmd, ...live, ...Array.from({ length: o.compact ? 0 : SLOTS - live.length }, () => h("span", { class: "tile empty", "aria-hidden": "true" })));
+    const live = rest.length
+      ? [
+          ...all.slice(0, SLOTS - 1),
+          tile({
+            id: "more",
+            label: /* copy:button */ "more",
+            icon: "more",
+            glyph: "⋯",
+            onclick: (e: Event) => {
+              const at = e.currentTarget as HTMLElement;
+              closeAllSheets();
+              openSheet(() => h("div", { class: "cmd cmd-more" }, ...rest), { anchor: at });
+            },
+          }),
+        ]
+      : all;
+    replace(
+      cmd,
+      ...live,
+      ...Array.from({ length: o.compact ? 0 : SLOTS - live.length }, () =>
+        h("span", { class: "tile empty", "aria-hidden": "true" }),
+      ),
+    );
   };
   setTiles(o.tiles);
-  const el: HTMLElement = h("footer", { class: `console${o.cls ? ` ${o.cls}` : ""}` }, o.top ?? "",
-    h("div", { class: "console-row" }, h("div", { class: "well-slot" }, o.portrait), cmd, h("div", { class: "gem-slot" }, o.gem)));
+  const el: HTMLElement = h(
+    "footer",
+    { class: `console${o.cls ? ` ${o.cls}` : ""}` },
+    o.top ?? "",
+    h(
+      "div",
+      { class: "console-row" },
+      h("div", { class: "well-slot" }, o.portrait),
+      cmd,
+      h("div", { class: "gem-slot" }, o.gem),
+    ),
+  );
   // the sheets unfold above the console (`--console-h`, CSS): its measured height, kept current
-  if (typeof ResizeObserver !== "undefined") new ResizeObserver(() => { if (el.isConnected) document.documentElement.style.setProperty("--console-h", `${Math.round(el.getBoundingClientRect().height)}px`); }).observe(el);
+  if (typeof ResizeObserver !== "undefined")
+    new ResizeObserver(() => {
+      if (el.isConnected)
+        document.documentElement.style.setProperty(
+          "--console-h",
+          `${Math.round(el.getBoundingClientRect().height)}px`,
+        );
+    }).observe(el);
   return { el, setTiles };
 }
 
 /** A panel's close stud (×) — every sheet and panel carries one (Cut 15 QA: "no close control"). */
-export const stud = (close: () => void): HTMLButtonElement => h("button", { class: "stud close-stud", "aria-label": "close", onclick: (e: Event) => { e.stopPropagation(); close(); } });   // no text node: the × is drawn (a sheet's text stays its own)
+export const stud = (close: () => void): HTMLButtonElement =>
+  h("button", {
+    class: "stud close-stud",
+    "aria-label": "close",
+    onclick: (e: Event) => {
+      e.stopPropagation();
+      close();
+    },
+  }); // no text node: the × is drawn (a sheet's text stays its own)
 
 // --- the wide frame (desktop, ≥ 1024 px: web/src/wide.css) ---
 
 /** The wide frame's breakpoint (wide.css keys on the same width). */
 export const WIDE_MQ = "(min-width: 1024px)";
-export const isWide = (): boolean => typeof matchMedia !== "undefined" && matchMedia(WIDE_MQ).matches;
+export const isWide = (): boolean =>
+  typeof matchMedia !== "undefined" && matchMedia(WIDE_MQ).matches;
 /** An empty slot under the shaft for the diagnostics meters (no words; the next cut fills it). */
-export const metersSlot = (content?: HTMLElement | null): HTMLElement => content ? h("div", { class: "meters-slot filled" }, content) : h("div", { class: "meters-slot", "aria-hidden": "true" });   // Cut 29 §3: the meters fill it
+export const metersSlot = (content?: HTMLElement | null): HTMLElement =>
+  content
+    ? h("div", { class: "meters-slot filled" }, content)
+    : h("div", { class: "meters-slot", "aria-hidden": "true" }); // Cut 29 §3: the meters fill it
 /** Desktop: the columns around a screen's well — the rules left (the set's tablets, read-only: the camp's own are its editor) and the
  *  shaft right with the meters' slot under it. Built only on a wide screen (a phone's DOM is unchanged); `els` go straight into the
  *  screen's `main.frame` (wide.css places them), `dispose` unhooks the shaft. */
-export function wideCols(app: App, meters?: HTMLElement | null, watchedDepth?: () => number): { els: HTMLElement[]; dispose(): void; slot?: HTMLElement; paintDepth?(): void; setPresence?(snap: Snapshot, ended: boolean): void } {
+export function wideCols(
+  app: App,
+  meters?: HTMLElement | null,
+  watchedDepth?: () => number,
+): {
+  els: HTMLElement[];
+  dispose(): void;
+  slot?: HTMLElement;
+  paintDepth?(): void;
+  setPresence?(snap: Snapshot, ended: boolean): void;
+} {
   if (!isWide()) return { els: [], dispose: () => undefined };
-  const plaque = (r: Row): HTMLElement | "" => { const id = verbIcon(r.verb.v); return id ? h("span", { class: "vplaque", "aria-hidden": "true" }, icon(id)) : ""; };   // gfx round 2: as the camp's tablets
-  const rows = h("div", { class: "rows" }, ...app.rules.rows.map((r, i) => h("div", { class: "row tablet compact ro", "data-i": i }, h("span", { class: "rn num" }, `${i + 1}`), h("span", { class: "rtext" }, rowLabel(r)), plaque(r))));
-  const heroes=heroRoster(app);
-  const left = h("aside", { class: "rules-col heroes-col" }, heroes.el, h("details",{class:"hero-rules"},h("summary",null,/* copy:button */"Rules"), h("section", { class: "editor compact" }, h("small", { class: "rows-head dim" }, /* copy:label */ "priority"), rows)));
-  const shaft = renderShaft(app, () => {
-    const fc = renderForecast(app, { readOnly: true });
-    openWindow(() => h("div", { class: "sheet-body depth-reference" }, fc.el), { onClose: () => fc.dispose() });
-  }, () => revealed(app).has("gems"), watchedDepth);
+  const plaque = (r: Row): HTMLElement | "" => {
+    const id = verbIcon(r.verb.v);
+    return id ? h("span", { class: "vplaque", "aria-hidden": "true" }, icon(id)) : "";
+  }; // gfx round 2: as the camp's tablets
+  const rows = h(
+    "div",
+    { class: "rows" },
+    ...app.rules.rows.map((r, i) =>
+      h(
+        "div",
+        { class: "row tablet compact ro", "data-i": i },
+        h("span", { class: "rn num" }, `${i + 1}`),
+        h("span", { class: "rtext" }, rowLabel(r)),
+        plaque(r),
+      ),
+    ),
+  );
+  const heroes = heroRoster(app);
+  const left = h(
+    "aside",
+    { class: "rules-col heroes-col" },
+    heroes.el,
+    h(
+      "details",
+      { class: "hero-rules" },
+      h("summary", null, /* copy:button */ "Rules"),
+      h(
+        "section",
+        { class: "editor compact" },
+        h("small", { class: "rows-head dim" }, /* copy:label */ "priority"),
+        rows,
+      ),
+    ),
+  );
+  const shaft = renderShaft(
+    app,
+    () => {
+      const fc = renderForecast(app, { readOnly: true });
+      openWindow(() => h("div", { class: "sheet-body depth-reference" }, fc.el), {
+        onClose: () => fc.dispose(),
+      });
+    },
+    () => revealed(app).has("gems"),
+    watchedDepth,
+  );
   const slot = metersSlot(meters);
   const right = h("aside", { class: "side-col" }, shaft.el, slot);
   // gfx round 2 (raters: "a reach of '?' clutter" on the desktop death and report): a screen booted straight into them has no forecast
   // yet — the shaft asks for the rules' one (desktop only; its listener is the shaft's)
-  if (!app.lastForecast) setTimeout(() => { if (shaft.el.isConnected && !app.lastForecast) void app.emitForecast(); }, 1500);
+  if (!app.lastForecast)
+    setTimeout(() => {
+      if (shaft.el.isConnected && !app.lastForecast) void app.emitForecast();
+    }, 1500);
   // gfx raters (the desktop report: "an empty `?` reach column"): the shaft stands only once a forecast reads past its first floor
-  const known = (): void => { shaft.el.classList.toggle("unknown", !((app.lastForecast?.depths?.length ?? 0) > 1)); };
+  const known = (): void => {
+    shaft.el.classList.toggle("unknown", !((app.lastForecast?.depths?.length ?? 0) > 1));
+  };
   known();
   const off = app.onForecast(() => known());
   // Cut 30 §2: no rule tablets before the pen — the left column holds the worn packages (read-only plaques) until it opens
-  return { els: [left,right], dispose: () => { heroes.dispose();off(); shaft.dispose(); }, slot, paintDepth: shaft.paintDepth, setPresence: (s, ended) => heroes.setPresence({
-    run_id: s.run.id, heir: s.run.heir, depth: s.depth, start: s.run.start ?? 1,
-    hp: s.hero.hp, max_hp: s.hero.max_hp, turn: s.turn,
-    activity: s.stake?.returning ? "returning" : typeof s.meters?.fighting === "boolean" ? s.meters.fighting ? "combat" : "exploring" : undefined,
-  }, ended) };
+  return {
+    els: [left, right],
+    dispose: () => {
+      heroes.dispose();
+      off();
+      shaft.dispose();
+    },
+    slot,
+    paintDepth: shaft.paintDepth,
+    setPresence: (s, ended) =>
+      heroes.setPresence(
+        {
+          run_id: s.run.id,
+          heir: s.run.heir,
+          depth: s.depth,
+          start: s.run.start ?? 1,
+          hp: s.hero.hp,
+          max_hp: s.hero.max_hp,
+          turn: s.turn,
+          activity: s.stake?.returning
+            ? "returning"
+            : typeof s.meters?.fighting === "boolean"
+              ? s.meters.fighting
+                ? "combat"
+                : "exploring"
+              : undefined,
+        },
+        ended,
+      ),
+  };
 }

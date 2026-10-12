@@ -8,6 +8,8 @@ Commit/push and milestone screenshots remain authorized.
 Owner amendment 2026-10-12: fix Pages deployment and publish the first alpha.
 This explicitly authorizes this release and its deployment. Content work and
 the fun>=80 rating goal remain paused. See docs/CUT187_ALPHA_RELEASE.md.
+The owner also requested default Oxfmt/Oxlint setup and automatic fixes before
+release (docs/CUT188_DEFAULT_TOOLING.md). Clippy was already enforced.
 
 Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
 `docs/evidence/cut185/checkpoint/prior-handoff.md`.

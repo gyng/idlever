@@ -6,27 +6,53 @@
 // tap. Quiet: short words on the face, the rest on hover (`title` / `detailHost`).
 import "../feats.css";
 import type { App } from "../app";
-import type { FeatNews, FeatsWire, FindsReveal, GraveWire, HungerForecast, Lineage, ReturnReport, SeekOption, SiegeWire, StandingOrders, TrialWire } from "../engine/types";
+import type {
+  FeatNews,
+  FeatsWire,
+  FindsReveal,
+  GraveWire,
+  HungerForecast,
+  Lineage,
+  ReturnReport,
+  SeekOption,
+  SiegeWire,
+  StandingOrders,
+  TrialWire,
+} from "../engine/types";
 import { h, replace, toast, twoTap } from "./dom";
 import { openWindow } from "./sheet";
 import { detailHost } from "./tips";
 import { audio } from "../audio";
-import { cut120OrderBits } from "./orders";   // Cut 120: the Legacy focus and the ascend order in the summary
-import { KENNEL_WORD, PET_KINDS, petLines, roleGlyph, type PetLine } from "./pets";   // Cut 119: the pet feats, the kennel order
+import { cut120OrderBits } from "./orders"; // Cut 120: the Legacy focus and the ascend order in the summary
+import { KENNEL_WORD, PET_KINDS, petLines, roleGlyph, type PetLine } from "./pets"; // Cut 119: the pet feats, the kennel order
 
 /** `Queen · 4 tries · best 22%` (the siege on a band boss; `best` the lowest hp % he was left on). */
-export const siegeText = (s: SiegeWire): string => /* copy:callout */ `${s.title} · ${s.tries} ${s.tries === 1 ? "try" : "tries"} · best ${s.best_pct}%`;
+export const siegeText = (s: SiegeWire): string =>
+  /* copy:callout */ `${s.title} · ${s.tries} ${s.tries === 1 ? "try" : "tries"} · best ${s.best_pct}%`;
 /** `Ada's pack · $1240` (a grave on its floor: the carry a death lost, brought home by the next heir to reach it). */
-export const graveText = (g: GraveWire): string => /* copy:callout */ `${g.name}'s pack · $${g.gold}`;
-export const gravesAt = (L: Pick<Lineage, "feats">, depth: number): GraveWire[] => (L.feats?.graves ?? []).filter((g) => g.depth === depth);
-export const siegeOn = (L: Pick<Lineage, "feats">, boss: string): SiegeWire | undefined => L.feats?.siege.find((s) => s.boss === boss && s.tries > 0);
+export const graveText = (g: GraveWire): string =>
+  /* copy:callout */ `${g.name}'s pack · $${g.gold}`;
+export const gravesAt = (L: Pick<Lineage, "feats">, depth: number): GraveWire[] =>
+  (L.feats?.graves ?? []).filter((g) => g.depth === depth);
+export const siegeOn = (L: Pick<Lineage, "feats">, boss: string): SiegeWire | undefined =>
+  L.feats?.siege.find((s) => s.boss === boss && s.tries > 0);
 
 /** A floor's graves as a quiet mark (the chart's notch, the forecast's row): `Ada's pack · $1240`, the older on hover. */
 export function graveMark(L: Pick<Lineage, "feats">, depth: number, cls = ""): HTMLElement | null {
   const gs = gravesAt(L, depth);
   if (!gs.length) return null;
-  const el = h("small", { class: `grave-mark num ${cls}`.trim(), "data-grave": depth, title: /* copy:tooltip */ "carry lost here · next heir brings it home" },
-    h("span", { class: "grave-glyph", "aria-hidden": "true" }, "✝"), " ", graveText(gs[gs.length - 1]), gs.length > 1 ? ` +${gs.length - 1}` : "");
+  const el = h(
+    "small",
+    {
+      class: `grave-mark num ${cls}`.trim(),
+      "data-grave": depth,
+      title: /* copy:tooltip */ "carry lost here · next heir brings it home",
+    },
+    h("span", { class: "grave-glyph", "aria-hidden": "true" }, "✝"),
+    " ",
+    graveText(gs[gs.length - 1]),
+    gs.length > 1 ? ` +${gs.length - 1}` : "",
+  );
   return el;
 }
 
@@ -39,39 +65,108 @@ function seekChip(app: App): HTMLElement | null {
   if (!F?.tokens.length || !app.engine.seekBoss) return null;
   const cur = F.seek ? F.tokens.find((t) => t.boss === F.seek) : undefined;
   const top = cur ?? [...F.tokens].sort((a, b) => b.depth - a.depth)[0];
-  const b: HTMLButtonElement = h("button", { class: `chip feat-chip seek-chip num${cur ? " on" : ""}`, "data-seek": F.seek ?? "", "aria-pressed": cur ? "true" : "false",
-    title: /* copy:tooltip */ "boss token · next send starts near him" },
-    cur ? /* copy:callout */ `seeking ${cur.title}` : /* copy:callout */ `seek ${top.title}`, h("small", { class: "dim" }, ` ×${top.n}`));
-  b.onclick = (e: Event) => { e.stopPropagation(); openSeek(app, b); };
+  const b: HTMLButtonElement = h(
+    "button",
+    {
+      class: `chip feat-chip seek-chip num${cur ? " on" : ""}`,
+      "data-seek": F.seek ?? "",
+      "aria-pressed": cur ? "true" : "false",
+      title: /* copy:tooltip */ "boss token · next send starts near him",
+    },
+    cur ? /* copy:callout */ `seeking ${cur.title}` : /* copy:callout */ `seek ${top.title}`,
+    h("small", { class: "dim" }, ` ×${top.n}`),
+  );
+  b.onclick = (e: Event) => {
+    e.stopPropagation();
+    openSeek(app, b);
+  };
   return b;
 }
 
 function openSeek(app: App, anchor: HTMLElement): void {
-  openWindow((close) => {
-    const list = h("div", { class: "seek-opts" });
-    const pct = (x: number): string => `${Math.round(x * 100)}%`;
-    const paint = (opts: SeekOption[] | null): void => {
-      const F = app.lineage.feats;
-      if (!F) { replace(list); return; }
-      const set = async (boss: string): Promise<void> => { close(); if ((F.seek ?? "") !== boss) await app.mutate(() => app.engine.seekBoss!(boss), /* copy:callout */ boss ? "seek" : "in order"); };
-      replace(list,
-        h("button", { class: `chip seek-opt num${F.seek ? "" : " on"}`, "data-seek": "", onclick: () => void set("") }, /* copy:callout */ "in order", h("small", { class: "dim" }, /* copy:label */ " · default")),
-        ...F.tokens.map((t) => {
-          const o = opts?.find((x) => x.boss === t.boss);
-          return h("button", { class: `chip seek-opt num${F.seek === t.boss ? " on" : ""}`, "data-seek": t.boss, onclick: () => void set(t.boss) },
-            h("b", null, t.title), ` D${t.depth}`, h("small", { class: "dim" }, ` ×${t.n}`), t.stone > 1 ? h("small", { class: "dim" }, /* copy:callout */ ` · from D${t.stone}`) : "",
-            o ? h("small", { class: "seek-price" }, /* copy:callout */ ` · reach ${pct(o.reach)} · past ${pct(o.past)}`) : opts === null ? h("small", { class: "dim" }, " …") : "");
-        }));
-    };
-    paint(null);
-    if (app.engine.seekForecast) void app.engine.seekForecast().then((o) => { if (list.isConnected) paint(o); }).catch(() => { if (list.isConnected) paint([]); });
-    else paint([]);
-    return h("div", { class: "sheet-body seek-sheet", "data-seek-sheet": "" }, h("div", { class: "label row-label" }, /* copy:label */ "Boss tokens"), list);
-  }, { anchor });
+  openWindow(
+    (close) => {
+      const list = h("div", { class: "seek-opts" });
+      const pct = (x: number): string => `${Math.round(x * 100)}%`;
+      const paint = (opts: SeekOption[] | null): void => {
+        const F = app.lineage.feats;
+        if (!F) {
+          replace(list);
+          return;
+        }
+        const set = async (boss: string): Promise<void> => {
+          close();
+          if ((F.seek ?? "") !== boss)
+            await app.mutate(
+              () => app.engine.seekBoss!(boss),
+              /* copy:callout */ boss ? "seek" : "in order",
+            );
+        };
+        replace(
+          list,
+          h(
+            "button",
+            {
+              class: `chip seek-opt num${F.seek ? "" : " on"}`,
+              "data-seek": "",
+              onclick: () => void set(""),
+            },
+            /* copy:callout */ "in order",
+            h("small", { class: "dim" }, /* copy:label */ " · default"),
+          ),
+          ...F.tokens.map((t) => {
+            const o = opts?.find((x) => x.boss === t.boss);
+            return h(
+              "button",
+              {
+                class: `chip seek-opt num${F.seek === t.boss ? " on" : ""}`,
+                "data-seek": t.boss,
+                onclick: () => void set(t.boss),
+              },
+              h("b", null, t.title),
+              ` D${t.depth}`,
+              h("small", { class: "dim" }, ` ×${t.n}`),
+              t.stone > 1
+                ? h("small", { class: "dim" }, /* copy:callout */ ` · from D${t.stone}`)
+                : "",
+              o
+                ? h(
+                    "small",
+                    { class: "seek-price" },
+                    /* copy:callout */ ` · reach ${pct(o.reach)} · past ${pct(o.past)}`,
+                  )
+                : opts === null
+                  ? h("small", { class: "dim" }, " …")
+                  : "",
+            );
+          }),
+        );
+      };
+      paint(null);
+      if (app.engine.seekForecast)
+        void app.engine
+          .seekForecast()
+          .then((o) => {
+            if (list.isConnected) paint(o);
+          })
+          .catch(() => {
+            if (list.isConnected) paint([]);
+          });
+      else paint([]);
+      return h(
+        "div",
+        { class: "sheet-body seek-sheet", "data-seek-sheet": "" },
+        h("div", { class: "label row-label" }, /* copy:label */ "Boss tokens"),
+        list,
+      );
+    },
+    { anchor },
+  );
 }
 
 /** The trials still open, newest first (a trial needs his band boss slain first: those wait unseen). */
-export const openTrials = (F: FeatsWire | undefined): TrialWire[] => (F?.trials ?? []).filter((t) => t.open && !t.cleared);
+export const openTrials = (F: FeatsWire | undefined): TrialWire[] =>
+  (F?.trials ?? []).filter((t) => t.open && !t.cleared);
 
 /** The trial card: one quiet card for the open weeks — the boss and floor, the rule, the packages that answer it (owned lit), `+10 Legacy`
  *  and the opt-in (a toggle: `opt in` → `opted`; the next send while away plays it). Older open weeks are small chips that switch it. */
@@ -80,26 +175,96 @@ function trialCard(app: App, pickWeek: { w?: number }, repaint: () => void): HTM
   if (!ts.length || !app.engine.setTrial) return null;
   const t = ts.find((x) => x.week === pickWeek.w) ?? ts.find((x) => x.opted) ?? ts[0];
   const toggle = async (): Promise<void> => {
-    const ok = await app.mutate(() => app.engine.setTrial!(t.opted ? -1 : t.week), /* copy:callout */ "trial");
+    const ok = await app.mutate(
+      () => app.engine.setTrial!(t.opted ? -1 : t.week),
+      /* copy:callout */ "trial",
+    );
     if (ok) toast(t.opted ? /* copy:callout */ "trial off" : /* copy:callout */ "trial on");
   };
   const owned = new Set(t.owned);
-  const card = h("div", { class: `trial-card num${t.opted ? " opted" : ""}`, "data-trial": t.week, "data-opted": t.opted ? "1" : "0" },
-    h("div", { class: "trial-head" }, h("span", { class: "label" }, /* copy:label */ "trial"), " ", h("b", null, t.title), ` D${t.depth}`,
-      h("small", { class: "trial-pay dim" }, /* copy:callout */ ` · +${t.legacy} Legacy`)),
+  const card = h(
+    "div",
+    {
+      class: `trial-card num${t.opted ? " opted" : ""}`,
+      "data-trial": t.week,
+      "data-opted": t.opted ? "1" : "0",
+    },
+    h(
+      "div",
+      { class: "trial-head" },
+      h("span", { class: "label" }, /* copy:label */ "trial"),
+      " ",
+      h("b", null, t.title),
+      ` D${t.depth}`,
+      h("small", { class: "trial-pay dim" }, /* copy:callout */ ` · +${t.legacy} Legacy`),
+    ),
     h("div", { class: "trial-rule" }, t.label),
-    t.answers.length ? h("div", { class: "trial-answers dim" }, /* copy:label */ "answers", " · ",
-      ...t.answers.flatMap((a, i) => [i ? ", " : "", h("span", { class: `trial-answer${owned.has(a) ? " owned" : ""}`, "data-answer": a }, a.replace(/_/g, " "))])) : "",
-    h("div", { class: "trial-foot" },
-      h("button", { class: `chip mini trial-opt${t.opted ? " on" : ""}`, "aria-pressed": t.opted ? "true" : "false", onclick: (e: Event) => { e.stopPropagation(); void toggle(); } },
-        t.opted ? /* copy:button */ "opted" : /* copy:button */ "opt in"),
-      ...ts.filter((x) => x !== t).map((x) => h("button", { class: "chip mini trial-week dim", "data-week": x.week, onclick: (e: Event) => { e.stopPropagation(); pickWeek.w = x.week; repaint(); } },
-        /* copy:callout */ `wk ${x.week} · ${x.title}`))));
+    t.answers.length
+      ? h(
+          "div",
+          { class: "trial-answers dim" },
+          /* copy:label */ "answers",
+          " · ",
+          ...t.answers.flatMap((a, i) => [
+            i ? ", " : "",
+            h(
+              "span",
+              { class: `trial-answer${owned.has(a) ? " owned" : ""}`, "data-answer": a },
+              a.replace(/_/g, " "),
+            ),
+          ]),
+        )
+      : "",
+    h(
+      "div",
+      { class: "trial-foot" },
+      h(
+        "button",
+        {
+          class: `chip mini trial-opt${t.opted ? " on" : ""}`,
+          "aria-pressed": t.opted ? "true" : "false",
+          onclick: (e: Event) => {
+            e.stopPropagation();
+            void toggle();
+          },
+        },
+        t.opted ? /* copy:button */ "opted" : /* copy:button */ "opt in",
+      ),
+      ...ts
+        .filter((x) => x !== t)
+        .map((x) =>
+          h(
+            "button",
+            {
+              class: "chip mini trial-week dim",
+              "data-week": x.week,
+              onclick: (e: Event) => {
+                e.stopPropagation();
+                pickWeek.w = x.week;
+                repaint();
+              },
+            },
+            /* copy:callout */ `wk ${x.week} · ${x.title}`,
+          ),
+        ),
+    ),
+  );
   // (the tip hangs on the head: the card holds controls, whose taps stay their own)
-  detailHost(card.querySelector<HTMLElement>(".trial-head")!, () => [h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Weekly trial")),
+  detailHost(card.querySelector<HTMLElement>(".trial-head")!, () => [
+    h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Weekly trial")),
     h("div", { class: "num" }, /* copy:label */ "Rule", ` · ${t.label}`),
-    h("div", { class: "num" }, /* copy:label */ "Open", /* copy:callout */ ` · ${t.weeks_left + 1} wk left`),
-    h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "optional · played while away · never required")]);
+    h(
+      "div",
+      { class: "num" },
+      /* copy:label */ "Open",
+      /* copy:callout */ ` · ${t.weeks_left + 1} wk left`,
+    ),
+    h(
+      "div",
+      { class: "kw-tip-gloss" },
+      /* copy:tooltip */ "optional · played while away · never required",
+    ),
+  ]);
   return card;
 }
 
@@ -107,9 +272,24 @@ function trialCard(app: App, pickWeek: { w?: number }, repaint: () => void): HTM
 function wishChip(app: App): HTMLElement | null {
   const w = app.lineage.feats?.wish;
   if (!w || !app.engine.grantWish) return null;
-  const b = twoTap([h("span", { class: "wish-glyph", "aria-hidden": "true" }, "✧"), document.createTextNode(` ${w.text}`), h("small", { class: "dim" }, ` · +${w.legacy}`)], /* copy:button */ `ok $${w.price}`,
-    () => void app.mutate(() => app.engine.grantWish!(), /* copy:callout */ "wish").then((ok) => { if (ok) { audio.cue("unlock"); toast(/* copy:callout */ "wish granted"); } }),
-    { class: "chip feat-chip wish-chip num", key: `wish:${w.id}`, disabled: !w.available });
+  const b = twoTap(
+    [
+      h("span", { class: "wish-glyph", "aria-hidden": "true" }, "✧"),
+      document.createTextNode(` ${w.text}`),
+      h("small", { class: "dim" }, ` · +${w.legacy}`),
+    ],
+    /* copy:button */ `ok $${w.price}`,
+    () =>
+      void app
+        .mutate(() => app.engine.grantWish!(), /* copy:callout */ "wish")
+        .then((ok) => {
+          if (ok) {
+            audio.cue("unlock");
+            toast(/* copy:callout */ "wish granted");
+          }
+        }),
+    { class: "chip feat-chip wish-chip num", key: `wish:${w.id}`, disabled: !w.available },
+  );
   b.dataset.wish = w.id;
   b.title = /* copy:tooltip */ `hero's wish · $${w.price} · +${w.legacy} Legacy`;
   return b;
@@ -121,49 +301,100 @@ export function campFeats(app: App): { el: HTMLElement; dispose: () => void } {
   const pickWeek: { w?: number } = {};
   let last = "";
   const paint = (): void => {
-    const L = app.lineage, F = L.feats;
+    const L = app.lineage,
+      F = L.feats;
     const home = !L.live && !L.ended && L.town?.home !== false;
     const key = JSON.stringify([home, F?.tokens, F?.seek, openTrials(F), F?.wish, pickWeek.w]);
     if (key === last) return;
     last = key;
-    const seek = home ? seekChip(app) : null, wish = home ? wishChip(app) : null, trial = home ? trialCard(app, pickWeek, paint) : null;
+    const seek = home ? seekChip(app) : null,
+      wish = home ? wishChip(app) : null,
+      trial = home ? trialCard(app, pickWeek, paint) : null;
     el.hidden = !seek && !wish && !trial;
-    el.dataset.feats = [seek ? "seek" : "", wish ? "wish" : "", trial ? "trial" : ""].filter(Boolean).join(",");
+    el.dataset.feats = [seek ? "seek" : "", wish ? "wish" : "", trial ? "trial" : ""]
+      .filter(Boolean)
+      .join(",");
     replace(el, seek || wish ? h("div", { class: "chips feat-chips" }, seek, wish) : "", trial);
   };
   paint();
-  const off = app.onChange(paint), offL = app.onLive(paint);
-  return { el, dispose: () => { off(); offL(); } };
+  const off = app.onChange(paint),
+    offL = app.onLive(paint);
+  return {
+    el,
+    dispose: () => {
+      off();
+      offL();
+    },
+  };
 }
 
 // ---------------------------------------------------------------- the run setup: the heir order and the apprentice's sinks
 
 /* copy:button */
-export const HEIR_WORD: Record<string, string> = { answer: "answer", strongest: "strongest", surprise: "surprise" };
+export const HEIR_WORD: Record<string, string> = {
+  answer: "answer",
+  strongest: "strongest",
+  surprise: "surprise",
+};
 /* copy:button */
-export const SINK_WORD: Record<string, string> = { both: "both", ration: "rations", tithe: "tithe", off: "off" };
+export const SINK_WORD: Record<string, string> = {
+  both: "both",
+  ration: "rations",
+  tithe: "tithe",
+  off: "off",
+};
 export const HEIR_ORDERS = ["answer", "strongest", "surprise"] as const;
 export const SINK_ORDERS = ["both", "ration", "tithe", "off"] as const;
 
 /** The orders summary's Cut 118 bits — only an order off its default reads (`heirs strongest`, `sinks off`). */
 export function featOrderBits(o: StandingOrders): string[] {
-  return [o.heir && o.heir !== "answer" ? /* copy:callout */ `heirs ${HEIR_WORD[o.heir] ?? o.heir}` : "",
+  return [
+    o.heir && o.heir !== "answer" ? /* copy:callout */ `heirs ${HEIR_WORD[o.heir] ?? o.heir}` : "",
     o.sink && o.sink !== "both" ? /* copy:callout */ `sinks ${SINK_WORD[o.sink] ?? o.sink}` : "",
-    o.kennel && o.kennel !== "breed" ? /* copy:callout */ `kennel ${KENNEL_WORD[o.kennel] ?? o.kennel}` : "", ...cut120OrderBits(o)].filter(Boolean);
+    o.kennel && o.kennel !== "breed"
+      ? /* copy:callout */ `kennel ${KENNEL_WORD[o.kennel] ?? o.kennel}`
+      : "",
+    ...cut120OrderBits(o),
+  ].filter(Boolean);
 }
 
 /** The heir order is shown once a heir has died (the `heirs` rung lit), or as soon as the core sends a non-default one. */
-export const heirOrderShown = (L: Lineage): boolean => !!L.orders?.heir && (L.systems?.some((s) => s.id === "heirs" && s.open) || (L.graveyard?.length ?? 0) > 0 || L.orders.heir !== "answer");
+export const heirOrderShown = (L: Lineage): boolean =>
+  !!L.orders?.heir &&
+  (L.systems?.some((s) => s.id === "heirs" && s.open) ||
+    (L.graveyard?.length ?? 0) > 0 ||
+    L.orders.heir !== "answer");
 
 /** One sink by hand on this screen (round 2 §4): the survey while it is offered (once), else the tithe at its rate — two taps each. */
 export function sinkHandChip(app: App, after: () => void): HTMLElement | null {
   const S = app.lineage.feats?.sinks ?? [];
-  const survey = S.find((s) => s.id === "survey"), tithe = S.find((s) => s.id === "tithe");
+  const survey = S.find((s) => s.id === "survey"),
+    tithe = S.find((s) => s.id === "tithe");
   const s = survey && app.engine.buySurvey ? survey : tithe && app.engine.tithe ? tithe : undefined;
   if (!s) return null;
-  const act = (): void => void app.mutate(() => (s.id === "survey" ? app.engine.buySurvey!() : app.engine.tithe!(1)), s.id === "survey" ? /* copy:callout */ "survey" : /* copy:callout */ "tithe").then((ok) => { if (ok) { audio.cue("unlock"); after(); } });
-  const b = twoTap([document.createTextNode(s.id === "survey" ? /* copy:button */ "survey" : /* copy:button */ "tithe"), h("small", { class: "dim" }, ` · ${s.line}`)], /* copy:button */ `ok $${s.price}`, act,
-    { class: `chip order sink-hand num`, key: `sink:${s.id}:${s.price}`, disabled: !s.available });
+  const act = (): void =>
+    void app
+      .mutate(
+        () => (s.id === "survey" ? app.engine.buySurvey!() : app.engine.tithe!(1)),
+        s.id === "survey" ? /* copy:callout */ "survey" : /* copy:callout */ "tithe",
+      )
+      .then((ok) => {
+        if (ok) {
+          audio.cue("unlock");
+          after();
+        }
+      });
+  const b = twoTap(
+    [
+      document.createTextNode(
+        s.id === "survey" ? /* copy:button */ "survey" : /* copy:button */ "tithe",
+      ),
+      h("small", { class: "dim" }, ` · ${s.line}`),
+    ],
+    /* copy:button */ `ok $${s.price}`,
+    act,
+    { class: `chip order sink-hand num`, key: `sink:${s.id}:${s.price}`, disabled: !s.available },
+  );
   b.dataset.sink = s.id;
   return b;
 }
@@ -174,53 +405,116 @@ export function sinkHandChip(app: App, after: () => void): HTMLElement | null {
 export function rationChip(app: App, H: HungerForecast, after?: () => void): HTMLElement {
   const tip = /* copy:tooltip */ "next send · hunger bites a quarter as often";
   const kept = Math.max(0, Math.round(H.kept));
-  if (H.packed) return h("span", { class: "ration packed num dim", "data-ration": "packed", title: tip }, /* copy:callout */ `ration packed · +${kept} hp`);
-  if (!app.engine.buyRation) return h("span", { class: "ration num dim", title: tip }, /* copy:callout */ `ration keeps +${kept} hp`);
+  if (H.packed)
+    return h(
+      "span",
+      { class: "ration packed num dim", "data-ration": "packed", title: tip },
+      /* copy:callout */ `ration packed · +${kept} hp`,
+    );
+  if (!app.engine.buyRation)
+    return h(
+      "span",
+      { class: "ration num dim", title: tip },
+      /* copy:callout */ `ration keeps +${kept} hp`,
+    );
   const act = (): void => {
     b.disabled = true;
     b.classList.remove("armed");
     replace(b, /* copy:label */ "Packing…");
     b.setAttribute("aria-label", /* copy:label */ "Packing…");
     let why = "";
-    void app.mutate(async () => { try { return await app.engine.buyRation!(); } catch (e) { why = e instanceof Error ? e.message : String(e); throw e; } }, /* copy:callout */ "ration").then((ok) => {
-      if (ok) {
-        replace(b, /* copy:callout */ `ration packed · +${kept} hp`);
-        b.setAttribute("aria-label", /* copy:label */ "ration packed");
-        b.dataset.ration = "packed";
-        audio.cue("unlock"); toast(/* copy:callout */ "ration packed"); after?.();
-      } else {
-        b.disabled = (app.lineage.gold ?? 0) < H.price;
-        replace(b, /* copy:callout */ `ration keeps +${kept} hp`, ` · $${H.price}`);
-        b.setAttribute("aria-label", b.textContent ?? "");
-        app.refused(why, /* copy:callout */ "ration refused");
-      }
-    });
+    void app
+      .mutate(async () => {
+        try {
+          return await app.engine.buyRation!();
+        } catch (e) {
+          why = e instanceof Error ? e.message : String(e);
+          throw e;
+        }
+      }, /* copy:callout */ "ration")
+      .then((ok) => {
+        if (ok) {
+          replace(b, /* copy:callout */ `ration packed · +${kept} hp`);
+          b.setAttribute("aria-label", /* copy:label */ "ration packed");
+          b.dataset.ration = "packed";
+          audio.cue("unlock");
+          toast(/* copy:callout */ "ration packed");
+          after?.();
+        } else {
+          b.disabled = (app.lineage.gold ?? 0) < H.price;
+          replace(b, /* copy:callout */ `ration keeps +${kept} hp`, ` · $${H.price}`);
+          b.setAttribute("aria-label", b.textContent ?? "");
+          app.refused(why, /* copy:callout */ "ration refused");
+        }
+      });
   };
-  const b = twoTap([document.createTextNode(/* copy:callout */ `ration keeps +${kept} hp`), h("small", { class: "dim" }, ` · $${H.price}`)], /* copy:button */ `Pack $${H.price}`, act,
-    { class: "chip mini ration num", key: `ration:${H.price}`, disabled: (app.lineage.gold ?? 0) < H.price });
-  b.dataset.ration = "buy"; b.title = tip;
+  const b = twoTap(
+    [
+      document.createTextNode(/* copy:callout */ `ration keeps +${kept} hp`),
+      h("small", { class: "dim" }, ` · $${H.price}`),
+    ],
+    /* copy:button */ `Pack $${H.price}`,
+    act,
+    {
+      class: "chip mini ration num",
+      key: `ration:${H.price}`,
+      disabled: (app.lineage.gold ?? 0) < H.price,
+    },
+  );
+  b.dataset.ration = "buy";
+  b.title = tip;
   return b;
 }
 
 // ---------------------------------------------------------------- the report: finds, feats, siege
 
 /* copy:label */
-const FIND_KIND: Record<string, string> = { cosmetic: "keepsake", shard: "shard", piece: "set piece" };
+const FIND_KIND: Record<string, string> = {
+  cosmetic: "keepsake",
+  shard: "shard",
+  piece: "set piece",
+};
 
 /** Cut 118 §3 (round 2: one reveal, best first, never a click per find): `found · scholar's quill +6`, the shards' Legacy, a set completed.
  *  The whole list is the tip (hover / long-press). */
 export function findsReveal(f: FindsReveal | undefined): HTMLElement | null {
   if (!f || !f.finds.length) return null;
   const best = f.best ?? f.finds[0];
-  const el = h("div", { class: "report-reveal report-hl num", "data-hl": "find", "data-sealed": f.sealed, "data-best": best.id },
-    h("span", { class: "reveal-glyph", "aria-hidden": "true" }, "✦"), " ", h("b", null, best.name), h("small", { class: "dim" }, ` · ${FIND_KIND[best.kind] ?? best.kind}`),
-    f.finds.length > 1 ? h("small", { class: "dim" }, /* copy:callout */ ` +${f.finds.length - 1} finds`) : "",
+  const el = h(
+    "div",
+    {
+      class: "report-reveal report-hl num",
+      "data-hl": "find",
+      "data-sealed": f.sealed,
+      "data-best": best.id,
+    },
+    h("span", { class: "reveal-glyph", "aria-hidden": "true" }, "✦"),
+    " ",
+    h("b", null, best.name),
+    h("small", { class: "dim" }, ` · ${FIND_KIND[best.kind] ?? best.kind}`),
+    f.finds.length > 1
+      ? h("small", { class: "dim" }, /* copy:callout */ ` +${f.finds.length - 1} finds`)
+      : "",
     f.legacy ? h("small", { class: "up" }, /* copy:callout */ ` · +${f.legacy} Legacy`) : "",
-    ...(f.sets ?? []).map((s) => h("small", { class: "reveal-set up" }, /* copy:callout */ ` · set ${s}`)));
-  detailHost(el, () => [h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Away finds")),
-    ...f.finds.slice(0, 8).map((x) => h("div", { class: "num" }, x.name, h("small", { class: "dim" }, ` · ${FIND_KIND[x.kind] ?? x.kind}`))),
+    ...(f.sets ?? []).map((s) =>
+      h("small", { class: "reveal-set up" }, /* copy:callout */ ` · set ${s}`),
+    ),
+  );
+  detailHost(el, () => [
+    h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Away finds")),
+    ...f.finds
+      .slice(0, 8)
+      .map((x) =>
+        h(
+          "div",
+          { class: "num" },
+          x.name,
+          h("small", { class: "dim" }, ` · ${FIND_KIND[x.kind] ?? x.kind}`),
+        ),
+      ),
     ...(f.finds.length > 8 ? [h("div", { class: "num dim" }, `+${f.finds.length - 8}`)] : []),
-    h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "one find per run away · more after 6h")]);
+    h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "one find per run away · more after 6h"),
+  ]);
   return el;
 }
 
@@ -228,26 +522,72 @@ export function findsReveal(f: FindsReveal | undefined): HTMLElement | null {
 export function setLog(F: FeatsWire | undefined): HTMLElement | null {
   const sets = F?.sets ?? [];
   if (!sets.some((s) => s.have.some(Boolean))) return null;
-  return h("details", { class: "set-log", "data-sets": sets.filter((s) => s.done).length },
-    h("summary", { class: "dim num" }, /* copy:button */ "set log", ` ${sets.filter((s) => s.done).length}/${sets.length}`),
-    h("ul", { class: "lines" }, ...sets.map((s) => h("li", { class: `num set-line${s.done ? " done" : ""}`, "data-set": s.id },
-      h("b", null, s.title), " ", ...s.pieces.map((p, i) => h("span", { class: `set-piece${s.have[i] ? " have" : ""}`, title: p.replace(/_/g, " ") }, s.have[i] ? "■" : "□")),
-      h("small", { class: "dim" }, ` · ${s.bonus}`)))));
+  return h(
+    "details",
+    { class: "set-log", "data-sets": sets.filter((s) => s.done).length },
+    h(
+      "summary",
+      { class: "dim num" },
+      /* copy:button */ "set log",
+      ` ${sets.filter((s) => s.done).length}/${sets.length}`,
+    ),
+    h(
+      "ul",
+      { class: "lines" },
+      ...sets.map((s) =>
+        h(
+          "li",
+          { class: `num set-line${s.done ? " done" : ""}`, "data-set": s.id },
+          h("b", null, s.title),
+          " ",
+          ...s.pieces.map((p, i) =>
+            h(
+              "span",
+              { class: `set-piece${s.have[i] ? " have" : ""}`, title: p.replace(/_/g, " ") },
+              s.have[i] ? "■" : "□",
+            ),
+          ),
+          h("small", { class: "dim" }, ` · ${s.bonus}`),
+        ),
+      ),
+    ),
+  );
 }
 
 /** The feat kinds the report's lines name, most notable first (the heir chosen and the graves recovered are the report's quiet facts). */
-const FEAT_RANK = ["siege_won", "title", "trial", "seek", "siege", "set", "heir", "recovered", "wish", "swift", "trial_failed"];
+const FEAT_RANK = [
+  "siege_won",
+  "title",
+  "trial",
+  "seek",
+  "siege",
+  "set",
+  "heir",
+  "recovered",
+  "wish",
+  "swift",
+  "trial_failed",
+];
 /** The feat kinds that say a death made progress (a siege try, a boss finally slain, a line's title, a grave's pack brought home). */
 const PROGRESS = new Set(["siege_won", "siege", "title", "recovered"]);
 /** The report's feat lines (`ReturnReport.feats`). Owner IA pass 2026-10-10: the card carries at most two of them as highlights — the
  *  most notable death-that-made-progress line (`progress`) and the most notable pet deed (`pet`); every other line waits in `rest`
  *  (the details fold). Siege tries are summed into the siege line (`Queen · 4 tries · best 22%`), one per boss. */
-export type FeatFold = { progress: HTMLElement | null; pet: HTMLElement | null; rest: { way: HTMLElement | null; finds: HTMLElement | null; pets: HTMLElement | null } };
+export type FeatFold = {
+  progress: HTMLElement | null;
+  pet: HTMLElement | null;
+  rest: { way: HTMLElement | null; finds: HTMLElement | null; pets: HTMLElement | null };
+};
 /** The feat kinds the fold files under Finds (a set completed); the pet lines go under Heroes, the rest under the way down. */
 const FIND_FEATS = new Set(["set"]);
 /** A death-that-made-progress line's gloss (the face is the core's few words). */
 /* copy:tooltip */
-const PROGRESS_TIP: Record<string, string> = { recovered: "fallen heir's pack brought home", siege: "tries on a band boss · best hp left", siege_won: "band boss slain after a siege", title: "the line's title" };
+const PROGRESS_TIP: Record<string, string> = {
+  recovered: "fallen heir's pack brought home",
+  siege: "tries on a band boss · best hp left",
+  siege_won: "band boss slain after a siege",
+  title: "the line's title",
+};
 export function featLines(r: ReturnReport, L: Pick<Lineage, "feats">): FeatFold {
   // Cut 119: the pet feats condense apart (one fetch line a pet, one old-hound line …)
   const fs = (r.feats ?? []).filter((f) => !PET_KINDS.has(f.k));
@@ -267,46 +607,117 @@ export function featLines(r: ReturnReport, L: Pick<Lineage, "feats">): FeatFold 
   }
   const none = { progress: null, pet: null, rest: { way: null, finds: null, pets: null } };
   if (!lines.length && !pets.length) return none;
-  const li = (x: { k: string; text: string; day?: number }): HTMLElement => h("li", { class: `num feat-line k-${x.k}`, "data-k": x.k,
-    title: [PROGRESS_TIP[x.k], x.day ? /* copy:tooltip */ `day ${x.day}` : ""].filter(Boolean).join(" · ") || undefined }, x.text);
-  const pli = (x: PetLine): HTMLElement => h("li", { class: `num feat-line pet-line k-${x.k}`, "data-k": x.k, title: x.title ?? (x.day ? /* copy:tooltip */ `day ${x.day}` : undefined) },
-    x.k === "fetched" ? roleGlyph("fetcher") : "", x.text);
+  const li = (x: { k: string; text: string; day?: number }): HTMLElement =>
+    h(
+      "li",
+      {
+        class: `num feat-line k-${x.k}`,
+        "data-k": x.k,
+        title:
+          [PROGRESS_TIP[x.k], x.day ? /* copy:tooltip */ `day ${x.day}` : ""]
+            .filter(Boolean)
+            .join(" · ") || undefined,
+      },
+      x.text,
+    );
+  const pli = (x: PetLine): HTMLElement =>
+    h(
+      "li",
+      {
+        class: `num feat-line pet-line k-${x.k}`,
+        "data-k": x.k,
+        title: x.title ?? (x.day ? /* copy:tooltip */ `day ${x.day}` : undefined),
+      },
+      x.k === "fetched" ? roleGlyph("fetcher") : "",
+      x.text,
+    );
   const lead = lines.find((x) => PROGRESS.has(x.k));
-  const more = (xs: HTMLElement[]): HTMLElement | null => xs.length ? h("ul", { class: "lines report-feats more" }, ...xs) : null;
+  const more = (xs: HTMLElement[]): HTMLElement | null =>
+    xs.length ? h("ul", { class: "lines report-feats more" }, ...xs) : null;
   const others = lines.filter((x) => x !== lead);
   return {
-    progress: lead ? h("ul", { class: "lines report-feats report-hl", "data-hl": "progress" }, li(lead)) : null,
-    pet: pets.length ? h("ul", { class: "lines report-feats report-hl", "data-hl": "pet" }, pli(pets[0])) : null,
-    rest: { way: more(others.filter((x) => !FIND_FEATS.has(x.k)).map(li)), finds: more(others.filter((x) => FIND_FEATS.has(x.k)).map(li)), pets: more(pets.slice(1).map(pli)) } };
+    progress: lead
+      ? h("ul", { class: "lines report-feats report-hl", "data-hl": "progress" }, li(lead))
+      : null,
+    pet: pets.length
+      ? h("ul", { class: "lines report-feats report-hl", "data-hl": "pet" }, pli(pets[0]))
+      : null,
+    rest: {
+      way: more(others.filter((x) => !FIND_FEATS.has(x.k)).map(li)),
+      finds: more(others.filter((x) => FIND_FEATS.has(x.k)).map(li)),
+      pets: more(pets.slice(1).map(pli)),
+    },
+  };
 }
-const rank = (f: FeatNews): number => { const i = FEAT_RANK.indexOf(f.k); return i < 0 ? FEAT_RANK.length : i; };
+const rank = (f: FeatNews): number => {
+  const i = FEAT_RANK.indexOf(f.k);
+  return i < 0 ? FEAT_RANK.length : i;
+};
 
 // ---------------------------------------------------------------- the town's graveyard
 
 /** A stone: a chunky pixel headstone (an inline primitive: no sprite to fail). */
 function stoneSvg(): string {
-  return /* copy:none */ '<svg viewBox="0 0 8 10" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">'
-    + '<rect x="2" y="0" width="4" height="1" fill="#8e8a7e"/><rect x="1" y="1" width="6" height="7" fill="#8e8a7e"/><rect x="1" y="1" width="1" height="7" fill="#b3ae9f"/>'
-    + '<rect x="3" y="2" width="2" height="1" fill="#55524a"/><rect x="3" y="3" width="2" height="1" fill="#55524a"/>'
-    + '<rect x="0" y="8" width="8" height="2" fill="#4c5a32"/></svg>';
+  return (
+    /* copy:none */ '<svg viewBox="0 0 8 10" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">' +
+    '<rect x="2" y="0" width="4" height="1" fill="#8e8a7e"/><rect x="1" y="1" width="6" height="7" fill="#8e8a7e"/><rect x="1" y="1" width="1" height="7" fill="#b3ae9f"/>' +
+    '<rect x="3" y="2" width="2" height="1" fill="#55524a"/><rect x="3" y="3" width="2" height="1" fill="#55524a"/>' +
+    '<rect x="0" y="8" width="8" height="2" fill="#4c5a32"/></svg>'
+  );
 }
 
 const STONES_SHOWN = 4;
 /** Cut 118 (owner amendment §4): the town's graveyard — a few stones at the scene's foot (the newest), each its epitaph on hover; a tap opens
  *  the whole yard (every stone, newest first) and the line's titles (`Motherbane`). Hidden with no stone. */
 export function townGraveyard(app: App): { el: HTMLElement; paint(home: boolean): void } {
-  const el: HTMLButtonElement = h("button", { class: "town-graveyard game-control", hidden: true, "data-stones": "0", "aria-label": /* copy:label */ "graveyard" });
+  const el: HTMLButtonElement = h("button", {
+    class: "town-graveyard game-control",
+    hidden: true,
+    "data-stones": "0",
+    "aria-label": /* copy:label */ "graveyard",
+  });
   const open = (): void => {
     const F = app.lineage.feats;
     if (!F) return;
-    openWindow(() => h("div", { class: "sheet-body graveyard-sheet", "data-graveyard": "sheet" },
-      h("div", { class: "label row-label" }, /* copy:label */ "Graveyard"),
-      F.titles.length ? h("div", { class: "graveyard-titles num" }, ...F.titles.flatMap((t, i) => [i ? " · " : "", h("b", { class: "line-title" }, t)])) : "",
-      h("ul", { class: "lines graveyard-lines" }, ...[...F.graveyard].reverse().map((s) => h("li", { class: "num stone-line", "data-heir": s.heir },
-        h("b", null, s.name), ` · ${s.epitaph}`, s.try_n ? h("small", { class: "dim" }, /* copy:callout */ ` · try ${s.try_n}`) : "",
-        h("small", { class: "dim" }, /* copy:callout */ ` · day ${s.day}`))))), { anchor: el });
+    openWindow(
+      () =>
+        h(
+          "div",
+          { class: "sheet-body graveyard-sheet", "data-graveyard": "sheet" },
+          h("div", { class: "label row-label" }, /* copy:label */ "Graveyard"),
+          F.titles.length
+            ? h(
+                "div",
+                { class: "graveyard-titles num" },
+                ...F.titles.flatMap((t, i) => [i ? " · " : "", h("b", { class: "line-title" }, t)]),
+              )
+            : "",
+          h(
+            "ul",
+            { class: "lines graveyard-lines" },
+            ...[...F.graveyard]
+              .reverse()
+              .map((s) =>
+                h(
+                  "li",
+                  { class: "num stone-line", "data-heir": s.heir },
+                  h("b", null, s.name),
+                  ` · ${s.epitaph}`,
+                  s.try_n
+                    ? h("small", { class: "dim" }, /* copy:callout */ ` · try ${s.try_n}`)
+                    : "",
+                  h("small", { class: "dim" }, /* copy:callout */ ` · day ${s.day}`),
+                ),
+              ),
+          ),
+        ),
+      { anchor: el },
+    );
   };
-  el.onclick = (e: Event) => { e.stopPropagation(); open(); };
+  el.onclick = (e: Event) => {
+    e.stopPropagation();
+    open();
+  };
   let last = "";
   const paint = (home: boolean): void => {
     const F = app.lineage.feats;
@@ -317,16 +728,45 @@ export function townGraveyard(app: App): { el: HTMLElement; paint(home: boolean)
     const key = JSON.stringify([show, stones.length, stones.at(-1)?.heir, F?.titles]);
     if (key === last) return;
     last = key;
-    if (!show) { replace(el); return; }
+    if (!show) {
+      replace(el);
+      return;
+    }
     const shown = stones.slice(-STONES_SHOWN);
-    replace(el, ...shown.map((s) => { const st = h("span", { class: "stone", "data-heir": s.heir, title: `${s.name} · ${s.epitaph}` }); st.innerHTML = stoneSvg(); return st; }),
-      stones.length > STONES_SHOWN ? h("small", { class: "stone-more num" }, `+${stones.length - STONES_SHOWN}`) : "",
-      F!.titles.length ? h("small", { class: "stone-title num" }, F!.titles[F!.titles.length - 1]) : "");
+    replace(
+      el,
+      ...shown.map((s) => {
+        const st = h("span", {
+          class: "stone",
+          "data-heir": s.heir,
+          title: `${s.name} · ${s.epitaph}`,
+        });
+        st.innerHTML = stoneSvg();
+        return st;
+      }),
+      stones.length > STONES_SHOWN
+        ? h("small", { class: "stone-more num" }, `+${stones.length - STONES_SHOWN}`)
+        : "",
+      F!.titles.length
+        ? h("small", { class: "stone-title num" }, F!.titles[F!.titles.length - 1])
+        : "",
+    );
   };
   detailHost(el, () => {
-    const F = app.lineage.feats, s = F?.graveyard.at(-1);
-    return s ? [h("div", { class: "kw-tip-head" }, h("b", null, s.name)), h("div", { class: "num" }, s.epitaph),
-      ...(F!.titles.length ? [h("div", { class: "num" }, F!.titles.join(" · "))] : []), h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ "fallen heirs · their walls remember")] : [];
+    const F = app.lineage.feats,
+      s = F?.graveyard.at(-1);
+    return s
+      ? [
+          h("div", { class: "kw-tip-head" }, h("b", null, s.name)),
+          h("div", { class: "num" }, s.epitaph),
+          ...(F!.titles.length ? [h("div", { class: "num" }, F!.titles.join(" · "))] : []),
+          h(
+            "div",
+            { class: "kw-tip-gloss" },
+            /* copy:tooltip */ "fallen heirs · their walls remember",
+          ),
+        ]
+      : [];
   });
   return { el, paint };
 }

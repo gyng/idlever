@@ -17,13 +17,52 @@ export function wallPreview(L: Lineage): HTMLElement | null {
   const w = nextWall(L);
   if (!w) return null;
   const counter = w.known && w.counter ? w.counter : w.learn ? `? · ${w.learn}` : "?";
-  const more = [w.affix ? /* copy:callout */ `affix ${w.affix}${w.affix_counter ? ` → ${w.affix_counter}` : ""}` : "",
-    w.guard ? /* copy:callout */ `guard ${w.guard}${w.guard_counter ? ` → ${w.guard_counter}` : ""}` : ""].filter(Boolean);
+  const more = [
+    w.affix
+      ? /* copy:callout */ `affix ${w.affix}${w.affix_counter ? ` → ${w.affix_counter}` : ""}`
+      : "",
+    w.guard
+      ? /* copy:callout */ `guard ${w.guard}${w.guard_counter ? ` → ${w.guard_counter}` : ""}`
+      : "",
+  ].filter(Boolean);
   const siege = siegeOn(L, w.boss);
-  const face = enemyHost(unitLabel(w.boss, h("span", { class: "wall-who" }, h("b", null, w.title), " ", h("span", { class: "num" }, `D${w.depth}`)), { px: 30 }), w.boss, L);
-  return h("div", { class: "wall-preview num", "data-boss": w.boss, "data-depth": w.depth },
-    h("span", { class: "label wall-label" }, /* copy:label */ "next wall"), face,
-    h("small", { class: "wall-counter", "data-known": w.known && w.counter ? "1" : "0" }, /* copy:label */ "counter", ` · ${counter}`),
+  const face = enemyHost(
+    unitLabel(
+      w.boss,
+      h(
+        "span",
+        { class: "wall-who" },
+        h("b", null, w.title),
+        " ",
+        h("span", { class: "num" }, `D${w.depth}`),
+      ),
+      { px: 30 },
+    ),
+    w.boss,
+    L,
+  );
+  return h(
+    "div",
+    { class: "wall-preview num", "data-boss": w.boss, "data-depth": w.depth },
+    h("span", { class: "label wall-label" }, /* copy:label */ "next wall"),
+    face,
+    h(
+      "small",
+      { class: "wall-counter", "data-known": w.known && w.counter ? "1" : "0" },
+      /* copy:label */ "counter",
+      ` · ${counter}`,
+    ),
     ...more.map((m) => h("small", { class: "wall-more dim" }, m)),
-    siege ? h("small", { class: "wall-siege", "data-tries": siege.tries, title: /* copy:tooltip */ `siege edge · +${siege.edge_pct}% on him` }, siegeText(siege)) : "");
+    siege
+      ? h(
+          "small",
+          {
+            class: "wall-siege",
+            "data-tries": siege.tries,
+            title: /* copy:tooltip */ `siege edge · +${siege.edge_pct}% on him`,
+          },
+          siegeText(siege),
+        )
+      : "",
+  );
 }

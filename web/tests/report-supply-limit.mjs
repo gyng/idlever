@@ -1,35 +1,286 @@
-import { responsiveWidths } from './lib/viewport-cases.mjs';
-import {execFileSync} from 'node:child_process';import {launchBrowser} from '../../tools/browser.mjs';import assert from 'node:assert/strict';
-const url=execFileSync('bash',['tools/dev.sh'],{cwd:new URL('../../',import.meta.url),encoding:'utf8'}).trim(),b=await launchBrowser();
-try{for(const width of responsiveWidths([320,400,1440])){
- const p=await b.newPage({viewport:{width,height:900}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(`${url}?engine=fake&fresh=1&runs=0`);await p.waitForFunction(()=>window.__riddle?.booted);
- await p.evaluate(()=>{const a=window.__riddle;window.capReport={elapsed_s:28800,runs:12,sampled:false,learned:[],bests:[],found:[],deaths:[],pending:[],marks_earned:0,tamed:[],hatched:[],lost:[],reel:[],deepest:13,restock_capped:true,gold:{home:0,salvage:0,wake:0,spent:0,lost:100}};a.lineage.gold=8443;a.go({kind:'report',report:window.capReport});});
- const notice=p.locator('.report-supply-limit');assert.equal(await notice.count(),1);assert.equal(await notice.textContent(),'Supplies limited · $0 budget');assert.ok(await notice.isVisible());assert.ok(await p.locator('.report-details').evaluate(e=>e.hidden));
- await notice.hover();await p.waitForFunction(()=>document.querySelector('#kw-tip')?.textContent.includes('Automatic supplies use gold earned while away'));await notice.click();await p.locator('.gold-sheet').waitFor();await p.keyboard.press('Escape');
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,gold:{home:212,salvage:6,wake:0,spent:80}}}));assert.equal(await p.locator('.report-supply-limit').count(),0);await p.locator('.details-fold').click();assert.ok((await p.locator('.gold-line').textContent()).includes('Supplies limited · $218 budget'));
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,gold:undefined}}));assert.equal(await p.locator('.report-supply-limit').count(),0);await p.locator('.details-fold').click();assert.equal(await p.locator('.gold-line .supply-limit').textContent(),'Supplies limited');
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false}}));assert.equal(await p.locator('.supply-limit').count(),0);
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:window.capReport}));const box=await p.locator('.report-supply-limit').boundingBox();assert.ok(box.width>=44&&box.height>=44&&box.x>=0&&box.x+box.width<=width);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(errors,[]);
- // Currency summary must explain gross income without turning grants or spending into earnings.
- await p.evaluate(()=>{const a=window.__riddle;a.lineage.gold=506;a.lineage.gold_ledger=[{t:1,delta:87,why:'banked D3'},{t:1,delta:19,why:'salvage'},{t:2,delta:40,why:'wake pay'},{t:2,delta:-80,why:'heal'}];a.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:87,salvage:19,wake:40,spent:80}}});});
- const gold=p.locator('.report-basics [data-k="gold"]');assert.equal(await gold.locator('b').textContent(),'$106');assert.equal(await gold.locator('.label').textContent(),'Gold earned');assert.equal(await gold.evaluate(e=>e.tagName),'BUTTON');
- const before=await p.evaluate(()=>JSON.stringify(window.__riddle.lineage));
- await gold.hover();await p.waitForFunction(()=>{const t=document.querySelector('#kw-tip')?.textContent;return t?.includes('Run gold · $87')&&t.includes('Loot sold · $19')&&t.includes('Before spending; excludes heir grants');});
- await gold.click();await p.locator('.sheet-wrap:not([hidden]) .gold-sheet').waitFor();assert.ok((await p.locator('.sheet-wrap:not([hidden]) .gold-sheet').textContent()).includes('+$19'));await p.keyboard.press('Escape');
- await gold.focus();await p.keyboard.press('Enter');await p.locator('.sheet-wrap:not([hidden]) .gold-sheet').waitFor();await p.keyboard.press('Escape');assert.equal(await p.evaluate(()=>JSON.stringify(window.__riddle.lineage)),before);
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,gold:undefined,restock_capped:false,exits:[{carried:102,keep_pct:60,kept:61,spent:0,spent_on:[],text:'returned $61 · $102 carried'},{carried:84,keep_pct:100,kept:84,spent:0,spent_on:[],text:'banked $84 · $84 carried'}],salvaged:[{kind:'sword',n:1,gold:6},{kind:'leash',n:1,gold:1}]}}));assert.equal(await gold.locator('b').textContent(),'$152');
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,gold:undefined,restock_capped:false}}));assert.equal(await gold.locator('b').textContent(),'$0');assert.equal(await p.locator('.report-basics .tile').count(),3);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(errors,[]);
- // blind ad71e72: a waystone passage is income; an absence states its purse change beside the earned gold
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:8,salvage:0,wake:0,spent:0,passage:1027,net:1035}}}));assert.equal(await gold.locator('b').textContent(),'+$1035');assert.equal(await gold.locator('.label').textContent(),'Gold earned');assert.equal(await p.locator('.report-net').count(),0);
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:6712,salvage:0,wake:0,spent:208,net:78}}}));assert.equal(await gold.locator('b').textContent(),'+$6712');assert.equal(await p.locator('.report-details [data-group=gold] .report-net').textContent(),'purse +$78');await gold.hover();await p.waitForFunction(()=>{const t=document.querySelector('#kw-tip')?.textContent;return t?.includes('Workers, other · −$6426')&&t.includes('Purse change · +$78');});await p.mouse.move(0,0);
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,supply_budget:{income:7778,spent:448,left:7330,reason:'income_spent'}}}));
- await p.locator('.details-fold').click();const limited=p.locator('.gold-line .supply-limit');
- assert.match(await limited.textContent(),/income limit$/);assert.doesNotMatch(await limited.textContent(),/income spent/);
- await limited.hover();await p.waitForFunction(()=>document.querySelector('#kw-tip')?.textContent.includes('Restocking waited for gold earned while away'));
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:96,salvage:19,wake:0,spent:30,lost:65,unkept:65,net:85,earned:180,ledger:{earned:180,spent:95,net:85,terms:[{label:'carried',amount:161},{label:'salvage',amount:19},{label:'lost',amount:-65},{label:'supplies',amount:-30}]}}}}));
- assert.equal(await gold.locator('b').textContent(),'+$180');assert.equal(await gold.locator('.label').textContent(),'Gross gold');
- await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:96,salvage:19,wake:0,spent:30}}}));
- assert.equal(await gold.locator('b').textContent(),'$115');assert.equal(await gold.locator('.label').textContent(),'Gold earned');await p.locator('.details-fold').click();assert.equal(await p.locator('.gold-scope').textContent(),'Run totals');
- const targets=await p.evaluate(async()=>{const {throwTarget}=await import('/src/ui/editor.ts');const conds=[{k:'foe_tag',t:'boss'}];return ['fire','fire,tag:boss','bell'].map(a=>throwTarget({conds,verb:{v:'throw',a}}));});assert.deepEqual(targets,['nearest','boss',null]);
- console.log(width,'supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS');await p.close();
-}}finally{await b.close();}
+import { responsiveWidths } from "./lib/viewport-cases.mjs";
+import { execFileSync } from "node:child_process";
+import { launchBrowser } from "../../tools/browser.mjs";
+import assert from "node:assert/strict";
+const url = execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim(),
+  b = await launchBrowser();
+try {
+  for (const width of responsiveWidths([320, 400, 1440])) {
+    const p = await b.newPage({ viewport: { width, height: 900 } }),
+      errors = [];
+    p.on("pageerror", (e) => errors.push(e.message));
+    await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
+    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.evaluate(() => {
+      const a = window.__riddle;
+      window.capReport = {
+        elapsed_s: 28800,
+        runs: 12,
+        sampled: false,
+        learned: [],
+        bests: [],
+        found: [],
+        deaths: [],
+        pending: [],
+        marks_earned: 0,
+        tamed: [],
+        hatched: [],
+        lost: [],
+        reel: [],
+        deepest: 13,
+        restock_capped: true,
+        gold: { home: 0, salvage: 0, wake: 0, spent: 0, lost: 100 },
+      };
+      a.lineage.gold = 8443;
+      a.go({ kind: "report", report: window.capReport });
+    });
+    const notice = p.locator(".report-supply-limit");
+    assert.equal(await notice.count(), 1);
+    assert.equal(await notice.textContent(), "Supplies limited · $0 budget");
+    assert.ok(await notice.isVisible());
+    assert.ok(await p.locator(".report-details").evaluate((e) => e.hidden));
+    await notice.hover();
+    await p.waitForFunction(() =>
+      document
+        .querySelector("#kw-tip")
+        ?.textContent.includes("Automatic supplies use gold earned while away"),
+    );
+    await notice.click();
+    await p.locator(".gold-sheet").waitFor();
+    await p.keyboard.press("Escape");
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: { ...window.capReport, gold: { home: 212, salvage: 6, wake: 0, spent: 80 } },
+      }),
+    );
+    assert.equal(await p.locator(".report-supply-limit").count(), 0);
+    await p.locator(".details-fold").click();
+    assert.ok(
+      (await p.locator(".gold-line").textContent()).includes("Supplies limited · $218 budget"),
+    );
+    await p.evaluate(() =>
+      window.__riddle.go({ kind: "report", report: { ...window.capReport, gold: undefined } }),
+    );
+    assert.equal(await p.locator(".report-supply-limit").count(), 0);
+    await p.locator(".details-fold").click();
+    assert.equal(await p.locator(".gold-line .supply-limit").textContent(), "Supplies limited");
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: { ...window.capReport, restock_capped: false },
+      }),
+    );
+    assert.equal(await p.locator(".supply-limit").count(), 0);
+    await p.evaluate(() => window.__riddle.go({ kind: "report", report: window.capReport }));
+    const box = await p.locator(".report-supply-limit").boundingBox();
+    assert.ok(box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= width);
+    assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    assert.deepEqual(errors, []);
+    // Currency summary must explain gross income without turning grants or spending into earnings.
+    await p.evaluate(() => {
+      const a = window.__riddle;
+      a.lineage.gold = 506;
+      a.lineage.gold_ledger = [
+        { t: 1, delta: 87, why: "banked D3" },
+        { t: 1, delta: 19, why: "salvage" },
+        { t: 2, delta: 40, why: "wake pay" },
+        { t: 2, delta: -80, why: "heal" },
+      ];
+      a.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          restock_capped: false,
+          gold: { home: 87, salvage: 19, wake: 40, spent: 80 },
+        },
+      });
+    });
+    const gold = p.locator('.report-basics [data-k="gold"]');
+    assert.equal(await gold.locator("b").textContent(), "$106");
+    assert.equal(await gold.locator(".label").textContent(), "Gold earned");
+    assert.equal(await gold.evaluate((e) => e.tagName), "BUTTON");
+    const before = await p.evaluate(() => JSON.stringify(window.__riddle.lineage));
+    await gold.hover();
+    await p.waitForFunction(() => {
+      const t = document.querySelector("#kw-tip")?.textContent;
+      return (
+        t?.includes("Run gold · $87") &&
+        t.includes("Loot sold · $19") &&
+        t.includes("Before spending; excludes heir grants")
+      );
+    });
+    await gold.click();
+    await p.locator(".sheet-wrap:not([hidden]) .gold-sheet").waitFor();
+    assert.ok(
+      (await p.locator(".sheet-wrap:not([hidden]) .gold-sheet").textContent()).includes("+$19"),
+    );
+    await p.keyboard.press("Escape");
+    await gold.focus();
+    await p.keyboard.press("Enter");
+    await p.locator(".sheet-wrap:not([hidden]) .gold-sheet").waitFor();
+    await p.keyboard.press("Escape");
+    assert.equal(await p.evaluate(() => JSON.stringify(window.__riddle.lineage)), before);
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          gold: undefined,
+          restock_capped: false,
+          exits: [
+            {
+              carried: 102,
+              keep_pct: 60,
+              kept: 61,
+              spent: 0,
+              spent_on: [],
+              text: "returned $61 · $102 carried",
+            },
+            {
+              carried: 84,
+              keep_pct: 100,
+              kept: 84,
+              spent: 0,
+              spent_on: [],
+              text: "banked $84 · $84 carried",
+            },
+          ],
+          salvaged: [
+            { kind: "sword", n: 1, gold: 6 },
+            { kind: "leash", n: 1, gold: 1 },
+          ],
+        },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "$152");
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: { ...window.capReport, gold: undefined, restock_capped: false },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "$0");
+    assert.equal(await p.locator(".report-basics .tile").count(), 3);
+    assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    assert.deepEqual(errors, []);
+    // blind ad71e72: a waystone passage is income; an absence states its purse change beside the earned gold
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          restock_capped: false,
+          gold: { home: 8, salvage: 0, wake: 0, spent: 0, passage: 1027, net: 1035 },
+        },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "+$1035");
+    assert.equal(await gold.locator(".label").textContent(), "Gold earned");
+    assert.equal(await p.locator(".report-net").count(), 0);
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          restock_capped: false,
+          gold: { home: 6712, salvage: 0, wake: 0, spent: 208, net: 78 },
+        },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "+$6712");
+    assert.equal(
+      await p.locator(".report-details [data-group=gold] .report-net").textContent(),
+      "purse +$78",
+    );
+    await gold.hover();
+    await p.waitForFunction(() => {
+      const t = document.querySelector("#kw-tip")?.textContent;
+      return t?.includes("Workers, other · −$6426") && t.includes("Purse change · +$78");
+    });
+    await p.mouse.move(0, 0);
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          supply_budget: { income: 7778, spent: 448, left: 7330, reason: "income_spent" },
+        },
+      }),
+    );
+    await p.locator(".details-fold").click();
+    const limited = p.locator(".gold-line .supply-limit");
+    assert.match(await limited.textContent(), /income limit$/);
+    assert.doesNotMatch(await limited.textContent(), /income spent/);
+    await limited.hover();
+    await p.waitForFunction(() =>
+      document
+        .querySelector("#kw-tip")
+        ?.textContent.includes("Restocking waited for gold earned while away"),
+    );
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          restock_capped: false,
+          gold: {
+            home: 96,
+            salvage: 19,
+            wake: 0,
+            spent: 30,
+            lost: 65,
+            unkept: 65,
+            net: 85,
+            earned: 180,
+            ledger: {
+              earned: 180,
+              spent: 95,
+              net: 85,
+              terms: [
+                { label: "carried", amount: 161 },
+                { label: "salvage", amount: 19 },
+                { label: "lost", amount: -65 },
+                { label: "supplies", amount: -30 },
+              ],
+            },
+          },
+        },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "+$180");
+    assert.equal(await gold.locator(".label").textContent(), "Gross gold");
+    await p.evaluate(() =>
+      window.__riddle.go({
+        kind: "report",
+        report: {
+          ...window.capReport,
+          restock_capped: false,
+          gold: { home: 96, salvage: 19, wake: 0, spent: 30 },
+        },
+      }),
+    );
+    assert.equal(await gold.locator("b").textContent(), "$115");
+    assert.equal(await gold.locator(".label").textContent(), "Gold earned");
+    await p.locator(".details-fold").click();
+    assert.equal(await p.locator(".gold-scope").textContent(), "Run totals");
+    const targets = await p.evaluate(async () => {
+      const { throwTarget } = await import("/src/ui/editor.ts");
+      const conds = [{ k: "foe_tag", t: "boss" }];
+      return ["fire", "fire,tag:boss", "bell"].map((a) =>
+        throwTarget({ conds, verb: { v: "throw", a } }),
+      );
+    });
+    assert.deepEqual(targets, ["nearest", "boss", null]);
+    console.log(
+      width,
+      "supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS",
+    );
+    await p.close();
+  }
+} finally {
+  await b.close();
+}

@@ -11,52 +11,112 @@ import { clipWindow, floorFor, floorSnapshot, floorStart, type RunLog } from "./
 import { openSheet } from "./sheet";
 import { makeViewer, type Viewer } from "./viewer";
 
-const LEAD = 20, WINDOW = 40;   // ticks: seek to t − LEAD, play WINDOW, pause
+const LEAD = 20,
+  WINDOW = 40; // ticks: seek to t − LEAD, play WINDOW, pause
 const POLL_MS = 50;
 type SeekViewer = Viewer & { seek?(t: number): void; setFrame?(frame: "map" | "fight"): void };
 
 export function openReplay(log: RunLog, b: Because): void {
   const floor = floorFor(log, b);
   if (!floor) return;
-  const { from, to } = clipWindow(floor, b.t, LEAD, WINDOW);   // QA on 3d71c33: the link's tick inside the window, on its own floor
+  const { from, to } = clipWindow(floor, b.t, LEAD, WINDOW); // QA on 3d71c33: the link's tick inside the window, on its own floor
   openSheet(() => {
     const canvas = h("canvas", { class: "replay-view" });
     const gun = gunStatus();
-    const named = new RegExp(/* copy:none */ `\\bD${b.depth}\\b`).test(b.text);   // `found sword on D4` names its floor (QA on 56f2a1d: `on D4 D4 · t3930`)
+    const named = new RegExp(/* copy:none */ `\\bD${b.depth}\\b`).test(b.text); // `found sword on D4` names its floor (QA on 56f2a1d: `on D4 D4 · t3930`)
     const at = h("span", { class: "num dim" }, named ? "" : `D${b.depth}`);
-    const replay = h("button", { type: "button", class: "chip replay-again", disabled: true, onclick: () => { if (!playing) play(); } }, /* copy:button */ "Loading");
-    const body = h("div", { class: "sheet-body replay", "data-t": b.t, "data-depth": floor.snap.depth, "data-from": from, "data-to": to },
-      h("div", { class: "label row-label" }, h("span", { class: "because" }, "← ", b.text), " ", at, gun.el),
-      canvas, h("div", { class: "replay-controls" }, replay));
-    let viewer: SeekViewer | null = null, timer = 0, playing = false;
+    const replay = h(
+      "button",
+      {
+        type: "button",
+        class: "chip replay-again",
+        disabled: true,
+        onclick: () => {
+          if (!playing) play();
+        },
+      },
+      /* copy:button */ "Loading",
+    );
+    const body = h(
+      "div",
+      {
+        class: "sheet-body replay",
+        "data-t": b.t,
+        "data-depth": floor.snap.depth,
+        "data-from": from,
+        "data-to": to,
+      },
+      h(
+        "div",
+        { class: "label row-label" },
+        h("span", { class: "because" }, "← ", b.text),
+        " ",
+        at,
+        gun.el,
+      ),
+      canvas,
+      h("div", { class: "replay-controls" }, replay),
+    );
+    let viewer: SeekViewer | null = null,
+      timer = 0,
+      playing = false;
     const play = (): void => {
       if (!viewer) return;
-      if (viewer.seek) { viewer.seek(from); viewer.setSpeed(1); playing = true; replay.disabled = true; replay.textContent = /* copy:button */ "Playing"; }
-      else { viewer.setSpeed(0); replay.disabled = true; replay.textContent = /* copy:button */ "Still frame"; }                                   // placeholder: no clock; the floor stands at the window's end
+      if (viewer.seek) {
+        viewer.seek(from);
+        viewer.setSpeed(1);
+        playing = true;
+        replay.disabled = true;
+        replay.textContent = /* copy:button */ "Playing";
+      } else {
+        viewer.setSpeed(0);
+        replay.disabled = true;
+        replay.textContent = /* copy:button */ "Still frame";
+      } // placeholder: no clock; the floor stands at the window's end
       gun.paint(viewer.gun?.() ?? null, viewer.tick?.() ?? from);
     };
-    const stop = (): void => { clearInterval(timer); viewer?.dispose(); viewer = null; if ("__replay" in window) delete (window as { __replay?: unknown }).__replay; };
+    const stop = (): void => {
+      clearInterval(timer);
+      viewer?.dispose();
+      viewer = null;
+      if ("__replay" in window) delete (window as { __replay?: unknown }).__replay;
+    };
     // the sheet mounts after build returns: the canvas needs its layout size before the renderer measures it
     requestAnimationFrame(() => {
       if (!document.contains(canvas)) return;
       void makeViewer(canvas).then(({ viewer: v }) => {
-        if (!document.contains(canvas)) { v.dispose(); return; }
-        viewer = v; v.resize?.();
+        if (!document.contains(canvas)) {
+          v.dispose();
+          return;
+        }
+        viewer = v;
+        v.resize?.();
         // the floor's `descend` / `exit` fade the renderer to dark (the watch's walk-out); a clip whose window reaches the
         // floor's end went black at that event and stayed black through the pause (QA on e0f87e7: "played ~3 s then the canvas
         // went fully black"). The clip holds its last frame instead: the fades are left out of what it replays.
-        v.load(floorSnapshot(floor)); v.apply(floor.evs.filter((e) => e.k !== "descend" && e.k !== "exit"));
+        v.load(floorSnapshot(floor));
+        v.apply(floor.evs.filter((e) => e.k !== "descend" && e.k !== "exit"));
         viewer.setFrame?.("fight");
         play();
-        if ("__riddle" in window) (window as unknown as { __replay: Viewer }).__replay = v;   // dev: tests read `tick()`
+        if ("__riddle" in window) (window as unknown as { __replay: Viewer }).__replay = v; // dev: tests read `tick()`
         timer = window.setInterval(() => {
-          if (!document.contains(canvas)) { stop(); return; }          // closed by backdrop / Escape: the sheet has no close hook
+          if (!document.contains(canvas)) {
+            stop();
+            return;
+          } // closed by backdrop / Escape: the sheet has no close hook
           gun.paint(viewer?.gun?.() ?? null, viewer?.tick?.() ?? from);
-          if (playing && viewer?.tick && viewer.tick() >= to) { viewer.setSpeed(0); playing = false; replay.disabled = false; replay.textContent = /* copy:button */ "Replay"; }
+          if (playing && viewer?.tick && viewer.tick() >= to) {
+            viewer.setSpeed(0);
+            playing = false;
+            replay.disabled = false;
+            replay.textContent = /* copy:button */ "Replay";
+          }
         }, POLL_MS);
       });
     });
-    canvas.onclick = () => { if (!playing) play(); };
+    canvas.onclick = () => {
+      if (!playing) play();
+    };
     return body;
   });
 }
@@ -67,38 +127,85 @@ const FOLD_RATE = 32;
 export type ReplayFloor = { snap: Snapshot; evs: Ev[] };
 /** The run log's floors `from..to` as the replay plays them (each floor's snapshot with its later entities folded in). */
 export function foldFloorsOf(log: RunLog, from: number, to: number): ReplayFloor[] {
-  return log.floors.filter((f) => f.snap.depth >= from && f.snap.depth <= to).map((f) => ({ snap: { ...floorSnapshot(f), turn: floorStart(f) }, evs: f.evs }));
+  return log.floors
+    .filter((f) => f.snap.depth >= from && f.snap.depth <= to)
+    .map((f) => ({ snap: { ...floorSnapshot(f), turn: floorStart(f) }, evs: f.evs }));
 }
-export function openFoldReplay(floors: ReplayFloor[], from: number, to: number, onClose: () => void): void {
-  if (!floors.length) { onClose(); return; }
+export function openFoldReplay(
+  floors: ReplayFloor[],
+  from: number,
+  to: number,
+  onClose: () => void,
+): void {
+  if (!floors.length) {
+    onClose();
+    return;
+  }
   openSheet(() => {
     const canvas = h("canvas", { class: "replay-view fold-replay-view" });
     const at = h("span", { class: "num dim fold-at" });
-    const body = h("div", { class: "sheet-body replay fold-replay", "data-from": from, "data-to": to },
-      h("div", { class: "label row-label" }, h("span", { class: "because" }, to > from ? `D${from}–${to}` : `D${from}`), " ", at), canvas);
-    let viewer: SeekViewer | null = null, timer = 0, k = -1, end = 0;
-    const stop = (): void => { clearInterval(timer); viewer?.dispose(); viewer = null; onClose(); };
+    const body = h(
+      "div",
+      { class: "sheet-body replay fold-replay", "data-from": from, "data-to": to },
+      h(
+        "div",
+        { class: "label row-label" },
+        h("span", { class: "because" }, to > from ? `D${from}–${to}` : `D${from}`),
+        " ",
+        at,
+      ),
+      canvas,
+    );
+    let viewer: SeekViewer | null = null,
+      timer = 0,
+      k = -1,
+      end = 0;
+    const stop = (): void => {
+      clearInterval(timer);
+      viewer?.dispose();
+      viewer = null;
+      onClose();
+    };
     const next = (): void => {
       if (!viewer) return;
       k++;
-      if (k >= floors.length) { viewer.setSpeed(0); body.dataset.done = "1"; return; }
+      if (k >= floors.length) {
+        viewer.setSpeed(0);
+        body.dataset.done = "1";
+        return;
+      }
       const f = floors[k];
-      viewer.load(f.snap); viewer.apply(f.evs.filter((e) => e.k !== "descend" && e.k !== "exit"));
+      viewer.load(f.snap);
+      viewer.apply(f.evs.filter((e) => e.k !== "descend" && e.k !== "exit"));
       viewer.setFrame?.("map");
-      const t0 = Math.min(f.snap.turn, f.evs[0]?.t ?? f.snap.turn); end = f.evs.length ? f.evs[f.evs.length - 1].t : f.snap.turn;
-      viewer.seek?.(t0); viewer.setSpeed(FOLD_RATE);
+      const t0 = Math.min(f.snap.turn, f.evs[0]?.t ?? f.snap.turn);
+      end = f.evs.length ? f.evs[f.evs.length - 1].t : f.snap.turn;
+      viewer.seek?.(t0);
+      viewer.setSpeed(FOLD_RATE);
       at.textContent = `D${f.snap.depth} · ${k + 1}/${floors.length}`;
       body.dataset.floor = String(f.snap.depth);
     };
     requestAnimationFrame(() => {
-      if (!document.contains(canvas)) { onClose(); return; }
+      if (!document.contains(canvas)) {
+        onClose();
+        return;
+      }
       void makeViewer(canvas).then(({ viewer: v }) => {
-        if (!document.contains(canvas)) { v.dispose(); onClose(); return; }
-        viewer = v; v.resize?.(); next();
+        if (!document.contains(canvas)) {
+          v.dispose();
+          onClose();
+          return;
+        }
+        viewer = v;
+        v.resize?.();
+        next();
         timer = window.setInterval(() => {
-          if (!document.contains(canvas)) { stop(); return; }
+          if (!document.contains(canvas)) {
+            stop();
+            return;
+          }
           if (viewer?.tick && viewer.tick() >= end) next();
-          else if (!viewer?.tick) next();   // placeholder: no clock — each floor as it ends
+          else if (!viewer?.tick) next(); // placeholder: no clock — each floor as it ends
         }, POLL_MS * 4);
       });
     });

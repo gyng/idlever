@@ -19,7 +19,10 @@ export function keptDeath(L: Lineage, line: string): number | undefined {
 }
 
 /** Older records carry the class in their own header; never use the live heir. */
-function heroLabel(line: string, hero?: NonNullable<Lineage["hero_legacy"]>[number]): Node | string {
+function heroLabel(
+  line: string,
+  hero?: NonNullable<Lineage["hero_legacy"]>[number],
+): Node | string {
   const text = hero?.name ? `${hero.name} · ${line}` : line;
   const cls = hero?.class || /^♟\d+ the \S+ ([a-z_]+) ·/.exec(line)?.[1];
   return cls ? unitLabel(cls, text, { hero: true, px: 32 }) : text;
@@ -28,17 +31,67 @@ function heroLabel(line: string, hero?: NonNullable<Lineage["hero_legacy"]>[numb
 export function openChronicle(app: App): void {
   openSheet(() => {
     const L = app.lineage;
-    const others=(L.hero_slots??[]).filter(s=>s.id!==L.selected_bloodline&&(s.chronicle?.length??0)>0);
+    const others = (L.hero_slots ?? []).filter(
+      (s) => s.id !== L.selected_bloodline && (s.chronicle?.length ?? 0) > 0,
+    );
     const lines = [...(L.chronicle ?? [])].reverse();
-    return h("div", { class: "sheet-body" }, h("div", { class: "label" }, /* copy:label */ "chronicle"), h("div", { class: "chronicle" }, ...others.map(s=>h("section",null,h("b",null,s.name),...(s.chronicle??[]).slice().reverse().map(line=>h("button",{class:"cline game-inset",onclick:()=>void app.selectBloodline(s.id).then(ok=>{if(ok)openChronicle(app);})},heroLabel(line))))), ...lines.map((line) => {
-      const heir = Number(/^♟(\d+)/.exec(line)?.[1]);
-      const text = heroLabel(line, L.hero_legacy?.find((h) => h.heir === heir));
-      const id = keptDeath(L, line);
-      if (id === undefined) return h("div", { class: "cline" }, text);
-      return h("button", { class: "cline kept game-inset", onclick: () => {
-        void app.busy(/* copy:label */ "verdict", () => app.engine.death(id)).then((death) => { closeAllSheets(); app.go({ kind: "death", death, kept: true }); })
-          .catch((e) => console.warn("kept death", e));
-      } }, text, h("small", { class: "dim" }, " ▸"));
-    })));
+    return h(
+      "div",
+      { class: "sheet-body" },
+      h("div", { class: "label" }, /* copy:label */ "chronicle"),
+      h(
+        "div",
+        { class: "chronicle" },
+        ...others.map((s) =>
+          h(
+            "section",
+            null,
+            h("b", null, s.name),
+            ...(s.chronicle ?? [])
+              .slice()
+              .reverse()
+              .map((line) =>
+                h(
+                  "button",
+                  {
+                    class: "cline game-inset",
+                    onclick: () =>
+                      void app.selectBloodline(s.id).then((ok) => {
+                        if (ok) openChronicle(app);
+                      }),
+                  },
+                  heroLabel(line),
+                ),
+              ),
+          ),
+        ),
+        ...lines.map((line) => {
+          const heir = Number(/^♟(\d+)/.exec(line)?.[1]);
+          const text = heroLabel(
+            line,
+            L.hero_legacy?.find((h) => h.heir === heir),
+          );
+          const id = keptDeath(L, line);
+          if (id === undefined) return h("div", { class: "cline" }, text);
+          return h(
+            "button",
+            {
+              class: "cline kept game-inset",
+              onclick: () => {
+                void app
+                  .busy(/* copy:label */ "verdict", () => app.engine.death(id))
+                  .then((death) => {
+                    closeAllSheets();
+                    app.go({ kind: "death", death, kept: true });
+                  })
+                  .catch((e) => console.warn("kept death", e));
+              },
+            },
+            text,
+            h("small", { class: "dim" }, " ▸"),
+          );
+        }),
+      ),
+    );
   });
 }

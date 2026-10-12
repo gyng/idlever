@@ -1,16 +1,16 @@
 // Entry. app.ts owns the state machine (client track); render/ owns the viewer (renderer track).
 import "./styles.css";
 import "./wide.css";
-import "./cut29.css";   // Cut 29 client: reveals, meters, orders, sinks   // the wide frame (desktop ≥ 1024 px): rules left, the well centre, the shaft right
-import "./death.css";   // death screen v2: what · why · what now, the rest under details
-import "./chrome.css";   // shared chunky windows, controls, sockets and typography
-import "./juice";   // juice (docs/JUICE.md): UI motion switch + purse count-up (juice.css)
+import "./cut29.css"; // Cut 29 client: reveals, meters, orders, sinks   // the wide frame (desktop ≥ 1024 px): rules left, the well centre, the shaft right
+import "./death.css"; // death screen v2: what · why · what now, the rest under details
+import "./chrome.css"; // shared chunky windows, controls, sockets and typography
+import "./juice"; // juice (docs/JUICE.md): UI motion switch + purse count-up (juice.css)
 import { installWashChrome } from "./render/wash";
 import type { DevOptions } from "./app";
 import { bootWithMenu } from "./ui/game-menu";
 import { installDiagnostics } from "./debug";
 installDiagnostics();
-installWashChrome();   // docs/ART_DIRECTION.md §9: the `?look=wash` prototype's chrome (a no-op without the flag)
+installWashChrome(); // docs/ART_DIRECTION.md §9: the `?look=wash` prototype's chrome (a no-op without the flag)
 bootWithMenu(readDevParams());
 
 /** Dev-only URL params, honoured in a dev build or anywhere with `?dev=1` (tools/dev.sh, tools/playtest.mjs):
@@ -27,16 +27,26 @@ function readDevParams(): DevOptions | null {
   const q = new URLSearchParams(location.search);
   if (!import.meta.env.DEV && q.get("dev") !== "1") return null;
   const o: DevOptions = {};
-  const seed = Number(q.get("seed")); if (q.has("seed") && Number.isFinite(seed)) o.seed = seed >>> 0;
+  const seed = Number(q.get("seed"));
+  if (q.has("seed") && Number.isFinite(seed)) o.seed = seed >>> 0;
   if (q.get("fresh") === "1") o.fresh = true;
-  const absent = parseSpan(q.get("absent")); if (absent) o.absent = absent;
-  const rules = q.get("rules"); if (rules) o.rules = rules;
-  const speedQ = q.get("speed"), speed = Number(speedQ);
-  if (speedQ && speed > 0) o.speed = speed; else if (speedQ === "fights" || speedQ === "fast") o.speed = speedQ;
+  const absent = parseSpan(q.get("absent"));
+  if (absent) o.absent = absent;
+  const rules = q.get("rules");
+  if (rules) o.rules = rules;
+  const speedQ = q.get("speed"),
+    speed = Number(speedQ);
+  if (speedQ && speed > 0) o.speed = speed;
+  else if (speedQ === "fights" || speedQ === "fast") o.speed = speedQ;
   if (q.get("autosend") === "1") o.autosend = true;
   let strip = false;
-  for (const k of ["fresh", "absent", "rules", "autosend"]) if (q.has(k)) { q.delete(k); strip = true; }
-  if (strip) history.replaceState(null, "", `${location.pathname}${q.size ? `?${q}` : ""}${location.hash}`);
+  for (const k of ["fresh", "absent", "rules", "autosend"])
+    if (q.has(k)) {
+      q.delete(k);
+      strip = true;
+    }
+  if (strip)
+    history.replaceState(null, "", `${location.pathname}${q.size ? `?${q}` : ""}${location.hash}`);
   return o;
 }
 

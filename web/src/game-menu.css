@@ -1,78 +1,387 @@
 /* Illustrated title screen, using approved ink-and-wash key art. */
 .game-menu {
-  position: fixed; inset: 0; z-index: 700; overflow: auto;
-  display: flex; align-items: center; justify-content: center; flex-direction: column;
-  padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom));
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: max(28px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right))
+    max(28px, env(safe-area-inset-bottom));
   background: #0d0c14;
-  color: var(--bone); isolation: isolate;
+  color: var(--bone);
+  isolation: isolate;
 }
-.game-menu::before { content: ''; position: fixed; inset: 14px; z-index: 2; border: 1px solid rgba(184,148,72,.25); pointer-events: none; }
-.menu-ornament { width: 28px; height: 28px; margin: 8px 0 24px; border: 1px solid var(--gilt); transform: rotate(45deg); background: #17212e; box-shadow: inset 0 0 0 5px #0d0c14, 0 0 35px rgba(164,188,214,.16); flex-shrink: 0; }
-.menu-panel { width: min(100%, 360px); display: flex; flex-direction: column; gap: 12px; text-align: center; padding: 12px 14px 22px; }
-.menu-title { font: 600 clamp(48px, 10vw, 92px)/1.05 var(--display); margin: 0 0 4px; letter-spacing: .045em; text-shadow: 0 3px 0 #090c15, 0 0 30px rgba(184,148,72,.16); }
-.menu-kicker { font-size: 14px; letter-spacing: .15em; text-transform: uppercase; color: var(--mist); margin: 0 0 22px; }
-.menu-action { min-height: 52px; padding: 10px 20px; font: 500 24px/1.15 var(--display); border: 1px solid #566071; border-radius: 3px; background: linear-gradient(#202632, #141822); box-shadow: inset 0 1px rgba(234,223,197,.09), 0 3px 12px #080b12; }
-.menu-action.primary { border-color: var(--gilt); background: linear-gradient(#383127, #221e1a); color: #f4dfb3; }
-.menu-action:hover { border-color: var(--bone); }
-.menu-action:focus-visible, .menu-preferences button:focus-visible { outline: 2px solid var(--bone); outline-offset: 4px; }
-.menu-action.danger { color: #f0a4ab; border-color: #913b4b; }
-.menu-action:disabled { opacity: .5; }
-.menu-note, .menu-footer { color: var(--mist); font-size: 13px; letter-spacing: .06em; margin: 10px 0 0; }
-.menu-footer { margin: 14px 0; text-transform: uppercase; letter-spacing: .2em; }
-.menu-preferences { text-align: left; padding: 12px; border: 1px solid #3c4656; background: rgba(10,14,24,.85); }
-.menu-preferences .srow { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 8px 0; }
-.menu-preferences .label { margin: 0; color: var(--mist); }
-.menu-preferences .btn { min-width: 70px; min-height: 44px; padding: 7px 12px; }
-@media (max-height: 620px) { .game-menu { justify-content: flex-start; } .menu-ornament { margin-bottom: 12px; } .menu-kicker { margin-bottom: 10px; } }
-.menu-open > .sheet-wrap { z-index: 710; }
-.menu-action.primary { min-height: 104px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 30px; }
-html.skin-button .menu-action.primary { border: solid transparent; border-width: 18px 28px; padding: 6px 8px; background: none; box-shadow: 0 4px 12px #080b1266; border-image: url('/ui/frames/button.png') 22 56 22 56 fill / 18px 28px stretch; }
-
-/* Scene is decorative and cannot intercept a menu tap. All motion is compositor-only. */
-.menu-scene { position: fixed; inset: 0 0 0 25%; overflow: hidden; pointer-events: none; z-index: 0; background: #1c1b2b; }
-.menu-key-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; opacity: .9; }
-.game-menu::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(90deg, #0d0c14 0%, rgba(13,12,20,.95) 22%, rgba(13,12,20,.65) 38%, transparent 65%), linear-gradient(0deg, #0d0c14, transparent 30%, rgba(13,12,20,.12)); }
-.menu-panel, .menu-ornament, .menu-footer { position: relative; z-index: 3; margin-right: 62%; }
-.menu-panel { width: min(100%, 340px); }
-.menu-ornament { width: 16px; height: 16px; box-shadow: inset 0 0 0 4px #0d0c14; }
-.menu-title { font-size: clamp(64px, 8vw, 100px); letter-spacing: .065em; text-shadow: 0 3px 0 #0d0c14; }
-.menu-kicker { font-size: 12px; letter-spacing: .23em; }
-.menu-action { border-color: #454858; border-radius: 2px; background: linear-gradient(rgba(43,51,80,.55), rgba(28,27,43,.82)); }
-.menu-footer { font-size: 11px; }
-.menu-moonlight { position: absolute; inset: 0; opacity: .12; background: linear-gradient(116deg, transparent 32%, rgba(164,188,214,.3) 40%, transparent 48%); }
-.menu-mist { position: absolute; left: -10%; right: -10%; bottom: 7%; height: 32%; opacity: .12;
-  background: radial-gradient(ellipse at 40% 70%, rgba(164,188,214,.28), transparent 62%), radial-gradient(ellipse at 75% 30%, rgba(77,108,153,.28), transparent 60%); }
-.menu-mote { position: absolute; left: var(--x); top: var(--y); width: var(--size); height: var(--size); background: #a4bcd6; opacity: 0; }
-.game-menu:not([data-pane="main"]) .menu-title { font-size: clamp(40px, 5vw, 64px); letter-spacing: .025em; }
-@media (max-width: 760px) {
-  .game-menu { justify-content: flex-start; padding-top: clamp(190px, 32svh, 310px); }
-  .menu-scene { inset: 0 0 auto; height: 66svh; min-height: 320px; }
-  .menu-key-art { object-position: 50% 36%; }
-  .game-menu::after { background: linear-gradient(180deg, rgba(13,12,20,.08), rgba(13,12,20,.05) 20%, rgba(13,12,20,.6) 37%, #0d0c14 60%); }
-  .menu-panel, .menu-ornament, .menu-footer { margin-right: 0; }
-  .menu-ornament { display: none; }
-  .menu-title { font-size: clamp(64px, 16vw, 84px); }
-  .menu-kicker { margin-bottom: 14px; }
-  .game-menu:not([data-pane="main"]) { padding-top: clamp(125px, 20svh, 190px); }
-  .game-menu:not([data-pane="main"])::after { background: linear-gradient(180deg, rgba(13,12,20,.3), rgba(13,12,20,.9) 28%, #0d0c14 60%); }
+.game-menu::before {
+  content: "";
+  position: fixed;
+  inset: 14px;
+  z-index: 2;
+  border: 1px solid rgba(184, 148, 72, 0.25);
+  pointer-events: none;
+}
+.menu-ornament {
+  width: 28px;
+  height: 28px;
+  margin: 8px 0 24px;
+  border: 1px solid var(--gilt);
+  transform: rotate(45deg);
+  background: #17212e;
+  box-shadow:
+    inset 0 0 0 5px #0d0c14,
+    0 0 35px rgba(164, 188, 214, 0.16);
+  flex-shrink: 0;
+}
+.menu-panel {
+  width: min(100%, 360px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  padding: 12px 14px 22px;
+}
+.menu-title {
+  font: 600 clamp(48px, 10vw, 92px)/1.05 var(--display);
+  margin: 0 0 4px;
+  letter-spacing: 0.045em;
+  text-shadow:
+    0 3px 0 #090c15,
+    0 0 30px rgba(184, 148, 72, 0.16);
+}
+.menu-kicker {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin: 0 0 22px;
+}
+.menu-action {
+  min-height: 52px;
+  padding: 10px 20px;
+  font: 500 24px/1.15 var(--display);
+  border: 1px solid #566071;
+  border-radius: 3px;
+  background: linear-gradient(#202632, #141822);
+  box-shadow:
+    inset 0 1px rgba(234, 223, 197, 0.09),
+    0 3px 12px #080b12;
+}
+.menu-action.primary {
+  border-color: var(--gilt);
+  background: linear-gradient(#383127, #221e1a);
+  color: #f4dfb3;
+}
+.menu-action:hover {
+  border-color: var(--bone);
+}
+.menu-action:focus-visible,
+.menu-preferences button:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 4px;
+}
+.menu-action.danger {
+  color: #f0a4ab;
+  border-color: #913b4b;
+}
+.menu-action:disabled {
+  opacity: 0.5;
+}
+.menu-note,
+.menu-footer {
+  color: var(--mist);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  margin: 10px 0 0;
+}
+.menu-footer {
+  margin: 14px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.menu-preferences {
+  text-align: left;
+  padding: 12px;
+  border: 1px solid #3c4656;
+  background: rgba(10, 14, 24, 0.85);
+}
+.menu-preferences .srow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+}
+.menu-preferences .label {
+  margin: 0;
+  color: var(--mist);
+}
+.menu-preferences .btn {
+  min-width: 70px;
+  min-height: 44px;
+  padding: 7px 12px;
 }
 @media (max-height: 620px) {
-  .game-menu { justify-content: flex-start; padding-top: 32px; }
-  .menu-ornament { margin-bottom: 12px; }
-  .menu-kicker { margin-bottom: 10px; }
+  .game-menu {
+    justify-content: flex-start;
+  }
+  .menu-ornament {
+    margin-bottom: 12px;
+  }
+  .menu-kicker {
+    margin-bottom: 10px;
+  }
+}
+.menu-open > .sheet-wrap {
+  z-index: 710;
+}
+.menu-action.primary {
+  min-height: 104px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+html.skin-button .menu-action.primary {
+  border: solid transparent;
+  border-width: 18px 28px;
+  padding: 6px 8px;
+  background: none;
+  box-shadow: 0 4px 12px #080b1266;
+  border-image: url("/ui/frames/button.png") 22 56 22 56 fill / 18px 28px stretch;
+}
+
+/* Scene is decorative and cannot intercept a menu tap. All motion is compositor-only. */
+.menu-scene {
+  position: fixed;
+  inset: 0 0 0 25%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: #1c1b2b;
+}
+.menu-key-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 48%;
+  opacity: 0.9;
+}
+.game-menu::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      #0d0c14 0%,
+      rgba(13, 12, 20, 0.95) 22%,
+      rgba(13, 12, 20, 0.65) 38%,
+      transparent 65%
+    ),
+    linear-gradient(0deg, #0d0c14, transparent 30%, rgba(13, 12, 20, 0.12));
+}
+.menu-panel,
+.menu-ornament,
+.menu-footer {
+  position: relative;
+  z-index: 3;
+  margin-right: 62%;
+}
+.menu-panel {
+  width: min(100%, 340px);
+}
+.menu-ornament {
+  width: 16px;
+  height: 16px;
+  box-shadow: inset 0 0 0 4px #0d0c14;
+}
+.menu-title {
+  font-size: clamp(64px, 8vw, 100px);
+  letter-spacing: 0.065em;
+  text-shadow: 0 3px 0 #0d0c14;
+}
+.menu-kicker {
+  font-size: 12px;
+  letter-spacing: 0.23em;
+}
+.menu-action {
+  border-color: #454858;
+  border-radius: 2px;
+  background: linear-gradient(rgba(43, 51, 80, 0.55), rgba(28, 27, 43, 0.82));
+}
+.menu-footer {
+  font-size: 11px;
+}
+.menu-moonlight {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background: linear-gradient(
+    116deg,
+    transparent 32%,
+    rgba(164, 188, 214, 0.3) 40%,
+    transparent 48%
+  );
+}
+.menu-mist {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 7%;
+  height: 32%;
+  opacity: 0.12;
+  background:
+    radial-gradient(ellipse at 40% 70%, rgba(164, 188, 214, 0.28), transparent 62%),
+    radial-gradient(ellipse at 75% 30%, rgba(77, 108, 153, 0.28), transparent 60%);
+}
+.menu-mote {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: #a4bcd6;
+  opacity: 0;
+}
+.game-menu:not([data-pane="main"]) .menu-title {
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: 0.025em;
+}
+@media (max-width: 760px) {
+  .game-menu {
+    justify-content: flex-start;
+    padding-top: clamp(190px, 32svh, 310px);
+  }
+  .menu-scene {
+    inset: 0 0 auto;
+    height: 66svh;
+    min-height: 320px;
+  }
+  .menu-key-art {
+    object-position: 50% 36%;
+  }
+  .game-menu::after {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 12, 20, 0.08),
+      rgba(13, 12, 20, 0.05) 20%,
+      rgba(13, 12, 20, 0.6) 37%,
+      #0d0c14 60%
+    );
+  }
+  .menu-panel,
+  .menu-ornament,
+  .menu-footer {
+    margin-right: 0;
+  }
+  .menu-ornament {
+    display: none;
+  }
+  .menu-title {
+    font-size: clamp(64px, 16vw, 84px);
+  }
+  .menu-kicker {
+    margin-bottom: 14px;
+  }
+  .game-menu:not([data-pane="main"]) {
+    padding-top: clamp(125px, 20svh, 190px);
+  }
+  .game-menu:not([data-pane="main"])::after {
+    background: linear-gradient(
+      180deg,
+      rgba(13, 12, 20, 0.3),
+      rgba(13, 12, 20, 0.9) 28%,
+      #0d0c14 60%
+    );
+  }
+}
+@media (max-height: 620px) {
+  .game-menu {
+    justify-content: flex-start;
+    padding-top: 32px;
+  }
+  .menu-ornament {
+    margin-bottom: 12px;
+  }
+  .menu-kicker {
+    margin-bottom: 10px;
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .game-menu[data-effects="full"] .menu-mote, .game-menu[data-effects="low"] .menu-mote:nth-of-type(-n+4) { animation: menu-drift var(--duration) var(--delay) linear infinite; }
-  .game-menu[data-effects="full"] .menu-mist { animation: menu-mist 28s ease-in-out infinite alternate; }
-  .game-menu[data-effects="full"] .menu-moonlight { animation: menu-light 17s ease-in-out infinite alternate; }
+  .game-menu[data-effects="full"] .menu-mote,
+  .game-menu[data-effects="low"] .menu-mote:nth-of-type(-n + 4) {
+    animation: menu-drift var(--duration) var(--delay) linear infinite;
+  }
+  .game-menu[data-effects="full"] .menu-mist {
+    animation: menu-mist 28s ease-in-out infinite alternate;
+  }
+  .game-menu[data-effects="full"] .menu-moonlight {
+    animation: menu-light 17s ease-in-out infinite alternate;
+  }
 }
-.game-menu[data-hidden="true"] .menu-scene * { animation-play-state: paused !important; }
-@keyframes menu-drift { 0% { opacity: 0; transform: translate(0, 16px); } 20% { opacity: .5; } 75% { opacity: .25; } 100% { opacity: 0; transform: translate(var(--drift), -64px); } }
-@keyframes menu-mist { from { transform: translateX(-2%); opacity: .08; } to { transform: translateX(3%); opacity: .16; } }
-@keyframes menu-light { from { opacity: .08; } to { opacity: .16; } }
+.game-menu[data-hidden="true"] .menu-scene * {
+  animation-play-state: paused !important;
+}
+@keyframes menu-drift {
+  0% {
+    opacity: 0;
+    transform: translate(0, 16px);
+  }
+  20% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), -64px);
+  }
+}
+@keyframes menu-mist {
+  from {
+    transform: translateX(-2%);
+    opacity: 0.08;
+  }
+  to {
+    transform: translateX(3%);
+    opacity: 0.16;
+  }
+}
+@keyframes menu-light {
+  from {
+    opacity: 0.08;
+  }
+  to {
+    opacity: 0.16;
+  }
+}
 
-.menu-wordmark { display: none; width: 100%; height: auto; }
-.menu-title.has-wordmark { position: relative; line-height: 0; text-shadow: none; }
-.menu-title.has-wordmark .menu-wordmark { display: block; }
-.menu-title.has-wordmark .menu-title-text { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.menu-wordmark {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.menu-title.has-wordmark {
+  position: relative;
+  line-height: 0;
+  text-shadow: none;
+}
+.menu-title.has-wordmark .menu-wordmark {
+  display: block;
+}
+.menu-title.has-wordmark .menu-title-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

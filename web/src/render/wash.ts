@@ -10,33 +10,75 @@
 export function lookWash(): boolean {
   try {
     const q = new URLSearchParams(location.search).get("look");
-    if (q === "wash" || q === "grade") { try { localStorage.removeItem("riddle.look"); } catch { /* storage blocked */ } return true; }
-    if (q === "off" || q === "none") { try { localStorage.setItem("riddle.look", "off"); } catch { /* storage blocked */ } return false; }
+    if (q === "wash" || q === "grade") {
+      try {
+        localStorage.removeItem("riddle.look");
+      } catch {
+        /* storage blocked */
+      }
+      return true;
+    }
+    if (q === "off" || q === "none") {
+      try {
+        localStorage.setItem("riddle.look", "off");
+      } catch {
+        /* storage blocked */
+      }
+      return false;
+    }
     return localStorage.getItem("riddle.look") !== "off";
-  } catch { return true; }
+  } catch {
+    return true;
+  }
 }
 
 /** phase 1's DOM palette map (an SVG filter over the chrome) — the CSS is on the palette now, so only on request (`?look=grade`) */
 function lookGrade(): boolean {
-  try { return new URLSearchParams(location.search).get("look") === "grade"; } catch { return false; }
+  try {
+    return new URLSearchParams(location.search).get("look") === "grade";
+  } catch {
+    return false;
+  }
 }
 
 // The named palette (docs/ART_DIRECTION.md §2) — the one source the shader, the chrome filter and art-qc.py share by value.
 export const WASH_PALETTE = {
-  ink: "#0d0c14", umbra: "#1c1b2b", dusk: "#2b3350", moon: "#4d6c99", mist: "#a4bcd6", bone: "#eadfc5",
-  blood: "#c01530", clot: "#5c0b1c", ember: "#e8923a", gilt: "#b89448",
+  ink: "#0d0c14",
+  umbra: "#1c1b2b",
+  dusk: "#2b3350",
+  moon: "#4d6c99",
+  mist: "#a4bcd6",
+  bone: "#eadfc5",
+  blood: "#c01530",
+  clot: "#5c0b1c",
+  ember: "#e8923a",
+  gilt: "#b89448",
 } as const;
 
 /** §2's per-place tint: the mid-tones (DUSK, MOON) lean toward it; INK, BONE and BLOOD never move */
 export const WASH_TINT: Record<string, string> = {
-  warrens: "#4a3b2c", burrows: "#5a4527", fens: "#2d5752", crypt: "#2f2c4f", foundry: "#5a2a1e", deep: "#1f2e4f", sanctum: "#6b6048",
-  boss_flash: "#5c0b1c", default: "#2b3350",
+  warrens: "#4a3b2c",
+  burrows: "#5a4527",
+  fens: "#2d5752",
+  crypt: "#2f2c4f",
+  foundry: "#5a2a1e",
+  deep: "#1f2e4f",
+  sanctum: "#6b6048",
+  boss_flash: "#5c0b1c",
+  default: "#2b3350",
 };
 
 export function hex3(h: string): [number, number, number] {
-  return [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255];
+  return [
+    parseInt(h.slice(1, 3), 16) / 255,
+    parseInt(h.slice(3, 5), 16) / 255,
+    parseInt(h.slice(5, 7), 16) / 255,
+  ];
 }
-const g = (h: string): string => `vec3(${hex3(h).map((x) => x.toFixed(4)).join(", ")})`;
+const g = (h: string): string =>
+  `vec3(${hex3(h)
+    .map((x) => x.toFixed(4))
+    .join(", ")})`;
 
 /** the blit's last step when `LOOK > 0`: `o` is the lit frame, `tuv` the target uv, `world` world env texels, `sa` the layer tag */
 export const WASH_GLSL = /* glsl */ `
@@ -113,8 +155,15 @@ vec3 washLook(vec3 o, vec2 tuv, vec2 world, float sa) {
 export function installWashChrome(): void {
   if (!lookWash() || typeof document === "undefined") return;
   document.documentElement.classList.add("look-wash");
-  const [ink, dusk, moon, mist, bone] = [WASH_PALETTE.ink, WASH_PALETTE.dusk, WASH_PALETTE.moon, WASH_PALETTE.mist, WASH_PALETTE.bone].map(hex3);
-  const tbl = (i: number): string => [ink![i], dusk![i], moon![i], mist![i], bone![i]].map((x) => x!.toFixed(3)).join(" ");
+  const [ink, dusk, moon, mist, bone] = [
+    WASH_PALETTE.ink,
+    WASH_PALETTE.dusk,
+    WASH_PALETTE.moon,
+    WASH_PALETTE.mist,
+    WASH_PALETTE.bone,
+  ].map(hex3);
+  const tbl = (i: number): string =>
+    [ink![i], dusk![i], moon![i], mist![i], bone![i]].map((x) => x!.toFixed(3)).join(" ");
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
 <filter id="wash-grade" color-interpolation-filters="sRGB">
   <feColorMatrix in="SourceGraphic" type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" result="grey"/>
@@ -137,6 +186,10 @@ html.look-wash::after { content: ""; position: fixed; inset: 0; pointer-events: 
   background-image: ${grain}, ${blot}; background-size: 220px 220px, 640px 640px; mix-blend-mode: multiply; opacity: 0.4; }`;
   const host = document.createElement("div");
   host.innerHTML = svg;
-  const ready = (): void => { document.head.appendChild(style); document.body.appendChild(host.firstElementChild!); };
-  if (document.body) ready(); else addEventListener("DOMContentLoaded", ready, { once: true });
+  const ready = (): void => {
+    document.head.appendChild(style);
+    document.body.appendChild(host.firstElementChild!);
+  };
+  if (document.body) ready();
+  else addEventListener("DOMContentLoaded", ready, { once: true });
 }

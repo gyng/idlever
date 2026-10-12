@@ -26,75 +26,186 @@ import { launchBrowser } from "./browser.mjs";
 import { pressWatchControl } from "./watch-control.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const USAGE = "usage: node tools/playtest.mjs [--url URL] [--seed N] [--absent 8h] [--rules file.txt] [--out dir] [--wide] [--headed] [--dpr N]";
-const MID_SHOTS_MS = [2500, 6000];   // two mid-run dumps at 4×, then ▶▶| to the exit
-const SKIP_EVERY_MS = 40;            // ▶▶| cadence (a press while the pump is in flight is a no-op)
-const FINAL_EVERY_MS = 1500;         // rolling "final frame" of the run
-const WATCH_MAX_MS = 120_000, OFFLINE_MAX_MS = 180_000, STEP_MAX_MS = 30_000, SETTLE_MAX_MS = 10_000;
-const ATTEMPTS = 2;                  // one retry, only after an unexpected reload
+const USAGE =
+  "usage: node tools/playtest.mjs [--url URL] [--seed N] [--absent 8h] [--rules file.txt] [--out dir] [--wide] [--headed] [--dpr N]";
+const MID_SHOTS_MS = [2500, 6000]; // two mid-run dumps at 4×, then ▶▶| to the exit
+const SKIP_EVERY_MS = 40; // ▶▶| cadence (a press while the pump is in flight is a no-op)
+const FINAL_EVERY_MS = 1500; // rolling "final frame" of the run
+const WATCH_MAX_MS = 120_000,
+  OFFLINE_MAX_MS = 180_000,
+  STEP_MAX_MS = 30_000,
+  SETTLE_MAX_MS = 10_000;
+const ATTEMPTS = 2; // one retry, only after an unexpected reload
 
-const opt = { url: null, seed: 1, absent: "8h", rules: null, out: null, wide: false, headed: undefined, dpr: undefined };
+const opt = {
+  url: null,
+  seed: 1,
+  absent: "8h",
+  rules: null,
+  out: null,
+  wide: false,
+  headed: undefined,
+  dpr: undefined,
+};
 for (let i = 2; i < process.argv.length; i++) {
-  const a = process.argv[i], v = process.argv[i + 1];
-  if (a === "--seed") { opt.seed = Number(v); i++; }
-  else if (a === "--url") { opt.url = new URL(v).href; i++; }
-  else if (a === "--absent") { opt.absent = v; i++; }
-  else if (a === "--rules") { opt.rules = readFileSync(resolve(v), "utf8"); i++; }
-  else if (a === "--out") { opt.out = resolve(v); i++; }
-  else if (a === "--wide") opt.wide = true;
+  const a = process.argv[i],
+    v = process.argv[i + 1];
+  if (a === "--seed") {
+    opt.seed = Number(v);
+    i++;
+  } else if (a === "--url") {
+    opt.url = new URL(v).href;
+    i++;
+  } else if (a === "--absent") {
+    opt.absent = v;
+    i++;
+  } else if (a === "--rules") {
+    opt.rules = readFileSync(resolve(v), "utf8");
+    i++;
+  } else if (a === "--out") {
+    opt.out = resolve(v);
+    i++;
+  } else if (a === "--wide") opt.wide = true;
   else if (a === "--headed") opt.headed = true;
   else if (a === "--headless") opt.headed = false;
-  else if (a === "--dpr") { opt.dpr = Number(v); i++; }
-  else if (a === "--help" || a === "-h") { console.log(USAGE); process.exit(0); }
-  else { console.error(`unknown argument ${a}\n${USAGE}`); process.exit(2); }
+  else if (a === "--dpr") {
+    opt.dpr = Number(v);
+    i++;
+  } else if (a === "--help" || a === "-h") {
+    console.log(USAGE);
+    process.exit(0);
+  } else {
+    console.error(`unknown argument ${a}\n${USAGE}`);
+    process.exit(2);
+  }
 }
-if (!Number.isFinite(opt.seed)) { console.error("--seed needs a number"); process.exit(2); }
-const out = opt.out ?? join(ROOT, "docs/playtests", new Date().toISOString().replace(/[-:]/g, "").replace(/\..+/, "").replace("T", "-"));
+if (!Number.isFinite(opt.seed)) {
+  console.error("--seed needs a number");
+  process.exit(2);
+}
+const out =
+  opt.out ??
+  join(
+    ROOT,
+    "docs/playtests",
+    new Date().toISOString().replace(/[-:]/g, "").replace(/\..+/, "").replace("T", "-"),
+  );
 mkdirSync(out, { recursive: true });
 
 const t0 = Date.now();
 const secs = (ms) => `${(ms / 1000).toFixed(1)}s`;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // An explicit preview/public URL avoids starting or trusting a stale local Vite server.
-const url = opt.url ?? execFileSync("bash", [join(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
-const harnessSha256 = createHash("sha256").update(readFileSync(fileURLToPath(import.meta.url))).digest("hex");
+const url =
+  opt.url ?? execFileSync("bash", [join(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
+const harnessSha256 = createHash("sha256")
+  .update(readFileSync(fileURLToPath(import.meta.url)))
+  .digest("hex");
 let harnessCommit = null;
-try { harnessCommit = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encoding: "utf8" }).trim(); } catch { /* a source export has no git metadata */ }
-const checkpoints = new Map(), wasmReads = [];
-const record = (screen, base, note, page) => checkpoints.set(base, { screen, image: `${base}.png`, text: `${base}.txt`, note, viewport: page.viewportSize() });
+try {
+  harnessCommit = execFileSync("git", ["rev-parse", "HEAD"], {
+    cwd: ROOT,
+    encoding: "utf8",
+  }).trim();
+} catch {
+  /* a source export has no git metadata */
+}
+const checkpoints = new Map(),
+  wasmReads = [];
+const record = (screen, base, note, page) =>
+  checkpoints.set(base, {
+    screen,
+    image: `${base}.png`,
+    text: `${base}.txt`,
+    note,
+    viewport: page.viewportSize(),
+  });
 
-const errors = [], warnings = [], summary = [];
-let n = 0, walkStart = 0, offlineWait = 0;
-const first = (s) => s.split("\n").map((x) => x.trim()).filter(Boolean).slice(0, 4).join(" · ").slice(0, 60);
+const errors = [],
+  warnings = [],
+  summary = [];
+let n = 0,
+  walkStart = 0,
+  offlineWait = 0;
+const first = (s) =>
+  s
+    .split("\n")
+    .map((x) => x.trim())
+    .filter(Boolean)
+    .slice(0, 4)
+    .join(" · ")
+    .slice(0, 60);
 const name = (screen) => join(out, `${String(++n).padStart(2, "0")}-${screen}`);
-const log = (line) => { console.log(line); summary.push(line); };
+const log = (line) => {
+  console.log(line);
+  summary.push(line);
+};
 
 async function attempt() {
   let navigating = false;
-  const headed = opt.headed ?? (process.env.RIDDLE_BROWSER === "headed");
+  const headed = opt.headed ?? process.env.RIDDLE_BROWSER === "headed";
   const browser = await launchBrowser({ headed });
   // Headless WebGL is SwiftShader and pixel-bound (14 fps at 3×, 32 at 2×, 60 at 1× on a 400×800
   // watch); the phone walk renders at 2× headless, 3× on the GPU — the same layout either way.
   const dpr = opt.dpr ?? (headed ? 3 : 2);
-  const page = await browser.newPage(opt.wide ? { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 } : { viewport: { width: 400, height: 800 }, deviceScaleFactor: dpr });
-  page.on("console", (m) => { if (m.type() === "error") errors.push(`console.error: ${m.text()}`); else if (m.type() === "warning") warnings.push(m.text()); });
+  const page = await browser.newPage(
+    opt.wide
+      ? { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
+      : { viewport: { width: 400, height: 800 }, deviceScaleFactor: dpr },
+  );
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
+    else if (m.type() === "warning") warnings.push(m.text());
+  });
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("response", (r) => {
-    if (new URL(r.url()).pathname.endsWith(".wasm")) wasmReads.push(r.body().then((body) => ({ url: r.url(), status: r.status(), sha256: createHash("sha256").update(body).digest("hex") }), (e) => ({ url: r.url(), error: e.message })));
+    if (new URL(r.url()).pathname.endsWith(".wasm"))
+      wasmReads.push(
+        r.body().then(
+          (body) => ({
+            url: r.url(),
+            status: r.status(),
+            sha256: createHash("sha256").update(body).digest("hex"),
+          }),
+          (e) => ({ url: r.url(), error: e.message }),
+        ),
+      );
   });
-  page.on("framenavigated", (f) => { if (f === page.mainFrame() && !navigating) errors.push(`unexpected reload at ${secs(Date.now() - walkStart)} (a Vite full reload from a parallel edit?) → ${f.url()}`); });
+  page.on("framenavigated", (f) => {
+    if (f === page.mainFrame() && !navigating)
+      errors.push(
+        `unexpected reload at ${secs(Date.now() - walkStart)} (a Vite full reload from a parallel edit?) → ${f.url()}`,
+      );
+  });
 
-  const state = () => page.evaluate(() => { const r = window.__riddle; return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null; });
+  const state = () =>
+    page.evaluate(() => {
+      const r = window.__riddle;
+      return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
+    });
   const text = () => page.evaluate(() => window.__riddle?.text() ?? "");
   async function waitFor(pred, label, timeout = STEP_MAX_MS) {
-    const t = Date.now(); let s = null;
-    while (Date.now() - t < timeout) { s = await state(); if (pred(s)) return s; await sleep(120); }
-    throw new Error(`timeout after ${secs(timeout)} waiting for ${label} (screen=${s?.screen} booted=${s?.booted} busy=${s?.busy})`);
+    const t = Date.now();
+    let s = null;
+    while (Date.now() - t < timeout) {
+      s = await state();
+      if (pred(s)) return s;
+      await sleep(120);
+    }
+    throw new Error(
+      `timeout after ${secs(timeout)} waiting for ${label} (screen=${s?.screen} booted=${s?.booted} busy=${s?.busy})`,
+    );
   }
   /** Wait until the progress bar has been down for 300 ms (forecast / verdict / offline slice), then a paint. */
   async function settle() {
-    const t = Date.now(); let clear = 0;
-    while (Date.now() - t < SETTLE_MAX_MS) { const s = await state(); clear = s && s.booted && !s.busy ? clear + 1 : 0; if (clear >= 2) break; await sleep(150); }
+    const t = Date.now();
+    let clear = 0;
+    while (Date.now() - t < SETTLE_MAX_MS) {
+      const s = await state();
+      clear = s && s.booted && !s.busy ? clear + 1 : 0;
+      if (clear >= 2) break;
+      await sleep(150);
+    }
     await sleep(150);
   }
   async function goto(q) {
@@ -102,33 +213,60 @@ async function attempt() {
     const target = new URL(url);
     target.searchParams.set("dev", "1");
     for (const [key, value] of new URLSearchParams(q)) target.searchParams.set(key, value);
-    try { await page.goto(target.href, { waitUntil: "domcontentloaded" }); } finally { await sleep(50); navigating = false; }
+    try {
+      await page.goto(target.href, { waitUntil: "domcontentloaded" });
+    } finally {
+      await sleep(50);
+      navigating = false;
+    }
   }
   /** Write NN-<screen>.txt + .png and print the summary line. Full-page unless it is the run or a sheet. */
-  async function dump(screen, { base = name(screen), full = screen !== "watch" && screen !== "exit", note = "" } = {}) {
+  async function dump(
+    screen,
+    { base = name(screen), full = screen !== "watch" && screen !== "exit", note = "" } = {},
+  ) {
     const tx = await text();
-    if (screen === "watch") { const m = await foeRect(); if (m) note = note ? `${note} · ${m}` : m; }   // Cut 14 §3: the frame's tallest foe, in CSS px
+    if (screen === "watch") {
+      const m = await foeRect();
+      if (m) note = note ? `${note} · ${m}` : m;
+    } // Cut 14 §3: the frame's tallest foe, in CSS px
     writeFileSync(`${base}.txt`, tx);
     await page.screenshot({ path: `${base}.png`, fullPage: full });
     record(screen, base, note, page);
-    log(`${base.slice(out.length + 1).padEnd(14)} +${secs(Date.now() - walkStart).padStart(6)}  ${String(tx.length).padStart(5)} ch  ${first(tx)}${note ? `  [${note}]` : ""}`);
+    log(
+      `${base.slice(out.length + 1).padEnd(14)} +${secs(Date.now() - walkStart).padStart(6)}  ${String(tx.length).padStart(5)} ch  ${first(tx)}${note ? `  [${note}]` : ""}`,
+    );
     return base;
   }
   /** Cut 14 §3: the entity rect measure — the tallest foe the frame drew (`__viewer.debugRects`, CSS px), the frame and its k;
    *  `foe goblin 50 px · map k5` (empty when no foe is on screen or the viewer is the placeholder). */
-  const foeRect = () => page.evaluate(() => {
-    const v = window.__viewer; if (!v?.debugRects) return "";
-    const foes = v.debugRects().filter((r) => !r.hero); if (!foes.length) return "";
-    const top = foes.reduce((a, r) => (r.h > a.h ? r : a)); const st = v.stats();
-    return `foe ${top.kind} ${Math.round(top.h)} px · ${st.frame} k${st.k}`;
-  });
+  const foeRect = () =>
+    page.evaluate(() => {
+      const v = window.__viewer;
+      if (!v?.debugRects) return "";
+      const foes = v.debugRects().filter((r) => !r.hero);
+      if (!foes.length) return "";
+      const top = foes.reduce((a, r) => (r.h > a.h ? r : a));
+      const st = v.stats();
+      return `foe ${top.kind} ${Math.round(top.h)} px · ${st.frame} k${st.k}`;
+    });
   const press = (label) => pressWatchControl(page, label);
-  const clickBtn = async (sel, label) => { const loc = label ? page.locator(sel).filter({ hasText: new RegExp(`^${label}$`) }).first() : page.locator(sel).first(); await loc.click({ timeout: 5000 }); };
+  const clickBtn = async (sel, label) => {
+    const loc = label
+      ? page
+          .locator(sel)
+          .filter({ hasText: new RegExp(`^${label}$`) })
+          .first()
+      : page.locator(sel).first();
+    await loc.click({ timeout: 5000 });
+  };
 
   try {
     // 1. boot fresh with the seed (and rules), camp
     walkStart = Date.now();
-    await goto(`fresh=1&seed=${opt.seed}&speed=4${opt.rules ? `&rules=${encodeURIComponent(opt.rules)}` : ""}`);
+    await goto(
+      `fresh=1&seed=${opt.seed}&speed=4${opt.rules ? `&rules=${encodeURIComponent(opt.rules)}` : ""}`,
+    );
     await waitFor((s) => s?.booted && s.screen === "camp", "camp");
     await settle();
     await dump("camp");
@@ -136,7 +274,9 @@ async function attempt() {
     if (await house.isVisible()) {
       await house.click();
       await page.locator("button.send").waitFor({ state: "visible", timeout: STEP_MAX_MS });
-      await page.waitForFunction(() => !document.querySelector("button.send")?.disabled, null, { timeout: STEP_MAX_MS });
+      await page.waitForFunction(() => !document.querySelector("button.send")?.disabled, null, {
+        timeout: STEP_MAX_MS,
+      });
       await settle();
       await dump("home");
     }
@@ -144,49 +284,116 @@ async function attempt() {
     // 2. send; watch at 4×: two mid-run dumps, then ▶▶| until the exit, keeping the last frame
     await clickBtn("button.send");
     await waitFor((s) => s?.screen === "watch", "watch");
-    const tw = Date.now(); const mids = [...MID_SHOTS_MS];
-    let finalBase = null, lastFinal = 0, lastSkip = 0, presses = 0, s;
+    const tw = Date.now();
+    const mids = [...MID_SHOTS_MS];
+    let finalBase = null,
+      lastFinal = 0,
+      lastSkip = 0,
+      presses = 0,
+      s;
     let vaults = 0;
     for (;;) {
       s = await state();
       // a mid-run vault choice (Cut 5) opens a sheet over the watch: pick the first item and carry on
-      if (s?.screen === "exit" && await page.locator(".sheet-wrap .vault-choice .chip").count()) {
+      if (s?.screen === "exit" && (await page.locator(".sheet-wrap .vault-choice .chip").count())) {
         if (vaults++ === 0) await dump("vault");
-        await page.locator(".sheet-wrap .vault-choice .chip").first().click().catch(() => {});
-        await sleep(300); continue;
+        await page
+          .locator(".sheet-wrap .vault-choice .chip")
+          .first()
+          .click()
+          .catch(() => {});
+        await sleep(300);
+        continue;
       }
       if (s?.screen !== "watch") break;
       const el = Date.now() - tw;
       if (el > WATCH_MAX_MS) throw new Error(`run still going after ${secs(WATCH_MAX_MS)}`);
-      if (mids.length) { if (el >= mids[0]) { mids.shift(); await dump("watch"); } await sleep(100); continue; }
-      if (Date.now() - lastSkip >= SKIP_EVERY_MS) { lastSkip = Date.now(); if (await press("▶▶|")) presses++; }
+      if (mids.length) {
+        if (el >= mids[0]) {
+          mids.shift();
+          await dump("watch");
+        }
+        await sleep(100);
+        continue;
+      }
+      if (Date.now() - lastSkip >= SKIP_EVERY_MS) {
+        lastSkip = Date.now();
+        if (await press("▶▶|")) presses++;
+      }
       if (Date.now() - lastFinal >= FINAL_EVERY_MS) {
         lastFinal = Date.now();
         // QA 912e135 (qaW: `04-watch.png` was the death screen): the capture is kept only when the watch is still up after it — the
         // screen can change between the state read and the shot
-        const tx = await text(), png = await page.screenshot();
-        if ((await state())?.screen === "watch") { finalBase ??= name("watch"); writeFileSync(`${finalBase}.txt`, tx); writeFileSync(`${finalBase}.png`, png); record("watch", finalBase, "final frame", page); }
+        const tx = await text(),
+          png = await page.screenshot();
+        if ((await state())?.screen === "watch") {
+          finalBase ??= name("watch");
+          writeFileSync(`${finalBase}.txt`, tx);
+          writeFileSync(`${finalBase}.png`, png);
+          record("watch", finalBase, "final frame", page);
+        }
       }
       await sleep(SKIP_EVERY_MS / 2);
     }
     if (!s) throw new Error("the page lost window.__riddle during the run");
-    if (finalBase) { const tx = readFileSync(`${finalBase}.txt`, "utf8"); log(`${finalBase.slice(out.length + 1).padEnd(14)} +${secs(Date.now() - walkStart).padStart(6)}  ${String(tx.length).padStart(5)} ch  ${first(tx)}  [final frame · run ${secs(Date.now() - tw)} · ${presses} skips]`); }
+    if (finalBase) {
+      const tx = readFileSync(`${finalBase}.txt`, "utf8");
+      log(
+        `${finalBase.slice(out.length + 1).padEnd(14)} +${secs(Date.now() - walkStart).padStart(6)}  ${String(tx.length).padStart(5)} ch  ${first(tx)}  [final frame · run ${secs(Date.now() - tw)} · ${presses} skips]`,
+      );
+    }
 
     // 3. exit sheet → keep; then death (first patch) | report (camp) | ending
     if (s.screen === "exit") {
-      await settle(); await dump("exit");
+      await settle();
+      await dump("exit");
       await clickBtn(".sheet-wrap .btn.primary");
-      s = await waitFor((x) => x && x.screen !== "watch" && x.screen !== "exit", "the screen after keep");
+      s = await waitFor(
+        (x) => x && x.screen !== "watch" && x.screen !== "exit",
+        "the screen after keep",
+      );
     }
     await settle();
     if (s.screen === "death") {
       await dump("death");
       // a patch card selects (Cut 19 QA); the gem applies it
-      if (await page.locator("button.patch:visible").count()) { await clickBtn("button.patch:visible");   /* a `nothing beats unpatched` death folds its tablets under `others` */ if (await page.locator(".patch-gem").count()) { const g0 = Date.now(); while (Date.now() - g0 < 20000 && /…/.test(await page.locator(".patch-gem").first().textContent().catch(() => ""))) await page.waitForTimeout(250); /* the gem measures its patch first (`…measuring`) */ await page.locator(".patch-gem").first().click(); } await waitFor((x) => x?.screen === "camp", "camp after the patch"); await settle(); await dump("camp", { note: "patched" }); }
-      else { await clickBtn('main.death [data-tile="camp"]'); await waitFor((x) => x?.screen === "camp", "town after death"); await settle(); await dump("camp", { note: "no patch offered · town" }); }
+      if (await page.locator("button.patch:visible").count()) {
+        await clickBtn("button.patch:visible");
+        /* a `nothing beats unpatched` death folds its tablets under `others` */ if (
+          await page.locator(".patch-gem").count()
+        ) {
+          const g0 = Date.now();
+          while (
+            Date.now() - g0 < 20000 &&
+            /…/.test(
+              await page
+                .locator(".patch-gem")
+                .first()
+                .textContent()
+                .catch(() => ""),
+            )
+          )
+            await page.waitForTimeout(250);
+          /* the gem measures its patch first (`…measuring`) */ await page
+            .locator(".patch-gem")
+            .first()
+            .click();
+        }
+        await waitFor((x) => x?.screen === "camp", "camp after the patch");
+        await settle();
+        await dump("camp", { note: "patched" });
+      } else {
+        await clickBtn('main.death [data-tile="camp"]');
+        await waitFor((x) => x?.screen === "camp", "town after death");
+        await settle();
+        await dump("camp", { note: "no patch offered · town" });
+      }
     } else if (s.screen === "report") {
       await dump("report", { note: "returned" });
-      await clickBtn("main.report .gem", "town"); await waitFor((x) => x?.screen === "camp", "camp after the report"); await settle(); await dump("camp");
+      await clickBtn("main.report .gem", "town");
+      await waitFor((x) => x?.screen === "camp", "camp after the report");
+      await settle();
+      await dump("camp");
     } else if (s.screen === "ending") await dump("ending");
     else await dump(s.screen, { note: "unexpected" });
 
@@ -196,33 +403,53 @@ async function attempt() {
       if (!r.lineage.tree || r.lineage.tree.auto_send) return { sends: 0, auto: true };
       let sends = 0;
       for (let i = 0; i < 10 && !r.lineage.tree.auto_send; i++) {
-        try { r.lineage = await r.engine.openChest(); } catch { /* no haul yet */ }
+        try {
+          r.lineage = await r.engine.openChest();
+        } catch {
+          /* no haul yet */
+        }
         r.lineage = await r.engine.lineage();
         for (let j = 0; j < 2; j++) {
           const id = r.lineage.tree?.lit;
           if (!id || !["porter", "scout"].includes(id)) break;
-          try { r.lineage = await r.engine.hire(id); } catch { break; }
+          try {
+            r.lineage = await r.engine.hire(id);
+          } catch {
+            break;
+          }
         }
         if (r.lineage.tree.auto_send) break;
-        await r.engine.send(); sends++;
+        await r.engine.send();
+        sends++;
         let ended = false;
         for (let k = 0; k < 600; k++) {
           const a = await r.engine.advance(20_000);
-          if (a.ended.length) { ended = true; break; }
+          if (a.ended.length) {
+            ended = true;
+            break;
+          }
         }
         if (!ended) throw new Error("Manual scout-phase run did not end");
         r.lineage = await r.engine.lineage();
       }
       if (!r.lineage.tree.auto_send) throw new Error("Scout was not hired after the manual trunk");
-      await r.flush(); r.go({ kind: "camp" });
+      await r.flush();
+      r.go({ kind: "camp" });
       return { sends, auto: r.lineage.tree.auto_send };
     });
-    if (trunk.sends) { await settle(); await dump("camp", { note: `scout hired · ${trunk.sends} extra manual sends` }); }
+    if (trunk.sends) {
+      await settle();
+      await dump("camp", { note: `scout hired · ${trunk.sends} extra manual sends` });
+    }
 
     // 4. come back after the absence: offline report (timed), then the worst death
     const ta = Date.now();
     await goto(`absent=${encodeURIComponent(opt.absent)}`);
-    await waitFor((x) => x?.booted && (x.screen === "report" || x.screen === "ending"), `the ${opt.absent} offline report`, OFFLINE_MAX_MS);
+    await waitFor(
+      (x) => x?.booted && (x.screen === "report" || x.screen === "ending"),
+      `the ${opt.absent} offline report`,
+      OFFLINE_MAX_MS,
+    );
     offlineWait = Date.now() - ta;
     await settle();
     s = await state();
@@ -231,9 +458,17 @@ async function attempt() {
       // Cut 17: the worst death opens from the report's console tile (`data-tile="open"`, labelled `worst` since QA e75ec29 — qaU on
       // 778fa1b: the walk matched the old `open` label and logged `(no worst death to open)` beside `1 DEATHS`); the older flat button kept
       const tileSel = '.cmd button[data-tile="open"]';
-      const worst = (await page.locator(tileSel).count()) ? page.locator(tileSel).first() : page.locator("button.btn").filter({ hasText: /^\s*(open|worst|deepest)\s*$/i }).first();
+      const worst = (await page.locator(tileSel).count())
+        ? page.locator(tileSel).first()
+        : page
+            .locator("button.btn")
+            .filter({ hasText: /^\s*(open|worst|deepest)\s*$/i })
+            .first();
       if (await worst.count()) {
-        await worst.click(); await waitFor((x) => x?.screen === "death", "the worst death"); await settle(); await dump("death", { note: "worst" });
+        await worst.click();
+        await waitFor((x) => x?.screen === "death", "the worst death");
+        await settle();
+        await dump("death", { note: "worst" });
       } else log("(no worst death to open)");
     }
   } catch (e) {
@@ -244,19 +479,53 @@ async function attempt() {
 }
 
 for (let a = 1; a <= ATTEMPTS; a++) {
-  errors.length = 0; warnings.length = 0; summary.length = 0; n = 0; offlineWait = 0;
-  checkpoints.clear(); wasmReads.length = 0;
+  errors.length = 0;
+  warnings.length = 0;
+  summary.length = 0;
+  n = 0;
+  offlineWait = 0;
+  checkpoints.clear();
+  wasmReads.length = 0;
   await attempt();
   const reload = errors.find((e) => e.startsWith("unexpected reload"));
-  if (reload && a < ATTEMPTS) { console.log(`retrying once after: ${reload}\n`); continue; }
+  if (reload && a < ATTEMPTS) {
+    console.log(`retrying once after: ${reload}\n`);
+    continue;
+  }
   break;
 }
 
-log(`total ${secs(Date.now() - t0)} (walk ${secs(Date.now() - walkStart)}, offline ${opt.absent} ${secs(offlineWait)}) · ${n} dumps · seed ${opt.seed} · ${opt.wide ? "wide" : "phone"} → ${out}`);
-if (warnings.length) console.log(`${warnings.length} console warning(s): ${[...new Set(warnings)].slice(0, 5).join(" | ").slice(0, 400)}`);
+log(
+  `total ${secs(Date.now() - t0)} (walk ${secs(Date.now() - walkStart)}, offline ${opt.absent} ${secs(offlineWait)}) · ${n} dumps · seed ${opt.seed} · ${opt.wide ? "wide" : "phone"} → ${out}`,
+);
+if (warnings.length)
+  console.log(
+    `${warnings.length} console warning(s): ${[...new Set(warnings)].slice(0, 5).join(" | ").slice(0, 400)}`,
+  );
 let code = 0;
-if (errors.length) { code = 1; console.error(`FAIL: ${errors.length} error(s)`); for (const e of errors) console.error("  " + e); summary.push("FAIL", ...errors); }
-else console.log("ok: no console errors, no page errors");
+if (errors.length) {
+  code = 1;
+  console.error(`FAIL: ${errors.length} error(s)`);
+  for (const e of errors) console.error("  " + e);
+  summary.push("FAIL", ...errors);
+} else console.log("ok: no console errors, no page errors");
 writeFileSync(join(out, "summary.txt"), summary.join("\n") + "\n");
-writeFileSync(join(out, "checkpoints.json"), JSON.stringify({ target: url, harnessCommit, harnessSha256, seed: opt.seed, absent: opt.absent, wallSeconds: (Date.now() - t0) / 1000, result: code ? "FAIL" : "PASS", wasm: await Promise.all(wasmReads), checkpoints: [...checkpoints.values()] }, null, 2) + "\n");
+writeFileSync(
+  join(out, "checkpoints.json"),
+  JSON.stringify(
+    {
+      target: url,
+      harnessCommit,
+      harnessSha256,
+      seed: opt.seed,
+      absent: opt.absent,
+      wallSeconds: (Date.now() - t0) / 1000,
+      result: code ? "FAIL" : "PASS",
+      wasm: await Promise.all(wasmReads),
+      checkpoints: [...checkpoints.values()],
+    },
+    null,
+    2,
+  ) + "\n",
+);
 process.exit(code);

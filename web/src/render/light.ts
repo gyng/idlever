@@ -7,8 +7,8 @@
 // the mask uploads only when the floor's tiles change.
 import * as THREE from "three";
 
-export const FIELD_S = 4;          // light-map texels per tile
-export const MAX_FIELD = 24;       // lights per frame (nearest the camera first)
+export const FIELD_S = 4; // light-map texels per tile
+export const MAX_FIELD = 24; // lights per frame (nearest the camera first)
 const FIELD_STEPS = 10;
 
 /** one light: tile coordinates (x right, y DOWN the map: row space), radius in tiles, linear rgb (intensity folded in) */
@@ -60,7 +60,8 @@ export class LightField {
   readonly target: THREE.WebGLRenderTarget;
   private mask: THREE.DataTexture;
   private maskData = new Uint8Array(4);
-  private mw = 1; private mh = 1;
+  private mw = 1;
+  private mh = 1;
   private scene = new THREE.Scene();
   private camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private mat: THREE.ShaderMaterial;
@@ -68,20 +69,32 @@ export class LightField {
 
   constructor() {
     this.mask = new THREE.DataTexture(this.maskData, 1, 1, THREE.RGBAFormat);
-    this.mask.magFilter = THREE.LinearFilter; this.mask.minFilter = THREE.LinearFilter;
+    this.mask.magFilter = THREE.LinearFilter;
+    this.mask.minFilter = THREE.LinearFilter;
     this.mask.wrapS = this.mask.wrapT = THREE.ClampToEdgeWrapping;
-    this.mask.generateMipmaps = false; this.mask.flipY = false; this.mask.needsUpdate = true;
+    this.mask.generateMipmaps = false;
+    this.mask.flipY = false;
+    this.mask.needsUpdate = true;
     this.target = new THREE.WebGLRenderTarget(4, 4, {
-      minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, generateMipmaps: false, depthBuffer: false, stencilBuffer: false,
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter,
+      generateMipmaps: false,
+      depthBuffer: false,
+      stencilBuffer: false,
       colorSpace: THREE.NoColorSpace,
     });
     this.mat = new THREE.ShaderMaterial({
-      vertexShader: VERT, fragmentShader: FRAG, depthTest: false, depthWrite: false,
+      vertexShader: VERT,
+      fragmentShader: FRAG,
+      depthTest: false,
+      depthWrite: false,
       uniforms: {
-        uMask: { value: this.mask }, uMap: { value: new THREE.Vector2(1, 1) },
+        uMask: { value: this.mask },
+        uMap: { value: new THREE.Vector2(1, 1) },
         uL: { value: Array.from({ length: MAX_FIELD }, () => new THREE.Vector4()) },
         uC: { value: Array.from({ length: MAX_FIELD }, () => new THREE.Vector3()) },
-        uN: { value: 0 }, uAO: { value: 0.5 },   // gfx round 21 (raters: "cast wall shadows so the room reads as built"): 0.32 → 0.5
+        uN: { value: 0 },
+        uAO: { value: 0.5 }, // gfx round 21 (raters: "cast wall shadows so the room reads as built"): 0.32 → 0.5
       },
     });
     const q = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.mat);
@@ -90,31 +103,47 @@ export class LightField {
   }
 
   /** cohort 24: after a GL context restore, the next setMask re-uploads (three re-creates its textures; this drops our key) */
-  invalidate(): void { this.maskKey = ""; this.mask.needsUpdate = true; }
+  invalidate(): void {
+    this.maskKey = "";
+    this.mask.needsUpdate = true;
+  }
   /** the wall mask (re-uploaded only when `key` — the floor and its tile revision — changes) */
   setMask(w: number, h: number, isWall: (i: number) => boolean, key: string): void {
     if (key === this.maskKey) return;
     this.maskKey = key;
     if (w !== this.mw || h !== this.mh || this.maskData.length !== w * h * 4) {
-      this.mw = w; this.mh = h;
+      this.mw = w;
+      this.mh = h;
       this.maskData = new Uint8Array(w * h * 4);
       this.mask.dispose();
       this.mask = new THREE.DataTexture(this.maskData, w, h, THREE.RGBAFormat);
-      this.mask.magFilter = THREE.LinearFilter; this.mask.minFilter = THREE.LinearFilter;
+      this.mask.magFilter = THREE.LinearFilter;
+      this.mask.minFilter = THREE.LinearFilter;
       this.mask.wrapS = this.mask.wrapT = THREE.ClampToEdgeWrapping;
-      this.mask.generateMipmaps = false; this.mask.flipY = false;
+      this.mask.generateMipmaps = false;
+      this.mask.flipY = false;
       this.mat.uniforms.uMask!.value = this.mask;
       this.target.setSize(w * FIELD_S, h * FIELD_S);
       (this.mat.uniforms.uMap!.value as THREE.Vector2).set(w, h);
     }
-    for (let i = 0; i < w * h; i++) { const v = isWall(i) ? 255 : 0; this.maskData[i * 4] = v; this.maskData[i * 4 + 3] = 255; }
+    for (let i = 0; i < w * h; i++) {
+      const v = isWall(i) ? 255 : 0;
+      this.maskData[i * 4] = v;
+      this.maskData[i * 4 + 3] = 255;
+    }
     this.mask.needsUpdate = true;
   }
 
   setLights(ls: readonly FieldLight[]): void {
-    const u = this.mat.uniforms, L = u.uL!.value as THREE.Vector4[], C = u.uC!.value as THREE.Vector3[];
+    const u = this.mat.uniforms,
+      L = u.uL!.value as THREE.Vector4[],
+      C = u.uC!.value as THREE.Vector3[];
     const n = Math.min(MAX_FIELD, ls.length);
-    for (let i = 0; i < n; i++) { const l = ls[i]!; L[i]!.set(l.x, l.y, l.r, 0); C[i]!.set(l.c[0], l.c[1], l.c[2]); }
+    for (let i = 0; i < n; i++) {
+      const l = ls[i]!;
+      L[i]!.set(l.x, l.y, l.r, 0);
+      C[i]!.set(l.c[0], l.c[1], l.c[2]);
+    }
     u.uN!.value = n;
   }
 
@@ -123,5 +152,9 @@ export class LightField {
     renderer.render(this.scene, this.camera);
   }
 
-  dispose(): void { this.target.dispose(); this.mask.dispose(); this.mat.dispose(); }
+  dispose(): void {
+    this.target.dispose();
+    this.mask.dispose();
+    this.mat.dispose();
+  }
 }

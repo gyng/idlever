@@ -17,19 +17,40 @@ function read(): FxLevel {
     if (q && (FX_LEVELS as readonly string[]).includes(q)) return q as FxLevel;
     const s = localStorage.getItem(KEY);
     if (s && (FX_LEVELS as readonly string[]).includes(s)) return s as FxLevel;
-  } catch { /* storage blocked: the default */ }
+  } catch {
+    /* storage blocked: the default */
+  }
   return "full";
 }
 
-export function effectsLevel(): FxLevel { return (cached ??= read()); }
+export function effectsLevel(): FxLevel {
+  return (cached ??= read());
+}
 
 export function setEffectsLevel(l: FxLevel): void {
   cached = l;
-  try { if (l === "full") localStorage.removeItem(KEY); else localStorage.setItem(KEY, l); } catch { /* storage blocked: this page only */ }
-  try { window.dispatchEvent(new CustomEvent(EVENT, { detail: l })); } catch { /* no window (tests) */ }
+  try {
+    if (l === "full") localStorage.removeItem(KEY);
+    else localStorage.setItem(KEY, l);
+  } catch {
+    /* storage blocked: this page only */
+  }
+  try {
+    window.dispatchEvent(new CustomEvent(EVENT, { detail: l }));
+  } catch {
+    /* no window (tests) */
+  }
 }
 
 /** the next level in the cycle full → low → off → full (the settings sheet's one button) */
-export function nextEffectsLevel(l: FxLevel = effectsLevel()): FxLevel { return FX_LEVELS[(FX_LEVELS.indexOf(l) + 1) % FX_LEVELS.length]!; }
+export function nextEffectsLevel(l: FxLevel = effectsLevel()): FxLevel {
+  return FX_LEVELS[(FX_LEVELS.indexOf(l) + 1) % FX_LEVELS.length]!;
+}
 
-try { window.addEventListener("storage", (e) => { if (e.key === KEY) cached = null; }); } catch { /* no window */ }
+try {
+  window.addEventListener("storage", (e) => {
+    if (e.key === KEY) cached = null;
+  });
+} catch {
+  /* no window */
+}
