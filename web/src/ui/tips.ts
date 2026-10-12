@@ -6,7 +6,7 @@
 //     visual line, ≤ 4 on screen, ≤ 8 % of the visible words (1 on a screen under 25 words); a concept whose caption is on screen is not
 //     also marked. The rest stay plain (`.kw` without `kw-on`): their tip is a hover, a long-press or a focus away.
 //   fade: a keyword whose tip was opened twice, or seen marked 8 times (on screen ≥ 1.5 s, ≤ once per 5 min), is learned (plain).
-//     Per viewer (localStorage `riddle.keywords`), never the save.
+//     Per viewer (localStorage `idlever.keywords`), never the save.
 //   input: desktop hover 350 ms (the plate can be entered), click and focus open; phone: a tap on a marked keyword (or a stat host) not
 //     inside a control opens it, anything else closes it; inside a control the tap is the control's and a 450 ms long-press opens the
 //     tip (its release clicks nothing). Escape closes. One plate at a time; a keyword inside a tip adds its gloss in the same plate.
@@ -25,7 +25,7 @@ export const LEARN_OPENS = 2,
   MAX_ON = 4,
   MAX_SHARE = 0.08,
   FEW_WORDS = 25;
-const KEY = "riddle.keywords";
+const KEY = "idlever.keywords";
 /** the event's name, spelt so copy-lint's forbidden-word check (a player-facing `click`) does not read it as copy */
 const CLICK = "cl" + "ick";
 

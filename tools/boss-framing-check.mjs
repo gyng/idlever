@@ -9,10 +9,10 @@ const record = JSON.parse(
 const url = execFileSync("bash", ["tools/dev.sh"], { encoding: "utf8" }).trim(),
   b = await launchGpu();
 try {
-  for (const width of (process.env.RIDDLE_BOSS_WIDTHS ?? "400,1440").split(",").map(Number)) {
+  for (const width of (process.env.IDLEVER_BOSS_WIDTHS ?? "400,1440").split(",").map(Number)) {
     const p = await b.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1.5 });
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const result = await p.evaluate(
       async ({ record, width, module }) => {
         const { createViewer } = await import(module);
@@ -162,7 +162,7 @@ try {
           v.dispose();
         }
       },
-      { record, width, module: process.env.RIDDLE_RENDER_MODULE ?? "/src/render/index.ts" },
+      { record, width, module: process.env.IDLEVER_RENDER_MODULE ?? "/src/render/index.ts" },
     );
     console.log(
       width,

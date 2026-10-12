@@ -8,7 +8,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
 }).trim();
 async function installFixture(page) {
   await page.evaluate(async () => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     if (a.kind !== "wasm") throw Error("real WASM required");
     a.runnerOn = false;
     window.skillFixture = JSON.parse(await a.engine.save());
@@ -40,7 +40,7 @@ try {
       errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?fresh=1&seed=185&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await installFixture(page);
     await page.evaluate(() => window.showSkill(1, 1));
     assert.equal(
@@ -84,7 +84,7 @@ try {
         .isDisabled(),
     );
     await page.evaluate(() => window.showSkill(3, 8));
-    const untouched = await page.evaluate(() => window.__riddle.engine.save());
+    const untouched = await page.evaluate(() => window.__idlever.engine.save());
     const choose = page
       .locator(".sheet-wrap:not([hidden])")
       .locator("[data-class-path=fighter_warden] .class-path-choose");
@@ -93,22 +93,22 @@ try {
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-review").textContent(),
       /Automatic tactic/,
     );
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), untouched);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), untouched);
     await page
       .locator(".sheet-wrap:not([hidden])")
       .locator(".class-path-review button")
       .first()
       .click();
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), untouched);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), untouched);
     await choose.click();
-    await page.evaluate(async () => window.__riddle.setClass("rogue"));
-    const switched = await page.evaluate(() => window.__riddle.engine.save());
+    await page.evaluate(async () => window.__idlever.setClass("rogue"));
+    const switched = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
     assert.equal(
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-feedback").textContent(),
       "Review changed",
     );
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), switched);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), switched);
     await page
       .locator(".sheet-wrap:not([hidden])")
       .locator(".class-path-review button")
@@ -116,13 +116,13 @@ try {
       .click();
     await page.evaluate(() => window.showSkill(3, 8));
     await choose.click();
-    await page.evaluate(async () => window.__riddle.engine.send());
-    const away = await page.evaluate(() => window.__riddle.engine.save());
+    await page.evaluate(async () => window.__idlever.engine.send());
+    const away = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
     await page.waitForFunction(() =>
       document.querySelector(".class-path-feedback")?.textContent.includes("hero away"),
     );
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), away);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), away);
     await page
       .locator(".sheet-wrap:not([hidden])")
       .locator(".class-path-review button")
@@ -130,7 +130,7 @@ try {
       .click();
     await page.evaluate(() => window.showSkill(3, 8));
     await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         call = a.engine.learnClassSkill.bind(a.engine);
       window.skillCalls = 0;
       a.engine.learnClassSkill = async (id) => {
@@ -146,12 +146,12 @@ try {
         el.click();
         el.click();
       });
-    await page.waitForFunction(() => window.__riddle.lineage.class_tree.spent === 1);
+    await page.waitForFunction(() => window.__idlever.lineage.class_tree.spent === 1);
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .class-path-review"),
     );
     assert.equal(await page.evaluate(() => window.skillCalls), 1);
-    assert.equal(await page.evaluate(() => window.__riddle.lineage.class_tree.points), 0);
+    assert.equal(await page.evaluate(() => window.__idlever.lineage.class_tree.points), 0);
     assert.match(
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-tree-panel").textContent(),
       /Next pick L4/,
@@ -164,11 +164,11 @@ try {
     );
     assert.ok(
       await page.evaluate(() =>
-        window.__riddle.rules.rows.some((r) => r.origin === "class:path:fighter_warden"),
+        window.__idlever.rules.rows.some((r) => r.origin === "class:path:fighter_warden"),
       ),
     );
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-tree-map summary").click();
-    await page.evaluate(() => window.__riddle.emitChange());
+    await page.evaluate(() => window.__idlever.emitChange());
     assert.ok(
       await page
         .locator(".sheet-wrap:not([hidden])")
@@ -176,16 +176,16 @@ try {
         .evaluate((el) => el.open),
     );
     const learned = await page.evaluate(async () => {
-      await window.__riddle.flush();
-      return window.__riddle.engine.save();
+      await window.__idlever.flush();
+      return window.__idlever.engine.save();
     });
     await page.reload();
-    await page.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), learned);
+    await page.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), learned);
     await installFixture(page);
     await page.evaluate(async () => {
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(window.__riddle);
+      openHero(window.__idlever);
     });
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-remove").click();
     assert.match(
@@ -193,23 +193,23 @@ try {
       /Refund 1/,
     );
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
-    await page.waitForFunction(() => window.__riddle.lineage.class_tree.spent === 0);
+    await page.waitForFunction(() => window.__idlever.lineage.class_tree.spent === 0);
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .class-path-review"),
     );
-    assert.equal(await page.evaluate(() => window.__riddle.lineage.class_tree.points), 1);
+    assert.equal(await page.evaluate(() => window.__idlever.lineage.class_tree.points), 1);
     assert.ok(
       await page.evaluate(
-        () => !window.__riddle.rules.rows.some((r) => r.origin?.startsWith("class:path:")),
+        () => !window.__idlever.rules.rows.some((r) => r.origin?.startsWith("class:path:")),
       ),
     );
     // Every class can accumulate BOTH branches and ALL children, with no lost skills/resources.
     for (const cls of ["fighter", "rogue", "ranger", "caster", "gunner"]) {
       await page.evaluate((cls) => window.showSkill(8, 18, cls), cls);
-      const tree = await page.evaluate(() => window.__riddle.lineage.class_tree),
+      const tree = await page.evaluate(() => window.__idlever.lineage.class_tree),
         before = await page.evaluate(() => ({
-          gold: window.__riddle.lineage.gold,
-          xp: window.__riddle.lineage.classes[window.__riddle.lineage.class].xp,
+          gold: window.__idlever.lineage.gold,
+          xp: window.__idlever.lineage.classes[window.__idlever.lineage.class].xp,
         }));
       const ordered = tree.nodes
         .filter((n) => !n.parent)
@@ -221,7 +221,7 @@ try {
           .click();
         await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
         await page.waitForFunction(
-          (spent) => window.__riddle.lineage.class_tree.spent === spent,
+          (spent) => window.__idlever.lineage.class_tree.spent === spent,
           i + 1,
         );
         await page.waitForFunction(
@@ -234,12 +234,12 @@ try {
             .count(),
           i + 1,
         );
-        assert.equal(await page.evaluate(() => window.__riddle.lineage.class_tree.points), 5 - i);
+        assert.equal(await page.evaluate(() => window.__idlever.lineage.class_tree.points), 5 - i);
       }
       assert.deepEqual(
         await page.evaluate(() => ({
-          gold: window.__riddle.lineage.gold,
-          xp: window.__riddle.lineage.classes[window.__riddle.lineage.class].xp,
+          gold: window.__idlever.lineage.gold,
+          xp: window.__idlever.lineage.classes[window.__idlever.lineage.class].xp,
         })),
         before,
       );
@@ -253,7 +253,7 @@ try {
     await page.evaluate(() => window.showSkill(5, 13));
     await choose.click();
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
-    await page.waitForFunction(() => window.__riddle.lineage.class_tree.spent === 1);
+    await page.waitForFunction(() => window.__idlever.lineage.class_tree.spent === 1);
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .class-path-review"),
     );

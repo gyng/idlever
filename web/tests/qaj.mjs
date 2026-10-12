@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // QA on 3d71c33 (qaJ, seed 816) — the client-side lapses, each reproduced on the fake engine (`?engine=fake&systems=none&dev=1`) through the
-// headless harness (tools/browser.mjs) against the dev server (tools/dev.sh; RIDDLE_PORT picks the port):
+// headless harness (tools/browser.mjs) against the dev server (tools/dev.sh; IDLEVER_PORT picks the port):
 //   1  the exit beat (`COLLECTED $N`) shows when the PLAYHEAD reaches the exit, never over an earlier fight the viewer replays behind
 //      the frontier (`fast`, the picture paused while the world runs to the bank)
 //   2  a chain link's clip is on the link's floor and spans its tick (`data-depth` · `data-from` · `data-to` on the sheet), and its
@@ -54,7 +54,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       w = document.querySelector(".watch");
     return r
       ? {
@@ -93,15 +93,15 @@ try {
       );
       await pauseWithExitRecord(page); // ⏸: the world runs on to the bank
       const t0 = Date.now();
-      while (Date.now() - t0 < 15_000 && !(await page.evaluate(() => window.__riddle.__exit)))
+      while (Date.now() - t0 < 15_000 && !(await page.evaluate(() => window.__idlever.__exit)))
         await sleep(100);
-      const exit = await page.evaluate(() => window.__riddle.__exit);
+      const exit = await page.evaluate(() => window.__idlever.__exit);
       await page.locator(".gem.hud-btn").first().click({ timeout: 2000 }); // ▶: the picture replays from behind
       const seen = [];
       const t1 = Date.now();
       while (Date.now() - t1 < 40_000) {
         const s = await page.evaluate(() => ({
-          screen: window.__riddle.screen,
+          screen: window.__idlever.screen,
           tk: document.querySelector(".ticker.show")?.textContent ?? "",
           tick: Number(document.querySelector(".watch")?.dataset.tick),
           depth: document.querySelector(".watch .depth")?.textContent ?? "",
@@ -154,7 +154,7 @@ try {
       await waitFor((x) => x && !x.busy, "idle", 30_000);
       // a link per floor at a row's tick with another row (another caption) fired 20–60 ticks before it — the caption a stale seek showed
       const links = await page.evaluate(() => {
-        const l = window.__riddle.runLog();
+        const l = window.__idlever.runLog();
         const res = [];
         for (const f of l.floors) {
           const rules = f.evs.filter((e) => e.k === "rule" && e.row >= 0);
@@ -206,7 +206,7 @@ try {
         const k = links.links[0];
         await page.evaluate(
           ({ runId, k }) => {
-            window.__riddle.go({
+            window.__idlever.go({
               kind: "death",
               death: {
                 run_id: runId,
@@ -314,7 +314,7 @@ try {
       for (const k of links.links) {
         await page.evaluate(
           ({ runId, k }) => {
-            window.__riddle.go({
+            window.__idlever.go({
               kind: "death",
               death: {
                 run_id: runId,
@@ -376,7 +376,7 @@ try {
         }
         const allowed = await page.evaluate(
           ({ from, to, depth }) => {
-            const l = window.__riddle.runLog();
+            const l = window.__idlever.runLog();
             const f = l.floors.find((x) => x.snap.depth === depth);
             return (f?.evs ?? [])
               .filter((e) => e.k === "rule" && e.row >= -1 && e.t >= from && e.t <= to)
@@ -420,7 +420,7 @@ try {
         );
         await waitFor((s) => s?.booted && inRun(s), "the fights watch");
         await page.evaluate(() => {
-          const r = window.__riddle,
+          const r = window.__idlever,
             orig = r.engine.step.bind(r.engine);
           const fightTicks = (window.__fightTicks = []);
           r.engine.step = async (n) => {
@@ -513,7 +513,7 @@ try {
       await waitFor((s) => s?.booted && s.screen === "camp", "the camp");
       await editRows(page); // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.sets[r.active].name = "fighter";
         while (r.ownRows() < r.vocab.max_rows)
           r.insertRow(
@@ -531,7 +531,7 @@ try {
       await sleep(300);
       const read = () =>
         page.evaluate(() => {
-          const r = window.__riddle;
+          const r = window.__idlever;
           return {
             tab: document.querySelector(".tabs .tab.on")?.textContent.replace(/\s+/g, " ").trim(),
             count: document
@@ -546,7 +546,7 @@ try {
       const bought = [];
       for (let i = 0; i < 3; i++) {
         const id = await page.evaluate(async (have) => {
-          const r = window.__riddle;
+          const r = window.__idlever;
           r.unlockCat = await r.engine.unlocks();
           const u = r.unlockCat.find(
             (x) =>
@@ -608,7 +608,7 @@ try {
               document.querySelector(".sheet-wrap .gold-price")?.textContent ?? "",
             )?.[1] ?? NaN,
           ),
-          gold: window.__riddle.lineage.gold,
+          gold: window.__idlever.lineage.gold,
           acc: getComputedStyle(document.documentElement).getPropertyValue("--acc").trim(),
         };
       });
@@ -645,7 +645,7 @@ try {
       await waitFor((s) => s?.booted && inRun(s), `the ${mode} watch for the cage`);
       const full = mode === "fights";
       await page.evaluate((full) => {
-        const r = window.__riddle,
+        const r = window.__idlever,
           orig = r.engine.step.bind(r.engine),
           origChoose = r.engine.choose.bind(r.engine);
         let done = false;
@@ -724,7 +724,7 @@ try {
       }
       if (!v) {
         const diagnostic = await page.evaluate(() => ({
-          screen: window.__riddle.screen,
+          screen: window.__idlever.screen,
           watch: { ...document.querySelector(".watch")?.dataset },
           ticker: document.querySelector(".ticker")?.outerHTML,
           fixture: window.__cageFixture,
@@ -774,7 +774,7 @@ try {
       await sleep(400);
       const k = await page.evaluate(() => ({
         sheet: !!document.querySelector(".sheet-wrap .vault-choice"),
-        chosen: window.__riddle.__chosen,
+        chosen: window.__idlever.__chosen,
       }));
       check(
         skip && !k.sheet && k.chosen === null,
@@ -783,7 +783,7 @@ try {
       // QA 23ed91f (K: "the cage sheet closed by itself … nothing said what had been taken"): the pick the pref made is named
       await page
         .waitForFunction(
-          () => window.__took.length > 0 || !["watch", "exit"].includes(window.__riddle.screen),
+          () => window.__took.length > 0 || !["watch", "exit"].includes(window.__idlever.screen),
           null,
           { timeout: 10_000 },
         )
@@ -832,7 +832,7 @@ try {
       });
       await waitFor((s) => s?.booted && s.screen === "camp", "the camp for the drop sheet");
       const max = await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         while (r.ownRows() < r.vocab.max_rows)
           r.insertRow(
             { conds: [{ k: "hp<", n: 30 + r.rules.rows.length }], verb: { v: "retreat" } },
@@ -862,7 +862,7 @@ try {
       const open = async (fires) => {
         await page.evaluate(
           ({ d, fires }) => {
-            const r = window.__riddle;
+            const r = window.__idlever;
             r.rowFires = fires;
             r.go({ kind: "death", death: d });
           },

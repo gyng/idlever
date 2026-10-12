@@ -99,8 +99,8 @@ async function main(args) {
   }
   const started = performance.now();
   const balance = opt.balance ? readFileSync(opt.balance, "utf8") : null;
-  if (balance) process.env.RIDDLE_BALANCE_JSON = balance;
-  else delete process.env.RIDDLE_BALANCE_JSON;
+  if (balance) process.env.IDLEVER_BALANCE_JSON = balance;
+  else delete process.env.IDLEVER_BALANCE_JSON;
   const snapshots = opt.saves.map((path) => readFileSync(path));
   const inputs = opt.saves.map((path, i) => ({ path: resolve(path), sha256: sha(snapshots[i]) }));
   const record = opt.record && resolve(opt.record),
@@ -125,7 +125,7 @@ async function main(args) {
     "--profile",
     "fast",
     "-p",
-    "riddle-core",
+    "idlever-core",
     "--example",
     "sim_perf",
     ...(balance ? ["--features", "dev-balance"] : []),
@@ -141,7 +141,7 @@ async function main(args) {
   if (!executable) throw new Error("Cargo did not report the diagnostic executable");
   const buildSeconds = (performance.now() - buildStart) / 1000;
   const binary = sha(readFileSync(executable));
-  const temporary = mkdtempSync(join(tmpdir(), "riddle-camp-check-"));
+  const temporary = mkdtempSync(join(tmpdir(), "idlever-camp-check-"));
   const cases = [],
     outputs = new Map();
   try {

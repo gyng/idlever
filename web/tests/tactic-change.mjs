@@ -23,12 +23,12 @@ try {
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=3002`, { waitUntil: "domcontentloaded" });
   await page.waitForFunction(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp",
+    () => window.__idlever?.booted && window.__idlever.screen === "camp",
     null,
     { timeout: 30_000 },
   );
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const e = JSON.parse(await r.engine.save());
     e.lineage.best_depth = 22;
     e.lineage.gold = 120;
@@ -41,16 +41,16 @@ try {
   await page.waitForSelector('.cmd .tile[data-tile="packages"]');
   await page.click('.cmd .tile[data-tile="packages"]');
   await page.waitForSelector(".pkg-panel .pkg-slot");
-  const worn = () => page.evaluate(() => window.__riddle.lineage.packages.tactics ?? []);
+  const worn = () => page.evaluate(() => window.__idlever.lineage.packages.tactics ?? []);
   const open = () =>
     page.evaluate(
       () => !!document.querySelector('.pkg-sec[data-kind="tactic"] .pkg-choices:not([hidden])'),
     );
-  const slots = await page.evaluate(() => window.__riddle.lineage.packages.tactic_slots);
+  const slots = await page.evaluate(() => window.__idlever.lineage.packages.tactic_slots);
   check(slots === 2, `two tactic slots (${slots})`);
   await page.click('[data-edit-slot="0"]');
   await page.click('.pkg-sec[data-kind="tactic"] .chip.pkg.alt');
-  await page.waitForFunction(() => window.__riddle.lineage.packages.tactics?.length === 1);
+  await page.waitForFunction(() => window.__idlever.lineage.packages.tactics?.length === 1);
   const first = (await worn())[0];
   await page.click('[data-edit-slot="0"]');
   check(await open(), "a worn slot's `change` opens the choices");
@@ -59,7 +59,7 @@ try {
   );
   await page.click(`.pkg-sec[data-kind="tactic"] .chip.pkg.alt[data-pkg="${other}"]`);
   await page
-    .waitForFunction((o) => window.__riddle.lineage.packages.tactics?.[0] === o, other, {
+    .waitForFunction((o) => window.__idlever.lineage.packages.tactics?.[0] === o, other, {
       timeout: 10_000,
     })
     .catch(() => {});

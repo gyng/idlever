@@ -1,5 +1,5 @@
 // Unlock presentation. Ids, costs and `needs` (the gate as text) come from the engine's `unlocks()`
-// catalogue (crates/riddle-core/src/meta.rs); this file only adds labels and the display chain (row6 is
+// catalogue (crates/idlever-core/src/meta.rs); this file only adds labels and the display chain (row6 is
 // hidden until row5 is owned, etc.) so the camp shows one step at a time.
 // Cut 9 §2: every buy goes through `openUnlockSheet` — the card's rows / effect, `◆cost`, `needs` when gated, `reach ±N%`
 // when known, then `buy`. No card buys on its own tap; a disabled card still opens the sheet to show its gate.

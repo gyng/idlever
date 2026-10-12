@@ -13,10 +13,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      window.__riddle.watchMode = "one";
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.watchMode = "one";
+      window.__idlever.go({ kind: "watch" });
     });
     await p.waitForFunction(() => document.querySelector(".watch")?.dataset.tick);
     await p.locator(".console .gem").click();

@@ -29,7 +29,7 @@
 // Cut 14 (QA) — the dynamic slowdowns were "way too slow": the fight frame plays at 2× in `fights` (was 1×) and 4× in `fast`
 // (`FIGHT_RATE`; was 2×), `near` holds 10 ticks after the last sighting / hp change (AUTO_TAIL, was 20), the ending's 1× is the
 // last 20 ticks (ENDING_TICKS, was 30; the core's `ending` marker is clamped to twice that). A settings toggle `slowdowns`
-// (`app.slowdowns`, persisted `riddle.slowdowns`, on by default) turns every hold off: `rate()` then runs the mode's flat rate
+// (`app.slowdowns`, persisted `idlever.slowdowns`, on by default) turns every hold off: `rate()` then runs the mode's flat rate
 // — the card's 0, the vault sheet's 1×, pause and the ending's 1× stand; the fight frame still opens, only the clock changes.
 //
 // Cut 14 §6 — the world runs on the wall clock. Two clocks: the *world* clock (`worldT`, engine ticks) advances on wall time at
@@ -381,7 +381,7 @@ const FOLD_MIN_MS = 1400,
 const REST_BEAT_MS = 1400;
 const REST_BEAT_FAST_MS = 700; // QA e75ec29: in `fast` the rest line holds 0.7 s — `fights` on D1–3 ramps its travel now, and `fast` keeps ≤ 0.4 of it (Cut 20 §3)
 const METER_PAINT_MS = 400; // Cut 29 §3: the compact meter repaints at most this often (its numbers move every snapshot)
-const METERS_KEY = "riddle.meters";
+const METERS_KEY = "idlever.meters";
 const readMetersOn = (): boolean => {
   try {
     return localStorage.getItem(METERS_KEY) === "1";
@@ -606,7 +606,7 @@ export function renderWatch(app: App): Mounted {
       whyLine.classList.remove("show");
       el.classList.remove("has-why");
     }, ms);
-    if ("__riddle" in window)
+    if ("__idlever" in window)
       ((window as unknown as { __whyLog?: string[] }).__whyLog ??= []).push(text); // dev
   }
   // Cut 23 §3: a reasoned line's reason, on tap (the line's text → the reason), over the ticker
@@ -1893,7 +1893,7 @@ export function renderWatch(app: App): Mounted {
     // (its own line under the ticker: the ticker's text stays the beat's own)
     if (b.why) showWhy(b.why, dur);
     el.dataset.held = "1";
-    if ("__riddle" in window)
+    if ("__idlever" in window)
       ((window as unknown as { __beatLog?: unknown[] }).__beatLog ??= []).push({
         text: b.text,
         why: b.why,
@@ -2710,7 +2710,7 @@ export function renderWatch(app: App): Mounted {
     goLive();
     canvas.scrollIntoView({ block: "nearest" });
   };
-  window.addEventListener("riddle:focus-hero", focusHero);
+  window.addEventListener("idlever:focus-hero", focusHero);
   function goLive(): void {
     releaseBeat(); // Cut 18 §1: landing live lets a held beat go
     // blind 5331f40: live (or the ending's start) at most — short of a boss's kill not yet shown, whose floor stays loaded
@@ -3589,7 +3589,7 @@ export function renderWatch(app: App): Mounted {
     tickerQueue.length = 0;
     callout(text, "beat", 2600);
     el.dataset.homeFold = text;
-    if ("__riddle" in window)
+    if ("__idlever" in window)
       ((window as unknown as { __homeLog?: unknown[] }).__homeLog ??= []).push({
         text,
         from: home.from,
@@ -4164,7 +4164,7 @@ export function renderWatch(app: App): Mounted {
       speedWhy.hidden = false;
       el.dataset.why = key;
       whyEnd = 0;
-      if ("__riddle" in window) {
+      if ("__idlever" in window) {
         const log = ((
           window as unknown as { __speedWhy?: { why: string; rate: number; at: number }[] }
         ).__speedWhy ??= []);
@@ -4536,7 +4536,7 @@ export function renderWatch(app: App): Mounted {
     el.dataset.folded = foldsDone.join(",");
     const ms = Math.round(performance.now() - f.t0),
       floors = f.to - f.from + 1;
-    if ("__riddle" in window)
+    if ("__idlever" in window)
       ((window as unknown as { __foldLog?: unknown[] }).__foldLog ??= []).push({
         from: f.from,
         to: f.to,
@@ -5698,7 +5698,7 @@ export function renderWatch(app: App): Mounted {
     speed = -1;
     applyFrame();
     applySpeed(); // Cut 10 §1: the card and the mode's rate (fights: 16× under it) from the first frame
-    if ("__riddle" in window) (window as unknown as { __viewer: Viewer }).__viewer = v; // dev inspection
+    if ("__idlever" in window) (window as unknown as { __viewer: Viewer }).__viewer = v; // dev inspection
     lastHp = s.hero.hp;
     lastAlert = s.alert;
     sceneFrom(s);
@@ -5725,7 +5725,7 @@ export function renderWatch(app: App): Mounted {
       clearTimeout(meterTimer);
       clearTimeout(dockTimer);
       bar.dispose();
-      window.removeEventListener("riddle:focus-hero", focusHero);
+      window.removeEventListener("idlever:focus-hero", focusHero);
       wide.dispose();
       if (el.dataset.over === "1") setBusyHost(null);
       window.removeEventListener("resize", onResize);

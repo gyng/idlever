@@ -1,4 +1,4 @@
-# Riddle handoff — first alpha checkpoint, 2026-10-12
+# Idlever handoff — rename checkpoint, 2026-10-13
 
 Owner asks to finish the current queue/refinement and PAUSE at this checkpoint
 because weekly quota is low. No new content or rating round should start until
@@ -11,7 +11,36 @@ the fun>=80 rating goal remain paused. See docs/CUT187_ALPHA_RELEASE.md.
 The owner also requested default Oxfmt/Oxlint setup and automatic fixes before
 release (docs/CUT188_DEFAULT_TOOLING.md). Clippy was already enforced.
 
-## First alpha and tooling
+Owner amendment2026-10-13: rename the game/repository to **Idlever** for search
+visibility and regenerate its title in the approved style. This replaces the
+brief, unpublished Ridle direction. It authorizes the rename and the necessary
+release deployment at `/idlever/`; current contract: docs/CUT190_IDLEVER_RENAME.md.
+Content and fun-rating work remain paused. Prior release tags and historical
+evidence remain immutable. The owner explicitly waived backwards compatibility:
+active crates, WASM modules, browser globals, events, storage/settings keys and
+diagnostic markers use Idlever identifiers. No old-brand aliases or migration
+code are required. Actual local checkout paths remain valid.
+
+## Idlever — current checkpoint
+
+GitHub is now `gyng/idlever`; origin and Pages settings use
+`https://gyng.github.io/idlever/`. New artwork and all active namespace names
+are integrated. Existing local checkout remains `/home/g/p/riddle`.
+No old-brand aliases or save/settings migration were added.
+
+Local quick checks, Clippy, shipping WASM,17 dayplayer tests and27 tooling tests
+pass (6 Rust tests ignored;1 optional tooling test skipped). Real-WASM/PWA and
+private GPU smoke pass the new title, fresh town and direct saved-game reload.
+First full client run124/125: watch-live-edge timing failed during native-test
+overlap; unchanged isolated rerun passes. Full repeat is in progress. Preserve
+both outcomes; the timing failure's cause is unproven. Alpha.2 deployment and
+live proof are pending. See docs/CUT190_IDLEVER_RENAME.md and docs/evidence/cut190/.
+
+## First alpha and tooling — historical checkpoint
+
+The first alpha was released under the original Riddle name at `/riddle/`.
+Its archived evidence records that source, branding and URL. Current public
+links use the renamed repository; the new brand will ship as alpha.2.
 
 `v0.1.0-alpha.1` was published as a prerelease from `29752da9`, following the
 owner's explicit release request. Pages now deploys published versioned
@@ -20,7 +49,7 @@ The Pages environment permits `v*` tags; the former main-only policy is removed.
 Deployment passes: run38270161875. Live production files match the release
 artifact, and private D3D12/NVIDIA smoke passes new-town construction, real WASM
 and direct saved-game reload. Proof: docs/CUT187_ALPHA_RELEASE.md and
-docs/evidence/cut187/live/. The alpha is live at https://gyng.github.io/riddle/.
+docs/evidence/cut187/live/. The original alpha was live at `https://gyng.github.io/riddle/`; this is historical evidence.
 
 Oxfmt 0.72.0 and Oxlint 1.87.0 are locked web dev dependencies. They use default
 rules, with generated engine files/raw save fixtures excluded from formatting.

@@ -52,7 +52,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -94,7 +94,7 @@ const count = () =>
 const setLineage = (chronicle, grave) =>
   page.evaluate(
     async ({ chronicle, grave }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.marks = 20;
@@ -118,7 +118,7 @@ const openLogHeirs = async () => {
 };
 const fakeDeath = (kept) =>
   page.evaluate((kept) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.go({
       kind: "death",
       death: {
@@ -147,7 +147,9 @@ try {
     "the lineage took marks, gold, the thief fact and an empty chronicle",
   );
   await waitFor((s) => s?.screen === "camp", "camp again");
-  await page.waitForFunction(() => window.__riddle.unlockCat.length > 0, null, { timeout: 10_000 });
+  await page.waitForFunction(() => window.__idlever.unlockCat.length > 0, null, {
+    timeout: 10_000,
+  });
   // Cut 17: the unlock panel lists the whole catalogue from here on (`more`, remembered); the panel closes over the tablets
   await openPanel(page, "unlocks", { all: true });
   await page.keyboard.press("Escape");
@@ -240,7 +242,7 @@ try {
   check((await sheets()) === 0 && rs[0].conds === 0, `× removed R1's cond: "${rs[0].text}"`);
 
   // 2: an owned card's chip, its sheet, `insert` after the row is dropped
-  await page.evaluate(() => window.__riddle.buy("thief_guard"));
+  await page.evaluate(() => window.__idlever.buy("thief_guard"));
   await sleep(800);
   rs = await rows();
   check(
@@ -323,7 +325,7 @@ try {
     (await state()).screen === "death",
     "Escape again: a fresh death still stays (edit is the way out)",
   );
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await waitFor((s) => s?.screen === "camp", "camp");
   await sleep(300);
   // the chronicle's ▸ on a kept death: the sheet closes, the death mounts, Escape leads to the camp
@@ -351,11 +353,11 @@ try {
       /^town$/i.test((await town.innerText()).trim()),
     "the kept death offers visible Town navigation",
   );
-  const savedDeath = await page.evaluate(() => window.__riddle.engine.save());
+  const savedDeath = await page.evaluate(() => window.__idlever.engine.save());
   await town.click();
   await waitFor((s) => s?.screen === "camp", "Town from the kept death", 5000);
   check(
-    (await page.evaluate(() => window.__riddle.engine.save())) === savedDeath,
+    (await page.evaluate(() => window.__idlever.engine.save())) === savedDeath,
     "Town from a kept death preserves the saved hero setup",
   );
   await openLogHeirs();
@@ -399,14 +401,14 @@ try {
   await page.keyboard.press("Escape");
   await sleep(150);
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     const real = e.unlocks.bind(e);
     e.unlocks = async () =>
       (await real()).map((u) =>
         u.id === "ranger" ? { ...u, cost: 40, available: true, needs: undefined } : u,
       );
     e.unlockDeltas = () => Promise.reject(new Error("no deltas"));
-    window.__riddle.go({ kind: "camp" });
+    window.__idlever.go({ kind: "camp" });
   });
   await sleep(800);
   await openPanel(page, "unlocks");
@@ -421,7 +423,7 @@ try {
       disabled: b?.disabled,
       off: b?.classList.contains("off"),
       needs: document.querySelector(".sheet-wrap .needs-line")?.textContent.trim(),
-      marks: window.__riddle.lineage.marks,
+      marks: window.__idlever.lineage.marks,
     };
   });
   check(
@@ -434,7 +436,7 @@ try {
   // 8: the shop and the shelf are up while the forecast computes — the worker answers in order, so the engine is wrapped to answer
   // in order with a slow forecast; the caches are cleared so only the fetch order can keep them painted
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const e = r.engine;
     let q = Promise.resolve();
     const ser = (m, ms) => {
@@ -457,7 +459,7 @@ try {
   await sleep(700);
   // (QA a946e04: the panel starts from the forecast the shaft shows — the last one — never a `…` beside the shaft's numbers)
   let during = await page.evaluate(() => ({
-    busy: window.__riddle.engineBusy,
+    busy: window.__idlever.engineBusy,
     fc: document.querySelector(".fc-bars .d")?.textContent,
     same:
       (document.querySelector(".forecast")?.dataset.fc ?? "") ===
@@ -471,7 +473,7 @@ try {
   );
   // and from the caches alone (the fetches queued behind a forecast in flight): a repaint mid-forecast keeps them
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.engine.unlocks = () => new Promise(() => {});
     r.engine.supplyCatalogue = () => new Promise(() => {});
     r.go({ kind: "camp" });
@@ -488,7 +490,7 @@ try {
 
   // 11: `· N more` expands the exit lines; `· N unlisted` names the runs with no line; bones piles read as found
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     const exits = Array.from({ length: 12 }, (_, i) => ({
       carried: 10 + i,
@@ -575,7 +577,7 @@ try {
   );
   // no line without a line: 8 exits over 8 runs show neither `more` nor `unlisted`
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     const exits = Array.from({ length: 8 }, (_, i) => ({
       carried: 10 + i,
@@ -632,7 +634,7 @@ try {
   const cardSamples = [];
   const ledgerSalvage = () =>
     page.evaluate(() => {
-      const g = window.__riddle.lineage.gold_ledger ?? [];
+      const g = window.__idlever.lineage.gold_ledger ?? [];
       let i = g.length - 1;
       while (i >= 0 && !/^(returned|banked|died|lost|stalled)\b/.test(g[i].why)) i--;
       return {
@@ -730,7 +732,7 @@ try {
     if (!picked) await pickFast(); // the run ended before three cards showed: the click then lands on a dead button (the check says so)
     const saved = await page.evaluate(() => ({
       mode: document.querySelector("main.watch")?.dataset.mode,
-      blob: JSON.parse(window.__riddle.exportSave()).watch,
+      blob: JSON.parse(window.__idlever.exportSave()).watch,
       dead: window.__qaRunControls?.length === 5 && window.__qaRunControls.every((b) => b.disabled),
     }));
     const fast = {
@@ -818,10 +820,10 @@ try {
     keptKind && !sv.some((r) => r.text.startsWith(keptKind)),
     `the kept ${keptKind} is not among the salvaged rows`,
   );
-  const vaultN = await page.evaluate(() => window.__riddle.lineage.vault.length);
+  const vaultN = await page.evaluate(() => window.__idlever.lineage.vault.length);
   check(vaultN === 1, `the vault holds the kept item (${vaultN}/1: full)`);
   // 12: the next watch starts in `fast`; 14: with the vault full the sheet is skipped and SALVAGED is still built
-  await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
   await waitFor((s) => s?.screen === "watch", "the second watch");
   await openSpeed();
   const mode2 = await page.evaluate(() => ({
@@ -838,7 +840,7 @@ try {
   // the fake's worths equal the client's table, so the ledger is skewed through the lineage the client refreshes at the exit:
   // one more `+$9 salvage` line at the exit's tick — the rows must move to it (the largest row takes the difference)
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     const real = e.lineage.bind(e);
     e.lineage = async () => {
       const L = await real();
@@ -851,7 +853,7 @@ try {
   });
   // Cut 29 §4: the core's `decide` — the vault full and no find beats what it holds: settled without a sheet
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     const st = e.step.bind(e);
     e.step = async (n) => {
       const r = await st(n);

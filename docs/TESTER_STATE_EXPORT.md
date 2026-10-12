@@ -6,7 +6,7 @@ local downloadable diagnostic file, with no upload or deployment.
 
 ## Tester flow
 
-Settings → Debug export → download `riddle-debug-<build>-<timestamp>.json`.
+Settings → Debug export → download `idlever-debug-<build>-<timestamp>.json`.
 Keep the existing save import/export and rules sharing available. Show a busy
 state during capture and a readable error with retry if capture fails. Provide
 copy/manual-save fallback when downloading is unavailable on mobile. No need

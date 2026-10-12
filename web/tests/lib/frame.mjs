@@ -6,8 +6,8 @@ export async function openPanel(page, name, { all = false } = {}) {
   // then sets the viewer's `more` directly (what the stud would remember) and repaints
   if (name === "unlocks" && all && !(await page.locator(".cmd .tile[data-tile=unlocks]").count())) {
     await page.evaluate(() => {
-      localStorage.setItem("riddle.unlocks.all", "1");
-      window.__riddle.go({ kind: "camp" });
+      localStorage.setItem("idlever.unlocks.all", "1");
+      window.__idlever.go({ kind: "camp" });
     });
     await page.waitForTimeout(300);
     return;
@@ -23,7 +23,7 @@ export async function openPanel(page, name, { all = false } = {}) {
   }
 }
 /** Cut 17: the camp's tablets are compact (one tap each) until editing is on — the `edit` tile, a viewer preference that persists
- *  (localStorage `riddle.editing`). `editRows(page)` turns it on (idempotent) so the rows carry their chips, ▲▼, × and `+`. */
+ *  (localStorage `idlever.editing`). `editRows(page)` turns it on (idempotent) so the rows carry their chips, ▲▼, × and `+`. */
 export async function editRows(page) {
   if (await page.locator(".editor.compact").count()) {
     const t = page.locator(".cmd .tile[data-tile=edit]");
@@ -31,7 +31,7 @@ export async function editRows(page) {
     else await page.locator(".editor .row.compact").first().click({ timeout: 5000 });
     await page.waitForTimeout(150);
   }
-  await page.evaluate(() => localStorage.setItem("riddle.editing", "1"));
+  await page.evaluate(() => localStorage.setItem("idlever.editing", "1"));
 }
 
 /** Death screen v2: the trace, the ledger, the margin and every tablet with its numbers fold under one `details` tap. Suites that

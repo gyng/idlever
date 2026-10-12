@@ -46,7 +46,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -70,7 +70,7 @@ async function settle(max = 15_000) {
   }
   await sleep(150);
 }
-const go = (v) => page.evaluate((x) => window.__riddle.go(x), v);
+const go = (v) => page.evaluate((x) => window.__idlever.go(x), v);
 const mod = (path, fn, arg) =>
   page.evaluate(
     async ([p, f, a]) => {
@@ -82,7 +82,7 @@ const mod = (path, fn, arg) =>
 /** Paint a fabricated forecast through the app's own listeners (the shaft, the panel, the editor's marks). */
 const paintForecast = (f) =>
   page.evaluate((f) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const x = { ...r.lastForecast, ...f };
     r.lastForecast = x;
     r.shadow = x.shadowed_by ?? [];
@@ -102,12 +102,12 @@ try {
   });
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.unlocks.all");
+    localStorage.removeItem("idlever.unlocks.all");
   });
   await settle();
   // a lineage past the reveal ladder's first steps (edit, loadout, unlocks, gems), best D6
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     Object.assign(e.lineage, {
@@ -198,7 +198,7 @@ try {
     );
     // a `depth ≥ 5 → bank` row caps the shaft: `D5 · bank`, D6+ capped (Cut 20 §5: the bounty notch past best + 1 is its own)
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.insertRow({ conds: [{ k: "depth>=", n: 5 }], verb: { v: "bank" } }, r.rules.rows.length);
     });
     await sleep(200);
@@ -213,7 +213,7 @@ try {
       `a bank row marks its floor and dims the ones past it (${cap.d5}; capped ${cap.capped.join(",")})`,
     );
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.rules.rows.pop();
       r.rulesChanged();
     });
@@ -221,7 +221,7 @@ try {
 
     // ---- 1c. a shadowed row: the engine's read of the set (the fake mirrors `RuleSet::shadowed_by`) → a dim tablet `↑ R1`
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.editing = true;
       r.rules.rows.splice(
         0,
@@ -254,7 +254,7 @@ try {
     await shot("qa92-shadow");
     // an edit clears the mark until the forecast of the rules now lands; moving R3 to the top frees it
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const [x] = r.rules.rows.splice(2, 1);
       r.rules.rows.unshift(x);
       r.rulesChanged();
@@ -272,7 +272,7 @@ try {
     // the compact tablets carry the mark too
     await paintForecast({ shadowed_by: [null, null, 1] });
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.editing = false;
       r.go({ kind: "camp" });
     });
@@ -285,8 +285,8 @@ try {
       `a compact tablet carries the mark (${compact.join() || "none"})`,
     );
     await page.evaluate(() => {
-      window.__riddle.editing = true;
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.editing = true;
+      window.__idlever.go({ kind: "camp" });
     });
     await settle();
 
@@ -310,14 +310,14 @@ try {
       .first()
       .click({ timeout: 5000 });
     await sleep(200);
-    const r1 = await page.evaluate(() => window.__riddle.rules.rows[0].conds[0]);
+    const r1 = await page.evaluate(() => window.__idlever.rules.rows[0].conds[0]);
     check(
       `${r1.n}%` === pick || `${r1.n}` === pick,
       `one tap on a value sets it (${JSON.stringify(r1)} ← ${pick})`,
     );
     // the verb picker: another row's verb the vocabulary does not offer sits dim with its reason
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.rules.rows[0].verb = { v: "drink", a: "mystery" };
       r.go({ kind: "camp" });
     });
@@ -344,7 +344,7 @@ try {
 
     // ---- the edit tile never turns the editor off; the chosen trait reads chosen
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.editing = false;
       r.go({ kind: "camp" });
     });
@@ -392,7 +392,7 @@ try {
 
     // ---- the unlock tiles and sheets
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const cat = [
         { id: "auto_supply", cost: 3, owned: false, available: false, needs: "◆2 more", gold: 600 },
         { id: "rogue", cost: 0, owned: false, available: false, needs: "bank once", gold: 0 },
@@ -414,7 +414,7 @@ try {
       ];
       r.engine.unlocks = async () => cat;
       r.engine.unlockDeltas = async () => cat;
-      localStorage.setItem("riddle.unlocks.all", "1");
+      localStorage.setItem("idlever.unlocks.all", "1");
       r.go({ kind: "camp" });
     });
     await settle();
@@ -457,7 +457,7 @@ try {
       .click({ timeout: 5000 });
     await sleep(200);
     const eff = await text(".sheet-wrap .unlock-sheet .effect-line");
-    const vmax = await page.evaluate(() => window.__riddle.vocab.max_rows);
+    const vmax = await page.evaluate(() => window.__idlever.vocab.max_rows);
     check(
       eff.join() === `rows ${vmax} → ${vmax + 1}`,
       `the \`+1 rule slot\` sheet says what it gives ("${eff.join()}")`,
@@ -478,11 +478,11 @@ try {
     await sleep(100);
     await page.keyboard.press("Escape");
     await sleep(100);
-    await page.evaluate(() => localStorage.removeItem("riddle.unlocks.all"));
+    await page.evaluate(() => localStorage.removeItem("idlever.unlocks.all"));
 
     // ---- the XP bar is the engine's ladder (`classes[c].next`), not a client one
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.lineage = {
         ...r.lineage,
         trait_offer: [],
@@ -501,7 +501,7 @@ try {
     );
     // ---- the gold sheet on an empty ledger
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.lineage = { ...r.lineage, gold_ledger: [] };
       r.go({ kind: "camp" });
     });
@@ -540,7 +540,7 @@ try {
       verdict: "dice",
       baseline: 1,
       trace: { turns },
-      morgue: "Riddle morgue · seed 1 · heir 2 · run 7\nclass fighter L1 · trait curious",
+      morgue: "Idlever morgue · seed 1 · heir 2 · run 7\nclass fighter L1 · trait curious",
       nothing_beats_base: true,
       notes: [
         "R2 attack saved him.",
@@ -588,7 +588,7 @@ try {
     await shot("qa92-dice");
     // the camp's reach lands: a loss drops to the bottom, dim, never the gem's; inside the ± the higher survival leads
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__dd = r.engine.deathDeltas;
       const pat = (conds, v, survive) => ({
         row: { conds, verb: { v } },
@@ -650,7 +650,7 @@ try {
       gem: document.querySelector(".gem.patch-gem .gem-n")?.textContent,
     }));
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.engine.deathDeltas = r.__dd;
     });
     const order = d.rows.map((x) => x.t).join(" | ");
@@ -676,7 +676,7 @@ try {
     await shot("qa92-rerank");
   } else {
     await page.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages = undefined;
       a.engine = { ...a.engine, wallEdit: async () => null };
     });
@@ -684,7 +684,7 @@ try {
 
   // ---- the report: one tile order; the shadowed pending line; LEARNED; the gold words; the plateau's floor
   await page.evaluate(() => {
-    window.__riddle.lineage.counters = [
+    window.__idlever.lineage.counters = [
       {
         boss: "goblin_warlord",
         text: "attack boss",
@@ -692,7 +692,7 @@ try {
       },
     ];
   });
-  const L = await page.evaluate(() => window.__riddle.lineage);
+  const L = await page.evaluate(() => window.__idlever.lineage);
   const base = {
     elapsed_s: 3600,
     runs: 16,
@@ -752,7 +752,7 @@ try {
     },
   };
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows.splice(
       0,
       r.rules.rows.length,

@@ -2,12 +2,12 @@
 //   full — everything (blood and ichor sprays, floor splats, knockback, trauma shake, hit-stop, kill chunks)
 //   low  — half the particles, splats fewer and fainter, a small shake, no hit-stop
 //   off  — no gore (sprays, chunks, splats), no shake, no hit-stop, no knockback; flashes, numbers and lights stay (they carry meaning)
-// Reduced motion (quality.ts) still drops every motion effect at any level. localStorage `riddle.effects`; `?effects=` pins it for a
-// page. A change is announced on `window` as `riddle:effects` so a live viewer picks it up without a reload.
+// Reduced motion (quality.ts) still drops every motion effect at any level. localStorage `idlever.effects`; `?effects=` pins it for a
+// page. A change is announced on `window` as `idlever:effects` so a live viewer picks it up without a reload.
 export type FxLevel = "full" | "low" | "off";
 export const FX_LEVELS: readonly FxLevel[] = ["full", "low", "off"];
-const KEY = "riddle.effects";
-const EVENT = "riddle:effects";
+const KEY = "idlever.effects";
+const EVENT = "idlever:effects";
 
 let cached: FxLevel | null = null;
 

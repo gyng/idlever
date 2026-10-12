@@ -37,7 +37,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -72,7 +72,7 @@ try {
 
   // fill the set to max_rows with rows the fake's patch candidates never equal
   const max = await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const filler = [
       { conds: [{ k: "hp>", n: 90 }], verb: { v: "rest" } },
       { conds: [{ k: "foes>=", n: 4 }], verb: { v: "retreat" } },
@@ -92,7 +92,7 @@ try {
   check(!full.plus, "no + on a full set");
   const setNow = () =>
     page.evaluate(() =>
-      window.__riddle.rules.rows.map((r) => JSON.stringify([r.conds, r.verb])).join("|"),
+      window.__idlever.rules.rows.map((r) => JSON.stringify([r.conds, r.verb])).join("|"),
     );
   const sheet = () =>
     page.evaluate(() =>
@@ -129,8 +129,8 @@ try {
     morgue: "",
   });
   await page.evaluate((d) => {
-    window.__riddle.rowFires = null;
-    window.__riddle.go({ kind: "death", death: d });
+    window.__idlever.rowFires = null;
+    window.__idlever.go({ kind: "death", death: d });
   }, death(patch));
   await waitFor((s) => s?.screen === "death", "death");
   check(
@@ -202,7 +202,7 @@ try {
     `counter ${over.count}, send enabled`,
   );
   const engineRows = await page.evaluate(
-    async () => (await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows.length,
+    async () => (await window.__idlever.engine.lineage()).sets[window.__idlever.active].rows.length,
   );
   check(engineRows === max, `the engine took the set (${engineRows} rows)`);
 
@@ -214,8 +214,8 @@ try {
     forecast_delta: 0.04,
   };
   await page.evaluate((d) => {
-    window.__riddle.rowFires = [0, 5, 3, 2];
-    window.__riddle.go({ kind: "death", death: d });
+    window.__idlever.rowFires = [0, 5, 3, 2];
+    window.__idlever.go({ kind: "death", death: d });
   }, death(patch2));
   await waitFor((s) => s?.screen === "death", "the second death");
   await applyTop();
@@ -249,8 +249,8 @@ try {
     forecast_delta: 0.04,
   };
   await page.evaluate((d) => {
-    window.__riddle.rowFires = null;
-    window.__riddle.go({ kind: "death", death: d });
+    window.__idlever.rowFires = null;
+    window.__idlever.go({ kind: "death", death: d });
   }, death(patch3));
   await waitFor((s) => s?.screen === "death", "the third death");
   await applyTop();
@@ -269,12 +269,12 @@ try {
   );
   // a card row is never offered for the drop (it sits outside max_rows)
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.insertRow({ conds: [], verb: { v: "tactic", a: "kite_archers" } }, 1, "card");
   });
   await page.evaluate((d) => {
-    window.__riddle.rowFires = null;
-    window.__riddle.go({ kind: "death", death: d });
+    window.__idlever.rowFires = null;
+    window.__idlever.go({ kind: "death", death: d });
   }, death(patch));
   await waitFor((s) => s?.screen === "death", "the fourth death");
   await applyTop();
@@ -287,7 +287,7 @@ try {
   await page.keyboard.press("Escape");
   await sleep(150);
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows.splice(1, 1);
     r.rulesChanged();
     r.go({ kind: "camp" });
@@ -297,7 +297,7 @@ try {
 
   // a death whose patch row the set already holds: `at R1`, the tap opens the camp on it and inserts nothing
   const heldPatch = { ...patch3, insert_at: 0 };
-  await page.evaluate((d) => window.__riddle.go({ kind: "death", death: d }), death(heldPatch));
+  await page.evaluate((d) => window.__idlever.go({ kind: "death", death: d }), death(heldPatch));
   await waitFor((s) => s?.screen === "death", "death again");
   const heldText = await page.locator("button.patch .surv").first().innerText();
   const heldTarget = await page.evaluate(
@@ -325,7 +325,7 @@ try {
     replace: true,
   };
   await page.evaluate((p) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.go({
       kind: "report",
       report: {

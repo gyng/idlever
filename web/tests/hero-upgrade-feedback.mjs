@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         { openHero } = await import("/src/ui/town.ts");
       window.buys = 0;
       a.lineage = {
@@ -69,7 +69,7 @@ try {
     assert.ok(await p.getByRole("button", { name: "Upgrade health", exact: true }).isDisabled());
     assert.ok(await p.locator(".sheet-wrap .hero-sheet .hero-history").evaluate((e) => e.open));
     await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage = {
         ...a.lineage,
         live: { depth: 5, turn: 1 },
@@ -81,7 +81,7 @@ try {
     assert.ok((await p.locator(".hero-sheet").textContent()).includes("Hero away"));
     for (const button of await p.locator(".legacy-buy").all()) assert.ok(await button.isDisabled());
     await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.live = { depth: 5, turn: 2 };
       await a.afterLineage();
     });
@@ -90,7 +90,7 @@ try {
       "turn alone does not repaint",
     );
     await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage = {
         ...a.lineage,
         live: null,
@@ -105,7 +105,7 @@ try {
       await a.afterLineage();
     });
     await p.evaluate(() => {
-      window.__riddle.engine.upgradeHero = async () => {
+      window.__idlever.engine.upgradeHero = async () => {
         window.buys++;
         throw Error("temporary refusal");
       };
@@ -131,8 +131,8 @@ try {
       window.oldSheet = document.querySelector(".hero-sheet");
       window.oldHtml = window.oldSheet.innerHTML;
       closeAllSheets();
-      window.__riddle.lineage.bloodline.points = 100;
-      await window.__riddle.afterLineage();
+      window.__idlever.lineage.bloodline.points = 100;
+      await window.__idlever.afterLineage();
     });
     assert.ok(await p.evaluate(() => window.oldSheet.innerHTML === window.oldHtml));
     assert.deepEqual(errors, []);

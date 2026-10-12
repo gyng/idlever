@@ -1,12 +1,12 @@
 <h1 align="center">
-  <img src="web/public/art/title-wordmark-v1.webp" alt="Riddle" width="480">
+  <img src="web/public/art/idlever-wordmark-v1.webp" alt="Idlever" width="480">
 </h1>
 
 <p align="center"><strong>Idle roguelike</strong></p>
 
 <p align="center">
-  <a href="https://gyng.github.io/riddle/">Play</a> ·
-  <a href="https://github.com/gyng/riddle/releases/tag/v0.1.0-alpha.1">Alpha release</a>
+  <a href="https://gyng.github.io/idlever/">Play</a> ·
+  <a href="https://github.com/gyng/idlever/releases/tag/v0.1.0-alpha.2">Alpha release</a>
 </p>
 
 Your hero explores the dungeon and fights automatically. Choose equipment,

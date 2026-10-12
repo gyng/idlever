@@ -39,14 +39,14 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?dev=1&fresh=1&runs=0&seed=611`);
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90000 });
-    check((await page.evaluate(() => window.__riddle.kind)) === "wasm", "real WASM required");
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90000 });
+    check((await page.evaluate(() => window.__idlever.kind)) === "wasm", "real WASM required");
     const house = page.locator(".town-tag[data-next=house]");
     if (await house.count()) {
       await house.first().click();
       await page.waitForFunction(
         () =>
-          window.__riddle.lineage.town?.home !== false && !document.querySelector(".sheet-wrap"),
+          window.__idlever.lineage.town?.home !== false && !document.querySelector(".sheet-wrap"),
         null,
         { timeout: 15000 },
       );

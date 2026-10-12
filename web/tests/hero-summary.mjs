@@ -9,7 +9,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
   encoding: "utf8",
 }).trim();
 const engine = readFileSync(new URL("./fixtures/earned-gunner-home.json", import.meta.url), "utf8");
-const shots = process.env.RIDDLE_SHOTS;
+const shots = process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const b = await launchBrowser();
 try {
@@ -18,19 +18,19 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&seed=49`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async (engine) => {
       if (
-        !(await window.__riddle.importSave(
+        !(await window.__idlever.importSave(
           JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
         ))
       )
         throw Error("real import");
     }, engine);
-    const saved = await p.evaluate(() => window.__riddle.engine.save());
+    const saved = await p.evaluate(() => window.__idlever.engine.save());
     await p.locator(".hero-details:visible").first().click();
     const actual = await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = a.lineage.hero_slots.find((s) => s.id === a.lineage.selected_bloodline);
       return {
         progress: document.querySelector(".hero-progress").textContent,
@@ -48,9 +48,9 @@ try {
       await p.screenshot({ path: `${shots}/earned-${width}.png` });
     }
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), saved);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), saved);
     const count = await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         { openHero } = await import("/src/ui/town.ts"),
         { closeAllSheets } = await import("/src/ui/sheet.ts");
       let n = 0;
@@ -114,7 +114,7 @@ try {
       check(a.liveListeners.size === before, "live listener removed on close");
       return n;
     });
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), saved);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), saved);
     assert.deepEqual(errors, []);
     console.log(width, count, "hero/class progress and read-only live summary PASS");
     await p.close();

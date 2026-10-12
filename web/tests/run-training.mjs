@@ -19,7 +19,7 @@ try {
     });
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
     await p
-      .waitForFunction(() => window.__riddle?.booted)
+      .waitForFunction(() => window.__idlever?.booted)
       .catch(async (e) => {
         console.log(
           "BOOT FAILURE DIAGNOSTICS",
@@ -31,9 +31,9 @@ try {
               p
                 .evaluate(() => ({
                   ready: document.readyState,
-                  app: !!window.__riddle,
-                  booted: window.__riddle?.booted,
-                  kind: window.__riddle?.kind,
+                  app: !!window.__idlever,
+                  booted: window.__idlever?.booted,
+                  kind: window.__idlever?.kind,
                   text: document.body.innerText.slice(0, 1600),
                 }))
                 .catch((err) => ({ error: err.message })),
@@ -44,7 +44,7 @@ try {
         throw e;
       });
     const n = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       let n = 0;
       const check = (ok, label) => {
         if (!ok) throw Error(label);

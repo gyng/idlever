@@ -115,12 +115,12 @@ for (const V of VIEWS) {
     throw new Error(`${V.name}: timeout waiting for ${label}`);
   };
   const camp = async () => {
-    await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+    await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
     await sleep(300);
   };
   const withState = (fn) =>
     page.evaluate(async (src) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const save = JSON.parse(await r.engine.save());
       new Function("e", src)(save);
       r.lineage = await r.engine.load(JSON.stringify(save));
@@ -133,7 +133,7 @@ for (const V of VIEWS) {
     await camp();
     await page.evaluate(() => {
       for (const k of Object.keys(localStorage))
-        if (/^riddle\.(reveal|tracks|keywords|concepts)/.test(k)) localStorage.removeItem(k);
+        if (/^idlever\.(reveal|tracks|keywords|concepts)/.test(k)) localStorage.removeItem(k);
       window.__tips.reset();
     });
   };
@@ -495,14 +495,14 @@ for (const V of VIEWS) {
     };
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: { ...d, verdict: "order", cause_row: 0, order_over: 0 },
         }),
       base,
     );
     await until(
-      () => window.__riddle.screen === "death" && document.querySelector(".death .verdict"),
+      () => window.__idlever.screen === "death" && document.querySelector(".death .verdict"),
       "the death",
     );
     await density("death");
@@ -517,7 +517,7 @@ for (const V of VIEWS) {
     });
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: { ...d, lever: { kind: "wait", text: "Steady L2" } },
         }),
@@ -526,7 +526,7 @@ for (const V of VIEWS) {
     await until(() => document.querySelector(".death-lever"), "the pre-pen death");
     await density("death-prepen");
     await longPress(".death-lever");
-    const lv = { tip: await tipOpen(), screen: await page.evaluate(() => window.__riddle.screen) };
+    const lv = { tip: await tipOpen(), screen: await page.evaluate(() => window.__idlever.screen) };
     check(
       lv.tip === "lever" && lv.screen === "death",
       `${V.name} · the lever's tip on ${V.touch ? "long-press" : "hover"}, the lever not pulled (${JSON.stringify(lv)})`,
@@ -538,12 +538,12 @@ for (const V of VIEWS) {
       waitUntil: "domcontentloaded",
     });
     await until(
-      () => window.__riddle?.screen === "report" && document.querySelector(".report-sheet"),
+      () => window.__idlever?.screen === "report" && document.querySelector(".report-sheet"),
       "the report",
       60_000,
     );
     await page.evaluate(() => {
-      localStorage.removeItem("riddle.keywords");
+      localStorage.removeItem("idlever.keywords");
       window.__tips.reset();
     });
     await sleep(1500);

@@ -2,7 +2,7 @@
 import { responsiveWidths } from "./lib/viewport-cases.mjs";
 // Current run UI gates (docs/RUNS_UI.md §8, superseded roster: docs/UX_BLOODLINES.md).
 // Real WASM at 400×800; responsive earned bloodline checks at 320/400/1440×900.
-// RIDDLE_BROWSER=headed selects the GPU. runs=1 enables the actual open-app clock;
+// IDLEVER_BROWSER=headed selects the GPU. runs=1 enables the actual open-app clock;
 // runs=0 freezes the earned roster fixture while public purchases/selection are tested.
 //   manual    empty town → manual first house → Ready resident; no premature log/auto;
 //             original ≤5 main functions and ≤12 above-fold functions.
@@ -56,7 +56,7 @@ async function open(q, viewport = { width: 400, height: 800 }) {
   });
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   await page.goto(`${url}?dev=1&${q.includes("runs=") ? "" : "runs=1&"}${q}`);
-  await until(() => window.__riddle?.booted, "boot", 60_000);
+  await until(() => window.__idlever?.booted, "boot", 60_000);
 }
 const shot = async (name, ms = 400) => {
   if (shots) {
@@ -78,8 +78,8 @@ async function until(pred, label, timeout = 20_000, arg) {
 const camp = async () => {
   await until(
     () =>
-      window.__riddle?.booted &&
-      window.__riddle.screen === "camp" &&
+      window.__idlever?.booted &&
+      window.__idlever.screen === "camp" &&
       !!document.querySelector(".town"),
     "camp",
     30_000,
@@ -92,7 +92,7 @@ const lanes = () =>
     const root = document.querySelector(innerWidth >= 1024 ? ".hero-desktop" : ".hero-mobile");
     const rows = [...(root?.querySelectorAll(".hero-row") ?? [])];
     return {
-      n: window.__riddle.lineage.hero_slots.length,
+      n: window.__idlever.lineage.hero_slots.length,
       rows: rows.map((row) => {
         const title = row.querySelector(".hero-action")?.title ?? "",
           hp = /^(\d+)\/(\d+) hp/.exec(title);
@@ -101,7 +101,7 @@ const lanes = () =>
           state: row.dataset.state,
           tag: row.tagName,
           text: row.textContent.replace(/\s+/g, " ").trim(),
-          auto: window.__riddle.lineage.tree?.auto_send ? "1" : "0",
+          auto: window.__idlever.lineage.tree?.auto_send ? "1" : "0",
           gauge: hp ? (100 * Number(hp[1])) / Number(hp[2]) : null,
         };
       }),
@@ -121,7 +121,7 @@ async function openRunLog() {
 }
 const L = () =>
   page.evaluate(() => {
-    const l = window.__riddle.lineage;
+    const l = window.__idlever.lineage;
     return {
       live: l.live ?? null,
       runs: l.runs ?? [],
@@ -200,7 +200,7 @@ const fold = (scope = "") =>
 /** send by the gem; resolves on the watch with the run's id (the engine's `send` answer, tapped) */
 async function sendWatch() {
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     if (r.__sendTap) return;
     const o = r.engine.send.bind(r.engine);
     r.engine.send = async (...args) => {
@@ -215,7 +215,7 @@ async function sendWatch() {
   });
   await page.locator(".console .gem").click();
   await until(
-    () => window.__riddle.screen === "watch" && window.__sentRun !== undefined,
+    () => window.__idlever.screen === "watch" && window.__sentRun !== undefined,
     "the watch",
     30_000,
   );
@@ -232,8 +232,8 @@ try {
     await open(`seed=${Number(process.env.RUNSUI_SEED ?? 4101)}&fresh=1`);
     await camp();
     const empty = await page.evaluate(() => ({
-      home: window.__riddle.lineage.town.home,
-      heroes: window.__riddle.lineage.hero_slots.length,
+      home: window.__idlever.lineage.town.home,
+      heroes: window.__idlever.lineage.hero_slots.length,
       send: document.querySelector(".console .gem")?.disabled,
       build: !!document.querySelector('.town-tag.build-marker[role="button"]:not([hidden])'),
     }));
@@ -250,8 +250,8 @@ try {
     await page.locator('.town-tag[data-next="house"]').click();
     await until(
       () =>
-        window.__riddle.lineage.town.home === true &&
-        window.__riddle.lineage.hero_slots.length === 1 &&
+        window.__idlever.lineage.town.home === true &&
+        window.__idlever.lineage.hero_slots.length === 1 &&
         !document.querySelector(".console .gem")?.disabled,
       "the first resident",
       15000,
@@ -313,7 +313,7 @@ try {
     await camp();
     const a = await until(
       () => {
-        const l = window.__riddle.lineage.live;
+        const l = window.__idlever.lineage.live;
         return l && l.turn > 0 ? l : null;
       },
       "the run live in the town",
@@ -331,11 +331,11 @@ try {
     check(/watch/i.test(s.gem), `a run under way: the gem reads \`watch\` (${s.gem})`);
     const b = await until(
       (t0) => {
-        const l = window.__riddle.lineage.live;
+        const l = window.__idlever.lineage.live;
         return l && l.turn > t0 + 10
           ? l
-          : (window.__riddle.lineage.runs ?? []).some(
-                (r) => r.id === window.__riddle.lineage.live?.run_id,
+          : (window.__idlever.lineage.runs ?? []).some(
+                (r) => r.id === window.__idlever.lineage.live?.run_id,
               )
             ? l
             : null;
@@ -354,7 +354,7 @@ try {
     });
     await page.locator(".hero-row[data-state=live]:visible .hero-jump").first().click();
     await until(
-      () => window.__riddle.screen === "watch" && window.__sentRun !== undefined,
+      () => window.__idlever.screen === "watch" && window.__sentRun !== undefined,
       "the watch from the lane",
       20_000,
     );
@@ -371,7 +371,7 @@ try {
     // the same unwatched `advance` the town's runner makes, in long steps)
     await sleep(3000);
     await page.evaluate(async (id) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       for (let k = 0; k < 900; k++) {
         const a = await r.engine.advance(20_000);
         if (a.ended.includes(id) || !a.live) break;
@@ -379,7 +379,7 @@ try {
       await r.refresh();
     }, run);
     const rec = await until(
-      (id) => (window.__riddle.lineage.runs ?? []).find((r) => r.id === id) ?? null,
+      (id) => (window.__idlever.lineage.runs ?? []).find((r) => r.id === id) ?? null,
       "the run's end in the log",
       60_000,
       run,
@@ -414,7 +414,7 @@ try {
   // ---- replay: a watched run, its events tapped, hashes the same as its replay; the log's ▶ plays it
   if (part("replay")) {
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       window.__evs = [];
       window.__tapOn = true;
       if (!r.__stepTap) {
@@ -438,7 +438,7 @@ try {
     check(await pressWatchControl(page, "fast"), "Fast is selected through the visible Speed menu");
     // the run to its end (▶▶| as a player would), the exit sheet kept, the report, the camp
     for (let i = 0; i < 600; i++) {
-      const sc = await page.evaluate(() => window.__riddle.screen);
+      const sc = await page.evaluate(() => window.__idlever.screen);
       if (sc === "camp") break;
       if (sc === "watch") {
         if (!(await pressWatchNext(page))) await pressWatchControl(page, "▶▶|");
@@ -452,13 +452,15 @@ try {
       window.__tapOn = false;
     });
     check(
-      await page.evaluate(() => window.__riddle.screen === "camp" && !window.__riddle.lineage.live),
+      await page.evaluate(
+        () => window.__idlever.screen === "camp" && !window.__idlever.lineage.live,
+      ),
       "the watched run finishes through the normal exit flow before replay inspection",
     );
     await camp();
     const live = await page.evaluate(new Function(`return (${HASH})(window.__evs)`));
     const rep = await page.evaluate(async (id) => {
-      const x = await window.__riddle.engine.replay(id);
+      const x = await window.__idlever.engine.replay(id);
       return (
         x && {
           hash: x.hash,
@@ -523,15 +525,15 @@ try {
     await page.locator('.town-tag[data-next="house"]').click();
     await until(
       () =>
-        window.__riddle.lineage.town.home === true &&
-        window.__riddle.lineage.hero_slots.length === 1 &&
+        window.__idlever.lineage.town.home === true &&
+        window.__idlever.lineage.hero_slots.length === 1 &&
         !document.querySelector(".console .gem")?.disabled,
       "the first resident before hiring",
       15000,
     );
     // Earn scout access through actual manual sends and paid public hire actions.
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       for (let i = 0; i < 3 && !r.lineage.tree.auto_send; i++) {
         try {
           r.lineage = await r.engine.hire("scout");
@@ -544,7 +546,7 @@ try {
     for (let i = 0; i < 8 && !l.auto; i++) {
       // the sends by hand (the trunk's), each played out unwatched by the open app's clock; the chest opened, the lit worker hired
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         await r.engine.send();
         for (let k = 0; k < 600; k++) {
           const a = await r.engine.advance(20_000);
@@ -571,7 +573,7 @@ try {
     await camp();
     // a run ends; home, he rests
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       await r.engine.send();
       for (let k = 0; k < 400; k++) {
         const a = await r.engine.advance(20_000);
@@ -592,7 +594,7 @@ try {
     check(/send/i.test(s.gem) && !/watch/i.test(s.gem), `resting: the gem sends (${s.gem})`);
 
     const synced = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         { spanOf } = await import("/src/ui/dom.ts");
       const before = document.querySelector(".rest-line .rest")?.textContent;
       await a.engine.advance(60000);
@@ -617,7 +619,7 @@ try {
     );
     // due: the rest left to a second, the open app's clock sends him down by itself
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const a = await r.engine.advance(Math.max(0, (r.lineage.rest_left_s ?? 0) - 2) * 1000);
       void a;
       r.lineage = await r.engine.lineage();
@@ -625,7 +627,7 @@ try {
     });
     await camp();
     const went = await until(
-      () => (window.__riddle.lineage.live?.turn > 0 ? window.__riddle.lineage.live : null),
+      () => (window.__idlever.lineage.live?.turn > 0 ? window.__idlever.lineage.live : null),
       "the next run down by itself",
       30_000,
     ).catch(() => null);
@@ -636,7 +638,7 @@ try {
     );
     if (part("log") || part("density")) {
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         for (let k = 0; k < 400 && r.lineage.live; k++) {
           await r.engine.advance(20_000);
           r.lineage = await r.engine.lineage();
@@ -644,14 +646,14 @@ try {
       });
       // two hours away: an absence and its report
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         await r.absence(2 * 3600);
       });
-      await until(() => window.__riddle.screen === "report", "the absence's report", 120_000);
+      await until(() => window.__idlever.screen === "report", "the absence's report", 120_000);
       await shot("report");
       const tileLog = await page.evaluate(() => !!document.querySelector(".tiles .to-log"));
       check(tileLog, "the report's runs tile opens the log");
-      await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+      await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
       await camp();
       const ll = await L();
       await openRunLog();
@@ -711,9 +713,9 @@ try {
       const dv = g.entries.find((e) => e.verdict);
       if (dv) {
         await page.locator(`.run-entry[data-run="${dv.run}"] [data-verdict]`).click();
-        await until(() => window.__riddle.screen === "death", "the verdict", 20_000);
+        await until(() => window.__idlever.screen === "death", "the verdict", 20_000);
         check(true, `a death's entry opens its verdict (run ${dv.run})`);
-        await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+        await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
         await camp();
       } else
         out.push(
@@ -794,7 +796,7 @@ try {
       check(
         await page.evaluate(
           async (engine) =>
-            window.__riddle.importSave(
+            window.__idlever.importSave(
               JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
             ),
           engine,
@@ -808,19 +810,19 @@ try {
       const root = width < 1024 ? ".sheet-wrap:not([hidden]) .heroes-sheet" : ".hero-desktop";
       for (const expected of [2, 3]) {
         const before = await page.evaluate(() => ({
-          gold: window.__riddle.lineage.gold,
-          price: window.__riddle.lineage.bloodline_price,
+          gold: window.__idlever.lineage.gold,
+          price: window.__idlever.lineage.bloodline_price,
         }));
         await page.locator(`${root} .hero-add`).click();
         if (await page.locator(".bloodline-confirm").count())
           await page.locator(".bloodline-confirm").click();
         await until(
-          (n) => window.__riddle.lineage.hero_slots.length === n,
+          (n) => window.__idlever.lineage.hero_slots.length === n,
           "paid bloodline founded",
           15000,
           expected,
         );
-        const after = await page.evaluate(() => window.__riddle.lineage.gold);
+        const after = await page.evaluate(() => window.__idlever.lineage.gold);
         check(
           after === before.gold - before.price,
           `${width}: bloodline ${expected} pays its actual $${before.price} price`,
@@ -844,7 +846,7 @@ try {
           details: !!row.querySelector(".hero-details"),
         })),
       );
-      const slots = await page.evaluate(() => window.__riddle.lineage.hero_slots);
+      const slots = await page.evaluate(() => window.__idlever.lineage.hero_slots);
       check(
         rows.length === 3 &&
           rows.every(
@@ -863,7 +865,7 @@ try {
         `${width}: full roster offers no fourth bloodline`,
       );
       const refused = await page.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           before = await a.engine.save();
         let failed = false;
         try {
@@ -876,7 +878,7 @@ try {
       check(refused, `${width}: fourth bloodline is refused with exact save preservation`);
       if (width === 400) {
         const observed = await page.evaluate(async () => {
-          const a = window.__riddle,
+          const a = window.__idlever,
             before = await a.engine.save();
           const slots = a.lineage.hero_slots;
           // Controlled presentation only: Rust state/save is never edited.
@@ -922,12 +924,12 @@ try {
           .click();
       } else await page.locator('.hero-desktop [data-slot="3"] .hero-jump').click();
       await until(
-        () => window.__riddle.lineage.selected_bloodline === 3,
+        () => window.__idlever.lineage.selected_bloodline === 3,
         "hero row selects its bloodline",
         15000,
       );
       const selected = await page.evaluate(() =>
-        window.__riddle.lineage.hero_slots.find((slot) => slot.id === 3),
+        window.__idlever.lineage.hero_slots.find((slot) => slot.id === 3),
       );
       check(
         (await lanes()).rows.some(
@@ -940,7 +942,7 @@ try {
       await until(
         () =>
           !!document.querySelector(".hero-sheet") &&
-          window.__riddle.lineage.selected_bloodline === 2,
+          window.__idlever.lineage.selected_bloodline === 2,
         "Details selects the requested bloodline",
         15000,
       );
@@ -955,7 +957,7 @@ try {
         await page.evaluate(
           (expected) =>
             JSON.stringify(
-              window.__riddle.lineage.hero_slots.map(({ id, legacy }) => ({ id, legacy })),
+              window.__idlever.lineage.hero_slots.map(({ id, legacy }) => ({ id, legacy })),
             ) === expected,
           JSON.stringify(slots.map(({ id, legacy }) => ({ id, legacy }))),
         ),

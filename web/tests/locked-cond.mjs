@@ -37,7 +37,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -80,7 +80,7 @@ const rowText = (i) =>
   );
 const engineRows = () =>
   page.evaluate(async () =>
-    JSON.stringify((await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows),
+    JSON.stringify((await window.__idlever.engine.lineage()).sets[window.__idlever.active].rows),
   );
 
 try {
@@ -90,7 +90,7 @@ try {
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   await editRows(page); // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
   const vocab = await page.evaluate(() => {
-    const v = window.__riddle.vocab;
+    const v = window.__idlever.vocab;
     return {
       locked: (v.locked ?? []).map((l) => ({ k: l.cond.k, needs: l.needs })),
       offered: v.conds.map((c) => c.k),
@@ -184,7 +184,7 @@ try {
 
   // Cut 9 §4: a card row's trigger on its chip; the yours line no longer says `· card R1 first` (Cut 12 §1: a card sits above on purpose)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.unlockCat = await r.engine.unlocks();
     r.rules.rows.splice(
       0,
@@ -211,7 +211,7 @@ try {
   );
   // the card below the player row: no warning
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows.reverse();
     r.rulesChanged();
   });

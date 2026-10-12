@@ -45,7 +45,7 @@ original8+6; whole-second CPU phase rounding limits precision.
 Diagnostic command (freshly built example, no gate acceptance):
 
 ```
-cargo run -q --profile fast -p riddle-core --example dayplayer -- --checkpoint-bench CHECKPOINT.json --repeats 7 --output ENCODED.json
+cargo run -q --profile fast -p idlever-core --example dayplayer -- --checkpoint-bench CHECKPOINT.json --repeats 7 --output ENCODED.json
 ```
 
 It validates the input envelope/checksum, decodes the complete internal state

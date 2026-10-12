@@ -42,10 +42,10 @@ async function earned(tag) {
   });
   page.on("pageerror", (e) => errors.push(`${tag} pageerror: ${e.message}`));
   await page.goto(`${url}?fresh=1&seed=52`);
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+  await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
   const slots = await page.evaluate(
     async ({ engine }) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (
         !(await a.importSave(
           JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
@@ -74,7 +74,7 @@ async function closeSheets(page) {
 /** every bloodline's orders, read through the engine (the selection restored) */
 const allOrders = (page) =>
   page.evaluate(async () => {
-    const a = window.__riddle,
+    const a = window.__idlever,
       home = a.lineage.selected_bloodline ?? 1,
       ids = (a.lineage.hero_slots ?? []).map((s) => s.id),
       o = {};
@@ -94,7 +94,7 @@ try {
 
     // ---- before: buying a rank by hand (ranks off, the fixture's own) — the pill opens the works, the promote buys it: 2 taps
     const before = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         L = a.lineage,
         id = L.tree?.lit_rank,
         r0 = L.tree?.nodes.find((n) => n.id === id)?.rank ?? 0;
@@ -116,13 +116,13 @@ try {
     await page
       .waitForFunction(
         ({ id, r0 }) =>
-          (window.__riddle.lineage.tree?.nodes.find((n) => n.id === id)?.rank ?? 0) > r0,
+          (window.__idlever.lineage.tree?.nodes.find((n) => n.id === id)?.rank ?? 0) > r0,
         before,
         { timeout: 5000 },
       )
       .catch(() => {});
     const r1 = await page.evaluate(
-      (id) => window.__riddle.lineage.tree?.nodes.find((n) => n.id === id)?.rank ?? 0,
+      (id) => window.__idlever.lineage.tree?.nodes.find((n) => n.id === id)?.rank ?? 0,
       before.id,
     );
     check(
@@ -156,8 +156,8 @@ try {
       const { kennelShown } = await import("/src/ui/pets.ts"),
         { kingSlain } = await import("/src/ui/king-eta.ts");
       return {
-        kennel: kennelShown(window.__riddle.lineage),
-        king: kingSlain(window.__riddle.lineage),
+        kennel: kennelShown(window.__idlever.lineage),
+        king: kingSlain(window.__idlever.lineage),
       };
     });
     check(
@@ -208,7 +208,7 @@ try {
     await page.waitForTimeout(400);
     const perk = await page.evaluate(
       async () =>
-        (await window.__riddle.engine.lineage()).tree?.nodes.find((n) => n.id === "scout")?.perk,
+        (await window.__idlever.engine.lineage()).tree?.nodes.find((n) => n.id === "scout")?.perk,
     );
     check(perk === "safer start", `a perk chip sets the worker's perk (setPerk → ${perk})`);
     await page.locator('.orders-sheet [data-perk-of="scout"] [data-perk="shorter rest"]').click();
@@ -265,7 +265,7 @@ try {
 
     // ---- the absence: ranks and Legacy bought with no tap; the report's ledger; the routine return ≤ 2 taps
     const pre = await page.evaluate(() => {
-      const L = window.__riddle.lineage;
+      const L = window.__idlever.lineage;
       return {
         ranks: Object.fromEntries(
           (L.tree?.nodes ?? []).filter((n) => n.rank).map((n) => [n.id, n.rank]),
@@ -274,14 +274,14 @@ try {
       };
     });
     const rep = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         rep = await a.engine.runOfflineQuick(8 * 3600);
       await a.refresh();
       window.__rep120 = rep;
       return { workers: rep.workers ?? [], feats: rep.feats ?? [], packages: rep.packages ?? [] };
     });
     const post = await page.evaluate(() => {
-      const L = window.__riddle.lineage;
+      const L = window.__idlever.lineage;
       return {
         ranks: Object.fromEntries(
           (L.tree?.nodes ?? []).filter((n) => n.rank).map((n) => [n.id, n.rank]),
@@ -310,7 +310,7 @@ try {
 
     // the While away report: the Workers fold is the ledger, one line per worker
     await page.evaluate(() =>
-      window.__riddle.go({ kind: "report", report: window.__rep120, absence: true }),
+      window.__idlever.go({ kind: "report", report: window.__rep120, absence: true }),
     );
     await page.waitForTimeout(700);
     const led = await page.evaluate(() => {
@@ -354,7 +354,7 @@ try {
 
     // the routine return, three bloodlines, same for all set: report → watch
     const back = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         btn = () => document.querySelector(".report .collect-go");
       let taps = 0;
       for (let i = 0; i < 3 && a.screen !== "watch" && btn(); i++) {
@@ -380,7 +380,7 @@ try {
   if (parts.includes("posts")) {
     const { page } = await earned("posts");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         L = a.lineage;
       a.engine.lineage = async () => a.lineage; // (the fixture below is the real lineage with the next worker counting)
       const nodes = L.tree.nodes.map((n) =>
@@ -472,7 +472,7 @@ try {
     const page = await browser.newPage({ viewport: { width: 400, height: 860 } });
     page.on("pageerror", (e) => errors.push(`news pageerror: ${e.message}`));
     await page.goto(`${url}?engine=fake&fresh=1&seed=5&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 60_000 });
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 60_000 });
     const r = await page.evaluate(async () => {
       const { cries, writeDiary } = await import("/src/ui/crier.ts");
       const rep = {
@@ -496,7 +496,7 @@ try {
         ],
       };
       try {
-        localStorage.removeItem("riddle.diary.991");
+        localStorage.removeItem("idlever.diary.991");
       } catch {}
       const cs = cries(rep, { walls: [] });
       const diary = writeDiary({ seed: 991, age_h: 80 }, cs);
@@ -519,7 +519,7 @@ try {
     const { page } = await earned("offer");
     const st = () =>
       page.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           L = a.lineage,
           { pendingOffer, legacyUseful, rankDue } = await import("/src/ui/order-offer.ts");
         const el = document.querySelector(".camp .order-offer");
@@ -535,7 +535,7 @@ try {
           text: el && !el.hidden ? el.textContent.replace(/\s+/g, " ").trim() : "",
           stored: (() => {
             try {
-              return localStorage.getItem(`riddle.offers.${L.seed ?? 0}`);
+              return localStorage.getItem(`idlever.offers.${L.seed ?? 0}`);
             } catch {
               return null;
             }
@@ -544,7 +544,7 @@ try {
       });
     const recamp = () =>
       page.evaluate(async () => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.go({
           kind: "report",
           report: {
@@ -570,7 +570,7 @@ try {
     // a fresh viewer: no offer dismissed yet
     await page.evaluate(() => {
       for (const k of Object.keys(localStorage))
-        if (k.startsWith("riddle.offers.")) localStorage.removeItem(k);
+        if (k.startsWith("idlever.offers.")) localStorage.removeItem(k);
     });
     await recamp();
     let s = await st();
@@ -590,7 +590,7 @@ try {
     // accept: the order set, shared to the three bloodlines; dismissed for good
     await page.locator(`.order-offer [data-offer-yes="${first}"]`).click();
     await page
-      .waitForFunction((k) => window.__riddle.lineage.orders?.[k] !== "off", first, {
+      .waitForFunction((k) => window.__idlever.lineage.orders?.[k] !== "off", first, {
         timeout: 5000,
       })
       .catch(() => {});
@@ -647,10 +647,10 @@ try {
     const p2 = r2.page;
     await p2.evaluate(() => {
       for (const k of Object.keys(localStorage))
-        if (k.startsWith("riddle.offers.")) localStorage.removeItem(k);
+        if (k.startsWith("idlever.offers.")) localStorage.removeItem(k);
     });
     const back = await p2.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         { pendingOffer } = await import("/src/ui/order-offer.ts");
       const rep = await a.engine.runOfflineQuick(8 * 3600);
       await a.refresh();

@@ -49,11 +49,11 @@ async function until(pred, label, timeout = 20_000, arg) {
   }
   throw new Error(`timeout waiting for ${label}`);
 }
-const screen = () => page.evaluate(() => window.__riddle?.screen);
+const screen = () => page.evaluate(() => window.__idlever?.screen);
 const live = () => page.evaluate(() => window.__autodismiss?.live() ?? []);
 const withState = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     new Function("e", src)(save);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -62,7 +62,7 @@ const withState = (fn) =>
 /** What a timeout must never change: gold, marks, unlocks, the worn packages, the rules. */
 const ledger = () =>
   page.evaluate(async () => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       L = await r.engine.lineage();
     return JSON.stringify({
       gold: L.gold,
@@ -80,7 +80,7 @@ async function toReport(q = `&autodismiss=${SCALE}`, seed = 4101) {
     waitUntil: "domcontentloaded",
   });
   await until(
-    () => window.__riddle?.screen === "report" && document.querySelector(".report-sheet"),
+    () => window.__idlever?.screen === "report" && document.querySelector(".report-sheet"),
     "the report",
     60_000,
   );
@@ -90,12 +90,12 @@ const boot = async (seed, q = `&autodismiss=${SCALE}`) => {
   await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=${seed}${q}`, {
     waitUntil: "domcontentloaded",
   });
-  await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+  await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
 };
 /** The last absence's report again (a fresh clock). */
 const reReport = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.go({ kind: "report", report: r.lastAbsence.report, absence: true });
   });
 
@@ -112,7 +112,7 @@ try {
       `the report's gem carries the ring (${L.map((x) => `${x.cls.split(" ")[0]} ${x.ms} ms`).join(", ")})`,
     );
     await until(
-      () => window.__riddle.screen === "camp",
+      () => window.__idlever.screen === "camp",
       "the camp after the report's time",
       REPORT + 6000,
     );
@@ -149,7 +149,7 @@ try {
     await page.mouse.move(5, 300);
     const t = Date.now();
     await until(
-      () => window.__riddle.screen === "camp",
+      () => window.__idlever.screen === "camp",
       "the camp once the pointer left",
       REPORT + 6000,
     );
@@ -179,7 +179,7 @@ try {
       `the return starts it over full (${back[0]?.left} of ${back[0]?.ms} ms)`,
     );
     await until(
-      () => window.__riddle.screen === "camp",
+      () => window.__idlever.screen === "camp",
       "the camp after the return",
       REPORT + 6000,
     );
@@ -195,7 +195,7 @@ try {
     await page.locator(".settings .auto-continue").click();
     const now = await page.evaluate(() => ({
       t: document.querySelector(".settings .auto-continue").textContent,
-      ls: localStorage.getItem("riddle.autoContinue"),
+      ls: localStorage.getItem("idlever.autoContinue"),
     }));
     check(
       was === "on" && now.t === "off" && now.ls === "0",
@@ -203,7 +203,7 @@ try {
     );
     await page.keyboard.press("Escape");
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.go({
         kind: "report",
         report: {
@@ -230,7 +230,7 @@ try {
       (await screen()) === "report" && ring === "none",
       `off: the report waits, no ring (${await screen()}, ring ${ring})`,
     );
-    await page.evaluate(() => localStorage.setItem("riddle.autoContinue", "1"));
+    await page.evaluate(() => localStorage.setItem("idlever.autoContinue", "1"));
   }
 
   if (part("death")) {
@@ -261,11 +261,11 @@ try {
       ],
       morgue: "slain",
     };
-    const go = (d) => page.evaluate((x) => window.__riddle.go({ kind: "death", death: x }), d);
+    const go = (d) => page.evaluate((x) => window.__idlever.go({ kind: "death", death: x }), d);
     // Before the Scout, no clock is allowed to manufacture a manual send.
     const manualBefore = await ledger();
     await page.evaluate(() => {
-      const e = window.__riddle.engine,
+      const e = window.__idlever.engine,
         send = e.send.bind(e);
       window.__sendCalls = 0;
       e.send = async (...args) => {
@@ -274,7 +274,7 @@ try {
       };
     });
     check(
-      await page.evaluate(() => window.__riddle.lineage.tree.auto_send === false),
+      await page.evaluate(() => window.__idlever.lineage.tree.auto_send === false),
       "manual-send fixture has no hired Scout",
     );
     await go({
@@ -283,7 +283,7 @@ try {
       package: "Steady · HP<20% → return",
     });
     const manual = await until(
-      () => window.__riddle.screen === "death" && window.__autodismiss.live()[0],
+      () => window.__idlever.screen === "death" && window.__autodismiss.live()[0],
       "the manual death's clock",
     );
     check(
@@ -291,7 +291,7 @@ try {
       "before the Scout, the death clock returns to Town",
     );
     await until(
-      () => window.__riddle.screen === "camp",
+      () => window.__idlever.screen === "camp",
       "Town after the manual death's time",
       DEATH + 6000,
     );
@@ -303,7 +303,7 @@ try {
       e.st305.hired.push("scout");
     });
     check(
-      await page.evaluate(() => window.__riddle.lineage.tree.auto_send === true),
+      await page.evaluate(() => window.__idlever.lineage.tree.auto_send === true),
       "automatic-send fixture has a hired Scout",
     );
     // After the Scout, the lever `wait` gem reads `send` and is pressed.
@@ -313,7 +313,7 @@ try {
       package: "Steady · HP<20% → return",
     });
     const w = await until(
-      () => window.__riddle.screen === "death" && window.__autodismiss.live()[0],
+      () => window.__idlever.screen === "death" && window.__autodismiss.live()[0],
       "the death's clock",
     );
     check(
@@ -322,7 +322,7 @@ try {
     );
     const t = Date.now();
     await until(
-      () => window.__riddle.screen === "watch",
+      () => window.__idlever.screen === "watch",
       "the watch after the death's time",
       DEATH + 6000,
     );
@@ -331,7 +331,7 @@ try {
       `the death sent again after its time (${Date.now() - t} ms)`,
     );
     check((await live()).length === 0, "the watch has no clock");
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     // `forge` and `wear` are decisions: the camp tile carries the ring; no forge sheet, nothing worn
     for (const lever of [
       { kind: "spend", text: "sword +2" },
@@ -340,7 +340,7 @@ try {
       const before = await ledger();
       await go({ ...base, lever });
       const c = await until(
-        () => window.__riddle.screen === "death" && window.__autodismiss.live()[0],
+        () => window.__idlever.screen === "death" && window.__autodismiss.live()[0],
         "the death's clock",
       );
       check(
@@ -348,7 +348,7 @@ try {
         `lever \`${lever.kind}\`: the ring on the Town tile, not the gem (${c.cls.split(" ")[0]} ${c.text})`,
       );
       await until(
-        () => window.__riddle.screen === "camp",
+        () => window.__idlever.screen === "camp",
         "the camp after the death's time",
         DEATH + 6000,
       );
@@ -368,7 +368,7 @@ try {
     await go(base);
     const p = await until(
       () =>
-        window.__riddle.screen === "death" &&
+        window.__idlever.screen === "death" &&
         document.querySelector(".death button.patch") &&
         window.__autodismiss.live()[0],
       "the pen's death",
@@ -378,16 +378,16 @@ try {
       `with the pen: the ring is not on the fix's gem (${p.cls.split(" ")[0]} ${p.text})`,
     );
     await until(
-      () => window.__riddle.screen !== "death",
+      () => window.__idlever.screen !== "death",
       "the pen's death continued",
       DEATH + 6000,
     );
     check((await ledger()) === before, `no fix applied by the timeout (now ${await screen()})`);
     // a death opened from the report goes back to it after a panel's time
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: d,
           from: {
@@ -409,14 +409,14 @@ try {
       base,
     );
     const o = await until(
-      () => window.__riddle.screen === "death" && window.__autodismiss.live()[0],
+      () => window.__idlever.screen === "death" && window.__autodismiss.live()[0],
       "the opened death's clock",
     );
     check(
       /report/.test(o.text) && o.ms === PANEL,
       `a death opened from the report: back to it after ${o.ms} ms (${o.text})`,
     );
-    await until(() => window.__riddle.screen === "report", "back to the report", PANEL + 6000);
+    await until(() => window.__idlever.screen === "report", "back to the report", PANEL + 6000);
     check(true, "the opened death went back to the report");
   }
 
@@ -458,7 +458,7 @@ try {
     await toReport("", 4107);
     await sleep(REPORT * 2);
     const st = await page.evaluate(() => ({
-      s: window.__riddle.screen,
+      s: window.__idlever.screen,
       on: window.__autodismiss.enabled(),
     }));
     check(

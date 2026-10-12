@@ -61,27 +61,17 @@ try {
   await p.setContent('<main class="camp"></main>');
   assert.equal(await pressWatchControl(p, "fast"), false);
   assert.equal(await pressWatchControl(p, "unknown"), false);
-  // Reproduce screen disposal precisely between discovering a control and pressing
-  // it. The real locator used to retry this vanished node for 30 seconds.
+  // Dispose a control before the atomic browser operation, or immediately after
+  // Speed opens its options. Both cases must return without clicking stale UI.
   const vanishingPage = {
-    locator(selector) {
-      const wrap = (locator, path = selector) =>
-        new Proxy(locator, {
-          get(target, key) {
-            if (key === "first") return () => wrap(target.first(), path);
-            if (key === "locator") return (child) => wrap(target.locator(child), child);
-            if (key === "count")
-              return async () => {
-                const n = await target.count();
-                if (n && path.includes('data-tile="fast"'))
-                  await target.evaluateAll((nodes) => nodes.forEach((node) => node.remove()));
-                return n;
-              };
-            const value = target[key];
-            return typeof value === "function" ? value.bind(target) : value;
-          },
+    async evaluate(fn, arg) {
+      await p.evaluate(() => {
+        document.querySelector('main.watch [data-tile="fast"]')?.remove();
+        document.querySelector('[data-tile="speed"]')?.addEventListener("click", () => {
+          document.querySelector('.watch-options [data-tile="fast"]')?.remove();
         });
-      return wrap(p.locator(selector));
+      });
+      return p.evaluate(fn, arg);
     },
   };
   await p.setContent(

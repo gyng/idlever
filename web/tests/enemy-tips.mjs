@@ -13,11 +13,11 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&engine=fake`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
       const { reportBosses } = await import("/src/ui/report-bosses.ts");
       const L = {
-        ...window.__riddle.lineage,
+        ...window.__idlever.lineage,
         selected_bloodline: 1,
         facts: ["foe:bloat_mother:gas"],
         ledger: [
@@ -126,7 +126,7 @@ try {
         throw Error("owner snapshot merge failed");
       document.querySelector(".report-bosses").replaceWith(
         reportBosses(merged, {
-          ...window.__riddle.lineage,
+          ...window.__idlever.lineage,
           facts: ["foe:bloat_mother:wrong"],
           ledger: [],
           walls: [],

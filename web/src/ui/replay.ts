@@ -98,7 +98,7 @@ export function openReplay(log: RunLog, b: Because): void {
         v.apply(floor.evs.filter((e) => e.k !== "descend" && e.k !== "exit"));
         viewer.setFrame?.("fight");
         play();
-        if ("__riddle" in window) (window as unknown as { __replay: Viewer }).__replay = v; // dev: tests read `tick()`
+        if ("__idlever" in window) (window as unknown as { __replay: Viewer }).__replay = v; // dev: tests read `tick()`
         timer = window.setInterval(() => {
           if (!document.contains(canvas)) {
             stop();

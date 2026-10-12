@@ -39,7 +39,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -86,7 +86,7 @@ try {
 
   // ---- a dead edit: the new row is shadowed (the forecast says so) and the engine's move wobbles — the line reads ≈
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       e = r.engine;
     delete e.forecastVsRefined;
     const fc = e.forecast;
@@ -131,7 +131,7 @@ try {
   await shot("qa778-dead-edit");
   // a live edit's move on the death gem: a fall reads good (`▼`, the up colour)
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.engine.forecastVs = async () => ({
       depths: [{ depth: 6, delta: 0.2, pm: 0.02 }],
       bank: { delta: 0.2, pm: 0.02 },
@@ -159,7 +159,7 @@ try {
   // ---- the repeat badge
   const badge = async (patch) => {
     await page.evaluate((p) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.engine.setRestock ??= async () => r.lineage;
       r.lineage = {
         ...r.lineage,
@@ -185,7 +185,7 @@ try {
   );
 
   // ---- exit lines on the report
-  const L = await page.evaluate(() => window.__riddle.lineage);
+  const L = await page.evaluate(() => window.__idlever.lineage);
   const exits = [
     {
       carried: 66,
@@ -223,12 +223,12 @@ try {
     },
   ];
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = { ...r.lineage, renamed: { "amber potion?": "caustic" } };
   });
   await page.evaluate(
     ({ exits, cls }) =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           elapsed_s: 3600,
@@ -306,7 +306,7 @@ try {
 
   // ---- the death screen: the reach lands; nothing moves; `≈` alone; `return early`
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const pat = (conds, v, survive, extra = {}) => ({
       row: { conds, verb: { v } },
       insert_at: 0,
@@ -384,7 +384,7 @@ try {
 
   // ---- one surface: the vault tile under an open sheet
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = {
       ...r.lineage,
       vault: [{ id: 91, kind: "sword", known: true, label: "sword +1" }],

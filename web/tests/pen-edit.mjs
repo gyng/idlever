@@ -46,7 +46,7 @@ async function until(pred, label, timeout = 15_000, arg) {
 }
 const withState = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     new Function("e", src)(save);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -57,7 +57,7 @@ async function penOpen(seed) {
   await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=${seed}`, {
     waitUntil: "domcontentloaded",
   });
-  await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+  await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
   await withState((e) => {
     e.lineage.heir = 2;
     e.lineage.graveyard = [{ heir: 1, depth: 12, cause: "goblin" }];
@@ -66,7 +66,7 @@ async function penOpen(seed) {
   });
   await until(
     () =>
-      window.__riddle.lineage.packages?.pen_open &&
+      window.__idlever.lineage.packages?.pen_open &&
       document.querySelector('.cmd .tile[data-tile="edit"]'),
     "the pen",
   );
@@ -78,7 +78,7 @@ async function penOpen(seed) {
 }
 const state = () =>
   page.evaluate(async () => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       L = await r.engine.lineage();
     const key = (x) => `${x.verb.v}${x.verb.a ? " " + x.verb.a : ""}|${x.origin ?? ""}`;
     return {
@@ -114,7 +114,7 @@ try {
     await page.click(`${tablet(2)} .step.up`);
     const s1 = await until(
       (m) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         return r.rules.rows[0] &&
           `${r.rules.rows[0].verb.v}${r.rules.rows[0].verb.a ? " " + r.rules.rows[0].verb.a : ""}` ===
             m
@@ -201,7 +201,7 @@ try {
       await sleep(120);
     }
     const s1 = await until(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       return r.ownRows() >= r.vocab.max_rows ? true : null;
     }, "a full pen").then(state);
     check(
@@ -214,7 +214,7 @@ try {
     );
     check(upOff === true, "on a full set a package row's ▲ is off");
     const p = await page.evaluate((end) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const p = {
         row: r.rules.rows[end + 1],
         insert_at: 0,
@@ -229,7 +229,7 @@ try {
       `a move patch on a package row takes a row — on a full set it asks first (${JSON.stringify(p)})`,
     );
     const after = await page.evaluate((end) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const row = r.rules.rows[end + 1];
       const at = r.applyPatchOver(
         { row, insert_at: 0, moves_from: end + 1, survive: 0, forecast_delta: 0 },
@@ -282,7 +282,7 @@ try {
       fresh.n === 1 && fresh.i === "0" && fresh.note === "new" && fresh.focus,
       `the added row is the pen's last, marked new and focused (${JSON.stringify(fresh)})`,
     );
-    const n0 = await page.evaluate(() => window.__riddle.rules.rows.length);
+    const n0 = await page.evaluate(() => window.__idlever.rules.rows.length);
     await page.click(`${tablet(0)} > button.x`);
     const armed = await page.evaluate((sel) => {
       const b = document.querySelector(`${sel} > button.x`);
@@ -293,7 +293,7 @@ try {
         text: b?.textContent,
         color: cs?.color,
         ring: t ? getComputedStyle(t).outlineStyle : "",
-        rows: window.__riddle.rules.rows.length,
+        rows: window.__idlever.rules.rows.length,
       };
     }, tablet(0));
     check(
@@ -303,7 +303,7 @@ try {
     await page.click(`${tablet(0)} > button.x`);
     const n1 = await until(
       (n) =>
-        window.__riddle.rules.rows.length === n - 1 ? window.__riddle.rules.rows.length : null,
+        window.__idlever.rules.rows.length === n - 1 ? window.__idlever.rules.rows.length : null,
       "the delete",
       4000,
       n0,

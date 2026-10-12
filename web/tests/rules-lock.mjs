@@ -13,9 +13,9 @@ try {
   for (const width of stateWidths([320, 400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 800 } });
     await page.goto(`${url}?dev=1&engine=fake&seed=3004&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages.pen_open = false;
       a.lineage.packages.pen_needs = ["Meet Bloat Mother", "72h elapsed", "or 120h elapsed"];
       a.go({ kind: "camp" });
@@ -25,12 +25,12 @@ try {
     });
     await page.evaluate(() => {
       document.querySelector(".pkg-advanced > summary").click();
-      window.__riddle.emitChange();
+      window.__idlever.emitChange();
       if (!document.querySelector(".pkg-advanced").open)
         throw Error("Details closed before queued toggle");
     });
     await page.locator(".pkg-rows-btn").click();
-    await page.evaluate(() => window.__riddle.emitChange());
+    await page.evaluate(() => window.__idlever.emitChange());
     if (!(await page.locator(".pkg-rows").isVisible()))
       throw Error("Expanded rules collapsed on repaint");
     if (!(await page.locator(".pkg-rule-lock").innerText()).includes("Read only"))
@@ -57,7 +57,7 @@ try {
     await body.waitFor({ state: "detached" });
     if (
       !(await page.evaluate(
-        async () => (await window.__riddle.engine.save()) === window.__rulesLockSave,
+        async () => (await window.__idlever.engine.save()) === window.__rulesLockSave,
       ))
     )
       throw Error("Reading lock changed save");
@@ -67,7 +67,7 @@ try {
       throw Error(`Lock chip must name the boss gate: ${chip}`);
     await page.keyboard.press("Escape");
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages.pen_needs = ["Upcoming reports"];
       const { openPackages } = await import("/src/ui/packages.ts");
       openPackages(a);
@@ -83,7 +83,7 @@ try {
       throw Error(`Ready lock must read opens next report: ${readyText}`);
     const tip = await page.evaluate(async () => {
       const c = await import("/src/ui/concepts.ts");
-      const a = window.__riddle;
+      const a = window.__idlever;
       const locked = c.LIVE.pen(a);
       a.lineage.packages.pen_open = true;
       const open = c.LIVE.pen(a);
@@ -95,7 +95,7 @@ try {
     await page.keyboard.press("Escape");
     await page.keyboard.press("Escape");
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages.pen_open = true;
       const { openPackages } = await import("/src/ui/packages.ts");
       openPackages(a);

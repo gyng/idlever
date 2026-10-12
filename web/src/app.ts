@@ -96,8 +96,8 @@ const OFFLINE_SLICE_S = 30 * 60,
 const MOVE_QUIET_MS = 1500;
 /** Cut 20 §3: an edit's forecast waits this long for the next edit (was 250 ms; the first paint is due ≤ 1 s after the edit). */
 const FC_DEBOUNCE_MS = 30; // Cut 24 §4: 30 ms (was 100) — a first pass ≤ 1 s in wasm needs the room
-const SLOWDOWNS_KEY = "riddle.slowdowns";
-const EDITING_KEY = "riddle.editing";
+const SLOWDOWNS_KEY = "idlever.slowdowns";
+const EDITING_KEY = "idlever.editing";
 function readSlowdowns(): boolean {
   try {
     return localStorage.getItem(SLOWDOWNS_KEY) !== "0";
@@ -353,7 +353,7 @@ export class App {
   watchMode: "fights" | "fast" | "one" = "fights";
   /** Cut 17 §2: the camp's tablets carry the editor (chips, ▲▼, ×) while on; off, each row is one carved tablet (the targets'
    *  camp). Off by default; the `edit` tile toggles it, a tap on a tablet or the death's `edit` turns it on. A per-viewer
-   *  preference (localStorage `riddle.editing`). */
+   *  preference (localStorage `idlever.editing`). */
   get editing(): boolean {
     try {
       return localStorage.getItem(EDITING_KEY) === "1";
@@ -739,7 +739,7 @@ export class App {
     });
   }
   /** Cut 14: the watch's dynamic slowdowns (the fight frame's 2× / 4×, the near and scene holds); off, the clock runs the mode's
-   *  flat rate. Persisted in localStorage like `mute` (`riddle.slowdowns`), on by default; the settings sheet toggles it. */
+   *  flat rate. Persisted in localStorage like `mute` (`idlever.slowdowns`), on by default; the settings sheet toggles it. */
   slowdowns = readSlowdowns();
   setSlowdowns(on: boolean): void {
     this.slowdowns = on;
@@ -862,7 +862,7 @@ export class App {
     }, 1000);
   }
 
-  // --- dev inspection (window.__riddle in dev builds or with ?dev=1) ---
+  // --- dev inspection (window.__idlever in dev builds or with ?dev=1) ---
   /** The screen a rater sees: the mounted screen, or `exit` while the exit sheet is open over a run. */
   get screen(): DevScreen {
     if (
@@ -2316,8 +2316,8 @@ const sameSet = (a: RuleSet, b: RuleSet): boolean =>
   a.rows.every((r, i) => rowKey(r) === rowKey(b.rows[i])) &&
   JSON.stringify(routeOf(a).route ?? []) === JSON.stringify(routeOf(b).route ?? []); // Cut 26 §2: a route change is an edit (`vs sent` reads it)
 
-/** `dev` is non-null in dev builds or with `?dev=1` (main.ts): boot options plus `window.__riddle` for inspection
- *  (`__riddle.screen`, `__riddle.text()`, `__riddle.engineBusy`, `__riddle.booted`, and the App itself). */
+/** `dev` is non-null in dev builds or with `?dev=1` (main.ts): boot options plus `window.__idlever` for inspection
+ *  (`__idlever.screen`, `__idlever.text()`, `__idlever.engineBusy`, `__idlever.booted`, and the App itself). */
 export function start(dev: DevOptions | null = null): App {
   const root =
     document.getElementById("app") ?? document.body.appendChild(document.createElement("div"));
@@ -2326,7 +2326,7 @@ export function start(dev: DevOptions | null = null): App {
   const app = new App(root, dev);
   initTips(app);
   audio.arm(); // Cut 10 §4: the WebAudio context opens on the first gesture
-  if (dev) (window as unknown as { __riddle: App }).__riddle = app;
+  if (dev) (window as unknown as { __idlever: App }).__idlever = app;
   // Cut 14 §4: the cue log is readable on every build (a rater assesses sound on the cohort build); the App stays dev-only
   Object.defineProperty(window, "__audio", { value: audio, writable: false, configurable: true });
   void app.boot().catch((e) => console.error("boot failed", e));

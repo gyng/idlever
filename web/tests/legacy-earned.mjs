@@ -19,10 +19,10 @@ try {
       errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?fresh=1&seed=52`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const result = await page.evaluate(
       async ({ engine, multi }) => {
-        const app = window.__riddle;
+        const app = window.__idlever;
         if (
           !(await app.importSave(
             JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
@@ -61,18 +61,18 @@ try {
         if (slot.legacy_earned > 0)
           assert.match(actualText, new RegExp(`\\+${slot.legacy_earned} Legacy`));
     } else assert.match(actualText, new RegExp(`\\+${result.delta} Legacy`));
-    const saved = await page.evaluate(() => window.__riddle.engine.save());
-    if (process.env.RIDDLE_QA_SHOTS) {
-      mkdirSync(process.env.RIDDLE_QA_SHOTS, { recursive: true });
-      await page.screenshot({ path: `${process.env.RIDDLE_QA_SHOTS}/earned-legacy-${width}.png` });
+    const saved = await page.evaluate(() => window.__idlever.engine.save());
+    if (process.env.IDLEVER_QA_SHOTS) {
+      mkdirSync(process.env.IDLEVER_QA_SHOTS, { recursive: true });
+      await page.screenshot({ path: `${process.env.IDLEVER_QA_SHOTS}/earned-legacy-${width}.png` });
       writeFileSync(
-        `${process.env.RIDDLE_QA_SHOTS}/earned-legacy-${width}.json`,
+        `${process.env.IDLEVER_QA_SHOTS}/earned-legacy-${width}.json`,
         JSON.stringify(result, null, 2),
       );
     }
     await page.locator(".report .details-fold").click();
     await page.locator(".report .details-fold").click();
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), saved);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), saved);
     const checks = await page.evaluate(async (report) => {
       const { mergeReports } = await import("/src/app.ts"),
         { legacyEarnedBlock } = await import("/src/ui/legacy-earned.ts");
@@ -81,7 +81,7 @@ try {
         if (!ok) throw Error(msg);
         n++;
       };
-      const show = (r) => window.__riddle.go({ kind: "report", report: r, absence: true });
+      const show = (r) => window.__idlever.go({ kind: "report", report: r, absence: true });
       const rows = () => [...document.querySelectorAll(".report-legacy-earned .class-xp-line")];
       const old = { ...report };
       delete old.legacy_earned;
@@ -114,8 +114,8 @@ try {
         "second owner preserved",
       );
       const text = document.querySelector(".report-legacy-earned").textContent;
-      window.__riddle.lineage.selected_bloodline = 2;
-      window.__riddle.emitLive();
+      window.__idlever.lineage.selected_bloodline = 2;
+      window.__idlever.emitLive();
       check(
         document.querySelector(".report-legacy-earned").textContent === text,
         "selection does not rewrite history",

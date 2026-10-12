@@ -86,8 +86,8 @@ async function main() {
     };
   }
   const engineInputHash = sha(input);
-  if (balance) env.RIDDLE_BALANCE_JSON = readFileSync(balance, "utf8");
-  else delete env.RIDDLE_BALANCE_JSON;
+  if (balance) env.IDLEVER_BALANCE_JSON = readFileSync(balance, "utf8");
+  else delete env.IDLEVER_BALANCE_JSON;
   const started = performance.now(),
     built = run(
       "cargo",
@@ -97,7 +97,7 @@ async function main() {
         "--profile",
         "fast",
         "-p",
-        "riddle-core",
+        "idlever-core",
         "--example",
         "choice_check",
         ...(balance ? ["--features", "dev-balance"] : []),
@@ -116,7 +116,7 @@ async function main() {
   const binary = readFileSync(bin),
     binaryHash = sha(binary);
   const buildSeconds = (performance.now() - started) / 1000,
-    temp = mkdtempSync(join(tmpdir(), "riddle-choice-"));
+    temp = mkdtempSync(join(tmpdir(), "idlever-choice-"));
   try {
     const snapshot = join(temp, "input.json"),
       resultPath = join(temp, "result.json"),
@@ -172,7 +172,7 @@ async function main() {
             engineInputSha256: engineInputHash,
             sourceCapture: provenance,
             binarySha256: binaryHash,
-            balanceSha256: balance ? sha(env.RIDDLE_BALANCE_JSON) : null,
+            balanceSha256: balance ? sha(env.IDLEVER_BALANCE_JSON) : null,
             selected: result.selected,
             slots: result.slots,
             hours,

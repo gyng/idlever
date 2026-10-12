@@ -32,7 +32,7 @@ function attachBuildStatus(): void {
         ? `Native build failed · previous engine retained\n${state.error ?? ""}`
         : "Native rebuilding…";
   };
-  import.meta.hot.on("riddle:native-build", show);
+  import.meta.hot.on("idlever:native-build", show);
   void fetch("/__native/health")
     .then((r) => r.json())
     .then((h) => {
@@ -40,7 +40,7 @@ function attachBuildStatus(): void {
     })
     .catch(() => {});
   import.meta.hot.dispose(() => {
-    import.meta.hot?.off("riddle:native-build", show);
+    import.meta.hot?.off("idlever:native-build", show);
     status.remove();
     buildStatusAttached = false;
   });

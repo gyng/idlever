@@ -8,10 +8,10 @@ const browser = await launchBrowser();
 try {
   const page = await browser.newPage();
   await page.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-  await page.waitForFunction(() => window.__riddle?.booted);
+  await page.waitForFunction(() => window.__idlever?.booted);
   const checks = await page.evaluate(async () => {
     const { exitDepth, traceLabel } = await import("/src/ui/report.ts");
-    const a = window.__riddle;
+    const a = window.__idlever;
     let n = 0;
     const check = (ok, label) => {
       if (!ok) throw Error(label);

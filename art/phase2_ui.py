@@ -20,7 +20,7 @@ REFS = "/home/g/p/riddle/art/ui/targets/style/ui_sheet.png, /home/g/p/riddle/art
 
 
 def head(what: str, outdir: str, refs: str = REFS, extra: str = "") -> str:
-    return f"""You are painting {what} for the game "Riddle" (a gothic dark-fantasy roguelike on a phone held in portrait). FIRST look
+    return f"""You are painting {what} for the game "Idlever" (a gothic dark-fantasy roguelike on a phone held in portrait). FIRST look
 at these approved STYLE TARGETS (you may open these images and nothing else in the repository): {refs}. They are the target look.
 
 Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix. Do NOT modify

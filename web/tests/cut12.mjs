@@ -39,7 +39,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -89,7 +89,7 @@ try {
   await editRows(page); // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
   // a lineage with marks, the card gates met, a potion identified (so the supply catalogue sells it) and gold
   const ok = await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     e.lineage.marks = 20;
@@ -107,7 +107,9 @@ try {
   });
   check(ok, "the lineage took marks, facts and gold");
   await waitFor((s) => s?.screen === "camp", "camp again");
-  await page.waitForFunction(() => window.__riddle.unlockCat.length > 0, null, { timeout: 10_000 });
+  await page.waitForFunction(() => window.__idlever.unlockCat.length > 0, null, {
+    timeout: 10_000,
+  });
   // Cut 17: the unlock panel lists the whole catalogue from here on (`more`, remembered); the panel closes over the tablets
   await openPanel(page, "unlocks", { all: true });
   await page.keyboard.press("Escape");
@@ -141,10 +143,10 @@ try {
 
   // §1: a bought card's row goes before the engagement row (the attack row), and never counts
   const at = await page.evaluate(
-    () => window.__riddle.unlockCat.find((u) => u.id === "thief_guard")?.insert_at,
+    () => window.__idlever.unlockCat.find((u) => u.id === "thief_guard")?.insert_at,
   );
   check(at === 1, `the catalogue says the card goes before the attack row (insert_at ${at})`);
-  await page.evaluate(() => window.__riddle.buy("thief_guard"));
+  await page.evaluate(() => window.__idlever.buy("thief_guard"));
   await sleep(700);
   c = await camp();
   check(
@@ -162,7 +164,7 @@ try {
     c.yours.startsWith("written: 0 of 2 rules") && !/card R\d+ first/.test(c.yours),
     `yours counts own rows, no "card R2 first" (a card sits before attack on purpose): "${c.yours}"`,
   );
-  await page.evaluate(() => window.__riddle.buy("pack_break"));
+  await page.evaluate(() => window.__idlever.buy("pack_break"));
   await sleep(700);
   c = await camp();
   check(
@@ -181,21 +183,23 @@ try {
   // four own rows + two cards: full, sends; the fifth own row is refused as `5/4 · drop one` with the mark on an own row
   // (a row inserted from outside the editor — a patch — reaches the camp through `go`, as the death screen does)
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.insertRow({ conds: [{ k: "hp>", n: 90 }], verb: { v: "rest" } }, r.rules.rows.length);
     r.insertRow({ conds: [{ k: "depth>=", n: 3 }], verb: { v: "return" } }, r.rules.rows.length);
     r.go({ kind: "camp" });
   });
-  await page.waitForFunction(() => window.__riddle.unlockCat.length > 0, null, { timeout: 10_000 });
+  await page.waitForFunction(() => window.__idlever.unlockCat.length > 0, null, {
+    timeout: 10_000,
+  });
   await sleep(1200);
   await openPanel(page, "forecast");
   await page.locator(".panel .fc-refine:visible").click({ timeout: 5000 });
-  await page.waitForFunction(() => window.__riddle.lastForecast?.refined === true, null, {
+  await page.waitForFunction(() => window.__idlever.lastForecast?.refined === true, null, {
     timeout: 10000,
   });
   await page.keyboard.press("Escape");
   c = await camp();
-  const returnShare = await page.evaluate(() => window.__riddle.lastForecast?.ends?.return ?? 0);
+  const returnShare = await page.evaluate(() => window.__idlever.lastForecast?.ends?.return ?? 0);
   check(
     returnShare > 0 &&
       /^run outcomes full haul [<>]?\d+% · turn back [<>]?\d+%( · stall \d+%)? · death [<>]?\d+%( ±\d+)? · avg \$\d+\/run$/.test(
@@ -212,12 +216,12 @@ try {
     `+1 row lifted at 4/4 without a run: "${c.rowCard}"`,
   );
   const engineRows = await page.evaluate(
-    async () => (await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows.length,
+    async () => (await window.__idlever.engine.lineage()).sets[window.__idlever.active].rows.length,
   );
   check(engineRows === 6, `the engine took all six rows (${engineRows})`);
   await shot("02-four-own-two-cards");
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.insertRow({ conds: [{ k: "alert>=", n: 5 }], verb: { v: "return" } }, r.rules.rows.length);
     r.go({ kind: "camp" });
   });
@@ -315,7 +319,7 @@ try {
   );
   await shot("05-supplies-one-line");
   await page.evaluate(() => {
-    window.__riddle.engine.dropSupply = () => Promise.reject(new Error("wasm: dropSupply"));
+    window.__idlever.engine.dropSupply = () => Promise.reject(new Error("wasm: dropSupply"));
   });
   await page
     .locator(".supplies .chip.item", { hasText: "strength" })
@@ -335,9 +339,9 @@ try {
   // remounted, remained stale, or lost its refinement capability.
   const diagnostic = await page
     .evaluate(() => ({
-      screen: window.__riddle?.screen,
-      forecast: window.__riddle?.forecastOfRules(),
-      busy: window.__riddle?.engineBusy,
+      screen: window.__idlever?.screen,
+      forecast: window.__idlever?.forecastOfRules(),
+      busy: window.__idlever?.engineBusy,
       panels: [...document.querySelectorAll(".panel")].map((p) => ({
         name: p.dataset.panel,
         text: p.innerText,

@@ -9,7 +9,7 @@ export async function installFastStartCapture(page) {
       travelAt = 0,
       last = "";
     const poll = () => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         w = document.querySelector(".watch");
       if (r?.screen === "watch" && w?.dataset.mode === "fast" && w.dataset.frame) {
         const state = {
@@ -79,7 +79,7 @@ export async function fastStartFrames(page) {
         let travel = null,
           fightAt = 0;
         const sample = () => {
-          const r = window.__riddle,
+          const r = window.__idlever,
             w = document.querySelector(".watch");
           return {
             screen: r?.screen,

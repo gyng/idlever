@@ -36,14 +36,14 @@ const fresh = async (tag) => {
     waitUntil: "domcontentloaded",
   });
   await page.waitForFunction(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp",
+    () => window.__idlever?.booted && window.__idlever.screen === "camp",
     null,
     { timeout: 60_000 },
   );
   await page.waitForTimeout(300);
   // the fixtures below are lineages set by hand: the engine's lineage reads them back (no repaint from the fake's own state)
   await page.evaluate(() => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     a.engine.lineage = async () => a.lineage;
     // shared fixtures (window.__fx): a feats wire and a report
     const stone = (heir, name, depth, epitaph, extra = {}) => ({
@@ -123,7 +123,7 @@ try {
   if (parts.includes("death")) {
     const page = await fresh("death");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const card = (chip, source, gift = "guard") => ({
         chip,
@@ -254,7 +254,7 @@ try {
   if (parts.includes("yard")) {
     const page = await fresh("yard");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       a.lineage = fx.home({
         ...a.lineage,
@@ -312,7 +312,7 @@ try {
   if (parts.includes("siege")) {
     const page = await fresh("siege");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const { wallPreview } = await import("/src/ui/wall-preview.ts");
       const { graveMark } = await import("/src/ui/feats.ts");
@@ -433,7 +433,7 @@ try {
   if (parts.includes("seek")) {
     const page = await fresh("seek");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const tokens = [
         { boss: "bloat_mother", title: "Mother", depth: 13, n: 1, cap: 3, stone: 10 },
@@ -494,7 +494,7 @@ try {
   if (parts.includes("trial")) {
     const page = await fresh("trial");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const trial = (week, opted = false) => ({
         week,
@@ -583,7 +583,7 @@ try {
   if (parts.includes("finds")) {
     const page = await fresh("finds");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const finds = [
         { id: "quill", kind: "piece", name: "scholar's quill", rank: 4, set: "scholar", table: 2 },
@@ -671,7 +671,7 @@ try {
   if (parts.includes("sinks")) {
     const page = await fresh("sinks");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const sinks = [
         { id: "tithe", price: 900, line: "1 Legacy / $900", available: true },
@@ -797,7 +797,7 @@ try {
   if (parts.includes("core")) {
     const page = await fresh("core");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const { kingEta, kingLine } = await import("/src/ui/king-eta.ts");
       const { cries, writeDiary } = await import("/src/ui/crier.ts");
@@ -820,7 +820,7 @@ try {
       const slain = kingLine(L({ king_eta_h: 0, king_pct: 100 }))?.textContent;
       // the diary: the core's days and its feats
       try {
-        localStorage.removeItem(`riddle.diary.${a.lineage.seed ?? 0}`);
+        localStorage.removeItem(`idlever.diary.${a.lineage.seed ?? 0}`);
       } catch {}
       const rep = {
         ...fx.report,
@@ -947,7 +947,7 @@ try {
     // the swift floors: a send whose snapshot is swift folds them under one line marked `swift` — the boss's own floor never
     const p2 = await fresh("swift");
     const s = await p2.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       a.lineage = fx.home({ ...a.lineage, feats: fx.feats({ swift_to: 3 }) });
       const send = a.engine.send;
@@ -967,7 +967,7 @@ try {
     const p3 = await fresh("swift-disabled");
     const disabled = await p3.evaluate(async () => {
       history.replaceState(null, "", `${location.pathname}${location.search}&fold=0`);
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       a.lineage = fx.home({ ...a.lineage, feats: fx.feats({ swift_to: 3 }) });
       const send = a.engine.send;
@@ -989,7 +989,7 @@ try {
   if (parts.includes("taps")) {
     const page = await fresh("taps");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fx = window.__fx;
       const step = (label, price) => ({ label, price, affordable: true });
       const kit = [{ slot: "weapon", owned: 1, steps: [], next: step("sword +2", 300) }];

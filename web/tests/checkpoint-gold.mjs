@@ -12,9 +12,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3908`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = await a.engine.send();
       window.__stakeBase = s;
       const stake = (loot, death_keep, swapped, swap_left) => ({
@@ -104,7 +104,7 @@ try {
     checks++;
     // Fresh current wire with an explicit zero swap counter.
     await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = window.__stakeBase;
       a.go({ kind: "camp" });
       let turn = s.turn;
@@ -134,7 +134,7 @@ try {
     // Fresh watch on an older wire: no secured/swap counters, genuine carry fall
     // beside a pickup still uses its existing compatibility label.
     await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = window.__stakeBase;
       a.go({ kind: "camp" });
       let turn = s.turn;

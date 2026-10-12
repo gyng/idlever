@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-// Production smoke check; serve a built site first (with the same RIDDLE_BASE as the build).
-// node tools/pages-check.mjs http://localhost:5359/riddle/ [screenshot-dir]
+// Production smoke check; serve a built site first (with the same IDLEVER_BASE as the build).
+// node tools/pages-check.mjs http://localhost:5359/idlever/ [screenshot-dir]
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { launchBrowser } from "./browser.mjs";
-const target = new URL(process.argv[2] ?? "http://localhost:5359/riddle/");
+const target = new URL(process.argv[2] ?? "http://localhost:5359/idlever/");
 const out = process.argv[3];
 if (out) await mkdir(out, { recursive: true });
 const browser = await launchBrowser();
@@ -29,6 +29,11 @@ try {
       errors.push(`outside base: ${r.url()}`);
   });
   await page.goto(target.href);
+  await page.locator(".game-menu, .build-banner").first().waitFor();
+  if (await page.locator(".game-menu").count()) {
+    assert.equal(await page.locator(".menu-title-text").textContent(), "Idlever");
+    await page.getByRole("button", { name: "New game", exact: true }).click();
+  }
   await page.waitForSelector(".build-banner");
   await page.evaluate(() => navigator.serviceWorker.ready);
   assert.ok(

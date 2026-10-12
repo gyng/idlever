@@ -12,9 +12,9 @@ try {
   for (const width of stateWidths([400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 } });
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       let n = 0;
       const check = (ok, message) => {
         if (!ok) throw Error(message);

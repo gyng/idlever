@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 30 client gates (docs/CUT30.md), on the fake engine (its Cut 30 stand-ins), headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU).
+// Cut 30 client gates (docs/CUT30.md), on the fake engine (its Cut 30 stand-ins), headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU).
 //
 // Panels section (§2, §4, §5, the Reveal):
 //   packages  the stance / tactic / temperament slots, chips `<name> L<n>` with a level bar, each alternative priced in one line
@@ -78,13 +78,13 @@ async function until(pred, label, timeout = 20_000, arg) {
   throw new Error(`timeout waiting for ${label}`);
 }
 const camp = async () => {
-  await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+  await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
   await sleep(300);
 };
 /** The fake's whole state edited through a save round-trip (`e.lineage`, `e.sys29` the curriculum, `e.st30` the packages/quest), then the camp. */
 const withState = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     new Function("e", src)(save);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -96,7 +96,7 @@ const boot = async (seed, q = "") => {
   });
   await camp();
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
+    localStorage.removeItem("idlever.reveal");
   });
 };
 const tiles = () =>
@@ -252,7 +252,7 @@ try {
     await page.click(".pkg-rows-btn");
     await shot("packages");
     // equip: free and instant
-    const g0 = await page.evaluate(() => window.__riddle.lineage.gold);
+    const g0 = await page.evaluate(() => window.__idlever.lineage.gold);
     // (a wall-clock reading: on a loaded machine it is taken once more, back from Steady — tests/lib/load.mjs)
     const wear = async (id, name) => {
       if (!(await page.locator('.pkg-sec[data-kind="stance"] .pkg-choices').isVisible()))
@@ -261,7 +261,7 @@ try {
       await page.click(`.pkg-sec[data-kind="stance"] .chip.pkg.alt[data-pkg="${id}"]`);
       await until(
         (a) =>
-          window.__riddle.lineage.packages.stance === a.id &&
+          window.__idlever.lineage.packages.stance === a.id &&
           document.querySelector('.pkg-sec[data-kind="stance"] .pkg-slot .chip.pkg.on .pkg-name')
             ?.textContent === a.name,
         `${name} worn`,
@@ -279,14 +279,14 @@ try {
         await wear("steady", "Steady L3");
       },
     );
-    const g1 = await page.evaluate(() => window.__riddle.lineage.gold);
+    const g1 = await page.evaluate(() => window.__idlever.lineage.gold);
     check(g1 === g0 && eq.ok, `equipping is free and instant ($${g0} → $${g1}, ${eq.line})`);
     // a tactic worn in its slot
     await page.click('[data-edit-slot="0"]');
     await page.click('.pkg-sec[data-kind="tactic"] .chip.pkg.alt');
     const tw = await until(
       () =>
-        window.__riddle.lineage.packages.tactics?.length === 1 &&
+        window.__idlever.lineage.packages.tactics?.length === 1 &&
         document.querySelector('.pkg-sec[data-kind="tactic"] .chip.pkg.on .pkg-name')?.textContent,
       "a tactic worn",
     );
@@ -297,7 +297,7 @@ try {
     await page.click(".pkg-drill .drill");
     const rv = await until(
       () =>
-        window.__riddle.lineage.packages.drills?.find((d) => d.boss === "goblin_warlord")
+        window.__idlever.lineage.packages.drills?.find((d) => d.boss === "goblin_warlord")
           ?.revoked === true && document.querySelector(".pkg-drill.revoked")
           ? true
           : null,
@@ -321,7 +321,7 @@ try {
     );
     await page.click(`.chip.pkg.temper[data-pkg="${cards[1]}"]`);
     const picked = await until(
-      () => window.__riddle.lineage.packages.temperament,
+      () => window.__idlever.lineage.packages.temperament,
       "a temperament picked",
     );
     check(
@@ -377,7 +377,7 @@ try {
     }, "the swap spent");
     const second = await page.evaluate(async () => {
       try {
-        await window.__riddle.engine.swapQuest();
+        await window.__idlever.engine.swapQuest();
         return "swapped";
       } catch (e) {
         return String(e.message ?? e);
@@ -390,7 +390,7 @@ try {
     await closeSheets();
     // kept: the board stamps it, the report's beat says it
     const qd = await page.evaluate(() =>
-      Number(/D(\d+)/.exec(window.__riddle.lineage.town.quest.goal)[1]),
+      Number(/D(\d+)/.exec(window.__idlever.lineage.town.quest.goal)[1]),
     );
     await withState(new Function("e", `e.st30.qbest = ${qd};`));
     await page.click(`.cmd .tile[data-tile="quest"]`);
@@ -408,7 +408,7 @@ try {
       e.st30.qdone = false;
     });
     const beat = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rep = await r.engine.runOffline(1800);
       return rep.packages ?? [];
     });
@@ -441,7 +441,7 @@ try {
       notches: [...document.querySelectorAll(".camp .shaft .notch")].filter(
         (n) => n.offsetParent !== null,
       ).length,
-      pen: window.__riddle.lineage.packages.pen_open,
+      pen: window.__idlever.lineage.packages.pen_open,
     }));
     check(
       !pre.pen && !pre.editor && pre.tablets === 0 && !pre.edit,
@@ -462,7 +462,7 @@ try {
       ).length,
       edit: !!document.querySelector('.cmd .tile[data-tile="edit"]'),
       strip: [...document.querySelectorAll(".pkg-strip")].some((x) => x.offsetParent !== null),
-      pen: window.__riddle.lineage.packages.pen_open,
+      pen: window.__idlever.lineage.packages.pen_open,
     }));
     check(
       post.pen && post.editor && post.tablets > 0 && post.edit && !post.strip,
@@ -473,12 +473,12 @@ try {
     await shot("pen-open");
     // a row written below the packages is taken into the core's order: the pen's rows above every package, the client's copy the same
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.insertRow({ conds: [{ k: "hp<", n: 50 }], verb: { v: "rest" } }, r.rules.rows.length);
     });
     const ord = await until(
       async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const L = await r.engine.lineage();
         const core = L.sets[L.active_set].rows.map((x) => x.verb.v + (x.origin ?? ""));
         const mine = r.rules.rows.map((x) => x.verb.v + (x.origin ?? ""));
@@ -499,7 +499,7 @@ try {
       `the pen's row sits above the packages, the editor in the core's order (${ord?.mine.join(" · ")})`,
     );
     const sh = await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       return { rows: r.rules.rows.length, src: r.lineage.packages.rows?.length };
     });
     check(
@@ -539,7 +539,7 @@ try {
     };
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: {
             ...d,
@@ -550,7 +550,7 @@ try {
       base,
     );
     await until(
-      () => window.__riddle.screen === "death" && document.querySelector(".death-lever"),
+      () => window.__idlever.screen === "death" && document.querySelector(".death-lever"),
       "the pre-pen death",
     );
     const D = await page.evaluate(() => ({
@@ -601,12 +601,12 @@ try {
       },
     };
     const beforeTrace = await page.evaluate(() => ({
-      rows: JSON.stringify(window.__riddle.rules.rows),
-      pen: window.__riddle.lineage.packages.pen_open,
+      rows: JSON.stringify(window.__idlever.rules.rows),
+      pen: window.__idlever.lineage.packages.pen_open,
     }));
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: { ...d, lever: { kind: "wait", text: "Steady L2" } },
         }),
@@ -619,8 +619,8 @@ try {
       edits: document.querySelectorAll(
         ".early-death-trace .row-edit, .early-death-trace button.patch",
       ).length,
-      rows: JSON.stringify(window.__riddle.rules.rows),
-      pen: window.__riddle.lineage.packages.pen_open,
+      rows: JSON.stringify(window.__idlever.rules.rows),
+      pen: window.__idlever.lineage.packages.pen_open,
     }));
     check(
       /no path/.test(readOnly.text) &&
@@ -652,7 +652,7 @@ try {
     // spend · package: each one tablet, its act
     await page.evaluate(
       (d) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: { ...d, lever: { kind: "spend", text: "sword +2" } },
         }),
@@ -674,9 +674,9 @@ try {
     await withState((e) => {
       e.lineage.best_depth = 14;
     });
-    await page.evaluate((d) => window.__riddle.go({ kind: "death", death: d }), base);
+    await page.evaluate((d) => window.__idlever.go({ kind: "death", death: d }), base);
     await until(
-      () => window.__riddle.screen === "death" && document.querySelector(".death button.patch"),
+      () => window.__idlever.screen === "death" && document.querySelector(".death button.patch"),
       "the pen's death",
     );
     const D2 = await page.evaluate(() => ({
@@ -696,7 +696,7 @@ try {
       waitUntil: "domcontentloaded",
     });
     await until(
-      () => window.__riddle?.screen === "report" && document.querySelector(".report-sheet"),
+      () => window.__idlever?.screen === "report" && document.querySelector(".report-sheet"),
       "the report",
       60_000,
     );

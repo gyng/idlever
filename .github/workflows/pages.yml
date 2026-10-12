@@ -49,7 +49,7 @@ jobs:
       - name: Test engine
         run: |
           cargo test -q --workspace --profile fast
-          cargo test -q -p riddle-core --example dayplayer --profile fast
+          cargo test -q -p idlever-core --example dayplayer --profile fast
       - name: Lint engine
         run: cargo clippy --workspace --all-targets -- -D warnings
       - name: Install wasm-pack
@@ -61,7 +61,7 @@ jobs:
       - name: Build site
         run: pnpm --dir web build
         env:
-          RIDDLE_BASE: /riddle/
+          IDLEVER_BASE: /idlever/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: web/dist

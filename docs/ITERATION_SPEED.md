@@ -13,7 +13,7 @@ Chromium ERR_INSUFFICIENT_RESOURCES/Target crashed was reproducible in Cut13
 alone as well as alongside screen lint. Memory and descriptors were modest;
 request probe peak61, so browser-pool width alone did not solve it. Check
 `df -h /tmp` before repeating failed long browser suites: WSL filesystem had
-593MB available/100%. Freed only disposable Riddle Rust caches after checking
+593MB available/100%. Freed only disposable Idlever Rust caches after checking
 no compiler was active: old target/debug/incremental, /tmp/riddle-root-target,
 and target subdirectories in drill-priority and master-sustain experiments.
 Preserved source, saves, QA artifacts and active fast cache. Available space
@@ -29,7 +29,7 @@ campaigns. Example only; never a gate or a human score. CUT64 records12base and
 2owned-tactic comparisons, including the retained initial locked-Caster failure.
 
 ```sh
-cargo build -q --profile fast -p riddle-core --example class_campaign
+cargo build -q --profile fast -p idlever-core --example class_campaign
 target/fast/examples/class_campaign EARNED_CAMPS NEW_OUT_DIR --seed 3 --class rogue --tactic boss_focus
 ```
 
@@ -45,7 +45,7 @@ score. Failed close-aim trials preserved, actual reload-retreat improvement
 measured against their retained baseline; see CUT35/HANDOFF.
 
 ```sh
-cargo build -q --profile fast -p riddle-core --example gunner_matchups --example gunner_campaign
+cargo build -q --profile fast -p idlever-core --example gunner_matchups --example gunner_campaign
 target/fast/examples/gunner_matchups NEW_OUT_DIR --level 3
 target/fast/examples/gunner_campaign NEW_OUT_DIR --from EARNED_CAMPS --upkeep --hours 48 --seed 3 --gun long_gun
 ```
@@ -154,7 +154,7 @@ heroes4.10/6.09% (still~2s). Five native pairs:early3 +13.39%,later2/3
 both runtimes. New Session diagnostic avoids old sim_perf selected-Game-only
 pitfall; paired browser tool preserves original artifacts. Baseline native/
 WASM phrase-index difference traced to existing64bit gate vs32bit app wording;
-optional RIDDLE_SHIPPING_WORDS=1 matches originalWASM exact raw output for1
+optional IDLEVER_SHIPPING_WORDS=1 matches originalWASM exact raw output for1
 fixture (not all-five cross-runtime claim).556fast tests35.14s/1ignored,
 clippy/WASM5240610/build/typecheck/copy1511/diff pass. UI training63/worker60
 pass; mistyped worker suite corrected. Headed actual legal2slot/two12h79runs/
@@ -800,7 +800,7 @@ one compiler at a time. Errors remain visible while the old engine continues;
 client bridge metadata is published only with a successful executable. Actual
 browser error/recovery/replacement checks preserve an isolated lane's complete
 save. A changed adapter example rebuilt in2.24s including debounce; this is not
-a cold-build or arbitrary core-edit timing. Disable with RIDDLE_NATIVE_WATCH=0.
+a cold-build or arbitrary core-edit timing. Disable with IDLEVER_NATIVE_WATCH=0.
 
 ## Next work, by expected impact
 
@@ -1037,7 +1037,7 @@ What moved it, in order of yield:
    own sample), `forecast_pm_and_refine_share_the_panel_seeds` 37, `dice_death_names_an_alternative…` 30,
    `the_nights_ledger_reconciles…` 18; nothing else over 13.
 
-The inner-loop check for this kind of work is new: `cargo run --profile fast -p riddle-core --example fingerprint`
+The inner-loop check for this kind of work is new: `cargo run --profile fast -p idlever-core --example fingerprint`
 (8 seeds × {DEFAULT, a finished FULL lineage} × 8 h, three `death()`s and the forecast, serialised and hashed; ~8 s
 on the cores) — the same printout before and after a change, in a tenth of the table's time. The table's replay
 hash stays the gate. The wasm `pkg/` was not rebuilt in this round (web/ belonged to another agent): the changes are
@@ -1132,7 +1132,7 @@ wasm's outputs hash the same in node (fresh seeds and the D11 fixture).*
 | the table's thread-seconds (31 threads; the job CPU `METRICS_JOBCPU=1` prints) | 23.5 k | **11.6 k** (with qa beside it) | by kind below |
 | the gold rows alone, 8 seeds, 16 threads | 40.0 s · 620 user-s | **19.6 s · 296 user-s** | identical output |
 | a 60-sim FULL panel, one thread (pinned A/B, CPU) | 6.5–6.7 s | **5.6–5.9 s (−13…16 %)** | the engine |
-| `cargo test` core binary (16 test threads, `RIDDLE_THREADS=8`) | 42.7 s · 1060 CPU-s | **35.9 s · 966 CPU-s** | the engine; three seed loops on threads |
+| `cargo test` core binary (16 test threads, `IDLEVER_THREADS=8`) | 42.7 s · 1060 CPU-s | **35.9 s · 966 CPU-s** | the engine; three seed loops on threads |
 | `tools/wasm.sh` after a code edit in `turn.rs` | 13.7 s | **7.6 s** | no DWARF for the wasm (bindgen stripped it from the pkg anyway) |
 | `(cd web && pnpm -s test)` | 464 s, 2 of 27 failing (clarity's walk 257 s with nothing beside it) | **317 s, 31/31** | clarity in parts, longest first, its own dev server, retries under load |
 | the client's 8 h absence on the D11 fixture (wasm, node) | 9.58 s | **4.39 s** | the stall verdict on the last slice only |
@@ -1197,7 +1197,7 @@ cut25's real-wasm watch (180 s) started last and ended the suite alone. Now:
   `TEST_HEAVY_WIDTH` = 3 browsers run in all (the old runner: 2, for 4 minutes; at 4 the frame-sampled checks flaked);
 - the suite starts its own Vite server (`tests/vite.test.config.ts`: no watcher, no HMR) on a free port for the run — on the
   shared :5219 server another agent's edit in `web/src` reloaded every page mid-check (12 of 31 gates "Execution context was
-  destroyed" in one run). `RIDDLE_PORT` set by the caller is used as it is.
+  destroyed" in one run). `IDLEVER_PORT` set by the caller is used as it is.
 
 **Wall-clock checks under load** (`web/tests/lib/load.mjs`): a timed or frame-sampled reading that fails while the 1-minute
 load is ≥ an eighth of the cores (4 on this box: three SwiftShader browsers read 4–12; one browser's GPU process alone takes ~5
@@ -1253,22 +1253,22 @@ What moved it:
 3. **Widths follow the free threads** (`forecast::with_sim_width`, a thread-local width read at each panel): the
    dayplayer gives its groups `--threads / groups playing` (one each while they fill the threads, all of them to
    the last fortnight), the table its progression chains `1 + idle threads / chains`. Same results at any width.
-   (The dayplayer's `RIDDLE_THREADS=3` default is gone.)
+   (The dayplayer's `IDLEVER_THREADS=3` default is gone.)
 4. **The rater lineages skip the stall verdict** (`progression_lib`: `run_offline_counts` in `Mode::Rater`, which never
    reads `rep.stall`): absences 181 → 86 CPU-s on raterAV, 172 → 106 on raterAU — the printout identical.
 5. **The idle floor's rows play beside the pool** (`metrics.rs`: `cut30_rows` on its own thread from the start; they
    read nothing of the pool's jobs): the 2-seed table 41 → 25 min wall at 5 threads under load, the same CPU.
 6. **Jobs kept by their sources** (`examples/jobcache_lib`, `target/gates/{dp,prog,lever,oath,lane,idle-snaps}/`).
-   `gates.mjs` sets `RIDDLE_SRC_KEY` = sha1 of `crates/riddle-core/src/**`, the core and workspace manifests,
+   `gates.mjs` sets `IDLEVER_SRC_KEY` = sha1 of `crates/idlever-core/src/**`, the core and workspace manifests,
    `Cargo.lock` and `rustc -vV`. A job is kept under that key + the source text of the harness file it runs + every
-   argument (`params`, written beside each call: change them together) + `RIDDLE_SKIP_TWIST`:
+   argument (`params`, written beside each call: change them together) + `IDLEVER_SKIP_TWIST`:
    - **dayplayer** (each configuration × seed × days × check-ins): `dayplayer.rs` less `fn main` — the bars are in
      `main`, so an edit to a bar (round 6's D29/D33 and RANDOM-vs-PICKED rows) reprints the 3-hour leg from its jobs;
    - **progression lineages** (`progression_lib/mod.rs`, the set's rules, seed, days, schedule), **lever** and
      **oath** jobs (`lever_lib`, `oath_lib`), **lane** jobs (`lanes_lib`, `presets/lanes.json`'s finds, `LANE_*`),
      **IDLE's snapshots** (`idle_lib`) — the retired rows' jobs and the cut30 chains: ~60 % of the table's CPU.
-   Without `RIDDLE_SRC_KEY` (a tool run by hand) nothing is kept or read; `--fresh` replays every job and keeps the
-   new results (`RIDDLE_CACHE_FRESH`). Floats are kept as their bits (`{"f64bits": 1, "v": …}`): serde_json
+   Without `IDLEVER_SRC_KEY` (a tool run by hand) nothing is kept or read; `--fresh` replays every job and keeps the
+   new results (`IDLEVER_CACHE_FRESH`). Floats are kept as their bits (`{"f64bits": 1, "v": …}`): serde_json
    without `float_roundtrip` reads some decimal floats an ulp off (7 of the 18 progression lineages' purse ratios
    did not read back; a random-bits test: 56 % of floats), so a plain JSON cache could have misread a result. The
    legs' own printouts stay cached by binary hash as before.
@@ -1281,7 +1281,7 @@ the same arguments, the printouts diffed whole:
 - dayplayer, every bot and leave-one-out, seed 1, 5 days (the pen opens on day 5: TUNED parts from PICKED, TUNED −
   pets parts later, − forge / − packages / − quests on day 1, − bank never): identical but for the `(Ns)` line;
   **7372 → 2523 CPU-s (−66 %)**, 22.4 → 14.8 min wall (shared prefixes alone: 3443 CPU-s; + budgeted panels: 2523);
-- the same with the job cache (`RIDDLE_SRC_KEY` set) written then read back: identical;
+- the same with the job cache (`IDLEVER_SRC_KEY` set) written then read back: identical;
 - metrics `--quick --seeds 2 --prog-seeds 0` (every job kind but the lineages, the cut30 rows on their thread):
   identical but for the wall-clock lines (`death()` mean secs, the per-tick and slowest-scene timings, the
   `(Ns)` line); 3654 vs 3671 CPU-s;
@@ -1293,7 +1293,7 @@ the same arguments, the printouts diffed whole:
   TUNED and its six leave-one-outs) byte-identical to that run's own job cache (`target/gates/dp/`), the leg's
   printout identical but for its `(Ns)`; the same again when the legs were reprinted from the kept jobs;
 - `progression --bars` on raterAU/AV with and without the stall verdict: identical;
-- `examples/fingerprint` cbc89a0d92fd3db8 before and after; `cargo test --profile fast -p riddle-core` 460 passed
+- `examples/fingerprint` cbc89a0d92fd3db8 before and after; `cargo test --profile fast -p idlever-core` 460 passed
   (the replay hash among them).
 
 **Wall times** (a shared box: the before run shared it with this round's experiments, the after runs with the other
@@ -1387,7 +1387,7 @@ What changed (9 commits; each its own test run and fingerprint):
 | PICKED fortnight, seed 1, `--threads 8` | 3521 (771 s wall) | 1004 (333 s wall) | **3.5×** (wall 2.3×) |
 | TUNED, seed 1, 8 days, `--threads 1` (phases) | — | 305: panels 238, wall search 24, absences 41, `death()` 2 | |
 | dayplayer, 4 bots × 8 seeds × 5 days, `--threads 4` | 4677 (1175 s wall) | 2783 (701 s wall) | 1.68× |
-| metrics `--quick --seeds 2` (`--threads 2`, `RIDDLE_THREADS=2`) | 7720 (3599 s wall) | 4839 (2210 s wall) | 1.60× |
+| metrics `--quick --seeds 2` (`--threads 2`, `IDLEVER_THREADS=2`) | 7720 (3599 s wall) | 4839 (2210 s wall) | 1.60× |
 | per-tick (the table's quiet FULL batch) | 3.58 µs | 1.23 µs | |
 | `death()` with deltas, mean of 7 | 0.98 s | 0.61 s | |
 
@@ -1404,7 +1404,7 @@ The absences did not move: their cost is the history ring (`Run` + facts cloned 
 and RANDOM fortnights — and `--fast`'s critical path, IDLE's chain — are where they were; §4.1 still applies.
 
 **Proof (bit-identical)**, each against 2fa8532's own binaries on the same arguments, printouts diffed whole:
-- `cargo test --profile fast -p riddle-core`: 461 passed (the replay hash among them) after every commit;
+- `cargo test --profile fast -p idlever-core`: 461 passed (the replay hash among them) after every commit;
 - `examples/fingerprint` **cbc89a0d92fd3db8** after every commit;
 - `package_options` on 6 saved camps (seed 1, days 3–11): the options' `Debug` hash identical every run;
 - dayplayer PICKED seed 1, 14 days at `--threads 1` and `--threads 8`: identical to the base's but for the `(Ns)` and
@@ -1496,7 +1496,7 @@ need the five consumers' side-effect contracts re-proved — left for a round wi
 lineage's state read by population) still not provably complete.
 
 **Proof (bit-identical)**, against 0e16b30's binaries built from `hotpath` into `scratchpad/ring/base/`:
-- `cargo test --profile fast -p riddle-core`: 461 passed (the replay hash among them) after each commit;
+- `cargo test --profile fast -p idlever-core`: 461 passed (the replay hash among them) after each commit;
 - `examples/fingerprint --seeds 3`: **db508cf021c21768** before and after each commit (the 8-seed print below);
 - dayplayer `--bots idle,picked,tuned,random --seeds 4 --days 5`: identical but for the `(Ns)` line, each commit;
 - metrics `--quick --seeds 2`: identical but for the wall-clock lines (`death()` mean, per-tick, divergence's
@@ -1571,7 +1571,7 @@ thresholds held in `main` constants (`NOTHING_REQ_MAX_LAG`, `PEN_DAY_H`) are rea
   - `tuned-picked` on the start-of-round head 7d9f2b9 (D29 · D33, a scratch build of it with this round's
     files): `1.02 · 1.26 FAIL`, identical (7,503 CPU-s, 42 m wall).
 - IDLE on 3 seeds: `idle-d8`, `idle-d13`, `idle-d23`, `idle-stall` and `stance` each identical to the full run.
-- All 20 rows at once from the Cut 30 agent's own kept 16-seed gate jobs (the same `RIDDLE_SRC_KEY`; the file less
+- All 20 rows at once from the Cut 30 agent's own kept 16-seed gate jobs (the same `IDLEVER_SRC_KEY`; the file less
   `main` is byte-identical): the 20 bar lines byte-identical to that gate's printout. Checked on round 9
   (nothing-required FAIL `packages D23 median −28 h · worst from day 5 +40 h`) and on round 10's 48 h cap (all
   PASS); no MISMATCH, no MISSING.
@@ -1618,7 +1618,7 @@ Where it cannot:
 
 `gates.mjs --rows` runs the dayplayer leg alone at the tier's seeds (quick 2, `--full` 16; `--seeds N` etc. after
 the flags win). Its printout is kept as `target/gates/dayplayer-rows-<hash>.txt`, keyed by the binary, the
-arguments and the core's sources, and its full-length fortnights go to the gate's job cache (`RIDDLE_SRC_KEY`). It
+arguments and the core's sources, and its full-length fortnights go to the gate's job cache (`IDLEVER_SRC_KEY`). It
 never prints `gates: all PASS` or `dayplayer: all bars pass`; it ends with `gates: TARGETED — … not a gate pass`.
 
 ## 1. The evaluation loop (the afternoon)

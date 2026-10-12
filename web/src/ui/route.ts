@@ -5,7 +5,7 @@
 // names (`D5–8 · the Fens`), the shaft's untaken lane (`crypt · D9 · ?`) and the start sheet's (lane, depth) pairs.
 //
 // The core's wire names every lane (`Lineage.forks`, `ForkOption.route`, `ForecastDepth.biome`, `Lineage.lanes`, `ReturnReport.lanes`).
-// The tables below mirror crates/riddle-core/src/descent.rs and only stand in between an edit and the core's next word (a chip's
+// The tables below mirror crates/idlever-core/src/descent.rs and only stand in between an edit and the core's next word (a chip's
 // stair right after a tap) or on an older wire.
 import type { ForkChip, Lineage, RuleSet } from "../engine/types";
 

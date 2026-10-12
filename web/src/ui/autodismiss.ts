@@ -9,7 +9,7 @@ import "../autodismiss.css";
 /** The defaults (docs/UI.md §7 says why). */
 export const AUTO = { report: 12_000, death: 12_000, panel: 20_000, beat: 3_000 } as const;
 
-const KEY = "riddle.autoContinue";
+const KEY = "idlever.autoContinue";
 /** The settings toggle (on by default; a per-viewer preference). */
 export function autoOn(): boolean {
   try {

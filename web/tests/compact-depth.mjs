@@ -12,9 +12,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=5307`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const f = {
         depths: Array.from({ length: 20 }, (_, i) => ({
           depth: i + 1,
@@ -68,7 +68,7 @@ try {
       assert.match(await shaft.locator(".depth-next").innerText(), /warlord/);
       assert.match(await shaft.locator(".depth-chance").innerText(), /65%.*±3.*estimate/);
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.oaths = [
           {
             id: "depth-check",
@@ -93,12 +93,12 @@ try {
         "challenge must fit compact plate " + JSON.stringify(challengeSize),
       );
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.oaths = [];
         a.emitChange();
       });
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.live = {
           run_id: 1,
           heir: a.lineage.heir,
@@ -119,7 +119,7 @@ try {
       assert.equal(await shaft.locator(".depth-next b").innerText(), "D13");
       assert.match(await shaft.locator(".depth-next").innerText(), /2× gold/);
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.best_depth = 21;
         a.lineage.bounty = { depth: 23, pays: "$×2 · item", boss: "unseen_enemy" };
         a.emitChange();
@@ -135,7 +135,7 @@ try {
         ),
       );
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.bounty = { depth: 13, pays: "$×2 · item" };
         a.emitChange();
       });
@@ -145,7 +145,7 @@ try {
         "New record",
       );
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage.best_depth = 13;
         a.lineage.bounty = { depth: 15, pays: "$×2 · item" };
         a.emitChange();
@@ -164,7 +164,7 @@ try {
     // The watch's detail action must work, but cannot apply a tactic to a live run.
     if (width >= 1024) {
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.watchMode = "one";
         a.lastForecast.depths[8].try = {
           row: { conds: [], verb: { v: "attack", a: "boss" } },
@@ -186,7 +186,7 @@ try {
     }
     const model = await p.evaluate(async () => {
       const { progressGoal } = await import("/src/ui/progress-goal.ts"),
-        base = window.__riddle.lineage;
+        base = window.__idlever.lineage;
       return {
         empty: progressGoal({ ...base, town: { ...base.town, home: false } }),
         fresh: progressGoal({ ...base, best_depth: 0 }),
@@ -214,7 +214,7 @@ try {
     assert.ok(!JSON.stringify(model).includes("unseen_enemy"), "no unseen boss attribution");
     if (width < 1024) {
       await p.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           report = await a.engine.runOfflineQuick(0);
         a.go({ kind: "report", report, absence: true });
       });

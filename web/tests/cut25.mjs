@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 25 client gates (docs/CUT25.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 25 client gates (docs/CUT25.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §2  an `order` death (the core's `verdict: "order"`, `cause_row`, `order_over`): the headline names both rows (`R5 under R2`), the
 //       seal reads ORDER, the lead patch reads `move R5 above R2`; the gem moves the row (nothing added, nothing cut)
 //   §3  a drain (the hero's hp or max hp falling with no blow: `hunger`) is no progress and no fight — its word shows once a floor
@@ -51,7 +51,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -75,13 +75,13 @@ const richSave = async (gold, marks) => {
   await camp();
   return page.evaluate(
     async ([gold, marks]) => {
-      const b = JSON.parse(window.__riddle.exportSave());
+      const b = JSON.parse(window.__idlever.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.gold = gold;
       if (marks !== undefined) e.lineage.marks = marks;
       e.lineage.best_depth = Math.max(5, e.lineage.best_depth);
       b.engine = JSON.stringify(e);
-      return window.__riddle.importSave(JSON.stringify(b));
+      return window.__idlever.importSave(JSON.stringify(b));
     },
     [gold, marks],
   );
@@ -107,13 +107,13 @@ try {
       { conds: [{ k: "hp<", n: 20 }], verb: { v: "return" }, origin: "player" },
     ];
     await page.evaluate((rows) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.sets[r.active] = { ...r.sets[r.active], rows };
       r.vocab = { ...r.vocab, max_rows: 6 };
     }, rows);
     await page.evaluate(
       (rows) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "death",
           death: {
             run_id: 0,
@@ -173,8 +173,8 @@ try {
     await page.locator(".patch-gem").click({ timeout: 5000 });
     await sleep(250);
     const after = await page.evaluate(() => ({
-      screen: window.__riddle.screen,
-      rows: window.__riddle.rules.rows.map((r) => r.verb.v).join(","),
+      screen: window.__idlever.screen,
+      rows: window.__idlever.rules.rows.map((r) => r.verb.v).join(","),
     }));
     check(
       after.screen === "camp" && after.rows === "drink,return,attack,attack,bank",
@@ -206,7 +206,7 @@ try {
           blow: blows[2],
           blows,
         },
-        { rows: window.__riddle.rules.rows },
+        { rows: window.__idlever.rules.rows },
       );
       const host = document.createElement("div");
       host.append(...els);
@@ -222,7 +222,7 @@ try {
       `an offline trace shows every blow, hp after each (${b.join(" | ")})`,
     );
     await page.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           elapsed_s: 0,
@@ -268,7 +268,7 @@ try {
       /×5/.test(rep.reel) && /^1 RUNS$/i.test(rep.runs),
       `the reel's merged line reads ×5 ("${rep.reel.slice(-24)}"); the main runs tile shows the count ("${rep.runs}")`,
     );
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
   }
 
@@ -298,8 +298,8 @@ try {
       });
       await camp();
       await page.evaluate((m) => {
-        window.__riddle.watchMode = m;
-        window.__riddle.go({ kind: "watch" });
+        window.__idlever.watchMode = m;
+        window.__idlever.go({ kind: "watch" });
       }, m);
       const d = await page.evaluate(
         () =>
@@ -334,7 +334,7 @@ try {
               const w = document.querySelector(".watch"),
                 now = performance.now();
               const live =
-                window.__riddle?.screen === "watch" &&
+                window.__idlever?.screen === "watch" &&
                 w &&
                 w.dataset.ending !== "1" &&
                 !document.querySelector(".sheet-wrap") &&
@@ -359,7 +359,7 @@ try {
                 if (w.dataset.dead === "1") dead++;
               } else cur = null;
               last = now;
-              if (now - t0 > 60_000 || (window.__riddle?.screen !== "watch" && now - t0 > 3000)) {
+              if (now - t0 > 60_000 || (window.__idlever?.screen !== "watch" && now - t0 > 3000)) {
                 obs.disconnect();
                 res({ maxMs: Math.round(maxMs), at, dead, words });
                 return;
@@ -392,8 +392,8 @@ try {
     });
     await camp();
     await page.evaluate(() => {
-      window.__riddle.watchMode = "fights";
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.watchMode = "fights";
+      window.__idlever.go({ kind: "watch" });
     });
     await sleep(600);
     await page.locator(".watch .cmd .tile[data-tile=speed]").click({ timeout: 5000 });
@@ -416,7 +416,7 @@ try {
     }
     const mode = await page.evaluate(() => ({
       el: document.querySelector(".watch")?.dataset.mode,
-      app: window.__riddle.watchMode,
+      app: window.__idlever.watchMode,
     }));
     check(
       tiles.slice(0, 3).sort().join(",") === "fast,fights,one" &&
@@ -431,13 +431,13 @@ try {
     );
     await page.evaluate(() => {
       document.querySelectorAll(".sheet-wrap").forEach((x) => x.remove());
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.go({ kind: "camp" });
     });
     await camp();
     await page.reload({ waitUntil: "domcontentloaded" });
     await camp();
     check(
-      await page.evaluate(() => window.__riddle.watchMode === "one"),
+      await page.evaluate(() => window.__idlever.watchMode === "one"),
       "the chosen 1× survives camp navigation and reload",
     );
   }
@@ -450,7 +450,7 @@ try {
     await camp();
     await sleep(8000); // the camp's own measures settle
     const t = await page.evaluate(async () => {
-      const E = window.__riddle.engine,
+      const E = window.__idlever.engine,
         t0 = performance.now(),
         at = {};
       await Promise.all([
@@ -508,7 +508,7 @@ try {
   if (part("caps")) {
     const r = await page.evaluate(async () => {
       const { openUnlockSheet } = await import("/src/ui/unlocks.ts");
-      const app = window.__riddle;
+      const app = window.__idlever;
       const was = app.unlockCat;
       app.unlockCat = [
         { id: "row8", cost: 11, owned: false, available: true },
@@ -609,7 +609,7 @@ try {
     await sleep(400);
     const btn = page.locator(".sheet-wrap .forge button.forge-buy:not([disabled])").first();
     const quote = await btn.evaluate((b) => {
-      const L = window.__riddle.lineage,
+      const L = window.__idlever.lineage,
         k = L.kit.find((k) => k.slot === b.dataset.slot);
       return {
         slot: k.slot,
@@ -626,13 +626,13 @@ try {
     );
     await btn.click();
     await page.waitForFunction(
-      (q) => window.__riddle.lineage.kit.find((k) => k.slot === q.slot).owned === q.owned + 1,
+      (q) => window.__idlever.lineage.kit.find((k) => k.slot === q.slot).owned === q.owned + 1,
       quote,
     );
     const bought = await page.evaluate(
       (slot) => ({
-        owned: window.__riddle.lineage.kit.find((k) => k.slot === slot).owned,
-        gold: window.__riddle.lineage.gold,
+        owned: window.__idlever.lineage.kit.find((k) => k.slot === slot).owned,
+        gold: window.__idlever.lineage.gold,
         icon: !!document.querySelector(`.sheet-wrap .kit-slot[data-slot=${slot}] .item-ico`),
       }),
       quote.slot,
@@ -651,10 +651,10 @@ try {
     const black = await measured(async () => {
       await page.goto(`${url}?dev=1&fresh=1&seed=2501`, { waitUntil: "domcontentloaded" });
       await waitFor((s) => s?.booted && s.screen === "camp", "the real engine's camp", 120_000);
-      const kind = await page.evaluate(() => window.__riddle.kind);
+      const kind = await page.evaluate(() => window.__idlever.kind);
       await page.evaluate(() => {
-        window.__riddle.watchMode = "fights";
-        window.__riddle.go({ kind: "watch" });
+        window.__idlever.watchMode = "fights";
+        window.__idlever.go({ kind: "watch" });
       });
       const r = await page.evaluate(
         () =>
@@ -666,7 +666,7 @@ try {
             const f = () => {
               const v = window.__viewer,
                 st = v?.stats?.();
-              if (window.__riddle.screen !== "watch" || performance.now() - t0 > 150_000) {
+              if (window.__idlever.screen !== "watch" || performance.now() - t0 > 150_000) {
                 res(worst);
                 return;
               }

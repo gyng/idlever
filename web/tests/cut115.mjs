@@ -24,7 +24,7 @@ const check = (ok, what) => {
 };
 const browser = await launchBrowser();
 const camp = (page) =>
-  page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp", null, {
+  page.waitForFunction(() => window.__idlever?.booted && window.__idlever.screen === "camp", null, {
     timeout: 60_000,
   });
 try {
@@ -34,11 +34,11 @@ try {
     await page.goto(`${url}?dev=1&seed=307&fresh=1&runs=0`, { waitUntil: "domcontentloaded" });
     await camp(page);
     const fixture = readFileSync(
-      new URL("crates/riddle-core/src/fixtures/save_307dbed.json", root),
+      new URL("crates/idlever-core/src/fixtures/save_307dbed.json", root),
       "utf8",
     );
     await page.evaluate(async (e) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       b.engine = e;
       await r.importSave(JSON.stringify(b));
@@ -46,7 +46,7 @@ try {
     await camp(page);
     await page.waitForTimeout(500);
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       const p = e.lineage.pkg;
@@ -60,7 +60,7 @@ try {
     await camp(page);
     await page.waitForTimeout(500);
     const P = await page.evaluate(() => {
-      const P = window.__riddle.lineage.packages;
+      const P = window.__idlever.lineage.packages;
       return { build: P?.build, cf: P?.all.find((p) => p.id === "corridor_fighting") };
     });
     check(

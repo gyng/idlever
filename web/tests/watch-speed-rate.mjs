@@ -17,10 +17,10 @@ try {
       if (!v) throw Error(`${width}: ${l}`);
     };
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3330`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      window.__riddle.lastForecast = null;
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.lastForecast = null;
+      window.__idlever.go({ kind: "watch" });
     });
     await p.waitForFunction(() => document.querySelector(".watch")?.dataset.tick);
     const capture = (normalOnly = false) => {
@@ -125,7 +125,7 @@ try {
     check(s.rate.endsWith("×") && s.sped, `paused keeps the mode's clock (${JSON.stringify(s)})`);
     // the next run remembers `fast` and says so at once
     await p.evaluate(() => {
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.go({ kind: "watch" });
     });
     await p.waitForFunction(() => document.querySelector(".watch")?.dataset.tick);
     s = await read();

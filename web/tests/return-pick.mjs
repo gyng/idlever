@@ -25,10 +25,10 @@ try {
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   // a lineage with its house (a new town builds it by hand), then a 30m absence on that save
   await page.goto(`${url}?dev=1&fresh=1&seed=113`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+  await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
   // the house built and the scout hired (an absence then runs its sends and the return opens on the report)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     if (r.lineage.town?.home === false) await r.mutate(() => r.engine.buildTown("house"), "build");
     const e = JSON.parse(await r.engine.save());
     for (const id of ["porter", "scout"])
@@ -37,16 +37,16 @@ try {
     await r.flush?.();
   });
   await page.goto(`${url}?dev=1&seed=113&absent=30m`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
-  check((await page.evaluate(() => window.__riddle.kind)) === "wasm", "real wasm engine");
+  await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
+  check((await page.evaluate(() => window.__idlever.kind)) === "wasm", "real wasm engine");
   await page
-    .waitForFunction(() => window.__riddle.screen === "report", null, { timeout: 60_000 })
+    .waitForFunction(() => window.__idlever.screen === "report", null, { timeout: 60_000 })
     .catch(() => {});
   check(
-    (await page.evaluate(() => window.__riddle.screen)) === "report",
+    (await page.evaluate(() => window.__idlever.screen)) === "report",
     "the absence opens on its report",
   );
-  const pick = () => page.evaluate(() => window.__riddle.lineage.return_pick ?? null);
+  const pick = () => page.evaluate(() => window.__idlever.lineage.return_pick ?? null);
   const p0 = await pick();
   check(
     p0?.offers?.length === 3 && p0.size === 1,
@@ -67,7 +67,7 @@ try {
   );
   // left untaken, the pick waits on the camp
   await page.locator(".report .gem").first().click();
-  await page.waitForFunction(() => window.__riddle.screen === "camp", null, { timeout: 30_000 });
+  await page.waitForFunction(() => window.__idlever.screen === "camp", null, { timeout: 30_000 });
   await sleep(500);
   check(JSON.stringify(await pick()) === JSON.stringify(p0), "untaken, the pick waits unchanged");
   // on the camp the waiting pick is one tile (the fold's budget) that opens the three
@@ -86,14 +86,18 @@ try {
   const pts = () =>
     page.evaluate(
       () =>
-        window.__riddle.lineage.bloodline?.points ?? window.__riddle.lineage.legacy?.points ?? null,
+        window.__idlever.lineage.bloodline?.points ??
+        window.__idlever.lineage.legacy?.points ??
+        null,
     );
   const legacyOffer = p0?.offers?.find((o) => o.id === "legacy");
-  const before = await page.evaluate(async () => JSON.parse(await window.__riddle.engine.save()));
+  const before = await page.evaluate(async () => JSON.parse(await window.__idlever.engine.save()));
   await page.locator('.return-pick.sheet .tile[data-offer="legacy"]').click();
-  await page.waitForFunction(() => !window.__riddle.lineage.return_pick, null, { timeout: 15_000 });
+  await page.waitForFunction(() => !window.__idlever.lineage.return_pick, null, {
+    timeout: 15_000,
+  });
   await sleep(300);
-  const after = await page.evaluate(async () => JSON.parse(await window.__riddle.engine.save()));
+  const after = await page.evaluate(async () => JSON.parse(await window.__idlever.engine.save()));
   const bl = (s) => (s.active ?? s).lineage?.bloodline?.points ?? 0;
   check(
     !!legacyOffer && bl(after) - bl(before) === Number(legacyOffer.line.replace(/\D/g, "")),
@@ -106,7 +110,7 @@ try {
   );
   void pts;
   // forge: two steps a tier, priced alike
-  const kit = await page.evaluate(() => window.__riddle.lineage.kit ?? []);
+  const kit = await page.evaluate(() => window.__idlever.lineage.kit ?? []);
   const w = kit.find((k) => k.slot === "weapon"),
     a = kit.find((k) => k.slot === "armour");
   check(

@@ -155,7 +155,7 @@ no repeatable gain: median CPU 43.446 versus 44.528 s, with one candidate pair
 about 19% slower. Rejected; no package-cache code entered production. The patch,
 input/binary hashes and samples remain private. Only that probe package's build
 artifacts were intended for cleanup after measurements. Cargo's package cleanup
-matched the shared `riddle_core` artifact family more broadly than intended,
+matched the shared `idlever_core` artifact family more broadly than intended,
 removing 30.6 GiB of fast-profile artifacts. Source, gate-result caches, existing
 example executables and shipping WASM remained intact; the running gate continued.
 Rebuild the affected workspace fast library before final verification. Do not use

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { generate, writeGenerated } from "./native-codegen.mjs";
-const source = readFileSync(new URL("../crates/riddle-wasm/src/lib.rs", import.meta.url), "utf8");
+const source = readFileSync(new URL("../crates/idlever-wasm/src/lib.rs", import.meta.url), "utf8");
 test("native bridge covers every client method and rejects unsupported bindings", () => {
   writeGenerated(true);
   const api = JSON.parse(generate(source).metadata);
@@ -24,11 +24,11 @@ test("native bridge covers every client method and rejects unsupported bindings"
 });
 test("checkpoint memento accounts for every serde-skipped engine field", () => {
   const engine = readFileSync(
-    new URL("../crates/riddle-core/src/engine.rs", import.meta.url),
+    new URL("../crates/idlever-core/src/engine.rs", import.meta.url),
     "utf8",
   );
   const memento = readFileSync(
-    new URL("../crates/riddle-core/examples/dayplayer_checkpoint/mod.rs", import.meta.url),
+    new URL("../crates/idlever-core/examples/dayplayer_checkpoint/mod.rs", import.meta.url),
     "utf8",
   );
   for (const name of ["Game", "Run", "DeathRec", "Batch"]) {

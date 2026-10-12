@@ -13,7 +13,7 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
       const { unitLabel } = await import("/src/ui/unit-icon.ts"),
         { h } = await import("/src/ui/dom.ts");

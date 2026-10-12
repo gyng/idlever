@@ -1,4 +1,4 @@
-# Riddle — keyword tooltips (contract)
+# Idlever — keyword tooltips (contract)
 
 *2026-10-02. The owner: "add concise tooltips on keywords + highlight keywords etc. use judiciously so the ui doesn't become
 cluttered. set a target clutter/density that helps explain the game + use appropriate styling that doesn't make it too
@@ -35,7 +35,7 @@ but none of them mark words in chrome at rest as often as a text-light idle UI w
 | Captioned concepts | a concept whose one-time caption is on screen is not also marked | the caption already explains it; two treatments on one word is clutter |
 | Fade | a keyword is learned (plain text) once its tip was opened **2×**, or after **8 sightings** (a sighting: marked and on screen ≥ 1.5 s, at most one per keyword per 5 min) | the proposal's N set to 8: about two sessions of play before an unasked term goes quiet |
 | Learned / quiet | still a tip on hover (desktop), long-press (phone), focus (keyboard) | as proposed |
-| Store | per viewer, localStorage `riddle.keywords` (like `riddle.concepts`); never the save, never game truth | as proposed |
+| Store | per viewer, localStorage `idlever.keywords` (like `idlever.concepts`); never the save, never game truth | as proposed |
 | Tip copy | `tooltip` surface: ≤ 10 words (gloss + live value), no sentences, no `you`; the term is the plate's title | as proposed |
 | Live values | read from the wire (`app.lineage`, the last forecast) at open: marks held, the worn stance's level and runs, the bank's balance and cap, the quest's progress, tracks' stages | WC3 / Into the Breach |
 | Styling | a fine dotted underline in GILT, the word's own colour and weight; learned: no underline. No bold, no new colour | quiet; the text keeps its metrics (no layout shift) |

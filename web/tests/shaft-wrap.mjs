@@ -15,20 +15,24 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=24`);
-    await page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp");
+    await page.waitForFunction(
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
+    );
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.best_depth = 8;
       b.engine = JSON.stringify(e);
       await r.importSave(JSON.stringify(b));
     });
-    await page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp");
+    await page.waitForFunction(
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
+    );
     await page.waitForTimeout(500);
     await page.waitForTimeout(1500);
     await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         b = r.lastForecast;
       const depths = Array.from({ length: 9 }, (_, i) => ({
         depth: i + 1,

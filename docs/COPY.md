@@ -1,4 +1,4 @@
-# Riddle — copy (research, glossary, audit, passes)
+# Idlever — copy (research, glossary, audit, passes)
 
 *2026-09-27. The owner's brief: "Labels don't make sense, e.g. R1, R2. Fix writing, but AI slop — and
 more — isn't better." Budgets stay as `eval/copy-budgets.json` sets them (callout ≤ 3 words, label and
@@ -26,7 +26,7 @@ rules.*
 - **Into the Breach** shows intent instead of describing it; Justin Ma: "sacrifice cool ideas for the
   sake of clarity every time"; three sentences of tooltip lost to one looping animation
   ([Game Developer](https://www.gamedeveloper.com/design/-i-into-the-breach-i-dev-on-ui-design-sacrifice-cool-ideas-for-the-sake-of-clarity-every-time-)).
-  For Riddle: the shaft, the replays and the reel carry meaning; words only name.
+  For Idlever: the shaft, the replays and the reel carry meaning; words only name.
 - **Slay the Spire**: an enemy's intent is an icon plus a number — no sentence
   ([wiki](https://slaythespire.wiki.gg/wiki/Intent)). Keywords (`Vulnerable`, `Weak`) are one fixed word each, never paraphrased.
 - **Balatro**: `chips × mult` — two terms, two fixed colours, one formula on every hand
@@ -44,14 +44,14 @@ rules.*
   **Gladiabots** has no numbers — the layout is the order
   ([wiki](https://wiki.gladiabots.com/index.php?title=BotProgramming_Basics)).
 
-### 1.3 AI-slop patterns banned from Riddle's copy
+### 1.3 AI-slop patterns banned from Idlever's copy
 
 From Wikipedia's [Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) and
 word-frequency studies ([arXiv 2406.07016](https://arxiv.org/abs/2406.07016v1)):
 
 - Brochure verbs and filler adjectives: *unleash, embark, delve, elevate, harness, seamless, robust,
   vibrant, intricate, pivotal, epic, legendary, mighty*.
-- Faux-epic tone: *"Your hero's saga continues…"*, *"The depths await"*. Riddle's diegetic voice is flat
+- Faux-epic tone: *"Your hero's saga continues…"*, *"The depths await"*. Idlever's diegetic voice is flat
   and factual (`Freed a captive. She followed.`).
 - Triads added for rhythm; `not X but Y`; em-dash chains; Title Case On Everything; emoji bullets.
 - Hedging (`may potentially`), restating what the screen shows, summary lines (`Overall…`).

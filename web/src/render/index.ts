@@ -1,4 +1,4 @@
-// Riddle replay viewer: pixel pipeline per research/art-tech.md (option C, two densities).
+// Idlever replay viewer: pixel pipeline per research/art-tech.md (option C, two densities).
 //
 // Coordinates. World unit = 1 environment texel. Tile = 8×8 units at world (tx*8, -ty*8): tile row 0
 // is at the top of the map, world +Y is screen up. The OrthographicCamera sits at z=100 looking
@@ -2202,9 +2202,9 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     renderer.setViewport(0, devH - ih * k, iw * k, ih * k);
     renderer.render(blit.scene, blit.camera);
     gpu.end();
-    // juice (docs/JUICE.md): `window.__riddleSyncTiming` drains the GPU each frame (a 1-px readback) so cpuMs is the whole
+    // juice (docs/JUICE.md): `window.__idleverSyncTiming` drains the GPU each frame (a 1-px readback) so cpuMs is the whole
     // pipeline's cost where the timer query never resolves (this harness); measurement only, never on in play
-    if ((window as { __riddleSyncTiming?: boolean }).__riddleSyncTiming) {
+    if ((window as { __idleverSyncTiming?: boolean }).__idleverSyncTiming) {
       const g = renderer.getContext();
       g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, syncPx);
     }

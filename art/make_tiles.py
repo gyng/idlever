@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hand-authored 8x8 environment tiles for Riddle (art/tiles/*.png).
+"""Hand-authored 8x8 environment tiles for Idlever (art/tiles/*.png).
 
 Every texel is placed by rule, not by random noise: tiles are ASCII templates
 indexed into an 8-colour biome ramp (0 = darkest .. 7 = lightest), with an

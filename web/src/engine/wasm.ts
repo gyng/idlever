@@ -1,7 +1,7 @@
 // Real Engine over the wasm-pack output in ./pkg (built by tools/verify.sh). Imported lazily via
 // import.meta.glob so the client compiles and runs (falling back to the fake) when pkg/ is absent.
 //
-// Wasm surface (crates/riddle-wasm/src/lib.rs): `class Game { constructor(seed) }` with one method per
+// Wasm surface (crates/idlever-wasm/src/lib.rs): `class Game { constructor(seed) }` with one method per
 // Engine member, camelCased, taking/returning JSON strings (exportRules returns plain text; setRules,
 // loadout and setCompanionRules return nothing; `load` is an instance method, `fromSave` a static).
 // Errors surface as thrown JsError (invalid rules, unaffordable unlocks, …).
@@ -47,7 +47,7 @@ type Pkg = {
   version?: () => string;
 };
 
-const mods = import.meta.glob<Pkg>("./pkg/riddle_wasm.js");
+const mods = import.meta.glob<Pkg>("./pkg/idlever_wasm.js");
 
 function j<T>(x: unknown): T {
   return (typeof x === "string" ? JSON.parse(x) : x) as T;

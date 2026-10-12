@@ -38,7 +38,7 @@ page.on("console", (m) => {
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -52,7 +52,7 @@ async function waitFor(pred, label, timeout = 20_000) {
   throw new Error(`timeout waiting for ${label} (screen=${s?.screen})`);
 }
 const camp = async () => {
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await waitFor((s) => s?.screen === "camp", "camp");
   await sleep(200);
 };
@@ -77,7 +77,7 @@ const ret = { conds: [{ k: "hp<", n: 50 }], verb: { v: "return" } };
 async function deathWith(patches, filled, ms = 600, extra = {}) {
   await page.evaluate(
     ([patches, filled, rows, ms, extra]) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.sets[r.active] = { ...r.sets[r.active], rows };
       r.engine.deathDeltas = () => new Promise((res) => setTimeout(() => res(filled), ms));
       r.go({
@@ -124,9 +124,9 @@ try {
   });
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   await sleep(250);
-  if (await page.evaluate(() => window.__riddle.town?.home === false)) {
+  if (await page.evaluate(() => window.__idlever.town?.home === false)) {
     await page.locator('.town-tag[data-next="house"]').click();
-    await page.waitForFunction(() => window.__riddle.town?.home === true);
+    await page.waitForFunction(() => window.__idlever.town?.home === true);
   }
 
   // ---- the gem waits for the whole-run measure; the landing is matched patch by patch; an exit reads its price
@@ -182,10 +182,10 @@ try {
     );
     const pend = await page.evaluate(async () => {
       const g = document.querySelector(".patch-gem");
-      const before = window.__riddle.rules.rows.length;
+      const before = window.__idlever.rules.rows.length;
       g?.click();
       await new Promise((r) => setTimeout(r, 100));
-      return window.__riddle.rules.rows.length === before && window.__riddle.screen === "death";
+      return window.__idlever.rules.rows.length === before && window.__idlever.screen === "death";
     });
     check(pend, "a tap on the waiting gem applies nothing");
     await sleep(1200);
@@ -224,7 +224,7 @@ try {
     const tip = await page.evaluate(() => document.querySelector(".patch-gem")?.dataset.kwh);
     check(tip === "g_risky", `the risky gem carries its tip (${tip})`);
     const one = await page.evaluate(async () => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         n = r.rules.rows.length;
       document.querySelector(".patch-gem")?.click();
       await new Promise((z) => setTimeout(z, 150));
@@ -240,7 +240,7 @@ try {
     const two = await page.evaluate(async () => {
       document.querySelector(".patch-gem")?.click();
       await new Promise((z) => setTimeout(z, 300));
-      return window.__riddle.screen;
+      return window.__idlever.screen;
     });
     check(two === "camp", `the second press applies it (${two})`);
   }
@@ -329,7 +329,7 @@ try {
     ];
     await camp();
     await page.evaluate((turns) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rows = [
         { conds: [{ k: "foe_tag", t: "boss" }], verb: { v: "attack", a: "tag:boss" } },
         { conds: [{ k: "hp<", n: 30 }], verb: { v: "drink", a: "heal" } },
@@ -383,7 +383,7 @@ try {
   {
     await camp();
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__restock = [];
       r.engine.setOrders = async (orders) => {
         r.__restock.push(orders.repeat);
@@ -415,25 +415,25 @@ try {
     await off.click();
     await sleep(200);
     const b1 = await off.textContent(),
-      c1 = await page.evaluate(() => window.__riddle.__restock.join());
+      c1 = await page.evaluate(() => window.__idlever.__restock.join());
     await off.click();
     await sleep(300);
-    const c2 = await page.evaluate(() => window.__riddle.__restock.join());
+    const c2 = await page.evaluate(() => window.__idlever.__restock.join());
     check(
       b0 === "true" && b1 === "refund 2?" && c1 === "" && c2 === "false",
       `a packed shelf: the first tap asks (on ${b0} → \`${b1}\`, setOrders ${c1 || "—"}), the second turns it off (${c2}); free/found excluded`,
     );
     await off.click();
     check(
-      await page.evaluate(() => window.__riddle.__restock.join() === "false"),
+      await page.evaluate(() => window.__idlever.__restock.join() === "false"),
       "already off: another tap sends no order",
     );
     await row.locator("button").first().click();
-    await page.waitForFunction(() => window.__riddle.lineage.orders.repeat === true);
+    await page.waitForFunction(() => window.__idlever.lineage.orders.repeat === true);
     await off.click();
-    await page.waitForFunction(() => window.__riddle.lineage.orders.repeat === false);
+    await page.waitForFunction(() => window.__idlever.lineage.orders.repeat === false);
     check(
-      await page.evaluate(() => window.__riddle.__restock.join() === "false,true,false"),
+      await page.evaluate(() => window.__idlever.__restock.join() === "false,true,false"),
       "empty shelf: off needs one tap, no refund confirmation",
     );
   }
@@ -442,7 +442,7 @@ try {
   {
     await camp();
     const s = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const keep = r.sets[r.active].rows;
       r.sets[r.active].rows = [];
       r.rulesChanged();
@@ -465,7 +465,7 @@ try {
   {
     await camp();
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const report = {
         elapsed_s: 60,
         runs: 1,
@@ -518,7 +518,7 @@ try {
   {
     await camp();
     const r = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage = {
         ...a.lineage,
         facts: [...new Set([...(a.lineage.facts ?? []), "fork:4", "fork D4"])].filter(
@@ -558,7 +558,7 @@ try {
   {
     await camp();
     const b = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const u = (a.unlockCat ?? []).find(
         (x) => /^(kite_archers|gas_step|thief_guard|pack_break)$/.test(x.id) && !x.owned,
       );

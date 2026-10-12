@@ -32,7 +32,7 @@ page.on("console", (m) => {
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -68,7 +68,7 @@ const w = (death, harms, risk) => ({
 async function deathWith(patches, filled) {
   await page.evaluate(
     ([patches, filled, rows]) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.sets[r.active] = { ...r.sets[r.active], rows };
       r.engine.deathDeltas = () => new Promise((res) => setTimeout(() => res(filled), 300));
       r.go({
@@ -184,7 +184,7 @@ try {
       forecast_pm: 0.1,
       whole: w(0.2, true),
     }));
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await waitFor((s) => s?.screen === "camp", "camp");
     await deathWith(ps, filled);
     check(
@@ -197,11 +197,11 @@ try {
       !t.some((x) => x.top) && /^town$/i.test((await gemText()).trim()),
       `every tablet harms: none lit, the gem reads Town ("${await gemText()}")`,
     );
-    const saved = await page.evaluate(() => window.__riddle.engine.save());
+    const saved = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".death .gem").click();
     await waitFor((s) => s?.screen === "camp", "Town from harmful patches");
     check(
-      (await page.evaluate(() => window.__riddle.engine.save())) === saved,
+      (await page.evaluate(() => window.__idlever.engine.save())) === saved,
       "Town leaves the hero setup and earned state unchanged",
     );
   }
@@ -213,7 +213,7 @@ try {
       { row: rest, insert_at: 1, survive: 10 / 12, forecast_delta: 0.2, camp_pending: true },
       { row: ret, insert_at: 0, survive: 1, forecast_delta: 0, camp_pending: true, exits: true },
     ];
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await waitFor((s) => s?.screen === "camp", "camp");
     await deathWith(
       ps,
@@ -227,11 +227,11 @@ try {
 
   // ---- vs sent after a lineage move: the shown numbers; an unnamed change clears the move line
   {
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await waitFor((s) => s?.screen === "camp", "camp");
     await sleep(300);
     const r = await page.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.baseShown.clear();
       a.baseShown.set("D6", 26);
       a.lastForecast = { ...a.lastForecast, sims: 50, refined: false };
@@ -256,7 +256,7 @@ try {
       `with no lineage move the paired move stands (${r.paired && pts(r.paired)})`,
     );
     const lm = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lmove = {
         label: "drop",
         rules: JSON.stringify(a.rules.rows),
@@ -268,7 +268,7 @@ try {
     check(lm === null, "an unnamed lineage change clears the last move's line");
     const frontier = await page.evaluate(async () => {
       const { lmoveLine } = await import("/src/ui/forecast.ts");
-      const a = window.__riddle;
+      const a = window.__idlever;
       const oldBest = a.lineage.best_depth,
         oldMove = a.lmove;
       a.lineage.best_depth = 4;

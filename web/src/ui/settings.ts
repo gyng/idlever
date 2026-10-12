@@ -1,6 +1,6 @@
 // Settings sheet: save export/import, rules export/import, engine badge, reset lineage (double tap).
 // Cut 10 §4: `sound` row with a `mute` toggle (persisted in localStorage; no cue and no drone while muted).
-// docs/UI.md §7: `auto continue` row — `on` / `off` (localStorage `riddle.autoContinue`).
+// docs/UI.md §7: `auto continue` row — `on` / `off` (localStorage `idlever.autoContinue`).
 // Cut 14: `slowdowns` row — `on` / `off` (`app.slowdowns`, persisted): the watch's fight / near / scene holds, or the flat rate.
 import type { App } from "../app";
 import { h, copyText, replace } from "./dom";
@@ -17,7 +17,7 @@ export function preferenceRows(app?: App): HTMLElement[] {
     h("div", { class: "srow" }, h("span", { class: "label" }, label), ...buttons);
   let slow = true;
   try {
-    slow = localStorage.getItem("riddle.slowdowns") !== "0";
+    slow = localStorage.getItem("idlever.slowdowns") !== "0";
   } catch {
     /* session default */
   }
@@ -27,7 +27,7 @@ export function preferenceRows(app?: App): HTMLElement[] {
     else {
       slow = on;
       try {
-        localStorage.setItem("riddle.slowdowns", on ? "1" : "0");
+        localStorage.setItem("idlever.slowdowns", on ? "1" : "0");
       } catch {
         /* session only */
       }
@@ -300,7 +300,7 @@ export function openSettings(app: App, onClose?: () => void): void {
               class: "btn main-menu-button",
               onclick: () => {
                 leave();
-                window.dispatchEvent(new Event("riddle:menu"));
+                window.dispatchEvent(new Event("idlever:menu"));
               },
             },
             /* copy:button */ "Main menu",

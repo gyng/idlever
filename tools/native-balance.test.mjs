@@ -4,16 +4,16 @@ import { readFileSync, writeFileSync, mkdtempSync, rmSync } from "node:fs";
 import assert from "node:assert/strict";
 test(
   "live Rust profile reload preserves state and rejects invalid edits",
-  { skip: !process.env.RIDDLE_NATIVE_TEST_BIN },
+  { skip: !process.env.IDLEVER_NATIVE_TEST_BIN },
   async () => {
-    const dir = mkdtempSync("/tmp/riddle-balance-"),
+    const dir = mkdtempSync("/tmp/idlever-balance-"),
       file = dir + "/profile.json";
     const base = JSON.parse(
       readFileSync(new URL("../tuning/balance.json", import.meta.url), "utf8"),
     );
     writeFileSync(file, JSON.stringify(base));
     const h = new NativeHost({
-      binary: process.env.RIDDLE_NATIVE_TEST_BIN,
+      binary: process.env.IDLEVER_NATIVE_TEST_BIN,
       balanceFile: file,
       threads: 1,
     });

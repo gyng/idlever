@@ -9,7 +9,7 @@ const browser = await launchBrowser();
 try {
   const p = await browser.newPage();
   await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-  await p.waitForFunction(() => window.__riddle?.booted);
+  await p.waitForFunction(() => window.__idlever?.booted);
   const count = await p.evaluate(async () => {
     const { twoLanes } = await import("/src/engine/lanes.ts");
     let n = 0;

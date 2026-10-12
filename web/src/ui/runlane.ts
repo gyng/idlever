@@ -13,7 +13,7 @@ import { kwHost } from "./tips";
 import { paintFace } from "./frame";
 
 export const LANES_SHOWN = 3;
-const SEEN_KEY = (L: Lineage): string => /* copy:none */ `riddle.runs.seen.${L.seed ?? 0}`;
+const SEEN_KEY = (L: Lineage): string => /* copy:none */ `idlever.runs.seen.${L.seed ?? 0}`;
 /** the newest run id the log showed this viewer (a per-viewer convenience) */
 export function runsSeen(L: Lineage): number {
   try {
@@ -282,7 +282,7 @@ const restShare = (s: number): number => Math.max(0, Math.min(1, s / REST_FULL_S
 
 /** RUNS_UI: the watch's `town ↻` carries `he keeps going` over it for this viewer's first few watches (the owner's rule for a new
  *  concept: its mark and a short caption, once learned no more) — the words drawn by CSS from `data-cap`, so the tile's text stays `town` */
-const GOES_KEY = "riddle.runs.goes_on",
+const GOES_KEY = "idlever.runs.goes_on",
   GOES_SHOWN = 3;
 export function goesOnCap(): HTMLElement | null {
   let n = 0;

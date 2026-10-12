@@ -11,9 +11,9 @@ try {
     errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`${url}?fresh=1&seed=3&runs=0`);
-  await page.waitForFunction(() => window.__riddle?.booted);
+  await page.waitForFunction(() => window.__idlever?.booted);
   const result = await page.evaluate(async () => {
-    const app = window.__riddle;
+    const app = window.__idlever;
     app.runnerOn = false;
     if (app.kind !== "wasm") throw Error("real WASM worker required");
     if (typeof app.engine.respecLegacy !== "function") throw Error("missing worker respec bridge");

@@ -13,11 +13,11 @@ try {
       errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const count = await page.evaluate(async () => {
       const { ReplayState } = await import("/src/render/state.ts"),
         { gunStatus } = await import("/src/ui/gun-status.ts");
-      const snapshot = await window.__riddle.engine.send();
+      const snapshot = await window.__idlever.engine.send();
       const loaded = {
         item: 900,
         kind: "short_gun",

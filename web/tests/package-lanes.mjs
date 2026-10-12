@@ -9,7 +9,7 @@ const browser = await launchBrowser();
 try {
   const page = await browser.newPage();
   await page.goto(`${url}?engine=fake&fresh=1&runs=0`);
-  await page.waitForFunction(() => window.__riddle?.booted);
+  await page.waitForFunction(() => window.__idlever?.booted);
   const checks = await page.evaluate(async () => {
     const { packageMemo, twoLanes } = await import("/src/engine/lanes.ts");
     let n = 0;

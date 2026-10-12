@@ -1,6 +1,6 @@
 # Rater brief (paste to a fresh agent; do not add design context)
 
-You are a blind fun rater for a browser game called Riddle. You have never seen it. Read only:
+You are a blind fun rater for a browser game called Idlever. You have never seen it. Read only:
 `eval/RATING.md` (the contract), `docs/FUN_EVAL_IDLE.md` (the idle axes, boundaries, probes),
 `../eval-fun/docs/FRAMEWORK.md` sections 1–3 (axes and anchors), and `eval/SCORECARD.template.json`.
 Do NOT open `PLAN.md`, `research/`, `docs/CUT*.md`, `docs/INTEGRATION.md`, other cards, or the
@@ -43,7 +43,7 @@ benchmark it beats). Fill the `horizon` block honestly. Weight-0 axes get 0 and 
 `bot` stays "na" on every axis (caps are applied later). The build has sound (WebAudio cues and a camp drone; unmuted after your first tap, `mute` in settings). The GPU harness runs headed Chromium under WSLg, which has an audio sink, but you cannot hear it; you may inspect `window.__audio` in dev builds to see which cues fired and when. If you cannot verify a cue landed at the right moment, mark audio unassessed rather than praising or faulting it.
 Before you close the driver, save your final rule set: open `{URL}?dev=1` (it keeps your
 save), then
-`tools/drive.sh {PORT} '{"op":"js","body":"return await page.evaluate(() => window.__riddle.engine.exportRules())"}' | python3 -c 'import json,sys; print(json.load(sys.stdin)["value"])' > eval/cards/{BUILD}.{RATER}.rules.json`
+`tools/drive.sh {PORT} '{"op":"js","body":"return await page.evaluate(() => window.__idlever.engine.exportRules())"}' | python3 -c 'import json,sys; print(json.load(sys.stdin)["value"])' > eval/cards/{BUILD}.{RATER}.rules.json`
 (the gate table plays every cohort's sets; a stall only your set finds is one the bots cannot).
 Finish the card with a three-sentence retelling of your best run in `criterion.delayedRecall`
 prefixed "same-day: ". Then run `eval/score.sh eval/cards/{BUILD}.{RATER}.json` and paste the

@@ -9,15 +9,15 @@ import assert from "node:assert/strict";
 const [binary, out, ...saves] = process.argv.slice(2);
 assert.ok(binary && out && saves.length, "usage: native-parity.mjs BINARY OUT SAVE...");
 const sha = (b) => createHash("sha256").update(b).digest("hex");
-const wasm = readFileSync("web/src/engine/pkg/riddle_wasm_bg.wasm");
-const bridge = readFileSync("web/src/engine/pkg/riddle_wasm.js");
-const threads = Number(process.env.RIDDLE_NATIVE_THREADS ?? 8);
+const wasm = readFileSync("web/src/engine/pkg/idlever_wasm_bg.wasm");
+const bridge = readFileSync("web/src/engine/pkg/idlever_wasm.js");
+const threads = Number(process.env.IDLEVER_NATIVE_THREADS ?? 8);
 const host = new NativeHost({ binary, threads });
 const browser = await launchGpu();
 const rows = [];
 try {
   const page = await browser.newPage();
-  await page.route("http://riddle.parity.invalid/**", (r) => {
+  await page.route("http://idlever.parity.invalid/**", (r) => {
     const p = new URL(r.request().url()).pathname;
     return r.fulfill(
       p === "/engine.mjs"
@@ -27,7 +27,7 @@ try {
           : { contentType: "text/html", body: "<!doctype html><title>Native parity</title>" },
     );
   });
-  await page.goto("http://riddle.parity.invalid/");
+  await page.goto("http://idlever.parity.invalid/");
   await page.evaluate(async () => {
     const m = await import("/engine.mjs");
     await m.default({ module_or_path: "/engine.wasm" });

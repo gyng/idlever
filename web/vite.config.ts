@@ -24,7 +24,7 @@ function swPrecache(): Plugin {
     base = "/";
   const files: string[] = [];
   return {
-    name: "riddle-sw-precache",
+    name: "idlever-sw-precache",
     apply: "build",
     configResolved(c) {
       outDir = c.build.outDir;
@@ -78,7 +78,7 @@ function swPrecache(): Plugin {
 }
 
 export default defineConfig({
-  base: process.env.RIDDLE_BASE ?? "/",
+  base: process.env.IDLEVER_BASE ?? "/",
   define: {
     "import.meta.env.VITE_BUILD_DATE": JSON.stringify(new Date().toISOString().slice(0, 10)),
     "import.meta.env.VITE_BUILD_COMMIT": JSON.stringify(buildCommit),

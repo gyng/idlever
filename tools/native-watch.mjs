@@ -8,10 +8,10 @@ const ROOT = fileURLToPath(new URL("../", import.meta.url));
 // A test-like filename alone is not enough: Cargo must exclude this module,
 // and its current declaration must still be exclusively cfg(test).
 function provenTestOnly(file, root) {
-  const match = /^crates\/riddle-core\/src\/(tests\w*)\.rs$/.exec(file);
+  const match = /^crates\/idlever-core\/src\/(tests\w*)\.rs$/.exec(file);
   if (!match || process.env.CARGO_TARGET_DIR || /\s/.test(resolve(root))) return false;
   try {
-    const lib = readFileSync(resolve(root, "crates/riddle-core/src/lib.rs"), "utf8");
+    const lib = readFileSync(resolve(root, "crates/idlever-core/src/lib.rs"), "utf8");
     const name = match[1];
     const declarations = [
       ...lib.matchAll(new RegExp(`^\\s*(?:pub\\s+)?mod\\s+${name}\\s*;`, "gm")),
@@ -32,7 +32,8 @@ function provenTestOnly(file, root) {
       return false;
     const inputs = new Set(deps.slice(deps.indexOf(": ") + 2).split(/\s+/));
     return (
-      inputs.has(resolve(root, "crates/riddle-core/src/lib.rs")) && !inputs.has(resolve(root, file))
+      inputs.has(resolve(root, "crates/idlever-core/src/lib.rs")) &&
+      !inputs.has(resolve(root, file))
     );
   } catch {
     return false;
@@ -46,13 +47,13 @@ export function nativeInput(file, root = ROOT) {
     [
       "Cargo.toml",
       "Cargo.lock",
-      "crates/riddle-core/Cargo.toml",
-      "crates/riddle-wasm/Cargo.toml",
-      "crates/riddle-core/examples/native_dev.rs",
+      "crates/idlever-core/Cargo.toml",
+      "crates/idlever-wasm/Cargo.toml",
+      "crates/idlever-core/examples/native_dev.rs",
       "tools/native-build.mjs",
       "tools/native-codegen.mjs",
     ].includes(path) ||
-    /^(crates\/riddle-(core|wasm)\/src\/|crates\/riddle-core\/presets\/)/.test(path)
+    /^(crates\/idlever-(core|wasm)\/src\/|crates\/idlever-core\/presets\/)/.test(path)
   );
 }
 
@@ -120,7 +121,7 @@ export class NativeRebuilder {
 export function watchNative(server) {
   let child;
   const watcher = new NativeRebuilder({
-    publish: (data) => server.ws.send({ type: "custom", event: "riddle:native-build", data }),
+    publish: (data) => server.ws.send({ type: "custom", event: "idlever:native-build", data }),
     build: () =>
       new Promise((resolveBuild, reject) => {
         let errors = "";
@@ -145,8 +146,8 @@ export function watchNative(server) {
     [
       "Cargo.toml",
       "Cargo.lock",
-      "crates/riddle-core",
-      "crates/riddle-wasm",
+      "crates/idlever-core",
+      "crates/idlever-wasm",
       "tools/native-build.mjs",
       "tools/native-codegen.mjs",
     ].map((p) => resolve(ROOT, p)),

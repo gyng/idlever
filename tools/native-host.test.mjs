@@ -5,7 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { NativeHost, nativePlugin } from "./native-host.mjs";
 test("native sessions isolate, order calls, recover from request errors and preserve state across rebuild", async () => {
-  const dir = mkdtempSync(join(tmpdir(), "riddle-native-host-"));
+  const dir = mkdtempSync(join(tmpdir(), "idlever-native-host-"));
   const binary = join(dir, "engine");
   writeFileSync(
     binary,
@@ -40,9 +40,12 @@ console.log(JSON.stringify({id,ok:!e,r,e})); });
   }
 });
 test("native transport rejects remote connections and cross-origin requests", async () => {
-  const before = { enabled: process.env.RIDDLE_NATIVE_DEV, binary: process.env.RIDDLE_NATIVE_BIN };
-  process.env.RIDDLE_NATIVE_DEV = "1";
-  process.env.RIDDLE_NATIVE_BIN = process.execPath;
+  const before = {
+    enabled: process.env.IDLEVER_NATIVE_DEV,
+    binary: process.env.IDLEVER_NATIVE_BIN,
+  };
+  process.env.IDLEVER_NATIVE_DEV = "1";
+  process.env.IDLEVER_NATIVE_BIN = process.execPath;
   let middleware, close;
   try {
     nativePlugin().configureServer({
@@ -88,8 +91,8 @@ test("native transport rejects remote connections and cross-origin requests", as
   } finally {
     close?.();
     for (const [key, value] of [
-      ["RIDDLE_NATIVE_DEV", before.enabled],
-      ["RIDDLE_NATIVE_BIN", before.binary],
+      ["IDLEVER_NATIVE_DEV", before.enabled],
+      ["IDLEVER_NATIVE_BIN", before.binary],
     ]) {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;

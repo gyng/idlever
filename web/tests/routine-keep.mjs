@@ -37,9 +37,9 @@ try {
         errors = [];
       page.on("pageerror", (e) => errors.push(e.message));
       await page.goto(`${url}?dev=1&fresh=1&seed=156`);
-      await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90000 });
+      await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90000 });
       await page.evaluate(async (fixture) => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         if (a.kind !== "wasm") throw Error("real WASM required");
         if (
           !(await a.importSave(
@@ -89,12 +89,12 @@ try {
         );
         await page.locator(".sheet-wrap button.btn.primary.wide").click();
       }
-      await page.waitForFunction(() => window.__riddle.screen === "report", null, {
+      await page.waitForFunction(() => window.__idlever.screen === "report", null, {
         timeout: 25000,
       });
       await page.getByRole("button", { name: "details", exact: true }).click();
       const result = await page.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           saved = JSON.parse(await a.engine.save());
         return {
           auto: window.__keepAuto,

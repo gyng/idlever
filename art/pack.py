@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pack Riddle art into web/public/art/atlas.png + atlas.json (+ title.png).
+"""Pack Idlever art into web/public/art/atlas.png + atlas.json (+ title.png).
 
 Keyed sprites (bg == "keyed" in art/manifest.json), from art/generated/<id>.png:
   1. chroma-key -> RGBA. Sources with a transparent corner carry authored alpha

@@ -20,17 +20,17 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?dev=1&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await p.evaluate(() => window.__riddle.kind), "wasm");
+    await p.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await p.evaluate(() => window.__idlever.kind), "wasm");
     const locked = await p.evaluate(() =>
-      window.__riddle.lineage.packages.all.find((p) => p.id === "cadence"),
+      window.__idlever.lineage.packages.all.find((p) => p.id === "cadence"),
     );
     assert.equal(locked.owned, false);
     assert.equal(locked.trigger, "meet Mirror King"); // Cut 112: the King's counter arrives with his meeting (was `Clear dungeon`)
     assert.equal(
       await p.evaluate(
         async ({ source, loadout }) =>
-          window.__riddle.importSave(
+          window.__idlever.importSave(
             JSON.stringify({ v: 2, engine: source, loadout, last_seen: Date.now(), runs: 359 }),
           ),
         { source, loadout: native.loadout },
@@ -39,11 +39,11 @@ try {
     );
     await p.locator(".ending-town").click();
     await p.waitForSelector(".camp");
-    await p.evaluate(() => (window.__riddle.runnerOn = false));
-    const before = await p.evaluate(() => window.__riddle.engine.save());
+    await p.evaluate(() => (window.__idlever.runnerOn = false));
+    const before = await p.evaluate(() => window.__idlever.engine.save());
     assert.equal(
       await p.evaluate(
-        () => window.__riddle.lineage.packages.all.find((p) => p.id === "cadence").owned,
+        () => window.__idlever.lineage.packages.all.find((p) => p.id === "cadence").owned,
       ),
       true,
     );
@@ -57,14 +57,14 @@ try {
       /Mirror rhythm L1.*Alternate attacks against mirrors/s,
     );
     assert.equal(await choice.locator(".icon-socket img").count(), 1);
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     await choice.click();
-    await p.waitForFunction(() => window.__riddle.lineage.packages.tactics?.includes("cadence"));
+    await p.waitForFunction(() => window.__idlever.lineage.packages.tactics?.includes("cadence"));
     const chosen = await p.evaluate(() => ({
-      ended: window.__riddle.lineage.ended,
-      points: window.__riddle.lineage.bloodline.points,
-      gold: window.__riddle.lineage.gold,
-      rows: window.__riddle.rules.rows.filter((r) => r.origin === "tactic:cadence"),
+      ended: window.__idlever.lineage.ended,
+      points: window.__idlever.lineage.bloodline.points,
+      gold: window.__idlever.lineage.gold,
+      rows: window.__idlever.rules.rows.filter((r) => r.origin === "tactic:cadence"),
     }));
     assert.equal(chosen.ended, true);
     assert.equal(chosen.points, native.lineage.bloodline.points);
@@ -77,12 +77,12 @@ try {
     await p.locator(".descent-choice").click();
     await p.locator(".descent-confirm:not([disabled])").waitFor();
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.ended), true);
-    await p.evaluate(() => window.__riddle.flush());
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.ended), true);
+    await p.evaluate(() => window.__idlever.flush());
     await p.reload();
     await p.waitForSelector(".ending-town");
     assert.equal(
-      await p.evaluate(() => window.__riddle.lineage.packages.tactics?.includes("cadence")),
+      await p.evaluate(() => window.__idlever.lineage.packages.tactics?.includes("cadence")),
       true,
     );
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);

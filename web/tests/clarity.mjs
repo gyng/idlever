@@ -55,7 +55,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -87,7 +87,7 @@ const rowTexts = () =>
   );
 const engineRows = () =>
   page.evaluate(async () =>
-    (await window.__riddle.engine.lineage()).sets[window.__riddle.active].rows.map(
+    (await window.__idlever.engine.lineage()).sets[window.__idlever.active].rows.map(
       (r) =>
         `${r.conds.map((c) => c.k + (c.t ?? "") + (c.n ?? "")).join(" ")}→${r.verb.v}${r.verb.a ?? ""}`,
     ),
@@ -146,7 +146,7 @@ try {
     // §3 `+1 row` dimmed `⊘ fill rows` while free rows exist (a fresh fake set has fewer rows than max_rows)
     {
       const info = await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const card = [...document.querySelectorAll(".unlocks .card")].find((c) =>
           c.textContent.startsWith("+1 rule"),
         );
@@ -164,7 +164,7 @@ try {
       );
       // fill the set: the card's gate lifts (the fake's own gate then decides)
       await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         while (r.rules.rows.length < r.vocab.max_rows)
           r.rules.rows.push({
             conds: [{ k: "hp<", n: 30 }],
@@ -202,7 +202,7 @@ try {
     // §3 a greyed supply says why under its price
     {
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const save = JSON.parse(await r.engine.save());
         save.lineage.gold = 5;
         r.lineage = await r.engine.load(JSON.stringify(save));
@@ -226,7 +226,7 @@ try {
     // §3 the rest chip reads `rest 20m · send skips` permanently
     {
       await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.lineage.rest_left_s = 1200;
         r.go({ kind: "camp" });
       });
@@ -240,7 +240,7 @@ try {
     // §2 the try row: the counter fact known, the row absent → `D5 0% · goblin warlord · try: attack boss`; a tap inserts it at the top
     {
       await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const save = JSON.parse(await r.engine.save());
         save.lineage.facts.push("boss:goblin_warlord:counter");
         save.lineage.best_depth = 4;
@@ -297,7 +297,7 @@ try {
       );
       // the bestiary counter chip inserts at the top too (Cut 7 §1 chip, Cut 10 §2 position)
       await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.rules.rows.shift();
         r.rulesChanged();
         r.go({ kind: "camp" });
@@ -320,7 +320,7 @@ try {
     //    50bb162: four readers took `1 hp short` for the hp left); a lost companion reads `jackal Ashar fell`
     {
       await page.evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.go({
           kind: "death",
           death: {
@@ -377,7 +377,7 @@ try {
         renown: { gained: 0, rank: 0, ranks_up: 0 },
       };
       await page.evaluate((b) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         b.live = r.lineage.live ?? null;
         r.go({
           kind: "report",
@@ -442,7 +442,7 @@ try {
       check(rep.lost === "◯ jackal Ashar fell", `the report's lost chip reads "${rep.lost}"`);
       check(rep.fade === true, "after an absence the tiles fade in");
       await page.evaluate((b) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         b.live = r.lineage.live ?? null;
         r.go({ kind: "report", report: { ...b, banked: 3, returned: 1 } });
       }, base);
@@ -459,7 +459,11 @@ try {
       );
       await page.emulateMedia({ reducedMotion: "reduce" });
       await page.evaluate((b) => {
-        window.__riddle.go({ kind: "report", report: { ...b, deepest: undefined }, absence: true });
+        window.__idlever.go({
+          kind: "report",
+          report: { ...b, deepest: undefined },
+          absence: true,
+        });
         document.documentElement.dataset.juice = "off";
       }, base);
       const legacy = await page.evaluate(() => ({
@@ -485,7 +489,7 @@ try {
       );
       await waitFor((s) => s?.booted && s.screen === "watch", "the watch");
       await page.evaluate(() => {
-        const r = window.__riddle,
+        const r = window.__idlever,
           orig = r.engine.step.bind(r.engine);
         r.engine.step = async (n) => {
           const res = await orig(n);
@@ -526,7 +530,7 @@ try {
     }
   }
   if (part("watch")) {
-    // Cut 14: the `slowdowns` toggle off (settings; `riddle.slowdowns`) — the clock stays at the mode's flat 16× through a fake fight in
+    // Cut 14: the `slowdowns` toggle off (settings; `idlever.slowdowns`) — the clock stays at the mode's flat 16× through a fake fight in
     // `fast` (the fight frame still opens); on again, the fight runs at 4×
     {
       await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=7`, {
@@ -550,8 +554,8 @@ try {
         return {
           text: b?.textContent.trim(),
           on: b?.classList.contains("on"),
-          stored: localStorage.getItem("riddle.slowdowns"),
-          app: window.__riddle.slowdowns,
+          stored: localStorage.getItem("idlever.slowdowns"),
+          app: window.__idlever.slowdowns,
         };
       });
       check(
@@ -578,7 +582,7 @@ try {
             frame: w?.dataset.frame,
             speed: Number(w?.dataset.speed),
             ending: w?.dataset.ending === "1",
-            slow: window.__riddle.slowdowns,
+            slow: window.__idlever.slowdowns,
             held: !!w?.dataset.hold,
           };
         });
@@ -602,7 +606,7 @@ try {
         `slowdowns off: the fight frame opens and the clock stays at the flat 32× (Cut 20 §3; ${[...new Set(fightSpeeds)].join("/") || "no fight"})`,
       );
       // on again — a fresh run (the first may have ended by now), the toggle persisted
-      await page.evaluate(() => window.__riddle.setSlowdowns(true));
+      await page.evaluate(() => window.__idlever.setSlowdowns(true));
       // (frames sampled as they come: `measured` takes the run once more on a loaded machine — tests/lib/load.mjs)
       const slow = await measured(async () => {
         await page.goto(
@@ -618,7 +622,7 @@ try {
           page.evaluate(() => {
             const w = document.querySelector(".watch");
             return {
-              screen: window.__riddle?.screen,
+              screen: window.__idlever?.screen,
               frame: w?.dataset.frame,
               speed: Number(w?.dataset.speed),
               ending: w?.dataset.ending === "1",
@@ -658,7 +662,7 @@ try {
           const w = document.querySelector(".watch"),
             h = document.querySelector(".scrub .head");
           return {
-            screen: window.__riddle.screen,
+            screen: window.__idlever.screen,
             frame: w?.dataset.frame,
             speed: Number(w?.dataset.speed),
             tick: Number(w?.dataset.tick),
@@ -825,7 +829,7 @@ try {
             top = document.querySelector(".hud.top"),
             card = document.querySelector(".interstitial");
           return {
-            screen: window.__riddle.screen,
+            screen: window.__idlever.screen,
             over: w?.dataset.over === "1",
             key: [
               top
@@ -931,7 +935,7 @@ try {
       const live = () =>
         page.evaluate(
           () =>
-            window.__riddle.screen === "watch" &&
+            window.__idlever.screen === "watch" &&
             document.querySelector(".watch")?.dataset.over !== "1",
         );
       if (await live())
@@ -997,7 +1001,7 @@ try {
               (b) => b !== on && b.dataset.rate,
             );
           return {
-            screen: window.__riddle.screen,
+            screen: window.__idlever.screen,
             frame: w?.dataset.frame,
             speed: Number(w?.dataset.speed),
             card: w?.dataset.card,
@@ -1108,12 +1112,12 @@ try {
           { waitUntil: "domcontentloaded" },
         );
         await waitFor((s) => s?.booted && s.screen === "camp", `the ${mode} camp`);
-        if (await page.evaluate(() => window.__riddle.town?.home === false)) {
+        if (await page.evaluate(() => window.__idlever.town?.home === false)) {
           await page.locator('.town-tag[data-next="house"]').click();
-          await page.waitForFunction(() => window.__riddle.town?.home === true);
+          await page.waitForFunction(() => window.__idlever.town?.home === true);
         }
         await page.evaluate(() => {
-          const r = window.__riddle,
+          const r = window.__idlever,
             orig = r.engine.step.bind(r.engine),
             origChoose = r.engine.choose.bind(r.engine);
           let done = false;
@@ -1156,7 +1160,7 @@ try {
             const t = document.querySelector(".watch .ticker");
             const g = document.querySelector(".sheet-wrap .vault-choice .grace i");
             return {
-              screen: window.__riddle.screen,
+              screen: window.__idlever.screen,
               frontier: Number(x?.dataset.frontier),
               tick: Number(x?.dataset.tick),
               beat:
@@ -1215,7 +1219,7 @@ try {
             .catch(() => {});
           await sleep(1500);
           const f2 = await w();
-          const chosen = await page.evaluate(() => window.__riddle.__chosen);
+          const chosen = await page.evaluate(() => window.__idlever.__chosen);
           check(
             chosen === 9901 && !f2.sheet && (f2.frontier > s1.frontier || f2.screen !== "watch"),
             `${mode}: a chip takes the tap (chose ${chosen}), the world goes on (frontier ${s1.frontier} → ${f2.frontier})`,
@@ -1231,7 +1235,7 @@ try {
             await sleep(50);
             f2 = await w();
           }
-          const chosen = await page.evaluate(() => window.__riddle.__chosen),
+          const chosen = await page.evaluate(() => window.__idlever.__chosen),
             seen = await page.evaluate(() => window.__sheetSeen);
           check(
             !seen && chosen === null,
@@ -1258,7 +1262,7 @@ try {
         });
         await waitFor((s) => s?.booted && s.screen === "camp", "camp (lagged)", 30_000);
         const t = await page.evaluate(async () => {
-          const r = window.__riddle,
+          const r = window.__idlever,
             log = [];
           r.onForecast((f) => log.push({ t: performance.now(), refined: f.refined }));
           const until = (pred, ms) =>
@@ -1318,10 +1322,10 @@ try {
           "the real engine's camp",
           120_000,
         );
-        const kind = await page.evaluate(() => window.__riddle.kind);
+        const kind = await page.evaluate(() => window.__idlever.kind);
         // Cut 30: the editor comes with the pen (the Mother met and 72 h) — the save opens it, the core recompiles on load
         await page.evaluate(async () => {
-          const r = window.__riddle;
+          const r = window.__idlever;
           if (r.lineage.town?.home === false)
             await r.mutate(() => r.engine.buildTown("house"), "build");
           const e = JSON.parse(await r.engine.save());
@@ -1350,10 +1354,10 @@ try {
           );
         });
         await waitFor((s) => s?.booted && s.screen === "camp", "the pen's camp", 60_000);
-        await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+        await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
         await sleep(6000); // the camp's own measures settle
         const t = await page.evaluate(async () => {
-          const r = window.__riddle,
+          const r = window.__idlever,
             log = [];
           r.onForecast((f) => log.push({ t: performance.now(), refined: f.refined }));
           const until = (pred, ms) =>
@@ -1440,10 +1444,10 @@ try {
   }
   if (part("deep")) {
     // Cut 25 §4 (AM: 5–9 s of `…` after an edit, ~8 s for the forge's estimates on a D11 lineage after an absence): the deep fixture
-    // (`tests/fixtures/deep.json`, the core's engine save of AM's shape — `crates/riddle-core/examples/deep.rs`), real wasm: the camp's
+    // (`tests/fixtures/deep.json`, the core's engine save of AM's shape — `crates/idlever-core/examples/deep.rs`), real wasm: the camp's
     // first paint and refine, an edit's (the median of three), and the forge's estimates opened from the camp — reported against the
-    // contract's bars (first paint ≤ 1.2 s, refine ≤ 3 s, forge ≤ 3 s); `RIDDLE_DEEP_GATE=1` makes them checks (headed, a quiet machine)
-    const deepPath = process.env.RIDDLE_DEEP ?? resolve(ROOT, "web/tests/fixtures/deep.json"); // (`RIDDLE_DEEP=path` another save)
+    // contract's bars (first paint ≤ 1.2 s, refine ≤ 3 s, forge ≤ 3 s); `IDLEVER_DEEP_GATE=1` makes them checks (headed, a quiet machine)
+    const deepPath = process.env.IDLEVER_DEEP ?? resolve(ROOT, "web/tests/fixtures/deep.json"); // (`IDLEVER_DEEP=path` another save)
     if (!process.argv.includes("--no-wasm") && existsSync(deepPath)) {
       const save = readFileSync(deepPath, "utf8").trim();
       const engine =
@@ -1452,14 +1456,14 @@ try {
       await waitFor((s) => s?.booted && s.screen === "camp", "the real engine's camp", 120_000);
       const ok = await page.evaluate(
         (engine) =>
-          window.__riddle.importSave(
+          window.__idlever.importSave(
             JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
           ),
         engine,
       );
       await waitFor((s) => s?.booted && s.screen === "camp", "the deep camp", 60_000);
       const t = await page.evaluate(async () => {
-        const r = window.__riddle,
+        const r = window.__idlever,
           log = [];
         r.onForecast((f) => log.push({ t: performance.now(), refined: f.refined }));
         const until = (pred, ms) =>
@@ -1555,12 +1559,12 @@ try {
       const med = t.edits.map((e) => e.first).sort((a, b) => a - b)[1],
         medR = t.edits.map((e) => e.refine).sort((a, b) => a - b)[1];
       const line = `deep D${t.best} (real wasm): camp first ${t.camp.first} ms · refine ${t.camp.refine}; an edit's first ${t.edits.map((e) => e.first).join("/")} (median ${med}) · refine ${t.edits.map((e) => e.refine).join("/")} (median ${medR}); forge ${t.kit ? `${t.forge} ms` : "no step"} — bars 1.2 s · 3 s · 3 s`;
-      if (process.env.RIDDLE_DEEP_GATE === "1")
+      if (process.env.IDLEVER_DEEP_GATE === "1")
         check(ok && med <= 1200 && medR <= 3000 && (!t.kit || t.forge <= 3000), line);
       else out.push(`note ${line}`);
       // Cut 27 §2: the scene ≤ 1.5 s after the refine (the divergence on the refine's lane, the renderer's context made while it runs)
       const sline = `deep D${t.best} (real wasm): an edit's scene — refine ${t.scene.refine} ms after the edit, the divergence ${t.scene.answer} ms after the refine (move ${t.scene.found}), the scene's first frame ${t.scene.play ?? "—"} ms after the refine — bar 1.5 s`;
-      if (process.env.RIDDLE_DEEP_GATE === "1")
+      if (process.env.IDLEVER_DEEP_GATE === "1")
         check(t.scene.play !== null && t.scene.play <= 1500, sline);
       else out.push(`note ${sline}`);
     }

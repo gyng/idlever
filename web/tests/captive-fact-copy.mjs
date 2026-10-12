@@ -8,9 +8,9 @@ const browser = await launchBrowser();
 try {
   const page = await browser.newPage({ viewport: { width: 400, height: 800 } });
   await page.goto(`${url}?engine=fake&fresh=1&runs=0`);
-  await page.waitForFunction(() => window.__riddle?.booted);
+  await page.waitForFunction(() => window.__idlever?.booted);
   await page.evaluate(async () => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     const report = {
       elapsed_s: 0,
       runs: 1,
@@ -48,7 +48,7 @@ try {
     throw Error("Actual enemy tooltip must distinguish potential allegiance");
   if (
     !(await page.evaluate(
-      async () => (await window.__riddle.engine.save()) === window.__captiveSaved,
+      async () => (await window.__idlever.engine.save()) === window.__captiveSaved,
     ))
   )
     throw Error("Reading facts changed saved engine");

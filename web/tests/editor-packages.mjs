@@ -22,7 +22,7 @@ const geometry = (page) =>
   page.evaluate(() => {
     const editor = document.querySelector(".camp .editor"),
       rows = [...editor.querySelector(".rows").children],
-      end = window.__riddle.penEnd();
+      end = window.__idlever.penEnd();
     const shown = (r) => r.getBoundingClientRect().height > 0;
     return {
       end,
@@ -32,7 +32,7 @@ const geometry = (page) =>
       height: editor.querySelector(".rows").getBoundingClientRect().height,
       indices: rows.map((r) => r.dataset.i),
       overflow: document.documentElement.scrollWidth > innerWidth,
-      rules: JSON.stringify(window.__riddle.rules),
+      rules: JSON.stringify(window.__idlever.rules),
       disclosure: editor.querySelector(".package-rows-toggle")?.textContent,
     };
   });
@@ -41,9 +41,9 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?dev=1&fresh=1&runs=0&seed=144`);
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90000 });
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90000 });
     const imported = await page.evaluate(async (source) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") return false;
       const ok = await a.importSave(
         JSON.stringify({
@@ -61,7 +61,7 @@ try {
     check(imported, "real WASM imported earned-clear diagnostic");
     await page.locator(".camp .editor .rows-foot button").click();
     await page.waitForFunction(
-      () => window.__riddle.penEnd() === 1 && document.querySelector(".camp .editor .row.fresh"),
+      () => window.__idlever.penEnd() === 1 && document.querySelector(".camp .editor .row.fresh"),
     );
     const collapsed = await geometry(page);
     results.push({ width, collapsed });
@@ -111,13 +111,14 @@ try {
       `${width}: tactic card remains non-promotable`,
     );
     await page.locator(".camp .editor .rows > .row .step.up:enabled").first().click();
-    await page.waitForFunction(() => window.__riddle.penEnd() === 2);
+    await page.waitForFunction(() => window.__idlever.penEnd() === 2);
     check(
       await page.evaluate(
         async () =>
           JSON.stringify(
-            (await window.__riddle.engine.lineage()).sets[window.__riddle.lineage.active_set].rows,
-          ) === JSON.stringify(window.__riddle.rules.rows),
+            (await window.__idlever.engine.lineage()).sets[window.__idlever.lineage.active_set]
+              .rows,
+          ) === JSON.stringify(window.__idlever.rules.rows),
       ),
       `${width}: promotion survives core adoption`,
     );
@@ -127,7 +128,7 @@ try {
       `${width}: collapse preserves promoted rule`,
     );
     await page.locator(".camp .editor .rows-foot button").click();
-    await page.waitForFunction(() => window.__riddle.penEnd() === 3);
+    await page.waitForFunction(() => window.__idlever.penEnd() === 3);
     check(
       await page.evaluate(() => document.activeElement?.matches(".row.fresh .chip.verb")),
       `${width}: add focuses visible fresh rule`,
@@ -135,7 +136,7 @@ try {
     // Exercise disclosure persistence, package highlights and non-package/empty editors with real compiled wire data.
     const detail = await page.evaluate(async () => {
       const { renderEditor, heroBinding } = await import("/src/ui/editor.ts"),
-        a = window.__riddle,
+        a = window.__idlever,
         bind = heroBinding(a),
         checks = [];
       const verify = (ok, msg) => {
@@ -199,7 +200,7 @@ try {
     // Real pointer drag over a clone of the current wire rows: hidden package rectangles must not count as destinations.
     const dragBefore = await page.evaluate(async () => {
       const { renderEditor, heroBinding } = await import("/src/ui/editor.ts"),
-        a = window.__riddle,
+        a = window.__idlever,
         set = structuredClone(a.rules);
       window.__editorDrag = { set, changes: 0, original: JSON.stringify(a.rules) };
       const e = renderEditor({
@@ -232,7 +233,7 @@ try {
     const drag = await page.evaluate(() => ({
       changes: window.__editorDrag.changes,
       row: JSON.stringify(window.__editorDrag.set.rows[1]),
-      truthUnchanged: JSON.stringify(window.__riddle.rules) === window.__editorDrag.original,
+      truthUnchanged: JSON.stringify(window.__idlever.rules) === window.__editorDrag.original,
     }));
     check(
       drag.changes === 1 && drag.row === dragBefore && drag.truthUnchanged,

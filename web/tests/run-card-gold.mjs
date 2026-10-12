@@ -18,11 +18,11 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?dev=1&fresh=1`);
-    await p.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await p.evaluate(() => window.__riddle.kind), "wasm");
+    await p.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await p.evaluate(() => window.__idlever.kind), "wasm");
     const checks = await p.evaluate(async () => {
       const { clearCard } = await import("/src/ui/runclear.ts"),
-        a = window.__riddle;
+        a = window.__idlever;
       let n = 0;
       const check = (v, message) => {
         if (!v) throw new Error(message);
@@ -76,7 +76,7 @@ try {
     assert.equal(
       await p.evaluate(async (source) => {
         const n = JSON.parse(source);
-        return window.__riddle.importSave(
+        return window.__idlever.importSave(
           JSON.stringify({
             v: 2,
             engine: source,
@@ -94,8 +94,8 @@ try {
     await p.locator(".ending-town").click();
     await p.waitForSelector(".camp");
     const before = await p.evaluate(() => {
-      window.__riddle.runnerOn = false;
-      return window.__riddle.engine.save();
+      window.__idlever.runnerOn = false;
+      return window.__idlever.engine.save();
     });
     await p.locator(".hero-row.selected:visible .hero-details").click();
     await p.locator(".hero-runs").click();
@@ -104,12 +104,15 @@ try {
     await p.waitForSelector(".run-card-sheet");
     assert.equal(await p.locator(".run-card-sheet .rc-to").textContent(), "Gold");
     const id = Number(await p.locator(".run-card-sheet").getAttribute("data-run"));
-    const rec = await p.evaluate((id) => window.__riddle.lineage.runs.find((r) => r.id === id), id);
+    const rec = await p.evaluate(
+      (id) => window.__idlever.lineage.runs.find((r) => r.id === id),
+      id,
+    );
     assert.equal(
       Number(await p.locator(".run-card-sheet .rc-coins").getAttribute("data-gold")),
       rec.gold,
     );
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     console.log(

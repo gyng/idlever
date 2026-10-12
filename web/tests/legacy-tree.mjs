@@ -14,9 +14,9 @@ try {
       errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       app.runnerOn = false;
       window.legacyCalls = { buy: 0, respec: 0 };
       const nodes = [
@@ -123,11 +123,11 @@ try {
       await page.locator('[data-legacy-branch="Recovery"] summary').click();
     }
     await buy("health").click();
-    await page.waitForFunction(() => window.__riddle.lineage.bloodline.spent === 3);
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 3);
     await buy("restoration").click();
-    await page.waitForFunction(() => window.__riddle.lineage.bloodline.spent === 21);
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 21);
     await buy("mending").click();
-    await page.waitForFunction(() => window.__riddle.lineage.bloodline.spent === 57);
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 57);
     assert.equal(await page.evaluate(() => window.legacyCalls.buy), 3);
     assert.ok(await buy("renewal").isDisabled());
     assert.equal(
@@ -147,10 +147,10 @@ try {
     );
     assert.equal(await page.evaluate(() => window.legacyCalls.respec), 0);
     await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
-    assert.equal(await page.evaluate(() => window.__riddle.lineage.bloodline.spent), 57);
+    assert.equal(await page.evaluate(() => window.__idlever.lineage.bloodline.spent), 57);
     await page.locator(".legacy-respec").click();
     await page.evaluate(() => {
-      window.__riddle.engine.respecLegacy = async () => {
+      window.__idlever.engine.respecLegacy = async () => {
         throw Error("fixture refusal");
       };
     });
@@ -160,7 +160,7 @@ try {
         .querySelector(".sheet-wrap:not([hidden]) .legacy-respec-review .legacy-feedback")
         .textContent.includes("fixture refusal"),
     );
-    assert.equal(await page.evaluate(() => window.__riddle.lineage.bloodline.spent), 57);
+    assert.equal(await page.evaluate(() => window.__idlever.lineage.bloodline.spent), 57);
     await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
     await page.evaluate(() => window.installRespec(true));
     await page.locator(".legacy-respec").click();
@@ -175,18 +175,18 @@ try {
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .legacy-respec-review"),
     );
-    assert.deepEqual(await page.evaluate(() => window.__riddle.lineage.bloodline), {
+    assert.deepEqual(await page.evaluate(() => window.__idlever.lineage.bloodline), {
       points: 100,
       spent: 0,
       upgrades: {},
     });
     assert.ok(await page.locator(".legacy-respec").isDisabled());
     await buy("health").click();
-    await page.waitForFunction(() => window.__riddle.lineage.bloodline.spent === 3);
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 3);
     await page.locator(".legacy-respec").click();
     await page.evaluate(async () => {
-      window.__riddle.lineage.selected_bloodline = 2;
-      await window.__riddle.afterLineage();
+      window.__idlever.lineage.selected_bloodline = 2;
+      await window.__idlever.afterLineage();
     });
     await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-confirm").click();
     assert.equal(
@@ -198,7 +198,7 @@ try {
     assert.equal(await page.evaluate(() => window.legacyCalls.respec), 1);
     await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage = {
         ...a.lineage,
         live: { depth: 1, turn: 1 },
@@ -212,7 +212,7 @@ try {
       assert.ok(await button.isDisabled());
     // blind b58b431 (A: Legacy 146 unspendable while the scout kept him away): away, an upgrade the points buy is bought for the next run
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       window.legacyCalls.next = [];
       a.engine.upgradeHeroNext = async (id) => {
         window.legacyCalls.next.push(id);

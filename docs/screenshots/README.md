@@ -17,5 +17,7 @@ previously produced a shorter middle image. The source files remain unchanged.
   with three unspent class skill picks. Source:
   docs/evidence/cut186/button-ui/shots/skills-400.png. Save unchanged.
 
-Title artwork: web/public/art/title-wordmark-v1.webp, the existing approved game
-wordmark. No new art or gameplay assets were generated for the README.
+Current title artwork: web/public/art/idlever-wordmark-v1.webp, generated with
+the built-in imagegen tool in the original approved style. Prompts and hashes
+are recorded under art/prompts/p190_* and art/menu/idlever-wordmark-v1.json.
+The original Riddle wordmark remains preserved for historical releases.

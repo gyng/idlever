@@ -1,4 +1,4 @@
-# AGENTS.md — operating manual for Riddle
+# AGENTS.md — operating manual for Idlever
 
 **Resuming? Read `docs/HANDOFF.md` first.** Read `PLAN.md` (canonical design) and `docs/CUT30_5.md` (the current implementation contract),
 then this file. `CLAUDE.md` is a bare import of this file.
@@ -20,8 +20,8 @@ town (packages, buildings, works, forecast; the pen late) → send → run (rows
 ## Repo map
 
 ```
-crates/riddle-core/    all game truth; examples/metrics.rs = the gate table; examples/cli.rs = text playtest
-crates/riddle-wasm/    thin JSON bridge (wasm-bindgen camelCases: run_offline → runOffline)
+crates/idlever-core/    all game truth; examples/metrics.rs = the gate table; examples/cli.rs = text playtest
+crates/idlever-wasm/    thin JSON bridge (wasm-bindgen camelCases: run_offline → runOffline)
 web/src/engine/        types.ts (wire), fake.ts (UI dev), wasm.ts (real), pkg/ (built)
 web/src/ui/            camp, watch, death, report, settings
 web/src/render/        three.js replay viewer (pixel pipeline); render-demo.html
@@ -78,9 +78,16 @@ separate exhaustive audits and fun-rating goal remain unfinished.
 
 Pushes, pull requests and manual workflow runs validate the site. Publishing a
 versioned GitHub release deploys its exact tagged build to
-https://gyng.github.io/riddle/. Prereleases deploy through the same workflow.
+https://gyng.github.io/idlever/. Prereleases deploy through the same workflow.
 A push alone does not deploy. The github-pages environment permits `v*` tags;
 production deployments serialize. See docs/CUT187_ALPHA_RELEASE.md.
+
+Current brand: Idlever; repository `gyng/idlever`, Pages base `/idlever/`.
+`IDLEVER_BASE` selects the build base. Active crates, generated WASM names,
+browser globals, events, storage keys and diagnostics use Idlever identifiers.
+No old-brand aliases or saved-setting migration are required by the owner.
+Preserve historical evidence and prior tags. The current local checkout path
+is still `/home/g/p/riddle`. See docs/CUT190_IDLEVER_RENAME.md.
 
 ## Validation and iteration commands — use the cheapest that answers the question
 
@@ -90,7 +97,7 @@ tools/tune.sh <row-ids>        # content iteration: full seed counts, targeted r
 node tools/camp-check.mjs SAVE... [--record DIR|--compare DIR] # saved-camp feedback: three 8h native replays ~4 s warm; --mode packages,wall for tuning searches; diagnostic, never the gate
 node tools/choice-check.mjs SAVE --choices boss_focus,kite_archers,bold --out NEW_DIR # actual next8h baseline/choice outcomes from one saved Session (~1–3s warm first-boss fixture); --balance PROFILE; diagnostic only, docs/DEV_CHOICE_CHECK.md
 tools/native-dev.sh                                         # real Rust dev UI on :5367; rebuild native, no wasm packaging; docs/NATIVE_DEV.md
-# RIDDLE_BALANCE_FILE=<profile> RIDDLE_NATIVE_PORT=5368 tools/native-dev.sh: compile-free validated tuning
+# IDLEVER_BALANCE_FILE=<profile> IDLEVER_NATIVE_PORT=5368 tools/native-dev.sh: compile-free validated tuning
 # tools/tune.sh <rows> --resume: internal check-in checkpoints, exact runtime/parameters only
 tools/verify.sh                # + clippy → wasm (fast) → web build → quick gates   ~2 min + the quick gate (cached: seconds; fresh after a core edit: ~30–40 min, below)
 tools/verify.sh --full         # shipping + bounded current-game regression suite (18 fortnight cases); docs/UX_SIMPLE.md
@@ -103,8 +110,8 @@ node tools/gates.mjs [--full] --rows <ids|substrings> [--fail-fast] [--seeds 8 �
 (cd web && pnpm -s test:exhaustive)                          # historical full client inventory (167 groups), all original widths
 tools/wasm.sh [--ship]                                       # fast wasm (~8 s after a core edit) / wasm-pack release (~2 min)
 tools/ship.sh [--preview]                                    # cohort build on :5230 (fat LTO, ~2 min); --preview: fast wasm, ~25 s, for QA rounds
-cargo run -q --profile fast -p riddle-core --example cli -- --seed 1 --rules crates/riddle-core/presets/good.json --runs 3
-cargo run -q --profile fast -p riddle-core --example timing -- 1 8   # where a gate job spends its time
+cargo run -q --profile fast -p idlever-core --example cli -- --seed 1 --rules crates/idlever-core/presets/good.json --runs 3
+cargo run -q --profile fast -p idlever-core --example timing -- 1 8   # where a gate job spends its time
 node tools/profile-catchup.mjs SAVE --out scratchpad/profile     # headed shipping-WASM CPU profile; --hours N --runs N
 tools/dev.sh                                                 # ensure the Vite dev server on :5219 (never restart a running one)
 node tools/playtest.mjs [--seed N] [--absent 8h] [--out dir] # scripted walk of every screen, text + screenshots, headed on the GPU (~30 s; --headless ~65 s)
@@ -199,7 +206,7 @@ clicks — fast to start, parallel-safe, no desktop window, audio muted. `launch
 `/usr/lib/wsl/lib`, which reaches the real GPU (`--probe` prints `D3D12 (NVIDIA …)` and `native
 scale 1.5`): frame times, render QA, blind raters (feel is rated) and the playtest walk, whose
 watch pump is per-frame — headless is pixel-bound (14 fps at 3×, 32 at 2×; the walk takes 65 s
-headless vs 26 s headed), so headless sessions render at 2×. `RIDDLE_BROWSER=headed|headless`
+headless vs 26 s headed), so headless sessions render at 2×. `IDLEVER_BROWSER=headed|headless`
 overrides callers that pass nothing. Headless cannot reach the GPU whatever the flags (probed:
 `--headless=new` + the Mesa env still reports SwiftShader/llvmpipe). WSLg's GDK_SCALE=2 ×
 Xft.dpi=144 made headed Chromium think the 4K screen was 1280×720 at 3×; the launch pins

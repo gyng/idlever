@@ -1,6 +1,6 @@
 // The wash look (docs/ART_DIRECTION.md §9): a prototype post-process that pulls the current game toward the art direction —
 // gothic moonlight, a stark limited palette with one blood accent, ink edges, watercolour washes on the pixel grid, paper grain
-// and a print halftone in the shadows. Behind a flag (`?look=wash`, or localStorage `riddle.look = "wash"`); off by default.
+// and a print halftone in the shadows. Behind a flag (`?look=wash`, or localStorage `idlever.look = "wash"`); off by default.
 // Canvas: a GLSL chunk the blit appends as its last step (`LOOK` define, only when FX > 0 — the `low` tier compiles the blit exactly
 // as before, and a wash frame costs ~9 texture reads per device pixel, no extra pass). Chrome: one SVG filter (the same palette
 // map) on the DOM chrome and a paper-grain overlay (`installWashChrome`). Render-only: no game truth, nothing read back.
@@ -12,7 +12,7 @@ export function lookWash(): boolean {
     const q = new URLSearchParams(location.search).get("look");
     if (q === "wash" || q === "grade") {
       try {
-        localStorage.removeItem("riddle.look");
+        localStorage.removeItem("idlever.look");
       } catch {
         /* storage blocked */
       }
@@ -20,13 +20,13 @@ export function lookWash(): boolean {
     }
     if (q === "off" || q === "none") {
       try {
-        localStorage.setItem("riddle.look", "off");
+        localStorage.setItem("idlever.look", "off");
       } catch {
         /* storage blocked */
       }
       return false;
     }
-    return localStorage.getItem("riddle.look") !== "off";
+    return localStorage.getItem("idlever.look") !== "off";
   } catch {
     return true;
   }

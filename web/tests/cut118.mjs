@@ -32,13 +32,13 @@ const fresh = async (tag) => {
     waitUntil: "domcontentloaded",
   });
   await page.waitForFunction(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp",
+    () => window.__idlever?.booted && window.__idlever.screen === "camp",
     null,
     { timeout: 60_000 },
   );
   await page.waitForTimeout(300);
   await page.evaluate(() => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     a.engine.lineage = async () => a.lineage;
   });
   return page;
@@ -64,7 +64,7 @@ try {
   if (parts.includes("taps")) {
     const page = await fresh("taps");
     const r = await page.evaluate(async (REP) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const wait = (ms) => new Promise((res) => setTimeout(res, ms));
       const step = (label, price) => ({ label, price, affordable: true });
       const kit = [
@@ -157,7 +157,7 @@ try {
     // nothing to pay: one tap
     const page2 = await fresh("taps1");
     const one = await page2.evaluate(async (REP) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       app.lineage = {
         ...app.lineage,
         kit: [],
@@ -192,7 +192,7 @@ try {
   if (parts.includes("decide")) {
     const page = await fresh("decide");
     const r = await page.evaluate(async (REP) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const wait = (ms) => new Promise((res) => setTimeout(res, ms));
       const offer = {
         id: "health",
@@ -249,7 +249,7 @@ try {
   if (parts.includes("ladder")) {
     const page = await fresh("ladder");
     const r = await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const { ladderRungs, controlLadder } = await import("/src/ui/ladder.ts");
       const base = app.lineage;
       const pk = (pen, stances) => ({
@@ -360,7 +360,7 @@ try {
   if (parts.includes("crier")) {
     const page = await fresh("crier");
     const r = await page.evaluate(async (REP) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const wait = (ms) => new Promise((res) => setTimeout(res, ms));
       const { cries } = await import("/src/ui/crier.ts");
       const rep = {
@@ -382,7 +382,7 @@ try {
         ],
       };
       try {
-        localStorage.removeItem(`riddle.diary.${app.lineage.seed ?? 0}`);
+        localStorage.removeItem(`idlever.diary.${app.lineage.seed ?? 0}`);
       } catch {}
       const L = {
         ...app.lineage,
@@ -453,7 +453,7 @@ try {
   if (parts.includes("king")) {
     const page = await fresh("king");
     const r = await page.evaluate(async (REP) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const { kingEta } = await import("/src/ui/king-eta.ts");
       const L = (age_h, best, extra = {}) => ({
         age_h,

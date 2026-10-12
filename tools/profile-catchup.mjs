@@ -33,15 +33,15 @@ assert.ok(
 assert.ok(Number.isSafeInteger(sims) && sims > 0, "positive simulation count required");
 assert.ok(["offline", "packages", "wall"].includes(mode), "unknown workload");
 const input = readFileSync(savePath, "utf8");
-const wasm = readFileSync(join(pkg, "riddle_wasm_bg.wasm"));
-const bridge = readFileSync(join(pkg, "riddle_wasm.js"));
+const wasm = readFileSync(join(pkg, "idlever_wasm_bg.wasm"));
+const bridge = readFileSync(join(pkg, "idlever_wasm.js"));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 mkdirSync(out, { recursive: true });
 const browser = await launchGpu();
 try {
   const page = await browser.newPage();
   // Route everything locally: no server, stale dev transforms or service-worker cache.
-  await page.route("http://riddle.perf.invalid/**", (route) => {
+  await page.route("http://idlever.perf.invalid/**", (route) => {
     const path = new URL(route.request().url()).pathname;
     if (path === "/engine.mjs")
       return route.fulfill({ contentType: "text/javascript", body: bridge });
@@ -49,10 +49,10 @@ try {
       return route.fulfill({ contentType: "application/wasm", body: wasm });
     return route.fulfill({
       contentType: "text/html",
-      body: "<!doctype html><title>Riddle catch-up profile</title>",
+      body: "<!doctype html><title>Idlever catch-up profile</title>",
     });
   });
-  await page.goto("http://riddle.perf.invalid/");
+  await page.goto("http://idlever.perf.invalid/");
   await page.evaluate(
     async ({ input, seconds, mode, sims }) => {
       const mod = await import("/engine.mjs");

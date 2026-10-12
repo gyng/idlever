@@ -75,7 +75,7 @@ async function measure(seed) {
     );
     const st = () =>
       page.evaluate(() => {
-        const r = window.__riddle,
+        const r = window.__idlever,
           w = document.querySelector(".watch");
         return r
           ? {

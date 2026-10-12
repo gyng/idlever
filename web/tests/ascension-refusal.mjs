@@ -14,9 +14,9 @@ try {
   ]) {
     const p = await browser.newPage({ viewport: { width, height } });
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.runnerOn = false;
       const ascend = a.engine.ascend.bind(a.engine),
         vocabulary = a.engine.vocabulary.bind(a.engine);

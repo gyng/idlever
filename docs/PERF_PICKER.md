@@ -72,7 +72,7 @@ pickup events are included. No simulation changes. Real UI31 checks PASS at
 ## Diagnostic commands
 
 ```
-cargo run -q --profile fast -p riddle-core --example sim_alloc -- SAVE.json packages
+cargo run -q --profile fast -p idlever-core --example sim_alloc -- SAVE.json packages
 node tools/profile-catchup.mjs SAVE.json --out scratchpad/profile --mode packages --runs 3
 ```
 

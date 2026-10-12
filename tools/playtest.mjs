@@ -16,7 +16,7 @@
 // Walk: boot fresh(seed[, rules]) → camp → send → watch at 4× (two mid-run shots, then ▶▶| until the exit,
 // the last frame kept as the final watch dump) → exit sheet (keep) → death (tap the first patch) | report (camp)
 // → camp → reload ?absent → report (offline wait timed) → open the worst death → done.
-// Dev URL params and window.__riddle are documented in web/src/main.ts and web/src/app.ts.
+// Dev URL params and window.__idlever are documented in web/src/main.ts and web/src/app.ts.
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -143,7 +143,7 @@ const log = (line) => {
 
 async function attempt() {
   let navigating = false;
-  const headed = opt.headed ?? process.env.RIDDLE_BROWSER === "headed";
+  const headed = opt.headed ?? process.env.IDLEVER_BROWSER === "headed";
   const browser = await launchBrowser({ headed });
   // Headless WebGL is SwiftShader and pixel-bound (14 fps at 3×, 32 at 2×, 60 at 1× on a 400×800
   // watch); the phone walk renders at 2× headless, 3× on the GPU — the same layout either way.
@@ -180,10 +180,10 @@ async function attempt() {
 
   const state = () =>
     page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
     });
-  const text = () => page.evaluate(() => window.__riddle?.text() ?? "");
+  const text = () => page.evaluate(() => window.__idlever?.text() ?? "");
   async function waitFor(pred, label, timeout = STEP_MAX_MS) {
     const t = Date.now();
     let s = null;
@@ -335,7 +335,7 @@ async function attempt() {
       }
       await sleep(SKIP_EVERY_MS / 2);
     }
-    if (!s) throw new Error("the page lost window.__riddle during the run");
+    if (!s) throw new Error("the page lost window.__idlever during the run");
     if (finalBase) {
       const tx = readFileSync(`${finalBase}.txt`, "utf8");
       log(
@@ -399,7 +399,7 @@ async function attempt() {
 
     // Cut 30.5: the first shot stays manual. Earn and hire the scout before exercising a repeating absence.
     const trunk = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       if (!r.lineage.tree || r.lineage.tree.auto_send) return { sends: 0, auto: true };
       let sends = 0;
       for (let i = 0; i < 10 && !r.lineage.tree.auto_send; i++) {

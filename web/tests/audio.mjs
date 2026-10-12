@@ -84,7 +84,7 @@ await page.addInitScript(() => {
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -238,7 +238,7 @@ try {
     "muted: the drone is gone",
   );
   check(
-    (await page.evaluate(() => localStorage.getItem("riddle.mute"))) === "1",
+    (await page.evaluate(() => localStorage.getItem("idlever.mute"))) === "1",
     "mute is persisted",
   );
   // the settings sheet's toggle reads the state and flips it back
@@ -253,7 +253,7 @@ try {
   await sleep(200);
   check(
     !(await page.evaluate(() => window.__audio.muted)) &&
-      (await page.evaluate(() => localStorage.getItem("riddle.mute"))) === "0",
+      (await page.evaluate(() => localStorage.getItem("idlever.mute"))) === "0",
     "settings: tapping mute unmutes and persists",
   );
   check(
@@ -265,7 +265,7 @@ try {
 
   // a watched run: the drone stops, and cues fire on their events (hit / slay / rule / telegraph, then the exit)
   const i0 = await logLen();
-  await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
   await waitFor((s) => s?.screen === "watch", "watch");
   await sleep(500);
   check(

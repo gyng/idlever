@@ -3,7 +3,7 @@
 // Registered only in production builds (src/app.ts). Verify frontend changes on a fresh port.
 const VERSION = "__VERSION__";
 const PRECACHE = __PRECACHE__;
-const CACHE_PREFIX = `riddle-${self.registration.scope}-`;
+const CACHE_PREFIX = `idlever-${self.registration.scope}-`;
 const CACHE = `${CACHE_PREFIX}${VERSION}`;
 const INDEX = new URL("index.html", self.registration.scope).href;
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 29 client gates (docs/CUT29.md), on the fake engine (its Cut 29 stand-ins), headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 29 client gates (docs/CUT29.md), on the fake engine (its Cut 29 stand-ins), headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   merge   `mergeReports` carries the Cut 29 fields — night marks summed, systems opened unioned in order, kept oaths and the fallen
 //           concatenated, the meters merged (totals add; rates recomputed from the summed seconds)
 //   §4      the keep sheet only when it is a decision (`ExitPending.decide`); a settled exit says its one line (`kept leather +1`)
@@ -54,13 +54,13 @@ async function until(pred, label, timeout = 20_000, arg) {
   throw new Error(`timeout waiting for ${label}`);
 }
 const camp = async () => {
-  await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+  await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
   await sleep(300);
 };
 /** The fake's whole state edited through a save round-trip (`e.lineage`, `e.sys29` the curriculum), then the camp again. */
 const withState = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     new Function("e", src)(save);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -78,7 +78,7 @@ const boot = async (seed, q = "") => {
   });
   await camp();
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
+    localStorage.removeItem("idlever.reveal");
   });
 };
 
@@ -86,7 +86,7 @@ try {
   if (part("catchup")) {
     await boot(2920);
     const result = await page.evaluate(async () => {
-      const app = window.__riddle,
+      const app = window.__idlever,
         engine = app.engine;
       const slice = engine.runOfflineSlice,
         quick = engine.runOfflineQuick,
@@ -362,9 +362,9 @@ try {
     await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=2904&autosend=1&speed=fast`, {
       waitUntil: "domcontentloaded",
     });
-    await until(() => window.__riddle?.booted && window.__riddle.screen === "watch", "the watch");
+    await until(() => window.__idlever?.booted && window.__idlever.screen === "watch", "the watch");
     await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         st = r.engine.step.bind(r.engine),
         ak = r.engine.autoKeep?.bind(r.engine);
       r.__ak = 0;
@@ -390,7 +390,7 @@ try {
     const t0 = Date.now();
     while (Date.now() - t0 < 90_000) {
       const s = await page.evaluate(() => ({
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         keep: !!document.querySelector(".sheet-wrap .keep-legend"),
       }));
       if (s.keep) {
@@ -398,12 +398,14 @@ try {
         break;
       }
       if (
-        await page.evaluate(() => window.__riddle.__ak > 0 && window.__riddle.__banners.length > 0)
+        await page.evaluate(
+          () => window.__idlever.__ak > 0 && window.__idlever.__banners.length > 0,
+        )
       )
         break;
       // a run that died or brought nothing home: send again
       if (s.screen !== "watch") {
-        await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+        await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
         await sleep(400);
         continue;
       }
@@ -417,9 +419,9 @@ try {
       await sleep(200);
     }
     const k = await page.evaluate(() => ({
-      ak: window.__riddle.__ak,
-      banners: window.__riddle.__banners,
-      screen: window.__riddle.screen,
+      ak: window.__idlever.__ak,
+      banners: window.__idlever.__banners,
+      screen: window.__idlever.screen,
     }));
     check(
       !sheet && k.ak >= 1,
@@ -460,7 +462,7 @@ try {
     await camp();
     // Cut 30 (the Reveal): day 0 is the send and the headline; the editor (and the dial, the order, the vs line) wait for the pen
     const d0 = await page.evaluate(() => ({
-      sys: (window.__riddle.lineage.systems ?? []).filter((s) => s.open).map((s) => s.id),
+      sys: (window.__idlever.lineage.systems ?? []).filter((s) => s.open).map((s) => s.id),
       tiles: [...document.querySelectorAll(".cmd .tile:not(.empty)")].length,
       editor: [...document.querySelectorAll(".camp .editor")].some((x) => x.offsetParent !== null),
       vs: !!document.querySelector(".shaft-vs"),
@@ -483,7 +485,7 @@ try {
       `the first death opens no edit tile before the pen (${t1.join(" · ") || "none"})`,
     );
     const n1 = await page.evaluate(() =>
-      (window.__riddle.lineage.systems ?? []).filter((s) => s.new).map((s) => s.id),
+      (window.__idlever.lineage.systems ?? []).filter((s) => s.new).map((s) => s.id),
     );
     check(
       n1.includes("death") && !n1.includes("edit"),
@@ -491,13 +493,13 @@ try {
     );
     await sleep(2000);
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.go({ kind: "watch" });
     }); // the camp left for a send after the glint
-    await until(() => window.__riddle.screen === "watch", "the watch");
+    await until(() => window.__idlever.screen === "watch", "the watch");
     const n2 = await until(
       () => {
-        const n = (window.__riddle.lineage.systems ?? []).filter((s) => s.new).map((s) => s.id);
+        const n = (window.__idlever.lineage.systems ?? []).filter((s) => s.new).map((s) => s.id);
         return n.length ? null : n;
       },
       "the new marks cleared",
@@ -507,7 +509,7 @@ try {
       n2.length === 0,
       `once shown, the next send clears it (seenSystems): new ${JSON.stringify(n2)}`,
     );
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
     // the Warlord slain opens the forge (the first gold home the loadout), the packages and the quest board — still no editor
     await withState((e) => {
@@ -545,7 +547,7 @@ try {
     check(e2 > 0, `the pen brings the order: ▲▼ on the tablets (${e2})`);
     // the report plaques what an absence opened
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.go({
         kind: "report",
         report: {
@@ -574,7 +576,7 @@ try {
         },
       });
     });
-    await until(() => window.__riddle.screen === "report", "the report");
+    await until(() => window.__idlever.screen === "report", "the report");
     const pl = await until(() => {
       const p = [...document.querySelectorAll(".sys-opened .sys-plaque")].map(
         (x) =>
@@ -592,12 +594,13 @@ try {
   if (part("meters")) {
     await boot(2903, "&systems=all"); // Cut 30: the death's fight meter sits under `details`, which comes with the pen
     await page.evaluate(() => {
-      localStorage.removeItem("riddle.meters");
-      window.__riddle.go({ kind: "watch" });
+      localStorage.removeItem("idlever.meters");
+      window.__idlever.go({ kind: "watch" });
     });
     await until(
       () =>
-        window.__riddle.screen === "watch" && document.querySelector(".cmd .tile[data-tile=speed]"),
+        window.__idlever.screen === "watch" &&
+        document.querySelector(".cmd .tile[data-tile=speed]"),
       "the watch's speed control",
     );
     await page.locator('.cmd .tile[data-tile="speed"]').click();
@@ -621,7 +624,7 @@ try {
       off === true && /^(fight|run) dealt [\d.]+ dps.* taken [\d.]+ dps/.test(line),
       `the watch's meter is off until toggled, then one line with its units ("${line}")`,
     );
-    const kept = await page.evaluate(() => localStorage.getItem("riddle.meters"));
+    const kept = await page.evaluate(() => localStorage.getItem("idlever.meters"));
     check(kept === "1", `the toggle is remembered (${kept})`);
     await page.evaluate(async () => {
       const { closeAllSheets } = await import("/src/ui/sheet.ts");
@@ -651,7 +654,7 @@ try {
       fights: 1,
     };
     await page.evaluate((m) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.go({
         kind: "death",
         death: {
@@ -676,7 +679,7 @@ try {
         ? [...x.querySelectorAll(".mrow")].map((r) => r.textContent.replace(/\s+/g, " ").trim())
         : null;
     }, "the death's fight meter");
-    const rules = await page.evaluate(() => window.__riddle.rules.rows.length);
+    const rules = await page.evaluate(() => window.__idlever.rules.rows.length);
     check(
       dm.some((x) => /^dealt hero 3\.7 dps · 31 hp$/.test(x)) &&
         dm.some((x) => /^taken hero 4\.5 dps · 38 hp · 9 hits$/.test(x)) &&
@@ -686,7 +689,7 @@ try {
     );
     await shot("cut29-death-fight");
     await page.evaluate((m) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.go({
         kind: "report",
         report: {
@@ -719,7 +722,7 @@ try {
         },
       });
     }, fightM);
-    await until(() => window.__riddle.screen === "report", "the report");
+    await until(() => window.__idlever.screen === "report", "the report");
     await page.locator(".details-fold").click();
     const rm = await until(() => {
       const x = document.querySelector(".report-details .meters");
@@ -888,12 +891,15 @@ try {
       .first()
       .locator(".chip", { hasText: "armour" })
       .click();
-    await until(() => window.__riddle.lineage.orders?.keep === "best_armour", "the keep order set");
+    await until(
+      () => window.__idlever.lineage.orders?.keep === "best_armour",
+      "the keep order set",
+    );
     await page
       .locator(".sheet-wrap .order-row", { hasText: "Auto restock" })
       .locator(".chip", { hasText: "off" })
       .click();
-    await until(() => window.__riddle.lineage.orders?.repeat === false, "the repeat order set");
+    await until(() => window.__idlever.lineage.orders?.repeat === false, "the repeat order set");
     const after = await page.evaluate(() => ({
       on: [...document.querySelectorAll(".sheet-wrap .chip.order.on")].map((c) =>
         c.textContent.trim(),
@@ -950,7 +956,7 @@ try {
     await swear.click();
     await sleep(120);
     await page.locator(".sheet-wrap .oath.tablet .chip.swear").first().click();
-    await until(() => (window.__riddle.lineage.sworn ?? []).length === 1, "one oath sworn");
+    await until(() => (window.__idlever.lineage.sworn ?? []).length === 1, "one oath sworn");
     const b1 = await page.evaluate(() => ({
       slots: document
         .querySelector(".sheet-wrap .oath-slots")
@@ -967,24 +973,24 @@ try {
       `with a second slot one sworn oath leaves the others swearable (${b1.slots}; ${b1.open} open)`,
     );
     await shot("cut29-oaths");
-    const m0 = await page.evaluate(() => window.__riddle.lineage.marks);
+    const m0 = await page.evaluate(() => window.__idlever.lineage.marks);
     await page.locator(".sheet-wrap .chip.draw").click();
     await sleep(120);
     await page.locator(".sheet-wrap .chip.draw").click();
-    await until((m) => window.__riddle.lineage.marks === m - 2, "the draw paid", 10_000, m0);
+    await until((m) => window.__idlever.lineage.marks === m - 2, "the draw paid", 10_000, m0);
     check(
       /^draw ◆2$/.test(b1.draw ?? ""),
       `a fresh oath is drawn for ◆2 ("${b1.draw}", marks ${m0} → ${m0 - 2})`,
     );
-    const g0 = await page.evaluate(() => window.__riddle.lineage.gold);
+    const g0 = await page.evaluate(() => window.__idlever.lineage.gold);
     await page.locator(".sheet-wrap .chip.commission").click();
     await sleep(120);
     await page.locator(".sheet-wrap .chip.commission").click();
     const built = await until(
-      () => ((window.__riddle.lineage.works ?? []).length ? window.__riddle.lineage.works : null),
+      () => ((window.__idlever.lineage.works ?? []).length ? window.__idlever.lineage.works : null),
       "the work built",
     );
-    const g1 = await page.evaluate(() => window.__riddle.lineage.gold);
+    const g1 = await page.evaluate(() => window.__idlever.lineage.gold);
     check(
       /^build .+ \$\d+$/.test(b1.works ?? "") && g1 < g0 && built.length === 1,
       `a work is commissioned for gold ("${b1.works}": $${g0} → $${g1}, works ${built.join(" · ")})`,
@@ -1032,7 +1038,7 @@ try {
     await shot("cut29-repeat-add");
     await page.locator(".repeat-add-chip").click();
     await until(
-      () => (window.__riddle.lineage.supplies ?? []).some((s) => s.kind === "fire"),
+      () => (window.__idlever.lineage.supplies ?? []).some((s) => s.kind === "fire"),
       "fire packed",
     );
     const gone = await page.evaluate(
@@ -1055,9 +1061,9 @@ try {
       Object.assign(e.lineage, { best_depth: 9, heir: 3 });
     });
     await camp();
-    await until(() => window.__riddle.lastForecast?.ends, "the forecast's ends");
+    await until(() => window.__idlever.lastForecast?.ends, "the forecast's ends");
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       for (const m of ["forecast", "forecastEstimate", "forecastRefine"]) {
         const o = r.engine[m]?.bind(r.engine);
         if (o)
@@ -1085,7 +1091,7 @@ try {
       `the shaft's gold is a run's, the passage apart ("${g}")`,
     );
     await page.evaluate(() => {
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           elapsed_s: 3600,
@@ -1138,7 +1144,7 @@ try {
   if (part("wall")) {
     await boot(2909, "&systems=all"); // Cut 30: the wall's edit is a pen row
     const t = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rows = r.rules.rows;
       const set = {
         rows: [
@@ -1215,7 +1221,7 @@ try {
     await page.locator(".wall-apply").click();
     await camp();
     const rows = await page.evaluate(() =>
-      window.__riddle.rules.rows.map(
+      window.__idlever.rules.rows.map(
         (r) => `${r.conds.map((c) => c.k + (c.n ?? "")).join("&")}>${r.verb.v}`,
       ),
     );
@@ -1246,11 +1252,11 @@ try {
     });
     await camp();
     await page.evaluate(() => {
-      window.__riddle.editing = true;
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.editing = true;
+      window.__idlever.go({ kind: "camp" });
     });
     await camp();
-    const before = await page.evaluate(() => window.__riddle.rules.rows.map((r) => r.verb.v));
+    const before = await page.evaluate(() => window.__idlever.rules.rows.map((r) => r.verb.v));
     const last = page.locator(".editor .row.tablet").last(),
       first = page.locator(".editor .row.tablet").first();
     await page.evaluate(() =>
@@ -1273,7 +1279,7 @@ try {
     await page.mouse.up();
     await sleep(400);
     const after = await page.evaluate(() => ({
-      rows: window.__riddle.rules.rows.map((r) => r.verb.v),
+      rows: window.__idlever.rules.rows.map((r) => r.verb.v),
       sheet: !!document.querySelector(".sheet-wrap"),
     }));
     check(
@@ -1287,7 +1293,7 @@ try {
   // ---- owner: a world concept's icon and its caption, once
   if (part("concepts")) {
     await boot(2911, "&systems=all"); // Cut 30: the marks show with the pen (or the packages panel)
-    await page.evaluate(() => localStorage.removeItem("riddle.concepts"));
+    await page.evaluate(() => localStorage.removeItem("idlever.concepts"));
     await page.reload({ waitUntil: "domcontentloaded" });
     await camp(); // (the module keeps what it read at its first caption)
     await withState((e) => {
@@ -1300,11 +1306,11 @@ try {
     check(c1 === "upgrade tokens", `the marks' first appearance carries its caption ("${c1}")`);
     await shot("cut29-concept");
     await until(
-      () => JSON.parse(localStorage.getItem("riddle.concepts") ?? "[]").includes("marks"),
+      () => JSON.parse(localStorage.getItem("idlever.concepts") ?? "[]").includes("marks"),
       "visible marks caption remembered",
       8000,
     );
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
     const c2 = await page.evaluate(() => ({
       cap: !!document.querySelector(".topbar .stat.marks .concept-cap"),

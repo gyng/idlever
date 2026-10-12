@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 26 client gates (docs/CUT26.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 26 client gates (docs/CUT26.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §2  the route chip line above the rows appears only after the fact `fork D5` (`⑂ D5 burrows`); its sheet is the fork tablet — both
 //       stairs priced for the set (`routeForecast()`: `burrows D8 61%` · `fens D8 34%`), the set's stair lit; a tap writes the route (a set
 //       edit: the engine gets `route: [5]`, the forecast reprices, the chips read `⑂ D5 fens`); a set imported with a route keeps it
@@ -47,7 +47,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -72,7 +72,7 @@ const txt = (sel) =>
 // the lineage as the engine would send it, with facts added, and the camp repainted on it
 const withLineage = (patch) =>
   page.evaluate((patch) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = {
       ...r.lineage,
       ...patch,
@@ -92,7 +92,7 @@ try {
     await sleep(300);
     const before = await page.evaluate(() => {
       const e = document.querySelector(".camp .route-line");
-      return { shown: e ? !e.hidden : false, forks: (window.__riddle.lineage.forks ?? []).length };
+      return { shown: e ? !e.hidden : false, forks: (window.__idlever.lineage.forks ?? []).length };
     });
     check(
       !before.shown && before.forks === 0,
@@ -106,7 +106,7 @@ try {
   await camp();
   {
     await page.evaluate(async () => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         b = JSON.parse(r.exportSave()),
         e = JSON.parse(b.engine);
       Object.assign(e.lineage, { best_depth: 7, gold: 400 });
@@ -129,7 +129,7 @@ try {
 
     // the fork tablet: both stairs priced for this set (the core's `forkForecast`), the set's lit
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__setRules = [];
       const set0 = r.engine.setRules.bind(r.engine);
       r.engine.setRules = async (s) => {
@@ -163,16 +163,16 @@ try {
       `the fork tablet prices both stairs for this set, the set's lit (${sheet.map((s) => `${s.t}${s.on ? " ●" : ""}`).join(" · ")})`,
     );
     await shot("cut26-fork-tablet");
-    const seq0 = await page.evaluate(() => window.__riddle.forecastSeq);
+    const seq0 = await page.evaluate(() => window.__idlever.forecastSeq);
     await page.locator(".sheet-wrap .route-opt[data-far='1']").click({ timeout: 5000 });
     await page
-      .waitForFunction((s0) => window.__riddle.forecastSeq > s0, seq0, { timeout: 15_000 })
+      .waitForFunction((s0) => window.__idlever.forecastSeq > s0, seq0, { timeout: 15_000 })
       .catch(() => {});
     await sleep(400);
     const after = await page.evaluate(() => ({
-      route: window.__riddle.rules.route,
-      sent: window.__riddle.__setRules.at(-1)?.route,
-      seq: window.__riddle.forecastSeq,
+      route: window.__idlever.rules.route,
+      sent: window.__idlever.__setRules.at(-1)?.route,
+      seq: window.__idlever.forecastSeq,
       line: document.querySelector(".camp .route-line")?.textContent.replace(/\s+/g, " ").trim(),
     }));
     check(
@@ -183,7 +183,7 @@ try {
       `a tap writes the route — the engine gets route [${after.sent}], the forecast reprices (${seq0} → ${after.seq}), the chips read "${after.line}"`,
     );
     const vs = await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       return {
         pending: r.vsPending(),
         shown: !!r.vsShown(),
@@ -197,7 +197,7 @@ try {
     );
     // the export carries the route; importing it restores it
     const rt = await page.evaluate(async () => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         n0 = r.rules.rows.length,
         text = await r.engine.exportRules();
       r.rules.route = undefined;
@@ -214,19 +214,19 @@ try {
 
   // ---- §2: the shaft names each band's lane; the untaken lane hangs as a frontier
   {
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await sleep(700);
     await page
       .waitForFunction(
-        () => (window.__riddle.lastForecast?.depths ?? []).some((d) => d.biome),
+        () => (window.__idlever.lastForecast?.depths ?? []).some((d) => d.biome),
         null,
         { timeout: 10_000 },
       )
       .catch(() => {});
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await sleep(400);
     const sh = await page.evaluate(() => ({
-      dbg: (window.__riddle.lastForecast?.depths ?? [])
+      dbg: (window.__idlever.lastForecast?.depths ?? [])
         .map((d) => `${d.depth}${d.biome ?? ""}`)
         .join(","),
       lane4: document.querySelector(".shaft .notch[data-d='4'] .lane")?.textContent.trim(),
@@ -239,7 +239,7 @@ try {
     );
     await shot("cut26-shaft");
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       delete r.rules.route;
       r.rulesChanged();
       r.lineage = { ...r.lineage, facts: r.lineage.facts.filter((f) => f !== "biome:fens") };
@@ -289,7 +289,7 @@ try {
   {
     // (the fake opens `in:` for each biome entered — burrows, fens — and a lane a seen fork offers but no hero entered is locked)
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       if (!(r.vocab.locked ?? []).some((l) => l.cond.k === "in"))
         r.vocab = {
           ...r.vocab,
@@ -338,7 +338,7 @@ try {
   // ---- §6: a locked cond in a row is marked (a text import, an old set) — on its chip and on the tablet
   {
     const m = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const lk = (r.vocab.locked ?? []).find((l) => l.cond.k === "on_see") ?? {
         cond: { k: "on_see", t: "hunger" },
         needs: "◆2",
@@ -367,7 +367,7 @@ try {
     );
     await shot("cut26-locked-row");
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.sets[r.active].rows.shift();
       r.go({ kind: "camp" });
     });
@@ -403,7 +403,7 @@ try {
       ],
     });
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.lastForecast = {
         ...(r.lastForecast ?? { causes: [] }),
         known_to: 9,
@@ -413,7 +413,7 @@ try {
         })),
       };
     });
-    await page.evaluate((d) => window.__riddle.go({ kind: "death", death: d }), death(10 / 12));
+    await page.evaluate((d) => window.__idlever.go({ kind: "death", death: d }), death(10 / 12));
     await waitFor((x) => x?.screen === "death", "the lucky gap");
     await sleep(300);
     const a = await page.evaluate(() => ({
@@ -433,7 +433,7 @@ try {
       `a patch's reach reads from→to ("${a.reach}"; AP: \`reach D5 −76\`)`,
     );
     await shot("cut26-dice-lean");
-    await page.evaluate((d) => window.__riddle.go({ kind: "death", death: d }), death(2 / 12));
+    await page.evaluate((d) => window.__idlever.go({ kind: "death", death: d }), death(2 / 12));
     await sleep(300);
     const b = await txt(".death-line .verdict"),
       bl = await txt(".death-line .lean");
@@ -443,7 +443,7 @@ try {
     );
     // the core's own `lean` stands whatever the counts
     await page.evaluate(
-      (d) => window.__riddle.go({ kind: "death", death: { ...d, lean: "dice" } }),
+      (d) => window.__idlever.go({ kind: "death", death: { ...d, lean: "dice" } }),
       death(5 / 12),
     );
     await sleep(300);
@@ -457,11 +457,11 @@ try {
   // ---- Cut 26 (core, risks): a `route` death names the stair (`D5 fens`), its lead tablet takes the other (`take burrows`)
   {
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.rules.route = [5];
     });
     await page.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: {
           run_id: 0,
@@ -506,8 +506,8 @@ try {
     await page.locator(".patch-gem").click({ timeout: 5000 });
     await sleep(400);
     const w = await page.evaluate(() => ({
-      screen: window.__riddle.screen,
-      route: window.__riddle.rules.route,
+      screen: window.__idlever.screen,
+      route: window.__idlever.rules.route,
     }));
     check(
       w.screen === "camp" && !w.route?.length,
@@ -538,7 +538,7 @@ try {
     };
     await page.evaluate(
       (line) =>
-        window.__riddle.go({
+        window.__idlever.go({
           kind: "report",
           report: {
             elapsed_s: 0,
@@ -599,20 +599,20 @@ try {
     );
     await shot("cut26-driven");
     // (a kept verdict; the gem writes the counter at the top)
-    const rows0 = await page.evaluate(() => window.__riddle.rules.rows.length);
+    const rows0 = await page.evaluate(() => window.__idlever.rules.rows.length);
     await page.locator(".patch-gem").click({ timeout: 5000 });
     await sleep(400);
     const w = await page.evaluate(() => ({
-      screen: window.__riddle.screen,
-      r1: window.__riddle.rules.rows[0]?.verb.a,
-      n: window.__riddle.rules.rows.length,
+      screen: window.__idlever.screen,
+      r1: window.__idlever.rules.rows[0]?.verb.a,
+      n: window.__idlever.rules.rows.length,
     }));
     check(
       w.screen === "camp" && w.r1 === "tag:boss" && w.n === rows0 + 1,
       `the gem writes the counter as R1 (${w.screen}, R1 ${w.r1}, ${rows0} → ${w.n} rows)`,
     );
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.sets[r.active].rows.shift();
       r.go({ kind: "camp" });
     });
@@ -622,7 +622,7 @@ try {
   // ---- §6: the repeat plate covers no button
   {
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.engine.setRestock = async (on) => ({ ...r.lineage, repeat: on });
       r.lineage = {
         ...r.lineage,
@@ -686,7 +686,7 @@ try {
   // ---- §2: the report names each band's lane
   {
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.rules.route = [5];
       r.lineage = {
         ...r.lineage,
@@ -695,7 +695,7 @@ try {
       };
     });
     await page.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           elapsed_s: 28800,
@@ -732,7 +732,7 @@ try {
     );
     await shot("cut26-report-lanes");
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       delete r.rules.route;
       r.go({ kind: "camp" });
     });
@@ -743,7 +743,7 @@ try {
   {
     const w = await page.evaluate(async () => {
       const { createViewer } = await import("/src/render/index.ts");
-      const snap = await window.__riddle.engine.send();
+      const snap = await window.__idlever.engine.send();
       const host = document.createElement("div");
       Object.assign(host.style, {
         position: "fixed",
@@ -802,7 +802,7 @@ try {
     });
     // the watch's callout on the fork fact (the core's events: the fact, then the stairs)
     const c = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.watchMode = "one";
       r.go({ kind: "watch" });
       await new Promise((f) => setTimeout(f, 800));
@@ -822,7 +822,7 @@ try {
           });
           mo.observe(document.body, { subtree: true, childList: true, characterData: true });
           // feed the fact through the engine's next step (the fake's step result carries it)
-          const E = window.__riddle.engine,
+          const E = window.__idlever.engine,
             step0 = E.step.bind(E);
           let fed = false;
           E.step = async (n) => {
@@ -848,7 +848,7 @@ try {
       seen.includes("two stairs"),
       `the watch calls \`TWO STAIRS\` on the fork fact (${seen.slice(0, 6).join(" · ")})`,
     );
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" })).catch(() => {});
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" })).catch(() => {});
   }
   // ---- control rater AR ("the ogre drew as a checkerboard blob"): a painted master is cut to its runtime size by area, not by every
   //      other texel — the ogre's hide reads as a surface (speckle: the share of neighbouring texels whose luminance jumps > 40)

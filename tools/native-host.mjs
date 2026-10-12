@@ -23,9 +23,9 @@ class Session {
   start(profile = this.profile()) {
     this.balance = profile;
     this.stamp = `${statSync(this.binary).mtimeMs}:${statSync(this.binary).size}`;
-    const env = { ...process.env, RIDDLE_NATIVE_THREADS: String(this.threads) };
-    if (profile !== undefined) env.RIDDLE_BALANCE_JSON = profile;
-    else delete env.RIDDLE_BALANCE_JSON;
+    const env = { ...process.env, IDLEVER_NATIVE_THREADS: String(this.threads) };
+    if (profile !== undefined) env.IDLEVER_BALANCE_JSON = profile;
+    else delete env.IDLEVER_BALANCE_JSON;
     const child = spawn(this.binary, [], { cwd: ROOT, env, stdio: ["pipe", "pipe", "pipe"] });
     const pending = new Map();
     this.child = child;
@@ -98,9 +98,9 @@ class Session {
 }
 export class NativeHost {
   constructor({
-    binary = process.env.RIDDLE_NATIVE_BIN,
-    threads = Number(process.env.RIDDLE_NATIVE_THREADS ?? 8),
-    balanceFile = process.env.RIDDLE_BALANCE_FILE,
+    binary = process.env.IDLEVER_NATIVE_BIN,
+    threads = Number(process.env.IDLEVER_NATIVE_THREADS ?? 8),
+    balanceFile = process.env.IDLEVER_BALANCE_FILE,
   } = {}) {
     if (!binary || !Number.isInteger(threads) || threads < 1 || threads > 256)
       throw new Error("build native_dev first and select a valid native thread count");
@@ -164,13 +164,13 @@ export class NativeHost {
 }
 export function nativePlugin() {
   return {
-    name: "riddle-native-dev",
+    name: "idlever-native-dev",
     apply: "serve",
     configureServer(server) {
-      if (process.env.RIDDLE_NATIVE_DEV !== "1") return;
+      if (process.env.IDLEVER_NATIVE_DEV !== "1") return;
       const host = new NativeHost();
       const rebuilder =
-        server.watcher && process.env.RIDDLE_NATIVE_WATCH !== "0" ? watchNative(server) : null;
+        server.watcher && process.env.IDLEVER_NATIVE_WATCH !== "0" ? watchNative(server) : null;
       server.httpServer?.once("close", () => {
         rebuilder?.close();
         host.close();

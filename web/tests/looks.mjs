@@ -36,7 +36,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted } : null;
   });
 async function waitFor(pred, label, timeout = 30_000) {
@@ -59,7 +59,7 @@ async function until(fn, label, timeout = 10_000) {
   }
   return v;
 }
-const look = () => page.evaluate(async () => (await window.__riddle.engine.lineage()).look ?? "");
+const look = () => page.evaluate(async () => (await window.__idlever.engine.lineage()).look ?? "");
 const wellArt = (sel = "main .portrait .face") =>
   page.evaluate((sel) => document.querySelector(sel)?.dataset.art ?? "", sel);
 const openAppearance = async () => {
@@ -79,11 +79,11 @@ try {
     "a fresh camp has no look stud",
   );
   await page.locator('.town-tag[data-next="house"]').click();
-  await page.waitForFunction(() => window.__riddle.lineage.town.home === true);
+  await page.waitForFunction(() => window.__idlever.lineage.town.home === true);
   // a 1 h absence returns runs (a best depth), which is how the real game reveals the stud now — not a death
   // (Cut 30.5: before the scout a send is one run by hand — the hero is sent, then the absence plays that run out)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     await r.engine.send();
     await r.runOfflineChunked(3600);
     await r.refresh();
@@ -91,11 +91,11 @@ try {
   });
   await waitFor((s) => s?.screen === "camp", "camp");
   const L1 = await page.evaluate(async () => {
-    const L = await window.__riddle.engine.lineage();
+    const L = await window.__idlever.engine.lineage();
     return { best: L.best_depth ?? 0 };
   });
   check(L1.best > 0, `the absence earned a best depth (D${L1.best}): the stud's condition`);
-  const cls = await page.evaluate(() => window.__riddle.lineage?.class ?? "fighter");
+  const cls = await page.evaluate(() => window.__idlever.lineage?.class ?? "fighter");
   const l0 = await look();
   check(["male", "female", "cat"].includes(l0), `a fresh lineage wears a look (${cls} · ${l0})`);
   const w0 = await until(
@@ -142,7 +142,7 @@ try {
   check(m1 === `hero_${cls}_${target}`, `the bar's mini portrait follows (${m1})`);
 
   // the save carries it
-  await page.evaluate(() => window.__riddle.flush?.()); // the save is debounced (1 s)
+  await page.evaluate(() => window.__idlever.flush?.()); // the save is debounced (1 s)
   await page.waitForTimeout(1500);
   await page.goto(`${url}?dev=1&seed=31`, { waitUntil: "domcontentloaded" });
   await waitFor((s) => s?.booted && s.screen === "camp", "camp after reload");
@@ -184,7 +184,7 @@ try {
   // and back, from the camp
   await page.goto(`${url}?dev=1&seed=31`, { waitUntil: "domcontentloaded" });
   await waitFor((s) => s?.booted && s.screen === "camp", "camp again");
-  await page.evaluate(() => window.__riddle.go?.({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go?.({ kind: "camp" }));
   await openAppearance();
   await page.locator(".look-sheet .look[data-look=female]").click({ timeout: 5000 });
   const w3 = await until(

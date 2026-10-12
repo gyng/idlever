@@ -24,7 +24,7 @@
 //   audio.bed("fens" | null)            the watch's ambience bed on / off (biome by biome, a crossfade between)
 //
 // Autoplay policy: the context is created on the first user gesture (`unlock`, wired to pointerdown/keydown once); cues
-// before that are dropped. `mute` is persisted (`riddle.mute`); nothing schedules while muted. Dev: `window.__audio`.
+// before that are dropped. `mute` is persisted (`idlever.mute`); nothing schedules while muted. Dev: `window.__audio`.
 // Measurement (docs/JUICE.md §6): `renderCue` / `renderBed` render into an OfflineAudioContext through the same master chain.
 
 export type CueName =
@@ -73,7 +73,7 @@ type Noise = {
 /** A cue: ≤ 2 oscillators, ≤ 1 noise burst, one envelope (peak, attack, total length, decay shape). */
 type Spec = { osc: Osc[]; noise?: Noise; peak: number; len: number; att?: number; exp?: boolean };
 
-const MUTE_KEY = "riddle.mute";
+const MUTE_KEY = "idlever.mute";
 export const CUE_MAX_S = 0.2; // every cue ends within this (the gate's bar) …
 export const DEATH_FADE_S = 1.0; // … except the death note, which fades over 1 s (Cut 10 §4)
 const DRONE_GAIN = 0.02,
@@ -91,7 +91,7 @@ const DRONE_ROOT: Record<string, number> = {
   deep: 82.41,
   sanctum: 196,
 };
-/** Cut 7 bands (crates/riddle-core/src/descent.rs): D1–4 warrens, D5–8 burrows (Cut 16 §3), D9–13 fens, D14+ crypt. */
+/** Cut 7 bands (crates/idlever-core/src/descent.rs): D1–4 warrens, D5–8 burrows (Cut 16 §3), D9–13 fens, D14+ crypt. */
 export const biomeOf = (depth: number): string =>
   depth <= 4 ? "warrens" : depth <= 8 ? "burrows" : depth <= 13 ? "fens" : "crypt";
 

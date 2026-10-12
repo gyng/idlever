@@ -7,21 +7,21 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
     cwd: new URL("../../", import.meta.url),
     encoding: "utf8",
   }).trim(),
-  shots = process.env.RIDDLE_SHOTS;
+  shots = process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const b = await launchBrowser();
 try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1.5 });
     await p.goto(`${url}?fresh=1&seed=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.locator('.town-tag[data-next="house"]').waitFor({ state: "visible" });
     await p.waitForFunction(() =>
       document.querySelector(".town-foundation").classList.contains("painted"),
     );
     await p.waitForTimeout(400);
     const before = await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         t = document.querySelector(".town-tag"),
         f = document.querySelector(".town-foundation"),
         r = t.getBoundingClientRect(),
@@ -67,7 +67,7 @@ try {
       await p.screenshot({ path: `${shots}/${width}-empty.png` });
     }
     await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         fn = a.engine.buildTown;
       window.buildCalls = 0;
       let release;
@@ -85,11 +85,11 @@ try {
     await p.locator(".hit-staked").click();
     assert.equal(await p.evaluate(() => window.buildCalls), 1);
     assert.equal(await p.locator(".town-tag").getAttribute("aria-busy"), "true");
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.town.home), false);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.town.home), false);
     await p.evaluate(() => window.releaseBuild());
-    await p.waitForFunction(() => window.__riddle.lineage.town.home === true);
+    await p.waitForFunction(() => window.__idlever.lineage.town.home === true);
     await p.waitForFunction(() => document.querySelector(".town-foundation")?.hidden);
-    await p.waitForFunction(() => window.__riddle.lineage.hero_slots.length === 1);
+    await p.waitForFunction(() => window.__idlever.lineage.hero_slots.length === 1);
     await p.waitForFunction(() => !document.querySelector("button.send")?.disabled);
     assert.equal(await p.evaluate(() => window.buildCalls), 1);
     assert.equal(await p.locator(".editor .row.tablet.compact").first().isVisible(), false);

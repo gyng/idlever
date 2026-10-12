@@ -2,7 +2,7 @@
 // Blind 5331f40 (both Mirror King kills ended off-view: `Run ended · Watching D33`, then the report; the kill was a 5-line reel): a boss's
 // kill is a witnessed beat. Real wasm, the earned first-clear fixture, a numbered descent re-climbed to a band boss — the Foundry Master
 // (Cut 113's King, 220 hp · 13–19, is a wall a just-cleared kit is meant not to break in one run; the beat is any boss's):
-//   live — the watch is paused at the King's sighting while the world runs the run to its end; the hero tap (`riddle:focus-hero`,
+//   live — the watch is paused at the King's sighting while the world runs the run to its end; the hero tap (`idlever:focus-hero`,
 //          a jump to live) then lands short of the kill, `FOUNDRY MASTER DOWN` holds its beat before `COLLECTED`, and only then the report;
 //   away — a boss slain while away offers `watch kill` on the absence's report; it opens that run's replay seeked to the fall, which plays.
 //   node web/tests/boss-kill-beat.mjs
@@ -36,12 +36,12 @@ const browser = await launchBrowser();
 async function fresh(page) {
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   await page.goto(`${url}?dev=1&fresh=1&runs=0`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
-  check((await page.evaluate(() => window.__riddle.kind)) === "wasm", "real wasm engine");
+  await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
+  check((await page.evaluate(() => window.__idlever.kind)) === "wasm", "real wasm engine");
   check(
     await page.evaluate(
       async ({ source, loadout }) =>
-        window.__riddle.importSave(
+        window.__idlever.importSave(
           JSON.stringify({ v: 2, engine: source, loadout, last_seen: Date.now(), runs: 359 }),
         ),
       { source, loadout: native.loadout },
@@ -49,7 +49,7 @@ async function fresh(page) {
     "the earned clear imports",
   );
   await page.evaluate(async () => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     a.runnerOn = false;
     await a.beginDescent(0);
     a.go({ kind: "camp" });
@@ -62,7 +62,7 @@ try {
     await fresh(page);
     // the engine sends the re-climb (waystones lit as it goes) until a run stands on D33, the King's floor, not yet met
     const at = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       let s = null;
       for (let run = 0; run < 12; run++) {
         try {
@@ -98,7 +98,7 @@ try {
     check(at === 23, `a live run stands on the Foundry Master's floor (D${at})`);
     // past the Master the hero turns home (the run ends on the next floor, as the King's fall ended it on the last)
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const r = a.rules;
       try {
         await a.engine.setRules({
@@ -111,11 +111,13 @@ try {
     });
     await page.evaluate(() => {
       window.__beatLog = [];
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.watchMode = "fights";
       a.go({ kind: "watch" });
     });
-    await page.waitForFunction(() => window.__riddle.screen === "watch", null, { timeout: 30_000 });
+    await page.waitForFunction(() => window.__idlever.screen === "watch", null, {
+      timeout: 30_000,
+    });
     // the King in view: pause, and let the world run the run out (the exit held: `Run ended`)
     const sighted = await page
       .waitForFunction(
@@ -149,7 +151,7 @@ try {
         );
       check(ended, "paused, the world ran the run to its end");
       // the hero tap: a jump to live — the kill not yet shown, the picture lands short of it
-      await page.evaluate(() => window.dispatchEvent(new Event("riddle:focus-hero")));
+      await page.evaluate(() => window.dispatchEvent(new Event("idlever:focus-hero")));
       await page
         .locator("main.watch [aria-label='Resume watch']")
         .first()
@@ -157,7 +159,7 @@ try {
         .catch(() => {});
     }
     await page
-      .waitForFunction(() => window.__riddle.screen !== "watch", null, { timeout: 120_000 })
+      .waitForFunction(() => window.__idlever.screen !== "watch", null, { timeout: 120_000 })
       .catch(() => {});
     const log = await page.evaluate(() =>
       (window.__beatLog ?? []).map((b) => ({ text: b.text, ms: b.ms })),
@@ -170,21 +172,21 @@ try {
       down >= 0 && exit >= 0 && log[exit].ms - log[down].ms >= 3500,
       `the kill holds its beat before the exit (${down >= 0 && exit >= 0 ? log[exit].ms - log[down].ms : "?"} ms)`,
     );
-    check((await page.evaluate(() => window.__riddle.screen)) === "report", "then the report");
+    check((await page.evaluate(() => window.__idlever.screen)) === "report", "then the report");
     await page.close();
   }
   // ---- away: the report's `watch kill` plays the run that slew him, seeked to the fall
   {
     const page = await browser.newPage({ viewport: { width: 400, height: 860 } });
     await fresh(page);
-    await page.evaluate(() => window.__riddle.absence(4 * 3600));
-    await page.waitForFunction(() => window.__riddle.screen === "report", null, {
+    await page.evaluate(() => window.__idlever.absence(4 * 3600));
+    await page.waitForFunction(() => window.__idlever.screen === "report", null, {
       timeout: 180_000,
     });
     // a descent's absence re-slays the King but reports no first victory (`boss:` bests are the lineage's firsts): the report is shown
     // again as a first clear's would read — the runs, their held replays and the King's fall in them are the engine's own
     const held = await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         r = a.view.report;
       a.go({
         kind: "report",
@@ -243,7 +245,7 @@ try {
     const at = await page.evaluate(async () => {
       // Cut 118 (heroes always push): the descent's first run from D1 banks short of the Master; it is played out, the next is sent
       // from the deepest lit waystone, as the live part's re-climb is, and closed in flight short of him
-      const a = window.__riddle;
+      const a = window.__idlever;
       let s = null;
       for (let run = 0; run < 4; run++) {
         try {
@@ -281,12 +283,12 @@ try {
     check(at >= 12 && at < 23, `a run in flight short of the Foundry Master at the close (D${at})`);
     await page.goto(`${url}?dev=1&absent=4h`, { waitUntil: "domcontentloaded" });
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "report",
+      () => window.__idlever?.booted && window.__idlever.screen === "report",
       null,
       { timeout: 180_000 },
     );
     const rec = await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         L = a.lineage,
         held = new Set(L.replays ?? []);
       const away = (L.runs ?? []).filter((r) => r.via === "away" && !r.sampled),

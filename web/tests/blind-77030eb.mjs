@@ -27,7 +27,7 @@ const browser = await launchBrowser();
 const patchSave = (page, lin, st = {}) =>
   page.evaluate(
     async ([p, q]) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       for (const [k, v] of Object.entries(p))
@@ -46,7 +46,7 @@ const patchSave = (page, lin, st = {}) =>
     [lin, st],
   );
 const camp = (page) =>
-  page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp", null, {
+  page.waitForFunction(() => window.__idlever?.booted && window.__idlever.screen === "camp", null, {
     timeout: 60_000,
   });
 try {
@@ -70,8 +70,8 @@ try {
     await camp(page);
     await page.waitForTimeout(300);
     const L = await page.evaluate(() => ({
-      c: window.__riddle.lineage.commission,
-      kit: window.__riddle.lineage.kit?.map((k) => !!k.next),
+      c: window.__idlever.lineage.commission,
+      kit: window.__idlever.lineage.kit?.map((k) => !!k.next),
     }));
     check(
       !!L.c && L.kit.every((x) => !x),
@@ -94,13 +94,13 @@ try {
       /Kit complete/.test(text) && /town upgrades/i.test(text) && text.includes(L.c.label),
       `the forge names the next town work under "Kit complete" (${text.replace(/\s+/g, " ").slice(0, 120)})`,
     );
-    const gold0 = await page.evaluate(() => window.__riddle.lineage.gold);
+    const gold0 = await page.evaluate(() => window.__idlever.lineage.gold);
     await page.locator(".forge [data-sink=commission] button.commission").click();
     await page.locator(".forge [data-sink=commission] button.commission").click();
-    await page.waitForFunction((g) => window.__riddle.lineage.gold < g, gold0, { timeout: 5000 });
+    await page.waitForFunction((g) => window.__idlever.lineage.gold < g, gold0, { timeout: 5000 });
     const after = await page.evaluate(() => ({
-      gold: window.__riddle.lineage.gold,
-      works: window.__riddle.lineage.works,
+      gold: window.__idlever.lineage.gold,
+      works: window.__idlever.lineage.works,
     }));
     check(
       gold0 - after.gold === L.c.price && after.works?.includes(L.c.label),
@@ -147,11 +147,11 @@ try {
     await page.goto(`${url}?dev=1&seed=307&fresh=1&runs=0`, { waitUntil: "domcontentloaded" });
     await camp(page);
     const fixture = readFileSync(
-      new URL("crates/riddle-core/src/fixtures/save_307dbed.json", root),
+      new URL("crates/idlever-core/src/fixtures/save_307dbed.json", root),
       "utf8",
     );
     await page.evaluate(async (e) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       b.engine = e;
       await r.importSave(JSON.stringify(b));
@@ -160,7 +160,7 @@ try {
     await page.waitForTimeout(500);
     // corridor fighting owned and worn at L2, with marks for its L3
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       const p = e.lineage.pkg;
@@ -174,7 +174,7 @@ try {
     await camp(page);
     await page.waitForTimeout(500);
     const pk = await page.evaluate(() =>
-      window.__riddle.lineage.packages?.all.find((p) => p.id === "corridor_fighting"),
+      window.__idlever.lineage.packages?.all.find((p) => p.id === "corridor_fighting"),
     );
     check(
       pk?.level === 2 &&

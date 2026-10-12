@@ -1,4 +1,4 @@
-# Riddle — PLAN.md
+# Idlever — PLAN.md
 
 *Working title. Canonical plan, v3. **2026-09-30: the idle-first pivot (`docs/IDLE_FIRST.md`, `docs/CUT30.md`) supersedes the rules-first spine; sections below that contradict it are history (pre-pivot); Cut 30.5 (`docs/CUT30_5.md`) is the current contract: manual first sends, then hired workers; works replaces tracks. Later conflicting sections describe the older design.** Status 2026-09-16: Cut 1 (v1 playable) is BUILT and verified**; see `docs/CUT1.md` (contract + addenda A–E), `docs/INTEGRATION.md`, `eval/cards/cut1.tier1.json` (61.6, promising, gated on tension + expression). Review log at the end. Research:
 `research/*.md`. Fun eval: `docs/FUN_EVAL_IDLE.md` + `eval/`. Sibling conventions:
@@ -104,9 +104,9 @@ lost it to silent drift; FF12's rows kept it).
 
 Shape Gacha had every retention hallmark and no engine: tension 0, decisions optional via
 auto-arrange, nothing produced an anecdote. The v4 rule "progression never rescues a weak
-core" held. Riddle inverts each:
+core" held. Idlever inverts each:
 
-| Shape Gacha | Riddle |
+| Shape Gacha | Idlever |
 |---|---|
 | Calm collector spine, optimisation optional | The idle climb is the spine; packages and the pen multiply it |
 | Growth measured in Flux | Growth measured in facts learned, depth, bosses; numbers are the scoreboard |
@@ -356,9 +356,9 @@ From `research/art-tech.md`:
 
 ## Tech
 
-- `crates/riddle-core`: deterministic sim (descent + floor gen, monsters, items, rule
+- `crates/idlever-core`: deterministic sim (descent + floor gen, monsters, items, rule
   engine, facts, trace, chronicle, sifter, forecast, offline batch, probes). All truth.
-- `crates/riddle-wasm`: thin bridge (`new`, `set_rules`, `forecast`, `step`,
+- `crates/idlever-wasm`: thin bridge (`new`, `set_rules`, `forecast`, `step`,
   `run_offline(elapsed)`, `snapshot`, `events`, `export`).
 - `web/`: Vite + TS + three.js; replay-viewer renderer with primitive fallbacks per sprite.
 - `art/`: manifest + codex + `pack.py` + `art-qc.py` from tacticalswap.

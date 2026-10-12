@@ -31,12 +31,12 @@ await page.setViewportSize({ width: 400, height: 800 });
 try {
   await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=3020`, { waitUntil: "domcontentloaded" });
   await page.waitForFunction(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp" && window.__town,
+    () => window.__idlever?.booted && window.__idlever.screen === "camp" && window.__town,
     null,
     { timeout: 60_000 },
   );
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     const L = save.lineage;
     Object.assign(L, {

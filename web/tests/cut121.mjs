@@ -36,10 +36,10 @@ const real = async (tag, source) => {
   });
   page.on("pageerror", (e) => errors.push(`${tag} pageerror: ${e.message}`));
   await page.goto(`${url}?dev=1&fresh=1&runs=0&seed=52`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+  await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
   const ok = await page.evaluate(
     async ({ source }) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.runnerOn = false;
       return (
         a.kind === "wasm" &&
@@ -80,7 +80,7 @@ const page0 = async (tag, q = "") => {
 };
 const toWatch = async (page) =>
   page.waitForFunction(
-    () => window.__riddle?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
+    () => window.__idlever?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
     null,
     { timeout: 30_000 },
   );
@@ -91,7 +91,7 @@ const sample = (page, ms) =>
       rows = [];
     while (performance.now() - t0 < ms) {
       const w = document.querySelector(".watch");
-      if (!w || window.__riddle.screen !== "watch" || w.dataset.over === "1") break;
+      if (!w || window.__idlever.screen !== "watch" || w.dataset.over === "1") break;
       const chip = w.querySelector(".speed-why");
       rows.push({
         at: Math.round(performance.now() - t0),
@@ -173,12 +173,12 @@ try {
     await page.close();
     const p1 = await page0("why-one", "&fake_god=1");
     await p1.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
     await p1.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.watchMode = "one";
       a.go({ kind: "watch" });
     });
@@ -213,12 +213,12 @@ try {
   if (parts.includes("strip")) {
     const page = await page0("strip", "&fake_god=1");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
     await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         send = a.engine.send.bind(a.engine);
       a.lineage.feats = { ...a.lineage.feats, swift_to: 4 };
       const lin = a.engine.lineage.bind(a.engine);
@@ -318,12 +318,12 @@ try {
   if (parts.includes("rest")) {
     const page = await page0("rest", "&fake_god=1");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
     await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         step = a.engine.step.bind(a.engine);
       a.engine.step = async (n) => {
         const res = await step(n),
@@ -376,7 +376,7 @@ try {
   if (parts.includes("gold")) {
     const page = await page0("gold");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
@@ -400,7 +400,7 @@ try {
     });
     const read = (r) =>
       page.evaluate(async (r) => {
-        window.__riddle.go({ kind: "report", report: r, absence: true });
+        window.__idlever.go({ kind: "report", report: r, absence: true });
         await new Promise((z) => setTimeout(z, 700));
         const t = document.querySelector(".report-gold");
         return {
@@ -467,7 +467,7 @@ try {
   if (parts.includes("words")) {
     const page = await page0("words");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
@@ -519,7 +519,7 @@ try {
   if (parts.includes("killer")) {
     const page = await page0("killer");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
@@ -537,7 +537,7 @@ try {
         trace: { turns: [] },
       };
       const header = async (d) => {
-        window.__riddle.go({ kind: "death", death: { ...base, ...d }, kept: true });
+        window.__idlever.go({ kind: "death", death: { ...base, ...d }, kept: true });
         await new Promise((z) => setTimeout(z, 400));
         return document
           .querySelector(".death .death-line .cause")
@@ -572,7 +572,7 @@ try {
     // real wasm: every kept death of a 12 h absence — the header's killer is the stone's (`fell to X, D8` ⇔ `X · D8`)
     const deep = await real("killer-real", fixture("deep.json"));
     const d = await deep.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         rep = await a.engine.runOfflineQuick(12 * 3600),
         last = Math.max(...(rep.exits ?? []).map((x) => x.run_id)),
         out = [];
@@ -624,7 +624,7 @@ try {
   if (parts.includes("bands")) {
     const page = await page0("bands");
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
@@ -632,7 +632,7 @@ try {
       const { deathBand, goldBand, renderShaft } = await import("/src/ui/forecast.ts");
       const { priceOf } = await import("/src/ui/packages.ts");
       const e = (x) => ({ bank: 0.2, return: 0.05, death: 0.75, gold: 400, ...x });
-      const a = window.__riddle,
+      const a = window.__idlever,
         f0 = a.lastForecast;
       // the shaft paints a banded forecast (rater A's `death 75%` on an 8-sample read: 47–91 %) — its gems shown
       const f = {
@@ -717,7 +717,7 @@ try {
   if (parts.includes("also")) {
     const page = await real("also", fixture("deep.json"));
     const r = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.rules.rows.unshift({ conds: [{ k: "foe_tag", t: "boss" }], verb: { v: "attack" } });
       await a.engine.setRules(a.rules);
       await a.engine.runOfflineQuick(12 * 3600);
@@ -768,7 +768,7 @@ try {
     );
     await page.keyboard.press("Escape");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.beginDescent(1);
       await a.refresh();
       a.go({ kind: "camp" });

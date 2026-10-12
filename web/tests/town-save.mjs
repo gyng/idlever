@@ -13,8 +13,8 @@ async function open(width, motion = "reduce") {
   const errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   await p.goto(`${url}?fresh=1&seed=1&runs=0`);
-  await p.waitForFunction(() => window.__riddle?.booted);
-  assert.equal(await p.evaluate(() => window.__riddle.kind), "wasm");
+  await p.waitForFunction(() => window.__idlever?.booted);
+  assert.equal(await p.evaluate(() => window.__idlever.kind), "wasm");
   checks++;
   return { p, errors };
 }
@@ -23,7 +23,7 @@ try {
     for (const motion of ["reduce", "no-preference"]) {
       const { p, errors } = await open(width, motion);
       await p.evaluate(() => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         let navigating = false;
         a.onChange(() => {
           if (a.lineage.town.home && !navigating) {
@@ -35,10 +35,10 @@ try {
         document.querySelector('.town-tag[data-next="house"]').click();
       });
       await p.waitForURL("**/?townSave=1");
-      await p.waitForFunction(() => window.__riddle?.booted);
+      await p.waitForFunction(() => window.__idlever?.booted);
       const restored = await p.evaluate(() => ({
-        home: window.__riddle.lineage.town.home,
-        heroes: window.__riddle.lineage.hero_slots,
+        home: window.__idlever.lineage.town.home,
+        heroes: window.__idlever.lineage.hero_slots,
         expected: JSON.parse(sessionStorage.getItem("town-save-hero")),
         awaiting: document.querySelector("main.camp").classList.contains("awaiting-home"),
       }));
@@ -58,7 +58,7 @@ try {
   {
     const { p, errors } = await open(400);
     await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         save = a.engine.save,
         build = a.engine.buildTown;
       window.saveCalls = 0;
@@ -103,8 +103,8 @@ try {
     // No test flush: the production build path must already have saved it.
     await p.evaluate(() => history.replaceState(null, "", location.pathname));
     await p.reload();
-    await p.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.town.home), true);
+    await p.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.town.home), true);
     assert.deepEqual(errors, []);
     checks += 2;
     console.log("Delayed save keeps build pending, deduplicated, then reloads completed home PASS");
@@ -112,10 +112,10 @@ try {
   }
   {
     const { p, errors } = await open(400);
-    const saved = await p.evaluate(() => localStorage.getItem("riddle.save"));
+    const saved = await p.evaluate(() => localStorage.getItem("idlever.save"));
     await p.evaluate(() => {
       window.saveCalls = 0;
-      const a = window.__riddle,
+      const a = window.__idlever,
         save = a.engine.save;
       a.engine.save = async () => {
         window.saveCalls++;
@@ -129,10 +129,10 @@ try {
     await p.waitForFunction(
       () => document.querySelector(".town-tag").getAttribute("aria-busy") === "false",
     );
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.town.home), false);
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.hero_slots.length), 0);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.town.home), false);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.hero_slots.length), 0);
     assert.equal(await p.evaluate(() => window.saveCalls), 0);
-    assert.equal(await p.evaluate(() => localStorage.getItem("riddle.save")), saved);
+    assert.equal(await p.evaluate(() => localStorage.getItem("idlever.save")), saved);
     assert.deepEqual(errors, []);
     checks += 5;
     console.log("Refused construction retains empty town/save and releases guard PASS");

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 21 client gates (docs/CUT21.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 21 client gates (docs/CUT21.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §1  no waystone lit, no start tablet; the first lit carves `start → D1` beside the rules and the cage; the picker lists D1 and each
 //       lit waystone with its forecast move and toll (`D9 · bank +12% · $90`, `…` until `startForecast()` lands); a tap is
 //       `setStart(9)`, the tablet reads `start → D9 · $90`, the shaft starts at D9; the fake's send pays `waystone D9` and the watch's
@@ -42,7 +42,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -55,7 +55,7 @@ async function waitFor(pred, label, timeout = 20_000) {
   }
   throw new Error(`timeout waiting for ${label} (screen=${s?.screen} booted=${s?.booted})`);
 }
-const go = (screen) => page.evaluate((x) => window.__riddle.go(x), screen);
+const go = (screen) => page.evaluate((x) => window.__idlever.go(x), screen);
 const closeSheets = async () => {
   await page.keyboard.press("Escape");
   await sleep(120);
@@ -70,7 +70,7 @@ const txt = (sel) =>
 /** Patch the fake's saved lineage and reload it through the save (the camp remounts). */
 const patchLineage = (patch) =>
   page.evaluate(async (p) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     Object.assign(e.lineage, p);
@@ -108,7 +108,7 @@ try {
   await shot("cut21-start-tablet");
   // the picker: the engine's moves land after a beat; `…` meanwhile
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__starts = [];
     const real = r.engine.startForecast.bind(r.engine);
     r.engine.startForecast = () => new Promise((res) => setTimeout(() => res(real()), 400));
@@ -133,7 +133,7 @@ try {
   // QA 778fa1b (qaV; core): the toll is the wire's only (none at 0, no client guess) — `T(d)` is what the engine charges
   const tolls = await page.evaluate(async () =>
     Object.fromEntries(
-      (await window.__riddle.engine.startForecast()).map((o) => [o.start, o.toll ?? 0]),
+      (await window.__idlever.engine.startForecast()).map((o) => [o.start, o.toll ?? 0]),
     ),
   );
   const T = (d) => (tolls[d] ? ` · $${tolls[d]}` : "");
@@ -156,7 +156,7 @@ try {
   await page.locator(".sheet-wrap .start-opt[data-start='9']").click({ timeout: 5000 });
   await sleep(500);
   const picked = await txt(".camp .start-tab"),
-    calls = await page.evaluate(() => window.__riddle.__starts);
+    calls = await page.evaluate(() => window.__idlever.__starts);
   check(
     picked === `start → D9${T(9)}` && calls.join() === "9",
     `a tap sets the start (setStart ${calls.join()}; tablet \`${picked}\`)`,
@@ -170,9 +170,9 @@ try {
   );
   await shot("cut21-start-shaft");
   // the send: the toll on the ledger, the watch's first floor names the waystone
-  const gold0 = await page.evaluate(() => window.__riddle.lineage.gold);
+  const gold0 = await page.evaluate(() => window.__idlever.lineage.gold);
   await page.evaluate(() => {
-    window.__riddle.dev.speed = "fights";
+    window.__idlever.dev.speed = "fights";
   });
   await page.locator(".gem.send").click({ timeout: 5000 });
   await waitFor((s) => s?.screen === "watch", "the watch");
@@ -200,11 +200,11 @@ try {
   await shot("cut21-watch-waystone");
   // the engine's lineage (the app adopts it at the exit)
   const toll = await page.evaluate(async () =>
-    ((await window.__riddle.engine.lineage()).gold_ledger ?? []).find((g) =>
+    ((await window.__idlever.engine.lineage()).gold_ledger ?? []).find((g) =>
       /^waystone D9$/.test(g.why),
     ),
   );
-  const gold1 = await page.evaluate(async () => (await window.__riddle.engine.lineage()).gold);
+  const gold1 = await page.evaluate(async () => (await window.__idlever.engine.lineage()).gold);
   check(
     tolls[9] ? toll?.delta === -tolls[9] || gold0 - gold1 === tolls[9] : !toll,
     `the send pays the toll the wire named (${tolls[9] ?? 0}) (${toll ? `${toll.delta} ${toll.why}` : `$${gold0} → $${gold1}`})`,
@@ -360,7 +360,7 @@ try {
     .click({ timeout: 5000 });
   await sleep(200);
   const row = await page.evaluate(
-    () => window.__riddle.rules.rows.find((r) => r.verb.v === "bank")?.conds[0]?.n,
+    () => window.__idlever.rules.rows.find((r) => r.verb.v === "bank")?.conds[0]?.n,
   );
   check(row === 22, `a tap sets it (depth ≥ ${row})`);
 

@@ -17,7 +17,7 @@ import { launchBrowser } from "../../tools/browser.mjs";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const GOOD = JSON.parse(
-  readFileSync(resolve(ROOT, "crates/riddle-core/presets/good.json"), "utf8"),
+  readFileSync(resolve(ROOT, "crates/idlever-core/presets/good.json"), "utf8"),
 ).rows.slice(0, 4);
 const shotsArg = process.argv.indexOf("--shots"),
   shots = shotsArg > 0 ? process.argv[shotsArg + 1] : null;
@@ -42,7 +42,7 @@ const shot = async (name) => {
 };
 const screen = () =>
   page.evaluate(() =>
-    window.__riddle ? { screen: window.__riddle.screen, booted: window.__riddle.booted } : null,
+    window.__idlever ? { screen: window.__idlever.screen, booted: window.__idlever.booted } : null,
   );
 async function waitFor(pred, label, timeout = 20_000) {
   const t = Date.now();
@@ -70,7 +70,7 @@ try {
   await page.locator(".console [data-tile=speed]").click();
   // Sample the actual selection synchronously: pausing the viewer does not pause the world.
   const chosen = await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       before = JSON.stringify(r.lineage);
     document.querySelector(".watch-options [data-tile=one]").click();
     return {
@@ -87,14 +87,14 @@ try {
   await shot("cut28w-speed-mode");
   await page.locator(".console [data-tile=town]").click();
   await waitFor((s) => s.screen === "camp", "Town menu");
-  await page.evaluate(() => window.__riddle.flush?.());
+  await page.evaluate(() => window.__idlever.flush?.());
   await sleep(1200);
   await page.goto(`${url}?dev=1&engine=fake&systems=none&seed=41`, {
     waitUntil: "domcontentloaded",
   });
   await waitFor((s) => s?.booted && s.screen === "camp", "the camp after a reload");
   check(
-    (await page.evaluate(() => window.__riddle.watchMode)) === "one",
+    (await page.evaluate(() => window.__idlever.watchMode)) === "one",
     "the chosen watch mode survives a reload",
   );
 
@@ -110,14 +110,14 @@ try {
       { waitUntil: "domcontentloaded" },
     );
     await waitFor((s) => s?.booted && s.screen === "camp", `the camp (seed ${seed})`);
-    if (await page.evaluate(() => window.__riddle.town?.home === false)) {
+    if (await page.evaluate(() => window.__idlever.town?.home === false)) {
       await page.locator('.town-tag[data-next="house"]').click();
-      await page.waitForFunction(() => window.__riddle.town?.home === true);
+      await page.waitForFunction(() => window.__idlever.town?.home === true);
     }
     // First-load camp defers forecasts. Request it explicitly; use the supported client fold path to exercise the overlay (core fold correctness is cut27).
     if (fold) {
       await page.evaluate(async (rows) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.rules.rows = rows;
         r.rulesChanged();
         await r.engine.setRules(r.rules);
@@ -130,7 +130,7 @@ try {
         r.engine.fold = undefined;
       }, GOOD);
       await page.waitForFunction(
-        () => window.__riddle.forecastOfRules()?.fold_to !== undefined,
+        () => window.__idlever.forecastOfRules()?.fold_to !== undefined,
         null,
         { timeout: 15_000 },
       );
@@ -160,7 +160,7 @@ try {
               w &&
               v?.debugText &&
               cv &&
-              window.__riddle?.screen === "watch" &&
+              window.__idlever?.screen === "watch" &&
               w.dataset.ending !== "1"
             ) {
               const c = cv.getBoundingClientRect();
@@ -251,7 +251,7 @@ try {
             }
             if (
               performance.now() - t0 > 30_000 ||
-              (window.__riddle?.screen !== "watch" && performance.now() - t0 > 2000)
+              (window.__idlever?.screen !== "watch" && performance.now() - t0 > 2000)
             ) {
               res(acc);
               return;

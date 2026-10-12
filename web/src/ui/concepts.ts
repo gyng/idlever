@@ -35,7 +35,7 @@ const DEF: Record<Concept, { ico: string; glyph: string; cap: string }> = /* cop
   fork: { ico: "depth", glyph: "⑂", cap: "the other stairs" },
   grudge: { ico: "morgue", glyph: "⚔", cap: "his killer" },
 };
-const KEY = "riddle.concepts";
+const KEY = "idlever.concepts";
 const SEEN_MS = 2000;
 let seen: Set<string> | null = null;
 const load = (): Set<string> => {

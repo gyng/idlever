@@ -1,7 +1,7 @@
 # Progression v2 — a curve for months: gates by time, a prestige loop by day 2, automation as rewards
 
 *Design, 2026-09-30. No src changes. The owner: "refine/review and improve the progression curve", after a
-comparison with the best idle games: Riddle (a) has no idle floor yet (Cut 30 fixes that), (b) has no early,
+comparison with the best idle games: Idlever (a) has no idle floor yet (Cut 30 fixes that), (b) has no early,
 repeatable prestige loop (ascension only at D34), (c) opens too much on day 1 for a skilled player (the
 curriculum gates by skill, not by time or milestones), (d) doesn't make automation a reward ladder, (e) spans
 ~2 weeks of content, not months. Inputs: HANDOFF §0, IDLE_FIRST, CUT30, PROGRESSION + `docs/progression/`,
@@ -39,7 +39,7 @@ system, building, package or class level, boss met, record, quest, relic, automa
 
 **Benchmarks** (sources at the end; [U] = not verified):
 
-| Horizon | Reference | What it does there | Riddle v2 |
+| Horizon | Reference | What it does there | Idlever v2 |
 |---|---|---|---|
 | First 10 min | AD; Soda Dungeon 2, Cookie Clicker | "click the green button", its designer's regret [A1]; a party/building in minutes [U] | blacksmith at run 1, storehouse by run 3 |
 | First hour | Trimps | AutoFight at zone 1 cell 10 (Bloodlust) [T1] | auto-equip at run 6 |
@@ -56,7 +56,7 @@ system, building, package or class level, boss met, record, quest, relic, automa
 
 ## 2. The prestige loop
 
-**Layer 1 — the expedition** (days 2–3, then every 1–3 days). *Fiction*: the Riddle's shaft shifts; the town sends
+**Layer 1 — the expedition** (days 2–3, then every 1–3 days). *Fiction*: the Idlever's shaft shifts; the town sends
 a new expedition down a freshly seeded descent (it also answers "the same floors every run"). *Opens*: the Mother
 met **and** lineage age ≥ 36 h (fallback age 72 h). *Offered* on the report as one tap with its price in plain
 numbers (`expedition · ★+9 · start D8`); never automatic until the player earns and switches on auto-expedition.
@@ -213,7 +213,7 @@ the real long-tail limit (Kongregate: "a rapid release cycle of like every coupl
 review 229459473 (research/idle-attraction.md) · [T1] trimps.fandom.com/wiki/Auto_Fight, …/wiki/Auto_Upgrade,
 …/wiki/Unlocks · [N1] sayolove.github.io/ngu-guide/en/quick-guide · [R1] Steam review 213486683 · [R2]
 research/idle-attraction.md (Pecorella/Kongregate, r/incremental_games 1itf1er, "minutes, not hours") · [K1]
-appgamer.com/afk-arena/strategy-guide/afk-rewards · [M1] wiki.melvoridle.com/w/Offline_Progression · [G1]
+appgamer.com/afk-arena/strategy-guide/afk-rewards · [M1] wiki.melvoidlever.com/w/Offline_Progression · [G1]
 gameworldobserver.com/2020/12/22/gameanalytics-names-benchmark-engagement-metrics-idle-games · [S1]
 thesovietgaming.com/soda-dungeon-2/scripts-guide · [S2] steamcommunity.com/app/946050/discussions/0/2638497042782491559
 (a reset keeps town buildings) [U: forum] · [I1] idleon.wiki/wiki/Worlds · [I2] gist.github.com/shnaps/161a370ed795e6141e0553eb30ddc8fa ·

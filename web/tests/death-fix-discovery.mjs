@@ -23,9 +23,9 @@ try {
       errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?dev=1&fresh=1&seed=155`);
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90000 });
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90000 });
     const before = await page.evaluate(async (source) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") throw Error("real WASM required");
       if (
         !(await a.importSave(
@@ -97,7 +97,7 @@ try {
       { timeout: 20000 },
     );
     const result = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = await a.engine.lineage(),
         patch = document.querySelector(".death button.patch.top"),
         pick = document.querySelector(".death .death-pick");

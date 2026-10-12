@@ -6,7 +6,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 if [ "${1:-}" = "--list" ]; then
-  cargo build -q --profile fast -p riddle-core --example dayplayer
+  cargo build -q --profile fast -p idlever-core --example dayplayer
   # The harness uses usage status 2 for its row listing.
   target/fast/examples/dayplayer --rows '?' || [ "$?" -eq 2 ]
   exit 0

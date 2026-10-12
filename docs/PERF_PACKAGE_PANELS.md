@@ -58,14 +58,14 @@ Evidence:public-proof/proof.json,public-ui/proof.json,public-ui-parity.json.
 
 First local FULL attempts failed before tests with a compiler SIGSEGV and then
 undefined hidden linker symbols. Quarantining one incremental directory was
-insufficient. A scoped `cargo clean -p riddle-core --profile fast` repaired the
+insufficient. A scoped `cargo clean -p idlever-core --profile fast` repaired the
 generated core object cache; unchanged source/flags then passed FULL. Dependency
 caches, native-dev target and shipping artifacts were preserved. Do not infer
 the failure's root cause from hardlinked incremental objects alone. Keep frozen
 baseline executables outside Cargo target directories before any such cleanup.
 Evidence:scratchpad/flood-perf-20261005/panel-reuse; never stage private files.
 
-Requested server cleanup:49 stale Riddle dev/preview/QA listeners stopped by
+Requested server cleanup:49 stale Idlever dev/preview/QA listeners stopped by
 verified PID/cwd, including5365; all stopped ports confirmed closed. Cleanup
 targeted91 server/wrapper/child processes with SIGTERM. Keep5219(main),5594(current
 native) and5264(shipping preview). Other projects and Codex processes were

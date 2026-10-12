@@ -27,7 +27,7 @@ export function installDiagnostics(): void {
 }
 
 export type DebugBundle = {
-  format: "riddle-debug";
+  format: "idlever-debug";
   schema: 1;
   captured_at: string;
   build: { commit: string; date: string; engine: string; version: string };
@@ -81,11 +81,11 @@ export async function captureDebug(app: App): Promise<DebugBundle> {
     try {
       const prefs: Record<string, string | null> = {};
       for (const name of [
-        "riddle.mute",
-        "riddle.slowdowns",
-        "riddle.autoContinue",
-        "riddle.editing",
-        "riddle.meters",
+        "idlever.mute",
+        "idlever.slowdowns",
+        "idlever.autoContinue",
+        "idlever.editing",
+        "idlever.meters",
       ])
         prefs[name] = localStorage.getItem(name);
       environment = {
@@ -104,7 +104,7 @@ export async function captureDebug(app: App): Promise<DebugBundle> {
     const captured_at = new Date().toISOString();
     debugNote("export", app.view.kind);
     return {
-      format: "riddle-debug",
+      format: "idlever-debug",
       schema: 1,
       captured_at,
       build: {
@@ -123,7 +123,7 @@ export async function captureDebug(app: App): Promise<DebugBundle> {
 }
 
 export function debugFilename(bundle: DebugBundle): string {
-  return `riddle-debug-${bundle.build.commit.replace(/[^\w-]/g, "").slice(0, 20)}-${bundle.captured_at.replace(/[:.]/g, "-")}.json`;
+  return `idlever-debug-${bundle.build.commit.replace(/[^\w-]/g, "").slice(0, 20)}-${bundle.captured_at.replace(/[:.]/g, "-")}.json`;
 }
 
 export function downloadDebug(text: string, filename: string): void {

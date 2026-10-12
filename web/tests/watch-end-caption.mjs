@@ -10,10 +10,10 @@ try {
     errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=5011`);
-  await p.waitForFunction(() => window.__riddle?.booted);
+  await p.waitForFunction(() => window.__idlever?.booted);
   const result = await p.evaluate(async () => {
     const { ReplayState } = await import("/src/render/state.ts");
-    const s = await window.__riddle.engine.send(),
+    const s = await window.__idlever.engine.send(),
       r = new ReplayState(),
       checks = [];
     const check = (ok, name) => {

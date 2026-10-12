@@ -32,14 +32,14 @@ const fresh = async (tag) => {
     waitUntil: "domcontentloaded",
   });
   await page.waitForFunction(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp",
+    () => window.__idlever?.booted && window.__idlever.screen === "camp",
     null,
     { timeout: 60_000 },
   );
   await page.waitForTimeout(300);
   // the stubs below hand the app a lineage of their own: a re-read keeps it (the fake's own would undo the fixture)
   await page.evaluate(() => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     a.engine.lineage = async () => a.lineage;
   });
   return page;
@@ -88,7 +88,7 @@ try {
   if (parts.includes("try")) {
     const page = await fresh("try");
     const r = await page.evaluate(async (P) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const { pickTablet } = await import("/src/ui/death.ts");
       const { fixReplaces, priceOf } = await import("/src/ui/packages.ts");
       const { moveOf } = await import("/src/ui/forecast.ts");
@@ -152,7 +152,7 @@ try {
   if (parts.includes("focus")) {
     const page = await fresh("focus");
     const r = await page.evaluate(async (P) => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const { openPackages } = await import("/src/ui/packages.ts");
       const { trainingFocus } = await import("/src/ui/tracks.ts");
       app.lineage = { ...app.lineage, packages: P };
@@ -200,7 +200,7 @@ try {
   if (parts.includes("taps")) {
     const page = await fresh("taps");
     const r = await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const wait = (ms) => new Promise((res) => setTimeout(res, ms));
       // the quest: a board with a swap left
       const quest = {
@@ -282,7 +282,7 @@ try {
   if (parts.includes("checkin")) {
     const page = await fresh("checkin");
     const r = await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       const { routineItems, checkinBatch } = await import("/src/ui/checkin.ts");
       const step = (label, price) => ({ label, price, affordable: true });
       const kit = [
@@ -380,7 +380,7 @@ try {
   if (parts.includes("gold")) {
     const page = await fresh("gold");
     const r = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const gold = { home: 0, salvage: 0, wake: 39, spent: 78, lost: 2620, net: -6789 };
       const rep = {
         elapsed_s: 3600,
@@ -423,7 +423,7 @@ try {
     );
     // the core's ledger (`gold.ledger`): its sums read as sent, each signed term named in the tip, inflows first
     const c = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const terms = [
         { label: "carried", amount: 2620 },
         { label: "heir", amount: 39 },
@@ -503,7 +503,7 @@ try {
         { endsOf } = fc;
       const { supplyReason, supplyLimit } = await import("/src/ui/report-supplies.ts");
       const { workersBlock } = await import("/src/ui/works.ts");
-      const app = window.__riddle;
+      const app = window.__idlever;
       const blow = { hp: 0, dmg: 18 };
       const hp = {
         core: momentHp({ trace: { blows: [blow] }, moment_hp: 5, moment_max_hp: 50 }),

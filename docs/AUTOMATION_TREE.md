@@ -28,7 +28,7 @@ What an automation is worth, then: **an upgrade that happens while you are away*
 3 a.m., so the 4 a.m. runs are stronger), plus the taps it saves. That is the genre's honest value (AD's
 autobuyers). It is not a penalty for being absent.
 
-Most of these chores are already manual in Riddle today, just hidden in panels. The forge (`kit::buy`), the bank
+Most of these chores are already manual in Idlever today, just hidden in panels. The forge (`kit::buy`), the bank
 (`bank_deposit`), wearing a find (the loadout), levels (`spend_level`), the quest swap, the party and the start stone
 are all panel actions, and the IDLE bot does none of them. The tree **makes them visible as a sequence**. Only one
 chore is new: the haul chest (§2, node 1). Two stay silent on purpose: the restock (the idle floor needs it) and
@@ -58,7 +58,7 @@ silhouettes; never the whole tree at once.**
 
 ## 2. The tree
 
-### 2.1 The chores in Riddle today (from the code)
+### 2.1 The chores in Idlever today (from the code)
 
 | Chore | Today | Where |
 |---|---|---|

@@ -35,7 +35,7 @@ async function open(init) {
   if (init) await page.addInitScript(init);
   return page;
 }
-const screen = (p) => p.evaluate(() => window.__riddle?.screen ?? null).catch(() => null);
+const screen = (p) => p.evaluate(() => window.__idlever?.screen ?? null).catch(() => null);
 const tick = (p) =>
   p.evaluate(() => Number(document.querySelector(".watch")?.dataset.tick ?? NaN)).catch(() => NaN);
 const stats = (p) =>
@@ -114,7 +114,7 @@ const town2d = (p) =>
 const townStats = (p) => p.evaluate(() => window.__town?.stats() ?? null).catch(() => null);
 /** a fresh lineage's camp → send (the gem) → the watch */
 async function toWatch(p, label) {
-  await p.waitForFunction(() => window.__riddle?.booted);
+  await p.waitForFunction(() => window.__idlever?.booted);
   await waitFor(
     p,
     async () => ["camp", "watch"].includes(await screen(p)),
@@ -122,7 +122,7 @@ async function toWatch(p, label) {
     60000,
   );
   // Current opening: manual house construction precedes the first Send.
-  if (await p.evaluate(() => window.__riddle?.lineage.town?.home === false)) {
+  if (await p.evaluate(() => window.__idlever?.lineage.town?.home === false)) {
     await p.locator('.town-tag[data-next="house"]').waitFor({ state: "visible" });
     await p.locator('.town-tag[data-next="house"]').click();
     await waitFor(
@@ -132,7 +132,7 @@ async function toWatch(p, label) {
     );
   }
   await p.evaluate(() => {
-    window.__riddle.watchMode = "one";
+    window.__idlever.watchMode = "one";
   });
   const t = Date.now();
   while ((await screen(p)) === "camp" && Date.now() - t < 20000) {

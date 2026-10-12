@@ -1,6 +1,6 @@
 # Integration — the real game against the wasm engine (2026-09-16)
 
-Scope: make `web/` run end-to-end in the browser against `crates/riddle-wasm` (built into
+Scope: make `web/` run end-to-end in the browser against `crates/idlever-wasm` (built into
 `web/src/engine/pkg`), fix every wire mismatch, move the engine into a Web Worker, walk the whole
 loop with the GPU harness and record what broke. No Rust game rules were changed; no wasm bridge
 methods were needed beyond what the core already exposes.
@@ -9,7 +9,7 @@ methods were needed beyond what the core already exposes.
 
 ```
 main thread                          engine worker (web/src/engine/worker.ts)
-  app.ts  ── AsyncEngine proxy ──►    WasmEngine (wasm.ts) over pkg/riddle_wasm.js
+  app.ts  ── AsyncEngine proxy ──►    WasmEngine (wasm.ts) over pkg/idlever_wasm.js
   (proxy.ts: one message per call,    JSON strings in/out; calls answered in order
    answered in order; ?engine=fake     (the engine is synchronous, so nothing interleaves)
    wraps the fake in the same shape)

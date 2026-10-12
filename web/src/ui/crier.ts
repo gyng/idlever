@@ -266,7 +266,7 @@ export function cries(r: ReturnReport, L: Pick<Lineage, "walls">): Cry[] {
 export type DiaryLine = { day: number; k: string; text: string };
 const DIARY_MAX = 40;
 const diaryKey = (L: Pick<Lineage, "seed">): string =>
-  /* copy:none */ `riddle.diary.${L.seed ?? 0}`;
+  /* copy:none */ `idlever.diary.${L.seed ?? 0}`;
 export function readDiary(L: Pick<Lineage, "seed">): DiaryLine[] {
   try {
     const s = localStorage.getItem(diaryKey(L));

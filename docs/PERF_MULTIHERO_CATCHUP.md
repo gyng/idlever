@@ -75,7 +75,7 @@ The diagnostic gained an optional wording flag after those timing series.
 Ordinary native gate wording uses a 64bit event hash; WASM/native app uses 32bit.
 Baseline native versus WASM had one parsed save difference in the one-hero
 fixture: deaths/32/t10/event_recent/saved/0 (phrase index 0 versus 1). This
-predates the optimisation. RIDDLE_SHIPPING_WORDS=1 selects the existing native
+predates the optimisation. IDLEVER_SHIPPING_WORDS=1 selects the existing native
 app wording adapter before load: candidate native then matches original WASM
 raw report AND save exactly for that fixture. Cross-runtime wording equality
 was checked only for this fixture; per-runtime original/candidate equality
@@ -94,8 +94,8 @@ or overflow400/1440; roster screenshot shown. No deployment.
 ## Diagnostic commands
 
 ```sh
-cargo run -q --profile fast -p riddle-core --example session_perf -- SAVE 8 5 OUTPUT.json
-RIDDLE_SHIPPING_WORDS=1 target/fast/examples/session_perf SAVE 8 5 OUTPUT.json
+cargo run -q --profile fast -p idlever-core --example session_perf -- SAVE 8 5 OUTPUT.json
+IDLEVER_SHIPPING_WORDS=1 target/fast/examples/session_perf SAVE 8 5 OUTPUT.json
 node tools/compare-catchup.mjs ORIGINAL_PKG CANDIDATE_PKG OUT SAVE...
 ```
 

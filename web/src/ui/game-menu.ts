@@ -16,8 +16,8 @@ export function bootWithMenu(dev: DevOptions | null): void {
   // session, so clearing happens on the receiving page, after that flush.
   let restarting = false;
   try {
-    restarting = sessionStorage.getItem("riddle.newGame") === "1";
-    sessionStorage.removeItem("riddle.newGame");
+    restarting = sessionStorage.getItem("idlever.newGame") === "1";
+    sessionStorage.removeItem("idlever.newGame");
   } catch {
     /* storage unavailable */
   }
@@ -45,7 +45,7 @@ export function bootWithMenu(dev: DevOptions | null): void {
     menu.dataset.effects = effectsLevel();
     menu.dataset.hidden = String(document.hidden);
   };
-  window.addEventListener("riddle:effects", syncAtmosphere);
+  window.addEventListener("idlever:effects", syncAtmosphere);
   window.addEventListener("storage", syncAtmosphere);
   document.addEventListener("visibilitychange", syncAtmosphere);
   const play = (): void => {
@@ -97,7 +97,7 @@ export function bootWithMenu(dev: DevOptions | null): void {
         ? /* copy:label */ "Settings"
         : next === "new"
           ? /* copy:label */ "Replace save"
-          : /* copy:label */ "Riddle";
+          : /* copy:label */ "Idlever";
     const title = h(
       "h1",
       { class: "menu-title", id: "menu-title" },
@@ -107,7 +107,7 @@ export function bootWithMenu(dev: DevOptions | null): void {
       title.append(
         h("img", {
           class: "menu-wordmark",
-          src: `${import.meta.env.BASE_URL}art/title-wordmark-v1.webp`,
+          src: `${import.meta.env.BASE_URL}art/idlever-wordmark-v1.webp`,
           alt: "",
           "aria-hidden": "true",
           draggable: "false",
@@ -177,7 +177,7 @@ export function bootWithMenu(dev: DevOptions | null): void {
             );
             content.append(status);
             try {
-              sessionStorage.setItem("riddle.newGame", "1");
+              sessionStorage.setItem("idlever.newGame", "1");
               location.reload();
               return;
             } catch {
@@ -258,7 +258,7 @@ export function bootWithMenu(dev: DevOptions | null): void {
     },
     true,
   );
-  window.addEventListener("riddle:menu", show);
+  window.addEventListener("idlever:menu", show);
   const forceTitle = new URLSearchParams(location.search).get("menu") === "1";
   const fixture =
     dev &&

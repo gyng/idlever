@@ -14,11 +14,11 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const checks = await page.evaluate(async () => {
       const { openPackages, priceOf, PRICE_SIMS } = await import("/src/ui/packages.ts");
       const { closeAllSheets } = await import("/src/ui/sheet.ts");
-      const real = window.__riddle;
+      const real = window.__idlever;
       const pending = [];
       let checks = 0;
       const tick = () => new Promise((r) => setTimeout(r, 20));

@@ -13,7 +13,7 @@
 //                                 lineages (`metrics --fast`), qa on 10 seeds, the dayplayer's IDLE rows on 2 seeds — an
 //                                 inner-loop check, never the gate (docs/ITERATION_SPEED.md, round 4)
 // Round 4: the long jobs inside the legs are kept too (target/gates/{dp,prog,idle-snaps}/), keyed by the core's
-// compiled native core (`RIDDLE_SRC_KEY`: production rlib, manifests, lockfile, rustc) and the harness file each
+// compiled native core (`IDLEVER_SRC_KEY`: production rlib, manifests, lockfile, rustc) and the harness file each
 // job runs — an edit to a bar or a row reprints the leg from its jobs, a core edit replays them. `--fresh` replays
 // them all (and keeps the new ones). `GATES_THREADS=N` (the cores unless set): each leg's threads.
 //   node tools/gates.mjs [--full] --rows <ids or substrings> [--fail-fast] [dayplayer args]
@@ -57,8 +57,8 @@ if (balanceAt >= 0) {
     throw new Error("--balance FILE is a targeted tuning check only (--rows required)");
   balance = readFileSync(extra[balanceAt + 1], "utf8");
   extra.splice(balanceAt, 2);
-  process.env.RIDDLE_BALANCE_JSON = balance;
-} else if (process.env.RIDDLE_BALANCE_JSON)
+  process.env.IDLEVER_BALANCE_JSON = balance;
+} else if (process.env.IDLEVER_BALANCE_JSON)
   throw new Error("use explicit --balance FILE --rows for profile tuning");
 const b = spawnSync(
   "cargo",
@@ -69,7 +69,7 @@ const b = spawnSync(
     "--profile",
     "fast",
     "-p",
-    "riddle-core",
+    "idlever-core",
     ...(balance ? ["--features", "dev-balance"] : []),
     ...(rows ? [] : ["--example", "metrics", "--example", "qa"]),
     "--example",
@@ -85,7 +85,7 @@ for (const line of (b.stdout ?? "").split("\n").filter(Boolean)) {
     process.stderr.write(message.message.rendered);
   if (
     message.reason === "compiler-artifact" &&
-    message.target.name === "riddle_core" &&
+    message.target.name === "idlever_core" &&
     message.target.kind.includes("lib") &&
     !message.profile.test
   )
@@ -108,7 +108,7 @@ if (compiler.status !== 0) throw new Error("cannot identify simulation compiler"
 const srcKey =
   runtimeKey(coreArtifact, process.cwd(), compiler.stdout) +
   (balance ? `:balance:${createHash("sha256").update(balance).digest("hex")}` : "");
-const jobEnv = { RIDDLE_SRC_KEY: srcKey, ...(fresh ? { RIDDLE_CACHE_FRESH: "1" } : {}) };
+const jobEnv = { IDLEVER_SRC_KEY: srcKey, ...(fresh ? { IDLEVER_CACHE_FRESH: "1" } : {}) };
 const readResult = (file) => {
   try {
     const r = JSON.parse(readFileSync(file, "utf8"));
@@ -125,7 +125,7 @@ const writeResult = (file, result) => {
   renameSync(temporary, file);
 };
 // TARGETED (`--rows`): the dayplayer leg alone on the named rows — its printout kept like a leg's (the binary, the
-// arguments), its full-length jobs kept and read like the gate's (`RIDDLE_SRC_KEY`). Never a gate pass: it prints
+// arguments), its full-length jobs kept and read like the gate's (`IDLEVER_SRC_KEY`). Never a gate pass: it prints
 // no `gates: all PASS` and says so.
 if (rows) {
   const tier = full
@@ -173,9 +173,9 @@ if (rows) {
   process.exit(ok ? 0 : 1);
 }
 const runtimeInputs = [
-  ...readdirSync("crates/riddle-core/presets")
+  ...readdirSync("crates/idlever-core/presets")
     .sort()
-    .map((f) => [f, readFileSync(`crates/riddle-core/presets/${f}`)]),
+    .map((f) => [f, readFileSync(`crates/idlever-core/presets/${f}`)]),
   ...readdirSync("eval/cards")
     .filter((f) => f.endsWith(".rules.json"))
     .sort()

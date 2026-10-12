@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 // Publishing client metadata triggers Vite reloads. Keep it paired with the
 // successful executable, never with an unfinished or failed compilation.
 const generated = writeGenerated(false, false);
-const tuning = !!process.env.RIDDLE_BALANCE_FILE || process.argv.includes("--tuning");
+const tuning = !!process.env.IDLEVER_BALANCE_FILE || process.argv.includes("--tuning");
 const r = spawnSync(
   "cargo",
   [
@@ -17,7 +17,7 @@ const r = spawnSync(
     "--profile",
     "fast",
     "-p",
-    "riddle-core",
+    "idlever-core",
     "--example",
     "native_dev",
     ...(tuning ? ["--features", "dev-balance"] : []),

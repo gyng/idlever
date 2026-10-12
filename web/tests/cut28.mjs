@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 28 client gates (docs/CUT28.md), on the fake engine (its Cut 28 stand-ins), headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 28 client gates (docs/CUT28.md), on the fake engine (its Cut 28 stand-ins), headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §1  the oath board: carved by the reveal ladder only once an oath is affordable; three carved tablets, each its constraint chips
 //       (≤ 3 words a chip), its reward (icon + word) and its swear price; two taps swear one (the purse pays), the tablet and the shaft
 //       then carry it with the forecast's share (`oath → D10 no drink 34%`); a band boss's counter reads where the wall is (`mother: ?`);
@@ -48,7 +48,7 @@ const shot = async (name) => {
   if (shots) await page.screenshot({ path: resolve(shots, `${name}.png`), fullPage: false });
 };
 const screen = () =>
-  page.evaluate(() => (window.__riddle?.booted ? window.__riddle.screen : "boot"));
+  page.evaluate(() => (window.__idlever?.booted ? window.__idlever.screen : "boot"));
 async function until(pred, label, timeout = 20_000) {
   const t = Date.now();
   let v;
@@ -60,13 +60,13 @@ async function until(pred, label, timeout = 20_000) {
   throw new Error(`timeout waiting for ${label}`);
 }
 const camp = async () => {
-  await until(() => window.__riddle?.booted && window.__riddle.screen === "camp", "camp");
+  await until(() => window.__idlever?.booted && window.__idlever.screen === "camp", "camp");
   await sleep(300);
 };
 /** The lineage edited through a save round-trip (the fake's state), then the camp again. */
 const withLineage = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     new Function("L", src)(save.lineage);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -86,9 +86,9 @@ try {
   // ---- §1: the ladder — a fresh purse affords no oath, so no board
   const fresh = await page.evaluate(() => ({
     tab: !!document.querySelector(".oath-tab:not([hidden])"),
-    board: (window.__riddle.lineage.oaths ?? []).length,
-    gold: window.__riddle.lineage.gold,
-    price: Math.min(...(window.__riddle.lineage.oaths ?? []).map((o) => o.price)),
+    board: (window.__idlever.lineage.oaths ?? []).length,
+    gold: window.__idlever.lineage.gold,
+    price: Math.min(...(window.__idlever.lineage.oaths ?? []).map((o) => o.price)),
   }));
   check(
     fresh.board === 3 && !fresh.tab && fresh.gold < fresh.price,
@@ -160,7 +160,7 @@ try {
       `an oath at a band boss names its counter as a fact ("${slayer.counter}")`,
     );
   await shot("cut28-oath-board");
-  const gold0 = await page.evaluate(() => window.__riddle.lineage.gold);
+  const gold0 = await page.evaluate(() => window.__idlever.lineage.gold);
   const price = Number(board[0].swear.replace(/\D/g, ""));
   await page.locator(".sheet-wrap .oath.tablet .chip.swear").first().click();
   const armed = await page.evaluate(() =>
@@ -168,8 +168,8 @@ try {
   );
   check(/^ok \$\d+$/.test(armed ?? ""), `the first tap arms the swear ("${armed}")`);
   await page.locator(".sheet-wrap .oath.tablet .chip.swear").first().click();
-  await until(() => window.__riddle.lineage.oath, "the sworn oath");
-  const gold1 = await page.evaluate(() => window.__riddle.lineage.gold);
+  await until(() => window.__idlever.lineage.oath, "the sworn oath");
+  const gold1 = await page.evaluate(() => window.__idlever.lineage.gold);
   check(
     gold0 - gold1 === price,
     `swearing pays its price ($${gold0} → $${gold1}, price $${price})`,
@@ -272,10 +272,10 @@ try {
 
   // ---- §2: a run whose state changed — the state's line, no row edited, no scene
   await page.evaluate(() => {
-    window.__riddle.watchMode = "fast";
+    window.__idlever.watchMode = "fast";
   });
   await page.evaluate(() => document.querySelector("button.gem.send")?.click());
-  await until(() => window.__riddle.screen === "watch", "the watch");
+  await until(() => window.__idlever.screen === "watch", "the watch");
   for (let i = 0; i < 300; i++) {
     const s = await screen();
     if (s === "camp") break;
@@ -295,7 +295,7 @@ try {
     await sleep(250);
   }
   await camp();
-  await page.evaluate(() => window.__riddle.refineForecast());
+  await page.evaluate(() => window.__idlever.refineForecast());
   const st = await until(
     () => {
       const l = document.querySelector(".shaft-vs-host .shaft-state");
@@ -322,7 +322,7 @@ try {
   await shot("cut28-attributed-move");
   // a row edit: the rows' `vs sent` joins it, the state's line stays
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const row = r.rules.rows[0];
     const c = row.conds.find((x) => typeof x.n === "number");
     if (c) c.n = c.n >= 50 ? 30 : c.n + 20;
@@ -345,7 +345,7 @@ try {
   ).catch(() => null);
   if (!both || !both.state.startsWith("party"))
     out.push(
-      `note: ${await page.evaluate(() => JSON.stringify({ fm: window.__riddle.fmove && window.__riddle.fmove.parts.map((p) => p.kind), due: window.__riddle.moveDue, off: window.__riddle.moveOff, has: typeof window.__riddle.engine.forecastMove }))}`,
+      `note: ${await page.evaluate(() => JSON.stringify({ fm: window.__idlever.fmove && window.__idlever.fmove.parts.map((p) => p.kind), due: window.__idlever.moveDue, off: window.__idlever.moveOff, has: typeof window.__idlever.engine.forecastMove }))}`,
     );
   check(
     !!both && both.state.startsWith("party") && both.rows.startsWith("edit"),
@@ -356,14 +356,14 @@ try {
   // ---- §2: the report leads with decisions (an absence with the oath sworn)
   // (in the page: the fake's stand-in keeps the sworn oath in its live state, not its save)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const rep = await r.runOfflineChunked(8 * 3600);
     await r.refresh();
     r.adoptSets();
     r.go({ kind: "report", report: rep, absence: true });
   });
   await until(
-    () => window.__riddle?.booted && window.__riddle.screen === "report",
+    () => window.__idlever?.booted && window.__idlever.screen === "report",
     "the absence report",
     60_000,
   );
@@ -392,9 +392,9 @@ try {
     };
   });
   const dbg = await page.evaluate(() => ({
-    oath: window.__riddle.lineage.oath,
-    view: JSON.stringify(window.__riddle.view?.report?.lead ?? null),
-    ro: JSON.stringify(window.__riddle.view?.report?.oath ?? null),
+    oath: window.__idlever.lineage.oath,
+    view: JSON.stringify(window.__idlever.view?.report?.lead ?? null),
+    ro: JSON.stringify(window.__idlever.view?.report?.oath ?? null),
   }));
   if (!rep.lead.length) out.push(`note: ${JSON.stringify(dbg)}`);
   check(
@@ -437,7 +437,7 @@ try {
 
   // ---- §4: a refine that never answers (AU's `kite archers` card) leaves the first pass standing — its `…` marks go
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     window.refineCalls = 0;
     r.engine.forecastRefine = () => {
       window.refineCalls++;
@@ -472,7 +472,7 @@ try {
     `a rough answer stands without requesting refinement, no \`…\` (first pass ${!!rough}, settled ${!!settled})`,
   );
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows.reverse();
     r.go({ kind: "camp" });
   });
@@ -480,7 +480,7 @@ try {
 
   // ---- §4: the class picker opens from the portrait while the wake's class chips stand
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = {
       ...r.lineage,
       live: null,

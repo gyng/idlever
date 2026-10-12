@@ -6,7 +6,7 @@
 //   const b = await launchBrowser();              headless (SwiftShader WebGL): tests, walks, raters — fast, parallel-safe, no windows
 //   const b = await launchBrowser({ gpu: true }); headed on the real GPU: frame times, render QA, feel
 //   const b = await launchGpu();                  the same as { gpu: true }, on a private X display (no desktop focus)
-//   RIDDLE_BROWSER=headed|headless                 overrides the default for callers that pass nothing
+//   IDLEVER_BROWSER=headed|headless                 overrides the default for callers that pass nothing
 //   node tools/browser.mjs --probe [--headless]   prints the WebGL renderer (D3D12 (NVIDIA …) headed; SwiftShader headless)
 //   node tools/browser.mjs <url> [out.png] [w] [h] [dpr] [--headed]   screenshot after 3 s
 //
@@ -62,7 +62,7 @@ export const HEADLESS_ARGS = ["--hide-scrollbars", "--mute-audio"];
 // mouse-down wait ~5 s on it (Playwright's click timeout; 5 of 10 client gates failed on it).
 const NO_PULSE = { PULSE_SERVER: "unix:/nonexistent" };
 
-/// Headed on the GPU when `gpu` is set or RIDDLE_BROWSER=headed; headless otherwise.
+/// Headed on the GPU when `gpu` is set or IDLEVER_BROWSER=headed; headless otherwise.
 // A private X server keeps every headed automation window off the WSLg desktop.
 // Mesa D3D12 still reaches the Windows GPU (probe it); never fall back to DISPLAY=:0.
 async function privateDisplay() {
@@ -121,7 +121,7 @@ async function privateDisplay() {
 }
 
 export async function launchBrowser({ gpu = false, headed, ...extra } = {}) {
-  const env = process.env.RIDDLE_BROWSER;
+  const env = process.env.IDLEVER_BROWSER;
   const useHeaded =
     extra.headless === false ||
     (headed ?? (env === "headed" ? true : env === "headless" ? false : gpu));

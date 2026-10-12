@@ -19,7 +19,7 @@ try {
     errors = [];
   p.on("pageerror", (e) => errors.push(e.message));
   await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=5331`);
-  await p.waitForFunction(() => window.__riddle?.booted);
+  await p.waitForFunction(() => window.__idlever?.booted);
 
   // (i) the pin: a move paired before a package swap reads against the share painted now
   const pin = await p.evaluate(async () => {
@@ -61,7 +61,7 @@ try {
 
   // (ii) the pending audit beside the meter
   await p.evaluate(() => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     if (a.lineage.packages) a.lineage.packages.pen_open = true;
     a.rules.rows.splice(
       0,
@@ -70,7 +70,7 @@ try {
       { conds: [{ k: "foes>=", n: 1 }], verb: { v: "attack", a: "nearest" } },
     );
   });
-  const L = await p.evaluate(() => window.__riddle.lineage);
+  const L = await p.evaluate(() => window.__idlever.lineage);
   const meters = {
     seconds: 60,
     time_s: { fight: 30, travel: 20, chores: 5, rest: 5 },
@@ -126,7 +126,7 @@ try {
     ],
     gold: { home: 300, salvage: 0, wake: 0, spent: 0 },
   };
-  await p.evaluate((r) => window.__riddle.go({ kind: "report", report: r }), report);
+  await p.evaluate((r) => window.__idlever.go({ kind: "report", report: r }), report);
   await p.waitForSelector(".report");
   await p.waitForTimeout(400);
   const rep = await p.evaluate(() => ({
@@ -149,10 +149,10 @@ try {
   );
 
   // (iii) the purse's fall, named from the ledger
-  await p.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await p.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await p.waitForSelector(".topbar .stat.gold");
   await p.evaluate(() => {
-    const a = window.__riddle,
+    const a = window.__idlever,
       L = a.lineage;
     L.gold_ledger = [
       ...(L.gold_ledger ?? []),
@@ -166,7 +166,7 @@ try {
   );
   check(!(await p.$(".topbar .gold-drop")), "no fall, no chip");
   await p.evaluate(() => {
-    const a = window.__riddle,
+    const a = window.__idlever,
       L = a.lineage;
     L.gold_ledger = [
       ...L.gold_ledger,
@@ -185,9 +185,9 @@ try {
     chip.text === "−$5054 · net" && chip.title === "forge −$4800 · restock −$254",
     `the fall names what spent it (${JSON.stringify(chip)})`,
   );
-  await p.evaluate((r) => window.__riddle.go({ kind: "report", report: r }), report);
+  await p.evaluate((r) => window.__idlever.go({ kind: "report", report: r }), report);
   await p.waitForSelector(".report");
-  await p.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await p.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await p.waitForSelector(".topbar .stat.gold");
   check(
     await p.evaluate(
@@ -196,7 +196,7 @@ try {
     "the word survives a screen change",
   );
   await p.evaluate(() => {
-    const a = window.__riddle,
+    const a = window.__idlever,
       L = a.lineage;
     L.gold_ledger = [...L.gold_ledger, { t: 900200, delta: 500, why: "returned D20" }];
     L.gold = 14639;

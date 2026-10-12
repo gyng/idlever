@@ -20,7 +20,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
 // Optional diagnostic stress only; routine/full acceptance retains the original15ms fixture.
 const stepDelay = Number(
   process.argv.find((arg) => arg.startsWith("--step-delay="))?.slice(13) ??
-    process.env.RIDDLE_WATCH_STEP_DELAY_MS ??
+    process.env.IDLEVER_WATCH_STEP_DELAY_MS ??
     15,
 );
 if (!Number.isFinite(stepDelay) || stepDelay < 15)
@@ -45,7 +45,7 @@ try {
       { waitUntil: "domcontentloaded" },
     );
     await page.waitForFunction(
-      () => window.__riddle?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
+      () => window.__idlever?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
       null,
       { timeout: 30_000 },
     );
@@ -57,7 +57,7 @@ try {
       timeout: 5000,
     });
     const r = await page.evaluate(async (stepDelay) => {
-      const app = window.__riddle,
+      const app = window.__idlever,
         step = app.engine.step.bind(app.engine);
       app.engine.step = async (n) => {
         await new Promise((z) => setTimeout(z, stepDelay));

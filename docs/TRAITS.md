@@ -1,7 +1,7 @@
-# Riddle — heir traits (design)
+# Idlever — heir traits (design)
 
 *2026-09-27. The owner: "add depth with a trait system plus proc-gen traits". Design only; the contract is
-`docs/CUT30.md`, the prototype `crates/riddle-core/examples/traits_proto.rs` (§6). Evidence it answers:
+`docs/CUT30.md`, the prototype `crates/idlever-core/examples/traits_proto.rs` (§6). Evidence it answers:
 cohort 23 AU "traits can backfire invisibly (curious read a recall scroll and wasted a $152 passage)";
 cohort 9 "R4 retreat — brave held … two losses I could not own"; PATH_TO_95 expression/autonomy 0.6 on
 every plateau card: "the facts pick the row, I only order them", "every run the same".*

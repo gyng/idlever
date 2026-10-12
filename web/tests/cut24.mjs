@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 24 client gates (docs/CUT24.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 24 client gates (docs/CUT24.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §1  (fights.mjs: no 15 s of dead watch, the fight frame's included) — here: a `driven` exit (the core's `no counter`: a boss no
 //       blow could move drove the hero off) reads `Warlord · no counter · shield wall` with `try: attack boss` on the report, and
 //       a tap writes the counter at R1
@@ -45,7 +45,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -109,12 +109,12 @@ try {
   // the forge sheet paints the same form (the fake's kit, gold to show every step)
   {
     const r = await page.evaluate(async () => {
-      const b = JSON.parse(window.__riddle.exportSave());
+      const b = JSON.parse(window.__idlever.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.gold = 5000;
       e.lineage.best_depth = Math.max(5, e.lineage.best_depth);
       b.engine = JSON.stringify(e);
-      await window.__riddle.importSave(JSON.stringify(b));
+      await window.__idlever.importSave(JSON.stringify(b));
       return true;
     });
     await camp();
@@ -246,7 +246,7 @@ try {
   // ---- §5: a chip of the row a sheet edits opens its own sheet
   {
     await editRows(page);
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
     await page
       .locator(`.editor .row[data-i="0"] .chip.cond:not(.add)`)
@@ -305,7 +305,7 @@ try {
   // ---- §1: a `driven` exit on the report
   {
     await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         L = r.lineage;
       const row = { conds: [{ k: "foe_tag", t: "boss" }], verb: { v: "attack", a: "boss" } };
       const driven = {
@@ -385,7 +385,7 @@ try {
     await page.locator(".report .driven-line").first().click({ timeout: 5000 });
     await camp();
     const r1 = await page.evaluate(() => {
-      const r = window.__riddle.rules.rows[0];
+      const r = window.__idlever.rules.rows[0];
       return `${r.conds.map((c) => c.k + (c.t ?? "")).join(" ")} → ${r.verb.v} ${r.verb.a ?? ""}`;
     });
     check(r1 === "foe_tagboss → attack boss", `a tap writes the counter at R1 (${r1})`);
@@ -394,7 +394,7 @@ try {
   // ---- §1 / §2: a night's report — the drive-offs counted apart (`driven`), each exit line led by its run's news
   {
     await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         L = r.lineage;
       const x = (kept, news, extra = {}) => ({
         carried: kept * 2,
@@ -463,7 +463,7 @@ try {
   // ---- §5 (core: `ForecastDepth.boss`, `ForecastTry.met`): the boss is named on the floor he is met on, his counter read there
   {
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.best_depth = 8;
@@ -473,7 +473,7 @@ try {
     await camp();
     await sleep(1500); // the camp's own first pass and refine land first
     const f = await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         b = r.lastForecast;
       const row = { conds: [{ k: "foe_tag", t: "boss" }], verb: { v: "attack", a: "boss" } };
       const depths = Array.from({ length: 9 }, (_, i) => ({
@@ -552,7 +552,7 @@ try {
     if (s.screen === "exit" && chips.length) {
       const i = chips.length - 1,
         tapped = chips[i];
-      const vault0 = await page.evaluate(() => window.__riddle.lineage.vault.map((v) => v.id));
+      const vault0 = await page.evaluate(() => window.__idlever.lineage.vault.map((v) => v.id));
       await page.locator(".sheet-wrap .chips .chip.item").nth(i).click({ timeout: 5000 });
       await sleep(150);
       const on = await page.evaluate(() =>
@@ -567,7 +567,8 @@ try {
       const kept = await section("kept"),
         salv = await section("salvaged");
       const gained = await page.evaluate(
-        (v0) => window.__riddle.lineage.vault.filter((v) => !v0.includes(v.id)).map((v) => v.label),
+        (v0) =>
+          window.__idlever.lineage.vault.filter((v) => !v0.includes(v.id)).map((v) => v.label),
         vault0,
       );
       const twin = chips.filter((c) => c === tapped).length > 1;

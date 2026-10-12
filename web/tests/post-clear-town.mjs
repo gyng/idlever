@@ -20,12 +20,12 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?dev=1&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await p.evaluate(() => window.__riddle.kind), "wasm");
+    await p.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await p.evaluate(() => window.__idlever.kind), "wasm");
     assert.equal(
       await p.evaluate(
         async ({ source, loadout }) =>
-          window.__riddle.importSave(
+          window.__idlever.importSave(
             JSON.stringify({
               v: 2,
               engine: source,
@@ -43,7 +43,7 @@ try {
     );
     await p.waitForSelector(".ending-town");
     const before = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.runnerOn = false;
       window.transitionCalls = { send: 0, begin: 0 };
       const send = a.engine.send.bind(a.engine),
@@ -59,7 +59,7 @@ try {
       return a.engine.save();
     });
     const unchanged = async () => {
-      assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+      assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
       assert.deepEqual(await p.evaluate(() => window.transitionCalls), { send: 0, begin: 0 });
     };
     await p.locator(".ending-town").focus();
@@ -81,12 +81,12 @@ try {
     await p.locator('.town-hit[data-building="mouth"]').click();
     await p.waitForSelector(".ending-town");
     await unchanged();
-    await p.evaluate(() => window.__riddle.go({ kind: "watch" }));
+    await p.evaluate(() => window.__idlever.go({ kind: "watch" }));
     await p.waitForSelector(".ending-town");
     await unchanged();
     await p.locator(".ending-town").click();
     await p.waitForSelector(".camp");
-    await p.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await p.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await p.waitForSelector(".ending-town");
     await unchanged();
     await p.locator(".ending-town").click();
@@ -94,41 +94,41 @@ try {
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     if (width === 400) {
       await p.locator("button.stat.legacy").click();
-      const old = await p.evaluate(() => ({ ...window.__riddle.lineage.bloodline }));
+      const old = await p.evaluate(() => ({ ...window.__idlever.lineage.bloodline }));
       await p.locator(".legacy-respec").click();
       await p.locator(".legacy-respec-confirm").click();
-      await p.waitForFunction(() => window.__riddle.lineage.bloodline.spent === 0);
+      await p.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 0);
       assert.equal(
-        await p.evaluate(() => window.__riddle.lineage.bloodline.points),
+        await p.evaluate(() => window.__idlever.lineage.bloodline.points),
         old.points + old.spent,
       );
       // Cut 121: Legacy ranks are priced on a curve; the first health rank's price is read off the offer, not assumed
       const price = await p.evaluate(
-        () => window.__riddle.lineage.legacy_upgrades.find((u) => u.id === "health").price,
+        () => window.__idlever.lineage.legacy_upgrades.find((u) => u.id === "health").price,
       );
       await p.locator('button.legacy-buy[data-upgrade="health"]').click();
-      await p.waitForFunction((n) => window.__riddle.lineage.bloodline.spent === n, price);
+      await p.waitForFunction((n) => window.__idlever.lineage.bloodline.spent === n, price);
       assert.equal(
-        await p.evaluate(() => window.__riddle.lineage.bloodline.points),
+        await p.evaluate(() => window.__idlever.lineage.bloodline.points),
         old.points + old.spent - price,
       );
-      assert.equal(await p.evaluate(() => window.__riddle.lineage.ended), true);
-      assert.equal(await p.evaluate(() => window.__riddle.lineage.live ?? null), null);
+      assert.equal(await p.evaluate(() => window.__idlever.lineage.ended), true);
+      assert.equal(await p.evaluate(() => window.__idlever.lineage.live ?? null), null);
       assert.equal(
-        await p.evaluate(async () => JSON.parse(await window.__riddle.engine.save()).run),
+        await p.evaluate(async () => JSON.parse(await window.__idlever.engine.save()).run),
         null,
       );
       assert.deepEqual(await p.evaluate(() => window.transitionCalls), { send: 0, begin: 0 });
-      await p.evaluate(() => window.__riddle.flush());
+      await p.evaluate(() => window.__idlever.flush());
       await p.reload();
       await p.waitForSelector(".ending-town");
       await p.locator(".ending-town").click();
       await p.waitForSelector(".camp");
-      assert.equal(await p.evaluate(() => window.__riddle.lineage.bloodline.spent), price);
+      assert.equal(await p.evaluate(() => window.__idlever.lineage.bloodline.spent), price);
     }
     if (width === 1440) {
       const multi = await p.evaluate(async () => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.lineage = await a.engine.addBloodline();
         a.lineage = await a.engine.selectBloodline(2);
         await a.engine.send();
@@ -148,8 +148,8 @@ try {
       );
       await p.locator("button.stat.legacy").click();
       await p.waitForSelector(".legacy-panel");
-      assert.equal(await p.evaluate(() => window.__riddle.engine.save()), multi);
-      assert.equal(await p.evaluate(() => window.__riddle.lineage.ended), true);
+      assert.equal(await p.evaluate(() => window.__idlever.engine.save()), multi);
+      assert.equal(await p.evaluate(() => window.__idlever.lineage.ended), true);
       assert.deepEqual(await p.evaluate(() => window.transitionCalls), { send: 0, begin: 0 });
     }
     assert.deepEqual(errors, []);

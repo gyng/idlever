@@ -4,7 +4,7 @@
 //
 // Auto: a software GL (SwiftShader / llvmpipe — the headless client gates) is `low`; any real GPU starts `high` and steps down
 // one tier when two 3 s windows in a row of rAF intervals show more than 30 % of frames over 20 ms (never back up in a
-// session). `?fx=low|med|high` (or localStorage `riddle.fx`) pins it.
+// session). `?fx=low|med|high` (or localStorage `idlever.fx`) pins it.
 // `prefers-reduced-motion: reduce` keeps the light and the bloom but drops every motion effect: shake, hit-stop, slow-mo,
 // squash, the popping numbers' rise, the vignette's pulse, ambient particles.
 export type Fx = "low" | "med" | "high";
@@ -25,7 +25,7 @@ function pinned(): Fx | null {
   try {
     const q = new URLSearchParams(location.search).get("fx");
     if (q && (ORDER as string[]).includes(q)) return q as Fx;
-    const s = localStorage.getItem("riddle.fx");
+    const s = localStorage.getItem("idlever.fx");
     if (s && (ORDER as string[]).includes(s)) return s as Fx;
   } catch {
     /* storage blocked: auto */

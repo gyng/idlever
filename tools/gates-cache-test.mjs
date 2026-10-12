@@ -14,7 +14,7 @@ import { spawn } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-const dir = mkdtempSync(join(tmpdir(), "riddle-gate-recovery-"));
+const dir = mkdtempSync(join(tmpdir(), "idlever-gate-recovery-"));
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 let active = null;
 async function launch(finish = false, signalChild = false) {
@@ -36,15 +36,15 @@ async function launch(finish = false, signalChild = false) {
 }
 try {
   for (const d of [
-    "crates/riddle-core/src",
-    "crates/riddle-core/presets",
+    "crates/idlever-core/src",
+    "crates/idlever-core/presets",
     "eval/cards",
     "target/fast/examples",
   ])
     mkdirSync(join(dir, d), { recursive: true });
   for (const f of [
-    "crates/riddle-core/src/lib.rs",
-    "crates/riddle-core/Cargo.toml",
+    "crates/idlever-core/src/lib.rs",
+    "crates/idlever-core/Cargo.toml",
     "Cargo.toml",
     "Cargo.lock",
     "target/fast/examples/dayplayer",

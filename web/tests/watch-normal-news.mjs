@@ -36,7 +36,7 @@ try {
       { waitUntil: "domcontentloaded" },
     );
     await page.waitForFunction(
-      () => window.__riddle?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
+      () => window.__idlever?.screen === "watch" && document.querySelector(".watch")?.dataset.tick,
       null,
       { timeout: 30_000 },
     );
@@ -48,7 +48,7 @@ try {
       { timeout: 5000 },
     );
     const r = await page.evaluate(async (boss) => {
-      const app = window.__riddle,
+      const app = window.__idlever,
         step = app.engine.step.bind(app.engine);
       app.engine.step = async (n) => {
         await new Promise((z) => setTimeout(z, 15));

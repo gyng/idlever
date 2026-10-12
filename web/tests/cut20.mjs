@@ -42,7 +42,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -55,7 +55,7 @@ async function waitFor(pred, label, timeout = 20_000) {
   }
   throw new Error(`timeout waiting for ${label} (screen=${s?.screen} booted=${s?.booted})`);
 }
-const go = (screen) => page.evaluate((x) => window.__riddle.go(x), screen);
+const go = (screen) => page.evaluate((x) => window.__idlever.go(x), screen);
 const sheetLabel = () =>
   page.evaluate(
     () => document.querySelector(".sheet-wrap:not([inert]) .label")?.textContent?.trim() ?? "",
@@ -82,7 +82,7 @@ try {
           const s = document.querySelector(".watch .stake");
           if (s && !s.hidden && s.getAttribute("aria-label"))
             seen.add(s.getAttribute("aria-label").replace(/\s+/g, " ").trim());
-          if (performance.now() - t0 > 4000 || window.__riddle.screen !== "watch") {
+          if (performance.now() - t0 > 4000 || window.__idlever.screen !== "watch") {
             res([...seen]);
             return;
           }
@@ -111,7 +111,7 @@ try {
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   // a fresh lineage has no best, so no bounty (its shaft is D1 alone): a lineage with best D4 through the save
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     Object.assign(e.lineage, { best_depth: 4, heir: 3 });
@@ -127,8 +127,8 @@ try {
     const n = document.querySelector(".shaft .notch.bounty");
     return {
       text: n?.querySelector(".dl")?.textContent ?? "",
-      best: window.__riddle.lineage.best_depth,
-      bounty: window.__riddle.lineage.bounty?.depth,
+      best: window.__idlever.lineage.best_depth,
+      bounty: window.__idlever.lineage.bounty?.depth,
       glint: n ? getComputedStyle(n.querySelector(".hex")).boxShadow : "",
     };
   });
@@ -142,7 +142,7 @@ try {
 
   // ---- §2 the party: a tap selects, a second tap keeps it, `×` drops it (a companion put in the kennel through the save)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     const pet = (id, name) => ({
@@ -166,7 +166,7 @@ try {
   await sleep(400);
   const party = async () =>
     page.evaluate(() => ({
-      ids: window.__riddle.lineage.party.map((c) => c.id),
+      ids: window.__idlever.lineage.party.map((c) => c.id),
       cards: [...document.querySelectorAll(".party .card.comp")].map((c) => ({
         name: c.querySelector(".pet-name")?.textContent?.trim(),
         on: c.classList.contains("on"),
@@ -221,7 +221,7 @@ try {
     ...extra,
   });
   await page.evaluate(() => {
-    const L = window.__riddle.lineage;
+    const L = window.__idlever.lineage;
     L.gold_ledger = [
       { t: 100, delta: -40, why: "bought heal" },
       { t: 200, delta: 0, why: "died D5" },
@@ -237,7 +237,7 @@ try {
     verdict: "gap",
     baseline: 0.4,
     trace: { turns },
-    morgue: "Riddle morgue · seed 1 · heir 2 · run 7",
+    morgue: "Idlever morgue · seed 1 · heir 2 · run 7",
     line: {
       carried: 78,
       keep_pct: 0,
@@ -273,7 +273,7 @@ try {
   }
   // no re-pack: no line
   await page.evaluate(() => {
-    window.__riddle.lineage.gold_ledger = [{ t: 200, delta: 0, why: "died D5" }];
+    window.__idlever.lineage.gold_ledger = [{ t: 200, delta: 0, why: "died D5" }];
   });
   await go({ kind: "death", death: death() });
   await sleep(300);
@@ -325,11 +325,11 @@ try {
       ).length,
   );
   check(nb2 === 3, `\`others\` unfolds them (${nb2} shown)`);
-  const unchanged = await page.evaluate(() => window.__riddle.engine.save());
+  const unchanged = await page.evaluate(() => window.__idlever.engine.save());
   await page.locator(".death .gem").click();
   await waitFor((s) => s?.screen === "camp", "Town from no-gain death");
   check(
-    (await page.evaluate(() => window.__riddle.engine.save())) === unchanged,
+    (await page.evaluate(() => window.__idlever.engine.save())) === unchanged,
     "Town from no-gain death preserves rules and earned state",
   );
 

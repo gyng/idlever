@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&engine=fake&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages.pen_open = true;
       a.lineage.selected_bloodline = 1;
       a.lineage.facts = ["foe:goblin_warlord:telegraph"];
@@ -46,7 +46,7 @@ try {
     assert.equal(await tip.isVisible(), false);
     assert.equal(await p.locator(".death").evaluate((e) => e.classList.contains("full")), true);
     await p.evaluate(() =>
-      window.__riddle.go({ kind: "death", death: window.testDeath, kept: true }),
+      window.__idlever.go({ kind: "death", death: window.testDeath, kept: true }),
     );
     await cause.dispatchEvent("pointerdown", { pointerType: "touch", clientX: 20, clientY: 200 });
     await p.waitForTimeout(500);
@@ -56,8 +56,8 @@ try {
     assert.equal(await p.locator(".death").evaluate((e) => e.classList.contains("full")), false);
     await p.keyboard.press("Escape");
     await p.evaluate(() => {
-      window.__riddle.lineage.selected_bloodline = 2;
-      window.__riddle.go({ kind: "death", death: window.testDeath, kept: true });
+      window.__idlever.lineage.selected_bloodline = 2;
+      window.__idlever.go({ kind: "death", death: window.testDeath, kept: true });
     });
     await p.locator(".killer").hover();
     await tip.waitFor({ state: "visible" });
@@ -70,7 +70,7 @@ try {
     assert.ok(r.x >= 0 && r.x + r.width <= width);
     await p.keyboard.press("Escape");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: { ...window.testDeath, cause: "gas" },
         kept: true,
@@ -78,7 +78,7 @@ try {
     );
     assert.equal(await p.locator(".cause-btn").getAttribute("data-detail-tip"), null);
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: { ...window.testDeath, verdict: "stall" },
         kept: true,
@@ -86,7 +86,7 @@ try {
     );
     assert.equal(await p.locator(".killer").count(), 0);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = await a.engine.send();
       s.visible.fill(1);
       s.entities.push({

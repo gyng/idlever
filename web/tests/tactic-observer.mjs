@@ -12,7 +12,7 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const checks = await p.evaluate(async () => {
       const { combatLogEvents } = await import("/src/ui/combat-log.ts");
       const { tacticObserver } = await import("/src/ui/tactic-observer.ts"),
@@ -158,7 +158,7 @@ try {
         style.dispose();
         styleHost.remove();
       }
-      const s = await window.__riddle.engine.send();
+      const s = await window.__idlever.engine.send();
       const foe = s.entities[0] ?? { ...s.hero, id: 99, kind: "goblin", tags: [], ally: false };
       s.entities = [foe];
       const r = new ReplayState();

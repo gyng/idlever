@@ -19,7 +19,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const pkg = "web/src/engine/pkg",
-  stamp = join(pkg, ".riddle-build.json");
+  stamp = join(pkg, ".idlever-build.json");
 const sha = (text) => createHash("sha256").update(text).digest("hex");
 async function fileHash(path) {
   const hash = createHash("sha256");
@@ -45,7 +45,7 @@ async function inputKey() {
   if (metadata.status !== 0) throw new Error("cargo metadata failed");
   const raw = join(
     JSON.parse(metadata.stdout).target_directory,
-    "wasm32-unknown-unknown/release/riddle_wasm.wasm",
+    "wasm32-unknown-unknown/release/idlever_wasm.wasm",
   );
   const paths = new Set([
     raw,
@@ -53,13 +53,13 @@ async function inputKey() {
     fileURLToPath(import.meta.url),
     "tools/wasm.sh",
     "Cargo.lock",
-    "crates/riddle-wasm/Cargo.toml",
+    "crates/idlever-wasm/Cargo.toml",
   ]);
   for (const optional of [
-    "crates/riddle-wasm/README.md",
-    "crates/riddle-wasm/LICENSE",
-    "crates/riddle-wasm/LICENSE-MIT",
-    "crates/riddle-wasm/LICENSE-APACHE",
+    "crates/idlever-wasm/README.md",
+    "crates/idlever-wasm/LICENSE",
+    "crates/idlever-wasm/LICENSE-MIT",
+    "crates/idlever-wasm/LICENSE-APACHE",
   ])
     if (existsSync(optional)) paths.add(optional);
   const cache = join(process.env.XDG_CACHE_HOME || join(homedir(), ".cache"), ".wasm-pack");
@@ -99,7 +99,7 @@ async function outputs() {
     readdirSync(dir)
       .sort()
       .flatMap((name) => {
-        if (name.startsWith(".riddle-build.json")) return [];
+        if (name.startsWith(".idlever-build.json")) return [];
         const path = join(dir, name),
           stat = lstatSync(path);
         if (stat.isSymbolicLink()) throw new Error("pkg must contain regular files");
@@ -120,8 +120,8 @@ try {
   } else {
     const files = await outputs();
     if (
-      !files.some(([p]) => p.endsWith("riddle_wasm_bg.wasm")) ||
-      !files.some(([p]) => p.endsWith("riddle_wasm.js"))
+      !files.some(([p]) => p.endsWith("idlever_wasm_bg.wasm")) ||
+      !files.some(([p]) => p.endsWith("idlever_wasm.js"))
     )
       throw new Error("incomplete wasm package");
     writeFileSync(`${stamp}.tmp`, JSON.stringify({ key, outputs: files }, null, 2) + "\n");

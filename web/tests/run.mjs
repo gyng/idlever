@@ -41,9 +41,9 @@ if (selected.suite === "full")
 const t0 = Date.now();
 // The suite's own dev server (tests/vite.test.config.ts: no watcher, no HMR) on a free port, for this run only — the shared
 // :5219 server reloads every page on any edit in web/src (other agents' work) and a stale one serves old transforms. The
-// tests find it through RIDDLE_PORT (tools/dev.sh); a RIDDLE_PORT set by the caller is used as it is.
+// tests find it through IDLEVER_PORT (tools/dev.sh); a IDLEVER_PORT set by the caller is used as it is.
 let vite = null;
-if (!process.env.RIDDLE_PORT) {
+if (!process.env.IDLEVER_PORT) {
   const port = await new Promise((res) => {
     const s = net.createServer();
     s.listen(0, () => {
@@ -63,7 +63,7 @@ if (!process.env.RIDDLE_PORT) {
     ],
     { stdio: "ignore" },
   );
-  process.env.RIDDLE_PORT = String(port);
+  process.env.IDLEVER_PORT = String(port);
   const up = () =>
     fetch(`http://localhost:${port}/`).then(
       (r) => r.ok,
@@ -260,7 +260,7 @@ const run1 = (n) =>
     const [file, parts] = n.split(":");
     const p = spawn("node", [`tests/${file}.mjs`, ...(parts ? [`--part=${parts}`] : [])], {
       stdio: ["ignore", "pipe", "pipe"],
-      env: { ...process.env, RIDDLE_CLIENT_AUDIT_SCOPE: selected.suite },
+      env: { ...process.env, IDLEVER_CLIENT_AUDIT_SCOPE: selected.suite },
     });
     let out = "";
     p.stdout.on("data", (d) => (out += d));
@@ -289,7 +289,7 @@ const printResult = (r) => {
 // SOLO: the real engine's edit timings (wasm in a worker, bars of 1 s and 3 s) read the machine even with three
 // beside and a retry (1.3 s at a load of 31) — they run last, with nothing beside, ~30 s, on a server the other tests
 // have warmed (first on a cold one its refine read 3.4 s where it reads 1.9 s warm). (The deep fixture's timings are
-// notes unless RIDDLE_DEEP_GATE=1, which wants a quiet headed machine: `clarity:deep` runs as a heavy.)
+// notes unless IDLEVER_DEEP_GATE=1, which wants a quiet headed machine: `clarity:deep` runs as a heavy.)
 const HEAVY = [
     "fights:break",
     "clarity:card",
@@ -358,7 +358,7 @@ if (selected.report) {
             ? "34 state groups at400px;33 responsive triples at320/1440px; other matrices unchanged. Exhaustive retains all original variants."
             : "All original viewport variants",
         execution: {
-          browser: process.env.RIDDLE_BROWSER ?? "headless",
+          browser: process.env.IDLEVER_BROWSER ?? "headless",
           jobs: width,
           heavyWidth: HEAVY_WIDTH,
           availableCores: availableParallelism(),

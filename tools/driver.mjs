@@ -60,7 +60,7 @@ function gameStorage(state) {
       !["http:", "https:"].includes(u.protocol)
     )
       throw new Error("Game checkpoint must use local game origins");
-    if (origin.localStorage.some((item) => !item.name.startsWith("riddle.")))
+    if (origin.localStorage.some((item) => !item.name.startsWith("idlever.")))
       throw new Error("Game checkpoint contains unrelated storage");
   }
   return state;
@@ -68,7 +68,7 @@ function gameStorage(state) {
 if (restored) gameStorage(restored);
 
 const browser = await launchBrowser({ headed });
-const isHeaded = headed ?? process.env.RIDDLE_BROWSER === "headed";
+const isHeaded = headed ?? process.env.IDLEVER_BROWSER === "headed";
 // Phone at 3× on the GPU, 2× headless (SwiftShader is pixel-bound; the layout is the same).
 const dpr = Number(val("--dpr", isHeaded ? "3" : "2"));
 const ctxOpts = flag("--wide")
@@ -101,10 +101,10 @@ async function checkpoint() {
 const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
 let shotN = 0;
 
-// The dev inspection surface when the page has it (`window.__riddle`, dev builds / `?dev=1`).
+// The dev inspection surface when the page has it (`window.__idlever`, dev builds / `?dev=1`).
 const state = async () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const buttons = [...document.querySelectorAll("button,[role=button]")]
       .filter((b) => b.offsetWidth || b.offsetHeight)
       .map((b) => (b.innerText || "").trim().slice(0, 40))
@@ -129,7 +129,7 @@ async function idle(timeout) {
   return Date.now() - t0;
 }
 
-// What the page shows, for the compound ops below — DOM only (the rater profile: no `__riddle`, no wire).
+// What the page shows, for the compound ops below — DOM only (the rater profile: no `__idlever`, no wire).
 // A control matches a label when one of its visible text lines is that label, case aside (a tile is its icon + its one word).
 // `all`: disabled ones too (the watch greys its controls through the ending; they are still its controls).
 const pageButtons = (p, all = false) =>

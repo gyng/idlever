@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Cut 30.5 client gates — the works tree (docs/CUT30_5.md, docs/AUTOMATION_TREE.md §3–§4), on the fake engine (its 30.5 stand-ins),
-// headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU). The tracks panel's coverage folds in here (`branches`):
+// headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU). The tracks panel's coverage folds in here (`branches`):
 //   day0      a heir-1 camp: the chest drawn (closed, no surface), the mouth, the gem, the pill (the wire's `next`: `send` before the
 //             scout); ≤ 5 interactive surfaces in the well and the console; ≤ 12 elements above the fold
 //   chest     a haul waits in the chest (`!`, its sum); a tap opens it: the purse takes it all, the porter's count moves (`1/3`), the chest
@@ -73,7 +73,7 @@ async function until(pred, label, timeout = 20_000, arg) {
 }
 const camp = async () => {
   await until(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp" && window.__town,
+    () => window.__idlever?.booted && window.__idlever.screen === "camp" && window.__town,
     "camp",
   );
   await sleep(350);
@@ -81,7 +81,7 @@ const camp = async () => {
 /** a heir-1 lineage with nothing earned (cut30town's stage 0) and a fresh works tree; `fn` edits the save (`e.lineage`, `e.st305`) */
 const fresh = (fn = "") =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const e = JSON.parse(await r.engine.save());
     Object.assign(e.lineage, {
       heir: 1,
@@ -113,7 +113,7 @@ const fresh = (fn = "") =>
 /** the save edited in place (the works' state `e.st305`), then the camp */
 const withState = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const e = JSON.parse(await r.engine.save());
     e.st305 ??= {
       hired: ["quartermaster"],
@@ -133,19 +133,19 @@ const boot = async (seed) => {
     waitUntil: "domcontentloaded",
   });
   await until(
-    () => window.__riddle?.booted && ["camp", "report"].includes(window.__riddle.screen),
+    () => window.__idlever?.booted && ["camp", "report"].includes(window.__idlever.screen),
     "boot",
     60_000,
   );
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
+    localStorage.removeItem("idlever.reveal");
     for (const k of Object.keys(localStorage))
-      if (k.startsWith("riddle.town.")) localStorage.removeItem(k);
+      if (k.startsWith("idlever.town.")) localStorage.removeItem(k);
   });
 };
 const S = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       L = r.lineage,
       W = L.tree,
       t = window.__town?.stats();
@@ -173,19 +173,19 @@ const S = () =>
 async function sendRun(via = "gem") {
   if (via === "mouth") await page.locator('.town-hit[data-building="mouth"]').click();
   else await page.locator(".console .gem.send").click();
-  await until(() => window.__riddle.screen === "watch", "the watch", 10_000);
+  await until(() => window.__idlever.screen === "watch", "the watch", 10_000);
   const t = Date.now();
   while (Date.now() - t < 90_000) {
-    const s = await page.evaluate(() => window.__riddle.screen);
+    const s = await page.evaluate(() => window.__idlever.screen);
     if (s === "report" || s === "death" || s === "camp") break;
     await page.evaluate(() => {
       for (const b of document.querySelectorAll(".sheet-wrap .btn.primary")) b.click();
     });
     await sleep(250);
   }
-  const s = await page.evaluate(() => window.__riddle.screen);
+  const s = await page.evaluate(() => window.__idlever.screen);
   if (s === "report") await page.locator(".console .gem").click();
-  else if (s === "death") await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  else if (s === "death") await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
   return s;
 }
@@ -315,7 +315,7 @@ try {
       `day 0: ≤ 12 elements above the fold (${all.length}: ${all.join(" | ")})`,
     );
     check(/0\/3/.test(s.gem), `day 0: the gem counts the sends toward the scout (${s.gem.trim()})`);
-    const saveBeforeHeroes = await page.evaluate(() => window.__riddle.engine.save());
+    const saveBeforeHeroes = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".hero-expand:visible").click({ timeout: 5000 });
     await until(() => !!document.querySelector(".heroes-sheet"), "active Heroes sheet", 5000);
     check(
@@ -325,7 +325,7 @@ try {
     await page.keyboard.press("Escape");
     await until(() => !document.querySelector(".heroes-sheet"), "Heroes dismissal", 5000);
     check(
-      (await page.evaluate(() => window.__riddle.engine.save())) === saveBeforeHeroes,
+      (await page.evaluate(() => window.__idlever.engine.save())) === saveBeforeHeroes,
       "day 0: opening and dismissing Heroes preserves the exact save",
     );
   }
@@ -370,7 +370,7 @@ try {
         await page.locator('.town-hit[data-building="chest"]').click();
         if (chests === 0) await shot("chest-open", 240); // (the coins in the air)
         await until(
-          () => (window.__riddle.lineage.tree?.chest ?? 1) === 0,
+          () => (window.__idlever.lineage.tree?.chest ?? 1) === 0,
           "the chest emptied",
           5000,
         );
@@ -456,7 +456,7 @@ try {
       }); // (the fake's purse short of his unit: topped up)
     await openSheetFromPill();
     await page.locator(".works-sheet .hire-btn").click();
-    await until(() => window.__riddle.lineage.tree?.auto_send, "the scout hired", 5000);
+    await until(() => window.__idlever.lineage.tree?.auto_send, "the scout hired", 5000);
     await sleep(300);
     s = await S();
     step(
@@ -518,7 +518,7 @@ try {
       `the chest never caps: $34 + $9000 = $${s.chest}, the purse untouched ($${s.gold})`,
     );
     await page.locator('.town-hit[data-building="chest"]').click();
-    await until(() => window.__riddle.lineage.tree?.chest === 0, "the chest emptied", 5000);
+    await until(() => window.__idlever.lineage.tree?.chest === 0, "the chest emptied", 5000);
     await sleep(150);
     s = await S();
     check(
@@ -571,7 +571,7 @@ try {
     );
     await page.locator(".works-sheet .hire-btn").click();
     await until(
-      () => window.__riddle.lineage.tree?.nodes.find((n) => n.id === "porter")?.state === "done",
+      () => window.__idlever.lineage.tree?.nodes.find((n) => n.id === "porter")?.state === "done",
       "the porter hired",
       5000,
     );
@@ -589,7 +589,7 @@ try {
       e.st305.hired.push("scout");
     }); // (the scout too: an absence sends)
     const r = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const g0 = r.lineage.gold;
       const rep = await r.runOfflineChunked(3 * 3600);
       await r.refresh();
@@ -626,7 +626,7 @@ try {
     );
     // before the scout: an absence yields at most the run in flight (none here: the hero waits at home)
     const before = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rep = await r.runOfflineChunked(8 * 3600);
       await r.refresh();
       return { runs: rep.runs, waits: r.lineage.tree.waits };
@@ -643,7 +643,7 @@ try {
     check(s.lit === "scout", `3 sends: the scout lit (${s.lit} · \`${s.pill}\`)`);
     await openSheetFromPill();
     await page.locator(".works-sheet .hire-btn").click();
-    await until(() => window.__riddle.lineage.tree?.auto_send, "the scout hired", 5000);
+    await until(() => window.__idlever.lineage.tree?.auto_send, "the scout hired", 5000);
     await sleep(400);
     s = await S();
     check(
@@ -655,7 +655,7 @@ try {
     );
     check(!/waits/.test(rest), `the hero no longer waits (rest line "${rest}")`);
     const after = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rep = await r.runOfflineChunked(8 * 3600);
       await r.refresh();
       return { runs: rep.runs };
@@ -724,7 +724,7 @@ try {
     await openSheetFromPill();
     w = await sheetRead();
     const wire = await page.evaluate(() =>
-      window.__riddle.lineage.tree.nodes.filter((n) => n.kind === "stage"),
+      window.__idlever.lineage.tree.nodes.filter((n) => n.kind === "stage"),
     );
     check(
       JSON.stringify(w.branches.map((b) => b.id)) ===
@@ -766,7 +766,7 @@ try {
     });
     let s = await S();
     const offer = await page.evaluate(() => {
-      const W = window.__riddle.lineage.tree;
+      const W = window.__idlever.lineage.tree;
       const n = W.nodes.find((x) => x.id === W.lit_rank);
       return { lit: W.lit ?? null, rank: W.lit_rank ?? null, price: n?.rank_price, at: n?.rank };
     });
@@ -776,7 +776,7 @@ try {
     );
     await page.evaluate(async () => {
       const { openWorks } = await import("/src/ui/works.ts");
-      openWorks(window.__riddle, window.__riddle.lineage.tree.lit_rank);
+      openWorks(window.__idlever, window.__idlever.lineage.tree.lit_rank);
     });
     await until(() => !!document.querySelector(".works-sheet .wnode.rank"), "the rank card", 5000);
     const card = await page.evaluate(() => {
@@ -820,7 +820,7 @@ try {
     ).catch(() => "");
     await sleep(300);
     const after = await page.evaluate(() => ({
-      rank: window.__riddle.lineage.tree.nodes.find((n) => n.id === "porter").rank,
+      rank: window.__idlever.lineage.tree.nodes.find((n) => n.id === "porter").rank,
       ranks: window.__town.stats().ranks,
     }));
     check(
@@ -828,13 +828,13 @@ try {
       `promote → \`${beat}\`; porter rank ${after.rank}; his pip in the town (${JSON.stringify(after.ranks)})`,
     );
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       await r.mutate(() => r.engine.promote(r.lineage.tree.lit_rank));
       await r.mutate(() => r.engine.promote(r.lineage.tree.lit_rank));
     });
     await page.evaluate(async () => {
       const { openWorks } = await import("/src/ui/works.ts");
-      openWorks(window.__riddle);
+      openWorks(window.__idlever);
     });
     await until(() => !!document.querySelector(".works-sheet"), "the works", 5000);
     const nums = await page.evaluate(() =>
@@ -882,14 +882,14 @@ try {
     );
     await page.locator('.settings .worker-switch[data-worker="porter"]').click();
     await until(
-      () => window.__riddle.lineage.tree.nodes.find((n) => n.id === "porter").paused,
+      () => window.__idlever.lineage.tree.nodes.find((n) => n.id === "porter").paused,
       "the porter off",
       5000,
     );
     await page.locator('.settings .worker-switch[data-worker="scout"]').click();
-    await until(() => window.__riddle.lineage.tree.auto_send === false, "the scout off", 5000);
+    await until(() => window.__idlever.lineage.tree.auto_send === false, "the scout off", 5000);
     await closeSheets();
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
     let s = await S();
     check(
@@ -915,13 +915,13 @@ try {
     await page.locator('.settings .worker-switch[data-worker="scout"]').click();
     await until(
       () =>
-        !window.__riddle.lineage.tree.nodes.find((n) => n.id === "porter").paused &&
-        window.__riddle.lineage.tree.auto_send,
+        !window.__idlever.lineage.tree.nodes.find((n) => n.id === "porter").paused &&
+        window.__idlever.lineage.tree.auto_send,
       "both on",
       5000,
     );
     await closeSheets();
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await camp();
     s = await S();
     check(
@@ -940,13 +940,13 @@ try {
       e.lineage.best_depth = 3;
     });
     const rep = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const report = await r.runOfflineChunked(3 * 3600);
       await r.refresh();
       r.go({ kind: "report", report, absence: true });
       return { workers: report.workers, runs: report.runs, grew: report.grew };
     });
-    await until(() => window.__riddle.screen === "report", "the report");
+    await until(() => window.__idlever.screen === "report", "the report");
     await sleep(400);
     const lead = await page.evaluate(() => {
       const acts = [...document.querySelectorAll(".report-sheet .works-acts .work-act")].map(

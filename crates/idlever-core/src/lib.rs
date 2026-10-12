@@ -1,0 +1,425 @@
+//! Idlever core: deterministic roguelike sim, rule engine, facts, forecast, offline batch,
+//! chronicle, sifter, meta. All game truth lives here. See docs/CUT1.md.
+pub mod ai;
+pub mod balance;
+pub mod chronicle;
+pub mod defs;
+pub mod descent;
+pub mod engine;
+pub mod endgame;
+pub mod facts;
+pub mod feats;
+pub mod fold;
+pub mod divergence;
+pub mod forecast;
+pub mod gen;
+pub mod firearm;
+pub mod geom;
+pub mod hero;
+pub mod item;
+pub mod kit;
+pub mod legacy;
+pub mod specialization;
+pub mod class_tree;
+pub mod bloodlines;
+pub mod meta;
+pub mod monster;
+pub mod oath;
+pub mod packages;
+pub mod petstats;
+pub mod pets;
+pub mod offline;
+pub mod probes;
+pub mod provenance;
+pub mod returns;
+pub mod rng;
+pub mod rules;
+pub mod save;
+pub mod shared;
+pub mod sifter;
+pub mod situations;
+pub mod systems;
+pub mod wall;
+pub mod meters;
+pub mod tiles;
+pub mod tokens;
+pub mod town;
+pub mod tree;
+pub mod trace;
+pub mod traits;
+pub mod turn;
+pub mod wire;
+
+pub use engine::Game;
+pub use rules::{Cond, Row, RuleSet, Verb, Vocabulary};
+pub use wire::*;
+
+impl Game {
+    pub fn learn_class_skill(&mut self,id:&str)->Result<(),String> {class_tree::learn(self,id)}
+    pub fn reset_class_skills(&mut self)->Result<(),String> {class_tree::reset(self)}
+    pub fn set_specialization(&mut self,id:&str)->Result<(),String> {specialization::choose(self,id)}
+    pub fn forecast(&self) -> Forecast {
+        forecast::forecast(self)
+    }
+    /// Cut 6 §9: the forecast at 100 sims (the same seeds first), for the client's second pass.
+    pub fn forecast_refine(&self) -> Forecast {
+        forecast::forecast_refine(self)
+    }
+    /// Cut 19 §1: each cage preference's forecast for the active set (`forecast::cage_forecast`).
+    pub fn cage_forecast(&self) -> Vec<CageOption> {
+        forecast::cage_forecast(self)
+    }
+    /// QA on 524827b: the options on the camp's own pass (`refined`: the 100-sim panels).
+    pub fn cage_forecast_refined(&self, refined: bool) -> Vec<CageOption> {
+        forecast::cage_forecast_at(self, if refined { forecast::REFINE_SIMS } else { forecast::FORECAST_SIMS })
+    }
+    /// Cut 21 §1: each start's forecast for the active set (`forecast::start_forecast`).
+    pub fn start_forecast(&self) -> Vec<StartOption> {
+        forecast::start_forecast(self)
+    }
+    /// QA on 308f045: the starts on the camp's own pass (`refined`: the 100-sim panels).
+    pub fn start_forecast_refined(&self, refined: bool) -> Vec<StartOption> {
+        forecast::start_forecast_at(self, if refined { forecast::REFINE_SIMS } else { forecast::FORECAST_SIMS })
+    }
+    /// Cut 26 §2: both stairs of the fork at `fork` for the active set (`forecast::fork_forecast`).
+    pub fn fork_forecast(&self, fork: u32) -> Vec<ForkOption> {
+        forecast::fork_forecast(self, fork)
+    }
+    /// QA on 308f045: the stairs on the camp's own pass (`refined`: the 100-sim panels).
+    pub fn fork_forecast_refined(&self, fork: u32, refined: bool) -> Vec<ForkOption> {
+        forecast::fork_forecast_at(self, fork, if refined { forecast::REFINE_SIMS } else { forecast::FORECAST_SIMS })
+    }
+    /// Cut 22 §3: the active set's paired move against `prev` (`forecast::forecast_vs`).
+    pub fn forecast_vs(&self, prev: &RuleSet) -> ForecastVs {
+        forecast::forecast_vs(self, prev)
+    }
+    pub fn run_offline(&mut self, elapsed_s: u64) -> ReturnReport {
+        offline::run_offline(self, elapsed_s)
+    }
+    pub fn death(&mut self, run_id: u32) -> Option<Death> {
+        let mut d = trace::death(self, run_id)?;
+        d.memorial = feats::memorial(&self.lineage, run_id);
+        Some(d)
+    }
+    /// QA on 23ed91f: the death's shown patches with the camp's reach deltas (`trace::death_deltas`).
+    pub fn death_deltas(&mut self, run_id: u32) -> Option<Vec<Patch>> {
+        trace::death_deltas(self, run_id)
+    }
+    pub fn buy(&mut self, unlock: &str) -> Result<(), String> {
+        meta::buy(self, unlock)
+    }
+    /// Cut 15 §2: buy an unlock with gold at its climbing price (`UnlockInfo.gold`); marks untouched.
+    pub fn buy_unlock_gold(&mut self, unlock: &str) -> Result<(), String> {
+        meta::buy_gold(self, unlock)
+    }
+    /// The unlock catalogue; Cut 4 §9: cards and verbs carry `delta` once `unlock_deltas`
+    /// computed them for this lineage state (no sims here).
+    pub fn unlocks(&self) -> Vec<UnlockInfo> {
+        meta::catalogue_with_deltas(self, false)
+    }
+    /// The catalogue with every open card's and verb's `delta` simulated (memoised: a camp
+    /// visit pays once; `unlocks()` returns the same numbers afterwards).
+    pub fn unlock_deltas(&self) -> Vec<UnlockInfo> {
+        meta::catalogue_with_deltas(self, true)
+    }
+    pub fn save(&self) -> String {
+        save::save(self)
+    }
+    pub fn load(text: &str) -> Result<Game, String> {
+        save::load(text)
+    }
+    /// Cut 28 §1: swear a standing oath (`oath::swear`: pays its price; one at a time).
+    pub fn swear_oath(&mut self, id: &str) -> Result<(), String> {
+        oath::swear(self, id)
+    }
+    /// Cut 28 §1: forswear the sworn oath (half its price back).
+    pub fn forswear_oath(&mut self) -> Result<(), String> {
+        oath::forswear(self)
+    }
+    /// Cut 29 §1: forswear the sworn oath `id` (either slot).
+    pub fn forswear_oath_id(&mut self, id: &str) -> Result<(), String> {
+        oath::forswear_id(self, id)
+    }
+    /// Cut 29 §1: an oath draw (◆2, from T2): a fresh standing oath; its id.
+    pub fn draw_oath(&mut self) -> Result<String, String> {
+        oath::draw(self)
+    }
+    /// Cut 29 §5: commission the lineage's next work with gold; its label.
+    pub fn commission(&mut self) -> Result<String, String> {
+        kit::commission(self)
+    }
+    /// Cut 29 §1 (E1): at a wall (the best depth held `wall::WALL_DAYS` days), the edit that passes
+    /// it — searched once a day of the lineage's clock (`wall::search`, seconds natively, far more in
+    /// wasm: the client asks it on the report, off the foreground), then the cached offer
+    /// (`Lineage.wall`) until a new best clears it. `None` off a wall or when no edit passes.
+    pub fn wall_edit(&mut self) -> Option<crate::wire::WallEdit> {
+        if !crate::wall::at_wall(&self.lineage) {
+            return None;
+        }
+        if self.lineage.wall_day != Some(self.lineage.day) {
+            self.lineage.wall_day = Some(self.lineage.day);
+            self.lineage.wall_offer = crate::wall::search(self);
+        }
+        self.lineage.wall_offer.clone()
+    }
+    /// Cut 29 §2: the camp has shown the systems opened since it last looked (the glint is spent).
+    pub fn seen_systems(&mut self) {
+        self.lineage.systems_new.clear();
+    }
+    /// Cut 29 §4: the standing orders at once (`keep`, `cage`, `start`, `repeat`, `insure`, `forge`); each
+    /// through its own setter, so each keeps its rules (an unknown keep is refused; the repeat
+    /// off refunds the shelf).
+    pub fn set_orders(&mut self, o: &crate::wire::StandingOrders) -> Result<(), String> {
+        self.set_keep_pref(&o.keep)?;
+        self.set_vault_pref(&o.cage)?;
+        if o.start != self.lineage.start.max(1) {
+            self.set_start(o.start)?;
+        }
+        if !crate::wire::FORGE_ORDERS.contains(&o.forge.as_str()) {
+            return Err("unknown forge order".into());
+        }
+        self.set_restock(o.repeat);
+        self.lineage.orders.insure = o.insure;
+        self.lineage.orders.forge = o.forge.clone();
+        if let Some(w) = &o.wall {
+            if !crate::wire::WALL_ORDERS.contains(&w.as_str()) {
+                return Err("unknown wall order".into());
+            }
+            self.lineage.orders.wall = w.clone();
+        }
+        if let Some(k) = &o.sink {
+            if !crate::feats::SINK_ORDERS.contains(&k.as_str()) {
+                return Err("unknown sink order".into());
+            }
+            self.lineage.orders.sink = k.clone();
+        }
+        if let Some(k) = &o.heir {
+            if !crate::feats::HEIR_ORDERS.contains(&k.as_str()) {
+                return Err("unknown heir order".into());
+            }
+            self.lineage.orders.heir = k.clone();
+        }
+        if let Some(k) = &o.kennel {
+            if !crate::pets::KENNEL_ORDERS.contains(&k.as_str()) {
+                return Err("unknown kennel order".into());
+            }
+            self.lineage.orders.kennel = k.clone();
+        }
+        // Cut 120 §1, §2, §4: the Legacy, ranks and ascend orders
+        for (v, allowed, what) in [(&o.legacy, &tree::LEGACY_ORDERS[..], "legacy"), (&o.ranks, &tree::RANKS_ORDERS[..], "ranks"), (&o.ascend, &tree::ASCEND_ORDERS[..], "ascend")] {
+            if let Some(k) = v {
+                if !allowed.contains(&k.as_str()) {
+                    return Err(format!("unknown {what} order"));
+                }
+            }
+        }
+        if let Some(k) = &o.legacy {
+            self.lineage.orders.legacy = k.clone();
+        }
+        if let Some(k) = &o.ranks {
+            self.lineage.orders.ranks = k.clone();
+        }
+        if let Some(k) = &o.ascend {
+            self.lineage.orders.ascend = k.clone();
+        }
+        // Cut 120 §3: the orders set `same for all` (the Session copies them to the other bloodlines)
+        if let Some(keys) = &o.shared {
+            if let Some(k) = keys.iter().find(|k| !tree::SHAREABLE.contains(&k.as_str())) {
+                return Err(format!("unknown order {k}"));
+            }
+            self.lineage.orders.shared = keys.iter().cloned().collect();
+        }
+        Ok(())
+    }
+    /// Cut 120 §2 (Cut 114 §5): a worker's rank-II perk chip (`tree::PERKS`; the first is the default).
+    pub fn set_perk(&mut self, worker: &str, perk: &str) -> Result<(), String> {
+        tree::set_perk(&mut self.lineage, worker, perk)
+    }
+    /// Cut 119 §0: revoke (or restore) the default tame row — one tap.
+    pub fn revoke_tame(&mut self, revoked: bool) -> Result<(), String> {
+        if self.lineage.pets.off {
+            return Err("no tame row".into());
+        }
+        crate::pets::revoke_tame(&mut self.lineage, revoked);
+        Ok(())
+    }
+    /// Cut 28 §2: the camp's move against the set sent, attributed to state and rows
+    /// (`forecast::forecast_move`); `None` when no send was recorded.
+    pub fn forecast_move(&self, prev: &RuleSet) -> Option<ForecastMove> {
+        forecast::forecast_move(self, prev)
+    }
+    /// Cut 30 §2: equip a package (a stance, a tactic in `slot`, a temperament) — free, instant.
+    pub fn equip_package(&mut self, id: &str, slot: usize) -> Result<(), String> {
+        packages::equip(&mut self.lineage, id, slot)
+    }
+    /// Cut 30 §2: empty a tactic or temperament slot.
+    pub fn unequip_package(&mut self, id: &str) -> Result<(), String> {
+        packages::unequip(&mut self.lineage, id)
+    }
+    /// Cut 30 §2: take a wake card (the temperament slot, heir 3 on).
+    pub fn pick_temperament(&mut self, id: &str) -> Result<(), String> {
+        packages::pick(&mut self.lineage, id)
+    }
+    /// Cut 30 §2: spend marks on a package's next level; the level reached.
+    pub fn spend_level(&mut self, id: &str) -> Result<u32, String> {
+        let lv = packages::spend_level(&mut self.lineage, id)?;
+        tree::did(&mut self.lineage, "level");
+        Ok(lv)
+    }
+    /// Cut 113 §3: take one offer of the return's pick waiting at camp (`returns::take`).
+    pub fn take_return_pick(&mut self, id: &str) -> Result<String, String> {
+        returns::take(self, id)
+    }
+    /// Cut 118 §1: the next send seeks `boss` (a token spent at the send); `""` sends in order (the default).
+    pub fn seek_boss(&mut self, boss: &str) -> Result<(), String> {
+        feats::set_seek(&mut self.lineage, boss)
+    }
+    /// Cut 118 §1: each boss a token is banked for, priced from his stone (one camp panel each).
+    pub fn seek_forecast(&self) -> Vec<feats::SeekOption> {
+        feats::seek_forecast(self)
+    }
+    /// Cut 118 §2: opt into week `week`'s trial (`None` opts out); the next send while away plays it.
+    pub fn set_trial(&mut self, week: Option<u32>) -> Result<(), String> {
+        feats::set_trial(&mut self.lineage, week)
+    }
+    /// Cut 118 §4: tithe `n` Legacy points at the falling rate (Kit complete); the points bought.
+    pub fn tithe(&mut self, n: u32) -> Result<u32, String> {
+        feats::tithe(&mut self.lineage, n)
+    }
+    /// Cut 118 §4: commission the survey (the deep forks open early).
+    pub fn buy_survey(&mut self) -> Result<(), String> {
+        feats::buy_survey(&mut self.lineage)
+    }
+    /// Cut 122 §5: buy the next send's ration by hand (the hunger bites a quarter as often); the price paid.
+    pub fn buy_ration(&mut self) -> Result<i32, String> {
+        feats::buy_ration(&mut self.lineage)
+    }
+    /// Cut 118 §7: grant the hero's waiting wish.
+    pub fn grant_wish(&mut self) -> Result<String, String> {
+        feats::grant_wish(&mut self.lineage)
+    }
+    /// Cut 111: pick a tactic's L3 row (0 the first variant, 1 the second).
+    pub fn set_tactic_variant(&mut self, id: &str, variant: u32) -> Result<(), String> {
+        packages::set_variant(&mut self.lineage, id, variant.min(255) as u8)
+    }
+    /// Cut 115 §4: take a death's tactic fix (worn in its variant, credited `taught`).
+    pub fn take_fix(&mut self, id: &str, variant: u32) -> Result<(), String> {
+        packages::take_fix(&mut self.lineage, id, variant.min(255) as u8)
+    }
+    /// Cut 30 §1: revoke a drill (or restore it) — one tap, it stays.
+    pub fn revoke_drill(&mut self, boss: &str, revoked: bool) -> Result<(), String> {
+        // (Cut 119: the companions' tame row is a drill too — `revokeDrill("tame", …)` is `revokeTame`)
+        if boss == "tame" {
+            return self.revoke_tame(revoked);
+        }
+        packages::revoke(&mut self.lineage, boss, revoked)
+    }
+    /// Cut 30 §2: every package move priced on the paired panel (`sims` sends each), best first.
+    pub fn package_options(&self, sims: u32) -> Vec<packages::PkgOption> {
+        packages::options(self, sims)
+    }
+    pub fn package_options_key(&self, sims: u32) -> String {
+        packages::options_key(self, sims)
+    }
+    pub fn package_options_for(&self, sims: u32, choices: &[(String, usize)]) -> Vec<packages::PkgOption> {
+        packages::options_for(self, sims, choices)
+    }
+    pub fn package_options_for_key(&self, sims: u32, choices: &[(String, usize)]) -> String {
+        packages::options_for_key(self, sims, choices)
+    }
+    /// Cut 30 §3: bank a deposit (capped); the gold moved.
+    pub fn bank_deposit(&mut self, amount: i32) -> Result<i32, String> {
+        let n = town::deposit(&mut self.lineage, amount)?;
+        tree::did(&mut self.lineage, "deposit");
+        Ok(n)
+    }
+    /// Cut 30 §3: take gold out of the bank.
+    pub fn bank_withdraw(&mut self, amount: i32) -> Result<i32, String> {
+        town::withdraw(&mut self.lineage, amount)
+    }
+    /// Cut 30 §5: the day's free swap of the quest on the board.
+    pub fn swap_quest(&mut self) -> Result<(), String> {
+        town::swap(&mut self.lineage)?;
+        tree::did(&mut self.lineage, "swap");
+        Ok(())
+    }
+    /// Cut 30.5: hire the lit node's worker (its price from the purse, then the chest).
+    pub fn upgrade_hero(&mut self, id: &str) -> Result<(), String> { legacy::buy(self, id) }
+    /// Blind b58b431: a Legacy purchase while the hero is away, for the next run (`legacy::buy_next`).
+    pub fn upgrade_hero_next(&mut self, id: &str) -> Result<(), String> { legacy::buy_next(self, id) }
+    pub fn respec_legacy(&mut self) -> Result<(), String> { legacy::respec(self) }
+    pub fn build_town(&mut self, id: &str) -> Result<(), String> {
+        town::construct(&mut self.lineage, id)
+    }
+    pub fn hire(&mut self, id: &str) -> Result<(), String> {
+        tree::hire(&mut self.lineage, id)
+    }
+    /// Cut 30.5, week 2: promote the worker whose rank is on offer (`tree.lit_rank`); its new rank.
+    pub fn promote(&mut self, id: &str) -> Result<u32, String> {
+        tree::promote(&mut self.lineage, id)
+    }
+    /// Cut 30.5: the haul chest into the purse (the porter's chore); the gold it held.
+    pub fn open_chest(&mut self) -> Result<i32, String> {
+        tree::open_chest(&mut self.lineage)
+    }
+    /// Cut 30.5: switch a hired worker off (its chore by hand again) or back on.
+    pub fn set_worker(&mut self, id: &str, on: bool) -> Result<(), String> {
+        tree::set_worker(&mut self.lineage, id, on)
+    }
+    pub fn export_rules(&self) -> String {
+        self.lineage.rules().to_text()
+    }
+    pub fn import_rules(&self, text: &str) -> Result<RuleSet, String> {
+        RuleSet::parse(text)
+    }
+}
+
+#[cfg(test)]
+mod tests;
+#[cfg(test)]
+mod tests_cut27;
+#[cfg(test)]
+mod tests_cut27_seams;
+#[cfg(test)]
+mod tests_cut28;
+#[cfg(test)]
+mod tests_cut29;
+#[cfg(test)]
+mod tests_cut30;
+#[cfg(test)]
+mod tests_cut30_pkg;
+#[cfg(test)]
+mod tests_cut305;
+#[cfg(test)]
+mod tests_cut114;
+#[cfg(test)]
+mod tests_cut115;
+#[cfg(test)]
+mod tests_runsui;
+#[cfg(test)]
+mod tests_runclear;
+#[cfg(test)]
+mod tests_cut113;
+#[cfg(test)]
+mod tests_cut116;
+#[cfg(test)]
+mod tests_cut117;
+#[cfg(test)]
+mod tests_cut118;
+#[cfg(test)]
+mod tests_cut119;
+#[cfg(test)]
+mod tests_cut120;
+#[cfg(test)]
+mod tests_cut121;
+#[cfg(test)]
+mod tests_cut122;
+#[cfg(test)]
+mod tests_cut156;
+#[cfg(test)]
+mod tests_cut157;
+#[cfg(test)]
+mod tests_cut159;
+
+#[cfg(test)]
+mod class_skill_effect_tests;

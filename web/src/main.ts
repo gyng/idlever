@@ -22,7 +22,7 @@ bootWithMenu(readDevParams());
  *    ?autosend=1    send straight from boot
  *    ?fake_depth=N  with ?engine=fake: every run starts on depth N (boss floor at 5) — read in engine/fake.ts
  *  The one-shot ones (fresh, absent, rules, autosend) are stripped from the address bar so a reload does not
- *  wipe the save or rerun the absence. Returns null outside dev (no window.__riddle then). */
+ *  wipe the save or rerun the absence. Returns null outside dev (no window.__idlever then). */
 function readDevParams(): DevOptions | null {
   const q = new URLSearchParams(location.search);
   if (!import.meta.env.DEV && q.get("dev") !== "1") return null;

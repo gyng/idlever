@@ -14,9 +14,9 @@ try {
     const p = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.go({ kind: "camp" });
       await document.fonts.ready;
     });
     for (const [file, fn] of [
@@ -31,7 +31,7 @@ try {
       await p.evaluate(
         async ([file, fn]) => {
           (await import("/src/ui/sheet.ts")).closeAllSheets();
-          (await import(`/src/ui/${file}.ts`))[fn](window.__riddle);
+          (await import(`/src/ui/${file}.ts`))[fn](window.__idlever);
         },
         [file, fn],
       );

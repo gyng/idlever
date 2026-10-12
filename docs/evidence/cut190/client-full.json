@@ -1,0 +1,938 @@
+{
+  "suite": "full",
+  "fullCount": 125,
+  "exhaustiveCount": 167,
+  "selectedCount": 125,
+  "omitted": [
+    "autodismiss",
+    "blind-77030eb",
+    "chain",
+    "clarity:hold",
+    "clarity:card",
+    "clarity:deep",
+    "cut115",
+    "cut117",
+    "cut118",
+    "cut118b",
+    "cut119",
+    "cut120",
+    "cut121",
+    "cut13",
+    "cut16",
+    "cut20",
+    "cut21",
+    "cut22",
+    "cut23",
+    "cut24",
+    "cut25",
+    "cut27",
+    "cut28w",
+    "cut30",
+    "cut305",
+    "cut30town",
+    "fights",
+    "layout",
+    "legible",
+    "looks",
+    "qa21",
+    "qa778",
+    "qa9",
+    "qa92",
+    "qaAA",
+    "qaAC",
+    "qaj",
+    "runclear",
+    "tips",
+    "ui:qa",
+    "ui:stall",
+    "ui:keep",
+    "ui:cut18",
+    "ui:cut19"
+  ],
+  "viewportPolicy": "34 state groups at400px;33 responsive triples at320/1440px; other matrices unchanged. Exhaustive retains all original variants.",
+  "execution": {
+    "browser": "headless",
+    "jobs": 12,
+    "heavyWidth": 1,
+    "availableCores": 32
+  },
+  "elapsedSeconds": 392.601,
+  "failed": 1,
+  "results": [
+    {
+      "n": "ambient-motes",
+      "code": 0,
+      "out": "400 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS\n1440 drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS\n",
+      "ms": 212521,
+      "own": 27250
+    },
+    {
+      "n": "ascension-refusal",
+      "code": 0,
+      "out": "320x568 39 ascension review/cancel/refusal/single-flight/success PASS\n400x900 39 ascension review/cancel/refusal/single-flight/success PASS\n1440x900 39 ascension review/cancel/refusal/single-flight/success PASS\n800x400 39 ascension review/cancel/refusal/single-flight/success PASS\n",
+      "ms": 245530,
+      "own": 21275
+    },
+    {
+      "n": "audio",
+      "code": 0,
+      "out": "ok   window.__audio is exposed in dev\nok   the context is not created before a gesture\nok   a cue before the first gesture schedules nothing\nok   the first click creates the AudioContext\nok   the camp drone is up for the next floor's biome (warrens)\nok   the drone is two oscillators under a very quiet gain (≤ 0.03)\nok   hit: 2 oscillator(s) + 1 gain\nok   hit: schedules 120 ms ≤ 200 ms\nok   hit: 2 oscillator(s) + 1 gain\nok   hit: schedules 120 ms ≤ 200 ms\nok   slay: 2 oscillator(s) + 1 gain\nok   slay: schedules 180 ms ≤ 200 ms\nok   rule: 2 oscillator(s) + 1 gain\nok   rule: schedules 30 ms ≤ 200 ms\nok   telegraph: 2 oscillator(s) + 1 gain\nok   telegraph: schedules 180 ms ≤ 200 ms\nok   exit_bank: 2 oscillator(s) + 1 gain\nok   exit_bank: schedules 200 ms ≤ 200 ms\nok   exit_return: 2 oscillator(s) + 1 gain\nok   exit_return: schedules 200 ms ≤ 200 ms\nok   level: 2 oscillator(s) + 1 gain\nok   level: schedules 200 ms ≤ 200 ms\nok   unlock: 2 oscillator(s) + 1 gain\nok   unlock: schedules 200 ms ≤ 200 ms\nok   strike: 2 oscillator(s) + 1 gain\nok   strike: schedules 46 ms ≤ 200 ms\nok   strike: 2 oscillator(s) + 1 gain\nok   strike: schedules 180 ms ≤ 200 ms\nok   slay: 1 oscillator(s) + 1 gain\nok   slay: schedules 180 ms ≤ 200 ms\nok   hit: 2 oscillator(s) + 1 gain\nok   hit: schedules 120 ms ≤ 200 ms\nok   boss_in: 2 oscillator(s) + 1 gain\nok   boss_in: schedules 200 ms ≤ 200 ms\nok   click: 1 oscillator(s) + 1 gain\nok   click: schedules 18 ms ≤ 200 ms\nok   boss_break: 2 oscillator(s) + 1 gain\nok   boss_break: schedules 180 ms ≤ 200 ms\nok   edit: 1 oscillator(s) + 1 gain\nok   edit: schedules 35 ms ≤ 200 ms\nok   boss_down: 2 oscillator(s) + 1 gain\nok   boss_down: schedules 200 ms ≤ 200 ms\nok   buy: 2 oscillator(s) + 1 gain\nok   buy: schedules 120 ms ≤ 200 ms\nok   verdict: 2 oscillator(s) + 1 gain\nok   verdict: schedules 160 ms ≤ 200 ms\nok   fold: 1 oscillator(s) + 1 gain\nok   fold: schedules 120 ms ≤ 200 ms\nok   scene: 1 oscillator(s) + 1 gain\nok   scene: schedules 160 ms ≤ 200 ms\nok   scene_end: 2 oscillator(s) + 1 gain\nok   scene_end: schedules 200 ms ≤ 200 ms\nok   unfurl: 1 oscillator(s) + 1 gain\nok   unfurl: schedules 110 ms ≤ 200 ms\nok   coin: 2 oscillator(s) + 1 gain\nok   coin: schedules 120 ms ≤ 200 ms\nok   chime: 2 oscillator(s) + 1 gain\nok   chime: schedules 200 ms ≤ 200 ms\nok   hit pitch falls with damage (153 → 72 Hz)\nok   8 strikes in a row: no two consecutive identical (8 distinct)\nok   exit_death: one low note fading over 1000 ms (≤ 1 s)\nok   exit_death: low pitch, exponential fade\nok   muted: a cue schedules no oscillator\nok   muted: the drone is gone\nok   mute is persisted\nok   settings: the mute toggle shows on\nok   settings: tapping mute unmutes and persists\nok   unmuted: the drone returns in the camp\nok   in a run the drone is gone\nok   in a run the biome's ambience bed is up (warrens)\nok   a boss's entrance ducks the ambience bed (1 duck)\nok   out of the run the bed is gone\nok   the run fired combat cues: hit, slay, rule, telegraph, exit_bank, exit_return, level, unlock, strike, boss_in, click, boss_break, edit, boss_down, buy, verdict, fold, scene, scene_end, unfurl, coin, chime, exit_death\nok   a player row firing ticked\nok   the exit played its cue\nok   every oscillator of the run (58) stopped within its bar\naudio: ok (76 checks)\n",
+      "ms": 173637,
+      "own": 27177
+    },
+    {
+      "n": "bloodline-founding",
+      "code": 0,
+      "out": "320 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS\n1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS\n",
+      "ms": 119355,
+      "own": 30395
+    },
+    {
+      "n": "bloodline-training",
+      "code": 0,
+      "out": "320 22 bloodline training attribution checks PASS\n1440 22 bloodline training attribution checks PASS\n",
+      "ms": 269351,
+      "own": 11849
+    },
+    {
+      "n": "boss-beat-quiet",
+      "code": 0,
+      "out": "400 18 immediate callout/caption hold, frames, release, expiry and nameplates PASS\n1440 18 immediate callout/caption hold, frames, release, expiry and nameplates PASS\n",
+      "ms": 71512,
+      "own": 7750
+    },
+    {
+      "n": "boss-counters",
+      "code": 0,
+      "out": "320 23 boss counter clarity checks PASS\n1440 23 boss counter clarity checks PASS\n",
+      "ms": 249484,
+      "own": 9371
+    },
+    {
+      "n": "boss-kill-beat",
+      "code": 0,
+      "out": "ok   real wasm engine\nok   the earned clear imports\nok   a live run stands on the Foundry Master's floor (D23)\nok   the watch reaches the Foundry Master\nok   paused, the world ran the run to its end\nok   FOUNDRY MASTER DOWN is a beat (took axe +1 | FOUNDRY MASTER DOWN | RETURNED $5319)\nok   the kill's beat comes before the exit's\nok   the kill holds its beat before the exit (4931 ms)\nok   then the report\nok   real wasm engine\nok   the earned clear imports\nok   the absence's runs are held for replay (4)\nok   a boss slain while away offers watch kill (1 bosses)\nok   the button reads watch kill\nok   the kill's replay opens (foundry_master)\nok   seeked to the kill's floor (floor 14, kill {\"floor\":14,\"t\":22180,\"seen\":false})\nok   the fall plays within seconds of the open\nok   the replay names the kill (D23 · FOUNDRY MASTER DOWN)\nok   no horizontal scroll\nok   real wasm engine\nok   the earned clear imports\nok   a run in flight short of the Foundry Master at the close (D12)\nok   the run in flight finished away past the Master ({\"id\":360,\"depth\":33,\"held\":true})\nok   the reloaded run in flight is held for replay\nok   watch kill offered after the reload\nok   the kill's replay opens after a reload\nok   it is the run that was in flight (360 vs 360)\nboss-kill-beat: ok (27 checks)\n",
+      "ms": 173885,
+      "own": 84940
+    },
+    {
+      "n": "captive-fact-copy",
+      "code": 0,
+      "out": "report traits, enemy tooltip and exact save PASS\n",
+      "ms": 287293,
+      "own": 5908
+    },
+    {
+      "n": "checkpoint-gold",
+      "code": 0,
+      "out": "400 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS\n",
+      "ms": 260976,
+      "own": 11588
+    },
+    {
+      "n": "chrome",
+      "code": 0,
+      "out": "chrome: 184 checks PASS\n",
+      "ms": 135600,
+      "own": 46638
+    },
+    {
+      "n": "chronicle-unit-labels",
+      "code": 0,
+      "out": "400 historical ownership/old fallback/spacing/read-only open/kept-death id PASS\n",
+      "ms": 281869,
+      "own": 6337
+    },
+    {
+      "n": "chunky-controls",
+      "code": 0,
+      "out": "320 actual run tabs/fold/material/appearance parent/read-only/rename reload PASS\n1440 actual run tabs/fold/material/appearance parent/read-only/rename reload PASS\n",
+      "ms": 149792,
+      "own": 30436
+    },
+    {
+      "n": "clarity:core,watch",
+      "code": 0,
+      "out": "ok   ▲▼ chips are ≥ 44 px tall beside the grip (44/44 px)\nok   R1's ▲ and the last row's ▼ are off\nok   ▼ on R1 swaps R1 and R2 (\"foes ≥ 1 + → attack nearest\" first)\nok   the engine's set has the same 2 rows\nok   ▲ on R2 puts it back\nok   the +1 row card is dimmed (2/4 rows): \"⊘ fill rules\"\nok   with the set full the card no longer says fill rows (\"⊘ ◆2 more\")\nok   card deltas read their move or their foes:  · reach +5 ±3\nok   greyed supplies say why ($5 in hand): leash $30$25 short · dagger $20$15 short\nok   the rest chip reads \"departs 20m\"\nok   the boss floor names the counter: \"D5 try: attack boss <13%\"\nok   the tap inserts the counter row at the top: \"foe: boss + → attack boss\"\nok   the engine's set leads with it (foe_tagboss→attacktag:boss)\nok   with the row held the bar no longer offers it\nok   the bestiary shows the counter chip\nok   the bestiary chip inserts at the top too: \"foe: boss + → attack boss\"\nok   the death line reads \"goblin pack · D3 · you died\" · \"\" (no hp margin)\nok   the lost companion reads \"◯ jackal Ashar fell\"\nok   simple report keeps its order and earned values: runs · deepest · Gold earned (14 · D8 · $145)\nok   detail tiles retain their stable order: runs · deepest · upgrade tokens · full haul · runs returned · deaths\nok   exit lines lead with the tier and the sum, newest first: \"full haul $84 · $84 carried · bank keeps 100% → $84\" · \"returned $61 · $102 carried · return keeps 60% → $61\"\nok   the report's lost chip reads \"◯ jackal Ashar fell\"\nok   after an absence the tiles fade in\nok   the same order when full hauls lead; a watched run's tiles do not fade (runs · deepest · Gold earned)\nok   old reports label historical depth Record; reduced motion disables entry animation\nok   a repeated chore reads with a count: pick up ×8 (lines: pick up ×8)\nok   the settings row toggles slowdowns: on → off (stored 0)\nok   slowdowns off: the fight frame opens and the clock stays at the flat 32× (Cut 20 §3; 32)\nok   slowdowns on: a fight in fast runs at 4× (4/4/4/4)\nok   a fight is up and the strip shows (frame fight, strip true)\nok   visible watch control dispatches ⏸\nok   paused: the playhead holds at 80 while the frontier runs 100 → 150 (dot beats 8 → 14, head 80.0% → 53.3%)\nok   visible watch control dispatches ▶▶|\nok   ▶▶| from behind lands on the frontier (tick 212 ≥ 150, speed 0, card 1)\nok   hidden 5 s: the picture held at 120 while the world ran 290 → 910\nok   back, the viewer is live (tick 913, frontier 910, speed 2)\nok   visible watch control dispatches ⏸\nok   the run ended while paused (frontier 160 → 420, ending true) and the exit waits (tick 41, watch)\nok   visible watch control dispatches ▶\nok   resumed, the replay plays on (tick 41 → 253 of 420)\nok   visible watch control dispatches ▶▶|\nok   ▶▶| lands on the ending's start at 2× (Cut 20 §3: fast walks out at 2×; tick 405, frontier 420, speed 2)\nok   then the exit flow (death)\nclarity core,watch: ok (43 checks)\n",
+      "ms": 47625,
+      "own": 39031
+    },
+    {
+      "n": "clarity:paint",
+      "code": 0,
+      "out": "ok   an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (719 ms)\nok   the refine lands after the first paint (3518 ms)\nok   the real engine answers (wasm)\nok   real wasm (wasm): an edit's first pass paints ≤ 1 s (quiet 98/131/113 ms, median 113; after a burst 141; slow measures in flight 466)\nok   real wasm: the refine lands ≤ 3 s (quiet 878/908/1033 ms; after a burst 1082; slow measures in flight 1741)\nclarity paint: ok (5 checks)\n",
+      "ms": 351810,
+      "own": 28534
+    },
+    {
+      "n": "class-locks",
+      "code": 0,
+      "out": "320 gate/token-short/available/owned/viewport/exact-save PASS\n1440 gate/token-short/available/owned/viewport/exact-save PASS\n",
+      "ms": 252842,
+      "own": 10712
+    },
+    {
+      "n": "class-styles",
+      "code": 0,
+      "out": "400 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS\n",
+      "ms": 249078,
+      "own": 16976
+    },
+    {
+      "n": "class-switch",
+      "code": 0,
+      "out": "400 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS\n",
+      "ms": 228260,
+      "own": 22678
+    },
+    {
+      "n": "class-tree",
+      "code": 0,
+      "out": "320 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS\n400 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS\n1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS\n",
+      "ms": 323276,
+      "own": 103841
+    },
+    {
+      "n": "combat-identity",
+      "code": 0,
+      "out": "400 27 combat identity/delayed actors/fallback/colours/bounds PASS\n",
+      "ms": 232102,
+      "own": 23238
+    },
+    {
+      "n": "combat-rules",
+      "code": 0,
+      "out": "400 18 combat decisions/counts/paused release/batch and action boundaries PASS\n",
+      "ms": 192746,
+      "own": 13221
+    },
+    {
+      "n": "compact-depth",
+      "code": 0,
+      "out": "400 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS\n1024 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS\n1440 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS\n1920 compact geometry/start/milestones/uncertainty/reference/mobile/read-only PASS\n",
+      "ms": 209526,
+      "own": 35889
+    },
+    {
+      "n": "companion-chrome",
+      "code": 0,
+      "out": "320 companion/death material/layout/select/dismiss/rules/breed/hatch/details/morgue PASS\n1440 companion/death material/layout/select/dismiss/rules/breed/hatch/details/morgue PASS\n",
+      "ms": 223654,
+      "own": 14127
+    },
+    {
+      "n": "control-visibility",
+      "code": 0,
+      "out": "360 automatic/manual/release/absent visibility PASS\n400 automatic/manual/release/absent visibility PASS\n1440 automatic/manual/release/absent visibility PASS\n",
+      "ms": 208864,
+      "own": 34979
+    },
+    {
+      "n": "counter-name",
+      "code": 0,
+      "out": "10 counter name checks PASS\n",
+      "ms": 281390,
+      "own": 5371
+    },
+    {
+      "n": "ctxloss",
+      "code": 0,
+      "out": "ok   lost: stats().glLost (true)\nok   lost: GPU timings are explicitly unavailable\nok   lost: the 2D view is drawn over the canvas (shown true, 425 colours)\nok   lost: the watch keeps advancing (tick 23 → 62, watch)\nok   restored: GL frames again (glLost false, 6 draw calls)\nok   restored: the 2D view hidden (false)\nok   restored: the watch advances (tick 71 → 81)\nok   lost again: ▶▶| reaches the run's exit (8725 ms, screen report)\nok   real engine, lost: stats().glLost\nok   real engine, lost: ▶▶| reaches the run's exit (6680 ms, screen death)\nok   no GL: the camp's town is drawn in 2D (2d, shown true, 945 colours)\nok   no GL: the 2D viewer mounted (glLost true)\nok   no GL: the tick advances (0 → 806)\nok   no GL: the map is drawn in 2D (511 colours)\nok   no GL: ▶▶| reaches the run's exit (12813 ms, screen exit)\nok   town lost: stats().glLost (true, 2d)\nok   town lost: the 2D view draws the town (shown true, 1456 colours)\nok   town lost: the scene runs on (frames 5 → 7)\nok   town restored: GL again, the 2D view hidden (gl, 2D shown false)\nctxloss: ok (19 checks)\n",
+      "ms": 150567,
+      "own": 61614
+    },
+    {
+      "n": "cut12",
+      "code": 0,
+      "out": "ok   the lineage took marks, facts and gold\nok   the preset reads 2/4, 2 rows\nok   the yours line names the combo: \"written: 0 of 2 rules · gambler\"\nok   the forecast's bounded run outcomes: \"run outcomes full haul <13% · turn back <13% · death >87% · avg $0/run\"\nok   +1 row waits on the rows at 2/4, as a requirement: \"+1 rule slot⊘ fill rules◆2 or $350\"\nok   the kennel's leash reads free (QA 92eb880: kennel was unexplained): \"leash · free ×\"\nok   the catalogue says the card goes before the attack row (insert_at 1)\nok   the card sits at R2, above attack: hp < 30% + → drink unkno | [card] thief guard foe:  | foes ≥ 1 + → attack near\nok   the chip counts own rows and the card beside: \"2/4 rules + 1 tactic\"\nok   yours counts own rows, no \"card R2 first\" (a card sits before attack on purpose): \"written: 0 of 2 rules\"\nok   the second card also sits above attack: hp < 30% + → drink unkno | [card] thief guard foe:  | [card] pack break foe: p | foes ≥ 1 + → attack near\nok   two cards, still 2/4: \"2/4 rules + 2 tactics\", send enabled\nok   with a return row explicit sampling measures a positive turn-back share (0.23): \"run outcomes full haul <1% · turn back 23% · death 77% ±8 · avg $3/run\"\nok   4 own + 2 cards: \"4/4 rules + 2 tactics\", send enabled, no +\nok   +1 row lifted at 4/4 without a run: \"+1 rule slot◆2 or $350\"\nok   the engine took all six rows (6)\nok   the fifth own row: \"5/4 rules + 2 tactics\" red, send \"5/4 · drop one\"\nok   the drop mark is on the last own row, never a card\nok   after ×: \"4/4 rules + 2 tactics\", send enabled\nok   cards the set holds are not offered (no cards)\nok   the freed card is offered again, the held one is not\nok   picking a card verb cleared the conds: \"[card] thief guard foe: thief → attack t\"\nok   the row moved from own to card: \"3/4 rules + 2 tactics\"\nok   three lines on the shelf (leash · free × / heal potion × / strength ×)\nok   × took the heal only: leash · free × / strength ×\nok   without dropSupply: the strength line is gone, the free leash with it until the next exit (empty)\ncut12: ok (26 checks)\n",
+      "ms": 63762,
+      "own": 16137
+    },
+    {
+      "n": "cut122",
+      "code": 0,
+      "out": "cut122 400: 23 checks PASS\ncut122 1440: 23 checks PASS\ncut122 wire: 41 checks PASS\ncut122 home: heading home · banked $12 · went on (watch · tick 466)\ncut122 real: 5 checks PASS · hunger {\"lost\":0.66,\"unfed\":2.31,\"fed\":0.66,\"kept\":1.66,\"packed\":true,\"price\":375} · priced 0\ncut122: 94 checks PASS\n",
+      "ms": 199073,
+      "own": 37782
+    },
+    {
+      "n": "cut26",
+      "code": 0,
+      "out": "ok   no route line before a fork is seen (hidden; forks 0)\nok   after `fork:4` the chip line sits above the rows (\"route D4 burrows\"; above the first rule: true)\nok   the fork tablet prices both stairs for this set, the set's lit (burrows D5 <5%… ● · fens D5 <5%…)\nok   a tap writes the route — the engine gets route [4], the forecast reprices (2 → 3), the chips read \"route D4 fens\"\nok   the route change reads as an edit against the sent set (move shown: \"edit · D8 same\")\nok   export round-trips the route (\"⑂ 4\" → route [4])\nok   the shaft on route [4]: D4 fens, D6 burrows; the lane not taken \"or burrows\" (entered: no `?`) [1warrens,2warrens,3warrens,4fens,5fens,6burrows,7burrows,8burrows,9burrows]\nok   on the near stair the far lane, never entered, is the frontier (\"or fens · untried\")\nok   the start sheet lists (lane, depth) pairs (D1 · D4 burrows · D6 fens · D6 burrows (other))\nok   the cond picker offers `in: burrows · in: fens` and shows `⊘ in: cryptenter crypt` locked, not a button\nok   a row holding a locked cond is marked: chip \"⊘ on see foe: any\", tablet \"⊘ locked · foe: any\"\nok   a gap 10 of 12 unpatched replays survive reads `you died · 10/12 replays survive` beside \"survives 11/12 · was 10/12\" (the stamp and its counts agree)\nok   a patch's reach reads from→to (\"reach D5 80→4%\"; AP: `reach D5 −76`)\nok   a gap 2 of 12 unpatched replays survive reads `you died`, no lean\nok   the core's `lean: dice` reads beside the stamp (\"5/12 replays survive\")\nok   a route death: \"bloat · D7\" · route; lead \"1.fork D5 take burrowssurvives 9/12 · was 3/12\", gem 9/12\nok   the gem takes the other stair (route [], camp)\nok   a drive-off opens its verdict from the report's line (chip 2): \"Warlord · D8\" · repelled, tablet \"1.foe: boss → attack bosstry: attack boss\", gem `write`, \"driven $0 · $297 lost · by War\"\nok   the gem writes the counter as R1 (camp, R1 tag:boss, 2 → 3 rows)\nok   the repeat plate (\"Restock on · held ≤$120\") covers no button, its own tile's face clear\nok   the report names each band's lane (D5–8 · the Fens | D9–13 · the Burrows)\nok   a fork floor draws two stairs, each with its lane, the route's lit (2 drawn; plates burrows, fens*)\nok   the watch calls `TWO STAIRS` on the fork fact (two stairs)\nok   the ogre is cut down by area: speckle 18 % vs nearest 31 % (23×24)\ncut26: ok (24 checks)\n",
+      "ms": 185271,
+      "own": 35479
+    },
+    {
+      "n": "cut28",
+      "code": 0,
+      "out": "ok   a fresh lineage ($120, oaths from $130) shows no oath tablet (board 3, tablet false)\nok   the first wall (the Warlord's floor) carves the oath tablet (\"challenges 3\")\nok   the board holds three oaths (3)\nok   each oath is its constraint as chips, ≤ 3 words a chip (tame | a new kind ; slay Warlord | with fire ; reach D2 | no return)\nok   each carries its reward, an icon and ≤ 3 words (+1 party · title: Firebrand · action: throw)\nok   each carries its stake (stake $130 · stake $130 · stake $130)\nok   each deal reads as a formula, chips → reward (chips → reward ; chips → reward ; chips → reward)\nok   the first tap arms the swear (\"ok $130\")\nok   swearing pays its price ($2000 → $1870, price $130)\nok   the challenge shows the stake's fate and the refund (\"$130 · 0/1 20% ±20 · night 97%\", \"cancel +$65\")\nok   the sworn oath rides the shaft with its share (\"20% ±20tame a new kind →\")\nok   the tablet carries the sworn oath as its formula (\"tamea new kind→ 20% ±20\")\nok   the wall names its counter fact (\"mother: ?\", known \"counter: attack boss\")\nok   the bounty says what it pays and needs (\"bounty · D13 · 2× gold · item\"; bare \"bounty · D13 · 2× gold\")\nok   the watch says the oath's fate (CHALLENGE COMPLETE | CHALLENGE FAILED · return | CHALLENGE FAILED · rest)\nok   a state change reads as its own line (\"party −1 jackal · death +6\")\nok   with no row edited there is no rows' move and no scene (vs false, scene false)\nok   after a row edit each part has its line (\"party −1 jackal · death +6\" · \"edit · D10 same\")\nok   the report leads with a decision, the oath first (oath: oath: tame · a new kind · 0/22 · record: first kill goblin · death: D2 death · dice)\nok   the challenge keeps its tally in Details (\"challengetamea new kind→+1 partykept 0/22\")\nok   the ledger is folded under `details` (hidden true, \"▸ details\")\nok   no ledger section above the fold (above: none; folded: pending, challenge, learned, hatched, bests, xp, found, bones, deaths, shelved, salvaged, reputation, reel)\nok   a tap on `details` unfolds the ledger\nok   a rough answer stands without requesting refinement, no `…` (first pass true, settled true)\nok   hero Details offers Change class\nok   Change class opens the class picker from hero Details\nok   no console errors ()\ncut28: 27/27 ok\n",
+      "ms": 161291,
+      "own": 41439
+    },
+    {
+      "n": "cut28d",
+      "code": 0,
+      "out": "ok   the run's max-hp arc reads over the table (\"max hp 44→29 · drain −12 · hunger −3\")\nok   each step in the window is its own row (740 max 38→32 drain −6 | 800 max 32→29 hunger −3)\nok   every hp reads over the max he had then (16/38 · 13/32 · 10/29 · 10/29 · 7/29 · 4/29 · 0/29)\nok   the table's rows stay in tick order (700 740 760 800 820 860 880 890 900)\nok   an `hp not <30%` reason reads his hp over the drained max (\"drink heal at 30% hp not <30% 10/29\")\nok   per-turn maxima read the same (20/40 · 12/34 · 9/34 · 0/34)\nok   a max that never moved leaves the table as it was (20 · 12 · 0)\nok   a watched run's max-hp events read in its trace (\"max hp 30→27 · drain −3\"; 22/30 · 11/27)\nok   a gap 10/12 replays live leads with its event and odds (\"goblin −6 at 6 hp · 1 in 6\", above the stamp: true)\nok   the stamp steps back beside its count (verdict gap lean-seal, 64 px; \"10/12 replays survive\")\nok   a gap most replays die of has no luck line\nok   a dice no replay died of reads its odds as rarer than the replays (\"ogre −9 at 9 hp · 1 in 12+\")\nok   the core's own event and odds win (\"a crit at 6 hp · 1 in 6\")\nok   a stall has no luck line\nok   both patches read `no gain` (survives 0/12 · no gain | survives 0/12 · no gain)\nok   no `no gain` tablet carries a gain-coloured move; the number stays (reach D14 0→24% [] | reach D14 0→24% [])\nok   a patch that gains keeps its move in the gain colour\ncut28d: ok (17 checks)\n",
+      "ms": 281384,
+      "own": 8304
+    },
+    {
+      "n": "cut29",
+      "code": 0,
+      "out": "ok   catch-up: only the real final boundary is marked last\nok   catch-up: zero seconds returns a valid final report\nok   catch-up: autosave/pagehide preserve durable absence timestamp until completion\nok   catch-up: pending acknowledgements excluded, final report counted once\nok   catch-up: failure after progress cannot replay elapsed time via fallback; UI restored\nok   catch-up: failed batches preserve durable save; runtime errors cannot masquerade as unsupported APIs\nok   catch-up: old additive report cores retain their merge path\nok   merge: marks 1, systems edit · death · exits, kept oaths 1, fallen Greth · Ashar\nok   merge: the meters add up and their rates are the summed totals' (40 s · dealt 90 · 2.25 dps · rows 0:3/0.3 1:5/0.5 2:2/0.2 · 0.15 hp/s · $90/min)\nok   merge: multiple Rule events per action preserve counts and use rule-activation shares\nok   a find that is no decision opens no keep sheet: settled by autoKeep (×1, sheet false, watch)\nok   the settled exit says its one line ([\"kept leather +1\"])\nok   day 0: only send · headline open — 0 tiles, no editor (false), no vs line (false)\nok   the first death opens no edit tile before the pen (none)\nok   the core marks the verdicts new until the camp has shown them (death)\nok   once shown, the next send clears it (seenSystems): new []\nok   the Warlord slain opens the forge, the loadout and the packages, no edit yet (forge* · packages* · quest* · loadout*)\nok   the pen opens the edit tile (forge* · packages* · quest* · edit* · loadout* · unlocks*)\nok   the pen brings the order: ▲▼ on the tablets (4)\nok   the report plaques the systems opened, glinting (forge:forge* · oaths:oaths*)\nok   the watch's meter is off until toggled, then one line with its units (\"run dealt 0 dps taken 0 dps\")\nok   the toggle is remembered (1)\nok   the death screen breaks down the fight, units on every figure, rules by their words (dealt hero 3.7 dps · 31 hp | taken hero 4.5 dps · 38 hp · 9 hits | healed 1.4 hp/s · potion 12 hp | time fight 100% | rules attack nearest 70% · drink unknown at 30% 30% | used heal ×1; 2 rules)\nok   the report meters completed runs (\"Completed runs · 15mWhole runs · Camp rest separatedealt hero 3.7 dps · 31 hptaken hero 4.5 dps · 38 hp · 9 hitshealed 1.4 hp/s · potion 12 hptime fight 13% tra\")\nok   the camp compares the last two runs (dealt 4 → 6 dps +2 | taken 0.5 → 0.5 dps | healed 0 → 0 hp/s | fighting 16.7 → 16.7 % | gold 20 → 35 $/min +15)\nok   desktop camp diagnostics start folded\nok   desktop summary names details and latest run duration\nok   keyboard opens the original desktop two-run comparison\nok   desktop comparison retains values and units\nok   keyboard closes run details\nok   one run setup tablet stands for the keep, loot and start (\"run setup keep weapon · loot → weapon\"; cage tablet false, start tablet false)\nok   the sheet holds the five orders (keep for heirs weapon armour none | loot preference weapon ▸ | start D1 ▸ | Auto restock on off | insure kit on off)\nok   a tap sets an order through setOrders; the sheet and the tablet follow (armour · weapon ▸ · D1 ▸ · off · on; \"run setup keep armour · loot → weapon · restock off\")\nok   with a second slot one sworn oath leaves the others swearable (active 1/2; 2 open)\nok   a fresh oath is drawn for ◆2 (\"draw ◆2\", marks 5 → 3)\nok   a work is commissioned for gold (\"build heir's statue $3250\": $4870 → $1620, works heir's statue)\nok   a throw row's kind the repeat lacks is offered as one tap (\"+ fire · for throw fire\")\nok   one tap packs it (buySupply) and the offer leaves (true)\nok   the shaft's gold is a run's, the passage apart (\"avg $125/run +$135 passage\")\nok   a fallen companion is a named line among the decisions (\"Greth · ogre L5 · fell D12 to lurker\")\nok   the report paints without waiting on the wall search (painted true, tablet at once false)\nok   the wall's edit is a patch tablet, its rule named by its words (\"Reach D18 · 48 samplesBefore 12% → With fix 38%Review rulesCurrent rules1hp < 30%→drink unknown2foes ≥ 1→attack nearestSuggested rules1hp < 30%→drink unknown2hp < 90%→rest3foes ≥ 1→attack nearestApply fix\")\nok   apply takes the measured set (hp<30>drink · hp<90>rest · foes>=1>attack)\nok   a long press lifts the last tablet and drops it at the top (lifted true; drink · attack → attack · drink; sheet false)\nok   the marks' first appearance carries its caption (\"upgrade tokens\")\nok   once seen, the icon stands alone (caption false, icon true)\ncut29: ok (46 checks)\n",
+      "ms": 179524,
+      "own": 90577
+    },
+    {
+      "n": "cut305:sheet,rank",
+      "code": 0,
+      "out": "ok   early: done quartermaster · lit porter · silhouettes armourer,scout — never the whole tree; ≤ 1 hire (1)\nok   copy: names ≤ 2 words (armourer, scout, porter), state lines ≤ 3 words + a number (storehouse built | 1/3 sends · $75 | 3/3 chests)\nok   the lit node says what it retires in a fragment of ≤ 4 words, no `you`, no stop (\"hauls home · while away\"; hauls home · while away)\nok   nothing lit: the counting node is current (porter), no hire, two silhouettes (armourer,scout)\nok   mid: the trunk done, the branches open in order (character · items · scale · town)\nok   each branch: its stage and `next · <stage> · <trigger>` (a tactic / next · pets · first stray | blacksmith steps / next · a counter packed · a drill's item | waystones / next · party slot 2 · a second slot | bank / next · kennel · first tame)\nok   the character branch wears the hero's face\nok   mid: the trunk's five done in one dim row, the next ≤ 2 silhouettes; 12 items on screen (≤ 7 nodes + the done row)\nok   a rank on offer while no hire is lit (porter I → II · $175)\nok   the works: the rank card `porter II` with `promote · $175`, ≤ 1 buy (1), focused\nok   the card marks the `rank` term; no numeral on a rank-1 done node (none)\nok   the rank's tooltip entry (\"worker's grade · from service\")\nok   promote → `PORTER II`; porter rank 2; his pip in the town ({\"porter\":2})\nok   the done row shows the ranks as numerals (quartermaster, porter III, scout II)\nok   the town: ranked workers carry their pips ({\"porter\":3,\"scout\":2})\nok   no page errors ()\ncut305: all passed\n",
+      "ms": 233198,
+      "own": 13194
+    },
+    {
+      "n": "death-actions",
+      "code": 0,
+      "out": "320 44 death action/illustration checks PASS\n320 recorded boss tooltip PASS\n1440 44 death action/illustration checks PASS\n1440 recorded boss tooltip PASS\n",
+      "ms": 234908,
+      "own": 14296
+    },
+    {
+      "n": "death-fix-discovery",
+      "code": 0,
+      "out": "400 13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS\n",
+      "ms": 205582,
+      "own": 27192
+    },
+    {
+      "n": "death-forecast-said",
+      "code": 0,
+      "out": "400 10 death forecast-said checks PASS\n",
+      "ms": 289614,
+      "own": 5067
+    },
+    {
+      "n": "death-hero",
+      "code": 0,
+      "out": "320 9 historical death hero checks PASS\n1440 9 historical death hero checks PASS\n",
+      "ms": 251909,
+      "own": 9604
+    },
+    {
+      "n": "death-price-lanes",
+      "code": 0,
+      "out": "death-price-lanes: 13 snapshot/cache checks PASS\n",
+      "ms": 291402,
+      "own": 4108
+    },
+    {
+      "n": "debug-export",
+      "code": 0,
+      "out": "400 shipping debug export, restore, live watch and recovery PASS\n",
+      "ms": 270540,
+      "own": 12620
+    },
+    {
+      "n": "editor-packages",
+      "code": 0,
+      "out": "400 authored/package disclosure/add/promotion/highlight/binding checks PASS\n1440 authored/package disclosure/add/promotion/highlight/binding checks PASS\n",
+      "ms": 242305,
+      "own": 20187
+    },
+    {
+      "n": "encounter-modifiers",
+      "code": 0,
+      "out": "320 encounter metadata/played state/counters/fallback/keyboard/viewport/read-only PASS\n1440 encounter metadata/played state/counters/fallback/keyboard/viewport/read-only PASS\n",
+      "ms": 239454,
+      "own": 13110
+    },
+    {
+      "n": "enemy-surfaces",
+      "code": 0,
+      "out": "320 death hover/trace tap/longpress/owner/environment checks PASS\n1440 death hover/trace tap/longpress/owner/environment checks PASS\n",
+      "ms": 88875,
+      "own": 9311
+    },
+    {
+      "n": "enemy-tips",
+      "code": 0,
+      "out": "320 enemy hover/tap/keyboard/Escape/viewport and owner knowledge PASS\n1440 enemy hover/tap/keyboard/Escape/viewport and owner knowledge PASS\n",
+      "ms": 79564,
+      "own": 8052
+    },
+    {
+      "n": "exit-keep-close",
+      "code": 0,
+      "out": "ok   gem: a return with loot opens the keep sheet\nok   gem: closing the keep sheet goes on to the next screen (report)\nok   gem: the close keeps the ticked pick once ([[1002]], pick 1002)\nok   escape: a return with loot opens the keep sheet\nok   escape: closing the keep sheet goes on to the next screen (report)\nok   escape: the close keeps the ticked pick once ([[1002]], pick 1002)\nok   stud: a return with loot opens the keep sheet\nok   stud: closing the keep sheet goes on to the next screen (report)\nok   stud: the close keeps the ticked pick once ([[1002]], pick 1002)\nexit-keep-close: ok (9 checks)\n",
+      "ms": 155372,
+      "own": 66421
+    },
+    {
+      "n": "fights:break",
+      "code": 0,
+      "out": "ok   fights: the boss bar under the hero's while he is in view (\"warlord\" 47% · 14/30)\nok   fights: the break is a beat — the fight frame with \"WARLORD BREAKS\" (fight frame)\nok   fights: the break beat holds the frame and the line 2 s on (fight, \"WARLORD BREAKS\")\nok   fast: the boss bar under the hero's while he is in view (\"warlord\" 47% · 14/30)\nok   fast: the break is a beat — the fight frame with \"WARLORD BREAKS\" (fight frame)\nok   fast: the break beat holds the frame and the line 2 s on (fight, \"WARLORD BREAKS\")\nfights: ok (6 checks)\n",
+      "ms": 8593,
+      "own": 7999
+    },
+    {
+      "n": "first-plot",
+      "code": 0,
+      "out": "320 first plot visibility, controls, busy dedup and real construction PASS\n1440 first plot visibility, controls, busy dedup and real construction PASS\n",
+      "ms": 242130,
+      "own": 15093
+    },
+    {
+      "n": "forecast-requests",
+      "code": 0,
+      "out": "400 16 forecast lifecycle checks PASS\n",
+      "ms": 287915,
+      "own": 6524
+    },
+    {
+      "n": "forge-requests",
+      "code": 0,
+      "out": "400 34 Forge request checks PASS\n",
+      "ms": 287535,
+      "own": 5828
+    },
+    {
+      "n": "game-menu",
+      "code": 0,
+      "out": "400 real-WASM cold title/preferences/direct reload/cancel/Continue/confirmed reset PASS\n27 game menu checks PASS\n",
+      "ms": 258785,
+      "own": 15783
+    },
+    {
+      "n": "gpu-diagnostics",
+      "code": 0,
+      "out": "GPU diagnostics: 741 protocol checks PASS\n",
+      "ms": 291434,
+      "own": 4077
+    },
+    {
+      "n": "gunner-observer",
+      "code": 0,
+      "out": "320 21 gun picture-clock/seek/HUD checks PASS\n1440 21 gun picture-clock/seek/HUD checks PASS\n",
+      "ms": 271601,
+      "own": 12482
+    },
+    {
+      "n": "hero-appearance",
+      "code": 0,
+      "out": "320 15 hero appearance route/lifecycle checks PASS\n1440 15 hero appearance route/lifecycle checks PASS\n",
+      "ms": 264049,
+      "own": 12140
+    },
+    {
+      "n": "hero-grounding",
+      "code": 0,
+      "out": "hero-grounding: ok (2 widths)\n",
+      "ms": 281944,
+      "own": 11404
+    },
+    {
+      "n": "hero-names",
+      "code": 0,
+      "out": "400 10 hero identity checks PASS\n",
+      "ms": 287357,
+      "own": 5488
+    },
+    {
+      "n": "hero-presence",
+      "code": 0,
+      "out": "400 16 presence/epoch/freshness/compatibility/identity checks PASS\n",
+      "ms": 291790,
+      "own": 4268
+    },
+    {
+      "n": "hero-slot-looks",
+      "code": 0,
+      "out": "320 18 slot/report appearance checks PASS\n1440 18 slot/report appearance checks PASS\n",
+      "ms": 273768,
+      "own": 12791
+    },
+    {
+      "n": "hero-summary",
+      "code": 0,
+      "out": "400 9 hero/class progress and read-only live summary PASS\n",
+      "ms": 284020,
+      "own": 8793
+    },
+    {
+      "n": "hero-upgrade-feedback",
+      "code": 0,
+      "out": "320 upgrade names/rank/next/prices/points/away/one-buy/lifecycle/touch PASS\n1440 upgrade names/rank/next/prices/points/away/one-buy/lifecycle/touch PASS\n",
+      "ms": 226344,
+      "own": 14270
+    },
+    {
+      "n": "history-pick-price",
+      "code": 0,
+      "out": "400 historical TRY Rust price/single request/no game mutation PASS\n",
+      "ms": 220611,
+      "own": 24944
+    },
+    {
+      "n": "hunger-legible",
+      "code": 0,
+      "out": "400 hunger legible starving −6 | starving · no light\n6 hunger legibility checks PASS\n",
+      "ms": 259119,
+      "own": 13675
+    },
+    {
+      "n": "item-icon-fallback",
+      "code": 0,
+      "out": "failed packed image keeps identity/rarity/name and unframed primitive PASS\n",
+      "ms": 292222,
+      "own": 4687
+    },
+    {
+      "n": "item-icons",
+      "code": 0,
+      "out": "320 117 item icon checks PASS\n1440 117 item icon checks PASS\n",
+      "ms": 245444,
+      "own": 12901
+    },
+    {
+      "n": "king-advice-scope",
+      "code": 0,
+      "out": "400 King replay scope/count/price/eligibility checks PASS\n",
+      "ms": 220004,
+      "own": 23989
+    },
+    {
+      "n": "leeching",
+      "code": 0,
+      "out": "320 {\"recoveries\":2,\"foeHP\":14} real-worker recovery/reload/poison/replay seek/log colour/viewport PASS\n1440 {\"recoveries\":2,\"foeHP\":14} real-worker recovery/reload/poison/replay seek/log colour/viewport PASS\n",
+      "ms": 195667,
+      "own": 21678
+    },
+    {
+      "n": "legacy-earned",
+      "code": 0,
+      "out": "320 11 Legacy owner/merge/old wire and actual WASM gain 15 PASS\n1440 11 Legacy owner/merge/old wire and actual WASM gain 15 PASS\n",
+      "ms": 119851,
+      "own": 30894
+    },
+    {
+      "n": "legacy-tree",
+      "code": 0,
+      "out": "320 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS\n1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS\n",
+      "ms": 178389,
+      "own": 27821
+    },
+    {
+      "n": "legacy-wire",
+      "code": 0,
+      "out": "real WASM worker respec bridge, Rust refusal and complete save unchanged PASS\n",
+      "ms": 292861,
+      "own": 4946
+    },
+    {
+      "n": "live-roster",
+      "code": 0,
+      "out": "400 20 live roster/send/poll/dedup/late reply/recovery PASS\n",
+      "ms": 287521,
+      "own": 5577
+    },
+    {
+      "n": "locked-cond",
+      "code": 0,
+      "out": "ok   fake vocabulary carries 6 locked cond(s): alert>= (foe: any), loot>= (D2), turns> (D3), on_kill (foe: any), on_see (foe: any), party_hp< (◆2)\nok   every locked cond carries a needs text\nok   no locked cond is also offered\nok   the cond sheet opened\nok   the sheet shows all 6 locked tokens (6)\nok   locked tokens are spans, not buttons (no handler)\nok   each locked token carries ⊘ and its needs: ⊘ alert ≥foe: any | ⊘ loot ≥D2 | ⊘ turns >D3 | ⊘ on killfoe: any | ⊘ on seefoe: any | ⊘ party hp <◆2\nok   locked tokens render dim\nok   the sheet offers 14 tokens (vocabulary: 14)\nok   no offered button reads as a locked token\nok   the sheet is still open after tapping a locked token\nok   R1 unchanged after the tap: \"hp < 30% + → drink unknown\"\nok   the engine's set is unchanged\nok   escape closes the sheet\nok   the second-cond sheet shows the locked tokens, none selectable\nok   locked set non-empty\nok   card reads its name and its trigger once: \"[card] pack break foe: pack → to corridor adjacent ≥ 2 → attack lowest\"\nok   yours line, no card-first suffix: \"written: 1 of 1 rule\"\nok   yours line without a card above: \"written: 1 of 1 rule\"\nlocked-cond: ok (19 checks)\n",
+      "ms": 273080,
+      "own": 14295
+    },
+    {
+      "n": "mirror-rhythm",
+      "code": 0,
+      "out": "400 real first-clear lock/earned availability, visible icon/equip, no currency change, one guarded row, cancel/reload PASS\n",
+      "ms": 266240,
+      "own": 13454
+    },
+    {
+      "n": "numbered-descents",
+      "code": 0,
+      "out": "320 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n400 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS\n",
+      "ms": 232543,
+      "own": 20021
+    },
+    {
+      "n": "numbers-agree",
+      "code": 0,
+      "out": "11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS\n",
+      "ms": 278330,
+      "own": 7385
+    },
+    {
+      "n": "package-lanes",
+      "code": 0,
+      "out": "package-lanes: 19 checks PASS\n",
+      "ms": 292837,
+      "own": 4601
+    },
+    {
+      "n": "package-paired",
+      "code": 0,
+      "out": "package-paired 400: 26 checks PASS\npackage-paired: 26 checks PASS\n",
+      "ms": 293332,
+      "own": 5059
+    },
+    {
+      "n": "package-requests",
+      "code": 0,
+      "out": "package-requests 400: 44 checks PASS\npackage-requests: 44 checks PASS\n",
+      "ms": 288273,
+      "own": 6034
+    },
+    {
+      "n": "package-selection",
+      "code": 0,
+      "out": "320 20 selected Tactics checks PASS\n1440 20 selected Tactics checks PASS\n",
+      "ms": 273381,
+      "own": 12181
+    },
+    {
+      "n": "patch-overflow",
+      "code": 0,
+      "out": "ok   set full: 4/4 rows\nok   send enabled on a full set\nok   no + on a full set\nok   the death screen offers the patch on a full set\nok   the chip asks for a drop: \"· drops one\"\nok   the tap opens the drop sheet on the death screen (4 rows)\nok   no row left before a row is tapped\nok   the sheet lists the set's rows, no count when none is known (hp < 30% → drink u · foes ≥ 1 → attack  · hp > 90% → rest · foes ≥ 4 → retreat)\nok   nothing fired: all rows tie, none is marked (QA on 3d71c33: the last row was an arbitrary pick)\nok   Escape closes the sheet; the set is whole and the death screen stays\nok   a backdrop tap closes it too; nothing changed\nok   after the drop: 4 rows (4), never over\nok   the patch row is R1: \"hp < 40% + → drink heal\"\nok   the tapped row (R3) is the one gone; the others unchanged\nok   counter 4/4, send enabled\nok   the engine took the set (4 rows)\nok   each row carries its fired count, the least-fired marked (hp· 0/10 fires↓ hp· 5/10 fires fo· 3/10 fires fo· 2/10 fires)\nok   R4 went and the patch sits at its measured R2: \"foes ≥ 2 + → retreat\"\nok   R1 went and the patch moved up one to R2: \"⊘ alert ≥ 3 foe: any + → retreat\"\nok   the card row is not in the sheet (rows 1, 3, 4, 5)\nok   a held patch reads where it sits: \"already written\" (no drop)\nok   the held tap inserted nothing: 4/4\nok   replace on a full set: 4/4, send enabled\nok   R2 replaced: \"hp < 30% + → return\"\nok   the other rows untouched by the replace\npatch-overflow: ok (25 checks)\n",
+      "ms": 252786,
+      "own": 24526
+    },
+    {
+      "n": "pen-edit",
+      "code": 0,
+      "out": "ok   the pen starts empty above the packages (end 0, own 0)\nok   package rows carry no × (false,false,false,false)\nok   a package row has no ▼ (its order is the package's)\nok   ▲ on a package row takes it into the pen as the player's (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the move persists in the core and on screen (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the package's copy yields to the pen's (bank|player · drink heal|stance:steady · return|stance:steady · attack nearest|stance:steady)\nok   the pen's last row has no ▼ (it never sits under a package)\nok   the pen's end reads `packages below` on its ▼ and its row, once ({\"title\":\"packages below\",\"note\":\"▼ packages below\",\"others\":1})\nok   after `edit` the editor's first row is in view, uncovered ({\"top\":94,\"bottom\":198,\"wellTop\":82,\"wellBottom\":612,\"vh\":800,\"onRow\":true})\nok   `+` fills the pen above the packages (4/4, end 4)\nok   on a full set a package row's ▲ is off\nok   a move patch on a package row takes a row — on a full set it asks first ({\"takes\":true,\"full\":true})\nok   over a drop the move lands in the pen, never over the cap ({\"at\":0,\"own\":4,\"max\":4,\"over\":false,\"origin\":\"patch\",\"same\":true})\nok   send is not blocked by the cap (sendauto)\nok   the added row is the pen's last, marked new and focused ({\"i\":\"0\",\"note\":\"new\",\"focus\":true,\"n\":1})\nok   the first × tap arms it in sight — `drop`, the tablet ringed, the row kept ({\"cls\":true,\"text\":\"drop\",\"color\":\"rgb(255, 196, 190)\",\"ring\":\"solid\",\"rows\":5})\nok   the second tap deletes it (5 → 4)\nok   no console errors (0)\npen-edit: all ok\n",
+      "ms": 216533,
+      "own": 26965
+    },
+    {
+      "n": "persistent-camp",
+      "code": 0,
+      "out": "400 15 persistent camp/class placement/worker shortcut PASS\n",
+      "ms": 288236,
+      "own": 5619
+    },
+    {
+      "n": "portrait-fallback",
+      "code": 0,
+      "out": "320 healthy portrait/failure same-unit fallback/primitive/frame/historical identity/save PASS\n1440 healthy portrait/failure same-unit fallback/primitive/frame/historical identity/save PASS\n",
+      "ms": 275532,
+      "own": 11483
+    },
+    {
+      "n": "post-clear-town",
+      "code": 0,
+      "out": "320 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS\n1440 earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS\n",
+      "ms": 157078,
+      "own": 26528
+    },
+    {
+      "n": "ready-plots",
+      "code": 0,
+      "out": "24 ready-plot geometry/resize/fallback cases and locked construction PASS\n",
+      "ms": 227037,
+      "own": 27964
+    },
+    {
+      "n": "recent-progress",
+      "code": 0,
+      "out": "400 20 recent progress checks PASS\n",
+      "ms": 288437,
+      "own": 4661
+    },
+    {
+      "n": "report-actions",
+      "code": 0,
+      "out": "400 16 report action checks PASS\n",
+      "ms": 293506,
+      "own": 5069
+    },
+    {
+      "n": "report-bosses",
+      "code": 0,
+      "out": "400 30 boss victories/ownership/slice merge/old wire checks PASS\n1440 30 boss victories/ownership/slice merge/old wire checks PASS\n",
+      "ms": 282616,
+      "own": 9234
+    },
+    {
+      "n": "report-choices",
+      "code": 0,
+      "out": "400 23 earned choice visibility/ownership/direct sections/no auto-equip PASS\n",
+      "ms": 294255,
+      "own": 5095
+    },
+    {
+      "n": "report-class-xp",
+      "code": 0,
+      "out": "400 20 class XP/visible rewards/slot identity/slice merges/old wire PASS\n",
+      "ms": 294111,
+      "own": 4692
+    },
+    {
+      "n": "report-exit-depth",
+      "code": 0,
+      "out": "8 report exit-depth checks PASS\n",
+      "ms": 293997,
+      "own": 4383
+    },
+    {
+      "n": "report-hero-upgrade",
+      "code": 0,
+      "out": "320 19 report upgrade/lifecycle/footer checks PASS\n1440 19 report upgrade/lifecycle/footer checks PASS\n",
+      "ms": 264406,
+      "own": 11564
+    },
+    {
+      "n": "report-juice",
+      "code": 0,
+      "out": "13 level-up highlight/reveal timing/no shift/skip/settled checks PASS\n",
+      "ms": 281707,
+      "own": 10106
+    },
+    {
+      "n": "report-reading",
+      "code": 0,
+      "out": "400 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS\n",
+      "ms": 284268,
+      "own": 6215
+    },
+    {
+      "n": "report-supply-limit",
+      "code": 0,
+      "out": "320 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS\n1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS\n",
+      "ms": 224254,
+      "own": 15992
+    },
+    {
+      "n": "report-time-scope",
+      "code": 0,
+      "out": "400 completed whole runs/assigned rest/absence/aggregate/exit fallback/exact save PASS\n",
+      "ms": 283775,
+      "own": 5444
+    },
+    {
+      "n": "rest-callout",
+      "code": 0,
+      "out": "29 rest callout/observer/seek/reset checks PASS\n",
+      "ms": 284546,
+      "own": 4973
+    },
+    {
+      "n": "return-pick",
+      "code": 0,
+      "out": "ok   real wasm engine\nok   the absence opens on its report\nok   a 30m return carries a pick of three, size 1 (drill · legacy · marks · 1)\nok   the report shows the pick as three tiles (drill · legacy · marks)\nok   untaken, the pick waits unchanged\nok   the camp shows the waiting pick as one tile\nok   the camp's pick opens its three (drill · legacy · marks)\nok   Legacy taken: +2 points (6 → 8)\nok   taken, the pick leaves the camp\nok   forge tiers offer two steps (aim +4% · edge +1 | leather · pace +8%)\nreturn-pick: ok (10 checks)\n",
+      "ms": 257919,
+      "own": 12388
+    },
+    {
+      "n": "routine-keep",
+      "code": 0,
+      "out": "400 same_kind_excess real-WASM fixture flow PASS\n400 same_kind_upgrade real-WASM fixture flow PASS\n400 distinct_kind real-WASM fixture flow PASS\n400 none real-WASM fixture flow PASS\n1440 same_kind_excess real-WASM fixture flow PASS\n1440 same_kind_upgrade real-WASM fixture flow PASS\n1440 distinct_kind real-WASM fixture flow PASS\n1440 none real-WASM fixture flow PASS\n",
+      "ms": 173572,
+      "own": 84623
+    },
+    {
+      "n": "rules-lock",
+      "code": 0,
+      "out": "400 read-only/requirements/center/Escape/exact-save/open PASS\n",
+      "ms": 282239,
+      "own": 8471
+    },
+    {
+      "n": "run-card-gold",
+      "code": 0,
+      "out": "400 45 gold destination/amount/secured/old wire cases and earned historical card exact save PASS\n",
+      "ms": 275227,
+      "own": 10820
+    },
+    {
+      "n": "run-training",
+      "code": 0,
+      "out": "320 18 run training visibility checks PASS\n1440 18 run training visibility checks PASS\n",
+      "ms": 257502,
+      "own": 10279
+    },
+    {
+      "n": "runsui",
+      "code": 0,
+      "out": "ok   day 0 starts empty, requires construction, and cannot send: {\"home\":false,\"heroes\":0,\"send\":true,\"build\":true}\nok   empty town retains ≤5 main surfaces and ≤12 above-fold controls (2/4)\nok   the first resident is Ready with XP and Details ({\"state\":\"waits\",\"action\":\"Ready\",\"xp\":\"L1 · XP 0/60\",\"details\":true,\"tip\":\"bloodline\",\"gem\":\"send0/3\",\"pulse\":true,\"log\":false})\nok   before the scout sending remains manual (auto false, waits true)\nok   the first Send is lit (send0/3)\nok   an unplayed hero has no Run log\nok   day 0: ≤ 5 surfaces in the well and console (4: send | hero-details | Fenn Ash · Bloodline 1 · | Heroes)\nok   day 0: ≤ 12 elements above the fold (7: Gold$0 | Hero Legacy 0 | settings | send | hero-details | Fenn Ash · Bloodline 1 · | Heroes)\nok   the watch carries `town` (Town menu)\nok   left mid-run: the lane reads live with his floor and hp (Fenn AshBloodline 1 · fighterL1 · XP 0/60D1 · ExploringDetails; run 1 = 1)\nok   a run under way: the gem reads `watch` (watch1/3)\nok   leaving the watch keeps the run going: tick 680 → 706 in the town\nok   the lane opens the watch on the run in flight (run 1 = 1)\nok   the run left mid-watch ended in the town: the log holds it as `town` (town, D3, bank)\nok   before the scout one send is one run: the lane waits again (Fenn AshBloodline 1 · fighterL1 · XP 17/60ReadyDetails)\nok   the log from run 1: one entry, the stud shown (Run log)\nok   the completed town run is reachable through Hero Details → Run log\nok   Fast is selected through the visible Speed menu\nok   the watched run finishes through the normal exit flow before replay inspection\nok   the watched run (3102 events) replays identically: 2cd8aef01cad6978 = 2cd8aef01cad6978 (core's ab1542a6e2a2f4e4, 8 floors)\nok   the log's entry for run 2 carries ▶\nok   the replay sheet plays run 2 (hash ab1542a6e2a2f4e4)\nok   the replay plays its 8 floors to the end\nok   the scout hired by the trunk's sends (auto true)\nok   home after a run: `rests Nm` with `↻ auto` lit (Iris AshBloodline 1 · fighterL2 · XP 54/240Departs 20mDetails)\nok   resting: the gem sends (sendauto)\nok   accessible rest refreshes on live event: departs 20m → departs 19m\nok   visible and accessible rest agree without a save mutation\nok   the rest out, the next run goes down by itself: the lane turns live (Iris AshBloodline 1 · fighterL2 · XP 54/240D1 · ExploringDetails)\nok   the report's runs tile opens the log\nok   the absence is one fold, `away · N runs`, open as the newest (▾away · 5 runs · D6★ · $241 now; 5 away records)\nok   the runs played while open fold as `here`, shut (▸here · 5 runs · D7★ · $920 2h)\nok   entries: #, D, $ (#10↩D6★$63◆◆◆◆12mhurt · went home · now▶ | #9↩D4$40◆◆◆◆6mhurt · went home · 22m▶)\nok   the absence's runs carry ▶ (5/5)\nok   a shut fold opens on a tap\nnote no death in the log on this seed (the verdict link is the chronicle's code path)\nok   the hero's house opens Details and its Run log\nok   an entry opens the run's card (run 10: returned)\nok   the camp with its lane: ≤ 12 elements above the fold (12: Gold$1285 | Hero Legacy 18 | settings | send | hero-details | crate | staked | Build forgeFree | works | Iris Ash · Bloodline 1 · | Heroes | tile:packages)\nok   active hero action labels ≤2 words (Departs 20m · Details · Heroes)\nok   the bloodline tooltip and current status detail remain available ({\"terms\":[\"bloodline\"],\"health\":\"Departs 20m\"})\nok   actual earned save imported without grants\nok   320: one active bloodline renders one hero\nok   320: bloodline 2 pays its actual $250 price\nok   320: paid founding preserves the Active heroes heading\nok   320: bloodline 3 pays its actual $250 price\nok   320: paid founding preserves the Active heroes heading\nok   320: all three actual active slots retain identity, state, XP, icon, portrait and Details\nok   320: full roster offers no fourth bloodline\nok   320: fourth bloodline is refused with exact save preservation\nok   320: jump selects bloodline 3 with its actual rests state and Ready action\nok   320: Details opens the correct bloodline menu\nok   320: selecting heroes preserves each bloodline's Legacy\nok   320: mobile stays compact and desktop heroes occupy the left panel ({\"left\":true,\"overflow\":false})\nok   320: three bloodlines retain ≤12 above-fold functions (11: Gold$48036−$250 · bloodl | Hero Legacy 0 | settings | send | hero-details | blacksmith | storehouse | bank | staked | Bryn Thorn · Bloodline 2 | Heroes)\nok   actual earned save imported without grants\nok   1440: one active bloodline renders one hero\nok   1440: bloodline 2 pays its actual $250 price\nok   1440: bloodline 3 pays its actual $250 price\nok   1440: all three actual active slots retain identity, state, XP, icon, portrait and Details\nok   1440: full roster offers no fourth bloodline\nok   1440: fourth bloodline is refused with exact save preservation\nok   1440: jump selects bloodline 3 with its actual rests state and Ready action\nok   1440: Details opens the correct bloodline menu\nok   1440: selecting heroes preserves each bloodline's Legacy\nok   1440: mobile stays compact and desktop heroes occupy the left panel ({\"left\":true,\"overflow\":false})\nrunsui: all ok\n",
+      "ms": 189567,
+      "own": 100624
+    },
+    {
+      "n": "screens",
+      "code": 0,
+      "out": "ok   the lineage took marks, gold and an identified heal\nok   camp: text lint\nok   chronicle: sheet titled \"chronicle\"\nok   ledger: sheet titled \"enemy guide\"\nok   forge: sheet titled \"Forge\"\nok   settings: sheet titled \"Settings\"\nok   class: sheet titled \"Class\"\nok   gold: sheet titled \"gold $300\"\nok   the header's $300 equals the gold sheet's $300\nok   cond picker: sheet titled \"condition\"\nok   verb picker: sheet titled \"action\"\nok   unlock card: sheet titled \"action: throw ◆2 or $300\"\nok   rename: sheet titled \"name\"\nok   the worker shortcut stays hidden when no worker tree exists\nok   camp · Gold$300: sheet titled \"gold $300\"\nok   camp · gear stud: sheet titled \"Settings\"\nok   camp · hero: sheet titled \"Bloodline 1\"\nok   camp · rename: sheet titled \"name\"\nok   camp · Details: sheet titled \"Bloodline 1\"\nok   camp · Heroes: sheet titled \"Active heroes\"\nok   camp · forge3: sheet titled \"Forge\"\nok   camp · enemy guide: sheet titled \"enemy guide\"\nok   camp: 19 buttons each change the screen\nok   watch: text lint\nok   ▶▶| reached the run's end (3 presses, death)\nok   death: text lint\nok   death · Gold$300: sheet titled \"gold $300\"\nok   death · gear stud: sheet titled \"Settings\"\nok   death · Forge gear3 upgrades ready: sheet titled \"Forge\"\nok   death: 5 buttons each change the screen\nok   camp (after the run): text lint\nok   cond picker (edit): sheet titled \"condition\"\nok   number picker: sheet titled \"condition\"\nok   verb picker (edit): sheet titled \"action\"\nok   two rows edited through the pickers: \"hp > 50% + → return\" · \"hp < 30% + → attack nearest\"\nok   camp (edited): text lint\nok   an affordable unlock is on the shelf\nok   unlock sheet · +1 party: sheet titled \"+1 party ◆4 or $600\"\nok   the sheet shows both prices and two buys (\"◆4 or $600\": ◆ buy | $ buy)\nok   bought \"+1 party\" (marks 14 → 10)\nok   camp (bought): text lint\nok   unlock sheet (gold): sheet titled \"+1 storage slot ◆3 or $4\"\nok   $ buy spent $450, not marks: header $5000 ◆10 → $4550 ◆10\nok   the next gold price climbs ($1687 > $1350 at the base rate)\nok   owned sheet: sheet titled \"action: tame\"\nok   a supply dropped (1 → 0)\nok   camp (supply dropped): text lint\nok   report (8 h): text lint\nok   report (8 h) · Gold$4550: sheet titled \"gold $4550\"\nok   report (8 h) · gear stud: sheet titled \"Settings\"\nok   report (8 h) · $0Gold earned: sheet titled \"gold $4550\"\nok   report (8 h) · gold: sheet titled \"gold $4550\"\nok   report (8 h) · enemy guide: sheet titled \"enemy guide\"\nok   report (8 h): 8 buttons each change the screen\nok   the stalled tile carries its cost: \"2/3 runs stalled $201 lost\"\nok   the lines' chips read their exit: D1 · returned · log · returned · log · D1 · returned · log\nok   report (stalls): text lint\nscreens: ok (57 checks · 9 screens linted · 32 buttons clicked · 56.7s)\n",
+      "ms": 146460,
+      "own": 57505
+    },
+    {
+      "n": "shaft-wrap",
+      "code": 0,
+      "out": "shaft-wrap 400: PASS\nshaft-wrap 1440: PASS\nshaft-wrap: 8 checks PASS\n",
+      "ms": 249388,
+      "own": 16190
+    },
+    {
+      "n": "tactic-change",
+      "code": 0,
+      "out": "ok   two tactic slots (2)\nok   a worn slot's `change` opens the choices\nok   the tap switches slot 1 (boss_focus → corridor_fighting)\nok   the style's toggle says what it does (change → close → change)\ntactic-change: ok (4 checks)\n",
+      "ms": 276019,
+      "own": 9779
+    },
+    {
+      "n": "tactic-observer",
+      "code": 0,
+      "out": "320 42 tactic ownership/clock/target/read-only checks PASS\n1440 42 tactic ownership/clock/target/read-only checks PASS\n",
+      "ms": 247223,
+      "own": 12314
+    },
+    {
+      "n": "take-control",
+      "code": 0,
+      "out": "ok   real wasm engine\nok   the watch offers take control\nok   the control tile's tooltip names it and its key (\"drive him by hand · M\")\nok   the world waits for an order (engine 109 → 109)\nok   the badge reads Hand, its tip hand control · awaits order\nok   the picture stays at the frontier after d (119 ≤ 119)\nok   the picture stays at the frontier after a (129 ≤ 129)\nok   the picture stays at the frontier after x (139 ≤ 139)\nok   the picture stays at the frontier after w (149 ≤ 149)\nok   the picture stays at the frontier after s (159 ≤ 159)\nok   the picture stays at the frontier after e (169 ≤ 169)\nok   the picture stays at the frontier after z (179 ≤ 179)\nok   the picture stays at the frontier after ArrowRight (189 ≤ 189)\nok   the picture stays at the frontier after ArrowLeft (199 ≤ 199)\nok   the picture stays at the frontier after Numpad5 (209 ≤ 209)\nok   the picture stays at the frontier after . (219 ≤ 219)\nok   each key is one action — the pad grid, arrows, numpad (11/11 advanced the world)\nok   the last order reads its outcome (\"waited\")\nok   every tile's tooltip names its key (14/14)\nok   a mouse sees each key in its tile's corner\nok   key f is one order (\"can't · no foe\")\nok   key g is one order (\"can't · no foe\")\nok   key h is one order (\"can't · no item\")\nok   key t is one order (\"can't · no item\")\nok   key > is one order (\"descend ✓\")\nok   key Enter is one order (\"descend ✓\")\n     (a fresh run for the release checks: hp 28/36)\nok   `c` releases him\nok   verb keys do nothing out of hand\nok   `c` takes him again\nok   keys inside a field drive nothing\nok   a held arrow repeats (6 steps in 1.6 s, open run 5)\nok   the repeat stops on release (0 after)\nok   the independent walk fixture uses real wasm\nok   a far floor tile on screen to walk to (5 steps)\nok   a move cursor over the floor\nok   the hovered tile is marked\nok   a click walks several tiles, one order a turn (3 orders for 5 steps)\nok   the walk ends at the tile, a new foe, or a refusal (close foe)\nok   the hero click interrupts an active walk\nok   the stop pointer hits the currently drawn hero\nok   a click on him stops the walk\nok   descend resolves visibly (\"descend ✓\")\nok   the panel offers attack until\nok   released: the panel reads off\nok   released: the rules play on (368 → 710)\nok   the rules find a foe\nok   an attack cursor over a foe\nok   a click on a foe walks up and fights it (\"foe down\", 3 orders, hero 22,17 foe 23,16 → [], drive , stop undefined)\nok   a right-click acts (\"can't · no foe\")\nok   no browser menu over the map in hand (true)\nok   in hand, the run that ended leaves the watch (no dead state)\nok   the panel is gone once the run is over\nok   no take-control panel over a run that is over (0 reads)\nok   360 px: every tile ≥ 44 px (14 tiles)\nok   360 px: nothing past the edge (scroll 360 / 360, slab 0–360)\nok   a phone shows the key hints too (owner 2026-10-10)\nok   the pad kills double-tap zoom (touch-action manipulation)\n     screenshot /home/g/p/riddle/scratchpad/take-control/phone-360-control.png\nok   a tile on the phone's map to tap\nok   a tap steps one tile toward it ((18,22) → (17,21), toward (16,21))\nok   a held touch on an arrow steps and stops on release (4 held, 0 after)\ntake-control: ok (62 checks)\n",
+      "ms": 201594,
+      "own": 112719
+    },
+    {
+      "n": "telegraph-names",
+      "code": 0,
+      "out": "400 17 recorded rally/priority/lifetime/visibility checks PASS\n1000 17 recorded rally/priority/lifetime/visibility checks PASS\n",
+      "ms": 255233,
+      "own": 15779
+    },
+    {
+      "n": "town-clock",
+      "code": 0,
+      "out": "Asia/Singapore GL local dawn/day/dusk/night, resume/cache/save PASS\nAsia/Singapore Canvas2D local dawn/day/dusk/night, resume/cache/save PASS\nAmerica/New_York GL local dawn/day/dusk/night, resume/cache/save PASS\nAmerica/New_York Canvas2D local dawn/day/dusk/night, resume/cache/save PASS\ntown-clock: PASS (36 checks)\n",
+      "ms": 222118,
+      "own": 20524
+    },
+    {
+      "n": "town-save",
+      "code": 0,
+      "out": "400 reduce immediate navigation retains completed house and exact hero PASS\n400 no-preference immediate navigation retains completed house and exact hero PASS\n1440 reduce immediate navigation retains completed house and exact hero PASS\n1440 no-preference immediate navigation retains completed house and exact hero PASS\nDelayed save keeps build pending, deduplicated, then reloads completed home PASS\nRefused construction retains empty town/save and releases guard PASS\n39 manual construction persistence checks PASS\n",
+      "ms": 196015,
+      "own": 40643
+    },
+    {
+      "n": "training-icons",
+      "code": 0,
+      "out": "320 training art/text/fallback/gap/centering/wrapping PASS\n1440 training art/text/fallback/gap/centering/wrapping PASS\n",
+      "ms": 268633,
+      "own": 13400
+    },
+    {
+      "n": "ui:frame",
+      "code": 0,
+      "out": "ok   a fresh lineage (heir 1, nothing earned)\nok   a fresh camp shows ≤ 8 interactive elements at 400 × 800 (8: Gold$0−$120 | settings | ✓ curioustries unknown 1 | greedygrabs loot 1×/floo | Send hero | hero | Heroes | send)\nok   the bar shows $ only (num stat gold)\nok   two compact tablets, the shaft at D1 alone, no gems (2 tablets, notches D1, ends false)\nok   the gem SEND and nothing else: no tile, no set tab, no class picker (gem \"send\", 0 tiles)\nok   the literal legacy fixture retains its authoring controls\nok   before first death: no `edit` tile (none)\nok   the lineage took first death\nok   first death carves the `edit` tile, glinting (edit*)\nok   the first death puts the class picker on the portrait\nok   before first gold home: no `loadout` tile (edit)\nok   the lineage took first gold home\nok   first gold home carves the `loadout` tile, glinting (edit* · loadout*)\nok   before first mark: no `unlocks` tile (edit · loadout)\nok   the lineage took first mark\nok   first mark carves the `unlocks` tile, glinting (edit · loadout* · unlocks*)\nok   the first mark puts ◆ on the bar (◆1)\nok   before an item worth keeping: no `vault` tile (edit · loadout · unlocks)\nok   the lineage took an item worth keeping\nok   an item worth keeping carves the `vault` tile, glinting (edit · loadout · unlocks* · vault*)\nok   before first salvage: no `forge` tile (edit · loadout · unlocks · vault)\nok   the lineage took first salvage\nok   first salvage carves the `forge` tile, glinting (edit · loadout · unlocks* · vault* · forge*)\nok   before a companion: no `party` tile (edit · loadout · unlocks · vault · forge)\nok   the lineage took a companion\nok   a companion carves the `party` tile, glinting (edit · loadout · unlocks · vault* · forge* · party*)\nok   a repaint keeps the carved tiles without a glint (edit · loadout · unlocks · vault · forge · party)\nok   before a 3rd row: the shaft has no gems\nok   a 3rd row lights the shaft's gems (QA 778fa1b: `…` on the first pass): full haul <13% · return <13% · death >87% · avg $0/run\nok   before the 5th heir: no ledger, no chronicle, no set tabs\nok   the lineage took its 5th heir\nok   the 5th heir carves the ledger, the log (the chronicle's heirs) and the set tabs (edit · loadout · unlocks · vault · forge · party · ledger; log true)\nok   the command card at the ladder's top: 7 tiles, the chronicle's slot gone to the log (7 tiles)\nok   the unlock panel lists the next three, `more` under them (3 cards, more 1)\nok   `more` opens the catalogue (28 cards)\nok   the unlocks panel has a close stud, and it closes the panel\nok   the loadout panel has a close stud, and it closes the panel\nok   the vault panel has a close stud, and it closes the panel\nok   the party panel has a close stud, and it closes the panel\nok   the shaft opens the forecast panel, with its stud\nok   Escape closes the open panel\nok   the settings sheet has one close stud, and it closes the sheet\nok   the gold sheet has one close stud, and it closes the sheet\nok   the forge sheet has one close stud, and it closes the sheet\nok   the ledger sheet has one close stud, and it closes the sheet\nok   the log sheet has one close stud, and it closes the sheet\nok   the class sheet has one close stud, and it closes the sheet\nok   the cond picker sheet has one close stud, and it closes the sheet\nok   the verb picker sheet has one close stud, and it closes the sheet\nok   the rename sheet has one close stud, and it closes the sheet\nok   an unlock card's sheet has its close stud\nok   every tile sinks while held (7 tiles)\nok   camp: bar + console, `send` in the gem ({\"text\":\"send\",\"cls\":\"gem pulse send\",\"visible\":true})\nok   watch: bar + console, ⏸ in the gem ({\"text\":\"⏸\",\"cls\":\"gem hud-btn\",\"visible\":true})\nok   watch: Speed groups controls and Town menu stays visible (Speed Fights only8× · Town menu)\nok   the watch's last frame keeps the heir that ran on the bar (5th heir → 5th heir)\nok   the HUD names the alert (`alert 3`), never `!!!`\nok   the last frame's gem slot holds the stilled pause through the walk-out, then a gem, `verdict` / `report`, no corner label (⏸ · verdict)\nok   death: bar + console, the top patch in the gem ({\"text\":\"100%apply\",\"cls\":\"gem pulse patch-gem\",\"visible\":true}, 1 lit patch)\nok   death: the line on the banner, the verdict in the seal, camp on the card, the morgue under details (edit · town; morgue true)\nok   the morgue sheet has its close stud\nok   report: bar + console, `camp` in the gem, the counts as plaques on parchment (9 plaques)\nok   the report's `open` tile opens the worst death\nui: ok (63 checks · 40.7s)\n",
+      "ms": 130549,
+      "own": 41585
+    },
+    {
+      "n": "unit-icons",
+      "code": 0,
+      "out": "320 guide art/unknown concealment/fallback/death adjacency/historical class PASS\n1440 guide art/unknown concealment/fallback/death adjacency/historical class PASS\n",
+      "ms": 261200,
+      "own": 12122
+    },
+    {
+      "n": "unit-label",
+      "code": 0,
+      "out": "320 16 unit label spacing/centering/long-name/fallback PASS\n1440 16 unit label spacing/centering/long-name/fallback PASS\n",
+      "ms": 278053,
+      "own": 9420
+    },
+    {
+      "n": "wall-preparation",
+      "code": 0,
+      "out": "320 39 wall preparation/read-only/manual/stale/lifecycle PASS\n1440 39 wall preparation/read-only/manual/stale/lifecycle PASS\n",
+      "ms": 279573,
+      "own": 10222
+    },
+    {
+      "n": "watch-console",
+      "code": 0,
+      "out": "320 labels/touch/geometry/speed/pause/Town PASS\n360 labels/touch/geometry/speed/pause/Town PASS\n400 labels/touch/geometry/speed/pause/Town PASS\n840 labels/touch/geometry/speed/pause/Town PASS\n1440 labels/touch/geometry/speed/pause/Town PASS\n",
+      "ms": 208261,
+      "own": 51183
+    },
+    {
+      "n": "watch-end-caption",
+      "code": 0,
+      "out": "19 picture-clock/end/seek/reset caption checks PASS\n",
+      "ms": 294984,
+      "own": 3582
+    },
+    {
+      "n": "watch-keepout",
+      "code": 0,
+      "out": "watch keep-out: immediate DOM nameplate removal PASS\n",
+      "ms": 289160,
+      "own": 5140
+    },
+    {
+      "n": "watch-live-edge",
+      "code": 1,
+      "out": "ok   fights: no dead stretch over 6 s without news (worst 3113 ms at {\"tick\":\"110\",\"frontier\":\"120\",\"speed\":\"0\",\"frame\":\"fight\"})\nok   fights: the standoff jumps (7 jumps; 16.2 s dead over a 20.7 s watch)\nFAIL fights: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (16.2 s; was ~18 s; step delay 15ms; transitions [{\"ms\":0,\"progress\":\"0\",\"tick\":\"0\",\"frontier\":\"80\"},{\"ms\":117,\"dead\":\"1\",\"progress\":\"0\",\"tick\":\"70\",\"frontier\":\"80\"},{\"ms\":3221,\"dead\":\"0\",\"progress\":\"0\",\"tick\":\"110\",\"frontier\":\"140\"},{\"ms\":4242,\"dead\":\"0\",\"progress\":\"190\",\"tick\":\"190\",\"frontier\":\"620\"},{\"ms\":7791,\"dead\":\"1\",\"progress\":\"190\",\"tick\":\"265\",\"frontier\":\"620\"},{\"ms\":10151,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"190\",\"tick\":\"2163\",\"frontier\":\"2120\"},{\"ms\":12697,\"dead\":\"1\",\"jumps\":\"2\",\"progress\":\"190\",\"tick\":\"3143\",\"frontier\":\"3100\"},{\"ms\":14313,\"dead\":\"1\",\"jumps\":\"3\",\"progress\":\"190\",\"tick\":\"3732\",\"frontier\":\"3700\"},{\"ms\":15733,\"dead\":\"1\",\"jumps\":\"4\",\"progress\":\"190\",\"tick\":\"4043\",\"frontier\":\"4200\"},{\"ms\":17223,\"dead\":\"1\",\"jumps\":\"5\",\"progress\":\"190\",\"tick\":\"4669\",\"frontier\":\"4800\"},{\"ms\":19583,\"dead\":\"1\",\"jumps\":\"6\",\"progress\":\"190\",\"tick\":\"5278\",\"frontier\":\"5550\"},{\"ms\":20409,\"dead\":\"1\",\"jumps\":\"7\",\"progress\":\"190\",\"tick\":\"5823\",\"frontier\":\"5950\"}])\nok   fights: the clock eases up — never one step past 64× from under half of it (none; top 48×)\nok   fights: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nok   one: no dead stretch over 6 s without news (worst 1765 ms at {\"tick\":\"293\",\"frontier\":\"4380\",\"speed\":\"4\",\"frame\":\"fight\"})\nok   one: the standoff jumps (4 jumps; 4.4 s dead over a 11.2 s watch)\nok   one: the 6 000-tick standoff crossed in ≤ 12 s of dead picture (4.4 s; was ~18 s; step delay 15ms; transitions [{\"ms\":0,\"dead\":\"1\",\"progress\":\"0\",\"tick\":\"104\",\"frontier\":\"140\"},{\"ms\":507,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"0\",\"tick\":\"110\",\"frontier\":\"150\"},{\"ms\":771,\"dead\":\"0\",\"jumps\":\"1\",\"progress\":\"120\",\"tick\":\"120\",\"frontier\":\"150\"},{\"ms\":4221,\"dead\":\"1\",\"jumps\":\"1\",\"progress\":\"120\",\"tick\":\"155\",\"frontier\":\"170\"},{\"ms\":4829,\"dead\":\"1\",\"jumps\":\"2\",\"progress\":\"120\",\"tick\":\"178\",\"frontier\":\"210\"},{\"ms\":5183,\"dead\":\"0\",\"jumps\":\"2\",\"progress\":\"190\",\"tick\":\"192\",\"frontier\":\"220\"},{\"ms\":8498,\"dead\":\"1\",\"jumps\":\"2\",\"progress\":\"190\",\"tick\":\"227\",\"frontier\":\"250\"},{\"ms\":10407,\"dead\":\"1\",\"jumps\":\"3\",\"progress\":\"190\",\"tick\":\"4580\",\"frontier\":\"4580\"},{\"ms\":10843,\"dead\":\"1\",\"jumps\":\"4\",\"progress\":\"190\",\"tick\":\"5975\",\"frontier\":\"6010\"}])\nok   one: the clock eases up — never one step past 64× from under half of it (none; top 4×)\nok   one: no \"−0 hp\" in the combat log; a zero hit reads \"blocked\" (none)\nwatch-live-edge: FAIL (1 assertion(s), 0 error(s))\n",
+      "ms": 392600,
+      "own": 40790
+    },
+    {
+      "n": "watch-log",
+      "code": 0,
+      "out": "400 5 ordered floor attribution and80-entry bound PASS\n400 14 ordered floor attribution and80-entry bound PASS\n400 1 ordered floor attribution and80-entry bound PASS\n",
+      "ms": 219435,
+      "own": 26689
+    },
+    {
+      "n": "watch-message-spacing",
+      "code": 0,
+      "out": "320 wrapped messages/gaps/bounds/plain overlay/ticker/history/controls PASS\n1440 wrapped messages/gaps/bounds/plain overlay/ticker/history/controls PASS\n",
+      "ms": 243000,
+      "own": 19346
+    },
+    {
+      "n": "watch-meters",
+      "code": 0,
+      "out": "400 8 watch meters/trailing paint/paused frontier/resume/disposal PASS\n1440 8 watch meters/trailing paint/paused frontier/resume/disposal PASS\n",
+      "ms": 270945,
+      "own": 21461
+    },
+    {
+      "n": "watch-normal-news",
+      "code": 0,
+      "out": "ok   Normal (unseen blows): no stretch over 10 s without news (worst 7205 ms at {\"tick\":\"243\",\"frontier\":\"1730\",\"speed\":\"4\",\"dead\":\"1\"}; 12.7 s watched)\nok   Normal (unseen blows): unseen blows and a see-saw are no moves — the stalemate is jumped (4 jumps)\nok   Normal (unseen blows): a jump says \"skipped ahead\" (3 said)\nok   Normal (a boss see-saw): no stretch over 10 s without news (worst 7504 ms at {\"tick\":\"247\",\"frontier\":\"1830\",\"speed\":\"4\",\"dead\":\"1\"}; 13.7 s watched)\nok   Normal (a boss see-saw): unseen blows and a see-saw are no moves — the stalemate is jumped (4 jumps)\nok   Normal (a boss see-saw): a jump says \"skipped ahead\" (3 said)\nwatch-normal-news: ok (6 checks)\n",
+      "ms": 212073,
+      "own": 38501
+    },
+    {
+      "n": "watch-speed-rate",
+      "code": 0,
+      "out": "400 normal sampled {\"max\":4,\"dead\":46,\"rates\":[\"2.120011060915627\",\"2.1625872407257765\",\"2.185678601155526\",\"2.1522428636048696\",\"2.132196162039381\",\"2.175860744899876\",\"2.1691973969587415\",\"2.172338884866039\",\"2.1210637950519784\",\"2.068446784488066\",\"2.221728504769361\",\"2.1214531954304925\",\"1.9543973941368078\",\"2.2172949002095197\",\"2.126754572508851\",\"2.382370458521739\",\"2.8680688336111495\",\"1\",\"4\",\"1.1818335303055885\",\"1.1869850579534174\",\"1.2026883622214362\",\"1.1834743939182912\",\"1.2010919017288444\",\"1.1936735302907928\",\"1.2133161446886358\",\"1.1895625479662317\"],\"jumps\":\"1\",\"said\":\"0\"}\n400 speed rate PASS\n1440 normal sampled {\"max\":4,\"dead\":17,\"rates\":[\"1.855861428987639\",\"1.8882175226267335\",\"4\",\"1.2794612794612794\",\"1.2987924740221124\",\"1.2538061973849186\",\"1.267427122940431\",\"1.2777631628367785\",\"1.2895395585216105\",\"1.2509773260359656\",\"1.268049249395108\",\"1.2715862012356622\",\"1\"],\"jumps\":\"2\",\"said\":\"1\"}\n1440 speed rate PASS\nwatch-speed-rate: PASS\n",
+      "ms": 173989,
+      "own": 38389
+    },
+    {
+      "n": "watch-status",
+      "code": 0,
+      "out": "400 status/paused core progress/resume/ending PASS\n1440 status/paused core progress/resume/ending PASS\n",
+      "ms": 240113,
+      "own": 23579
+    },
+    {
+      "n": "worker-first-act",
+      "code": 0,
+      "out": "400 20 worker first-act checks PASS\n",
+      "ms": 289418,
+      "own": 5150
+    },
+    {
+      "n": "worker-purchases",
+      "code": 0,
+      "out": "400 7 worker purchase checks PASS\n",
+      "ms": 294832,
+      "own": 3398
+    }
+  ]
+}

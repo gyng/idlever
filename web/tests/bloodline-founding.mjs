@@ -12,9 +12,9 @@ try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto(`${url}?dev=1&seed=4103&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async (engine) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") throw Error("Real WASM required");
       await a.importSave(
         JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
@@ -26,9 +26,9 @@ try {
     const roster = width < 1024 ? ".sheet-wrap:not([hidden]) .heroes-sheet" : ".hero-desktop";
     await openRoster();
     const before = await page.evaluate(async () => ({
-      save: await window.__riddle.engine.save(),
-      gold: window.__riddle.lineage.gold,
-      price: window.__riddle.lineage.bloodline_price,
+      save: await window.__idlever.engine.save(),
+      gold: window.__idlever.lineage.gold,
+      price: window.__idlever.lineage.bloodline_price,
     }));
     await page.locator(`${roster} .hero-add`).click();
     const founding = page.locator(".bloodline-founding");
@@ -40,7 +40,7 @@ try {
       throw Error("Missing true Scout behavior or actual price");
     if (
       !(await page.evaluate(
-        async (saved) => (await window.__riddle.engine.save()) === saved,
+        async (saved) => (await window.__idlever.engine.save()) === saved,
         before.save,
       ))
     )
@@ -54,7 +54,7 @@ try {
     await page.keyboard.press("Escape");
     if (
       !(await page.evaluate(
-        async (saved) => (await window.__riddle.engine.save()) === saved,
+        async (saved) => (await window.__idlever.engine.save()) === saved,
         before.save,
       ))
     )
@@ -67,7 +67,7 @@ try {
       throw Error("Route must reach existing on Scout control");
     if (
       !(await page.evaluate(
-        async (saved) => (await window.__riddle.engine.save()) === saved,
+        async (saved) => (await window.__idlever.engine.save()) === saved,
         before.save,
       ))
     )
@@ -78,7 +78,7 @@ try {
       throw Error("Returning from Settings lost pending founding");
     if (
       !(await page.evaluate(
-        async (saved) => (await window.__riddle.engine.save()) === saved,
+        async (saved) => (await window.__idlever.engine.save()) === saved,
         before.save,
       ))
     )
@@ -89,7 +89,7 @@ try {
     await founding.getByRole("button", { name: "Scout settings" }).click();
     await scout.waitFor();
     await scout.click();
-    await page.waitForFunction(() => window.__riddle.lineage.tree.auto_send === false);
+    await page.waitForFunction(() => window.__idlever.lineage.tree.auto_send === false);
     await page.keyboard.press("Escape");
     await founding.waitFor();
     if (!(await founding.innerText()).includes("Send by hand"))
@@ -97,25 +97,25 @@ try {
     await page.keyboard.press("Escape");
     await openRoster();
     await page.locator(`${roster} .hero-add`).click();
-    await page.waitForFunction(() => window.__riddle.lineage.hero_slots.length === 2);
+    await page.waitForFunction(() => window.__idlever.lineage.hero_slots.length === 2);
     if (await founding.count()) throw Error("Scout-off founding should stay direct");
-    const off = await page.evaluate(() => window.__riddle.lineage);
+    const off = await page.evaluate(() => window.__idlever.lineage);
     if (
       off.gold !== before.gold - before.price ||
       off.hero_slots.find((s) => s.id === 2).state !== "waits"
     )
       throw Error("Scout-off founding pays once and leaves hero Ready");
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.mutate(() => a.engine.setWorker("scout", true));
     });
     await page.locator(`${roster} .hero-add`).click();
     await founding.waitFor();
     await founding.locator(".bloodline-confirm").click();
-    await page.waitForFunction(() => window.__riddle.lineage.hero_slots.length === 3);
+    await page.waitForFunction(() => window.__idlever.lineage.hero_slots.length === 3);
     if (
       !(await page.evaluate(
-        (price) => window.__riddle.lineage.gold === price,
+        (price) => window.__idlever.lineage.gold === price,
         before.gold - before.price * 2,
       ))
     )

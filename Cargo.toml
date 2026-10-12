@@ -19,7 +19,7 @@ incremental = true
 debug = 0
 
 # `cargo test` (debug) still optimises the sim crate so heavy tests do not crawl.
-[profile.dev.package.riddle-core]
+[profile.dev.package.idlever-core]
 opt-level = 2
-[profile.test.package.riddle-core]
+[profile.test.package.idlever-core]
 opt-level = 2

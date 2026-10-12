@@ -11,11 +11,11 @@ try {
   for (const width of stateWidths([400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
     await page.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const count = await page.evaluate(async () => {
       const { measureKit, openForge } = await import("/src/ui/forge.ts");
       const { closeAllSheets, openSheet } = await import("/src/ui/sheet.ts");
-      const app = window.__riddle,
+      const app = window.__idlever,
         original = app.engine;
       let count = 0,
         calls = 0;

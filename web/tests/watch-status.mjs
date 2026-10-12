@@ -11,7 +11,7 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3805`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
       const { watchStatus } = await import("/src/ui/watch.ts");
       for (const [args, expected] of [
@@ -36,7 +36,7 @@ try {
         if (JSON.stringify([x.kind, x.label, x.detail]) !== JSON.stringify(expected))
           throw Error(JSON.stringify(x));
       }
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = await a.engine.send();
       s.depth = 5;
       s.run.start = 5;

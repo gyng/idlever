@@ -41,9 +41,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=7&juice=${juice}&runclear=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const r = await p.evaluate((rep) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.classes = { ...a.lineage.classes, fighter: { level: 4, xp: 10 } };
       a.go({ kind: "report", report: rep, absence: true });
       const main = document.querySelector("main.report"),
@@ -125,7 +125,7 @@ try {
       );
       // a tap anywhere skips; the action works from the first frame
       await p.evaluate(
-        (rep) => window.__riddle.go({ kind: "report", report: rep, absence: true }),
+        (rep) => window.__idlever.go({ kind: "report", report: rep, absence: true }),
         base,
       );
       await p.waitForTimeout(80);
@@ -139,7 +139,7 @@ try {
         "a tap skips to the end state",
       );
       await p.evaluate(
-        (rep) => window.__riddle.go({ kind: "report", report: rep, absence: true }),
+        (rep) => window.__idlever.go({ kind: "report", report: rep, absence: true }),
         base,
       );
       await p.waitForTimeout(60);

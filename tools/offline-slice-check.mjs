@@ -54,9 +54,9 @@ async function main(args) {
     throw new Error("supply SAVE, --seconds (nonnegative integer), and --out NEW_DIR");
   }
   const source = readFileSync(resolve(save), "utf8");
-  const wasm = readFileSync(join(ROOT, "web/src/engine/pkg/riddle_wasm_bg.wasm"));
+  const wasm = readFileSync(join(ROOT, "web/src/engine/pkg/idlever_wasm_bg.wasm"));
   const { default: init, Game } = await import(
-    pathToFileURL(join(ROOT, "web/src/engine/pkg/riddle_wasm.js"))
+    pathToFileURL(join(ROOT, "web/src/engine/pkg/idlever_wasm.js"))
   );
   await init({ module_or_path: wasm });
   // Refuse to overwrite earlier evidence or a user's directory.

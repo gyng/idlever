@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         split = { fight: 600, travel: 2800, chores: 100, rest: 100 };
       window.__timeMeter = {
         seconds: 3600,
@@ -88,13 +88,13 @@ try {
         throw Error("Horizontal overflow");
     }
     await inspect(3600, "Includes before away · Camp rest separate");
-    if (process.env.RIDDLE_TIME_SHOTS) {
-      mkdirSync(process.env.RIDDLE_TIME_SHOTS, { recursive: true });
+    if (process.env.IDLEVER_TIME_SHOTS) {
+      mkdirSync(process.env.IDLEVER_TIME_SHOTS, { recursive: true });
       await p.locator(".meters").scrollIntoViewIfNeeded();
-      await p.screenshot({ path: `${process.env.RIDDLE_TIME_SHOTS}/time-${width}.png` });
+      await p.screenshot({ path: `${process.env.IDLEVER_TIME_SHOTS}/time-${width}.png` });
     }
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.__timeReport,
@@ -106,7 +106,7 @@ try {
     );
     await inspect(10800, "Includes before away · Camp rest separate");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.__timeReport,
@@ -132,7 +132,7 @@ try {
     if (
       !(await p.evaluate(
         async () =>
-          (await window.__riddle.engine.save()) === window.__timeSave &&
+          (await window.__idlever.engine.save()) === window.__timeSave &&
           window.__timeReport.elapsed_s === 1200 &&
           window.__timeReport.rested_s === 1800,
       ))

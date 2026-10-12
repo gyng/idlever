@@ -43,7 +43,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r
       ? {
           screen: r.screen,
@@ -113,7 +113,7 @@ try {
   await waitFor((x) => x && !x.busy, "the engine idle", 30_000);
   check(["death", "report"].includes(s.screen), `the watched run ended (${s.screen})`);
   const log = await page.evaluate(() => {
-    const l = window.__riddle.runLog();
+    const l = window.__idlever.runLog();
     return l
       ? {
           runId: l.runId,
@@ -149,7 +149,7 @@ try {
     outT = (log.endTick ?? fl.to) + 5000;
   const death = await page.evaluate(
     ({ runId, inT, outT, depth }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const rows = r.rules.rows;
       const d = {
         run_id: runId,
@@ -311,7 +311,7 @@ try {
   );
   // the tap buys the cond's unlock, then inserts the row at the top (app.buy stubbed: the fake's marks are not the point)
   const before = await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__buys = [];
     r.__buy0 = r.buy;
     r.buy = async (id) => {
@@ -324,7 +324,7 @@ try {
   await page.locator(".patch-gem").click({ timeout: 5000 });
   await waitFor((x) => x?.screen === "camp", "the camp after the unlock tap");
   const after = await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const rows = r.rules.rows;
     const top = rows[0];
     r.buy = r.__buy0;
@@ -345,7 +345,7 @@ try {
   );
   // a refused buy inserts nothing
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.go({ kind: "death", death: r.__death });
     r.__buy0 = r.buy;
     r.buy = async () => false;
@@ -355,7 +355,7 @@ try {
   await page.locator(".patch-gem").click({ timeout: 5000 });
   await sleep(300);
   const refused = await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.buy = r.__buy0;
     return { screen: r.screen, n: r.rules.rows.length };
   });
@@ -438,7 +438,7 @@ try {
     );
   await page.evaluate(
     ({ t, depth }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const d = r.__death;
       d.chain = [{ text: "the walk-out", t, depth }];
       d.trace.turns[1].rows[0].because = { text: "the walk-out", t, depth };
@@ -463,7 +463,7 @@ try {
 
   // §5: the death's ledger line opens the gold sheet filtered to the run
   const ledger = await page.evaluate(() =>
-    (window.__riddle.lineage.gold_ledger ?? []).map((g) => ({
+    (window.__idlever.lineage.gold_ledger ?? []).map((g) => ({
       t: g.t,
       delta: g.delta,
       why: g.why,
@@ -477,7 +477,7 @@ try {
   const lastExit = exits[exits.length - 1];
   await page.evaluate(
     ({ kept, tier }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__death.line = {
         carried: 30,
         keep_pct: tier === "banked" ? 100 : tier === "died" ? 0 : 60,
@@ -541,7 +541,7 @@ try {
   // §5: a report exit line is tappable to the same sheet
   await page.evaluate(
     ({ kept, tier }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const L = r.lineage;
       const line = {
         carried: 30,
@@ -607,7 +607,7 @@ try {
   // the stall's trace, matched to the exit whose trace it is, too
   const watchN = await page.evaluate(
     ({ runId, inT, depth }) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const L = r.lineage;
       const trace = {
         turns: [

@@ -50,7 +50,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       w = document.querySelector(".watch");
     return r
       ? {
@@ -127,7 +127,7 @@ async function checkBossBreak() {
     );
     await waitFor((x) => x?.booted && inRun(x) && x.mode === mode, `the ${mode} run for the break`);
     await page.evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         orig = r.engine.step.bind(r.engine);
       let from = -1;
       r.engine.step = async (n) => {
@@ -187,7 +187,7 @@ async function checkBossBreak() {
         const w = document.querySelector(".watch"),
           b = document.querySelector(".boss-hp");
         return {
-          screen: window.__riddle.screen,
+          screen: window.__idlever.screen,
           frame: w?.dataset.frame,
           tk: document.querySelector(".ticker.show")?.textContent ?? "",
           bar:
@@ -221,7 +221,7 @@ async function checkBossBreak() {
         await page.evaluate(() => ({
           fixture: window.__breakFixture,
           held: window.__beatLog?.slice(-12),
-          screen: window.__riddle?.screen,
+          screen: window.__idlever?.screen,
           ticker: document.querySelector(".ticker")?.textContent,
           watch: { ...document.querySelector(".watch")?.dataset },
         })),
@@ -308,7 +308,7 @@ try {
               seen = { card: 0, map: new Set(), fight: new Set(), depth: "" };
             const poll = () => {
               const w = document.querySelector(".watch");
-              if (w && window.__riddle?.screen === "watch" && w.dataset.frame) {
+              if (w && window.__idlever?.screen === "watch" && w.dataset.frame) {
                 seen.depth = document.querySelector(".hud .depth")?.textContent ?? "";
                 if (w.dataset.card === "1") seen.card++;
                 if (w.dataset.held !== "1" && w.dataset.speed !== "0")
@@ -318,7 +318,7 @@ try {
               }
               if (
                 performance.now() - t0 > 8000 ||
-                (window.__riddle?.screen !== "watch" && performance.now() - t0 > 3000)
+                (window.__idlever?.screen !== "watch" && performance.now() - t0 > 3000)
               ) {
                 res({
                   card: seen.card,
@@ -567,7 +567,7 @@ try {
         `the ${mode} run for the boss kill`,
       );
       await page.evaluate(() => {
-        const r = window.__riddle,
+        const r = window.__idlever,
           orig = r.engine.step.bind(r.engine);
         let done = false;
         r.engine.step = async (n) => {
@@ -604,7 +604,7 @@ try {
       });
       const both = () =>
         page.evaluate(() => ({
-          screen: window.__riddle.screen,
+          screen: window.__idlever.screen,
           frame: document.querySelector(".watch")?.dataset.frame,
           speed: Number(document.querySelector(".watch")?.dataset.speed),
           tk: document.querySelector(".ticker.show")?.textContent ?? "",
@@ -651,7 +651,7 @@ try {
       const held = await page.evaluate(
         () =>
           new Promise((res) => {
-            const r = window.__riddle,
+            const r = window.__idlever,
               orig = r.engine.step.bind(r.engine);
             let done = false;
             r.engine.step = async (n) => {
@@ -922,7 +922,7 @@ try {
       const lines = await page.evaluate(
         () =>
           new Promise((res) => {
-            const r = window.__riddle,
+            const r = window.__idlever,
               orig = r.engine.step.bind(r.engine);
             let from = -1;
             r.engine.step = async (n) => {
@@ -1061,7 +1061,7 @@ try {
                 const w = document.querySelector(".watch"),
                   now = performance.now();
                 const live =
-                  window.__riddle?.screen === "watch" &&
+                  window.__idlever?.screen === "watch" &&
                   w &&
                   w.dataset.ending !== "1" &&
                   !document.querySelector(".sheet-wrap");
@@ -1085,7 +1085,10 @@ try {
                     fastest = Math.max(fastest, Number(w.dataset.speed));
                   }
                 } else cur = null;
-                if (now - t0 > 60_000 || (window.__riddle?.screen !== "watch" && now - t0 > 3000)) {
+                if (
+                  now - t0 > 60_000 ||
+                  (window.__idlever?.screen !== "watch" && now - t0 > 3000)
+                ) {
                   res({ maxMs: Math.round(maxMs), maxTicks, deadFight, fastest, at });
                   return;
                 }
@@ -1127,7 +1130,7 @@ try {
                 const w = document.querySelector(".watch"),
                   now = performance.now();
                 const live =
-                  window.__riddle?.screen === "watch" &&
+                  window.__idlever?.screen === "watch" &&
                   w &&
                   w.dataset.mode === "one" &&
                   w.dataset.ending !== "1" &&
@@ -1153,7 +1156,10 @@ try {
                 } else {
                   cur = null;
                 }
-                if (now - t0 > 60_000 || (window.__riddle?.screen !== "watch" && now - t0 > 3000)) {
+                if (
+                  now - t0 > 60_000 ||
+                  (window.__idlever?.screen !== "watch" && now - t0 > 3000)
+                ) {
                   res({ maxMs: Math.round(maxMs), maxTicks, dead, at, wall: Math.round(now - t0) });
                   return;
                 }
@@ -1178,10 +1184,10 @@ try {
         });
         await waitFor((x) => x?.booted && x.screen === "camp", "the camp (fold)");
         await page.evaluate((m) => {
-          window.__riddle.watchMode = m;
+          window.__idlever.watchMode = m;
         }, m);
         await page
-          .waitForFunction(() => window.__riddle.lastForecast?.fold_to !== undefined, null, {
+          .waitForFunction(() => window.__idlever.lastForecast?.fold_to !== undefined, null, {
             timeout: 15_000,
           })
           .catch(() => {});

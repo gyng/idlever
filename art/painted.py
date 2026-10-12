@@ -103,7 +103,7 @@ BIOMES: dict[str, str] = {
     "town": "the TOWN at night (docs/TOWN.md): a moonlit clearing at the dungeon's mouth, grass, dirt paths, cobbles, fences.",
 }
 
-HEADER = """You are painting ENVIRONMENT TILES for the game "Riddle" (a phone roguelike seen top-down). FIRST look at
+HEADER = """You are painting ENVIRONMENT TILES for the game "Idlever" (a phone roguelike seen top-down). FIRST look at
 /home/g/p/riddle/art/ui/targets/watch.png (you may read that one image; read nothing else in the repository): its dungeon is
 the TARGET LOOK — painterly dark-fantasy pixel art, lit stone rooms, moss, torchlight, crisp readable forms.
 
@@ -197,7 +197,7 @@ BRIEF3: dict[str, dict[str, str]] = {
 }
 
 
-HEADER3 = """You are painting ENVIRONMENT TILES for the game "Riddle" (a gothic dark-fantasy roguelike on a phone, seen top-down at a
+HEADER3 = """You are painting ENVIRONMENT TILES for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen top-down at a
 high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing else in the
 repository): /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/targets/style/watch_fens.png,
 /home/g/p/riddle/art/ui/targets/style/boss.png, /home/g/p/riddle/art/ui/targets/style/town.png. Their dungeon (and town) floors and walls are the TARGET LOOK.

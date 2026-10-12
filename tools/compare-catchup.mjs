@@ -22,11 +22,11 @@ for (const [id, path] of [
 ]) {
   files[`/${id}.mjs`] = {
     contentType: "text/javascript",
-    body: readFileSync(join(path, "riddle_wasm.js")),
+    body: readFileSync(join(path, "idlever_wasm.js")),
   };
   files[`/${id}.wasm`] = {
     contentType: "application/wasm",
-    body: readFileSync(join(path, "riddle_wasm_bg.wasm")),
+    body: readFileSync(join(path, "idlever_wasm_bg.wasm")),
   };
 }
 mkdirSync(out, { recursive: true });
@@ -34,7 +34,7 @@ const browser = await launchGpu(),
   rows = [];
 try {
   const page = await browser.newPage();
-  await page.route("http://riddle.compare.invalid/**", (r) =>
+  await page.route("http://idlever.compare.invalid/**", (r) =>
     r.fulfill(
       files[new URL(r.request().url()).pathname] ?? {
         contentType: "text/html",
@@ -42,7 +42,7 @@ try {
       },
     ),
   );
-  await page.goto("http://riddle.compare.invalid/");
+  await page.goto("http://idlever.compare.invalid/");
   await page.evaluate(async () => {
     window.versions = {};
     for (const id of ["original", "candidate"]) {

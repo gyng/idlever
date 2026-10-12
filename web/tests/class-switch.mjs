@@ -9,7 +9,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
   encoding: "utf8",
 }).trim();
 const engine = readFileSync(new URL("./fixtures/earned-gunner-home.json", import.meta.url), "utf8");
-const shots = process.env.RIDDLE_SHOTS;
+const shots = process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const browser = await launchBrowser();
 try {
@@ -18,9 +18,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?dev=1&fresh=1&seed=47`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async (engine) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (
         a.kind !== "wasm" ||
         !(await a.importSave(
@@ -31,7 +31,7 @@ try {
       a.insertRow({ conds: [{ k: "hp>", n: 90 }], verb: { v: "rest" } }, 0);
     }, engine);
     await p.waitForFunction(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         L = await a.engine.lineage();
       return (
         a.rules.rows[0]?.conds[0]?.k === "hp>" &&
@@ -39,12 +39,12 @@ try {
       );
     });
     const preserved = await p.evaluate(() =>
-      window.__riddle.rules.rows.filter(
+      window.__idlever.rules.rows.filter(
         (r) => r.origin?.startsWith("drill:") || r.origin === "player",
       ),
     );
     await p.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         original = a.engine.setClass.bind(a.engine);
       window.classReplies = [];
       window.classPaints = [];
@@ -69,9 +69,9 @@ try {
         .locator(".sheet-wrap .class-row>button")
         .filter({ hasText: new RegExp(`^${cls} L`) })
         .click();
-      await p.waitForFunction((cls) => window.__riddle.lineage.class === cls, cls);
+      await p.waitForFunction((cls) => window.__idlever.lineage.class === cls, cls);
       const result = await p.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           L = await a.engine.lineage();
         return {
           ownRows: a.ownRows(),
@@ -107,7 +107,7 @@ try {
       );
       await p.keyboard.press("Escape");
       await p.waitForFunction(() => !document.querySelector(".sheet-wrap"));
-      const inspected = await p.evaluate(() => window.__riddle.engine.save());
+      const inspected = await p.evaluate(() => window.__idlever.engine.save());
       await p.locator(".cmd [data-tile=edit]:visible").click();
       await p.locator(".hero-return:visible").waitFor();
       if (shots) {
@@ -115,26 +115,26 @@ try {
         await p.screenshot({ path: `${shots}/${cls}-${width}.png` });
       }
       await p.locator(".hero-return:visible").click();
-      assert.equal(await p.evaluate(() => window.__riddle.editing), false);
+      assert.equal(await p.evaluate(() => window.__idlever.editing), false);
       assert.equal(await p.locator(".hero-details:visible").first().isVisible(), true);
-      assert.equal(await p.evaluate(() => window.__riddle.engine.save()), inspected);
+      assert.equal(await p.evaluate(() => window.__idlever.engine.save()), inspected);
     }
     const before = await p.evaluate(async () => ({
-      save: await window.__riddle.engine.save(),
-      rows: window.__riddle.rules.rows,
+      save: await window.__idlever.engine.save(),
+      rows: window.__idlever.rules.rows,
     }));
-    assert.equal(await p.evaluate(() => window.__riddle.setClass("unknown-class")), false);
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before.save);
-    assert.deepEqual(await p.evaluate(() => window.__riddle.rules.rows), before.rows);
-    await p.evaluate(() => window.__riddle.flush());
+    assert.equal(await p.evaluate(() => window.__idlever.setClass("unknown-class")), false);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before.save);
+    assert.deepEqual(await p.evaluate(() => window.__idlever.rules.rows), before.rows);
+    await p.evaluate(() => window.__idlever.flush());
     await p.reload();
-    await p.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.class), "gunner");
-    assert.deepEqual(await p.evaluate(() => window.__riddle.rules.rows), before.rows);
+    await p.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.class), "gunner");
+    assert.deepEqual(await p.evaluate(() => window.__idlever.rules.rows), before.rows);
     assert.deepEqual(errors, []);
     // Controlled presentation case: the return route precedes extra set-tab access.
     const earlySave = await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = await a.engine.save();
       a.lineage = { ...a.lineage, seed: 47000 + innerWidth, heir: 1 };
       a.go({ kind: "camp" });
@@ -144,8 +144,8 @@ try {
     assert.equal(await p.locator(".hero-return:visible").isVisible(), true);
     assert.equal(await p.locator(".tabs .tab").count(), 0);
     await p.locator(".hero-return").click();
-    assert.equal(await p.evaluate(() => window.__riddle.editing), false);
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), earlySave);
+    assert.equal(await p.evaluate(() => window.__idlever.editing), false);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), earlySave);
     console.log(
       width,
       "owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS",

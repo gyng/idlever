@@ -33,7 +33,7 @@ DEFAULT_BATCHES = {
     12: ["env_blood_0", "env_blood_1", "env_torch", "env_barrel", "env_crate", "env_pot", "env_banner", "env_bones"],
 }
 
-HEADER = """You are generating painted CHARACTER SPRITE masters for the game "Riddle" (a phone roguelike seen
+HEADER = """You are generating painted CHARACTER SPRITE masters for the game "Idlever" (a phone roguelike seen
 top-down). FIRST look at /home/g/p/riddle/art/ui/targets/watch.png (you may read that one image; read
 nothing else in the repository): its hero (brown hair, crimson cape, sword) and its green goblins
 (sword goblin, archer) are the TARGET LOOK for every sprite. Use your built-in image_gen tool, one
@@ -101,7 +101,7 @@ STYLE_REFS = ("/home/g/p/riddle/art/ui/targets/style/hero_sheet.png", "/home/g/p
 HERO_PROPORTION = "LONG and ELEGANT like the hero_sheet target: the head about 1/6.5 of the full height, long legs, a long trailing cloak; still one bold mass, with a clear pale BONE face patch and a bright MIST rim on the blade so the figure reads (picked by the blind read test at game size: 98 % vs 90 % at 1/5 and 81 % at 1/4)"
 FOE_PROPORTION = "the creature's own build, long and elegant where it allows, but always ONE bold readable mass; a humanoid's head at least one fifth of its height; the defining feature (its tag) drawn LARGE"
 
-HEADER3 = """You are painting CHARACTER SPRITE masters for the game "Riddle" (a gothic dark-fantasy roguelike on a phone, seen
+HEADER3 = """You are painting CHARACTER SPRITE masters for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
 top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
 else in the repository): {refs}. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
 Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix; do NOT
@@ -163,7 +163,7 @@ def build3(name: str, ids: list[str], briefs: dict[str, str] | None = None, prop
     return p
 
 
-ENV_HEADER = """You are generating ENVIRONMENT PIXEL ART for the game "Riddle" (a phone roguelike seen top-down).
+ENV_HEADER = """You are generating ENVIRONMENT PIXEL ART for the game "Idlever" (a phone roguelike seen top-down).
 FIRST look at /home/g/p/riddle/art/ui/targets/watch.png (you may read that one image; read nothing
 else in the repository). Its dungeon is the target: top-down dark-fantasy PIXEL ART — dressed stone
 walls with a lit capstone ledge and a brick front face, worn flagstone floors with moss and dried

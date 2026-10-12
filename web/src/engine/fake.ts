@@ -5371,7 +5371,7 @@ export class FakeEngine implements Engine {
     );
     const margin = log.stalled ? "no path" : `${Math.max(1, log.hpMargin)} hp short`; // a stall's headline: the guard's reason, not an hp margin
     const morgue = [
-      `riddle · seed ${L.seed} · heir ${log.heir} · ${log.cls} · ${log.trait}`,
+      `idlever · seed ${L.seed} · heir ${log.heir} · ${log.cls} · ${log.trait}`,
       `D${log.depth} · ${replay.cause ?? "?"} · ${margin} · ${verdict} · turn ${log.turns}`,
       "",
       ...log.rules.rows.map((r, i) => `R${i + 1} ${rowText(r)}`),

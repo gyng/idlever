@@ -12,9 +12,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       let n = 0;
       const check = (ok, msg) => {
         if (!ok) throw Error(msg);

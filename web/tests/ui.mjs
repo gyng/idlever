@@ -54,7 +54,7 @@ const shot = async (name) => {
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r
       ? {
           screen: r.screen,
@@ -90,7 +90,7 @@ async function quietForecast(max = 8_000) {
   while (Date.now() - t < max) {
     const q = await page
       .evaluate(() => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         return !r.fcInFlight && !r.fcRunning && !!r.lastForecast?.refined;
       })
       .catch(() => true);
@@ -113,7 +113,7 @@ async function settle(max = 15_000) {
 /** Patch the fake's saved lineage and reload it through the save (the camp remounts). */
 const patchSave = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     new Function("e", src)(e);
@@ -161,7 +161,7 @@ const tileIds = async () => (await tiles()).map((t) => t.id);
 
 /** QA 23ed91f (player K): the batch's checks on fabricated screens (the fake engine; `/src/...` modules through the dev server). */
 async function qaK() {
-  const go = (screen) => page.evaluate((v) => window.__riddle.go(v), screen);
+  const go = (screen) => page.evaluate((v) => window.__idlever.go(v), screen);
   const mod = (path, fn, arg) =>
     page.evaluate(
       async ([p, f, a]) => {
@@ -354,7 +354,7 @@ async function qaK() {
   await page.locator(".sheet-wrap .row-sheet button.row-edit").click({ timeout: 3000 });
   await waitFor((x) => x?.screen === "camp", "the camp from a row's sheet");
   check(
-    await page.evaluate(() => window.__riddle.editing === true),
+    await page.evaluate(() => window.__idlever.editing === true),
     "the row sheet's `edit` opens the editor",
   );
   turns[4] = { ...turns[4], telegraphs: ["monkey reaches"] };
@@ -370,7 +370,7 @@ async function qaK() {
 
   // the patches' reach is the camp's own, landing after the paint (`deathDeltas`): `reach …` first, then `reach D6 +8% ±3`
   await page.evaluate((d) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__origDD = r.engine.deathDeltas;
     const filled = d.patches.map((p, i) => ({
       ...p,
@@ -401,7 +401,7 @@ async function qaK() {
     landed = await readLanded();
   }
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.engine.deathDeltas = r.__origDD;
   });
   // (QA 308f045, qaAD: the gem offers no apply until the whole-run measure lands — it reads `…` meanwhile)
@@ -415,7 +415,7 @@ async function qaK() {
   );
 
   // ---- 2. the report: newest run first; bests named; a stall patch's numbers add up
-  const L = await page.evaluate(() => window.__riddle.lineage);
+  const L = await page.evaluate(() => window.__idlever.lineage);
   const ex = (i) => ({
     carried: 50 + i,
     keep_pct: 60,
@@ -507,8 +507,8 @@ async function qaK() {
   // ---- 4. the camp: a `+1 vault` carves the vault tile (its prefs: `keep`, `cage`); trait copy; no `◆0`; busy label over the vista;
   //      the panel closes on a tap beside it; the unlock prices in the mark's blue; the empty slots recede; the verb picker lists the row's verb
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
-    localStorage.removeItem("riddle.unlocks.all");
+    localStorage.removeItem("idlever.reveal");
+    localStorage.removeItem("idlever.unlocks.all");
   });
   await patchSave((e) => {
     Object.assign(e.lineage, {
@@ -574,7 +574,7 @@ async function qaK() {
   );
   const busy = await page.evaluate(async () => {
     let release;
-    const held = window.__riddle.busy(
+    const held = window.__idlever.busy(
       "forecast",
       () =>
         new Promise((r) => {
@@ -608,7 +608,7 @@ async function qaK() {
     return e ? Number(getComputedStyle(e).opacity) : 0;
   });
   check(empty <= 0.2, `the command card's empty slots recede (opacity ${empty})`);
-  await page.evaluate(() => localStorage.setItem("riddle.unlocks.all", "1"));
+  await page.evaluate(() => localStorage.setItem("idlever.unlocks.all", "1"));
   await page.locator(".cmd .tile[data-tile=unlocks]").click({ timeout: 5000 });
   await page.waitForFunction(
     () => document.querySelectorAll(".panel .unlocks .card").length > 0,
@@ -627,7 +627,7 @@ async function qaK() {
   await page.keyboard.press("Escape");
   await sleep(100);
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.editing = true;
     r.rules.rows[0].verb = { v: "drink", a: "mystery" };
     r.go({ kind: "camp" });
@@ -652,7 +652,7 @@ async function qaK() {
   // ---- 5. the shaft: each notch between 0 and 100% carries its ± (a move inside it is the sims); the forecast: a cause's share in
   //      the ends' unit (≤ the death share)
   const sh = await page.evaluate(() => {
-    const f = window.__riddle.lastForecast;
+    const f = window.__idlever.lastForecast;
     const want = (f?.depths ?? [])
       .filter(
         (d) =>
@@ -671,10 +671,10 @@ async function qaK() {
   await page.locator(".shaft").click({ timeout: 5000 });
   await sleep(200);
   await page
-    .waitForFunction(() => !window.__riddle.engineBusy, null, { timeout: 10_000 })
+    .waitForFunction(() => !window.__idlever.engineBusy, null, { timeout: 10_000 })
     .catch(() => {});
   const fc = await page.evaluate(() => {
-    const f = window.__riddle.lastForecast;
+    const f = window.__idlever.lastForecast;
     return {
       death: f?.ends ? Math.round(f.ends.death * 100) : null,
       causes: [...document.querySelectorAll(".panel .fc-causes b")].map((b) =>
@@ -752,7 +752,7 @@ async function qaL() {
   await waitFor((x) => x?.screen === "camp", "camp");
   await settle();
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     while (r.ownRows() < 3)
       r.insertRow(
         { conds: [{ k: "hp<", n: 40 + r.rules.rows.length }], verb: { v: "retreat" } },
@@ -764,7 +764,7 @@ async function qaL() {
   const fake = async (f) => {
     await quietForecast();
     return page.evaluate((f) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = r.lastForecast;
       const x = { ...b, ...f };
       r.lastForecast = x;
@@ -834,7 +834,7 @@ async function qaL() {
   await sleep(100);
   await quietForecast();
   const stale = await page.evaluate(async () => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       method = r.engine.forecastEstimate ? "forecastEstimate" : "forecast",
       orig = r.engine[method].bind(r.engine);
     let n = 0;
@@ -896,10 +896,10 @@ async function qaL() {
   }
 
   // the report: LEARNED without bones; PENDING the next three
-  const L = await page.evaluate(() => window.__riddle.lineage);
+  const L = await page.evaluate(() => window.__idlever.lineage);
   await page.evaluate(
     (L) =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           elapsed_s: 60,
@@ -951,7 +951,7 @@ async function qaL() {
 
   // the death: the ledger line wraps inside its outline
   await page.evaluate(() =>
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 0,
@@ -995,7 +995,7 @@ async function stallSkip() {
   });
   await waitFor((s) => s?.booted && s.screen === "watch", "the watch for the stall", 30_000);
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       orig = r.engine.step.bind(r.engine);
     let S = null,
       T = 0;
@@ -1095,7 +1095,7 @@ async function autoKeepCheck() {
     );
     await waitFor((s) => s?.booted && s.screen === "watch", "the watch for the keep");
     await page.evaluate((full) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__ak = 0;
       r.__keep = [];
       r.__pending = null;
@@ -1133,7 +1133,7 @@ async function autoKeepCheck() {
     let s = null;
     while (Date.now() - t < 60_000) {
       s = await page.evaluate(() => ({
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         keep: !!document.querySelector(".sheet-wrap .keep-legend"),
       }));
       if (s.keep || !["watch"].includes(s.screen)) break;
@@ -1149,7 +1149,7 @@ async function autoKeepCheck() {
     return s;
   };
   let s = await run(false);
-  const pending = await page.evaluate(() => window.__riddle.__pending);
+  const pending = await page.evaluate(() => window.__idlever.__pending);
   if (s?.keep) {
     const on = await page.evaluate(() => ({
       on: [...document.querySelectorAll(".sheet-wrap .chips .chip.item")].map((c) =>
@@ -1170,13 +1170,13 @@ async function autoKeepCheck() {
     check(false, `a bank with loot opens the keep sheet (screen ${s?.screen}, pending ${pending})`);
   s = await run(true);
   await page
-    .waitForFunction(() => window.__riddle.screen !== "watch", null, { timeout: 30_000 })
+    .waitForFunction(() => window.__idlever.screen !== "watch", null, { timeout: 30_000 })
     .catch(() => {});
   const k = await page.evaluate(() => ({
-    ak: window.__riddle.__ak,
-    keep: window.__riddle.__keep,
-    pending: window.__riddle.__pending,
-    screen: window.__riddle.screen,
+    ak: window.__idlever.__ak,
+    keep: window.__idlever.__keep,
+    pending: window.__idlever.__pending,
+    screen: window.__idlever.screen,
   }));
   check(
     !k.pending || (k.ak === 1 && !k.keep.some((ids) => ids.length === 0)),
@@ -1207,7 +1207,7 @@ async function cut19() {
         : null;
     });
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = {
       ...r.lineage,
       best_depth: 1,
@@ -1218,7 +1218,7 @@ async function cut19() {
   await sleep(250);
   const before = await cageTab();
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__prefs = [];
     const opts = (cur) =>
       ["weapon", "armour", "potion", "scroll"].map((pref) => {
@@ -1273,7 +1273,7 @@ async function cut19() {
       ),
     );
   const pending = await opt();
-  await page.evaluate(() => window.__riddle.__resolveCageForecast());
+  await page.evaluate(() => window.__idlever.__resolveCageForecast());
   await page.waitForFunction(() =>
     document.querySelector(".cage-opt[data-pref=armour]")?.textContent.includes("bank 90%"),
   );
@@ -1288,7 +1288,7 @@ async function cut19() {
   await page.locator(".sheet-wrap .cage-opt[data-pref=armour]").click({ timeout: 5000 });
   await sleep(400);
   const picked = await cageTab(),
-    prefs = await page.evaluate(() => window.__riddle.__prefs);
+    prefs = await page.evaluate(() => window.__idlever.__prefs);
   check(
     picked === "from cages → armour" &&
       prefs.join() === "armour" &&
@@ -1298,7 +1298,7 @@ async function cut19() {
   await shot("ui-cut19-cage");
   // ---- §3: the loadout tile carries `repeat · $120`; a tap on it clears the repeat (the shelf stays shut); a second turns it back on
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__restock = [];
     r.engine.setRestock = async (on) => {
       r.__restock.push(on);
@@ -1336,7 +1336,7 @@ async function cut19() {
     .catch(() => {});
   await sleep(300);
   const b2 = await badge(),
-    calls = await page.evaluate(() => window.__riddle.__restock);
+    calls = await page.evaluate(() => window.__idlever.__restock);
   check(
     b0 === "Restock on · held ≤$120" &&
       b1 === "Restock off" &&
@@ -1347,7 +1347,7 @@ async function cut19() {
   );
   // ---- §3: the short list always carries the pinned `+1 row`, ranked last or not
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const cat = [
       { id: "vault2", cost: 1, owned: false, available: true, gold: 150 },
       { id: "cond_alert", cost: 1, owned: false, available: true, gold: 150 },
@@ -1363,7 +1363,7 @@ async function cut19() {
       gold: 0,
       unlocks: r.lineage.unlocks.filter((u) => u !== "row5"),
     };
-    localStorage.setItem("riddle.unlocks.all", "0");
+    localStorage.setItem("idlever.unlocks.all", "0");
     r.go({ kind: "camp" });
   });
   await sleep(400);
@@ -1381,7 +1381,7 @@ async function cut19() {
   await page.keyboard.press("Escape");
   await sleep(100);
   // ---- §3: the report says `restock capped`
-  const L = await page.evaluate(() => window.__riddle.lineage);
+  const L = await page.evaluate(() => window.__idlever.lineage);
   const rep = {
     elapsed_s: 3600,
     runs: 3,
@@ -1406,7 +1406,7 @@ async function cut19() {
     gold: { home: 90, salvage: 0, wake: 0, spent: 80 },
     restock_capped: true,
   };
-  await page.evaluate((v) => window.__riddle.go(v), { kind: "report", report: rep });
+  await page.evaluate((v) => window.__idlever.go(v), { kind: "report", report: rep });
   await waitFor((x) => x?.screen === "report", "the capped report");
   await sleep(300);
   const gl = await page.evaluate(
@@ -1426,13 +1426,13 @@ async function cut19() {
     { conds: [{ k: "depth>=", n: 8 }], verb: { v: "bank" }, origin: "player" },
   ];
   await page.evaluate((rows) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.sets[r.active] = { ...r.sets[r.active], rows };
     r.vocab = { ...r.vocab, max_rows: 5 };
   }, rows);
   await page.evaluate(
     (rows) =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: {
           run_id: 0,
@@ -1508,9 +1508,9 @@ async function cut19() {
   await sleep(200);
   // QA 778fa1b (qaU friction: `apply` opened the drop sheet though the patch said `drops R4`): the named drop applies as stated
   const applied = await page.evaluate(() => ({
-    screen: window.__riddle.screen,
+    screen: window.__idlever.screen,
     sheet: !!document.querySelector(".sheet-wrap .drop-sheet"),
-    rows: window.__riddle.rules.rows.map((r) => r.verb.v).join(","),
+    rows: window.__idlever.rules.rows.map((r) => r.verb.v).join(","),
   }));
   check(
     applied.screen === "camp" &&
@@ -1525,7 +1525,7 @@ async function cut19() {
   await waitFor((s) => s?.booted && s.screen === "camp", "the camp for the return walk");
   await settle();
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       orig = r.engine.step.bind(r.engine);
     let n = 0;
     r.sets[r.active] = {
@@ -1581,9 +1581,9 @@ async function cut18() {
   await settle();
   await page.locator(".cmd [data-tile=edit]").click({ timeout: 5000 });
   // ---- APPLY: two quick taps on the gem slot
-  const rows0 = await page.evaluate(() => window.__riddle.rules.rows.length);
+  const rows0 = await page.evaluate(() => window.__idlever.rules.rows.length);
   await page.evaluate(() =>
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 0,
@@ -1613,10 +1613,10 @@ async function cut18() {
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2); // the second tap lands on the camp's gem, `send`
   await sleep(1500);
   const ap = await page.evaluate(() => ({
-    screen: window.__riddle.screen,
-    rows: window.__riddle.rules.rows.length,
+    screen: window.__idlever.screen,
+    rows: window.__idlever.rules.rows.length,
     lit: document.querySelectorAll(".editor .row.hl, .editor .hl").length,
-    first: window.__riddle.rules.rows[0]?.verb.v,
+    first: window.__idlever.rules.rows[0]?.verb.v,
   }));
   check(
     ap.screen === "camp" && ap.rows === rows0 + 1 && ap.first === "return",
@@ -1624,11 +1624,11 @@ async function cut18() {
   );
   check(ap.lit >= 1, `the applied tablet is lit on the camp (${ap.lit})`);
   const sent = await page.evaluate(
-    () => new Promise((res) => setTimeout(() => res(window.__riddle.screen), 200)),
+    () => new Promise((res) => setTimeout(() => res(window.__idlever.screen), 200)),
   );
   await page.locator("main.camp .gem-slot > .gem").click({ timeout: 5000 });
   await sleep(600);
-  const s2 = await page.evaluate(() => window.__riddle.screen);
+  const s2 = await page.evaluate(() => window.__idlever.screen);
   check(
     sent === "camp" && s2 === "watch",
     `the player sends: a later tap on \`send\` starts the run (${s2})`,
@@ -1640,7 +1640,7 @@ async function cut18() {
   await waitFor((s) => s?.booted && s.screen === "camp", "the camp for the tiles");
   await settle();
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const cat = [
       {
         id: "kite_archers",
@@ -1674,7 +1674,7 @@ async function cut18() {
       marks: 0,
       unlocks: [...r.lineage.unlocks, "row5"],
     };
-    localStorage.setItem("riddle.unlocks.all", "1");
+    localStorage.setItem("idlever.unlocks.all", "1");
     r.go({ kind: "camp" });
   });
   await sleep(400);
@@ -1706,7 +1706,7 @@ async function cut18() {
   await shot("ui-cut18-unlocks");
   // ---- §3: a wall says it is a wall — `ForecastDepth.wall` on D9 (best D8): the notch `D9 · warlord`, the panel's row `D9 0% · sealed by warlord`
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.engine.unlocks = async () => [];
     r.engine.unlockDeltas = async () => [];
     r.lineage = { ...r.lineage, best_depth: 8 };
@@ -1715,7 +1715,7 @@ async function cut18() {
   await settle();
   await quietForecast();
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const depths = Array.from({ length: 9 }, (_, i) => ({
       depth: i + 1,
       reach: i < 8 ? 0.9 - i * 0.05 : 0,
@@ -1763,7 +1763,7 @@ async function cut18() {
   // ---- §4: a stall's cause names the rows' loop (`R2 retreat ↔ explore`): the loop whole on one line; QA 1a2a4a9 (P: the headline
   // `STALLED · R2 RETREAT ↔ EXPLORE · D6 · KEEPS $0` ran off both edges at 400 px): it wraps between segments, inside the screen
   await page.evaluate(() =>
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 0,
@@ -1812,7 +1812,7 @@ async function cut18() {
   await shot("ui-stall-head");
   // QA 1a2a4a9: the core's new reasons arrive verbatim and read whole, one line each
   await page.evaluate(() =>
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 0,
@@ -1873,8 +1873,8 @@ try {
     });
     await waitFor((s) => s?.booted && s.screen === "camp", "camp");
     await page.evaluate(() => {
-      localStorage.removeItem("riddle.reveal");
-      localStorage.removeItem("riddle.unlocks.all");
+      localStorage.removeItem("idlever.reveal");
+      localStorage.removeItem("idlever.unlocks.all");
     });
     check(
       await patchSave((e) => {
@@ -2020,7 +2020,7 @@ try {
     }
     // a later repaint is no reveal: the tiles stand, none glints (a glint lasts its 1.5 s)
     await sleep(1700);
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await settle();
     check(
       (await tiles()).every((t) => !t.reveal) && (await tileIds()).length === seen.length,
@@ -2032,7 +2032,7 @@ try {
       "before a 3rd row: the shaft has no gems",
     );
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.insertRow({ conds: [{ k: "hp<", n: 50 }], verb: { v: "attack", a: "nearest" } }, 2);
       r.go({ kind: "camp" });
     });
@@ -2356,14 +2356,14 @@ try {
         `report: bar + console, \`camp\` in the gem (${JSON.stringify(f.gem)})`,
       );
       const r = await page.evaluate(async () => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const L = await r.engine.lineage();
         const g = L.graveyard.at(-1);
         return g?.death_id;
       });
       if (r !== undefined) {
         await page.evaluate(async (id) => {
-          const r = window.__riddle;
+          const r = window.__idlever;
           r.go({ kind: "death", death: await r.engine.death(id), kept: true });
         }, r);
         await waitFor((x) => x?.screen === "death", "a death");
@@ -2432,7 +2432,7 @@ try {
     } else
       check(
         await page.evaluate(() => {
-          const r = window.__riddle;
+          const r = window.__idlever;
           return r.view?.report ? !r.view.report.worst_death : true;
         }),
         "no `open` tile: the report has no worst death",

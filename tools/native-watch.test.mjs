@@ -72,9 +72,9 @@ test("failed builds surface errors, recover on an edit and stop after close", as
 test("only compilation inputs trigger builds, not generated outputs or browser assets", () => {
   const root = "/tmp/project";
   for (const path of [
-    "crates/riddle-core/src/turn.rs",
-    "crates/riddle-wasm/src/lib.rs",
-    "crates/riddle-core/presets/good.json",
+    "crates/idlever-core/src/turn.rs",
+    "crates/idlever-wasm/src/lib.rs",
+    "crates/idlever-core/presets/good.json",
     "Cargo.lock",
     "tools/native-codegen.mjs",
   ])
@@ -82,7 +82,7 @@ test("only compilation inputs trigger builds, not generated outputs or browser a
   for (const path of [
     "target/native-dev/default/native_dev",
     "web/src/engine/native-api.json",
-    "crates/riddle-core/examples/native_dev/generated.rs",
+    "crates/idlever-core/examples/native_dev/generated.rs",
     "web/src/runs.css",
     "scratchpad/camp.json",
   ])
@@ -93,8 +93,8 @@ test("test-only edits skip rebuilds only with current cfg declaration and compil
   const { mkdtempSync, mkdirSync, writeFileSync, rmSync } = await import("node:fs");
   const { tmpdir } = await import("node:os");
   const { join } = await import("node:path");
-  const root = mkdtempSync(join(tmpdir(), "riddle-native-input-"));
-  const src = join(root, "crates/riddle-core/src"),
+  const root = mkdtempSync(join(tmpdir(), "idlever-native-input-"));
+  const src = join(root, "crates/idlever-core/src"),
     example = join(root, "target/fast/examples/native_dev");
   mkdirSync(src, { recursive: true });
   mkdirSync(join(root, "target/fast/examples"), { recursive: true });

@@ -12,10 +12,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const checks = await p.evaluate(async () => {
       const { heroRoster, heroPresence } = await import("/src/ui/heroes.ts");
-      const a = window.__riddle;
+      const a = window.__idlever;
       let checks = 0;
       const check = (ok, msg) => {
         if (!ok) throw Error(msg);

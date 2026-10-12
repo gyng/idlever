@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 export function readDebug(text) {
   const b = JSON.parse(text);
-  if (b?.format !== "riddle-debug" || b.schema !== 1)
+  if (b?.format !== "idlever-debug" || b.schema !== 1)
     throw Error("Unsupported diagnostic format/schema");
   if (b.capture?.state !== "fresh" || !Number.isFinite(Date.parse(b.captured_at)))
     throw Error("Invalid capture provenance");

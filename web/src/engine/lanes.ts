@@ -116,9 +116,9 @@ export function twoLanes(
   // Native processes hot-swap after core edits even when the wire is unchanged.
   // A result from the previous executable must not survive that rebuild.
   if (import.meta.hot) {
-    import.meta.hot.on("riddle:native-build", packages.clear);
+    import.meta.hot.on("idlever:native-build", packages.clear);
     import.meta.hot.dispose(() => {
-      import.meta.hot?.off("riddle:native-build", packages.clear);
+      import.meta.hot?.off("idlever:native-build", packages.clear);
       packages.clear();
     });
   }

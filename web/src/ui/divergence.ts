@@ -121,7 +121,7 @@ export function renderScene(app: App): { el: HTMLElement; line: HTMLElement; dis
     timers = [];
   };
   const dev = (k: string, v: unknown): void => {
-    if ("__riddle" in window)
+    if ("__idlever" in window)
       ((window as unknown as { __scene?: Record<string, unknown> }).__scene ??= {})[k] = v;
   };
   /** The viewer, made once the scene may play (a WebGL context only while the camp has one to show). */

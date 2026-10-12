@@ -45,7 +45,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -67,7 +67,7 @@ const txt = (sel) =>
   }, sel);
 const patchLineage = (patch) =>
   page.evaluate(async (p) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     Object.assign(e.lineage, p);
@@ -185,7 +185,7 @@ try {
         },
       ],
     };
-    window.__riddle.go({ kind: "death", death: d });
+    window.__idlever.go({ kind: "death", death: d });
   });
   await sleep(400);
   const ch = await page.evaluate(() => ({
@@ -214,7 +214,7 @@ try {
   await shot("qa21-death");
 
   // ---- 1: the toll the purse cannot pay
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await waitFor((s) => s?.screen === "camp", "camp");
   await patchLineage({
     best_depth: 12,
@@ -227,7 +227,7 @@ try {
   // QA 778fa1b (qaV; core): the toll is going — with the wire's toll at 0 nothing is short and the tablet names no price
   const tolls = await page.evaluate(async () =>
     Object.fromEntries(
-      (await window.__riddle.engine.startForecast()).map((o) => [o.start, o.toll ?? 0]),
+      (await window.__idlever.engine.startForecast()).map((o) => [o.start, o.toll ?? 0]),
     ),
   );
   if (!tolls[5] && !tolls[9]) {
@@ -280,7 +280,7 @@ try {
     await page.keyboard.press("Escape");
     await sleep(150);
     // the shaft starts where the sims do (the fake's forecast: D1, the toll unpaid)
-    await page.evaluate(() => window.__riddle.emitForecast());
+    await page.evaluate(() => window.__idlever.emitForecast());
     await sleep(600);
     const firstNotch = await page.evaluate(() => {
       const n = document.querySelector(".shaft .notch");
@@ -291,7 +291,7 @@ try {
       `the shaft starts on the floor the forecast ran from (D${firstNotch})`,
     );
     await page.evaluate(() => {
-      window.__riddle.dev.speed = "fights";
+      window.__idlever.dev.speed = "fights";
     });
     await page.locator(".gem.send").click({ timeout: 5000 });
     await waitFor((s) => s?.screen === "watch", "the watch");
@@ -330,7 +330,7 @@ try {
   await patchLineage({ best_depth: 5, heir: 3 });
   await sleep(300);
   await page.evaluate(() =>
-    window.__riddle.insertRow({ conds: [{ k: "hp<", n: 30 }], verb: { v: "retreat" } }, 0),
+    window.__idlever.insertRow({ conds: [{ k: "hp<", n: 30 }], verb: { v: "retreat" } }, 0),
   );
   const samePaint = () =>
     page.evaluate(() => {
@@ -397,7 +397,7 @@ try {
     facts: ["item:leash", "foe:goblin_archer", "foe:goblin_archer:ranged"],
   });
   await sleep(400);
-  await page.evaluate(() => localStorage.setItem("riddle.unlocks.all", "1"));
+  await page.evaluate(() => localStorage.setItem("idlever.unlocks.all", "1"));
   await openPanel(page, "unlocks", { all: true });
   await sleep(300);
   await page.locator(".unlocks .card", { hasText: "+1 rule" }).first().click({ timeout: 5000 });
@@ -415,7 +415,7 @@ try {
   // ---- 4: a card joins only on `auto_insert: true`
   const buyCard = (auto) =>
     page.evaluate(async (auto) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const e = r.engine;
       const real = e.unlocks.bind(e);
       e.unlocks = async () =>
@@ -429,7 +429,7 @@ try {
     }, auto);
   // the sheet first (unowned): what the buy will do
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const e = r.engine;
     const real = e.unlocks.bind(e);
     e.unlocks = async () =>
@@ -466,7 +466,7 @@ try {
 
   // ---- 6: the repeat badge is a switch
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.lineage = {
       ...r.lineage,
       repeat: true,

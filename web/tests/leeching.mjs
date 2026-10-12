@@ -14,9 +14,9 @@ try {
       errors = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?fresh=1&seed=7&runs=0&speed=1`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const evidence = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") throw Error("real worker required");
       a.runnerOn = false;
       let raw = JSON.parse(await a.engine.save());
@@ -101,7 +101,7 @@ try {
     assert.ok((await log.count()) > 0);
     assert.ok(await log.first().locator(".log-heal").count());
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.go({ kind: "camp" });
       const s = JSON.parse(await a.engine.save());
       s.run = null;
@@ -112,7 +112,7 @@ try {
       a.adoptSets();
       a.go({ kind: "ending" });
     });
-    const endingSave = await page.evaluate(() => window.__riddle.engine.save());
+    const endingSave = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".descent-choice").click();
     await page.waitForFunction(() => !document.querySelector(".descent-confirm").disabled);
     await page.locator(".descent-elites summary").click();
@@ -120,7 +120,7 @@ try {
       await page.locator(".descent-elites").textContent(),
       /Leeching.*Melee hits restore up to2 HP unless poisoned.*Poison or fight at range/s,
     );
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), endingSave);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), endingSave);
     await page.locator(".descent-review .chips button").first().click();
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),

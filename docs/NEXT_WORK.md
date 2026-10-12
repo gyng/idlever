@@ -139,7 +139,7 @@ UI checkpoints. Keep simulation truth in Rust and manual town construction.
    before comparisons; justify the comparison set rather than claiming an
    unsupported ranking. Distinguish missing, unfinished, implemented-but-hard-
    to-read, and verified content. Produce an impact-ordered implementation queue
-   with concrete evidence and scoped acceptance checks. Preserve Riddle's
+   with concrete evidence and scoped acceptance checks. Preserve Idlever's
    autonomous roguelike identity and absence invariants.
 
 Compact depth and presence are implemented and verified within their documented scope.

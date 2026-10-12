@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.class = "fighter";
       a.lineage.packages.pen_open = false;
       window.__portraitSave = await a.engine.save();
@@ -39,7 +39,7 @@ try {
       throw Error("Healthy class identity");
     await p.route("**/ui/portraits/hero_rogue.webp", (route) => route.abort());
     await p.evaluate(() =>
-      window.__riddle.go({ kind: "death", death: { ...window.__portraitDeath }, kept: true }),
+      window.__idlever.go({ kind: "death", death: { ...window.__portraitDeath }, kept: true }),
     );
     await p.waitForFunction(
       () => document.querySelector(".death-hero .unit-icon")?.dataset.art === "hero_rogue",
@@ -57,14 +57,14 @@ try {
     if (frame.width !== 64 || frame.height !== 64) throw Error("Frame shifted");
     if ((await p.locator(".death-hero").textContent()) !== "Corin Ash · rogue · Bloodline 1")
       throw Error("Historical identity changed");
-    if (process.env.RIDDLE_PORTRAIT_SHOTS) {
-      mkdirSync(process.env.RIDDLE_PORTRAIT_SHOTS, { recursive: true });
-      await p.screenshot({ path: `${process.env.RIDDLE_PORTRAIT_SHOTS}/fallback-${width}.png` });
+    if (process.env.IDLEVER_PORTRAIT_SHOTS) {
+      mkdirSync(process.env.IDLEVER_PORTRAIT_SHOTS, { recursive: true });
+      await p.screenshot({ path: `${process.env.IDLEVER_PORTRAIT_SHOTS}/fallback-${width}.png` });
     }
     // The same component retains a primitive when even the atlas lacks this identity.
     await p.evaluate(async () => {
       const original = window.__portraitDeath;
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: { ...original, hero: { ...original.hero, class: "future_class" } },
         kept: true,
@@ -82,7 +82,7 @@ try {
       throw Error("Overflow");
     if (
       !(await p.evaluate(
-        async () => (await window.__riddle.engine.save()) === window.__portraitSave,
+        async () => (await window.__idlever.engine.save()) === window.__portraitSave,
       ))
     )
       throw Error("Save changed");

@@ -9,7 +9,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
 }).trim();
 const kinds = [
   ...readFileSync(
-    new URL("../../crates/riddle-core/src/defs.rs", import.meta.url),
+    new URL("../../crates/idlever-core/src/defs.rs", import.meta.url),
     "utf8",
   ).matchAll(/ItemDef \{ kind: "([^"]+)"/g),
 ].map((m) => m[1]);
@@ -18,7 +18,7 @@ try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const p = await browser.newPage({ viewport: { width, height: 900 } });
     await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const checks = await p.evaluate(async (kinds) => {
       const gem = document.querySelector(".gem.send").getBoundingClientRect();
       if (Math.abs(gem.width - gem.height) > 0.5) throw Error("Send artwork stretched");
@@ -75,7 +75,7 @@ try {
         verb: { v: "read", a: "teleport" },
       });
       check(read.querySelectorAll(".item-ico").length === 2, "rule item condition/action icons");
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage = {
         ...a.lineage,
         forge: {

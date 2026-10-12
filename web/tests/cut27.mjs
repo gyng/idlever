@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 27 client gates (docs/CUT27.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 27 client gates (docs/CUT27.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §1  solved floors fold: a send whose forecast clears D1–2 ≥ 95 % opens the watch on the fold line (`D1–2 · 100% · +$N` and its chips),
 //       never on D1's picture; the watch lands on the first floor below the bar; ≤ 5 s watched per folded floor; the line carries every
 //       state change the folded floors' events hold (thefts, finds, cage picks, companions, levels, max hp, bones, facts, a boss down, a
@@ -45,7 +45,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       w = document.querySelector(".watch");
     return r
       ? {
@@ -75,10 +75,10 @@ const camp = async () => {
 };
 const requestSamples = async () => {
   await openPanel(page, "forecast");
-  const seq = await page.evaluate(() => window.__riddle.forecastSeq);
+  const seq = await page.evaluate(() => window.__idlever.forecastSeq);
   await page.locator(".panel .fc-refine:visible").click({ timeout: 5000 });
   await page.waitForFunction(
-    (seq) => window.__riddle.forecastSeq > seq && window.__riddle.lastForecast?.refined === true,
+    (seq) => window.__idlever.forecastSeq > seq && window.__idlever.lastForecast?.refined === true,
     seq,
     { timeout: 15000 },
   );
@@ -100,7 +100,7 @@ const FOLD_FC = {
   fold_to: 2,
 };
 const GOOD = JSON.parse(
-  readFileSync(resolve(ROOT, "crates/riddle-core/presets/good.json"), "utf8"),
+  readFileSync(resolve(ROOT, "crates/idlever-core/presets/good.json"), "utf8"),
 ).rows.slice(0, 4);
 // the kinds a fold line must carry, read off the events on their own (the gate's own reading, not the watch's)
 const kindsOf = (steps) => {
@@ -151,7 +151,7 @@ try {
     await camp();
     await page.evaluate(
       async ({ fc, rows, path }) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         window.__steps = [];
         window.__foldRes = null;
         if (path === "client") {
@@ -300,7 +300,7 @@ try {
     });
     await camp();
     await page.evaluate((fc) => {
-      window.__riddle.forecastOfRules = () => fc;
+      window.__idlever.forecastOfRules = () => fc;
     }, FOLD_FC);
     await page.evaluate(() => document.querySelector("button.gem.send")?.click());
     await waitFor((s) => s?.screen === "watch", "the watch");
@@ -344,7 +344,7 @@ try {
         sims: 50,
         ...over,
       };
-      const r = window.__riddle;
+      const r = window.__idlever;
       window.__divAsks = 0;
       r.engine.divergence = async () => {
         window.__divAsks++;
@@ -353,7 +353,7 @@ try {
     }, over);
   const edit = (k) =>
     page.evaluate((k) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const c = r.rules.rows.flatMap((x) => x.conds).find((x) => x.n !== undefined);
       if (c) c.n = Math.max(5, c.n + k);
       else r.rules.rows[0].conds.push({ k: "hp<", n: 40 });
@@ -503,7 +503,7 @@ try {
     });
     await camp();
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.rules.rows = [
         { conds: [{ k: "foes>=", n: 1 }], verb: { v: "attack" } },
         { conds: [{ k: "hp<", n: 30 }], verb: { v: "drink", a: "heal" } },
@@ -590,7 +590,7 @@ try {
     // the core names the gem (`Patch.gem`, always its first): the tablets keep its order, the gem lights it; none flagged → Town
     for (const none of [false, true]) {
       await page.evaluate((none) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         const cut = {
           row: r.rules.rows[0],
           insert_at: 0,
@@ -656,7 +656,7 @@ try {
   // ---- §5: a drive-off whose counter the set holds reads `order` (`R3 under R1`), the gem moves it
   {
     await page.evaluate(async () => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         { drivenDeath } = await import("/src/ui/death.ts");
       const counter = {
         conds: [{ k: "foe_tag", t: "boss" }],
@@ -714,8 +714,8 @@ try {
     await page.evaluate(() => document.querySelector(".console .patch-gem")?.click());
     await sleep(300);
     const moved = await page.evaluate(() => ({
-      screen: window.__riddle.screen,
-      r1: window.__riddle.rules.rows[0]?.verb.a ?? window.__riddle.rules.rows[0]?.verb.v,
+      screen: window.__idlever.screen,
+      r1: window.__idlever.rules.rows[0]?.verb.a ?? window.__idlever.rules.rows[0]?.verb.v,
     }));
     check(
       moved.screen === "camp" && moved.r1 === "tag:boss",

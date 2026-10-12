@@ -1,0 +1,1856 @@
+//! Cut 13 §6: the wire invariants (docs/ITERATION_SPEED.md §1.1) — a native "QA player" that
+//! plays the protocol through the engine on seeds 1..=30 and asserts what the QA players
+//! reconciled by hand. One line per invariant with counts; exit 1 on any failure. ~700
+//! thread-seconds: ~45 s alone on the cores; `tools/gates.mjs` runs it beside the gate table.
+//! One job pool: a seed's prelude plays the protocol to the night and hands the night's legs
+//! (forecast vs sends per depth, the short list, the stall, salvage and shadow legs, the cold
+//! cache) to the pool on copies of the game — the checks and their counts are the sequential
+//! order's. `METRICS_PHASES=1` prints each job's wall and each leg's thread-seconds.
+//!   cargo run --profile fast --example qa [-- --seeds 30 --threads 24]
+use idlever_core::engine::{salvage_coins, salvage_value, without_history, GOLD_DIVISOR, GOLD_LEDGER_CAP};
+use idlever_core::item::{is_identified, to_inv};
+use idlever_core::engine::ExitTier;
+use idlever_core::rules::{Cond, Row, Verb};
+use idlever_core::{Ev, Game};
+use std::collections::BTreeMap;
+use std::sync::{Arc, Mutex};
+
+/// Per invariant: (checks, failures, the first failure's text).
+#[derive(Default, Clone)]
+struct Tally(BTreeMap<&'static str, (u32, u32, String)>);
+
+impl Tally {
+    fn check(&mut self, name: &'static str, ok: bool, detail: impl FnOnce() -> String) {
+        let e = self.0.entry(name).or_insert((0, 0, String::new()));
+        e.0 += 1;
+        if !ok {
+            e.1 += 1;
+            if e.2.is_empty() {
+                e.2 = detail();
+            }
+        }
+    }
+    fn merge(&mut self, other: Tally) {
+        for (k, (n, f, d)) in other.0 {
+            let e = self.0.entry(k).or_insert((0, 0, String::new()));
+            e.0 += n;
+            e.1 += f;
+            if e.2.is_empty() {
+                e.2 = d;
+            }
+        }
+    }
+}
+
+/// `METRICS_PHASES=1`: thread-seconds per leg of `play`, summed over the seeds (stderr).
+#[derive(Default, Clone)]
+struct Laps(BTreeMap<&'static str, f64>, Option<std::time::Instant>);
+
+impl Laps {
+    /// The time since the previous lap (or since the start) goes to `name`.
+    fn lap(&mut self, name: &'static str) {
+        let now = std::time::Instant::now();
+        let t = self.1.replace(now).unwrap_or(now);
+        *self.0.entry(name).or_default() += (now - t).as_secs_f64();
+    }
+    fn merge(&mut self, other: &Laps) {
+        for (k, v) in &other.0 {
+            *self.0.entry(k).or_default() += v;
+        }
+    }
+}
+
+/// The gold header is the ledger's sum while the ledger has not evicted a line.
+fn check_gold(t: &mut Tally, g: &Game, seed: u64, at: &str) {
+    if g.lineage.gold_ledger.len() >= GOLD_LEDGER_CAP {
+        return;
+    }
+    let sum: i32 = g.lineage.gold_ledger.iter().map(|l| l.delta).sum();
+    t.check("gold header == ledger sum", sum == g.lineage.gold, || format!("seed {seed} {at}: header ${} ledger ${sum}", g.lineage.gold));
+}
+
+/// A learned flavour never labels `?`: every item the lineage can name is known on the wire.
+fn check_labels(t: &mut Tally, g: &Game, seed: u64, items: &[idlever_core::item::Item], at: &str) {
+    let l = &g.lineage;
+    for it in items {
+        let w = to_inv(it, &l.facts, &l.flavours);
+        let ok = !is_identified(&l.facts, &l.flavours, &it.kind) || (w.known && !w.label.contains('?'));
+        t.check("a learned flavour never labels `?`", ok, || format!("seed {seed} {at}: {} labelled {}", it.kind, w.label));
+    }
+}
+
+/// QA on 1a2a4a9 (qaO: the keep sheet's `sold blink $2 · fear ×2 $3`, the report's SALVAGED
+/// `teleport ×9 · identify ×4` while the forge said `brittle scroll?`): no item label on the
+/// wire names a potion or scroll kind the lineage has not identified. `names` are the wire's
+/// item labels (salvage and spent rows, `spent_on`, found and pending items, forge rows).
+fn check_names<'a>(t: &mut Tally, g: &Game, seed: u64, names: impl IntoIterator<Item = &'a str>, at: &str) {
+    let l = &g.lineage;
+    let hidden: Vec<String> = l.flavours.potion.keys().chain(l.flavours.scroll.keys()).filter(|k| !is_identified(&l.facts, &l.flavours, k)).map(|k| k.replace('_', " ")).collect();
+    for name in names {
+        let n = name.replace('_', " ");
+        let n = n.strip_suffix(" potion").or_else(|| n.strip_suffix(" scroll")).unwrap_or(&n).to_string();
+        t.check("no wire label names an unidentified kind", !hidden.contains(&n), || format!("seed {seed} {at}: `{name}`"));
+    }
+}
+
+/// The exit lines' and the report's item labels (`check_names`).
+fn check_report_names(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::ReturnReport, at: &str) {
+    let mut names: Vec<&str> = Vec::new();
+    names.extend(r.salvaged.iter().map(|x| x.kind.as_str()));
+    names.extend(r.spent.iter().map(|x| x.kind.as_str()));
+    names.extend(r.found.iter().map(|x| x.label.as_str()));
+    for x in &r.exits {
+        names.extend(x.salvaged.iter().map(|s| s.kind.as_str()));
+        names.extend(x.spent_on.iter().map(|s| s.as_str()));
+    }
+    let forge: Vec<String> = g.lineage().forge.keys().cloned().collect();
+    names.extend(forge.iter().map(|s| s.as_str()));
+    names.extend(r.stolen.iter().map(|x| x.label.as_str()));
+    names.extend(r.shelved.iter().map(|x| x.kind.as_str()));
+    for x in &r.exits {
+        names.extend(x.stolen.iter().map(|s| s.as_str()));
+    }
+    check_names(t, g, seed, names.iter().copied(), at);
+    // QA on a946e04 (qaS: SALVAGED `blue potion? ×8` beside `poison ×3`; STOLEN `black potion?`
+    // beside LEARNED `confusion (black)`): no report label names a flavour whose kind the
+    // lineage has identified (`Lineage.renamed`'s keys). (An exit line is its exit's: it may
+    // predate the identification — the client reads it through `renamed`.)
+    let renamed = g.lineage().renamed;
+    let mut now: Vec<&str> = Vec::new();
+    now.extend(r.salvaged.iter().map(|x| x.kind.as_str()));
+    now.extend(r.spent.iter().map(|x| x.kind.as_str()));
+    now.extend(r.found.iter().map(|x| x.label.as_str()));
+    now.extend(r.stolen.iter().map(|x| x.label.as_str()));
+    now.extend(r.shelved.iter().map(|x| x.kind.as_str()));
+    now.extend(forge.iter().map(|s| s.as_str()));
+    for n in now {
+        t.check("no wire label names a flavour whose kind is identified", !renamed.contains_key(n), || format!("seed {seed} {at}: `{n}` is {}", renamed[n]));
+    }
+}
+
+/// QA on 1a2a4a9 (qaO: `hp 3 foes 2 · R2 foes not ≥1` under `foes ≥ 1 → attack`): a trace
+/// turn never gives `foes not ≥N` beside a `foes` column of N or more — the reason says why
+/// they did not count (`foes fleeing` / `foes appeared after`).
+fn check_foe_reasons(t: &mut Tally, seed: u64, trace: &idlever_core::Trace, at: &str) {
+    for x in &trace.turns {
+        for w in x.rows.iter().flatten() {
+            let n = w.why.strip_prefix("foes not ≥").and_then(|n| n.parse::<i32>().ok());
+            t.check("no `foes not ≥N` beside a foes column of N+", n.is_none_or(|n| x.foes < n), || format!("seed {seed} {at}: t{} foes {} (rules {}) · R{} {}", x.t, x.foes, x.rule_foes, w.row + 1, w.why));
+            t.check("a row reason is from the table", idlever_core::turn::row_reason_ok(&w.why), || format!("seed {seed} {at}: `{}`", w.why));
+        }
+    }
+}
+
+/// A gate's `needs` never names a fact the lineage holds.
+fn check_needs(t: &mut Tally, g: &Game, seed: u64) {
+    let l = &g.lineage;
+    for u in g.unlocks() {
+        let Some(n) = u.needs.as_deref() else { continue };
+        let held = match n.strip_prefix("fact: ") {
+            Some(tag) => idlever_core::facts::has_tag_fact(&l.facts, tag),
+            None => match n.strip_prefix("find a ") {
+                Some(k) => l.facts.contains(&format!("item:{k}")),
+                None => false,
+            },
+        };
+        t.check("a gate's `needs` never names a held fact", !held, || format!("seed {seed}: {} needs `{n}`", u.id));
+    }
+}
+
+/// QA on 1a2a4a9 (qaP: the short list reshuffled between two opens; PENDING and UNLOCKS named
+/// different cards): the short list is the same from `unlocks()`, `unlock_deltas()` and
+/// `unlocks()` again, holds at most `SHORT_LIST` cards and the pinned one, and the report's
+/// unlock lines are its available cards.
+fn check_short(t: &mut Tally, g: &Game, seed: u64) {
+    let pick = |c: Vec<idlever_core::UnlockInfo>| c.into_iter().filter(|u| u.short).map(|u| u.id).collect::<Vec<_>>();
+    let a = pick(g.unlocks());
+    let b = pick(g.unlock_deltas());
+    let c = pick(g.unlocks());
+    let pinned: Vec<String> = g.unlocks().into_iter().filter(|u| u.pinned).map(|u| u.id).collect();
+    t.check("the unlock short list is stable across reads", a == b && b == c && a.len() <= idlever_core::meta::SHORT_LIST.max(pinned.len()) && pinned.iter().all(|p| a.contains(p)), || format!("seed {seed}: {a:?} · {b:?} · {c:?} · pinned {pinned:?}"));
+    let pending: Vec<String> = idlever_core::meta::pending(g).into_iter().filter_map(|l| l.strip_prefix("unlock ").and_then(|x| x.split(' ').next()).map(String::from)).collect();
+    let avail: Vec<String> = g.unlocks().into_iter().filter(|u| u.short && u.available).map(|u| u.id).collect();
+    t.check("PENDING's unlocks are the short list's available cards", pending == avail, || format!("seed {seed}: {pending:?} vs {avail:?}"));
+}
+
+/// The forecast's ends sum to 1 and a 0 % death share lists no killers.
+fn check_forecast(t: &mut Tally, g: &Game, seed: u64) {
+    let f = g.forecast();
+    if let Some(e) = &f.ends {
+        let sum = e.bank + e.return_ + e.death + e.stall;
+        t.check("forecast ends sum to 1 ± 1e-9", (sum - 1.0).abs() < 1e-9, || format!("seed {seed}: ends sum {sum}"));
+        t.check("forecast death 0 ⇒ causes empty", e.death > 0.0 || f.causes.is_empty(), || format!("seed {seed}: death {} causes {:?}", e.death, f.causes));
+    }
+}
+
+/// QA on 3d71c33 (`D8 44% · bank 57%` under `depth ≥ 8 → bank`; `bank 42%`, then 0 of 16
+/// banked overnight): on a copy of the lineage running the good set with its bank row at
+/// `depth ≥ d` (d = the good set's own 5, 8 and the lineage's best), the forecast's bank
+/// share is never above the reach of D`d` when the bars show it, and — summed over the seeds
+/// (`BankTally`) — it is what sends from this camp do: `SENDS` real sends on the night's own
+/// run seeds per set.
+/// The bank rows' depths `check_forecast_bank_at` plays for this lineage.
+fn bank_depths(g: &Game) -> Vec<u32> {
+    let mut depths = vec![5, 8, g.lineage.best_depth.max(1)];
+    depths.sort();
+    depths.dedup();
+    depths
+}
+
+/// One depth of the check (the depths are independent copies of the lineage: one job each).
+fn check_forecast_bank_at(t: &mut Tally, bank: &mut BankTally, g: &Game, seed: u64, d: u32) {
+    let mut h = g.clone();
+    h.lineage.unlocks.extend(["row5", "row6", "row7", "row8", "throw"].map(String::from));
+    {
+        let mut set = idlever_core::probes::good();
+        let at = set.rows.iter().position(|r| r.verb.v == "bank").expect("the good set banks");
+        if d != 5 {
+            set.rows[at] = Row::new(vec![Cond::n("depth>=", d as i32)], Verb::new("bank"));
+        }
+        if h.set_rules_raw(set).is_err() {
+            return;
+        }
+        // `BANK_SIMS` of the forecast's own panel (its first seeds; the bars and the ends are
+        // one panel at any count), to keep the job's time.
+        let f = idlever_core::forecast::forecast_with(&h, h.lineage.rules(), BANK_SIMS);
+        let Some(e) = f.ends.clone() else { return };
+        if let Some(r) = f.depths.iter().find(|x| x.depth == d) {
+            t.check("forecast bank ≤ reach at the bank row's depth", e.bank <= r.reach + 1e-9, || format!("seed {seed} depth ≥ {d}: bank {:.2} · D{d} {:.2}", e.bank, r.reach));
+        }
+        // The panel's nominal count (a budget-cut panel ran fewer: the band is then narrower
+        // than its own, the stricter reading).
+        let n = BANK_SIMS as f64;
+        let mut banked = 0u32;
+        for j in 0..SENDS {
+            let mut s = h.clone();
+            s.lineage.next_run_id += j;
+            s.lineage.rest_left = 0;
+            s.start_run(None);
+            s.run_to_end(idlever_core::engine::MAX_TURNS_PER_RUN);
+            banked += (s.run.as_ref().unwrap().over == Some(ExitTier::Bank)) as u32;
+        }
+        let k = if d == 5 { 0 } else { 1 };
+        bank.0[k].0 += e.bank * n;
+        bank.0[k].1 += n;
+        bank.0[k].2 += banked as f64;
+        bank.0[k].3 += SENDS as f64;
+    }
+}
+
+/// Real sends per set per seed for the forecast-vs-sends check, and the forecast's sims.
+/// Cut 19: 18 (was 6) — at 6 the sends' sample (186) read 0.763 against the panel's 0.832
+/// after the night moved; at 12 0.782, at 18 0.803: the gap was the sends' own noise (a fresh
+/// lineage's panel and 60 sends agree to 0.01, before and after a night), so the check runs on
+/// a sample that can tell. The band narrows with it.
+/// QA on 778fa1b: 54 sends and 60 sims (were 18 and 20) — at 18/20 the pooled 95 % band
+/// (±0.039) was about the two samples' own spread, and runs of the same engine read +0.023
+/// and −0.039 across a change that altered only item ids (a bones pile's finds re-numbered):
+/// at 54/60 the band is ±0.023 and the gap 0.013, the stricter reading (+~10 s).
+/// Cut 24: 108 sends and 120 sims — the Cut 24 engine read the depth variant 0.906 vs 0.883
+/// (±0.020) at 54/60, while fresh-lineage nights on seeds 1–30 / 31–60 / 61–90 read +0.007,
+/// −0.023, +0.002 (no bias: the sends' own spread); at 108/120 it reads 0.908 vs 0.896 ±0.013,
+/// the stricter reading again (+~30 s).
+const SENDS: u32 = 108;
+const BANK_SIMS: u32 = 120;
+
+/// Σ over seeds, per [the good set, its bank-depth variants]: (forecast banks, forecast sims,
+/// real banks, real sends).
+#[derive(Default, Clone)]
+struct BankTally([(f64, f64, f64, f64); 2], StallSum);
+
+/// QA on 1a2a4a9 (qaP): Σ over the stall leg's records — (the unpatched set's forecast stall
+/// share, the top patch's set's, records).
+#[derive(Default, Clone, Copy)]
+struct StallSum(f64, f64, u32);
+
+/// Cut 14 §1–2: a death screen offers nothing under its baseline (a `dice` death's candidates
+/// kept under the bar are flagged `below_bar`), and a `dice` margin names no unused item.
+fn check_death(t: &mut Tally, g: &Game, seed: u64, d: &idlever_core::Death) {
+    // QA on e75ec29 (qaQ: the gem applied `83 %` above two `100 %`; `92 %` above `100 %`): the
+    // head survives within `SURVIVE_BAND` of the best shown — on a boss death the escape family
+    // does not count as the best (Cut 6 §8; a boss death's escape patches sit below the rest).
+    // QA on 778fa1b (qaU: `hp < 40% → return · survives 100%` led; applied, `D5 −54`): nor does
+    // an exit patch that costs `EXIT_COST` of reach beside a patch that beats the base
+    // (`trace::counts_as_best`).
+    let boss = g.deaths.get(&d.run_id).is_some_and(|r| r.boss.is_some());
+    let counts = |p: &&idlever_core::wire::Patch| idlever_core::trace::counts_as_best(p, &d.patches, d.baseline, boss);
+    if let (Some(head), Some(best)) = (d.patches.first(), d.patches.iter().filter(counts).map(|p| p.survive).reduce(f64::max)) {
+        let ok = !counts(&head) || head.survive >= best - idlever_core::trace::SURVIVE_BAND - 1e-9;
+        t.check("the top patch survives within 10 pts of the best shown", ok, || format!("seed {seed} run {}: {} {:.2} vs best {best:.2} · {}", d.run_id, head.row.describe(), head.survive, d.verdict));
+    }
+    // QA on 0c6e126 (qaY: "05 ends at `hp 1`, 08 at five rows of `hp 3`"): a death's trace ends
+    // on the blow that killed — at 0 hp, after the last action, naming what hit.
+    if d.verdict != "stall" {
+        let last = d.trace.turns.last().map(|x| x.t).unwrap_or(0);
+        let ok = d.trace.blow.as_ref().is_some_and(|b| b.hp == 0 && !b.by.is_empty() && b.dmg > 0 && b.t >= last);
+        t.check("a death trace ends at 0 hp (the killing blow)", ok, || format!("seed {seed} run {}: blow {:?} · last turn t{last}", d.run_id, d.trace.blow));
+        // Cut 25 §3 (AN: `14 → 0` on one `goblin −2` row): every blow after the last action is a row
+        // — they step the hp down from the last action's to 0, the last one `blow`.
+        if !d.trace.blows.is_empty() {
+            let bs = &d.trace.blows;
+            let steps = bs.windows(2).all(|w| w[1].hp <= w[0].hp && w[1].t >= w[0].t) && bs.iter().all(|b| b.t >= last && b.dmg > 0);
+            let ends = bs.last() == d.trace.blow.as_ref();
+            t.check("a death trace's blows step the hp down to the killing blow", steps && ends, || format!("seed {seed} run {}: {:?}", d.run_id, bs));
+        }
+    }
+    // QA on 0c6e126 (qaY: `drink invisibility · survives 92%` applied; the next heir had none):
+    // a patch's named item is in the next heir's pack, or the patch is offered with its purchase.
+    let camp = idlever_core::trace::camp_state(g);
+    let pack = idlever_core::trace::next_pack_kinds(&camp);
+    for p in &d.patches {
+        if let Some(k) = idlever_core::trace::row_item(&p.row) {
+            let ok = pack.contains(k) || p.buys.as_ref().is_some_and(|b| b.kind == k && b.price <= camp.lineage.gold);
+            t.check("an offered patch's item is packable (carried or bought with it)", ok, || format!("seed {seed} run {}: {} · pack {pack:?} · buys {:?}", d.run_id, p.row.describe(), p.buys));
+        }
+    }
+    // QA on 778fa1b: every shown patch says whether it ends the run (`exits`), and a costly
+    // exit never leads a list with an alternative that beats the base.
+    for p in &d.patches {
+        t.check("a patch's `exits` ⇔ its row returns or banks", p.exits == idlever_core::trace::patch_exits(p), || format!("seed {seed} run {}: {} exits {}", d.run_id, p.row.describe(), p.exits));
+    }
+    if let Some(head) = d.patches.first() {
+        let pinned = g.deaths.get(&d.run_id).is_some_and(|r| r.counter.as_ref() == Some(&head.row)) || head.root.is_some() || head.remove || head.replace;
+        t.check("a costly exit never leads beside an alternative", pinned || !(idlever_core::trace::costly_exit(head) && idlever_core::trace::exit_alternative(&d.patches, d.baseline)), || format!("seed {seed} run {}: {} reach {:+.2} · {:?}", d.run_id, head.row.describe(), head.forecast_delta, d.patches.iter().map(|p| (p.row.describe(), p.survive)).collect::<Vec<_>>()));
+    }
+    // QA on 778fa1b (qaU: `foe: boss → attack boss` offered while the editor's lists had
+    // neither): a patch's row is written in the lineage's vocabulary — every cond a token the
+    // editor offers, the verb one it lists (a card row is its card's; the unlock pseudo-patch
+    // names a locked cond by design).
+    let v = g.vocabulary();
+    for p in d.patches.iter().filter(|p| p.insert_at >= 0 && !p.remove && !p.row.is_card()) {
+        let conds = p.row.conds.iter().all(|c| v.conds.iter().any(|x| x.same_token(c)));
+        t.check("a patch's conds and verb are in the vocabulary", conds && v.verbs.contains(&p.row.verb), || format!("seed {seed} run {}: {} (conds {conds}, verb {})", d.run_id, p.row.describe(), v.verbs.contains(&p.row.verb)));
+    }
+    // QA on e75ec29 (qaQ: `survives 100% · base 100%` under GAP): replays that all survive
+    // unpatched did not reproduce the death — it is never a `gap` or a `row`.
+    t.check("a gap or row verdict has a baseline under 100 %", !(d.verdict == "gap" || d.verdict == "row" || d.verdict == "order") || d.baseline < 1.0 - 1e-9, || format!("seed {seed} run {}: {} base {:.2}", d.run_id, d.verdict, d.baseline));
+    // Cut 26 §6 (AO: `GAP` beside `unpatched 10/12`): a stamp never contradicts its replay counts —
+    // a gap (row, order) most of whose unpatched replays survive says it leans to the dice, and only it does.
+    // (blind 3ab97ea, `trace::compute_verdict`: a death under a boss is his wall, never the dice — no lean; the QA
+    // read missed it until a Cut 119 night met one on seed 18 of the 30-seed audit)
+    let leans = d.boss.is_none() && matches!(d.verdict.as_str(), "gap" | "row" | "order") && d.baseline > idlever_core::trace::STAMP_BASE + 1e-9;
+    t.check("a stamp never contradicts its replay counts (a gap most replays survive leans `dice`)", (d.lean.as_deref() == Some("dice")) == leans, || format!("seed {seed} run {}: {} · unpatched {:.0}/{} · lean {:?} · boss {:?}", d.run_id, d.verdict, d.baseline * d.replays.max(1) as f64, d.replays, d.lean, d.boss));
+    // QA on 308f045 (qaAC: `← never met` over `R1 attack boss · not in view`, R1 having fired four times on that floor): a
+    // chain link is its row's newest reason — never one the row outlived (fired after it, or gave another reason since).
+    for b in d.chain.iter().flatten() {
+        let turns = &d.trace.turns;
+        let src = turns.iter().enumerate().rev().find_map(|(i, x)| x.rows.iter().flatten().find(|w| w.because.as_ref().is_some_and(|c| c.text == b.text)).map(|w| (i, w.row)));
+        let ok = src.is_some_and(|(i, row)| turns[i + 1..].iter().all(|x| x.row != row as i32 && x.rows.iter().flatten().filter(|w| w.row == row).all(|w| w.because.as_ref().is_some_and(|c| c.text == b.text))));
+        t.check("a death's chain link is its row's newest reason (never one the row outlived)", ok, || format!("seed {seed} run {}: `{}` · {src:?}", d.run_id, b.text));
+    }
+    // Cut 26: a `route` verdict names its fork, and only it does.
+    t.check("a route verdict names its fork (and only it)", (d.verdict == "route") == d.route_cause.is_some(), || format!("seed {seed} run {}: {} · {:?}", d.run_id, d.verdict, d.route_cause));
+    // Cut 26 §6 (AP: `reach D5 −76`): a patch's whole-run reach reads from→to, and they agree with its move.
+    for p in &d.patches {
+        if let Some(w) = &p.whole {
+            t.check("a patch's reach from→to agrees with its move", (w.reach_to - w.reach_from - w.reach).abs() < 1e-9 && (0.0..=1.0).contains(&w.reach_from) && (-1e-9..=1.0 + 1e-9).contains(&w.reach_to), || format!("seed {seed} run {}: {} {:?}", d.run_id, p.row.describe(), w));
+        }
+    }
+    // QA on a946e04 (qaS: an archer death's notes `Goblin Captain: summoner.`, the run's last
+    // note a floor earlier; a poison death's `The black one: confusion.`): a death's note names
+    // its killer or the harm that killed him (a stall's notes say what it paid).
+    if d.verdict != "stall" {
+        let gamble = g.deaths.get(&d.run_id).is_some_and(|r| r.gamble_row.is_some());
+        let names = |n: &str| idlever_core::trace::death_note_names(n, &d.cause) || (gamble && ["poison", "gas", "fire"].iter().any(|c| idlever_core::trace::death_note_names(n, c)));
+        t.check("a death's note names the killer or the killing harm", d.notes.iter().all(|n| names(n)), || format!("seed {seed} run {}: {} · {:?}", d.run_id, d.cause, d.notes));
+        // (qaS: `slain by goblin_archer`)
+        let slain = d.morgue.lines().nth(1).and_then(|l| l.split(" · ").find_map(|p| p.strip_prefix("slain by "))).unwrap_or("");
+        t.check("the morgue names the killer by its title", !slain.contains('_'), || format!("seed {seed} run {}: slain by {slain}", d.run_id));
+    }
+    // QA on 92eb880 (qaM: `R2 attack saved him.` on the death of a hero R2 was fighting for).
+    t.check("a death's notes never say `saved him`", d.notes.iter().all(|n| !n.contains("saved him")), || format!("seed {seed} run {}: {:?}", d.run_id, d.notes));
+    // QA on 92eb880 (qaM: `DICE` over three `survives 100% · below bar`): a dice death whose
+    // patches none beat the base says so, and only then.
+    let beaten = d.patches.iter().any(|p| p.survive > d.baseline + 1e-9);
+    // Cut 26 §6 (AQ): a dice death no patch beats lists none (`nothing beats base` alone).
+    t.check("`nothing_beats_base` ⇔ a dice death no patch beats", d.nothing_beats_base == (d.verdict == "dice" && !d.patches.is_empty() && !beaten), || format!("seed {seed} run {}: {} base {:.2} flag {}", d.run_id, d.verdict, d.baseline, d.nothing_beats_base));
+    for p in &d.patches {
+        t.check("no death screen carries a patch under its baseline (unless below_bar)", p.below_bar || p.survive >= d.baseline - 1e-9, || format!("seed {seed} run {}: {} survives {:.2} · base {:.2} · {}", d.run_id, p.row.describe(), p.survive, d.baseline, d.verdict));
+    }
+    // Cut 15 §6: 0 % candidates show only when nothing survives (a dice death is never empty).
+    let any_survives = d.patches.iter().any(|p| p.survive > 0.0);
+    for p in d.patches.iter().filter(|p| p.insert_at >= 0) {
+        // (Cut 6 §8: on a boss death a lone return is joined by the best other candidate — the
+        // wall's counter even at 0 %, flagged `below_bar`: named as what was tried, not advice.)
+        t.check("no patch survives 0 % beside one that survives", !any_survives || p.survive > 0.0 || p.below_bar, || format!("seed {seed} run {}: {} survives {:.2} · base {:.2}", d.run_id, p.row.describe(), p.survive, d.baseline));
+    }
+    if d.verdict == "dice" {
+        t.check("no dice death's margin names an unused item", !d.margin.contains("unused"), || format!("seed {seed} run {}: `{}`", d.run_id, d.margin));
+    }
+    // QA on 1a2a4a9 (qaO: `heal unused · 1 unknown unused` beside `R1 no unknown`).
+    let said_none = d.trace.turns.last().and_then(|x| x.rows.as_ref()).is_some_and(|rows| rows.iter().any(|w| w.why == "no unknown"));
+    t.check("a margin's unknown count never contradicts a row's `no unknown`", !(said_none && d.margin.split(" · ").any(|x| x.contains("unknown") && x.ends_with(" unused"))), || format!("seed {seed} run {}: `{}`", d.run_id, d.margin));
+    check_foe_reasons(t, seed, &d.trace, &format!("run {} death trace", d.run_id));
+    // QA on 1a2a4a9 (qaP: `+ drop R1` on every patch, R1 the return row).
+    if let Some(rules) = &d.rules {
+        for p in d.patches.iter().filter(|p| p.drops.is_some()) {
+            let r = p.drops.and_then(|i| rules.rows.get(i as usize));
+            let ok = r.is_some_and(|r| !r.is_card() && !matches!(r.verb.v.as_str(), "return" | "bank") && r.verb.v != p.row.verb.v);
+            t.check("a patch's `drops` is never an exit row or its own verb's", ok, || format!("seed {seed} run {}: {} drops {:?}", d.run_id, p.row.describe(), r.map(|r| r.describe())));
+        }
+    }
+}
+
+/// Cut 15 §2: on a copy of the lineage given gold, the first gold-buyable unlock buys with
+/// gold at `UnlockInfo.gold` — gold down by the price (a ledger line `unlock <id>`), marks
+/// untouched — and the next gold price of every other card climbs by a quarter of its first.
+fn check_gold_buy(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    h.lineage.gold_move(100_000, "test");
+    let before = h.unlocks();
+    let Some(u) = before.iter().find(|u| !u.owned && u.gold > 0 && u.needs.as_deref().is_none_or(|n| n.starts_with('◆'))) else { return };
+    let (gold, marks, buys) = (h.lineage.gold, h.lineage.marks, h.lineage.gold_buys);
+    let ok = h.buy_unlock_gold(&u.id).is_ok();
+    let line = h.lineage.gold_ledger.last().map(|l| (l.delta, l.why.clone()));
+    let after = h.unlocks();
+    let climbed = before.iter().filter(|b| b.id != u.id && !b.owned && b.gold > 0 && idlever_core::kit::row_gold(&h.lineage, &b.id).is_none()).all(|b| after.iter().any(|a| a.id == b.id && a.gold == idlever_core::meta::gold_price(b.cost, buys + 1) && a.gold > b.gold));
+    t.check(
+        "a gold buy spends gold not marks and raises the next price",
+        ok && h.lineage.unlocks.contains(&u.id) && h.lineage.gold == gold - u.gold as i32 && h.lineage.marks == marks && line == Some((-(u.gold as i32), format!("unlock {}", u.id))) && climbed,
+        || format!("seed {seed}: {} ◆{} ${} · ok {ok} · gold {gold} → {} · marks {marks} → {} · {line:?} · climbed {climbed}", u.id, u.cost, u.gold, h.lineage.gold, h.lineage.marks),
+    );
+    check_gold(t, &h, seed, "after a gold buy");
+}
+
+/// QA on 92eb880 (qaM: "D6 32 → 38 → 50 just from opening sheets"): the camp's forecast is a
+/// function of what the player controls — a forecast, then every engine read the camp's
+/// sheets make (lineage, vocabulary, the unlock shelf and its deltas, the supply shop, the
+/// death screen, the same rules and loadout set again), then a forecast: identical. After the
+/// refine pass a read is the refined panel (never back to the first pass), and from a cold
+/// cache both passes are what they were. Every third seed runs the refine leg (100 sims).
+fn check_forecast_reads(t: &mut Tally, lp: &mut Laps, pool: &Pool, g: &mut Game, seed: u64, died: Option<u32>) {
+    let reads = |g: &mut Game, lp: &mut Laps| {
+        let _ = g.lineage();
+        let _ = g.vocabulary();
+        let _ = g.unlocks();
+        lp.lap("reads: lineage, vocabulary, unlocks");
+        let _ = g.unlock_deltas();
+        lp.lap("reads: unlock_deltas");
+        let _ = g.supply_catalogue();
+        if let Some(id) = died {
+            let _ = g.death(id);
+        }
+        lp.lap("reads: supplies, death");
+        let r = g.lineage.rules().clone();
+        let _ = g.set_rules(r.clone());
+        let l = g.loadout.clone();
+        g.loadout(l);
+        lp.lap("reads: set_rules, loadout");
+        // QA on 1a2a4a9 (qaO: `death 17% ↔ 13%`, `D4 68%±13 ↔ 67%±9` on opening the vault,
+        // `D5 82%±11 → 85%±7` on opening `edit`): what the camp's panels send when opened or
+        // re-applied — the cage picker's panels, the same preferences and repeat again, the
+        // loadout in another order, the same rows re-tagged by the editor.
+        let _ = g.cage_forecast();
+        let (vp, kp, rep) = (g.lineage.vault_pref.clone(), g.lineage.keep_pref.clone(), g.lineage().repeat);
+        let _ = g.set_vault_pref(&vp);
+        let _ = g.set_keep_pref(&kp);
+        lp.lap("reads: cage_forecast");
+        g.set_restock(rep);
+        let mut l = g.loadout.clone();
+        l.reverse();
+        g.loadout(l);
+        lp.lap("reads: prefs, reversed loadout");
+        // (each pass re-tags every row the other way: `player` ↔ `patch`)
+        let mut tagged = r;
+        for row in tagged.rows.iter_mut() {
+            row.origin = Some(if row.origin.as_deref() == Some("player") { "patch" } else { "player" }.into());
+        }
+        let _ = g.set_rules(tagged);
+        lp.lap("reads: re-tagged set_rules");
+        let _ = g.cage_forecast();
+        lp.lap("reads: cage_forecast again");
+    };
+    let first = g.forecast();
+    lp.lap("reads: first forecast");
+    reads(g, lp);
+    let again = g.forecast();
+    lp.lap("reads: forecast again");
+    t.check("forecast → every sheet's reads → forecast: identical", again == first, || format!("seed {seed}: {:?} → {:?}", first.depths.iter().map(|d| d.reach).collect::<Vec<_>>(), again.depths.iter().map(|d| d.reach).collect::<Vec<_>>()));
+    // QA on a946e04 (qaS: `return 90% death 10%` → `88% · 12%` across a reload): save → load →
+    // forecast is the same forecast.
+    let reload = |g: &Game| Game::load(&g.save()).map(|h| h.forecast());
+    t.check("save → load → forecast: identical", reload(g).as_ref() == Ok(&again), || format!("seed {seed}"));
+    if !seed.is_multiple_of(3) {
+        return;
+    }
+    let refined = g.forecast_refine();
+    lp.lap("refine: forecast_refine");
+    reads(g, lp);
+    // A session's other panels (patch deltas, edited sets, the cage's) fill the memo: a full
+    // one never drops the panel the camp shows (the cage picker's clear-all did — qaO).
+    for i in 0..idlever_core::forecast::PANEL_CACHE_MAX {
+        g.panel_cache.borrow_mut().insert(format!("qa filler {i}"), Vec::new());
+    }
+    let _ = g.cage_forecast();
+    let after = g.forecast();
+    lp.lap("refine: filler, cage, forecast");
+    t.check("save → load → forecast: identical (refined)", reload(g).as_ref() == Ok(&after), || format!("seed {seed}"));
+    t.check("after the refine a forecast read is the refined panel", after == refined, || format!("seed {seed}: refined {:?} read {:?}", refined.depths.iter().map(|d| d.reach).collect::<Vec<_>>(), after.depths.iter().map(|d| d.reach).collect::<Vec<_>>()));
+    // (a copy of this state from a cold cache: a job of its own, the values compared there)
+    let cold = g.clone();
+    cold.panel_cache.borrow_mut().clear();
+    cold.forecast_cache.borrow_mut().clear();
+    cold.refined_panels.borrow_mut().clear();
+    pool.push(60, "cold cache", seed, move |o, _| {
+        o.t.check("a cold cache reads the same two passes", cold.forecast() == first && cold.forecast_refine() == refined, || format!("seed {seed}"));
+    });
+}
+
+/// QA on 92eb880 (qaM: `R3 fired 0 of 16 runs: hp < 30% → drink heal · heal unknown` under R1
+/// `hp < 30% → return`): after the night, a row that never fired and that an earlier row
+/// shadows names it on its pending line, and a shadowed row never fires.
+fn check_shadowed(t: &mut Tally, g: &Game, seed: u64) {
+    check_shadowed_on(t, g, seed);
+    // The qaM set on a copy: `hp < 30% → return` on top, the lineage's rows, `hp < 20% →
+    // return` under them (shadowed by R1), one hour offline.
+    let mut h = g.clone();
+    h.lineage.unlocks.extend(["row5", "row6", "row7", "row8"].map(String::from));
+    let mut set = g.lineage.rules().clone();
+    set.rows.insert(0, Row::new(vec![Cond::n("hp<", 30)], Verb::new("return")));
+    // Cut 19 §2: a return walks (a foe in the way fails it), so it shadows only a later return
+    // it always pre-empts — the qaM heal row under it is no longer shadowed.
+    set.rows.push(Row::new(vec![Cond::n("hp<", 20)], Verb::new("return")));
+    if h.set_rules_raw(set).is_err() {
+        return;
+    }
+    h.run_offline(3600);
+    let last = h.lineage.rules().rows.len() - 1;
+    t.check("the qaM shadow is found (R1 return over a later return)", h.lineage.shadowed_by(h.lineage.rules()).get(last).copied().flatten() == Some(0), || format!("seed {seed}"));
+    check_shadowed_on(t, &h, seed);
+}
+
+fn check_shadowed_on(t: &mut Tally, g: &Game, seed: u64) {
+    let rules = g.lineage.rules();
+    let shadowed = g.lineage.shadowed_by(rules);
+    let pending = idlever_core::meta::pending(g);
+    for (i, by) in shadowed.iter().enumerate() {
+        let Some(by) = by else { continue };
+        let n = g.batch.row_runs.get(i).copied().unwrap_or(0);
+        t.check("a shadowed row never fires", n == 0, || format!("seed {seed}: R{} (shadowed by R{}) fired in {n} runs", i + 1, by + 1));
+        let line = pending.iter().find(|l| l.starts_with(&format!("R{} fired ", i + 1)));
+        t.check("a shadowed row's pending line names its shadow", line.is_none_or(|l| l.ends_with(&format!(" · shadowed by R{}", by + 1))), || format!("seed {seed}: {line:?}"));
+    }
+}
+
+/// QA on 1a2a4a9 (qaO: `The lock took him to 4 HP; no row fired; died.` · `Spectral blades
+/// cornered him to 5 HP; no row fired; died.` beside DEATHS `fire ×1`): every reel line that
+/// ends in a death names the run's killer — its arc's resolution is `died to <the record's
+/// cause>`, and the line's end is `died to <the cause, or its last word>`, or `died on D<n>` /
+/// a bare `died` only when the setup's threat is the killer.
+fn check_reel(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::ReturnReport) {
+    use idlever_core::sifter::{cause_key, cause_phrase};
+    // QA on 308f045 (qaAC: one run read `1 STALLED` and `1 DRIVEN` beside `1 RUNS`): one outcome per run — the tiles
+    // (banked, returned, deaths) sum to the runs, and the stalls and drive-offs are returns counted apart, never both
+    // for one run.
+    if !r.sampled {
+        let deaths: u32 = r.deaths.iter().map(|d| d.n).sum();
+        t.check("a report's outcome tiles sum to its runs (stalled + driven ≤ returned)", r.banked + r.returned + deaths == r.runs && r.stalled + r.driven <= r.returned, || format!("seed {seed}: runs {} · banked {} returned {} deaths {deaths} · stalled {} driven {}", r.runs, r.banked, r.returned, r.stalled, r.driven));
+    }
+    // QA on 308f045 (qaAC: the reel's `Returned with $0.` under `0 RETURNED · 1 DRIVEN`): a drive-off's or a stall's
+    // story never says it returned.
+    for x in r.exits.iter().filter(|x| x.driven.is_some() || x.text.starts_with("stalled")) {
+        let notes: Vec<&String> = r.reel.iter().filter(|h| h.run_id == x.run_id).map(|h| &h.text).collect();
+        t.check("a drive-off's or a stall's reel never says `Returned with`", notes.iter().all(|n| !n.starts_with("Returned with")), || format!("seed {seed} run {}: {notes:?}", x.run_id));
+    }
+    // Cut 27 §5 (AT: `D8 · counter unwritten` offered `foe: boss → attack boss` — his own R7): a drive-off whose counter
+    // the set already holds reads `order` and names the row; one whose counter is unwritten, `no counter`.
+    for d in r.exits.iter().filter_map(|x| x.driven.as_ref()) {
+        let (held, _) = idlever_core::trace::driven_order(g.lineage.rules(), &d.row, &[]);
+        let ok = d.held == held && (d.verdict == "order") == held.is_some() && (d.verdict == "no counter") == held.is_none();
+        t.check("a drive-off with its counter in the set says `order` (the held row), else `no counter`", ok, || format!("seed {seed} run {}: {} held {:?} · set holds {:?}", d.run_id, d.verdict, d.held, held));
+    }
+    for h in &r.reel {
+        let Some(arc) = &h.arc else { continue };
+        if !arc.resolution.starts_with("died") {
+            continue;
+        }
+        let Some(rec) = g.deaths.get(&h.run_id).filter(|x| !x.stall) else { continue };
+        // (`own fire` — the hero's own harm — reads in the reel as the harm: `died to fire`)
+        let cause = &rec.death.cause.strip_prefix("own ").unwrap_or(&rec.death.cause).to_string();
+        let phrase = cause_phrase(cause);
+        let end = h.text.strip_suffix('.').and_then(|b| b.rsplit("; ").next()).unwrap_or("");
+        let killer_led = cause_key(&arc.threat) == cause_key(cause);
+        let ok = arc.resolution == format!("died to {phrase}")
+            && match end.strip_prefix("died to ") {
+                Some(w) => phrase.ends_with(w),
+                None => (end == "died" || end.starts_with("died on D")) && killer_led,
+            };
+        t.check("a reel `died` line names the run's death cause", ok, || format!("seed {seed} run {}: `{}` · arc {} / {} · cause {cause}", h.run_id, h.text, arc.threat, arc.resolution));
+        t.check("a reel line is a story line", idlever_core::sifter::story_ok(&h.text), || format!("seed {seed} run {}: `{}`", h.run_id, h.text));
+        // QA on a946e04 (qaS: `A goblin took him to 3 HP; no row; died to gas.` under R2 `hp <
+        // 40% → return`): a `no row` beat means no row acted at the low point — the death
+        // trace's first turn at the low HP is the chores', and not the walk home a return row
+        // committed to (that reads `R2 returning`).
+        let turn = h.text.split("; ").nth(1).unwrap_or("");
+        if idlever_core::sifter::NO_ROW.contains(&turn) {
+            let at_low = rec.death.trace.turns.iter().find(|x| x.hp == arc.low_hp as i32);
+            if let Some(x) = at_low {
+                t.check("a reel `no row` line had no row act at its low point", x.row < 0 && !matches!(x.verb.v.as_str(), "return" | "bank"), || format!("seed {seed} run {}: `{}` · t{} R{} {} hp {}", h.run_id, h.text, x.t, x.row + 1, x.verb.short(), x.hp));
+            }
+        }
+    }
+}
+
+/// QA on 524827b (qaAA): the report's lines say each thing once and agree with each other —
+/// a drive-off's line names the boss once (`driven $0 · … · by Warlord`); a reel line whose run
+/// a boss drove off names that boss (`An ogre took him to 17 HP; R5 attacked; driven off.` under
+/// `by Warlord`); every `new find` the exits' news names is on FOUND's list (`new_finds`); a
+/// kept item's `+N` is its forge base (and the cage's +1) plus the enchant scrolls read on it
+/// (`axe +7` = `+1` and `enchanted ×6`).
+fn check_report_headers(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::ReturnReport) {
+    // Cut 26 §6 (AP: a drive-off with no verdict screen): every drive-off the report counts is
+    // listed with its run (the last `EXITS_CAP`), and each names its boss's counter.
+    t.check("the report lists its drive-offs (by run)", r.drives.len() as u32 == r.driven.min(idlever_core::engine::EXITS_CAP as u32) && r.drives.iter().all(|d| d.run_id > 0 && !d.counter.is_empty()), || format!("seed {seed}: driven {} · listed {:?}", r.driven, r.drives.iter().map(|d| d.run_id).collect::<Vec<_>>()));
+    // Cut 26 §6 (AP: `R3 descend · locked cond` found only in a trace): a row whose cond the
+    // lineage cannot use is marked on the wire.
+    let l = g.lineage();
+    let rules = g.lineage.rules();
+    let vocab = g.vocabulary();
+    for (i, row) in rules.rows.iter().enumerate() {
+        let open = row.conds.iter().all(|c| vocab.conds.iter().any(|o| o.same_token(c)) || matches!(c.k.as_str(), "party" | "self_hp<" | "self_hp>"));
+        let marked = l.locked_rows.get(i).cloned().flatten().is_some();
+        t.check("a row with a locked cond is marked on the wire (and only it)", open != marked, || format!("seed {seed}: R{} {} · marked {marked}", i + 1, row.describe()));
+    }
+    for x in &r.exits {
+        if let Some(d) = &x.driven {
+            let n = x.text.matches(d.title.as_str()).count();
+            t.check("a drive-off's line names the boss once", n == 1, || format!("seed {seed} run {}: `{}`", x.run_id, x.text));
+        }
+        for n in x.news.iter().filter(|n| n.k == "find") {
+            let name = n.text.strip_prefix("new find: ").unwrap_or(&n.text);
+            t.check("a headline find is on FOUND", r.new_finds.iter().any(|f| f == name), || format!("seed {seed} run {}: `{}` · {:?}", x.run_id, n.text, r.new_finds));
+        }
+    }
+    for h in &r.reel {
+        let Some(arc) = &h.arc else { continue };
+        let Some(boss) = arc.resolution.strip_prefix("driven off by the ") else { continue };
+        let named = h.text.contains(&format!("driven off by the {boss}")) || h.text.contains(&format!("fled the {boss}")) || h.text.starts_with(boss) || h.text.starts_with(&format!("The {boss}"));
+        t.check("a reel drive-off names the boss who drove him off", named, || format!("seed {seed} run {}: `{}` · {}", h.run_id, h.text, arc.resolution));
+    }
+    for it in &g.batch.found {
+        let gear = matches!(idlever_core::defs::item_def(&it.kind).cat, idlever_core::defs::Cat::Weapon | idlever_core::defs::Cat::Armour);
+        if gear {
+            let base = it.enchant - it.enchanted;
+            t.check("a kept item's `+N` is its forge base plus the enchants read on it", it.enchanted >= 0 && base >= 0 && base <= g.lineage.forge_tier(&it.kind) + 1, || format!("seed {seed}: {} +{} · enchanted {} · forge {}", it.kind, it.enchant, it.enchanted, g.lineage.forge_tier(&it.kind)));
+        }
+    }
+}
+
+/// QA on a946e04 (qaS: `A den of thieves. Nothing lost to the den.` in the run whose report
+/// said `stolen red potion?`): watched sends from a copy of the night's camp — a den's
+/// `Nothing lost` note is said only while every theft of the run so far was got back.
+/// Cut 25 §3 (AN, AM: `pick up ×441` scrolling while alert rose to 8/8 — a full pack walking onto a
+/// scroll it could not take, stepping off, walking back): on the same sends, on every floor, the
+/// `pick up` chores in a row with nothing taken (a `pickup` resets the count; the watch's
+/// `pick up ×N`) stay ≤ `CHORE_STREAK`.
+/// The two were legs of their own, each on its own copy playing the identical six sends (`send`,
+/// `step(50)` to the run's end, `keep`: 7 % of qa's CPU apiece); one pass reads both off its events.
+fn check_den_chore_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    for _ in 0..6 {
+        h.send();
+        let (mut out, mut back) = (0i32, 0i32);
+        let (mut dry, mut worst, mut depth) = (0u32, (0u32, 0u32), 1u32);
+        for _ in 0..4000 {
+            let r = h.step(50);
+            for e in &r.events {
+                match e {
+                    Ev::Steal { .. } => out += 1,
+                    // (Cut 22 §2: stolen coins come back as `Got $6 back.` — Cut 23 §5 made coins the
+                    // thieves' usual take once the leash went last)
+                    Ev::Note { text, .. } if (text.starts_with("Got the ") || text.starts_with("Got $")) && text.ends_with(" back.") => back += 1,
+                    Ev::Note { t: at, text } if text == "Nothing lost to the den." => {
+                        t.check("`Nothing lost to the den` never beside a theft still out", out == back, || format!("seed {seed} t{at}: {out} thefts, {back} got back"));
+                    }
+                    Ev::Descend { depth: d, .. } => {
+                        dry = 0;
+                        depth = *d;
+                    }
+                    Ev::Pickup { id: 1, .. } => dry = 0,
+                    Ev::Rule { row: -2, verb, .. } if verb.v == "pick_up" => {
+                        dry += 1;
+                        if dry > worst.0 {
+                            worst = (dry, depth);
+                        }
+                    }
+                    _ => {}
+                }
+            }
+            if r.run_over {
+                break;
+            }
+        }
+        t.check("a floor's `pick up` chores with nothing taken ≤ 50", worst.0 <= CHORE_STREAK, || format!("seed {seed}: {} on D{}", worst.0, worst.1));
+        if h.pending_exit.is_some() {
+            let _ = h.keep(vec![]);
+        }
+    }
+}
+
+const CHORE_STREAK: u32 = 50;
+
+/// QA on 524827b (qaAB: a bought 2nd leash, $30, gone after a returned run — merged into the
+/// kennel's free stack at the pack, sent back to the kennel as the free one): on a copy given
+/// gold, a leash bought; six sends — after each that came home (not a death), tamed nothing and
+/// lost no leash to a thief, the shelf holds as many bought leashes as it did before the send.
+/// And a kind the shop names is one the lineage knows (qaAB: `fire potion $26` for sale while
+/// the pickers read `identify fire`).
+fn check_leash_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    h.lineage.gold_move(1000, "test");
+    let _ = h.buy_supply("leash");
+    let bought = |h: &Game| h.lineage.supplies.iter().filter(|s| s.kind == "leash" && !s.free).count();
+    for _ in 0..6 {
+        let before = bought(&h);
+        h.send();
+        let (mut died, mut tamed, mut stolen) = (false, false, false);
+        for _ in 0..4000 {
+            let r = h.step(50);
+            for e in &r.events {
+                match e {
+                    Ev::Exit { tier, .. } if tier == "death" => died = true,
+                    Ev::Tame { .. } => tamed = true,
+                    Ev::Steal { item, .. } if item.contains("leash") => stolen = true,
+                    _ => {}
+                }
+            }
+            if r.run_over {
+                break;
+            }
+        }
+        if h.pending_exit.is_some() {
+            let _ = h.keep(vec![]);
+        }
+        if !died && !tamed && !stolen {
+            t.check("a bought leash comes home from a run that tamed nothing", bought(&h) >= before, || format!("seed {seed}: {before} bought leashes → {}", bought(&h)));
+        }
+        // (a kind for sale the lineage has not identified is learned by the buy, and its picker gate says `buy`)
+        let v = h.vocabulary();
+        for e in h.supply_catalogue() {
+            if idlever_core::item::is_identified(&h.lineage.facts, &h.lineage.flavours, &e.kind) {
+                continue;
+            }
+            let mut b = h.clone();
+            b.lineage.gold_move(1000, "test");
+            b.lineage.supplies.clear();
+            let learns = b.buy_supply(&e.kind).is_ok() && idlever_core::item::is_identified(&b.lineage.facts, &b.lineage.flavours, &e.kind);
+            let gate = v.locked.iter().find(|x| x.cond.k == "item" && x.cond.t.as_deref() == Some(e.kind.as_str())).map(|x| x.needs.clone());
+            t.check("an unknown kind for sale is learned by buying it, and its gate says `buy`", learns && gate.as_deref().is_none_or(|g| g.starts_with("buy ")), || format!("seed {seed}: {} learns {learns} · gate {gate:?}", e.kind));
+        }
+    }
+}
+
+/// Cut 24 §5 (AL: `Down to 1 HP. R2 drink heal saved him.` — R2 drank at 4 HP, `R4 read
+/// teleport` fired at 1 HP): a floor's `Rk … saved him.` names the row that fired at the lowest
+/// HP any row fired at after the fall (the latest at a tie) — six sends tick by tick, the rows'
+/// firings read from the trace (HP at the decision) once the fall is on record.
+fn check_saved_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    for _ in 0..6 {
+        if h.pending_exit.is_some() {
+            let _ = h.keep(vec![]);
+        }
+        h.send();
+        h.events.clear();
+        let mut fired: Vec<(i32, i32)> = Vec::new();
+        let mut last_t = h.run.as_ref().and_then(|r| r.trace.last().map(|x| x.t));
+        for _ in 0..200_000 {
+            let Some(r) = h.run.as_ref() else { break };
+            if r.over.is_some() {
+                break;
+            }
+            let low_before = r.low20_t.is_some() || r.low10_t.is_some();
+            let depth = r.depth;
+            h.tick();
+            let r = h.run.as_ref().unwrap();
+            let low_now = r.low20_t.is_some() || r.low10_t.is_some();
+            for x in r.trace.iter().filter(|x| last_t.is_none_or(|l| x.t > l)) {
+                if x.row >= 0 && (low_before || (low_now && x.hp * 100 / r.hero.max_hp.max(1) <= 20)) {
+                    fired.push((x.row, x.hp));
+                }
+            }
+            last_t = r.trace.last().map(|x| x.t).or(last_t);
+            for e in std::mem::take(&mut h.events) {
+                if let Ev::Note { t: at, text } = e {
+                    let Some(k) = text.strip_suffix(" saved him.").and_then(|s| s.strip_prefix('R')).and_then(|s| s.split(' ').next()).and_then(|n| n.parse::<i32>().ok()) else { continue };
+                    let min = fired.iter().map(|x| x.1).min();
+                    let at_min = fired.iter().rev().find(|x| Some(x.1) == min).map(|x| x.0 + 1);
+                    t.check("a `saved him` note names the row that fired at the low point", at_min == Some(k), || format!("seed {seed} t{at}: `{text}` · fired {fired:?}"));
+                }
+            }
+            if h.run.as_ref().is_some_and(|r| r.depth != depth) {
+                fired.clear();
+            }
+        }
+        h.finish_run();
+        h.events.clear();
+    }
+}
+
+/// QA on a946e04 (qaT: `waystone D5 ×16 · −$800` over one absence, the repeat starved; with a
+/// short purse the sends went from D1 unsaid): a copy of the lineage with a waystone lit and
+/// chosen, four hours offline — a night's tolls are one pass per chosen start (a night is
+/// `NIGHT_RUNS` runs); from an empty purse no toll is paid and the report names the sends that
+/// went from D1.
+fn check_waystone_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let d = idlever_core::engine::WAYSTONES[0];
+    for rich in [true, false] {
+        let mut h = g.clone();
+        if !h.lineage.waystones.contains(&d) {
+            h.lineage.waystones.push(d);
+            h.lineage.waystones.sort_unstable();
+        }
+        if h.set_start(d).is_err() {
+            return;
+        }
+        let top = if rich { 2000 - h.lineage.gold } else { -h.lineage.gold };
+        h.lineage.gold_move(top, "qa purse");
+        let before = h.lineage.night_runs;
+        let r = h.run_offline(4 * 3600);
+        let tolls: u32 = r.spent.iter().filter(|x| x.kind.starts_with("waystone")).map(|x| x.n).sum();
+        let nights = (before + r.runs).div_ceil(idlever_core::engine::NIGHT_RUNS).max(1);
+        // QA on 778fa1b (qaV): a waystone start is free — no toll line, rich or broke, and no
+        // send falls back to D1 for want of gold.
+        let label = if rich { "a waystone start pays no toll (rich purse)" } else { "a waystone start pays no toll and is never short (empty purse)" };
+        t.check(label, tolls == 0 && r.start_short.is_none(), || format!("seed {seed}: {tolls} tolls over {} runs ({nights} nights) · short {:?}", r.runs, r.start_short));
+    }
+}
+
+/// QA on a946e04 (qaT: SALVAGED `heal ×2 · $4` while heal was packed and repeated): watched
+/// sends from a copy of the night's camp with heal packed and repeated — a found potion of a
+/// packed kind is never on a bank/return exit's keep sheet (to be salvaged) while the shelf
+/// has room and holds fewer of that kind than the repeat packs.
+fn check_found_supply_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    let heal = "heal";
+    if let Some(f) = idlever_core::item::ident_fact(&h.lineage.flavours, heal) {
+        h.lineage.facts.insert(f);
+    }
+    let mut set = h.lineage.rules().clone();
+    if !h.lineage.row_kinds().contains(heal) {
+        h.lineage.unlocks.extend(["row5", "row6", "row7", "row8"].map(String::from));
+        set.rows.insert(0, Row::new(vec![Cond::n("hp<", 30)], Verb::arg("drink", heal)));
+        if h.set_rules_raw(set).is_err() {
+            return;
+        }
+    }
+    h.lineage.gold_move(400 - h.lineage.gold.min(400), "qa purse");
+    h.set_restock(true);
+    if h.buy_supply(heal).is_err() {
+        return;
+    }
+    for _ in 0..6 {
+        h.send();
+        let vid = h.lineage.next_vault_id;
+        let vault_before: Vec<u32> = h.lineage.vault.iter().map(|v| v.id).collect();
+        for _ in 0..4000 {
+            let r = h.step(50);
+            if r.run_over {
+                break;
+            }
+        }
+        if let Some(p) = h.pending_exit.clone() {
+            if p.tier != ExitTier::Death {
+                let l = &h.lineage;
+                let cap = l.supply_cap();
+                let cat = h.supply_catalogue();
+                for it in p.items.iter().filter(|i| i.is_consumable() && i.kind == heal && !p.brought.contains(&i.id) && i.is_known(&l.facts, &l.flavours)) {
+                    let on_shelf = l.supplies.iter().filter(|s| s.kind == heal).count();
+                    let plan = l.last_supplies.iter().filter(|k| *k == heal).count();
+                    let room = l.supplies.len() < cap && on_shelf < plan && cat.iter().any(|e| e.kind == heal);
+                    t.check("a found packed-kind potion is shelved, not salvaged, while the shelf has room", !room, || format!("seed {seed}: {} on the keep sheet · shelf {}/{cap} · {heal} {on_shelf} of {plan}", it.kind, l.supplies.len()));
+                }
+            }
+            let _ = h.keep(vec![]);
+        }
+        check_exit_found(t, &h, seed, &vault_before, "found supply leg");
+        check_repeat_lines(t, &h, seed, vid);
+        if h.lineage.gold < 100 {
+            h.lineage.gold_move(100, "qa purse");
+        }
+    }
+}
+
+/// QA on 778fa1b (qaV: FOUND `dagger ×2`, SALVAGED `dagger ×1`; a `leather +1` in no named
+/// place): every find of the last exit (settled by `keep`) ends in a named place — Σ
+/// `found[].n` == `found_n`, none `lost` or still on the `sheet`, the `shelved` finds are the
+/// line's shelved supplies, the `kept` ones are in the vault.
+fn check_exit_found(t: &mut Tally, g: &Game, seed: u64, vault_before: &[u32], at: &str) {
+    // (the batch's copy: `step` hands `last_exit` to the exit event; `keep` settles both)
+    let Some(line) = g.batch.exits.last() else { return };
+    check_exit_line(t, seed, line, at);
+    let sum: u32 = line.found.iter().map(|r| r.n).sum();
+    let by = |f: &str| line.found.iter().filter(|r| r.fate == f).map(|r| r.n).sum::<u32>();
+    t.check("found at an exit == kept + salvaged + shelved + used + left + stolen + bones", sum == line.found_n && by("lost") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {sum} placed of {} found · {:?}", line.run_id, line.found_n, line.found));
+    let shelved: u32 = line.shelved.iter().map(|k| k.n).sum();
+    t.check("an exit's shelved finds == its shelved supplies", by("shelved") == shelved, || format!("seed {seed} {at} run {}: found shelved {} · line shelved {shelved}", line.run_id, by("shelved")));
+    let added = g.lineage.vault.iter().filter(|v| !vault_before.contains(&v.id)).count() as u32;
+    t.check("an exit's kept finds are in the vault", by("kept") <= added, || format!("seed {seed} {at} run {}: kept {} · vault +{added}", line.run_id, by("kept")));
+}
+
+/// QA on 0c6e126 (qaY: `0 RETURNED · 3 DRIVEN` over three `returned` lines and a gold sheet of
+/// `returned D8 · $268 lost`; `heir purse ≥$40 ×12` beside one `+$20 heir purse`; qaZ: the
+/// headline `+$495` against a +$502 balance): an absence's report reconciles three ways — its
+/// tiles count its lines by their lead word (`banked` · `returned` · `stalled` · `lost thread`
+/// · `driven` · `died`), its lines are the gold sheet's exit lines (word and amount, one for
+/// one), and its gold terms are the ledger's (Σ kept == `home`, the purse top-ups == `wake`,
+/// home + salvage + wake − spent == the purse's move). Sliced as the client slices, on a copy.
+fn check_report_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    for slice in 0..8 {
+        let (gold0, t0) = (h.lineage.gold, h.lineage.total_turns);
+        let r = idlever_core::offline::run_offline_quick(&mut h, 1800);
+        let at = format!("slice {slice}");
+        if let Some(gs) = &r.gold {
+            let spent: i32 = r.spent.iter().map(|x| x.gold).sum();
+            t.check("the report's gold terms sum to the purse's move", gs.home + gs.salvage + gs.wake + gs.recovered + gs.fetched - spent == h.lineage.gold - gold0, || format!("seed {seed} {at}: +{} +{} +{} +{} recovered +{} fetched −{spent} vs {}", gs.home, gs.salvage, gs.wake, gs.recovered, gs.fetched, h.lineage.gold - gold0));
+        }
+        // (the slice's ledger lines are those after its first tick; a slice the ledger's cap cut into is not read)
+        let first = h.lineage.gold_ledger.iter().position(|x| x.t > t0).unwrap_or(h.lineage.gold_ledger.len());
+        if r.sampled || r.exits.len() as u32 != r.runs || (first == 0 && h.lineage.gold_ledger.len() >= GOLD_LEDGER_CAP) {
+            continue;
+        }
+        let lead = |x: &idlever_core::wire::ExitLine| -> &'static str { ["banked", "returned", "died", "stalled", "lost thread", "driven"].into_iter().find(|w| x.text.starts_with(&format!("{w} "))).unwrap_or("?") };
+        let n = |w: &str| r.exits.iter().filter(|x| lead(x) == w).count() as u32;
+        let deaths: u32 = r.deaths.iter().map(|d| d.n).sum();
+        let tiles = (r.banked, r.returned - r.stalled - r.driven, r.stalled, r.driven, deaths);
+        let lines = (n("banked"), n("returned") + n("lost thread"), n("stalled"), n("driven"), n("died"));
+        t.check("report tiles == its lines (banked · returned · stalled · driven · died)", tiles == lines, || format!("seed {seed} {at}: tiles {tiles:?} · lines {lines:?} · {:?}", r.exits.iter().map(|x| x.text.clone()).collect::<Vec<_>>()));
+        let ledger = &h.lineage.gold_ledger[first..];
+        let sheet: Vec<(String, i32)> = ledger.iter().filter(|x| idlever_core::engine::is_exit_why(&x.why)).map(|x| (x.why.split(" D").next().unwrap_or("").to_string(), x.delta)).collect();
+        let listed: Vec<(String, i32)> = r.exits.iter().map(|x| (if lead(x) == "lost thread" { "lost thread".to_string() } else { lead(x).to_string() }, x.kept)).collect();
+        t.check("report lines == the gold sheet's exit lines (word and amount)", sheet == listed, || format!("seed {seed} {at}: sheet {sheet:?} · lines {listed:?}"));
+        if let Some(gs) = &r.gold {
+            let kept: i32 = r.exits.iter().map(|x| x.kept).sum();
+            let wake: i32 = ledger.iter().filter(|x| x.why == "wake pay").map(|x| x.delta).sum();
+            let wake_lines: i32 = r.exits.iter().map(|x| x.wake).sum();
+            t.check("report gold == the gold sheet (Σ kept == home; purse top-ups == wake == the lines')", kept == gs.home && wake == gs.wake && wake_lines == gs.wake, || format!("seed {seed} {at}: kept {kept} · home {} · ledger wake {wake} · lines wake {wake_lines} · report wake {}", gs.home, gs.wake));
+        }
+    }
+}
+
+/// QA on 912e135 (qaW, qaX): an exit line's mechanics — one tier word, at its lead (`returned $0 ·
+/// … · stalled` read as two); a lead that kept nothing keeps 0; the `bones: N items` count is
+/// the pile the line lists (`ExitLine.bones`, Σ n == N; `leash ×3` counted charges).
+/// Cut 29 §3: the meters are pure reads of the event stream — two watched sends, every event kept:
+/// the run's meter on its exit line holds the stream's sums (damage dealt by every hit, taken by every
+/// hurt, healing, rule fires, supplies used, gold home), its time split sums to its ticks, its row
+/// shares to ≤ 1 per action; the snapshot's live meter at the end is the line's.
+fn check_meters_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut g = g.clone();
+    for _ in 0..2 {
+        g.send();
+        let mut evs: Vec<idlever_core::Ev> = Vec::new();
+        let mut line: Option<idlever_core::wire::ExitLine> = None;
+        for _ in 0..4000 {
+            let r = g.step(50);
+            for e in &r.events {
+                if let idlever_core::Ev::Exit { line: Some(l), .. } = e {
+                    line = Some((**l).clone());
+                }
+            }
+            evs.extend(r.events);
+            if r.run_over {
+                break;
+            }
+        }
+        let Some(m) = line.and_then(|l| l.meters) else {
+            t.check("a watched exit carries its meters", false, || format!("seed {seed}: no meters on the exit line"));
+            break;
+        };
+        let (dealt, taken, healed, fires, used, gold) = idlever_core::meters::stream_sums(&evs);
+        let heal: i64 = m.healed.iter().map(|h| h.total).sum();
+        let rows: u32 = m.rows.iter().map(|r| r.fires).sum();
+        let sup: u32 = m.supplies.values().sum();
+        t.check("meter totals == the event stream's sums (dealt · taken · healed · fires · supplies · gold)", m.dealt.total() == dealt && m.taken.total() == taken && heal == healed && rows == fires && sup == used && m.gold == gold, || {
+            format!("seed {seed}: meter {} {} {heal} {rows} {sup} {} vs stream {dealt} {taken} {healed} {fires} {used} {gold}", m.dealt.total(), m.taken.total(), m.gold)
+        });
+        let split = m.time.fight + m.time.travel + m.time.chores + m.time.rest;
+        t.check("meter time split == its ticks", (split as f64 - m.seconds * 10.0).abs() < 0.5, || format!("seed {seed}: split {split} vs {:.1} s", m.seconds));
+        t.check("a row's share of the actions ≤ 1", m.rows.iter().all(|r| r.share <= 1.0 + 1e-9), || format!("seed {seed}: {:?}", m.rows));
+        let _ = g.finish_run();
+        g.auto_keep();
+        g.lineage.rest_left = 0;
+    }
+}
+
+fn check_exit_line(t: &mut Tally, seed: u64, x: &idlever_core::wire::ExitLine, at: &str) {
+    const LEADS: [&str; 6] = ["banked ", "returned ", "died ", "stalled ", "lost thread ", "driven "];
+    let lead = LEADS.iter().find(|w| x.text.starts_with(**w)).copied();
+    let later = x.text.split(" · ").skip(1).filter(|seg| ["banked", "returned", "died", "stalled", "lost thread", "driven"].contains(seg)).count();
+    t.check("an exit line leads with one tier word and names no other", lead.is_some() && later == 0, || format!("seed {seed} {at} run {}: `{}`", x.run_id, x.text));
+    // (Cut 30.5: what the run's checkpoints secured comes home whatever the exit — a death keeps that and nothing else)
+    t.check("a died / stalled / lost-thread line kept nothing but its secured gold", !matches!(lead, Some("died " | "stalled " | "lost thread ")) || (x.kept == x.secured && x.keep_pct == 0), || format!("seed {seed} {at} run {}: `{}` kept {} secured {}", x.run_id, x.text, x.kept, x.secured));
+    // QA on 0c6e126 (qaY): a drive-off's line says so (`driven`), never `returned`; a `driven` line is one.
+    t.check("a drive-off's line leads `driven`", x.driven.is_some() == (lead == Some("driven ")), || format!("seed {seed} {at} run {}: `{}` driven {:?}", x.run_id, x.text, x.driven.as_ref().map(|d| &d.boss)));
+    let n: u32 = x.text.split(" · ").find_map(|seg| seg.strip_prefix("bones: ").and_then(|r| r.split(' ').next()).and_then(|n| n.parse().ok())).unwrap_or(0);
+    let listed: u32 = x.bones.iter().map(|b| b.n).sum();
+    t.check("an exit's `bones: N items` == the pile it lists", n == listed, || format!("seed {seed} {at} run {}: `{}` lists {listed} · {:?}", x.run_id, x.text, x.bones));
+}
+
+/// QA on 778fa1b (qaV: `repeat heal ×1 · −$104` for four heals at $26; `SHELVED found heal
+/// ×7` beside `SPENT heal ×25`): the last exit's `repeat` lines count what they bought — `n`
+/// == the new bought units of the kind on the shelf, the amount == Σ their price — and the
+/// repeat never tops a kind past the plan: found units of it on the shelf stood in for a
+/// purchase (the shelf holds ≤ the plan's count of any kind it re-bought).
+fn check_repeat_lines(t: &mut Tally, g: &Game, seed: u64, vid: u32) {
+    let ledger = &g.lineage.gold_ledger;
+    let Some(exit) = ledger.iter().rposition(|x| ["returned", "banked", "died", "lost", "stalled", "driven"].iter().any(|w| x.why.starts_with(w))) else { return };
+    for x in ledger[exit + 1..].iter().filter(|x| x.why.starts_with("repeat ") && x.why != idlever_core::engine::REPEAT_SHORT) {
+        let kind = x.why.trim_start_matches("repeat ").replace(' ', "_");
+        let bought: Vec<&idlever_core::item::Item> = g.lineage.supplies.iter().filter(|s| s.kind == kind && !s.found && !s.free && s.id >= vid).collect();
+        let paid: i32 = bought.iter().map(|s| s.paid).sum();
+        t.check("a repeat line's count × price == its amount", x.n as usize == bought.len() && -x.delta == paid && x.n >= 1, || format!("seed {seed}: `{}` n {} · −${} · shelf bought {} for ${paid}", x.why, x.n, -x.delta, bought.len()));
+        let on_shelf = g.lineage.supplies.iter().filter(|s| s.kind == kind && !s.free).count();
+        let found = g.lineage.supplies.iter().filter(|s| s.kind == kind && s.found).count();
+        let plan = g.lineage.last_supplies.iter().filter(|k| **k == kind).count();
+        t.check("the repeat never re-buys a kind past its plan while found units sat on the shelf", on_shelf <= plan || found == 0, || format!("seed {seed}: {kind} shelf {on_shelf} (found {found}, bought {}) · plan {plan}", bought.len()));
+    }
+}
+
+/// QA on a946e04 (qaS: a row the editor marks dead — `↑ R3` — moved the forecast D5 72 → 74 %):
+/// the set with a row its engagement row shadows appended plays the set without it, sim for
+/// sim (the camp's seeds, run on their own, not through the memo), and reads the same forecast.
+fn check_dead_row(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    h.lineage.unlocks.extend(["row5", "row6", "row7", "row8"].map(String::from));
+    let base = h.lineage.rules().clone();
+    let Some(eng) = base.rows.iter().find(|r| matches!(r.verb.v.as_str(), "attack" | "shoot") && !r.is_card()) else { return };
+    let mut row = eng.clone();
+    row.conds.push(Cond::n("hp<", 50));
+    let mut dead = base.clone();
+    dead.rows.push(row);
+    if dead.own_rows() > h.lineage.max_rows() || h.lineage.shadowed_by(&dead).last().copied().flatten().is_none() {
+        return;
+    }
+    let sims = idlever_core::forecast::FORECAST_SIMS;
+    let tag = idlever_core::forecast::forecast_tag(&h, h.lineage.best_depth + 1);
+    let a = idlever_core::forecast::simulate_budget(&h, &base, sims, tag, u32::MAX, idlever_core::forecast::CAMP_TICK_BUDGET);
+    let b = idlever_core::forecast::simulate_budget(&h, &dead, sims, tag, u32::MAX, idlever_core::forecast::CAMP_TICK_BUDGET);
+    t.check("a shadowed row changes no sim", a == b, || format!("seed {seed}: reach Σ {} vs {}", a.iter().map(|r| r.max_depth).sum::<u32>(), b.iter().map(|r| r.max_depth).sum::<u32>()));
+    let f0 = h.forecast();
+    if h.set_rules_raw(dead).is_err() {
+        return;
+    }
+    let f1 = h.forecast();
+    t.check("a shadowed row reads the same forecast", f0.depths == f1.depths && f0.ends == f1.ends && f0.causes == f1.causes, || format!("seed {seed}: {:?} → {:?}", f0.depths.iter().map(|d| d.reach).collect::<Vec<_>>(), f1.depths.iter().map(|d| d.reach).collect::<Vec<_>>()));
+}
+
+/// The label check with salvage in it: a copy of the lineage with `hp < 50% → return` on top
+/// (a return cuts 40 % of the pack to salvage before the sheet) for two hours offline.
+fn check_salvage_leg(t: &mut Tally, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    h.lineage.unlocks.extend(["row5", "row6", "row7", "row8"].map(String::from));
+    let mut set = g.lineage.rules().clone();
+    set.rows.insert(0, Row::new(vec![Cond::n("hp<", 50)], Verb::new("return")));
+    if h.set_rules_raw(set).is_err() {
+        return;
+    }
+    let r = h.run_offline(2 * 3600);
+    check_report_names(t, &h, seed, &r, "return leg");
+    // (and one watched exit's sheet and cut)
+    h.send();
+    for _ in 0..4000 {
+        let s = h.step(50);
+        if s.run_over {
+            if let Some(pe) = &s.exit_pending {
+                check_names(t, &h, seed, pe.items.iter().map(|i| i.label.as_str()), "return leg sheet");
+            }
+            if let Some(x) = h.last_exit.clone() {
+                check_names(t, &h, seed, x.salvaged.iter().map(|s| s.kind.as_str()), "return leg cut");
+            }
+            break;
+        }
+    }
+}
+
+/// QA on 1a2a4a9 (qaP): a copy of the lineage that knows every tag and plays a set that
+/// paces (`foe: ranged → retreat` over the engagement row) for four hours; each stall record's
+/// top patch (a cut, a swap or an insert) is applied, and the two sets' forecast stall shares
+/// go into the pooled check (`StallSum`). The record's verdict and its patches are checked
+/// as the night's stalls are.
+fn check_stall_leg(t: &mut Tally, sum: &mut StallSum, g: &Game, seed: u64) {
+    let mut h = g.clone();
+    idlever_core::probes::learn_everything(&mut h);
+    h.lineage.unlocks.insert("row5".into());
+    let set = idlever_core::RuleSet {
+        rows: vec![
+            Row::new(vec![Cond::n("hp<", 40)], Verb::arg("drink", "heal")),
+            Row::new(vec![Cond::t("foe_tag", "ranged")], Verb::new("retreat")),
+            Row::new(vec![Cond::n("hp<", 20)], Verb::new("return")),
+            Row::new(vec![Cond::n("foes>=", 1)], Verb::arg("attack", "nearest")),
+        ],
+        name: None,
+        route: Vec::new(),
+    };
+    if h.set_rules_raw(set).is_err() {
+        return;
+    }
+    h.run_offline(4 * 3600);
+    let ids: Vec<u32> = h.deaths.iter().filter(|(_, rec)| rec.stall).map(|(id, _)| *id).collect();
+    // Cut 27 §4 (AS: the stall screen's gem applied `depth ≥ 5 → return · drops R10` over `cut R8`): the stall screen's
+    // gem is measured as the death screen's (the first stall of the leg: its whole-run panels are the leg's cost).
+    if let Some(&id) = ids.first() {
+        let mut k = h.clone();
+        if let Some(ps) = k.death_deltas(id) {
+            check_gem(t, seed, id, "stall", &ps);
+        }
+    }
+    for id in ids {
+        let Some(d) = h.death(id) else { continue };
+        check_death(t, &h, seed, &d);
+        let Some(p) = d.patches.iter().find(|p| p.insert_at >= 0 && !p.below_bar) else { continue };
+        let before = h.forecast();
+        let mut k = h.clone();
+        if k.set_rules_raw(idlever_core::trace::patched_rules(h.lineage.rules(), p, h.lineage.max_rows())).is_err() {
+            continue;
+        }
+        let after = k.forecast();
+        if let (Some(a), Some(b)) = (before.ends, after.ends) {
+            sum.0 += a.stall;
+            sum.1 += b.stall;
+            sum.2 += 1;
+        }
+    }
+}
+
+/// Cut 27 §4 (AS: a stall's gem applied `depth ≥ 5 → return · drops R10` — whole-run return > 99 %, D7 < 1 % — over
+/// `cut R8`; a death's gem lit `cut R1 · 1/12` above a 12/12): once the whole runs are measured (`death_deltas`), the gem
+/// (`Patch.gem`) is the first shown, never harms (death up past its ±, or reach down past its own — an exit's included), is
+/// advice, and no other such patch scores more on whole runs (`trace::gem_score`); with none marked, no patch may be the gem.
+fn check_gem(t: &mut Tally, seed: u64, id: u32, screen: &str, ps: &[idlever_core::wire::Patch]) {
+    use idlever_core::trace::{gem_eligible, gem_score};
+    let gems: Vec<usize> = ps.iter().enumerate().filter(|(_, p)| p.gem).map(|(i, _)| i).collect();
+    let ok = match gems.as_slice() {
+        [0] => {
+            let g = &ps[0];
+            gem_eligible(g) && ps.iter().skip(1).filter(|p| gem_eligible(p)).all(|p| gem_score(p) <= gem_score(g) + 1e-9)
+        }
+        [] => !ps.iter().any(gem_eligible),
+        _ => false,
+    };
+    t.check("the gem on every screen is the first shown, never harms, and is the best whole-run patch", ok, || format!("seed {seed} run {id} ({screen}): {:?}", ps.iter().map(|p| (p.row.describe(), p.gem, p.below_bar, p.whole.clone())).collect::<Vec<_>>()));
+}
+
+/// What a job adds to the totals.
+#[derive(Default)]
+struct Out {
+    t: Tally,
+    bank: BankTally,
+    lp: Laps,
+}
+
+impl BankTally {
+    fn merge(&mut self, b: &BankTally) {
+        for (a, x) in self.0.iter_mut().zip(b.0) {
+            a.0 += x.0;
+            a.1 += x.1;
+            a.2 += x.2;
+            a.3 += x.3;
+        }
+        self.1 .0 += b.1 .0;
+        self.1 .1 += b.1 .1;
+        self.1 .2 += b.1 .2;
+    }
+}
+
+type JobFn = Box<dyn FnOnce(&mut Out, &Pool) + Send>;
+
+/// A job: a seed's prelude (the protocol played to the night, then the night's own checks), or
+/// one of the legs it hands off — each on its own copy of the game, so a leg's copy is the
+/// state the sequential order gave it and the checks are the same checks.
+struct Job {
+    prio: u32,
+    seq: u64,
+    name: &'static str,
+    seed: u64,
+    f: JobFn,
+}
+
+impl PartialEq for Job {
+    fn eq(&self, o: &Self) -> bool {
+        (self.prio, self.seq) == (o.prio, o.seq)
+    }
+}
+impl Eq for Job {}
+impl PartialOrd for Job {
+    fn partial_cmp(&self, o: &Self) -> Option<std::cmp::Ordering> {
+        Some(self.cmp(o))
+    }
+}
+impl Ord for Job {
+    /// The highest priority first, then the oldest.
+    fn cmp(&self, o: &Self) -> std::cmp::Ordering {
+        self.prio.cmp(&o.prio).then(o.seq.cmp(&self.seq))
+    }
+}
+
+/// One queue for every thread, longest work first (`prio`); a job may push more. The workers
+/// stop when the queue is empty and no job is running (a running one may still push).
+#[derive(Default)]
+struct Pool {
+    /// (the queue, jobs pushed, jobs queued or running)
+    q: Mutex<(std::collections::BinaryHeap<Job>, u64, usize)>,
+    cv: std::sync::Condvar,
+}
+
+impl Pool {
+    fn push(&self, prio: u32, name: &'static str, seed: u64, f: impl FnOnce(&mut Out, &Pool) + Send + 'static) {
+        let mut q = self.q.lock().unwrap();
+        q.1 += 1;
+        q.2 += 1;
+        let seq = q.1;
+        q.0.push(Job { prio, seq, name, seed, f: Box::new(f) });
+        self.cv.notify_one();
+    }
+    fn work(&self, total: &Mutex<Out>, phases: bool, t0: std::time::Instant) {
+        loop {
+            let job = {
+                let mut q = self.q.lock().unwrap();
+                loop {
+                    if let Some(j) = q.0.pop() {
+                        break j;
+                    }
+                    if q.2 == 0 {
+                        return;
+                    }
+                    q = self.cv.wait(q).unwrap();
+                }
+            };
+            let ts = std::time::Instant::now();
+            let mut o = Out::default();
+            o.lp.lap("start");
+            (job.f)(&mut o, self);
+            o.lp.lap(job.name);
+            if phases {
+                eprintln!("job {:<18} seed {:>2} {:>5.1}s (ends at {:.1}s)", job.name, job.seed, ts.elapsed().as_secs_f64(), t0.elapsed().as_secs_f64());
+            }
+            {
+                let mut all = total.lock().unwrap();
+                all.t.merge(o.t);
+                all.bank.merge(&o.bank);
+                all.lp.merge(&o.lp);
+            }
+            let mut q = self.q.lock().unwrap();
+            q.2 -= 1;
+            if q.2 == 0 {
+                self.cv.notify_all();
+            }
+        }
+    }
+}
+
+/// A seed: the protocol through the engine (send → exit → `death()` → patch → the camp's
+/// reads → buy → the night), the night's legs handed to the pool on copies of the game, then
+/// the night's deaths, the shop and the save on the game itself.
+/// QA on 524827b (qaAA): a death's killing blow is the run's last blow to the hero (the watch's
+/// 0-hp frame names it: `−1 hp · monkey`, never an older `jackal`), and a `not in view` because
+/// names the newest event of that tag — never a foe slain floors above when one was left behind
+/// or seen since (`monkey slain D1` under the D4 den's thieves).
+fn check_blow_and_view(t: &mut Tally, seed: u64, d: &idlever_core::Death, last_hurt: Option<&str>) {
+    if d.verdict != "stall" {
+        let word = |s: &str| s.replace('_', " ").to_lowercase();
+        let by = d.trace.blow.as_ref().map(|b| word(&b.by));
+        t.check("a death's blow is the run's last hurt to the hero", by.is_some() && by.as_deref() == last_hurt.map(word).as_deref(), || format!("seed {seed} run {}: blow {by:?} · last hurt {last_hurt:?}", d.run_id));
+    }
+    let (Some(rules), Some(prov)) = (&d.rules, &d.trace.provenance) else { return };
+    for turn in &d.trace.turns {
+        for w in turn.rows.iter().flatten().filter(|w| w.why == "not in view") {
+            let Some(b) = w.because.as_ref().filter(|b| b.text.contains(" slain D")) else { continue };
+            let Some(tag) = rules.rows.get(w.row).and_then(|r| r.conds.iter().find_map(|c| c.t.clone())) else { continue };
+            let newer = prov.iter().find(|p| p.t > b.t && p.text.split(" last seen D").next().is_some_and(|k| { let k = k.replace(' ', "_"); let def = idlever_core::defs::monster_def(&k); p.text.contains(" last seen D") && def.kind == k && def.tags.contains(&tag.as_str()) }));
+            t.check("a `not in view` because names the newest event of its tag", newer.is_none(), || format!("seed {seed} run {}: R{} `{}` t{} · newer `{}` t{}", d.run_id, w.row + 1, b.text, b.t, newer.map(|p| p.text.as_str()).unwrap_or(""), newer.map(|p| p.t).unwrap_or(0)));
+        }
+    }
+}
+
+/// QA on 524827b (qaAB: `8002 R1 return 12 · 8013 R1 return 6`, `8385 attack 8 · burst −3 2` — hp
+/// fell with no row): every hp the hero loses between two of a trace's actions is a blow row
+/// (`TraceTurn.blows`), and a death's last action down to 0 is its `blows`/`blow`.
+fn check_trace_hp(t: &mut Tally, seed: u64, trace: &idlever_core::Trace, at: &str) {
+    for w in trace.turns.windows(2) {
+        let drop = w[0].hp - w[1].hp;
+        let dealt: i32 = w[1].blows.iter().map(|b| b.dmg).sum();
+        t.check("a trace's hp never falls without a blow row", drop <= dealt, || format!("seed {seed} {at}: t{} hp {} → t{} hp {} · blows {:?}", w[0].t, w[0].hp, w[1].t, w[1].hp, w[1].blows));
+    }
+    if let (Some(last), Some(blow)) = (trace.turns.last(), trace.blow.as_ref()) {
+        let dealt: i32 = if trace.blows.is_empty() { blow.dmg } else { trace.blows.iter().map(|b| b.dmg).sum() };
+        t.check("a death's last hp falls to 0 in blow rows", last.hp <= dealt, || format!("seed {seed} {at}: t{} hp {} · blows {:?} · blow {blow:?}", last.t, last.hp, trace.blows));
+    }
+}
+
+/// Cut 28 §2 (AV: the scene blamed the rows for a move the dead pets made): after a run, the camp's
+/// move against the set sent splits into the state's parts and the rows' — the parts sum to the
+/// whole on every term (the same paired seeds, the state moved a part at a time), the rows' part is
+/// the edit's own paired move (`forecast_vs`), and a move with no edit has no rows part.
+fn check_forecast_move(t: &mut Tally, g: &Game, seed: u64) {
+    let sent = g.lineage.rules().clone();
+    let mut e = g.clone();
+    if let Some(m) = e.forecast_move(&sent) {
+        t.check("a move with no edit has no rows part", !m.rows && m.parts.iter().all(|p| p.kind != "rows"), || format!("seed {seed}: {:?}", m.parts.iter().map(|p| &p.kind).collect::<Vec<_>>()));
+    }
+    let mut edit = sent.clone();
+    let row = idlever_core::Row::new(vec![idlever_core::Cond::n("hp<", 40)], idlever_core::Verb::new("return"));
+    if edit.rows.contains(&row) {
+        edit.rows.retain(|r| *r != row);
+    } else {
+        if edit.own_rows() >= e.lineage.max_rows() {
+            edit.rows.pop();
+        }
+        edit.rows.insert(0, row);
+    }
+    if e.set_rules_raw(edit).is_err() {
+        return;
+    }
+    let Some(m) = e.forecast_move(&sent) else {
+        t.check("a send is recorded after a run", false, || format!("seed {seed}"));
+        return;
+    };
+    type Term = fn(&idlever_core::ForecastVs) -> f64;
+    let terms: [(&str, Term); 5] = [("bank", |v| v.bank.delta), ("death", |v| v.death.delta), ("return", |v| v.return_.delta), ("stall", |v| v.stall.delta), ("gold", |v| v.gold.delta)];
+    for (name, f) in terms {
+        let sum: f64 = m.parts.iter().map(|p| f(&p.move_)).sum();
+        // (exact, far inside the move's own ± — the parts are differences of the same paired panels)
+        let eps = if name == "gold" { 1e-6 } else { 1e-9 };
+        t.check("a forecast move's parts sum to the whole", (sum - f(&m.whole)).abs() <= eps, || format!("seed {seed} {name}: Σ parts {sum:.4} vs whole {:.4}", f(&m.whole)));
+    }
+    for (i, d) in m.whole.depths.iter().enumerate() {
+        let sum: f64 = m.parts.iter().filter_map(|p| p.move_.depths.get(i)).map(|x| x.delta).sum();
+        t.check("a forecast move's parts sum to the whole", (sum - d.delta).abs() <= 1e-9, || format!("seed {seed} D{}: Σ parts {sum:.4} vs whole {:.4}", d.depth, d.delta));
+    }
+    let vs = e.forecast_vs(&sent);
+    let rows = m.parts.iter().find(|p| p.kind == "rows");
+    t.check("the rows' part is the edit's paired move", m.rows && rows.is_some_and(|p| (p.move_.bank.delta - vs.bank.delta).abs() < 1e-9 && (p.move_.death.delta - vs.death.delta).abs() < 1e-9), || format!("seed {seed}: rows {:?}", rows.map(|p| (p.move_.bank.delta, vs.bank.delta))));
+}
+
+/// Cut 30 §2: a lineage on packages after a night — a level spent moves the compiled set, and the
+/// camp's move against the set sent names a `package` part, the parts still summing to the whole; every
+/// death's verdict names `package · row` exactly when a package's row acted last; no trace turn is a
+/// trait's (`row −1`).
+fn check_packages(t: &mut Tally, seed: u64) {
+    let mut g = Game::new_resident(seed);
+    // (Cut 30.5: the send worker hired — a night of sends, as Cut 30's)
+    idlever_core::tree::grant(&mut g.lineage, &idlever_core::tree::LEGACY);
+    g.max_deaths = 1000;
+    idlever_core::offline::run_offline_counts(&mut g, 8 * 3600);
+    let ids: Vec<u32> = g.deaths.keys().copied().collect();
+    for id in ids.into_iter().take(3) {
+        let rules = g.deaths[&id].rules.clone();
+        let Some(d) = g.death(id) else { continue };
+        let acted = d.cause_row.map(|r| r as i32).or_else(|| d.trace.turns.iter().rev().find(|x| x.row >= 0).map(|x| x.row));
+        let pkg = acted.and_then(|i| rules.rows.get(i as usize)).filter(|r| r.is_pkg());
+        t.check("the verdict names `package · row` when a package row acted", pkg.is_some() == d.package.is_some() && pkg.is_none_or(|r| d.package.as_deref().is_some_and(|p| p.ends_with(&r.describe()))), || format!("seed {seed} run {id}: {:?} vs {:?}", pkg.map(|r| r.describe()), d.package));
+        t.check("no trace turn is a trait's (row −1)", d.trace.turns.iter().all(|x| x.row != -1), || format!("seed {seed} run {id}"));
+    }
+    let sent = g.lineage.rules().clone();
+    g.lineage.marks = 20;
+    let stance = g.lineage.pkg.stance.clone();
+    if g.spend_level(&stance).is_err() || *g.lineage.rules() == sent {
+        return;
+    }
+    let Some(m) = g.forecast_move(&sent) else {
+        t.check("a send is recorded after a night", false, || format!("seed {seed}"));
+        return;
+    };
+    t.check("a package move is the `package` part", m.parts.iter().any(|p| p.kind == "package") && m.parts.iter().all(|p| p.kind != "rows"), || format!("seed {seed}: {:?}", m.parts.iter().map(|p| &p.kind).collect::<Vec<_>>()));
+    let sum: f64 = m.parts.iter().map(|p| p.move_.bank.delta).sum();
+    t.check("a forecast move's parts (incl. package) sum to the whole", (sum - m.whole.bank.delta).abs() <= 1e-9, || format!("seed {seed}: Σ {sum:.4} vs {:.4}", m.whole.bank.delta));
+}
+
+fn play(o: &mut Out, pool: &Pool, seed: u64) {
+    if seed.is_multiple_of(3) {
+        check_packages(&mut o.t, seed);
+    }
+    let Out { t, lp, .. } = o;
+    let mut g = Game::new_literal(seed);
+    check_gold(t, &g, seed, "new");
+    check_needs(t, &g, seed);
+    check_forecast(t, &g, seed);
+    // The camp's shelf goes out as the run's supplies; the vault loadout as `brought`.
+    let shelf: Vec<String> = g.lineage.supplies.iter().map(|s| s.kind.clone()).collect();
+    g.send();
+    {
+        let run = g.run.as_ref().unwrap();
+        let mut packed: Vec<String> = run.supplies.iter().filter_map(|id| run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).find(|i| i.id == *id).map(|i| i.kind.clone())).collect();
+        let mut want = shelf.clone();
+        packed.sort();
+        want.sort();
+        t.check("camp supplies == the run's packed kinds", packed == want, || format!("seed {seed}: shelf {want:?} packed {packed:?}"));
+        t.check("`brought` == the loadout", g.snapshot().stake.brought.len() == run.brought.len(), || format!("seed {seed}"));
+    }
+    // Run to the exit.
+    let mut swapped_seen = 0;
+    let mut died = None;
+    let mut n = 0;
+    let mut last_hurt: Option<String> = None;
+    loop {
+        let r = g.step(50);
+        n += 1;
+        for e in &r.events {
+            if let Ev::Hurt { id, dmg, cause, .. } = e {
+                if *id == idlever_core::engine::HERO_ID && *dmg > 0 {
+                    last_hurt = Some(cause.clone());
+                }
+            }
+        }
+        // Cut 30.5: the stake names the carry at risk; checkpoints are the difference
+        // from the snapshot's total carried gold and come home whole even on death.
+        let st = &r.snapshot.stake;
+        let secured = (r.snapshot.loot - st.loot.max(0)).max(0);
+        t.check("the stake's death keep == checkpoints + death share of carry at risk", st.death_keep == secured + st.loot.max(0) * ExitTier::Death.pct() / 100, || format!("seed {seed}: death keep {} of {} secured + {} at risk", st.death_keep, secured, st.loot));
+        // QA on 912e135 (qaW: `−$8 swap` on the strip twice, `−$2 swapped` on the death line): the stake's swap counter only rises,
+        // and the exit line's `swapped` is the run's own count
+        t.check("the stake's swapped never falls within a run", st.swapped >= swapped_seen || r.run_over, || format!("seed {seed}: {} after {swapped_seen}", st.swapped));
+        if !r.run_over {
+            swapped_seen = st.swapped;
+        }
+        if r.run_over {
+            if r.events.iter().any(|e| matches!(e, Ev::Exit { tier, .. } if tier == "death")) {
+                died = Some(r.snapshot.run.id);
+            }
+            if let (Some(p), Some(pe)) = (g.pending_exit.clone(), r.exit_pending.as_ref()) {
+                // `ExitPending.worth` is the engine's salvage arithmetic, item by item: the
+                // whole's coins (`(carry + Σ cents) ÷ 100`) apportioned by largest remainder.
+                let want = salvage_coins(&p.items, p.pct, g.lineage.gold_carry);
+                let cents: i32 = p.items.iter().map(|i| salvage_value(&i.kind) * p.pct / GOLD_DIVISOR).sum();
+                t.check("`ExitPending.worth` == the salvage arithmetic", pe.worth == want && want.iter().sum::<i32>() == (g.lineage.gold_carry + cents).max(0) / 100, || format!("seed {seed}: worth {:?} vs {want:?}", pe.worth));
+                check_labels(t, &g, seed, &p.items, "exit sheet");
+                check_names(t, &g, seed, pe.items.iter().map(|i| i.label.as_str()), "exit sheet");
+                let (gold, head) = (g.lineage.gold, g.batch.salvage_gold);
+                g.keep(vec![]).unwrap();
+                let sum: i32 = want.iter().sum();
+                // QA on 92eb880 (qaM: the sheet's `aggravate $2`, the report's `$1`): exact.
+                t.check("keep-nothing salvages Σ worth exactly", g.lineage.gold - gold == sum && g.batch.salvage_gold - head == sum, || format!("seed {seed}: salvaged ${} vs Σ worth ${sum}", g.lineage.gold - gold));
+            }
+            break;
+        }
+        if n > 4000 {
+            break;
+        }
+    }
+    check_gold(t, &g, seed, "after the run");
+    // Cut 28 §2: the camp's move against the set sent, attributed — every third seed (a few panels)
+    if seed.is_multiple_of(3) {
+        check_forecast_move(t, &g, seed);
+    }
+    check_exit_found(t, &g, seed, &[], "first run");
+    // (the exit's line is the batch's once the run is settled)
+    if let Some(line) = g.batch.exits.last() {
+        t.check("the exit line's swapped ≥ the stake's last", line.swapped >= swapped_seen, || format!("seed {seed}: line ${} · stake ${swapped_seen}", line.swapped));
+    }
+    // Cut 20 §4 (AC: a silent repeat charge on death): a re-pack charged at a death's exit is
+    // a `repeat` line in the gold ledger and on the death record's ledger line.
+    if let (Some(id), Some(line)) = (died, g.last_exit.clone()) {
+        if line.spent > 0 {
+            let repeat: i32 = g.lineage.gold_ledger.iter().filter(|x| x.why.starts_with("repeat") && x.delta < 0).map(|x| -x.delta).sum();
+            let rec = g.death(id).and_then(|d| d.line).map(|l| l.spent);
+            t.check("a death's repeat charge is a `repeat` ledger line", repeat >= line.spent && rec == Some(line.spent), || format!("seed {seed} run {id}: spent {} · repeat lines ${repeat} · record {rec:?}", line.spent));
+        }
+    }
+    lp.lap("first run (new, send, exit)");
+    // The death: its verdict, its patches (none already in the set), the top one applied.
+    if let Some(id) = died {
+        let d = g.death(id).expect("a death record");
+        let rules = g.lineage.rules().clone();
+        for p in &d.patches {
+            // (a cut — `remove` / `replace` — names a row of the set by design)
+            let dup = p.insert_at >= 0 && !p.remove && !p.replace && p.moves_from.is_none() && rules.rows.iter().any(|r| r.conds == p.row.conds && r.verb == p.row.verb);
+            t.check("no patch already in the set", !dup, || format!("seed {seed} run {id}: {} is R{}", p.row.describe(), rules.rows.iter().position(|r| *r == p.row).map(|i| i + 1).unwrap_or(0)));
+        }
+        t.check("a death has a verdict and a trace", (d.verdict == "gap" || d.verdict == "dice" || d.verdict == "row" || d.verdict == "order") && !d.trace.turns.is_empty(), || format!("seed {seed} run {id}: {} · {} turns", d.verdict, d.trace.turns.len()));
+        // Cut 19 §4: a `row` verdict names a row of the set that acted on the death tick (the
+        // trace's last turn), and its first patch cuts that row. Cut 21 §3: or the set's own
+        // row whose unknown gamble dealt the death (`DeathRec.gamble_row`) — its cut is shown
+        // first, or second behind a patch surviving `SURVIVE_BAND` more.
+        if d.verdict == "row" || (d.cause_row.is_some() && d.verdict != "order") {
+            let last = d.trace.turns.last().map(|x| x.row);
+            // Cut 25 §2: or any own row that acted in the last `ORDER_TURNS` actions (its cut the best of theirs)
+            let tail: Vec<i32> = d.trace.turns.iter().rev().take(idlever_core::trace::ORDER_TURNS).map(|x| x.row).collect();
+            let gamble = g.deaths.get(&id).and_then(|r| r.gamble_row).map(|r| r as i32);
+            // (QA on 778fa1b, qaV: a card's own gamble or throw that dealt the death names the card)
+            let own = d.cause_row.is_some_and(|r| d.rules.as_ref().is_some_and(|rs| rs.rows.get(r as usize).is_some_and(|x| !x.is_card() || gamble == Some(r as i32))));
+            let cuts = |p: &idlever_core::wire::Patch| (p.remove || p.replace) && Some(p.insert_at) == d.cause_row.map(|r| r as i32);
+            let ok = d.verdict == "row"
+                && own
+                && match gamble.filter(|r| Some(*r) == d.cause_row.map(|c| c as i32)) {
+                    Some(_) => d.patches.iter().take(2).any(cuts),
+                    None => d.cause_row.is_some_and(|r| tail.contains(&(r as i32))) && d.patches.first().is_some_and(cuts),
+                };
+            t.check("a `row` verdict names a row that fired in the last actions", ok, || format!("seed {seed} run {id}: {} R{:?} last {:?}", d.verdict, d.cause_row, last));
+        }
+        // Cut 25 §2: an `order` verdict names two rows of the set (the shadowed one under the one
+        // that won) and leads with the move, which survives `ORDER_BAR` and beats the base.
+        if d.verdict == "order" {
+            let lead = d.patches.first();
+            let ok = matches!((d.cause_row, d.order_over), (Some(c), Some(o)) if c > o)
+                && lead.is_some_and(|p| p.moves_from.map(|f| f as u32) == d.cause_row && Some(p.insert_at as u32) == d.order_over && p.survive >= idlever_core::trace::ORDER_BAR - 1e-9 && p.survive - d.baseline >= idlever_core::trace::PATCH_MARGIN - 1e-9);
+            t.check("an `order` verdict leads with its move (R_n under R_m)", ok, || format!("seed {seed} run {id}: R{:?} under R{:?} · {:?}", d.cause_row, d.order_over, lead.map(|p| (p.moves_from, p.insert_at, p.survive))));
+        }
+        // Cut 25 §2: a DICE death has no own row that acted in its last actions whose cut survives more.
+        if d.verdict == "dice" {
+            if let Some(rec) = g.deaths.get(&id).cloned() {
+                let cuts = idlever_core::trace::recent_own_cuts(&g, &rec);
+                let beat = cuts.iter().find(|(_, s)| *s >= idlever_core::trace::ROW_BAR - 1e-9 && *s - d.baseline >= idlever_core::trace::PATCH_MARGIN - 1e-9);
+                t.check("a DICE death has no recent own row whose cut survives more", beat.is_none(), || format!("seed {seed} run {id}: R{:?} base {:.2}", beat.map(|b| (b.0 + 1, b.1)), d.baseline));
+            }
+        }
+        check_death(t, &g, seed, &d);
+        check_blow_and_view(t, seed, &d, last_hurt.as_deref());
+        check_trace_hp(t, seed, &d.trace, &format!("run {id} death trace"));
+        // QA on 524827b (qaAA: `0/587 · blocked` — "587 of what"): a row's why-not count names its unit.
+        for w in g.lineage().row_why.iter().flatten() {
+            t.check("a row's why-not count names its unit (`acts`)", w.text.split(" · ").next().is_some_and(|h| h.ends_with(" acts")), || format!("seed {seed}: `{}`", w.text));
+        }
+        t.check("death()'s patches are camp_pending until death_deltas", d.patches.iter().all(|p| p.camp_pending), || format!("seed {seed} run {id}"));
+        // QA on 23ed91f (`rest · reach +8%`, then the camp's D6 34 % → 64 %): the patch's
+        // `reach` (`death_deltas`) is the camp forecast's own move at its depth once applied.
+        // Sampled on every third seed: the number is not an estimate of the camp's but the
+        // camp's panel itself (same seeds, budget, lineage state), so it holds exactly or a
+        // code path differs (insert position, lineage state) — any seed exercises those paths,
+        // and 30/30 were exact when every seed ran; four panels a seed are the leg's cost.
+        let deltas = if seed.is_multiple_of(3) { g.death_deltas(id) } else { None };
+        if let Some(ps) = &deltas {
+            // Cut 19 §4: the camp's numbers may re-rank the unpinned patches — the same patches,
+            // and death() reads that order from then on.
+            let key = |p: &idlever_core::wire::Patch| (serde_json::to_string(&p.row).unwrap_or_default(), p.insert_at);
+            let mut a: Vec<_> = ps.iter().map(key).collect();
+            let mut b: Vec<_> = d.patches.iter().map(key).collect();
+            a.sort();
+            b.sort();
+            let again = g.death(id).map(|x| x.patches.iter().map(key).collect::<Vec<_>>());
+            t.check("death_deltas returns death()'s patches, measured", a == b && ps.iter().all(|p| !p.camp_pending) && again == Some(ps.iter().map(key).collect()), || format!("seed {seed} run {id}"));
+            // QA on 524827b (qaAA: `drink unknown · 12/12` led and the camp's killers turned to
+            // fire and poison; `read unknown · 11/12` in at R1 and the camp read `death +6`): every
+            // measured patch carries its whole-run move, and the one the gem applies by default
+            // (the first advice shown) never moves death up past its ± or reach down past its
+            // own — unless every patch shown does (the gem then reads `edit`).
+            let advice: Vec<&idlever_core::wire::Patch> = ps.iter().filter(|p| !p.below_bar).collect();
+            let lead = advice.first();
+            // (QA on 308f045: an exit's reach is its price — `return early · D6 56→20%` — not a harm; only its death share can harm)
+            let harms = |p: &idlever_core::wire::Patch| p.whole.as_ref().is_some_and(|w| (w.death > 1e-9 && w.death > w.death_pm + 1e-9) || (!idlever_core::trace::patch_exits(p) && w.reach < -1e-9 && w.reach < -w.reach_pm - 1e-9));
+            let ok = ps.iter().all(|p| p.whole.as_ref().is_some_and(|w| w.harms == harms(p))) && lead.is_none_or(|p| !harms(p) || advice.iter().all(|q| harms(q)));
+            t.check("the gem's default patch never harms whole runs (death > ±, reach < −±)", ok, || format!("seed {seed} run {id}: {:?}", ps.iter().map(|p| (p.row.describe(), p.below_bar, p.whole.clone())).collect::<Vec<_>>()));
+            check_gem(t, seed, id, "death", ps);
+        }
+        let top = deltas.as_ref().unwrap_or(&d.patches).iter().find(|p| p.insert_at >= 0).cloned();
+        if let Some(p) = top {
+            let patched = idlever_core::offline::apply_patch(&rules, &p, g.lineage.max_rows());
+            let before = deltas.is_some().then(|| g.forecast());
+            t.check("the top patch applies through set_rules", g.set_rules(patched.clone()).is_ok(), || format!("seed {seed}: {}", p.row.describe()));
+            // QA on e75ec29 (qaQ: `hp < 20% → rest · survives 100%` applied, then `R1 rest · not
+            // safe` in every later trace): the top patch, applied, acts in the next six sends
+            // from camp at least once (a copy of the game; the protocol goes on unpatched by it).
+            if let Some(pos) = if p.replace { Some(p.insert_at as usize) } else { patched.rows.iter().position(|r| *r == p.row) } {
+                let mut h = g.clone();
+                let mut fired = 0u32;
+                // Cut 24 (a boss's counter row, measured on replays of a death on his floor, has
+                // its moment only on sends that reach it — a DEFAULT set's next six sends may all
+                // end above D8): six sends that reach the death's floor, of at most 18.
+                let (mut reached, mut sends) = (0u32, 0u32);
+                while reached < 6 && sends < 18 {
+                    sends += 1;
+                    h.send();
+                    let mut runs_fired = false;
+                    for _ in 0..4000 {
+                        let r = h.step(50);
+                        runs_fired |= r.events.iter().any(|e| matches!(e, Ev::Rule { row, .. } if *row == pos as i32));
+                        if r.run_over {
+                            break;
+                        }
+                    }
+                    let deep = h.run.as_ref().map_or(0, |r| r.max_depth).max(h.batch.run_outcomes.last().map_or(0, |o| o.0));
+                    reached += (deep >= d.depth || runs_fired) as u32;
+                    if h.pending_exit.is_some() {
+                        let _ = h.keep(vec![]);
+                    }
+                    fired += runs_fired as u32;
+                }
+                t.check("the top patch, applied, acts in one of the next 6 sends that reach its floor", fired > 0, || format!("seed {seed} run {id}: {} at R{} · {} · fired in 0 of {sends} ({reached} reached D{})", p.row.describe(), pos + 1, d.verdict, d.depth));
+            }
+            if let Some(before) = before {
+                let after = g.forecast();
+                let bar = |f: &idlever_core::Forecast| f.depths.iter().find(|x| x.depth == p.forecast_depth).map(|x| (x.reach, x.pm.unwrap_or(0.0)));
+                let ok = match (bar(&before), bar(&after)) {
+                    (Some((b, _)), Some((a, pm))) => ((a - b) - p.forecast_delta).abs() <= pm.max(p.forecast_pm) + 1e-9,
+                    _ => false,
+                };
+                t.check("a patch's reach == the camp forecast's move once applied (± its bar)", ok, || format!("seed {seed} run {id}: {} at R{} · reach {:+.3} at D{} · camp {:?} → {:?}", p.row.describe(), p.insert_at + 1, p.forecast_delta, p.forecast_depth, bar(&before), bar(&after)));
+                // QA on 308f045 (qaAC: `survives 12/12 · reach D9 ≈ ±1`, applied: the camp's `vs sent · D6 −21 · death >99%`): the
+                // patch's whole-run move is the camp's `vs sent` once applied — the same floor the line leads with (the frontier when
+                // it moves, else the floor that moves most), the same move and ±, and the same death move.
+                if let Some(w) = p.whole.as_ref().filter(|_| p.buys.is_none() && p.insert_at >= 0) {
+                    let vs = g.forecast_vs(&rules);
+                    let (start, front) = (idlever_core::forecast::sim_start(&g), g.lineage.best_depth + 1);
+                    let pts = |m: &idlever_core::wire::VsDepth| ((m.base + m.delta) * 100.0).round() as i64 - (m.base * 100.0).round() as i64;
+                    let moved: Vec<&idlever_core::wire::VsDepth> = vs.depths.iter().filter(|x| x.depth >= start.min(front) && x.depth <= front && pts(x) != 0 && x.delta.abs() > x.pm).collect();
+                    let head = moved.iter().find(|x| x.depth == front).or_else(|| moved.iter().max_by_key(|x| (pts(x).abs(), x.depth))).map(|x| x.depth);
+                    let at = vs.depths.iter().find(|x| x.depth == w.depth);
+                    let ok = head.is_none_or(|h| h == w.depth) && at.is_some_and(|x| (x.delta - w.reach).abs() < 1e-9 && (x.pm - w.reach_pm).abs() < 1e-9) && (vs.death.delta - w.death).abs() < 1e-9 && p.forecast_depth == w.depth;
+                    t.check("a patch's whole-run move is the camp's `vs sent` once applied (its floor, move, ± and death)", ok, || format!("seed {seed} run {id}: {} · whole D{} {:+.3}±{:.3} death {:+.3} · vs head {head:?} at {:?} death {:+.3}", p.row.describe(), w.depth, w.reach, w.reach_pm, w.death, at.map(|x| (x.delta, x.pm)), vs.death.delta));
+                }
+            }
+        }
+    }
+    lp.lap("first death (death, deltas, patch forecasts)");
+    check_forecast_reads(t, lp, pool, &mut g, seed, died);
+    lp.lap("forecast reads");
+    // Buy the first affordable unlock.
+    if let Some(u) = g.unlocks().into_iter().find(|u| u.available && u.cost <= g.lineage.marks) {
+        let marks = g.lineage.marks;
+        t.check("an available unlock buys", g.buy(&u.id).is_ok() && g.lineage.marks == marks - u.cost, || format!("seed {seed}: {}", u.id));
+    }
+    check_needs(t, &g, seed);
+    // QA on a946e04 (qaT: three cards bought, three rows inserted): an unmeasured catalogue
+    // never says `auto_insert`; a measured one only where the card's reach holds and its stall
+    // rise is ≤ `CARD_STALL_RISE`.
+    t.check("an unmeasured card never auto-inserts", g.unlocks().iter().all(|u| !u.auto_insert), || format!("seed {seed}"));
+    for u in g.unlock_deltas().iter().filter(|u| u.auto_insert) {
+        t.check("an auto-inserted card is measured, reach not down, stall ≤ 5 pts", u.delta.is_some_and(|d| d >= -1e-9) && u.stall.is_some_and(|s| s <= idlever_core::meta::CARD_STALL_RISE + 1e-9), || format!("seed {seed}: {} Δ{:?} stall {:?}", u.id, u.delta, u.stall));
+    }
+    check_gold_buy(t, &g, seed);
+    lp.lap("unlock + gold buy");
+    // QA on e75ec29 (qaQ: `⊘ drink heal · unknown` in the picker, R1 `drink heal`): the
+    // vocabulary offers every drink / read a saved set holds.
+    {
+        let v = g.vocabulary();
+        let held: Vec<idlever_core::rules::Verb> = g.lineage.sets.iter().flat_map(|s| s.rows.iter()).filter(|r| matches!(r.verb.v.as_str(), "drink" | "read")).map(|r| r.verb.clone()).collect();
+        let missing: Vec<String> = held.iter().filter(|x| !v.verbs.contains(x)).map(|x| x.short()).collect();
+        t.check("the vocabulary offers every drink / read a set holds", missing.is_empty(), || format!("seed {seed}: {missing:?}"));
+    }
+    // The night.
+    let before = g.lineage.gold;
+    let wake_before = g.rest_after(0, ExitTier::Death) as u64;
+    let bounty_before = g.lineage.bounty;
+    let chronicle_before = g.lineage.chronicle.len();
+    let deeds_before: Vec<String> = g.lineage.heir_deeds.clone();
+    let sends_before: Vec<(idlever_core::rules::Row, u32)> = g.lineage.row_stats.iter().map(|(r, x)| (r.clone(), x.sends)).collect();
+    let r = g.run_offline(8 * 3600);
+    // QA on 524827b (qaAB: over one 16-run absence the WHY sheet's `sends` rose R1 3→11, R2 11→17…):
+    // the rows of the set that ran all night count the same sends.
+    {
+        let set = g.lineage.rules().clone();
+        let rose: Vec<u32> = set.rows.iter().filter_map(|row| {
+            let b = sends_before.iter().find(|(x, _)| x.conds == row.conds && x.verb == row.verb)?.1;
+            let a = g.lineage.row_stats.iter().find(|(x, _)| x.conds == row.conds && x.verb == row.verb)?.1.sends;
+            Some(a - b)
+        }).collect();
+        t.check("the rows that ran all night count the same sends", rose.windows(2).all(|w| w[0] == w[1]), || format!("seed {seed}: sends rose {rose:?} over {} runs", r.runs));
+    }
+    // QA on e75ec29 (qaQ: `bounty D10 · missed`, no bounty on the camp before the absence): the
+    // report's bounty is the one the camp showed when the absence began.
+    t.check("the report's bounty is the camp's before the absence", r.bounty.as_ref().is_none_or(|b| Some(b.depth) == bounty_before), || format!("seed {seed}: report {:?} · camp {bounty_before:?}", r.bounty));
+    // QA on e75ec29 (qaQ: BONES 12 finds, the chronicle's heirs 8): every pile the report says
+    // was found is named by a finder — the absence's chronicle lines and the live heir's deeds.
+    if g.lineage.chronicle.len() < idlever_core::engine::CHRONICLE_CAP {
+        let bones = |line: &str| -> usize { line.split(" · ").filter(|p| p.starts_with("found ♟") && p.ends_with("'s bones")).map(|p| p.matches('♟').count()).sum() };
+        let lines: usize = g.lineage.chronicle[chronicle_before.min(g.lineage.chronicle.len())..].iter().map(|l| bones(l)).sum();
+        let live: usize = g.lineage.heir_deeds.iter().filter(|d| d.starts_with("found ♟") && !deeds_before.contains(d)).count();
+        t.check("the report's bones == the finds the chronicle names", lines + live == r.bones_found.len(), || format!("seed {seed}: report {} · chronicle {lines} · live heir {live}", r.bones_found.len()));
+    }
+    // QA on e75ec29 (qaR: packed heals stolen on D1, no report line): the report's stolen
+    // items are the night's thefts less what runs got back.
+    let stolen: u32 = r.stolen.iter().map(|x| x.n).sum();
+    t.check("report stolen == thefts − got back", stolen == g.batch.thefts - g.batch.recovered, || format!("seed {seed}: report {stolen} · thefts {} · got back {}", g.batch.thefts, g.batch.recovered));
+    check_names(t, &g, seed, r.stolen.iter().map(|x| x.label.as_str()), "report stolen");
+    // QA on e75ec29 (qaR: `+$40 heir purse` after one death, none after three): each death
+    // either topped the purse up or found it full.
+    if let Some(gs) = &r.gold {
+        let deaths: u32 = r.deaths.iter().map(|d| d.n).sum();
+        t.check("the heir purse: a top-up per death below the line", gs.wake_cap == idlever_core::engine::WAKE_PAY && gs.wake_n <= deaths && (gs.wake_n == 0) == (gs.wake == 0), || format!("seed {seed}: wake ${} over {} of {deaths} deaths, cap ${}", gs.wake, gs.wake_n, gs.wake_cap));
+    }
+    // QA on e75ec29 (qaQ: `rested 333m` beside 16 runs × `rest 20m`): an absence of deaths
+    // rested one wake per run.
+    // Cut 118 gate fix: the Sleeper's set may complete mid-absence (a find), shortening the wakes after it — each
+    // run rested the wake of its own time: k at the absence's first wake, the rest at its last, exactly.
+    if !r.sampled && r.banked == 0 && r.returned == 0 {
+        let tps = idlever_core::offline::TICKS_PER_SECOND;
+        let wake_after = g.rest_after(0, ExitTier::Death) as u64;
+        let runs = r.runs as u64;
+        let fits = (0..=runs).any(|k| (k * wake_before + (runs - k) * wake_after) / tps == r.rested_s);
+        let want = runs * wake_after / tps;
+        t.check("an absence of deaths rested one wake per run", fits, || format!("seed {seed}: rested {}s · {} runs · want {want}s (first wake {}s)", r.rested_s, r.runs, wake_before / tps));
+    }
+    lp.lap("night (8 h offline)");
+    let deaths: u32 = r.deaths.iter().map(|d| d.n).sum();
+    t.check("report runs == deaths + banked + returned", r.runs == deaths + r.banked + r.returned, || format!("seed {seed}: {} runs · {deaths} deaths · {} banked · {} returned", r.runs, r.banked, r.returned));
+    let rows: i32 = r.salvaged.iter().map(|x| x.gold).sum();
+    let head = r.gold.as_ref().map(|x| x.salvage).unwrap_or(0);
+    t.check("report SALVAGED rows sum to the header's salvage", rows == head, || format!("seed {seed}: rows ${rows} vs +${head}"));
+    let b = &g.batch;
+    let spent: i32 = b.spent.values().map(|(_, c)| *c).sum();
+    t.check("night gold: earned + salvage + wake pay + recovered + fetched − spent == delta", b.gold_earned + b.salvage_gold + b.wake_pay + b.recovered_gold + b.fetched_gold - spent == g.lineage.gold - before, || format!("seed {seed}: {} + {} + {} + {} recovered + {} fetched − {spent} vs {}", b.gold_earned, b.salvage_gold, b.wake_pay, b.recovered_gold, b.fetched_gold, g.lineage.gold - before));
+    t.check("report spent == the batch's", r.spent.iter().map(|s| s.gold).sum::<i32>() == spent, || format!("seed {seed}"));
+    // QA on 778fa1b (qaV): the night's exits place every find.
+    // QA on 912e135 (qaW, qaX): the night's exit lines, one tier each; the stalled lines are the stalled tile's; the swaps the
+    // lines carry are the report's (every exit listed); the ledger's exit lines name what they did not keep.
+    let stalled_lines = r.exits.iter().filter(|x| x.text.starts_with("stalled ")).count() as u32;
+    t.check("the report's stalled lines ≤ its stalled tile ≤ its returned", stalled_lines <= r.stalled && r.stalled <= r.returned, || format!("seed {seed}: {stalled_lines} lines · {} stalled · {} returned", r.stalled, r.returned));
+    if !r.sampled && r.exits.len() as u32 == r.runs {
+        let lines: i32 = r.exits.iter().map(|x| x.swapped).sum();
+        t.check("the night's swaps: Σ exit lines == the report's", lines == r.swapped, || format!("seed {seed}: lines ${lines} · report ${}", r.swapped));
+        let lost: i32 = r.exits.iter().map(|x| (x.carried - x.kept).max(0)).sum();
+        t.check("the night's lost gold: Σ exit lines == the report's", r.gold.as_ref().is_none_or(|gs| gs.lost == lost), || format!("seed {seed}: lines ${lost} · report {:?}", r.gold.as_ref().map(|gs| gs.lost)));
+    }
+    for x in &r.exits {
+        check_exit_line(t, seed, x, "night");
+        if let Some(tr) = &x.trace {
+            check_trace_hp(t, seed, tr, &format!("night run {} trace", x.run_id));
+        }
+        let sum: u32 = x.found.iter().map(|f| f.n).sum();
+        let bad: u32 = x.found.iter().filter(|f| f.fate == "lost" || f.fate == "sheet").map(|f| f.n).sum();
+        t.check("found at an exit == kept + salvaged + shelved + used + left + stolen + bones", sum == x.found_n && bad == 0, || format!("seed {seed} night run {}: {sum} placed of {} · {:?}", x.run_id, x.found_n, x.found));
+    }
+    check_labels(t, &g, seed, &g.batch.found.clone(), "report found");
+    for f in &r.found {
+        t.check("report `found` never labels `?` when known", !f.known || !f.label.contains('?'), || format!("seed {seed}: {f:?}"));
+    }
+    check_gold(t, &g, seed, "after the night");
+    // The night's legs, longest first, each on a copy of the game as it is now (none of them
+    // changes it; the sequential order ran them on it here).
+    let at = |pool: &Pool, prio: u32, name: &'static str, g: &Game, f: fn(&mut Out, &Game, u64)| {
+        let h = g.clone();
+        pool.push(prio, name, seed, move |o, _| f(o, &h, seed));
+    };
+    for d in bank_depths(&g) {
+        let h = g.clone();
+        // (these legs judge no death: their sends keep no history ring — `without_history`, the same sends)
+        pool.push(80, "forecast vs sends", seed, move |o, _| without_history(|| check_forecast_bank_at(&mut o.t, &mut o.bank, &h, seed, d)));
+    }
+    at(pool, 75, "check_short", &g, |o, g, seed| check_short(&mut o.t, g, seed));
+    at(pool, 70, "stall leg", &g, |o, g, seed| check_stall_leg(&mut o.t, &mut o.bank.1, g, seed));
+    at(pool, 60, "report reconciles", &g, |o, g, seed| check_report_leg(&mut o.t, g, seed));
+    at(pool, 65, "night forecast", &g, |o, g, seed| {
+        check_needs(&mut o.t, g, seed);
+        check_forecast(&mut o.t, g, seed);
+    });
+    at(pool, 55, "salvage leg", &g, |o, g, seed| check_salvage_leg(&mut o.t, g, seed));
+    at(pool, 50, "shadow leg", &g, |o, g, seed| check_shadowed(&mut o.t, g, seed));
+    at(pool, 45, "den + chore legs", &g, |o, g, seed| without_history(|| check_den_chore_leg(&mut o.t, g, seed)));
+    at(pool, 45, "leash leg", &g, |o, g, seed| without_history(|| check_leash_leg(&mut o.t, g, seed)));
+    at(pool, 45, "saved-by leg", &g, |o, g, seed| without_history(|| check_saved_leg(&mut o.t, g, seed)));
+    at(pool, 45, "waystone leg", &g, |o, g, seed| check_waystone_leg(&mut o.t, g, seed));
+    at(pool, 45, "found supply leg", &g, |o, g, seed| without_history(|| check_found_supply_leg(&mut o.t, g, seed)));
+    if seed.is_multiple_of(3) {
+        at(pool, 45, "dead row leg", &g, |o, g, seed| check_dead_row(&mut o.t, g, seed));
+    }
+    at(pool, 45, "meters leg", &g, |o, g, seed| without_history(|| check_meters_leg(&mut o.t, g, seed)));
+    check_report_names(t, &g, seed, &r, "report");
+    for x in &r.exits {
+        if let Some(tr) = &x.trace {
+            check_foe_reasons(t, seed, tr, &format!("run {} exit trace", x.run_id));
+        }
+    }
+    check_reel(t, &g, seed, &r);
+    check_report_headers(t, &g, seed, &r);
+    lp.lap("report checks");
+    if let Some(d) = &r.worst_death {
+        t.check("worst death carries a verdict and a trace", (d.verdict == "gap" || d.verdict == "dice" || d.verdict == "stall" || d.verdict == "row" || d.verdict == "order") && !d.trace.turns.is_empty(), || format!("seed {seed}: {}", d.verdict));
+        check_death(t, &g, seed, d);
+    }
+    // One more of the night's deaths (the last one that is not the worst), in full.
+    if let Some(id) = g.deaths.iter().rev().find(|(id, rec)| !rec.stall && Some(**id) != r.worst_death_id).map(|(id, _)| *id) {
+        if let Some(d) = g.death(id) {
+            check_death(t, &g, seed, &d);
+        }
+    }
+    lp.lap("night deaths");
+    // Every stall record: its verdict, a firing patch, the reel's cause == the trace's.
+    let stall_ids: Vec<u32> = g.deaths.iter().filter(|(_, rec)| rec.stall).map(|(id, _)| *id).collect();
+    for id in stall_ids {
+        let Some(d) = g.death(id) else { continue };
+        let rec = g.deaths.get(&id).cloned().unwrap();
+        let fires = d.patches.iter().any(|p| idlever_core::trace::patch_fired_rate(&g, &rec, p) >= 0.5);
+        t.check("a stall's verdict names a firing patch", d.verdict == "stall" && fires, || format!("seed {seed} run {id}: {} {:?}", d.verdict, d.patches.iter().map(|p| p.row.describe()).collect::<Vec<_>>()));
+        check_death(t, &g, seed, &d);
+        let cause = d.cause.strip_prefix("stalled · ").unwrap_or(&d.cause);
+        let want = format!("stalled, {}", idlever_core::sifter::stall_short(cause));
+        let lines: Vec<&idlever_core::Highlight> = g.batch.highlights.iter().filter(|h| h.run_id == id && h.arc.is_some()).collect();
+        if !lines.is_empty() {
+            t.check("a stall's reel cause == its trace cause", lines.iter().any(|h| h.arc.as_ref().unwrap().resolution == want), || format!("seed {seed} run {id}: want `{want}`, lines {:?}", lines.iter().map(|h| h.text.clone()).collect::<Vec<_>>()));
+        }
+    }
+    lp.lap("night stalls");
+    // Buy a supply and drop it: the refund is its price.
+    if g.lineage.gold < 100 {
+        let top = 100 - g.lineage.gold;
+        g.lineage.gold_move(top, "qa top-up");
+    }
+    if let Some(entry) = g.supply_catalogue().into_iter().find(|s| s.price <= g.lineage.gold && g.lineage.supplies.len() < g.lineage.supply_cap()) {
+        let gold = g.lineage.gold;
+        if g.buy_supply(&entry.kind).is_ok() {
+            let id = g.lineage.supplies.iter().rev().find(|s| s.kind == entry.kind && !s.free).map(|s| s.id).unwrap();
+            g.drop_supply(id).unwrap();
+            t.check("a dropped supply's refund == its price", g.lineage.gold == gold, || format!("seed {seed}: {} price {} refund {}", entry.kind, entry.price, g.lineage.gold - (gold - entry.price)));
+        }
+    }
+    check_gold(t, &g, seed, "after the shop");
+    // A save round-trips the lineage.
+    let h = Game::load(&g.save()).expect("load");
+    t.check("save/load round-trips the lineage", h.lineage() == g.lineage(), || format!("seed {seed}"));
+    lp.lap("shop + save");
+}
+
+fn main() {
+    // RUNS_UI: real games at scale keep no replay capsules (a lineage clone per send never read)
+    idlever_core::engine::set_capsules(false);
+    let args: Vec<String> = std::env::args().collect();
+    let get = |k: &str, d: u64| args.iter().position(|a| a == k).and_then(|i| args.get(i + 1)).and_then(|s| s.parse().ok()).unwrap_or(d);
+    let seeds = get("--seeds", 30);
+    idlever_core::forecast::set_parallel_sims(false);
+    let t0 = std::time::Instant::now();
+    // `METRICS_PHASES=1`: every job's wall and each leg's thread-seconds to stderr.
+    let phases = std::env::var("METRICS_PHASES").is_ok();
+    // The seeds whose camp reads run the refine leg (every third) are the long preludes: first.
+    let pool = Arc::new(Pool::default());
+    for seed in 1..=seeds {
+        pool.push(if seed.is_multiple_of(3) { 40 } else { 30 }, "prelude", seed, move |o, pool| play(o, pool, seed));
+    }
+    let total = Arc::new(Mutex::new(Out::default()));
+    // `--threads N` leaves cores to what runs beside it (gates.mjs: the table and the dayplayer's
+    // chains).
+    let threads = (get("--threads", std::thread::available_parallelism().map(|n| n.get() as u64).unwrap_or(4)) as usize).max(1);
+    let hs: Vec<_> = (0..threads)
+        .map(|_| {
+            let (pool, total) = (Arc::clone(&pool), Arc::clone(&total));
+            std::thread::spawn(move || pool.work(&total, phases, t0))
+        })
+        .collect();
+    for h in hs {
+        h.join().unwrap();
+    }
+    let Out { mut t, bank: banks, lp: laps } = std::mem::take(&mut *total.lock().unwrap());
+    if phases {
+        let total: f64 = laps.0.values().sum();
+        let mut v: Vec<_> = laps.0.iter().filter(|x| *x.1 > 0.05).collect();
+        v.sort_by(|a, b| b.1.total_cmp(a.1));
+        for (k, x) in v {
+            eprintln!("leg {k:<44} {x:>7.1} thread-s  {:>4.1} %", 100.0 * x / total.max(1e-9));
+        }
+        eprintln!("legs total {total:.1} thread-s");
+    }
+    // The forecast's bank share, summed over the seeds, within the pooled 95 % band of the
+    // real sends' (the two samples' binomial ±).
+    for (name, (fb, fn_, rb, rn)) in ["forecast bank ≈ real sends (good set, Σ seeds)", "forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds)"].into_iter().zip(banks.0) {
+        let (pf, pr) = (fb / fn_.max(1.0), rb / rn.max(1.0));
+        let p = (fb + rb) / (fn_ + rn).max(1.0);
+        let band = 1.96 * (p * (1.0 - p) * (1.0 / fn_.max(1.0) + 1.0 / rn.max(1.0))).sqrt();
+        t.check(name, (pf - pr).abs() <= band + 1e-9, || format!("forecast {pf:.3} over {fn_} sims vs sends {pr:.3} over {rn}, band ±{band:.3}"));
+        println!("{name}: forecast {pf:.3} ({fn_} sims) · sends {pr:.3} ({rn}) · ±{band:.3}");
+    }
+    // QA on 1a2a4a9 (qaP: the stall patch `survives 100%`, the next run stalled in the same
+    // loop, and the camp showed no stall line): over the stall leg's records, the top patch's
+    // set forecasts fewer stalls than the set that stalled.
+    let StallSum(base, patched, n) = banks.1;
+    t.check("a stall's top patch forecasts fewer stalls (Σ records)", n > 0 && patched < base, || format!("{n} records: stall share Σ {base:.2} → {patched:.2}"));
+    println!("stall leg: {n} records · forecast stall share Σ {base:.2} → {patched:.2} with the top patch");
+    let mut fails = 0;
+    println!("{:<58} {:>8}  result", "invariant", "checks");
+    for (name, (n, f, d)) in &t.0 {
+        println!("{:<58} {:>8}  {}{}", name, n, if *f == 0 { "PASS".to_string() } else { format!("FAIL ({f})") }, if d.is_empty() { String::new() } else { format!("  — {d}") });
+        fails += f;
+    }
+    println!("qa: {} ({seeds} seeds, {:.1}s)", if fails == 0 { "all PASS" } else { "FAIL" }, t0.elapsed().as_secs_f64());
+    if fails > 0 {
+        std::process::exit(1);
+    }
+}

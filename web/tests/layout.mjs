@@ -36,7 +36,7 @@ async function newPage(w, h) {
 const state = (page) =>
   page
     .evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
     })
     .catch(() => null);
@@ -158,7 +158,7 @@ async function gemClear(page, what, { empty = false } = {}) {
 }
 async function buildHome(page) {
   const empty = await page.evaluate(async () => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     if (a.kind !== "wasm" || a.lineage.town.home !== false)
       throw Error("fresh real empty town required");
     const before = await a.engine.save();
@@ -174,7 +174,7 @@ async function buildHome(page) {
   await page.locator('.town-tag[data-next="house"]').click();
   await page.waitForFunction(
     () =>
-      window.__riddle.lineage.town.home === true &&
+      window.__idlever.lineage.town.home === true &&
       !document.querySelector(".console .gem.send")?.disabled,
   );
 }
@@ -184,7 +184,7 @@ async function earnedHome(page) {
     "utf8",
   );
   await page.evaluate(async (engine) => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     if (
       a.kind !== "wasm" ||
       !(await a.importSave(
@@ -254,7 +254,7 @@ try {
   if (after === "death") await gemClear(page, "phone death (the first run)");
   // The absence's layout belongs to the scout phase; manual sends wait at home before he is hired (Cut 30.5).
   await page.evaluate(async () => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       blob = JSON.parse(r.exportSave()),
       save = JSON.parse(blob.engine);
     for (const id of ["porter", "scout"])
@@ -296,7 +296,7 @@ try {
   await earnedHome(page);
   await gemClear(page, "phone earned home");
   // the divergence scene over the well
-  await page.evaluate((t) => window.__riddle.setRulesText(t), RICH);
+  await page.evaluate((t) => window.__idlever.setRulesText(t), RICH);
   {
     const t = Date.now();
     let seen = false;

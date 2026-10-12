@@ -16,15 +16,15 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&seed=50`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async (engine) => {
-      await window.__riddle.importSave(
+      await window.__idlever.importSave(
         JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
       );
-      (await import("/src/ui/runs.ts")).openRuns(window.__riddle);
+      (await import("/src/ui/runs.ts")).openRuns(window.__idlever);
     }, engine);
-    const saved = await p.evaluate(() => window.__riddle.engine.save()),
-      rows = await p.evaluate(() => window.__riddle.rules.rows);
+    const saved = await p.evaluate(() => window.__idlever.engine.save()),
+      rows = await p.evaluate(() => window.__idlever.rules.rows);
     await p.locator(".log-tab[data-tab=heirs]").click();
     assert.equal(await p.locator(".runs-sheet").getAttribute("data-tab"), "heirs");
     assert.ok((await p.locator(".runs-sheet .cline").count()) > 0);
@@ -77,27 +77,27 @@ try {
     await p.locator(".look.on").click();
     await p.waitForFunction(() => !document.querySelector(".look-sheet"));
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), saved);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), saved);
     await p.locator(".cmd [data-tile=edit]:visible").click();
     await p.locator(".tabs .tab.edit:visible").click();
     await p.locator(".game-window .name-input").waitFor();
     await p.locator(".name-input").fill("Moon patrol");
     await p.locator(".name-input").press("Enter");
     await p.waitForFunction(
-      () => window.__riddle.sets[window.__riddle.active].name === "Moon patrol",
+      () => window.__idlever.sets[window.__idlever.active].name === "Moon patrol",
     );
     assert.equal(await p.locator(".name-input").count(), 0);
     await p.waitForFunction(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         L = await a.engine.lineage();
       return L.sets[L.active_set].name === "Moon patrol";
     });
-    assert.deepEqual(await p.evaluate(() => window.__riddle.rules.rows), rows);
-    await p.evaluate(() => window.__riddle.flush());
+    assert.deepEqual(await p.evaluate(() => window.__idlever.rules.rows), rows);
+    await p.evaluate(() => window.__idlever.flush());
     await p.reload();
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     assert.equal(
-      await p.evaluate(() => window.__riddle.sets[window.__riddle.active].name),
+      await p.evaluate(() => window.__idlever.sets[window.__idlever.active].name),
       "Moon patrol",
     );
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);

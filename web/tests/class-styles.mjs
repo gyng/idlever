@@ -14,9 +14,9 @@ try {
       errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
     await page.goto(`${url}?fresh=1&seed=3&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") throw Error("real WASM required");
       a.runnerOn = false;
       const { openHero } = await import("/src/ui/town.ts");
@@ -24,7 +24,7 @@ try {
     });
     assert.equal(await page.locator(".class-style-panel").count(), 0);
     await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         s = JSON.parse(await a.engine.save()),
         l = s.lineage;
       l.town.home = true;
@@ -66,37 +66,37 @@ try {
       window.styleFixture.lineage.best_depth = 23;
       await window.showStyle();
     });
-    const ready = await page.evaluate(() => window.__riddle.engine.save());
+    const ready = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".class-style-choose").click();
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), ready);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), ready);
     assert.match(await page.locator(".class-style-review").textContent(), /Automatic tactic/);
     await page.locator(".class-style-review button").first().click();
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), ready);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), ready);
     // Stale review checks the actual updated parent choice; no engine mutation by confirmation.
     await page.locator(".class-style-choose").click();
     await page.evaluate(async () => {
-      await window.__riddle.setClass("caster");
+      await window.__idlever.setClass("caster");
     });
-    const switched = await page.evaluate(() => window.__riddle.engine.save());
+    const switched = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".class-style-confirm").click();
     assert.equal(await page.locator(".class-style-feedback").textContent(), "Review changed");
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), switched);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), switched);
     await page.locator(".class-style-review button").first().click();
     await page.evaluate(async () => window.showStyle());
     // Real worker refusal: run starts after review without changing the UI's cached review.
     await page.locator(".class-style-choose").click();
-    await page.evaluate(async () => window.__riddle.engine.send());
-    const away = await page.evaluate(() => window.__riddle.engine.save());
+    await page.evaluate(async () => window.__idlever.engine.send());
+    const away = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".class-style-confirm").click();
     await page.waitForFunction(() =>
       document.querySelector(".class-style-feedback")?.textContent.includes("hero away"),
     );
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), away);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), away);
     await page.locator(".class-style-review button").first().click();
     await page.evaluate(async () => window.showStyle());
     // Double activation is one actual worker call; adopting the compiled set exposes the named row.
     await page.evaluate(() => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         call = a.engine.setSpecialization.bind(a.engine);
       window.styleCalls = 0;
       a.engine.setSpecialization = async (id) => {
@@ -109,23 +109,23 @@ try {
       el.click();
       el.click();
     });
-    await page.waitForFunction(() => window.__riddle.lineage.class_styles.selected === "sentinel");
+    await page.waitForFunction(() => window.__idlever.lineage.class_styles.selected === "sentinel");
     assert.equal(await page.evaluate(() => window.styleCalls), 1);
     assert.ok(
       await page.evaluate(() =>
-        window.__riddle.rules.rows.some((r) => r.origin === "style:sentinel"),
+        window.__idlever.rules.rows.some((r) => r.origin === "style:sentinel"),
       ),
     );
     const chosen = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.flush();
       return a.engine.save();
     });
     await page.goto(`${url}?seed=3&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
-    assert.equal(await page.evaluate(() => window.__riddle.engine.save()), chosen);
+    await page.waitForFunction(() => window.__idlever?.booted);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), chosen);
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.runnerOn = false;
       const { openHero } = await import("/src/ui/town.ts");
       openHero(a);
@@ -134,13 +134,13 @@ try {
     await page.locator(".class-style-choose").click();
     assert.match(await page.locator(".class-style-review").textContent(), /Tactic removed/);
     await page.locator(".class-style-confirm").click();
-    await page.waitForFunction(() => window.__riddle.lineage.class_styles.selected === null);
+    await page.waitForFunction(() => window.__idlever.lineage.class_styles.selected === null);
     assert.ok(
       await page.evaluate(
-        () => !window.__riddle.rules.rows.some((r) => r.origin === "style:sentinel"),
+        () => !window.__idlever.rules.rows.some((r) => r.origin === "style:sentinel"),
       ),
     );
-    assert.equal(await page.evaluate(() => window.__riddle.lineage.classes.fighter.xp), 123);
+    assert.equal(await page.evaluate(() => window.__idlever.lineage.classes.fighter.xp), 123);
     assert.equal(
       await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),
       false,

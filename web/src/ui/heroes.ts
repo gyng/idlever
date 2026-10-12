@@ -24,12 +24,12 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
     closeAllSheets();
     if (!(await app.selectBloodline(s.id))) return;
     if (s.state === "live") {
-      if (app.screen === "watch") window.dispatchEvent(new Event("riddle:focus-hero"));
+      if (app.screen === "watch") window.dispatchEvent(new Event("idlever:focus-hero"));
       else app.go({ kind: "watch" });
     } else if (hooks.focus) hooks.focus();
     else {
       app.go({ kind: "camp" });
-      requestAnimationFrame(() => window.dispatchEvent(new Event("riddle:focus-hero")));
+      requestAnimationFrame(() => window.dispatchEvent(new Event("idlever:focus-hero")));
     }
   };
   const details = async (s: HeroSlot, anchor: HTMLElement): Promise<void> => {

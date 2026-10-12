@@ -1,4 +1,4 @@
-# Riddle — art bible
+# Idlever — art bible
 
 This file is the authority on *look*. `art/manifest.json` lists every keyed asset and its
 drawable brief; `art/make_tiles.py` is the authority on environment tiles. Nothing here
@@ -55,7 +55,7 @@ painted at high resolution:
 - **Faces:** small and simple (two dark eyes, a brow); heroes keep a gentle anime flavour (hair as a
   few big locks), monsters grotesque-but-charming like the target's goblins.
 
-Riddle-specific readability rules (hard, unchanged):
+Idlever-specific readability rules (hard, unchanged):
 
 - **Target size is tiny.** A hero reads at **48 px tall** on a phone; monsters at **32–48 px**;
   bosses ~64 px; summons ~24 px. Judge every sprite at that size, not at paint size.

@@ -13,7 +13,7 @@ export type SaveBlob = {
   origins?: string[][];
   watch?: "fights" | "fast" | "one";
 };
-const KEY = "riddle.save";
+const KEY = "idlever.save";
 
 export function readBlob(): SaveBlob | null {
   try {

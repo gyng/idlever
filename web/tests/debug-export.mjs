@@ -5,7 +5,7 @@ import { readDebug } from "../../tools/debug-export.mjs";
 import assert from "node:assert/strict";
 import { mkdirSync, writeFileSync } from "node:fs";
 const shotsIndex = process.argv.indexOf("--shots"),
-  shots = shotsIndex >= 0 ? process.argv[shotsIndex + 1] : process.env.RIDDLE_SHOTS;
+  shots = shotsIndex >= 0 ? process.argv[shotsIndex + 1] : process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const url = execFileSync("bash", ["tools/dev.sh"], {
   cwd: new URL("../../", import.meta.url),
@@ -16,9 +16,9 @@ try {
   for (const width of stateWidths([400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, acceptDownloads: true });
     await page.goto(`${url}?fresh=1&seed=5&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const result = await page.evaluate(async () => {
-      const app = window.__riddle,
+      const app = window.__idlever,
         { captureDebug, debugNote } = await import("/src/debug.ts");
       let n = 0;
       const check = (ok, name) => {
@@ -73,7 +73,7 @@ try {
         bundle.capture.context === "at-request" && bundle.capture.state === "fresh",
         "context provenance explicit",
       );
-      const pkg = await import("/src/engine/pkg/riddle_wasm.js");
+      const pkg = await import("/src/engine/pkg/idlever_wasm.js");
       await pkg.default();
       const expected = pkg.Game.fromSave(before),
         actual = pkg.Game.fromSave(bundle.save.engine);
@@ -185,7 +185,7 @@ try {
     await page.locator(".watch canvas").waitFor({ state: "visible" });
     await page.evaluate(async () => {
       const { openSettings } = await import("/src/ui/settings.ts");
-      openSettings(window.__riddle);
+      openSettings(window.__idlever);
     });
     const downloadPromise = page.waitForEvent("download");
     await page.locator(".debug-export").click();
@@ -198,7 +198,7 @@ try {
     assert.equal(liveDump.engine.selected, 2);
     assert.ok(liveDump.engine.run, "captured an actual in-flight run");
     await page.evaluate(async (raw) => {
-      const pkg = await import("/src/engine/pkg/riddle_wasm.js");
+      const pkg = await import("/src/engine/pkg/idlever_wasm.js");
       await pkg.default();
       const restored = pkg.Game.fromSave(raw);
       try {
@@ -213,11 +213,11 @@ try {
       await page.mouse.move(2, 2);
       await page.screenshot({ path: `${shots}/${width}-settings.png` });
     }
-    assert.match(download.suggestedFilename(), /^riddle-debug-.*\.json$/);
+    assert.match(download.suggestedFilename(), /^idlever-debug-.*\.json$/);
     assert.equal(await page.locator(".debug-copy").isVisible(), true);
     await page.evaluate(() => {
-      window.goodDebugSave = window.__riddle.engine.save;
-      window.__riddle.engine.save = async () => {
+      window.goodDebugSave = window.__idlever.engine.save;
+      window.__idlever.engine.save = async () => {
         throw Error("test failure");
       };
     });
@@ -228,7 +228,7 @@ try {
     assert.equal(await page.locator(".debug-export").isEnabled(), true);
     assert.equal(await page.locator(".settings textarea").inputValue(), "");
     await page.evaluate(() => {
-      window.__riddle.engine.save = window.goodDebugSave;
+      window.__idlever.engine.save = window.goodDebugSave;
       window.goodDownload = HTMLAnchorElement.prototype.click;
       HTMLAnchorElement.prototype.click = function () {
         throw Error("blocked download");

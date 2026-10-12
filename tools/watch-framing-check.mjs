@@ -9,11 +9,11 @@ try {
   for (const width of [400, 1440]) {
     const p = await b.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1.5 });
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const result = await p.evaluate(
       async ({ width, renderPath }) => {
         const { createViewer } = await import(renderPath),
-          s = await window.__riddle.engine.send();
+          s = await window.__idlever.engine.send();
         s.w = s.h = 64;
         s.tiles = Array(4096).fill("floor");
         s.seen = s.visible = Array(4096).fill(true);
@@ -116,7 +116,7 @@ try {
           c.remove();
         }
       },
-      { width, renderPath: process.env.RIDDLE_RENDER_MODULE ?? "/src/render/index.ts" },
+      { width, renderPath: process.env.IDLEVER_RENDER_MODULE ?? "/src/render/index.ts" },
     );
     console.log(width, result.checks, "camera cases", result.samples, "contained GPU samples PASS");
     await p.close();

@@ -13,7 +13,7 @@ try {
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&juice=1`);
     await p.waitForFunction(
-      () => window.__riddle?.booted && document.querySelector(".ambient-mote"),
+      () => window.__idlever?.booted && document.querySelector(".ambient-mote"),
     );
     const count = await p.locator(".ambient-mote").count();
     assert.ok(count >= 16 && count <= 36);
@@ -53,7 +53,7 @@ try {
     await p.keyboard.press("Escape");
     await p.evaluate(() => {
       window.oldMote = document.querySelector(".ambient-mote");
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.go({ kind: "camp" });
     });
     await p.waitForTimeout(150);
     assert.equal(await p.locator(".ambient-motes").count(), 1);
@@ -107,7 +107,7 @@ try {
     assert.equal(await p.locator(".ambient-motes").count(), 0);
     assert.deepEqual(errors, []);
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&juice=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     assert.equal(await p.locator(".ambient-motes").count(), 0);
     console.log(width, "drift/wake/locality/bounds/lifecycle/reduced-motion/off PASS");
     await p.close();

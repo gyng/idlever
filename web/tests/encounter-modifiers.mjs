@@ -13,10 +13,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&engine=fake&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const before = await p.evaluate(() => {
-      window.__riddle.runnerOn = false;
-      return window.__riddle.engine.save();
+      window.__idlever.runnerOn = false;
+      return window.__idlever.engine.save();
     });
     await p.evaluate(async () => {
       const { enemyHost } = await import("/src/ui/enemy-tips.ts");
@@ -150,7 +150,7 @@ try {
     await p.keyboard.press("Tab");
     await tip.waitFor({ state: "visible" });
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.deepEqual(errors, []);
     console.log(
       width,

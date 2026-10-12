@@ -73,7 +73,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r
       ? {
           screen: r.screen,
@@ -241,7 +241,7 @@ async function lintButtons(where, expectScreen) {
   const list = await buttonsOf(INERT_SEL);
   const inert = [];
   await page.evaluate(() => {
-    window.__screenLintReturn = structuredClone(window.__riddle.view);
+    window.__screenLintReturn = structuredClone(window.__idlever.view);
   });
   let tried = 0;
   for (const d of list) {
@@ -265,7 +265,7 @@ async function lintButtons(where, expectScreen) {
       await page.evaluate(
         (k) =>
           window.__screenLintReturn?.kind === k
-            ? window.__riddle.go(window.__screenLintReturn)
+            ? window.__idlever.go(window.__screenLintReturn)
             : (() => {
                 throw Error("Missing screen return context");
               })(),
@@ -307,7 +307,7 @@ try {
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   await editRows(page); // Cut 17: the tablets carry their chips, ▲▼ and × (the `edit` tile, remembered)
   const seeded = await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     e.lineage.selected_bloodline = 1;
@@ -337,7 +337,7 @@ try {
   await waitFor((s) => s?.screen === "camp", "camp again");
   await page.waitForFunction(
     () =>
-      window.__riddle.unlockCat.length > 0 &&
+      window.__idlever.unlockCat.length > 0 &&
       document.querySelectorAll(".supplies .chip.buy").length > 0,
     null,
     { timeout: 15_000 },
@@ -369,7 +369,7 @@ try {
       const g = await page.evaluate(() => ({
         header: document.querySelector(".strip button.gold")?.textContent.match(/\$[\d,]+/)?.[0],
         sheet: document.querySelector(".sheet-wrap .label .gold")?.textContent,
-        lineage: `$${window.__riddle.lineage.gold}`,
+        lineage: `$${window.__idlever.lineage.gold}`,
       }));
       check(
         g.header === g.sheet && g.sheet === g.lineage,
@@ -388,7 +388,7 @@ try {
   // A migrated literal fixture has no worker tree: no blank, inert Workers shortcut.
   check(
     await page.evaluate(
-      () => !!window.__riddle.lineage.tree || !!document.querySelector(".next-pill")?.hidden,
+      () => !!window.__idlever.lineage.tree || !!document.querySelector(".next-pill")?.hidden,
     ),
     "the worker shortcut stays hidden when no worker tree exists",
   );
@@ -487,7 +487,7 @@ try {
   check((await card.count()) > 0, "an affordable unlock is on the shelf");
   const bought = (await card.innerText()).split("\n")[0].trim();
   // (the marks as they stand before the buy — the run above earned some: `< 12` held only while the first card cost more than it earned)
-  const marksBefore = await page.evaluate(() => window.__riddle.lineage.marks);
+  const marksBefore = await page.evaluate(() => window.__idlever.lineage.marks);
   await card.click({ timeout: 5000 });
   await sleep(200);
   await lintSheet(`unlock sheet · ${bought}`);
@@ -505,14 +505,14 @@ try {
   await page.locator(".sheet-wrap button.buy.marks").click({ timeout: 5000 });
   await waitFor((x) => x?.sheets === 0, "the buy sheet closed");
   await settle();
-  const marksAfter = await page.evaluate(() => window.__riddle.lineage.marks);
+  const marksAfter = await page.evaluate(() => window.__idlever.lineage.marks);
   check(marksAfter < marksBefore, `bought "${bought}" (marks ${marksBefore} → ${marksAfter})`);
   await lintScreen("camp (bought)");
   // Cut 15 §2: a gold buy — the lineage gets $5000; the next card's `$ buy` spends gold, not marks, and the header's $ and ◆ read
   // the returned lineage; the next gold price climbs
   {
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const save = JSON.parse(await r.engine.save());
       save.lineage.gold = 5000;
       r.lineage = await r.engine.load(JSON.stringify(save));
@@ -523,7 +523,7 @@ try {
       page.evaluate(() => ({
         gold: document.querySelector(".strip .gold")?.textContent.match(/\$[\d,]+/)?.[0],
         marks: document.querySelector(".strip .marks")?.textContent.trim(),
-        L: { gold: window.__riddle.lineage.gold, marks: window.__riddle.lineage.marks },
+        L: { gold: window.__idlever.lineage.gold, marks: window.__idlever.lineage.marks },
       }));
     const h0 = await head();
     await openPanel(page, "unlocks", { all: true });
@@ -560,12 +560,12 @@ try {
     // Cut 23 §1: a row slot is priced on the forge's ladder (it does not climb with gold buys) — the climb is read off another card
     const next = await page.evaluate(
       async () =>
-        (await window.__riddle.engine.unlocks()).find(
+        (await window.__idlever.engine.unlocks()).find(
           (u) => !u.owned && u.gold && !/^row\d+$/.test(u.id),
         )?.gold ?? 0,
     );
     const cost0 = await page.evaluate(async () => {
-      const u = (await window.__riddle.engine.unlocks()).find(
+      const u = (await window.__idlever.engine.unlocks()).find(
         (x) => !x.owned && x.gold && !/^row\d+$/.test(x.id),
       );
       return u ? 150 * u.cost : 0;
@@ -591,7 +591,7 @@ try {
     `a supply dropped (${supplies} → ${supplies - 1})`,
   );
   await lintScreen("camp (supply dropped)");
-  await page.evaluate(() => window.__riddle.flush());
+  await page.evaluate(() => window.__idlever.flush());
   // 10. the absence: the report, its buttons, the worst death
   await page.goto(`${url}?dev=1&engine=fake&systems=none&absent=8h`, {
     waitUntil: "domcontentloaded",
@@ -616,7 +616,7 @@ try {
     );
     const chips = pairs.map((p) => p.chip);
     const traced = await page.evaluate(() =>
-      (window.__riddle.view.report?.exits ?? []).some((x) => x.trace?.turns.length),
+      (window.__idlever.view.report?.exits ?? []).some((x) => x.trace?.turns.length),
     );
     const labelled = pairs.filter(
       (p) => /^D\d+ · (collected|returned|died) · log$/.test(p.chip) || /\bD\d+\b/.test(p.line),
@@ -653,7 +653,7 @@ try {
     });
     await page.evaluate(
       (exits) => {
-        const r = window.__riddle;
+        const r = window.__idlever;
         r.go({
           kind: "report",
           report: {

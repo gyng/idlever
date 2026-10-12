@@ -12,9 +12,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         tick = () => new Promise((r) => setTimeout(r, 30));
       const until = async (predicate) => {
         for (let i = 0; i < 100 && !predicate(); i++) await tick();

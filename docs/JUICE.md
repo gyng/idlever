@@ -35,7 +35,7 @@ touching game truth. Everything here reads existing events and the floor the vie
 
 - `quality.ts` — the tier. `low` = the pre-juice blit compiled exactly (`FX` define 0), no particles, numbers, squash, hit-stop.
   Auto: a software GL (SwiftShader / llvmpipe, i.e. the headless client gates) is `low`; a real GPU starts `high` and steps down
-  one tier after two 3 s windows with > 30 % of frames over 20 ms. `?fx=low|med|high` or `localStorage["riddle.fx"]` pins it.
+  one tier after two 3 s windows with > 30 % of frames over 20 ms. `?fx=low|med|high` or `localStorage["idlever.fx"]` pins it.
   `prefers-reduced-motion` keeps light and bloom and drops shake, hit-stop, slow-mo, squash, rising numbers, pulses, ambient
   particles. `viewer.stats().fx` reports the tier.
 - `light.ts` — `LightField`: the wall mask as a linear-filtered data texture (re-uploaded only when the tiles change), a light map
@@ -53,7 +53,7 @@ touching game truth. Everything here reads existing events and the floor the vie
 - Art never blocks: particles use a generated white texel and the bitmap font; nothing needs a new asset. Missing torch art → no
   torch lights (the hero, fire and pops still light the field).
 - Debug/measure: `render-demo.html?busy=1&biome=foundry&depth=20&speed=4&texels=120[&fight=0][&seek=T][&fx=]`;
-  `window.__riddleSyncTiming = true` drains the GPU each frame so `stats().cpuMs` includes the GPU (measurement only).
+  `window.__idleverSyncTiming = true` drains the GPU each frame so `stats().cpuMs` includes the GPU (measurement only).
 
 ## 4. Numbers
 

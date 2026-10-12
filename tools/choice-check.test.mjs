@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 const script = new URL("./choice-check.mjs", import.meta.url).pathname;
 test("reject malformed upgrade paths before loading or building", () => {
-  const dir = mkdtempSync(join(tmpdir(), "riddle-choice-options-"));
+  const dir = mkdtempSync(join(tmpdir(), "idlever-choice-options-"));
   try {
     const input = join(dir, "source.json"),
       output = join(dir, "output");
@@ -27,7 +27,7 @@ test("reject malformed upgrade paths before loading or building", () => {
   }
 });
 test("expanded command preserves existing output and requires option values", () => {
-  const dir = mkdtempSync(join(tmpdir(), "riddle-choice-options-"));
+  const dir = mkdtempSync(join(tmpdir(), "idlever-choice-options-"));
   try {
     const input = join(dir, "missing.json"),
       output = join(dir, "output");

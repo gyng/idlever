@@ -8,7 +8,7 @@ import { h, replace } from "./dom";
 import { manyBloodlines } from "./orders";
 
 export type OfferKey = "legacy" | "ranks";
-const KEY = (L: Pick<Lineage, "seed">): string => /* copy:none */ `riddle.offers.${L.seed ?? 0}`;
+const KEY = (L: Pick<Lineage, "seed">): string => /* copy:none */ `idlever.offers.${L.seed ?? 0}`;
 
 function load(L: Pick<Lineage, "seed">): Record<string, boolean> {
   try {

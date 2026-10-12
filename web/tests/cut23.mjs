@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 23 client gates (docs/CUT23.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 23 client gates (docs/CUT23.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §1  current Forge (docs/UX_FIRST_HOME.md, QA_CURRENT_UI.md): item and exact price per slot,
 //       no query on open/buy, one-tap exact purchase, stable step placement, disabled unaffordable upgrades,
 //       future prices under Details, one explicitly requested forecast; report Details opens its pending Forge link.
@@ -45,7 +45,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -101,7 +101,7 @@ const overlap = (a, b) =>
 const patchSave = (lin, st = {}) =>
   page.evaluate(
     async ([p, q]) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       Object.assign(e.lineage, p);
@@ -125,8 +125,8 @@ try {
   });
   await camp();
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
-    localStorage.setItem("riddle.editing", "0");
+    localStorage.removeItem("idlever.reveal");
+    localStorage.setItem("idlever.editing", "0");
   });
 
   // ---- §1 the forge
@@ -153,7 +153,7 @@ try {
     `the first affordable kit step carves the forge tile, its badge counts them (${JSON.stringify(tile)})`,
   );
   await page.evaluate(() => {
-    const a = window.__riddle;
+    const a = window.__idlever;
     window.kitReads = 0;
     for (const name of ["kitDeltas", "kitEstimates"]) {
       if (!a.engine[name]) continue;
@@ -178,7 +178,7 @@ try {
       disabled: el.querySelector(".forge-buy")?.disabled,
     })),
   );
-  const ladders = await page.evaluate(() => window.__riddle.lineage.kit);
+  const ladders = await page.evaluate(() => window.__idlever.lineage.kit);
   check(
     next.length === 3 &&
       next.every(
@@ -201,16 +201,16 @@ try {
   await page.locator(".forge-details summary").click();
   await shot("cut23-forge");
   const sel = ".sheet-wrap:not(.under) .forge .kit-slot[data-slot=weapon] .forge-buy";
-  const gold0 = await page.evaluate(() => window.__riddle.lineage.gold),
+  const gold0 = await page.evaluate(() => window.__idlever.lineage.gold),
     price = ladders.find((k) => k.slot === "weapon").next.price;
   await sleep(300);
   const r0 = await rect(sel);
   await page.locator(sel).click({ timeout: 5000 });
-  await until(() => page.evaluate((g) => window.__riddle.lineage.gold < g, gold0), "the buy");
+  await until(() => page.evaluate((g) => window.__idlever.lineage.gold < g, gold0), "the buy");
   await sleep(200);
   const after = await page.evaluate(() => ({
-    gold: window.__riddle.lineage.gold,
-    kit: window.__riddle.lineage.kit.find((k) => k.slot === "weapon").owned,
+    gold: window.__idlever.lineage.gold,
+    kit: window.__idlever.lineage.kit.find((k) => k.slot === "weapon").owned,
     reads: window.kitReads,
   }));
   const r1 = await rect(sel);
@@ -228,7 +228,7 @@ try {
     [...document.querySelectorAll(".forge .forge-buy")].every(
       (b) =>
         b.disabled ===
-        !window.__riddle.lineage.kit.find((k) => k.slot === b.dataset.slot).next?.affordable,
+        !window.__idlever.lineage.kit.find((k) => k.slot === b.dataset.slot).next?.affordable,
     ),
   );
   check(disabled, "unaffordable steps are disabled according to engine prices");
@@ -246,20 +246,20 @@ try {
   await closeSheets();
 
   // ---- §2 the low end: a set that banks at once never dies — `death <N%`, never `0%`
-  await page.evaluate(() => window.__riddle.setRulesText("depth>=1 → bank"));
+  await page.evaluate(() => window.__idlever.setRulesText("depth>=1 → bank"));
   await until(
     () =>
       page.evaluate(
         () =>
-          window.__riddle.lastForecast &&
+          window.__idlever.lastForecast &&
           !document.querySelector(".camp .shaft").classList.contains("stale") &&
-          window.__riddle.rules.rows.length === 1,
+          window.__idlever.rules.rows.length === 1,
       ),
     "the bank set's forecast",
   );
   await sleep(300);
   const low = await page.evaluate(() => {
-    const f = window.__riddle.lastForecast;
+    const f = window.__idlever.lastForecast;
     return {
       low: f.low,
       death: f.ends?.death,
@@ -306,23 +306,23 @@ try {
   await camp();
   // the set the sends ran under (the engine's why-not is per row of the set it holds)
   const set = await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     await r.setRulesText("hp<30 → drink heal\nfoes>=2 → throw fire\nfoes>=1 → attack nearest");
     await new Promise((x) => setTimeout(x, 200));
     await r.refresh();
     return r.lineage.sets[r.lineage.active_set].rows.length;
   });
   check(set === 3, `the engine holds the three-row set (${set})`);
-  await page.evaluate(() => localStorage.setItem("riddle.editing", "0"));
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => localStorage.setItem("idlever.editing", "0"));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
-  const whys = await page.evaluate(() => window.__riddle.rowWhy().map((w) => w?.text ?? null));
+  const whys = await page.evaluate(() => window.__idlever.rowWhy().map((w) => w?.text ?? null));
   check(
     whys.every((w) => typeof w === "string"),
     `every row of a set that ran has its why-not (${whys.join(" | ")})`,
   );
   const blockedAt = await page.evaluate(() =>
-    window.__riddle.rowWhy().findIndex((w) => w?.blocked),
+    window.__idlever.rowWhy().findIndex((w) => w?.blocked),
   );
   const tab = `.editor.compact .row.tablet[data-i="${blockedAt}"]`;
   await page.locator(tab).click({ timeout: 5000 });
@@ -375,8 +375,8 @@ try {
   // a fresh set's tablet edits at once (no why yet)
   await patchSave({}, { runCounter: 0 });
   await camp();
-  await page.evaluate(() => localStorage.setItem("riddle.editing", "0"));
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => localStorage.setItem("idlever.editing", "0"));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
   await page.locator(".editor.compact .row.tablet").first().click({ timeout: 5000 });
   await sleep(250);
@@ -411,7 +411,7 @@ try {
 
   // ---- §4 the option sheet never covers its row; an outside tap only closes
   await editRows(page);
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
   const nRows = await page.locator(".editor .row").count();
   for (const i of [0, nRows - 1]) {
@@ -428,7 +428,7 @@ try {
     await closeSheets();
   }
   // an outside tap: over another row's chip — the sheet closes, no other opens, the rules hold
-  const before = await page.evaluate(() => JSON.stringify(window.__riddle.rules.rows));
+  const before = await page.evaluate(() => JSON.stringify(window.__idlever.rules.rows));
   await page.locator(`.editor .row[data-i="0"] .chip.cond`).first().click({ timeout: 5000 });
   await sleep(250);
   const other = await rect(`.editor .row[data-i="${nRows - 1}"] .chip.verb`);
@@ -440,7 +440,7 @@ try {
   await sleep(300);
   const afterTap = await page.evaluate(() => ({
     sheets: document.querySelectorAll(".sheet-wrap").length,
-    rows: JSON.stringify(window.__riddle.rules.rows),
+    rows: JSON.stringify(window.__idlever.rules.rows),
     panel: !!document.querySelector(".panel-host.open"),
   }));
   check(
@@ -508,7 +508,7 @@ try {
   );
   await leashX.click({ timeout: 5000 });
   await until(
-    () => page.evaluate(() => !window.__riddle.lineage.supplies.some((s) => s.free)),
+    () => page.evaluate(() => !window.__idlever.lineage.supplies.some((s) => s.free)),
     "the leash dropped",
   );
   check(true, "the second tap drops the free line");
@@ -516,7 +516,7 @@ try {
 
   // ---- §1 the report's PENDING `forge sword +1 · $300` opens the forge
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const rep = await r.engine.runOfflineQuick(1800);
     rep.pending = [...(rep.pending ?? []), "forge sword +1 · $300"];
     r.go({ kind: "report", report: rep });
@@ -535,12 +535,12 @@ try {
     `PENDING's forge line opens the forge ("${flText}")`,
   );
   await closeSheets();
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
 
   // ---- §3 a reason in a death's chain carries its gloss on tap
   await page.evaluate(() =>
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 999,
@@ -581,12 +581,12 @@ try {
     glossed === "no item · none in pack",
     `a chain's reason takes its gloss on tap ("${glossed}")`,
   );
-  await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
   await camp();
 
   // ---- §3 a `✗` callout and a shouted word carry their reason on tap
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       e = r.engine,
       step = e.step.bind(e);
     let n = 0;
@@ -599,7 +599,7 @@ try {
       return res;
     };
   });
-  await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
   await waitFor((s) => s?.screen === "watch", "the watch");
   // the line may be under a card or a held beat when it is released: the reason is there on a tap for a while all the same — tap the
   // picture until it answers (a tap there does nothing else)

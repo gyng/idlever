@@ -6,10 +6,10 @@ import { resolve } from "node:path";
 export function runtimeKey(artifact, root, rustcVersion) {
   if (
     !artifact ||
-    artifact.target.name !== "riddle_core" ||
+    artifact.target.name !== "idlever_core" ||
     !artifact.target.kind.includes("lib") ||
     artifact.profile.test ||
-    resolve(artifact.manifest_path) !== resolve(root, "crates/riddle-core/Cargo.toml")
+    resolve(artifact.manifest_path) !== resolve(root, "crates/idlever-core/Cargo.toml")
   ) {
     throw new Error("runtime key requires the compiled production core library");
   }
@@ -21,7 +21,7 @@ export function runtimeKey(artifact, root, rustcVersion) {
   hash
     .update(JSON.stringify({ profile: artifact.profile, features: artifact.features }))
     .update("\0");
-  for (const file of ["crates/riddle-core/Cargo.toml", "Cargo.toml", "Cargo.lock"]) {
+  for (const file of ["crates/idlever-core/Cargo.toml", "Cargo.toml", "Cargo.lock"]) {
     hash
       .update(file)
       .update("\0")

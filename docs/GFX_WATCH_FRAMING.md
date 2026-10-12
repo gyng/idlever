@@ -28,7 +28,7 @@ New tools/watch-framing-check.mjs:15 cases/87 drawn-contained samples each
 fight focus, three seeks per mode, short-height/narrow resize, stationary loaded
 view, restored size. Fixture verifies at least3 distinct travelled positions.
 It fails against original HEAD renderer (hero y842px in660px view). Temporary
-baseline source removed; optional RIDDLE_RENDER_MODULE is diagnostic override.
+baseline source removed; optional IDLEVER_RENDER_MODULE is diagnostic override.
 First fixture compressed all movements into too few sampled frames; spread
 moves over80tick intervals. Stationary assertion initially covered a spring
 still settling after resize; now fresh loaded stationary view tested separately

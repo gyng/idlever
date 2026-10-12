@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic shipping gates for Riddle's raster art (adapted from tacticalswap).
+"""Deterministic shipping gates for Idlever's raster art (adapted from tacticalswap).
 
 Run after `python3 art/pack.py`. Technical integrity only; the 48 px
 composite review (`python3 art/review.py`) stays mandatory.

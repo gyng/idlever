@@ -46,7 +46,7 @@ moved pacing by nothing.
 warning). It keeps decisions sharp, and `decisions` sits at 0.7–0.8. But expression is not
 decisions: it is *whether the thing I made is recognisably mine*, and a five-row threshold
 list cannot be. FF12's expression came from **combos between rows** (Reverse + Decoy) and a
-**roster** (who is in the party). Riddle has neither at the player's fingertips: cards are
+**roster** (who is in the party). Idlever has neither at the player's fingertips: cards are
 opaque bundles, companions are rare, classes are locked behind marks the first hour cannot
 earn.
 
@@ -181,7 +181,7 @@ anchor ("strong throughout, one named lapse") is where a rater lands when the th
 not the best they know*. The next anchor, 1.0, requires "no material lapse across the horizon and
 a named genre benchmark does not do it better". No rater has awarded a 1.0 on any axis, and the
 calibration greats (84–91) are games that earn several. The step from 75 to 85 is not the sum of
-more one-line fixes; it is an axis where Riddle becomes the reference title. The two candidates,
+more one-line fixes; it is an axis where Idlever becomes the reference title. The two candidates,
 from what raters *praise* unprompted in every cohort, are `failure` ("the death screen is the
 game") and `attribution` ("every death is yours and it tells you why"). Those are already 0.8
 everywhere and never 1.0 because of the same named lapse: **the decisive cause is sometimes hidden**

@@ -11,10 +11,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3330`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      window.__riddle.lastForecast = null;
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.lastForecast = null;
+      window.__idlever.go({ kind: "watch" });
     });
     await p.waitForFunction(() => document.querySelector(".watch")?.dataset.tick);
     const result = await p.evaluate(() => {
@@ -88,7 +88,7 @@ try {
     await p.locator(".console .gem").click();
     await p.waitForFunction(() => Number(document.querySelector(".watch")?.dataset.speed) > 0);
     await p.locator(".console [data-tile=town]").click();
-    await p.waitForFunction(() => window.__riddle.screen === "camp");
+    await p.waitForFunction(() => window.__idlever.screen === "camp");
     if (errors.length) throw Error(errors.join("\n"));
     console.log(width, "labels/touch/geometry/speed/pause/Town PASS");
     await p.close();

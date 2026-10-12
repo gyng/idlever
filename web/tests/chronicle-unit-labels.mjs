@@ -13,10 +13,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&engine=fake&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
       const { openChronicle } = await import("/src/ui/chronicle.ts");
-      const a = window.__riddle;
+      const a = window.__idlever;
       window.__requests = [];
       a.lineage.class = "ranger";
       a.lineage.selected_bloodline = 1;
@@ -63,7 +63,7 @@ try {
       await Promise.all([...document.querySelectorAll(".chronicle img")].map((i) => i.decode()));
     });
     assert.deepEqual(await p.evaluate(() => window.__requests), []);
-    assert.equal(await p.evaluate(() => window.__riddle.lineage.selected_bloodline), 1);
+    assert.equal(await p.evaluate(() => window.__idlever.lineage.selected_bloodline), 1);
     assert.equal(await p.locator(".chronicle .unit-label").count(), 3);
     assert.equal(await p.locator('.chronicle section [data-unit="hero_caster"]').count(), 1);
     assert.equal(await p.locator('.chronicle .kept [data-unit="hero_fighter"]').count(), 1);
@@ -96,7 +96,7 @@ try {
     await p.locator(".chronicle section button").click();
     assert.deepEqual(await p.evaluate(() => window.__requests), [["select", 2]]);
     await p.locator(".chronicle .kept").click();
-    await p.waitForFunction(() => window.__riddle.screen === "death");
+    await p.waitForFunction(() => window.__idlever.screen === "death");
     assert.deepEqual(await p.evaluate(() => window.__requests), [
       ["select", 2],
       ["death", 17],

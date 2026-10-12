@@ -16,9 +16,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?fresh=1&engine=fake&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const before = await p.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.runnerOn = false;
       window.__descentCalls = [];
       window.__refuse = true;
@@ -72,7 +72,7 @@ try {
     assert.equal(await p.locator(".ending-challenges").getAttribute("open"), null);
     await p.locator(".descent-choice").click();
     await p.locator(".descent-confirm:not([disabled])").waitFor();
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.match(
       await p.locator(".descent-review").textContent(),
       /Enemy HP \+8%.*Armoured.*Poison or fire.*Second repeated attack reflects.*Keeps: hero.*Legacy.*class XP.*Restarts: depth/s,
@@ -102,7 +102,7 @@ try {
     await p.locator(".descent-tier").dispatchEvent("change");
     assert.equal(await p.locator(".descent-tier").inputValue(), "0");
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.equal(
       await p.locator(".descent-choice").evaluate((el) => el === document.activeElement),
       true,
@@ -114,18 +114,18 @@ try {
       () =>
         document.querySelector(".descent-review .ascension-status")?.textContent === "Try again",
     );
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), before);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.deepEqual(
       await p.evaluate(() => ({
-        loadout: window.__riddle.loadout,
-        runs: window.__riddle.runsSeen,
+        loadout: window.__idlever.loadout,
+        runs: window.__idlever.runsSeen,
         calls: window.__descentCalls,
       })),
       { loadout: [1, 2], runs: 23, calls: [1] },
     );
     await p.evaluate(() => {
       window.__refuse = false;
-      window.__riddle.engine.vocabulary = async () => {
+      window.__idlever.engine.vocabulary = async () => {
         throw Error("metadata unavailable");
       };
     });
@@ -133,11 +133,11 @@ try {
       el.click();
       el.click();
     });
-    await p.waitForFunction(() => window.__riddle.screen === "camp");
+    await p.waitForFunction(() => window.__idlever.screen === "camp");
     assert.deepEqual(
       await p.evaluate(() => ({
-        loadout: window.__riddle.loadout,
-        runs: window.__riddle.runsSeen,
+        loadout: window.__idlever.loadout,
+        runs: window.__idlever.runsSeen,
         calls: window.__descentCalls,
       })),
       { loadout: [1, 2], runs: 23, calls: [1, 1] },

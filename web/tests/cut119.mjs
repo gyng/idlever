@@ -33,10 +33,10 @@ try {
     });
     page.on("pageerror", (e) => errors.push(`real pageerror: ${e.message}`));
     await page.goto(`${url}?fresh=1&seed=52`);
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
     const r = await page.evaluate(
       async ({ engine }) => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           sleep = (ms) => new Promise((res) => setTimeout(res, ms));
         if (
           !(await a.importSave(
@@ -130,11 +130,11 @@ try {
       `the tip names the L3 / L5 signatures (${r.tipText.slice(0, 80)})`,
     );
     // the kennel keeper's order and the tame drill, on the real engine
-    await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+    await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await page.locator(".orders-tab:visible").click();
     await page.waitForTimeout(400);
     const o = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         sleep = (ms) => new Promise((res) => setTimeout(res, ms));
       const tab = document.querySelector(".orders-tab");
       const shown = !!tab && !tab.hidden;
@@ -189,7 +189,7 @@ try {
     Object.assign(
       r,
       await page.evaluate(async () => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           sleep = (ms) => new Promise((res) => setTimeout(res, ms));
         const rep1 = window.__rep1,
           rep2 = await a.engine.runOfflineQuick(8 * 3600);
@@ -273,7 +273,7 @@ try {
 
     // a watched death: `other heirs` where heir_traits.offer fills
     const d = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         sleep = (ms) => new Promise((res) => setTimeout(res, ms));
       let L = await a.engine.lineage();
       for (let s = 0; s < 6; s++) {
@@ -337,12 +337,12 @@ try {
       waitUntil: "domcontentloaded",
     });
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
     const f = await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         sleep = (ms) => new Promise((res) => setTimeout(res, ms));
       const feats = [
         { k: "fetched", text: "Rook brought Ada's pack · $47", day: 3 },

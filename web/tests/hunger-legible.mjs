@@ -19,11 +19,11 @@ try {
     await p.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=9&fake_drain=1`, {
       waitUntil: "domcontentloaded",
     });
-    await p.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp");
+    await p.waitForFunction(() => window.__idlever?.booted && window.__idlever.screen === "camp");
     await p.waitForTimeout(250);
     await p.evaluate(() => {
-      window.__riddle.watchMode = "fast";
-      window.__riddle.go({ kind: "watch" });
+      window.__idlever.watchMode = "fast";
+      window.__idlever.go({ kind: "watch" });
     });
     const r = await p.evaluate(
       () =>
@@ -62,7 +62,7 @@ try {
                 loss: keep?.text ?? null,
                 title: keep?.title ?? null,
                 hp: keep?.hp ?? document.querySelector(".watch .hp-text")?.textContent ?? "",
-                screen: window.__riddle.screen,
+                screen: window.__idlever.screen,
                 words: [...words],
               });
               return;

@@ -62,7 +62,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       w = document.querySelector(".watch");
     return r
       ? {
@@ -121,7 +121,7 @@ const deathScreen = () =>
   }));
 const fakeDeath = (extra) =>
   page.evaluate((extra) => {
-    window.__riddle.go({
+    window.__idlever.go({
       kind: "death",
       death: {
         run_id: 0,
@@ -205,7 +205,7 @@ try {
   // the fallback: an engine whose `death(id)` has no record → today's report, its exit line `returned $0 · … · stalled`
   // Cut 18 §4: the core's line goes on after `stalled` (`… · stalled · 1 supply back`): the report still tallies the stall
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       orig = r.engine.step.bind(r.engine);
     r.engine.step = async (n) => {
       const res = await orig(n);
@@ -246,7 +246,7 @@ try {
   );
   // the report's `open` shows a stall verdict too
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     const worst = {
       run_id: 0,
@@ -315,8 +315,8 @@ try {
         on: c.classList.contains("on"),
         disabled: c.disabled,
       })),
-      trait: window.__riddle.lineage.trait,
-      offer: window.__riddle.lineage.trait_offer ?? null,
+      trait: window.__idlever.lineage.trait,
+      offer: window.__idlever.lineage.trait_offer ?? null,
       plain: [...document.querySelectorAll(".strip > span:not(.num):not(.chips)")].map(
         (e) => e.textContent,
       ),
@@ -350,12 +350,12 @@ try {
     `a tap picks the trait (${tr.trait})`,
   );
   // the send takes the offer: the chips vanish, the plain trait shows
-  await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
   await waitFor((x) => x?.screen === "watch", "the watch");
   await sleep(800);
   await page.evaluate(async () => {
-    await window.__riddle.refresh();
-    window.__riddle.go({ kind: "camp" });
+    await window.__idlever.refresh();
+    window.__idlever.go({ kind: "camp" });
   });
   await waitFor((x) => x?.screen === "camp", "camp again");
   await sleep(200);
@@ -367,7 +367,7 @@ try {
 
   // ---- §3: the night's ledger
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     const exits = [
       {
@@ -435,7 +435,7 @@ try {
   );
   await shot("04-report-ledger");
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     r.go({
       kind: "report",
@@ -468,7 +468,7 @@ try {
   );
   // the fake's `auto: restock` across an absence: the leash packed is rebought at each return, the report's SPENT says so
   const restocked = await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     e.lineage.gold = 900;
@@ -506,7 +506,7 @@ try {
   // a den note injected on the next quiet batch (no hostile adjacent, the frame on the map): the frame cuts in for its beat
   const inject = (note) =>
     page.evaluate((note) => {
-      const e = window.__riddle.engine;
+      const e = window.__idlever.engine;
       const real = e.step.bind(e);
       let done = false;
       e.step = async (n) => {
@@ -621,7 +621,7 @@ try {
   // with the picture, so the pair is released on the thaw (▶), in one pass — the same tick — on a dead stretch (16×), and the
   // batches after it are stripped of their callouts so nothing evicts the queue
   await page.evaluate((long) => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     const real = e.step.bind(e);
     let done = 0;
     e.step = async (n) => {
@@ -678,7 +678,7 @@ try {
   await page.waitForFunction(
     () =>
       document.querySelector("main.watch .gem.hud-btn.on")?.textContent === "▶" ||
-      window.__riddle.screen !== "watch",
+      window.__idlever.screen !== "watch",
     null,
     { timeout: 20_000 },
   );
@@ -735,7 +735,7 @@ try {
   // QA e75ec29 (Q: `D1 100% ±1`): a share that reads 0 % or 100 % carries no ± — the ± is asked of the rows strictly between
   const fc = () =>
     page.evaluate(() => {
-      const L = window.__riddle.lastForecast;
+      const L = window.__idlever.lastForecast;
       const inside = (x) => {
         const r = Math.round(x * 100);
         return r > 0 && r < 100;
@@ -792,7 +792,7 @@ try {
   // Cut 17: the unlock shelf is a panel, carved with the lineage's first mark (docs/UI.md §5): the lineage takes one, the panel opens
   // on its whole catalogue (`more`)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const save = JSON.parse(await r.engine.save());
     save.lineage.marks = Math.max(1, save.lineage.marks);
     r.lineage = await r.engine.load(JSON.stringify(save));
@@ -842,7 +842,7 @@ try {
   await sleep(100);
   // a dice death says what the forecast said for its depth (reach[d] − reach[d+1]); a gap death does not
   await page.evaluate(() => {
-    window.__riddle.lastForecast = {
+    window.__idlever.lastForecast = {
       depths: [
         { depth: 1, reach: 1 },
         { depth: 2, reach: 0.8 },
@@ -869,7 +869,7 @@ try {
   d = await deathScreen();
   check(d.said === null, "past the forecast's floors nothing is claimed");
   await page.evaluate(() => {
-    window.__riddle.lastForecast = {
+    window.__idlever.lastForecast = {
       depths: [
         { depth: 1, reach: 1 },
         { depth: 2, reach: 0.8 },
@@ -946,7 +946,7 @@ try {
   );
   // the report: the LEARNED chips wrap and `alert:rising` reads `alert · rising`; the TRACE sheet from a ledger line
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     const link = (i) => ({ text: `found item ${i} on D1`, t: i * 10, depth: 1 });
     const because = { text: "den took the heal, D3", t: 5, depth: 3 };
@@ -1086,7 +1086,7 @@ try {
     tabsT.length >= 2 && tabsT.slice(1).every((t) => /^set \d+ · (\d+ rules?|empty)$/.test(t)),
     `an unnamed set's tab reads \`set 2 · 2 rules\`: [${tabsT.join(" | ")}]`,
   );
-  await page.evaluate(() => window.__riddle.renameSet(1, "tank"));
+  await page.evaluate(() => window.__idlever.renameSet(1, "tank"));
   await sleep(200);
   const tabsN = await page.evaluate(() =>
     [...document.querySelectorAll(".tabs .tab:not(.edit)")].map((t) =>
@@ -1103,15 +1103,15 @@ try {
     .click({ timeout: 5000 });
   await sleep(200);
   check(
-    (await page.evaluate(() => window.__riddle.active)) === 2,
+    (await page.evaluate(() => window.__idlever.active)) === 2,
     "tapping `set 3` selects the third set",
   );
-  await page.evaluate(() => window.__riddle.selectSet(0));
+  await page.evaluate(() => window.__idlever.selectSet(0));
   await sleep(100);
   // a lineage that has salvaged nothing yet (the fake seeds a rung or two)
   check(
     await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const b = JSON.parse(r.exportSave());
       const e = JSON.parse(b.engine);
       e.lineage.forge = {};
@@ -1153,7 +1153,7 @@ try {
     "a fast run for the death frame",
   );
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     const real = e.step.bind(e);
     let done = false;
     // the next quiet map batch ends the run in a death; the verdict then takes 4 s (the busy label's window)
@@ -1210,8 +1210,8 @@ try {
       const btn = (t) =>
         [...document.querySelectorAll("main.watch .hud-btn")].find((b) => b.textContent === t);
       return {
-        screen: window.__riddle.screen,
-        busy: window.__riddle.engineBusy,
+        screen: window.__idlever.screen,
+        busy: window.__idlever.engineBusy,
         over: w?.dataset.over ?? "0",
         fade: v?.stats?.().fade ?? null,
         dead: ["speed", "town"].map(
@@ -1257,7 +1257,7 @@ try {
   await waitFor((x) => x?.booted && x.screen === "camp", "camp for qaF");
   // marks, the card gates met, a boss counter known past the best (the forecast's `try` row)
   await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     e.lineage.marks = 20;
@@ -1267,10 +1267,12 @@ try {
     b.engine = JSON.stringify(e);
     return r.importSave(JSON.stringify(b));
   });
-  await page.waitForFunction(() => window.__riddle.unlockCat.length > 0, null, { timeout: 10_000 });
+  await page.waitForFunction(() => window.__idlever.unlockCat.length > 0, null, {
+    timeout: 10_000,
+  });
   await sleep(600);
   // a card row fits the phone: the chips wrap inside the row, the × stays inside the viewport (it sat at x=500 on a 523 px row)
-  await page.evaluate(() => window.__riddle.buy("kite_archers"));
+  await page.evaluate(() => window.__idlever.buy("kite_archers"));
   await sleep(800);
   const cardRow = await page.evaluate(() => {
     const r = document.querySelector(".editor .row.locked");
@@ -1329,7 +1331,7 @@ try {
   await shot("qaF-forecast-try");
   // Explicit sampling keeps its progress inside the forecast heading, away from HUD and bars.
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       orig = r.engine.forecastRefine.bind(r.engine);
     window.__origForecast = orig;
     r.engine.forecastRefine = () => new Promise((res) => setTimeout(() => orig().then(res), 2500));
@@ -1345,14 +1347,14 @@ try {
     return {
       text: b.textContent,
       disabled: b.disabled,
-      refining: window.__riddle.forecastRefining,
+      refining: window.__idlever.forecastRefining,
       inside:
         r.left >= hr.left - 1e-4 &&
         r.right <= hr.right + 1e-4 &&
         r.top >= hr.top - 1e-4 &&
         r.bottom <= hr.bottom + 1e-4,
       beforeBars: r.bottom <= bar.getBoundingClientRect().top,
-      refined: window.__riddle.lastForecast?.refined,
+      refined: window.__idlever.lastForecast?.refined,
     };
   });
   check(
@@ -1366,17 +1368,17 @@ try {
   );
   await shot("qaF-busy-strip");
   await page.waitForFunction(
-    () => !window.__riddle.forecastRefining && window.__riddle.lastForecast?.refined === true,
+    () => !window.__idlever.forecastRefining && window.__idlever.lastForecast?.refined === true,
     null,
     { timeout: 10_000 },
   );
   await page.evaluate(() => {
-    window.__riddle.engine.forecastRefine = window.__origForecast;
+    window.__idlever.engine.forecastRefine = window.__origForecast;
   });
   await page.keyboard.press("Escape");
   // the ◆ readout repaints from the returned lineage at once, not after the vocabulary round-trip (1.5 s behind a forecast)
   const marksRead = await page.evaluate(async () => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const orig = r.engine.vocabulary.bind(r.engine);
     r.engine.vocabulary = () => new Promise((res) => setTimeout(() => orig().then(res), 1500));
     const before = document.querySelector(".strip .marks").textContent;
@@ -1412,7 +1414,7 @@ try {
     );
     // a den note on a quiet map batch, then a floor change (the same floor's snapshot) on the batch after: the beat's line goes
     await page.evaluate(() => {
-      const e = window.__riddle.engine;
+      const e = window.__idlever.engine;
       const real = e.step.bind(e);
       let phase = 0;
       e.step = async (n) => {
@@ -1516,7 +1518,7 @@ try {
     const t0 = Date.now();
     const endState = () =>
       page.evaluate(() => ({
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         ending: document.querySelector(".watch")?.dataset.ending === "1",
         tick: Number(document.querySelector(".watch")?.dataset.tick),
       }));
@@ -1606,7 +1608,7 @@ try {
       ),
     );
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     r.go({
       kind: "report",
@@ -1642,7 +1644,7 @@ try {
   );
   await shot("qaF-report-stalled");
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     r.go({
       kind: "report",
@@ -1680,7 +1682,7 @@ try {
     `with banks nothing is dropped (${tiles.slice(3).join(" · ")})`,
   );
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     r.go({
       kind: "report",
@@ -1714,13 +1716,13 @@ try {
     `no stalls: the row as before (${tiles.slice(3).join(" · ")})`,
   );
   const fakeStalled = await page.evaluate(async () => {
-    const rep = await window.__riddle.engine.runOfflineQuick(600);
+    const rep = await window.__idlever.engine.runOfflineQuick(600);
     return typeof rep.stalled;
   });
   check(fakeStalled === "number", `the fake's report carries stalled (${fakeStalled})`);
   // the pile once: the exit line's `bones: 8 items on D4` stands alone; the client's `bones left` line only without it
   await page.evaluate(() => {
-    const L = window.__riddle.lineage;
+    const L = window.__idlever.lineage;
     L.graveyard = [...(L.graveyard ?? []), { heir: 9, depth: 3, cause: "goblin_archer", t: 0 }];
     L.bones = [{ heir: 9, depth: 3, items: 8 }];
   });

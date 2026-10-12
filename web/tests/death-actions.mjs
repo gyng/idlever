@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
-const shots = process.env.RIDDLE_DEATH_SHOTS;
+const shots = process.env.IDLEVER_DEATH_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const url = execFileSync("bash", ["tools/dev.sh"], {
     cwd: new URL("../../", import.meta.url),
@@ -14,7 +14,7 @@ try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 } });
     await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
       const { deathAction } = await import("/src/ui/death.ts"),
         { rowChips } = await import("/src/ui/editor.ts"),
@@ -93,7 +93,7 @@ try {
         deathAction({ ...base, package: undefined }) === "",
         "no unsolicited package attribution",
       );
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.packages.pen_open = false;
       a.sets[a.active] = { rows: [{ conds: [], verb: { v: "return" } }] };
       check(a.rules.rows[0].verb.v === "return", "camp rules really edited");
@@ -330,7 +330,7 @@ try {
       return { checks, driven };
     });
     console.log(width, n.checks, "death action/illustration checks PASS");
-    await p.evaluate((d) => window.__riddle.go({ kind: "death", death: d, kept: true }), n.driven);
+    await p.evaluate((d) => window.__idlever.go({ kind: "death", death: d, kept: true }), n.driven);
     await p.waitForTimeout(400);
     if (shots) await p.screenshot({ path: resolve(shots, `repelled-portrait-${width}.png`) });
     await p.locator(".death .killer").hover();

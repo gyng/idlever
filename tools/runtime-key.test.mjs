@@ -7,10 +7,10 @@ import { spawnSync } from "node:child_process";
 import { runtimeKey } from "./runtime-key.mjs";
 
 test("real compiler separates unit tests from runtime and included inputs", () => {
-  const root = mkdtempSync(join(tmpdir(), "riddle-runtime-key-"));
-  const source = join(root, "crates/riddle-core/src");
+  const root = mkdtempSync(join(tmpdir(), "idlever-runtime-key-"));
+  const source = join(root, "crates/idlever-core/src");
   mkdirSync(source, { recursive: true });
-  mkdirSync(join(root, "crates/riddle-core/examples"));
+  mkdirSync(join(root, "crates/idlever-core/examples"));
   const write = (file, text) => writeFileSync(join(root, file), text);
   const cargo = (args, env = {}) =>
     spawnSync("cargo", args, {
@@ -31,33 +31,33 @@ test("real compiler separates unit tests from runtime and included inputs", () =
       .split("\n")
       .filter(Boolean)
       .map((s) => JSON.parse(s))
-      .find((m) => m.reason === "compiler-artifact" && m.target.name === "riddle_core");
+      .find((m) => m.reason === "compiler-artifact" && m.target.name === "idlever_core");
     return { artifact, key: runtimeKey(artifact, root, rustc.stdout) };
   };
   try {
     write(
       "Cargo.toml",
-      '[workspace]\nmembers=["crates/riddle-core"]\nresolver="2"\n[profile.fast]\ninherits="release"\ndebug=1\n',
+      '[workspace]\nmembers=["crates/idlever-core"]\nresolver="2"\n[profile.fast]\ninherits="release"\ndebug=1\n',
     );
     write(
-      "crates/riddle-core/Cargo.toml",
-      '[package]\nname="riddle-core"\nversion="0.1.0"\nedition="2021"\n',
+      "crates/idlever-core/Cargo.toml",
+      '[package]\nname="idlever-core"\nversion="0.1.0"\nedition="2021"\n',
     );
     const lib =
       'pub fn value() -> u32 { 3 }\npub fn marker() -> &\'static str { include_str!("runtime.txt") }\n#[cfg(test)] mod tests;\n';
-    write("crates/riddle-core/src/lib.rs", lib);
-    write("crates/riddle-core/src/runtime.txt", "first runtime input");
+    write("crates/idlever-core/src/lib.rs", lib);
+    write("crates/idlever-core/src/runtime.txt", "first runtime input");
     write(
-      "crates/riddle-core/src/tests.rs",
+      "crates/idlever-core/src/tests.rs",
       "#[test] fn independent() { assert_eq!(super::value(), 3); }\n",
     );
     write(
-      "crates/riddle-core/examples/gate.rs",
-      'fn main() { println!("{}", riddle_core::value()); }\n',
+      "crates/idlever-core/examples/gate.rs",
+      'fn main() { println!("{}", idlever_core::value()); }\n',
     );
     const initial = build();
     write(
-      "crates/riddle-core/src/tests.rs",
+      "crates/idlever-core/src/tests.rs",
       '#[test] fn independent() { panic!("fresh tests run"); }\n',
     );
     assert.equal(build().key, initial.key, "unit-test edits must preserve simulation identity");
@@ -65,19 +65,19 @@ test("real compiler separates unit tests from runtime and included inputs", () =
     assert.notEqual(tests.status, 0, "tests still run and fail independently");
     assert.match(tests.stdout + tests.stderr, /fresh tests run/);
     write(
-      "crates/riddle-core/examples/gate.rs",
-      'fn main() { println!("harness changed: {}", riddle_core::value()); }\n',
+      "crates/idlever-core/examples/gate.rs",
+      'fn main() { println!("harness changed: {}", idlever_core::value()); }\n',
     );
     assert.equal(
       build().key,
       initial.key,
       "harness keys belong to each job, not every core simulation",
     );
-    write("crates/riddle-core/src/lib.rs", lib.replace("{ 3 }", "{ 4 }"));
+    write("crates/idlever-core/src/lib.rs", lib.replace("{ 3 }", "{ 4 }"));
     assert.notEqual(build().key, initial.key, "runtime edits must invalidate simulations");
-    write("crates/riddle-core/src/lib.rs", lib);
+    write("crates/idlever-core/src/lib.rs", lib);
     assert.equal(build().key, initial.key);
-    write("crates/riddle-core/src/runtime.txt", "second runtime input");
+    write("crates/idlever-core/src/runtime.txt", "second runtime input");
     const included = build();
     assert.notEqual(
       included.key,
@@ -91,8 +91,8 @@ test("real compiler separates unit tests from runtime and included inputs", () =
       flagged.key,
     );
     write(
-      "crates/riddle-core/Cargo.toml",
-      '[package]\nname="riddle-core"\nversion="0.1.1"\nedition="2021"\n',
+      "crates/idlever-core/Cargo.toml",
+      '[package]\nname="idlever-core"\nversion="0.1.1"\nedition="2021"\n',
     );
     assert.notEqual(build().key, included.key, "manifest/lock inputs must invalidate simulations");
     assert.throws(() => runtimeKey(undefined, root, rustc.stdout), /production core/);

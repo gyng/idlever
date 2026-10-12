@@ -30,7 +30,7 @@ export type StateSnap = {
 export type StateTerm = { key: string; pts: number; pm: number; worse: boolean };
 export type StateMove = { label: string; rules: string; terms: StateTerm[] };
 
-const KEY = "riddle.statesnap";
+const KEY = "idlever.statesnap";
 export const rulesKey = (s: RuleSet): string =>
   JSON.stringify([s.rows.map((r) => [r.conds, r.verb]), s.route ?? []]);
 

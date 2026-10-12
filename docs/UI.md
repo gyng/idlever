@@ -1,4 +1,4 @@
-# Riddle — game UI target (UX, IA, and the skin)
+# Idlever — game UI target (UX, IA, and the skin)
 
 *2026-09-24. Goal: the chrome stops reading as a web form and starts reading as a game —
 Warcraft III / StarCraft II as the reference register: a sprite-based, skeuomorphic, diegetic
@@ -9,7 +9,7 @@ hero"; S: "monospace chrome").*
 
 ## 1. What the references teach (and what we take)
 
-| WC3 / SC2 element | What it does for the player | Riddle's equivalent |
+| WC3 / SC2 element | What it does for the player | Idlever's equivalent |
 |---|---|---|
 | **Console frame** (bottom third, carved per race) | Frames the world as a window; the chrome *is* the faction | A bottom console plate, the Warrens' carved umber stone with iron corner caps; it holds the watch controls and the camp's actions |
 | **Portrait well** (animated unit face) | The unit you control has a face and a mood | The heir's portrait in a round well at the console's left: class sprite, hp ring around it, the trait as a small sigil |
@@ -145,7 +145,7 @@ and a one-line hook per screen.
   ringed control or on the open panel, an open tooltip, an open sheet over a screen, or a busy engine pauses it.
 - **A hidden tab** pauses it; on return the clock starts over full, so a report waiting for a returning player is always seen.
 - **The watch** has none (its exit already walks on by itself); its sheets (the cage, the keep) have none.
-- **Settings**: `auto continue` on / off, on by default (`riddle.autoContinue`).
+- **Settings**: `auto continue` on / off, on by default (`idlever.autoContinue`).
 - **Tests**: off under automation (`navigator.webdriver`) so the old gates keep their meaning; `?autodismiss=1` opts in,
   `?autodismiss=0.1` also runs the clocks 10× fast, `?autodismiss=0` turns it off anywhere. Gates: `web/tests/autodismiss.mjs`.
 

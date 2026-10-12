@@ -1,4 +1,4 @@
-/* Riddle — Cut 17: a WC3/SC2 frame (carved umber stone, blackened iron, amber light, parchment); Grenze for titles and verdicts,
+/* Idlever — Cut 17: a WC3/SC2 frame (carved umber stone, blackened iron, amber light, parchment); Grenze for titles and verdicts,
    Fira Sans Extra Condensed for text, Fira Sans Condensed (tabular, lining) for numbers (docs/ART_DIRECTION.md §Typography); phone-first (400px), thumb targets ≥ 44px. Every skinned frame (`.skin-<frame>` on <html>,
    set only when tools/ui-skin.py packed the PNG) has the flat CSS below it as its fallback: art never blocks the game. */
 /* docs/ART_DIRECTION.md §Typography — self-hosted (web/public/fonts, OFL, subset to Latin + the arrows and signs the game prints;
@@ -38,7 +38,7 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Riddle Num";
+  font-family: "Idlever Num";
   src: url("/fonts/fira-c-600.woff2") format("woff2");
   font-weight: 400 900;
   font-display: swap;
@@ -73,7 +73,7 @@
   --display: "Grenze", Georgia, "Times New Roman", serif;
   --sans: "Fira Sans Extra Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
   --num:
-    "Riddle Num", "Fira Sans Extra Condensed", "Arial Narrow", sans-serif; /* tabular lining figures: `$1 488`, `11/12`, `D12` */
+    "Idlever Num", "Fira Sans Extra Condensed", "Arial Narrow", sans-serif; /* tabular lining figures: `$1 488`, `11/12`, `D12` */
   --mono: var(
     --sans
   ); /* Cut 17: monospace goes from the chrome; the old name reads the condensed face */

@@ -50,10 +50,10 @@ async function boot(page) {
   }
   await page.goto(`${url}?dev=1&fresh=1&seed=611`, { waitUntil: "domcontentloaded" });
   await page
-    .waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 })
+    .waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 })
     .catch(async (e) => {
       out.push(
-        `     boot diagnostic ${JSON.stringify({ url: page.url(), events: bootDiagnostics.get(page), state: await Promise.race([page.evaluate(() => ({ ready: document.readyState, app: !!window.__riddle, booted: window.__riddle?.booted, kind: window.__riddle?.kind, text: document.body.innerText.slice(0, 1600) })).catch((err) => ({ error: err.message })), new Promise((r) => setTimeout(() => r({ observationTimedOut: true }), 2000))]) })}`,
+        `     boot diagnostic ${JSON.stringify({ url: page.url(), events: bootDiagnostics.get(page), state: await Promise.race([page.evaluate(() => ({ ready: document.readyState, app: !!window.__idlever, booted: window.__idlever?.booted, kind: window.__idlever?.kind, text: document.body.innerText.slice(0, 1600) })).catch((err) => ({ error: err.message })), new Promise((r) => setTimeout(() => r({ observationTimedOut: true }), 2000))]) })}`,
       );
       throw e;
     });
@@ -85,7 +85,7 @@ async function boot(page) {
     );
   });
   await page.evaluate(() => {
-    const e = window.__riddle.engine,
+    const e = window.__idlever.engine,
       step = e.step.bind(e);
     e.step = async (...a) => {
       const r = await step(...a);
@@ -102,7 +102,7 @@ async function boot(page) {
     await sleep(4000);
   }
   await page.locator(".camp-gem, .gem").first().click();
-  await page.waitForFunction(() => window.__riddle.screen === "watch", null, { timeout: 30_000 });
+  await page.waitForFunction(() => window.__idlever.screen === "watch", null, { timeout: 30_000 });
   // Screen navigation precedes the first live snapshot; a fixed sleep can
   // observe the deliberately hidden control while WASM is still starting.
   await page.waitForFunction(
@@ -224,7 +224,7 @@ try {
   // ---------------- desktop (a mouse, 400 px) ----------------
   const page = await browser.newPage({ viewport: { width: 400, height: 800 } });
   await boot(page);
-  check((await page.evaluate(() => window.__riddle.kind)) === "wasm", "real wasm engine");
+  check((await page.evaluate(() => window.__idlever.kind)) === "wasm", "real wasm engine");
   const st = () =>
     page.evaluate(() => {
       const m = document.querySelector(".ctl"),
@@ -328,7 +328,7 @@ try {
   const risky = await page.evaluate(() => {
     const s = window.__lastSnap,
       m = document.querySelector(".ctl");
-    if (window.__riddle.screen !== "watch" || !m || m.hidden || !s || s.hero.hp <= 0)
+    if (window.__idlever.screen !== "watch" || !m || m.hidden || !s || s.hero.hp <= 0)
       return "the watch ended";
     if (s.hero.hp < s.hero.max_hp) return `hp ${s.hero.hp}/${s.hero.max_hp}`;
     return s.entities.some(
@@ -445,7 +445,7 @@ try {
     const page = await browser.newPage({ viewport: { width: 400, height: 800 } });
     await boot(page);
     check(
-      (await page.evaluate(() => window.__riddle.kind)) === "wasm",
+      (await page.evaluate(() => window.__idlever.kind)) === "wasm",
       "the independent walk fixture uses real wasm",
     );
     await page.click(".ctl-toggle");
@@ -656,7 +656,7 @@ try {
   // and the walk home driven a key a turn — the panel goes once the run is over or the exit holds, and the watch moves on
   // (the fight above may have ended the run: then there is nothing to walk home)
   const live = await page.evaluate(
-    () => window.__riddle.screen === "watch" && !document.querySelector(".ctl")?.hidden,
+    () => window.__idlever.screen === "watch" && !document.querySelector(".ctl")?.hidden,
   );
   if (live) {
     if ((await page.evaluate(() => document.querySelector(".ctl")?.dataset.on)) !== "1")
@@ -673,7 +673,7 @@ try {
       const m = document.querySelector(".ctl"),
         w = document.querySelector("main.watch");
       return {
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         over: w?.dataset.ending === "1" || !!w?.dataset.exit,
         hidden: !m || m.hidden || getComputedStyle(m).display === "none",
         awaiting: m?.dataset.awaiting,

@@ -10,7 +10,7 @@ try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 } });
     await p.goto(`${url}?engine=fake&fresh=1&seed=3002&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     const n = await p.evaluate(async () => {
       const { openPackages } = await import("/src/ui/packages.ts"),
         { closeAllSheets } = await import("/src/ui/sheet.ts");
@@ -23,7 +23,7 @@ try {
         jobs = [],
         change = new Set(),
         rules = new Set();
-      const real = window.__riddle,
+      const real = window.__idlever,
         L = structuredClone(real.lineage);
       L.packages.all.forEach((p) => (p.owned = true));
       L.packages.stance = "steady";

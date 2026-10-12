@@ -41,7 +41,9 @@ async function waitScreen(name, timeout = 20_000) {
   const t = Date.now();
   while (Date.now() - t < timeout) {
     const s = await page.evaluate(() =>
-      window.__riddle ? { screen: window.__riddle.screen, booted: window.__riddle.booted } : null,
+      window.__idlever
+        ? { screen: window.__idlever.screen, booted: window.__idlever.booted }
+        : null,
     );
     if (s?.booted && s.screen === name) return;
     await sleep(40);
@@ -82,7 +84,7 @@ const deathOf = (o = {}) => ({
   ...o,
 });
 const go = async (d) => {
-  await page.evaluate((d) => window.__riddle.go({ kind: "death", death: d }), d);
+  await page.evaluate((d) => window.__idlever.go({ kind: "death", death: d }), d);
   await waitScreen("death");
   await sleep(300);
 };
@@ -93,7 +95,7 @@ try {
   });
   await waitScreen("camp");
   await page.evaluate((rows) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows = rows;
     r.rulesChanged();
   }, ROWS);
@@ -326,7 +328,7 @@ try {
   // ---- `no gain` never beside a move in the gain colour
   {
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.lastForecast = {
         ...(r.lastForecast ?? { causes: [] }),
         known_to: 14,

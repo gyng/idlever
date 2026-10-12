@@ -16,13 +16,13 @@ table (`scratchpad/gates-merge.log`), `meta.rs`, `facts.rs`, the web sources in 
 | NGU Idle | allocation burst per rebirth, then idle; rebirth 30 min → 24 h sets cadence [2] | runs closed, no drops | ticks · allocation, rebirth timing | rebirth → Evil → Sadistic; a tab per boss band |
 | Idle Slayer | hero runs and fights; you jump for coins [3] | idle income ("punished for idling" = worst reviews) | combat · jumps, upgrades | Ascension → Ultra, zones |
 | AFK Arena / Journey | claim the chest, level heroes, push a stage | chest **12 → 24 h** (Journey 16 h) [4] | fights · team, formation | heroes, gear, towers |
-| Loop Hero | place tiles, equip, choose when to retreat | none ("you control the adventure, not the hero") [5] | the hero · his world | cards, camp buildings; exits keep 100/60/30 % — Riddle's |
+| Loop Hero | place tiles, equip, choose when to retreat | none ("you control the adventure, not the hero") [5] | the hero · his world | cards, camp buildings; exits keep 100/60/30 % — Idlever's |
 | Cookie Clicker | buy, ascend | **earned**: 5 % → ~91 % [6] | production · purchases | one prestige, achievements |
 | Antimatter Dim. | buy, prestige; later configure autobuyers, then scripts | full simulation [7] | autobuyers **earned** from challenges; the Automator (scripts) late | Infinity → Eternity → Reality [U] |
 | Legends of Idleon | claim, spend, reassign ~11 characters ("bookkeeping at 11") [8] | **20 % AFK → ~85 %** via upgrades | each character's task · task, map | worlds W1–W7 add systems |
 | Soda Dungeon 2 | send the party, come back | runs away | fights · party, gear, resets | **Soda Script** opens with the Arena after 1–3 resets; a read-only default script fires when none does [9] |
 
-[1] wiki.melvoridle.com/w/Offline_Progression · [2] sayolove.github.io/ngu-guide/en/quick-guide · [3] idleslayer.fandom.com/wiki/Rage_Mode ·
+[1] wiki.melvoidlever.com/w/Offline_Progression · [2] sayolove.github.io/ngu-guide/en/quick-guide · [3] idleslayer.fandom.com/wiki/Rage_Mode ·
 [4] appgamer.com/afk-arena/strategy-guide/afk-rewards · [5] en.wikipedia.org/wiki/Loop_Hero, gamerant.com/loop-hero-interview ·
 [6] cookieclicker.wiki.gg/wiki/Ascension_guide · [7] antimatter-dimensions.fandom.com/wiki/Autobuyers, …/The_Automator ·
 [8] idleon.wiki/wiki/Game_Mechanics_AFK, leetdom.com/reviews/legends-of-idleon · [9] thesovietgaming.com/soda-dungeon-2/scripts-guide,
@@ -38,9 +38,9 @@ steamcommunity.com/app/946050/discussions/0/4325098189128485001 · FF12 gambits:
 6. **Parallel lanes** give every return several things to read. Failures: "a wallpaper simulator, no stakes"
    (Legends of Dragaea), coarse AI sliders "neither predictable nor expressive" (Dungeon Team), currency sprawl (LBR).
 
-Riddle's research chose the opposite of 5 ("hard walls the AI cannot pass until its brain is rewritten").
+Idlever's research chose the opposite of 5 ("hard walls the AI cannot pass until its brain is rewritten").
 
-## 2. Where Riddle is today (evidence)
+## 2. Where Idlever is today (evidence)
 
 **Not engaging does not progress.** The shipped fighter is two rows (`hp < 30% → drink heal`, `foes ≥ 1 →
 attack nearest`), no exit. Last full gate table: DEFAULT dies on 30/30 seeds, best D7.5, **0 gold and 0 xp
@@ -61,7 +61,7 @@ note, the Warlord arc, oaths. **Marked down**: pacing 0.6 ("admin heavier than t
 
 **The scorer** puts 12 of 37 weight on the rule layer (decisions, expression, failure, attribution at 3).
 Re-scored — idler · idle-rpg · idle-roguelike: Melvor 70.0 · 65.4 · **60.0**; Cookie 75.5 · 62.7 · **54.1**;
-Loop Hero 72.0 · 73.8 · 74.1; Riddle AW 73.0 · 73.8 · 75.1. The preset pays for authorship; `idle-rpg` ("the
+Loop Hero 72.0 · 73.8 · 74.1; Idlever AW 73.0 · 73.8 · 75.1. The preset pays for authorship; `idle-rpg` ("the
 agent plays; the player configures") is the idle-first lens.
 
 ## 3. Today's progression, in plain words (cut29-wip)
@@ -85,7 +85,7 @@ ever mattered — 8 of 11 cards, the 3 extra classes and every automation measur
 
 **A — Rules become an occasional tactics layer (1–2 cuts).** A good default set ships and improves itself
 (a counter met twice becomes a *drilled* row; the wall search's row is adopted after 2 stalled days unless
-refused). Felt progression: depth moves while away, but only one thing grows — the rule list. Risk: a slower Riddle.
+refused). Felt progression: depth moves while away, but only one thing grows — the rule list. Risk: a slower Idlever.
 
 **B — An idle-first spine (4–6 cuts).** Parallel heirs, collections, prestige, automation bought with gold;
 strength passes any wall with time; rules shrink to tuning. Felt progression: high. Axes: progression, return ↑↑;

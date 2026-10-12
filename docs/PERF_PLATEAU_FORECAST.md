@@ -104,8 +104,8 @@ candidate construction remain covered by Rust/quality checks.
 Reproduction:
 
 ```sh
-cargo run -q --profile fast -p riddle-core --example plateau_perf -- SAVE 8
-cargo run -q --profile fast -p riddle-core --example plateau_perf -- --fixtures OUT 32
+cargo run -q --profile fast -p idlever-core --example plateau_perf -- SAVE 8
+cargo run -q --profile fast -p idlever-core --example plateau_perf -- --fixtures OUT 32
 CATCHUP_ALLOW_PLATEAU_ESTIMATE=1 node tools/compare-catchup.mjs ORIGINAL_PKG CANDIDATE_PKG OUT SAVE...
 ```
 

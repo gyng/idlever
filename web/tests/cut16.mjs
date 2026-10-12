@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Cut 16 gates, client side (docs/CUT16.md §1–§3; §4's boss bar and break beat are in fights.mjs), on the fake engine
 // (`?engine=fake&systems=none&dev=1`) through the browser harness (tools/browser.mjs; `--shots` runs headed on the GPU and writes
-// scratchpad/cut16/*.png at 400×800×3) against the dev server (tools/dev.sh, :5219; RIDDLE_PORT overrides):
+// scratchpad/cut16/*.png at 400×800×3) against the dev server (tools/dev.sh, :5219; IDLEVER_PORT overrides):
 //   §1  the report's thinned depths as one dim line under the tiles (`D3–4 · D6 · thinned`); the camp's forecast carries the
 //       same line (small, dim) while `Lineage.picked` holds depths, and none without
 //   §2  at the wake (a trait offer standing) with ≥ 2 classes owned, a class chip per owned class beside the trait chips
@@ -43,7 +43,7 @@ page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       w = document.querySelector(".watch");
     return r
       ? {
@@ -80,7 +80,7 @@ const shot = async (name) => {
 /** Patch the fake's saved state (the lineage) and reload it through the save. */
 const patchSave = (fn) =>
   page.evaluate(async (src) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     new Function("e", src)(e);
@@ -89,7 +89,7 @@ const patchSave = (fn) =>
   }, `(${fn})(e)`);
 const emptyReport = (extra) =>
   page.evaluate((x) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const L = r.lineage;
     r.go({
       kind: "report",
@@ -136,8 +136,8 @@ try {
       })),
       traits: document.querySelectorAll(".strip .chip.trait").length,
       clsBtn: !!document.querySelector("button.cls"),
-      cls: window.__riddle.lineage.class,
-      offer: window.__riddle.lineage.class_offer ?? null,
+      cls: window.__idlever.lineage.class,
+      offer: window.__idlever.lineage.class_offer ?? null,
     }));
   let c = await classes();
   check(
@@ -183,15 +183,15 @@ try {
     "class changes through Hero Details without restoring class bar",
   );
   // the pick sticks: the run is the rogue's, the camp after it too; the send spends the offer and the row goes
-  await page.evaluate(() => window.__riddle.go({ kind: "watch" }));
+  await page.evaluate(() => window.__idlever.go({ kind: "watch" }));
   await waitFor((x) => x?.screen === "watch", "the watch");
   await sleep(800);
   const heroKind = await page.evaluate(
     () => window.__viewer?.debugPos?.().find((e) => e.hero)?.kind ?? "",
   );
   await page.evaluate(async () => {
-    await window.__riddle.refresh();
-    window.__riddle.go({ kind: "camp" });
+    await window.__idlever.refresh();
+    window.__idlever.go({ kind: "camp" });
   });
   await waitFor((x) => x?.screen === "camp", "camp again");
   await sleep(300);

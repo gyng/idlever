@@ -20,9 +20,9 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?engine=fake&fresh=1&seed=3122&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const checks = await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       let checks = 0;
       const fails = [];
       const check = (v, label) => {
@@ -245,12 +245,12 @@ try {
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(`${url}?dev=1&engine=fake&fresh=1&seed=3123&runs=0&fake_drain=1`);
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "camp",
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
       null,
       { timeout: 60_000 },
     );
     const r = await page.evaluate(async () => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       let checks = 0;
       const fails = [];
       const check = (v, label) => {
@@ -645,7 +645,7 @@ try {
 
     // §6 the walk home: a long one is one beat (`heading home · banked $X`) and the watch goes on to the next fight or the exit
     const w = await page.evaluate(async () => {
-      const app = window.__riddle,
+      const app = window.__idlever,
         step = app.engine.step.bind(app.engine);
       let put = false;
       app.engine.step = async (n) => {
@@ -663,7 +663,7 @@ try {
         performance.now() - t0 < 30000 &&
         !(
           window.__homeLog?.length &&
-          (window.__riddle.screen !== "watch" ||
+          (window.__idlever.screen !== "watch" ||
             Number(document.querySelector(".watch")?.dataset.tick ?? 0) >
               window.__homeLog[0].from + 20)
         )
@@ -675,7 +675,7 @@ try {
       return {
         log,
         tick,
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         fold: document.querySelector(".watch")?.dataset.homeFold ?? "",
       };
     });
@@ -700,10 +700,10 @@ try {
     });
     page.on("pageerror", (e) => errors.push(`real pageerror: ${e.message}`));
     await page.goto(`${url}?dev=1&fresh=1&runs=0&seed=52`, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90_000 });
+    await page.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90_000 });
     const r = await page.evaluate(
       async ({ source }) => {
-        const a = window.__riddle;
+        const a = window.__idlever;
         a.runnerOn = false;
         let checks = 0;
         const fails = [],

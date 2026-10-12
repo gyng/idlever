@@ -1,4 +1,4 @@
-# Rating protocol — how a Riddle build gets a fun score that counts
+# Rating protocol — how a Idlever build gets a fun score that counts
 
 The coordinator's own card is a baseline, never a decision (`../eval-fun/docs/FRAMEWORK.md`
 §4: two independent raters on the same immutable build and horizon, Krippendorff α ≥ 0.67

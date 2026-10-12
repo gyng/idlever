@@ -66,7 +66,7 @@ five paths. Artifacts: scratchpad/offline-boundaries-20261006-160h/ and -zero/.
 No gameplay fix is claimed by this baseline checkpoint.
 
 Keep complete/count APIs distinct from transport controls. Native dev bindings
-are generated from crates/riddle-wasm/src/lib.rs by tools/native-codegen.mjs;
+are generated from crates/idlever-wasm/src/lib.rs by tools/native-codegen.mjs;
 changing the bridge requires regenerating those bindings as well as WASM.
 
 ## Implementation checkpoint

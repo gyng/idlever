@@ -20,9 +20,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?dev=1&fresh=1&runs=0&seed=145`);
-    await p.waitForFunction(() => window.__riddle?.booted, null, { timeout: 90000 });
+    await p.waitForFunction(() => window.__idlever?.booted, null, { timeout: 90000 });
     const death = await p.evaluate(async (source) => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       if (a.kind !== "wasm") throw Error("real WASM required");
       if (
         !(await a.importSave(

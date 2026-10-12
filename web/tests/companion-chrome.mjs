@@ -8,7 +8,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
   encoding: "utf8",
   cwd: new URL("../../", import.meta.url),
 }).trim();
-const shots = process.env.RIDDLE_QA_SHOTS;
+const shots = process.env.IDLEVER_QA_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const b = await launchBrowser();
 try {
@@ -17,9 +17,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&systems=none`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         b = JSON.parse(a.exportSave()),
         e = JSON.parse(b.engine);
       const pet = (id, name) => ({
@@ -49,11 +49,11 @@ try {
     const card = p.locator(".sheet-wrap:not(.under) .party .comp").filter({ hasText: "Thix" });
     assert.equal(await card.locator(".hp").textContent(), "12/12 hp · 0/2 rows");
     await card.locator(".comp-main").click();
-    await p.waitForFunction(() => window.__riddle.lineage.party.some((c) => c.id === 7001));
+    await p.waitForFunction(() => window.__idlever.lineage.party.some((c) => c.id === 7001));
     assert.equal(await card.locator(".comp-main").getAttribute("aria-pressed"), "true");
     await card.locator(".comp-main").click();
     assert.equal(
-      await p.evaluate(() => window.__riddle.lineage.party.filter((c) => c.id === 7001).length),
+      await p.evaluate(() => window.__idlever.lineage.party.filter((c) => c.id === 7001).length),
       1,
     );
     await p.getByRole("status").filter({ hasText: "Already fielded" }).waitFor();
@@ -94,20 +94,20 @@ try {
     await p.waitForFunction(() => !!document.querySelector(".game-window .editor"));
     await p.keyboard.press("Escape");
     await card.locator(".drop-pet").click();
-    await p.waitForFunction(() => !window.__riddle.lineage.party.some((c) => c.id === 7001));
+    await p.waitForFunction(() => !window.__idlever.lineage.party.some((c) => c.id === 7001));
     assert.equal(await card.locator(".comp-main").getAttribute("aria-pressed"), "false");
     const breed = p.locator(".sheet-wrap:not(.under) .party .row-label button");
     await breed.click();
     assert.equal(await breed.getAttribute("class"), "mini game-control on");
     await breed.click();
     const hatch = p.locator(".sheet-wrap:not(.under) .hatch");
-    const saved = await p.evaluate(() => window.__riddle.engine.save());
+    const saved = await p.evaluate(() => window.__idlever.engine.save());
     await hatch.click();
     assert.equal(await hatch.innerText(), "ok $50");
-    assert.equal(await p.evaluate(() => window.__riddle.engine.save()), saved);
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), saved);
     await p.evaluate(async () => {
       (await import("/src/ui/sheet.ts")).closeAllSheets();
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "death",
         death: {
           run_id: 0,

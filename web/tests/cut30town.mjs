@@ -59,7 +59,7 @@ async function until(pred, label, timeout = 20_000, arg) {
 }
 const camp = async () => {
   await until(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp" && window.__town,
+    () => window.__idlever?.booted && window.__idlever.screen === "camp" && window.__town,
     "camp",
   );
   await sleep(400);
@@ -69,15 +69,15 @@ const boot = async (seed, q = "") => {
     waitUntil: "domcontentloaded",
   });
   await until(
-    () => window.__riddle?.booted && ["camp", "report"].includes(window.__riddle.screen),
+    () => window.__idlever?.booted && ["camp", "report"].includes(window.__idlever.screen),
     "boot",
     60_000,
   );
   await page.evaluate(() => {
-    localStorage.removeItem("riddle.reveal");
-    localStorage.removeItem("riddle.unlocks.all");
+    localStorage.removeItem("idlever.reveal");
+    localStorage.removeItem("idlever.unlocks.all");
     for (const k of Object.keys(localStorage))
-      if (k.startsWith("riddle.town.")) localStorage.removeItem(k);
+      if (k.startsWith("idlever.town.")) localStorage.removeItem(k);
   });
 };
 /** a heir-1 lineage with nothing earned (the fake seeds a chronicle and a free unlock; strip them), then `fn` on it, then the camp */
@@ -131,7 +131,7 @@ const STAGES = {
 const toStage = (n) =>
   page.evaluate(
     async ([n, src]) => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const save = JSON.parse(await r.engine.save());
       const fns = src.map((s) => new Function("L", `return (${s})(L)`));
       for (let i = 0; i <= n; i++) fns[i](save.lineage);
@@ -203,7 +203,7 @@ const town = () =>
     tiles: [...document.querySelectorAll(".console .cmd .tile:not(.empty)")].map(
       (t) => t.dataset.tile,
     ),
-    next: window.__riddle.lineage.town?.next,
+    next: window.__idlever.lineage.town?.next,
   }));
 
 try {
@@ -297,7 +297,7 @@ try {
       if (n === 1) await shot("town-blacksmith");
       if (n === 2) {
         // the staked plot's trigger, on tap
-        const lockedBefore = await page.evaluate(() => window.__riddle.engine.save());
+        const lockedBefore = await page.evaluate(() => window.__idlever.engine.save());
         await page.locator('.town-hit[data-building="staked"]').click();
         const plotDialog = await page.evaluate(
           () => document.querySelector(".sheet-wrap .plot-preview")?.textContent ?? "",
@@ -306,7 +306,7 @@ try {
           plotDialog.includes("companions") && plotDialog.includes("first tame"),
           `stage 2: locked plot opens its building and unlock condition ("${plotDialog}")`,
         );
-        const lockedAfter = await page.evaluate(() => window.__riddle.engine.save());
+        const lockedAfter = await page.evaluate(() => window.__idlever.engine.save());
         check(
           lockedBefore === lockedAfter,
           "stage 2: inspecting the locked plot leaves exact game state unchanged",
@@ -364,7 +364,7 @@ try {
     await camp();
     const t0 = Date.now();
     await page.locator('.town-hit[data-building="mouth"]').click();
-    const ok = await until(() => window.__riddle.screen === "watch", "the watch", 8000).then(
+    const ok = await until(() => window.__idlever.screen === "watch", "the watch", 8000).then(
       () => true,
       () => false,
     );
@@ -377,7 +377,7 @@ try {
     await toStage(1);
     await camp();
     const before = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const save = JSON.parse(await r.engine.save());
       save.lineage.gold = 2000;
       r.lineage = await r.engine.load(JSON.stringify(save));
@@ -386,7 +386,7 @@ try {
       r.go({ kind: "report", report, absence: true });
       return { kit: (r.lineage.kit ?? []).reduce((a, k) => a + k.owned, 0) };
     });
-    await until(() => window.__riddle.screen === "report", "the report");
+    await until(() => window.__idlever.screen === "report", "the report");
     let taps = 0;
     await page.locator(".console .gem").click();
     taps++; // 1. harvest: the report read, home
@@ -402,7 +402,7 @@ try {
     } // 2. one spend: the forge's next step
     const bought = await until(
       () => {
-        const L = window.__riddle.lineage;
+        const L = window.__idlever.lineage;
         return (L.kit ?? []).reduce((a, k) => a + k.owned, 0);
       },
       "the kit step",
@@ -410,7 +410,7 @@ try {
     ).catch(() => 0);
     await page.locator('.town-hit[data-building="mouth"]').click();
     taps++; // 3. send
-    const sent = await until(() => window.__riddle.screen === "watch", "the watch", 8000).then(
+    const sent = await until(() => window.__idlever.screen === "watch", "the watch", 8000).then(
       () => true,
       () => false,
     );

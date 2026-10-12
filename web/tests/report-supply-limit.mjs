@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       window.capReport = {
         elapsed_s: 28800,
         runs: 12,
@@ -52,7 +52,7 @@ try {
     await p.locator(".gold-sheet").waitFor();
     await p.keyboard.press("Escape");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: { ...window.capReport, gold: { home: 212, salvage: 6, wake: 0, spent: 80 } },
       }),
@@ -63,26 +63,26 @@ try {
       (await p.locator(".gold-line").textContent()).includes("Supplies limited · $218 budget"),
     );
     await p.evaluate(() =>
-      window.__riddle.go({ kind: "report", report: { ...window.capReport, gold: undefined } }),
+      window.__idlever.go({ kind: "report", report: { ...window.capReport, gold: undefined } }),
     );
     assert.equal(await p.locator(".report-supply-limit").count(), 0);
     await p.locator(".details-fold").click();
     assert.equal(await p.locator(".gold-line .supply-limit").textContent(), "Supplies limited");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: { ...window.capReport, restock_capped: false },
       }),
     );
     assert.equal(await p.locator(".supply-limit").count(), 0);
-    await p.evaluate(() => window.__riddle.go({ kind: "report", report: window.capReport }));
+    await p.evaluate(() => window.__idlever.go({ kind: "report", report: window.capReport }));
     const box = await p.locator(".report-supply-limit").boundingBox();
     assert.ok(box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= width);
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     // Currency summary must explain gross income without turning grants or spending into earnings.
     await p.evaluate(() => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.gold = 506;
       a.lineage.gold_ledger = [
         { t: 1, delta: 87, why: "banked D3" },
@@ -103,7 +103,7 @@ try {
     assert.equal(await gold.locator("b").textContent(), "$106");
     assert.equal(await gold.locator(".label").textContent(), "Gold earned");
     assert.equal(await gold.evaluate((e) => e.tagName), "BUTTON");
-    const before = await p.evaluate(() => JSON.stringify(window.__riddle.lineage));
+    const before = await p.evaluate(() => JSON.stringify(window.__idlever.lineage));
     await gold.hover();
     await p.waitForFunction(() => {
       const t = document.querySelector("#kw-tip")?.textContent;
@@ -123,9 +123,9 @@ try {
     await p.keyboard.press("Enter");
     await p.locator(".sheet-wrap:not([hidden]) .gold-sheet").waitFor();
     await p.keyboard.press("Escape");
-    assert.equal(await p.evaluate(() => JSON.stringify(window.__riddle.lineage)), before);
+    assert.equal(await p.evaluate(() => JSON.stringify(window.__idlever.lineage)), before);
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,
@@ -158,7 +158,7 @@ try {
     );
     assert.equal(await gold.locator("b").textContent(), "$152");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: { ...window.capReport, gold: undefined, restock_capped: false },
       }),
@@ -169,7 +169,7 @@ try {
     assert.deepEqual(errors, []);
     // blind ad71e72: a waystone passage is income; an absence states its purse change beside the earned gold
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,
@@ -182,7 +182,7 @@ try {
     assert.equal(await gold.locator(".label").textContent(), "Gold earned");
     assert.equal(await p.locator(".report-net").count(), 0);
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,
@@ -203,7 +203,7 @@ try {
     });
     await p.mouse.move(0, 0);
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,
@@ -222,7 +222,7 @@ try {
         ?.textContent.includes("Restocking waited for gold earned while away"),
     );
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,
@@ -254,7 +254,7 @@ try {
     assert.equal(await gold.locator("b").textContent(), "+$180");
     assert.equal(await gold.locator(".label").textContent(), "Gross gold");
     await p.evaluate(() =>
-      window.__riddle.go({
+      window.__idlever.go({
         kind: "report",
         report: {
           ...window.capReport,

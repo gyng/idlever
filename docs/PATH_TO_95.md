@@ -8,7 +8,7 @@ recommends is `docs/CUT26.md`.*
 ## 1. The arithmetic
 
 **The scorer** (`eval/score.sh` → `fun-score.mjs`): weight = preset weight / 37 × 100, award =
-human × weight, capped at 0.6/0.8 only for a `red`/`amber` bot; every Riddle card is `bot: "na"`,
+human × weight, capped at 0.6/0.8 only for a `red`/`amber` bot; every Idlever card is `bot: "na"`,
 so **no cap has ever applied**. Criterion probes never enter the total. The gate (a weight ≥ 2
 axis under 0.6) only blocks *super fun* (≥ 85); ≥ 72 fun, ≥ 55 promising. Social (w0) unscored.
 
@@ -52,7 +52,7 @@ it unprompted as *why* the game is fun".
 
 Calibration on the same scorer: Chess 90.9, Hades 90.3, Balatro 90.3, Stardew 88.5, Celeste 85.9,
 Into the Breach 83.6; **Loop Hero, the nearest comparable, 74.1 on this very preset** (it earns no
-1.0 either). Riddle's plateau mean (72.2) is Loop Hero's score. **95 is above every title the
+1.0 either). Idlever's plateau mean (72.2) is Loop Hero's score. **95 is above every title the
 rubric was calibrated on.** The honest target is the *super fun* band (≥ 85, no gate): the
 realistic recipe is all axes at 0.8 (+7.8 from today) and four at 1.0 — decisions, failure,
 return, attribution, the four the raters already praise unprompted in every "tell a friend"

@@ -15,10 +15,10 @@ try {
     p.on("pageerror", (e) => errors.push(e.message));
     if (fallback) await p.route("**/house_plot_v2.webp", (r) => r.abort());
     await p.goto(`${url}?fresh=1&engine=fake`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
       const { renderTown } = await import("/src/ui/town.ts"),
-        base = structuredClone(window.__riddle.lineage);
+        base = structuredClone(window.__idlever.lineage);
       document.body.replaceChildren();
       window.fixture = (id, ready) => {
         window.ui?.dispose();

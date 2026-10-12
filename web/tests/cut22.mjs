@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Cut 22 client gates (docs/CUT22.md), on the fake engine, headless at 400 × 800 (RIDDLE_BROWSER=headed for the GPU):
+// Cut 22 client gates (docs/CUT22.md), on the fake engine, headless at 400 × 800 (IDLEVER_BROWSER=headed for the GPU):
 //   §3  no move before an edit; an edit's forecast paints first, then the paired move lands (`forecastVs(prev)` asked after the
 //       paint, never before it): a line under the shaft `vs sent · D8 +6 · bank +4` (QA 778fa1b: against the set sent; `vs sent…` while measured, the first pass marked and re-asked after the refine), a tiny `▲6`/`▼3`/`≈` on each notch and gem;
 //       the absolute numbers are the forecast's own; a move inside its paired ± reads `≈`; the next edit clears the line at once;
@@ -43,7 +43,7 @@ const shot = async (name) => {
 };
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, timeout = 20_000) {
@@ -79,7 +79,7 @@ const txt = (sel) =>
   }, sel);
 const patchLineage = (patch) =>
   page.evaluate(async (p) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     const b = JSON.parse(r.exportSave());
     const e = JSON.parse(b.engine);
     Object.assign(e.lineage, p);
@@ -132,7 +132,7 @@ try {
   check((await vsText()) === null, "no move before an edit");
   // the order the worker sees: the forecast (painted) before the paired call, which carries the set before the edit
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       e = r.engine;
     r.__log = [];
     const fc = e.forecastEstimate.bind(e),
@@ -150,7 +150,7 @@ try {
   const fc0 = await page.evaluate(() => Number(document.querySelector(".camp .shaft").dataset.fc));
   // Observe both the usable estimate and the explicitly requested larger result.
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.__vsSeen = [];
     const host = document.querySelector(".camp .shaft-vs-host");
     const note = () => {
@@ -169,7 +169,7 @@ try {
       });
   });
   await page.evaluate(() =>
-    window.__riddle.insertRow({ conds: [{ k: "hp<", n: 20 }], verb: { v: "return" } }, 0),
+    window.__idlever.insertRow({ conds: [{ k: "hp<", n: 20 }], verb: { v: "return" } }, 0),
   );
   const during = await vsText();
   check(
@@ -191,7 +191,9 @@ try {
     "the refined move",
     15_000,
   );
-  const vsSeen = await page.evaluate(() => window.__riddle.__vsSeen.filter((x) => x.t !== "edit…"));
+  const vsSeen = await page.evaluate(() =>
+    window.__idlever.__vsSeen.filter((x) => x.t !== "edit…"),
+  );
   const rough = vsSeen.find((x) => x.refined === "0"),
     fine = vsSeen.findLast((x) => x.refined === "1");
   check(
@@ -202,7 +204,7 @@ try {
       !/…/.test(line),
     `the usable first-pass move is replaced by requested refinement ("${rough?.t ?? line0}" → "${line}")`,
   );
-  const log = await page.evaluate(() => window.__riddle.__log);
+  const log = await page.evaluate(() => window.__idlever.__log);
   check(
     log[0] === "estimate" && log[1] === `vs:${fc0 + 1}:3`,
     `the paired call waits for the paint and measures against the set before the edit (${log.join(" → ")})`,
@@ -212,7 +214,7 @@ try {
     `the line under the shaft: "${line}"`,
   );
   const ns = await notches(),
-    f = await page.evaluate(() => window.__riddle.lastForecast);
+    f = await page.evaluate(() => window.__idlever.lastForecast);
   const marked = ns.filter((n) => n.mark !== null);
   check(
     marked.every((n) => /^[+−]\d+$/.test(n.mark)) &&
@@ -267,7 +269,7 @@ try {
   if (await page.locator(".panel[data-panel=forecast]").count()) await closeSheets();
   // a move inside its paired ± reads `≈`; a move outside it keeps its sign — the engine's numbers, as sent
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     delete e.forecastVsRefined;
     e.forecastVsEstimate = e.forecastVs = async () => ({
       depths: [1, 2, 3, 4, 5, 6].map((depth) => ({
@@ -280,7 +282,7 @@ try {
     });
   });
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows[0].conds[0].n = 40;
     r.rulesChanged();
   });
@@ -311,14 +313,14 @@ try {
   );
   // nothing clears: the frontier's `≈`
   await page.evaluate(() => {
-    const e = window.__riddle.engine;
+    const e = window.__idlever.engine;
     e.forecastVsEstimate = e.forecastVs = async () => ({
       depths: [1, 2, 3, 4, 5, 6].map((depth) => ({ depth, delta: 0.02, pm: 0.04 })),
       bank: { delta: 0.004, pm: 0.03 },
     });
   });
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows[0].conds[0].n = 45;
     r.rulesChanged();
   });
@@ -329,18 +331,18 @@ try {
   );
   await shot("cut22-vs-flat");
   // a set switch is not an edit
-  await page.evaluate(() => window.__riddle.selectSet(1));
+  await page.evaluate(() => window.__idlever.selectSet(1));
   await until(
     () => page.evaluate(() => !document.querySelector(".camp .shaft").classList.contains("stale")),
     "the other set's forecast",
   );
   await sleep(300);
   check((await vsText()) === null, "a set switch shows no move");
-  await page.evaluate(() => window.__riddle.selectSet(0));
+  await page.evaluate(() => window.__idlever.selectSet(0));
   await sleep(400);
   // a core that sends `vs` on the forecast itself: read, no call
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       e = r.engine;
     r.__vsCalls = 0;
     e.forecastVsEstimate = e.forecastVs = async () => {
@@ -354,12 +356,12 @@ try {
     });
   });
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.rules.rows[0].conds[0].n = 25;
     r.rulesChanged();
   });
   const line4 = await until(vsLanded, "the inline move");
-  const calls = await page.evaluate(() => window.__riddle.__vsCalls);
+  const calls = await page.evaluate(() => window.__idlever.__vsCalls);
   check(
     line4 === "edit · D6 +12 · full haul +9" && calls === 0,
     `a forecast's own \`vs\` is read without a call ("${line4}", ${calls} calls)`,
@@ -438,7 +440,7 @@ try {
   await closeSheets();
   // every delta the camp shows: signed, never `%`, in the delta look
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       row = (t) => [{ conds: [{ k: "foe_tag", t }], verb: { v: "retreat" } }];
     const cat = [
       {
@@ -482,7 +484,7 @@ try {
     r.engine.unlocks = async () => cat;
     r.engine.unlockDeltas = async () => cat;
     r.lineage = { ...r.lineage, marks: 5 };
-    localStorage.setItem("riddle.unlocks.all", "1");
+    localStorage.setItem("idlever.unlocks.all", "1");
     r.go({ kind: "camp" });
   });
   await sleep(400);
@@ -512,7 +514,7 @@ try {
 
   // The simple Send gem retains the remembered mode; its controls live in Watch Speed.
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.watchMode = "fast";
     r.go({ kind: "camp" });
   });
@@ -527,7 +529,7 @@ try {
   );
   await shot("cut22-send-fast");
   await page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     r.watchMode = "fights";
     r.go({ kind: "camp" });
   });
@@ -548,7 +550,7 @@ try {
   await waitFor((s) => s?.booted && s.screen === "camp", "camp");
   // the engine's first batch after tick 20 puts the warlord and a horde of goblins around the hero, the warlord's rally and his break
   await page.evaluate(() => {
-    const r = window.__riddle,
+    const r = window.__idlever,
       e = r.engine;
     let done = false;
     const step = e.step.bind(e);

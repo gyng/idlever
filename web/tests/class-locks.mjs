@@ -13,9 +13,9 @@ try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 800 } });
     await page.goto(`${url}?dev=1&engine=fake&seed=3004&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.marks = 32;
       a.lineage.live = undefined;
       const cat = await a.engine.unlocks();
@@ -72,12 +72,12 @@ try {
     await page.keyboard.press("Escape");
     if (
       !(await page.evaluate(
-        async () => (await window.__riddle.engine.save()) === window.__classLockSave,
+        async () => (await window.__idlever.engine.save()) === window.__classLockSave,
       ))
     )
       throw Error("Reading class locks changed save");
     await page.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         cat = await a.engine.unlocks();
       a.engine.unlocks = async () => cat.filter((u) => u.id !== "rogue");
       const { openHeroClass } = await import("/src/ui/town.ts");
@@ -92,7 +92,7 @@ try {
     await page.keyboard.press("Escape");
     if (
       !(await page.evaluate(
-        async () => (await window.__riddle.engine.save()) === window.__classLockSave,
+        async () => (await window.__idlever.engine.save()) === window.__classLockSave,
       ))
     )
       throw Error("Reading free Rogue gate changed save");

@@ -1,6 +1,6 @@
 # QA brief (paste to a fresh agent; no scores, lapses only)
 
-You are a QA player for a browser game called Riddle, an auto-played roguelike whose hero runs
+You are a QA player for a browser game called Idlever, an auto-played roguelike whose hero runs
 on chosen combat styles/tactics and later optional written rules, with manual town
 construction, hired automation, offline runs and deaths that name their causes. You are not a rater and you award nothing. Your job is to play the rater
 protocol and file **every lapse**: anything you misread, anything that did nothing when tapped,

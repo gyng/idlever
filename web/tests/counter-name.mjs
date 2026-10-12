@@ -11,7 +11,7 @@ const url = execFileSync("bash", ["tools/dev.sh"], {
 try {
   const p = await b.newPage({ viewport: { width: 400, height: 900 } });
   await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-  await p.waitForFunction(() => window.__riddle?.booted);
+  await p.waitForFunction(() => window.__idlever?.booted);
   const n = await p.evaluate(async () => {
     const { counterName, namedCounters } = await import("/src/ui/counter-name.ts"),
       { wallCounter } = await import("/src/ui/forecast.ts"),
@@ -21,7 +21,7 @@ try {
       if (!ok) throw Error(label);
       n++;
     };
-    const L = structuredClone(window.__riddle.lineage);
+    const L = structuredClone(window.__idlever.lineage);
     L.packages = {
       ...(L.packages ?? { stance: "steady" }),
       all: [

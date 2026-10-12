@@ -3,7 +3,7 @@
 export async function tagCollisionFixture(page, scene = "collision") {
   return page.evaluate(async (scene) => {
     const { createViewer } = await import("/src/render/index.ts");
-    const snapshot = await window.__riddle.engine.send();
+    const snapshot = await window.__idlever.engine.send();
     snapshot.w = snapshot.h = 16;
     snapshot.turn = 0;
     snapshot.tiles = Array(256).fill("floor");

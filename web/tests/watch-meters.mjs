@@ -11,10 +11,10 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0&seed=3906`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      localStorage.setItem("riddle.meters", "1");
-      const a = window.__riddle,
+      localStorage.setItem("idlever.meters", "1");
+      const a = window.__idlever,
         s = await a.engine.send();
       const sides = (hero) => ({ hero, pets: 0, foes: 0 }),
         time = { fight: 1, travel: 0, chores: 0, rest: 0 };
@@ -115,7 +115,7 @@ try {
       window.__detachedBefore = window.__detachedMeter.textContent;
       if (window.__detachedBefore.includes("888"))
         throw Error("disposal did not cover a pending repaint");
-      window.__riddle.go({ kind: "camp" });
+      window.__idlever.go({ kind: "camp" });
     }, width);
     await p.waitForTimeout(450);
     if (!(await p.evaluate(() => window.__detachedMeter.textContent === window.__detachedBefore)))

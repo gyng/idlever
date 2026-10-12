@@ -13,9 +13,9 @@ try {
       errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
     await p.goto(`${url}?engine=fake&fresh=1&runs=0`);
-    await p.waitForFunction(() => window.__riddle?.booted);
+    await p.waitForFunction(() => window.__idlever?.booted);
     await p.evaluate(async () => {
-      const a = window.__riddle,
+      const a = window.__idlever,
         { openLedger } = await import("/src/ui/party.ts");
       a.lineage.ledger = [
         {
@@ -64,7 +64,7 @@ try {
     await p.evaluate(async () => {
       const { closeAllSheets } = await import("/src/ui/sheet.ts");
       closeAllSheets();
-      const a = window.__riddle;
+      const a = window.__idlever;
       a.lineage.class = "ranger";
       a.lineage.packages.pen_open = false;
       a.go({

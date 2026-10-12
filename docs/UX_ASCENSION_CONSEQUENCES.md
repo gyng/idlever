@@ -103,7 +103,7 @@ export SHA256 `a9a3020c3eea7949e19f885e2e61f7f3be91341bd0259e0a3a8a6d7be78da469`
 
 All four actual browser-WASM choices successfully ascend that earned save;
 each complete resulting save is byte-identical to native JSON-bridge execution
-and the persisted `riddle.save.engine`. Review/Escape preserve the complete
+and the persisted `idlever.save.engine`. Review/Escape preserve the complete
 save. Endings/reviews/new camps captured headed400/1440, no errors/overflow,
 viewed/shown without diagnostic display overrides. Hunted also verified after
 legally purchasing two extra bloodlines and sending both: other saved games

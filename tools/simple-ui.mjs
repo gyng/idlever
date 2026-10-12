@@ -20,17 +20,19 @@ try {
     for (const [k, v] of Object.entries({ fresh: "1", seed: "1", lanes: "0" }))
       u.searchParams.set(k, v);
     await page.goto(u.href);
-    await page.waitForFunction(() => window.__riddle?.booted && window.__riddle.screen === "camp");
+    await page.waitForFunction(
+      () => window.__idlever?.booted && window.__idlever.screen === "camp",
+    );
     check(
       `${width}: fresh buildings empty`,
-      await page.evaluate(() => window.__riddle.lineage.town.buildings.length === 0),
+      await page.evaluate(() => window.__idlever.lineage.town.buildings.length === 0),
     );
     check(`${width}: extra camp panel hidden`, !(await page.locator(".camp-main").isVisible()));
     check(`${width}: send has no speed switch`, (await page.locator(".send-mode").count()) === 0);
     await page.screenshot({ path: `${out}/${width}-camp.png` });
     check(
       `${width}: empty town has no resident or run controls`,
-      (await page.evaluate(() => window.__riddle.lineage.town.home === false)) &&
+      (await page.evaluate(() => window.__idlever.lineage.town.home === false)) &&
         !(await page.locator("button.send").isVisible()),
     );
     await page.locator(".town-tag[data-next=house]").click();
@@ -39,9 +41,9 @@ try {
       `${width}: free home has resident and zero Legacy`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.town.home &&
-          window.__riddle.lineage.gold === 0 &&
-          window.__riddle.lineage.hero_legacy[0].points === 0,
+          window.__idlever.lineage.town.home &&
+          window.__idlever.lineage.gold === 0 &&
+          window.__idlever.lineage.hero_legacy[0].points === 0,
       ),
     );
     await page.screenshot({ path: `${out}/${width}-home.png` });
@@ -100,7 +102,7 @@ try {
         (await page.locator(".watch-options").count()) === 0,
     );
     const live = await page.evaluate(
-      async () => (await window.__riddle.engine.lineage()).live?.run_id,
+      async () => (await window.__idlever.engine.lineage()).live?.run_id,
     );
     check(
       `${width}: clear town exit`,
@@ -108,10 +110,10 @@ try {
     );
     await page.locator("button[data-tile=town]").click();
     await page.waitForSelector("main.camp");
-    await page.waitForFunction(() => !!window.__riddle.lineage.live);
+    await page.waitForFunction(() => !!window.__idlever.lineage.live);
     check(
       `${width}: leaving watch keeps same run`,
-      await page.evaluate((id) => window.__riddle.lineage.live.run_id === id, live),
+      await page.evaluate((id) => window.__idlever.lineage.live.run_id === id, live),
     );
     await page.locator(".topbar button.legacy").click();
     check(
@@ -120,7 +122,7 @@ try {
         (await page.locator(".hero-sheet").innerText()).includes("Hero away"),
     );
     await page.locator(".sheet-wrap button.stud").click();
-    await page.evaluate(() => window.__riddle.absence(3600));
+    await page.evaluate(() => window.__idlever.absence(3600));
     await page.waitForSelector("main.report");
     check(
       `${width}: concise report`,
@@ -146,21 +148,21 @@ try {
       `${width}: automatic haul and per-hero Legacy`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.tree.chest === 0 &&
-          window.__riddle.lineage.hero_legacy.some((x) => x.runs > 0 && x.points > 0),
+          window.__idlever.lineage.tree.chest === 0 &&
+          window.__idlever.lineage.hero_legacy.some((x) => x.runs > 0 && x.points > 0),
       ),
     );
     check(
       `${width}: milestone did not auto-build`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.town.buildings.length === 0 &&
-          window.__riddle.lineage.town.next_ready,
+          window.__idlever.lineage.town.buildings.length === 0 &&
+          window.__idlever.lineage.town.next_ready,
       ),
     );
     await page.locator(".topbar button.legacy").click();
     const legacyBefore = await page.evaluate(() => {
-      const L = window.__riddle.lineage;
+      const L = window.__idlever.lineage;
       return { gold: L.gold, classes: JSON.stringify(L.classes), points: L.bloodline.points };
     });
     check(
@@ -170,7 +172,7 @@ try {
     );
     await page.locator(".legacy-buy[data-upgrade=health]").click();
     await page.waitForFunction(
-      () => window.__riddle.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1,
+      () => window.__idlever.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1,
     );
     await page.waitForFunction(() =>
       document.querySelector(".legacy-buy[data-upgrade=health]")?.textContent.includes("6"),
@@ -178,7 +180,7 @@ try {
     check(
       `${width}: Legacy purchase debits only Legacy`,
       await page.evaluate((b) => {
-        const L = window.__riddle.lineage,
+        const L = window.__idlever.lineage,
           h = L.bloodline;
         return (
           h.points === b.points - 3 &&
@@ -199,7 +201,7 @@ try {
     await page.locator(".sheet-wrap button.stud").click();
     await page.locator("button.town-tag").click();
     await page.waitForFunction(() =>
-      window.__riddle.lineage.town.buildings.some((b) => b.id === "blacksmith"),
+      window.__idlever.lineage.town.buildings.some((b) => b.id === "blacksmith"),
     );
     check(
       `${width}: explicit build works`,
@@ -217,7 +219,7 @@ try {
     );
     await page.screenshot({ path: `${out}/${width}-forge.png` });
     await page.evaluate(() => {
-      const app = window.__riddle;
+      const app = window.__idlever;
       window.__kitForecastCalls = 0;
       const original = app.engine.kitDeltas.bind(app.engine);
       app.engine.kitDeltas = (...args) => {
@@ -229,19 +231,19 @@ try {
     if (await buy.count()) {
       const slot = await buy.getAttribute("data-slot");
       const before = await page.evaluate((slot) => {
-        const L = window.__riddle.lineage,
+        const L = window.__idlever.lineage,
           k = L.kit.find((x) => x.slot === slot);
         return { gold: L.gold, owned: k.owned, price: k.next.price };
       }, slot);
       await buy.click();
       await page.waitForFunction(
         ({ slot, owned }) =>
-          window.__riddle.lineage.kit.find((x) => x.slot === slot).owned === owned + 1,
+          window.__idlever.lineage.kit.find((x) => x.slot === slot).owned === owned + 1,
         { slot, owned: before.owned },
       );
       check(
         `${width}: one-click forge preserves price`,
-        await page.evaluate((b) => window.__riddle.lineage.gold === b.gold - b.price, before),
+        await page.evaluate((b) => window.__idlever.lineage.gold === b.gold - b.price, before),
       );
       check(
         `${width}: forge buy asks for no forecast`,
@@ -258,22 +260,22 @@ try {
       `${width}: no horizontal overflow`,
       (await page.evaluate(() => document.documentElement.scrollWidth)) <= width,
     );
-    await page.evaluate(() => window.__riddle.flush());
+    await page.evaluate(() => window.__idlever.flush());
     u.searchParams.delete("fresh");
     await page.goto(u.href);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     check(
       `${width}: construction persisted`,
       await page.evaluate(() =>
-        window.__riddle.lineage.town.buildings.some((b) => b.id === "blacksmith"),
+        window.__idlever.lineage.town.buildings.some((b) => b.id === "blacksmith"),
       ),
     );
     check(
       `${width}: Legacy purchase persisted`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1 &&
-          window.__riddle.lineage.bloodline.spent === 3,
+          window.__idlever.lineage.legacy_upgrades.find((x) => x.id === "health").rank === 1 &&
+          window.__idlever.lineage.bloodline.spent === 3,
       ),
     );
     await page.close();

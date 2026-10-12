@@ -9,7 +9,7 @@ tools/native-dev.sh
 
 This uses a separate loopback-only Vite port, preserving the usual WASM server
 on5219. Each foreground/background/refine lane owns an ordered native process;
-by default each has8 forecast threads (`RIDDLE_NATIVE_THREADS` to change).
+by default each has8 forecast threads (`IDLEVER_NATIVE_THREADS` to change).
 `?lanes=0` selects one lane. Errors stay visible; native never falls back to fake.
 Production builds remove the native client and transport. The shipping engine
 and explicit exhaustive balance audit remain the reference; routine --full now
@@ -27,7 +27,7 @@ rebuild. Tests still run normally; runtime and bridge edits rebuild as before.
 Custom target directories retain conservative rebuilding. This avoids queuing
 Cargo behind tests for an edit that cannot update the native engine.
 
-Set `RIDDLE_NATIVE_WATCH=0` before launch to disable watching, then use
+Set `IDLEVER_NATIVE_WATCH=0` before launch to disable watching, then use
 `node tools/native-build.mjs` manually. Existing servers started before this
 watcher need one restart (or a fresh port) to load it. Balance-file edits already
 reload at call boundaries and do not trigger compilation.
@@ -47,7 +47,7 @@ Enable line tables explicitly when profiling. A separate target directory
 keeps profiling artifacts apart from the dev server and gate builds:
 
 ```sh
-CARGO_PROFILE_FAST_DEBUG=1 CARGO_TARGET_DIR=target/profile-lines cargo build --profile fast -p riddle-core --example sim_perf
+CARGO_PROFILE_FAST_DEBUG=1 CARGO_TARGET_DIR=target/profile-lines cargo build --profile fast -p idlever-core --example sim_perf
 ```
 
 ## Numerical tuning without compilation
@@ -56,7 +56,7 @@ Copy the complete Rust-owned template, then use a separate port:
 
 ```sh
 cp tuning/balance.json scratchpad/candidate-balance.json
-RIDDLE_BALANCE_FILE="$PWD/scratchpad/candidate-balance.json" RIDDLE_NATIVE_PORT=5368 tools/native-dev.sh
+IDLEVER_BALANCE_FILE="$PWD/scratchpad/candidate-balance.json" IDLEVER_NATIVE_PORT=5368 tools/native-dev.sh
 node tools/camp-check.mjs camp.json --balance scratchpad/candidate-balance.json
 tools/tune.sh idle-d8 --balance scratchpad/candidate-balance.json --fresh
 ```
@@ -88,14 +88,14 @@ Targeted fail-fast runs remember the seed that completed a failing verdict in
 `target/gates/failure-hints/`. After a change, that seed is scheduled first.
 Hints survive runtime edits but contain no results and cannot pass a gate.
 All requested seeds and existing verdict bounds remain; final reductions retain
-numeric seed ordering. `RIDDLE_SEED_ORDER_NUMERIC=1` disables the scheduling hint.
+numeric seed ordering. `IDLEVER_SEED_ORDER_NUMERIC=1` disables the scheduling hint.
 
 Long standard/full tables now checkpoint completed check-ins automatically.
 For a direct or targeted run, add `--resume`:
 
 ```sh
 tools/tune.sh nothing-required --resume
-cargo run -q --profile fast -p riddle-core --example dayplayer -- --resume --gate
+cargo run -q --profile fast -p idlever-core --example dayplayer -- --resume --gate
 ```
 
 Checkpoints contain complete bot state, random state, accumulated output,
@@ -112,8 +112,8 @@ Validation commands:
 
 ```sh
 node --test tools/native-codegen.test.mjs tools/native-host.test.mjs
-RIDDLE_NATIVE_TEST_BIN="$(node tools/native-build.mjs --tuning)" node --test tools/native-balance.test.mjs
-cargo test -q --profile fast -p riddle-core --example dayplayer checkpoint_tests
+IDLEVER_NATIVE_TEST_BIN="$(node tools/native-build.mjs --tuning)" node --test tools/native-balance.test.mjs
+cargo test -q --profile fast -p idlever-core --example dayplayer checkpoint_tests
 node tools/native-parity.mjs target/native-dev/default/native_dev scratchpad/parity early.json late.json tuned.json
 ```
 

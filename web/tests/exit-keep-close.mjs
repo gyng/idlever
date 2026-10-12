@@ -33,12 +33,12 @@ try {
       { waitUntil: "domcontentloaded" },
     );
     await page.waitForFunction(
-      () => window.__riddle?.booted && window.__riddle.screen === "watch",
+      () => window.__idlever?.booted && window.__idlever.screen === "watch",
       null,
       { timeout: 30_000 },
     );
     await page.evaluate(() => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       r.__keep = [];
       r.__pick = null;
       const k = r.engine.keep.bind(r.engine),
@@ -62,7 +62,7 @@ try {
     let open = false;
     while (Date.now() - t < 60_000) {
       const s = await page.evaluate(() => ({
-        screen: window.__riddle.screen,
+        screen: window.__idlever.screen,
         keep: !!document.querySelector(".sheet-wrap .keep-legend"),
       }));
       if (s.keep) {
@@ -91,7 +91,7 @@ try {
     } else if (how === "escape") await page.keyboard.press("Escape");
     else await page.locator(".sheet-wrap .close-stud, .sheet-wrap .sheet-x").first().click();
     const left = await page
-      .waitForFunction(() => !["watch", "exit"].includes(window.__riddle.screen), null, {
+      .waitForFunction(() => !["watch", "exit"].includes(window.__idlever.screen), null, {
         timeout: 15_000,
       })
       .then(
@@ -99,9 +99,9 @@ try {
         () => false,
       );
     const k = await page.evaluate(() => ({
-      screen: window.__riddle.screen,
-      keep: window.__riddle.__keep,
-      pick: window.__riddle.__pick,
+      screen: window.__idlever.screen,
+      keep: window.__idlever.__keep,
+      pick: window.__idlever.__pick,
     }));
     check(left, `${how}: closing the keep sheet goes on to the next screen (${k.screen})`);
     check(

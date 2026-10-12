@@ -8,7 +8,7 @@ export async function pauseWithExitRecord(page) {
         let readyAt = null;
         const poll = () => {
           const now = performance.now(),
-            r = window.__riddle,
+            r = window.__idlever,
             w = document.querySelector(".watch");
           const ready =
             r?.booted && r.screen === "watch" && Number.isFinite(Number(w?.dataset.tick));
@@ -69,7 +69,7 @@ export async function sampleCardHud(page) {
         let last = -Infinity;
         const poll = () => {
           const now = performance.now(),
-            screen = window.__riddle.screen;
+            screen = window.__idlever.screen;
           if (screen !== "watch" || now - began >= 20000) {
             resolve(samples);
             return;

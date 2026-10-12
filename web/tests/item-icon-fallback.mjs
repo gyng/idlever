@@ -9,7 +9,7 @@ try {
   const page = await browser.newPage({ viewport: { width: 320, height: 900 } });
   await page.route("**/ui/icons/it_trap.png", (route) => route.abort());
   await page.goto(`${url}?engine=fake&fresh=1&runs=0`);
-  await page.waitForFunction(() => window.__riddle?.booted);
+  await page.waitForFunction(() => window.__idlever?.booted);
   await page.evaluate(async () => {
     const { itemChip } = await import("/src/ui/items.ts");
     const chip = itemChip({ kind: "trap", label: "ranger trap", rarity: "rare" });

@@ -34,7 +34,7 @@ const lines = [];
 async function shot(name, note = "") {
   const base = join(out, `${String(++n).padStart(2, "0")}-${name}`);
   await page.screenshot({ path: `${base}.png` });
-  const tx = await page.evaluate(() => window.__riddle?.text?.() ?? document.body.innerText);
+  const tx = await page.evaluate(() => window.__idlever?.text?.() ?? document.body.innerText);
   writeFileSync(`${base}.txt`, tx);
   const line = `${base.slice(out.length + 1).padEnd(26)} +${((Date.now() - t0) / 1000).toFixed(1).padStart(6)}s ${note}`;
   console.log(line);
@@ -42,7 +42,7 @@ async function shot(name, note = "") {
 }
 const state = () =>
   page.evaluate(() => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     return r ? { screen: r.screen, booted: r.booted, busy: r.engineBusy } : null;
   });
 async function waitFor(pred, label, ms = 60000) {
@@ -104,7 +104,7 @@ for (let k = 1; k <= runs; k++) {
         return e.length ? e[e.length - 1] : null;
       });
       const done = await page
-        .evaluate(() => window.__riddle?.app?.watchEnded ?? false)
+        .evaluate(() => window.__idlever?.app?.watchEnded ?? false)
         .catch(() => false);
       if (
         exitBeat &&

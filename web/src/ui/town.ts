@@ -102,7 +102,7 @@ export const townBuilt = (L: Lineage): BuildingId[] | null =>
     : null;
 
 type Store = { seen: string[]; opened: string[] };
-const KEY = (L: Lineage): string => /* copy:none */ `riddle.town.${L.seed ?? 0}`;
+const KEY = (L: Lineage): string => /* copy:none */ `idlever.town.${L.seed ?? 0}`;
 function load(L: Lineage): Store | null {
   try {
     const s = localStorage.getItem(KEY(L));

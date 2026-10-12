@@ -20,15 +20,15 @@ try {
     for (const [k, v] of Object.entries({ fresh: "1", seed: "1", runs: "0", lanes: "0" }))
       u.searchParams.set(k, v);
     await page.goto(u.href);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     check(
       `${width}: fresh roster empty`,
-      await page.evaluate(() => window.__riddle.lineage.hero_slots.length === 0),
+      await page.evaluate(() => window.__idlever.lineage.hero_slots.length === 0),
     );
     await page.locator(".town-tag[data-next=house]").click();
-    await page.waitForFunction(() => window.__riddle?.lineage.hero_slots.length === 1);
+    await page.waitForFunction(() => window.__idlever?.lineage.hero_slots.length === 1);
     const earn = await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       let runs = 0;
       while ((await a.engine.lineage()).gold < 250 && runs < 5) {
         await a.engine.send();
@@ -41,12 +41,12 @@ try {
     check(`${width}: earns slot price through real runs`, earn.runs > 0 && earn.gold >= 250);
     await page.locator(".topbar button.legacy").click();
     await page.locator(".legacy-buy[data-upgrade=health]").click();
-    await page.waitForFunction(() => window.__riddle.lineage.bloodline.upgrades.health === 1);
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.upgrades.health === 1);
     await page.locator(".sheet-wrap button.stud").click();
     if (width === 400) await page.locator(".hero-expand").click();
-    const before = await page.evaluate(() => window.__riddle.lineage.gold);
+    const before = await page.evaluate(() => window.__idlever.lineage.gold);
     await page.locator(".hero-add:visible").click();
-    await page.waitForFunction(() => window.__riddle.lineage.hero_slots.length === 2);
+    await page.waitForFunction(() => window.__idlever.lineage.hero_slots.length === 2);
     await page.waitForFunction(() =>
       [...document.querySelectorAll(".hero-list")].some(
         (e) => e.getBoundingClientRect().width > 0 && e.querySelectorAll(".hero-row").length === 2,
@@ -54,12 +54,12 @@ try {
     );
     check(
       `${width}: explicit slot costs exactly 250`,
-      await page.evaluate((n) => window.__riddle.lineage.gold === n - 250, before),
+      await page.evaluate((n) => window.__idlever.lineage.gold === n - 250, before),
     );
     await page.waitForFunction(
       () =>
         document.querySelector(".topbar .stat.gold")?.textContent.replace(/\s/g, "") ===
-        `Gold$${window.__riddle.lineage.gold}`,
+        `Gold$${window.__idlever.lineage.gold}`,
     );
     check(
       `${width}: roster includes active slots only`,
@@ -69,14 +69,14 @@ try {
     await page.waitForTimeout(1200);
     await page.screenshot({ path: `${out}/${width}-roster.png` });
     await page.locator('.hero-list:visible .hero-row[data-slot="2"] .hero-details').click();
-    await page.waitForFunction(() => window.__riddle.lineage.selected_bloodline === 2);
+    await page.waitForFunction(() => window.__idlever.lineage.selected_bloodline === 2);
     await page.waitForSelector(".hero-sheet button.hero-class:visible");
     check(
       `${width}: second bloodline has independent Legacy`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.bloodline.points === 0 &&
-          !window.__riddle.lineage.bloodline.upgrades.health,
+          window.__idlever.lineage.bloodline.points === 0 &&
+          !window.__idlever.lineage.bloodline.upgrades.health,
       ),
     );
     check(
@@ -93,13 +93,13 @@ try {
     );
     await page.locator(".sheet-wrap:visible button.close-stud").click();
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.engine.send();
       await a.engine.advance(100);
       await a.refresh();
     });
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.selectBloodline(1);
       await a.engine.send();
       await a.engine.advance(100);
@@ -108,11 +108,11 @@ try {
     check(
       `${width}: both heroes live`,
       await page.evaluate(() =>
-        window.__riddle.lineage.hero_slots.every((s) => s.state === "live" && s.live),
+        window.__idlever.lineage.hero_slots.every((s) => s.state === "live" && s.live),
       ),
     );
     const live = await page.evaluate(() =>
-      window.__riddle.lineage.hero_slots.map((s) => ({
+      window.__idlever.lineage.hero_slots.map((s) => ({
         id: s.id,
         run: s.live.run_id,
         turn: s.live.turn,
@@ -123,7 +123,7 @@ try {
     await page.waitForSelector("main.watch");
     check(
       `${width}: row focuses selected live hero`,
-      await page.evaluate(() => window.__riddle.lineage.selected_bloodline === 2),
+      await page.evaluate(() => window.__idlever.lineage.selected_bloodline === 2),
     );
     await page.mouse.move(width - 1, 0);
     await page.waitForTimeout(1200);
@@ -135,7 +135,7 @@ try {
       (await page.locator(".well-slot:visible").count()) === 0,
     );
     await page.evaluate(async () => {
-      await window.__riddle.refresh();
+      await window.__idlever.refresh();
     });
     check(
       `${width}: both runs retained after focusing`,
@@ -143,19 +143,20 @@ try {
         (ids) =>
           ids.every(
             (x) =>
-              window.__riddle.lineage.hero_slots.find((s) => s.id === x.id)?.live?.run_id === x.run,
+              window.__idlever.lineage.hero_slots.find((s) => s.id === x.id)?.live?.run_id ===
+              x.run,
           ),
         live,
       ),
     );
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       await a.selectBloodline(1);
       await a.flush();
     });
     check(
       `${width}: first bloodline upgrades retained`,
-      await page.evaluate(() => window.__riddle.lineage.bloodline.upgrades.health === 1),
+      await page.evaluate(() => window.__idlever.lineage.bloodline.upgrades.health === 1),
     );
     check(
       `${width}: no horizontal overflow`,
@@ -163,13 +164,13 @@ try {
     );
     u.searchParams.delete("fresh");
     await page.goto(u.href);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     check(
       `${width}: both bloodlines and upgrades reload`,
       await page.evaluate(
         () =>
-          window.__riddle.lineage.hero_slots.length === 2 &&
-          window.__riddle.lineage.bloodline.upgrades.health === 1,
+          window.__idlever.lineage.hero_slots.length === 2 &&
+          window.__idlever.lineage.bloodline.upgrades.health === 1,
       ),
     );
     await page.close();

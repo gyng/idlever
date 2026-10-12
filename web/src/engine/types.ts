@@ -1816,7 +1816,7 @@ export interface Engine {
   setKeepPref(pref: string): Lineage; // core addition (README): keep preference for offline exits
   sellVault?(id: number): Lineage; // QA 308f045 (core; qaAC: `vault full · axe stays`, no way to take it out): the item out of the vault, salvaged at a bank's share
   insure(id: number): Lineage; // core addition: gold bet that keeps a brought vault item on death
-  // core additions (crates/riddle-core/README.md)
+  // core additions (crates/idlever-core/README.md)
   unlocks(): UnlockInfo[]; // the catalogue; `available` = prereq + fact gate + affordable
   unlockDeltas(): UnlockInfo[]; // Cut 4: same catalogue with forecast `delta` computed (0.3–2 s); call after paint
   setClass(cls: string): Lineage; // switch class (rogue needs the `rogue` unlock)

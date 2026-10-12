@@ -24,7 +24,7 @@ const arg = (n, d) => {
   return i > 0 ? process.argv[i + 1] : d;
 };
 const out = resolve(arg("--out", "scratchpad/gfx-eval/round0"));
-const port = arg("--port", process.env.RIDDLE_PORT ?? "5219");
+const port = arg("--port", process.env.IDLEVER_PORT ?? "5219");
 const only = arg("--only", "")?.split(",").filter(Boolean) ?? [];
 const want = (n) => !only.length || only.some((o) => n.startsWith(o));
 const BASE = `http://localhost:${port}/`;
@@ -54,7 +54,7 @@ async function newPage(w, h, dpr) {
 const state = (page) =>
   page
     .evaluate(() => {
-      const r = window.__riddle,
+      const r = window.__idlever,
         w = document.querySelector(".watch");
       return r
         ? {
@@ -488,7 +488,7 @@ async function phoneReal() {
   }
   // an edit: the rules change, the forecast re-prices, the divergence scene plays over the well
   await step("scene", async () => {
-    await page.evaluate((t) => window.__riddle.setRulesText(t), RICH);
+    await page.evaluate((t) => window.__idlever.setRulesText(t), RICH);
     const t = Date.now();
     let got = false;
     while (Date.now() - t < 30000) {
@@ -562,14 +562,14 @@ async function phoneDeep(name, start, what, fight = false) {
   const engine = readFileSync(join(ROOT, "web/tests/fixtures/deep.json"), "utf8").trim();
   await page.evaluate(
     (engine) =>
-      window.__riddle.importSave(
+      window.__idlever.importSave(
         JSON.stringify({ v: 2, engine, loadout: [], last_seen: Date.now(), runs: 0 }),
       ),
     engine,
   );
   await waitFor(page, (s) => s?.booted && s.screen === "camp", "deep camp");
   await page.evaluate(async (d) => {
-    const r = window.__riddle;
+    const r = window.__idlever;
     await r.mutate(() => r.engine.setStart(d));
   }, start);
   await settle(page);
@@ -701,7 +701,7 @@ async function desktop() {
       .catch(() => {});
     await waitFor(page, (s) => s?.screen === "camp", "camp");
   }
-  await page.evaluate((t) => window.__riddle.setRulesText(t), RICH);
+  await page.evaluate((t) => window.__idlever.setRulesText(t), RICH);
   await sleep(6000);
   await settle(page);
   if (want("d-camp")) await shoot(page, "d-camp", "desktop 1440×900: the camp");

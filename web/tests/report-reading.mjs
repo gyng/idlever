@@ -10,9 +10,9 @@ try {
   for (const width of stateWidths([320, 400, 1440])) {
     const page = await browser.newPage({ viewport: { width, height: 800 } });
     await page.goto(`${url}?dev=1&engine=fake&seed=3004&fresh=1&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     await page.evaluate(async () => {
-      const a = window.__riddle;
+      const a = window.__idlever;
       const driven = {
         boss: "goblin_warlord",
         title: "Warlord",
@@ -76,7 +76,7 @@ try {
         (await page.locator(".report .details-fold").getAttribute("aria-expanded")) !== "true"
       )
         throw Error("Back from death collapsed report details");
-      if (!(await page.evaluate(() => window.__riddle.view.absence === true)))
+      if (!(await page.evaluate(() => window.__idlever.view.absence === true)))
         throw Error("Back lost the absence context");
       const restored = await page.locator(".report-well").evaluate((el) => el.scrollTop);
       if (Math.abs(restored - scroll) > 2)
@@ -84,17 +84,17 @@ try {
     }
     await page.locator(".report .details-fold").click();
     await page.evaluate(() =>
-      window.__riddle.go({ kind: "report", report: window.__readingReport, absence: true }),
+      window.__idlever.go({ kind: "report", report: window.__readingReport, absence: true }),
     );
     if (!(await details().isHidden())) throw Error("Explicit collapse not retained");
     await page.locator(".report .details-fold").click();
     await page.evaluate(() =>
-      window.__riddle.go({ kind: "report", report: { ...window.__readingReport }, absence: true }),
+      window.__idlever.go({ kind: "report", report: { ...window.__readingReport }, absence: true }),
     );
     if (!(await details().isHidden())) throw Error("New report inherited old expanded state");
     if (
       !(await page.evaluate(
-        async () => (await window.__riddle.engine.save()) === window.__readingSave,
+        async () => (await window.__idlever.engine.save()) === window.__readingSave,
       ))
     )
       throw Error("Reading reports changed save");

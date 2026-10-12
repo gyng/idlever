@@ -47,7 +47,7 @@ async function until(pred, label, timeout = 30_000, arg) {
   }
   throw new Error(`timeout waiting for ${label}`);
 }
-const screen = () => page.evaluate(() => window.__riddle?.screen);
+const screen = () => page.evaluate(() => window.__idlever?.screen);
 /** The card as a reader sees it at rest: its words (a token with a letter or a digit; `→`, `·`, `$` alone are marks), stamp, reason. */
 const card = () =>
   page.evaluate(() => {
@@ -74,16 +74,17 @@ const card = () =>
 /** A send by hand from the town (the gem), then the keep sheet answered as it comes, until a screen after the watch. */
 async function sendAndEnd(timeout = 150_000) {
   // New towns follow the owner's manual house → resident → Send opening.
-  if (await page.evaluate(() => window.__riddle?.lineage.town?.home === false)) {
+  if (await page.evaluate(() => window.__idlever?.lineage.town?.home === false)) {
     await page.locator('.town-tag[data-next="house"]').click();
-    await until(() => window.__riddle.lineage.town.home === true, "the manually built house");
+    await until(() => window.__idlever.lineage.town.home === true, "the manually built house");
   }
   await until(
-    () => window.__riddle?.screen === "camp" && document.querySelector(".gem.send:not([disabled])"),
+    () =>
+      window.__idlever?.screen === "camp" && document.querySelector(".gem.send:not([disabled])"),
     "the send gem",
   );
   await page.click(".gem.send");
-  await until(() => window.__riddle.screen === "watch", "the watch");
+  await until(() => window.__idlever.screen === "watch", "the watch");
   const t = Date.now();
   while (Date.now() - t < timeout) {
     const s = await screen();
@@ -103,18 +104,18 @@ try {
   if (part("run") || part("lift") || part("auto")) {
     // real wasm: the core's rarity and reason. Seed 2's first send banks a new best (D4) with uncommon finds (Cut 109/110 core: seed 1's first send now dies, so it reaches the death screen, not the card)
     await page.goto(`${url}?seed=2&fresh=1&speed=8&runclear=1`, { waitUntil: "domcontentloaded" });
-    await until(() => window.__riddle?.booted, "boot", 60_000);
+    await until(() => window.__idlever?.booted, "boot", 60_000);
     if (part("run")) {
       const s = await sendAndEnd();
       const c = await until(
-        () => document.querySelector(".run-clear") && window.__riddle.screen,
+        () => document.querySelector(".run-clear") && window.__idlever.screen,
         "the card",
       );
       const k = await card();
       check(s === "report" && c === "report" && !!k, `a watched run's end shows the card (${s})`);
       check(STAMPS.includes(k.stamp), `the stamp is an exit word (${k.stamp})`);
       const line = await page.evaluate(() => {
-        const r = window.__riddle.view.report;
+        const r = window.__idlever.view.report;
         const x = r?.exits?.[r.exits.length - 1];
         return x
           ? { reason: x.reason, end: x.end, reached: x.reached, finds: (x.finds ?? []).length }
@@ -143,7 +144,7 @@ try {
       check(k.clear === "run", `the card stands over the run's report (${k.clear})`);
       await page.waitForTimeout(400);
       await page.click(".run-clear .rc-reason");
-      await until(() => window.__riddle.screen === "camp", "the town after a tap", 10_000);
+      await until(() => window.__idlever.screen === "camp", "the town after a tap", 10_000);
       check((await screen()) === "camp", "a tap on the card goes on to the town");
     }
     if (part("lift")) {
@@ -151,7 +152,7 @@ try {
       await page.goto(`${url}?seed=2&fresh=1&speed=8&runclear=1`, {
         waitUntil: "domcontentloaded",
       });
-      await until(() => window.__riddle?.booted, "boot", 60_000);
+      await until(() => window.__idlever?.booted, "boot", 60_000);
       await sendAndEnd();
       await until(() => document.querySelector(".run-clear"), "the card");
       await page.locator('.report .console [data-tile="report"]').click();
@@ -160,7 +161,7 @@ try {
           !document.querySelector(".run-clear") &&
           document.querySelector(".report-sheet") &&
           !document.querySelector(".report-sheet").hidden &&
-          window.__riddle.screen,
+          window.__idlever.screen,
         "the report under the card",
         5000,
       );
@@ -170,7 +171,7 @@ try {
       await page.goto(`${url}?seed=2&fresh=1&speed=8&runclear=1&autodismiss=0.1`, {
         waitUntil: "domcontentloaded",
       });
-      await until(() => window.__riddle?.booted, "boot", 60_000);
+      await until(() => window.__idlever?.booted, "boot", 60_000);
       await sendAndEnd();
       const L = await until(
         () => document.querySelector(".run-clear") && window.__autodismiss.live(),
@@ -181,7 +182,7 @@ try {
         `the card's ring is on the gem, 7 s (${L.map((x) => `${x.cls.split(" ")[0]} ${x.ms}`).join(", ")})`,
       );
       const t = Date.now();
-      await until(() => window.__riddle.screen === "camp", "the town after the card's time", 8000);
+      await until(() => window.__idlever.screen === "camp", "the town after the card's time", 8000);
       check(
         Date.now() - t < 5000,
         `the card continued to the town by itself (${Date.now() - t} ms)`,
@@ -196,7 +197,7 @@ try {
         { waitUntil: "domcontentloaded" },
       );
       await until(
-        () => window.__riddle?.screen === "report" && document.querySelector(".run-clear"),
+        () => window.__idlever?.screen === "report" && document.querySelector(".run-clear"),
         "the absence's card",
         60_000,
       );
@@ -231,7 +232,7 @@ try {
           () =>
             !document.querySelector(".run-clear") &&
             !document.querySelector(".report-sheet").hidden &&
-            window.__riddle.screen,
+            window.__idlever.screen,
           "the report after a tap",
           5000,
         );
@@ -247,14 +248,14 @@ try {
       `${url}?dev=1&engine=fake&systems=none&fresh=1&seed=13&rules=${rules}&speed=fast&runclear=1`,
       { waitUntil: "domcontentloaded" },
     );
-    await until(() => window.__riddle?.booted, "boot", 60_000);
+    await until(() => window.__idlever?.booted, "boot", 60_000);
     let died = false;
     for (let i = 0; i < 6 && !died; i++) {
       const seen = new Set();
       const poll = setInterval(() => {
         void page
           .evaluate(() => ({
-            s: window.__riddle?.screen,
+            s: window.__idlever?.screen,
             c: !!document.querySelector(".run-clear"),
           }))
           .then((x) => {
@@ -282,7 +283,7 @@ try {
           `the death screen's header carries the card's strip (${strip})`,
         );
       } else {
-        await page.evaluate(() => window.__riddle.go({ kind: "camp" }));
+        await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
       }
     }
     check(died, "a run died within six sends");
@@ -290,7 +291,7 @@ try {
 
   if (part("rarity")) {
     await page.goto(`${url}?seed=7&fresh=1&runclear=1`, { waitUntil: "domcontentloaded" });
-    await until(() => window.__riddle?.booted, "boot", 60_000);
+    await until(() => window.__idlever?.booted, "boot", 60_000);
     // the five tiers' rims are five distinct pigments
     const rims = await page.evaluate(() => {
       const host = document.createElement("div");
@@ -310,7 +311,7 @@ try {
     );
     // the cage and the vault: real items from the core in their rims (a vault item put there through the engine's save)
     const shown = await page.evaluate(async () => {
-      const r = window.__riddle;
+      const r = window.__idlever;
       const save = JSON.parse(await r.engine.save());
       save.lineage.vault = [
         { id: 7001, kind: "mace", enchant: 2, known: true },

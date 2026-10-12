@@ -1,6 +1,6 @@
 # Fun evaluation for idle games — a specialisation of the Fun Framework v4
 
-*Written 2026-09-15 for Riddle. Extends `../eval-fun/docs/FRAMEWORK.md` (read that first;
+*Written 2026-09-15 for Idlever. Extends `../eval-fun/docs/FRAMEWORK.md` (read that first;
 nothing there is repeated here unless it changes). Data: `eval/presets.json`. Template:
 `eval/SCORECARD.template.json`. Scorer: `eval/score.sh` (wraps eval-fun's scorer).
 Research inputs: `research/idle-attraction.md`, `research/comparables.md`,
@@ -102,7 +102,7 @@ pronouns in your own run retelling before awarding `attribution`.
 
 ## 5. Bot proxies that are specific to idle (caps only)
 
-All are per-engine work; Riddle's sim exposes them from Rust (`PLAN.md` §9). Each is a
+All are per-engine work; Idlever's sim exposes them from Rust (`PLAN.md` §9). Each is a
 cap: green at or above bar, amber near, red below. None awards.
 
 | Proxy | Axis capped | Bar (initial, revise after calibration) |
@@ -122,7 +122,7 @@ cap: green at or above bar, amber near, red below. None awards.
 
 ## 6. Calibration for the idle presets
 
-Score these on the idle presets before trusting a Riddle score (cards in
+Score these on the idle presets before trusting a Idlever score (cards in
 `eval/calibration/`): **Cookie Clicker** (`idler`), **Melvor Idle** (`idle-rpg`),
 **Loop Hero** (`idle-roguelike`; the nearest existing thing), **Progress Quest**
 (`idle-rpg`; the reference "watch only" dud-that-is-a-joke), and a **mediocre idle RPG
@@ -131,7 +131,7 @@ above, Progress Quest and the composite in *not yet*, Cookie Clicker where eval-
 (fun, low 70s). If Loop Hero is gated, the axis or weight is wrong. Re-anchor on Loop Hero
 in the same sitting whenever the rubric is used after a gap.
 
-## 7. Using it on Riddle
+## 7. Using it on Idlever
 
 1. `cp eval/SCORECARD.template.json eval/cards/<build>.<rater>.json`, fill the horizon
    block honestly (absences taken, runs watched, runs offline, rule edits).

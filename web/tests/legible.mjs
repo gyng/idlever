@@ -62,13 +62,13 @@ async function until(pred, label, timeout = 20_000, arg) {
 }
 const camp = async () => {
   await until(
-    () => window.__riddle?.booted && window.__riddle.screen === "camp" && window.__town,
+    () => window.__idlever?.booted && window.__idlever.screen === "camp" && window.__town,
     "camp",
     60_000,
   );
   await sleep(300);
 };
-const screen = () => page.evaluate(() => window.__riddle?.screen);
+const screen = () => page.evaluate(() => window.__idlever?.screen);
 
 try {
   await open();
@@ -78,20 +78,21 @@ try {
     await camp();
     check(
       await page.evaluate(
-        () => !window.__riddle.lineage.town.home && window.__riddle.lineage.hero_slots.length === 0,
+        () =>
+          !window.__idlever.lineage.town.home && window.__idlever.lineage.hero_slots.length === 0,
       ),
       "fresh town is empty before construction",
     );
     await page.locator('.town-tag[data-next="house"]').click();
     await until(
       () =>
-        window.__riddle.lineage.town.home &&
-        window.__riddle.lineage.hero_slots.length === 1 &&
+        window.__idlever.lineage.town.home &&
+        window.__idlever.lineage.hero_slots.length === 1 &&
         !document.querySelector("main.camp")?.classList.contains("awaiting-home"),
       "built house and resident",
     );
     await page.evaluate(() => {
-      const e = window.__riddle.engine;
+      const e = window.__idlever.engine;
       for (const method of ["step", "fold"])
         if (e[method]) {
           const original = e[method].bind(e);
@@ -110,7 +111,7 @@ try {
         window.__actualExits = [];
       });
       await page.locator("button.send:visible").first().click();
-      await until(() => window.__riddle.screen === "watch", "the watch");
+      await until(() => window.__idlever.screen === "watch", "the watch");
       let whyShown = null,
         endShot = false;
       const t0 = Date.now();
@@ -170,7 +171,7 @@ try {
           `run 1: a fresh lineage's first end reads as the hero being sensible ("${why}")`,
         );
       const s = await until(
-        () => ["report", "death"].includes(window.__riddle.screen) && window.__riddle.screen,
+        () => ["report", "death"].includes(window.__idlever.screen) && window.__idlever.screen,
         "the screen after",
         30_000,
       );
@@ -200,7 +201,7 @@ try {
     await page.locator('.town-tag[data-next="house"]').click();
     await until(
       () =>
-        window.__riddle.lineage.town.home &&
+        window.__idlever.lineage.town.home &&
         !document.querySelector("main.camp")?.classList.contains("awaiting-home"),
       "house",
     );
@@ -215,9 +216,9 @@ try {
         return {
           text: t?.textContent,
           visible: !t?.hidden && r.width > 0 && r.top >= 0 && r.bottom <= innerHeight,
-          ready: window.__riddle.lineage.town.next_ready,
-          next: window.__riddle.lineage.town.next,
-          trigger: window.__riddle.lineage.town.next_trigger,
+          ready: window.__idlever.lineage.town.next_ready,
+          next: window.__idlever.lineage.town.next,
+          trigger: window.__idlever.lineage.town.next_trigger,
         };
       });
       if (n === 0)
@@ -235,7 +236,7 @@ try {
           `stage ${n}: locked plot visibly names ${id} and its trigger ("${locked.text}")`,
         );
       await page.evaluate(async (n) => {
-        const a = window.__riddle,
+        const a = window.__idlever,
           s = JSON.parse(await a.engine.save()),
           L = s.lineage;
         if (n === 0) L.banked_depths = [3];
@@ -252,9 +253,9 @@ try {
       check(
         await page.evaluate(
           (id) =>
-            window.__riddle.lineage.town.next === id &&
-            window.__riddle.lineage.town.next_ready &&
-            !window.__riddle.lineage.town.buildings.some((b) => b.id === id),
+            window.__idlever.lineage.town.next === id &&
+            window.__idlever.lineage.town.next_ready &&
+            !window.__idlever.lineage.town.buildings.some((b) => b.id === id),
           id,
         ),
         `stage ${n}: milestone offers ${id} without automatically building it`,
@@ -266,7 +267,7 @@ try {
       );
       await marker.click();
       await until(
-        (id) => window.__riddle.lineage.town.buildings.some((b) => b.id === id),
+        (id) => window.__idlever.lineage.town.buildings.some((b) => b.id === id),
         `manual ${id}`,
         20_000,
         id,

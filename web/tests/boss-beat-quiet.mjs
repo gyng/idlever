@@ -11,10 +11,10 @@ try {
   for (const width of [400, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 800 }, deviceScaleFactor: 1 });
     await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=5&runs=0`);
-    await page.waitForFunction(() => window.__riddle?.booted);
+    await page.waitForFunction(() => window.__idlever?.booted);
     const result = await page.evaluate(async () => {
       const { createViewer } = await import("/src/render/index.ts");
-      const s = await window.__riddle.engine.send();
+      const s = await window.__idlever.engine.send();
       s.w = s.h = 12;
       s.tiles = Array(144).fill("floor");
       s.seen = s.visible = Array(144).fill(true);

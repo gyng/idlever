@@ -36,7 +36,7 @@ export type Step =
   | "start"
   | "kit"
   | "oaths";
-const KEY = "riddle.reveal";
+const KEY = "idlever.reveal";
 const FRESH_UNLOCKS = new Set(["tame"]);
 /** When each step was first seen this session (wall ms): a step glints on every paint for GLINT_MS after it was earned, so the
  *  several readers of one paint (the bar, the console) agree. */

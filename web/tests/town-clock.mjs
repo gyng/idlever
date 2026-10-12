@@ -49,11 +49,11 @@ try {
       await page.clock.setFixedTime(`2026-10-11T${phases[0][0]}Z`);
       await page.goto(`${url}?dev=1&seed=13317&fresh=1&runs=0`);
       await page.waitForFunction(
-        () => window.__riddle?.booted && window.__town?.stats().frames > 1,
+        () => window.__idlever?.booted && window.__town?.stats().frames > 1,
       );
-      assert.equal(await page.evaluate(() => window.__riddle.kind), "wasm");
+      assert.equal(await page.evaluate(() => window.__idlever.kind), "wasm");
       checks++;
-      const save = await page.evaluate(() => window.__riddle.engine.save());
+      const save = await page.evaluate(() => window.__idlever.engine.save());
       const paints = await page.evaluate(() => window.__town.stats().terrainPaints);
       for (const [utc, expected] of phases) {
         await page.clock.setFixedTime(`2026-10-11T${utc}Z`);
@@ -80,7 +80,7 @@ try {
         () => window.__town.stats().running && window.__town.stats().night === 1,
       );
       checks++;
-      assert.equal(await page.evaluate(() => window.__riddle.engine.save()), save);
+      assert.equal(await page.evaluate(() => window.__idlever.engine.save()), save);
       checks++;
       assert.equal(await page.evaluate(() => window.__town.stats().terrainPaints), paints);
       checks++;

@@ -188,7 +188,7 @@ const STEP_OF: Record<string, Step> = {
   ledger: "heirs",
   chronicle: "heirs",
 };
-const ALL_KEY = "riddle.unlocks.all";
+const ALL_KEY = "idlever.unlocks.all";
 const unlocksAll = (): boolean => {
   try {
     return localStorage.getItem(ALL_KEY) === "1";
@@ -519,7 +519,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     town.el.scrollIntoView({ block: "nearest" });
     town.view.focusHero();
   };
-  window.addEventListener("riddle:focus-hero", focusHome);
+  window.addEventListener("idlever:focus-hero", focusHome);
   const pick = returnPick(app, "camp");
   const batch = checkinBatch(app);
   // Cut 121 §1: the ascension under way on the camp — `Ascension 1 · from D14 · foes +5% hp · +2% dmg`, its modifiers under it
@@ -2782,7 +2782,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       ladder.dispose();
       feats.dispose();
       offer.dispose();
-      window.removeEventListener("riddle:focus-hero", focusHome);
+      window.removeEventListener("idlever:focus-hero", focusHome);
       offLive();
       lanes.dispose();
       town.dispose();

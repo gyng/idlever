@@ -1,4 +1,4 @@
-# Riddle — art direction: moonlit ink and wash (approved; phase 2 shipped 2026-09-30)
+# Idlever — art direction: moonlit ink and wash (approved; phase 2 shipped 2026-09-30)
 
 *2026-09-30. The owner's call: a **hybrid pixel–painted** look, leaning a little more **painted**, more **stylistic**,
 consistent across sprites, tiles, props, portraits, UI, backdrops and the town. References (for people, never in a
@@ -149,7 +149,7 @@ EMBER in every place (the per-biome torch casts are gone), the hero's own light 
 
 Phase 1's prototype, for the record:
 
-`web/src/render/wash.ts`, off by default, sticky via localStorage `riddle.look` (`?look=off` clears). Canvas: the blit's
+`web/src/render/wash.ts`, off by default, sticky via localStorage `idlever.look` (`?look=off` clears). Canvas: the blit's
 last step (`LOOK` define, compiled only when FX > 0: the `low` tier's shader is byte-identical): the frame onto the §2 ramp
 with the place's tint after a night curve (luminance^1.3: the mid-tones sink; a fifth of the painted hue kept; saturated reds and flame keep theirs), 30 % toward six value bands,
 an INK line on source-luminance edges, wash edge-darkening/bloom from a 3-texel neighbourhood, world-anchored granulation
