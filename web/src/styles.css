@@ -1875,3 +1875,8 @@ main.death > .well, main.report > .well { -webkit-mask-image: linear-gradient(va
 .hp-ration .ration, .fc-hunger .ration { font-size: .82em; }
 .fc-hunger { margin: 2px 0; font-size: .86em; }
 .fc-hunger .hp-max-loss { color: var(--warn); }
+
+.editor .row .throw-target { margin-left: 6px; font: 600 11px/1.2 var(--sans); white-space: nowrap; align-self: center; }
+.editor .row .grip .throw-target { display: block; margin: 2px 0 0; font-size: 10px; }
+
+.editor .row > .chips > .throw-target, .editor .row > .chips > .also-mark { flex-basis: 100%; margin: 0; white-space: normal; overflow-wrap: anywhere; }

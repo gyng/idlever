@@ -359,3 +359,29 @@ fixed/accepted Cut180. Do not freeze/release blind players until individual
 dispositions/refinement complete. Frozen41271 remains oldb60, not these fixes.
 Local no-HMR GPU inspection server53631 session79764 owns mutable dev source;
 not a freeze. Goal ACTIVE, no verified score, no deployment.
+
+Cut183 accepted candidate source: all six remaining presentation findings
+implemented (Send/Watch action title; default-nearest vs explicit throw target;
+Gross gold for core pre-loss income; Run totals for incomplete wallet scope;
+Savings saved/capacity; Quartermaster given in actual Works). Actual earned
+save GPU320/400/1440 validates labels and target-hint action-column geometry.
+No Rust/balance/resource/rule-execution change. Additional deterministic
+package Details repaint race fixed, expanded rules preserved, stale detached
+toggle events ignored. Source/evidence at docs/CUT183_QA_DISPOSITIONS.md and
+cut183/finding-dispositions.json,accepted-candidate/.
+
+Final full35259 TERMINAL0:124/124359.167s, all562guarded inputs match; types/
+copy pass. Prior full failures preserved:88049 class-switch Escape (isolated
+unchanged pass, originalcauseunproven);96303 combat-rules scripted pausedphase
+(controlled batches now, all18assertions kept);71738 enemy-tip500ms (bothenemy
+gesturegroups isolated, unchangedchecks);15724 rules-lockDetailsrepaint
+(deterministicRED and actualproductfix). No false all-green relabeling.
+
+Next clean commit/build/freeze: scratchpad/cut183/freeze-candidate.py adapts
+oldstrict166validator to owner's exact current--full--list inventory124 and
+records historical extras; all prior source/clean/buildstamp/WASM/nooverwrite/
+readonly checks retained. Latest diagnostic server53637 session40404; older
+53631/33/35 ownedservers stopped, latestGPUbrowser closed. Frozen41271 still
+oldb60. New final candidate must be frozen/served/hash+GPU+realWASM checked,
+then same-sitting calibration and TWO purefresh ratings. Unreleasedb60templates
+are stale, do not launch unchanged. GoalACTIVE, no verified score, no deploy.

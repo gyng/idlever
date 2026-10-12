@@ -43,7 +43,7 @@ export type TownHooks = {
   quest(anchor: HTMLElement): void;
 };
 /* copy:label */
-const LABEL: Record<string, string> = { mouth: "dungeon", tent: "hero", crate: "supplies", blacksmith: "forge", storehouse: "stored gear", kennel: "companions", bank: "savings", staked: "next plot", board: "quest board", chest: "chest", worker: "next worker" };
+const LABEL: Record<string, string> = { mouth: "Send hero", tent: "hero", crate: "supplies", blacksmith: "forge", storehouse: "stored gear", kennel: "companions", bank: "savings", staked: "next plot", board: "quest board", chest: "chest", worker: "next worker" };
 /* copy:label */
 const BUILD_NAME: Record<string, string> = { house: "house", blacksmith: "forge", storehouse: "storehouse", kennel: "kennel", bank: "bank" };
 /** a building's tile on the bar: its id (the old console ids, kept: tests and badges key on them), icon and word */
@@ -185,14 +185,14 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const nwAt = nw && !lit0 && s.markers.length < 3 ? (want.some((x) => x.id === postTarget(nw.post)) ? postTarget(nw.post) : want.some((x) => x.id === "mouth") ? "mouth" : undefined) : undefined;
     for (const w of want) {
       let b = btns.get(w.id);
-      const label = w.id === "staked" && s.staked?.ready ? /* copy:button */ `Build ${BUILD_NAME[s.staked.id] ?? s.staked.id}` : LABEL[w.id] ?? w.id;
+      const label = w.id === "staked" && s.staked?.ready ? /* copy:button */ `Build ${BUILD_NAME[s.staked.id] ?? s.staked.id}` : w.id === "mouth" && app.lineage.live ? /* copy:button */ "Watch run" : LABEL[w.id] ?? w.id;
       if (!b) {
         b = h("button", { class: `town-hit hit-${w.id}`, "data-building": w.id, "aria-label": label, onclick: (e: Event) => tap(w.id, e) }, h("span", { class: "vh" }, label));
         if (w.id === "staked") detailHost(b, plotDetails);
         else if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         btns.set(w.id, b); hits.appendChild(b);
       }
-      b.setAttribute("aria-label", label);
+      b.setAttribute("aria-label", label); b.title = label;
       b.querySelector(".vh")!.textContent = label;
       // markers ride their building's target (one surface, the same panel)
       const mk = s.markers.filter((m) => m.at === w.id);
@@ -354,7 +354,7 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
       if (!T) { close(); return; }
       const room = Math.max(0, T.bank_cap - T.bank), put = Math.min(L.gold, room);
       replace(body, h("div", { class: "label row-label" }, /* copy:label */ "Savings"),
-        h("div", { class: "bank-line num" }, h("b", { class: "gold" }, `$${T.bank}`), h("span", { class: "dim" }, ` / $${T.bank_cap}`)),
+        h("div", { class: "bank-line num" }, h("b", { class: "gold" }, `$${T.bank}`), " ", h("span", { class: "dim" }, /* copy:label */ "saved"), h("span", { class: "dim bank-capacity" }, ` · $${T.bank_cap} `, /* copy:label */ "capacity")),
         h("div", { class: "bank-bar", "aria-hidden": "true" }, h("span", { class: "fill", style: `width:${Math.round(Math.min(1, T.bank / Math.max(1, T.bank_cap)) * 100)}%` })),
         T.interest > 0 ? h("div", { class: "num dim bank-interest" }, /* copy:callout */ `interest $${T.interest}`) : "",
         h("div", { class: "chips bank-acts" },

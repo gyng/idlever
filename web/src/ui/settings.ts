@@ -85,7 +85,7 @@ export function openSettings(app: App, onClose?: () => void): void {
       const b: HTMLButtonElement = h("button", { class: `chip worker-switch${on ? " on" : ""}`, role: "switch", "aria-checked": on ? "true" : "false", "data-worker": id, onclick: async () => {
         const now = b.getAttribute("aria-checked") === "true";
         if (await app.mutate(() => app.engine.setWorker!(id, !now))) { const n = app.lineage.tree?.nodes.find((x) => x.id === id); b.replaceWith(workerChip(id, name, !n?.paused)); }
-      } }, name, h("small", { class: "dim" }, on ? /* copy:label */ " on" : /* copy:label */ " off"));
+      } }, name, id === "quartermaster" ? h("small", { class: "dim worker-source" }, /* copy:label */ " given") : "", h("small", { class: "dim" }, on ? /* copy:label */ " on" : /* copy:label */ " off"));
       return b;
     };
 

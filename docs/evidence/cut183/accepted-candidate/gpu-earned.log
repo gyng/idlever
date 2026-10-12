@@ -1,0 +1,17 @@
+{"next":"clerk","nodes":[{"id":"clerk","kind":"worker","branch":"town","name":"clerk","state":"open","chore":"deposit","count":0,"need":3,"price":800,"affordable":true,"fallback_h":36,"tip":"banks spare gold","beat":"AUTO BANK","post":"bank","progress":"0/3","eta_h":19}],"town":{"home":true,"auto_collect":true,"buildings":[{"id":"blacksmith","level":2,"day":0,"trigger":"first gold home"},{"id":"storehouse","level":1,"day":0,"trigger":"first find kept"},{"id":"kennel","level":1,"day":0,"trigger":"first tame"},{"id":"bank","level":1,"day":0,"trigger":"a night's purse"}],"next_ready":false,"bank":0,"bank_cap":19734,"interest":0,"quest":{"goal":"reach D8 · no return","reward":"title","progress":1,"done":true,"swap":true},"quests_done":1,"workers":[{"id":"quartermaster","post":"crate","rank":1},{"id":"porter","post":"mouth","rank":1},{"id":"scout","post":"fire","rank":1},{"id":"armourer","post":"storehouse","rank":1},{"id":"apprentice","post":"blacksmith","rank":1},{"id":"keeper","post":"storehouse","rank":1}]},"markers":[{"text":"$1600"},{"text":"deposit 0/3 · or 19h","id":"clerk"}],"screen":"camp"}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.textContent: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-worker=quartermaster] .worker-source')[22m
+
+    at /home/g/p/riddle/scratchpad/cut183/gpu-earned.mjs:21:195 {
+  log: [
+    "  - waiting for locator('[data-worker=quartermaster] .worker-source')"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.5.0

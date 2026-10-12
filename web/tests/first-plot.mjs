@@ -13,4 +13,5 @@ assert.equal(await p.locator('.editor .row.tablet.compact').first().isVisible(),
 const identity=await p.evaluate(()=>{const e=document.querySelector('.topbar .heir-ordinal'),word=e.querySelector('.kw'),range=document.createRange();range.selectNodeContents(e.firstChild);const n=range.getBoundingClientRect(),w=word.getBoundingClientRect();return{text:e.textContent,oneLine:Math.abs(n.top-w.top)<2,tooltip:word.dataset.kw,overflow:document.documentElement.scrollWidth>innerWidth};});
 assert.equal(identity.text,'1st heir');assert.equal(identity.oneLine,true);assert.equal(identity.tooltip,'heir');assert.equal(identity.overflow,false);
 if(shots){await p.mouse.move(2,2);await p.screenshot({path:`${shots}/${width}-home.png`});}
+assert.equal(await p.locator('.hit-mouth').getAttribute('aria-label'),'Send hero');
 console.log(width,'first plot visibility, controls, busy dedup and real construction PASS');await p.close();}}finally{await b.close();}

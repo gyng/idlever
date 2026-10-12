@@ -9,7 +9,10 @@ try{for(const width of stateWidths([400,1440])){
   const a=window.__riddle,s=await a.engine.send();s.hero.name='Wren Ash';a.engine.send=async()=>s;a.watchMode='one';a.slowdowns=false;
   a.sets[a.active]={rows:[{conds:[],verb:{v:'attack',a:'nearest'}},{conds:[],verb:{v:'shoot',a:'tag:caster'}},{origin:'tactic:corridor_fighting',conds:[{k:'foes>=',n:2}],verb:{v:'attack',a:'nearest'}}]};
   a.lineage.packages={...a.lineage.packages,all:[{id:'corridor_fighting',name:'Corridor fighting',kind:'tactic'}]};
-  let turn=s.turn,done=0;a.engine.step=async ticks=>{const t=turn+1;turn+=ticks;const phase=window.__rulePhase||0;let events=[];
+  // Supply controlled batches only when requested. Empty fast batches can fill
+  // the real bounded look-ahead buffer before a paused test requests its next phase.
+  window.__requestRulePhase=phase=>{window.__rulePhase=phase;const release=window.__releaseRuleBatch;window.__releaseRuleBatch=null;release?.();};
+  let turn=s.turn,done=0;a.engine.step=async ticks=>{if((window.__rulePhase||0)<=done)await new Promise(resolve=>window.__releaseRuleBatch=resolve);const t=turn+1;turn+=ticks;const phase=window.__rulePhase||0;let events=[];
    const rule=(row=0,text='attack nearest',v='attack',arg='nearest')=>({k:'rule',t,row,text,verb:{v,a:arg}});
    if(phase>done){done=phase;window.__ruleEmitted=phase;
     if(phase===1)events=[rule(),{...rule(),t:t+.1}];
@@ -27,16 +30,16 @@ try{for(const width of stateWidths([400,1440])){
   };a.go({kind:'watch'});
  });
  await p.waitForFunction(()=>document.querySelector('.watch')?.dataset.tick);await p.locator('.console .gem').click();
- await p.evaluate(()=>window.__rulePhase=1);await p.waitForFunction(()=>window.__ruleEmitted===1);
+ await p.evaluate(()=>window.__requestRulePhase(1));await p.waitForFunction(()=>window.__ruleEmitted===1);
  await p.waitForTimeout(150);if(await p.locator('.combat-lines li').count())throw Error('paused decisions appeared early');let checks=1;
  await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.log-repeat')?.textContent===' ×2');
  if(await p.locator('.combat-lines li').count()!==1)throw Error('identical decisions occupy multiple rows');checks++;
- await p.locator('.console .gem').click();await p.evaluate(()=>window.__rulePhase=2);await p.waitForFunction(()=>window.__ruleEmitted===2);
+ await p.locator('.console .gem').click();await p.evaluate(()=>window.__requestRulePhase(2));await p.waitForFunction(()=>window.__ruleEmitted===2);
  await p.waitForTimeout(150);if(await p.locator('.log-repeat').first().textContent()!==' ×2')throw Error('paused count includes future decisions');checks++;
  await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.log-repeat')?.textContent===' ×3');
  if(await p.locator('.combat-lines li').count()!==1)throw Error('batch boundary split identical decisions');checks++;
  checks+=await p.evaluate(()=>{const row=document.querySelector('.combat-lines li');if(!(Number(row.dataset.firstTick)<Number(row.dataset.tick)))throw Error('group tick range lost');return 1;});
- await p.evaluate(()=>window.__rulePhase=3);await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('rules checkpoint'));
+ await p.evaluate(()=>window.__requestRulePhase(3));await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('rules checkpoint'));
  checks+=await p.evaluate(()=>{let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;},rows=[...document.querySelector('.combat-lines').children],text=rows.map(r=>r.textContent);
   check(rows.length===15,'distinct events preserved');
   check(text.filter(t=>t.includes('attack nearest')).length===3,'changed row and argument remain separate');
@@ -48,7 +51,7 @@ try{for(const width of stateWidths([400,1440])){
   check(rows.filter(r=>r.querySelector('.log-repeat')?.textContent).length===1,'only initial identical group counted');
   check(getComputedStyle(document.querySelector('.combat-log')).backgroundImage==='none','plain unboxed overlay');return n;
  });
- await p.locator('.console .gem').click();await p.evaluate(()=>window.__rulePhase=4);await p.waitForFunction(()=>window.__ruleEmitted===4);await p.waitForTimeout(150);
+ await p.locator('.console .gem').click();await p.evaluate(()=>window.__requestRulePhase(4));await p.waitForFunction(()=>window.__ruleEmitted===4);await p.waitForTimeout(150);
  const cue=p.locator('[data-origin="tactic:corridor_fighting"]');if(await cue.getAttribute('data-count'))throw Error('owned count released while paused');checks++;
  await p.locator('.console .gem').click();await p.waitForFunction(()=>document.querySelector('.combat-lines')?.textContent.includes('owned checkpoint'));
  if(await cue.getAttribute('data-count')!=='2')throw Error('owned activations lost');checks++;

@@ -17,8 +17,10 @@ try {
    window.__rulesLockSave=await a.engine.save();
    const {openPackages}=await import('/src/ui/packages.ts');openPackages(a);
   });
-  await page.locator('.pkg-advanced > summary').click();
+  await page.evaluate(()=>{document.querySelector('.pkg-advanced > summary').click();window.__riddle.emitChange();if(!document.querySelector('.pkg-advanced').open)throw Error('Details closed before queued toggle');});
   await page.locator('.pkg-rows-btn').click();
+  await page.evaluate(()=>window.__riddle.emitChange());
+  if(!await page.locator('.pkg-rows').isVisible())throw Error('Expanded rules collapsed on repaint');
   if(!(await page.locator('.pkg-rule-lock').innerText()).includes('Read only'))throw Error('Expanded rules must explain read-only status');
   await page.locator('.pkg-pen-lock').click();
   const body=page.locator('.pkg-pen-needs');await body.waitFor();

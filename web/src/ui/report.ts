@@ -466,7 +466,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     // QA 1a2a4a9 (P: "the restock was skipped with no word"): a re-pack the purse could not pay
     if (r.repeat_short) pieces.push(h("button", { class: "capped warn ledger-link", onclick: () => openGoldSheet(app) }, /* copy:callout */ "repeat short"));
     if (!pieces.length) return null;
-    const out: (string | HTMLElement)[] = []; pieces.forEach((p, i) => { if (i) out.push(" · "); out.push(p); });
+    const out: (string | HTMLElement)[] = r.gold?.ledger ? [] : [h("span", {class:"gold-scope"}, /* copy:label */ "Run totals"), " · "]; pieces.forEach((p, i) => { if (i) out.push(" · "); out.push(p); });
     return h("div", { class: "gold-line dim num" }, ...out);
   };
   // Cut 6 §1: one ledger line per exit, verbatim from the engine, under the tiles (oldest first; the core keeps the last 5
@@ -716,7 +716,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
   const workersGold = gx?.spent_by_workers ?? (ledger?.terms ? -ledger.terms.filter((t) => t.label === "apprentice" || t.label === "works").reduce((n, t) => n + Math.min(0, t.amount), 0) : boughtGold);
   const goldFace = ledger ? `+$${earnedHead}` : `$${earnedHead}`;
   const earnedGold = detailHost(h("button", { type: "button", class: "tile plaque report-gold", "data-k": "gold", "data-net": ledger ? ledger.net : "", "data-earned": earnedHead, "data-workers": workersGold, onclick: () => openGoldSheet(app) },
-    icon("gold"), h("b", { class: "num" }, goldFace), h("span", { class: "label" }, /* copy:label */ "Gold earned"),
+    icon("gold"), h("b", { class: "num" }, goldFace), h("span", { class: "label" }, ledgerLost > 0 ? /* copy:label */ "Gross gold" : /* copy:label */ "Gold earned"),
     workersGold > 0 ? h("small", { class: "report-workers-spent num dim", title: /* copy:tooltip */ "the workers' forge and works spending · their own term" }, /* copy:callout */ `−$${workersGold} workers`) : ""), () => termRows() ? [
       // Cut 117 §1: the core's named terms, inflows first — earned − spent = purse change, to the dollar
       h("div", { class: "kw-tip-head" }, h("b", null, /* copy:label */ "Gold change")),

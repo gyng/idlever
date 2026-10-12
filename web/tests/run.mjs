@@ -41,7 +41,7 @@ if (!process.env.RIDDLE_PORT) {
 // timing gates (clarity's rates, fights' holds) into flakes; the timing gates start first, then the rest
 // longest first (`OWN`: each test's own seconds in a quiet suite, 2026-09-26 — cut25's real-wasm watch
 // started last and ended the suite alone), sharing the remaining slots (`TEST_JOBS` overrides the width).
-const TIMING = ["fights:break", "fights", "cut13", "clarity:deep", "clarity:card", "clarity:core,watch", "cut12", "boss-beat-quiet"];
+const TIMING = ["fights:break", "fights", "cut13", "clarity:deep", "clarity:card", "clarity:core,watch", "cut12", "boss-beat-quiet", "enemy-tips", "enemy-surfaces"];
 const OWN = { cut25: 180, fights: 128, qaj: 88, "ui:keep": 40, "ui:frame": 28, "ui:stall": 25, "ui:qa": 22, "ui:cut18": 19, "ui:cut19": 18, "clarity:hold": 81, "clarity:deep": 66, cut13: 61, "clarity:card": 55, qa9: 52, screens: 47, "clarity:core,watch": 42, cut27: 38, cut23: 36, "clarity:paint": 30 };
 // Measured Cut181 headless costs order the complete current inventory longest
 // first. These are scheduling estimates, never test limits; new groups use20s.
@@ -196,7 +196,7 @@ const printResult = (r) => {
 // beside and a retry (1.3 s at a load of 31) — they run last, with nothing beside, ~30 s, on a server the other tests
 // have warmed (first on a cold one its refine read 3.4 s where it reads 1.9 s warm). (The deep fixture's timings are
 // notes unless RIDDLE_DEEP_GATE=1, which wants a quiet headed machine: `clarity:deep` runs as a heavy.)
-const HEAVY = ["fights:break", "clarity:card", "clarity:deep", "clarity:core,watch", "fights", "cut13", "cut12", "boss-beat-quiet"], HEAVY_WIDTH = Number(process.env.TEST_HEAVY_WIDTH ?? (selected.suite === "exhaustive" ? 3 : 1));
+const HEAVY = ["fights:break", "clarity:card", "clarity:deep", "clarity:core,watch", "fights", "cut13", "cut12", "boss-beat-quiet", "enemy-tips", "enemy-surfaces"], HEAVY_WIDTH = Number(process.env.TEST_HEAVY_WIDTH ?? (selected.suite === "exhaustive" ? 3 : 1));
 const queue = [...order], done = [];
 let heavyLive = 0, othersLive = 0, soloLive = 0;
 const nextJob = () => {

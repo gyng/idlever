@@ -125,7 +125,7 @@ async function lintButtons(where, expectScreen) {
     tried++; clicks++;
     // The dungeon click includes the visible 650ms walk into the entrance.
     // Require its actual navigation; a 280ms text sample precedes that action.
-    if (d.text === "dungeon") await waitFor(x => x?.screen === "watch", "dungeon entrance opens watch", 5000);
+    if (/(^|\s)hit-mouth(\s|$)/.test(d.cls)) await waitFor(x => x?.screen === "watch", "dungeon entrance opens watch", 5000);
     await sleep(280);
     const s = await state();
     if (s.sheets) await lintSheet(`${where} · ${d.text || d.cls}`);

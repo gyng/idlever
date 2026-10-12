@@ -121,7 +121,7 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
       const sil = (n: WorkNode): HTMLElement => h("div", { class: "wnode sil", "data-node": n.id, "data-state": n.state },
         h("span", { class: "wn-ico" }, nodeIcon(n.id, n.name)), h("div", { class: "wn-main" }, h("span", { class: "wn-name" }, n.name), h("small", { class: "wn-state num" }, silLine(n))));
       const done = v.done.length ? h("div", { class: "works-done" }, h("span", { class: "wd-mark", "aria-hidden": "true" }, "✓"),
-        ...v.done.map((n) => h("span", { class: `wd${n.paused ? " off" : ""}`, "data-node": n.id, "data-rank": n.rank ?? 1, title: blurb(n.id) || n.name }, nodeIcon(n.id, n.name), h("small", null, n.name),
+        ...v.done.map((n) => h("span", { class: `wd${n.paused ? " off" : ""}`, "data-node": n.id, "data-rank": n.rank ?? 1, title: blurb(n.id) || n.name }, nodeIcon(n.id, n.name), h("small", null, n.name), n.id === "quartermaster" ? h("small", {class:"worker-source dim"}, /* copy:label */ " given") : "",
           rankNum(n.rank) ? h("b", { class: "wd-rank num" }, ` ${rankNum(n.rank)}`) : ""))) : "";
       // week 2: the one rank on offer (`Works.lit_rank`, only while no hire is lit) — its card and its promote, above the done row
       const rk = W.lit_rank ? W.nodes.find((n) => n.id === W.lit_rank) : undefined;

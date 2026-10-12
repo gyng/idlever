@@ -204,6 +204,11 @@ export function openPackages(app: App, anchor?: HTMLElement | null, initialKind?
     if (focusPkg && P0 && focusPkg.id !== P0.stance && !(P0.tactics ?? []).includes(focusPkg.id) && focusPkg.id !== P0.temperament) choosing.add(focusPkg.kind);
     const equip = (p: Package, slot: number): void => { void app.mutate(() => app.engine.equipPackage!(p.id, slot), /* copy:callout */ p.name, true).then((ok) => { if (ok) { choosing.delete(p.kind); if (p.kind === "tactic") tacticSlot = null; } paint(); }); };
     const paint = (): void => {
+      // Native details toggles before its queued toggle event. Preserve the
+      // current DOM state when forecast/lineage replies repaint in that gap.
+      const prior = body.querySelector<HTMLDetailsElement>(".pkg-advanced");
+      if (prior) details = prior.open;
+      const rowsOpen = body.querySelector(".pkg-rows-btn")?.getAttribute("aria-expanded") === "true";
       const L = app.lineage, P = L.packages; if (!P) { close(); return; }
       const freeSlot = Math.min(tacticSlot ?? Math.max(0, (P.tactics ?? []).length), Math.max(0, (P.tactic_slots ?? 0) - 1));
       const selected: [string, number][] = P.all.filter((p) => p.owned && ((choosing.has("stance") && p.kind === "stance" && p.id !== P.stance) || (choosing.has("tactic") && p.kind === "tactic" && !(P.tactics ?? []).includes(p.id)))).map((p) => [p.id, p.kind === "tactic" ? freeSlot : 0]);
@@ -349,8 +354,8 @@ export function openPackages(app: App, anchor?: HTMLElement | null, initialKind?
         extra.push(h("section", { class: "pkg-sec drills" }, h("div", { class: "label pkg-head" }, kw("drill", /* copy:label */ "boss counters")), ...lines, tameLine ?? ""));
       }
       // the compiled rows, folded: each its package, a shadowed one greyed with its winner
-      extra.push(rowsFold(app, P));
-      const more = h("details", { class: "pkg-advanced", open: details, ontoggle: (e: Event) => { details = (e.currentTarget as HTMLDetailsElement).open; } }, h("summary", null, /* copy:button */ "details"), ...extra, h("div", { class: "chips pkg-unlocks" }, locked("stance"), locked("tactic")));
+      extra.push(rowsFold(app, P, rowsOpen));
+      const more = h("details", { class: "pkg-advanced", open: details, ontoggle: (e: Event) => { const node = e.currentTarget as HTMLDetailsElement; if (node.isConnected) details = node.open; } }, h("summary", null, /* copy:button */ "details"), ...extra, h("div", { class: "chips pkg-unlocks" }, locked("stance"), locked("tactic")));
       // blind ad71e72 (A: "inert" on three taps): nothing to compare (no other style or tactic owned) — the button stands disabled;
       // a comparison whose every move sits in the noise says so (`all similar`) rather than painting nothing
       const comparable = stanceAlts.length > 0 || owned("tactic").some((p) => !(P.tactics ?? []).includes(p.id) || p.variants?.length === 2);
@@ -389,7 +394,7 @@ export function openPackages(app: App, anchor?: HTMLElement | null, initialKind?
 
 /** The compiled set under one `rows` fold: each row its words and its package (`Steady`), a row always pre-empted greyed with its winner
  *  (`Guarded wins`). Folded by default: the slots are the panel. */
-function rowsFold(app: App, P: Packages): HTMLElement {
+function rowsFold(app: App, P: Packages, expanded = false): HTMLElement {
   const rows = app.lineage.sets?.[app.lineage.active_set ?? 0]?.rows ?? app.rules.rows;
   const src = P.rows ?? [];
   const stance = P.all.find((p) => p.id === P.stance)?.name ?? P.stance;
@@ -400,13 +405,13 @@ function rowsFold(app: App, P: Packages): HTMLElement {
       h("h2", {}, /* copy:label */ "Custom rules"),
       ...penNeeds(P).map((text) => h("p", {}, text)))) },
       icon("edit", "✎"), /* copy:button */ "Custom rules", h("small", { class: "dim" }, ` · ${penWaits(P)}`)));
-  const list = h("div", { class: "pkg-rows", hidden: true }, lock, ...rows.map((r, i) => {
+  const list = h("div", { class: "pkg-rows", hidden: !expanded }, lock, ...rows.map((r, i) => {
     const s = src[i]?.shadowed_by;
     return h("div", { class: `pkg-row${s !== undefined && s !== null ? " shadowed" : ""}`, "data-i": i },
       h("span", { class: "pkg-row-text num" }, rowLabel(r)), h("small", { class: "pkg-row-src dim" }, s !== undefined && s !== null ? /* copy:callout */ `${label(s)} wins` : label(i)));
   }));
   const n = src.filter((x) => x.shadowed_by !== undefined && x.shadowed_by !== null).length;
-  const btn: HTMLButtonElement = h("button", { class: "details-fold pkg-rows-btn num", "aria-expanded": "false", onclick: () => { list.hidden = !list.hidden; btn.setAttribute("aria-expanded", String(!list.hidden)); btn.classList.toggle("on", !list.hidden); } },
+  const btn: HTMLButtonElement = h("button", { class: `details-fold pkg-rows-btn num${expanded ? " on" : ""}`, "aria-expanded": String(expanded), onclick: () => { list.hidden = !list.hidden; btn.setAttribute("aria-expanded", String(!list.hidden)); btn.classList.toggle("on", !list.hidden); } },
     h("span", { class: "fold-mark", "aria-hidden": "true" }, "▸ "), /* copy:button */ "rules", h("small", { class: "dim" }, n ? /* copy:callout */ ` · ${rows.length} · ${n} greyed` : ` · ${rows.length}`));
   return h("section", { class: "pkg-sec rows" }, btn, list);
 }

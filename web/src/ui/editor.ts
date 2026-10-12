@@ -43,6 +43,12 @@ export function alsoMatches(row: Row, why: (RowWhy & { fired_on?: FiredOn[] }) |
   if (!why?.fired_on?.length || !row.conds.some((c) => c.k === "foe_tag" && c.t === "boss")) return [];
   return why.fired_on.filter((f) => !f.boss && f.n > 0).sort((a, b) => b.n - a.n).map((f) => f.kind.replace(/^boss_/, "").replace(/_/g, " "));
 }
+/** Foe conditions determine when a row can fire; throws select their own target. */
+export function throwTarget(row: Row): string | null {
+  if (row.verb.v !== "throw" || !row.conds.some(c => c.k === "foe_tag")) return null;
+  const [kind, target = "nearest"] = (row.verb.a ?? "").split(",");
+  return kind === "bell" ? null : target.replace(/^tag:/, "").replace(/_/g, " ");
+}
 export function moveTarget(rows: Row[], from: number, to: number, end: number, full: boolean): number {
   if (to === from || from < 0 || from >= rows.length) return -1;
   if (from < end) { const at = Math.max(0, Math.min(to, end - 1)); return at === from ? -1 : at; }
@@ -241,13 +247,20 @@ export function renderEditor(bind: Binding, highlight?: number, opts: EditorOpts
         const text = el.querySelector(":scope > .rtext"), grip = el.querySelector(":scope > .grip");
         if (text) text.appendChild(m); else if (grip) grip.appendChild(m); else el.appendChild(m);
       }
+      el.querySelector(".throw-target")?.remove();
+      const target = rows[i] ? throwTarget(rows[i]) : null;
+      if (target) {
+        const text = el.querySelector(":scope > .rtext"), chips = el.querySelector(":scope > .chips");
+        const hint = h("small", {class:"throw-target num dim", title: /* copy:tooltip */ "Foe condition checks presence · action chooses its target"}, /* copy:callout */ `target: ${target}`);
+        (text ?? chips ?? el).appendChild(hint);
+      }
       // Cut 121 §4 (B: a boss rule misfired): a `foe: boss` row that fired on a foe that is no boss says which (`also matches: siren`)
-      el.querySelector(":scope > .rtext > .also-mark, :scope > .grip > .also-mark, :scope > .also-mark")?.remove();
+      el.querySelector(":scope > .rtext > .also-mark, :scope > .chips > .also-mark, :scope > .grip > .also-mark, :scope > .also-mark")?.remove();
       const also = rows[i] ? alsoMatches(rows[i], bind.rowWhy?.()[i]) : [];
       if (also.length) {
         const m = h("small", { class: "also-mark num", "data-also": also.join(","), title: /* copy:tooltip */ "fired on these too · add a foe cond" }, /* copy:callout */ `also matches: ${also.slice(0, 2).join(", ")}`);
-        const text = el.querySelector(":scope > .rtext"), grip = el.querySelector(":scope > .grip");
-        if (text) text.appendChild(m); else if (grip) grip.appendChild(m); else el.appendChild(m);
+        const text = el.querySelector(":scope > .rtext"), chips = el.querySelector(":scope > .chips");
+        (text ?? chips ?? el).appendChild(m);
       }
       if (!on) return;
       const mark = h("small", { class: "shadow-mark num" }, /* copy:callout */ `under ${ruleName(rows, by)}`);

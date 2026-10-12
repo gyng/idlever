@@ -26,5 +26,10 @@ try{for(const width of responsiveWidths([320,400,1440])){
  await p.locator('.details-fold').click();const limited=p.locator('.gold-line .supply-limit');
  assert.match(await limited.textContent(),/income limit$/);assert.doesNotMatch(await limited.textContent(),/income spent/);
  await limited.hover();await p.waitForFunction(()=>document.querySelector('#kw-tip')?.textContent.includes('Restocking waited for gold earned while away'));
+ await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:96,salvage:19,wake:0,spent:30,lost:65,unkept:65,net:85,earned:180,ledger:{earned:180,spent:95,net:85,terms:[{label:'carried',amount:161},{label:'salvage',amount:19},{label:'lost',amount:-65},{label:'supplies',amount:-30}]}}}}));
+ assert.equal(await gold.locator('b').textContent(),'+$180');assert.equal(await gold.locator('.label').textContent(),'Gross gold');
+ await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:96,salvage:19,wake:0,spent:30}}}));
+ assert.equal(await gold.locator('b').textContent(),'$115');assert.equal(await gold.locator('.label').textContent(),'Gold earned');await p.locator('.details-fold').click();assert.equal(await p.locator('.gold-scope').textContent(),'Run totals');
+ const targets=await p.evaluate(async()=>{const {throwTarget}=await import('/src/ui/editor.ts');const conds=[{k:'foe_tag',t:'boss'}];return ['fire','fire,tag:boss','bell'].map(a=>throwTarget({conds,verb:{v:'throw',a}}));});assert.deepEqual(targets,['nearest','boss',null]);
  console.log(width,'supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS');await p.close();
 }}finally{await b.close();}
