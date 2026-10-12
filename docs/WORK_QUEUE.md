@@ -64,6 +64,7 @@ more labels or uniformly stronger upgrades.
 | 26 | Supplies → Bloodline Loadouts | Supplies feels confusing. Consider consolidating starting gear, consumables and pet/leash choices into a clear Loadouts surface inside Bloodlines, alongside Class tree and Legacy. Forge handles permanent unlocks/upgrades; Loadouts selects the eligible unlocked kit. | Inventory what Supplies currently controls so a label change does not hide missing functions. Prototype one bloodline's saved kit, item effects, class/slot rules and locked-item route to Forge. Keep selected hero identity and free automatic reuse clear, with no mandatory shopping/stock management on every delve. |
 | 27 | Unlocked items are free to use | Firm owner rule: once an item is unlocked, it should not take gold to use it. Gold can buy permanent item unlocks/upgrades, not repeated use of the same item. | Amend the economy contract and older per-run supply/forge gates explicitly. Verify unlocked gear, consumables and leash equip/use/replenishment at zero gold, including repeat delves, death/replacement, save/reload, offline and multiple heroes. Show unlock price separately from free use; no hidden restock/repair/preparation fee. Balance build constraints and progression around this rule rather than reintroducing monetary upkeep. |
 | 28 | Live side depth map | Show a compact depth indicator beside the live view, like a map with points of interest and milestones: current floor, known boss depths, explored landmarks and relevant records/goals. | Prototype a side rail for one earned delve and its replay. Derive markers from actual route/floor/knowledge data, not guessed depth intervals; explain icons on hover/focus/tap. Follow selected hero and replay cursor, including seek, floor transitions, return/death/clear, route changes and offline catches. Show known information without exposing unrevealed encounters. Keep the board readable at phone/desktop sizes and avoid another oversized empty HUD strip. |
+| 29 | Subtle live movement trail | Explore faint footsteps or a short-lived trail so the player can track the hero's movement in the live scene. | Prototype one tracked hero on actual movement events, comparing footprints with a restrained trail in the original art style. Keep it short-lived, bounded and distinguishable from hazards/target cues; no neon path or persistent clutter. Follow replay time and actual known movement, including pause/speed/seek, teleports and floor changes. Clear stale traces; preserve fog/knowledge limits, reduced motion, full/low/off and GL/Canvas fallbacks. Check crowded fights, dark/light terrain and phone/desktop views with matched clips and measured costs. |
 
 ### Loadouts and free unlocked items — latest owner amendment
 
@@ -95,6 +96,10 @@ optional details. Clicking a marker inspects its known information; it does not
 silently move the hero or change the delve. During replay/seek, the map follows
 the visible replay cursor rather than a newer background simulation. Prototype
 phone and desktop placement alongside the floating controls and compact HUD.
+Also compare faint footsteps with a restrained short movement trail for the
+tracked hero. Show actual known movement and keep the marks brief/bounded,
+clearing or rebuilding them on floor transitions and replay seeking. Tie their
+lifetime to replay time and avoid obscuring targets, attacks or terrain.
 
 The live view is a main way to understand and enjoy a build. Audit what a player
 can currently infer from one earned fight: who is acting, which target is chosen,

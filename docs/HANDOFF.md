@@ -114,6 +114,11 @@ that loop; automatic loot and base life reduce chores and give results context.
     offline updates without future spoilers or excessive HUD space. Markers
     offer accessible details and fit both phone and desktop layouts.
 
+25. Explore subtle footsteps or a short-lived movement trail for the tracked
+    hero in live view. Use actual known movement and replay timing; keep it
+    bounded/readable, clear on floor changes/seek, and respect pause/speed,
+    reduced motion, effects settings and GL/Canvas fallbacks.
+
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior
