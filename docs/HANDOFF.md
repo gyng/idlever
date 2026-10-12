@@ -385,3 +385,18 @@ readonly checks retained. Latest diagnostic server53637 session40404; older
 oldb60. New final candidate must be frozen/served/hash+GPU+realWASM checked,
 then same-sitting calibration and TWO purefresh ratings. Unreleasedb60templates
 are stale, do not launch unchanged. GoalACTIVE, no verified score, no deploy.
+
+Cut183 source committed/pushed8c17acb4e15ea6c8aa757c3600929f2116245631.
+Clean rebuilt accepted assets now immutable at
+/tmp/riddle-cut183-8c17acb4e15e-frozen/assets, served41273 session80531.
+262files, manifestSHAc38cc86f30d4485c587cb931702f86672ecd882138b0135fb2e98421c26cbd4b.
+ShippingWASM exactsame58f907...4879984bytes. Smoke66917 TERMINAL0 checksall
+262servedhashes, realWASM, coldpublicfreehouse and exactsavedreload direct
+Town, privateGPUphone/desktop/menu plus separatelylabelledcosmetic23hpreview
+(Date.now unchanged,noevaluationcredit). Evidence cut183/frozen-candidate/.
+Menucheckpointposted. No blind players released, no score. Old41271 remains
+historicalb60; launch only new41273 after same-sitting calibration and new
+finalbuild bindings/context audits. Unreleasedb60blindtemplates are stale.
+RootgoalACTIVE: all11findingdispositions accepted plus package race fix; next
+TWO purefresh complete independent ratings on same immutable source.
+Do not deploy.
