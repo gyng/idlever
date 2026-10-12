@@ -1,0 +1,54 @@
+{
+  "url": "http://127.0.0.1:5243/riddle/",
+  "at": "2026-10-12T15:36:03.210Z",
+  "errors": [],
+  "failures": [],
+  "wasm": [
+    {
+      "url": "http://127.0.0.1:5243/riddle/assets/riddle_wasm_bg-Cpc0WZiw.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5243/riddle/assets/riddle_wasm_bg-Cpc0WZiw.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5243/riddle/assets/riddle_wasm_bg-Cpc0WZiw.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5243/riddle/assets/riddle_wasm_bg-Cpc0WZiw.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5243/riddle/assets/riddle_wasm_bg-Cpc0WZiw.wasm",
+      "status": 200
+    }
+  ],
+  "primaryHeight": 104,
+  "engine": {
+    "kind": "wasm",
+    "version": "0.1.0",
+    "town": {
+      "home": true,
+      "auto_collect": true,
+      "buildings": [],
+      "next_ready": false,
+      "next": "blacksmith",
+      "next_trigger": "first gold home",
+      "bank": 0,
+      "bank_cap": 100,
+      "interest": 0,
+      "quests_done": 0,
+      "workers": [
+        {
+          "id": "quartermaster",
+          "post": "crate",
+          "rank": 1
+        }
+      ]
+    },
+    "heroes": 1
+  },
+  "pass": true
+}

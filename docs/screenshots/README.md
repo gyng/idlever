@@ -2,6 +2,9 @@
 
 These images are copied without edits. They show development builds, not a
 promise that the hosted alpha has the same features or a verified fun score.
+The README displays all three at450px height, preserving their aspect ratios.
+Combat was captured at a shorter viewport than town/class skills; equal widths
+previously produced a shorter middle image. The source files remain unchanged.
 
 - town.png: Cut185 renderer capture, original earned L5/D22 town. Renderer hour
   set to noon for the screenshot; game time and gold unchanged. Source:

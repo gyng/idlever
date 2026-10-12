@@ -23,6 +23,10 @@ the first alpha from Cut187.
 ## Results
 
 Formatting, default Oxlint, TypeScript, copy lint and actionlint pass. The first
-lint scan found177 diagnostics; all are resolved. Full final validation is in
-progress. Oxfmt uses its defaults. The README description is now factual:
+lint scan found177 diagnostics; all are resolved. Full final verification
+passes:822 Rust tests,14 tooling tests, Clippy, shipping WASM, production build
+and current-game native regression. Final full client repeat:125/125 in371.1s,
+12-browser default pool;840 checked inputs unchanged. A preceding full run had
+one class-tree click timeout; its cause remains unproven despite unchanged
+isolated/full-repeat passes. Oxfmt uses its defaults. The README description is now factual:
 "An idle roguelike with automatic combat and a town to build."

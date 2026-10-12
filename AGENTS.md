@@ -32,10 +32,60 @@ docs/                  FUN_EVAL_IDLE.md, CUT*.md
 research/              the four research reports behind the plan
 ```
 
-## Commands (iteration tiers — use the cheapest that answers the question)
+## Local setup
+
+Install Rust, Node.js 22 and pnpm 10 (the CI versions). From the repository root:
 
 ```sh
-tools/verify.sh --quick        # tests (fast profile) ∥ tsc + copy-lint            ~45 s
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack --locked --version 0.13.1
+pnpm --dir web install --frozen-lockfile
+tools/wasm.sh --ship
+tools/dev.sh
+```
+
+Open http://localhost:5219/. The first engine build takes longer. After a Rust
+change, use `tools/wasm.sh` for a fast rebuild. Use `?engine=fake` for interface
+work without the real engine. Rust owns game state and rules; the client displays
+state and sends choices. Every rendered sprite must have a primitive fallback.
+
+## Formatting, lint and development references
+
+Oxfmt and Oxlint use default rules. Formatting excludes generated engine files
+and raw saved test fixtures. CI and tools/verify.sh check formatting and lint.
+Clippy uses its default rules with warnings denied.
+
+```sh
+pnpm --dir web fmt
+pnpm --dir web fmt:check
+pnpm --dir web lint
+pnpm --dir web lint:fix
+cargo clippy --workspace --all-targets -- -D warnings
+```
+
+Read docs/HANDOFF.md before resuming work. It records passing checks, failed
+runs and remaining limits. The alpha has routine mechanical acceptance; the
+separate exhaustive audits and fun-rating goal remain unfinished.
+
+| Area         | References                                   |
+| ------------ | -------------------------------------------- |
+| Design       | PLAN.md, docs/CUT30_5.md                     |
+| Current work | docs/HANDOFF.md, docs/WORK_QUEUE.md          |
+| Art          | art/ART.md, docs/ART_DIRECTION.md            |
+| Validation   | docs/DEV_VALIDATION_TIERS.md, eval/RATING.md |
+
+## GitHub Pages releases
+
+Pushes, pull requests and manual workflow runs validate the site. Publishing a
+versioned GitHub release deploys its exact tagged build to
+https://gyng.github.io/riddle/. Prereleases deploy through the same workflow.
+A push alone does not deploy. The github-pages environment permits `v*` tags;
+production deployments serialize. See docs/CUT187_ALPHA_RELEASE.md.
+
+## Validation and iteration commands — use the cheapest that answers the question
+
+```sh
+tools/verify.sh --quick        # tests (fast profile) ∥ format/lint + tsc + copy-lint
 tools/tune.sh <row-ids>        # content iteration: full seed counts, targeted requirements, fail-fast; --list lists rows; never a full gate pass
 node tools/camp-check.mjs SAVE... [--record DIR|--compare DIR] # saved-camp feedback: three 8h native replays ~4 s warm; --mode packages,wall for tuning searches; diagnostic, never the gate
 node tools/choice-check.mjs SAVE --choices boss_focus,kite_archers,bold --out NEW_DIR # actual next8h baseline/choice outcomes from one saved Session (~1–3s warm first-boss fixture); --balance PROFILE; diagnostic only, docs/DEV_CHOICE_CHECK.md
@@ -49,8 +99,8 @@ cargo test -q --workspace --profile fast                     # ~36 s warm (CPU-b
 node tools/gates.mjs [--full|--fast] [--fresh] # routine: current-game metrics,10 wire seeds,18 current-player fortnight cases (--full); --exhaustive: original272 cases and30-seed statistical audit. --fresh ignores caches; GATES_THREADS=N caps parallelism. Each genuine completed leg and exact runtime/harness job is cached separately.
 node tools/gates.mjs [--full] --rows <ids|substrings> [--fail-fast] [--seeds 8 …]   # TARGETED, a tuning loop's check, never the gate: the dayplayer on the named rows alone — only the bots, seeds and days they read, each game stopped at its row's milestone; --fail-fast plays seeds lowest first and aborts on the first row settled FAIL (an every-seed row's first failing seed, a median the seeds left cannot rescue), naming the seed and value. `target/fast/examples/dayplayer --rows ?` lists the row ids (docs/ITERATION_SPEED.md §0h)
 (cd web && pnpm -s test)                                     # routine critical-journey client subset; docs/DEV_VALIDATION_TIERS.md
-(cd web && pnpm -s test:full)                                # current client audit (124 groups); release / pre-blind acceptance
-(cd web && pnpm -s test:exhaustive)                          # historical full client inventory (166 groups), all original widths
+(cd web && pnpm -s test:full)                                # current client audit (125 groups); release / pre-blind acceptance
+(cd web && pnpm -s test:exhaustive)                          # historical full client inventory (167 groups), all original widths
 tools/wasm.sh [--ship]                                       # fast wasm (~8 s after a core edit) / wasm-pack release (~2 min)
 tools/ship.sh [--preview]                                    # cohort build on :5230 (fat LTO, ~2 min); --preview: fast wasm, ~25 s, for QA rounds
 cargo run -q --profile fast -p riddle-core --example cli -- --seed 1 --rules crates/riddle-core/presets/good.json --runs 3
@@ -141,7 +191,6 @@ not the active WSLg display. The launcher pins X11/DISPLAY and owns Xauthority
 and server cleanup; caller overrides cannot route it back to the desktop.
 WSL GPU probe still reports D3D12/NVIDIA. If isolation cannot start, fail rather
 than opening a foreground window. Keep headless for ordinary DOM/text checks.
-
 
 `tools/browser.mjs` has two paths. `launchBrowser()` is headless Chromium (SwiftShader WebGL):
 the client gates (`pnpm test`: routine subset, four at once; `pnpm test:full`: current feature groups, up to twelve CPU-bounded workers with timing checks isolated; `pnpm test:exhaustive`: historical inventory), QA sessions and anything that reads text and

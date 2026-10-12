@@ -27,5 +27,24 @@ environment allowed only main. Both must change for tagged releases.
 
 ## Validation
 
-Pending. Routine current-game checks do not certify the explicit exhaustive
-balance/migration audit or a fun>=80 verdict. Keep those limits in release notes.
+Published prerelease: [v0.1.0-alpha.1](https://github.com/gyng/riddle/releases/tag/v0.1.0-alpha.1),
+source `29752da931cd21ba7fab1b8ae90b44b10cbc6a54`.
+Release deployment run: [38270161875](https://github.com/gyng/riddle/actions/runs/38270161875).
+Build and deployment pass. The live HTML, service worker, JavaScript, CSS and
+WASM match the release artifact byte-for-byte (seven production files checked).
+All262 files in the release artifact also match the successful main CI build.
+Private D3D12/NVIDIA browser smoke passes: title art,104px primary control,
+new house/hero, real WASM, exact saved-game reload and direct return to play;
+zero page errors or failed HTTP responses. Live screenshots and smoke record
+are under evidence/cut187/live/.
+
+Local final verification passes (822 Rust tests, 14 tooling tests, formatter,
+Oxlint, types, copy, Clippy, shipping WASM, build and native current-game
+regression). Full client repeat passes 125/125 in 371.1s, default 12-browser
+pool, with all 840 recorded inputs unchanged. An earlier full run failed
+124/125 with a class-tree confirm-click timeout; the unchanged isolated test
+and complete repeat pass, but the initial cause remains unproven.
+
+Raw records: [evidence/cut187](evidence/cut187). Routine current-game checks do
+not certify the explicit exhaustive balance/migration audit or a fun>=80
+verdict. Those limits are recorded in release notes.

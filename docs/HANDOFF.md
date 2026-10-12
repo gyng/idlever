@@ -1,4 +1,4 @@
-# Riddle handoff — Cut185 checkpoint, 2026-10-12
+# Riddle handoff — first alpha checkpoint, 2026-10-12
 
 Owner asks to finish the current queue/refinement and PAUSE at this checkpoint
 because weekly quota is low. No new content or rating round should start until
@@ -10,6 +10,38 @@ This explicitly authorizes this release and its deployment. Content work and
 the fun>=80 rating goal remain paused. See docs/CUT187_ALPHA_RELEASE.md.
 The owner also requested default Oxfmt/Oxlint setup and automatic fixes before
 release (docs/CUT188_DEFAULT_TOOLING.md). Clippy was already enforced.
+
+## First alpha and tooling
+
+`v0.1.0-alpha.1` was published as a prerelease from `29752da9`, following the
+owner's explicit release request. Pages now deploys published versioned
+releases, including prereleases. Main pushes, PRs and manual runs validate only.
+The Pages environment permits `v*` tags; the former main-only policy is removed.
+Deployment passes: run38270161875. Live production files match the release
+artifact, and private D3D12/NVIDIA smoke passes new-town construction, real WASM
+and direct saved-game reload. Proof: docs/CUT187_ALPHA_RELEASE.md and
+docs/evidence/cut187/live/. The alpha is live at https://gyng.github.io/riddle/.
+
+Oxfmt 0.72.0 and Oxlint 1.87.0 are locked web dev dependencies. They use default
+rules, with generated engine files/raw save fixtures excluded from formatting.
+Use `pnpm --dir web fmt`, `fmt:check`, `lint` and `lint:fix`. Both checks now run
+in tools/verify.sh and CI; existing default Clippy rules remain enforced with
+warnings denied. Maintained client/tests/tooling were formatted and all 177
+initial lint diagnostics resolved. Rust gameplay and raw fixtures are unchanged.
+
+Final source validation: 822 Rust tests pass, 6 ignored; 14 tooling tests pass;
+typecheck, copy lint, formatter/linter and Clippy pass. Shipping WASM is
+4,922,959 bytes (SHA256 `4852596a08429dd13585088a58cf7048f31b6766708b2beee0136e491929220b`).
+Current-game native full regression passed fresh in 942s; final verification
+reused valid regression caches and passed in 255s. The separate exhaustive
+balance/migration audit was not run.
+
+Full client run: initially 124/125 in 357.3s, with a class-tree confirmation click
+timeout. That test passed unchanged alone in 61.6s. The complete unchanged
+repeat passed 125/125 in 371.1s, default 12-browser pool, with 840 checked source,
+asset and WASM inputs unchanged. The earlier timeout's cause remains unproven;
+do not claim it was fixed or erase the failed run. The older Cut185123/125
+result below remains historical. No fun>=80 verdict is certified.
 
 Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
 `docs/evidence/cut185/checkpoint/prior-handoff.md`.
@@ -102,7 +134,7 @@ Final integration checkpoint: whole quick84824 TERMINAL0 in71s:822Rust tests,
 three skill nodes, preserving15730gold/1767classXP; privateGPU screenshots pass
 all three widths. Evidence undercut185/checkpoint/earned-tree-shots/.
 
-Current full client73394 TERMINAL1: **123/125 in489.096s**. All568 recorded source/
+Historical Cut185 full client73394 TERMINAL1: **123/125 in489.096s**. All568 recorded source/
 WASM inputs match. The newclass-tree group passes; failed existing groups:
 - class-switch: Escape did not clear.sheet-wrap within30s, cause unproven.
 - clarity:paint: controlled first forecast1277ms versus1200ms; original1313ms,
@@ -112,7 +144,9 @@ Unchanged sequential diagnostic77833 TERMINAL0: bothgroups2/2 in47.4s. This
 neither repairs nor certifies the failed full invocation. Full success remains
 pending, and489.096s also misses the historical359.449s compaction target; scope
 isnow125 and artifactfastWASM, not the old124-group shipping comparison.
-**Do not claim full client acceptance, shipping acceptance or a fun score.**
+These historical checks do not certify acceptance. Cut187/188's complete
+shipping/native/client results above supersede the pending mechanical checks;
+the fun score remains uncertified.
 
 Current fastWASM89561 TERMINAL0,6381646bytes,
 SHA5ac794b1e80d4cbfcf4dd44a38deb7f72df8bdef01e454bc22ea1f30f7d6c9ab.
@@ -144,13 +178,13 @@ source changes mean it is diagnostic only, never a frozen rating build.
 
 ## Resume only when requested
 
-1. Reproduce the two failed full-client groups as needed, preserving the original
-   run and unchanged bars. Capture actual tooltip/focus/sheet state if Escape
-   times out again; do not assume a cause. Achieve a fresh complete client pass.
-   New125-group scope and fastWASM benchmark should not be silently relabelled
-   the old shipping124-group20%-runtime acceptance.
+1. Preserve the historical failed runs and the complete alpha pass. Investigate
+   the unexplained class-tree timeout if it recurs; capture actual tooltip,
+   focus and sheet state rather than assuming load caused it. Repeat acceptance
+   when source changes or a remaining concern warrants it. The current125-group
+   shipping audit is distinct from the old124-group compaction benchmark.
 2. Complete fresh shipping-WASM/native current-game acceptance for new Rust
-   source. Earlier Cut177 native acceptance certifies old runtime only.
+   source. Cut187/188 certifies the alpha runtime only.
    Exhaustive272/30-seed balance audit remains separate and uncertified.
 3. Finish any real integration failures before adopting/freezing new assets.
 4. Fresh scoreless QA on new features, dispositions, same-sitting calibration,
@@ -169,7 +203,8 @@ source changes mean it is diagnostic only, never a frozen rating build.
 ## Operating reminders
 
 No desktop focus: headed browsers privateXvfb tools/browser.mjs only.
-No deployment. Git remote gyng/riddle verified and authorized; do not stage
+Deploy through published releases; the owner authorized this alpha. Content
+and rating work remain paused. Git remote gyng/riddle verified and authorized; do not stage
 mine.bars or scratchpad. Raw logs preserved byte-for-byte, including whitespace;
 explicit force-add only named evidence logs. Local core.fsync=committed enabled
 following recovered Git corruption. Original metadata backup stays private.
@@ -203,11 +238,15 @@ nodeployment. Commit/pushauthorized; unrelatedmine.bars/scratchpadexcluded.
 
 ## README refresh
 
-Ownerrequested clearer ASD-STE100-inspired writing with personality, existing
-titlewordmark andscreenshots. README nowleads withgameplay, firststeps, five
-classes andcumulative skills, localsetup, checks anddoclinks. Threecopiedimages
-showtown, livecombat andclasstree; provenance atdocs/screenshots/README.md.
-Development-versus-hostedbuild distinction explicit. RemovedstaleCut30.5status
-andincorrectpush-autodeployclaim; currentCI requiresmanualdispatch todeploy.
-Noofficiallanguage-standardcompliance claim. Localimage/doclinks checked;
-no gameplay/artassetgeneration/deployment orbroadergoalresumption.
+The owner requested another ASD-STE100-inspired rewrite and removal of all
+developer instructions from README. README is now a short player guide: game
+description, first steps, death/progression and features. It retains the title
+art, Play/release links and three screenshots. Each screenshot displays at450px
+height with its original aspect ratio; source images are unchanged. The middle
+capture used an800px viewport, while the other two used900px.
+
+Local setup, formatting/lint commands, architecture, validation references,
+developer docs and release deployment instructions now live in AGENTS.md.
+README links there once. No formal ASD-STE100 compliance is claimed. This
+documentation-only follow-up does not change the published alpha tag or resume
+content/rating work. See docs/CUT189_README_PLAYER_GUIDE.md.

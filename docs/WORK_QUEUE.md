@@ -12,6 +12,9 @@ not authorize starting another implementation or rating round while paused.
 Cut185 has 822 passing Rust tests and focused UI/effect checks; its full client
 run failed 123/125. Both failed groups passed unchanged in isolation, which does
 not clear full acceptance. Shipping/balance validation and verified fun remain
+pending at that checkpoint. Cut187/188 now has full native regression and a
+complete125/125 client repeat pass on the alpha source; an earlier class-tree
+click timeout remains unexplained. Exhaustive audits and verified fun remain
 pending. Read [HANDOFF.md](HANDOFF.md) for resume order and exact evidence.
 
 The owner now requests these two visual deliveries, in order, on resume:

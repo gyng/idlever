@@ -2,102 +2,57 @@
   <img src="web/public/art/title-wordmark-v1.webp" alt="Riddle" width="480">
 </h1>
 
-<p align="center"><strong>An idle roguelike with automatic combat and a town to build.</strong></p>
+<p align="center"><strong>Idle roguelike</strong></p>
 
 <p align="center">
-  <a href="https://gyng.github.io/riddle/">Play the alpha</a> ·
-  <a href="#run-locally">Run locally</a> ·
-  <a href="docs/WORK_QUEUE.md">Work queue</a>
+  <a href="https://gyng.github.io/riddle/">Play</a> ·
+  <a href="https://github.com/gyng/riddle/releases/tag/v0.1.0-alpha.1">Alpha release</a>
 </p>
 
-Build a town. Equip a hero. Choose skills, stances and tactics. Your hero explores
-and fights on their own. Hire workers to keep expeditions running while you are
-away. Return to read the report and choose the next upgrades.
+Your hero explores the dungeon and fights automatically. Choose equipment,
+skills and combat tactics. Build a town and hire workers to prepare future runs.
 
-The dungeon has a bottom. A bad plan makes a short trip.
+After you hire the scout, expeditions continue while you are away. Return to
+read the results and choose upgrades. Reach the bottom of the dungeon and
+defeat the King.
 
 <p align="center">
-  <img src="docs/screenshots/town.png" alt="A settled town with workshops, workers and a dungeon entrance" width="240">
-  <img src="docs/screenshots/combat.png" alt="A live dungeon fight with hero health, combat log and watch controls" width="240">
-  <img src="docs/screenshots/class-skills.png" alt="The Fighter skill tree with Warden and Reaver skills ready to learn" width="240">
+  <img src="docs/screenshots/town.png" alt="Town with workshops, workers and the dungeon entrance" width="200" height="450">
+  <img src="docs/screenshots/combat.png" alt="Dungeon combat with hero health and the combat log" width="225" height="450">
+  <img src="docs/screenshots/class-skills.png" alt="Fighter skill tree with available skills" width="200" height="450">
 </p>
 
-_Town, combat and class skills. These are development screenshots. The hosted
-alpha can use an earlier build; its banner shows the build date._
+_Town, combat and class skills. Screenshots show development builds._
 
-## Start small
+## Start a game
 
 1. Build the free house. Your first hero arrives.
 2. Send the hero into the dungeon. Watch the run or return to town.
-3. Choose gear and tactics as they become available.
-4. Hire the scout to send heroes while you are away.
-5. Learn class skills and improve the town as you progress.
-6. Open the pen later to write your own combat rules.
+3. Choose equipment and tactics when they become available.
+4. Hire the scout to send heroes automatically.
+5. Learn class skills and add buildings to the town.
+6. Unlock the pen later to write your own combat rules.
 
-A new depth record secures the gold carried so far. A death loses the hero and the
-gold carried since that checkpoint. The bloodline keeps its Legacy and class
-progress. Read the cause of death. Change the plan. Send the next heir.
+## Keep progress after a death
 
-## Make it yours
+A new depth record secures the gold carried up to that checkpoint. If the hero
+dies, this gold stays safe. Gold carried after the checkpoint is lost.
 
-- **Five classes:** Fighter, Rogue, Ranger, Caster and Gunner. Each has a
-  cumulative skill tree. Class levels provide skill picks. Reset a tree for free
-  at home.
-- **A growing town:** build workshops and hire named workers. They take over
-  jobs you first do by hand.
-- **Several bloodlines:** run different builds with shared town gold. Keep
-  each bloodline's skills and Legacy across heirs.
-- **A record of each run:** inspect combat, read death traces and replay past
-  runs. Use what happened to improve the next plan.
-- **A living home:** local time sets the light. Grass moves in the wind. Town
-  characters carry lanterns at night.
+Class progress and Legacy upgrades pass to the next hero in the same bloodline.
+Legacy upgrades improve that bloodline's future heroes. Town gold is shared
+between bloodlines.
 
-## Run locally
+Read the death report. Change the equipment or tactics. Send the next hero.
 
-Install Rust, Node.js and pnpm. From the repository root:
+## Game features
 
-```sh
-rustup target add wasm32-unknown-unknown
-cargo install wasm-pack --locked --version 0.13.1
-pnpm --dir web install --frozen-lockfile
-tools/wasm.sh --ship
-tools/dev.sh
-```
+- Choose from five classes: Fighter, Rogue, Ranger, Caster and Gunner.
+- Class levels provide skill picks. Use picks to learn class skills. Skills
+  stay learned until you reset them. Reset class skills for free in town.
+- Hire named workers to take over town jobs.
+- Develop several bloodlines with different equipment and tactics.
+- Review combat logs, death traces and replays of past runs.
+- Local time sets the town lighting. Grass moves in the wind. Town characters
+  carry lanterns at night.
 
-Open [localhost:5219](http://localhost:5219/). The first engine build takes longer
-than later builds. After a Rust change, use `tools/wasm.sh` for a fast rebuild.
-Use `?engine=fake` to work on the interface without the real engine.
-
-## Work on the game
-
-Rust owns the game rules. The web client displays state and sends player choices.
-The renderer draws the town and dungeon. Every sprite has a primitive fallback.
-
-| Task                               | Command                                                 |
-| ---------------------------------- | ------------------------------------------------------- |
-| Format client and tooling files    | `pnpm --dir web fmt`                                    |
-| Check formatting                   | `pnpm --dir web fmt:check`                              |
-| Lint client and tools              | `pnpm --dir web lint`                                   |
-| Apply safe lint fixes              | `pnpm --dir web lint:fix`                               |
-| Check Rust lints                   | `cargo clippy --workspace --all-targets -- -D warnings` |
-| Check engine tests, types and copy | `tools/verify.sh --quick`                               |
-| Check critical client journeys     | `pnpm --dir web -s test`                                |
-| Check all current client features  | `pnpm --dir web -s test:full`                           |
-| Run the wider client audit         | `pnpm --dir web -s test:exhaustive`                     |
-
-**Status: development alpha.** Some validation checks remain open. Read the
-[current handoff](docs/HANDOFF.md) before resuming work. The handoff records passing checks and unresolved failures.
-
-Pushes, pull requests and manual workflow runs validate the site. Publish a
-versioned GitHub release to deploy its tagged build to [GitHub Pages](https://gyng.github.io/riddle/).
-Alpha releases deploy too. A push alone does not deploy.
-
-Oxfmt and Oxlint use their default rules. Generated engine files and saved test
-fixtures are excluded from formatting. CI checks formatting, lint and Clippy.
-
-| Area                        | Read next                                                                            |
-| --------------------------- | ------------------------------------------------------------------------------------ |
-| Design and game rules       | [Plan](PLAN.md) · [Idle automation contract](docs/CUT30_5.md)                        |
-| Current work and priorities | [Handoff](docs/HANDOFF.md) · [Work queue](docs/WORK_QUEUE.md)                        |
-| Art and rendering           | [Art bible](art/ART.md) · [Art direction](docs/ART_DIRECTION.md)                     |
-| Validation and playtesting  | [Validation tiers](docs/DEV_VALIDATION_TIERS.md) · [Rating protocol](eval/RATING.md) |
+[Development instructions](AGENTS.md)
