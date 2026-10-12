@@ -10,6 +10,15 @@ cut178/pre-adoption-handoff/HANDOFF.md.
 
 ## Cut179 source accepted for adoption by this commit
 
+Adopted and pushed as b60d282a675ad6044b002996d5f057344a38c0f4. Clean rebuilt
+assets are frozen at /tmp/riddle-cut179-b60d282a675a-frozen/assets,served on41271,
+session84650. ManifestSHA57fb3365920ed930cabdb41e6855d0eaa04a524aad685748a0547784d5540682.
+Smoke11278 TERMINAL0 verifies262served hashes,exact realWASM,cold/public house,
+saved reload directly to Town,and private-GPU400/1280screens plus separately
+labeled cosmetic23h preview. Archive cut179/accepted-freeze-checkpoint/.
+Initial preview used snapshot root instead of assets; verified owned process
+stopped terminal143 before any player release,then corrected. Assets unchanged.
+
 Contract: docs/CUT179_QA_RECOVERY.md. No Rust or balance changes. Damage detail
 names hero/pets and pairs their DPS with their own HP/hits; Scout settings
 returns to current pending Found confirmation without an automatic purchase;
@@ -72,22 +81,26 @@ eval/qa/cca75f9.qa_cca75_interactive.md and18 artifacts retained at
 cut179/incomplete-interactive-qa/. Dispositions:
 cut179/interactive-qa-dispositions.md. No old cold time transfers.
 
-Replacement qa_cut179_interactive prepared only, TERMINAL waiting release.
-Own preparation scratchpad/qa_cut179_interactive/preparation.md;10calls,
-0images/0active minutes, no browser/save/play. Operating-manual exposure and
+Replacement qa_cut179_interactive is RELEASED/LIVE on immutableb60d282/41271,
+fresh seed223/headless41433/--checkpoint. Own preparation
+scratchpad/qa_cut179_interactive/preparation.md;initial10calls/0images/0active
+minutes, no previous credit. First default-sandbox browser launch failed
+SIGTRAP/Operation not permitted before any visit/save/play; original driver.out
+retained. Reviewed retry succeeded: owned driverPID4155381 is bound to41433,
+headless2x with checkpoints; new earned browser-state.json exists. No transfer
+of prior credit or invented recovery. Operating-manual exposure and
 extended driver operational read disclosed (nonblind QA); no game source/
 history. Generic bounded Framework1–3 supplies14shared plus2idle probes.
-Planned fresh seed223/headless41433/--checkpoint/budget2000+120/full40/5/5/20.
-Follow up only after clean accepted freeze, providing exact final URL/hash.
+Budget2000+120/full40/5/5/20. Original report destination
+eval/qa/b60d282.qa_cut179_interactive.md. Exact final URL/hash released only after
+the clean freeze/smoke passed; no blind player released.
 
 ## Previews and remaining steps
 
-1. Commit accepted source/evidence, clean frontend build with approved Git
-   metadata access, then freeze with scratchpad/cut169/freeze-accepted.py using
-   accepted-dir scratchpad/cut179/composed-acceptance-final. Do not overwrite a
-   snapshot. Inspect success before starting dependent preview. Verify all
-   served hashes, exact realWASM, saved reload and private-GPU milestone smoke.
-2. Release replacement FULL fresh interactive QA; preserve every phase/actual
+1. Source adoption/push/clean freeze/served-byte/realWASM/privateGPU smoke are
+   complete. Keep frozenb60d282 assets unchanged; do not repeat accepted checks
+   without a new source change,failure or unresolved concern.
+2. Complete released FULL fresh interactive QA; preserve every phase/actual
    coverage/budget and resolve each lapse. No prior42-minute credit or score.
 3. Same-sitting LoopHero reanchor, drift<=5; known-reference rescoring allowed
    but never claim fresh direct play without it.
@@ -105,9 +118,14 @@ Follow up only after clean accepted freeze, providing exact final URL/hash.
 Pure fresh neutral CLI alternative precommitted at cut170/blind-context-
 amendment.json. Preflights pass but each actual startup must audit its visible
 context before playing. Never reuse old incomplete/purity-broken75.2 cards.
-Unreleased templates at scratchpad/cut176/blind-launch-preparation and
-cut178/blind-launch-preparation are historical and MUST get final hash/URL and
-checkpoint-enabled driver before release. No new blind players launched.
+Current unreleased templates at scratchpad/cut179/blind-launch-preparation use
+finalb60d282/41271,neutral directories /tmp/riddle-b60d282-blind-a,b,drivers
+41427/41429 and gateways41428/41430. Drivers must be --headed --checkpoint.
+Both neutral directories have only the four verified references; no player,
+gateway or blind browser launched. Each actual startup writes its own context
+audit; operational status contains no awards. CLI output must be redirected
+and not inspected for awards before BOTH raw locks. Earlier cut176/178
+templates are historical; do not release them.
 Only four references, no target/history/QA to raters; standard specifically
 reviewed local requests, no bypass/auth inspection/HOME overrides. Gateway
 scratchpad/cut169/public-blind-gateway.mjs blocks internal/script/reset/order
@@ -117,7 +135,7 @@ Historical frozen previews remain:3cde6bc41269/session12405 at
 /tmp/riddle-cut178-3cde6bc-frozen/assets (manifest8aae6b1f...,262hash/GPU smoke
 verified);cca75f941263/session49600,no live player;diagnostics41265/session21605
 and41267/session5342;older40483/session75087 may remain. Leave frozen assets
-unchanged. New Cut179 freeze/preview are NEXT. Prior default build lacked Git
+unchanged. Current Cut179 freeze/preview described above. Prior default build lacked Git
 stamp; freeze rejected and prematurely started preview exited before serving.
 That failure is preserved; use approved clean build and unchanged validator.
 
