@@ -105,8 +105,10 @@ SHA2d8e039ca3f6115c06541016d7a920c312ac7d4ee16d9b019043e5d02787fbc6,
 preserved as own recovery-original-earned.json. Same41271/dev1/runs1/seed223,
 no fresh/menu/absent or timestamp edits. No new run/gold/XP on recovery;
 configuration persists. Incidental real gap gets0active credit and is separate
-from prescribed absences. Latest recovery checkpoint: cold84.525s proved,
-unproved earlyUI0,190tools/2images; most full horizon remains outstanding.
+from prescribed absences. Latest inspected checkpoint: cold933.286s (15m33.3s),321tools/3images;
+all return phases remain outstanding. Live PID7149 and previewPID6070/listeners
+41433/41271 were independently confirmed after sandbox namespace isolation
+initially hid the host processes. Unproved earlyUI remains0.
 No transfer of prior42m or invented credit. Operating-manual exposure and
 extended driver operational read disclosed (nonblind QA); no game source/
 history. Generic bounded Framework1–3 supplies14shared plus2idle probes.
@@ -154,13 +156,21 @@ reviewed local requests, no bypass/auth inspection/HOME overrides. Gateway
 scratchpad/cut169/public-blind-gateway.mjs blocks internal/script/reset/order
 violations and caps buffered watch1s. Lock both raw cards before inspecting.
 
-Historical frozen previews remain:3cde6bc41269/session12405 at
-/tmp/riddle-cut178-3cde6bc-frozen/assets (manifest8aae6b1f...,262hash/GPU smoke
-verified);cca75f941263/session49600,no live player;diagnostics41265/session21605
-and41267/session5342;older40483/session75087 may remain. Leave frozen assets
-unchanged. Current Cut179 freeze/preview described above. Prior default build lacked Git
+Historical preview processes and their /tmp snapshots were lost during the
+runtime restart; they are stopped, not live services to poll. Current Cut179
+preview alone was restored as described above. Prior default build lacked Git
 stamp; freeze rejected and prematurely started preview exited before serving.
 That failure is preserved; use approved clean build and unchanged validator.
+
+Unreleased coordinator preparation is archived at
+cut179/blind-launch-preparation/, including exact final build bindings and the
+completion evidence map. The assigned preset is idle-hybrid with null profile;
+the unchanged raw reference template has an older genre default. Each player
+must record criterion.json, then human-probes.json, then axis-awards.json in
+separate ordered calls before consolidating raw-card.json. Both raw cards must
+be locked before either is parsed. All16 axes and seven explicit kill flags
+require manual audit: the score CLI itself does not enforce the play horizon
+or kill flags. These prospective rules are preparation, not completed play.
 
 Automation never steals desktop focus: tools/browser.mjs privateXvfb only.
 Mechanical acceptance and QA are not verified fun80. No deployment dispatch.

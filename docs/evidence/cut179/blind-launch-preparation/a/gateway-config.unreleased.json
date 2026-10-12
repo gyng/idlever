@@ -1,0 +1,12 @@
+{
+  "port": 41428,
+  "upstream": "http://127.0.0.1:41427/",
+  "ledger": "/home/g/p/riddle/scratchpad/cut179/blind-launch-preparation/a/operations.jsonl",
+  "allowedUrls": [
+    "http://127.0.0.1:41271/?dev=1&runs=1&seed=137&fresh=1&menu=1",
+    "http://127.0.0.1:41271/?dev=1&runs=1&seed=137&absent=20m",
+    "http://127.0.0.1:41271/?dev=1&runs=1&seed=137&absent=4h",
+    "http://127.0.0.1:41271/?dev=1&runs=1&seed=137&absent=8h"
+  ],
+  "reloadUrl": "http://127.0.0.1:41271/?dev=1&runs=1&seed=137"
+}
