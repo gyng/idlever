@@ -1,0 +1,8 @@
+{
+  "owned_driver_port": 41425,
+  "original_quit_response": {"ok": true},
+  "http_probe": "timed out; alone does not prove closure",
+  "socket_check": "ss -ltnp '( sport = :41425 )' returned only its header, with no listener",
+  "driver_closed": true,
+  "conservative_final_tool_upper_count": 489
+}

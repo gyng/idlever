@@ -1,0 +1,474 @@
+{
+  "scope": "Original terminal transcript-first QA on cca75f9,not blind and not newer-runtime whole-horizon acceptance",
+  "claimedActiveSeconds": 1093,
+  "conservativeFinalToolCount": 489,
+  "imageReads": 5,
+  "browserClosed": true,
+  "files": [
+    {
+      "path": "raw/001-goto.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/002-goto.json",
+      "bytes": 65,
+      "sha256": "100e849e59c40b41cc9cb4159cb4826036d1f68c6dfd06380fce5a930b6ddd72"
+    },
+    {
+      "path": "raw/003-empty.json",
+      "bytes": 174,
+      "sha256": "b8e356426c378aa5aaf3b373747bef625153b76a865816afde7f90c0c7e1435b"
+    },
+    {
+      "path": "raw/004-house.json",
+      "bytes": 240,
+      "sha256": "89d3f17d3f8493c0727d788417501fe06df288ecb189e2fb090501114edbedfa"
+    },
+    {
+      "path": "raw/005-home.json",
+      "bytes": 201,
+      "sha256": "6a0e924c235fc544c84bc6d1fe4cf33482cb21900a5bb3e63f636e954ce2eb1d"
+    },
+    {
+      "path": "raw/006-details.json",
+      "bytes": 992,
+      "sha256": "1a6307d21e515d4a11a88d65b8930a110881922f8928e7039d4832ca21462489"
+    },
+    {
+      "path": "raw/007-details-visible.json",
+      "bytes": 604,
+      "sha256": "35e8d67ecbf3c3b39af5514ea89b1488ddebf0651a3092950b9d0b5484dd348d"
+    },
+    {
+      "path": "raw/008-details-buttons.json",
+      "bytes": 2148,
+      "sha256": "076e7c521dd1542cc0ae8ebf455f9a60092aa855358fae1d4b291955227d9874"
+    },
+    {
+      "path": "raw/009-close-details.json",
+      "bytes": 202,
+      "sha256": "b145ca6244aa32e7fb9479460ccb023d7f5fa02f508cb4b86d1a1ed95133bcf6"
+    },
+    {
+      "path": "raw/010-send.json",
+      "bytes": 31,
+      "sha256": "4287e37acdd702fd86422b54b61d77eae6d614e22cdc23708ad9931d23b3f92d"
+    },
+    {
+      "path": "raw/011-send-visible.json",
+      "bytes": 194,
+      "sha256": "5c9931be9ad80d8880a249aba9f825a956388ae493846d7ac95d723c7b3464d6"
+    },
+    {
+      "path": "raw/012-watch.json",
+      "bytes": 1287,
+      "sha256": "cca4eda20911ebaaed595f3a5e919acd638a87241ee6494ada500e960727a407"
+    },
+    {
+      "path": "raw/013-watch-buttons.json",
+      "bytes": 566,
+      "sha256": "d9ad8cd6fd941478baf7ce6a5afdbee9e7ae75db898f89f58de3c79e5e45d18d"
+    },
+    {
+      "path": "raw/014-watch-aria.json",
+      "bytes": 558,
+      "sha256": "de24e81cdeacaec050ecf88989318a7287c0b8b1965e1d23e3f3a6c2c042033c"
+    },
+    {
+      "path": "raw/015-steady-cue.json",
+      "bytes": 2706,
+      "sha256": "1fb0e236c67c9493f010f622d198cb3cb3c09a9379f9b08546f1fa25087229b9"
+    },
+    {
+      "path": "raw/016-end-watch.json",
+      "bytes": 2027,
+      "sha256": "e91d790a4b42dd4dcbe90380618671f07ada5159e2d4c0cb03b6490ec973f6d2"
+    },
+    {
+      "path": "raw/017-ended.json",
+      "bytes": 3142,
+      "sha256": "028e2a993dbdcc7fcc03eef1dbc68c1508dcfa32f838b724fedf3118bd24ab28"
+    },
+    {
+      "path": "raw/018-keep-buttons.json",
+      "bytes": 1749,
+      "sha256": "923bbdc2b43ce70d0faa34991ef5089ddca71ec5672c9c0002ab690f880e56c5"
+    },
+    {
+      "path": "raw/019-decision-log.json",
+      "bytes": 3543,
+      "sha256": "ca8760f240a12f6a3f3ef8ffd84db8d135a05e34dab7ae9f9957eb3ed1a29a68"
+    },
+    {
+      "path": "raw/020-first-report.json",
+      "bytes": 275,
+      "sha256": "f4f45ec1ac8dd8d401ecb64f41a7c840403f9b41b78caba5c1c521f80bcecbfd"
+    },
+    {
+      "path": "raw/021-report-details.json",
+      "bytes": 1996,
+      "sha256": "bf6792c5c5c7cd2a15e4e4c68dacfed4966a328e1349e9d6ae1cacb304862018"
+    },
+    {
+      "path": "raw/022-build-forge-report.json",
+      "bytes": 1998,
+      "sha256": "bffd2e89b0a139bc55583ed24ed97db102ed17951acce22c78664af13bbb2811"
+    },
+    {
+      "path": "raw/023-forge-built.json",
+      "bytes": 1998,
+      "sha256": "bffd2e89b0a139bc55583ed24ed97db102ed17951acce22c78664af13bbb2811"
+    },
+    {
+      "path": "raw/024-camp.json",
+      "bytes": 31,
+      "sha256": "406fe80ec46e3ecc86106b0ee858e84d9f8c3f699e345d5aa40e309e0357ab45"
+    },
+    {
+      "path": "raw/025-forge-camp.json",
+      "bytes": 2409,
+      "sha256": "617916775b14bbd802872cc170c43431bfd5b4be6696f9d4b63be6925529cfb8"
+    },
+    {
+      "path": "raw/026-town-after-forge.json",
+      "bytes": 157,
+      "sha256": "73171e4d6fe18014ccf6cdb2a4ee3ff52865bf3b5c2705e1ae293cf1ee51b30d"
+    },
+    {
+      "path": "raw/027-town-visible.json",
+      "bytes": 24,
+      "sha256": "6809b7a338090a2814fe7cef024b5833fa5f57602d13ac1c1ca6963950981234"
+    },
+    {
+      "path": "raw/028-town.json",
+      "bytes": 524,
+      "sha256": "15c052ac9bb19a0278b0d128b9d7238dd09282adcf81307d9dadb838a3c7a8ff"
+    },
+    {
+      "path": "raw/029-hero-hand-edit-attempt1.json",
+      "bytes": 551,
+      "sha256": "2d77adfcd5a53226457949b68f02dcb5874477e6a3d4349bd6f698192b47717d"
+    },
+    {
+      "path": "raw/030-supplies.json",
+      "bytes": 599,
+      "sha256": "19e1a739abd4f561864961a7440e7afaf47efc221777ab413a6c4491fb36b82b"
+    },
+    {
+      "path": "raw/031-leash-purchase1.json",
+      "bytes": 619,
+      "sha256": "984f1de271006373bdaeb6db52db93db20d4731319b4858aea0f9c274d004566"
+    },
+    {
+      "path": "raw/032-leash-purchase2.json",
+      "bytes": 641,
+      "sha256": "ea0c181ba66680ff32558b719f2a0b61b82e6fe7ff200fab022dca611e44b68f"
+    },
+    {
+      "path": "raw/033-drop-leash.json",
+      "bytes": 676,
+      "sha256": "c5c8e2f586c174537dad73a115c67d73f6a2318ab7794a320908896cf6486527"
+    },
+    {
+      "path": "raw/034-tactics.json",
+      "bytes": 600,
+      "sha256": "5508f3da99a29cb52b0eca7f5f567c8a2e8207135640c1fa5ee821908f586807"
+    },
+    {
+      "path": "raw/035-style-options.json",
+      "bytes": 1575,
+      "sha256": "caf82eab4f9a74f0a3dcbf39c47c6454dee3ad165fe3ea7b60096ec20d69e173"
+    },
+    {
+      "path": "raw/036-camp-affordances.json",
+      "bytes": 1780,
+      "sha256": "dc7ef380693b7a4929104dd63cf76d8a252b5771e4d3d98f089120c707d25ee5"
+    },
+    {
+      "path": "raw/037-orders.json",
+      "bytes": 753,
+      "sha256": "8b6154efdcf56136242fca61f911594a8cd5e10781bd208b91db4e6e8037ee93"
+    },
+    {
+      "path": "raw/038-orders-selected.json",
+      "bytes": 1432,
+      "sha256": "af768dbfd0322cd6e55cb3223702300c9acaadd7c32dd7cde7c753fc4475a23b"
+    },
+    {
+      "path": "raw/039-keep-armour-and-loot-options.json",
+      "bytes": 608,
+      "sha256": "2167b57f183567459e4ecfda124374708028bab54ff034674b097df4e17cb31e"
+    },
+    {
+      "path": "raw/040-loot-armour-health.json",
+      "bytes": 1113,
+      "sha256": "81d8d7e3e4d5f51c0eada2c6231dd2a2cb77e2ff142d33c9124541ea76a4bcef"
+    },
+    {
+      "path": "raw/041-health-legacy-insurance-context.json",
+      "bytes": 902,
+      "sha256": "32d73ab0fa331794b8c751ec8d776cf952a44f88b94092a3cd7ebd97cb7e6575"
+    },
+    {
+      "path": "raw/042-insure-off-hero-hand-edit-attempt2.json",
+      "bytes": 934,
+      "sha256": "2b66b176a1dd6104ee916c011b704cc4ac9d2048023bab946f9c1ef15b9745a0"
+    },
+    {
+      "path": "raw/043-close-pen.json",
+      "bytes": 150,
+      "sha256": "dcab5a492c251ca27830f6786e5283e83423feb34f00cbf2f918bce59d7ec7dd"
+    },
+    {
+      "path": "raw/044-second-run.json",
+      "bytes": 3668,
+      "sha256": "18f0231f282c0c8787044402ff1d2d0c05d1197c9d5f7ee6850415710940a333"
+    },
+    {
+      "path": "raw/045-current-after-second.json",
+      "bytes": 224,
+      "sha256": "a0d9a191cda39c1a01db150351c275258b875b9037ce9679fcd1cf47e2fc81c4"
+    },
+    {
+      "path": "raw/046-second-report-details.json",
+      "bytes": 1891,
+      "sha256": "a2f43b845e2fd5637a630bc03ee21be09ea6c59e5bf7538d5950535c7558b82e"
+    },
+    {
+      "path": "raw/047-hero-hand-edit-attempt3.json",
+      "bytes": 155,
+      "sha256": "1790e7f138d82b9afc45a0cf0a9cd16e80bf3a35e217267c9d185c9d2577f808"
+    },
+    {
+      "path": "raw/048-hero-hand-edit-attempt3-visible.json",
+      "bytes": 626,
+      "sha256": "8f18c4118cbdac585a00b1a884272d66bdb4e398668258007dbf7fcb5f7bc7f0"
+    },
+    {
+      "path": "raw/049-hero-return-edit-attempt.json",
+      "bytes": 695,
+      "sha256": "ace2e6facd1f4190a3e7b9f61bc0be5e1ac260721b4c87995be607044140e7c8"
+    },
+    {
+      "path": "raw/050-gold-before-absence.json",
+      "bytes": 675,
+      "sha256": "6a9a5bc2b3be58386cbb5bb4b6bbc755a7ccb1f3c594eacc7df1270d8e21b6f3"
+    },
+    {
+      "path": "raw/051-close-gold.json",
+      "bytes": 1671,
+      "sha256": "b7782ed12f6de8e010ff29fcf9b6debe287791c7ce973f3b48079dc47c73ce09"
+    },
+    {
+      "path": "raw/052-third-run.json",
+      "bytes": 51,
+      "sha256": "da398d3b3a935a89cd9fb0e7d691b954a6b880706a64c0316e19eedcb20510fe"
+    },
+    {
+      "path": "raw/053-third-current.json",
+      "bytes": 674,
+      "sha256": "d7cd076382dfa40c10d188fa45d7e9da94da58e4a00eeb8fe5cf5d547fca01b5"
+    },
+    {
+      "path": "raw/054-close-gold-correct.json",
+      "bytes": 579,
+      "sha256": "23bde2cfcd1334313005231b0b2c6507198adc72142a6a7ed6fa282adb579783"
+    },
+    {
+      "path": "raw/055-third-real-run.json",
+      "bytes": 16069,
+      "sha256": "4da04b9e95fb9d52a8ec0a65859f2844ded64e245588264074f7dd31aee940f1"
+    },
+    {
+      "path": "raw/056-third-report-details.json",
+      "bytes": 2374,
+      "sha256": "abdd9ba725b5da56c703ddaa37cd10cd474f5e51feacaa1e9b95dcdc3cd6956c"
+    },
+    {
+      "path": "raw/057-carried-after-third.json",
+      "bytes": 2450,
+      "sha256": "82547dbf493b71f148ca56d4b9037561aadbdd2bb8ae1e1e6234310f5dab58e1"
+    },
+    {
+      "path": "raw/058-guarded-entry.json",
+      "bytes": 2640,
+      "sha256": "aa8781446ea65ba63bb78fd1736134b133805d20e80da3f75e1fff8c548532f8"
+    },
+    {
+      "path": "raw/059-guarded-compare.json",
+      "bytes": 2670,
+      "sha256": "17fc01a28c9adcd1bddf2f5afd518e6132772590ac442a2bc2b8c6abbf52cb6f"
+    },
+    {
+      "path": "raw/060-style-comparison-finished.json",
+      "bytes": 2700,
+      "sha256": "4c509f6ab3667d1aa1d2e1503ea0e99e677b83e04d9bee76bfc525b8d56eddbc"
+    },
+    {
+      "path": "raw/061-guarded-own-choice-current-camp.json",
+      "bytes": 3291,
+      "sha256": "4dba5408eef90a2547a2669d166b77973e50a5f0bd53ac3c11f54419bc568fa1"
+    },
+    {
+      "path": "raw/062-workers-entry.json",
+      "bytes": 805,
+      "sha256": "53d5bf21e45dbe97af7ba8d84809af4e462a4730d0278421cc9bf3f922143eb6"
+    },
+    {
+      "path": "raw/063-scout-hire-sheet.json",
+      "bytes": 805,
+      "sha256": "53d5bf21e45dbe97af7ba8d84809af4e462a4730d0278421cc9bf3f922143eb6"
+    },
+    {
+      "path": "raw/064-worker-state.json",
+      "bytes": 1266,
+      "sha256": "5b948df90bd7534ecf06b693ff830279d02cfdc3e12797c860e1d1fd431b7797"
+    },
+    {
+      "path": "raw/065-porter-hired.json",
+      "bytes": 737,
+      "sha256": "b7fae7c8b8146054d1114429c4fc477fd8b372ec7ea4cc7ad815580c7b82ef43"
+    },
+    {
+      "path": "raw/066-scout-offered-sheet.json",
+      "bytes": 812,
+      "sha256": "bce28af11f1d53cecf7ed031ef4503a0ff9c2a3bc8144cabd23acfd8f95aaae5"
+    },
+    {
+      "path": "raw/067-scout-hired.json",
+      "bytes": 758,
+      "sha256": "22a3db911d4014d32c89d8bf8c44097e8b0786de633004fb30aab4f3858ba577"
+    },
+    {
+      "path": "raw/068-hero-attack-edit-attempt.json",
+      "bytes": 849,
+      "sha256": "ee195259254ff121baa81fe1c834e55eece53b83eae34ef5149c7b6c55e730db"
+    },
+    {
+      "path": "raw/069-hero-bank-edit-attempt.json",
+      "bytes": 835,
+      "sha256": "5eea8970fcb7f50d9c2f19e8aeae69a1129af15aaa384dcdeaa7a0050590e7c2"
+    },
+    {
+      "path": "raw/070-absence-goto.json",
+      "bytes": 65,
+      "sha256": "100e849e59c40b41cc9cb4159cb4826036d1f68c6dfd06380fce5a930b6ddd72"
+    },
+    {
+      "path": "raw/071-8h-return.json",
+      "bytes": 680,
+      "sha256": "b9df132276a4980abff2b93a954cc226da8dc8dd036b8796c54a12aaaabbb328"
+    },
+    {
+      "path": "raw/072-settled-8h-return.json",
+      "bytes": 739,
+      "sha256": "365fca132e607455f7785daf251f5b29f59af71bd75afc9f6f6c83ecad9e0b89"
+    },
+    {
+      "path": "raw/073-8h-return-details.json",
+      "bytes": 5720,
+      "sha256": "337226e9f490c84d7c923e0964b2a9eb6c0bc6d7256066a031ac31b3b90847d5"
+    },
+    {
+      "path": "raw/074-eel-death-verdict.json",
+      "bytes": 483,
+      "sha256": "ef8b82d91bf543911f6045377842665c656bd7fb0bfbc2018a3a5af270a2e152"
+    },
+    {
+      "path": "raw/075-eel-death-full-details.json",
+      "bytes": 1629,
+      "sha256": "f8aabd0e8dceb27a000b8140c33b664b2ccfc099d23ffbad89b9cdbc316855b9"
+    },
+    {
+      "path": "raw/076-selected-return-patch.json",
+      "bytes": 2962,
+      "sha256": "ad78d246580d1f4ae5a7472c2bc5af1c649910584dc3cbeb39c6fd9cb6b46a3a"
+    },
+    {
+      "path": "raw/077-patch-applied.json",
+      "bytes": 1518,
+      "sha256": "bd0d3d0f22138c00775c33cb242306c181e01ffeb7adb0cfcdef625b3ccd2dfa"
+    },
+    {
+      "path": "raw/078-live-hero-editor-entry.json",
+      "bytes": 1108,
+      "sha256": "4fb24b0ea61a43ef2e77cb5fda395b3c7b4c5c3db49dca1486f41e2aff475b74"
+    },
+    {
+      "path": "raw/079-hero-condition-editor.json",
+      "bytes": 2957,
+      "sha256": "86ca604cf816710e19b6bde3c5ca1eee8de3b49d3dbd0f27ad1f1f01c7422430"
+    },
+    {
+      "path": "raw/080-hero-manual-threshold-edit.json",
+      "bytes": 1163,
+      "sha256": "9c5c5fce2ca35edb3c9538e4f2eb5ff1aa45e09aa391b70757dac0f769c161a8"
+    },
+    {
+      "path": "raw/081-console-errors.json",
+      "bytes": 694,
+      "sha256": "1029a567b8825325041465f5511e3c83fe06ff57a2d855556850f5bd4757ea05"
+    },
+    {
+      "path": "raw/cleanup-confirmation.json",
+      "bytes": 299,
+      "sha256": "5a7aea1c5619e5c5294a816ed5da2fd148c4672f02cf6d2894ea3d1d7641e070"
+    },
+    {
+      "path": "raw/cleanup-metadata.json",
+      "bytes": 659,
+      "sha256": "dc01790dc53f79098a2e6f2f696e209d4c3f854573af6931951cd766a06cb6b9"
+    },
+    {
+      "path": "raw/console.log",
+      "bytes": 677,
+      "sha256": "90513edb766f5361f6f0c74bf55e68d0bda27b3b97f62e7751d3e3f5561d69cf"
+    },
+    {
+      "path": "raw/driver.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/earned-storage.json",
+      "bytes": 2753852,
+      "sha256": "9b2ced73bd6547ad10d32ccd57a6acd7b3be6aa15a175212aa674954cbe9c6ad"
+    },
+    {
+      "path": "raw/ledger.md",
+      "bytes": 8286,
+      "sha256": "fe2f0f131ce030484d677a21f1140fcc4ba1dd63a95f950d19f081b5dae47804"
+    },
+    {
+      "path": "raw/shots/base-pen-hint.png",
+      "bytes": 1227809,
+      "sha256": "8e27cf655d4791b170135a23244044ba7ff8b0c14eedf15ff544e5595441a14e"
+    },
+    {
+      "path": "raw/shots/hero-details.png",
+      "bytes": 1247268,
+      "sha256": "b822017c0df790b8b6033ea6bdec862c2e0ea9b9902ee8b49d111a6a606edbec"
+    },
+    {
+      "path": "raw/shots/locked-pen.png",
+      "bytes": 1209939,
+      "sha256": "b3fa982a7aa38c8d60bb81618e975d953493f8a3664334743c96374475d9c72a"
+    },
+    {
+      "path": "raw/shots/second-manual-end.png",
+      "bytes": 1488093,
+      "sha256": "48aaee3211bd46224400ac8e8599d98c503033535ef462afdd0e6a3395f217ca"
+    },
+    {
+      "path": "raw/shots/third-manual-real-end.png",
+      "bytes": 1454186,
+      "sha256": "cddc4d1324f3915d19a8d20b5568c723342cdcdee75a3742396f1544e4d00d71"
+    },
+    {
+      "path": "report.md",
+      "bytes": 5744,
+      "sha256": "335d4c4795120c2df63f6a61dc3122edaf91f980862440b565dfe97f2b44e172"
+    }
+  ]
+}

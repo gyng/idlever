@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+'fighter' !== 'rogue'
+
+    at file:///home/g/p/riddle/scratchpad/cut177/first-bank-browser-attempt4.mjs:52:9 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'fighter',
+  expected: 'rogue',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

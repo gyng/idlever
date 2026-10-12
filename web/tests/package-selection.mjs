@@ -4,10 +4,18 @@ try{for(const width of [320,400,1440]){const p=await b.newPage({viewport:{width,
 const n=await p.evaluate(async()=>{
 const {openPackages}=await import('/src/ui/packages.ts'),{closeAllSheets}=await import('/src/ui/sheet.ts');let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;},tick=()=>new Promise(r=>setTimeout(r,20)),jobs=[],change=new Set(),rules=new Set();
 const real=window.__riddle,L=structuredClone(real.lineage);L.packages.all.forEach(p=>p.owned=true);L.packages.stance='steady';L.packages.tactic_slots=2;L.packages.tactics=[];
-const app={lineage:L,rules:real.rules,loadout:[],lastForecast:null,onChange:fn=>{change.add(fn);return()=>change.delete(fn);},onRules:fn=>{rules.add(fn);return()=>rules.delete(fn);}};
+const forecasts=new Set();
+const app={lineage:L,rules:real.rules,loadout:[],lastForecast:null,onChange:fn=>{change.add(fn);return()=>change.delete(fn);},onRules:fn=>{rules.add(fn);return()=>rules.delete(fn);},onForecast:fn=>{forecasts.add(fn);return()=>forecasts.delete(fn);}};
 app.engine={packageOptions:()=>{throw Error('must not query all moves');},packageOptionsFor:(sims,choices)=>new Promise((resolve,reject)=>jobs.push({sims,choices,resolve,reject}))};
 const answer=(j)=>j.choices.map(([id,slot])=>({id,slot,action:'equip',past:.9,bank:.1,death:.1,d_past:.8,d_bank:0,d_death:0}));
+// The earned D8 report can still hold its pre-run D6 forecast; never label that as the next floor.
+const oldBest=L.best_depth;L.best_depth=8;L.start=1;app.lastForecast={depths:[{depth:6,reach:.38}],sims:8};
 closeAllSheets();openPackages(app);await tick();check(jobs.length===0,'opening starts no simulations');
+check(document.querySelector('.pkg-headline').textContent==='floor 9 ?','missing next-floor estimate is unknown, never an older floor');
+app.lastForecast={depths:[{depth:9,reach:.72}],sims:8};for(const fn of forecasts)fn(app.lastForecast);await tick();
+check(document.querySelector('.pkg-headline').textContent.startsWith('floor 9 72%'),'open panel updates when the current estimate arrives');
+check(jobs.length===0,'forecast publication starts no package comparisons');
+L.best_depth=oldBest;app.lastForecast=null;for(const fn of change)fn();await tick();
 document.querySelector('.pkg-compare').click();await tick();check(jobs.length===1&&jobs[0].sims===8,'explicit eight-sample query');
 const styles=L.packages.all.filter(p=>p.kind==='stance'&&p.id!=='steady').map(p=>p.id);
 // 29e496a (blind 77030eb): compare opens both choosers (styles and tactics), so both are queried — exactly the opened ones, nothing closed or equipped
@@ -29,5 +37,5 @@ for(const fn of change)fn();await tick();
 const card=document.querySelector('.pkg-slot[data-kind="stance"] .pkg.on'),slot=card.closest('.pkg-slot'),description=card.querySelector('.pkg-description'),box=card.getBoundingClientRect(),slotBox=slot.getBoundingClientRect(),copyBox=description.getBoundingClientRect();
 check(!!slot.querySelector('.pkg-level'),'layout exercises affordable level control');
 check(box.width>=slotBox.width-1&&copyBox.left>=box.left&&copyBox.right<=box.right&&copyBox.bottom<=box.bottom,'worn style and description fit their own row');
-closeAllSheets();check(change.size===0&&rules.size===0,'close releases subscriptions');check(document.documentElement.scrollWidth<=innerWidth,'no overflow');return n;
+closeAllSheets();check(change.size===0&&rules.size===0&&forecasts.size===0,'close releases subscriptions');check(document.documentElement.scrollWidth<=innerWidth,'no overflow');return n;
 });console.log(width,n,'selected Tactics checks PASS');await p.close();}}finally{await b.close();}

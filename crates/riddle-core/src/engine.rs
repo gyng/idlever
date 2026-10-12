@@ -5444,6 +5444,9 @@ impl Game {
         if tier == ExitTier::Bank && !run.timed_out && self.lineage.banked_depths.insert(run.max_depth) {
             marks += 1;
             bests.push(format!("home:D{}", run.max_depth));
+            // The free Rogue gate reads this bank record. Grant it in this
+            // settlement so the first full haul's class is usable at home.
+            crate::meta::grant_free(&mut self.lineage);
         }
         // Cut 21 §1: a bank lights the waystones at or above its floor (`waystone D9`).
         if tier == ExitTier::Bank && !run.timed_out {

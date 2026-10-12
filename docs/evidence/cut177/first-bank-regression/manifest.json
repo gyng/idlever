@@ -1,0 +1,24 @@
+{
+  "scope": "Meaningful failing first-settlement regression and corrected Bank/Return/timeout cases; not complete shipping acceptance",
+  "baseBuild": "cca75f97b172bef2da7066cb4215e9505d91ed21",
+  "redExitCode": 101,
+  "greenExitCode": 0,
+  "candidateUnadopted": true,
+  "files": [
+    {
+      "path": "candidate-source.diff",
+      "bytes": 1978,
+      "sha256": "8da19f06d2ec732fa0e6ffed72566248f4c790ff0bd610f149d8a04f9451a797"
+    },
+    {
+      "path": "regression-green.log",
+      "bytes": 115,
+      "sha256": "a033033d8489a58c4273bcad1e12cb5ba20726a72f63e62e5340fdabfd28a50d"
+    },
+    {
+      "path": "regression-red.log",
+      "bytes": 716,
+      "sha256": "7b135b81bd52b486be15066efe2d67e86441ba1fda315b110611d32f4bf9c479"
+    }
+  ]
+}

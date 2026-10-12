@@ -1,0 +1,56 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {launchGpu} from '../../tools/browser.mjs';
+import {pressWatchControl} from '../../tools/watch-control.mjs';
+const base=process.argv[2],out=process.argv[3],expectedWasm=process.argv[4];
+assert(/^[a-f0-9]{64}$/.test(expectedWasm),'Supply exact candidate shipping-WASM SHA');
+assert(base&&out,'Supply accepted local URL and new evidence directory');
+fs.mkdirSync(out,{recursive:true});
+const browser=await launchGpu(),errors=[],wasm=[];
+try {
+ const page=await browser.newPage({viewport:{width:400,height:800},deviceScaleFactor:3});
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('response',async r=>{if(r.url().endsWith('.wasm')){const bytes=await r.body();wasm.push({url:r.url(),bytes:bytes.length,sha256:crypto.createHash('sha256').update(bytes).digest('hex')});}});
+ await page.goto(base+'?dev=1&runs=1&seed=223&fresh=1&speed=4',{waitUntil:'networkidle'});
+ await page.waitForFunction(()=>window.__riddle?.booted);
+ assert.equal(await page.evaluate(()=>window.__riddle.kind),'wasm');
+ await page.locator('.town-tag[data-next="house"]').click();
+ await page.locator('button.send:not(:disabled)').waitFor();
+ assert.equal(await page.evaluate(()=>window.__riddle.lineage.unlocks.includes('rogue')),false);
+ await page.locator('button.send').click();
+ await page.waitForFunction(()=>window.__riddle?.screen==='watch');
+ const started=Date.now();
+ while(await page.evaluate(()=>window.__riddle.screen)==='watch'){
+  assert(Date.now()-started<120000,'First run did not settle');
+  await pressWatchControl(page,'▶▶|');
+  await page.waitForTimeout(500);
+ }
+ if(await page.evaluate(()=>window.__riddle.screen)==='exit') await page.locator('.sheet-wrap .btn.primary').first().click();
+ await page.waitForFunction(()=>window.__riddle.screen==='report');
+ await page.waitForFunction(()=>!window.__riddle.engineBusy);
+ await page.locator('main.report .details-fold').click();
+ const report=await page.evaluate(()=>({text:window.__riddle.text(),unlocks:window.__riddle.lineage.unlocks,runs:window.__riddle.lineage.runs}));
+ fs.writeFileSync(out+'/first-report.json',JSON.stringify(report,null,2)+'\n');
+ assert(report.unlocks.includes('rogue'),'Rogue still locked after first earned settlement');
+ assert.match(report.text,/FULL HAUL/i);
+ await page.locator('main.report .gem').filter({hasText:/^town$/i}).first().click();
+ await page.waitForFunction(()=>window.__riddle.screen==='camp');
+ await page.locator('.hero-details:visible').click();
+ await page.getByRole('button',{name:'Change class',exact:true}).click();
+ const rogue=page.locator('.class-row').filter({has:page.getByRole('button',{name:/rogue L/})});
+ assert.equal(await rogue.locator('.class-needs').count(),0);
+ assert(await rogue.getByRole('button').first().isEnabled());
+ await page.screenshot({path:out+'/first-bank-rogue-phone.png'});
+ await rogue.getByRole('button').first().click();
+ await page.waitForFunction(()=>!document.querySelector('.classes'));
+ await page.locator('.hero-jump').filter({hasText:/Rogue/i}).waitFor();
+ assert.equal(await page.evaluate(()=>window.__riddle.lineage.class),'rogue');
+ const saved=await page.evaluate(()=>window.__riddle.lineage.class);
+ await page.goto(base+'?dev=1&runs=1&seed=223',{waitUntil:'networkidle'});
+ await page.waitForFunction(()=>window.__riddle?.booted);
+ assert.equal(await page.evaluate(()=>window.__riddle.lineage.class),saved);
+ assert.deepEqual(errors,[]);assert(wasm.length>0);assert(wasm.every(w=>w.sha256===expectedWasm),'Wrong shipping WASM');
+ fs.writeFileSync(out+'/check.json',JSON.stringify({scope:'Public earned first-run bank,immediate Rogue class selection and saved reload;not player horizon',base,seed:223,wasm,errors,result:'PASS'},null,2)+'\n');
+ console.log('PASS realWASM earned first bank, immediate Rogue, persisted class');
+} finally {await browser.close();}

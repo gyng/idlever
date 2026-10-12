@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Error: strict mode violation: locator('.hero-jump').filter({ hasText: /Rogue/i }) resolved to 2 elements:
+    1) <button data-hero="1" class="hero-jump" data-kwh="bloodline" aria-label="Sable Ash · Bloodline 1 · 1st heir · Ready" aria-description="a persistent hero slot · keeps Legacy and upgrades">…</button> aka getByLabel('Sable Ash · Bloodline 1 · 1st').first()
+    2) <button data-hero="1" class="hero-jump" data-kwh="bloodline" aria-label="Sable Ash · Bloodline 1 · 1st heir · Ready" aria-description="a persistent hero slot · keeps Legacy and upgrades">…</button> aka getByRole('button', { name: 'Sable Ash · Bloodline 1 · 1st' })
+
+Call log:
+[2m  - waiting for locator('.hero-jump').filter({ hasText: /Rogue/i }) to be visible[22m
+
+    at /home/g/p/riddle/scratchpad/cut177/first-bank-browser-attempt3.mjs:47:62 {
+  log: [
+    "  - waiting for locator('.hero-jump').filter({ hasText: /Rogue/i }) to be visible"
+  ]
+}
+
+Node.js v26.5.0

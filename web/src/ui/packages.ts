@@ -155,8 +155,8 @@ export const MORE_SIMS = 24;
 export function headline(app: App): string | null {
   const f = app.lastForecast; if (!f) return null;
   const next = Math.max(f.start ?? app.lineage.start ?? 1, app.lineage.best_depth + 1);
-  const d = f.depths.find((x) => x.depth === next) ?? f.depths[f.depths.length - 1];
-  return d ? /* copy:callout */ `floor ${d.depth} ${share(d.reach, lowOf(f))}` : null;
+  const d = f.depths.find((x) => x.depth === next);
+  return d ? /* copy:callout */ `floor ${d.depth} ${share(d.reach, lowOf(f))}` : /* copy:callout */ `floor ${next} ?`;
 }
 
 /** Cache replies and in-flight requests per app snapshot. A new lineage invalidates
@@ -372,7 +372,8 @@ export function openPackages(app: App, anchor?: HTMLElement | null, initialKind?
     };
     const changed = (): void => { compare = false; reading = null; paint(); };
     const offChange = app.onChange?.(changed), offRules = app.onRules?.(changed);
-    dispose = () => { offChange?.(); offRules?.(); };
+    const offForecast = app.onForecast?.(() => paint());
+    dispose = () => { offChange?.(); offRules?.(); offForecast?.(); };
     paint();
     if (initialKind && !focus) requestAnimationFrame(() => body.querySelector<HTMLElement>(`.pkg-sec[data-kind="${initialKind}"]`)?.scrollIntoView({ block: "nearest" }));
     if (focus?.boss || focusPkg) requestAnimationFrame(() => {

@@ -1,0 +1,8 @@
+client suite: targeted (1/166 groups)
+FAIL package-selection 1.7s (1.3s)  Node.js v26.5.0
+     page.evaluate: Error: missing next-floor estimate is unknown, never an older floor
+         at check (eval at evaluate (:311:30), <anonymous>:2:154)
+         at eval (eval at evaluate (:311:30), <anonymous>:11:1)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/package-selection.mjs:4:17 {
+FAIL: 0/1 client gates in 1.7s

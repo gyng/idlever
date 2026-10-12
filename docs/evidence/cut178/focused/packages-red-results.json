@@ -1,0 +1,16 @@
+{
+  "suite": "targeted",
+  "fullCount": 166,
+  "selectedCount": 1,
+  "elapsedSeconds": 1.674,
+  "failed": 1,
+  "results": [
+    {
+      "n": "package-selection",
+      "code": 1,
+      "out": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\npage.evaluate: Error: missing next-floor estimate is unknown, never an older floor\n    at check (eval at evaluate (:311:30), <anonymous>:2:154)\n    at eval (eval at evaluate (:311:30), <anonymous>:11:1)\n    at async <anonymous>:337:30\n    at /home/g/p/riddle/web/tests/package-selection.mjs:4:17 {\n  log: []\n}\n\nNode.js v26.5.0\n",
+      "ms": 1674,
+      "own": 1348
+    }
+  ]
+}

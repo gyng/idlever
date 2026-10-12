@@ -1,0 +1,44 @@
+diff --git a/crates/riddle-core/src/engine.rs b/crates/riddle-core/src/engine.rs
+index 73106bc..9cdaa1d 100644
+--- a/crates/riddle-core/src/engine.rs
++++ b/crates/riddle-core/src/engine.rs
+@@ -5444,6 +5444,9 @@ impl Game {
+         if tier == ExitTier::Bank && !run.timed_out && self.lineage.banked_depths.insert(run.max_depth) {
+             marks += 1;
+             bests.push(format!("home:D{}", run.max_depth));
++            // The free Rogue gate reads this bank record. Grant it in this
++            // settlement so the first full haul's class is usable at home.
++            crate::meta::grant_free(&mut self.lineage);
+         }
+         // Cut 21 §1: a bank lights the waystones at or above its floor (`waystone D9`).
+         if tier == ExitTier::Bank && !run.timed_out {
+diff --git a/crates/riddle-core/src/tests.rs b/crates/riddle-core/src/tests.rs
+index 1e0fe72..df59835 100644
+--- a/crates/riddle-core/src/tests.rs
++++ b/crates/riddle-core/src/tests.rs
+@@ -1774,6 +1774,25 @@ fn story_lines_over_a_hundred_runs_follow_the_grammar() {
+ 
+ // ---------------------------------------------------------------- marks and meta
+ 
++#[test]
++fn first_bank_grants_rogue_before_the_next_send() {
++    for (tier, timed_out, opens) in [
++        (ExitTier::Bank, false, true),
++        (ExitTier::Return, false, false),
++        (ExitTier::Bank, true, false),
++    ] {
++        let mut g = arena();
++        assert!(!g.lineage.unlocks.contains("rogue"));
++        assert!(g.lineage.banked_depths.is_empty());
++        g.run.as_mut().unwrap().timed_out = timed_out;
++        finish_with(&mut g, tier);
++        assert_eq!(!g.lineage.banked_depths.is_empty(), opens);
++        assert_eq!(g.lineage.unlocks.contains("rogue"), opens,
++            "first settlement must grant its earned free class: {tier:?}, timeout={timed_out}");
++        assert_eq!(g.set_class("rogue").is_ok(), opens);
++    }
++}
++
+ #[test]
+ fn marks_are_earned_on_new_bests_only() {
+     let mut g = arena();

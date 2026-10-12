@@ -1,0 +1,72 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /FULL HAUL/i. Input:
+
+'ALPHA\n' +
+  'build 2026-10-12\n' +
+  'Bloodline 1\n' +
+  '1st heir\n' +
+  'GOLD\n' +
+  '$148\n' +
+  'LEGACY\n' +
+  '4\n' +
+  '★\n' +
+  '0\n' +
+  'best D3\n' +
+  'Delve ended\n' +
+  '1\n' +
+  'RUNS\n' +
+  'D3\n' +
+  'DEEPEST\n' +
+  'NEW BEST\n' +
+  '$148\n' +
+  'GOLD EARNED\n' +
+  'send\n' +
+  'carried\n' +
+  'Next run\n' +
+  'Build forge\n' +
+  'Free\n' +
+  '▸ details\n' +
+  '1st heir\n' +
+  'gold\n' +
+  'TOWN'
+
+    at file:///home/g/p/riddle/scratchpad/cut177/first-bank-browser.mjs:35:9 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'ALPHA\n' +
+    'build 2026-10-12\n' +
+    'Bloodline 1\n' +
+    '1st heir\n' +
+    'GOLD\n' +
+    '$148\n' +
+    'LEGACY\n' +
+    '4\n' +
+    '★\n' +
+    '0\n' +
+    'best D3\n' +
+    'Delve ended\n' +
+    '1\n' +
+    'RUNS\n' +
+    'D3\n' +
+    'DEEPEST\n' +
+    'NEW BEST\n' +
+    '$148\n' +
+    'GOLD EARNED\n' +
+    'send\n' +
+    'carried\n' +
+    'Next run\n' +
+    'Build forge\n' +
+    'Free\n' +
+    '▸ details\n' +
+    '1st heir\n' +
+    'gold\n' +
+    'TOWN',
+  expected: /FULL HAUL/i,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

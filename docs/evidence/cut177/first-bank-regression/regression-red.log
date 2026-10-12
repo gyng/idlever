@@ -1,0 +1,21 @@
+
+running 1 test
+tests::first_bank_grants_rogue_before_the_next_send --- FAILED
+
+failures:
+
+---- tests::first_bank_grants_rogue_before_the_next_send stdout ----
+
+thread 'tests::first_bank_grants_rogue_before_the_next_send' (71) panicked at crates/riddle-core/src/tests.rs:1790:9:
+assertion `left == right` failed: first settlement must grant its earned free class: Bank, timeout=false
+  left: false
+ right: true
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::first_bank_grants_rogue_before_the_next_send
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 812 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p riddle-core --lib`

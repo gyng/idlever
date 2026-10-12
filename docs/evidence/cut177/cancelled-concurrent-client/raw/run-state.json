@@ -1,0 +1,66 @@
+{
+  "scope": "Complete Cut177 candidate client acceptance only; not adoption, QA, freeze or score",
+  "status": "running",
+  "commit": "665ed618a32018c857ae3776eba512b1bb6da9dc",
+  "shipping_wasm": {
+    "bytes": 4879984,
+    "sha256": "58f90774b8bc5531bb9463cd092c0d2a6e55a917b402a2118527a98563c8e24e"
+  },
+  "steps": [
+    {
+      "name": "types",
+      "command": [
+        "pnpm",
+        "-s",
+        "exec",
+        "tsc",
+        "--noEmit"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-12T00:59:42.498215+00:00",
+      "pid": 4041039,
+      "exit_code": 0,
+      "elapsed_seconds": 10.205498107010499
+    },
+    {
+      "name": "copy",
+      "command": [
+        "node",
+        "tools/copy-lint.mjs"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-12T00:59:52.830962+00:00",
+      "pid": 4041081,
+      "exit_code": 0,
+      "elapsed_seconds": 0.2573996731080115
+    },
+    {
+      "name": "web-build",
+      "command": [
+        "pnpm",
+        "-s",
+        "build"
+      ],
+      "status": "passed",
+      "started_utc": "2026-10-12T00:59:53.206990+00:00",
+      "pid": 4041088,
+      "exit_code": 0,
+      "elapsed_seconds": 16.119913401082158
+    },
+    {
+      "name": "shipping-whole-client",
+      "command": [
+        "node",
+        "tests/run.mjs",
+        "--full",
+        "--report",
+        "/home/g/p/riddle/scratchpad/cut177/revalidation/shipping-client-results.json"
+      ],
+      "status": "running",
+      "started_utc": "2026-10-12T01:00:09.523398+00:00",
+      "pid": 4041669
+    }
+  ],
+  "updated_utc": "2026-10-12T01:00:09.532321+00:00",
+  "current": "shipping-whole-client"
+}

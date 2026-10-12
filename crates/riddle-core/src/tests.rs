@@ -1775,6 +1775,25 @@ fn story_lines_over_a_hundred_runs_follow_the_grammar() {
 // ---------------------------------------------------------------- marks and meta
 
 #[test]
+fn first_bank_grants_rogue_before_the_next_send() {
+    for (tier, timed_out, opens) in [
+        (ExitTier::Bank, false, true),
+        (ExitTier::Return, false, false),
+        (ExitTier::Bank, true, false),
+    ] {
+        let mut g = arena();
+        assert!(!g.lineage.unlocks.contains("rogue"));
+        assert!(g.lineage.banked_depths.is_empty());
+        g.run.as_mut().unwrap().timed_out = timed_out;
+        finish_with(&mut g, tier);
+        assert_eq!(!g.lineage.banked_depths.is_empty(), opens);
+        assert_eq!(g.lineage.unlocks.contains("rogue"), opens,
+            "first settlement must grant its earned free class: {tier:?}, timeout={timed_out}");
+        assert_eq!(g.set_class("rogue").is_ok(), opens);
+    }
+}
+
+#[test]
 fn marks_are_earned_on_new_bests_only() {
     let mut g = arena();
     g.run.as_mut().unwrap().max_depth = 3;
