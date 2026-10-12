@@ -1,0 +1,13 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: window.showSkill is not a function
+    at eval (eval at evaluate (:311:30), <anonymous>:1:13)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at /home/g/p/riddle/web/tests/class-tree.mjs:48:14 {
+  log: []
+}
+
+Node.js v26.5.0

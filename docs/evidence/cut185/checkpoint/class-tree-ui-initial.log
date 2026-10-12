@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.textContent: Error: strict mode violation: locator('.class-tree-soon') resolved to 2 elements:
+    1) <section class="class-tree-soon num">…</section> aka getByText('Class skillsL3 · D8').first()
+    2) <section class="class-tree-soon num">…</section> aka getByRole('dialog').getByText('Class skillsL3 · D8')
+
+Call log:
+[2m  - waiting for locator('.class-tree-soon')[22m
+
+    at /home/g/p/riddle/web/tests/class-tree.mjs:23:54 {
+  log: [ "  - waiting for locator('.class-tree-soon')" ]
+}
+
+Node.js v26.5.0

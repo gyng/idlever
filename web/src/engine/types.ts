@@ -520,6 +520,8 @@ export type BossKnowledge = { boss: string; facts: string[]; ledger?: LedgerRow 
 export type DescentProgress = { tier:number; unlocked:number; cleared:number|null };
 export type DescentOffer = { tier:number; hp_bonus_percent:number; attack_bonus_percent:number; stat_cap:number; affixes:ModifierInfo[]; elites:ModifierInfo[]; elite_rate_denominator:number; boss:ModifierInfo|null };
 export type ClassStyleId = "sentinel" | "hexbinder";
+export type ClassPathNode = {id:string;name:string;parent:string|null;required_level:number;required_depth:number;owned:boolean;available:boolean;blocked:string|null;tactics:Row[];effect:string};
+export type ClassTree = {class:string;level:number;xp:number;next:number;points:number;spent:number;available:boolean;blocked:string|null;reset_available:boolean;reset_blocked:string|null;nodes:ClassPathNode[]};
 export type ClassStyleOffer = {id:ClassStyleId;name:string;parent:string;level:number;xp:number;next:number;required_level:number;required_depth:number;deepest:number;selected:boolean;available:boolean;blocked:string|null;cooldown_ticks:number;duration_ticks:number;effect:string;tactic:Row};
 export type ClassStyles = {selected:ClassStyleId|null;offers:ClassStyleOffer[];remove_available:boolean;remove_blocked:string|null;automatic_row:boolean;player_overrides:boolean};
 export type HeroSlot = { specialization?:ClassStyleId; look?:string; hero_name?:string; build?:string; id:number; name:string; heir:number; class:string; level:number; xp:number; next?:number; state:"live"|"rests"|"waits"; live?:Lineage["live"]; rest_s:number; legacy:BloodlineLegacy; notice:boolean; chronicle?:string[] };
@@ -589,6 +591,7 @@ export type Lineage = { bloodline?: BloodlineLegacy;
                         hero_legacy?: {name?:string; heir: number; points: number; runs: number; best_depth: number; class: string; spent?: number; upgrades?: Record<string, number> }[];
                         legacy_upgrades?: { id: string; rank: number; cap: number; price: number; effect: string; affordable: boolean; next_run?: boolean; name?:string; branch?:string; parent?:string; min_depth?:number; blocked?:string; owned_effect?:string }[];   // next_run (blind b58b431, core): away, the points buy it — `upgradeHeroNext` buys it for the next run
                         class_styles?:ClassStyles;
+                        class_tree?:ClassTree;
                         legacy_respec?: {refund:number;available:boolean;points_after:number|null;blocked:string|null};
                         return_pick?: ReturnPick;                                                                     // Cut 113 §3 (core): the return's pick waiting at camp
                         runs?: RunRec[]; live?: LiveRun | null; replays?: number[]; clock_s?: number; absences?: number;   // RUNS_UI (core): the runs log, the run under way, the run ids a replay is held for, the lineage clock (s), the absences counted
@@ -777,6 +780,8 @@ export interface Engine {
   upgradeHeroNext?(id: string): Lineage;   // blind b58b431: away, a Legacy upgrade for the next run
   respecLegacy?():Lineage;
   setSpecialization?(id:string):Lineage;
+  learnClassSkill?(id:string):Lineage;
+  resetClassSkills?():Lineage;
   buildTown?(id: string): Lineage;
   hire?(id: string): Lineage;                           // hire the lit node's worker (`Works.lit`; its price from the purse, then the chest)
   openChest?(): Lineage;                                // the haul chest into the purse (`Works.chest` → `gold`); the porter's chore

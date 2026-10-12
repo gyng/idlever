@@ -1,0 +1,44 @@
+error[E0599]: no method named `next` found for struct `rng::Rng` in the current scope
+   --> crates/riddle-core/src/class_skill_effect_tests.rs:165:23
+    |
+165 |         assert_eq!(ar.next(), br.next(), "RNG {verb}");
+    |                       ^^^^
+    |
+   ::: crates/riddle-core/src/rng.rs:5:1
+    |
+  5 | pub struct Rng {
+    | -------------- method `next` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following traits define an item `next`, perhaps you need to implement one of them:
+            candidate #1: `Iterator`
+            candidate #2: `serde_json::de::Read`
+help: there is a method `ne` with a similar name, but with different arguments
+   --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/cmp.rs:263:5
+    |
+263 |     fn ne(&self, other: &Rhs) -> bool {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `next` found for struct `rng::Rng` in the current scope
+   --> crates/riddle-core/src/class_skill_effect_tests.rs:165:34
+    |
+165 |         assert_eq!(ar.next(), br.next(), "RNG {verb}");
+    |                                  ^^^^
+    |
+   ::: crates/riddle-core/src/rng.rs:5:1
+    |
+  5 | pub struct Rng {
+    | -------------- method `next` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following traits define an item `next`, perhaps you need to implement one of them:
+            candidate #1: `Iterator`
+            candidate #2: `serde_json::de::Read`
+help: there is a method `ne` with a similar name, but with different arguments
+   --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/cmp.rs:263:5
+    |
+263 |     fn ne(&self, other: &Rhs) -> bool {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `riddle-core` (lib test) due to 2 previous errors

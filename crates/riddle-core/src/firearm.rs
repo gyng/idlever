@@ -170,7 +170,7 @@ pub fn on_view(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx,v:&crate::
 pub fn reload_fast(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx)->bool {
     if !crate::hero::class_has_verb(run.hero.class,run.hero.level,"fast_reload") ||
         run.gun_skills.as_ref().is_some_and(|s|s.fast_ready>run.turn) {return false;}
-    let Some(ready)=run.turn.checked_add(FAST_COOLDOWN) else {return false;};
+    let Some(ready)=run.turn.checked_add(FAST_COOLDOWN - 10 * run.hero.skill(crate::hero::Class::Gunner, 5) as u32) else {return false;};
     if !reload_at_speed(run,cx,true) {return false;}
     run.gun_skills.get_or_insert_with(Default::default).fast_ready=ready;
     true
@@ -183,7 +183,7 @@ fn reload_at_speed(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx,fast:b
     if run.gun_reload.is_some() { return false; }
     let Some(weapon) = run.hero.weapon.as_ref() else { return false; };
     let Some(mut profile) = Profile::of(&weapon.kind) else { return false; };
-    if fast {profile.reload_ticks=profile.reload_ticks.div_ceil(2);}
+    if fast {profile.reload_ticks=(profile.reload_ticks.div_ceil(2) - run.hero.skill(crate::hero::Class::Gunner, 2) as u32).max(1);}
     let Some(mut chambers) = weapon.firearm else { return false; };
     let Ok(at) = chambers.reload(profile, run.turn) else { return false; };
     let item = weapon.id;

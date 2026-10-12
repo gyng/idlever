@@ -1,0 +1,20 @@
+
+running 5 tests
+... 3/5
+class_skill_effect_tests::learned_damage_changes_real_hits_without_extra_random_draws --- FAILED
+.
+failures:
+
+---- class_skill_effect_tests::learned_damage_changes_real_hits_without_extra_random_draws stdout ----
+
+thread 'class_skill_effect_tests::learned_damage_changes_real_hits_without_extra_random_draws' (111) panicked at crates/riddle-core/src/class_skill_effect_tests.rs:156:9:
+fixture landed Rogue 5 backstab bosstrue: [Attack { t: 0, src: 1, dst: 4, dmg: 13, hit: true, verb: Some("backstab") }, Spawn { t: 0, e: Entity { modifiers: None, id: 5, kind: "goblin", name: None, x: 5, y: 4, hp: 7, max_hp: 7, tags: [], ally: None, telegraph: None, cid: None, remembered: false } }, Callout { t: 0, text: "shielded", why: None }, Hurt { t: 0, id: 5, dmg: 13, hp: 0, cause: "hero" }, Die { t: 0, id: 5, cause: "hero" }]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    class_skill_effect_tests::learned_damage_changes_real_hits_without_extra_random_draws
+
+test result: FAILED. 4 passed; 1 failed; 0 ignored; 0 measured; 823 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p riddle-core --lib`

@@ -171,6 +171,18 @@ impl Game {
         Ok(js(&self.inner.lineage()))
     }
 
+    #[wasm_bindgen(js_name = learnClassSkill)]
+    pub fn learn_class_skill(&mut self, id: &str) -> Result<String, JsError> {
+        self.inner.learn_class_skill(id).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+
+    #[wasm_bindgen(js_name = resetClassSkills)]
+    pub fn reset_class_skills(&mut self) -> Result<String, JsError> {
+        self.inner.reset_class_skills().map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+
     #[wasm_bindgen(js_name = setSpecialization)]
     pub fn set_specialization(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.set_specialization(id).map_err(err)?;

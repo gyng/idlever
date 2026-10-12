@@ -1,0 +1,32 @@
+/* Carved branches on the existing parchment; connectors remain crisp at phone scale. */
+.class-tree-panel { margin:14px 0; padding:12px; border:2px solid #94774d; border-radius:5px; background:linear-gradient(120deg,#e9dfc7,#ccbb98); box-shadow:inset 0 2px 4px #68522c33; }
+.class-tree-header,.class-tree-soon,.class-tree-next { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; }
+.class-tree-header { margin-bottom:10px; font:600 20px/1.3 var(--control-font); }
+.class-tree-header small { font:400 13px/1.4 var(--body-font); }
+.class-tree-soon { padding:10px 0; border-top:1px solid #80644255; }
+.class-tree-fork { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.class-path-node { display:flex; flex-direction:column; gap:7px; min-width:0; padding:10px; border:1px solid #8d744c; border-radius:4px; background:#f5ead055; }
+.class-path-node.chosen { border:2px solid #81621f; background:#ecdcab88; }
+.class-path-heading { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font:600 18px/1.3 var(--control-font); }
+.class-path-heading .ico { width:28px; height:28px; object-fit:contain; }
+.class-path-owned { margin-left:auto; font:400 12px/1.4 var(--body-font); color:#584b29; }
+.class-path-rules { display:flex; flex-direction:column; gap:5px; font:400 14px/1.4 var(--body-font); overflow-wrap:anywhere; }
+.class-path-rules b { font-weight:600; }
+.class-path-rules small,.class-path-blocked { font-size:12px; }
+.class-path-choose { align-self:start; min-height:44px; margin-top:auto; }
+.class-tree-connector { width:2px; height:16px; background:#83643b; margin:0 auto; }
+.class-tree-next { padding:10px 4px; font-size:14px; }
+.class-tree-map,.class-tree-alternate { border-top:1px solid #83643b55; margin-top:10px; padding-top:8px; }
+.class-tree-map summary,.class-tree-alternate summary { min-height:36px; cursor:pointer; font:600 16px/1.4 var(--control-font); }
+.class-tree-future { display:flex; flex-direction:column; gap:4px; border-left:2px solid #967747; padding:8px; margin:8px 0 0 8px; font-size:14px; }
+.class-path-remove { margin-top:10px; }
+.class-path-feedback { min-height:1em; color:#8b382b; }
+@media(max-width:380px) { .class-tree-fork { grid-template-columns:minmax(0,1fr); gap:10px; } }
+.class-skills-later { margin:5px 0; }
+.class-skills-later summary { cursor:pointer; font-size:13px; min-height:28px; }
+.class-tree-branch > .class-path-node + .class-path-node { margin-top:10px; }
+.class-tree-next { display:block; }
+.class-skill-rules summary { cursor:pointer; min-height:32px; font-size:13px; }
+.class-reset-skill { display:block; margin:4px 0; }
+/* Leave the fixed close stud room when the tree header scrolls to the frame top. */
+.class-tree-header { padding-right:32px; }

@@ -661,6 +661,7 @@ pub fn compile(l: &LineageState) -> RuleSet {
     if let Some(t) = &p.temperament {
         rows.extend(tagged(temperament_rows(t, p.level(t)), &format!("temper:{t}")));
     }
+    rows.extend(crate::class_tree::rows(l));
     // Cut 119 §0: pets for everyone — the default tame row, below the guard rows, above the fallback (revocable)
     if crate::pets::tame_on(l) {
         rows.push(crate::pets::tame_row());
@@ -724,7 +725,7 @@ pub fn absorb(l: &mut LineageState, set: &RuleSet, by_origin: bool) {
     let is_ours = |row: &Row| row.is_pkg() && (by_origin || compiled.rows.iter().any(|c| c == row && c.origin == row.origin));
     if l.pkg.stance == CUSTOM {
         // the custom stance is the pen's own set: every row but the drills
-        l.pkg.custom = set.rows.iter().filter(|row| !row.origin.as_deref().is_some_and(|o| o.starts_with("drill:") || ((o.starts_with("style:")||o=="class:gunner")&&is_ours(row)))).cloned().map(|mut row| {
+        l.pkg.custom = set.rows.iter().filter(|row| !row.origin.as_deref().is_some_and(|o| o.starts_with("drill:") || ((o.starts_with("style:")||o.starts_with("class:"))&&is_ours(row)))).cloned().map(|mut row| {
             if row.origin.as_deref().is_some_and(|o| o.starts_with("stance:")) {
                 row.origin = None;
             }
@@ -1383,6 +1384,7 @@ pub fn row_label(row: &Row) -> Option<String> {
         "drill" if id == "tame" => Some(crate::pets::TAME_TEXT.to_string()),
         "drill" => Some(format!("drill · {}", crate::sifter::boss_short(id))),
         "style" => crate::specialization::Style::parse(id).map(|s|s.name().into()),
+        "class" if id.starts_with("path:") => crate::class_tree::label(id),
         "class" if id=="gunner" => Some("Gunner".into()),
         _ => None,
     }

@@ -1658,6 +1658,8 @@ pub fn lineage_key(game: &Game) -> u64 {
     feed(l.class.name());
     feed(&l.class_level().to_string());
     if let Some(style)=crate::specialization::current(l) {feed(style.id());}
+    let skills=crate::class_tree::mask(l);
+    if skills!=0 {feed(&format!("class skills {skills}"));}
     if let Some(hero) = crate::legacy::current(l).filter(|hero| !hero.upgrades.is_empty()) { feed(&format!("legacy {:?}", hero.upgrades)); }
     feed(&format!("{:?}", l.facts));
     feed(&format!("{:?}", l.unlocks));

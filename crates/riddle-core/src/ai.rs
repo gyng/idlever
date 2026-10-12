@@ -826,7 +826,7 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         "second_wind" => {
             if class_has_verb(run.hero.class, run.hero.level, "second_wind") && !run.hero.second_wind_used && run.hero.hp < run.hero.max_hp {
                 run.hero.second_wind_used = true;
-                let add = run.hero.max_hp * 3 / 10;
+                let add = run.hero.max_hp * 3 / 10 + 3 * run.hero.skill(Class::Fighter, 1);
                 run.hero.hp = (run.hero.hp + add).min(run.hero.max_hp);
                 callout(run, cx, "second wind");
                 true
@@ -851,7 +851,7 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
                 let hp = run.hero.pos;
                 for m in run.monsters.iter_mut() {
                     if m.hostile() && m.pos.cheb(hp) <= 2 {
-                        m.blind = 30;
+                        m.blind = 30 + 5 * run.hero.skill(Class::Rogue, 4);
                         m.last_seen = None;
                     }
                 }
@@ -895,8 +895,8 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         "free_captive" => verb_free_captive(run, cx),
         "vanish" => {
             if class_has_verb(run.hero.class, run.hero.level, "vanish") && run.hero.vanish_cd == 0 && !v.foes.is_empty() {
-                run.hero.vanish_t = 30;
-                run.hero.vanish_cd = 120;
+                run.hero.vanish_t = 30 + 5 * run.hero.skill(Class::Rogue, 3);
+                run.hero.vanish_cd = 120 - 10 * run.hero.skill(Class::Rogue, 5);
                 for m in run.monsters.iter_mut() {
                     m.last_seen = None;
                 }
@@ -921,7 +921,7 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         "bolt" => class_has_verb(run.hero.class, run.hero.level, "bolt") && verb_bolt(run, cx, &a, v),
         "ward" => {
             if class_has_verb(run.hero.class, run.hero.level, "ward") && run.hero.ward_cd == 0 && !v.foes.is_empty() {
-                run.hero.ward_t = 30;
+                run.hero.ward_t = 30 + 5 * run.hero.skill(Class::Caster, 3);
                 run.hero.ward_cd = 100;
                 callout(run, cx, "ward");
                 true
@@ -1105,7 +1105,7 @@ fn verb_volley(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     if targets.is_empty() {
         return false;
     }
-    run.hero.volley_cd = 80;
+    run.hero.volley_cd = 80 - 10 * run.hero.skill(Class::Ranger, 3);
     callout(run, cx, "volley");
     for k in targets {
         if run.monsters[k].hp > 0 {
@@ -1139,7 +1139,7 @@ fn verb_mark(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     if run.monsters[mi].marked > 0 {
         return false;
     }
-    run.monsters[mi].marked = 30;
+    run.monsters[mi].marked = 30 + 10 * run.hero.skill(Class::Ranger, 1) * i32::from(run.monsters[mi].is_boss());
     callout(run, cx, "marked");
     true
 }
@@ -1187,6 +1187,7 @@ fn verb_bolt(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     if mp.cheb(hp) <= BOW_RANGE && run.floor.map.los(hp, mp) {
         let def = run.monsters[mi].effective_def();
         let (hit, dmg) = roll_hit(&mut run.rng, (BOLT_ATK.0 + run.hero.str_bonus, BOLT_ATK.1 + run.hero.str_bonus), def);
+        let dmg = if hit { dmg + run.hero.skill_damage("bolt", run.monsters[mi].is_boss(), run.monsters[mi].hp, run.monsters[mi].max_hp, run.monsters[mi].marked > 0) } else { dmg };
         let id = run.monsters[mi].id;
         run.last_hit_verb = Some("bolt".into());
         projectile(run, cx, HERO_ID, id, hp, mp);
@@ -1252,7 +1253,8 @@ fn verb_slow(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
         return false;
     }
     run.monsters[mi].slow_t = 30 + 5*i32::from(crate::legacy::has(&run.hero,crate::legacy::CONTROL))
-        + 15*i32::from(crate::legacy::has(&run.hero,crate::legacy::DEBILITATE));
+        + 15*i32::from(crate::legacy::has(&run.hero,crate::legacy::DEBILITATE))
+        + 5 * run.hero.skill(Class::Caster, 4) + 10 * run.hero.skill(Class::Caster, 1) * i32::from(run.monsters[mi].is_boss());
     callout(run, cx, "slowed");
     true
 }
@@ -1274,7 +1276,8 @@ fn verb_nova(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     for q in hp.neighbours8() {
         if let Some(k) = run.monster_at(q) {
             if run.monsters[k].hostile() {
-                damage_monster(run, cx, k, 5, &Src::Fire);
+                let dmg = 5 + run.hero.skill_damage("nova", run.monsters[k].is_boss(), run.monsters[k].hp, run.monsters[k].max_hp, run.monsters[k].marked > 0);
+                damage_monster(run, cx, k, dmg, &Src::Fire);
             }
         }
     }
@@ -1536,7 +1539,7 @@ fn smoke_gun(run:&mut Run,cx:&mut Ctx,v:&View)->bool {
     let Some(q)=clear_step(run,mi) else {return false;};
     let Some(at)=run.turn.checked_add(crate::firearm::SMOKE_COOLDOWN) else {return false;};
     let hp=run.hero.pos;
-    for m in &mut run.monsters {if m.hp>0&&m.hostile()&&m.pos.cheb(hp)<=2 {m.blind=m.blind.max(30);m.last_seen=None;}}
+    for m in &mut run.monsters {if m.hp>0&&m.hostile()&&m.pos.cheb(hp)<=2 {m.blind=m.blind.max(30 + 5 * run.hero.skill(Class::Gunner, 4));m.last_seen=None;}}
     run.gun_skills.get_or_insert_with(Default::default).smoke_ready=at;
     move_hero(run,cx,q);callout(run,cx,"smoke retreat");true
 }
@@ -1650,6 +1653,7 @@ fn hero_attack_roll(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &str, bash: bo
     let def = run.monsters[mi].effective_def();
     let def = gun.map_or(def, |(p,_)| (def - p.armour_piercing).max(0));
     let (hit, dmg) = roll_hit_pct(&mut run.rng, atk, def, if prepared {100}else{run.hero.hit_pct()});
+    let dmg = if hit { dmg + run.hero.skill_damage(verb, run.monsters[mi].is_boss(), run.monsters[mi].hp, run.monsters[mi].max_hp, run.monsters[mi].marked > 0) } else { dmg };
     let id = run.monsters[mi].id;
     run.last_hit_verb = Some(verb.into());
     if ranged {
@@ -1695,7 +1699,7 @@ fn hero_attack_roll(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &str, bash: bo
             run.monsters[mi].telegraph = None;
         }
         if bash {
-            run.monsters[mi].stun = 10 + 5*i32::from(crate::legacy::has(&run.hero,crate::legacy::CONTROL));
+            run.monsters[mi].stun = 10 + 5*i32::from(crate::legacy::has(&run.hero,crate::legacy::CONTROL)) + run.hero.skill(Class::Fighter, 0);
             callout(run, cx, "bash");
         }
         // Cut 3: a mace stuns one hit in ten.
@@ -2422,8 +2426,8 @@ fn verb_tactic(run: &mut Run, cx: &mut Ctx, card: &str, v: &View) -> bool {
                 return true;
             }
             if run.hero.vanish_cd == 0 && v.adj >= 1 {
-                run.hero.vanish_t = 30;
-                run.hero.vanish_cd = 120;
+                run.hero.vanish_t = 30 + 5 * run.hero.skill(Class::Rogue, 3);
+                run.hero.vanish_cd = 120 - 10 * run.hero.skill(Class::Rogue, 5);
                 callout(run, cx, "vanish");
                 return true;
             }
@@ -2613,7 +2617,7 @@ fn verb_tactic(run: &mut Run, cx: &mut Ctx, card: &str, v: &View) -> bool {
             }
             if class_has_verb(run.hero.class, run.hero.level, "second_wind") && !run.hero.second_wind_used {
                 run.hero.second_wind_used = true;
-                let add = run.hero.max_hp * 3 / 10;
+                let add = run.hero.max_hp * 3 / 10 + 3 * run.hero.skill(Class::Fighter, 1);
                 run.hero.hp = (run.hero.hp + add).min(run.hero.max_hp);
                 callout(run, cx, "second wind");
                 return true;
@@ -2811,7 +2815,7 @@ fn verb_tactic(run: &mut Run, cx: &mut Ctx, card: &str, v: &View) -> bool {
                 return true;
             }
             if v.adj >= 1 && run.hero.ward_cd == 0 && run.hero.ward_t == 0 {
-                run.hero.ward_t = 30;
+                run.hero.ward_t = 30 + 5 * run.hero.skill(Class::Caster, 3);
                 run.hero.ward_cd = 100;
                 callout(run, cx, "ward");
                 return true;
@@ -3081,7 +3085,7 @@ fn monster_attack(run: &mut Run, cx: &mut Ctx, mi: usize, mult: i32, verb: &str)
     let atk = (a.0 * mult, a.1 * mult);
     // Cut 25 §1: armour blunts a blow, never negates it (`Hero::blunt`).
     let (hit, roll) = roll_hit(&mut run.rng, atk, 0);
-    let dmg = if hit { run.hero.blunt(roll) } else { 0 };
+    let dmg = if hit { run.hero.boss_melee_damage(run.hero.blunt(roll), run.monsters[mi].is_boss(), matches!(verb, "shoot" | "bolt")) } else { 0 };
     let id = run.monsters[mi].id;
     let kind = run.monsters[mi].kind.clone();
     cx.events.push(Ev::Attack { t: run.turn, src: id, dst: HERO_ID, dmg, hit, verb: Some(verb.into()) });
@@ -4463,7 +4467,7 @@ fn verb_cleave(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     }
     let hp = run.hero.pos;
     let targets: Vec<usize> = v.foes.iter().copied().filter(|&i| run.monsters[i].pos.adjacent(hp)).collect();
-    run.hero.cleave_cd = 60;
+    run.hero.cleave_cd = 60 - 10 * run.hero.skill(Class::Fighter, 4);
     crate::provenance::cooldown(run, cx, "cleave");
     callout(run, cx, "cleave");
     for mi in targets {

@@ -1,0 +1,22 @@
+
+running 9 tests
+. 1/9
+class_tree::tests::inactive_memory_does_not_change_forecast_and_selected_rules_do --- FAILED
+.......
+failures:
+
+---- class_tree::tests::inactive_memory_does_not_change_forecast_and_selected_rules_do stdout ----
+
+thread 'class_tree::tests::inactive_memory_does_not_change_forecast_and_selected_rules_do' (124) panicked at crates/riddle-core/src/class_tree_tests.rs:96:46:
+assertion `left != right` failed
+  left: 12929107676238469100
+ right: 12929107676238469100
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    class_tree::tests::inactive_memory_does_not_change_forecast_and_selected_rules_do
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 813 filtered out; finished in 1.18s
+
+error: test failed, to rerun pass `-p riddle-core --lib`

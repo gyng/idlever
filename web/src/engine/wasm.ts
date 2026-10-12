@@ -156,6 +156,8 @@ export class WasmEngine implements Engine {
   upgradeHero(id: string): Lineage { return this.call("upgradeHero", id); }
   upgradeHeroNext(id: string): Lineage { return this.call("upgradeHeroNext", id); }
   setSpecialization(id:string):Lineage { return this.call("setSpecialization",id); }
+  learnClassSkill(id:string):Lineage { return this.call("learnClassSkill",id); }
+  resetClassSkills():Lineage { return this.call("resetClassSkills"); }
   respecLegacy():Lineage { return this.call("respecLegacy"); }
   buildTown(id: string): Lineage { return this.call("buildTown", id); }
   openChest(): Lineage { return this.call("openChest"); }

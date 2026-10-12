@@ -1419,6 +1419,8 @@ pub struct LineageState {
     pub classes: BTreeMap<String, ClassProg>,
     #[serde(default,skip_serializing_if="BTreeMap::is_empty")]
     pub specializations:BTreeMap<String,crate::specialization::Style>,
+    #[serde(default,skip_serializing_if="BTreeMap::is_empty")]
+    pub class_paths:BTreeMap<String,BTreeSet<String>>,
     // Addendum D
     pub forge: BTreeMap<String, ForgeRow>,
     pub renown: u32,
@@ -1921,6 +1923,7 @@ impl LineageState {
             supplies: Vec::new(),
             classes,
             specializations:BTreeMap::new(),
+            class_paths:BTreeMap::new(),
             forge: BTreeMap::new(),
             renown: 0,
             rank: 0,
@@ -2283,7 +2286,7 @@ impl LineageState {
         self.rules().rows.iter().map(|r| self.row_stats.iter().find(|(x, _)| x.conds == r.conds && x.verb == r.verb).map(|(_, t)| crate::turn::row_stat(r, t))).collect()
     }
     pub fn to_wire(&self) -> Lineage {
-        Lineage { keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
+        Lineage { class_tree: Some(crate::class_tree::offers(self,false)), keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
             seed: self.seed,
             heir: self.heir,
             trait_: self.trait_.name().into(),
@@ -3488,6 +3491,7 @@ impl Game {
         // RUNS_UI: the run under way and the runs a replay is held for
         l.live = self.live_run();
         l.guns=crate::firearm::offers(&self.lineage,self.run.is_some());
+        l.class_tree=Some(crate::class_tree::offers(&self.lineage,self.run.is_some()));
         l.class_styles=Some(crate::specialization::offers(&self.lineage,self.run.is_some()));
         l.legacy_upgrades = crate::legacy::offers(&self.lineage, crate::legacy::away(self));
         l.legacy_respec = Some(crate::legacy::respec_offer(&self.lineage,crate::legacy::away(self)));
@@ -3691,7 +3695,7 @@ impl Game {
 
     pub fn set_class(&mut self, class: &str) -> Result<(), String> {
         let c = Class::parse(class).ok_or("unknown class")?;
-        if (c==Class::Gunner||self.lineage.class==Class::Gunner)&&self.run.is_some() {
+        if (c==Class::Gunner||self.lineage.class==Class::Gunner||!self.lineage.class_paths.is_empty())&&self.run.is_some() {
             return Err("hero away".into());
         }
         if let Some(u) = c.unlock() {
@@ -3702,7 +3706,7 @@ impl Game {
         let was_gunner=self.lineage.class==Class::Gunner;
         self.lineage.class = c;
         if c==Class::Gunner {self.lineage.classes.entry("gunner".into()).or_insert(ClassProg{level:1,xp:0,next:0});}
-        if was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty() {crate::packages::recompile(&mut self.lineage);}
+        if was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty()||!self.lineage.class_paths.is_empty() {crate::packages::recompile(&mut self.lineage);}
         Ok(())
     }
 
@@ -4151,6 +4155,7 @@ impl Game {
         // Cut 118 §4: the apprentice's ration for this send
         crate::feats::eat_ration(&mut self.lineage, &mut hero);
         hero.specialization=crate::specialization::current(&self.lineage);
+        hero.class_skills=crate::class_tree::mask(&self.lineage);
         // Starting arms by class, at the forge's steps (Cut 23 §1; the kit's ids are never loot).
         crate::kit::equip(&self.lineage, &mut hero);
         let mut brought = Vec::new();

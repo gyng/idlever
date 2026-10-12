@@ -2344,6 +2344,8 @@ pub struct Replay {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Lineage {
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub class_tree:Option<crate::class_tree::Tree>,
     /// Actual manual keep receipt; populated only on the settlement response.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub keep_salvaged: Option<Vec<SalvageRow>>,

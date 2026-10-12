@@ -213,6 +213,10 @@ export class TownAtlas {
     void loadPacked().then((p) => { this.src = p; this.ready = true; this.reset(); });
   }
   has(id: string): boolean { return !!this.src?.frames[id]; }
+  /** Cached stepped pigment ellipse; geometry stays in integer town texels. */
+  shadow(width: number, depth: number): Slot {
+    return this.get(`town_ground_shadow_${Math.max(6, Math.round(width))}`, Math.max(3, Math.round(depth)));
+  }
   /** Cut 30.5: the slot of `ids` greyed — a lit node's worker not yet hired (art/town_sheet.py `grey()`: the values only, lifted toward a
    *  pale MIST grey, alpha × 0.8), cut once into its own slot */
   grey(ids: string | string[], h: number): Slot {
@@ -241,7 +245,8 @@ export class TownAtlas {
     const key = `${id}@${h}`;
     const s = this.slots.get(key); if (s) return s;
     const f = this.src?.frames[id];
-    const w = f ? Math.max(1, Math.round(h * f.w / f.h)) : Math.max(1, Math.round(h * (ASPECT.find(([re]) => re.test(id))?.[1] ?? 1)));
+    const shadowWidth = /^town_ground_shadow_(\d+)$/.exec(id);
+    const w = shadowWidth ? Number(shadowWidth[1]) : f ? Math.max(1, Math.round(h * f.w / f.h)) : Math.max(1, Math.round(h * (ASPECT.find(([re]) => re.test(id))?.[1] ?? 1)));
     if (this.sx + w + 1 > ATLAS) { this.sy += this.sh + 1; this.sx = 1; this.sh = 0; }
     if (this.sy + h + 1 > ATLAS) this.reset();   // (never in practice: a full sheet starts over)
     const x = this.sx, y = this.sy; this.sx += w + 1; this.sh = Math.max(this.sh, h);
@@ -278,7 +283,15 @@ function drawPrimitive(g: CanvasRenderingContext2D, id: string, x: number, y: nu
   const R = (c: string, a: number, b: number, cw: number, ch: number): void => { g.fillStyle = c; g.fillRect(x + Math.round(a), y + Math.round(b), Math.max(1, Math.round(cw)), Math.max(1, Math.round(ch))); };
   const tri = (c: string, x0: number, y0: number, x1: number, x2: number, yb: number): void => { g.fillStyle = c; g.beginPath(); g.moveTo(x + x0, y + y0); g.lineTo(x + x1, y + yb); g.lineTo(x + x2, y + yb); g.closePath(); g.fill(); };
   const speck = (base: string, dark: string, n: number): void => { R(base, 0, 0, w, h); for (let i = 0; i < n; i++) R(dark, (hashN(i, x, y) % w), (hashN(y, i, 7) % h), 1, 1); };
-  if (/^town_wind_grass_/.test(id)) {
+  if (/^town_ground_shadow_/.test(id)) {
+    // Three quiet ink washes, a crisp outer edge and a dense foot contact.
+    // No blur or gradient: both renderer paths sample the same small bitmap.
+    for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++) {
+      const d = Math.pow((xx + .5 - w / 2) / (w / 2), 2) + Math.pow((yy + .5 - h / 2) / (h / 2), 2);
+      if (d <= 1) R(d < .24 ? "rgba(13,17,24,.32)" : d < .63 ? "rgba(13,17,24,.21)" : "rgba(13,17,24,.09)", xx, yy, 1, 1);
+    }
+  }
+  else if (/^town_wind_grass_/.test(id)) {
     const lean = Number(id.split("_").at(-1)) - 2;
     // Stepped ink/wash blade clusters, five bends with the same rooted bases.
     for (const [root, tall, bias] of [[w*.25, h*.72, -1], [w*.5, h, 0], [w*.75, h*.6, 1]]) {
@@ -547,9 +560,26 @@ export function createTownView(host: HTMLElement): TownView {
   };
   const zOf = (footY: number): number => 1 + footY / 2000;
   const inView = (x: number, y: number, w: number, h: number): boolean => x + w / 2 >= F.x0 - 4 && x - w / 2 <= F.x0 + F.w + 4 && y >= F.y0 - 4 && y - h <= F.y0 + F.h + 4;
-  function sprite(ids: string | string[], h: number, x: number, y: number, o: { flip?: boolean; dim?: number; fade?: number; z?: number } = {}): void {
+  function grounding(x: number, y: number, width: number, height: number, fade = 0): void {
+    const broad = height >= 36, w = Math.max(6, Math.round(width * (broad ? .78 : .6)));
+    const depth = broad ? Math.min(10, Math.max(5, Math.round(width * .13))) : 4;
+    const contact = atlas.shadow(w, depth);
+    push(contact, Math.round(x), Math.round(y + depth / 2 - 1), .22, false, 1, Math.max(fade, F.night * .12));
+    // A short cast mark is visible in daylight; overhead moonlight leaves the
+    // contact alone. Ground-plane z keeps it behind every tree, prop and person.
+    if (F.night < .85) {
+      const cast = atlas.shadow(Math.round(w * 1.15), depth + (broad ? 4 : 2));
+      push(cast, Math.round(x + height * .08), Math.round(y + cast.h - 1), .21, false, 1,
+        Math.max(fade, .55 + F.night * .45));
+    }
+  }
+  function sprite(ids: string | string[], h: number, x: number, y: number, o: { flip?: boolean; dim?: number; fade?: number; z?: number; ground?: boolean } = {}): void {
     const s = atlas.get(ids, h);
     if (!inView(x, y, s.w, s.h)) return;
+    const id = Array.isArray(ids) ? ids[0]! : ids;
+    if (o.ground ?? /^(hero_|walk_|town_(house_|blacksmith_|bank_|storehouse_|kennel_|worker_|smith$|merchant$|carter$|child$|crate$|board$|campfire_|haul_chest|stall$|barrel$|brazier$|bench$|well$))/.test(id)) {
+      grounding(x, y, s.w, s.h, o.fade ?? 0);
+    }
     push(s, Math.round(x), Math.round(y), o.z ?? zOf(y), !!o.flip, o.dim ?? 1, o.fade ?? 0);
   }
   /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
@@ -754,14 +784,14 @@ export function createTownView(host: HTMLElement): TownView {
       const beat = 0.9 + (k % 50) / 100, phase = (k % 97) / 31;
       const step = moving && (Math.floor(t * 6.5) & 1) === 1;
       const frameN = w.lit || moving ? 0 : Math.floor((t + phase) / beat) & 1;
-      if (w.lit) { const g = atlas.grey(workerIds(w.id), 24); if (inView(x, y, g.w, g.h)) push(g, Math.round(x), Math.round(y), zOf(y), flip, 1, 0); }
+      if (w.lit) { const g = atlas.grey(workerIds(w.id), 24); if (inView(x, y, g.w, g.h)) { grounding(x, y, g.w, g.h); push(g, Math.round(x), Math.round(y), zOf(y), flip, 1, 0); } }
       else sprite(workerIds(w.id, frameN), 24, x, y - (step ? 1 : 0), { flip, dim: w.paused ? 0.7 : 1 });
       // week 2: his rank, quiet — a gilt pip over his head per rank past the first (II ·, III ··)
       if (!w.lit && w.rank > 1) for (let r = 0; r < w.rank - 1; r++) sprite("fx_dot_d8b45a", 2, x - (w.rank - 2) * 1.5 + r * 3, y - 26 - (step ? 1 : 0), { z: zOf(y) + 0.0003 });
       if (!w.lit) lantern(x, y - (step ? 1 : 0), flip, night);
     }
     // the pen: penned pets lie by the kennel
-    s.penned.forEach((k, j) => { const p = PLOTS.kennel; sprite([k, "town_dog"], 10, p.x - 20 + j * 12, p.y + 8, { flip: j % 2 === 1 }); });
+    s.penned.forEach((k, j) => { const p = PLOTS.kennel; sprite([k, "town_dog"], 10, p.x - 20 + j * 12, p.y + 8, { flip: j % 2 === 1, ground: true }); });
     // walkers
     let live = 0;
     for (const w of walkers) {
@@ -776,7 +806,7 @@ export function createTownView(host: HTMLElement): TownView {
       if (w === hero && walkingIn) { const g = (t - walkingIn.t0) / (walkingIn.t1 - walkingIn.t0); if (g > 0.75) fade = Math.min(1, (g - 0.75) * 4); }
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
       const ids = step ? w.walk : w.sprite;
-      sprite(ids, w.h, x, y - (step ? 1 : 0), { flip, fade });
+      sprite(ids, w.h, x, y - (step ? 1 : 0), { flip, fade, ground: true });
       if (!w.pet) lantern(x, y - (step ? 1 : 0), flip, night, fade);
       if (w.carry) {
         const back = (flip ? -1 : 1) * (w.carry === "town_chest_glow" ? 6 : 7);
@@ -1033,7 +1063,7 @@ class GLTown {
   private camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 1, 200);
   private tex: THREE.CanvasTexture;
   private terrainTex: THREE.CanvasTexture;
-  private groundL: QuadLayer; private objL: QuadLayer;
+  private groundL: QuadLayer; private objL: QuadLayer; private shadowL: QuadLayer;
   private blitScene = new THREE.Scene(); private blitCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private mat: THREE.ShaderMaterial;
   private groundKey = ""; private atlasV = -1;
@@ -1051,7 +1081,16 @@ class GLTown {
     Object.assign(this.terrainTex, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, generateMipmaps: false, colorSpace: THREE.NoColorSpace, flipY: true });
     this.groundL = new QuadLayer(this.terrainTex, 1, 1, 0);
     this.objL = new QuadLayer(this.tex, 1600, 1, 1);
-    this.scene.add(this.groundL.mesh, this.objL.mesh);
+    this.shadowL = new QuadLayer(this.tex, 800, 1, 1);
+    // Town-only translucent ground pigment. Ordinary sprites retain their
+    // existing hard alpha threshold; this layer writes no depth or light tags.
+    const shadowMat = this.shadowL.mesh.material as THREE.ShaderMaterial;
+    shadowMat.fragmentShader = shadowMat.fragmentShader
+      .replace("if (c.a < 0.5) discard;", "if (c.a < 0.01) discard;")
+      .replace("if (vParam.z > 0.0 && vParam.z > bayer4(gl_FragCoord.xy)) discard;", "")
+      .replace("gl_FragColor = vec4(col, uTag);", "gl_FragColor = vec4(col, c.a * (1.0 - vParam.z));");
+    shadowMat.transparent = true; shadowMat.depthWrite = false;
+    this.scene.add(this.groundL.mesh, this.objL.mesh, this.shadowL.mesh);
     this.camera.position.set(0, 0, 100);
     this.mat = new THREE.ShaderMaterial({ vertexShader: BLIT_VERT, fragmentShader: BLIT_FRAG, depthTest: false, depthWrite: false,
       uniforms: { tex: { value: this.rt.texture }, uSize: { value: new THREE.Vector2(4, 4) }, uK: { value: 1 }, uDevH: { value: 4 }, uAmb: { value: new THREE.Vector3(1, 1, 1) }, uNight: { value: 0 },
@@ -1074,9 +1113,14 @@ class GLTown {
       }
       L.end();
     }
-    const O = this.objL; O.begin();
-    for (let i = 0; i < F.n; i++) { const q = F.quads[i]!; O.push(q.x, -q.y, q.z, q.w, q.h, q.s.u0, q.s.v0, q.s.u1, q.s.v1, q.dim, 0, q.fade, q.flip ? 1 : 0); }
-    O.end();
+    const O = this.objL, S = this.shadowL; O.begin(); S.begin();
+    for (let i = 0; i < F.n; i++) {
+      const q = F.quads[i]!;
+      // .21/.22 are reserved for ground pigment; wind stays at .1.
+      const layer = q.z === .21 || q.z === .22 ? S : O;
+      layer.push(q.x, -q.y, q.z, q.w, q.h, q.s.u0, q.s.v0, q.s.u1, q.s.v1, q.dim, 0, q.fade, q.flip ? 1 : 0);
+    }
+    O.end(); S.end();
     const c = this.camera; c.left = F.x0; c.right = F.x0 + F.w; c.top = -F.y0; c.bottom = -(F.y0 + F.h); c.updateProjectionMatrix();
     r.setRenderTarget(this.rt); r.setClearColor(0x1b2412, 1); r.clear(); r.render(this.scene, c);
     const u = this.mat.uniforms;
@@ -1088,5 +1132,5 @@ class GLTown {
   }
   // (the context is let go, not left for the browser to reap: a camp mounted a dozen times held a dozen contexts, and Chrome's cap
   // then forced the oldest live one — the watch's — lost)
-  dispose(): void { this.groundL.dispose(); this.objL.dispose(); this.mat.dispose(); this.rt.dispose(); this.tex.dispose(); this.terrainTex.dispose(); this.renderer.dispose(); this.renderer.forceContextLoss(); }
+  dispose(): void { this.groundL.dispose(); this.objL.dispose(); this.shadowL.dispose(); this.mat.dispose(); this.rt.dispose(); this.tex.dispose(); this.terrainTex.dispose(); this.renderer.dispose(); this.renderer.forceContextLoss(); }
 }

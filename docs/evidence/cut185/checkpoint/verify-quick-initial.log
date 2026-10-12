@@ -1,0 +1,121 @@
+test result: ok. 822 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 69.47s
+copy-lint: 87 files, 2412 tagged literals, 0 violations
+✔ saved-camp checks reject incomplete or ambiguous requests (1.458086ms)
+✔ references bind exact inputs and workloads and require uncorrupted full bytes (0.911008ms)
+✔ save comparison detects adjacent integers that Number rounds together (1.38138ms)
+✔ comparison preserves safe counters, floats, arrays and quoted seed-like text (0.266677ms)
+✔ shared wallet matches equal-valued exits by bloodline and retains intervening movements (1.597144ms)
+✖ native bridge covers every client method and rejects unsupported bindings (7.439372ms)
+✔ checkpoint memento accounts for every serde-skipped engine field (3.956825ms)
+✔ native sessions isolate, order calls, recover from request errors and preserve state across rebuild (90.324119ms)
+✔ native transport rejects remote connections and cross-origin requests (433.33458ms)
+✔ native edits coalesce, serialize and rebuild edits that arrive during a build (82.404358ms)
+✔ failed builds surface errors, recover on an edit and stop after close (61.567717ms)
+✔ only compilation inputs trigger builds, not generated outputs or browser assets (0.67908ms)
+✔ test-only edits skip rebuilds only with current cfg declaration and compiler proof (47.306959ms)
+✔ real compiler separates unit tests from runtime and included inputs (3717.51479ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 13
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3793.320322
+
+✖ failing tests:
+
+test at ../tools/native-codegen.test.mjs:6:1
+✖ native bridge covers every client method and rejects unsupported bindings (7.439372ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'act',
+      'addBloodline',
+      'advance',
+      'ascend',
+  ...
+      'kitEstimates',
+  +   'learnClassSkill',
+      'lineage',
+      'load',
+      'loadout',
+      'newLineage',
+      'openChest',
+  ...
+      'replay',
+  +   'resetClassSkills',
+      'respecLegacy',
+      'revokeDrill',
+      'revokeTame',
+      'runOffline',
+      'runOfflineQuick',
+  
+      at TestContext.<anonymous> (file:///home/g/p/riddle/tools/native-codegen.test.mjs:11:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [
+      'act',                  'addBloodline',        'advance',         'ascend',
+      'autoKeep',             'bail',                'bankDeposit',     'bankWithdraw',
+      'beginDescent',         'breed',               'buildTown',       'buy',
+      'buyKit',               'buyRation',           'buySupply',       'buySurvey',
+      'buyUnlockGold',        'cageForecast',        'choose',          'clearSupplies',
+      'commission',           'companionVocabulary', 'death',           'deathDeltas',
+      'descentOffer',         'divergence',          'drawOath',        'dropSupply',
+      'equipPackage',         'exportRules',         'fold',            'forecast',
+      'forecastEstimate',     'forecastMove',        'forecastRefine',  'forecastVs',
+      'forecastVsEstimate',   'forkForecast',        'forswearOath',    'forswearOathId',
+      'grantWish',            'hatch',               'hire',            'importRules',
+      'insure',               'keep',                'kitDeltas',       'kitEstimates',
+      'learnClassSkill',      'lineage',             'load',            'loadout',
+      'newLineage',           'openChest',           'packageOptions',  'packageOptionsFor',
+      'packageOptionsForKey', 'packageOptionsKey',   'pickTemperament', 'promote',
+      'replay',               'resetClassSkills',    'respecLegacy',    'revokeDrill',
+      'revokeTame',           'runOffline',          'runOfflineQuick', 'runOfflineSlice',
+      'save',                 'seekBoss',            'seekForecast',    'seenSystems',
+      'selectBloodline',      'selectSet',           'sellVault',       'send',
+      'setClass',             'setCompanionRules',   'setKeepPref',     'setLook',
+      'setOrders',            'setParty',            'setPerk',         'setRestock',
+      'setRules',             'setSpecialization',   'setStart',        'setTacticVariant',
+      'setTrait',             'setTrial',            'setVaultPref',    'setWorker',
+      'spendLevel',           'startForecast',       'step',            'supplyCatalogue',
+      'swapQuest',            'swearOath',           'takeControl',     'takeFix',
+      ... 9 more items
+    ],
+    expected: [
+      'act',                'addBloodline',        'advance',           'ascend',
+      'autoKeep',           'bail',                'bankDeposit',       'bankWithdraw',
+      'beginDescent',       'breed',               'buildTown',         'buy',
+      'buyKit',             'buyRation',           'buySupply',         'buySurvey',
+      'buyUnlockGold',      'cageForecast',        'choose',            'clearSupplies',
+      'commission',         'companionVocabulary', 'death',             'deathDeltas',
+      'descentOffer',       'divergence',          'drawOath',          'dropSupply',
+      'equipPackage',       'exportRules',         'fold',              'forecast',
+      'forecastEstimate',   'forecastMove',        'forecastRefine',    'forecastVs',
+      'forecastVsEstimate', 'forkForecast',        'forswearOath',      'forswearOathId',
+      'grantWish',          'hatch',               'hire',              'importRules',
+      'insure',             'keep',                'kitDeltas',         'kitEstimates',
+      'lineage',            'load',                'loadout',           'newLineage',
+      'openChest',          'packageOptions',      'packageOptionsFor', 'packageOptionsForKey',
+      'packageOptionsKey',  'pickTemperament',     'promote',           'replay',
+      'respecLegacy',       'revokeDrill',         'revokeTame',        'runOffline',
+      'runOfflineQuick',    'runOfflineSlice',     'save',              'seekBoss',
+      'seekForecast',       'seenSystems',         'selectBloodline',   'selectSet',
+      'sellVault',          'send',                'setClass',          'setCompanionRules',
+      'setKeepPref',        'setLook',             'setOrders',         'setParty',
+      'setPerk',            'setRestock',          'setRules',          'setSpecialization',
+      'setStart',           'setTacticVariant',    'setTrait',          'setTrial',
+      'setVaultPref',       'setWorker',           'spendLevel',        'startForecast',
+      'step',               'supplyCatalogue',     'swapQuest',         'swearOath',
+      'takeControl',        'takeFix',             'takeReturnPick',    'tithe',
+      ... 7 more items
+    ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

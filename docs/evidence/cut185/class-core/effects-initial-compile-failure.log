@@ -1,0 +1,46 @@
+error[E0583]: file not found for module `class_skill_effect_tests`
+   --> crates/riddle-core/src/lib.rs:425:1
+    |
+425 | mod class_skill_effect_tests;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: to create the module `class_skill_effect_tests`, create file "crates/riddle-core/src/class_skill_effect_tests.rs" or "crates/riddle-core/src/class_skill_effect_tests/mod.rs"
+    = note: if there is a `mod class_skill_effect_tests` elsewhere in the crate already, import it with `use crate::...` instead
+
+error[E0308]: mismatched types
+   --> crates/riddle-core/src/firearm.rs:186:71
+    |
+186 |     if fast {profile.reload_ticks=(profile.reload_ticks.div_ceil(2) - run.hero.skill(crate::hero::Class::Gunner, 2)).max(1);}
+    |                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `u32`, found `i32`
+
+error[E0277]: cannot subtract `i32` from `u32`
+   --> crates/riddle-core/src/firearm.rs:186:69
+    |
+186 |     if fast {profile.reload_ticks=(profile.reload_ticks.div_ceil(2) - run.hero.skill(crate::hero::Class::Gunner, 2)).max(1);}
+    |                                                                     ^ no implementation for `u32 - i32`
+    |
+    = help: the trait `Sub<i32>` is not implemented for `u32`
+help: the following other types implement trait `Sub<Rhs>`
+   --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/ops/arith.rs:210:9
+    |
+210 |         impl const Sub for $t {
+    |         ^^^^^^^^^^^^^^^^^^^^^ `u32` implements `Sub`
+...
+225 | sub_impl! { usize u8 u16 u32 u64 u128 isize i8 i16 i32 i64 i128 f16 f32 f64 f128 }
+    | ---------------------------------------------------------------------------------- in this macro invocation
+    |
+   ::: /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/internal_macros.rs:22:9
+    |
+ 22 |         impl const $imp<$u> for &$t {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ `&u32` implements `Sub<u32>`
+...
+ 33 |         impl const $imp<&$u> for $t {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ `u32` implements `Sub<&u32>`
+...
+ 44 |         impl const $imp<&$u> for &$t {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `&u32` implements `Sub`
+    = note: this error originates in the macro `sub_impl` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+Some errors have detailed explanations: E0277, E0308, E0583.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `riddle-core` (lib test) due to 3 previous errors

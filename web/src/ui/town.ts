@@ -25,7 +25,8 @@ import { openRuns } from "./runs";
 import { openLooks } from "./look";
 import { classList, classUnlockReason } from "./unlocks";
 import { CLASS_VERBS } from "../engine/classes";
-import { classSkillChip } from "./class-skills";
+import { classSkillLadder } from "./class-skills";
+import { renderClassTree } from "./class-tree";
 import {renderClassStyles,classStyleName} from "./class-styles";
 import { legacyBar, legacyNext, legacyNextText, renderLegacy } from "./legacy";
 import { kwHost, detailHost } from "./tips";
@@ -377,7 +378,7 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
       const L = app.lineage, slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
       return JSON.stringify([L.selected_bloodline, L.heir, L.class, L.look,
         slot?.hero_name, slot?.level, slot?.xp, slot?.next, slot ? heroPresence(slot) : null,
-        L.bloodline, L.class_styles, L.legacy_upgrades, L.legacy_respec, !!L.live, L.classes?.[L.class],
+        L.bloodline, L.class_styles, L.class_tree, L.legacy_upgrades, L.legacy_respec, !!L.live, L.classes?.[L.class],
         L.hero_legacy?.find((h) => h.heir === L.heir), L.runs?.length, L.runs?.at(-1)?.id]);
     };
     let painted = "";
@@ -385,6 +386,7 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
       painted = identity();
       const historyOpen = body.querySelector<HTMLDetailsElement>(".hero-history")?.open ?? false;
       const paths=body.querySelector('.legacy-tree')?new Set([...body.querySelectorAll<HTMLDetailsElement>('.legacy-path[open]')].map(el=>el.dataset.branch!)):undefined;
+      const classTreeOpen=new Set([...body.querySelectorAll<HTMLDetailsElement>('[data-class-tree-fold][open]')].map(el=>el.dataset.classTreeFold!));
       const L = app.lineage, lvl = L.classes?.[L.class] ?? { level: 1, xp: 0, next: undefined as number | undefined };
       const slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
       const presence = slot ? heroPresence(slot) : null;
@@ -407,6 +409,7 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
           h("button", { class: "chip hero-class", onclick: () => openHeroClass(app), disabled: !!L.live }, classIcon(L.class), /* copy:button */ "Change class"),
           h("button", { class: "chip hero-appearance", onclick: () => openLooks(app), disabled: !app.engine.setLook }, /* copy:button */ "Appearance"),
           (L.runs ?? []).some((r) => r.id > 0) ? h("button", { class: "chip hero-runs", onclick: () => openRuns(app) }, /* copy:button */ "Run log") : null),
+        renderClassTree(app,()=>{if(body.isConnected)paint();},classTreeOpen),
         renderClassStyles(app,()=>{if(body.isConnected)paint();}),
         renderLegacy(app,()=>{if(body.isConnected)paint();},paths),
         h("details", { class: "hero-history", open: historyOpen }, h("summary", null, /* copy:button */ "Details"),
@@ -450,7 +453,7 @@ export function openHeroClass(app: App): void {
         const u=owned?undefined:cat?.find(x=>x.id===cls);
         return h("div",{class:"class-row"},h("button",{class:`chip${cls===app.lineage.class?" on":""}`,disabled:!(owned||u?.available)||!!app.lineage.live,
           onclick:()=>void(async()=>{if(u&&!(await app.buy(cls)))return;await app.setClass(cls);close();})()},classIcon(cls),cls,` L${level}`,u?.cost?` ◆${u.cost}`:""), classUnlockReason(u,owned?undefined:cls),
-          h("div",{class:"chips ladder"},...Object.entries(CLASS_VERBS[cls]??{}).flatMap(([l,verbs])=>verbs.map(v=>classSkillChip(v,Number(l),Number(l)<=level&&owned)))));
+          classSkillLadder(CLASS_VERBS[cls]??{},level,owned));
       }));
     };
     paint();void app.engine.unlocks().then(paint);

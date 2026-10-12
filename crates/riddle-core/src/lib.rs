@@ -20,6 +20,7 @@ pub mod item;
 pub mod kit;
 pub mod legacy;
 pub mod specialization;
+pub mod class_tree;
 pub mod bloodlines;
 pub mod meta;
 pub mod monster;
@@ -54,6 +55,8 @@ pub use rules::{Cond, Row, RuleSet, Verb, Vocabulary};
 pub use wire::*;
 
 impl Game {
+    pub fn learn_class_skill(&mut self,id:&str)->Result<(),String> {class_tree::learn(self,id)}
+    pub fn reset_class_skills(&mut self)->Result<(),String> {class_tree::reset(self)}
     pub fn set_specialization(&mut self,id:&str)->Result<(),String> {specialization::choose(self,id)}
     pub fn forecast(&self) -> Forecast {
         forecast::forecast(self)
@@ -417,3 +420,6 @@ mod tests_cut156;
 mod tests_cut157;
 #[cfg(test)]
 mod tests_cut159;
+
+#[cfg(test)]
+mod class_skill_effect_tests;

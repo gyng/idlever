@@ -1,0 +1,731 @@
+{
+  "results": [
+    {
+      "width": 320,
+      "before": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "after": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "tree": {
+        "class": "fighter",
+        "level": 5,
+        "xp": 1767,
+        "next": 2500,
+        "points": 0,
+        "spent": 3,
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "fighter_warden",
+            "name": "Warden",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_warden"
+              }
+            ],
+            "effect": "bash stun +1 tick"
+          },
+          {
+            "id": "fighter_recovery",
+            "name": "Recovery",
+            "parent": "fighter_warden",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "second_wind"
+                },
+                "origin": "class:path:fighter_recovery"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_recovery"
+              }
+            ],
+            "effect": "second wind +3 HP"
+          },
+          {
+            "id": "fighter_boss_guard",
+            "name": "Boss guard",
+            "parent": "fighter_warden",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_guard"
+              }
+            ],
+            "effect": "boss melee −1 damage"
+          },
+          {
+            "id": "fighter_reaver",
+            "name": "Reaver",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_reaver"
+              }
+            ],
+            "effect": "cleave +1 damage"
+          },
+          {
+            "id": "fighter_crowd_breaker",
+            "name": "Crowd breaker",
+            "parent": "fighter_reaver",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "no skill picks",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              }
+            ],
+            "effect": "cleave cooldown −10 ticks"
+          },
+          {
+            "id": "fighter_boss_breaker",
+            "name": "Boss breaker",
+            "parent": "fighter_reaver",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              }
+            ],
+            "effect": "boss bash +1 damage"
+          }
+        ]
+      },
+      "scope": "Original earned L5/D22 save, three normally affordable cumulative skill picks; no new XP, gold, absence or play credit."
+    },
+    {
+      "width": 400,
+      "before": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "after": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "tree": {
+        "class": "fighter",
+        "level": 5,
+        "xp": 1767,
+        "next": 2500,
+        "points": 0,
+        "spent": 3,
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "fighter_warden",
+            "name": "Warden",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_warden"
+              }
+            ],
+            "effect": "bash stun +1 tick"
+          },
+          {
+            "id": "fighter_recovery",
+            "name": "Recovery",
+            "parent": "fighter_warden",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "second_wind"
+                },
+                "origin": "class:path:fighter_recovery"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_recovery"
+              }
+            ],
+            "effect": "second wind +3 HP"
+          },
+          {
+            "id": "fighter_boss_guard",
+            "name": "Boss guard",
+            "parent": "fighter_warden",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_guard"
+              }
+            ],
+            "effect": "boss melee −1 damage"
+          },
+          {
+            "id": "fighter_reaver",
+            "name": "Reaver",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_reaver"
+              }
+            ],
+            "effect": "cleave +1 damage"
+          },
+          {
+            "id": "fighter_crowd_breaker",
+            "name": "Crowd breaker",
+            "parent": "fighter_reaver",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "no skill picks",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              }
+            ],
+            "effect": "cleave cooldown −10 ticks"
+          },
+          {
+            "id": "fighter_boss_breaker",
+            "name": "Boss breaker",
+            "parent": "fighter_reaver",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              }
+            ],
+            "effect": "boss bash +1 damage"
+          }
+        ]
+      },
+      "scope": "Original earned L5/D22 save, three normally affordable cumulative skill picks; no new XP, gold, absence or play credit."
+    },
+    {
+      "width": 1440,
+      "before": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "after": {
+        "gold": 15730,
+        "xp": 1767,
+        "level": 5
+      },
+      "tree": {
+        "class": "fighter",
+        "level": 5,
+        "xp": 1767,
+        "next": 2500,
+        "points": 0,
+        "spent": 3,
+        "available": true,
+        "blocked": null,
+        "reset_available": true,
+        "reset_blocked": null,
+        "nodes": [
+          {
+            "id": "fighter_warden",
+            "name": "Warden",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_warden"
+              }
+            ],
+            "effect": "bash stun +1 tick"
+          },
+          {
+            "id": "fighter_recovery",
+            "name": "Recovery",
+            "parent": "fighter_warden",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "hp<",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "second_wind"
+                },
+                "origin": "class:path:fighter_recovery"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp<",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_recovery"
+              }
+            ],
+            "effect": "second wind +3 HP"
+          },
+          {
+            "id": "fighter_boss_guard",
+            "name": "Boss guard",
+            "parent": "fighter_warden",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_guard"
+              }
+            ],
+            "effect": "boss melee −1 damage"
+          },
+          {
+            "id": "fighter_reaver",
+            "name": "Reaver",
+            "parent": null,
+            "required_level": 3,
+            "required_depth": 8,
+            "owned": true,
+            "available": false,
+            "blocked": null,
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_reaver"
+              }
+            ],
+            "effect": "cleave +1 damage"
+          },
+          {
+            "id": "fighter_crowd_breaker",
+            "name": "Crowd breaker",
+            "parent": "fighter_reaver",
+            "required_level": 5,
+            "required_depth": 13,
+            "owned": false,
+            "available": false,
+            "blocked": "no skill picks",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 70
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_crowd_breaker"
+              }
+            ],
+            "effect": "cleave cooldown −10 ticks"
+          },
+          {
+            "id": "fighter_boss_breaker",
+            "name": "Boss breaker",
+            "parent": "fighter_reaver",
+            "required_level": 7,
+            "required_depth": 18,
+            "owned": false,
+            "available": false,
+            "blocked": "reach class level 7",
+            "tactics": [
+              {
+                "conds": [
+                  {
+                    "k": "foe_tag",
+                    "t": "boss"
+                  },
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "shield_bash"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              },
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 2
+                  },
+                  {
+                    "k": "hp>",
+                    "n": 55
+                  }
+                ],
+                "verb": {
+                  "v": "cleave"
+                },
+                "origin": "class:path:fighter_boss_breaker"
+              }
+            ],
+            "effect": "boss bash +1 damage"
+          }
+        ]
+      },
+      "scope": "Original earned L5/D22 save, three normally affordable cumulative skill picks; no new XP, gold, absence or play credit."
+    }
+  ],
+  "errors": []
+}

@@ -196,6 +196,9 @@ pub struct Hero {
     pub special_cd:i32,
     #[serde(default,skip_serializing_if="crate::specialization::zero")]
     pub riposte_t:i32,
+    /// Learned class ability improvements, frozen at send; legacy saves omit zero.
+    #[serde(default, skip_serializing_if = "class_skills_empty")]
+    pub class_skills: u32,
     pub class: Class,
     pub inv: crate::shared::Shared<Vec<Item>>,
     pub weapon: crate::shared::Shared<Option<Item>>,
@@ -262,7 +265,35 @@ pub fn armour_worth(a: &Item) -> i32 {
     2 * a.def_bonus() - 3 * crate::kit::is_kit_id(a.id) as i32
 }
 
+pub fn class_skills_empty(mask: &u32) -> bool { *mask == 0 }
+
 impl Hero {
+    pub(crate) fn skill(&self, class: Class, bit: u32) -> i32 {
+        i32::from(self.class == class && self.class_skills & (1 << bit) != 0)
+    }
+
+    /// Flat learned damage is added after the ordinary roll: it introduces no RNG draw.
+    pub(crate) fn skill_damage(&self, verb: &str, boss: bool, hp: i32, max_hp: i32, marked: bool) -> i32 {
+        match verb {
+            "shield_bash" => self.skill(Class::Fighter, 5) * i32::from(boss),
+            "cleave" => self.skill(Class::Fighter, 3),
+            "backstab" => self.skill(Class::Rogue, 0) + self.skill(Class::Rogue, 2) * i32::from(boss),
+            "ambush" => 2 * self.skill(Class::Rogue, 1),
+            "shoot" => self.skill(Class::Ranger, 0) * i32::from(i64::from(hp) * 2 < i64::from(max_hp))
+                + self.skill(Class::Ranger, 2) * i32::from(i64::from(hp) * 4 < i64::from(max_hp))
+                + self.skill(Class::Ranger, 4) + self.skill(Class::Ranger, 5) * i32::from(marked),
+            "bolt" => self.skill(Class::Caster, 0),
+            "nova" => self.skill(Class::Caster, 2) + self.skill(Class::Caster, 5) * i32::from(self.ward_t > 0),
+            "aimed_shot" => self.skill(Class::Gunner, 0) + self.skill(Class::Gunner, 1) * i32::from(boss),
+            "close_burst" => self.skill(Class::Gunner, 3),
+            _ => 0,
+        }
+    }
+
+    pub(crate) fn boss_melee_damage(&self, dmg: i32, boss: bool, ranged: bool) -> i32 {
+        (dmg - self.skill(Class::Fighter, 2) * i32::from(boss && !ranged)).max(0)
+    }
+
     pub fn new(class: Class, pos: Pos) -> Hero {
         let max_hp = class.base_hp();
         Hero {
@@ -278,6 +309,7 @@ impl Hero {
             specialization:None,
             special_cd:0,
             riposte_t:0,
+            class_skills: 0,
             class,
             inv: Vec::new().into(),
             weapon: None.into(),

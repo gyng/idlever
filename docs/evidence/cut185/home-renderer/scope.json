@@ -1,0 +1,30 @@
+{
+  "scope": "Renderer-only diagnostics, not blind scoring or active-play horizon",
+  "before": "Immutable8c17acb at41273, read-only",
+  "after": "Mutable development53741, original earned save imported through public import API",
+  "sourceFiles": [
+    "web/src/render/town.ts",
+    "web/src/render/town-terrain.ts"
+  ],
+  "screenWidths": [
+    400,
+    1280
+  ],
+  "cosmeticHours": [
+    12,
+    23
+  ],
+  "goldUnchanged": 15730,
+  "privateGPU": true,
+  "deployment": false,
+  "harnessCorrections": [
+    "Initial capture used __town.poke, which is not exposed; corrected to setHour only.",
+    "Concurrent Vite HMR invalidated one capture; final capture disables only its own diagnostic browser WebSocket.",
+    "Empty Vite-client route lacked createHotContext and timed out. No-op export attempt suppressed CSS; final WebSocket-only blocking preserves real CSS.",
+    "First tsc from repository root printed compiler help (no project); actual web/tsc succeeded.",
+    "Concurrent UI syntax/module errors occurred before root finished class-tree edits; no renderer errors."
+  ],
+  "gpuWarmCpuP95Ms": 3.9,
+  "gpuWarmWalkers": 26,
+  "limitation": "No quiet-machine FPS claim or new fun score. Cosmetic hour overrides do not modify Date.now or game progression."
+}

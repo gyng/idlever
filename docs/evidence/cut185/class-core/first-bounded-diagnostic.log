@@ -1,0 +1,28 @@
+
+running 11 tests
+.... 4/11
+class_tree::tests::every_authored_node_finishes_bounded_real_runs_on_three_fixture_seeds --- FAILED
+.... 9/11
+class_tree::tests::representative_leaf_verbs_act_for_every_class_on_real_controlled_targets --- FAILED
+.
+failures:
+
+---- class_tree::tests::every_authored_node_finishes_bounded_real_runs_on_three_fixture_seeds stdout ----
+
+thread 'class_tree::tests::every_authored_node_finishes_bounded_real_runs_on_three_fixture_seeds' (139) panicked at crates/riddle-core/src/class_tree_tests.rs:362:17:
+bounded run fighter_warden seed3
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- class_tree::tests::representative_leaf_verbs_act_for_every_class_on_real_controlled_targets stdout ----
+
+thread 'class_tree::tests::representative_leaf_verbs_act_for_every_class_on_real_controlled_targets' (274) panicked at crates/riddle-core/src/class_tree_tests.rs:422:9:
+actual Ranger/mark
+
+
+failures:
+    class_tree::tests::every_authored_node_finishes_bounded_real_runs_on_three_fixture_seeds
+    class_tree::tests::representative_leaf_verbs_act_for_every_class_on_real_controlled_targets
+
+test result: FAILED. 9 passed; 2 failed; 0 ignored; 0 measured; 813 filtered out; finished in 1.33s
+
+error: test failed, to rerun pass `-p riddle-core --lib`

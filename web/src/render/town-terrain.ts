@@ -94,6 +94,11 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   const prop=(name:string,x:number,y:number,w:number,h:number,flip=false):void=>{
     roots = roots.filter(p => p.x < x-w/2-3 || p.x > x+w/2+3 || p.y < y-h-3 || p.y > y+5);
     const im=props[name];if(!im)return;
+    // Ground the painted cutout with quiet stepped ink, not a new hard outline.
+    g.fillStyle='rgba(10,18,24,.10)';
+    g.fillRect(Math.round(x-w*.32),Math.round(y-1),Math.round(w*.64),4);
+    g.fillStyle='rgba(10,18,24,.16)';
+    g.fillRect(Math.round(x-w*.23),Math.round(y),Math.round(w*.46),2);
     g.save();g.translate(Math.round(x),Math.round(y));if(flip)g.scale(-1,1);
     g.drawImage(im,Math.round(-w/2),-h,w,h);g.restore();
   };
@@ -106,8 +111,12 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   prop('undergrowth',354,359,51,29);prop('undergrowth',484,404,38,22,true);
   prop('pines',295,287,76,90);prop('pines',613,338,79,94,true);
   // Ground contact beneath the established forest; no animated decoration.
-  g.fillStyle='rgba(10,18,20,.2)';
-  for(const t of p.shadows){g.fillRect(Math.round(t.x-5),Math.round(t.y),13,3);}
+  for(const t of p.shadows){
+    const x=Math.round(t.x),y=Math.round(t.y);
+    g.fillStyle='rgba(10,18,24,.09)';g.fillRect(x-7,y-1,16,4);
+    g.fillStyle='rgba(10,18,24,.18)';g.fillRect(x-5,y,12,2);
+    g.fillStyle='rgba(10,18,24,.24)';g.fillRect(x-2,y,5,1);
+  }
   grassRoots.set(c, roots);
   return c;
 }
