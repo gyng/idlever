@@ -1,0 +1,9 @@
+file:///home/g/p/riddle/web/tests/combat-identity.mjs:58
+ if(!earlyLog.includes('Ember → Wren Ash · −1 hp')||!earlyLog.includes('Ember · fell'))throw Error(`initial actor missing from first batch-end snapshot: ${earlyLog}`);
+                                                                                             ^
+
+Error: initial actor missing from first batch-end snapshot: D1 · Foe → Wren Ash · −1 hp
+D1 · Foe · fell
+    at file:///home/g/p/riddle/web/tests/combat-identity.mjs:58:94
+
+Node.js v26.5.0
