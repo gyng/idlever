@@ -40,7 +40,7 @@ Private D3D12/NVIDIA screenshots pass at320/400/1440px; primary button104px.
 The first full client run passed124/125 in392.6s. Watch-live-edge exceeded its
 12s timing limit while the native example test overlapped the browser audit.
 An unchanged isolated rerun passed10 checks in26.7s after native completion;
-causation of the original failure is not proven. A full repeat is in progress.
+causation of the original failure is not proven. The complete unchanged repeat passed125/125 in433.2s, with no native-test overlap.
 Both results are preserved; no timing gate was weakened. A separate obsolete
 watch-control mock was updated to use the existing atomic browser API; its
 runtime helper is unchanged and all tooling tests pass.
@@ -50,4 +50,15 @@ Shipping WASM:4,923,001 bytes, SHA256
 Raw fixture and preset bytes are unchanged. The branding/namespace changes do
 not tune gameplay; the full native balance audit was not rerun.
 Artwork source and runtime hashes are in `art/menu/idlever-wordmark-v1.json`.
-Evidence: `docs/evidence/cut190/`. Alpha.2 deployment and live proof follow.
+Evidence: `docs/evidence/cut190/`. Alpha.2 is published from `79032ef5501567e30dd4ffe092b87692c82028e8`.
+Release workflow38278721510 passed both build and deploy. The live site is
+`https://gyng.github.io/idlever/`. Twelve served files (HTML, manifest, favicon,
+fonts, CSS, scripts, WASM and the new title) match the release artifact byte for
+byte. Live real-WASM/PWA and private D3D12/NVIDIA smoke pass fresh-town
+construction, hero arrival, direct saved-game reload and offline reload;
+no page errors or HTTP failures. Live title screenshots are archived at
+320/400/1440px. Evidence: `docs/evidence/cut190/live/`.
+
+The duplicate main-push build for the same release source was cancelled;
+the release workflow ran its identical build checks and deployed its tag.
+The historical alpha.1 tag is unchanged. Content/fun-rating work stays paused.

@@ -1,0 +1,1515 @@
+build	Set up job	﻿2026-10-12T16:37:46.3919024Z Current runner version: '2.337.0'
+build	Set up job	2026-10-12T16:37:46.3939315Z ##[group]Runner Image Provisioner
+build	Set up job	2026-10-12T16:37:46.3940000Z Hosted Compute Agent
+build	Set up job	2026-10-12T16:37:46.3940369Z Version: 20261002.596
+build	Set up job	2026-10-12T16:37:46.3940752Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+build	Set up job	2026-10-12T16:37:46.3941245Z Build Date: 2026-10-02T22:28:27Z
+build	Set up job	2026-10-12T16:37:46.3941708Z Worker ID: {9d682a71-5979-4fad-8ff1-bd93350ede80}
+build	Set up job	2026-10-12T16:37:46.3942175Z Region: southcentralus
+build	Set up job	2026-10-12T16:37:46.3942547Z Cloud: Azure
+build	Set up job	2026-10-12T16:37:46.3942889Z ##[endgroup]
+build	Set up job	2026-10-12T16:37:46.3943777Z ##[group]Operating System
+build	Set up job	2026-10-12T16:37:46.3944191Z Ubuntu
+build	Set up job	2026-10-12T16:37:46.3944581Z 24.04.5
+build	Set up job	2026-10-12T16:37:46.3944922Z LTS
+build	Set up job	2026-10-12T16:37:46.3945243Z ##[endgroup]
+build	Set up job	2026-10-12T16:37:46.3945924Z ##[group]Runner Image
+build	Set up job	2026-10-12T16:37:46.3946357Z Image: ubuntu-24.04
+build	Set up job	2026-10-12T16:37:46.3946699Z Version: 20261004.327.1
+build	Set up job	2026-10-12T16:37:46.3947507Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-10-12T16:37:46.3948660Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+build	Set up job	2026-10-12T16:37:46.3949244Z ##[endgroup]
+build	Set up job	2026-10-12T16:37:46.3950012Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-10-12T16:37:46.3951449Z Contents: read
+build	Set up job	2026-10-12T16:37:46.3951811Z Metadata: read
+build	Set up job	2026-10-12T16:37:46.3952264Z ##[endgroup]
+build	Set up job	2026-10-12T16:37:46.3953669Z Secret source: Actions
+build	Set up job	2026-10-12T16:37:46.3954306Z Cache mode: write
+build	Set up job	2026-10-12T16:37:46.3954775Z Prepare workflow directory
+build	Set up job	2026-10-12T16:37:46.4222678Z Prepare all required actions
+build	Set up job	2026-10-12T16:37:46.4270318Z Getting action download info
+build	Set up job	2026-10-12T16:37:46.7310176Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+build	Set up job	2026-10-12T16:37:46.8251441Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+build	Set up job	2026-10-12T16:37:46.9294477Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+build	Set up job	2026-10-12T16:37:47.5383505Z Download action repository 'dtolnay/rust-toolchain@stable' (SHA:686976e191b89faba57d3206551f0f330d8cb249)
+build	Set up job	2026-10-12T16:37:47.7262516Z Download action repository 'Swatinem/rust-cache@v2' (SHA:6323deb102c322ba6fcbdcafc7e3dddab59af2b6)
+build	Set up job	2026-10-12T16:37:48.3468965Z Download action repository 'actions/upload-pages-artifact@v4' (SHA:7b1f4a764d45c48632c6b24a0339c27f5614fb0b)
+build	Set up job	2026-10-12T16:37:48.6511079Z Getting action download info
+build	Set up job	2026-10-12T16:37:48.7630271Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build	Set up job	2026-10-12T16:37:48.9169833Z Complete job name: build
+build	Run actions/checkout@v4	﻿2026-10-12T16:37:48.9906539Z ##[group]Run actions/checkout@v4
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9907555Z with:
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9908055Z   ref: v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9908613Z   repository: gyng/idlever
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9913170Z   token: ***
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9913666Z   ssh-strict: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9914182Z   ssh-user: git
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9914738Z   persist-credentials: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9915309Z   clean: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9915860Z   sparse-checkout-cone-mode: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9916479Z   fetch-depth: 1
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9916984Z   fetch-tags: false
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9917579Z   show-progress: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9918102Z   lfs: false
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9918586Z   submodules: false
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9919130Z   set-safe-directory: true
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9919748Z   allow-unsafe-pr-checkout: false
+build	Run actions/checkout@v4	2026-10-12T16:37:48.9920448Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0681110Z Syncing repository: gyng/idlever
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0683682Z ##[group]Getting Git version info
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0685102Z Working directory is '/home/runner/work/idlever/idlever'
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0686831Z [command]/usr/bin/git version
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0736490Z git version 2.55.0
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0750479Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0771534Z Temporarily overriding HOME='/home/runner/work/_temp/592b13f0-6aee-4a60-8468-df190f987476' before making global git config changes
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0788673Z Adding repository directory to the temporary git global config as a safe directory
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0798561Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/idlever/idlever
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0827870Z Deleting the contents of '/home/runner/work/idlever/idlever'
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0837196Z ##[group]Initializing the repository
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0839838Z [command]/usr/bin/git init /home/runner/work/idlever/idlever
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0942938Z hint: Using 'master' as the name for the initial branch. This default branch name
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0944833Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0947518Z hint: to use in all of your new repositories, which will suppress this warning,
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0949050Z hint: call:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0949929Z hint:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0951179Z hint: 	git config --global init.defaultBranch <name>
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0952416Z hint:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0953546Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0955488Z hint: 'development'. The just-created branch can be renamed via this command:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0956958Z hint:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0958012Z hint: 	git branch -m <name>
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0958999Z hint:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0960196Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0962175Z Initialized empty Git repository in /home/runner/work/idlever/idlever/.git/
+build	Run actions/checkout@v4	2026-10-12T16:37:49.0965758Z [command]/usr/bin/git remote add origin https://github.com/gyng/idlever
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1044910Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1046262Z ##[group]Disabling automatic garbage collection
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1050045Z [command]/usr/bin/git config --local gc.auto 0
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1086258Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1099150Z ##[group]Setting up auth
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1100533Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1134554Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1432994Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1466792Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1660983Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1693715Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1885555Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1924304Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1925388Z ##[group]Fetching the repository
+build	Run actions/checkout@v4	2026-10-12T16:37:49.1931477Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/v0.1.0-alpha.2*:refs/remotes/origin/v0.1.0-alpha.2* +refs/tags/v0.1.0-alpha.2*:refs/tags/v0.1.0-alpha.2*
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9525490Z From https://github.com/gyng/idlever
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9526146Z  * [new tag]         v0.1.0-alpha.2 -> v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9539472Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9540777Z ##[group]Determining the checkout info
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9541335Z [command]/usr/bin/git branch --list --remote origin/v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9576598Z [command]/usr/bin/git tag --list v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9605029Z v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9628562Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:38:17.9629222Z [command]/usr/bin/git sparse-checkout disable
+build	Run actions/checkout@v4	2026-10-12T16:38:18.0781999Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+build	Run actions/checkout@v4	2026-10-12T16:38:18.1176328Z ##[group]Checking out the ref
+build	Run actions/checkout@v4	2026-10-12T16:38:18.1182718Z [command]/usr/bin/git checkout --progress --force refs/tags/v0.1.0-alpha.2
+build	Run actions/checkout@v4	2026-10-12T16:38:19.1785533Z Updating files:  28% (1402/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3254421Z Updating files:  29% (1437/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3287861Z Updating files:  30% (1486/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3336389Z Updating files:  31% (1536/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3421007Z Updating files:  32% (1585/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3474442Z Updating files:  33% (1635/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3498474Z Updating files:  34% (1685/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3521860Z Updating files:  35% (1734/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3548750Z Updating files:  36% (1784/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3569350Z Updating files:  37% (1833/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3622229Z Updating files:  38% (1883/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3643944Z Updating files:  39% (1932/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3714016Z Updating files:  40% (1982/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3812386Z Updating files:  41% (2031/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.3953023Z Updating files:  42% (2081/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.4148426Z Updating files:  43% (2130/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.4206194Z Updating files:  44% (2180/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.4329703Z Updating files:  45% (2229/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.5050716Z Updating files:  46% (2279/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.5202750Z Updating files:  47% (2328/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.5292852Z Updating files:  48% (2378/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.5601828Z Updating files:  49% (2427/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.6027838Z Updating files:  50% (2477/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.6195680Z Updating files:  51% (2527/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.6678152Z Updating files:  52% (2576/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.7308314Z Updating files:  53% (2626/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.7824057Z Updating files:  54% (2675/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.7882537Z Updating files:  55% (2725/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.7930299Z Updating files:  56% (2774/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8203125Z Updating files:  57% (2824/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8222553Z Updating files:  58% (2873/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8240337Z Updating files:  59% (2923/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8264945Z Updating files:  60% (2972/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8301245Z Updating files:  61% (3022/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8390298Z Updating files:  62% (3071/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8473762Z Updating files:  63% (3121/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8536524Z Updating files:  64% (3170/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8810598Z Updating files:  65% (3220/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8847581Z Updating files:  66% (3269/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.8942953Z Updating files:  67% (3319/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9023153Z Updating files:  68% (3369/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9037462Z Updating files:  69% (3418/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9373521Z Updating files:  70% (3468/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9410725Z Updating files:  71% (3517/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9495186Z Updating files:  72% (3567/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9536345Z Updating files:  73% (3616/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9555689Z Updating files:  74% (3666/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9665143Z Updating files:  75% (3715/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9801614Z Updating files:  76% (3765/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9925263Z Updating files:  77% (3814/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:19.9993547Z Updating files:  78% (3864/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0088635Z Updating files:  79% (3913/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0221740Z Updating files:  80% (3963/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0480099Z Updating files:  81% (4012/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0502442Z Updating files:  82% (4062/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0529404Z Updating files:  83% (4111/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0560239Z Updating files:  84% (4161/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0599242Z Updating files:  85% (4211/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0630445Z Updating files:  86% (4260/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0737080Z Updating files:  87% (4310/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0785825Z Updating files:  88% (4359/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0812746Z Updating files:  89% (4409/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0831091Z Updating files:  90% (4458/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0848319Z Updating files:  91% (4508/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0867960Z Updating files:  92% (4557/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0907987Z Updating files:  93% (4607/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0953196Z Updating files:  94% (4656/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.0988144Z Updating files:  95% (4706/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1029832Z Updating files:  96% (4755/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1081304Z Updating files:  97% (4805/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1109580Z Updating files:  98% (4854/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1140274Z Updating files:  99% (4904/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1140510Z Updating files: 100% (4953/4953)
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1141082Z Updating files: 100% (4953/4953), done.
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1174560Z Note: switching to 'refs/tags/v0.1.0-alpha.2'.
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1174788Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1174952Z You are in 'detached HEAD' state. You can look around, make experimental
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1175261Z changes and commit them, and you can discard any commits you make in this
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1175536Z state without impacting any branches by switching back to a branch.
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1175689Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1175795Z If you want to create a new branch to retain commits you create, you may
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176042Z do so (now or later) by using -c with the switch command. Example:
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176183Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176251Z   git switch -c <new-branch-name>
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176347Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176407Z Or undo this operation with:
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176497Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176546Z   git switch -
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176615Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176729Z Turn off this advice by setting config variable advice.detachedHead to false
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1176901Z 
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1177006Z HEAD is now at 79032ef Rename game and repository references to Idlever
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1364334Z ##[endgroup]
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1410055Z [command]/usr/bin/git log -1 --format=%H
+build	Run actions/checkout@v4	2026-10-12T16:38:20.1434263Z 79032ef5501567e30dd4ffe092b87692c82028e8
+build	Check release tag	﻿2026-10-12T16:38:20.1600897Z ##[group]Run [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$ ]] || exit 1
+build	Check release tag	2026-10-12T16:38:20.1601261Z ^[[36;1m[[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$ ]] || exit 1^[[0m
+build	Check release tag	2026-10-12T16:38:20.1601543Z ^[[36;1mtest "$(git rev-parse HEAD)" = "$(git rev-list -n 1 "$RELEASE_TAG")"^[[0m
+build	Check release tag	2026-10-12T16:38:20.1814473Z shell: /usr/bin/bash -e {0}
+build	Check release tag	2026-10-12T16:38:20.1814652Z env:
+build	Check release tag	2026-10-12T16:38:20.1814780Z   RELEASE_TAG: v0.1.0-alpha.2
+build	Check release tag	2026-10-12T16:38:20.1814929Z ##[endgroup]
+build	Run actions/setup-node@v4	﻿2026-10-12T16:38:20.2001473Z ##[group]Run actions/setup-node@v4
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2001652Z with:
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2001771Z   node-version: 22
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2001892Z   always-auth: false
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2002016Z   check-latest: false
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2003369Z   token: ***
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2003488Z ##[endgroup]
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2959460Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2963170Z (node:2114) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2963744Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.2964850Z ##[group]Environment details
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.5744482Z node: v22.23.3
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.5744807Z npm: 10.9.9
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.5744928Z yarn: 1.22.22
+build	Run actions/setup-node@v4	2026-10-12T16:38:20.5745913Z ##[endgroup]
+build	Run pnpm/action-setup@v4	﻿2026-10-12T16:38:20.5886391Z ##[group]Run pnpm/action-setup@v4
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5886567Z with:
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5886678Z   version: 10
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5886794Z   dest: ~/setup-pnpm
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5886916Z   run_install: null
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5887030Z   cache: false
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5887156Z   cache_dependency_path: pnpm-lock.yaml
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5887538Z   package_json_file: package.json
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5887756Z   standalone: false
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.5887935Z ##[endgroup]
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.6855156Z ##[group]Running self-installer...
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.9444116Z (node:2157) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:20.9444823Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.1601220Z Progress: resolved 1, reused 0, downloaded 0, added 0
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.1683097Z Packages: +1
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.1683832Z +
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.5454205Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.6291447Z 
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.6292326Z dependencies:
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.6292783Z + pnpm 10.34.7 (12.11.2 is available)
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.6295161Z 
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.8479416Z Done in 1s
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.8647975Z ##[endgroup]
+build	Run pnpm/action-setup@v4	2026-10-12T16:38:21.8648480Z Installation Completed!
+build	Install web dependencies	﻿2026-10-12T16:38:21.9681372Z ##[group]Run pnpm --dir web install --frozen-lockfile
+build	Install web dependencies	2026-10-12T16:38:21.9681683Z ^[[36;1mpnpm --dir web install --frozen-lockfile^[[0m
+build	Install web dependencies	2026-10-12T16:38:21.9764329Z shell: /usr/bin/bash -e {0}
+build	Install web dependencies	2026-10-12T16:38:21.9764493Z env:
+build	Install web dependencies	2026-10-12T16:38:21.9764649Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Install web dependencies	2026-10-12T16:38:21.9764834Z ##[endgroup]
+build	Install web dependencies	2026-10-12T16:38:22.3528699Z Lockfile is up to date, resolution step is skipped
+build	Install web dependencies	2026-10-12T16:38:22.3630109Z Progress: resolved 1, reused 0, downloaded 0, added 0
+build	Install web dependencies	2026-10-12T16:38:22.3709108Z Packages: +29
+build	Install web dependencies	2026-10-12T16:38:22.3738931Z +++++++++++++++++++++++++++++
+build	Install web dependencies	2026-10-12T16:38:22.9502240Z Progress: resolved 29, reused 0, downloaded 29, added 29, done
+build	Install web dependencies	2026-10-12T16:38:22.9884979Z 
+build	Install web dependencies	2026-10-12T16:38:22.9885649Z dependencies:
+build	Install web dependencies	2026-10-12T16:38:22.9885922Z + three 0.186.0
+build	Install web dependencies	2026-10-12T16:38:22.9886038Z 
+build	Install web dependencies	2026-10-12T16:38:22.9886120Z devDependencies:
+build	Install web dependencies	2026-10-12T16:38:22.9886343Z + @types/three 0.186.0
+build	Install web dependencies	2026-10-12T16:38:22.9886552Z + oxfmt 0.72.0
+build	Install web dependencies	2026-10-12T16:38:22.9886816Z + oxlint 1.87.0
+build	Install web dependencies	2026-10-12T16:38:22.9887013Z + typescript 6.0.3
+build	Install web dependencies	2026-10-12T16:38:22.9887210Z + vite 8.3.0
+build	Install web dependencies	2026-10-12T16:38:22.9887436Z 
+build	Install web dependencies	2026-10-12T16:38:23.0010858Z Done in 943ms using pnpm v10.34.7
+build	Check formatting and lint	﻿2026-10-12T16:38:23.1378229Z ##[group]Run pnpm --dir web fmt:check
+build	Check formatting and lint	2026-10-12T16:38:23.1378459Z ^[[36;1mpnpm --dir web fmt:check^[[0m
+build	Check formatting and lint	2026-10-12T16:38:23.1378611Z ^[[36;1mpnpm --dir web lint^[[0m
+build	Check formatting and lint	2026-10-12T16:38:23.1433936Z shell: /usr/bin/bash -e {0}
+build	Check formatting and lint	2026-10-12T16:38:23.1434100Z env:
+build	Check formatting and lint	2026-10-12T16:38:23.1434251Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Check formatting and lint	2026-10-12T16:38:23.1434438Z ##[endgroup]
+build	Check formatting and lint	2026-10-12T16:38:23.3499891Z 
+build	Check formatting and lint	2026-10-12T16:38:23.3500624Z > web@0.0.0 fmt:check /home/runner/work/idlever/idlever/web
+build	Check formatting and lint	2026-10-12T16:38:23.3500947Z > pnpm fmt --check
+build	Check formatting and lint	2026-10-12T16:38:23.3501042Z 
+build	Check formatting and lint	2026-10-12T16:38:23.5458250Z 
+build	Check formatting and lint	2026-10-12T16:38:23.5459186Z > web@0.0.0 fmt /home/runner/work/idlever/idlever/web
+build	Check formatting and lint	2026-10-12T16:38:23.5459718Z > cd .. && web/node_modules/.bin/oxfmt web/src web/tests web/*.ts web/*.json tools .github README.md .oxfmtrc.json .oxlintrc.json --check
+build	Check formatting and lint	2026-10-12T16:38:23.5459990Z 
+build	Check formatting and lint	2026-10-12T16:38:23.5866485Z Checking formatting...
+build	Check formatting and lint	2026-10-12T16:38:23.5866791Z 
+build	Check formatting and lint	2026-10-12T16:38:23.7134990Z All matched files use the correct format.
+build	Check formatting and lint	2026-10-12T16:38:23.7136337Z Finished in 127ms on 376 files using 4 threads.
+build	Check formatting and lint	2026-10-12T16:38:23.9800350Z 
+build	Check formatting and lint	2026-10-12T16:38:23.9801258Z > web@0.0.0 lint /home/runner/work/idlever/idlever/web
+build	Check formatting and lint	2026-10-12T16:38:23.9801839Z > cd .. && web/node_modules/.bin/oxlint web/src web/tests web/*.ts tools --deny-warnings
+build	Check formatting and lint	2026-10-12T16:38:23.9802150Z 
+build	Check formatting and lint	2026-10-12T16:38:24.0698449Z Found 0 warnings and 0 errors.
+build	Check formatting and lint	2026-10-12T16:38:24.0699141Z Finished in 57ms on 340 files with 96 rules using 4 threads.
+build	Run dtolnay/rust-toolchain@stable	﻿2026-10-12T16:38:24.0952284Z ##[group]Run dtolnay/rust-toolchain@stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0952475Z with:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0952595Z   components: clippy
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0952729Z   targets: wasm32-unknown-unknown
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0952873Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0952989Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0953130Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.0953468Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1001315Z ##[start-action display=Parse toolchain version;id=__dtolnay_rust-toolchain.parse]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1033083Z ##[group]Run if [[ -z $toolchain ]]; then
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1033336Z ^[[36;1mif [[ -z $toolchain ]]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1033646Z ^[[36;1m  # GitHub does not enforce `required: true` inputs itself. https://github.com/actions/runner/issues/1070^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1033969Z ^[[36;1m  echo "'toolchain' is a required input" >&2^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1034145Z ^[[36;1m  exit 1^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1034341Z ^[[36;1melif [[ $toolchain =~ ^stable' '[0-9]+' '(year|month|week|day)s?' 'ago$ ]]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1034623Z ^[[36;1m  if [[ Linux == macOS ]]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1034931Z ^[[36;1m    echo "toolchain=1.$((($(date -v-$(sed 's/stable \([0-9]*\) \(.\).*/\1\2/' <<< $toolchain) +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1035221Z ^[[36;1m  else^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1035463Z ^[[36;1m    echo "toolchain=1.$((($(date --date "${toolchain#stable }" +%s)/60/60/24-16569)/7/6))" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1035715Z ^[[36;1m  fi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1035890Z ^[[36;1melif [[ $toolchain =~ ^stable' 'minus' '[0-9]+' 'releases?$ ]]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1036187Z ^[[36;1m  echo "toolchain=1.$((($(date +%s)/60/60/24-16569)/7/6-${toolchain//[^0-9]/}))" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1036452Z ^[[36;1melif [[ $toolchain =~ ^1\.[0-9]+$ ]]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1036749Z ^[[36;1m  echo "toolchain=1.$((i=${toolchain#1.}, c=($(date +%s)/60/60/24-16569)/7/6, i+9*i*(10*i<=c)+90*i*(100*i<=c)))" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1037025Z ^[[36;1melse^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1037144Z ^[[36;1m  delimiter=EOF^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1037618Z ^[[36;1m  while [[ $toolchain == *$delimiter* ]]; do delimiter+=_; done^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1037963Z ^[[36;1m  printf 'toolchain<<%s\n%s\n%s\n' "$delimiter" "$toolchain" "$delimiter" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1038199Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1094845Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1095068Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1095222Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1095402Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1095529Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1199689Z ##[end-action id=__dtolnay_rust-toolchain.parse;outcome=success;conclusion=success;duration_ms=19]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1202858Z ##[start-action display=Set $CARGO_HOME;id=__dtolnay_rust-toolchain.__run]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1218304Z ##[group]Run echo CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1218627Z ^[[36;1mecho CARGO_HOME=${CARGO_HOME:-"$HOME/.cargo"} >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1272250Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1272443Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1272588Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1272767Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1352189Z ##[end-action id=__dtolnay_rust-toolchain.__run;outcome=success;conclusion=success;duration_ms=14]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1353956Z ##[start-action display=Install rustup if needed;id=__dtolnay_rust-toolchain.__run_2]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1391507Z ##[group]Run if ! command -v rustup &>/dev/null; then
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1391853Z ^[[36;1mif ! command -v rustup &>/dev/null; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1392503Z ^[[36;1m  curl --proto '=https' --tlsv1.2 --retry 10 --retry-connrefused --location --silent --show-error --fail https://sh.rustup.rs | sh -s -- --default-toolchain none -y^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1393127Z ^[[36;1m  echo "$CARGO_HOME/bin" >> $GITHUB_PATH^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1393612Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1447589Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1447827Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1447976Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1448166Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1448312Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1528944Z ##[end-action id=__dtolnay_rust-toolchain.__run_2;outcome=success;conclusion=success;duration_ms=17]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1530876Z ##[start-action display=Install rustup if needed on windows;id=__dtolnay_rust-toolchain.__run_3]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1536970Z ##[end-action id=__dtolnay_rust-toolchain.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1546993Z ##[start-action display=rustup toolchain install stable;id=__dtolnay_rust-toolchain.__run_4]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1560744Z ##[group]Run set -f  # split targets and components on commas and whitespace, without glob expansion
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1561161Z ^[[36;1mset -f  # split targets and components on commas and whitespace, without glob expansion^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1561403Z ^[[36;1mflags=()^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1561817Z ^[[36;1mfor t in ${targets//,/ }; do flags+=(--target "$t"); done^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1562097Z ^[[36;1mfor c in ${components//,/ }; do flags+=(--component "$c"); done^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1562395Z ^[[36;1mif [[ $toolchain == nightly && -n $components ]]; then flags+=(--allow-downgrade); fi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1562629Z ^[[36;1mlog=$(mktemp)^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1562766Z ^[[36;1mtrap 'rm -f "$log"' EXIT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1562914Z ^[[36;1mfor attempt in 1 2 3 4 5; do^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1563233Z ^[[36;1m  if rustup toolchain install "$toolchain" "${flags[@]}" --profile minimal --no-self-update --force-non-host 2>&1 | tee "$log"; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1563542Z ^[[36;1m    break^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1563661Z ^[[36;1m  else^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1563776Z ^[[36;1m    status=$?^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1563895Z ^[[36;1m  fi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1564065Z ^[[36;1m  if [[ $attempt == 5 ]] || ! grep -Fq 'checksum failed for ' "$log" \^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1564379Z ^[[36;1m      || ! grep -Fq 'this is likely due to an ongoing update of the official release server' "$log"; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1564637Z ^[[36;1m    exit "$status"^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1564769Z ^[[36;1m  fi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1564974Z ^[[36;1m  echo "Retrying rustup toolchain install in 30 seconds (retry $attempt of 4)" >&2^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1565205Z ^[[36;1m  sleep 30^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1565322Z ^[[36;1mdone^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1620595Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1620801Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1620946Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621129Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621272Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621401Z   targets: wasm32-unknown-unknown
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621544Z   components: clippy
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621683Z   RUSTUP_PERMIT_COPY_RENAME: 1
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.1621822Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.3231251Z info: syncing channel updates for stable-x86_64-unknown-linux-gnu
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.6037210Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.6143694Z info: component clippy is up to date
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:24.6147384Z info: downloading component rust-std
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1606373Z 
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1677871Z   stable-x86_64-unknown-linux-gnu updated - rustc 1.99.0 (b940084d7 2026-09-28) (from rustc 1.99.0 (b940084d7 2026-09-28))
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1678213Z 
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1721728Z ##[end-action id=__dtolnay_rust-toolchain.__run_4;outcome=success;conclusion=success;duration_ms=2017]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1728151Z ##[start-action display=rustup default stable;id=__dtolnay_rust-toolchain.__run_5]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1740719Z ##[group]Run rustup default "$toolchain" --force-non-host
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1740993Z ^[[36;1mrustup default "$toolchain" --force-non-host^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1796210Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1796410Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1796554Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1796734Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1796879Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1797131Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1906006Z info: using existing install for stable-x86_64-unknown-linux-gnu
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1911525Z info: default toolchain set to stable-x86_64-unknown-linux-gnu
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1911720Z 
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1979190Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.0 (b940084d7 2026-09-28)
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1979488Z 
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1995026Z ##[end-action id=__dtolnay_rust-toolchain.__run_5;outcome=success;conclusion=success;duration_ms=26]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.1998511Z ##[start-action display=Create cachekey;id=__dtolnay_rust-toolchain.rustc-version]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2011296Z ##[group]Run DATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2011804Z ^[[36;1mDATE=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-date: \(20[0-9][0-9]\)-\([01][0-9]\)-\([0-3][0-9]\)$/\1\2\3/p')^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2012174Z ^[[36;1mHASH=$(rustc +"$toolchain" --version --verbose | sed -ne 's/^commit-hash: //p')^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2012473Z ^[[36;1mecho "cachekey=$(echo $DATE$HASH | head -c12)" >> $GITHUB_OUTPUT^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2068385Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2068572Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2068718Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2068923Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2069064Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2069186Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2484047Z ##[end-action id=__dtolnay_rust-toolchain.rustc-version;outcome=success;conclusion=success;duration_ms=48]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2490077Z ##[start-action display=Disable incremental compilation;id=__dtolnay_rust-toolchain.__run_6]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2556167Z ##[group]Run if [ -z "${CARGO_INCREMENTAL+set}" ]; then
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2556449Z ^[[36;1mif [ -z "${CARGO_INCREMENTAL+set}" ]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2556682Z ^[[36;1m  echo CARGO_INCREMENTAL=0 >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2556901Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2703852Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2704051Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2704198Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2704383Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2704527Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2845594Z ##[end-action id=__dtolnay_rust-toolchain.__run_6;outcome=success;conclusion=success;duration_ms=35]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2847922Z ##[start-action display=Enable colors in Cargo output;id=__dtolnay_rust-toolchain.__run_7]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2864427Z ##[group]Run if [ -z "${CARGO_TERM_COLOR+set}" ]; then
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2864783Z ^[[36;1mif [ -z "${CARGO_TERM_COLOR+set}" ]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2865089Z ^[[36;1m  echo CARGO_TERM_COLOR=always >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2865348Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2928001Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2928332Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2928550Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2928830Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2929057Z   CARGO_INCREMENTAL: 0
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.2929249Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3010394Z ##[end-action id=__dtolnay_rust-toolchain.__run_7;outcome=success;conclusion=success;duration_ms=16]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3013101Z ##[start-action display=Enable Cargo sparse registry;id=__dtolnay_rust-toolchain.__run_8]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3026545Z ##[group]Run # implemented in 1.66, stabilized in 1.68, made default in 1.70
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3026848Z ^[[36;1m# implemented in 1.66, stabilized in 1.68, made default in 1.70^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3027586Z ^[[36;1mif [ -z "${CARGO_REGISTRIES_CRATES_IO_PROTOCOL+set}" -o -f "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol ]; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3027993Z ^[[36;1m  if rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[89]\.'; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3028438Z ^[[36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3028733Z ^[[36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3029024Z ^[[36;1m  elif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.6[67]\.'; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3029340Z ^[[36;1m    touch "/home/runner/work/_temp"/.implicit_cargo_registries_crates_io_protocol || true^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3029620Z ^[[36;1m    echo CARGO_REGISTRIES_CRATES_IO_PROTOCOL=git >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3029810Z ^[[36;1m  fi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3029927Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3078278Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3078466Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3078608Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3078796Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3078944Z   CARGO_INCREMENTAL: 0
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3079078Z   CARGO_TERM_COLOR: always
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3079208Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3079329Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3368489Z ##[end-action id=__dtolnay_rust-toolchain.__run_8;outcome=success;conclusion=success;duration_ms=35]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3372363Z ##[start-action display=Work around spurious network errors in curl 8.0;id=__dtolnay_rust-toolchain.__run_9]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3385729Z ##[group]Run # https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3386154Z ^[[36;1m# https://rust-lang.zulipchat.com/#narrow/stream/246057-t-cargo/topic/timeout.20investigation^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3386505Z ^[[36;1mif rustc +"$toolchain" --version --verbose | grep -q '^release: 1\.7[01]\.'; then^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3386766Z ^[[36;1m  echo CARGO_HTTP_MULTIPLEXING=false >> $GITHUB_ENV^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3386938Z ^[[36;1mfi^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3443556Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3443760Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3443903Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3444084Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3444235Z   CARGO_INCREMENTAL: 0
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3444367Z   CARGO_TERM_COLOR: always
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3444499Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3444618Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3631892Z ##[end-action id=__dtolnay_rust-toolchain.__run_9;outcome=success;conclusion=success;duration_ms=25]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3636342Z ##[start-action display=rustc +stable --version --verbose;id=__dtolnay_rust-toolchain.__run_10]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3669711Z ##[group]Run rustc +"$toolchain" --version --verbose
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3669959Z ^[[36;1mrustc +"$toolchain" --version --verbose^[[0m
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3724826Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725014Z env:
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725160Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725346Z   CARGO_HOME: /home/runner/.cargo
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725486Z   CARGO_INCREMENTAL: 0
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725613Z   CARGO_TERM_COLOR: always
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725738Z   toolchain: stable
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3725854Z ##[endgroup]
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3892698Z rustc 1.99.0 (b940084d7 2026-09-28)
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3893088Z binary: rustc
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3893390Z commit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3893701Z commit-date: 2026-09-28
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3893949Z host: x86_64-unknown-linux-gnu
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3894168Z release: 1.99.0
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3894362Z LLVM version: 23.1.1
+build	Run dtolnay/rust-toolchain@stable	2026-10-12T16:38:26.3914286Z ##[end-action id=__dtolnay_rust-toolchain.__run_10;outcome=success;conclusion=success;duration_ms=27]
+build	Run Swatinem/rust-cache@v2	﻿2026-10-12T16:38:26.3979563Z ##[group]Run Swatinem/rust-cache@v2
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3979732Z with:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3979849Z   prefix-key: v0-rust
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3979976Z   add-job-id-key: true
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980110Z   add-rust-environment-hash-key: true
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980409Z   cache-targets: true
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980535Z   cache-all-crates: false
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980674Z   cache-workspace-crates: false
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980811Z   save-if: true
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3980928Z   cache-provider: github
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981053Z   cache-bin: true
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981166Z   lookup-only: false
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981281Z   cmd-format: {0}
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981389Z env:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981525Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981704Z   CARGO_HOME: /home/runner/.cargo
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981844Z   CARGO_INCREMENTAL: 0
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3981967Z   CARGO_TERM_COLOR: always
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.3982095Z ##[endgroup]
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9377739Z ##[group]Cache Configuration
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9378281Z Cache Provider:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9378521Z     github
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9378708Z Workspaces:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9378945Z     /home/runner/work/idlever/idlever
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9379211Z Cache Paths:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9379423Z     /home/runner/.cargo/bin
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9379659Z     /home/runner/.cargo/.crates.toml
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9379915Z     /home/runner/.cargo/.crates2.json
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9380162Z     /home/runner/.cargo/registry
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9380382Z     /home/runner/.cargo/git
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9380582Z     /home/runner/work/idlever/idlever/target
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9380745Z Restore Key:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9380965Z     v0-rust-build-Linux-x64-c7b3ef7d
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9381113Z Cache Key:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9381281Z     v0-rust-build-Linux-x64-c7b3ef7d-a7e51f19
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9381450Z .. Prefix:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9381581Z   - v0-rust-build-Linux-x64
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9381817Z .. Environment considered:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9382034Z   - Rust Versions:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9382354Z     - 1.99.0 x86_64-unknown-linux-gnu b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9382656Z   - CARGO_HOME
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9382777Z   - CARGO_INCREMENTAL
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9382914Z   - CARGO_TERM_COLOR
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9383058Z .. Lockfiles considered:
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9383228Z   - /home/runner/work/idlever/idlever/Cargo.lock
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9383470Z   - /home/runner/work/idlever/idlever/crates/idlever-core/Cargo.toml
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9383742Z   - /home/runner/work/idlever/idlever/crates/idlever-wasm/Cargo.toml
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9384073Z ##[endgroup]
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9384142Z 
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:26.9384210Z ... Restoring cache ...
+build	Run Swatinem/rust-cache@v2	2026-10-12T16:38:27.1044341Z No cache found.
+build	Test engine	﻿2026-10-12T16:38:27.1145716Z ##[group]Run cargo test -q --workspace --profile fast
+build	Test engine	2026-10-12T16:38:27.1145969Z ^[[36;1mcargo test -q --workspace --profile fast^[[0m
+build	Test engine	2026-10-12T16:38:27.1146201Z ^[[36;1mcargo test -q -p idlever-core --example dayplayer --profile fast^[[0m
+build	Test engine	2026-10-12T16:38:27.1199918Z shell: /usr/bin/bash -e {0}
+build	Test engine	2026-10-12T16:38:27.1200061Z env:
+build	Test engine	2026-10-12T16:38:27.1200208Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Test engine	2026-10-12T16:38:27.1200408Z   CARGO_HOME: /home/runner/.cargo
+build	Test engine	2026-10-12T16:38:27.1200553Z   CARGO_INCREMENTAL: 0
+build	Test engine	2026-10-12T16:38:27.1200682Z   CARGO_TERM_COLOR: always
+build	Test engine	2026-10-12T16:38:27.1200815Z   CACHE_ON_FAILURE: false
+build	Test engine	2026-10-12T16:38:27.1200945Z ##[endgroup]
+build	Test engine	2026-10-12T16:43:46.8191502Z 
+build	Test engine	2026-10-12T16:43:46.8192196Z running 828 tests
+build	Test engine	2026-10-12T16:43:58.2189004Z ....................................................................................... 87/828
+build	Test engine	2026-10-12T16:44:11.6549016Z ....................................................................................... 174/828
+build	Test engine	2026-10-12T16:44:42.3909327Z ....................................................................................... 261/828
+build	Test engine	2026-10-12T16:44:57.5948661Z .....................................i................................................. 348/828
+build	Test engine	2026-10-12T16:45:17.0159412Z ....................................................................................... 435/828
+build	Test engine	2026-10-12T16:45:48.3554583Z ....................................................................................... 522/828
+build	Test engine	2026-10-12T16:45:58.9553347Z .............................iii....................i......i........................... 609/828
+build	Test engine	2026-10-12T16:46:33.1888744Z ....................................................................................... 696/828
+build	Test engine	2026-10-12T16:46:49.7408582Z ....................................................................................... 783/828
+build	Test engine	2026-10-12T16:46:55.4397178Z .............................................
+build	Test engine	2026-10-12T16:46:55.4397985Z test result: ok. 822 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 188.62s
+build	Test engine	2026-10-12T16:46:55.4398337Z 
+build	Test engine	2026-10-12T16:46:55.4570348Z 
+build	Test engine	2026-10-12T16:46:55.4570576Z running 0 tests
+build	Test engine	2026-10-12T16:46:55.4570719Z 
+build	Test engine	2026-10-12T16:46:55.4571026Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+build	Test engine	2026-10-12T16:46:55.4571304Z 
+build	Test engine	2026-10-12T16:46:57.3598652Z 
+build	Test engine	2026-10-12T16:46:57.3599285Z running 0 tests
+build	Test engine	2026-10-12T16:46:57.3599444Z 
+build	Test engine	2026-10-12T16:46:57.3718312Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+build	Test engine	2026-10-12T16:46:57.3718558Z 
+build	Test engine	2026-10-12T16:46:57.4841426Z 
+build	Test engine	2026-10-12T16:46:57.4842005Z running 0 tests
+build	Test engine	2026-10-12T16:46:57.4842189Z 
+build	Test engine	2026-10-12T16:46:57.4842520Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+build	Test engine	2026-10-12T16:46:57.4842720Z 
+build	Test engine	2026-10-12T16:48:16.6333361Z 
+build	Test engine	2026-10-12T16:48:16.6334007Z running 17 tests
+build	Test engine	2026-10-12T16:49:16.6338135Z ................test checkpoint_tests::resume_preserves_complete_bot_outputs_and_game has been running for over 60 seconds
+build	Test engine	2026-10-12T16:49:18.7636762Z .
+build	Test engine	2026-10-12T16:49:18.7637504Z test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 62.13s
+build	Test engine	2026-10-12T16:49:18.7637719Z 
+build	Lint engine	﻿2026-10-12T16:49:18.7686114Z ##[group]Run cargo clippy --workspace --all-targets -- -D warnings
+build	Lint engine	2026-10-12T16:49:18.7686419Z ^[[36;1mcargo clippy --workspace --all-targets -- -D warnings^[[0m
+build	Lint engine	2026-10-12T16:49:18.7741509Z shell: /usr/bin/bash -e {0}
+build	Lint engine	2026-10-12T16:49:18.7741657Z env:
+build	Lint engine	2026-10-12T16:49:18.7741798Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Lint engine	2026-10-12T16:49:18.7741982Z   CARGO_HOME: /home/runner/.cargo
+build	Lint engine	2026-10-12T16:49:18.7742125Z   CARGO_INCREMENTAL: 0
+build	Lint engine	2026-10-12T16:49:18.7742253Z   CARGO_TERM_COLOR: always
+build	Lint engine	2026-10-12T16:49:18.7742383Z   CACHE_ON_FAILURE: false
+build	Lint engine	2026-10-12T16:49:18.7742511Z ##[endgroup]
+build	Lint engine	2026-10-12T16:49:18.9985124Z ^[[1m^[[92m   Compiling^[[0m proc-macro2 v1.0.107
+build	Lint engine	2026-10-12T16:49:18.9986202Z ^[[1m^[[92m   Compiling^[[0m unicode-ident v1.0.24
+build	Lint engine	2026-10-12T16:49:18.9992976Z ^[[1m^[[92m   Compiling^[[0m quote v1.0.47
+build	Lint engine	2026-10-12T16:49:19.0008132Z ^[[1m^[[92m   Compiling^[[0m serde_core v1.0.229
+build	Lint engine	2026-10-12T16:49:19.0535446Z ^[[1m^[[92m   Compiling^[[0m zmij v1.0.23
+build	Lint engine	2026-10-12T16:49:19.1718696Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.151
+build	Lint engine	2026-10-12T16:49:19.1724318Z ^[[1m^[[92m   Compiling^[[0m serde v1.0.229
+build	Lint engine	2026-10-12T16:49:19.3018902Z ^[[1m^[[92m    Checking^[[0m itoa v1.0.18
+build	Lint engine	2026-10-12T16:49:19.3608808Z ^[[1m^[[92m    Checking^[[0m memchr v2.8.3
+build	Lint engine	2026-10-12T16:49:19.6538711Z ^[[1m^[[92m   Compiling^[[0m syn v3.0.5
+build	Lint engine	2026-10-12T16:49:19.6620483Z ^[[1m^[[92m   Compiling^[[0m wasm-bindgen-shared v0.2.128
+build	Lint engine	2026-10-12T16:49:19.6686956Z ^[[1m^[[92m   Compiling^[[0m rustversion v1.0.23
+build	Lint engine	2026-10-12T16:49:19.9428800Z ^[[1m^[[92m   Compiling^[[0m bumpalo v3.20.3
+build	Lint engine	2026-10-12T16:49:20.1544176Z ^[[1m^[[92m   Compiling^[[0m wasm-bindgen v0.2.128
+build	Lint engine	2026-10-12T16:49:20.1871171Z ^[[1m^[[92m    Checking^[[0m once_cell v1.21.4
+build	Lint engine	2026-10-12T16:49:20.2289270Z ^[[1m^[[92m    Checking^[[0m cfg-if v1.0.4
+build	Lint engine	2026-10-12T16:49:21.3855973Z ^[[1m^[[92m   Compiling^[[0m wasm-bindgen-macro-support v0.2.128
+build	Lint engine	2026-10-12T16:49:21.7615117Z ^[[1m^[[92m   Compiling^[[0m serde_derive v1.0.229
+build	Lint engine	2026-10-12T16:49:23.0759228Z ^[[1m^[[92m    Checking^[[0m idlever-core v0.1.0 (/home/runner/work/idlever/idlever/crates/idlever-core)
+build	Lint engine	2026-10-12T16:49:23.4488089Z ^[[1m^[[92m   Compiling^[[0m wasm-bindgen-macro v0.2.128
+build	Lint engine	2026-10-12T16:49:33.9429894Z ^[[1m^[[92m    Checking^[[0m idlever-wasm v0.1.0 (/home/runner/work/idlever/idlever/crates/idlever-wasm)
+build	Lint engine	2026-10-12T16:49:38.0695149Z ^[[1m^[[92m    Finished^[[0m `dev` profile [unoptimized + debuginfo] target(s) in 19.22s
+build	Install wasm-pack	﻿2026-10-12T16:49:38.0810015Z ##[group]Run cargo install wasm-pack --locked --version 0.13.1
+build	Install wasm-pack	2026-10-12T16:49:38.0810620Z ^[[36;1mcargo install wasm-pack --locked --version 0.13.1^[[0m
+build	Install wasm-pack	2026-10-12T16:49:38.0865508Z shell: /usr/bin/bash -e {0}
+build	Install wasm-pack	2026-10-12T16:49:38.0865675Z env:
+build	Install wasm-pack	2026-10-12T16:49:38.0865832Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Install wasm-pack	2026-10-12T16:49:38.0866026Z   CARGO_HOME: /home/runner/.cargo
+build	Install wasm-pack	2026-10-12T16:49:38.0866172Z   CARGO_INCREMENTAL: 0
+build	Install wasm-pack	2026-10-12T16:49:38.0866301Z   CARGO_TERM_COLOR: always
+build	Install wasm-pack	2026-10-12T16:49:38.0866439Z   CACHE_ON_FAILURE: false
+build	Install wasm-pack	2026-10-12T16:49:38.0866586Z ##[endgroup]
+build	Install wasm-pack	2026-10-12T16:49:38.1197466Z ^[[1m^[[92m    Updating^[[0m crates.io index
+build	Install wasm-pack	2026-10-12T16:49:38.2249233Z ^[[1m^[[92m Downloading^[[0m crates ...
+build	Install wasm-pack	2026-10-12T16:49:38.3200504Z ^[[1m^[[92m  Downloaded^[[0m wasm-pack v0.13.1
+build	Install wasm-pack	2026-10-12T16:49:38.3738949Z ^[[1m^[[92m  Installing^[[0m wasm-pack v0.13.1
+build	Install wasm-pack	2026-10-12T16:49:38.3758315Z ^[[1m^[[92m    Updating^[[0m crates.io index
+build	Install wasm-pack	2026-10-12T16:49:38.7576473Z ^[[1m^[[33mwarning^[[0m: package `zip v2.2.0` in Cargo.lock is yanked in registry `crates-io`
+build	Install wasm-pack	2026-10-12T16:49:38.7577717Z   ^[[1m^[[94m|^[[0m
+build	Install wasm-pack	2026-10-12T16:49:38.7578145Z   ^[[1m^[[94m= ^[[0m^[[1mhelp^[[0m: consider running without --locked
+build	Install wasm-pack	2026-10-12T16:49:38.7600262Z ^[[1m^[[33mwarning^[[0m: package `spin v0.9.8` in Cargo.lock is yanked in registry `crates-io`
+build	Install wasm-pack	2026-10-12T16:49:38.7600729Z   ^[[1m^[[94m|^[[0m
+build	Install wasm-pack	2026-10-12T16:49:38.7601220Z   ^[[1m^[[94m= ^[[0m^[[1mhelp^[[0m: consider running without --locked
+build	Install wasm-pack	2026-10-12T16:49:38.7845536Z ^[[1m^[[92m    Updating^[[0m crates.io index
+build	Install wasm-pack	2026-10-12T16:49:38.9264216Z ^[[1m^[[92m Downloading^[[0m crates ...
+build	Install wasm-pack	2026-10-12T16:49:38.9543739Z ^[[1m^[[92m  Downloaded^[[0m adler2 v2.0.0
+build	Install wasm-pack	2026-10-12T16:49:38.9556687Z ^[[1m^[[92m  Downloaded^[[0m anstyle v1.0.9
+build	Install wasm-pack	2026-10-12T16:49:38.9569860Z ^[[1m^[[92m  Downloaded^[[0m addr2line v0.24.2
+build	Install wasm-pack	2026-10-12T16:49:38.9586902Z ^[[1m^[[92m  Downloaded^[[0m anstream v0.6.17
+build	Install wasm-pack	2026-10-12T16:49:38.9604959Z ^[[1m^[[92m  Downloaded^[[0m aes v0.8.4
+build	Install wasm-pack	2026-10-12T16:49:38.9632132Z ^[[1m^[[92m  Downloaded^[[0m byteorder v1.5.0
+build	Install wasm-pack	2026-10-12T16:49:38.9645401Z ^[[1m^[[92m  Downloaded^[[0m anstyle-parse v0.2.6
+build	Install wasm-pack	2026-10-12T16:49:38.9659418Z ^[[1m^[[92m  Downloaded^[[0m backtrace v0.3.74
+build	Install wasm-pack	2026-10-12T16:49:38.9703221Z ^[[1m^[[92m  Downloaded^[[0m cfg-if v1.0.0
+build	Install wasm-pack	2026-10-12T16:49:38.9711867Z ^[[1m^[[92m  Downloaded^[[0m clap_derive v4.5.18
+build	Install wasm-pack	2026-10-12T16:49:38.9729588Z ^[[1m^[[92m  Downloaded^[[0m clap v4.5.20
+build	Install wasm-pack	2026-10-12T16:49:38.9812715Z ^[[1m^[[92m  Downloaded^[[0m errno v0.3.9
+build	Install wasm-pack	2026-10-12T16:49:38.9824448Z ^[[1m^[[92m  Downloaded^[[0m form_urlencoded v1.2.1
+build	Install wasm-pack	2026-10-12T16:49:38.9830340Z ^[[1m^[[92m  Downloaded^[[0m inout v0.1.3
+build	Install wasm-pack	2026-10-12T16:49:38.9838357Z ^[[1m^[[92m  Downloaded^[[0m parking_lot_core v0.9.10
+build	Install wasm-pack	2026-10-12T16:49:38.9855916Z ^[[1m^[[92m  Downloaded^[[0m block-buffer v0.10.4
+build	Install wasm-pack	2026-10-12T16:49:38.9864916Z ^[[1m^[[92m  Downloaded^[[0m socks v0.3.4
+build	Install wasm-pack	2026-10-12T16:49:38.9875523Z ^[[1m^[[92m  Downloaded^[[0m getrandom v0.2.15
+build	Install wasm-pack	2026-10-12T16:49:38.9899749Z ^[[1m^[[92m  Downloaded^[[0m autocfg v1.4.0
+build	Install wasm-pack	2026-10-12T16:49:38.9915879Z ^[[1m^[[92m  Downloaded^[[0m either v1.13.0
+build	Install wasm-pack	2026-10-12T16:49:38.9926844Z ^[[1m^[[92m  Downloaded^[[0m anyhow v1.0.91
+build	Install wasm-pack	2026-10-12T16:49:38.9964565Z ^[[1m^[[92m  Downloaded^[[0m hashbrown v0.15.0
+build	Install wasm-pack	2026-10-12T16:49:39.0007225Z ^[[1m^[[92m  Downloaded^[[0m equivalent v1.0.1
+build	Install wasm-pack	2026-10-12T16:49:39.0013877Z ^[[1m^[[92m  Downloaded^[[0m fastrand v2.1.1
+build	Install wasm-pack	2026-10-12T16:49:39.0024296Z ^[[1m^[[92m  Downloaded^[[0m generic-array v0.14.7
+build	Install wasm-pack	2026-10-12T16:49:39.0036089Z ^[[1m^[[92m  Downloaded^[[0m lazy_static v1.5.0
+build	Install wasm-pack	2026-10-12T16:49:39.0053156Z ^[[1m^[[92m  Downloaded^[[0m percent-encoding v2.3.1
+build	Install wasm-pack	2026-10-12T16:49:39.0059431Z ^[[1m^[[92m  Downloaded^[[0m smallvec v1.13.2
+build	Install wasm-pack	2026-10-12T16:49:39.0076800Z ^[[1m^[[92m  Downloaded^[[0m spin v0.9.8
+build	Install wasm-pack	2026-10-12T16:49:39.0095674Z ^[[1m^[[92m  Downloaded^[[0m displaydoc v0.2.5
+build	Install wasm-pack	2026-10-12T16:49:39.0120674Z ^[[1m^[[92m  Downloaded^[[0m fs4 v0.6.6
+build	Install wasm-pack	2026-10-12T16:49:39.0144902Z ^[[1m^[[92m  Downloaded^[[0m hex v0.4.3
+build	Install wasm-pack	2026-10-12T16:49:39.0160291Z ^[[1m^[[92m  Downloaded^[[0m num-conv v0.1.0
+build	Install wasm-pack	2026-10-12T16:49:39.0166978Z ^[[1m^[[92m  Downloaded^[[0m base64 v0.22.1
+build	Install wasm-pack	2026-10-12T16:49:39.0198636Z ^[[1m^[[92m  Downloaded^[[0m binary-install v0.4.1
+build	Install wasm-pack	2026-10-12T16:49:39.0215143Z ^[[1m^[[92m  Downloaded^[[0m bitflags v2.6.0
+build	Install wasm-pack	2026-10-12T16:49:39.0253824Z ^[[1m^[[92m  Downloaded^[[0m bzip2 v0.4.4
+build	Install wasm-pack	2026-10-12T16:49:39.0269720Z ^[[1m^[[92m  Downloaded^[[0m bzip2-sys v0.1.11+1.0.8
+build	Install wasm-pack	2026-10-12T16:49:39.0372335Z ^[[1m^[[92m  Downloaded^[[0m camino v1.1.9
+build	Install wasm-pack	2026-10-12T16:49:39.0389304Z ^[[1m^[[92m  Downloaded^[[0m cargo-platform v0.1.8
+build	Install wasm-pack	2026-10-12T16:49:39.0400417Z ^[[1m^[[92m  Downloaded^[[0m colorchoice v1.0.3
+build	Install wasm-pack	2026-10-12T16:49:39.0410024Z ^[[1m^[[92m  Downloaded^[[0m constant_time_eq v0.3.1
+build	Install wasm-pack	2026-10-12T16:49:39.0422318Z ^[[1m^[[92m  Downloaded^[[0m glob v0.3.1
+build	Install wasm-pack	2026-10-12T16:49:39.0434644Z ^[[1m^[[92m  Downloaded^[[0m heck v0.5.0
+build	Install wasm-pack	2026-10-12T16:49:39.0446442Z ^[[1m^[[92m  Downloaded^[[0m lockfree-object-pool v0.1.6
+build	Install wasm-pack	2026-10-12T16:49:39.0468716Z ^[[1m^[[92m  Downloaded^[[0m os_info v3.8.2
+build	Install wasm-pack	2026-10-12T16:49:39.0549545Z ^[[1m^[[92m  Downloaded^[[0m quote v1.0.37
+build	Install wasm-pack	2026-10-12T16:49:39.0572115Z ^[[1m^[[92m  Downloaded^[[0m rand_chacha v0.3.1
+build	Install wasm-pack	2026-10-12T16:49:39.0589621Z ^[[1m^[[92m  Downloaded^[[0m same-file v1.0.6
+build	Install wasm-pack	2026-10-12T16:49:39.0592299Z ^[[1m^[[92m  Downloaded^[[0m bumpalo v3.16.0
+build	Install wasm-pack	2026-10-12T16:49:39.0612279Z ^[[1m^[[92m  Downloaded^[[0m deflate64 v0.1.9
+build	Install wasm-pack	2026-10-12T16:49:39.0621985Z ^[[1m^[[92m  Downloaded^[[0m dirs-sys-next v0.1.2
+build	Install wasm-pack	2026-10-12T16:49:39.0630000Z ^[[1m^[[92m  Downloaded^[[0m env_logger v0.10.2
+build	Install wasm-pack	2026-10-12T16:49:39.0654971Z ^[[1m^[[92m  Downloaded^[[0m hmac v0.12.1
+build	Install wasm-pack	2026-10-12T16:49:39.0671292Z ^[[1m^[[92m  Downloaded^[[0m itoa v1.0.11
+build	Install wasm-pack	2026-10-12T16:49:39.0682176Z ^[[1m^[[92m  Downloaded^[[0m log v0.4.22
+build	Install wasm-pack	2026-10-12T16:49:39.0700287Z ^[[1m^[[92m  Downloaded^[[0m lzma-rs v0.3.0
+build	Install wasm-pack	2026-10-12T16:49:39.0721248Z ^[[1m^[[92m  Downloaded^[[0m once_cell v1.20.2
+build	Install wasm-pack	2026-10-12T16:49:39.0741563Z ^[[1m^[[92m  Downloaded^[[0m siphasher v0.3.11
+build	Install wasm-pack	2026-10-12T16:49:39.0751991Z ^[[1m^[[92m  Downloaded^[[0m strsim v0.10.0
+build	Install wasm-pack	2026-10-12T16:49:39.0764167Z ^[[1m^[[92m  Downloaded^[[0m digest v0.10.7
+build	Install wasm-pack	2026-10-12T16:49:39.0779513Z ^[[1m^[[92m  Downloaded^[[0m dirs-next v2.0.0
+build	Install wasm-pack	2026-10-12T16:49:39.0788675Z ^[[1m^[[92m  Downloaded^[[0m ppv-lite86 v0.2.20
+build	Install wasm-pack	2026-10-12T16:49:39.0799004Z ^[[1m^[[92m  Downloaded^[[0m num-traits v0.2.19
+build	Install wasm-pack	2026-10-12T16:49:39.0819605Z ^[[1m^[[92m  Downloaded^[[0m anstyle-query v1.1.2
+build	Install wasm-pack	2026-10-12T16:49:39.0831629Z ^[[1m^[[92m  Downloaded^[[0m clap_lex v0.7.2
+build	Install wasm-pack	2026-10-12T16:49:39.0840044Z ^[[1m^[[92m  Downloaded^[[0m crc v3.2.1
+build	Install wasm-pack	2026-10-12T16:49:39.0862291Z ^[[1m^[[92m  Downloaded^[[0m filetime v0.2.25
+build	Install wasm-pack	2026-10-12T16:49:39.0877167Z ^[[1m^[[92m  Downloaded^[[0m flate2 v1.0.34
+build	Install wasm-pack	2026-10-12T16:49:39.0920650Z ^[[1m^[[92m  Downloaded^[[0m human-panic v1.2.3
+build	Install wasm-pack	2026-10-12T16:49:39.0928310Z ^[[1m^[[92m  Downloaded^[[0m path-clean v1.0.1
+build	Install wasm-pack	2026-10-12T16:49:39.0937076Z ^[[1m^[[92m  Downloaded^[[0m cargo_metadata v0.15.4
+build	Install wasm-pack	2026-10-12T16:49:39.0949528Z ^[[1m^[[92m  Downloaded^[[0m rand v0.8.5
+build	Install wasm-pack	2026-10-12T16:49:39.0978159Z ^[[1m^[[92m  Downloaded^[[0m cc v1.1.31
+build	Install wasm-pack	2026-10-12T16:49:39.1003163Z ^[[1m^[[92m  Downloaded^[[0m jobserver v0.1.32
+build	Install wasm-pack	2026-10-12T16:49:39.1019413Z ^[[1m^[[92m  Downloaded^[[0m pkg-config v0.3.31
+build	Install wasm-pack	2026-10-12T16:49:39.1031436Z ^[[1m^[[92m  Downloaded^[[0m miniz_oxide v0.8.0
+build	Install wasm-pack	2026-10-12T16:49:39.1047669Z ^[[1m^[[92m  Downloaded^[[0m memchr v2.7.4
+build	Install wasm-pack	2026-10-12T16:49:39.1092038Z ^[[1m^[[92m  Downloaded^[[0m is_terminal_polyfill v1.70.1
+build	Install wasm-pack	2026-10-12T16:49:39.1100155Z ^[[1m^[[92m  Downloaded^[[0m proc-macro2 v1.0.89
+build	Install wasm-pack	2026-10-12T16:49:39.1120547Z ^[[1m^[[92m  Downloaded^[[0m powerfmt v0.2.0
+build	Install wasm-pack	2026-10-12T16:49:39.1129142Z ^[[1m^[[92m  Downloaded^[[0m scopeguard v1.2.0
+build	Install wasm-pack	2026-10-12T16:49:39.1138184Z ^[[1m^[[92m  Downloaded^[[0m crc-catalog v2.4.0
+build	Install wasm-pack	2026-10-12T16:49:39.1146929Z ^[[1m^[[92m  Downloaded^[[0m home v0.5.9
+build	Install wasm-pack	2026-10-12T16:49:39.1154006Z ^[[1m^[[92m  Downloaded^[[0m iana-time-zone v0.1.61
+build	Install wasm-pack	2026-10-12T16:49:39.1172982Z ^[[1m^[[92m  Downloaded^[[0m pbkdf2 v0.12.2
+build	Install wasm-pack	2026-10-12T16:49:39.1183426Z ^[[1m^[[92m  Downloaded^[[0m clap_builder v4.5.20
+build	Install wasm-pack	2026-10-12T16:49:39.1232471Z ^[[1m^[[92m  Downloaded^[[0m simd-adler32 v0.3.7
+build	Install wasm-pack	2026-10-12T16:49:39.1246180Z ^[[1m^[[92m  Downloaded^[[0m cpufeatures v0.2.14
+build	Install wasm-pack	2026-10-12T16:49:39.1256207Z ^[[1m^[[92m  Downloaded^[[0m crypto-common v0.1.6
+build	Install wasm-pack	2026-10-12T16:49:39.1262851Z ^[[1m^[[92m  Downloaded^[[0m sha1 v0.10.6
+build	Install wasm-pack	2026-10-12T16:49:39.1275360Z ^[[1m^[[92m  Downloaded^[[0m cipher v0.4.4
+build	Install wasm-pack	2026-10-12T16:49:39.1286596Z ^[[1m^[[92m  Downloaded^[[0m dialoguer v0.10.4
+build	Install wasm-pack	2026-10-12T16:49:39.1310521Z ^[[1m^[[92m  Downloaded^[[0m lock_api v0.4.12
+build	Install wasm-pack	2026-10-12T16:49:39.1320470Z ^[[1m^[[92m  Downloaded^[[0m console v0.15.8
+build	Install wasm-pack	2026-10-12T16:49:39.1343707Z ^[[1m^[[92m  Downloaded^[[0m crc32fast v1.4.2
+build	Install wasm-pack	2026-10-12T16:49:39.1357656Z ^[[1m^[[92m  Downloaded^[[0m parking_lot v0.12.3
+build	Install wasm-pack	2026-10-12T16:49:39.1375255Z ^[[1m^[[92m  Downloaded^[[0m gimli v0.31.1
+build	Install wasm-pack	2026-10-12T16:49:39.1428355Z ^[[1m^[[92m  Downloaded^[[0m is_executable v0.1.2
+build	Install wasm-pack	2026-10-12T16:49:39.1438311Z ^[[1m^[[92m  Downloaded^[[0m rustc-demangle v0.1.24
+build	Install wasm-pack	2026-10-12T16:49:39.1450388Z ^[[1m^[[92m  Downloaded^[[0m idna v0.5.0
+build	Install wasm-pack	2026-10-12T16:49:39.1494126Z ^[[1m^[[92m  Downloaded^[[0m object v0.36.5
+build	Install wasm-pack	2026-10-12T16:49:39.1577542Z ^[[1m^[[92m  Downloaded^[[0m chrono v0.4.38
+build	Install wasm-pack	2026-10-12T16:49:39.1626881Z ^[[1m^[[92m  Downloaded^[[0m rand_core v0.6.4
+build	Install wasm-pack	2026-10-12T16:49:39.1637178Z ^[[1m^[[92m  Downloaded^[[0m deranged v0.3.11
+build	Install wasm-pack	2026-10-12T16:49:39.1645922Z ^[[1m^[[92m  Downloaded^[[0m indexmap v2.6.0
+build	Install wasm-pack	2026-10-12T16:49:39.1676363Z ^[[1m^[[92m  Downloaded^[[0m uuid v1.11.0
+build	Install wasm-pack	2026-10-12T16:49:39.1696724Z ^[[1m^[[92m  Downloaded^[[0m libc v0.2.161
+build	Install wasm-pack	2026-10-12T16:49:39.1928886Z ^[[1m^[[92m  Downloaded^[[0m linux-raw-sys v0.4.14
+build	Install wasm-pack	2026-10-12T16:49:39.2221281Z ^[[1m^[[92m  Downloaded^[[0m zeroize_derive v1.4.2
+build	Install wasm-pack	2026-10-12T16:49:39.2227592Z ^[[1m^[[92m  Downloaded^[[0m serde_ignored v0.1.10
+build	Install wasm-pack	2026-10-12T16:49:39.2237711Z ^[[1m^[[92m  Downloaded^[[0m utf8parse v0.2.2
+build	Install wasm-pack	2026-10-12T16:49:39.2245598Z ^[[1m^[[92m  Downloaded^[[0m time-core v0.1.2
+build	Install wasm-pack	2026-10-12T16:49:39.2252073Z ^[[1m^[[92m  Downloaded^[[0m subtle v2.6.1
+build	Install wasm-pack	2026-10-12T16:49:39.2261073Z ^[[1m^[[92m  Downloaded^[[0m thiserror-impl v1.0.65
+build	Install wasm-pack	2026-10-12T16:49:39.2270588Z ^[[1m^[[92m  Downloaded^[[0m untrusted v0.9.0
+build	Install wasm-pack	2026-10-12T16:49:39.2283467Z ^[[1m^[[92m  Downloaded^[[0m version_check v0.9.5
+build	Install wasm-pack	2026-10-12T16:49:39.2292992Z ^[[1m^[[92m  Downloaded^[[0m ring v0.17.8
+build	Install wasm-pack	2026-10-12T16:49:39.2807921Z ^[[1m^[[92m  Downloaded^[[0m toml_datetime v0.6.8
+build	Install wasm-pack	2026-10-12T16:49:39.2816365Z ^[[1m^[[92m  Downloaded^[[0m shlex v1.3.0
+build	Install wasm-pack	2026-10-12T16:49:39.2826709Z ^[[1m^[[92m  Downloaded^[[0m xattr v1.3.1
+build	Install wasm-pack	2026-10-12T16:49:39.2841901Z ^[[1m^[[92m  Downloaded^[[0m zeroize v1.8.1
+build	Install wasm-pack	2026-10-12T16:49:39.2852144Z ^[[1m^[[92m  Downloaded^[[0m zstd-safe v7.2.1
+build	Install wasm-pack	2026-10-12T16:49:39.2861985Z ^[[1m^[[92m  Downloaded^[[0m shell-words v1.1.0
+build	Install wasm-pack	2026-10-12T16:49:39.2868847Z ^[[1m^[[92m  Downloaded^[[0m tinyvec_macros v0.1.1
+build	Install wasm-pack	2026-10-12T16:49:39.2875274Z ^[[1m^[[92m  Downloaded^[[0m which v4.4.2
+build	Install wasm-pack	2026-10-12T16:49:39.2886751Z ^[[1m^[[92m  Downloaded^[[0m strsim v0.11.1
+build	Install wasm-pack	2026-10-12T16:49:39.2896756Z ^[[1m^[[92m  Downloaded^[[0m serde_spanned v0.6.8
+build	Install wasm-pack	2026-10-12T16:49:39.2904951Z ^[[1m^[[92m  Downloaded^[[0m walkdir v2.5.0
+build	Install wasm-pack	2026-10-12T16:49:39.2919771Z ^[[1m^[[92m  Downloaded^[[0m zstd v0.13.2
+build	Install wasm-pack	2026-10-12T16:49:39.2943410Z ^[[1m^[[92m  Downloaded^[[0m semver v1.0.23
+build	Install wasm-pack	2026-10-12T16:49:39.2961737Z ^[[1m^[[92m  Downloaded^[[0m zerocopy-derive v0.7.35
+build	Install wasm-pack	2026-10-12T16:49:39.3000264Z ^[[1m^[[92m  Downloaded^[[0m thiserror v1.0.65
+build	Install wasm-pack	2026-10-12T16:49:39.3045619Z ^[[1m^[[92m  Downloaded^[[0m unicode-ident v1.0.13
+build	Install wasm-pack	2026-10-12T16:49:39.3067241Z ^[[1m^[[92m  Downloaded^[[0m tempfile v3.13.0
+build	Install wasm-pack	2026-10-12T16:49:39.3089253Z ^[[1m^[[92m  Downloaded^[[0m tinyvec v1.8.0
+build	Install wasm-pack	2026-10-12T16:49:39.3110708Z ^[[1m^[[92m  Downloaded^[[0m toml v0.7.8
+build	Install wasm-pack	2026-10-12T16:49:39.3135597Z ^[[1m^[[92m  Downloaded^[[0m zopfli v0.8.1
+build	Install wasm-pack	2026-10-12T16:49:39.3152719Z ^[[1m^[[92m  Downloaded^[[0m typenum v1.17.0
+build	Install wasm-pack	2026-10-12T16:49:39.3172090Z ^[[1m^[[92m  Downloaded^[[0m ryu v1.0.18
+build	Install wasm-pack	2026-10-12T16:49:39.3196793Z ^[[1m^[[92m  Downloaded^[[0m tar v0.4.42
+build	Install wasm-pack	2026-10-12T16:49:39.3216960Z ^[[1m^[[92m  Downloaded^[[0m toml v0.8.19
+build	Install wasm-pack	2026-10-12T16:49:39.3242587Z ^[[1m^[[92m  Downloaded^[[0m rustls-pki-types v1.10.0
+build	Install wasm-pack	2026-10-12T16:49:39.3269296Z ^[[1m^[[92m  Downloaded^[[0m unicode-bidi v0.3.17
+build	Install wasm-pack	2026-10-12T16:49:39.3289158Z ^[[1m^[[92m  Downloaded^[[0m serde v1.0.214
+build	Install wasm-pack	2026-10-12T16:49:39.3312823Z ^[[1m^[[92m  Downloaded^[[0m serde_derive v1.0.214
+build	Install wasm-pack	2026-10-12T16:49:39.3331379Z ^[[1m^[[92m  Downloaded^[[0m url v2.5.2
+build	Install wasm-pack	2026-10-12T16:49:39.3351132Z ^[[1m^[[92m  Downloaded^[[0m ureq v2.10.1
+build	Install wasm-pack	2026-10-12T16:49:39.3390228Z ^[[1m^[[92m  Downloaded^[[0m toml_edit v0.19.15
+build	Install wasm-pack	2026-10-12T16:49:39.3558538Z ^[[1m^[[92m  Downloaded^[[0m zip v2.2.0
+build	Install wasm-pack	2026-10-12T16:49:39.3593197Z ^[[1m^[[92m  Downloaded^[[0m toml_edit v0.22.22
+build	Install wasm-pack	2026-10-12T16:49:39.3822724Z ^[[1m^[[92m  Downloaded^[[0m unicode-normalization v0.1.24
+build	Install wasm-pack	2026-10-12T16:49:39.3850230Z ^[[1m^[[92m  Downloaded^[[0m serde_json v1.0.132
+build	Install wasm-pack	2026-10-12T16:49:39.3908239Z ^[[1m^[[92m  Downloaded^[[0m time v0.3.36
+build	Install wasm-pack	2026-10-12T16:49:39.3966051Z ^[[1m^[[92m  Downloaded^[[0m rustix v0.38.38
+build	Install wasm-pack	2026-10-12T16:49:39.4175971Z ^[[1m^[[92m  Downloaded^[[0m winnow v0.5.40
+build	Install wasm-pack	2026-10-12T16:49:39.4243626Z ^[[1m^[[92m  Downloaded^[[0m zerocopy v0.7.35
+build	Install wasm-pack	2026-10-12T16:49:39.4393920Z ^[[1m^[[92m  Downloaded^[[0m rustls-webpki v0.102.8
+build	Install wasm-pack	2026-10-12T16:49:39.4568051Z ^[[1m^[[92m  Downloaded^[[0m webpki-roots v0.26.6
+build	Install wasm-pack	2026-10-12T16:49:39.4593131Z ^[[1m^[[92m  Downloaded^[[0m syn v2.0.85
+build	Install wasm-pack	2026-10-12T16:49:39.4674484Z ^[[1m^[[92m  Downloaded^[[0m unicode-width v0.1.14
+build	Install wasm-pack	2026-10-12T16:49:39.4716009Z ^[[1m^[[92m  Downloaded^[[0m rustls v0.23.16
+build	Install wasm-pack	2026-10-12T16:49:39.4803606Z ^[[1m^[[92m  Downloaded^[[0m zstd-sys v2.0.13+zstd.1.5.6
+build	Install wasm-pack	2026-10-12T16:49:39.5519735Z ^[[1m^[[92m   Compiling^[[0m libc v0.2.161
+build	Install wasm-pack	2026-10-12T16:49:39.5520270Z ^[[1m^[[92m   Compiling^[[0m proc-macro2 v1.0.89
+build	Install wasm-pack	2026-10-12T16:49:39.5539241Z ^[[1m^[[92m   Compiling^[[0m unicode-ident v1.0.13
+build	Install wasm-pack	2026-10-12T16:49:39.5578638Z ^[[1m^[[92m   Compiling^[[0m cfg-if v1.0.0
+build	Install wasm-pack	2026-10-12T16:49:39.5903716Z ^[[1m^[[92m   Compiling^[[0m shlex v1.3.0
+build	Install wasm-pack	2026-10-12T16:49:39.5979594Z ^[[1m^[[92m   Compiling^[[0m serde v1.0.214
+build	Install wasm-pack	2026-10-12T16:49:39.6763450Z ^[[1m^[[92m   Compiling^[[0m version_check v0.9.5
+build	Install wasm-pack	2026-10-12T16:49:39.8499621Z ^[[1m^[[92m   Compiling^[[0m typenum v1.17.0
+build	Install wasm-pack	2026-10-12T16:49:40.0378665Z ^[[1m^[[92m   Compiling^[[0m quote v1.0.37
+build	Install wasm-pack	2026-10-12T16:49:40.0831246Z ^[[1m^[[92m   Compiling^[[0m jobserver v0.1.32
+build	Install wasm-pack	2026-10-12T16:49:40.0919017Z ^[[1m^[[92m   Compiling^[[0m generic-array v0.14.7
+build	Install wasm-pack	2026-10-12T16:49:40.1658691Z ^[[1m^[[92m   Compiling^[[0m syn v2.0.85
+build	Install wasm-pack	2026-10-12T16:49:40.1968815Z ^[[1m^[[92m   Compiling^[[0m pkg-config v0.3.31
+build	Install wasm-pack	2026-10-12T16:49:40.2809048Z ^[[1m^[[92m   Compiling^[[0m cc v1.1.31
+build	Install wasm-pack	2026-10-12T16:49:40.5038966Z ^[[1m^[[92m   Compiling^[[0m getrandom v0.2.15
+build	Install wasm-pack	2026-10-12T16:49:40.6561218Z ^[[1m^[[92m   Compiling^[[0m rustix v0.38.38
+build	Install wasm-pack	2026-10-12T16:49:40.8078864Z ^[[1m^[[92m   Compiling^[[0m byteorder v1.5.0
+build	Install wasm-pack	2026-10-12T16:49:40.9759735Z ^[[1m^[[92m   Compiling^[[0m crypto-common v0.1.6
+build	Install wasm-pack	2026-10-12T16:49:41.0189537Z ^[[1m^[[92m   Compiling^[[0m log v0.4.22
+build	Install wasm-pack	2026-10-12T16:49:41.0318944Z ^[[1m^[[92m   Compiling^[[0m bitflags v2.6.0
+build	Install wasm-pack	2026-10-12T16:49:41.2119136Z ^[[1m^[[92m   Compiling^[[0m memchr v2.7.4
+build	Install wasm-pack	2026-10-12T16:49:41.2878830Z ^[[1m^[[92m   Compiling^[[0m subtle v2.6.1
+build	Install wasm-pack	2026-10-12T16:49:41.3128837Z ^[[1m^[[92m   Compiling^[[0m hashbrown v0.15.0
+build	Install wasm-pack	2026-10-12T16:49:41.3756703Z ^[[1m^[[92m   Compiling^[[0m linux-raw-sys v0.4.14
+build	Install wasm-pack	2026-10-12T16:49:41.6037854Z ^[[1m^[[92m   Compiling^[[0m equivalent v1.0.1
+build	Install wasm-pack	2026-10-12T16:49:41.6445294Z ^[[1m^[[92m   Compiling^[[0m autocfg v1.4.0
+build	Install wasm-pack	2026-10-12T16:49:41.8186433Z ^[[1m^[[92m   Compiling^[[0m indexmap v2.6.0
+build	Install wasm-pack	2026-10-12T16:49:42.1279309Z ^[[1m^[[92m   Compiling^[[0m zstd-sys v2.0.13+zstd.1.5.6
+build	Install wasm-pack	2026-10-12T16:49:42.2919271Z ^[[1m^[[92m   Compiling^[[0m ring v0.17.8
+build	Install wasm-pack	2026-10-12T16:49:42.3788628Z ^[[1m^[[92m   Compiling^[[0m adler2 v2.0.0
+build	Install wasm-pack	2026-10-12T16:49:42.4628953Z ^[[1m^[[92m   Compiling^[[0m once_cell v1.20.2
+build	Install wasm-pack	2026-10-12T16:49:42.6048503Z ^[[1m^[[92m   Compiling^[[0m miniz_oxide v0.8.0
+build	Install wasm-pack	2026-10-12T16:49:43.4289574Z ^[[1m^[[92m   Compiling^[[0m serde_derive v1.0.214
+build	Install wasm-pack	2026-10-12T16:49:43.7099391Z ^[[1m^[[92m   Compiling^[[0m zeroize_derive v1.4.2
+build	Install wasm-pack	2026-10-12T16:49:43.9818548Z ^[[1m^[[92m   Compiling^[[0m zerocopy-derive v0.7.35
+build	Install wasm-pack	2026-10-12T16:49:44.4081015Z ^[[1m^[[92m   Compiling^[[0m block-buffer v0.10.4
+build	Install wasm-pack	2026-10-12T16:49:44.4829360Z ^[[1m^[[92m   Compiling^[[0m tinyvec_macros v0.1.1
+build	Install wasm-pack	2026-10-12T16:49:44.5149408Z ^[[1m^[[92m   Compiling^[[0m tinyvec v1.8.0
+build	Install wasm-pack	2026-10-12T16:49:45.1068918Z ^[[1m^[[92m   Compiling^[[0m digest v0.10.7
+build	Install wasm-pack	2026-10-12T16:49:45.2269689Z ^[[1m^[[92m   Compiling^[[0m zerocopy v0.7.35
+build	Install wasm-pack	2026-10-12T16:49:45.6379001Z ^[[1m^[[92m   Compiling^[[0m zeroize v1.8.1
+build	Install wasm-pack	2026-10-12T16:49:45.7372858Z ^[[1m^[[92m   Compiling^[[0m bzip2-sys v0.1.11+1.0.8
+build	Install wasm-pack	2026-10-12T16:49:45.8219074Z ^[[1m^[[92m   Compiling^[[0m crc32fast v1.4.2
+build	Install wasm-pack	2026-10-12T16:49:45.9453158Z ^[[1m^[[92m   Compiling^[[0m thiserror v1.0.65
+build	Install wasm-pack	2026-10-12T16:49:46.0279207Z ^[[1m^[[92m   Compiling^[[0m zstd-safe v7.2.1
+build	Install wasm-pack	2026-10-12T16:49:46.0766013Z ^[[1m^[[92m   Compiling^[[0m spin v0.9.8
+build	Install wasm-pack	2026-10-12T16:49:46.1324678Z ^[[1m^[[92m   Compiling^[[0m serde_json v1.0.132
+build	Install wasm-pack	2026-10-12T16:49:46.2069403Z ^[[1m^[[92m   Compiling^[[0m utf8parse v0.2.2
+build	Install wasm-pack	2026-10-12T16:49:46.2495741Z ^[[1m^[[92m   Compiling^[[0m untrusted v0.9.0
+build	Install wasm-pack	2026-10-12T16:49:46.3060204Z ^[[1m^[[92m   Compiling^[[0m rustls-pki-types v1.10.0
+build	Install wasm-pack	2026-10-12T16:49:46.8880247Z ^[[1m^[[92m   Compiling^[[0m anstyle-parse v0.2.6
+build	Install wasm-pack	2026-10-12T16:49:46.9892924Z ^[[1m^[[92m   Compiling^[[0m serde_spanned v0.6.8
+build	Install wasm-pack	2026-10-12T16:49:46.9932366Z ^[[1m^[[92m   Compiling^[[0m toml_datetime v0.6.8
+build	Install wasm-pack	2026-10-12T16:49:47.1538896Z ^[[1m^[[92m   Compiling^[[0m ppv-lite86 v0.2.20
+build	Install wasm-pack	2026-10-12T16:49:47.3440863Z ^[[1m^[[92m   Compiling^[[0m unicode-normalization v0.1.24
+build	Install wasm-pack	2026-10-12T16:49:47.6226491Z ^[[1m^[[92m   Compiling^[[0m thiserror-impl v1.0.65
+build	Install wasm-pack	2026-10-12T16:49:48.2160399Z ^[[1m^[[92m   Compiling^[[0m inout v0.1.3
+build	Install wasm-pack	2026-10-12T16:49:48.2869474Z ^[[1m^[[92m   Compiling^[[0m rand_core v0.6.4
+build	Install wasm-pack	2026-10-12T16:49:48.4329559Z ^[[1m^[[92m   Compiling^[[0m is_terminal_polyfill v1.70.1
+build	Install wasm-pack	2026-10-12T16:49:48.4808658Z ^[[1m^[[92m   Compiling^[[0m ryu v1.0.18
+build	Install wasm-pack	2026-10-12T16:49:48.6752303Z ^[[1m^[[92m   Compiling^[[0m percent-encoding v2.3.1
+build	Install wasm-pack	2026-10-12T16:49:48.8339798Z ^[[1m^[[92m   Compiling^[[0m colorchoice v1.0.3
+build	Install wasm-pack	2026-10-12T16:49:48.8908954Z ^[[1m^[[92m   Compiling^[[0m anstyle-query v1.1.2
+build	Install wasm-pack	2026-10-12T16:49:48.9388757Z ^[[1m^[[92m   Compiling^[[0m itoa v1.0.11
+build	Install wasm-pack	2026-10-12T16:49:49.0187713Z ^[[1m^[[92m   Compiling^[[0m rustls v0.23.16
+build	Install wasm-pack	2026-10-12T16:49:49.0828926Z ^[[1m^[[92m   Compiling^[[0m crc-catalog v2.4.0
+build	Install wasm-pack	2026-10-12T16:49:49.1119706Z ^[[1m^[[92m   Compiling^[[0m unicode-bidi v0.3.17
+build	Install wasm-pack	2026-10-12T16:49:49.8962585Z ^[[1m^[[92m   Compiling^[[0m anstyle v1.0.9
+build	Install wasm-pack	2026-10-12T16:49:50.0698958Z ^[[1m^[[92m   Compiling^[[0m cpufeatures v0.2.14
+build	Install wasm-pack	2026-10-12T16:49:50.0999514Z ^[[1m^[[92m   Compiling^[[0m powerfmt v0.2.0
+build	Install wasm-pack	2026-10-12T16:49:50.2195520Z ^[[1m^[[92m   Compiling^[[0m deranged v0.3.11
+build	Install wasm-pack	2026-10-12T16:49:50.6530835Z ^[[1m^[[92m   Compiling^[[0m anstream v0.6.17
+build	Install wasm-pack	2026-10-12T16:49:50.7999491Z ^[[1m^[[92m   Compiling^[[0m idna v0.5.0
+build	Install wasm-pack	2026-10-12T16:49:50.9729185Z ^[[1m^[[92m   Compiling^[[0m crc v3.2.1
+build	Install wasm-pack	2026-10-12T16:49:52.0909207Z ^[[1m^[[92m   Compiling^[[0m rustls-webpki v0.102.8
+build	Install wasm-pack	2026-10-12T16:49:53.6385054Z ^[[1m^[[92m   Compiling^[[0m form_urlencoded v1.2.1
+build	Install wasm-pack	2026-10-12T16:49:53.6458615Z ^[[1m^[[92m   Compiling^[[0m rand_chacha v0.3.1
+build	Install wasm-pack	2026-10-12T16:49:53.7159016Z ^[[1m^[[92m   Compiling^[[0m cipher v0.4.4
+build	Install wasm-pack	2026-10-12T16:49:53.8399325Z ^[[1m^[[92m   Compiling^[[0m flate2 v1.0.34
+build	Install wasm-pack	2026-10-12T16:49:53.8689020Z ^[[1m^[[92m   Compiling^[[0m hmac v0.12.1
+build	Install wasm-pack	2026-10-12T16:49:53.9442707Z ^[[1m^[[92m   Compiling^[[0m lock_api v0.4.12
+build	Install wasm-pack	2026-10-12T16:49:54.0198944Z ^[[1m^[[92m   Compiling^[[0m num-traits v0.2.19
+build	Install wasm-pack	2026-10-12T16:49:54.0705095Z ^[[1m^[[92m   Compiling^[[0m time-core v0.1.2
+build	Install wasm-pack	2026-10-12T16:49:54.1081337Z ^[[1m^[[92m   Compiling^[[0m parking_lot_core v0.9.10
+build	Install wasm-pack	2026-10-12T16:49:54.1110123Z ^[[1m^[[92m   Compiling^[[0m lockfree-object-pool v0.1.6
+build	Install wasm-pack	2026-10-12T16:49:54.1999170Z ^[[1m^[[92m   Compiling^[[0m anyhow v1.0.91
+build	Install wasm-pack	2026-10-12T16:49:54.2099101Z ^[[1m^[[92m   Compiling^[[0m bumpalo v3.16.0
+build	Install wasm-pack	2026-10-12T16:49:54.2596446Z ^[[1m^[[92m   Compiling^[[0m camino v1.1.9
+build	Install wasm-pack	2026-10-12T16:49:54.3225140Z ^[[1m^[[92m   Compiling^[[0m zip v2.2.0
+build	Install wasm-pack	2026-10-12T16:49:54.3890059Z ^[[1m^[[92m   Compiling^[[0m num-conv v0.1.0
+build	Install wasm-pack	2026-10-12T16:49:54.3999119Z ^[[1m^[[92m   Compiling^[[0m semver v1.0.23
+build	Install wasm-pack	2026-10-12T16:49:54.4049907Z ^[[1m^[[92m   Compiling^[[0m simd-adler32 v0.3.7
+build	Install wasm-pack	2026-10-12T16:49:54.4519043Z ^[[1m^[[92m   Compiling^[[0m gimli v0.31.1
+build	Install wasm-pack	2026-10-12T16:49:54.5319007Z ^[[1m^[[92m   Compiling^[[0m zopfli v0.8.1
+build	Install wasm-pack	2026-10-12T16:49:54.7818929Z ^[[1m^[[92m   Compiling^[[0m time v0.3.36
+build	Install wasm-pack	2026-10-12T16:49:56.0909523Z ^[[1m^[[92m   Compiling^[[0m pbkdf2 v0.12.2
+build	Install wasm-pack	2026-10-12T16:49:56.1420690Z ^[[1m^[[92m   Compiling^[[0m aes v0.8.4
+build	Install wasm-pack	2026-10-12T16:49:56.1585552Z ^[[1m^[[92m   Compiling^[[0m rand v0.8.5
+build	Install wasm-pack	2026-10-12T16:49:56.7429671Z ^[[1m^[[92m   Compiling^[[0m addr2line v0.24.2
+build	Install wasm-pack	2026-10-12T16:49:56.7579806Z ^[[1m^[[92m   Compiling^[[0m url v2.5.2
+build	Install wasm-pack	2026-10-12T16:49:57.0549287Z ^[[1m^[[92m   Compiling^[[0m lzma-rs v0.3.0
+build	Install wasm-pack	2026-10-12T16:49:57.6391426Z ^[[1m^[[92m   Compiling^[[0m bzip2 v0.4.4
+build	Install wasm-pack	2026-10-12T16:49:57.7710865Z ^[[1m^[[92m   Compiling^[[0m sha1 v0.10.6
+build	Install wasm-pack	2026-10-12T16:49:58.3721538Z ^[[1m^[[92m   Compiling^[[0m toml_edit v0.22.22
+build	Install wasm-pack	2026-10-12T16:49:59.0149040Z ^[[1m^[[92m   Compiling^[[0m webpki-roots v0.26.6
+build	Install wasm-pack	2026-10-12T16:49:59.1318891Z ^[[1m^[[92m   Compiling^[[0m displaydoc v0.2.5
+build	Install wasm-pack	2026-10-12T16:49:59.4748950Z ^[[1m^[[92m   Compiling^[[0m xattr v1.3.1
+build	Install wasm-pack	2026-10-12T16:49:59.7829526Z ^[[1m^[[92m   Compiling^[[0m object v0.36.5
+build	Install wasm-pack	2026-10-12T16:50:02.4042664Z ^[[1m^[[92m   Compiling^[[0m socks v0.3.4
+build	Install wasm-pack	2026-10-12T16:50:02.4250903Z ^[[1m^[[92m   Compiling^[[0m filetime v0.2.25
+build	Install wasm-pack	2026-10-12T16:50:02.5481538Z ^[[1m^[[92m   Compiling^[[0m dirs-sys-next v0.1.2
+build	Install wasm-pack	2026-10-12T16:50:02.6769060Z ^[[1m^[[92m   Compiling^[[0m smallvec v1.13.2
+build	Install wasm-pack	2026-10-12T16:50:02.8359415Z ^[[1m^[[92m   Compiling^[[0m constant_time_eq v0.3.1
+build	Install wasm-pack	2026-10-12T16:50:02.8735199Z ^[[1m^[[92m   Compiling^[[0m lazy_static v1.5.0
+build	Install wasm-pack	2026-10-12T16:50:02.8884461Z ^[[1m^[[92m   Compiling^[[0m strsim v0.11.1
+build	Install wasm-pack	2026-10-12T16:50:02.9139083Z ^[[1m^[[92m   Compiling^[[0m fastrand v2.1.1
+build	Install wasm-pack	2026-10-12T16:50:03.0859666Z ^[[1m^[[92m   Compiling^[[0m clap_lex v0.7.2
+build	Install wasm-pack	2026-10-12T16:50:03.2775582Z ^[[1m^[[92m   Compiling^[[0m scopeguard v1.2.0
+build	Install wasm-pack	2026-10-12T16:50:03.3248815Z ^[[1m^[[92m   Compiling^[[0m deflate64 v0.1.9
+build	Install wasm-pack	2026-10-12T16:50:03.4909079Z ^[[1m^[[92m   Compiling^[[0m heck v0.5.0
+build	Install wasm-pack	2026-10-12T16:50:03.5954272Z ^[[1m^[[92m   Compiling^[[0m unicode-width v0.1.14
+build	Install wasm-pack	2026-10-12T16:50:03.6570911Z ^[[1m^[[92m   Compiling^[[0m base64 v0.22.1
+build	Install wasm-pack	2026-10-12T16:50:03.7559029Z ^[[1m^[[92m   Compiling^[[0m winnow v0.5.40
+build	Install wasm-pack	2026-10-12T16:50:04.0159117Z ^[[1m^[[92m   Compiling^[[0m rustc-demangle v0.1.24
+build	Install wasm-pack	2026-10-12T16:50:04.8589197Z ^[[1m^[[92m   Compiling^[[0m backtrace v0.3.74
+build	Install wasm-pack	2026-10-12T16:50:05.2785756Z ^[[1m^[[92m   Compiling^[[0m toml_edit v0.19.15
+build	Install wasm-pack	2026-10-12T16:50:08.9859641Z ^[[1m^[[92m   Compiling^[[0m ureq v2.10.1
+build	Install wasm-pack	2026-10-12T16:50:11.7168892Z ^[[1m^[[92m   Compiling^[[0m zstd v0.13.2
+build	Install wasm-pack	2026-10-12T16:50:12.0279220Z ^[[1m^[[92m   Compiling^[[0m console v0.15.8
+build	Install wasm-pack	2026-10-12T16:50:13.0729001Z ^[[1m^[[92m   Compiling^[[0m clap_derive v4.5.18
+build	Install wasm-pack	2026-10-12T16:50:13.3069561Z ^[[1m^[[92m   Compiling^[[0m clap_builder v4.5.20
+build	Install wasm-pack	2026-10-12T16:50:14.3236545Z ^[[1m^[[92m   Compiling^[[0m tempfile v3.13.0
+build	Install wasm-pack	2026-10-12T16:50:14.8588805Z ^[[1m^[[92m   Compiling^[[0m dirs-next v2.0.0
+build	Install wasm-pack	2026-10-12T16:50:14.9339076Z ^[[1m^[[92m   Compiling^[[0m tar v0.4.42
+build	Install wasm-pack	2026-10-12T16:50:14.9529519Z ^[[1m^[[92m   Compiling^[[0m toml v0.8.19
+build	Install wasm-pack	2026-10-12T16:50:16.5453343Z ^[[1m^[[92m   Compiling^[[0m cargo-platform v0.1.8
+build	Install wasm-pack	2026-10-12T16:50:16.7468994Z ^[[1m^[[92m   Compiling^[[0m os_info v3.8.2
+build	Install wasm-pack	2026-10-12T16:50:16.8759139Z ^[[1m^[[92m   Compiling^[[0m fs4 v0.6.6
+build	Install wasm-pack	2026-10-12T16:50:16.9669000Z ^[[1m^[[92m   Compiling^[[0m uuid v1.11.0
+build	Install wasm-pack	2026-10-12T16:50:17.1439417Z ^[[1m^[[92m   Compiling^[[0m shell-words v1.1.0
+build	Install wasm-pack	2026-10-12T16:50:17.2709363Z ^[[1m^[[92m   Compiling^[[0m same-file v1.0.6
+build	Install wasm-pack	2026-10-12T16:50:17.2968999Z ^[[1m^[[92m   Compiling^[[0m is_executable v0.1.2
+build	Install wasm-pack	2026-10-12T16:50:17.3619422Z ^[[1m^[[92m   Compiling^[[0m hex v0.4.3
+build	Install wasm-pack	2026-10-12T16:50:17.3658431Z ^[[1m^[[92m   Compiling^[[0m siphasher v0.3.11
+build	Install wasm-pack	2026-10-12T16:50:17.4851169Z ^[[1m^[[92m   Compiling^[[0m home v0.5.9
+build	Install wasm-pack	2026-10-12T16:50:17.5029791Z ^[[1m^[[92m   Compiling^[[0m iana-time-zone v0.1.61
+build	Install wasm-pack	2026-10-12T16:50:17.5328893Z ^[[1m^[[92m   Compiling^[[0m either v1.13.0
+build	Install wasm-pack	2026-10-12T16:50:17.5680601Z ^[[1m^[[92m   Compiling^[[0m binary-install v0.4.1
+build	Install wasm-pack	2026-10-12T16:50:17.6708918Z ^[[1m^[[92m   Compiling^[[0m which v4.4.2
+build	Install wasm-pack	2026-10-12T16:50:17.8108949Z ^[[1m^[[92m   Compiling^[[0m chrono v0.4.38
+build	Install wasm-pack	2026-10-12T16:50:17.9869473Z ^[[1m^[[92m   Compiling^[[0m walkdir v2.5.0
+build	Install wasm-pack	2026-10-12T16:50:18.5038805Z ^[[1m^[[92m   Compiling^[[0m dialoguer v0.10.4
+build	Install wasm-pack	2026-10-12T16:50:19.5249184Z ^[[1m^[[92m   Compiling^[[0m human-panic v1.2.3
+build	Install wasm-pack	2026-10-12T16:50:19.9489018Z ^[[1m^[[92m   Compiling^[[0m cargo_metadata v0.15.4
+build	Install wasm-pack	2026-10-12T16:50:20.1231011Z ^[[1m^[[92m   Compiling^[[0m clap v4.5.20
+build	Install wasm-pack	2026-10-12T16:50:20.1608953Z ^[[1m^[[92m   Compiling^[[0m parking_lot v0.12.3
+build	Install wasm-pack	2026-10-12T16:50:20.5008357Z ^[[1m^[[92m   Compiling^[[0m toml v0.7.8
+build	Install wasm-pack	2026-10-12T16:50:20.8335154Z ^[[1m^[[92m   Compiling^[[0m serde_ignored v0.1.10
+build	Install wasm-pack	2026-10-12T16:50:20.9519546Z ^[[1m^[[92m   Compiling^[[0m env_logger v0.10.2
+build	Install wasm-pack	2026-10-12T16:50:21.7707493Z ^[[1m^[[92m   Compiling^[[0m glob v0.3.1
+build	Install wasm-pack	2026-10-12T16:50:22.1198937Z ^[[1m^[[92m   Compiling^[[0m path-clean v1.0.1
+build	Install wasm-pack	2026-10-12T16:50:22.2209050Z ^[[1m^[[92m   Compiling^[[0m strsim v0.10.0
+build	Install wasm-pack	2026-10-12T16:50:22.4329560Z ^[[1m^[[92m   Compiling^[[0m wasm-pack v0.13.1
+build	Install wasm-pack	2026-10-12T16:50:26.2011260Z ^[[1m^[[92m    Finished^[[0m `release` profile [optimized] target(s) in 48.09s
+build	Install wasm-pack	2026-10-12T16:50:26.2132812Z ^[[1m^[[92m  Installing^[[0m /home/runner/.cargo/bin/wasm-pack
+build	Install wasm-pack	2026-10-12T16:50:26.2182284Z ^[[1m^[[92m   Installed^[[0m package `wasm-pack v0.13.1` (executable `wasm-pack`)
+build	Build release engine	﻿2026-10-12T16:50:26.4135985Z ##[group]Run tools/wasm.sh --ship
+build	Build release engine	2026-10-12T16:50:26.4136189Z ^[[36;1mtools/wasm.sh --ship^[[0m
+build	Build release engine	2026-10-12T16:50:26.4190786Z shell: /usr/bin/bash -e {0}
+build	Build release engine	2026-10-12T16:50:26.4190938Z env:
+build	Build release engine	2026-10-12T16:50:26.4191083Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Build release engine	2026-10-12T16:50:26.4191265Z   CARGO_HOME: /home/runner/.cargo
+build	Build release engine	2026-10-12T16:50:26.4191407Z   CARGO_INCREMENTAL: 0
+build	Build release engine	2026-10-12T16:50:26.4191534Z   CARGO_TERM_COLOR: always
+build	Build release engine	2026-10-12T16:50:26.4191666Z   CACHE_ON_FAILURE: false
+build	Build release engine	2026-10-12T16:50:26.4191795Z ##[endgroup]
+build	Build release engine	2026-10-12T16:52:00.7092801Z [INFO]: 🎯  Checking for the Wasm target...
+build	Build release engine	2026-10-12T16:52:00.7326771Z [INFO]: 🌀  Compiling to Wasm...
+build	Build release engine	2026-10-12T16:52:00.7514681Z ^[[1m^[[92m    Finished^[[0m `release` profile [optimized] target(s) in 0.01s
+build	Build release engine	2026-10-12T16:52:00.7535340Z [INFO]: ⬇️  Installing wasm-bindgen...
+build	Build release engine	2026-10-12T16:52:03.4132108Z [INFO]: Optimizing wasm binaries with `wasm-opt`...
+build	Build release engine	2026-10-12T16:52:44.5098571Z [INFO]: Optional fields missing from Cargo.toml: 'description', 'repository', and 'license'. These are not necessary, but recommended
+build	Build release engine	2026-10-12T16:52:44.5099648Z [INFO]: ✨   Done in 43.81s
+build	Build release engine	2026-10-12T16:52:44.5100113Z [INFO]: 📦   Your wasm pkg is ready to publish at web/src/engine/pkg.
+build	Build release engine	2026-10-12T16:52:44.5101157Z [WARN]: ⚠️   There's a newer version of wasm-pack available, the new version is: 0.15.0, you are using: 0.13.1. To update, navigate to: https://rustwasm.github.io/wasm-pack/installer/
+build	Check chrome copy	﻿2026-10-12T16:52:44.5993974Z ##[group]Run node tools/copy-lint.mjs
+build	Check chrome copy	2026-10-12T16:52:44.5994180Z ^[[36;1mnode tools/copy-lint.mjs^[[0m
+build	Check chrome copy	2026-10-12T16:52:44.6048986Z shell: /usr/bin/bash -e {0}
+build	Check chrome copy	2026-10-12T16:52:44.6049133Z env:
+build	Check chrome copy	2026-10-12T16:52:44.6049274Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Check chrome copy	2026-10-12T16:52:44.6049457Z   CARGO_HOME: /home/runner/.cargo
+build	Check chrome copy	2026-10-12T16:52:44.6049597Z   CARGO_INCREMENTAL: 0
+build	Check chrome copy	2026-10-12T16:52:44.6049720Z   CARGO_TERM_COLOR: always
+build	Check chrome copy	2026-10-12T16:52:44.6049869Z   CACHE_ON_FAILURE: false
+build	Check chrome copy	2026-10-12T16:52:44.6049994Z ##[endgroup]
+build	Check chrome copy	2026-10-12T16:52:44.7076810Z copy-lint: 87 files, 2414 tagged literals, 0 violations
+build	Build site	﻿2026-10-12T16:52:44.7148514Z ##[group]Run pnpm --dir web build
+build	Build site	2026-10-12T16:52:44.7148721Z ^[[36;1mpnpm --dir web build^[[0m
+build	Build site	2026-10-12T16:52:44.7203477Z shell: /usr/bin/bash -e {0}
+build	Build site	2026-10-12T16:52:44.7203632Z env:
+build	Build site	2026-10-12T16:52:44.7203781Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Build site	2026-10-12T16:52:44.7203968Z   CARGO_HOME: /home/runner/.cargo
+build	Build site	2026-10-12T16:52:44.7204112Z   CARGO_INCREMENTAL: 0
+build	Build site	2026-10-12T16:52:44.7204246Z   CARGO_TERM_COLOR: always
+build	Build site	2026-10-12T16:52:44.7204375Z   CACHE_ON_FAILURE: false
+build	Build site	2026-10-12T16:52:44.7204505Z   IDLEVER_BASE: /idlever/
+build	Build site	2026-10-12T16:52:44.7204631Z ##[endgroup]
+build	Build site	2026-10-12T16:52:44.9133501Z 
+build	Build site	2026-10-12T16:52:44.9134190Z > web@0.0.0 build /home/runner/work/idlever/idlever/web
+build	Build site	2026-10-12T16:52:44.9134564Z > tsc && vite build
+build	Build site	2026-10-12T16:52:44.9134690Z 
+build	Build site	2026-10-12T16:52:49.6692921Z ^[[36mvite v8.3.0 ^[[32mbuilding client environment for production...^[[36m^[[39m
+build	Build site	2026-10-12T16:52:49.6757590Z transforming...
+build	Build site	2026-10-12T16:52:49.9181403Z ✓ 157 modules transformed.
+build	Build site	2026-10-12T16:52:50.0297757Z rendering chunks...
+build	Build site	2026-10-12T16:52:50.1888512Z computing gzip size...
+build	Build site	2026-10-12T16:52:50.2449958Z dist/index.html                                2.06 kB │ gzip:     0.69 kB
+build	Build site	2026-10-12T16:52:50.2450428Z dist/assets/worker-BMhfXhD4.js                30.58 kB
+build	Build site	2026-10-12T16:52:50.2450784Z dist/assets/idlever_wasm_bg-DbKQENM8.wasm  4,876.07 kB │ gzip: 1,780.60 kB
+build	Build site	2026-10-12T16:52:50.2451163Z dist/assets/index-BZw_WaUj.css               274.08 kB │ gzip:    59.38 kB
+build	Build site	2026-10-12T16:52:50.2451670Z dist/assets/render-Bw0HsWeh.js               131.90 kB │ gzip:    47.97 kB
+build	Build site	2026-10-12T16:52:50.2452170Z dist/assets/index-RlwBEsZd.js              1,317.17 kB │ gzip:   408.00 kB
+build	Build site	2026-10-12T16:52:50.2452402Z 
+build	Build site	2026-10-12T16:52:50.2457195Z ^[[33m[plugin builtin:vite-reporter] 
+build	Build site	2026-10-12T16:52:50.2457768Z (!) Some chunks are larger than 900 kB after minification. Consider:
+build	Build site	2026-10-12T16:52:50.2458119Z - Using dynamic import() to code-split the application
+build	Build site	2026-10-12T16:52:50.2458567Z - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+build	Build site	2026-10-12T16:52:50.2459069Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.^[[39m
+build	Build site	2026-10-12T16:52:50.2460505Z ^[[32m✓ built in 575ms^[[39m
+build	Run actions/upload-pages-artifact@v4	﻿2026-10-12T16:52:50.2824646Z ##[group]Run actions/upload-pages-artifact@v4
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2824835Z with:
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2824944Z   path: web/dist
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825058Z   name: github-pages
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825174Z   retention-days: 1
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825285Z env:
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825415Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825589Z   CARGO_HOME: /home/runner/.cargo
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825727Z   CARGO_INCREMENTAL: 0
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825849Z   CARGO_TERM_COLOR: always
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2825980Z   CACHE_ON_FAILURE: false
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2826121Z ##[endgroup]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2830508Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2842631Z ##[group]Run echo ::group::Archive artifact
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2842833Z ^[[36;1mecho ::group::Archive artifact^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2842977Z ^[[36;1mtar \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843111Z ^[[36;1m  --dereference --hard-dereference \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843279Z ^[[36;1m  --directory "$INPUT_PATH" \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843470Z ^[[36;1m  -cvf "$RUNNER_TEMP/artifact.tar" \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843628Z ^[[36;1m  --exclude=.git \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843765Z ^[[36;1m  --exclude=.github \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2843901Z ^[[36;1m  --exclude=".[^/]*" \^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2844029Z ^[[36;1m  .^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2844142Z ^[[36;1mecho ::endgroup::^[[0m
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2864844Z shell: /usr/bin/sh -e {0}
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2864986Z env:
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865123Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865317Z   CARGO_HOME: /home/runner/.cargo
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865454Z   CARGO_INCREMENTAL: 0
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865577Z   CARGO_TERM_COLOR: always
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865705Z   CACHE_ON_FAILURE: false
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865829Z   INPUT_PATH: web/dist
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2865947Z ##[endgroup]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2899760Z ##[group]Archive artifact
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2911819Z ./
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2911987Z ./art/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2912245Z ./art/idlever-wordmark-v1.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2918787Z ./art/atlas.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2937180Z ./art/title.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2955745Z ./art/atlas.json
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2956237Z ./art/title-wordmark-v1.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2958526Z ./art/landscape/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2958734Z ./art/landscape/water.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2958962Z ./art/landscape/grass_0.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2959189Z ./art/landscape/dirt_0.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2959457Z ./art/landscape/bank.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2959715Z ./art/landscape/grass_3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2960193Z ./art/landscape/plaza_0.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2960448Z ./art/landscape/undergrowth.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2960692Z ./art/landscape/boulders.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2960925Z ./art/landscape/pines.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2961122Z ./favicon.svg
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2961316Z ./manifest.webmanifest
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2961519Z ./assets/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2961712Z ./assets/index-BZw_WaUj.css
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2963480Z ./assets/render-Bw0HsWeh.js
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2964533Z ./assets/idlever_wasm_bg-DbKQENM8.wasm
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2996498Z ./assets/worker-BMhfXhD4.js
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.2996745Z ./assets/index-RlwBEsZd.js
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3005323Z ./ui/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3005817Z ./ui/icons/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3006279Z ./ui/icons/pkg_light_hands.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3006580Z ./ui/icons/v_corridor.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3006917Z ./ui/icons/it_leather.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3007193Z ./ui/icons/ctl_arrow.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3007708Z ./ui/icons/pkg_steady.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3007999Z ./ui/icons/node_herald.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3008338Z ./ui/icons/it_chalk.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3008601Z ./ui/icons/gold.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3008858Z ./ui/icons/it_sword.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3009120Z ./ui/icons/loadout.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3009398Z ./ui/icons/pkg_hunter.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3009757Z ./ui/icons/pkg_skittish_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3010113Z ./ui/icons/pkg_hunter_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3010742Z ./ui/icons/it_salt.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3011011Z ./ui/icons/node_porter.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3011295Z ./ui/icons/node_clerk.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3011591Z ./ui/icons/pkg_iron_gut_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3011874Z ./ui/icons/it_mail.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3012153Z ./ui/icons/pkg_guarded_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3012377Z ./ui/icons/alert.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3012607Z ./ui/icons/pkg_iron_gut_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3012840Z ./ui/icons/it_short_gun.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3013058Z ./ui/icons/depth.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3013273Z ./ui/icons/pkg_unbowed_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3013508Z ./ui/icons/v_shadow.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3013723Z ./ui/icons/v_descend.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3013945Z ./ui/icons/style_sentinel.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3014172Z ./ui/icons/settings.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3014373Z ./ui/icons/bail.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3014572Z ./ui/icons/it_plate.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3014784Z ./ui/icons/ctl_release.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3015008Z ./ui/icons/node_keeper.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3015255Z ./ui/icons/node_apprentice.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3015478Z ./ui/icons/mark.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3015705Z ./ui/icons/pkg_light_hands_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3015945Z ./ui/icons/it_lantern.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3016159Z ./ui/icons/it_scroll.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3016396Z ./ui/icons/pkg_iron_gut_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3016629Z ./ui/icons/pkg_steady_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3016862Z ./ui/icons/pkg_unbowed_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3017110Z ./ui/icons/pkg_skittish_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3017445Z ./ui/icons/pkg_unbowed_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3017673Z ./ui/icons/pause.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3017888Z ./ui/icons/pkg_guarded_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3018118Z ./ui/icons/pkg_bold_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3018333Z ./ui/icons/ctl_wait.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3018587Z ./ui/icons/pkg_unbowed_v4.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3018840Z ./ui/icons/node_quartermaster.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3019081Z ./ui/icons/v_gun_reload.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3019297Z ./ui/icons/morgue.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3019517Z ./ui/icons/v_gun_smoke.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3019733Z ./ui/icons/v_explore.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3019950Z ./ui/icons/v_gun_burst.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3020197Z ./ui/icons/pkg_light_hands_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3020430Z ./ui/icons/v_attack.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3020645Z ./ui/icons/pkg_hunter_v4.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3020881Z ./ui/icons/pkg_guarded_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3021107Z ./ui/icons/node_guide.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3021348Z ./ui/icons/pkg_skittish_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3021573Z ./ui/icons/v_shoot.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3021973Z ./ui/icons/pkg_light_hands_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3022213Z ./ui/icons/pkg_skittish.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3022439Z ./ui/icons/node_scout.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3022648Z ./ui/icons/v_drink.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3022852Z ./ui/icons/v_magic.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3023069Z ./ui/icons/pkg_hunter_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3023286Z ./ui/icons/play.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3023480Z ./ui/icons/edit.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3023709Z ./ui/icons/node_kennel_hand.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3023966Z ./ui/icons/pkg_light_hands_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3024200Z ./ui/icons/ledger.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3024403Z ./ui/icons/trace.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3024604Z ./ui/icons/fights.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3024811Z ./ui/icons/it_leash.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3025024Z ./ui/icons/v_retreat.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3025263Z ./ui/icons/style_hexbinder.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3025499Z ./ui/icons/pkg_hunter_v3.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3025746Z ./ui/icons/pkg_skittish_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3025984Z ./ui/icons/pkg_steady_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3026215Z ./ui/icons/pkg_hunter_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3026451Z ./ui/icons/pkg_guarded_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3026673Z ./ui/icons/renown.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3026878Z ./ui/icons/pkg_bold.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3027090Z ./ui/icons/it_potion.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3027408Z ./ui/icons/v_shield.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3027611Z ./ui/icons/party.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3027817Z ./ui/icons/it_bow.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3028175Z ./ui/icons/pkg_bold_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3028401Z ./ui/icons/pkg_steady_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3028628Z ./ui/icons/chronicle.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3028841Z ./ui/icons/ctl_hand.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3029047Z ./ui/icons/it_mace.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3029287Z ./ui/icons/node_drillmaster.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3029519Z ./ui/icons/it_long_gun.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3029765Z ./ui/icons/pkg_light_hands_v4.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3030002Z ./ui/icons/it_scale.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3030221Z ./ui/icons/pkg_unbowed_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3030453Z ./ui/icons/v_gun_aim.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3030668Z ./ui/icons/it_spear.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3030873Z ./ui/icons/forge.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3031073Z ./ui/icons/it_axe.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3031278Z ./ui/icons/it_dagger.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3031495Z ./ui/icons/pkg_guarded.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3031742Z ./ui/icons/v_gun_fast_reload.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3031973Z ./ui/icons/unlocks.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3032187Z ./ui/icons/pkg_bold_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3032404Z ./ui/icons/v_throw.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3032611Z ./ui/icons/it_bones.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3032814Z ./ui/icons/vault.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3033018Z ./ui/icons/it_trap.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3033335Z ./ui/icons/pkg_iron_gut_v2.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3033586Z ./ui/icons/pkg_bold_v7.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3033810Z ./ui/icons/v_gun_finish.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3034033Z ./ui/icons/v_rest.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3034328Z ./ui/icons/fast.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3034543Z ./ui/icons/camp.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3034795Z ./ui/icons/pkg_guarded_v4.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3035157Z ./ui/icons/v_read.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3035394Z ./ui/icons/node_armourer.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3035702Z ./ui/icons/pkg_iron_gut.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3035921Z ./ui/icons/it_bell.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3036151Z ./ui/icons/it_mirror_shard.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3036373Z ./ui/icons/skip.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3036579Z ./ui/icons/pkg_steady_v6.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3036815Z ./ui/icons/pkg_unbowed.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3037176Z ./ui/deco/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3037453Z ./ui/deco/brazier.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3037657Z ./ui/deco/pillar.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3038287Z ./ui/deco/house_plot_v2.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3038595Z ./ui/deco/candle.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3038890Z ./ui/backdrops/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3039090Z ./ui/backdrops/death.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3039731Z ./ui/backdrops/report.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3040644Z ./ui/frames/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3040769Z ./ui/frames/panel.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3041746Z ./ui/frames/seal.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3042127Z ./ui/frames/tile_pressed.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3042417Z ./ui/frames/stud.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3042696Z ./ui/frames/banner.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3044110Z ./ui/frames/tablet_card.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3044593Z ./ui/frames/gem.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3045148Z ./ui/frames/plaque_roster.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3045669Z ./ui/frames/gauge.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3045897Z ./ui/frames/button.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3046594Z ./ui/frames/scroll.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3049490Z ./ui/frames/console.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3050592Z ./ui/frames/plaque_minimap.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3050999Z ./ui/frames/well.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3051423Z ./ui/frames/tablet.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3051957Z ./ui/frames/gem_red.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3052469Z ./ui/frames/tile.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3052827Z ./ui/frames/bar.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3053405Z ./ui/fx/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3053588Z ./ui/fx/shard_0.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3053817Z ./ui/fx/shield_px.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3054018Z ./ui/fx/shard_2.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3054214Z ./ui/fx/shard_1.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3054455Z ./ui/fx/shard_2_px.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3054656Z ./ui/fx/shard_3_px.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3054860Z ./ui/fx/shard_1_px.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3055059Z ./ui/fx/shard_0_px.png
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3055257Z ./ui/fx/shard_3.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3055450Z ./ui/fx/shield.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3055790Z ./ui/foes/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3055971Z ./ui/foes/jackal.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3056332Z ./ui/foes/pink_jelly.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3056547Z ./ui/foes/skeleton.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3056748Z ./ui/foes/smith.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3056942Z ./ui/foes/siren.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3074010Z ./ui/foes/goblin_archer.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3074256Z ./ui/foes/goblin_warlord.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3074480Z ./ui/foes/goblin_captain.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3074875Z ./ui/foes/bloat_mother.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3075386Z ./ui/foes/spectral_hound.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3075655Z ./ui/foes/mirror_shade.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3075817Z ./ui/foes/sentinel.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3075964Z ./ui/foes/lurker_queen.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3076106Z ./ui/foes/goblin.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3076259Z ./ui/foes/captive.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3076462Z ./ui/foes/acolyte.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3076671Z ./ui/foes/foundry_master.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3076898Z ./ui/foes/cave_troll.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3077107Z ./ui/foes/rat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3077442Z ./ui/foes/echo.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3077644Z ./ui/foes/bell_sentinel.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3077861Z ./ui/foes/wraith.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3078065Z ./ui/foes/slag_crawler.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3078290Z ./ui/foes/spectral_blade.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3078518Z ./ui/foes/deep_eel.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3078678Z ./ui/foes/eel.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3078860Z ./ui/foes/lich.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3079055Z ./ui/foes/ghoul.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3079255Z ./ui/foes/bloat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3079474Z ./ui/foes/ogre.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3079677Z ./ui/foes/monkey.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3079855Z ./ui/foes/lurker.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3080210Z ./ui/foes/mirror_king.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3080429Z ./ui/foes/iron_golem.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3080666Z ./ui/foes/goblin_conjurer.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3080885Z ./ui/foes/warden.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3081082Z ./ui/foes/forge_imp.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3081267Z ./ui/quest/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3081444Z ./ui/quest/slot.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3081643Z ./ui/quest/title.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3081845Z ./ui/quest/waystone.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082062Z ./ui/quest/route.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082188Z ./ui/quest/row.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082311Z ./ui/quest/card.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082439Z ./ui/quest/heir.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082563Z ./ui/quest/verb.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082683Z ./ui/portraits/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3082842Z ./ui/portraits/boss_goblin_warlord.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3083034Z ./ui/portraits/hero_fighter_cat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3083376Z ./ui/portraits/boss_goblin_captain.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3083552Z ./ui/portraits/hero_ranger.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3083723Z ./ui/portraits/hero_fighter_male.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3083897Z ./ui/portraits/hero_caster_cat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084067Z ./ui/portraits/hero_ranger_male.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084244Z ./ui/portraits/hero_ranger_cat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084416Z ./ui/portraits/hero_rogue_female.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084576Z ./ui/portraits/captive.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084745Z ./ui/portraits/hero_fighter.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3084920Z ./ui/portraits/hero_ranger_female.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085095Z ./ui/portraits/hero_rogue_cat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085268Z ./ui/portraits/hero_gunner_male.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085437Z ./ui/portraits/pet_goblin.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085602Z ./ui/portraits/hero_rogue_male.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085767Z ./ui/portraits/hero_caster_male.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3085934Z ./ui/portraits/hero_gunner.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086100Z ./ui/portraits/pet_monkey.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086271Z ./ui/portraits/hero_fighter_female.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086441Z ./ui/portraits/pet_jackal.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086590Z ./ui/portraits/pet_rat.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086747Z ./ui/portraits/hero_rogue.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3086904Z ./ui/portraits/hero_caster.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087071Z ./ui/portraits/hero_caster_female.webp
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087218Z ./index.html
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087637Z ./icons.svg
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087749Z ./sw.js
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087853Z ./fonts/
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3087975Z ./fonts/fira-600.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088111Z ./fonts/OFL-Fira.txt
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088241Z ./fonts/OFL-Grenze.txt
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088378Z ./fonts/fira-xc-400.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088519Z ./fonts/grenze.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088648Z ./fonts/fira-400.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088783Z ./fonts/fira-c-600.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3088922Z ./fonts/fira-xc-500.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3089061Z ./fonts/fira-xc-700.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3089201Z ./fonts/fira-xc-600.woff2
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3089537Z ##[endgroup]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3093296Z ##[end-action id=__actions_upload-pages-artifact.__run;outcome=success;conclusion=success;duration_ms=26]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3096079Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_2]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3098732Z ##[end-action id=__actions_upload-pages-artifact.__run_2;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3100060Z ##[start-action display=Archive artifact;id=__actions_upload-pages-artifact.__run_3]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3101800Z ##[end-action id=__actions_upload-pages-artifact.__run_3;outcome=skipped;conclusion=skipped;duration_ms=0]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3102817Z ##[start-action display=Upload artifact;id=__actions_upload-pages-artifact.upload-artifact]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3126414Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3126640Z with:
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3126763Z   name: github-pages
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3126906Z   path: /home/runner/work/_temp/artifact.tar
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127069Z   retention-days: 1
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127197Z   if-no-files-found: error
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127536Z   compression-level: 6
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127663Z   overwrite: false
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127787Z   include-hidden-files: false
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3127923Z env:
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128062Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128247Z   CARGO_HOME: /home/runner/.cargo
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128389Z   CARGO_INCREMENTAL: 0
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128516Z   CARGO_TERM_COLOR: always
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128648Z   CACHE_ON_FAILURE: false
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.3128775Z ##[endgroup]
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.4329369Z (node:25486) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.4329877Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.4360874Z With the provided path, there will be 1 file uploaded
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.4364512Z Artifact name is valid!
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.4364931Z Root directory input is valid!
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.7191121Z Beginning upload of artifact content to blob storage
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:50.9526978Z (node:25486) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:51.5503855Z Uploaded bytes 8388608
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:51.7373529Z Uploaded bytes 13903887
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:51.7755579Z Finished uploading artifact content to blob storage!
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:51.7756283Z SHA256 digest of uploaded artifact zip is 00a815249cc7f417b115056f764269cd9edcab8295f13456a7fd0f321097c36d
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:51.7757096Z Finalizing artifact upload
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:52.0188749Z Artifact github-pages.zip successfully finalized. Artifact ID 11761201439
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:52.0189490Z Artifact github-pages has been successfully uploaded! Final size is 13903887 bytes. Artifact ID is 11761201439
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:52.0194953Z Artifact download URL: https://github.com/gyng/idlever/actions/runs/38278721510/artifacts/11761201439
+build	Run actions/upload-pages-artifact@v4	2026-10-12T16:52:52.0300629Z ##[end-action id=__actions_upload-pages-artifact.upload-artifact;outcome=success;conclusion=success;duration_ms=1719]
+build	Post Run Swatinem/rust-cache@v2	﻿2026-10-12T16:52:52.0356635Z Post job cleanup.
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1164581Z ##[group]Cache Configuration
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1165183Z Cache Provider:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1165393Z     github
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1165586Z Workspaces:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1165852Z     /home/runner/work/idlever/idlever
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1166154Z Cache Paths:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1166385Z     /home/runner/.cargo/bin
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1166652Z     /home/runner/.cargo/.crates.toml
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1166921Z     /home/runner/.cargo/.crates2.json
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1167192Z     /home/runner/.cargo/registry
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1167586Z     /home/runner/.cargo/git
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1167849Z     /home/runner/work/idlever/idlever/target
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1168111Z Restore Key:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1168335Z     v0-rust-build-Linux-x64-c7b3ef7d
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1168576Z Cache Key:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1168814Z     v0-rust-build-Linux-x64-c7b3ef7d-a7e51f19
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1169080Z .. Prefix:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1169279Z   - v0-rust-build-Linux-x64
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1169574Z .. Environment considered:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1169822Z   - Rust Versions:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1170194Z     - 1.99.0 x86_64-unknown-linux-gnu b940084d7eb6a299eb4bfeb8e34901bc051e7ac4
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1170535Z   - CARGO_HOME
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1170721Z   - CARGO_INCREMENTAL
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1170925Z   - CARGO_TERM_COLOR
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1171158Z .. Lockfiles considered:
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1171441Z   - /home/runner/work/idlever/idlever/Cargo.lock
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1171835Z   - /home/runner/work/idlever/idlever/crates/idlever-core/Cargo.toml
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1172293Z   - /home/runner/work/idlever/idlever/crates/idlever-wasm/Cargo.toml
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1172765Z ##[endgroup]
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1172869Z 
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.1469500Z ... Cleaning /home/runner/work/idlever/idlever/target ...
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.3312728Z ... Cleaning cargo registry (cache-all-crates: false) ...
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.8913021Z ... Cleaning cargo/bin ...
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.8936249Z ... Cleaning cargo git cache ...
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.8939027Z ... Saving cache ...
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:52.9058449Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/idlever/idlever --files-from manifest.txt --use-compress-program zstdmt
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:54.5104590Z Sent 50462720 of 73135604 (69.0%), 48.1 MBs/sec
+build	Post Run Swatinem/rust-cache@v2	2026-10-12T16:52:55.2858898Z Sent 73135604 of 73135604 (100.0%), 39.3 MBs/sec
+build	Post Run pnpm/action-setup@v4	﻿2026-10-12T16:52:55.5286486Z Post job cleanup.
+build	Post Run pnpm/action-setup@v4	2026-10-12T16:52:55.6236126Z Pruning is unnecessary.
+build	Post Run actions/setup-node@v4	﻿2026-10-12T16:52:55.6360446Z Post job cleanup.
+build	Post Run actions/setup-node@v4	2026-10-12T16:52:55.7207779Z (node:25532) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Post Run actions/setup-node@v4	2026-10-12T16:52:55.7209081Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Post Run actions/checkout@v4	﻿2026-10-12T16:52:55.7385805Z Post job cleanup.
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.7990146Z [command]/usr/bin/git version
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8024958Z git version 2.55.0
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8050721Z Temporarily overriding HOME='/home/runner/work/_temp/05329a1c-9807-40a9-b179-2dc705ce9a76' before making global git config changes
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8051584Z Adding repository directory to the temporary git global config as a safe directory
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8054543Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/idlever/idlever
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8088458Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8121746Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8332222Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8354569Z http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8363004Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8396490Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8604112Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+build	Post Run actions/checkout@v4	2026-10-12T16:52:55.8638305Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+build	Complete job	﻿2026-10-12T16:52:55.8954176Z Cleaning up orphan processes
+build	Complete job	2026-10-12T16:52:55.9171038Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Set up job	﻿2026-10-12T16:53:03.3141805Z Current runner version: '2.337.0'
+deploy	Set up job	2026-10-12T16:53:03.3171307Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-10-12T16:53:03.3172360Z Hosted Compute Agent
+deploy	Set up job	2026-10-12T16:53:03.3173080Z Version: 20261002.596
+deploy	Set up job	2026-10-12T16:53:03.3173837Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+deploy	Set up job	2026-10-12T16:53:03.3174782Z Build Date: 2026-10-02T22:28:27Z
+deploy	Set up job	2026-10-12T16:53:03.3175654Z Worker ID: {e02a7012-8fa7-4a7d-986f-7b8c39382fdc}
+deploy	Set up job	2026-10-12T16:53:03.3176633Z Region: eastus
+deploy	Set up job	2026-10-12T16:53:03.3177292Z Cloud: Azure
+deploy	Set up job	2026-10-12T16:53:03.3178077Z ##[endgroup]
+deploy	Set up job	2026-10-12T16:53:03.3180196Z ##[group]Operating System
+deploy	Set up job	2026-10-12T16:53:03.3181011Z Ubuntu
+deploy	Set up job	2026-10-12T16:53:03.3181692Z 24.04.5
+deploy	Set up job	2026-10-12T16:53:03.3182315Z LTS
+deploy	Set up job	2026-10-12T16:53:03.3182907Z ##[endgroup]
+deploy	Set up job	2026-10-12T16:53:03.3183644Z ##[group]Runner Image
+deploy	Set up job	2026-10-12T16:53:03.3184455Z Image: ubuntu-24.04
+deploy	Set up job	2026-10-12T16:53:03.3185202Z Version: 20261004.327.1
+deploy	Set up job	2026-10-12T16:53:03.3186516Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-10-12T16:53:03.3188890Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+deploy	Set up job	2026-10-12T16:53:03.3190207Z ##[endgroup]
+deploy	Set up job	2026-10-12T16:53:03.3191597Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-10-12T16:53:03.3193756Z Metadata: read
+deploy	Set up job	2026-10-12T16:53:03.3194503Z Pages: write
+deploy	Set up job	2026-10-12T16:53:03.3195213Z ##[endgroup]
+deploy	Set up job	2026-10-12T16:53:03.3197685Z Secret source: Actions
+deploy	Set up job	2026-10-12T16:53:03.3198988Z Cache mode: write
+deploy	Set up job	2026-10-12T16:53:03.3199915Z Prepare workflow directory
+deploy	Set up job	2026-10-12T16:53:03.3569187Z Prepare all required actions
+deploy	Set up job	2026-10-12T16:53:03.3624066Z Getting action download info
+deploy	Set up job	2026-10-12T16:53:03.5435498Z Download action repository 'actions/deploy-pages@v4' (SHA:d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e)
+deploy	Set up job	2026-10-12T16:53:04.5043917Z Complete job name: deploy
+deploy	Deploy site	﻿2026-10-12T16:53:04.6029509Z ##[group]Run actions/deploy-pages@v4
+deploy	Deploy site	2026-10-12T16:53:04.6030772Z with:
+deploy	Deploy site	2026-10-12T16:53:04.6038290Z   token: ***
+deploy	Deploy site	2026-10-12T16:53:04.6038939Z   timeout: 600000
+deploy	Deploy site	2026-10-12T16:53:04.6039622Z   error_count: 10
+deploy	Deploy site	2026-10-12T16:53:04.6040285Z   reporting_interval: 5000
+deploy	Deploy site	2026-10-12T16:53:04.6041049Z   artifact_name: github-pages
+deploy	Deploy site	2026-10-12T16:53:04.6041818Z   preview: false
+deploy	Deploy site	2026-10-12T16:53:04.6042670Z ##[endgroup]
+deploy	Deploy site	2026-10-12T16:53:04.7564954Z (node:2003) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Deploy site	2026-10-12T16:53:04.7567353Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Deploy site	2026-10-12T16:53:04.8356617Z Fetching artifact metadata for "github-pages" in this workflow run
+deploy	Deploy site	2026-10-12T16:53:04.9066030Z Found 1 artifact(s)
+deploy	Deploy site	2026-10-12T16:53:04.9076506Z Creating Pages deployment with payload:
+deploy	Deploy site	2026-10-12T16:53:04.9077950Z {
+deploy	Deploy site	2026-10-12T16:53:04.9078802Z 	"artifact_id": 11761201439,
+deploy	Deploy site	2026-10-12T16:53:04.9080209Z 	"pages_build_version": "79032ef5501567e30dd4ffe092b87692c82028e8",
+deploy	Deploy site	2026-10-12T16:53:04.9172843Z 	"oidc_token": "***"
+deploy	Deploy site	2026-10-12T16:53:04.9174080Z }
+deploy	Deploy site	2026-10-12T16:53:05.3758826Z Created deployment for 79032ef5501567e30dd4ffe092b87692c82028e8, ID: 79032ef5501567e30dd4ffe092b87692c82028e8
+deploy	Deploy site	2026-10-12T16:53:10.3778242Z Getting Pages deployment status...
+deploy	Deploy site	2026-10-12T16:53:10.5480937Z Current status: updating_pages
+deploy	Deploy site	2026-10-12T16:53:15.5492953Z Getting Pages deployment status...
+deploy	Deploy site	2026-10-12T16:53:15.6685721Z Reported success!
+deploy	Complete job	﻿2026-10-12T16:53:15.6948436Z Evaluate and set environment url
+deploy	Complete job	2026-10-12T16:53:15.6953133Z Evaluated environment url: https://gyng.github.io/idlever/
+deploy	Complete job	2026-10-12T16:53:15.6954183Z Cleaning up orphan processes
+deploy	Complete job	2026-10-12T16:53:15.7214018Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/deploy-pages@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

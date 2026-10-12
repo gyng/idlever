@@ -32,15 +32,19 @@ Local quick checks, Clippy, shipping WASM,17 dayplayer tests and27 tooling tests
 pass (6 Rust tests ignored;1 optional tooling test skipped). Real-WASM/PWA and
 private GPU smoke pass the new title, fresh town and direct saved-game reload.
 First full client run124/125: watch-live-edge timing failed during native-test
-overlap; unchanged isolated rerun passes. Full repeat is in progress. Preserve
-both outcomes; the timing failure's cause is unproven. Alpha.2 deployment and
-live proof are pending. See docs/CUT190_IDLEVER_RENAME.md and docs/evidence/cut190/.
+overlap; unchanged isolated rerun passes. Full repeat passes125/125 in433.2s. Preserve
+both outcomes; the timing failure's cause is unproven. Alpha.2 is published at
+source `79032ef5`. Release workflow38278721510 passed build and deploy.
+Live site: https://gyng.github.io/idlever/. Twelve live files match the exact
+release artifact. Live real-WASM/PWA and private D3D12/NVIDIA smoke pass fresh
+house/hero, direct saved-game reload and offline reload, with no page errors or
+HTTP failures. Title screenshots at320/400/1440px are archived with live proof. See docs/CUT190_IDLEVER_RENAME.md and docs/evidence/cut190/.
 
 ## First alpha and tooling — historical checkpoint
 
 The first alpha was released under the original Riddle name at `/riddle/`.
 Its archived evidence records that source, branding and URL. Current public
-links use the renamed repository; the new brand will ship as alpha.2.
+links use the renamed repository; the new brand ships as alpha.2.
 
 `v0.1.0-alpha.1` was published as a prerelease from `29752da9`, following the
 owner's explicit release request. Pages now deploys published versioned

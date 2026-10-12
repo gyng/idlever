@@ -9,5 +9,19 @@
   "scope": "branding and namespace rename; gameplay only changes display header",
   "historicalFixtures": "all old crate fixture and preset bytes preserved",
   "fullBalanceAudit": "not rerun; no balance changes; prior alpha evidence remains historical",
-  "watchControlTest": "stale locator-only mock updated to exercise the existing atomic browser API; runtime helper unchanged"
+  "watchControlTest": "stale locator-only mock updated to exercise the existing atomic browser API; runtime helper unchanged",
+  "releaseCommit": "79032ef5501567e30dd4ffe092b87692c82028e8",
+  "clientFull": {
+    "first": "124/125 in392.6s; one timing failure",
+    "isolated": "watch-live-edge10 checks pass in26.7s",
+    "repeat": "125/125 in433.2s; no native-test overlap",
+    "causation": "unproven; limits unchanged"
+  },
+  "deployment": {
+    "workflow": 38278721510,
+    "conclusion": "success",
+    "liveUrl": "https://gyng.github.io/idlever/",
+    "matchedReleaseFiles": 12,
+    "liveBrowser": "fresh town, hero, saved-game reload, offline PWA; no errors; D3D12/NVIDIA"
+  }
 }
