@@ -14,6 +14,24 @@ Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
    the initial exclusive combat-path proposal.
 2. Steady progression with fewer simultaneous decisions.
 3. Home-base graphical polish, including basic shadows, in the original style.
+4. Queued after the checkpoint: dedicated icons for all 30 class skills and
+   improved combat animations/FX. This request updates the queue only; the
+   broader implementation/rating goal remains paused.
+
+## New visual queue — not started
+
+See [WORK_QUEUE.md](WORK_QUEUE.md), current owner additions. First deliver six
+Fighter skill icons, then complete all30 skill IDs across five classes. Replace
+generic tactic icons with readable skill-specific art in the tree/reviews,
+preserving the original style, 24/32/48px readability and primitive fallbacks.
+
+Then audit and improve class combat animations/FX, starting with a Fighter fight.
+Use actual attack/impact/heal/status and replay events; distinguish hit/miss and
+active/passive effects honestly. Cover all five classes, pause/seek/speed,
+multiple actors, reduced motion and effects full/low/off. Preserve telegraph,
+target and HP readability; measure private-GPU costs and keep GL/Canvas fallback.
+Post screenshots/clips at milestones. No gameplay, unlock, RNG or save changes
+for this visual pass. No assets/effects have been created by this queue update.
 
 ## Implemented queue
 

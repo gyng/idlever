@@ -1,4 +1,28 @@
-# Content and refinement queue — 2026-10-11
+# Content and refinement queue — 2026-10-12
+
+## Current checkpoint and owner additions
+
+Current source checkpoint: `74e99a1` (Cut185 cumulative skills/home shadows,
+Cut186 button polish). The broader fun goal remains paused. Queue updates do
+not authorize starting another implementation or rating round while paused.
+Cut185 has 822 passing Rust tests and focused UI/effect checks; its full client
+run failed 123/125. Both failed groups passed unchanged in isolation, which does
+not clear full acceptance. Shipping/balance validation and verified fun remain
+pending. Read [HANDOFF.md](HANDOFF.md) for resume order and exact evidence.
+
+The owner now requests these two visual deliveries, in order, on resume:
+
+| Order | Work | Concrete first delivery | Acceptance |
+|---|---|---|---|
+| 1 | Dedicated class-skill icons | Give all 30 cumulative skill nodes their own readable icon, rather than borrowing the first tactic's generic verb icon. Begin with the six Fighter nodes, then complete Rogue, Ranger, Caster and Gunner. Reuse the approved ink/wash palette and class motifs; integrate tree, learning review and any shared skill-detail surfaces. | 30/30 stable skill IDs covered in the manifest and UI mapping; primitive fallback for every icon. Compare at 24/32/48px on parchment and dark UI, including learned, available and locked states. Phone/desktop screenshots; no altered unlocks, costs, labels or save data. |
+| 2 | Combat animations and FX | Audit existing combat FX first. Improve weak class distinctions with actual action/impact animations: bash/cleave, vanish/backstab/smoke, arrows/marks, bolts/wards/nova, muzzle flash/reload. Start with one Fighter fight and its relevant learned skills, then cover all five classes and enemy reactions. | Effects follow genuine action, hit/miss, damage, healing or status events and actual replay state; never imply an unused skill fired or reveal unseen enemies. Check pause, seek, replay, speed changes, multiple combatants, reduced motion and full/low/off settings. Preserve readable telegraphs, targets, HP and logs. Private-GPU before/after screenshots or short clips, GL/Canvas fallback and measured frame costs; gameplay/events/RNG and saved state unchanged. |
+
+Write a scoped cut before execution. Passive skill bonuses need trustworthy
+event/status attribution before receiving an activation effect. These are
+queued owner requests, not implemented assets, accepted balance or rater evidence.
+Do not deploy. Earlier queue sections below are retained as historical context;
+the current handoff and these owner additions take precedence over their old
+candidate and priority claims.
 
 Owner requested more content and refinement work. This is the prospective queue; older NEXT_WORK entries are history. Cuts137–139 menu art/title/Credits removal and rooted grass wind are integrated, with menu81/81 and private GPU evidence. Two d34605e ratings are closed: diagnostic human-only75.2 each/all16-axis alpha1; A4h return was short8seconds. That pair cannot certify>=80, and does not rate new polish. Raw evidence remains immutable.
 
