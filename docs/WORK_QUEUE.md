@@ -12,7 +12,9 @@ The exhaustive audit and verified fun>=80 remain unfinished. Read
 2026-10-13 feedback below takes priority on resume. It supersedes the earlier
 proposal to automatically keep useful drops and salvage only the rest: the
 preferred direction is automatic conversion of found loot into currency, with
-starting gear prepared at the forge and custom starting kits unlocked later.
+starting gear prepared at the forge and deeper custom starting kits unlocked
+gradually. The forge becomes a main place for meaningful build choices as loot
+handling becomes automatic.
 No new feature, balance change, tutorial, asset or release is delivered by this
 queue update. Backwards compatibility is not required.
 
@@ -20,7 +22,7 @@ queue update. Backwards compatibility is not required.
 
 | Order | Work | Intended result | First checkpoint / acceptance |
 |---|---|---|---|
-| 1 | Automatic loot settlement; simplify Keep and Storehouse | Keep feels like a chore. Automatically convert found loot into the existing currency instead of recurring keep/storage decisions. Use that currency at the forge for starting gear; unlock custom starting kits later. Reassess whether Storehouse has a useful remaining role, and remove or merge it if it only supports the old loot workflow. | Inventory the current keep, cage, salvage, storage, forge and starting-kit paths. Write one economy contract covering found versus brought/equipped gear, consumables, currency values, forge access and optional kit choices. Routine runs require zero keep decisions and no mandatory Storehouse visit. No second salvage currency, silent equipment replacement, duplicate settlement or manual bookkeeping. Rust owns settlement; verify whole/sliced/reloaded and multi-hero outcomes. |
+| 1 | Automatic loot settlement; simplify Keep and Storehouse | Keep feels like a chore. Automatically convert found loot into the existing currency instead of recurring keep/storage decisions. Use that currency at the forge for starting gear; gradually unlock deeper custom starting kits with meaningful build tradeoffs. See the forge-depth brief below. Reassess whether Storehouse has a useful remaining role, and remove or merge it if it only supports the old loot workflow. | Inventory the current keep, cage, salvage, storage, forge and starting-kit paths. Write one economy contract covering found versus brought/equipped gear, consumables, currency values, forge access and optional kit choices. Routine runs require zero keep decisions and no mandatory Storehouse visit. No second salvage currency, silent equipment replacement, duplicate settlement or manual bookkeeping. Rust owns settlement; verify whole/sliced/reloaded and multi-hero outcomes. |
 | 2 | A simpler banking model | Make currency progression understandable through one consistent rule for what is earned, secured and lost. Reduce competing bank/return/checkpoint percentages and overlapping destinations; explain the actual rule through the same totals shown in town and reports. | Compare the current model with a simpler proposal before tuning. Show worked first-run, retreat, death and offline examples with reconciled currency totals. Explicitly amend affected banking/exit contracts and gates if the model changes; do not layer another wallet or retention rule on top. |
 | 3 | Stage early progression | Forge and Storehouse arriving after the first run feel too fast. Spread unlocks and choices across clear milestones; introduce a building when its purpose becomes useful in the revised economy. | Record earned first-session runs, unlock timing and simultaneous decisions across fixed seeds. Set numeric pacing/decision targets in the implementation cut. Reassess Storehouse after item1 rather than merely delaying an obsolete building. Preserve a useful first session and prompt access to autonomous play; add no artificial wait or new required chores. |
 | 4 | Explain the cage and run endings | The owner does not understand “first: the cage,” and runs appear to end abruptly. Use clear encounter/objective names and show the actual reason the hero stopped, what was earned and what happens next. | Reproduce the exact “first: the cage” surface and identify whether it names a loot encounter, objective or enemy before changing it. Review how cage choices fit automatic loot conversion. Audit bank, retreat, death and clear endings in watched/offline runs. Every ending has a correct cause and a readable transition into its outcome; summaries do not invent actions or outcomes. No blocking confirmation for routine settlement. |
@@ -29,6 +31,33 @@ queue update. Backwards compatibility is not required.
 | 7 | Bloodline tabs and visible branching trees | Put Legacy and Class tree in tabs inside Bloodlines. Display parent/child branches as connected nodes, with prerequisites, learned nodes, availability and costs readable at a glance. | First show one bloodline with two working tabs and one class branch at phone/desktop sizes, then cover all classes and Legacy. Reuse delivered cumulative unlocks; keep learned parents and other branches. Preserve current bloodline identity across tabs and exact purchase/cancel/reset behavior. Existing branching data must be visible; any additional tree depth needs a separate content contract. |
 | 8 | Large-desktop typography | Refine font sizes, hierarchy and spacing on large desktop screens. Avoid phone-scale text floating in oversized panels. | Capture town, Bloodlines/trees, forge, watch and report at1440/1920/2560px and compare with320/400px phone layouts. Set font/line-length/spacing targets from the audit; verify zoom, wrapping, contrast and keyboard focus. Post matched before/after screenshots. |
 | 9 | Send → Delve | Rename the player-facing run action to **Delve** to tie it to Idlever. Update related visible instructions and accessible names consistently. | Audit town/hero controls, confirmations, reports, automation descriptions and player README. Use natural matching forms such as “Delve” and “delving.” Leave internal APIs alone unless a separate change requires them. Preserve manual/automatic behavior; post the revised action in a screenshot. |
+
+### Forge and starting-kit depth — owner addition
+
+The owner wants deeper forge/starting-gear customisation alongside automatic
+loot conversion. Include this in the loot/economy design cut, rather than
+reducing the forge to a linear stat-upgrade button.
+
+- Introduce a useful default kit first, then unlock additional choices gradually.
+  Keep basic delves available when the player cannot afford a custom kit.
+- Explore weapon families, armour profiles and a small number of gear modifiers
+  or specialisations. These are design candidates, not a committed list of new
+  systems. Choices should change combat strengths, weaknesses and synergy with
+  class skills/tactics; compare alternatives at similar currency budgets.
+- Separate permanent forge capabilities from the cost of preparing a selected
+  starting kit. Define both clearly in the single-currency economy contract;
+  avoid more currencies, random reroll chores or repeated item maintenance.
+- Let players save and reuse starting kits for their bloodlines/classes.
+  Preview the gear, relevant effects and total cost before confirming changes.
+  Reuse the confirmed kit automatically for later delves; customisation remains
+  optional and does not require a shopping/confirmation step after every run.
+- First checkpoint: two earned, affordable Fighter kits with different strengths
+  at one actual progression wall. Show their costs, action traces and outcomes,
+  including where each loses. Then extend meaningful choices across the other
+  classes as their relevant forge options unlock. Retain a viable default.
+- Verify selected-kit persistence, explicit kit changes, insufficient funds,
+  automatic repeat delves and whole/sliced/reloaded multi-hero parity. Show the
+  forge's mobile/desktop selection and comparison screens at checkpoints.
 
 Start with a single scoped loot/economy design cut covering items1–4 and their
 dependencies. Decide what happens to Storehouse before polishing its help or

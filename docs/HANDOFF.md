@@ -28,7 +28,12 @@ Owner requested a queue update, not resumed implementation. See
 
 1. Make Keep automatic. Preferred direction: convert all found loot into the
    existing currency, use the forge for starting gear, and unlock custom starting
-   kits later. Reassess/remove/merge Storehouse if it no longer serves a purpose.
+   kits gradually. **Deepen forge/starting-kit customisation alongside loot
+   simplification:** meaningful weapon/armour/modifier tradeoffs, class/tactic
+   synergy and saved reusable kits, introduced in stages. These option types are
+   design candidates; first prove two affordable earned Fighter kits at one wall.
+   Keep a viable default and automatic reuse, with no shopping chore per delve.
+   Reassess/remove/merge Storehouse if it no longer serves a purpose.
    This supersedes the older useful-upgrade retention proposal.
 2. Simplify banking and currency progression. Stage early unlocks; Forge and
    Storehouse after the first run feel too fast. Write a combined economy/pacing
