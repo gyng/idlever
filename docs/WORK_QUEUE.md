@@ -65,6 +65,7 @@ more labels or uniformly stronger upgrades.
 | 27 | Unlocked items are free to use | Firm owner rule: once an item is unlocked, it should not take gold to use it. Gold can buy permanent item unlocks/upgrades, not repeated use of the same item. | Amend the economy contract and older per-run supply/forge gates explicitly. Verify unlocked gear, consumables and leash equip/use/replenishment at zero gold, including repeat delves, death/replacement, save/reload, offline and multiple heroes. Show unlock price separately from free use; no hidden restock/repair/preparation fee. Balance build constraints and progression around this rule rather than reintroducing monetary upkeep. |
 | 28 | Live side depth map | Show a compact depth indicator beside the live view, like a map with points of interest and milestones: current floor, known boss depths, explored landmarks and relevant records/goals. | Prototype a side rail for one earned delve and its replay. Derive markers from actual route/floor/knowledge data, not guessed depth intervals; explain icons on hover/focus/tap. Follow selected hero and replay cursor, including seek, floor transitions, return/death/clear, route changes and offline catches. Show known information without exposing unrevealed encounters. Keep the board readable at phone/desktop sizes and avoid another oversized empty HUD strip. |
 | 29 | Subtle live movement trail | Explore faint footsteps or a short-lived trail so the player can track the hero's movement in the live scene. | Prototype one tracked hero on actual movement events, comparing footprints with a restrained trail in the original art style. Keep it short-lived, bounded and distinguishable from hazards/target cues; no neon path or persistent clutter. Follow replay time and actual known movement, including pause/speed/seek, teleports and floor changes. Clear stale traces; preserve fog/knowledge limits, reduced motion, full/low/off and GL/Canvas fallbacks. Check crowded fights, dark/light terrain and phone/desktop views with matched clips and measured costs. |
+| 30 | Hover, pressed and selected control states | Desktop buttons and controls need clear hover and active feedback. Make interactive elements feel responsive within each menu's chunky material style. | Audit main menu, town/hero/forge targets, Bloodlines tabs/trees/loadouts, journal, live controls and report disclosures. Define distinct default/hover/pressed/selected/focus-visible/disabled/locked states where applicable; selected means the real persistent choice, not merely a mouse hover. Include material-appropriate feedback, accessible toggle/tab semantics and clear disabled reasons. Check mouse, keyboard Enter/Space, touch, blur, reduced motion and phone layouts. No hover-only functions, misleading enabled states or layout/hit-target shifts. Post paired state screenshots. |
 
 ### Loadouts and free unlocked items — latest owner amendment
 
@@ -223,6 +224,11 @@ journal; a practical wood/iron treatment for ordinary settings. Preserve the
 approved painted palette and readable hierarchy. Start with paired forge and
 journal screenshots to demonstrate that the difference includes frames,
 buttons, tabs and details, while interaction conventions remain consistent.
+Include an interaction-state audit in this material pass: hover, pressed,
+selected/active, keyboard focus, disabled and locked states must be visibly
+distinct and reflect real control state. Apply it to scene targets and icons
+as well as ordinary buttons. Preserve readable labels, accessible semantics,
+touch usability and stable layout; phone interaction cannot depend on hover.
 
 The base should be satisfying to watch like an ant farm or garden, parallel
 to the dungeon. Candidate hero reasons include recovery after a return,

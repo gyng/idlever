@@ -119,6 +119,11 @@ that loop; automatic loot and base life reduce chores and give results context.
     bounded/readable, clear on floor changes/seek, and respect pause/speed,
     reduced motion, effects settings and GL/Canvas fallbacks.
 
+26. Audit hover/pressed/selected/focus-visible/disabled/locked states across
+    buttons, tabs, toggles, tree nodes, icons and scene controls. Use each menu's
+    chunky material identity and truthful active states; preserve keyboard/touch
+    access, readable reasons for disabled states and stable hit targets/layout.
+
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior
