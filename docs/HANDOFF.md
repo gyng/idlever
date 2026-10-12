@@ -142,6 +142,26 @@ that loop; automatic loot and base life reduce chores and give results context.
     Cover empty/current/other-bloodline and first-record states with correct
     identity and useful current-hero/run navigation.
 
+30. Consider a guild hall/reception hub for scout hiring, journal guidance and
+    base life, inspired by Girumasu/Guild Receptionist. Current scout is a Works
+    hire after3 manual sends (half a forge unit), posted at the campfire; it
+    enables automatic sends after rest. No guild hall exists. Primary anime
+    references and the proposed interpretation are in WORK_QUEUE.md.
+31. Consider recovery pool/reincarnation facilities: same persistent named hero
+    returns after defeat with a short automatic/offline cooldown. Define retained
+    stats/skills/gear/pets/currency and rename Heirs appropriately if adopted.
+    Preserve truthful failed-delve causes; avoid another tending/building chore.
+32. Allow clear individual hero renaming and deliberate persistent stat builds
+    such as Strength-focused heroes. Audit/refactor Legacy rather than stacking
+    redundant progression; needs should support recovery/training/base life,
+    not hunger/mood upkeep or missed-visit penalties.
+33. **Firm design distinction: builds/specs easy to change; stats slower/harder
+    to gain or change.** Consider optional deliberate hero NG+/rebirth to reset
+    unwanted stat commitments, with explicit eligibility and reset/retention
+    preview. Ordinary death recovery must not silently reset stats. Review
+    existing ascensions; no routine paid respec/reroll chore or trapped early
+    stat build. Define and gate the combined hero/Legacy model before coding.
+
 Coordinate skill icons with the revised trees and live-view cues. Combat FX
 is part of the build-focused live-view work, not a duplicate later polish pass.
 Content implementation and fun-rating work remain paused. No game behavior

@@ -26,6 +26,9 @@ class branches, Legacy, tactics and pets should create distinct combinations
 that the player can prepare, run, inspect and revise. Automatic loot settlement
 and base life support that loop; routine chores should not dominate it.
 
+The latest owner distinction is that builds/specs are easy to change, while
+stats are slower to gain/change. Persistent heroes and optional deliberate NG+
+should support that distinction, with ordinary death recovery kept separate.
 Treat this as the priority for the next design cuts, not a claim that the
 current game delivers it. Stage options to avoid overwhelming new players,
 retain a viable default, and make build identity and actual delve outcomes
@@ -69,6 +72,71 @@ more labels or uniformly stronger upgrades.
 | 31 | Guided unlocks for Tactics / Orders / Heirs | Make the bottom controls understandable as progression/unlocks, using an MMO-style journal and optional guided onboarding. Explain what each system does, what unlocks it and why it is useful for a build. | Audit the actual bottom ladder and Rust requirements. Prototype one complete first-session path with clear locked/available/unlocked states, progress, meaningful reward and a next useful action. Connect each journal entry to the relevant control/details; update automatically from real progress. Stage new systems and allow dismissal/reopening without forced modal tours, tutorial-only taps, manual reward claims or absence penalties. Coordinate with compact desktop layout and Bloodlines tabs. |
 | 32 | Remove top/bottom bar sheens | Remove the random/periodic sweeping sheen effects across the top and bottom bars; the owner finds them distracting. | Identify the actual chrome animation/FX sources and remove those sweeps. Retain readable static material treatment and useful hover/pressed/focus feedback. Do not remove requested scene effects, transaction particles or menu atmosphere as collateral. Compare idle/hover/focus screenshots or clips on phone/desktop and confirm no recurring chrome shimmer remains. |
 | 33 | Chronicle empty state | Chronicle needs a clear empty state instead of an unexplained empty sheet. Explain what belongs here and why there are no entries yet. | Source inventory: Chronicle currently records ended heirs, not every completed delve. Show concise truthful empty copy and relevant navigation to current hero/run details when available; do not imply the player must deliberately die to fill it. Cover a new town, active first heir, empty selected bloodline with other bloodline records, first ended-heir record and selection/reload. Keep loading/errors distinct from genuine emptiness and show correct hero identity. Post empty/first-record screenshots. |
+| 34 | Guild hall, scouts and guild inspiration | Give the scout and related progression a clear home: consider a guild hall/reception counter linking worker hiring, unlock guidance and the quest journal. Use the guild-office/adventurer-hub premise of Girumasu as inspiration within Idlever's original art direction. | Current source: scout requires3 manual sends, is hired through Works for half a forge unit, stands at the campfire and enables automatic sends after rest; there is no guild hall. Prototype an early guild/scout introduction with clear purpose, location, requirement and automatic-delve result. Do not add a building chore that delays autonomous play. Integrate the existing worker/journal systems rather than adding another quest app. |
+| 35 | Recovery pool and ordinary reincarnation | Consider a visible recovery pool and reincarnation device so heroes remain persistent characters and death feels less like losing them. Ordinary death could return the same named hero after a short recovery cooldown. | Define pool versus reincarnation roles and whether they need separate buildings; avoid town-system bloat. Prototype one real defeat → return/rebirth → recovery → next delve loop. Decide retained identity, stats, skills, kit, pets, memories and currency explicitly. Cooldowns advance offline and recovery/restart need no tending, claim or recurring fee. Rename Heirs to a clearer reincarnation/hero term if this model is adopted. Actual death cause/failed delve stays recorded. |
+| 36 | Persistent hero names, stats and needs | Let players name their persistent heroes and develop deliberate long-term stat identities, such as Strength-focused heroes. Consider refactoring Legacy to support that identity; needs should give base recovery/training a reason. | Audit existing name/attribute/Legacy/class ownership before adding parallel systems. Distinguish hero name from bloodline name and preserve identity/history across ordinary reincarnation. Stats grow slowly through earned milestones and are harder to change than builds/specs. Prototype one Strength-focused hero and one balanced alternative at similar progression. Any needs must avoid hunger/mood upkeep or penalties for absence; use understandable recovery/readiness and meaningful optional routines. |
+| 37 | Easy builds/specs; deliberate hero NG+ | Firm distinction: builds/specs should be easy to change; lasting stats should be slower to gain/change. Consider optional hero NG+/rebirth as a deliberate reset for bad stat commitments, distinct from ordinary death recovery. | Define easy/free loadout and spec changes separately from long-term attributes and NG+ eligibility/reset/retention rules. Preview exactly what resets/persists, require explicit confirmation, and keep ordinary death from silently rerolling stats. Review existing harder-descents/ascension systems before adding another reset layer. Avoid irreversible early traps or routine paid rerolls; prove a usable route to correct an unwanted stat build without making stats freely swappable each delve. |
+
+### Guild, persistent heroes and deliberate rebirth — owner addition
+
+Current scout inventory (`tree.rs::NODES`, `hire`, `auto_send`; `works.ts`):
+the scout becomes ready after3 manual sends, subject to the actual Works offer
+order, and costs half a forge unit to hire. They stand at the campfire and
+allow the hero to delve again automatically after rest. No guild building
+exists today. The guided journal should explain this early automation milestone
+and point to the actual hire, rather than displaying an unexplained counter.
+
+The owner's likely anime reference is **Girumasu**, *I May Be a Guild
+Receptionist, but I'll Solo Any Boss to Clock Out on Time*. Primary references:
+[official introduction](https://girumasu.com/) describes the receptionist's
+counter, adventurer administration and the connection between dungeon progress
+and guild activity; [official publisher's story](https://www.aniplex.co.jp/lineup/girumasu/story/)
+provides episode context. [Crunchyroll's2025 announcement](https://www.crunchyroll.com/news/announcements/2025/1/23/i-may-be-a-guild-receptionist-but-ill-solo-any-boss-to-clock-out-on-time-anime-english-dub-cast-crew-release-date)
+confirms the English title and release context. Using a reception counter,
+visible named staff and expedition/journal services as an Idlever guild hub is
+a design interpretation of that premise, not a feature already implemented.
+
+Prototype the guild's role before adding a large mandatory building chain.
+Connect the scout's real automatic-delve function, meaningful journal guidance
+and lived-in base activity. Keep early access to autonomy; assess whether a
+service/hub can consolidate existing interfaces instead of adding more chores.
+
+For persistent heroes, separate three decisions explicitly:
+
+- **Ordinary defeat/recovery:** explore the same named hero returning through a
+  reincarnation device and resting at a pool or similar facility. A short
+  cooldown is automatic and advances while away. A failed delve still has its
+  real cause and outcome; recovery is not a stat-reset punishment.
+- **Everyday builds/specs:** gear, skills/spec combinations and relevant pet or
+  tactic choices should be easy to change. Unlocked items remain free to use;
+  do not add paid respec/restock friction to routine build experiments.
+- **Long-term attributes and hero NG+:** stats should take meaningful earned
+  progression and harder commitments. An optional, explicit NG+/rebirth may
+  reset unwanted stat allocation or other defined commitments. Show retained
+  unlocks/identity and lost/reset progress before confirming. A death return
+  must not trigger this reset automatically. Specify eligibility and correction
+  routes, and review existing ascensions so the new model is not a redundant
+  second stack of prestige systems.
+
+Audit Legacy and the current heir/class/stat persistence rules as one design
+cut. Decide which permanent progress belongs to a hero, a bloodline or the town
+before moving it; do not simply layer needs/stats on top of every existing
+currency/tree. “Rebirth,” “Reincarnation” or “Heroes” are naming candidates for
+the current Heirs surface after the actual mechanic is defined. Individual
+hero renaming must be discoverable and distinct from naming a bloodline; preserve
+stable actor IDs and truthful historical identity in journal/Chronicle/replays.
+If Chronicle becomes a persistent hero's journey/rebirth history, update its
+queued empty state and labels consistently; the current ended-heir behavior is
+source inventory, not a requirement to retain the old presentation forever.
+
+Candidate needs should make recovery, training and social base routines legible,
+not become feeding/mood timers or daily maintenance. Actual stat growth and
+recovery belong in Rust and require deterministic whole/sliced/reloaded/offline
+parity. First compare an earned Strength-focused hero with a balanced one at
+the same progression budget; show weaknesses as well as advantages. The cut
+must explicitly amend affected death/Legacy/reset gates and define numeric
+pacing/cooldown targets before implementation. These are queued concepts; no
+persistent hero, new guild, pool, machine or NG+ behavior is delivered here.
 
 ### Guided unlock journal — owner addition
 
