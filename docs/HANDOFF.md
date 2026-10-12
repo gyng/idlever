@@ -98,9 +98,16 @@ whole run. Failed groups:
   state shows100 samples/refined/buttondisabled. That end state does not prove
   completion preceded click; computation may have occurred during it.
 Neither is classified flaky or given a passing deviation. Sequential unchanged
-reproduction of BOTH groups is LIVE session98628, TEST_JOBS1/heavy1, original
-fixtures/assertions/times; outputs scratchpad/cut180/isolated-failures.log and
-isolated-failures-results.json. Targeted evidence cannot certify the full suite.
+reproduction of BOTH groups session98628 is TERMINAL0,2/2 in61.1s, jobs1/heavy1,
+all560 guard hashes still match. Original43 clarity and26 Cut12 checks pass.
+This diagnostic does not certify the failed full run or prove original causes.
+Archive cut180/isolated-client-reproduction/.
+
+A fresh COMPLETE166-group retry is LIVE session23909, TEST_JOBS2/heavy1;
+original source/fixtures/assertions/time limits unchanged, only host concurrency
+reduced. Outputs scratchpad/cut180/client-full-retry.log and
+client-full-retry-results.json. Do not modify shared source during this run.
+No new acceptance certificate yet.
 
 Rust/WASM unchanged. The actor-identity change is committed/pushed through
 18fbb5c but not yet adopted/frozen. Released QA continues unchanged immutable
