@@ -2,8 +2,12 @@
 
 Owner asks to finish the current queue/refinement and PAUSE at this checkpoint
 because weekly quota is low. No new content or rating round should start until
-the owner resumes. The fun>=80 goal is unfinished; DO NOT DEPLOY.
+the owner resumes. The fun>=80 goal is unfinished.
 Commit/push and milestone screenshots remain authorized.
+
+Owner amendment 2026-10-12: fix Pages deployment and publish the first alpha.
+This explicitly authorizes this release and its deployment. Content work and
+the fun>=80 rating goal remain paused. See docs/CUT187_ALPHA_RELEASE.md.
 
 Read PLAN.md, docs/CUT30_5.md and AGENTS.md. Prior long handoff is preserved at
 `docs/evidence/cut185/checkpoint/prior-handoff.md`.

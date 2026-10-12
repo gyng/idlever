@@ -83,8 +83,9 @@ The renderer draws the town and dungeon. Every sprite has a primitive fallback.
 **Status: development alpha.** Some validation checks remain open. Read the
 [current handoff](docs/HANDOFF.md) before resuming work. The handoff records passing checks and unresolved failures.
 
-Pushes and pull requests build the site in CI. Publishing requires a manual
-GitHub Actions run on `main`. A push alone does not deploy.
+Pushes, pull requests and manual workflow runs validate the site. Publish a
+versioned GitHub release to deploy its tagged build to [GitHub Pages](https://gyng.github.io/riddle/).
+Alpha releases deploy too. A push alone does not deploy.
 
 | Area | Read next |
 |---|---|

@@ -5,19 +5,30 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  release:
+    types: [published]
 
 permissions:
   contents: read
 
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.event_name == 'release' && 'pages-production' || format('pages-check-{0}', github.ref) }}
+  cancel-in-progress: ${{ github.event_name != 'release' }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.sha }}
+      - name: Check release tag
+        if: github.event_name == 'release'
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.-]+)?$ ]] || exit 1
+          test "$(git rev-parse HEAD)" = "$(git rev-list -n 1 "$RELEASE_TAG")"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -52,8 +63,8 @@ jobs:
           path: web/dist
 
   deploy:
-    # Publishing is explicit; pushes and PRs only validate/build.
-    if: github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch'
+    # Publishing a versioned release (including an alpha) deploys its tagged build.
+    if: github.event_name == 'release' && startsWith(github.event.release.tag_name, 'v')
     needs: build
     runs-on: ubuntu-latest
     permissions:
