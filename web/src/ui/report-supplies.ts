@@ -16,7 +16,7 @@ export function reportIncome(r: Pick<ReturnReport, 'gold' | 'supply_budget'>): n
 export function supplyReason(code: string | undefined): { text: string; tip: string } | null {
   switch (code) {
     case 'no_income': return { text: /* copy:callout */ 'no income', tip: /* copy:tooltip */ 'Nothing came home · supplies never spend the purse' };
-    case 'income_spent': return { text: /* copy:callout */ 'income spent', tip: /* copy:tooltip */ 'Supplies used all gold earned while away' };
+    case 'income_spent': return { text: /* copy:callout */ 'income limit', tip: /* copy:tooltip */ 'Restocking waited for gold earned while away' };
     case 'purse_short': return { text: /* copy:callout */ 'purse short', tip: /* copy:tooltip */ 'Purse could not pay · forge or purchases took it' };
     default: return null;
   }

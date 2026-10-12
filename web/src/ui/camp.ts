@@ -805,7 +805,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       // QA 1a2a4a9 (P: "the restock was skipped with no word"): a re-pack the purse could not pay reads so on the tile
       // QA a946e04 (T: "`repeat · $40` reads like a price to pay"; its tap refunded $40): the badge is a switch and reads as one —
       // `repeat on · $40` (the tap turns it off and refunds the re-packed shelf) / `repeat off`
-      on ? (short ? /* copy:callout */ "Restock needs gold" : due.length ? /* copy:callout */ `${dueText} at send` : /* copy:callout */ `Restock on · held ≤$${L.repeat_gold ?? 0}`) : /* copy:callout */ "Restock off");
+      on ? (short ? /* copy:callout */ "Restock limited" : due.length ? /* copy:callout */ `${dueText} at send` : /* copy:callout */ `Restock on · held ≤$${L.repeat_gold ?? 0}`) : /* copy:callout */ "Restock off");
     return badge;   // QA 524827b (qaAB: `≤$24` beside the shop's `heal potion $26` — the repeat pays the quote it showed, held)   // QA 778fa1b (qaV: `repeat on · $104` read as a per-send cost; nothing was charged when the supplies came back): the most it re-buys
   }
   function paintSupplies(): void {

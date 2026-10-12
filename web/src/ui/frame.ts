@@ -63,7 +63,7 @@ export function purseDrop(seen: PurseSeen, gold: number, ledger: GoldLine[]): { 
   for (const g of fresh) if (g.delta < 0) by.set(spendWord(g.why), (by.get(spendWord(g.why)) ?? 0) + -g.delta);
   const parts = [...by].sort((a, b) => b[1] - a[1]);
   const fell = seen.gold - gold;
-  return { text: parts.length ? /* copy:callout */ `−$${fell} · ${parts[0][0]}` : /* copy:callout */ `−$${fell}`,
+  return { text: parts.length ? /* copy:callout */ `−$${fell} · ${parts.length === 1 && parts[0][1] === fell ? parts[0][0] : "net"}` : /* copy:callout */ `−$${fell}`,
     title: parts.length ? /* copy:tooltip */ parts.map(([w, n]) => `${w} −$${n}`).join(" · ") : /* copy:tooltip */ "gold ledger" };
 }
 /** `live`: the camp's bar (the stud the settings; the wake's offers row under it). The `$` opens the gold sheet everywhere but on

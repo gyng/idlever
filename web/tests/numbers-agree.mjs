@@ -48,14 +48,20 @@ try {
     L.gold_ledger = [...L.gold_ledger, { t: 900100, delta: -4800, why: "forge sword +6" }, { t: 900100, delta: -254, why: "repeat heal", n: 4 }]; L.gold = 14139; a.emitChange(); });
   await p.waitForFunction(() => !!document.querySelector(".topbar .gold-drop"));
   const chip = await p.evaluate(() => ({ text: document.querySelector(".topbar .gold-drop").textContent, title: document.querySelector(".topbar .gold-drop").title }));
-  check(chip.text === "−$5054 · forge" && chip.title === "forge −$4800 · restock −$254", `the fall names what spent it (${JSON.stringify(chip)})`);
+  check(chip.text === "−$5054 · net" && chip.title === "forge −$4800 · restock −$254", `the fall names what spent it (${JSON.stringify(chip)})`);
   await p.evaluate((r) => window.__riddle.go({ kind: "report", report: r }), report); await p.waitForSelector(".report");
   await p.evaluate(() => window.__riddle.go({ kind: "camp" })); await p.waitForSelector(".topbar .stat.gold");
-  check(await p.evaluate(() => document.querySelector(".topbar .gold-drop")?.textContent === "−$5054 · forge"), "the word survives a screen change");
+  check(await p.evaluate(() => document.querySelector(".topbar .gold-drop")?.textContent === "−$5054 · net"), "the word survives a screen change");
   await p.evaluate(() => { const a = window.__riddle, L = a.lineage; L.gold_ledger = [...L.gold_ledger, { t: 900200, delta: 500, why: "returned D20" }]; L.gold = 14639; a.emitChange(); });
   await p.waitForFunction(() => !document.querySelector(".topbar .gold-drop"));
   checks++;
   if (await p.evaluate(() => document.documentElement.scrollWidth > innerWidth)) throw Error("overflow"); checks++;
   if (errors.length) throw Error(errors.join("\n"));
+  const offset = await p.evaluate(async () => {
+    const {purseDrop} = await import('/src/ui/frame.ts');
+    const tail={t:1,delta:1,why:'banked D1'};
+    return purseDrop({gold:17287,tail},15730,[tail,{t:2,delta:310,why:'returned D13'},{t:2,delta:15,why:'salvage'},{t:2,delta:-82,why:'repeat heal'},{t:2,delta:-1000,why:'forge pack 5'},{t:2,delta:-800,why:'forge leather +1'}]);
+  });
+  check(offset.text==='−$1557 · net' && offset.title==='forge −$1800 · restock −$82',`income-offset forge spends retain actual ledger amounts (${JSON.stringify(offset)})`);
   console.log(checks, "numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS");
 } finally { await b.close(); }

@@ -22,5 +22,9 @@ try{for(const width of responsiveWidths([320,400,1440])){
  // blind ad71e72: a waystone passage is income; an absence states its purse change beside the earned gold
  await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:8,salvage:0,wake:0,spent:0,passage:1027,net:1035}}}));assert.equal(await gold.locator('b').textContent(),'+$1035');assert.equal(await gold.locator('.label').textContent(),'Gold earned');assert.equal(await p.locator('.report-net').count(),0);
  await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,restock_capped:false,gold:{home:6712,salvage:0,wake:0,spent:208,net:78}}}));assert.equal(await gold.locator('b').textContent(),'+$6712');assert.equal(await p.locator('.report-details [data-group=gold] .report-net').textContent(),'purse +$78');await gold.hover();await p.waitForFunction(()=>{const t=document.querySelector('#kw-tip')?.textContent;return t?.includes('Workers, other · −$6426')&&t.includes('Purse change · +$78');});await p.mouse.move(0,0);
+ await p.evaluate(()=>window.__riddle.go({kind:'report',report:{...window.capReport,supply_budget:{income:7778,spent:448,left:7330,reason:'income_spent'}}}));
+ await p.locator('.details-fold').click();const limited=p.locator('.gold-line .supply-limit');
+ assert.match(await limited.textContent(),/income limit$/);assert.doesNotMatch(await limited.textContent(),/income spent/);
+ await limited.hover();await p.waitForFunction(()=>document.querySelector('#kw-tip')?.textContent.includes('Restocking waited for gold earned while away'));
  console.log(width,'supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS');await p.close();
 }}finally{await b.close();}

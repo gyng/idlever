@@ -86,7 +86,7 @@ export function renderParty(app: App): { el: HTMLElement; refresh(): void } {
     const main = h("button", { class: "comp-main game-control", onclick: onTap, "aria-pressed": String(breeding ? !!picked : inParty), "data-role": c.life?.role ?? "" },
       name, xpBar(c) ?? "", petMeta(app.lineage, c) ?? "",
       h("span", { class: "tags dim" }, c.tags.map(nice).join(" · ")),
-      h("span", { class: "hp num dim" }, `${c.hp}/${c.max_hp} · ${c.rules.rows.length}/${c.max_rows}`));
+      h("span", { class: "hp num dim" }, `${c.hp}/${c.max_hp} hp · ${c.rules.rows.length}/${c.max_rows} rows`));
     petTip(main, app.lineage, c);
     return h("div", { class: `card comp${inParty ? " on" : ""}${picked ? " pick" : ""}${breeding && c.level < 2 ? " off" : ""}${lame ? " lamed" : ""}`, "data-pet": c.id },
       petFace(c.kind),

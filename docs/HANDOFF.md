@@ -336,3 +336,26 @@ No measured80% defect detection claim. All prior failures/trials preserved.
 Native/game truth unchanged by this test-harness work. Fun goal ACTIVE; QA
 terminal11findings still need dispositions/fixes and finalfreeze before two
 pure fresh blind ratings. Do not deploy.
+
+Cut182 QA clarity accepted for next build: monetary header uses net when
+income offsets spending or multiple spend categories contribute; actual
+ledger amounts remain in tooltip. Restock limited covers both money/slots;
+away income-limit label accurately describes cumulative budget capping, not
+all final income spent. Companion hp/rows units added. Clerk marker height
+contains full status. No Rust/balance/game resource changes; WASM SHA same.
+Contract docs/CUT182_QA_CLARITY.md. Full78113 TERMINAL0:124/124,369.475s,
+all562guard hashes match; types/copy pass. Focused initial50463 failed one
+wrong collapsed-detail locator; corrected55643 supply+companion2/2, others
+pass. GPU earned-save3width cases pass after restoring original town
+preferences too (otherwise newly-unseen markers exhausted marker budget);
+both prior diagnostic failures preserved. Exact original gold15730/D22;
+runs0/import API/no simulated absence, no active-play credit. Screenshot
+checkpoint posted. Evidence cut182/qa-clarity/.
+
+Remaining six QA findings: entrance wording; rule condition vs action target;
+gross-versus-kept headline basis; Savings capacity meaning; givenQuartermaster
+source; whole-wallet versus run-only accounting scope. Actor identity already
+fixed/accepted Cut180. Do not freeze/release blind players until individual
+dispositions/refinement complete. Frozen41271 remains oldb60, not these fixes.
+Local no-HMR GPU inspection server53631 session79764 owns mutable dev source;
+not a freeze. Goal ACTIVE, no verified score, no deployment.

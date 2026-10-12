@@ -1,0 +1,10 @@
+client suite: targeted (5 selected; 124 current full; 166 exhaustive groups)
+ok   companion-chrome 9.0s (8.7s)  1440 companion/death material/layout/select/dismiss/rules/breed/hatch/details/morgue PASS
+ok   qa778           9.1s (8.8s)  qa778: ok (12 checks)
+ok   numbers-agree   11.2s (2.1s)  11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   cut117          20.8s (11.8s)  cut117: ok (22 checks)
+FAIL report-supply-limit 36.9s (36.6s)  Node.js v26.5.0
+       - waiting for locator('.report-supply-limit')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/report-supply-limit.mjs:26:55 {
+FAIL: 4/5 client gates in 36.9s

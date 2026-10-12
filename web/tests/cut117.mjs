@@ -237,7 +237,7 @@ try {
     check(r.price.even === "same" && r.price.wide === "—" && r.price.tight !== "—", `an even move reads same; the core's noise is the band (${JSON.stringify(r.price)})`);
     // Cut 118 (owner amendment §1): the scout's wall order is retired — no hold line, and the ends are the panel's whatever a stale `hold` says
     check(r.holdGone && r.ends === 0.4 && r.old === 0.4, `the retired wall order prints nothing; the ends are the panel's (${r.holdGone} · ${r.ends}, ${r.old})`);
-    check(r.reasons.join() === "no income,income spent,purse short," && /Supplies limited · \$0 budget · no income$/.test(r.lim), `the $0 budget says why (${r.lim} · ${r.reasons})`);
+    check(r.reasons.join() === "no income,income limit,purse short," && /Supplies limited · \$0 budget · no income$/.test(r.lim), `the $0 budget says why (${r.lim} · ${r.reasons})`);
     check(r.limReason === "no_income" && r.worker === " · purse short" && /Purse could not pay/.test(r.workerTip ?? ""), `the apprentice's line says why, its gloss on hover (${r.worker} · ${r.workerTip})`);
     await page.close();
   }

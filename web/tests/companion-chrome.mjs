@@ -20,6 +20,7 @@ try{for(const width of responsiveWidths([320,400,1440])){
   openWindow(()=>h('div',{class:'sheet-body'},party.el),{onClose:off});
  });
  const card=p.locator('.sheet-wrap:not(.under) .party .comp').filter({hasText:'Thix'});
+ assert.equal(await card.locator('.hp').textContent(),'12/12 hp · 0/2 rows');
  await card.locator('.comp-main').click();await p.waitForFunction(()=>window.__riddle.lineage.party.some(c=>c.id===7001));
  assert.equal(await card.locator('.comp-main').getAttribute('aria-pressed'),'true');
  await card.locator('.comp-main').click();assert.equal(await p.evaluate(()=>window.__riddle.lineage.party.filter(c=>c.id===7001).length),1);

@@ -51,3 +51,8 @@
 .town-tag .build-copy small { font-size: 13px; }
 .awaiting-home .town-tag .build-copy { font-size: 18px; }
 .awaiting-home .town-tag .ico { width: 28px; height: 28px; }
+
+/* Worker statuses may wrap; their background must contain every line. */
+.town-marker.mk-next { height: auto; min-height: 26px; max-width: 160px; padding-block: 4px; }
+.town-marker.mk-next .num { min-width: 0; line-height: 1.2; }
+.town-marker.mk-next .ico { flex-shrink: 0; }
