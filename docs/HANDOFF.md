@@ -14,7 +14,9 @@ Full native verification61177 TERMINAL exit0,667s:807Rust/6ignored,types/copy/to
 
 Current complete client38897 TERMINAL exit0:166/166 in1495.7s. Exact discovery/names/return codes,730guarded inputs and exact shippingWASM unchanged; original3jobs/heavy1/default15ms and actual control branches retained. Archive docs/evidence/cut178/complete-client/. Prior concurrent client91489 TERMINAL exit130 after actual fight-skip failure; explicit cancellation and raw historical running-state preserved in cut177/cancelled-concurrent-client/. Original isolated fights51assertions pass176.9s; isolated PASS never substitutes for the complete current result.
 
-Clean rebuild/final accepted freeze are NEXT. No guarded full client remains live; source changes still require appropriate acceptance. Do not call diagnostic assets a rating release.
+Clean adopted source is 3cde6bc14d1b0aa444f23ef6cc5d16233b25e039, committed and pushed. Approved clean build embeds that literal commit. Immutable accepted assets are now served on41269,session12405,from /tmp/riddle-cut178-3cde6bc-frozen/assets. Manifest SHA8aae6b1f1d9a2f886655e8a9269657237b9f7c7f68f339f82e09ed44ce522c2b. Smoke96497 TERMINAL exit0:262served file hashes,exact real shippingWASM,cold/public free-house construction,saved reload straight to Town,privateGPU400/1280screens and separately labeled cosmetic23h preview. Archive cut178/accepted-freeze-checkpoint/. Initial default build lacked Git stamp(childgitEPERM),freeze rejected; incorrectly started dependent preview exited1/no assets served. Failures remain archived unchanged; approved rebuild passed unchanged validator. No guarded full client remains live; source changes still require appropriate acceptance.
+
+Original22-row16-seed targeted check is LIVE on current runtime: PID4100920,parent4100872,started2026-10-12T02:39:53UTC,verified live by approved ps. scratchpad/cut178/native16/{state.json,targeted.log}; original command/full seed counts/fail-fast, no balance overrides. It is not the exhaustive audit,full gate or a fun score. Do not restart merely because the session output was lost; verify this PID/log and terminal state.
 
 ## QA — current state
 
@@ -28,6 +30,7 @@ Fresh interactive QA qa_cca75_interactive remains LIVE on immutable cca75f9 URL4
 
 ## Live previews / infrastructure
 
+- Current accepted41269: /tmp/riddle-cut178-3cde6bc-frozen/assets,session12405; leave immutable. Manifest and smoke evidence above. No new blind players released.
 - Accepted old QA41263: /tmp/riddle-cut176-cca75f9-frozen/assets,session49600; leave unchanged/live while interactive QA uses it. All262hashes,old acceptedWASM e8596a72...,savedreload/GPU smoke and10dumpwalk verified. Evidence cut176/accepted-freeze-checkpoint/.
 - Diagnostic41265: /tmp/riddle-cut177-diagnostic/assets,session21605; pre-class-save-fix snapshot; not release.
 - Corrected diagnostic41267: /tmp/riddle-cut178-diagnostic/assets,session5342; accepted native WASM/new UI,real earned first-bank/reload PASS65514 terminal. Still dirty/unadopted metadata; not rating release.
@@ -35,7 +38,7 @@ Fresh interactive QA qa_cca75_interactive remains LIVE on immutable cca75f9 URL4
 
 ## Remaining required work
 
-1. Adopted source+contracts/evidence are mechanically accepted; clean frontend build must embed actual clean commit. Keep exact new shippingWASM. Freeze using scratchpad/cut169/freeze-accepted.py with acceptedDir scratchpad/cut178/revalidation; new immutable URL/asset manifest,served-byte/bridge/privateGPU smoke required.
+1. Current source/client/native acceptance and clean freeze/served-byte/real-WASM/privateGPU smoke are complete. Finish current22-row16-seed targeted check; preserve exact terminal scope and failures. Do not claim the omitted exhaustive audit.
 2. Complete live interactive QA and audit actual ledger/coverage/budget, individually resolve all findings. Original reports stay untouched; current-runtime QA/fix verification must be honestly scoped. No source or score guidance to actual blind players.
 3. Same-sitting LoopHero reanchor; drift<=5. Known-reference rescoring permitted but never claim fresh direct play without it.
 4. TWO NEW independent pure-context players,seeds137/211,on SAMEimmutable accepted build. Neutral fresh ephemeral CLI alternative precommitted in cut170/blind-context-amendment.json; actual context/approved-local-transport preflights pass, but EACH actual startup audits independently. Old d34605e incomplete/purity-broken75.2 cohort never reused.

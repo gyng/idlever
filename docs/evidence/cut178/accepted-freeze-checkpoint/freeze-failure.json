@@ -1,0 +1,10 @@
+{
+  "scope": "Failed default-sandbox clean build identity/freeze attempt;no accepted assets or player released",
+  "expectedCommit": "3cde6bc14d1b0aa444f23ef6cc5d16233b25e039",
+  "reason": "Frontend missing expected literal clean Git stamp;default-sandbox build config catches child git failure as unknown. Rebuild with approved process access, not a validator bypass.",
+  "freezeExitCode": 1,
+  "dependentPreviewExitCode": 1,
+  "previewReason": "Destination assets directory absent",
+  "previousBuildLog": "accepted-clean-build.log",
+  "failedPreviewLog": "accepted-preview.log"
+}
