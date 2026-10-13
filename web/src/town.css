@@ -12,6 +12,12 @@
     inset 0 -40px 40px -30px rgba(13, 12, 20, 0.8);
   touch-action: manipulation;
 }
+/* Large text keeps the village usable; the existing well scrolls to its lower paths. */
+@media (max-width: 1023px) {
+  main.camp .camp-well > .town {
+    min-height: max(360px, 18rem);
+  }
+}
 .town > canvas {
   position: absolute;
   inset: 0;

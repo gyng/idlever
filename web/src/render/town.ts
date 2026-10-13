@@ -14,6 +14,7 @@ import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
 import { paintTownTerrain, terrainMaterialVersion, townGrassRoots } from "./town-terrain";
 import { effectsLevel } from "./fxpref";
+import { paintHomeService } from "./home-service-art";
 import LIGHTS from "./town_lights.json"; // a copy of art/town_lights.json (`python3 art/town_lights.py`): each sprite's painted warm emitters
 
 export const TILE = 16;
@@ -28,9 +29,24 @@ export type Pt = { x: number; y: number };
 
 export const BUILDINGS = ["blacksmith", "kennel", "bank"] as const;
 export type BuildingId = (typeof BUILDINGS)[number];
-export type PlotId = "mouth" | "fire" | "tent" | "house" | "crate" | "board" | BuildingId;
+export type ServiceId = "guild" | "pool" | "device";
+export const SERVICE_PLOTS = {
+  guild: { x: 386, y: 402, h: 42 },
+  pool: { x: 356, y: 338, h: 22 },
+  device: { x: 568, y: 318, h: 36 },
+} as const;
+export type PlotId =
+  | ServiceId
+  | "mouth"
+  | "fire"
+  | "tent"
+  | "house"
+  | "crate"
+  | "board"
+  | BuildingId;
 /** each plot's foot (texels) and its drawn height */
 export const PLOTS: Record<PlotId, Pt & { h: number }> = {
+  ...SERVICE_PLOTS,
   mouth: { ...T(CX, 6.6), h: 64 },
   fire: { ...T(CX, 14.7), h: 16 },
   tent: { ...T(CX + 3.3, 14.0), h: 32 },
@@ -56,6 +72,9 @@ const NODES: Record<string, Pt> = {
   south: T(CX, 18.6),
   kennel: T(CX + 4.3, 20.1),
   exit: T(CX, 25),
+  guild: { x: 386, y: 410 },
+  pool: { x: 356, y: 353 },
+  device: { x: 568, y: 330 },
 };
 const EDGES: [string, string, number][] = [
   // [a, b, half-width of the dirt in tiles]
@@ -73,6 +92,9 @@ const EDGES: [string, string, number][] = [
   ["fireS", "south", 0.7],
   ["south", "kennel", 0.5],
   ["south", "exit", 0.7],
+  ["south", "guild", 0.4],
+  ["fireW", "pool", 0.4],
+  ["crate", "device", 0.4],
 ];
 const ADJ = new Map<string, string[]>();
 for (const [a, b] of EDGES) {
@@ -155,7 +177,7 @@ export const CHEST_AT: Pt & { h: number } = { ...T(CX + 1.6, 8.3), h: 12 };
 const WORKER_AT: Record<string, Pt> = {
   quartermaster: T(CX + 4.9, 15.7),
   porter: T(CX + 1.1, 10.2),
-  scout: T(CX - 1.1, 8.4),
+  scout: { x: SERVICE_PLOTS.guild.x + 13, y: SERVICE_PLOTS.guild.y + 7 },
   apprentice: T(CX - 1.9, 11.6),
   clerk: T(CX + 2.8, 11.7),
   drillmaster: T(CX + 1.4, 16.3),
@@ -198,7 +220,14 @@ export type TownState = {
   buildings: { id: BuildingId; look: number; fresh: boolean }[];
   staked?: { id: BuildingId | "house"; trigger: string; ready?: boolean };
   hero: { cls: string; look?: string };
-  residents?: { id: number; cls: string; look?: string }[];
+  residents?: {
+    id: number;
+    cls: string;
+    look?: string;
+    resting?: boolean;
+    phase?: "away" | "reincarnating" | "recovering" | "ready";
+  }[];
+  services?: ServiceId[];
   selectedHero?: number;
   pets: string[]; // companions following the hero
   penned: string[]; // companions lying in the kennel's pen
@@ -378,10 +407,21 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     buildings,
     staked: next,
     hero: { cls: L.class || "fighter", look: L.look },
+    services:
+      town?.home === false
+        ? []
+        : (["guild", "pool", "device"] as const).filter((id) => L.persistent_hero?.[id].available),
     residents:
       L.hero_slots
         ?.filter((h) => h.state !== "live")
-        .map((h) => ({ id: h.id, cls: h.class, look: h.look })) ??
+        .map((h) => ({
+          id: h.id,
+          cls: h.class,
+          look: h.look,
+          resting: h.state === "rests" || h.rest_s > 0 || h.life_state === "recovering",
+          phase:
+            h.life_state ?? (h.id === L.selected_bloodline ? L.persistent_hero?.state : undefined),
+        })) ??
       (L.live ? [] : [{ id: L.selected_bloodline ?? 1, cls: L.class || "fighter", look: L.look }]),
     selectedHero: L.selected_bloodline ?? 1,
     pets: (L.party ?? []).slice(0, 2).map((c) => c.kind),
@@ -425,6 +465,9 @@ const WALKER_TINT: Record<string, number[]> = {
 };
 /** fallback aspect (w / h) per id family */
 const ASPECT: [RegExp, number][] = [
+  [/^town_service_guild/, 1.5],
+  [/^town_service_pool/, 2.636],
+  [/^town_service_device/, 1.222],
   [/^town_mouth/, 1.55],
   [/^town_(blacksmith|bank|kennel)_/, 1.25],
   [/^town_tent/, 1.05],
@@ -520,6 +563,54 @@ export class TownAtlas {
     this.version++;
     return slot;
   }
+  private seated(ids: string[], h: number): Slot {
+    const base = this.get(ids, h),
+      key = `seated:${ids.join("|")}@${h}`;
+    const cached = this.slots.get(key);
+    if (cached) return cached;
+    const w = base.w + 3,
+      sh = Math.max(8, Math.round(h * 0.8));
+    if (this.sx + w + 1 > ATLAS) {
+      this.sy += this.sh + 1;
+      this.sx = 1;
+      this.sh = 0;
+    }
+    if (this.sy + sh + 1 > ATLAS) {
+      this.reset();
+      return this.seated(ids, h);
+    }
+    const x = this.sx,
+      y = this.sy;
+    this.sx += w + 1;
+    this.sh = Math.max(this.sh, sh);
+    const torso = Math.round(base.h * 0.68);
+    this.ctx.imageSmoothingEnabled = false;
+    this.ctx.drawImage(this.canvas, base.x, base.y, base.w, torso, x, y, base.w, torso);
+    this.ctx.drawImage(
+      this.canvas,
+      base.x,
+      base.y + torso,
+      base.w,
+      base.h - torso,
+      x + 2,
+      y + torso,
+      base.w + 1,
+      sh - torso,
+    );
+    const slot = {
+      x,
+      y,
+      w,
+      h: sh,
+      u0: x / ATLAS,
+      v0: 1 - (y + sh) / ATLAS,
+      u1: (x + w) / ATLAS,
+      v1: 1 - y / ATLAS,
+    };
+    this.slots.set(key, slot);
+    this.version++;
+    return slot;
+  }
   private reset(): void {
     this.slots.clear();
     this.sx = 1;
@@ -530,6 +621,12 @@ export class TownAtlas {
   }
   /** the slot of `id` drawn `h` texels tall (the first id of `ids` the atlas has, else a primitive of the first) */
   get(ids: string | string[], h: number): Slot {
+    const requested = Array.isArray(ids) ? ids : [ids];
+    if (requested[0]?.startsWith("town_seated:"))
+      return this.seated(
+        requested.map((id) => id.replace(/^town_seated:/, "")),
+        h,
+      );
     const list = Array.isArray(ids) ? ids : [ids];
     const id = list.find((x) => this.src?.frames[x]) ?? list[0]!;
     const key = `${id}@${h}`;
@@ -565,7 +662,7 @@ export class TownAtlas {
     this.slots.set(key, slot);
     this.lastId = id;
     if (f && this.src) this.cut(this.src.img, f, slot);
-    else drawPrimitive(this.ctx, id, x, y, w, h);
+    else if (!paintHomeService(this.ctx, id, x, y, w, h)) drawPrimitive(this.ctx, id, x, y, w, h);
     this.version++;
     return slot;
   }
@@ -932,6 +1029,7 @@ type Walker = {
   vanish?: boolean;
   extend?: (w: Walker) => void;
   pet?: boolean;
+  reincarnating?: boolean;
 };
 const SPEED = 40;
 function legsAlong(pts: Pt[], t0: number, speed = SPEED, out: Leg[] = []): number {
@@ -1009,6 +1107,12 @@ export type TownStats = {
   terrainPaintMs: number;
   windTufts: number;
   windSignature: number;
+  services?: ServiceId[];
+  residentStates?: {
+    id: number;
+    resting: boolean;
+    phase?: "away" | "reincarnating" | "recovering" | "ready";
+  }[];
   buildings: string[];
   activeBuilds: string[];
   buildEvents: number;
@@ -1245,7 +1349,23 @@ export function createTownView(host: HTMLElement): TownView {
           }
         },
       };
-      actor.extend!(actor);
+      if (resident.phase === "reincarnating" && s.services?.includes("device")) {
+        actor.homeOffset = { x: ((resident.id - 1) % 2) * 12, y: 0 };
+        actor.reincarnating = true;
+        const p = { x: SERVICE_PLOTS.device.x, y: SERVICE_PLOTS.device.y + 4 };
+        actor.legs = [{ t0: partyEnd, t1: Infinity, a: p, b: p }];
+        actor.extend = undefined;
+      } else if (resident.resting && s.services?.includes("pool")) {
+        actor.homeOffset = { x: 0, y: 0 };
+        actor.sprite = ids.map((id) => `town_seated:${id}`);
+        actor.walk = actor.sprite;
+        const p = {
+          x: SERVICE_PLOTS.pool.x - 46,
+          y: SERVICE_PLOTS.pool.y + 10 + ((resident.id - 1) % 2) * 36,
+        };
+        actor.legs = [{ t0: partyEnd, t1: Infinity, a: p, b: p }];
+        actor.extend = undefined;
+      } else actor.extend!(actor);
       walkers.push(actor);
       if (resident.id === (s.selectedHero ?? 1)) hero = actor;
     }
@@ -1473,13 +1593,13 @@ export function createTownView(host: HTMLElement): TownView {
   /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
   function ground(): void {
     const s = state!,
-      key = `${s.home}|${s.stage}|${s.buildings
+      key = `${s.home}|${s.stage}|${(s.services ?? []).join(",")}|${s.buildings
         .map((b) => b.id)
         .sort()
         .join(",")}|${terrainMaterialVersion()}`;
     if (key === F.groundKey) return;
     F.groundKey = key;
-    const standing = new Set(s.buildings.map((b) => DOOR[b.id]));
+    const standing = new Set([...s.buildings.map((b) => DOOR[b.id]), ...(s.services ?? [])]);
     const started = performance.now();
     F.terrain = paintTownTerrain({
       width: MAP_W * TILE,
@@ -1491,7 +1611,11 @@ export function createTownView(host: HTMLElement): TownView {
       })),
       fire: PLOTS.fire,
       plaza: s.stage >= BUILDINGS.length,
-      aprons: [...(s.home ? [PLOTS.house] : []), ...s.buildings.map((b) => PLOTS[b.id])],
+      aprons: [
+        ...(s.home ? [PLOTS.house] : []),
+        ...s.buildings.map((b) => PLOTS[b.id]),
+        ...(s.services ?? []).map((id) => PLOTS[id]),
+      ],
       hillFoot,
       shadows: trees,
     });
@@ -1529,7 +1653,7 @@ export function createTownView(host: HTMLElement): TownView {
     bank: "bank",
     kennel: "kennel",
   };
-  const SPURS = new Set(Object.values(DOOR));
+  const SPURS = new Set([...Object.values(DOOR), "guild", "pool", "device"]);
   /** the forest: trees on a jittered grid, cleared from the paths, the plots and the cliff */
   let trees: (Pt & { k: boolean; h: number; d?: number })[] = [];
   function forest(): void {
@@ -1537,7 +1661,14 @@ export function createTownView(host: HTMLElement): TownView {
     const keep = (p: Pt): boolean => {
       if (p.y < (5.6 + OY) * TILE || (p.x > (CX - 19.8) * TILE && p.x < (CX - 16.2) * TILE))
         return false;
-      if (EDGES.some(([a, b, r]) => segDist(p, NODES[a]!, NODES[b]!) <= (r + 0.9) * TILE))
+      if (
+        EDGES.some(
+          ([a, b, r]) =>
+            (!(["guild", "pool", "device"] as string[]).includes(b) ||
+              state?.services?.includes(b as ServiceId)) &&
+            segDist(p, NODES[a]!, NODES[b]!) <= (r + 0.9) * TILE,
+        )
+      )
         return false;
       if (dist(p, PLOTS.fire) < 3 * TILE) return false;
       if (
@@ -1547,8 +1678,17 @@ export function createTownView(host: HTMLElement): TownView {
         )
       )
         return false;
+      if (
+        state?.services?.includes("pool") &&
+        Math.abs(p.x - (SERVICE_PLOTS.pool.x - 46)) < 30 &&
+        p.y > SERVICE_PLOTS.pool.y - 14 &&
+        p.y < SERVICE_PLOTS.pool.y + 62
+      )
+        return false;
       if (Object.values(FOLK_AT).some((q) => dist(p, q) < 1.6 * TILE)) return false;
       for (const [id, pl] of Object.entries(PLOTS)) {
+        if ((id === "guild" || id === "pool" || id === "device") && !state?.services?.includes(id))
+          continue;
         const hw =
           id === "mouth" ? 4.2 * TILE : id === "fire" || id === "crate" ? 1.4 * TILE : 3.3 * TILE;
         if (Math.abs(p.x - pl.x) < hw && p.y > pl.y - pl.h * 0.55 && p.y < pl.y + 1.6 * TILE)
@@ -1774,6 +1914,40 @@ export function createTownView(host: HTMLElement): TownView {
       }
       if (q.id === "town_stall") emitters("town_stall", q, night, 12, 0, 0.6, q.h / 40);
     }
+    for (const id of s.services ?? []) {
+      const p = SERVICE_PLOTS[id];
+      const reincarnating =
+        id === "device" && s.residents?.some((r) => r.phase === "reincarnating");
+      const animate = !motionPreference.matches && effectsLevel() !== "off";
+      const spriteId =
+        id === "device" && reincarnating
+          ? `town_service_device_active_${animate ? Math.floor(t * 2) & 1 : 0}`
+          : `town_service_${id}`;
+      sprite(spriteId, p.h, p.x, p.y, { ground: true });
+      if (id === "pool") {
+        sprite("town_bench", 8, p.x - 46, p.y + 12, { ground: true });
+        if ((s.residents?.filter((r) => r.resting && r.phase !== "reincarnating").length ?? 0) > 1)
+          sprite("town_bench", 8, p.x - 46, p.y + 48, { ground: true });
+        if (animate) {
+          const waves = effectsLevel() === "low" ? 1 : 2;
+          for (let i = 0; i < waves; i++)
+            sprite(
+              "fx_dot_a4bcd6",
+              1,
+              p.x - 10 + i * 18 + Math.round(Math.sin(t * 0.7 + i) * 2),
+              p.y - 10 + i * 3,
+              { z: zOf(p.y) + 0.0001, fade: 0.5 },
+            );
+        }
+      }
+      if (night > 0.15 && F.lights.length < MAX_LIGHTS) {
+        const lx = id === "guild" ? p.x + 17 : id === "device" ? p.x + 16 : p.x - 25;
+        const ly = id === "guild" ? p.y - 20 : id === "device" ? p.y - 9 : p.y - 6;
+        if (id === "pool") sprite("town_lantern", 8, lx, ly, { ground: true });
+        const a = night * 0.42;
+        F.lights.push({ x: lx, y: ly, r: id === "pool" ? 12 : 17, c: [a, 0.64 * a, 0.3 * a] });
+      }
+    }
     folk(s, night);
     if (s.board) sprite("town_board", PLOTS.board.h, PLOTS.board.x, PLOTS.board.y);
     // the buildings: scaffold → built (dust, a glint)
@@ -1887,6 +2061,13 @@ export function createTownView(host: HTMLElement): TownView {
         const g = (t - walkingIn.t0) / (walkingIn.t1 - walkingIn.t0);
         if (g > 0.75) fade = Math.min(1, (g - 0.75) * 4);
       }
+      if (w.reincarnating)
+        fade = Math.max(
+          fade,
+          motionPreference.matches || effectsLevel() === "off"
+            ? 0.35
+            : 0.3 + Math.sin(t * 2) * 0.12,
+        );
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
       const ids = step ? w.walk : w.sprite;
       const previousQuads = F.n;
@@ -2063,6 +2244,10 @@ export function createTownView(host: HTMLElement): TownView {
     add(PLOTS.tent, 18);
     add(PLOTS.crate, 10);
     for (const b of s.buildings) add(PLOTS[b.id], 44);
+    for (const id of s.services ?? [])
+      add(PLOTS[id], id === "guild" ? 32 : id === "pool" ? 30 : 23);
+    if (s.services?.includes("pool"))
+      add({ x: SERVICE_PLOTS.pool.x - 46, y: SERVICE_PLOTS.pool.y + 48, h: 24 }, 12);
     for (const w of s.workers) {
       const p = workerAt(w);
       if (p) add({ ...p, h: 24 }, 10);
@@ -2234,12 +2419,14 @@ export function createTownView(host: HTMLElement): TownView {
           legsAlong([NODES.tent!, ...route("tent", nearestNode(p)), p], t + 0.2, SPEED * 1.3, legs);
           arrive.set(w.id, legs);
         }
+      if (!prev || JSON.stringify(prev.services) !== JSON.stringify(s.services)) forest();
       const key = (x: TownState | null): string =>
         x
           ? JSON.stringify([
               x.home,
               x.hero,
               x.residents,
+              x.services,
               x.selectedHero,
               x.pets,
               x.parties.length,
@@ -2329,6 +2516,8 @@ export function createTownView(host: HTMLElement): TownView {
           b = css(p.x + s.w / 2, p.y);
         return { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y };
       }
+      if ((id === "guild" || id === "pool" || id === "device") && !state.services?.includes(id))
+        return null;
       const plot =
         id === "staked" ? (state.staked ? PLOTS[state.staked.id] : null) : PLOTS[id as PlotId];
       if (!plot) return null;
@@ -2338,9 +2527,14 @@ export function createTownView(host: HTMLElement): TownView {
         tent: ["town_tent"],
         crate: ["town_crate"],
         board: ["town_board"],
+        guild: ["town_service_guild"],
+        pool: ["town_service_pool"],
+        device: ["town_service_device"],
       };
       let s: Slot;
-      if (id === "staked") s = atlas.get("town_plot", 16);
+      if (id === "tent" && state.home)
+        s = atlas.get([`town_house_${houseLook(state)}`, "town_house_1"], PLOTS.house.h);
+      else if (id === "staked") s = atlas.get("town_plot", 16);
       else if ((BUILDINGS as readonly string[]).includes(id)) {
         const b = state.buildings.find((x) => x.id === id);
         if (!b) return null;
@@ -2396,6 +2590,9 @@ export function createTownView(host: HTMLElement): TownView {
         windTufts,
         windSignature,
         buildings: s?.buildings.map((b) => b.id) ?? [],
+        services: s?.services ?? [],
+        residentStates:
+          s?.residents?.map((r) => ({ id: r.id, resting: !!r.resting, phase: r.phase })) ?? [],
         activeBuilds: [...builtAt.keys()],
         buildEvents,
         buildDust: parts.filter((p) => p.kind === "dust").length,

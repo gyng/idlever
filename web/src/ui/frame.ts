@@ -231,7 +231,7 @@ export function renderBar(
                   class: shownName ? "heir-ordinal hero-name" : "heir-ordinal",
                   title:
                     opts.heroName === undefined && presentHero
-                      ? /* copy:label */ `Life ${presentHero.incarnation}`
+                      ? /* copy:label */ `${presentHero.name} · Life ${presentHero.incarnation}`
                       : undefined,
                   "data-current-hero": opts.heroName === undefined ? presentHero?.id : undefined,
                 },

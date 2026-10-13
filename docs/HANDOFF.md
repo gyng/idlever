@@ -4,9 +4,34 @@ Owner resumed the full queue on2026-10-13 with the active objective:
 **resume and finish all queued items verified and refined**. Prior pause is
 revoked. Commit/push and milestone screenshots remain authorized. No blanket
 new deployment is inferred; Pages still deploys published releases only.
-All38 current product items plus retained visual/content work remain in scope.
+All39 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
+
+Current checkpoint: a327b8dd is pushed (persistent heroes, confirmed stat
+rebirth, Journal earned links and depth map). Cut214 home-service visuals and
+adaptive labels are complete at their scoped contract:12 viewport/name/font
+layouts, six read-only routes,38 state checks and warm matched CPU increments
+of +1.0ms day/+0.8ms night p95. Proof uses explicit0f2e91/a1f6777 packages;
+this does not certify cold cost, full lighting or three-resting-hero spacing.
+Cut214 source is ready for its own commit. Final captures:
+docs/evidence/cut214/final-captures/400-gl-earned-night.png.
+
+Cut215 legendary runtime is implemented and under final client acceptance.
+Three canonical effects, guaranteed first eligible boss discovery, deterministic
+1/8 repeat drops, town-wide permanent choices, free reuse and shared paid Forge
+ranks. Ordinary high-quality gear is Masterwork, distinct from named Legendary.
+Core semantic13/13, existing kit7/7 and native880/0/6 ignored pass; full native
+precedes the metadata-only rarity field. Current warnings-denied Clippy and
+8-seed idle-d8/idle-d13/reach pass; broad balance is still open. Final real WASM
+6539458bytes SHA304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda.
+Actual earned seed1/13 Forge/loadout305 checks and48 menu layouts pass through
+the normal fresh-server runner. All-three controlled catalogue and Root-owned
+Watch/Report/Death discovery messaging are still being checked. Agents own
+all jobs; do not stop a live validator for an observation timeout.
+
+Earlier integration notes below are retained with their original package and
+scope identities; they are historical, not the current active-job inventory.
 
 Active integration checkpoint (not yet committed): Cut208 earned-client acceptance
 passes326 real checks on the prior802c WASM. Complete milestones now retain

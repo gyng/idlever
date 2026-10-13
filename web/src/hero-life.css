@@ -99,8 +99,9 @@ html body .game-window[data-material="bloodlines"] .hero-life-panel :is(button, 
 }
 .topbar .heir-ordinal.hero-name {
   max-inline-size: min(12rem, calc(100vw - 6rem));
-  white-space: normal;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.25;
   font-size: 0.9375rem;
 }

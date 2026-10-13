@@ -762,8 +762,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           node.getBoundingClientRect().height > 0,
       )
       .map(box);
-    // Keep other scene actions' central44px accessible. A building's own
-    // information action can sit over its body to retain a clear association.
+    // Keep every scene action's central44px accessible, including its own
+    // information label. The label stays near the body without intercepting it.
     for (const [id, node] of btns) {
       if (node.hidden || id === "staked") continue;
       const r = box(node);
@@ -788,24 +788,29 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       );
       const xs = [
         ...new Set(
-          [preferredX, r.x - w - 8, r.x + r.w + 8, 6, el.clientWidth - w - 6].map((x) =>
-            Math.max(6, Math.min(el.clientWidth - w - 6, x)),
-          ),
+          [
+            preferredX,
+            r.x - w - 8,
+            r.x + r.w + 8,
+            6,
+            el.clientWidth - w - 6,
+            ...occupied.flatMap((other) => [other.x - w - 8, other.x + other.w + 8]),
+          ].map((x) => Math.max(6, Math.min(el.clientWidth - w - 6, x))),
         ),
       ];
       let best = { x: preferredX, y: preferredY, w, h },
         bestScore = Infinity;
-      const ys = [preferredY];
+      const ys = [
+        preferredY,
+        ...occupied.flatMap((other) => [other.y - h - 8, other.y + other.h + 8]),
+      ];
       for (let offset = 8; offset < el.clientHeight; offset += 8)
         ys.push(preferredY - offset, preferredY + offset);
       for (const y of ys) {
         if (y < 6 || y + h > el.clientHeight - 6) continue;
         for (const x of xs) {
           const candidate = { x, y, w, h };
-          const collisions = occupied.reduce(
-            (sum, other) => sum + (other.owner === id ? 0 : overlap(candidate, other)),
-            0,
-          );
+          const collisions = occupied.reduce((sum, other) => sum + overlap(candidate, other), 0);
           const score = collisions * 1_000_000 + (x - preferredX) ** 2 + (y - preferredY) ** 2;
           if (score < bestScore) {
             best = candidate;

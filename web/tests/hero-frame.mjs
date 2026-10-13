@@ -60,7 +60,7 @@ try {
         };
       });
       assert.equal(proof.name, "Mara of the Lantern Vale");
-      assert.match(proof.title, /^Life \d+$/);
+      assert.match(proof.title, /^Mara of the Lantern Vale · Life \d+$/);
       assert.equal(proof.fontSize, 15 * scale, "actual name scales with200% root text");
       assert.ok(proof.overflow <= 1, JSON.stringify({ width, scale, proof }));
       assert.ok(

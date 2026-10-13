@@ -88,3 +88,19 @@ The root owns Watch mounting, released-HUD timing and new known-boss wire.
 Those changes and the subsequent real-package integration remain pending;
 component/renderer correctness does not close whole-Watch layout/POI acceptance.
 Renderer/UI module source is frozen and no core truth was duplicated in TS.
+
+## Final whole-Watch integration
+
+The subsequent real-package focused check passes63 assertions, including six
+320/400/1440 normal/200% dense17-marker layouts,44px inspection controls,
+paused state and speed1/4/8 expiry. All17 known markers remain in the expanded
+list; the condensed shaft spaces labels by at least32px.
+
+Whole Watch on actual earned24h seed1 imports passes all six viewport/font
+combinations with released HUD depth equal to the map, real Rust-known Warlord
+metadata, Escape/focus return, zero page errors and no document overflow.
+The shaft is80px; expanded panel212px at320 and240px otherwise. Evidence is
+`docs/evidence/cut212/whole-watch.json` and `*-whole-watch*.png`. These integration
+checks use6480205-byte WASM(a1f6777…), separately from the unchanged802c54f2…
+performance baseline. They close the earlier pending mounting/known-boss/layout
+proof, not full statistical balance or broad fun acceptance.
