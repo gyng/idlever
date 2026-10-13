@@ -1,0 +1,23 @@
+{
+  "wasm": {
+    "bytes": 6640738,
+    "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+  },
+  "entries": [
+    {
+      "id": "earned-seed1-boots",
+      "earned": true,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-boots-home.game.json.gz",
+      "statusOnly": true,
+      "expectedFocusStatus": "Collection complete"
+    },
+    {
+      "id": "controlled-focus-stop",
+      "earned": false,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/controlled/source-focus-stopped-after-three.game.json.gz",
+      "statusOnly": true,
+      "expectedFocusStatus": "Source missed on 3 delves. Normal delves resume."
+    }
+  ],
+  "source": "Final copy-only package diagnostic: actual earned completed collection vs controlled actual three-miss stop, read-only status/Gold/save assertions. Prior cb19 2872/72 acceptance remains its own phase."
+}

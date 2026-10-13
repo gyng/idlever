@@ -92,6 +92,8 @@ pub fn refit_build(g: &mut Game, class_changed: bool) {
             .iter()
             .chain(run.hero.weapon.iter())
             .chain(run.hero.armour.iter())
+            .chain(run.hero.helm.iter())
+            .chain(run.hero.boots.iter())
             .filter(|i| !crate::kit::is_kit_id(i.id))
             .cloned()
             .collect();
@@ -122,6 +124,8 @@ pub fn refit_build(g: &mut Game, class_changed: bool) {
             .iter_mut()
             .chain(hero.weapon.iter_mut())
             .chain(hero.armour.iter_mut())
+            .chain(hero.helm.iter_mut())
+            .chain(hero.boots.iter_mut())
         {
             i.value_claimed = true;
         }

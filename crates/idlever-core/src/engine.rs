@@ -452,6 +452,8 @@ pub struct Run {
     pub pattern_receipts: Vec<Item>,
     #[serde(default, skip_serializing_if="Vec::is_empty")]
     pub discoveries: Vec<crate::legendary::Discovery>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub set_focus: Option<crate::armour_sets::Focus>,
     /// Cut 196: units first converted this run, independent of later physical fate.
     #[serde(default)]
     pub converted_units: crate::shared::Shared<Vec<(u32, String)>>,
@@ -1351,6 +1353,7 @@ pub struct Ctx<'a> {
     pub grudges: &'a [Grudge],
     pub forge: &'a BTreeMap<String, ForgeRow>,
     pub owned_shapes: &'a mut BTreeSet<String>,
+    pub piece_victories: &'a mut BTreeMap<String,u32>,
     /// The own rows in play (`max_rows_of` the unlocks and the variant, which the context holds
     /// unchanged): read when a row is chosen, not on every tick — `Ctx::max_rows`. `Some` fixes it.
     pub max_rows: std::cell::Cell<Option<usize>>,
@@ -1654,6 +1657,12 @@ pub struct LineageState {
     pub starting_config: Option<crate::kit::StartingConfig>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub starting_selected: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub set_focus: Option<crate::armour_sets::Focus>,
+    #[serde(default,skip_serializing_if="Vec::is_empty")]
+    pub set_last_equipped: Vec<Option<String>>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub set_focus_note: Option<String>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub named_kits: Vec<crate::kit::NamedKit>,
     #[serde(default = "starting_kit_id")]
@@ -2024,6 +2033,9 @@ impl LineageState {
             kit: BTreeMap::new(),
             starting_config: None,
             starting_selected: None,
+            set_focus: None,
+            set_last_equipped: Vec::new(),
+            set_focus_note: None,
             named_kits: Vec::new(),
             next_named_kit: 1,
             night_net: 0,
@@ -3502,6 +3514,10 @@ impl Game {
 
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
+        l.starting_kits.armour_sets=crate::armour_sets::wire(&self.lineage,self.run.as_ref().map(|r|&r.hero));
+        if self.lineage.set_focus.is_some()&&self.run.as_ref().is_some_and(|r|r.set_focus.is_none()&&r.over.is_none()) {
+            for set in &mut l.starting_kits.armour_sets {if set.focus.active&&set.focus.blocked.is_none() {set.focus.status="Queued after this prepared expedition".into();}}
+        }
         l.journal=Some(crate::journal::wire(&self.lineage,crate::persistent::away(self)));
         l.persistent_hero=Some(crate::persistent::wire(&self.lineage,crate::persistent::away(self)));
         if let Some(run)=&self.run { l.depth_landmarks=run.route.bosses().into_iter().filter(|(kind,_)|self.lineage.facts.contains(&format!("foe:{kind}"))).map(|(kind,depth)|crate::wire::DepthLandmark{depth,kind:"boss".into(),id:kind.into(),label:kind_title(kind)}).collect(); }
@@ -4135,6 +4151,8 @@ impl Game {
         // lit) starts on D1 and says so.
         // Cut 118 §1–2: a trial opted into (away) or a sought boss (a token spent) starts from his stone
         let goal = crate::feats::at_send(self, id);
+        let focus=if goal.is_none(){crate::armour_sets::at_send(self)}else{None};
+        let goal=goal.or_else(||focus.as_ref().map(|(stone,_)|*stone));
         let (start, start_note, toll) = match goal {
             Some(stone) => self.pay_start_at(stone),
             None => self.pay_start(),
@@ -4248,7 +4266,7 @@ impl Game {
                 if let Some(p)=crate::firearm::Profile::of(&item.kind) {item.firearm=Some(crate::firearm::Chambers::loaded(p));}
             }
         }
-        for it in hero.inv.iter_mut().chain(hero.weapon.iter_mut()).chain(hero.armour.iter_mut()) {
+        for it in hero.inv.iter_mut().chain(hero.weapon.iter_mut()).chain(hero.armour.iter_mut()).chain(hero.helm.iter_mut()).chain(hero.boots.iter_mut()) {
             it.value_claimed = true;
         }
         let mut run = Run {
@@ -4314,6 +4332,7 @@ impl Game {
             own_throw_harm: 0,
             found_units: Vec::new().into(),
             pattern_receipts: Vec::new(),
+            set_focus:focus.map(|(_,f)|f),
             discoveries: Vec::new(),
             converted_units: Vec::new().into(),
             found_gone: Vec::new().into(),
@@ -4643,6 +4662,7 @@ impl Game {
         let Game { run, lineage, events, sim, prov, row_tally, .. } = self;
         let run = run.as_mut().expect("no live run");
         let set = lineage.active_set.min(lineage.sets.len() - 1);
+        let town=&mut *lineage.town;
         let cx = Ctx {
             vault_pref: &lineage.vault_pref,
             lost: &lineage.lost,
@@ -4656,7 +4676,8 @@ impl Game {
             unlocks: &lineage.unlocks,
             grudges: &lineage.grudges,
             forge: &lineage.forge,
-            owned_shapes: &mut lineage.town.owned_shapes,
+            owned_shapes: &mut town.owned_shapes,
+            piece_victories: &mut town.piece_victories,
             max_rows: std::cell::Cell::new(None),
             events,
             sim: *sim,
@@ -4792,6 +4813,7 @@ impl Game {
         if self.run.as_ref().is_none_or(|r| r.over.is_some()) {
             return;
         }
+        crate::armour_sets::departure(self);
         // Take control is the watched run's alone: a sim (a forecast, a verdict's replay) or an absence plays the rules
         if (self.sim || self.lineage.in_absence) && self.run.as_ref().is_some_and(|r| r.manual) {
             let r = self.run.as_mut().unwrap();
@@ -5005,6 +5027,8 @@ impl Game {
             inv: h.inv.iter().map(|i| to_inv(i, &l.facts, &l.flavours)).collect(),
             weapon: h.weapon.as_ref().map(|w| w.kind.clone()),
             armour: h.armour.as_ref().map(|a| a.kind.clone()),
+            helm: h.helm.as_ref().map(|a| a.kind.clone()),
+            boots: h.boots.as_ref().map(|a| a.kind.clone()),
             class: h.class.name().into(),
             specialization:h.specialization,
             trait_: run.trait_.name().into(),
@@ -5196,6 +5220,7 @@ impl Game {
             self.capsules.keep_kill(run.id);
         }
         let tier = run.over.unwrap_or(ExitTier::Return);
+        if !self.sim {crate::armour_sets::finish(self,&run);}
         if !self.sim { self.lineage.persistent.completed=self.lineage.persistent.completed.saturating_add(1); }
         let legacy_earned = if !self.sim {
             crate::legacy::ensure(&mut self.lineage);
@@ -5764,6 +5789,7 @@ impl Game {
         if let Some(a) = &*run.hero.armour {
             all.push(a.clone());
         }
+        all.extend(run.hero.helm.iter().chain(run.hero.boots.iter()).cloned());
         // QA on 778fa1b (qaV): the melee weapon parked while the bow is up comes home too.
         if let Some(w) = &run.bow_swap {
             all.push(w.clone());

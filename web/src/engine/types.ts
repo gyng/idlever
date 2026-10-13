@@ -126,6 +126,8 @@ export type Snapshot = {
     inv: InvItem[];
     weapon?: string;
     armour?: string;
+    helm?: string;
+    boots?: string;
     class: string;
     trait: string;
     specialization?: "sentinel" | "hexbinder";
@@ -1326,7 +1328,56 @@ export type Journal = {
   discoveries: { id: string; title: string; body: string }[];
   quest: JournalQuest | null;
 };
-export type StartingConfig = { weapon: string | null; armour: string | null; supplies: string[] };
+export type ArmourSlot = "helm" | "armour" | "boots";
+export type ArmourPins = Partial<Record<ArmourSlot, string>>;
+export type StartingConfig = {
+  weapon: string | null;
+  armour: string | null;
+  supplies: string[];
+  helm?: string | null;
+  boots?: string | null;
+  follow_set?: string | null;
+  pins?: ArmourPins | null;
+};
+export type ArmourEquipment = {
+  slot: ArmourSlot;
+  kind: string | null;
+  label: string;
+  origin: "pin" | "follow" | "fallback" | "default" | "equipped";
+};
+export type ArmourBonus = { required: number; label: string; effect: string; active: boolean };
+export type ArmourSet = {
+  id: string;
+  label: string;
+  pieces: {
+    slot: ArmourSlot;
+    kind: string;
+    label: string;
+    owned: boolean;
+    compatible: boolean;
+    available: boolean;
+    blocked: string | null;
+    source: string;
+    victories: number;
+    guaranteed_by: number;
+  }[];
+  actual: ArmourEquipment[];
+  next: ArmourEquipment[];
+  actual_count: number;
+  next_count: number;
+  actual_bonuses: ArmourBonus[];
+  next_bonuses: ArmourBonus[];
+  focus: {
+    active: boolean;
+    available: boolean;
+    label: string;
+    status: string;
+    blocked: string | null;
+    source: string | null;
+    depth: number | null;
+    failures: number;
+  };
+};
 export type NamedStartingKit = { id: string; name: string; config: StartingConfig };
 export type StartingGearChoice = {
   kind: string;
@@ -1360,6 +1411,9 @@ export type StartingKits = {
   armours: StartingGearChoice[];
   actual_weapon: string;
   actual_armour: string | null;
+  helms: StartingGearChoice[];
+  boots: StartingGearChoice[];
+  armour_sets: ArmourSet[];
 };
 export type HeroService = { id: string; name: string; available: boolean; body: string };
 export type HeroRebirth = {
@@ -1864,6 +1918,7 @@ export type MeterWire = {
 };
 export type SnapMeters = { run: MeterWire; fight?: MeterWire; fighting?: boolean };
 export interface Engine {
+  setSetFocus?(family: string | null): Lineage;
   setStartingKit?(configJson: string): Lineage;
   saveStartingKit?(name: string, configJson: string, id?: string): Lineage;
   selectStartingKit?(id: string): Lineage;

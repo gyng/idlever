@@ -24,6 +24,8 @@ pub struct Town {
     /// Actual legendary finds unlock their equipment shape for every resident.
     #[serde(default, skip_serializing_if="std::collections::BTreeSet::is_empty")]
     pub owned_shapes: std::collections::BTreeSet<String>,
+    #[serde(default,skip_serializing_if="std::collections::BTreeMap::is_empty")]
+    pub piece_victories: std::collections::BTreeMap<String,u32>,
     /// Multi-bloodline Savings pays per shared night of completed expeditions.
     #[serde(default, skip_serializing_if="Option::is_none")]
     pub shared_night_runs: Option<u32>,

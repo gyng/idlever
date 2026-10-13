@@ -1030,7 +1030,10 @@ export function renderWatch(app: App): Mounted {
   const depthMap = createDepthMap();
   let mapLineage = app.lineage;
   const releasedBossMarks = new Map<string, DepthMark>();
-  const mapKeepOut = () => paintKeepOut(true);
+  const mapKeepOut = () => {
+    placeDock();
+    paintKeepOut(true);
+  };
   depthMap.el.addEventListener("toggle", mapKeepOut);
   const el = h(
     "main",
@@ -1059,6 +1062,50 @@ export function renderWatch(app: App): Mounted {
     cons.el,
     ...wide.els,
   );
+
+  const stage = el.querySelector<HTMLElement>(".stage")!;
+  const dockMedia = matchMedia("(min-width: 1024px)");
+  const placeDock = (): void => {
+    if (!el.isConnected) return;
+    const font = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const inStage = stage.contains(cons.el);
+    const inspectorWidth = depthMap.el.open
+      ? (depthMap.el.querySelector(".depth-map-details")?.getBoundingClientRect().width ?? 0) + 12
+      : 0;
+    const availableHeight = stage.clientHeight + (inStage ? 0 : cons.el.offsetHeight);
+    const floating =
+      dockMedia.matches &&
+      stage.clientWidth >= Math.max(480, font * 28) + 96 + inspectorWidth &&
+      availableHeight >= Math.max(440, font * 16);
+    if (floating !== inStage) {
+      const focus = document.activeElement;
+      if (floating) stage.append(cons.el);
+      else el.insertBefore(cons.el, wide.els[0] ?? null);
+      el.classList.toggle("floating-controls", floating);
+      if (focus instanceof HTMLElement && cons.el.contains(focus))
+        focus.focus({ preventScroll: true });
+    }
+    stage.style.setProperty("--watch-dock-h", floating ? `${cons.el.offsetHeight}px` : "0px");
+    stage.style.setProperty("--watch-dock-right", `${104 + inspectorWidth}px`);
+    paintKeepOut(true);
+  };
+  let dockFrame = 0;
+  const queueDock = (): void => {
+    if (dockFrame) return;
+    dockFrame = requestAnimationFrame(() => {
+      dockFrame = 0;
+      placeDock();
+    });
+  };
+  const dockObserver = new ResizeObserver(queueDock);
+  dockObserver.observe(stage);
+  dockObserver.observe(cons.el);
+  const dockFontObserver = new MutationObserver(queueDock);
+  dockFontObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["style", "class"],
+  });
+  dockMedia.addEventListener("change", placeDock);
 
   let viewer: Viewer | null = null;
   let mode: Mode = mode0,
@@ -3115,6 +3162,11 @@ export function renderWatch(app: App): Mounted {
     keepAt = now;
     const c = canvas.getBoundingClientRect();
     const els: Element[] = [...el.querySelectorAll(".hud.top"), combatLog, tactics.el, depthMap.el];
+    if (depthMap.el.open) {
+      const inspector = depthMap.el.querySelector(".depth-map-details");
+      if (inspector) els.push(inspector);
+    }
+    if (stage.contains(cons.el)) els.push(cons.el);
     if (!foldLine.hidden && foldLine.classList.contains("docked")) els.push(foldLine);
     for (const x of [banner, ticker, whyLine, whyTip])
       if (x.classList.contains("show")) els.push(x);
@@ -5091,6 +5143,10 @@ export function renderWatch(app: App): Mounted {
     el,
     dispose: () => {
       disposed = true;
+      dockObserver.disconnect();
+      cancelAnimationFrame(dockFrame);
+      dockFontObserver.disconnect();
+      dockMedia.removeEventListener("change", placeDock);
       ctl.dispose();
       depthMap.dispose();
       depthMap.el.removeEventListener("toggle", mapKeepOut);

@@ -1,0 +1,99 @@
+/* Primary resource meaning stays accessible beside its familiar gold icon/$.
+   Legacy and best depth retain their text labels. */
+html body .topbar .gold > .resource-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  html body main.frame > .console {
+    justify-self: center;
+    inline-size: max-content;
+    max-inline-size: calc(100% - 1rem);
+    border-width: 12px;
+    margin-block-end: 8px;
+  }
+  html body main.frame > .console .console-row {
+    margin: 0;
+    max-inline-size: 100%;
+    grid-template-columns: 72px minmax(0, 1fr) 5rem;
+    gap: 12px;
+  }
+  html body main.frame.camp > .console .console-row {
+    grid-template-columns: minmax(0, 1fr) 5rem;
+  }
+  html body main.frame > .console .cmd {
+    max-inline-size: none;
+    inline-size: min(74vw, calc(var(--dock-count, 8) * 5.25rem));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 5.25rem));
+    grid-auto-rows: minmax(4.5rem, auto);
+    gap: 6px;
+  }
+  html body main.frame > .console .cmd .tile.empty:not(.tile-gap) {
+    display: none;
+  }
+  html body main.frame .console .cmd .tile {
+    min-inline-size: 44px;
+    min-block-size: 44px;
+    box-sizing: border-box;
+  }
+  html body main.frame .console .cmd .tile .tl {
+    font-size: 0.875rem;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  html body main.frame > .console .portrait {
+    inline-size: 72px;
+    block-size: 72px;
+  }
+  html body main.frame > .console .gem {
+    inline-size: 5rem;
+    min-inline-size: 5rem;
+    block-size: 5rem;
+    font-size: 1rem;
+  }
+
+  html body main.frame.watch.floating-controls .stage > .console {
+    position: absolute;
+    inset: auto var(--watch-dock-right, 104px) 8px auto;
+    z-index: 10;
+    inline-size: max-content;
+    max-inline-size: calc(100% - var(--watch-dock-right, 104px) - 8px);
+    border-width: 12px;
+    padding: 0;
+    margin: 0;
+  }
+  html body main.frame.watch.floating-controls .console-row {
+    margin: 0;
+    grid-template-columns: 72px minmax(0, 1fr) 5rem;
+    gap: 12px;
+  }
+  html body main.frame.watch.floating-controls .console .cmd {
+    max-inline-size: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  html body main.frame.watch.floating-controls .console .cmd .tile {
+    inline-size: 5.25rem;
+    min-block-size: 4.5rem;
+  }
+  html body main.frame.watch.floating-controls .console .portrait {
+    inline-size: 72px;
+    block-size: 72px;
+  }
+  html body main.frame.watch.floating-controls .console .gem {
+    inline-size: 5rem;
+    min-inline-size: 5rem;
+    block-size: 5rem;
+    font-size: 1rem;
+  }
+  html body main.frame.watch.floating-controls .watch-messages {
+    bottom: calc(var(--watch-dock-h, 0px) + 20px);
+  }
+}

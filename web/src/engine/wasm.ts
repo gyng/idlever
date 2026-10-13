@@ -266,6 +266,9 @@ export class WasmEngine implements Engine {
   setStartingKit(configJson: string): Lineage {
     return this.call("setStartingKit", configJson);
   }
+  setSetFocus(family: string | null): Lineage {
+    return this.call("setSetFocus", family ?? undefined);
+  }
   saveStartingKit(name: string, configJson: string, id?: string): Lineage {
     return this.call("saveStartingKit", name, configJson, id);
   }

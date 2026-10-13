@@ -270,6 +270,8 @@ pub struct FloorItemWire {
 
 /// Player-facing kind name. Persistent IDs remain stable across naming changes.
 pub fn kind_name(kind: &str) -> String {
+    if kind=="ironcap" {return "Ironcap".into();}
+    if kind=="trailboots" {return "Trailboots".into();}
     if let Some(d)=crate::legendary::definition(kind) {return d.label.into();}
     match kind {
         "long_gun" => "rifle".into(),

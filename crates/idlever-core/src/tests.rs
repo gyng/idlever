@@ -593,6 +593,7 @@ fn monkey_steals_then_flees_and_drops_on_death() {
         let run = run.as_mut().unwrap();
         let set = lineage.active_set;
         let max_rows = lineage.max_rows();
+        let town=&mut *lineage.town;
         (
             run,
             crate::engine::Ctx {
@@ -603,7 +604,8 @@ fn monkey_steals_then_flees_and_drops_on_death() {
                 unlocks: &lineage.unlocks,
                 grudges: &lineage.grudges,
                 forge: &lineage.forge,
-                owned_shapes: &mut lineage.town.owned_shapes,
+                owned_shapes: &mut town.owned_shapes,
+                piece_victories: &mut town.piece_victories,
                 max_rows: std::cell::Cell::new(Some(max_rows)),
                 events: &mut cx_events,
                 sim: true,
@@ -9793,6 +9795,7 @@ fn stolen_coins_come_back_from_a_killed_thief() {
     let run = run.as_mut().unwrap();
     let set = lineage.active_set;
     let max_rows = lineage.max_rows();
+    let town=&mut *lineage.town;
     let mut cx = crate::engine::Ctx {
         facts: &mut lineage.facts,
         kill_counts: &mut lineage.kill_counts,
@@ -9801,7 +9804,8 @@ fn stolen_coins_come_back_from_a_killed_thief() {
         unlocks: &lineage.unlocks,
         grudges: &lineage.grudges,
         forge: &lineage.forge,
-        owned_shapes: &mut lineage.town.owned_shapes,
+        owned_shapes: &mut town.owned_shapes,
+        piece_victories: &mut town.piece_victories,
         max_rows: std::cell::Cell::new(Some(max_rows)),
         events: &mut evs,
         sim: true,

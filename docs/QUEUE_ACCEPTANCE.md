@@ -24,9 +24,9 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 13 | Song/wish purpose and busywork audit | Open | Pending |
 | 14 | Base as an ant farm / garden | Open | Pending |
 | 15 | Delving portraits over the cave | Scoped pass | Cut194: actual two-delver portraits, ID/watch navigation and 8h refresh at400/1440; broader states/layout audit remains |
-| 16 | Desktop bottom-bar space | Open | Pending |
-| 17 | Floating delve controls | Open | Pending |
-| 18 | Compact top bar | Open | Pending |
+| 16 | Desktop bottom-bar space | Scoped pass | Cut217 finald69524 viewport/font states and actual controls pass; desktop console content-width, meaningful controls retained |
+| 17 | Floating delve controls | Scoped pass | Cut217 finald695 adaptive dock, actual resizefocus/map/Speed/Pause/Hand/Town proof; +156px height and17.88–22.75% normal desktop unobscured area |
+| 18 | Compact top bar | Scoped pass | Cut217 finald69524 state geometry, compact bloodline marker and Gold icon/value with full accessible meanings; current/historical hero identity checks pass |
 | 19 | Forge leash and pet progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 20 | Clown class | Open | Pending |
 | 21 | Engineer class | Open | Pending |
@@ -48,7 +48,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 37 | Easy builds/specs; deliberate hero NG+ | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Cut214 physical facilities and adaptive header/labels pass12 layouts/six read-only routes/38 state checks. Survivor-friendly trait unlocks and broader guild content remain |
 | 38 | Building construction and upgrade animations | Scoped pass | Cut195: real construction/upgrades,21 transition cases, GL400/day and Canvas1440/night preferences; quiet frame-cost and broader visual review remain |
 | 39 | Legendary drops auto-kept as permanent Forge choices | Scoped pass | Cut215:16 current native semantic/reset/parity cases,7 existing-kit cases, Clippy,8-seed targeted pacing and16 earned first sources. Actual menus305/48 layouts, controlled catalogue103/24, discovery221/42 layouts, final old-grind-row16 checks; free reuse/permanent town-wide ownership/shared gear ranks/duplicates. Later earned bosses/duplicate timing and broad balance/fun remain open |
-| 40 | Legendary armour sets inspired by D2/D3 | Queued design | Cut216 proposal: helm/body/boots, equipped2/3 and3/3 bonuses, permanent automatic collection/free reuse, viable2+1 hybrids, staged missing-piece unlocks. Follow set/pins/free next-departure refill and bounded Scout source focus designed; existing Apprentice spending retained. Slots/effects/controller/earned pacing not implemented |
+| 40 | Legendary armour sets inspired by D2/D3 | In progress | Cut216 proposal: helm/body/boots, equipped2/3 and3/3 bonuses, permanent automatic collection/free reuse, viable2+1 hybrids, staged missing-piece unlocks. Follow set/pins/free next-departure refill and bounded Scout source focus designed; existing Apprentice spending retained. Core slots/effects/follow/pins/bounded source focus implemented;10 semantic tests plus pure completion-status regression pass. All16 earned collections; timing check-in bounds/source identities recorded. Actual cb19 UI2872/72 layouts and finald695225/4 status views, full free CRUD and final screenshots pass. Broader earned build causality/balance/fun remain open |
 | R1 | Dedicated class-skill icons | Scoped pass | Cut205 all30 IDs/270 size-state cells, tree/review integration; Cut203/206 actual immutable live skill attribution. Wider recognition/art review remains |
 | R2 | Combat animations and FX | Partial | Cut209 bounded factual GL/Canvas cues, controlled pixels/43 model checks/19 final-package context-loss checks. Legacy effects/speed parity and broader feel remain |
 | R3 | Biome encounter variety | Open | Retained scope; targeted economy checks do not certify this work |

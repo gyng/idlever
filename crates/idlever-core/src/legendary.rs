@@ -9,10 +9,12 @@ pub struct Definition {
     pub tradeoff: &'static str,
     pub source: &'static str,
 }
-pub const DEFINITIONS: [Definition; 3] = [
+pub const DEFINITIONS: [Definition; 5] = [
     Definition { kind:"crownsplitter", label:"Crownsplitter", effect:"Deal +2 melee damage to stunned or slowed foes.", tradeoff:"Slower than a sword. Control must be active.", source:"Defeat the Warlord." },
     Definition { kind:"hearthglass", label:"Hearthglass", effect:"Recover 2 HP when a direct attack slays a natural hostile foe.", tradeoff:"Only 1 base guard. Summons, allies and hazards give no healing.", source:"Defeat the Bloat Mother, or the Warlord as a Gunner." },
     Definition { kind:"frostmantle", label:"Frostmantle", effect:"Take 2 less gas and poison damage, with at least 1 damage per harmful tick.", tradeoff:"Slower movement. Take +1 damage from melee blows.", source:"Defeat the Lich." },
+    Definition { kind:"hearthglass_hood", label:"Hearthglass Hood", effect:"Hearthglass family: two equipped pieces kindle regeneration after direct kills.", tradeoff:"No base guard. Three pieces take +1 incoming melee damage.", source:"Defeat the Lich after discovering Hearthglass." },
+    Definition { kind:"hearthglass_boots", label:"Hearthglass Boots", effect:"Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.", tradeoff:"No speed bonus. Three pieces take +1 incoming melee damage.", source:"Defeat the Foundry Master after discovering the Hearthglass Hood." },
 ];
 pub fn definition(kind: &str) -> Option<&'static Definition> {
     DEFINITIONS.iter().find(|d|d.kind==kind)
@@ -54,7 +56,7 @@ pub fn owned_wire(l: &LineageState) -> Vec<OwnedShape> {
     }).collect()
 }
 /// Pure tagged hash: discovery does not consume the combat/loot RNG stream.
-fn repeat_hash(seed:u64, boss:&str)->u64 {
+pub(crate) fn repeat_hash(seed:u64, boss:&str)->u64 {
     let mut h=seed^0x4c45_4745_4e44_4152;
     for b in boss.bytes() {h=(h^u64::from(b)).wrapping_mul(0x100_0000_01b3);}
     h ^= h>>30;h=h.wrapping_mul(0xbf58_476d_1ce4_e5b9);h ^= h>>27;h=h.wrapping_mul(0x94d0_49bb_1331_11eb);h^(h>>31)
@@ -73,7 +75,7 @@ pub fn boss_drop(run:&Run, boss:&str, owned:&std::collections::BTreeSet<String>)
 /// its physical instance and temporary enchantment.
 pub fn discover(run:&mut Run,cx:&mut Ctx, it:&Item,source:&str)->bool {
     if !matches!(it.cat(),crate::defs::Cat::Weapon|crate::defs::Cat::Armour)
-        || !matches!(crate::item::rarity(it,true),Rarity::Masterwork|Rarity::Legendary) {return false;}
+        || !(matches!(crate::item::rarity(it,true),Rarity::Masterwork|Rarity::Legendary)||crate::armour_sets::standalone(&it.kind)) {return false;}
     if !cx.owned_shapes.insert(it.kind.clone()) {return false;}
     let d=definition(&it.kind);
     let find=Discovery {rarity:crate::item::rarity(it,true),kind:it.kind.clone(),label:crate::item::kind_name(&it.kind),
@@ -130,16 +132,17 @@ mod tests {
                 kill(&mut g,"goblin_warlord");
                 let r=g.run.as_ref().unwrap();
                 assert_eq!(r.hero.inv.len(),count);
-                assert_eq!(r.pattern_receipts.len(),1);
-                assert_eq!(r.loot_raw,crate::defs::item_def(shape).value);
+                assert_eq!(r.pattern_receipts.iter().map(|i|i.kind.as_str()).collect::<Vec<_>>(),vec![shape,"ironcap","trailboots"]);
+                assert_eq!(r.loot_raw,crate::defs::item_def(shape).value+crate::defs::item_def("ironcap").value+crate::defs::item_def("trailboots").value);
                 assert_eq!(r.discoveries[0].kind,shape);
                 assert_eq!(r.discoveries[0].source,"Goblin Warlord");
-                assert_eq!(g.events.iter().filter(|e|matches!(e,Ev::Discovery{..})).count(),1);
+                assert_eq!(g.events.iter().filter(|e|matches!(e,Ev::Discovery{..})).count(),3);
                 assert!(g.lineage.town.owned_shapes.contains(shape));
                 finish(&mut g,tier);
                 assert!(g.lineage.town.owned_shapes.contains(shape));
                 let line=g.batch.exits.last().unwrap();
-                assert_eq!(line.discoveries.len(),1);
+                assert_eq!(line.discoveries.iter().map(|d|d.kind.as_str()).collect::<Vec<_>>(),vec![shape,"ironcap","trailboots"]);
+                for kind in ["ironcap","trailboots"] {assert!(line.found.iter().any(|f|f.kind==kind&&f.n==1&&f.fate=="converted"));}
                 assert!(line.found.iter().any(|f|f.kind==shape&&f.n==1&&f.fate=="converted"));
                 assert!(line.finds.iter().any(|f|f.label==definition(shape).unwrap().label));
                 let loaded=Game::load(&g.save()).unwrap();
@@ -162,7 +165,7 @@ mod tests {
         assert_eq!(r.loot_raw,50);assert_eq!(r.discoveries.len(),1);
         finish(&mut g,ExitTier::Return);
         assert_eq!(g.lineage.gold,512);
-        assert_eq!(g.batch.discoveries.len(),1);
+        assert_eq!(g.batch.discoveries.iter().map(|d|d.kind.as_str()).collect::<Vec<_>>(),vec!["crownsplitter"]);
     }
     #[test]
     fn ordinary_masterwork_unlocks_shape_but_never_permanent_enchantment() {
@@ -174,7 +177,7 @@ mod tests {
         assert!(cx.owned_shapes.contains("sword"));
         assert!(r.discoveries[0].tradeoff.contains("temporary"));
         finish(&mut g,ExitTier::Death);
-        g.lineage.starting_config=Some(StartingConfig{weapon:Some("sword".into()),armour:Some("none".into()),supplies:vec![]});
+        g.lineage.starting_config=Some(StartingConfig{weapon:Some("sword".into()),armour:Some("none".into()),supplies:vec![],..Default::default()});
         let mut h=crate::hero::Hero::new(Class::Fighter,crate::geom::Pos::new(0,0));crate::kit::equip(&g.lineage,&mut h);
         assert_eq!(h.weapon.as_ref().unwrap().enchant,0);
         assert_eq!(h.atk(),(3,7));
@@ -233,7 +236,7 @@ mod tests {
                     g.lineage.starting_config=None;
                     let mut default=crate::hero::Hero::new(class,crate::geom::Pos::new(0,0));crate::kit::equip(&g.lineage,&mut default);
                     let expected=[0,1,2,3,4,5,5,6][rank as usize];assert_eq!(default.def(),expected);
-                    g.lineage.starting_config=Some(StartingConfig{weapon:None,armour:Some(shape.into()),supplies:vec![]});
+                    g.lineage.starting_config=Some(StartingConfig{weapon:None,armour:Some(shape.into()),supplies:vec![],..Default::default()});
                     let mut explicit=crate::hero::Hero::new(class,crate::geom::Pos::new(0,0));crate::kit::equip(&g.lineage,&mut explicit);
                     let guard=explicit.def();assert_eq!(guard,crate::defs::item_def(shape).a.0+(expected-1).max(0));
                     assert!(guard>=previous);previous=guard;
@@ -244,7 +247,7 @@ mod tests {
     #[test]
     fn unowned_and_incompatible_named_shapes_refuse_atomically() {
         let mut g=Game::new_resident(1);
-        let config=StartingConfig{weapon:Some("crownsplitter".into()),armour:None,supplies:vec![]};
+        let config=StartingConfig{weapon:Some("crownsplitter".into()),armour:None,supplies:vec![],..Default::default()};
         let before=g.save();assert!(crate::kit::set_starting(&mut g,Some(config.clone())).is_err());assert_eq!(g.save(),before);
         g.lineage.town.owned_shapes.insert("crownsplitter".into());g.lineage.class=Class::Gunner;
         let before=g.save();assert!(crate::kit::set_starting(&mut g,Some(config)).is_err());assert_eq!(g.save(),before);
@@ -267,7 +270,7 @@ mod tests {
         // ration and current free passage. No claimed earned unlock evidence.
         g.lineage.gold=2000;
         g.lineage.forge.insert("heal".into(),crate::wire::ForgeRow::at(5));
-        g.lineage.town.owned_shapes.extend(["crownsplitter".into(),"frostmantle".into()]);
+        g.lineage.town.owned_shapes.extend(["crownsplitter","frostmantle","hearthglass","hearthglass_hood","hearthglass_boots"].map(str::to_string));
         crate::kit::buy(&mut g,"pack").unwrap();
         crate::feats::buy_ration(&mut g.lineage).unwrap();
         assert_eq!(g.lineage.supplies.iter().filter(|i|i.free&&i.kind=="leash").count(),1);
@@ -283,10 +286,12 @@ mod tests {
         assert_eq!(old.toll,crate::engine::LineageState::start_toll(9));
         assert!(g.lineage.night_passes.contains(&9));
         let gold=g.lineage.gold;let ledger=g.lineage.ledger();let rations=g.lineage.feats.rations;
-        let config=StartingConfig{weapon:Some("crownsplitter".into()),armour:Some("frostmantle".into()),supplies:vec!["leash".into(),"leash".into(),"leash".into(),"heal".into()]};
+        let config=StartingConfig{weapon:Some("crownsplitter".into()),armour:Some("frostmantle".into()),supplies:vec!["leash".into(),"leash".into(),"leash".into(),"heal".into()],follow_set:Some("hearthglass".into()),pins:Some(crate::armour_sets::Pins{armour:Some("frostmantle".into()),..Default::default()}),..Default::default()};
         crate::kit::set_starting(&mut g,Some(config.clone())).unwrap();
         let r=g.run.as_ref().unwrap();
         assert_eq!(r.hero.weapon.as_ref().unwrap().kind,"crownsplitter");assert_eq!(r.hero.armour.as_ref().unwrap().kind,"frostmantle");
+        assert_eq!(r.hero.helm.as_ref().unwrap().kind,"hearthglass_hood");assert_eq!(r.hero.boots.as_ref().unwrap().kind,"hearthglass_boots");
+        assert_eq!(crate::armour_sets::count(&r.hero),2);
         assert_eq!(r.hero.inv.iter().filter(|i|i.kind=="leash").map(|i|i.amount).sum::<i32>(),3);
         assert_eq!(r.prepared_supplies.iter().filter(|i|i.free).count(),1);
         assert_eq!(r.bought_leashes.len(),2);assert_eq!(r.hero.inv.iter().filter(|i|i.kind=="heal").count(),1);
@@ -343,10 +348,10 @@ mod tests {
         for _ in 0..8 {g.start_run(None);finish(&mut g,ExitTier::Return);}
         assert_eq!(g.batch.exits.len(),crate::engine::EXITS_CAP);
         assert!(g.batch.exits.iter().all(|l|l.discoveries.is_empty()));
-        assert_eq!(g.batch.discoveries.len(),1);
+        assert_eq!(g.batch.discoveries.iter().map(|d|d.kind.as_str()).collect::<Vec<_>>(),vec!["crownsplitter","ironcap","trailboots"]);
         let facts=g.lineage.facts.clone();let class=g.lineage.class.name().to_string();let rank=g.lineage.class_level();
         let report=crate::offline::report_with(&mut g,0,&facts,&class,rank,false,false,false);
-        assert_eq!(report.discoveries.len(),1);
+        assert_eq!(report.discoveries.len(),3);
         assert_eq!(report.discoveries[0].kind,"crownsplitter");
     }
     #[test]
@@ -382,7 +387,7 @@ mod tests {
     fn actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks() {
         let mut g=Game::new(215);g.build_town("house").unwrap();g.try_send().unwrap();
         for boss in ["goblin_warlord","bloat_mother","lich"] {kill(&mut g,boss);}
-        let owned=g.lineage.town.owned_shapes.clone();assert_eq!(owned.len(),3);
+        let owned=g.lineage.town.owned_shapes.clone();assert_eq!(owned.iter().map(String::as_str).collect::<Vec<_>>(),vec!["crownsplitter","frostmantle","hearthglass","ironcap","trailboots"]);
         let (r,mut cx)=g.ctx();crate::turn::damage_hero(r,&mut cx,999,&Src::Gas);g.finish_run().unwrap();
         assert_eq!(g.lineage.town.owned_shapes,owned);
         g.advance(60_000);assert_eq!(crate::persistent::remaining(&g.lineage),0);
@@ -400,7 +405,7 @@ mod tests {
         g.advance(60_000);g.lineage.ended=true;g.ascend("short_list").unwrap();
         assert_eq!(g.lineage.town.owned_shapes,owned);
         assert!(g.lineage.kit.is_empty(),"existing world reset clears paid ranks");assert_eq!(g.lineage.gold,0);
-        crate::kit::set_starting(&mut g,Some(StartingConfig{weapon:Some("crownsplitter".into()),armour:Some("frostmantle".into()),supplies:vec![]})).unwrap();
+        crate::kit::set_starting(&mut g,Some(StartingConfig{weapon:Some("crownsplitter".into()),armour:Some("frostmantle".into()),supplies:vec![],..Default::default()})).unwrap();
         assert_eq!(g.lineage.gold,0);
         let wire=crate::kit::starting_wire(&g.lineage);
         assert_eq!(wire.actual_weapon,"crownsplitter");assert_eq!(wire.actual_armour.as_deref(),Some("frostmantle"));

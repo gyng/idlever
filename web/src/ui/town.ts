@@ -1,7 +1,7 @@
 import { classIcon } from "./class-icons";
 import { bloodlineTabs, type BloodlineTab } from "./bloodline-tabs";
 import { renderBloodlineLoadouts } from "./bloodline-loadouts";
-import { heroPresence } from "./hero-presence";
+import { heroPresence, heroAway } from "./hero-presence";
 // Cut 30 §3 — the town on the camp (docs/TOWN.md): the scene (render/town.ts) in the well, a DOM hit target over everything one can
 // tap (≥ 44 px, a hidden label for tests and screen readers), the markers (≤ 3: a sword over the forge when a kit step is affordable,
 // a coin over the bank when a night's interest came in, a `!` rune over a building not yet opened), the staked plot's trigger on tap,
@@ -168,6 +168,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     "aria-label": /* copy:label */ "Delving heroes",
   });
   const actorButtons = new Map<number, HTMLElement>();
+  const actorReservations = new Map<number, { x: number; y: number; w: number; h: number }>();
   let actorKey = "",
     choosingActor = 0;
   const chooseActor = async (id: number, watch: boolean, anchor: HTMLElement): Promise<void> => {
@@ -179,7 +180,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const slot = app.lineage.hero_slots?.find((s) => s.id === id);
     if (!slot || app.lineage.selected_bloodline !== id) return;
     closeAllSheets();
-    if (watch && slot.state === "live") app.go({ kind: "watch" });
+    if (watch && heroAway(slot)) app.go({ kind: "watch" });
     else openHero(app, anchor.isConnected ? anchor : null);
   };
   const helpButtons = new Map<string, HTMLElement>();
@@ -362,13 +363,16 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         s.hero_name,
         s.name,
         s.state,
+        s.life_state,
         s.live?.depth,
         s.live?.run_id,
         s.live?.activity,
       ]),
     );
     for (const slot of slots) {
-      const button = delveFaces.querySelector<HTMLElement>(`[data-delving-hero="${slot.id}"]`);
+      const button =
+        delveFaces.querySelector<HTMLElement>(`[data-delving-hero="${slot.id}"]`) ??
+        actorButtons.get(slot.id);
       if (!button) continue;
       button.title = `${slot.hero_name || slot.name} · ${heroPresence(slot).text}`;
       const depth = button.querySelector(".town-delving-depth");
@@ -382,7 +386,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     delveFaces.replaceChildren();
     for (const slot of slots) {
       const name = slot.hero_name || slot.name;
-      const away = slot.state === "live";
+      const away = heroAway(slot);
       const button = h("button", {
         class: away ? "town-delving-hero" : "town-home-hero",
         "data-home-hero": away ? undefined : slot.id,
@@ -438,19 +442,39 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     layoutActors();
   }
   function layoutActors(): void {
+    const targets = new Map(view.actorTargets().map((target) => [target.id, target]));
+    let reservationsChanged = false;
+    for (const id of actorReservations.keys()) {
+      if (!targets.has(id) || !actorButtons.has(id)) {
+        actorReservations.delete(id);
+        reservationsChanged = true;
+      }
+    }
     for (const [id, button] of actorButtons) {
-      const r = view.actorRect(id);
+      const r = targets.get(id);
       button.hidden = !r;
       if (!r) continue;
-      const w = Math.max(44, r.w),
-        height = Math.max(44, r.h);
+      const reserved = actorReservations.get(id);
+      if (
+        !reserved ||
+        r.x < reserved.x ||
+        r.y < reserved.y ||
+        r.x + r.w > reserved.x + reserved.w ||
+        r.y + r.h > reserved.y + reserved.h
+      ) {
+        // Re-solve on arrival or when a hero leaves this small envelope,
+        // rather than running the label search on every movement frame.
+        actorReservations.set(id, { x: r.x - 12, y: r.y - 12, w: r.w + 24, h: r.h + 24 });
+        reservationsChanged = true;
+      }
       Object.assign(button.style, {
-        left: `${Math.round(r.x + r.w / 2 - w / 2)}px`,
-        top: `${Math.round(r.y + r.h / 2 - height / 2)}px`,
-        width: `${Math.round(w)}px`,
-        height: `${Math.round(height)}px`,
+        left: `${r.x}px`,
+        top: `${r.y}px`,
+        width: `${r.w}px`,
+        height: `${r.h}px`,
       });
     }
+    if (reservationsChanged && el.isConnected) placeHelpLabels();
     const cave = view.rectOf("mouth");
     if (cave)
       Object.assign(delveFaces.style, {
@@ -762,10 +786,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           node.getBoundingClientRect().height > 0,
       )
       .map(box);
+    occupied.push(...actorReservations.values());
     // Keep every scene action's central44px accessible, including its own
     // information label. The label stays near the body without intercepting it.
     for (const [id, node] of btns) {
-      if (node.hidden || id === "staked") continue;
+      if (node.hidden) continue;
       const r = box(node);
       occupied.push({ x: r.x + r.w / 2 - 22, y: r.y + r.h / 2 - 22, w: 44, h: 44, owner: id });
     }

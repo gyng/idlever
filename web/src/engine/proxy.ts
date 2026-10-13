@@ -59,6 +59,7 @@ const METHODS: (keyof Engine)[] = [
   "forecastVsEstimate", // Cut 22 §3: optional likewise (the edit's paired move under the shaft)
   "buyKit", // Cut 23 §1: optional likewise (the forge)
   "setStartingKit",
+  "setSetFocus",
   "saveStartingKit",
   "selectStartingKit",
   "deleteStartingKit",

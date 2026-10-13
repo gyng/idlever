@@ -105,6 +105,29 @@ try {
       a.lineage.selected_bloodline = 2;
       r.setPresence({ ...live, depth: 17, turn: 140, activity: "exploring" });
       check(text(2) === "D18 · Heading home", "selection cannot reattribute old snapshot");
+      s.life_state = "reincarnating";
+      s.recovery_s = 60;
+      r.paint();
+      check(text(1) === "Reincarnating 1m", "reincarnation overrides stale live summary");
+      s.life_state = "recovering";
+      s.recovery_s = 58;
+      r.paint();
+      check(text(1) === "Recovering 58s", "recovery timer replaces departure timer");
+      s.life_state = "ready";
+      s.recovery_s = 0;
+      s.live = { ...live, run_id: 9, turn: 0 };
+      r.paint();
+      check(text(1) === "Ready", "prepared actor remains at home");
+      check(
+        !r.el.querySelector('.hero-row[data-slot="1"] .hero-action').title.includes("hp"),
+        "prepared actor does not expose stale combat detail",
+      );
+      r.setPresence({ ...s.live, turn: 1, depth: 1, activity: "exploring" });
+      check(text(1) === "D1 · Exploring", "actual first tick supersedes prepared Ready summary");
+      s.life_state = "recovering";
+      s.recovery_s = 40;
+      r.paint();
+      check(text(1) === "Recovering 40s", "recovery still supersedes last active observation");
       r.dispose();
       return checks;
     });

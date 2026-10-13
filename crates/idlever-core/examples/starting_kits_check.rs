@@ -20,7 +20,7 @@ fn main() {
     let wall = g.lineage.best_depth;
     let mut results = Vec::new();
     for (name,weapon,armour) in [("Steady blade","sword","leather"),("Heavy strike","axe","none")] {
-        let config = kit::StartingConfig { weapon: Some(weapon.into()), armour: Some(armour.into()), supplies: vec![] };
+        let config = kit::StartingConfig { weapon: Some(weapon.into()), armour: Some(armour.into()), supplies: vec![],..Default::default() };
         let mut run = g.clone();
         let id = kit::save_starting(&mut run,name,config,None).unwrap();
         kit::select_starting(&mut run,&id).unwrap();

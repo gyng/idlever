@@ -41,7 +41,13 @@ export function paintHomeService(
       rect(i % 3 ? "#eadfc512" : "#0d0c142e", xx, yy, 1, 1);
     }
   };
-  if (id.includes("_guild")) {
+  if (id.includes("_station")) {
+    ellipse("#0d0c14", w * 0.5, h * 0.62, w * 0.49, h * 0.35);
+    ellipse("#555864", w * 0.5, h * 0.48, w * 0.44, h * 0.36);
+    ellipse("#2b3350", w * 0.5, h * 0.48, w * 0.33, h * 0.22);
+    rect("#7088a0", w * 0.28, h * 0.47, w * 0.43, 1);
+    rect("#a4bcd6", w * 0.47, h * 0.26, 1, h * 0.5);
+  } else if (id.includes("_guild")) {
     poly("#0d0c14", [
       [2, h - 1],
       [w - 2, h - 1],

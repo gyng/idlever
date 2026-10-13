@@ -757,6 +757,11 @@ impl Game {
         idlever_core::kit::set_starting(&mut self.inner, config).map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
+    #[wasm_bindgen(js_name = setSetFocus)]
+    pub fn set_set_focus(&mut self, family: Option<String>) -> Result<String, JsError> {
+        idlever_core::armour_sets::set_focus(&mut self.inner,family.as_deref()).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
     #[wasm_bindgen(js_name = saveStartingKit)]
     pub fn save_starting_kit(&mut self, name: &str, config: &str, id: Option<String>) -> Result<String, JsError> {
         let config = serde_json::from_str(config).map_err(|e| err(e.to_string()))?;

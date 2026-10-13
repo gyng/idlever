@@ -18,6 +18,8 @@ export const bestRarity = (xs: { rarity?: Rarity }[]): Rarity =>
 const FAMILY: [RegExp, string, string][] = /* copy:none */ [
   [/^(dagger|sword|axe|bow|spear|mace|crownsplitter)$/, "weapon", "⚔"],
   [/^(leather|mail|plate|scale|hearthglass|frostmantle)$/, "armour", "⛨"],
+  [/^(ironcap|hearthglass_hood)$/, "helm", ""],
+  [/^(trailboots|hearthglass_boots)$/, "boots", ""],
   [
     /^(potion|heal|strength|speed|invisibility|poison|caustic|confusion|fire|regen|resist_fire|clarity)$/,
     "potion",
@@ -61,16 +63,49 @@ export function iconId(kind: string): string | null {
 
 type ItemLike = Pick<InvItem, "kind" | "label"> & { rarity?: Rarity };
 
+/** Code-native equipment silhouettes; display metadata never determines item rules. */
+function equipmentPrimitive(slot: "helm" | "body" | "boots"): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("class", `item-pic equipment-primitive slot-${slot}`);
+  svg.setAttribute("aria-hidden", "true");
+  const shapes: Record<typeof slot, string> = /* copy:none */ {
+    helm: "M5 15V10L8 5H16L19 10V15H15V20H9V15ZM5 11H19M12 5V15",
+    body: "M8 4L12 6L16 4L21 8L18 12L16 10V20H8V10L6 12L3 8ZM8 10H16M12 6V20",
+    boots: "M5 4H11V14L14 17V20H3V17L5 14ZM14 4H20V14L22 17V20H16V17L14 14Z",
+  };
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", shapes[slot]);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "currentColor");
+  path.setAttribute("stroke-width", "2");
+  path.setAttribute("stroke-linejoin", "miter");
+  svg.append(path);
+  return svg;
+}
+
 /** The item's unframed silhouette (`.item-ico.r-rare`): the packed picture, else the family glyph. */
 export function itemIcon(
   it: ItemLike,
-  o: { size?: "xs" | "s" | "m" | "l"; delay?: number } = {},
+  o: {
+    size?: "xs" | "s" | "m" | "l";
+    delay?: number;
+    equipmentSlot?: "helm" | "body" | "boots";
+  } = {},
 ): HTMLElement {
   const r = it.rarity ?? "common";
   const id = iconId(it.kind);
   const [fam, glyph] = familyOf(it.kind.replace(/ /g, "_"));
-  const fallback = (): HTMLElement =>
-    h("span", { class: `item-pic glyph fam-${fam}`, "data-glyph": glyph, "aria-hidden": "true" });
+  const primitiveSlot =
+    o.equipmentSlot ?? (fam === "helm" ? "helm" : fam === "boots" ? "boots" : undefined);
+  const fallback = (): HTMLElement | SVGSVGElement =>
+    primitiveSlot
+      ? equipmentPrimitive(primitiveSlot)
+      : h("span", {
+          class: `item-pic glyph fam-${fam}`,
+          "data-glyph": glyph,
+          "aria-hidden": "true",
+        });
   const pic = id
     ? h("img", {
         class: "item-pic",

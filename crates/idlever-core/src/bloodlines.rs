@@ -26,8 +26,11 @@ fn town_from(source: &LineageState, dest: &mut LineageState) {
     if dest.gold_ledger.len()!=source.gold_ledger.len()||dest.gold_ledger.last()!=source.gold_ledger.last(){dest.gold_ledger=source.gold_ledger.clone();}
     let mut owned=dest.town.owned_shapes.clone();
     owned.extend(source.town.owned_shapes.iter().cloned());
+    let mut victories=dest.town.piece_victories.clone();
+    for (k,n) in &source.town.piece_victories {let entry=victories.entry(k.clone()).or_default();*entry=(*entry).max(*n);}
     dest.town.clone_from(&source.town);
     dest.town.owned_shapes=owned;
+    dest.town.piece_victories=victories;
     dest.tree.hired.clone_from(&source.tree.hired);
     dest.tree.done.clone_from(&source.tree.done);
     dest.tree.paused.clone_from(&source.tree.paused);
@@ -80,9 +83,12 @@ impl Session {
         let mut s=Self {bloodlines_v:1,selected,next_id,elapsed_remainder_ms:v["elapsed_remainder_ms"].as_u64().unwrap_or(0),active:Game::load(text)?,others};
         s.active.lineage.bloodline_id=selected;for (id,g) in &mut s.others {g.lineage.bloodline_id= *id;}
         let mut owned=s.active.lineage.town.owned_shapes.clone();
+        let mut victories=s.active.lineage.town.piece_victories.clone();
+        for g in s.others.values() {for (k,n) in &g.lineage.town.piece_victories {let entry=victories.entry(k.clone()).or_default();*entry=(*entry).max(*n);}}
         for g in s.others.values() {owned.extend(g.lineage.town.owned_shapes.iter().cloned());}
         s.active.lineage.town.owned_shapes=owned.clone();
-        for g in s.others.values_mut() {g.lineage.town.owned_shapes=owned.clone();}
+        s.active.lineage.town.piece_victories=victories.clone();
+        for g in s.others.values_mut() {g.lineage.town.owned_shapes=owned.clone();g.lineage.town.piece_victories=victories.clone();}
         Ok(s)
     }
     pub fn save(&self)->String { serde_json::to_string(self).unwrap_or_default() }

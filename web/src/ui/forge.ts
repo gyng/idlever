@@ -11,6 +11,7 @@ import { icon } from "./skin";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear
 import "../forge-branches.css"; // Cut 113 §2
 import { legendaryCollection } from "./legendary-gear";
+import { armourSets } from "./set-equipment";
 
 /** Conservative wire snapshot: simulation inputs and displayed prices belong to this camp. */
 const kitKey = (app: App): string => JSON.stringify([app.lineage, app.rules, app.loadout]);
@@ -177,7 +178,20 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
         /* copy:button */ "Forecast",
       );
       const paint = (): void => {
-        replace(discoveries, legendaryCollection(app, app.lineage.legendaries ?? []));
+        replace(
+          discoveries,
+          legendaryCollection(app, app.lineage.legendaries ?? []),
+          armourSets(
+            app,
+            app.lineage.starting_kits?.armour_sets ?? [],
+            undefined,
+            new Set(
+              [
+                ...discoveries.querySelectorAll<HTMLDetailsElement>("[data-starting-gear][open]"),
+              ].map((node) => node.dataset.startingGear!),
+            ),
+          ),
+        );
         const ladders = app.lineage.kit ?? [];
         const choices = ladders.filter((lad) => lad.next || lad.slot === "gun_sidearm");
         const guns = (app.lineage.guns ?? []).map((gun) => {
@@ -508,7 +522,12 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
 function salvage(app: App): HTMLElement {
   const L = app.lineage;
   // Named patterns are already town-owned and free; only ordinary shapes use this ladder.
-  const ownedPatterns = new Set((L.legendaries ?? []).map((row) => row.kind));
+  const ownedPatterns = new Set([
+    ...(L.legendaries ?? []).map((row) => row.kind),
+    ...(L.starting_kits?.armour_sets ?? []).flatMap((set) =>
+      set.pieces.filter((piece) => piece.owned).map((piece) => piece.kind),
+    ),
+  ]);
   const rows = Object.entries(L.forge ?? {})
     .filter(([kind]) => !ownedPatterns.has(kind))
     .sort((a, b) => b[1].salvaged - a[1].salvaged);

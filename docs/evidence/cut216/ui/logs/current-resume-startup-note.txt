@@ -1,0 +1,14 @@
+Final-phase startup diagnostics, before browser acceptance:
+- An initial runner-discovery command from the repository root failed ENOENT 'tests'; corrected web working directory discovered armour-sets successfully.
+- An initial manifest-edit command used the web working directory with a repository-relative path and failed FileNotFoundError. No manifest changed. Its empty accidental web/docs directories were removed.
+- The following runner process failed on sandbox port listen EPERM before opening a browser. Its complete redirected output is current-resume-final.log.
+- The accepted retry uses the final immutable Core manifest, a suite-owned fresh no-HMR server and require_escalated local-server/browser execution. See current-resume-final-approved.log. No live validator was terminated or restarted due to observation timeout.
+
+First actual final-package runner: terminal FAIL after143.8s,1967 assertions,
+48 genuinely earned layouts. The controlled Gunner check selected a weapon
+using available && !compatible. Rust's catalogue correctly makes incompatible
+owned melee unavailable. The corrected harness selects an actually saved
+Town-owned shape with compatible=false, additionally requires available=false
+and a named refusal reason, and retains the disabled UI and exact-save atomic
+Rust refusal assertions. Raw output, failure.json and runner report remain in
+current-resume-final; the new complete run uses current-resume-final-second.

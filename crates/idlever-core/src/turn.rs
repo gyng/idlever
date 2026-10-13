@@ -178,6 +178,7 @@ pub fn tick(run: &mut Run, cx: &mut Ctx) {
     }
     run.awaiting = false;
     run.turn += 1;
+    crate::armour_sets::tick(run,cx);
     run.floor_turn += 1;
     if run.depth <= 4 {
         crate::petstats::bump(crate::petstats::Stat::EarlyTicks, 1);
@@ -1852,6 +1853,7 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
         else if matches!(src,Src::Mon(i) if !run.monsters[*i].has_tag("ranged") && run.monsters[*i].pos.cheb(run.hero.pos)<=1) {dmg+1}
         else {dmg}
     }else{dmg};
+    let dmg=if dmg>0&&crate::armour_sets::count(&run.hero)>=3&&matches!(src,Src::Mon(i) if !run.monsters[*i].has_tag("ranged")&&run.monsters[*i].pos.cheb(run.hero.pos)<=1) {dmg+1}else{dmg};
     if dmg <= 0 {
         return;
     }
@@ -1872,6 +1874,9 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
             &&!run.monsters[*i].has_tag("ranged")&&run.monsters[*i].pos.cheb(run.hero.pos)<=1=>Some(*i),_=>None}
     }else {None};
     let dmg=if riposte.is_some() {run.hero.riposte_t=0;dmg/2+dmg%2}else{dmg};
+    let absorbed=dmg.min(run.hero.hearth_ward).max(0);run.hero.hearth_ward-=absorbed;
+    if absorbed>0 {cx.events.push(Ev::Use{t:run.turn,item:"Glassward".into(),outcome:format!("absorbed {absorbed}")});}
+    let dmg=dmg-absorbed;
     let hp_before=run.hero.hp;
     run.hero.hp -= dmg;
     // Cut 24 §1: the hero's HP moved — the fight is going somewhere, unless a summon drew it
@@ -2223,12 +2228,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     run.monsters[mi].hp = 0;
     cx.events.push(Ev::Die { t: run.turn, id, cause: cause.into() });
     let m = run.monsters[mi].clone();
-    if m.hostile()&&!m.summoned&&matches!(src,Src::Hero{..})
-        &&run.hero.armour.as_ref().is_some_and(|i|i.kind=="hearthglass") {
-        let before=run.hero.hp;
-        run.hero.hp=(run.hero.hp+2).min(run.hero.max_hp);
-        if run.hero.hp>before {cx.events.push(Ev::Heal {t:run.turn,id:HERO_ID,amount:run.hero.hp-before,src:"hearthglass".into()});}
-    }
+    if m.hostile()&&!m.summoned&&matches!(src,Src::Hero{..}) {crate::armour_sets::kill_proc(run,cx);}
     if crate::legacy::has(&run.hero,crate::legacy::RENEWAL)&&m.hostile()&&!m.summoned&&matches!(src,Src::Hero{..}) {
         run.hero.hp=(run.hero.hp+1).min(run.hero.max_hp);
     }
@@ -2286,6 +2286,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
                 let item=Item::new(run.new_item_id(),shape);
                 crate::legendary::collect_pattern(run,cx,item,&m.title());
             }
+            crate::armour_sets::source_drops(run,cx,&kind,&m.title());
             note(run, cx, format!("Slew the {}.", m.title()));
             crate::oath::beat(run, cx, run.acting_row);   // Cut 28b: a `slay` / `fire` oath is kept here
             callout(run, cx, "boss down");
@@ -3206,7 +3207,7 @@ pub fn pickup_here(run: &mut Run, cx: &mut Ctx) {
             Some(n) if !run.items.iter().any(|fi| fi.item.id == id) => (format!("${n}"), format!("Got ${n} back.")),
             Some(_) => continue,
             None => {
-                let Some(it) = run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).find(|i| i.id == id) else { continue };
+                let Some(it) = run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).chain(run.hero.helm.iter()).chain(run.hero.boots.iter()).find(|i| i.id == id) else { continue };
                 let (_, _, label) = crate::item::describe(it, cx.facts, cx.flavours);
                 let label = label.trim_end_matches('?').to_string();
                 let text = format!("Got the {label} back.");
@@ -3456,7 +3457,7 @@ fn recover_bones(run: &mut Run, cx: &mut Ctx, ii: usize) {
         };
         if taken {
             let value = crate::legendary::claim_found_value(run,cx,&mut it);
-            for held in run.hero.inv.iter_mut().chain(run.hero.weapon.iter_mut()).chain(run.hero.armour.iter_mut()) {
+            for held in run.hero.inv.iter_mut().chain(run.hero.weapon.iter_mut()).chain(run.hero.armour.iter_mut()).chain(run.hero.helm.iter_mut()).chain(run.hero.boots.iter_mut()) {
                 if held.id == it.id && held.kind == it.kind { held.value_claimed = true; }
             }
             run.loot_add(value);

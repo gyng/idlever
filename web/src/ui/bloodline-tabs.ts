@@ -12,7 +12,9 @@ export function bloodlineTabs(initial: BloodlineTab) {
   const panels = new Map<BloodlineTab, HTMLElement>();
   const fingerprints = new Map<BloodlineTab, string>();
   const scroll = new Map<BloodlineTab, number>();
-  let focus: { tag: string; text: string; tab?: BloodlineTab; panel?: BloodlineTab } | undefined;
+  let focus:
+    | { tag: string; text: string; tab?: BloodlineTab; panel?: BloodlineTab; action?: string }
+    | undefined;
   const select = (key: BloodlineTab, remember = true): void => {
     const old = panels.get(selected);
     if (old && remember) scroll.set(selected, old.scrollTop);
@@ -83,6 +85,7 @@ export function bloodlineTabs(initial: BloodlineTab) {
           ? {
               tag: active.tagName,
               text: active.textContent ?? "",
+              action: active.dataset.action,
               tab: active.dataset.bloodlineTab as BloodlineTab | undefined,
               panel: [...panels].find(([, panel]) => panel === active)?.[0],
             }
@@ -119,15 +122,21 @@ export function bloodlineTabs(initial: BloodlineTab) {
     restore(): void {
       select(selected, false);
       if (!focus) return;
+      const actionTarget = focus.action
+        ? panels
+            .get(selected)
+            ?.querySelector<HTMLElement>(`[data-action="${CSS.escape(focus.action)}"]`)
+        : undefined;
       const target = focus.panel
         ? panels.get(focus.panel)
         : focus.tab
           ? buttons.get(focus.tab)
-          : [
+          : (actionTarget ??
+            [
               ...(panels
                 .get(selected)
                 ?.querySelectorAll<HTMLElement>("button, summary, input, [tabindex]") ?? []),
-            ].find((e) => e.tagName === focus!.tag && e.textContent === focus!.text);
+            ].find((e) => e.tagName === focus!.tag && e.textContent === focus!.text));
       (target && !(target as HTMLButtonElement).disabled ? target : buttons.get(selected))?.focus({
         preventScroll: true,
       });

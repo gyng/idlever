@@ -79,9 +79,11 @@ try {
     const before = await a.engine.save();
     const same = renderBar(a, { heir: a.lineage.heir }),
       past = renderBar(a, { heir: a.lineage.heir - 1 }),
+      currentWatch = renderBar(a, { watch: true, heir: a.lineage.heir }),
       captured = renderBar(a, { heir: a.lineage.heir, heroName: "Captured Mara" });
     const result = {
       sameName: same.el.querySelector(".hero-name")?.textContent ?? null,
+      currentWatchName: currentWatch.el.querySelector(".hero-name")?.textContent ?? null,
       pastName: past.el.querySelector(".hero-name")?.textContent ?? null,
       sameOrdinal: same.el.querySelector(".heir-ordinal").textContent,
       pastOrdinal: past.el.querySelector(".heir-ordinal").textContent,
@@ -95,10 +97,12 @@ try {
     result.actualRenamed = a.lineage.persistent_hero.name;
     same.dispose();
     past.dispose();
+    currentWatch.dispose();
     captured.dispose();
     return result;
   });
   assert.equal(historical.sameName, null);
+  assert.equal(historical.currentWatchName, "Mara of the Lantern Vale");
   assert.equal(historical.pastName, null);
   assert.match(historical.sameOrdinal, /heir/);
   assert.match(historical.pastOrdinal, /heir/);

@@ -1,8 +1,9 @@
 import type { App } from "../app";
-import type { StartingConfig, StartingGearChoice } from "../engine/types";
+import type { ArmourSlot, StartingConfig, StartingGearChoice } from "../engine/types";
 import { h } from "./dom";
 import { itemIcon } from "./items";
 import { legendaryDescription } from "./legendary-gear";
+import { armourSets } from "./set-equipment";
 
 /** Permanent gear shapes and saved configurations, entirely selected by Rust. */
 export function startingKits(app: App, open: ReadonlySet<string> = new Set()): HTMLElement | null {
@@ -39,12 +40,21 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
     app.engine === owner &&
     app.lineage.selected_bloodline === bloodline &&
     identity() === actor;
-  const act = (fn: () => ReturnType<NonNullable<typeof owner.setStartingKit>>): void => {
-    if (busy || !current() || app.lineage.live || app.lineage.town?.home === false) return;
+  const act = (
+    fn: () => ReturnType<NonNullable<typeof owner.setStartingKit>>,
+    allowAway = false,
+    message = /* copy:callout */ "Kit changed",
+  ): void => {
+    if (
+      busy ||
+      !current() ||
+      (!allowAway && (app.lineage.live || app.lineage.town?.home === false))
+    )
+      return;
     busy = true;
     body.setAttribute("aria-busy", "true");
     void app
-      .mutate(fn, /* copy:callout */ "Kit changed")
+      .mutate(fn, message)
       .then((ok) => {
         if (current() && !ok) feedback.textContent = /* copy:callout */ "Kit refused";
       })
@@ -53,13 +63,24 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
         body.removeAttribute("aria-busy");
       });
   };
-  const choices = (slot: "weapon" | "armour", rows: StartingGearChoice[]): HTMLElement => {
+  const choices = (slot: "weapon" | ArmourSlot, rows: StartingGearChoice[]): HTMLElement => {
     const choose = (value: string | null): void =>
       act(() => owner.setStartingKit!(JSON.stringify({ ...config, [slot]: value })));
     return h(
       "details",
       { class: "starting-gear", open: open.has(slot), "data-starting-gear": slot },
-      h("summary", null, slot === "weapon" ? /* copy:label */ "Weapon" : /* copy:label */ "Armour"),
+      h(
+        "summary",
+        null,
+        slot === "weapon"
+          ? /* copy:label */ "Weapon"
+          : slot === "armour"
+            ? /* copy:label */ "Body"
+            : slot === "helm"
+              ? /* copy:label */ "Helm"
+              : /* copy:label */ "Boots",
+      ),
+      h("small", {}, /* copy:label */ "Saved fallback"),
       h(
         "button",
         {
@@ -67,12 +88,12 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
           disabled: away,
           "data-kit-slot": slot,
           "data-kit-choice": "default",
-          "aria-pressed": String(config[slot] === null),
+          "aria-pressed": String(config[slot] == null),
           onclick: () => choose(null),
         },
         /* copy:button */ "Class default",
       ),
-      slot === "armour"
+      slot !== "weapon"
         ? h(
             "button",
             {
@@ -80,10 +101,32 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
               disabled: away,
               "data-kit-slot": slot,
               "data-kit-choice": "none",
-              "aria-pressed": String(config.armour === "none"),
+              "aria-pressed": String(config[slot] === "none"),
               onclick: () => choose("none"),
             },
-            /* copy:button */ "Bare",
+            slot === "armour" ? /* copy:button */ "Bare" : /* copy:button */ "Empty",
+          )
+        : null,
+      slot !== "weapon"
+        ? h(
+            "button",
+            {
+              class: "chip",
+              disabled: away,
+              "data-pin-slot": slot,
+              "data-pin-choice": "none",
+              "data-action": `pin:${slot}:none`,
+              "aria-pressed": String(config.pins?.[slot] === "none"),
+              onclick: () => {
+                const pins = { ...config.pins };
+                if (pins[slot] === "none") delete pins[slot];
+                else pins[slot] = "none";
+                act(() => owner.setStartingKit!(JSON.stringify({ ...config, pins })));
+              },
+            },
+            config.pins?.[slot] === "none"
+              ? /* copy:button */ "Unpin empty"
+              : /* copy:button */ "Pin empty",
           )
         : null,
       ...rows.map((row) =>
@@ -105,7 +148,10 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
             },
             itemIcon(
               { kind: row.kind, label: row.label, rarity: row.legendary ? "legendary" : undefined },
-              { size: "s" },
+              {
+                size: "s",
+                equipmentSlot: slot === "weapon" ? undefined : slot === "armour" ? "body" : slot,
+              },
             ),
             row.label,
           ),
@@ -117,6 +163,41 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
             row.ranged ? /* copy:label */ " · Ranged" : "",
           ),
           h("small", { class: "dim" }, row.needs ?? /* copy:label */ "Free"),
+          slot !== "weapon"
+            ? h(
+                "div",
+                { class: "set-slot-actions" },
+                h(
+                  "small",
+                  { class: "set-pin-status" },
+                  config.pins?.[slot] === row.kind
+                    ? /* copy:label */ "Pinned"
+                    : config[slot] === row.kind
+                      ? /* copy:label */ "Saved fallback"
+                      : "",
+                ),
+                h(
+                  "button",
+                  {
+                    class: "chip",
+                    disabled: away || !row.available || !row.compatible,
+                    "data-pin-slot": slot,
+                    "data-pin-choice": row.kind,
+                    "data-action": `pin:${slot}:${row.kind}`,
+                    "aria-pressed": String(config.pins?.[slot] === row.kind),
+                    onclick: () => {
+                      const pins = { ...config.pins };
+                      if (pins[slot] === row.kind) delete pins[slot];
+                      else pins[slot] = row.kind;
+                      act(() => owner.setStartingKit!(JSON.stringify({ ...config, pins })));
+                    },
+                  },
+                  config.pins?.[slot] === row.kind
+                    ? /* copy:button */ "Unpin"
+                    : /* copy:button */ "Pin",
+                ),
+              )
+            : null,
           row.legendary ? legendaryDescription(row) : null,
         ),
       ),
@@ -146,8 +227,27 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
       { class: "dim" },
       /* copy:diary_line */ "Forge upgrades included. Hero attributes stay separate.",
     ),
+    ...[
+      armourSets(
+        app,
+        kits.armour_sets ?? [],
+        {
+          config,
+          disabled: away,
+          focusDisabled: !owner.setSetFocus,
+          change: (next) => act(() => owner.setStartingKit!(JSON.stringify(next))),
+          focus: (family) => {
+            if (owner.setSetFocus)
+              act(() => owner.setSetFocus!(family), true, /* copy:callout */ "Focus changed");
+          },
+        },
+        open,
+      ),
+    ].filter((node): node is HTMLElement => node !== null),
     choices("weapon", kits.weapons),
+    choices("helm", kits.helms ?? []),
     choices("armour", kits.armours),
+    choices("boots", kits.boots ?? []),
     h("h4", null, /* copy:label */ "Saved kits"),
     h(
       "div",

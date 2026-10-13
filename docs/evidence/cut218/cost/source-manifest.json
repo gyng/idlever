@@ -1,0 +1,31 @@
+{
+  "baseline_source": "0169415e (isolated web archive; final933b realpackage copied)",
+  "candidate_renderer": [
+    {
+      "path": "web/src/render/town.ts",
+      "bytes": 111961,
+      "sha256": "5de8548c094a31b9afe5de037c7106fbb3f5625dce47a79943187a9c224cca97"
+    },
+    {
+      "path": "web/src/render/home-service-art.ts",
+      "bytes": 6150,
+      "sha256": "395b81df8fff05bef85ddfb655265019fd68bc373e324dc9af0c6ed826d86338"
+    },
+    {
+      "path": "web/src/engine/pkg/idlever_wasm_bg.wasm",
+      "bytes": 6630902,
+      "sha256": "933b8e9048eb87d20202b5411c836f78eb068836bb72360bc7163320ede5ef8e"
+    },
+    {
+      "path": "docs/evidence/cut218/three-actual.game.json.gz",
+      "bytes": 55967,
+      "sha256": "1e680b01e4c9d5027ceb5e6ce48ae9e99b83664623432af5950d7957ae6fa246"
+    },
+    {
+      "path": "docs/evidence/cut218/controlled/three-controlled-reincarnating.game.json.gz",
+      "bytes": 61376,
+      "sha256": "2f301ab07f84197c11ac75f7d15f447d017bf9d0ef0400746582ef82fee23989"
+    }
+  ],
+  "note": "Renderer/art/fixture/package hashes match the measured candidate. UI-only solver source changed after cost capture and is not certified by this renderer manifest."
+}

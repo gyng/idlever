@@ -1,0 +1,192 @@
+{
+  "checks": 225,
+  "scope": {
+    "diagnostic": true,
+    "widths": [
+      400
+    ],
+    "scales": [
+      1
+    ],
+    "views": [
+      "forge",
+      "loadouts"
+    ],
+    "layouts": 4
+  },
+  "inputs": {
+    "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-boots-home.game.json.gz": {
+      "bytes": 152871,
+      "sha256": "8309cb349e0166e17e99db2883c1bea9f2ea878c3b422e6807e025dbc257abf4"
+    },
+    "docs/evidence/cut216/ui-inputs-resume-final/controlled/source-focus-stopped-after-three.game.json.gz": {
+      "bytes": 94971,
+      "sha256": "813b413934bb2dc7fbfe94abc367a3451f504beffa2f1811f8cfc94b4f49b734"
+    }
+  },
+  "records": [
+    {
+      "id": "earned-seed1-boots",
+      "readOnly": true,
+      "gold": 12021,
+      "focus": {
+        "active": false,
+        "available": false,
+        "label": "Find next piece",
+        "status": "Collection complete",
+        "blocked": "All family pieces discovered",
+        "source": null,
+        "depth": null,
+        "failures": 0
+      }
+    },
+    {
+      "id": "earned-seed1-boots",
+      "earned": true,
+      "width": 400,
+      "scale": 1,
+      "view": "forge",
+      "geometry": {
+        "overflow": 0,
+        "bad": []
+      },
+      "contrast": {
+        "surface": "rgb(13, 12, 20)",
+        "text": "rgb(234, 223, 197)",
+        "edge": "rgb(77, 108, 153)",
+        "focus": "rgb(164, 188, 214)",
+        "textRatio": 14.687675123749528,
+        "edgeRatio": 3.630811953035725,
+        "focusRatio": 9.948848211308043,
+        "scope": "computed solid set-card material"
+      }
+    },
+    {
+      "id": "earned-seed1-boots",
+      "earned": true,
+      "width": 400,
+      "scale": 1,
+      "view": "loadouts",
+      "geometry": {
+        "overflow": 0,
+        "bad": []
+      },
+      "contrast": {
+        "surface": "rgb(28, 27, 43)",
+        "text": "rgb(234, 223, 197)",
+        "edge": "rgb(184, 148, 72)",
+        "focus": "rgb(164, 188, 214)",
+        "textRatio": 12.779523905753813,
+        "edgeRatio": 5.936677483870284,
+        "focusRatio": 8.656342306042918,
+        "scope": "computed solid set-card material"
+      }
+    },
+    {
+      "id": "controlled-focus-stop",
+      "readOnly": true,
+      "gold": 6158,
+      "focus": {
+        "active": false,
+        "available": true,
+        "label": "Find next piece",
+        "status": "Source missed on 3 delves. Normal delves resume.",
+        "blocked": null,
+        "source": "Lich",
+        "depth": 18,
+        "failures": 0
+      }
+    },
+    {
+      "id": "controlled-focus-stop",
+      "earned": false,
+      "width": 400,
+      "scale": 1,
+      "view": "forge",
+      "geometry": {
+        "overflow": 0,
+        "bad": []
+      },
+      "contrast": {
+        "surface": "rgb(13, 12, 20)",
+        "text": "rgb(234, 223, 197)",
+        "edge": "rgb(77, 108, 153)",
+        "focus": "rgb(164, 188, 214)",
+        "textRatio": 14.687675123749528,
+        "edgeRatio": 3.630811953035725,
+        "focusRatio": 9.948848211308043,
+        "scope": "computed solid set-card material"
+      }
+    },
+    {
+      "id": "controlled-focus-stop",
+      "earned": false,
+      "width": 400,
+      "scale": 1,
+      "view": "loadouts",
+      "geometry": {
+        "overflow": 0,
+        "bad": []
+      },
+      "contrast": {
+        "surface": "rgb(28, 27, 43)",
+        "text": "rgb(234, 223, 197)",
+        "edge": "rgb(184, 148, 72)",
+        "focus": "rgb(164, 188, 214)",
+        "textRatio": 12.779523905753813,
+        "edgeRatio": 5.936677483870284,
+        "focusRatio": 8.656342306042918,
+        "scope": "computed solid set-card material"
+      }
+    }
+  ],
+  "source": {
+    "src/ui/set-equipment.ts": {
+      "bytes": 21341,
+      "sha256": "35ccef96c2c27e058049fa2d4e5147e85fcd6948f9192e0ea775e2da1885c268"
+    },
+    "src/set-equipment.css": {
+      "bytes": 2732,
+      "sha256": "3d51dc598fccaa0c1e18c366a82d84f8e969f29125d02b5538dc50b538f36559"
+    },
+    "src/ui/starting-kits.ts": {
+      "bytes": 29855,
+      "sha256": "d4d38c76e8a74d0ca6785f091f57f5fceaa0c0d0f311734cc68a899fcf9a02ae"
+    },
+    "src/ui/forge.ts": {
+      "bytes": 59757,
+      "sha256": "2feb06e4750f2dc829cc61e4ffc1b0f7c5a704f8a86771f9fcbb6b8cdd274eca"
+    },
+    "src/ui/bloodline-tabs.ts": {
+      "bytes": 13893,
+      "sha256": "a26d14dbad1345cfe4c6bf1f3951aa29a8cc90b5f89a23890b8c0c2d42499e3e"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    }
+  },
+  "delivered": [
+    {
+      "url": "http://localhost:37625/src/engine/pkg/idlever_wasm_bg.wasm",
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    },
+    {
+      "url": "http://localhost:37625/src/engine/pkg/idlever_wasm_bg.wasm",
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    },
+    {
+      "url": "http://localhost:37625/src/engine/pkg/idlever_wasm_bg.wasm",
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    },
+    {
+      "url": "http://localhost:37625/src/engine/pkg/idlever_wasm_bg.wasm",
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    }
+  ],
+  "result": "PASS"
+}

@@ -203,6 +203,16 @@ pub struct Hero {
     pub inv: crate::shared::Shared<Vec<Item>>,
     pub weapon: crate::shared::Shared<Option<Item>>,
     pub armour: crate::shared::Shared<Option<Item>>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub helm: crate::shared::Shared<Option<Item>>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub boots: crate::shared::Shared<Option<Item>>,
+    #[serde(default,skip_serializing_if="Vec::is_empty")]
+    pub protected_slots: Vec<crate::armour_sets::Slot>,
+    #[serde(default,skip_serializing_if="crate::specialization::zero")]
+    pub hearth_regen: i32,
+    #[serde(default,skip_serializing_if="crate::specialization::zero")]
+    pub hearth_ward: i32,
     pub energy: i32,
     pub speed_t: i32,
     pub invis_t: i32,
@@ -314,6 +324,11 @@ impl Hero {
             inv: Vec::new().into(),
             weapon: None.into(),
             armour: None.into(),
+            helm: None.into(),
+            boots: None.into(),
+            protected_slots: Vec::new(),
+            hearth_regen: 0,
+            hearth_ward: 0,
             energy: 0,
             speed_t: 0,
             invis_t: 0,
@@ -358,15 +373,16 @@ impl Hero {
         (lo + self.str_bonus + self.gift.fury, hi + self.str_bonus + self.gift.fury)
     }
     pub fn def(&self) -> i32 {
-        self.armour.as_ref().map(|a| a.def_bonus()).unwrap_or(0) + if self.bulwark_t > 0 { 3 } else { 0 } + if self.ward_t > 0 { 2 } else { 0 } + self.gift.guard + self.legacy_armour
+        self.armour.as_ref().map(|a| a.def_bonus()).unwrap_or(0) + self.extra_guard() + if self.bulwark_t > 0 { 3 } else { 0 } + if self.ward_t > 0 { 2 } else { 0 } + self.gift.guard + self.legacy_armour
     }
+    pub fn extra_guard(&self)->i32 {self.helm.as_ref().map_or(0,Item::def_bonus)+self.boots.as_ref().map_or(0,Item::def_bonus)}
     /// Cut 25 §1 (AN: three forge buys took bank 40 → 95 %, more than any row): the forged
     /// armour blunts a blow, never negates it — a third of a blow (rounded) always lands through
     /// it (mail +1 had made the D1–D10 bands' 1–3 blows harmless). Found armour subtracts as it always did
     /// (the Deep's walls are measured on it); a verb's guard (`bulwark`, `ward`) subtracts in full.
     pub fn blunt(&self, roll: i32) -> i32 {
-        let armour = self.armour.as_ref().map(|a| a.def_bonus()).unwrap_or(0).max(0);
-        let forged = self.armour.as_ref().is_some_and(|a| crate::kit::is_kit_id(a.id));
+        let armour = self.armour.as_ref().map(|a| a.def_bonus()).unwrap_or(0).max(0)+self.extra_guard();
+        let forged = self.armour.iter().chain(self.helm.iter()).chain(self.boots.iter()).any(|a|crate::kit::is_kit_id(a.id));
         let guard = if self.bulwark_t > 0 { 3 } else { 0 } + if self.ward_t > 0 { 2 } else { 0 } + self.gift.guard;
         let through = if forged { (roll - armour).max((roll + 1) / 3) } else { (roll - armour).max(0) };
         let through = if self.legacy_armour > 0 { (through - self.legacy_armour).max((through + 2) / 3) } else { through };
@@ -392,7 +408,7 @@ impl Hero {
         if self.speed_t > 0 {
             s += 5;
         }
-        s + self.pace.div_euclid(10) + self.gift.quick - self.gift.slow
+        s + self.helm.as_ref().map_or(0,|i|i.def().speed) + self.boots.as_ref().map_or(0,|i|i.def().speed) + self.pace.div_euclid(10) + self.gift.quick - self.gift.slow
     }
     pub fn ranged(&self) -> bool {
         self.weapon.as_ref().is_some_and(|w| w.def().ranged)
@@ -415,6 +431,8 @@ impl Hero {
         self.inv.iter().any(|i| i.kind == kind)
             || self.weapon.as_ref().is_some_and(|w| w.kind == kind)
             || self.armour.as_ref().is_some_and(|a| a.kind == kind)
+            || self.helm.as_ref().is_some_and(|a| a.kind == kind)
+            || self.boots.as_ref().is_some_and(|a| a.kind == kind)
     }
     pub fn take_kind(&mut self, kind: &str) -> Option<Item> {
         let i = self.inv.iter().position(|i| i.kind == kind)?;
@@ -448,9 +466,17 @@ impl Hero {
                 }
             }
             Cat::Armour => {
-                let cur = self.armour.as_ref().map(armour_worth).unwrap_or(i32::MIN);
+                let slot=crate::armour_sets::slot(&item.kind);
+                if self.protected_slots.contains(&slot)&&!crate::kit::is_kit_id(item.id) {
+                    if !self.inv_full(){self.inv.push(item);}return None;
+                }
+                let equipment=match slot {crate::armour_sets::Slot::Helm=>&mut self.helm,crate::armour_sets::Slot::Armour=>&mut self.armour,crate::armour_sets::Slot::Boots=>&mut self.boots};
+                let cur = equipment.as_ref().map(armour_worth).unwrap_or(i32::MIN);
                 if armour_worth(&item) > cur {
-                    let old = self.armour.replace(item);
+                    let old = equipment.replace(item);
+                    let count=crate::armour_sets::count(self);
+                    if count<3 {self.hearth_ward=0;}
+                    if count<2 {self.hearth_regen=0;}
                     if let Some(o) = old {
                         if !self.inv_full() || crate::kit::is_kit_id(o.id) {
                             self.inv.push(o.clone());

@@ -12,7 +12,7 @@ import { penOpen } from "./packages";
 import { classStyleName } from "./class-styles";
 import { heirOrd } from "./tokens";
 import { openSettings } from "./settings";
-import { heroPresence, type ObservedPresence } from "./hero-presence";
+import { heroPresence, heroAway, type ObservedPresence } from "./hero-presence";
 export { heroPresence } from "./hero-presence";
 export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } = {}) {
   const el = h("section", { class: "hero-roster", "aria-label": /* copy:label */ "Active heroes" });
@@ -23,7 +23,7 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
   const focus = async (s: HeroSlot): Promise<void> => {
     closeAllSheets();
     if (!(await app.selectBloodline(s.id))) return;
-    if (s.state === "live") {
+    if (heroAway(s, observed)) {
       if (app.screen === "watch") window.dispatchEvent(new Event("idlever:focus-hero"));
       else app.go({ kind: "watch" });
     } else if (hooks.focus) hooks.focus();

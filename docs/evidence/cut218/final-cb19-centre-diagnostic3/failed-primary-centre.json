@@ -1,0 +1,58 @@
+{
+  "fixture": "three-actual.game.json.gz",
+  "width": 1440,
+  "scale": 2,
+  "primary": {
+    "id": "kennel",
+    "rect": {
+      "x": 902.1875,
+      "y": 481.5,
+      "w": 130,
+      "h": 83
+    },
+    "viewport": {
+      "w": 1440,
+      "h": 900,
+      "scrollY": 0
+    },
+    "parent": {
+      "x": 403.1875,
+      "y": 88.5,
+      "width": 792.015625,
+      "height": 576,
+      "top": 88.5,
+      "right": 1195.203125,
+      "bottom": 664.5,
+      "left": 403.1875
+    },
+    "plot": "bank",
+    "ready": false,
+    "rawTop": "<footer class=\"console\"><div class=\"console-row\"><div class=\"well-slot\"><div class=\"portrait\" style=\"--hp: 1.000;\"><span class=\"face painted\" data-art=\"hero_fighter_male\" style=\"background-image: url(&quot;/ui/portraits/hero_fighter_male.webp&quot;); background-size: cover; background-position: 50% 30%;\"></span><span class=\"ring\"></span><span class=\"rim\"></span><span class=\"plabel num\"><span class=\"plabel-in\"><span>fighter <b class=\"num\">L4</b></span><span class=\"xp\"><span class=\"fill\" style=\"width:52%\"></span></span></span></span><span class=\"look-stud\" role=\"button\" tabindex=\"0\" aria-label=\"Appearance\" data-look=\"male\">◐</span></div></div><div class=\"cmd\" style=\"--dock-count: 5;\"><button class=\"tile\" data-tile=\"journal\"><img class=\"ico ico-chronicle\" src=\"/ui/icons/chronicle.png\" alt=\"\" draggable=\"false\" aria-hidden=\"true\"><span class=\"tl\">Journal</span></button><button class=\"tile reveal\" data-tile=\"forge\" data-kwh=\"forge\" aria-description=\"gold buys starting gear upgrades\" data-bui",
+    "stack": [
+      {
+        "tag": "FOOTER",
+        "cls": "console"
+      },
+      {
+        "tag": "BUTTON",
+        "cls": "town-hit hit-kennel"
+      },
+      {
+        "tag": "DIV",
+        "cls": "town-hits"
+      },
+      {
+        "tag": "CANVAS",
+        "cls": "town-gl"
+      },
+      {
+        "tag": "DIV",
+        "cls": "town"
+      },
+      {
+        "tag": "MAIN",
+        "cls": "camp frame prepen"
+      }
+    ]
+  }
+}

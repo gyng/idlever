@@ -282,6 +282,10 @@ pub const ITEMS: &[ItemDef] = &[
     ItemDef { kind: "crownsplitter", cat: Cat::Weapon, a: (3, 7), speed: -1, ranged: false, value: 25, benevolent: true, weight: 0 },
     ItemDef { kind: "hearthglass", cat: Cat::Armour, a: (1, 0), speed: 0, ranged: false, value: 15, benevolent: true, weight: 0 },
     ItemDef { kind: "frostmantle", cat: Cat::Armour, a: (2, 0), speed: -1, ranged: false, value: 30, benevolent: true, weight: 0 },
+    ItemDef { kind: "ironcap", cat: Cat::Armour, a: (2, 0), speed: -1, ranged: false, value: 10, benevolent: true, weight: 0 },
+    ItemDef { kind: "trailboots", cat: Cat::Armour, a: (-1, 0), speed: 1, ranged: false, value: 10, benevolent: true, weight: 0 },
+    ItemDef { kind: "hearthglass_hood", cat: Cat::Armour, a: (0, 0), speed: 0, ranged: false, value: 15, benevolent: true, weight: 0 },
+    ItemDef { kind: "hearthglass_boots", cat: Cat::Armour, a: (0, 0), speed: 0, ranged: false, value: 15, benevolent: true, weight: 0 },
     ItemDef { kind: "heal", cat: Cat::Potion, a: (0, 0), speed: 0, ranged: false, value: 12, benevolent: true, weight: 6 },
     ItemDef { kind: "strength", cat: Cat::Potion, a: (0, 0), speed: 0, ranged: false, value: 20, benevolent: true, weight: 2 },
     ItemDef { kind: "speed", cat: Cat::Potion, a: (0, 0), speed: 0, ranged: false, value: 10, benevolent: true, weight: 3 },
@@ -421,8 +425,13 @@ mod tests {
     fn content_counts() {
         assert_eq!(MONSTERS.iter().filter(|m| !m.boss && !m.tags.contains(&"summoned")).count(), 29, "14 + the Cut 3 biomes' 14 + the Cut 7 captain");
         assert_eq!(MONSTERS.iter().filter(|m| m.boss).count(), 6);
-        assert_eq!(ITEMS.len(), 46, "43 existing items + three zero-weight permanent legendary shapes");
-        assert_eq!(ITEMS.iter().filter(|d|crate::legendary::definition(d.kind).is_some()).map(|d|d.weight).collect::<Vec<_>>(),vec![0,0,0]);
+        assert_eq!(ITEMS.len(), 50, "43 existing items + Cut215 three legendary shapes + Cut216 four zero-weight slot shapes");
+        for kind in ["ironcap","trailboots","hearthglass_hood","hearthglass_boots"] {
+            let def=item_def(kind);assert_eq!(def.kind,kind);assert_eq!(def.weight,0);assert_eq!(def.cat,Cat::Armour);
+        }
+        let named=ITEMS.iter().filter(|d|crate::legendary::definition(d.kind).is_some()).collect::<Vec<_>>();
+        assert_eq!(named.iter().map(|d|d.kind).collect::<Vec<_>>(),vec!["crownsplitter","hearthglass","frostmantle","hearthglass_hood","hearthglass_boots"]);
+        assert!(named.iter().all(|d|d.weight==0));
         assert_eq!(potion_kinds().len(), 11);
         assert_eq!(scroll_kinds().len(), 13);
         assert!(POTION_FLAVOURS.len() >= potion_kinds().len());

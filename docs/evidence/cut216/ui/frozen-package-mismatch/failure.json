@@ -1,0 +1,38 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'd6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18'\n- 'cb19f4d37cadccf03af24544e0631fef92137a84e6d232d2da5cd96cf6abb082'\n",
+  "checks": 0,
+  "scope": {
+    "diagnostic": true,
+    "cases": [
+      "earned-seed1-boots"
+    ],
+    "widths": [
+      400
+    ],
+    "scales": [
+      1
+    ],
+    "views": [
+      "forge",
+      "loadouts"
+    ],
+    "layouts": 2
+  },
+  "wasmScope": {
+    "mode": "frozen-acceptance-manifest",
+    "fixtureManifest": {
+      "bytes": 6640427,
+      "sha256": "cb19f4d37cadccf03af24544e0631fef92137a84e6d232d2da5cd96cf6abb082"
+    },
+    "currentLocalPackage": {
+      "bytes": 6640738,
+      "sha256": "d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18"
+    },
+    "expected": {
+      "bytes": 6640427,
+      "sha256": "cb19f4d37cadccf03af24544e0631fef92137a84e6d232d2da5cd96cf6abb082"
+    }
+  },
+  "inputs": {},
+  "records": []
+}

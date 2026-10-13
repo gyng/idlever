@@ -1,0 +1,147 @@
+{
+  "state": {
+    "actors": [
+      {
+        "id": 1,
+        "x": 250,
+        "y": 230,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 2,
+        "x": 250,
+        "y": 302,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 3,
+        "x": 250,
+        "y": 374,
+        "w": 44,
+        "h": 44
+      }
+    ],
+    "labels": [
+      {
+        "id": "tent",
+        "x": 439,
+        "y": 117,
+        "w": 115,
+        "h": 44
+      },
+      {
+        "id": "blacksmith",
+        "x": 297,
+        "y": 29,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "id": "kennel",
+        "x": 544,
+        "y": 202,
+        "w": 122,
+        "h": 44
+      },
+      {
+        "id": "guild",
+        "x": 372,
+        "y": 221,
+        "w": 107,
+        "h": 44
+      },
+      {
+        "id": "pool",
+        "x": 276,
+        "y": 169,
+        "w": 98,
+        "h": 44
+      },
+      {
+        "id": "staked",
+        "x": 465,
+        "y": 68,
+        "w": 103,
+        "h": 44
+      }
+    ],
+    "host": {
+      "w": 792.015625,
+      "h": 448.90625
+    },
+    "overlaps": [],
+    "labelActor": [],
+    "overflow": 0,
+    "stats": {
+      "fps": 3,
+      "frames": 3,
+      "cpuMs": 1.2000000029802322,
+      "cpuP50": 2.9000000059604645,
+      "cpuP95": 51.30000001192093,
+      "walkers": 3,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1,
+      "night": 0,
+      "characterLights": 0,
+      "dimensionalLight": false,
+      "mappedSprites": [],
+      "lights": 9,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 37.099999994039536,
+      "windTufts": 0,
+      "windSignature": 0,
+      "buildings": [
+        "blacksmith",
+        "kennel"
+      ],
+      "services": [
+        "guild",
+        "pool"
+      ],
+      "residentStates": [
+        {
+          "id": 1,
+          "resting": true,
+          "phase": "ready"
+        },
+        {
+          "id": 2,
+          "resting": true,
+          "phase": "ready"
+        },
+        {
+          "id": 3,
+          "resting": true,
+          "phase": "ready"
+        }
+      ],
+      "activeBuilds": [],
+      "buildEvents": 1,
+      "buildDust": 0,
+      "staked": "bank",
+      "markers": [
+        "rune@blacksmith",
+        "rune@kennel"
+      ],
+      "view": [
+        14,
+        87,
+        792,
+        449
+      ],
+      "workers": [
+        "quartermaster",
+        "porter",
+        "scout(off)",
+        "apprentice(lit)"
+      ],
+      "ranks": {}
+    }
+  },
+  "errors": []
+}

@@ -24,6 +24,23 @@ export async function openLegendaryLoadout(
   kind: string,
   anchor?: HTMLElement | null,
 ): Promise<void> {
+  return openLoadoutDestination(app, `[data-kit-choice="${CSS.escape(kind)}"]`, anchor);
+}
+
+/** Read-only family destination; choosing a build is a separate action. */
+export async function openSetLoadout(
+  app: App,
+  family: string,
+  anchor?: HTMLElement | null,
+): Promise<void> {
+  return openLoadoutDestination(app, `[data-set-family="${CSS.escape(family)}"]`, anchor);
+}
+
+async function openLoadoutDestination(
+  app: App,
+  selector: string,
+  anchor?: HTMLElement | null,
+): Promise<void> {
   const engine = app.engine;
   const identity = (): string =>
     JSON.stringify([
@@ -37,13 +54,14 @@ export async function openLegendaryLoadout(
   openHero(app, anchor, "loadouts");
   queueMicrotask(() => {
     if (engine !== app.engine || key !== identity()) return;
-    const choice = document.querySelector<HTMLButtonElement>(
-      `.sheet-wrap:not(.under) [data-kit-choice="${CSS.escape(kind)}"]`,
-    );
+    const choice = document.querySelector<HTMLElement>(`.sheet-wrap:not(.under) ${selector}`);
     if (!choice) return;
     const details = choice.closest("details");
     if (details) details.open = true;
-    const target = choice.disabled ? choice.closest<HTMLElement>(".starting-gear-row") : choice;
+    const target =
+      choice instanceof HTMLButtonElement && choice.disabled
+        ? choice.closest<HTMLElement>(".starting-gear-row")
+        : choice;
     if (target) {
       if (target !== choice) target.tabIndex = -1;
       target.focus({ preventScroll: true });

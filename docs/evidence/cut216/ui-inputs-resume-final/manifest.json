@@ -1,0 +1,59 @@
+{
+  "wasm": {
+    "bytes": 6640427,
+    "sha256": "cb19f4d37cadccf03af24544e0631fef92137a84e6d232d2da5cd96cf6abb082"
+  },
+  "entries": [
+    {
+      "id": "earned-seed1-body",
+      "earned": true,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-body-home.game.json.gz",
+      "expectedFollowCount": 1,
+      "prepare": true,
+      "paidResident": true,
+      "before": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-hearthglass-before.game.json.gz",
+      "findSteps": 1,
+      "piece": "hearthglass"
+    },
+    {
+      "id": "earned-seed1-hood",
+      "earned": true,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-hood-home.game.json.gz",
+      "expectedFollowCount": 2
+    },
+    {
+      "id": "earned-seed1-boots",
+      "earned": true,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-boots-home.game.json.gz",
+      "expectedFollowCount": 3,
+      "before": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-hearthglass_boots-before.game.json.gz",
+      "findSteps": 1,
+      "piece": "hearthglass_boots",
+      "away": "docs/evidence/cut216/ui-inputs-resume-final/seed-1/earned-hybrid-away.game.json.gz"
+    },
+    {
+      "id": "earned-seed13-boots",
+      "earned": true,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/seed-13/earned-boots-home.game.json.gz",
+      "expectedFollowCount": 3,
+      "away": "docs/evidence/cut216/ui-inputs-resume-final/seed-13/earned-hybrid-away.game.json.gz"
+    },
+    {
+      "id": "controlled-gunner",
+      "earned": false,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/controlled/earned-collection-controlled-gunner.game.json.gz",
+      "expectedFollowCount": 3,
+      "classRefusal": true,
+      "controlled": "Only Gunner unlock qualification controlled; class selected through real setClass; permanent collection/ranks/Gold genuinely earned seed1."
+    },
+    {
+      "id": "controlled-focus-stop",
+      "earned": false,
+      "home": "docs/evidence/cut216/ui-inputs-resume-final/controlled/source-focus-stopped-after-three.game.json.gz",
+      "expectedFollowCount": 1,
+      "focusStopped": true,
+      "controlled": "Only source-record qualification and early-return literal policy controlled; three real public sends/12tick Return receipts create failures1/2/3 and actual stop, no fabricated counters."
+    }
+  ],
+  "source": "Frozen current Core export loads original genuine 16seed survey collections, performs public Scout pause and actual one-hour completion/recovery, saves exact actor/queued states. Controlled class/focus cases explicitly labelled; source discovery replay fixtures are original earned capsules under current source, not grants."
+}

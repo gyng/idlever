@@ -15,6 +15,14 @@ pub struct StartingConfig {
     pub weapon: Option<String>,
     pub armour: Option<String>,
     pub supplies: Vec<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub helm: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub boots: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub follow_set: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub pins: Option<crate::armour_sets::Pins>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
@@ -52,9 +60,12 @@ pub struct StartingKits {
     pub armours: Vec<GearChoice>,
     pub actual_weapon: String,
     pub actual_armour: Option<String>,
+    pub helms: Vec<GearChoice>,
+    pub boots: Vec<GearChoice>,
+    pub armour_sets: Vec<crate::armour_sets::FamilyWire>,
 }
 
-fn shape_available(l: &LineageState, kind: &str, cat: crate::defs::Cat) -> bool {
+pub(crate) fn shape_available(l: &LineageState, kind: &str, cat: crate::defs::Cat) -> bool {
     if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner { return false; }
     if crate::legendary::definition(kind).is_some()&&!l.town.owned_shapes.contains(kind) {return false;}
     crate::defs::ITEMS.iter().any(|d| d.kind == kind && d.cat == cat)
@@ -79,15 +90,20 @@ pub fn starting_wire(l: &LineageState) -> StartingKits {
                 let mut w=Item::new(WEAPON_ID,d.kind);w.enchant=owned(l,"weapon") as i32;w.forged=weapon_forged(l);
                 let (a,b)=w.atk();[a,b]
             } else { [0,0] },
-            armour: if cat == crate::defs::Cat::Armour { d.a.0+explicit_armour_bonus(l) } else { 0 }, speed: d.speed,
+            armour: if cat == crate::defs::Cat::Armour { d.a.0+if crate::armour_sets::slot(d.kind)==crate::armour_sets::Slot::Armour {explicit_armour_bonus(l)}else{0} } else { 0 }, speed: d.speed,
             available: shape_available(l, d.kind, cat),
             ranged: d.ranged, compatible: cat != crate::defs::Cat::Weapon || l.class != crate::hero::Class::Gunner,
             needs: (!shape_available(l, d.kind, cat)).then(|| if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner {
                 "Gunner uses firearms".into()
-            } else { format!("discover {} more", 5u32.saturating_sub(l.forge.get(d.kind).map_or(0, |r| r.salvaged))) }) }).collect();
+            } else if crate::armour_sets::standalone(d.kind) {"Defeat the Warlord".into()}
+            else if let Some(def)=crate::legendary::definition(d.kind) {def.source.into()}
+            else { format!("discover {} more", 5u32.saturating_sub(l.forge.get(d.kind).map_or(0, |r| r.salvaged))) }) }).collect::<Vec<_>>();
     let mut hero=Hero::new(l.class,crate::geom::Pos::new(0,0)); equip(l,&mut hero);
     StartingKits { current: l.starting_config.clone(), selected: l.starting_selected.clone(),
-        saved: l.named_kits.clone(), weapons: choices(crate::defs::Cat::Weapon), armours: choices(crate::defs::Cat::Armour),
+        saved: l.named_kits.clone(), weapons: choices(crate::defs::Cat::Weapon), armours: choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Armour).collect(),
+        helms:choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Helm).collect(),
+        boots:choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Boots).collect(),
+        armour_sets:crate::armour_sets::wire(l,Some(&hero)),
         actual_weapon: hero.weapon.as_ref().map(|w|w.kind.clone()).unwrap_or_default(), actual_armour: hero.armour.as_ref().map(|a|a.kind.clone()) }
 }
 
@@ -95,6 +111,12 @@ fn validate_config(game: &Game, config: &StartingConfig) -> Result<(), String> {
     if config.weapon.as_ref().is_some_and(|k| !shape_available(&game.lineage, k, crate::defs::Cat::Weapon))
         || config.armour.as_ref().is_some_and(|k| k != "none" && !shape_available(&game.lineage, k, crate::defs::Cat::Armour)) {
         return Err("gear not unlocked".into());
+    }
+    if config.follow_set.as_deref().is_some_and(|s|s!="hearthglass") {return Err("unknown armour set".into());}
+    if config.follow_set.is_some()&&!game.lineage.town.owned_shapes.contains("hearthglass") {return Err("Discover Hearthglass first".into());}
+    for slot in crate::armour_sets::SLOTS {
+        if crate::armour_sets::fallback(config,slot).is_some_and(|k|!crate::armour_sets::available(&game.lineage,k,slot))
+            ||config.pins.as_ref().and_then(|p|p.get(slot)).is_some_and(|k|!crate::armour_sets::available(&game.lineage,k,slot)) {return Err("slot gear not unlocked".into());}
     }
     let extra_free = game.lineage.supplies.iter().chain(home_preparation(game).iter()).filter(|i| i.free).count()
         .saturating_sub(config.supplies.iter().filter(|k| k.as_str() == "leash").count());
@@ -104,7 +126,18 @@ fn validate_config(game: &Game, config: &StartingConfig) -> Result<(), String> {
     Ok(())
 }
 
-pub fn set_starting(game: &mut Game, config: Option<StartingConfig>) -> Result<(), String> {
+pub fn set_starting(game: &mut Game, mut config: Option<StartingConfig>) -> Result<(), String> {
+    if let (Some(old),Some(new))=(&game.lineage.starting_config,config.as_mut()) {
+        if old.follow_set.is_some()&&new.follow_set.is_none() {
+            let mut compared=old.clone();compared.follow_set=None;
+            if *new==compared {
+                for slot in crate::armour_sets::SLOTS {
+                    let (kind,_)=crate::armour_sets::resolve(&game.lineage,slot);
+                    match slot {crate::armour_sets::Slot::Helm=>new.helm=kind,crate::armour_sets::Slot::Armour=>new.armour=kind,crate::armour_sets::Slot::Boots=>new.boots=kind}
+                }
+            }
+        }
+    }
     if let Some(config) = &config { validate_config(game, config)?; }
     game.lineage.starting_config = config;
     game.lineage.starting_selected = None;
@@ -172,7 +205,7 @@ fn home_preparation(game:&Game)->Vec<Item> {
     let mut items=Vec::new();
     let mut used=std::collections::BTreeSet::new();
     let mut free_leashes=run.packed.iter().filter(|k|k.as_str()=="leash").count().saturating_sub(run.bought_leashes.len());
-    let all:Vec<_>=run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).collect();
+    let all:Vec<_>=run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).chain(run.hero.helm.iter()).chain(run.hero.boots.iter()).collect();
     for (n,kind) in run.packed.iter().enumerate() {
         let physical=all.iter().find(|i|i.kind==*kind&&(kind=="leash"||run.supplies.contains(&i.id)&&!used.contains(&i.id)));
         let Some(physical)=physical else {continue};
@@ -203,6 +236,8 @@ fn refit_starting(game:&mut Game) {
     });
     if run.hero.weapon.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.weapon=None.into();}
     if run.hero.armour.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.armour=None.into();}
+    if run.hero.helm.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.helm=None.into();}
+    if run.hero.boots.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.boots=None.into();}
     game.lineage.supplies.extend(old);
     prepare_starting(game);
     let run=game.run.as_mut().unwrap();
@@ -356,8 +391,10 @@ pub const WEAPON_ID: u32 = 1;
 pub const ARMOUR_ID: u32 = 2;
 /// Reserved outside historical floor/supply ids; the optional backup is never loot.
 pub const SIDEARM_ID:u32=u32::MAX-1;
+pub const HELM_ID:u32=u32::MAX-2;
+pub const BOOTS_ID:u32=u32::MAX-3;
 pub fn is_kit_id(id: u32) -> bool {
-    id == WEAPON_ID || id == ARMOUR_ID || id == SIDEARM_ID
+    id == WEAPON_ID || id == ARMOUR_ID || id == SIDEARM_ID || id == HELM_ID || id == BOOTS_ID
 }
 
 /// The unit a step's price is a multiple of: `100 + 25 × best depth` ($300 at D8). A night of a
@@ -601,7 +638,8 @@ pub fn equip(l: &LineageState, hero: &mut Hero) {
     let [plate, pace] = branch_counts(l, "armour");
     hero.pace = pace_tenths(pace as usize);
     let default_armour = plate_piece(plate as usize);
-    let chosen = l.starting_config.as_ref().and_then(|c| c.armour.as_deref());
+    let (resolved,_) = crate::armour_sets::resolve(l,crate::armour_sets::Slot::Armour);
+    let chosen = resolved.as_deref();
     let piece = match chosen {
         Some("none") => None,
         Some(k) if shape_available(l, k, crate::defs::Cat::Armour) => Some((k, explicit_armour_bonus(l))),
@@ -613,6 +651,14 @@ pub fn equip(l: &LineageState, hero: &mut Hero) {
         if chosen.is_some() { hero.pace += it.def().speed * 10; }
         hero.auto_equip(it);
     }
+    for (slot,id) in [(crate::armour_sets::Slot::Helm,HELM_ID),(crate::armour_sets::Slot::Boots,BOOTS_ID)] {
+        let (kind,_) = crate::armour_sets::resolve(l,slot);
+        if let Some(kind)=kind.filter(|k|k!="none") {hero.auto_equip(Item::new(id,&kind));}
+    }
+    hero.protected_slots=crate::armour_sets::SLOTS.into_iter().filter(|s| {
+        let (kind,origin)=crate::armour_sets::resolve(l,*s);
+        origin=="pin"||origin=="follow"||kind.as_deref()==Some(crate::armour_sets::family_piece(*s))
+    }).collect();
 }
 
 /// The ladders with each next step measured (`Engine.kitDeltas`): the camp's panel for the
@@ -737,7 +783,7 @@ mod starting_kit_tests {
     use super::*;
 
     fn config(weapon: &str, armour: &str, supplies: &[&str]) -> StartingConfig {
-        StartingConfig { weapon: Some(weapon.into()), armour: Some(armour.into()), supplies: supplies.iter().map(|k| (*k).into()).collect() }
+        StartingConfig { weapon: Some(weapon.into()), armour: Some(armour.into()), supplies: supplies.iter().map(|k| (*k).into()).collect(),..Default::default() }
     }
     fn controlled() -> Game {
         let mut g = Game::new_resident(1);

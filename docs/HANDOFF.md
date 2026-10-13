@@ -9,11 +9,12 @@ Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
 Latest owner extension: legendary armour sets inspired by Diablo II/III.
-Queued proposal docs/CUT216_ARMOUR_SETS.md: three slots (helm/body/boots),
+Design docs/CUT216_ARMOUR_SETS.md: three slots (helm/body/boots),
 equipped2/3 and3/3 bonuses, automatic permanent unlocks/free reuse, mixed2+1
 builds and staged deterministic missing-piece protection. Prototype Hearthglass
-first; current body effect stays intact. This is design only: current runtime
-still has one armour slot. Acceptance40 adds the slot/bonus/pacing work without
+first; current body effect stays intact. Cut216 implementation is now in progress; current newly built package has
+three actual armour slots. Final client acceptance and earned-fixture integration
+remain pending. Acceptance40 adds the slot/bonus/pacing work without
 dropping the existing queue.
 
 Owner automation follow-up is designed in Cut216: per-hero Follow set with
@@ -22,8 +23,68 @@ on the next departure, never mid-delve. Collection is built in; retired
 Armourer is not restored. Paid upgrades keep the existing Apprentice budget.
 Optional Scout Find next piece targets known eligible sources, stops at unlock
 or3 consecutive source failures, then resumes normal delves. Global ownership
-and missing-piece protection survive absence/reload. This is queued design,
-not implemented; item40 includes the automation and its parity/refusal tests.
+and missing-piece protection survive absence/reload. Core automation is implemented and focused9/9 semantic tests pass, including
+whole-save offline/reload equality and paid preparation safeguards. Final client
+acceptance is pending; item40 retains earned pacing, UI and automation proof.
+
+Cut216/217/218 checkpoint,2026-10-14: source implemented and relevant checks
+pass. Final real WASM6640738bytes SHA
+`d6951f4723fa9eaf4ed93af70fc6717f698be83797d29301f207896e38e94c18`.
+Production web build contains this exact binary. Full format/Oxlint/copy checks
+pass; default all-target Clippy and final copy-only Core Clippy pass.
+Original native891pass/1failure/6ignored is retained: obsolete46-item count
+explicitly amended to50 with four canonical zero-weight shapes and rechecked.
+Focused10 semantic cases pass; additional completion-status read-only assertion
+passes. This combined evidence is not relabeled as a clean final full-native run.
+Eight-seed targeted idle-d8/idle-d13/reach pass; broad balance/fun remain open.
+
+All16 genuine earned surveys collect three pieces. Body24–64h/Hood48–88h/
+Boots80–112h are requested eight-hour check-in bounds, not exact drop times.
+Actual clock/source/fixture identities are recorded in core-final/timing audit.
+Two-piece regeneration, capped three-piece ward and explicit melee tradeoff
+are actual Rust mechanics. Follow/pins/fallbacks resolve at real departure;
+exact selected family gear stays protected after Follow is turned off. Scout
+focus preserves normal plans, stops after three source misses or ownership,
+reports paused when a later manual route blocks it, and reports Collection
+complete ahead of old stop notes. No extra worker, fee, claim or cleanup step.
+
+Final Core cb19 UI phase2872 assertions/72 layouts covers earned stages,
+controlled class qualification and actual three-miss stop; copy-only finald695
+phase225/4 views verifies completed versus incomplete status, exact save and
+Gold. Default full harness remains unchanged; opt-in diagnostic dimensions
+report their scope. A default-package diagnostic passes290/4 views; routine
+runs pin current local-to-browser WASM equality, while explicit acceptance
+manifests retain frozen hashes (intentional wrong-hash rejection verified).
+Four final privateGPUd695 captures show Follow and actual
+Next gear; earlier phases/failures remain immutable. Current screenshot:
+docs/evidence/cut216/ui/gpu-final-d695/earned-follow-controls-400.png.
+
+Cut217 responsive chrome: finald695 normal-runner24 viewport/font states and
+actual resizefocus/expandedmap/Speed/Pause/Hand/Town handlers pass. Prior five
+related groups pass; new current/first-tick hero names preserve historical
+identities. Desktop floating Watch gains156px height and17.88/20.72/22.75%
+unobscured normal area at1440/1920/2560. These are area, not speed measurements.
+Phone ellipsis retains full accessible labels; other typography remains open.
+
+Cut218 finald695 home482 geometry/save checks plus20 actual phase checks pass
+in65.5s. Real paid3rest/controlled3death fixtures are separately identified.
+All published six/seven facility/plot targets work, including locked preview,
+and72 actual hero mouse/keyboard inspections preserve restored whole saves.
+Phone Town minimum360px/18rem; desktop360px fixed prevents footer overlap.
+Actor arrival now re-solves labels using cached padded reservations, avoiding
+per-frame searches; actual privateGPU238/6 views pass. Old first-frame overlap,
+footer/crop failures and controlled shadow-ledger normalization remain archived.
+Renderer-only matched warmCPU cost+0.1–0.2ms retains its exact prior933b/source
+scope; packed/primitive/Canvas evidence is not relabeled to finald695. Ant-farm
+needs/ongoing Forge work, broader lighting/content and cold cost remain open.
+
+Next proposed contract docs/CUT219_PROGRESS_CURVE.md is read/design only, not
+implemented or accepted. Obtain a current-source earned baseline before tuning;
+keep survivor-friendly unlocks, staged Forge/Kennel and full queue in scope.
+Owner asked about RPG hero configuration: current hub has Appearance/Run log/
+Hero plus Loadouts/Class/Legacy tabs. Paper-doll equipment view and centralized
+behaviour/companions are not implemented; this is a proposed refinement to
+existing hero/build requirements, not evidence of delivered functionality.
 
 Current checkpoint delivers Cut215 legendary discoveries and free Forge choices.
 Previous a23114f0 delivers Cut214 home-service visuals/adaptive labels;127ef6f3

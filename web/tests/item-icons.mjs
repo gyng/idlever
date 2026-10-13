@@ -36,6 +36,20 @@ try {
       };
       for (const kind of kinds) {
         const el = itemIcon({ kind, label: kind });
+        const slotFallback = {
+          ironcap: "helm",
+          hearthglass_hood: "helm",
+          trailboots: "boots",
+          hearthglass_boots: "boots",
+        }[kind];
+        if (slotFallback) {
+          check(
+            !!el.querySelector("img") ||
+              !!el.querySelector(`.equipment-primitive.slot-${slotFallback}`),
+            `equipment retains slot primitive ${kind}`,
+          );
+          continue;
+        }
         const namedFallback = { crownsplitter: "⚔", hearthglass: "⛨", frostmantle: "⛨" }[kind];
         if (namedFallback) {
           const glyph = el.querySelector(".glyph");

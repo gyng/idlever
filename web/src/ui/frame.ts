@@ -150,7 +150,7 @@ export function renderBar(
     // Explicit historical identities retain their captured ordinal. Only a current
     // foreground run may resolve its matching heir to the persistent actor.
     const presentHero =
-      !past && (opts.heir === undefined || (opts.watch && L.live?.heir === opts.heir))
+      !past && (opts.heir === undefined || (opts.watch && (L.live?.heir ?? L.heir) === opts.heir))
         ? L.persistent_hero
         : undefined;
     const shownName = opts.heroName ?? presentHero?.name;
@@ -218,11 +218,15 @@ export function renderBar(
             h(
               "span",
               { class: "heir-identity" },
-              L.hero_slots?.length
+              (L.hero_slots?.length ?? 0) > 1
                 ? h(
                     "small",
-                    { class: "bloodline-label" },
-                    /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`,
+                    {
+                      class: "bloodline-label",
+                      title: /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`,
+                      "aria-label": /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`,
+                    },
+                    /* copy:label */ `B${L.selected_bloodline ?? 1}`,
                   )
                 : "",
               h(
@@ -567,6 +571,7 @@ export function renderConsole(o: {
         h("span", { class: "tile empty", "aria-hidden": "true" }),
       ),
     );
+    cmd.style.setProperty("--dock-count", String(Math.max(1, live.length)));
   };
   setTiles(o.tiles);
   const el: HTMLElement = h(

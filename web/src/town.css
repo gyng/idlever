@@ -179,7 +179,9 @@
   main.camp .camp-well > .town {
     grid-area: well;
     height: auto;
-    min-height: 0;
+    /* Desktop labels have room to wrap horizontally. Scaling this pixel-art
+       scene with root text size can spill it over the following console row. */
+    min-height: 360px;
     margin: 0;
   }
 }

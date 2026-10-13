@@ -41,6 +41,10 @@ pub struct HeroSnap {
     pub weapon: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub armour: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub helm: Option<String>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub boots: Option<String>,
     pub class: String,
     #[serde(default,skip_serializing_if="Option::is_none")]
     pub specialization:Option<crate::specialization::Style>,
@@ -3323,6 +3327,8 @@ mod tests {
             inv: vec![],
             weapon: Some("dagger".into()),
             armour: None,
+            helm: None,
+            boots: None,
             class: "fighter".into(),
             specialization:None,
             trait_: "brave".into(),

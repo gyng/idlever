@@ -19,6 +19,7 @@ pub mod hero;
 pub mod item;
 pub mod journal;
 pub mod kit;
+pub mod armour_sets;
 pub mod legacy;
 pub mod legendary;
 pub mod specialization;
