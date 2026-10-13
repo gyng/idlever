@@ -1,0 +1,67 @@
+[
+  {
+    "k": "attack",
+    "t": 12544,
+    "src": 1,
+    "dst": 77,
+    "dmg": 9,
+    "hit": true,
+    "verb": "attack"
+  },
+  {
+    "k": "hurt",
+    "t": 12544,
+    "id": 77,
+    "dmg": 8,
+    "hp": 0,
+    "cause": "hero"
+  },
+  {
+    "k": "die",
+    "t": 12544,
+    "id": 77,
+    "cause": "hero"
+  },
+  {
+    "k": "pickup",
+    "t": 12544,
+    "id": 1,
+    "item": "Crownsplitter"
+  },
+  {
+    "k": "discovery",
+    "t": 12544,
+    "find": {
+      "kind": "crownsplitter",
+      "label": "Crownsplitter",
+      "effect": "Deal +2 melee damage to stunned or slowed foes.",
+      "tradeoff": "Slower than a sword. Control must be active.",
+      "source": "Goblin Warlord",
+      "depth": 8,
+      "run_id": 34,
+      "hero_name": "Hale Ash",
+      "first": true,
+      "target": "loadouts"
+    }
+  },
+  {
+    "k": "note",
+    "t": 12544,
+    "text": "Slew the Goblin Warlord."
+  },
+  {
+    "k": "callout",
+    "t": 12544,
+    "text": "boss down"
+  },
+  {
+    "k": "rule",
+    "t": 12544,
+    "row": 0,
+    "verb": {
+      "v": "attack",
+      "a": "tag:boss"
+    },
+    "text": "hit boss goblin"
+  }
+]

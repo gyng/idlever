@@ -2,6 +2,7 @@ import type { App } from "../app";
 import type { StartingConfig, StartingGearChoice } from "../engine/types";
 import { h } from "./dom";
 import { itemIcon } from "./items";
+import { legendaryDescription } from "./legendary-gear";
 
 /** Permanent gear shapes and saved configurations, entirely selected by Rust. */
 export function startingKits(app: App, open: ReadonlySet<string> = new Set()): HTMLElement | null {
@@ -18,6 +19,13 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
   )
     return null;
   const away = !!L.live || L.town?.home === false;
+  const identity = (): string =>
+    JSON.stringify([
+      app.lineage.selected_bloodline,
+      app.lineage.persistent_hero?.id,
+      app.lineage.persistent_hero?.incarnation,
+    ]);
+  const actor = identity();
   const config: StartingConfig = kits.current ?? {
     weapon: null,
     armour: null,
@@ -27,7 +35,10 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
   const body = h("section", { class: "starting-kits", "data-starting-kits": "1" });
   let busy = false;
   const current = (): boolean =>
-    body.isConnected && app.engine === owner && app.lineage.selected_bloodline === bloodline;
+    body.isConnected &&
+    app.engine === owner &&
+    app.lineage.selected_bloodline === bloodline &&
+    identity() === actor;
   const act = (fn: () => ReturnType<NonNullable<typeof owner.setStartingKit>>): void => {
     if (busy || !current() || app.lineage.live || app.lineage.town?.home === false) return;
     busy = true;
@@ -78,7 +89,10 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
       ...rows.map((row) =>
         h(
           "div",
-          { class: "game-inset starting-gear-row" },
+          {
+            class: `game-inset starting-gear-row${row.legendary ? " legendary-choice" : ""}`,
+            "data-legendary-choice": row.legendary ? row.kind : undefined,
+          },
           h(
             "button",
             {
@@ -89,24 +103,33 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
               "aria-pressed": String(config[slot] === row.kind),
               onclick: () => choose(row.kind),
             },
-            itemIcon({ kind: row.kind, label: row.label }, { size: "s" }),
+            itemIcon(
+              { kind: row.kind, label: row.label, rarity: row.legendary ? "legendary" : undefined },
+              { size: "s" },
+            ),
             row.label,
           ),
           h(
             "small",
             { class: "num" },
-            slot === "weapon"
-              ? `${row.damage[0]}–${row.damage[1]} base damage`
-              : `${row.armour} base armour`,
+            slot === "weapon" ? `${row.damage[0]}–${row.damage[1]} damage` : `${row.armour} armour`,
             ` · ${row.speed >= 0 ? "+" : ""}${row.speed} speed`,
             row.ranged ? /* copy:label */ " · Ranged" : "",
           ),
           h("small", { class: "dim" }, row.needs ?? /* copy:label */ "Free"),
+          row.legendary ? legendaryDescription(row) : null,
         ),
       ),
     );
   };
   const selected = kits.saved.find((kit) => kit.id === kits.selected);
+  const weaponLabel =
+    kits.weapons.find((row) => row.kind === kits.actual_weapon)?.label ??
+    kits.actual_weapon.replace(/_/g, " ");
+  const armourLabel = kits.actual_armour
+    ? (kits.armours.find((row) => row.kind === kits.actual_armour)?.label ??
+      kits.actual_armour.replace(/_/g, " "))
+    : /* copy:label */ "Bare";
   const name = h("input", {
     type: "text",
     maxlength: 32,
@@ -117,17 +140,11 @@ export function startingKits(app: App, open: ReadonlySet<string> = new Set()): H
   });
   body.append(
     h("h3", null, /* copy:label */ "Starting gear"),
-    h(
-      "p",
-      { class: "num" },
-      kits.actual_weapon.replace(/_/g, " "),
-      " · ",
-      kits.actual_armour?.replace(/_/g, " ") ?? /* copy:label */ "Bare",
-    ),
+    h("p", { class: "num" }, weaponLabel, " · ", armourLabel),
     h(
       "small",
       { class: "dim" },
-      /* copy:diary_line */ "Base values. Forge upgrades apply to each kit.",
+      /* copy:diary_line */ "Forge upgrades included. Hero attributes stay separate.",
     ),
     choices("weapon", kits.weapons),
     choices("armour", kits.armours),

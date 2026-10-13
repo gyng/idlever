@@ -1,0 +1,3304 @@
+{
+  "checks": 221,
+  "hashes": {
+    "docs/evidence/cut215/ui-inputs-final/seed-1/earned-replay-before-find.game.json.gz": "e521aee24e7af5abfcc45ffb634d15c7a1b1f6c2d48495cbbe823f645950e85b",
+    "docs/evidence/cut215/ui-inputs-final/seed-13/earned-replay-before-find.game.json.gz": "175e1cfc12a6de0949b765e5fcaf79187b5148076b7852aee711895f2edbbb7c",
+    "docs/evidence/cut215/core/fixtures-final/controlled/all3-actual-death-receipt.game.json.gz": "ea0454e1e41ae4cabb8fe46f7ff8d43270899f6f1e351f9fc4c11f68f8e7c14d"
+  },
+  "records": [
+    {
+      "seed": 1,
+      "width": 320,
+      "scale": 1,
+      "geometry": {
+        "x": 33.59375,
+        "right": 286.40625,
+        "width": 252.8125,
+        "button": {
+          "w": 226.8125,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "width": 320,
+      "scale": 2,
+      "geometry": {
+        "x": 33.59375,
+        "right": 286.40625,
+        "width": 252.8125,
+        "button": {
+          "w": 226.8125,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "width": 400,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "width": 400,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "width": 1440,
+      "scale": 1,
+      "geometry": {
+        "x": 428,
+        "right": 1012,
+        "width": 584,
+        "button": {
+          "w": 558,
+          "h": 44.796875,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "width": 1440,
+      "scale": 2,
+      "geometry": {
+        "x": 428,
+        "right": 1012,
+        "width": 584,
+        "button": {
+          "w": 558,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "liveInspection": {
+        "before": {
+          "gold": 798,
+          "config": null
+        },
+        "after": {
+          "gold": 798,
+          "config": null,
+          "calls": [],
+          "steps": [
+            {
+              "n": 10,
+              "turn": 12660,
+              "events": [
+                {
+                  "k": "move",
+                  "t": 12652,
+                  "id": 1,
+                  "x": 5,
+                  "y": 3
+                },
+                {
+                  "k": "descend",
+                  "t": 12652,
+                  "depth": 9,
+                  "biome": "fens"
+                },
+                {
+                  "k": "fact",
+                  "t": 12652,
+                  "fact": "biome:fens"
+                },
+                {
+                  "k": "note",
+                  "t": 12652,
+                  "text": "Entered the fens."
+                },
+                {
+                  "k": "note",
+                  "t": 12652,
+                  "text": "D9: the Fens."
+                },
+                {
+                  "k": "hurt",
+                  "t": 12652,
+                  "id": 1,
+                  "dmg": 0,
+                  "hp": 32,
+                  "cause": "rest"
+                },
+                {
+                  "k": "note",
+                  "t": 12652,
+                  "text": "Rain through a crack: he drinks."
+                },
+                {
+                  "k": "rule",
+                  "t": 12652,
+                  "row": -2,
+                  "verb": {
+                    "v": "descend"
+                  },
+                  "text": "chore → descend"
+                },
+                {
+                  "k": "note",
+                  "t": 12652,
+                  "text": "A cry from the dark: someone begs."
+                },
+                {
+                  "k": "fact",
+                  "t": 12652,
+                  "fact": "captive"
+                },
+                {
+                  "k": "heal",
+                  "t": 12652,
+                  "id": 1,
+                  "amount": 8,
+                  "src": "rest"
+                }
+              ]
+            },
+            {
+              "n": 10,
+              "turn": 12670,
+              "events": [
+                {
+                  "k": "move",
+                  "t": 12663,
+                  "id": 1,
+                  "x": 3,
+                  "y": 21
+                },
+                {
+                  "k": "rule",
+                  "t": 12663,
+                  "row": -2,
+                  "verb": {
+                    "v": "pick_up"
+                  },
+                  "text": "chore → pick_up"
+                }
+              ]
+            },
+            {
+              "n": 10,
+              "turn": 12680,
+              "events": [
+                {
+                  "k": "move",
+                  "t": 12674,
+                  "id": 1,
+                  "x": 2,
+                  "y": 21
+                },
+                {
+                  "k": "rule",
+                  "t": 12674,
+                  "row": -2,
+                  "verb": {
+                    "v": "pick_up"
+                  },
+                  "text": "chore → pick_up"
+                }
+              ]
+            },
+            {
+              "n": 10,
+              "turn": 12690,
+              "events": [
+                {
+                  "k": "move",
+                  "t": 12685,
+                  "id": 1,
+                  "x": 1,
+                  "y": 20
+                },
+                {
+                  "k": "pickup",
+                  "t": 12685,
+                  "id": 1,
+                  "item": "gold $11"
+                },
+                {
+                  "k": "rule",
+                  "t": 12685,
+                  "row": -2,
+                  "verb": {
+                    "v": "pick_up"
+                  },
+                  "text": "chore → pick_up"
+                }
+              ]
+            }
+          ]
+        },
+        "wholeSaveUnchanged": false,
+        "immediateModalSaveUnchanged": false,
+        "immediateModalSteps": [
+          {
+            "n": 10,
+            "turn": 12660,
+            "events": [
+              {
+                "k": "move",
+                "t": 12652,
+                "id": 1,
+                "x": 5,
+                "y": 3
+              },
+              {
+                "k": "descend",
+                "t": 12652,
+                "depth": 9,
+                "biome": "fens"
+              },
+              {
+                "k": "fact",
+                "t": 12652,
+                "fact": "biome:fens"
+              },
+              {
+                "k": "note",
+                "t": 12652,
+                "text": "Entered the fens."
+              },
+              {
+                "k": "note",
+                "t": 12652,
+                "text": "D9: the Fens."
+              },
+              {
+                "k": "hurt",
+                "t": 12652,
+                "id": 1,
+                "dmg": 0,
+                "hp": 32,
+                "cause": "rest"
+              },
+              {
+                "k": "note",
+                "t": 12652,
+                "text": "Rain through a crack: he drinks."
+              },
+              {
+                "k": "rule",
+                "t": 12652,
+                "row": -2,
+                "verb": {
+                  "v": "descend"
+                },
+                "text": "chore → descend"
+              },
+              {
+                "k": "note",
+                "t": 12652,
+                "text": "A cry from the dark: someone begs."
+              },
+              {
+                "k": "fact",
+                "t": 12652,
+                "fact": "captive"
+              },
+              {
+                "k": "heal",
+                "t": 12652,
+                "id": 1,
+                "amount": 8,
+                "src": "rest"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 320,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 284,
+        "width": 248,
+        "button": {
+          "w": 222,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 320,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 284,
+        "width": 248,
+        "button": {
+          "w": 222,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 400,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 400,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 1440,
+      "scale": 1,
+      "geometry": {
+        "x": 453.1875,
+        "right": 1145.203125,
+        "width": 692.015625,
+        "button": {
+          "w": 666.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "reportLayout": true,
+      "width": 1440,
+      "scale": 2,
+      "geometry": {
+        "x": 453.1875,
+        "right": 1145.203125,
+        "width": 692.015625,
+        "button": {
+          "w": 666.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 1,
+      "factual": {
+        "engine": "wasm",
+        "events": [
+          {
+            "k": "attack",
+            "t": 12629,
+            "src": 1,
+            "dst": 74,
+            "dmg": 7,
+            "hit": true,
+            "verb": "attack"
+          },
+          {
+            "k": "hurt",
+            "t": 12629,
+            "id": 74,
+            "dmg": 6,
+            "hp": 0,
+            "cause": "hero"
+          },
+          {
+            "k": "die",
+            "t": 12629,
+            "id": 74,
+            "cause": "hero"
+          },
+          {
+            "k": "pickup",
+            "t": 12629,
+            "id": 1,
+            "item": "Crownsplitter"
+          },
+          {
+            "k": "discovery",
+            "t": 12629,
+            "find": {
+              "rarity": "legendary",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active.",
+              "source": "Goblin Warlord",
+              "depth": 8,
+              "run_id": 42,
+              "hero_name": "Rook Ash",
+              "first": true,
+              "target": "loadouts"
+            }
+          },
+          {
+            "k": "note",
+            "t": 12629,
+            "text": "Slew the Goblin Warlord."
+          },
+          {
+            "k": "callout",
+            "t": 12629,
+            "text": "boss down"
+          },
+          {
+            "k": "rule",
+            "t": 12629,
+            "row": 0,
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "text": "hit boss goblin"
+          }
+        ],
+        "find": {
+          "rarity": "legendary",
+          "kind": "crownsplitter",
+          "label": "Crownsplitter",
+          "effect": "Deal +2 melee damage to stunned or slowed foes.",
+          "tradeoff": "Slower than a sword. Control must be active.",
+          "source": "Goblin Warlord",
+          "depth": 8,
+          "run_id": 42,
+          "hero_name": "Rook Ash",
+          "first": true,
+          "target": "loadouts"
+        },
+        "owned": [
+          {
+            "kind": "crownsplitter",
+            "label": "Crownsplitter",
+            "effect": "Deal +2 melee damage to stunned or slowed foes.",
+            "tradeoff": "Slower than a sword. Control must be active.",
+            "compatible": true,
+            "available": true,
+            "blocked": null,
+            "source": "Defeat the Warlord."
+          }
+        ]
+      },
+      "reportDiscoveries": [
+        {
+          "rarity": "legendary",
+          "kind": "crownsplitter",
+          "label": "Crownsplitter",
+          "effect": "Deal +2 melee damage to stunned or slowed foes.",
+          "tradeoff": "Slower than a sword. Control must be active.",
+          "source": "Goblin Warlord",
+          "depth": 8,
+          "run_id": 42,
+          "hero_name": "Rook Ash",
+          "first": true,
+          "target": "loadouts"
+        }
+      ],
+      "reportExits": [
+        {
+          "discoveries": [
+            {
+              "rarity": "legendary",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active.",
+              "source": "Goblin Warlord",
+              "depth": 8,
+              "run_id": 42,
+              "hero_name": "Rook Ash",
+              "first": true,
+              "target": "loadouts"
+            }
+          ],
+          "tier": "bank",
+          "secured": 492,
+          "carried": 520,
+          "keep_pct": 100,
+          "kept": 520,
+          "packages": [
+            "+boss focus",
+            "+kite archers"
+          ],
+          "spent": 0,
+          "spent_on": [],
+          "text": "banked $520 · $492 secured + 100% of $28 · ◆+11",
+          "trace": {
+            "turns": [
+              {
+                "t": 16840,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16852,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16863,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16874,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16885,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16896,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16907,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16918,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16929,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              },
+              {
+                "t": 16940,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 6,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12629,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 42
+              }
+            ],
+            "provenance": [
+              {
+                "text": "found blue potion? on D2",
+                "t": 1700,
+                "depth": 2
+              },
+              {
+                "text": "found pearly potion? on D3",
+                "t": 2660,
+                "depth": 3
+              },
+              {
+                "text": "found burnt scroll? on D3",
+                "t": 3570,
+                "depth": 3
+              },
+              {
+                "text": "found brittle scroll? on D3",
+                "t": 3590,
+                "depth": 3
+              },
+              {
+                "text": "rat last seen D3",
+                "t": 4010,
+                "depth": 3
+              },
+              {
+                "text": "monkey last seen D3",
+                "t": 4337,
+                "depth": 3
+              },
+              {
+                "text": "found oily potion? on D4",
+                "t": 4740,
+                "depth": 4
+              },
+              {
+                "text": "found waxen scroll? on D4",
+                "t": 4960,
+                "depth": 4
+              },
+              {
+                "text": "found leather +1 on D4",
+                "t": 5290,
+                "depth": 4
+              },
+              {
+                "text": "swapped for the heal",
+                "t": 6910,
+                "depth": 6
+              },
+              {
+                "text": "swapped for the caustic",
+                "t": 7470,
+                "depth": 6
+              },
+              {
+                "text": "found clear potion? on D6",
+                "t": 7470,
+                "depth": 6
+              },
+              {
+                "text": "skeleton last seen D7",
+                "t": 8320,
+                "depth": 7
+              },
+              {
+                "text": "found mail on D7",
+                "t": 8440,
+                "depth": 7
+              },
+              {
+                "text": "found bow +2 on D8",
+                "t": 9752,
+                "depth": 8
+              },
+              {
+                "text": "swapped for the summon ally",
+                "t": 10552,
+                "depth": 8
+              },
+              {
+                "text": "found gilded scroll? on D8",
+                "t": 10552,
+                "depth": 8
+              },
+              {
+                "text": "goblin warlord last seen D8",
+                "t": 11518,
+                "depth": 8
+              },
+              {
+                "text": "paced 12 turns, foes ignored",
+                "t": 12274,
+                "depth": 8
+              },
+              {
+                "text": "found Crownsplitter on D8",
+                "t": 12629,
+                "depth": 8
+              },
+              {
+                "text": "chase given up",
+                "t": 12940,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the poison",
+                "t": 13052,
+                "depth": 9
+              },
+              {
+                "text": "goblin last seen D9",
+                "t": 13074,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the fire",
+                "t": 13252,
+                "depth": 9
+              },
+              {
+                "text": "found black potion? on D9",
+                "t": 13252,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the poison",
+                "t": 13807,
+                "depth": 9
+              },
+              {
+                "text": "found blue potion? on D9",
+                "t": 13807,
+                "depth": 9
+              },
+              {
+                "text": "goblin archer last seen D9",
+                "t": 14007,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the heal",
+                "t": 14274,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the heal",
+                "t": 14896,
+                "depth": 10
+              },
+              {
+                "text": "swapped for the heal",
+                "t": 15796,
+                "depth": 10
+              },
+              {
+                "text": "found green potion? on D10",
+                "t": 15796,
+                "depth": 10
+              },
+              {
+                "text": "found leash on D10",
+                "t": 16074,
+                "depth": 10
+              },
+              {
+                "text": "found sword +1 on D10",
+                "t": 16118,
+                "depth": 10
+              },
+              {
+                "text": "swapped for the enchant",
+                "t": 16340,
+                "depth": 10
+              },
+              {
+                "text": "found inked scroll? on D10",
+                "t": 16340,
+                "depth": 10
+              },
+              {
+                "text": "jackal last seen D11",
+                "t": 16874,
+                "depth": 11
+              }
+            ]
+          },
+          "run_id": 42,
+          "xp": 139,
+          "legacy_earned": 4,
+          "start": 1,
+          "reason": "hurt · banked",
+          "found": [
+            {
+              "kind": "blue potion?",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "leash",
+              "n": 3,
+              "fate": "converted"
+            },
+            {
+              "kind": "leash",
+              "n": 3,
+              "fate": "used"
+            },
+            {
+              "kind": "leather",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "pearly potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "waxen scroll?",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "burnt scroll?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "brittle scroll?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "bow",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "oily potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "leather",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "green potion?",
+              "n": 4,
+              "fate": "converted"
+            },
+            {
+              "kind": "clear potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "mail",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "bow",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "sword",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "gilded scroll?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "crownsplitter",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "black potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "blue potion?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "sword",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "inked scroll?",
+              "n": 1,
+              "fate": "converted"
+            }
+          ],
+          "found_n": 32,
+          "news": [
+            {
+              "k": "first",
+              "text": "first: Warlord slain",
+              "day": 1
+            },
+            {
+              "k": "record",
+              "text": "record: D11",
+              "day": 1
+            },
+            {
+              "k": "named",
+              "text": "slew Drul",
+              "day": 1
+            }
+          ],
+          "meters": {
+            "seconds": 1694,
+            "dealt": {
+              "hero": 912,
+              "pets": 79,
+              "foes": 72
+            },
+            "taken": {
+              "hero": 104,
+              "pets": 7,
+              "foes": 991
+            },
+            "dps_dealt": {
+              "hero": 0.538,
+              "pets": 0.047,
+              "foes": 0.043
+            },
+            "dps_taken": {
+              "hero": 0.061,
+              "pets": 0.004,
+              "foes": 0.585
+            },
+            "healed": [
+              {
+                "src": "pet",
+                "total": 1,
+                "per_s": 0.001
+              },
+              {
+                "src": "rest",
+                "total": 68,
+                "per_s": 0.04
+              }
+            ],
+            "hps": 0.041,
+            "time": {
+              "fight": 4315,
+              "travel": 12564,
+              "chores": 58,
+              "rest": 3
+            },
+            "time_s": {
+              "fight": 431.5,
+              "travel": 1256.4,
+              "chores": 5.8,
+              "rest": 0.3
+            },
+            "rows": [
+              {
+                "row": -2,
+                "fires": 1249,
+                "share": 0.775
+              },
+              {
+                "row": 0,
+                "fires": 16,
+                "share": 0.01
+              },
+              {
+                "row": 2,
+                "fires": 19,
+                "share": 0.012
+              },
+              {
+                "row": 5,
+                "fires": 3,
+                "share": 0.002
+              },
+              {
+                "row": 6,
+                "fires": 309,
+                "share": 0.192
+              },
+              {
+                "row": 7,
+                "fires": 15,
+                "share": 0.009
+              }
+            ],
+            "actions": 1609,
+            "supplies": {},
+            "gold": 520,
+            "gold_per_min": 18.418,
+            "hits_hero": 54,
+            "hits_pets": 5,
+            "fights": 55,
+            "credit": [
+              {
+                "credit": "taught",
+                "fires": 16,
+                "share": 0.01
+              },
+              {
+                "credit": "default",
+                "fires": 346,
+                "share": 0.215
+              },
+              {
+                "credit": "chores",
+                "fires": 1249,
+                "share": 0.775
+              }
+            ]
+          },
+          "end": "bank",
+          "reached": 11,
+          "new_best": true,
+          "finds": [
+            {
+              "id": 143,
+              "kind": "crownsplitter",
+              "known": true,
+              "label": "Crownsplitter",
+              "free": false,
+              "rarity": "legendary"
+            },
+            {
+              "id": 127,
+              "kind": "sword",
+              "known": true,
+              "label": "sword +2",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 73,
+              "kind": "bow",
+              "known": true,
+              "label": "bow +1",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 114,
+              "kind": "mail",
+              "known": true,
+              "label": "mail",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 64,
+              "kind": "leather",
+              "known": true,
+              "label": "leather +1",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 146,
+              "kind": "potion",
+              "known": false,
+              "label": "green potion?",
+              "hint": "benevolent",
+              "free": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 13,
+      "width": 320,
+      "scale": 1,
+      "geometry": {
+        "x": 33.59375,
+        "right": 286.40625,
+        "width": 252.8125,
+        "button": {
+          "w": 226.8125,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "width": 320,
+      "scale": 2,
+      "geometry": {
+        "x": 33.59375,
+        "right": 286.40625,
+        "width": 252.8125,
+        "button": {
+          "w": 226.8125,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "width": 400,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "width": 400,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "width": 1440,
+      "scale": 1,
+      "geometry": {
+        "x": 428,
+        "right": 1012,
+        "width": 584,
+        "button": {
+          "w": 558,
+          "h": 44.796875,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "width": 1440,
+      "scale": 2,
+      "geometry": {
+        "x": 428,
+        "right": 1012,
+        "width": 584,
+        "button": {
+          "w": 558,
+          "h": 88,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "liveInspection": {
+        "before": {
+          "gold": 688,
+          "config": null
+        },
+        "after": {
+          "gold": 688,
+          "config": null,
+          "calls": [],
+          "steps": [
+            {
+              "n": 10,
+              "turn": 12575,
+              "events": [
+                {
+                  "k": "attack",
+                  "t": 12566,
+                  "src": 1,
+                  "dst": 93,
+                  "dmg": 7,
+                  "hit": true,
+                  "verb": "attack"
+                },
+                {
+                  "k": "hurt",
+                  "t": 12566,
+                  "id": 93,
+                  "dmg": 7,
+                  "hp": 2,
+                  "cause": "hero"
+                },
+                {
+                  "k": "rule",
+                  "t": 12566,
+                  "row": 6,
+                  "verb": {
+                    "v": "attack",
+                    "a": "nearest"
+                  },
+                  "text": "attack goblin"
+                },
+                {
+                  "k": "attack",
+                  "t": 12570,
+                  "src": 93,
+                  "dst": 1,
+                  "dmg": 0,
+                  "hit": true,
+                  "verb": "attack"
+                }
+              ]
+            },
+            {
+              "n": 10,
+              "turn": 12575,
+              "events": [
+                {
+                  "k": "attack",
+                  "t": 12566,
+                  "src": 1,
+                  "dst": 93,
+                  "dmg": 7,
+                  "hit": true,
+                  "verb": "attack"
+                },
+                {
+                  "k": "hurt",
+                  "t": 12566,
+                  "id": 93,
+                  "dmg": 7,
+                  "hp": 2,
+                  "cause": "hero"
+                },
+                {
+                  "k": "rule",
+                  "t": 12566,
+                  "row": 6,
+                  "verb": {
+                    "v": "attack",
+                    "a": "nearest"
+                  },
+                  "text": "attack goblin"
+                },
+                {
+                  "k": "attack",
+                  "t": 12570,
+                  "src": 93,
+                  "dst": 1,
+                  "dmg": 0,
+                  "hit": true,
+                  "verb": "attack"
+                }
+              ]
+            }
+          ]
+        },
+        "wholeSaveUnchanged": false,
+        "immediateModalSaveUnchanged": true,
+        "immediateModalSteps": []
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 320,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 284,
+        "width": 248,
+        "button": {
+          "w": 222,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 320,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 284,
+        "width": 248,
+        "button": {
+          "w": 222,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 400,
+      "scale": 1,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 400,
+      "scale": 2,
+      "geometry": {
+        "x": 36,
+        "right": 364,
+        "width": 328,
+        "button": {
+          "w": 302,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 1440,
+      "scale": 1,
+      "geometry": {
+        "x": 453.1875,
+        "right": 1145.203125,
+        "width": 692.015625,
+        "button": {
+          "w": 666.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "reportLayout": true,
+      "width": 1440,
+      "scale": 2,
+      "geometry": {
+        "x": 453.1875,
+        "right": 1145.203125,
+        "width": 692.015625,
+        "button": {
+          "w": 666.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "seed": 13,
+      "factual": {
+        "engine": "wasm",
+        "events": [
+          {
+            "k": "attack",
+            "t": 12544,
+            "src": 1,
+            "dst": 77,
+            "dmg": 9,
+            "hit": true,
+            "verb": "attack"
+          },
+          {
+            "k": "hurt",
+            "t": 12544,
+            "id": 77,
+            "dmg": 8,
+            "hp": 0,
+            "cause": "hero"
+          },
+          {
+            "k": "die",
+            "t": 12544,
+            "id": 77,
+            "cause": "hero"
+          },
+          {
+            "k": "pickup",
+            "t": 12544,
+            "id": 1,
+            "item": "Crownsplitter"
+          },
+          {
+            "k": "discovery",
+            "t": 12544,
+            "find": {
+              "rarity": "legendary",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active.",
+              "source": "Goblin Warlord",
+              "depth": 8,
+              "run_id": 34,
+              "hero_name": "Hale Ash",
+              "first": true,
+              "target": "loadouts"
+            }
+          },
+          {
+            "k": "note",
+            "t": 12544,
+            "text": "Slew the Goblin Warlord."
+          },
+          {
+            "k": "callout",
+            "t": 12544,
+            "text": "boss down"
+          },
+          {
+            "k": "rule",
+            "t": 12544,
+            "row": 0,
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "text": "hit boss goblin"
+          }
+        ],
+        "find": {
+          "rarity": "legendary",
+          "kind": "crownsplitter",
+          "label": "Crownsplitter",
+          "effect": "Deal +2 melee damage to stunned or slowed foes.",
+          "tradeoff": "Slower than a sword. Control must be active.",
+          "source": "Goblin Warlord",
+          "depth": 8,
+          "run_id": 34,
+          "hero_name": "Hale Ash",
+          "first": true,
+          "target": "loadouts"
+        },
+        "owned": [
+          {
+            "kind": "crownsplitter",
+            "label": "Crownsplitter",
+            "effect": "Deal +2 melee damage to stunned or slowed foes.",
+            "tradeoff": "Slower than a sword. Control must be active.",
+            "compatible": true,
+            "available": true,
+            "blocked": null,
+            "source": "Defeat the Warlord."
+          }
+        ]
+      },
+      "reportDiscoveries": [
+        {
+          "rarity": "legendary",
+          "kind": "crownsplitter",
+          "label": "Crownsplitter",
+          "effect": "Deal +2 melee damage to stunned or slowed foes.",
+          "tradeoff": "Slower than a sword. Control must be active.",
+          "source": "Goblin Warlord",
+          "depth": 8,
+          "run_id": 34,
+          "hero_name": "Hale Ash",
+          "first": true,
+          "target": "loadouts"
+        }
+      ],
+      "reportExits": [
+        {
+          "discoveries": [
+            {
+              "rarity": "legendary",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active.",
+              "source": "Goblin Warlord",
+              "depth": 8,
+              "run_id": 34,
+              "hero_name": "Hale Ash",
+              "first": true,
+              "target": "loadouts"
+            }
+          ],
+          "tier": "bank",
+          "secured": 326,
+          "carried": 363,
+          "keep_pct": 100,
+          "kept": 363,
+          "packages": [
+            "+boss focus",
+            "+kite archers"
+          ],
+          "spent": 0,
+          "spent_on": [],
+          "text": "banked $363 · $326 secured + 100% of $37 · ◆+9",
+          "trace": {
+            "turns": [
+              {
+                "t": 18355,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18366,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18377,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 0,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18388,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 1,
+                "rule_foes": 0,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18399,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18410,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18422,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 9,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [
+                  "ogre winds up"
+                ],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18433,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 4,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "blows": [
+                  {
+                    "t": 18425,
+                    "by": "ogre",
+                    "dmg": 5,
+                    "hp": 4
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18444,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 4,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [
+                  "ogre winds up"
+                ],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              },
+              {
+                "t": 18455,
+                "row": 2,
+                "verb": {
+                  "v": "bank"
+                },
+                "hp": 4,
+                "foes": 1,
+                "rule_foes": 1,
+                "telegraphs": [],
+                "blocked": "R2 drink heal ✗ unknown item",
+                "rows": [
+                  {
+                    "row": 0,
+                    "why": "not in view",
+                    "because": {
+                      "text": "goblin warlord slain D8",
+                      "t": 12544,
+                      "depth": 8
+                    }
+                  },
+                  {
+                    "row": 1,
+                    "why": "unknown item"
+                  }
+                ],
+                "max_hp": 37
+              }
+            ],
+            "provenance": [
+              {
+                "text": "found smoky potion? on D1",
+                "t": 680,
+                "depth": 1
+              },
+              {
+                "text": "found black potion? on D1",
+                "t": 700,
+                "depth": 1
+              },
+              {
+                "text": "found leather +1 on D1",
+                "t": 1007,
+                "depth": 1
+              },
+              {
+                "text": "found torn scroll? on D2",
+                "t": 1680,
+                "depth": 2
+              },
+              {
+                "text": "found clear potion? on D2",
+                "t": 1694,
+                "depth": 2
+              },
+              {
+                "text": "found green potion? on D2",
+                "t": 1714,
+                "depth": 2
+              },
+              {
+                "text": "found oily potion? on D2",
+                "t": 2020,
+                "depth": 2
+              },
+              {
+                "text": "swapped for the fear",
+                "t": 2927,
+                "depth": 3
+              },
+              {
+                "text": "rat last seen D3",
+                "t": 3010,
+                "depth": 3
+              },
+              {
+                "text": "swapped for the fear",
+                "t": 3200,
+                "depth": 3
+              },
+              {
+                "text": "swapped for the fear",
+                "t": 3360,
+                "depth": 3
+              },
+              {
+                "text": "found burnt scroll? on D3",
+                "t": 3360,
+                "depth": 3
+              },
+              {
+                "text": "swapped for the confusion",
+                "t": 5450,
+                "depth": 4
+              },
+              {
+                "text": "found amber potion? on D4",
+                "t": 5450,
+                "depth": 4
+              },
+              {
+                "text": "monkey last seen D4",
+                "t": 5890,
+                "depth": 4
+              },
+              {
+                "text": "goblin last seen D6",
+                "t": 9190,
+                "depth": 6
+              },
+              {
+                "text": "swapped for the fear",
+                "t": 9800,
+                "depth": 6
+              },
+              {
+                "text": "found burnt scroll? on D6",
+                "t": 9800,
+                "depth": 6
+              },
+              {
+                "text": "bloat last seen D7",
+                "t": 10980,
+                "depth": 7
+              },
+              {
+                "text": "found mail +1 on D8",
+                "t": 11810,
+                "depth": 8
+              },
+              {
+                "text": "paced 12 turns, foes ignored",
+                "t": 12433,
+                "depth": 8
+              },
+              {
+                "text": "found Crownsplitter on D8",
+                "t": 12544,
+                "depth": 8
+              },
+              {
+                "text": "jackal last seen D8",
+                "t": 12827,
+                "depth": 8
+              },
+              {
+                "text": "goblin conjurer last seen D8",
+                "t": 13633,
+                "depth": 8
+              },
+              {
+                "text": "found waxen scroll? on D8",
+                "t": 13855,
+                "depth": 8
+              },
+              {
+                "text": "swapped for the fear",
+                "t": 14022,
+                "depth": 8
+              },
+              {
+                "text": "found burnt scroll? on D8",
+                "t": 14022,
+                "depth": 8
+              },
+              {
+                "text": "goblin archer last seen D8",
+                "t": 14099,
+                "depth": 8
+              },
+              {
+                "text": "found ashen scroll? on D9",
+                "t": 15199,
+                "depth": 9
+              },
+              {
+                "text": "swapped for the speed",
+                "t": 16399,
+                "depth": 10
+              },
+              {
+                "text": "found clear potion? on D10",
+                "t": 16399,
+                "depth": 10
+              },
+              {
+                "text": "chase given up",
+                "t": 17210,
+                "depth": 10
+              },
+              {
+                "text": "swapped for the fire",
+                "t": 17233,
+                "depth": 10
+              },
+              {
+                "text": "swapped for the fire",
+                "t": 17277,
+                "depth": 10
+              },
+              {
+                "text": "found pearly potion? on D10",
+                "t": 17277,
+                "depth": 10
+              },
+              {
+                "text": "found sword +1 on D11",
+                "t": 17444,
+                "depth": 11
+              }
+            ],
+            "max_steps": [
+              {
+                "t": 17310,
+                "max": 37,
+                "delta": -5,
+                "cause": "recovery"
+              }
+            ]
+          },
+          "run_id": 34,
+          "xp": 153,
+          "legacy_earned": 4,
+          "start": 1,
+          "reason": "hurt · banked",
+          "found": [
+            {
+              "kind": "amber potion?",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "sword",
+              "n": 2,
+              "fate": "converted"
+            },
+            {
+              "kind": "torn scroll?",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "smoky potion?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "black potion?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "leather",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "ashen scroll?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "clear potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "green potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "oily potion?",
+              "n": 1,
+              "fate": "left"
+            },
+            {
+              "kind": "burnt scroll?",
+              "n": 3,
+              "fate": "left"
+            },
+            {
+              "kind": "sword",
+              "n": 2,
+              "fate": "left"
+            },
+            {
+              "kind": "ashen scroll?",
+              "n": 2,
+              "fate": "converted"
+            },
+            {
+              "kind": "burnt scroll?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "mail",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "crownsplitter",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "waxen scroll?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "clear potion?",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "pearly potion?",
+              "n": 2,
+              "fate": "converted"
+            }
+          ],
+          "found_n": 27,
+          "news": [
+            {
+              "k": "first",
+              "text": "first: Warlord slain",
+              "day": 1
+            },
+            {
+              "k": "record",
+              "text": "record: D11",
+              "day": 1
+            },
+            {
+              "k": "find",
+              "text": "new find: crownsplitter",
+              "day": 1
+            }
+          ],
+          "meters": {
+            "seconds": 1845.5,
+            "dealt": {
+              "hero": 1163,
+              "pets": 3,
+              "foes": 35
+            },
+            "taken": {
+              "hero": 57,
+              "pets": 5,
+              "foes": 1164
+            },
+            "dps_dealt": {
+              "hero": 0.63,
+              "pets": 0.002,
+              "foes": 0.019
+            },
+            "dps_taken": {
+              "hero": 0.031,
+              "pets": 0.003,
+              "foes": 0.631
+            },
+            "healed": [
+              {
+                "src": "pet",
+                "total": 1,
+                "per_s": 0.001
+              },
+              {
+                "src": "rest",
+                "total": 19,
+                "per_s": 0.01
+              }
+            ],
+            "hps": 0.011,
+            "time": {
+              "fight": 4056,
+              "travel": 14357,
+              "chores": 40,
+              "rest": 2
+            },
+            "time_s": {
+              "fight": 405.6,
+              "travel": 1435.7,
+              "chores": 4,
+              "rest": 0.2
+            },
+            "rows": [
+              {
+                "row": -2,
+                "fires": 1341,
+                "share": 0.753
+              },
+              {
+                "row": 0,
+                "fires": 18,
+                "share": 0.01
+              },
+              {
+                "row": 2,
+                "fires": 26,
+                "share": 0.015
+              },
+              {
+                "row": 6,
+                "fires": 394,
+                "share": 0.221
+              },
+              {
+                "row": 7,
+                "fires": 1,
+                "share": 0.001
+              }
+            ],
+            "actions": 1784,
+            "supplies": {},
+            "gold": 363,
+            "gold_per_min": 11.802,
+            "hits_hero": 20,
+            "hits_pets": 4,
+            "fights": 62,
+            "credit": [
+              {
+                "credit": "taught",
+                "fires": 18,
+                "share": 0.01
+              },
+              {
+                "credit": "default",
+                "fires": 421,
+                "share": 0.237
+              },
+              {
+                "credit": "chores",
+                "fires": 1341,
+                "share": 0.753
+              }
+            ]
+          },
+          "end": "bank",
+          "reached": 11,
+          "new_best": true,
+          "finds": [
+            {
+              "id": 133,
+              "kind": "crownsplitter",
+              "known": true,
+              "label": "Crownsplitter",
+              "free": false,
+              "rarity": "legendary"
+            },
+            {
+              "id": 33,
+              "kind": "sword",
+              "known": true,
+              "label": "sword +2",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 131,
+              "kind": "mail",
+              "known": true,
+              "label": "mail +1",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 24,
+              "kind": "sword",
+              "known": true,
+              "label": "sword +1",
+              "free": false,
+              "rarity": "uncommon"
+            },
+            {
+              "id": 15,
+              "kind": "potion",
+              "known": false,
+              "label": "smoky potion?",
+              "hint": "benevolent",
+              "free": false
+            },
+            {
+              "id": 16,
+              "kind": "potion",
+              "known": false,
+              "label": "black potion?",
+              "free": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 1,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 1,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 1,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 2,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 2,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 320,
+      "scale": 2,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 10,
+        "right": 310,
+        "width": 300,
+        "button": {
+          "w": 274,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 1,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 1,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 1,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 2,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 2,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 400,
+      "scale": 2,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 10,
+        "right": 390,
+        "width": 380,
+        "button": {
+          "w": 354,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 1,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 1,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 1,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 2,
+      "kind": "crownsplitter",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 2,
+      "kind": "hearthglass",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "deathLayout": true,
+      "width": 1440,
+      "scale": 2,
+      "kind": "frostmantle",
+      "geometry": {
+        "x": 427.1875,
+        "right": 1171.203125,
+        "width": 744.015625,
+        "button": {
+          "w": 718.015625,
+          "h": 44,
+          "visible": true,
+          "hit": true
+        },
+        "overflow": 0,
+        "contrast": 13.363392835681582
+      }
+    },
+    {
+      "controlled": true,
+      "protocol": "Real controlled boss drops/pickups followed by999Gas/core death, not an earned death or authored events",
+      "death": {
+        "memorial": {
+          "lead": "+2 Legacy · fell to gas, D1",
+          "epitaph": "fell to gas, D1",
+          "name": "Bryn",
+          "grave_gold": 17,
+          "legacy": 2
+        },
+        "hero": {
+          "name": "Bryn Ash",
+          "bloodline_id": 1,
+          "heir": 1,
+          "class": "fighter"
+        },
+        "run_id": 1,
+        "depth": 1,
+        "cause": "gas",
+        "margin": "964 hp short",
+        "verdict": "dice",
+        "baseline": 0,
+        "replays": 12,
+        "trace": {
+          "turns": [],
+          "provenance": [
+            {
+              "text": "found Crownsplitter on D1",
+              "t": 0,
+              "depth": 1
+            },
+            {
+              "text": "found Hearthglass on D1",
+              "t": 0,
+              "depth": 1
+            },
+            {
+              "text": "found Frostmantle on D1",
+              "t": 0,
+              "depth": 1
+            }
+          ],
+          "blow": {
+            "t": 0,
+            "by": "gas",
+            "dmg": 999,
+            "hp": 0
+          },
+          "hp_lost": [
+            {
+              "by": "gas",
+              "dmg": 999
+            }
+          ],
+          "hp_healed": 963
+        },
+        "patches": [],
+        "morgue": "Idlever morgue · seed 215 · heir 1 · run 1\nD1 (warrens) · tick 0 · slain by gas · blow 999 at 36 hp\nclass fighter L1 · trait curious\nrules:\n  R1 HP<30% → drink heal\n  R2 HP<25% · D2+ → bank\n  R3 HP<25% → return\n  R4 no heal · HP<40% → bank\n  R5 foes 1+ → tame\n  R6 foes 1+ → attack\ntrace:\nnotes:\n  t0 Heir 1 enters D1, the Warrens.\n  t0 Slew the Goblin Warlord.\n  t0 Trophy: boss untouched.\n  t0 Slew the Bloat Mother.\n  t0 Bloat Mother: gas.\n  t0 Slew the Lich.\n  t0 Slain by gas on D1.\nrules json: {\"rows\":[{\"conds\":[{\"k\":\"hp<\",\"n\":30}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":2}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":40}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:steady\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:steady\"}],\"name\":\"fighter\"}\n",
+        "line": {
+          "discoveries": [
+            {
+              "rarity": "legendary",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active.",
+              "source": "Goblin Warlord",
+              "depth": 1,
+              "run_id": 1,
+              "hero_name": "Bryn Ash",
+              "first": true,
+              "target": "loadouts"
+            },
+            {
+              "rarity": "legendary",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing.",
+              "source": "Bloat Mother",
+              "depth": 1,
+              "run_id": 1,
+              "hero_name": "Bryn Ash",
+              "first": true,
+              "target": "loadouts"
+            },
+            {
+              "rarity": "legendary",
+              "kind": "frostmantle",
+              "label": "Frostmantle",
+              "effect": "Take 2 less gas and poison damage, with at least 1 damage per harmful tick.",
+              "tradeoff": "Slower movement. Take +1 damage from melee blows.",
+              "source": "Lich",
+              "depth": 1,
+              "run_id": 1,
+              "hero_name": "Bryn Ash",
+              "first": true,
+              "target": "loadouts"
+            }
+          ],
+          "tier": "death",
+          "carried": 17,
+          "keep_pct": 0,
+          "kept": 0,
+          "packages": [
+            "+Guarded",
+            "+boss focus"
+          ],
+          "spent": 0,
+          "spent_on": [],
+          "text": "died $0 · $17 lost · bones: 1 items on D1 · ◆+12 · +$40 wake → $40",
+          "run_id": 1,
+          "legacy_earned": 2,
+          "start": 1,
+          "cause": "gas",
+          "reason": "slain · gas",
+          "wake": 40,
+          "found": [
+            {
+              "kind": "crownsplitter",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "hearthglass",
+              "n": 1,
+              "fate": "converted"
+            },
+            {
+              "kind": "frostmantle",
+              "n": 1,
+              "fate": "converted"
+            }
+          ],
+          "found_n": 3,
+          "bones": [
+            {
+              "kind": "leash",
+              "n": 1
+            }
+          ],
+          "news": [
+            {
+              "k": "first",
+              "text": "first: Warlord slain",
+              "day": 1
+            },
+            {
+              "k": "first",
+              "text": "first: Mother slain",
+              "day": 1
+            },
+            {
+              "k": "first",
+              "text": "first: Lich slain",
+              "day": 1
+            }
+          ],
+          "end": "death",
+          "reached": 1,
+          "new_best": true,
+          "finds": [
+            {
+              "id": 30,
+              "kind": "frostmantle",
+              "known": true,
+              "label": "Frostmantle",
+              "free": false,
+              "rarity": "legendary"
+            },
+            {
+              "id": 28,
+              "kind": "crownsplitter",
+              "known": true,
+              "label": "Crownsplitter",
+              "free": false,
+              "rarity": "legendary"
+            },
+            {
+              "id": 29,
+              "kind": "hearthglass",
+              "known": true,
+              "label": "Hearthglass",
+              "free": false,
+              "rarity": "legendary"
+            }
+          ]
+        },
+        "rules": {
+          "rows": [
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 30
+                }
+              ],
+              "verb": {
+                "v": "drink",
+                "a": "heal"
+              },
+              "origin": "stance:steady"
+            },
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 25
+                },
+                {
+                  "k": "depth>=",
+                  "n": 2
+                }
+              ],
+              "verb": {
+                "v": "bank"
+              },
+              "origin": "stance:steady"
+            },
+            {
+              "conds": [
+                {
+                  "k": "hp<",
+                  "n": 25
+                }
+              ],
+              "verb": {
+                "v": "return"
+              },
+              "origin": "stance:steady"
+            },
+            {
+              "conds": [
+                {
+                  "k": "lacks",
+                  "t": "heal"
+                },
+                {
+                  "k": "hp<",
+                  "n": 40
+                }
+              ],
+              "verb": {
+                "v": "bank"
+              },
+              "origin": "stance:steady"
+            },
+            {
+              "conds": [
+                {
+                  "k": "foes>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "tame",
+                "a": "open"
+              },
+              "origin": "drill:tame"
+            },
+            {
+              "conds": [
+                {
+                  "k": "foes>=",
+                  "n": 1
+                }
+              ],
+              "verb": {
+                "v": "attack",
+                "a": "nearest"
+              },
+              "origin": "stance:steady"
+            }
+          ],
+          "name": "fighter"
+        },
+        "notes": [
+          "Bloat Mother: gas."
+        ],
+        "nothing_beats_base": false,
+        "moment_hp": 36,
+        "moment_max_hp": 36
+      },
+      "owned": [
+        {
+          "kind": "crownsplitter",
+          "label": "Crownsplitter",
+          "effect": "Deal +2 melee damage to stunned or slowed foes.",
+          "tradeoff": "Slower than a sword. Control must be active.",
+          "compatible": true,
+          "available": true,
+          "blocked": null,
+          "source": "Defeat the Warlord."
+        },
+        {
+          "kind": "hearthglass",
+          "label": "Hearthglass",
+          "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+          "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing.",
+          "compatible": true,
+          "available": true,
+          "blocked": null,
+          "source": "Defeat the Bloat Mother, or the Warlord as a Gunner."
+        },
+        {
+          "kind": "frostmantle",
+          "label": "Frostmantle",
+          "effect": "Take 2 less gas and poison damage, with at least 1 damage per harmful tick.",
+          "tradeoff": "Slower movement. Take +1 damage from melee blows.",
+          "compatible": true,
+          "available": true,
+          "blocked": null,
+          "source": "Defeat the Lich."
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "packageDeliveries": [
+    {
+      "bytes": 6539458,
+      "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda"
+    },
+    {
+      "bytes": 6539458,
+      "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda"
+    },
+    {
+      "bytes": 6539458,
+      "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda"
+    },
+    {
+      "bytes": 6539458,
+      "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda"
+    }
+  ],
+  "limits": [
+    "Earned seeds1/13 bank alive. Death receipts use explicitly controlled actual native drops/damage/death; not earned death progression."
+  ]
+}

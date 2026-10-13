@@ -141,6 +141,7 @@ import {
 } from "./frame";
 import { icon } from "./skin";
 import { classSkillIcon } from "./skill-icons";
+import { openDiscovery } from "./legendary-discovery";
 import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
 import { verbsAt } from "../engine/classes";
@@ -915,6 +916,22 @@ export function renderWatch(app: App): Mounted {
     else if (ev.k === "die") text = [h("span", { class: "log-fell" }, `${who(ev.id)} · fell`)];
     else if (ev.k === "use") text = [item(ev.item), ` · ${ev.outcome}`];
     else if (ev.k === "pickup") text = [`${who(ev.id)} · `, item(ev.item)];
+    else if (ev.k === "discovery" && ev.find.first)
+      text = [
+        h(
+          "button",
+          {
+            class: "discovery-link",
+            "data-discovery-link": ev.find.kind,
+            onclick: (e: Event) => openDiscovery(app, ev.find, e.currentTarget as HTMLElement),
+          },
+          ev.find.rarity === "legendary"
+            ? /* copy:callout */ "Legendary found"
+            : /* copy:callout */ "Pattern found",
+          " · ",
+          ev.find.label,
+        ),
+      ];
     else if (ev.k === "callout") text = [ev.text];
     else if (ev.k === "rule" && ev.row >= 0)
       text = ev.skill
@@ -3721,6 +3738,7 @@ export function renderWatch(app: App): Mounted {
       } else
         moved =
           (e.k === "pickup" && pickupOfNote(e)) ||
+          (e.k === "discovery" && e.find.first) ||
           e.k === "descend" ||
           e.k === "use" ||
           e.k === "exit";
@@ -4913,6 +4931,7 @@ export function renderWatch(app: App): Mounted {
       hatched: [],
       lost,
       legacy_earned: exitLine?.legacy_earned,
+      discoveries: exitLine?.discoveries,
       salvaged: exitLine?.salvaged ?? [],
       xp: { class: cls, ...xpOfRun() },
       deepest,

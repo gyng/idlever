@@ -54,3 +54,37 @@ first-find, duplicate, owned-choice, away/stale-owner and saved-kit UI states at
 Post Forge and live-drop screenshots. Final native/Clippy/real WASM/client and
 targeted current-game progression checks are required; broad balance/fun remain
 separate acceptance, never inferred from this content cut.
+
+## Implemented checkpoint
+
+Three named patterns are sourced from real boss defeats: Crownsplitter from the
+Warlord (Hearthglass instead for Gunner), Hearthglass from the Bloat Mother, and
+Frostmantle from the Lich. Each first eligible unowned source is guaranteed;
+repeats use a pure run-seed/boss hash at1/8 without consuming combat RNG.
+Named patterns have zero ordinary loot weight. Duplicate value follows normal
+loot settlement; ownership is immediate and safe on death.
+
+Current16 focused native cases and7 existing kit cases pass; warnings-denied
+Clippy passes18.55s. The880 full native pass predates the metadata-only rarity
+field and three later test additions; it is not a full-current audit claim.
+Eight-seed idle-d8/idle-d13/reach passes29s. All16 bounded earned first sources
+are Fighter/Crownsplitter atD8 in6–21 hours with actual affordable upgrades;
+Hearth/Frost/Gunner/later-boss effects and death receipts are controlled proof.
+
+Actual earned menus305 checks/48 layouts, controlled catalogue103/24, icons378,
+and first-discovery Watch/Report/Death221 checks/42 layouts pass. First Legendary
+receipts are visible outside Report details and say Free Forge choice. Viewing
+gear performs no equip/purchase/claim; ordinary live simulation continues.
+Report/death inspection preserves exact saved state. The old Forge find-count
+ladder excludes owned named choices;16 actual earned checks preserve all24
+ordinary rows per seed. Default tests do not overwrite frozen proof artifacts.
+
+The Forge ladders remain canonical. Explicit armour inherits a nondecreasing
+bonus relative to the first default leather tier; some default-shape milestones
+are flat for an already owned shape. Actual choice stats include these ranks.
+Death/stat rebirth retain ownership and ranks. The existing world reset retains
+ownership but clears paid gear ranks/Gold. No legendary duplicate-power ladder.
+
+Evidence and actual settled screenshots: docs/evidence/cut215/{core,ui,discovery,root}/.
+Later earned all-three/duplicate timing, full balance/exhaustive regression and
+fun review remain part of the broader queue. This checkpoint does not deploy.

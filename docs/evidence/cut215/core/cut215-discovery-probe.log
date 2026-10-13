@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "http://localhost:5239/?dev=1&fresh=1&runs=0", waiting until "load"[22m
+
+    at /home/g/p/riddle/scratchpad/cut215-discovery-probe.mjs:1:185 {
+  log: [
+    '  - navigating to "http://localhost:5239/?dev=1&fresh=1&runs=0", waiting until "load"'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v26.5.0

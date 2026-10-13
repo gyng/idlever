@@ -10,6 +10,7 @@
 // §5: a `dice` death names what the forecast said for that depth — the camp's own reach line, verbatim (`forecast said D4 100%`)
 // when the last forecast knows the floor (QA on 50bb162: "`forecast said 36%` while the camp forecast read `D4 100% ±1`").
 import { counterName } from "./counter-name";
+import { discoveryCard } from "./legendary-discovery";
 import { trainingBlock, trainingFocus } from "./tracks";
 import { meterPanel } from "./meters";
 import { AUTO, autoDismiss } from "./autodismiss";
@@ -1168,6 +1169,16 @@ export function renderDeath(
     ),
     epitaph,
     fetched,
+    d.line?.discoveries?.some((find) => find.first)
+      ? h(
+          "section",
+          { class: "death-discoveries" },
+          h("h2", {}, /* copy:callout */ "Patterns retained"),
+          ...d.line.discoveries
+            .filter((find) => find.first)
+            .map((find) => discoveryCard(app, find)),
+        )
+      : null,
     // run-clear: the death screen is a death's card — its header carries the floor, a new best, the finds left in the bones
     kept || from ? null : clearStrip(d.line),
     ...(prePen

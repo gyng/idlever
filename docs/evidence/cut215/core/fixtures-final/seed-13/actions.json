@@ -1,0 +1,236 @@
+[
+  {
+    "action": "build",
+    "id": "house"
+  },
+  {
+    "action": "manual-delve",
+    "clock_s": 0,
+    "depth": 4,
+    "gold": 60,
+    "n": 1
+  },
+  {
+    "action": "manual-delve",
+    "clock_s": 0,
+    "depth": 6,
+    "gold": 149,
+    "n": 2
+  },
+  {
+    "action": "manual-delve",
+    "clock_s": 60,
+    "depth": 6,
+    "gold": 181,
+    "n": 3
+  },
+  {
+    "action": "hire",
+    "id": "porter"
+  },
+  {
+    "action": "hire",
+    "id": "scout",
+    "manual": 3
+  },
+  {
+    "action": "build",
+    "hour": 1,
+    "id": "blacksmith"
+  },
+  {
+    "action": "build",
+    "hour": 1,
+    "id": "kennel"
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 396,
+    "hour": 1,
+    "runs": 3,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 2,
+    "price": 200,
+    "slot": "weapon"
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 381,
+    "hour": 2,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 3,
+    "price": 200,
+    "slot": "armour"
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 413,
+    "hour": 3,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 4,
+    "price": 400,
+    "slot": "pack"
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 322,
+    "hour": 4,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 484,
+    "hour": 5,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 6,
+    "discoveries": [],
+    "gold": 790,
+    "hour": 6,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 1041,
+    "hour": 7,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 8,
+    "price": 800,
+    "slot": "weapon"
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 521,
+    "hour": 8,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 836,
+    "hour": 9,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 10,
+    "price": 800,
+    "slot": "armour"
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 389,
+    "hour": 10,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 746,
+    "hour": 11,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 966,
+    "hour": 12,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 1242,
+    "hour": 13,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "forge",
+    "hour": 14,
+    "price": 1000,
+    "slot": "pack"
+  },
+  {
+    "action": "absence",
+    "best": 8,
+    "discoveries": [],
+    "gold": 544,
+    "hour": 14,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "absence",
+    "best": 11,
+    "discoveries": [
+      {
+        "depth": 8,
+        "effect": "Deal +2 melee damage to stunned or slowed foes.",
+        "first": true,
+        "hero_name": "Hale Ash",
+        "kind": "crownsplitter",
+        "label": "Crownsplitter",
+        "run_id": 34,
+        "source": "Goblin Warlord",
+        "target": "loadouts",
+        "tradeoff": "Slower than a sword. Control must be active."
+      }
+    ],
+    "gold": 1051,
+    "hour": 15,
+    "runs": 2,
+    "seconds": 3600
+  },
+  {
+    "action": "pause-worker",
+    "id": "scout",
+    "on": false,
+    "then_absence_s": 3600
+  }
+]

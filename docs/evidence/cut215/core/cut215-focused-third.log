@@ -1,0 +1,20 @@
+
+running 11 tests
+..... 5/11
+legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning --- FAILED
+.....
+failures:
+
+---- legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning stdout ----
+
+thread 'legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning' (128) panicked at crates/idlever-core/src/legendary.rs:277:31:
+assertion failed: old.toll > 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning
+
+test result: FAILED. 10 passed; 1 failed; 0 ignored; 0 measured; 873 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -3,15 +3,17 @@ import { responsiveWidths } from "./lib/viewport-cases.mjs";
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const kinds = [
   ...readFileSync(
     new URL("../../crates/idlever-core/src/defs.rs", import.meta.url),
     "utf8",
-  ).matchAll(/ItemDef \{ kind: "([^"]+)"/g),
+  ).matchAll(/ItemDef\s*\{\s*kind:\s*"([^"]+)"/g),
 ].map((m) => m[1]);
 const browser = await launchBrowser();
 try {
@@ -22,7 +24,8 @@ try {
     const checks = await p.evaluate(async (kinds) => {
       const gem = document.querySelector(".gem.send").getBoundingClientRect();
       if (Math.abs(gem.width - gem.height) > 0.5) throw Error("Send artwork stretched");
-      const { itemIcon, iconId } = await import("/src/ui/items.ts");
+      const { itemIcon, iconId, RARITIES, rarityRank, bestRarity } =
+        await import("/src/ui/items.ts");
       const { rowChips } = await import("/src/ui/editor.ts");
       const { openForge } = await import("/src/ui/forge.ts");
       const { closeAllSheets } = await import("/src/ui/sheet.ts");
@@ -33,6 +36,15 @@ try {
       };
       for (const kind of kinds) {
         const el = itemIcon({ kind, label: kind });
+        const namedFallback = { crownsplitter: "⚔", hearthglass: "⛨", frostmantle: "⛨" }[kind];
+        if (namedFallback) {
+          const glyph = el.querySelector(".glyph");
+          check(
+            !!el.querySelector("img") || glyph?.dataset.glyph === namedFallback,
+            `named shape retains family primitive ${kind}`,
+          );
+          continue;
+        }
         const pic = el.querySelector("img");
         check(!!pic, `all current definitions have art ${kind}`);
         check((await fetch(pic.src)).ok, `packed image ${kind}`);
@@ -57,7 +69,21 @@ try {
       check(iconId("sword +2") === "it_sword", "enchanted gear keeps icon");
       for (const label of ["pack", "pack 4", "pack 12"])
         check(iconId(label) === "loadout", `pack capacity keeps silhouette ${label}`);
-      for (const rarity of ["common", "uncommon", "rare", "epic", "legendary"]) {
+      check(
+        RARITIES.join(",") === "common,uncommon,rare,epic,masterwork,legendary",
+        "quality order distinguishes named Legendary",
+      );
+      check(
+        rarityRank("masterwork") > rarityRank("epic") &&
+          rarityRank("legendary") > rarityRank("masterwork"),
+        "masterwork quality retains top-tier order",
+      );
+      check(
+        bestRarity([{ rarity: "masterwork" }, { rarity: "epic" }]) === "masterwork" &&
+          bestRarity([{ rarity: "masterwork" }, { rarity: "legendary" }]) === "legendary",
+        "named discovery outranks power quality without misclassification",
+      );
+      for (const rarity of RARITIES) {
         const el = itemIcon({ kind: "sword", label: "sword", rarity });
         document.body.append(el);
         const style = getComputedStyle(el);
@@ -67,6 +93,12 @@ try {
             style.outlineStyle === "none",
           `${rarity} silhouette has no box`,
         );
+        if (rarity === "masterwork" || rarity === "legendary")
+          check(
+            style.getPropertyValue("--r").trim() === "#a3752a" &&
+              style.getPropertyValue("--r-lit").trim() === "#e3b862",
+            `${rarity} preserves the gold palette`,
+          );
         el.remove();
       }
 

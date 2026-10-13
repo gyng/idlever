@@ -1,0 +1,82 @@
+// Actual earned fixtures; no progression or resource grants.
+import assert from "node:assert/strict";
+import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
+import { gunzipSync } from "node:zlib";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { launchBrowser } from "../../tools/browser.mjs";
+const root = fileURLToPath(new URL("../../", import.meta.url));
+const url = process.env.IDLEVER_TEST_URL;
+if (!url) throw Error("fresh server required");
+const out = process.env.IDLEVER_LEGENDARY_CONSISTENCY_OUT
+  ? resolve(root, process.env.IDLEVER_LEGENDARY_CONSISTENCY_OUT)
+  : undefined;
+if (out) mkdirSync(out, { recursive: true });
+const browser = await launchBrowser();
+let checks = 0;
+const records = [];
+try {
+  const page = await browser.newPage();
+  await page.goto(`${url}?fresh=1&seed=1&runs=0`);
+  await page.waitForFunction(() => window.__idlever?.booted);
+  for (const seed of [1, 13]) {
+    const path = `docs/evidence/cut215/ui-inputs-final/seed-${seed}/earned-owned-home.game.json.gz`;
+    await page.evaluate(
+      async (raw) => {
+        const a = window.__idlever;
+        a.runnerOn = false;
+        if (a.kind !== "wasm") throw Error("actual Core required");
+        a.go({ kind: "camp" });
+        await a.engine.load(raw);
+        await a.refresh();
+        a.go({ kind: "camp" });
+      },
+      gunzipSync(readFileSync(resolve(root, path))).toString(),
+    );
+    const state = await page.evaluate(async () => ({
+      owned: window.__idlever.lineage.legendaries,
+      forge: window.__idlever.lineage.forge,
+      save: await window.__idlever.engine.save(),
+    }));
+    assert.ok(state.owned.some((r) => r.kind === "crownsplitter"));
+    checks++;
+    assert.ok(state.forge.crownsplitter.next);
+    checks++; // Fixture genuinely contains the contradictory old rung.
+    await page.evaluate(async () => (await import("/src/ui/forge.ts")).openForge(window.__idlever));
+    const sheet = page.locator(".sheet-wrap:not(.under)");
+    for (const row of state.owned) {
+      assert.equal(await sheet.locator(`[data-legendary-kind="${row.kind}"]`).count(), 1);
+      checks++;
+      const old = await sheet.locator(".salvage .lrow .k").allTextContents();
+      assert.ok(!old.some((label) => label.toLowerCase().includes(row.kind.replaceAll("_", " "))));
+      checks++;
+    }
+    const ordinary = Object.keys(state.forge).filter(
+      (kind) => !state.owned.some((r) => r.kind === kind),
+    );
+    assert.equal(await sheet.locator(".salvage .lrow:not(.head)").count(), ordinary.length);
+    checks++;
+    await sheet.locator('[data-legendary-link="crownsplitter"]').click();
+    const loadouts = page.locator(".sheet-wrap:not(.under)");
+    assert.equal(await loadouts.locator('[data-kit-choice="crownsplitter"]').isDisabled(), false);
+    checks++;
+    assert.equal(await loadouts.locator(".salvage .lrow").count(), 0);
+    checks++;
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), state.save);
+    checks++;
+    records.push({
+      seed,
+      ordinaryRows: ordinary.length,
+      ownedRows: state.owned.length,
+      readOnly: true,
+    });
+  }
+  if (out)
+    writeFileSync(
+      `${out}/results.json`,
+      JSON.stringify({ checks, records, result: "PASS" }, null, 2),
+    );
+  console.log(JSON.stringify({ checks, records, result: "PASS" }));
+} finally {
+  await browser.close();
+}

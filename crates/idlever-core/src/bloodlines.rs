@@ -24,7 +24,10 @@ fn town_from(source: &LineageState, dest: &mut LineageState) {
     dest.gold=source.gold;
     dest.gold_tally.clone_from(&source.gold_tally);
     if dest.gold_ledger.len()!=source.gold_ledger.len()||dest.gold_ledger.last()!=source.gold_ledger.last(){dest.gold_ledger=source.gold_ledger.clone();}
+    let mut owned=dest.town.owned_shapes.clone();
+    owned.extend(source.town.owned_shapes.iter().cloned());
     dest.town.clone_from(&source.town);
+    dest.town.owned_shapes=owned;
     dest.tree.hired.clone_from(&source.tree.hired);
     dest.tree.done.clone_from(&source.tree.done);
     dest.tree.paused.clone_from(&source.tree.paused);
@@ -76,6 +79,10 @@ impl Session {
         if others.len()>=SLOT_CAP || next_id<=selected || others.keys().any(|id|*id>=next_id) {return Err("invalid bloodlines".into());}
         let mut s=Self {bloodlines_v:1,selected,next_id,elapsed_remainder_ms:v["elapsed_remainder_ms"].as_u64().unwrap_or(0),active:Game::load(text)?,others};
         s.active.lineage.bloodline_id=selected;for (id,g) in &mut s.others {g.lineage.bloodline_id= *id;}
+        let mut owned=s.active.lineage.town.owned_shapes.clone();
+        for g in s.others.values() {owned.extend(g.lineage.town.owned_shapes.iter().cloned());}
+        s.active.lineage.town.owned_shapes=owned.clone();
+        for g in s.others.values_mut() {g.lineage.town.owned_shapes=owned.clone();}
         Ok(s)
     }
     pub fn save(&self)->String { serde_json::to_string(self).unwrap_or_default() }
@@ -255,6 +262,7 @@ impl Session {
         for (id,g) in &mut self.others {
             town_from(&self.active.lineage,&mut g.lineage);
             let other=finish(g,false,false);
+            r.discoveries.extend(other.discoveries.iter().cloned());
             r.bloodlines.push(summary(*id,&other,g));
             r.legacy_earned+=other.legacy_earned; r.runs+=other.runs; r.banked+=other.banked; r.returned+=other.returned;r.deepest=r.deepest.max(other.deepest);
             for death in other.deaths {if let Some(d)=r.deaths.iter_mut().find(|d|d.cause==death.cause){d.n+=death.n;}else{r.deaths.push(death);}}

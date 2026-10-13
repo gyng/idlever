@@ -1,0 +1,25 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+error: this looks like you are trying to use `.. *= ..`, but you really are doing `.. = (* ..)`
+   --> crates/idlever-core/src/legendary.rs:259:44
+    |
+259 |         let n=(0..256).filter(|seed|{r.seed=*seed;boss_drop(r,"goblin_warlord",&owned).is_some()}).count();
+    |                                            ^^
+    |
+    = note: to remove this lint, use either `*=` or `= *`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#suspicious_assignment_formatting
+    = note: `-D clippy::suspicious-assignment-formatting` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::suspicious_assignment_formatting)]`
+
+error: manual implementation of `.is_multiple_of()`
+  --> crates/idlever-core/src/legendary.rs:70:29
+   |
+70 |     (!owned.contains(kind)||repeat_hash(run.seed,boss)%8==0).then_some(kind)
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace with: `repeat_hash(run.seed,boss).is_multiple_of(8)`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#manual_is_multiple_of
+   = note: `-D clippy::manual-is-multiple-of` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::manual_is_multiple_of)]`
+
+error: could not compile `idlever-core` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `idlever-core` (lib test) due to 2 previous errors

@@ -10,6 +10,7 @@ import { audio } from "../audio";
 import { icon } from "./skin";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear
 import "../forge-branches.css"; // Cut 113 §2
+import { legendaryCollection } from "./legendary-gear";
 
 /** Conservative wire snapshot: simulation inputs and displayed prices belong to this camp. */
 const kitKey = (app: App): string => JSON.stringify([app.lineage, app.rules, app.loadout]);
@@ -117,6 +118,7 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
         engine = app.engine,
         request = 0;
       const kit = h("div", { class: "kit simple-kit" });
+      const discoveries = h("div", { class: "forge-discoveries" });
       const advanced = h(
         "details",
         { class: "forge-details" },
@@ -175,6 +177,7 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
         /* copy:button */ "Forecast",
       );
       const paint = (): void => {
+        replace(discoveries, legendaryCollection(app, app.lineage.legendaries ?? []));
         const ladders = app.lineage.kit ?? [];
         const choices = ladders.filter((lad) => lad.next || lad.slot === "gun_sidearm");
         const guns = (app.lineage.guns ?? []).map((gun) => {
@@ -485,6 +488,7 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
         "div",
         { class: "sheet-body forge" },
         h("div", { class: "label" }, /* copy:label */ "Forge"),
+        discoveries,
         kit,
         advanced,
       );
@@ -503,7 +507,11 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
 /** Cut 9 §10: each kind's salvage ladder — `sword · salvaged 3/5 → craftable` (the engine's `next` rung); at the top, the count alone. */
 function salvage(app: App): HTMLElement {
   const L = app.lineage;
-  const rows = Object.entries(L.forge ?? {}).sort((a, b) => b[1].salvaged - a[1].salvaged);
+  // Named patterns are already town-owned and free; only ordinary shapes use this ladder.
+  const ownedPatterns = new Set((L.legendaries ?? []).map((row) => row.kind));
+  const rows = Object.entries(L.forge ?? {})
+    .filter(([kind]) => !ownedPatterns.has(kind))
+    .sort((a, b) => b[1].salvaged - a[1].salvaged);
   const head = h(
     "div",
     { class: "lrow head" },

@@ -2,6 +2,7 @@ import { supplyLimit, reportIncome } from "./report-supplies";
 import { counterName, namedCounters } from "./counter-name";
 import { goldWords } from "./gold-words";
 import { exitKind } from "./exit-kind";
+import { discoveryCard } from "./legendary-discovery";
 // Return report: learned · bests · found · deaths · pending · reel · marks. Delta, not totals.
 // Cut 10 §3: the exit tiles read `banked · returned · deaths`, `returned` first when it is the larger; each exit line leads
 // with its tier and the kept sum (`returned $61`) before the engine's arithmetic; a lost companion reads `jackal Ashar fell`;
@@ -1941,6 +1942,18 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     { class: "parchment report-sheet" },
     // the head, the highlights, the one action (`collect & send`), at most one decision, then the fold
     summary,
+    r.discoveries?.some((find) => find.first && find.rarity === "legendary")
+      ? section(
+          /* copy:label */ "Legendary found",
+          h(
+            "div",
+            { class: "report-discoveries" },
+            ...r.discoveries
+              .filter((find) => find.first && find.rarity === "legendary")
+              .map((find) => discoveryCard(app, find)),
+          ),
+        )
+      : null,
     ...highlights,
     go.el,
     prompts[0].slot,
@@ -2116,6 +2129,18 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
           /* copy:label */ "found",
           r.new_finds ? chips(r.new_finds.map(named)) : foundChips(),
         ),
+        r.discoveries?.some((find) => find.first && find.rarity !== "legendary")
+          ? section(
+              /* copy:label */ "Patterns found",
+              h(
+                "div",
+                { class: "report-discoveries" },
+                ...r.discoveries
+                  .filter((find) => find.first && find.rarity !== "legendary")
+                  .map((find) => discoveryCard(app, find)),
+              ),
+            )
+          : null,
         // QA e75ec29 (R: six thefts in one run, "the report and gold sheet say nothing"): what thieves took and no run got back
         // QA a946e04 (S: `leash ×4` beside `leash (2)`, `black potion?` after LEARNED said confusion): one chip per name, identified kinds by
         // their name; T (`−$36 stolen` on the strip, only items here): the carry the thefts took leads (`$36`)

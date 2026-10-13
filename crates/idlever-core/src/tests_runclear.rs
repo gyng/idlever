@@ -24,8 +24,9 @@ fn rarity_reads_the_item_band_and_its_plus() {
     assert_eq!(rarity(&gear("sword", 3), true), Rarity::Rare);
     assert_eq!(rarity(&gear("mace", 2), true), Rarity::Epic);
     assert_eq!(rarity(&gear("sword", 6), true), Rarity::Epic, "the forge's top step");
-    assert_eq!(rarity(&gear("axe", 7), true), Rarity::Legendary, "scrolls stacked an axe to +7");
-    assert_eq!(rarity(&gear("mace", 5), true), Rarity::Legendary);
+    assert_eq!(rarity(&gear("axe", 7), true), Rarity::Masterwork, "temporary scroll enchantments are not permanent named legends");
+    assert_eq!(rarity(&gear("mace", 5), true), Rarity::Masterwork);
+    assert_eq!(rarity(&gear("crownsplitter", 0),true),Rarity::Legendary);
     // consumables and trinkets: worth and depth, never above rare
     assert_eq!(rarity(&Item::new(1, "heal"), true), Rarity::Common);
     assert_eq!(rarity(&Item::new(1, "fire"), true), Rarity::Uncommon);
@@ -41,7 +42,7 @@ fn rarity_reads_the_item_band_and_its_plus() {
     // an unidentified flavour never names its kind by its rim
     assert_eq!(rarity(&Item::new(1, "strength"), false), Rarity::Common);
     // the order is the tiers' order
-    assert!(Rarity::Common < Rarity::Uncommon && Rarity::Uncommon < Rarity::Rare && Rarity::Rare < Rarity::Epic && Rarity::Epic < Rarity::Legendary);
+    assert!(Rarity::Common < Rarity::Uncommon && Rarity::Uncommon < Rarity::Rare && Rarity::Rare < Rarity::Epic && Rarity::Epic < Rarity::Masterwork && Rarity::Masterwork < Rarity::Legendary);
 }
 
 #[test]

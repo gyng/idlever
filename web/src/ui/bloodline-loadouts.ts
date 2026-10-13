@@ -9,6 +9,7 @@ export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): H
   const L = app.lineage;
   const owner = app.engine;
   const slot = L.selected_bloodline;
+  const actor = L.persistent_hero;
   const picks = L.supplies ?? [];
   const cap = L.supply_cap;
   const away = !!L.live || L.town?.home === false;
@@ -16,7 +17,11 @@ export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): H
   const feedback = h("div", { role: "status", class: "loadout-feedback" });
   const catalogue = h("div", { class: "bloodline-catalogue" });
   const current = (): boolean =>
-    catalogue.isConnected && app.engine === owner && app.lineage.selected_bloodline === slot;
+    catalogue.isConnected &&
+    app.engine === owner &&
+    app.lineage.selected_bloodline === slot &&
+    app.lineage.persistent_hero?.id === actor?.id &&
+    app.lineage.persistent_hero?.incarnation === actor?.incarnation;
   const authored = L.starting_kits?.current;
   const paint = (rows: SupplyEntry[]): void => {
     if (!current()) return;

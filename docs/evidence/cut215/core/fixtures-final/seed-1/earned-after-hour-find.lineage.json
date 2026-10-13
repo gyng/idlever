@@ -1,0 +1,7104 @@
+{
+  "persistent_hero": {
+    "id": "1:1",
+    "name": "Rook Ash",
+    "incarnation": 1,
+    "rebirths": 0,
+    "state": "ready",
+    "recovery_s": 0,
+    "rest_s": 1200,
+    "need": "rest",
+    "attributes": [
+      {
+        "id": "health",
+        "name": "Vitality",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      },
+      {
+        "id": "damage",
+        "name": "Strength",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      },
+      {
+        "id": "armour",
+        "name": "Guard",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      }
+    ],
+    "guild": {
+      "id": "guild",
+      "name": "Guild reception",
+      "available": true,
+      "body": "The Scout schedules another delve after recovery."
+    },
+    "pool": {
+      "id": "recovery",
+      "name": "Recovery pool",
+      "available": true,
+      "body": "Rest completes automatically. Nothing needs tending."
+    },
+    "device": {
+      "id": "reincarnation",
+      "name": "Reincarnation device",
+      "available": false,
+      "body": "Defeat returns the same hero. Attributes and builds remain."
+    },
+    "rebirth": {
+      "available": false,
+      "blocked": "No attribute commitments",
+      "token": "b98165f2e124fa3f",
+      "refund": 0,
+      "points_after": 54,
+      "required_depth": 8,
+      "delves_remaining": 0,
+      "seconds_remaining": 0,
+      "resets": [
+        "Legacy attributes and branches",
+        "Current incarnation's deeds"
+      ],
+      "retains": [
+        "Name and identity",
+        "Refunded Legacy",
+        "Class XP and learned skills",
+        "Traits and temperament",
+        "Kits and discoveries",
+        "Town, Gold and dungeon progress",
+        "Companion ownership"
+      ]
+    }
+  },
+  "journal": {
+    "bloodline_id": 1,
+    "seed": "1",
+    "heir": 1,
+    "recommended": "class_tree",
+    "chapters": [
+      {
+        "id": "town",
+        "title": "Town",
+        "entries": [
+          {
+            "id": "house",
+            "title": "Build a house",
+            "reason": "Your first hero needs a home.",
+            "effect": "A resident arrives. Construction costs no Gold.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "build_town",
+              "target": "house",
+              "label": "Build house",
+              "enabled": false,
+              "blocked": "Already built"
+            }
+          },
+          {
+            "id": "porter",
+            "title": "Hire the Porter",
+            "reason": "Workers automate chores once their milestones are ready.",
+            "effect": "Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",
+            "state": "complete",
+            "progress": {
+              "current": 3,
+              "required": 3,
+              "unit": "hauls"
+            },
+            "requirements": [],
+            "action": {
+              "kind": "hire",
+              "target": "porter",
+              "label": "Hire Porter",
+              "enabled": false,
+              "blocked": "Requirements unmet"
+            }
+          },
+          {
+            "id": "scout",
+            "title": "Hire the Scout",
+            "reason": "Until the Scout is hired, each departure needs your tap.",
+            "effect": "When enabled, the Scout sends the hero after each rest. Pausing the worker stops automatic departures.",
+            "state": "complete",
+            "progress": {
+              "current": 3,
+              "required": 3,
+              "unit": "manual delves"
+            },
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "workers",
+              "label": "Workers",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "blacksmith",
+            "title": "Build the Forge",
+            "reason": "Permanent upgrades change every future starting kit.",
+            "effect": "Spend Gold once on upgrades. Unlocked gear and supplies are free to reuse.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "build_town",
+              "target": "blacksmith",
+              "label": "Build the Forge",
+              "enabled": false,
+              "blocked": "Already built"
+            }
+          },
+          {
+            "id": "kennel",
+            "title": "Build the Kennel",
+            "reason": "Companions can join your builds.",
+            "effect": "Manage your tamed companions and their party slots.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "build_town",
+              "target": "kennel",
+              "label": "Build the Kennel",
+              "enabled": false,
+              "blocked": "Already built"
+            }
+          },
+          {
+            "id": "bank",
+            "title": "Build Savings",
+            "reason": "Spare Gold can earn interest.",
+            "effect": "Deposits earn2% per night before worker bonuses; withdrawals return your Gold.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "Complete a positive-income night; hold its net Gold (currently 1492)"
+            ],
+            "action": {
+              "kind": "build_town",
+              "target": "bank",
+              "label": "Build Savings",
+              "enabled": false,
+              "blocked": "Milestone unmet"
+            }
+          },
+          {
+            "id": "bloodlines",
+            "title": "More bloodlines",
+            "reason": "Each bloodline keeps its own build and progression.",
+            "effect": "An additional resident costs250 Gold. The town supports3 bloodlines.",
+            "state": "active",
+            "progress": null,
+            "requirements": [
+              "250 Gold for another resident"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "legacy",
+              "label": "Bloodlines",
+              "enabled": true,
+              "blocked": null
+            }
+          }
+        ]
+      },
+      {
+        "id": "builds",
+        "title": "Builds",
+        "entries": [
+          {
+            "id": "loadout",
+            "title": "Reusable Loadouts",
+            "reason": "Try another build without paying for each departure.",
+            "effect": "Choose owned starting shapes and save up to eight named kits. Prepared items refill free.",
+            "state": "ready",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "loadouts",
+              "label": "Loadouts",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "tactics",
+            "title": "Tactics",
+            "reason": "Tactics choose when the hero uses learned abilities.",
+            "effect": "Equip optional policy packages. Your choices change future delves.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "tactics",
+              "label": "Tactics",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "reorder",
+            "title": "Orders",
+            "reason": "Workers can follow your standing choices.",
+            "effect": "Adjust automation priorities. Hired workers carry out enabled orders.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "meet Mother",
+              "Opens after 120h even without the milestone"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "orders",
+              "label": "Orders",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "heirs",
+            "title": "Legacy",
+            "reason": "A death leaves knowledge and bloodline progress.",
+            "effect": "Review Legacy and the cause of the last death.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "first death"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "legacy",
+              "label": "Legacy",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "class",
+            "title": "More classes",
+            "reason": "Classes bring different weapons and abilities.",
+            "effect": "Meet the real class unlock requirements, then choose your role at home.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "second class",
+              "ranger:6 Marks; meet Mother",
+              "caster:8 Marks; meet Lich"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "class",
+              "label": "More classes",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "class_tree",
+            "title": "Class builds",
+            "reason": "Class policies add optional branches to your build.",
+            "effect": "Learn cumulative class policies; changing a build does not erase earned class XP.",
+            "state": "ready",
+            "progress": {
+              "current": 0,
+              "required": 6,
+              "unit": "class policies learned"
+            },
+            "requirements": [
+              "Level3; historical depth8; a class point"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "class",
+              "label": "Class tree",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "tame",
+            "title": "Tame with a leash",
+            "reason": "A leash can turn a suitable creature into a companion.",
+            "effect": "Prepare a leash free. Taming needs a stray or suitable weakened creature and an open party slot.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "companions",
+              "label": "Companions",
+              "enabled": true,
+              "blocked": null
+            }
+          }
+        ]
+      },
+      {
+        "id": "delving",
+        "title": "Delving",
+        "entries": [
+          {
+            "id": "delve",
+            "title": "Delve",
+            "reason": "The hero chooses actions and fights on his own.",
+            "effect": "A completed delve earns experience, discoveries and its actual returned Gold.",
+            "state": "ready",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "delve",
+              "target": "",
+              "label": "Delve",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "gold",
+            "title": "Gold on return",
+            "reason": "Found loot converts once when picked up.",
+            "effect": "Alive returns keep all remaining carried Gold. Death keeps secured checkpoint Gold and named pet protection; ordinary unprotected carry is lost.",
+            "state": "later",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "chronicle",
+              "label": "Chronicle",
+              "enabled": false,
+              "blocked": "Complete a delve"
+            }
+          },
+          {
+            "id": "quests",
+            "title": "Quest board",
+            "reason": "A quest gives a goal beyond the next depth record.",
+            "effect": "Your current quest is shown here. Its progress and reward settle automatically after real runs.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [
+              "Opens at the next progression update"
+            ],
+            "action": null
+          }
+        ]
+      }
+    ],
+    "discoveries": [],
+    "quest": {
+      "goal": "home from D9",
+      "reward": "title",
+      "progress": 1.0,
+      "done": true,
+      "swap": true,
+      "body": "Adds this quest's title and two Marks. Marks buy permanent unlocks. The reward was applied automatically at settlement."
+    }
+  },
+  "class_tree": {
+    "class": "fighter",
+    "level": 4,
+    "xp": 776,
+    "next": 1600,
+    "points": 2,
+    "spent": 0,
+    "available": true,
+    "blocked": null,
+    "reset_available": false,
+    "reset_blocked": null,
+    "nodes": [
+      {
+        "id": "fighter_warden",
+        "name": "Warden",
+        "parent": null,
+        "required_level": 3,
+        "required_depth": 8,
+        "owned": false,
+        "available": true,
+        "blocked": null,
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp<",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_warden"
+          }
+        ],
+        "effect": "bash stun +1 tick"
+      },
+      {
+        "id": "fighter_recovery",
+        "name": "Recovery",
+        "parent": "fighter_warden",
+        "required_level": 7,
+        "required_depth": 18,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 7",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "second_wind"
+            },
+            "origin": "class:path:fighter_recovery"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp<",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_recovery"
+          }
+        ],
+        "effect": "second wind +3 HP"
+      },
+      {
+        "id": "fighter_boss_guard",
+        "name": "Boss guard",
+        "parent": "fighter_warden",
+        "required_level": 5,
+        "required_depth": 13,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 5",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_boss_guard"
+          }
+        ],
+        "effect": "boss melee −1 damage"
+      },
+      {
+        "id": "fighter_reaver",
+        "name": "Reaver",
+        "parent": null,
+        "required_level": 3,
+        "required_depth": 8,
+        "owned": false,
+        "available": true,
+        "blocked": null,
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              },
+              {
+                "k": "hp>",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_reaver"
+          }
+        ],
+        "effect": "cleave +1 damage"
+      },
+      {
+        "id": "fighter_crowd_breaker",
+        "name": "Crowd breaker",
+        "parent": "fighter_reaver",
+        "required_level": 5,
+        "required_depth": 13,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 5",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_crowd_breaker"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp>",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_crowd_breaker"
+          }
+        ],
+        "effect": "cleave cooldown −10 ticks"
+      },
+      {
+        "id": "fighter_boss_breaker",
+        "name": "Boss breaker",
+        "parent": "fighter_reaver",
+        "required_level": 7,
+        "required_depth": 18,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 7",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_boss_breaker"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              },
+              {
+                "k": "hp>",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_boss_breaker"
+          }
+        ],
+        "effect": "boss bash +1 damage"
+      }
+    ]
+  },
+  "feats": {
+    "tokens": [
+      {
+        "boss": "goblin_warlord",
+        "title": "Warlord",
+        "depth": 8,
+        "n": 1,
+        "cap": 3,
+        "stone": 5
+      }
+    ],
+    "trials": [
+      {
+        "week": 0,
+        "boss": "lich",
+        "title": "Lich",
+        "depth": 18,
+        "rule": "barred",
+        "label": "no kite archers",
+        "barred": "kite_archers",
+        "answers": [
+          "steady",
+          "guarded",
+          "bold",
+          "hunter",
+          "boss_focus",
+          "corridor_fighting",
+          "thief_guard",
+          "gas_step",
+          "pack_break",
+          "cadence",
+          "reflect_read",
+          "noise_discipline",
+          "deep_march"
+        ],
+        "owned": [
+          "steady",
+          "guarded",
+          "boss_focus"
+        ],
+        "open": false,
+        "cleared": false,
+        "opted": false,
+        "weeks_left": 3,
+        "legacy": 10,
+        "needs": "slay Lich"
+      }
+    ],
+    "trial_marks": 0,
+    "sealed": 0,
+    "sets": [
+      {
+        "id": "sleeper",
+        "title": "Sleeper's set",
+        "pieces": [
+          "pillow",
+          "blanket",
+          "candle"
+        ],
+        "have": [
+          true,
+          true,
+          false
+        ],
+        "done": false,
+        "bonus": "rest −2%"
+      },
+      {
+        "id": "scholar",
+        "title": "Scholar's set",
+        "pieces": [
+          "quill",
+          "lens",
+          "tome"
+        ],
+        "have": [
+          true,
+          false,
+          false
+        ],
+        "done": false,
+        "bonus": "class xp +2%"
+      },
+      {
+        "id": "hearth",
+        "title": "Hearth set",
+        "pieces": [
+          "stone",
+          "kettle",
+          "rug"
+        ],
+        "have": [
+          true,
+          false,
+          false
+        ],
+        "done": false,
+        "bonus": "+1 Legacy a return"
+      }
+    ],
+    "swift_to": 0,
+    "sinks": [],
+    "sink_order": "both",
+    "wish": {
+      "id": "map",
+      "text": "a map",
+      "price": 187,
+      "legacy": 3,
+      "available": true
+    },
+    "feats": 0,
+    "siege": [],
+    "graves": [],
+    "graveyard": [],
+    "worn": {},
+    "heir_order": "answer",
+    "titles": [],
+    "deed_legacy": 0
+  },
+  "king_eta_h": 64,
+  "king_pct": 33,
+  "class_styles": {
+    "selected": null,
+    "offers": [
+      {
+        "id": "sentinel",
+        "name": "Sentinel",
+        "parent": "fighter",
+        "level": 4,
+        "xp": 776,
+        "next": 1600,
+        "required_level": 10,
+        "required_depth": 23,
+        "deepest": 11,
+        "selected": false,
+        "available": false,
+        "blocked": "reach class level10",
+        "cooldown_ticks": 60,
+        "duration_ticks": 20,
+        "effect": "Halve one melee hit · counter 8",
+        "tactic": {
+          "conds": [
+            {
+              "k": "adj>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "riposte"
+          },
+          "origin": "style:sentinel"
+        }
+      },
+      {
+        "id": "hexbinder",
+        "name": "Hexbinder",
+        "parent": "caster",
+        "level": 1,
+        "xp": 0,
+        "next": 60,
+        "required_level": 10,
+        "required_depth": 23,
+        "deepest": 11,
+        "selected": false,
+        "available": false,
+        "blocked": "choose caster",
+        "cooldown_ticks": 60,
+        "duration_ticks": 40,
+        "effect": "Enemy attacks deal 2 less damage",
+        "tactic": {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "hex",
+            "a": "nearest"
+          },
+          "origin": "style:hexbinder"
+        }
+      }
+    ],
+    "remove_available": false,
+    "remove_blocked": null,
+    "automatic_row": true,
+    "player_overrides": false
+  },
+  "selected_loadout": [],
+  "hero_slots": [],
+  "selected_bloodline": 1,
+  "bloodline_price": 250,
+  "bloodline_cap": 3,
+  "bloodline": {
+    "points": 54,
+    "spent": 0,
+    "upgrades": {}
+  },
+  "hero_legacy": [
+    {
+      "name": "Rook Ash",
+      "spent": 0,
+      "upgrades": {},
+      "heir": 1,
+      "points": 53,
+      "runs": 42,
+      "best_depth": 11,
+      "class": "fighter"
+    }
+  ],
+  "legacy_upgrades": [
+    {
+      "id": "health",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+3 HP",
+      "affordable": true,
+      "name": "Vitality",
+      "branch": "Recovery"
+    },
+    {
+      "id": "damage",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+1 damage",
+      "affordable": true,
+      "name": "Strength",
+      "branch": "Control"
+    },
+    {
+      "id": "armour",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+1 armour",
+      "affordable": true,
+      "name": "Guard",
+      "branch": "Warding"
+    },
+    {
+      "id": "restoration",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "+1 HP per safe rest",
+      "affordable": false,
+      "name": "Restoration",
+      "branch": "Recovery",
+      "parent": "health",
+      "min_depth": 8,
+      "blocked": "Buy Vitality"
+    },
+    {
+      "id": "control",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "Stun and Slow +5 ticks",
+      "affordable": false,
+      "name": "Control",
+      "branch": "Control",
+      "parent": "damage",
+      "min_depth": 8,
+      "blocked": "Buy Strength"
+    },
+    {
+      "id": "clear_lungs",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "Gas and poison damage −2",
+      "affordable": false,
+      "name": "Clear lungs",
+      "branch": "Warding",
+      "parent": "armour",
+      "min_depth": 8,
+      "blocked": "Buy Guard"
+    },
+    {
+      "id": "mending",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Heal potions +25% HP",
+      "affordable": false,
+      "name": "Mending",
+      "branch": "Recovery",
+      "parent": "restoration",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "renewal",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Natural enemy kills +1 HP",
+      "affordable": false,
+      "name": "Renewal",
+      "branch": "Recovery",
+      "parent": "restoration",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "venom",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Thrown poison +1 damage per pulse",
+      "affordable": false,
+      "name": "Venom",
+      "branch": "Control",
+      "parent": "control",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "debilitate",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Slow +15 further ticks",
+      "affordable": false,
+      "name": "Debilitate",
+      "branch": "Control",
+      "parent": "control",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "fireward",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Fire damage halved",
+      "affordable": false,
+      "name": "Fireward",
+      "branch": "Warding",
+      "parent": "clear_lungs",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "brace",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Below 25% HP: damage −2",
+      "affordable": false,
+      "name": "Brace",
+      "branch": "Warding",
+      "parent": "clear_lungs",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    }
+  ],
+  "legacy_respec": {
+    "refund": 0,
+    "available": false,
+    "points_after": 54,
+    "blocked": "No attribute commitments"
+  },
+  "return_pick": {
+    "minutes": 1140,
+    "size": 5,
+    "offers": [
+      {
+        "id": "drill",
+        "title": "Steady",
+        "line": "+24 runs",
+        "available": true,
+        "target": "steady"
+      },
+      {
+        "id": "legacy",
+        "title": "Legacy",
+        "line": "+12",
+        "available": true
+      },
+      {
+        "id": "forge",
+        "title": "mail",
+        "line": "−50%",
+        "price": 800,
+        "available": true,
+        "target": "armour"
+      }
+    ],
+    "default": "legacy"
+  },
+  "runs": [
+    {
+      "id": 1,
+      "heir": 1,
+      "via": "watched",
+      "clock_s": 0,
+      "start": 1,
+      "depth": 4,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 98,
+      "found": 11,
+      "turns": 4503,
+      "best": true,
+      "finds": [
+        {
+          "id": 57,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "sword",
+          "known": true,
+          "label": "sword",
+          "free": false
+        },
+        {
+          "id": 33,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 34,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 48,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ],
+      "secured": 69
+    },
+    {
+      "id": 2,
+      "heir": 1,
+      "via": "watched",
+      "clock_s": 0,
+      "start": 1,
+      "depth": 2,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 24,
+      "found": 4,
+      "turns": 2930,
+      "best": true,
+      "finds": [
+        {
+          "id": 31,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 12,
+          "kind": "scroll",
+          "known": false,
+          "label": "ashen scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 18,
+          "kind": "potion",
+          "known": false,
+          "label": "oily potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 26,
+          "kind": "potion",
+          "known": false,
+          "label": "pearly potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "heir": 1,
+      "via": "watched",
+      "clock_s": 0,
+      "start": 1,
+      "depth": 5,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 106,
+      "found": 16,
+      "turns": 7100,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 66,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 30,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 50,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 16,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 34,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ],
+      "secured": 102
+    },
+    {
+      "id": 4,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 279,
+      "start": 1,
+      "depth": 2,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 40,
+      "found": 5,
+      "turns": 2790,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 41,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 31,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 15,
+          "kind": "scroll",
+          "known": false,
+          "label": "sealed scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 30,
+          "kind": "scroll",
+          "known": false,
+          "label": "folded scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 2049,
+      "start": 1,
+      "depth": 6,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 85,
+      "found": 10,
+      "turns": 5704,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 60,
+          "kind": "mail",
+          "known": true,
+          "label": "mail",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 76,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 45,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 42,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "free": false
+        },
+        {
+          "id": 77,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ],
+      "secured": 60
+    },
+    {
+      "id": 6,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 3566,
+      "start": 1,
+      "depth": 4,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 49,
+      "found": 6,
+      "turns": 3170,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 58,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 48,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 50,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 43,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 66,
+          "kind": "scroll",
+          "known": false,
+          "label": "sealed scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 4599,
+      "start": 1,
+      "depth": 3,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 43,
+      "found": 9,
+      "turns": 3990,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 49,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "potion",
+          "known": false,
+          "label": "pearly potion?",
+          "free": false
+        },
+        {
+          "id": 14,
+          "kind": "scroll",
+          "known": false,
+          "label": "sealed scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 15,
+          "kind": "potion",
+          "known": false,
+          "label": "oily potion?",
+          "free": false
+        },
+        {
+          "id": 17,
+          "kind": "potion",
+          "known": false,
+          "label": "oily potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 6328,
+      "start": 1,
+      "depth": 5,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 69,
+      "found": 12,
+      "turns": 5290,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 18,
+          "kind": "sword",
+          "known": true,
+          "label": "sword",
+          "free": false
+        },
+        {
+          "id": 44,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 14,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 15,
+          "kind": "potion",
+          "known": false,
+          "label": "clear potion?",
+          "free": false
+        },
+        {
+          "id": 32,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 8177,
+      "start": 1,
+      "depth": 7,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 116,
+      "found": 17,
+      "turns": 6490,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 92,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 12,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 17,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 118,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 45,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        }
+      ],
+      "secured": 111
+    },
+    {
+      "id": 10,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 10047,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 103,
+      "found": 15,
+      "turns": 6700,
+      "best": true,
+      "finds": [
+        {
+          "id": 71,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 86,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 46,
+          "kind": "leash",
+          "known": true,
+          "label": "leash (3)",
+          "free": false
+        },
+        {
+          "id": 25,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 44,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        },
+        {
+          "id": 57,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 12179,
+      "start": 1,
+      "depth": 8,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 100,
+      "found": 12,
+      "turns": 9320,
+      "best": true,
+      "finds": [
+        {
+          "id": 120,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 61,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 95,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 64,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 105,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        }
+      ],
+      "secured": 85
+    },
+    {
+      "id": 12,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 14260,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 92,
+      "found": 8,
+      "turns": 8810,
+      "best": true,
+      "finds": [
+        {
+          "id": 16,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 90,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 92,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 17,
+          "kind": "potion",
+          "known": false,
+          "label": "clear potion?",
+          "free": false
+        },
+        {
+          "id": 91,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger",
+          "free": false
+        },
+        {
+          "id": 60,
+          "kind": "potion",
+          "known": false,
+          "label": "red potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 15597,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 105,
+      "found": 16,
+      "turns": 5970,
+      "finds": [
+        {
+          "id": 91,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 109,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 70,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 107,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 42,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 17289,
+      "start": 1,
+      "depth": 5,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 83,
+      "found": 11,
+      "turns": 4920,
+      "best": true,
+      "finds": [
+        {
+          "id": 54,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 11,
+          "kind": "sword",
+          "known": true,
+          "label": "sword",
+          "free": false
+        },
+        {
+          "id": 42,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 14,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 75,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 40,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 19131,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 76,
+      "found": 9,
+      "turns": 6420,
+      "finds": [
+        {
+          "id": 38,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 25,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 70,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 14,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "potion",
+          "known": false,
+          "label": "clear potion?",
+          "free": false
+        },
+        {
+          "id": 42,
+          "kind": "scroll",
+          "known": false,
+          "label": "folded scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 21008,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 130,
+      "found": 16,
+      "turns": 6770,
+      "finds": [
+        {
+          "id": 57,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 92,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 85,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 99,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 28,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 91,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 22617,
+      "start": 1,
+      "depth": 5,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 83,
+      "found": 10,
+      "turns": 4170,
+      "best": true,
+      "finds": [
+        {
+          "id": 70,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 57,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 13,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 28,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 62,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 40,
+          "kind": "scroll",
+          "known": false,
+          "label": "brittle scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 24439,
+      "start": 1,
+      "depth": 6,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 100,
+      "found": 14,
+      "turns": 6220,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 56,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 43,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 64,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 91,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 33,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 26372,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 88,
+      "found": 13,
+      "turns": 7330,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 55,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 54,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 97,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 39,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        },
+        {
+          "id": 83,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 28165,
+      "start": 1,
+      "depth": 6,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 79,
+      "found": 12,
+      "turns": 5930,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 80,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 15,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 11,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 58,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        },
+        {
+          "id": 56,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 29895,
+      "start": 1,
+      "depth": 5,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 57,
+      "found": 9,
+      "turns": 5300,
+      "finds": [
+        {
+          "id": 30,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 66,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 15,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 17,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 52,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 25,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 31803,
+      "start": 1,
+      "depth": 6,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 68,
+      "found": 12,
+      "turns": 7080,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 91,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 47,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 94,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "scroll",
+          "known": false,
+          "label": "brittle scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 16,
+          "kind": "potion",
+          "known": false,
+          "label": "pearly potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 33810,
+      "start": 1,
+      "depth": 5,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 73,
+      "found": 13,
+      "turns": 8100,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 59,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 92,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 62,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        },
+        {
+          "id": 30,
+          "kind": "scroll",
+          "known": false,
+          "label": "sealed scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 35553,
+      "start": 1,
+      "depth": 4,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 89,
+      "found": 14,
+      "turns": 5430,
+      "finds": [
+        {
+          "id": 14,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 24,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 48,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 55,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 47,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 66,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 37255,
+      "start": 1,
+      "depth": 7,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 81,
+      "found": 8,
+      "turns": 6550,
+      "best": true,
+      "finds": [
+        {
+          "id": 25,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 86,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 102,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 58,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        },
+        {
+          "id": 42,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 12,
+          "kind": "scroll",
+          "known": false,
+          "label": "ashen scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 39198,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 106,
+      "found": 11,
+      "turns": 7438,
+      "best": true,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 76,
+          "kind": "mail",
+          "known": true,
+          "label": "mail",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 49,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 91,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 28,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 40831,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 80,
+      "found": 12,
+      "turns": 6310,
+      "finds": [
+        {
+          "id": 26,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 28,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        },
+        {
+          "id": 54,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 61,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 91,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 85,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 42668,
+      "start": 1,
+      "depth": 5,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 102,
+      "found": 14,
+      "turns": 6370,
+      "finds": [
+        {
+          "id": 40,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 66,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 63,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 65,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        },
+        {
+          "id": 77,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 44465,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 126,
+      "found": 14,
+      "turns": 6650,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 80,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 75,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 103,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 45,
+          "kind": "leather",
+          "known": true,
+          "label": "leather",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 46298,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 102,
+      "found": 14,
+      "turns": 6330,
+      "finds": [
+        {
+          "id": 38,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 43,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 58,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 61,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 73,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 48179,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 128,
+      "found": 16,
+      "turns": 7790,
+      "finds": [
+        {
+          "id": 38,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 28,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 42,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 31,
+          "kind": "leash",
+          "known": true,
+          "label": "leash (3)",
+          "free": false
+        },
+        {
+          "id": 45,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 50067,
+      "start": 1,
+      "depth": 7,
+      "tier": "bank",
+      "reason": "no heals · banked",
+      "gold": 95,
+      "found": 9,
+      "turns": 6880,
+      "finds": [
+        {
+          "id": 37,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 86,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 25,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 117,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 13,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        },
+        {
+          "id": 65,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 52275,
+      "start": 1,
+      "depth": 8,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 214,
+      "found": 16,
+      "turns": 12750,
+      "finds": [
+        {
+          "id": 28,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 30,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 39,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 11,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 73,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 54028,
+      "start": 1,
+      "depth": 6,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 102,
+      "found": 11,
+      "turns": 5530,
+      "finds": [
+        {
+          "id": 57,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 44,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 90,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 87,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 15,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 12,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 55285,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 133,
+      "found": 16,
+      "turns": 6850,
+      "finds": [
+        {
+          "id": 24,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 41,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 64,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 34,
+          "kind": "leash",
+          "known": true,
+          "label": "leash (4)",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 49,
+          "kind": "potion",
+          "known": false,
+          "label": "clear potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 57451,
+      "start": 1,
+      "depth": 8,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 176,
+      "found": 17,
+      "turns": 9660,
+      "finds": [
+        {
+          "id": 41,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 124,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 134,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 24,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 54,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 122,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 59022,
+      "start": 1,
+      "depth": 8,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 183,
+      "found": 18,
+      "turns": 8226,
+      "finds": [
+        {
+          "id": 121,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +2",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 68,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 11,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 16,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 95,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 123,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 61223,
+      "start": 1,
+      "depth": 8,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 242,
+      "found": 19,
+      "turns": 10009,
+      "best": true,
+      "finds": [
+        {
+          "id": 134,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 56,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 70,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 28,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 41,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 45,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 62719,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 160,
+      "found": 16,
+      "turns": 9190,
+      "finds": [
+        {
+          "id": 96,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +2",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 46,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 44,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 49,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 27,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "free": false
+        },
+        {
+          "id": 29,
+          "kind": "potion",
+          "known": false,
+          "label": "black potion?",
+          "hint": "malevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 64814,
+      "start": 1,
+      "depth": 7,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 98,
+      "found": 7,
+      "turns": 8955,
+      "finds": [
+        {
+          "id": 53,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 87,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 42,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        },
+        {
+          "id": 11,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 62,
+          "kind": "scroll",
+          "known": false,
+          "label": "waxen scroll?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 66254,
+      "start": 1,
+      "depth": 8,
+      "tier": "return",
+      "reason": "hurt · went home",
+      "gold": 214,
+      "found": 16,
+      "turns": 8540,
+      "finds": [
+        {
+          "id": 82,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 39,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 44,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "free": false
+        },
+        {
+          "id": 16,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        },
+        {
+          "id": 120,
+          "kind": "scroll",
+          "known": false,
+          "label": "gilded scroll?",
+          "free": false
+        },
+        {
+          "id": 38,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "heir": 1,
+      "via": "away",
+      "absence": 1,
+      "clock_s": 69148,
+      "start": 1,
+      "depth": 11,
+      "tier": "bank",
+      "reason": "hurt · banked",
+      "gold": 520,
+      "found": 32,
+      "turns": 16940,
+      "best": true,
+      "finds": [
+        {
+          "id": 143,
+          "kind": "crownsplitter",
+          "known": true,
+          "label": "Crownsplitter",
+          "free": false,
+          "rarity": "legendary"
+        },
+        {
+          "id": 127,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +2",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 73,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 114,
+          "kind": "mail",
+          "known": true,
+          "label": "mail",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 64,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 146,
+          "kind": "potion",
+          "known": false,
+          "label": "green potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ],
+      "secured": 492
+    }
+  ],
+  "replays": [
+    42
+  ],
+  "clock_s": 68400,
+  "absences": 1,
+  "meters": {
+    "runs": [
+      {
+        "seconds": 854.0,
+        "dealt": {
+          "hero": 381,
+          "pets": 94,
+          "foes": 46
+        },
+        "taken": {
+          "hero": 41,
+          "pets": 15,
+          "foes": 475
+        },
+        "dps_dealt": {
+          "hero": 0.446,
+          "pets": 0.11,
+          "foes": 0.054
+        },
+        "dps_taken": {
+          "hero": 0.048,
+          "pets": 0.018,
+          "foes": 0.556
+        },
+        "healed": [
+          {
+            "src": "pet",
+            "total": 12,
+            "per_s": 0.014
+          },
+          {
+            "src": "rest",
+            "total": 8,
+            "per_s": 0.009
+          }
+        ],
+        "hps": 0.023,
+        "time": {
+          "fight": 2182,
+          "travel": 6339,
+          "chores": 19,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 218.2,
+          "travel": 633.9,
+          "chores": 1.9,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 686,
+            "share": 0.804
+          },
+          {
+            "row": 0,
+            "fires": 27,
+            "share": 0.032
+          },
+          {
+            "row": 3,
+            "fires": 6,
+            "share": 0.007
+          },
+          {
+            "row": 6,
+            "fires": 132,
+            "share": 0.155
+          },
+          {
+            "row": 7,
+            "fires": 2,
+            "share": 0.002
+          }
+        ],
+        "actions": 853,
+        "supplies": {},
+        "gold": 214,
+        "gold_per_min": 15.035,
+        "hits_hero": 35,
+        "hits_pets": 9,
+        "fights": 25,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 27,
+            "share": 0.032
+          },
+          {
+            "credit": "default",
+            "fires": 140,
+            "share": 0.164
+          },
+          {
+            "credit": "chores",
+            "fires": 686,
+            "share": 0.804
+          }
+        ]
+      },
+      {
+        "seconds": 1694.0,
+        "dealt": {
+          "hero": 912,
+          "pets": 79,
+          "foes": 72
+        },
+        "taken": {
+          "hero": 104,
+          "pets": 7,
+          "foes": 991
+        },
+        "dps_dealt": {
+          "hero": 0.538,
+          "pets": 0.047,
+          "foes": 0.043
+        },
+        "dps_taken": {
+          "hero": 0.061,
+          "pets": 0.004,
+          "foes": 0.585
+        },
+        "healed": [
+          {
+            "src": "pet",
+            "total": 1,
+            "per_s": 0.001
+          },
+          {
+            "src": "rest",
+            "total": 68,
+            "per_s": 0.04
+          }
+        ],
+        "hps": 0.041,
+        "time": {
+          "fight": 4315,
+          "travel": 12564,
+          "chores": 58,
+          "rest": 3
+        },
+        "time_s": {
+          "fight": 431.5,
+          "travel": 1256.4,
+          "chores": 5.8,
+          "rest": 0.3
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 1249,
+            "share": 0.775
+          },
+          {
+            "row": 0,
+            "fires": 16,
+            "share": 0.01
+          },
+          {
+            "row": 2,
+            "fires": 19,
+            "share": 0.012
+          },
+          {
+            "row": 5,
+            "fires": 3,
+            "share": 0.002
+          },
+          {
+            "row": 6,
+            "fires": 309,
+            "share": 0.192
+          },
+          {
+            "row": 7,
+            "fires": 15,
+            "share": 0.009
+          }
+        ],
+        "actions": 1609,
+        "supplies": {},
+        "gold": 520,
+        "gold_per_min": 18.418,
+        "hits_hero": 54,
+        "hits_pets": 5,
+        "fights": 55,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 16,
+            "share": 0.01
+          },
+          {
+            "credit": "default",
+            "fires": 346,
+            "share": 0.215
+          },
+          {
+            "credit": "chores",
+            "fires": 1249,
+            "share": 0.775
+          }
+        ]
+      }
+    ],
+    "night": {
+      "seconds": 10353.0,
+      "dealt": {
+        "hero": 4936,
+        "pets": 637,
+        "foes": 381
+      },
+      "taken": {
+        "hero": 485,
+        "pets": 72,
+        "foes": 5619
+      },
+      "dps_dealt": {
+        "hero": 0.477,
+        "pets": 0.062,
+        "foes": 0.037
+      },
+      "dps_taken": {
+        "hero": 0.047,
+        "pets": 0.007,
+        "foes": 0.543
+      },
+      "healed": [
+        {
+          "src": "pet",
+          "total": 21,
+          "per_s": 0.002
+        },
+        {
+          "src": "rest",
+          "total": 120,
+          "per_s": 0.012
+        }
+      ],
+      "hps": 0.014,
+      "time": {
+        "fight": 24244,
+        "travel": 78993,
+        "chores": 290,
+        "rest": 3
+      },
+      "time_s": {
+        "fight": 2424.4,
+        "travel": 7899.3,
+        "chores": 29.0,
+        "rest": 0.3
+      },
+      "rows": [
+        {
+          "row": -2,
+          "fires": 8082,
+          "share": 0.795
+        },
+        {
+          "row": 0,
+          "fires": 61,
+          "share": 0.006
+        },
+        {
+          "row": 2,
+          "fires": 25,
+          "share": 0.002
+        },
+        {
+          "row": 3,
+          "fires": 66,
+          "share": 0.006
+        },
+        {
+          "row": 5,
+          "fires": 449,
+          "share": 0.044
+        },
+        {
+          "row": 6,
+          "fires": 1455,
+          "share": 0.143
+        },
+        {
+          "row": 7,
+          "fires": 25,
+          "share": 0.002
+        }
+      ],
+      "actions": 10161,
+      "supplies": {},
+      "gold": 2137,
+      "gold_per_min": 12.385,
+      "hits_hero": 296,
+      "hits_pets": 43,
+      "fights": 323,
+      "credit": [
+        {
+          "credit": "taught",
+          "fires": 61,
+          "share": 0.006
+        },
+        {
+          "credit": "default",
+          "fires": 2020,
+          "share": 0.199
+        },
+        {
+          "credit": "chores",
+          "fires": 8082,
+          "share": 0.795
+        }
+      ]
+    },
+    "last_night": {
+      "seconds": 10376.8,
+      "dealt": {
+        "hero": 3581,
+        "pets": 524,
+        "foes": 558
+      },
+      "taken": {
+        "hero": 554,
+        "pets": 73,
+        "foes": 4105
+      },
+      "dps_dealt": {
+        "hero": 0.345,
+        "pets": 0.05,
+        "foes": 0.054
+      },
+      "dps_taken": {
+        "hero": 0.053,
+        "pets": 0.007,
+        "foes": 0.396
+      },
+      "healed": [
+        {
+          "src": "pet",
+          "total": 14,
+          "per_s": 0.001
+        },
+        {
+          "src": "rest",
+          "total": 48,
+          "per_s": 0.005
+        }
+      ],
+      "hps": 0.006,
+      "time": {
+        "fight": 18574,
+        "travel": 84872,
+        "chores": 322,
+        "rest": 0
+      },
+      "time_s": {
+        "fight": 1857.4,
+        "travel": 8487.2,
+        "chores": 32.2,
+        "rest": 0.0
+      },
+      "rows": [
+        {
+          "row": -2,
+          "fires": 8527,
+          "share": 0.824
+        },
+        {
+          "row": 2,
+          "fires": 68,
+          "share": 0.007
+        },
+        {
+          "row": 3,
+          "fires": 193,
+          "share": 0.019
+        },
+        {
+          "row": 4,
+          "fires": 2,
+          "share": 0.0
+        },
+        {
+          "row": 5,
+          "fires": 1542,
+          "share": 0.149
+        },
+        {
+          "row": 6,
+          "fires": 12,
+          "share": 0.001
+        }
+      ],
+      "actions": 10344,
+      "supplies": {},
+      "gold": 1492,
+      "gold_per_min": 8.627,
+      "hits_hero": 314,
+      "hits_pets": 35,
+      "fights": 277,
+      "credit": [
+        {
+          "credit": "default",
+          "fires": 1817,
+          "share": 0.176
+        },
+        {
+          "credit": "chores",
+          "fires": 8527,
+          "share": 0.824
+        }
+      ]
+    }
+  },
+  "systems": [
+    {
+      "id": "send",
+      "open": true
+    },
+    {
+      "id": "headline",
+      "open": true
+    },
+    {
+      "id": "death",
+      "open": false,
+      "trigger": "first death"
+    },
+    {
+      "id": "heirs",
+      "open": false,
+      "trigger": "first death"
+    },
+    {
+      "id": "exits",
+      "open": true,
+      "trigger": "first gold home",
+      "new": true,
+      "lit_by": "first gold home"
+    },
+    {
+      "id": "forge",
+      "open": true,
+      "trigger": "first gold home",
+      "new": true,
+      "lit_by": "first gold home"
+    },
+    {
+      "id": "loadout",
+      "open": true,
+      "trigger": "first gold home",
+      "new": true,
+      "lit_by": "first gold home"
+    },
+    {
+      "id": "party",
+      "open": true,
+      "trigger": "first stray",
+      "new": true,
+      "lit_by": "first stray"
+    },
+    {
+      "id": "kennel",
+      "open": true,
+      "trigger": "first tame",
+      "new": true,
+      "lit_by": "first tame"
+    },
+    {
+      "id": "stances",
+      "open": true,
+      "trigger": "meet Captain",
+      "new": true,
+      "lit_by": "meet Captain"
+    },
+    {
+      "id": "tactics",
+      "open": true,
+      "trigger": "slay Warlord",
+      "new": true,
+      "lit_by": "slay Warlord"
+    },
+    {
+      "id": "bank",
+      "open": false,
+      "trigger": "a night's purse"
+    },
+    {
+      "id": "quests",
+      "open": false,
+      "trigger": "slay Warlord"
+    },
+    {
+      "id": "class",
+      "open": false,
+      "trigger": "second class"
+    },
+    {
+      "id": "start",
+      "open": false,
+      "trigger": "slay Warlord"
+    },
+    {
+      "id": "temperament",
+      "open": false,
+      "trigger": "heir 3"
+    },
+    {
+      "id": "tactic2",
+      "open": false,
+      "trigger": "meet Lich"
+    },
+    {
+      "id": "pen",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "edit",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "dial",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "unlocks",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "reorder",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "vs",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "tags",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "walls",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "divergence",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "route",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "automations",
+      "open": false,
+      "trigger": "meet Lich"
+    },
+    {
+      "id": "route2",
+      "open": false,
+      "trigger": "an oath kept"
+    },
+    {
+      "id": "heir_pick",
+      "open": false,
+      "trigger": "an oath kept"
+    }
+  ],
+  "tier": 2,
+  "oath_slots": 1,
+  "oath_draw": {
+    "cost": 2,
+    "available": true
+  },
+  "commission": {
+    "price": 1000,
+    "label": "heir's statue",
+    "available": true
+  },
+  "orders": {
+    "keep": "best_weapon",
+    "cage": "weapon",
+    "start": 1,
+    "repeat": true,
+    "insure": true,
+    "forge": "half",
+    "wall": "bank",
+    "sink": "both",
+    "heir": "answer",
+    "kennel": "breed",
+    "legacy": "off",
+    "ranks": "off",
+    "ascend": "off",
+    "shared": []
+  },
+  "supply_cap": 5,
+  "seed": 1,
+  "heir": 1,
+  "trait": "curious",
+  "class": "fighter",
+  "best_depth": 11,
+  "marks": 51,
+  "facts": [
+    "alert:rising",
+    "biome:burrows",
+    "biome:fens",
+    "boss:goblin_warlord:counter=attack tag:boss",
+    "captive",
+    "counter:gas>pack",
+    "counter:pack>lone",
+    "counter:ranged>heavy",
+    "den",
+    "foe:bloat",
+    "foe:bloat:gas",
+    "foe:bloat:studied",
+    "foe:captive",
+    "foe:captive:ally",
+    "foe:eel",
+    "foe:eel:studied",
+    "foe:eel:water",
+    "foe:goblin",
+    "foe:goblin:studied",
+    "foe:goblin:summoned",
+    "foe:goblin_archer",
+    "foe:goblin_archer:ranged",
+    "foe:goblin_archer:studied",
+    "foe:goblin_archer:telegraph",
+    "foe:goblin_captain",
+    "foe:goblin_captain:studied",
+    "foe:goblin_captain:summoner",
+    "foe:goblin_captain:telegraph",
+    "foe:goblin_conjurer",
+    "foe:goblin_conjurer:caster",
+    "foe:goblin_conjurer:studied",
+    "foe:goblin_conjurer:summoner",
+    "foe:goblin_warlord",
+    "foe:goblin_warlord:boss",
+    "foe:goblin_warlord:buffer",
+    "foe:goblin_warlord:summoner",
+    "foe:goblin_warlord:telegraph",
+    "foe:jackal",
+    "foe:jackal:fast",
+    "foe:jackal:pack",
+    "foe:jackal:studied",
+    "foe:monkey",
+    "foe:monkey:fast",
+    "foe:monkey:studied",
+    "foe:monkey:thief",
+    "foe:ogre",
+    "foe:ogre:heavy",
+    "foe:ogre:studied",
+    "foe:ogre:telegraph",
+    "foe:pink_jelly",
+    "foe:pink_jelly:splitter",
+    "foe:rat",
+    "foe:rat:studied",
+    "foe:skeleton",
+    "foe:skeleton:studied",
+    "foe:skeleton:undead",
+    "foe:spectral_blade",
+    "foe:spectral_blade:summoned",
+    "fork:5",
+    "fork:9",
+    "item:leash",
+    "lock",
+    "nest",
+    "shrine",
+    "stray",
+    "tamed:goblin",
+    "tamed:goblin_archer",
+    "tamed:goblin_captain",
+    "tamed:jackal",
+    "vault"
+  ],
+  "unlocks": [
+    "cond_alert",
+    "cond_loot",
+    "cond_on_kill",
+    "cond_on_see",
+    "cond_party_hp",
+    "cond_turns",
+    "kite_archers",
+    "rogue",
+    "stair_dance",
+    "tame"
+  ],
+  "vault": [],
+  "graveyard": [],
+  "trophies": [
+    "pacifist_floor",
+    "no_heal_D5",
+    "slain:100",
+    "home:10",
+    "studied:5",
+    "studied_all_warrens",
+    "slain:500",
+    "studied:10",
+    "no_friends",
+    "slain:1000"
+  ],
+  "sets": [
+    {
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            },
+            {
+              "k": "hp>",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "origin": "drill:goblin_warlord"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 35
+            }
+          ],
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            },
+            {
+              "k": "depth>=",
+              "n": 12
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            }
+          ],
+          "verb": {
+            "v": "return"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 40
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "open"
+          },
+          "origin": "drill:tame"
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 50
+            }
+          ],
+          "verb": {
+            "v": "rest"
+          },
+          "origin": "stance:steady"
+        }
+      ],
+      "name": "fighter"
+    },
+    {
+      "rows": []
+    },
+    {
+      "rows": []
+    }
+  ],
+  "active_set": 0,
+  "ended": false,
+  "party": [
+    {
+      "id": 1001000,
+      "kind": "goblin_archer",
+      "name": "Skul",
+      "level": 1,
+      "tags": [
+        "ranged",
+        "telegraph"
+      ],
+      "gen": 0,
+      "rules": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "shoot"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack"
+            }
+          }
+        ]
+      },
+      "max_rows": 2,
+      "hp": 8,
+      "max_hp": 8,
+      "life": {
+        "role": "scout",
+        "xp": 217,
+        "heirs": [
+          1
+        ],
+        "runs": 33
+      }
+    }
+  ],
+  "kennel": [
+    {
+      "id": 1001300,
+      "kind": "goblin_captain",
+      "name": "Ashusk",
+      "level": 1,
+      "tags": [
+        "summoner",
+        "telegraph"
+      ],
+      "gen": 0,
+      "rules": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "self_hp<",
+                "n": 25
+              }
+            ],
+            "verb": {
+              "v": "follow"
+            }
+          }
+        ]
+      },
+      "max_rows": 2,
+      "hp": 14,
+      "max_hp": 14,
+      "life": {
+        "role": "guard",
+        "xp": 42,
+        "heirs": [
+          1
+        ],
+        "runs": 1
+      }
+    },
+    {
+      "id": 1002300,
+      "kind": "jackal",
+      "name": "Grog",
+      "level": 1,
+      "tags": [
+        "pack",
+        "fast"
+      ],
+      "gen": 0,
+      "rules": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "flank"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack"
+            }
+          }
+        ]
+      },
+      "max_rows": 2,
+      "hp": 6,
+      "max_hp": 6,
+      "life": {
+        "role": "fetcher",
+        "xp": 30,
+        "heirs": [
+          1
+        ],
+        "runs": 1
+      }
+    },
+    {
+      "id": 1004200,
+      "kind": "goblin",
+      "name": "Vrog",
+      "level": 1,
+      "tags": [],
+      "gen": 0,
+      "rules": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "self_hp<",
+                "n": 25
+              }
+            ],
+            "verb": {
+              "v": "follow"
+            }
+          }
+        ]
+      },
+      "max_rows": 2,
+      "hp": 10,
+      "max_hp": 10,
+      "life": {
+        "role": "guard",
+        "xp": 11,
+        "heirs": [
+          1
+        ],
+        "runs": 1
+      }
+    }
+  ],
+  "eggs": [],
+  "party_slots": 1,
+  "pets": {
+    "tame": "tames strays",
+    "tame_revoked": false,
+    "kennel": "breed",
+    "fetched": 0,
+    "bred": 0,
+    "released": 0
+  },
+  "ledger": [
+    {
+      "kind": "rat",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "jackal",
+      "seen": true,
+      "known": true,
+      "tamed": true,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "goblin",
+      "seen": true,
+      "known": true,
+      "tamed": true,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "goblin_archer",
+      "seen": true,
+      "known": true,
+      "tamed": true,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "goblin_conjurer",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "monkey",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "ogre",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "bloat",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "pink_jelly",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "eel",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "skeleton",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "ghoul",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "wraith",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "captive",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_captain",
+      "seen": true,
+      "known": true,
+      "tamed": true,
+      "bred": false,
+      "studied": true
+    },
+    {
+      "kind": "iron_golem",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "forge_imp",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "bell_sentinel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "slag_crawler",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "smith",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lurker",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "deep_eel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "cave_troll",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "siren",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "mirror_shade",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "warden",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "acolyte",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "echo",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "sentinel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_warlord",
+      "seen": true,
+      "known": true,
+      "tamed": false,
+      "bred": false,
+      "studied": false,
+      "counter": {
+        "row": {
+          "conds": [
+            {
+              "k": "foe_tag",
+              "t": "boss"
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          }
+        },
+        "text": "attack boss",
+        "owned": true
+      }
+    },
+    {
+      "kind": "bloat_mother",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lich",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "foundry_master",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lurker_queen",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "mirror_king",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    }
+  ],
+  "gold": 1318,
+  "supplies": [],
+  "classes": {
+    "caster": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    },
+    "fighter": {
+      "level": 4,
+      "xp": 776,
+      "next": 1600
+    },
+    "ranger": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    },
+    "rogue": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    }
+  },
+  "forge": {
+    "amber potion?": {
+      "salvaged": 35,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "ashen scroll?": {
+      "salvaged": 20,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "axe": {
+      "salvaged": 4,
+      "craftable": false,
+      "tier": 0,
+      "next": {
+        "need": 5,
+        "label": "craftable"
+      }
+    },
+    "black potion?": {
+      "salvaged": 24,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "blue potion?": {
+      "salvaged": 23,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "bow": {
+      "salvaged": 21,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "brittle scroll?": {
+      "salvaged": 18,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "burnt scroll?": {
+      "salvaged": 15,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "clear potion?": {
+      "salvaged": 23,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "crownsplitter": {
+      "salvaged": 1,
+      "craftable": false,
+      "tier": 0,
+      "next": {
+        "need": 5,
+        "label": "craftable"
+      }
+    },
+    "dagger": {
+      "salvaged": 20,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "folded scroll?": {
+      "salvaged": 12,
+      "craftable": true,
+      "tier": 0,
+      "next": {
+        "need": 15,
+        "label": "tier 1"
+      }
+    },
+    "gilded scroll?": {
+      "salvaged": 22,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "green potion?": {
+      "salvaged": 62,
+      "craftable": true,
+      "tier": 2
+    },
+    "inked scroll?": {
+      "salvaged": 16,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "leash": {
+      "salvaged": 41,
+      "craftable": true,
+      "tier": 2
+    },
+    "leather": {
+      "salvaged": 26,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "mail": {
+      "salvaged": 3,
+      "craftable": false,
+      "tier": 0,
+      "next": {
+        "need": 5,
+        "label": "craftable"
+      }
+    },
+    "oily potion?": {
+      "salvaged": 20,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "pearly potion?": {
+      "salvaged": 15,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "red potion?": {
+      "salvaged": 13,
+      "craftable": true,
+      "tier": 0,
+      "next": {
+        "need": 15,
+        "label": "tier 1"
+      }
+    },
+    "sealed scroll?": {
+      "salvaged": 19,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    },
+    "silver scroll?": {
+      "salvaged": 14,
+      "craftable": true,
+      "tier": 0,
+      "next": {
+        "need": 15,
+        "label": "tier 1"
+      }
+    },
+    "sword": {
+      "salvaged": 47,
+      "craftable": true,
+      "tier": 2
+    },
+    "waxen scroll?": {
+      "salvaged": 26,
+      "craftable": true,
+      "tier": 1,
+      "next": {
+        "need": 40,
+        "label": "tier 2"
+      }
+    }
+  },
+  "renown": 3158,
+  "rank": 5,
+  "keep_pref": "best_weapon",
+  "keep_auto": [],
+  "insured": [],
+  "rest_left_s": 1200,
+  "bones": [],
+  "ascension": {
+    "level": 0,
+    "variant": ""
+  },
+  "ascended": [],
+  "chronicle": [],
+  "vault_pref": "weapon",
+  "gold_ledger": [
+    {
+      "t": 4503,
+      "delta": 98,
+      "why": "banked D4"
+    },
+    {
+      "t": 7433,
+      "delta": 24,
+      "why": "returned D2"
+    },
+    {
+      "t": 14533,
+      "delta": 106,
+      "why": "banked D5"
+    },
+    {
+      "t": 14533,
+      "delta": -100,
+      "why": "hire scout"
+    },
+    {
+      "t": 17323,
+      "delta": 40,
+      "why": "banked D2"
+    },
+    {
+      "t": 35027,
+      "delta": 85,
+      "why": "banked D6"
+    },
+    {
+      "t": 50197,
+      "delta": 49,
+      "why": "returned D4"
+    },
+    {
+      "t": 50533,
+      "delta": -200,
+      "why": "forge sword +1"
+    },
+    {
+      "t": 60523,
+      "delta": 43,
+      "why": "banked D3"
+    },
+    {
+      "t": 77813,
+      "delta": 69,
+      "why": "banked D5"
+    },
+    {
+      "t": 86533,
+      "delta": -200,
+      "why": "forge leather"
+    },
+    {
+      "t": 96303,
+      "delta": 116,
+      "why": "banked D7"
+    },
+    {
+      "t": 115003,
+      "delta": 103,
+      "why": "returned D6"
+    },
+    {
+      "t": 136323,
+      "delta": 100,
+      "why": "banked D8"
+    },
+    {
+      "t": 157133,
+      "delta": 92,
+      "why": "returned D7"
+    },
+    {
+      "t": 158533,
+      "delta": -400,
+      "why": "forge pack 4"
+    },
+    {
+      "t": 170503,
+      "delta": 105,
+      "why": "returned D7"
+    },
+    {
+      "t": 187423,
+      "delta": 83,
+      "why": "returned D5"
+    },
+    {
+      "t": 205843,
+      "delta": 76,
+      "why": "returned D6"
+    },
+    {
+      "t": 224613,
+      "delta": 130,
+      "why": "returned D6"
+    },
+    {
+      "t": 240703,
+      "delta": 83,
+      "why": "returned D5"
+    },
+    {
+      "t": 258923,
+      "delta": 100,
+      "why": "banked D6"
+    },
+    {
+      "t": 278253,
+      "delta": 88,
+      "why": "returned D7"
+    },
+    {
+      "t": 296183,
+      "delta": 79,
+      "why": "banked D6"
+    },
+    {
+      "t": 313483,
+      "delta": 57,
+      "why": "returned D5"
+    },
+    {
+      "t": 332563,
+      "delta": 68,
+      "why": "banked D6"
+    },
+    {
+      "t": 338533,
+      "delta": -800,
+      "why": "forge sword +2"
+    },
+    {
+      "t": 352633,
+      "delta": 73,
+      "why": "banked D5"
+    },
+    {
+      "t": 370063,
+      "delta": 89,
+      "why": "banked D4"
+    },
+    {
+      "t": 387083,
+      "delta": 81,
+      "why": "banked D7"
+    },
+    {
+      "t": 406521,
+      "delta": 106,
+      "why": "returned D6"
+    },
+    {
+      "t": 422843,
+      "delta": 80,
+      "why": "returned D6"
+    },
+    {
+      "t": 441213,
+      "delta": 102,
+      "why": "returned D5"
+    },
+    {
+      "t": 459183,
+      "delta": 126,
+      "why": "returned D6"
+    },
+    {
+      "t": 477513,
+      "delta": 102,
+      "why": "returned D6"
+    },
+    {
+      "t": 482533,
+      "delta": -800,
+      "why": "forge leather +1"
+    },
+    {
+      "t": 496323,
+      "delta": 128,
+      "why": "returned D7"
+    },
+    {
+      "t": 515203,
+      "delta": 95,
+      "why": "banked D7"
+    },
+    {
+      "t": 537283,
+      "delta": 214,
+      "why": "returned D8"
+    },
+    {
+      "t": 554813,
+      "delta": 102,
+      "why": "returned D6"
+    },
+    {
+      "t": 567663,
+      "delta": 133,
+      "why": "returned D7"
+    },
+    {
+      "t": 589323,
+      "delta": 176,
+      "why": "returned D8"
+    },
+    {
+      "t": 605039,
+      "delta": 183,
+      "why": "returned D8"
+    },
+    {
+      "t": 627048,
+      "delta": 242,
+      "why": "returned D8"
+    },
+    {
+      "t": 627048,
+      "delta": -1000,
+      "why": "forge pack 5"
+    },
+    {
+      "t": 642238,
+      "delta": 160,
+      "why": "returned D7"
+    },
+    {
+      "t": 663193,
+      "delta": 98,
+      "why": "returned D7"
+    },
+    {
+      "t": 677733,
+      "delta": 214,
+      "why": "returned D8"
+    },
+    {
+      "t": 706673,
+      "delta": 520,
+      "why": "banked D11"
+    }
+  ],
+  "counters": [
+    {
+      "boss": "goblin_warlord",
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        }
+      },
+      "text": "attack boss",
+      "owned": true
+    }
+  ],
+  "combos": [],
+  "picked": [
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "class_offer": [
+    {
+      "class": "fighter",
+      "signature": "shield_bash",
+      "level": 4,
+      "opens": 1
+    },
+    {
+      "class": "rogue",
+      "signature": "vanish",
+      "level": 1,
+      "opens": 1
+    }
+  ],
+  "repeat": true,
+  "repeat_gold": 0,
+  "bounty": {
+    "depth": 8,
+    "pays": "$×2 · item",
+    "needs": "reach",
+    "boss": "goblin_warlord",
+    "fact": "warlord: aim"
+  },
+  "waystones": [
+    5,
+    9
+  ],
+  "start": 1,
+  "start_toll": 0,
+  "trait_rules": {
+    "brave": "skips one retreat a floor",
+    "cowardly": "backs off once a floor under 50%",
+    "curious": "tries one unknown a floor",
+    "greedy": "grabs loot once a floor"
+  },
+  "start_payable": true,
+  "kit": [
+    {
+      "slot": "weapon",
+      "owned": 2,
+      "steps": [
+        {
+          "label": "sword +1",
+          "price": 200,
+          "owned": true,
+          "kind": "sword",
+          "rarity": "uncommon",
+          "branch": "aim"
+        },
+        {
+          "label": "sword +2",
+          "price": 800,
+          "owned": true,
+          "kind": "sword",
+          "rarity": "uncommon",
+          "branch": "aim"
+        },
+        {
+          "label": "sword +3",
+          "price": 1800,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "rare"
+        },
+        {
+          "label": "sword +4",
+          "price": 3200,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "rare"
+        },
+        {
+          "label": "sword +5",
+          "price": 5000,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "epic"
+        },
+        {
+          "label": "sword +6",
+          "price": 7200,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "epic"
+        }
+      ],
+      "next": {
+        "label": "sword +3",
+        "price": 1800,
+        "affordable": false,
+        "nights": 1,
+        "per_night": 2137
+      },
+      "branches": [
+        {
+          "id": "aim",
+          "label": "aim +4%",
+          "default": true
+        },
+        {
+          "id": "edge",
+          "label": "edge +1",
+          "default": false
+        }
+      ]
+    },
+    {
+      "slot": "armour",
+      "owned": 2,
+      "steps": [
+        {
+          "label": "leather",
+          "price": 200,
+          "owned": true,
+          "kind": "leather",
+          "branch": "plate"
+        },
+        {
+          "label": "leather +1",
+          "price": 800,
+          "owned": true,
+          "kind": "leather",
+          "rarity": "uncommon",
+          "branch": "plate"
+        },
+        {
+          "label": "mail",
+          "price": 1600,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "mail +1",
+          "price": 2800,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "mail +2",
+          "price": 4400,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "rare"
+        },
+        {
+          "label": "plate",
+          "price": 6400,
+          "owned": false,
+          "kind": "plate",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "plate +1",
+          "price": 9000,
+          "owned": false,
+          "kind": "plate",
+          "rarity": "rare"
+        }
+      ],
+      "next": {
+        "label": "mail",
+        "price": 1600,
+        "affordable": false,
+        "nights": 1,
+        "per_night": 2137
+      },
+      "branches": [
+        {
+          "id": "plate",
+          "label": "mail",
+          "default": true
+        },
+        {
+          "id": "pace",
+          "label": "pace +8%",
+          "default": false
+        }
+      ]
+    },
+    {
+      "slot": "pack",
+      "owned": 2,
+      "steps": [
+        {
+          "label": "pack 4",
+          "price": 400,
+          "owned": true
+        },
+        {
+          "label": "pack 5",
+          "price": 1000,
+          "owned": true
+        },
+        {
+          "label": "pack 6",
+          "price": 2000,
+          "owned": false
+        },
+        {
+          "label": "pack 7",
+          "price": 3200,
+          "owned": false
+        }
+      ],
+      "next": {
+        "label": "pack 6",
+        "price": 2000,
+        "affordable": false,
+        "nights": 1,
+        "per_night": 2137
+      }
+    }
+  ],
+  "starting_kits": {
+    "current": null,
+    "selected": null,
+    "saved": [],
+    "weapons": [
+      {
+        "kind": "dagger",
+        "label": "dagger",
+        "damage": [
+          2,
+          4
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "sword",
+        "label": "sword",
+        "damage": [
+          3,
+          7
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "axe",
+        "label": "axe",
+        "damage": [
+          4,
+          9
+        ],
+        "armour": 0,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 1 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "bow",
+        "label": "bow",
+        "damage": [
+          2,
+          6
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": true,
+        "compatible": true
+      },
+      {
+        "kind": "crownsplitter",
+        "label": "Crownsplitter",
+        "damage": [
+          3,
+          7
+        ],
+        "armour": 0,
+        "speed": -1,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true,
+        "legendary": true,
+        "effect": "Deal +2 melee damage to stunned or slowed foes.",
+        "tradeoff": "Slower than a sword. Control must be active."
+      },
+      {
+        "kind": "spear",
+        "label": "spear",
+        "damage": [
+          3,
+          6
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "mace",
+        "label": "mace",
+        "damage": [
+          4,
+          8
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      }
+    ],
+    "armours": [
+      {
+        "kind": "leather",
+        "label": "leather",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 2,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "mail",
+        "label": "mail",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 4,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 2 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "plate",
+        "label": "plate",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 6,
+        "speed": -2,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "scale",
+        "label": "scale",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 5,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      }
+    ],
+    "actual_weapon": "sword",
+    "actual_armour": "leather"
+  },
+  "legendaries": [
+    {
+      "kind": "crownsplitter",
+      "label": "Crownsplitter",
+      "effect": "Deal +2 melee damage to stunned or slowed foes.",
+      "tradeoff": "Slower than a sword. Control must be active.",
+      "compatible": true,
+      "available": true,
+      "blocked": null,
+      "source": "Defeat the Warlord."
+    }
+  ],
+  "row_why": [
+    {
+      "sends": 9,
+      "actions": 8199,
+      "fired": 61,
+      "matched": 123,
+      "blocked": {
+        "why": "stuck",
+        "n": 38
+      },
+      "unmet": {
+        "why": "boss",
+        "n": 8029
+      },
+      "text": "61/8199 acts",
+      "fired_on": [
+        {
+          "kind": "goblin_warlord",
+          "boss": true,
+          "n": 61
+        }
+      ]
+    },
+    {
+      "sends": 32,
+      "actions": 13670,
+      "fired": 0,
+      "matched": 272,
+      "blocked": {
+        "why": "unknown item",
+        "n": 185
+      },
+      "unmet": {
+        "why": "hp<35",
+        "n": 13398
+      },
+      "text": "0/13670 acts · blocked · unknown item"
+    },
+    null,
+    {
+      "sends": 42,
+      "actions": 18532,
+      "fired": 99,
+      "matched": 192,
+      "blocked": {
+        "why": "R2 first",
+        "n": 58
+      },
+      "unmet": {
+        "why": "hp<25",
+        "n": 18340
+      },
+      "text": "99/18532 acts"
+    },
+    {
+      "sends": 42,
+      "actions": 18532,
+      "fired": 135,
+      "matched": 151,
+      "blocked": {
+        "why": "R3 first",
+        "n": 10
+      },
+      "unmet": {
+        "why": "lacks",
+        "n": 10215
+      },
+      "text": "135/18532 acts"
+    },
+    {
+      "sends": 42,
+      "actions": 18532,
+      "fired": 25,
+      "matched": 3894,
+      "blocked": {
+        "why": "no leash",
+        "n": 1892
+      },
+      "unmet": {
+        "why": "foes>=1",
+        "n": 14638
+      },
+      "text": "25/18532 acts · blocked · no leash"
+    },
+    {
+      "sends": 42,
+      "actions": 18532,
+      "fired": 3053,
+      "matched": 3894,
+      "blocked": {
+        "why": "given up",
+        "n": 479
+      },
+      "unmet": {
+        "why": "foes>=1",
+        "n": 14638
+      },
+      "text": "3053/18532 acts"
+    },
+    {
+      "sends": 2,
+      "actions": 2462,
+      "fired": 17,
+      "matched": 126,
+      "blocked": {
+        "why": "R7 first",
+        "n": 49
+      },
+      "unmet": {
+        "why": "hp<50",
+        "n": 2336
+      },
+      "text": "17/2462 acts · blocked · R7 first"
+    }
+  ],
+  "look": "male",
+  "forks": [
+    {
+      "depth": 5,
+      "near": "burrows",
+      "far": "fens",
+      "taken": "burrows",
+      "open": true
+    },
+    {
+      "depth": 9,
+      "near": "fens",
+      "far": "crypt",
+      "taken": "fens",
+      "open": true
+    }
+  ],
+  "affixes": [
+    {
+      "boss": "goblin_warlord",
+      "depth": 8,
+      "affix": "brood",
+      "effect": "full escort · less hp",
+      "counter": "pack break · corridor fighting"
+    },
+    {
+      "boss": "bloat_mother",
+      "depth": 13,
+      "affix": "brood",
+      "effect": "full escort · less hp",
+      "counter": "pack break · corridor fighting"
+    },
+    {
+      "boss": "lich",
+      "depth": 18,
+      "affix": "regenerating",
+      "effect": "heals while unpoisoned · less hp",
+      "counter": "Hunter · gas step"
+    },
+    {
+      "boss": "foundry_master",
+      "depth": 23,
+      "affix": "enraged",
+      "effect": "hits harder under half hp · less hp",
+      "counter": "kite archers · Hunter"
+    },
+    {
+      "boss": "lurker_queen",
+      "depth": 28,
+      "affix": "swift",
+      "effect": "+2 speed · less hp",
+      "counter": "corridor fighting · kite archers"
+    }
+  ],
+  "lanes": [
+    {
+      "depth": 5,
+      "lane": "burrows",
+      "current": true
+    },
+    {
+      "depth": 9,
+      "lane": "fens",
+      "current": true
+    }
+  ],
+  "locked_rows": [
+    null,
+    null,
+    null,
+    null,
+    "locked",
+    null,
+    null,
+    null
+  ],
+  "oaths": [
+    {
+      "id": "fire:3",
+      "kind": "fire",
+      "chips": [
+        "Warlord",
+        "fire"
+      ],
+      "text": "Warlord · fire",
+      "reward": {
+        "kind": "title",
+        "id": "Warlord-burner",
+        "label": "title: Warlord-burner"
+      },
+      "price": 750,
+      "boss": "goblin_warlord",
+      "depth": 8,
+      "counter": "warlord: aim"
+    },
+    {
+      "id": "bold:26",
+      "kind": "bold",
+      "chips": [
+        "reach D12",
+        "no return"
+      ],
+      "text": "reach D12 · no return",
+      "reward": {
+        "kind": "verb",
+        "id": "hold",
+        "label": "verb: hold"
+      },
+      "price": 750,
+      "depth": 12
+    },
+    {
+      "id": "tamer:27",
+      "kind": "tamer",
+      "chips": [
+        "tame",
+        "a new kind"
+      ],
+      "text": "tame · a new kind",
+      "reward": {
+        "kind": "slot",
+        "id": "party_slot_2",
+        "label": "+1 party"
+      },
+      "price": 750
+    }
+  ],
+  "oath": null,
+  "titles": [
+    "home from D9"
+  ],
+  "oath_open": true,
+  "walls": [
+    {
+      "boss": "goblin_warlord",
+      "title": "Warlord",
+      "depth": 8,
+      "slain": true,
+      "known": true,
+      "fact": "warlord: aim",
+      "counter": "attack boss",
+      "row": {
+        "conds": [
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          }
+        ],
+        "verb": {
+          "v": "attack",
+          "a": "tag:boss"
+        }
+      },
+      "affix": "brood",
+      "affix_counter": "pack break · corridor fighting",
+      "guard": "Drul the skeleton",
+      "guard_counter": "boss focus · Guarded"
+    },
+    {
+      "boss": "bloat_mother",
+      "title": "Mother",
+      "depth": 13,
+      "slain": false,
+      "known": false,
+      "fact": "mother: ?",
+      "learn": "meet her",
+      "affix": "brood",
+      "affix_counter": "pack break · corridor fighting",
+      "guard": "Thak the goblin conjurer",
+      "guard_counter": "boss focus · Guarded"
+    }
+  ],
+  "packages": {
+    "all": [
+      {
+        "id": "steady",
+        "name": "Steady",
+        "description": "Heal when hurt · fight nearest",
+        "kind": "stance",
+        "level": 3,
+        "runs": 42,
+        "next_at": 120,
+        "slot": 0,
+        "owned": true,
+        "level_price": 4,
+        "level_adds": [
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            }
+          }
+        ]
+      },
+      {
+        "id": "guarded",
+        "name": "Guarded",
+        "description": "Heal early · recover between fights",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": true,
+        "level_price": 2,
+        "level_adds": [
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bold",
+        "name": "Bold",
+        "description": "Push deeper · fight while hurt",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "tomorrow"
+      },
+      {
+        "id": "hunter",
+        "name": "Hunter",
+        "description": "Prioritise ranged enemies and bosses",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "after Bold"
+      },
+      {
+        "id": "boss_focus",
+        "name": "boss focus",
+        "description": "Prioritise bosses and their summons",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": true,
+        "level_price": 2,
+        "variants": [
+          "summons first",
+          "boss first"
+        ],
+        "variant": 0
+      },
+      {
+        "id": "corridor_fighting",
+        "name": "corridor fighting",
+        "description": "Fight groups from narrow corridors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "bosses or days",
+        "variants": [
+          "at three",
+          "at two"
+        ]
+      },
+      {
+        "id": "kite_archers",
+        "name": "kite archers",
+        "description": "Dodge archer shots · target archers",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": true,
+        "level_price": 2,
+        "variants": [
+          "hunt",
+          "fall back"
+        ],
+        "variant": 0
+      },
+      {
+        "id": "thief_guard",
+        "name": "thief guard",
+        "description": "Prioritise thieves · protect supplies",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "bosses or days",
+        "variants": [
+          "chase",
+          "head home"
+        ]
+      },
+      {
+        "id": "gas_step",
+        "name": "gas step",
+        "description": "Keep gas enemies at range",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "bosses or days",
+        "variants": [
+          "step away",
+          "wade in"
+        ]
+      },
+      {
+        "id": "pack_break",
+        "name": "pack break",
+        "description": "Split groups · finish weak foes",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "bosses or days",
+        "variants": [
+          "to corridor",
+          "stand"
+        ]
+      },
+      {
+        "id": "cadence",
+        "name": "Mirror rhythm",
+        "description": "Alternate attacks against mirrors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet Mirror King"
+      },
+      {
+        "id": "reflect_read",
+        "name": "mirror read",
+        "description": "Shoot or burn reflectors · never melee them",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet a reflector"
+      },
+      {
+        "id": "noise_discipline",
+        "name": "quiet steps",
+        "description": "Rest to full · slip past blinders",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet a blinder"
+      },
+      {
+        "id": "deep_march",
+        "name": "deep march",
+        "description": "Press on through explored floors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "enter the Deep"
+      }
+    ],
+    "stance": "steady",
+    "tactic_slots": 1,
+    "temperament_open": false,
+    "drills": [
+      {
+        "boss": "goblin_warlord",
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            }
+          }
+        ],
+        "revoked": false,
+        "scar": 0
+      }
+    ],
+    "pen_open": false,
+    "pen_needs": [
+      "Meet Bloat Mother",
+      "or 120h elapsed"
+    ],
+    "rows": [
+      {
+        "label": "drill · Warlord"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "tames strays"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      }
+    ]
+  },
+  "town": {
+    "home": true,
+    "auto_collect": true,
+    "buildings": [
+      {
+        "id": "blacksmith",
+        "level": 2,
+        "day": 0,
+        "trigger": "first gold home"
+      },
+      {
+        "id": "kennel",
+        "level": 1,
+        "day": 0,
+        "trigger": "first tame"
+      }
+    ],
+    "next_ready": false,
+    "next": "bank",
+    "next_trigger": "a night's purse",
+    "bank": 0,
+    "bank_cap": 4476,
+    "interest": 0,
+    "quest": {
+      "goal": "home from D9",
+      "reward": "title",
+      "progress": 1.0,
+      "done": true,
+      "swap": true
+    },
+    "quests_done": 1,
+    "workers": [
+      {
+        "id": "quartermaster",
+        "post": "crate",
+        "rank": 1
+      },
+      {
+        "id": "porter",
+        "post": "mouth",
+        "rank": 1
+      },
+      {
+        "id": "scout",
+        "post": "fire",
+        "rank": 1
+      },
+      {
+        "id": "apprentice",
+        "post": "blacksmith",
+        "rank": 0,
+        "lit": true,
+        "price": 600,
+        "progress": "3/3",
+        "fallback_h": 30
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "character",
+      "stage": "a class",
+      "stages": 6,
+      "next": "a temperament",
+      "trigger": "heir 3",
+      "progress": 0.3333333333333333
+    },
+    {
+      "id": "items",
+      "stage": "blacksmith steps",
+      "stages": 2,
+      "next": "a counter packed",
+      "trigger": "a drill's item"
+    },
+    {
+      "id": "scale",
+      "stage": "waystones",
+      "stages": 2,
+      "next": "party slot 2",
+      "trigger": "a second slot"
+    },
+    {
+      "id": "town",
+      "stage": "kennel",
+      "stages": 3,
+      "next": "bank",
+      "trigger": "a night's purse",
+      "progress": 0.8833780160857909
+    }
+  ],
+  "tree": {
+    "nodes": [
+      {
+        "id": "quartermaster",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "quartermaster",
+        "state": "done",
+        "tip": "packs heal · drill item",
+        "post": "crate"
+      },
+      {
+        "id": "porter",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "porter",
+        "state": "done",
+        "chore": "hauls",
+        "count": 3,
+        "need": 3,
+        "price": 0,
+        "affordable": true,
+        "tip": "hauls home · while away",
+        "beat": "AUTO HAUL",
+        "post": "mouth",
+        "rank": 1,
+        "rank_price": 200,
+        "rank_wait_d": 4,
+        "rank_adds": "+2% hauls"
+      },
+      {
+        "id": "scout",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "scout",
+        "state": "done",
+        "chore": "send",
+        "count": 3,
+        "need": 3,
+        "price": 100,
+        "affordable": true,
+        "tip": "sends him · each rest",
+        "beat": "AUTO SEND",
+        "post": "fire",
+        "rank": 1,
+        "rank_price": 200,
+        "rank_wait_d": 4,
+        "rank_adds": "−5% rest",
+        "perks": [
+          "shorter rest",
+          "safer start"
+        ],
+        "perk": "shorter rest"
+      },
+      {
+        "id": "apprentice",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "apprentice",
+        "state": "lit",
+        "chore": "forge",
+        "count": 6,
+        "need": 3,
+        "price": 600,
+        "affordable": true,
+        "fallback_h": 30,
+        "tip": "buys forge steps",
+        "beat": "AUTO FORGE",
+        "post": "blacksmith",
+        "progress": "3/3"
+      },
+      {
+        "id": "clerk",
+        "kind": "worker",
+        "branch": "town",
+        "name": "clerk",
+        "state": "shut",
+        "chore": "deposit",
+        "count": 0,
+        "need": 3,
+        "price": 800,
+        "affordable": true,
+        "fallback_h": 36,
+        "trigger": "bank built",
+        "tip": "banks spare gold",
+        "beat": "AUTO BANK",
+        "post": "bank",
+        "progress": "0/3"
+      },
+      {
+        "id": "drillmaster",
+        "kind": "worker",
+        "branch": "character",
+        "name": "drillmaster",
+        "state": "open",
+        "chore": "level",
+        "count": 0,
+        "need": 2,
+        "price": 600,
+        "affordable": true,
+        "fallback_h": 36,
+        "tip": "levels the stance",
+        "beat": "AUTO LEVEL",
+        "post": "tent",
+        "progress": "0/2",
+        "eta_h": 17
+      },
+      {
+        "id": "kennel_hand",
+        "kind": "worker",
+        "branch": "town",
+        "name": "kennel-hand",
+        "state": "open",
+        "chore": "field",
+        "count": 0,
+        "need": 2,
+        "price": 600,
+        "affordable": true,
+        "fallback_h": 40,
+        "tip": "fields best pets",
+        "beat": "AUTO PETS",
+        "post": "kennel",
+        "progress": "0/2",
+        "eta_h": 21
+      },
+      {
+        "id": "herald",
+        "kind": "worker",
+        "branch": "town",
+        "name": "herald",
+        "state": "shut",
+        "chore": "swap",
+        "count": 0,
+        "need": 2,
+        "price": 400,
+        "affordable": true,
+        "fallback_h": 40,
+        "trigger": "quest board",
+        "tip": "swaps stale quests",
+        "beat": "AUTO QUEST",
+        "post": "board",
+        "progress": "0/2"
+      },
+      {
+        "id": "guide",
+        "kind": "worker",
+        "branch": "scale",
+        "name": "guide",
+        "state": "shut",
+        "chore": "start",
+        "count": 0,
+        "need": 3,
+        "price": 800,
+        "affordable": true,
+        "fallback_h": 44,
+        "trigger": "waystones",
+        "tip": "starts deeper",
+        "beat": "AUTO START",
+        "post": "mouth",
+        "progress": "0/3"
+      },
+      {
+        "id": "kennel_keeper",
+        "kind": "worker",
+        "branch": "town",
+        "name": "kennel keeper",
+        "state": "open",
+        "chore": "breed",
+        "count": 0,
+        "need": 2,
+        "price": 600,
+        "affordable": true,
+        "fallback_h": 48,
+        "tip": "breeds pets · by order",
+        "beat": "AUTO BREED",
+        "post": "kennel",
+        "progress": "0/2",
+        "eta_h": 29
+      },
+      {
+        "id": "character:Steady",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Steady",
+        "state": "done"
+      },
+      {
+        "id": "character:second stance",
+        "kind": "stage",
+        "branch": "character",
+        "name": "second stance",
+        "state": "done",
+        "trigger": "meet Captain"
+      },
+      {
+        "id": "character:Warlord drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Warlord drilled",
+        "state": "done",
+        "trigger": "meet Warlord twice"
+      },
+      {
+        "id": "character:a tactic",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a tactic",
+        "state": "done",
+        "trigger": "slay Warlord"
+      },
+      {
+        "id": "character:pets",
+        "kind": "stage",
+        "branch": "character",
+        "name": "pets",
+        "state": "done",
+        "trigger": "first stray"
+      },
+      {
+        "id": "character:a class",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a class",
+        "state": "done",
+        "trigger": "first bank"
+      },
+      {
+        "id": "character:a temperament",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a temperament",
+        "state": "next",
+        "trigger": "heir 3"
+      },
+      {
+        "id": "character:the pen",
+        "kind": "stage",
+        "branch": "character",
+        "name": "the pen",
+        "state": "later",
+        "trigger": "meet Mother"
+      },
+      {
+        "id": "character:Mother drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Mother drilled",
+        "state": "later",
+        "trigger": "meet Mother twice"
+      },
+      {
+        "id": "character:tactic slot 2",
+        "kind": "stage",
+        "branch": "character",
+        "name": "tactic slot 2",
+        "state": "later",
+        "trigger": "meet Lich"
+      },
+      {
+        "id": "character:Lich drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Lich drilled",
+        "state": "later",
+        "trigger": "meet Lich twice"
+      },
+      {
+        "id": "character:Foundry drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Foundry drilled",
+        "state": "later",
+        "trigger": "meet golems twice"
+      },
+      {
+        "id": "character:Queen drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Queen drilled",
+        "state": "later",
+        "trigger": "meet Queen twice"
+      },
+      {
+        "id": "character:King drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "King drilled",
+        "state": "later",
+        "trigger": "meet King twice"
+      },
+      {
+        "id": "items:pack of 3",
+        "kind": "stage",
+        "branch": "items",
+        "name": "pack of 3",
+        "state": "done"
+      },
+      {
+        "id": "items:blacksmith steps",
+        "kind": "stage",
+        "branch": "items",
+        "name": "blacksmith steps",
+        "state": "done",
+        "trigger": "first gold home"
+      },
+      {
+        "id": "items:a counter packed",
+        "kind": "stage",
+        "branch": "items",
+        "name": "a counter packed",
+        "state": "next",
+        "trigger": "a drill's item"
+      },
+      {
+        "id": "scale:one hero",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "one hero",
+        "state": "done"
+      },
+      {
+        "id": "scale:party slot 2",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "party slot 2",
+        "state": "next",
+        "trigger": "a second slot"
+      },
+      {
+        "id": "scale:waystones",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystones",
+        "state": "done",
+        "trigger": "slay Warlord"
+      },
+      {
+        "id": "scale:Mother slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother slain",
+        "state": "later",
+        "trigger": "slay Mother"
+      },
+      {
+        "id": "scale:Lich slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich slain",
+        "state": "later",
+        "trigger": "slay Lich"
+      },
+      {
+        "id": "scale:Master slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master slain",
+        "state": "later",
+        "trigger": "slay Master"
+      },
+      {
+        "id": "scale:Queen slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen slain",
+        "state": "later",
+        "trigger": "slay Queen"
+      },
+      {
+        "id": "scale:the bottom",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "the bottom",
+        "state": "later",
+        "trigger": "reach D33"
+      },
+      {
+        "id": "scale:waystone D14",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D14",
+        "state": "later",
+        "trigger": "bank at D14"
+      },
+      {
+        "id": "scale:waystone D19",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D19",
+        "state": "later",
+        "trigger": "bank at D19"
+      },
+      {
+        "id": "scale:waystone D24",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D24",
+        "state": "later",
+        "trigger": "bank at D24"
+      },
+      {
+        "id": "scale:waystone D29",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D29",
+        "state": "later",
+        "trigger": "bank at D29"
+      },
+      {
+        "id": "scale:party slots 3–4",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "party slots 3–4",
+        "state": "later",
+        "trigger": "a fourth slot"
+      },
+      {
+        "id": "scale:Warlord scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Warlord scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Mother scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Lich scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Master scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Queen scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:King scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "King scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Warlord scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Warlord scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Mother scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Lich scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Master scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Queen scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:King scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "King scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "town:camp",
+        "kind": "stage",
+        "branch": "town",
+        "name": "camp",
+        "state": "done"
+      },
+      {
+        "id": "town:blacksmith",
+        "kind": "stage",
+        "branch": "town",
+        "name": "blacksmith",
+        "state": "done",
+        "trigger": "first gold home"
+      },
+      {
+        "id": "town:kennel",
+        "kind": "stage",
+        "branch": "town",
+        "name": "kennel",
+        "state": "done",
+        "trigger": "first tame"
+      },
+      {
+        "id": "town:bank",
+        "kind": "stage",
+        "branch": "town",
+        "name": "bank",
+        "state": "next",
+        "trigger": "a night's purse"
+      }
+    ],
+    "lit": "apprentice",
+    "next": {
+      "kind": "buy",
+      "node": "apprentice",
+      "text": "apprentice · $600"
+    },
+    "chest": 0,
+    "waits": false,
+    "sent": false,
+    "auto_send": true,
+    "ledger": 1318,
+    "next_worker": "apprentice"
+  },
+  "age_h": 19,
+  "reveal_queue": [
+    "quests"
+  ],
+  "reveal_next": {
+    "id": "quests",
+    "trigger": "slay Warlord",
+    "triggered": true,
+    "wait_h": 0
+  },
+  "glory": 0,
+  "expeditions": 0,
+  "era_gate": 0
+}

@@ -8,27 +8,53 @@ All39 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
-Current checkpoint: a327b8dd is pushed (persistent heroes, confirmed stat
-rebirth, Journal earned links and depth map). Cut214 home-service visuals and
-adaptive labels are complete at their scoped contract:12 viewport/name/font
-layouts, six read-only routes,38 state checks and warm matched CPU increments
-of +1.0ms day/+0.8ms night p95. Proof uses explicit0f2e91/a1f6777 packages;
-this does not certify cold cost, full lighting or three-resting-hero spacing.
-Cut214 source is ready for its own commit. Final captures:
+Current checkpoint delivers Cut215 legendary discoveries and free Forge choices.
+Previous a23114f0 delivers Cut214 home-service visuals/adaptive labels;127ef6f3
+adds exact home/depth validation logs. These accompany the authorized push.
+Cut214 scoped acceptance:12 viewport/name/font layouts, six read-only routes,
+38 state checks and warm matched CPU increments +1.0ms day/+0.8ms night p95.
+Proof uses explicit0f2e91/a1f6777 packages; this does not certify cold cost, full
+lighting or three-resting-hero spacing. Final captures:
 docs/evidence/cut214/final-captures/400-gl-earned-night.png.
 
-Cut215 legendary runtime is implemented and under final client acceptance.
-Three canonical effects, guaranteed first eligible boss discovery, deterministic
-1/8 repeat drops, town-wide permanent choices, free reuse and shared paid Forge
-ranks. Ordinary high-quality gear is Masterwork, distinct from named Legendary.
-Core semantic13/13, existing kit7/7 and native880/0/6 ignored pass; full native
-precedes the metadata-only rarity field. Current warnings-denied Clippy and
-8-seed idle-d8/idle-d13/reach pass; broad balance is still open. Final real WASM
-6539458bytes SHA304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda.
-Actual earned seed1/13 Forge/loadout305 checks and48 menu layouts pass through
-the normal fresh-server runner. All-three controlled catalogue and Root-owned
-Watch/Report/Death discovery messaging are still being checked. Agents own
-all jobs; do not stop a live validator for an observation timeout.
+Cut215 legendary runtime and Forge UI are implemented. Three canonical effects,
+guaranteed first eligible boss discovery, deterministic1/8 repeat drops,
+town-wide permanent choices, free reuse and each hero's existing weapon/armour upgrade ranks.
+Ordinary high-quality gear is Masterwork, distinct from named Legendary.
+Prepared-home kit edits refit the actual actor without repeat payment/spawning.
+Actual rank2→3 explicit armour no longer loses guard. Default gear remains exact.
+Ownership survives actual death/stat rebirth/world reset; stat rebirth retains
+paid gear ranks, while the existing world-reset rule clears ranks/Gold.
+
+Final real WASM6539458bytes SHA
+304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda.
+Native880/0/6 ignored pass precedes the metadata-only rarity field. Focused
+16-case final semantic/reset/parity check passes0.03s; final all-target Clippy
+with warnings denied passes18.55s; existing kit7/7,16 earned first sources and8-seed idle-d8/idle-d13/reach
+pass. Broad balance and fun are still open. Earned all16firstsources are Fighter
+Crownsplitter; later-source effects/all3/Gunner eligibility are labelled
+controlled, not earned all-three progression.
+
+Actual earned seed1/13 Forge/loadout305 checks/48 layouts and controlled
+catalogue103 checks/24 layouts pass. Icons378 pass. Settled GPU menu captures:
+docs/evidence/cut215/ui/gpu-final/earned-forge-400.png. Root first-find Watch and
+Report glue passes138 checks/24 layouts; final free-choice caption/death-receipt
+proof passes221 combined checks (24 earned layouts plus18 controlled death
+layouts), with89 final package-pin checks. A focused16-check actual earned
+Forge regression removes misleading old find-count rows;24 ordinary rows per
+seed stay visible. The optional-output test runs through the normal runner
+in5.8s without rewriting frozen evidence. First Legendary cards are directly below the Report summary;
+ordinary Masterwork patterns stay in expanded details. Inspection never equips,
+spends or forces a live pause. Continuing-world Watch checks record actual step
+batches separately; Report/Death inspection uses strict save equality.
+
+Final TSC/production web build/scoped lint/copy lint pass; production includes
+real304d WASM. A final-source WASM rebuild succeeds and reproduces exactly the
+same6539458-byte304d package, including the final Core comment/test changes. Four affected client groups pass (death-hero/watch-loot-skill and
+report-reading/report-supply-limit). Cut215 source/evidence are verified and included with this checkpoint. All validators
+and agent browsers are closed; the final isolated preview remains on5242. All source, raw
+failures, fixture manifests and limits live under docs/evidence/cut215/.
+The larger queue and survivor trait unlocks/old next-heir policy remain open.
 
 Earlier integration notes below are retained with their original package and
 scope identities; they are historical, not the current active-job inventory.

@@ -4,11 +4,13 @@
   --r-uncommon: #4e8763;
   --r-rare: #4c76b2;
   --r-epic: #8762a6;
+  --r-masterwork: #a3752a;
   --r-legendary: #a3752a;
   --r-common-lit: #b3ad9b;
   --r-uncommon-lit: #86bc95;
   --r-rare-lit: #8eafe0;
   --r-epic-lit: #bf9ad6;
+  --r-masterwork-lit: #e3b862;
   --r-legendary-lit: #e3b862;
 }
 .r-common {
@@ -30,6 +32,10 @@
 .r-legendary {
   --r: var(--r-legendary);
   --r-lit: var(--r-legendary-lit);
+}
+.r-masterwork {
+  --r: var(--r-masterwork);
+  --r-lit: var(--r-masterwork-lit);
 }
 
 .item-ico {

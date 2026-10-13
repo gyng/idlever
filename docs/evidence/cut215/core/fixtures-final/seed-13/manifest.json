@@ -1,0 +1,24 @@
+{
+  "before_fixture": "earned-replay-before-find.game.json",
+  "before_semantics": "exact real earned held-run replay one tick before first drop; no synthetic damage/kill/drop/receipt; may show capsule send clock rather than later absence clock",
+  "earned": true,
+  "find_steps": 1,
+  "first": {
+    "depth": 8,
+    "effect": "Deal +2 melee damage to stunned or slowed foes.",
+    "first": true,
+    "hero_name": "Hale Ash",
+    "kind": "crownsplitter",
+    "label": "Crownsplitter",
+    "run_id": 34,
+    "source": "Goblin Warlord",
+    "target": "loadouts",
+    "tradeoff": "Slower than a sword. Control must be active."
+  },
+  "first_hour": 15,
+  "home_semantics": "actual Scout pause and one-hour absence finish the in-flight run and recovery; no forced Return or grants",
+  "owned_home": "earned-owned-home.game.json",
+  "protocol": "fresh House, actual manual delves and ready Porter/Scout hires, hourly uncapped absences and affordable existing permanent kit purchases; no Gold/fact/depth/discovery grants",
+  "schema_export": "Current Rust load/save export of unchanged earned raw source; all prior discovery entries verified named Crownsplitter. Rarity metadata added; actual next-tick discovery reproduced by current step(1), with no grants or synthetic kills.",
+  "seed": 13
+}

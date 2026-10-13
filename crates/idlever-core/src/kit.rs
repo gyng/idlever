@@ -35,6 +35,12 @@ pub struct GearChoice {
     pub needs: Option<String>,
     pub ranged: bool,
     pub compatible: bool,
+    #[serde(default, skip_serializing_if="std::ops::Not::not")]
+    pub legendary: bool,
+    #[serde(default, skip_serializing_if="Option::is_none")]
+    pub effect: Option<String>,
+    #[serde(default, skip_serializing_if="Option::is_none")]
+    pub tradeoff: Option<String>,
 }
 
 #[derive(Clone, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
@@ -50,9 +56,11 @@ pub struct StartingKits {
 
 fn shape_available(l: &LineageState, kind: &str, cat: crate::defs::Cat) -> bool {
     if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner { return false; }
+    if crate::legendary::definition(kind).is_some()&&!l.town.owned_shapes.contains(kind) {return false;}
     crate::defs::ITEMS.iter().any(|d| d.kind == kind && d.cat == cat)
         && crate::firearm::Profile::of(kind).is_none()
         && (cat == crate::defs::Cat::Weapon && kind == crate::firearm::starting_kind(l)
+            || l.town.owned_shapes.contains(kind)
             || l.forge.get(kind).is_some_and(|row| row.craftable))
 }
 
@@ -61,10 +69,17 @@ pub fn starting_weapon_compatible(l: &LineageState) -> bool {
 }
 
 pub fn starting_wire(l: &LineageState) -> StartingKits {
-    let choices = |cat| crate::defs::ITEMS.iter().filter(|d| d.cat == cat && crate::firearm::Profile::of(d.kind).is_none())
-        .map(|d| GearChoice { kind: d.kind.into(), label: d.kind.replace('_', " "),
-            damage: if cat == crate::defs::Cat::Weapon { [d.a.0,d.a.1] } else { [0,0] },
-            armour: if cat == crate::defs::Cat::Armour { d.a.0 } else { 0 }, speed: d.speed,
+    let choices = |cat| crate::defs::ITEMS.iter().filter(|d| d.cat == cat && crate::firearm::Profile::of(d.kind).is_none()
+            && (crate::legendary::definition(d.kind).is_none()||l.town.owned_shapes.contains(d.kind)))
+        .map(|d| GearChoice { kind: d.kind.into(), label: crate::item::kind_name(d.kind),
+            legendary:crate::legendary::definition(d.kind).is_some(),
+            effect:crate::legendary::definition(d.kind).map(|x|x.effect.into()),
+            tradeoff:crate::legendary::definition(d.kind).map(|x|x.tradeoff.into()),
+            damage: if cat == crate::defs::Cat::Weapon {
+                let mut w=Item::new(WEAPON_ID,d.kind);w.enchant=owned(l,"weapon") as i32;w.forged=weapon_forged(l);
+                let (a,b)=w.atk();[a,b]
+            } else { [0,0] },
+            armour: if cat == crate::defs::Cat::Armour { d.a.0+explicit_armour_bonus(l) } else { 0 }, speed: d.speed,
             available: shape_available(l, d.kind, cat),
             ranged: d.ranged, compatible: cat != crate::defs::Cat::Weapon || l.class != crate::hero::Class::Gunner,
             needs: (!shape_available(l, d.kind, cat)).then(|| if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner {
@@ -81,7 +96,7 @@ fn validate_config(game: &Game, config: &StartingConfig) -> Result<(), String> {
         || config.armour.as_ref().is_some_and(|k| k != "none" && !shape_available(&game.lineage, k, crate::defs::Cat::Armour)) {
         return Err("gear not unlocked".into());
     }
-    let extra_free = game.lineage.supplies.iter().filter(|i| i.free).count()
+    let extra_free = game.lineage.supplies.iter().chain(home_preparation(game).iter()).filter(|i| i.free).count()
         .saturating_sub(config.supplies.iter().filter(|k| k.as_str() == "leash").count());
     if config.supplies.len() + extra_free > game.lineage.supply_cap() { return Err("kit too large".into()); }
     let catalogue = game.supply_catalogue();
@@ -93,7 +108,7 @@ pub fn set_starting(game: &mut Game, config: Option<StartingConfig>) -> Result<(
     if let Some(config) = &config { validate_config(game, config)?; }
     game.lineage.starting_config = config;
     game.lineage.starting_selected = None;
-    prepare_starting(game);
+    refit_starting(game);
     Ok(())
 }
 
@@ -119,7 +134,7 @@ pub fn select_starting(game: &mut Game, id: &str) -> Result<(), String> {
     validate_config(game, &config)?;
     game.lineage.starting_config = Some(config);
     game.lineage.starting_selected = Some(id.into());
-    prepare_starting(game);
+    refit_starting(game);
     Ok(())
 }
 
@@ -147,6 +162,65 @@ pub fn prepare_starting(game: &mut Game) {
     for kind in remaining {
         let _ = game.buy_supply(&kind);
     }
+}
+
+/// Exact unconsumed home units. Old in-flight preparations can be recovered
+/// from the persisted packing ledger; no loot or value is manufactured.
+fn home_preparation(game:&Game)->Vec<Item> {
+    let Some(run)=game.run.as_ref().filter(|_|!crate::persistent::away(game)) else {return Vec::new()};
+    if !run.prepared_supplies.is_empty() {return run.prepared_supplies.clone();}
+    let mut items=Vec::new();
+    let mut used=std::collections::BTreeSet::new();
+    let mut free_leashes=run.packed.iter().filter(|k|k.as_str()=="leash").count().saturating_sub(run.bought_leashes.len());
+    let all:Vec<_>=run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).collect();
+    for (n,kind) in run.packed.iter().enumerate() {
+        let physical=all.iter().find(|i|i.kind==*kind&&(kind=="leash"||run.supplies.contains(&i.id)&&!used.contains(&i.id)));
+        let Some(physical)=physical else {continue};
+        let mut item=(*physical).clone();
+        if kind!="leash" {used.insert(item.id);}
+        if kind=="leash" {
+            item.amount=1;
+            item.free=free_leashes>0;
+            free_leashes=free_leashes.saturating_sub(1);
+        }
+        item.auto_packed=game.lineage.last_supply_origins.get(n).is_some_and(|(k,a)|k==kind&&*a);
+        item.value_claimed=true;
+        items.push(item);
+    }
+    items
+}
+fn refit_starting(game:&mut Game) {
+    if crate::persistent::away(game)||game.run.is_none() {prepare_starting(game);return;}
+    let old=home_preparation(game);
+    let run=game.run.as_mut().unwrap();
+    let mut leash_units=old.iter().filter(|i|i.kind=="leash").count() as i32;
+    run.hero.inv.retain_mut(|i| {
+        if i.kind=="leash"&&leash_units>0 {
+            let removed=i.amount.max(1).min(leash_units);
+            i.amount=i.amount.max(1)-removed;leash_units-=removed;
+            i.amount>0
+        }else{!run.supplies.contains(&i.id)}
+    });
+    if run.hero.weapon.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.weapon=None.into();}
+    if run.hero.armour.as_ref().is_some_and(|i|run.supplies.contains(&i.id)) {run.hero.armour=None.into();}
+    game.lineage.supplies.extend(old);
+    prepare_starting(game);
+    let run=game.run.as_mut().unwrap();
+    run.supplies.clear();run.packed.clear();run.bought_leashes.clear();run.prepared_supplies.clear();
+    for mut it in std::mem::take(&mut game.lineage.supplies) {
+        it.value_claimed=true;
+        run.supplies.push(it.id);run.packed.push(it.kind.clone());
+        run.prepared_supplies.push(it.clone());
+        if it.kind=="leash" {
+            if !it.free {run.bought_leashes.push(it.paid);}
+            match run.hero.inv.iter_mut().find(|i|i.kind=="leash") {
+                Some(stack)=>stack.amount+=it.amount.max(1),
+                None=>run.hero.inv.push(it),
+            }
+        }else{run.hero.auto_equip(it);}
+    }
+    // Reuse the paid actor and its floor/RNG/toll/pets; refresh replay snapshots.
+    crate::persistent::refit_build(game,true);
 }
 
 /// The ladders, in the camp's order.
@@ -500,17 +574,24 @@ pub fn buy_all(l: &mut LineageState) {
 
 /// The heir's starting kit: the class arm at the weapon ladder's enchant, the armour step's
 /// piece (none before the first step). Items with the kit's ids are never loot.
+fn weapon_forged(l:&LineageState)->Option<[i32;3]> {
+    l.kit_alt.get("weapon").is_some_and(|m|*m!=0).then(|| {
+        let n=owned(l,"weapon") as usize;
+        let edge=|i:usize|if i<AIM_STEPS as usize {EARLY_EDGE}else{DMG_PER_STEP};
+        let b=(0..n).filter(|&i|branch_at(l,"weapon",i)==Some("edge")).map(edge).sum();
+        [branch_counts(l,"weapon")[0] as i32,b,n as i32]
+    })
+}
+fn explicit_armour_bonus(l:&LineageState)->i32 {
+    let plate=branch_counts(l,"armour")[0];
+    plate_piece(plate as usize).map_or(0,|(kind,e)|crate::defs::item_def(kind).a.0+e-1).max(0)
+}
 pub fn equip(l: &LineageState, hero: &mut Hero) {
     let mut w = Item::new(WEAPON_ID, l.starting_config.as_ref().and_then(|c| c.weapon.as_deref())
         .filter(|kind| shape_available(l, kind, crate::defs::Cat::Weapon)).unwrap_or_else(|| crate::firearm::starting_kind(l)));
     w.enchant = owned(l, "weapon") as i32;
     // Cut 113 §2: a tier off the ladder's own split carries its aim count
-    let forged = l.kit_alt.get("weapon").is_some_and(|m| *m != 0).then(|| {
-        let n = owned(l, "weapon") as usize;
-        let edge = |i: usize| if i < AIM_STEPS as usize { EARLY_EDGE } else { DMG_PER_STEP };
-        let b: i32 = (0..n).filter(|&i| branch_at(l, "weapon", i) == Some("edge")).map(edge).sum();
-        [branch_counts(l, "weapon")[0] as i32, b, n as i32]
-    });
+    let forged = weapon_forged(l);
     w.forged = forged;
     if hero.class==crate::hero::Class::Gunner {hero.weapon=Some(w).into();}else {hero.auto_equip(w);}
     if hero.class==crate::hero::Class::Gunner&&crate::firearm::sidearm_selected(l) {
@@ -523,7 +604,7 @@ pub fn equip(l: &LineageState, hero: &mut Hero) {
     let chosen = l.starting_config.as_ref().and_then(|c| c.armour.as_deref());
     let piece = match chosen {
         Some("none") => None,
-        Some(k) if shape_available(l, k, crate::defs::Cat::Armour) => Some((k, default_armour.map_or(0, |(_, e)| e))),
+        Some(k) if shape_available(l, k, crate::defs::Cat::Armour) => Some((k, explicit_armour_bonus(l))),
         _ => default_armour,
     };
     if let Some((k, e)) = piece {

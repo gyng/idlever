@@ -1,8 +1,9 @@
 # Cut215 — Forge and Loadouts frontend contract
 
-This lane is proposal/inventory until the Cut211 checkpoint commits and Rust's
-actual legendary wire is frozen. No runtime change or legendary acceptance has
-landed here. Root owns first-discovery Watch/report/camp announcement routing;
+The Cut211 checkpoint a327b8dd has released this lane for implementation. Shared
+effect/tradeoff cards and guarded read-only Loadouts links are implemented;
+Forge/catalogue wiring now uses canonical Rust metadata. Final real-WASM client acceptance has passed: 305 assertions through the normal
+runner and 103 separately controlled catalogue assertions. Root owns first-discovery Watch/report/camp routing;
 core owns items, deterministic drops, permanent town-wide ownership and fees.
 
 Reuse `startingKits` and its actual set/save/select/delete API. Legendary shapes
@@ -49,35 +50,39 @@ source fingerprint includes all actual Lineage; it should naturally refresh on
 new ownership. A new helper can render shared effect/tradeoff cards without
 editing the frozen Hero or frame paths.
 
-Pending wire requirements sent to core: actual named-shape metadata on choices
-and actual selected labels; ownership versus compatibility/reveal distinctions;
-first-unlock announcement metadata for root. No new bridge method is needed
-unless the actual existing shape API cannot represent the Rust definition.
+Canonical wire is present: named-shape metadata on choices and owned-only
+Lineage.legendaries separate ownership/compatibility. Actual selected labels
+are resolved from the matching row. Root owns first-unlock metadata glue.
+Existing shape/kit APIs suffice; no new bridge mutation was introduced.
 
-Read-only core wire proposal received: existing StartingGearChoice gains optional
-legendary/effect/tradeoff; owned-only Lineage.legendaries rows carry
-kind/label/effect/tradeoff/compatible/available/blocked/source. First actual
-pickup emits one discovery announcement and typed loadouts link metadata,
-subject to root's final event-size review. These are proposals, not present
-fields or accepted implementation yet. The UI can reuse the canonical row
-metadata and look up actual selected gear labels without inventing another API.
+Accepted client checkpoint:
 
-Client fixture/test plan (not yet executable acceptance):
-1. Load actual pre-find earned save, open Forge/Loadouts and compare exact save;
-   catalogue exposes no unknown named cards. Forge/configure an unowned ID and
-   invalid/incompatible ID through actual API; refusal must preserve full save.
-2. Advance bounded real pickup ticks supplied by the core fixture manifest;
-   read actual ownership and ordinary ledger settlement. First notice/link is
-   root's separate glue check. Opening the owned Forge row reads without equip.
-3. Select owned shape through the actual row, compare Gold and RNG before/after,
-   inspect prepared actor/config, save a named kit, choose ordinary gear, select
-   saved kit again, reload. Gold remains exact for every use/save/select step.
-4. Pay actual earned resident price, switch owner, verify shared owned catalogue
-   and independent upgrade ranks. Retained old action cannot configure new actor.
-5. Actual Send: choice controls disable, direct refused away changes preserve
-   full save. Any next-run allowance must be the real current Rust contract;
-   do not impose a stronger restriction based on old expectations alone.
-6. Fresh/owned/away/duplicate views, all3 widths and2 text scales. Open disclosures
-   to inspect every row/44px control; settle fonts/images/sheet animations. Root
-   proves notification uniqueness and live-drop screenshot separately. Archive
-   exact served scripts/package and input fixtures; no repeated broad audit.
+- Final canonical earned seed1/13 source kills produce exactly one real first
+  discovery and owned row. Normal runner: 305 assertions, 48 layouts, PASS in
+  74.8 seconds. Actual free refit, paid-toll/RNG preservation, named-kit
+  save/select/reload, unowned/invalid refusal, town-wide ownership after a paid
+  second resident and stale-action guards are checked through current Rust.
+- Controlled Fighter/Gunner all-three catalogue: 103 assertions, 24 layouts,
+  PASS. Actual Gunner incompatibility refuses atomically. These fixtures use
+  controlled boss placement/damage and class qualification; they are not an
+  earned all-three progression claim.
+- Synthetic icon coverage: 126 assertions per width, 378 total, PASS. All normal
+  definitions retain packed-image checks; the three named items have correct
+  sword/armour primitive fallback. Masterwork preserves the former gold palette
+  and sorts below named Legendary.
+- The UI disables changes while away. The real engine may allow valid next-run
+  configuration while away; acceptance does not invent a blanket API refusal.
+- An earned duplicate UI fixture was not supplied. Duplicate settlement and
+  effect/balance acceptance remain the core owner's independent proof; the
+  optional duplicate fixture branch was not executed.
+- Served package is 6,539,458 bytes, SHA256
+  `304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda`.
+  Detailed provenance, failures and screenshots are in
+  `docs/evidence/cut215/ui/README.md`. Root owns announcement and receipt glue
+  acceptance. This client checkpoint makes no full-balance or fun-rating claim.
+
+
+Final Forge consistency amendment: owned canonical legendary kinds are omitted
+from the ordinary local discovery ladder, preserving all other rows. Actual
+seed1/13 focused regression passes16 assertions; refreshed private-GPU frames
+and served source hashes are archived in `ui/gpu-consistency-final`.

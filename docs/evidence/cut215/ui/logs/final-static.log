@@ -1,0 +1,6 @@
+Final source freeze:2026-10-13.
+Scoped oxfmt --check: PASS,10 files.
+Scoped Oxlint --deny-warnings: PASS,8 TS/MJS files.
+pnpm --dir web exec tsc --noEmit: PASS,terminal0,session32135.
+Runtime source-manifest.json hashes final frozen owned files.
+Root separately reports production web build/TSC/scoped lint PASS; dist WASM matches304d.

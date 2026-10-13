@@ -83,6 +83,7 @@ export function combatLogEvents(
         "die",
         "use",
         "pickup",
+        "discovery",
         "rule",
         "descend",
         "exit",

@@ -1,0 +1,48 @@
+.legendary-discovery {
+  color: var(--bone, #eadfc5);
+  --ui-selected: #dec486;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  min-width: 0;
+  border: 1px solid var(--gilt, #927a46);
+  background: #151823;
+  overflow-wrap: anywhere;
+}
+.legendary-discovery h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.legendary-discovery small {
+  color: var(--bone, #eadfc5);
+  font-size: 0.875rem;
+}
+.legendary-discovery button,
+.combat-lines .discovery-link {
+  min-height: 44px;
+  min-width: 44px;
+  white-space: normal;
+}
+.combat-lines .discovery-link {
+  color: var(--bone, #eadfc5);
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  text-align: left;
+  padding: 6px 8px;
+  border: 1px solid var(--gilt, #927a46);
+  background: #151823;
+  cursor: pointer;
+}
+.combat-lines .discovery-link:hover {
+  background: #31354a;
+}
+.combat-lines .discovery-link:focus-visible {
+  outline: 2px solid var(--bone, #eadfc5);
+  outline-offset: 2px;
+}
+.combat-lines .discovery-link:active {
+  transform: translateY(1px);
+}

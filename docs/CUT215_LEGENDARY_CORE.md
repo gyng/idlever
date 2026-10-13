@@ -1,8 +1,8 @@
 # Cut215 — core implementation contract
 
-Read-only design, 2026-10-13. Production changes wait for the parent's frozen
-Cut211/212 checkpoint. This supplements `CUT215_LEGENDARY_FORGE.md`; it is not
-implementation or acceptance evidence.
+Design and implementation contract, 2026-10-13. Production was released after
+checkpoint a327b8dd. This supplements `CUT215_LEGENDARY_FORGE.md`; final evidence
+is required before acceptance.
 
 ## Three permanent shapes
 
@@ -13,13 +13,13 @@ loot and default gear keep their existing RNG draws.
 | ID / name | Base equipment | Actual effect | Ordinary alternative |
 | --- | --- | --- | --- |
 | crownsplitter / Crownsplitter | Sword damage3–7, speed−1 | +2 melee damage when the actual target is stunned or slowed | Sword retains speed when control is absent |
-| hearthglass / Hearthglass | Armour1, speed0 | Heal2 HP on the hero's actual natural hostile kill; exclude neutral, summoned and allied kills | Mail/plate prevent more damage in a single-target fight |
+| hearthglass / Hearthglass | Armour1, speed0 | Heal2 HP on a direct hero melee/ranged natural hostile kill; exclude neutral, summoned, allied and ambient hazard kills | Mail/plate prevent more damage in a single-target fight |
 | frostmantle / Frostmantle | Armour2, speed−1 | Reduce actual gas/poison damage by2, minimum1 per damaging tick; receive +1 melee damage | Mail protects better against ordinary melee |
 
 Effects require the actual equipped item, not merely ownership or a saved kit.
 No extra rolls, passive inventory effects, poison immunity or global damage tier.
-Named items always have Legendary rarity. Existing power≥8 Legendary rarity is
-still an enchantment classification: its ordinary base shape becomes permanent
+Named items alone have Legendary rarity. Existing power≥8 rarity is now named
+Masterwork, with its original statistics/value/colour; its ordinary base shape becomes permanent
 on actual pickup, but its found enchantment remains temporary. Neither catalogue
 nor announcement may promise a permanent +8 enchantment.
 
@@ -96,6 +96,13 @@ kennel units against the real cap atomically. Set/select updates real prepared
 pack IDs and receipt ownership, sent-state, floor-start and capsule snapshot
 using the existing preparation sync seam. While actually away, selection stays
 the documented next-run config; it cannot alter the live actor midcombat.
+
+Current waystone toll is already zero in a327b8dd. Preparation preserves the
+actual selected start, pass and toll metadata; the numeric controlled refit
+fixture pays for its pack upgrade and ration, and uses the real free passage.
+It does not claim to have earned or paid a nonexistent current passage fee.
+GearChoice damage/armour include the hero's actual permanent Forge ranks;
+Legacy attributes and conditional legendary effects are separate.
 
 ## Required evidence
 

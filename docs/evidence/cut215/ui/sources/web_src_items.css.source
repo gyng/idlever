@@ -1,0 +1,218 @@
+/* Item silhouettes stay unframed; rarity belongs to names and icon metadata. */
+:root {
+  --r-common: #7b776a;
+  --r-uncommon: #4e8763;
+  --r-rare: #4c76b2;
+  --r-epic: #8762a6;
+  --r-masterwork: #a3752a;
+  --r-legendary: #a3752a;
+  --r-common-lit: #b3ad9b;
+  --r-uncommon-lit: #86bc95;
+  --r-rare-lit: #8eafe0;
+  --r-epic-lit: #bf9ad6;
+  --r-masterwork-lit: #e3b862;
+  --r-legendary-lit: #e3b862;
+}
+.r-common {
+  --r: var(--r-common);
+  --r-lit: var(--r-common-lit);
+}
+.r-uncommon {
+  --r: var(--r-uncommon);
+  --r-lit: var(--r-uncommon-lit);
+}
+.r-rare {
+  --r: var(--r-rare);
+  --r-lit: var(--r-rare-lit);
+}
+.r-epic {
+  --r: var(--r-epic);
+  --r-lit: var(--r-epic-lit);
+}
+.r-legendary {
+  --r: var(--r-legendary);
+  --r-lit: var(--r-legendary-lit);
+}
+.r-masterwork {
+  --r: var(--r-masterwork);
+  --r-lit: var(--r-masterwork-lit);
+}
+
+.item-ico {
+  --sz: 34px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--sz);
+  height: var(--sz);
+  vertical-align: middle;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+}
+.item-ico.sz-s {
+  --sz: 22px;
+}
+.item-ico.sz-l {
+  --sz: 48px;
+}
+.item-ico .item-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 1px 1px rgba(13, 12, 20, 0.65));
+}
+.item-ico .item-pic.glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 calc(var(--sz) * 0.75)/1 var(--display);
+  color: var(--r-lit);
+}
+.sheet .item-ico .item-pic.glyph,
+.panel .item-ico .item-pic.glyph {
+  color: var(--r);
+}
+.item-ico .item-pic.glyph::before {
+  content: attr(data-glyph);
+}
+
+.item-name {
+  color: var(--r-lit);
+  font-weight: 600;
+}
+.parchment .item-name,
+.sheet .item-name,
+.panel .item-name {
+  color: var(--r);
+}
+.item-name.r-common {
+  font-weight: inherit;
+}
+.item-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Finds keep their one-time arrival animation; no rectangular shine over the silhouette. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-juice="on"] .item-row.pop .item-ico {
+    animation: r-pop 0.42s cubic-bezier(0.3, 1.6, 0.5, 1) backwards;
+    animation-delay: var(--pop-delay, 0ms);
+  }
+  @keyframes r-pop {
+    from {
+      transform: scale(0.2) rotate(-12deg);
+      opacity: 0;
+      filter: brightness(2);
+    }
+    60% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+    to {
+      transform: none;
+      filter: none;
+    }
+  }
+}
+.chip .item-ico,
+.item-l .item-ico {
+  margin-right: 5px;
+  vertical-align: -6px;
+}
+
+/* Small item marks keep the map's combat log plain and compact. */
+.item-ico.sz-xs {
+  --sz: 14px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+.combat-log .item-ico.sz-xs {
+  margin-right: 3px;
+  vertical-align: -2px;
+}
+.forge-ladders .item-chip {
+  margin-block: 2px;
+}
+.salvage .k .item-chip {
+  display: inline;
+}
+.salvage .k .item-ico {
+  margin-right: 5px;
+}
+
+.supplies .buy-main .item-chip {
+  min-width: 0;
+  max-width: 100%;
+}
+.supplies .buy-main .item-name {
+  white-space: normal;
+  line-height: 1.15;
+}
+
+/* Item names and upgrade counts remain readable on the narrow parchment. */
+.forge .salvage .lrow {
+  grid-template-columns: minmax(0, 1fr) 28px 28px;
+  gap: 2px 8px;
+}
+.forge .salvage .lrow.head > span:nth-child(2) {
+  display: none;
+}
+.forge .salvage .lrow:not(.head) {
+  padding: 6px 0;
+}
+.forge .salvage .k {
+  grid-column: 1;
+  grid-row: 1;
+}
+.forge .salvage .ladder {
+  grid-column: 1;
+  grid-row: 2;
+  margin-left: 27px;
+  white-space: normal;
+  overflow: visible;
+}
+.forge .salvage .dot {
+  grid-row: 1 / span 2;
+}
+.forge .salvage .dot:nth-child(3) {
+  grid-column: 2;
+}
+.forge .salvage .dot:nth-child(4) {
+  grid-column: 3;
+}
+.supplies .buy-main,
+.supplies .buy-title {
+  width: 100%;
+}
+.supplies .buy-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 4px;
+}
+.supplies .buy-title > .item-chip {
+  flex: 1 1 100%;
+}
+.supplies .buy-title > .gold {
+  font-size: 12px;
+  line-height: 1.1;
+  margin-left: 27px;
+}
+.supplies .chips.shop > .chip.buy {
+  height: 84px;
+}

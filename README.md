@@ -49,6 +49,8 @@ Read the death report. Change the equipment or tactics. Delve again after recove
 - Choose from five classes: Fighter, Rogue, Ranger, Caster and Gunner.
 - Class levels provide skill picks. Use picks to learn class skills. Skills
   stay learned until you reset them. Reset class skills for free in town.
+- Defeat bosses to discover legendary equipment. Each discovery unlocks a free
+  Forge choice for all heroes. Gear upgrades apply to these choices too.
 - Hire named workers to take over town jobs.
 - Develop several bloodlines with different equipment and tactics.
 - Review combat logs, death traces and replays of past runs.

@@ -447,6 +447,11 @@ pub struct Run {
     /// The exit reads them into `ExitLine.found` (`Game::found_rows`).
     #[serde(default, skip_serializing_if = "crate::shared::vec_is_empty")]
     pub found_units: crate::shared::Shared<Vec<(u32, String)>>,
+    /// Permanent pattern finds have no physical pack slot, but retain receipts.
+    #[serde(default, skip_serializing_if="Vec::is_empty")]
+    pub pattern_receipts: Vec<Item>,
+    #[serde(default, skip_serializing_if="Vec::is_empty")]
+    pub discoveries: Vec<crate::legendary::Discovery>,
     /// Cut 196: units first converted this run, independent of later physical fate.
     #[serde(default)]
     pub converted_units: crate::shared::Shared<Vec<(u32, String)>>,
@@ -572,6 +577,9 @@ pub struct Run {
     /// price paid for each bought leash packed into the stack (the stack's units carry no mark).
     #[serde(default)]
     pub bought_leashes: Vec<i32>,
+    /// Exact unit provenance before preparation merges stackable supplies.
+    #[serde(default, skip_serializing_if="Vec::is_empty")]
+    pub prepared_supplies: Vec<Item>,
     pub supplies: Vec<u32>,
     /// Taunt: foes ignore companions for this many ticks.
     pub taunt_t: i32,
@@ -1342,6 +1350,7 @@ pub struct Ctx<'a> {
     pub unlocks: &'a BTreeSet<String>,
     pub grudges: &'a [Grudge],
     pub forge: &'a BTreeMap<String, ForgeRow>,
+    pub owned_shapes: &'a mut BTreeSet<String>,
     /// The own rows in play (`max_rows_of` the unlocks and the variant, which the context holds
     /// unchanged): read when a row is chosen, not on every tick — `Ctx::max_rows`. `Some` fixes it.
     pub max_rows: std::cell::Cell<Option<usize>>,
@@ -2398,6 +2407,7 @@ impl LineageState {
             renamed: self.renamed(),
             kit: crate::kit::ladders(self),
             starting_kits: crate::kit::starting_wire(self),
+            legendaries: crate::legendary::owned_wire(self),
             guns:Vec::new(),
             row_why: self.row_why(),
             forks: self.fork_chips(),
@@ -3008,6 +3018,8 @@ fn default_pct() -> i32 {
 /// Accumulated outcomes since the last return report.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct Batch {
+    #[serde(default, skip_serializing_if="Vec::is_empty")]
+    pub discoveries: Vec<crate::legendary::Discovery>,
     pub runs: u32,
     #[serde(default, skip_serializing_if = "is_zero_u32")]
     pub legacy_earned: u32,
@@ -4301,6 +4313,8 @@ impl Game {
             own_throw: None,
             own_throw_harm: 0,
             found_units: Vec::new().into(),
+            pattern_receipts: Vec::new(),
+            discoveries: Vec::new(),
             converted_units: Vec::new().into(),
             found_gone: Vec::new().into(),
             stolen: Vec::new(),
@@ -4485,6 +4499,7 @@ impl Game {
             thin: self.lineage.thin_map().into(),
             packed: Vec::new().into(),
             bought_leashes: Vec::new(),
+            prepared_supplies: Vec::new(),
         };
         // Cut 118 §2: a trial's two affixes on its boss
         crate::feats::goal_affixes(&self.lineage, id, &mut run.affixes);
@@ -4494,6 +4509,7 @@ impl Game {
             let mut it = s;
             it.value_claimed = true;
             it.id = run.new_item_id() + 5000;
+            run.prepared_supplies.push(it.clone());
             run.supplies.push(it.id);
             run.packed.push(it.kind.clone());
             if it.kind == "leash" {
@@ -4640,6 +4656,7 @@ impl Game {
             unlocks: &lineage.unlocks,
             grudges: &lineage.grudges,
             forge: &lineage.forge,
+            owned_shapes: &mut lineage.town.owned_shapes,
             max_rows: std::cell::Cell::new(None),
             events,
             sim: *sim,
@@ -5759,7 +5776,7 @@ impl Game {
             *pack.entry((i.id, i.kind.clone())).or_insert(0) += i.amount.max(1);
         }
         // Run-clear: the pack's finds as they came home (before the shelf, the sheet or the bones take them)
-        let found_items: Vec<Item> = if self.sim { Vec::new() } else { all.iter().filter_map(|item| {
+        let mut found_items: Vec<Item> = if self.sim { Vec::new() } else { all.iter().filter_map(|item| {
             let found = found_in_pack(&run, &pack, &(item.id, item.kind.clone()));
             if found == 0 { return None; }
             let mut find = item.clone();
@@ -5769,6 +5786,12 @@ impl Game {
             Some(find)
         }).collect() };
         let mut exit_fate: BTreeMap<(u32, String), &'static str> = BTreeMap::new();
+        for it in &run.pattern_receipts {
+            let key=(it.id,it.kind.clone());
+            pack.insert(key.clone(),1);
+            exit_fate.insert(key,"converted");
+            if !self.sim {found_items.push(it.clone());}
+        }
         let shelved: Vec<String> = Vec::new();
         let mut leash_back = 0usize;
         // Knowledge comes from a first conversion, not retaining or selling an instance.
@@ -6094,6 +6117,8 @@ impl Game {
         line.reached = run.max_depth.max(run.depth);
         line.new_best = run.max_depth > run.best_at_send.unwrap_or(best0);
         line.finds = exit_finds(&found_items, &exit_fate, &self.lineage.facts, &self.lineage.flavours);
+        line.discoveries=run.discoveries.clone();
+        self.batch.discoveries.extend(run.discoveries.iter().cloned());
         line.trace = Some(exit_trace(&run, &self.prov));
         line.salvaged = cut_rows;
         line.run_id = run.id;
@@ -6576,6 +6601,7 @@ impl Game {
         // Cut 191: eligibility is permanent; preparing an unlocked item never costs Gold.
         let mut out = vec![SupplyInfo { kind: "leash".into(), price: 0, label: "leash".into() }];
         for d in crate::defs::ITEMS {
+            if crate::legendary::definition(d.kind).is_some() {continue;}
             let base = match d.cat {
                 Cat::Potion | Cat::Scroll => Some(supply_price(d.cat, self.lineage.best_depth)),
                 _ => None,
@@ -7079,7 +7105,7 @@ pub fn exit_line_of(carried: i32, keep_pct: i32, kept: i32, spent: i32, spent_on
     if unused > 0 && tier != ExitTier::Death {
         text.push_str(&format!(" · {unused} {} back", if unused == 1 { "supply" } else { "supplies" }));
     }
-    ExitLine { tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, shelved: Vec::new(), toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
+    ExitLine { discoveries:Vec::new(),tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, shelved: Vec::new(), toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
 }
 
 /// Cut 30.5: an exit line's head re-worded with the secured gold — `banked $120 · $80 secured + 100% of $40`, `died

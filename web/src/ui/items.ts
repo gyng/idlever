@@ -8,7 +8,7 @@ import { h } from "./dom";
 import { hasIcon } from "./skin";
 import { kwHost } from "./tips";
 
-export const RARITIES: Rarity[] = ["common", "uncommon", "rare", "epic", "legendary"];
+export const RARITIES: Rarity[] = ["common", "uncommon", "rare", "epic", "masterwork", "legendary"];
 export const rarityRank = (r?: Rarity): number => RARITIES.indexOf(r ?? "common");
 /** The rarest of a list (common for none). */
 export const bestRarity = (xs: { rarity?: Rarity }[]): Rarity =>
@@ -16,8 +16,8 @@ export const bestRarity = (xs: { rarity?: Rarity }[]): Rarity =>
 
 /** The family an item kind is drawn as when its own icon is not packed (display only: which picture, never what it does). */
 const FAMILY: [RegExp, string, string][] = /* copy:none */ [
-  [/^(dagger|sword|axe|bow|spear|mace)$/, "weapon", "⚔"],
-  [/^(leather|mail|plate|scale)$/, "armour", "⛨"],
+  [/^(dagger|sword|axe|bow|spear|mace|crownsplitter)$/, "weapon", "⚔"],
+  [/^(leather|mail|plate|scale|hearthglass|frostmantle)$/, "armour", "⛨"],
   [
     /^(potion|heal|strength|speed|invisibility|poison|caustic|confusion|fire|regen|resist_fire|clarity)$/,
     "potion",

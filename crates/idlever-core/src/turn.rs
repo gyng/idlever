@@ -1847,6 +1847,11 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
         if crate::legacy::has(&run.hero,crate::legacy::BRACE)&&i64::from(run.hero.hp)*4<i64::from(run.hero.max_hp) {dmg=(dmg-2).max(0);}
         dmg
     }else{dmg};
+    let dmg=if run.hero.armour.as_ref().is_some_and(|i|i.kind=="frostmantle") && dmg>0 {
+        if matches!(src,Src::Gas|Src::Poison|Src::Burst) {(dmg-2).max(1)}
+        else if matches!(src,Src::Mon(i) if !run.monsters[*i].has_tag("ranged") && run.monsters[*i].pos.cheb(run.hero.pos)<=1) {dmg+1}
+        else {dmg}
+    }else{dmg};
     if dmg <= 0 {
         return;
     }
@@ -2049,6 +2054,9 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
             }
         }
     }
+    if dmg>0 && matches!(src,Src::Hero{ranged:false})
+        && run.hero.weapon.as_ref().is_some_and(|i|i.kind=="crownsplitter")
+        && (run.monsters[mi].stun>0||run.monsters[mi].slow_t>0) {dmg+=2;}
     // Cut 3: `reflect_melee` — a melee blow (the hero's, or an ally's) comes back on the attacker.
     // Cut 110 (owner: "the golem shouldn't be a hard wall — make the mirror less punishing"): a third of
     // the blow comes back (at least 1) and the rest lands — melee works at a price; reading the mirror
@@ -2215,6 +2223,12 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     run.monsters[mi].hp = 0;
     cx.events.push(Ev::Die { t: run.turn, id, cause: cause.into() });
     let m = run.monsters[mi].clone();
+    if m.hostile()&&!m.summoned&&matches!(src,Src::Hero{..})
+        &&run.hero.armour.as_ref().is_some_and(|i|i.kind=="hearthglass") {
+        let before=run.hero.hp;
+        run.hero.hp=(run.hero.hp+2).min(run.hero.max_hp);
+        if run.hero.hp>before {cx.events.push(Ev::Heal {t:run.turn,id:HERO_ID,amount:run.hero.hp-before,src:"hearthglass".into()});}
+    }
     if crate::legacy::has(&run.hero,crate::legacy::RENEWAL)&&m.hostile()&&!m.summoned&&matches!(src,Src::Hero{..}) {
         run.hero.hp=(run.hero.hp+1).min(run.hero.max_hp);
     }
@@ -2268,6 +2282,10 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
                 o.reserve = false;
             }
             run.boss_kills.push((run.turn, kind.clone()));
+            if let Some(shape)=crate::legendary::boss_drop(run,&kind,cx.owned_shapes) {
+                let item=Item::new(run.new_item_id(),shape);
+                crate::legendary::collect_pattern(run,cx,item,&m.title());
+            }
             note(run, cx, format!("Slew the {}.", m.title()));
             crate::oath::beat(run, cx, run.acting_row);   // Cut 28b: a `slay` / `fire` oath is kept here
             callout(run, cx, "boss down");
@@ -3078,10 +3096,13 @@ pub fn vault_take(run: &mut Run, cx: &mut Ctx, id: Option<u32>) {
     let Some((_, items)) = run.vault_choice.take() else { return };
     let pick = id.and_then(|id| items.iter().position(|i| i.id == id)).unwrap_or_else(|| vault_pick(&items, cx.vault_pref));
     let Some(mut it) = items.into_iter().nth(pick) else { return };
+    if crate::legendary::definition(&it.kind).is_some() {
+        crate::legendary::collect_pattern(run,cx,it,"Dungeon cache");return;
+    }
     run.caged.push(it.id);
     let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
     let here = run.hero.pos;
-    let raw = run.claim_item_value(&mut it);
+    let raw = crate::legendary::claim_found_value(run,cx,&mut it);
     run.loot_add(raw);
     crate::provenance::found(run, cx, &it.kind, &label);
     // QA on 778fa1b (qaV: `took leather +1` from the cage with the pack full — in no report
@@ -3205,6 +3226,11 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
     let here = run.hero.pos;
     let Some(ii) = run.items.iter().position(|fi| fi.pos == here && (can_take(&run.hero, &fi.item) || (queen_wants(run, &fi.item) && queen_slot(run, cx).is_some()))) else { return };
     let item = &run.items[ii].item;
+    if crate::legendary::definition(&item.kind).is_some() {
+        let it=run.items.remove(ii).item;
+        crate::legendary::collect_pattern(run,cx,it,"Dungeon find");
+        return;
+    }
     if item.kind == "bones" {
         recover_bones(run, cx, ii);
         return;
@@ -3227,7 +3253,7 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
         let mut it = run.items.remove(ii).item;
         let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
         let kind = it.kind.clone();
-        let raw = run.claim_item_value(&mut it);
+        let raw = crate::legendary::claim_found_value(run,cx,&mut it);
         run.loot_add(raw);
         run.note_found(it.id, &kind, it.amount.max(1));
         run.hero.inv.push(it);
@@ -3242,7 +3268,7 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
         // QA on 778fa1b (qaV): a found leash's units are counted on the stack they join (a
         // thief's take coming back is not a find).
         let (units, own) = (it.amount.max(1), it.id);
-        let raw = run.claim_item_value(&mut it);
+        let raw = crate::legendary::claim_found_value(run,cx,&mut it);
         let coming_back = run.stolen_ids.contains(&own) || run.supplies.contains(&own) || run.brought.contains(&own);
         match run.hero.inv.iter_mut().find(|i| i.kind == "leash") {
             Some(l) => {
@@ -3303,7 +3329,7 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
                 let here = run.hero.pos;
                 let mut it = run.items.remove(ii).item;
                 let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
-                let raw = run.claim_item_value(&mut it);
+                let raw = crate::legendary::claim_found_value(run,cx,&mut it);
                 swap_loot(run, cx, raw, &dropped);
                 crate::provenance::spent(run, cx, &dropped.kind, format!("swapped for the {}", crate::item::kind_name(&it.kind)));
                 crate::provenance::found(run, cx, &it.kind, &label);
@@ -3330,7 +3356,7 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
                 let here = run.hero.pos;
                 let mut it = run.items.remove(ii).item;
                 let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
-                let raw = run.claim_item_value(&mut it);
+                let raw = crate::legendary::claim_found_value(run,cx,&mut it);
                 swap_loot(run, cx, raw, &dropped);
                 crate::provenance::spent(run, cx, &dropped.kind, format!("swapped for the {}", crate::item::kind_name(&it.kind)));
                 crate::provenance::found(run, cx, &it.kind, &label);
@@ -3346,7 +3372,7 @@ pub(crate) fn pickup_item_here(run: &mut Run, cx: &mut Ctx) {
     }
     let mut it = run.items.remove(ii).item;
     let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
-    let raw = run.claim_item_value(&mut it);
+    let raw = crate::legendary::claim_found_value(run,cx,&mut it);
     run.loot_add(raw);
     crate::provenance::found(run, cx, &it.kind, &label);
     run.note_found(it.id, &it.kind, 1);
@@ -3392,7 +3418,7 @@ fn swap_in(run: &mut Run, cx: &mut Ctx, ii: usize, k: usize) {
     let here = run.hero.pos;
     let mut it = run.items.remove(ii).item;
     let (_, _, label) = crate::item::describe(&it, cx.facts, cx.flavours);
-    let raw = run.claim_item_value(&mut it);
+    let raw = crate::legendary::claim_found_value(run,cx,&mut it);
     swap_loot(run, cx, raw, &dropped);
     crate::provenance::spent(run, cx, &dropped.kind, format!("swapped for the {}", crate::item::kind_name(&it.kind)));
     crate::provenance::found(run, cx, &it.kind, &label);
@@ -3429,7 +3455,7 @@ fn recover_bones(run: &mut Run, cx: &mut Ctx, ii: usize) {
             _ => run.hero.inv.iter().any(|i| i.id == it.id),
         };
         if taken {
-            let value = run.claim_item_value(&mut it);
+            let value = crate::legendary::claim_found_value(run,cx,&mut it);
             for held in run.hero.inv.iter_mut().chain(run.hero.weapon.iter_mut()).chain(run.hero.armour.iter_mut()) {
                 if held.id == it.id && held.kind == it.kind { held.value_claimed = true; }
             }
@@ -3591,6 +3617,7 @@ pub fn can_take(h: &crate::hero::Hero, item: &Item) -> bool {
 
 /// `can_take`, the pack read through `pk`.
 fn can_take_in(h: &crate::hero::Hero, item: &Item, pk: &PackRead) -> bool {
+    if crate::legendary::definition(&item.kind).is_some() {return true;}
     if item.kind == "trap" {
         return false;
     }

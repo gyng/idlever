@@ -1,0 +1,57 @@
+{
+  "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "earned": true,
+  "performanceClaim": false,
+  "input": "docs/evidence/cut215/ui-inputs-final/seed-1/earned-owned-home.game.json.gz",
+  "fixtureSHA": "f9e0a96134a00203ad6a8f9a406c86a7018110e8bb7ab6ea456d772046868cff",
+  "records": [
+    {
+      "width": 400,
+      "gold": 1318,
+      "selected": "crownsplitter",
+      "readOnlyLink": true,
+      "freeUse": true
+    },
+    {
+      "width": 1440,
+      "gold": 1318,
+      "selected": "crownsplitter",
+      "readOnlyLink": true,
+      "freeUse": true
+    }
+  ],
+  "source": {
+    "src/ui/forge.ts": {
+      "bytes": 57495,
+      "sha256": "fdf9fd66c782f716b1db17e7f8bc89e40456f18490d16a19c831d3c1b7a21359"
+    },
+    "src/ui/starting-kits.ts": {
+      "bytes": 21123,
+      "sha256": "ba4668e3fce154f107b079ab3fdf40d744e6ac615ae4665ed251d3955173b407"
+    },
+    "src/ui/legendary-gear.ts": {
+      "bytes": 10724,
+      "sha256": "0e442bf48693e2fb13f574579850dd5c8f906f225674aaa8717c161abe033d34"
+    },
+    "src/ui/bloodline-loadouts.ts": {
+      "bytes": 16188,
+      "sha256": "f8df4c0bef61422506d2747b5f1a67ef6f9365143b6b92c695337b3faad49b6f"
+    },
+    "src/ui/items.ts": {
+      "bytes": 16434,
+      "sha256": "dbf9714feca09ffae0cc5b01c7ce2dd5d0ea5e6f341e5321930e4b415dbd2609"
+    },
+    "src/legendary-gear.css": {
+      "bytes": 1533,
+      "sha256": "d0e04e0dbdf32857a92783e1ab735cae4658c157772e2e5f29b4444fc0b3c2f4"
+    },
+    "src/items.css": {
+      "bytes": 4910,
+      "sha256": "5648fb21e222497b3c5bbcb624bcf031f01c216523e45c78e100b5a99208a43e"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6539458,
+      "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda"
+    }
+  }
+}

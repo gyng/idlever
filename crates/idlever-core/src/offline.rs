@@ -498,6 +498,7 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
         broken: b.oath_breaks.values().sum(), cause: b.oath_breaks.iter().max_by_key(|(c, n)| (**n, std::cmp::Reverse(c.len()))).map(|(c, _)| c.clone()) });
     let mut r = ReturnReport { finds: None, feats: Vec::new(), pick: None, legacy_earned:b.legacy_earned,slice_pending:false,bloodlines:vec![],lead: Vec::new(), oath, grew: Vec::new(), workers: Vec::new(), chest: 0, packages: crate::packages::beats(&b.pkg_lines),
         elapsed_s,
+        discoveries:b.discoveries.clone(),
         runs: b.runs,
         sampled,
         learned,

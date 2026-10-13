@@ -20,6 +20,7 @@ pub mod item;
 pub mod journal;
 pub mod kit;
 pub mod legacy;
+pub mod legendary;
 pub mod specialization;
 pub mod class_tree;
 pub mod bloodlines;

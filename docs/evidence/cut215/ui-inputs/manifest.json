@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/earned-replay-before-find.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-1/earned-replay-before-find.game.json",
+      "raw_sha256": "fe3cf383579619e23f2cd90cf7d51343f6ee976f62d903c6983930ed9cccda2e",
+      "raw_bytes": 1703143,
+      "gzip_sha256": "861c940a1c207ba500836896dee4d85e9fffc8ebd3bc894be83849c5bc3ad98c",
+      "gzip_bytes": 194890
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/earned-replay-after-find.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-1/earned-replay-after-find.game.json",
+      "raw_sha256": "f56341ec7028674699e857571837670aaf16b42a860ee61c85b3235822810408",
+      "raw_bytes": 1703463,
+      "gzip_sha256": "112ecf8f2b421542cb280c40bdb1abe158a87e8071a1726285603c4af65b5268",
+      "gzip_bytes": 195315
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/earned-owned-home.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-1/earned-owned-home.game.json",
+      "raw_sha256": "e20f20ec92b4483530ab6e34f0d75a3070fe3d53d7d96683aa06bf528cbd9f15",
+      "raw_bytes": 278048,
+      "gzip_sha256": "457ac1aae0cbb5611add9f8739b231100e24f8691a1a911dc680e1d56c1e658f",
+      "gzip_bytes": 35482
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/actions.json",
+      "source": "scratchpad/cut215-earned/seed-1/actions.json",
+      "sha256": "b434724c59d018ab2cb3bd6da32185643b3321014a58be8414067b366c50c234",
+      "bytes": 4266
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/manifest.json",
+      "source": "scratchpad/cut215-earned/seed-1/manifest.json",
+      "sha256": "780dfba69026c43aae2671dfb64975f9850b84885c67309ad7333c6e95717263",
+      "bytes": 1029
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-1/actual-discovery-events.json",
+      "source": "scratchpad/cut215-earned/seed-1/actual-discovery-events.json",
+      "sha256": "d3dab522de6c6a019e01868bca7f281d967110ccc8b042a6a7d1b33833ca93fe",
+      "bytes": 1104
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/earned-replay-before-find.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-13/earned-replay-before-find.game.json",
+      "raw_sha256": "bec799e2f92367837c2b24072a99c65ad1b8cda46bfc57d779e3f61b7f713315",
+      "raw_bytes": 1803705,
+      "gzip_sha256": "63f492d30882d924489a76556a05f1cf5dd6d788a25044fa2d9f759c081eddb1",
+      "gzip_bytes": 193384
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/earned-replay-after-find.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-13/earned-replay-after-find.game.json",
+      "raw_sha256": "67f502814030f54e7059409575bd269d329233c73a274f9fa12d018e6d7c1c4a",
+      "raw_bytes": 1804483,
+      "gzip_sha256": "e4f0724707e8c566ed353065f81ed14c4bbb96730e2ee49d6c657d27658c769a",
+      "gzip_bytes": 193841
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/earned-owned-home.game.json.gz",
+      "source": "scratchpad/cut215-earned/seed-13/earned-owned-home.game.json",
+      "raw_sha256": "30ea059f02251f72476fad81ca793a66008aae764e5b626ed0ed545791a6c390",
+      "raw_bytes": 471437,
+      "gzip_sha256": "0fcdbf1add08ea7aa2076ebe8b3f861214f6352bb1d2eb800408d9435f6ca56e",
+      "gzip_bytes": 62244
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/actions.json",
+      "source": "scratchpad/cut215-earned/seed-13/actions.json",
+      "sha256": "2b68aa789caf177f514617aa2cfad2e8deea86c442b62525af47ea75de029199",
+      "bytes": 3707
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/manifest.json",
+      "source": "scratchpad/cut215-earned/seed-13/manifest.json",
+      "sha256": "fc54abdd906ea93243d010e502024cd201d55d65cc257dc8a41d22ff18667b79",
+      "bytes": 1030
+    },
+    {
+      "path": "docs/evidence/cut215/ui-inputs/seed-13/actual-discovery-events.json",
+      "source": "scratchpad/cut215-earned/seed-13/actual-discovery-events.json",
+      "sha256": "0b3b32e5ff1be1d10b832e7178c01682d9534f5de51b9fc41a9f29ba6eb13798",
+      "bytes": 1104
+    }
+  ],
+  "semantics": "Native producer real earned public play; held replay clock may differ from later absence clock. Home is actual Scout pause plus1h finish/recovery. No grants/forcedReturn. Fresh input invokes actual newLineage(seed) in test."
+}

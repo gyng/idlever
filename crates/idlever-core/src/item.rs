@@ -158,8 +158,9 @@ pub fn is_identified(facts: &BTreeSet<String>, flavours: &Flavours, kind: &str) 
 /// Run-clear (the owner, 2026-10-02: "include item rarity colours + icons"): an item's rarity, read off what
 /// it already is — never a roll of its own, so it changes nothing in play. Gear: its kind's depth band
 /// (`gear_band`: the floors it is found from) plus its `+N` (the forge's tier, a bounty's or a cage's step,
-/// enchant scrolls read on it); `power` 0 common · 1–2 uncommon · 3–4 rare · 5–7 epic · ≥ 8 legendary (a
-/// mace +5, an axe the scrolls stacked to +7: the few things that truly are). Consumables and trinkets: their
+/// enchant scrolls read on it); `power` 0 common · 1–2 uncommon · 3–4 rare · 5–7 epic · ≥ 8 masterwork.
+/// Only named permanent legendary shapes use Legendary rarity; a high ordinary enchantment
+/// remains temporary even when its base shape unlocks. Consumables and trinkets: their
 /// worth and depth — value ≥ 20 or found only from D18 is rare (strength, enchant, recall, the mirror shard),
 /// value ≥ 14 or found from D6 uncommon, the rest common; never above rare. An unidentified flavour reads
 /// common: its rarity would name its kind (facts are learned, never leaked by a rim colour).
@@ -171,6 +172,7 @@ pub enum Rarity {
     Uncommon,
     Rare,
     Epic,
+    Masterwork,
     Legendary,
 }
 
@@ -184,6 +186,7 @@ impl Rarity {
             Rarity::Uncommon => "uncommon",
             Rarity::Rare => "rare",
             Rarity::Epic => "epic",
+            Rarity::Masterwork => "masterwork",
             Rarity::Legendary => "legendary",
         }
     }
@@ -202,6 +205,7 @@ pub fn gear_band(kind: &str) -> i32 {
 
 /// Run-clear: the rarity of `item` as the player knows it (`known`: its kind identified).
 pub fn rarity(item: &Item, known: bool) -> Rarity {
+    if crate::legendary::definition(&item.kind).is_some() {return Rarity::Legendary;}
     let d = item.def();
     match d.cat {
         Cat::Gold => Rarity::Common,
@@ -210,7 +214,7 @@ pub fn rarity(item: &Item, known: bool) -> Rarity {
             1..=2 => Rarity::Uncommon,
             3..=4 => Rarity::Rare,
             5..=7 => Rarity::Epic,
-            _ => Rarity::Legendary,
+            _ => Rarity::Masterwork,
         },
         Cat::Potion | Cat::Scroll | Cat::Misc => {
             if !known || matches!(item.kind.as_str(), "bones" | "trap") {
@@ -266,6 +270,7 @@ pub struct FloorItemWire {
 
 /// Player-facing kind name. Persistent IDs remain stable across naming changes.
 pub fn kind_name(kind: &str) -> String {
+    if let Some(d)=crate::legendary::definition(kind) {return d.label.into();}
     match kind {
         "long_gun" => "rifle".into(),
         "short_gun" => "scattergun".into(),

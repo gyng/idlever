@@ -1,0 +1,22 @@
+
+running 13 tests
+............ 12/13
+legendary::tests::automatic_floor_find_and_receipts_match_whole_sliced_reloaded_offline --- FAILED
+
+failures:
+
+---- legendary::tests::automatic_floor_find_and_receipts_match_whole_sliced_reloaded_offline stdout ----
+
+thread 'legendary::tests::automatic_floor_find_and_receipts_match_whole_sliced_reloaded_offline' (131) panicked at crates/idlever-core/src/legendary.rs:326:9:
+assertion `left == right` failed
+  left: 3610
+ right: 3910
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    legendary::tests::automatic_floor_find_and_receipts_match_whole_sliced_reloaded_offline
+
+test result: FAILED. 12 passed; 1 failed; 0 ignored; 0 measured; 873 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

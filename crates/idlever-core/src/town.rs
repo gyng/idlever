@@ -21,6 +21,9 @@ pub fn home_default() -> bool { true }
 /// The lineage's town (`LineageState::town`).
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Town {
+    /// Actual legendary finds unlock their equipment shape for every resident.
+    #[serde(default, skip_serializing_if="std::collections::BTreeSet::is_empty")]
+    pub owned_shapes: std::collections::BTreeSet<String>,
     /// Multi-bloodline Savings pays per shared night of completed expeditions.
     #[serde(default, skip_serializing_if="Option::is_none")]
     pub shared_night_runs: Option<u32>,

@@ -1,0 +1,57 @@
+{
+  "scope": "affected checks, not full client or balance audit",
+  "static": {
+    "scopedOxlint": "pass",
+    "tsc": "pass",
+    "productionWebBuild": "pass; existing chunk/dynamic-import warnings retained in raw log"
+  },
+  "targetedClient": {
+    "command": "node tests/run.mjs watch-loot-skill death-hero",
+    "exit": 0,
+    "groups": 2,
+    "elapsedSeconds": 6.3,
+    "deathHeroAssertions": 9,
+    "watchLoot": {
+      "automaticRaw": 30,
+      "automaticCarry": 7,
+      "returnGold": 507,
+      "pendingChoice": null,
+      "cageSheet": false,
+      "cageTicker": false,
+      "firstBatch": 63,
+      "preferenceRaw": 12,
+      "preferenceCarry": 3,
+      "factualSkill": "fighter_recovery"
+    }
+  },
+  "earlierCommandFailure": {
+    "command": "node tests/run.mjs watch-loot-skill death-hero legacy-tree-wire",
+    "exit": 1,
+    "reason": "Unknown client group: legacy-tree-wire; actual file is legacy-wire. Runner rejected before browser checks; corrected affected selection passes."
+  },
+  "postVisibleReceiptFix": {
+    "tsc": "pass",
+    "productionBuild": "pass",
+    "targetedClient": {
+      "command": "node tests/run.mjs report-reading report-supply-limit",
+      "groups": 2,
+      "exit": 0,
+      "elapsedSeconds": 12.6,
+      "scope": "actual report cycles, scroll, save purity and supply notices"
+    }
+  },
+  "finalForgeConsistency": {
+    "command": "node tests/run.mjs legendary-forge-consistency",
+    "exit": 0,
+    "checks": 16,
+    "elapsedSeconds": 5.8,
+    "scope": "actual earned seeds1/13; old owned-legendary grind rows removed,24 ordinary rows per seed preserved, read-only links",
+    "testOnlyAmendment": "Optional explicit output matches other new tests; default full regression no longer overwrites frozen evidence."
+  },
+  "finalSourceWasmRebuild": {
+    "exit": 0,
+    "bytes": 6539458,
+    "sha256": "304d9172c430d72c9e9ba24d2db0c475f05071c6b4bc8a2d1521292740429eda",
+    "result": "exact same package after final source/test/comment additions"
+  }
+}

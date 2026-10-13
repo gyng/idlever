@@ -259,6 +259,7 @@ export type Stake = {
 /** Cut 6 §1 — the ledger line of an exit: one arithmetic line the player can check, `text` is shown verbatim
  *  (`$84 carried · return keeps 60% → $50 · supplies −$12 → $68`). Fractions: `keep_pct` 0..100. */
 export type ExitLine = {
+  discoveries?: LegendaryDiscovery[];
   tier?: "bank" | "return" | "death"; // Rust outcome, independent of financial/XP shares.
   legacy_earned?: number;
   packages?: string[];
@@ -388,9 +389,22 @@ export type InvItem = {
   enchanted?: number; // QA 524827b (core): the `+N` enchant scrolls read on it added (KEPT `axe +7 → vault · enchanted ×6`)
   rarity?: Rarity;
 }; // run-clear (core `item::rarity`): read off its kind's depth band and its +N; absent = common
-/** Run-clear (core `item::Rarity`): an item's rarity, rising — common · uncommon · rare · epic · legendary. */
-export type Rarity = "common" | "uncommon" | "rare" | "epic" | "legendary";
+/** Run-clear (core `item::Rarity`): an item's rarity, rising — common · uncommon · rare · epic · masterwork · legendary. */
+export type Rarity = "common" | "uncommon" | "rare" | "epic" | "masterwork" | "legendary";
 
+export type LegendaryDiscovery = {
+  rarity: Rarity;
+  kind: string;
+  label: string;
+  effect: string;
+  tradeoff: string;
+  source: string;
+  depth: number;
+  run_id: number;
+  hero_name: string;
+  first: boolean;
+  target: string;
+};
 export type Ev =
   | { t: number; k: "gun"; state: GunSnap | null }
   | { t: number; k: "move"; id: number; x: number; y: number }
@@ -407,6 +421,7 @@ export type Ev =
     } // row -1 = trait, -2 = chore
   | { t: number; k: "telegraph"; id: number; what: string }
   | { t: number; k: "pickup"; id: number; item: string }
+  | { t: number; k: "discovery"; find: LegendaryDiscovery }
   | { t: number; k: "use"; item: string; outcome: string }
   | { t: number; k: "fact"; fact: string }
   | { t: number; k: "overlay"; x: number; y: number; ov: "gas" | "fire"; ttl: number }
@@ -1184,6 +1199,7 @@ export type HeroLane = {
   kind?: "hero" | "expedition";
 };
 export type ReturnReport = {
+  discoveries?: LegendaryDiscovery[];
   finds?: FindsReveal; // Cut 118 §3 (core): the finds sealed this absence, opened now — one reveal (`best`), every find best first, the count
   feats?: FeatNews[]; // Cut 118 §8 (core): notable acts since the last report — trial · trial_failed · set · swift · seek · wish — each with its lineage day
   pick?: ReturnPick; // Cut 113 §3 (core): the return's pick as it waits at camp (`Lineage.return_pick`)
@@ -1322,6 +1338,19 @@ export type StartingGearChoice = {
   needs: string | null;
   ranged: boolean;
   compatible: boolean;
+  legendary?: boolean;
+  effect?: string;
+  tradeoff?: string;
+};
+export type LegendaryShape = {
+  kind: string;
+  label: string;
+  effect: string;
+  tradeoff: string;
+  compatible: boolean;
+  available: boolean;
+  blocked: string | null;
+  source: string;
 };
 export type StartingKits = {
   current: StartingConfig | null;
@@ -1373,6 +1402,7 @@ export type Lineage = {
   depth_landmarks?: DepthLandmark[];
   journal?: Journal;
   starting_kits?: StartingKits;
+  legendaries?: LegendaryShape[];
   bloodline?: BloodlineLegacy;
   keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response
   feats?: FeatsWire; // Cut 118 (core): boss tokens, trials, the find log, swift floors, the sinks, the hero's wish

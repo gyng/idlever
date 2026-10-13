@@ -256,6 +256,8 @@ fn solo_bloodline(id:&u32)->bool{*id<=1}
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct ExitLine {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub discoveries: Vec<crate::legendary::Discovery>,
     /// Actual ending; financial share no longer distinguishes Bank from Return.
     #[serde(default, skip_serializing_if = "String::is_empty")]
     pub tier: String,
@@ -570,6 +572,7 @@ pub enum Ev {
         #[serde(default, skip_serializing_if = "Option::is_none")] skill: Option<Box<FiredSkill>> },
     Telegraph { t: u32, id: u32, what: String },
     Pickup { t: u32, id: u32, item: String },
+    Discovery { t: u32, find: Box<crate::legendary::Discovery> },
     Use { t: u32, item: String, outcome: String },
     Fact { t: u32, fact: String },
     Overlay { t: u32, x: i32, y: i32, ov: OverlayKind, ttl: i32 },
@@ -650,6 +653,7 @@ impl Ev {
             | Ev::Rule { t, .. }
             | Ev::Telegraph { t, .. }
             | Ev::Pickup { t, .. }
+            | Ev::Discovery { t, .. }
             | Ev::Use { t, .. }
             | Ev::Fact { t, .. }
             | Ev::Overlay { t, .. }
@@ -1527,6 +1531,8 @@ pub struct BloodlineReturn {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
 pub struct ReturnReport {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub discoveries: Vec<crate::legendary::Discovery>,
     /// Cut 113 §3: the return's pick (one of three, sized by the absence), as it waits at camp.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pick: Option<ReturnPick>,
@@ -2606,6 +2612,8 @@ pub struct Lineage {
     pub kit: Vec<KitLadder>,
     #[serde(default)]
     pub starting_kits: crate::kit::StartingKits,
+    #[serde(default, skip_serializing_if="Vec::is_empty")]
+    pub legendaries: Vec<crate::legendary::OwnedShape>,
     #[serde(default,skip_serializing_if="Vec::is_empty")]
     pub guns:Vec<GunOffer>,
     /// Cut 23 §3: per row of the active set (by index), its why-not over the recent sends
