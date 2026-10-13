@@ -741,6 +741,29 @@ impl Game {
         Ok(js(&self.inner.lineage()))
     }
 
+    #[wasm_bindgen(js_name = setStartingKit)]
+    pub fn set_starting_kit(&mut self, config: &str) -> Result<String, JsError> {
+        let config = serde_json::from_str(config).map_err(|e| err(e.to_string()))?;
+        idlever_core::kit::set_starting(&mut self.inner, config).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+    #[wasm_bindgen(js_name = saveStartingKit)]
+    pub fn save_starting_kit(&mut self, name: &str, config: &str, id: Option<String>) -> Result<String, JsError> {
+        let config = serde_json::from_str(config).map_err(|e| err(e.to_string()))?;
+        idlever_core::kit::save_starting(&mut self.inner, name, config, id.as_deref()).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+    #[wasm_bindgen(js_name = selectStartingKit)]
+    pub fn select_starting_kit(&mut self, id: &str) -> Result<String, JsError> {
+        idlever_core::kit::select_starting(&mut self.inner, id).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+    #[wasm_bindgen(js_name = deleteStartingKit)]
+    pub fn delete_starting_kit(&mut self, id: &str) -> Result<String, JsError> {
+        idlever_core::kit::delete_starting(&mut self.inner, id).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+
     /// Cut 23 §1: the forge's ladders with each next step's paired forecast move.
     #[wasm_bindgen(js_name = kitDeltas)]
     pub fn kit_deltas(&self) -> String {

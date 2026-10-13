@@ -413,7 +413,7 @@ mod tests {
     #[test]
     fn rule_shares_use_activations_when_one_action_emits_multiple_rules() {
         let mut m=RunMeters::default();
-        let rule=|row|Ev::Rule{t:10,row,verb:crate::rules::Verb::new("explore"),text:"chore".into()};
+        let rule=|row|Ev::Rule{t:10,row,verb:crate::rules::Verb::new("explore"),text:"chore".into(),skill:None};
         m.tick(&[rule(-2),rule(-2),rule(0)],std::iter::empty(),None);
         assert_eq!(m.run.actions,1);assert_eq!(m.run.rows.get(&-2),Some(&2));
         let w=wire(&m.run);

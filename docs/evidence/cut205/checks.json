@@ -1,0 +1,192 @@
+{
+  "checks": {
+    "cells": 270,
+    "unique": 30,
+    "ids": [
+      "caster_boss_channel",
+      "caster_channeler",
+      "caster_frost_guard",
+      "caster_guardian",
+      "caster_nova_guard",
+      "caster_storm",
+      "fighter_boss_breaker",
+      "fighter_boss_guard",
+      "fighter_crowd_breaker",
+      "fighter_reaver",
+      "fighter_recovery",
+      "fighter_warden",
+      "gunner_boss_marksman",
+      "gunner_breacher",
+      "gunner_close_loader",
+      "gunner_marksman",
+      "gunner_quick_loader",
+      "gunner_smoke_screen",
+      "ranger_barrage",
+      "ranger_boss_hunter",
+      "ranger_crossfire",
+      "ranger_finisher",
+      "ranger_hunter",
+      "ranger_marked_barrage",
+      "rogue_ambusher",
+      "rogue_boss_stalker",
+      "rogue_counter_ambush",
+      "rogue_escape_artist",
+      "rogue_shade",
+      "rogue_stalker"
+    ],
+    "fallback": "<span class=\"skill-icon\" data-skill-icon=\"future_unknown\" data-state=\"locked\" data-size=\"32\" data-fallback=\"true\" role=\"img\" aria-label=\"Actual future name\"><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M16 3L20 11L29 16L20 21L16 29L12 21L3 16L12 11Z\" class=\"skill-mark\" fill-rule=\"evenodd\"></path></svg></span>"
+  },
+  "nodes": [
+    {
+      "id": "fighter_warden",
+      "name": "Warden",
+      "cls": "Fighter"
+    },
+    {
+      "id": "fighter_recovery",
+      "name": "Recovery",
+      "cls": "Fighter"
+    },
+    {
+      "id": "fighter_boss_guard",
+      "name": "Boss guard",
+      "cls": "Fighter"
+    },
+    {
+      "id": "fighter_reaver",
+      "name": "Reaver",
+      "cls": "Fighter"
+    },
+    {
+      "id": "fighter_crowd_breaker",
+      "name": "Crowd breaker",
+      "cls": "Fighter"
+    },
+    {
+      "id": "fighter_boss_breaker",
+      "name": "Boss breaker",
+      "cls": "Fighter"
+    },
+    {
+      "id": "rogue_stalker",
+      "name": "Stalker",
+      "cls": "Rogue"
+    },
+    {
+      "id": "rogue_ambusher",
+      "name": "Ambusher",
+      "cls": "Rogue"
+    },
+    {
+      "id": "rogue_boss_stalker",
+      "name": "Boss stalker",
+      "cls": "Rogue"
+    },
+    {
+      "id": "rogue_shade",
+      "name": "Shade",
+      "cls": "Rogue"
+    },
+    {
+      "id": "rogue_escape_artist",
+      "name": "Escape artist",
+      "cls": "Rogue"
+    },
+    {
+      "id": "rogue_counter_ambush",
+      "name": "Counter ambush",
+      "cls": "Rogue"
+    },
+    {
+      "id": "ranger_hunter",
+      "name": "Hunter",
+      "cls": "Ranger"
+    },
+    {
+      "id": "ranger_boss_hunter",
+      "name": "Boss hunter",
+      "cls": "Ranger"
+    },
+    {
+      "id": "ranger_finisher",
+      "name": "Finisher",
+      "cls": "Ranger"
+    },
+    {
+      "id": "ranger_barrage",
+      "name": "Barrage",
+      "cls": "Ranger"
+    },
+    {
+      "id": "ranger_crossfire",
+      "name": "Crossfire",
+      "cls": "Ranger"
+    },
+    {
+      "id": "ranger_marked_barrage",
+      "name": "Marked barrage",
+      "cls": "Ranger"
+    },
+    {
+      "id": "caster_channeler",
+      "name": "Channeler",
+      "cls": "Caster"
+    },
+    {
+      "id": "caster_boss_channel",
+      "name": "Boss channel",
+      "cls": "Caster"
+    },
+    {
+      "id": "caster_storm",
+      "name": "Storm",
+      "cls": "Caster"
+    },
+    {
+      "id": "caster_guardian",
+      "name": "Guardian",
+      "cls": "Caster"
+    },
+    {
+      "id": "caster_frost_guard",
+      "name": "Frost guard",
+      "cls": "Caster"
+    },
+    {
+      "id": "caster_nova_guard",
+      "name": "Nova guard",
+      "cls": "Caster"
+    },
+    {
+      "id": "gunner_marksman",
+      "name": "Marksman",
+      "cls": "Gunner"
+    },
+    {
+      "id": "gunner_boss_marksman",
+      "name": "Boss marksman",
+      "cls": "Gunner"
+    },
+    {
+      "id": "gunner_quick_loader",
+      "name": "Quick loader",
+      "cls": "Gunner"
+    },
+    {
+      "id": "gunner_breacher",
+      "name": "Breacher",
+      "cls": "Gunner"
+    },
+    {
+      "id": "gunner_smoke_screen",
+      "name": "Smoke screen",
+      "cls": "Gunner"
+    },
+    {
+      "id": "gunner_close_loader",
+      "name": "Close loader",
+      "cls": "Gunner"
+    }
+  ],
+  "errors": []
+}

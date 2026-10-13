@@ -263,6 +263,18 @@ export class WasmEngine implements Engine {
   buyKit(slot: string): Lineage {
     return this.call("buyKit", slot);
   }
+  setStartingKit(configJson: string): Lineage {
+    return this.call("setStartingKit", configJson);
+  }
+  saveStartingKit(name: string, configJson: string, id?: string): Lineage {
+    return this.call("saveStartingKit", name, configJson, id);
+  }
+  selectStartingKit(id: string): Lineage {
+    return this.call("selectStartingKit", id);
+  }
+  deleteStartingKit(id: string): Lineage {
+    return this.call("deleteStartingKit", id);
+  }
   takeReturnPick(id: string): Lineage {
     return this.call("takeReturnPick", id);
   } // Cut 113 §3

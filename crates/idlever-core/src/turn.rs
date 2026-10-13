@@ -1500,11 +1500,23 @@ pub fn hero_max_hp(run: &mut Run, cx: &mut Ctx, delta: i32, cause: &str) {
 }
 
 pub fn emit_rule(run: &Run, cx: &mut Ctx, row: i32, verb: &Verb, text: &str) {
-    cx.events.push(Ev::Rule { t: run.turn, row, verb: verb.clone(), text: crate::chronicle::clamp_words(text, 3) });
+    let skill = fired_skill(run, cx, row, verb);
+    cx.events.push(Ev::Rule { t: run.turn, row, verb: verb.clone(), text: crate::chronicle::clamp_words(text, 3).into_boxed_str(), skill });
 }
 
 fn emit_rule_owned(run: &Run, cx: &mut Ctx, row: i32, verb: &Verb, text: String) {
-    cx.events.push(Ev::Rule { t: run.turn, row, verb: verb.clone(), text: crate::chronicle::clamp_words_owned(text, 3) });
+    let skill = fired_skill(run, cx, row, verb);
+    cx.events.push(Ev::Rule { t: run.turn, row, verb: verb.clone(), text: crate::chronicle::clamp_words_owned(text, 3).into_boxed_str(), skill });
+}
+
+fn fired_skill(run: &Run, cx: &Ctx, row: i32, verb: &Verb) -> Option<Box<crate::wire::FiredSkill>> {
+    let index = usize::try_from(row).ok()?;
+    let executed = cx.rules.rows.get(index).or_else(|| (index == cx.rules.rows.len()).then_some(run.lent_row.as_ref()).flatten())?;
+    if &executed.verb != verb { return None; }
+    let path = executed.origin.as_deref()?.strip_prefix("class:")?;
+    let name = crate::class_tree::label(path)?;
+    let id = path.strip_prefix("path:")?.to_string();
+    Some(Box::new(crate::wire::FiredSkill { id, name }))
 }
 
 /// Verbs that act on the visible foes (suppressed while the oscillation guard is up).

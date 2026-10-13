@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Error: strict mode violation: locator('.game-window') resolved to 2 elements:
+    1) <div role="dialog" class="sheet game-window">…</div> aka locator('div').filter({ hasText: 'ForgeweaponStarting kitsword' }).nth(1)
+    2) <div role="dialog" class="sheet game-window">…</div> aka getByText('‹Bloodline 1Sable')
+
+Call log:
+[2m  - waiting for locator('.game-window') to be visible[22m
+
+    at /home/g/p/riddle/web/tests/ui-foundations.mjs:54:39 {
+  log: [ "  - waiting for locator('.game-window') to be visible" ]
+}
+
+Node.js v26.5.0

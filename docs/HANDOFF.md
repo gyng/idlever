@@ -8,6 +8,38 @@ All38 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
+Integration checkpoint Cuts203–206: native848pass/0fail/6 existing ignored,
+Clippy warnings denied. Current real WASM6416437bytes. Cut203 adds permanent
+starting shapes and eight named kits; earned Fighter sword/leather versus
+axe/bare gives actual tradeoffs, no Gold/discovery grants. Bloodline Loadouts
+CRUD/reload/refusal/away/free-use and200% text checks pass320/400/1440; current
+private-GPU screenshots are in docs/evidence/cut203/ui-shots. Initial expected
+refusal test failure and genuine native80→128byte event-size regression are
+preserved; boxed metadata restores the unchanged80byte gate.
+
+Cut204 supplies scoped iron/ink/parchment roles. Ten matched real-menu pairs,
+54 fixture state cells and365 painted text ranges pass scoped contrast/control/
+200% overflow checks. That comparison intentionally archives a cached earlier
+UI snapshot; it does not certify new StartingKits. Root's fresh kit shots do.
+Cut205 supplies all30 unique skill insignias,270 combinations and deterministic
+fallbacks, integrated into trees/reviews and factual live Rule.skill events.
+Actual Recovery log proof is controlled, not earned progression or combat FX.
+
+Cut206 removes watched Keep/storage checks and duplicate payout reconstruction.
+Actual Bank/Return/Death transitions pass with correctGold and zeroKeep calls.
+A genuine resumed-open-cage omission is fixed; choice/timeout use actual core
+items and unknown labels. Direct test bail initially expected settlement before
+the next scheduled hero action; instrumentation now disposes the pump, advances
+bounded actual ticks to the Return event, and
+checks saved/UI amounts. No refresh race inferred. Evidence preserves
+failed integrated probes. Seven affected groups pass in the recorded integrated
+invocations; corrected watch/cage/skill and exit groups pass2/2 in11.4s.
+Two7/8 integrated failures remain archived, explained by the direct-bail probe
+expecting settlement before the scheduled action. No full135-group client pass
+is inferred. Root validation manifest: docs/evidence/cut203/root-validation.json;
+full current-game balance, backend/API storage retirement, remaining38-item
+queue and independent fun acceptance stay open. No release/deployment made.
+
 Latest owner art steering: town characters' white lanterns should be orange.
 Cut202 replaces the procedural wick with EMBER and personal pools with warm
 RGB proportions1/0.64/0.3. Radius, peak red strength, night ramp, attachment and

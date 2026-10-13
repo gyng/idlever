@@ -397,7 +397,14 @@ export type Ev =
   | { t: number; k: "attack"; src: number; dst: number; dmg: number; hit: boolean; verb?: string }
   | { t: number; k: "hurt"; id: number; dmg: number; hp: number; cause: string }
   | { t: number; k: "die"; id: number; cause: string }
-  | { t: number; k: "rule"; row: number; verb: Verb; text: string } // row -1 = trait, -2 = chore
+  | {
+      t: number;
+      k: "rule";
+      row: number;
+      verb: Verb;
+      text: string;
+      skill?: { id: string; name: string };
+    } // row -1 = trait, -2 = chore
   | { t: number; k: "telegraph"; id: number; what: string }
   | { t: number; k: "pickup"; id: number; item: string }
   | { t: number; k: "use"; item: string; outcome: string }
@@ -1267,7 +1274,30 @@ export type ReturnReport = {
   meters?: MeterWire; // Cut 29 §3 (core): the absence's real runs metered, summed (the report's per-night meter)
   fallen?: Fallen[]; // Cut 29 §6 (core; AX: Greth gone with only `party −1 ogre`): each companion that fell, named — `Greth · ogre L5 · fell D12 to lurker`
 };
+export type StartingConfig = { weapon: string | null; armour: string | null; supplies: string[] };
+export type NamedStartingKit = { id: string; name: string; config: StartingConfig };
+export type StartingGearChoice = {
+  kind: string;
+  label: string;
+  damage: [number, number];
+  armour: number;
+  speed: number;
+  available: boolean;
+  needs: string | null;
+  ranged: boolean;
+  compatible: boolean;
+};
+export type StartingKits = {
+  current: StartingConfig | null;
+  selected: string | null;
+  saved: NamedStartingKit[];
+  weapons: StartingGearChoice[];
+  armours: StartingGearChoice[];
+  actual_weapon: string;
+  actual_armour: string | null;
+};
 export type Lineage = {
+  starting_kits?: StartingKits;
   bloodline?: BloodlineLegacy;
   keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response
   feats?: FeatsWire; // Cut 118 (core): boss tokens, trials, the find log, swift floors, the sinks, the hero's wish
@@ -1729,6 +1759,10 @@ export type MeterWire = {
 };
 export type SnapMeters = { run: MeterWire; fight?: MeterWire; fighting?: boolean };
 export interface Engine {
+  setStartingKit?(configJson: string): Lineage;
+  saveStartingKit?(name: string, configJson: string, id?: string): Lineage;
+  selectStartingKit?(id: string): Lineage;
+  deleteStartingKit?(id: string): Lineage;
   // Cut 30.5 (core): the works tree — each returns the Lineage (throws with a ≤ 3-word reason). The chores by hand are the existing calls:
   // send (before the scout) · loadout (wear a find) · buyKit · keep (a keep sheet) / sellVault · bankDeposit · spendLevel · setParty / hatch ·
   // swapQuest · setStart — each fills its node's count (`WorkNode.count`) until its worker is hired.

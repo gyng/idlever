@@ -2,7 +2,7 @@ import "../class-tree.css";
 import type { App } from "../app";
 import type { ClassPathNode, Lineage } from "../engine/types";
 import { h } from "./dom";
-import { verbIcon, icon } from "./skin";
+import { classSkillIcon } from "./skill-icons";
 import { rowLabel } from "./tokens";
 import { openWindow } from "./sheet";
 
@@ -83,7 +83,12 @@ function review(app: App, node: ClassPathNode | null, onChange: () => void): voi
       "div",
       { class: "sheet-body class-path-review" },
       h("div", { class: "label" }, /* copy:label */ "Class tree"),
-      h("h3", null, node?.name ?? /* copy:label */ "Reset skills"),
+      h(
+        "h3",
+        null,
+        node ? classSkillIcon(node, { size: 32, decorative: true }) : null,
+        node?.name ?? /* copy:label */ "Reset skills",
+      ),
       h("small", { class: "num" }, /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`),
       node
         ? preview(node)
@@ -142,8 +147,6 @@ export function renderClassTree(
     );
   const owned = new Set(t.nodes.filter((n) => n.owned).map((n) => n.id));
   const card = (node: ClassPathNode): HTMLElement => {
-    const verb = node.tactics[0]?.verb.v,
-      id = verb ? verbIcon(verb) : undefined;
     return h(
       "section",
       {
@@ -153,7 +156,7 @@ export function renderClassTree(
       h(
         "div",
         { class: "class-path-heading" },
-        id ? icon(id) : null,
+        classSkillIcon(node, { size: 24, decorative: true }),
         h("b", null, node.name),
         node.owned ? h("small", { class: "class-path-owned" }, /* copy:label */ "Learned") : null,
       ),
@@ -224,14 +227,14 @@ export function renderClassTree(
         h(
           "div",
           { class: "class-tree-branch" },
-          h("b", null, root.name),
+          h("b", null, classSkillIcon(root, { size: 24, decorative: true }), root.name),
           ...t.nodes
             .filter((n) => n.parent === root.id)
             .map((n) =>
               h(
                 "div",
                 { class: "class-tree-future num" },
-                h("b", null, n.name),
+                h("b", null, classSkillIcon(n, { size: 24, decorative: true }), n.name),
                 h("small", null, /* copy:label */ `L${n.required_level} · D${n.required_depth}`),
               ),
             ),

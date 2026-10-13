@@ -1,0 +1,98 @@
+{
+  "terminal_results": {
+    "native-all-first.log": {
+      "exit": 101,
+      "passed": 847,
+      "failed": 1,
+      "ignored": 6,
+      "seconds": 62.71,
+      "failure": "genuine Ev128byte regression; unchanged80bytegate caught it"
+    },
+    "native-all-final.log": {
+      "exit": 0,
+      "passed": 848,
+      "failed": 0,
+      "ignored": 6,
+      "seconds": 88.79
+    },
+    "clippy-final.log": {
+      "exit": 0,
+      "command": "cargo clippy -q --workspace --all-targets --profile fast -- -D warnings",
+      "note": "Successful quiet command; empty log is not itself the proof of exit status."
+    },
+    "native-event-size.log": {
+      "exit": 0,
+      "passed": 1,
+      "expected_Ev_bytes": 80
+    },
+    "native-focused.log": {
+      "exit": 0,
+      "passed": 7,
+      "note": "Focused snapshot preceded final detach/cache/compact correction; final integrated848-pass audit includes final seven tests."
+    },
+    "native-adjacent-economy.log": {
+      "exit": 0,
+      "passed": 15
+    },
+    "native-adjacent-class.log": {
+      "exit": 0,
+      "passed": 10
+    }
+  },
+  "logs": [
+    {
+      "path": "clippy-example-pattern-failure.log",
+      "bytes": 2122,
+      "sha256": "a375fe05584ed4595c59baf78e1c7e899c88c5f52587bfeff8c50e99f4bc68a1"
+    },
+    {
+      "path": "clippy-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "clippy-initial-failure.log",
+      "bytes": 11472,
+      "sha256": "534f9689c2a8d5a82d38a3b266b61b8fbd3ce984f91b1decc4831b14f5b62a09"
+    },
+    {
+      "path": "compact-text-type-compile-failure.log",
+      "bytes": 6061,
+      "sha256": "788db2ac619fb9960ca44690d0190d8c8f8696de1fcc51be4a53ff90121caab8"
+    },
+    {
+      "path": "native-adjacent-class.log",
+      "bytes": 127,
+      "sha256": "7adff3f22b842eae64ffe3a31672fd23a6f6010cd5ea89efea02658b402ff74d"
+    },
+    {
+      "path": "native-adjacent-economy.log",
+      "bytes": 132,
+      "sha256": "f8456f718744b80e2f90b0d63fc3d76945c32a3023aaf235bad991ea42cbda4a"
+    },
+    {
+      "path": "native-all-final.log",
+      "bytes": 2220,
+      "sha256": "907b18c0edb385305e7cd5db7dd6dcc70b87919811170f31db19423aa9c6892d"
+    },
+    {
+      "path": "native-all-first.log",
+      "bytes": 1719,
+      "sha256": "e3dbb60d4d46a66d5f0b96c75e1c6cb10bad14dce7bfa16c875a343eb640bc67"
+    },
+    {
+      "path": "native-event-size.log",
+      "bytes": 115,
+      "sha256": "a0b648f180ff1cc63659770b9fb200bf548e09f68c3874c6182fee45797364dd"
+    },
+    {
+      "path": "native-focused.log",
+      "bytes": 122,
+      "sha256": "0e6d554e625465693ef48466b2b007547270c89fad6648dbee6f7c9238a2bc50"
+    }
+  ],
+  "limits": [
+    "No timing claim from concurrent workspace run.",
+    "No WASM/browser/full-balance acceptance in this native core lane."
+  ]
+}

@@ -590,11 +590,9 @@ pub fn mask(l: &LineageState) -> u32 {
 }
 pub fn label(id: &str) -> Option<String> {
     let id = id.strip_prefix("path:")?;
-    Class::ALL
-        .into_iter()
-        .flat_map(definitions)
-        .find(|n| n.id == id)
-        .map(|n| n.name)
+    static LABELS: std::sync::OnceLock<std::collections::BTreeMap<String, String>> = std::sync::OnceLock::new();
+    LABELS.get_or_init(|| Class::ALL.into_iter().flat_map(definitions)
+        .map(|node| (node.id,node.name)).collect()).get(id).cloned()
 }
 #[cfg(test)]
 #[path = "class_tree_tests.rs"]

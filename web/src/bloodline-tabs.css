@@ -60,6 +60,53 @@
 .bloodline-prepare small {
   width: 100%;
 }
+.starting-kits,
+.starting-gear {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.starting-kits h3,
+.starting-kits h4 {
+  margin: 12px 0 6px;
+}
+.starting-gear summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.starting-gear-row {
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  margin: 6px 0;
+}
+.starting-gear-row button {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.saved-kit,
+.kit-save {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+.saved-kit b {
+  flex: 1 1 120px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.kit-save input {
+  box-sizing: border-box;
+  flex: 1 1 140px;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  font: inherit;
+}
 @media (max-width: 380px) {
   .bloodline-prepared,
   .bloodline-catalogue {

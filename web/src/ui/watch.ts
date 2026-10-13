@@ -151,18 +151,15 @@ import {
   wideCols,
 } from "./frame";
 import { icon } from "./skin";
+import { classSkillIcon } from "./skill-icons";
 import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
 import { verbsAt } from "../engine/classes";
 import { openSheet, openWindow } from "./sheet";
-import { salvageValue } from "./salvage";
-import { mergeFinds } from "./report";
 import { itemIcon, itemName } from "./items"; // run-clear
 import { setBusyHost } from "./progress";
-import { vaultSlots } from "./unlocks";
 import { glossOf, noteText, setRefRows, verbLabel } from "./tokens";
-import { EXIT_TRACE_ROWS, traceTable } from "./trace";
-import { drivenDeath, exitExtras } from "./death";
+import { drivenDeath } from "./death";
 import { rationChip } from "./feats"; // Cut 122 §5: the hunger's answer beside its loss
 import { laneTitle, seenForks } from "./route";
 import { oathBeat } from "./oaths";
@@ -396,7 +393,7 @@ const writeMetersOn = (on: boolean): void => {
     /* a per-viewer convenience */
   }
 };
-const VAULT_FULL_MS = 1200; // QA e75ec29: `vault full` before the report when the preference kept (no sheet)          // Cut 2 §1: `rest 12m` after the exit, before the exit flow continues
+
 const CHORE_CALLOUT: Record<string, string> = {
   descend: /* copy:callout */ "descend",
   pick_up: /* copy:callout */ "pick up",
@@ -853,7 +850,7 @@ export function renderWatch(app: App): Mounted {
       names.get(id) ?? (id === heroId ? /* copy:label */ "Hero" : /* copy:label */ "Foe");
     const ruleKey =
       ev.k === "rule" && ev.row >= 0
-        ? JSON.stringify([logDepth, ev.row, ev.text, ev.verb?.v, ev.verb?.a])
+        ? JSON.stringify([logDepth, ev.row, ev.text, ev.verb?.v, ev.verb?.a, ev.skill?.id])
         : undefined;
     if (
       ruleKey &&
@@ -950,7 +947,15 @@ export function renderWatch(app: App): Mounted {
     else if (ev.k === "use") text = [item(ev.item), ` · ${ev.outcome}`];
     else if (ev.k === "pickup") text = [`${who(ev.id)} · `, item(ev.item)];
     else if (ev.k === "callout") text = [ev.text];
-    else if (ev.k === "rule" && ev.row >= 0) text = [ev.text];
+    else if (ev.k === "rule" && ev.row >= 0)
+      text = ev.skill
+        ? [
+            classSkillIcon({ ...ev.skill, owned: true }, { size: 24, decorative: true }),
+            ev.skill.name,
+            " · ",
+            ev.text,
+          ]
+        : [ev.text];
     else if (ev.k === "descend") {
       logDepth = ev.depth;
       text = [h("span", { class: "log-floor" }, /* copy:callout */ `Floor ${ev.depth}`)];
@@ -1160,7 +1165,6 @@ export function renderWatch(app: App): Mounted {
     stuckTick = -1,
     stuckAt = 0,
     unsticks = 0; // QA ad71e72: the dead stretch's wall start, the jumps, the stuck-picture watchdog
-  let keepClose: (() => void) | null = null; // blind 1fb7786: the open keep sheet's close (it keeps the ticked picks) — the gem's tap goes on through it
   let riseAt = 0; // blind 1fb7786: when the clock last eased up (`eased`)
   let rateWhy = ""; // Cut 121 §3: why the clock runs at its rate now (`baseRate`; empty: the plain chosen rate)
   let deadSince = -1; // Cut 18 §1: `fast` — when the current dead stretch began (wall ms; -1 none): its rate ramps
@@ -1195,8 +1199,7 @@ export function renderWatch(app: App): Mounted {
   const tickerQueue: { text: string; cls: string; ms: number }[] = []; // Cut 13 §4: callouts waiting their turn
   // Cut 2: rest after the exit, bones left (death) / found, bosses already announced
   let restS: number | undefined,
-    restUntil = 0,
-    bonesLeft: number | undefined;
+    restUntil = 0;
   let exitLine: ExitLine | undefined; // Cut 6 §1: the exit's ledger line (exit sheet, report, death)
   let exitTrace: Trace | undefined; // Cut 9 §5: the exit's last-5 trace (on the event, or on its line)
   const bonesFound: string[] = [];
@@ -1229,23 +1232,6 @@ export function renderWatch(app: App): Mounted {
     scenes: { from: number; until: number }[] = [];
   let exitTier: Tier | null = null,
     exitAt = 0;
-  let pendingExit:
-    | {
-        items: InvItem[];
-        tier: string;
-        worth?: number[];
-        auto_keep?: number[];
-        auto_salvaged?: { kind: string; n: number; gold: number }[];
-        decide?: boolean;
-        note?: string;
-      }
-    | undefined;
-  // what the exit sheet let go, at the engine's worth — the report's `salvaged` rows (QA on 952e306: "camp $76 after
-  // 'Returned with $57'; only the gold sheet shows +$19 salvage"); the deepest floor this send reached (its `deepest` tile)
-  let salvagedRows: { kind: string; n: number; gold: number }[] = [];
-  // Cut 24 §5 (AK, AL: "I tapped `pearly potion?`, then keep — SALVAGED listed it"): the engine kept the tapped one (a twin of the same
-  // flavour, or the return's cut, was what sold) and the vault named it by its kind — the report says what went in (`KEPT strength → vault`)
-  let keptLabels: string[] = [];
   let deepest = 0;
   // Cut 5 §4: the open vault sheet's close, and the cage it was opened for (a dismissed sheet is not reopened)
   let vaultClose: (() => void) | null = null,
@@ -1954,6 +1940,7 @@ export function renderWatch(app: App): Mounted {
       ruleLine(lastRuleText);
   }
   function ruleCallout(ev: Extract<Ev, { k: "rule" }>): string | null {
+    if (ev.skill) return ev.skill.name;
     if (ev.verb.v === "gunner_tactic") return null; // Automatic gun handling: real shot/skill/reload cues already show.
     if (tactics.owns(ev.row)) return null; // Known tactics use their icon; history retains their words.
     if (ev.row >= 0) return rowCallout(ev.row, verbLabel(ev.verb));
@@ -2134,7 +2121,7 @@ export function renderWatch(app: App): Mounted {
           break;
         }
         case "rule": {
-          at(ev.t, () => tactics.fire(ev));
+          if (!ev.skill) at(ev.t, () => tactics.fire(ev));
           const text = ruleCallout(ev);
           if (ev.row >= 0) rowFires[ev.row] = (rowFires[ev.row] ?? 0) + 1; // Cut 14 §4
           // Cut 14 §4: a chore (`pick up`) coalesces on its line with a count; a row's callout repeats after 4 s
@@ -2565,8 +2552,7 @@ export function renderWatch(app: App): Mounted {
           restS = ev.seconds;
           break;
         case "bones":
-          if (ev.heir === s.run.heir) bonesLeft = ev.items; // this heir's kit, left on death
-          else {
+          if (ev.heir !== s.run.heir) {
             bonesFound.push(/* copy:callout */ `D${s.depth} · ${items(ev.items)}`);
             at(ev.t, () => callout(/* copy:callout */ `heir ${ev.heir} · ${ev.items}`));
           }
@@ -3073,7 +3059,6 @@ export function renderWatch(app: App): Mounted {
     if (cardUp && !frozen()) paintCardText();
     if (mode === "fast" && app.slowdowns) probeFight(r); // Cut 18 §1: `fast` costs its fights ahead of the picture, as the card does
     if (!exit) vaultFrom(s); // no choice on a run that just ended
-    if (r.exit_pending) pendingExit = r.exit_pending;
     // Cut 7 §4: the exit batch waits (pump) until the viewer is ENDING_TICKS from the exit, then plays at 1×
     // Cut 14 §6: only the ending itself is held (a catch-up batch may reach back far past it); the rest feeds now
     if (exit) {
@@ -4955,9 +4940,6 @@ export function renderWatch(app: App): Mounted {
     vaultItems = vc.items;
     vaultChosen = false;
     el.dataset.cage = "sheet";
-    // QA on 3d71c33: a full vault salvages the pick at the exit — the sheet says so; QA 1a2a4a9 (P: "what the vault has to do with
-    // the cage"): …and what it means for the pick (`vault full → sold`: he uses it this run, the exit sells it)
-    const full = app.lineage.vault.length >= vaultSlots(app.lineage.unlocks);
     // the cage is modeless: the HUD stays live around it (⏸ keeps it, ▶▶| lets it go — QA on 3d71c33: "click intercepted")
     openSheet(
       (close) => {
@@ -5016,9 +4998,7 @@ export function renderWatch(app: App): Mounted {
           "div",
           { class: "sheet-body vault-choice" },
           h("div", { class: "label row-label" }, /* copy:label */ "loot choice"),
-          full
-            ? h("div", { class: "vault-full dim num" }, /* copy:callout */ "storage full → sold")
-            : "",
+          h("div", { class: "dim" }, /* copy:callout */ "Gold on pickup"),
           chips,
           grace,
         );
@@ -5089,8 +5069,7 @@ export function renderWatch(app: App): Mounted {
     if (el.dataset.next === "1" || !pause.isConnected) return;
     el.dataset.next = "1";
     const next = exitTier === "death" ? /* copy:button */ "verdict" : /* copy:button */ "report";
-    // blind 1fb7786 (A: "REPORT gem unresponsive"): the gem stands above the keep sheet's backdrop — a tap there means go on: the sheet
-    // closes keeping its ticked picks (`exitSheet`'s close) and the flow goes to the report
+    // A tap advances the exit beat to the already-settled report or verdict.
     const g = gem({
       label: next,
       cls: "next-gem",
@@ -5099,7 +5078,6 @@ export function renderWatch(app: App): Mounted {
         exitAt = 0;
         exitBeatUntil = 0;
         restUntil = 1;
-        keepClose?.();
       },
     });
     pause.replaceWith(g);
@@ -5125,59 +5103,6 @@ export function renderWatch(app: App): Mounted {
     try {
       if (prepended)
         await bounded(app.engine.setRules(app.rules), 8000, /* copy:none */ "setRules after bail");
-      // The keep sheet is a decision only when there is a free vault slot; otherwise the engine keeps by preference.
-      // QA e75ec29 (R: from run 5 on no keep sheet, the finds salvaged): the camp's lineage still lists the vault items the send
-      // brought along (the engine took them out of the vault for the run; they come home among the pending items, pre-ticked) —
-      // counted twice, a 2-slot vault with one item brought read full. The slots are the engine's, read now.
-      const fresh = pendingExit?.items.length
-        ? await bounded(app.engine.lineage(), 4000, "lineage at exit")
-        : undefined;
-      const vaultNow = fresh ?? app.lineage;
-      const freeSlots = Math.max(0, vaultSlots(vaultNow.unlocks) - vaultNow.vault.length);
-      // Cut 29 §4 (AW: "one ▲ per tap"): the core says whether the sheet is a decision (`decide`: a find beats something in the full
-      // vault, or finds outnumber its free slots). Not one → settled by the standing order (`autoKeep`) with its one line (`note`).
-      // A decision on a full vault opens the sheet as a swap: one pick, which the core keeps in place of the vault's weakest.
-      const decide = pendingExit?.decide;
-      if (
-        pendingExit &&
-        pendingExit.items.length &&
-        (decide === undefined ? freeSlots > 0 : decide)
-      ) {
-        const p = pendingExit;
-        pendingExit = undefined;
-        clearTimeout(guard);
-        exitSheet(
-          p,
-          Math.max(1, freeSlots),
-          () => {
-            done = false;
-            void finish(tier);
-          },
-          freeSlots === 0,
-        );
-        return;
-      }
-      const settledNote = decide === false ? pendingExit?.note : undefined;
-      // the vault full: the preference keeps (as designed) — and the screen says so before the report (R: "keep chosen for me?")
-      const vaultFull = !!(
-        pendingExit?.items.length &&
-        fresh &&
-        (decide === false ? true : freeSlots === 0)
-      );
-      // the sheet skipped (the vault full): the engine keeps by preference and the rest is salvage all the same — its rows
-      // are built here too (QA on e0f87e7: "no SALVAGED block at all when the vault is full … yet the gold sheet shows +$16
-      // salvage"); what the vault gained across the keep is what was kept, matched to the pending items by kind
-      const skipped = pendingExit;
-      pendingExit = undefined;
-      const vaultBefore = new Set(app.lineage.vault.map((v) => v.id));
-      // QA 23ed91f (L: `auto: keep weapon+armour` owned, the vault full → mail · axe · sword all salvaged): the skipped sheet
-      // resolves by the preference and the owned automations (`autoKeep`); an old build keeps nothing
-      if (skipped)
-        await bounded(
-          app.engine.autoKeep ? app.engine.autoKeep() : app.engine.keep([]),
-          8000,
-          "keep by preference",
-        );
       // (`refresh` resolves void, so a sentinel tells a timeout from success)
       if (
         !(await bounded(
@@ -5197,55 +5122,10 @@ export function renderWatch(app: App): Mounted {
         if (target && app.lineage.town?.auto_collect && (exitLine?.kept ?? 0) > 0)
           flyCoins(target, exitLine!.kept);
       }
-      // QA a946e04 (T: the vault's dagger became `axe +1` behind a `vault full` flash, no sheet): the preference's swap is named —
-      // `axe +1 → vault` — and `vault full` stands alone only when nothing went in
-      if (vaultFull) {
-        const inVault = app.lineage.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label);
-        // Cut 29 §4: a settled exit says its one line (`kept leather +1`); with nothing new kept it says nothing unless the vault is full
-        const full = vaultSlots(app.lineage.unlocks) <= app.lineage.vault.length;
-        if (settledNote || inVault.length || full) {
-          showBanner(
-            settledNote ??
-              (inVault.length
-                ? /* copy:callout */ `${inVault.join(", ")} → storage`
-                : /* copy:callout */ "storage full"),
-            VAULT_FULL_MS,
-            "rest keep-note",
-          );
-          await new Promise((r) => setTimeout(r, VAULT_FULL_MS));
-        }
-      }
-      if (skipped) {
-        const kept = new Set<number>();
-        const gained = app.lineage.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.kind);
-        for (const kind of gained) {
-          const it = skipped.items.find((x) => x.kind === kind && !kept.has(x.id));
-          if (it) kept.add(it.id);
-        }
-        salvagedRows = skipped.auto_salvaged ?? letGoRows(skipped, kept);
-        keptLabels = app.lineage.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label);
-      }
     } finally {
       /* guard cleared on every normal path below */
     }
     await finishAfterRefresh(tier, guard);
-  }
-  /** What an exit let go, per kind at the engine's worth at this exit (`salvageValue` when the wire has none). */
-  function letGoRows(
-    p: { items: InvItem[]; tier: string; worth?: number[] },
-    kept: Set<number>,
-  ): { kind: string; n: number; gold: number }[] {
-    const rows = new Map<string, { kind: string; n: number; gold: number }>();
-    // QA a946e04 (S: SALVAGED `potion ×2 · $2` beside `blue potion? ×2`): an unknown item is its flavour (`blue potion?`), as the core's rows name it
-    p.items.forEach((it, i) => {
-      if (kept.has(it.id)) return;
-      const k = it.known ? it.kind : it.label;
-      const r = rows.get(k) ?? { kind: k, n: 0, gold: 0 };
-      r.n++;
-      r.gold += p.worth?.[i] ?? salvageValue(it.kind, p.tier);
-      rows.set(k, r);
-    });
-    return [...rows.values()]; // QA 912e135 (qaX: the forge counted a `$0` leash the SALVAGED list left out): every item let go is named
   }
   async function finishAfterRefresh(tier: Tier, guard: number): Promise<void> {
     clearTimeout(guard);
@@ -5339,12 +5219,8 @@ export function renderWatch(app: App): Mounted {
       hatched: [],
       lost,
       legacy_earned: exitLine?.legacy_earned,
+      salvaged: exitLine?.salvaged ?? [],
       xp: { class: cls, ...xpOfRun() },
-      salvaged: reconcileSalvage(
-        mergeSalvage(exitLine?.salvaged ?? [], salvagedRows),
-        L.gold_ledger ?? [],
-      ),
-      kept: keptLabels.length ? keptLabels : undefined,
       deepest,
       renown: {
         gained: (L.renown ?? 0) - before.renown,
@@ -5397,228 +5273,9 @@ export function renderWatch(app: App): Mounted {
         )
       : undefined;
   }
-  /** The exit's own cut (on the line, from the engine) plus what the keep sheet let go, per kind. */
-  function mergeSalvage(
-    a: { kind: string; n: number; gold: number }[],
-    b: { kind: string; n: number; gold: number }[],
-  ): { kind: string; n: number; gold: number }[] {
-    const m = new Map<string, { kind: string; n: number; gold: number }>();
-    for (const r of [...a, ...b]) {
-      const x = m.get(r.kind) ?? { kind: r.kind, n: 0, gold: 0 };
-      x.n += r.n;
-      x.gold += r.gold;
-      m.set(r.kind, x);
-    }
-    return [...m.values()].filter((r) => r.gold > 0);
-  }
-  /** The rows' gold made to sum to the ledger's salvage for this exit — the `salvage` lines after the newest exit line (the
-   *  gold sheet's own slicing, ui/gold.ts) — by moving the difference onto the largest row(s); without a salvage line the rows
-   *  stand. The report's SALVAGED then reconciles with the gold sheet by construction (QA on e0f87e7: "SALVAGED $12 vs +$17
-   *  salvage"; "$5 vs +$8": items the sheet never listed, and worths the client's table read differently). */
-  function reconcileSalvage(
-    rows: { kind: string; n: number; gold: number }[],
-    ledger: { t: number; delta: number; why: string }[],
-  ): { kind: string; n: number; gold: number }[] {
-    let i = ledger.length - 1;
-    while (i >= 0 && !/^(returned|banked|died|lost|stalled|driven)\b/.test(ledger[i].why)) i--;
-    const lines = ledger.slice(i + 1).filter((g) => g.why.startsWith("salvage"));
-    if (!lines.length || !rows.length) return rows;
-    let diff = lines.reduce((a, g) => a + g.delta, 0) - rows.reduce((a, r) => a + r.gold, 0);
-    const out = rows.map((r) => ({ ...r })).sort((a, b) => b.gold - a.gold);
-    for (const r of out) {
-      if (!diff) break;
-      const take = Math.max(-r.gold, diff);
-      r.gold += take;
-      diff -= take;
-    }
-    return out.filter((r) => r.n > 0); // QA 912e135: a `$0` item is still named (the forge counts it)
-  }
   const spentRows = (
     ledger: { t: number; delta: number; why: string; n?: number }[],
   ): { kind: string; n: number; gold: number }[] => spentOf(ledger, app.supplyCat);
-  // Addendum D: choose what to keep before the run settles
-  function exitSheet(
-    p: { items: InvItem[]; tier: string; worth?: number[]; auto_keep?: number[] },
-    free: number,
-    then: () => void,
-    swap = false,
-  ): void {
-    // QA 23ed91f: the owned automations' picks come pre-ticked (`ExitPending.auto_keep`), as many as the free slots take
-    const keep = new Set<number>(
-      (p.auto_keep ?? []).filter((id) => p.items.some((it) => it.id === id)).slice(0, free),
-    );
-    let sent = false;
-    keepClose = null;
-    // QA 308f045 (qaAC: `mail $0 · sword $0 · … · unkept → salvage` after a drive-off that kept nothing): an exit whose salvage pays nothing
-    // prices nothing — the chips carry no `$0` and the legend says the unkept are lost
-    const worthOf = (i: number): number => p.worth?.[i] ?? salvageValue(p.items[i].kind, p.tier);
-    const unpaid = p.items.length > 0 && p.items.every((_, i) => worthOf(i) <= 0);
-    openSheet(
-      (close) => {
-        keepClose = close;
-        const chips = h("div", { class: "chips" });
-        const count = h("span", { class: "num dim" });
-        const paint = (): void => {
-          replace(count, `${keep.size}/${free}`);
-          replace(
-            chips,
-            ...p.items.map((it, i) =>
-              h(
-                "button",
-                {
-                  class: `chip item${keep.has(it.id) ? " on" : ""}`,
-                  onclick: () => {
-                    // the picks full: the next chip swaps in for the oldest pick (a Set keeps insertion order) — QA on e0f87e7:
-                    // "VAULT 1/1 after picking one item: tapping a second chip does nothing"
-                    if (keep.has(it.id)) keep.delete(it.id);
-                    else {
-                      if (keep.size >= free) {
-                        const oldest = keep.values().next().value;
-                        if (oldest === undefined) return;
-                        keep.delete(oldest);
-                      }
-                      keep.add(it.id);
-                    }
-                    paint();
-                  },
-                },
-                itemIcon(it, { size: "s" }),
-                itemName(it),
-                " ",
-                /* QA 1a2a4a9 (P: "`axe ⌂` — what ⌂ means"): a kept pick reads where it goes */ keep.has(
-                  it.id,
-                )
-                  ? h("b", null, "→ ", /* copy:label */ "stored gear")
-                  : unpaid
-                    ? ""
-                    : h("b", { class: "num gold" }, `$${worthOf(i)}`),
-              ),
-            ),
-          ); // the engine's worth at this exit (its old client table read 4×)
-        };
-        paint();
-        // the pile once: the exit line carries `bones: 8 items on D4` (the core's), so the client's `bones left` line only stands in
-        // for an exit line without it (two QA players on 50bb162: "bones: 8 items on D4 ... bones left · 8 items")
-        const bones =
-          p.tier === "death" && bonesLeft !== undefined && !/\bbones:/.test(exitLine?.text ?? "")
-            ? h(
-                "div",
-                { class: "bones-line dim num" },
-                /* copy:callout */ `bones left · ${items(bonesLeft)}`,
-              )
-            : null;
-        const ledger = exitLine?.text
-          ? h("div", { class: "ledger-line num dim" }, exitLine.text + exitExtras(exitLine))
-          : null; // Cut 6 §1: engine data, verbatim
-        // Cut 24 §2: what was new this run leads the sheet's lines (`record: D10 · avenged Ulak`), before the counts
-        const newsT = mergeFinds((exitLine?.news ?? []).filter((n) => n.k !== "differ")).map(
-          (n) => n.text,
-        );
-        const news = newsT.length
-          ? h("div", { class: "keep-news num" }, newsT.slice(0, 3).join(" · "))
-          : null;
-        // Cut 9 §5: the trace on a chip; Cut 11 §3: with its chain; Cut 14: a home trace's last row is not red. QA 524827b (qaAB: the TRACE
-        // replaced the item grid — `‹` back before an item could be kept): the chip unfolds the trace under the chips, in the sheet
-        const tr = exitTrace ?? exitLine?.trace;
-        const traceBox = h("div", { class: "keep-trace", hidden: true });
-        const trace = tr?.turns.length
-          ? h(
-              "button",
-              {
-                class: "chip mini",
-                onclick: () => {
-                  if (!traceBox.childElementCount)
-                    traceBox.append(
-                      ...traceTable(
-                        tr,
-                        { rows: app.rules.rows, runId, home: p.tier !== "death", provenance: true },
-                        EXIT_TRACE_ROWS,
-                      ),
-                    );
-                  traceBox.hidden = !traceBox.hidden;
-                },
-              },
-              /* copy:button */ "decision log",
-            )
-          : null;
-        // the sheet counts picks against free slots, so its label is `keep 0/1`, not the camp's `vault 1/2` (QA on e0f87e7:
-        // "VAULT 0/1 while camp shows VAULT 1/2 · same counter")
-        // QA 23ed91f (K: "`$5`, `$4`, `$1` on each item: a cost to keep, or a sale price?" and the report's SALVAGED listed `mapping ·
-        // teleport · poison` the sheet never offered): the prices are what an unkept item sells for, and the exit's own cut (a
-        // return's share, sold before the sheet: `ExitLine.salvaged`) is named under the chips
-        const legend = h(
-          "div",
-          { class: "keep-legend dim num" },
-          unpaid ? /* copy:callout */ "unkept → lost" : /* copy:callout */ "unkept → salvage",
-        );
-        const cut = exitLine?.salvaged?.length
-          ? h(
-              "div",
-              { class: "keep-cut dim num" },
-              /* copy:label */ "sold",
-              " ",
-              exitLine.salvaged
-                .map((r) => `${r.kind.replace(/_/g, " ")}${r.n > 1 ? ` ×${r.n}` : ""} $${r.gold}`)
-                .join(" · "),
-            )
-          : null;
-        return h(
-          "div",
-          { class: "sheet-body" },
-          // QA 0c6e126 (qaZ: `KEEP 1/1` after a bought slot, read as "the vault is one slot"): the count is of the free slots — `keep 1/1 free`
-          // Cut 29 §4: a full vault's decision is a swap — the pick replaces the vault's weakest (the core's `keep`)
-          h(
-            "div",
-            { class: "label row-label" },
-            /* copy:label */ "keep",
-            " ",
-            count,
-            h(
-              "small",
-              { class: "dim" },
-              swap ? /* copy:label */ " swap" : /* copy:label */ " free",
-            ),
-            trace,
-          ),
-          chips,
-          legend,
-          cut,
-          bones,
-          news,
-          ledger,
-          traceBox,
-          h(
-            "button",
-            { class: "btn primary wide", onclick: () => submit(close) },
-            /* copy:button */ "keep",
-          ),
-        );
-        // blind 1fb7786 (A, twice: "REPORT gem unresponsive … only a reload fixed it"): the backdrop (a tap on the gem under it), Escape or
-        // the stud closed the sheet without its `keep`, and the exit flow waited on it for good — every close keeps the ticked picks
-      },
-      { onClose: () => submit(() => {}) },
-    );
-    function submit(close: () => void): void {
-      if (sent) return;
-      sent = true;
-      keepClose = null;
-      salvagedRows = letGoRows(p, keep);
-      const vaultBefore = new Set(app.lineage.vault.map((v) => v.id));
-      app.engine
-        .keep([...keep])
-        .then((L) => {
-          app.lineage = L;
-          salvagedRows = L.keep_salvaged ?? salvagedRows;
-          keptLabels = L.vault.filter((v) => !vaultBefore.has(v.id)).map((v) => v.label);
-        })
-        .catch((e) => console.warn("keep", e))
-        .finally(() => {
-          close();
-          then();
-        });
-    }
-  }
-
   async function init(): Promise<void> {
     let s: Snapshot;
     if (app.seenPending && app.engine.seenSystems) {
@@ -5702,6 +5359,9 @@ export function renderWatch(app: App): Mounted {
     lastHp = s.hero.hp;
     lastAlert = s.alert;
     sceneFrom(s);
+    // A resumed run can already be waiting at a cage. Present its real choice
+    // before the pump advances through the remaining grace ticks.
+    vaultFrom(s);
     progress.push(s.turn);
     if (foldDue()) void foldRun(); // Cut 27 §1: the watch opens at the first floor below the bar
     pumpTimer = window.setInterval(pump, PUMP_MS);

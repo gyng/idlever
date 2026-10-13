@@ -1,124 +1,137 @@
-#!/usr/bin/env node
-// Blind 1fb7786 (A, twice: "REPORT gem unresponsive … only a reload fixed it", shots/stuck-report.png): the exit's keep sheet closed
-// by anything but its `keep` button — a tap on the gem under its backdrop, Escape, the close stud — left the exit flow waiting on a
-// `keep` that never came: the pump stopped, the gem's tap only shortened a walk-out already over. Every close of the keep sheet keeps
-// the ticked picks and the flow goes on to the next screen.
-//   node web/tests/exit-keep-close.mjs
+// Historical command name retained in suite inventory; current contract is Cut206:
+// actual Bank/Return/Death reaches its destination without a Keep sheet or second payout.
+import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
-
 const url = execFileSync("bash", ["tools/dev.sh"], {
   cwd: new URL("../../", import.meta.url),
   encoding: "utf8",
 }).trim();
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const out = [],
-  errors = [];
-let failed = 0;
-const check = (ok, what) => {
-  out.push(`${ok ? "ok  " : "FAIL"} ${what}`);
-  if (!ok) failed++;
-};
 const browser = await launchBrowser();
-const rules = encodeURIComponent("depth>=3 → return\nfoes>=1 → attack nearest"); // qa9's run that comes home with items
+const outcomes = [];
 try {
-  for (const how of (process.env.HOW ?? "gem,escape,stud").split(",")) {
-    const page = await browser.newPage({
-      viewport: { width: 400, height: 800 },
-      deviceScaleFactor: 1,
-    });
-    page.on("pageerror", (e) => errors.push(`${how} pageerror: ${e.message}`));
-    await page.goto(
-      `${url}?dev=1&engine=fake&systems=none&fresh=1&seed=13&autosend=1&speed=fast&rules=${rules}`,
-      { waitUntil: "domcontentloaded" },
-    );
-    await page.waitForFunction(
-      () => window.__idlever?.booted && window.__idlever.screen === "watch",
-      null,
-      { timeout: 30_000 },
-    );
-    await page.evaluate(() => {
-      const r = window.__idlever;
-      r.__keep = [];
-      r.__pick = null;
-      const k = r.engine.keep.bind(r.engine),
-        st = r.engine.step.bind(r.engine);
-      r.engine.keep = async (ids) => {
-        r.__keep.push(ids);
-        return k(ids);
+  for (const tier of ["bank", "return", "death"]) {
+    const page = await browser.newPage({ viewport: { width: 400, height: 800 } });
+    const errors = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.goto(`${url}?dev=1&fresh=1&seed=206&runs=0&speed=4`);
+    await page.waitForFunction(() => window.__idlever?.booted);
+    await page.evaluate(async (tier) => {
+      const app = window.__idlever,
+        e = app.engine;
+      if (app.kind !== "wasm") throw Error("real engine required");
+      app.runnerOn = false;
+      await e.newLineage(206);
+      await e.buildTown("house");
+      const game = JSON.parse(await e.save());
+      game.lineage.gold = 500;
+      game.lineage.supplies = [];
+      game.lineage.last_supplies = [];
+      game.lineage.last_supply_origins = [];
+      game.lineage.restock_off = true;
+      game.lineage.kennel_declined = true;
+      game.lineage.pkg.literal = true;
+      game.lineage.sets[game.lineage.active_set] = {
+        rows: [{ conds: [], verb: { v: "pick_up" } }],
       };
-      // a free slot and the automations' pick ticked: the sheet is a decision
-      r.engine.step = async (n) => {
-        const res = await st(n);
-        if (res.exit_pending?.items?.length) {
-          res.exit_pending.auto_keep = [res.exit_pending.items[0].id];
-          res.exit_pending.decide = true;
-          r.__pick = res.exit_pending.items[0].id;
-        }
-        return res;
-      };
-    });
-    const t = Date.now();
-    let open = false;
-    while (Date.now() - t < 60_000) {
-      const s = await page.evaluate(() => ({
-        screen: window.__idlever.screen,
-        keep: !!document.querySelector(".sheet-wrap .keep-legend"),
-      }));
-      if (s.keep) {
-        open = true;
-        break;
-      }
-      if (s.screen !== "watch") break;
-      await page.evaluate(() => {
-        for (const b of document.querySelectorAll(".sheet-wrap .vault-choice .chip")) {
-          b.click();
-          break;
-        }
-        for (const b of document.querySelectorAll(".cmd .tile[data-tile=skip]")) b.click();
+      await e.load(JSON.stringify(game));
+      await app.refresh();
+      app.__settlement = { tier, keepCalls: 0, sheets: 0, receipt: null, picked: false };
+      const qa = app.__settlement;
+      const observer = new MutationObserver(() => {
+        if (document.querySelector(".keep-legend")) qa.sheets++;
       });
-      await sleep(250);
+      observer.observe(document.body, { subtree: true, childList: true });
+      for (const key of ["keep", "autoKeep"])
+        if (typeof e[key] === "function") {
+          const original = e[key].bind(e);
+          e[key] = (...args) => {
+            qa.keepCalls++;
+            return original(...args);
+          };
+        }
+      const send = e.send.bind(e),
+        step = e.step.bind(e);
+      e.send = async () => {
+        const snapshot = await send();
+        const active = JSON.parse(await e.save());
+        const item = {
+          ...active.run.hero.weapon,
+          id: 9001,
+          kind: "leash",
+          amount: 3,
+          enchant: 0,
+          known: true,
+          free: false,
+          found: false,
+          paid: 0,
+          auto_packed: false,
+          value_claimed: false,
+        };
+        delete item.firearm;
+        delete item.forged;
+        active.run.items = [{ pos: active.run.hero.pos, item }];
+        active.run.monsters = [];
+        active.run.loot = 0;
+        active.run.loot_raw = 0;
+        active.run.secured = 8;
+        await e.load(JSON.stringify(active));
+        return snapshot;
+      };
+      e.step = async (ticks) => {
+        const result = await step(ticks);
+        if (
+          !qa.picked &&
+          result.events.some((event) => event.k === "pickup" && event.item === "leash")
+        ) {
+          qa.picked = true;
+          if (tier === "return") await e.bail();
+          else {
+            const active = JSON.parse(await e.save());
+            if (tier === "death") {
+              active.run.hero.hp = 1;
+              active.run.hero.poison = [99, 512];
+            } else
+              active.lineage.sets[active.lineage.active_set].rows = [
+                { conds: [], verb: { v: "bank" } },
+              ];
+            await e.load(JSON.stringify(active));
+          }
+        }
+        for (const event of result.events) if (event.k === "exit") qa.receipt = event.line;
+        return result;
+      };
+      app.go({ kind: "watch" });
+    }, tier);
+    await page.waitForFunction(() => window.__idlever?.screen === "watch");
+    await page.waitForFunction(() => window.__idlever.__settlement?.receipt, null, {
+      timeout: 30000,
+    });
+    // Follow the real final-frame/exit flow, including the primary report/verdict control.
+    for (let n = 0; n < 80; n++) {
+      if (await page.evaluate(() => !["watch", "exit"].includes(window.__idlever.screen))) break;
+      await page.locator(".next-gem").evaluateAll((nodes) => nodes.forEach((node) => node.click()));
+      await page.waitForTimeout(150);
     }
-    check(open, `${how}: a return with loot opens the keep sheet`);
-    if (!open) {
-      await page.close();
-      continue;
-    }
-    if (how === "gem") {
-      // the player's tap on the REPORT gem (it stands above the sheet's backdrop): it goes on
-      const box = await page.locator(".gem-slot .gem").boundingBox();
-      await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-    } else if (how === "escape") await page.keyboard.press("Escape");
-    else await page.locator(".sheet-wrap .close-stud, .sheet-wrap .sheet-x").first().click();
-    const left = await page
-      .waitForFunction(() => !["watch", "exit"].includes(window.__idlever.screen), null, {
-        timeout: 15_000,
-      })
-      .then(
-        () => true,
-        () => false,
-      );
-    const k = await page.evaluate(() => ({
+    const result = await page.evaluate(async () => ({
+      ...window.__idlever.__settlement,
       screen: window.__idlever.screen,
-      keep: window.__idlever.__keep,
-      pick: window.__idlever.__pick,
+      gold: window.__idlever.lineage.gold,
+      saved: JSON.parse(await window.__idlever.engine.save()),
     }));
-    check(left, `${how}: closing the keep sheet goes on to the next screen (${k.screen})`);
-    check(
-      k.keep.length === 1 && k.keep[0].length === 1 && k.keep[0][0] === k.pick,
-      `${how}: the close keeps the ticked pick once (${JSON.stringify(k.keep)}, pick ${k.pick})`,
-    );
+    assert.equal(result.picked, true);
+    assert.equal(result.receipt.tier, tier);
+    assert.equal(result.receipt.kept, tier === "death" ? 8 : 12);
+    assert.equal(result.gold, tier === "death" ? 508 : 512);
+    assert.equal(result.keepCalls, 0);
+    assert.equal(result.sheets, 0);
+    assert.equal(result.saved.pending_exit ?? null, null);
+    assert.ok(!["watch", "exit"].includes(result.screen), `${tier}: exit flow stalled`);
+    assert.deepEqual(errors, []);
+    outcomes.push({ tier, screen: result.screen, gold: result.gold, keepCalls: result.keepCalls });
     await page.close();
   }
-} catch (e) {
-  errors.push(`walk aborted: ${e.message}`);
+  console.log(JSON.stringify({ contract: "Cut206 controlled actual pickup/exit", outcomes }));
 } finally {
-  await browser.close().catch(() => {});
+  await browser.close();
 }
-for (const l of out) console.log(l);
-for (const e of errors) console.error(e);
-if (failed || errors.length) {
-  console.error(`exit-keep-close: FAIL (${failed} assertion(s), ${errors.length} error(s))`);
-  process.exit(1);
-}
-console.log(`exit-keep-close: ok (${out.length} checks)`);

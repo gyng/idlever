@@ -1,0 +1,28 @@
+{
+  "apis": {
+    "choose": "choose(901)",
+    "grace_ticks": 50,
+    "preference": "setVaultPref('potion')",
+    "timeout": "step(50) from turn1 active save"
+  },
+  "fixture": "controlled world: seed206,500Gold,hold row,cleared monsters/items,three authored cage items; opening/pickup/return/timeout are actual core actions",
+  "no_keep_prompt": true,
+  "pickup": {
+    "caged": [
+      901
+    ],
+    "carry": 7,
+    "chosen_id": 901,
+    "duplicate_refused": true,
+    "kind": "mail",
+    "raw": 30
+  },
+  "return_financial_pct": 100,
+  "return_gold": 507,
+  "timeout": {
+    "carry": 3,
+    "pick": 902,
+    "raw": 12
+  },
+  "unknown_potion_label": "black potion?"
+}

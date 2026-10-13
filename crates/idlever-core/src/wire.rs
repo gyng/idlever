@@ -556,6 +556,9 @@ pub struct StakeItem {
 pub enum RecoverySource { Leeching }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct FiredSkill { pub id: String, pub name: String }
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(tag = "k", rename_all = "snake_case")]
 pub enum Ev {
     /// Played equipment/chambers only when changed; null means the gun was stowed/lost.
@@ -564,7 +567,8 @@ pub enum Ev {
     Attack { t: u32, src: u32, dst: u32, dmg: i32, hit: bool, #[serde(default, skip_serializing_if = "Option::is_none")] verb: Option<String> },
     Hurt { t: u32, id: u32, dmg: i32, hp: i32, cause: String },
     Die { t: u32, id: u32, cause: String },
-    Rule { t: u32, row: i32, verb: Verb, text: String },
+    Rule { t: u32, row: i32, verb: Verb, text: Box<str>,
+        #[serde(default, skip_serializing_if = "Option::is_none")] skill: Option<Box<FiredSkill>> },
     Telegraph { t: u32, id: u32, what: String },
     Pickup { t: u32, id: u32, item: String },
     Use { t: u32, item: String, outcome: String },
@@ -2588,6 +2592,8 @@ pub struct Lineage {
     /// Cut 23 §1: the forge — the heir's starting kit, a ladder per slot (`meta::kit_ladders`).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub kit: Vec<KitLadder>,
+    #[serde(default)]
+    pub starting_kits: crate::kit::StartingKits,
     #[serde(default,skip_serializing_if="Vec::is_empty")]
     pub guns:Vec<GunOffer>,
     /// Cut 23 §3: per row of the active set (by index), its why-not over the recent sends
@@ -3286,7 +3292,7 @@ mod tests {
         assert_eq!(serde_json::to_string(&e).unwrap(), r#"{"k":"attack","t":3,"src":1,"dst":2,"dmg":4,"hit":true}"#);
         let e = Ev::Overlay { t: 1, x: 2, y: 3, ov: OverlayKind::Gas, ttl: 4 };
         assert!(serde_json::to_string(&e).unwrap().contains(r#""ov":"gas""#));
-        let e = Ev::Rule { t: 1, row: -1, verb: Verb::new("retreat"), text: "cowardly → retreat".into() };
+        let e = Ev::Rule { t: 1, row: -1, verb: Verb::new("retreat"), text: "cowardly → retreat".into(), skill: None };
         assert!(serde_json::to_string(&e).unwrap().contains(r#""row":-1"#));
     }
     #[test]

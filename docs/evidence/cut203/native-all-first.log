@@ -1,0 +1,31 @@
+
+running 854 tests
+....................................................................................... 87/854
+...... 93/854
+firearm::combat_tests::played_gun_events_bound_burst_fanout_and_reload_countdown --- FAILED
+....................................................................................... 181/854
+....................................................................................... 268/854
+...........................i........................................................... 355/854
+....................................................................................... 442/854
+....................................................................................... 529/854
+.....................iii.................i......i...................................... 616/854
+....................................................................................... 703/854
+....................................................................................... 790/854
+................................................................
+failures:
+
+---- firearm::combat_tests::played_gun_events_bound_burst_fanout_and_reload_countdown stdout ----
+
+thread 'firearm::combat_tests::played_gun_events_bound_burst_fanout_and_reload_countdown' (5455) panicked at crates/idlever-core/src/firearm_combat_tests.rs:208:5:
+assertion `left == right` failed
+  left: 128
+ right: 80
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    firearm::combat_tests::played_gun_events_bound_burst_fanout_and_reload_countdown
+
+test result: FAILED. 847 passed; 1 failed; 6 ignored; 0 measured; 0 filtered out; finished in 62.71s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -475,9 +475,6 @@ export function ownedRows(catalogue: UnlockInfo[]): UnlockCard[] {
     )
     .map((u) => ({ ...u, label: LABEL[u.id] ?? u.id.replace(/_/g, " "), gated: false }));
 }
-// Inactive compatibility helper for watch storage handlers; remove with the pending watch/API retirement.
-export const vaultSlots = (owned: string[]): number =>
-  1 + ["vault2", "vault3", "vault4", "vault5"].filter((u) => owned.includes(u)).length;
 export const supplyCap = (owned: string[]): number => (owned.includes("supply_cap_5") ? 5 : 3);
 
 /** Classes the picker lists: the known ladders ∪ whatever the lineage carries levels for ∪ class unlocks in the

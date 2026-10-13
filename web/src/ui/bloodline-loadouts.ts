@@ -2,9 +2,10 @@ import type { App } from "../app";
 import type { SupplyEntry } from "../engine/types";
 import { h, replace } from "./dom";
 import { itemIcon, itemName } from "./items";
+import { startingKits } from "./starting-kits";
 
 /** Existing prepared copies only; permanent unlocks remain in Forge. */
-export function renderBloodlineLoadouts(app: App): HTMLElement {
+export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): HTMLElement {
   const L = app.lineage;
   const owner = app.engine;
   const slot = L.selected_bloodline;
@@ -16,6 +17,7 @@ export function renderBloodlineLoadouts(app: App): HTMLElement {
   const catalogue = h("div", { class: "bloodline-catalogue" });
   const current = (): boolean =>
     catalogue.isConnected && app.engine === owner && app.lineage.selected_bloodline === slot;
+  const authored = L.starting_kits?.current;
   const paint = (rows: SupplyEntry[]): void => {
     if (!current()) return;
     replace(
@@ -36,7 +38,15 @@ export function renderBloodlineLoadouts(app: App): HTMLElement {
                 : e.needs || /* copy:tooltip */ "Free unlocked preparation",
             onclick: () => {
               if (!current() || app.lineage.live || app.lineage.town?.home === false) return;
-              void app.mutate(() => owner.buySupply(e.kind), /* copy:callout */ "Prepared");
+              void app.mutate(
+                () =>
+                  authored && owner.setStartingKit
+                    ? owner.setStartingKit(
+                        JSON.stringify({ ...authored, supplies: [...authored.supplies, e.kind] }),
+                      )
+                    : owner.buySupply(e.kind),
+                /* copy:callout */ "Prepared",
+              );
             },
           },
           itemIcon({ kind: e.kind, label: e.label }, { size: "s" }),
@@ -70,6 +80,7 @@ export function renderBloodlineLoadouts(app: App): HTMLElement {
   const body = h(
     "section",
     { class: "bloodline-loadouts" },
+    startingKits(app, open),
     h(
       "div",
       { class: "label row-label" },
@@ -96,7 +107,19 @@ export function renderBloodlineLoadouts(app: App): HTMLElement {
               "data-drop-id": p.id,
               onclick: () => {
                 if (current() && !app.lineage.live && app.lineage.town?.home !== false)
-                  void app.dropSupply(p.id);
+                  if (
+                    authored &&
+                    owner.setStartingKit &&
+                    !p.free &&
+                    authored.supplies.includes(p.kind)
+                  ) {
+                    const supplies = [...authored.supplies];
+                    supplies.splice(supplies.indexOf(p.kind), 1);
+                    void app.mutate(
+                      () => owner.setStartingKit!(JSON.stringify({ ...authored, supplies })),
+                      /* copy:callout */ "Kit changed",
+                    );
+                  } else void app.dropSupply(p.id);
               },
             },
             /* copy:button */ "Remove",

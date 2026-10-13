@@ -10,6 +10,145 @@ use crate::item::Item;
 use crate::wire::{KitBranch, KitLadder, KitNext, KitStep};
 use std::collections::BTreeMap;
 
+#[derive(Clone, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct StartingConfig {
+    pub weapon: Option<String>,
+    pub armour: Option<String>,
+    pub supplies: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct NamedKit {
+    pub id: String,
+    pub name: String,
+    pub config: StartingConfig,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct GearChoice {
+    pub kind: String,
+    pub label: String,
+    pub damage: [i32; 2],
+    pub armour: i32,
+    pub speed: i32,
+    pub available: bool,
+    pub needs: Option<String>,
+    pub ranged: bool,
+    pub compatible: bool,
+}
+
+#[derive(Clone, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct StartingKits {
+    pub current: Option<StartingConfig>,
+    pub selected: Option<String>,
+    pub saved: Vec<NamedKit>,
+    pub weapons: Vec<GearChoice>,
+    pub armours: Vec<GearChoice>,
+    pub actual_weapon: String,
+    pub actual_armour: Option<String>,
+}
+
+fn shape_available(l: &LineageState, kind: &str, cat: crate::defs::Cat) -> bool {
+    if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner { return false; }
+    crate::defs::ITEMS.iter().any(|d| d.kind == kind && d.cat == cat)
+        && crate::firearm::Profile::of(kind).is_none()
+        && (cat == crate::defs::Cat::Weapon && kind == crate::firearm::starting_kind(l)
+            || l.forge.get(kind).is_some_and(|row| row.craftable))
+}
+
+pub fn starting_weapon_compatible(l: &LineageState) -> bool {
+    l.starting_config.as_ref().and_then(|c|c.weapon.as_deref()).is_none_or(|k|shape_available(l,k,crate::defs::Cat::Weapon))
+}
+
+pub fn starting_wire(l: &LineageState) -> StartingKits {
+    let choices = |cat| crate::defs::ITEMS.iter().filter(|d| d.cat == cat && crate::firearm::Profile::of(d.kind).is_none())
+        .map(|d| GearChoice { kind: d.kind.into(), label: d.kind.replace('_', " "),
+            damage: if cat == crate::defs::Cat::Weapon { [d.a.0,d.a.1] } else { [0,0] },
+            armour: if cat == crate::defs::Cat::Armour { d.a.0 } else { 0 }, speed: d.speed,
+            available: shape_available(l, d.kind, cat),
+            ranged: d.ranged, compatible: cat != crate::defs::Cat::Weapon || l.class != crate::hero::Class::Gunner,
+            needs: (!shape_available(l, d.kind, cat)).then(|| if cat == crate::defs::Cat::Weapon && l.class == crate::hero::Class::Gunner {
+                "Gunner uses firearms".into()
+            } else { format!("discover {} more", 5u32.saturating_sub(l.forge.get(d.kind).map_or(0, |r| r.salvaged))) }) }).collect();
+    let mut hero=Hero::new(l.class,crate::geom::Pos::new(0,0)); equip(l,&mut hero);
+    StartingKits { current: l.starting_config.clone(), selected: l.starting_selected.clone(),
+        saved: l.named_kits.clone(), weapons: choices(crate::defs::Cat::Weapon), armours: choices(crate::defs::Cat::Armour),
+        actual_weapon: hero.weapon.as_ref().map(|w|w.kind.clone()).unwrap_or_default(), actual_armour: hero.armour.as_ref().map(|a|a.kind.clone()) }
+}
+
+fn validate_config(game: &Game, config: &StartingConfig) -> Result<(), String> {
+    if config.weapon.as_ref().is_some_and(|k| !shape_available(&game.lineage, k, crate::defs::Cat::Weapon))
+        || config.armour.as_ref().is_some_and(|k| k != "none" && !shape_available(&game.lineage, k, crate::defs::Cat::Armour)) {
+        return Err("gear not unlocked".into());
+    }
+    let extra_free = game.lineage.supplies.iter().filter(|i| i.free).count()
+        .saturating_sub(config.supplies.iter().filter(|k| k.as_str() == "leash").count());
+    if config.supplies.len() + extra_free > game.lineage.supply_cap() { return Err("kit too large".into()); }
+    let catalogue = game.supply_catalogue();
+    if config.supplies.iter().any(|k| !catalogue.iter().any(|s| &s.kind == k)) { return Err("item not unlocked".into()); }
+    Ok(())
+}
+
+pub fn set_starting(game: &mut Game, config: Option<StartingConfig>) -> Result<(), String> {
+    if let Some(config) = &config { validate_config(game, config)?; }
+    game.lineage.starting_config = config;
+    game.lineage.starting_selected = None;
+    prepare_starting(game);
+    Ok(())
+}
+
+pub fn save_starting(game: &mut Game, name: &str, config: StartingConfig, id: Option<&str>) -> Result<String, String> {
+    validate_config(game, &config)?;
+    let name = name.trim();
+    if name.is_empty() || name.chars().count() > 32 || name.chars().any(char::is_control) { return Err("invalid kit name".into()); }
+    if let Some(id) = id {
+        let old = game.lineage.named_kits.iter_mut().find(|k| k.id == id).ok_or("unknown kit")?;
+        old.name = name.into(); old.config = config;
+        if game.lineage.starting_selected.as_deref() == Some(id) { game.lineage.starting_selected = None; }
+        return Ok(id.into());
+    }
+    if game.lineage.named_kits.len() >= 8 { return Err("eight kits maximum".into()); }
+    let id = format!("kit{}", game.lineage.next_named_kit);
+    game.lineage.next_named_kit += 1;
+    game.lineage.named_kits.push(NamedKit { id: id.clone(), name: name.into(), config });
+    Ok(id)
+}
+
+pub fn select_starting(game: &mut Game, id: &str) -> Result<(), String> {
+    let config = game.lineage.named_kits.iter().find(|k| k.id == id).ok_or("unknown kit")?.config.clone();
+    validate_config(game, &config)?;
+    game.lineage.starting_config = Some(config);
+    game.lineage.starting_selected = Some(id.into());
+    prepare_starting(game);
+    Ok(())
+}
+
+pub fn delete_starting(game: &mut Game, id: &str) -> Result<(), String> {
+    let i = game.lineage.named_kits.iter().position(|k| k.id == id).ok_or("unknown kit")?;
+    game.lineage.named_kits.remove(i);
+    if game.lineage.starting_selected.as_deref() == Some(id) { game.lineage.starting_selected = None; }
+    Ok(())
+}
+
+/// Replace preparation only for an explicitly selected configuration. Preserve kennel provenance.
+pub fn prepare_starting(game: &mut Game) {
+    let Some(config) = game.lineage.starting_config.clone() else { return };
+    let mut remaining = config.supplies.clone();
+    game.lineage.supplies.retain_mut(|i| {
+        if let Some(n) = remaining.iter().position(|k| *k == i.kind) {
+            remaining.remove(n);
+            if !i.free { i.auto_packed = false; }
+            true
+        } else { i.free }
+    });
+    // Authored named slots replace the old repeated selection; package slots may use spare space.
+    game.lineage.last_supplies = config.supplies.clone();
+    game.lineage.last_supply_origins.clear();
+    for kind in remaining {
+        let _ = game.buy_supply(&kind);
+    }
+}
+
 /// The ladders, in the camp's order.
 pub const KIT_SLOTS: [&str; 3] = ["weapon", "armour", "pack"];
 
@@ -362,7 +501,8 @@ pub fn buy_all(l: &mut LineageState) {
 /// The heir's starting kit: the class arm at the weapon ladder's enchant, the armour step's
 /// piece (none before the first step). Items with the kit's ids are never loot.
 pub fn equip(l: &LineageState, hero: &mut Hero) {
-    let mut w = Item::new(WEAPON_ID, crate::firearm::starting_kind(l));
+    let mut w = Item::new(WEAPON_ID, l.starting_config.as_ref().and_then(|c| c.weapon.as_deref())
+        .filter(|kind| shape_available(l, kind, crate::defs::Cat::Weapon)).unwrap_or_else(|| crate::firearm::starting_kind(l)));
     w.enchant = owned(l, "weapon") as i32;
     // Cut 113 §2: a tier off the ladder's own split carries its aim count
     let forged = l.kit_alt.get("weapon").is_some_and(|m| *m != 0).then(|| {
@@ -379,9 +519,17 @@ pub fn equip(l: &LineageState, hero: &mut Hero) {
     }
     let [plate, pace] = branch_counts(l, "armour");
     hero.pace = pace_tenths(pace as usize);
-    if let Some((k, e)) = plate_piece(plate as usize) {
+    let default_armour = plate_piece(plate as usize);
+    let chosen = l.starting_config.as_ref().and_then(|c| c.armour.as_deref());
+    let piece = match chosen {
+        Some("none") => None,
+        Some(k) if shape_available(l, k, crate::defs::Cat::Armour) => Some((k, default_armour.map_or(0, |(_, e)| e))),
+        _ => default_armour,
+    };
+    if let Some((k, e)) = piece {
         let mut it = Item::new(ARMOUR_ID, k);
         it.enchant = e;
+        if chosen.is_some() { hero.pace += it.def().speed * 10; }
         hero.auto_equip(it);
     }
 }
@@ -501,4 +649,186 @@ pub fn commission(game: &mut Game) -> Result<String, String> {
     l.gold_move(-price, &format!("forge commission {label}"));
     l.works.push(label.clone());
     Ok(label)
+}
+
+#[cfg(test)]
+mod starting_kit_tests {
+    use super::*;
+
+    fn config(weapon: &str, armour: &str, supplies: &[&str]) -> StartingConfig {
+        StartingConfig { weapon: Some(weapon.into()), armour: Some(armour.into()), supplies: supplies.iter().map(|k| (*k).into()).collect() }
+    }
+    fn controlled() -> Game {
+        let mut g = Game::new_resident(1);
+        for k in ["axe","leather","mail","heal"] { g.lineage.forge.insert(k.into(),crate::wire::ForgeRow::at(5)); }
+        g.lineage.gold = 0;
+        g
+    }
+
+    #[test]
+    fn locked_gear_and_invalid_saved_selection_are_atomic() {
+        let mut g = Game::new_resident(1);
+        g.lineage.forge.insert("axe".into(),crate::wire::ForgeRow::at(4));
+        let before = g.save();
+        assert!(set_starting(&mut g,Some(config("axe","none",&[]))).is_err());
+        assert!(select_starting(&mut g,"absent").is_err());
+        assert_eq!(g.save(),before);
+        g.lineage.forge.insert("axe".into(),crate::wire::ForgeRow::at(5));
+        let id = save_starting(&mut g,"Axe",config("axe","none",&[]),None).unwrap();
+        select_starting(&mut g,&id).unwrap();
+        assert_eq!(g.lineage.starting_selected.as_deref(),Some(id.as_str()));
+    }
+
+    #[test]
+    fn named_authored_duplicates_refill_for_three_actual_departures_at_zero_gold() {
+        let mut g = controlled();
+        let id = save_starting(&mut g,"Healer",config("axe","leather",&["heal","heal","leash"]),None).unwrap();
+        select_starting(&mut g,&id).unwrap();
+        for _ in 0..3 {
+            g.lineage.gold = 0;
+            let transactions = g.lineage.ledger();
+            g.send();
+            let run = g.run.as_ref().unwrap();
+            assert_eq!(run.hero.weapon.as_ref().unwrap().kind,"axe");
+            assert_eq!(run.hero.inv.iter().filter(|i| i.kind == "heal").count(),2);
+            assert_eq!(run.hero.inv.iter().filter(|i| i.kind == "leash").map(|i| i.amount).sum::<i32>(),1);
+            assert!(run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).all(|i| i.value_claimed));
+            assert_eq!(g.lineage.gold,0);
+            assert_eq!(g.lineage.ledger(),transactions);
+            crate::offline::run_offline_counts(&mut g,1);
+        }
+    }
+
+    #[test]
+    fn named_identity_limits_delete_and_gear_tradeoffs_survive_reload() {
+        let mut g = controlled();
+        let a = save_starting(&mut g,"Blade",config("sword","leather",&[]),None).unwrap();
+        let b = save_starting(&mut g,"Axe",config("axe","none",&[]),None).unwrap();
+        let stats = |g: &Game| { let mut h = Hero::new(g.lineage.class,crate::geom::Pos::new(0,0)); equip(&g.lineage,&mut h); (h.atk(),h.speed(),h.def()) };
+        select_starting(&mut g,&a).unwrap(); let blade=stats(&g);
+        select_starting(&mut g,&b).unwrap(); let axe=stats(&g);
+        assert_eq!(blade,((3,7),10,1)); assert_eq!(axe,((4,9),9,0));
+        save_starting(&mut g,"Edited axe",config("sword","none",&[]),Some(&b)).unwrap();
+        assert_eq!(stats(&g),axe);
+        assert_eq!(g.lineage.starting_selected,None);
+        assert_ne!(g.lineage.named_kits.iter().find(|k|k.id==b).unwrap().config,g.lineage.starting_config.clone().unwrap());
+        let mut loaded = Game::load(&g.save()).unwrap();
+        assert_eq!(loaded.lineage.named_kits,g.lineage.named_kits);
+        delete_starting(&mut loaded,&b).unwrap(); assert_eq!(stats(&loaded),axe);
+        for n in 0..7 { save_starting(&mut loaded,&format!("kit{n}"),config("sword","none",&[]),None).unwrap(); }
+        let before=loaded.save();
+        assert!(save_starting(&mut loaded,"overflow",config("sword","none",&[]),None).is_err());
+        assert!(save_starting(&mut loaded," ",config("sword","none",&[]),Some(&a)).is_err());
+        assert_eq!(loaded.save(),before);
+    }
+
+    #[test]
+    fn default_draws_paid_upgrades_and_selected_offline_reload_remain_exact() {
+        let mut g=controlled(); let mut default=g.clone();
+        set_starting(&mut default,None).unwrap();
+        g.send(); default.send(); assert_eq!(g.run,default.run);
+        let mut g=controlled();
+        assert!(buy(&mut g,"weapon").is_err());
+        let price=price(&g.lineage,"weapon",0) as i32; g.lineage.gold=price;
+        buy(&mut g,"weapon").unwrap(); assert_eq!(g.lineage.gold,0);
+        set_starting(&mut g,Some(config("axe","mail",&["heal","heal"]))).unwrap();
+        crate::tree::grant(&mut g.lineage,&crate::tree::LEGACY);
+        let mut whole=g.clone(); let mut sliced=Game::load(&g.save()).unwrap();
+        crate::offline::run_offline_counts(&mut whole,3600);
+        crate::offline::run_offline_counts(&mut sliced,1800);
+        sliced=Game::load(&sliced.save()).unwrap();
+        crate::offline::run_offline_counts(&mut sliced,1800);
+        assert_eq!(whole.lineage.gold,sliced.lineage.gold);
+        assert_eq!(whole.lineage.best_depth,sliced.lineage.best_depth);
+        assert_eq!(whole.lineage.total_turns,sliced.lineage.total_turns);
+        assert_eq!(whole.run,sliced.run);
+        assert_eq!(owned(&whole.lineage,"weapon"),1);
+    }
+
+    #[test]
+    fn explicit_armour_drag_preserves_fractional_pace_and_class_safety() {
+        let mut g=controlled();
+        g.lineage.kit.insert("armour".into(),1);
+        g.lineage.kit_alt.insert("armour".into(),1);
+        set_starting(&mut g,Some(config("axe","mail",&[]))).unwrap();
+        let mut h=Hero::new(g.lineage.class,crate::geom::Pos::new(0,0)); equip(&g.lineage,&mut h);
+        assert_eq!(h.pace,-2); assert_eq!(h.speed(),8); // axe9 + mail−1 + pace0.8
+        assert_eq!((0..10).map(|t|pace_energy(h.pace,t)).sum::<i32>(),8);
+        let id=save_starting(&mut g,"Mail axe",config("axe","mail",&[]),None).unwrap();
+        select_starting(&mut g,&id).unwrap();
+        g.lineage.unlocks.insert("gunner".into());
+        g.set_class("gunner").unwrap();
+        assert_eq!(g.lineage.starting_config.as_ref().unwrap().weapon,None);
+        assert_eq!(g.lineage.starting_selected,None);
+        assert_eq!(starting_wire(&g.lineage).actual_weapon,crate::firearm::starting_kind(&g.lineage));
+        let before=g.save();
+        assert!(select_starting(&mut g,"absent").is_err());
+        assert!(set_starting(&mut g,Some(config("axe","mail",&[]))).is_err());
+        assert_eq!(g.save(),before);
+        let mut h=Hero::new(g.lineage.class,crate::geom::Pos::new(0,0)); equip(&g.lineage,&mut h);
+        assert_eq!(h.weapon.as_ref().unwrap().kind,crate::firearm::starting_kind(&g.lineage));
+    }
+
+    #[test]
+    fn three_bloodline_choices_are_local_and_offline_slicing_keeps_shared_gold() {
+        let mut s=crate::bloodlines::Session::new(1);
+        s.build_town("house").unwrap(); s.lineage.gold=10_000;
+        s.add_bloodline().unwrap(); s.add_bloodline().unwrap();
+        crate::tree::grant(&mut s.lineage,&crate::tree::LEGACY);
+        for id in 1..=3 {
+            s.select_bloodline(id).unwrap();
+            s.lineage.forge.insert("axe".into(),crate::wire::ForgeRow::at(5));
+            let c=config(if id==2 {"axe"} else {"sword"},"none",&[]);
+            let k=save_starting(&mut s,&format!("Hero{id}"),c,None).unwrap();
+            select_starting(&mut s,&k).unwrap();
+        }
+        let saved=s.save(); let mut whole=crate::bloodlines::Session::load(&saved).unwrap();
+        let mut sliced=crate::bloodlines::Session::load(&saved).unwrap();
+        whole.run_offline_slice(3600,true);
+        sliced.run_offline_slice(1800,false);
+        sliced=crate::bloodlines::Session::load(&sliced.save()).unwrap();
+        sliced.run_offline_slice(1800,true);
+        for id in 1..=3 {
+            whole.select_bloodline(id).unwrap(); sliced.select_bloodline(id).unwrap();
+            assert_eq!(whole.lineage.gold,sliced.lineage.gold);
+            assert_eq!(whole.lineage.total_turns,sliced.lineage.total_turns);
+            assert_eq!(whole.run,sliced.run);
+            assert_eq!(whole.lineage.starting_config,sliced.lineage.starting_config);
+            assert_eq!(whole.lineage.named_kits[0].name,format!("Hero{id}"));
+            assert_eq!(whole.lineage.starting_config.as_ref().unwrap().weapon.as_deref(),Some(if id==2 {"axe"} else {"sword"}));
+        }
+    }
+
+    #[test]
+    fn fired_class_skill_has_actual_origin_and_deterministic_event_identity() {
+        let mut g=controlled();
+        crate::legacy::ensure(&mut g.lineage);
+        g.lineage.classes.insert("fighter".into(),crate::wire::ClassProg { level:8,xp:19,next:0 });
+        g.lineage.hero_legacy.last_mut().unwrap().best_depth=18;
+        crate::class_tree::learn(&mut g,"fighter_warden").unwrap();
+        crate::class_tree::learn(&mut g,"fighter_recovery").unwrap();
+        g.send();
+        let r=g.run.as_mut().unwrap();
+        r.hero.hp=20; r.hero.max_hp=40; r.hero.max_hp_base=40;
+        r.hero.inv.clear(); r.hero.energy=100; r.monsters.clear();
+        let p=r.hero.pos.neighbours8().into_iter().find(|p|r.floor.map.passable(*p)).unwrap();
+        let mut m=crate::monster::Monster::spawn(900,"goblin",p,1);
+        m.hp=100; m.max_hp=100; m.awake=true; r.monsters.push(m);
+        r.floor.map.update_vision(r.hero.pos,8);
+        let mut twin=Game::load(&g.save()).unwrap();
+        let a=g.step(1); let b=twin.step(1);
+        assert_eq!(a.events,b.events);
+        let event=a.events.iter().find(|e|matches!(e,crate::wire::Ev::Rule { verb,.. } if verb.v=="second_wind")).unwrap();
+        match event {
+            crate::wire::Ev::Rule { skill:Some(skill),.. } => {
+                assert_eq!(skill.id,"fighter_recovery");
+                assert_eq!(Some(skill.name.clone()),crate::class_tree::label("path:fighter_recovery"));
+            }, _=>panic!("executing path row must identify its actual skill"),
+        }
+        assert_eq!(serde_json::from_str::<crate::wire::Ev>(&serde_json::to_string(event).unwrap()).unwrap(),*event);
+        let r=g.run.as_mut().unwrap(); r.hero.hp=r.hero.max_hp; r.hero.energy=100;
+        let regular=g.step(1);
+        assert!(regular.events.iter().any(|e|matches!(e,crate::wire::Ev::Rule { verb,skill:None,.. } if verb.v=="attack")));
+        assert!(regular.events.iter().all(|e|!matches!(e,crate::wire::Ev::Rule { row,skill:Some(_),.. } if *row<0)));
+    }
 }

@@ -1,0 +1,11 @@
+{
+  "after_hp": 35,
+  "api": "step(1)",
+  "before_hp": 20,
+  "expected_skill": {
+    "id": "fighter_recovery",
+    "name": "Recovery"
+  },
+  "expected_verb": "second_wind",
+  "fixture": "controlled qualification: Fighterlevel8/XP19/historicaldepth18; public learn(warden),learn(recovery),send; controlled20/40HP,energy100,adjacent100HPgoblin. Actualstep(1) executes learned Recovery"
+}

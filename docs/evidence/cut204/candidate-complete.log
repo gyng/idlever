@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: real hover changes the plate
+    at file:///home/g/p/riddle/tools/ui-foundations-check.mjs:127:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'rgb(43, 51, 80)',
+  expected: 'rgb(43, 51, 80)',
+  operator: 'notStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

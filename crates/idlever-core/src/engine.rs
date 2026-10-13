@@ -1637,6 +1637,14 @@ pub struct LineageState {
     /// §1: the forge — steps owned per ladder (`kit::KIT_SLOTS`), permanent for the lineage.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub kit: BTreeMap<String, u32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub starting_config: Option<crate::kit::StartingConfig>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub starting_selected: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub named_kits: Vec<crate::kit::NamedKit>,
+    #[serde(default = "starting_kit_id")]
+    pub next_named_kit: u32,
     /// §1: this night's net gold (every movement but the player's purchases: unlocks, the
     /// forge, insurance, hatching) and the last full night's (`kit::nights`).
     #[serde(default)]
@@ -1840,6 +1848,8 @@ fn default_start() -> u32 {
     1
 }
 
+fn starting_kit_id() -> u32 { 1 }
+
 /// Cut 21 §1: the waystones — each biome's first floor below the Warrens (Burrows D5, Fens D9,
 /// Crypt D14, Foundry D19, Deep D24, Sanctum D29).
 pub const WAYSTONES: [u32; 6] = [5, 9, 14, 19, 24, 29];
@@ -1998,6 +2008,10 @@ impl LineageState {
             lane_stones: Vec::new(),
             start: 1,
             kit: BTreeMap::new(),
+            starting_config: None,
+            starting_selected: None,
+            named_kits: Vec::new(),
+            next_named_kit: 1,
             night_net: 0,
             last_night_net: 0,
             row_stats: Vec::new(),
@@ -2377,6 +2391,7 @@ impl LineageState {
             start_pass: self.night_passes.contains(&self.start.max(1)),
             renamed: self.renamed(),
             kit: crate::kit::ladders(self),
+            starting_kits: crate::kit::starting_wire(self),
             guns:Vec::new(),
             row_why: self.row_why(),
             forks: self.fork_chips(),
@@ -3713,6 +3728,10 @@ impl Game {
         }
         let was_gunner=self.lineage.class==Class::Gunner;
         self.lineage.class = c;
+        if !crate::kit::starting_weapon_compatible(&self.lineage) {
+            if let Some(config) = &mut self.lineage.starting_config { config.weapon = None; }
+            self.lineage.starting_selected = None;
+        }
         if c==Class::Gunner {self.lineage.classes.entry("gunner".into()).or_insert(ClassProg{level:1,xp:0,next:0});}
         if was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty()||!self.lineage.class_paths.is_empty() {crate::packages::recompile(&mut self.lineage);}
         Ok(())
@@ -4180,6 +4199,7 @@ impl Game {
         // (Cut 29 §4: the kinds a player's `throw` row names are offered on the camp's repeat tile —
         // `Lineage.repeat_added`, one tap buys it and the repeat keeps it — never added unasked: added at
         // the send they moved the oath gate's raterAT sets to 1 row from bank-optimal)
+        crate::kit::prepare_starting(self);
         let plan: Vec<(String, bool)> = if self.lineage.restock_off {
             Vec::new()
         } else {
@@ -6740,7 +6760,8 @@ impl Game {
                 self.lineage.supplies.remove(i);
             }
             if self.lineage.supplies.len() >= self.lineage.supply_cap() {
-                if let Some(i) = self.lineage.supplies.iter().rposition(|s| !qm.contains(&s.kind)) {
+                if let Some(i) = self.lineage.supplies.iter().rposition(|s| !qm.contains(&s.kind)
+                    && (self.lineage.starting_config.is_none() || s.auto_packed)) {
                     self.lineage.supplies.remove(i);
                 }
             }

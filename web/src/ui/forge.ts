@@ -490,6 +490,7 @@ export function openForge(app: App, anchor?: HTMLElement | null): void {
       );
     },
     {
+      material: "forge",
       anchor,
       onClose: () => {
         unChange?.();

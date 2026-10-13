@@ -3197,7 +3197,7 @@ fn recall_sense_reads_recall_below_fifteen_percent() {
     g.run.as_mut().unwrap().hero.hp = 4;
     hold_rules(&mut g);
     let evs = ticks(&mut g, 10);
-    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text == "recall sense")));
+    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text.as_ref() == "recall sense")));
     assert_eq!(g.run.as_ref().unwrap().over, Some(ExitTier::Bank));
 }
 
@@ -3861,7 +3861,7 @@ fn a_pursued_foe_out_of_view_is_remembered_and_hunted() {
     let id = add_monster(&mut g, "goblin", 7, 5);
     attack_rules(&mut g);
     let evs = ticks(&mut g, 10);
-    let texts: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.clone()) } else { None }).collect();
+    let texts: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.to_string()) } else { None }).collect();
     assert!(!texts.is_empty() && texts.iter().all(|t| t == "attack goblin"), "{texts:?}");
     assert!(texts.iter().all(|t| word_count(t) <= 3));
     let seen_at = g.run.as_ref().unwrap().known_foes.get(&id).map(|(p, _)| *p).expect("the goblin was noted");
@@ -3882,7 +3882,7 @@ fn a_pursued_foe_out_of_view_is_remembered_and_hunted() {
     assert!(!serde_json::to_string(&snap.hero).unwrap().contains("remembered"), "serde skips it when false");
     let pos_before = hero(&g).pos;
     let evs = ticks(&mut g, 10);
-    let hunt: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.clone()) } else { None }).collect();
+    let hunt: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.to_string()) } else { None }).collect();
     assert!(!hunt.is_empty() && hunt[0].starts_with("hunt goblin"), "{hunt:?}");
     assert!(hero(&g).pos != pos_before, "the hero walked toward the last-seen tile");
     assert!(g.run.as_ref().unwrap().trace.last().unwrap().row == 0, "the hunt is the row's action");
@@ -4093,7 +4093,7 @@ fn blood_drawn_lifts_the_stalemate_guards_and_nobody_waits_while_bitten() {
     assert!(!chores.contains(&"wait".to_string()), "{chores:?}");
     assert!(chores.iter().any(|v| v == "cornered"), "{chores:?}");
     assert!(!chores.iter().any(|v| v == "attack"), "{chores:?}");
-    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text == "cornered, no orders")));
+    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text.as_ref() == "cornered, no orders")));
 }
 
 /// Cut 4 (rater B): `auto_supply` restocks the last expedition's supplies from gold when the
@@ -4622,7 +4622,7 @@ fn bail_queues_a_return_for_the_next_action() {
     g.bail();
     let evs = ticks(&mut g, 10);
     assert_eq!(g.run.as_ref().unwrap().over, Some(ExitTier::Return));
-    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { row: -2, verb, text, .. } if verb.v == "return" && text == "bail → return")), "{:?}", ev_kinds(&evs));
+    assert!(evs.iter().any(|e| matches!(e, Ev::Rule { row: -2, verb, text, .. } if verb.v == "return" && text.as_ref() == "bail → return")), "{:?}", ev_kinds(&evs));
     assert_eq!(g.lineage.rules(), &before);
     assert!(g.run.as_ref().unwrap().exit_row.is_none(), "not a row's exit");
     // No run: a no-op.

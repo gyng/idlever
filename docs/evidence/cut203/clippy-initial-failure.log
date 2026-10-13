@@ -1,0 +1,251 @@
+error[E0027]: pattern does not mention field `skill`
+  --> crates/idlever-core/examples/chores.rs:73:29
+   |
+73 | ...                   Ev::Rule { t, row, verb, text } if verb.v == "pick_up" && *row < 0 => {
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing field `skill`
+   |
+help: include the missing field in the pattern
+   |
+73 |                             Ev::Rule { t, row, verb, text, skill } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          +++++++
+help: if you don't care about this missing field, you can explicitly ignore it
+   |
+73 |                             Ev::Rule { t, row, verb, text, skill: _ } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          ++++++++++
+help: or always ignore missing fields here
+   |
+73 |                             Ev::Rule { t, row, verb, text, .. } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          ++++
+
+error[E0027]: pattern does not mention field `skill`
+  --> crates/idlever-core/examples/watch.rs:63:25
+   |
+63 |                         Ev::Rule { t, row, verb, text } => {
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing field `skill`
+   |
+help: include the missing field in the pattern
+   |
+63 |                         Ev::Rule { t, row, verb, text, skill } => {
+   |                                                      +++++++
+help: if you don't care about this missing field, you can explicitly ignore it
+   |
+63 |                         Ev::Rule { t, row, verb, text, skill: _ } => {
+   |                                                      ++++++++++
+help: or always ignore missing fields here
+   |
+63 |                         Ev::Rule { t, row, verb, text, .. } => {
+   |                                                      ++++
+
+For more information about this error, try `rustc --explain E0027`.
+error: could not compile `idlever-core` (example "watch") due to 1 previous error
+error: could not compile `idlever-core` (example "chores") due to 1 previous error
+error: items after a test module
+   --> crates/idlever-core/src/kit.rs:64:1
+    |
+ 64 | mod starting_kit_tests {
+    | ^^^^^^^^^^^^^^^^^^^^^^
+...
+235 | pub fn starting_wire(l: &LineageState) -> StartingKits {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+251 | fn validate_config(game: &Game, config: &StartingConfig) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+264 | pub fn set_starting(game: &mut Game, config: Option<StartingConfig>) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+272 | pub fn save_starting(game: &mut Game, name: &str, config: StartingConfig, id: Option<&str>) -> Result<String, String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+288 | pub fn select_starting(game: &mut Game, id: &str) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+297 | pub fn delete_starting(game: &mut Game, id: &str) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+305 | pub fn prepare_starting(game: &mut Game) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+324 | pub const KIT_SLOTS: [&str; 3] = ["weapon", "armour", "pack"];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+331 | pub const WEAPON_MULT: [u32; 6] = [1, 4, 9, 16, 25, 36];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+332 | /// Weapon steps past this many are damage, not aim.
+333 | pub const AIM_STEPS: i32 = 3;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+334 | /// Each weapon step past the aim adds this much to the blow.
+335 | pub const DMG_PER_STEP: i32 = 2;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+338 | pub const AIM_PER_STEP: u32 = 4;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+343 | pub const ARMOUR_STEPS: [(&str, i32); 7] = [("leather", 0), ("leather", 1), ("mail", 0), ("mail", 1), ("mail", 2), ("plate", 0), ("...
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+344 | pub const ARMOUR_MULT: [u32; 7] = [1, 4, 8, 14, 22, 32, 45];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+349 | pub const BRANCHES: [(&str, [&str; 2]); 2] = [("weapon", ["aim", "edge"]), ("armour", ["plate", "pace"])];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+350 | /// Aim past the ladder's third aim step: this many points a step (the to-hit tops out at 100).
+351 | pub const AIM_PER_LATE_STEP: u32 = 3;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+354 | pub const EARLY_EDGE: i32 = 1;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+357 | pub const PACE_TENTHS: [i32; 7] = [8, 7, 6, 5, 5, 4, 4];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+360 | pub fn pace_tenths(q: usize) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+365 | pub fn pace_energy(pace: i32, tick: u32) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+370 | pub fn branches(slot: &str) -> Option<[&'static str; 2]> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+375 | pub fn default_branch(slot: &str, i: usize) -> Option<&'static str> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+381 | pub fn branch_at(l: &LineageState, slot: &str, i: usize) -> Option<&'static str> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+389 | pub fn branch_counts(l: &LineageState, slot: &str) -> [u32; 2] {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+400 | pub fn aim_steps(w: &Item) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+406 | pub fn blow(w: &Item) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+414 | pub fn hit_pct(w: &Item) -> u32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+421 | fn plate_piece(plate: usize) -> Option<(&'static str, i32)> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+425 | fn piece_label((k, e): (&str, i32)) -> String {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+430 | pub fn branch_label(l: &LineageState, slot: &str, branch: &str) -> String {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+444 | pub const PACK_MULT: [u32; 4] = [2, 5, 10, 16];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+447 | pub const SUPPLY_CAP_MAX: usize = 8;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+448 | /// Cut 23 §1: the row slots on the forge's ladder (`row5` … `row10`), multiples of `unit`.
+449 | pub const ROW_MULT: [(&str, u32); 6] = [("row5", 2), ("row6", 5), ("row7", 10), ("row8", 16), ("row9", 22), ("row10", 30)];
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+452 | pub const WEAPON_ID: u32 = 1;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+453 | pub const ARMOUR_ID: u32 = 2;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+454 | /// Reserved outside historical floor/supply ids; the optional backup is never loot.
+455 | pub const SIDEARM_ID:u32=u32::MAX-1;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+456 | pub fn is_kit_id(id: u32) -> bool {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+463 | pub fn unit(best_depth: u32) -> u32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+471 | pub fn unit_of(l: &LineageState) -> u32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+478 | pub fn lock_unit(l: &mut LineageState) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+494 | pub fn mults(slot: &str) -> &'static [u32] {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+504 | pub fn owned(l: &LineageState, slot: &str) -> u32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+509 | pub fn step_label(l: &LineageState, slot: &str, i: usize) -> String {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+525 | pub fn step_item(l: &LineageState, slot: &str, i: usize) -> Option<(String, crate::item::Rarity)> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+540 | pub fn price(l: &LineageState, slot: &str, i: usize) -> u32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+545 | pub fn row_gold(l: &LineageState, id: &str) -> Option<u32> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+550 | pub fn per_night(l: &LineageState) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+554 | fn s_short(l: &LineageState, price: u32) -> i64 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+559 | pub fn base_cap(l: &LineageState) -> usize {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+569 | pub fn nights(l: &LineageState, short: i64) -> Option<u32> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+578 | pub fn ladders(l: &LineageState) -> Vec<KitLadder> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+604 | pub fn buy(game: &mut Game, slot: &str) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+624 | pub fn buy_step(l: &mut LineageState, slot: &str) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+630 | pub fn buy_step_off(l: &mut LineageState, slot: &str, off: u32) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+636 | pub fn buy_branch_off(l: &mut LineageState, slot: &str, branch: Option<&str>, off: u32) -> Result<(), String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+666 | pub fn buy_all(l: &mut LineageState) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+674 | pub fn equip(l: &LineageState, hero: &mut Hero) {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+713 | pub fn deltas(game: &Game) -> Vec<KitLadder> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+718 | pub fn estimates(game: &Game) -> Vec<KitLadder> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+722 | fn deltas_with(game: &Game, sims: u32, outcomes: bool) -> Vec<KitLadder> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+778 | pub const COMMISSION_UNITS: u32 = 10;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+781 | pub const WORKS: [&str; 8] = ["heir's statue", "camp hall", "chronicle wall", "boss trophies", "the forge's bell", "a banner", "the...
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+789 | pub fn commission_price(l: &LineageState) -> i32 {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+797 | pub const COMMISSION_FLOOR: u32 = 5;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+798 |
+799 | fn work_label(n: usize) -> String {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+806 | pub fn commission_wire(l: &LineageState) -> crate::wire::Commission {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+812 | pub fn commission(game: &mut Game) -> Result<String, String> {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#items_after_test_module
+    = note: `-D clippy::items-after-test-module` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::items_after_test_module)]`
+    = help: move the items to before the test module was defined
+
+error: could not compile `idlever-core` (lib test) due to 1 previous error

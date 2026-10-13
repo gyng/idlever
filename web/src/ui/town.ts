@@ -1044,6 +1044,7 @@ export function openHero(
           L.legacy_upgrades,
           L.legacy_respec,
           L.supplies,
+          L.starting_kits,
           L.supply_cap,
           L.repeat,
           L.facts,
@@ -1071,6 +1072,11 @@ export function openHero(
         const classTreeOpen = new Set(
           [...body.querySelectorAll<HTMLDetailsElement>("[data-class-tree-fold][open]")].map(
             (el) => el.dataset.classTreeFold!,
+          ),
+        );
+        const startingGearOpen = new Set(
+          [...body.querySelectorAll<HTMLDetailsElement>("[data-starting-gear][open]")].map(
+            (el) => el.dataset.startingGear!,
           ),
         );
         const L = app.lineage,
@@ -1166,6 +1172,7 @@ export function openHero(
             JSON.stringify([
               L.selected_bloodline,
               L.supplies,
+              L.starting_kits,
               L.supply_cap,
               L.repeat,
               L.facts,
@@ -1173,7 +1180,7 @@ export function openHero(
               !!L.live,
               L.town?.home,
             ]),
-            renderBloodlineLoadouts(app),
+            renderBloodlineLoadouts(app, startingGearOpen),
           ),
           tabs.panel(
             "class",

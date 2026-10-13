@@ -70,7 +70,7 @@ fn main() {
                                 depth = *d;
                             }
                             Ev::Pickup { id: 1, .. } => dry = 0,
-                            Ev::Rule { t, row, verb, text } if verb.v == "pick_up" && *row < 0 => {
+                            Ev::Rule { t, row, verb, text, .. } if verb.v == "pick_up" && *row < 0 => {
                                 per += 1;
                                 dry += 1;
                                 if dry > dry_worst && std::env::var("DRY").is_ok() {

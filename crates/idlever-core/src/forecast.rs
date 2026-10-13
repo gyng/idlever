@@ -1280,6 +1280,7 @@ fn take_part(kind: &str, l: &mut crate::engine::LineageState, now: &crate::engin
             l.last_supply_origins = now.last_supply_origins.clone();
             l.forge = now.forge.clone();
             l.kit = now.kit.clone();
+            l.starting_config = now.starting_config.clone();
             l.insured = now.insured.clone();
             l.keep_pref = now.keep_pref.clone();
             l.vault_pref = now.vault_pref.clone();
@@ -1358,7 +1359,7 @@ fn part_text(kind: &str, was: &crate::engine::LineageState, now: &crate::engine:
         }
         "kit" => {
             let mut w: Vec<&str> = Vec::new();
-            if was.kit != now.kit || was.forge != now.forge {
+            if was.kit != now.kit || was.forge != now.forge || was.starting_config != now.starting_config {
                 w.push("forge");
             }
             if was.vault != now.vault {
@@ -1656,6 +1657,7 @@ pub fn lineage_key(game: &Game) -> u64 {
     feed(&crate::traits::key(l));
     feed(l.class.name());
     feed(&l.class_level().to_string());
+    if let Some(config) = &l.starting_config { feed(&serde_json::to_string(config).unwrap_or_default()); }
     if let Some(style)=crate::specialization::current(l) {feed(style.id());}
     let skills=crate::class_tree::mask(l);
     if skills!=0 {feed(&format!("class skills {skills}"));}

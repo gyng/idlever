@@ -23,7 +23,7 @@ export function generate(source) {
       .map((p) => p.trim())
       .filter((p) => p && !/^&(?:mut )?self$/.test(p))
       .map((p) => {
-        const m = /^(\w+):\s*(&str|u32|i32|f64|bool|Option<bool>)$/.exec(p);
+        const m = /^(\w+):\s*(&str|u32|i32|f64|bool|Option<bool>|Option<String>)$/.exec(p);
         if (!m) throw new Error(`unsupported native parameter: ${rust} ${p}`);
         return { name: m[1], type: m[2] };
       });

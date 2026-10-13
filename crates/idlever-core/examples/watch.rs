@@ -60,7 +60,7 @@ fn main() {
             if watching && !quiet {
                 for e in &g.events {
                     match e {
-                        Ev::Rule { t, row, verb, text } => {
+                        Ev::Rule { t, row, verb, text, .. } => {
                             println!("{t:>6} R{row} {}{} · {text}", verb.v, verb.a.as_ref().map(|a| format!(" {a}")).unwrap_or_default());
                             if args.iter().any(|a| a == "--items") && verb.v == "pick_up" {
                                 let hp = r.hero.pos;

@@ -1,0 +1,97 @@
+error[E0277]: can't compare `Box<str>` with `str`
+    --> crates/idlever-core/src/tests.rs:3200:74
+     |
+3200 |     assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text == "recall sense")));
+     |                                                                          ^^ no implementation for `Box<str> == str`
+     |
+     = help: the trait `PartialEq<str>` is not implemented for `Box<str>`
+     = note: required for `&Box<str>` to implement `PartialEq<&str>`
+help: consider dereferencing both sides of the expression
+     |
+3200 |     assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if **text == *"recall sense")));
+     |                                                                     ++        +
+
+error[E0277]: a value of type `Vec<std::string::String>` cannot be built from an iterator over elements of type `Box<str>`
+    --> crates/idlever-core/src/tests.rs:3864:135
+     |
+3864 | ...{ None }).collect();
+     |              ^^^^^^^ value of type `Vec<std::string::String>` cannot be built from `std::iter::Iterator<Item=Box<str>>`
+     |
+help: the trait `FromIterator<Box<str>>` is not implemented for `Vec<std::string::String>`
+      but trait `FromIterator<std::string::String>` is implemented for it
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:3888:1
+     |
+3888 | impl<T> FromIterator<T> for Vec<T> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for that trait implementation, expected `std::string::String`, found `Box<str>`
+note: the method call chain might not have had the expected associated types
+    --> crates/idlever-core/src/tests.rs:3864:41
+     |
+3863 | ... = ticks(&mut g, 10);
+     |       ----------------- this expression has type `Vec<Ev>`
+3864 | ...ts: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.clone()) } else { None }).coll...
+     |                          ------ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `Iterator::Item` changed to `Box<str>` here
+     |                          |
+     |                          `Iterator::Item` is `&Ev` here
+note: required by a bound in `collect`
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs:2079:19
+     |
+2079 |     fn collect<B: FromIterator<Self::Item>>(self) -> B
+     |                   ^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Iterator::collect`
+
+error[E0277]: a value of type `Vec<std::string::String>` cannot be built from an iterator over elements of type `Box<str>`
+    --> crates/idlever-core/src/tests.rs:3885:134
+     |
+3885 | ...{ None }).collect();
+     |              ^^^^^^^ value of type `Vec<std::string::String>` cannot be built from `std::iter::Iterator<Item=Box<str>>`
+     |
+help: the trait `FromIterator<Box<str>>` is not implemented for `Vec<std::string::String>`
+      but trait `FromIterator<std::string::String>` is implemented for it
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:3888:1
+     |
+3888 | impl<T> FromIterator<T> for Vec<T> {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     = help: for that trait implementation, expected `std::string::String`, found `Box<str>`
+note: the method call chain might not have had the expected associated types
+    --> crates/idlever-core/src/tests.rs:3885:40
+     |
+3884 | ... = ticks(&mut g, 10);
+     |       ----------------- this expression has type `Vec<Ev>`
+3885 | ...t: Vec<String> = evs.iter().filter_map(|e| if let Ev::Rule { row: 0, text, .. } = e { Some(text.clone()) } else { None }).colle...
+     |                         ------ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `Iterator::Item` changed to `Box<str>` here
+     |                         |
+     |                         `Iterator::Item` is `&Ev` here
+note: required by a bound in `collect`
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/iter/traits/iterator.rs:2079:19
+     |
+2079 |     fn collect<B: FromIterator<Self::Item>>(self) -> B
+     |                   ^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `Iterator::collect`
+
+error[E0277]: can't compare `Box<str>` with `str`
+    --> crates/idlever-core/src/tests.rs:4096:74
+     |
+4096 |     assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if text == "cornered, no orders")));
+     |                                                                          ^^ no implementation for `Box<str> == str`
+     |
+     = help: the trait `PartialEq<str>` is not implemented for `Box<str>`
+     = note: required for `&Box<str>` to implement `PartialEq<&str>`
+help: consider dereferencing both sides of the expression
+     |
+4096 |     assert!(evs.iter().any(|e| matches!(e, Ev::Rule { text, .. } if **text == *"cornered, no orders")));
+     |                                                                     ++        +
+
+error[E0277]: can't compare `Box<str>` with `str`
+    --> crates/idlever-core/src/tests.rs:4625:111
+     |
+4625 | ... text, .. } if verb.v == "return" && text == "bail → return")), "{:?}", ev_kinds(&evs));
+     |                                              ^^ no implementation for `Box<str> == str`
+     |
+     = help: the trait `PartialEq<str>` is not implemented for `Box<str>`
+     = note: required for `&Box<str>` to implement `PartialEq<&str>`
+help: consider dereferencing both sides of the expression
+     |
+4625 |     assert!(evs.iter().any(|e| matches!(e, Ev::Rule { row: -2, verb, text, .. } if verb.v == "return" && **text == *"bail → return")), "{:?}", ev_kinds(&evs));
+     |                                                                                                          ++        +
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `idlever-core` (lib test) due to 5 previous errors

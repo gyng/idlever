@@ -87,7 +87,7 @@ fn plain(events: &[Ev]) -> Vec<Ev> {
     events
         .iter()
         .map(|e| match e {
-            Ev::Rule { t, row, verb, text } => Ev::Rule { t: *t, row: if *row >= 0 { 0 } else { *row }, verb: verb.clone(), text: text.clone() },
+            Ev::Rule { t, row, verb, text, skill } => Ev::Rule { t: *t, row: if *row >= 0 { 0 } else { *row }, verb: verb.clone(), text: text.clone(), skill: skill.clone() },
             e => e.clone(),
         })
         .collect()

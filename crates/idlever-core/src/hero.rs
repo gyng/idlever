@@ -392,7 +392,7 @@ impl Hero {
         if self.speed_t > 0 {
             s += 5;
         }
-        s + self.pace / 10 + self.gift.quick - self.gift.slow
+        s + self.pace.div_euclid(10) + self.gift.quick - self.gift.slow
     }
     pub fn ranged(&self) -> bool {
         self.weapon.as_ref().is_some_and(|w| w.def().ranged)

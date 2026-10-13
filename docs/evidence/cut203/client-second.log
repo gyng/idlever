@@ -1,0 +1,12 @@
+client suite: targeted (8 selected; 135 current full; 177 exhaustive groups)
+ok   skill-icons     3.1s (2.7s)  {"cells":270,"unique":30,"errors":[]}
+FAIL watch-loot-skill 5.4s (5.1s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+         at file:///home/g/p/riddle/web/tests/watch-loot-skill.mjs:108:14 {
+ok   bloodline-tabs  15.2s (14.8s)  bloodline-tabs 74 real-WASM checks PASS
+ok   exit-keep-close 15.5s (15.1s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+ok   legacy-tree     17.7s (17.4s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   starting-kits   18.6s (18.2s)  {"contract":"Cut203 earned starting kit UI","outcomes":[{"width":320,"gold":1393,"savedId":"kit1","refused":{"badName":true,"badId":true,"nameError":"invalid kit name","idError":"unknown kit"},"errors":[]},{"width":400,"gold":1393,"savedId":"kit1","refused":{"badName":true,"badId":true,"nameError":"invalid kit name","idError":"unknown kit"},"errors":[]},{"width":1440,"gold":1393,"savedId":"kit1","refused":{"badName":true,"badId":true,"nameError":"invalid kit name","idError":"unknown kit"},"errors":[]}]}
+ok   class-styles    23.5s (20.4s)  1440 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+ok   class-tree      62.4s (62.0s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+FAIL: 7/8 client gates in 62.4s

@@ -1,0 +1,41 @@
+error[E0027]: pattern does not mention field `skill`
+  --> crates/idlever-core/examples/chores.rs:73:29
+   |
+73 | ...                   Ev::Rule { t, row, verb, text } if verb.v == "pick_up" && *row < 0 => {
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing field `skill`
+   |
+help: include the missing field in the pattern
+   |
+73 |                             Ev::Rule { t, row, verb, text, skill } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          +++++++
+help: if you don't care about this missing field, you can explicitly ignore it
+   |
+73 |                             Ev::Rule { t, row, verb, text, skill: _ } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          ++++++++++
+help: or always ignore missing fields here
+   |
+73 |                             Ev::Rule { t, row, verb, text, .. } if verb.v == "pick_up" && *row < 0 => {
+   |                                                          ++++
+
+For more information about this error, try `rustc --explain E0027`.
+error[E0027]: pattern does not mention field `skill`
+  --> crates/idlever-core/examples/watch.rs:63:25
+   |
+63 |                         Ev::Rule { t, row, verb, text } => {
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ missing field `skill`
+   |
+help: include the missing field in the pattern
+   |
+63 |                         Ev::Rule { t, row, verb, text, skill } => {
+   |                                                      +++++++
+help: if you don't care about this missing field, you can explicitly ignore it
+   |
+63 |                         Ev::Rule { t, row, verb, text, skill: _ } => {
+   |                                                      ++++++++++
+help: or always ignore missing fields here
+   |
+63 |                         Ev::Rule { t, row, verb, text, .. } => {
+   |                                                      ++++
+
+error: could not compile `idlever-core` (example "chores") due to 1 previous error
+error: could not compile `idlever-core` (example "watch") due to 1 previous error

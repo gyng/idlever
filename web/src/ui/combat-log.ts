@@ -36,7 +36,8 @@ export function combatLogEvents(
   const key = (tick: number, victim: number, damage: number, cause: string): string =>
     `${tick}:${victim}:${damage}:${cause}`;
   for (const ev of events) {
-    if (ev.k === "rule" && (ev.verb.v === "gunner_tactic" || quietRule(ev.row))) continue;
+    if (ev.k === "rule" && !ev.skill && (ev.verb.v === "gunner_tactic" || quietRule(ev.row)))
+      continue;
     if (ev.k === "callout") {
       if (
         [

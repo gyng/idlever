@@ -2,6 +2,7 @@
 // Dismissed by backdrop tap or Escape; closeAll() on screen change.
 // QA on 952e306 ("▸ on chronicle opens the OLD death screen, no back/close, Escape inert"): with no sheet open, Escape
 // falls through to `onEscapeIdle` (the app: a kept death back to the camp).
+import "../ui-foundations.css";
 import { h } from "./dom";
 import { stud } from "./frame";
 import { AUTO, autoDismiss } from "./autodismiss";
@@ -54,6 +55,7 @@ export function onEscapeIdle(fn: (() => void) | null): void {
 export function openSheet(
   build: (close: () => void) => Node,
   opts: {
+    material?: "forge" | "bloodlines" | "journal";
     modeless?: boolean;
     anchor?: HTMLElement | null;
     stay?: boolean;
@@ -141,6 +143,19 @@ export function openSheet(
   wrap.appendChild(panel);
   const content = build(close);
   panel.appendChild(content);
+  // Management materials are presentation only; all choices remain engine-owned.
+  const material =
+    opts.material ??
+    (content instanceof Element
+      ? content.matches(".forge")
+        ? "forge"
+        : content.matches(".hero-sheet")
+          ? "bloodlines"
+          : content.matches(".quest-panel")
+            ? "journal"
+            : undefined
+      : undefined);
+  if (material) panel.dataset.material = material;
   // Cut 17 §2: every sheet is a panel with a close stud (×) top-right — its own `closeX` when the body carries one
   if (!panel.querySelector(".sheet-x")) panel.prepend(stud(close));
   if (parent) {

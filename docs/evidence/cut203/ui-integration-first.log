@@ -1,0 +1,9 @@
+client suite: targeted (4 selected; 134 current full; 176 exhaustive groups)
+ok   skill-icons     2.9s (2.6s)  {"cells":270,"unique":30,"errors":[]}
+FAIL starting-kits   5.2s (4.9s)  Node.js v26.5.0
+     page.evaluate: Error: invalid kit name
+         at worker.onmessage (http://localhost:45111/src/engine/proxy.ts:153:10)
+         at /home/g/p/riddle/web/tests/starting-kits.mjs:93:32 {
+ok   bloodline-tabs  12.8s (12.5s)  bloodline-tabs 74 real-WASM checks PASS
+ok   exit-keep-close 13.7s (13.3s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+FAIL: 3/4 client gates in 13.7s

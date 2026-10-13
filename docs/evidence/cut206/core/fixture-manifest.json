@@ -1,0 +1,91 @@
+{
+  "fixture": "controlled real-core API boundaries; not earned progression",
+  "command": "cargo run -q --profile fast -p idlever-core --example cut206_fixtures -- scratchpad/cut206/core-fixtures",
+  "exit": 0,
+  "archive_sha256": "ad06a372f40930a3781deddabdbac3213f0a21fd197526bb9437aad1e0c3ebcb",
+  "files": [
+    {
+      "path": "cage-active.game.json",
+      "bytes": 120758,
+      "sha256": "de11da0b486f2a5a5ff5fa115a7994a8d7922649d10be22146c0d2672565391b"
+    },
+    {
+      "path": "cage-active.snapshot.json",
+      "bytes": 37363,
+      "sha256": "226e1a84761ffb73acbab129dc8c6e655c249903190cb0da4a08e76a80ce57e6"
+    },
+    {
+      "path": "cage-choice.events.json",
+      "bytes": 155,
+      "sha256": "73d7ea6a26a3eebb85d859b12dc5185acc7e82bd92e23350a47d5525ae6c0043"
+    },
+    {
+      "path": "cage-contract.json",
+      "bytes": 670,
+      "sha256": "5d4151f64bd432dc5cc51245f1d5294bc089e45872a83732d1161c18aa1bfce8"
+    },
+    {
+      "path": "cage-return.lineage.json",
+      "bytes": 41540,
+      "sha256": "1b06bcfcbb2d975696f1b8444a536d9cc2cf29a078a456d364f479a4f5113ce4"
+    },
+    {
+      "path": "cage-return.outcome.json",
+      "bytes": 120,
+      "sha256": "1e8d2cfee5345c60e1188598023edd136eb7f218a42ba88e5377805f63f4387b"
+    },
+    {
+      "path": "cage-timeout.events.json",
+      "bytes": 784,
+      "sha256": "f352323b60376869933290f62724e3a0998d90c03783261b11a4dc0c9270d58f"
+    },
+    {
+      "path": "skill-after.game.json",
+      "bytes": 167522,
+      "sha256": "2b8087fa314e14a4aa5ef468a5f0bbc3ff53233817d0fca42e310d4f4066edea"
+    },
+    {
+      "path": "skill-before.game.json",
+      "bytes": 101738,
+      "sha256": "675e669e1ea15ddcbe9872894ea40acd55e869bb38505ee1515b68ef5e8aa465"
+    },
+    {
+      "path": "skill-before.snapshot.json",
+      "bytes": 36414,
+      "sha256": "641151a9f536168c56dae373b52dff2cccb113b40023a3f0516eac60a809a8d1"
+    },
+    {
+      "path": "skill-contract.json",
+      "bytes": 385,
+      "sha256": "b38506dc6cbe3c19d44702a2018712b0edc95f9295879ddf46e3d9c78545c057"
+    },
+    {
+      "path": "skill-replay-window.json",
+      "bytes": 87617,
+      "sha256": "981c4123f489b14af316e3d5f0f49f86fde4d697e46b07dc4e2cf568d5335020"
+    },
+    {
+      "path": "skill-step.json",
+      "bytes": 44770,
+      "sha256": "2e7eff1beec4e83125657af4f4e05b927659081b8e513779e8868e64cbfdc002"
+    }
+  ],
+  "helper_sha256": "c58840324ffc678ec2c54f8c296eaa9cdb44d8f86d6bc209e8c65cd105329e56",
+  "runtime_freeze_manifest": "../../cut203/source-freeze-manifest.json",
+  "compressed_browser_inputs": [
+    "cage-active.game.json.gz",
+    "skill-before.game.json.gz"
+  ],
+  "limits": [
+    "Authored cage contents/map and Fighter qualifications/monster/HP are controlled fixture setup.",
+    "Receipts, skill actions and events are actual core execution, not manually assembled.",
+    "Snapshot/event window is not an earned held-run replay capsule; controlled changes occur after send.",
+    "No new runtime/source gameplay change or WASM rebuild."
+  ],
+  "clippy": {
+    "command": "cargo clippy -q --profile fast -p idlever-core --example cut206_fixtures -- -D warnings",
+    "exit": 0,
+    "log": "clippy.log"
+  },
+  "runtime_freeze_verified_unchanged": true
+}

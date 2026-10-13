@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"width":400,"menu":"bloodlines-class","zoomOverflow":[{"class":"sheet-body hero-sheet","overflow":0},{"class":"bloodline-panel","overflow":0},{"class":"bloodline-panel","overflow":0},{"class":"class-tree-panel","overflow":2},{"class":"bloodline-panel","overflow":0},{"class":"legacy-tree legacy-upgrades","overflow":0}]}
+    at file:///home/g/p/riddle/tools/ui-foundations-check.mjs:262:16 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0
