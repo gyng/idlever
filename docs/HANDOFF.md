@@ -4,9 +4,17 @@ Owner resumed the full queue on2026-10-13 with the active objective:
 **resume and finish all queued items verified and refined**. Prior pause is
 revoked. Commit/push and milestone screenshots remain authorized. No blanket
 new deployment is inferred; Pages still deploys published releases only.
-All39 current product items plus retained visual/content work remain in scope.
+All40 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
+
+Latest owner extension: legendary armour sets inspired by Diablo II/III.
+Queued proposal docs/CUT216_ARMOUR_SETS.md: three slots (helm/body/boots),
+equipped2/3 and3/3 bonuses, automatic permanent unlocks/free reuse, mixed2+1
+builds and staged deterministic missing-piece protection. Prototype Hearthglass
+first; current body effect stays intact. This is design only: current runtime
+still has one armour slot. Acceptance40 adds the slot/bonus/pacing work without
+dropping the existing queue.
 
 Current checkpoint delivers Cut215 legendary discoveries and free Forge choices.
 Previous a23114f0 delivers Cut214 home-service visuals/adaptive labels;127ef6f3

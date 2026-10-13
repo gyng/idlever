@@ -24,8 +24,17 @@ construction and appearance FX. Cut196 implements single-value loot with scoped
 native/real-worker proof; worker/storage retirement, pacing and saved kits remain.
 Cut197 adds Bloodline tabs and free Loadouts; Cut198 reduces identical-art terrain
 paint cost. Cut199 previews dimensional Forge/character lighting; Cut200 design
-system research follows its visual checkpoint. All38 product items and retained
+system research follows its visual checkpoint. All40 product items and retained
 content stay in scope.
+
+## Legendary armour sets — latest owner extension
+
+Consider Diablo II/III-style armour sets alongside standalone legendary gear.
+Cut216 records the proposal: helm/body/boots, partial/full equipped bonuses,
+permanent automatic discoveries and free reuse. Start with Hearthglass and
+keep hybrid builds useful. This requires new Rust equipment slots and earned
+pacing checks; current runtime still has one armour slot. See
+[CUT216_ARMOUR_SETS.md](CUT216_ARMOUR_SETS.md) and acceptance40.
 
 ## Main fun — latest owner direction
 
