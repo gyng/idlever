@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {launchBrowser} from '../tools/browser.mjs';
+const out='docs/evidence/current-scaling-accepted';mkdirSync(out,{recursive:true});
+const hash=x=>createHash('sha256').update(x).digest('hex');
+const raw=readFileSync('docs/evidence/cut204/earned-quest.json','utf8');
+const wasm=readFileSync('web/src/engine/pkg/idlever_wasm_bg.wasm');
+const pending=[],served=new Map(),rows=[];
+const browser=await launchBrowser({gpu:true});
+try {
+for(const width of [320,400,1440]) {
+ const p=await browser.newPage({viewport:{width,height:900},reducedMotion:'reduce'}),errors=[];
+ p.on('pageerror',e=>errors.push(e.message));
+ p.on('response',r=>{const u=new URL(r.url());if(u.pathname.startsWith('/src/ui/')&&u.pathname.endsWith('.ts')||u.pathname==='/src/ui-foundations.css'||u.pathname==='/src/chrome.css'||u.pathname==='/src/wide.css'||u.pathname==='/src/styles.css'||u.pathname==='/src/town.css'||u.pathname==='/src/cut29.css')pending.push(r.body().then(body=>{const digest=hash(body),name=u.pathname.split('/').pop()+'-'+digest.slice(0,12)+'.txt';writeFileSync(out+'/'+name,body);served.set(r.url(),{url:r.url(),sha256:digest,file:name});}));});
+ await p.goto('http://localhost:5254/?fresh=1&seed=13&runs=0');await p.waitForFunction(()=>window.__idlever?.booted);
+ await p.evaluate(async raw=>{const a=window.__idlever;if(a.kind!=='wasm')throw Error('real WASM');a.runnerOn=false;a.lineage=await a.engine.load(raw);a.go({kind:'camp'});},raw);
+ await p.waitForFunction(()=>window.__town?.stats().frames>3);
+ await p.evaluate(()=>{window.__town.setHour(23);window.dispatchEvent(new PointerEvent("pointermove"));});
+ await p.waitForFunction(()=>window.__town.stats().night===1);
+ const base=await p.evaluate(()=>parseFloat(getComputedStyle(document.documentElement).fontSize));
+ for(const scale of [1,2]) {
+  await p.evaluate(size=>document.documentElement.style.fontSize=`${size}px`,base*scale);
+  for(const menu of ['home','forge','bloodlines','quest']) {
+   await p.evaluate(async menu=>{const a=window.__idlever,s=await import('/src/ui/sheet.ts');s.closeAllSheets();if(menu==='forge')(await import('/src/ui/forge.ts')).openForge(a);if(menu==='bloodlines')(await import('/src/ui/town.ts')).openHero(a);if(menu==='quest')(await import('/src/ui/quest.ts')).openQuest(a);},menu);
+   await p.locator('.sheet-ghost').waitFor({state:'detached'});
+   if(menu!=='home')await p.locator('.sheet-wrap:not(.under) .game-window').waitFor();
+   await p.evaluate(async()=>{await document.fonts.ready;await Promise.all([...document.querySelectorAll('img')].map(im=>im.decode().catch(()=>{})));await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+   const result=await p.evaluate(({menu,width,scale})=>{
+    const roots=menu==='home'?[...document.querySelectorAll('.topbar,.console,.town')]:[document.querySelector('.sheet-wrap:not(.under) .game-window')];
+    const nodes=roots.flatMap(root=>[root,...root.querySelectorAll('button,[role=button],.stat,.concept-cap,.sheet-body,.bloodline-panel,.starting-kits,.starting-kit-editor,.class-tree-panel,.legacy-tree,.quest-card')]);
+    const captions=[...document.querySelectorAll('.topbar .concept-cap')];
+    const captionOverlaps=captions.flatMap(c=>[...document.querySelectorAll('.topbar .stat')].filter(s=>!s.contains(c)).map(s=>{const a=c.getBoundingClientRect(),b=s.getBoundingClientRect();return {caption:c.textContent,stat:s.textContent,area:Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top))};})).filter(x=>x.area>1);
+    return {menu,width,scale,captionOverlaps,documentOverflow:document.documentElement.scrollWidth-innerWidth,bodyFont:menu==='home'?null:getComputedStyle(document.querySelector('.game-window .sheet-body')).fontSize,rootFont:getComputedStyle(document.documentElement).fontSize,nodes:nodes.filter(el=>el.getBoundingClientRect().width>0).map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,class:el.className,label:el.textContent.trim().slice(0,45),x:r.x,y:r.y,w:r.width,h:r.height,scrollOverflow:el.scrollWidth-el.clientWidth,font:getComputedStyle(el).fontSize};})};
+   },{menu,width,scale});rows.push(result);
+   await p.screenshot({path:`${out}/${width}-${scale}x-${menu}.png`});
+  }
+ }
+ assert.deepEqual(errors,[]);await Promise.all(pending);await p.close();
+}
+}finally{await browser.close();}
+writeFileSync(out+'/bounds.json',JSON.stringify(rows,null,2)+'\n');writeFileSync(out+'/served-modules.json',JSON.stringify([...served.values()],null,2)+'\n');writeFileSync(out+'/inputs.json',JSON.stringify({wasmBytes:wasm.length,wasmSha256:hash(wasm),saveSha256:hash(raw),delivery:'fresh no-HMR server5254; actual imported stylesheet, no injection',wasmUnchanged:hash(wasm)===hash(readFileSync('web/src/engine/pkg/idlever_wasm_bg.wasm'))},null,2)+'\n');
+console.log('24 current real-WASM scaling captures completed; bounds inspection required');

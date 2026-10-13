@@ -377,3 +377,33 @@ html body .game-window[data-material="journal"] .quest-reward {
   max-width: 100%;
   margin-inline: auto;
 }
+/* Text scaling must not spend the narrow viewport on doubled frame padding/icons. */
+html body .sheet-wrap.centered > .game-window[data-material] {
+  padding: clamp(8px, 3vw, 16px);
+}
+html body .game-window[data-material] :is(.close-stud, .sheet-back, .sheet-x) {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 0 0 44px;
+}
+html body .game-window[data-material] .sheet-body > .label:first-child {
+  overflow-wrap: anywhere;
+}
+html body .game-window[data-material] :is(.hero-actions, .forge-action, .kit-head) {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+html body .game-window[data-material] button:where(:not(.stud):not(.sheet-back):not(.sheet-x)) {
+  max-width: 100%;
+}
+html body .game-window[data-material="forge"] .forge-branches {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+}
+html body .game-window[data-material="forge"] .forge-branch {
+  flex-wrap: wrap;
+}
+html body .game-window[data-material="forge"] .forge-branch small {
+  white-space: nowrap;
+}

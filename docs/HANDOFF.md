@@ -8,6 +8,32 @@ All38 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
+Latest owner follow-up: the home screenshot had overlapping labels, and asked
+whether scaling fixes are in and what remains. Cut207 resolves building-help
+plates over resource badges and the header's floating first-time caption.
+Labels keep their own building association, reserve other actions/visible
+overlays, and reflow on measured font/label-size changes via ResizeObserver.
+Stable max-content widths fix tag/label edge clipping; help typography uses rem.
+
+Fresh current scaling audit found320/200% issues missed by Cut204's older
+snapshot: inner menu overflow, oversized close controls, negative footer row
+margins, shrinking tiles/icons, undersized Gold/settings controls. These are
+fixed in current ui-foundations/chrome CSS. Three menu families and Home are
+checked at320/400/1440 normal/200%; other menus and broad typography refinement
+remain queued. The scaling lane's pre-final Town snapshot retains a3px Kennel
+label clip. Root's final15 actual normal and15 actual200% label cases include
+that exact earned Quest town and the original screenshot's earned all-built
+town; all pass on the newer observer/max-content source. Four affected client
+groups pass4/4 in44.6s; enlarged labels pass1/1 in35.3s. Static build/lint/type/
+format/copy checks pass. Final Canvas fallback and screenshot proof are in
+docs/evidence/cut207; broader acceptance/full queue remain open. No deployment.
+
+Remaining major work: meaningful Journal/tutorial and early pacing/endings;
+guild/recovery/reincarnation/persistent stats/hero NG+; deeper pets plus Clown/
+Engineer; diegetic combat FX/depth map/trails/Gold particles; additional chrome/
+menu families, broader lighting/biome/content refinement and final playtests.
+The full acceptance ledger retains every numbered/retained requirement.
+
 Integration checkpoint Cuts203–206: native848pass/0fail/6 existing ignored,
 Clippy warnings denied. Current real WASM6416437bytes. Cut203 adds permanent
 starting shapes and eight named kits; earned Fighter sword/leather versus

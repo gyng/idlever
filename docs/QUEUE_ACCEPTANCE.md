@@ -14,9 +14,9 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 3 | Stage early progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 4 | Explain the cage and run endings | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 5 | Clickable heroes and town objects | Partial | Cuts192/194: building help and actual three-hero touch/keyboard targets; future base objects and persistent routines remain |
-| 6 | Home-building tooltips and hover states | Partial | Cut192 building help checks; moving actors/multiple states still open |
+| 6 | Home-building tooltips and hover states | Scoped pass | Current four buildings: ready/locked/built help, keyboard/hover/no accidental construction. Cut207 label/badge/tag bounds and actor journeys pass; future buildings must adopt these conventions |
 | 7 | Bloodline tabs and visible branching trees | Partial | Cut197 tabs; Cut205 thirty skill icons in nodes/reviews, current tree journeys checked. Wider graph refinement remains |
-| 8 | Large-desktop typography | Partial | Cut204 scalable roles on Forge/Bloodlines/quest card,400/1440 and200% text checks; full family audit remains |
+| 8 | Large-desktop typography | Partial | Cuts204/207: current320/400/1440 normal/200% Forge/Bloodlines/quest and Home controls/labels checked; narrow overflow and44px targets fixed. Other menus and broader typography refinement remain |
 | 9 | Send → Delve | Cut193 in progress | Focused geometry/copy/Chronicle checks; integrated validation pending |
 | 10 | Distinct chunky menu materials | Partial | Cut204 iron Forge, ink Bloodlines, parchment quest card;10 paired menu frames/54 state cells/365 contrast ranges. Remaining menu family open |
 | 11 | Quest/progression journal | Open | Pending |

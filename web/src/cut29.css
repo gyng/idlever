@@ -438,12 +438,11 @@
   position: relative;
 }
 .topbar .stat .concept-cap {
-  position: absolute;
-  top: calc(100% + 3px);
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  z-index: 6;
+  position: static;
+  transform: none;
+  margin: 0 0 0 4px;
+  max-width: 100%;
+  white-space: normal;
   pointer-events: none;
 }
 .notch .concept-cap,

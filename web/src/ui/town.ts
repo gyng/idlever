@@ -220,6 +220,13 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       }
     },
   });
+  const labelResize =
+    typeof ResizeObserver === "undefined"
+      ? null
+      : new ResizeObserver(() => {
+          if (el.isConnected) layout();
+        });
+  labelResize?.observe(tag);
   const plotDetails = (): Node[] => {
     const plot = state?.staked;
     return plot ? buildingDetails(app.lineage, plot.id) : [];
@@ -484,7 +491,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     for (const [id, b] of btns)
       if (!want.some((w) => w.id === id)) {
         b.remove();
-        helpButtons.get(id)?.remove();
+        const help = helpButtons.get(id);
+        if (help) {
+          labelResize?.unobserve(help);
+          help.remove();
+        }
         helpButtons.delete(id);
         btns.delete(id);
       }
@@ -539,6 +550,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           detailHost(help, () => buildingDetails(app.lineage, buildingId(w.id)!));
           helpLabels.append(help);
           helpButtons.set(w.id, help);
+          labelResize?.observe(help);
         }
         help.setAttribute("aria-label", `${buildingName(homeId)} information`);
         if (help.dataset.homeId !== homeId) {
@@ -668,11 +680,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       const help = helpButtons.get(id);
       if (help) {
         help.hidden = false;
-        const width = help.offsetWidth;
-        Object.assign(help.style, {
-          left: `${Math.max(6, Math.min(el.clientWidth - width - 6, r.x + r.w / 2 - width / 2))}px`,
-          top: `${Math.max(6, Math.min(el.clientHeight - 44, id === "staked" && !s.staked?.ready ? r.y + r.h + 8 : r.y - 44))}px`,
-        });
       }
       // ≥ 44 px each way, centred on the sprite (a building's box trimmed to its body: the roof's sky is not the building)
       const readyPlot = id === "staked" && s.staked?.ready === true;
@@ -699,7 +706,85 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       });
     }
     if (!tag.hidden) placeTag();
+    placeHelpLabels();
     foundation.hidden = state?.staked?.ready !== true;
+  }
+  function placeHelpLabels(): void {
+    const origin = el.getBoundingClientRect();
+    type Box = { x: number; y: number; w: number; h: number; owner?: string };
+    const box = (node: HTMLElement): Box => {
+      const r = node.getBoundingClientRect();
+      return { x: r.left - origin.left, y: r.top - origin.top, w: r.width, h: r.height };
+    };
+    // Resource badges and construction copy keep their own anchors. Help
+    // labels fit around them, rather than hiding the price beneath a nameplate.
+    const occupied = [
+      ...el.querySelectorAll<HTMLElement>(".town-marker,.town-tag,.next-pill,.town-delve-faces"),
+    ]
+      .filter(
+        (node) =>
+          !node.hidden &&
+          node.getBoundingClientRect().width > 0 &&
+          node.getBoundingClientRect().height > 0,
+      )
+      .map(box);
+    // Keep other scene actions' central44px accessible. A building's own
+    // information action can sit over its body to retain a clear association.
+    for (const [id, node] of btns) {
+      if (node.hidden || id === "staked") continue;
+      const r = box(node);
+      occupied.push({ x: r.x + r.w / 2 - 22, y: r.y + r.h / 2 - 22, w: 44, h: 44, owner: id });
+    }
+    const overlap = (a: Box, b: Box): number =>
+      Math.max(0, Math.min(a.x + a.w + 4, b.x + b.w + 4) - Math.max(a.x, b.x)) *
+      Math.max(0, Math.min(a.y + a.h + 4, b.y + b.h + 4) - Math.max(a.y, b.y));
+    for (const [id, help] of helpButtons) {
+      if (help.hidden) continue;
+      const r = view.rectOf(id === "staked" ? "staked" : (id as PlotId));
+      if (!r) continue;
+      const w = help.offsetWidth,
+        h = help.offsetHeight;
+      const preferredX = Math.max(6, Math.min(el.clientWidth - w - 6, r.x + r.w / 2 - w / 2));
+      const preferredY = Math.max(
+        6,
+        Math.min(
+          el.clientHeight - h - 6,
+          id === "staked" && !state?.staked?.ready ? r.y + r.h + 8 : r.y - h,
+        ),
+      );
+      const xs = [
+        ...new Set(
+          [preferredX, r.x - w - 8, r.x + r.w + 8, 6, el.clientWidth - w - 6].map((x) =>
+            Math.max(6, Math.min(el.clientWidth - w - 6, x)),
+          ),
+        ),
+      ];
+      let best = { x: preferredX, y: preferredY, w, h },
+        bestScore = Infinity;
+      const ys = [preferredY];
+      for (let offset = 8; offset < el.clientHeight; offset += 8)
+        ys.push(preferredY - offset, preferredY + offset);
+      for (const y of ys) {
+        if (y < 6 || y + h > el.clientHeight - 6) continue;
+        for (const x of xs) {
+          const candidate = { x, y, w, h };
+          const collisions = occupied.reduce(
+            (sum, other) => sum + (other.owner === id ? 0 : overlap(candidate, other)),
+            0,
+          );
+          const score = collisions * 1_000_000 + (x - preferredX) ** 2 + (y - preferredY) ** 2;
+          if (score < bestScore) {
+            best = candidate;
+            bestScore = score;
+          }
+        }
+      }
+      Object.assign(help.style, {
+        left: `${Math.round(best.x)}px`,
+        top: `${Math.round(best.y)}px`,
+      });
+      occupied.push(best);
+    }
   }
   view.onLayout(() => {
     layout();
@@ -868,6 +953,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     send,
     anchorOf: (id) => btns.get(id) ?? null,
     dispose: () => {
+      labelResize?.disconnect();
       offActorLive();
       closeTip();
       clearTimeout(tagTimer);

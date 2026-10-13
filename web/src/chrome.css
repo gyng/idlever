@@ -1125,3 +1125,53 @@ html.skin-button .camp-run-details > summary.btn {
 .chronicle-identity {
   color: var(--gold);
 }
+/* Stable home chrome targets: packed frames stay, geometry never shrinks on reveal. */
+html body .camp .console-row {
+  margin: 0;
+  grid-template-columns: minmax(0, 1fr) 88px;
+}
+html body .camp .console .cmd .tile {
+  min-width: 44px;
+  min-height: 44px;
+}
+html body .camp .console .cmd .tile.reveal {
+  animation: none;
+  transform: none;
+}
+html body .camp .console .cmd .tile.reveal::before {
+  content: none;
+  animation: none;
+}
+html body .camp .console .cmd .tile:active {
+  transform: translateY(1px);
+}
+html body .camp .console .cmd .tile .ico {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  max-width: 100%;
+}
+html body .topbar .stat {
+  min-height: 44px;
+  height: auto;
+}
+html body .topbar .gear {
+  min-width: 44px;
+  width: 44px;
+  flex: 0 0 44px;
+}
+@media (min-width: 1024px) {
+  html body .camp .console-row {
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr) 124px;
+  }
+  html body .camp .console .cmd .tile .ico {
+    flex-basis: 40px;
+    width: 40px;
+    height: 40px;
+  }
+}
+html body .topbar button.stat.gold {
+  min-height: 44px;
+  height: auto;
+}
