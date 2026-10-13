@@ -9,13 +9,13 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 
 | ID | Requirement | State | Evidence / next proof |
 |---|---|---|---|
-| 1 | Automatic loot settlement; simplify Keep and Storehouse | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
-| 2 | A simpler banking model | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
+| 1 | Automatic loot settlement; simplify Keep and Storehouse | Partial | Cut196 once-only conversion/no new Keep; native838 and actual receipt checks pass. Storehouse/dead workers and offline parity remain |
+| 2 | A simpler banking model | Partial | Cut196 Bank/Return100% Gold, Death secured/protection; XP separate. Actual receipts/ledger pass; earned pacing remains |
 | 3 | Stage early progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 4 | Explain the cage and run endings | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 5 | Clickable heroes and town objects | Partial | Cuts192/194: building help and actual three-hero touch/keyboard targets; future base objects and persistent routines remain |
 | 6 | Home-building tooltips and hover states | Partial | Cut192 building help checks; moving actors/multiple states still open |
-| 7 | Bloodline tabs and visible branching trees | Open | Pending |
+| 7 | Bloodline tabs and visible branching trees | Partial | Cut197 accessible Loadouts/Class/Legacy tabs,74 new checks plus historical tree groups; graph refinement/icons remain |
 | 8 | Large-desktop typography | Open | Pending |
 | 9 | Send → Delve | Cut193 in progress | Focused geometry/copy/Chronicle checks; integrated validation pending |
 | 10 | Distinct chunky menu materials | Open | Pending |
@@ -34,7 +34,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 23 | Diegetic live view for understanding builds | Open | Pending |
 | 24 | Explain forge floating gold | Open | Pending |
 | 25 | Gold transaction particles | Open | Pending |
-| 26 | Supplies → Bloodline Loadouts | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
+| 26 | Supplies → Bloodline Loadouts | Partial | Cut197 routes existing preparation to Bloodlines; saved named kits and old-panel retirement remain |
 | 27 | Unlocked items are free to use | Scoped pass | Cut191: seven native cases,829-test integrated pass and73 real-worker assertions; full offline/multihero balance remains |
 | 28 | Live side depth map | Open | Pending |
 | 29 | Subtle live movement trail | Open | Pending |
@@ -55,6 +55,12 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | R6 | Dungeon visual landmarks | Open | Retained scope; targeted economy checks do not certify this work |
 
 ## Retained work beyond numbered additions
+
+- Owner dimensional-lighting addition: Cut199 Forge and animated characters
+  prototype in progress; no broader acceptance yet. Cut200 design-system research
+  follows that visual checkpoint, preserving Idlever art and menu materials.
+- Cut198 town terrain optimization scoped pass: identical pixels, measured43%
+  startup/53% construction paint reduction; broader frame-cost review remains.
 
 - All30 individual skill icons, five classes; 24/32/48px, locked/available/learned
   states, tree/review/live integration and primitive fallbacks: open.

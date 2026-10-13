@@ -20,8 +20,12 @@ This file records requested outcomes; implementation is tracked in scoped cuts
 and HANDOFF.md. Unverified requirements remain open. Backwards compatibility
 is not required. Cut191 starts the economy; Cuts192/193 cover independent UI
 feedback and clarity. Cut194 adds actual hero/cave targets; Cut195 adds
-construction and appearance FX. Cut196 records the next single-value loot
-contract. All38 product items and retained content stay in scope.
+construction and appearance FX. Cut196 implements single-value loot with scoped
+native/real-worker proof; worker/storage retirement, pacing and saved kits remain.
+Cut197 adds Bloodline tabs and free Loadouts; Cut198 reduces identical-art terrain
+paint cost. Cut199 previews dimensional Forge/character lighting; Cut200 design
+system research follows its visual checkpoint. All38 product items and retained
+content stay in scope.
 
 ## Main fun — latest owner direction
 
@@ -401,6 +405,27 @@ The first item now has a preparation contract in [CUT136_ENCOUNTER_CONTRAST.md](
 Inventory preparation: `gen.rs::layout_for` already varies room shapes/layouts, cave density/chambers/mere and connectivity (Cut109); `situations.rs::band_on/place_twist` already chooses band-specific situations; `descent.rs::boss_affix/guest_for` already draws heir-specific boss affixes and wandering champions (Cut116). Do not queue these delivered features again. Start encounter-composition work by exporting the existing generated/played situations and measuring which configurations they reward. Fens, Crypt and Foundry rosters are in `defs.rs::spawn_table`; routes can reorder bands, so eligibility must follow biome/route rather than assume fixed depth. New content must fit the existing placement/situation system rather than create an unrelated second generator. This is source inventory, not earned-play or balance certification.
 
 ## Refinement passes
+
+Owner lighting addition: [Cut199](CUT199_DIMENSIONAL_LIGHTING.md) proposes
+dimensional lighting for both buildings and characters. The first comparison
+includes a Forge and an animated hero, with matching normal maps, grounded
+shadows and neutral personal lantern light. Compare idle, walking and turning
+poses in town and the existing dungeon pass before extending to other residents.
+This is queued prototype work; no new lighting implementation is accepted yet.
+
+After that lighting checkpoint, research an adaptable design system that keeps
+Idlever's soul: [Cut200](CUT200_DESIGN_SYSTEM_RESEARCH.md). Compare shared layout,
+type and interaction conventions against the existing painted material identity.
+Deliver a source-backed recommendation and Forge/Bloodlines/Journal screenshot
+comparison before broad adoption. Official-source research and a scoped static
+CSS audit are complete, recommending an Idlever-owned token
+and component system. Visual comparisons, measured checks and implementation
+remain pending.
+
+Cut201 now integrates Storehouse/keeper/armourer retirement across core, scene
+and menus, after eight earned before/after pacing seeds. Current edits require
+new-package integration proof; inactive API/save bridges and named kits remain
+explicitly open. No new unlock delays have been selected from the baseline alone.
 
 1. **Remove routine gear-keeping work.** Owner feedback: “Gear keeping feels like busywork... Are items converted into some currency instead?” Existing Rust salvage already pays gold and advances each item's forge crafting progress; kept gear goes into storage. Investigate automatic retention of useful upgrades and salvage of the rest, with optional manual review instead of a recurring blocking sheet. Preserve distinct loadout choices and the player's equipped kit; storing an upgrade must not silently equip it. Do not add another salvage currency. Start from `keep_is_a_decision`, `auto_keep_plan` and the existing keeper worker so the refinement does not duplicate automation. Before implementation specify numeric interruption/decision gates, exact gold/forge reconciliation, storage-full behavior, protected/brought gear and whole/sliced/reloaded parity. Source-backed discovery contract [CUT140_KEEP_FLOW_DISCOVERY.md](CUT140_KEEP_FLOW_DISCOVERY.md) now specifies twelve cases across three exit tiers, interruption/settlement gates and keeper migration limits. This is queued owner feedback, not independent rater evidence or delivered behavior; implement after the frozen cohort.
 2. **Combat and death readability.** Use fresh blind evidence to identify the first misunderstood enemy telegraph, tactic activation or death lever. Fix that concrete case through an existing icon/animation/detail surface. Preserve the exact rule/event attribution and historical replay; no additional persistent caption feed. Verify pause, speed changes, returning parties, multiple heroes and phone taps. Post the relevant fight/death screenshots, with a short description of the changed behavior.

@@ -55,6 +55,47 @@ code are required. Actual local checkout paths remain valid.
 
 ## Owner requirements — 2026-10-13, implementation resumed
 
+Latest implementation checkpoint (supersedes the older pending notes above):
+Cut196 automatic first-pickup conversion, alive100% Gold returns, fractional
+checkpoint carry and claimed bones are implemented. Final native838 passed,
+6 existing ignored,55.41s. Rebuilt real WASM6344923bytes passes five focused
+client groups in32.2s; subsequent discovery-detail correction passes54 receipt
+checks in2.2s, then55 in3.9s including cause-only driven records without fabricated
+Gold. Initial36 obsolete native expectations, genuine Town.manual
+serialization failure and merged-leash card regression are retained in evidence.
+Clippy warnings denied passes. No exhaustive balance or fun acceptance implied.
+
+Cut197 delivers Loadouts/Class/Legacy tabs and existing free preparation;
+new74 checks (including persistent tabpanel keyboard focus) and historical
+Class/Legacy groups pass. Six settled400/1440 GPU
+screenshots are in docs/evidence/cut197. Named saved kits, deeper gear and all
+skill icons remain open. Cut198 terrain optimization is committed7dbf3e4b:
+matched pixels,43% startup terrain and53% construction terrain reduction;
+warm frame costs remain comparable. Startup measurement overlap is disclosed.
+
+Cut196 still needs Storehouse/keeper/armourer retirement or useful replacement,
+earned pacing and explicit one/three-hero8h whole/sliced/reloaded proof.
+Cut199 now has a dev-only Forge/default Fighter dimensional-light preview:
+directional/point response, mono personal lantern and foot-anchored contact.
+Six identical-frame comparisons preserve alpha/unmapped pixels; warmed GPU
+baseline/prototype CPUmedian1.2ms andp951.8/1.6ms, with repeatbaseline1.7ms.
+Canvas fallback passes. No new projected Forge occlusion, broad character mapping
+or production adoption yet. Per-kind pixel proof confirms Forge and Fighter
+response independently, with no changed alpha/unmapped pixels. Source checks
+pass; evidence is complete in docs/evidence/cut199.
+Cut200 official-source research and scoped29-file CSS audit are complete.
+Recommendation is an Idlever-owned system informed by Spectrum tokens,
+Carbon spacing and explicit USWDS states, preserving painted materials and fonts.
+The12-frame comparison,54-cell state board, measured readability/contrast and
+adoption are pending; no theme/library adopted.
+Cut201 retirement contract is written. Eight earned baseline seeds hired Scout
+after3 actual manual delves (6.18–11.05 modeled minutes under dayplayer4x plus
+camp/tap allowances, not browser wall-time). Core and renderer retirement edits
+are in progress; UI integration is next. Their uncommitted code is not certified
+by the Cut196/197/199 passes or by the existing WASM package. Wait for source
+freeze and rebuild before UI proof. Inactive storage API/save bridges and named
+permanent kits remain explicitly pending. No full queue accepted.
+
 The owner subsequently resumed implementation of all additions below. See
 [WORK_QUEUE.md](WORK_QUEUE.md) for priorities, dependencies and checkpoints.
 
