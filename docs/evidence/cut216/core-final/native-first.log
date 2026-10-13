@@ -1,0 +1,40 @@
+
+running 898 tests
+................... 19/898
+defs::tests::content_counts --- FAILED
+....................................................................................... 107/898
+....................................................................................... 194/898
+....................................................................................... 281/898
+.............................................................i......................... 368/898
+....................................................................................... 455/898
+....................................................................................... 542/898
+...................................................iii..................i.....i........ 629/898
+..........................................................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+........................test legacy::tests::new_effects_keep_whole_sliced_and_reloaded_eight_hour_state_and_reports_exact has been running for over 60 seconds
+..... 716/898
+.......................test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+.................test tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor has been running for over 60 seconds
+.....test tests::a_deaths_notes_never_say_saved_him has been running for over 60 seconds
+test tests::a_dice_death_at_a_full_base_says_nothing_beats_it has been running for over 60 seconds
+.......................................... 803/898
+..................................................................test tests::an_attack_row_that_chased_into_the_death_is_the_row_verdict has been running for over 60 seconds
+....test tests::boss_deaths_show_the_counter_row_first has been running for over 60 seconds
+................. 890/898
+........
+failures:
+
+---- defs::tests::content_counts stdout ----
+
+thread 'defs::tests::content_counts' (5042) panicked at crates/idlever-core/src/defs.rs:428:9:
+assertion `left == right` failed: 43 existing items + three zero-weight permanent legendary shapes
+  left: 50
+ right: 46
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    defs::tests::content_counts
+
+test result: FAILED. 891 passed; 1 failed; 6 ignored; 0 measured; 0 filtered out; finished in 101.37s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

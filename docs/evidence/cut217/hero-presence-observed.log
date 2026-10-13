@@ -1,0 +1,9 @@
+client suite: targeted (2 selected; 153 current full; 195 exhaustive groups)
+FAIL hero-presence   2.8s (2.4s)  Node.js v26.5.0
+     page.evaluate: Error: prepared actor remains at home
+         at check (eval at evaluate (:311:30), <anonymous>:6:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:105:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/hero-presence.mjs:16:28 {
+ok   hero-frame      5.0s (4.7s)  44 actual current-name geometry/historical-captured identity checks PASS
+FAIL: 1/2 client gates in 5.0s

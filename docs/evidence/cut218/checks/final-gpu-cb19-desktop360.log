@@ -1,0 +1,6 @@
+client suite: targeted (1 selected; 153 current full; 195 exhaustive groups)
+FAIL home-residents:rest 6.1s (5.8s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: labels do not cover actor targets
+         at eq (file:///home/g/p/riddle/web/tests/home-residents.mjs:39:12)
+         at file:///home/g/p/riddle/web/tests/home-residents.mjs:176:9 {
+FAIL: 0/1 client gates in 6.1s

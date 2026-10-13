@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: full actor targets within scene
+    at ok (file:///home/g/p/riddle/web/tests/home-residents.mjs:35:12)
+    at file:///home/g/p/riddle/web/tests/home-residents.mjs:130:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

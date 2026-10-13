@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: [{"id":"mouth","hit":"mouth"},{"id":"tent","hit":"tent"},{"id":"crate","hit":"crate"},{"id":"blacksmith","hit":"blacksmith"},{"id":"kennel","hit":"kennel"},{"id":"guild","hit":"guild"},{"id":"pool","hit":"pool"},{"id":"device","hit":"device"},{"id":"board","hit":"board"},{"id":"worker","hit":"worker"},{"id":"staked"}]
+    at file:///home/g/p/riddle/scratchpad/cut218/visual.mjs:6:680 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

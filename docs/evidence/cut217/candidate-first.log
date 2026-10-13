@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: [{"name":"watch-depth-map","overlap":5600},{"name":"hud top","overlap":0},{"name":"watch-messages","overlap":0}]
+    at file:///home/g/p/riddle/web/tests/chrome-layout.mjs:113:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

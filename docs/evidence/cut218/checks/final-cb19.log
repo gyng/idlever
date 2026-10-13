@@ -1,0 +1,10 @@
+client suite: targeted (2 selected; 153 current full; 195 exhaustive groups)
+FAIL home-resident-phases 5.3s (4.7s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: exact phase/identity values
+         at eq (file:///home/g/p/riddle/web/tests/home-resident-phases.mjs:28:10)
+         at file:///home/g/p/riddle/web/tests/home-resident-phases.mjs:79:3 {
+FAIL home-residents  5.8s (5.2s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: earned fixture exposes its actual device target
+         at eq (file:///home/g/p/riddle/web/tests/home-residents.mjs:39:12)
+         at file:///home/g/p/riddle/web/tests/home-residents.mjs:180:11 {
+FAIL: 0/2 client gates in 5.8s

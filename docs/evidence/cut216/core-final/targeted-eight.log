@@ -1,0 +1,28 @@
+dayplayer: prior failure seeds first [11] (scheduling hints only)
+dayplayer: targeted rows idle-d8,idle-d13,reach — configurations IDLE,PICKED
+dayplayer: IDLE s3 done in 2s 
+dayplayer: IDLE s5 done in 3s 
+dayplayer: IDLE s2 done in 3s 
+dayplayer: IDLE s6 done in 3s 
+dayplayer: IDLE s7 done in 4s 
+dayplayer --fail-fast: idle-d13 settled PASS after IDLE s7 (day 2) (4s): median day 1.17…1.83 with 3 seeds left
+dayplayer: IDLE s8 done in 4s 
+dayplayer: IDLE s4 done in 4s 
+dayplayer: IDLE s1 done in 4s 
+dayplayer --fail-fast: idle-d8 settled PASS after IDLE s1 (day 2) (4s): 8/8 seeds
+dayplayer: PICKED s3 done in 21s 
+dayplayer: PICKED s2 done in 24s 
+dayplayer: PICKED s4 done in 27s 
+dayplayer: PICKED s7 done in 28s 
+dayplayer --fail-fast: reach settled PASS after PICKED s7 (day 2) (28s): seeds ≥ D14 on day 2 4–8/8 (not: )
+fail-fast: every targeted row settled after PICKED s7 (day 2)
+
+bar (targeted, fail-fast)                                                     value  result
+IDLE reaches D8 by the end of day 1                                         settled  PASS
+    8/8 seeds
+IDLE reaches D13 by day 4                                                   settled  PASS
+    median day 1.17…1.83 with 3 seeds left
+Content reach: PICKED ≥ D14 by day 2                                        settled  PASS
+    seeds ≥ D14 on day 2 4–8/8 (not: )
+dayplayer (targeted: idle-d8,idle-d13,reach, fail-fast, 28s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `idle-d8,idle-d13,reach` (fail-fast) PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
