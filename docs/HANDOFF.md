@@ -16,6 +16,15 @@ first; current body effect stays intact. This is design only: current runtime
 still has one armour slot. Acceptance40 adds the slot/bonus/pacing work without
 dropping the existing queue.
 
+Owner automation follow-up is designed in Cut216: per-hero Follow set with
+pinned hybrid slots and saved fallbacks; newly owned pieces resolve atomically
+on the next departure, never mid-delve. Collection is built in; retired
+Armourer is not restored. Paid upgrades keep the existing Apprentice budget.
+Optional Scout Find next piece targets known eligible sources, stops at unlock
+or3 consecutive source failures, then resumes normal delves. Global ownership
+and missing-piece protection survive absence/reload. This is queued design,
+not implemented; item40 includes the automation and its parity/refusal tests.
+
 Current checkpoint delivers Cut215 legendary discoveries and free Forge choices.
 Previous a23114f0 delivers Cut214 home-service visuals/adaptive labels;127ef6f3
 adds exact home/depth validation logs. These accompany the authorized push.

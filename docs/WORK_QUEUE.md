@@ -36,6 +36,14 @@ keep hybrid builds useful. This requires new Rust equipment slots and earned
 pacing checks; current runtime still has one armour slot. See
 [CUT216_ARMOUR_SETS.md](CUT216_ARMOUR_SETS.md) and acceptance40.
 
+Automation follow-up: Follow set resolves newly collected compatible pieces
+on later departures while respecting pinned hybrid slots and saved fallbacks.
+Collection/reuse is built in; no new Armourer hire. Existing Apprentice orders
+handle paid upgrades. Optional Scout Find next piece focus stops at one unlock
+or three consecutive failed source attempts, then resumes normal delving.
+Current equipped and queued next-run counts must stay distinct in the UI.
+This controller is designed, not implemented.
+
 ## Main fun — latest owner direction
 
 The main fun should be **trying builds and seeing how far they get**. Gear,
