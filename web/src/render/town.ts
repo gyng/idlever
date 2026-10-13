@@ -887,6 +887,7 @@ export type Quad = {
   flip: boolean;
   dim: number;
   fade: number;
+  relief?: number;
 };
 export type Light = { x: number; y: number; r: number; c: [number, number, number] };
 export type TownFrame = {
@@ -1063,6 +1064,11 @@ const IDLE_MS = 10_000,
 
 let sharedAtlas: TownAtlas | null = null;
 let sharedGl: { canvas: HTMLCanvasElement; gl: GLTown; lost: boolean } | null = null;
+let lightingInspector: (() => unknown) | null = null;
+/** Dev-only identical-frame readback; never runs in the animation loop. */
+export function inspectTownLighting(): unknown {
+  return import.meta.env.DEV ? lightingInspector?.() : null;
+}
 export function createTownView(host: HTMLElement): TownView {
   const el = host;
   // one GL canvas and context for every mount (a camp re-mounts on every return): taken here, given back on dispose
@@ -1153,6 +1159,7 @@ export function createTownView(host: HTMLElement): TownView {
     night: 0,
     live: 0,
   };
+  if (import.meta.env.DEV) lightingInspector = () => (gl && !glLost ? gl.compareLighting(F) : null);
   let terrainPaints = 0,
     terrainPaintMs = 0;
   let windTufts = 0,
@@ -1403,6 +1410,7 @@ export function createTownView(host: HTMLElement): TownView {
       q.flip = flip;
       q.dim = dim;
       q.fade = fade;
+      q.relief = 0;
     }
     F.n++;
   };
@@ -1446,7 +1454,14 @@ export function createTownView(host: HTMLElement): TownView {
     h: number,
     x: number,
     y: number,
-    o: { flip?: boolean; dim?: number; fade?: number; z?: number; ground?: boolean } = {},
+    o: {
+      flip?: boolean;
+      dim?: number;
+      fade?: number;
+      z?: number;
+      ground?: boolean;
+      groundY?: number;
+    } = {},
   ): void {
     const s = atlas.get(ids, h);
     if (!inView(x, y, s.w, s.h)) return;
@@ -1457,9 +1472,20 @@ export function createTownView(host: HTMLElement): TownView {
         id,
       )
     ) {
-      grounding(x, y, s.w, s.h, o.fade ?? 0);
+      grounding(x, o.groundY ?? y, s.w, s.h, o.fade ?? 0);
     }
     push(s, Math.round(x), Math.round(y), o.z ?? zOf(y), !!o.flip, o.dim ?? 1, o.fade ?? 0);
+    // Only exact, decoded painted poses are mapped. Fallbacks and other looks
+    // retain their art, including look-specific heroes that lack a walk pose.
+    const resolved = (Array.isArray(ids) ? ids : [ids]).find((key) => atlas.has(key));
+    F.quads[F.n - 1]!.relief =
+      resolved === "town_blacksmith_1"
+        ? 1
+        : resolved === "hero_fighter" ||
+            resolved === "hero_fighter_male" ||
+            resolved === "walk_fighter"
+          ? 2
+          : 0;
   }
   /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
   function ground(): void {
@@ -1881,7 +1907,15 @@ export function createTownView(host: HTMLElement): TownView {
       }
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
       const ids = step ? w.walk : w.sprite;
-      sprite(ids, w.h, x, y - (step ? 1 : 0), { flip, fade, ground: true });
+      const previousQuads = F.n;
+      const mappedHero = w.sprite[0] === "hero_fighter" || w.sprite[0] === "hero_fighter_male";
+      sprite(ids, w.h, x, y - (step ? 1 : 0), {
+        flip,
+        fade,
+        ground: true,
+        groundY: townLightPrototype() && mappedHero ? y : undefined,
+      });
+      if (F.n > previousQuads && !mappedHero) F.quads[F.n - 1]!.relief = 0;
       if (!w.pet) lantern(x, y - (step ? 1 : 0), flip, night, fade);
       if (w.carry) {
         const back = (flip ? -1 : 1) * (w.carry === "town_chest_glow" ? 6 : 7);
@@ -2367,6 +2401,11 @@ export function createTownView(host: HTMLElement): TownView {
         k: F.k,
         night: F.night,
         characterLights: characterLights.length,
+        dimensionalLight: gl && !glLost && townLightPrototype(),
+        mappedSprites: F.quads
+          .slice(0, F.n)
+          .filter((q) => q.relief)
+          .map((q) => ({ kind: q.relief, flip: q.flip, x: q.x, y: q.y })),
         lights: F.lights.length,
         idle: performance.now() - lastInput > IDLE_MS,
         running: !!raf,
@@ -2427,6 +2466,59 @@ function segDist(p: Pt, a: Pt, b: Pt): number {
 // ---- the GL view: one target of town texels, the light pass upscaling it ---------------------------------------------------------
 
 const MAX_LIGHTS = 32;
+function townLightPrototype(): boolean {
+  return (
+    import.meta.env.DEV &&
+    new URLSearchParams(location.search).get("townLight") === "planes" &&
+    effectsLevel() !== "off"
+  );
+}
+
+// Analytic surface masks in sprite-local coordinates: no repeated atlas reads,
+// luma-derived geometry, extra buffer, or authored-art replacement. Local X is
+// mirrored with the colour UV; normal X is then returned to world orientation.
+const TOWN_RELIEF = /* glsl */ `
+uniform float uReliefOn;
+uniform float uReliefNight;
+uniform vec4 uReliefL[${MAX_LIGHTS}];
+uniform vec3 uReliefC[${MAX_LIGHTS}];
+uniform int uReliefN;
+varying vec2 vLocal;
+varying vec2 vWorld;
+vec3 townNormal(vec2 p, float kind) {
+  if (kind < 1.5) {
+    // Main slate roof, lower timber side, open gable/front; chimney is masonry.
+    if (p.x < 0.22 && p.y > 0.53) return normalize(vec3(-0.65, 0.0, 0.8));
+    if (p.y > 0.40 + 0.27 * (1.0 - p.x)) return normalize(vec3(-0.22, 0.78, 0.65));
+    if (p.x < 0.56) return normalize(vec3(-0.7, 0.05, 0.72));
+    return normalize(vec3(0.48, 0.05, 0.88));
+  }
+  // Tiny head/cloth volumes: silhouette art remains authoritative. No gloss,
+  // no treating ink/wash brightness as bumps. Both existing poses share axes.
+  float head = step(0.76, p.y);
+  float centre = mix(0.49, 0.46, head);
+  float nx = clamp((p.x - centre) * 1.5, -0.65, 0.65);
+  float ny = mix(0.12, clamp((p.y - 0.85) * 4.0, -0.3, 0.45), head);
+  return normalize(vec3(nx, ny, 1.0));
+}
+vec3 townRelief(vec3 colour) {
+  if (uReliefOn < 0.5 || vParam.y < 0.5) return colour;
+  vec3 N = townNormal(vLocal, vParam.y);
+  if (vParam.w > 0.5) N.x = -N.x;
+  vec3 sky = normalize(vec3(mix(-0.55, -0.12, uReliefNight), 0.82, 0.85));
+  float key = clamp((dot(N, sky) - 0.65) * 0.4, -0.18, 0.18);
+  vec3 response = vec3(0.0);
+  for (int i = 0; i < ${MAX_LIGHTS}; i++) {
+    if (i >= uReliefN) break;
+    vec2 d = uReliefL[i].xy - vWorld;
+    float fall = max(0.0, 1.0 - length(d) / uReliefL[i].z);
+    vec3 L = normalize(vec3(d.x, -d.y, 14.0));
+    response += uReliefC[i] * fall * fall * (dot(N, L) - 0.65) * 0.3;
+  }
+  float ink = smoothstep(0.035, 0.12, dot(colour, vec3(0.2126, 0.7152, 0.0722)));
+  return colour * (vec3(1.0) + ink * (vec3(key) + clamp(response, vec3(-0.12), vec3(0.12))));
+}
+`;
 const BLIT_VERT = /* glsl */ `varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`;
 const BLIT_FRAG = /* glsl */ `
 uniform sampler2D tex;
@@ -2529,6 +2621,24 @@ class GLTown {
     this.groundL = new QuadLayer(this.terrainTex, 1, 1, 0);
     this.objL = new QuadLayer(this.tex, 1600, 1, 1);
     this.shadowL = new QuadLayer(this.tex, 800, 1, 1);
+    const objectMat = this.objL.mesh.material as THREE.ShaderMaterial;
+    objectMat.vertexShader = objectMat.vertexShader
+      .replace("varying vec2 vUv;", "varying vec2 vUv; varying vec2 vLocal; varying vec2 vWorld;")
+      .replace("vParam = iParam;", "vParam = iParam; vLocal = vec2(u, uv.y);")
+      .replace("gl_Position =", "vWorld = vec2(p.x, -p.y); gl_Position =");
+    objectMat.fragmentShader = objectMat.fragmentShader
+      .replace("void main() {", `${TOWN_RELIEF}\nvoid main() {`)
+      .replace(
+        "col = mix(col, uFlash, vParam.y * smoothstep(0.06, 0.3, l));",
+        "col = townRelief(col);",
+      );
+    Object.assign(objectMat.uniforms, {
+      uReliefOn: { value: 0 },
+      uReliefNight: { value: 0 },
+      uReliefL: { value: this.lv },
+      uReliefC: { value: this.lc },
+      uReliefN: { value: 0 },
+    });
     // Town-only translucent ground pigment. Ordinary sprites retain their
     // existing hard alpha threshold; this layer writes no depth or light tags.
     const shadowMat = this.shadowL.mesh.material as THREE.ShaderMaterial;
@@ -2574,7 +2684,76 @@ class GLTown {
   isLost(): boolean {
     return this.renderer.getContext().isContextLost();
   }
-  render(F: TownFrame): void {
+  compareLighting(F: TownFrame): unknown {
+    const captures: Uint8Array[] = [];
+    for (const enabled of [false, true]) {
+      this.render(F, enabled, 0);
+      const pixels = new Uint8Array(F.w * F.h * 4);
+      this.renderer.readRenderTargetPixels(this.rt, 0, 0, F.w, F.h, pixels);
+      captures.push(pixels);
+    }
+    let changed = 0,
+      unmapped = 0,
+      alphaChanges = 0,
+      max = 0,
+      sum = 0;
+    const maps = F.quads.slice(0, F.n).filter((q) => q.relief);
+    const changedByKind: Record<number, number> = {};
+    for (let y = 0; y < F.h; y++)
+      for (let x = 0; x < F.w; x++) {
+        const i = (y * F.w + x) * 4;
+        const delta = Math.max(
+          ...[0, 1, 2].map((c) => Math.abs(captures[0]![i + c]! - captures[1]![i + c]!)),
+        );
+        if (captures[0]![i + 3] !== captures[1]![i + 3]) alphaChanges++;
+        if (!delta) continue;
+        changed++;
+        sum += delta;
+        max = Math.max(max, delta);
+        const wx = F.x0 + x + 0.5,
+          wy = F.y0 + F.h - y - 0.5;
+        for (const q of maps) {
+          if (wx >= q.x - q.w / 2 && wx <= q.x + q.w / 2 && wy <= q.y && wy >= q.y - q.h)
+            changedByKind[q.relief!] = (changedByKind[q.relief!] ?? 0) + 1;
+        }
+        if (
+          !maps.some(
+            (q) => wx >= q.x - q.w / 2 && wx <= q.x + q.w / 2 && wy <= q.y && wy >= q.y - q.h,
+          )
+        )
+          unmapped++;
+      }
+    const images = captures.map((pixels) => {
+      const canvas = document.createElement("canvas");
+      canvas.width = F.w;
+      canvas.height = F.h;
+      const ctx = canvas.getContext("2d")!,
+        image = ctx.createImageData(F.w, F.h);
+      for (let y = 0; y < F.h; y++)
+        image.data.set(pixels.subarray(y * F.w * 4, (y + 1) * F.w * 4), (F.h - 1 - y) * F.w * 4);
+      ctx.putImageData(image, 0, 0);
+      return canvas.toDataURL();
+    });
+    this.render(F);
+    const material = this.objL.mesh.material as THREE.ShaderMaterial;
+    return {
+      width: F.w,
+      height: F.h,
+      night: F.night,
+      changed,
+      unmapped,
+      alphaChanges,
+      maxDelta: max,
+      meanChangedDelta: changed ? sum / changed : 0,
+      changedByKind,
+      mappedPoses: maps.map((q) => ({ kind: q.relief, w: q.w, h: q.h, flip: q.flip })),
+      shaderPatched:
+        material.fragmentShader.includes("col = townRelief(col);") &&
+        material.vertexShader.includes("vLocal = vec2(u, uv.y)"),
+      images,
+    };
+  }
+  render(F: TownFrame, reliefOverride?: boolean, timeOverride?: number): void {
     const r = this.renderer;
     if (this.canvas.width !== F.W || this.canvas.height !== F.H) r.setSize(F.W, F.H, false);
     if (this.rt.width !== F.w || this.rt.height !== F.h) this.rt.setSize(F.w, F.h);
@@ -2612,7 +2791,7 @@ class GLTown {
         q.s.u1,
         q.s.v1,
         q.dim,
-        0,
+        q.relief ?? 0,
         q.fade,
         q.flip ? 1 : 0,
       );
@@ -2625,6 +2804,15 @@ class GLTown {
     c.top = -F.y0;
     c.bottom = -(F.y0 + F.h);
     c.updateProjectionMatrix();
+    const relief = (this.objL.mesh.material as THREE.ShaderMaterial).uniforms;
+    relief.uReliefOn!.value = (reliefOverride ?? townLightPrototype()) ? 1 : 0;
+    relief.uReliefNight!.value = F.night;
+    relief.uReliefN!.value = Math.min(MAX_LIGHTS, F.lights.length);
+    for (let i = 0; i < relief.uReliefN!.value; i++) {
+      const light = F.lights[i]!;
+      this.lv[i]!.set(light.x, light.y, light.r, 0);
+      this.lc[i]!.set(...light.c);
+    }
     r.setRenderTarget(this.rt);
     r.setClearColor(0x1b2412, 1);
     r.clear();
@@ -2643,7 +2831,7 @@ class GLTown {
     }
     u.uN!.value = n;
     (u.uOrigin!.value as THREE.Vector2).set(F.x0, F.y0);
-    u.uTime!.value = performance.now() / 1000;
+    u.uTime!.value = timeOverride ?? performance.now() / 1000;
     r.setRenderTarget(null);
     r.render(this.blitScene, this.blitCam);
   }
