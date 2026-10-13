@@ -4,7 +4,9 @@ Final native workspace:838 passed,0 failed,6 existing ignored,55.41s.
 Final real WASM:6344923 bytes, SHA256
 61b03cbe6104e0c58cd45f4c0655d6f41213689d24914261bc07f20af231158a.
 Five focused worker/UI groups pass32.2s; final discovery-detail receipt group
-passes54 assertions in2.2s. Clippy warnings denied, web build, lint and copy pass.
+passes54 assertions in2.2s; the final55-assertion run in3.9s additionally proves
+cause-only driven records do not fabricate a zero-Gold receipt. Clippy warnings
+denied, web build, lint and copy pass.
 Build retains existing large-bundle and ineffective dynamic-import warnings.
 
 The independent conversion tests cover actual pickup/exit combinations,

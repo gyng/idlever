@@ -1,0 +1,7 @@
+client suite: targeted (5 selected; 131 current full; 173 exhaustive groups)
+ok   hero-upgrade-feedback 25.4s (24.6s)  1440 upgrade names/rank/next/prices/points/away/one-buy/lifecycle/touch PASS
+ok   bloodline-tabs  32.6s (31.8s)  bloodline-tabs 68 real-WASM checks PASS
+ok   legacy-tree     42.8s (42.1s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   class-styles    49.4s (48.6s)  1440 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+ok   class-tree      113.2s (112.4s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+ok: 5/5 client gates in 113.2s

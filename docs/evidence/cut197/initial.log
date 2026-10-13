@@ -1,0 +1,19 @@
+client suite: targeted (5 selected; 131 current full; 173 exhaustive groups)
+FAIL bloodline-tabs  6.1s (5.5s)  Node.js v26.5.0
+     page.evaluate: TypeError: Cannot read properties of undefined (reading 'includes')
+         at http://localhost:44627/src/ui/unlocks.ts:414:23
+         at Array.filter (<anonymous>)
+         at vaultSlots (http://localhost:44627/src/ui/unlocks.ts:414:3)
+         at paintVault (http://localhost:44627/src/ui/camp.ts:984:17)
+         at http://localhost:44627/src/ui/camp.ts:2233:4
+         at keepScroll (http://localhost:44627/src/ui/camp.ts:2221:3)
+         at paintAll (http://localhost:44627/src/ui/camp.ts:2227:3)
+         at App.emitChange (http://localhost:44627/src/app.ts:1364:42)
+         at App.afterLineage (http://localhost:44627/src/app.ts:1371:8)
+         at App.mutate (http://localhost:44627/src/app.ts:1415:14)
+         at /home/g/p/riddle/web/tests/bloodline-tabs.mjs:83:13 {
+ok   hero-upgrade-feedback 11.4s (10.8s)  1440 upgrade names/rank/next/prices/points/away/one-buy/lifecycle/touch PASS
+ok   legacy-tree     19.6s (19.0s)  1440 12 nodes/icons, mobile fold, purchase/fork/tooltips, cancel/refusal/one-call/stale/away/refund PASS
+ok   class-styles    23.7s (23.1s)  1440 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+ok   class-tree      66.5s (65.9s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+FAIL: 4/5 client gates in 66.5s

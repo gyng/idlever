@@ -20,7 +20,7 @@ try {
       if (a.kind !== "wasm") throw Error("real WASM required");
       a.runnerOn = false;
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(a);
+      openHero(a, undefined, "class");
     });
     assert.equal(await page.locator(".class-style-panel").count(), 0);
     await page.evaluate(async () => {
@@ -42,7 +42,7 @@ try {
         const { closeAllSheets } = await import("/src/ui/sheet.ts");
         closeAllSheets();
         const { openHero } = await import("/src/ui/town.ts");
-        openHero(a);
+        openHero(a, undefined, "class");
       };
       await window.showStyle();
       return a.engine.save();
@@ -128,7 +128,7 @@ try {
       const a = window.__idlever;
       a.runnerOn = false;
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(a);
+      openHero(a, undefined, "class");
     });
     assert.match(await page.locator(".class-style-choose").textContent(), /Remove path/);
     await page.locator(".class-style-choose").click();

@@ -1,4 +1,6 @@
 import { classIcon } from "./class-icons";
+import { bloodlineTabs, type BloodlineTab } from "./bloodline-tabs";
+import { renderBloodlineLoadouts } from "./bloodline-loadouts";
 import { heroPresence } from "./hero-presence";
 // Cut 30 §3 — the town on the camp (docs/TOWN.md): the scene (render/town.ts) in the well, a DOM hit target over everything one can
 // tap (≥ 44 px, a hidden label for tests and screen readers), the markers (≤ 3: a sword over the forge when a kit step is affordable,
@@ -65,7 +67,7 @@ export type TownHooks = {
 const LABEL: Record<string, string> = {
   mouth: "Delve",
   tent: "hero",
-  crate: "supplies",
+  crate: "Loadouts",
   blacksmith: "forge",
   storehouse: "stored gear",
   kennel: "companions",
@@ -988,12 +990,17 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
 }
 
 /** The tent: the hero — the class, its level and xp (the class picker once classes can be had: the camp's). */
-export function openHero(app: App, anchor?: HTMLElement | null): void {
+export function openHero(
+  app: App,
+  anchor?: HTMLElement | null,
+  initialTab: BloodlineTab = "loadouts",
+): void {
   let off = (): void => {};
   let offLive = (): void => {};
   openSheet(
     () => {
       const body = h("div", { class: "sheet-body hero-sheet" });
+      const tabs = bloodlineTabs(initialTab);
       const identity = (): string => {
         const L = app.lineage,
           slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
@@ -1012,6 +1019,12 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
           L.class_tree,
           L.legacy_upgrades,
           L.legacy_respec,
+          L.supplies,
+          L.supply_cap,
+          L.repeat,
+          L.facts,
+          L.forge,
+          L.town?.home,
           !!L.live,
           L.classes?.[L.class],
           L.hero_legacy?.find((h) => h.heir === L.heir),
@@ -1021,6 +1034,7 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
       };
       let painted = "";
       const paint = (): void => {
+        tabs.capture();
         painted = identity();
         const historyOpen = body.querySelector<HTMLDetailsElement>(".hero-history")?.open ?? false;
         const paths = body.querySelector(".legacy-tree")
@@ -1101,32 +1115,10 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
                 presence.text,
               )
             : null,
-          h(
-            "div",
-            { class: "hero-legacy num" },
-            h("b", null, /* copy:label */ "Legacy"),
-            ` ${L.bloodline?.points ?? legacy?.points ?? 0}`,
-          ),
-          // Cut 122 §9: how far to the next rank (`388 / 600 → Health III`) and its bar
-          ((n) =>
-            n
-              ? h(
-                  "div",
-                  { class: "legacy-next num", "data-price": n.price },
-                  h("small", { class: "legacy-next-text" }, legacyNextText(n)),
-                  legacyBar(n),
-                )
-              : null)(legacyNext(L)),
           !slot && L.live ? h("div", { class: "dim" }, /* copy:callout */ "Hero away") : null,
           h(
             "div",
             { class: "hero-actions" },
-            h(
-              "button",
-              { class: "chip hero-class", onclick: () => openHeroClass(app), disabled: !!L.live },
-              classIcon(L.class),
-              /* copy:button */ "Change class",
-            ),
             h(
               "button",
               {
@@ -1144,22 +1136,91 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
                 )
               : null,
           ),
-          renderClassTree(
-            app,
-            () => {
-              if (body.isConnected) paint();
-            },
-            classTreeOpen,
+          tabs.el,
+          tabs.panel(
+            "loadouts",
+            JSON.stringify([
+              L.selected_bloodline,
+              L.supplies,
+              L.supply_cap,
+              L.repeat,
+              L.facts,
+              L.forge,
+              !!L.live,
+              L.town?.home,
+            ]),
+            renderBloodlineLoadouts(app),
           ),
-          renderClassStyles(app, () => {
-            if (body.isConnected) paint();
-          }),
-          renderLegacy(
-            app,
-            () => {
+          tabs.panel(
+            "class",
+            JSON.stringify([
+              L.selected_bloodline,
+              L.class,
+              L.class_tree,
+              L.class_styles,
+              !!L.live,
+              L.town?.home,
+            ]),
+            h(
+              "button",
+              { class: "chip hero-class", onclick: () => openHeroClass(app), disabled: !!L.live },
+              classIcon(L.class),
+              /* copy:button */ "Change class",
+            ),
+            renderClassTree(
+              app,
+              () => {
+                if (body.isConnected) paint();
+              },
+              classTreeOpen,
+            ),
+            renderClassStyles(app, () => {
               if (body.isConnected) paint();
-            },
-            paths,
+            }),
+            !L.class_tree || (L.class_tree.level < 2 && L.class_tree.spent === 0)
+              ? h(
+                  "div",
+                  { class: "class-tree-soon num" },
+                  /* copy:label */ "Class skills",
+                  L.class_tree?.nodes[0]
+                    ? /* copy:label */ `L${L.class_tree.nodes[0].required_level} · D${L.class_tree.nodes[0].required_depth}`
+                    : /* copy:label */ "Skills unavailable",
+                )
+              : null,
+          ),
+          tabs.panel(
+            "legacy",
+            JSON.stringify([
+              L.selected_bloodline,
+              L.bloodline,
+              L.legacy_upgrades,
+              L.legacy_respec,
+              !!L.live,
+              L.heir,
+            ]),
+            h(
+              "div",
+              { class: "hero-legacy num" },
+              h("b", null, /* copy:label */ "Legacy"),
+              ` ${L.bloodline?.points ?? legacy?.points ?? 0}`,
+            ),
+            // Cut 122 §9: how far to the next rank (`388 / 600 → Health III`) and its bar
+            ((n) =>
+              n
+                ? h(
+                    "div",
+                    { class: "legacy-next num", "data-price": n.price },
+                    h("small", { class: "legacy-next-text" }, legacyNextText(n)),
+                    legacyBar(n),
+                  )
+                : null)(legacyNext(L)),
+            renderLegacy(
+              app,
+              () => {
+                if (body.isConnected) paint();
+              },
+              paths,
+            ),
           ),
           h(
             "details",
@@ -1190,6 +1251,7 @@ export function openHero(app: App, anchor?: HTMLElement | null): void {
             ),
           ),
         );
+        tabs.restore();
       };
       paint();
       const refresh = (): void => {

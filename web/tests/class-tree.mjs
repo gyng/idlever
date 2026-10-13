@@ -29,7 +29,7 @@ async function installFixture(page) {
       const { closeAllSheets } = await import("/src/ui/sheet.ts");
       closeAllSheets();
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(a);
+      openHero(a, undefined, "class");
     };
   });
 }
@@ -48,7 +48,12 @@ try {
         .locator(".sheet-wrap:not([hidden])")
         .locator(".class-tree-panel,.class-tree-soon")
         .count(),
-      0,
+      1,
+    );
+    assert.match(
+      await page.locator(".sheet-wrap:not([hidden]) .class-tree-soon").textContent(),
+      /L3.*D8/,
+      "early Class tab previews the real first skill milestone",
     );
     await page.evaluate(() => window.showSkill(2, 8));
     assert.equal(
@@ -185,7 +190,7 @@ try {
     await installFixture(page);
     await page.evaluate(async () => {
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(window.__idlever);
+      openHero(window.__idlever, undefined, "class");
     });
     await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-remove").click();
     assert.match(

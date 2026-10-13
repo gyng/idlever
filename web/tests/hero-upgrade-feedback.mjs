@@ -44,7 +44,7 @@ try {
         };
         return a.lineage;
       };
-      openHero(a);
+      openHero(a, undefined, "legacy");
     });
     assert.equal(await p.evaluate(() => window.buys), 0);
     assert.equal(await p.getByRole("button", { name: "Upgrade health", exact: true }).count(), 1);

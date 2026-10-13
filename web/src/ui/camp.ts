@@ -461,6 +461,11 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     paintTiles();
   }
   function togglePanel(name: string, anchor?: HTMLElement | null): void {
+    if (name === "loadout") {
+      closePanel();
+      openHero(app, anchor, "loadouts");
+      return;
+    }
     if (open === name) {
       closePanel();
       return;
@@ -826,7 +831,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             withPack(
               t(
                 "loadout",
-                /* copy:button */ "supplies",
+                /* copy:button */ "Loadouts",
                 "loadout",
                 () => togglePanel("loadout"),
                 open === "loadout",
@@ -874,7 +879,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           withPack(
             t(
               "loadout",
-              /* copy:button */ "supplies",
+              /* copy:button */ "Loadouts",
               "loadout",
               () => togglePanel("loadout"),
               open === "loadout",

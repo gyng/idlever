@@ -1524,18 +1524,17 @@ export function drivenDeath(
   runId: number,
   trace?: Death["trace"],
 ): Death {
-  // (a report's `drives` entry carries no exit line: its line is the drive-off's own numbers)
+  // A drives-only record has no Gold receipt. Preserve the cause without
+  // inventing a zero payout; callers prefer the actual matching exit line.
   if (!("driven" in line) || !line.driven) {
     const d = line as DrivenOff;
     line = {
-      carried: d.lost ?? 0,
-      keep_pct: 60,
+      carried: 0,
+      keep_pct: 100,
       kept: 0,
       spent: 0,
       spent_on: [],
-      text: d.lost
-        ? /* copy:callout */ `driven $0 · $${d.lost} lost`
-        : /* copy:callout */ "driven $0",
+      text: /* copy:callout */ "driven off",
       run_id: d.run_id,
       driven: d,
     };

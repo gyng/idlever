@@ -1,0 +1,71 @@
+.bloodline-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0 8px;
+}
+.bloodline-tab {
+  min-width: 0;
+  min-height: 48px;
+}
+.bloodline-tab[aria-selected="true"] {
+  box-shadow: inset 0 -3px #94743e;
+  filter: brightness(1.12);
+}
+.bloodline-tab:focus-visible {
+  outline: 2px solid #94743e;
+  outline-offset: 2px;
+}
+.bloodline-panel {
+  max-height: min(42dvh, 430px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+  padding: 4px 2px 10px;
+}
+.bloodline-panel[hidden] {
+  display: none;
+}
+.bloodline-loadouts {
+  display: grid;
+  gap: 12px;
+}
+.bloodline-loadouts p {
+  margin: 0;
+}
+.bloodline-prepared,
+.bloodline-catalogue {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.loadout-copy,
+.bloodline-prepare {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px;
+  overflow-wrap: anywhere;
+}
+.loadout-copy .chip {
+  margin-left: auto;
+}
+.loadout-copy .ico,
+.bloodline-prepare .ico {
+  width: 28px;
+  height: 28px;
+}
+.bloodline-prepare small {
+  width: 100%;
+}
+@media (max-width: 380px) {
+  .bloodline-prepared,
+  .bloodline-catalogue {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bloodline-tabs {
+    gap: 4px;
+  }
+}

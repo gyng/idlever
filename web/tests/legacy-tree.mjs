@@ -108,7 +108,7 @@ try {
       };
       window.installRespec();
       const { openHero } = await import("/src/ui/town.ts");
-      openHero(app);
+      openHero(app, undefined, "legacy");
     });
     assert.equal(await page.locator(".legacy-branch").count(), 3);
     assert.equal(await page.locator(".legacy-upgrade").count(), 12);

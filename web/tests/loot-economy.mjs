@@ -19,7 +19,7 @@ try {
     const { exitKind } = await import("/src/ui/exit-kind.ts");
     const { exitLead } = await import("/src/ui/report.ts");
     const { runRange } = await import("/src/ui/gold.ts");
-    const { exitExtras } = await import("/src/ui/death.ts");
+    const { exitExtras, drivenDeath } = await import("/src/ui/death.ts");
     const worker = await workerEngine();
     if (!worker || worker.version === "fake") throw Error("real worker required");
     const e = worker.engine;
@@ -28,6 +28,14 @@ try {
       if (!condition) throw Error(label);
       checks++;
     };
+    const fallback = drivenDeath(
+      { boss: "warlord", title: "Warlord", depth: 8, defence: "armour", lost: 7 },
+      1,
+    );
+    check(
+      fallback.line.text === "driven off" && !fallback.line.text.includes("$"),
+      "cause-only drive record invents no Gold receipt",
+    );
     const outcomes = [];
     for (const tier of ["bank", "return", "death"]) {
       await e.newLineage(196);
