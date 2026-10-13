@@ -73,6 +73,10 @@ character looks/frames is later scope, after the first comparison succeeds.
 
 Representative dev-only prototype implemented and measured. Broad visual acceptance and rollout remain open.
 
+Later owner amendment (Cut202): town personal lanterns become orange EMBER,
+superseding this checkpoint's mono requirement. The historical proof below
+records its original light colours; it is not evidence for the later colour change.
+
 ## Implementation contract (representative prototype)
 
 - Dev-only `townLight=planes` opts in; default and production remain unchanged pending visual review. Exactly Forge1 and default male Fighter idle/class-walk use relief; every other painted look stays neutral.

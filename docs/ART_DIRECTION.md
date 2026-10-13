@@ -79,6 +79,11 @@ Cold **moonlight from above** (MIST rims on top edges, shafts through cracks and
 pools** are the warm counterpoint and the only warm light. The hero keeps a small light of his own (MIST, not amber).
 Ghosts and magic glow MIST; fire and forge glow EMBER; nothing glows BLOOD except a hit flash.
 
+Owner amendment2026-10-13: town characters' handheld lanterns use orange EMBER
+wicks and small warm pools, replacing the earlier white/mono treatment. Keep
+moonlight and magic cool; warmth stays local to the lantern rather than tinting
+the entire town. The hero's magical light in the dungeon remains MIST.
+
 ## 7. UI, frames, type
 
 - Iron and stone become **ink and wash**: INK plates, MIST moonlit bevel on the top edge, GILT rivets, hatching for

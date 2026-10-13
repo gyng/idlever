@@ -1,0 +1,138 @@
+[
+  {
+    "file": "docs/evidence/cut202/400-gl-night-warm-lanterns.png",
+    "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+    "stats": {
+      "fps": 48,
+      "frames": 52,
+      "cpuMs": 1.1000000089406967,
+      "cpuP50": 1.2999999970197678,
+      "cpuP95": 18.200000002980232,
+      "walkers": 2,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1.5,
+      "night": 1,
+      "characterLights": 7,
+      "dimensionalLight": true,
+      "mappedSprites": [
+        {
+          "kind": 1,
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 2,
+          "flip": false,
+          "x": 366,
+          "y": 255
+        }
+      ],
+      "lights": 32,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 93,
+      "windTufts": 157,
+      "windSignature": 3882230656,
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "activeBuilds": [],
+      "buildEvents": 0,
+      "buildDust": 0,
+      "markers": [
+        "sword@blacksmith"
+      ],
+      "view": [
+        315,
+        109,
+        267,
+        360
+      ],
+      "workers": [
+        "quartermaster",
+        "scout",
+        "porter(lit)"
+      ],
+      "ranks": {}
+    },
+    "errors": [],
+    "expectedFallbackMessages": []
+  },
+  {
+    "file": "docs/evidence/cut202/1440-canvas-night-warm-lanterns.png",
+    "renderer": "Canvas2D",
+    "stats": {
+      "fps": 48,
+      "frames": 52,
+      "cpuMs": 1.7000000029802322,
+      "cpuP50": 1.9000000059604645,
+      "cpuP95": 2.4000000059604645,
+      "walkers": 2,
+      "mode": "2d",
+      "glLost": false,
+      "k": 1.25,
+      "night": 1,
+      "characterLights": 7,
+      "dimensionalLight": null,
+      "mappedSprites": [
+        {
+          "kind": 1,
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 2,
+          "flip": false,
+          "x": 366,
+          "y": 256
+        }
+      ],
+      "lights": 32,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 86.20000000298023,
+      "windTufts": 453,
+      "windSignature": 3036467245,
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "activeBuilds": [],
+      "buildEvents": 0,
+      "buildDust": 0,
+      "markers": [
+        "sword@blacksmith"
+      ],
+      "view": [
+        132,
+        99,
+        634,
+        380
+      ],
+      "workers": [
+        "quartermaster",
+        "scout",
+        "porter(lit)"
+      ],
+      "ranks": {}
+    },
+    "errors": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+    ],
+    "expectedFallbackMessages": [
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context."
+    ]
+  }
+]

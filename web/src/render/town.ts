@@ -829,13 +829,13 @@ function drawPrimitive(
     R("#fffbe8", c, 0, 1, h);
     R("#fffbe8", 0, c, w, 1);
     R("#ffffff", c - 1, c - 1, 3, 3);
-  } else if (id === "town_mono_lantern") {
-    // Small ink cage and pale wick, shared by GL and Canvas.
-    R("#697078", 1, 0, 3, 1);
-    R("#33383d", 1, 1, 1, 3);
-    R("#33383d", 3, 1, 1, 3);
-    R("#e4e4e4", 2, 1, 1, 3);
-    R("#929292", 1, 4, 3, 1);
+  } else if (id === "town_lantern") {
+    // Ink cage and orange ember wick, shared by GL and Canvas.
+    R("#4d6c99", 1, 0, 3, 1);
+    R("#0d0c14", 1, 1, 1, 3);
+    R("#0d0c14", 3, 1, 1, 3);
+    R("#e8923a", 2, 1, 1, 3);
+    R("#b89448", 1, 4, 3, 1);
   } else if (id.startsWith("fx_dot_")) R(`#${id.slice(7)}`, 0, 0, w, h);
   else if (/^(hero_|walk_)/.test(id)) {
     const body = /rogue/.test(id)
@@ -1622,9 +1622,9 @@ export function createTownView(host: HTMLElement): TownView {
     if (strength <= 0 || !inView(x, y, 24, 30)) return;
     const lx = x + (flip ? -6 : 6),
       ly = y - 8;
-    sprite("town_mono_lantern", 5, lx, ly + 2, { z: zOf(y) + 0.0004, fade: 1 - strength });
+    sprite("town_lantern", 5, lx, ly + 2, { z: zOf(y) + 0.0004, fade: 1 - strength });
     const a = strength * 0.85;
-    characterLights.push({ x: lx, y: ly, r: 23, c: [a, a, a] });
+    characterLights.push({ x: lx, y: ly, r: 23, c: [a, a * 0.64, a * 0.3] });
   }
   /** Cut 109: the townsfolk — the smith at the forge's door from the first building, a child about the fire and the well from the
    *  second, the merchant at the stall from the third, the carter up and down the south road when all facilities stand; a step bob, no walk frames */

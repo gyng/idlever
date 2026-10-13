@@ -8,6 +8,14 @@ All38 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
+Latest owner art steering: town characters' white lanterns should be orange.
+Cut202 replaces the procedural wick with EMBER and personal pools with warm
+RGB proportions1/0.64/0.3. Radius, peak red strength, night ramp, attachment and
+fade stay the same. This supersedes the earlier mono-lantern requirement;
+historical screenshot evidence remains unchanged. GL400/Canvas1440 earned night
+captures pass, preserving7 personal pools/32 lights/2 walkers in the fixture.
+Build/lint and36 local-clock checks pass. Evidence: docs/evidence/cut202.
+
 Current cuts: CUT191_BUILD_ECONOMY (free preparation complete; remaining loot
 work pending), CUT192_HOME_INTERACTIONS (building help/hover), CUT193_UI_CLARITY
 (scroll/Delve/Chronicle/chrome), CUT194_HOME_HEROES (actual actors/cave portraits),
