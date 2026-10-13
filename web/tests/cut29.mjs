@@ -15,7 +15,9 @@ import { mkdirSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const shotsArg = process.argv.indexOf("--shots"),
   shots = shotsArg > 0 ? process.argv[shotsArg + 1] : null;
 const partArg = process.argv.find((a) => a.startsWith("--part="));
@@ -864,10 +866,11 @@ try {
     }));
     check(
       tabs.orders &&
-        /run setup keep weapon · loot → weapon/.test(tabs.orders) &&
+        /run setup/.test(tabs.orders) &&
+        !/keep|loot|insure/.test(tabs.orders) &&
         !tabs.cage &&
         !tabs.start,
-      `one run setup tablet stands for the keep, loot and start ("${tabs.orders}"; cage tablet ${tabs.cage}, start tablet ${tabs.start})`,
+      `run setup shows current orders without retired Keep or loot controls ("${tabs.orders}"; cage tablet ${tabs.cage}, start tablet ${tabs.start})`,
     );
     await page.locator(".orders-tab").click();
     const rows = await until(() => {
@@ -877,24 +880,17 @@ try {
       return r.length ? r : null;
     }, "the orders sheet");
     check(
-      rows.length === 5 &&
-        rows[0].startsWith("keep for heirs") &&
-        rows.some((r) => r.startsWith("loot preference")) &&
+      rows.length === 2 &&
         rows.some((r) => r.startsWith("start D1")) &&
         rows.some((r) => r.startsWith("Auto restock on off")) &&
-        rows.some((r) => r.startsWith("insure kit on off")),
-      `the sheet holds the five orders (${rows.join(" | ")})`,
+        !rows.some((r) => /keep for heirs|loot preference|insure kit/.test(r)),
+      `current start and free reuse orders remain; retired controls are absent (${rows.join(" | ")})`,
     );
     await shot("cut29-orders");
-    await page
-      .locator(".sheet-wrap .order-row")
-      .first()
-      .locator(".chip", { hasText: "armour" })
-      .click();
-    await until(
-      () => window.__idlever.lineage.orders?.keep === "best_armour",
-      "the keep order set",
-    );
+    const beforeOrders = await page.evaluate(() => ({
+      start: window.__idlever.lineage.orders.start,
+      gold: window.__idlever.lineage.gold,
+    }));
     await page
       .locator(".sheet-wrap .order-row", { hasText: "Auto restock" })
       .locator(".chip", { hasText: "off" })
@@ -907,11 +903,18 @@ try {
       tab: document.querySelector(".orders-tab")?.textContent.replace(/\s+/g, " ").trim(),
     }));
     check(
-      after.on.includes("armour") &&
-        after.on.includes("off") &&
-        /keep armour/.test(after.tab) &&
-        /restock off/.test(after.tab),
+      after.on.includes("off") &&
+        /restock off/.test(after.tab) &&
+        !/keep|loot|insure/.test(after.tab),
       `a tap sets an order through setOrders; the sheet and the tablet follow (${after.on.join(" · ")}; "${after.tab}")`,
+    );
+    const afterOrders = await page.evaluate(() => ({
+      start: window.__idlever.lineage.orders.start,
+      gold: window.__idlever.lineage.gold,
+    }));
+    check(
+      JSON.stringify(afterOrders) === JSON.stringify(beforeOrders),
+      "free reuse order leaves start and Gold unchanged",
     );
   }
   // ---- §1/§5: the oath board's slots, the draw, the works

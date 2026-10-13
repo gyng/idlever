@@ -1369,7 +1369,12 @@ fn a_set_that_always_returns_gets_a_stall_verdict_with_patches() {
     assert!(crate::rules::word_count(&stall.text) <= 12, "{}", stall.text);
     assert!(!stall.patches.is_empty() && stall.patches.len() <= 3);
     assert!(stall.patches.iter().all(|p| p.forecast_delta > crate::offline::STALL_DELTA), "{:?}", stall.patches);
-    assert!(stall.patches.windows(2).all(|w| w[0].forecast_delta >= w[1].forecast_delta));
+    // Cut122 safety pricing deliberately sinks harmful whole-run moves below safe advice.
+    // Retain descending gain within each safety tier, and never put a harmful move first.
+    assert!(stall.patches.windows(2).all(|w| {
+        let a=crate::trace::patch_harms(&w[0]);let b=crate::trace::patch_harms(&w[1]);
+        if a==b {w[0].forecast_delta>=w[1].forecast_delta} else {!a&&b}
+    }),"{:?}",stall.patches.iter().map(|p|(p.forecast_delta,crate::trace::patch_harms(p))).collect::<Vec<_>>());
     // Cut 9 §5: the verdict carries the last-5 trace of the latest run the row ended.
     let tr = stall.trace.as_ref().expect("the stall carries a trace");
     assert!(!tr.turns.is_empty() && tr.turns.len() <= crate::engine::EXIT_TRACE_LEN);
@@ -1596,7 +1601,7 @@ fn routine_line_reads_the_floor_and_its_twist() {
     let e = ep(2, None, Act::default(), Resolution::Returned { gold: 8 });
     assert_eq!(story_line(&e), "D2: returned $8.");
     let e = ep(5, Some("vault"), ret(0), Resolution::Lost { stalled: false });
-    assert_eq!(story_line(&e), "D5, the cage: lost the thread.");
+    assert_eq!(story_line(&e), "D5, the cache: lost the thread.");
     let e = ep(7, Some("lock"), Act { row: 1, verb: Verb::new("bank"), target: None, boss: false, walk: false }, Resolution::Banked { gold: 120 });
     assert_eq!(story_line(&e), "D7, the lock: R2 banked $120.");
     // An attack row that happened to be the last act is not credited with the exit.
@@ -1609,7 +1614,7 @@ fn routine_line_reads_the_floor_and_its_twist() {
     e.threat = vec![("jackal".into(), 2)];
     assert_eq!(routine_line(&e), None);
     assert_eq!(story_line(&e), "Two jackals took him to 4 HP; R3 returned; returned.");
-    for t in ["D6, the nest: R3 returned $54.", "D2: returned $8.", "D5, the cage: lost the thread.", "D7, the lock: R2 banked $120."] {
+    for t in ["D6, the nest: R3 returned $54.", "D2: returned $8.", "D5, the cache: lost the thread.", "D7, the lock: R2 banked $120."] {
         assert!(story_ok(t), "{t}");
         assert!(word_count(t) <= crate::sifter::STORY_WORDS);
     }
@@ -4442,7 +4447,7 @@ fn the_nest_wakes_when_the_hero_comes_close() {
 /// the grace; unwatched or offline the preference picks; the tile becomes `vault_open` and
 /// the choice is an episode.
 #[test]
-fn the_vault_waits_for_a_choice_when_watched_and_picks_by_preference_otherwise() {
+fn loot_cache_automatically_takes_one_item_without_a_watched_choice_or_grace() {
     use crate::tiles::Tile;
     let cage = |g: &mut Game| {
         let run = g.run.as_mut().unwrap();
@@ -4450,21 +4455,23 @@ fn the_vault_waits_for_a_choice_when_watched_and_picks_by_preference_otherwise()
         run.vault_cage = ["sword", "mail", "heal"].iter().enumerate().map(|(i, k)| Item::new(900 + i as u32, k)).collect();
     };
     let mut g = arena();
+    g.set_vault_pref("armour").unwrap();
     cage(&mut g);
     hold_rules(&mut g);
     g.run.as_mut().unwrap().hero.pos = Pos::new(5, 5);
     let evs = ticks(&mut g, 10);
-    assert!(evs.iter().any(|e| matches!(e, Ev::Callout { text, .. } if text == "choose one")));
+    assert!(!evs.iter().any(|e| matches!(e, Ev::Callout { text, .. } if text == "choose one")));
+    assert_eq!(evs.iter().filter(|e|matches!(e,Ev::Pickup {..})).count(),1);
     let snap = g.snapshot();
-    let vc = snap.vault_choice.as_ref().expect("the choice is on the snapshot");
-    assert_eq!(vc.items.len(), 3);
+    assert!(snap.vault_choice.is_none());
     assert_eq!(g.run.as_ref().unwrap().floor.map.get(Pos::new(5, 5)), Tile::VaultOpen);
     assert!(g.lineage.facts.contains("vault"));
     ticks(&mut g, 20);
-    assert!(g.run.as_ref().unwrap().vault_choice.is_some(), "watched: still waiting");
-    g.choose(901).unwrap();
+    assert!(g.run.as_ref().unwrap().vault_choice.is_none(), "watched loot is already collected");
+    assert!(g.choose(901).is_err());
     assert!(g.run.as_ref().unwrap().vault_choice.is_none());
     assert_eq!(hero(&g).armour.as_ref().map(|a| a.kind.as_str()), Some("mail"));
+    assert_eq!((g.run.as_ref().unwrap().loot_raw,g.run.as_ref().unwrap().loot),(30,7));
     assert!(g.choose(902).is_err(), "the rest vanished");
     assert!(g.snapshot().vault_choice.is_none());
     let ep = g.run.as_ref().unwrap().arc.sealed.last().expect("the vault is an episode");
@@ -4475,26 +4482,26 @@ fn the_vault_waits_for_a_choice_when_watched_and_picks_by_preference_otherwise()
     }
     let hs = crate::sifter::sift_with(g.run.as_ref().unwrap(), false);
     let line = hs.iter().find(|h| h.arc.as_ref().unwrap().threat == "vault").unwrap();
-    assert_eq!(line.text, "The cage held three; he took the mail; returned.");
+    assert_eq!(line.text, "A cache of loot; he took the mail; returned.");
     assert!(crate::sifter::story_ok(&line.text));
-    // Unanswered past the grace: the preference picks.
+    // Potion preference applies immediately, without a grace period.
     let mut g = arena();
     g.set_vault_pref("potion").unwrap();
     cage(&mut g);
     hold_rules(&mut g);
     g.run.as_mut().unwrap().hero.pos = Pos::new(5, 5);
-    ticks(&mut g, 10 + crate::engine::VAULT_GRACE);
+    ticks(&mut g, 10);
     assert!(g.run.as_ref().unwrap().vault_choice.is_none());
     assert!(hero(&g).inv.iter().any(|i| i.kind == "heal"), "{:?}", hero(&g).inv);
-    // Offline: the same grace (a verdict replay stays faithful), the same preference.
+    // Offline uses the same immediate deterministic preference.
     let mut g = arena();
     g.offline = true;
     cage(&mut g);
     hold_rules(&mut g);
     g.run.as_mut().unwrap().hero.pos = Pos::new(5, 5);
     ticks(&mut g, 11);
-    assert!(g.run.as_ref().unwrap().vault_choice.is_some());
-    ticks(&mut g, crate::engine::VAULT_GRACE);
+    assert!(g.run.as_ref().unwrap().vault_choice.is_none());
+    assert_eq!(*g.run.as_ref().unwrap().caged,vec![900]);
     assert!(g.run.as_ref().unwrap().vault_choice.is_none());
     assert_eq!(hero(&g).weapon.as_ref().map(|w| w.kind.as_str()), Some("sword"), "weapon by default");
     assert!(g.set_vault_pref("gold").is_err());
@@ -8732,7 +8739,11 @@ fn the_cage_forecast_measures_each_preference() {
     let mut g = arena();
     g.lineage.vault_pref = "armour".into();
     g.run.as_mut().unwrap().vault_choice = Some((g.run.as_ref().unwrap().turn, items));
-    assert_eq!(g.snapshot().vault_choice.unwrap().pick, Some(1002));
+    assert!(g.snapshot().vault_choice.is_none());
+    ticks(&mut g,1);
+    assert!(g.run.as_ref().unwrap().vault_choice.is_none());
+    assert_eq!(*g.run.as_ref().unwrap().caged,vec![1002]);
+    assert_eq!((g.run.as_ref().unwrap().loot_raw,g.run.as_ref().unwrap().loot),(30,7));
 }
 
 // ---------------------------------------------------------------- Cut 20

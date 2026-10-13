@@ -1,23 +1,25 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readFileSync, mkdirSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { launchBrowser } from "../../tools/browser.mjs";
 
-// Controlled worlds, public learn/open/choose actions, actual Rust events.
+// Controlled saved worlds, automatic loot and real factual skill events.
 // These are interaction/accounting checks, not earned progression or balance.
 const fixture = (name) =>
   gunzipSync(
     readFileSync(new URL(`../../docs/evidence/cut206/core/${name}.game.json.gz`, import.meta.url)),
   ).toString();
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const b = await launchBrowser();
 const results = [];
 try {
-  for (const lane of ["choice", "preference", "skill"]) {
+  for (const lane of ["automatic", "preference", "skill"]) {
     const p = await b.newPage({ viewport: { width: 400, height: 900 } });
     const errors = [];
     p.on("pageerror", (error) => errors.push(error.message));
@@ -34,13 +36,16 @@ try {
         a.__events = [];
         if (lane === "preference") {
           await e.setVaultPref("potion");
-          const stepped = await e.step(50);
+          const stepped = await e.step(1);
           a.__events.push(...stepped.events);
           a.__result = { snapshot: stepped.snapshot, saved: JSON.parse(await e.save()) };
           return;
         }
+        if (lane === "automatic") await e.setVaultPref("armour");
+        a.__stepRequests = [];
         const step = e.step.bind(e);
         e.step = async (n) => {
+          a.__stepRequests.push(n);
           const stepped = await step(n);
           a.__events.push(...stepped.events);
           return stepped;
@@ -61,38 +66,55 @@ try {
         ),
       );
       results.push({ lane, raw: 12, carry: 3 });
-    } else if (lane === "choice") {
-      await p
-        .locator(".ticker.cage.show")
-        .waitFor({ timeout: 10000 })
-        .catch(async (error) => {
-          console.log(
-            JSON.stringify(
-              await p.evaluate(async () => ({
-                screen: window.__idlever.screen,
-                watch: document.querySelector(".watch")?.dataset,
-                events: window.__idlever.__events,
-                saved: JSON.parse(await window.__idlever.engine.save()).run?.vault_choice,
-                text: document.body.innerText.slice(-3000),
-              })),
-            ),
-          );
-          throw error;
+    } else if (lane === "automatic") {
+      await p.waitForFunction(() =>
+        window.__idlever.__events.some((event) => event.k === "pickup" && /mail/.test(event.item)),
+      );
+      const automatic = await p.evaluate(async () => {
+        const a = window.__idlever;
+        a.__pickupSave = await a.engine.save();
+        const saved = JSON.parse(a.__pickupSave);
+        return {
+          selected: a.__events.filter((event) => event.k === "pickup" && /mail/.test(event.item))
+            .length,
+          pendingChoice: saved.run?.vault_choice ?? null,
+          cageSheet: !!document.querySelector(".vault-choice"),
+          cageTicker: !!document.querySelector(".ticker.cage"),
+          cageState: document.querySelector(".watch")?.dataset.cage ?? null,
+          firstBatch: a.__stepRequests[0],
+          rawAtPickup: saved.run.loot_raw,
+          carryAtPickup: saved.run.loot,
+          goldAtPickup: saved.lineage.gold,
+        };
+      });
+      assert.equal(automatic.selected, 1);
+      assert.equal(automatic.rawAtPickup, 30);
+      assert.equal(automatic.carryAtPickup, 7);
+      assert.equal(automatic.goldAtPickup, 500);
+      assert.equal(automatic.pendingChoice, null);
+      assert.equal(automatic.cageSheet, false);
+      assert.equal(automatic.cageTicker, false);
+      assert.equal(automatic.cageState, null);
+      assert.ok(automatic.firstBatch >= 10, "ordinary pump batch is not capped to eight near loot");
+      if (process.env.IDLEVER_CACHE_SHOTS) {
+        mkdirSync(process.env.IDLEVER_CACHE_SHOTS, { recursive: true });
+        await p.evaluate(async () => {
+          await document.fonts.ready;
+          await Promise.all([...document.images].map((image) => image.decode().catch(() => {})));
         });
-      await p.locator(".ticker.cage.show").click();
-      const sheet = p.locator(".vault-choice");
-      await sheet.waitFor();
-      assert.match(await sheet.textContent(), /Gold on pickup/);
-      assert.doesNotMatch(await sheet.textContent(), /storage|full|sold|Keep/);
-      assert.equal(await sheet.locator(".chip.item").count(), 3);
-      assert.match(await sheet.textContent(), /black potion\?/);
-      await sheet.locator(".chip.item").filter({ hasText: /mail/ }).click();
-      await sheet.waitFor({ state: "detached" });
+        await p.screenshot({
+          path: `${process.env.IDLEVER_CACHE_SHOTS}/automatic-loot-watch-400.png`,
+        });
+      }
       const receipt = await p.evaluate(async () => {
         const a = window.__idlever;
-        // The following direct API settlement is instrumentation, outside the
-        // watch controls. Dispose its pump before reading the final receipt.
+        // Isolate accounting from GPU screenshot wall time using the actual
+        // save captured after the watched pickup. No authored state changes.
+        // The visual run remains free to continue; dispose its pump, restore
+        // that genuine boundary, then settle once through the real API.
         a.go({ kind: "camp" });
+        await a.engine.load(a.__pickupSave);
+        await a.refresh();
         const active = JSON.parse(await a.engine.save());
         await a.engine.bail();
         // bail queues the next hero action, rather than an immediate payout.
@@ -121,7 +143,7 @@ try {
         pending: null,
       });
       assert.equal(await p.locator(".keep-legend").count(), 0);
-      results.push({ lane, ...receipt });
+      results.push({ lane, automatic, ...receipt });
     } else {
       await p.waitForFunction(() =>
         window.__idlever.__events.some(
@@ -164,7 +186,10 @@ try {
     await p.close();
   }
   console.log(
-    JSON.stringify({ contract: "Cut206 controlled cage and Cut205 factual live skill", results }),
+    JSON.stringify({
+      contract: "Cut210 controlled automatic loot and Cut205 factual live skill",
+      results,
+    }),
   );
 } finally {
   await b.close();

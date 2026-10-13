@@ -1274,6 +1274,40 @@ export type ReturnReport = {
   meters?: MeterWire; // Cut 29 §3 (core): the absence's real runs metered, summed (the report's per-night meter)
   fallen?: Fallen[]; // Cut 29 §6 (core; AX: Greth gone with only `party −1 ogre`): each companion that fell, named — `Greth · ogre L5 · fell D12 to lurker`
 };
+export type JournalAction = {
+  kind: "build_town" | "hire" | "delve" | "open";
+  target: string;
+  label: string;
+  enabled: boolean;
+  blocked: string | null;
+};
+export type JournalEntry = {
+  id: string;
+  title: string;
+  reason: string;
+  effect: string;
+  state: "complete" | "ready" | "later" | "active";
+  progress: { current: number; required: number; unit: string } | null;
+  requirements: string[];
+  action: JournalAction | null;
+};
+export type JournalQuest = {
+  goal: string;
+  reward: string;
+  progress: number;
+  done: boolean;
+  swap: boolean;
+  body: string;
+};
+export type Journal = {
+  bloodline_id: number;
+  seed: string;
+  heir: number;
+  recommended: string | null;
+  chapters: { id: "town" | "builds" | "delving"; title: string; entries: JournalEntry[] }[];
+  discoveries: { id: string; title: string; body: string }[];
+  quest: JournalQuest | null;
+};
 export type StartingConfig = { weapon: string | null; armour: string | null; supplies: string[] };
 export type NamedStartingKit = { id: string; name: string; config: StartingConfig };
 export type StartingGearChoice = {
@@ -1297,6 +1331,7 @@ export type StartingKits = {
   actual_armour: string | null;
 };
 export type Lineage = {
+  journal?: Journal;
   starting_kits?: StartingKits;
   bloodline?: BloodlineLegacy;
   keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response

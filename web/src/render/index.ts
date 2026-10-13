@@ -63,8 +63,10 @@ import { Quality } from "./quality";
 import { LightField, MAX_FIELD, type FieldLight } from "./light";
 import { Bloom, EMISSIVE_TAG } from "./bloom";
 import { SpriteNormals } from "./normals";
-import { Juice } from "./fx";
+import { Juice, TintLayer } from "./fx";
 import { View2D } from "./view2d";
+import { CombatCues, type CueBody } from "./combat-cues";
+import { effectsLevel } from "./fxpref";
 export { createFallbackViewer } from "./fallback";
 import type { Ev, GunSnap, Snapshot } from "./types";
 
@@ -142,6 +144,7 @@ export type DebugRect = {
 export type DebugLabel = { text: string; x: number; y: number; id: number; w?: number; h?: number }; // CSS px: the label's centre x and its cell's bottom y; w · h its box (Cut 15 §4)
 
 export type ViewerStats = {
+  combatCues?: { active: number; quads: number; events: number };
   heroCrowd?: boolean;
   lead?: [number, number]; // Cut 121 §3: + the map camera's lead (world units)   // Cut 121 §3: two or more hostiles within two tiles of the hero this frame (his chevron drawn)
   calls: number;
@@ -380,7 +383,14 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   const normals = new SpriteNormals(spr); // juice pass 2: derived sprite normals, drawn by a twin of the entity layer (high)
   normals.add(L.ents.twin(normals.material));
   scene.add(juice.emit.mesh, juice.matte.mesh, juice.nums.mesh, juice.decals.mesh);
-  st.onEvent = (ev) => juice.onEvent(ev);
+  const combatCues = new CombatCues();
+  const cueLayer = new TintLayer(env, 128, 0.5, false, 8);
+  const cueBodies = new Map<number, CueBody>();
+  scene.add(cueLayer.mesh);
+  st.onEvent = (ev) => {
+    juice.onEvent(ev);
+    combatCues.onEvent(ev, st.heroId, effectsLevel());
+  };
   const fieldLights: FieldLight[] = [];
   const stairsSeen: [number, number][] = []; // Cut 26 §2: this frame's seen down stairs
   const stairPlates: { x: number; y: number; text: string; taken: boolean }[] = []; // …and the plates a fork floor gave them
@@ -408,6 +418,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   applyFx();
   let raf = 0;
   let last = performance.now();
+  let effectNow = last;
   let disposed = false;
   // cohort 24 (AW: `CONTEXT_LOST_WEBGL` froze the watch for 7 minutes, ▶▶| dead until a reload): a lost context never stops the
   // clock — the frame loop keeps ticking the replay (the watch's pacing reads `tick()` / `idle()`), draws a 2D view of it over the
@@ -1163,6 +1174,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     const fight = mode === "fight";
     updateRoom();
     rects.length = 0;
+    cueBodies.clear();
     labels.length = 0;
     texts.length = 0;
     tags.length = 0;
@@ -1690,7 +1702,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
             ? BOSS_FALL_FLASH
             : Math.max(
                 e.hero ? HERO_FLASH : FLASH_MIX,
-                juice.hitFlash(e.id, st.clock, e.hero, now),
+                juice.hitFlash(e.id, st.clock, e.hero, effectNow),
               );
       // juice: squash & stretch (a hit, a lunge, a spawn's pop, a death's slump) — the feet stay put; `rects` keep the true size
       const [sqx, sqy] = juice.squash(e.id, st.clock);
@@ -1717,6 +1729,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
         w: (dw * k) / dpr,
         h: (dh * k) / dpr,
       };
+      if (!e.remembered) cueBodies.set(e.id, { x: sx, y: drawY, w: dw, h: dh });
       (ghost ? L.ghosts : L.ents).push(
         sx,
         drawY,
@@ -1864,6 +1877,17 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     L.ghosts.end();
     L.glyphs.end();
     L.hud.end();
+    cueLayer.begin();
+    const cueSlot = atlas.solid("#ffffff");
+    for (const pixel of combatCues.draw(
+      st.clock,
+      (id) => cueBodies.get(id) ?? null,
+      effectsLevel(),
+      quality.motion,
+    ))
+      cueLayer.push(pixel.x, pixel.y, 8.5, pixel.w, pixel.h, cueSlot, ...pixel.c, pixel.a);
+    cueLayer.end();
+    stats.combatCues = combatCues.stats();
     // juice: particles, numbers and this frame's events (fx.ts); nothing at `low`
     fires.length = 0;
     gases.length = 0;
@@ -1894,7 +1918,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
           }
       const hh = st.hero,
         dustC = p[Math.min(3, p.length - 1)]!;
-      juice.update(simDt, now, st.clock, {
+      juice.update(simDt, effectNow, st.clock, {
         ent: (id) => {
           const e = st.ents.get(id);
           if (!e) return null;
@@ -1972,7 +1996,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       }
     } else {
       juice.falls.length = 0;
-      juice.update(0, now, st.clock, {
+      juice.update(0, effectNow, st.clock, {
         ent: () => null,
         heroId: -1,
         speed: 0,
@@ -2045,7 +2069,10 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     quality.sample(dt, stats.cpuMs, now);
     applyFx();
     simDt = dt;
-    st.tick(dt * juice.timeScale(now), now); // juice: a hit-stop holds the clock, a death's slow-mo slows it (med+, motion on)
+    // Existing Juice keeps its capped presentation rate, but pause must freeze
+    // visual expiration as well as particle simulation. New cues use st.clock.
+    if (st.speed > 0) effectNow += dt * Math.min(2.5, Math.max(1, st.speed));
+    st.tick(dt * juice.timeScale(effectNow), now); // juice: a hit-stop holds the clock, a death's slow-mo slows it (med+, motion on)
     const resized = measure();
     const snapCam = st.cameraSnap || (resized && !st.hero);
     st.cameraSnap = false;
@@ -2053,7 +2080,8 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     if (!st.loaded) return;
     if (!atlasReady && now - born < ATLAS_WAIT_MS) return;
     if (glLost) {
-      view2d?.draw(st);
+      view2d?.draw(st, combatCues);
+      stats.combatCues = combatCues.stats();
       stats.tick = st.tickNow();
       stats.pending = st.pending();
       stats.calls = 0;
@@ -2063,7 +2091,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     // snap camera to the env-texel grid; remainder → blit UV offset quantised to device px. Cut 8A: the fight frame's
     // screen shake displaces the snapped centre by whole texels
     const [shx0, shy0] = mode === "fight" && juice.shakeAllowed() ? st.shakeOffset() : [0, 0]; // combat fx pass: none under reduced motion or effects off
-    const [kx, ky] = juice.shake(now);
+    const [kx, ky] = juice.shake(effectNow);
     const shx = shx0 + kx,
       shy = shy0 + ky;
     const sx = Math.round(cam.x) + shx,
@@ -2115,7 +2143,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
           c: HERO_LIGHT,
         });
       } // phase 2: a cold MIST pool (was a warm amber one; the Fens' was a lantern)
-      juice.lights(now, fieldLights);
+      juice.lights(effectNow, fieldLights);
       for (const [px, py] of st.projectilePositions())
         fieldLights.push({ x: px + 0.5, y: py + 0.5, r: 2, c: [0.7, 0.6, 0.4] });
       for (const [cx, cy] of candles.slice(0, 3))
@@ -2177,7 +2205,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       bloom.setSize(W * 2, H * 2);
       bloom.render(renderer);
       const vg = juice.vignette(
-        now,
+        effectNow,
         hero && hero.maxHp > 0 && !hero.dying ? hero.hp / hero.maxHp : 1,
       );
       (u.uMap!.value as THREE.Vector2).set(st.w, st.h);
@@ -2239,7 +2267,8 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   return {
     load(snap) {
       st.load(snap);
-      juice.clearFloor(); // combat fx pass: the splats belong to the floor they fell on
+      juice.reset();
+      combatCues.clear(); // new floor drops all previous cursor effects
       bossScale = null;
       bossScaleDepth = st.depth;
       lastCss = "";
@@ -2254,10 +2283,13 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     },
     skipToEvent() {
       st.skipToEvent();
+      juice.clearTransient();
+      combatCues.clear();
     },
     seek(t) {
       st.seek(t);
-      juice.clearFloor();
+      juice.clearTransient();
+      combatCues.clear();
     },
     sync(snap) {
       st.sync(snap);
@@ -2301,6 +2333,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       field.dispose();
       bloom.dispose();
       juice.dispose();
+      cueLayer.dispose();
       normals.dispose();
       tagLayer.dispose();
       gpu.dispose();

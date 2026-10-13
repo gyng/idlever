@@ -8,6 +8,38 @@ All38 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
+Latest owner steering: the cage is a distraction; remove its player-facing
+choice system (Cut210). Implemented automatic cache loot: no preference editor,
+timed override, live-view wait, special batching or skip stop. Actual new loot
+and saved-pending-choice checks pass, including mail7Gold/Return507 and potion3;
+ordinary fight/exit/captive behavior remains. Final real WASM6442546bytes SHA
+802c54f2f1a3b7142386b0620a86753046b4845be26110bad25f479172ed4fe1.
+Final native855pass/0fail/6 existing ignored; warnings-denied Clippy passes.
+Four superseded test contracts were amended with actual diagnostics; safe advice
+leads harmful advice, and theft seed187/death2 preserves every numeric gate.
+Historical cage-choice evidence describes the superseded game. Immediate gear
+acquisition changes actual early hauls/Porter readiness and earned pacing;
+current-game balance must be checked rather than inferred unchanged.
+
+Cut208 Journal foundation is integrated: Town/Builds/Delving, one Rust-owned
+recommended action, inline real quest meaning and automatic settlement, no
+Claim chore. Real fresh seed1 House→Delve plus first-plot checks pass2/2 at
+320/400/1440, normal/200% Journal targets44px/nooverflow/retainedfocus. Guidance
+is available before House through one floating control without moving the plot.
+48 synthetic DOM assertions and fifteen actual Home label states pass. Earned
+seed1/13 native fixtures are archived under cut208/earned-final; wider real
+quest/bloodline/action-refusal client acceptance remains open. Tests preserve
+all intermediate failures and source/observation corrections.
+
+Cut209 adds bounded factual GL/Canvas class-policy/hit/block/miss/heal marks.
+43 model checks plus19 context-loss checks pass on the final package. Controlled
+active-layer CPU p95 increment0.2ms/one draw call; earned-tape comparisons had
+zero new active cues and cannot certify active-layer cost. Existing Juice freezes
+on pause/clears on seek but still caps presentation scaling2.5×; broad legacy
+Canvas effects and combat feel remain queued. Current renderer proofs and
+limits are in docs/evidence/cut209; four raw sample JSON files are preserved
+byte-for-byte in raw-samples.tar.gz with readback SHA/size verification. Full queue stays active; no release/deploy.
+
 Latest owner follow-up: the home screenshot had overlapping labels, and asked
 whether scaling fixes are in and what remains. Cut207 resolves building-help
 plates over resource badges and the header's floating first-time caption.

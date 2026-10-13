@@ -1,0 +1,6 @@
+
+thread 'main' (3) panicked at crates/idlever-core/examples/journal_probe.rs:15:9:
+assertion `left == right` failed
+  left: Some("porter")
+ right: Some("scout")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

@@ -33,9 +33,10 @@ function pinned(): Fx | null {
   return null;
 }
 
+let motionQuery: MediaQueryList | null = null;
 export function reducedMotion(): boolean {
   try {
-    return matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return (motionQuery ??= matchMedia("(prefers-reduced-motion: reduce)")).matches;
   } catch {
     return false;
   }
@@ -44,7 +45,9 @@ export function reducedMotion(): boolean {
 export class Quality {
   fx: Fx;
   readonly pinned: boolean;
-  readonly motion: boolean;
+  get motion(): boolean {
+    return !reducedMotion();
+  }
   private win: number[] = [];
   private cpu: number[] = [];
   private t0 = 0;
@@ -56,7 +59,6 @@ export class Quality {
     const p = pinned();
     this.pinned = p !== null;
     this.fx = p ?? (softwareGl(gl) ? "low" : "high");
-    this.motion = !reducedMotion();
   }
 
   at(min: Fx): boolean {

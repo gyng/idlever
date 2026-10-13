@@ -1,0 +1,20 @@
+{
+  "freshNoHmrPort": 5268,
+  "browser": "tools/browser.mjs IDLEVER_BROWSER=headed: private Xvfb GPU; correctness only",
+  "wasmBytes": 6442546,
+  "wasmSha256": "802c54f2f1a3b7142386b0620a86753046b4845be26110bad25f479172ed4fe1",
+  "modules": [
+    {
+      "url": "http://127.0.0.1:5268/src/ui/watch.ts",
+      "file": "watch-final-served-watch.txt",
+      "sha256": "7c9b6a27964b2275bb26cf2b4730a3057e1ce1e0daff0ca484167683c21c9cdf"
+    },
+    {
+      "url": "http://127.0.0.1:5268/src/ui/fold.ts",
+      "file": "watch-final-served-fold.txt",
+      "sha256": "5d420d7b52225f5a6c1a932f274246746846bf7678f096c7e4f1b1dc56d1fa30"
+    }
+  ],
+  "historicalInput": "docs/evidence/cut206/core/cage-active.game.json.gz",
+  "historicalInputSha256": "a6f829091c665b83e73adc1d7748fe21764754f0e6a64d12f9100c4c9a14652d"
+}

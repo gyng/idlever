@@ -970,7 +970,7 @@ button.re-body {
 .camp .console-row > .gem-slot {
   grid-column: 2;
 }
-.camp[data-first="1"] .console .cmd {
+.camp[data-first="1"] .console .cmd:not(:has([data-tile="journal"])) {
   display: none;
 }
 .hero-list > .hero-history {
@@ -1788,4 +1788,17 @@ html body .ctl .cmd .tile.ctl-toggle .tl {
     gap: 6px;
     font-size: 13px;
   }
+}
+
+/* The first-town Journal remains reachable without moving the House plot. */
+.camp .camp-well {
+  position: relative;
+}
+.camp .early-journal {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 6;
+  min-width: 80px;
+  min-height: 44px;
 }

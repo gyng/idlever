@@ -11,7 +11,7 @@
 //   · the report: one tile order; a `shadowed by R1` pending line keeps its reason; LEARNED reads `blink (ashen)` on its own row and a foe's
 //     tags after ` · `; the gold line says banked / returned, never `home`; a plateau patch names its floor
 //   · core hand-offs (c46f60a): a card's `UnlockInfo.stall` on its tile (`stall +11%`); the XP bar off `classes[c].next`
-//   · the watch's helpers: the speed badge rounds (`1.3`, `16`); an unopened cage near the hero is seen
+//   · the watch's helpers: the speed badge rounds (`1.3`, `16`); the retired cage proximity helper is absent
 //
 //   node web/tests/qa92.mjs [--shots dir]        (part of `pnpm test` in web/)
 import { execFileSync } from "node:child_process";
@@ -850,21 +850,9 @@ try {
       [1.332247798006322, 2, 4, 16, 1].map(m.rateText),
     );
     check(rates.join(" ") === "1.3 2 4 16 1", `the speed badge rounds (${rates.join(" ")})`);
-    const cage = await mod("/src/ui/watch.ts", (m) => {
-      const w = 30,
-        h = 20,
-        tiles = Array(w * h).fill("floor"),
-        seen = Array(w * h).fill(true);
-      const snap = (cx) => {
-        const t = [...tiles];
-        t[5 * w + cx] = "vault";
-        return { w, h, tiles: t, seen, hero: { x: 3, y: 5 } };
-      };
-      return [m.cageNear(snap(10)), m.cageNear(snap(25))];
-    });
     check(
-      cage[0] === true && cage[1] === false,
-      `an unopened cage near the hero is seen, a far one not (${cage.join(",")})`,
+      await mod("/src/ui/watch.ts", (m) => !("cageNear" in m)),
+      "retired cage proximity batching helper is absent",
     );
   }
 } catch (e) {

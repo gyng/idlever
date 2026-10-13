@@ -1,0 +1,17 @@
+client suite: targeted (4 selected; 139 current full; 181 exhaustive groups)
+FAIL journal         0.7s (0.4s)  Node.js v26.5.0
+     node:internal/errors:999
+       const err = new Error(message);
+     Error: Command failed: bash tools/dev.sh
+         at genericNodeError (node:internal/errors:999:15)
+         at wrappedFn (node:internal/errors:544:14)
+         at checkExecSyncError (node:child_process:942:11)
+         at execFileSync (node:child_process:978:15)
+         at file:///home/g/p/riddle/web/tests/journal.mjs:7:3 {
+ok   exit-keep-close 13.2s (12.8s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+ok   watch-console   18.8s (18.4s)  1440 labels/touch/geometry/speed/pause/Town PASS
+FAIL journal-real    32.1s (31.7s)  Node.js v26.5.0
+       - waiting for getByRole('button', { name: 'Journal', exact: true })
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/journal-real.mjs:25:70 {
+FAIL: 2/4 client gates in 32.1s

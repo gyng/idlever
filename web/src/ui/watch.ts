@@ -15,7 +15,7 @@
 // Cut 13 §1 — a stall is a run the player can read: the stake reads `keeps $0 · stalling` while the guard has fired
 // (`Stake.stalling`), and a run that comes home stalled (`… · stalled` on its line) gets the verdict screen like a death
 // (`engine.death(runId)` answers with `verdict: "stall"`; an older core without the record falls back to the report).
-// Cut 13 §4 — the beats are on screen: a `note` whose text is a situation's (`A den. Something sleeps.`, a theft, the cage,
+// Cut 13 §4 — the beats are on screen: a `note` whose text is a situation's (`A den. Something sleeps.`, a theft,
 // the captive, the stray, a heir's bones) opens the fight frame for SCENE_MS in `fights` and `fast` alike, the note as the
 // callout (engine data, verbatim, its own `.beat` line); two callouts on one tick queue; the ticker wraps, never clips.
 //
@@ -30,7 +30,7 @@
 // (`FIGHT_RATE`; was 2×), `near` holds 10 ticks after the last sighting / hp change (AUTO_TAIL, was 20), the ending's 1× is the
 // last 20 ticks (ENDING_TICKS, was 30; the core's `ending` marker is clamped to twice that). A settings toggle `slowdowns`
 // (`app.slowdowns`, persisted `idlever.slowdowns`, on by default) turns every hold off: `rate()` then runs the mode's flat rate
-// — the card's 0, the vault sheet's 1×, pause and the ending's 1× stand; the fight frame still opens, only the clock changes.
+// — the card's 0, the pause and the ending's 1× stand; the fight frame still opens, only the clock changes.
 //
 // Cut 14 §6 — the world runs on the wall clock. Two clocks: the *world* clock (`worldT`, engine ticks) advances on wall time at
 // `worldRate()` — the same decisions as the viewer's `rate()` (fight 2×/4×, near, scene, flat 16×) read off the ENGINE's tick —
@@ -67,8 +67,8 @@
 // SCENE_MS on `WARLORD BREAKS`.
 //
 // Cut 20 §3 — the watch moves. `fast` takes ≤ 40 % of `fights`'s wall time over a run: its dead stretches start at 32× (no 16×
-// ramp-in), its fights stay at 4×, a situation's beat holds 1 s (BEAT_HOLD_FAST_MS; a boss's kill or break, the bank and the cage keep
-// theirs), the walk-out plays at 2×, and near a cage the short batches chain per pump pass. `fights` on D1–D3 shows no card: the
+// ramp-in), its fights stay at 4×, a situation's beat holds 1 s (BEAT_HOLD_FAST_MS; a boss's kill or break, the bank keep
+// theirs), the walk-out plays at 2×. `fights` on D1–D3 shows no card: the
 // travel at 8× (EARLY_TRAVEL), every fight at 1.5× (EARLY_FIGHT) — early runs were card-skipped travel "too short to follow".
 // §4: the stake names the exit that keeps and what a death keeps (`carry $78 · bank keeps $78 · death $0 · bank at D9`,
 // `Stake.death_keep`); `keeps` never stands alone.
@@ -87,18 +87,8 @@
 // LEAD with a 50 ms interval and a larger batch, so the engine still never runs dry or far ahead. Bail (§5)
 // turns the auto rate into a flat 8× and the stake line reads `returning` until the exit sheet.
 //
-// Cut 5 §4 — the vault choice: a step whose snapshot carries `vault_choice` opens a sheet with the three items
-// as chips and holds the clock at 1×; a tap is `choose(id)`. The engine's 50-tick grace runs watched or not, so
-// an unanswered sheet closes on its own when `vault_choice` leaves the snapshot (the lineage's `vault_pref` took).
-// Cut 15 §5 — the cage waits for the player who is watching: while the sheet is open the pump does not step the engine (the world
-// clock stands, the picture plays up to the frontier and holds) for up to VAULT_WAIT_MS of wall time; then the sheet closes and the
-// engine's grace and preference proceed as before. The sheet's bar shrinks over that wall-clock wait. Offline and in sims nothing
-// changes (the choice is an input, as `choose` always was).
-// Cut 19 §1 — the cage is a beat, not a sheet: a snapshot carrying `vault_choice` cuts in the beat `took mail` (the preference's
-// pick, `VaultChoice.pick`) held like a situation's; the world waits while it holds (CAGE_WAIT_CAP_MS at most before its line shows);
-// a tap on the line within its hold opens the three as the override sheet (the world waits while it is open, ≤ VAULT_WAIT_MS).
-// Untouched, the hold ends and the engine's grace and the preference take the pick — no sheet the player can miss.
-//
+// Cut210: loot resolves in Rust without a Watch choice, special hold or short batching.
+
 // Cut 7 §4 — rooms are scenes: a step whose `snapshot.room` holds ≥ SCENE_FOES awake hostiles (absent `room`: that many
 // hostiles in view) opens a scene, and auto holds 1× until the room is clear or the hero leaves it (the id changes),
 // AUTO_TAIL after; corridors and empty rooms run at 8×, telegraphs / attacks / hp loss still hold 1× on their own. A
@@ -136,7 +126,6 @@ import type {
   SnapMeters,
   StepResult,
   Trace,
-  VaultChoice,
 } from "../engine/types";
 import { h, clear, items, replace, spanOf } from "./dom";
 import {
@@ -155,8 +144,8 @@ import { classSkillIcon } from "./skill-icons";
 import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
 import { verbsAt } from "../engine/classes";
-import { openSheet, openWindow } from "./sheet";
-import { itemIcon, itemName } from "./items"; // run-clear
+import { openWindow } from "./sheet";
+import { itemIcon } from "./items"; // run-clear
 import { setBusyHost } from "./progress";
 import { glossOf, noteText, setRefRows, verbLabel } from "./tokens";
 import { drivenDeath } from "./death";
@@ -175,22 +164,8 @@ import { deathWhy, goldWords } from "./gold-words";
 type Tier = "bank" | "return" | "death";
 /** QA 92eb880 (N: the `fights` chip read `1.332247798006322×` over the portrait): a rate as the chip shows it — whole from 2×, one
  *  decimal under it (`1.3`), never a float's tail. */
-const CAGE_BATCH = 8,
-  CAGE_NEAR = 10,
-  CAGE_CHAIN = 24; // Cut 20 §3: short batches chained per pump pass near a cage
 /** The alert's top (the core's cap: `run.alert` never passes 8) — the HUD reads `alert 3/8`. */
 const ALERT_TOP = 8;
-/** QA 92eb880: an unopened cage (`vault` tile) seen within CAGE_NEAR tiles of the hero. */
-export function cageNear(s: Snapshot): boolean {
-  const hx = s.hero.x,
-    hy = s.hero.y;
-  for (let y = Math.max(0, hy - CAGE_NEAR); y <= Math.min(s.h - 1, hy + CAGE_NEAR); y++)
-    for (let x = Math.max(0, hx - CAGE_NEAR); x <= Math.min(s.w - 1, hx + CAGE_NEAR); x++) {
-      const i = y * s.w + x;
-      if (s.tiles[i] === "vault" && s.seen[i]) return true;
-    }
-  return false;
-}
 export const rateText = (r: number): string =>
   r >= 2 ? String(Math.round(r)) : String(Math.round(r * 10) / 10);
 type FrameName = "map" | "fight";
@@ -202,6 +177,7 @@ const LEAD = 12,
   BATCH = 10; // ticks: pump when the engine is < LEAD ahead; step BATCH at a time
 const BATCH_FAST = 12; // at 8× the viewer eats 4 ticks per pump; a bigger batch keeps the queue fed through a slow step
 const LEAD_FAST = 32; // Cut 7 §4: at 8× the engine stays ≥ ENDING_TICKS ahead, so an exit is seen before its last 30 ticks
+const DEAD_CHAIN = 24; // Preserve the bounded independent dead-fight batch chain.
 const BATCH_FIGHTS = 16; // Cut 10 §1: under the card the engine steps this many ticks per call, chained flat out (≈ 1 ms a call)
 const TOLL_BANNER_MS = 3000; // QA a946e04: `from D1 · toll short` as the watch opens
 const CARD_MS = 1000,
@@ -256,7 +232,7 @@ const KILL_LEAD = 3; // blind 5331f40: a jump that meets a boss's unshown kill l
 // of an unshown kill waits at most KILL_WAIT_MS of wall time for the picture to play it — then the kill lapses and the jump goes on
 const KILL_WAIT_MS = 3000;
 // …and a picture whose clock has not moved for STUCK_MS while the run is live, unfrozen and nothing deliberate holds it (a beat, the
-// cage, the exit flow, a fold) is landed live and the card let go — whatever held it, the watch never freezes
+// the exit flow, a fold) is landed live and the card let go — whatever held it, the watch never freezes
 const STUCK_MS = 4000;
 // Cut 122 §7 (core `Ev::Homeward`): a committed walk home longer than HOME_FOLD_S of watch time at the mode's travel rate is one beat
 // (`heading home · banked $X`) and a jump to the next fight or the exit
@@ -268,7 +244,7 @@ const FALL_MS = 40,
   EASE_STEP_MS = 50; // Cut 121 §3: a fall at most halves every FALL_MS (16× → 2× over ~120 ms), never past a hard hold (HARD_FALL)
 /** Cut 121 §3: reasons whose fall lands at once — the picture must stop or slow there (a fight's first blows are its news; the travel's
  *  landing already slows toward it, DEAD_LAND_MS out) — every other fall eases. */
-const HARD_FALL = new Set(["scene", "exit", "cage", "fight", "near"]);
+const HARD_FALL = new Set(["scene", "exit", "fight", "near"]);
 /** Cut 121 §3 (A, B: "speed swings 2× ↔ 32× on its own"): the reason chip's word for each automatic rate (`fight · 2×`, `quiet · 16×`). */
 /* copy:callout */
 const WHY_WORD: Record<string, string> = {
@@ -281,7 +257,6 @@ const WHY_WORD: Record<string, string> = {
   stall: "stall",
   scene: "scene",
   exit: "exit",
-  cage: "cage",
 };
 const WHY_SETTLE_MS = 180,
   WHY_LINGER_MS = 500; // Cut 121 §3: a reason shows once it held this long; the chip goes this long after it ends
@@ -362,13 +337,6 @@ const WHY_TAP_MS = 6000,
   WHY_SHOW_MS = 3500;
 const EXIT_GRACE_MS = 4000; // wait for the viewer to drain after an exit, at most this long
 const PERSIST_MS = 5000;
-const VAULT_WAIT_MS = 10_000; // Cut 15 §5: the override sheet holds the world this long at most (wall time); Cut 19 §1: it opens only on a tap on
-// the cage beat (10 s, was the default path at 6 s) — then the preference picks; watching it is optional, never a toll
-const VAULT_GRACE = 50; // the core's grace (ticks) between a cage opening and the preference's pick (turn.rs VAULT_GRACE)
-const CAGE_WAIT_CAP_MS = 8000; // Cut 19 §1: the world waits for the cage beat's line at most this long (a beat the playhead never reaches)
-/** Cut 19 §1: the cage beat's line — `took mail` (the pick's last two words: a callout is ≤ 3 words). */
-export const tookText = (label: string): string =>
-  /* copy:callout */ `took ${label.trim().split(/\s+/).slice(-2).join(" ")}`;
 const BOSS_BANNER_MS = 3000;
 // Cut 27 §1: a folded stretch's line holds at least this long as the interstitial (the stepping under it is ~0.1–0.3 s a floor), and
 // the fold gives up (lands live) after FOLD_WALL_MS of stepping — a stall or a loop on a solved floor is watched, never folded away
@@ -409,7 +377,7 @@ const SCENE_MS = 4000,
 // situation, SCENE_MS for a boss's kill / break and the bank (rater Y: "`GOBLIN WARLORD DOWN` went by in about a second": the kill
 // was the floor's last blow, the stairs a few ticks on — the descend cut the line and faded the frame)
 const BEAT_HOLD_MS = 3000;
-// Cut 20 §3: in `fast` a situation's beat (a den, a cage, a theft) holds a third as long — its line still reads (1 s, twice the callout minimum); a boss's kill or
+// Cut 20 §3: in `fast` a situation's beat (a den, a theft) holds a third as long — its line still reads (1 s, twice the callout minimum); a boss's kill or
 // break and the bank keep SCENE_MS in both modes (`fast` ≤ 0.4 × `fights` over a run: five situations a floor held it at ~0.6)
 const BEAT_HOLD_FAST_MS = 1000;
 const BEAT_HOLD_EARLY_MS = 1800; // QA e75ec29 (R: `fights` 28–40 s on D1, a third of it two 3 s beats — a shrine, a theft): `fights` on D1–D3
@@ -427,7 +395,7 @@ const CALLOUT_QUEUE = 3,
 /** Cut 13 §4: the notes that are beats — the core's situation lines (verbatim), a theft, the stray, a heir's bones. */
 // Cut 24 §2: each biome band's omen (`omen:<biome>`, three variants each, core chronicle.rs) cuts in like a situation
 const BEAT_RE =
-  /^(A den\.|A cage:|A shrine\.|The cage opens|A cry from the dark|The air stings|The nest wakes|The den wakes|Found heir \d+'s bones|found the bones|Freed the captive|Cut the captive|Lit the shrine|A loose brick|A rat's hoard|A dropped purse|A dead delver's pack|Old bones clutch|A satchel under|A clean spring|Rain through a crack|Sweet water in the reeds|A bell tolls|Bells in the dark|A far bell|A cooling ingot|Slag with silver|A smith's lost purse|A drowned purse|Coins in a lurker's|A glint under the black water|Offerings on a cold altar|Coins in a dry font|A pilgrim's purse)|snatched|\bstole\b|, gone wild\b|is avenged/i;
+  /^(A den\.|A shrine\.|A cry from the dark|The air stings|The nest wakes|The den wakes|Found heir \d+'s bones|found the bones|Freed the captive|Cut the captive|Lit the shrine|A loose brick|A rat's hoard|A dropped purse|A dead delver's pack|Old bones clutch|A satchel under|A clean spring|Rain through a crack|Sweet water in the reeds|A bell tolls|Bells in the dark|A far bell|A cooling ingot|Slag with silver|A smith's lost purse|A drowned purse|Coins in a lurker's|A glint under the black water|Offerings on a cold altar|Coins in a dry font|A pilgrim's purse)|snatched|\bstole\b|, gone wild\b|is avenged/i;
 /** The cause of a `hurt` as one word: `goblin_archer` → `archer`. */
 const oneWord = (cause: string): string => cause.replace(/_/g, " ").trim().split(/\s+/).pop() ?? "";
 /** A player row's callout, ≤ 3 words: `R2 · attack nearest`, `R4 · pack break` (QA 23ed91f, L: `R4 PACK BREAK GOBLIN` — the target goes). */
@@ -1127,12 +1095,10 @@ export function renderWatch(app: App): Mounted {
     shown: boolean;
     exit?: boolean;
     hold?: boolean;
-    cage?: boolean;
     why?: string;
   };
   let beat: Beat | null = null,
-    beats = 0,
-    seeks = 0; // seeks: the viewer's deliberate jumps (`seekTo`), so a beat can tell one from a clock that ran on   // hold: Cut 15 §4, the clock at 1× through it (a boss's kill)
+    beats = 0;
   let exitBeatUntil = 0; // Cut 14 §3: the exit flow waits while the bank / return beat is on screen
   let holdLineUntil = 0; // Cut 15 §4: a boss kill's `WARLORD DOWN` keeps the ticker this long
   // Cut 18 §1: the beat on screen holds until this wall time — the frame stays on it (no card, no floor load, the playhead eased to
@@ -1233,39 +1199,6 @@ export function renderWatch(app: App): Mounted {
   let exitTier: Tier | null = null,
     exitAt = 0;
   let deepest = 0;
-  // Cut 5 §4: the open vault sheet's close, and the cage it was opened for (a dismissed sheet is not reopened)
-  let vaultClose: (() => void) | null = null,
-    vaultKey = "",
-    vaultAt = 0; // Cut 15 §5: vaultAt — when the sheet opened (wall ms)
-  let graceBar: HTMLElement | null = null; // the cage sheet's shrinking bar (held while the picture is frozen)
-  let vaultItems: InvItem[] = [],
-    vaultChosen = false; // the open cage's items, and whether the player picked (else the wait did)
-  // Cut 19 §1: the open cage — its choice, the pick the beat named, when it arrived (wall ms), whether its line has shown, and done
-  // (the hold is over, a tap chose, ▶▶| let it go): the world waits while `cageWaits()`
-  let cage: { vc: VaultChoice; pick?: InvItem; at: number; shown: boolean; done: boolean } | null =
-    null;
-  function cageWaits(): boolean {
-    if (vaultClose) return true; // the override sheet is open
-    if (!cage || cage.done) return false;
-    if (cage.shown) return beatHeld() && !!heldBeat?.cage;
-    return performance.now() - cage.at < CAGE_WAIT_CAP_MS;
-  }
-  /** The bar at its share of the wait left, standing (⏸) or running out over the rest of it. */
-  function graceHold(): void {
-    if (!graceBar) return;
-    const left = Math.max(0, 1 - (performance.now() - vaultAt) / VAULT_WAIT_MS);
-    graceBar.style.transitionDuration = "0s";
-    graceBar.style.width = `${(left * 100).toFixed(1)}%`;
-  }
-  function graceRun(): void {
-    const bar = graceBar;
-    if (!bar) return;
-    const leftMs = Math.max(0, VAULT_WAIT_MS - (performance.now() - vaultAt));
-    requestAnimationFrame(() => {
-      bar.style.transitionDuration = `${(leftMs / 1000).toFixed(2)}s`;
-      bar.style.width = "0%";
-    });
-  }
   let prepended = false; // bail fell back to the row prepend (an engine without `bail`)
   const cls = app.lineage.class;
   let recordBeat = false; // run-clear: the run's `NEW BEST` stamp, once
@@ -1772,14 +1705,7 @@ export function renderWatch(app: App): Mounted {
   }
   /** Cut 13 §4: a situation's note opens the fight frame for SCENE_TICKS from its tick (or rides a fight already framed there);
    *  its text is the callout, shown once the frame is up. */
-  function beatAt(
-    t: number,
-    text: string,
-    exit = false,
-    hold = false,
-    isCage = false,
-    why?: string,
-  ): Beat {
+  function beatAt(t: number, text: string, exit = false, hold = false, why?: string): Beat {
     const v = viewerTick();
     // a frame that is up (or opening) before t carries the beat; a fight the probe dropped (`fightFrom` cleared) does not
     const framed = fightFrom <= t && (fightOn || v < fightUntil);
@@ -1798,24 +1724,15 @@ export function renderWatch(app: App): Mounted {
       shown: false,
       exit,
       hold,
-      cage: isCage,
       why,
     };
     if (!(beat && !beat.shown && beat.from < t)) beat = b;
     el.dataset.beats = String(++beats); // dev: tools count the beats cut in
     // Cut 18 §1: a beat the playhead jumped over (a skip, a seek to live) is not held after the fact
-    // clarity:card under load: …but a cage's beat the clock merely ran past (a late engine batch, a long frame — no seek since it
-    // was cut in) is the world's wait and the override's door: it is cut in again at the playhead, never dropped silently
-    const seeks0 = seeks;
     at(t, () => {
       if (b.shown) return;
       if (!b.exit && viewerTick() >= b.until) {
         b.shown = true;
-        if (b.cage && cage && !cage.done && seeks === seeks0 && !held && !exitTier && !done) {
-          beatAt(Math.floor(viewerTick()), b.text, false, false, true, b.why);
-          return;
-        }
-        if (b.cage && cage) cage.done = true;
         return;
       }
       beat = b;
@@ -1844,11 +1761,11 @@ export function renderWatch(app: App): Mounted {
       dur =
         b.exit || b.hold
           ? SCENE_MS
-          : mode === "fast" && !b.cage
+          : mode === "fast"
             ? BEAT_HOLD_FAST_MS
-            : earlyFloor() && !b.cage
+            : earlyFloor()
               ? BEAT_HOLD_EARLY_MS
-              : BEAT_HOLD_MS; // the cage's line is a tap target (its override): its full hold
+              : BEAT_HOLD_MS;
     // the playhead already past the beat's span (it reached the tick before the engine's batch did): back to the beat's tick, so the
     // hold is on the beat, not on the frame after it
     if (!b.exit && viewerTick() > b.from + 4 && viewerTick() >= b.until - 4) {
@@ -1868,12 +1785,7 @@ export function renderWatch(app: App): Mounted {
     if (!b.exit && viewerTick() > beatStop()) seekTo(Math.max(b.from, beatStop() - 1));
     if (b.exit) exitBeatUntil = now + SCENE_MS;
     tickerQueue.length = 0;
-    showTicker(b.text, b.cage ? "beat cage" : "beat", dur);
-    // Cut 19 §1: the cage's line is a plate the finger finds (a tap within the hold opens the override)
-    if (b.cage) {
-      replace(ticker, h("span", { class: "cage-line" }, b.text));
-      if (cage) cage.shown = true;
-    }
+    showTicker(b.text, "beat", dur);
     // c30-legible (the owner: "I didn't understand … why the run ended early"): the end's reason under its sum, the core's ≤ 3 words
     // (`hurt · banked`, `hurt · went home`); a death's beat is its reason alone (`slain · jackal`)
     // (its own line under the ticker: the ticker's text stays the beat's own)
@@ -2064,7 +1976,6 @@ export function renderWatch(app: App): Mounted {
             }
             break;
           }
-          if (ev.text === /* copy:none */ "choose one") break; // Cut 19 §1: the cage beat names the pick instead
           // c305-core: a new record is the core's callout (`new best · D5`) — one beat, drawn as run-clear's gilt stamp (`NEW BEST D5`), once a run
           {
             const m = /^new best · D(\d+)$/i.exec(ev.text);
@@ -2418,8 +2329,6 @@ export function renderWatch(app: App): Mounted {
         case "note":
           notes.push({ pattern: "note", score: 0, t: ev.t, run_id: runId, text: ev.text });
           if (breakBeat(ev.t, ev.text)) break;
-          // Cut 19 §1: the cage's opening is its own beat (`took mail`, vaultFrom) when the batch's snapshot carries the choice
-          if (/^The cage opens\b/.test(ev.text) && s.vault_choice?.items.length) break;
           if (BEAT_RE.test(ev.text)) beatAt(ev.t, noteText(ev.text)); // Cut 13 §4: the situations cut in like fights
           else if (PET_NOTE_RE.test(ev.text)) {
             const line = petNoteLine(ev.text);
@@ -2476,7 +2385,6 @@ export function renderWatch(app: App): Mounted {
                   ? /* copy:callout */ `${(lead === "driven" ? /* copy:callout */ "repelled" : lead).toUpperCase()} $${ev.loot_kept}${lostC > 0 && ev.line!.kept <= 0 && !oathW ? ` · −$${lostC}` : ""}`
                   : /* copy:callout */ `RETURNED $${ev.loot_kept}`) + oathW,
               true,
-              false,
               false,
               why,
             );
@@ -2747,7 +2655,7 @@ export function renderWatch(app: App): Mounted {
   }
   function seekTo(t: number): void {
     t = killStop(t);
-    seeks++;
+
     const fv = viewer as (Viewer & { seek?: (t: number) => void }) | null;
     if (fv?.seek) fv.seek(t);
     else fv?.skipToEvent();
@@ -2824,14 +2732,13 @@ export function renderWatch(app: App): Mounted {
     el.dataset.frame = want;
     if (want === "fight") showBeat(); // Cut 13 §4: the beat's line at the cut
   }
-  /** Cut 10 §1: the interstitial is up while `fights` shows the map, unless a tap holds the map, the vault sheet is up, or the
+  /** Cut 10 §1: the interstitial is up while `fights` shows the map, unless a tap holds the map, or the
    *  run's ending plays. Its line is the ambient one: `D3 · 4 rooms · $47`. */
   function paintCard(want: FrameName): void {
     const up =
       mode === "fights" &&
       want === "map" &&
       !mapHeld() &&
-      !cageWaits() &&
       !done &&
       !exitTier &&
       viewerTick() < endingFrom &&
@@ -2841,7 +2748,7 @@ export function renderWatch(app: App): Mounted {
       cardUp = up;
       el.dataset.card = up ? "1" : "0";
       // a card per floor: the full minimum when the floor is new, a beat between fights on the same floor — drawn only on a new floor
-      // (QA on 3d71c33: `D6 · 16 rooms · a cage` 4× on one floor); the one between fights is a ghost
+      // (QA on 3d71c33: `D6 · 16 rooms` 4× on one floor); the one between fights is a ghost
       if (up) {
         cardSince = cardShownAt = performance.now();
         cardGhost = hud.depth === cardDepth;
@@ -3058,16 +2965,11 @@ export function renderWatch(app: App): Mounted {
     // reverse, the card ahead of the HUD): the HUD's paints repaint it; here only a floor's rooms / situation first reported
     if (cardUp && !frozen()) paintCardText();
     if (mode === "fast" && app.slowdowns) probeFight(r); // Cut 18 §1: `fast` costs its fights ahead of the picture, as the card does
-    if (!exit) vaultFrom(s); // no choice on a run that just ended
     // Cut 7 §4: the exit batch waits (pump) until the viewer is ENDING_TICKS from the exit, then plays at 1×
     // Cut 14 §6: only the ending itself is held (a catch-up batch may reach back far past it); the rest feeds now
     if (exit) {
       held = { evs: r.events.filter((e) => e.t >= endingFrom), tier: exit, snap: s };
       el.dataset.ending = "1";
-      if (vaultClose) {
-        vaultClose();
-        vaultClose = null;
-      }
       feed(
         r.events.filter((e) => e.t < endingFrom),
         s,
@@ -3119,7 +3021,6 @@ export function renderWatch(app: App): Mounted {
   /** Cut 14 §6: the world's rate — the viewer's decisions read off the engine's own tick; ≥ 1× while the run is live, 0 once it is over. */
   function worldRate(): number {
     if (done || held || exitTier) return 0;
-    if (cageWaits()) return 0; // Cut 15 §5 / Cut 19 §1: the world waits on the cage beat and the override sheet
     if (!frozen() && beatHeld() && heldBeat && !heldBeat.exit) return Math.max(0, speed); // Cut 18 §1: a held beat is the watch's own pacing — the world keeps the picture's pace (no catch-up owed after it)
     if (fightOn && app.slowdowns)
       return mode === "fights" &&
@@ -3214,11 +3115,6 @@ export function renderWatch(app: App): Mounted {
       void foldRun();
       return;
     }
-    if (vaultClose && !document.querySelector(".vault-choice")) {
-      vaultClose = null;
-      if (cage) cage.done = true;
-    } // dismissed by backdrop / Escape: the engine's grace decides
-    if (vaultClose && !frozen() && performance.now() - vaultAt > VAULT_WAIT_MS) vaultClose(); // Cut 15 §5: the wait is over; the engine's grace and preference proceed (⏸ stops the wait)
     const still = frozen(); // Cut 14 §6: a frozen picture — no cut, no release, no floor load; the world below steps on
     // Cut 18 §1: the hold is over — a beat that waited for it takes the line (the frame is still on the fight)
     if (!still && !beatHeld() && el.dataset.held === "1") {
@@ -3343,7 +3239,6 @@ export function renderWatch(app: App): Mounted {
       return;
     }
     if (inflight || held || exitTier) return;
-    if (cageWaits()) return; // Cut 15 §5 / Cut 19 §1: the world waits on the cage (the chips answer at once: the engine is idle)
     // Cut 10 §1: travel under the card — the engine steps flat out (chained calls) until it finds the next fight or the exit
     if (travelling()) {
       inflight = true;
@@ -3360,7 +3255,6 @@ export function renderWatch(app: App): Mounted {
       playing &&
       mode === "fights" &&
       !mapHeld() &&
-      !vaultClose &&
       !fightOn &&
       Number.isFinite(fightUntil) &&
       now < fightUntil &&
@@ -3380,12 +3274,7 @@ export function renderWatch(app: App): Mounted {
       if (key !== newsKey || !playing || beatHeld() || viewerTick() >= endingFrom) {
         newsKey = key;
         newsAt = wall;
-      } else if (
-        wall - newsAt > NEWS_MAX_MS &&
-        !cageWaits() &&
-        !vaultClose &&
-        !(snap && cageNear(snap))
-      ) {
+      } else if (wall - newsAt > NEWS_MAX_MS) {
         newsAt = wall;
         void deadJump();
         return;
@@ -3397,10 +3286,7 @@ export function renderWatch(app: App): Mounted {
       el.dataset.dead === "1" &&
       deadFrom > 0 &&
       performance.now() - Math.max(deadFrom, lastJumpAt) > DEAD_JUMP_MS &&
-      !cageWaits() &&
-      !vaultClose &&
-      !beatHeld() &&
-      !(snap && cageNear(snap))
+      !beatHeld()
     ) {
       void deadJump();
       return;
@@ -3429,15 +3315,9 @@ export function renderWatch(app: App): Mounted {
               Math.ceil(want - engineTick),
             ),
           );
-    // QA 92eb880 (N: twice `A cage: three inside, one to take.` with no sheet, in `fast`): a batch longer than the cage's 50-tick grace
-    // stepped over the whole choice (the sheet reads the batch's last snapshot) — near an unopened cage the engine steps in short batches
-    const short = !!snap && cageNear(snap);
-    if (short) n = Math.min(n, CAGE_BATCH);
     // Cut 24 §1: a dead stretch's longer lead is walked in `fights`'s own batches — a fight's close is met within one (the engine waits there)
     if (el.dataset.dead === "1" && mode === "fights") n = Math.min(n, BATCH_FIGHTS);
     inflight = true;
-    // Cut 20 §3: near a cage the batches are short (each snapshot is checked for the choice) — they chain up to the pump's target in
-    // one pass instead of one short batch a pump (the picture in `fast` stood at the frontier ~2 s waiting for the engine to walk past a cage)
     const target = Math.min(want, engineTick + CATCHUP_MAX);
     const chain = (k: number, left: number): void => {
       app.engine
@@ -3456,23 +3336,11 @@ export function renderWatch(app: App): Mounted {
             !disposed &&
             !done &&
             !r.run_over &&
-            !r.snapshot.vault_choice &&
             !held &&
             !exitTier &&
-            !cageWaits() &&
             engineTick < target &&
             !!snap;
-          if (go && short && cageNear(snap!)) {
-            inflight = true;
-            chain(CAGE_BATCH, left - 1);
-          } else if (
-            go &&
-            !short &&
-            fightOn &&
-            el.dataset.dead === "1" &&
-            mode === "fights" &&
-            !cageNear(snap!)
-          ) {
+          if (go && fightOn && el.dataset.dead === "1" && mode === "fights") {
             inflight = true;
             chain(BATCH_FIGHTS, left - 1);
           }
@@ -3485,10 +3353,10 @@ export function renderWatch(app: App): Mounted {
           endControls();
         });
     };
-    chain(n, CAGE_CHAIN);
+    chain(n, DEAD_CHAIN);
   }
   /** QA ad71e72: a dead stretch's jump — the engine steps ahead in big batches until the frontier holds the next thing worth a frame
-   *  (a move, the stairs, a beat, the end, a cage) or DEAD_JUMP_WALL_MS passes; the picture lands JUMP_LAND ticks before it. */
+   *  (a move, the stairs, a beat or the end) or DEAD_JUMP_WALL_MS passes; the picture lands JUMP_LAND ticks before it. */
   async function deadJump(): Promise<void> {
     inflight = true;
     lastJumpAt = performance.now();
@@ -3517,8 +3385,7 @@ export function renderWatch(app: App): Mounted {
         const immediateReply = performance.now() - replyFrom < 8;
         if (disposed || done) break;
         handle(r);
-        if (r.run_over || r.snapshot.vault_choice || (cage && !cage.done) || cageNear(r.snapshot))
-          break;
+        if (r.run_over) break;
         // Immediately resolved replies otherwise form a microtask chain: the
         // search queues thousands of HUD paints while input and timers wait.
         // Slow worker replies already yield; fast replies need a browser turn.
@@ -3545,7 +3412,7 @@ export function renderWatch(app: App): Mounted {
     el.dataset.jumps = String(jumps);
     // The budget can expire inside a long, unchanged fight. Waiting the full
     // discovery interval again replays the same dead picture between searches.
-    // A found event keeps the ordinary cadence; cages, beats and exits retain
+    // A found event keeps the ordinary cadence; beats and exits retain
     // their existing pump guards.
     lastJumpAt = performance.now() - (ahead() === Infinity ? DEAD_JUMP_MS - DEAD_RETRY_MS : 0);
     applyFrame();
@@ -3553,15 +3420,7 @@ export function renderWatch(app: App): Mounted {
   }
   /** Cut 122 §7: the playhead is on a folded walk home not yet jumped (and nothing the world waits on holds it). */
   function homeDue(v: number): boolean {
-    return (
-      !!home &&
-      !home.done &&
-      v >= home.from - 1 &&
-      !cageWaits() &&
-      !vaultClose &&
-      !beatHeld() &&
-      !(snap && cageNear(snap))
-    );
+    return !!home && !home.done && v >= home.from - 1 && !beatHeld();
   }
   /** Cut 122 §7: the walk home's one beat — `heading home · banked $X` (a return: `heading home · $X`), the carry he walks out with. */
   function homeLine(): void {
@@ -3610,8 +3469,7 @@ export function renderWatch(app: App): Mounted {
         const r = await app.engine.step(SKIP_END_BATCH);
         if (disposed || done) break;
         handle(r);
-        if (r.run_over || r.snapshot.vault_choice || (cage && !cage.done) || cageNear(r.snapshot))
-          break;
+        if (r.run_over) break;
       }
     } catch (e) {
       console.warn("home jump failed", e);
@@ -3619,7 +3477,7 @@ export function renderWatch(app: App): Mounted {
     inflight = false;
     if (disposed || done || !home) return;
     const found = ahead();
-    if (Number.isFinite(found) || held || exitTier || (cage && !cage.done)) home.done = true;
+    if (Number.isFinite(found) || held || exitTier) home.done = true;
     const t = killStop(
       Math.max(
         viewerTick(),
@@ -3652,17 +3510,7 @@ export function renderWatch(app: App): Mounted {
       return false;
     }
     if (now - stuckAt < STUCK_MS) return false;
-    if (
-      folding ||
-      held ||
-      exitTier ||
-      done ||
-      inflight ||
-      cageWaits() ||
-      vaultClose ||
-      beatHeld() ||
-      foldDue()
-    ) {
+    if (folding || held || exitTier || done || inflight || beatHeld() || foldDue()) {
       stuckAt = now;
       return false;
     }
@@ -3888,9 +3736,9 @@ export function renderWatch(app: App): Mounted {
     while (calm.length > 64 && calm[0][1] < viewerTick() - 4000) calm.shift();
   }
   const calmAt = (v: number): [number, number] | undefined => {
-    // a beat (a cage's, an exit's, a situation's) is never inside a calm stretch: the stretch ends before it; a cage the world waits on
+    // a beat (an exit or situation) is never inside a calm stretch: the stretch ends before it; a held beat
     // or a held beat is no calm at all
-    if ((cage && !cage.done) || vaultClose || beatHeld()) return undefined;
+    if (beatHeld()) return undefined;
     const r = calm.find(([a, b]) => v >= a && v < b && b - a >= CALM_MIN);
     if (!r) return undefined;
     const bs = [beat, ...beatNext]
@@ -3926,7 +3774,7 @@ export function renderWatch(app: App): Mounted {
     // travel floor after every landing (the stall contract requires>=16x).
     const base = earlyFloor() && !stalling() ? EARLY_TRAVEL : mode === "one" ? ONE_MAX : RATE[mode],
       age = performance.now() - deadSince;
-    // `fights` tops out at DEAD_MAX_FIGHTS (a stretch the core cuts at 60 actions is ~1 s there; its engine lead stays short of a cage);
+    // `fights` tops out at DEAD_MAX_FIGHTS (a stretch the core cuts at 60 actions is ~1 s there; its engine lead stays short of a fight);
     // blind 5331f40 (A: "even on Speed Normal the badge jumped 1× … 128× … 16×"): `one` never ramps past ONE_MAX — a long dead
     // stretch is jumped instead (DEAD_JUMP_MS), and the jump is announced (`skipped ahead`)
     let r =
@@ -3937,7 +3785,7 @@ export function renderWatch(app: App): Mounted {
             base * 2 ** (1 + Math.floor((age - DEAD_RAMP_MS) / DEAD_STEP_MS)),
           );
     // lands DEAD_LAND_MS before the next move, the stairs, the ending; never past the frontier (the engine is stepped to the lead)
-    // (and before a beat not yet shown — a cage's, a situation's: at 128× the playhead jumped a cage's whole beat and its tap with it)
+    // (and before a beat not yet shown — a situation: the playhead must not jump its beat)
     const d = descends.find((t) => t >= v),
       b = beat && !beat.shown && beat.from >= v ? beat.from : Infinity;
     const cm = calmAt(v);
@@ -3985,11 +3833,7 @@ export function renderWatch(app: App): Mounted {
   /** The rate before a held beat's easing; `rateWhy` names its reason (Cut 121 §3: the speed chip). */
   function baseRate0(was: number): number {
     rateWhy = "";
-    if (paused || hidden || goLiveOwed) return 0; // Cut 14 §6: the picture freezes (and stays put until the seek to live); the world (worldRate) goes on
-    if (vaultClose) {
-      rateWhy = "cage";
-      return viewerTick() < engineTick ? 1 : 0;
-    } // Cut 5 §4 / Cut 15 §5: 1× up to the frontier, where the world waits for the tap
+    if (paused || hidden || goLiveOwed) return 0; // Cut 14 §6: the picture freezes (and stays put until the seek to live); the world (worldRate) goes on // Cut 5 §4 / Cut 15 §5: 1× up to the frontier, where the world waits for the tap
     const v = viewerTick();
     if (v >= endingFrom) {
       rateWhy = "exit";
@@ -4069,7 +3913,7 @@ export function renderWatch(app: App): Mounted {
   /** blind 1fb7786 (B: "sped itself between fights, 1× to 107×, then dropped back — jumpy"): a rise past RISE_FREE eases — the clock at
    *  most doubles every RISE_MS from what it shows (a carried dead-stretch age, a catch-up or a ramp never lands 1× → 128× in one frame).
    *  Cut 121 §3 (A, B: "2× ↔ 32× on its own"): every rise ramps from RISE_FREE (was 16: 2× → 16× was one frame), and a fall eases too —
-   *  it at most halves every FALL_MS (a hold that must stop the picture — ⏸, a scene, the exit, the cage — still lands at once; the
+   *  it at most halves every FALL_MS (a hold that must stop the picture — ⏸, a scene, the exit — still lands at once; the
    *  dead stretch's landing already slows toward the next move, slower than this). */
   function eased(n: number): number {
     // (the ramp's clock runs from the last change, at most EASE_STEP_MS a step: applySpeed runs many times a frame, and a step from
@@ -4167,7 +4011,7 @@ export function renderWatch(app: App): Mounted {
     }
   }
   /** Cut 15 §4: the lit chip's clock as digits (`data-rate`, drawn small by CSS): the viewer's rate, the travel's under the card,
-   *  none while the picture is frozen, the world waits (the vault) or the run is over. */
+   *  none while the picture is frozen, the world waits or the run is over. */
   function paintRate(): void {
     // QA 1a2a4a9 (P: `fast 0.5×` mid-fight while `fights` read 2×): a held beat's eased clock is the beat's, not the mode's — the chip
     // reads the mode's fight rate through it
@@ -4238,39 +4082,19 @@ export function renderWatch(app: App): Mounted {
     if (!was && frozen()) {
       frozenAt = performance.now();
       clearTimeout(tickerTimer);
-      if (vaultClose) graceHold();
     } else if (was && !frozen()) {
       const d = performance.now() - frozenAt;
       tickerAt += d;
       ambientUntil += d;
-      if (vaultClose) {
-        vaultAt += d;
-        graceRun();
-      }
-      if (cage) cage.at += d;
       if (exitBeatUntil > frozenAt) exitBeatUntil += d;
       if (holdLineUntil > frozenAt) holdLineUntil += d;
-      if (beatHoldUntil > frozenAt) beatHoldUntil += d; // the cage's wait stood still too
+      if (beatHoldUntil > frozenAt) beatHoldUntil += d; // the held beat stood still too
       cardShownAt += d;
       cardSince += d; // Cut 15 §4: a frozen card's time does not count
       if (ticker.classList.contains("show") || tickerQueue.length) scheduleTicker();
       for (const x of frozenFeed.splice(0)) feed(x.evs, x.s);
     }
     paintWatchStatus();
-  }
-  /** QA 1a2a4a9: a cage the skip met — open, its beat not yet shown. */
-  const cageMet = (): boolean => !!cage && !cage.done && !cage.shown;
-  /** The skip lands on the cage's beat: every floor loaded, the viewer at the beat's tick, the frame cut to it (its line holds there). */
-  function landCage(): void {
-    drainLoads();
-    const b = beat && beat.cage && !beat.shown ? beat : null,
-      t = b ? b.from : viewerTick();
-    seekTo(t);
-    release(t);
-    letGo(t);
-    cardSince = -Infinity;
-    applyFrame();
-    applySpeed();
   }
   function paintPause(): void {
     pause.setAttribute(
@@ -4453,10 +4277,6 @@ export function renderWatch(app: App): Mounted {
       f.core = core;
       f.to = core.to;
       handle(core.step);
-      if (cage && !cage.done) {
-        cage.done = true;
-        cage.shown = true;
-      }
       drainLoads();
       paintFold(f);
     }
@@ -4471,11 +4291,7 @@ export function renderWatch(app: App): Mounted {
       ) {
         const r = await app.engine.step(SKIP_END_BATCH);
         if (disposed) return;
-        handle(r);
-        if (cage && !cage.done) {
-          cage.done = true;
-          cage.shown = true;
-        } // Cut 19 §1: under the fold the preference picks (its pick is a chip)
+        handle(r); // Cut 19 §1: under the fold the preference picks (its pick is a chip)
         drainLoads();
         paintFold(f);
         if (r.run_over || held || stalling()) break;
@@ -4617,9 +4433,6 @@ export function renderWatch(app: App): Mounted {
       folding.holdUntil = 0;
       return;
     } // Cut 27 §1: the press lets the fold line go (the watch lands below it)
-    // QA on 3d71c33: under the cage sheet ▶▶| picks nothing — the sheet goes and the engine's grace and the preference decide
-    if (vaultClose) vaultClose();
-    if (cage) cage.done = true; // Cut 19 §1: …and the cage beat: the preference picks
     releaseBeat(); // Cut 18 §1: the press lets a held beat go
     // Cut 14 §6: `▶▶|` is "live": a frozen picture resumes; a viewer behind the frontier (a pause, a hidden tab, a slow fight while
     // the world ran on) lands on it first — the ending's start at most, so the walk-out plays — and the press then means what it
@@ -4672,8 +4485,7 @@ export function renderWatch(app: App): Mounted {
     }
     inflight = true;
     const until = performance.now() + SKIP_WALL_MS;
-    // in `fast` the press means the run's end: the engine steps to `run_over` (floors drained on the way, a vault choice left to
-    // its grace) and the viewer lands at the ending, which plays as after any skip (QA on 50bb162: the press "plays faster")
+    // In fast mode the press steps to the run ending, draining floors along the way.
     // QA 23ed91f (L: a summoner stall on D6, ▶▶| and `fast` changed nothing): while the run is stalling the press means the run's
     // end in either mode — there is no fight worth landing on in a loop
     // QA 778fa1b (qaV: ▶▶| every 400 ms for 360 s in `fights` against two ogres, retreat ↔ attack; `fast` ended it in 3 s): a fight that
@@ -4686,9 +4498,9 @@ export function renderWatch(app: App): Mounted {
           i < SKIP_FIGHT_BATCHES && !held && !disposed && performance.now() < budget;
           i++
         ) {
-          const r = await app.engine.step(snap && cageNear(snap) ? CAGE_BATCH : SKIP_END_BATCH);
+          const r = await app.engine.step(SKIP_END_BATCH);
           handle(r);
-          if (held || r.run_over || cageMet()) break;
+          if (held || r.run_over) break;
           loadNext();
         }
       } catch (e) {
@@ -4696,7 +4508,6 @@ export function renderWatch(app: App): Mounted {
       }
       inflight = false;
       if (held) toEnding();
-      else if (cageMet()) landCage();
       else if (!loads.length) {
         const t = Math.max(viewerTick(), engineTick - BATCH);
         seekTo(t);
@@ -4707,8 +4518,6 @@ export function renderWatch(app: App): Mounted {
       }
     };
     if (mode === "fast" || stalling() || pressRun >= PRESS_LOOP) {
-      // QA 1a2a4a9 (P: at 16× the cage's `took leather +1` was gone in ~1.5 s, untappable): a skip stops at a cage — the beat holds
-      // its wall time like any other; near an unopened cage the steps are short, so the choice is met inside its grace
       await toRunEnd(until);
       if (skipQueued) {
         skipQueued = false;
@@ -4790,12 +4599,10 @@ export function renderWatch(app: App): Mounted {
       let hit = ahead;
       const max = inFight ? 120 : SKIP_FIGHT_BATCHES;
       for (let i = 0; i < max && !hit && !disposed && performance.now() < until; i++) {
-        const r = await app.engine.step(
-          snap && cageNear(snap) ? Math.min(BATCH, CAGE_BATCH) : BATCH,
-        );
+        const r = await app.engine.step(BATCH);
         handle(r);
         hit = r.run_over || (inFight ? !fightOn : fightOn);
-        if (held || cageMet()) break; // QA 1a2a4a9: a cage stops the skip (its beat, then the next press goes on)
+        if (held) break;
         // a floor change on the way: load it now (the skip is the drain), the queued events straight into place
         loadNext();
       }
@@ -4805,7 +4612,6 @@ export function renderWatch(app: App): Mounted {
     }
     inflight = false;
     if (held) toEnding();
-    else if (cageMet()) landCage();
     else if (!loads.length) {
       // the viewer lands on the found fight's first frame (`fights`: the card's minimum waived, the press asked for it), else where
       // the engine stopped — replaying the skipped span at 1× is what made ▶▶| feel dead in a fight
@@ -4844,77 +4650,8 @@ export function renderWatch(app: App): Mounted {
     });
     setMode(mode);
   }
-  // Cut 5 §4: the vault choice — once per cage; Cut 19 §1: a beat (`took mail`), the sheet only on a tap on it
-  function vaultFrom(s: Snapshot): void {
-    const vc = s.vault_choice;
-    // a choice on a run that has ended is no choice (a `choose` after the exit trips the core: seed 12's death on a vault tile)
-    if (!vc || !vc.items.length || held || exitTier || done) {
-      if (vaultClose) {
-        vaultClose();
-        vaultClose = null;
-      }
-      // QA 23ed91f (K: "the cage sheet closed by itself about 30 s later … nothing said what had been taken"): once the cage is gone
-      // from the snapshot, a pick the player did not make (the preference's) is named off the hero's pack — unless the beat named it
-      if (vaultItems.length && !vc) {
-        const got =
-          !vaultChosen && !held && !exitTier && !done
-            ? vaultItems.find((it) => s.hero.inv.some((x) => x.id === it.id))
-            : undefined;
-        const said = cage?.shown ? cage.pick?.id : undefined;
-        vaultItems = [];
-        if (got && got.id !== said) {
-          tickerQueue.length = 0;
-          showTicker(tookText(got.label), "", BEAT_HOLD_MS);
-        } // over the card too (the ticker sits above it): the pick is news
-      }
-      if (!vc) cage = null;
-      return;
-    }
-    const key = vc.items.map((it) => it.id).join(",");
-    if (key === vaultKey) {
-      if (cage) cage.vc = vc;
-      return;
-    }
-    if (frozen()) return; // Cut 14 §6: not over a frozen picture (a later snapshot inside the grace opens it on the thaw)
-    vaultKey = key;
-    vaultItems = vc.items;
-    vaultChosen = false;
-    // Cut 10 §1: found under the card, the viewer joins the engine at the vault (the world waits from here)
-    if (cardUp) {
-      release(s.turn);
-      seekTo(s.turn);
-    }
-    // Cut 19 §1: the pick the preference will take (`VaultChoice.pick`; an older core: the first item) as the beat, cut in at the
-    // cage's opening tick (the grace's start)
-    const pick = vc.items.find((it) => it.id === vc.pick) ?? vc.items[0];
-    cage = { vc, pick, at: performance.now(), shown: false, done: false };
-    const t0 = Math.max(startTick, s.turn - Math.max(0, VAULT_GRACE - (vc.left ?? VAULT_GRACE)));
-    beatAt(t0, tookText(pick.label), false, false, true);
-    el.dataset.cage = "beat";
-    paintCard(frame);
-    applyFrame();
-    applySpeed();
-  }
-  /** Cut 19 §1: a tap on the cage beat's line within its hold opens the override. */
-  function cageTap(): void {
-    if (
-      !cage ||
-      cage.done ||
-      vaultClose ||
-      !ticker.classList.contains("cage") ||
-      !(beatHeld() && heldBeat?.cage)
-    )
-      return;
-    vaultSheet(cage.vc, cage.pick?.id);
-  }
-  ticker.onclick = () => {
-    if (cage && !cage.done && ticker.classList.contains("cage")) {
-      cageTap();
-      return;
-    }
-    whyTap();
-  };
   // take control: the map's taps and clicks drive him while in hand (control.ts); otherwise a tap reads the last reason
+  ticker.onclick = whyTap;
   ctl.bindMap(canvas, () => viewer);
   canvas.onclick = (): void => {
     if (!ctl.on()) whyTap();
@@ -4933,80 +4670,6 @@ export function renderWatch(app: App): Mounted {
     whyTip.dataset.text = w.text;
     clearTimeout(whyTimer);
     whyTimer = window.setTimeout(() => whyTip.classList.remove("show"), WHY_SHOW_MS);
-  }
-  function vaultSheet(vc: VaultChoice, pickId?: number): void {
-    let sent = false;
-    vaultAt = performance.now();
-    vaultItems = vc.items;
-    vaultChosen = false;
-    el.dataset.cage = "sheet";
-    // the cage is modeless: the HUD stays live around it (⏸ keeps it, ▶▶| lets it go — QA on 3d71c33: "click intercepted")
-    openSheet(
-      (close) => {
-        vaultClose = () => {
-          vaultClose = null;
-          graceBar = null;
-          if (cage) cage.done = true;
-          el.dataset.cage = "done";
-          close();
-          paintCard(frame);
-          applySpeed();
-        };
-        const chips = h(
-          "div",
-          { class: "chips" },
-          ...vc.items.map((it) =>
-            h(
-              "button",
-              {
-                class: `chip item${it.id === pickId ? " on" : ""}`,
-                onclick: () => {
-                  if (sent) return;
-                  sent = true;
-                  vaultChosen = true;
-                  releaseBeat();
-                  app.engine
-                    .choose(it.id)
-                    .catch((e) => console.warn("choose", e))
-                    .finally(() => {
-                      vaultClose?.();
-                      if (!disposed) {
-                        tickerQueue.length = 0;
-                        showTicker(tookText(it.label), "", 2400);
-                      }
-                    }); // the next step's snapshot carries the pickup
-                },
-              },
-              itemIcon(it, { size: "s" }),
-              itemName(it),
-            ),
-          ),
-        ); // run-clear: the cage's three in their rarity rims
-        // the wait as a shrinking bar (QA on 56f2a1d: "closes by itself ~2–4 s later with no timer"): Cut 15 §5, the wall-clock wait
-        // (VAULT_WAIT_MS; the world stands meanwhile), width 100% → 0 over it — `vc.left` is the engine's own grace, after that
-        const bar = h("i", { style: `transition-duration:${VAULT_WAIT_MS / 1000}s` });
-        graceBar = bar;
-        const grace = h("div", { class: "grace" }, bar);
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => {
-            if (frozen()) graceHold();
-            else bar.style.width = "0%";
-          }),
-        );
-        // the three-item room is the cage to the player (the core's `twist_word`; QA on 3d71c33: "a sheet titled VAULT")
-        return h(
-          "div",
-          { class: "sheet-body vault-choice" },
-          h("div", { class: "label row-label" }, /* copy:label */ "loot choice"),
-          h("div", { class: "dim" }, /* copy:callout */ "Gold on pickup"),
-          chips,
-          grace,
-        );
-      },
-      { modeless: true },
-    );
-    paintCard(frame);
-    applySpeed();
   }
   /** QA 92eb880 (N: `fighter +0 · L4 ↑1` — the client's 40·L² ladder was not the core's): the run's XP is the exit line's (`ExitLine.xp` /
    *  `level_ups`); an older build without them shows the gain only inside one level (nothing is computed off a ladder here). */
@@ -5359,9 +5022,6 @@ export function renderWatch(app: App): Mounted {
     lastHp = s.hero.hp;
     lastAlert = s.alert;
     sceneFrom(s);
-    // A resumed run can already be waiting at a cage. Present its real choice
-    // before the pump advances through the remaining grace ticks.
-    vaultFrom(s);
     progress.push(s.turn);
     if (foldDue()) void foldRun(); // Cut 27 §1: the watch opens at the first floor below the bar
     pumpTimer = window.setInterval(pump, PUMP_MS);
@@ -5396,11 +5056,6 @@ export function renderWatch(app: App): Mounted {
       clearTimeout(counterTimer);
       clearTimeout(quietTimer);
       viewer?.dispose();
-      if (vaultClose) {
-        const c = vaultClose;
-        vaultClose = null;
-        c();
-      }
       tactics.dispose();
       if (prepended && !done) void app.engine.setRules(app.rules);
     },

@@ -115,7 +115,7 @@ try {
       await p.mouse.move(2, 2);
       await p.screenshot({ path: `${shots}/${width}-home.png` });
     }
-    assert.equal(await p.locator(".hit-mouth").getAttribute("aria-label"), "Send hero");
+    assert.equal(await p.locator(".hit-mouth").getAttribute("aria-label"), "Delve");
     console.log(width, "first plot visibility, controls, busy dedup and real construction PASS");
     await p.close();
   }

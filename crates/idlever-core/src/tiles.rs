@@ -13,7 +13,7 @@ pub enum Tile {
     Water,
     Chasm,
     /// Cut 5 §4 situations (floor-standing props the client draws): an altar (`pray`), a
-    /// three-item cage (choose one; `vault_open` once taken), a jackal den with a gold pile.
+    /// Automatic loot cache (`vault_open` once collected), a jackal den with a gold pile.
     Shrine,
     Vault,
     VaultOpen,

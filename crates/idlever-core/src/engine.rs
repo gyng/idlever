@@ -2320,6 +2320,7 @@ impl LineageState {
     }
     pub fn to_wire(&self) -> Lineage {
         Lineage { class_tree: Some(crate::class_tree::offers(self,false)), keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
+            journal: Some(crate::journal::wire(self,false)),
             seed: self.seed,
             heir: self.heir,
             trait_: self.trait_.name().into(),
@@ -3498,6 +3499,7 @@ impl Game {
 
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
+        l.journal=Some(crate::journal::wire(&self.lineage,self.run.as_ref().is_some_and(|r|r.over.is_none())));
         if self.lineage.endgame.is_some() || self.lineage.ended { l.endgame = Some(self.descent_progress()); }
         l.return_pick = crate::returns::wire(&self.lineage);
         let (kinds, gold) = self.repeat_plan();
@@ -3890,27 +3892,8 @@ impl Game {
     }
 
     /// Cut 5 §4: take one item of the opened vault (`Snapshot.vault_choice`); the rest vanish.
-    pub fn choose(&mut self, item_id: u32) -> Result<(), String> {
-        // A choice after the run ended (the hero died on the vault tile) must be an error, not a
-        // panic: `ctx()` expects a live run and a wasm panic poisons the whole engine object.
-        if self.run.as_ref().is_none_or(|r| r.over.is_some()) {
-            return Err("no run".into());
-        }
-        let (run, mut cx) = self.ctx();
-        if run.vault_choice.is_none() {
-            return Err("no vault open".into());
-        }
-        if !run.vault_choice.as_ref().unwrap().1.iter().any(|i| i.id == item_id) {
-            return Err("not in the vault".into());
-        }
-        let n0 = cx.events.len();
-        crate::turn::vault_take(run, &mut cx, Some(item_id));
-        let (id, t) = (run.id, run.turn);
-        self.input(id, t, Input::Choose(item_id));
-        if let Some(tap) = self.tap.as_mut() {
-            tap.entry(id).or_default().extend(self.events[n0..].iter().cloned());
-        }
-        Ok(())
+    pub fn choose(&mut self, _item_id: u32) -> Result<(), String> {
+        Err("loot is automatic".into())
     }
 
     pub fn loadout(&mut self, ids: Vec<u32>) {
@@ -4928,9 +4911,7 @@ impl Game {
             let rem = run.turn % HISTORY_STRIDE;
             quiet = quiet.min(if rem == 0 { 0 } else { HISTORY_STRIDE - rem });
         }
-        if let Some((t0, _)) = run.vault_choice.as_ref() {
-            quiet = quiet.min((t0 + VAULT_GRACE).saturating_sub(run.turn + 1));
-        }
+        if run.vault_choice.is_some() {quiet=0;}
         if let Some(reload) = run.gun_reload {
             quiet = quiet.min(reload.at.saturating_sub(run.turn.saturating_add(1)));
         }
@@ -5071,11 +5052,7 @@ impl Game {
             manual: run.manual,
             awaiting: run.awaiting,
             order: run.manual_note.clone().filter(|_| run.manual),
-            vault_choice: run.vault_choice.as_ref().map(|(t0, items)| VaultChoice {
-                items: items.iter().map(|i| to_inv(i, &l.facts, &l.flavours)).collect(),
-                left: (t0 + VAULT_GRACE).saturating_sub(run.turn),
-                pick: items.get(crate::turn::vault_pick(items, &l.vault_pref)).map(|i| i.id),
-            }),
+            vault_choice: None,
             room: Some(run.room_ref()),
             rooms: Some(run.floor.rooms.len() as u32),
             meters: (!run.meters.is_empty()).then(|| crate::wire::SnapMeters { run: crate::meters::wire(&run.meters.run), fight: (run.meters.fight.ticks > 0).then(|| crate::meters::wire(&run.meters.fight)), fighting: run.meters.quiet < crate::meters::FIGHT_GAP && run.meters.run.fights > 0 }),
@@ -5122,7 +5099,7 @@ impl Game {
         }
         for what in &run.learned {
             if crate::situations::TWISTS.contains(&what.as_str()) {
-                push(&mut out, "situation", format!("first: the {}", crate::situations::twist_word(what)));
+                push(&mut out, "situation", if what=="vault" {"Loot cache found".into()} else {format!("first: the {}", crate::situations::twist_word(what))});
             }
         }
         let learned = run.learned.len();

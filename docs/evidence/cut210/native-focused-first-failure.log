@@ -1,0 +1,19 @@
+
+running 7 tests
+....
+thread 'journal::tests::scout_and_porter_recommendation_uses_actual_lit_worker_and_price' (87) panicked at crates/idlever-core/src/journal.rs:126:44:
+assertion `left == right` failed
+  left: Some("porter")
+ right: Some("scout")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ 4/7
+journal::tests::scout_and_porter_recommendation_uses_actual_lit_worker_and_price --- FAILED
+..
+failures:
+
+failures:
+    journal::tests::scout_and_porter_recommendation_uses_actual_lit_worker_and_price
+
+test result: FAILED. 6 passed; 1 failed; 0 ignored; 0 measured; 854 filtered out; finished in 1.12s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

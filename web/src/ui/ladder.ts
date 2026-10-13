@@ -104,7 +104,7 @@ export function ladderRungs(L: Lineage, has: (step: string) => boolean): Rung[] 
     rung("weights", packagesShown(L), trigger(L, "stances"), litBy(L, "stances")),
     rung(
       "orders",
-      !!L.orders && ["loadout", "vault", "cage", "start"].some(has),
+      !!L.orders && ["loadout", "start"].some(has),
       trigger(L, "loadout"),
       litBy(L, "loadout"),
     ),

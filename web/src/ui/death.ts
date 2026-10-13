@@ -467,7 +467,7 @@ export function renderDeath(
   const shownNotes = (d.notes ?? []).filter(
     (n) =>
       !n.endsWith(/* copy:none */ " saved him.") &&
-      !/^The cage opens\b|^Took .* from the cage\.$/.test(n),
+      !/^The (?:cage|cache) opens\b|^Took .* from the (?:cage|cache)\.$/.test(n),
   );
   // QA 912e135 (qaX: `ogre: telegraph` / `ogre: heavy` under the banner read as tappable because-lines): a fact the run learned says so
   const noteLine = (n: string): string =>

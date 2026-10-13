@@ -45,7 +45,6 @@ pub const SYSTEMS: &[SystemDef] = &[
     sys("loadout", "first gold home"),
     aged("party", "first stray", 1, 0),
     aged("kennel", "first tame", 1, 0),
-    sys("cage", "first cage"),
     aged("stances", "meet Captain", 1, 0),
     aged("tactics", "slay Warlord", 4, 0),
     aged("bank", "a night's purse", 8, 0),
@@ -93,7 +92,6 @@ fn triggered(l: &LineageState, id: &str, plateau: bool) -> bool {
         "exits" | "loadout" | "forge" => l.gold_ledger.iter().any(|x| x.delta > 0 && crate::engine::is_exit_why(&x.why)) || !l.banked_depths.is_empty() || crate::town::built(l, "blacksmith"),
         "party" => l.facts.contains("stray") || l.all_companions().next().is_some(),
         "kennel" => crate::town::built(l, "kennel"),
-        "cage" => l.facts.contains("vault"),
         "stances" => warlord_met || l.facts.contains("foe:goblin_captain"),
         "tactics" | "start" | "quests" => l.kills.contains("goblin_warlord") || !l.waystones.is_empty() && l.best_depth >= 9,
         "bank" => crate::town::built(l, "bank"),
@@ -136,6 +134,13 @@ fn ready(l: &LineageState, s: &SystemDef, plateau: bool, gate: bool) -> bool {
     }
     let age = l.age_h();
     (triggered(l, s.id, plateau) && age >= s.min_age_h) || (s.fallback_h > 0 && age >= s.fallback_h)
+}
+
+/// Journal explanations share the actual milestone/age gate and do not open it.
+pub fn journal_gate(l: &LineageState, id: &str) -> Option<(bool, u32, u32, bool)> {
+    let s = SYSTEMS.iter().find(|s| s.id == id)?;
+    Some((triggered(l, id, false), if l.pkg.literal { 0 } else { s.min_age_h },
+        if l.pkg.literal { 0 } else { s.fallback_h }, ready(l, s, false, !l.pkg.literal)))
 }
 
 /// Read-only explanation for the pen; shares the actual trigger and readiness checks.

@@ -739,7 +739,7 @@ fn subject(ep: &Episode, short: bool) -> String {
         "poison" => "Poison".into(),
         "shrine" => "The shrine".into(),
         "nest" => "The nest".into(),
-        "vault" => "The cage".into(),
+        "vault" => "The cache".into(),
         "den" => "The den".into(),
         "lock" => if n == 1 { "A bloat".into() } else { "Bloats".into() },
         "captive" => "The captive".into(),
@@ -776,7 +776,7 @@ fn subject(ep: &Episode, short: bool) -> String {
 
 fn setup_phrase(ep: &Episode, short: bool) -> String {
     match ep.setup {
-        Setup::Vault => "The cage held three".into(),
+        Setup::Vault => "A cache of loot".into(),
         Setup::Captive => "A captive, chained".into(),
         Setup::Stray => {
             if short {
@@ -1045,7 +1045,7 @@ pub fn story_ok(text: &str) -> bool {
     let setup = beats[0];
     let setup_ok = setup == "Untouched"
         || setup.starts_with("Untouched by ")
-        || setup == "The cage held three"
+        || setup == "A cache of loot"
         || setup == "A captive, chained"
         || setup.ends_with(" came back")
         || setup.ends_with(" took him down")
@@ -1053,7 +1053,7 @@ pub fn story_ok(text: &str) -> bool {
     let turn = beats[1];
     let forms = past_forms();
     let combo_ok = crate::rules::COMBOS.iter().any(|c| turn == format!("the {} landed", c.name) || turn == format!("the {} landed", crate::rules::combo_slug(c.name)));
-    let turn_ok = NO_ROW.contains(&turn) || combo_ok || (setup == "The cage held three" && turn.starts_with("he took the ")) || {
+    let turn_ok = NO_ROW.contains(&turn) || combo_ok || (setup == "A cache of loot" && turn.starts_with("he took the ")) || {
         let (head, rest) = match turn.split_once(' ') {
             Some(x) => x,
             None => return false,

@@ -1,0 +1,5 @@
+ok   run setup shows current orders without retired Keep or loot controls ("run setup"; cage tablet false, start tablet false)
+ok   current start and free reuse orders remain; retired controls are absent (start D1 ▸ | Auto restock on off)
+ok   a tap sets an order through setOrders; the sheet and the tablet follow (D1 ▸ · off; "run setup restock off")
+ok   free reuse order leaves start and Gold unchanged
+cut29: ok (4 checks)

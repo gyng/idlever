@@ -1,7 +1,7 @@
 // Cut 27 §1 — solved floors fold. The sim still plays every floor (economy, determinism unchanged); a floor the active set clears
 // ≥ 95 % on the camp's forecast (paired, per floor) is *folded*: the watch steps the engine through it flat out under one interstitial
 // line (`D1–6 · 100% · +$84` and a chip per state-changing beat: `stolen heal`, `took mail`, `hp 4/36`) and opens at the first floor below
-// the bar. Nothing that changes the lineage is hidden: every theft, find, cage pick, companion's news, level, max-hp move, bones, fact
+// the bar. Nothing that changes the lineage is hidden: every theft, find, companion's news, level, max-hp move, bones, fact
 // learned, boss down and death-adjacent hp dip of a folded floor is a chip on its line. A tap on the line plays the folded floors
 // (`openFoldReplay`, the run log's floors at the travel rate).
 //
@@ -109,7 +109,6 @@ export class FoldTally {
   private names = new Map<number, string>();
   private allies = new Set<number>();
   private bosses = new Set<number>();
-  private cages = new Set<string>();
   loot0: number | undefined;
   loot = 0;
   depth = 0;
@@ -212,16 +211,6 @@ export class FoldTally {
       }
     }
     this.depth = s.depth;
-    // Cut 19 §1: a cage met under the fold — the preference's pick is the beat (`took mail`)
-    const vc = s.vault_choice;
-    if (vc?.items.length) {
-      const key = vc.items.map((i) => i.id).join(",");
-      if (!this.cages.has(key)) {
-        this.cages.add(key);
-        const pick = vc.items.find((i) => i.id === vc.pick) ?? vc.items[0];
-        add("took", /* copy:callout */ `took ${short(pick.label)}`, s.turn);
-      }
-    }
     const loot = carriedOf(s);
     if (this.loot0 === undefined) this.loot0 = loot; // (the watch sets it from the snapshot before the fold)
     this.loot = loot;

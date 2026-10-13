@@ -25,7 +25,7 @@ export type Concept =
 const DEF: Record<Concept, { ico: string; glyph: string; cap: string }> = /* copy:callout */ {
   marks: { ico: "mark", glyph: "◆", cap: "upgrade tokens" },
   renown: { ico: "renown", glyph: "★", cap: "reputation" },
-  cage: { ico: "vault", glyph: "▦", cap: "choose one item" },
+  cage: { ico: "vault", glyph: "▦", cap: "automatic loot" },
   bones: { ico: "it_bones", glyph: "☠", cap: "dead heir's gear" },
   oaths: { ico: "renown", glyph: "✠", cap: "goal for reward" },
   bounty: { ico: "gold", glyph: "✦", cap: "floor pays double" },
@@ -168,7 +168,7 @@ const WORKS_TIP = /* copy:node_tip */ {
 export const TIP: Record<Term, string> = /* copy:tooltip */ {
   marks: "tokens from progression · buy unlocks and tactic levels",
   renown: "reputation from deeds · ranks award upgrade tokens",
-  cage: "choose one item · loot preference selects automatically",
+  cage: "loot is collected automatically",
   bones: "a dead heir's gear on his floor",
   oaths: "a goal for a reward",
   bounty: "this floor pays double gold",
@@ -293,7 +293,7 @@ export const TITLE: Partial<Record<Term, string>> = /* copy:label */ {
   drill: "boss counters",
   marks: "upgrade tokens",
   renown: "reputation",
-  cage: "loot choice",
+  cage: "loot cache",
   oaths: "challenges",
   pen: "custom rules",
   ends: "run outcomes",

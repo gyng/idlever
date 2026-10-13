@@ -3,10 +3,14 @@
 // ▶▶| work unchanged), drawn by view2d.ts into the canvas's own 2D context. The old placeholder had no clock: ▶▶| went dead on it.
 import { ReplayState } from "./state";
 import { View2D } from "./view2d";
+import { CombatCues } from "./combat-cues";
+import { effectsLevel } from "./fxpref";
 import type { Frame, Viewer, ViewerStats } from "./index";
 
 export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
   const st = new ReplayState();
+  const cues = new CombatCues();
+  st.onEvent = (ev) => cues.onEvent(ev, st.heroId, effectsLevel());
   // (a canvas a failed GL attempt left bound has no 2D context: the view goes on an overlay beside it)
   const view = canvas.getContext("2d") ? new View2D({ own: canvas }) : new View2D({ host: canvas });
   view.show(true);
@@ -57,7 +61,8 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
     st.tick(dt, now);
     st.cameraSnap = false;
     const t0 = performance.now();
-    view.draw(st);
+    view.draw(st, cues);
+    stats.combatCues = cues.stats();
     stats.cpuMs = performance.now() - t0;
     stats.tick = st.tickNow();
     stats.pending = st.pending();
@@ -72,6 +77,7 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
   return {
     load(snap) {
       st.load(snap);
+      cues.clear();
     },
     apply(evs) {
       st.apply(evs);
@@ -81,9 +87,11 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
     },
     skipToEvent() {
       st.skipToEvent();
+      cues.clear();
     },
     seek(t) {
       st.seek(t);
+      cues.clear();
     },
     sync(snap) {
       st.sync(snap);

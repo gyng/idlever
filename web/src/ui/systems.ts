@@ -68,7 +68,7 @@ const LABEL: Partial<Record<SystemId, string>> = {
   vs: "vs line",
   tags: "foe tags",
   party: "party",
-  cage: "cages",
+  cage: "loot caches",
   walls: "boss walls",
   divergence: "replay diff",
   forge: "forge",

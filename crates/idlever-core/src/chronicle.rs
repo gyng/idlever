@@ -12,14 +12,14 @@ pub fn note(run: &mut Run, cx: &mut Ctx, text: String) {
 }
 
 /// Cut 24 §2 (AK: "the shrine line, run after run"): the one-line floor events, each a pool of
-/// variants (≤ 8 words; each keeps its kind's opening words — `A shrine.` · `A cage:` · `The air
+/// variants (≤ 8 words; each keeps its kind's opening words — `A shrine.` · `A cache:` · `The air
 /// stings:` — which the client's beat test reads).
 pub const EVENT_POOLS: &[(&str, &[&str])] = &[
     // Cut 28 §4 (AV: `R2 return saved him.` four runs running): the row that got him through a low,
     // in turn (`{r}` is `R2 return`), never the same words three runs running.
     ("saved", &["{r} saved him.", "{r} got him out.", "{r} pulled him through."]),
     ("shrine", &["A shrine. Pray, at a price.", "A shrine. Its candles still burn.", "A shrine. Coins on the step.", "A shrine. The idol watches him."]),
-    ("vault", &["A cage: three inside, one to take.", "A cage: three things behind bars.", "A cage: take one, leave two.", "A cage: three prizes, one key."]),
+    ("vault", &["A cache: loot among the dust.", "A cache: something glints inside.", "A cache: supplies left behind.", "A cache: a find in the dark."]),
     ("nest", &["A den. Something sleeps.", "A den. Breathing in the dark.", "A den. Gold among the bones.", "A den. Soft snoring ahead."]),
     ("den", &["A den of thieves.", "A den of thieves. Small, quick hands.", "A den of thieves. Something glints.", "A den of thieves. Whispers, then quiet."]),
     ("den_wakes", &["The den wakes: thieves on every side.", "The den wakes: hands everywhere.", "The den wakes: they were never asleep."]),

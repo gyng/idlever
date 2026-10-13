@@ -1,0 +1,13 @@
+client suite: targeted (2 selected; 139 current full; 181 exhaustive groups)
+ok   journal         4.3s (3.9s)  journal: 48 synthetic DOM-contract checks passed; real progression acceptance remains separate
+FAIL journal-real    32.6s (32.3s)  Node.js v26.5.0
+       - waiting for locator('[data-tile="journal"]')
+           - element is not visible
+           - element is not visible
+            - element is not visible
+         '      - element is not visible',
+         '      - element is not visible',
+         '       - element is not visible',
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/journal-real.mjs:25:49 {
+FAIL: 1/2 client gates in 32.6s

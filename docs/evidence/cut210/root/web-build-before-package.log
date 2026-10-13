@@ -1,0 +1,23 @@
+$ tsc && vite build
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 169 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                2.00 kB │ gzip:     0.69 kB
+dist/assets/worker-rF-HkBtY.js                31.90 kB
+dist/assets/idlever_wasm_bg-BycmeX4w.wasm  6,416.43 kB │ gzip: 2,016.53 kB
+dist/assets/index-71wnG11Q.css               290.82 kB │ gzip:    62.69 kB
+dist/assets/render-BQKi3eFE.js               134.69 kB │ gzip:    49.03 kB
+dist/assets/index-CHrsnBuN.js              1,333.91 kB │ gzip:   414.61 kB
+
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/runs.ts is dynamically imported by src/ui/chronicle.ts but also statically imported by src/ui/report.ts, src/ui/town.ts, dynamic import will not move module into another chunk.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 900 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[INEFFECTIVE_DYNAMIC_IMPORT] [0msrc/ui/town.ts is dynamically imported by src/ui/chronicle.ts but also statically imported by src/ui/camp.ts, src/ui/frame.ts, src/ui/heroes.ts, src/ui/preparation.ts, dynamic import will not move module into another chunk.
+
+✓ built in 843ms

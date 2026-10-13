@@ -402,7 +402,7 @@ export class Juice {
   }
 
   private on(): boolean {
-    return this.q.at("med");
+    return this.q.at("med") && effectsLevel() !== "off";
   }
   private moving(): boolean {
     return this.on() && this.q.motion;
@@ -442,6 +442,23 @@ export class Juice {
     this.pops.length = 0;
     this.squashes.clear();
     this.live = 0;
+    this.deadAt = -1;
+    this.slowUntil = 0;
+    this.stopUntil = 0;
+    this.vig.a = 0;
+    this.clearFloor();
+  }
+
+  /** Seeking/skip must not leave bursts from the old replay cursor alive. */
+  clearTransient(): void {
+    this.queue.length = 0;
+    this.numbers.length = 0;
+    this.pops.length = 0;
+    this.squashes.clear();
+    this.live = 0;
+    this.shown.length = 0;
+    this.breaks.length = 0;
+    this.falls.length = 0;
     this.deadAt = -1;
     this.slowUntil = 0;
     this.stopUntil = 0;
@@ -731,6 +748,7 @@ export class Juice {
     this.nums.begin();
     this.decals.begin();
     if (!this.on()) {
+      this.clearTransient();
       this.live = 0;
       this.queue.length = 0;
       this.numbers.length = 0;
@@ -955,13 +973,13 @@ export class Juice {
         const ax = d ? Math.sign(d.x - s.x) : 0,
           ay = d ? Math.sign(d.y - s.y) : 0;
         this.squashes.set(ev.src, { t0: ev.t, kind: "lunge", ax: Math.abs(ax), ay: Math.abs(ay) });
-        if (ev.hit && d)
+        if (ev.hit && ev.dmg > 0 && d)
           this.blows.set(ev.dst, { x: s.x, y: s.y + s.h * 0.45, t: ev.t, boss: s.boss }); // combat fx pass: the blow's origin
         if (!ev.hit && d)
           this.burst(4, d.x, d.y + 2, 18, x.dust, 0.35, 1, { drag: 3, alpha: 0.7 }, 6); // a whiff: dust at the dodger's feet
         // gfx round 1 (raters: "no slash arc, the hit lacks impact"): a melee blow that lands draws a bright crescent across the target,
         // swept from the attacker's side — white-gold from the hero and his allies, blood-red from a foe
-        if (ev.hit && d && Math.abs(d.x - s.x) <= 14 && Math.abs(d.y - s.y) <= 14)
+        if (ev.hit && ev.dmg > 0 && d && Math.abs(d.x - s.x) <= 14 && Math.abs(d.y - s.y) <= 14)
           this.slash(s, d, s.hero || s.ally);
         break;
       }

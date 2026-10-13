@@ -1,0 +1,44 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   carry: 2,
++   engineGold: 509,
+-   carry: 7,
+-   engineGold: 507,
+    exit: 'return',
++   gold: 509,
+-   gold: 507,
+    pending: null,
++   raw: 10
+-   raw: 30
+  }
+
+    at file:///home/g/p/riddle/web/tests/watch-loot-skill.mjs:126:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    raw: 10,
+    carry: 2,
+    gold: 509,
+    engineGold: 509,
+    exit: 'return',
+    pending: null
+  },
+  expected: {
+    raw: 30,
+    carry: 7,
+    gold: 507,
+    engineGold: 507,
+    exit: 'return',
+    pending: null
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

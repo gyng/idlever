@@ -4,7 +4,7 @@ use crate::ai;
 use crate::chronicle::{callout, note};
 use crate::defs::{monster_def, Cat};
 use crate::descent::ENDING_DEPTH;
-use crate::engine::{populate_floor, Ctx, ExitTier, Run, ACT_ENERGY, HERO_ID, TICKS_PER_TURN, VAULT_GRACE};
+use crate::engine::{populate_floor, Ctx, ExitTier, Run, ACT_ENERGY, HERO_ID, TICKS_PER_TURN};
 use crate::sifter::{self, Moment, Resolution};
 use crate::facts::{learn, learn_tag, tag_known};
 use crate::gen::generate;
@@ -183,9 +183,8 @@ pub fn tick(run: &mut Run, cx: &mut Ctx) {
         crate::petstats::bump(crate::petstats::Stat::EarlyTicks, 1);
     }
     crate::firearm::tick(run, cx);
-    // Cut 5 §4: an opened vault waits `VAULT_GRACE` ticks for `choose` (the client's sheet),
-    // then the preference picks — watched or not, so a verdict replay stays faithful.
-    if run.vault_choice.as_ref().is_some_and(|(t0, _)| run.turn >= t0 + VAULT_GRACE) {
+    // A saved pending cache settles before another hero action, without a chooser or grace.
+    if run.vault_choice.is_some() {
         vault_take(run, cx, None);
     }
     run.hero.energy += run.hero.speed();
@@ -3048,8 +3047,7 @@ pub fn wake_den(run: &mut Run, cx: &mut Ctx) {
     }
 }
 
-/// The hero stands on the vault: the cage opens. Watched, the choice waits for `choose`
-/// (`Snapshot.vault_choice`); otherwise the preference picks on the next tick.
+/// Standing on the cache collects its deterministic item immediately.
 fn vault_open(run: &mut Run, cx: &mut Ctx) {
     let here = run.hero.pos;
     run.floor.map.set(here, Tile::VaultOpen);
@@ -3060,8 +3058,7 @@ fn vault_open(run: &mut Run, cx: &mut Ctx) {
     run.met_situation("vault");
     learn(run, cx, "vault".into());
     run.vault_choice = Some((run.turn, cage));
-    note(run, cx, "The cage opens: one is his.".into());
-    callout(run, cx, "choose one");
+    vault_take(run, cx, None);
 }
 
 /// The cage item the vault preference takes (its category's first, else the first) — also the
@@ -3108,7 +3105,7 @@ pub fn vault_take(run: &mut Run, cx: &mut Ctx, id: Option<u32>) {
         }
     }
     cx.events.push(Ev::Pickup { t: run.turn, id: HERO_ID, item: label.clone() });
-    note(run, cx, format!("Took the {label} from the cage{}", if label.ends_with('?') { "" } else { "." }));
+    note(run, cx, format!("Found the {label} in the cache{}", if label.ends_with('?') { "" } else { "." }));
     sifter::open_situation(run, crate::sifter::Setup::Vault, "vault", &label, "");
 }
 

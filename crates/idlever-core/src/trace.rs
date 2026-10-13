@@ -3347,16 +3347,17 @@ mod tests_causal_root {
     fn historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain() {
         // Cut 109 (floors on their own stream): seed 14's death 10 moved; seed 224's death 6.
         // Blind b8dd77c (the corridor hold's clock: 224's death 6 no longer certain at its checkpoint): 363's death 15,
-        // a den thief's earlier theft.
-        let mut g = Game::new_literal(363);
+        // a den thief's earlier theft. Cut210's immediate cache pickup changes later
+        // equipment/combat timing: the same causal zero-gain case is now seed187, death2.
+        let mut g = Game::new_literal(187);
         g.max_deaths = 1000;
         crate::systems::open_all(&mut g.lineage);
         crate::traits::neutral(&mut g.lineage);
         crate::offline::run_offline_counts(&mut g, 8 * 3600);
-        let death = g.death(15).expect("the seed's death after its den theft");
+        let death = g.death(2).expect("the seed's death after its den theft");
         assert_eq!(death.baseline, 0.0);
         let root = death.patches.iter().find(|p| p.root.is_some()).expect("the earlier theft still has its causal patch");
-        assert_eq!(root.root.as_ref().unwrap().text, "den took the clear potion?");
+        assert_eq!(root.root.as_ref().unwrap().text, "den took the murky potion?");
         assert_eq!(root.survive, 0.0, "the root patch cannot undo the loss at the death checkpoint");
         assert_eq!(root.forecast_delta, 0.0);
         assert!(root.no_gain, "the screen must not claim a survival gain");

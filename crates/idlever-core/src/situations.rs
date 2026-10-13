@@ -64,7 +64,7 @@ pub const TWISTS: [&str; 8] = ["den", "lock", "captive", "nest", "shrine", "vaul
 /// three under a cage` / `Took the X from the vault` as the camp's VAULT.
 pub fn twist_word(id: &str) -> &str {
     match id {
-        "vault" => "cage",
+        "vault" => "cache",
         other => other,
     }
 }

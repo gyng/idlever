@@ -5,6 +5,8 @@
 import type { ReplayState, EntState } from "./state";
 import { paletteFor, css, spriteScale } from "./palette";
 import { heroBase } from "./look";
+import type { CombatCues, CueBody } from "./combat-cues";
+import { effectsLevel } from "./fxpref";
 
 type Frame = { x: number; y: number; w: number; h: number };
 type Sheet = {
@@ -51,6 +53,7 @@ export class View2D {
   private ctx: CanvasRenderingContext2D | null;
   private host: HTMLCanvasElement | null; // the GL canvas an overlay sits on (null: `canvas` is the view itself)
   private box = "";
+  private cueBodies = new Map<number, CueBody>();
   shown = false;
 
   /** `host`: overlay mode (a sibling canvas over the GL canvas); `own`: draw into this 2D canvas. */
@@ -110,7 +113,8 @@ export class View2D {
     return sheet?.frames[id];
   }
 
-  draw(st: ReplayState): void {
+  draw(st: ReplayState, cues?: CombatCues): void {
+    this.cueBodies.clear();
     const g = this.ctx;
     if (!g || !this.shown) return;
     const [W, H] = this.fit();
@@ -252,6 +256,25 @@ export class View2D {
       g.fillStyle = grad;
       g.fillRect(0, 0, W, H);
     }
+    if (cues) {
+      const pixels = cues.draw(
+        st.clock,
+        (id) => this.cueBodies.get(id) ?? null,
+        effectsLevel(),
+        !matchMedia("(prefers-reduced-motion: reduce)").matches,
+      );
+      for (const p of pixels) {
+        g.globalAlpha = p.a;
+        g.fillStyle = css(p.c);
+        g.fillRect(
+          Math.round(ox + ((p.x - p.w / 2) * T) / 8),
+          Math.round(oy - ((p.y + p.h) * T) / 8),
+          Math.max(1, Math.round((p.w * T) / 8)),
+          Math.max(1, Math.round((p.h * T) / 8)),
+        );
+      }
+      g.globalAlpha = 1;
+    }
     if (st.fade > 0) {
       g.fillStyle = `rgba(0,0,0,${Math.min(1, st.fade)})`;
       g.fillRect(0, 0, W, H);
@@ -304,6 +327,13 @@ export class View2D {
       g.fillStyle = e.hero ? "#f4f1ea" : e.ally ? "#5fbf7a" : e.boss ? "#ff5aa0" : "#d94a4a";
       g.fillRect(fx - T * 0.4, fy - T * 0.9, T * 0.8, T * 0.8);
     }
+    if (!e.remembered)
+      this.cueBodies.set(e.id, {
+        x: ((fx - ox) * 8) / T,
+        y: (-(fy - oy - (f ? 0 : T * 0.1)) * 8) / T,
+        w: f ? ((f.w / f.h) * (fy - top) * 8) / T : 6.4,
+        h: f ? ((fy - top) * 8) / T : 6.4,
+      });
     g.globalAlpha = 1;
     if (!e.hero && !e.neutral && !e.dying && !e.remembered && e.maxHp > 0) {
       const bw = T * 0.8,

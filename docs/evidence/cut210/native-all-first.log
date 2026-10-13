@@ -1,0 +1,56 @@
+
+running 861 tests
+....................................................................................... 87/861
+....................................................................................... 174/861
+....................................................................................... 261/861
+........................................i.............................................. 348/861
+........................ 372/861
+tests::a_set_that_always_returns_gets_a_stall_verdict_with_patches --- FAILED
+....................................................................................... 460/861
+....................................................................................... 547/861
+.......i..ii.................i 577/861
+tests::the_cage_forecast_measures_each_preference --- FAILED
+......i................................................................................ 665/861
+....................................................................................... 752/861
+................................................................................ 832/861
+trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain --- FAILED
+..... 838/861
+tests_runsui::a_watched_run_replays_to_the_same_events --- FAILED
+....test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+............test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+......
+failures:
+
+---- tests::a_set_that_always_returns_gets_a_stall_verdict_with_patches stdout ----
+
+thread 'tests::a_set_that_always_returns_gets_a_stall_verdict_with_patches' (11031) panicked at crates/idlever-core/src/tests.rs:1372:5:
+assertion failed: stall.patches.windows(2).all(|w| w[0].forecast_delta >= w[1].forecast_delta)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::the_cage_forecast_measures_each_preference stdout ----
+
+thread 'tests::the_cage_forecast_measures_each_preference' (35129) panicked at crates/idlever-core/src/tests.rs:8737:42:
+called `Option::unwrap()` on a `None` value
+
+---- trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain stdout ----
+
+thread 'trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain' (53709) panicked at crates/idlever-core/src/trace.rs:3357:9:
+assertion `left == right` failed
+  left: 0.9166666666666666
+ right: 0.0
+
+---- tests_runsui::a_watched_run_replays_to_the_same_events stdout ----
+
+thread 'tests_runsui::a_watched_run_replays_to_the_same_events' (52475) panicked at crates/idlever-core/src/tests_runsui.rs:72:5:
+a cage pick was replayed
+
+
+failures:
+    tests::a_set_that_always_returns_gets_a_stall_verdict_with_patches
+    tests::the_cage_forecast_measures_each_preference
+    tests_runsui::a_watched_run_replays_to_the_same_events
+    trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain
+
+test result: FAILED. 851 passed; 4 failed; 6 ignored; 0 measured; 0 filtered out; finished in 72.19s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -48,7 +48,7 @@ fn watched(g: &mut Game, bail_at: Option<u32>) -> (u32, Vec<Ev>) {
 
 #[test]
 fn a_watched_run_replays_to_the_same_events() {
-    let mut chose = false;
+    let mut cache = false;
     for seed in [11u64, 12, 13] {
         let mut g = with_scout(seed);
         g.tap = Some(BTreeMap::new());
@@ -64,12 +64,13 @@ fn a_watched_run_replays_to_the_same_events() {
             }
             assert!(rep.floors.len() as u32 >= g.lineage.run_log.last().unwrap().depth + 1 - g.lineage.run_log.last().unwrap().start, "a floor a depth");
             assert!(rep.ticks > 0);
-            chose |= g.capsules.0.iter().any(|c| !c.inputs.is_empty());
+            cache |= evs.iter().any(|e|matches!(e,Ev::Note {text,..} if text.starts_with("Found the ")&&text.contains(" in the cache")));
+            assert!(g.capsules.0.iter().all(|c|c.inputs.iter().all(|(_,input)|!matches!(input,crate::engine::Input::Choose(_)))));
             assert_eq!(g.lineage.run_log.last().unwrap().via, "watched");
             g.auto_keep();
         }
     }
-    assert!(chose, "a cage pick was replayed");
+    assert!(cache, "an automatic cache pickup was replayed with no manual choice input");
 }
 
 #[test]

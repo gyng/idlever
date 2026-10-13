@@ -362,7 +362,7 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     markers.push({
       at: "blacksmith",
       kind: "sword",
-      label: o.kit?.price ? `$${o.kit.price}` : undefined,
+      label: o.kit?.price ? /* copy:callout */ `Upgrade $${o.kit.price}` : undefined,
     });
   if (has("bank") && (town?.bank ?? 0) > 0 && o.absenceNew)
     markers.push({ at: "bank", kind: "coin" });

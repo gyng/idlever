@@ -75,6 +75,12 @@ pub fn built(l: &LineageState, id: &str) -> bool {
     l.town.built.iter().any(|(b, _)| b == id)
 }
 
+/// Read-only construction eligibility for Journal guidance.
+pub fn build_ready(l: &LineageState, id: &str) -> bool {
+    if id == "house" { return !l.town.home.unwrap_or(true); }
+    l.town.home.unwrap_or(true) && !built(l,id) && BUILDINGS.iter().any(|(b,_)|*b==id) && triggered(l,id)
+}
+
 /// Build every building whose trigger has happened; the ids built now.
 pub fn update(l: &mut LineageState) -> Vec<String> {
     if l.town.manual { return Vec::new(); }

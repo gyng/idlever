@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 320/1 targets [{"label":"Loadouts","width":100.984375,"height":30.358489990234375},{"label":"Builds","width":204.8125,"height":30.358489990234375},{"label":"Later","width":204.8125,"height":30.358489990234375},{"label":"Loadouts","width":100.984375,"height":30.3585205078125},{"label":"Swapped today","width":175.3125,"height":30.3583984375},{"label":"Discoveries","width":204.8125,"height":30.3585205078125}]
+    at file:///home/g/p/riddle/web/tests/journal.mjs:152:14 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

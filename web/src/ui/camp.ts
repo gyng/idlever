@@ -24,7 +24,6 @@ import { anyNew, hasCurriculum, sysOpen } from "./systems";
 import { lookStud } from "./look";
 import type { App, Mounted } from "../app";
 import type {
-  CageOption,
   ForkOption,
   InvItem,
   Lineage,
@@ -83,7 +82,8 @@ import {
   townBuilt,
 } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
-import { openQuest, questShown } from "./quest"; // Cut 30 §5: the quest board
+import { openJournal } from "./journal-window";
+import { openChronicle } from "./chronicle";
 import { openWorks, sendMark } from "./works";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear: items in their rarity rims
 import { returnPick } from "./return-pick"; // Cut 113 §3: the return's pick waits on the camp
@@ -128,33 +128,6 @@ const SUPPLY_USE: Record<string, string> = {
   chalk: "marks a floor",
   bell: "lures hunters",
 };
-/** Cut 19 §1: the cage's preferences, the picker's order. */
-const CAGE_PREFS = ["weapon", "armour", "potion", "scroll"];
-/** Cut 19 §1: the last `cageForecast()` and what it was measured for (the set, the preference, the best) — the picker paints it at once. */
-let cageMemo: { key: string; opts: CageOption[] } | null = null;
-/** Cut 19 §1: an option's headline delta (`+36%`, the bank share's move when either panel banks, else the reach's); none on the
- *  current preference or a move that rounds to 0; `dim` inside its ±. */
-/** QA 1a2a4a9 (O, P: "`armour +15%` — % of what?"; "the selected option never has a number"; "`scroll` stayed blank"): each option
- *  names what it measures — `bank +15%` (the bank share, when either panel banks) or `D7 +15%` (the reach at the option's depth);
- *  the current one its own level (`D7 73%`), a move that rounds to 0 `D7 +0%` (dim). */
-export function cageDelta(
-  o: Pick<CageOption, "current" | "depth" | "reach" | "bank" | "bank_delta" | "delta" | "pm">,
-): { text: string; cls: string } | null {
-  const banks = o.delta === o.bank_delta && (o.bank > 0 || o.bank - o.bank_delta > 0);
-  const at = banks ? /* copy:label */ "bank" : `D${o.depth}`;
-  const level = `${at} ${Math.round((banks ? o.bank : o.reach) * 100)}%`;
-  if (o.current) return { text: level, cls: "cur" };
-  const d = Math.round(o.delta * 100);
-  const pm = Math.round(o.pm * 100);
-  // Cut 22 §4 (AG: "the red `−18%` confused me; is it a delta?"): a move is signed points in the delta look (`bank −18`), never a `%`.
-  // QA 0c6e126 (qaZ: `weapon D4 60% · armour D4 +28 · potion D4 −12` — "one absolute, three deltas"): every option reads its own level
-  // on one scale (`armour D4 88%`), the move against the current one a mark beside it (`▲28`; dim inside its ±)
-  const mark = d === 0 ? "" : ` ${d > 0 ? "▲" : "▼"}${Math.abs(d)}`; // (inside its ± the option reads dim: `flat`)
-  return {
-    text: `${level}${mark}`,
-    cls: `dlt ${d > 0 ? "up" : d < 0 ? "down" : "flat"}${Math.abs(d) <= pm ? " flat" : ""}`,
-  };
-}
 /** Cut 21 §1: the last `startForecast()` and what it was measured for (the set, the start, the lit waystones, the best). */
 let startMemo: { key: string; opts: StartOption[] } | null = null;
 const forkMemo = new Map<string, ForkOption[]>(); // Cut 26 §2: the fork tablet's measures (per fork, this set's, this lineage's)
@@ -306,13 +279,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       flashRow(i);
     },
   });
-  // Cut 19 §1: the cage is a camp decision — its own tablet under the rules (`cage → armour`), revealed once a cage was seen; the
-  // tap opens the picker with each preference's forecast delta
-  const cageTab = h("button", {
-    class: "row tablet compact cage-tab",
-    hidden: true,
-    onclick: () => openCagePicker(),
-  });
   // Cut 21 §1: where the send starts — its own tablet beside the rules and the cage (`start → D9 · $90`), carved when the first
   // waystone lights; the tap opens the picker (D1 and each lit waystone, each with its forecast move and toll)
   const startTab = h("button", {
@@ -386,21 +352,24 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   const armedAt = performance.now() + (highlight !== undefined ? SEND_ARM_MS : 0);
   // Cut 30 §3: the send — the gem or the dungeon's mouth; the hero walks from where he is into the mouth, then the watch opens
   // RUNS_UI: with a run under way the gem watches it (he is already down there: no walk to the mouth)
-  const doSend = (): void => {
+  const doSend = (): boolean => {
     if (app.lineage.ended) {
       app.go({ kind: "ending" });
-      return;
+      return true;
     }
     if (app.lineage.town?.home === false || performance.now() < Math.max(armedAt, residentUntil))
-      return;
+      return false;
     if (isLive()) {
       app.go({ kind: "watch" });
-      return;
+      return true;
     }
-    if (!app.overBudget && app.rules.rows.length > 0)
+    if (!app.overBudget && app.rules.rows.length > 0) {
       town.send(() => {
         if (el.isConnected) app.go({ kind: "watch" });
       });
+      return true;
+    }
+    return false;
   };
   const isLive = (): boolean => !!app.lineage.live && app.lineage.live.turn > 0;
   const send = gem({
@@ -476,6 +445,47 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     closePanel();
     return true;
   });
+  const journalRoute = (target: string): boolean => {
+    if (
+      ![
+        "delve",
+        "watch",
+        "forge",
+        "loadouts",
+        "class",
+        "legacy",
+        "workers",
+        "tactics",
+        "orders",
+        "companions",
+        "chronicle",
+      ].includes(target)
+    )
+      return false;
+    if (target === "watch" && !app.lineage.live) return false;
+    closeAllSheets();
+    closePanel();
+    if (target === "delve") return doSend();
+    if (target === "watch") {
+      if (!app.lineage.live) return false;
+      app.go({ kind: "watch" });
+      return true;
+    }
+    if (target === "forge") openForge(app);
+    else if (target === "loadouts" || target === "class" || target === "legacy")
+      openHero(app, undefined, target);
+    else if (target === "workers") openWorks(app);
+    else if (target === "tactics") openPackages(app);
+    else if (target === "orders") openOrders();
+    else if (target === "companions") togglePanel("party");
+    else if (target === "chronicle") openChronicle(app);
+    else return false;
+    return true;
+  };
+  const journal = (anchor?: HTMLElement | null): void => {
+    closePanel();
+    openJournal(app, journalRoute, anchor);
+  };
   // Cut 30 §3: the town (the camp, then the buildings as the core raises them) is the well's first screen, where the vista stood;
   // every building opens the panel its tile opens, standing over it
   const town = renderTown(app, {
@@ -500,8 +510,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       openForge(app, a);
     },
     quest: (a) => {
-      closePanel();
-      openQuest(app, a);
+      journal(a);
     },
   });
   exposeTown(town);
@@ -522,10 +531,21 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   const ladder = controlLadder(app, { orders: () => openOrders(), workers: () => openWorks(app) });
   const feats = campFeats(app);
   const offer = orderOffer(app);
+  const earlyJournal = h(
+    "button",
+    {
+      class: "btn early-journal",
+      "data-tile": "journal",
+      hidden: true,
+      onclick: () => journal(earlyJournal),
+    },
+    /* copy:button */ "Journal",
+  );
   const well = h(
     "div",
     { class: "well camp-well" },
     busyStrip,
+    earlyJournal,
     town.el,
     pick.el,
     batch.el,
@@ -543,7 +563,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         pkgStrip.el,
         routeTab,
         editor.el,
-        cageTab,
         startTab,
         ordersTab,
         wallBox,
@@ -758,6 +777,14 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           }),
       };
       cons.setTiles([
+        app.lineage.journal &&
+          tile({
+            id: "journal",
+            label: /* copy:button */ "Journal",
+            icon: "chronicle",
+            glyph: "▤",
+            onclick: () => journal(),
+          }),
         ...built.map((b) => bt[b]?.()),
         // Cut 30 §2/§5: the packages and the quest board (the board by the mouth opens it too)
         packagesShown(app.lineage) &&
@@ -770,18 +797,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             onclick: (e: Event) => {
               closeAllSheets();
               openPackages(app, e.currentTarget as HTMLElement);
-            },
-          }),
-        questShown(app.lineage) &&
-          tile({
-            id: "quest",
-            label: /* copy:button */ "quest",
-            icon: "renown",
-            glyph: "✠",
-            fresh: freshSys("quests"),
-            onclick: () => {
-              closeAllSheets();
-              openQuest(app, anchor("board"));
             },
           }),
         R.has("edit") &&
@@ -898,17 +913,13 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             openPackages(app, e.currentTarget as HTMLElement);
           },
         }),
-      questShown(app.lineage) &&
+      app.lineage.journal &&
         tile({
-          id: "quest",
-          label: /* copy:button */ "quest",
-          icon: "renown",
-          glyph: "✠",
-          fresh: freshSys("quests"),
-          onclick: (e: Event) => {
-            closeAllSheets();
-            openQuest(app, e.currentTarget as HTMLElement);
-          },
+          id: "journal",
+          label: /* copy:button */ "Journal",
+          icon: "chronicle",
+          glyph: "▤",
+          onclick: () => journal(),
         }),
       R.has("heirs") &&
         t("ledger", /* copy:button */ "enemy guide", "ledger", () => openLedger(app)),
@@ -1149,105 +1160,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       );
     });
   }
-  function paintCage(): void {
-    const on = revealed(app).has("cage");
-    cageTab.hidden = !on || ordersOn();
-    if (!on) return;
-    replace(
-      cageTab,
-      h("span", { class: "rn num" }, conceptIcon("cage")),
-      // QA 524827b (qaAA: `cage → weapon` after the first death, "no source" for the D4 cage's "take one, leave two"): the tablet names
-      // what it sets — the pick at a cage (`cage pick → weapon`)
-      h(
-        "span",
-        { class: "rtext" },
-        /* copy:rule_token */ "from cages",
-        h("span", { class: "arrow" }, " → "),
-        app.lineage.vault_pref ?? "weapon",
-        conceptCap("cage"),
-      ),
-    );
-  }
-  /** Cut 19 §1: the picker — the four preferences, each with its forecast delta against the current one (`armour +36%`); the tap sets it.
-   *  The deltas are `cageForecast()` (three extra camp panels, memoised by the core; seconds in wasm): the last measure paints at once
-   *  when it is this set's, `…` until the fresh one lands. */
-  function openCagePicker(anchor: HTMLElement = cageTab): void {
-    // QA 0c6e126 (qaY: `weapon D5 72%` on the sheet beside the camp's D5 66% — the memo was measured before a purchase): the memo is
-    // this set's under this lineage — what a sim starts from (`simKey`: the purse, the shelf, the vault, the kit, the facts…)
-    // QA 524827b (qaAA: `weapon D6 6%` on the sheet under the camp's refined `D6 11%`; `armour 60% ▲54`, picked: `57% · cage +46`): the
-    // options are measured on the pass the camp shows (`refined`), so the current one is the camp's number and a pick lands where it said
-    const refined = app.lastForecast?.refined === true;
-    const key = (): string =>
-      JSON.stringify([
-        app.rules.rows,
-        (app.rules as { route?: number[] }).route ?? [],
-        app.lineage.vault_pref ?? "weapon",
-        app.lineage.best_depth,
-        simKey(app),
-        refined,
-      ]);
-    openSheet(
-      (close) => {
-        const list = h("div", { class: "chips cage-opts" });
-        const paint = (opts: CageOption[] | null, pending: boolean): void => {
-          const cur = app.lineage.vault_pref ?? "weapon";
-          replace(
-            list,
-            ...CAGE_PREFS.map((p) => {
-              const o = opts?.find((x) => x.pref === p);
-              const d = o ? cageDelta(o) : null;
-              return h(
-                "button",
-                {
-                  class: `chip cage-opt${p === cur ? " on" : ""}`,
-                  "data-pref": p,
-                  onclick: async () => {
-                    close();
-                    if (p !== cur)
-                      await app.mutate(
-                        () => app.engine.setVaultPref(p),
-                        /* copy:callout */ "loot choice",
-                      );
-                  },
-                },
-                h("span", null, p),
-                d
-                  ? h(
-                      "b",
-                      { class: `num ${d.cls === "cur" ? "level cur" : `delta ${d.cls}`}` },
-                      ` ${d.text}`,
-                    )
-                  : pending && p !== cur
-                    ? h("small", { class: "num dim" }, " …")
-                    : "",
-              );
-            }),
-          );
-        };
-        const k = key(),
-          memo = cageMemo?.key === k ? cageMemo.opts : null;
-        paint(memo, !memo && !!app.engine.cageForecast);
-        if (!memo && app.engine.cageForecast)
-          void app.engine
-            .cageForecast(refined)
-            .then((opts) => {
-              cageMemo = { key: k, opts };
-              if (list.isConnected) paint(opts, false);
-            })
-            .catch((e) => {
-              console.warn("cageForecast", e);
-              if (list.isConnected) paint(null, false);
-            });
-        return h(
-          "div",
-          { class: "sheet-body cage-picker" },
-          h("div", { class: "label row-label" }, /* copy:label */ "loot preference"),
-          list,
-        );
-      },
-      { anchor: ordersOn() ? ordersTab : anchor },
-    ); // Cut 23 §4: beside the tablet it sets, never over it
-  }
   function paintStart(): void {
     const L = app.lineage,
       on = revealed(app).has("start");
@@ -1484,12 +1396,11 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   function paintOrders(): void {
     const L = app.lineage,
       R = revealed(app);
-    const on = ordersOn() && (R.has("loadout") || R.has("cage") || R.has("start"));
+    const on = ordersOn() && (R.has("loadout") || R.has("start"));
     ordersTab.hidden = !on;
     if (!on) return;
     const o = L.orders!;
     const bits = [
-      R.has("cage") ? /* copy:callout */ `loot → ${o.cage}` : "",
       R.has("start") && o.start > 1 ? /* copy:callout */ `start D${o.start}` : "",
       o.repeat ? "" : /* copy:callout */ "restock off",
       apprenticeOn() && o.forge && o.forge !== "half" ? /* copy:callout */ `forge ${o.forge}` : "",
@@ -1598,23 +1509,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               ((d) => (d ? row(/* copy:label */ "descent", d) : null))(
                 descentLine(app.lineage, "orders-descent"),
               ),
-              R.has("cage")
-                ? row(
-                    /* copy:label */ "loot preference",
-                    h(
-                      "button",
-                      {
-                        class: "chip order on",
-                        onclick: () => {
-                          close();
-                          openCagePicker(ordersTab);
-                        },
-                      },
-                      o.cage,
-                      h("small", { class: "dim" }, " ▸"),
-                    ),
-                  )
-                : null,
               R.has("start")
                 ? row(
                     /* copy:label */ "start",
@@ -2449,6 +2343,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     const arriving = performance.now() < residentUntil;
     el.classList.toggle("awaiting-home", homeless);
     cons.el.hidden = homeless;
+    earlyJournal.hidden = !homeless || !app.lineage.journal;
     restLine.hidden = homeless;
     const campMain = well.querySelector<HTMLElement>(".camp-main");
     if (campMain)
@@ -2502,7 +2397,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       paintStrip();
       paintTiles();
       paintTabs();
-      paintCage();
       paintStart();
       paintOrders();
       paintDescent();

@@ -829,10 +829,10 @@ const shrugRuns = new WeakMap<object, number>();
 // the three-item room is the `vault` inside and the *cage* to the player (core situations.rs `twist_word`; QA on 50bb162)
 const PROP_NOTE: Record<string, string> = {
   shrine: "A shrine. Pray, at a price.",
-  vault: "A cage: three inside, one to take.",
+  vault: "A loot cache.",
   nest: "A den. Something sleeps.",
 };
-const twistWord = (t: string): string => (t === "vault" ? "cage" : t);
+const twistWord = (t: string): string => (t === "vault" ? "cache" : t);
 /** Cut 12 §4: the situation kinds a floor rolls one of from D3 (the core's bands; the fake draws from the whole list). */
 const TWISTS = ["den", "lock", "captive", "nest", "shrine", "vault", "stray", "hunger"];
 /** Cut 11 §1: a provenance entry — the wire's `because` (turn units here, ×10 on the wire) and what kind of event it was. */
@@ -6041,7 +6041,6 @@ const SYSTEMS29: [string, string][] = [
   ["vs", "first plateau"],
   ["tags", "first foe fact"],
   ["party", "first stray"],
-  ["cage", "first cage"],
   ["walls", "meet Warlord"],
   ["divergence", "meet Warlord"],
   ["forge", "slay Warlord"],

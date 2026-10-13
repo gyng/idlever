@@ -117,8 +117,7 @@ pub struct Snapshot {
     /// Cut 3 (addition): the hero's sight radius on this floor (the Deep is dark).
     #[serde(default = "default_vision")]
     pub vision: i32,
-    /// Cut 5 §4: an opened vault waiting for `choose(itemId)` (watched runs only; offline
-    /// and unwatched runs pick by `Lineage.vault_pref`).
+    /// Retained structural field; automatic caches never emit a choice.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub vault_choice: Option<VaultChoice>,
     /// Take control: the player has the watched run (`manual`), and the world waits for his action (`awaiting`).
@@ -2351,6 +2350,8 @@ pub struct Replay {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Lineage {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub journal: Option<crate::journal::Journal>,
     #[serde(default,skip_serializing_if="Option::is_none")]
     pub class_tree:Option<crate::class_tree::Tree>,
     /// Actual manual keep receipt; populated only on the settlement response.

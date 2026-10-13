@@ -70,8 +70,6 @@ export function earned(app: App): Set<Step> {
   if (L.heir >= 5) out.add("heirs");
   if ((L.rank ?? 0) > 0 || (L.renown ?? 0) > 0) out.add("rank");
   if (L.best_depth > 0) out.add("depth");
-  // Cut 19 §1: a cage seen (the core's `vault` fact, learned when one opens) carves the cage tablet beside the rules
-  if ((L.facts ?? []).includes("vault")) out.add("cage");
   // Cut 21 §1: the first waystone lit carves the start tablet
   if ((L.waystones?.length ?? 0) > 0) out.add("start");
   // Cut 28b: the oath board is carved at the lineage's first wall or plateau (not when the purse first covers a price)
@@ -91,7 +89,6 @@ export const SYSTEM_OF: Partial<Record<Step, SystemId>> = {
   loadout: "loadout",
   unlocks: "unlocks",
   party: "party",
-  cage: "cage",
   start: "start",
   oaths: "oaths",
   forge: "forge",
