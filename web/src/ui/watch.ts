@@ -158,6 +158,7 @@ import { foldFloorsOf, openFoldReplay } from "./replay";
 import { audio, type CueName, type CueOpts } from "../audio";
 import { controlPanel } from "./control"; // take control (a secondary mode): the hero by hand
 import { detailHost } from "./tips"; // RUNS_UI: the live badge's tip; the carried / secured icons' tips
+import { createDepthMap, knownDepthMarks, type DepthMark } from "./depth-map";
 import { deathWhy, goldWords } from "./gold-words";
 // RUNS_UI: the town tile's first-watches caption
 
@@ -1009,6 +1010,11 @@ export function renderWatch(app: App): Mounted {
   const ctl = controlPanel(app.engine as unknown as Parameters<typeof controlPanel>[0], () => {
     manualKick = true;
   });
+  const depthMap = createDepthMap();
+  let mapLineage = app.lineage;
+  const releasedBossMarks = new Map<string, DepthMark>();
+  const mapKeepOut = () => paintKeepOut(true);
+  depthMap.el.addEventListener("toggle", mapKeepOut);
   const el = h(
     "main",
     { class: "watch frame" },
@@ -1017,6 +1023,7 @@ export function renderWatch(app: App): Mounted {
       "div",
       { class: "stage" },
       canvas,
+      depthMap.el,
       card,
       foldLine,
       speedWhy,
@@ -1323,6 +1330,23 @@ export function renderWatch(app: App): Mounted {
     paintRation();
     replace(depth, `D${hud.depth}`);
     depth.dataset.floor = String(hud.depth);
+    const marks = knownDepthMarks(mapLineage, foldStartOf());
+    for (const mark of releasedBossMarks.values()) {
+      if (
+        !marks.some(
+          (m) =>
+            m.kind === "boss" &&
+            m.depth === mark.depth &&
+            (m.id ? m.id === mark.id : m.label === mark.label),
+        )
+      )
+        marks.push(mark);
+    }
+    depthMap.update({
+      depth: hud.depth,
+      biome: floors.get(hud.depth)?.biome ?? "",
+      markers: marks,
+    });
     wide.paintDepth?.();
     paintWatchStatus();
     // QA 23ed91f (K: "`!` / `!!` / `!!!` after the depth label, and `alert 1` / `alert 3`"): one name for one thing — the HUD reads
@@ -1407,6 +1431,13 @@ export function renderWatch(app: App): Mounted {
     bossHud = b
       ? { id: b.id, kind: b.kind, hp: b.hp, max: b.max_hp, tags: b.tags, modifiers: b.modifiers }
       : null;
+    if (b)
+      releasedBossMarks.set(`${s.depth}:${b.kind}`, {
+        depth: s.depth,
+        kind: "boss",
+        id: b.kind,
+        label: oneWord(b.kind),
+      });
     if (b && b.id !== was && !bossHeard.has(b.id)) {
       bossHeard.add(b.id);
       cue("boss_in");
@@ -3066,7 +3097,7 @@ export function renderWatch(app: App): Mounted {
     if (!viewer?.setKeepOut || (!force && now - keepAt < KEEP_MS)) return;
     keepAt = now;
     const c = canvas.getBoundingClientRect();
-    const els: Element[] = [...el.querySelectorAll(".hud.top"), combatLog, tactics.el];
+    const els: Element[] = [...el.querySelectorAll(".hud.top"), combatLog, tactics.el, depthMap.el];
     if (!foldLine.hidden && foldLine.classList.contains("docked")) els.push(foldLine);
     for (const x of [banner, ticker, whyLine, whyTip])
       if (x.classList.contains("show")) els.push(x);
@@ -4959,6 +4990,7 @@ export function renderWatch(app: App): Mounted {
     if (disposed) return;
     await app.syncWatchLineage();
     if (disposed) return;
+    mapLineage = app.lineage;
     wide.setPresence?.(s, false);
     snap = s;
     logDepth = s.depth;
@@ -5041,6 +5073,8 @@ export function renderWatch(app: App): Mounted {
     dispose: () => {
       disposed = true;
       ctl.dispose();
+      depthMap.dispose();
+      depthMap.el.removeEventListener("toggle", mapKeepOut);
       audio.bed(null);
       clearTimeout(meterTimer);
       clearTimeout(dockTimer);

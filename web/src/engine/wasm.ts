@@ -426,6 +426,12 @@ export class WasmEngine implements Engine {
   respecLegacy(): Lineage {
     return this.call("respecLegacy");
   }
+  renameHero(name: string): Lineage {
+    return this.call("renameHero", name);
+  }
+  rebirthHero(token: string): Lineage {
+    return this.call("rebirthHero", token);
+  }
   buildTown(id: string): Lineage {
     return this.call("buildTown", id);
   }

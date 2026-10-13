@@ -7,6 +7,14 @@
 
 ## One-liner
 
+Owner persistent-hero direction, implemented in Cut211 (2026-10-13): ordinary
+death returns the same named hero after60seconds of automatic recovery.
+Names, traits, class progress, builds and lasting Legacy attributes remain.
+Stat rebirth requires an explicit review and confirmation; it refunds spent
+Legacy and retains the hero's identity and class skills. This replaces the
+ordinary heir replacement described below. Survivor-friendly trait unlocks
+and broader progression acceptance remain open in docs/CUT211_PERSISTENT_HEROES.md.
+
 A real roguelike whose hero you never drive. Equip packages, build the town, and hire workers
 for chores first done by hand. Tap the first few sends, then hire the scout and the hero
 climbs while you are away, uncapped. Late on, open the pen for optional rule edits. The hero

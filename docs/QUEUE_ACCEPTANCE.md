@@ -19,7 +19,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 8 | Large-desktop typography | Partial | Cuts204/207: current320/400/1440 normal/200% Forge/Bloodlines/quest and Home controls/labels checked; narrow overflow and44px targets fixed. Other menus and broader typography refinement remain |
 | 9 | Send → Delve | Cut193 in progress | Focused geometry/copy/Chronicle checks; integrated validation pending |
 | 10 | Distinct chunky menu materials | Partial | Cut204 iron Forge, ink Bloodlines, parchment quest card;10 paired menu frames/54 state cells/365 contrast ranges. Remaining menu family open |
-| 11 | Quest/progression journal | Partial | Cut208 Rust-owned foundation; real House→Delve and three-width normal/200% geometry pass. Earned core fixtures; wider quest/bloodline/refusal client acceptance remains |
+| 11 | Quest/progression journal | Partial | Cut208 foundation plus326 earned real-client checks: actual Porter/Scout prices, automatic quest settlement, completed milestone routes, owner/refusal boundaries and24 viewport/font states. New persistent-hero integration remains |
 | 12 | Run-details scroll stability | Scoped pass | Cut193: measured expansion geometry at320/400/1440; final-package integrated checks4/4 |
 | 13 | Song/wish purpose and busywork audit | Open | Pending |
 | 14 | Base as an ant farm / garden | Open | Pending |
@@ -36,17 +36,18 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 25 | Gold transaction particles | Open | Pending |
 | 26 | Supplies → Bloodline Loadouts | Partial | Cuts197/203 existing preparation plus permanent shapes/named reusable kits; earned real-worker CRUD/reload/free use at3 widths. Old-panel retirement/pet depth remain |
 | 27 | Unlocked items are free to use | Scoped pass | Cut191: seven native cases,829-test integrated pass and73 real-worker assertions; full offline/multihero balance remains |
-| 28 | Live side depth map | Open | Pending |
-| 29 | Subtle live movement trail | Open | Pending |
+| 28 | Live side depth map | Partial | Cut212 actual released-depth map and known POIs integrated; current400/1440 GL/Canvas proof. Final persistent package,320/200%, dense landmarks and broader review remain |
+| 29 | Subtle live movement trail | Partial | Cut212 factual hero movement trail, pause/seek/load/context-loss and preferences checked; controlled active CPU p95+0.5ms. Whole merged acceptance remains |
 | 30 | Hover, pressed and selected control states | Partial | Cut204 scoped material controls pass real states/focus/canceled press; other control families remain |
-| 31 | Guided unlocks for Tactics / Orders / Heirs | Partial | Cut208 actual Rust prerequisites/effects and folded later entries; wider earned UI/tutorial acceptance remains |
+| 31 | Guided unlocks for Tactics / Orders / Heirs | Partial | Cut208 earned Tactics/Orders/Class/Loadouts/Workers routes and automatic quest settlement pass; completed open links remain usable. Persistent-hero guidance integration remains |
 | 32 | Remove top/bottom bar sheens | Scoped pass | Cut193 source removal; UI validation and retained material/control feedback |
 | 33 | Chronicle empty state | Scoped pass | Cut193 current-bloodline empty/other-record/real-record checks; future persistent-hero model still pending |
-| 34 | Guild hall, scouts and guild inspiration | Open | Pending |
-| 35 | Recovery pool and ordinary reincarnation | Open | Pending |
-| 36 | Persistent hero names, stats and needs | Open | Pending |
-| 37 | Easy builds/specs; deliberate hero NG+ | Open | Pending |
+| 34 | Guild hall, scouts and guild inspiration | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Physical facilities, header clarity and survivor-friendly trait unlocks remain |
+| 35 | Recovery pool and ordinary reincarnation | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Physical facilities, header clarity and survivor-friendly trait unlocks remain |
+| 36 | Persistent hero names, stats and needs | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Physical facilities, header clarity and survivor-friendly trait unlocks remain |
+| 37 | Easy builds/specs; deliberate hero NG+ | In progress | Cut211 real persistent identity, staged service metadata, mandatory60s death recovery, lasting stats and confirmed stat rebirth;11 semantic checks,866 native tests/Clippy and307 actual Hero UI checks pass. Physical facilities, header clarity and survivor-friendly trait unlocks remain |
 | 38 | Building construction and upgrade animations | Scoped pass | Cut195: real construction/upgrades,21 transition cases, GL400/day and Canvas1440/night preferences; quiet frame-cost and broader visual review remain |
+| 39 | Legendary drops auto-kept as permanent Forge choices | In progress | Owner2026-10-13; docs/CUT215_LEGENDARY_FORGE.md. Three named build effects/tradeoffs, free owned reuse, inherited upgrades, automatic discovery and duplicate conversion. Real drop/effect/earned progression/UI proof pending |
 | R1 | Dedicated class-skill icons | Scoped pass | Cut205 all30 IDs/270 size-state cells, tree/review integration; Cut203/206 actual immutable live skill attribution. Wider recognition/art review remains |
 | R2 | Combat animations and FX | Partial | Cut209 bounded factual GL/Canvas cues, controlled pixels/43 model checks/19 final-package context-loss checks. Legacy effects/speed parity and broader feel remain |
 | R3 | Biome encounter variety | Open | Retained scope; targeted economy checks do not certify this work |

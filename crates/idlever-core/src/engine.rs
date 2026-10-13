@@ -252,7 +252,7 @@ pub const GOLD_DIVISOR: i32 = 4;
 /// 20-minute wake. Ticks (10/s).
 pub const REST_CAP_TICKS: u32 = 30 * 60 * 10;
 pub const REST_MIN_TICKS: u32 = 20 * 60 * 10;
-pub const WAKE_TICKS: u32 = 20 * 60 * 10;
+pub const WAKE_TICKS: u32 = crate::persistent::RECOVERY_TICKS as u32;
 /// Cut 2 §1: an egg hatches after this many rests (1 with the incubator).
 pub const EGG_RESTS: u32 = 3;
 /// Cut 2 §2: bones piles kept per lineage (oldest expires). Cut 13: eight — three read as
@@ -339,6 +339,8 @@ pub fn zero_u8(x: &u8) -> bool {
 /// Everything about one expedition. Cloned per turn into the history ring (for verdicts).
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Run {
+    #[serde(default)]
+    pub hero_name: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gun_reload: Option<crate::firearm::Reload>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -1391,6 +1393,8 @@ pub struct Lost {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct LineageState {
+    #[serde(default)]
+    pub persistent: crate::persistent::State,
     #[serde(default="default_bloodline_id")]
     pub bloodline_id:u32,
     #[serde(default)]
@@ -1918,6 +1922,7 @@ impl LineageState {
             classes.insert(c.name().to_string(), ClassProg { level: 1, xp: 0, next: 0 });
         }
         let mut l = LineageState {
+            persistent: Default::default(),
             bloodline_id:1, bloodline: Some(Default::default()),
             hero_legacy: vec![crate::wire::HeroLegacy { heir: 1, class: "fighter".into(), ..Default::default() }].into(),
             seed,
@@ -2319,7 +2324,7 @@ impl LineageState {
         self.rules().rows.iter().map(|r| self.row_stats.iter().find(|(x, _)| x.conds == r.conds && x.verb == r.verb).map(|(_, t)| crate::turn::row_stat(r, t))).collect()
     }
     pub fn to_wire(&self) -> Lineage {
-        Lineage { class_tree: Some(crate::class_tree::offers(self,false)), keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::legacy::hero_identity(self.seed, h.heir, self.bloodline_id); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
+        Lineage { persistent_hero:Some(crate::persistent::wire(self,false)), depth_landmarks:Vec::new(), class_tree: Some(crate::class_tree::offers(self,false)), keep_salvaged: None, feats: Some(crate::feats::wire(self)), king_eta_h: crate::feats::king_eta_h(self), king_pct: crate::feats::king_pct(self), class_styles:Some(crate::specialization::offers(self,false)), legacy_respec:None, return_pick:None, selected_loadout:vec![], hero_slots:vec![], selected_bloodline:1, bloodline_price:crate::bloodlines::SLOT_PRICE, bloodline_cap:crate::bloodlines::SLOT_CAP as u32, bloodline: self.bloodline.clone().unwrap_or_default(), legacy_upgrades: crate::legacy::offers(self, false), hero_legacy: self.hero_legacy.iter().cloned().map(|mut h| { if h.name.is_empty() { h.name = crate::persistent::name(self); } h }).collect(), runs: self.run_log.clone(), live: None, replays: Vec::new(), clock_s: self.clock_s, absences: self.absences, age_h: self.age_h(), reveal_queue: self.reveal_queue.clone(), reveal_next: crate::systems::next(self), glory: self.glory, expeditions: self.expeditions, era_gate: self.era_gate, packages: crate::packages::wire(self), town: crate::town::wire(self), tracks: crate::town::tracks(self), tree: None, repeat_added: Vec::new(), wall: self.wall_offer.clone(), meters: crate::wire::LineageMeters { runs: self.meters_recent.iter().map(|m| crate::meters::wire_for(m, Some(&self.pkg))).collect(), night: (!self.night_meter.is_empty()).then(|| crate::meters::wire_for(&self.night_meter, Some(&self.pkg))), last_night: (!self.last_night_meter.is_empty()).then(|| crate::meters::wire_for(&self.last_night_meter, Some(&self.pkg))) }, systems: crate::systems::wire(self), oath_slots: crate::oath::slots(self) as u32, sworn: crate::oath::sworn_ids(self), tier: crate::meta::tier(self), oath_draw: crate::oath::draw_wire(self), works: self.works.clone(), commission: crate::kit::commission_wire(self), orders: self.standing_orders(), supply_cap: self.supply_cap() as u32, oaths: crate::oath::wire(self), oath: self.oath_sworn.clone(), titles: self.titles.clone(), walls: crate::oath::walls(self), oath_open: crate::oath::open(self),
             journal: Some(crate::journal::wire(self,false)),
             seed: self.seed,
             heir: self.heir,
@@ -2478,9 +2483,7 @@ impl LineageState {
     }
     /// Cut 16 §2: the wake's class chips (see `Lineage.class_offer`).
     pub fn class_offer(&self) -> Vec<crate::wire::ClassChip> {
-        if self.trait_offer.is_empty() {
-            return Vec::new();
-        }
+        // Owned build choices belong to the persistent hero, not a one-use death offer.
         let mut owned: Vec<Class> = Class::ALL.iter().copied().filter(|c|(*c!=Class::Gunner||crate::firearm::UI_READY)&&c.unlock().is_none_or(|u| self.unlocks.contains(u))).collect();
         if owned.len() < 2 {
             return Vec::new();
@@ -2596,34 +2599,22 @@ impl LineageState {
     /// Cut 13 §2: the next heir wakes — the heir number moves on, the deeds clear, and the
     /// camp offers two traits (`trait_offer`); the first is the heir's until `set_trait`.
     pub fn new_heir(&mut self) {
-        let last = self.trait_;
         self.heir += 1;
-        self.hero_legacy.push(crate::wire::HeroLegacy { heir: self.heir, class: self.class.name().into(), ..Default::default() });
+        let name=crate::persistent::name(self);
+        self.hero_legacy.push(crate::wire::HeroLegacy { name, heir: self.heir, class: self.class.name().into(), ..Default::default() });
         self.heir_deeds.clear();
         self.heir_best = 0;
-        let first = Trait::ALL[self.rng.below(4) as usize];
-        let offer = trait_offer(self.seed, self.heir + 1000 * self.ascension, Some(last), first);
-        self.trait_ = offer[0];
-        self.trait_offer = offer.to_vec();
-        // Cut 29 §1: the heir pick (an oath's reward) offers a third trait — its own draw, so the
-        // first two are the same with it or without.
-        if self.unlocks.contains("heir_pick") {
-            let mut r = Rng::derive(self.seed, hash_str("trait_offer3") ^ self.heir as u64);
-            let rest: Vec<Trait> = Trait::ALL.iter().copied().filter(|t| Some(*t) != Some(last) && !offer.contains(t)).collect();
-            if !rest.is_empty() {
-                self.trait_offer.push(rest[r.below(rest.len() as u32) as usize]);
-            }
+        // Incarnations are attempts by the same hero. Commitments never reroll on defeat.
+        if !self.pkg.literal && crate::packages::temperament_open(self) {
+            // Available build choices expand without silently wearing a new personality.
+            self.pkg.offer=crate::packages::PACKAGES.iter().filter(|p|p.kind==crate::packages::Kind::Temperament).map(|p|p.id.to_string()).collect();
         }
-        // Cut 30 §3: the wake offers trait cards and passes the blood (`traits::wake`).
-        crate::traits::wake(self);
-        // Cut 30 §2: from heir 3 the wake deals three temperament cards (card 1 worn until a pick).
-        crate::packages::wake(self);
         // Cut 118 (owner amendment 2): the heir the order chose, named in the report — read after the temperament is
         // worn (`packages::wear` rewrites the born trait), so the line names the trait the heir actually carries
         if !self.feats.off {
             if let Some(t) = crate::feats::heir_line(self) {
                 let day = crate::feats::day_of(self.clock_s);
-                crate::feats::news(self, "heir", t, day);
+                crate::feats::news(self, "recovery", t, day);
             }
         }
     }
@@ -3499,7 +3490,9 @@ impl Game {
 
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
-        l.journal=Some(crate::journal::wire(&self.lineage,self.run.as_ref().is_some_and(|r|r.over.is_none())));
+        l.journal=Some(crate::journal::wire(&self.lineage,crate::persistent::away(self)));
+        l.persistent_hero=Some(crate::persistent::wire(&self.lineage,crate::persistent::away(self)));
+        if let Some(run)=&self.run { l.depth_landmarks=run.route.bosses().into_iter().filter(|(kind,_)|self.lineage.facts.contains(&format!("foe:{kind}"))).map(|(kind,depth)|crate::wire::DepthLandmark{depth,kind:"boss".into(),id:kind.into(),label:kind_title(kind)}).collect(); }
         if self.lineage.endgame.is_some() || self.lineage.ended { l.endgame = Some(self.descent_progress()); }
         l.return_pick = crate::returns::wire(&self.lineage);
         let (kinds, gold) = self.repeat_plan();
@@ -3516,8 +3509,8 @@ impl Game {
         // RUNS_UI: the run under way and the runs a replay is held for
         l.live = self.live_run();
         l.guns=crate::firearm::offers(&self.lineage,self.run.is_some());
-        l.class_tree=Some(crate::class_tree::offers(&self.lineage,self.run.is_some()));
-        l.class_styles=Some(crate::specialization::offers(&self.lineage,self.run.is_some()));
+        l.class_tree=Some(crate::class_tree::offers(&self.lineage,crate::persistent::away(self)));
+        l.class_styles=Some(crate::specialization::offers(&self.lineage,crate::persistent::away(self)));
         l.legacy_upgrades = crate::legacy::offers(&self.lineage, crate::legacy::away(self));
         l.legacy_respec = Some(crate::legacy::respec_offer(&self.lineage,crate::legacy::away(self)));
         l.replays = self.capsules.0.iter().map(|c| c.id).collect();
@@ -3720,7 +3713,7 @@ impl Game {
 
     pub fn set_class(&mut self, class: &str) -> Result<(), String> {
         let c = Class::parse(class).ok_or("unknown class")?;
-        if (c==Class::Gunner||self.lineage.class==Class::Gunner||!self.lineage.class_paths.is_empty())&&self.run.is_some() {
+        if crate::persistent::away(self) {
             return Err("hero away".into());
         }
         if let Some(u) = c.unlock() {
@@ -3736,6 +3729,7 @@ impl Game {
         }
         if c==Class::Gunner {self.lineage.classes.entry("gunner".into()).or_insert(ClassProg{level:1,xp:0,next:0});}
         if was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty()||!self.lineage.class_paths.is_empty() {crate::packages::recompile(&mut self.lineage);}
+        crate::persistent::refit_build(self,true);
         Ok(())
     }
 
@@ -3912,6 +3906,7 @@ impl Game {
     /// (six rows; tactic cards carry), `bones_only` (no vault), `hunted` (a grudge from the last
     /// lineage stalks every floor from D3).
     pub fn ascend(&mut self, variant: &str) -> Result<(), String> {
+        if crate::persistent::remaining(&self.lineage)>0 {return Err("Finish recovery".into());}
         if !self.lineage.ended {
             return Err("the dungeon has a bottom: reach it first".into());
         }
@@ -4003,6 +3998,7 @@ impl Game {
 
     /// Cut 3: camp rest after a run (`no_rest` halves it).
     pub fn rest_after(&self, turns: u32, tier: ExitTier) -> u32 {
+        if tier == ExitTier::Death { return crate::persistent::RECOVERY_TICKS as u32; }
         let r = crate::tree::rest_scaled(&self.lineage, crate::offline::rest_after(turns, tier));
         // Cut 118 §3: the Sleeper's set
         let r = r - r * crate::feats::bonus_pct(&self.lineage, "rest") / 100;
@@ -4020,11 +4016,16 @@ impl Game {
     /// Start (or resume) an expedition. The player chose to go: any camp rest left is skipped.
     pub fn try_send(&mut self) -> Result<Snapshot, String> {
         if !self.lineage.town.home.unwrap_or(true) { return Err("build a house first".into()); }
+        if crate::persistent::remaining(&self.lineage)>0 { return Err("Hero recovering".into()); }
         Ok(self.send())
     }
 
     pub fn send(&mut self) -> Snapshot {
         assert!(self.lineage.town.home.unwrap_or(true) || self.sim, "build a house first");
+        if crate::persistent::remaining(&self.lineage)>0 {
+            self.lineage.rest_left=self.lineage.rest_left.max(crate::persistent::remaining(&self.lineage) as u32);
+            return self.ensure_run();
+        }
         self.bounty_seen = self.lineage.bounty;
         // Cut 30.5 (the owner: manual send first): before the scout a send by hand is one run — counted
         // toward him when it sends a hero who was home
@@ -4239,6 +4240,7 @@ impl Game {
             it.value_claimed = true;
         }
         let mut run = Run {
+            hero_name: crate::persistent::name(&self.lineage),
             gun_reload: None,
             gun_skills: (hero.class==Class::Gunner).then(Default::default),
             id,
@@ -4971,7 +4973,7 @@ impl Game {
             entity: Entity {
                 id: HERO_ID,
                 kind: format!("hero_{}", h.class.name()),
-                name: Some(crate::legacy::hero_identity(l.seed, run.heir, l.bloodline_id)),
+                name: Some(if run.hero_name.is_empty() {crate::persistent::name(l)} else {run.hero_name.clone()}),
                 x: h.pos.x,
                 y: h.pos.y,
                 hp: h.hp,
@@ -5177,15 +5179,18 @@ impl Game {
             self.capsules.keep_kill(run.id);
         }
         let tier = run.over.unwrap_or(ExitTier::Return);
+        if !self.sim { self.lineage.persistent.completed=self.lineage.persistent.completed.saturating_add(1); }
         let legacy_earned = if !self.sim {
             crate::legacy::ensure(&mut self.lineage);
             let legacy = self.lineage.hero_legacy.last_mut().expect("hero legacy");
-            let earned = 1 + run.max_depth.saturating_sub(legacy.best_depth);
+            // One persistent hero earns depth gains once, not again on every incarnation.
+            let earned = 1 + run.max_depth.saturating_sub(self.lineage.best_depth);
             legacy.points += earned;
             self.lineage.bloodline.as_mut().expect("bloodline").points += earned;
             legacy.best_depth = legacy.best_depth.max(run.max_depth);
             legacy.runs += 1;
             legacy.class = run.hero.class.name().into();
+            legacy.name = run.hero_name.clone();
             self.batch.legacy_earned += earned;
             earned
         } else { 0 };
@@ -5875,6 +5880,8 @@ impl Game {
             self.lineage.chronicle_heir_at(&format!("fell to {}", crate::sifter::cause_phrase(&cause)), tail, Some(run.depth));
             // Cut 13 §2: the next heir wakes with two traits on offer.
             self.lineage.new_heir();
+            self.lineage.persistent.defeats=self.lineage.persistent.defeats.saturating_add(1);
+            crate::persistent::recover(&mut self.lineage);
             // Wake pay: a new heir arrives with enough for one cheap supply, so a lineage that has
             // never banked is not gold-locked out of the shop after a death (cohort 5, rater J:
             // "$0 after death, seven identical deaths overnight"). Bounded: tops the purse up to

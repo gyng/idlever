@@ -135,6 +135,7 @@ fn gates_budget_refusals_and_reset_are_exact_without_resource_loss() {
     );
     learn(&mut g, "fighter_warden").unwrap();
     g.send();
+    g.step(1); // An actual moving run is away; a ready turn-zero preparation is editable.
     refused(&mut g, "fighter_recovery");
     let before = g.save();
     assert!(reset(&mut g).is_err());

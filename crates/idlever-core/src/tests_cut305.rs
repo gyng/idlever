@@ -658,7 +658,7 @@ fn scout_actions_cover_live_clock_and_do_not_change_gameplay_or_simulations() {
 
 
 #[test]
-fn hero_names_are_read_only_stable_and_follow_heir_history() {
+fn hero_names_are_read_only_and_persist_across_incarnation_history() {
     for seed in [0, 2, u64::MAX] {
         let mut g = Game::new_resident(seed);
         let raw = g.save();
@@ -670,8 +670,7 @@ fn hero_names_are_read_only_stable_and_follow_heir_history() {
         crate::legacy::ensure(&mut g.lineage);
         let wire = g.lineage();
         assert_eq!(wire.hero_legacy[0].name, first);
-        assert_ne!(wire.hero_legacy.last().unwrap().name, first);
-        assert_eq!(wire.hero_legacy.last().unwrap().name, crate::legacy::hero_identity(seed, 2, 1));
+        assert_eq!(wire.hero_legacy.last().unwrap().name, first,"incarnations belong to one persistent named hero");
     }
 }
 

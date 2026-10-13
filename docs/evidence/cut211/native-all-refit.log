@@ -1,0 +1,52 @@
+
+running 872 tests
+.............................................................................. 78/872
+class_tree::tests::gates_budget_refusals_and_reset_are_exact_without_resource_loss --- FAILED
+.......................................... 121/872
+firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps --- FAILED
+.................................................................................. 204/872
+specialization::tests::away_choice_refusal_and_saved_style_snapshot_are_exact --- FAILED
+.......... 215/872
+specialization::tests::wire_choices_match_refusals_parent_xp_history_and_actual_default_rows --- FAILED
+....................................................................................... 303/872
+.........i............................................................................. 390/872
+....................................................................................... 477/872
+....................................................................................... 564/872
+..iii..................i......i........................................................ 651/872
+....................................................................................... 738/872
+....................................................................................... 825/872
+...........................................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+....
+failures:
+
+---- class_tree::tests::gates_budget_refusals_and_reset_are_exact_without_resource_loss stdout ----
+
+thread 'class_tree::tests::gates_budget_refusals_and_reset_are_exact_without_resource_loss' (4109) panicked at crates/idlever-core/src/class_tree_tests.rs:77:5:
+assertion failed: learn(g, id).is_err()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps stdout ----
+
+thread 'firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps' (4974) panicked at crates/idlever-core/src/gunner_tests.rs:218:78:
+assertion failed: g.set_class("fighter").is_err()
+
+---- specialization::tests::away_choice_refusal_and_saved_style_snapshot_are_exact stdout ----
+
+thread 'specialization::tests::away_choice_refusal_and_saved_style_snapshot_are_exact' (7938) panicked at crates/idlever-core/src/specialization_tests.rs:52:5:
+assertion failed: choose(&mut g, "none").is_err()
+
+---- specialization::tests::wire_choices_match_refusals_parent_xp_history_and_actual_default_rows stdout ----
+
+thread 'specialization::tests::wire_choices_match_refusals_parent_xp_history_and_actual_default_rows' (8377) panicked at crates/idlever-core/src/specialization_tests.rs:236:90:
+assertion failed: !c.remove_available
+
+
+failures:
+    class_tree::tests::gates_budget_refusals_and_reset_are_exact_without_resource_loss
+    firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps
+    specialization::tests::away_choice_refusal_and_saved_style_snapshot_are_exact
+    specialization::tests::wire_choices_match_refusals_parent_xp_history_and_actual_default_rows
+
+test result: FAILED. 862 passed; 4 failed; 6 ignored; 0 measured; 0 filtered out; finished in 66.70s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

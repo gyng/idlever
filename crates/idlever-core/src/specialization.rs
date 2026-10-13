@@ -68,14 +68,14 @@ pub fn current(l:&LineageState)->Option<Style> {
 }
 pub fn has(h:&Hero,style:Style)->bool {h.specialization==Some(style)&&h.class==style.parent()&&h.level>=REQUIRED_LEVEL}
 pub fn choose(g:&mut Game,id:&str)->Result<(),String> {
-    if let Some(reason)=home_block(&g.lineage,g.run.is_some()) {return Err(reason);}
+    if let Some(reason)=home_block(&g.lineage,crate::persistent::away(g)) {return Err(reason);}
     if id=="none" {g.lineage.specializations.remove(g.lineage.class.name());}
     else {
         let style=Style::parse(id).ok_or("unknown specialization")?;
         if let Some(reason)=blocked(&g.lineage,false,style) {return Err(reason);}
         g.lineage.specializations.insert(g.lineage.class.name().into(),style);
     }
-    crate::packages::recompile(&mut g.lineage);Ok(())
+    crate::packages::recompile(&mut g.lineage);crate::persistent::refit_build(g,false);Ok(())
 }
 pub fn row(l:&LineageState)->Option<Row> {
     current(l).map(default_row)

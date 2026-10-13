@@ -1149,6 +1149,8 @@ export type ClassStyles = {
   player_overrides: boolean;
 };
 export type HeroSlot = {
+  life_state?: "away" | "reincarnating" | "recovering" | "ready";
+  recovery_s?: number;
   specialization?: ClassStyleId;
   look?: string;
   hero_name?: string;
@@ -1330,7 +1332,45 @@ export type StartingKits = {
   actual_weapon: string;
   actual_armour: string | null;
 };
+export type HeroService = { id: string; name: string; available: boolean; body: string };
+export type HeroRebirth = {
+  available: boolean;
+  blocked: string | null;
+  token: string;
+  refund: number;
+  points_after: number | null;
+  required_depth: number;
+  delves_remaining: number;
+  seconds_remaining: number;
+  resets: string[];
+  retains: string[];
+};
+export type PersistentHero = {
+  id: string;
+  name: string;
+  incarnation: number;
+  rebirths: number;
+  state: "away" | "reincarnating" | "recovering" | "ready";
+  recovery_s: number;
+  rest_s: number;
+  need: "recovery" | "rest" | "none";
+  attributes: {
+    id: string;
+    name: string;
+    rank: number;
+    value: number;
+    next_price: number | null;
+  }[];
+  guild: HeroService;
+  pool: HeroService;
+  device: HeroService;
+  rebirth: HeroRebirth;
+};
+export type DepthLandmark = { depth: number; kind: "boss"; id: string; label: string };
+
 export type Lineage = {
+  persistent_hero?: PersistentHero;
+  depth_landmarks?: DepthLandmark[];
   journal?: Journal;
   starting_kits?: StartingKits;
   bloodline?: BloodlineLegacy;
@@ -1806,6 +1846,8 @@ export interface Engine {
   upgradeHero?(id: string): Lineage;
   upgradeHeroNext?(id: string): Lineage; // blind b58b431: away, a Legacy upgrade for the next run
   respecLegacy?(): Lineage;
+  renameHero?(name: string): Lineage;
+  rebirthHero?(token: string): Lineage;
   setSpecialization?(id: string): Lineage;
   learnClassSkill?(id: string): Lineage;
   resetClassSkills?(): Lineage;

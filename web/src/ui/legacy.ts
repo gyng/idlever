@@ -4,7 +4,7 @@ import type { Lineage } from "../engine/types";
 import { h } from "./dom";
 import { icon } from "./skin";
 import { detailHost } from "./tips";
-import { openWindow } from "./sheet";
+import { openHeroLife } from "./hero-life";
 
 type Upgrade = NonNullable<Lineage["legacy_upgrades"]>[number];
 const ICONS: Record<string, string> = {
@@ -27,84 +27,6 @@ const ROOT_BRANCH: Record<string, string> = {
   damage: "Control",
   armour: "Warding",
 };
-const respecKey = (L: Lineage): string =>
-  JSON.stringify([L.selected_bloodline, L.bloodline, L.legacy_respec, !!L.live, L.town?.home]);
-
-function reviewRespec(app: App, onChange: () => void): void {
-  const before = app.lineage,
-    asked = respecKey(before),
-    spent = before.legacy_respec?.refund ?? 0;
-  openWindow((close) => {
-    let busy = false;
-    const feedback = h("div", { class: "legacy-feedback", role: "status" });
-    const cancel = h(
-      "button",
-      {
-        class: "chip legacy-respec-cancel",
-        onclick: () => {
-          if (!busy) close();
-        },
-      },
-      /* copy:button */ "Cancel",
-    );
-    const confirm = h(
-      "button",
-      {
-        class: "chip legacy-respec-confirm",
-        onclick: () => {
-          if (busy || !app.engine.respecLegacy) return;
-          if (respecKey(app.lineage) !== asked) {
-            confirm.disabled = true;
-            feedback.textContent = /* copy:callout */ "Review changed";
-            return;
-          }
-          busy = true;
-          confirm.disabled = true;
-          cancel.disabled = true;
-          let reason = /* copy:callout */ "Respec refused";
-          void app
-            .mutate(async () => {
-              try {
-                return await app.engine.respecLegacy!();
-              } catch (error) {
-                reason = error instanceof Error ? error.message : reason;
-                throw error;
-              }
-            }, /* copy:callout */ "Respec")
-            .then((ok) => {
-              if (ok) {
-                close();
-                onChange();
-                return;
-              }
-              busy = false;
-              cancel.disabled = false;
-              confirm.disabled = false;
-              feedback.textContent = reason;
-            });
-        },
-      },
-      /* copy:button */ "Reset upgrades",
-    );
-    return h(
-      "div",
-      { class: "sheet-body legacy-respec-review" },
-      h("div", { class: "label" }, /* copy:label */ "Respec Legacy"),
-      h("b", null, /* copy:label */ `Bloodline ${before.selected_bloodline ?? 1}`),
-      h("p", { class: "num" }, /* copy:label */ `Refund ${spent} Legacy`),
-      before.legacy_respec?.points_after !== undefined && before.legacy_respec.points_after !== null
-        ? h(
-            "p",
-            { class: "num" },
-            /* copy:label */ `Total ${before.legacy_respec.points_after} Legacy`,
-          )
-        : null,
-      h("div", { class: "chips" }, cancel, confirm),
-      feedback,
-    );
-  });
-}
-
 const ROMAN = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
 /** Cut 122 §9 (A, B: 388 Legacy sat unusable under a 600 rank, nothing said how far): the next rank the points work toward — the cheapest
  *  open upgrade (`388 / 600 → Health III`), its share filled; null without the tree. */
@@ -117,7 +39,7 @@ export function legacyNext(
   );
   if (!open.length) return null;
   const u = open.reduce((a, b) => (b.price < a.price ? b : a));
-  const label = `${u.name ?? u.id}${u.cap > 1 ? ` ${ROMAN[u.rank + 1] ?? u.rank + 1}` : ""}`;
+  const label = `${L.persistent_hero?.attributes.find((a) => a.id === u.id)?.name ?? u.name ?? u.id}${u.cap > 1 ? ` ${ROMAN[u.rank + 1] ?? u.rank + 1}` : ""}`;
   return { points, price: u.price, label, fill: Math.max(0, Math.min(1, points / u.price)) };
 }
 /** The thin bar under a Legacy count: the share toward the next rank. */
@@ -136,7 +58,7 @@ export function renderLegacy(app: App, onChange: () => void, opened?: Set<string
     upgrades = L.legacy_upgrades ?? [],
     feedback = h("div", { class: "legacy-feedback", role: "status" });
   const card = (u: Upgrade): HTMLElement => {
-    const name = u.name ?? u.id,
+    const name = L.persistent_hero?.attributes.find((a) => a.id === u.id)?.name ?? u.name ?? u.id,
       chosen = u.cap === 1 && u.rank > 0;
     // blind b58b431 (A: Legacy 146 unspendable — the scout keeps him away): away, an upgrade the points buy is bought for the next run
     const next = !u.affordable && !!u.next_run && !!app.engine.upgradeHeroNext,
@@ -291,11 +213,11 @@ export function renderLegacy(app: App, onChange: () => void, opened?: Set<string
   const respec = h(
     "button",
     {
-      class: "chip legacy-respec",
-      disabled: !L.legacy_respec?.available || !app.engine.respecLegacy,
-      onclick: () => reviewRespec(app, onChange),
+      class: "chip legacy-rebirth",
+      disabled: !L.persistent_hero || !app.engine.rebirthHero,
+      onclick: () => openHeroLife(app, null, "rebirth"),
     },
-    /* copy:button */ "Respec",
+    /* copy:button */ "Rebirth",
   );
   return h(
     "div",

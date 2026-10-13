@@ -85,26 +85,30 @@ fn all_six_fork_conflicts_refuse_without_saved_mutation() {
 #[test]
 fn respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchase() {
     let mut g=rich();
-    let before=g.save();let offer=respec_offer(&g.lineage,false);
-    assert!(!offer.available);assert_eq!(offer.points_after,None);same_save(&g,&before);
+    let before=g.save();let offer=crate::persistent::preview(&g.lineage,false);
+    assert!(!offer.available);assert_eq!(offer.points_after,Some(RICH));same_save(&g,&before);
     purchase(&mut g,"mending");
-    let before=g.save();let offer=respec_offer(&g.lineage,false);
+    let before=g.save();let offer=crate::persistent::preview(&g.lineage,false);
     assert_eq!((offer.refund,offer.points_after,offer.available),(root_price(0)+EFFECT_PRICES[0]+EFFECT_PRICES[1],Some(RICH),true));
-    assert_eq!(g.lineage().legacy_respec,Some(offer.clone()));same_save(&g,&before);
-    assert!(!respec_offer(&g.lineage,true).available);
+    assert!(!g.lineage().legacy_respec.unwrap().available,"unconfirmed respec cannot bypass rebirth");same_save(&g,&before);
+    assert!(!crate::persistent::preview(&g.lineage,true).available);
     g.lineage.bloodline.as_mut().unwrap().points=u32::MAX;
-    let before=g.save();let offer=respec_offer(&g.lineage,false);
+    let before=g.save();let offer=crate::persistent::preview(&g.lineage,false);
     assert_eq!((offer.available,offer.points_after),(false,None));
-    assert_eq!(respec(&mut g),Err(offer.blocked.unwrap()));same_save(&g,&before);
+    assert_eq!(crate::persistent::rebirth(&mut g,&offer.token),Err(offer.blocked.unwrap()));same_save(&g,&before);
 }
 #[test]
-fn free_respec_refunds_actual_spent_and_rebuilds_exactly_without_other_changes() {
+fn confirmed_rebirth_refunds_spent_and_preserves_other_progression() {
     let mut g=rich();for id in IDS {for _ in 0..CAP {buy(&mut g,id).unwrap();}}
     purchase(&mut g,"renewal");purchase(&mut g,"venom");purchase(&mut g,"brace");
-    let allocated=g.save();let mut expected=g.clone();let h=expected.lineage.bloodline.as_mut().unwrap();
-    h.points+=h.spent;h.spent=0;h.upgrades.clear();respec(&mut g).unwrap();assert_eq!(g.save(),expected.save());
+    let allocated=g.lineage.bloodline.clone();let classes=g.lineage.classes.clone();let gold=g.lineage.gold;let facts=g.lineage.facts.clone();let kit=g.lineage.starting_config.clone();
+    let total=allocated.as_ref().unwrap().points+allocated.as_ref().unwrap().spent;
+    let offer=crate::persistent::preview(&g.lineage,false);crate::persistent::rebirth(&mut g,&offer.token).unwrap();
+    let h=g.lineage.bloodline.as_ref().unwrap();assert_eq!((h.points,h.spent),(total,0));assert!(h.upgrades.is_empty());
+    assert_eq!(g.lineage.classes,classes);assert_eq!(g.lineage.gold,gold);assert_eq!(g.lineage.facts,facts);assert_eq!(g.lineage.starting_config,kit);
     for id in IDS {for _ in 0..CAP {buy(&mut g,id).unwrap();}}
-    purchase(&mut g,"renewal");purchase(&mut g,"venom");purchase(&mut g,"brace");assert_eq!(g.save(),allocated);
+    purchase(&mut g,"renewal");purchase(&mut g,"venom");purchase(&mut g,"brace");assert_eq!(g.lineage.bloodline,allocated);
+    let before=g.save();let offer=crate::persistent::preview(&g.lineage,false);assert!(!offer.available);assert!(crate::persistent::rebirth(&mut g,&offer.token).is_err());same_save(&g,&before);
 }
 #[test]
 fn refusal_for_unknown_poor_away_houseless_or_overflow_keeps_whole_save() {
@@ -128,7 +132,7 @@ fn selected_slot_respec_does_not_change_shared_gold_or_any_other_game() {
         s.select_bloodline(id).unwrap();ensure(&mut s.active.lineage);s.active.lineage.best_depth=34;
         s.active.lineage.bloodline.as_mut().unwrap().points=RICH;purchase(&mut s.active,"fireward");
         let others=serde_json::to_value(&s.others).unwrap();let town=s.active.lineage.town.clone();let gold=s.active.lineage.gold;
-        s.respec_legacy().unwrap();assert_eq!(serde_json::to_value(&s.others).unwrap(),others);
+        let offer=crate::persistent::preview(&s.active.lineage,false);s.rebirth_hero(&offer.token).unwrap();assert_eq!(serde_json::to_value(&s.others).unwrap(),others);
         assert_eq!(s.active.lineage.town,town);assert_eq!(s.active.lineage.gold,gold);
     }
 }
@@ -276,9 +280,10 @@ fn a_resting_hero_buys_legacy_and_the_readied_run_carries_it() {
     assert_eq!((hero.max_hp,hero.max_hp_base,hero.hp),(base.max_hp+3,base.max_hp_base+3,base.hp+3));
     assert_eq!(hero.atk(),(base.atk().0+1,base.atk().1+1));assert_eq!(hero.legacy_armour,base.legacy_armour+1);
     let sent=g.sent_state.as_ref().unwrap().lineage.bloodline.as_ref().unwrap();assert_eq!(sent.upgrades["health"],1);
-    respec(&mut g).unwrap();
+    let offer=crate::persistent::preview(&g.lineage,false);crate::persistent::rebirth(&mut g,&offer.token).unwrap();
     let hero=&g.run.as_ref().unwrap().hero;assert_eq!((hero.max_hp,hero.atk(),hero.legacy_armour),(base.max_hp,base.atk(),base.legacy_armour),"a respec refits too");
-    g.send();assert!(away(&g),"a send skips the rest: away");let before=g.save();assert!(buy(&mut g,"health").is_err());assert_eq!(before,g.save());
+    let before=g.save();assert!(g.try_send().is_err());assert_eq!(g.save(),before);g.rest_tick(crate::persistent::RECOVERY_TICKS as u32);
+    g.send();assert!(away(&g),"recovery completed before departure");let before=g.save();assert!(buy(&mut g,"health").is_err());assert_eq!(before,g.save());
 }
 
 /// Blind b58b431 (A: Legacy 146 unspendable — the scout kept the hero away, and a purchase waited for a rest the player never saw):

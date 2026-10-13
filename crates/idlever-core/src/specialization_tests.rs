@@ -48,7 +48,7 @@ fn choice_gates_refuse_exactly_and_none_preserves_xp_gold_legacy_and_class_memor
 }
 #[test]
 fn away_choice_refusal_and_saved_style_snapshot_are_exact() {
-    let mut g=arena(Style::Sentinel);g.sim=false;let before=g.save();
+    let mut g=arena(Style::Sentinel);g.sim=false;g.step(1);let before=g.save();
     assert!(choose(&mut g,"none").is_err());assert_eq!(g.save(),before);
     let mut loaded=Game::load(&before).unwrap();assert!(loaded.save()==before,"complete live reload");
     g.lineage.specializations.clear();loaded.lineage.specializations.clear();
@@ -232,7 +232,7 @@ fn wire_choices_match_refusals_parent_xp_history_and_actual_default_rows() {
     let o=offers(&g.lineage,false).offers.remove(0);assert_eq!(o.required_level,10);assert_eq!(o.blocked.as_deref(),Some("reach class level10"));
     g.lineage.classes.get_mut("fighter").unwrap().level=10;g.lineage.hero_legacy.last_mut().unwrap().best_depth=22;
     let o=offers(&g.lineage,false).offers.remove(0);assert_eq!(o.required_depth,23);assert_eq!(o.blocked.as_deref(),Some("reach D23"));
-    g.lineage.hero_legacy.last_mut().unwrap().best_depth=23;g.set_specialization("sentinel").unwrap();g.send();
+    g.lineage.hero_legacy.last_mut().unwrap().best_depth=23;g.set_specialization("sentinel").unwrap();g.send();g.step(1);
     let c=g.lineage().class_styles.unwrap();assert_eq!(c.selected,Some(Style::Sentinel));assert!(!c.remove_available);
     for o in c.offers {assert!(!o.available);assert_eq!(o.blocked.as_deref(),Some("hero away"));}
     assert_eq!(c.remove_blocked.as_deref(),Some("hero away"));

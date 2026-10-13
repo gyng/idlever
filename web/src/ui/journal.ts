@@ -10,6 +10,10 @@ export type JournalOptions = {
   swapQuest?: () => Promise<boolean>;
 };
 
+/** Completed milestones may still open an earned system; completion never repeats a purchase. */
+export const journalActionAllowed = (entry: JournalEntry): boolean =>
+  !!entry.action?.enabled && (entry.state !== "complete" || entry.action.kind === "open");
+
 /** Rust supplies all objectives and rewards. Callbacks route existing real actions. */
 export function createJournal(options: JournalOptions) {
   const el = h("div", { class: "sheet-body journal-panel" });
@@ -100,7 +104,7 @@ export function createJournal(options: JournalOptions) {
       ...item.requirements.map((requirement) => h("small", {}, requirement)),
     );
     if (item.state === "complete") card.append(h("small", {}, /* copy:label */ "Complete"));
-    if (action && item.state !== "complete") {
+    if (action && (item.state !== "complete" || action.kind === "open")) {
       const key = `action:${item.id}`;
       card.append(
         h(
@@ -119,7 +123,7 @@ export function createJournal(options: JournalOptions) {
                     const current = snapshot.journal.chapters
                       .flatMap((chapter) => chapter.entries)
                       .find((candidate) => candidate.id === item.id);
-                    return current?.action?.enabled && current.state !== "complete"
+                    return current?.action && journalActionAllowed(current)
                       ? options.action(current.action, current.id)
                       : false;
                   },
@@ -171,7 +175,11 @@ export function createJournal(options: JournalOptions) {
     fingerprint = next;
     const recommended = model.chapters
       .flatMap((chapter) => chapter.entries)
-      .find((item) => item.id === model.recommended && item.state !== "complete");
+      .find(
+        (item) =>
+          item.id === model.recommended &&
+          (item.state !== "complete" || journalActionAllowed(item)),
+      );
     const children: Node[] = [h("h2", { class: "journal-heading" }, /* copy:label */ "Journal")];
     if (recommended) children.push(entry(recommended, true));
     for (const chapter of model.chapters) {

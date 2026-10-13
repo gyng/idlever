@@ -55,7 +55,8 @@ pub(crate) fn begin_absence(game: &mut Game) -> Absence {
     let day0 = (game.lineage.clock_s / crate::engine::DAY_S) as u32;
     crate::oath::new_day(&mut game.lineage, day0);
     if game.lineage.rest_watched {
-        game.lineage.rest_left = 0;
+        // An absence may skip ordinary watched rest, never mandatory reincarnation.
+        game.lineage.rest_left = crate::persistent::remaining(&game.lineage) as u32;
         game.lineage.rest_watched = false;
     }
     if !game.lineage.pkg.literal {
@@ -139,9 +140,6 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
         }
         // Cut 30.5 (the owner: manual send first): before the scout the hero home waits — an absence
         // yields at most the run in flight (a send by hand under way)
-        if !game.may_go() && game.run.as_ref().is_none_or(|r| r.turn == 0) {
-            break;
-        }
         // Camp rest first (the heir at camp: no run, or a run not yet begun).
         if game.lineage.rest_left > 0 && game.run.as_ref().is_none_or(|r| r.turn == 0) {
             // QA on e75ec29 (qaQ: `rested 333m` beside 16 runs × `rest 20m`): the report's
@@ -156,6 +154,10 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
             }
         }
         absence.resting = false;
+        // Recovery progresses before Scout ownership; readiness never auto-departs.
+        if !game.may_go() && game.run.as_ref().is_none_or(|r| r.turn == 0) {
+            break;
+        }
         if game.run.is_none() {
             game.start_run(None);
             crate::tree::scout_sent(game);
@@ -874,9 +876,6 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
             crate::tree::at_hour(game);
         }
         // (before the scout the hero home waits: only a send by hand under way runs)
-        if !game.may_go() && game.run.as_ref().is_none_or(|r| r.turn == 0) {
-            break;
-        }
         if game.lineage.rest_left > 0 && game.run.as_ref().is_none_or(|r| r.turn == 0) {
             consumed += game.rest_tick((budget - consumed).min(u32::MAX as u64) as u32) as u64;
             if game.lineage.rest_left > 0 {
@@ -884,6 +883,9 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
             }
         }
         if consumed >= budget {
+            break;
+        }
+        if !game.may_go() && game.run.as_ref().is_none_or(|r| r.turn == 0) {
             break;
         }
         if game.run.is_none() {

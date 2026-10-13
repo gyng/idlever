@@ -27,7 +27,7 @@ _Town, combat and class skills. Screenshots show development builds._
 ## Start a game
 
 1. Build the free house. Your first hero arrives.
-2. Send the hero into the dungeon. Watch the run or return to town.
+2. Select Delve. Watch the run or return to town.
 3. Choose equipment and tactics when they become available.
 4. Hire the scout to send heroes automatically.
 5. Learn class skills and add buildings to the town.
@@ -38,11 +38,11 @@ _Town, combat and class skills. Screenshots show development builds._
 A new depth record secures the gold carried up to that checkpoint. If the hero
 dies, this gold stays safe. Gold carried after the checkpoint is lost.
 
-Class progress and Legacy upgrades pass to the next hero in the same bloodline.
-Legacy upgrades improve that bloodline's future heroes. Town gold is shared
-between bloodlines.
+The same named hero returns after death and recovers for one minute. Class
+skills, equipment choices and Legacy upgrades stay with the hero. Legacy
+improves lasting attributes. Town gold is shared between bloodlines.
 
-Read the death report. Change the equipment or tactics. Send the next hero.
+Read the death report. Change the equipment or tactics. Delve again after recovery.
 
 ## Game features
 

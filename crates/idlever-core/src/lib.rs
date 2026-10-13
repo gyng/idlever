@@ -29,6 +29,7 @@ pub mod oath;
 pub mod packages;
 pub mod petstats;
 pub mod pets;
+pub mod persistent;
 pub mod offline;
 pub mod probes;
 pub mod provenance;
@@ -56,6 +57,8 @@ pub use rules::{Cond, Row, RuleSet, Verb, Vocabulary};
 pub use wire::*;
 
 impl Game {
+    pub fn rename_hero(&mut self, name: &str) -> Result<(), String> { persistent::rename(self,name) }
+    pub fn rebirth_hero(&mut self, token: &str) -> Result<(), String> { persistent::rebirth(self,token) }
     pub fn learn_class_skill(&mut self,id:&str)->Result<(),String> {class_tree::learn(self,id)}
     pub fn reset_class_skills(&mut self)->Result<(),String> {class_tree::reset(self)}
     pub fn set_specialization(&mut self,id:&str)->Result<(),String> {specialization::choose(self,id)}

@@ -1840,6 +1840,10 @@ pub struct BloodlineLegacy {
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct HeroSlot {
+    #[serde(default)]
+    pub life_state:String,
+    #[serde(default)]
+    pub recovery_s:u64,
     #[serde(default,skip_serializing_if="Option::is_none")]
     pub specialization:Option<crate::specialization::Style>,
     #[serde(default)]
@@ -2349,7 +2353,14 @@ pub struct Replay {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct DepthLandmark {pub depth:u32, pub kind:String, pub id:String, pub label:String}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Lineage {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub persistent_hero: Option<crate::persistent::Hero>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub depth_landmarks: Vec<DepthLandmark>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub journal: Option<crate::journal::Journal>,
     #[serde(default,skip_serializing_if="Option::is_none")]

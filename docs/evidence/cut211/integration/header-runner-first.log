@@ -1,0 +1,7 @@
+client suite: targeted (2 selected; 144 current full; 186 exhaustive groups)
+FAIL hero-frame      0.6s (0.3s)  Node.js v26.5.0
+     if (!url) throw Error("fresh no-HMR server required");
+     Error: fresh no-HMR server required
+         at file:///home/g/p/riddle/web/tests/hero-frame.mjs:9:17
+ok   death-hero      4.4s (4.0s)  1440 9 historical death hero checks PASS
+FAIL: 1/2 client gates in 4.4s

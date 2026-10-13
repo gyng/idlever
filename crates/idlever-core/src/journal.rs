@@ -80,6 +80,14 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     pets.action=action("open","companions","Companions",(!home).then(||"Build a house".into()));builds.push(pets);
     let completed=l.expeditions>0;let mut delve=entry("delve",if completed {"Delve again"} else {"Delve"},"The hero chooses actions and fights on his own.","A completed delve earns experience, discoveries and its actual returned Gold.",if away {"active"} else if home {"ready"} else {"later"});
     delve.action=if away {action("open","watch","Watch",None)} else {action("delve","","Delve",(!home).then(||"Build a house".into()))};
+    let recovering=crate::persistent::remaining(l);
+    if recovering>0 {
+        let seconds=recovering.div_ceil(crate::offline::TICKS_PER_SECOND);
+        delve.title="Recovery".into();delve.state="active".into();
+        delve.reason=format!("The same hero returns through the reincarnation device. Recovery finishes in {seconds} seconds.");
+        delve.requirements=vec![format!("Recover for {seconds} more seconds")];
+        delve.action=action("delve","","Delve",Some("Finish recovery".into()));
+    }
     let mut gold=entry("gold","Gold on return","Found loot converts once when picked up.","Alive returns keep all remaining carried Gold. Death keeps secured checkpoint Gold and named pet protection; ordinary unprotected carry is lost.",if completed {"complete"} else {"later"});gold.action=action("open","chronicle","Chronicle",(!completed).then(||"Complete a delve".into()));
     let quest=town::wire(l).quest.map(|q|JournalQuest {goal:q.goal,reward:q.reward.clone(),progress:q.progress,done:q.done,swap:q.swap,body:quest_reward(l,&q.reward,q.done)});
     let mut quest_entry=gate(l,"quests","Quest board","A quest gives a goal beyond the next depth record.","Progress settles automatically after a run. One free swap is available per day.","quests");
@@ -91,7 +99,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
         quest_entry.effect="Your current quest is shown here. Its progress and reward settle automatically after real runs.".into();
     }
     let discoveries=vec![];
-    let recommended=if !home {"house"} else if away {"delve"} else if porter_ready&&!porter_hired&&!hired {"porter"} else if scout_ready&&!hired || hired&&!tree::on(l,"scout") {"scout"} else if !hired {"delve"} else if let Some(e)=entries.iter().find(|e|e.state=="ready"&&e.id!="scout"&&e.id!="porter") {&e.id} else if let Some(e)=builds.iter().find(|e|e.id=="class_tree"&&e.state=="ready") {&e.id} else if systems::is_open(l,"loadout") {"loadout"} else {"delve"}.to_string();
+    let recommended=if !home {"house"} else if away||recovering>0 {"delve"} else if porter_ready&&!porter_hired&&!hired {"porter"} else if scout_ready&&!hired || hired&&!tree::on(l,"scout") {"scout"} else if !hired {"delve"} else if let Some(e)=entries.iter().find(|e|e.state=="ready"&&e.id!="scout"&&e.id!="porter") {&e.id} else if let Some(e)=builds.iter().find(|e|e.id=="class_tree"&&e.state=="ready") {&e.id} else if systems::is_open(l,"loadout") {"loadout"} else {"delve"}.to_string();
     Journal {bloodline_id:l.bloodline_id,seed:l.seed.to_string(),heir:l.heir,recommended:Some(recommended),chapters:vec![JournalChapter{id:"town".into(),title:"Town".into(),entries},JournalChapter{id:"builds".into(),title:"Builds".into(),entries:builds},JournalChapter{id:"delving".into(),title:"Delving".into(),entries:vec![delve,gold,quest_entry]}],discoveries,quest}
 }
 fn quest_reward(l:&LineageState,reward:&str,done:bool)->String {
@@ -117,7 +125,7 @@ mod tests {
         assert!(g.hire("scout").is_err());assert_eq!(before,g.save());
         g.build_town("house").unwrap();let j=g.lineage().journal.unwrap();assert_eq!(j.recommended.as_deref(),Some("delve"));
         assert_eq!(find(&j,"scout").progress.as_ref().unwrap().required,3);
-        g.send();let j=g.lineage().journal.unwrap();assert_eq!(find(&j,"delve").action.as_ref().unwrap().target,"watch");
+        g.send();g.step(1);let j=g.lineage().journal.unwrap();assert_eq!(find(&j,"delve").action.as_ref().unwrap().target,"watch");
     }
     #[test]
     fn scout_and_porter_recommendation_uses_actual_lit_worker_and_price() {

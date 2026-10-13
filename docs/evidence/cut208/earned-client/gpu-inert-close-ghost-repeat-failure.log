@@ -1,0 +1,17 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Error: strict mode violation: locator('.journal-panel') resolved to 2 elements:
+    1) <div class="sheet-body journal-panel">…</div> aka getByText('JournalNextDelveThe hero')
+    2) <div class="sheet-body journal-panel">…</div> aka getByText('JournalNextHire the')
+
+Call log:
+[2m  - waiting for locator('.journal-panel') to be visible[22m
+
+    at open (/home/g/p/riddle/web/tests/journal-earned.mjs:75:42)
+    at async file:///home/g/p/riddle/web/tests/journal-earned.mjs:101:5 {
+  log: [ "  - waiting for locator('.journal-panel') to be visible" ]
+}
+
+Node.js v26.5.0

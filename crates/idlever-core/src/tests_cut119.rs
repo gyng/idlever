@@ -267,10 +267,14 @@ fn the_heir_line_names_the_worn_trait() {
         let mut g = camp(seed);
         g.lineage.heir = 4;
         g.lineage.graveyard.push(crate::wire::Grave { heir: 4, depth: 13, cause: "bloat_mother".into(), deeds: Vec::new(), death_id: None });
+        crate::packages::wake(&mut g.lineage);
+        let temperament=g.lineage.pkg.temperament.clone();
+        let born_before=g.lineage.heirs.born;
         g.lineage.new_heir();
-        assert!(g.lineage.pkg.temperament.is_some(), "seed {seed}: a temperament card worn");
+        assert_eq!(g.lineage.pkg.temperament,temperament,"seed {seed}: ordinary recovery retains personality");
+        assert_eq!(g.lineage.heirs.born,born_before);
         let born = g.lineage.heirs.born.expect("born");
-        let line = g.lineage.feats.news.iter().rev().find(|n| n.k == "heir").expect("an heir line").text.clone();
+        let line = g.lineage.feats.news.iter().rev().find(|n| n.k == "recovery").expect("a recovery line").text.clone();
         assert!(line.contains(&born.chip()), "seed {seed}: {line} vs worn {}", born.chip());
     }
 }

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Steady-blade",
+    "homeWall": 7,
+    "samples": 150,
+    "baseline": {
+      "cpuMedian": 0.7000000029802322,
+      "cpuP95": 1.4000000059604645,
+      "gpuP95": 0.644096
+    },
+    "post": {
+      "cpuMedian": 1,
+      "cpuP95": 1.8999999910593033,
+      "gpuP95": 3.426304
+    },
+    "maxCalls": [
+      12,
+      13
+    ],
+    "peakTrailQuads": 2,
+    "activeTrailFrames": 74,
+    "eventsIdentical": true
+  },
+  {
+    "name": "Heavy-strike",
+    "homeWall": 7,
+    "samples": 150,
+    "baseline": {
+      "cpuMedian": 0.7000000029802322,
+      "cpuP95": 0.9000000059604645,
+      "gpuP95": 0.396288
+    },
+    "post": {
+      "cpuMedian": 0.9000000059604645,
+      "cpuP95": 1.4000000059604645,
+      "gpuP95": 3.299328
+    },
+    "maxCalls": [
+      12,
+      12
+    ],
+    "peakTrailQuads": 0,
+    "activeTrailFrames": 0,
+    "eventsIdentical": true
+  }
+]

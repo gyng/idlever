@@ -1,0 +1,22 @@
+{
+  "baseline_commit": "3753532a40f88efe57f0abb38d6b5205442cb327",
+  "baseline_source": "git archive isolated Cargo.toml Cargo.lock crates; only readonly early_pacing_probe copied in",
+  "current_scope": "Cut211 persistent production before Cut213 staging; no packaging/balance acceptance inferred",
+  "inputs": [
+    {
+      "path": "crates/idlever-core/examples/early_pacing_probe.rs",
+      "bytes": 3006,
+      "sha256": "da9e7823a1d90c4235f48fa3bfa5d6931bb29838685f73f0a73218a8c4ddb1aa"
+    },
+    {
+      "path": "target/fast/examples/early_pacing_probe",
+      "bytes": 6886720,
+      "sha256": "f448de8201237a07aaef14cf1d85af69c6355769821dc88f98fadba6f567ef8b"
+    },
+    {
+      "path": "/tmp/idlever-cut213-target/fast/examples/early_pacing_probe",
+      "bytes": 6979400,
+      "sha256": "86e5a50ca12835b4c635a5333f31b0da43d034c4f837790d2754ccb81cfdd3c9"
+    }
+  ]
+}

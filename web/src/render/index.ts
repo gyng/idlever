@@ -144,6 +144,7 @@ export type DebugRect = {
 export type DebugLabel = { text: string; x: number; y: number; id: number; w?: number; h?: number }; // CSS px: the label's centre x and its cell's bottom y; w · h its box (Cut 15 §4)
 
 export type ViewerStats = {
+  movementTrail?: { steps: number; quads: number };
   combatCues?: { active: number; quads: number; events: number };
   heroCrowd?: boolean;
   lead?: [number, number]; // Cut 121 §3: + the map camera's lead (world units)   // Cut 121 §3: two or more hostiles within two tiles of the hero this frame (his chevron drawn)
@@ -384,7 +385,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   normals.add(L.ents.twin(normals.material));
   scene.add(juice.emit.mesh, juice.matte.mesh, juice.nums.mesh, juice.decals.mesh);
   const combatCues = new CombatCues();
-  const cueLayer = new TintLayer(env, 128, 0.5, false, 8);
+  const cueLayer = new TintLayer(env, 140, 0.5, false, 8);
   const cueBodies = new Map<number, CueBody>();
   scene.add(cueLayer.mesh);
   st.onEvent = (ev) => {
@@ -1886,7 +1887,15 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       quality.motion,
     ))
       cueLayer.push(pixel.x, pixel.y, 8.5, pixel.w, pixel.h, cueSlot, ...pixel.c, pixel.a);
+    for (const pixel of st.trail.draw(
+      st.clock,
+      (x, y) => !!st.visible[y * st.w + x] && st.tiles[y * st.w + x] !== "wall",
+      effectsLevel(),
+      quality.motion,
+    ))
+      cueLayer.push(pixel.x, pixel.y, 1.35, pixel.w, pixel.h, cueSlot, 0.48, 0.51, 0.56, pixel.a);
     cueLayer.end();
+    stats.movementTrail = st.trail.stats();
     stats.combatCues = combatCues.stats();
     // juice: particles, numbers and this frame's events (fx.ts); nothing at `low`
     fires.length = 0;
@@ -2082,6 +2091,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     if (glLost) {
       view2d?.draw(st, combatCues);
       stats.combatCues = combatCues.stats();
+      stats.movementTrail = st.trail.stats();
       stats.tick = st.tickNow();
       stats.pending = st.pending();
       stats.calls = 0;

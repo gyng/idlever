@@ -525,7 +525,7 @@ pub fn offers(l: &LineageState, away: bool) -> Tree {
     }
 }
 pub fn learn(g: &mut Game, id: &str) -> Result<(), String> {
-    if let Some(reason) = home_block(&g.lineage, g.run.is_some()) {
+    if let Some(reason) = home_block(&g.lineage, crate::persistent::away(g)) {
         return Err(reason);
     }
     let node = definitions(g.lineage.class)
@@ -541,14 +541,16 @@ pub fn learn(g: &mut Game, id: &str) -> Result<(), String> {
         .or_default()
         .insert(id.into());
     crate::packages::recompile(&mut g.lineage);
+    crate::persistent::refit_build(g,false);
     Ok(())
 }
 pub fn reset(g: &mut Game) -> Result<(), String> {
-    if let Some(reason) = home_block(&g.lineage, g.run.is_some()) {
+    if let Some(reason) = home_block(&g.lineage, crate::persistent::away(g)) {
         return Err(reason);
     }
     g.lineage.class_paths.remove(g.lineage.class.name());
     crate::packages::recompile(&mut g.lineage);
+    crate::persistent::refit_build(g,false);
     Ok(())
 }
 pub fn rows(l: &LineageState) -> Vec<Row> {

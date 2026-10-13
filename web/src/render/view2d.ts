@@ -6,6 +6,7 @@ import type { ReplayState, EntState } from "./state";
 import { paletteFor, css, spriteScale } from "./palette";
 import { heroBase } from "./look";
 import type { CombatCues, CueBody } from "./combat-cues";
+import { reducedMotion } from "./quality";
 import { effectsLevel } from "./fxpref";
 
 type Frame = { x: number; y: number; w: number; h: number };
@@ -207,6 +208,23 @@ export class View2D {
           g.fillRect(px, py, T, T);
         }
       }
+    // Tiny ground footsteps from actual vacated hero tiles, below all actors.
+    for (const p of st.trail.draw(
+      st.clock,
+      (x, y) => open(x, y) && !!st.visible[y * st.w + x],
+      effectsLevel(),
+      !reducedMotion(),
+    )) {
+      g.globalAlpha = p.a;
+      g.fillStyle = "#7a828f";
+      g.fillRect(
+        Math.round(ox + ((p.x - p.w / 2) * T) / 8),
+        Math.round(oy - ((p.y + p.h) * T) / 8),
+        Math.max(1, Math.round((p.w * T) / 8)),
+        Math.max(1, Math.round((p.h * T) / 8)),
+      );
+    }
+    g.globalAlpha = 1;
     // overlays, items
     const fr = Math.floor(performance.now() / 250) & 1;
     for (const o of st.overlays) {

@@ -1,6 +1,6 @@
 import type { App } from "../app";
 import type { JournalAction } from "../engine/types";
-import { createJournal } from "./journal";
+import { createJournal, journalActionAllowed } from "./journal";
 import { h } from "./dom";
 import { openWindow } from "./sheet";
 
@@ -33,8 +33,9 @@ export function openJournal(
             .journal.chapters.flatMap((chapter) => chapter.entries)
             .find((entry) => entry.id === entryId);
           if (
-            !current?.action?.enabled ||
-            current.state === "complete" ||
+            !current ||
+            !journalActionAllowed(current) ||
+            !current.action ||
             current.action.kind !== action.kind ||
             current.action.target !== action.target
           )

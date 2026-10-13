@@ -210,6 +210,7 @@ impl Game {
     /// the town wallet, equipment and all other bloodlines. Historical challenge
     /// rules are removed; their separate restart API retains its old behavior.
     pub fn begin_descent(&mut self, tier: u32) -> Result<(), String> {
+        if crate::persistent::remaining(&self.lineage)>0 {return Err("Finish recovery".into());}
         if !self.lineage.ended { return Err("clear the dungeon first".into()); }
         if self.pending_exit.is_some() || self.offline_absence.is_some() || self.offline {
             return Err("finish the return first".into());

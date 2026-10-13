@@ -1,0 +1,519 @@
+{
+  "records": [
+    {
+      "fixture": "earned-seed-1-balanced",
+      "mode": "hero",
+      "width": 400,
+      "name": "earned-hero-400.png",
+      "hero": {
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 4,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 59,
+        "need": "rest",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 1,
+            "value": 3,
+            "next_price": 40
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "The Scout schedules another delve after recovery."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": true,
+          "blocked": null,
+          "token": "dd3eab19e8b5502d",
+          "refund": 45,
+          "points_after": 72,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    },
+    {
+      "fixture": "earned-seed-1-balanced",
+      "mode": "rebirth",
+      "width": 400,
+      "name": "earned-rebirth-400.png",
+      "hero": {
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 4,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 59,
+        "need": "rest",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 1,
+            "value": 3,
+            "next_price": 40
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "The Scout schedules another delve after recovery."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": true,
+          "blocked": null,
+          "token": "dd3eab19e8b5502d",
+          "refund": 45,
+          "points_after": 72,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    },
+    {
+      "fixture": "controlled-recovering-590",
+      "mode": "recovery",
+      "width": 400,
+      "name": "controlled-recovery-400.png",
+      "hero": {
+        "id": "91:1",
+        "name": "Mara",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "recovering",
+        "recovery_s": 59,
+        "rest_s": 59,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": false,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "a2676f3bdc1c769f",
+          "refund": 0,
+          "points_after": 2,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    },
+    {
+      "fixture": "earned-seed-1-balanced",
+      "mode": "hero",
+      "width": 1440,
+      "name": "earned-hero-1440.png",
+      "hero": {
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 4,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 59,
+        "need": "rest",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 1,
+            "value": 3,
+            "next_price": 40
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "The Scout schedules another delve after recovery."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": true,
+          "blocked": null,
+          "token": "dd3eab19e8b5502d",
+          "refund": 45,
+          "points_after": 72,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    },
+    {
+      "fixture": "earned-seed-1-balanced",
+      "mode": "rebirth",
+      "width": 1440,
+      "name": "earned-rebirth-1440.png",
+      "hero": {
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 4,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 59,
+        "need": "rest",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 1,
+            "value": 3,
+            "next_price": 40
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 1,
+            "value": 1,
+            "next_price": 40
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "The Scout schedules another delve after recovery."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": true,
+          "blocked": null,
+          "token": "dd3eab19e8b5502d",
+          "refund": 45,
+          "points_after": 72,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    },
+    {
+      "fixture": "controlled-recovering-590",
+      "mode": "recovery",
+      "width": 1440,
+      "name": "controlled-recovery-1440.png",
+      "hero": {
+        "id": "91:1",
+        "name": "Mara",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "recovering",
+        "recovery_s": 59,
+        "rest_s": 59,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": false,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "a2676f3bdc1c769f",
+          "refund": 0,
+          "points_after": 2,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Traits and temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "scroll": 0
+    }
+  ],
+  "sources": {
+    "src/ui/hero-life.ts": {
+      "bytes": 49418,
+      "sha256": "26875306b7feec6282261f14e3e647c31b88c03513c7ae3a7b3247d44605f1dc"
+    },
+    "src/hero-life.css": {
+      "bytes": 2641,
+      "sha256": "5e8a87efab45ebe98711510d88b83825a38d2caebe892ade9eea8d93ed47eae1"
+    },
+    "src/ui/legacy.ts": {
+      "bytes": 25399,
+      "sha256": "2959f264512f1177f1d148fba138d4020f372bd07cc9dfce0106dba75134eb15"
+    },
+    "src/engine/wasm.ts": {
+      "bytes": 42155,
+      "sha256": "8a2faafe5b4ddc963cf72af639f5d79b201830b0ccbfcc62f329fa065741607e"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6480205,
+      "sha256": "a1f6777bf5e75d4e251433dad9339c02a5ce599e90de4cae7cca4da185aba94e"
+    }
+  },
+  "claim": "Private GPU settled correctness screenshots; no performance claim"
+}

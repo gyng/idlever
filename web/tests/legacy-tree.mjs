@@ -3,10 +3,12 @@ import { responsiveWidths } from "./lib/viewport-cases.mjs";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-    cwd: new URL("../../", import.meta.url),
-    encoding: "utf8",
-  }).trim(),
+const url =
+    process.env.IDLEVER_TEST_URL ??
+    execFileSync("bash", ["tools/dev.sh"], {
+      cwd: new URL("../../", import.meta.url),
+      encoding: "utf8",
+    }).trim(),
   browser = await launchBrowser();
 try {
   for (const width of responsiveWidths([320, 400, 1440])) {
@@ -18,7 +20,7 @@ try {
     await page.evaluate(async () => {
       const app = window.__idlever;
       app.runnerOn = false;
-      window.legacyCalls = { buy: 0, respec: 0 };
+      window.legacyCalls = { buy: 0, rebirth: 0 };
       const nodes = [
         ["health", "Health", "Recovery", null, 0],
         ["damage", "Damage", "Control", null, 0],
@@ -33,13 +35,47 @@ try {
         ["fireward", "Fireward", "Warding", "clear_lungs", 18],
         ["brace", "Brace", "Warding", "clear_lungs", 18],
       ];
+      window.fixtureRebirthReady = true;
       const wire = () => {
         const b = app.lineage.bloodline;
-        app.lineage.legacy_respec = {
-          refund: b.spent,
-          available: b.spent > 0,
-          points_after: b.points + b.spent,
-          blocked: null,
+        const rebirths = app.lineage.persistent_hero?.rebirths ?? 0;
+        app.lineage.persistent_hero = {
+          id: `fixture:${app.lineage.selected_bloodline}`,
+          name: "Fixture hero",
+          incarnation: app.lineage.heir,
+          rebirths,
+          state: app.lineage.live ? "away" : "ready",
+          recovery_s: 0,
+          rest_s: 0,
+          need: "none",
+          attributes: [],
+          guild: { id: "guild", name: "Guild", available: true, body: "Lifecycle fixture" },
+          pool: { id: "recovery", name: "Pool", available: true, body: "Lifecycle fixture" },
+          device: {
+            id: "reincarnation",
+            name: "Device",
+            available: true,
+            body: "Lifecycle fixture",
+          },
+          rebirth: {
+            refund: b.spent,
+            available: b.spent > 0 && !app.lineage.live && window.fixtureRebirthReady,
+            blocked:
+              b.spent === 0
+                ? "No attribute commitments"
+                : app.lineage.live
+                  ? "Hero away"
+                  : window.fixtureRebirthReady
+                    ? null
+                    : "Complete 8 more delves",
+            points_after: b.points + b.spent,
+            required_depth: 8,
+            delves_remaining: window.fixtureRebirthReady ? 0 : 8,
+            seconds_remaining: 0,
+            resets: ["Legacy attributes and branches"],
+            retains: ["Name and identity", "Class XP and learned skills"],
+            token: JSON.stringify([app.lineage.selected_bloodline, app.lineage.heir, b]),
+          },
         };
         return nodes.map(([id, name, branch, parent, min_depth]) => {
           const rank = b.upgrades[id] ?? 0;
@@ -90,23 +126,35 @@ try {
         app.lineage.legacy_upgrades = wire();
         return app.lineage;
       };
-      window.installRespec = (deferred = false) => {
-        app.engine.respecLegacy = async () => {
-          window.legacyCalls.respec++;
-          if (deferred) await new Promise((resolve) => (window.releaseRespec = resolve));
+      window.installRebirth = (deferred = false) => {
+        app.engine.rebirthHero = async (token) => {
+          if (
+            token !== app.lineage.persistent_hero.rebirth.token ||
+            !app.lineage.persistent_hero.rebirth.available
+          )
+            throw Error("preview refused");
+          window.legacyCalls.rebirth++;
+          if (deferred) await new Promise((resolve) => (window.releaseRebirth = resolve));
           app.lineage = {
             ...app.lineage,
+            heir: app.lineage.heir + 1,
+            persistent_hero: {
+              ...app.lineage.persistent_hero,
+              rebirths: app.lineage.persistent_hero.rebirths + 1,
+            },
             bloodline: {
               points: app.lineage.bloodline.points + app.lineage.bloodline.spent,
               spent: 0,
               upgrades: {},
             },
           };
+          window.fixtureRebirthReady = false;
           app.lineage.legacy_upgrades = wire();
           return app.lineage;
         };
       };
-      window.installRespec();
+      window.legacyFixtureWire = wire;
+      window.installRebirth();
       const { openHero } = await import("/src/ui/town.ts");
       openHero(app, undefined, "legacy");
     });
@@ -117,7 +165,10 @@ try {
     const buy = (id) => page.locator(`button.legacy-buy[data-upgrade="${id}"]`);
     assert.ok(await buy("restoration").isDisabled());
     assert.ok(await buy("mending").isDisabled());
-    assert.ok(await page.locator(".legacy-respec").isDisabled());
+    await page.locator(".legacy-rebirth").click();
+    assert.ok(await page.locator('.hero-life-panel [data-life-focus="confirm"]').isDisabled());
+    await page.locator('.hero-life-panel [data-life-focus="cancel"]').click();
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
     if (width < 900) {
       assert.equal(await page.locator(".legacy-path[open]").count(), 0);
       await page.locator('[data-legacy-branch="Recovery"] summary').click();
@@ -140,74 +191,92 @@ try {
     assert.match(await page.locator("#kw-tip").textContent(), /Requires Restoration/);
     assert.match(await page.locator("#kw-tip").textContent(), /Reach D18/);
     await page.keyboard.press("Escape");
-    await page.locator(".legacy-respec").click();
-    assert.match(
-      await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-review").textContent(),
-      /Refund 57 Legacy/,
-    );
-    assert.equal(await page.evaluate(() => window.legacyCalls.respec), 0);
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
+    const review = page.locator(".sheet-wrap:not([hidden]) .hero-life-panel");
+    const rebirth = page.locator(".legacy-rebirth");
+    await rebirth.click();
+    assert.match(await review.textContent(), /57 Legacy refunded/);
+    assert.equal(await page.evaluate(() => window.legacyCalls.rebirth), 0);
+    await review.locator('[data-life-focus="cancel"]').click();
     assert.equal(await page.evaluate(() => window.__idlever.lineage.bloodline.spent), 57);
-    await page.locator(".legacy-respec").click();
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+    await rebirth.click();
     await page.evaluate(() => {
-      window.__idlever.engine.respecLegacy = async () => {
+      window.__idlever.engine.rebirthHero = async () => {
         throw Error("fixture refusal");
       };
     });
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-confirm").click();
+    await review.locator('[data-life-focus="confirm"]').click();
     await page.waitForFunction(() =>
       document
-        .querySelector(".sheet-wrap:not([hidden]) .legacy-respec-review .legacy-feedback")
-        .textContent.includes("fixture refusal"),
+        .querySelector(".sheet-wrap:not([hidden]) .hero-life-feedback")
+        ?.textContent.includes("fixture refusal"),
     );
     assert.equal(await page.evaluate(() => window.__idlever.lineage.bloodline.spent), 57);
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
-    await page.evaluate(() => window.installRespec(true));
-    await page.locator(".legacy-respec").click();
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-confirm").evaluate((el) => {
+    await review.locator('[data-life-focus="cancel"]').click();
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+    await page.evaluate(() => window.installRebirth(true));
+    await rebirth.click();
+    await review.locator('[data-life-focus="confirm"]').evaluate((el) => {
       el.click();
       el.click();
     });
-    await page.waitForFunction(() => typeof window.releaseRespec === "function");
-    assert.equal(await page.evaluate(() => window.legacyCalls.respec), 1);
-    assert.ok(await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-confirm").isDisabled());
-    await page.evaluate(() => window.releaseRespec());
-    await page.waitForFunction(
-      () => !document.querySelector(".sheet-wrap:not([hidden]) .legacy-respec-review"),
-    );
+    await page.waitForFunction(() => typeof window.releaseRebirth === "function");
+    assert.equal(await page.evaluate(() => window.legacyCalls.rebirth), 1);
+    assert.ok(await review.locator('[data-life-focus="confirm"]').isDisabled());
+    await page.evaluate(() => window.releaseRebirth());
+    await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 0);
     assert.deepEqual(await page.evaluate(() => window.__idlever.lineage.bloodline), {
       points: 100,
       spent: 0,
       upgrades: {},
     });
-    assert.ok(await page.locator(".legacy-respec").isDisabled());
+    await review.locator('[data-life-focus="review"]').click();
+    assert.ok(
+      await review.locator('[data-life-focus="confirm"]').isDisabled(),
+      "new eligibility required after Rebirth",
+    );
+    await review.locator('[data-life-focus="cancel"]').click();
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
     await buy("health").click();
     await page.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 3);
-    await page.locator(".legacy-respec").click();
+    // Explicit synthetic eligible boundary, not eight earned delves.
     await page.evaluate(async () => {
-      window.__idlever.lineage.selected_bloodline = 2;
-      await window.__idlever.afterLineage();
-    });
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-confirm").click();
-    assert.equal(
-      await page
-        .locator(".sheet-wrap:not([hidden]) .legacy-respec-review .legacy-feedback")
-        .textContent(),
-      "Review changed",
-    );
-    assert.equal(await page.evaluate(() => window.legacyCalls.respec), 1);
-    await page.locator(".sheet-wrap:not([hidden]) .legacy-respec-cancel").click();
-    await page.evaluate(async () => {
+      window.fixtureRebirthReady = true;
       const a = window.__idlever;
-      a.lineage = {
-        ...a.lineage,
-        live: { depth: 1, turn: 1 },
-        legacy_respec: { ...a.lineage.legacy_respec, available: false, blocked: "hero away" },
-        legacy_upgrades: a.lineage.legacy_upgrades.map((u) => ({ ...u, affordable: false })),
-      };
+      a.lineage.legacy_upgrades = window.legacyFixtureWire();
       await a.afterLineage();
     });
-    assert.ok(await page.locator(".legacy-respec").isDisabled());
+    await rebirth.click();
+    await page.evaluate(async () => {
+      window.oldRebirthConfirm = document.querySelector(
+        '.sheet-wrap:not([hidden]) [data-life-focus="confirm"]',
+      );
+      const a = window.__idlever;
+      a.lineage.selected_bloodline = 2;
+      a.lineage.legacy_upgrades = window.legacyFixtureWire();
+      await a.afterLineage();
+      window.oldRebirthConfirm.click();
+    });
+    assert.equal(await page.evaluate(() => window.legacyCalls.rebirth), 1);
+    assert.equal(
+      await review.locator('[data-life-focus="confirm"]').count(),
+      0,
+      "changed owner requires a new Review",
+    );
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+    await page.evaluate(async () => {
+      const a = window.__idlever;
+      a.lineage = { ...a.lineage, live: { depth: 1, turn: 1 } };
+      a.lineage.legacy_upgrades = window
+        .legacyFixtureWire()
+        .map((u) => ({ ...u, affordable: false }));
+      await a.afterLineage();
+    });
+    await rebirth.click();
+    assert.ok(await review.locator('[data-life-focus="confirm"]').isDisabled());
+    await review.locator('[data-life-focus="cancel"]').click();
+    await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
     for (const button of await page.locator(".legacy-buy").all())
       assert.ok(await button.isDisabled());
     // blind b58b431 (A: Legacy 146 unspendable while the scout kept him away): away, an upgrade the points buy is bought for the next run

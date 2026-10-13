@@ -1,0 +1,10 @@
+error[E0502]: cannot borrow `*self` as immutable because it is also borrowed as mutable
+    --> crates/idlever-core/src/engine.rs:2605:87
+     |
+2605 | ...   self.hero_legacy.push(crate::wire::HeroLegacy { name: crate::persistent::name(self), heir: self.heir, class: self.class.name...
+     |       ---------------- ---- mutable borrow later used by call                       ^^^^ immutable borrow occurs here
+     |       |
+     |       mutable borrow occurs here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `idlever-core` (lib) due to 1 previous error

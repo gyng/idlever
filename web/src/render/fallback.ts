@@ -63,6 +63,7 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
     const t0 = performance.now();
     view.draw(st, cues);
     stats.combatCues = cues.stats();
+    stats.movementTrail = st.trail.stats();
     stats.cpuMs = performance.now() - t0;
     stats.tick = st.tickNow();
     stats.pending = st.pending();

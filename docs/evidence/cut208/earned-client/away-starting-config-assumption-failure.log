@@ -1,0 +1,21 @@
+{"checkpoint":"earned-workers-and-quest","seed":1,"completion":{"done":true,"countBefore":1,"countAfter":2,"missingRow":"row5","rewardOwned":true,"body":"Unlocks the first unowned rule slot, from five through ten. This adds space for an optional policy row. The reward was applied automatically at settlement."}}
+{"checkpoint":"earned-workers-and-quest","seed":13,"completion":{"done":true,"countBefore":1,"countAfter":2,"missingRow":"row5","rewardOwned":true,"body":"Unlocks the first unowned rule slot, from five through ten. This adds space for an optional policy row. The reward was applied automatically at settlement."}}
+{"checkpoint":"earned-geometry-gates","checks":310}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /away|delving|run/i. Input:
+
+''
+
+    at file:///home/g/p/riddle/web/tests/journal-earned.mjs:377:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '',
+  expected: /away|delving|run/i,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

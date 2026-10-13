@@ -1,0 +1,140 @@
+{
+  "out": [
+    {
+      "kind": "gl",
+      "full": {
+        "trail": {
+          "steps": 1,
+          "quads": 2
+        },
+        "clock": 37.00000000000003,
+        "hero": [
+          11.3,
+          30
+        ]
+      },
+      "pause": {
+        "steps": 1,
+        "quads": 2
+      },
+      "engine": "wasm",
+      "markers": [
+        {
+          "depth": 1,
+          "kind": "start",
+          "label": "Start"
+        },
+        {
+          "depth": 5,
+          "kind": "waystone",
+          "label": "Waystone"
+        },
+        {
+          "depth": 5,
+          "kind": "fork",
+          "label": "Fork",
+          "detail": "burrows"
+        },
+        {
+          "depth": 7,
+          "kind": "record",
+          "label": "Record"
+        },
+        {
+          "depth": 8,
+          "kind": "bounty",
+          "label": "Bounty",
+          "detail": "reach"
+        }
+      ],
+      "reduced": {
+        "steps": 1,
+        "quads": 2
+      },
+      "tiers": {
+        "low": {
+          "steps": 1,
+          "quads": 2
+        }
+      },
+      "contextLoss": {
+        "available": true,
+        "lost": {
+          "steps": 1,
+          "quads": 2
+        },
+        "restored": {
+          "steps": 1,
+          "quads": 2
+        }
+      },
+      "off": {
+        "steps": 0,
+        "quads": 0
+      }
+    },
+    {
+      "kind": "canvas",
+      "full": {
+        "trail": {
+          "steps": 1,
+          "quads": 2
+        },
+        "clock": 37,
+        "hero": [
+          11.3,
+          30
+        ]
+      },
+      "pause": {
+        "steps": 1,
+        "quads": 2
+      },
+      "engine": "wasm",
+      "markers": [
+        {
+          "depth": 1,
+          "kind": "start",
+          "label": "Start"
+        },
+        {
+          "depth": 5,
+          "kind": "waystone",
+          "label": "Waystone"
+        },
+        {
+          "depth": 5,
+          "kind": "fork",
+          "label": "Fork",
+          "detail": "burrows"
+        },
+        {
+          "depth": 7,
+          "kind": "record",
+          "label": "Record"
+        },
+        {
+          "depth": 8,
+          "kind": "bounty",
+          "label": "Bounty",
+          "detail": "reach"
+        }
+      ],
+      "reduced": {
+        "steps": 1,
+        "quads": 2
+      },
+      "tiers": {
+        "low": {
+          "steps": 1,
+          "quads": 2
+        }
+      },
+      "off": {
+        "steps": 0,
+        "quads": 0
+      }
+    }
+  ],
+  "errors": []
+}

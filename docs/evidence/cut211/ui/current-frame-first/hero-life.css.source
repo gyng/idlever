@@ -1,0 +1,105 @@
+/* Persistent identity lives in the same ink/gilt material as Bloodlines. */
+.hero-life-panel {
+  display: grid;
+  gap: var(--ui-space-4);
+  min-width: 0;
+  color: var(--ui-text);
+  font-size: var(--ui-body);
+}
+.hero-life-panel :is(p, h2, h3) {
+  margin: 0;
+}
+.hero-life-panel :is(p, h2, h3, span, small, li, button, label) {
+  overflow-wrap: anywhere;
+}
+.hero-life-heading {
+  font: bold var(--ui-title) var(--display);
+}
+.hero-life-state {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-2);
+}
+.hero-life-section {
+  display: grid;
+  gap: var(--ui-space-2);
+  min-width: 0;
+  padding: var(--ui-space-3);
+  border: 2px solid var(--ui-edge);
+  background: var(--ui-inset);
+}
+.hero-life-section h3 {
+  font-size: var(--ui-body);
+}
+.hero-life-section p {
+  line-height: 1.5;
+}
+.hero-life-section small {
+  color: var(--ui-muted);
+  font-size: var(--ui-detail);
+}
+.hero-name-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-2);
+  min-width: 0;
+}
+.hero-name-form label {
+  flex: 1 1 100%;
+}
+html body .game-window[data-material="bloodlines"] .hero-life-panel input {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  width: min(100%, 18rem);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: var(--ui-space-2);
+  color: var(--ui-text);
+  background: var(--ui-inset);
+  border: 2px solid var(--ui-edge);
+  font: inherit;
+}
+html body .game-window[data-material="bloodlines"] .hero-life-panel :is(button, summary) {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: normal;
+}
+.hero-life-panel input:focus-visible {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 2px;
+}
+.hero-life-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-2);
+}
+.hero-life-attributes {
+  display: grid;
+  gap: var(--ui-space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+.hero-life-preview-list {
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  line-height: 1.5;
+}
+.hero-life-feedback {
+  min-height: 1.5em;
+  color: var(--ui-muted);
+  font-size: var(--ui-detail);
+}
+
+/* The current frame names the stable actor; captured past-run ordinals stay intact. */
+.topbar > .heir:has(.hero-name),
+.topbar .heir-identity:has(.hero-name) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+.topbar .heir-ordinal.hero-name {
+  max-inline-size: min(12rem, calc(100vw - 6rem));
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}

@@ -8,6 +8,53 @@ All38 current product items plus retained visual/content work remain in scope.
 Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
 The fun>=80 goal remains unverified; do not narrow completion to a small cut.
 
+Active integration checkpoint (not yet committed): Cut208 earned-client acceptance
+passes326 real checks on the prior802c WASM. Complete milestones now retain
+safe enabled open links; construction/hire/reward actions remain guarded.
+Cut211 persistent-hero core and UI are implemented;11 semantic checks pass,
+including actual unscouted60s death recovery and prepared-build replay parity.
+Final combined Cut211 native passes866/0/6 existing ignored in50.42s;
+Clippy alltargets warningsdenied passes20.17s. Earlier862/4 oldturn0-away
+failures are preserved with actual-moving fixture amendments. Cheap8seed
+idle-d8/idle-d13/reach balance is running; broader balance is not certified. Cut212 map/trail source and Root Watch hooks
+are integrated;400/1440 actual GL/Canvas proof exists on prior802c package.
+New-package acceptance and320/200% geometry remain open. Cut214 physical
+Guild/pool/device renderer is active; Root has wired real-service availability,
+information controls and routes. Final real Cut211 WASM6480205bytes SHA
+a1f6777bf5e75d4e251433dad9339c02a5ce599e90de4cae7cca4da185aba94e;
+HeroLife307 actual client checks and4/4 root affected groups pass.
+Hero header/recovery routes and physical-service acceptance are in progress. Cut213 old
+pacing is measured from isolated3753532a source; no pacing gate change yet.
+Agents own their running checks. Uncommitted source must be verified and
+recorded before staging; prior3753532a remains pushed checkpoint.
+
+Final source checkpoint updates: normal test runner now passes its owned fresh
+URL to the new suites. Original5/6 integrated run is preserved: Journal's old
+turn0-away fixture needed one actual engine step under persistent home rules;
+corrected326 checks pass on the same source, without weakening assertions.
+Current names, captured death names and camp recovery have44/9/14 focused
+client checks. Cut21263 model/DOM checks plus whole-Watch six viewport/font
+cases pass with actual earned boss metadata. Cut214 physical renderer is
+uncommitted and active, excluded from the foundation checkpoint.
+
+A genuine roster UI issue was fixed in Rust: earned pool/device availability
+now aggregates all actual residents, while selected life/recovery/rest remains
+selected. Earlier866 full native precedes that readonly change. Current
+Session14/persistent11 tests and Clippy29.67s pass. Final rebuilt WASM
+6485581bytes SHA0f2e91bf0a2d824a6c5e93d0591c90fc244831cfd2eeb2dc4849a7940f17383b.
+Earlier307 Hero/326 Journal/44 header packages remain explicitly identified;
+current-package multihero physical proof is still pending. Targeted8seed
+idle-d8/idle-d13/reach passes23s, not a broad balance gate. Survivor trait
+unlock/old next-heir policy replacement and the full39-item queue remain open.
+
+Latest owner addition: legendary drops are automatically kept and unlock the
+corresponding Forge choice. Cut215 contract is written, adding acceptance39
+without dropping earlier work. Three named build effects with tradeoffs,
+free owned reuse, inherited permanent Forge upgrades, automatic ownership
+and ordinary duplicate conversion; no Keep/Claim/new wallet/rerolls. Core lane
+is auditing existing rarity versus real named legendary content before edits.
+Cut211 runtime/package remains frozen until its evidence is complete.
+
 Latest owner steering: the cage is a distraction; remove its player-facing
 choice system (Cut210). Implemented automatic cache loot: no preference editor,
 timed override, live-view wait, special batching or skip stop. Actual new loot

@@ -107,6 +107,8 @@ const METHODS: (keyof Engine)[] = [
   "upgradeHero",
   "upgradeHeroNext",
   "respecLegacy",
+  "renameHero",
+  "rebirthHero",
   "setSpecialization",
   "learnClassSkill",
   "resetClassSkills",

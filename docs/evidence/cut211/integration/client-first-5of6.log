@@ -1,0 +1,10 @@
+client suite: targeted (6 selected; 144 current full; 186 exhaustive groups)
+ok   hero-life-camp  4.7s (4.3s)  14 actual camp recovery checks PASS; cleared-world flag controlled, no earned win claim
+ok   live-depth-map  5.6s (5.2s)  live-depth-map: 63 checks PASS (real WASM, controlled map labels and movement)
+ok   hero-frame      6.4s (6.1s)  44 actual current-name geometry/historical-captured identity checks PASS
+ok   death-hero      8.3s (7.9s)  1440 9 historical death hero checks PASS
+FAIL journal-earned  36.0s (35.7s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/web/tests/journal-earned.mjs:376:10 {
+ok   hero-life       45.8s (45.4s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-600","recovering-590","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+FAIL: 5/6 client gates in 45.8s

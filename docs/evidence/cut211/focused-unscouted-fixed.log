@@ -1,0 +1,20 @@
+
+running 9 tests
+..... 5/9
+persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng --- FAILED
+...
+failures:
+
+---- persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng stdout ----
+
+thread 'persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng' (73) panicked at crates/idlever-core/src/persistent.rs:509:49:
+called `Result::unwrap()` on an `Err` value: "learn parent skill"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng
+
+test result: FAILED. 8 passed; 1 failed; 0 ignored; 0 measured; 861 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

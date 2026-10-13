@@ -270,6 +270,7 @@ fn every_exit_names_its_reason() {
         }
         let mut g = crate::Game::new_resident(seed);
         for k in 0..5 {
+            g.rest_tick(crate::persistent::remaining(&g.lineage) as u32);
             g.send();
             let mut line = None;
             for _ in 0..400 {

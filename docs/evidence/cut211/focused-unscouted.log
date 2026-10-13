@@ -1,0 +1,30 @@
+
+running 9 tests
+..... 5/9
+persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng --- FAILED
+.. 8/9
+persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock --- FAILED
+
+failures:
+
+---- persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng stdout ----
+
+thread 'persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng' (76) panicked at crates/idlever-core/src/persistent.rs:509:41:
+called `Result::unwrap()` on an `Err` value: "unknown class skill"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock stdout ----
+
+thread 'persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock' (73) panicked at crates/idlever-core/src/persistent.rs:539:9:
+assertion `left == right` failed
+  left: 600
+ right: 0
+
+
+failures:
+    persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock
+    persistent::tests::ready_preparation_accepts_class_and_spec_edits_without_repayment_or_rng
+
+test result: FAILED. 7 passed; 2 failed; 0 ignored; 0 measured; 861 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

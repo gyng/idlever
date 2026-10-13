@@ -123,12 +123,20 @@ impl Session {
     }
     pub fn lineage(&self)->Lineage {
         let mut l=self.active.lineage();
+        if let Some(hero) = l.persistent_hero.as_mut() {
+            for g in self.others.values() {
+                let [guild, pool, device] = crate::persistent::service_availability(&g.lineage, crate::persistent::away(g));
+                hero.guild.available |= guild;
+                hero.pool.available |= pool;
+                hero.device.available |= device;
+            }
+        }
         l.selected_loadout=self.active.loadout.clone();
         let slot=|id:u32,g:&Game| {
             // (a run the rest clock readied but has not begun is no delve: the hero still rests)
             let live=g.run.as_ref().filter(|r|r.over.is_none()&&(r.turn>0||g.lineage.rest_left==0));
             let xp=g.lineage.classes.get(g.lineage.class.name());
-            HeroSlot { specialization:live.map_or_else(||crate::specialization::current(&g.lineage),|r|r.hero.specialization), look:g.lineage.look.clone().unwrap_or_else(||g.lineage.class.default_look().into()), hero_name:crate::legacy::hero_identity(g.lineage.seed,g.lineage.heir,id), build:crate::packages::build_name(&g.lineage), id, name:format!("Bloodline {id}"), heir:g.lineage.heir, class:g.lineage.class.name().into(),
+            HeroSlot { life_state:crate::persistent::life_state(&g.lineage,crate::persistent::away(g)).into(), recovery_s:crate::persistent::remaining(&g.lineage).div_ceil(10), specialization:live.map_or_else(||crate::specialization::current(&g.lineage),|r|r.hero.specialization), look:g.lineage.look.clone().unwrap_or_else(||g.lineage.class.default_look().into()), hero_name:crate::persistent::name(&g.lineage), build:crate::packages::build_name(&g.lineage), id, name:format!("Bloodline {id}"), heir:g.lineage.heir, class:g.lineage.class.name().into(),
                 level:xp.map_or(1,|x|x.level), xp:xp.map_or(0,|x|x.xp), next:xp.map(|x|if x.level>=crate::engine::MAX_LEVEL {0}else{crate::hero::xp_to_next(x.level)}),
                 state:if live.is_some(){"live"}else if g.waits(){"waits"}else{"rests"}.into(),
                 live:g.live_run(), rest_s:g.lineage.rest_left as f64 /10.0,
@@ -264,6 +272,35 @@ impl Session {
 mod tests {
     use super::*;
     fn resident()->Session { let mut s=Session::new(1);s.active.build_town("house").unwrap();s.active.lineage.gold_move(1000,"test income");s }
+    #[test]
+    fn earned_services_remain_town_wide_when_selecting_a_new_resident() {
+        let mut s=resident();
+        // Controlled lifetime milestones, with a real paid resident addition.
+        s.active.lineage.persistent.completed=1;
+        s.active.lineage.persistent.defeats=1;
+        s.active.lineage.persistent.recovery_until_tick=s.active.lineage.total_turns+600;
+        s.active.lineage.rest_left=600;
+        s.add_bloodline().unwrap();
+        let before=s.save();
+        let first=s.lineage().persistent_hero.unwrap();
+        assert!(first.pool.available && first.device.available);
+        assert_eq!(first.recovery_s,60);
+        assert_eq!(s.save(),before);
+        s.select_bloodline(2).unwrap();
+        let before=s.save();
+        let second=s.lineage().persistent_hero.unwrap();
+        assert!(second.pool.available && second.device.available);
+        assert_eq!(second.recovery_s,0);
+        assert_eq!(second.rest_s,0);
+        assert_eq!(second.state,"ready");
+        assert_ne!(second.id,first.id);
+        assert_eq!(s.save(),before);
+        let loaded=Session::load(&before).unwrap();
+        assert_eq!(loaded.lineage().persistent_hero,Some(second));
+        assert_eq!(loaded.save(),before);
+        s.select_bloodline(1).unwrap();
+        assert_eq!(s.lineage().persistent_hero,Some(first));
+    }
     #[test]
     fn ascension_preserves_bloodlines_and_town_but_resets_shared_wallet() {
         for variant in crate::engine::VARIANTS {

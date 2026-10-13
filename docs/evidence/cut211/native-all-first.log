@@ -1,0 +1,124 @@
+
+running 867 tests
+....................................................................................... 87/867
+........................................... 130/867
+legacy::tests::a_resting_hero_buys_legacy_and_the_readied_run_carries_it --- FAILED
+. 132/867
+legacy::tests::free_respec_refunds_actual_spent_and_rebuilds_exactly_without_other_changes --- FAILED
+.... 137/867
+legacy::tests::respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchase --- FAILED
+legacy::tests::selected_slot_respec_does_not_change_shared_gold_or_any_other_game --- FAILED
+....................................................................................... 226/867
+..... 231/867
+tests::a_new_heir_chooses_between_two_offered_traits --- FAILED
+...........................................................................i........... 319/867
+...... 325/867
+tests::death_keeps_nothing_and_leaves_bones --- FAILED
+....................................................................................... 413/867
+.. 415/867
+tests::no_rest_removes_the_verb_and_halves_camp_rest --- FAILED
+.......................................................................... 490/867
+tests::rested_is_the_rest_the_absences_runs_earned --- FAILED
+....................................................................iii................ 578/867
+....i.... 587/867
+tests::the_wake_offers_owned_classes_and_the_pick_sticks --- FAILED
+...i.................. 610/867
+tests_cut119::the_heir_line_names_the_worn_trait --- FAILED
+....................................................................................... 698/867
+................ 714/867
+tests_cut305::hero_names_are_read_only_stable_and_follow_heir_history --- FAILED
+....................................................................................... 802/867
+.............................................. 848/867
+tests_cut30::every_exit_names_its_reason --- FAILED
+..................
+failures:
+
+---- legacy::tests::a_resting_hero_buys_legacy_and_the_readied_run_carries_it stdout ----
+
+thread 'legacy::tests::a_resting_hero_buys_legacy_and_the_readied_run_carries_it' (6103) panicked at crates/idlever-core/src/legacy_tests.rs:279:20:
+called `Result::unwrap()` on an `Err` value: "Preview and confirm hero rebirth to reset attributes"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- legacy::tests::free_respec_refunds_actual_spent_and_rebuilds_exactly_without_other_changes stdout ----
+
+thread 'legacy::tests::free_respec_refunds_actual_spent_and_rebuilds_exactly_without_other_changes' (6108) panicked at crates/idlever-core/src/legacy_tests.rs:105:67:
+called `Result::unwrap()` on an `Err` value: "Preview and confirm hero rebirth to reset attributes"
+
+---- legacy::tests::respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchase stdout ----
+
+thread 'legacy::tests::respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchase' (6441) panicked at crates/idlever-core/src/legacy_tests.rs:89:31:
+assertion `left == right` failed
+  left: Some(200000)
+ right: None
+
+---- legacy::tests::selected_slot_respec_does_not_change_shared_gold_or_any_other_game stdout ----
+
+thread 'legacy::tests::selected_slot_respec_does_not_change_shared_gold_or_any_other_game' (6443) panicked at crates/idlever-core/src/legacy_tests.rs:131:27:
+called `Result::unwrap()` on an `Err` value: "Preview and confirm hero rebirth to reset attributes"
+
+---- tests::a_new_heir_chooses_between_two_offered_traits stdout ----
+
+thread 'tests::a_new_heir_chooses_between_two_offered_traits' (10401) panicked at crates/idlever-core/src/tests.rs:7326:9:
+assertion `left == right` failed: seed 1
+  left: 0
+ right: 2
+
+---- tests::death_keeps_nothing_and_leaves_bones stdout ----
+
+thread 'tests::death_keeps_nothing_and_leaves_bones' (16948) panicked at crates/idlever-core/src/tests.rs:1127:5:
+a death is a 20-minute wake
+
+---- tests::no_rest_removes_the_verb_and_halves_camp_rest stdout ----
+
+thread 'tests::no_rest_removes_the_verb_and_halves_camp_rest' (24352) panicked at crates/idlever-core/src/tests.rs:3584:5:
+assertion `left == right` failed
+  left: 600
+ right: 6000
+
+---- tests::rested_is_the_rest_the_absences_runs_earned stdout ----
+
+thread 'tests::rested_is_the_rest_the_absences_runs_earned' (29359) panicked at crates/idlever-core/src/tests.rs:9125:5:
+assertion `left == right` failed
+  left: 540
+ right: 10800
+
+---- tests::the_wake_offers_owned_classes_and_the_pick_sticks stdout ----
+
+thread 'tests::the_wake_offers_owned_classes_and_the_pick_sticks' (36217) panicked at crates/idlever-core/src/tests.rs:7660:29:
+index out of bounds: the len is 0 but the index is 0
+
+---- tests_cut119::the_heir_line_names_the_worn_trait stdout ----
+
+thread 'tests_cut119::the_heir_line_names_the_worn_trait' (41546) panicked at crates/idlever-core/src/tests_cut119.rs:271:9:
+seed 1: a temperament card worn
+
+---- tests_cut305::hero_names_are_read_only_stable_and_follow_heir_history stdout ----
+
+thread 'tests_cut305::hero_names_are_read_only_stable_and_follow_heir_history' (48851) panicked at crates/idlever-core/src/tests_cut305.rs:673:9:
+assertion `left != right` failed
+  left: "Hale Ash"
+ right: "Hale Ash"
+
+---- tests_cut30::every_exit_names_its_reason stdout ----
+
+thread 'tests_cut30::every_exit_names_its_reason' (50334) panicked at crates/idlever-core/src/tests_cut30.rs:287:26:
+an exit line
+
+
+failures:
+    legacy::tests::a_resting_hero_buys_legacy_and_the_readied_run_carries_it
+    legacy::tests::free_respec_refunds_actual_spent_and_rebuilds_exactly_without_other_changes
+    legacy::tests::respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchase
+    legacy::tests::selected_slot_respec_does_not_change_shared_gold_or_any_other_game
+    tests::a_new_heir_chooses_between_two_offered_traits
+    tests::death_keeps_nothing_and_leaves_bones
+    tests::no_rest_removes_the_verb_and_halves_camp_rest
+    tests::rested_is_the_rest_the_absences_runs_earned
+    tests::the_wake_offers_owned_classes_and_the_pick_sticks
+    tests_cut119::the_heir_line_names_the_worn_trait
+    tests_cut305::hero_names_are_read_only_stable_and_follow_heir_history
+    tests_cut30::every_exit_names_its_reason
+
+test result: FAILED. 849 passed; 12 failed; 6 ignored; 0 measured; 0 filtered out; finished in 59.42s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

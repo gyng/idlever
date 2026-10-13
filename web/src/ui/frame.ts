@@ -137,7 +137,7 @@ function legacyMark(L: App["lineage"], heir?: number): HTMLElement | null {
 }
 export function renderBar(
   app: App,
-  opts: { live?: boolean; heir?: number; trait?: string; watch?: boolean } = {},
+  opts: { live?: boolean; heir?: number; trait?: string; watch?: boolean; heroName?: string } = {},
 ): Bar {
   const offers = h("div", { class: "offers", hidden: true });
   const el = h("header", { class: "strip topbar" });
@@ -147,6 +147,13 @@ export function renderBar(
     const L = app.lineage,
       R = revealed(app),
       past = opts.heir !== undefined && opts.heir !== L.heir;
+    // Explicit historical identities retain their captured ordinal. Only a current
+    // foreground run may resolve its matching heir to the persistent actor.
+    const presentHero =
+      !past && (opts.heir === undefined || (opts.watch && L.live?.heir === opts.heir))
+        ? L.persistent_hero
+        : undefined;
+    const shownName = opts.heroName ?? presentHero?.name;
     // the purse's fall since it was last shown off the watch, with what spent it (the watch neither reads nor moves the mark)
     const ledger = L.gold_ledger ?? [];
     let seen = purseSeen.get(app);
@@ -220,8 +227,15 @@ export function renderBar(
                 : "",
               h(
                 "span",
-                { class: "heir-ordinal" },
-                ...kwText(heirOrd(opts.heir ?? L.heir), ["heir"]),
+                {
+                  class: shownName ? "heir-ordinal hero-name" : "heir-ordinal",
+                  title:
+                    opts.heroName === undefined && presentHero
+                      ? /* copy:label */ `Life ${presentHero.incarnation}`
+                      : undefined,
+                  "data-current-hero": opts.heroName === undefined ? presentHero?.id : undefined,
+                },
+                ...(shownName ? [shownName] : kwText(heirOrd(opts.heir ?? L.heir), ["heir"])),
               ),
             ),
           ), // a death's bar names the hero who died (QA 92eb880)

@@ -1312,7 +1312,7 @@ pub fn heir_choice(l: &LineageState, cards: &[crate::traits::Card], answer: Opti
 pub fn heir_line(l: &LineageState) -> Option<String> {
     let born = l.heirs.born?;
     let killer = l.graveyard.last()?.cause.clone();
-    let name = crate::legacy::hero_name(l.seed, l.heir);
+    let name = crate::persistent::name(l);
     let answers = crate::traits::answer_gift(&killer).is_some_and(|(g, _)| g == born.gift);
     let foe = crate::defs::MONSTERS.iter().find(|m| m.kind == killer).map_or(killer.replace('_', " "), |m| if m.boss { crate::sifter::boss_short(m.kind).to_string() } else { m.title.to_string() });
     Some(if answers { format!("{name} · {} · answers the {foe}", born.chip()) } else { format!("{name} · {}", born.chip()) })

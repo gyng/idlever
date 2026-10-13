@@ -693,6 +693,16 @@ impl Game {
         self.inner.respec_legacy().map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
+    #[wasm_bindgen(js_name = renameHero)]
+    pub fn rename_hero(&mut self, name: &str) -> Result<String, JsError> {
+        self.inner.rename_hero(name).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
+    #[wasm_bindgen(js_name = rebirthHero)]
+    pub fn rebirth_hero(&mut self, token: &str) -> Result<String, JsError> {
+        self.inner.rebirth_hero(token).map_err(err)?;
+        Ok(js(&self.inner.lineage()))
+    }
     #[wasm_bindgen(js_name = buildTown)]
     pub fn build_town(&mut self, id: &str) -> Result<String, JsError> {
         self.inner.build_town(id).map_err(err)?;

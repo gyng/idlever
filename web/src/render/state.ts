@@ -8,6 +8,7 @@
 // up. A move tweens across the tile over the actor's action interval, inferred by peeking at
 // the actor's next queued event (default 10 ticks, clamped 3..20), progress quantised to whole
 // ticks (10 fps cadence at 1×). Callouts stay on a real-time 1 s cadence.
+import { MovementTrail } from "./movement-trail";
 import { heroKind } from "./look";
 import { nameRefs } from "../ui/tokens"; // docs/COPY.md: a rule by its words on the canvas too
 import type { Ev, GunSnap, Overlay, Snapshot, Tile, FloorItem, Entity } from "./types";
@@ -147,6 +148,7 @@ export class ReplayState {
   screenShake: ScreenShake | null = null;
   /** juice (docs/JUICE.md): every event applied in play, for render-only feedback (fx.ts); never called while a seek or a skip
    *  replays the past (`bulk`) */
+  readonly trail = new MovementTrail();
   onEvent: ((ev: Ev) => void) | null = null;
   private bulk = false;
   private ended = false;
@@ -166,6 +168,7 @@ export class ReplayState {
   }
 
   private reset(s: Snapshot): void {
+    this.trail.clear();
     this.gun = s.hero.gun ? { ...s.hero.gun } : null;
     this.w = s.w;
     this.h = s.h;
@@ -409,6 +412,7 @@ export class ReplayState {
       this.applyOne(head);
     }
     this.bulk = false;
+    this.trail.clear();
     this.clock = this.queue.length > 0 ? this.queue[0]!.t : this.lastT + IDLE_TAIL;
     this.wholeTick = Math.floor(this.clock);
     this.finishTweens();
@@ -430,6 +434,7 @@ export class ReplayState {
       } else this.queue.push(ev);
     }
     this.bulk = false;
+    this.trail.clear();
     this.clock = t;
     this.wholeTick = Math.floor(t);
     // the replayed past sets no text: a caption or callout from an event before the landing tick is stale (QA on 3d71c33: a chain
@@ -481,6 +486,8 @@ export class ReplayState {
         if (!e) break;
         // start from wherever the previous tween would be at t (chained moves stay continuous); a remembered
         // foe is never tweened (Cut 4 §3): it lands on the tile
+        if (e.hero && !e.remembered && !e.fresh && !this.bulk)
+          this.trail.move(t, e.x, e.y, ev.x, ev.y);
         if (e.remembered || e.fresh) {
           e.move = null;
           e.px = ev.x;

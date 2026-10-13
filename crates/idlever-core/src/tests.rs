@@ -1124,8 +1124,8 @@ fn death_keeps_nothing_and_leaves_bones() {
     assert_eq!(b.items.len(), 5, "sword, heals, scroll, the uninsured plate; not the starting sword");
     assert!(g.lineage.facts.contains("bones:1"));
     assert!(g.events.iter().any(|e| matches!(e, Ev::Bones { heir: 1, items: 5, .. })));
-    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds: 1200, .. })), "a death is a 20-minute wake");
-    assert_eq!(g.lineage().rest_left_s, 1200);
+    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds: 60, .. })), "defeat starts automatic 60-second recovery");
+    assert_eq!(g.lineage().rest_left_s, 60);
     assert_eq!(g.lineage().bones[0].items, 5);
     // The next heir finds them on D1 and recovers them.
     g.auto_keep();
@@ -3581,7 +3581,7 @@ fn no_rest_removes_the_verb_and_halves_camp_rest() {
     g.ascend("no_rest").unwrap();
     assert!(!g.vocabulary().verbs.iter().any(|v| v.v == "rest"));
     assert_eq!(g.rest_after(6000, ExitTier::Return), crate::offline::rest_after(6000, ExitTier::Return) / 2);
-    assert_eq!(g.rest_after(6000, ExitTier::Death), crate::engine::WAKE_TICKS / 2);
+    assert_eq!(g.rest_after(6000, ExitTier::Death), crate::engine::WAKE_TICKS,"death recovery cannot be skipped or halved");
     g.start_run(Some(9));
     g.run.as_mut().unwrap().monsters.clear();
     g.run.as_mut().unwrap().hero.hp = 10;
@@ -7301,7 +7301,7 @@ fn a_stalled_run_gets_a_verdict_whose_cause_the_reel_repeats() {
 /// the other, which sticks through a save; a name not on offer is refused; the send spends
 /// the offer.
 #[test]
-fn a_new_heir_chooses_between_two_offered_traits() {
+fn first_traits_are_offered_and_defeat_keeps_the_choice() {
     let g = Game::new_literal(21);
     let offer = g.lineage().trait_offer;
     assert_eq!(offer.len(), 2);
@@ -7323,15 +7323,13 @@ fn a_new_heir_chooses_between_two_offered_traits() {
         g.finish_run();
         let l = g.lineage();
         assert_eq!(l.heir, 2);
-        assert_eq!(l.trait_offer.len(), 2, "seed {seed}");
-        assert!(!l.trait_offer.contains(&last.name().to_string()), "seed {seed}: the last heir's {} offered again", last.name());
-        assert_eq!(l.trait_, l.trait_offer[0]);
+        assert!(l.trait_offer.is_empty(), "seed {seed}: defeat never rerolls commitments");
+        assert_eq!(l.trait_,last.name());
         assert_eq!(g.set_trait("nobody").unwrap_err(), "not on offer");
-        let pick = l.trait_offer[1].clone();
-        g.set_trait(&pick).unwrap();
-        assert_eq!(g.lineage().trait_, pick);
+        let pick = last.name().to_string();
         let mut h = Game::load(&g.save()).unwrap();
         assert_eq!((h.lineage().trait_, h.lineage().trait_offer.clone()), (pick.clone(), l.trait_offer.clone()), "the pick and the offer survive a save");
+        h.rest_tick(crate::persistent::RECOVERY_TICKS as u32);
         h.send();
         assert!(h.lineage().trait_offer.is_empty(), "the send spends the offer");
         assert_eq!(h.run.as_ref().unwrap().trait_.name(), pick, "the run wears the pick");
@@ -7626,7 +7624,7 @@ fn a_picked_depth_pays_less_and_recovers_night_over_night() {
 /// §2: the wake offers the owned classes (the current first, each with its signature verb);
 /// the pick sticks to the heir's runs, through a save and past the next heir's wake.
 #[test]
-fn the_wake_offers_owned_classes_and_the_pick_sticks() {
+fn owned_classes_stay_available_and_the_pick_sticks_after_defeat() {
     let mut g = Game::new_literal(8);
     g.lineage.unlocks.remove("rogue");
     assert!(g.lineage().class_offer.is_empty(), "one class owned: no chips");
@@ -7643,7 +7641,7 @@ fn the_wake_offers_owned_classes_and_the_pick_sticks() {
     assert_eq!(g.lineage().class_offer[0].class, "ranger", "the pick leads");
     let mut g = Game::load(&g.save()).unwrap();
     g.send();
-    assert!(g.lineage().class_offer.is_empty(), "the send closes the wake");
+    assert_eq!(g.lineage().class_offer[0].class,"ranger","owned build choices persist after departure");
     assert_eq!(g.run.as_ref().unwrap().hero.class, Class::Ranger, "the run wears the pick");
     g.run.as_mut().unwrap().over = Some(ExitTier::Bank);
     g.finish_run();

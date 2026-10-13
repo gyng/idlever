@@ -56,9 +56,9 @@ struct Node {
     parent:Option<&'static str>,depth:u32,other:Option<&'static str>,mask:u16,price:u32,
 }
 const NODES:[Node;12]=[
-    Node{id:"health",name:"Health",branch:"Recovery",effect:"+3 HP",parent:None,depth:0,other:None,mask:0,price:0},
-    Node{id:"damage",name:"Damage",branch:"Control",effect:"+1 damage",parent:None,depth:0,other:None,mask:0,price:0},
-    Node{id:"armour",name:"Armour",branch:"Warding",effect:"+1 armour",parent:None,depth:0,other:None,mask:0,price:0},
+    Node{id:"health",name:"Vitality",branch:"Recovery",effect:"+3 HP",parent:None,depth:0,other:None,mask:0,price:0},
+    Node{id:"damage",name:"Strength",branch:"Control",effect:"+1 damage",parent:None,depth:0,other:None,mask:0,price:0},
+    Node{id:"armour",name:"Guard",branch:"Warding",effect:"+1 armour",parent:None,depth:0,other:None,mask:0,price:0},
     Node{id:"restoration",name:"Restoration",branch:"Recovery",effect:"+1 HP per safe rest",parent:Some("health"),depth:8,other:None,mask:RESTORATION,price:EFFECT_PRICES[0]},
     Node{id:"control",name:"Control",branch:"Control",effect:"Stun and Slow +5 ticks",parent:Some("damage"),depth:8,other:None,mask:CONTROL,price:EFFECT_PRICES[0]},
     Node{id:"clear_lungs",name:"Clear lungs",branch:"Warding",effect:"Gas and poison damage −2",parent:Some("armour"),depth:8,other:None,mask:CLEAR_LUNGS,price:EFFECT_PRICES[0]},
@@ -127,7 +127,7 @@ pub fn away(g: &Game) -> bool {
 }
 /// A run readied by the rest clock but not begun carries the bloodline as it stands: its hero and
 /// the camp state it left from (the verdict's replays) take a purchase or a respec made since.
-fn refit(g: &mut Game, before: &BloodlineLegacy) {
+pub(crate) fn refit(g: &mut Game, before: &BloodlineLegacy) {
     if away(g) { return; }
     let Some(run) = g.run.as_mut() else { return };
     let after = g.lineage.bloodline.clone().unwrap_or_default();
@@ -167,24 +167,13 @@ fn purchase(g: &mut Game, id: &str) -> Result<(), String> {
     refit(g, &before);
     Ok(())
 }
-fn respec_points(l:&LineageState,away:bool)->Result<u32,String> {
-    if away {return Err("hero away".into());}
-    if !l.town.home.unwrap_or(true) {return Err("build a house".into());}
-    let h=current(l).ok_or("no upgrades")?;
-    if h.upgrades.is_empty()&&h.spent==0 {return Err("no upgrades".into());}
-    h.points.checked_add(h.spent).ok_or_else(||"Legacy total overflow".into())
-}
 pub fn respec_offer(l:&LineageState,away:bool)->crate::wire::LegacyRespec {
-    let result=respec_points(l,away);
-    crate::wire::LegacyRespec{refund:current(l).map_or(0,|h|h.spent),available:result.is_ok(),
-        points_after:result.as_ref().ok().copied(),blocked:result.err()}
+    let offer=crate::persistent::preview(l,away);
+    crate::wire::LegacyRespec{refund:offer.refund,available:false,
+        points_after:offer.points_after,blocked:Some(offer.blocked.unwrap_or_else(||"Confirm hero rebirth".into()))}
 }
-pub fn respec(g:&mut Game)->Result<(),String> {
-    let points=respec_points(&g.lineage,away(g))?;
-    let before=g.lineage.bloodline.clone().unwrap_or_default();
-    let h=g.lineage.bloodline.as_mut().expect("bloodline");
-    h.points=points;h.spent=0;h.upgrades.clear();
-    refit(g,&before);Ok(())
+pub fn respec(_g:&mut Game)->Result<(),String> {
+    Err("Preview and confirm hero rebirth to reset attributes".into())
 }
 pub fn apply(l: &LineageState, hero: &mut Hero) {
     if let Some(h) = current(l) {

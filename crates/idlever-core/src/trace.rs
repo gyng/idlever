@@ -91,7 +91,7 @@ fn record(game: &Game, run: &Run, stall: bool) -> DeathRec {
         modifier_catalogue: crate::endgame::catalogue(run.difficulty),
         modifiers: if run.death_cause.as_deref() == Some(cause.as_str()) { run.death_modifiers } else { None },
         hero: Some(crate::wire::DeathHero {
-            name: crate::legacy::hero_identity(game.lineage.seed, run.heir, game.lineage.bloodline_id),
+            name: if run.hero_name.is_empty() {crate::persistent::name(&game.lineage)} else {run.hero_name.clone()},
             bloodline_id: game.lineage.bloodline_id,
             heir: run.heir,
             class: run.hero.class.name().into(),

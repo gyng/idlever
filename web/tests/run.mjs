@@ -260,7 +260,11 @@ const run1 = (n) =>
     const [file, parts] = n.split(":");
     const p = spawn("node", [`tests/${file}.mjs`, ...(parts ? [`--part=${parts}`] : [])], {
       stdio: ["ignore", "pipe", "pipe"],
-      env: { ...process.env, IDLEVER_CLIENT_AUDIT_SCOPE: selected.suite },
+      env: {
+        ...process.env,
+        IDLEVER_TEST_URL: `http://localhost:${process.env.IDLEVER_PORT}/`,
+        IDLEVER_CLIENT_AUDIT_SCOPE: selected.suite,
+      },
     });
     let out = "";
     p.stdout.on("data", (d) => (out += d));

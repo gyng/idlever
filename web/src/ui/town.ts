@@ -10,7 +10,7 @@ import { heroPresence } from "./hero-presence";
 import "../town.css";
 import "../legible.css";
 import type { App } from "../app";
-import type { Lineage, ReturnReport } from "../engine/types";
+import type { HeroService, Lineage, ReturnReport } from "../engine/types";
 import {
   createTownView,
   townState,
@@ -33,6 +33,7 @@ import { townCrier } from "./crier"; // Cut 118 §8: the town crier   // Cut 30.
 import { openChronicle } from "./chronicle";
 import { openRuns } from "./runs";
 import { openLooks } from "./look";
+import { openHeroLife } from "./hero-life";
 import { classList, classUnlockReason } from "./unlocks";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
@@ -64,6 +65,9 @@ export type TownHooks = {
 };
 /* copy:label */
 const LABEL: Record<string, string> = {
+  guild: "Guild reception",
+  pool: "Recovery pool",
+  device: "Reincarnation device",
   mouth: "Delve",
   tent: "hero",
   crate: "Loadouts",
@@ -75,6 +79,8 @@ const LABEL: Record<string, string> = {
   chest: "chest",
   worker: "next worker",
 };
+/* copy:label */
+const SERVICE_LABEL: Record<string, string> = { guild: "Guild", pool: "Pool", device: "Revival" };
 /* copy:label */
 const BUILD_NAME: Record<string, string> = {
   house: "house",
@@ -180,6 +186,24 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const buildingId = (id: string): HomeBuilding | null => {
     const actual = id === "tent" ? "house" : id === "staked" ? state?.staked?.id : id;
     return HOME_BUILDINGS.includes(actual as HomeBuilding) ? (actual as HomeBuilding) : null;
+  };
+  const service = (id: string): HeroService | undefined => {
+    const life = app.lineage.persistent_hero;
+    return id === "guild"
+      ? life?.guild
+      : id === "pool"
+        ? life?.pool
+        : id === "device"
+          ? life?.device
+          : undefined;
+  };
+  const serviceDetails = (id: string): Node[] => {
+    const actual = service(id);
+    if (!actual) return [];
+    return [
+      h("div", { class: "kw-tip-head" }, h("b", {}, actual.name)),
+      h("div", { class: "kw-tip-gloss" }, actual.body),
+    ];
   };
   let building = false;
   const buildPlot = (): void => {
@@ -480,6 +504,9 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           ]
         : []),
       ...s.buildings.map((b) => ({ id: b.id, plot: b.id as PlotId })),
+      ...(["guild", "pool", "device"] as const)
+        .filter((id) => service(id)?.available)
+        .map((id) => ({ id, plot: id as PlotId })),
       ...(s.board ? [{ id: "board", plot: "board" as PlotId }] : []),
     ];
     // Cut 30.5: the chest taps while it holds a haul (drawn, closed and empty, it is no surface); the lit node's greyed worker opens the works
@@ -530,13 +557,16 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           },
           h("span", { class: "vh" }, label),
         );
-        if (buildingId(w.id)) detailHost(b, () => buildingDetails(app.lineage, buildingId(w.id)!));
+        if (service(w.id)) detailHost(b, () => serviceDetails(w.id));
+        else if (buildingId(w.id))
+          detailHost(b, () => buildingDetails(app.lineage, buildingId(w.id)!));
         else if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         btns.set(w.id, b);
         hits.appendChild(b);
       }
       const homeId = buildingId(w.id);
-      if (homeId) {
+      const actualService = service(w.id);
+      if (homeId || actualService) {
         let help = helpButtons.get(w.id);
         if (!help) {
           help = h("button", {
@@ -547,17 +577,21 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
               openTip(e.currentTarget as HTMLElement);
             },
           });
-          detailHost(help, () => buildingDetails(app.lineage, buildingId(w.id)!));
+          detailHost(help, () =>
+            service(w.id) ? serviceDetails(w.id) : buildingDetails(app.lineage, buildingId(w.id)!),
+          );
           helpLabels.append(help);
           helpButtons.set(w.id, help);
           labelResize?.observe(help);
         }
-        help.setAttribute("aria-label", `${buildingName(homeId)} information`);
-        if (help.dataset.homeId !== homeId) {
-          help.dataset.homeId = homeId;
+        const name = actualService?.name ?? buildingName(homeId!);
+        const helpId = homeId ?? w.id;
+        help.setAttribute("aria-label", `${name} information`);
+        if (help.dataset.homeId !== helpId) {
+          help.dataset.homeId = helpId;
           replace(
             help,
-            h("span", { class: "town-building-name" }, buildingName(homeId)),
+            h("span", { class: "town-building-name" }, SERVICE_LABEL[w.id] ?? name),
             h("span", { class: "town-info-glyph", "aria-hidden": "true" }, "i"),
           );
         }
@@ -854,6 +888,14 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     view.poke();
     const b = btns.get(id)!;
     const L = app.lineage;
+    const facility = service(id);
+    if (facility) {
+      if (!facility.available) return;
+      closeAllSheets();
+      if (id === "guild") openWorks(app, L.tree?.next_worker ?? undefined, b);
+      else openHeroLife(app, b, id === "pool" ? "recovery" : "rebirth");
+      return;
+    }
     if (id === "mouth") {
       hooks.send();
       return;
@@ -1129,6 +1171,7 @@ export function openHero(
           L.class_tree,
           L.legacy_upgrades,
           L.legacy_respec,
+          L.persistent_hero,
           L.supplies,
           L.starting_kits,
           L.supply_cap,
@@ -1249,6 +1292,19 @@ export function openHero(
                   "button",
                   { class: "chip hero-runs", onclick: () => openRuns(app) },
                   /* copy:button */ "Run log",
+                )
+              : null,
+            L.persistent_hero
+              ? h(
+                  "button",
+                  {
+                    class: "chip hero-life-open",
+                    onclick: () => {
+                      closeAllSheets();
+                      openHeroLife(app);
+                    },
+                  },
+                  /* copy:button */ "Hero",
                 )
               : null,
           ),

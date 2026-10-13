@@ -1,10 +1,12 @@
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   const page = await browser.newPage(),
@@ -27,15 +29,23 @@ try {
     return {
       reason,
       unchanged: before === (await app.engine.save()),
-      offer: (await app.engine.lineage()).legacy_respec,
+      offer: (await app.engine.lineage()).persistent_hero.rebirth,
+      oldOffer: (await app.engine.lineage()).legacy_respec ?? null,
     };
   });
-  assert.match(result.reason, /build a house|no upgrades/);
+  assert.match(result.reason, /rebirth/i);
   assert.equal(result.unchanged, true);
+  // Inactive compatibility wire remains until the coordinated API cleanup.
+  assert.equal(result.oldOffer.available, false);
+  assert.equal(result.oldOffer.refund, result.offer.refund);
+  assert.equal(result.oldOffer.points_after, result.offer.points_after);
+  assert.equal(result.oldOffer.blocked, result.offer.blocked);
   assert.equal(result.offer.available, false);
   assert.equal(result.offer.refund, 0);
   assert.deepEqual(errors, []);
-  console.log("real WASM worker respec bridge, Rust refusal and complete save unchanged PASS");
+  console.log(
+    "real WASM obsolete respec refuses toward Rebirth preview; complete save unchanged PASS",
+  );
 } finally {
   await browser.close();
 }

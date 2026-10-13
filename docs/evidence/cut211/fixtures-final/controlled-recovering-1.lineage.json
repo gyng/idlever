@@ -1,0 +1,2980 @@
+{
+  "persistent_hero": {
+    "id": "91:1",
+    "name": "Mara",
+    "incarnation": 2,
+    "rebirths": 0,
+    "state": "recovering",
+    "recovery_s": 1,
+    "rest_s": 1,
+    "need": "recovery",
+    "attributes": [
+      {
+        "id": "health",
+        "name": "Vitality",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      },
+      {
+        "id": "damage",
+        "name": "Strength",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      },
+      {
+        "id": "armour",
+        "name": "Guard",
+        "rank": 0,
+        "value": 0,
+        "next_price": 15
+      }
+    ],
+    "guild": {
+      "id": "guild",
+      "name": "Guild reception",
+      "available": false,
+      "body": "Hire the Scout here to schedule delves while away."
+    },
+    "pool": {
+      "id": "recovery",
+      "name": "Recovery pool",
+      "available": true,
+      "body": "Rest completes automatically. Nothing needs tending."
+    },
+    "device": {
+      "id": "reincarnation",
+      "name": "Reincarnation device",
+      "available": true,
+      "body": "Defeat returns the same hero. Attributes and builds remain."
+    },
+    "rebirth": {
+      "available": false,
+      "blocked": "Finish recovery",
+      "token": "a2676f3bdc1c769f",
+      "refund": 0,
+      "points_after": 2,
+      "required_depth": 8,
+      "delves_remaining": 0,
+      "seconds_remaining": 0,
+      "resets": [
+        "Legacy attributes and branches",
+        "Current incarnation's deeds"
+      ],
+      "retains": [
+        "Name and identity",
+        "Refunded Legacy",
+        "Class XP and learned skills",
+        "Traits and temperament",
+        "Kits and discoveries",
+        "Town, Gold and dungeon progress",
+        "Companion ownership"
+      ]
+    }
+  },
+  "journal": {
+    "bloodline_id": 1,
+    "seed": "91",
+    "heir": 2,
+    "recommended": "delve",
+    "chapters": [
+      {
+        "id": "town",
+        "title": "Town",
+        "entries": [
+          {
+            "id": "house",
+            "title": "Build a house",
+            "reason": "Your first hero needs a home.",
+            "effect": "A resident arrives. Construction costs no Gold.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "build_town",
+              "target": "house",
+              "label": "Build house",
+              "enabled": false,
+              "blocked": "Already built"
+            }
+          },
+          {
+            "id": "porter",
+            "title": "Hire the Porter",
+            "reason": "Workers automate chores once their milestones are ready.",
+            "effect": "Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",
+            "state": "later",
+            "progress": {
+              "current": 0,
+              "required": 3,
+              "unit": "hauls"
+            },
+            "requirements": [
+              "3 hauls;0 Gold"
+            ],
+            "action": {
+              "kind": "hire",
+              "target": "porter",
+              "label": "Hire Porter",
+              "enabled": false,
+              "blocked": "Requirements unmet"
+            }
+          },
+          {
+            "id": "scout",
+            "title": "Hire the Scout",
+            "reason": "Until the Scout is hired, each departure needs your tap.",
+            "effect": "The Scout sends the hero after each rest. Away progress becomes uncapped.",
+            "state": "later",
+            "progress": {
+              "current": 1,
+              "required": 3,
+              "unit": "manual delves"
+            },
+            "requirements": [
+              "3 manual delves; 63 Gold"
+            ],
+            "action": {
+              "kind": "hire",
+              "target": "scout",
+              "label": "Hire Scout",
+              "enabled": false,
+              "blocked": "Requirements unmet"
+            }
+          },
+          {
+            "id": "blacksmith",
+            "title": "Build the Forge",
+            "reason": "Permanent upgrades change every future starting kit.",
+            "effect": "Spend Gold once on upgrades. Unlocked gear and supplies are free to reuse.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "Bank at a checkpoint or bring home Gold"
+            ],
+            "action": {
+              "kind": "build_town",
+              "target": "blacksmith",
+              "label": "Build the Forge",
+              "enabled": false,
+              "blocked": "Milestone unmet"
+            }
+          },
+          {
+            "id": "kennel",
+            "title": "Build the Kennel",
+            "reason": "Companions can join your builds.",
+            "effect": "Manage your tamed companions and their party slots.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "Tame a pet with a leash or bring home a companion"
+            ],
+            "action": {
+              "kind": "build_town",
+              "target": "kennel",
+              "label": "Build the Kennel",
+              "enabled": false,
+              "blocked": "Milestone unmet"
+            }
+          },
+          {
+            "id": "bank",
+            "title": "Build Savings",
+            "reason": "Spare Gold can earn interest.",
+            "effect": "Deposits earn2% per night before worker bonuses; withdrawals return your Gold.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "Complete a positive-income night; hold its net Gold (currently 0)"
+            ],
+            "action": {
+              "kind": "build_town",
+              "target": "bank",
+              "label": "Build Savings",
+              "enabled": false,
+              "blocked": "Milestone unmet"
+            }
+          },
+          {
+            "id": "bloodlines",
+            "title": "More bloodlines",
+            "reason": "Each bloodline keeps its own build and progression.",
+            "effect": "An additional resident costs250 Gold. The town supports3 bloodlines.",
+            "state": "active",
+            "progress": null,
+            "requirements": [
+              "250 Gold for another resident"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "legacy",
+              "label": "Bloodlines",
+              "enabled": true,
+              "blocked": null
+            }
+          }
+        ]
+      },
+      {
+        "id": "builds",
+        "title": "Builds",
+        "entries": [
+          {
+            "id": "loadout",
+            "title": "Reusable Loadouts",
+            "reason": "Try another build without paying for each departure.",
+            "effect": "Choose owned starting shapes and save up to eight named kits. Prepared items refill free.",
+            "state": "ready",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "loadouts",
+              "label": "Loadouts",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "tactics",
+            "title": "Tactics",
+            "reason": "Tactics choose when the hero uses learned abilities.",
+            "effect": "Equip optional policy packages. Your choices change future delves.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "slay Warlord",
+              "4h elapsed; 0h so far"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "tactics",
+              "label": "Tactics",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "reorder",
+            "title": "Orders",
+            "reason": "Workers can follow your standing choices.",
+            "effect": "Adjust automation priorities. Hired workers carry out enabled orders.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "meet Mother",
+              "Opens after 120h even without the milestone"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "orders",
+              "label": "Orders",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "heirs",
+            "title": "Legacy",
+            "reason": "A death leaves knowledge and bloodline progress.",
+            "effect": "Review Legacy and the cause of the last death.",
+            "state": "complete",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "legacy",
+              "label": "Legacy",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "class",
+            "title": "More classes",
+            "reason": "Classes bring different weapons and abilities.",
+            "effect": "Meet the real class unlock requirements, then choose your role at home.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "second class",
+              "16h elapsed; 0h so far",
+              "ranger:6 Marks; meet Mother",
+              "caster:8 Marks; meet Lich"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "class",
+              "label": "More classes",
+              "enabled": false,
+              "blocked": "Not unlocked"
+            }
+          },
+          {
+            "id": "class_tree",
+            "title": "Class builds",
+            "reason": "Class policies add optional branches to your build.",
+            "effect": "Learn cumulative class policies; changing a build does not erase earned class XP.",
+            "state": "later",
+            "progress": {
+              "current": 0,
+              "required": 6,
+              "unit": "class policies learned"
+            },
+            "requirements": [
+              "Level3; historical depth8; a class point",
+              "reach class level 3"
+            ],
+            "action": {
+              "kind": "open",
+              "target": "class",
+              "label": "Class tree",
+              "enabled": true,
+              "blocked": null
+            }
+          },
+          {
+            "id": "tame",
+            "title": "Tame with a leash",
+            "reason": "A leash can turn a suitable creature into a companion.",
+            "effect": "Prepare a leash free. Taming needs a stray or suitable weakened creature and an open party slot.",
+            "state": "active",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "companions",
+              "label": "Companions",
+              "enabled": true,
+              "blocked": null
+            }
+          }
+        ]
+      },
+      {
+        "id": "delving",
+        "title": "Delving",
+        "entries": [
+          {
+            "id": "delve",
+            "title": "Recovery",
+            "reason": "The same hero returns through the reincarnation device. Recovery finishes in 1 seconds.",
+            "effect": "A completed delve earns experience, discoveries and its actual returned Gold.",
+            "state": "active",
+            "progress": null,
+            "requirements": [
+              "Recover for 1 more seconds"
+            ],
+            "action": {
+              "kind": "delve",
+              "target": "",
+              "label": "Delve",
+              "enabled": false,
+              "blocked": "Finish recovery"
+            }
+          },
+          {
+            "id": "gold",
+            "title": "Gold on return",
+            "reason": "Found loot converts once when picked up.",
+            "effect": "Alive returns keep all remaining carried Gold. Death keeps secured checkpoint Gold and named pet protection; ordinary unprotected carry is lost.",
+            "state": "later",
+            "progress": null,
+            "requirements": [],
+            "action": {
+              "kind": "open",
+              "target": "chronicle",
+              "label": "Chronicle",
+              "enabled": false,
+              "blocked": "Complete a delve"
+            }
+          },
+          {
+            "id": "quests",
+            "title": "Quest board",
+            "reason": "A quest gives a goal beyond the next depth record.",
+            "effect": "Progress settles automatically after a run. One free swap is available per day.",
+            "state": "later",
+            "progress": null,
+            "requirements": [
+              "slay Warlord",
+              "12h elapsed; 0h so far"
+            ],
+            "action": null
+          }
+        ]
+      }
+    ],
+    "discoveries": [],
+    "quest": null
+  },
+  "class_tree": {
+    "class": "fighter",
+    "level": 1,
+    "xp": 0,
+    "next": 60,
+    "points": 0,
+    "spent": 0,
+    "available": false,
+    "blocked": "reach class level 3",
+    "reset_available": false,
+    "reset_blocked": null,
+    "nodes": [
+      {
+        "id": "fighter_warden",
+        "name": "Warden",
+        "parent": null,
+        "required_level": 3,
+        "required_depth": 8,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 3",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp<",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_warden"
+          }
+        ],
+        "effect": "bash stun +1 tick"
+      },
+      {
+        "id": "fighter_recovery",
+        "name": "Recovery",
+        "parent": "fighter_warden",
+        "required_level": 7,
+        "required_depth": 18,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 7",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "second_wind"
+            },
+            "origin": "class:path:fighter_recovery"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp<",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_recovery"
+          }
+        ],
+        "effect": "second wind +3 HP"
+      },
+      {
+        "id": "fighter_boss_guard",
+        "name": "Boss guard",
+        "parent": "fighter_warden",
+        "required_level": 5,
+        "required_depth": 13,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 5",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_boss_guard"
+          }
+        ],
+        "effect": "boss melee −1 damage"
+      },
+      {
+        "id": "fighter_reaver",
+        "name": "Reaver",
+        "parent": null,
+        "required_level": 3,
+        "required_depth": 8,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 3",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              },
+              {
+                "k": "hp>",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_reaver"
+          }
+        ],
+        "effect": "cleave +1 damage"
+      },
+      {
+        "id": "fighter_crowd_breaker",
+        "name": "Crowd breaker",
+        "parent": "fighter_reaver",
+        "required_level": 5,
+        "required_depth": 13,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 5",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_crowd_breaker"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 1
+              },
+              {
+                "k": "hp>",
+                "n": 70
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_crowd_breaker"
+          }
+        ],
+        "effect": "cleave cooldown −10 ticks"
+      },
+      {
+        "id": "fighter_boss_breaker",
+        "name": "Boss breaker",
+        "parent": "fighter_reaver",
+        "required_level": 7,
+        "required_depth": 18,
+        "owned": false,
+        "available": false,
+        "blocked": "reach class level 7",
+        "tactics": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "adj>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "shield_bash"
+            },
+            "origin": "class:path:fighter_boss_breaker"
+          },
+          {
+            "conds": [
+              {
+                "k": "adj>=",
+                "n": 2
+              },
+              {
+                "k": "hp>",
+                "n": 55
+              }
+            ],
+            "verb": {
+              "v": "cleave"
+            },
+            "origin": "class:path:fighter_boss_breaker"
+          }
+        ],
+        "effect": "boss bash +1 damage"
+      }
+    ]
+  },
+  "feats": {
+    "tokens": [],
+    "trials": [
+      {
+        "week": 0,
+        "boss": "goblin_warlord",
+        "title": "Warlord",
+        "depth": 8,
+        "rule": "affixes",
+        "label": "armoured + swift",
+        "affixes": [
+          "armoured",
+          "swift"
+        ],
+        "answers": [
+          "hunter",
+          "guarded"
+        ],
+        "owned": [],
+        "open": false,
+        "cleared": false,
+        "opted": false,
+        "weeks_left": 3,
+        "legacy": 10,
+        "needs": "slay Warlord"
+      }
+    ],
+    "trial_marks": 0,
+    "sealed": 0,
+    "sets": [
+      {
+        "id": "sleeper",
+        "title": "Sleeper's set",
+        "pieces": [
+          "pillow",
+          "blanket",
+          "candle"
+        ],
+        "have": [
+          false,
+          false,
+          false
+        ],
+        "done": false,
+        "bonus": "rest −2%"
+      },
+      {
+        "id": "scholar",
+        "title": "Scholar's set",
+        "pieces": [
+          "quill",
+          "lens",
+          "tome"
+        ],
+        "have": [
+          false,
+          false,
+          false
+        ],
+        "done": false,
+        "bonus": "class xp +2%"
+      },
+      {
+        "id": "hearth",
+        "title": "Hearth set",
+        "pieces": [
+          "stone",
+          "kettle",
+          "rug"
+        ],
+        "have": [
+          false,
+          false,
+          false
+        ],
+        "done": false,
+        "bonus": "+1 Legacy a return"
+      }
+    ],
+    "swift_to": 0,
+    "sinks": [],
+    "sink_order": "both",
+    "feats": 0,
+    "siege": [],
+    "graves": [],
+    "graveyard": [
+      {
+        "heir": 1,
+        "name": "Kael",
+        "depth": 1,
+        "cause": "gas",
+        "epitaph": "fell to gas, D1",
+        "day": 1,
+        "run": 1,
+        "legacy": 2
+      }
+    ],
+    "worn": {},
+    "heir_order": "answer",
+    "titles": [],
+    "deed_legacy": 0
+  },
+  "king_pct": 3,
+  "class_styles": {
+    "selected": null,
+    "offers": [
+      {
+        "id": "sentinel",
+        "name": "Sentinel",
+        "parent": "fighter",
+        "level": 1,
+        "xp": 0,
+        "next": 60,
+        "required_level": 10,
+        "required_depth": 23,
+        "deepest": 1,
+        "selected": false,
+        "available": false,
+        "blocked": "reach class level10",
+        "cooldown_ticks": 60,
+        "duration_ticks": 20,
+        "effect": "Halve one melee hit · counter 8",
+        "tactic": {
+          "conds": [
+            {
+              "k": "adj>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "riposte"
+          },
+          "origin": "style:sentinel"
+        }
+      },
+      {
+        "id": "hexbinder",
+        "name": "Hexbinder",
+        "parent": "caster",
+        "level": 1,
+        "xp": 0,
+        "next": 60,
+        "required_level": 10,
+        "required_depth": 23,
+        "deepest": 1,
+        "selected": false,
+        "available": false,
+        "blocked": "choose caster",
+        "cooldown_ticks": 60,
+        "duration_ticks": 40,
+        "effect": "Enemy attacks deal 2 less damage",
+        "tactic": {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "hex",
+            "a": "nearest"
+          },
+          "origin": "style:hexbinder"
+        }
+      }
+    ],
+    "remove_available": false,
+    "remove_blocked": null,
+    "automatic_row": true,
+    "player_overrides": false
+  },
+  "selected_loadout": [],
+  "hero_slots": [],
+  "selected_bloodline": 1,
+  "bloodline_price": 250,
+  "bloodline_cap": 3,
+  "bloodline": {
+    "points": 2,
+    "spent": 0,
+    "upgrades": {}
+  },
+  "hero_legacy": [
+    {
+      "name": "Mara",
+      "spent": 0,
+      "upgrades": {},
+      "heir": 1,
+      "points": 2,
+      "runs": 1,
+      "best_depth": 1,
+      "class": "fighter"
+    },
+    {
+      "name": "Mara",
+      "spent": 0,
+      "upgrades": {},
+      "heir": 2,
+      "points": 0,
+      "runs": 0,
+      "best_depth": 0,
+      "class": "fighter"
+    }
+  ],
+  "legacy_upgrades": [
+    {
+      "id": "health",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+3 HP",
+      "affordable": false,
+      "name": "Vitality",
+      "branch": "Recovery",
+      "blocked": "More Legacy needed"
+    },
+    {
+      "id": "damage",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+1 damage",
+      "affordable": false,
+      "name": "Strength",
+      "branch": "Control",
+      "blocked": "More Legacy needed"
+    },
+    {
+      "id": "armour",
+      "rank": 0,
+      "cap": 8,
+      "price": 15,
+      "effect": "+1 armour",
+      "affordable": false,
+      "name": "Guard",
+      "branch": "Warding",
+      "blocked": "More Legacy needed"
+    },
+    {
+      "id": "restoration",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "+1 HP per safe rest",
+      "affordable": false,
+      "name": "Restoration",
+      "branch": "Recovery",
+      "parent": "health",
+      "min_depth": 8,
+      "blocked": "Reach D8"
+    },
+    {
+      "id": "control",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "Stun and Slow +5 ticks",
+      "affordable": false,
+      "name": "Control",
+      "branch": "Control",
+      "parent": "damage",
+      "min_depth": 8,
+      "blocked": "Reach D8"
+    },
+    {
+      "id": "clear_lungs",
+      "rank": 0,
+      "cap": 1,
+      "price": 700,
+      "effect": "Gas and poison damage −2",
+      "affordable": false,
+      "name": "Clear lungs",
+      "branch": "Warding",
+      "parent": "armour",
+      "min_depth": 8,
+      "blocked": "Reach D8"
+    },
+    {
+      "id": "mending",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Heal potions +25% HP",
+      "affordable": false,
+      "name": "Mending",
+      "branch": "Recovery",
+      "parent": "restoration",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "renewal",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Natural enemy kills +1 HP",
+      "affordable": false,
+      "name": "Renewal",
+      "branch": "Recovery",
+      "parent": "restoration",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "venom",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Thrown poison +1 damage per pulse",
+      "affordable": false,
+      "name": "Venom",
+      "branch": "Control",
+      "parent": "control",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "debilitate",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Slow +15 further ticks",
+      "affordable": false,
+      "name": "Debilitate",
+      "branch": "Control",
+      "parent": "control",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "fireward",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Fire damage halved",
+      "affordable": false,
+      "name": "Fireward",
+      "branch": "Warding",
+      "parent": "clear_lungs",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    },
+    {
+      "id": "brace",
+      "rank": 0,
+      "cap": 1,
+      "price": 1800,
+      "effect": "Below 25% HP: damage −2",
+      "affordable": false,
+      "name": "Brace",
+      "branch": "Warding",
+      "parent": "clear_lungs",
+      "min_depth": 18,
+      "blocked": "Reach D18"
+    }
+  ],
+  "legacy_respec": {
+    "refund": 0,
+    "available": false,
+    "points_after": 2,
+    "blocked": "Finish recovery"
+  },
+  "runs": [
+    {
+      "id": 1,
+      "heir": 1,
+      "via": "watched",
+      "clock_s": 0,
+      "start": 1,
+      "depth": 1,
+      "tier": "death",
+      "reason": "slain · gas",
+      "gold": 0,
+      "found": 0,
+      "turns": 0,
+      "best": true,
+      "death_id": 1
+    }
+  ],
+  "clock_s": 59,
+  "absences": 0,
+  "meters": {},
+  "systems": [
+    {
+      "id": "send",
+      "open": true
+    },
+    {
+      "id": "headline",
+      "open": true
+    },
+    {
+      "id": "death",
+      "open": true,
+      "trigger": "first death",
+      "new": true,
+      "lit_by": "first death"
+    },
+    {
+      "id": "heirs",
+      "open": true,
+      "trigger": "first death",
+      "new": true,
+      "lit_by": "first death"
+    },
+    {
+      "id": "exits",
+      "open": false,
+      "trigger": "first gold home"
+    },
+    {
+      "id": "forge",
+      "open": false,
+      "trigger": "first gold home"
+    },
+    {
+      "id": "loadout",
+      "open": false,
+      "trigger": "first gold home"
+    },
+    {
+      "id": "party",
+      "open": false,
+      "trigger": "first stray"
+    },
+    {
+      "id": "kennel",
+      "open": false,
+      "trigger": "first tame"
+    },
+    {
+      "id": "stances",
+      "open": false,
+      "trigger": "meet Captain"
+    },
+    {
+      "id": "tactics",
+      "open": false,
+      "trigger": "slay Warlord"
+    },
+    {
+      "id": "bank",
+      "open": false,
+      "trigger": "a night's purse"
+    },
+    {
+      "id": "quests",
+      "open": false,
+      "trigger": "slay Warlord"
+    },
+    {
+      "id": "class",
+      "open": false,
+      "trigger": "second class"
+    },
+    {
+      "id": "start",
+      "open": false,
+      "trigger": "slay Warlord"
+    },
+    {
+      "id": "temperament",
+      "open": false,
+      "trigger": "heir 3"
+    },
+    {
+      "id": "tactic2",
+      "open": false,
+      "trigger": "meet Lich"
+    },
+    {
+      "id": "pen",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "edit",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "dial",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "unlocks",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "reorder",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "vs",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "tags",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "walls",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "divergence",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "route",
+      "open": false,
+      "trigger": "meet Mother"
+    },
+    {
+      "id": "automations",
+      "open": false,
+      "trigger": "meet Lich"
+    },
+    {
+      "id": "route2",
+      "open": false,
+      "trigger": "an oath kept"
+    },
+    {
+      "id": "heir_pick",
+      "open": false,
+      "trigger": "an oath kept"
+    }
+  ],
+  "tier": 0,
+  "oath_slots": 1,
+  "oath_draw": {
+    "cost": 2,
+    "available": false,
+    "needs": "meet Warlord"
+  },
+  "commission": {
+    "price": 630,
+    "label": "heir's statue",
+    "available": false
+  },
+  "orders": {
+    "keep": "best_weapon",
+    "cage": "weapon",
+    "start": 1,
+    "repeat": true,
+    "insure": true,
+    "forge": "half",
+    "wall": "bank",
+    "sink": "both",
+    "heir": "answer",
+    "kennel": "breed",
+    "legacy": "off",
+    "ranks": "off",
+    "ascend": "off",
+    "shared": []
+  },
+  "supply_cap": 3,
+  "seed": 91,
+  "heir": 2,
+  "trait": "brave",
+  "class": "fighter",
+  "best_depth": 1,
+  "marks": 1,
+  "facts": [
+    "bones:1",
+    "item:leash"
+  ],
+  "unlocks": [
+    "cond_loot",
+    "cond_turns",
+    "tame"
+  ],
+  "vault": [],
+  "graveyard": [
+    {
+      "heir": 1,
+      "depth": 1,
+      "cause": "gas",
+      "deeds": [
+        "D1"
+      ],
+      "death_id": 1
+    }
+  ],
+  "trophies": [],
+  "sets": [
+    {
+      "rows": [
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 30
+            }
+          ],
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            },
+            {
+              "k": "depth>=",
+              "n": 2
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "hp<",
+              "n": 25
+            }
+          ],
+          "verb": {
+            "v": "return"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "lacks",
+              "t": "heal"
+            },
+            {
+              "k": "hp<",
+              "n": 40
+            }
+          ],
+          "verb": {
+            "v": "bank"
+          },
+          "origin": "stance:steady"
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "tame",
+            "a": "open"
+          },
+          "origin": "drill:tame"
+        },
+        {
+          "conds": [
+            {
+              "k": "foes>=",
+              "n": 1
+            }
+          ],
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "origin": "stance:steady"
+        }
+      ],
+      "name": "fighter"
+    },
+    {
+      "rows": []
+    },
+    {
+      "rows": []
+    }
+  ],
+  "active_set": 0,
+  "ended": false,
+  "party": [],
+  "kennel": [],
+  "eggs": [],
+  "party_slots": 1,
+  "pets": {
+    "tame": "tames strays",
+    "tame_revoked": false,
+    "kennel": "breed",
+    "fetched": 0,
+    "bred": 0,
+    "released": 0
+  },
+  "ledger": [
+    {
+      "kind": "rat",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "jackal",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_archer",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_conjurer",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "monkey",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "ogre",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "bloat",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "pink_jelly",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "eel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "skeleton",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "ghoul",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "wraith",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "captive",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_captain",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "iron_golem",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "forge_imp",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "bell_sentinel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "slag_crawler",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "smith",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lurker",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "deep_eel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "cave_troll",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "siren",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "mirror_shade",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "warden",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "acolyte",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "echo",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "sentinel",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "goblin_warlord",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "bloat_mother",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lich",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "foundry_master",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "lurker_queen",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    },
+    {
+      "kind": "mirror_king",
+      "seen": false,
+      "known": false,
+      "tamed": false,
+      "bred": false,
+      "studied": false
+    }
+  ],
+  "gold": 40,
+  "supplies": [
+    {
+      "id": 100001,
+      "kind": "leash",
+      "known": true,
+      "label": "leash",
+      "free": true
+    }
+  ],
+  "classes": {
+    "caster": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    },
+    "fighter": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    },
+    "ranger": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    },
+    "rogue": {
+      "level": 1,
+      "xp": 0,
+      "next": 60
+    }
+  },
+  "forge": {},
+  "renown": 0,
+  "rank": 0,
+  "keep_pref": "best_weapon",
+  "keep_auto": [],
+  "insured": [],
+  "rest_left_s": 1,
+  "bones": [
+    {
+      "depth": 1,
+      "heir": 1,
+      "items": 1
+    }
+  ],
+  "ascension": {
+    "level": 0,
+    "variant": ""
+  },
+  "ascended": [],
+  "chronicle": [
+    "♟1 the brave fighter · D1 · fell to gas · left bones on D1."
+  ],
+  "vault_pref": "weapon",
+  "gold_ledger": [
+    {
+      "t": 0,
+      "delta": 0,
+      "why": "died D1"
+    },
+    {
+      "t": 0,
+      "delta": 40,
+      "why": "wake pay"
+    }
+  ],
+  "counters": [],
+  "combos": [],
+  "repeat": true,
+  "repeat_gold": 0,
+  "start": 1,
+  "start_toll": 0,
+  "trait_rules": {
+    "brave": "skips one retreat a floor",
+    "cowardly": "backs off once a floor under 50%",
+    "curious": "tries one unknown a floor",
+    "greedy": "grabs loot once a floor"
+  },
+  "start_payable": true,
+  "kit": [
+    {
+      "slot": "weapon",
+      "owned": 0,
+      "steps": [
+        {
+          "label": "sword +1",
+          "price": 125,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "sword +2",
+          "price": 500,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "sword +3",
+          "price": 1125,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "rare"
+        },
+        {
+          "label": "sword +4",
+          "price": 2000,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "rare"
+        },
+        {
+          "label": "sword +5",
+          "price": 3125,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "epic"
+        },
+        {
+          "label": "sword +6",
+          "price": 4500,
+          "owned": false,
+          "kind": "sword",
+          "rarity": "epic"
+        }
+      ],
+      "next": {
+        "label": "sword +1",
+        "price": 125,
+        "affordable": false
+      },
+      "branches": [
+        {
+          "id": "aim",
+          "label": "aim +4%",
+          "default": true
+        },
+        {
+          "id": "edge",
+          "label": "edge +1",
+          "default": false
+        }
+      ]
+    },
+    {
+      "slot": "armour",
+      "owned": 0,
+      "steps": [
+        {
+          "label": "leather",
+          "price": 125,
+          "owned": false,
+          "kind": "leather"
+        },
+        {
+          "label": "leather +1",
+          "price": 500,
+          "owned": false,
+          "kind": "leather",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "mail",
+          "price": 1000,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "mail +1",
+          "price": 1750,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "mail +2",
+          "price": 2750,
+          "owned": false,
+          "kind": "mail",
+          "rarity": "rare"
+        },
+        {
+          "label": "plate",
+          "price": 4000,
+          "owned": false,
+          "kind": "plate",
+          "rarity": "uncommon"
+        },
+        {
+          "label": "plate +1",
+          "price": 5625,
+          "owned": false,
+          "kind": "plate",
+          "rarity": "rare"
+        }
+      ],
+      "next": {
+        "label": "leather",
+        "price": 125,
+        "affordable": false
+      },
+      "branches": [
+        {
+          "id": "plate",
+          "label": "leather",
+          "default": true
+        },
+        {
+          "id": "pace",
+          "label": "pace +8%",
+          "default": false
+        }
+      ]
+    },
+    {
+      "slot": "pack",
+      "owned": 0,
+      "steps": [
+        {
+          "label": "pack 4",
+          "price": 250,
+          "owned": false
+        },
+        {
+          "label": "pack 5",
+          "price": 625,
+          "owned": false
+        },
+        {
+          "label": "pack 6",
+          "price": 1250,
+          "owned": false
+        },
+        {
+          "label": "pack 7",
+          "price": 2000,
+          "owned": false
+        }
+      ],
+      "next": {
+        "label": "pack 4",
+        "price": 250,
+        "affordable": false
+      }
+    }
+  ],
+  "starting_kits": {
+    "current": null,
+    "selected": null,
+    "saved": [],
+    "weapons": [
+      {
+        "kind": "dagger",
+        "label": "dagger",
+        "damage": [
+          2,
+          4
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "sword",
+        "label": "sword",
+        "damage": [
+          3,
+          7
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "axe",
+        "label": "axe",
+        "damage": [
+          4,
+          9
+        ],
+        "armour": 0,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "bow",
+        "label": "bow",
+        "damage": [
+          2,
+          6
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": true,
+        "compatible": true
+      },
+      {
+        "kind": "spear",
+        "label": "spear",
+        "damage": [
+          3,
+          6
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "mace",
+        "label": "mace",
+        "damage": [
+          4,
+          8
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      }
+    ],
+    "armours": [
+      {
+        "kind": "leather",
+        "label": "leather",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 1,
+        "speed": 0,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "mail",
+        "label": "mail",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 3,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "plate",
+        "label": "plate",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 5,
+        "speed": -2,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      },
+      {
+        "kind": "scale",
+        "label": "scale",
+        "damage": [
+          0,
+          0
+        ],
+        "armour": 4,
+        "speed": -1,
+        "available": false,
+        "needs": "discover 5 more",
+        "ranged": false,
+        "compatible": true
+      }
+    ],
+    "actual_weapon": "sword",
+    "actual_armour": null
+  },
+  "look": "male",
+  "affixes": [
+    {
+      "boss": "goblin_warlord",
+      "depth": 8,
+      "affix": "enraged",
+      "effect": "hits harder under half hp · less hp",
+      "counter": "kite archers · Hunter"
+    },
+    {
+      "boss": "bloat_mother",
+      "depth": 13,
+      "affix": "brood",
+      "effect": "full escort · less hp",
+      "counter": "pack break · corridor fighting"
+    },
+    {
+      "boss": "lich",
+      "depth": 18,
+      "affix": "enraged",
+      "effect": "hits harder under half hp · less hp",
+      "counter": "kite archers · Hunter"
+    },
+    {
+      "boss": "foundry_master",
+      "depth": 23,
+      "affix": "enraged",
+      "effect": "hits harder under half hp · less hp",
+      "counter": "kite archers · Hunter"
+    },
+    {
+      "boss": "lurker_queen",
+      "depth": 28,
+      "affix": "enraged",
+      "effect": "hits harder under half hp · less hp",
+      "counter": "kite archers · Hunter"
+    }
+  ],
+  "locked_rows": [
+    null,
+    null,
+    null,
+    "locked",
+    null,
+    null
+  ],
+  "oaths": [
+    {
+      "id": "bold:1",
+      "kind": "bold",
+      "chips": [
+        "reach D3",
+        "no return"
+      ],
+      "text": "reach D3 · no return",
+      "reward": {
+        "kind": "title",
+        "id": "Bold at D3",
+        "label": "title: Bold at D3"
+      },
+      "price": 130,
+      "depth": 3
+    },
+    {
+      "id": "fire:2",
+      "kind": "fire",
+      "chips": [
+        "Warlord",
+        "fire"
+      ],
+      "text": "Warlord · fire",
+      "reward": {
+        "kind": "title",
+        "id": "Warlord-burner",
+        "label": "title: Warlord-burner"
+      },
+      "price": 130,
+      "boss": "goblin_warlord",
+      "depth": 8,
+      "counter": "warlord: ?"
+    },
+    {
+      "id": "lean:6",
+      "kind": "lean",
+      "chips": [
+        "reach D3",
+        "no rest"
+      ],
+      "text": "reach D3 · no rest",
+      "reward": {
+        "kind": "title",
+        "id": "Lean at D3",
+        "label": "title: Lean at D3"
+      },
+      "price": 130,
+      "depth": 3
+    }
+  ],
+  "oath": null,
+  "walls": [
+    {
+      "boss": "goblin_warlord",
+      "title": "Warlord",
+      "depth": 8,
+      "slain": false,
+      "known": false,
+      "fact": "warlord: ?",
+      "learn": "meet him",
+      "affix": "enraged",
+      "affix_counter": "kite archers · Hunter",
+      "guard": "Skog the pink jelly",
+      "guard_counter": "boss focus · Guarded"
+    }
+  ],
+  "packages": {
+    "all": [
+      {
+        "id": "steady",
+        "name": "Steady",
+        "description": "Heal when hurt · fight nearest",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "slot": 0,
+        "owned": true,
+        "level_price": 2,
+        "level_adds": [
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 35
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            }
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 40
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            }
+          }
+        ]
+      },
+      {
+        "id": "guarded",
+        "name": "Guarded",
+        "description": "Heal early · recover between fights",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet Captain"
+      },
+      {
+        "id": "bold",
+        "name": "Bold",
+        "description": "Push deeper · fight while hurt",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "after Guarded"
+      },
+      {
+        "id": "hunter",
+        "name": "Hunter",
+        "description": "Prioritise ranged enemies and bosses",
+        "kind": "stance",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "after Bold"
+      },
+      {
+        "id": "boss_focus",
+        "name": "boss focus",
+        "description": "Prioritise bosses and their summons",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "summons first",
+          "boss first"
+        ]
+      },
+      {
+        "id": "corridor_fighting",
+        "name": "corridor fighting",
+        "description": "Fight groups from narrow corridors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "at three",
+          "at two"
+        ]
+      },
+      {
+        "id": "kite_archers",
+        "name": "kite archers",
+        "description": "Dodge archer shots · target archers",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "hunt",
+          "fall back"
+        ]
+      },
+      {
+        "id": "thief_guard",
+        "name": "thief guard",
+        "description": "Prioritise thieves · protect supplies",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "chase",
+          "head home"
+        ]
+      },
+      {
+        "id": "gas_step",
+        "name": "gas step",
+        "description": "Keep gas enemies at range",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "step away",
+          "wade in"
+        ]
+      },
+      {
+        "id": "pack_break",
+        "name": "pack break",
+        "description": "Split groups · finish weak foes",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "slay Warlord",
+        "variants": [
+          "to corridor",
+          "stand"
+        ]
+      },
+      {
+        "id": "cadence",
+        "name": "Mirror rhythm",
+        "description": "Alternate attacks against mirrors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet Mirror King"
+      },
+      {
+        "id": "reflect_read",
+        "name": "mirror read",
+        "description": "Shoot or burn reflectors · never melee them",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet a reflector"
+      },
+      {
+        "id": "noise_discipline",
+        "name": "quiet steps",
+        "description": "Rest to full · slip past blinders",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "meet a blinder"
+      },
+      {
+        "id": "deep_march",
+        "name": "deep march",
+        "description": "Press on through explored floors",
+        "kind": "tactic",
+        "level": 1,
+        "runs": 0,
+        "next_at": 10,
+        "owned": false,
+        "trigger": "enter the Deep"
+      }
+    ],
+    "stance": "steady",
+    "tactic_slots": 0,
+    "temperament_open": false,
+    "pen_open": false,
+    "pen_needs": [
+      "Meet Bloat Mother",
+      "or 120h elapsed"
+    ],
+    "rows": [
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "Steady"
+      },
+      {
+        "label": "tames strays"
+      },
+      {
+        "label": "Steady"
+      }
+    ]
+  },
+  "town": {
+    "home": true,
+    "auto_collect": true,
+    "buildings": [],
+    "next_ready": false,
+    "next": "blacksmith",
+    "next_trigger": "first gold home",
+    "bank": 0,
+    "bank_cap": 100,
+    "interest": 0,
+    "quests_done": 0,
+    "workers": [
+      {
+        "id": "quartermaster",
+        "post": "crate",
+        "rank": 1
+      }
+    ]
+  },
+  "tracks": [
+    {
+      "id": "character",
+      "stage": "Steady",
+      "stages": 1,
+      "next": "second stance",
+      "trigger": "meet Captain"
+    },
+    {
+      "id": "items",
+      "stage": "pack of 3",
+      "stages": 1,
+      "next": "blacksmith steps",
+      "trigger": "first gold home"
+    },
+    {
+      "id": "scale",
+      "stage": "one hero",
+      "stages": 1,
+      "next": "party slot 2",
+      "trigger": "a second slot"
+    },
+    {
+      "id": "town",
+      "stage": "camp",
+      "stages": 1,
+      "next": "blacksmith",
+      "trigger": "first gold home"
+    }
+  ],
+  "tree": {
+    "nodes": [
+      {
+        "id": "quartermaster",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "quartermaster",
+        "state": "done",
+        "tip": "packs heal · drill item",
+        "post": "crate"
+      },
+      {
+        "id": "porter",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "porter",
+        "state": "open",
+        "chore": "hauls",
+        "count": 0,
+        "need": 3,
+        "price": 0,
+        "affordable": true,
+        "tip": "hauls home · while away",
+        "beat": "AUTO HAUL",
+        "post": "mouth",
+        "progress": "0/3"
+      },
+      {
+        "id": "scout",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "scout",
+        "state": "open",
+        "chore": "send",
+        "count": 1,
+        "need": 3,
+        "price": 63,
+        "affordable": false,
+        "tip": "sends him · each rest",
+        "beat": "AUTO SEND",
+        "post": "fire",
+        "progress": "1/3"
+      },
+      {
+        "id": "apprentice",
+        "kind": "worker",
+        "branch": "trunk",
+        "name": "apprentice",
+        "state": "shut",
+        "chore": "forge",
+        "count": 0,
+        "need": 3,
+        "price": 375,
+        "affordable": false,
+        "fallback_h": 30,
+        "trigger": "blacksmith built",
+        "tip": "buys forge steps",
+        "beat": "AUTO FORGE",
+        "post": "blacksmith",
+        "progress": "0/3"
+      },
+      {
+        "id": "clerk",
+        "kind": "worker",
+        "branch": "town",
+        "name": "clerk",
+        "state": "shut",
+        "chore": "deposit",
+        "count": 0,
+        "need": 3,
+        "price": 500,
+        "affordable": false,
+        "fallback_h": 36,
+        "trigger": "bank built",
+        "tip": "banks spare gold",
+        "beat": "AUTO BANK",
+        "post": "bank",
+        "progress": "0/3"
+      },
+      {
+        "id": "drillmaster",
+        "kind": "worker",
+        "branch": "character",
+        "name": "drillmaster",
+        "state": "open",
+        "chore": "level",
+        "count": 0,
+        "need": 2,
+        "price": 375,
+        "affordable": false,
+        "fallback_h": 36,
+        "tip": "levels the stance",
+        "beat": "AUTO LEVEL",
+        "post": "tent",
+        "progress": "0/2",
+        "eta_h": 36
+      },
+      {
+        "id": "kennel_hand",
+        "kind": "worker",
+        "branch": "town",
+        "name": "kennel-hand",
+        "state": "shut",
+        "chore": "field",
+        "count": 0,
+        "need": 2,
+        "price": 375,
+        "affordable": false,
+        "fallback_h": 40,
+        "trigger": "kennel built",
+        "tip": "fields best pets",
+        "beat": "AUTO PETS",
+        "post": "kennel",
+        "progress": "0/2"
+      },
+      {
+        "id": "herald",
+        "kind": "worker",
+        "branch": "town",
+        "name": "herald",
+        "state": "shut",
+        "chore": "swap",
+        "count": 0,
+        "need": 2,
+        "price": 250,
+        "affordable": false,
+        "fallback_h": 40,
+        "trigger": "quest board",
+        "tip": "swaps stale quests",
+        "beat": "AUTO QUEST",
+        "post": "board",
+        "progress": "0/2"
+      },
+      {
+        "id": "guide",
+        "kind": "worker",
+        "branch": "scale",
+        "name": "guide",
+        "state": "shut",
+        "chore": "start",
+        "count": 0,
+        "need": 3,
+        "price": 500,
+        "affordable": false,
+        "fallback_h": 44,
+        "trigger": "waystones",
+        "tip": "starts deeper",
+        "beat": "AUTO START",
+        "post": "mouth",
+        "progress": "0/3"
+      },
+      {
+        "id": "kennel_keeper",
+        "kind": "worker",
+        "branch": "town",
+        "name": "kennel keeper",
+        "state": "shut",
+        "chore": "breed",
+        "count": 0,
+        "need": 2,
+        "price": 375,
+        "affordable": false,
+        "fallback_h": 48,
+        "trigger": "kennel built",
+        "tip": "breeds pets · by order",
+        "beat": "AUTO BREED",
+        "post": "kennel",
+        "progress": "0/2"
+      },
+      {
+        "id": "character:Steady",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Steady",
+        "state": "done"
+      },
+      {
+        "id": "character:second stance",
+        "kind": "stage",
+        "branch": "character",
+        "name": "second stance",
+        "state": "next",
+        "trigger": "meet Captain"
+      },
+      {
+        "id": "character:Warlord drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Warlord drilled",
+        "state": "later",
+        "trigger": "meet Warlord twice"
+      },
+      {
+        "id": "character:a tactic",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a tactic",
+        "state": "later",
+        "trigger": "slay Warlord"
+      },
+      {
+        "id": "character:pets",
+        "kind": "stage",
+        "branch": "character",
+        "name": "pets",
+        "state": "later",
+        "trigger": "first stray"
+      },
+      {
+        "id": "character:a class",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a class",
+        "state": "later",
+        "trigger": "first bank"
+      },
+      {
+        "id": "character:a temperament",
+        "kind": "stage",
+        "branch": "character",
+        "name": "a temperament",
+        "state": "later",
+        "trigger": "heir 3"
+      },
+      {
+        "id": "character:the pen",
+        "kind": "stage",
+        "branch": "character",
+        "name": "the pen",
+        "state": "later",
+        "trigger": "meet Mother"
+      },
+      {
+        "id": "character:Mother drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Mother drilled",
+        "state": "later",
+        "trigger": "meet Mother twice"
+      },
+      {
+        "id": "character:tactic slot 2",
+        "kind": "stage",
+        "branch": "character",
+        "name": "tactic slot 2",
+        "state": "later",
+        "trigger": "meet Lich"
+      },
+      {
+        "id": "character:Lich drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Lich drilled",
+        "state": "later",
+        "trigger": "meet Lich twice"
+      },
+      {
+        "id": "character:Foundry drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Foundry drilled",
+        "state": "later",
+        "trigger": "meet golems twice"
+      },
+      {
+        "id": "character:Queen drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "Queen drilled",
+        "state": "later",
+        "trigger": "meet Queen twice"
+      },
+      {
+        "id": "character:King drilled",
+        "kind": "stage",
+        "branch": "character",
+        "name": "King drilled",
+        "state": "later",
+        "trigger": "meet King twice"
+      },
+      {
+        "id": "items:pack of 3",
+        "kind": "stage",
+        "branch": "items",
+        "name": "pack of 3",
+        "state": "done"
+      },
+      {
+        "id": "items:blacksmith steps",
+        "kind": "stage",
+        "branch": "items",
+        "name": "blacksmith steps",
+        "state": "next",
+        "trigger": "first gold home"
+      },
+      {
+        "id": "items:a counter packed",
+        "kind": "stage",
+        "branch": "items",
+        "name": "a counter packed",
+        "state": "later",
+        "trigger": "a drill's item"
+      },
+      {
+        "id": "scale:one hero",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "one hero",
+        "state": "done"
+      },
+      {
+        "id": "scale:party slot 2",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "party slot 2",
+        "state": "next",
+        "trigger": "a second slot"
+      },
+      {
+        "id": "scale:waystones",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystones",
+        "state": "later",
+        "trigger": "slay Warlord"
+      },
+      {
+        "id": "scale:Mother slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother slain",
+        "state": "later",
+        "trigger": "slay Mother"
+      },
+      {
+        "id": "scale:Lich slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich slain",
+        "state": "later",
+        "trigger": "slay Lich"
+      },
+      {
+        "id": "scale:Master slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master slain",
+        "state": "later",
+        "trigger": "slay Master"
+      },
+      {
+        "id": "scale:Queen slain",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen slain",
+        "state": "later",
+        "trigger": "slay Queen"
+      },
+      {
+        "id": "scale:the bottom",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "the bottom",
+        "state": "later",
+        "trigger": "reach D33"
+      },
+      {
+        "id": "scale:waystone D14",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D14",
+        "state": "later",
+        "trigger": "bank at D14"
+      },
+      {
+        "id": "scale:waystone D19",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D19",
+        "state": "later",
+        "trigger": "bank at D19"
+      },
+      {
+        "id": "scale:waystone D24",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D24",
+        "state": "later",
+        "trigger": "bank at D24"
+      },
+      {
+        "id": "scale:waystone D29",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "waystone D29",
+        "state": "later",
+        "trigger": "bank at D29"
+      },
+      {
+        "id": "scale:party slots 3–4",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "party slots 3–4",
+        "state": "later",
+        "trigger": "a fourth slot"
+      },
+      {
+        "id": "scale:Warlord scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Warlord scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Mother scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Lich scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Master scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Queen scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:King scarred ×3",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "King scarred ×3",
+        "state": "later",
+        "trigger": "3 days met"
+      },
+      {
+        "id": "scale:Warlord scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Warlord scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Mother scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Mother scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Lich scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Lich scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Master scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Master scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:Queen scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "Queen scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "scale:King scarred ×6",
+        "kind": "stage",
+        "branch": "scale",
+        "name": "King scarred ×6",
+        "state": "later",
+        "trigger": "6 days met"
+      },
+      {
+        "id": "town:camp",
+        "kind": "stage",
+        "branch": "town",
+        "name": "camp",
+        "state": "done"
+      },
+      {
+        "id": "town:blacksmith",
+        "kind": "stage",
+        "branch": "town",
+        "name": "blacksmith",
+        "state": "next",
+        "trigger": "first gold home"
+      },
+      {
+        "id": "town:kennel",
+        "kind": "stage",
+        "branch": "town",
+        "name": "kennel",
+        "state": "later",
+        "trigger": "first tame"
+      },
+      {
+        "id": "town:bank",
+        "kind": "stage",
+        "branch": "town",
+        "name": "bank",
+        "state": "later",
+        "trigger": "a night's purse"
+      }
+    ],
+    "next": {
+      "kind": "send",
+      "node": "scout",
+      "text": "send"
+    },
+    "chest": 0,
+    "waits": true,
+    "sent": false,
+    "auto_send": false,
+    "ledger": 40,
+    "next_worker": "porter"
+  },
+  "age_h": 0,
+  "reveal_next": {
+    "id": "exits",
+    "trigger": "first gold home",
+    "triggered": false,
+    "wait_h": 0
+  },
+  "glory": 0,
+  "expeditions": 0,
+  "era_gate": 0
+}

@@ -215,6 +215,7 @@ fn owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps() {
     let snap=g.send();let gun=snap.hero.gun.unwrap();assert_eq!((gun.kind.as_str(),gun.capacity,gun.loaded),("short_gun",2,2));
     assert_eq!(damage,gun.damage,"forge includes inherited damage and actual class level bonus");
     assert_eq!(g.run.as_ref().unwrap().hero.weapon.as_ref().unwrap().enchant,4);
+    g.step(1); // Confirm refusal after actual departure, not an editable home preparation.
     let before=g.save();assert!(crate::kit::buy(&mut g,"long_gun").is_err());assert!(g.set_class("fighter").is_err());assert_eq!(g.save(),before);
     assert!(g.lineage().guns.iter().all(|o|!o.available&&o.blocked.as_deref()==Some("hero away")));
 }

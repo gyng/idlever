@@ -1,0 +1,32 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ {
++   available: false,
++   blocked: 'Build a house',
++   points_after: 0,
++   refund: 0
++ }
+- null
+
+    at file:///home/g/p/riddle/web/tests/legacy-wire.mjs:38:10
+    at runNextTicks (node:internal/process/task_queues:65:5)
+    at process.processImmediate (node:internal/timers:502:9) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    refund: 0,
+    available: false,
+    points_after: 0,
+    blocked: 'Build a house'
+  },
+  expected: null,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

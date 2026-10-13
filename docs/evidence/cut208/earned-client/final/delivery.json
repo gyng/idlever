@@ -1,0 +1,79 @@
+{
+  "server": "fresh no-HMR5272; actual imported source, no stylesheet/module injection",
+  "browser": "tools/browser.mjs IDLEVER_BROWSER=headed; private X display; correctness only",
+  "wasmBytes": 6442546,
+  "wasmSha256": "802c54f2f1a3b7142386b0620a86753046b4845be26110bad25f479172ed4fe1",
+  "modules": [
+    {
+      "url": "http://127.0.0.1:5272/src/ui/journal.ts",
+      "file": "served-ui-journal.ts.txt",
+      "sha256": "32150b0f348fb2bee985d209d727c14ac67ec0d60979296c7e94e79f39754fe8"
+    },
+    {
+      "url": "http://127.0.0.1:5272/src/ui/journal-window.ts",
+      "file": "served-ui-journal-window.ts.txt",
+      "sha256": "5afb9c8d0b86cf1771c8d56854e24ffc243b3ea2c44a1113789b5369928df2ac"
+    },
+    {
+      "url": "http://127.0.0.1:5272/src/journal.css",
+      "file": "served-journal.css.txt",
+      "sha256": "c57a86846555ac132a866573e0b40ce87e6951b92f67630e89eeecaadb1df67a"
+    }
+  ],
+  "sourceSha256": {
+    "web/src/ui/journal.ts": "a00991514387b09c97accf6cb3a5b046cc182fe5beeceb99c1310fa2aa7ab80d",
+    "web/src/ui/journal-window.ts": "677231a57be5bb4f9cac6f37a640d2657524175b36dc97fa26bbb36c385be666",
+    "web/src/journal.css": "719d7047ba299225b138e52713af51698cb806a28cc8e2bbaae49d78e18d6a86",
+    "web/tests/journal-earned.mjs": "18cb177ecd30f2a6e46f9e408ff7b65f38dc899800d0e207ce45ad0786526e34"
+  },
+  "inputs": [
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-manual2.game.json.gz",
+      "sha256": "8227600f0135a32dbabfdccc34cb2b717af16de3e4b72c674180651a42c3bd6e"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-manual3.game.json.gz",
+      "sha256": "1717175bb85ff9f2a6167011705a0a89f8b03da0c467791116aa83b71d80f874"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-3x8h.game.json.gz",
+      "sha256": "7482fbffa711d8a2b70c9a64f2c7198da8135f84e2d33694d3d7b1655839b9ae"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-4x8h.game.json.gz",
+      "sha256": "0f78060d1e2d0564887ea3d072d6d175db74fbb67bee47ec6568220888a87dc1"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-6x8h.game.json.gz",
+      "sha256": "bb3fb987590d0886b6e38f49aafe4167e99878f7d47f6d3583b22815878d514a"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-1-house.game.json.gz",
+      "sha256": "927ac4b601924a238e6ec61493be536ebc125549d429018962a26f84e1a26afc"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-manual2.game.json.gz",
+      "sha256": "014d0bf4818c95e9d9472efe9e370acfc0932f80e13b451db44b1646dd7da4f9"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-manual3.game.json.gz",
+      "sha256": "0a85e19d3ff6884fa392c97e144e09cab37fee6f44dc34b564ba334178953484"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-3x8h.game.json.gz",
+      "sha256": "1b6c07e7eea95459ac228ff439f046193d2e7cd255a88c39101a7c110c2fd4ca"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-4x8h.game.json.gz",
+      "sha256": "1930434583650db53c591a197599877e6ceea93025b23d7620439805fc8e7e81"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-6x8h.game.json.gz",
+      "sha256": "755b168aa69fcc003c58cbcdb3ae4760423afd509fe45531b20f205d046bea30"
+    },
+    {
+      "path": "docs/evidence/cut208/earned-final/seed-13-house.game.json.gz",
+      "sha256": "e9aa316bfb5f99e25fbce5b28f1b2d8c5f24186fdb11cd96469150410c155f6c"
+    }
+  ]
+}

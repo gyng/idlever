@@ -675,7 +675,10 @@ export function renderDeath(
   // tablets with a gauge; the console: edit · morgue · camp, and the gem applies the top patch (its survival on the stone)
   let top = topPatch(patches);
   // QA 92eb880 (M: "the header already shows the next hero (`♟2 · greedy`) above ♟1's death"): the bar names the hero who died
-  const bar = renderBar(app, kept ? {} : deadHero(d.morgue));
+  const bar = renderBar(app, {
+    ...deadHero(d.morgue),
+    ...(d.hero ? { heir: d.hero.heir, heroName: d.hero.name } : {}),
+  });
   // QA 1a2a4a9 (P: "the hero came home but the portrait is greyed like a corpse"): a stall is no death — the face stays lit
   const stalled = d.verdict === "stall" || !!drove;
   const face = portrait(

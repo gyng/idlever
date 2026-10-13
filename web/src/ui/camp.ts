@@ -353,6 +353,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // Cut 30 §3: the send — the gem or the dungeon's mouth; the hero walks from where he is into the mouth, then the watch opens
   // RUNS_UI: with a run under way the gem watches it (he is already down there: no walk to the mouth)
   const doSend = (): boolean => {
+    if ((app.lineage.persistent_hero?.recovery_s ?? 0) > 0 && !isLive()) return false;
     if (app.lineage.ended) {
       app.go({ kind: "ending" });
       return true;
@@ -2341,6 +2342,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     const empty = app.rules.rows.length === 0;
     const homeless = app.lineage.town?.home === false;
     const arriving = performance.now() < residentUntil;
+    const recovery = app.lineage.persistent_hero?.recovery_s ?? 0;
     el.classList.toggle("awaiting-home", homeless);
     cons.el.hidden = homeless;
     earlyJournal.hidden = !homeless || !app.lineage.journal;
@@ -2351,27 +2353,30 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         homeless ||
         (onPackages(app.lineage) && app.lineage.best_depth === 0 && !app.lineage.runs?.length);
     const cleared = app.lineage.ended;
-    send.disabled = !cleared && (homeless || arriving || app.overBudget || empty);
-    send.classList.toggle("pulse", !cleared && !app.overBudget && !empty);
+    const recovering = recovery > 0 && !isLive();
+    send.disabled = recovering || (!cleared && (homeless || arriving || app.overBudget || empty));
+    send.classList.toggle("pulse", !cleared && !recovering && !app.overBudget && !empty);
     send.classList.toggle("small", !cleared && (app.overBudget || empty));
     // Speed is chosen once, in the watch. The send gem only sends.
     send.dataset.mode = app.watchMode;
     replace(
       send,
-      cleared
-        ? h("span", { class: "send-l" }, /* copy:button */ "Next descent")
-        : arriving
-          ? /* copy:callout */ "Hero arriving"
-          : empty
-            ? /* copy:callout */ "no rules"
-            : app.overBudget
-              ? /* copy:callout */ `${app.ownRows()}/${app.vocab.max_rows} · drop one`
-              : h(
-                  "span",
-                  { class: "send-l" },
-                  isLive() ? /* copy:button */ "Watch" : /* copy:button */ "Delve",
-                  sendMark(app.lineage),
-                ),
+      recovering
+        ? /* copy:callout */ `Recovering ${recovery}s`
+        : cleared
+          ? h("span", { class: "send-l" }, /* copy:button */ "Next descent")
+          : arriving
+            ? /* copy:callout */ "Hero arriving"
+            : empty
+              ? /* copy:callout */ "no rules"
+              : app.overBudget
+                ? /* copy:callout */ `${app.ownRows()}/${app.vocab.max_rows} · drop one`
+                : h(
+                    "span",
+                    { class: "send-l" },
+                    isLive() ? /* copy:button */ "Watch" : /* copy:button */ "Delve",
+                    sendMark(app.lineage),
+                  ),
     ); // Cut 12 §1: own rows; RUNS_UI: a run under way is watched
     send.dataset.live = isLive() ? "1" : "0";
     paintTabs();
