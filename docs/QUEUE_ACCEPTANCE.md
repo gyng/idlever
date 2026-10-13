@@ -11,7 +11,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 |---|---|---|---|
 | 1 | Automatic loot settlement; simplify Keep and Storehouse | Partial | Cuts196/201 conversion and storage retirement; Cut206 removes watched Keep flow with real Bank/Return/Death checks. Backend/API retirement and wider acceptance remain |
 | 2 | A simpler banking model | Partial | Cut196 Bank/Return100% Gold, Death secured/protection; XP separate. Actual receipts/ledger pass; earned pacing remains |
-| 3 | Stage early progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
+| 3 | Stage early progression | Cut219 in progress | Current-source public-action baseline16/16 exposes Forge on delve1 and hires Scout on manual delve3. Candidate staged triggers and survivor gates in implementation; acceptance pending |
 | 4 | Remove cage friction; explain run endings | Partial | Cut210 automatic caches, no choice/timer/preference UI; actual strict loot/Gold/Watch checks pass. Native855pass/Clippy pass; broader pacing and run-ending refinement remain |
 | 5 | Clickable heroes and town objects | Partial | Cuts192/194: building help and actual three-hero touch/keyboard targets; future base objects and persistent routines remain |
 | 6 | Home-building tooltips and hover states | Scoped pass | Current four buildings: ready/locked/built help, keyboard/hover/no accidental construction. Cut207 label/badge/tag bounds and actor journeys pass; future buildings must adopt these conventions |
@@ -27,7 +27,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 | 16 | Desktop bottom-bar space | Scoped pass | Cut217 finald69524 viewport/font states and actual controls pass; desktop console content-width, meaningful controls retained |
 | 17 | Floating delve controls | Scoped pass | Cut217 finald695 adaptive dock, actual resizefocus/map/Speed/Pause/Hand/Town proof; +156px height and17.88–22.75% normal desktop unobscured area |
 | 18 | Compact top bar | Scoped pass | Cut217 finald69524 state geometry, compact bloodline marker and Gold icon/value with full accessible meanings; current/historical hero identity checks pass |
-| 19 | Forge leash and pet progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
+| 19 | Forge leash and pet progression | Cut219 in progress | Forge construction becomes permanent free leash unlock; Scout and real pet gate Kennel. Rust/client implementation in progress; no candidate acceptance yet |
 | 20 | Clown class | Open | Pending |
 | 21 | Engineer class | Open | Pending |
 | 22 | Build trials and satisfying delve endings | Open | Pending |

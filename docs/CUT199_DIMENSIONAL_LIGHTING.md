@@ -146,3 +146,97 @@ Wider building/character mapping, true occlusion/cast silhouettes, all variants,
 all widths, live-dungeon visual parity and blind art/fun review remain open. This
 checkpoint preserves the art and demonstrates a restrained response; it does
 not authorize enabling it by default.
+
+## Current lighting inventory — 2026-10-14
+
+This is a source/evidence audit, not another render acceptance run. Read alongside
+Cut202's orange-lantern amendment and Cut218's actual resident-spacing evidence.
+The latter does not expand this prototype's relief coverage.
+
+| Surface or actor | Current implementation | Remaining dimensional gap |
+| --- | --- | --- |
+| Town ground and landscape | Painted/cached terrain, radial pools, banded moonlight variation in `town.ts::BLIT_FRAG` | No ground normal or height field; a ridge cannot occlude a lamp or receive a structural directional shadow |
+| Forge look1 | Dev-only analytic roof/front/side masks in `TOWN_RELIEF`; directional sky and capped point response | Default/production stays neutral; no authored height/occluder, projected roof silhouette or metal material mask |
+| Other building looks | Painted sprites with cached contact and short daylight cast marks | No relief for House/Bank/Kennel variants; contact blobs are not roof geometry or shadows cast from each lamp |
+| Guild/Pool/Device | Code-native painted service art and real roster stations; grounded marks and local light | No mapped service surfaces or occluders; a bright station is not evidence of dimensional shading |
+| Town default male Fighter | Representative idle/class-walk relief, mirrored normalX, feet anchored during prototype bob | Female/cat, other classes, workers and their pose variants remain unmapped; animation/look consistency needs its own audit |
+| Town other characters | Existing sprites, contact marks and local handheld orange lanterns | Default contact can follow the one-texel body bob; no authored normal/height/material coverage or clothing/face plane proof |
+| Dungeon actors | `SpriteNormals` derives silhouette bevel plus0.35 painted-luma share once after atlas versions settle; high FX draws a twin entity normal target | Derived relief is a useful approximation, not authored anatomy; all looks/poses/alpha/flips need current visual parity checks |
+| Dungeon walls and ground | Separate light-field wall occlusion and wall-foot shading; entity contact shadows | Not the same pipeline as Town; no demonstrated shared normal/height convention across scenes |
+
+`town.ts::sprite` assigns relief only to decoded `town_blacksmith_1`,
+`hero_fighter`, `hero_fighter_male` and `walk_fighter`. The town gate is still
+`DEV && townLight=planes && effects!=off`. Its shader uses fixed virtual lamp
+height14, not per-building elevation. Draw depth sorts quads; it is not a height
+map. `grounding` places cached contact marks and a short fixed daylight offset;
+it does not trace blockers. The dungeon's `deriveNormals` is cached, then its
+normal target is rendered only when FX level>1. Do not advertise these paths as
+full-scene physical3D lighting.
+
+Personal town lanterns now use `[a,a*0.64,a*0.3]`, with people inserted ahead of
+decoration within the32-light cap. This is the current warm color requirement;
+the original Cut199 achromatic prototype recordings remain historical. Keep
+the dungeon magical hero light cool, as the approved art amendment requires.
+
+Evidence boundaries: `evidence/cut199/` proves the original representative
+relief; `evidence/cut202/` addresses warm lanterns; `evidence/cut218/` proves
+three-resident layout/phase handling, packed and primitive fallback, and a
+separate unchanged-renderer warm cost. Its finald695 geometry/phase evidence
+does not retest normal maps. None is a full lighting or blind art certificate.
+
+### Which mapping to add next
+
+Keep normals, elevation and occlusion separate. A normal gives a surface's
+direction; virtual light height changes how that direction receives light.
+Occluder shapes determine blocking/shadows. The official
+[Godot2D lighting guide](https://docs.godotengine.org/en/stable/tutorials/2d/2d_lights_and_shadows.html)
+documents these as separate inputs, including that directional light height
+does not set shadow appearance. This is a reference for our shader design,
+not a proposed engine change.
+
+The next useful comparison adds an authored coarse House roof/wall map beside
+the Forge, plus one second real animated hero class. Match its idle and walk
+look before shading it. Use a small ground-height patch near the two buildings
+only if it improves contact and lamp blocking visibly. Prefer a few matte
+structural planes over brightness-derived ridges: ink strokes and dark cloth
+folds must not become trenches. Keep metal response sparse and bounded; do not
+make skin or parchment glossy. Grounding all character looks at true feet is a
+separate inexpensive correction before introducing stronger shading.
+
+Add one coarse footprint/elevation model for the selected buildings, independent
+of their painted alpha. Compare short moon/lantern cast marks against the old
+contacts. Cap this prototype at two occluders and at most one new512×512 RGBA8
+target if a buffer is necessary. Skip it if analytic masks suffice. Do not enable
+an effect town-wide merely because it is technically implemented.
+
+### Proposed next prototype checks
+
+These gates are design work; no new lighting code or art has been made here.
+
+- Two building looks and two real hero classes, idle/walk and both facings,
+  at400/1440 and cosmetic12/18/23:48 matched state captures per baseline/candidate.
+  Include original male Fighter as a control and retain wall-clock recovery.
+  State any pose unavailable in actual art rather than substituting another look.
+- Exact-frame comparison: zero changed alpha, zero changed unmapped RGB pixels,
+  no atlas-frame seam, no incorrect normalX after flip. Feet/contact anchor drift
+  from body bob is0world texels for all prototype characters.
+- Moving lantern exercise:36 fixed sampled positions across the same real route.
+  Normal response follows the light; the selected occluder blocks it consistently.
+  No whole-town warm tint, false light behind walls, or silhouette mutation.
+- Full/Low/Off/reduced, actual GL/Canvas and packed/missing-art fallback keep
+  readable stationary poses and truthful identity. Off returns to unchanged
+  painted art; Canvas may use cached coarse planes/contact marks instead of
+  per-pixel normal loops. Zero page errors and exact engine save equality.
+- Keep32 lights; no per-frame CPU atlas derivation. Record cold load/paint
+  separately. Quiet private GPU comparison discards150 distinct active warm
+  frames and measures150 unique samples per day/night leg: CPU p95 increment
+  ≤1ms, terrain cold-paint increment≤5ms. Measure real GPU time only with valid
+  timer queries; otherwise leave GPU execution time unclaimed.
+- Preserve the approved INK/MIST value separation and local EMBER pools. Two
+  independent scoreless reviewers compare grounding, face/equipment readability
+  and ink/wash identity at actual48px hero size. Any identity/readability regression
+  prevents default rollout even if numerical pixel/performance checks pass.
+
+Only then extend the explicit coverage table to every current building look,
+service and character pose. Whole-town coverage, dungeon parity and art review
+remain requirements, not inferred from a successful two-building prototype.

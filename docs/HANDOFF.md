@@ -12,9 +12,9 @@ Latest owner extension: legendary armour sets inspired by Diablo II/III.
 Design docs/CUT216_ARMOUR_SETS.md: three slots (helm/body/boots),
 equipped2/3 and3/3 bonuses, automatic permanent unlocks/free reuse, mixed2+1
 builds and staged deterministic missing-piece protection. Prototype Hearthglass
-first; current body effect stays intact. Cut216 implementation is now in progress; current newly built package has
-three actual armour slots. Final client acceptance and earned-fixture integration
-remain pending. Acceptance40 adds the slot/bonus/pacing work without
+first; current body effect stays intact. Cut216 implementation and scoped client
+acceptance are complete at the checkpoint below, including three actual armour
+slots and earned-fixture integration. Acceptance40 adds the slot/bonus/pacing work without
 dropping the existing queue.
 
 Owner automation follow-up is designed in Cut216: per-hero Follow set with
@@ -23,9 +23,9 @@ on the next departure, never mid-delve. Collection is built in; retired
 Armourer is not restored. Paid upgrades keep the existing Apprentice budget.
 Optional Scout Find next piece targets known eligible sources, stops at unlock
 or3 consecutive source failures, then resumes normal delves. Global ownership
-and missing-piece protection survive absence/reload. Core automation is implemented and focused9/9 semantic tests pass, including
-whole-save offline/reload equality and paid preparation safeguards. Final client
-acceptance is pending; item40 retains earned pacing, UI and automation proof.
+and missing-piece protection survive absence/reload. Core automation and scoped
+client checks pass, including whole-save offline/reload equality and paid
+preparation safeguards. Item40 retains the wider pacing and balance requirements.
 
 Cut216/217/218 checkpoint,2026-10-14: source implemented and relevant checks
 pass. Final real WASM6640738bytes SHA
@@ -78,9 +78,12 @@ Renderer-only matched warmCPU cost+0.1–0.2ms retains its exact prior933b/sourc
 scope; packed/primitive/Canvas evidence is not relabeled to finald695. Ant-farm
 needs/ongoing Forge work, broader lighting/content and cold cost remain open.
 
-Next proposed contract docs/CUT219_PROGRESS_CURVE.md is read/design only, not
-implemented or accepted. Obtain a current-source earned baseline before tuning;
-keep survivor-friendly unlocks, staged Forge/Kennel and full queue in scope.
+Checkpoint source and raw evidence are pushed as ad72977d and e0bf9efb.
+Cut219 (docs/CUT219_PROGRESS_CURVE.md) is now in implementation. Its matching
+sixteen-seed public-action baseline completed before production edits; all
+sixteen exposed Forge on their first delve and hired Scout on manual delve3.
+Staged survivor progression has not yet passed acceptance. Keep the full queue
+in scope; do not treat this baseline as candidate balance evidence.
 Owner asked about RPG hero configuration: current hub has Appearance/Run log/
 Hero plus Loadouts/Class/Legacy tabs. Paper-doll equipment view and centralized
 behaviour/companions are not implemented; this is a proposed refinement to

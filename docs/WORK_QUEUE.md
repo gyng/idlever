@@ -32,8 +32,9 @@ content stay in scope.
 Consider Diablo II/III-style armour sets alongside standalone legendary gear.
 Cut216 records the proposal: helm/body/boots, partial/full equipped bonuses,
 permanent automatic discoveries and free reuse. Start with Hearthglass and
-keep hybrid builds useful. This requires new Rust equipment slots and earned
-pacing checks; current runtime still has one armour slot. See
+keep hybrid builds useful. Three actual Rust armour slots and scoped earned
+collection checks are delivered in the pushed Cut216/217/218 checkpoint.
+Broader balance remains open. See
 [CUT216_ARMOUR_SETS.md](CUT216_ARMOUR_SETS.md) and acceptance40.
 
 Automation follow-up: Follow set resolves newly collected compatible pieces
@@ -42,7 +43,8 @@ Collection/reuse is built in; no new Armourer hire. Existing Apprentice orders
 handle paid upgrades. Optional Scout Find next piece focus stops at one unlock
 or three consecutive failed source attempts, then resumes normal delving.
 Current equipped and queued next-run counts must stay distinct in the UI.
-This controller is designed, not implemented.
+This controller is implemented with scoped Rust and real-WASM acceptance;
+see HANDOFF.md for exact package identities and remaining pacing limits.
 
 ## Main fun — latest owner direction
 
