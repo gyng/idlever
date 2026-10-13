@@ -51,17 +51,16 @@ void Promise.allSettled(
   version++;
 });
 export const terrainMaterialVersion = (): number => version;
-const sample = (name: string, x: number, y: number, fallback: number[]): number[] => {
-  const m = materials[name];
-  if (!m) return fallback;
-  // Mirrored source paintings join without a bright hard material seam.
-  const mirror = (v: number, n: number): number => {
-    const a = ((v % (n * 2)) + n * 2) % (n * 2);
-    return a < n ? a : 2 * n - 1 - a;
-  };
-  const i = (mirror(y, m.height) * m.width + mirror(x, m.width)) * 4;
-  return [m.data[i]!, m.data[i + 1]!, m.data[i + 2]!];
+const GRASS0_FALLBACK = [35, 45, 38],
+  GRASS3_FALLBACK = [32, 43, 38],
+  SOIL_FALLBACK = [70, 76, 76],
+  WATER_FALLBACK = [27, 43, 49];
+const mirror = (v: number, n: number): number => {
+  const a = ((v % (n * 2)) + n * 2) % (n * 2);
+  return a < n ? a : 2 * n - 1 - a;
 };
+const materialIndex = (m: Material | undefined, x: number, y: number): number =>
+  m ? (mirror(y, m.height) * m.width + mirror(x, m.width)) * 4 : 0;
 export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   const c = document.createElement("canvas");
   c.width = p.width;
@@ -72,6 +71,18 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
     rgba = image.data;
   const wear = new Float32Array(p.width * p.height);
   wear.fill(-1000);
+  // These pigment boundaries depend on one axis only. Keep Float64 precision
+  // and the original operation order so cached rows/columns paint identical pixels.
+  const hillFeet = new Float64Array(p.width),
+    cliffFeet = new Float64Array(p.width);
+  for (let x = 0; x < p.width; x++) {
+    hillFeet[x] = p.hillFoot(x / 16) * 16;
+    cliffFeet[x] = hillFeet[x]! + Math.sin(x * 0.039) * 2;
+  }
+  const streams = new Float64Array(p.height);
+  for (let y = 0; y < p.height; y++)
+    streams[y] = 151 + Math.sin(y * 0.014) * 8 + ((hash(0, y >> 3, 53) % 5) - 2);
+
   const stamp = (a: Point, b: Point, radius: number): void => {
     const dx = b.x - a.x,
       dy = b.y - a.y,
@@ -92,43 +103,63 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   stamp(p.fire, p.fire, p.plaza ? 34 : 25);
   for (const a of p.aprons) stamp({ x: a.x - 19, y: a.y - 2 }, { x: a.x + 19, y: a.y - 2 }, 9);
 
+  // Scalar channels retain the original arithmetic but avoid allocating RGB
+  // sample/map arrays for every pixel in the 896×640 painted ground.
+  const grass0 = materials.grass_0,
+    grass3 = materials.grass_3,
+    water = materials.water;
   for (let y = 0; y < p.height; y++)
     for (let x = 0; x < p.width; x++) {
       const i = y * p.width + x;
-      const a = sample("grass_0", x, y, [35, 45, 38]);
-      const b = sample("grass_3", x + 43, y + 61, [32, 43, 38]);
+      const ai = materialIndex(grass0, x, y),
+        bi = materialIndex(grass3, x + 43, y + 61);
       const wash =
         0.5 + 0.25 * Math.sin(x * 0.021 + y * 0.008) + 0.2 * Math.sin(y * 0.029 - x * 0.007);
-      let rgb = a.map((v, j) => v * (1 - wash) + b[j]! * wash);
-      const foot = p.hillFoot(x / 16) * 16 + Math.sin(x * 0.039) * 2;
-      if (y < foot) {
-        // Same painted pigment, cooled into a weathered mossy hillside. Rock
-        // formations are authored cutouts below, rather than flat polygon cells.
-        const v =
-          (rgb[0]! * 0.21 + rgb[1]! * 0.72 + rgb[2]! * 0.07) * (0.45 + 0.36 * Math.min(1, y / 160));
-        rgb = [v * 0.82, v * 0.98, v * 1.08];
+      let red =
+        (grass0?.data[ai] ?? GRASS0_FALLBACK[0]!) * (1 - wash) +
+        (grass3?.data[bi] ?? GRASS3_FALLBACK[0]!) * wash;
+      let green =
+        (grass0?.data[ai + 1] ?? GRASS0_FALLBACK[1]!) * (1 - wash) +
+        (grass3?.data[bi + 1] ?? GRASS3_FALLBACK[1]!) * wash;
+      let blue =
+        (grass0?.data[ai + 2] ?? GRASS0_FALLBACK[2]!) * (1 - wash) +
+        (grass3?.data[bi + 2] ?? GRASS3_FALLBACK[2]!) * wash;
+      if (y < cliffFeet[x]!) {
+        const value =
+          (red * 0.21 + green * 0.72 + blue * 0.07) * (0.45 + 0.36 * Math.min(1, y / 160));
+        red = value * 0.82;
+        green = value * 0.98;
+        blue = value * 1.08;
       } else {
         const edge = ((hash(x >> 2, y >> 2, 7) % 7) - 3) * 0.35;
         const d = wear[i]! + edge;
-        const t = Math.max(0, Math.min(1, (d + 2.4) / 4.2));
-        if (t) {
-          const soil = sample(
-            p.plaza && Math.hypot(x - p.fire.x, y - p.fire.y) < 28 ? "plaza_0" : "dirt_0",
-            x + 17,
-            y + 29,
-            [70, 76, 76],
-          );
-          rgb = rgb.map((v, j) => v * (1 - t) + soil[j]! * t);
+        const blend = Math.max(0, Math.min(1, (d + 2.4) / 4.2));
+        if (blend) {
+          const soil =
+            materials[
+              p.plaza && Math.hypot(x - p.fire.x, y - p.fire.y) < 28 ? "plaza_0" : "dirt_0"
+            ];
+          const si = materialIndex(soil, x + 17, y + 29);
+          red = red * (1 - blend) + (soil?.data[si] ?? SOIL_FALLBACK[0]!) * blend;
+          green = green * (1 - blend) + (soil?.data[si + 1] ?? SOIL_FALLBACK[1]!) * blend;
+          blue = blue * (1 - blend) + (soil?.data[si + 2] ?? SOIL_FALLBACK[2]!) * blend;
         }
-        const stream = 151 + Math.sin(y * 0.014) * 8 + ((hash(0, y >> 3, 53) % 5) - 2);
-        const bank = Math.abs(x - stream);
-        if (bank < 8) rgb = sample("water", x + 33, y + 17, [27, 43, 49]).map((v) => v * 0.72);
-        else if (bank < 12) rgb = rgb.map((v) => v * 0.75);
+        const bank = Math.abs(x - streams[y]!);
+        if (bank < 8) {
+          const wi = materialIndex(water, x + 33, y + 17);
+          red = (water?.data[wi] ?? WATER_FALLBACK[0]!) * 0.72;
+          green = (water?.data[wi + 1] ?? WATER_FALLBACK[1]!) * 0.72;
+          blue = (water?.data[wi + 2] ?? WATER_FALLBACK[2]!) * 0.72;
+        } else if (bank < 12) {
+          red *= 0.75;
+          green *= 0.75;
+          blue *= 0.75;
+        }
       }
       const j = i * 4;
-      rgba[j] = rgb[0]!;
-      rgba[j + 1] = rgb[1]!;
-      rgba[j + 2] = rgb[2]!;
+      rgba[j] = red;
+      rgba[j + 1] = green;
+      rgba[j + 2] = blue;
       rgba[j + 3] = 255;
     }
   g.putImageData(image, 0, 0);
@@ -140,12 +171,8 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
       const n = hash(gx, gy, 83),
         x = gx + (n % 7) - 3,
         y = gy + ((n >>> 8) % 7) - 3;
-      const stream = 151 + Math.sin(y * 0.014) * 8 + ((hash(0, y >> 3, 53) % 5) - 2);
-      if (
-        y < p.hillFoot(x / 16) * 16 + 8 ||
-        Math.abs(x - stream) < 16 ||
-        wear[y * p.width + x]! > -5
-      )
+      const stream = streams[y]!;
+      if (y < hillFeet[x]! + 8 || Math.abs(x - stream) < 16 || wear[y * p.width + x]! > -5)
         continue;
       roots.push({ x, y, h: 4 + (n % 3), phase: ((n % 997) / 997) * Math.PI * 2 });
     }

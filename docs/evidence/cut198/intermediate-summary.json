@@ -1,0 +1,96 @@
+{
+  "baseline": {
+    "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+    "kind": "wasm",
+    "errors": [],
+    "phases": {
+      "cold": {
+        "frames": 150,
+        "cpuP50": 0.5,
+        "cpuP95": 0.7999999970197678,
+        "cpuMax": 266,
+        "intervalP50": 16.700000002980232,
+        "intervalP95": 17.399999991059303,
+        "terrainPaintMs": 131,
+        "terrainPaints": 1
+      },
+      "baseline": {
+        "frames": 150,
+        "cpuP50": 0.3999999910593033,
+        "cpuP95": 0.5,
+        "cpuMax": 1,
+        "intervalP50": 16.600000008940697,
+        "intervalP95": 17.30000001192093,
+        "terrainPaintMs": 131,
+        "terrainPaints": 1
+      },
+      "construction": {
+        "frames": 122,
+        "cpuP50": 0.7999999970197678,
+        "cpuP95": 8.700000002980232,
+        "cpuMax": 136.29999999701977,
+        "intervalP50": 16.600000001490116,
+        "intervalP95": 20.600000008940697,
+        "terrainPaintMs": 108.20000000298023,
+        "terrainPaints": 2
+      },
+      "settled": {
+        "frames": 150,
+        "cpuP50": 0.7000000029802322,
+        "cpuP95": 0.9000000059604645,
+        "cpuMax": 8,
+        "intervalP50": 16.700000002980232,
+        "intervalP95": 17.399999991059303,
+        "terrainPaintMs": 108.20000000298023,
+        "terrainPaints": 2
+      }
+    }
+  },
+  "optimized": {
+    "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+    "kind": "wasm",
+    "errors": [],
+    "phases": {
+      "cold": {
+        "frames": 150,
+        "cpuP50": 0.5,
+        "cpuP95": 1,
+        "cpuMax": 241.5,
+        "intervalP50": 16.600000008940697,
+        "intervalP95": 17.5,
+        "terrainPaintMs": 111.1000000089407,
+        "terrainPaints": 1
+      },
+      "baseline": {
+        "frames": 150,
+        "cpuP50": 0.3999999910593033,
+        "cpuP95": 0.5,
+        "cpuMax": 0.9000000059604645,
+        "intervalP50": 16.600000008940697,
+        "intervalP95": 17.400000005960464,
+        "terrainPaintMs": 111.1000000089407,
+        "terrainPaints": 1
+      },
+      "construction": {
+        "frames": 122,
+        "cpuP50": 0.7000000029802322,
+        "cpuP95": 8.600000008940697,
+        "cpuMax": 102.69999998807907,
+        "intervalP50": 16.700000002980232,
+        "intervalP95": 20,
+        "terrainPaintMs": 78.30000001192093,
+        "terrainPaints": 2
+      },
+      "settled": {
+        "frames": 150,
+        "cpuP50": 0.7000000029802322,
+        "cpuP95": 1.0999999940395355,
+        "cpuMax": 9.099999994039536,
+        "intervalP50": 16.700000002980232,
+        "intervalP95": 17.400000005960464,
+        "terrainPaintMs": 78.30000001192093,
+        "terrainPaints": 2
+      }
+    }
+  }
+}
