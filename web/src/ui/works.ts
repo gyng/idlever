@@ -17,7 +17,7 @@ import { supplyReason } from "./report-supplies";
 export const hasWorks = (L: Pick<Lineage, "tree"> | undefined): boolean => !!L?.tree;
 export const workerNodes = (W: Works): WorkNode[] => W.nodes.filter((n) => n.kind === "worker");
 /** the trunk's workers (the first session's goal); the branches open once they are all hired */
-export const TRUNK = ["quartermaster", "porter", "scout", "armourer", "apprentice"];
+export const TRUNK = ["quartermaster", "porter", "scout", "apprentice"];
 export const trunkDone = (W: Works): boolean =>
   workerNodes(W)
     .filter((n) => TRUNK.includes(n.id))
@@ -33,9 +33,7 @@ const BLURB: Record<string, string> = {
   quartermaster: "packs heal · drill item",
   porter: "hauls home · while away",
   scout: "sends him · each rest",
-  armourer: "wears better finds",
   apprentice: "buys forge steps",
-  keeper: "sorts finds · never asks",
   clerk: "banks spare gold",
   drillmaster: "levels the stance",
   kennel_hand: "fields best pets",

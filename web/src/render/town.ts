@@ -26,7 +26,7 @@ export type Pt = { x: number; y: number };
 
 // ---- the map: plots, paths -------------------------------------------------------------------------------------------------
 
-export const BUILDINGS = ["blacksmith", "storehouse", "kennel", "bank"] as const;
+export const BUILDINGS = ["blacksmith", "kennel", "bank"] as const;
 export type BuildingId = (typeof BUILDINGS)[number];
 export type PlotId = "mouth" | "fire" | "tent" | "house" | "crate" | "board" | BuildingId;
 /** each plot's foot (texels) and its drawn height */
@@ -39,7 +39,6 @@ export const PLOTS: Record<PlotId, Pt & { h: number }> = {
   board: { ...T(CX - 2.2, 7.6), h: 28 }, // Cut 30 §5: the notice board by the mouth (the quest), from the Warlord slain
   blacksmith: { ...T(CX - 4.6, 10.7), h: 64 },
   bank: { ...T(CX + 4.6, 10.7), h: 64 },
-  storehouse: { ...T(CX - 4.5, 19.6), h: 64 },
   kennel: { ...T(CX + 4.7, 19.8), h: 64 },
 };
 const NODES: Record<string, Pt> = {
@@ -55,7 +54,6 @@ const NODES: Record<string, Pt> = {
   crate: T(CX + 4.3, 15.55),
   fireS: T(CX, 16.7),
   south: T(CX, 18.6),
-  store: T(CX - 4.3, 19.9),
   kennel: T(CX + 4.3, 20.1),
   exit: T(CX, 25),
 };
@@ -73,7 +71,6 @@ const EDGES: [string, string, number][] = [
   ["fireW", "fireS", 0.55],
   ["fireE", "fireS", 0.55],
   ["fireS", "south", 0.7],
-  ["south", "store", 0.5],
   ["south", "kennel", 0.5],
   ["south", "exit", 0.7],
 ];
@@ -159,9 +156,7 @@ const WORKER_AT: Record<string, Pt> = {
   quartermaster: T(CX + 4.9, 15.7),
   porter: T(CX + 1.1, 10.2),
   scout: T(CX - 1.1, 8.4),
-  armourer: T(CX - 2.1, 19.4),
   apprentice: T(CX - 1.9, 11.6),
-  keeper: T(CX - 5.9, 19.8),
   clerk: T(CX + 2.8, 11.7),
   drillmaster: T(CX + 1.4, 16.3),
   kennel_hand: T(CX + 2.4, 19.7),
@@ -178,7 +173,7 @@ const PROPS: Prop[] = [
   { id: "town_lamppost", ...T(CX - 1.25, 21.9), h: 26, stage: 2, lamp: true },
   { id: "town_stall", ...T(CX + 3.1, 22.6), h: 34, stage: 3 },
   { id: "town_cart", ...T(CX - 3.3, 22.9), h: 20, stage: 3, flip: true },
-  { id: "town_lamppost", ...T(CX + 1.25, 26.4), h: 26, stage: 4, lamp: true },
+  { id: "town_lamppost", ...T(CX + 1.25, 26.4), h: 26, stage: BUILDINGS.length, lamp: true },
 ];
 /** Cut 109: townsfolk by stage (docs/TOWN.md §3: "townsfolk multiply with the houses") — cosmetic, seeded, never read back */
 const FOLK_AT = { smith: T(CX - 6.0, 11.35), merchant: T(CX + 4.75, 22.75) };
@@ -193,7 +188,7 @@ export type Party = {
   sack?: "small" | "large";
   chest?: boolean;
   pet?: string;
-  to: "tent" | "store";
+  to: "tent";
 };
 export type TownState = {
   home: boolean;
@@ -261,9 +256,9 @@ export const localHour = (now = new Date()): number =>
   now.getSeconds() / 3600 +
   now.getMilliseconds() / 3600000;
 const PARTIES_MAX = 6;
-/** Cut 109: the hero's house grows with the town (cottage · lean-to · two storeys at 2 and 4 buildings standing) — a look, no rule */
+/** Cut 109: the hero's house grows with the town (cottage · lean-to · two storeys at2 and all remaining facilities standing) — a look, no rule */
 export const houseLook = (s: { stage: number }): number =>
-  s.stage >= 4 ? 3 : s.stage >= 2 ? 2 : 1;
+  s.stage >= BUILDINGS.length ? 3 : s.stage >= 2 ? 2 : 1;
 /** The core's town (`Lineage.town`) and the absence's report → the scene. Pure (walkers are seeded, never read back). */
 export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts = {}): TownState {
   const town = L.town;
@@ -327,7 +322,7 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
         sack: g <= 0 ? undefined : g >= big ? "large" : "small",
         chest,
         pet,
-        to: chest && has("storehouse") ? "store" : "tent",
+        to: "tent",
       });
     });
     // ~20 s in all, ≤ 3 on screen (a walk out is ~6 s)
@@ -431,7 +426,7 @@ const WALKER_TINT: Record<string, number[]> = {
 /** fallback aspect (w / h) per id family */
 const ASPECT: [RegExp, number][] = [
   [/^town_mouth/, 1.55],
-  [/^town_(blacksmith|bank|storehouse|kennel)_/, 1.25],
+  [/^town_(blacksmith|bank|kennel)_/, 1.25],
   [/^town_tent/, 1.05],
   [/^town_board/, 0.85],
   [/^town_campfire/, 1.1],
@@ -439,7 +434,7 @@ const ASPECT: [RegExp, number][] = [
   [/^town_scaffold/, 0.9],
   [/^(hero_|walk_|town_(smith|merchant|carter|child))/, 0.7],
   [/^town_(sack|chest)/, 0.95],
-  [/^town_worker_(porter|armourer|apprentice|drillmaster|kennel_hand)/, 1.2],
+  [/^town_worker_(porter|apprentice|drillmaster|kennel_hand)/, 1.2],
   [/^town_worker_/, 0.75],
   [/^town_haul_chest/, 1.5],
   [/^town_flag/, 0.6],
@@ -703,14 +698,12 @@ function drawPrimitive(
     g.ellipse(x + w / 2, y + h * 0.62, w * 0.2, h * 0.36, 0, Math.PI, 0);
     g.fill();
     R("#0c0b10", w * 0.3, h * 0.62, w * 0.4, h * 0.38);
-  } else if (/^town_(blacksmith|bank|storehouse|kennel)_/.test(id)) {
+  } else if (/^town_(blacksmith|bank|kennel)_/.test(id)) {
     const col = /blacksmith/.test(id)
       ? ["#4b4650", "#7a2a1c"]
       : /bank/.test(id)
         ? ["#b8b0a0", "#5a6f86"]
-        : /storehouse/.test(id)
-          ? ["#7a5534", "#5a3a22"]
-          : ["#8c6a44", "#6a4a2a"];
+        : ["#8c6a44", "#6a4a2a"];
     R(col[0]!, w * 0.08, h * 0.42, w * 0.84, h * 0.58);
     tri(col[1]!, w / 2, 0, -w * 0.02 + w * 0.02, w, h * 0.46);
     R("#1e1914", w * 0.42, h * 0.68, w * 0.16, h * 0.32);
@@ -774,9 +767,7 @@ function drawPrimitive(
     const role = id.replace(/^town_worker_|_1$/g, "");
     const coat: Record<string, string> = {
       porter: "#3a3448",
-      armourer: "#5a6070",
       apprentice: "#5a3c22",
-      keeper: "#2b3350",
       clerk: "#1c1b2b",
       drillmaster: "#6a5a40",
       kennel_hand: "#4a3a2a",
@@ -785,7 +776,7 @@ function drawPrimitive(
       scout: "#4a3a2a",
       quartermaster: "#6a5a40",
     };
-    const fw = /porter|armourer|apprentice|drillmaster|kennel_hand/.test(role) ? w * 0.55 : w; // the figure's share (the tag object right of it)
+    const fw = /porter|apprentice|drillmaster|kennel_hand/.test(role) ? w * 0.55 : w; // the figure's share (the tag object right of it)
     R(coat[role] ?? "#3a3448", fw * 0.22, h * 0.28, fw * 0.56, h * 0.5);
     R("#eadfc5", fw * 0.32, h * 0.06, fw * 0.36, h * 0.2);
     R("#1c1b2b", fw * 0.26, h * 0.78, fw * 0.18, h * 0.22);
@@ -796,11 +787,6 @@ function drawPrimitive(
       T("#6a4a2c", 0.05, 0.45, 0.9, 0.3);
       T("#eadfc5", 0.15, 0.25, 0.7, 0.22);
       T("#1c1b2b", 0.3, 0.72, 0.35, 0.28);
-    } else if (role === "armourer") {
-      T("#6a4a2c", 0.15, 0.2, 0.12, 0.8);
-      T("#6a4a2c", 0.75, 0.2, 0.12, 0.8);
-      T("#a4bcd6", 0.35, 0.1, 0.08, 0.7);
-      T("#a4bcd6", 0.55, 0.1, 0.08, 0.7);
     } else if (role === "apprentice") {
       T("#0d0c14", 0.1, 0.55, 0.8, 0.2);
       T("#0d0c14", 0.35, 0.75, 0.3, 0.25);
@@ -813,9 +799,6 @@ function drawPrimitive(
       T("#4d6c99", 0.1, 0.55, 0.7, 0.25);
       T("#4d6c99", 0.55, 0.4, 0.3, 0.2);
       T("#1c1b2b", 0.15, 0.8, 0.1, 0.2);
-    } else if (role === "keeper") {
-      R("#b89448", fw * 0.7, h * 0.12, 1, h * 0.88);
-      R("#b89448", fw * 0.62, h * 0.85, fw * 0.3, h * 0.15);
     } else if (role === "clerk") R("#eadfc5", fw * 0.5, h * 0.4, fw * 0.45, h * 0.16);
     else if (role === "herald") {
       R("#eadfc5", fw * 0.6, h * 0.42, fw * 0.25, h * 0.4);
@@ -1343,11 +1326,11 @@ export function createTownView(host: HTMLElement): TownView {
       "carter",
       "town_carter",
       23,
-      ["exit", "south", "store", "south", "kennel", "south"],
+      ["exit", "south", "kennel", "south"],
       SPEED * 0.6,
       2,
       6,
-      4,
+      BUILDINGS.length,
       "town_cart",
     );
   }
@@ -1468,7 +1451,7 @@ export function createTownView(host: HTMLElement): TownView {
     const id = Array.isArray(ids) ? ids[0]! : ids;
     if (
       o.ground ??
-      /^(hero_|walk_|town_(house_|blacksmith_|bank_|storehouse_|kennel_|worker_|smith$|merchant$|carter$|child$|crate$|board$|campfire_|haul_chest|stall$|barrel$|brazier$|bench$|well$))/.test(
+      /^(hero_|walk_|town_(house_|blacksmith_|bank_|kennel_|worker_|smith$|merchant$|carter$|child$|crate$|board$|campfire_|haul_chest|stall$|barrel$|brazier$|bench$|well$))/.test(
         id,
       )
     ) {
@@ -1507,7 +1490,7 @@ export function createTownView(host: HTMLElement): TownView {
         r: r * TILE,
       })),
       fire: PLOTS.fire,
-      plaza: s.stage >= 4,
+      plaza: s.stage >= BUILDINGS.length,
       aprons: [...(s.home ? [PLOTS.house] : []), ...s.buildings.map((b) => PLOTS[b.id])],
       hillFoot,
       shadows: trees,
@@ -1544,7 +1527,6 @@ export function createTownView(host: HTMLElement): TownView {
   const DOOR: Record<string, string> = {
     blacksmith: "smith",
     bank: "bank",
-    storehouse: "store",
     kennel: "kennel",
   };
   const SPURS = new Set(Object.values(DOOR));
@@ -1645,7 +1627,7 @@ export function createTownView(host: HTMLElement): TownView {
     characterLights.push({ x: lx, y: ly, r: 23, c: [a, a, a] });
   }
   /** Cut 109: the townsfolk — the smith at the forge's door from the first building, a child about the fire and the well from the
-   *  second, the merchant at the stall from the third, the carter up and down the south road from the fourth; a step bob, no walk frames */
+   *  second, the merchant at the stall from the third, the carter up and down the south road when all facilities stand; a step bob, no walk frames */
   function folk(s: TownState, night: number): void {
     if (!s.home) return;
     const bob = (ph: number, rate = 1.3): number => Math.floor(t * rate + ph) & 1;

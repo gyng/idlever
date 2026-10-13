@@ -65,7 +65,6 @@ pub const UNLOCKS: &[UnlockDef] = &[
     // T1 · the first bank.
     m("row5", 3, None, 1),
     m("throw", 3, None, 1),
-    m("vault2", 3, None, 1),
     // T2 · the Warlord met (D8).
     m("row6", 4, Some("row5"), 2),
     m("corridor_fighting", 4, None, 2),
@@ -76,19 +75,16 @@ pub const UNLOCKS: &[UnlockDef] = &[
     m("ranger", 6, None, 3),
     m("gunner",8,None,3),
     m("boss_focus", 4, None, 3),
-    m("vault3", 5, Some("vault2"), 3),
     m("oath_slot_2", 6, None, 3),
     // T4 · the Lich met (D18).
     m("row8", 6, Some("row7"), 4),
     m("caster", 8, None, 4),
     m("reflect_read", 5, None, 4),
-    m("vault4", 6, Some("vault3"), 4),
     // T5 · the Foundry Master met (D23).
     m("row9", 7, Some("row8"), 5),
     m("cadence", 5, None, 5),
     m("lantern_rig", 5, None, 5),
     m("recall_sense", 6, None, 5),
-    m("vault5", 7, Some("vault4"), 5),
     // T6 · the Lurker Queen met (D28).
     m("row10", 8, Some("row9"), 6),
     m("oath_slot_3", 8, Some("oath_slot_2"), 6),
@@ -892,7 +888,8 @@ mod tests {
         // Cut 29 §1 (docs/PROGRESSION.md §4): 44 − quartermaster − auto_insure (the default now)
         // + the two oath slots + three oath rewards of their own (`hold`, `route2`, `heir_pick`).
         // Cut 35 adds the fifth base class without changing earlier prices.
-        assert_eq!(UNLOCKS.len(), 48);
+        assert_eq!(UNLOCKS.len(), 44, "Cut201 removes the four obsolete storage purchases");
+        assert!(["vault2", "vault3", "vault4", "vault5"].iter().all(|id| def(id).is_none()));
         let gunner=def("gunner").unwrap();
         assert_eq!((gunner.cost,gunner.tier),(8,3));
         assert_eq!(gunner.via,Via::Marks);

@@ -5,7 +5,6 @@
 // when known, then `buy`. No card buys on its own tap; a disabled card still opens the sheet to show its gate.
 import { sysOpen } from "./systems";
 import type { App } from "../app";
-import { revealed } from "./reveal";
 import { engagementRow, safetyEnd } from "../app";
 import type { Lineage, UnlockInfo } from "../engine/types";
 import { CLASSES, isFreeClass } from "../engine/classes";
@@ -25,10 +24,6 @@ const LABEL: Record<string, string> = {
   party_slot_2: "+1 party",
   party_slot_3: "+1 party",
   party_slot_4: "+1 party",
-  vault2: "+1 storage slot",
-  vault3: "+1 storage slot",
-  vault4: "+1 storage slot",
-  vault5: "+1 storage slot",
   rogue: "class: rogue",
   ranger: "class: ranger",
   caster: "class: caster",
@@ -51,7 +46,6 @@ const LABEL: Record<string, string> = {
   last_stand: "rule: last stand",
   quartermaster: "auto: keep weapon+armour",
   auto_supply: "Restock supplies",
-  auto_insure: "Auto insure gear",
   incubator: "eggs: 1 rest",
   supply_cap_5: "Supply slots 3 → 5",
   bone_sense: "path: bones",
@@ -70,9 +64,6 @@ const AFTER: Record<string, string> = {
   row8: "row7",
   row9: "row8",
   row10: "row9",
-  vault3: "vault2",
-  vault4: "vault3",
-  vault5: "vault4",
   party_slot_3: "party_slot_2",
   party_slot_4: "party_slot_3",
 };
@@ -161,20 +152,12 @@ export function priceLabel(u: UnlockInfo): string {
     (u.owned ? "" : /* copy:label */ "free")
   );
 }
-/** QA 92eb880 (M: "`+1 ROW` and `+1 VAULT` say nothing of what they give"): a counted unlock's effect as numbers — `rows 4 → 5`,
- *  `vault 1 → 2`, `party 1 → 2`, `supplies 3 → 5`; undefined for others. */
+/** QA 92eb880 (M: "`+1 ROW` say nothing of what they give"): a counted unlock's effect as numbers — `rows 4 → 5`,
+ *  `party 1 → 2`; undefined for others. */
 export function effectLine(app: App, u: UnlockInfo): string | undefined {
   const L = app.lineage;
   if (/^row\d+$/.test(u.id))
     return /* copy:callout */ `rows ${app.vocab.max_rows} → ${app.vocab.max_rows + 1}`;
-  // QA 912e135 (qaW: `vault 1 → 2` before any vault tile existed, then `VAULT 0/2`): while the vault is not yet on the console its first
-  // slot was never seen — the line reads what the buy shows (`vault · 2 slots`)
-  if (/^vault\d$/.test(u.id)) {
-    const n = vaultSlots(L.unlocks);
-    return revealed(app).has("vault")
-      ? /* copy:callout */ `vault ${n} → ${n + 1}`
-      : /* copy:callout */ `vault · ${n + 1} slots`;
-  }
   if (/^party_slot_\d$/.test(u.id))
     return /* copy:callout */ `party ${L.party_slots} → ${L.party_slots + 1}`;
   return undefined;
@@ -391,7 +374,7 @@ function nextPrice(app: App, u: UnlockInfo): HTMLElement | null {
     !["rows full", "fill rows", u.id].includes(cat.needs)
       ? cat.needs
       : undefined;
-  if (/^(row|vault|party_slot_)/.test(u.id) && (!id || gate))
+  if (/^(row|party_slot_)/.test(u.id) && (!id || gate))
     return h(
       "div",
       { class: "dim num next-price max" },
@@ -482,16 +465,17 @@ export function addCard(app: App, u: UnlockInfo): void {
 /** Cut 6 §6: owned entries that carry rows (cards, automations) — the shelf keeps them as chips that open their rows. */
 export function ownedRows(catalogue: UnlockInfo[]): UnlockCard[] {
   // QA 92eb880 (N: "`verb: throw` and `class: rogue` bought, never appear in the `· owned` row"): every owned purchase but the counted
-  // steps (`+1 row` · `+1 vault` · `+1 party`, which the counts already show) and the free class
+  // steps (`+1 row` · `+1 party`, which the counts already show) and the free class
   return catalogue
     .filter(
       (u) =>
         u.owned &&
         (u.rows?.length ||
-          (LABEL[u.id] && !/^(row\d+|vault\d|party_slot_\d)$/.test(u.id) && !isFreeClass(u.id))),
+          (LABEL[u.id] && !/^(row\d+|party_slot_\d)$/.test(u.id) && !isFreeClass(u.id))),
     )
     .map((u) => ({ ...u, label: LABEL[u.id] ?? u.id.replace(/_/g, " "), gated: false }));
 }
+// Inactive compatibility helper for watch storage handlers; remove with the pending watch/API retirement.
 export const vaultSlots = (owned: string[]): number =>
   1 + ["vault2", "vault3", "vault4", "vault5"].filter((u) => owned.includes(u)).length;
 export const supplyCap = (owned: string[]): number => (owned.includes("supply_cap_5") ? 5 : 3);

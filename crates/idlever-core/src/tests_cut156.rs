@@ -27,8 +27,8 @@ fn worker_fixture() -> Game {
     g.lineage.gold_move(2000, "test income");
     g.lineage.vault = vec![item(100_001, "dagger", 0)];
     g.lineage.next_vault_id = 100_100;
-    g.build_town("storehouse").unwrap();
-    tree::grant(&mut g.lineage, &["quartermaster", "porter", "scout", "armourer", "apprentice"]);
+    assert!(g.build_town("storehouse").is_err());
+    tree::grant(&mut g.lineage, &["quartermaster", "porter", "scout", "apprentice"]);
     g
 }
 
@@ -48,41 +48,19 @@ fn automatic_salvage_preserves_known_and_hidden_item_names() {
 }
 
 #[test]
-fn keeper_remains_hireable_by_manual_choices_sales_and_age() {
-    let base = worker_fixture(); let node = tree::def("keeper").unwrap();
-    assert!(!tree::ready(&base.lineage, node));
-    let mut automatic = base.clone();
-    automatic.pending_exit = Some(pending(vec![item(10, "dagger", 1)]));
-    automatic.auto_keep();
-    assert_eq!(tree::count(&automatic.lineage, "keeper"), 0, "automatic upgrade is not a manual act");
-    let mut manual = base.clone();
-    manual.pending_exit = Some(pending(vec![item(10, "bow", 1)]));
-    assert!(manual.exit_pending_wire().unwrap().decide);
-    manual.keep(vec![10]).unwrap();
-    assert_eq!(tree::count(&manual.lineage, "keeper"), 1);
-    manual.pending_exit = Some(pending(vec![item(11, "dagger", 4)]));
-    assert!(manual.exit_pending_wire().unwrap().decide);
-    manual.keep(vec![11]).unwrap();
-    assert_eq!(tree::count(&manual.lineage, "keeper"), 2);
-    assert!(tree::ready(&manual.lineage, node));
-    let price = tree::price(&manual.lineage, node); let gold = manual.lineage.gold;
-    manual.hire("keeper").unwrap(); assert_eq!(manual.lineage.gold, gold-price);
-    manual.pending_exit = Some(pending(vec![item(12, "bow", 5)]));
-    assert!(!manual.exit_pending_wire().unwrap().decide, "keeper still resolves meaningful alternatives");
-    manual.set_worker("keeper", false).unwrap();
-    assert!(manual.exit_pending_wire().unwrap().decide);
-    let restored = Game::load(&manual.save()).unwrap();
-    assert!(tree::hired(&restored.lineage, "keeper") && !tree::on(&restored.lineage, "keeper"));
-    assert!(restored.exit_pending_wire().unwrap().decide);
-    let mut sales = base.clone(); sales.sell_vault(100_001).unwrap();
-    sales.lineage.vault.push(item(100_002, "dagger", 0)); sales.sell_vault(100_002).unwrap();
-    assert_eq!(tree::count(&sales.lineage, "keeper"), 2);
-    let mut aged = base; aged.lineage.clock_s = 30*3600-1;
-    assert!(!tree::ready(&aged.lineage, node)); aged.lineage.clock_s += 1;
-    assert!(tree::ready(&aged.lineage, node)); aged.hire("keeper").unwrap();
-    assert_eq!((node.need, node.price_tenths, node.fallback_h), (2,20,30));
+fn retired_storage_workers_never_reappear_from_manual_acts_or_age() {
+    let mut g = worker_fixture();
+    for chore in ["keep", "wear"] { for _ in 0..3 { tree::did(&mut g.lineage, chore); } }
+    g.lineage.clock_s = 72 * 3600;
+    for id in ["keeper", "armourer"] {
+        assert!(tree::def(id).is_none());
+        assert_eq!(tree::count(&g.lineage, id), 0);
+        assert!(g.hire(id).is_err());
+    }
+    let wire = g.lineage();
+    assert!(wire.tree.unwrap().nodes.iter().all(|n| !matches!(n.id.as_str(), "keeper" | "armourer")));
+    assert!(!wire.town.buildings.iter().any(|b| b.id == "storehouse"));
 }
-
 #[test]
 fn saved_routine_keep_sheet_preserves_one_and_three_hero_eight_hour_absences() {
     use crate::bloodlines::Session;

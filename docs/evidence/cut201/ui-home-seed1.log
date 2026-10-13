@@ -1,0 +1,29 @@
+dev.sh: vite did not come up on 5219; see /tmp/idlever-vite.log
+node:internal/child_process:1144
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync bash EPERM
+    at Object.spawnSync (node:internal/child_process:1144:20)
+    at spawnSync (node:child_process:928:24)
+    at execFileSync (node:child_process:971:15)
+    at file:///home/g/p/riddle/web/tests/home-building-help.mjs:7:13 {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'spawnSync bash',
+  path: 'bash',
+  spawnargs: [ 'tools/dev.sh' ],
+  error: [Circular *1],
+  status: 1,
+  signal: null,
+  output: [
+    null,
+    '',
+    'dev.sh: vite did not come up on 5219; see /tmp/idlever-vite.log\n'
+  ],
+  pid: 140,
+  stdout: '',
+  stderr: 'dev.sh: vite did not come up on 5219; see /tmp/idlever-vite.log\n'
+}
+
+Node.js v26.5.0

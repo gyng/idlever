@@ -36,7 +36,6 @@ const TILE_TERM: Record<string, Term> = /* copy:none */ {
   quest: "quest",
   loadout: "pack",
   forge: "forge",
-  vault: "vault",
   party: "kennel",
   bank: "bank",
   edit: "pen",

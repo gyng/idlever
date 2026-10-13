@@ -2,13 +2,7 @@ import type { Lineage } from "../engine/types";
 import { h } from "./dom";
 
 /** Purpose belongs to the building; availability is always read from Rust's town wire. */
-export const HOME_BUILDINGS = /* copy:none */ [
-  "house",
-  "blacksmith",
-  "storehouse",
-  "kennel",
-  "bank",
-] as const;
+export const HOME_BUILDINGS = /* copy:none */ ["house", "blacksmith", "kennel", "bank"] as const;
 export type HomeBuilding = (typeof HOME_BUILDINGS)[number];
 /* copy:tooltip */
 const PURPOSE: Record<HomeBuilding, { name: string; purpose: string; action: string }> = {
@@ -21,11 +15,6 @@ const PURPOSE: Record<HomeBuilding, { name: string; purpose: string; action: str
     name: "Forge",
     purpose: /* copy:tooltip */ "Starting gear upgrades for future delves",
     action: /* copy:tooltip */ "Inspect available upgrades and prices",
-  },
-  storehouse: {
-    name: "Storehouse",
-    purpose: /* copy:tooltip */ "Gear kept from completed delves",
-    action: /* copy:tooltip */ "Inspect stored gear · equip or sell",
   },
   kennel: {
     name: "Kennel",

@@ -1,0 +1,24 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   hero: false,
++   ready: false
+-   hero: true,
+-   ready: true
+  }
+
+    at file:///home/g/p/riddle/web/tests/home-building-help.mjs:160:14 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { hero: false, ready: false },
+  expected: { hero: true, ready: true },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

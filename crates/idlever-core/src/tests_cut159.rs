@@ -18,7 +18,7 @@ fn forecast_equipment_matches_real_existing_armourer_order() {
     for case in 0..12 {
         let mut g = fixture();
         match case {
-            1 => g.set_worker("armourer", false).unwrap(),
+            1 => assert!(g.set_worker("armourer", false).is_err()),
             2 => g.lineage.tree.hired.retain(|(id, _)| id != "armourer"),
             3 => g.lineage.pkg.literal = true,
             4 => g.lineage.variant = "bones_only".into(),
@@ -51,12 +51,12 @@ fn forecast_equipment_matches_real_existing_armourer_order() {
 #[test]
 fn equipment_projection_invalidates_cache_and_preserves_ordered_panels() {
     let g = fixture(); let key = forecast::lineage_key(&g);
-    let mut paused = g.clone(); paused.set_worker("armourer", false).unwrap();
-    assert_ne!(key, forecast::lineage_key(&paused));
+    let mut paused = g.clone(); assert!(paused.set_worker("armourer", false).is_err());
+    assert_eq!(key, forecast::lineage_key(&paused));
     let mut ranked = g.clone(); ranked.lineage.tree.ranks.insert("armourer".into(), 2);
-    assert_ne!(key, forecast::lineage_key(&ranked), "free insurance changes the projected send");
+    assert_eq!(key, forecast::lineage_key(&ranked), "retired worker metadata changes no projected send");
     let mut wall = g.clone(); wall.lineage.tree.sends = (8, 3);
-    assert_ne!(key, forecast::lineage_key(&wall));
+    assert_eq!(key, forecast::lineage_key(&wall));
     let before = g.save(); let rules = g.lineage.rules();
     let old = forecast::parallel_sims();
     forecast::set_parallel_sims(false);

@@ -1,0 +1,5 @@
+client suite: targeted (3 selected; 132 current full; 174 exhaustive groups)
+ok   loot-economy    2.7s (2.4s)  {"checks":55,"outcomes":[{"tier":"bank","kept":12,"gold":512},{"tier":"return","kept":12,"gold":512},{"tier":"death","kept":8,"gold":508}],"version":"0.1.0"}
+ok   free-preparation 3.6s (3.3s)  {"fixture":"controlled unlocked loadout","version":"0.1.0","checks":73,"delves":[{"run":1,"gold":0,"heals":1},{"run":2,"gold":0,"heals":1},{"run":3,"gold":0,"heals":1}],"forgePrice":100}
+ok   bloodline-tabs  8.6s (8.3s)  bloodline-tabs 74 real-WASM checks PASS
+ok: 3/3 client gates in 8.6s

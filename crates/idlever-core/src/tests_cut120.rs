@@ -288,10 +288,10 @@ fn the_worker_ledger_matches_the_acts_and_reconciles() {
     let mut checked = 0;
     for seed in [11u64, 12, 13] {
         let mut g = Game::new_resident(seed);
-        for b in ["storehouse", "blacksmith", "bank", "kennel"] {
+        for b in ["blacksmith", "bank", "kennel"] {
             let _ = g.build_town(b);
         }
-        tree::grant(&mut g.lineage, &["porter", "scout", "armourer", "apprentice", "keeper", "clerk", "drillmaster", "kennel_hand", "guide"]);
+        tree::grant(&mut g.lineage, &["porter", "scout", "apprentice", "clerk", "drillmaster", "kennel_hand", "guide"]);
         g.lineage.gold_move(20_000, "test income");
         g.lineage.orders.forge = "all".into();
         g.lineage.orders.ranks = "auto".into();
@@ -329,23 +329,23 @@ fn the_worker_ledger_matches_the_acts_and_reconciles() {
 fn the_next_worker_shows_progress_and_eta() {
     let mut g = Game::new_resident(14);
     tree::grant(&mut g.lineage, &["porter", "scout"]);
-    g.lineage.town.built.push(("storehouse".into(), 0));
-    tree::did(&mut g.lineage, "wear");
+    g.lineage.town.built.push(("blacksmith".into(), 0));
+    tree::did(&mut g.lineage, "forge");
     g.lineage.clock_s = 10 * 3600;
     let w = tree::wire(&g.lineage, false);
-    let a = w.nodes.iter().find(|n| n.id == "armourer").unwrap();
-    assert_eq!(a.progress.as_deref(), Some("1/2"));
-    assert_eq!((a.fallback_h, a.eta_h), (Some(24), Some(14)));
-    assert_eq!(w.next_worker.as_deref(), Some("armourer"));
+    let a = w.nodes.iter().find(|n| n.id == "apprentice").unwrap();
+    assert_eq!(a.progress.as_deref(), Some("1/3"));
+    assert_eq!((a.fallback_h, a.eta_h), (Some(30), Some(20)));
+    assert_eq!(w.next_worker.as_deref(), Some("apprentice"));
     let p = w.nodes.iter().find(|n| n.id == "porter").unwrap();
     assert!(p.progress.is_none() && p.eta_h.is_none(), "hired: none");
     // the fallback reached: lit, no eta; its post carries the count and the fallback
     g.lineage.clock_s = 30 * 3600;
     let w = tree::wire(&g.lineage, false);
-    assert_eq!(w.lit.as_deref(), Some("armourer"));
-    assert!(w.nodes.iter().find(|n| n.id == "armourer").unwrap().eta_h.is_none());
+    assert_eq!(w.lit.as_deref(), Some("apprentice"));
+    assert!(w.nodes.iter().find(|n| n.id == "apprentice").unwrap().eta_h.is_none());
     let post = tree::posts(&g.lineage).into_iter().find(|p| p.lit).unwrap();
-    assert_eq!((post.progress.as_deref(), post.fallback_h), (Some("1/2"), Some(24)));
+    assert_eq!((post.progress.as_deref(), post.fallback_h), (Some("1/3"), Some(30)));
 }
 
 /// §6 (coordinator, the client's 3-bloodline audit: `◆102` against a bloodline's spend of 54): the town's acts sum

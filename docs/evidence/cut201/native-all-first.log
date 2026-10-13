@@ -1,0 +1,30 @@
+
+running 847 tests
+....................................................................................... 87/847
+....................................................................................... 174/847
+............................. 203/847
+tests::a_gold_buy_spends_gold_on_rows_and_automations --- FAILED
+....................................................................................i.. 291/847
+....................................................................................... 378/847
+....................................................................................... 465/847
+...............................................................................iii..... 552/847
+.............i...i..................................................................... 639/847
+....................................................................................... 726/847
+....................................................................................... 813/847
+.................................test tests::a_dice_death_at_a_full_base_says_nothing_beats_it has been running for over 60 seconds
+.
+failures:
+
+---- tests::a_gold_buy_spends_gold_on_rows_and_automations stdout ----
+
+thread 'tests::a_gold_buy_spends_gold_on_rows_and_automations' (9114) panicked at crates/idlever-core/src/tests.rs:3824:83:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::a_gold_buy_spends_gold_on_rows_and_automations
+
+test result: FAILED. 840 passed; 1 failed; 6 ignored; 0 measured; 0 filtered out; finished in 64.23s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

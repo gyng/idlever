@@ -9,7 +9,7 @@ is revoked; prior raw release/balance evidence is historical for changed code.
 
 | ID | Requirement | State | Evidence / next proof |
 |---|---|---|---|
-| 1 | Automatic loot settlement; simplify Keep and Storehouse | Partial | Cut196 once-only conversion/no new Keep; native838 and actual receipt checks pass. Storehouse/dead workers and offline parity remain |
+| 1 | Automatic loot settlement; simplify Keep and Storehouse | Partial | Cut196 once-only conversion; Cut201 active storage/workers/menus retired, native841/earned UI proof pass. Backend/watch cleanup and multihero parity remain |
 | 2 | A simpler banking model | Partial | Cut196 Bank/Return100% Gold, Death secured/protection; XP separate. Actual receipts/ledger pass; earned pacing remains |
 | 3 | Stage early progression | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |
 | 4 | Explain the cage and run endings | Cut191 in progress | docs/CUT191_BUILD_ECONOMY.md; targeted core checks in progress |

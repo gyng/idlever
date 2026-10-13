@@ -15,7 +15,6 @@ export type Concept =
   | "marks"
   | "renown"
   | "cage"
-  | "vault"
   | "bones"
   | "oaths"
   | "bounty"
@@ -27,7 +26,6 @@ const DEF: Record<Concept, { ico: string; glyph: string; cap: string }> = /* cop
   marks: { ico: "mark", glyph: "◆", cap: "upgrade tokens" },
   renown: { ico: "renown", glyph: "★", cap: "reputation" },
   cage: { ico: "vault", glyph: "▦", cap: "choose one item" },
-  vault: { ico: "vault", glyph: "▣", cap: "stored gear" },
   bones: { ico: "it_bones", glyph: "☠", cap: "dead heir's gear" },
   oaths: { ico: "renown", glyph: "✠", cap: "goal for reward" },
   bounty: { ico: "gold", glyph: "✦", cap: "floor pays double" },
@@ -171,7 +169,6 @@ export const TIP: Record<Term, string> = /* copy:tooltip */ {
   marks: "tokens from progression · buy unlocks and tactic levels",
   renown: "reputation from deeds · ranks award upgrade tokens",
   cage: "choose one item · loot preference selects automatically",
-  vault: "stored gear · survives hero replacement",
   bones: "a dead heir's gear on his floor",
   oaths: "a goal for a reward",
   bounty: "this floor pays double gold",
@@ -194,7 +191,7 @@ export const TIP: Record<Term, string> = /* copy:tooltip */ {
   lever: "the cheapest move against this death",
   bank: "deposits earn interest each night",
   banked: "home with all the loot",
-  returned: "turned back early · keeps most loot",
+  returned: "turned back early · returns carried Gold",
   death: "gear left on the floor as bones",
   plateau: "every run home · none deeper",
   ends: "full haul, early return or death",
@@ -255,7 +252,6 @@ export const ALIASES: Partial<Record<Term, string[]>> = /* copy:none */ {
   priority: ["priority"],
   condition: ["condition"],
   action: ["action"],
-  vault: ["stored gear", "vault", "storehouse"],
   bones: ["bones"],
   bounty: ["bounty"],
   waystone: ["waystone", "waystones"],
@@ -298,7 +294,6 @@ export const TITLE: Partial<Record<Term, string>> = /* copy:label */ {
   marks: "upgrade tokens",
   renown: "reputation",
   cage: "loot choice",
-  vault: "stored gear",
   oaths: "challenges",
   pen: "custom rules",
   ends: "run outcomes",
@@ -436,10 +431,6 @@ export const LIVE: Partial<Record<Term, (app: App) => string | null>> = {
   bank: (a) => {
     const T = a.lineage.town;
     return T ? /* copy:tooltip */ `$${T.bank} in · cap $${T.bank_cap}` : null;
-  },
-  vault: (a) => {
-    const n = a.lineage.vault?.length ?? 0;
-    return n ? /* copy:tooltip */ `${n} kept` : null;
   },
   // blind 1fb7786 (B: `custom rules · write hero rules · unlocks later` with five rules owned): the lock is live, never the gloss — the
   // chip's own word while locked, the rules written once open

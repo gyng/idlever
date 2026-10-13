@@ -104,7 +104,7 @@ fn automatic_haul_collection_conserves_gold_and_readies_the_porter() {
 fn the_node_table_lights_one_at_a_time_in_order() {
     // the order: the trunk (the quartermaster given, the porter free, the scout) then the branches; every chore names one node
     let ids: Vec<&str> = NODES.iter().map(|n| n.id).collect();
-    assert_eq!(&ids[..5], &["quartermaster", "porter", "scout", "armourer", "apprentice"]);
+    assert_eq!(&ids[..4], &["quartermaster", "porter", "scout", "apprentice"]);
     assert_eq!(tree::def("porter").unwrap().price_tenths, 0, "the porter is free");
     assert!(NODES.iter().skip(2).all(|n| n.price_tenths > 0), "the rest cost gold");
     for n in NODES.iter().filter(|n| !n.chore.is_empty()) {
@@ -155,9 +155,9 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     // the fallback: a node's chore open, the lineage old enough, it lights without the count
     let mut f = Game::new_resident(5);
     crate::tree::grant(&mut f.lineage, &["porter", "scout"]);
-    f.lineage.systems.insert("storehouse".into());
-    f.lineage.clock_s = 25 * 3600;
-    assert_eq!(tree::lit(&f.lineage).map(|n| n.id), Some("armourer"));
+    f.lineage.systems.insert("forge".into());
+    f.lineage.clock_s = 30 * 3600;
+    assert_eq!(tree::lit(&f.lineage).map(|n| n.id), Some("apprentice"));
 }
 
 #[test]
@@ -295,33 +295,15 @@ fn workers_keep_their_standing_orders() {
         }
         assert!(tree::guide_pick(&t.lineage, false) < want, "the guide steps back");
     }
-    // the armourer: the best vault weapon/armour goes with each send
-    let mut w = g.clone();
-    tree::grant(&mut w.lineage, &["armourer"]);
-    // (the premise: a find in the vault that beats the forged kit — blind b8dd77c's seed-29 lineage kept a
-    // dragging mail alone, which the armourer rightly leaves; a +3 sword beats the bare kit)
-    let id = w.lineage.next_vault_id;
-    w.lineage.next_vault_id += 1;
-    let mut sword = crate::item::Item::new(id, "sword");
-    sword.enchant = 3;
-    sword.known = true;
-    w.lineage.vault.push(sword);
-    {
-        let n = w.lineage.tree.acts.get("armourer").copied().unwrap_or(0);
-        run_offline_counts(&mut w, 3600);
-        assert!(w.lineage.tree.acts.get("armourer").copied().unwrap_or(0) > n, "the armourer brought the vault");
-    }
-    // the keeper: a watched exit never asks
-    let mut k = g.clone();
-    tree::grant(&mut k.lineage, &["keeper"]);
-    k.send();
+    // Cut201: automatic conversion needs neither a storage keeper nor an armourer.
+    assert!(tree::def("armourer").is_none() && tree::def("keeper").is_none());
+    let mut k = g.clone(); k.send();
+    let mut ended = false;
     for _ in 0..4000 {
         let r = k.step(50);
-        if r.run_over {
-            assert!(r.exit_pending.is_none_or(|p| !p.decide));
-            break;
-        }
+        if r.run_over { assert!(r.exit_pending.is_none()); ended = true; break; }
     }
+    assert!(ended, "the actual watched outcome settles without hiring a storage worker");
     // a literal lineage: no worker acts
     let mut l = Game::new_literal(29);
     tree::grant(&mut l.lineage, &["apprentice", "clerk"]);
@@ -337,12 +319,12 @@ fn chores_by_hand_count_toward_their_worker() {
         run_offline_counts(&mut g, 8 * 3600);
     }
     g.build_town("blacksmith").unwrap();
-    if !g.lineage.vault.is_empty() { g.build_town("storehouse").unwrap(); }
+    assert!(g.build_town("storehouse").is_err());
     let ids: Vec<u32> = g.lineage.vault.iter().map(|v| v.id).collect();
     if !ids.is_empty() {
         g.loadout(ids.clone());
         g.loadout(ids.clone());
-        assert_eq!(tree::count(&g.lineage, "armourer"), ids.len() as u32, "each find counts once");
+        assert_eq!(tree::count(&g.lineage, "armourer"), 0, "retired chores count toward no worker");
     }
     g.lineage.gold += 100_000;
     g.lineage.tree.ledger += 100_000;

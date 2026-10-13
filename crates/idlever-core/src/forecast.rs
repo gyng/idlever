@@ -176,7 +176,6 @@ pub fn sim_game(game: &Game, rules: &RuleSet, tag: u64, i: u32, passage: Option<
     let _ = g.set_rules(rules.clone());
     // A forecast models the next pack without running town workers in its sims.
     // Historical rows remain the supplied rows; only the existing equipment order is projected.
-    crate::tree::pack_armourer(&mut g, false);
     let seed = splitmix(game.lineage.seed ^ splitmix(tag ^ (i as u64 + 1).wrapping_mul(0xA24B_AED4_963E_E407)));
     // Cut 24 §2: a named foe rests two runs in three (`LineageState::named_resting`) — the panel
     // plays the sends from here, so its sims turn through the three.
@@ -1671,7 +1670,6 @@ pub fn lineage_key(game: &Game) -> u64 {
     loadout.sort();
     loadout.dedup();
     feed(&format!("{loadout:?}"));
-    feed(&format!("armourer {:?} {}", crate::tree::armourer_plan(game), crate::tree::bonus_rank(l, "armourer") > 0));
     feed(&serde_json::to_string(&l.party).unwrap_or_default());
     feed(&serde_json::to_string(&l.supplies).unwrap_or_default());
     // Automatic supplies read the effective package and pen as well as the compiled rows.

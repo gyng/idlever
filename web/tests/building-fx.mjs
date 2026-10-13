@@ -160,7 +160,7 @@ try {
             [],
           );
           check(constructionChanges(base, base), []);
-          for (const id of ["blacksmith", "storehouse", "kennel", "bank"]) {
+          for (const id of ["blacksmith", "kennel", "bank"]) {
             const empty = { ...base, stage: 0, buildings: [] },
               one = { ...empty, stage: 1, buildings: [{ id, look: 1, fresh: true }] };
             check(constructionChanges(empty, one), [{ id }]);
@@ -176,12 +176,12 @@ try {
           check(constructionChanges({ ...base, stage: 1 }, { ...base, stage: 2 }), [
             { id: "house", fromLook: 1 },
           ]);
-          check(constructionChanges({ ...base, stage: 3 }, { ...base, stage: 4 }), [
+          check(constructionChanges({ ...base, stage: 2 }, { ...base, stage: 3 }), [
             { id: "house", fromLook: 2 },
           ]);
           return n;
         });
-        assert.equal(cases, 21);
+        assert.equal(cases, 17);
         // Controlled starting appearance, followed by genuine permanent Forge steps/Savings transactions.
         await p.evaluate(async (engine) => {
           const saved = JSON.parse(engine);

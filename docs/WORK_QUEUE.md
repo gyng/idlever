@@ -422,9 +422,9 @@ CSS audit are complete, recommending an Idlever-owned token
 and component system. Visual comparisons, measured checks and implementation
 remain pending.
 
-Cut201 now integrates Storehouse/keeper/armourer retirement across core, scene
-and menus, after eight earned before/after pacing seeds. Current edits require
-new-package integration proof; inactive API/save bridges and named kits remain
+Cut201 integrates Storehouse/keeper/armourer retirement across core, scene
+and menus, with eight earned before/after pacing seeds, native841 and new-package
+worker/UI/GL/Canvas proofs. Inactive backend/watch API/save bridges and named kits remain
 explicitly open. No new unlock delays have been selected from the baseline alone.
 
 1. **Remove routine gear-keeping work.** Owner feedback: “Gear keeping feels like busywork... Are items converted into some currency instead?” Existing Rust salvage already pays gold and advances each item's forge crafting progress; kept gear goes into storage. Investigate automatic retention of useful upgrades and salvage of the rest, with optional manual review instead of a recurring blocking sheet. Preserve distinct loadout choices and the player's equipped kit; storing an upgrade must not silently equip it. Do not add another salvage currency. Start from `keep_is_a_decision`, `auto_keep_plan` and the existing keeper worker so the refinement does not duplicate automation. Before implementation specify numeric interruption/decision gates, exact gold/forge reconciliation, storage-full behavior, protected/brought gear and whole/sliced/reloaded parity. Source-backed discovery contract [CUT140_KEEP_FLOW_DISCOVERY.md](CUT140_KEEP_FLOW_DISCOVERY.md) now specifies twelve cases across three exit tiers, interruption/settlement gates and keeper migration limits. This is queued owner feedback, not independent rater evidence or delivered behavior; implement after the frozen cohort.

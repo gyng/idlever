@@ -238,7 +238,7 @@ pub const MAX_CARD_ROWS: usize = 16;
 pub const MAX_PKG_ROWS: usize = 24;
 pub const ROWS_TOTAL: usize = MAX_ROWS + MAX_CARD_ROWS + MAX_PKG_ROWS;
 /// Cut 3: the ascension variants, in the order they are offered.
-pub const VARIANTS: [&str; 4] = ["no_rest", "short_list", "bones_only", "hunted"];
+pub const VARIANTS: [&str; 3] = ["no_rest", "short_list", "hunted"];
 /// Energy needed to act; actors gain `speed` per tick.
 pub const ACT_ENERGY: i32 = 100;
 pub const TICKS_PER_TURN: u32 = 10;
@@ -2501,19 +2501,8 @@ impl LineageState {
     pub fn standing_orders(&self) -> crate::wire::StandingOrders {
         crate::wire::StandingOrders { keep: self.keep_pref.clone(), cage: self.vault_pref.clone(), start: self.start.max(1), repeat: !self.restock_off, insure: self.orders.insure, forge: self.orders.forge.clone(), wall: Some(self.orders.wall.clone()), sink: Some(self.orders.sink.clone()), heir: Some(self.orders.heir.clone()), kennel: Some(self.orders.kennel.clone()), legacy: Some(self.orders.legacy.clone()), ranks: Some(self.orders.ranks.clone()), ascend: Some(self.orders.ascend.clone()), shared: Some(self.orders.shared.iter().cloned().collect()) }
     }
-    /// The categories an unwatched exit keeps, in order (`Game::auto_keep`).
-    pub fn keep_auto(&self) -> Vec<String> {
-        // Cut 29 §4: the quartermaster's keep (both categories) is the default now.
-        let qm = true;
-        let order: &[&str] = match self.keep_pref.as_str() {
-            "best_weapon" if qm => &["weapon", "armour"],
-            "best_weapon" => &["weapon"],
-            "best_armour" if qm => &["armour", "weapon"],
-            "best_armour" => &["armour"],
-            _ => &[],
-        };
-        order.iter().map(|s| s.to_string()).collect()
-    }
+    /// Storage preferences no longer perform automatic equipment changes.
+    pub fn keep_auto(&self) -> Vec<String> { Vec::new() }
     pub fn vault_slots(&self) -> usize {
         if self.variant_is("bones_only") {
             return 0;
@@ -3912,13 +3901,6 @@ impl Game {
             return;
         }
         self.loadout = ids.into_iter().filter(|id| self.lineage.vault.iter().any(|v| v.id == *id)).collect();
-        // Cut 30.5: a find worn by hand (each vault item once) counts toward the armourer
-        for id in self.loadout.clone() {
-            if !self.lineage.tree.worn.contains(&id) && !crate::tree::hired(&self.lineage, "armourer") {
-                self.lineage.tree.worn.push(id);
-                crate::tree::did(&mut self.lineage, "wear");
-            }
-        }
     }
 
     /// Cut 3: a new lineage after the ending that keeps classes (levels), kennel, vault, ledger,

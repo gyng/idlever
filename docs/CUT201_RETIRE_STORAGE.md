@@ -1,7 +1,8 @@
 # Cut201 — retire storage chores
 
-Proposed next dependency of Cut196. This is a read-only audit and implementation
-contract, not delivered behavior or acceptance of the full work queue.
+Implementation checkpoint of Cut196. Active progression, scene and menu
+retirement are delivered with scoped evidence; complete backend/API cleanup
+and full product-queue acceptance remain pending.
 
 ## Chosen direction
 
@@ -92,10 +93,24 @@ evidence before tuning.
 
 ## Status
 
-Audit and proposed contract complete. Implementation, earned baseline,
-retirement-specific validation and API/variant disposition remain pending.
-Runtime and UI source are unchanged by this document. Coordinate implementation
-with the agents owning town rendering and camp/town UI before editing them.
+Active Storehouse plots/progression, keeper/armourer workers and callbacks,
+paid storage offers, storage menus and Keep/insurance controls are retired.
+The redundant bones_only offer is removed. Remaining manual buildings, workers,
+cage preferences and free preparation remain. A genuine ready-Bank label/hero
+hit collision was found in an earned town and fixed without moving scene geometry.
+
+Eight earned before/after seed cases retain3 manual delves to Scout, unchanged
+first-kit affordability and15–17 autonomous8h runs. The single removed building
+tap saves5 modeled seconds; times use the documented dayplayer4x model, not a
+browser wall-time claim. Native841 pass with6 existing ignored; Clippy passes.
+New real WASM6354127bytes passes loot/free-preparation/Bloodlines groups3/3 in
+8.6s; earned seed1/3 building/menu checks cover400/1440. Earned GL400/Canvas1440
+and17-case construction regressions pass. Web build/lint/copy pass.
+
+Evidence: docs/evidence/cut201 and docs/evidence/cut201-render. Raw pacing saves,
+events and first native failure are preserved with byte-verified archive hashes.
+Inactive storage API/save fields and old watch handlers remain pending coordinated
+cleanup. This is not complete API retirement, exhaustive balance or fun acceptance.
 
 ## Renderer lane contract
 
@@ -117,3 +132,31 @@ worker IDs retain `kennel_keeper` while exact `keeper` and `armourer` retire.
 - Preserve Cut198's terrain arithmetic/cache and Cut199's opt-in Forge/Fighter
   shader. Verify a genuinely earned current snapshot after the core package is
   rebuilt; old saved fixtures do not prove current first-session progression.
+
+## Renderer checkpoint (current package)
+
+The renderer lane is implemented and source frozen. Active Storehouse placement,
+its store-only route spur, returning-chest destination, and exact keeper/armourer
+posts/role routines are removed. Kennel_keeper retains the existing Kennel-post
+fallback; remaining plot coordinates and main routes are unchanged. The final
+house/plaza/south-lamp/carter dressing now arrives with all three facilities.
+Historical packed Storehouse art/light metadata remain unused; terrain arithmetic
+and the opt-in Cut199 shader are unchanged.
+
+Current real WASM (6354127bytes) passed one private-GPU journey at400px GL and
+1440px forced Canvas. Actual House/Forge browser controls and genuine native-earned
+three-facility state verify zero retired plots/targets/workers, finite remaining
+routes, final-house staging `[1,1,2,3]`, and five recorded returning parties routing
+home. Native records supply actual Kennel/Bank construction provenance; those two
+browser build actions are not repeated by this renderer journey. Noon/night shots,
+raw checks and exact source/package/save hashes are in `docs/evidence/cut201-render`.
+The existing construction test now verifies17 active transitions, then passes
+Full/Low/Off/reduced lifecycle on both GL and Canvas. TSC, scoped Oxlint, default
+format and diff checks pass. These are correctness checks under concurrent native
+load, not a new performance certification.
+
+An independent earned first-session UI check found a Bank ready-tag intercepting
+a House target at400px; the UI owner is correcting that collision while scene
+coordinates stay frozen. The all-built renderer snapshots do not certify every
+intermediate label layout. Wider earned pacing, API retirement and complete UI
+acceptance remain the owning lanes' responsibilities.

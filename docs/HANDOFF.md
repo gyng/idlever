@@ -88,13 +88,16 @@ Recommendation is an Idlever-owned system informed by Spectrum tokens,
 Carbon spacing and explicit USWDS states, preserving painted materials and fonts.
 The12-frame comparison,54-cell state board, measured readability/contrast and
 adoption are pending; no theme/library adopted.
-Cut201 retirement contract is written. Eight earned baseline seeds hired Scout
-after3 actual manual delves (6.18–11.05 modeled minutes under dayplayer4x plus
-camp/tap allowances, not browser wall-time). Core and renderer retirement edits
-are in progress; UI integration is next. Their uncommitted code is not certified
-by the Cut196/197/199 passes or by the existing WASM package. Wait for source
-freeze and rebuild before UI proof. Inactive storage API/save bridges and named
-permanent kits remain explicitly pending. No full queue accepted.
+Cut201 active storage/keeper/armourer progression, scene and menus are retired.
+Eight earned before/after seeds retain3 manual delves, kit affordability and
+15–17 autonomous8h runs; one removed construction tap saves5 modeled seconds.
+Time model is dayplayer4x plus camp/tap allowances, not browser wall-time.
+Native841 pass/6 existing ignored, Clippy passes. Current real WASM6354127bytes
+passes three loot/free-preparation/Bloodlines groups in8.6s. Earned seed1/3
+help/menu checks cover400/1440; GL/Canvas earned towns and construction pass.
+The ready Bank label no longer intercepts the hero's click target. Evidence
+and byte-verified raw archives are in cut201/cut201-render. Backend/watch storage
+API/save bridges and named kits remain explicitly pending. No full queue accepted.
 
 The owner subsequently resumed implementation of all additions below. See
 [WORK_QUEUE.md](WORK_QUEUE.md) for priorities, dependencies and checkpoints.

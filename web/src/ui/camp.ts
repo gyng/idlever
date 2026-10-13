@@ -1,6 +1,6 @@
 import { classIcon } from "./class-icons";
 import { heroRoster } from "./heroes";
-// Camp: lineage strip · set tabs · rule editor · forecast · vault loadout · unlocks · send.
+// Camp: lineage strip · set tabs · rule editor · forecast · loadouts · unlocks · send.
 // Cut 6: the strip's gold opens the `gold` sheet (the last 20 movements, newest first, §1); the disabled send reads
 // `6/5 · drop one` and a card's buy reads `◆3 · takes a row` on a full set (§4); owned cards and automations stay on the
 // shelf as chips that open their rows (§6); `rest 12m` is a chip that answers `send skips rest` (§7).
@@ -60,11 +60,9 @@ import {
   priceLabel,
   supplyCap,
   visible,
-  vaultSlots,
   withRowsGate,
 } from "./unlocks";
 import { audio, biomeOf } from "../audio";
-import { salvageValue } from "./salvage";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
 import { isFreeSupply, ownRowCount, setRefRows } from "./tokens";
@@ -88,7 +86,6 @@ import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from 
 import { openQuest, questShown } from "./quest"; // Cut 30 §5: the quest board
 import { openWorks, sendMark } from "./works";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear: items in their rarity rims
-import { kwHost } from "./tips";
 import { returnPick } from "./return-pick"; // Cut 113 §3: the return's pick waits on the camp
 import { checkinBatch } from "./checkin"; // Cut 117 §5: the routine buys of a return in one chip
 import { controlLadder } from "./ladder"; // Cut 118 §7: the automation earned, one rail
@@ -182,7 +179,6 @@ const STEP_OF: Record<string, Step> = {
   edit: "edit",
   loadout: "loadout",
   unlocks: "unlocks",
-  vault: "vault",
   forge: "kit",
   party: "party",
   ledger: "heirs",
@@ -255,18 +251,10 @@ function campMeters(app: App): HTMLElement | null {
   );
 }
 const SEND_ARM_MS = 800;
-/** Cut 29 §4: the exit's keep order, in the vault panel's words. */
-const KEEP_ORDERS = ["best_weapon", "best_armour", "none"];
 /** blind 1fb7786 (core `FORGE_ORDERS`): the apprentice's forge order — half of each haul home, the spare purse, nothing. */
 const FORGE_ORDERS = ["half", "all", "off"];
 const FORGE_WORD: Record<string, string> = { half: "half haul", all: "all spare", off: "off" };
 // (Cut 114 §3's scout order at a wall — bank · carry · push — is retired by Cut 118's owner amendment: every send pushes; no row for it)
-/* copy:label */
-const KEEP_WORD: Record<string, string> = {
-  best_weapon: "weapon",
-  best_armour: "armour",
-  none: "none",
-};
 const SEEN_MS = 1800; // Cut 29 §2: a new system's glint plays before the core clears its `new`
 /** QA 92eb880 (M: "kept `sealed scroll?` … reappear as `summon ally scroll` with no line saying they were identified"): an identified
  *  item's flavour off the lineage's facts (`item:sealed=summon_ally` → `sealed`); undefined while unknown or unmatched. */
@@ -287,7 +275,6 @@ export function simKey(app: Pick<App, "lineage" | "loadout">): string {
     L.facts?.length,
     L.unlocks,
     (L.supplies ?? []).map((s) => s.id),
-    (L.vault ?? []).map((v) => v.id),
     [...(app.loadout ?? [])].sort(),
     L.kit,
     L.party,
@@ -340,7 +327,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     hidden: true,
     onclick: () => openRoutePicker(),
   });
-  // Cut 29 §4: the standing orders in one tablet (the exit's keep, the cage's pick, the start, the repeat, insuring) — with a Cut 29
+  // Cut 29 §4: the standing orders in one tablet (the cage's pick, the start and the repeat) — with a Cut 29
   // core the cage and start tablets fold into it; the tap opens the orders sheet
   const ordersTab = h("button", {
     class: "row tablet compact orders-tab",
@@ -389,7 +376,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     () => togglePanel("forecast"),
     () => revealed(app).has("gems"),
   );
-  const vault = h("section", { class: "vault" });
   const supplies = h("section", { class: "supplies" });
   const unlocks = h("section", { class: "unlocks" });
   // Cut 18 §4 (rater Z: "APPLY also sent the next heir immediately"): the death screen's gem and this one share the console's gem slot —
@@ -433,7 +419,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     forecast: fc.el,
     loadout: supplies,
     unlocks,
-    vault,
     party: party.el,
   };
   // QA 23ed91f (K: "the SUPPLIES sheet covers R4's verb chip; you have to close it to edit R4"): a tap on the well around the panel
@@ -703,8 +688,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     el.classList.toggle("prepen", !pen);
     pkgStrip.paint();
   }
-  /** Cut 17 §1/§3: the command card as revealed — edit · loadout · unlocks · vault · forge · party · ledger · chronicle.
-   *  Cut 30 §3: the building bar — one tile per building standing, in build order (the forge, the vault, the kennel, the bank: tile and
+  /** Cut 17 §1/§3: the command card as revealed — edit · loadout · unlocks · forge · party · ledger · chronicle.
+   *  Cut 30 §3: the building bar — one tile per building standing, in build order (the forge, the kennel, the bank: tile and
    *  building open the same panel, the badge shared), then the tiles with no building (the pen's edit, the pack, unlocks, the heirs'). */
   function paintTiles(): void {
     el.classList.toggle("hero-editing", app.editing);
@@ -752,16 +737,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             }),
             kitBadge(),
           ),
-        storehouse: () =>
-          buildingTile("storehouse", {
-            on: open === "vault",
-            fresh: R.fresh("vault"),
-            onclick: () => {
-              closeAllSheets();
-              markOpened(app.lineage, "storehouse");
-              togglePanel("vault");
-            },
-          }),
         kennel: () =>
           buildingTile("kennel", {
             on: open === "party",
@@ -894,14 +869,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           "unlocks",
           () => togglePanel("unlocks"),
           open === "unlocks",
-        ),
-      R.has("vault") &&
-        t(
-          "vault",
-          /* copy:button */ "stored gear",
-          "vault",
-          () => togglePanel("vault"),
-          open === "vault",
         ),
       // Cut 23 §1: the forge sells the heir's kit — carved at the first salvage or the first kit step the purse can buy; its badge counts
       // the steps affordable now
@@ -1181,178 +1148,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         h("button", { class: "btn primary wide", onclick: commit }, /* copy:button */ "ok"),
       );
     });
-  }
-  function paintVault(): void {
-    const L = app.lineage;
-    const slots = vaultSlots(L.unlocks);
-    clear(vault);
-    vault.appendChild(
-      h(
-        "div",
-        { class: "label row-label" },
-        /* copy:label */ "stored gear",
-        " ",
-        h("span", { class: "num dim" }, `${L.vault.length}/${slots}`),
-      ),
-    ); // Cut 17: `forge` is its console tile
-    const chips = h("div", { class: "chips" });
-    for (const it of L.vault) {
-      const on = app.loadout.includes(it.id);
-      chips.appendChild(
-        kwHost(
-          h(
-            "button",
-            {
-              class: `chip item${on ? " on risk" : ""}`,
-              "data-rarity": it.rarity ?? "common",
-              onclick: () => {
-                app.setLoadout(
-                  on ? app.loadout.filter((x) => x !== it.id) : [...app.loadout, it.id],
-                );
-              },
-            },
-            on ? "⚠ " : "",
-            itemIcon(it, { size: "s" }),
-            itemName(it),
-            keptAs(L.facts, it)
-              ? h("small", { class: "dim flav" }, ` · ${keptAs(L.facts, it)}`)
-              : "",
-          ),
-          "rarity",
-        ),
-      ); // run-clear: its icon in its rarity rim, its name tinted
-      if (on) {
-        const ins = (L.insured ?? []).includes(it.id);
-        const price = Math.ceil((salvageValue(it.kind, "bank") * 10) / 4);
-        // QA e75ec29 (R: "an unlabelled `$75` chip; one tap charged $75"): `insure $75`, a second tap pays
-        chips.appendChild(
-          ins
-            ? h("button", { class: "chip mini on", disabled: true }, /* copy:label */ "insured")
-            : twoTap(
-                /* copy:button */ `insure $${price}`,
-                /* copy:button */ `ok $${price}`,
-                () => void app.mutate(() => app.engine.insure(it.id)),
-                { class: "chip mini insure", disabled: L.gold < price },
-              ),
-        );
-      }
-    }
-    // an empty slot is a plain marker, never a tap target (QA on 952e306: "vault slot '·' tap: nothing happened")
-    for (let i = L.vault.length; i < slots; i++)
-      chips.appendChild(h("span", { class: "chip empty", "aria-hidden": "true" }, "")); // an empty slot is an empty chip (QA on 56f2a1d: `·` read as a chip that says `·`)
-    vault.appendChild(chips);
-    // QA 308f045 (qaAC: `home armour` answered `vault full · axe stays` and nothing took the axe out): a full vault offers each item out —
-    // `sell axe`, a second tap salvages it at a bank's share (the gold sheet's `salvage` line), and the slot is free for the preference
-    if (app.engine.sellVault && slots > 0 && L.vault.length >= slots)
-      vault.appendChild(
-        h(
-          "div",
-          { class: "chips vault-sell" },
-          ...L.vault.map((it) =>
-            twoTap(
-              [
-                h("span", null, /* copy:button */ "sell "),
-                itemChip(it, it.label.replace(/_/g, " ")),
-              ],
-              /* copy:button */ "ok",
-              () => void app.mutate(() => app.engine.sellVault!(it.id), /* copy:callout */ "sold"),
-              {
-                class: "chip mini sell",
-                key: `sell:${it.id}`,
-                armedContent: () => [h("span", null, /* copy:button */ "ok "), itemChip(it)],
-              },
-            ),
-          ),
-        ),
-      );
-    // keep preference for offline exits
-    // QA 23ed91f: two rows that cannot be confused — `home` (what an unwatched exit keeps for the vault) and `cage` (what an
-    // unanswered cage in the dungeon takes); K set `vault potion` as "what the home vault keeps"
-    const prefs = h(
-      "div",
-      { class: "chips prefs home" },
-      h(
-        "span",
-        { class: "dim" },
-        conceptIcon("vault"),
-        /* copy:callout */ "keep for heirs",
-        conceptCap("vault"),
-      ), // docs/COPY.md pass 3: `keep weapon` read as "keep it as a weapon"
-      /* copy:label */ ...[
-        ["best_weapon", "weapon"],
-        ["best_armour", "armour"],
-        ["none", "none"],
-      ].map(([id, lbl]) =>
-        h(
-          "button",
-          {
-            class: `chip${(L.keep_pref ?? "best_weapon") === id ? " on" : ""}`,
-            onclick: () => void app.mutate(() => app.engine.setKeepPref(id)),
-          },
-          lbl,
-        ),
-      ),
-    );
-    // what the home pref does at an unwatched exit, on its row (the core's `keep_auto`, in order: `keeps armour · weapon`)
-    const auto = L.keep_auto;
-    // QA a946e04 (S: `VAULT 1/1 · axe · keeps armour`, the axe stayed through 17 runs): a keep replaces only a weaker item of its own
-    // kind — a vault full of other kinds takes none, and the line says so (`keeps armour · vault full`)
-    const CAT: Record<string, RegExp> = {
-      weapon: /^(dagger|sword|axe|bow|spear|mace)$/,
-      armour: /^(leather|mail|plate|scale)$/,
-    }; // core defs.rs
-    const blocked =
-      !!auto?.length &&
-      L.vault.length >= slots &&
-      auto.every((k) => !L.vault.some((v) => CAT[k]?.test(v.kind) ?? v.kind === k));
-    // QA 912e135 (qaX: `vault full` shown under `keeps weapon` and gone under `keeps armour` with the vault still 1/1): `vault full` whenever
-    // it is; that the preference then keeps nothing new is its own word (`none kept`)
-    const full = L.vault.length >= slots && slots > 0;
-    // QA 524827b (qaAB: `keeps weapon · vault full · summon ally scroll stays`, later `keeps armour · weapon · vault full` — "two keeps, and
-    // the preference does nothing"): the kinds read as one list (`keeps armour + weapon`); a full vault of other kinds keeps none of them,
-    // and then the line says only that (`vault full · scroll stays`), never a `keeps` that will not happen
-    const stays = blocked
-      ? L.vault.length === 1
-        ? (L.vault[0].label ?? L.vault[0].kind).replace(/_/g, " ")
-        : "all"
-      : "";
-    if (auto)
-      prefs.appendChild(
-        h(
-          "small",
-          { class: "keep-auto dim num" },
-          blocked
-            ? ""
-            : auto.length
-              ? /* copy:callout */ `keeps ${auto.join(" + ")}`
-              : /* copy:callout */ "keeps nothing",
-          full
-            ? h(
-                "b",
-                { class: `${blocked ? "warn " : ""}vault-full` },
-                blocked ? /* copy:callout */ "storage full" : /* copy:callout */ " · storage full",
-                blocked ? /* copy:callout */ ` · ${stays} stays` : "",
-              )
-            : "",
-        ),
-      ); // QA 0c6e126 (qaY: `vault full · none kept` beside a vault holding mail — "the vault holds armour, keeps weapon"): the line names what stays
-    vault.appendChild(prefs);
-    // Cut 19 §1: the cage's preference left this panel for its own tablet beside the rules (`cage → armour`)
-    // QA 912e135 (qaW: `home: armour` set here, `cage → weapon` on the tablet — "one preference, one name"): they are two settings, and
-    // this panel shows both — the cage's row under the home row, its chip opening the same picker as the tablet
-    if (revealed(app).has("cage"))
-      vault.appendChild(
-        h(
-          "div",
-          { class: "chips prefs cage" },
-          h("span", { class: "dim" }, /* copy:rule_token */ "from cages"),
-          h(
-            "button",
-            { class: "chip on cage-pref", onclick: () => openCagePicker() },
-            L.vault_pref ?? "weapon",
-          ),
-        ),
-      ); // docs/COPY.md: the tablet's own words (`cage pick → weapon`)
   }
   function paintCage(): void {
     const on = revealed(app).has("cage");
@@ -1689,17 +1484,14 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   function paintOrders(): void {
     const L = app.lineage,
       R = revealed(app);
-    const on =
-      ordersOn() && (R.has("loadout") || R.has("vault") || R.has("cage") || R.has("start"));
+    const on = ordersOn() && (R.has("loadout") || R.has("cage") || R.has("start"));
     ordersTab.hidden = !on;
     if (!on) return;
     const o = L.orders!;
     const bits = [
-      /* copy:callout */ `keep ${KEEP_WORD[o.keep] ?? o.keep}`,
       R.has("cage") ? /* copy:callout */ `loot → ${o.cage}` : "",
       R.has("start") && o.start > 1 ? /* copy:callout */ `start D${o.start}` : "",
       o.repeat ? "" : /* copy:callout */ "restock off",
-      o.insure ? "" : /* copy:callout */ "insurance off",
       apprenticeOn() && o.forge && o.forge !== "half" ? /* copy:callout */ `forge ${o.forge}` : "",
       ...featOrderBits(o),
       // Cut 121 §1: the ascension under way (`Ascension 1`; its start is the `start` bit, the rest in the sheet)
@@ -1806,12 +1598,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               ((d) => (d ? row(/* copy:label */ "descent", d) : null))(
                 descentLine(app.lineage, "orders-descent"),
               ),
-              row(
-                /* copy:callout */ "keep for heirs",
-                ...KEEP_ORDERS.map((k) =>
-                  pick(o.keep, k, KEEP_WORD[k], act({ keep: k }, /* copy:callout */ "keep")),
-                ),
-              ),
               R.has("cage")
                 ? row(
                     /* copy:label */ "loot preference",
@@ -1855,22 +1641,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
                   act({ repeat: true }, /* copy:callout */ "repeat"),
                 ),
                 repeatOff,
-              ),
-              srow(
-                "insure",
-                /* copy:label */ "insure kit",
-                pick(
-                  o.insure,
-                  true,
-                  /* copy:button */ "on",
-                  act({ insure: true }, /* copy:callout */ "insure"),
-                ),
-                pick(
-                  o.insure,
-                  false,
-                  /* copy:button */ "off",
-                  act({ insure: false }, /* copy:callout */ "insure"),
-                ),
               ),
               // blind 1fb7786 (A, B: "the apprentice spent my gold without asking"): what he may forge with — half of each haul (default), all, off
               apprenticeOn() && o.forge
@@ -2357,9 +2127,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         // QA 524827b (qaAA: `leash · free`, `leash $30 · 2nd leash` — "nothing says what a leash does"): a line whose name does not say its
         // use carries it (`tames a foe`: the leash is `tame`'s, a foe under a quarter hp); the buy stays one tap — its `×` refunds it
         const use = SUPPLY_USE[e.kind];
-        // QA 524827b (qaAB: `summon ally scroll $33` beside the vault's own — read as packing the kept one; it bought a new one): a kind the
-        // vault holds says the shop's is another (`new · 1 in vault`; the vault's chip packs the kept one)
-        const vaulted = (L.vault ?? []).filter((v) => v.kind === e.kind).length;
         const why = full
           ? /* copy:callout */ `${picks.length}/${cap} slots`
           : e.needs
@@ -2368,9 +2135,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               ? /* copy:callout */ `$${e.price - L.gold} short`
               : second
                 ? /* copy:callout */ "2nd · tames foe"
-                : vaulted
-                  ? /* copy:callout */ `new · ${vaulted} stored`
-                  : (use ?? "");
+                : (use ?? "");
         shopEl.appendChild(
           h(
             "button",
@@ -2737,7 +2502,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       paintStrip();
       paintTiles();
       paintTabs();
-      paintVault();
       paintCage();
       paintStart();
       paintOrders();

@@ -6,7 +6,6 @@
 //   edit    first death            the `edit` tile (the tablets' reorder / delete / add); the class picker on the portrait
 //   loadout first gold home        the `loadout` tile (supplies)
 //   unlocks first mark             `◆` on the bar, the `unlocks` tile (the next three)
-//   vault   an item kept, a slot   the `vault` tile (an item kept, or a `+1 vault` bought)
 //   forge   first salvage          the `forge` tile
 //   kit     a kit step affordable  the `forge` tile too (Cut 23 §1: the heir's kit, bought with gold) — it glints then
 //   party   a companion            the `party` tile
@@ -25,7 +24,6 @@ export type Step =
   | "edit"
   | "loadout"
   | "unlocks"
-  | "vault"
   | "forge"
   | "party"
   | "gems"
@@ -59,13 +57,6 @@ export function earned(app: App): Set<Step> {
     out.add("loadout");
   if (L.marks > 0 || (L.unlocks ?? []).some((u) => !FRESH_UNLOCKS.has(u)) || (L.rank ?? 0) > 0)
     out.add("unlocks");
-  // QA 23ed91f (K: "bought `+1 vault` … no vault tile anywhere"): a vault slot bought is a reason to see the vault (and its prefs)
-  if (
-    (L.vault?.length ?? 0) > 0 ||
-    app.loadout.length > 0 ||
-    (L.unlocks ?? []).some((u) => /^vault\d+$/.test(u))
-  )
-    out.add("vault");
   if (Object.keys(L.forge ?? {}).length > 0) out.add("forge");
   // Cut 23 §1: the first kit step the purse can buy (or one owned) carves the forge
   if ((L.kit ?? []).some((k) => k.owned > 0 || k.next?.affordable)) out.add("kit");

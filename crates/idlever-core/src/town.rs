@@ -9,7 +9,7 @@ use crate::wire::{GrewLine, QuestWire, TownWire, TrackWire};
 use serde::{Deserialize, Serialize};
 
 /// The buildings v1, in the order the plots are staked, each with its trigger (≤ 3 words).
-pub const BUILDINGS: [(&str, &str); 4] = [("blacksmith", "first gold home"), ("storehouse", "first find kept"), ("kennel", "first tame"), ("bank", "a night's purse")];
+pub const BUILDINGS: [(&str, &str); 3] = [("blacksmith", "first gold home"), ("kennel", "first tame"), ("bank", "a night's purse")];
 
 /// A night's interest on the bank, in percent, and the bank's cap in nights of net income.
 pub const BANK_PCT: i32 = 2;
@@ -65,7 +65,6 @@ pub struct Town {
 fn triggered(l: &LineageState, id: &str) -> bool {
     match id {
         "blacksmith" => !l.banked_depths.is_empty() || l.gold_ledger.iter().any(|x| x.delta > 0 && crate::engine::is_exit_why(&x.why)),
-        "storehouse" => !l.vault.is_empty() || l.facts.contains("vault"),
         "kennel" => l.tamed_kinds() > 0 || l.all_companions().next().is_some(),
         "bank" => l.last_night_net > 0 && l.gold >= l.last_night_net,
         _ => false,
@@ -181,7 +180,7 @@ pub fn stages(track: &str) -> &'static [(&'static str, &'static str)] {
             ("Queen drilled", "meet Queen twice"),
             ("King drilled", "meet King twice"),
         ],
-        "items" => &[("pack of 3", ""), ("storehouse", "first find kept"), ("blacksmith steps", "first gold home"), ("a counter packed", "a drill's item")],
+        "items" => &[("pack of 3", ""), ("blacksmith steps", "first gold home"), ("a counter packed", "a drill's item")],
         // (a waystone lit deeper is the scale's next stage: the sends can start there)
         // (each band boss slain is a stage too: the descent opens past him for good)
         "scale" => &[("one hero", ""), ("party slot 2", "a second slot"), ("waystones", "slay Warlord"), ("Mother slain", "slay Mother"), ("Lich slain", "slay Lich"), ("Master slain", "slay Master"), ("Queen slain", "slay Queen"), ("the bottom", "reach D33"), ("waystone D14", "bank at D14"), ("waystone D19", "bank at D19"), ("waystone D24", "bank at D24"), ("waystone D29", "bank at D29"), ("party slots 3–4", "a fourth slot"),
@@ -189,7 +188,7 @@ pub fn stages(track: &str) -> &'static [(&'static str, &'static str)] {
             // progress a held record makes while it holds)
             ("Warlord scarred ×3", "3 days met"), ("Mother scarred ×3", "3 days met"), ("Lich scarred ×3", "3 days met"), ("Master scarred ×3", "3 days met"), ("Queen scarred ×3", "3 days met"), ("King scarred ×3", "3 days met"),
             ("Warlord scarred ×6", "6 days met"), ("Mother scarred ×6", "6 days met"), ("Lich scarred ×6", "6 days met"), ("Master scarred ×6", "6 days met"), ("Queen scarred ×6", "6 days met"), ("King scarred ×6", "6 days met")],
-        "town" => &[("camp", ""), ("blacksmith", "first gold home"), ("storehouse", "first find kept"), ("kennel", "first tame"), ("bank", "a night's purse")],
+        "town" => &[("camp", ""), ("blacksmith", "first gold home"), ("kennel", "first tame"), ("bank", "a night's purse")],
         _ => &[],
     }
 }
@@ -208,7 +207,6 @@ pub fn reached(l: &LineageState, track: &str, stage: &str) -> bool {
         ("character", "a temperament") => crate::packages::temperament_open(l),
         ("character", "tactic slot 2") => crate::packages::tactic_slots(l) >= 2,
         ("character", "the pen") => l.pkg.pen_open,
-        ("items", "storehouse") | ("town", "storehouse") => built(l, "storehouse"),
         ("items", "blacksmith steps") => crate::kit::KIT_SLOTS.iter().any(|s| crate::kit::owned(l, s) > 0) || built(l, "blacksmith"),
         ("items", "a counter packed") => !crate::packages::quartermaster(l).is_empty() || l.pkg.drills.iter().any(|d| crate::packages::drill_item(d).is_some()),
         ("character", d) if d.ends_with(" drilled") => {
@@ -359,7 +357,6 @@ pub fn grew(a: &Snap, b: &Snap) -> Vec<GrewLine> {
             let said = match (t.as_str(), s.as_str()) {
                 ("character", "second stance" | "a tactic" | "a temperament") => arrived,
                 // (the town's row names the building)
-                ("items", "storehouse") => true,
                 ("items", "blacksmith steps") => has("town", "blacksmith"),
                 _ => false,
             };
@@ -425,7 +422,7 @@ pub fn wire(l: &LineageState) -> TownWire {
     TownWire {
         home: l.town.home.unwrap_or(true),
         auto_collect: l.town.auto_collect,
-        buildings: l.town.built.iter().map(|(id, day)| crate::wire::BuildingWire { id: id.clone(), level: level(l, id), day: *day, trigger: BUILDINGS.iter().find(|b| b.0 == id).map(|b| b.1.to_string()).unwrap_or_default() }).collect(),
+        buildings: l.town.built.iter().filter(|(id, _)| BUILDINGS.iter().any(|(active, _)| *active == id)).map(|(id, day)| crate::wire::BuildingWire { id: id.clone(), level: level(l, id), day: *day, trigger: BUILDINGS.iter().find(|b| b.0 == id).map(|b| b.1.to_string()).unwrap_or_default() }).collect(),
         next: next.as_ref().map(|n| n.0.clone()),
         next_ready: next.as_ref().is_some_and(|n| n.0 == "house" || triggered(l, &n.0)),
         next_trigger: next.map(|n| n.1),
@@ -435,6 +432,64 @@ pub fn wire(l: &LineageState) -> TownWire {
         quest: l.town.quest.as_ref().map(|q| quest_wire(l, q)),
         quests_done: l.town.quests_done,
         workers: if l.pkg.literal { Vec::new() } else { crate::tree::posts(l) },
+    }
+}
+
+#[cfg(test)]
+mod storage_retirement_tests {
+    use super::*;
+    use crate::{Game, meta, tree};
+
+    #[test]
+    fn retired_progression_is_absent_and_rejects_purchases_without_mutation() {
+        let mut g = Game::new(201); g.build_town("house").unwrap();
+        let saved = g.save();
+        assert!(g.build_town("storehouse").is_err());
+        for worker in ["keeper", "armourer"] {
+            assert!(tree::def(worker).is_none());
+            assert!(g.hire(worker).is_err());
+            assert!(g.set_worker(worker, false).is_err());
+        }
+        for unlock in ["vault2", "vault3", "vault4", "vault5"] {
+            assert!(meta::def(unlock).is_none());
+            assert!(g.buy(unlock).is_err());
+        }
+        assert_eq!(g.save(), saved);
+        assert!(!crate::engine::VARIANTS.contains(&"bones_only"));
+        assert!(g.lineage().tree.unwrap().nodes.iter().all(|n| !matches!(n.id.as_str(), "keeper" | "armourer" | "town:storehouse" | "items:storehouse")));
+        assert!(g.lineage().systems.iter().all(|s| s.id != "storehouse"));
+    }
+
+    #[test]
+    fn remaining_plots_are_manual_and_storage_never_blocks_the_next_plot() {
+        let mut g = Game::new(202); g.build_town("house").unwrap();
+        // Diagnostic income supplies a construction trigger, not earned pacing evidence.
+        g.lineage.gold_move(10, "returned D1");
+        assert!(!built(&g.lineage, "blacksmith"));
+        assert!(update(&mut g.lineage).is_empty());
+        assert_eq!(wire(&g.lineage).next.as_deref(), Some("blacksmith"));
+        g.build_town("blacksmith").unwrap();
+        assert_eq!(wire(&g.lineage).next.as_deref(), Some("kennel"));
+        assert!(!built(&g.lineage, "kennel"));
+        assert!(!wire(&g.lineage).next_ready);
+        assert!(g.build_town("kennel").is_err());
+        assert!(stages("items").iter().chain(stages("town")).all(|(id, _)| *id != "storehouse"));
+        assert!(["quartermaster", "scout", "apprentice"].iter().all(|id| tree::def(id).is_some()));
+    }
+
+    #[test]
+    fn inactive_storage_metadata_never_emits_a_building_or_worker_offer() {
+        let mut g = Game::new(203); g.build_town("house").unwrap();
+        // A diagnostic serialized state can retain old private metadata until API cleanup.
+        g.lineage.town.built.push(("storehouse".into(), 0));
+        g.lineage.tree.hired.push(("armourer".into(), 0));
+        g.lineage.tree.hired.push(("keeper".into(), 0));
+        assert!(!tree::on(&g.lineage, "armourer") && !tree::on(&g.lineage, "keeper"));
+        let wire = g.lineage();
+        assert!(wire.town.buildings.iter().all(|b| b.id != "storehouse"));
+        assert!(wire.tree.unwrap().nodes.iter().all(|n| !matches!(n.id.as_str(), "keeper" | "armourer")));
+        assert!(wire.town.workers.iter().all(|w| !matches!(w.id.as_str(), "keeper" | "armourer")));
+        assert!(wire.keep_auto.is_empty());
     }
 }
 

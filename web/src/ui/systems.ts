@@ -36,7 +36,6 @@ export type SystemId =
   | "temperament"
   | "quests"
   | "bank"
-  | "storehouse"
   | "kennel"
   | "pen";
 
@@ -88,7 +87,6 @@ const LABEL: Partial<Record<SystemId, string>> = {
   temperament: "temperament",
   quests: "quests",
   bank: "bank",
-  storehouse: "storehouse",
   kennel: "kennel",
   pen: "the pen",
 };
@@ -121,7 +119,6 @@ const ICON: Partial<Record<SystemId, [string, string]>> = {
   temperament: ["", "☯"],
   quests: ["renown", "✠"],
   bank: ["gold", "$"],
-  storehouse: ["vault", "▦"],
   kennel: ["party", "☗"],
   pen: ["edit", "✎"],
 };

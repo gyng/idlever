@@ -1,0 +1,694 @@
+[
+  {
+    "canvas": false,
+    "width": 400,
+    "pure": {
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "plots": [
+        "mouth",
+        "fire",
+        "tent",
+        "house",
+        "crate",
+        "board",
+        "blacksmith",
+        "bank",
+        "kennel"
+      ],
+      "house": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "retired": [
+        null,
+        null
+      ],
+      "kennelKeeper": {
+        "x": 523.2,
+        "y": 396.8,
+        "h": 64
+      },
+      "paths": [
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 448,
+            "y": 289.6
+          },
+          {
+            "x": 472,
+            "y": 319.2
+          },
+          {
+            "x": 487.2,
+            "y": 311.2
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 377.6,
+            "y": 256
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 518.4,
+            "y": 256
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 448,
+            "y": 289.6
+          },
+          {
+            "x": 424,
+            "y": 319.2
+          },
+          {
+            "x": 448,
+            "y": 347.2
+          },
+          {
+            "x": 448,
+            "y": 377.6
+          },
+          {
+            "x": 516.8,
+            "y": 401.6
+          }
+        ]
+      ]
+    },
+    "before": {
+      "town": {
+        "home": true,
+        "auto_collect": true,
+        "buildings": [
+          {
+            "id": "blacksmith",
+            "level": 1,
+            "day": 0,
+            "trigger": "first gold home"
+          }
+        ],
+        "next_ready": false,
+        "next": "kennel",
+        "next_trigger": "first tame",
+        "bank": 0,
+        "bank_cap": 100,
+        "interest": 0,
+        "quests_done": 0,
+        "workers": [
+          {
+            "id": "quartermaster",
+            "post": "crate",
+            "rank": 1
+          }
+        ]
+      },
+      "stats": {
+        "fps": 6,
+        "frames": 6,
+        "cpuMs": 56,
+        "cpuP50": 31.5,
+        "cpuP95": 89.20000000298023,
+        "walkers": 1,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.625,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "mappedSprites": [
+          {
+            "kind": 2,
+            "flip": false,
+            "x": 366,
+            "y": 256
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 2,
+        "terrainPaintMs": 44.79999999701977,
+        "windTufts": 136,
+        "windSignature": 150834154,
+        "buildings": [
+          "blacksmith"
+        ],
+        "activeBuilds": [
+          "blacksmith"
+        ],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "kennel",
+        "markers": [
+          "rune@blacksmith"
+        ],
+        "view": [
+          315,
+          105,
+          247,
+          318
+        ],
+        "workers": [
+          "quartermaster"
+        ],
+        "ranks": {}
+      }
+    },
+    "bank": {
+      "home": true,
+      "auto_collect": true,
+      "buildings": [
+        {
+          "id": "blacksmith",
+          "level": 1,
+          "day": 0,
+          "trigger": "first gold home"
+        },
+        {
+          "id": "kennel",
+          "level": 1,
+          "day": 0,
+          "trigger": "first tame"
+        },
+        {
+          "id": "bank",
+          "level": 1,
+          "day": 0,
+          "trigger": "a night's purse"
+        }
+      ],
+      "next_ready": false,
+      "bank": 0,
+      "bank_cap": 3471,
+      "interest": 0,
+      "quests_done": 0,
+      "workers": [
+        {
+          "id": "quartermaster",
+          "post": "crate",
+          "rank": 1
+        },
+        {
+          "id": "scout",
+          "post": "fire",
+          "rank": 1
+        },
+        {
+          "id": "porter",
+          "post": "mouth",
+          "rank": 0,
+          "lit": true,
+          "price": 0,
+          "progress": "3/3"
+        }
+      ]
+    },
+    "parties": [
+      {
+        "at": 0.6,
+        "cls": "fighter",
+        "sack": "large",
+        "chest": false,
+        "pet": "jackal",
+        "to": "tent"
+      },
+      {
+        "at": 4.1,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 7.6,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 11.1,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 14.6,
+        "cls": "fighter",
+        "sack": "large",
+        "chest": true,
+        "to": "tent"
+      }
+    ],
+    "stats": {
+      "fps": 27,
+      "frames": 38,
+      "cpuMs": 1.2999999970197678,
+      "cpuP50": 1.4000000059604645,
+      "cpuP95": 25.299999997019768,
+      "walkers": 2,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1.5,
+      "night": 1,
+      "characterLights": 7,
+      "dimensionalLight": true,
+      "mappedSprites": [
+        {
+          "kind": 1,
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 2,
+          "flip": false,
+          "x": 366,
+          "y": 255
+        }
+      ],
+      "lights": 32,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 80.6000000089407,
+      "windTufts": 157,
+      "windSignature": 2073297699,
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "activeBuilds": [],
+      "buildEvents": 0,
+      "buildDust": 0,
+      "markers": [
+        "sword@blacksmith",
+        "rune@kennel",
+        "rune@bank"
+      ],
+      "view": [
+        315,
+        109,
+        267,
+        360
+      ],
+      "workers": [
+        "quartermaster",
+        "scout",
+        "porter(lit)"
+      ],
+      "ranks": {}
+    },
+    "errors": []
+  },
+  {
+    "canvas": true,
+    "width": 1440,
+    "pure": {
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "plots": [
+        "mouth",
+        "fire",
+        "tent",
+        "house",
+        "crate",
+        "board",
+        "blacksmith",
+        "bank",
+        "kennel"
+      ],
+      "house": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "retired": [
+        null,
+        null
+      ],
+      "kennelKeeper": {
+        "x": 523.2,
+        "y": 396.8,
+        "h": 64
+      },
+      "paths": [
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 448,
+            "y": 289.6
+          },
+          {
+            "x": 472,
+            "y": 319.2
+          },
+          {
+            "x": 487.2,
+            "y": 311.2
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 377.6,
+            "y": 256
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 518.4,
+            "y": 256
+          }
+        ],
+        [
+          {
+            "x": 448,
+            "y": 200
+          },
+          {
+            "x": 448,
+            "y": 265.6
+          },
+          {
+            "x": 448,
+            "y": 289.6
+          },
+          {
+            "x": 424,
+            "y": 319.2
+          },
+          {
+            "x": 448,
+            "y": 347.2
+          },
+          {
+            "x": 448,
+            "y": 377.6
+          },
+          {
+            "x": 516.8,
+            "y": 401.6
+          }
+        ]
+      ]
+    },
+    "before": {
+      "town": {
+        "home": true,
+        "auto_collect": true,
+        "buildings": [
+          {
+            "id": "blacksmith",
+            "level": 1,
+            "day": 0,
+            "trigger": "first gold home"
+          }
+        ],
+        "next_ready": false,
+        "next": "kennel",
+        "next_trigger": "first tame",
+        "bank": 0,
+        "bank_cap": 100,
+        "interest": 0,
+        "quests_done": 0,
+        "workers": [
+          {
+            "id": "quartermaster",
+            "post": "crate",
+            "rank": 1
+          }
+        ]
+      },
+      "stats": {
+        "fps": 7,
+        "frames": 7,
+        "cpuMs": 47.5,
+        "cpuP50": 1,
+        "cpuP95": 47.5,
+        "walkers": 1,
+        "mode": "2d",
+        "glLost": false,
+        "k": 2,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": null,
+        "mappedSprites": [
+          {
+            "kind": 2,
+            "flip": false,
+            "x": 366,
+            "y": 255
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 2,
+        "terrainPaintMs": 44.400000005960464,
+        "windTufts": 193,
+        "windSignature": 3471448640,
+        "buildings": [
+          "blacksmith"
+        ],
+        "activeBuilds": [
+          "blacksmith"
+        ],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "kennel",
+        "markers": [
+          "rune@blacksmith"
+        ],
+        "view": [
+          241,
+          116,
+          396,
+          296
+        ],
+        "workers": [
+          "quartermaster"
+        ],
+        "ranks": {}
+      }
+    },
+    "bank": {
+      "home": true,
+      "auto_collect": true,
+      "buildings": [
+        {
+          "id": "blacksmith",
+          "level": 1,
+          "day": 0,
+          "trigger": "first gold home"
+        },
+        {
+          "id": "kennel",
+          "level": 1,
+          "day": 0,
+          "trigger": "first tame"
+        },
+        {
+          "id": "bank",
+          "level": 1,
+          "day": 0,
+          "trigger": "a night's purse"
+        }
+      ],
+      "next_ready": false,
+      "bank": 0,
+      "bank_cap": 3471,
+      "interest": 0,
+      "quests_done": 0,
+      "workers": [
+        {
+          "id": "quartermaster",
+          "post": "crate",
+          "rank": 1
+        },
+        {
+          "id": "scout",
+          "post": "fire",
+          "rank": 1
+        },
+        {
+          "id": "porter",
+          "post": "mouth",
+          "rank": 0,
+          "lit": true,
+          "price": 0,
+          "progress": "3/3"
+        }
+      ]
+    },
+    "parties": [
+      {
+        "at": 0.6,
+        "cls": "fighter",
+        "sack": "large",
+        "chest": false,
+        "pet": "jackal",
+        "to": "tent"
+      },
+      {
+        "at": 4.1,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 7.6,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 11.1,
+        "cls": "fighter",
+        "sack": "small",
+        "chest": false,
+        "to": "tent"
+      },
+      {
+        "at": 14.6,
+        "cls": "fighter",
+        "sack": "large",
+        "chest": true,
+        "to": "tent"
+      }
+    ],
+    "stats": {
+      "fps": 35,
+      "frames": 43,
+      "cpuMs": 1.800000011920929,
+      "cpuP50": 1.8999999910593033,
+      "cpuP95": 2.5,
+      "walkers": 2,
+      "mode": "2d",
+      "glLost": false,
+      "k": 1.25,
+      "night": 1,
+      "characterLights": 7,
+      "dimensionalLight": null,
+      "mappedSprites": [
+        {
+          "kind": 1,
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 2,
+          "flip": false,
+          "x": 366,
+          "y": 255
+        }
+      ],
+      "lights": 32,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 88.1000000089407,
+      "windTufts": 453,
+      "windSignature": 3315563040,
+      "buildings": [
+        "blacksmith",
+        "kennel",
+        "bank"
+      ],
+      "activeBuilds": [],
+      "buildEvents": 0,
+      "buildDust": 0,
+      "markers": [
+        "sword@blacksmith",
+        "rune@kennel",
+        "rune@bank"
+      ],
+      "view": [
+        132,
+        99,
+        634,
+        380
+      ],
+      "workers": [
+        "quartermaster",
+        "scout",
+        "porter(lit)"
+      ],
+      "ranks": {}
+    },
+    "errors": []
+  }
+]

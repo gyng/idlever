@@ -2318,7 +2318,7 @@ fn automatic_conversion_preserves_existing_gear_for_every_old_preference() {
     a.auto_keep();
     assert_eq!(kinds(&a), ["mail+0", "summon_ally+0"]);
     // (Cut 29 §4: the quartermaster's keep is the default — the chip's category, then the other)
-    assert_eq!(a.lineage.to_wire().keep_auto, ["armour", "weapon"]);
+    assert!(a.lineage.to_wire().keep_auto.is_empty(), "retired storage orders promise no equipment changes");
     // A better armour replaces the weaker armour, never the scroll.
     let mut a = arena();
     vaulted(&mut a, &["leather", "summon_ally"]);
@@ -2371,7 +2371,7 @@ fn automatic_conversion_preserves_existing_gear_for_every_old_preference() {
     finish_with(&mut a, ExitTier::Bank);
     a.auto_keep();
     assert_eq!(kinds(&a), ["dagger+0", "leather+0"]);
-    assert_eq!(a.lineage.to_wire().keep_auto, ["armour", "weapon"]);
+    assert!(a.lineage.to_wire().keep_auto.is_empty(), "retired storage orders promise no equipment changes");
 }
 
 /// QA on 23ed91f (seed 1015's walk): `hp < 20% → rest · reach +8%`, then the camp's D6 read
@@ -3598,22 +3598,13 @@ fn short_list_caps_rows_at_six_and_keeps_the_cards() {
 }
 
 #[test]
-fn bones_only_has_no_vault() {
+fn redundant_bones_only_variant_is_not_offered() {
     let mut g = finished_lineage();
-    g.ascend("bones_only").unwrap();
-    assert!(g.lineage.vault.is_empty());
-    assert_eq!(g.lineage.vault_slots(), 0);
-    g.loadout(vec![100_001]);
-    assert!(g.loadout.is_empty());
-    g.start_run(Some(4));
-    take_find(&mut g, "mail");
-    finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none());
-    assert!(g.keep(vec![77]).is_err());
-    assert!(g.lineage.vault.is_empty(), "nothing enters the vault");
-    assert!(g.lineage.gold > 0, "converted once at pickup");
+    let saved = g.save();
+    assert!(g.ascend("bones_only").is_err());
+    assert_eq!(g.save(), saved, "retired variant refusal preserves state");
+    assert!(!crate::engine::VARIANTS.contains(&"bones_only"));
 }
-
 #[test]
 fn hunted_puts_the_grudge_on_every_floor_from_d3() {
     let mut g = finished_lineage();
@@ -3831,7 +3822,7 @@ fn a_hazard_preemption_is_said_once_with_its_name() {
 fn a_gold_buy_spends_gold_on_rows_and_automations() {
     let mut g = Game::new_literal(3);
     let price = |g: &Game, id: &str| g.unlocks().into_iter().find(|u| u.id == id).unwrap().gold;
-    assert_eq!(price(&g, "vault2"), 0, "a card or a vault slot is marks only");
+    assert!(!g.unlocks().iter().any(|u| u.id == "vault2"), "retired storage is not a purchase offer");
     // Cut 23 §1: a row slot sits on the forge's ladder (2 × the unit, $100 at best 0).
     assert_eq!(price(&g, "row5"), 2 * crate::kit::unit(0));
     assert!(g.buy_unlock_gold("vault2").is_err());

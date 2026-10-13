@@ -46,7 +46,6 @@ import type { Term } from "./concepts";
 const HIT_TERM: Record<string, Term> = /* copy:none */ {
   crate: "pack",
   blacksmith: "forge",
-  storehouse: "vault",
   kennel: "kennel",
   bank: "bank",
   board: "quest",
@@ -59,7 +58,7 @@ export type TownHooks = {
   resident?(ms: number): void;
   send(): void;
   hero(anchor: HTMLElement): void;
-  open(what: "loadout" | "vault" | "party", anchor: HTMLElement): void;
+  open(what: "loadout" | "party", anchor: HTMLElement): void;
   forge(anchor: HTMLElement): void;
   quest(anchor: HTMLElement): void;
 };
@@ -69,7 +68,6 @@ const LABEL: Record<string, string> = {
   tent: "hero",
   crate: "Loadouts",
   blacksmith: "forge",
-  storehouse: "stored gear",
   kennel: "companions",
   bank: "savings",
   staked: "next plot",
@@ -81,7 +79,6 @@ const LABEL: Record<string, string> = {
 const BUILD_NAME: Record<string, string> = {
   house: "house",
   blacksmith: "forge",
-  storehouse: "storehouse",
   kennel: "kennel",
   bank: "bank",
 };
@@ -92,7 +89,6 @@ export const BUILDING_TILE: Record<
   { id: string; icon: string; label: string; glyph: string }
 > = {
   blacksmith: { id: "forge", icon: "forge", label: "forge", glyph: "⚒" },
-  storehouse: { id: "vault", icon: "vault", label: "stored gear", glyph: "▣" },
   kennel: { id: "party", icon: "party", label: "companions", glyph: "🐾" },
   bank: { id: "bank", icon: "gold", label: "savings", glyph: "$" },
 };
@@ -732,12 +728,41 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       });
     const half = tag.offsetWidth / 2;
     const tagCx = Math.max(half + 8, Math.min(el.clientWidth - half - 8, cx));
-    const above = ready && cy + size.h / 2 + 12 + tag.offsetHeight > el.clientHeight - 8;
-    tag.classList.toggle("marker-above", above);
+    const height = tag.offsetHeight;
+    const defaultBottom = ready ? cy + size.h / 2 + 12 + height : r.y - 6;
+    const clampBottom = (bottom: number): number =>
+      Math.max(height + 8, Math.min(el.clientHeight - 8, bottom));
+    // A ready plot label must not cover another building's tap target. Scene
+    // geometry stays fixed; try the nearby space above/below the plot first.
+    const candidates = [
+      ...new Set([
+        clampBottom(defaultBottom),
+        clampBottom(cy - size.h / 2 - 12),
+        clampBottom(height + 8),
+        clampBottom(el.clientHeight - 8),
+      ]),
+    ];
+    const targets = [...btns.entries()]
+      .filter(([id, b]) => id !== "staked" && !b.hidden)
+      .map(([, b]) => ({
+        x: Number.parseFloat(b.style.left) + b.offsetWidth / 2,
+        y: Number.parseFloat(b.style.top) + b.offsetHeight / 2,
+      }));
+    const score = (bottom: number): number =>
+      targets.reduce((n, p) => {
+        const dx = Math.max(0, Math.min(tagCx + half, p.x + 22) - Math.max(tagCx - half, p.x - 22));
+        const dy = Math.max(0, Math.min(bottom, p.y + 22) - Math.max(bottom - height, p.y - 22));
+        return n + dx * dy;
+      }, 0);
+    const bottom = candidates.reduce(
+      (best, candidate) => (score(candidate) < score(best) ? candidate : best),
+      candidates[0],
+    );
+    tag.classList.toggle("marker-above", bottom <= cy);
     tag.style.setProperty("--build-anchor-offset", `${cx - tagCx}px`);
     Object.assign(tag.style, {
       left: `${Math.round(tagCx)}px`,
-      top: `${Math.round(ready ? (above ? cy - size.h / 2 - 12 : cy + size.h / 2 + 12 + tag.offsetHeight) : r.y - 6)}px`,
+      top: `${Math.round(bottom)}px`,
     });
   }
   function tap(id: string, e: Event): void {
@@ -792,7 +817,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     }
     if (id === "tent") hooks.hero(b);
     else if (id === "crate") hooks.open("loadout", b);
-    else if (id === "storehouse") hooks.open("vault", b);
     else if (id === "kennel") hooks.open("party", b);
     else if (id === "blacksmith") hooks.forge(b);
     else if (id === "bank") openBank(app, b);
@@ -891,7 +915,7 @@ export function coinsFly(from: HTMLElement, gold: number): boolean {
   return true;
 }
 
-/** The building bar's tile for a standing building (`forge` · `vault` · `kennel` · `bank`): the same panel as the building. */
+/** The building bar's tile for a standing building (`forge` · `kennel` · `bank`): the same panel as the building. */
 export function buildingTile(
   id: BuildingId,
   o: { on?: boolean; fresh?: boolean; onclick: () => void },

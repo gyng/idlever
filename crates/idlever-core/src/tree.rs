@@ -42,9 +42,7 @@ pub const NODES: &[NodeDef] = &[
     node("quartermaster", "quartermaster", "trunk", "", 0, 0, 0, "", "crate", "", "packs heal · drill item"),
     node("porter", "porter", "trunk", "chest", 3, 0, 0, "", "mouth", "AUTO HAUL", "hauls home · while away"),
     node("scout", "scout", "trunk", "send", 3, 5, 0, "", "fire", "AUTO SEND", "sends him · each rest"),
-    node("armourer", "armourer", "trunk", "wear", 2, 10, 24, "storehouse", "storehouse", "AUTO EQUIP", "wears better finds"),
     node("apprentice", "apprentice", "trunk", "forge", 3, 30, 30, "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
-    node("keeper", "keeper", "items", "keep", 2, 20, 30, "storehouse", "storehouse", "AUTO KEEP", "sorts finds · never asks"),
     node("clerk", "clerk", "town", "deposit", 3, 40, 36, "bank", "bank", "AUTO BANK", "banks spare gold"),
     node("drillmaster", "drillmaster", "character", "level", 2, 30, 36, "", "tent", "AUTO LEVEL", "levels the stance"),
     node("kennel_hand", "kennel-hand", "town", "field", 2, 30, 40, "kennel", "kennel", "AUTO PETS", "fields best pets"),
@@ -93,7 +91,7 @@ pub struct Tree {
     /// A send by hand is under way (before the scout).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub sent: bool,
-    /// Vault items worn by hand (each counts once toward the armourer).
+    /// Inactive storage metadata; retained only until the coordinated API cleanup.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub worn: Vec<u32>,
     /// Every gold movement summed (interest in, bank moves out): purse + chest + bank = ledger.
@@ -114,7 +112,7 @@ pub struct Tree {
     /// The record the stones' ledger was kept under (a new record forgets it: a stronger hero tries again).
     #[serde(default)]
     pub stones_best: u32,
-    /// The armourer's ledger: the recent sends and those that died (halved past `STONE_MEMORY`).
+    /// Inactive storage metadata; no worker reads or updates this counter.
     #[serde(default)]
     pub sends: (u32, u32),
     /// Blind 1fb7786: under the `half` forge order, the purse the apprentice may still spend — half of each
@@ -248,14 +246,7 @@ pub fn forge_share(l: &LineageState) -> Option<i32> {
 pub const STONE_MEMORY: u32 = 12;
 
 /// A send from a waystone came home (non-sim): its start's record — whether it brought gold home.
-pub fn note_start(l: &mut LineageState, start: u32, paid: bool, died: bool) {
-    let s = &mut l.tree.sends;
-    s.0 += 1;
-    s.1 += died as u32;
-    if s.0 > STONE_MEMORY {
-        s.0 /= 2;
-        s.1 /= 2;
-    }
+pub fn note_start(l: &mut LineageState, start: u32, paid: bool, _died: bool) {
     if l.tree.stones_best != l.best_depth {
         l.tree.stones.clear();
         l.tree.stones_best = l.best_depth;
@@ -322,7 +313,7 @@ pub fn hired(l: &LineageState, id: &str) -> bool {
 /// A worker at work: hired and not switched off (a harness's literal lineage has every worker's
 /// old behaviour: sends itself, no chest — and no worker acts on it).
 pub fn on(l: &LineageState, id: &str) -> bool {
-    hired(l, id) && !l.tree.paused.contains(id)
+    def(id).is_some() && hired(l, id) && !l.tree.paused.contains(id)
 }
 
 /// The hero goes down on his own after his rest (the scout, or a harness's lineage).
@@ -468,7 +459,6 @@ pub fn on_gold(l: &mut LineageState, delta: i32, why: &str) {
 /// Whether `n`'s chore exists for this lineage (its system open).
 pub fn chore_open(l: &LineageState, n: &NodeDef) -> bool {
     n.gate.is_empty() || crate::systems::is_open(l, n.gate) || match n.gate {
-        "storehouse" => crate::town::built(l, "storehouse"),
         "forge" => crate::town::built(l, "blacksmith"),
         "bank" => crate::town::built(l, "bank"),
         "kennel" => crate::town::built(l, "kennel"),
@@ -564,7 +554,6 @@ pub fn rank_bonus(id: &str, r: u32) -> Option<String> {
         "clerk" => format!("{}‰ interest", BANK_PCT_PERMILLE + CLERK_BONUS_PERMILLE as u32 * k),
         "guide" => if k == 1 { "half toll".into() } else { "no toll".into() },
         "drillmaster" => "levels −◆1".into(),
-        "armourer" => "insures its finds".into(),
         _ => return None,
     })
 }
@@ -635,6 +624,7 @@ pub fn open_chest(l: &mut LineageState) -> Result<i32, String> {
 
 /// Switch a hired worker off (its chore by hand again) or on.
 pub fn set_worker(l: &mut LineageState, id: &str, on: bool) -> Result<(), String> {
+    if def(id).is_none() { return Err("unknown worker".into()); }
     if !hired(l, id) {
         return Err("not hired".into());
     }
@@ -667,52 +657,8 @@ pub(crate) fn scout_sent(game: &mut Game) {
     }
 }
 
-/// A weapon's worth a blow: its mean hit with its aim (a forged arm's steps), at its pace.
-fn blow_worth(w: &crate::item::Item) -> i64 {
-    let (lo, hi) = w.atk();
-    let hit = if crate::kit::is_kit_id(w.id) { crate::kit::hit_pct(w) as i64 } else { 80 };
-    (lo + hi) as i64 * hit * (10 + w.def().speed) as i64
-}
-
-/// Existing armourer order, shared by real sends and prospective pack projection.
-/// Selection is pure and respects manually selected ids; no other worker acts here.
-pub(crate) fn armourer_plan(game: &Game) -> Vec<u32> {
-    let l = &game.lineage;
-    let (n, died) = l.tree.sends;
-    if l.pkg.literal || l.variant_is("bones_only") || !on(l, "armourer") || l.vault.is_empty()
-        || !(4 * died < n.max(1) || bonus_rank(l, "armourer") > 0) {
-        return Vec::new();
-    }
-    let mut add = Vec::new();
-    let mut kit = crate::hero::Hero::new(l.class, crate::geom::Pos::new(0, 0));
-    crate::kit::equip(l, &mut kit);
-    for cat in [crate::defs::Cat::Weapon, crate::defs::Cat::Armour] {
-        if let Some(it) = l.vault.iter().filter(|v| v.cat() == cat).max_by_key(|v| (v.value(), std::cmp::Reverse(v.id))) {
-            let better = match cat {
-                crate::defs::Cat::Weapon => kit.weapon.as_ref().is_none_or(|k| blow_worth(it) > blow_worth(k)),
-                _ => it.def().speed >= 0 && kit.armour.as_ref().is_none_or(|k| it.def_bonus() > k.def_bonus()),
-            };
-            if better && !game.loadout.contains(&it.id) { add.push(it.id); }
-        }
-    }
-    add
-}
-
-/// Apply only the existing pack/insurance order. Forecasts use a clone and record no act.
-pub(crate) fn pack_armourer(game: &mut Game, record_act: bool) {
-    let add = armourer_plan(game);
-    if add.is_empty() { return; }
-    if bonus_rank(&game.lineage, "armourer") > 0 {
-        for id in &add {
-            if !game.lineage.insured.contains(id) { game.lineage.insured.push(*id); }
-        }
-    }
-    if record_act { act(game, "armourer", add.len() as u32); }
-    game.loadout.extend(add);
-}
-
 /// The workers act continuously (the owner, 2026-10-02): at each hour of an absence, between the sends, as at
-/// a send — the armourer's pack is a send's alone.
+/// a send, without replacing the selected reusable kit.
 pub fn at_hour(game: &mut Game) {
     let previous_start = game.lineage.start.max(1);
     workers_act(game, false);
@@ -859,7 +805,6 @@ fn workers_act(game: &mut Game, send: bool) {
             act(game, "guide", 1);
         }
     }
-    if send { pack_armourer(game, true); }
 }
 
 // ---------------------------------------------------------------- Cut 120: the orders that fill the automation
@@ -1352,7 +1297,6 @@ pub fn report_acts(l: &LineageState, before: &BTreeMap<String, u32>, after: &BTr
                     "herald" if ascended > 0 => "ascended".to_string(),
                     "herald" => "swapped".to_string(),
                     "guide" => "deeper start".to_string(),
-                    "armourer" => format!("wore {k}"),
                     "kennel_keeper" => format!("sorted {k}"),
                     _ => format!("{k}"),
                 };
