@@ -1,9 +1,41 @@
-# Idlever handoff — rename checkpoint, 2026-10-13
+# Idlever handoff — queued implementation resumed, 2026-10-13
 
-Owner asks to finish the current queue/refinement and PAUSE at this checkpoint
-because weekly quota is low. No new content or rating round should start until
-the owner resumes. The fun>=80 goal is unfinished.
-Commit/push and milestone screenshots remain authorized.
+Owner resumed the full queue on2026-10-13 with the active objective:
+**resume and finish all queued items verified and refined**. Prior pause is
+revoked. Commit/push and milestone screenshots remain authorized. No blanket
+new deployment is inferred; Pages still deploys published releases only.
+All38 current product items plus retained visual/content work remain in scope.
+Acceptance ledger: docs/QUEUE_ACCEPTANCE.md.
+The fun>=80 goal remains unverified; do not narrow completion to a small cut.
+
+Current cuts: CUT191_BUILD_ECONOMY (free preparation complete; remaining loot
+work pending), CUT192_HOME_INTERACTIONS (building help/hover), CUT193_UI_CLARITY
+(scroll/Delve/Chronicle/chrome), CUT194_HOME_HEROES (actual actors/cave portraits),
+CUT195_BUILDING_FX (construction/appearance). Required tests/evidence remain
+pending for any cut without a recorded pass. Historical paused notes below
+record their earlier checkpoint, not a current instruction to stop.
+
+Current checkpoint: Cut191 free preparation passes seven focused tests and the
+integrated native workspace829/829 (6 explicitly ignored), Clippy warnings
+denied. Raw logs, including the initial old-fee805/24 failure, are preserved
+in docs/evidence/cut191. Found loot conversion, Keep removal, simpler exits and
+Loadouts are still pending. Final exact-source WASM6414194bytes and four
+focused worker/UI groups pass4/4 in8.6s. Do not claim all economy requirements
+complete.
+
+Cut194 moving-hero targets and genuine delve portraits pass three GPU groups
+in32.7s at400/1440. It checks three real actors, exact1px target tracking,
+keyboard/touch/mouse identity, two simultaneous actual delves and8h refresh.
+Cut195 construction/upgrade presentation passes final four focused groups in
+48.2s on the exact-source WASM, with GL400/day and Canvas1440/night captures.
+Full/Low dust is bounded22/8; Off/reduced is static. Initial loads/refused
+actions/reloads produce no build animation; successful state changes remain
+immediately usable. Production web build passes with existing bundle/import
+warnings. Shared-check frame P95 is high and unisolated; quiet frame-cost
+certification remains open. No deployment or broad fun acceptance is inferred. Next core stage
+is docs/CUT196_SINGLE_LOOT_VALUE.md: audit found duplicate pickup/salvage value,
+unreset checkpoint raw carry and merged-leash valuation/provenance risks.
+Correct accounting before measuring new pacing; no fix is claimed yet.
 
 Owner amendment 2026-10-12: fix Pages deployment and publish the first alpha.
 This explicitly authorizes this release and its deployment. Content work and
@@ -21,9 +53,9 @@ active crates, WASM modules, browser globals, events, storage/settings keys and
 diagnostic markers use Idlever identifiers. No old-brand aliases or migration
 code are required. Actual local checkout paths remain valid.
 
-## Latest queued feedback — 2026-10-13, not started
+## Owner requirements — 2026-10-13, implementation resumed
 
-Owner requested a queue update, not resumed implementation. See
+The owner subsequently resumed implementation of all additions below. See
 [WORK_QUEUE.md](WORK_QUEUE.md) for priorities, dependencies and checkpoints.
 
 Latest owner design priority: **the main fun is trying builds and seeing how
@@ -363,7 +395,7 @@ Old41271 is historicalb60. Do not release new players to either for Cut185.
 Mutable development53741 (owned renderer preview44167) serves current source;
 source changes mean it is diagnostic only, never a frozen rating build.
 
-## Resume only when requested
+## Historical Cut185 acceptance work (now resumed)
 
 1. Preserve the historical failed runs and the complete alpha pass. Investigate
    the unexplained class-tree timeout if it recurs; capture actual tooltip,
@@ -390,8 +422,9 @@ source changes mean it is diagnostic only, never a frozen rating build.
 ## Operating reminders
 
 No desktop focus: headed browsers privateXvfb tools/browser.mjs only.
-Deploy through published releases; the owner authorized this alpha. Content
-and rating work remain paused. Git remote gyng/riddle verified and authorized; do not stage
+Deploy through published releases; prior alpha deployment was authorized.
+Queued implementation is active. New deployment needs explicit authorization.
+Git remote gyng/idlever is verified and authorized; do not stage
 mine.bars or scratchpad. Raw logs preserved byte-for-byte, including whitespace;
 explicit force-add only named evidence logs. Local core.fsync=committed enabled
 following recovered Git corruption. Original metadata backup stays private.
@@ -401,8 +434,9 @@ inventory (future files join automatically); `pnpm --dir web -s test:exhaustive`
 166 groups/widths plus new files. Original compaction baseline1797.246s,
 accepted124-group340.043s and latest pre-cut359.167s, no80%defectdetection claim.
 
-Checkpoint ready for commit/push, then goalpause perowner. No validators, rating
-players or delegated coding tasks remain running. Existing local preview
+Historical pause checkpoint: it was ready for commit/push, then goalpause per
+owner, with no validators, rating players or delegated coding tasks running.
+That pause has since been revoked; current activity is recorded at the top. Existing local preview
 servers may remain for review;53741 is current diagnostic source,41273 oldfreeze.
 Unrelated mine.bars andscratchpad are excluded fromcommits.
 

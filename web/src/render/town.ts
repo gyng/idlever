@@ -203,6 +203,8 @@ export type TownState = {
   buildings: { id: BuildingId; look: number; fresh: boolean }[];
   staked?: { id: BuildingId | "house"; trigger: string; ready?: boolean };
   hero: { cls: string; look?: string };
+  residents?: { id: number; cls: string; look?: string }[];
+  selectedHero?: number;
   pets: string[]; // companions following the hero
   penned: string[]; // companions lying in the kennel's pen
   parties: Party[]; // the absence's runs walking out of the mouth
@@ -212,6 +214,25 @@ export type TownState = {
   chest?: ChestState; // Cut 30.5: the haul chest (none once the porter carries the hauls)
   workers: WorkerSpot[]; // Cut 30.5: hired workers at their posts; the lit node's greyed
 };
+/** Only state transitions observed by this mounted view produce construction FX. */
+export function constructionChanges(
+  prev: TownState | null,
+  next: TownState,
+): { id: BuildingId | "house"; fromLook?: number }[] {
+  if (!prev) return [];
+  const changes: { id: BuildingId | "house"; fromLook?: number }[] = [];
+  if (!prev.home && next.home) changes.push({ id: "house" });
+  else if (prev.home && next.home && houseLook(next) > houseLook(prev))
+    changes.push({ id: "house", fromLook: houseLook(prev) });
+  for (const building of next.buildings) {
+    const old = prev.buildings.find((b) => b.id === building.id);
+    if (!old) changes.push({ id: building.id });
+    else if (building.look > old.look) changes.push({ id: building.id, fromLook: old.look });
+  }
+  return changes;
+}
+const BUILD_ASSEMBLY_S = 1.2,
+  BUILD_FX_S = 2.2;
 export type TownOpts = {
   board?: boolean;
   seen?: string[];
@@ -362,6 +383,12 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     buildings,
     staked: next,
     hero: { cls: L.class || "fighter", look: L.look },
+    residents:
+      L.hero_slots
+        ?.filter((h) => h.state !== "live")
+        .map((h) => ({ id: h.id, cls: h.class, look: h.look })) ??
+      (L.live ? [] : [{ id: L.selected_bloodline ?? 1, cls: L.class || "fighter", look: L.look }]),
+    selectedHero: L.selected_bloodline ?? 1,
     pets: (L.party ?? []).slice(0, 2).map((c) => c.kind),
     penned: has("kennel") ? (L.kennel ?? []).slice(0, 2).map((c) => c.kind) : [],
     parties,
@@ -906,6 +933,7 @@ export function ambientOf(night: number): [number, number, number] {
 type Leg = { t0: number; t1: number; a: Pt; b: Pt };
 type Walker = {
   id: string;
+  homeOffset?: { x: number; y: number };
   sprite: string[];
   walk: string[];
   h: number;
@@ -982,6 +1010,7 @@ export type TownStats = {
   fps: number;
   frames: number;
   cpuMs: number;
+  cpuP50: number;
   cpuP95: number;
   walkers: number;
   mode: "gl" | "2d";
@@ -997,6 +1026,9 @@ export type TownStats = {
   windTufts: number;
   windSignature: number;
   buildings: string[];
+  activeBuilds: string[];
+  buildEvents: number;
+  buildDust: number;
   staked?: string;
   markers: string[];
   view: [number, number, number, number];
@@ -1019,6 +1051,8 @@ export type TownView = {
   stress(n: number): void;
   setHour(h: number | null): void;
   focusHero(): void;
+  actorRect(id: number): { x: number; y: number; w: number; h: number } | null;
+  onActors(fn: () => void): void;
   /** input seen (the idle cap lifts) */
   poke(): void;
   dispose(): void;
@@ -1089,8 +1123,16 @@ export function createTownView(host: HTMLElement): TownView {
   let hourOverride: number | null = null;
   let layoutDirty = true;
   const layoutFns: (() => void)[] = [];
+  const upgradeFrom = new Map<string, number>();
+  let buildEvents = 0;
+  const buildFxEnabled = (): boolean =>
+    !motionPreference.matches &&
+    !document.hidden &&
+    effectsLevel() !== "off" &&
+    document.documentElement.dataset.juice !== "off";
   let builtAt = new Map<string, number>(); // fresh buildings: the scene time their scaffold went up
   let hero: Walker | null = null;
+  const actorLayout: (() => void)[] = [];
   let walkingIn: { t0: number; t1: number; done: () => void } | null = null;
   let stressN = 0;
   const arrive = new Map<string, Leg[]>(); // Cut 30.5: a worker hired on this mount walks out of the tent to his post
@@ -1177,47 +1219,61 @@ export function createTownView(host: HTMLElement): TownView {
       s.buildings.some((b) => b.id === "blacksmith") ? "smith" : "crate",
       "fireW",
     ];
-    let i = homeArrival ? 0 : Math.floor(rng(1) * 3),
-      n = 0;
-    hero = {
-      id: "hero",
-      sprite: heroIds,
-      walk: walkIds,
-      h: 24,
-      legs: [],
-      from: partyEnd,
-      to: Infinity,
-      lag: 0,
-      extend: (w) => {
-        let tt = w.legs.length ? w.legs[w.legs.length - 1]!.t1 : partyEnd;
-        for (let j = 0; j < 6; j++) {
-          const a = stops[i % 3]!,
-            b = stops[(i + 1) % 3]!;
-          i++;
-          const pause = 2 + rng(100 + n++) * 4;
-          const at = NODES[a]!;
-          w.legs.push({ t0: tt, t1: tt + pause, a: at, b: at });
-          tt += pause;
-          tt = legsAlong(route(a, b), tt, SPEED * 0.8, w.legs);
-        }
-      },
-    };
-    hero.extend!(hero);
-    walkers.push(hero);
-    s.pets.forEach((p, j) =>
-      walkers.push({
-        id: `pet${j}`,
-        sprite: [p, "town_dog"],
-        walk: [p, "town_dog"],
-        h: 14,
-        legs: hero!.legs,
+    hero = null;
+    const residents = s.residents ?? [
+      { id: s.selectedHero ?? 1, cls: s.hero.cls, look: s.hero.look },
+    ];
+    for (const resident of residents) {
+      let i = homeArrival ? 0 : (Math.floor(rng(resident.id * 31) * 3) + resident.id) % 3,
+        n = 0;
+      const ids = [
+        ...(resident.look ? [`hero_${resident.cls}_${resident.look}`] : []),
+        `hero_${resident.cls}`,
+        "hero_fighter",
+      ];
+      const actor: Walker = {
+        id: `resident:${resident.id}`,
+        homeOffset: { x: (((resident.id - 1) % 3) - 1) * 12, y: 0 },
+        sprite: ids,
+        walk: [`walk_${resident.cls}`, ...ids],
+        h: 24,
+        legs: [],
         from: partyEnd,
         to: Infinity,
-        lag: 0.9 + j * 0.6,
-        follow: hero!,
-        pet: true,
-      }),
-    );
+        lag: resident.id * 0.1,
+        extend: (w) => {
+          let tt = w.legs.length ? w.legs[w.legs.length - 1]!.t1 : partyEnd;
+          for (let j = 0; j < 6; j++) {
+            const a = stops[i % 3]!,
+              b = stops[(i + 1) % 3]!;
+            i++;
+            const pause = 2 + rng(100 + resident.id * 101 + n++) * 4;
+            const at = NODES[a]!;
+            w.legs.push({ t0: tt, t1: tt + pause, a: at, b: at });
+            tt += pause;
+            tt = legsAlong(route(a, b), tt, SPEED * 0.8, w.legs);
+          }
+        },
+      };
+      actor.extend!(actor);
+      walkers.push(actor);
+      if (resident.id === (s.selectedHero ?? 1)) hero = actor;
+    }
+    if (hero)
+      s.pets.forEach((p, j) =>
+        walkers.push({
+          id: `pet${j}`,
+          sprite: [p, "town_dog"],
+          walk: [p, "town_dog"],
+          h: 14,
+          legs: hero!.legs,
+          from: partyEnd,
+          to: Infinity,
+          lag: 0.9 + j * 0.6,
+          follow: hero!,
+          pet: true,
+        }),
+      );
     addStress();
   }
   /** Cut 109: the walking townsfolk (`folk` draws them by stage): the child's loop and the carter's round, seeded by the day */
@@ -1607,15 +1663,46 @@ export function createTownView(host: HTMLElement): TownView {
       }
   }
   function completionGlint(p: Pt & { h: number }, at: number | undefined): void {
-    if (at === undefined || t - at < 1.3 || t - at >= 2.4) return;
-    const g = (t - at - 1.3) / 1.1;
-    sprite("fx_glint", 9, p.x + 18, p.y - p.h + 8 + g * 4, {
+    if (at === undefined || t - at < BUILD_ASSEMBLY_S || t - at >= BUILD_FX_S) return;
+    const g = (t - at - BUILD_ASSEMBLY_S) / (BUILD_FX_S - BUILD_ASSEMBLY_S);
+    sprite("fx_glint", effectsLevel() === "low" ? 6 : 9, p.x + 18, p.y - p.h + 8 + g * 4, {
       z: 3,
       fade: Math.max(0, g * 1.2 - 0.2),
     });
   }
+  function buildingSprite(id: BuildingId | "house", look: number): void {
+    const p = PLOTS[id],
+      at = builtAt.get(id);
+    const age = at === undefined ? BUILD_FX_S : t - at;
+    const art = (n: number): string[] => [`town_${id}_${n}`, `town_${id}_1`];
+    if (at === undefined || age >= BUILD_ASSEMBLY_S) sprite(art(look), p.h, p.x, p.y);
+    else {
+      const oldLook = upgradeFrom.get(id);
+      if (oldLook !== undefined) sprite(art(oldLook), p.h, p.x, p.y);
+      else sprite("town_plot", 16, p.x, p.y);
+      const reveal = Math.max(0, Math.min(1, (age - 0.6) / 0.6));
+      sprite("town_scaffold", oldLook !== undefined ? 28 : p.h, p.x, p.y, {
+        fade: reveal,
+        ground: true,
+      });
+      if (reveal > 0) sprite(art(look), p.h, p.x, p.y, { fade: 1 - reveal });
+    }
+    completionGlint(p, at);
+  }
   function frame(): void {
     const s = state!;
+    if (!buildFxEnabled()) {
+      builtAt.clear();
+      upgradeFrom.clear();
+      dusted.clear();
+      for (let i = parts.length - 1; i >= 0; i--) if (parts[i]!.kind === "dust") parts.splice(i, 1);
+    } else
+      for (const [id, at] of builtAt)
+        if (t - at >= BUILD_FX_S) {
+          builtAt.delete(id);
+          upgradeFrom.delete(id);
+          dusted.delete(id);
+        }
     F.n = 0;
     F.lights.length = 0;
     characterLights.length = 0;
@@ -1657,14 +1744,9 @@ export function createTownView(host: HTMLElement): TownView {
     flickNow = flick;
     if (s.home) {
       const p = PLOTS.house,
-        at = builtAt.get("house");
-      if (at !== undefined && t - at < 1.3) sprite("town_scaffold", p.h, p.x, p.y);
-      else {
-        const look = houseLook(s);
-        sprite([`town_house_${look}`, "town_house_1", "town_storehouse_1"], p.h, p.x, p.y);
-        emitters(`town_house_${look}`, p, night, 16, 0, 1.3, p.h / 64);
-        completionGlint(p, at);
-      }
+        look = houseLook(s);
+      buildingSprite("house", look);
+      emitters(`town_house_${look}`, p, night, 16, 0, 1.3, p.h / 64);
     }
     if (s.home && night > 0.3)
       F.lights.push({ x: PLOTS.tent.x, y: PLOTS.tent.y - 6, r: 14, c: [0.9, 0.55, 0.25] });
@@ -1689,14 +1771,7 @@ export function createTownView(host: HTMLElement): TownView {
     // the buildings: scaffold → built (dust, a glint)
     for (const b of s.buildings) {
       const p = PLOTS[b.id];
-      const at = builtAt.get(b.id);
-      const up = at === undefined || t - at >= 1.3;
-      if (!up) {
-        sprite("town_scaffold", 56, p.x, p.y);
-        continue;
-      }
-      sprite([`town_${b.id}_${b.look}`, `town_${b.id}_1`], p.h, p.x, p.y);
-      completionGlint(p, at);
+      buildingSprite(b.id, b.look);
       // the painted emitters (art/town_lights.json: the forge's mouth, lit windows): the forge always, the windows at night
       emitters(
         `town_${b.id}_${b.look}`,
@@ -1786,8 +1861,9 @@ export function createTownView(host: HTMLElement): TownView {
     for (const w of walkers) {
       const at = w.follow ? walkerAt(w.follow, t - w.lag) : walkerAt(w, t);
       if (!at || (w.follow && t < w.from) || t > w.to) continue;
-      let x = at.x,
-        y = at.y;
+      const offset = (w.follow ?? w).homeOffset;
+      let x = at.x + (offset?.x ?? 0),
+        y = at.y + (offset?.y ?? 0);
       if (w.follow && at.moving) {
         x -= Math.sign(at.dx) * 4;
         y += 2;
@@ -1869,7 +1945,8 @@ export function createTownView(host: HTMLElement): TownView {
         s: 1,
       });
     const smith = state!.buildings.find(
-      (b) => b.id === "blacksmith" && !(builtAt.has(b.id) && t - builtAt.get(b.id)! < 1.3),
+      (b) =>
+        b.id === "blacksmith" && !(builtAt.has(b.id) && t - builtAt.get(b.id)! < BUILD_ASSEMBLY_S),
     );
     if (smith) {
       const p = PLOTS.blacksmith;
@@ -1904,10 +1981,10 @@ export function createTownView(host: HTMLElement): TownView {
       }
     }
     for (const [id, at] of builtAt)
-      if (t - at >= 1.3 && t - at < 1.3 + dt + 0.001 && !dusted.has(id)) {
+      if (buildFxEnabled() && t - at >= BUILD_ASSEMBLY_S && !dusted.has(id)) {
         dusted.add(id);
         const p = PLOTS[id as PlotId];
-        for (let i = 0; i < 22; i++) {
+        for (let i = 0; i < (effectsLevel() === "low" ? 8 : 22); i++) {
           const a = rand() * Math.PI * 2,
             v = 14 + rand() * 22;
           parts.push({
@@ -1916,9 +1993,9 @@ export function createTownView(host: HTMLElement): TownView {
             vx: Math.cos(a) * v,
             vy: Math.sin(a) * v * 0.4 - 6,
             age: 0,
-            life: 0.7 + rand() * 0.5,
+            life: 0.5 + rand() * 0.3,
             kind: "dust",
-            c: DUST[Math.floor(rand() * 3)]!,
+            c: (id === "blacksmith" ? SMOKE : DUST)[Math.floor(rand() * 3)]!,
             s: 2,
           });
         }
@@ -2014,6 +2091,7 @@ export function createTownView(host: HTMLElement): TownView {
       F.W = W;
       F.H = H;
       layoutDirty = true;
+      for (const fn of actorLayout) fn();
     }
   }
 
@@ -2055,6 +2133,7 @@ export function createTownView(host: HTMLElement): TownView {
       }
       cpu.push(performance.now() - c0);
       if (cpu.length > 120) cpu.shift();
+      for (const fn of actorLayout) fn();
       frames++;
       fpsWin.push(now);
       while (fpsWin.length && fpsWin[0]! < now - 1000) fpsWin.shift();
@@ -2103,17 +2182,32 @@ export function createTownView(host: HTMLElement): TownView {
     setState(s) {
       const prev = state;
       state = s;
-      const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (prev?.home === false && s.home && !reducedMotion) builtAt.set("house", t - 0.8);
-      // a building the player has not seen yet goes up on this mount: scaffold → built
-      for (const b of s.buildings)
-        if (
-          !reducedMotion &&
-          b.fresh &&
-          !builtAt.has(b.id) &&
-          !prev?.buildings.some((x) => x.id === b.id)
-        )
-          builtAt.set(b.id, t + 0.4);
+      if (prev)
+        for (const id of builtAt.keys()) {
+          const oldLook =
+            id === "house" ? houseLook(prev) : prev.buildings.find((b) => b.id === id)?.look;
+          const nextLook =
+            id === "house"
+              ? s.home
+                ? houseLook(s)
+                : undefined
+              : s.buildings.find((b) => b.id === id)?.look;
+          if (nextLook === undefined || (oldLook !== undefined && nextLook < oldLook)) {
+            builtAt.delete(id);
+            upgradeFrom.delete(id);
+            dusted.delete(id);
+          }
+        }
+      const changes = constructionChanges(prev, s);
+      buildEvents += changes.length;
+      if (changes.length && buildFxEnabled()) poke();
+      if (buildFxEnabled())
+        for (const change of changes) {
+          builtAt.set(change.id, t);
+          dusted.delete(change.id);
+          if (change.fromLook !== undefined) upgradeFrom.set(change.id, change.fromLook);
+          else upgradeFrom.delete(change.id);
+        }
       // a worker hired since the last state (he stood greyed, or nowhere): out of the tent, along the paths, to his post
       if (prev)
         for (const w of s.workers) {
@@ -2129,6 +2223,8 @@ export function createTownView(host: HTMLElement): TownView {
           ? JSON.stringify([
               x.home,
               x.hero,
+              x.residents,
+              x.selectedHero,
               x.pets,
               x.parties.length,
               x.buildings.map((b) => b.id),
@@ -2241,6 +2337,21 @@ export function createTownView(host: HTMLElement): TownView {
     onLayout(fn) {
       layoutFns.push(fn);
     },
+    onActors(fn) {
+      actorLayout.push(fn);
+    },
+    actorRect(id) {
+      const actor = walkers.find((w) => w.id === `resident:${id}`);
+      if (!actor) return null;
+      const at = walkerAt(actor, t);
+      if (!at) return null;
+      const slot = atlas.get(actor.sprite, actor.h);
+      const x = at.x + (actor.homeOffset?.x ?? 0),
+        y = at.y + (actor.homeOffset?.y ?? 0);
+      const a = css(x - slot.w / 2, y - slot.h),
+        b = css(x + slot.w / 2, y);
+      return { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y };
+    },
     stats() {
       const s = state;
       const sorted = [...cpu].sort((a, b) => a - b);
@@ -2248,6 +2359,7 @@ export function createTownView(host: HTMLElement): TownView {
         fps: fpsWin.length,
         frames,
         cpuMs: cpu[cpu.length - 1] ?? 0,
+        cpuP50: sorted[Math.floor(sorted.length * 0.5)] ?? 0,
         cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0,
         walkers: F.live,
         mode: gl && !glLost ? "gl" : "2d",
@@ -2263,6 +2375,9 @@ export function createTownView(host: HTMLElement): TownView {
         windTufts,
         windSignature,
         buildings: s?.buildings.map((b) => b.id) ?? [],
+        activeBuilds: [...builtAt.keys()],
+        buildEvents,
+        buildDust: parts.filter((p) => p.kind === "dust").length,
         staked: s?.staked?.id,
         markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [],
         view: [F.x0, F.y0, F.w, F.h],

@@ -1,0 +1,5 @@
+client suite: targeted (3 selected; 128 current full; 170 exhaustive groups)
+ok   town-save       10.6s (10.3s)  39 manual construction persistence checks PASS
+ok   home-building-help 20.6s (20.2s)  1440: real WASM ready/locked/built five-building help, no accidental build, viewport, hover and hero details PASS
+ok   home-heroes     32.7s (32.3s)  1440: three real home actors, exact selection/details, two actual delves/portraits/watch and offline state reconciliation PASS
+ok: 3/3 client gates in 32.7s

@@ -8,7 +8,7 @@ repeat passed125/125; its earlier timing failure is preserved in Cut190 evidence
 The exhaustive audit and verified fun>=80 remain unfinished. Read
 [HANDOFF.md](HANDOFF.md) for exact evidence and limits.
 
-**Queue only. Implementation and rating work remain paused.** The owner's
+**Owner resumed all queued implementation on2026-10-13.** The owner's
 2026-10-13 feedback below takes priority on resume. It supersedes the earlier
 proposal to automatically keep useful drops and salvage only the rest: the
 preferred direction is automatic conversion of found loot into currency, with
@@ -16,8 +16,12 @@ starting gear unlocked through the forge and deeper custom starting kits
 unlocked gradually. The latest owner rule is that unlocked items are free to
 equip, use and reuse; no gold charge for replenishing them on later delves. The forge becomes a main place for meaningful build choices as loot
 handling becomes automatic.
-No new feature, balance change, tutorial, asset or release is delivered by this
-queue update. Backwards compatibility is not required.
+This file records requested outcomes; implementation is tracked in scoped cuts
+and HANDOFF.md. Unverified requirements remain open. Backwards compatibility
+is not required. Cut191 starts the economy; Cuts192/193 cover independent UI
+feedback and clarity. Cut194 adds actual hero/cave targets; Cut195 adds
+construction and appearance FX. Cut196 records the next single-value loot
+contract. All38 product items and retained content stay in scope.
 
 ## Main fun — latest owner direction
 
@@ -35,7 +39,7 @@ retain a viable default, and make build identity and actual delve outcomes
 visible. New classes should provide different ways to build, rather than just
 more labels or uniformly stronger upgrades.
 
-## Next product work — owner feedback, not started
+## Implementation queue — owner requirements
 
 | Order | Work | Intended result | First checkpoint / acceptance |
 |---|---|---|---|
@@ -165,7 +169,7 @@ their actual completed progress and current next option without replaying the
 introduction. Prototype and review one earned first-session path on phone and
 desktop before expanding the journal catalogue.
 
-This explicit owner request permits guided tutorial/journal help for the future
+This explicit owner request permits guided tutorial/journal help for the resumed
 pass and supersedes older blanket “no tutorial text” guidance in this scope.
 Keep concise chrome and define any journal/help copy-budget amendments in the
 implementation cut. No tutorial or unlock behavior is implemented by queueing.
@@ -376,8 +380,8 @@ skill icons with the revised Bloodlines tree and its live-view skill cues:
 
 Write a scoped cut before execution. Earlier sections below are historical
 context. Their old priority claims, retention proposals and Storehouse vignette
-plans yield to these current owner additions. No implementation or deployment
-is authorized by this queue-only update.
+plans yield to these current owner additions. The owner subsequently resumed all implementation; prior queue-only pauses
+are revoked. This does not itself authorize a new deployment.
 
 Owner requested more content and refinement work. This is the prospective queue; older NEXT_WORK entries are history. Cuts137–139 menu art/title/Credits removal and rooted grass wind are integrated, with menu81/81 and private GPU evidence. Two d34605e ratings are closed: diagnostic human-only75.2 each/all16-axis alpha1; A4h return was short8seconds. That pair cannot certify>=80, and does not rate new polish. Raw evidence remains immutable.
 

@@ -266,3 +266,145 @@
 .town-marker.mk-next .ico {
   flex-shrink: 0;
 }
+
+/* Home help is a separate action: inspecting a ready plot never constructs it. */
+.town-building-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.town-building-info {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 4px 8px;
+  border: 1px solid #79644b;
+  border-radius: 4px;
+  color: #e6d6b9;
+  background: rgba(21, 19, 23, 0.88);
+  box-shadow:
+    inset 0 1px #bda17433,
+    0 2px 3px #0008;
+  font-size: 12px;
+  pointer-events: auto;
+  cursor: help;
+}
+.town-building-info[hidden] {
+  display: none;
+}
+.town-info-glyph {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font:
+    bold 12px Georgia,
+    serif;
+}
+.town-building-info[data-state="locked"] {
+  border-style: dashed;
+  color: #cabfae;
+}
+.town-building-info:hover,
+.town-building-info.kw-open {
+  border-color: #e3c183;
+  background: #342b24;
+  color: #fff0d3;
+}
+.town-building-info:focus-visible {
+  outline: 2px solid #e3c183;
+  outline-offset: 2px;
+}
+.town-building-info:active {
+  box-shadow: inset 0 2px 4px #0009;
+}
+@media (hover: hover) {
+  .town-hit:hover {
+    background: rgba(227, 193, 131, 0.1);
+    box-shadow:
+      inset 0 0 0 1px #e3c18366,
+      0 0 12px #e3c18333;
+  }
+  .town-tag[role="button"]:hover {
+    background: #342b24;
+    box-shadow: 0 0 0 2px #e3c183;
+  }
+}
+.town-tag[role="button"]:focus-visible {
+  outline: 2px solid #e3c183;
+  outline-offset: 3px;
+}
+.building-help-state {
+  margin: 8px 0;
+  color: #e3c183;
+}
+
+.town-actor-hits {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+.town-home-hero {
+  position: absolute;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.town-home-hero:hover,
+.town-home-hero.kw-open {
+  background: #e3c18318;
+  border-color: #e3c18388;
+  box-shadow: 0 0 10px #e3c18344;
+}
+.town-home-hero:focus-visible {
+  outline: 2px solid #e3c183;
+  outline-offset: 2px;
+}
+.town-home-hero:active {
+  background: #e3c18333;
+}
+.town-delve-faces {
+  position: absolute;
+  display: flex;
+  gap: 4px;
+  z-index: 6;
+}
+.town-delving-hero {
+  display: grid;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 3px;
+  border: 1px solid #776346;
+  border-radius: 4px;
+  color: #e9dabd;
+  background: #151318e8;
+  cursor: pointer;
+}
+.town-delving-face {
+  width: 36px;
+  height: 36px;
+}
+.town-delving-depth {
+  font-size: 11px;
+  line-height: 14px;
+}
+.town-delving-hero:hover {
+  border-color: #e3c183;
+  background: #342b24;
+}
+.town-delving-hero:focus-visible {
+  outline: 2px solid #e3c183;
+  outline-offset: 2px;
+}
+.town-delving-hero:active {
+  box-shadow: inset 0 2px 4px #0009;
+}

@@ -21,7 +21,7 @@ import {
 import { h, replace } from "./dom";
 import { decorationSrc, icon } from "./skin";
 import { kitAffordable } from "./forge";
-import { openWindow as openSheet } from "./sheet";
+import { openWindow as openSheet, closeAllSheets } from "./sheet";
 import { tile, paintFace } from "./frame";
 import { audio } from "../audio";
 import { questShown } from "./quest";
@@ -37,7 +37,8 @@ import { classSkillLadder } from "./class-skills";
 import { renderClassTree } from "./class-tree";
 import { renderClassStyles, classStyleName } from "./class-styles";
 import { legacyBar, legacyNext, legacyNextText, renderLegacy } from "./legacy";
-import { kwHost, detailHost } from "./tips";
+import { kwHost, detailHost, openTip, closeTip } from "./tips";
+import { HOME_BUILDINGS, buildingDetails, buildingName, type HomeBuilding } from "./building-help";
 import type { Term } from "./concepts";
 /** docs/TOOLTIPS.md: a building's tip (long-press / hover; its tap stays its panel) */
 const HIT_TERM: Record<string, Term> = /* copy:none */ {
@@ -62,7 +63,7 @@ export type TownHooks = {
 };
 /* copy:label */
 const LABEL: Record<string, string> = {
-  mouth: "Send hero",
+  mouth: "Delve",
   tent: "hero",
   crate: "supplies",
   blacksmith: "forge",
@@ -156,6 +157,32 @@ export type TownUi = {
 export function renderTown(app: App, hooks: TownHooks): TownUi {
   const el = h("div", { class: "town" });
   const hits = h("div", { class: "town-hits" });
+  const helpLabels = h("div", { class: "town-building-labels" });
+  const actorHits = h("div", { class: "town-actor-hits" });
+  const delveFaces = h("div", {
+    class: "town-delve-faces",
+    "aria-label": /* copy:label */ "Delving heroes",
+  });
+  const actorButtons = new Map<number, HTMLElement>();
+  let actorKey = "",
+    choosingActor = 0;
+  const chooseActor = async (id: number, watch: boolean, anchor: HTMLElement): Promise<void> => {
+    const token = ++choosingActor;
+    if (!app.lineage.hero_slots?.some((s) => s.id === id)) return;
+    closeTip();
+    closeAllSheets();
+    if (!(await app.selectBloodline(id)) || token !== choosingActor) return;
+    const slot = app.lineage.hero_slots?.find((s) => s.id === id);
+    if (!slot || app.lineage.selected_bloodline !== id) return;
+    closeAllSheets();
+    if (watch && slot.state === "live") app.go({ kind: "watch" });
+    else openHero(app, anchor.isConnected ? anchor : null);
+  };
+  const helpButtons = new Map<string, HTMLElement>();
+  const buildingId = (id: string): HomeBuilding | null => {
+    const actual = id === "tent" ? "house" : id === "staked" ? state?.staked?.id : id;
+    return HOME_BUILDINGS.includes(actual as HomeBuilding) ? (actual as HomeBuilding) : null;
+  };
   let building = false;
   const buildPlot = (): void => {
     const plot = state?.staked;
@@ -179,13 +206,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       return;
     }
     openSheet(() =>
-      h(
-        "div",
-        { class: "sheet-body plot-preview" },
-        h("h3", null, LABEL[plot.id] ?? BUILD_NAME[plot.id] ?? plot.id),
-        h("div", { class: "label" }, /* copy:label */ "Locked"),
-        h("p", { class: "num" }, plot.trigger || /* copy:label */ "Not yet"),
-      ),
+      h("div", { class: "sheet-body plot-preview" }, ...buildingDetails(app.lineage, plot.id)),
     );
   };
   const tag = h("div", {
@@ -195,29 +216,15 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     onclick: inspectPlot,
     onkeydown: (e: Event) => {
       const k = e as KeyboardEvent;
-      if (state?.staked?.ready && (k.key === "Enter" || k.key === " ")) {
+      if (k.key === "Enter" || k.key === " ") {
         k.preventDefault();
-        buildPlot();
+        inspectPlot();
       }
     },
   });
   const plotDetails = (): Node[] => {
     const plot = state?.staked;
-    if (!plot) return [];
-    return [
-      h(
-        "div",
-        { class: "kw-tip-head" },
-        h("b", null, BUILD_NAME[plot.id] ?? LABEL[plot.id] ?? plot.id),
-      ),
-      h(
-        "div",
-        { class: "kw-tip-gloss" },
-        plot.ready
-          ? /* copy:tooltip */ "Ready to build · Free"
-          : (plot.trigger ?? /* copy:tooltip */ "Not yet available"),
-      ),
-    ];
+    return plot ? buildingDetails(app.lineage, plot.id) : [];
   };
   detailHost(tag, plotDetails);
   const foundation = h("div", { class: "town-foundation", hidden: true, "aria-hidden": "true" });
@@ -245,7 +252,18 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const crier = townCrier(app);
   // Cut 118 (owner amendment §4): the graveyard at the scene's foot, left — a stone per fallen heir (the newest few), epitaphs on hover
   const yard = townGraveyard(app);
-  el.append(hits, foundation, tag, arrival, pill.el, crier.el, yard.el);
+  el.append(
+    hits,
+    helpLabels,
+    actorHits,
+    delveFaces,
+    foundation,
+    tag,
+    arrival,
+    pill.el,
+    crier.el,
+    yard.el,
+  );
   let arrivalTimer = 0;
   const view = createTownView(el);
   let chestOpenUntil = 0,
@@ -277,6 +295,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   function paint(): void {
     const L = app.lineage;
     const s0 = load(L) ?? store!;
+    const previousState = state;
     const previousHome = state?.home;
     state = townState(L, absence, {
       seen: s0.seen,
@@ -287,19 +306,135 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       chestOpen: performance.now() < chestOpenUntil,
     });
     view.setState(state);
-    if (previousHome === false && state.home)
-      hooks.resident?.(matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 1800);
+    if (previousHome === false && state.home) hooks.resident?.(0);
     // seen now (a re-mount does not raise it again)
     const built = state.buildings.map((b) => b.id);
     const fresh = built.filter((b) => !s0.seen.includes(b));
     if (fresh.length) save(L, { ...s0, seen: [...new Set([...s0.seen, ...built])] });
     targets();
+    paintActors();
     pill.paint();
     pill.el.hidden = !state.home || !L.tree;
     crier.paint(!!state.home);
     yard.paint(!!state.home);
-    if (fresh.length) arrive(fresh);
+    if (previousState) {
+      const constructed = fresh.filter((id) => !previousState.buildings.some((b) => b.id === id));
+      if (constructed.length) arrive(constructed);
+    }
   }
+  function paintActors(): void {
+    const slots = app.lineage.hero_slots ?? [];
+    const key = JSON.stringify(
+      slots.map((s) => [
+        s.id,
+        s.heir,
+        s.class,
+        s.look,
+        s.hero_name,
+        s.name,
+        s.state,
+        s.live?.depth,
+        s.live?.run_id,
+        s.live?.activity,
+      ]),
+    );
+    for (const slot of slots) {
+      const button = delveFaces.querySelector<HTMLElement>(`[data-delving-hero="${slot.id}"]`);
+      if (!button) continue;
+      button.title = `${slot.hero_name || slot.name} · ${heroPresence(slot).text}`;
+      const depth = button.querySelector(".town-delving-depth");
+      if (depth) depth.textContent = slot.live ? `D${slot.live.depth}` : "…";
+    }
+    if (key === actorKey) return;
+    actorKey = key;
+    if (actorHits.querySelector(".kw-open") || delveFaces.querySelector(".kw-open")) closeTip();
+    actorButtons.clear();
+    actorHits.replaceChildren();
+    delveFaces.replaceChildren();
+    for (const slot of slots) {
+      const name = slot.hero_name || slot.name;
+      const away = slot.state === "live";
+      const button = h("button", {
+        class: away ? "town-delving-hero" : "town-home-hero",
+        "data-home-hero": away ? undefined : slot.id,
+        "data-delving-hero": away ? slot.id : undefined,
+        "data-heir": slot.heir,
+        "aria-label": `${name} · ${away ? "Watch delve" : "Hero details"}`,
+        title: `${name} · ${heroPresence(slot).text}`,
+        onclick: (e: Event) => {
+          let id = slot.id;
+          const pointer = e as MouseEvent;
+          if (!away && pointer.detail > 0) {
+            const townBox = el.getBoundingClientRect();
+            let distance = Infinity;
+            for (const candidate of actorButtons.keys()) {
+              const r = view.actorRect(candidate);
+              if (!r) continue;
+              const d = Math.hypot(
+                pointer.clientX - townBox.left - r.x - r.w / 2,
+                pointer.clientY - townBox.top - r.y - r.h / 2,
+              );
+              if (d < distance) {
+                distance = d;
+                id = candidate;
+              }
+            }
+          }
+          void chooseActor(id, away, e.currentTarget as HTMLElement);
+        },
+      });
+      detailHost(button, () => {
+        const current = app.lineage.hero_slots?.find((s) => s.id === slot.id);
+        return current
+          ? [
+              h("div", { class: "kw-tip-head" }, current.hero_name || current.name),
+              h("div", { class: "kw-tip-gloss" }, heroPresence(current).text),
+            ]
+          : [];
+      });
+      if (away) {
+        const face = h("span", { class: "town-delving-face", "aria-hidden": "true" });
+        paintFace(face, slot.class, 36, slot.look);
+        button.append(
+          face,
+          h("span", { class: "town-delving-depth num" }, slot.live ? `D${slot.live.depth}` : "…"),
+        );
+        delveFaces.append(button);
+      } else {
+        button.append(h("span", { class: "vh" }, name));
+        actorButtons.set(slot.id, button);
+        actorHits.append(button);
+      }
+    }
+    layoutActors();
+  }
+  function layoutActors(): void {
+    for (const [id, button] of actorButtons) {
+      const r = view.actorRect(id);
+      button.hidden = !r;
+      if (!r) continue;
+      const w = Math.max(44, r.w),
+        height = Math.max(44, r.h);
+      Object.assign(button.style, {
+        left: `${Math.round(r.x + r.w / 2 - w / 2)}px`,
+        top: `${Math.round(r.y + r.h / 2 - height / 2)}px`,
+        width: `${Math.round(w)}px`,
+        height: `${Math.round(height)}px`,
+      });
+    }
+    const cave = view.rectOf("mouth");
+    if (cave)
+      Object.assign(delveFaces.style, {
+        left: `${Math.round(Math.max(6, Math.min(el.clientWidth - delveFaces.offsetWidth - 6, cave.x + cave.w / 2 - delveFaces.offsetWidth / 2)))}px`,
+        top: `${Math.max(6, Math.round(cave.y + 4))}px`,
+      });
+  }
+  view.onActors(layoutActors);
+  const offActorLive = app.onLive(() => {
+    if (el.isConnected) {
+      paint();
+    }
+  });
   /** c30-legible: the arrival's beat — `first gold home → blacksmith` (≤ 4 words + the arrow) — and the eye drawn to the building */
   function arrive(ids: string[]): void {
     const T = app.lineage.town;
@@ -346,10 +481,13 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     if (s.chest?.state === "full") want.push({ id: "chest", plot: "chest" });
     if (s.workers.some((w) => w.lit)) want.push({ id: "worker", plot: "worker" });
     // the staked plot shows from day 0; it taps (its trigger) once the first building stands — day 0 keeps its four surfaces
-    if (s.staked && (s.stage >= 1 || s.staked.ready)) want.push({ id: "staked", plot: "staked" });
+    if (s.staked && (s.home || s.stage >= 1 || s.staked.ready))
+      want.push({ id: "staked", plot: "staked" });
     for (const [id, b] of btns)
       if (!want.some((w) => w.id === id)) {
         b.remove();
+        helpButtons.get(id)?.remove();
+        helpButtons.delete(id);
         btns.delete(id);
       }
     // Cut 120 §10: the next worker's count and fallback on his post (`forge 2/3 · or 30h`) while no hire is lit — one marker, inside the
@@ -383,10 +521,37 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           },
           h("span", { class: "vh" }, label),
         );
-        if (w.id === "staked") detailHost(b, plotDetails);
+        if (buildingId(w.id)) detailHost(b, () => buildingDetails(app.lineage, buildingId(w.id)!));
         else if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         btns.set(w.id, b);
         hits.appendChild(b);
+      }
+      const homeId = buildingId(w.id);
+      if (homeId) {
+        let help = helpButtons.get(w.id);
+        if (!help) {
+          help = h("button", {
+            class: "town-building-info",
+            "data-building-info": w.id,
+            onclick: (e: Event) => {
+              e.stopPropagation();
+              openTip(e.currentTarget as HTMLElement);
+            },
+          });
+          detailHost(help, () => buildingDetails(app.lineage, buildingId(w.id)!));
+          helpLabels.append(help);
+          helpButtons.set(w.id, help);
+        }
+        help.setAttribute("aria-label", `${buildingName(homeId)} information`);
+        if (help.dataset.homeId !== homeId) {
+          help.dataset.homeId = homeId;
+          replace(
+            help,
+            h("span", { class: "town-building-name" }, buildingName(homeId)),
+            h("span", { class: "town-info-glyph", "aria-hidden": "true" }, "i"),
+          );
+        }
+        help.dataset.state = w.id === "staked" ? (s.staked?.ready ? "ready" : "locked") : "built";
       }
       b.setAttribute("aria-label", label);
       b.title = label;
@@ -443,7 +608,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       } else ce?.remove();
     }
     // c30-legible: the staked plot always wears its tag — what it becomes and what raises it (`kennel · first tame`), not only on tap
-    if (s.staked && (s.stage >= 1 || s.staked.ready)) {
+    if (s.staked && (s.home || s.stage >= 1 || s.staked.ready)) {
       const ready = s.staked.ready;
       const buildIcon =
         s.staked.id === "house" ? "forge" : (BUILDING_TILE[s.staked.id]?.icon ?? "forge");
@@ -477,8 +642,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       tag.setAttribute("role", "button");
       tag.tabIndex = 0;
     } else {
-      tag.removeAttribute("role");
-      tag.removeAttribute("tabindex");
+      tag.setAttribute("role", "button");
+      tag.tabIndex = 0;
     }
     layout();
   }
@@ -497,10 +662,20 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
               : (id as PlotId),
       );
       if (!r) {
+        if (helpButtons.get(id)) helpButtons.get(id)!.hidden = true;
         b.hidden = true;
         continue;
       }
       b.hidden = false;
+      const help = helpButtons.get(id);
+      if (help) {
+        help.hidden = false;
+        const width = help.offsetWidth;
+        Object.assign(help.style, {
+          left: `${Math.max(6, Math.min(el.clientWidth - width - 6, r.x + r.w / 2 - width / 2))}px`,
+          top: `${Math.max(6, Math.min(el.clientHeight - 44, id === "staked" && !s.staked?.ready ? r.y + r.h + 8 : r.y - 44))}px`,
+        });
+      }
       // ≥ 44 px each way, centred on the sprite (a building's box trimmed to its body: the roof's sky is not the building)
       const readyPlot = id === "staked" && s.staked?.ready === true;
       const cx = r.x + r.w / 2,
@@ -528,7 +703,10 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     if (!tag.hidden) placeTag();
     foundation.hidden = state?.staked?.ready !== true;
   }
-  view.onLayout(layout);
+  view.onLayout(() => {
+    layout();
+    layoutActors();
+  });
   function plotSize(cx: number): { w: number; h: number } {
     const w = Math.min(164, Math.max(44, 2 * Math.min(cx - 8, el.clientWidth - cx - 8)));
     return { w, h: Math.max(44, (w * 108) / 164) };
@@ -664,6 +842,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     send,
     anchorOf: (id) => btns.get(id) ?? null,
     dispose: () => {
+      offActorLive();
+      closeTip();
       clearTimeout(tagTimer);
       clearTimeout(chestTimer);
       clearTimeout(arrivalTimer);
@@ -1064,6 +1244,11 @@ export function exposeTown(ui: TownUi | null): void {
     stats: () => ui.view.stats(),
     stress: (n: number) => ui.view.stress(n),
     setHour: (x: number | null) => ui.view.setHour(x),
+    actors: () =>
+      [...ui.el.querySelectorAll<HTMLElement>("[data-home-hero]")].map((b) => ({
+        id: Number(b.dataset.homeHero),
+        rect: ui.view.actorRect(Number(b.dataset.homeHero)),
+      })),
     targets: () =>
       [...ui.el.querySelectorAll<HTMLElement>(".town-hit")]
         .filter((b) => !b.hidden)
