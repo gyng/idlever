@@ -720,7 +720,7 @@ export function renderDeath(
         ? "level"
         : waitPkg && waitPkg.p.level < waitPkg.to
           ? "train"
-          : "send";
+          : "delve";
   const waitText =
     lever?.kind === "wait" && waitPkg && waitPkg.p.level >= waitPkg.to
       ? /* copy:label */ "again"
@@ -781,7 +781,7 @@ export function renderDeath(
   const LEVER_GEM: Record<string, string> = {
     spend: "forge",
     package: "wear",
-    wait: "send",
+    wait: "delve",
     tactic: "try",
   };
   /** The lever in words, as its tablet reads (`train · Guarded L5`, `buy · sword +2`). */
@@ -1016,7 +1016,7 @@ export function renderDeath(
       ? h(
           "button",
           { class: "death-send chip game-control", onclick: () => app.go({ kind: "watch" }) },
-          /* copy:button */ "send again",
+          /* copy:button */ "delve again",
         )
       : null;
   const preparation = preparationActions(app, {

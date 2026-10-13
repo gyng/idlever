@@ -310,8 +310,8 @@ try {
         kept: false,
       });
       check(
-        document.querySelector(".death-lever").textContent.replace("›", "") === "sendagain",
-        "a level already worn reads send again",
+        document.querySelector(".death-lever").textContent.replace("›", "") === "delveagain",
+        "a level already worn reads delve again",
       );
       a.lineage.marks = marks;
       a.engine.spendLevel = spend;

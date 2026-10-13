@@ -485,10 +485,14 @@ fn automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items
     for offline in [false, true] {
         let mut poor = setup();
         if offline { poor.offline = true; } else { poor.lineage.gold_move(-poor.lineage.gold, "test"); }
-        let before = poor.lineage.supplies.clone();
+        let counter_id = poor.lineage.supplies[0].id;
         let gold = poor.lineage.gold;
         poor.restock();
-        assert_eq!(poor.lineage.supplies, before, "unaffordable replacement discards nothing");
+        assert_eq!(poor.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 2, "unlocked sustain replaces obsolete automatic stock without income");
+        assert!(poor.lineage.supplies.iter().any(|s| s.id == counter_id && s.kind == "fire"), "the surviving counter keeps its identity");
+        assert_eq!(poor.lineage.supplies.len(), poor.lineage.supply_cap());
+        assert!(poor.batch.spent.is_empty());
+        assert!(!poor.batch.restock_capped);
         assert_eq!(poor.lineage.gold, gold);
     }
     let mut legacy: serde_json::Value = serde_json::from_str(&setup().save()).unwrap();
@@ -789,17 +793,18 @@ fn shared_counter_fire_does_not_take_the_stances_second_heal_slot() {
 }
 
 #[test]
-fn shared_counter_surplus_replacement_respects_budget_and_protected_supplies() {
+fn shared_counter_surplus_replacement_is_free_and_respects_protected_supplies() {
     let mut g = shared_fire_counter_pack();
     g.offline = true;
-    let price = g.supply_catalogue().iter().find(|s| s.kind == "heal").unwrap().price;
-    let before = g.lineage.supplies.clone(); let gold = g.lineage.gold;
-    g.restock(); assert_eq!(g.lineage.supplies, before, "no absence income authorizes no replacement"); assert_eq!(g.lineage.gold, gold);
-    g.batch.gold_earned = price;
+    g.lineage.gold = 0;
+    let counter_id = g.lineage.supplies[0].id;
     g.restock();
-    assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 1, "only one heal fits the earned budget");
-    assert_eq!(g.batch.spent_total(), price);
-    assert!(g.batch.spent_total() <= g.batch.income());
+    assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 2, "both unlocked heals prepare without absence income");
+    assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "fire").count(), 1);
+    assert!(g.lineage.supplies.iter().any(|s| s.id == counter_id));
+    assert_eq!(g.lineage.gold, 0);
+    assert!(g.batch.spent.is_empty());
+    assert!(!g.batch.restock_capped);
     let mut protected = shared_fire_counter_pack();
     protected.lineage.supplies[0].auto_packed = false;
     protected.lineage.supplies[1].found = true;
@@ -838,7 +843,7 @@ fn obsolete_automatic_repeat_slots_follow_the_pack_but_manual_duplicates_remain(
 }
 
 #[test]
-fn lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged() {
+fn lifecycle_pack_caps_preserve_literal_custom_and_unknown_origins_without_fees() {
     for custom in [false, true] {
         let mut g = Game::new_literal(13);
         if let Some(f) = crate::item::ident_fact(&g.lineage.flavours, "fire") { g.lineage.facts.insert(f); }
@@ -847,13 +852,14 @@ fn lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged(
         let row = Row::new(vec![], Verb::arg("throw", "fire,nearest"));
         g.set_rules_raw(RuleSet { rows: vec![row.clone()], ..Default::default() }).unwrap();
         if custom { g.lineage.pkg.literal = false; g.lineage.pkg.stance = packages::CUSTOM.into(); g.lineage.pkg.custom = vec![row]; packages::recompile(&mut g.lineage); }
-        let quote = g.supply_catalogue().iter().find(|s| s.kind == "fire").unwrap().price - 1;
-        g.lineage.repeat_quote.insert("fire".into(), quote);
+        g.lineage.repeat_quote.insert("fire".into(), -1);
         g.lineage.last_supplies = vec!["fire".into(); 2];
         g.lineage.last_supply_origins = vec![("fire".into(), true); 2];
         let gold = g.lineage.gold;
         g.restock();
-        assert_eq!(gold - g.lineage.gold, 2 * quote);
+        assert_eq!(g.lineage.gold, gold, "obsolete quotes cannot mint Gold");
+        assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
+        assert!(g.batch.spent.is_empty());
         assert_eq!(g.lineage.supplies.len(), 2, "literal/custom repeats retain their automatic quantities");
         g = Game::load(&g.save()).unwrap();
         let id = g.lineage.supplies[0].id; g.drop_supply(id).unwrap();
@@ -1336,18 +1342,20 @@ fn selected_package_prices_match_full_choices() {
 }
 
 #[test]
-fn automatic_pack_reports_away_budget_limit_without_changing_purchases() {
+fn automatic_pack_is_free_with_no_away_income_or_budget_warning() {
     let mut g=Game::new_resident(17);
     crate::tree::grant(&mut g.lineage,&crate::tree::LEGACY);
-    g.lineage.supplies.clear();g.lineage.gold=1000;g.lineage.restock_off=true;
+    g.lineage.supplies.clear();g.lineage.gold=0;g.lineage.restock_off=true;
     g.lineage.forge.entry("heal".into()).or_default().craftable=true;
     if let Some(f)=crate::item::ident_fact(&g.lineage.flavours,"heal") {g.lineage.facts.insert(f); }
     g.offline=true;g.batch=Default::default();
-    assert!(g.restock().is_empty());assert!(g.batch.restock_capped);
-    assert_eq!(g.lineage.gold,1000);assert!(g.lineage.supplies.is_empty());
+    assert_eq!(g.restock(),["heal", "heal"]);assert!(!g.batch.restock_capped);
+    assert_eq!(g.lineage.gold,0);assert_eq!(g.lineage.supplies.len(),2);
+    assert!(g.batch.spent.is_empty());
+    g.lineage.supplies.clear();
     g.batch=Default::default();g.batch.gold_earned=1000;
     assert!(!g.restock().is_empty());assert!(!g.batch.restock_capped);
-    let price=g.batch.spent_total();assert!(price>0);assert_eq!(g.lineage.gold,1000-price);
+    assert!(g.batch.spent.is_empty());assert_eq!(g.lineage.gold,0);
     g.lineage.supplies.clear();g.batch=Default::default();g.offline=false;
     assert!(!g.restock().is_empty());assert!(!g.batch.restock_capped);
 }

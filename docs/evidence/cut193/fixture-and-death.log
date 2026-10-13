@@ -1,0 +1,10 @@
+client suite: targeted (2 selected; 127 current full; 169 exhaustive groups)
+FAIL ui-clarity      6.4s (6.1s)  Node.js v26.5.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'getBoundingClientRect')
+         at eval (eval at evaluate (:311:30), <anonymous>:3:55)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at read (/home/g/p/riddle/web/tests/ui-clarity.mjs:110:9)
+         at /home/g/p/riddle/web/tests/ui-clarity.mjs:121:26 {
+ok   death-actions   7.7s (7.4s)  1440 recorded boss tooltip PASS
+FAIL: 1/2 client gates in 7.7s

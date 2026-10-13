@@ -90,41 +90,6 @@
     filter: brightness(0.86);
   }
 
-  /* the iron plate and the carved console catch a slow sweep of torchlight */
-  html[data-juice="on"] .topbar::after,
-  html[data-juice="on"] .console::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-    mix-blend-mode: screen;
-    background: linear-gradient(
-        105deg,
-        transparent 42%,
-        rgba(228, 220, 199, 0.1) 49%,
-        rgba(248, 237, 210, 0.16) 50%,
-        rgba(228, 220, 199, 0.1) 51%,
-        transparent 58%
-      )
-      no-repeat;
-    background-size: 300% 100%;
-    background-position: 150% 0;
-    animation: j-sheen 11s ease-in-out infinite;
-  }
-  html[data-juice="on"] .console::after {
-    animation-delay: 5.5s;
-  }
-  @keyframes j-sheen {
-    0%,
-    84% {
-      background-position: 150% 0;
-    }
-    100% {
-      background-position: -50% 0;
-    }
-  }
-
   /* the primary gem breathes a warm rune glow while it waits */
   html[data-juice="on"] .gem.pulse:not(:disabled)::after {
     content: "";

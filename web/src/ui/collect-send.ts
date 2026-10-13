@@ -87,10 +87,10 @@ export function collectSend(app: App): { el: HTMLElement; dispose: () => void } 
     const label = collects
       ? live
         ? /* copy:button */ "collect & watch"
-        : /* copy:button */ "collect & send"
+        : /* copy:button */ "collect & delve"
       : live
         ? /* copy:button */ "watch"
-        : /* copy:button */ "send";
+        : /* copy:button */ "delve";
     const btn =
       total > 0
         ? twoTap(label, /* copy:button */ `ok $${total}`, () => void go(), {

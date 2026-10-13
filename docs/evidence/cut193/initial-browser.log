@@ -1,0 +1,12 @@
+client suite: targeted (2 selected; 127 current full; 169 exhaustive groups)
+ok   chronicle-unit-labels 5.6s (5.3s)  1440 historical ownership/old fallback/spacing/read-only open/kept-death id PASS
+FAIL ui-clarity      33.3s (32.9s)  Node.js v26.5.0
+           - element is not visible
+           - element is not visible
+            - element is not visible
+         '      - element is not visible',
+         '      - element is not visible',
+         '       - element is not visible',
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/ui-clarity.mjs:99:19 {
+FAIL: 1/2 client gates in 33.3s

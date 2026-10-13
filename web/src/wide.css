@@ -284,6 +284,11 @@
   main.camp .camp-main > .meters-slot {
     grid-area: meters;
     min-height: 0;
+    max-height: 100%;
+    contain: size;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    overflow-anchor: none;
     margin: 8px 0 0;
   }
   main.camp .camp-well > .vista {

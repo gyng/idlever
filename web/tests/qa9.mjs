@@ -5,7 +5,7 @@
 //   2  an owned card's chip reads `card: thief guard · owned`; its sheet carries the title and, once the row is dropped, `insert`
 //      puts the row back where a buy would (before the engagement row) and opens the camp on it
 //   3  the `+1 row` gate reads `⊘ fill rows` on the card and in its sheet (never `rows full`)
-//   4  the chronicle, ledger and forge sheets carry their one-word title; an empty chronicle shows nothing else (no lone `·`)
+//   4  the chronicle, ledger and forge sheets carry their one-word title; an empty chronicle explains its ended-heir scope and offers navigation
 //   5  settings: `lineage seed 7` (decimal)
 //   6  an empty vault slot is not a tap target
 //   7  the cond picker's `×` leads the sheet
@@ -161,9 +161,11 @@ try {
   let s = await sheet();
   check(
     /chronicle/i.test(s?.label ?? "") &&
-      !/·/.test(s.text.replace(/chronicle/gi, "")) &&
-      s.buttons.length === 0,
-    `an empty chronicle (the log's heirs) shows its label and nothing else: "${s?.text}"`,
+      /No records/.test(s.text) &&
+      /ended heirs/.test(s.text) &&
+      /Completed delves appear in Runs/.test(s.text) &&
+      s.buttons.length === 2,
+    `an empty chronicle explains its real scope and offers two navigation controls: "${s?.text}"`,
   );
   await page.keyboard.press("Escape");
   await sleep(150);

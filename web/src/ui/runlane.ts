@@ -198,7 +198,7 @@ function laneRow(
             beat,
             h("b", { class: "ls-w" }, /* copy:label */ "waits"),
             " ",
-            h("span", { class: "ls-go" }, /* copy:label */ "▸ send"),
+            h("span", { class: "ls-go" }, /* copy:label */ "▸ delve"),
           );
   // the gauge: hp while down there, the rest draining at home (full = just back), nothing while he waits
   const pct =

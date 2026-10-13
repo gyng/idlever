@@ -11,7 +11,7 @@ import { closeAllSheets, openWindow as openSheet } from "./sheet";
 import { makeViewer, type Viewer } from "./viewer";
 import { markRunsSeen, runsSeen } from "./runlane";
 import { kwHost } from "./tips";
-import { keptDeath } from "./chronicle";
+import { keptDeath, chronicleEmpty } from "./chronicle";
 import { clearCard } from "./runclear"; // run-clear: an entry's card
 import { bestRarity } from "./items";
 import { bossDown } from "./watch";
@@ -201,6 +201,7 @@ function heirLines(app: App, close: () => void): HTMLElement[] {
     h(
       "div",
       { class: "chronicle" },
+      ...(lines.length ? [] : [chronicleEmpty(app)]),
       ...lines.map((line) => {
         const id = keptDeath(L, line);
         if (id === undefined) return h("div", { class: "cline" }, line);

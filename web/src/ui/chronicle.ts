@@ -2,8 +2,6 @@
 // newest first, core text preserved beside historical identity art. A core without the field shows an empty sheet.
 // Cut 9 §7: a line whose heir's grave carries `death_id` (the core keeps the last 5 deaths' traces) is a button that opens
 // that death (trace + patches, `engine.death(id)`); every other line stays plain text.
-// QA on 952e306 ("chronicle empty: only '·'"; "old death screen, no back/close, Escape inert"): the sheet carries its label
-// and nothing else while empty; a kept death opens with `kept`, so Escape (and `edit`) lead back to the camp.
 import type { App } from "../app";
 import type { Lineage } from "../engine/types";
 import { h } from "./dom";
@@ -28,6 +26,53 @@ function heroLabel(
   return cls ? unitLabel(cls, text, { hero: true, px: 32 }) : text;
 }
 
+/** An empty archive describes its real scope and offers useful current navigation. */
+export function chronicleEmpty(app: App): HTMLElement {
+  const L = app.lineage;
+  const slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
+  const hero = slot?.hero_name || L.hero_legacy?.find((h) => h.heir === L.heir)?.name;
+  const identity = [slot?.name, hero].filter(Boolean).join(" · ");
+  return h(
+    "section",
+    { class: "chronicle-empty game-inset", "data-bloodline": L.selected_bloodline ?? 1 },
+    h("b", null, /* copy:label */ "No records"),
+    identity ? h("div", { class: "chronicle-identity" }, identity) : "",
+    h(
+      "p",
+      null,
+      /* copy:diary_line */ "This book records ended heirs.",
+      " ",
+      /* copy:diary_line */ "Completed delves appear in Runs.",
+    ),
+    h(
+      "div",
+      { class: "chips" },
+      h(
+        "button",
+        {
+          class: "btn",
+          onclick: () => {
+            closeAllSheets();
+            void import("./town").then(({ openHero }) => openHero(app));
+          },
+        },
+        /* copy:button */ "Current hero",
+      ),
+      h(
+        "button",
+        {
+          class: "btn",
+          onclick: () => {
+            closeAllSheets();
+            void import("./runs").then(({ openRuns }) => openRuns(app, { tab: "runs" }));
+          },
+        },
+        /* copy:button */ "Runs",
+      ),
+    ),
+  );
+}
+
 export function openChronicle(app: App): void {
   openSheet(() => {
     const L = app.lineage;
@@ -42,6 +87,7 @@ export function openChronicle(app: App): void {
       h(
         "div",
         { class: "chronicle" },
+        ...(lines.length ? [] : [chronicleEmpty(app)]),
         ...others.map((s) =>
           h(
             "section",

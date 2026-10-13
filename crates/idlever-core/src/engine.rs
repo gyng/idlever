@@ -3750,15 +3750,7 @@ impl Game {
             self.restock_at(false);
             return;
         }
-        let cat = self.supply_catalogue();
-        let (bought, kept): (Vec<Item>, Vec<Item>) = std::mem::take(&mut self.lineage.supplies).into_iter().partition(|s| !s.free && !s.found);
-        self.lineage.supplies = kept;
-        for s in bought {
-            if let Some(price) = refund_of(&s, &cat) {
-                let why = format!("refund {}", crate::item::kind_name(&s.kind));
-                self.lineage.gold_move_n(price, &why, 1);
-            }
-        }
+        self.lineage.supplies.retain(|s| s.free || s.found);
     }
 
     /// Cut 19 §3: what the repeat packs at the next send — the last send's kinds less the
@@ -3772,11 +3764,10 @@ impl Game {
     /// Cut 21 §2: only the kinds a row can use (`LineageState::row_kinds`); a found supply on
     /// the shelf is packed free and is not the repeat's — on an empty shelf of bought ones it
     /// stands in for one of the kind the re-pack would buy.
-    /// QA on 0c6e126: what the repeat pays for `kind` — its quote (`LineageState::repeat_quote`), never above the shelf's price
-    /// today; None when the shelf does not sell it.
+    /// Cut 191: an eligible repeat is free; historical quotes never charge or grant Gold.
+    /// None means the item is not unlocked.
     pub fn repeat_price(&self, kind: &str, cat: &[SupplyInfo]) -> Option<i32> {
-        let shelf = cat.iter().find(|e| e.kind == kind)?.price;
-        Some(self.lineage.repeat_quote.get(kind).map_or(shelf, |q| (*q).min(shelf)))
+        cat.iter().find(|e| e.kind == kind).map(|_| 0)
     }
 
     pub fn repeat_plan(&self) -> (Vec<String>, i32) {
@@ -6695,10 +6686,8 @@ impl Game {
     }
 
     pub fn supply_catalogue(&self) -> Vec<SupplyInfo> {
-        // QA on 912e135 (qaW: the kennel's free leash, dropped once, came back only at $30): while nothing is tamed the kennel's
-        // leash is free to take back off the shelf.
-        let kennel = self.lineage.kennel_declined && self.lineage.tamed_kinds() == 0;
-        let mut out = vec![SupplyInfo { kind: "leash".into(), price: if kennel { 0 } else { 30 }, label: "leash".into() }];
+        // Cut 191: eligibility is permanent; preparing an unlocked item never costs Gold.
+        let mut out = vec![SupplyInfo { kind: "leash".into(), price: 0, label: "leash".into() }];
         for d in crate::defs::ITEMS {
             let base = match d.cat {
                 Cat::Potion | Cat::Scroll => Some(supply_price(d.cat, self.lineage.best_depth)),
@@ -6707,11 +6696,11 @@ impl Game {
             let identified = crate::item::is_identified(&self.lineage.facts, &self.lineage.flavours, d.kind);
             let craftable = self.lineage.forge.get(d.kind).is_some_and(|f| f.craftable);
             // Cut 13 §3: the shop grows with the night — a potion or scroll the forge can craft
-            // is for sale at its base price whether or not the hero has drunk one (rater R:
-            // "$2131 after the night had almost nothing to buy"); it comes at the forge's tier.
+            // is available to prepare free whether or not the hero has used one; it comes
+            // at the forge's permanently unlocked tier.
             let price = match (base, craftable, identified) {
-                (Some(p), _, true) | (Some(p), true, _) => p,
-                (None, true, _) if d.cat != Cat::Gold && d.kind != "leash" => 2 * salvage_value(d.kind),
+                (Some(_), _, true) | (Some(_), true, _) => 0,
+                (None, true, _) if d.cat != Cat::Gold && d.kind != "leash" => 0,
                 _ => continue,
             };
             let label = match d.cat {
@@ -6733,20 +6722,12 @@ impl Game {
         self.buy_supply_priced(kind, why, None)
     }
 
-    /// `buy_supply_as` at `price` (a repeat's quote, never above the shelf's price today) when
-    /// given, else the shelf's.
-    pub fn buy_supply_priced(&mut self, kind: &str, why: &str, price: Option<i32>) -> Result<(), String> {
+    /// Prepare an eligible item. Historical quotes cannot impose a use fee or grant Gold.
+    pub fn buy_supply_priced(&mut self, kind: &str, _why: &str, _price: Option<i32>) -> Result<(), String> {
         if self.lineage.supplies.len() >= self.lineage.supply_cap() {
             return Err(format!("{} supplies max", self.lineage.supply_cap()));
         }
-        let mut entry = self.supply_catalogue().into_iter().find(|s| s.kind == kind).ok_or("not for sale")?;
-        if let Some(p) = price {
-            entry.price = entry.price.min(p);
-        }
-        if self.lineage.gold < entry.price {
-            return Err("not enough gold".into());
-        }
-        self.lineage.gold_move_n(-entry.price, why, 1);
+        self.supply_catalogue().into_iter().find(|s| s.kind == kind).ok_or("not unlocked")?;
         let id = self.lineage.next_vault_id;
         self.lineage.next_vault_id += 1;
         let mut it = Item::new(id, kind);
@@ -6763,10 +6744,10 @@ impl Game {
         if kind == "leash" {
             it.amount = 1;
             // (the kennel's leash taken back: free, as it was)
-            it.free = entry.price == 0 && self.lineage.kennel_declined;
+            it.free = self.lineage.kennel_declined && self.lineage.tamed_kinds() == 0;
             self.lineage.kennel_declined = false;
         }
-        it.paid = entry.price;
+        it.paid = 0;
         self.lineage.supplies.push(it);
         Ok(())
     }
@@ -6809,14 +6790,7 @@ impl Game {
         if s.free && s.kind == "leash" {
             self.lineage.kennel_declined = true;
         }
-        if s.found {
-            // Cut 21 §2: a found supply off the shelf is salvaged, as the exit would have.
-            self.salvage(std::slice::from_ref(&s), 100);
-        } else if !s.free {
-            if let Some(price) = refund_of(&s, &self.supply_catalogue()) {
-                let why = format!("refund {}", crate::item::kind_name(&s.kind));
-                self.lineage.gold_move_n(price, &why, 1);
-            }
+        if !s.free {
             let slot = self.lineage.last_supplies.iter().enumerate().find(|(i, k)| **k == s.kind && self.lineage.last_supply_origins.get(*i).is_some_and(|(kind, auto)| kind == *k && *auto == s.auto_packed)).map(|(i, _)| i)
                 .or_else(|| self.lineage.last_supplies.iter().position(|k| *k == s.kind));
             if let Some(k) = slot {
@@ -6828,20 +6802,7 @@ impl Game {
     }
 
     pub fn clear_supplies(&mut self) {
-        let cat = self.supply_catalogue();
-        for s in std::mem::take(&mut self.lineage.supplies) {
-            if s.free {
-                continue;
-            }
-            if s.found {
-                self.salvage(std::slice::from_ref(&s), 100);
-                continue;
-            }
-            if let Some(price) = refund_of(&s, &cat) {
-                let why = format!("refund {}", crate::item::kind_name(&s.kind));
-                self.lineage.gold_move_n(price, &why, 1);
-            }
-        }
+        self.lineage.supplies.clear();
         // Cut 4: clearing the shelf is an order; the automation does not undo it.
         self.lineage.last_supplies.clear();
         self.lineage.last_supply_origins.clear();
@@ -6865,10 +6826,8 @@ impl Game {
         self.restock_at(false)
     }
 
-    /// `restock` — at an exit (`quoted`) each kind at the price its send quoted
-    /// (`LineageState::repeat_quote`: the badge the camp showed; QA on 778fa1b), else at the
-    /// shelf's price today (the send's own re-pack, the camp's `set_restock(true)`).
-    pub fn restock_at(&mut self, quoted: bool) -> Vec<String> {
+    /// Cut 191: replenish eligible repeat slots free. Historical price quotes have no effect.
+    pub fn restock_at(&mut self, _quoted: bool) -> Vec<String> {
         let mut bought = Vec::new();
         // Cut 30 §1: the quartermaster packs a drill's item first (`throw fire` at the Mother, the
         // silence scroll at the Queen) — its slot is reserved before any other supply, the repeat on
@@ -6884,20 +6843,11 @@ impl Game {
             if !drill && self.lineage.supplies.iter().filter(|s| s.kind == *kind).count() >= want[qm.len()..].iter().filter(|k| *k == kind).count() {
                 continue;
             }
-            // (an absence's fill spends no more than the absence brought home, as the repeat)
-            if !drill && self.offline {
-                let price = self.supply_catalogue().iter().find(|e| e.kind == *kind).map(|e| e.price).unwrap_or(0);
-                if price > self.batch.income() - self.batch.spent_total() {
-                    self.batch.restock_capped = true;
-                    continue;
-                }
-            }
             if !drill && self.lineage.supplies.len() >= cap {
                 // A former package's unused automatic supplies must not crowd out the current
                 // stance's sustain. Player purchases and found supplies retain their places.
                 // Check the replacement can be bought before giving up an existing supply.
-                let Some(price) = self.supply_catalogue().iter().find(|e| e.kind == *kind).map(|e| e.price) else { continue };
-                if self.lineage.gold < price { continue; }
+                if !self.supply_catalogue().iter().any(|e| e.kind == *kind) { continue; }
                 let surplus = self.lineage.supplies.iter().rposition(|s| {
                     s.auto_packed && !s.free && !s.found
                         && self.lineage.supplies.iter().filter(|t| t.kind == s.kind).count()
@@ -6911,14 +6861,10 @@ impl Game {
                     self.lineage.supplies.remove(i);
                 }
             }
-            let gold = self.lineage.gold;
             let why = format!("{} {}", if drill { "drill" } else { "pack" }, kind.replace('_', " "));
             if self.buy_supply_as(kind, &why).is_ok() {
                 if let Some(item) = self.lineage.supplies.last_mut() { item.auto_packed = true; }
                 bought.push(kind.replace('_', " "));
-                let e = self.batch.spent.entry(kind.clone()).or_insert((0, 0));
-                e.0 += 1;
-                e.1 += gold - self.lineage.gold;
                 self.batch.drill_packs += drill as u32;
             }
         }
@@ -6929,7 +6875,6 @@ impl Game {
         let plan = current_repeat_plan(&self.lineage, plan);
         let on_shelf: Vec<(String, bool)> = self.lineage.supplies.iter().filter(|s| !s.free).map(|s| (s.kind.clone(), s.auto_packed)).collect();
         let supplied = supplied_slots(&plan, &on_shelf);
-        let mut short = Vec::new();
         // Cut 13 §3: a kind the last run used to no effect is not rebought (rater R: "the
         // strength potion the trait drinks at full HP is rebought sixteen times").
         let wasted = self.lineage.last_wasted.clone();
@@ -6946,35 +6891,12 @@ impl Game {
                 skip.remove(i);
                 continue;
             }
-            // (QA on 0c6e126: the send's own re-pack pays the quote too — the badge's `≤$N` is the most any re-pack charges)
-            let _ = quoted;
-            let quote = self.lineage.repeat_quote.get(&kind).copied();
-            if self.offline {
-                let price = quote.or_else(|| self.supply_catalogue().iter().find(|e| e.kind == kind).map(|e| e.price)).unwrap_or(0);
-                if price > self.batch.income() - self.batch.spent_total() {
-                    self.batch.restock_capped = true;
-                    continue;
-                }
-            }
-            let gold = self.lineage.gold;
-            match self.buy_supply_priced(&kind, &format!("repeat {}", kind.replace('_', " ")), quote) {
-                Ok(()) => {
-                    if let Some(item) = self.lineage.supplies.last_mut() { item.auto_packed = automatic; }
-                    bought.push(kind.replace('_', " "));
-                    let e = self.batch.spent.entry(kind.clone()).or_insert((0, 0));
-                    e.0 += 1;
-                    e.1 += gold - self.lineage.gold;
-                }
-                // QA on 1a2a4a9: short of gold — the rest is still bought, and it says so.
-                Err(e) if e == "not enough gold" => short.push(kind.clone()),
-                Err(_) => {}
+            if self.buy_supply_as(&kind, &format!("repeat {}", kind.replace('_', " "))).is_ok() {
+                if let Some(item) = self.lineage.supplies.last_mut() { item.auto_packed = automatic; }
+                bought.push(kind.replace('_', " "));
             }
         }
-        if !short.is_empty() {
-            self.lineage.gold_move(0, REPEAT_SHORT);
-            self.batch.repeat_short = true;
-        }
-        self.lineage.repeat_short = short;
+        self.lineage.repeat_short.clear();
         bought
     }
 }
@@ -7377,15 +7299,6 @@ pub fn supply_price(cat: Cat, best_depth: u32) -> i32 {
         Cat::Scroll => potion * 3 / 2,
         _ => potion,
     }
-}
-
-/// Cut 22 §1: a bought supply's refund — what was paid for it (`Item.paid`), else the shelf's
-/// price today (a save from before the price moved); None when the shelf does not sell it.
-fn refund_of(s: &Item, cat: &[SupplyInfo]) -> Option<i32> {
-    if s.paid > 0 {
-        return Some(s.paid);
-    }
-    cat.iter().find(|e| e.kind == s.kind).map(|e| e.price)
 }
 
 /// Insurance premium: 25% of salvage value ×10 (Melvor style).

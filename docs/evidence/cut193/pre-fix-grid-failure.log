@@ -1,0 +1,5 @@
+client suite: targeted (1 selected; 127 current full; 169 exhaustive groups)
+FAIL ui-clarity      6.5s (6.1s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: summary moved {"before":{"y":596,"scroll":0,"sceneHeight":646,"sceneY":82,"focused":true},"after":{"y":508.484375,"scroll":0,"sceneHeight":558.484375,"sceneY":82,"focused":true}}
+         at file:///home/g/p/riddle/web/tests/ui-clarity.mjs:132:12 {
+FAIL: 0/1 client gates in 6.5s

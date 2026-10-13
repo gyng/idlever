@@ -129,11 +129,10 @@ fn the_same_camp_reads_the_same_advice() {
     assert_eq!(f1, f2);
 }
 
-/// §4 (blind 8cf9050 B: `Supplies limited · $0 budget` after the apprentice's `−$6750`): a limited repeat says
-/// why on the report (`supply_budget`) and on the apprentice's line (`WorkerAct.reason`).
+/// Cut 191 supersedes the per-run supply budget: unlocked loadouts never compete
+/// with paid permanent forge upgrades for an absence's income.
 #[test]
-fn a_limited_supply_budget_names_its_reason() {
-    let mut seen = 0;
+fn free_loadouts_report_no_supply_budget_even_after_forge_spending() {
     for seed in [29u64, 3, 7, 11] {
         let mut g = Game::new_resident(seed);
         crate::tree::grant(&mut g.lineage, &["scout", "porter", "apprentice"]);
@@ -141,23 +140,13 @@ fn a_limited_supply_budget_names_its_reason() {
         g.lineage.best_depth = 12;
         g.lineage.gold_move(40_000, "test income");
         let r = crate::offline::run_offline(&mut g, 8 * 3600);
-        let Some(b) = r.supply_budget.as_ref() else {
-            assert!(!r.restock_capped && !r.repeat_short);
-            continue;
-        };
-        seen += 1;
-        assert!(["no_income", "income_spent", "purse_short"].contains(&b.reason.as_str()), "{b:?}");
-        assert_eq!(b.left, (b.income - b.spent).max(0));
-        if b.reason == "no_income" {
-            assert!(b.income <= 0);
-        }
-        if let Some(a) = r.workers.iter().find(|w| w.id == "apprentice") {
-            assert_eq!(a.reason.as_deref(), Some(b.reason.as_str()), "the apprentice's line says why");
-        }
+        assert!(r.runs > 0);
+        assert!(r.supply_budget.is_none(), "free preparation has no income budget: {:?}", r.supply_budget);
+        assert!(!r.restock_capped && !r.repeat_short);
+        assert!(r.workers.iter().all(|w| w.reason.is_none()), "no worker implies paid-loadout starvation");
     }
-    // an absence that brought nothing home: the repeat is capped at $0 and the report says `no_income`
     let mut g = Game::load(include_str!("fixtures/save_307dbed.json")).unwrap();
-    g.lineage.gold_move(5_000, "test income");
+    g.lineage.gold = 0;
     g.lineage.last_supplies = vec!["heal".into(); 3];
     g.lineage.last_supply_origins = Vec::new();
     g.lineage.supplies.clear();
@@ -166,26 +155,18 @@ fn a_limited_supply_budget_names_its_reason() {
     g.lineage.theft_skip.clear();
     g.offline = true;
     g.batch = Default::default();
-    let bought = g.restock();
-    assert!(bought.is_empty(), "nothing came home: nothing bought ({bought:?})");
-    if g.batch.restock_capped {
-        let facts = g.lineage.facts.clone();
-        let class = g.lineage.class.name().to_string();
-        let rank = g.lineage.rank;
-        let r = crate::offline::report_with(&mut g, 3600, &facts, &class, rank, false, true, false);
-        let b = r.supply_budget.expect("a capped repeat reports its budget");
-        assert_eq!((b.income, b.reason.as_str()), (0, "no_income"), "{b:?}");
-        seen += 1;
-    }
-    assert!(seen > 0, "a limited repeat was met");
-    // a report with no limit names none; the reason rides on the apprentice's line only
-    let mut r = crate::wire::ReturnReport { workers: vec![crate::tree::WorkerAct { id: "apprentice".into(), ..Default::default() }, crate::tree::WorkerAct { id: "porter".into(), ..Default::default() }], ..Default::default() };
-    crate::offline::supply_reason(&mut r);
+    let prepared = g.restock();
+    assert_eq!(prepared, ["heal", "heal", "heal"]);
+    assert_eq!(g.lineage.supplies.len(), 3);
+    assert_eq!(g.lineage.gold, 0);
+    assert!(g.batch.spent.is_empty());
+    assert!(!g.batch.restock_capped && !g.batch.repeat_short);
+    let facts = g.lineage.facts.clone();
+    let class = g.lineage.class.name().to_string();
+    let rank = g.lineage.rank;
+    let r = crate::offline::report_with(&mut g, 3600, &facts, &class, rank, false, true, false);
+    assert!(r.supply_budget.is_none());
     assert!(r.workers.iter().all(|w| w.reason.is_none()));
-    r.supply_budget = Some(crate::wire::SupplyBudget { income: 0, spent: 0, left: 0, reason: "no_income".into() });
-    crate::offline::supply_reason(&mut r);
-    assert_eq!(r.workers[0].reason.as_deref(), Some("no_income"));
-    assert!(r.workers[1].reason.is_none());
 }
 
 /// §2 (client QA: the King's `TRY` alternated — cadence into the last slot, then boss focus over it, then cadence

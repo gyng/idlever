@@ -1,0 +1,222 @@
+
+running 835 tests
+....................................................................................... 87/835
+....................................................................................... 174/835
+......... 183/835
+tests::a_bought_leash_comes_home_from_a_return --- FAILED
+................................. 217/835
+tests::a_repeat_line_counts_what_it_bought --- FAILED
+............... 233/835
+tests::a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid --- FAILED
+...................... 256/835
+tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home --- FAILED
+....................i................................ 310/835
+tests::drop_supply_takes_one_line_and_refunds_a_bought_one --- FAILED
+........ 319/835
+tests::exit_event_stake_and_report_carry_the_ledger --- FAILED
+......................... 345/835
+tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds --- FAILED
+. 347/835
+tests::a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all --- FAILED
+.................................................. 398/835
+tests::ledger_line_reconciles_on_every_exit --- FAILED
+.......... 409/835
+tests::offline_restock_never_spends_more_than_the_night_brought --- FAILED
+........................... 437/835
+tests::salvage_feeds_the_forge_and_tiers_apply --- FAILED
+.................... 458/835
+tests::supplies_are_bought_with_gold_and_never_kept_back --- FAILED
+........................... 486/835
+tests::the_kennel_leash_comes_back_free --- FAILED
+... 490/835
+tests::the_loadout_repeats_unless_cleared --- FAILED
+tests::the_repeat_badge_is_the_repack_price --- FAILED
+. 493/835
+tests::the_repeat_remembers_a_kind_it_could_not_pay_for --- FAILED
+tests::the_repeat_says_what_the_send_will_and_will_not_pack --- FAILED
+. 496/835
+tests::the_stake_names_the_death_keep_and_a_death_repeat_is_a_line --- FAILED
+..................................iii........................i 559/835
+tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought --- FAILED
+i...................................................................................... 647/835
+......................................................................... 720/835
+tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items --- FAILED
+tests_cut30_pkg::automatic_pack_reports_away_budget_limit_without_changing_purchases --- FAILED
+.............. 736/835
+tests_cut30_pkg::lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged --- FAILED
+............................. 766/835
+tests_cut30_pkg::shared_counter_surplus_replacement_respects_budget_and_protected_supplies --- FAILED
+................ 783/835
+tests_cut117::a_limited_supply_budget_names_its_reason --- FAILED
+...................................................
+failures:
+
+---- tests::a_bought_leash_comes_home_from_a_return stdout ----
+
+thread 'tests::a_bought_leash_comes_home_from_a_return' (1652017) panicked at crates/idlever-core/src/tests.rs:11169:5:
+the bought leash is back on the shelf: [(false, 0), (true, 0)]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::a_repeat_line_counts_what_it_bought stdout ----
+
+thread 'tests::a_repeat_line_counts_what_it_bought' (1655005) panicked at crates/idlever-core/src/tests.rs:10187:47:
+called `Option::unwrap()` on a `None` value
+
+---- tests::a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid stdout ----
+
+thread 'tests::a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid' (1656659) panicked at crates/idlever-core/src/tests.rs:9882:5:
+assertion `left == right` failed
+  left: 0
+ right: 20
+
+---- tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home stdout ----
+
+thread 'tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home' (1658490) panicked at crates/idlever-core/src/tests.rs:4085:5:
+assertion failed: price > 0
+
+---- tests::drop_supply_takes_one_line_and_refunds_a_bought_one stdout ----
+
+thread 'tests::drop_supply_takes_one_line_and_refunds_a_bought_one' (1660633) panicked at crates/idlever-core/src/tests.rs:7134:5:
+[]
+
+---- tests::exit_event_stake_and_report_carry_the_ledger stdout ----
+
+thread 'tests::exit_event_stake_and_report_carry_the_ledger' (1661422) panicked at crates/idlever-core/src/tests.rs:4784:5:
+assertion `left == right` failed
+  left: Some((240, "returned D1"))
+ right: Some((-12, "heal"))
+
+---- tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds stdout ----
+
+thread 'tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds' (1665063) panicked at crates/idlever-core/src/tests.rs:9354:5:
+assertion `left == right` failed
+  left: Some((1, 0))
+ right: Some((1, 12))
+
+---- tests::a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all stdout ----
+
+thread 'tests::a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all' (1654313) panicked at crates/idlever-core/src/tests.rs:10917:5:
+an unaffordable item's patch is not offered
+
+---- tests::ledger_line_reconciles_on_every_exit stdout ----
+
+thread 'tests::ledger_line_reconciles_on_every_exit' (1666322) panicked at crates/idlever-core/src/tests.rs:4743:5:
+no seed spent on the way home
+
+---- tests::offline_restock_never_spends_more_than_the_night_brought stdout ----
+
+thread 'tests::offline_restock_never_spends_more_than_the_night_brought' (1667421) panicked at crates/idlever-core/src/tests.rs:8710:5:
+the expensive preset must exhaust the night's restock budget
+
+---- tests::salvage_feeds_the_forge_and_tiers_apply stdout ----
+
+thread 'tests::salvage_feeds_the_forge_and_tiers_apply' (1673955) panicked at crates/idlever-core/src/tests.rs:2240:5:
+assertion failed: a.supply_catalogue().iter().any(|s| s.kind == "sword" && s.price == 50)
+
+---- tests::supplies_are_bought_with_gold_and_never_kept_back stdout ----
+
+thread 'tests::supplies_are_bought_with_gold_and_never_kept_back' (1675189) panicked at crates/idlever-core/src/tests.rs:2124:5:
+assertion failed: g.buy_supply("leash").is_err()
+
+---- tests::the_kennel_leash_comes_back_free stdout ----
+
+thread 'tests::the_kennel_leash_comes_back_free' (1676416) panicked at crates/idlever-core/src/tests.rs:10562:5:
+assertion `left == right` failed
+  left: Some(0)
+ right: Some(30)
+
+---- tests::the_loadout_repeats_unless_cleared stdout ----
+
+thread 'tests::the_loadout_repeats_unless_cleared' (1676675) panicked at crates/idlever-core/src/tests.rs:8596:5:
+[GoldLine { bloodline_id: 1, t: 0, delta: 0, why: "banked D1", n: 0, lost: 0 }]
+
+---- tests::the_repeat_badge_is_the_repack_price stdout ----
+
+thread 'tests::the_repeat_badge_is_the_repack_price' (1676679) panicked at crates/idlever-core/src/tests.rs:8680:5:
+assertion `left == right` failed: the heal it could pay for
+  left: ["mapping", "heal"]
+ right: ["heal"]
+
+---- tests::the_repeat_remembers_a_kind_it_could_not_pay_for stdout ----
+
+thread 'tests::the_repeat_remembers_a_kind_it_could_not_pay_for' (1676704) panicked at crates/idlever-core/src/tests.rs:9678:5:
+nothing to pay with
+
+---- tests::the_repeat_says_what_the_send_will_and_will_not_pack stdout ----
+
+thread 'tests::the_repeat_says_what_the_send_will_and_will_not_pack' (1676705) panicked at crates/idlever-core/src/tests.rs:10072:5:
+assertion failed: l.repeat_gold > 0
+
+---- tests::the_stake_names_the_death_keep_and_a_death_repeat_is_a_line stdout ----
+
+thread 'tests::the_stake_names_the_death_keep_and_a_death_repeat_is_a_line' (1676724) panicked at crates/idlever-core/src/tests.rs:8957:5:
+[GoldLine { bloodline_id: 1, t: 0, delta: 0, why: "died D1", n: 0, lost: 0 }]
+
+---- tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought stdout ----
+
+thread 'tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought' (1676677) panicked at crates/idlever-core/src/tests.rs:7351:5:
+assertion `left == right` failed
+  left: None
+ right: Some((1, 12))
+
+---- tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items stdout ----
+
+thread 'tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items' (1694196) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:491:9:
+assertion `left == right` failed: unaffordable replacement discards nothing
+  left: [Item { id: 100001, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100004, kind: "heal", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100005, kind: "heal", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }]
+ right: [Item { id: 100001, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100002, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100003, kind: "silence", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }]
+
+---- tests_cut30_pkg::automatic_pack_reports_away_budget_limit_without_changing_purchases stdout ----
+
+thread 'tests_cut30_pkg::automatic_pack_reports_away_budget_limit_without_changing_purchases' (1694191) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1346:5:
+assertion failed: g.restock().is_empty()
+
+---- tests_cut30_pkg::lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged stdout ----
+
+thread 'tests_cut30_pkg::lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged' (1694879) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:856:9:
+assertion `left == right` failed
+  left: 0
+ right: -2
+
+---- tests_cut30_pkg::shared_counter_surplus_replacement_respects_budget_and_protected_supplies stdout ----
+
+thread 'tests_cut30_pkg::shared_counter_surplus_replacement_respects_budget_and_protected_supplies' (1696235) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:797:18:
+assertion `left == right` failed: no absence income authorizes no replacement
+  left: [Item { id: 100001, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100004, kind: "heal", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100005, kind: "heal", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }]
+ right: [Item { id: 100001, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100002, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }, Item { id: 100003, kind: "fire", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: true, enchanted: 0, firearm: None, forged: None }]
+
+---- tests_cut117::a_limited_supply_budget_names_its_reason stdout ----
+
+thread 'tests_cut117::a_limited_supply_budget_names_its_reason' (1681473) panicked at crates/idlever-core/src/tests_cut117.rs:170:5:
+nothing came home: nothing bought (["heal", "heal", "heal"])
+
+
+failures:
+    tests::a_bought_leash_comes_home_from_a_return
+    tests::a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all
+    tests::a_repeat_line_counts_what_it_bought
+    tests::a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid
+    tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home
+    tests::drop_supply_takes_one_line_and_refunds_a_bought_one
+    tests::exit_event_stake_and_report_carry_the_ledger
+    tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds
+    tests::ledger_line_reconciles_on_every_exit
+    tests::offline_restock_never_spends_more_than_the_night_brought
+    tests::salvage_feeds_the_forge_and_tiers_apply
+    tests::supplies_are_bought_with_gold_and_never_kept_back
+    tests::the_kennel_leash_comes_back_free
+    tests::the_loadout_repeats_unless_cleared
+    tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought
+    tests::the_repeat_badge_is_the_repack_price
+    tests::the_repeat_remembers_a_kind_it_could_not_pay_for
+    tests::the_repeat_says_what_the_send_will_and_will_not_pack
+    tests::the_stake_names_the_death_keep_and_a_death_repeat_is_a_line
+    tests_cut117::a_limited_supply_budget_names_its_reason
+    tests_cut30_pkg::automatic_pack_reports_away_budget_limit_without_changing_purchases
+    tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items
+    tests_cut30_pkg::lifecycle_pack_caps_leave_literal_custom_and_unknown_origin_quotes_unchanged
+    tests_cut30_pkg::shared_counter_surplus_replacement_respects_budget_and_protected_supplies
+
+test result: FAILED. 805 passed; 24 failed; 6 ignored; 0 measured; 0 filtered out; finished in 58.03s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

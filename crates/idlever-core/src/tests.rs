@@ -2118,30 +2118,36 @@ fn counters_scale_damage_and_are_learned() {
 // ---------------------------------------------------------------- gold and supplies (Addendum B)
 
 #[test]
-fn supplies_are_bought_with_gold_and_never_kept_back() {
+fn unlocked_supplies_are_free_at_zero_gold_and_never_kept_back() {
     let mut g = Game::new_literal(1);
     no_kennel_leash(&mut g);
-    assert!(g.buy_supply("leash").is_err());
-    g.lineage.gold = 100;
+    assert_eq!(g.lineage.gold, 0);
+    assert!(g.buy_supply("heal").is_err(), "unidentified even at zero gold");
+    g.lineage.gold = 0;
     assert!(g.buy_supply("heal").is_err(), "unidentified");
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
     let cat = g.supply_catalogue();
-    // Cut 22 §1: `$10 + 2 × best depth` (a new lineage: $10), a scroll 1.5×.
-    assert!(cat.iter().any(|s| s.kind == "heal" && s.price == 10));
+    // Owner rule: unlocked catalogue copies cost zero at every depth.
+    // The separate historical valuation helper remains useful for recovered-item accounting.
+    assert!(cat.iter().any(|s| s.kind == "heal" && s.price == 0));
     g.lineage.best_depth = 8;
-    assert!(g.supply_catalogue().iter().any(|s| s.kind == "heal" && s.price == 26));
+    assert!(g.supply_catalogue().iter().any(|s| s.kind == "heal" && s.price == 0));
     assert_eq!(crate::engine::supply_price(crate::defs::Cat::Scroll, 20), 39, "a deep lineage pays the cap (potion $26, scroll 1.5×)");
     g.lineage.best_depth = 0;
     g.buy_supply("heal").unwrap();
     g.buy_supply("leash").unwrap();
-    assert_eq!(g.lineage.gold, 60);
+    assert_eq!(g.lineage.gold, 0, "unlocked supplies cost nothing");
+    assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
+    assert!(g.lineage.gold_ledger.is_empty(), "preparing emits no currency movement");
     assert_eq!(g.lineage().supplies.len(), 2);
     g.buy_supply("leash").unwrap();
     assert!(g.buy_supply("leash").unwrap_err().contains("max"));
     g.clear_supplies();
-    assert_eq!(g.lineage.gold, 100);
-    g.lineage.gold = 40;
-    assert!(g.buy_supply("heal").is_ok() && g.buy_supply("heal").is_ok() && g.buy_supply("leash").unwrap_err().contains("gold"));
+    assert_eq!(g.lineage.gold, 0, "clearing cannot mint refunds");
+    g.lineage.gold = 0;
+    assert!(g.buy_supply("heal").is_ok() && g.buy_supply("heal").is_ok() && g.buy_supply("leash").is_ok());
+    assert!(g.buy_supply("leash").unwrap_err().contains("max"), "slots still bound a free kit");
+    assert_eq!(g.lineage.gold, 0);
     g.clear_supplies();
     g.buy_supply("heal").unwrap();
     g.start_run(None);
@@ -2237,7 +2243,7 @@ fn salvage_feeds_the_forge_and_tiers_apply() {
     let cat = a.supply_catalogue();
     assert!(!cat.iter().any(|s| s.kind == "sword"));
     a.lineage.forge.insert("sword".into(), ForgeRow::at(6));
-    assert!(a.supply_catalogue().iter().any(|s| s.kind == "sword" && s.price == 50));
+    assert!(a.supply_catalogue().iter().any(|s| s.kind == "sword" && s.price == 0));
 }
 
 #[test]
@@ -4082,7 +4088,8 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
     g.buy_supply("heal").unwrap();
     g.buy_supply("heal").unwrap();
     let price = 1000 - g.lineage.gold;
-    assert!(price > 0);
+    assert_eq!(price, 0, "preparation is free");
+    assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
     g.start_run(None);
     assert!(g.lineage.supplies.is_empty(), "the shelf went into the pack");
     assert_eq!(g.run.as_ref().unwrap().supplies.len(), 2);
@@ -4099,8 +4106,8 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
     // Cut 22 §1: priced by depth. QA on 778fa1b (qaU: `repeat on · $20`, then `−$26` at the
     // return): at the price the send quoted — the camp's badge — whatever the bank did to it.
     let repeat: i32 = g.lineage.gold_ledger.iter().filter(|l| l.why == "repeat heal").map(|l| -l.delta).sum();
-    assert_eq!(repeat, price, "paid from gold at the send's price (was {price} for two)");
-    assert!(g.supply_catalogue().iter().find(|e| e.kind == "heal").unwrap().price > price / 2, "the bank moved the shelf's price");
+    assert_eq!(repeat, price, "preparation and repeated usage both cost zero");
+    assert_eq!(g.supply_catalogue().iter().find(|e| e.kind == "heal").unwrap().price, 0, "depth never adds a reuse charge");
     g.keep(vec![]).unwrap();
     assert_eq!(g.lineage.supplies.len(), 2, "no double restock after the vault decision");
     g.start_run(None);
@@ -4117,7 +4124,7 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
     g.clear_supplies();
     g.start_run(None);
     assert!(g.run.as_ref().unwrap().supplies.is_empty(), "cleared stays cleared");
-    // Without the gold, nothing is bought and nothing breaks (a return: no wake pay arrives).
+    // A zero-gold return still restores an unlocked heal without wake pay.
     let mut g = Game::new_literal(6);
     g.lineage.unlocks.insert("auto_supply".into());
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
@@ -4132,7 +4139,8 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
         crate::turn::end_run(run, &mut cx, ExitTier::Return);
     }
     g.finish_run();
-    assert!(g.lineage.supplies.iter().all(|s| s.free), "nothing bought; only the kennel's leash");
+    assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && s.paid == 0), "zero-gold return restores the used kit");
+    assert_eq!(g.lineage.gold, 0, "restock neither charges nor grants gold");
     // After a death the wake pay covers one potion, so the restock does happen (cohort 5, rater J).
     let mut g = Game::new_literal(6);
     g.lineage.unlocks.insert("auto_supply".into());
@@ -4647,7 +4655,7 @@ fn ledger_line_reconciles_on_every_exit() {
         if seed % 2 == 0 {
             g.set_rules_raw(crate::probes::good()).unwrap();
         }
-        // Half the seeds own the automations, so `spent` is exercised.
+        // The automated cohorts exercise repeated usage alongside exact exit accounting.
         if seed % 3 == 0 {
             g.lineage.unlocks.insert("auto_supply".into());
             g.lineage.gold_move(200, "gift");
@@ -4740,7 +4748,7 @@ fn ledger_line_reconciles_on_every_exit() {
     let (exits, deaths): (u32, u32) = per.iter().fold((0, 0), |a, p| (a.0 + p.0, a.1 + p.1));
     let spent_any = per.iter().any(|p| p.2);
     assert!(exits >= 150 && deaths >= 20, "{exits} exits, {deaths} deaths");
-    assert!(spent_any, "no seed spent on the way home");
+    assert!(!spent_any, "free repeat must never create exit spending on any seed");
 }
 
 /// §1: the exit event carries the settled line; the HUD stake shows what the return row
@@ -4779,11 +4787,12 @@ fn exit_event_stake_and_report_carry_the_ledger() {
     // Purchases, insurance, a refund and a hatch are ledger lines with ≤ 3-word reasons.
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
     let before = g.lineage.gold;
-    let p = crate::engine::supply_price(crate::defs::Cat::Potion, g.lineage.best_depth);
+    let ledger_before = g.lineage.gold_ledger.clone();
     g.buy_supply("heal").unwrap();
-    assert_eq!(g.lineage.gold_ledger.last().map(|l| (l.delta, l.why.as_str())), Some((-p, "heal")));
+    assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && s.paid == 0));
+    assert_eq!(g.lineage.gold_ledger, ledger_before, "free preparation has no spend line");
     g.clear_supplies();
-    assert_eq!(g.lineage.gold_ledger.last().map(|l| (l.delta, l.why.as_str())), Some((p, "refund heal")));
+    assert_eq!(g.lineage.gold_ledger, ledger_before, "clearing cannot mint a refund");
     assert_eq!(g.lineage.gold, before);
     g.lineage.vault.push(Item::new(100_001, "sword"));
     g.lineage.gold_move(500, "gift");
@@ -7114,7 +7123,7 @@ fn forecast_ends_name_how_a_send_ends() {
 /// mistaken for it (QA on 952e306: "−$40 heal · +$40 refund heal · −$40 heal" from the client's
 /// clear-and-rebuy fallback, "bought one labelled found").
 #[test]
-fn drop_supply_takes_one_line_and_refunds_a_bought_one() {
+fn drop_supply_takes_one_line_without_refunding_a_free_preparation() {
     let mut g = Game::new_literal(5);
     g.lineage.gold = 200;
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
@@ -7131,7 +7140,8 @@ fn drop_supply_takes_one_line_and_refunds_a_bought_one() {
     g.drop_supply(heal_id).unwrap();
     assert_eq!(g.lineage.gold, gold + heal, "the heal is refunded");
     assert_eq!(g.lineage.supplies.len(), 2, "the two leashes stay");
-    assert!(g.lineage.gold_ledger.iter().any(|e| e.why == "refund heal"), "{:?}", g.lineage.gold_ledger);
+    assert!(g.lineage.gold_ledger.is_empty(), "free preparation/drop has no spend or refund movements");
+    assert_eq!(heal, 0);
     let kennel_id = g.lineage.supplies.iter().find(|s| s.free).unwrap().id;
     g.drop_supply(kennel_id).unwrap();
     assert_eq!(g.lineage.gold, gold + heal, "the kennel's leash refunds nothing");
@@ -7348,13 +7358,14 @@ fn the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought() {
     g.finish_run();
     let kinds: Vec<&str> = g.lineage.supplies.iter().map(|s| s.kind.as_str()).collect();
     assert_eq!(kinds, vec!["strength"], "the wasted heal is not rebought");
-    assert_eq!(g.batch.spent.get("strength"), Some(&(1, crate::engine::supply_price(crate::defs::Cat::Potion, g.lineage.best_depth))));
+    assert_eq!(g.batch.spent.get("strength"), None, "free replacement is not spending");
+    assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
     // The shop grows with the forge: a craftable potion is for sale before the hero drank one.
     let mut g = Game::new_literal(5);
     assert!(!g.supply_catalogue().iter().any(|s| s.kind == "strength"));
     g.lineage.forge.insert("strength".into(), ForgeRow::at(5));
     let entry = g.supply_catalogue().into_iter().find(|s| s.kind == "strength").expect("craftable strength on the shelf");
-    assert_eq!((entry.price, entry.label.as_str()), (10, "strength potion"), "a new lineage's price (Cut 22 §1)");
+    assert_eq!((entry.price, entry.label.as_str()), (0, "strength potion"), "unlocked craftable preparation is free");
 }
 
 /// Cut 13 §5 (both raters: "±10 between re-rolls", "pack break +7 % then −14 %"): a catalogue
@@ -8581,7 +8592,7 @@ fn the_loadout_repeats_unless_cleared() {
     identify(&mut g, "heal");
     g.lineage.gold = 1000;
     g.lineage.best_depth = 5;
-    let p = crate::engine::supply_price(crate::defs::Cat::Potion, 5);
+    let p = 0;
     g.buy_supply("heal").unwrap();
     g.buy_supply("heal").unwrap();
     assert!(g.lineage().repeat);
@@ -8593,7 +8604,8 @@ fn the_loadout_repeats_unless_cleared() {
     }
     g.finish_run();
     assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 2, "re-packed at the send's return");
-    assert!(g.lineage.gold_ledger.iter().any(|l| l.why == "repeat heal" && l.delta == -2 * p), "{:?}", g.lineage.gold_ledger.iter().rev().take(3).collect::<Vec<_>>());
+    assert!(g.lineage.gold_ledger.iter().all(|l| !l.why.starts_with("repeat ")), "free repeated kit has no spend line");
+    assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
     let l = g.lineage();
     assert_eq!((l.repeat_kinds.clone(), l.repeat_gold), (vec!["heal".to_string(), "heal".to_string()], 2 * p));
     let gold = g.lineage.gold;
@@ -8625,7 +8637,7 @@ fn the_loadout_repeats_unless_cleared() {
 /// nothing said so): the badge's price is what the re-pack charges, and a re-pack short of gold
 /// buys what it can and says `repeat short`.
 #[test]
-fn the_repeat_badge_is_the_repack_price() {
+fn the_repeat_badge_and_zero_gold_repack_are_free() {
     let mut g = Game::new_literal(5);
     no_kennel_leash(&mut g);
     identify(&mut g, "heal");
@@ -8668,37 +8680,42 @@ fn the_repeat_badge_is_the_repack_price() {
     let mut kinds: Vec<&str> = g.lineage.supplies.iter().filter(|s| !s.free).map(|s| s.kind.as_str()).collect();
     kinds.sort();
     assert_eq!(kinds, ["heal", "mapping"]);
-    // Short of gold: what it can, and a `repeat short` line.
-    let refund: Vec<u32> = g.lineage.supplies.iter().filter(|s| !s.free).map(|s| s.id).collect();
-    for id in refund {
-        g.drop_supply(id).unwrap();
-    }
+    // Zero gold still prepares every unlocked kind; no shortfall or refund churn.
+    let ids: Vec<u32> = g.lineage.supplies.iter().filter(|s| !s.free).map(|s| s.id).collect();
+    for id in ids { g.drop_supply(id).unwrap(); }
     g.lineage.last_supplies = vec!["mapping".into(), "heal".into()];
-    let gold = g.lineage.gold;
-    g.lineage.gold_move(price(&g, "heal") + 1 - gold, "test");
+    g.lineage.gold = 0;
+    let ledger = g.lineage.gold_ledger.clone();
     g.restock();
-    assert_eq!(g.lineage.supplies.iter().filter(|s| !s.free).map(|s| s.kind.as_str()).collect::<Vec<_>>(), ["heal"], "the heal it could pay for");
-    assert_eq!(g.lineage.repeat_short, ["mapping"]);
-    assert_eq!(g.lineage().repeat_short, ["mapping"]);
-    assert!(g.lineage.gold_ledger.iter().any(|l| l.why == "repeat short" && l.delta == 0), "{:?}", g.lineage.gold_ledger.iter().rev().take(3).collect::<Vec<_>>());
+    let kinds: Vec<&str> = g.lineage.supplies.iter().filter(|s| !s.free).map(|s| s.kind.as_str()).collect();
+    assert_eq!(kinds, ["mapping", "heal"]);
+    assert!(g.lineage.repeat_short.is_empty() && g.lineage().repeat_unpaid.is_empty());
+    assert_eq!(g.lineage().repeat_gold, 0);
+    assert_eq!(g.lineage.gold, 0);
+    assert_eq!(g.lineage.gold_ledger, ledger);
+
 }
 
 /// Cut 19 §3: an absence's repeat never spends more than the absence brought home.
 #[test]
-fn offline_restock_never_spends_more_than_the_night_brought() {
+fn offline_restock_is_free_at_zero_gold_and_deep_records() {
     let run = |seed, record| {
         let mut g = Game::new_literal(seed);
         no_kennel_leash(&mut g);
         g.lineage.best_depth = record;
         identify(&mut g, "heal");
-        g.lineage.gold = 100_000;
+        g.lineage.gold = 0;
         g.lineage.unlocks.insert("supply_cap_5".into());
         for _ in 0..5 {
             g.buy_supply("heal").unwrap();
         }
         let r = crate::offline::run_offline_quick(&mut g, 4 * 3600);
         let gold = r.gold.clone().unwrap();
-        (r.restock_capped, gold.spent <= gold.home + gold.salvage + gold.wake)
+        {
+            assert_eq!(gold.spent, 0, "offline kit reuse is free at seed {seed}, record {record}");
+            assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
+            (r.restock_capped, gold.spent <= gold.home + gold.salvage + gold.wake)
+        }
     };
     let ok = par_seeds(1..=6u64, |seed| run(seed, 0)).into_iter().all(|(_, within_income)| within_income);
     assert!(ok, "spent more than the night brought home");
@@ -8707,7 +8724,7 @@ fn offline_restock_never_spends_more_than_the_night_brought() {
     // early death among six default seeds after every content retune.
     let (expensive_capped, within_income) = run(1, 33);
     assert!(within_income, "expensive restock spent more than the night brought home");
-    assert!(expensive_capped, "the expensive preset must exhaust the night's restock budget");
+    assert!(!expensive_capped, "depth does not impose an away restock budget on free kits");
 }
 
 /// Cut 19 §1: the cage preferences measured for the set — one per preference, the current one
@@ -8929,7 +8946,7 @@ fn a_wounded_pet_falls_back_and_heals_on_the_stairs() {
 /// Cut 20 §4: the stake names what a death keeps (the death tier's share) beside the exit
 /// row's keep; a repeat re-pack charged at a death's exit is a `repeat` ledger line.
 #[test]
-fn the_stake_names_the_death_keep_and_a_death_repeat_is_a_line() {
+fn the_stake_names_the_death_keep_and_free_death_replacement() {
     let mut g = Game::new_literal(4);
     g.start_run(Some(4));
     g.run.as_mut().unwrap().loot_add_gold(78);
@@ -8938,7 +8955,7 @@ fn the_stake_names_the_death_keep_and_a_death_repeat_is_a_line() {
     assert_eq!(st.death_keep, 78 * ExitTier::Death.pct() / 100);
     let v = serde_json::to_value(&st).unwrap();
     assert!(v.get("death_keep").is_some());
-    // A death with a repeat to pay: the ledger line and the death record's `spent`.
+    // A death restores the unlocked loadout without repeat spending.
     let mut g = Game::new_literal(4);
     g.lineage.gold = 500;
     if let Some(f) = ident_fact(&g.lineage.flavours, "heal") {
@@ -8954,7 +8971,8 @@ fn the_stake_names_the_death_keep_and_a_death_repeat_is_a_line() {
     g.finish_run();
     let t = g.lineage.total_turns;
     let repeat: Vec<&GoldLine> = g.lineage.gold_ledger.iter().filter(|x| x.t == t && x.why.starts_with("repeat")).collect();
-    assert!(!repeat.is_empty(), "{:?}", g.lineage.gold_ledger);
+    assert!(repeat.is_empty(), "free death replacement emits no spend line: {:?}", g.lineage.gold_ledger);
+    assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && s.paid == 0));
     let line = g.last_exit.clone().unwrap();
     assert_eq!(line.spent, -repeat.iter().map(|x| x.delta).sum::<i32>());
 }
@@ -9351,7 +9369,7 @@ fn found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds() {
     assert_eq!(line.shelved, vec![KindCount { kind: "heal".into(), n: 1 }]);
     assert!(!line.text.contains("shelf"), "{}", line.text);
     assert!(!g.batch.salvaged.contains_key("heal"), "the heal was not salvaged");
-    assert_eq!(g.batch.shelved.get("heal"), Some(&(1, crate::engine::supply_price(crate::defs::Cat::Potion, g.lineage.best_depth))));
+    assert_eq!(g.batch.shelved.get("heal"), Some(&(1, 0)));
     assert!(!g.batch.spent.contains_key("heal") && !g.batch.spent.contains_key("strength"), "{:?}", g.batch.spent);
     let pending: Vec<u32> = g.pending_exit.as_ref().unwrap().items.iter().map(|i| i.id).collect();
     assert!(pending.contains(&poison) && !pending.contains(&heal), "the poison waits on the keep sheet, the heal does not");
@@ -9657,7 +9675,7 @@ fn a_gambles_harm_that_made_the_difference_names_its_row() {
 /// `heal ×2`): the repeat remembers a kind it could not re-pack (short of gold), so the next
 /// exit's found one of that kind goes to the shelf instead of the salvage.
 #[test]
-fn the_repeat_remembers_a_kind_it_could_not_pay_for() {
+fn the_repeat_remembers_and_restores_a_kind_at_zero_gold() {
     let mut g = arena_seed(7);
     no_kennel_leash(&mut g);
     identify(&mut g, "heal");
@@ -9675,10 +9693,13 @@ fn the_repeat_remembers_a_kind_it_could_not_pay_for() {
     g.lineage.gold = 0;
     g.finish_run();
     g.auto_keep();
-    assert!(g.lineage.supplies.iter().all(|s| s.kind != "heal"), "nothing to pay with");
+    assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && s.paid == 0), "the remembered unlocked kind returns at zero gold");
+    assert!(g.lineage.repeat_short.is_empty());
+    assert_eq!(g.lineage.gold, 0);
     g.start_run(None);
     assert_eq!(g.lineage.last_supplies, vec!["heal".to_string()], "the short kind stays the repeat's");
-    // A heal found on this run comes home to the shelf, not the salvage.
+    // After the restored heal is used, a found replacement keeps its provenance.
+    g.run.as_mut().unwrap().hero.inv.retain(|i| i.kind != "heal");
     let found = give(&mut g, "heal");
     {
         let (run, mut cx) = g.ctx();
@@ -9845,7 +9866,7 @@ fn stolen_coins_come_back_from_a_killed_thief() {
 /// Cut 22 §1: a bought supply thieves kept is re-bought by the repeat once a night; a second
 /// waits for the night's end. A refund pays what was paid, whatever the price is now.
 #[test]
-fn a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid() {
+fn a_stolen_supply_is_replaced_once_a_night_without_spend_or_refund() {
     let mut g = Game::new_literal(5);
     no_kennel_leash(&mut g);
     identify(&mut g, "heal");
@@ -9877,13 +9898,13 @@ fn a_stolen_supply_is_rebought_once_a_night_and_a_refund_pays_what_was_paid() {
     g.lineage.night();
     g.restock();
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal"), "a new night re-buys it");
-    // Bought at D5's price ($20), refunded at it after the price moved.
+    // Changing depth cannot turn a free replacement into a gold refund.
     let s = g.lineage.supplies.iter().find(|s| s.kind == "heal").unwrap().clone();
-    assert_eq!(s.paid, 20);
+    assert_eq!(s.paid, 0, "replacement is unlocked and free");
     g.lineage.best_depth = 20;
     let gold = g.lineage.gold;
     g.drop_supply(s.id).unwrap();
-    assert_eq!(g.lineage.gold, gold + 20);
+    assert_eq!(g.lineage.gold, gold, "dropping a free replacement cannot mint gold");
 }
 
 /// Cut 22 §3: an edit's paired move — the active panel minus the previous set's on the same
@@ -10069,13 +10090,13 @@ fn the_repeat_says_what_the_send_will_and_will_not_pack() {
     g.lineage.gold = 1000;
     let l = g.lineage();
     assert_eq!((l.repeat_due.clone(), l.repeat_unpaid.clone()), (vec!["heal".to_string()], vec![]));
-    assert!(l.repeat_gold > 0);
-    // A purse that cannot pay it: `repeat short`.
+    assert_eq!(l.repeat_gold, 0);
+    // Zero gold does not block an unlocked preparation.
     g.lineage.gold = 0;
     let l = g.lineage();
-    assert_eq!((l.repeat_due.clone(), l.repeat_unpaid.clone()), (vec![], vec!["heal".to_string()]));
+    assert_eq!((l.repeat_due.clone(), l.repeat_unpaid.clone()), (vec!["heal".to_string()], vec![]));
     let json = serde_json::to_value(&l).unwrap();
-    assert!(json.get("repeat_unpaid").is_some());
+    assert!(json.get("repeat_unpaid").is_none(), "zero gold does not block a free kit");
     // A shelf that holds the repeat: nothing due.
     g.lineage.gold = 1000;
     g.buy_supply("heal").unwrap();
@@ -10170,7 +10191,7 @@ fn an_outpaced_retreat_rests_and_the_next_row_fights() {
 /// QA on 778fa1b (qaV: `repeat heal ×1 · −$104` for four heals at $26): the repeat's ledger
 /// line counts what it bought (`GoldLine.n`) — n × price == the amount.
 #[test]
-fn a_repeat_line_counts_what_it_bought() {
+fn a_free_repeat_restores_the_exact_used_quantity_without_a_spend_line() {
     let mut g = Game::new_literal(3);
     g.lineage.gold = 1000;
     if let Some(f) = crate::item::ident_fact(&g.lineage.flavours, "heal") {
@@ -10183,9 +10204,9 @@ fn a_repeat_line_counts_what_it_bought() {
     for _ in 0..3 {
         g.buy_supply("heal").unwrap();
     }
-    let price = g.lineage.supplies[0].paid;
-    let bought = g.lineage.gold_ledger.last().unwrap().clone();
-    assert_eq!((bought.n, bought.delta), (3, -3 * price), "{bought:?}");
+    assert_eq!(g.lineage.gold, 1000);
+    assert!(g.lineage.gold_ledger.is_empty(), "three free preparations are not a payment");
+    assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal" && s.paid == 0).count(), 3);
     g.start_run(None);
     // The run drinks them all, then comes home.
     g.run.as_mut().unwrap().hero.inv.retain(|i| i.kind != "heal");
@@ -10194,11 +10215,12 @@ fn a_repeat_line_counts_what_it_bought() {
         crate::turn::end_run(run, &mut cx, ExitTier::Bank);
     }
     g.finish_run();
-    let line = g.lineage.gold_ledger.iter().rev().find(|l| l.why == "repeat heal").cloned().expect("a repeat line");
     let on_shelf: Vec<&Item> = g.lineage.supplies.iter().filter(|s| s.kind == "heal" && !s.found).collect();
-    assert_eq!(line.n as usize, on_shelf.len(), "{line:?}");
-    assert_eq!(-line.delta, on_shelf.iter().map(|s| s.paid).sum::<i32>(), "{line:?}");
-    assert_eq!(line.n, 3);
+    assert_eq!(on_shelf.len(), 3, "repeat replaces the exact used quantity");
+    assert!(on_shelf.iter().all(|s| s.paid == 0));
+    assert!(g.lineage.gold_ledger.iter().all(|l| !l.why.starts_with("repeat ")));
+    assert_eq!(g.last_exit.as_ref().unwrap().spent, 0);
+
 }
 
 /// Cut 23 §3 (AJ: "paid cards are rows he could type"): every paid card carries a token no
@@ -10559,7 +10581,11 @@ fn the_kennel_leash_comes_back_free() {
     g.buy_supply("leash").unwrap();
     assert_eq!(g.lineage.gold, gold);
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "leash" && s.free));
-    assert_eq!(g.supply_catalogue().iter().find(|s| s.kind == "leash").map(|s| s.price), Some(30));
+    assert_eq!(g.supply_catalogue().iter().find(|s| s.kind == "leash").map(|s| s.price), Some(0));
+    g.buy_supply("leash").unwrap();
+    assert_eq!(g.lineage.gold, gold);
+    assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "leash").count(), 2);
+    assert!(g.lineage.supplies.iter().all(|s| s.paid == 0));
 }
 
 // ---------------------------------------------------------------- Cut 24
@@ -10913,8 +10939,9 @@ fn a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all() {
         }
     }
     let (seed, rich) = found.expect("a patch offered with its purchase");
-    assert!(rich.price <= 40, "{rich:?}");
-    assert!(play(seed, 0).is_none(), "an unaffordable item's patch is not offered");
+    assert_eq!(rich.price, 0, "an unlocked patch item has no usage cost");
+    let zero = play(seed, 0).expect("the same unlocked preparation remains available at zero gold");
+    assert_eq!((zero.kind, zero.price), (rich.kind, 0));
 }
 
 /// QA on 0c6e126 (qaY: `♟6 · D8 · … left bones on D6` — "bones two floors above his depth"): an
@@ -11166,7 +11193,7 @@ fn a_bought_leash_comes_home_from_a_return() {
     }
     g.finish_run();
     let leashes: Vec<(bool, i32)> = g.lineage.supplies.iter().filter(|s| s.kind == "leash").map(|s| (s.free, s.paid)).collect();
-    assert!(leashes.contains(&(false, 30)), "the bought leash is back on the shelf: {leashes:?}");
+    assert!(leashes.contains(&(false, 0)), "the bought leash is back on the shelf: {leashes:?}");
     assert!(leashes.iter().any(|l| l.0), "and the kennel's: {leashes:?}");
     assert!(g.last_exit.as_ref().is_some_and(|l| l.text.contains("leash")), "the exit line names it: {:?}", g.last_exit.as_ref().map(|l| &l.text));
 }

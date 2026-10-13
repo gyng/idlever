@@ -844,6 +844,9 @@ html.skin-button .town-tag.build-marker[role="button"]::after {
 }
 
 /* The camp keeps run diagnostics behind one carved, keyboard-accessible control. */
+.camp-run-details {
+  overflow-anchor: none;
+}
 .camp-run-details > summary.btn {
   display: flex;
   align-items: center;
@@ -1107,4 +1110,18 @@ html.skin-button .camp-run-details > summary.btn {
   outline: 3px solid #d9b45a;
   outline-offset: 2px;
   box-shadow: 0 0 12px rgba(217, 180, 90, 0.6);
+}
+
+/* Archive guidance belongs to the page, not to a fake history entry. */
+.chronicle-empty {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+}
+.chronicle-empty p {
+  margin: 0;
+  line-height: 1.5;
+}
+.chronicle-identity {
+  color: var(--gold);
 }

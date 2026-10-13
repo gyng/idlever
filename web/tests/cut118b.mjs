@@ -1116,7 +1116,7 @@ try {
       return { label, armed, taps, calls, screen: a.screen, prompts };
     });
     check(
-      r.label === "collect & send" && r.armed === "ok $300",
+      r.label === "collect & delve" && r.armed === "ok $300",
       `one action with every Cut 118 field present (${r.label} → ${r.armed})`,
     );
     check(

@@ -136,7 +136,7 @@ try {
       return { label, armed, before, calls, taps, screen: app.screen, fold, order };
     }, REPORT);
     check(
-      r.label === "collect & send" && r.armed === "ok $450" && r.before === 0,
+      r.label === "collect & delve" && r.armed === "ok $450" && r.before === 0,
       `one action, armed before it pays (${r.label} → ${r.armed}, ${r.before} calls)`,
     );
     check(

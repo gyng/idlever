@@ -418,7 +418,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   };
   const isLive = (): boolean => !!app.lineage.live && app.lineage.live.turn > 0;
   const send = gem({
-    label: /* copy:button */ "send",
+    label: /* copy:button */ "Delve",
     cls: "send",
     pulse: true,
     onclick: () => doSend(),
@@ -2218,7 +2218,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           if (packed > 0 && !armed) {
             armed = true;
             badge.classList.add("armed");
-            replace(badge, /* copy:callout */ `refund ${packed}?`);
+            replace(badge, /* copy:callout */ `Unpack ${packed}?`);
             return;
           }
           void app.mutate(() => app.engine.setRestock!(!on), /* copy:callout */ "restock");
@@ -2231,9 +2231,9 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         ? short
           ? /* copy:callout */ "Restock limited"
           : due.length
-            ? /* copy:callout */ `${dueText} at send`
-            : /* copy:callout */ `Restock on · held ≤$${L.repeat_gold ?? 0}`
-        : /* copy:callout */ "Restock off",
+            ? /* copy:callout */ `${dueText} on delve`
+            : /* copy:callout */ "Reuse kit"
+        : /* copy:callout */ "Reuse off",
     );
     return badge; // QA 524827b (qaAB: `≤$24` beside the shop's `heal potion $26` — the repeat pays the quote it showed, held)   // QA 778fa1b (qaV: `repeat on · $104` read as a per-send cost; nothing was charged when the supplies came back): the most it re-buys
   }
@@ -2254,7 +2254,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             "data-kind": a.kind,
             disabled: full,
             onclick: () =>
-              void app.mutate(() => app.engine.buySupply(a.kind), /* copy:callout */ "buy"),
+              void app.mutate(() => app.engine.buySupply(a.kind), /* copy:callout */ "Packed"),
           },
           h("b", null, "+ ", itemChip({ kind: a.kind, label: a.kind.replace(/_/g, " ") })),
           h("small", { class: "dim" }, /* copy:callout */ ` · for ${a.row}`),
@@ -2373,7 +2373,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               class: `chip buy${can ? "" : " off"}`,
               disabled: !can,
               onclick: () =>
-                void app.mutate(() => app.engine.buySupply(e.kind), /* copy:callout */ "buy"),
+                void app.mutate(() => app.engine.buySupply(e.kind), /* copy:callout */ "Packed"),
             },
             h(
               "span",
@@ -2704,7 +2704,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               : h(
                   "span",
                   { class: "send-l" },
-                  isLive() ? /* copy:button */ "watch" : /* copy:button */ "send",
+                  isLive() ? /* copy:button */ "Watch" : /* copy:button */ "Delve",
                   sendMark(app.lineage),
                 ),
     ); // Cut 12 §1: own rows; RUNS_UI: a run under way is watched

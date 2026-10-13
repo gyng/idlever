@@ -423,3 +423,6 @@ mod tests_cut159;
 
 #[cfg(test)]
 mod class_skill_effect_tests;
+
+#[cfg(test)]
+mod economy_free_tests;
