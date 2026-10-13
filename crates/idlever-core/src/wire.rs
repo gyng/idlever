@@ -257,6 +257,9 @@ fn solo_bloodline(id:&u32)->bool{*id<=1}
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct ExitLine {
+    /// Actual ending; financial share no longer distinguishes Bank from Return.
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    pub tier: String,
     #[serde(default="first_bloodline", skip_serializing_if="solo_bloodline")]
     pub bloodline_id:u32,
     /// Cut 30.5 (the owner: a new record is a checkpoint): of `carried`, the gold this run's checkpoints secured

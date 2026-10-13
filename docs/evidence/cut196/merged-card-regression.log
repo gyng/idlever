@@ -1,0 +1,21 @@
+
+running 1 test
+economy_conversion_tests::a_real_found_leash_stack_only_values_its_genuine_units --- FAILED
+
+failures:
+
+---- economy_conversion_tests::a_real_found_leash_stack_only_values_its_genuine_units stdout ----
+
+thread 'economy_conversion_tests::a_real_found_leash_stack_only_values_its_genuine_units' (2092048) panicked at crates/idlever-core/src/economy_conversion_tests.rs:213:5:
+assertion `left == right` failed: find cards exclude the two prepared units
+  left: "leash (5)"
+ right: "leash (3)"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    economy_conversion_tests::a_real_found_leash_stack_only_values_its_genuine_units
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 843 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

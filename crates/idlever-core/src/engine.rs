@@ -445,6 +445,9 @@ pub struct Run {
     /// The exit reads them into `ExitLine.found` (`Game::found_rows`).
     #[serde(default, skip_serializing_if = "crate::shared::vec_is_empty")]
     pub found_units: crate::shared::Shared<Vec<(u32, String)>>,
+    /// Cut 196: units first converted this run, independent of later physical fate.
+    #[serde(default)]
+    pub converted_units: crate::shared::Shared<Vec<(u32, String)>>,
     #[serde(default, skip_serializing_if = "crate::shared::vec_is_empty")]
     pub found_gone: crate::shared::Shared<Vec<(u32, String, String)>>,
     /// Cut 22 §3: a forecast's sim (`forecast::simulate_one`): each floor below the first draws
@@ -1112,15 +1115,28 @@ impl Run {
         self.loot_raw = (self.loot_raw + raw).max(0);
         self.loot = self.loot_raw / GOLD_DIVISOR;
     }
-    /// What an item in the pack counts for in the loot (raw, before `GOLD_DIVISOR`): its value
-    /// when it was found on this run, nothing when it never counted — the starting arms, a
-    /// brought vault item, a packed supply. A theft or a swap takes off only what was added.
-    pub fn loot_value(&self, it: &Item) -> i32 {
-        if crate::kit::is_kit_id(it.id) || self.brought.contains(&it.id) || self.supplies.contains(&it.id) {
-            0
-        } else {
+    /// Conversion is final: a physical theft or swap cannot deduct other carried Gold.
+    pub fn loot_value(&self, _it: &Item) -> i32 {
+        0
+    }
+    /// Claim a physical item's raw conversion value once. The caller adds it only
+    /// after accepting the pickup; prepared/brought gear never creates currency.
+    pub fn claim_item_value(&mut self, it: &mut Item) -> i32 {
+        let eligible = !it.value_claimed && !crate::kit::is_kit_id(it.id)
+            && !self.brought.contains(&it.id) && !self.supplies.contains(&it.id);
+        it.value_claimed = true;
+        if eligible {
+            self.converted_units.extend(std::iter::repeat_n((it.id, it.kind.clone()), if it.cat() == Cat::Misc { it.amount.max(1) as usize } else { 1 }));
             it.value()
-        }
+        } else { 0 }
+    }
+    /// Secure whole coins, retaining only the unprotected fractional remainder.
+    pub fn secure_carry(&mut self) -> i32 {
+        let coins = self.loot.max(0);
+        self.secured += coins;
+        self.loot_raw = (self.loot_raw - coins * GOLD_DIVISOR).max(0);
+        self.loot = self.loot_raw / GOLD_DIVISOR;
+        coins
     }
     /// A gold pile's amount is coins (what the label says, what the stake rises by): it is
     /// added whole. Items add their value before `GOLD_DIVISOR` (`loot_add`).
@@ -1208,12 +1224,15 @@ impl Run {
         let gone = self.found_gone.iter().filter(|(g, k, _)| *g == id && k == kind).count();
         found.saturating_sub(gone)
     }
-    /// The share of the carry (and of the salvage, XP and renown) an exit at `tier` keeps: a
-    /// timed-out run and a drive-off with no way home written keep nothing (Cut 2 §2, Cut 24 §1).
-    /// What the exit brings home: the secured gold whole, and the carry since the last checkpoint at the
-    /// tier's share (bank 100 % · return 60 % · death 30 %; a stall or a drive-off with no way home nothing).
+    /// Financial haul: secured Gold survives every outcome; remaining carry
+    /// returns whole with a living hero. Physical finds were valued at pickup.
     pub fn kept(&self, tier: ExitTier) -> i32 {
-        self.secured + self.loot.max(0) * self.yield_pct(tier) / 100
+        self.secured + self.loot.max(0) * self.financial_pct(tier) / 100
+    }
+    /// Alive returns retain their full currency, including safety-guard returns.
+    /// XP and renown continue to use the separate historical yield share.
+    pub fn financial_pct(&self, tier: ExitTier) -> i32 {
+        if tier == ExitTier::Death { 0 } else { 100 }
     }
     /// All the run carried: the secured gold and the carry since.
     pub fn carried(&self) -> i32 {
@@ -4216,7 +4235,8 @@ impl Game {
         self.lineage.last_supply_origins = if origins.iter().any(|(_, auto)| *auto) { origins } else { Vec::new() };
         for id in loadout {
             if let Some(i) = self.lineage.vault.iter().position(|v| v.id == id) {
-                let it = self.lineage.vault.remove(i);
+                let mut it = self.lineage.vault.remove(i);
+                it.value_claimed = true;
                 brought.push(it.id);
                 if hero.class==Class::Gunner&&it.cat()==Cat::Weapon {
                     if let Some(old)=hero.weapon.replace(it) {hero.inv.push(old);}
@@ -4229,6 +4249,9 @@ impl Game {
             for item in hero.inv.iter_mut().chain(hero.weapon.iter_mut()) {
                 if let Some(p)=crate::firearm::Profile::of(&item.kind) {item.firearm=Some(crate::firearm::Chambers::loaded(p));}
             }
+        }
+        for it in hero.inv.iter_mut().chain(hero.weapon.iter_mut()).chain(hero.armour.iter_mut()) {
+            it.value_claimed = true;
         }
         let mut run = Run {
             gun_reload: None,
@@ -4291,6 +4314,7 @@ impl Game {
             own_throw: None,
             own_throw_harm: 0,
             found_units: Vec::new().into(),
+            converted_units: Vec::new().into(),
             found_gone: Vec::new().into(),
             stolen: Vec::new(),
             stolen_ids: Vec::new(),
@@ -4481,6 +4505,7 @@ impl Game {
         crate::traits::wear(&mut run, &self.lineage);
         for s in std::mem::take(&mut self.lineage.supplies) {
             let mut it = s;
+            it.value_claimed = true;
             it.id = run.new_item_id() + 5000;
             run.supplies.push(it.id);
             run.packed.push(it.kind.clone());
@@ -5017,7 +5042,7 @@ impl Game {
         // Cut 6 §1: what that row would bring home now (the kept number, not the carried one).
         let kept = return_row.map(|i| {
             let tier = if l.rules().rows[i].verb.v == "bank" { ExitTier::Bank } else { ExitTier::Return };
-            run.secured + run.loot.max(0) * tier.pct() / 100
+            run.kept(tier)
         });
         Snapshot {
             swift: run.depth < crate::feats::swift_to(l, run.route),
@@ -5255,7 +5280,7 @@ impl Game {
         // camp shows the new one on the return.
         if let Some(bd) = run.bounty.filter(|b| Some(*b) == self.bounty_seen) {
             let taken = tier != ExitTier::Death && run.max_depth >= bd;
-            let gold = if taken { run.bounty_gold.max(0) * run.yield_pct(tier) / 100 } else { 0 };
+            let gold = if taken { run.bounty_gold.max(0) * run.financial_pct(tier) / 100 } else { 0 };
             match self.batch.bounty.as_mut() {
                 Some(b) if b.depth == bd => {
                     b.taken |= taken;
@@ -5706,6 +5731,7 @@ impl Game {
         // and `Ev::Exit.loot_kept` carried.
         let loot_kept = run.kept(tier);
         let gold_before = self.lineage.gold;
+        let tally_before: i64 = self.lineage.gold_tally.values().sum();
         let exit_why = match tier {
             _ if run.timed_out && run.stuck_fires >= STALL_FIRES => format!("stalled D{}", run.max_depth),
             _ if run.timed_out => format!("lost thread D{}", run.max_depth),
@@ -5749,139 +5775,72 @@ impl Game {
             *pack.entry((i.id, i.kind.clone())).or_insert(0) += i.amount.max(1);
         }
         // Run-clear: the pack's finds as they came home (before the shelf, the sheet or the bones take them)
-        let found_items: Vec<Item> = if self.sim { Vec::new() } else { all.iter().filter(|i| run.found_units.iter().any(|(id, k)| *id == i.id && *k == i.kind)).cloned().collect() };
+        let found_items: Vec<Item> = if self.sim { Vec::new() } else { all.iter().filter_map(|item| {
+            let found = found_in_pack(&run, &pack, &(item.id, item.kind.clone()));
+            if found == 0 { return None; }
+            let mut find = item.clone();
+            // A prepared leash and new finds can share one physical stack. Cards
+            // describe only genuine remaining found units, not the prepared kit.
+            if find.cat() == Cat::Misc { find.amount = found as i32; }
+            Some(find)
+        }).collect() };
         let mut exit_fate: BTreeMap<(u32, String), &'static str> = BTreeMap::new();
-        let mut shelved: Vec<String> = Vec::new();
+        let shelved: Vec<String> = Vec::new();
         let mut leash_back = 0usize;
+        // Knowledge comes from a first conversion, not retaining or selling an instance.
+        for (_, kind) in &run.converted_units {
+            let row = self.lineage.forge.entry(kind.clone()).or_default();
+            row.salvaged += 1;
+            row.settle();
+        }
         if tier == ExitTier::Death {
-            // Insured brought items come home (Melvor insurance); everything else stays on the
-            // floor as a bones pile for a later heir.
             let (insured, rest): (Vec<Item>, Vec<Item>) = all.into_iter().partition(|i| run.brought.contains(&i.id) && self.lineage.insured.contains(&i.id));
             for it in insured {
                 self.lineage.insured.retain(|id| *id != it.id);
                 self.lineage.vault.push(it);
             }
-            all = Vec::new();
             for it in &rest {
                 exit_fate.insert((it.id, it.kind.clone()), "bones");
             }
             if !rest.is_empty() {
                 let named = !self.batch.bests.is_empty() || !run.boss_kills.is_empty();
                 self.lineage.bones.push(Bones { heir: run.heir, depth: run.depth, items: rest.clone(), named, biome: Some(run.biome()) });
-                while self.lineage.bones.len() > BONES_MAX {
-                    self.lineage.bones.remove(0);
-                }
+                while self.lineage.bones.len() > BONES_MAX { self.lineage.bones.remove(0); }
                 self.events.push(Ev::Bones { t, heir: run.heir, items: rest.len() as u32 });
             }
-            let f = format!("bones:{}", run.depth);
-            if self.lineage.facts.insert(f.clone()) {
-                self.events.push(Ev::Fact { t, fact: f });
-            }
+            let fact = format!("bones:{}", run.depth);
+            if self.lineage.facts.insert(fact.clone()) { self.events.push(Ev::Fact { t, fact }); }
         } else {
-            // A packed supply the send did not use goes back on the shelf (never into the
-            // vault, never salvaged): a $40 heal salvaged for $2 and rebought for $40 on
-            // every banked run read as the shop robbing the player (QA on 50bb162, both
-            // players). The kennel's leash is the kennel's (`kennel_leash` puts it back).
-            let (back, rest): (Vec<Item>, Vec<Item>) = all.into_iter().partition(|i| run.supplies.contains(&i.id) && i.kind != "leash");
-            // The kennel's own leash goes back to the kennel, not to salvage (QA on 56f2a1d:
-            // `leash ×1 · $1` salvaged, `leash 1/5` at the forge, the leash still on the shelf).
-            // QA on 524827b (qaAB): the packed leash stack whatever the unit that opened it (a
-            // bought one first made it a bought stack, which went to salvage).
-            let kennel: Vec<Item> = rest.iter().filter(|i| i.kind == "leash" && run.supplies.contains(&i.id)).cloned().collect();
-            all = rest.into_iter().filter(|i| !(i.kind == "leash" && run.supplies.contains(&i.id))).collect();
-            // QA on 778fa1b (qaV): leashes found and stacked on the kennel's go home as a find
-            // of their own (the kennel's stack goes back to the kennel; they went with it).
-            for k in kennel {
-                let found = run.found_left(k.id, &k.kind) as i32;
-                // (packed units are spent first: what is left of the stack is found first)
-                let n = found.min(k.amount);
-                if n > 0 {
-                    let mut it = k.clone();
-                    it.amount = n;
-                    it.free = false;
-                    all.push(it);
-                }
-                // QA on 524827b (qaAB: `leash $30` bought, a returned run, the loadout back to the
-                // free one alone): the packed units left — the free one spent first on a tame —
-                // that were bought go back on the shelf, bought, as any unused supply.
-                let packed_left = (k.amount - n).max(0) as usize;
-                let bought_back = packed_left.min(run.bought_leashes.len());
-                for paid in run.bought_leashes.iter().take(bought_back) {
-                    if self.lineage.supplies.len() >= self.lineage.supply_cap() {
-                        break;
+            for mut it in all {
+                let key = (it.id, it.kind.clone());
+                if found_in_pack(&run, &pack, &key) > 0 { exit_fate.insert(key, "converted"); }
+                if run.brought.contains(&it.id) {
+                    // Brought ownership returns intact; it is never new currency.
+                    if !self.lineage.vault.iter().any(|v| v.id == it.id) { self.lineage.vault.push(it); }
+                } else if run.supplies.contains(&it.id) {
+                    if it.kind == "leash" {
+                        let found = (run.found_left(it.id, "leash") as i32).min(it.amount.max(0));
+                        let prepared_left = (it.amount - found).max(0) as usize;
+                        for _ in 0..prepared_left.min(run.bought_leashes.len()) {
+                            if self.lineage.supplies.len() >= self.lineage.supply_cap() { break; }
+                            let mut prepared = Item::new(self.lineage.next_vault_id, "leash");
+                            self.lineage.next_vault_id += 1;
+                            prepared.amount = 1;
+                            prepared.known = true;
+                            prepared.value_claimed = true;
+                            self.lineage.supplies.push(prepared);
+                            leash_back += 1;
+                        }
+                    } else if self.lineage.supplies.len() < self.lineage.supply_cap() {
+                        it.free = false;
+                        self.lineage.supplies.push(it);
                     }
-                    let id = self.lineage.next_vault_id;
-                    self.lineage.next_vault_id += 1;
-                    let mut it = Item::new(id, "leash");
-                    it.amount = 1;
-                    it.known = true;
-                    it.paid = *paid;
-                    self.lineage.supplies.push(it);
-                    leash_back += 1;
                 }
+                // Found objects were already valued at pickup and now leave the kit.
             }
-            let cap = self.lineage.supply_cap();
-            for mut it in back {
-                if self.lineage.supplies.len() >= cap {
-                    break;
-                }
-                it.free = false;
-                if !self.lineage.supplies.iter().any(|s| s.id == it.id) {
-                    self.lineage.supplies.push(it);
-                }
-            }
-            // Cut 21 §2 (AE: "sells heal potions he finds for $2 while I pay $40"): a found
-            // supply of a kind the shelf sells and a row can use goes onto the shelf, up to
-            // the cap, not to salvage — the next send packs it free. The kinds the repeat
-            // re-packs are served first (a found heal stands in for a bought one); another
-            // row's kind takes only a slot the repeat does not need.
-            let before: Vec<(u32, String)> = all.iter().map(|i| (i.id, i.kind.clone())).collect();
-            let (to_shelf, rest) = self.shelve_found(all, &run);
-            for key in before.into_iter().filter(|(id, k)| !rest.iter().any(|i| i.id == *id && i.kind == *k)) {
-                exit_fate.insert(key, "shelved");
-            }
-            all = rest;
-            shelved = to_shelf;
         }
-        // A return keeps the dearest 60 %; what the vault sent along is the player's already
-        // and comes first, whatever it is worth (QA on 952e306: a vaulted poison potion,
-        // cheapest in the pack, was cut on a bail — `VAULT 1/1 → 0/1` with no line).
-        // Cut 28 §4: a caged item is the player's choice as much — it comes next.
-        all.sort_by(|a, b| run.brought.contains(&b.id).cmp(&run.brought.contains(&a.id)).then(run.caged.contains(&b.id).cmp(&run.caged.contains(&a.id))).then(b.value().cmp(&a.value())).then(a.id.cmp(&b.id)));
-        let n_keep = match tier {
-            ExitTier::Bank => all.len(),
-            ExitTier::Return => ((all.len() * 60).div_ceil(100)).max(all.iter().filter(|i| run.brought.contains(&i.id) || run.caged.contains(&i.id)).count()),
-            ExitTier::Death => 0,
-        };
-        let eligible: Vec<Item> = all.iter().take(n_keep).cloned().collect();
-        let rest_items: Vec<Item> = all.into_iter().skip(n_keep).collect();
-        for it in &eligible {
-            exit_fate.insert((it.id, it.kind.clone()), "sheet");
-        }
-        for it in &rest_items {
-            exit_fate.insert((it.id, it.kind.clone()), "salvaged");
-        }
-        // (one entry a unit: a stack of found leashes settles each)
-        // (the finds on the sheet, one entry a unit — as `found_rows` counts them)
-        let found_ids: Vec<(u32, String)> = exit_fate
-            .iter()
-            .filter(|(_, f)| **f == "sheet")
-            .flat_map(|(key, _)| std::iter::repeat_n(key.clone(), found_in_pack(&run, &pack, key) as usize))
-            .collect();
-        let cut_coins = self.salvage(&rest_items, pct);
-        // Per kind, the coins the cut brought — the ledger's own (QA on 92eb880: `sold
-        // aggravate $2` on the keep sheet, `aggravate ×1 · $1` in the report).
-        let mut cut: std::collections::BTreeMap<String, (u32, i32)> = std::collections::BTreeMap::new();
-        for (it, c) in rest_items.iter().zip(&cut_coins) {
-            let e = cut.entry(it.kind.clone()).or_insert((0, 0));
-            e.0 += 1;
-            e.1 += c;
-        }
-        // QA on 912e135 (qaX: the forge's `leash · salvaged 1/5` beside a SALVAGED list without it — a $0 coin was dropped): a
-        // return's cut names every item it salvaged, a $0 one too (the forge counts them all); a death salvages nothing.
-        let cut_rows: Vec<crate::wire::SalvageRow> = cut.into_iter().map(|(k, (n, c))| crate::wire::SalvageRow { kind: self.lineage.wire_name(&k), n, gold: c }).filter(|_| pct > 0).collect();
-        let brought: Vec<u32> = eligible.iter().filter(|i| run.brought.contains(&i.id)).map(|i| i.id).collect();
-        self.pending_exit = Some(PendingExit { run_id: run.id, tier, items: eligible, pct, brought, found: found_ids, stalled });
+        let cut_rows: Vec<crate::wire::SalvageRow> = Vec::new();
+        self.pending_exit = None;
         // Death: graveyard, grudge, heir, record.
         if tier == ExitTier::Death {
             let cause = run.death_cause.clone().unwrap_or_else(|| "unknown".into());
@@ -6020,12 +5979,12 @@ impl Game {
         let pile = if tier == ExitTier::Death { self.lineage.bones.last().filter(|b| b.heir == run.heir).map(|b| b.items.clone()).unwrap_or_default() } else { Vec::new() };
         let bones_n = pile.len();
         let unused = run.hero.inv.iter().filter(|i| run.supplies.contains(&i.id) && i.kind != "leash").count() + leash_back;
-        let mut line = exit_line_of(run.carried(), pct, loot_kept, spent, spent_on, tier, run.timed_out, run.stuck_fires >= STALL_FIRES, unused, bones_n, run.depth);
+        let mut line = exit_line_of(run.carried(), run.financial_pct(tier), loot_kept, spent, spent_on, tier, run.timed_out, run.stuck_fires >= STALL_FIRES, unused, bones_n, run.depth);
         line.bloodline_id=self.lineage.bloodline_id;
         // Cut 30.5: what the checkpoints secured leads the arithmetic (`banked $120 · $80 secured + 100% of $40`)
         if run.secured > 0 {
             line.secured = run.secured;
-            line.text = secured_text(&line.text, loot_kept, run.secured, run.loot.max(0), pct);
+            line.text = secured_text(&line.text, loot_kept, run.secured, run.loot.max(0), run.financial_pct(tier));
         }
         // QA on 0c6e126 (qaZ: `1 supply back` never named which — read beside `sold … invisibility $1` as the bought potion sold): the
         // supplies that came back unused, named when they are of one kind (`1 supply back: invisibility`)
@@ -6165,7 +6124,7 @@ impl Game {
                 self.lineage.meters_recent.remove(0);
             }
         }
-        debug_assert!(self.lineage.gold - gold_before == loot_kept - spent + self.lineage.gold_ledger.iter().rev().take_while(|g| g.t == self.lineage.total_turns).filter(|g| g.why.starts_with("salvage")).map(|g| g.delta).sum::<i32>());
+        debug_assert_eq!(i64::from(self.lineage.gold - gold_before), self.lineage.gold_tally.values().sum::<i64>() - tally_before, "every settlement movement, including wake grants and porter bonuses, reconciles with the ledger");
         if tier == ExitTier::Death || stalled || gave_up {
             if let Some(rec) = self.deaths.get_mut(&run.id) {
                 // The death's (or the stall's) own trace is longer; its line does not repeat it.
@@ -6266,64 +6225,6 @@ impl Game {
             self.events.push(Ev::Rank { t, rank: r });
             self.batch.bests.push(format!("rank {r}"));
         }
-    }
-
-    /// Salvage items: gold by tier, forge ledger by full count (Addendum D).
-    /// Salvage `items` at `pct`: each pays its coins by `salvage_coins` (the exit sheet's
-    /// `worth`, the cut's `sold` rows and the report's rows are these very coins). Returns them.
-    /// Cut 21 §2: the found supplies of `all` that go onto the shelf at a non-death exit
-    /// (`finish_run`) — potions and scrolls known by name or flavour, of a kind the shelf
-    /// sells and a row of the active set uses (`LineageState::row_kinds`), not brought from
-    /// the vault or packed at the send — each standing in for one the repeat would buy (the
-    /// last send's kinds, less what the shelf holds), up to the cap. Returns the kinds shelved
-    /// (one per item) and the items left.
-    ///
-    /// Deviation from the contract's "up to the cap": a found kind the player did not pack is
-    /// salvaged as before. Shelving every row-used kind carried free consumables from run to
-    /// run for any set rich in item rows — the FULL−D28 bot passed the D28 wall on 8 of 30
-    /// seeds (bar ≤ 3) and COUNTERED's found potions crowded the kennel's leash off the
-    /// shelf (D14 reach 57 % → 47 %, bar 50 %). Bounded by the pack, a found supply saves a
-    /// purchase (the economy's leak) and never adds power the player did not buy.
-    fn shelve_found(&mut self, all: Vec<Item>, run: &Run) -> (Vec<String>, Vec<Item>) {
-        let used = self.lineage.row_kinds();
-        let cat = self.supply_catalogue();
-        let cap = self.lineage.supply_cap();
-        let mut reserved: Vec<String> = self.lineage.last_supplies.iter().filter(|k| used.contains(*k) && !run.wasted_kinds.contains(k)).cloned().collect();
-        for s in self.lineage.supplies.iter().filter(|s| !s.free) {
-            if let Some(i) = reserved.iter().position(|k| *k == s.kind) {
-                reserved.remove(i);
-            }
-        }
-        let (facts, flavours) = (&self.lineage.facts, &self.lineage.flavours);
-        let fits = |it: &Item| it.is_consumable() && !run.supplies.contains(&it.id) && !run.brought.contains(&it.id) && it.is_known(facts, flavours) && used.contains(&it.kind) && cat.iter().any(|e| e.kind == it.kind);
-        let (cands, mut rest): (Vec<Item>, Vec<Item>) = all.into_iter().partition(|it| fits(it));
-        let mut shelved = Vec::new();
-        for mut it in cands {
-            let take = match reserved.iter().position(|k| *k == it.kind) {
-                Some(i) if self.lineage.supplies.len() < cap => {
-                    reserved.remove(i);
-                    true
-                }
-                _ => false,
-            };
-            if !take {
-                rest.push(it);
-                continue;
-            }
-            it.id = self.lineage.next_vault_id;
-            self.lineage.next_vault_id += 1;
-            it.found = true;
-            it.known = true;
-            it.free = false;
-            let price = cat.iter().find(|e| e.kind == it.kind).map(|e| e.price).unwrap_or(0);
-            let e = self.batch.shelved.entry(it.kind.clone()).or_insert((0, 0));
-            e.0 += 1;
-            e.1 += price;
-            shelved.push(it.kind.clone());
-            self.lineage.supplies.push(it);
-        }
-        rest.sort_by_key(|it| it.id);
-        (shelved, rest)
     }
 
     fn salvage(&mut self, items: &[Item], pct: i32) -> Vec<i32> {
@@ -6911,7 +6812,7 @@ impl Game {
 pub fn exit_finds(found: &[Item], fate: &BTreeMap<(u32, String), &'static str>, facts: &BTreeSet<String>, flavours: &Flavours) -> Vec<InvItem> {
     let mut out: Vec<(crate::item::Rarity, i32, InvItem)> = found
         .iter()
-        .filter(|i| matches!(fate.get(&(i.id, i.kind.clone())).copied(), Some("sheet" | "shelved" | "bones")))
+        .filter(|i| matches!(fate.get(&(i.id, i.kind.clone())).copied(), Some("converted" | "sheet" | "shelved" | "bones")))
         .map(|i| {
             let w = to_inv(i, facts, flavours);
             (w.rarity, i.value(), w)
@@ -7191,7 +7092,7 @@ pub fn exit_line_of(carried: i32, keep_pct: i32, kept: i32, spent: i32, spent_on
     if unused > 0 && tier != ExitTier::Death {
         text.push_str(&format!(" · {unused} {} back", if unused == 1 { "supply" } else { "supplies" }));
     }
-    ExitLine { packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, shelved: Vec::new(), toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
+    ExitLine { tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, shelved: Vec::new(), toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
 }
 
 /// Cut 30.5: an exit line's head re-worded with the secured gold — `banked $120 · $80 secured + 100% of $40`, `died

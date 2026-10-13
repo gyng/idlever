@@ -1,6 +1,7 @@
 import { supplyLimit, reportIncome } from "./report-supplies";
 import { counterName, namedCounters } from "./counter-name";
 import { goldWords } from "./gold-words";
+import { exitKind } from "./exit-kind";
 // Return report: learned · bests · found · deaths · pending · reel · marks. Delta, not totals.
 // Cut 10 §3: the exit tiles read `banked · returned · deaths`, `returned` first when it is the larger; each exit line leads
 // with its tier and the kept sum (`returned $61`) before the engine's arithmetic; a lost companion reads `jackal Ashar fell`;
@@ -238,14 +239,17 @@ export function traceLabel(app: App, x: ExitLine, newer: ExitLine[] = []): strin
   return /* copy:callout */ `${d !== undefined ? `D${d} · ` : ""}${goldWords(tier)} · log`;
 }
 
-/** Cut 10 §3: an exit line's lead — the tier from its keep share and the sum kept: `returned $61` · `banked $84` · `died $0`. */
+/** Outcome and currency are separate: both alive outcomes retain their full carry. */
 export function exitLead(x: ExitLine): string {
+  const kind = exitKind(x);
   const tier =
-    x.keep_pct >= 100
+    kind === "bank"
       ? /* copy:label */ "full haul"
-      : x.keep_pct <= 0
+      : kind === "death"
         ? /* copy:label */ "died"
-        : /* copy:label */ "returned";
+        : kind === "return"
+          ? /* copy:label */ "returned"
+          : /* copy:label */ "haul";
   return `${tier} $${x.kept}`;
 }
 
@@ -856,16 +860,16 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     )
       return null;
     const ex = r.exits ?? [];
-    const bankedG = ex.filter((x) => x.keep_pct >= 100).reduce((a, x) => a + x.kept, 0),
-      returnedG = ex
-        .filter((x) => x.keep_pct > 0 && x.keep_pct < 100)
-        .reduce((a, x) => a + x.kept, 0);
+    const bankedG = ex.filter((x) => exitKind(x) === "bank").reduce((a, x) => a + x.kept, 0),
+      returnedG = ex.filter((x) => exitKind(x) === "return").reduce((a, x) => a + x.kept, 0),
+      securedG = ex.filter((x) => exitKind(x) === "death").reduce((a, x) => a + x.kept, 0);
     const salvageG = (r.salvaged ?? []).reduce((a, x) => a + x.gold, 0),
       spentG = (r.spent ?? []).reduce((a, x) => a + x.gold, 0);
     const pieces: (string | HTMLElement)[] = [];
     const WORD = /* copy:callout */ {
       banked: "collected",
       returned: "returned",
+      secured: "secured",
       salvage: "salvage",
       wake: "next heir",
       spent: "spent",
@@ -879,12 +883,19 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     const homeWord = (): string => {
       const b = r.banked ?? 0,
         rt = r.returned ?? 0;
-      return rt === 0 && b > 0 ? WORD.banked : b === 0 ? WORD.returned : "";
+      return rt === 0 && b > 0
+        ? WORD.banked
+        : b === 0 && rt > 0
+          ? WORD.returned
+          : b === 0 && rt === 0 && r.deaths.length > 0
+            ? WORD.secured
+            : "";
     };
     if (r.gold) {
-      if (bankedG + returnedG === r.gold.home && r.gold.home > 0) {
+      if (bankedG + returnedG + securedG === r.gold.home && r.gold.home > 0) {
         piece(bankedG, "+", WORD.banked, "up");
         piece(returnedG, "+", WORD.returned, "up");
+        piece(securedG, "+", WORD.secured, "up");
       } else {
         const w = homeWord();
         if (w) piece(r.gold.home, "+", w, "up");
@@ -933,6 +944,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     } else {
       piece(bankedG, "+", WORD.banked, "up");
       piece(returnedG, "+", WORD.returned, "up");
+      piece(securedG, "+", WORD.secured, "up");
       piece(salvageG, "+", WORD.salvage, "up");
       piece(reportPassage(r), "+", /* copy:callout */ "passage", "up");
       piece(spentG, "−", WORD.spent, "down");

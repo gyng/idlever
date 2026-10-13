@@ -366,10 +366,10 @@ fn the_reel_never_repeats_a_shape_thrice() {
     assert!(crate::chronicle::is_saved_note("R2 return saved him.") && crate::chronicle::is_saved_note("R2 return got him out."));
 }
 
-/// §4: a caged item reaches the keep sheet on a return whatever the cut (a one-slot vault offers
-/// the keep choice).
+/// Cut196 amendment: selected cage finds convert once, settle fully alive, and teach Forge knowledge.
+/// Explicit first-value claims model accepted cage pickups without bypassing their accounting.
 #[test]
-fn a_caged_item_reaches_the_keep_sheet() {
+fn a_caged_item_converts_once_and_settles_without_a_keep_sheet() {
     let mut g = edited(31, 4);
     g.start_run(None);
     let run = g.run.as_mut().unwrap();
@@ -383,15 +383,30 @@ fn a_caged_item_reaches_the_keep_sheet() {
     let mut dagger = crate::item::Item::new(950, "dagger");
     dagger.known = true;
     items.push(dagger);
-    run.hero.inv.extend(items.iter().cloned());
-    for it in &items {
+    let raw_value: i32 = items.iter().map(|i| i.value()).sum();
+    for mut it in items.iter().cloned() {
+        let raw = run.claim_item_value(&mut it);
+        run.loot_add(raw);
         run.note_found(it.id, &it.kind, 1);
+        run.hero.inv.push(it);
     }
+    let carry = run.carried();
+    assert_eq!(carry, raw_value / crate::engine::GOLD_DIVISOR);
     run.caged.push(950);
     run.over = Some(ExitTier::Return);
+    let before = g.lineage.gold;
     let _ = g.finish_run();
-    let p = g.pending_exit.as_ref().expect("a keep sheet");
-    assert!(p.items.iter().any(|i| i.id == 950), "the caged dagger is on the sheet: {:?}", p.items.iter().map(|i| &i.kind).collect::<Vec<_>>());
+    assert!(g.pending_exit.is_none());
+    let line = g.last_exit.as_ref().unwrap();
+    assert_eq!(line.kept, carry, "alive Return keeps full converted carry");
+    assert_eq!(g.lineage.gold - before, carry);
+    assert!(line.found.iter().any(|f| f.kind == "dagger" && f.n == 1 && f.fate == "converted"));
+    assert!(line.finds.iter().any(|i| i.id == 950), "cage choice remains visible as original find metadata");
+    assert!(g.lineage.vault.iter().all(|i| i.id != 950), "converted cage find does not duplicate as stored gear");
+    for it in &items { assert_eq!(g.lineage.forge[&it.kind].salvaged, 1, "one first conversion per kind"); }
+    let settled = g.save();
+    assert!(g.finish_run().is_none(), "settlement is single-use");
+    assert_eq!(g.save(), settled);
     let _ = HERO_ID;
 }
 

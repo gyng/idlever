@@ -1,6 +1,6 @@
 # Cut196 — one loot value, reusable builds
 
-Next implementation stage of Cut191; not implemented or accepted yet.
+Implementation checkpoint of Cut191; broader progression acceptance pending.
 Owner priority: try builds and see how far they get, without Keep or recurring
 item fees. Free preparation is implemented in5f31e378. This cut addresses the
 remaining currency and ownership model before deeper saved kits.
@@ -20,6 +20,25 @@ as a pet's actual fetch. This amends Cut191's literal secured-only target to
 preserve meaningful protection builds. Keep `yield_pct` separate for XP and
 renown: Return XP remains60%. Timed-out/driven returns and wake grants need
 explicit disposition before claiming a consistent financial model.
+
+## Selected runtime semantics
+
+Physical conversion is final at first accepted pickup. `Item.value_claimed`
+persists through drops, theft, save/load and bones. Physical loss or later
+recovery never refunds or recreates that currency. Currency theft remains real.
+Prepared/brought/permanent kit items are marked claimed before leaving home.
+Fresh leashes use6 raw value per genuine found unit before merging; prepared
+units contribute0. `Run.claim_item_value` returns raw value without adding it.
+First-claim units are recorded separately for one-time forge discovery, even
+when the object is consumed or lost. Discovery persists across death as knowledge.
+
+`Run.secure_carry` transfers whole coins and retains fractional raw remainder.
+`Run.financial_pct` gives100% to all alive returns, including safety/time-limit
+returns, and0% to death. XP/renown keep `yield_pct`. Pet fetch remains named
+protection. Existing wake pay remains a separate named grant for now.
+
+Alive found objects settle as `converted` without another Gold receipt or
+Keep decision. Death bones retain claimed provenance so recovery pays0 again.
 
 ## Accounting risks that must be fixed
 
@@ -78,5 +97,24 @@ alternatives. Do not disguise these limitations with a renamed tab.
 
 ## Status
 
-Read-only audit complete; implementation, pacing and validation pending. No
-full queue, current-game balance or fun acceptance follows from this document.
+Runtime single conversion, fractional checkpoint conservation, claimed bones,
+alive100% financial returns and automatic found settlement are implemented.
+Reports/ledger classify explicit exit tier rather than inferring Bank from100%.
+Forge labels discovery, with no second salvage receipt. Root's eight independent
+conversion tests cover twelve actual pickup/exit cases and mixed leashes.
+
+The first integrated native run exposed36 obsolete expectations; scoped amended
+checks preserve accounting/privacy assertions. Strict current-runtime save/load
+checks also found a genuine Town.manual false/default serialization bug, fixed
+by preserving explicit false. The subsequent838-test pass preceded a genuine
+merged-leash card bug: prepared2+found3 displayed leash(5). Find-card metadata
+now shows only found3; physical ownership and Gold are unchanged. Eight focused
+conversion tests and Clippy pass after that fix. Final native838 passed with6
+existing ignored in55.41s. Rebuilt WASM6344923bytes passes five focused client
+groups in32.2s. Discovery detail now names converted quantities; its actual
+Bank/Return/Death receipt check passes54 assertions in2.2s. Evidence retains
+failures as well as passes.
+
+Storehouse/keeper/armourer role retirement, earned pacing, named saved starting
+kits and explicit one/three-hero8h whole/sliced/reloaded comparisons remain open.
+No full queue, current-game balance or fun acceptance follows from this checkpoint.

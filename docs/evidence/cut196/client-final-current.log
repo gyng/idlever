@@ -1,0 +1,7 @@
+client suite: targeted (5 selected; 132 current full; 174 exhaustive groups)
+ok   loot-economy    5.0s (4.4s)  {"checks":52,"outcomes":[{"tier":"bank","kept":12,"gold":512},{"tier":"return","kept":12,"gold":512},{"tier":"death","kept":8,"gold":508}],"version":"0.1.0"}
+ok   free-preparation 6.7s (6.0s)  {"fixture":"controlled unlocked loadout","version":"0.1.0","checks":73,"delves":[{"run":1,"gold":0,"heals":1},{"run":2,"gold":0,"heals":1},{"run":3,"gold":0,"heals":1}],"forgePrice":100}
+ok   bloodline-tabs  14.9s (14.3s)  bloodline-tabs 68 real-WASM checks PASS
+ok   home-heroes     31.2s (30.6s)  1440: three real home actors, exact selection/details, two actual delves/portraits/watch and offline state reconciliation PASS
+ok   building-fx     32.2s (31.5s)  1440 Canvas reduced: exact free construction/refusal/refresh/reload and immediate use PASS (288ms lifecycle wall; not a performance gate)
+ok: 5/5 client gates in 32.2s

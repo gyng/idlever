@@ -426,3 +426,6 @@ mod class_skill_effect_tests;
 
 #[cfg(test)]
 mod economy_free_tests;
+
+#[cfg(test)]
+mod economy_conversion_tests;

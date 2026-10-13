@@ -515,7 +515,7 @@ function salvage(app: App): HTMLElement {
     return h(
       "div",
       { class: "salvage ledger" },
-      h("div", { class: "empty-line dim" }, /* copy:callout */ "nothing salvaged"),
+      h("div", { class: "empty-line dim" }, /* copy:callout */ "No discoveries"),
     );
   return h(
     "div",
@@ -529,7 +529,7 @@ function salvage(app: App): HTMLElement {
         h(
           "span",
           { class: "ladder num dim" },
-          /* copy:label */ "salvaged",
+          /* copy:label */ "discovered",
           " ",
           f.next
             ? h(

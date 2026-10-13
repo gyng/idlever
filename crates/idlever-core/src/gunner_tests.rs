@@ -74,9 +74,15 @@ fn paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends() {
     assert_eq!(restored.try_send().unwrap(),snap);assert_eq!(restored.save(),g.save());
     let before=g.save();assert!(crate::kit::buy(&mut g,crate::firearm::SIDEARM_SLOT).is_err());assert_eq!(g.save(),before);
     assert!(crate::kit::buy(&mut g,"gun_sidearm:stow").is_err());assert_eq!(g.save(),before);
-    g.bail();assert!(g.step(20).run_over);
-    assert!(!g.pending_exit.as_ref().unwrap().items.iter().any(|i|i.id==crate::kit::SIDEARM_ID));
-    g.auto_keep();g.try_send().unwrap();
+    let paid_balance = g.lineage.gold;
+    g.bail();let ended = g.step(20);assert!(ended.run_over);
+    assert!(g.pending_exit.is_none(), "returns settle without a Keep choice");
+    let exit = ended.events.iter().find_map(|e| if let Ev::Exit { line, .. } = e { line.as_ref() } else { None }).expect("actual settled exit event");
+    assert!(!exit.finds.iter().any(|i| i.id == crate::kit::SIDEARM_ID), "starting sidearm is not a find");
+    assert!(!exit.found.iter().any(|f| f.kind == "sword" && f.fate == "converted"), "paid-once sidearm never creates Gold");
+    assert_eq!(exit.spent, 0, "the paid-once kit is not charged on return");
+    assert_eq!(g.lineage.gold, paid_balance + exit.kept + exit.wake, "only actual exit carry/wake changes Gold; backup is not sold or rebought");
+    g.try_send().unwrap();
     assert!(g.run.as_ref().unwrap().hero.inv.iter().any(|i|i.id==crate::kit::SIDEARM_ID));
     let mut other=Game::new_resident(5);other.lineage.kit.insert(crate::firearm::SIDEARM_SLOT.into(),1);
     assert!(crate::firearm::sidearm_ladder(&other.lineage).is_none());other.try_send().unwrap();

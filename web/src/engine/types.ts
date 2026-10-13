@@ -259,6 +259,7 @@ export type Stake = {
 /** Cut 6 §1 — the ledger line of an exit: one arithmetic line the player can check, `text` is shown verbatim
  *  (`$84 carried · return keeps 60% → $50 · supplies −$12 → $68`). Fractions: `keep_pct` 0..100. */
 export type ExitLine = {
+  tier?: "bank" | "return" | "death"; // Rust outcome, independent of financial/XP shares.
   legacy_earned?: number;
   packages?: string[];
   bloodline_id?: number;
@@ -287,7 +288,17 @@ export type ExitLine = {
   found?: {
     kind: string;
     n: number;
-    fate: "kept" | "salvaged" | "shelved" | "used" | "left" | "stolen" | "bones" | "sheet" | "lost";
+    fate:
+      | "converted"
+      | "kept"
+      | "salvaged"
+      | "shelved"
+      | "used"
+      | "left"
+      | "stolen"
+      | "bones"
+      | "sheet"
+      | "lost";
   }[]; // QA 778fa1b (qaV): where each find ended, per kind and place (`sheet`: on the keep sheet — the core settles it at `keep`; `lost` never); Σ n == found_n
   found_n?: number; // QA 778fa1b (qaV): the units the run found (a leash stack counts each)
   toll?: number; // QA a946e04 (core): the toll this run's send paid (0/absent from D1 or on the night's pass) — the report's gold line counts it (qaT: `+$71 banked · −$40 spent` beside `$51 → $32`)

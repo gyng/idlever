@@ -16,26 +16,20 @@ import type { ExitLine, GoldLine } from "../engine/types";
 import { h } from "./dom";
 import { openWindow as openSheet } from "./sheet";
 import { goldWords } from "./gold-words";
+import { exitKind } from "./exit-kind";
 
 /** The ledger word of the exit `x` ended with: read off the line's own lead (`returned $0 · … · stalled` is a return that
  *  kept nothing — its keep share alone would say `died`); a timed-out return's ledger line is `lost thread D3` or
  *  `stalled D2`. */
 const tierWord = (x: ExitLine): RegExp => {
-  const lead =
-    /^(banked|returned|died|stalled|lost thread|driven)\b/.exec(x.text)?.[1] ??
-    (x.keep_pct >= 100 ? "banked" : x.keep_pct <= 0 ? "died" : "returned");
-  // QA 912e135: a timed-out run's line leads with its own word (`stalled $0 · $224 lost`), the ledger's
-  return lead === "banked"
+  const kind = exitKind(x);
+  return kind === "bank"
     ? /^banked\b/
-    : lead === "died"
+    : kind === "death"
       ? /^died\b/
-      : lead === "stalled"
-        ? /^stalled\b/
-        : lead === "lost thread"
-          ? /^lost\b/
-          : lead === "driven"
-            ? /^driven\b/
-            : /^(returned|lost|stalled)\b/;
+      : kind === "return"
+        ? /^(returned|lost|stalled|driven)\b/
+        : /^(returned|banked|died|lost|stalled|driven)\b/;
 };
 const isExit = (g: GoldLine): boolean =>
   /^(returned|banked|died|lost|stalled|driven)\b/.test(g.why);

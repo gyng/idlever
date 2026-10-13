@@ -33,7 +33,7 @@ pub struct Town {
     #[serde(default)]
     pub gold_v: u32,
     /// Buildings require construction by hand, including unbuilt plots in old saves.
-    #[serde(default = "manual_default", skip_serializing_if = "std::ops::Not::not")]
+    #[serde(default = "manual_default")]
     pub manual: bool,
     /// Buildings built, in the order they were (id, the day built).
     #[serde(default)]

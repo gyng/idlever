@@ -13,7 +13,7 @@ Then runs happen offline, uncapped. Every death names its cause. The dungeon has
 
 ```
 town (packages, buildings, works, forecast; the pen late) → send → run (rows fire, facts learned, drills)
-   → checkpoint: secure gold → exit on remaining carry: bank 100% · return 60% · death 0% → death screen (trace, gap/dice, patches)
+   → checkpoint: secure gold → exit on remaining carry: bank 100% · return 100% · death 0% → death screen (trace, gap/dice, patches)
    → report (learned · bests · found · deaths · workers · chest · reel) → camp
 ```
 
@@ -141,6 +141,13 @@ third of it the chores' floods).
    become the next contract.
 
 ## Hard invariants
+
+Owner economy amendment2026-10-13 (Cut196): accepted found-item pickups convert
+their value once into carried Gold. Alive Bank/Return credit100% of remaining
+carry; Death credits secured Gold plus explicitly named protection. Return
+XP/renown remain60%. Physical loss/recovery never subtracts or pays the same
+converted value again. No new Keep decision or exit salvage payment is created.
+Storehouse/worker retirement, saved kits and pacing validation remain pending.
 
 Owner amendment2026-10-04: routine full checks use18 current-player cases;
 the16-seed statistical balance/migration invariants below remain in the explicit

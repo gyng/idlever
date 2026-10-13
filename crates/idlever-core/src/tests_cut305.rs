@@ -456,9 +456,9 @@ fn guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment() {
         (ExitTier::Death, 1221, 1452, 0, false, true),
         (ExitTier::Death, 0, 0, 533, false, true),
         (ExitTier::Death, 0, 0, 0, false, false),
-        (ExitTier::Return, 0, 1, 0, false, false),
+        (ExitTier::Return, 0, 1, 0, false, true),
         (ExitTier::Return, 1221, 1452, 0, true, true),
-        (ExitTier::Return, 0, 1452, 0, true, false),
+        (ExitTier::Return, 0, 1452, 0, true, true),
     ] {
         let mut g = crate::tests::arena();
         g.lineage.gold_move(100_000, "test reserve");
@@ -474,7 +474,8 @@ fn guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment() {
         run.timed_out = timed_out;
         run.over = Some(tier);
         if tier == ExitTier::Death { run.hero.hp = 0; run.death_cause = Some("lurker".into()); }
-        let expected_kept = run.kept(tier);
+        let expected_kept = if tier == ExitTier::Death { secured } else { secured + loot };
+        assert_eq!(run.kept(tier), expected_kept, "full alive carry, secured-only death; timeout is not a financial cut");
         let gold = g.lineage.gold;
         g.finish_run().unwrap();
         assert_eq!(g.lineage.gold - gold, expected_kept, "passage was paid at send, not twice at exit");

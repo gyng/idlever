@@ -1,0 +1,347 @@
+
+running 843 tests
+....................................................................................... 87/843
+..................................... 124/843
+endgame::tests::live_unsettled_absence_and_invalid_state_requests_preserve_exact_saves --- FAILED
+.............................................................. 187/843
+tests::a_boss_that_cannot_be_hurt_drives_the_hero_off --- FAILED
+........ 196/843
+firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends --- FAILED
+.................. 215/843
+tests::a_pack_swap_that_lowers_the_carry_is_on_the_exit_line --- FAILED
+tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor --- FAILED
+............ 229/843
+tests::a_return_walks_home_and_can_die_on_the_way --- FAILED
+................... 249/843
+tests::a_watched_exit_carries_the_automations_picks --- FAILED
+........ 258/843
+tests::an_unused_supply_comes_back_to_the_shelf --- FAILED
+.... 263/843
+tests::auto_keep_follows_the_chip_and_never_evicts_across_categories --- FAILED
+..... 269/843
+tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home --- FAILED
+... 273/843
+tests::bones_only_has_no_vault --- FAILED
+... 277/843
+tests::bank_keeps_all_loot_and_gold --- FAILED
+.........i........ 296/843
+tests::carried_gold_never_goes_below_zero --- FAILED
+..... 302/843
+tests::death_keeps_nothing_and_leaves_bones --- FAILED
+.... 307/843
+tests::death_deltas_are_the_camp_forecasts_move --- FAILED
+..................... 329/843
+tests::exit_event_stake_and_report_carry_the_ledger --- FAILED
+..... 335/843
+tests::first_bank_at_each_depth_is_a_mark --- FAILED
+.... 340/843
+tests::exit_pending_then_keep_and_keep_pref --- FAILED
+..... 346/843
+tests::forge_rows_carry_the_next_rung --- FAILED
+. 348/843
+tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds --- FAILED
+................................. 382/843
+tests::loot_is_one_unit_from_pickup_to_the_bank --- FAILED
+..... 388/843
+tests::no_mark_for_the_frontier_and_one_a_night --- FAILED
+............. 402/843
+tests::ledger_line_reconciles_on_every_exit --- FAILED
+......................... 428/843
+tests::return_keeps_sixty_percent --- FAILED
+............ 441/843
+tests::salvage_feeds_the_forge_and_tiers_apply --- FAILED
+........................................................... 501/843
+tests::the_repeat_remembers_and_restores_a_kind_at_zero_gold --- FAILED
+.......... 512/843
+tests::theft_carries_its_amount --- FAILED
+....... 520/843
+tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back --- FAILED
+.................iii.....................i.....i......... 578/843
+tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought --- FAILED
+...................................................... 633/843
+tests::saves_from_307dbed_send_identically --- FAILED
+............... 649/843
+tests_cut28::a_caged_item_reaches_the_keep_sheet --- FAILED
+......... 659/843
+tests::the_keep_sheets_prices_are_the_ledgers --- FAILED
+............................ 688/843
+tests_cut305::guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment --- FAILED
+............................................ 733/843
+tests_cut119::the_307dbed_hash_restores_with_pets_pinned_off --- FAILED
+.... 738/843
+tests_cut118::the_307dbed_hash_holds_with_the_systems_pinned_off --- FAILED
+........................................... 782/843
+tests_cut30_pkg::prospective_projection_death_deltas_measure_current_indices_and_recache_after_edits --- FAILED
+............................................................
+failures:
+
+---- endgame::tests::live_unsettled_absence_and_invalid_state_requests_preserve_exact_saves stdout ----
+
+thread 'endgame::tests::live_unsettled_absence_and_invalid_state_requests_preserve_exact_saves' (1907447) panicked at crates/idlever-core/src/endgame.rs:480:9:
+assertion failed: pending.pending_exit.is_some()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::a_boss_that_cannot_be_hurt_drives_the_hero_off stdout ----
+
+thread 'tests::a_boss_that_cannot_be_hurt_drives_the_hero_off' (1910205) panicked at crates/idlever-core/src/tests.rs:10646:5:
+assertion `left == right` failed: carried 300
+  left: 300
+ right: 180
+
+---- firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends stdout ----
+
+thread 'firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends' (1907935) panicked at crates/idlever-core/src/gunner_tests.rs:78:38:
+called `Option::unwrap()` on a `None` value
+
+---- tests::a_pack_swap_that_lowers_the_carry_is_on_the_exit_line stdout ----
+
+thread 'tests::a_pack_swap_that_lowers_the_carry_is_on_the_exit_line' (1912572) panicked at crates/idlever-core/src/tests.rs:10055:5:
+a +3 sword counted more than the heal
+
+---- tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor stdout ----
+
+thread 'tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor' (1911218) panicked at crates/idlever-core/src/tests.rs:9077:24:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::a_return_walks_home_and_can_die_on_the_way stdout ----
+
+thread 'tests::a_return_walks_home_and_can_die_on_the_way' (1913562) panicked at crates/idlever-core/src/tests.rs:8278:5:
+60 % of $25
+
+---- tests::a_watched_exit_carries_the_automations_picks stdout ----
+
+thread 'tests::a_watched_exit_carries_the_automations_picks' (1915235) panicked at crates/idlever-core/src/tests.rs:7814:38:
+called `Option::unwrap()` on a `None` value
+
+---- tests::an_unused_supply_comes_back_to_the_shelf stdout ----
+
+thread 'tests::an_unused_supply_comes_back_to_the_shelf' (1916397) panicked at crates/idlever-core/src/tests.rs:7169:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::auto_keep_follows_the_chip_and_never_evicts_across_categories stdout ----
+
+thread 'tests::auto_keep_follows_the_chip_and_never_evicts_across_categories' (1916693) panicked at crates/idlever-core/src/tests.rs:2309:5:
+assertion `left == right` failed
+  left: ["leather+0", "summon_ally+0"]
+ right: ["mail+0", "summon_ally+0"]
+
+---- tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home stdout ----
+
+thread 'tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home' (1916963) panicked at crates/idlever-core/src/tests.rs:4111:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::bones_only_has_no_vault stdout ----
+
+thread 'tests::bones_only_has_no_vault' (1917336) panicked at crates/idlever-core/src/tests.rs:3589:22:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::bank_keeps_all_loot_and_gold stdout ----
+
+thread 'tests::bank_keeps_all_loot_and_gold' (1917253) panicked at crates/idlever-core/src/tests.rs:1051:37:
+called `Option::unwrap()` on a `None` value
+
+---- tests::carried_gold_never_goes_below_zero stdout ----
+
+thread 'tests::carried_gold_never_goes_below_zero' (1917718) panicked at crates/idlever-core/src/tests.rs:630:5:
+assertion `left == right` failed
+  left: 8
+ right: 2
+
+---- tests::death_keeps_nothing_and_leaves_bones stdout ----
+
+thread 'tests::death_keeps_nothing_and_leaves_bones' (1918122) panicked at crates/idlever-core/src/tests.rs:1086:37:
+called `Option::unwrap()` on a `None` value
+
+---- tests::death_deltas_are_the_camp_forecasts_move stdout ----
+
+thread 'tests::death_deltas_are_the_camp_forecasts_move' (1918121) panicked at crates/idlever-core/src/tests.rs:2388:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::exit_event_stake_and_report_carry_the_ledger stdout ----
+
+thread 'tests::exit_event_stake_and_report_carry_the_ledger' (1920188) panicked at crates/idlever-core/src/tests.rs:4772:13:
+assertion `left == right` failed: the kept number, not the carried one
+  left: Some(400)
+ right: Some(240)
+
+---- tests::first_bank_at_each_depth_is_a_mark stdout ----
+
+thread 'tests::first_bank_at_each_depth_is_a_mark' (1920240) panicked at crates/idlever-core/src/tests.rs:3712:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::exit_pending_then_keep_and_keep_pref stdout ----
+
+thread 'tests::exit_pending_then_keep_and_keep_pref' (1920191) panicked at crates/idlever-core/src/tests.rs:2262:28:
+exit pending on the last step
+
+---- tests::forge_rows_carry_the_next_rung stdout ----
+
+thread 'tests::forge_rows_carry_the_next_rung' (1921853) panicked at crates/idlever-core/src/tests.rs:6055:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds stdout ----
+
+thread 'tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds' (1922180) panicked at crates/idlever-core/src/tests.rs:9367:5:
+assertion `left == right` failed: the found heal is on the shelf; strength is not re-bought
+  left: [("heal", false)]
+ right: [("heal", true)]
+
+---- tests::loot_is_one_unit_from_pickup_to_the_bank stdout ----
+
+thread 'tests::loot_is_one_unit_from_pickup_to_the_bank' (1924597) panicked at crates/idlever-core/src/tests.rs:3694:24:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::no_mark_for_the_frontier_and_one_a_night stdout ----
+
+thread 'tests::no_mark_for_the_frontier_and_one_a_night' (1924800) panicked at crates/idlever-core/src/tests.rs:3746:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::ledger_line_reconciles_on_every_exit stdout ----
+
+thread '<unnamed>' (1924558) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 9
+  left: 100
+ right: 0
+
+thread '<unnamed>' (1924581) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 15
+  left: 100
+ right: 0
+
+thread '<unnamed>' (1924697) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 21
+  left: 100
+ right: 0
+
+thread '<unnamed>' (1924723) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 27
+  left: 100
+ right: 0
+
+thread '<unnamed>' (1924715) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 25
+  left: 100
+ right: 0
+
+thread '<unnamed>' (1924407) panicked at crates/idlever-core/src/tests.rs:4681:13:
+assertion `left == right` failed: seed 3
+  left: 100
+ right: 0
+
+---- tests::return_keeps_sixty_percent stdout ----
+
+thread 'tests::return_keeps_sixty_percent' (1928422) panicked at crates/idlever-core/src/tests.rs:1066:5:
+60% of loot plus salvage of the unkept items, ÷4: 25
+
+---- tests::salvage_feeds_the_forge_and_tiers_apply stdout ----
+
+thread 'tests::salvage_feeds_the_forge_and_tiers_apply' (1930392) panicked at crates/idlever-core/src/tests.rs:2225:24:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+---- tests::the_repeat_remembers_and_restores_a_kind_at_zero_gold stdout ----
+
+thread 'tests::the_repeat_remembers_and_restores_a_kind_at_zero_gold' (1934667) panicked at crates/idlever-core/src/tests.rs:9709:5:
+[Item { id: 100003, kind: "heal", hint: None, amount: 0, enchant: 0, known: true, free: false, found: false, paid: 0, auto_packed: false, value_claimed: false, enchanted: 0, firearm: None, forged: None }]
+
+---- tests::theft_carries_its_amount stdout ----
+
+thread 'tests::theft_carries_its_amount' (1934769) panicked at crates/idlever-core/src/tests.rs:6253:5:
+assertion `left == right` failed: the steal event carries the gold it took
+  left: Some(None)
+ right: Some(Some(7))
+
+---- tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back stdout ----
+
+thread 'tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back' (1935692) panicked at crates/idlever-core/src/tests.rs:2159:37:
+called `Option::unwrap()` on a `None` value
+
+---- tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought stdout ----
+
+thread 'tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought' (1934664) panicked at crates/idlever-core/src/tests.rs:7339:5:
+the restock bought (or shelved) heals on 0 seeds
+
+---- tests::saves_from_307dbed_send_identically stdout ----
+
+thread 'tests::saves_from_307dbed_send_identically' (1931213) panicked at crates/idlever-core/src/tests.rs:11445:5:
+assertion `left == right` failed
+  left: "f7a92f0a490debfe"
+ right: "4c5ee355b67975f1"
+
+---- tests_cut28::a_caged_item_reaches_the_keep_sheet stdout ----
+
+thread 'tests_cut28::a_caged_item_reaches_the_keep_sheet' (1946312) panicked at crates/idlever-core/src/tests_cut28.rs:393:37:
+a keep sheet
+
+---- tests::the_keep_sheets_prices_are_the_ledgers stdout ----
+
+thread 'tests::the_keep_sheets_prices_are_the_ledgers' (1934155) panicked at crates/idlever-core/src/tests.rs:8203:5:
+only 0 partial keeps checked
+
+---- tests_cut305::guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment stdout ----
+
+thread 'tests_cut305::guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment' (1948659) panicked at crates/idlever-core/src/tests_cut305.rs:482:9:
+assertion `left == right` failed: Return, secured=0, loot=1, passage=0, timeout=false
+  left: Some((1, 1))
+ right: Some((1, 0))
+
+---- tests_cut119::the_307dbed_hash_restores_with_pets_pinned_off stdout ----
+
+thread 'tests_cut119::the_307dbed_hash_restores_with_pets_pinned_off' (1942509) panicked at crates/idlever-core/src/tests_cut119.rs:246:5:
+assertion `left == right` failed
+  left: "395e784ede8b4a7c"
+ right: "2f3eb706b3d24c7c"
+
+---- tests_cut118::the_307dbed_hash_holds_with_the_systems_pinned_off stdout ----
+
+thread 'tests_cut118::the_307dbed_hash_holds_with_the_systems_pinned_off' (1940945) panicked at crates/idlever-core/src/tests_cut118.rs:453:5:
+assertion `left == right` failed
+  left: "62c72ae60565eea0"
+ right: "aa808dca72425139"
+
+---- tests_cut30_pkg::prospective_projection_death_deltas_measure_current_indices_and_recache_after_edits stdout ----
+
+thread 'tests_cut30_pkg::prospective_projection_death_deltas_measure_current_indices_and_recache_after_edits' (1951963) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1040:20:
+called `Result::unwrap()` on an `Err` value: "nothing to keep"
+
+
+failures:
+    endgame::tests::live_unsettled_absence_and_invalid_state_requests_preserve_exact_saves
+    firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends
+    tests::a_boss_that_cannot_be_hurt_drives_the_hero_off
+    tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor
+    tests::a_pack_swap_that_lowers_the_carry_is_on_the_exit_line
+    tests::a_return_walks_home_and_can_die_on_the_way
+    tests::a_watched_exit_carries_the_automations_picks
+    tests::an_unused_supply_comes_back_to_the_shelf
+    tests::auto_keep_follows_the_chip_and_never_evicts_across_categories
+    tests::auto_supply_restocks_the_shelf_when_the_hero_comes_home
+    tests::bank_keeps_all_loot_and_gold
+    tests::bones_only_has_no_vault
+    tests::carried_gold_never_goes_below_zero
+    tests::death_deltas_are_the_camp_forecasts_move
+    tests::death_keeps_nothing_and_leaves_bones
+    tests::exit_event_stake_and_report_carry_the_ledger
+    tests::exit_pending_then_keep_and_keep_pref
+    tests::first_bank_at_each_depth_is_a_mark
+    tests::forge_rows_carry_the_next_rung
+    tests::found_supplies_go_to_the_shelf_and_the_repeat_buys_only_used_kinds
+    tests::ledger_line_reconciles_on_every_exit
+    tests::loot_is_one_unit_from_pickup_to_the_bank
+    tests::no_mark_for_the_frontier_and_one_a_night
+    tests::return_keeps_sixty_percent
+    tests::salvage_feeds_the_forge_and_tiers_apply
+    tests::saves_from_307dbed_send_identically
+    tests::the_keep_sheets_prices_are_the_ledgers
+    tests::the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought
+    tests::the_repeat_remembers_and_restores_a_kind_at_zero_gold
+    tests::theft_carries_its_amount
+    tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back
+    tests_cut118::the_307dbed_hash_holds_with_the_systems_pinned_off
+    tests_cut119::the_307dbed_hash_restores_with_pets_pinned_off
+    tests_cut28::a_caged_item_reaches_the_keep_sheet
+    tests_cut305::guide_income_counts_actual_checkpoint_passage_and_rounded_exit_payment
+    tests_cut30_pkg::prospective_projection_death_deltas_measure_current_indices_and_recache_after_edits
+
+test result: FAILED. 801 passed; 36 failed; 6 ignored; 0 measured; 0 filtered out; finished in 52.85s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

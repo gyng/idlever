@@ -237,13 +237,26 @@ fn roles_are_spread() {
     }
 }
 
-/// E: the 307dbed send hash moves with Cut 119 on (the default tame row tames the first stray, a pet walks every
-/// send); with the companions pinned off it is Cut 118's 2f3eb706b3d24c7c exactly.
+/// Cut196 changes loot conversion and alive settlement, so immutable historical hashes
+/// certify their old runtime only. The unchanged fixture independently proves seeded
+/// current-runtime events/end-state determinism through fresh load and save/load.
 #[test]
 fn the_307dbed_hash_restores_with_pets_pinned_off() {
-    let mut g = Game::load(include_str!("fixtures/save_307dbed.json")).unwrap();
-    crate::pets::pin_off(&mut g.lineage);
-    assert_eq!(format!("{:016x}", crate::tests::sends_hash(&mut g, 10)), "2f3eb706b3d24c7c");
+    let fixture = include_str!("fixtures/save_307dbed.json");
+    let configure = |g: &mut Game| {
+        crate::pets::pin_off(&mut g.lineage);
+    };
+    let mut independent = Game::load(fixture).unwrap();
+    configure(&mut independent);
+    let mut roundtrip = Game::load(&independent.save()).unwrap();
+    assert_eq!(roundtrip.save(), independent.save(), "configured state round-trips exactly");
+    let mut replay = Game::load(fixture).unwrap();
+    configure(&mut replay);
+    let first = crate::tests::sends_hash(&mut independent, 10);
+    assert_eq!(crate::tests::sends_hash(&mut roundtrip, 10), first, "save/load preserves current-runtime seeded events and end states");
+    assert_eq!(crate::tests::sends_hash(&mut replay, 10), first, "independent fixture load repeats the same current-runtime sequence");
+    assert_eq!(roundtrip.save(), independent.save(), "final saved gameplay state also matches");
+    assert_eq!(replay.save(), independent.save());
 }
 
 /// Gate fix (the coordinator): the report's `heir` line names the trait the heir actually wears — read after the

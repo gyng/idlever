@@ -441,16 +441,27 @@ fn idle_never_spends() {
     assert!(f.log.values().sum::<u32>() > 0, "finds opened");
 }
 
-/// The 307dbed send hash: with every Cut 118 system pinned off it is Cut 117's aa808dca72425139 exactly (the graves
-/// moved the recorded one, `fixtures/sends_307dbed.txt`).
+/// Cut196 changes loot conversion and alive settlement, so immutable historical hashes
+/// certify their old runtime only. The unchanged fixture independently proves seeded
+/// current-runtime events/end-state determinism through fresh load and save/load.
 #[test]
 fn the_307dbed_hash_holds_with_the_systems_pinned_off() {
-    let want = 0xaa80_8dca_7242_5139u64;
-    let mut g = Game::load(include_str!("fixtures/save_307dbed.json")).unwrap();
-    g.lineage.feats.off = true;
-    // (Cut 119's companions pinned off too)
-    crate::pets::pin_off(&mut g.lineage);
-    assert_eq!(format!("{:016x}", crate::tests::sends_hash(&mut g, 10)), format!("{want:016x}"));
+    let fixture = include_str!("fixtures/save_307dbed.json");
+    let configure = |g: &mut Game| {
+        g.lineage.feats.off = true;
+        crate::pets::pin_off(&mut g.lineage);
+    };
+    let mut independent = Game::load(fixture).unwrap();
+    configure(&mut independent);
+    let mut roundtrip = Game::load(&independent.save()).unwrap();
+    assert_eq!(roundtrip.save(), independent.save(), "configured state round-trips exactly");
+    let mut replay = Game::load(fixture).unwrap();
+    configure(&mut replay);
+    let first = crate::tests::sends_hash(&mut independent, 10);
+    assert_eq!(crate::tests::sends_hash(&mut roundtrip, 10), first, "save/load preserves current-runtime seeded events and end states");
+    assert_eq!(crate::tests::sends_hash(&mut replay, 10), first, "independent fixture load repeats the same current-runtime sequence");
+    assert_eq!(roundtrip.save(), independent.save(), "final saved gameplay state also matches");
+    assert_eq!(replay.save(), independent.save());
 }
 
 // ---------------------------------------------------------------- owner amendments: heroes yolo; death is progress

@@ -223,10 +223,14 @@ export const exitExtras = (
 /** QA 778fa1b (V: found items that ended in no named place): the finds the other words don't place — `· left mail · bones leash`.
  *  QA 912e135: `bones` only for a line without the pile's own list (`ExitLine.bones` names every item of it). */
 const fatesText = (xs: ExitLine["found"], bones?: "bones", brief = false): string =>
-  (["left", ...(bones ? [bones] : [])] as const)
+  (["converted", "left", ...(bones ? [bones] : [])] as const)
     .map((f) => {
       const ys = (xs ?? []).filter((y) => y.fate === f && y.n > 0);
       if (!ys.length) return "";
+      if (f === "converted")
+        return brief
+          ? /* copy:callout */ ` · ${ys.reduce((a, y) => a + y.n, 0)} discovered`
+          : /* copy:callout */ ` · discovered: ${shelvedText(ys)}`;
       // QA 524827b (qaAA: `left dagger`, `left 14` — "left" as a verb and a bare count): the finds left behind, with the unit when counted
       if (f === "left")
         return brief

@@ -231,7 +231,11 @@ is deferred; this is the taste of it.
 - **Vault "choose one of N"** as the only direct interrupt, only while watching: presence
   earns a decision, never a click.
 - **Record checkpoints** secure the carried gold immediately and never end a healthy run.
-  On the carry since the checkpoint: bank 100%, return 60%, death 0%. Secured gold comes home
+  Owner amendment2026-10-13 (Cut196): on carry since the checkpoint, bank100%,
+  alive return100%, death0%; Return XP/renown remain60%. Found items convert once
+  at accepted pickup; physical loss/recovery cannot deduct or repay that value.
+  Alive found objects settle automatically without Keep or exit salvage payment.
+  Secured gold comes home
   whole on every exit; the separate heir purse floor is 30%. Meta never lost. Brought vault items are lost on death (the loadout is a bet).
 - **Death screen**: cause, margin, last five firings, telegraphs, `gap`/`dice`, candidate
   patches with forecast deltas, free edit. Morgue text export with seed and rules.

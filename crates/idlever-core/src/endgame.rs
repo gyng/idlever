@@ -474,17 +474,23 @@ mod tests {
     #[test]
     fn live_unsettled_absence_and_invalid_state_requests_preserve_exact_saves() {
         let mut live = Game::new_resident(3);live.send();live.lineage.ended=true;
-        let mut pending = Game::new_resident(3);pending.send();
-        pending.run.as_mut().unwrap().over=Some(crate::engine::ExitTier::Bank);
-        pending.finish_run();pending.lineage.ended=true;
-        assert!(pending.pending_exit.is_some());
+        let mut settled = Game::new_resident(3);settled.send();
+        settled.run.as_mut().unwrap().over=Some(crate::engine::ExitTier::Bank);
+        settled.finish_run();
+        assert!(settled.pending_exit.is_none(), "ordinary returns settle atomically");
+        assert!(!settled.lineage.ended, "a settled return is not a dungeon clear");
+        let mut ready = settled.clone();
+        ready.lineage.ended = true;
+        ready.lineage.endgame = Some(Progress {tier:0, unlocked:1, cleared:Some(0)});
+        ready.begin_descent(1).expect("a genuinely recorded clear needs no Keep confirmation");
+        assert_eq!(ready.descent_progress().tier, 1);
         let mut absence = Game::new_resident(3);
         crate::offline::run_offline_slice(&mut absence,1,false);
         assert!(absence.offline_absence.is_some());absence.lineage.ended=true;
         let mut invalid = Game::new_resident(3);invalid.lineage.ended=true;
         invalid.lineage.endgame=Some(Progress {tier:3, unlocked:1, cleared:Some(0)});
         assert!(Game::load(&invalid.save()).is_err());
-        for mut g in [live,pending,absence,invalid] {
+        for mut g in [live,settled,absence,invalid] {
             let before=g.save();
             assert!(g.begin_descent(1).is_err());
             assert!(g.save()==before, "refusal preserves every saved field");

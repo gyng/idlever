@@ -1037,7 +1037,8 @@ fn prospective_projection_death_deltas_measure_current_indices_and_recache_after
         }
     }
     let id = id.expect("the first heir dies");
-    g.keep(vec![]).unwrap();
+    assert!(g.pending_exit.is_none(), "death settlement needs no Keep transaction");
+    assert!(g.keep(vec![]).is_err(), "no stale post-settlement Keep remains");
     let recorded = g.deaths[&id].rules.clone();
     let archived = g.deaths[&id].t10.clone();
     let current = RuleSet { rows: vec![Row::new(vec![], Verb::new("bank")), Row::new(vec![], Verb::new("return"))], ..Default::default() };
