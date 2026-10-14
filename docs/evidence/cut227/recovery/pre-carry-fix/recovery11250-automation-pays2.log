@@ -1,0 +1,9 @@
+dayplayer: targeted rows automation-pays — configurations AWAY,AWAY-nodes
+dayplayer: AWAY-nodes s1 done in 35s 
+dayplayer: AWAY s1 done in 38s 
+dayplayer: AWAY-nodes s2 done in 37s 
+dayplayer: AWAY s2 done in 40s 
+bar (targeted)                                                                value  result
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 36 h · mean best 29.21 vs 29.04  PASS
+dayplayer (targeted: automation-pays, 40s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `automation-pays` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

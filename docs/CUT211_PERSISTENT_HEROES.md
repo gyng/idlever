@@ -11,6 +11,28 @@ rank), damage (+1 per rank) and armour (+1 per rank), with escalating earned
 Legacy prices; the whole allocation can currently be refunded at every visit.
 Dungeon ascension is a separate bottom-of-dungeon reset of gold/progression.
 
+## Owner amendment 2026-10-14 — death recovery 600 → 12000 ticks
+
+Death (and rebirth) recovery is now **12000 ticks (20 game minutes, the old
+wake)**, `persistent::RECOVERY_TICKS` (also `engine::WAKE_TICKS`). The 600-tick
+(60 s) recovery below let PICKED brute-force deep walls by dying repeatedly, and
+the hard Cut30 invariant "TUNED beats PICKED by ≥15% at D33" fell to 1.00 (Cut227
+bisect: a327b8dd). The owner chose a longer recovery over weakening the gate.
+
+Recovery above ten minutes exposed a bypass: the absence's carried-rest cap
+(`REST_CARRY_TICKS`, 10 min) also trimmed owed recovery. The cap now trims
+ordinary rest only. Search on the fixed source (TUNED/PICKED 16 seeds; routine
+"Workers pay the away player"; qa forecast-vs-sends): 7500 1.00 FAIL; 9000 1.17,
+qa FAIL; 10500 1.17, workers and qa FAIL; 11250 1.17, workers FAIL; **12000 1.17,
+all PASS** (3000/6000 ≤1.07 FAIL). 12000 is the shortest tested value passing
+the three rows above. The routine IDLE "Stance L5 by day 7" median then read 8
+on its two seeds (16 seeds: 7), since fewer runs fit a day; content was tuned,
+not the gate: package L5 needs 200 runs (was 220; `LEVEL_RUNS`). Evidence: `docs/evidence/cut227/recovery/`. Recovery copy
+reads minutes (`Recovering 20m`). The text below keeps the original 600-tick
+contract as history; each "60 seconds"/"600 ticks" now means `RECOVERY_TICKS`.
+Acceptance item 2 reads: Send refuses with one tick remaining; zero enables it.
+Controlled client fixtures at the new value: `docs/evidence/cut227/recovery/fixtures/`.
+
 ## Ownership and ordinary defeat
 
 One persistent hero belongs to each existing bloodline slot. Stable actor identity

@@ -1457,7 +1457,12 @@ fn main() {
     let loo_seeds = get("--loo-seeds", 4);
     // (TUNED is a leave-one-out's base: the same seeds, `--tuned-seeds`, the bots' own by default)
     let tuned_seeds = get("--tuned-seeds", seeds);
-    let seeds_of = |c: usize| if matches!(cfgs[c].bot, Bot::Away | Bot::Daily) { seeds } else if cfgs[c].without.is_some() { loo_seeds.min(seeds) } else if cfgs[c].bot == Bot::Tuned { tuned_seeds.min(seeds) } else { seeds };
+    // (the owner 2026-10-14: `--random-seeds N` plays RANDOM and PICKED on N seeds (never fewer than `--seeds`) for
+    // the RANDOM-vs-PICKED row alone — its ≥ 14/16 bar demanded 2/2 on the routine's two seeds; every other row reads
+    // PICKED's and RANDOM's first `--seeds` seeds, unchanged)
+    let random_seeds = get("--random-seeds", seeds).max(seeds);
+    let has_random = cfgs.iter().any(|c| c.bot == Bot::Random && c.without.is_none());
+    let seeds_of = |c: usize| if matches!(cfgs[c].bot, Bot::Away | Bot::Daily) { seeds } else if cfgs[c].without.is_some() { loo_seeds.min(seeds) } else if cfgs[c].bot == Bot::Tuned { tuned_seeds.min(seeds) } else if cfgs[c].bot == Bot::Random || (cfgs[c].bot == Bot::Picked && has_random) { random_seeds } else { seeds };
     // Per-job results are kept under `target/gates/dp/` (a job is a pure function of the code, the bot, the
     // seed and the days): a rerun reprints at once, and an interrupted run resumes where it stopped. The key
     // is the binary's own hash, or — under `tools/gates.mjs`, which sets `IDLEVER_SRC_KEY` to the hash of the
@@ -1651,9 +1656,12 @@ fn main() {
     }
     println!("\nbots over {seeds} seeds × {days} days × {checkins}/day ({:.0}s)", t0.elapsed().as_secs_f64());
     let idle = by("IDLE");
-    let picked = by("PICKED");
+    // (`--random-seeds`: the RANDOM-vs-PICKED row reads every seed played; the other rows the first `--seeds`)
+    let picked_all = by("PICKED");
+    let random_all = by("RANDOM");
+    let picked: Vec<SeedOut> = picked_all.iter().filter(|o| o.seed <= seeds).cloned().collect();
     let tuned = by("TUNED");
-    let random = by("RANDOM");
+    let random: Vec<SeedOut> = random_all.iter().filter(|o| o.seed <= seeds).cloned().collect();
     let mut bars: Vec<(String, String, bool)> = Vec::new();
     // (rows the owner keeps in view, ungated)
     let mut infos: Vec<(String, String)> = Vec::new();
@@ -1771,9 +1779,10 @@ fn main() {
     // (the owner, round 6: a random package is mostly a good one, so RANDOM is weighed against the picker —
     // never ahead of PICKED on any seed at D13 or D23; the RANDOM-vs-IDLE row prints as retired)
     let mut retired: Vec<(String, String)> = Vec::new();
-    if !random.is_empty() && !picked.is_empty() {
+    if !random_all.is_empty() && !picked_all.is_empty() {
+        let (random, picked) = (&random_all, &picked_all);
         let n = random.len().min(picked.len());
-        let at = |i: usize| random.iter().zip(&picked).filter(|(r, p)| hours_or(r, i, cap) >= hours_or(p, i, cap)).count();
+        let at = |i: usize| random.iter().zip(picked).filter(|(r, p)| hours_or(r, i, cap) >= hours_or(p, i, cap)).count();
         let (a, b) = (at(1), at(3));
         // (Cut 30.5, the owner 2026-10-02: under the record rule a lucky lineage dives a band in one absence — RANDOM
         // is slower than PICKED on the median seed and on ≥ 14/16 of the seeds, at D13 and D23; was every seed)

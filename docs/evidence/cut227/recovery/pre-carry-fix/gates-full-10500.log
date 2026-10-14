@@ -1,0 +1,216 @@
+gates: routine FULL: 18 current-player fortnight cases; broad balance/migration audit is opt-in; source 350a079c46911585; threads metrics=15 qa=12 dayplayer=16; cache hits=none
+gates: still running metrics 30s, dayplayer 30s, qa 30s; completed legs already saved
+gates: qa finished in 42.6s (exit 1)
+gates: still running metrics 60s, dayplayer 60s; completed legs already saved
+gates: still running metrics 90s, dayplayer 90s; completed legs already saved
+stances D8 stone: bold 0.431 hunter 0.271 guarded 0.000
+stances D8 D1: bold 0.484 hunter 0.444 guarded -0.028
+stances D13 stone: guarded 0.029 hunter 0.017 bold 0.013
+stances D13 D1: hunter -0.018 guarded -0.020 bold -0.210
+stances D18 stone: guarded 0.248 bold 0.152 hunter 0.090
+stances D18 D1: hunter 0.029 guarded -0.020 bold -0.078
+stances D23 stone: hunter 0.253 bold 0.124 guarded 0.110
+stances D23 D1: hunter 0.022 guarded -0.016 bold -0.243
+stances D28 stone: bold 0.001 guarded 0.000 hunter 0.000
+stances D28 D1: guarded -0.011 hunter -0.061 bold -0.248
+gates: still running metrics 120s, dayplayer 120s; completed legs already saved
+gates: metrics finished in 125.2s (exit 0)
+gates: still running dayplayer 150s; completed legs already saved
+gates: still running dayplayer 180s; completed legs already saved
+gates: still running dayplayer 210s; completed legs already saved
+gates: still running dayplayer 240s; completed legs already saved
+dayplayer: PICKED s1 done in 245s 
+gates: still running dayplayer 270s; completed legs already saved
+dayplayer: PICKED s11 done in 280s 
+dayplayer: PICKED s4 done in 290s 
+dayplayer: PICKED s9 done in 291s 
+dayplayer: PICKED s3 done in 297s 
+gates: still running dayplayer 300s; completed legs already saved
+dayplayer: PICKED s7 done in 306s 
+dayplayer: PICKED s10 done in 317s 
+gates: still running dayplayer 330s; completed legs already saved
+dayplayer: IDLE s1 done in 44s 
+dayplayer: PICKED s12 done in 340s 
+dayplayer: PICKED s13 done in 340s 
+dayplayer: HANDS s1 done in 45s 
+dayplayer: RANDOM s1 done in 53s 
+gates: still running dayplayer 360s; completed legs already saved
+dayplayer: PICKED s2 done in 363s 
+dayplayer: PICKED s8 done in 369s 
+dayplayer: HANDS s2 done in 40s 
+dayplayer: IDLE s2 done in 45s 
+dayplayer: RANDOM s2 done in 47s 
+gates: still running dayplayer 390s; completed legs already saved
+dayplayer: PICKED s6 done in 400s 
+dayplayer: TUNED s1 done in 409s 
+dayplayer: PICKED s5 done in 414s 
+gates: still running dayplayer 420s; completed legs already saved
+dayplayer: PICKED s14 done in 446s 
+gates: still running dayplayer 450s; completed legs already saved
+dayplayer: AWAY s1 done in 140s 
+dayplayer: TUNED s2 done in 460s 
+gates: still running dayplayer 480s; completed legs already saved
+dayplayer: RANDOM s3 done in 101s 
+gates: still running dayplayer 510s; completed legs already saved
+dayplayer: RANDOM s4 done in 119s 
+dayplayer: AWAY-nodes s1 done in 185s 
+dayplayer: RANDOM s6 done in 113s 
+dayplayer: RANDOM s5 done in 118s 
+gates: still running dayplayer 540s; completed legs already saved
+dayplayer: AWAY s2 done in 173s 
+dayplayer: RANDOM s9 done in 89s 
+dayplayer: AWAY-nodes s2 done in 179s 
+dayplayer: RANDOM s7 done in 120s 
+dayplayer: RANDOM s8 done in 111s 
+gates: still running dayplayer 570s; completed legs already saved
+dayplayer: RANDOM s10 done in 94s 
+dayplayer: DAILY s1 done in 289s 
+gates: still running dayplayer 600s; completed legs already saved
+dayplayer: RANDOM s12 done in 88s 
+dayplayer: RANDOM s11 done in 95s 
+dayplayer: RANDOM s13 done in 88s 
+dayplayer: DAILY-nodes s1 done in 281s 
+dayplayer: PICKED s16 done in 339s 
+dayplayer: RANDOM s14 done in 94s 
+dayplayer: PICKED s15 done in 381s 
+dayplayer: DAILY s2 done in 265s 
+dayplayer: RANDOM s15 done in 88s 
+dayplayer: RANDOM s16 done in 80s 
+gates: still running dayplayer 630s; completed legs already saved
+dayplayer: DAILY-nodes s2 done in 259s 
+routine coverage: current player modes and paired daily/away workers; historical migration and TUNED system-removal balance comparisons require --exhaustive
+1 bar(s) FAIL
+gates: dayplayer finished in 643.4s (exit 1)
+Expeditions per 8 h, IDLE (fresh · D13) in 6–24             14.4 · 12.4  PASS
+A fresh lineage's first 20-min absence after the scout's hire returns ≥ 1 run ≥ 95%       100% (30/30)  PASS
+A 20-min absence returns ≥ 1 run ≥ 95% (fresh 30 + D13 5)               100%  PASS
+Lanes D5 (IDLE): both reach D8, weaker ≥ ½ the stronger (n=3) near 0.49 · far 0.32  PASS
+A drill-needed item is in the pack at its wall ≥ 90% (n=96)               100%  PASS
+Steady is the safest default: fewest deaths a send from D1 steady 6% guarded 7% bold 94% hunter 24%  PASS
+Guarded, Bold, Hunter each best at ≥ 1 wall by ≥ 0.02, none at all (7 won) bold 2 guarded 2 hunter 3  PASS
+Quests keepable ≥ 20%/night by a package set, pen closed (n=68) worst 96% bank D19  PASS
+gates: all PASS (current game, 8 rows, 125.1s; legacy cohorts are --exhaustive)
+forecast bank ≈ real sends (good set, Σ seeds): forecast 0.580 (1200 sims) · sends 0.625 (1080) · ±0.040
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds): forecast 0.852 (1320 sims) · sends 0.863 (1188) · ±0.027
+stall leg: 7 records · forecast stall share Σ 0.80 → 0.02 with the top patch
+invariant                                                    checks  result
+PENDING's unlocks are the short list's available cards           10  PASS
+`Nothing lost to the den` never beside a theft still out         14  PASS
+`brought` == the loadout                                         10  PASS
+`nothing_beats_base` ⇔ a dice death no patch beats               36  PASS
+a DICE death has no recent own row whose cut survives more        1  PASS
+a `saved him` note names the row that fired at the low point       13  PASS
+a bought leash comes home from a run that tamed nothing          20  PASS
+a cold cache reads the same two passes                            3  PASS
+a costly exit never leads beside an alternative                  36  PASS
+a death has a verdict and a trace                                10  PASS
+a death trace ends at 0 hp (the killing blow)                    29  PASS
+a death trace's blows step the hp down to the killing blow        3  PASS
+a death's blow is the run's last hurt to the hero                10  PASS
+a death's chain link is its row's newest reason (never one the row outlived)       22  PASS
+a death's last hp falls to 0 in blow rows                        49  PASS
+a death's note names the killer or the killing harm              29  PASS
+a death's notes never say `saved him`                            36  PASS
+a died / stalled / lost-thread line kept nothing but its secured gold      120  PASS
+a drive-off with its counter in the set says `order` (the held row), else `no counter`        2  PASS
+a drive-off's line leads `driven`                               120  PASS
+a drive-off's line names the boss once                            2  PASS
+a drive-off's or a stall's reel never says `Returned with`        2  PASS
+a dropped supply's refund == its price                           10  PASS
+a floor's `pick up` chores with nothing taken ≤ 50               60  PASS
+a forecast move's parts (incl. package) sum to the whole          3  PASS
+a forecast move's parts sum to the whole                         30  PASS
+a gap or row verdict has a baseline under 100 %                  36  PASS
+a gate's `needs` never names a held fact                        692  PASS
+a headline find is on FOUND                                       2  PASS
+a margin's unknown count never contradicts a row's `no unknown`       36  PASS
+a move with no edit has no rows part                              3  PASS
+a package move is the `package` part                              3  PASS
+a patch's `exits` ⇔ its row returns or banks                     88  PASS
+a patch's conds and verb are in the vocabulary                   82  PASS
+a patch's reach == the camp forecast's move once applied (± its bar)        3  PASS
+a patch's reach from→to agrees with its move                      2  PASS
+a patch's whole-run move is the camp's `vs sent` once applied (its floor, move, ± and death)        3  PASS
+a reel `died` line names the run's death cause                   29  PASS
+a reel drive-off names the boss who drove him off                 1  PASS
+a reel line is a story line                                      29  PASS
+a report's outcome tiles sum to its runs (stalled + driven ≤ returned)       10  PASS
+a route verdict names its fork (and only it)                     36  PASS
+a row reason is from the table                                 1673  PASS
+a row with a locked cond is marked on the wire (and only it)       30  PASS
+a row's share of the actions ≤ 1                                 20  PASS
+a row's why-not count names its unit (`acts`)                    20  PASS
+a shadowed row changes no sim                                     3  PASS
+a shadowed row never fires                                       10  PASS
+a shadowed row reads the same forecast                            3  PASS
+a shadowed row's pending line names its shadow                   10  PASS
+a stall's top patch forecasts fewer stalls (Σ records)            1  PASS
+a stamp never contradicts its replay counts (a gap most replays survive leans `dice`)       36  PASS
+a trace's hp never falls without a blow row                     540  PASS
+a waystone start pays no toll (rich purse)                       10  PASS
+a waystone start pays no toll and is never short (empty purse)       10  PASS
+after the refine a forecast read is the refined panel             3  PASS
+an absence of deaths rested one wake per run                      4  PASS
+an exit line leads with one tier word and names no other        120  PASS
+an exit's `bones: N items` == the pile it lists                 120  PASS
+an exit's kept finds are in the vault                            70  PASS
+an exit's shelved finds == its shelved supplies                  70  PASS
+an unknown kind for sale is learned by buying it, and its gate says `buy`      693  PASS
+an unmeasured card never auto-inserts                            10  PASS
+camp supplies == the run's packed kinds                          10  PASS
+death()'s patches are camp_pending until death_deltas            10  PASS
+death_deltas returns death()'s patches, measured                  3  PASS
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds)            1  PASS
+forecast bank ≈ real sends (good set, Σ seeds)                    1  FAIL (1)  — forecast 0.580 over 1200 sims vs sends 0.625 over 1080, band ±0.040
+forecast bank ≤ reach at the bank row's depth                    19  PASS
+forecast death 0 ⇒ causes empty                                  20  PASS
+forecast ends sum to 1 ± 1e-9                                    20  PASS
+forecast → every sheet's reads → forecast: identical             10  PASS
+found at an exit == kept + salvaged + shelved + used + left + stolen + bones      120  PASS
+gold header == ledger sum                                        40  PASS
+meter time split == its ticks                                    20  PASS
+meter totals == the event stream's sums (dealt · taken · healed · fires · supplies · gold)       20  PASS
+night gold: earned + salvage + wake pay + recovered + fetched − spent == delta       10  PASS
+no `foes not ≥N` beside a foes column of N+                    1673  PASS
+no death screen carries a patch under its baseline (unless below_bar)       88  PASS
+no dice death's margin names an unused item                       1  PASS
+no patch already in the set                                      21  PASS
+no patch survives 0 % beside one that survives                   88  PASS
+no trace turn is a trait's (row −1)                               9  PASS
+no wire label names a flavour whose kind is identified          570  PASS
+no wire label names an unidentified kind                        692  PASS
+report SALVAGED rows sum to the header's salvage                 10  PASS
+report gold == the gold sheet (Σ kept == home; purse top-ups == wake == the lines')       80  PASS
+report lines == the gold sheet's exit lines (word and amount)       80  PASS
+report runs == deaths + banked + returned                        10  PASS
+report spent == the batch's                                      10  PASS
+report stolen == thefts − got back                               10  PASS
+report tiles == its lines (banked · returned · stalled · driven · died)       80  PASS
+save → load → forecast: identical                                10  PASS
+save → load → forecast: identical (refined)                       3  PASS
+save/load round-trips the lineage                                10  PASS
+the exit line's swapped ≥ the stake's last                       10  PASS
+the gem on every screen is the first shown, never harms, and is the best whole-run patch        8  PASS
+the gem's default patch never harms whole runs (death > ±, reach < −±)        3  PASS
+the heir purse: a top-up per death below the line                10  PASS
+the morgue names the killer by its title                         29  PASS
+the qaM shadow is found (R1 return over a later return)          10  PASS
+the report lists its drive-offs (by run)                         10  PASS
+the report's bones == the finds the chronicle names              10  PASS
+the report's bounty is the camp's before the absence             10  PASS
+the report's gold terms sum to the purse's move                  80  PASS
+the report's stalled lines ≤ its stalled tile ≤ its returned       10  PASS
+the rows that ran all night count the same sends                 10  PASS
+the rows' part is the edit's paired move                          3  PASS
+the stake's death keep == checkpoints + death share of carry at risk     1028  PASS
+the stake's swapped never falls within a run                   1028  PASS
+the top patch applies through set_rules                          10  PASS
+the top patch survives within 10 pts of the best shown           36  PASS
+the top patch, applied, acts in one of the next 6 sends that reach its floor       10  PASS
+the unlock short list is stable across reads                     10  PASS
+the verdict names `package · row` when a package row acted        9  PASS
+the vocabulary offers every drink / read a set holds             10  PASS
+worst death carries a verdict and a trace                         9  PASS
+qa: FAIL (10 seeds, 42.6s)
+qa invariants: FAIL
+exit 1

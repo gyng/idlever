@@ -249,7 +249,7 @@ pub const GOLD_DIVISOR: i32 = 4;
 /// Cut 2 §1: camp rest after an expedition lasts half as long as it did (Cut 12 §5; Cut 2: as
 /// long), capped at 30 min and never shorter than the wake (a two-minute `hp<50 → return`
 /// sortie would otherwise farm hundreds of runs a day); a death is followed by a fixed
-/// 20-minute wake. Ticks (10/s).
+/// recovery (`persistent::RECOVERY_TICKS`: 17.5 minutes, owner amendment 2026-10-14). Ticks (10/s).
 pub const REST_CAP_TICKS: u32 = 30 * 60 * 10;
 pub const REST_MIN_TICKS: u32 = 20 * 60 * 10;
 pub const WAKE_TICKS: u32 = crate::persistent::RECOVERY_TICKS as u32;

@@ -1,0 +1,40 @@
+dayplayer: targeted rows tuned-picked — configurations PICKED,TUNED
+dayplayer: TUNED s10 done in 48s 
+dayplayer: TUNED s1 done in 51s 
+dayplayer: TUNED s9 done in 51s 
+dayplayer: TUNED s8 done in 53s 
+dayplayer: TUNED s6 done in 65s 
+dayplayer: TUNED s4 done in 67s 
+dayplayer: TUNED s13 done in 69s 
+dayplayer: TUNED s7 done in 73s 
+dayplayer: TUNED s15 done in 75s 
+dayplayer: TUNED s3 done in 75s 
+dayplayer: TUNED s16 done in 77s 
+dayplayer: TUNED s11 done in 80s 
+dayplayer: PICKED s1 done in 34s 
+dayplayer: TUNED s12 done in 90s 
+dayplayer: TUNED s14 done in 96s 
+dayplayer: TUNED s2 done in 97s 
+dayplayer: TUNED s5 done in 107s 
+dayplayer: PICKED s3 done in 57s 
+dayplayer: PICKED s10 done in 33s 
+dayplayer: PICKED s6 done in 46s 
+dayplayer: PICKED s4 done in 63s 
+dayplayer: PICKED s7 done in 49s 
+dayplayer: PICKED s9 done in 44s 
+dayplayer: PICKED s8 done in 46s 
+dayplayer: PICKED s13 done in 46s 
+dayplayer: PICKED s12 done in 49s 
+dayplayer: PICKED s2 done in 81s 
+dayplayer: PICKED s5 done in 67s 
+dayplayer: PICKED s16 done in 37s 
+dayplayer: PICKED s11 done in 60s 
+fail-fast: `tuned-picked` settled FAIL after PICKED s11 (day 2) (137s)
+  TUNED beats PICKED by ≥ 15 % at D33
+  D33 1.00…1.07 with 2 seeds left (s1 1.00, s2 1.00, s3 1.14, s4 1.20, s5 1.00, s6 1.20, s7 1.33, s8 1.00, s9 1.25, s10 1.00, s11 1.00, s12 1.17, s13 1.00, s16 1.00)
+
+bar (targeted, fail-fast)                                                     value  result
+TUNED beats PICKED by ≥ 15 % at D33                                         settled  FAIL
+    D33 1.00…1.07 with 2 seeds left (s1 1.00, s2 1.00, s3 1.14, s4 1.20, s5 1.00, s6 1.20, s7 1.33, s8 1.00, s9 1.25, s10 1.00, s11 1.00, s12 1.17, s13 1.00, s16 1.00)
+dayplayer (targeted: tuned-picked, fail-fast, 137s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `tuned-picked` (fail-fast) FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

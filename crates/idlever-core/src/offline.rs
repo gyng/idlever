@@ -60,7 +60,10 @@ pub(crate) fn begin_absence(game: &mut Game) -> Absence {
         game.lineage.rest_watched = false;
     }
     if !game.lineage.pkg.literal {
-        game.lineage.rest_left = game.lineage.rest_left.min(REST_CARRY_TICKS);
+        // (owner amendment 2026-10-14: recovery outlasts the carried-rest cap; the cap trims ordinary rest only,
+        // never the death recovery still owed — it was a silent bypass once recovery passed ten minutes)
+        let owed = crate::persistent::remaining(&game.lineage).min(u64::from(u32::MAX)) as u32;
+        game.lineage.rest_left = game.lineage.rest_left.min(REST_CARRY_TICKS).max(owed);
     }
     Absence {
         elapsed_s: 0, consumed: 0, hour: game.lineage.clock_s / 3600, day0,

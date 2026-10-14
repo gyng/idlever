@@ -1,0 +1,175 @@
+{
+  "actions": [
+    {
+      "id": 1,
+      "last_exit": {
+        "bones": [
+          {
+            "kind": "heal",
+            "n": 1
+          }
+        ],
+        "carried": 0,
+        "cause": "gas",
+        "end": "death",
+        "keep_pct": 0,
+        "kept": 0,
+        "legacy_earned": 1,
+        "news": [
+          {
+            "day": 1,
+            "k": "differ",
+            "text": "shallower: D1, last D6"
+          }
+        ],
+        "packages": [
+          "+skittish",
+          "+unbowed",
+          "+light hands",
+          "+iron gut"
+        ],
+        "reached": 1,
+        "reason": "slain · gas",
+        "run_id": 44,
+        "spent": 0,
+        "spent_on": [
+          "heal"
+        ],
+        "start": 1,
+        "text": "died $0 · $0 lost · bones: 1 items on D1",
+        "tier": "death",
+        "trace": {
+          "blow": {
+            "by": "gas",
+            "dmg": 999,
+            "hp": 0,
+            "t": 0
+          },
+          "hp_healed": 957,
+          "hp_lost": [
+            {
+              "by": "gas",
+              "dmg": 999
+            }
+          ],
+          "turns": []
+        }
+      },
+      "phase": "reincarnating",
+      "real_run_id": 44,
+      "recovery_s": 1200
+    },
+    {
+      "id": 2,
+      "last_exit": {
+        "bloodline_id": 2,
+        "bones": [
+          {
+            "kind": "leash",
+            "n": 1
+          }
+        ],
+        "carried": 0,
+        "cause": "gas",
+        "end": "death",
+        "keep_pct": 0,
+        "kept": 0,
+        "legacy_earned": 1,
+        "news": [
+          {
+            "day": 1,
+            "k": "differ",
+            "text": "shallower: D1, last D4"
+          }
+        ],
+        "reached": 1,
+        "reason": "slain · gas",
+        "run_id": 2,
+        "spent": 0,
+        "spent_on": [],
+        "start": 1,
+        "text": "died $0 · $0 lost · bones: 1 items on D1",
+        "tier": "death",
+        "trace": {
+          "blow": {
+            "by": "gas",
+            "dmg": 999,
+            "hp": 0,
+            "t": 0
+          },
+          "hp_healed": 963,
+          "hp_lost": [
+            {
+              "by": "gas",
+              "dmg": 999
+            }
+          ],
+          "turns": []
+        }
+      },
+      "phase": "reincarnating",
+      "real_run_id": 2,
+      "recovery_s": 1200
+    },
+    {
+      "id": 3,
+      "last_exit": {
+        "bloodline_id": 3,
+        "bones": [
+          {
+            "kind": "leash",
+            "n": 1
+          }
+        ],
+        "carried": 0,
+        "cause": "gas",
+        "end": "death",
+        "keep_pct": 0,
+        "kept": 0,
+        "legacy_earned": 1,
+        "news": [
+          {
+            "day": 1,
+            "k": "differ",
+            "text": "shallower: D1, last D3"
+          }
+        ],
+        "reached": 1,
+        "reason": "slain · gas",
+        "run_id": 2,
+        "spent": 0,
+        "spent_on": [],
+        "start": 1,
+        "text": "died $0 · $0 lost · bones: 1 items on D1",
+        "tier": "death",
+        "trace": {
+          "blow": {
+            "by": "gas",
+            "dmg": 999,
+            "hp": 0,
+            "t": 0
+          },
+          "hp_healed": 963,
+          "hp_lost": [
+            {
+              "by": "gas",
+              "dmg": 999
+            }
+          ],
+          "turns": []
+        }
+      },
+      "phase": "reincarnating",
+      "real_run_id": 2,
+      "recovery_s": 1200
+    }
+  ],
+  "after_gold": 1038,
+  "before_gold": 1038,
+  "controlled": true,
+  "earned_death": false,
+  "input": "/tmp/claude-1000/-home-g-p-riddle/8431418f-0a53-43c9-a6cc-9af78464dfd9/scratchpad/rec227/in/three-actual.game.json",
+  "protocol": "Cut211 persistent_probe and Cut218 controlled/source.rs at the 2026-10-14 recovery: public Send + controlled 999 Gas damage + Core finish_run; actual Session.advance",
+  "ready_gold": 1038,
+  "recovery_ticks": 12000
+}

@@ -393,7 +393,7 @@ mod tests {
         let owned=g.lineage.town.owned_shapes.clone();assert_eq!(owned.iter().map(String::as_str).collect::<Vec<_>>(),vec!["crownsplitter","frostmantle","hearthglass","ironcap","trailboots"]);
         let (r,mut cx)=g.ctx();crate::turn::damage_hero(r,&mut cx,999,&Src::Gas);g.finish_run().unwrap();
         assert_eq!(g.lineage.town.owned_shapes,owned);
-        g.advance(60_000);assert_eq!(crate::persistent::remaining(&g.lineage),0);
+        g.advance(crate::persistent::RECOVERY_TICKS*100);assert_eq!(crate::persistent::remaining(&g.lineage),0);
         // Controlled qualification/budget; all purchases and resets themselves
         // use the actual APIs. This does not certify an earned world clear.
         g.lineage.best_depth=8;g.lineage.gold=1000;crate::legacy::ensure(&mut g.lineage);
@@ -405,7 +405,7 @@ mod tests {
         assert!(preview.available,"{:?}",preview.blocked);g.rebirth_hero(&preview.token).unwrap();
         assert_eq!(g.lineage.town.owned_shapes,owned);assert_eq!(g.lineage.kit,ranks);assert_eq!(g.lineage.gold,gold);
         assert!(g.lineage.bloodline.as_ref().unwrap().upgrades.is_empty());
-        g.advance(60_000);g.lineage.ended=true;g.ascend("short_list").unwrap();
+        g.advance(crate::persistent::RECOVERY_TICKS*100);g.lineage.ended=true;g.ascend("short_list").unwrap();
         assert_eq!(g.lineage.town.owned_shapes,owned);
         assert!(g.lineage.kit.is_empty(),"existing world reset clears paid ranks");assert_eq!(g.lineage.gold,0);
         crate::kit::set_starting(&mut g,Some(StartingConfig{weapon:Some("crownsplitter".into()),armour:Some("frostmantle".into()),supplies:vec![],..Default::default()})).unwrap();

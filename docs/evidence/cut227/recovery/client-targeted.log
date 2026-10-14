@@ -1,0 +1,25 @@
+client suite: targeted (11 selected; 158 current full; 201 exhaustive groups)
+ok   hero-life-camp  17.1s (15.9s)  14 actual camp recovery checks PASS; cleared-world flag controlled, no earned win claim
+ok   home-resident-phases 24.8s (23.6s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+ok   home-services   44.9s (43.7s)  home-services: 38 checks PASS (real WASM; earned + labelled recovery fixtures)
+FAIL home-heroes     104.7s (87.6s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-heroes.mjs:105:15 {
+ok   hero-presence   160.5s (55.8s)  1440 22 presence/epoch/freshness/compatibility/identity checks PASS
+ok   class-styles    278.5s (233.6s)  1440 real-worker gates/tooltip/review/cancel/stale/refusal/one-call/compiled row/reload/remove/XP PASS
+ok   cut120          364.3s (339.5s)  cut120: ok (33 checks)
+FAIL home-residents  379.7s (378.5s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: actual tent centre routes to its own action beside residents
+         at ok (file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-residents.mjs:38:12)
+         at file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-residents.mjs:275:11 {
+FAIL class-tree      494.1s (492.9s)  Node.js v26.5.0
+       - waiting for locator('.sheet-wrap:not([hidden])').locator('.class-path-confirm')
+       name: 'TimeoutError'
+         at confirmReview (/home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/class-tree.mjs:50:17)
+         at async file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/class-tree.mjs:252:9 {
+FAIL hero-life       623.8s (622.6s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at load (/home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/hero-life.mjs:60:16)
+         at async file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/hero-life.mjs:396:7 {
+ok   gold-settlements 680.9s (679.7s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6850347,"sha256":"13e8c281701f1b85b38211818de56bec2150c7277e1f7b21a289fcea7a7ee6ba"},{"bytes":6850347,"sha256":"13e8c281701f1b85b38211818de56bec2150c7277e1f7b21a289fcea7a7ee6ba"},{"bytes":6850347,"sha256":"13e8c281701f1b85b38211818de56bec2150c7277e1f7b21a289fcea7a7ee6ba"},{"bytes":6850347,"sha256":"13e8c281701f1b85b38211818de56bec2150c7277e1f7b21a289fcea7a7ee6ba"}]}
+FAIL: 7/11 client gates in 680.9s

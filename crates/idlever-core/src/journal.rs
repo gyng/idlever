@@ -104,10 +104,12 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     delve.action=if away {action("open","watch","Watch",None)} else {action("delve","","Delve",(!home).then(||"Build a house".into()))};
     let recovering=crate::persistent::remaining(l);
     if recovering>0 {
+        // (owner amendment 2026-10-14: recovery runs minutes, so the copy reads minutes from one minute up, like the camp's)
         let seconds=recovering.div_ceil(crate::offline::TICKS_PER_SECOND);
+        let span=if seconds>=60 {let m=seconds.div_ceil(60);format!("{m} minute{}",if m==1 {""} else {"s"})} else {format!("{seconds} second{}",if seconds==1 {""} else {"s"})};
         delve.title="Recovery".into();delve.state="active".into();
-        delve.reason=format!("The same hero regrows as a clone in the vat. Recovery finishes in {seconds} seconds.");
-        delve.requirements=vec![format!("Recover for {seconds} more seconds")];
+        delve.reason=format!("The same hero regrows as a clone in the vat. Recovery finishes in {span}.");
+        delve.requirements=vec![format!("Recover for {span} more")];
         delve.action=action("delve","","Delve",Some("Finish recovery".into()));
     }
     let mut gold=entry("gold","Gold on return","Found loot converts once when picked up.","Alive returns keep all remaining carried Gold. Death keeps secured checkpoint Gold and named pet protection; ordinary unprotected carry is lost.",if completed {"complete"} else {"later"});gold.action=action("open","chronicle","Chronicle",(!completed).then(||"Complete a delve".into()));
