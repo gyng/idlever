@@ -7,11 +7,15 @@
   top: 52px;
   right: 8px;
   width: max-content;
-  max-width: min(15rem, calc(100% - 16px));
+  /* Cut 229: px like its 12px text; a rem cap grew to 480px at a 200% root font and covered the scene's right-edge buildings */
+  max-width: min(240px, calc(100% - 16px));
   max-height: calc(100% - 64px);
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
+  /* Cut 229: frameless text over the town: only its controls take the pointer; the fade, headings and gaps pass taps to the
+     buildings beneath (home-residents found its group head over the house at 320px) */
+  pointer-events: none;
   color: var(--bone);
   font-size: 12px;
   text-shadow:
@@ -33,6 +37,11 @@ html body .task-tracker.game-control {
 html body .task-tracker.game-control:active {
   transform: none;
   filter: none;
+}
+.task-summary,
+.task-entry,
+.task-door {
+  pointer-events: auto;
 }
 .task-tracker[hidden] {
   display: none;
@@ -179,7 +188,13 @@ html body .task-tracker.game-control:active {
     max-height: calc(var(--task-floor, 100%) - 112px);
     border-radius: 6px;
   }
+  /* Cut 229: focus and scroll-into-view keep the town's targets above the chip (its foot sits 56px over the well's floor) */
+  main.camp .camp-well:has(> .town > .task-tracker:not([hidden])) {
+    scroll-padding-bottom: 104px;
+  }
   html body .task-tracker.game-control {
+    /* a washed panel here, folded unless the player opens it: the panel takes its own taps */
+    pointer-events: auto;
     padding: 0;
     background: rgba(13, 12, 20, 0.72);
     mask-image: none;

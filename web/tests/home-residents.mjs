@@ -33,6 +33,22 @@ const expectedPackage = {
   bytes: expectedWasm.length,
   sha256: createHash("sha256").update(expectedWasm).digest("hex"),
 };
+// Cut 229: bring a target to where the player would tap it. The phone task tracker chip floats at the scrolling well's
+// visible foot-left (tasks.css; owner 2026-10-14), so "visible somewhere" (scrollIntoViewIfNeeded) depended on the scroll
+// the previous target left: a pool under the chip after a 1440px fixture, passing alone. Centring in the well's visible
+// view is deterministic; the centre must then still route to the target itself. Only the well a player scrolls moves:
+// Element.scrollIntoView also scrolls the town's overflow-hidden layers, which no player can, and shifted the actor buttons.
+// It waits for the target to be visible first, as scrollIntoViewIfNeeded did (actor buttons are rebuilt after a selection).
+const reveal = async (locator) => {
+  await locator.waitFor({ state: "visible" });
+  await locator.evaluate((e) => {
+    const well = e.closest(".camp-well");
+    if (!well) return;
+    const w = well.getBoundingClientRect(),
+      r = e.getBoundingClientRect();
+    well.scrollTop += r.y + r.height / 2 - (w.y + well.clientHeight / 2);
+  });
+};
 let checks = 0;
 const ok = (v, m) => {
     assert.ok(v, m ?? "required condition");
@@ -201,6 +217,13 @@ try {
         eq(state.labelActor, [], "labels do not cover actor targets");
         eq(state.hintHireOverlaps, [], "persistent plot hint does not cover actual Hire badge");
         eq(state.overflow, 0);
+        // Cut 229: the task tracker's default fold follows the layout it is in (never toggled here), so a desktop mount
+        // does not leave the phone layout with an open list over the town (it covered the house at 320px).
+        eq(
+          await p.evaluate(() => document.querySelector(".task-fold")?.open ?? null),
+          (await p.locator(".task-fold").count()) ? width >= 1024 : null,
+          "task tracker default fold follows the current layout",
+        );
         ok(
           state.actors.every(
             (a) =>
@@ -246,7 +269,7 @@ try {
           const target = p.locator(`.town-hit[data-building="${id}"]:not([hidden])`);
           if (!(await target.count())) continue;
           actualBuildingTargets.push(id);
-          await target.scrollIntoViewIfNeeded();
+          await reveal(target);
           const primary = await target.evaluate((e) => {
             const r = e.getBoundingClientRect(),
               top = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
@@ -299,13 +322,20 @@ try {
         for (const mode of ["mouse", "keyboard"])
           for (const slot of initial.slots) {
             const button = p.locator(`[data-home-hero="${slot.id}"]`);
-            await button.scrollIntoViewIfNeeded();
+            await reveal(button);
             const hit = await button.evaluate((e) => {
               const r = e.getBoundingClientRect(),
                 top = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
-              return top === e || e.contains(top);
+              return {
+                ok: top === e || e.contains(top),
+                top: top?.outerHTML.slice(0, 160),
+                at: [r.x, r.y, r.width, r.height],
+              };
             });
-            ok(hit, `actual actor${slot.id} centre uncovered`);
+            ok(
+              hit.ok,
+              `actual actor${slot.id} centre uncovered${hit.ok ? "" : ` ${JSON.stringify(hit)}`}`,
+            );
             if (mode === "mouse") await button.click();
             else {
               await button.focus();

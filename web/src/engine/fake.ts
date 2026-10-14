@@ -6066,7 +6066,7 @@ const SYSTEMS29: [string, string][] = [
   ["heir_pick", "an oath kept"],
   ["class", "second class"],
   // Cut 30 (core `systems.rs`): the packages' arrivals, the buildings, the quest board, the pen (the editor's group waits for it)
-  ["storehouse", "first find kept"],
+  // (Cut 201 retired the storehouse in the core: no system, no plot, no track stage; Cut 229 brought the fake in line)
   ["kennel", "first tame"],
   ["stances", "meet Captain"],
   ["tactics", "slay Warlord"],
@@ -6227,7 +6227,6 @@ function sys29(e: Fk29): {
     route2: L.unlocks.includes("route2"),
     heir_pick: L.unlocks.includes("heir_pick"),
     class: L.unlocks.includes("ranger") || L.unlocks.includes("caster"),
-    storehouse: L.vault.length > 0,
     kennel: L.party.length + L.kennel.length > 0,
     stances: met(5),
     tactics: met(9),
@@ -6547,7 +6546,6 @@ function town30(e: Fk30, L: Lineage): Town {
   const st = st30(e);
   const order: [string, string, boolean][] = [
     ["blacksmith", "first gold home", L.gold > 0 || L.best_depth > 2],
-    ["storehouse", "first find kept", L.vault.length > 0],
     ["kennel", "first tame", L.party.length + L.kennel.length > 0],
     ["bank", "a night's purse", L.gold >= 500],
   ];
@@ -6602,7 +6600,6 @@ function tracks30(e: Fk30, L: Lineage): Track[] {
     ]),
     tr("items", [
       ["pack of 3", "", true],
-      ["storehouse", "first find kept", T.buildings.some((b) => b.id === "storehouse")],
       ["blacksmith steps", "first gold home", T.buildings.some((b) => b.id === "blacksmith")],
       ["a counter packed", "a drill's item", L.best_depth >= 14],
     ]),
@@ -6624,7 +6621,6 @@ function tracks30(e: Fk30, L: Lineage): Track[] {
 }
 const BUILD30: [string, string][] = [
   ["blacksmith", "first gold home"],
-  ["storehouse", "first find kept"],
   ["kennel", "first tame"],
   ["bank", "a night's purse"],
 ];
@@ -7024,7 +7020,6 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
   const sysOpen = (id: string): boolean =>
     !id ||
     (L.systems ?? []).some((x) => x.id === id && x.open) ||
-    (id === "storehouse" && L.vault.length > 0) ||
     (id === "forge" && L.best_depth > 1);
   const nodes: WorkNode[] = [];
   let lit: string | undefined;

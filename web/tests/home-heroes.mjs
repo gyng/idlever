@@ -95,6 +95,7 @@ try {
         ),
       ),
     );
+    // Cut220: home actors open the Hero Hub; its identity names the bloodline (the old .hero-sheet retired in b497aa59).
     for (const id of home) {
       const target = p.locator(`[data-home-hero="${id}"]`);
       await target.waitFor({ state: "visible" });
@@ -106,13 +107,15 @@ try {
         (id) =>
           window.__idlever.lineage.selected_bloodline === id &&
           document
-            .querySelector(".sheet-wrap:not([hidden]) .hero-sheet")
+            .querySelector(".sheet-wrap:not([hidden]) [data-hero-hub] .hero-hub-identity")
             ?.textContent.includes(`Bloodline ${id}`),
         id,
       );
       assert.equal(await p.evaluate(() => window.__idlever.lineage.selected_bloodline), id);
       assert.match(
-        await p.locator(".sheet-wrap:not([hidden]) .hero-sheet").textContent(),
+        await p
+          .locator(".sheet-wrap:not([hidden]) [data-hero-hub] .hero-hub-identity")
+          .textContent(),
         new RegExp(`Bloodline ${id}`),
       );
       await p.keyboard.press("Escape");
@@ -127,7 +130,7 @@ try {
         (id) =>
           window.__idlever.lineage.selected_bloodline === id &&
           document
-            .querySelector(".sheet-wrap:not([hidden]) .hero-sheet")
+            .querySelector(".sheet-wrap:not([hidden]) [data-hero-hub] .hero-hub-identity")
             ?.textContent.includes(`Bloodline ${id}`),
         id,
       );

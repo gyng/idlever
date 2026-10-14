@@ -104,7 +104,12 @@ try {
     }
     await page.keyboard.press("Escape");
     await page.locator('.town-hit[data-building="tent"]').click();
-    assert.equal(await page.locator(".sheet-wrap:not([hidden]) .hero-window-face").count(), 1);
+    // Cut220: the house opens the Hero Hub (the old Details sheet and its .hero-window-face retired in b497aa59).
+    await page.locator(".sheet-wrap:not([hidden]) [data-hero-hub] .hero-hub-face").waitFor();
+    assert.equal(
+      await page.locator(".sheet-wrap:not([hidden]) [data-hero-hub] .hero-hub-face").count(),
+      1,
+    );
     // Current earned core snapshots prove reachable menus without granting money or workers.
     const earnedPath = process.env.IDLEVER_RETIREMENT_SAVE;
     if (earnedPath) {
@@ -169,10 +174,14 @@ try {
       assert.equal(hitProof.hero.ok, true, JSON.stringify(hitProof));
       assert.equal(hitProof.ready.ok ?? hitProof.ready, true, JSON.stringify(hitProof));
       await page.locator('.town-hit[data-building="tent"]').click();
-      assert.deepEqual(await page.locator("[role=tab]").allTextContents(), [
-        "Loadouts",
-        "Class",
-        "Legacy",
+      // Cut220 Hero Hub sections replaced the Loadouts/Class/Legacy tabs.
+      await page.locator("[data-hero-hub] [role=tab]").first().waitFor();
+      assert.deepEqual(await page.locator("[data-hero-hub] [role=tab]").allTextContents(), [
+        "Gear",
+        "Skills",
+        "Behaviour",
+        "Companions",
+        "Attributes",
       ]);
     }
     assert.deepEqual(errors, []);

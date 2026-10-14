@@ -1,0 +1,11 @@
+client suite: targeted (1 selected; 160 current full; 203 exhaustive groups)
+FAIL cut30town       34.0s (33.6s)  cut30town: 7 failed
+       - waiting for locator('.town-hit[data-building="storehouse"]')
+     FAIL day 0: ≤ 5 interactive surfaces — the mouth, the tent, the crate, the gem, the pill (8: mouth | tent | staked | House information | Forge information | forge · first gold home | Heroes | Delveauto)
+     FAIL day 0: the next plot staked (blacksmith), not a surface; nothing built (–)
+     FAIL stage 1: the next plot staked (undefined)
+     FAIL stage 2: the trigger built storehouse — standing blacksmith, targets mouth,tent,crate,blacksmith,staked
+     FAIL stage 2: the building bar leads, in build order (forge · loadout)
+     FAIL stage 2: ≤ 12 elements above the fold (14: Gold$60 | settings | mouth | tent | crate | blacksmith | staked | House information | Forge information | Kennel information | companions · first tame | armourer · 0/2 | Heroes | Delveauto)
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+FAIL: 0/1 client gates in 34.0s

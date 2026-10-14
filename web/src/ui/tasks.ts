@@ -15,19 +15,25 @@ import { onPackages } from "./packages";
 const KEY = "idlever.tasks.open";
 /** shown entries per chapter (clutter budget); the rest wait in the Journal, counted in the head */
 const PER_GROUP = 1;
+// Cut 229: the fold is remembered per layout (tasks.css's phone breakpoint) and only when the player toggles it. The `toggle` event
+// also fires for the default `open` a desktop mount sets, which used to pin "open" for later phone layouts, where the open list
+// sits over the town's foot-left and covered the house's own hit target (home-residents, 320 px after a 1440 px mount).
+const PHONE = "(max-width: 1023px)";
+const phone = (): boolean => matchMedia(PHONE).matches;
+const layoutKey = (): string => `${KEY}.${phone() ? "phone" : "wide"}`;
 
 const storedOpen = (): boolean => {
   try {
-    const v = localStorage.getItem(KEY);
+    const v = localStorage.getItem(layoutKey());
     if (v === "1" || v === "0") return v === "1";
   } catch {
     /* storage blocked: the default */
   }
-  return matchMedia("(min-width: 1024px)").matches;
+  return !phone();
 };
 const storeOpen = (open: boolean): void => {
   try {
-    localStorage.setItem(KEY, open ? "1" : "0");
+    localStorage.setItem(layoutKey(), open ? "1" : "0");
   } catch {
     /* storage blocked: the session keeps it */
   }
@@ -42,13 +48,35 @@ export function taskTracker(
 ): { el: HTMLElement; dispose: () => void } {
   const count = h("span", { class: "task-count num" });
   const groups = h("div", { class: "task-groups" });
+  // only a player's own toggle is a preference (a click on the summary, which Enter/Space also fire)
+  let asked = false;
   const details = h(
     "details",
     { class: "task-fold", open: storedOpen() },
-    h("summary", { class: "task-summary" }, /* copy:label */ "Tasks", count),
+    h(
+      "summary",
+      {
+        class: "task-summary",
+        onclick: () => {
+          asked = true;
+        },
+      },
+      /* copy:label */ "Tasks",
+      count,
+    ),
     groups,
   );
-  details.addEventListener("toggle", () => storeOpen(details.open));
+  details.addEventListener("toggle", () => {
+    if (asked) storeOpen(details.open);
+    asked = false;
+  });
+  // crossing the phone breakpoint applies that layout's own fold
+  const layout = matchMedia(PHONE);
+  const relayout = (): void => {
+    asked = false;
+    details.open = storedOpen();
+  };
+  layout.addEventListener("change", relayout);
   const el = h("aside", { class: "task-tracker game-control", "data-tasks": "" }, details);
   let last = "";
   const paint = (): void => {
@@ -212,6 +240,7 @@ export function taskTracker(
     el,
     dispose: () => {
       off();
+      layout.removeEventListener("change", relayout);
       ro.disconnect();
       well?.removeEventListener("scroll", floor);
     },
