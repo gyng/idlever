@@ -10,6 +10,29 @@ The routine client selection spans ten areas: menu/save startup, town/workers, m
 
 The current full audit adds detailed feature checks. Historical whole walks and repeated viewport cases remain in the exhaustive suite. Run the specific omitted group when changing that feature. This selection does not replace visual GPU checks or native balance validation.
 
+## Recovering from a failed or killed client run (2026-10-14)
+
+`web/tests/run.mjs` records every group's result as it ends (name, pass/fail, exit code, own and
+end-time seconds, first failure line, finish time) with the source/engine identity it ran under:
+git HEAD, the dirty flag, a hash of uncommitted changes (tracked diff and untracked files) and the
+sha256 of `web/src/engine/pkg/idlever_wasm_bg.wasm`. The state file is
+`target/client-tests/last-<suite>.json` (`smoke`, `full`, `exhaustive` or `targeted`), rewritten
+by temp file and rename after every group, so a crash, Ctrl-C or kill keeps every finished group
+(`finished: false`).
+
+- `node tests/run.mjs --smoke --failed` reruns only groups that failed or never finished in that
+  suite's last run. It refuses (exit 2) when the identity changed; `--force` reruns those groups
+  anyway, and the earlier passes are then reported stale and left unrecorded for the new identity.
+- `node tests/run.mjs --smoke --resume` skips groups that passed under the identical identity and
+  runs the rest; after any identity change it reruns everything and says so.
+
+Reused passes print as `ok*` with their original finish time, and the summary line counts fresh
+runs and reused passes separately. A reused pass is evidence from its original run only: an
+acceptance claim names how many groups ran fresh. `--report` records `mode`, `identity`,
+`reusedCount` and `freshCount`, and marks reused results. `tools/client-resume.test.mjs`
+(in `tools/verify.sh --quick`) checks failed-only, resume, identity invalidation and a hard kill
+with two fake groups, without a browser.
+
 ## Complete acceptance
 
 `pnpm -s test:full` runs the current feature groups. The no-argument `node tests/run.mjs` uses the same current full scope. `pnpm -s test:exhaustive` retains the original inventory and original viewport variants. Counts grow as regressions are added; each command prints its exact selected count, and `--list` prints the complete inventory. Future top-level test files join both automatically unless explicitly classified as historical. The 44 historical whole walks moved or replaced are mapped in `docs/evidence/cut181/final-scope/current-mapping.json`; extra-case limitations are explicit. Works retains its unique sheet/rank parts. At the Cut181 checkpoint, full had124 groups:34 state-focused groups at400px and33 responsive triples retaining320px and1440px. Exhaustive retained166 groups. Later feature matrices document their own reductions below. Explicit test names are always labelled targeted, even with `--full`.

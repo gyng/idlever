@@ -8,7 +8,7 @@ source code; if you did by accident, say so on the card.
 
 Setup: the game is served at `{URL}`. Play it through the browser driver, headed on the GPU
 (you rate feel and pacing, so the watch must run at full frame rate): from /home/g/p/riddle,
-`node tools/driver.mjs --dir scratchpad/{RATER} --port {PORT} --headed &` keeps one phone
+`node tools/driver.mjs --dir scratchpad/{RATER} --port {PORT} --headed --checkpoint &` keeps one phone
 viewport (400×800, 3×) open for the whole session; command it with
 `tools/drive.sh {PORT} '{"op":"text"}'` (ops: goto, text, shot, click by visible label, tap,
 type, press, eval, js, wait, buttons, log, quit — the file's header lists them; and five
@@ -50,5 +50,26 @@ prefixed "same-day: ". Then run `eval/score.sh eval/cards/{BUILD}.{RATER}.json` 
 total in your report, plus your three biggest gripes as a player and the three things you would
 tell a friend. Do not discuss with anyone else. Do not edit any other file. Do not git commit.
 
+
+**Checkpoints (do not skip; a killed session resumes from here instead of restarting).** After every
+session block — the cold session's each ~10 minutes, and each absence/return cycle — and before
+anything long or risky, save a checkpoint in `scratchpad/{RATER}/checkpoint/`:
+1. `node tools/rater-checkpoint.mjs save --port {PORT} --dir scratchpad/{RATER} --minutes <active minutes so far> --phase <cold|20m|4h|8h> --next "<the very next thing you will do>" --calls <tool calls used> --images <images read>`
+   (writes the game save `save.json` through the game's own export, `rules.json` and `progress.json`;
+   the driver's `--checkpoint` also keeps `browser-state.json`).
+2. Write your partial card to `scratchpad/{RATER}/checkpoint/scorecard.partial.json` (the
+   `eval/SCORECARD.template.json` shape: horizon block so far, criterion probes and axis notes
+   filled only where you have formed them, awards left 0 until the end) and append your running
+   observations to `scratchpad/{RATER}/checkpoint/notes.md` (quotes, screens, deaths read, edits
+   attempted, each return's feeling).
+
+On start, first run `node tools/rater-checkpoint.mjs status --dir scratchpad/{RATER}`. If it shows
+a `save.json`, you are resuming: do not open `fresh=1`; start the driver as above, run
+`node tools/rater-checkpoint.mjs restore --port {PORT} --dir scratchpad/{RATER} --url {URL}`, read
+`notes.md`, `scorecard.partial.json` and `progress.json`, and continue from its `nextStep` with
+the minutes, absences, tool calls and images already used counted against the horizon and the budget.
+Count only actual play: do not replay what the notes record, and do not count the gap as an absence
+(the import runs no catch-up). Record `resumedFromCheckpoint` (how many times, at which minute) in the card's
+`horizon` notes.
 
 **Budget (hard):** at most 200 tool calls and 120 screenshot/image reads for the whole session. Look at each screenshot once; prefer the driver's text op over screenshots. When you reach the budget, stop and file what you have.

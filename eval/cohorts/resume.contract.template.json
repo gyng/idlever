@@ -1,0 +1,49 @@
+{
+  "$comment": "Copy per interrupted cohort as eval/cohorts/<build>.resume.contract.json (generalizes 906990f.resume.contract.json). Fill before any resumed rater starts, then never change it. mode: 'continue' = the same rater identity continues its own checkpoint (its notes and partial card are its own, same card); 'fresh-blind' = a new blind rater starts from the checkpointed save only, with no notes or partial card, on a new card (906990f's choice).",
+  "candidate": "<commit>",
+  "status": "<why the cohort was interrupted; what is preserved>",
+  "url": "http://127.0.0.1:<port>/",
+  "manifestSha256": "<served asset manifest sha256; must match the original cohort>",
+  "preset": "idle-hybrid",
+  "tier": 1,
+  "profile": null,
+  "mode": "continue",
+  "horizon": {
+    "coldActiveMinutes": 40,
+    "returns": [
+      { "absence": "20m", "activeMinutes": 5 },
+      { "absence": "4h", "activeMinutes": 5 },
+      { "absence": "8h", "activeMinutes": 20 }
+    ],
+    "totalActualActiveMinutes": 70,
+    "deathsReadMinimum": 3,
+    "ruleEditAttemptsMinimum": 2,
+    "spentBeforeInterruptionCounts": true,
+    "gapIsNotAnAbsence": true,
+    "unattendedAndInfrastructureTimeExcluded": true
+  },
+  "raters": [
+    {
+      "role": "a",
+      "seed": 0,
+      "port": 0,
+      "checkpoint": "scratchpad/<rater>/checkpoint/",
+      "checkpointProgress": { "activeMinutes": 0, "phase": "cold", "nextStep": "", "toolCallsUsed": 0, "imagesUsed": 0 },
+      "brief": "scratchpad/<cohort>/briefs/resume-a.txt",
+      "card": "eval/cards/<build>.<rater>.json"
+    }
+  ],
+  "budget": {
+    "toolCallsTotal": 200,
+    "imagesTotal": 120,
+    "resumeGetsRemainderOnly": true,
+    "$comment": "The resumed session's caps are the original caps minus what the checkpoint records as used; a rater dying twice does not reset its budget."
+  },
+  "blindness": "continue: same rater continues from its own checkpoint (notes, partial card), no coordinator context. fresh-blind: fresh agent, fork_turns none, brief + save only; no interrupted rater notes, desired score, source or design history.",
+  "audio": "unassessed",
+  "rawCards": "immutable",
+  "releaseConditions": ["served manifest matches the original cohort", "checkpoint save restores exactly (tools/rater-checkpoint.mjs restore prints no WARNING)"],
+  "decisionCriteria": {
+    "$comment": "Copy the original cohort contract's decision criteria unchanged; a resume never relaxes them."
+  }
+}

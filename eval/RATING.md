@@ -59,6 +59,34 @@ reads a scripted walk's dumps, reproduces, plays the decisions the walk did not 
 one interactive player (`eval/QA_PROMPT.md`, the full hour). The blind cohort only after the
 list is empty.
 
+## Checkpoints and resuming a dead session (2026-10-14)
+
+Raters and QA players checkpoint after every session block (`eval/RATER_PROMPT.md`,
+`eval/QA_PROMPT.md`): `node tools/rater-checkpoint.mjs save` writes the game save through the
+app's own export (`save.json`, importable on shipping/preview builds opened with `?dev=1`, the
+same blob as Settings → export), `rules.json` and `progress.json` (active minutes, phase, next
+step, tool calls and images used) to `scratchpad/<rater>/checkpoint/`; the rater adds
+`scorecard.partial.json` (template shape) and `notes.md`. The driver's `--checkpoint` also keeps
+`browser-state.json` (committed localStorage), but restoring that boots the game against its
+saved `last_seen` and can grant the gap as an absence; the save import runs no catch-up, so it
+is the default resume path. A dev-only save-history ring (`window.__idlever.history`), where a
+build has it, is optional extra evidence; resumes never depend on it.
+
+When a rater dies (crash, kill, context or budget exhaustion before filing):
+
+1. `node tools/rater-checkpoint.mjs status --dir scratchpad/<rater>`; no `save.json` means no
+   resume: start over on a new seed and record the loss.
+2. Copy `eval/cohorts/resume.contract.template.json` to `eval/cohorts/<build>.resume.contract.json`
+   and fill it before spawning: same immutable build and manifest, `mode` `continue` (the same
+   rater identity continues its own notes and card) or `fresh-blind` (a new blind agent gets only
+   `save.json` and `progress.json` copied into its own directory and files a new card, as
+   906990f did). The decision criteria are copied unchanged.
+3. Spawn a fresh agent with `eval/RESUME_PROMPT.md` filled from `progress.json`, above the
+   unchanged rater/QA brief, on a free port. The hard budget is the remainder: 200 tool calls
+   and 120 images minus what the checkpoint records as used; a second death does not reset it.
+4. The card's horizon records the resume (minute, mode). Spent time counts once; the gap is not
+   an absence. Raw cards from the interrupted session, if any, stay untouched.
+
 ## Re-anchoring
 
 Before a cohort, the coordinator re-scores Loop Hero on `eval/presets.json` in the same

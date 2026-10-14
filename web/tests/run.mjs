@@ -4,22 +4,47 @@
 // Each test uses its own headless browser against a suite-owned no-HMR Vite server.
 // Output is printed as each finishes; exit 1 if any failed.
 //   node tests/run.mjs [name…]        e.g. node tests/run.mjs fights cut12 clarity:paint
+//   --failed   rerun only the groups that failed or never finished in this suite's last run (refused if the
+//              source/wasm identity changed; --force reruns them anyway, earlier passes then count as stale)
+//   --resume   skip groups that passed under the identical identity; run the rest
+// Every group's result is written atomically after it ends to target/client-tests/last-<suite>.json
+// (lib/run-state.mjs); reused passes are labelled and never reported as fresh evidence.
 // A name `file:parts` runs `tests/<file>.mjs --part=<parts>` (clarity's four parts run side by side: the whole walk was one
 // 4-minute test the suite waited on — docs/ITERATION_SPEED.md, round 3); bare `clarity` and `ui` run all their parts.
 import { spawn } from "node:child_process";
 import { failureOutput } from "./lib/failure-output.mjs";
 import { expand, selectSuite, SMOKE_AREAS } from "./lib/suites.mjs";
 import { readdirSync, mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
+import {
+  describeIdentity,
+  firstFailure,
+  identity,
+  loadState,
+  plan,
+  statePath,
+  writeState,
+} from "./lib/run-state.mjs";
 import net from "node:net";
 import { availableParallelism } from "node:os";
 // Every tests/*.mjs but this runner, screen-time.mjs and town-gpu.mjs (timing gates the coordinator runs on the GPU).
-const ALL = readdirSync("tests")
+// (IDLEVER_CLIENT_TESTS_DIR: another directory of groups, for the runner's own resume self-test)
+const TESTS = process.env.IDLEVER_CLIENT_TESTS_DIR ?? "tests";
+const ALL = readdirSync(TESTS)
   .filter((f) => f.endsWith(".mjs") && !["run.mjs", "screen-time.mjs", "town-gpu.mjs"].includes(f))
   .map((f) => f.slice(0, -4))
   .sort()
   .flatMap(expand);
-const selected = selectSuite(process.argv.slice(2), ALL);
+const RUN_FLAGS = ["--failed", "--resume", "--force"];
+const argv = process.argv.slice(2);
+const flags = new Set(argv.filter((a) => RUN_FLAGS.includes(a)));
+if (flags.has("--failed") && flags.has("--resume"))
+  throw Error("Choose one of --failed or --resume");
+const mode = flags.has("--failed") ? "failed" : flags.has("--resume") ? "resume" : "all";
+const selected = selectSuite(
+  argv.filter((a) => !RUN_FLAGS.includes(a)),
+  ALL,
+);
 const { names } = selected;
 if (selected.list) {
   console.log(
@@ -39,11 +64,52 @@ if (selected.suite === "full")
     "Historical extra cases require --exhaustive; see docs/evidence/cut181/final-scope/current-mapping.json",
   );
 const t0 = Date.now();
+// Resume / failed-only planning against this suite's last recorded run.
+const current = identity();
+const prev = mode === "all" ? null : loadState(selected.suite);
+const planned = plan({ mode, names, prev, current, force: flags.has("--force") });
+if (planned.refused) {
+  console.log(`\n!!! --${mode} REFUSED: ${planned.reason}`);
+  console.log(
+    `!!! last run: ${prev ? describeIdentity(prev.identity) : "none"}; now: ${describeIdentity(current)}\n`,
+  );
+  process.exit(2);
+}
+if (planned.stale) console.log(`\n!!! WARNING: ${planned.reason}`);
+if (planned.staleNames?.length)
+  console.log(
+    `!!! ${planned.staleNames.length} earlier passes were under another identity: not reused, not evidence; they stay unrecorded for this identity`,
+  );
+if (planned.stale) console.log("");
+else if (planned.reason) console.log(`note: ${planned.reason}`);
+const reusedNames = planned.reused,
+  runNames = planned.run;
+const state = {
+  format: "idlever-client-run",
+  suite: selected.suite,
+  mode,
+  identity: current,
+  startedAt: new Date(t0).toISOString(),
+  finished: false,
+  selected: names,
+  results: Object.fromEntries(reusedNames.map((n) => [n, { ...prev.results[n], reused: true }])),
+};
+writeState(state);
+if (mode !== "all")
+  console.log(
+    `${mode}: ${runNames.length} to run, ${reusedNames.length} passes reused from ${statePath(selected.suite)} (${describeIdentity(current)})`,
+  );
+for (const n of reusedNames) {
+  const r = state.results[n];
+  console.log(
+    `ok* ${n.padEnd(15)} reused: passed ${r.finishedAt} (${r.ownSeconds?.toFixed(1)}s), identical identity; not rerun`,
+  );
+}
 // The suite's own dev server (tests/vite.test.config.ts: no watcher, no HMR) on a free port, for this run only — the shared
 // :5219 server reloads every page on any edit in web/src (other agents' work) and a stale one serves old transforms. The
 // tests find it through IDLEVER_PORT (tools/dev.sh); a IDLEVER_PORT set by the caller is used as it is.
 let vite = null;
-if (!process.env.IDLEVER_PORT) {
+if (!process.env.IDLEVER_PORT && runNames.length) {
   const port = await new Promise((res) => {
     const s = net.createServer();
     s.listen(0, () => {
@@ -248,7 +314,7 @@ const CURRENT_OWN = {
 };
 const own = (n) => CURRENT_OWN[n] ?? OWN[n] ?? 20;
 const SOLO = ["clarity:paint", "watch-live-edge"]; // edit latency and wall-clock playback need an idle browser pool
-const order = [...names].sort(
+const order = [...runNames].sort(
   (a, b) =>
     (SOLO.includes(a) ? 1 : 0) - (SOLO.includes(b) ? 1 : 0) ||
     (TIMING.includes(b) ? 1 : 0) - (TIMING.includes(a) ? 1 : 0) ||
@@ -262,11 +328,12 @@ const width = Number(
         ? Math.min(12, availableParallelism())
         : 7),
 );
+const live = new Set();
 const run1 = (n) =>
   new Promise((resolve) => {
     const start = Date.now();
     const [file, parts] = n.split(":");
-    const p = spawn("node", [`tests/${file}.mjs`, ...(parts ? [`--part=${parts}`] : [])], {
+    const p = spawn("node", [join(TESTS, `${file}.mjs`), ...(parts ? [`--part=${parts}`] : [])], {
       stdio: ["ignore", "pipe", "pipe"],
       env: {
         ...process.env,
@@ -274,13 +341,40 @@ const run1 = (n) =>
         IDLEVER_CLIENT_AUDIT_SCOPE: selected.suite,
       },
     });
+    live.add(p);
     let out = "";
     p.stdout.on("data", (d) => (out += d));
     p.stderr.on("data", (d) => (out += d));
-    p.on("close", (code) =>
-      resolve({ n, code, out, ms: Date.now() - t0, own: Date.now() - start }),
-    );
+    p.on("close", (code) => {
+      live.delete(p);
+      resolve({ n, code, out, ms: Date.now() - t0, own: Date.now() - start });
+    });
   });
+// One group's record, written (atomically) as soon as it ends: a crash keeps every finished group.
+const record = (r) => {
+  state.results[r.n] = {
+    name: r.n,
+    ok: r.code === 0,
+    status: r.code === 0 ? "pass" : "fail",
+    code: r.code,
+    ownSeconds: r.own / 1000,
+    endedAtSeconds: r.ms / 1000,
+    firstFailure: r.code === 0 ? null : firstFailure(r.out, failureOutput),
+    finishedAt: new Date().toISOString(),
+    identity: current,
+  };
+  writeState(state);
+};
+const interrupt = (sig) => {
+  for (const p of live) p.kill("SIGTERM");
+  vite?.kill();
+  state.interrupted = sig;
+  writeState(state);
+  console.log(`\n${sig}: state kept in ${statePath(selected.suite)}; rerun with --failed`);
+  process.exit(130);
+};
+process.on("SIGINT", () => interrupt("SIGINT"));
+process.on("SIGTERM", () => interrupt("SIGTERM"));
 const printResult = (r) => {
   const last = r.out.trim().split("\n").at(-1) ?? "";
   // (the time it ended at, and its own time from its start)
@@ -345,6 +439,7 @@ await Promise.all(
       else othersLive++;
       const result = await run1(n);
       done.push(result);
+      record(result);
       printResult(result);
       if (kind === "solo") soloLive--;
       else if (kind === "heavy") heavyLive--;
@@ -352,10 +447,25 @@ await Promise.all(
     }
   }),
 );
-const results = names.map((n) => done.find((r) => r.n === n));
+const results = names.map(
+  (n) =>
+    done.find((r) => r.n === n) ?? {
+      n,
+      code: 0,
+      reused: true,
+      passedAt: state.results[n].finishedAt,
+      own: state.results[n].ownSeconds * 1000,
+    },
+);
 const failed = results.filter((r) => r.code !== 0).length;
+state.finished = true;
+writeState(state);
+const freshFailed = done.filter((r) => r.code !== 0).length;
 console.log(
-  `${failed ? "FAIL" : "ok"}: ${results.length - failed}/${results.length} client gates in ${((Date.now() - t0) / 1000).toFixed(1)}s`,
+  `${failed ? "FAIL" : "ok"}: ${results.length - failed}/${results.length} client gates in ${((Date.now() - t0) / 1000).toFixed(1)}s` +
+    (mode === "all"
+      ? ""
+      : ` — ran fresh ${done.length} (${done.length - freshFailed} ok, ${freshFailed} failed); reused ${reusedNames.length} earlier passes (identical identity, labelled ok*, not fresh evidence)`),
 );
 if (selected.report) {
   mkdirSync(dirname(selected.report), { recursive: true });
@@ -379,6 +489,10 @@ if (selected.report) {
           availableCores: availableParallelism(),
         },
         elapsedSeconds: (Date.now() - t0) / 1000,
+        mode,
+        identity: current,
+        reusedCount: reusedNames.length,
+        freshCount: done.length,
         failed,
         results,
       },
