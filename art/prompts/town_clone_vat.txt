@@ -1,0 +1,76 @@
+You are painting CHARACTER SPRITE masters for the game "Riddle" (a gothic dark-fantasy roguelike on a phone, seen
+top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
+else in the repository): /home/g/p/riddle/art/ui/targets/style/town.png, /home/g/p/riddle/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/targets/style/watch_fens.png, /home/g/p/riddle/art/ui/targets/style/boss.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
+Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix; do NOT
+touch anything outside /home/g/p/riddle/art/staging/clone_vat/. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+
+For each asset: generate at the stated size and save the final PNG (sRGB) to the exact path. BACKGROUND: a TRANSPARENT
+background (PNG alpha) is best; if the tool returns an opaque image, the background must be ONE flat uniform pure MAGENTA
+#FF00FF (255,0,255) edge to edge (the pipeline keys it) — never paper, never a floor, never a gradient. Self-check each
+output: the four corners transparent or magenta, no magenta/pink-violet inside the subject, the subject not cropped;
+regenerate that asset once if not.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+=== SPRITE RULES (on top of the style) ===
+- ONE object, seen from the high three-quarter town camera, centred with ~10 % margin, nothing cropped.
+- Proportions (these override "tall" in the style above): the object's own shape as briefed; buildings and landmarks fill the canvas width with ~8 % margin.
+- INK: one closed blue-black INK #0d0c14 contour around the whole silhouette, 12-16 px thick at 1024 px (it must survive a
+  downscale to 40-96 px tall), thicker on the lower/right shadow side; a few interior ink lines on the big forms only.
+- LIGHT: cold MOONLIGHT from ABOVE: MIST #a4bcd6 rims on the top edges (head, shoulders, weapon), the lower half falling
+  into DUSK/UMBRA. The lit side must stay clearly lighter than a dark stone floor; keep one pale element (BONE face,
+  MIST blade edge, bone) high on the figure so it pops at game size.
+- WASH on the GRID at sprite scale: chunky clusters (~12 px at 1024), washes with granulation inside them; no hairline
+  detail, no smooth airbrushed gradients, no noisy speckle. Paper grain only faintly inside the lightest washes.
+- COLOUR: only the palette above (+ the monster's one local hue when the brief names it). BLOOD only where the brief puts it.
+- NOTHING but the figure: NO floor, NO contact shadow, NO cast-shadow pool, NO scenery, NO paper sheet, NO frame, NO glow
+  halo, NO text or letters.
+
+=== READABILITY (the sprites are shown TINY: buildings ~64 px tall, the plot ~32 px) ===
+One bold readable mass, one clear gesture, 3-4 signature details. The defining feature (the "tag" in each brief) must
+be visible in the SILHOUETTE alone. Judge each output shrunk to that size before accepting it.
+
+Keep the vat's materials and palette like the existing town buildings (open /home/g/p/riddle/art/generated/town_blacksmith_1.png and /home/g/p/riddle/art/generated/town_storehouse_1.png as the family to match; you may open those two images).
+Fiction (Cut 226, owner: "Reframe revival to be like cloning"): the town's service plot `device` is the CLONE VAT. A defeated hero is not revived or reborn; the same hero is regrown as a clone in the vat. The three frames below share ONE silhouette and footprint so the idle and active frames swap without a jump. They replace the code-native primitive in web/src/render/home-service-art.ts (`town_service_device*`), which stays as the fallback.
+--- 1. id: town_service_device
+Output path: /home/g/p/riddle/art/staging/clone_vat/town_service_device.png
+Size: exactly 1536x1024 px (width x height), PNG; the vat and its plinth fill a ~1.22:1 box centred in the canvas (the game draws it at that aspect).
+Shown in game at about 36 px tall; judge readability at that size.
+Brief: the CLONE VAT, idle: a tall upright glass-and-iron CYLINDER (the tag: a tall rounded glass tank with a domed riveted iron cap, readable as 'vat' in silhouette alone) on a low octagonal fieldstone plinth, iron bands around the glass, two thick ribbed hoses curling from the cap down into the plinth, a small iron valve wheel on the plinth front; the glass holds dark murky DUSK/UMBRA fluid with a faint pale BONE outline of a curled human figure barely visible inside (no face detail, no anatomy, never gory); MIST moonlit rims on the glass shoulders and the domed cap; no light inside while idle; seen from the town's high three-quarter camera (the cap top and the front of the tank both visible, facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. It must NOT read as a coffin, an altar, a fountain or a lantern.
+
+--- 2. id: town_service_device_active_0
+Output path: /home/g/p/riddle/art/staging/clone_vat/town_service_device_active_0.png
+Size: exactly 1536x1024 px (width x height), PNG; identical framing, silhouette and plinth to town_service_device.
+Shown in game at about 36 px tall; judge readability at that size.
+Brief: the SAME clone vat, CLONING (frame A of a two-frame loop): the fluid inside now lit from within by a cold pale MIST glow with a thin BLOOD-red vein of light rising through it (the only BLOOD, at most a sliver), the BONE figure inside clearer and upright, three small rising bubbles near the bottom; everything outside the glass (cap, bands, hoses, plinth, valve) identical in shape and position to frame 1.
+
+--- 3. id: town_service_device_active_1
+Output path: /home/g/p/riddle/art/staging/clone_vat/town_service_device_active_1.png
+Size: exactly 1536x1024 px (width x height), PNG; identical framing, silhouette and plinth to town_service_device.
+Shown in game at about 36 px tall; judge readability at that size.
+Brief: the SAME clone vat, CLONING (frame B): as frame A but the inner glow slightly brighter, the bubbles risen higher, the BLOOD vein of light shifted upward; everything outside the glass identical to frames 1 and A, so the two active frames alternate as a slow pulse.
+
+PENDING (Cut 226): not generated. After generation, key and pack per art/ART.md (python3 art/pack.py && python3 art/art-qc.py) and wire the ids in art/manifest.json; until then the primitive in web/src/render/home-service-art.ts draws the vat.

@@ -206,7 +206,7 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
     } else if delves_remaining > 0 {
         Some(format!("Complete {delves_remaining} more delves"))
     } else if seconds_remaining > 0 {
-        Some("Let the hero settle after rebirth".into())
+        Some("Let the new clone settle".into())
     } else if points_after.is_none() {
         Some("Legacy total overflow".into())
     } else {
@@ -226,7 +226,7 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
         seconds_remaining,
         resets: vec![
             "Legacy attributes and branches".into(),
-            "Current incarnation's deeds".into(),
+            "Current clone's deeds".into(),
             "Lasting traits and family lean".into(),
         ],
         retains: vec![
@@ -326,8 +326,8 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
         ),
         device: service(
             "reincarnation",
-            "Reincarnation device",
-            "Defeat returns the same hero. Attributes and builds remain.",
+            "Clone vat",
+            "Defeat regrows the same hero as a clone. Attributes and builds remain.",
             device_available,
         ),
         rebirth: preview(l, away),
@@ -360,14 +360,14 @@ pub fn rebirth(g: &mut Game, token: &str) -> Result<(), String> {
     if !offer.available {
         return Err(offer
             .blocked
-            .unwrap_or_else(|| "Rebirth unavailable".into()));
+            .unwrap_or_else(|| "Reclone unavailable".into()));
     }
     if token != offer.token {
-        return Err("Rebirth preview changed".into());
+        return Err("Reclone preview changed".into());
     }
     let before = g.lineage.bloodline.clone().unwrap_or_default();
     let l = &mut g.lineage;
-    l.chronicle_heir("reborn", None);
+    l.chronicle_heir("recloned", None);
     let b = l.bloodline.as_mut().expect("rebirth allocation");
     b.points = offer.points_after.expect("validated total");
     b.spent = 0;

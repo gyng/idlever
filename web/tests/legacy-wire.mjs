@@ -33,7 +33,7 @@ try {
       oldOffer: (await app.engine.lineage()).legacy_respec ?? null,
     };
   });
-  assert.match(result.reason, /rebirth/i);
+  assert.match(result.reason, /reclone/i);
   assert.equal(result.unchanged, true);
   // Inactive compatibility wire remains until the coordinated API cleanup.
   assert.equal(result.oldOffer.available, false);

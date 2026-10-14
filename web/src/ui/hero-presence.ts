@@ -38,7 +38,7 @@ export function heroPresence(s: HeroSlot, observed?: ObservedPresence) {
   };
   const text = recovering
     ? s.life_state === "reincarnating"
-      ? /* copy:label */ `Reincarnating ${spanOf(s.recovery_s ?? 0)}`
+      ? /* copy:label */ `Cloning ${spanOf(s.recovery_s ?? 0)}`
       : /* copy:label */ `Recovering ${spanOf(s.recovery_s ?? 0)}`
     : away
       ? live

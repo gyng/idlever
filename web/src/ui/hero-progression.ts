@@ -202,11 +202,11 @@ export function lastingChoices(
     inherited.append(
       h("b", { "data-lasting-next-label": "1" }, /* copy:label */ "Next delve"),
       trait(progression.inherited_chosen, "chosen"),
-      h("small", {}, progression.commitment_blocked ?? /* copy:label */ "Rebirth resets"),
+      h("small", {}, progression.commitment_blocked ?? /* copy:label */ "Reclone resets"),
     );
   else if (progression.inherited.available)
     inherited.append(
-      h("p", {}, /* copy:diary_line */ "Optional. This choice lasts until Rebirth."),
+      h("p", {}, /* copy:diary_line */ "Optional. This choice lasts until a reclone."),
       h(
         "div",
         { class: "hero-build-choices" },
@@ -272,7 +272,7 @@ export function lastingChoices(
         context?.label ?? progression.family_chosen,
       ),
       context ? familyDescription(context) : "",
-      h("small", {}, /* copy:label */ "Rebirth resets"),
+      h("small", {}, /* copy:label */ "Reclone resets"),
     );
   } else if (progression.family.available)
     family.append(

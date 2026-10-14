@@ -144,7 +144,7 @@ pub fn wire(l: &LineageState) -> BuildProgression {
         commitment_blocked: l
             .heirs
             .blood
-            .map(|_| "Confirm Rebirth to change lasting traits".into()),
+            .map(|_| "Confirm a reclone to change lasting traits".into()),
         leash_available: leash,
         leash_blocked: (!leash).then(|| "Build the Forge".into()),
         temperament_order_available: temperament_open(l),
@@ -171,7 +171,7 @@ pub fn set_inherited(g: &mut Game, name: &str) -> Result<(), String> {
         return Err("Reach D8 after eight delves".into());
     }
     if g.lineage.heirs.blood.is_some() {
-        return Err("Confirm Rebirth to change lasting traits".into());
+        return Err("Confirm a reclone to change lasting traits".into());
     }
     let c = offer(&g.lineage)
         .into_iter()
@@ -225,7 +225,7 @@ fn contexts(l: &LineageState) -> Vec<FamilyContext> {
                 available,
                 blocked: (!available).then(|| {
                     if l.heirs.bloodline.is_some() {
-                        "Confirm Rebirth to change family context".into()
+                        "Confirm a reclone to change family context".into()
                     } else if l.heirs.blood.is_none() {
                         "Choose a lasting trait first".into()
                     } else if !compatible {

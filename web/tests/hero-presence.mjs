@@ -108,7 +108,7 @@ try {
       s.life_state = "reincarnating";
       s.recovery_s = 60;
       r.paint();
-      check(text(1) === "Reincarnating 1m", "reincarnation overrides stale live summary");
+      check(text(1) === "Cloning 1m", "cloning overrides stale live summary");
       s.life_state = "recovering";
       s.recovery_s = 58;
       r.paint();

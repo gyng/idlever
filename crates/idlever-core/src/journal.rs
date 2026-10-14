@@ -71,7 +71,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     }
     for (id,title,target,g,chosen,effect) in [
       ("temperament","Choose temperament","loadouts",crate::progression::gate(l,6,5,true),l.pkg.temperament.is_some(),"A free reusable build choice. Changes while away apply to the next delve."),
-      ("inherited_trait","Choose lasting trait","hero",crate::progression::gate(l,8,8,false),l.heirs.blood.is_some(),"Commit one optional lasting gift and cost. Confirm Rebirth to replace it."),
+      ("inherited_trait","Choose lasting trait","hero",crate::progression::gate(l,8,8,false),l.heirs.blood.is_some(),"Commit one optional lasting gift and cost. Confirm a reclone to replace it."),
       ("family_context","Choose family context","hero",crate::progression::family_gate(l),l.heirs.bloodline.is_some(),"Commit a compatible context for the lasting trait, preserving its gift and cost.")
     ] {let mut e=entry(id,title,"Completed delves unlock optional hero choices.",effect,if chosen {"complete"}else if g.available {"ready"}else{"later"});if let Some(blocked)=g.blocked{e.requirements.push(blocked);}e.progress=Some(JournalProgress{current:g.completed.min(g.required_completed),required:g.required_completed,unit:"completed delves".into()});e.action=action("open",target,title,(!home).then(||"Build a house".into()));builds.push(e);}
     builds.push(more_classes);
@@ -90,7 +90,7 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     if recovering>0 {
         let seconds=recovering.div_ceil(crate::offline::TICKS_PER_SECOND);
         delve.title="Recovery".into();delve.state="active".into();
-        delve.reason=format!("The same hero returns through the reincarnation device. Recovery finishes in {seconds} seconds.");
+        delve.reason=format!("The same hero regrows as a clone in the vat. Recovery finishes in {seconds} seconds.");
         delve.requirements=vec![format!("Recover for {seconds} more seconds")];
         delve.action=action("delve","","Delve",Some("Finish recovery".into()));
     }

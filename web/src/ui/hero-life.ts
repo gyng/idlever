@@ -9,7 +9,7 @@ export type HeroLifeMode = "hero" | "recovery" | "rebirth";
 const STATE: Record<PersistentHero["state"], string> = {
   ready: /* copy:label */ "Ready",
   away: /* copy:label */ "Delving",
-  reincarnating: /* copy:label */ "Reincarnating",
+  reincarnating: /* copy:label */ "Cloning",
   recovering: /* copy:label */ "Recovering",
 };
 const BONUS: Record<string, string> = {
@@ -164,7 +164,7 @@ export function heroLifePanel(
               /* copy:label */ `Rest ${hero.rest_s}s`,
             )
           : null,
-        h("small", { class: "num" }, /* copy:label */ `Rebirths ${hero.rebirths}`),
+        h("small", { class: "num" }, /* copy:label */ `Reclones ${hero.rebirths}`),
       ),
     ];
     if (mode !== "rebirth") {
@@ -387,7 +387,7 @@ export function heroLifePanel(
       h(
         "section",
         { class: "hero-life-section hero-rebirth" },
-        h("h3", {}, /* copy:label */ "Rebirth"),
+        h("h3", {}, /* copy:label */ "Reclone"),
         preview
           ? h(
               "div",
@@ -475,11 +475,11 @@ export function heroLifePanel(
                       void mutate(
                         key,
                         () => engine.rebirthHero!(preview.token),
-                        /* copy:callout */ "Reborn",
+                        /* copy:callout */ "Recloned",
                       );
                     },
                   },
-                  /* copy:button */ "Confirm rebirth",
+                  /* copy:button */ "Confirm reclone",
                 ),
               ),
             )
