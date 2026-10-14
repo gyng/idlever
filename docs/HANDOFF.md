@@ -9,7 +9,8 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-HEAD0daf9742 is local-only; origin/main e0bf9efb. Candidate work is uncommitted.
+origin/main cd927da0 (2026-10-14): all Cut219–224 work, the desktop layout pass,
+the town task tracker and Hero Hub polish are committed and pushed.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
 ## Current engine and checks
@@ -74,8 +75,9 @@ Private-GPU normal/fallback/reduced-motion frames pass with exact saves and
 served66b8. Actual-material contrast passes229 ordinary visible samples, weakest
 7.18:1; inactive controls need separate coverage. WASM read diagnostics show
 fixture medians3.15–5.4ms, not a frame-cost acceptance claim. Next: lower-control
-contrast and clearer phone Actual/Next capture, then visual refinement of tall
-mobile tabs and desktop slot cards. Actual paper doll uses class art plus four
+contrast, phone Actual/Next and tall tabs/desktop slot cards landed in cd927da0:
+hero-hub11516 checks PASS, contrast 0 failures (weakest5.76:1, inactive6.31:1).
+No genuine fixture has differing Actual/Next items yet. Actual paper doll uses class art plus four
 canonical anchors, not layered equipment.
 
 ## Gold feedback — Cut223, scoped integration passes
@@ -135,8 +137,17 @@ Cut222 recurring-wish retirement is implemented. Core: offers/API removed,
 earned Legacy/history preserved, matched16-seed IDLE bit-identical. Browser:
 wish-retirement260 checks, gold-settlements564/24, routine client38/38 on
 a2ab (see CUT222 "Browser acceptance result"). The settlement repin lacked
-use_shipping_words(); fixed and regoldened, old goldens preserved. Open: the
-engaging-policy Legacy impact comparison and a GPU camp screenshot.
+use_shipping_words(); fixed and regoldened, old goldens preserved. Item4
+engaging impact (f5e23f9b): ≤31 Legacy/~6.2k Gold per resident, no systematic
+milestone/King change, no compensation. Item5 GPU camp captures pass.
+
+Desktop layout (owner 2026-10-14, 4a18f07c/27f58848): camp strips share one row,
+heroes column runs beside the one-row dock, watch hand toggle floats; the
+control ladder moved into a grouped task tracker over the town (ui/tasks.ts:
+ladder, open Journal chapters, quest; finished groups leave). Routine client
+38/38. Exhaustive-only cut118/cut120 still target the old ladder row and
+cut120 failed on order chips before the tracker; unrevised. Pending owner asks:
+Revival reframed as cloning (agent in worktree); 320px tile labels truncate.
 
 Cut225 contracts Clown/Engineer and larger trees for all five existing classes.
 Current30 nodes are six per class with only two-tier paths. New roles and old
