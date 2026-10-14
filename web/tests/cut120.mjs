@@ -156,12 +156,10 @@ try {
     await closeSheets(page);
     await page.waitForTimeout(200);
 
-    // ---- the sheet: from the ladder's orders rung (when the ladder shows), else the run setup tablet. The ladder now lives
-    // in the town task tracker's Control group (tasks.ts, owner 2026-10-14), folded by default below 1024px.
+    // ---- the sheet: from the ladder's lit orders door (when the ladder shows), else the run setup tablet. The doors now live
+    // under the town task tracker's Control entry (tasks.ts, owner 2026-10-14), folded by default below 1024px.
     let sheetTaps = 0;
-    const door = page.locator(
-      '[data-tasks] .task-fold[open] .control-ladder:not([hidden]) .ladder-door[data-door="orders"]',
-    );
+    const door = page.locator('[data-tasks] .task-fold[open] .task-door[data-door="orders"]');
     const viaLadder = (await door.count()) > 0 && (await door.isVisible());
     if (viaLadder) await door.click();
     else await page.locator(".orders-tab:visible").click();

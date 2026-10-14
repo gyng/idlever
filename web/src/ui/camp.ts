@@ -89,7 +89,6 @@ import { openWorks, sendMark } from "./works";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear: items in their rarity rims
 import { returnPick } from "./return-pick"; // Cut 113 §3: the return's pick waits on the camp
 import { checkinBatch } from "./checkin"; // Cut 117 §5: the routine buys of a return in one chip
-import { controlLadder } from "./ladder"; // Cut 118 §7: the automation earned, one rail
 import { taskTracker } from "./tasks"; // owner 2026-10-14: the ladder, the Journal's open chapters and the quest, over the town
 import { KENNEL_ORDERS, KENNEL_TIP, KENNEL_WORD, kennelShown } from "./pets";
 import { descentBits, descentLine } from "./descent"; // Cut 121 §1: the ascension under way
@@ -536,8 +535,10 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     descentSlot.hidden = !d;
     replace(descentSlot, d ?? "");
   };
-  const ladder = controlLadder(app, { orders: () => openOrders(), workers: () => openWorks(app) });
-  const tasks = taskTracker(app, ladder.el, (anchor) => journal(anchor));
+  const tasks = taskTracker(app, (anchor) => journal(anchor), {
+    orders: () => openOrders(),
+    workers: () => openWorks(app),
+  });
   town.el.append(tasks.el);
   const feats = campFeats(app);
   const offer = orderOffer(app);
@@ -2495,7 +2496,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       if (orderRoutes.get(app) === orderRoute) orderRoutes.delete(app);
       pick.dispose();
       batch.dispose();
-      ladder.dispose();
       tasks.dispose();
       feats.dispose();
       document.querySelector(".class-unlock")?.remove(); // the plate belongs to the camp: it never rides into the watch

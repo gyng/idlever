@@ -1,3 +1,4 @@
+import "../heroes-compact.css";
 import { classIcon } from "./class-icons";
 // Active bloodlines only; each row describes an actual Rust-owned hero slot.
 import type { App } from "../app";

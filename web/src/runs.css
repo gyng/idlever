@@ -993,7 +993,7 @@ button.re-body {
   /* owner 2026-10-14 (more live view, less chrome): the centre's pick, batch and offer share one row instead of stacked
      strips (the control ladder rides the town's task tracker, ui/tasks.ts), and the heroes column runs down beside the console instead of stopping above a full-width dock row */
   main.camp.frame {
-    grid-template-columns: var(--wide-l) auto auto minmax(0, 1fr) auto var(--wide-r);
+    grid-template-columns: var(--camp-l, var(--wide-l)) auto auto minmax(0, 1fr) auto var(--wide-r);
     grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
     grid-template-areas:
       "bar bar bar bar bar bar"

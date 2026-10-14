@@ -1,28 +1,34 @@
-/* Owner 2026-10-14: the task tracker, an overlay over the town's top-left under the `next` pill (ui/tasks.ts). Quiet: the pill's dark
-   glass, one gold pip for the recommended step, dim pips for the rest; a finished group leaves. */
+/* Owner 2026-10-14: the task tracker over the town (ui/tasks.ts). Owner's reference: an MMO quest list — frameless text on the scene's
+   right edge, gold titles, indented objective lines, a soft ink shadow for legibility instead of a panel. Quiet: one gold pip for the
+   recommended step; a finished group leaves. */
 .task-tracker {
   position: absolute;
   z-index: 3;
   top: 52px;
-  left: 8px;
+  right: 8px;
   width: max-content;
-  max-width: min(13.5rem, calc(100% - 16px));
+  max-width: min(15rem, calc(100% - 16px));
   max-height: calc(100% - 64px);
   overflow-y: auto;
   overscroll-behavior: contain;
-  border-radius: 6px;
-  background: rgba(13, 12, 20, 0.78);
-  box-shadow:
-    0 0 0 1px #3a4a68,
-    0 2px 6px rgba(0, 0, 0, 0.5);
+  scrollbar-width: none;
   color: var(--bone);
   font-size: 12px;
+  text-shadow:
+    0 1px 1px #000,
+    0 0 3px #000,
+    0 0 6px rgba(0, 0, 0, 0.8);
 }
-/* the panel, not a button: none of the shared control's padding or press nudge */
+/* the panel, not a button: none of the shared control's chrome or press nudge */
 html body .task-tracker.game-control {
   min-height: 0;
-  padding: 0;
+  padding: 0 0 0 18px;
   border: 0;
+  /* no panel: a soft ink fade from the right edge keeps the text legible over the busy town */
+  background: linear-gradient(90deg, transparent, rgba(8, 8, 14, 0.6) 18px, rgba(8, 8, 14, 0.6));
+  border-radius: 0 4px 4px 0;
+  mask-image: linear-gradient(180deg, #000 calc(100% - 10px), transparent);
+  box-shadow: none;
 }
 html body .task-tracker.game-control:active {
   transform: none;
@@ -35,14 +41,15 @@ html body .task-tracker.game-control:active {
   display: flex;
   align-items: center;
   gap: 6px;
-  min-height: 32px;
-  padding: 2px 10px;
+  min-height: 28px;
+  padding: 0 2px;
+  border-bottom: 1px solid rgba(184, 148, 72, 0.55);
   cursor: pointer;
   list-style: none;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--dim);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--acc);
 }
 .task-summary::-webkit-details-marker {
   display: none;
@@ -56,22 +63,20 @@ html body .task-tracker.game-control:active {
 }
 .task-count {
   margin-left: auto;
-  color: var(--acc);
+  color: var(--dim);
+  font-weight: normal;
 }
 .task-groups {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 0 10px 8px;
-}
-.task-group:has(> .control-ladder[hidden]) {
-  display: none;
+  gap: 6px;
+  padding: 6px 2px 4px;
 }
 .task-head {
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  margin: 0 0 2px;
+  margin: 0;
   font-size: 10px;
   font-weight: normal;
   letter-spacing: 0.08em;
@@ -84,29 +89,38 @@ html body .task-tracker.game-control:active {
 .task-entry {
   all: unset;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2px 6px;
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr);
+  column-gap: 4px;
   width: 100%;
   min-height: 24px;
   padding: 1px 0;
   cursor: pointer;
-  line-height: 1.2;
+  line-height: 1.25;
+}
+.task-entry > :not(.task-pip) {
+  grid-column: 2;
+}
+.task-title {
+  color: var(--acc);
+  font-weight: 600;
 }
 .task-entry:hover .task-title,
 .task-entry:focus-visible .task-title {
-  color: var(--acc);
+  color: #f2d27a;
 }
 .task-entry:focus-visible {
   outline: 1px solid var(--acc);
   outline-offset: 2px;
 }
 .task-pip {
-  flex: 0 0 auto;
+  grid-row: 1;
+  align-self: center;
+  justify-self: center;
   width: 7px;
   height: 7px;
   border: 1px solid var(--dim);
+  border-radius: 50%;
 }
 .task-entry[data-state="ready"] .task-pip {
   border-color: var(--acc);
@@ -116,50 +130,67 @@ html body .task-tracker.game-control:active {
   border-color: var(--acc);
   box-shadow: 0 0 4px var(--gilt);
 }
-.task-title {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-.task-prog {
-  color: var(--dim);
-}
-.task-quest .quest-bar {
-  flex-basis: 100%;
-}
-/* the ladder inside its group: left-aligned, no padding of its own */
-.task-group > .control-ladder {
-  justify-content: flex-start;
-  padding: 0;
-}
-.task-group > .control-ladder .ladder-rail {
+/* the lit rungs' doors (Cut 120 §8): small gold links under the Control entry */
+.task-doors {
+  display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 2px 10px;
+  padding-left: 16px;
 }
-/* compact rail: the rungs fold to their pips (label and story in the tip); a lit rung's door keeps its word; the next rung is named
-   once, by the condition line below */
-.task-group > .control-ladder .ladder-step {
-  display: none;
+.task-door {
+  all: unset;
+  cursor: pointer;
+  min-height: 24px;
+  color: var(--acc);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
 }
-.task-group > .control-ladder .ladder-rung:not(:has(.ladder-door)) {
-  font-size: 0;
-  gap: 0;
-  padding: 4px 3px;
+.task-door:focus-visible {
+  outline: 1px solid var(--acc);
+  outline-offset: 2px;
 }
-.task-group > .control-ladder .ladder-door {
+/* the objective line under its title: `- 3/5 sends` */
+.task-obj {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: var(--bone);
+  opacity: 0.85;
   font-size: 11px;
 }
-.task-group > .control-ladder .ladder-next {
-  text-align: left;
+.task-obj::before {
+  content: "- ";
 }
-/* phone: folded by default, at the scene's foot-left above the graveyard (the top-left holds the pill and the forge's price); touch-sized */
+.task-quest .quest-bar {
+  margin-top: 2px;
+}
+/* phone: folded by default, at the scene's foot-left (the top holds the pill and the forge's price); its foot follows the scrolling
+   well's visible floor (tasks.ts `--task-floor`); a dark wash keeps it legible over the busy town */
 @media (max-width: 1023px) {
   .task-tracker {
     top: auto;
+    right: auto;
+    left: 8px;
     bottom: calc(100% - var(--task-floor, 100%) + 56px);
     max-height: calc(var(--task-floor, 100%) - 112px);
+    border-radius: 6px;
+  }
+  html body .task-tracker.game-control {
+    padding: 0;
+    background: rgba(13, 12, 20, 0.72);
+    mask-image: none;
   }
   .task-summary {
     min-height: 44px;
+    padding: 0 10px;
+    border-bottom: 0;
+  }
+  .task-groups {
+    padding: 0 10px 8px;
   }
   .task-entry {
     min-height: 36px;

@@ -1,0 +1,11 @@
+client suite: targeted (9 selected; 158 current full; 201 exhaustive groups)
+ok   bloodline-training 24.6s (23.9s)  1440 22 bloodline training attribution checks PASS
+ok   package-selection 38.5s (37.8s)  1440 20 selected Tactics checks PASS
+ok   numbers-agree   55.6s (17.0s)  11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   cut118          56.3s (55.6s)  cut118: ok (19 checks)
+ok   gunner-observer 56.8s (32.2s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   game-menu       79.0s (78.3s)  81 game menu checks PASS
+ok   death-fix-discovery 81.5s (80.8s)  1440 13 comparison boundaries / actual free fix ordering / prices / no mutation PASS
+ok   hero-life       224.4s (223.7s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-600","recovering-590","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+ok   class-tree      284.7s (284.0s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+ok: 9/9 client gates in 284.7s

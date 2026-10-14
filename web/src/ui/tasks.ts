@@ -1,12 +1,16 @@
 // Owner 2026-10-14 ("the tactics order bar takes a lot of space … like the quest stuff, an overlay over the viewport; Journal will have
 // history; group tasks and auto remove entries once a group is done"): one quiet tracker over the town's top-left, under the `next` pill.
-// Groups: the control ladder (its rungs, doors and tips unchanged), each Journal chapter with work open now, and the quest. A group shows
-// only while it has something open; a finished group leaves (its entries stay in the Journal). All truth is the core's Journal.
+// Groups: the control ladder's next rung, each Journal chapter with work open now, and the quest. A group shows only while it has
+// something open; a finished group leaves (its entries stay in the Journal). Owner 2026-10-14 (a WoW-style quest list for reference):
+// frameless text over the scene's right edge — gold titles, indented `- 0/1` objective lines, no panel. All truth is the core's.
 import "../tasks.css";
 import type { App } from "../app";
 import type { JournalEntry } from "../engine/types";
 import { h, replace } from "./dom";
 import { questBar } from "./quest";
+import { ladderRungs } from "./ladder";
+import { revealed } from "./reveal";
+import { onPackages } from "./packages";
 
 const KEY = "idlever.tasks.open";
 /** shown entries per chapter (clutter budget); the rest wait in the Journal, counted in the head */
@@ -33,17 +37,11 @@ const isOpenWork = (e: JournalEntry): boolean => e.state === "active" || e.state
 
 export function taskTracker(
   app: App,
-  ladder: HTMLElement,
   journal: (anchor: HTMLElement) => void,
+  doors: Partial<Record<string, () => void>> = {},
 ): { el: HTMLElement; dispose: () => void } {
   const count = h("span", { class: "task-count num" });
   const groups = h("div", { class: "task-groups" });
-  const controlGroup = h(
-    "section",
-    { class: "task-group", "data-task-group": "control" },
-    h("h4", { class: "task-head" }, /* copy:label */ "Control"),
-    ladder,
-  );
   const details = h(
     "details",
     { class: "task-fold", open: storedOpen() },
@@ -70,7 +68,21 @@ export function taskTracker(
       })
       .filter((c) => c.open.length > 0);
     const quest = J?.quest && !J.quest.done ? J.quest : null;
-    const key = JSON.stringify([home, chapters, quest, J?.recommended, ladder.hidden]);
+    // the control ladder's first dark rung (ladder.ts: shown once packages and a depth exist, gone once every rung is lit)
+    const L = app.lineage,
+      R = revealed(app);
+    const rung =
+      onPackages(L) && L.best_depth > 0
+        ? ladderRungs(L, (s) => R.has(s as Parameters<typeof R.has>[0])).find((r) => !r.lit)
+        : undefined;
+    const control = rung ? { id: rung.id, label: rung.label, cond: rung.cond } : null;
+    // Cut 120 §8: a lit rung with a door (orders, workers) stays one tap away, as a gold link under the next rung
+    const lit = rung
+      ? ladderRungs(L, (s) => R.has(s as Parameters<typeof R.has>[0]))
+          .filter((r) => r.lit && doors[r.id])
+          .map((r) => ({ id: r.id, label: r.label }))
+      : [];
+    const key = JSON.stringify([home, chapters, quest, J?.recommended, control, lit]);
     if (key !== last) {
       last = key;
       const entry = (e: JournalEntry): HTMLElement =>
@@ -86,12 +98,60 @@ export function taskTracker(
           h("span", { class: "task-pip", "aria-hidden": "true" }),
           h("span", { class: "task-title" }, e.title),
           e.progress
-            ? h("small", { class: "task-prog num" }, `${e.progress.current}/${e.progress.required}`)
-            : "",
+            ? h(
+                "small",
+                { class: "task-obj num" },
+                `${e.progress.current}/${e.progress.required} ${e.progress.unit}`,
+              )
+            : e.requirements[0] || e.reason
+              ? h("small", { class: "task-obj" }, e.requirements[0] || e.reason)
+              : "",
         );
       replace(
         groups,
-        controlGroup,
+        control
+          ? h(
+              "section",
+              { class: "task-group", "data-task-group": "control" },
+              h("h4", { class: "task-head" }, /* copy:label */ "Control"),
+              h(
+                "button",
+                {
+                  class: "task-entry",
+                  "data-rung": control.id,
+                  "data-state": "later",
+                  onclick: (ev: Event) => journal(ev.currentTarget as HTMLElement),
+                },
+                h("span", { class: "task-pip", "aria-hidden": "true" }),
+                h(
+                  "span",
+                  { class: "task-title" },
+                  control.label.charAt(0).toUpperCase() + control.label.slice(1),
+                ),
+                h("small", { class: "task-obj" }, control.cond),
+              ),
+              lit.length
+                ? h(
+                    "div",
+                    { class: "task-doors" },
+                    ...lit.map((d) =>
+                      h(
+                        "button",
+                        {
+                          class: "task-door",
+                          "data-door": d.id,
+                          onclick: (ev: Event) => {
+                            ev.stopPropagation();
+                            doors[d.id]?.();
+                          },
+                        },
+                        d.label,
+                      ),
+                    ),
+                  )
+                : "",
+            )
+          : "",
         ...chapters.map((c) =>
           h(
             "section",
@@ -127,14 +187,14 @@ export function taskTracker(
             )
           : "",
       );
-      const n = chapters.reduce((s, c) => s + c.open.length, 0) + (quest ? 1 : 0);
+      const n =
+        chapters.reduce((s, c) => s + c.open.length, 0) + (quest ? 1 : 0) + (control ? 1 : 0);
       count.textContent = n ? String(n) : "";
-      el.hidden = !home || (!n && ladder.hidden);
+      el.hidden = !home || !n;
     }
   };
   paint();
-  // the ladder paints itself on change; read its hidden state after it has
-  const off = app.onChange(() => queueMicrotask(paint));
+  const off = app.onChange(paint);
   // phone: the town is taller than the well that scrolls it, so the chip's foot follows the well's visible floor (`--task-floor`)
   let well: HTMLElement | null = null;
   const floor = (): void => {

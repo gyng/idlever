@@ -1,0 +1,15 @@
+client suite: targeted (4 selected; 158 current full; 201 exhaustive groups)
+FAIL class-tree      110.9s (103.3s)  Node.js v26.5.0
+       - waiting for locator('.sheet-wrap:not([hidden])').locator('.class-path-confirm')
+       name: 'TimeoutError'
+         at confirmReview (/home/g/p/riddle/web/tests/class-tree.mjs:41:17)
+         at /home/g/p/riddle/web/tests/class-tree.mjs:225:11 {
+FAIL cut118          110.9s (103.4s)  cut118: FAIL (0 assertion(s), 1 error(s))
+     walk aborted: page.goto: Timeout 30000ms exceeded.
+     cut118: FAIL (0 assertion(s), 1 error(s))
+FAIL hero-life       110.9s (103.4s)  Node.js v26.5.0
+       - waiting for locator('[data-life-focus="confirm"]')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/hero-life.mjs:213:29 {
+ok   cut120          205.8s (198.4s)  cut120: ok (33 checks)
+FAIL: 1/4 client gates in 205.8s
