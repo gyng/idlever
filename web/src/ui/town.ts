@@ -917,7 +917,11 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         h: 44,
       }));
     const origin = el.getBoundingClientRect();
-    for (const marker of el.querySelectorAll<HTMLElement>(".town-marker")) {
+    // the next-worker pill (it grew a count and bar, Cut231 §5) and the task tracker are overlays the tag must clear too
+    for (const marker of el.querySelectorAll<HTMLElement>(
+      ".town-marker,.next-pill,.task-tracker",
+    )) {
+      if (marker.hidden) continue;
       const box = marker.getBoundingClientRect();
       if (!box.width || !box.height) continue;
       targets.push({
