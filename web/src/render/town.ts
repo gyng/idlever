@@ -964,6 +964,14 @@ function drawPrimitive(
     R("#0d0c14", 3, 1, 1, 3);
     R("#e8923a", 2, 1, 1, 3);
     R("#b89448", 1, 4, 3, 1);
+  } else if (id === "town_bench") {
+    // A plank seat on two legs with a low back rail (art pending: art/prompts/town_props_bench_lantern.txt).
+    R("#0d0c14", 0, h * 0.3, w, h * 0.32);
+    R("#7a5a3a", 1, h * 0.35, w - 2, h * 0.2);
+    R("#4d6c99", 1, h * 0.35, w - 2, 1);
+    R("#2b3350", w * 0.08, 0, w * 0.84, h * 0.16);
+    R("#0d0c14", w * 0.1, h * 0.6, Math.max(1, w * 0.12), h * 0.4);
+    R("#0d0c14", w * 0.78, h * 0.6, Math.max(1, w * 0.12), h * 0.4);
   } else if (id.startsWith("fx_dot_")) R(`#${id.slice(7)}`, 0, 0, w, h);
   else if (/^(hero_|walk_)/.test(id)) {
     const body = /rogue/.test(id)

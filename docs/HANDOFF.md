@@ -237,8 +237,7 @@ stay byte-identical).
   add both to make_env.py HUE): art/prompts/env_tools.txt. Primitives:
   render/tool-sprites.ts.
 - Town props `town_bench`, `town_lantern`: art/prompts/town_props_bench_lantern.txt.
-  town.ts drawPrimitive has a lantern branch; `town_bench` has none and falls to
-  the generic final branch (a beast-shaped block) until art or a primitive lands.
+  town.ts drawPrimitive draws both (bench primitive added 2026-10-14).
 - Optional service upgrades `town_service_guild`, `town_service_pool`,
   `town_service_station`: art/prompts/town_services.txt (code-painted
   home-service-art.ts remains accepted and the fallback).
