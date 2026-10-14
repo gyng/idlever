@@ -1,0 +1,7 @@
+client suite: targeted (1 selected; 157 current full; 200 exhaustive groups)
+FAIL hero-hub        64.5s (61.7s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: material contrast 1.13 < 3: {"entry":"earned-delving-queued","width":400,"scale":1,"id":"skills","row":{"text":"Learn skill","color":"rgb(164, 188, 214)","opacity":1,"rect":{"x":93,"y":642.4375,"w":34,"h":19},"inactive":true,"control":"chip class-path-choose","minimum":1.1300418758335542,"weakest":[185,175,128],"scrollTop":462}}
+         at materialContrast (file:///home/g/p/riddle/web/tests/hero-hub.mjs:502:14)
+         at async geometry (file:///home/g/p/riddle/web/tests/hero-hub.mjs:343:5)
+         at async file:///home/g/p/riddle/web/tests/hero-hub.mjs:885:25 {
+FAIL: 0/1 client gates in 64.5s

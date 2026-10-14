@@ -1,0 +1,8 @@
+client suite: targeted (4 selected; 157 current full; 200 exhaustive groups)
+ok   survivor-builds 220.0s (217.3s)  {"checks":805,"layouts":36,"result":"PASS"}
+FAIL hero-hub        524.3s (304.3s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: actual-material contrast
+         at file:///home/g/p/riddle/web/tests/hero-hub.mjs:1010:10 {
+ok   ui:frame        564.1s (39.7s)  ui: ok (60 checks · 38.2s)
+ok   screens         581.1s (56.9s)  screens: ok (59 checks · 9 screens linted · 35 buttons clicked · 55.4s)
+FAIL: 3/4 client gates in 581.1s

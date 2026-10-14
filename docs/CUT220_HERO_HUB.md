@@ -266,3 +266,30 @@ Home marker placement separately passes494 checks/25 phases. The final evidence
 README records server ownership, source identities and corrected earlier
 attribution. Exhaustive geometry, whole-suite acceptance and fun review retain
 their separate scope.
+
+## Lower/inactive contrast, phone Actual/Next and visual refinement
+
+`web/tests/hero-hub.mjs` now measures actual-material contrast on every geometry
+view (30 compact; 90 exhaustive), scrolling the whole panel so lower content is
+sampled. Thresholds: ordinary text 4.5:1 (WCAG 1.4.3 AA); text inside a
+disabled/inactive control 3:1 (WCAG exempts it; this contract's readability
+floor). Disabled controls must also differ from enabled controls in background
+or border. Unavailable-choice reasons are ordinary text at 4.5:1. The town canvas
+behind the opaque folio is hidden during this pass for cost; the test asserts the
+folio surface is opaque. All failures are collected and asserted after the run.
+
+The first census on the current package found13 failing samples: framed skill
+buttons put their second text line on the frame's inner gilt rule (inactive
+1.13:1, enabled1.73:1), and at400px/200% Legacy upgrade copy collapsed to one
+letter per line under its button (2.11:1). Scoped Hub CSS keeps framed text
+inside the rule and stacks Legacy buttons under their copy in narrow folios.
+Final weakest samples: ordinary5.76:1, inactive6.31:1, no failures.
+
+Slot cards now read slot name, then item. When Actual and Next match, one item
+line carries `Actual · next delve`; when they differ, two labelled rows read
+`Actual  sword · equipped` / `Next delve  sword · class`, stacking only in
+narrow cards. Geometry asserts every slot text run stays inside its card and
+split cards keep Actual before Next. The doll stacks below30rem (font-relative),
+so200% text never squeezes side cards; desktop centres Helm and Boots. Hub tabs
+and header buttons keep44px targets without the material's font-scaled2.75rem
+minimum, reducing a400px/200% tab from65.6px to about57px tall.

@@ -331,6 +331,48 @@ try {
       );
       checks++;
     }
+    if (id === "gear") {
+      // Phone Actual/Next rows: every slot text run stays inside its card's padding box.
+      const cards = await active()
+        .locator("[data-hub-slot]")
+        .evaluateAll((anchors) =>
+          anchors.map((anchor) => {
+            const b = anchor.getBoundingClientRect(),
+              s = getComputedStyle(anchor);
+            const inner = {
+              left: b.left + parseFloat(s.borderLeftWidth) + parseFloat(s.paddingLeft),
+              right: b.right - parseFloat(s.borderRightWidth) - parseFloat(s.paddingRight),
+            };
+            let overflow = 0;
+            for (const node of anchor.querySelectorAll("*")) {
+              const range = document.createRange();
+              range.selectNodeContents(node);
+              for (const r of range.getClientRects())
+                overflow = Math.max(overflow, r.right - inner.right, inner.left - r.left);
+            }
+            return {
+              slot: anchor.dataset.hubSlot,
+              state: anchor.dataset.hubSlotState,
+              overflow,
+              phases: [...anchor.querySelectorAll("[data-hub-slot-phase]")].map(
+                (n) => n.dataset.hubSlotPhase,
+              ),
+            };
+          }),
+        );
+      for (const card of cards) {
+        assert.ok(
+          card.overflow <= 0.5,
+          `slot text inside card: ${JSON.stringify({ entry: entry.id, width, scale, card })}`,
+        );
+        assert.ok(
+          card.state === "shared" || card.phases.join() === "actual,next",
+          "split slot shows Actual then Next",
+        );
+        checks += 2;
+      }
+      result.cards = cards;
+    }
     records.push({
       entry: entry.id,
       state: entry.state,
@@ -340,6 +382,258 @@ try {
       readOnly: true,
       geometry: result,
     });
+    await materialContrast(entry, width, scale, id);
+  }
+  // Actual-material contrast over the whole panel, including lower and inactive content.
+  // Thresholds: ordinary text 4.5:1 (WCAG 1.4.3 AA); text inside a disabled/inactive
+  // control 3:1 (WCAG exempts it; Cut220 sets this readability floor). Disabled controls
+  // must also differ from enabled controls in background or border material.
+  const CONTRAST = { ordinary: 4.5, inactive: 3 };
+  const contrastFailures = [];
+  async function materialContrast(entry, width, scale, id) {
+    const started = performance.now(),
+      phases = { collect: 0, shot: 0, measure: 0 };
+    const before = await save();
+    await page.mouse.move(0, 0);
+    const hub = active().locator("[data-hero-hub]");
+    // Cost control: the town canvas behind the opaque folio is hidden for this pass and
+    // the viewport grows (to 4000px) so lower content needs few scroll steps.
+    const quiet = await page.addStyleTag({
+      content: "body canvas:not(.sheet-wrap canvas){display:none!important}",
+    });
+    const scrollerHeight = async () =>
+      hub.evaluate((root) => {
+        let scroller = root;
+        while (scroller && !(scroller.scrollHeight > scroller.clientHeight + 1))
+          scroller = scroller.parentElement;
+        if (!scroller || scroller === document.documentElement || scroller === document.body)
+          return null;
+        return { scroll: scroller.scrollHeight, client: scroller.clientHeight };
+      });
+    const first = await scrollerHeight();
+    if (first)
+      await page.setViewportSize({
+        width,
+        height: Math.min(4000, Math.max(1000, 1000 + first.scroll - first.client)),
+      });
+    const viewport = page.viewportSize();
+    const steps = await hub.evaluate((root) => {
+      let scroller = root;
+      while (scroller && !(scroller.scrollHeight > scroller.clientHeight + 1))
+        scroller = scroller.parentElement;
+      if (!scroller || scroller === document.documentElement || scroller === document.body)
+        return [0];
+      scroller.dataset.hubContrastScroller = "1";
+      const max = scroller.scrollHeight - scroller.clientHeight,
+        step = Math.max(1, Math.floor(scroller.clientHeight * 0.9)),
+        out = [];
+      for (let y = 0; y < max; y += step) out.push(y);
+      out.push(max);
+      return out;
+    });
+    const surface = await active()
+      .locator(".game-window")
+      .evaluate((n) => getComputedStyle(n).backgroundColor);
+    assert.match(surface, /^rgb\(/, "opaque folio surface: hidden town canvas cannot show through");
+    checks++;
+    const rows = [];
+    let material = null;
+    for (const y of steps) {
+      await hub.evaluate((root, y) => {
+        const s = document.querySelector("[data-hub-contrast-scroller]");
+        if (s) s.scrollTop = y;
+        root.getBoundingClientRect();
+      }, y);
+      await page.evaluate(
+        () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))),
+      );
+      let mark = performance.now();
+      const samples = await hub.evaluate((root) => {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT),
+          out = [];
+        const inactiveSel =
+          ':disabled,[aria-disabled="true"],.off,.class-node-blocked,.class-map-locked';
+        while (walker.nextNode()) {
+          const node = walker.currentNode,
+            el = node.parentElement;
+          if (!node.textContent.trim() || !el) continue;
+          const range = document.createRange();
+          range.selectNode(node);
+          const rects = [...range.getClientRects()].filter(
+            (r) => r.width > 2 && r.height > 2 && r.bottom > 0 && r.y < innerHeight,
+          );
+          if (!rects.length || getComputedStyle(el).visibility !== "visible") continue;
+          let opacity = 1;
+          for (let p = el; p; p = p.parentElement) opacity *= Number(getComputedStyle(p).opacity);
+          for (const r of rects) {
+            if (r.width <= 2 || r.height <= 2 || r.x < 0 || r.right > innerWidth) continue;
+            if (r.y < 0 || r.bottom > innerHeight) continue;
+            let clipped = false;
+            for (let p = el.parentElement; p; p = p.parentElement) {
+              const s = getComputedStyle(p),
+                b = p.getBoundingClientRect();
+              if (
+                /auto|scroll|hidden|clip/.test(s.overflowY) &&
+                (r.y < b.y + p.clientTop || r.bottom > b.y + p.clientTop + p.clientHeight)
+              )
+                clipped = true;
+              if (
+                /auto|scroll|hidden|clip/.test(s.overflowX) &&
+                (r.x < b.x + p.clientLeft || r.right > b.x + p.clientLeft + p.clientWidth)
+              )
+                clipped = true;
+            }
+            if (clipped) continue;
+            const hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+            if (!hit || !(el === hit || el.contains(hit))) continue;
+            out.push({
+              text: node.textContent.trim().slice(0, 48),
+              color: getComputedStyle(el).color,
+              opacity,
+              rect: { x: r.x, y: r.y, w: r.width, h: r.height },
+              inactive: !!el.closest(inactiveSel),
+              control: el.closest("button,summary,[role=tab]")?.className ?? null,
+            });
+          }
+        }
+        const look = (n) => {
+          const s = getComputedStyle(n);
+          return { background: s.backgroundColor, border: s.borderTopColor, color: s.color };
+        };
+        const enabled = [...root.querySelectorAll("button.chip:enabled,button.btn:enabled")].find(
+          (n) => n.getClientRects().length && n.getAttribute("aria-pressed") !== "true",
+        );
+        const disabled = [
+          ...root.querySelectorAll("button.chip:disabled,button.btn:disabled"),
+        ].find((n) => n.getClientRects().length);
+        return {
+          out,
+          material:
+            enabled && disabled
+              ? { enabled: look(enabled), disabled: look(disabled), text: disabled.textContent }
+              : null,
+        };
+      });
+      phases.collect += performance.now() - mark;
+      mark = performance.now();
+      material ??= samples.material;
+      if (!samples.out.length) continue;
+      const hidden = await page.addStyleTag({
+        content:
+          ".sheet-wrap:not(.under) [data-hero-hub] * {color:transparent!important;text-shadow:none!important;caret-color:transparent!important}",
+      });
+      const shot = await page.screenshot({
+        type: "png",
+        clip: { x: 0, y: 0, width: viewport.width, height: viewport.height },
+      });
+      await hidden.evaluate((n) => n.remove());
+      phases.shot += performance.now() - mark;
+      mark = performance.now();
+      const measured = await page.evaluate(
+        async ({ b64, samples }) => {
+          const blob = await (await fetch("data:image/png;base64," + b64)).blob();
+          const bitmap = await createImageBitmap(blob);
+          const canvas = new OffscreenCanvas(bitmap.width, bitmap.height),
+            ctx = canvas.getContext("2d");
+          ctx.drawImage(bitmap, 0, 0);
+          const scale = bitmap.width / innerWidth;
+          const lin = (v) => ((v /= 255) <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+          const lum = (c) => 0.2126 * lin(c[0]) + 0.7152 * lin(c[1]) + 0.0722 * lin(c[2]);
+          return samples.map((s) => {
+            const rgba = s.color.match(/[\d.]+/g).map(Number),
+              alpha = (rgba[3] ?? 1) * s.opacity;
+            const x0 = Math.floor((s.rect.x + 1) * scale),
+              y0 = Math.floor((s.rect.y + 1) * scale),
+              x1 = Math.ceil((s.rect.x + s.rect.w - 1) * scale),
+              y1 = Math.ceil((s.rect.y + s.rect.h - 1) * scale);
+            const data = ctx.getImageData(x0, y0, Math.max(1, x1 - x0), Math.max(1, y1 - y0)).data;
+            let minimum = Infinity,
+              weakest = null;
+            for (let i = 0; i < data.length; i += 4) {
+              const bg = [data[i], data[i + 1], data[i + 2]];
+              // Translucent text is composited over the actual pixel beneath it.
+              const fg = rgba.slice(0, 3).map((c, k) => c * alpha + bg[k] * (1 - alpha));
+              const [hi, lo] = [lum(fg), lum(bg)].sort((a, b) => b - a);
+              const ratio = (hi + 0.05) / (lo + 0.05);
+              if (ratio < minimum) {
+                minimum = ratio;
+                weakest = bg;
+              }
+            }
+            return { ...s, minimum, weakest };
+          });
+        },
+        { b64: shot.toString("base64"), samples: samples.out },
+      );
+      phases.measure += performance.now() - mark;
+      rows.push(...measured.map((row) => ({ ...row, scrollTop: y })));
+    }
+    await hub.evaluate(() => {
+      const s = document.querySelector("[data-hub-contrast-scroller]");
+      if (s) {
+        s.scrollTop = 0;
+        delete s.dataset.hubContrastScroller;
+      }
+    });
+    await quiet.evaluate((n) => n.remove());
+    await page.setViewportSize({ width, height: 1000 });
+    assert.ok(rows.length, JSON.stringify({ entry: entry.id, width, scale, id, rows: 0 }));
+    checks++;
+    for (const row of rows) {
+      const threshold = row.inactive ? CONTRAST.inactive : CONTRAST.ordinary;
+      assert.ok(
+        row.opacity === 1 || row.inactive,
+        `ordinary text must be opaque: ${JSON.stringify({ entry: entry.id, width, scale, id, row })}`,
+      );
+      // Collected so one run reports every failing sample; asserted after all views.
+      if (!(row.minimum >= threshold))
+        contrastFailures.push({ entry: entry.id, width, scale, id, threshold, row });
+      checks += 2;
+    }
+    if (material) {
+      assert.ok(
+        material.enabled.background !== material.disabled.background ||
+          material.enabled.border !== material.disabled.border,
+        `disabled control material distinct: ${JSON.stringify(material)}`,
+      );
+      checks++;
+    }
+    const weakest = (list) =>
+      list
+        .toSorted((a, b) => a.minimum - b.minimum)
+        .slice(0, 3)
+        .map(({ text, color, weakest, minimum, control, scrollTop }) => ({
+          text,
+          color,
+          weakest,
+          minimum: Number(minimum.toFixed(2)),
+          control,
+          scrollTop,
+        }));
+    const inactive = rows.filter((row) => row.inactive),
+      ordinary = rows.filter((row) => !row.inactive);
+    records.push({
+      entry: entry.id,
+      state: entry.state,
+      width,
+      scale,
+      contrastSection: id,
+      thresholds: CONTRAST,
+      scrollSteps: steps.length,
+      viewportHeight: viewport.height,
+      surface,
+      townCanvasHidden: true,
+      diagnosticMs: {
+        total: Math.round(performance.now() - started),
+        ...Object.fromEntries(Object.entries(phases).map(([k, v]) => [k, Math.round(v)])),
+      },
+      samples: rows.length,
+      ordinary: { samples: ordinary.length, weakest: weakest(ordinary) },
+      inactive: { samples: inactive.length, weakest: weakest(inactive) },
+      material,
+    });
+    assert.equal(await save(), before, "contrast inspection is read-only");
+    checks++;
   }
   let awayPartyDone = false;
   let navBoundariesDone = false;
@@ -712,6 +1006,15 @@ try {
     );
     checks++;
   }
+  records.push({ diagnostic: "material-contrast-failures", failures: contrastFailures });
+  assert.deepEqual(
+    contrastFailures.map(
+      ({ entry, width, scale, id, threshold, row }) =>
+        `${entry}/${width}/${scale}/${id}: ${row.text} ${row.minimum.toFixed(2)} < ${threshold}`,
+    ),
+    [],
+    "actual-material contrast",
+  );
   await drain();
   assert.ok(deliveries.length);
   for (const delivery of deliveries) assert.deepEqual(delivery, wasmScope.expected);

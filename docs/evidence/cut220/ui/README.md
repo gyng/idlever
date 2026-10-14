@@ -106,3 +106,38 @@ Home76361 separately passes494 current-UI checks and25 phases after the
 marker keepout fix. A readonly staked preview uses its actual same-plot tag
 when that tag legitimately intercepts the underlying target;44px/save/identity
 gates remain. Both earlier Home failures stay in Cut224 evidence.
+
+## Lower/inactive contrast and phone refinement (package a2ab)
+
+Current local WASM `a2ab9963…cafffb`; default runner mode compares deliveries
+with it. Thresholds: ordinary text4.5:1; text inside disabled/inactive controls
+3:1; disabled controls must differ from enabled in background or border.
+
+- `lower-contrast-a2ab-first-stop/run.txt`: first run stopped at the first
+  failing sample (away disabled `Learn skill`1.13:1). Its failure.json was
+  deleted by mistake; the log keeps the sample.
+- `lower-contrast-a2ab-before-killed/`: slow first census, killed after ten
+  views; led to the viewport/cost changes. Not a result.
+- `lower-contrast-a2ab-before/failure.json`: HEAD Hub UI, compact30 views:
+  13 failures (framed skill buttons inactive1.13/enabled1.73; Legacy copy at
+  400px/200%2.11; `Choose path`320px/200%1.42).
+- `lower-contrast-a2ab-pre-tablet-padding/results.json`: refined UI PASS11,478.
+- `lower-contrast-a2ab-resident-bar-failure/`: tightened tablet padding put the
+  selected resident's inset gilt rule on its text (2.17:1); fixed with5px bottom.
+- `lower-contrast-a2ab-final/results.json`: PASS11,516 checks/7 cases/30 views;
+  4,026 ordinary samples min5.76:1,213 inactive min6.31:1,0 failures; 18 views
+  check disabled-vs-enabled material. Same run: survivor-builds805/36,
+  ui:frame60, screens59 (`lower-contrast-a2ab-final/suite-run.txt`;
+  an earlier loaded run's screens patch-gem timeout is kept in
+  `lower-contrast-a2ab-pre-tablet-padding/suite-run-screens-timeout.txt` and
+  passed alone).
+- `gpu-a2ab-phone-final/`: private D3D12/NVIDIA no-HMR server, ten read-only
+  frames; 143 ordinary samples min7.29:1. Capture script and sampler included.
+  `gpu-a2ab-phone-pre-tablet-padding/` keeps the previous CSS frames.
+
+Milestones: `gpu-a2ab-phone-final/400-away-gear.png`,
+`gpu-a2ab-phone-final/320-200-away-gear.png`,
+`gpu-a2ab-phone-final/1440-away-gear.png`,
+`gpu-a2ab-phone-final/1440-ready-gear.png`.
+The away fixture differs only by origin (equipped vs class/pin/follow); no item
+label difference exists in genuine fixtures, and none was authored.

@@ -1,0 +1,48 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: actual-material contrast
++ actual - expected
+
++ [
++   'earned-delving-queued/400/1/skills: Learn skill 1.13 < 3',
++   'earned-delving-queued/400/1/skills: Learn skill 1.52 < 3',
++   'earned-delving-queued/400/2/attributes: +3 HP 2.38 < 4.5',
++   'earned-delving-queued/400/2/attributes: +3 HP 2.45 < 4.5',
++   'earned-delving-queued/400/2/attributes: +1 damage 2.22 < 4.5',
++   'earned-delving-queued/400/2/attributes: +1 armour 2.84 < 4.5',
++   'earned-delving-queued/400/2/attributes: +1 damage 2.11 < 4.5',
++   'earned-delving-queued/400/2/attributes: +1 armour 2.75 < 4.5',
++   'earned-ready/320/2/skills: Choose path 1.42 < 3',
++   'earned-ready/400/1/skills: Learn skill 1.73 < 4.5',
++   'earned-ready/400/1/skills: Learn skill 2.51 < 4.5',
++   'earned-recovering-rebirth/400/1/skills: Learn skill 1.73 < 4.5',
++   'earned-recovering-rebirth/400/1/skills: Learn skill 2.51 < 4.5'
++ ]
+- []
+
+    at file:///home/g/p/riddle/web/tests/hero-hub.mjs:968:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    'earned-delving-queued/400/1/skills: Learn skill 1.13 < 3',
+    'earned-delving-queued/400/1/skills: Learn skill 1.52 < 3',
+    'earned-delving-queued/400/2/attributes: +3 HP 2.38 < 4.5',
+    'earned-delving-queued/400/2/attributes: +3 HP 2.45 < 4.5',
+    'earned-delving-queued/400/2/attributes: +1 damage 2.22 < 4.5',
+    'earned-delving-queued/400/2/attributes: +1 armour 2.84 < 4.5',
+    'earned-delving-queued/400/2/attributes: +1 damage 2.11 < 4.5',
+    'earned-delving-queued/400/2/attributes: +1 armour 2.75 < 4.5',
+    'earned-ready/320/2/skills: Choose path 1.42 < 3',
+    'earned-ready/400/1/skills: Learn skill 1.73 < 4.5',
+    'earned-ready/400/1/skills: Learn skill 2.51 < 4.5',
+    'earned-recovering-rebirth/400/1/skills: Learn skill 1.73 < 4.5',
+    'earned-recovering-rebirth/400/1/skills: Learn skill 2.51 < 4.5'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

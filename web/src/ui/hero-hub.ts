@@ -172,6 +172,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         {
           class: "btn hero-hub-gear-anchor",
           "data-hub-slot": slot,
+          "data-hub-slot-state": shared ? "shared" : "split",
           disabled: !kits,
           onclick: () => {
             if (!current() || !host.isConnected) return;
@@ -183,14 +184,14 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
             }
           },
         },
-        h("b", {}, SLOT_NAMES[slot]),
+        h("b", { class: "hero-hub-slot-name" }, SLOT_NAMES[slot]),
         ...(shared
           ? [
               h(
                 "small",
                 { "data-hub-slot-shared": "1" },
+                h("span", { class: "hero-hub-item" }, actual.label),
                 h("strong", {}, /* copy:callout */ "Actual · next delve"),
-                actual.label,
               ),
             ]
           : (
@@ -209,8 +210,12 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
                   {},
                   phase === "actual" ? /* copy:label */ "Actual" : /* copy:label */ "Next delve",
                 ),
-                row?.label ?? /* copy:label */ "Unknown",
-                row?.origin ? h("span", { class: "dim" }, row.origin) : null,
+                h(
+                  "span",
+                  { class: "hero-hub-phase-value" },
+                  h("span", { class: "hero-hub-item" }, row?.label ?? /* copy:label */ "Unknown"),
+                  row?.origin ? h("span", { class: "dim hero-hub-origin" }, row.origin) : null,
+                ),
               ),
             )),
       );

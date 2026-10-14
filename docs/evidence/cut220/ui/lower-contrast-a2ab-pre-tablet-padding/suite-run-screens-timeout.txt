@@ -1,0 +1,9 @@
+client suite: targeted (4 selected; 157 current full; 200 exhaustive groups)
+ok   survivor-builds 276.8s (275.7s)  {"checks":805,"layouts":36,"result":"PASS"}
+ok   hero-hub        1264.9s (988.2s)  {"result":"PASS","checks":11478,"views":30,"cases":7}
+ok   ui:frame        1307.3s (42.3s)  ui: ok (60 checks · 41.3s)
+FAIL screens         1309.3s (44.4s)  screens: FAIL (0 assertion(s), 1 error(s), 3 screens, 27 clicks, 43.5s)
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.patch-gem')
+     screens: FAIL (0 assertion(s), 1 error(s), 3 screens, 27 clicks, 43.5s)
+FAIL: 3/4 client gates in 1309.3s
