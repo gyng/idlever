@@ -17,17 +17,27 @@ use crate::turn::{damage_monster, Src};
 use crate::wire::Ev;
 use serde::{Deserialize, Serialize};
 
+fn is_zero(n: &u32) -> bool {
+    *n == 0
+}
+
 // ---------------------------------------------------------------- numbers (Cut225 contract)
 
 /// Bell lure: placement within this many tiles of the hero; foes this close to the bell (in
 /// its line of sight) are drawn to it.
 pub const LURE_RANGE: i32 = 4;
-pub const LURE_TTL: u32 = 20;
+/// Owner tuning 2026-10-14 (Cut225): 20 → 30.
+pub const LURE_TTL: u32 = 30;
 pub const LURE_COOLDOWN: u32 = 40;
-pub const COUNTER_WINDOW: u32 = 20;
-pub const COUNTER_DAMAGE: i32 = 4;
-pub const COUNTER_COOLDOWN: u32 = 60;
-pub const BOW_PAUSE: u32 = 10;
+/// Owner tuning 2026-10-14: window 20 → 30, damage 4 → 10, cooldown 60 → 40, one → three
+/// punishing blows per window (every ability costs an attack; the counter now repays it).
+pub const COUNTER_WINDOW: u32 = 30;
+pub const COUNTER_DAMAGE: i32 = 10;
+pub const COUNTER_COOLDOWN: u32 = 40;
+/// Punishing blows one armed window can deal (one per real adjacent melee miss).
+pub const COUNTER_CHARGES: u32 = 3;
+/// Owner tuning 2026-10-14: 10 → 30 (about three held moves; the boss cap stays 5).
+pub const BOW_PAUSE: u32 = 30;
 pub const BOW_BOSS_PAUSE: u32 = 5;
 pub const BOW_RANGE: i32 = 4;
 pub const BOW_COOLDOWN: u32 = 60;
@@ -40,9 +50,10 @@ pub const JAPE_COOLDOWN: u32 = 100;
 /// A boss diverted or paused cannot be diverted again for this long (no chain-lock).
 pub const BOSS_GUARD: u32 = 40;
 
-pub const SENTRY_HP: i32 = 12;
+/// Owner tuning 2026-10-14 ("turret stronger, mace weaker"): HP 12 → 16, shot 3 → 4.
+pub const SENTRY_HP: i32 = 16;
 pub const SENTRY_TTL: u32 = 60;
-pub const SENTRY_SHOT: i32 = 3;
+pub const SENTRY_SHOT: i32 = 4;
 pub const SENTRY_INTERVAL: u32 = 10;
 pub const SENTRY_RANGE: i32 = 4;
 pub const DEPLOY_COOLDOWN: u32 = 60;
@@ -59,6 +70,9 @@ pub const RELOCATE_COOLDOWN: u32 = 40;
 pub const OVERDRIVE_TICKS: u32 = 20;
 pub const OVERDRIVE_INTERVAL: u32 = 5;
 pub const OVERDRIVE_COOLDOWN: u32 = 100;
+/// Owner tuning 2026-10-14: an Engineer's melee blows land 2 lighter (the mace 4–8 hits 2–6,
+/// below the sword's 3–7); the construct carries the class's damage.
+pub const ENGINEER_MELEE: i32 = 2;
 
 /// The class verbs this module owns, in ladder order per class.
 pub const CLOWN_VERBS: [&str; 5] = ["bell_lure", "turnabout", "false_bow", "curtain", "grand_jape"];
@@ -222,6 +236,9 @@ pub struct Tools {
     pub boss_guard: Vec<Hold>,
     #[serde(default)]
     pub counter_until: u32,
+    /// Counters already dealt in the armed window (a window holds `COUNTER_CHARGES`).
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub counter_hits: u32,
     /// Absolute ready tick of each ladder ability (index = ladder position).
     #[serde(default)]
     pub ready: [u32; 5],
@@ -400,6 +417,7 @@ fn apply_counter(run: &mut Run, cx: &mut Ctx) -> bool {
     let cd = ticks(COUNTER_COOLDOWN, -10 * skill(run, Class::Clown, 5));
     let t = run.tools.as_mut().unwrap();
     t.counter_until = until;
+    t.counter_hits = 0;
     t.stats.counters_armed += 1;
     set_ready(run, "turnabout", cd);
     log_use(run, cx, "turnabout");
@@ -981,7 +999,11 @@ pub fn on_miss(run: &mut Run, cx: &mut Ctx, mi: usize) {
     if t.counter_until <= now || !run.monsters[mi].pos.adjacent(run.hero.pos) || !run.monsters[mi].hostile() {
         return;
     }
-    t.counter_until = 0;
+    t.counter_hits += 1;
+    if t.counter_hits >= COUNTER_CHARGES {
+        t.counter_until = 0;
+        t.counter_hits = 0;
+    }
     t.stats.counters += 1;
     let amount = COUNTER_DAMAGE + skill(run, Class::Clown, 3);
     let landed = tool_hit(run, cx, mi, amount, HERO_ID, Tool::Counter, "counter");
@@ -998,7 +1020,10 @@ pub fn tick(run: &mut Run, cx: &mut Ctx) {
     t.boss_guard.retain(|h| h.until > now);
     if t.counter_until > 0 && t.counter_until <= now {
         t.counter_until = 0;
-        t.stats.counters_wasted += 1;
+        if t.counter_hits == 0 {
+            t.stats.counters_wasted += 1;
+        }
+        t.counter_hits = 0;
     }
     if let Some(d) = t.decoy.filter(|d| d.until <= now) {
         if !t.decoy_used {

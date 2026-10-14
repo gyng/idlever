@@ -59,3 +59,19 @@ Earlier measurements of the same camps (not kept as files):
    11–13 per run; paths still used unconditioned rows (Misdirector D25/16/21).
 3. Conditioned Clown tree rows: the final table (Misdirector D22/22/23,
    Counterplayer D24/23/21). No ability number changed at any step.
+
+## Owner tuning 2026-10-14
+
+See `clown-tuning/` and the contract section "Owner tuning 2026-10-14". Base
+main 8bee3697.
+
+- `dayplayer-base-8bee3697.log` and `dayplayer-final.log`: the IDLE/PICKED
+  logs. `dayplayer/base-ea45b8fbe95df509/` and `dayplayer/final-394b3281829a4e14/`
+  hold the 32 per-seed results each; all 32 are byte-identical.
+- `classes-before*` and `classes-after*`: the 10-seed class comparison logs,
+  results, earning receipts and summaries (`summarize.py`). The per-build saves
+  were deleted; the example regenerates them.
+- `sweep.txt`: the candidate sets tried on the earlier cut227-recovery-wip base.
+- `settlements-inputs-5844.json` and `gold-settlements-5844*`: the repinned
+  manifest and a passing run (564/24).
+- `native-tests.log`, `clippy.log` and `client-class-*.log`: the checks.

@@ -397,6 +397,7 @@ impl Hero {
     }
     pub fn atk(&self) -> (i32, i32) {
         let (lo, hi) = self.weapon.as_ref().map(|w| w.atk()).unwrap_or(self.base_atk);
+        let (lo, hi) = if self.class == Class::Engineer && !self.ranged() { let p = crate::tools::ENGINEER_MELEE; ((lo - p).max(1), (hi - p).max(1)) } else { (lo, hi) };
         (lo + self.str_bonus + self.gift.fury, hi + self.str_bonus + self.gift.fury)
     }
     pub fn def(&self) -> i32 {

@@ -181,11 +181,18 @@ fn turnabout_answers_only_a_real_adjacent_melee_miss() {
         r.monsters[gi].pos = Pos::new(5, 5);
         crate::tools::on_miss(r, &mut cx, gi);
         assert_eq!(r.monsters[gi].hp, 100 - (COUNTER_DAMAGE - def).max(0), "exact counter damage after armour");
-        // Once only.
+        // One punishing blow per real miss, `COUNTER_CHARGES` per window, then disarmed.
+        let blow = (COUNTER_DAMAGE - def).max(0);
+        for n in 2..=COUNTER_CHARGES as i32 {
+            assert!(r.tools.as_ref().unwrap().counter_until > 0, "still armed before charge {n}");
+            crate::tools::on_miss(r, &mut cx, gi);
+            assert_eq!(r.monsters[gi].hp, 100 - n * blow);
+        }
+        assert_eq!(r.tools.as_ref().unwrap().counter_until, 0, "spent window disarms");
         crate::tools::on_miss(r, &mut cx, gi);
-        assert_eq!(r.monsters[gi].hp, 100 - (COUNTER_DAMAGE - def).max(0));
+        assert_eq!(r.monsters[gi].hp, 100 - COUNTER_CHARGES as i32 * blow);
     }
-    assert_eq!(tools(&g).stats.counters, 1);
+    assert_eq!(tools(&g).stats.counters, COUNTER_CHARGES);
     assert!(g.events.iter().any(|e| matches!(e, Ev::Attack { verb: Some(v), hit: true, .. } if v == "counter")));
     assert!(g.events.iter().any(|e| matches!(e, Ev::Hurt { cause, .. } if cause == "counter")));
 }
@@ -663,4 +670,15 @@ fn eight_hours_whole_split_and_reload_match_with_a_live_tool() {
         let _ = whole.lineage();
         assert_eq!(whole.lineage.gold, gold);
     }
+}
+
+#[test]
+fn engineer_melee_is_lighter_than_the_same_mace_for_anyone_else() {
+    // Owner tuning 2026-10-14: the mace 4–8 hits 2–6 for an Engineer; a Fighter's is unchanged.
+    let eng = arena(Class::Engineer, 1);
+    let mut fig = arena(Class::Fighter, 1);
+    fig.run.as_mut().unwrap().hero.weapon = Some(Item::new(900, "mace")).into();
+    assert_eq!(fig.run.as_ref().unwrap().hero.atk(), (4, 8));
+    assert_eq!(eng.run.as_ref().unwrap().hero.atk(), (4 - ENGINEER_MELEE, 8 - ENGINEER_MELEE));
+    assert!(eng.run.as_ref().unwrap().hero.atk().1 < 7, "below the sword's 3–7 top");
 }

@@ -481,10 +481,9 @@ produced the table above. Earlier measurements are summarized in
 
 ### Open
 
-- Clown candidate numbers need a source decision (counter/pause strength or
-  action economy) before content tuning; the Engineer's mace (4–8) out-rolls
-  the Fighter's sword (3–7), which may be the "free extra item value" the
-  contract warns about.
+- Resolved by "Owner tuning 2026-10-14" below: the Clown's counter, pause and
+  lure numbers were raised, and the Engineer's mace now hits 2–6 while its sentry
+  is stronger.
 - Not done: real-WASM per-class journey (acceptance 6), replay capture and
   render cues for decoy/sentry/counter (7; the renderer does not draw them
   yet, `Snapshot.tools` and `Ev::Tool` are ready), art (12 insignias, two
@@ -492,3 +491,133 @@ produced the table above. Earlier measurements are summarized in
   beyond the Journal milestone, Hub ability/cooldown display, targeted
   `--rows` 16-seed runs beyond routine IDLE/PICKED, and the existing-tree
   extension.
+
+## Owner tuning 2026-10-14
+
+Owner decisions:
+
+1. **Clown.** Default pace should sit between its earlier pace and the
+   Rogue's median: clearly above D19–23, below or near D28. Skilled play
+   (packages and pen rows that use decoy, counter and pause well) should meet
+   or beat the Rogue's median. The weakness was that every ability costs an
+   attack and repaid too little. Only Clown content numbers change.
+2. **Engineer.** The first instruction ("the mace stays 4–8") was corrected
+   by the owner the same day: "Make turret stronger and mace weaker." The
+   Engineer's power moves from melee to the sentry, and its overall pace stays
+   near the Fighter's. Only Engineer content changes.
+
+Base: `origin/main` 8bee3697, which includes Cut227 recovery (12000 ticks,
+L5 at 200 runs) and Cut228. Evidence is in `docs/evidence/cut225/clown-tuning/`.
+
+### Changed numbers (`tools.rs`, `Hero::atk`)
+
+| Number | Before | After |
+| --- | ---: | ---: |
+| Turnabout damage | 4 | 10 |
+| Turnabout window | 20 ticks | 30 ticks |
+| Turnabout cooldown | 60 ticks | 40 ticks |
+| Turnabout blows per window (`COUNTER_CHARGES`, new) | 1 | 3 (one per real adjacent melee miss) |
+| False bow pause (non-boss; boss cap stays 5) | 10 ticks | 30 ticks |
+| Bell lure lifetime | 20 ticks | 30 ticks |
+| Sentry HP | 12 | 16 |
+| Sentry shot | 3 | 4 |
+| Engineer melee (`ENGINEER_MELEE`, new) | 0 | −2 per blow, floor 1: the mace hits 2–6, below the sword's 3–7 |
+
+Nothing else changed: no cooldowns or ranges of the other verbs, no tree node
+increments, no default policy, no other class, and no item definition. The
+global mace stays 4–8 for every other class, and the mace penalty applies only
+to an Engineer's non-ranged blows. `Tools.counter_hits` is a new field. It is
+serialized only while it is non-zero and exists only in Clown/Engineer runs.
+New or updated tests: `turnabout_answers_only_a_real_adjacent_melee_miss`
+checks the charges, and `engineer_melee_is_lighter_than_the_same_mace_for_anyone_else`
+is new.
+
+### Before/after (diagnostic, 10 seeds, 72 h from the same earned camps)
+
+The command for both runs is
+`cut225_classes DIR --seeds 1,2,3,4,5,6,7,8,9,10 --checkins 9`. "Before"
+runs the base core with this example. The `send` waits out a death recovery,
+which seed 6 needs under Cut227. "Skilled" adds the forecast's top package
+move each check-in (PICKED's bar), every legal tree node and a five-row Clown
+pen block (curtain when hurt and engaged, turnabout at two adjacent, bell
+when engaged with a joiner, jape at three, bow) or a two-row Engineer block.
+In the tables, "h28" is hours to D28; "—" means it was not reached by 72 h,
+and those seeds count as 80 h in the median.
+
+| Build | Before: median / mean best | Before: D28 reached, median h28 | After: median / mean best | After: D28 reached, median h28 |
+| --- | --- | --- | --- | --- |
+| Clown default | D24 / 24.6 | 2/10, — | D28 / 26.4 | 7/10, 72 h |
+| Clown skilled | D28 / 27.8 | 9/10, 68 h | D28 / 28.0 | 9/10, 40 h |
+| Clown Misdirector | D22 / 22.7 | 2/10, — | D24 / 24.8 | 4/10, — |
+| Clown Counterplayer | D23.5 / 24.0 | 3/10, — | D24 / 25.1 | 4/10, — |
+| Rogue default (unchanged) | D28 / 28.0 | 10/10, 44 h | same | same |
+| Rogue skilled (unchanged) | D28 / 29.6 | 10/10, 24 h | same | same |
+| Fighter, Clown camp (unchanged) | D28 / 29.5 | 10/10, 40 h | same | same |
+| Engineer default | D28 / 28.5 | 10/10, 32 h | D28 / 28.5 | 10/10, 32 h |
+| Engineer Emplacement | D28 / 28.5 | 10/10, 28 h | D28 / 28.5 | 10/10, 32 h |
+| Engineer Fieldwork | D28 / 29.0 | 10/10, 32 h | D28 / 28.5 | 10/10, 32 h |
+| Engineer skilled | D33 / 32.9 | 10/10, 16 h | D33 / 32.2 | 10/10, 16 h |
+| Fighter, Engineer camp (unchanged) | D28 / 29.5 | 10/10, 28 h | same | same |
+| Fighter skilled, Engineer camp (unchanged) | D33 / 32.5 | 10/10, 8 h | same | same |
+
+Per-seed bests (seeds 1–10):
+
+- Clown default before: 22/27/23/28/21/27/28/23/22/25.
+- Clown default after: 22/28/28/28/28/28/28/23/23/28.
+- Clown skilled after: 23/28/28/28/28/33/28/28/28/28. Hours to D28:
+  —/32/64/32/24/56/48/56/24/16.
+- Rogue default hours to D28: 48/40/64/40/40/64/40/56/40/48.
+
+Tool receipts per run, before → after:
+
+- Clown default:
+  - counter damage: 28.9 → 87.6
+  - damage per counter: 3.7 → 6.3
+  - counters per window: 0.54 → 0.88
+  - paused moves: 15.6 → 49.2
+  - tool kills: 2.8 → 10.8
+- Engineer default:
+  - sentry damage: 1103 → 1303 (+18%)
+  - tool kills: 56.5 → 71.1
+  - sentries destroyed: 3.5 → 1.6
+  - deaths per run: 0.62 → 0.59
+
+Reading:
+
+- **Clown default.** It now sits between its earlier pace and the Rogue. Mean
+  best rose from 24.6 to 26.4, and 7 of 10 seeds reach D28, but late (median
+  72 h against the Rogue's 44 h). Three seeds still stop at D22–23. The median
+  best equals the Rogue's D28 because bests bunch at the D23/D28 walls. On
+  hours to D28 and on mean best, the Clown default is clearly below the Rogue.
+- **Clown skilled.** It reaches D28 on 9 of 10 seeds. Its median of 40 h
+  beats the default Rogue's 44 h, and one seed reaches D33. It does not match
+  a skilled Rogue (24 h).
+- **Engineer.** Its overall pace is unchanged, the same as before and close to
+  the Fighter: median 32 h against the Fighter's 28 h, and D33 skilled. Its
+  damage moved from melee to the construct: 18% more sentry damage, 26% more
+  tool kills, and half as many destroyed sentries.
+
+Sweep: `sweep.txt` lists the candidate sets tried, measured on the
+cut227-recovery-wip base with a temporary environment hook. The hook was
+removed before commit. Lighter Clown sets (damage 8, one or two charges) left
+the default at mean 24.3–24.8 and the skilled build at a median of 52 h. A
+stronger lure/bow set without three charges did no better. For the Engineer,
+melee −3 with shot 5 was faster than the Fighter (median 28 h), and a sentry
+lifetime of 80 raised idle time to 41%.
+
+### Invariance and checks
+
+- **IDLE/PICKED.** `dayplayer --seeds 16 --days 14 --bots idle,picked
+  --routine --threads 6` ran on base 8bee3697 (`ea45b8fbe95df509`) and on
+  this core (`394b3281829a4e14`). All 32 per-seed results are byte-identical,
+  and the bar table is identical. The table includes two FAIL rows that were
+  present before this change: `PICKED ≥ 1.5× IDLE at D13…` (1.00 at D13) and
+  `Scout bought ≤ min 15` (worst 19.3 min).
+- **Native tests.** `cargo test -q --workspace --profile fast`: 938 passed,
+  6 ignored. `cargo clippy --workspace --all-targets -- -D warnings`: clean.
+- **WASM.** The fast build is 6850193 bytes, sha256 `5844fe1b…9977`. The gold
+  settlements were repinned to `settlements-inputs-5844.json`, a copy of the
+  Cut228 main manifest with only the WASM fields and a note changed, and it is
+  now the test's default. `gold-settlements` passes 564 checks / 24 cases.
+  Client `class-tools` (43 checks) and `class-tree` pass. oxfmt and oxlint
+  are clean.
