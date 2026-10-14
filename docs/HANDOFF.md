@@ -170,7 +170,15 @@ the well's visible floor, <360px dock icon-only (36px icons, words kept as names
 Routine full gate on HEAD (evidence/cut227/gates-full.log): metrics PASS; dayplayer
 tuned-picked 1.00 FAIL (identical on b497 → pre-Cut225; passed 1.17 at cut187),
 routine 2-seed random-picked 1/2 FAIL (16-seed row PASS 16/16·15/16), qa gem-patch
-seed6 FAIL. Bisect agent running. Clone-vat art: codex run needs owner launch.
+seed6 FAIL. Bisect (evidence/cut227/bisect/README.md): qa gem fixed in core
+(8f48b3f1, patch order tiers only; TUNED table byte-identical). tuned-picked
+1.00: 3753532a 1.18→1.08, a327b8dd (Cut211 60s death recovery) →1.00; HEAD with
+RECOVERY_TICKS 12000 measures 1.17. OWNER DECISION: (a) longer recovery,
+(b) harder D29–D33, (c) re-scope row to King (TUNED 1/16 kills, PICKED 0/16),
+(d) finer check-in resolution. Routine 2-seed random-picked demands 2/2; seed1
+is the 16-seed row's only D23 exception: OWNER DECISION to run it at 16 seeds.
+WASM not yet rebuilt for 8f48b3f1 (death-screen patch order). Clone-vat art:
+codex run needs owner launch.
 
 Full changed-game native/client/current18-case regression, relevant exhaustive
 invariants, replay/offline parity, broader legendary build causality/pacing and
