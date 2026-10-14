@@ -482,17 +482,21 @@ export const supplyCap = (owned: string[]): number => (owned.includes("supply_ca
 export function classList(
   L: Lineage,
   catalogue: UnlockInfo[] = [],
-): { cls: string; owned: boolean; level: number }[] {
+): { cls: string; owned: boolean; level: number; needs?: string }[] {
+  const earned = new Map((L.earned_classes ?? []).map((e) => [e.class, e]));
   const ids = new Set<string>([
     ...CLASSES,
     ...Object.keys(L.classes ?? {}),
     ...catalogue.filter((u) => (LABEL[u.id] ?? "").startsWith("class:")).map((u) => u.id),
+    // Cut225: an earned class is listed only once Rust says it may be chosen (or it was chosen before).
+    ...[...earned.values()].filter((e) => e.available).map((e) => e.class),
   ]);
   return [...ids]
     .map((cls) => ({
       cls,
-      owned: isFreeClass(cls) || L.unlocks.includes(cls),
+      owned: isFreeClass(cls) || L.unlocks.includes(cls) || earned.get(cls)?.available === true,
       level: L.classes?.[cls]?.level ?? 1,
+      needs: earned.get(cls)?.available === false ? earned.get(cls)?.needs : undefined,
     }))
     .sort((a, b) => Number(b.cls === L.class) - Number(a.cls === L.class));
 }
@@ -501,14 +505,16 @@ export function classList(
 export function classUnlockReason(
   u: UnlockInfo | undefined,
   unownedClass?: string,
+  earnedNeeds?: string,
 ): HTMLElement | "" {
   // Free Rogue is omitted from the buy catalogue; its existing core gate is the first full haul.
+  // Cut225: an earned class's reason is Rust's own (`Lineage.earned_classes[].needs`).
   const needs = u
     ? !u.owned && !u.available
       ? u.needs
       : undefined
     : unownedClass === "rogue"
       ? /* copy:callout */ "first full haul"
-      : undefined;
+      : earnedNeeds;
   return needs ? h("small", { class: "class-needs num" }, `⊘ ${needs.replace(/_/g, " ")}`) : "";
 }

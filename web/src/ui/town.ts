@@ -1332,7 +1332,7 @@ export function openHeroClass(app: App): void {
     const paint = (cat?: Awaited<ReturnType<typeof app.engine.unlocks>>): void => {
       replace(
         grid,
-        ...classList(app.lineage, cat).map(({ cls, owned, level }) => {
+        ...classList(app.lineage, cat).map(({ cls, owned, level, needs }) => {
           const u = owned ? undefined : cat?.find((x) => x.id === cls);
           return h(
             "div",
@@ -1356,7 +1356,7 @@ export function openHeroClass(app: App): void {
               ` L${level}`,
               u?.cost ? ` ◆${u.cost}` : "",
             ),
-            classUnlockReason(u, owned ? undefined : cls),
+            classUnlockReason(u, owned ? undefined : cls, needs),
             classSkillLadder(CLASS_VERBS[cls] ?? {}, level, owned),
           );
         }),
