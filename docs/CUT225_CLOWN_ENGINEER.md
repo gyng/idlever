@@ -343,3 +343,152 @@ geometry pass, without multiplying the entire full-suite Cartesian inventory.
 Record the parent/child edges, 12 unique labels/icons per old class, exact actual
 versus selected masks and replayed successful combo cues. No production edits
 or CPU tests are made by this audit.
+
+## Implementation record (2026-10-14, worktree branch)
+
+Commits: `bda3a479` (core phases 1–2), `ff4a4fe5` (minimal client, phase 3),
+then this record with evidence under `docs/evidence/cut225/`. Base `b497aa59`.
+The existing-tree extension above is untouched and remains open.
+
+### What exists now
+
+- `hero.rs`: `Class::Clown` (28 HP, dagger) and `Class::Engineer` (30 HP,
+  mace) appended. `Class::ALL` still holds exactly the original five in their
+  original order, so every legacy initial map, offer, random population and
+  label loop is unchanged; `Class::EARNED` and `Class::EVERY` add the new ones.
+  Ladders: Clown `bell_lure 1, turnabout 3, false_bow 5, curtain 7,
+  grand_jape 9`; Engineer `deploy 1, brace_sentry 3, discharge 5, relocate 7,
+  overdrive 9`. Mastery cards: none (empty; nothing is granted at L10).
+- Earned gate, a pure read in `meta::class_gate`: Scout hired, then
+  `persistent.completed` ≥ 12/20, then `legacy::deepest` ≥ D13/D18. Reasons
+  are Rust strings (`Hire Scout`, `Complete N more delves`, `Reach D13`).
+  Nothing is stored or granted; `set_class` refuses with the reason and no
+  change; the class XP record is created only when the class is chosen.
+  `Lineage.earned_classes` carries availability/progress; the Journal gains
+  one milestone per class (`class_clown`, `class_engineer`).
+- `tools.rs`: `Run.tools: Option<Tools>` exists only for the two new classes.
+  All cooldowns and lifetimes are absolute run ticks. Every verb is a pure
+  `plan_*` (legality and refusal reason) plus `apply_*`, so refusals are pure.
+  Quiet offline batches stop only while a decoy, construct, pause, diversion
+  or armed counter is live (`Tools::live`).
+- Numbers are the contract candidates unchanged (no number was tuned).
+- Clown semantics: bell placed 2–4 tiles from the hero, visible, in sight of
+  the first lure-eligible foe (awake, not fleeing, not adjacent, not a boss),
+  nearest that foe and farthest from the hero; the decoy never blocks.
+  Every non-boss hostile within 4 tiles of the bell with sight of it spends
+  its chase moves walking to it, then loses moves beside it. Only `ai::chase`
+  is redirected: adjacent attackers still attack and telegraphed `pending`
+  strikes are never touched. Turnabout is active for ticks `(t0, t0+20)`;
+  the first real adjacent melee miss on the hero deals `4 − def` (min 0)
+  through `damage_monster` with `Src::Tool(Counter)`, so reflection, the
+  shield wall and the counter table apply; then it disarms. False bow pauses
+  the chase moves of one awake non-adjacent foe within 4 (boss 5 ticks plus a
+  40-tick immunity: no chain-lock). Curtain picks among the two perpendicular
+  steps and the perpendicular-and-back diagonals the free, steppable tile
+  with fewest adjacent threats; refuses `no space` otherwise; leaves a
+  10-tick decoy on the vacated tile when none stands. Grand jape needs a live
+  decoy and diverts up to 3 (+1 Ringmaster) visible non-adjacent foes,
+  bosses for 5 ticks then immune 40.
+- Engineer semantics: one sentry that blocks its tile, placed within 1 (+1
+  Surveyor) tile of the hero on a visible, non-corridor tile in sight with at
+  least five passable neighbours (it cannot seal its owner into a passage);
+  deploy refuses without a visible threat within 7 tiles. First shot at
+  `t0+10`, then every 10 (5 under overdrive) at the nearest visible hostile
+  within 4 in the sentry's line of sight, `3 − def` via `Src::Tool(Sentry)`; a
+  reflecting target sends the shot into the sentry. A hostile whose chase
+  move starts adjacent to the sentry attacks it instead (the only new RNG
+  draw, and only in tool runs). Brace −2 (+1 Bastion) per hit for 20 ticks;
+  discharge spends the sentry on one `5 − def` shot; relocate keeps HP,
+  lifetime, id and shot timer; overdrive 20 (+5 Artificer) ticks, lifetime
+  unchanged. Decoy and sentry expire on descent (`turn::descend`).
+- Attribution: `Src::Tool` names `counter`/`sentry` in Hurt/Die causes; kills
+  are the hero's ordinary kills (no extra reward, no hero-weapon procs);
+  tool events are `Ev::Tool` plus `Ev::Attack` verbs `counter`, `sentry`,
+  `discharge`, `false_bow`, `grand_jape`; each use logs a provenance cooldown.
+  `ToolStats` receipts accumulate into the return report (`tools`).
+- Trees: six nodes per class with real three-tier chains (root L3/D8, middle
+  L5/D13, leaf L7/D18), the existing six-bit mask and budget, origins
+  `class:path:clown_*`/`engineer_*`. Default policy rows `class:clown`
+  (`clown_tactic`) and `class:engineer` (`engineer_tactic`) sit where the
+  Gunner row sits; neither is compiled for any other class.
+- Wire: `Snapshot.tools` (abilities with canonical cooldowns, decoy, sentry
+  with target/braced/overdrive, armed counter, receipts); absent otherwise.
+- Client (phase 3): type mirrors, ladders, primitive glyph fallbacks `♧`/`⚙`
+  for the two class symbols (sprite ids `v_clown`/`v_engineer` do not exist
+  yet), and the class picker lists an earned class only when Rust says it is
+  available. Fake-engine earned classes are labelled development data.
+
+### Invariance proof (unchanged bots, unchanged results)
+
+Baseline binary built from pristine `b497aa59` before any edit, then the
+committed `bda3a479` binary; same command for both:
+
+```sh
+target/fast/examples/dayplayer --seeds 16 --days 14 --bots idle,picked --routine --threads 12
+```
+
+All 32 per-seed job results (16 seeds × IDLE/PICKED, 14 days, 3 check-ins)
+are byte-identical (`dayplayer/base-b746f911b19f5fc3/` versus
+`dayplayer/final-e9dc6bd27f41e82c/`), and the printed bar tables are
+identical. Both runs show the same pre-existing `Scout bought ≤ min 15` FAIL
+(worst seed 15.6 min); it is a baseline row, not caused here. An interim
+binary (`7ed6db76015f167a`) was also identical. This is the routine IDLE/PICKED
+fortnight, not the full/exhaustive gate, TUNED/RANDOM/HANDS or leave-one-outs.
+
+### Checks
+
+- `cargo test -q --workspace --profile fast`: 936 passed, 6 ignored with the
+  final tools suite; it is 22 controlled arena tests (labelled
+  controlled), including the 8 h whole/split/reload equality with a live tool.
+- `cargo clippy --workspace --all-targets -- -D warnings`: clean.
+- Client: format/lint/tsc/copy-lint clean; `pnpm -s test` smoke 38/38 on the
+  rebuilt fast WASM. `class-tree` and `class-styles` fail identically on a
+  pristine `b497aa59` WASM with pristine client sources (pre-existing).
+
+### Class comparison (diagnostic, not balance or fun)
+
+`cut225_classes docs/evidence/cut225/classes --seeds 1,3,5 --checkins 9`
+derives each camp from a fresh town by public actions (manual house, manual
+sends until the Scout, 8 h check-ins, shared paid home preparation). Clown
+opened at the first 8 h check-in on all three seeds (16–17 delves, D13–14);
+Engineer at 16/24/32 h. From each identical camp, 72 h:
+
+| Build | Median best | Bests (s1/3/5) | Deaths/run | Notes |
+| --- | ---: | --- | ---: | --- |
+| Fighter (Clown camp) | D28 | 28/28/28 | 0.34 | existing class level |
+| Rogue (Clown camp) | D28 | 28/28/28 | 0.25 | from L1, same body as Clown |
+| Clown base | D19 | 23/19/19 | 0.29 | 0.54 counter conversion |
+| Clown Misdirector | D22 | 22/22/23 | 0.25 | 2.4 lured moves per bell |
+| Clown Counterplayer | D23 | 24/23/21 | 0.30 | 4.34 vs 3.86 dmg per counter |
+| Fighter (Engineer camp) | D28 | 28/28/33 | 0.60 | |
+| Engineer base | D28 | 28/28/28 | 0.52 | sentry idle 29.0% of its life |
+| Engineer Emplacement | D28 | 28/28/28 | 0.59 | 1.7 sentries destroyed/run |
+| Engineer Fieldwork | D28 | 28/28/28 | 0.52 | idle 22.9%, 10.1 destroyed/run |
+
+Clown is frailer and, with the candidate numbers, not yet viable at the
+same pace: it trails Rogue (identical body, also from L1) by 5–9 floors at
+72 h. Each Clown action costs an attack; a counter returns ~4 once per
+window and a pause holds a foe for about one move. Engineer keeps pace with
+Fighter from L1 with fewer deaths per run; its sentry is idle 29% of its
+life when foes leave its lane, and Fieldwork's relocation cuts that to 23%
+at the price of six times more destroyed sentries. Both paths of each class
+produce their authored numeric change in controlled arenas and in these
+earned runs. The first policy measurement (bell on any visible foe, counter
+whenever adjacent) wasted half its bells and reached only D16–D23; tightening
+the default policy and the Clown tree-row conditions (no number changed)
+produced the table above. Earlier measurements are summarized in
+`docs/evidence/cut225/README.md`.
+
+### Open
+
+- Clown candidate numbers need a source decision (counter/pause strength or
+  action economy) before content tuning; the Engineer's mace (4–8) out-rolls
+  the Fighter's sword (3–7), which may be the "free extra item value" the
+  contract warns about.
+- Not done: real-WASM per-class journey (acceptance 6), replay capture and
+  render cues for decoy/sentry/counter (7; the renderer does not draw them
+  yet, `Snapshot.tools` and `Ev::Tool` are ready), art (12 insignias, two
+  class symbols, looks, construct sprites), an optional unlock announcement
+  beyond the Journal milestone, Hub ability/cooldown display, targeted
+  `--rows` 16-seed runs beyond routine IDLE/PICKED, and the existing-tree
+  extension.

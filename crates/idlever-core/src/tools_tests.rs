@@ -567,3 +567,100 @@ fn a_sentry_loses_its_value_when_the_lane_empties_and_relocation_restores_it() {
     }
     assert!(tools(&g).stats.shots >= 1, "back in the lane");
 }
+
+#[test]
+fn every_new_node_applies_its_authored_number() {
+    // Clown: bit → (verb, measured quantity with / without the bit).
+    let clown = |bits: u32| {
+        let mut g = arena(Class::Clown, 9);
+        g.run.as_mut().unwrap().hero.class_skills = bits;
+        let gi = foe(&mut g, "goblin", 5, 5, true);
+        foe(&mut g, "goblin", 10, 8, true);
+        let t0 = turn(&g);
+        assert!(act(&mut g, "turnabout"));
+        let t = tools(&g).clone();
+        let def = g.run.as_ref().unwrap().monsters[gi].effective_def();
+        {
+            let (r, mut cx) = g.ctx();
+            crate::tools::on_miss(r, &mut cx, gi);
+        }
+        let dealt = 100 - g.run.as_ref().unwrap().monsters[gi].hp;
+        assert!(act(&mut g, "curtain"));
+        let curtain = tools(&g).ready[3] - t0;
+        (t.counter_until - t0, t.ready[1] - t0, dealt + def, curtain)
+    };
+    let base = clown(0);
+    assert_eq!(base, (COUNTER_WINDOW, COUNTER_COOLDOWN, COUNTER_DAMAGE, CURTAIN_COOLDOWN));
+    assert_eq!(clown(1 << 1).3, CURTAIN_COOLDOWN - 10, "False exit");
+    assert_eq!(clown(1 << 3).2, COUNTER_DAMAGE + 1, "Turncoat");
+    assert_eq!(clown(1 << 4).0, COUNTER_WINDOW + 5, "Cruel joke");
+    assert_eq!(clown(1 << 5).1, COUNTER_COOLDOWN - 10, "Last laugh");
+    // Engineer.
+    let engineer = |bits: u32| {
+        let mut g = arena(Class::Engineer, 9);
+        g.run.as_mut().unwrap().hero.class_skills = bits;
+        foe(&mut g, "goblin", 7, 5, true);
+        let t0 = turn(&g);
+        assert!(act(&mut g, "deploy"));
+        let s = tools(&g).sentry.unwrap();
+        let deploy_cd = tools(&g).ready[0] - t0;
+        let reach = s.pos.cheb(g.run.as_ref().unwrap().hero.pos);
+        assert!(act(&mut g, "overdrive"));
+        let od = tools(&g).sentry.unwrap().overdrive_until - t0;
+        assert!(act(&mut g, "relocate"));
+        let reloc = tools(&g).ready[3] - t0;
+        assert!(act(&mut g, "brace_sentry"));
+        {
+            let (r, mut cx) = g.ctx();
+            super::hurt_sentry(r, &mut cx, 6);
+        }
+        let after = tools(&g).sentry.map_or(0, |s| s.hp);
+        (s.max_hp, deploy_cd, od, reloc, s.max_hp - after, reach)
+    };
+    let base = engineer(0);
+    assert_eq!(base.0, SENTRY_HP);
+    assert_eq!((base.1, base.2, base.3, base.4), (DEPLOY_COOLDOWN, OVERDRIVE_TICKS, RELOCATE_COOLDOWN, 6 - BRACE_REDUCTION));
+    assert!(base.5 <= DEPLOY_RANGE);
+    assert_eq!(engineer(1).0, SENTRY_HP + 4, "Watchmaker");
+    assert_eq!(engineer(1 << 1).4, 6 - BRACE_REDUCTION - 1, "Bastion");
+    assert_eq!(engineer(1 << 2).2, OVERDRIVE_TICKS + 5, "Artificer");
+    assert!(engineer(1 << 3).5 <= DEPLOY_RANGE + 1, "Surveyor reach");
+    assert_eq!(engineer(1 << 4).3, RELOCATE_COOLDOWN - 10, "Mobile works");
+    assert_eq!(engineer(1 << 5).1, DEPLOY_COOLDOWN - 10, "Relay");
+}
+
+#[test]
+fn eight_hours_whole_split_and_reload_match_with_a_live_tool() {
+    for class in Class::EARNED {
+        let mut g = Game::new_resident(7);
+        // Controlled staging of the earned records (Scout, delves, depth) — not progression proof.
+        crate::test_stage::traits(&mut g.lineage, 20, 18);
+        g.set_class(class.name()).unwrap();
+        g.try_send().unwrap();
+        let mut live = false;
+        for _ in 0..20_000 {
+            g.tick();
+            let t = g.run.as_ref().and_then(|r| r.tools.as_ref());
+            if t.is_some_and(|t| t.decoy.is_some() || t.sentry.is_some()) {
+                live = true;
+                break;
+            }
+            if g.run.as_ref().is_none_or(|r| r.over.is_some()) {
+                break;
+            }
+        }
+        assert!(live, "{class:?} placed a tool in a real run");
+        let start = Game::load(&g.save()).unwrap();
+        assert_eq!(Game::load(&start.save()).unwrap().save(), start.save());
+        let mut whole = start.clone();
+        let mut sliced = Game::load(&start.save()).unwrap();
+        crate::offline::run_offline_slice(&mut whole, 28_800, true);
+        crate::offline::run_offline_slice(&mut sliced, 14_400, false);
+        let mut sliced = Game::load(&sliced.save()).unwrap();
+        crate::offline::run_offline_slice(&mut sliced, 14_400, true);
+        assert_eq!(whole.save(), sliced.save(), "{class:?} 8 h whole = split + reload");
+        let gold = whole.lineage.gold;
+        let _ = whole.lineage();
+        assert_eq!(whole.lineage.gold, gold);
+    }
+}
