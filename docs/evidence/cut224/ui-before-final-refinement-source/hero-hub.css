@@ -1,0 +1,290 @@
+.hero-hub {
+  overflow-wrap: anywhere;
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  color: var(--ui-text, #eadfc5);
+}
+.hero-hub :is(h2, h3, p) {
+  margin: 0;
+}
+.hero-hub :is(button, small, strong, span, h2, h3) {
+  overflow-wrap: anywhere;
+}
+.hero-hub button {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  max-width: 100%;
+  white-space: normal;
+}
+.hero-hub-header {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-bottom: 2px solid var(--ui-edge, #b89448);
+}
+.hero-hub-face {
+  width: 72px;
+  height: 88px;
+  background-repeat: no-repeat;
+  border: 1px solid var(--ui-edge, #b89448);
+  display: grid;
+  place-items: center;
+}
+.hero-hub-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.hero-hub-identity {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+}
+.hero-hub-secondary,
+.hero-hub-residents {
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.hero-hub-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr));
+  gap: 0.5rem;
+}
+.hero-hub-tab[aria-selected="true"] {
+  border-color: var(--ui-edge, #b89448);
+  color: #ffdfa4;
+  box-shadow: inset 0 -3px #b89448;
+}
+.hero-hub button:hover:not(:disabled) {
+  filter: brightness(1.18);
+}
+.hero-hub button:active:not(:disabled) {
+  filter: brightness(0.92);
+}
+.hero-hub :is(button, summary, input):focus-visible {
+  outline: 2px solid #ffdfa4;
+  outline-offset: 3px;
+}
+.hero-hub-content,
+.hero-hub-panel {
+  min-width: 0;
+}
+.hero-hub-panel {
+  display: grid;
+  gap: 1rem;
+}
+.hero-hub-panel[hidden] {
+  display: none;
+}
+.hero-hub-doll {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid var(--ui-edge, #b89448);
+  background: radial-gradient(ellipse at 50% 45%, #302b39, #171720 72%);
+}
+.hero-hub-figure {
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 220px;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+}
+.hero-hub-sprite {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 8px 3px #000a);
+}
+.hero-hub-silhouette {
+  font-size: 5rem;
+  color: #b89448;
+}
+.hero-hub-gear-anchor {
+  display: grid;
+  align-content: center;
+  gap: 0.4rem;
+  text-align: start;
+}
+.hero-hub-gear-anchor[data-hub-slot="helm"] {
+  grid-column: 2;
+  grid-row: 1;
+}
+.hero-hub-gear-anchor[data-hub-slot="weapon"] {
+  grid-column: 1;
+  grid-row: 2;
+}
+.hero-hub-gear-anchor[data-hub-slot="armour"] {
+  grid-column: 3;
+  grid-row: 2;
+}
+.hero-hub-gear-anchor[data-hub-slot="boots"] {
+  grid-column: 2;
+  grid-row: 3;
+}
+.hero-hub .hero-life-panel {
+  padding: 0;
+  overflow: visible;
+  max-height: none;
+}
+.hero-hub .pkg-strip {
+  display: grid;
+  gap: 0.5rem;
+}
+@media (max-width: 600px) {
+  .hero-hub-doll {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-hub-figure {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  .hero-hub-gear-anchor[data-hub-slot] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-hub * {
+    scroll-behavior: auto;
+  }
+}
+
+.hero-hub :is([data-hub-slot-phase], [data-hub-slot-shared]) {
+  display: grid;
+  gap: 0.2rem;
+  border-top: 1px solid #b8944866;
+  padding-top: 0.3rem;
+}
+.hero-hub-totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+}
+.hero-hub-totals article {
+  padding: 0.75rem;
+  border: 1px solid #b8944866;
+  background: #171720;
+}
+.hero-hub-totals dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.4rem;
+}
+.hero-hub-totals dd {
+  margin: 0;
+  text-align: end;
+  overflow-wrap: anywhere;
+}
+.hero-hub [data-family-phase] {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.hero-hub :is(input, select, summary) {
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  max-width: 100%;
+}
+.hero-hub summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hero-hub-totals :is(dt, dd) {
+  min-width: 0;
+}
+
+.hero-hub :is([data-family-descriptors], .hero-trait-card) {
+  display: grid;
+  gap: 0.5rem;
+}
+.hero-hub [data-temperament-phase] {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.hero-hub-actual-build {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #b8944866;
+  background: #171720;
+}
+.hero-hub-actual-build article {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-hub :is([data-detail-tip], [data-kwh], .kw-on[tabindex="0"]) {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.hero-hub-panel {
+  grid-template-columns: minmax(0, 1fr);
+  container-type: inline-size;
+  container-name: hero-folio;
+}
+.hero-hub
+  :is(
+    .bloodline-loadouts,
+    .starting-kits,
+    .starting-gear,
+    .bloodline-prepared,
+    .bloodline-catalogue,
+    .hero-hub-gear-effects
+  ) {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.hero-hub .bloodline-loadouts {
+  grid-template-columns: minmax(0, 1fr);
+}
+.hero-hub-gear-effects article,
+.hero-hub-gear-effects section {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+  margin-block: 0.75rem;
+}
+.sheet-body.hero-hub button.hero-hub-gear-anchor {
+  padding: 0.5rem;
+  min-width: 44px;
+}
+@container hero-folio (max-width:420px) {
+  .hero-hub-doll {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-hub-figure {
+    grid-column: 1/-1;
+    grid-row: 1;
+  }
+  .hero-hub-gear-anchor[data-hub-slot] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+@container hero-folio (max-width:280px) {
+  .hero-hub-doll,
+  .hero-hub .bloodline-prepared,
+  .hero-hub .bloodline-catalogue {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-hub-gear-anchor[data-hub-slot] {
+    grid-column: 1;
+  }
+}

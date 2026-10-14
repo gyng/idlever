@@ -1,0 +1,34 @@
+test result: ok. 914 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 97.56s
+$ pnpm fmt --check
+$ cd .. && web/node_modules/.bin/oxfmt web/src web/tests web/*.ts web/*.json tools .github README.md .oxfmtrc.json .oxlintrc.json --check
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 186ms on 443 files using 32 threads.
+$ cd .. && web/node_modules/.bin/oxlint web/src web/tests web/*.ts tools --deny-warnings
+copy-lint: 104 files, 2656 tagged literals, 0 violations
+✔ saved-camp checks reject incomplete or ambiguous requests (2.900948ms)
+✔ references bind exact inputs and workloads and require uncorrupted full bytes (3.575477ms)
+✔ save comparison detects adjacent integers that Number rounds together (20.157892ms)
+✔ comparison preserves safe counters, floats, arrays and quoted seed-like text (11.968226ms)
+✔ shared wallet matches equal-valued exits by bloodline and retains intervening movements (3.82669ms)
+✔ pet-fetched Gold remains with its death after later shared-wallet exits (0.528427ms)
+✔ native bridge covers every client method and rejects unsupported bindings (49.493364ms)
+✔ checkpoint memento accounts for every serde-skipped engine field (16.757651ms)
+✔ native sessions isolate, order calls, recover from request errors and preserve state across rebuild (360.445961ms)
+✔ native transport rejects remote connections and cross-origin requests (875.958945ms)
+✔ native edits coalesce, serialize and rebuild edits that arrive during a build (105.185711ms)
+✔ failed builds surface errors, recover on an edit and stop after close (74.745116ms)
+✔ only compilation inputs trigger builds, not generated outputs or browser assets (3.156811ms)
+✔ test-only edits skip rebuilds only with current cfg declaration and compiler proof (52.117777ms)
+✔ real compiler separates unit tests from runtime and included inputs (8088.784966ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8362.993856
+PASS: completed legs reused; corrupt/legacy-null caches rerun; SIGSEGV reported and not cached; numeric failure preserved. No game simulations were tested.
+verify --quick: green in 104s

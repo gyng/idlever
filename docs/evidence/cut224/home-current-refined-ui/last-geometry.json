@@ -1,0 +1,223 @@
+{
+  "state": {
+    "actors": [
+      {
+        "id": 1,
+        "x": 36,
+        "y": 310,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 2,
+        "x": 36,
+        "y": 400,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 3,
+        "x": 126,
+        "y": 400,
+        "w": 44,
+        "h": 44
+      }
+    ],
+    "labels": [
+      {
+        "id": "tent",
+        "x": 266,
+        "y": 103,
+        "w": 70,
+        "h": 44
+      },
+      {
+        "id": "blacksmith",
+        "x": 96,
+        "y": 75,
+        "w": 66,
+        "h": 44
+      },
+      {
+        "id": "kennel",
+        "x": 235,
+        "y": 289,
+        "w": 72,
+        "h": 44
+      },
+      {
+        "id": "guild",
+        "x": 150,
+        "y": 315,
+        "w": 65,
+        "h": 44
+      },
+      {
+        "id": "pool",
+        "x": 89,
+        "y": 246,
+        "w": 62,
+        "h": 44
+      },
+      {
+        "id": "staked",
+        "x": 236,
+        "y": 341,
+        "w": 63,
+        "h": 44
+      }
+    ],
+    "hireRect": {
+      "text": "Hire $600",
+      "x": 170,
+      "y": 172,
+      "w": 54,
+      "h": 26
+    },
+    "hintRect": {
+      "text": "savings · a night's purse",
+      "x": 213.296875,
+      "y": 153,
+      "w": 179.40625,
+      "h": 44
+    },
+    "hintHireOverlaps": [
+      [
+        "Hire $600",
+        "savings · a night's purse"
+      ]
+    ],
+    "host": {
+      "w": 400,
+      "h": 520
+    },
+    "overlaps": [],
+    "labelActor": [],
+    "overflow": 0,
+    "stats": {
+      "fps": 3,
+      "frames": 4,
+      "cpuMs": 2.5,
+      "cpuWithUiMs": 2.600000001490116,
+      "cpuP50": 4.5,
+      "cpuP95": 124.5,
+      "walkers": 3,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1.25,
+      "night": 0,
+      "characterLights": 0,
+      "dimensionalLight": true,
+      "baseDepth": true,
+      "volumeLight": true,
+      "mappedSprites": [
+        {
+          "kind": 3,
+          "asset": "town_house_2",
+          "flip": false,
+          "x": 501,
+          "y": 304
+        },
+        {
+          "kind": 20,
+          "asset": "town_service_guild",
+          "flip": false,
+          "x": 386,
+          "y": 402
+        },
+        {
+          "kind": 21,
+          "asset": "town_service_pool",
+          "flip": false,
+          "x": 356,
+          "y": 338
+        },
+        {
+          "kind": 4,
+          "asset": "town_blacksmith_2",
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 34,
+          "asset": "town_seated:hero_fighter_male",
+          "actorId": "resident:1",
+          "flip": false,
+          "x": 306,
+          "y": 347
+        },
+        {
+          "kind": 34,
+          "asset": "town_seated:hero_fighter_female",
+          "actorId": "resident:2",
+          "flip": false,
+          "x": 306,
+          "y": 420
+        },
+        {
+          "kind": 47,
+          "asset": "town_seated:hero_fighter_cat",
+          "actorId": "resident:3",
+          "flip": false,
+          "x": 378,
+          "y": 420
+        }
+      ],
+      "lights": 9,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 80.30000000074506,
+      "windTufts": 0,
+      "windSignature": 0,
+      "buildings": [
+        "blacksmith",
+        "kennel"
+      ],
+      "services": [
+        "guild",
+        "pool"
+      ],
+      "residentStates": [
+        {
+          "id": 1,
+          "resting": true,
+          "phase": "ready"
+        },
+        {
+          "id": 2,
+          "resting": true,
+          "phase": "ready"
+        },
+        {
+          "id": 3,
+          "resting": true,
+          "phase": "ready"
+        }
+      ],
+      "activeBuilds": [],
+      "buildEvents": 1,
+      "buildDust": 0,
+      "staked": "bank",
+      "markers": [
+        "rune@blacksmith",
+        "rune@kennel"
+      ],
+      "view": [
+        260,
+        73,
+        320,
+        416
+      ],
+      "workers": [
+        "quartermaster",
+        "porter",
+        "scout(off)",
+        "apprentice(lit)"
+      ],
+      "ranks": {}
+    }
+  },
+  "errors": []
+}

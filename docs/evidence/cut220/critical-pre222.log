@@ -1,0 +1,83 @@
+client suite: smoke (39 selected; 157 current full; 199 exhaustive groups); critical journeys, not full acceptance
+ok   survivor-builds 30.6s (29.5s)  {"checks":171,"layouts":9,"result":"PASS"}
+ok   hero-hub        75.2s (44.6s)  {"result":"PASS","checks":1096,"views":15,"cases":3}
+ok   fights:break    83.6s (8.4s)  fights: ok (6 checks)
+FAIL routine-keep    91.8s (8.2s)  Node.js v22.22.1
+       if (!ok) throw Error(msg);
+     Error: no routine sheet or manual settlement
+         at check (file:///tmp/idlever-cut220-critical-4s2xtwo8/web/tests/routine-keep.mjs:30:18)
+         at file:///tmp/idlever-cut220-critical-4s2xtwo8/web/tests/routine-keep.mjs:121:9
+ok   exit-keep-close 98.7s (15.0s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+ok   bloodline-founding 118.7s (26.9s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+FAIL ui:frame        120.3s (21.5s)  ui: FAIL (8 assertion(s), 1 error(s), 20.4s)
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.cmd .tile[data-tile=vault]')
+     ui: FAIL (8 assertion(s), 1 error(s), 20.4s)
+     FAIL a fresh camp shows ≤ 8 interactive elements at 400 × 800 (9: Gold$0 | settings | ✓ curioustries unknown 1 | greedygrabs loot 1×/floo | Delve | hero | House information | Heroes | Delve)
+     FAIL the gem SEND and nothing else: no tile, no set tab, no class picker (gem "Delve", 0 tiles)
+     FAIL an item worth keeping carves the `vault` tile, glinting (edit* · loadout* · unlocks*)
+     FAIL first salvage carves the `forge` tile, glinting (edit · loadout* · unlocks* · forge*)
+     FAIL a companion carves the `party` tile, glinting (edit · loadout · unlocks* · forge* · party*)
+     FAIL a repaint keeps the carved tiles without a glint (edit · loadout · unlocks · forge · party)
+     FAIL the command card at the ladder's top: 7 tiles, the chronicle's slot gone to the log (6 tiles)
+     FAIL the loadout panel has a close stud, and it closes the panel
+FAIL screens         123.7s (39.9s)  screens: FAIL (1 assertion(s), 1 error(s), 6 screens, 27 clicks, 39.0s)
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.supplies .chip.buy:not(.off)').first()
+           - element is not visible
+           - element is not visible
+           - element is not visible
+     screens: FAIL (1 assertion(s), 1 error(s), 6 screens, 27 clicks, 39.0s)
+     FAIL class: nothing to open (.hero-sheet .hero-class)
+ok   ctxloss         132.4s (48.6s)  ctxloss: ok (19 checks)
+ok   town-save       137.2s (16.9s)  39 manual construction persistence checks PASS
+ok   watch-console   146.3s (22.6s)  1440 labels/touch/geometry/speed/pause/Town PASS
+FAIL death-fix-discovery 149.2s (16.9s)  Node.js v22.22.1
+       if (!ok) throw Error(msg);
+     Error: paid silence fix visibly precedes neutral TRY
+         at check (file:///tmp/idlever-cut220-critical-4s2xtwo8/web/tests/death-fix-discovery.mjs:18:18)
+         at file:///tmp/idlever-cut220-critical-4s2xtwo8/web/tests/death-fix-discovery.mjs:125:5
+ok   pen-edit        152.5s (15.3s)  pen-edit: all ok
+FAIL post-clear-town 152.7s (34.0s)  Node.js v22.22.1
+       - waiting for locator('.legacy-panel') to be visible
+       name: 'TimeoutError'
+         at /tmp/idlever-cut220-critical-4s2xtwo8/web/tests/post-clear-town.mjs:72:13 {
+ok   town-clock      176.1s (23.6s)  town-clock: PASS (36 checks)
+ok   report-supply-limit 177.6s (24.9s)  1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS
+ok   numbered-descents 189.4s (11.8s)  1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS
+ok   king-advice-scope 193.4s (44.1s)  1440 King replay scope/count/price/eligibility checks PASS
+ok   watch-log       193.7s (47.3s)  1440 1 ordered floor attribution and80-entry bound PASS
+FAIL first-plot      196.6s (3.2s)  Node.js v22.22.1
+     page.evaluate: TypeError: Cannot read properties of null (reading 'getBoundingClientRect')
+         at eval (eval at evaluate (:311:30), <anonymous>:7:18)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /tmp/idlever-cut220-critical-4s2xtwo8/web/tests/first-plot.mjs:96:30 {
+ok   death-actions   199.9s (10.5s)  1440 recorded boss tooltip PASS
+FAIL debug-export    202.6s (2.6s)  Node.js v22.22.1
+     page.evaluate: Error: build and hero context
+         at check (eval at evaluate (:311:30), <anonymous>:6:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:49:7)
+         at async <anonymous>:337:30
+         at /tmp/idlever-cut220-critical-4s2xtwo8/web/tests/debug-export.mjs:20:31 {
+ok   checkpoint-gold 208.2s (11.6s)  1440 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS
+ok   bloodline-training 210.0s (7.4s)  1440 22 bloodline training attribution checks PASS
+FAIL class-switch    212.9s (36.8s)  Node.js v22.22.1
+       - waiting for locator('.hero-class')
+       name: 'TimeoutError'
+         at /tmp/idlever-cut220-critical-4s2xtwo8/web/tests/class-switch.mjs:67:38 {
+ok   game-menu       214.6s (20.9s)  81 game menu checks PASS
+ok   package-selection 215.6s (7.4s)  1440 20 selected Tactics checks PASS
+ok   gunner-observer 216.6s (6.6s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   numbers-agree   217.0s (4.2s)  11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   worker-first-act 223.6s (8.0s)  1440 20 worker first-act checks PASS
+ok   forge-requests  223.6s (6.6s)  1440 34 Forge request checks PASS
+ok   report-reading  223.8s (9.2s)  1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   forecast-requests 225.1s (8.5s)  1440 16 forecast lifecycle checks PASS
+ok   legacy-wire     228.0s (2.9s)  real WASM obsolete respec refuses toward Rebirth preview; complete save unchanged PASS
+ok   report-class-xp 228.8s (5.0s)  1440 20 class XP/visible rewards/slot identity/slice merges/old wire PASS
+ok   worker-purchases 228.9s (5.3s)  1440 7 worker purchase checks PASS
+ok   package-paired  228.9s (5.2s)  package-paired: 52 checks PASS
+ok   clarity:paint   257.3s (28.5s)  clarity paint: ok (5 checks)
+ok   watch-live-edge 285.5s (28.1s)  watch-live-edge: ok (10 checks)
+FAIL: 31/39 client gates in 285.5s

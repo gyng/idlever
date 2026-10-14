@@ -1,0 +1,10 @@
+error[E0609]: no field `blind` on type `idlever_core::hero::Hero`
+  --> crates/idlever-core/examples/gold_settlement_fixtures.rs:64:16
+   |
+64 |         r.hero.blind == 0
+   |                ^^^^^ unknown field
+   |
+   = note: available fields are: `pos`, `hp`, `max_hp`, `base_atk`, `str_bonus` ... and 45 others
+
+For more information about this error, try `rustc --explain E0609`.
+error: could not compile `idlever-core` (example "gold_settlement_fixtures") due to 1 previous error

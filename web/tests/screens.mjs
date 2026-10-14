@@ -350,7 +350,7 @@ try {
     [".cmd .tile[data-tile=ledger]", "ledger"],
     [".cmd .tile[data-tile=forge]", "forge"],
     ["button.gear", "settings"],
-    [".hero-sheet .hero-class", "class"],
+    ['[data-hub-panel="skills"] button:has-text("Change class")', "class"],
     [".strip button.gold", "gold"],
     [".editor .row .chip.cond", "cond picker"],
     [".editor .row .chip.verb", "verb picker"],
@@ -362,6 +362,7 @@ try {
       if (await page.locator(".hero-return:visible").count())
         await page.locator(".hero-return:visible").click({ timeout: 5000 });
       await page.locator(".hero-details:visible").first().click({ timeout: 5000 });
+      await page.locator('[data-hub-tab="skills"]').click({ timeout: 5000 });
     }
     if (["cond picker", "verb picker", "rename"].includes(label)) await editRows(page);
     if (label === "gold") {
@@ -578,18 +579,32 @@ try {
     await closeSheets();
   }
   await openPanel(page, "loadout");
-  // 9. drop a supply (the button lint may have dropped the leash already: buy one from the shop first then)
-  if (!(await page.locator(".supplies .chip.item").count())) {
-    await page.locator(".supplies .chip.buy:not(.off)").first().click({ timeout: 5000 });
+  await page.locator("[data-hero-hub] .bloodline-loadouts").waitFor({ timeout: 5000 });
+  // 9. drop a prepared item in Hero Gear (the button lint may have dropped the leash already: prepare one first then)
+  const prepared = "[data-hero-hub] .bloodline-prepared [data-drop-id]";
+  if (!(await page.locator(prepared).count())) {
+    await page
+      .locator("[data-hero-hub] .bloodline-prepare:not(:disabled)")
+      .first()
+      .click({ timeout: 5000 });
+    await page.waitForFunction((sel) => document.querySelector(sel), prepared, { timeout: 5000 });
     await settle();
   }
-  const supplies = await page.locator(".supplies .chip.item").count();
-  await page.locator(".supplies .chip.item .x").first().click({ timeout: 5000 });
+  const supplies = await page.locator(prepared).count();
+  await page.locator(prepared).first().click({ timeout: 5000 });
+  await page
+    .waitForFunction(
+      ([sel, n]) => document.querySelectorAll(sel).length === n - 1,
+      [prepared, supplies],
+      { timeout: 5000 },
+    )
+    .catch(() => {});
   await settle();
   check(
-    (await page.locator(".supplies .chip.item").count()) === supplies - 1,
-    `a supply dropped (${supplies} → ${supplies - 1})`,
+    (await page.locator(prepared).count()) === supplies - 1,
+    `a prepared item dropped (${supplies} → ${supplies - 1})`,
   );
+  await closeSheets();
   await lintScreen("camp (supply dropped)");
   await page.evaluate(() => window.__idlever.flush());
   // 10. the absence: the report, its buttons, the worst death

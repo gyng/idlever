@@ -266,6 +266,7 @@ mod tests {
     #[test]
     fn prepared_kit_refits_merged_units_without_repaying_or_respawning() {
         let mut g=Game::new(13);g.build_town("house").unwrap();
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
         // Controlled catalogue/waystone, actual preparation, paid upgrades,
         // ration and current free passage. No claimed earned unlock evidence.
         g.lineage.gold=2000;
@@ -313,6 +314,7 @@ mod tests {
     #[test]
     fn discoveries_union_across_real_paid_residents_and_reads_stay_pure() {
         let mut s=crate::bloodlines::Session::new(1);s.build_town("house").unwrap();s.lineage.gold=1000;s.add_bloodline().unwrap();
+    crate::test_stage::forge(&mut s); // Explicit built-facility unit fixture, not a fresh-town gate.
         crate::kit::buy(&mut s.active,"weapon").unwrap();
         s.active.lineage.town.owned_shapes.insert("crownsplitter".into());
         s.others.get_mut(&2).unwrap().lineage.town.owned_shapes.insert("hearthglass".into());
@@ -386,6 +388,7 @@ mod tests {
     #[test]
     fn actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks() {
         let mut g=Game::new(215);g.build_town("house").unwrap();g.try_send().unwrap();
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
         for boss in ["goblin_warlord","bloat_mother","lich"] {kill(&mut g,boss);}
         let owned=g.lineage.town.owned_shapes.clone();assert_eq!(owned.iter().map(String::as_str).collect::<Vec<_>>(),vec!["crownsplitter","frostmantle","hearthglass","ironcap","trailboots"]);
         let (r,mut cx)=g.ctx();crate::turn::damage_hero(r,&mut cx,999,&Src::Gas);g.finish_run().unwrap();

@@ -1,0 +1,11 @@
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "../vite.config" without a file extension (tests/vite.test.config.ts:6:18). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+4:33:17 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+
+  VITE v8.3.0  ready in 250 ms
+
+  ➜  Local:   http://localhost:5529/
+  ➜  Network: use --host to expose

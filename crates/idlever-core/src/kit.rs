@@ -53,6 +53,8 @@ pub struct GearChoice {
 
 #[derive(Clone, Debug, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub struct StartingKits {
+    #[serde(default, skip_serializing_if="Option::is_none")]
+    pub equipment: Option<crate::hero_build::EquipmentBuild>,
     pub current: Option<StartingConfig>,
     pub selected: Option<String>,
     pub saved: Vec<NamedKit>,
@@ -99,7 +101,7 @@ pub fn starting_wire(l: &LineageState) -> StartingKits {
             else if let Some(def)=crate::legendary::definition(d.kind) {def.source.into()}
             else { format!("discover {} more", 5u32.saturating_sub(l.forge.get(d.kind).map_or(0, |r| r.salvaged))) }) }).collect::<Vec<_>>();
     let mut hero=Hero::new(l.class,crate::geom::Pos::new(0,0)); equip(l,&mut hero);
-    StartingKits { current: l.starting_config.clone(), selected: l.starting_selected.clone(),
+    StartingKits { equipment: None, current: l.starting_config.clone(), selected: l.starting_selected.clone(),
         saved: l.named_kits.clone(), weapons: choices(crate::defs::Cat::Weapon), armours: choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Armour).collect(),
         helms:choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Helm).collect(),
         boots:choices(crate::defs::Cat::Armour).into_iter().filter(|d|crate::armour_sets::slot(&d.kind)==crate::armour_sets::Slot::Boots).collect(),
@@ -542,6 +544,7 @@ pub fn ladders(l: &LineageState) -> Vec<KitLadder> {
 /// Buy the next step of `slot` by hand (the ledger reads `forge <label>`; Cut 30.5: it counts toward the
 /// apprentice).
 pub fn buy(game: &mut Game, slot: &str) -> Result<(), String> {
+    if !crate::town::built(&game.lineage,"blacksmith"){return Err("Build the Forge".into());}
     if slot=="gun_sidearm:pack" {return crate::firearm::set_sidearm(game,true);}
     if slot=="gun_sidearm:stow" {return crate::firearm::set_sidearm(game,false);}
     if slot==crate::firearm::SIDEARM_SLOT {return crate::firearm::forge_sidearm(game);}
@@ -787,6 +790,7 @@ mod starting_kit_tests {
     }
     fn controlled() -> Game {
         let mut g = Game::new_resident(1);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
         for k in ["axe","leather","mail","heal"] { g.lineage.forge.insert(k.into(),crate::wire::ForgeRow::at(5)); }
         g.lineage.gold = 0;
         g
@@ -852,6 +856,7 @@ mod starting_kit_tests {
     #[test]
     fn default_draws_paid_upgrades_and_selected_offline_reload_remain_exact() {
         let mut g=controlled(); let mut default=g.clone();
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
         set_starting(&mut default,None).unwrap();
         g.send(); default.send(); assert_eq!(g.run,default.run);
         let mut g=controlled();

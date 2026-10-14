@@ -1,0 +1,291 @@
+{
+  "errors": [],
+  "classes": [],
+  "samples": [],
+  "packages": [],
+  "geometry": [
+    {
+      "width": 320,
+      "scale": 1,
+      "index": 0,
+      "actors": [
+        {
+          "id": "1",
+          "x": -75,
+          "y": 111.41667175292969,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "2",
+          "x": -17,
+          "y": 174.4166717529297,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "3",
+          "x": 58,
+          "y": 166.4166717529297,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 68.73958587646484,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 64.75,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 71.48958587646484,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 63.989585876464844,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 60.26041793823242,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 6,
+          "y": 176.4166717529297,
+          "w": 62.6875,
+          "h": 44
+        }
+      ],
+      "hits": [
+        {
+          "id": "1"
+        },
+        {
+          "id": "2",
+          "hit": "2"
+        },
+        {
+          "id": "3",
+          "hit": "3"
+        }
+      ],
+      "host": {
+        "x": 0,
+        "y": 170.4166717529297,
+        "w": 320,
+        "h": 520
+      },
+      "actorOverlaps": [],
+      "labelOverlaps": [
+        [
+          "tent",
+          "2"
+        ],
+        [
+          "tent",
+          "3"
+        ],
+        [
+          "blacksmith",
+          "2"
+        ],
+        [
+          "blacksmith",
+          "3"
+        ],
+        [
+          "kennel",
+          "2"
+        ],
+        [
+          "kennel",
+          "3"
+        ],
+        [
+          "guild",
+          "2"
+        ],
+        [
+          "guild",
+          "3"
+        ],
+        [
+          "pool",
+          "2"
+        ],
+        [
+          "pool",
+          "3"
+        ],
+        [
+          "staked",
+          "2"
+        ],
+        [
+          "staked",
+          "3"
+        ]
+      ],
+      "stats": {
+        "fps": 0,
+        "frames": 0,
+        "cpuMs": 0,
+        "cpuWithUiMs": 0,
+        "cpuP50": 0,
+        "cpuP95": 0,
+        "walkers": 0,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "mappedSprites": [],
+        "lights": 0,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 0,
+        "terrainPaintMs": 0,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          419,
+          281,
+          1,
+          1
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "overflow": 0,
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ]
+    }
+  ]
+}

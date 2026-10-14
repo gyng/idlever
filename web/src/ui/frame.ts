@@ -24,6 +24,7 @@ import { openSettings } from "./settings";
 import { openHero } from "./town";
 import { openGoldSheet } from "./gold";
 import { goldWords } from "./gold-words";
+import { createGoldTransferFx, goldTransferEndpoint } from "./gold-transfers";
 import { revealed } from "./reveal";
 import { onPackages, packagesShown } from "./packages";
 import { legacyBar, legacyNext, legacyNextText } from "./legacy";
@@ -52,28 +53,6 @@ export type Bar = {
   freeze(): void;
 };
 
-/** Decorative feedback for a real credited amount; never changes resource totals. */
-export function flyCoins(target: HTMLElement, amount: number): void {
-  if (amount <= 0 || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const r = target.getBoundingClientRect();
-  for (let i = 0; i < Math.min(6, 2 + Math.floor(Math.log2(amount + 1))); i++) {
-    const coin = h("i", {
-      class: "coin-flight",
-      "aria-hidden": "true",
-      style: `left:${r.left + r.width / 2}px;top:${r.top + r.height / 2}px`,
-    });
-    document.body.appendChild(coin);
-    const animation = coin.animate(
-      [
-        { transform: `translate(${(i - 2) * 11}px, 100px) scale(.7)`, opacity: 0 },
-        { offset: 0.2, opacity: 1 },
-        { transform: "translate(0,0) scale(1)", opacity: 0 },
-      ],
-      { duration: 650, delay: i * 45, easing: "cubic-bezier(.2,.7,.2,1)" },
-    );
-    void animation.finished.catch(() => undefined).finally(() => coin.remove());
-  }
-}
 /** Blind 5331f40 (B: `$19193 → $14139` "between deaths without me spending"): the purse as last shown off the watch and the ledger's
  *  newest line then; a fall since reads beside the `$` as the ledger's own spends (`−$5054 · forge`) until the purse moves again. */
 type PurseSeen = { gold: number; tail?: GoldLine; drop?: { text: string; title: string } };
@@ -142,7 +121,18 @@ export function renderBar(
   const offers = h("div", { class: "offers", hidden: true });
   const el = h("header", { class: "strip topbar" });
   const mini = portraitMini(app);
-  let previousGold = app.lineage.gold;
+  const goldFx = createGoldTransferFx();
+  const pendingFrames = new Set<number>();
+  const clearGoldFrames = (): void => {
+    for (const frame of pendingFrames) cancelAnimationFrame(frame);
+    pendingFrames.clear();
+    goldFx.clear();
+  };
+  const resetGoldVisuals = (): void => {
+    purseSeen.delete(app);
+    clearGoldFrames();
+  };
+  window.addEventListener("idlever:gold-reset", resetGoldVisuals);
   function paint(): void {
     const L = app.lineage,
       R = revealed(app),
@@ -298,7 +288,7 @@ export function renderBar(
               {
                 class: "num stat legacy",
                 onclick: !opts.watch
-                  ? (e: Event) => openHero(app, e.currentTarget as HTMLElement)
+                  ? (e: Event) => openHero(app, e.currentTarget as HTMLElement, "legacy")
                   : undefined,
                 "aria-label": /* copy:label */ `Hero Legacy ${L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0}`,
               },
@@ -344,16 +334,24 @@ export function renderBar(
       offers,
     );
     mini.paint();
-    const gain = L.gold - previousGold;
-    previousGold = L.gold;
-    if (gain > 0 && !opts.watch)
-      requestAnimationFrame(() => {
-        const target = el.querySelector<HTMLElement>(".gold");
-        if (target?.isConnected) flyCoins(target, gain);
+    const transfers = !past ? (app.takeGoldFeedback?.() ?? []) : [];
+    if (transfers.length) {
+      const frame = requestAnimationFrame(() => {
+        pendingFrames.delete(frame);
+        const counter = el.querySelector<HTMLElement>(".gold");
+        if (counter?.isConnected) goldFx.play(transfers, counter, goldTransferEndpoint);
       });
+      pendingFrames.add(frame);
+    }
   }
   paint();
-  const off = app.onChange(paint);
+  const offPaint = app.onChange(paint);
+  const off = (): void => {
+    offPaint();
+    clearGoldFrames();
+    window.removeEventListener("idlever:gold-reset", resetGoldVisuals);
+    goldFx.dispose();
+  };
   // `freeze`: the bar stops following the lineage (the watch's last frame keeps the heir that ran)
   return {
     el,
@@ -361,7 +359,7 @@ export function renderBar(
     dispose: off,
     offers,
     freeze: () => {
-      off();
+      offPaint();
     },
   };
 }

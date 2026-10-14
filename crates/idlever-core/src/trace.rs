@@ -3350,6 +3350,10 @@ mod tests_causal_root {
         // a den thief's earlier theft. Cut210's immediate cache pickup changes later
         // equipment/combat timing: the same causal zero-gain case is now seed187, death2.
         let mut g = Game::new_literal(187);
+        // Preserve this controlled theft/combat sequence with its legal original
+        // starting leash; fresh-town construction gates have separate coverage.
+        g.lineage.town.built.push(("blacksmith".into(), 0));
+        g.lineage.kennel_leash();
         g.max_deaths = 1000;
         crate::systems::open_all(&mut g.lineage);
         crate::traits::neutral(&mut g.lineage);

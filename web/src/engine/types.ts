@@ -888,7 +888,7 @@ export type Drill = { boss: string; rows: Row[]; revoked: boolean; scar: number 
  *  the row above that always wins it (`Guarded wins`), by index. */
 export type RowSource = { label: string; shadowed_by?: number };
 /** Cut 30 §2 (core) — the lineage's packages: every package (owned or its trigger), the stance (never empty; `custom` on an old save), the
- *  tactics in their slots, the temperament (from heir 3; `offer` the wake's three cards, card 1 worn until `pickTemperament`), the drills,
+ *  tactics in their slots, the optional temperament (Cut219 survivor progression), the drills,
  *  the scars (boss → %), the pen (open at the Mother met or a 3-day stall; the editor's rows sit above the packages), and per compiled
  *  row its source. `literal` a harness's lineage (no packages). */
 export type Packages = {
@@ -1403,7 +1403,37 @@ export type LegendaryShape = {
   blocked: string | null;
   source: string;
 };
+export type EquipmentSlot = {
+  slot: "weapon" | "helm" | "armour" | "boots";
+  kind: string | null;
+  label: string;
+  origin: string;
+  damage: [number, number];
+  defence: number;
+  speed: number;
+  ranged: boolean;
+  legendary: boolean;
+  effect: string | null;
+  tradeoff: string | null;
+};
+export type EquipmentStats = {
+  hp: number;
+  max_hp: number;
+  damage: [number, number];
+  defence: number;
+  speed: number;
+  level: number;
+  class: string;
+};
+export type EquipmentView = {
+  label: string;
+  note: string;
+  slots: EquipmentSlot[];
+  stats: EquipmentStats;
+};
+export type EquipmentBuild = { actual: EquipmentView; next: EquipmentView; queued: boolean };
 export type StartingKits = {
+  equipment?: EquipmentBuild;
   current: StartingConfig | null;
   selected: string | null;
   saved: NamedStartingKit[];
@@ -1428,7 +1458,47 @@ export type HeroRebirth = {
   resets: string[];
   retains: string[];
 };
+export type ProgressionGate = {
+  available: boolean;
+  label: string;
+  blocked: string | null;
+  required_completed: number;
+  completed: number;
+  completed_remaining: number;
+  required_depth: number;
+  depth_remaining: number;
+};
+export type FamilyContext = {
+  condition_effect: string;
+  gift_effect: string;
+  cost_effect: string;
+  learned: boolean;
+  id: string;
+  label: string;
+  effect: string;
+  available: boolean;
+  blocked: string | null;
+};
+export type BuildProgression = {
+  temperament: ProgressionGate;
+  inherited: ProgressionGate;
+  family: ProgressionGate;
+  actual_temperament: string | null;
+  next_temperament: string | null;
+  temperament_choices: string[];
+  inherited_offer: TraitCard[];
+  inherited_chosen: TraitCard | null;
+  actual_inherited: TraitCard | null;
+  family_contexts: FamilyContext[];
+  family_chosen: string | null;
+  actual_family: string | null;
+  commitment_blocked: string | null;
+  leash_available: boolean;
+  leash_blocked: string | null;
+  temperament_order_available: boolean;
+};
 export type PersistentHero = {
+  progression?: BuildProgression;
   id: string;
   name: string;
   incarnation: number;
@@ -1459,7 +1529,7 @@ export type Lineage = {
   legendaries?: LegendaryShape[];
   bloodline?: BloodlineLegacy;
   keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response
-  feats?: FeatsWire; // Cut 118 (core): boss tokens, trials, the find log, swift floors, the sinks, the hero's wish
+  feats?: FeatsWire; // Boss tokens, trials, find log, swift floors and sinks; historical purchases stay in report news.
   king_eta_h?: number; // Cut 118 §8 (core): hours until the King may fall at the current pace (0: slain; absent: no pace yet)
   king_pct?: number; // Cut 118 §8 (core): the record's share of the way to the King (percent)
   heir_traits?: HeirTraits; // Cut 30 §3 (core): the heir's trait slots and the wake's three cards (owner amendment 2: the heir order picks one; `setTrait(chip)` swaps)
@@ -1559,6 +1629,9 @@ export type Lineage = {
   sets: RuleSet[];
   active_set: number;
   ended: boolean;
+  actual_party?: Companion[];
+  actual_packages?: Packages;
+  actual_packages_note?: string;
   party: Companion[];
   kennel: Companion[];
   eggs: Egg[];
@@ -1595,7 +1668,7 @@ export type Lineage = {
   chronicle?: string[]; // Cut 5 §2: one line per ended heir, oldest first (cap 40)
   vault_pref?: string; // Cut 5 §4: what an unwatched vault choice takes (`weapon | armour | potion | scroll`)
   ascended?: string[]; // Cut 5: variants the lineage has finished the dungeon with
-  gold_ledger?: GoldLine[]; // Cut 6 §1: the last 20 gold movements, oldest first (`ledger` is the bestiary)
+  gold_ledger?: GoldLine[]; // Rust's bounded movement history, oldest first (`GOLD_LEDGER_CAP`)
   counters?: Counter[]; // Cut 6 §5: bosses whose counter row is known
   combos?: ComboHit[]; // Cut 8B §1: the active set's combos, in row order (recomputed on setRules)
   picked?: number[]; // Cut 16 §1: depths picked clean now (as ReturnReport.picked)
@@ -1861,7 +1934,7 @@ export type StandingOrders = {
   forge?: string;
   wall?: string;
   sink?: string;
-  heir?: string;
+  temperament?: string;
   kennel?: string;
   legacy?: string;
   ranks?: string;
@@ -1949,6 +2022,8 @@ export interface Engine {
   equipPackage?(id: string, slot: number): Lineage; // §2: a stance, a tactic in `slot` 0/1, a temperament — free, instant
   unequipPackage?(id: string): Lineage; // §2: empty a tactic or temperament slot (the stance is never empty)
   pickTemperament?(id: string): Lineage; // §2: take a wake card (`packages.offer`)
+  setInheritedTrait?(name: string): Lineage; // Cut219: commit an offered lasting trait
+  setFamilyLean?(when: string): Lineage; // Cut219: commit a compatible lasting context
   spendLevel?(id: string): Lineage;
   setTacticVariant?(id: string, variant: number): Lineage;
   takeFix?(id: string, variant: number): Lineage; // Cut 115 §4: a death's tactic fix (`Death.pick`), credited taught
@@ -2061,7 +2136,6 @@ export interface Engine {
   tithe?(n: number): Lineage; // Cut 118 §4: tithe n Legacy points at the falling rate (Kit complete)
   buyRation?(): Lineage; // Cut 122 §5 (core): the next send's ration by hand — the hunger bites a quarter as often
   buySurvey?(): Lineage; // Cut 118 §4: the survey work — the deep forks open early
-  grantWish?(): Lineage; // Cut 118 §7: grant the hero's waiting wish   // Cut 113 §3: take one offer of the return's pick (`drill · legacy · forge · marks`)
   buyKit?(slot: string): Lineage; // §1: buy the next forge step of `weapon | armour | pack` (gold; permanent; ledger `forge <label>`)
   kitDeltas?(): KitLadder[]; // full paired forecast, retained for detailed callers
   kitEstimates?(): KitLadder[]; // small depth/exit preview, with its actual uncertainty
@@ -2164,13 +2238,6 @@ export type Sink = {
   available: boolean;
   n?: number;
 };
-export type WishWire = {
-  id: string;
-  text: string;
-  price: number;
-  legacy: number;
-  available: boolean;
-};
 export type FeatsWire = {
   tokens: BossToken[];
   seek?: string;
@@ -2182,7 +2249,6 @@ export type FeatsWire = {
   swift_to: number;
   sinks: Sink[];
   sink_order: string;
-  wish?: WishWire;
   feats: number;
   siege: SiegeWire[];
   graves: GraveWire[];
@@ -2194,6 +2260,9 @@ export type FeatsWire = {
 }; // owner amendment 2: the heir order, the line's titles (`Queensbane`), the Legacy deeds paid
 /** Cut 30 §3 (core `traits::TraitCard`): a trait card — `chip` (`wrathful · frail`), `source` fresh · twist · marked · answer (a card), blood · born (worn). */
 export type TraitCard = {
+  condition_effect: string;
+  gift_effect: string;
+  cost_effect: string;
   chip: string;
   head: string;
   formula: string;

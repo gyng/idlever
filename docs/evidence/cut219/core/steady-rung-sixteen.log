@@ -1,0 +1,59 @@
+dayplayer: prior failure seeds first [11, 7, 1, 13] (scheduling hints only)
+dayplayer: targeted rows idle-d8,idle-d23,idle-stall,idle-gold,idle-king,picked-idle,outpace — configurations IDLE,PICKED
+dayplayer: PICKED s9 done in 95s 
+dayplayer: PICKED s3 done in 103s 
+dayplayer: IDLE s6 done in 114s 
+dayplayer: IDLE s12 done in 121s 
+dayplayer: IDLE s14 done in 122s 
+dayplayer: IDLE s5 done in 122s 
+dayplayer: IDLE s4 done in 123s 
+dayplayer: PICKED s11 done in 124s 
+dayplayer: IDLE s7 done in 126s 
+dayplayer: IDLE s15 done in 129s 
+dayplayer: IDLE s3 done in 130s 
+dayplayer: PICKED s5 done in 131s 
+dayplayer: IDLE s1 done in 131s 
+dayplayer: IDLE s9 done in 131s 
+dayplayer: IDLE s16 done in 131s 
+dayplayer: PICKED s7 done in 132s 
+dayplayer: PICKED s16 done in 133s 
+dayplayer: IDLE s2 done in 133s 
+dayplayer --fail-fast: idle-d23 settled PASS after IDLE s2 (day 14) (133s): seeds by day 12 12–16/16 (not: ) · median day 3.67…4.67 with 4 seeds left
+dayplayer: PICKED s15 done in 135s 
+dayplayer: IDLE s10 done in 135s 
+dayplayer: PICKED s10 done in 138s 
+dayplayer: IDLE s13 done in 139s 
+dayplayer: IDLE s11 done in 139s 
+dayplayer: PICKED s2 done in 143s 
+dayplayer: PICKED s12 done in 145s 
+dayplayer: IDLE s8 done in 145s 
+dayplayer --fail-fast: idle-d8 settled PASS after IDLE s8 (day 14) (145s): 16/16 seeds
+dayplayer --fail-fast: idle-stall settled PASS after IDLE s8 (day 14) (145s): 16/16 seeds
+dayplayer --fail-fast: idle-gold settled PASS after IDLE s8 (day 14) (145s): 16/16 seeds
+dayplayer --fail-fast: idle-king settled PASS after IDLE s8 (day 14) (145s): 16/16 seeds
+dayplayer: PICKED s4 done in 147s 
+dayplayer: PICKED s8 done in 147s 
+dayplayer: PICKED s14 done in 149s 
+dayplayer: PICKED s6 done in 152s 
+dayplayer --fail-fast: picked-idle settled PASS after PICKED s6 (day 2) (152s): D13 1.50…2.00 with 2 seeds left · D18 2.08…2.50 with 2 seeds left · D23 3.58…4.29 with 2 seeds left
+dayplayer: PICKED s1 done in 152s 
+dayplayer --fail-fast: outpace settled PASS after PICKED s1 (day 2) (152s): 94–100% (105/105 pairs, 1 seeds left)
+fail-fast: every targeted row settled after PICKED s1 (day 2)
+
+bar (targeted, fail-fast)                                                     value  result
+IDLE reaches D8 by the end of day 1                                         settled  PASS
+    16/16 seeds
+IDLE reaches D23 by day 12                                                  settled  PASS
+    seeds by day 12 12–16/16 (not: ) · median day 3.67…4.67 with 4 seeds left
+IDLE longest best-depth stall                                               settled  PASS
+    16/16 seeds
+IDLE net gold > 0 every day                                                 settled  PASS
+    16/16 seeds
+IDLE does not slay the Mirror King                                          settled  PASS
+    16/16 seeds
+PICKED ≥ 1.5× IDLE at D13, D18, D23                                         settled  PASS
+    D13 1.50…2.00 with 2 seeds left · D18 2.08…2.50 with 2 seeds left · D23 3.58…4.29 with 2 seeds left
+IDLE never out-paces PICKED                                                 settled  PASS
+    94–100% (105/105 pairs, 1 seeds left)
+dayplayer (targeted: idle-d8,idle-d23,idle-stall,idle-gold,idle-king,picked-idle,outpace, fail-fast, 152s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `idle-d8,idle-d23,idle-stall,idle-gold,picked-idle,outpace,idle-king` (fail-fast) PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

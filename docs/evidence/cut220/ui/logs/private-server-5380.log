@@ -1,0 +1,10 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - import "../vite.config" without a file extension (tests/vite.test.config.ts:6:18). Add the file extension
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+error when starting dev server:
+Error: Port 5380 is already in use
+    at httpServerStart (file:///home/g/p/riddle/web/node_modules/.pnpm/vite@8.3.0/node_modules/vite/dist/node/chunks/node.js:14167:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async startServer (file:///home/g/p/riddle/web/node_modules/.pnpm/vite@8.3.0/node_modules/vite/dist/node/chunks/node.js:24582:30)
+    at async Object.listen (file:///home/g/p/riddle/web/node_modules/.pnpm/vite@8.3.0/node_modules/vite/dist/node/chunks/node.js:24396:4)
+    at async CAC.<anonymous> (file:///home/g/p/riddle/web/node_modules/.pnpm/vite@8.3.0/node_modules/vite/dist/node/cli.js:725:3)

@@ -365,27 +365,71 @@ fn a_feat_lights_the_ladder_early() {
     assert!(send.is_some());
 }
 
-/// §7: one wish at a time, upside only — it waits (never decays), granting pays a small Legacy for a small price,
-/// the next comes a day on. IDLE (no grant) loses nothing.
+/// Retired offers do not erase paid history or manufacture a new daily reward.
 #[test]
-fn the_heros_wish_waits_and_pays() {
-    let mut g = deep_camp(9);
-    assert!(feats::wish(&g.lineage).is_none(), "none before the first return");
-    let r = crate::offline::run_offline_counts(&mut g, 3 * 3600);
-    let _ = r;
-    let w = g.lineage().feats.unwrap().wish.expect("a wish after a return");
-    // it waits: another long absence leaves it as it was
-    crate::offline::run_offline_counts(&mut g, 30 * 3600);
-    let again = g.lineage().feats.unwrap().wish.unwrap();
-    assert_eq!((w.id.clone(), w.legacy), (again.id.clone(), again.legacy));
-    let (gold, legacy) = (g.lineage.gold, crate::legacy::current(&g.lineage).unwrap().points);
-    g.grant_wish().unwrap();
-    assert_eq!(g.lineage.gold, gold - again.price);
-    assert_eq!(crate::legacy::current(&g.lineage).unwrap().points, legacy + again.legacy);
-    assert!(feats::wish(&g.lineage).is_none(), "the next a day on");
-    assert!(g.grant_wish().is_err());
-    g.lineage.clock_s += feats::WISH_EVERY_S;
-    assert!(feats::wish(&g.lineage).is_some());
+fn retired_wishes_preserve_genuine_paid_history_and_absence_parity() {
+    use crate::bloodlines::Session;
+    let dir=std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../docs/evidence/cut222/core/baseline-preserved-news");
+    for id in ["wishes-0","wishes-1","wishes-5","waiting-song","wishes-1-pending-news","wishes-5-pending-news"] {
+        let original=Session::load(&std::fs::read_to_string(dir.join(format!("{id}.session.json"))).unwrap()).unwrap();
+        let before=original.save();
+        let gold=original.lineage.gold;let ledger=original.lineage.gold_ledger.clone();let legacy=original.lineage.bloodline.clone();
+        let history=(original.lineage.feats.wishes,original.lineage.feats.wish_at);
+        let news=original.lineage.feats.news.iter().filter(|n|n.k=="wish").cloned().collect::<Vec<_>>();
+        let rng=original.lineage.rng.clone();
+        for _ in 0..3 {let wire=serde_json::to_value(original.lineage()).unwrap();assert!(wire["feats"].get("wish").is_none());}
+        assert_eq!(original.save(),before,"{id}: reads preserve all state");
+        let mut whole=Session::load(&before).unwrap();let report=whole.run_offline_slice(86400,true);
+        let mut split=Session::load(&before).unwrap();assert!(split.run_offline_slice(28800,false).slice_pending);
+        split=Session::load(&split.save()).unwrap();assert!(split.run_offline_slice(28800,false).slice_pending);
+        split=Session::load(&split.save()).unwrap();let split_report=split.run_offline_slice(28800,true);
+        assert!(whole.save()==split.save(),"{id}: whole/sliced/reloaded24h saved state differs; compare retained fixture replay evidence");
+        assert_eq!(serde_json::to_value(&report).unwrap(),serde_json::to_value(&split_report).unwrap());
+        assert_eq!(whole.lineage.gold,gold,"{id}: no wish spending or replacement income");
+        assert_eq!(whole.lineage.gold_ledger,ledger);assert_eq!(whole.lineage.bloodline,legacy);
+        assert_eq!((whole.lineage.feats.wishes,whole.lineage.feats.wish_at),history);
+        assert_eq!(whole.lineage.rng,rng);
+        assert_eq!(report.feats.iter().filter(|n|n.k=="wish").cloned().collect::<Vec<_>>(),news,"{id}: pending historical news stays readable");
+        assert!(serde_json::to_value(whole.lineage()).unwrap()["feats"].get("wish").is_none());
+    }
+}
+
+
+/// The defect predates wish retirement: transport size must not decide oath prices.
+#[test]
+fn retired_wishes_waiting_days_and_live_advance_are_exact() {
+    use crate::bloodlines::Session;
+    let path=std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../../docs/evidence/cut222/core/baseline-preserved-news/wishes-1.session.json");
+    let mut original=Session::load(&std::fs::read_to_string(path).unwrap()).unwrap();
+    let before=original.save();original.advance(0);assert!(original.save()==before,"zero advance preserves exact saved state");
+    let gold=original.lineage.gold;let ledger=original.lineage.gold_ledger.clone();
+    let mut whole=Session::load(&before).unwrap();let report=whole.run_offline_slice(3*86400,true);
+    let mut split=Session::load(&before).unwrap();
+    for _ in 0..8 {assert!(split.run_offline_slice(28800,false).slice_pending);split=Session::load(&split.save()).unwrap();}
+    let split_report=split.run_offline_slice(28800,true);
+    assert!(whole.save()==split.save(),"three actual waiting days close identically");
+    assert_eq!(serde_json::to_value(report).unwrap(),serde_json::to_value(split_report).unwrap());
+    assert_eq!(whole.lineage.gold,gold);assert_eq!(whole.lineage.gold_ledger,ledger);
+    assert_eq!(whole.lineage.day,(whole.lineage.clock_s/crate::engine::DAY_S) as u32);
+    assert_eq!(whole.lineage.day_net,0);assert_eq!(whole.lineage.last_day_net,0,"empty intervening days cannot retain old income");
+    assert!(whole.lineage.oaths.iter().all(|o|o.price==crate::oath::price(&whole.lineage)));
+    // A lawful waiting advance followed by a real send one second before midnight.
+    // No clock/save edits: the same actor crosses the day while fighting.
+    let waiting_s=crate::engine::DAY_S-original.lineage.clock_s%crate::engine::DAY_S-1;
+    original.advance(waiting_s*1000);
+    original.try_send().unwrap();let sent=original.save();
+    let mut whole=Session::load(&sent).unwrap();whole.advance(2000);
+    let mut split=Session::load(&sent).unwrap();
+    for _ in 0..20 {split.advance(100);split=Session::load(&split.save()).unwrap();}
+    assert!(whole.save()==split.save(),"ordinary active run is transport/reload independent");
+}
+
+#[test]
+fn new_town_never_initializes_a_retired_wish_clock() {
+    let mut g=Game::new(222);g.build_town("house").unwrap();g.try_send().unwrap();
+    crate::offline::run_offline_counts(&mut g,3600);
+    assert_eq!((g.lineage.feats.wishes,g.lineage.feats.wish_at),(0,0));
+    assert!(serde_json::to_value(g.lineage()).unwrap()["feats"].get("wish").is_none());
 }
 
 /// §8: the wire fields — the King's horizon, the pick's default, the wall's roster preview, a news line's day.
@@ -560,11 +604,12 @@ fn death_is_progress_siege_grave_and_stone() {
 fn the_heir_order_picks_without_a_prompt() {
     let mut g = Game::new_resident(23);
     g.lineage.heir = 4;
+    crate::test_stage::traits(&mut g.lineage,8,8);
     // (no shape ships today — `traits.json` is empty — so the offer is drawn from the generator's table here)
     let pool: Vec<(crate::traits::Shape, bool)> = crate::traits::generated().into_iter().map(|s| (s, true)).collect();
     for order in feats::HEIR_ORDERS {
         let mut h = Game::load(&g.save()).unwrap();
-        h.lineage.orders.heir = order.into();
+        h.lineage.orders.temperament = order.into();
         h.lineage.graveyard.push(crate::wire::Grave { heir: 4, depth: 13, cause: "bloat_mother".into(), deeds: Vec::new(), death_id: None });
         h.lineage.heir = 5;
         crate::traits::wake_from(&mut h.lineage, &pool);
@@ -586,12 +631,12 @@ fn the_heir_order_picks_without_a_prompt() {
         assert_eq!(h.lineage.heirs.born, Some(other));
     }
     let mut o = g.lineage.standing_orders();
-    assert_eq!(o.heir.as_deref(), Some("answer"));
-    o.heir = Some("strongest".into());
+    assert_eq!(o.temperament.as_deref(), Some("keep"));
+    o.temperament = Some("adapt".into());
     g.set_orders(&o).unwrap();
-    o.heir = Some("eldest".into());
+    o.temperament = Some("eldest".into());
     assert!(g.set_orders(&o).is_err());
-    assert!(crate::systems::SYSTEMS.iter().any(|s| s.id == "heirs" && s.trigger == "first death"));
+    assert!(crate::systems::SYSTEMS.iter().any(|s| s.id == "heirs" && s.trigger == "six delves"));
 }
 
 /// Owner amendment 2 (probe): deeds redistribute Legacy, not inflate it — over an IDLE fortnight the siege tries'

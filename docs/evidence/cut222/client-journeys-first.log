@@ -1,0 +1,15 @@
+client suite: targeted (4 selected; 158 current full; 200 exhaustive groups)
+FAIL ui:frame        18.9s (18.3s)  ui: FAIL (0 assertion(s), 1 error(s), 17.2s)
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.sheet-wrap:not(.under) .sheet-x')
+     ui: FAIL (0 assertion(s), 1 error(s), 17.2s)
+ok   post-clear-town 23.0s (22.4s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+ok   class-switch    30.4s (29.8s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+FAIL screens         41.6s (40.9s)  screens: FAIL (0 assertion(s), 1 error(s), 6 screens, 27 clicks, 39.8s)
+     walk aborted: locator.click: Timeout 5000ms exceeded.
+       - waiting for locator('.supplies .chip.buy:not(.off)').first()
+           - element is not visible
+           - element is not visible
+           - element is not visible
+     screens: FAIL (0 assertion(s), 1 error(s), 6 screens, 27 clicks, 39.8s)
+FAIL: 2/4 client gates in 41.6s

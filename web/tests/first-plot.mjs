@@ -94,22 +94,25 @@ try {
     assert.equal(await p.evaluate(() => window.buildCalls), 1);
     assert.equal(await p.locator(".editor .row.tablet.compact").first().isVisible(), false);
     const identity = await p.evaluate(() => {
-      const e = document.querySelector(".topbar .heir-ordinal"),
-        word = e.querySelector(".kw"),
+      const e = document.querySelector(".topbar .hero-name"),
+        hero = window.__idlever.lineage.persistent_hero,
         range = document.createRange();
-      range.selectNodeContents(e.firstChild);
-      const n = range.getBoundingClientRect(),
-        w = word.getBoundingClientRect();
+      range.selectNodeContents(e);
       return {
         text: e.textContent,
-        oneLine: Math.abs(n.top - w.top) < 2,
-        tooltip: word.dataset.kw,
+        name: hero.name,
+        id: hero.id,
+        displayedId: e.dataset.currentHero,
+        oneLine: range.getClientRects().length === 1,
+        tooltip: e.title,
+        expectedTooltip: `${hero.name} · Life ${hero.incarnation}`,
         overflow: document.documentElement.scrollWidth > innerWidth,
       };
     });
-    assert.equal(identity.text, "1st heir");
+    assert.equal(identity.text, identity.name);
+    assert.equal(identity.displayedId, String(identity.id));
     assert.equal(identity.oneLine, true);
-    assert.equal(identity.tooltip, "heir");
+    assert.equal(identity.tooltip, identity.expectedTooltip);
     assert.equal(identity.overflow, false);
     if (shots) {
       await p.mouse.move(2, 2);

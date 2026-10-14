@@ -473,17 +473,17 @@ impl HeirTraits {
 
 /// Traits arrive (the `traits` system): heir 3, or the first heir who dies past D5 — never day 0.
 pub fn arrived(l: &LineageState) -> bool {
-    !l.heirs.neutral && (l.heir >= 3 || l.ascension > 0 || l.graveyard.iter().any(|g| g.depth >= 5))
+    !l.heirs.neutral && crate::progression::temperament_open(l)
 }
 
 /// The blood slot opens at heir 5 (the `heirs` step).
 pub fn blood_open(l: &LineageState) -> bool {
-    !l.heirs.neutral && (l.heir >= 5 || l.ascension > 0)
+    crate::progression::inherited_open(l)
 }
 
 /// The bloodline may be chosen at heir 12 or after an ascension.
 pub fn bloodline_open(l: &LineageState) -> bool {
-    !l.heirs.neutral && (l.heir >= 12 || l.ascension > 0)
+    crate::progression::family_open(l)
 }
 
 /// A new lineage: on Cut 30's traits, the first heir neutral.
@@ -1046,6 +1046,9 @@ pub fn vocab_conds(l: &LineageState, conds: &mut Vec<crate::rules::Cond>) {
 /// A card or a worn trait, as the camp shows it.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct TraitCard {
+    pub condition_effect: String,
+    pub gift_effect: String,
+    pub cost_effect: String,
     /// `wrathful · frail`
     pub chip: String,
     /// `wrathful`
@@ -1089,6 +1092,9 @@ pub struct HeirTraitsWire {
 pub fn card(s: Shape, source: &str, facts: &std::collections::BTreeSet<String>) -> TraitCard {
     let learned = facts.contains(&s.fact());
     TraitCard {
+        condition_effect: condition_effect(s.when),
+        gift_effect: gift_effect(s),
+        cost_effect: cost_effect(s.cost),
         chip: s.chip(),
         head: s.head().into(),
         formula: s.formula(learned),
@@ -1128,4 +1134,62 @@ pub fn chip(l: &LineageState) -> String {
 pub fn key(l: &LineageState) -> String {
     let h = &l.heirs;
     format!("{:?}|{:?}|{:?}|{}", h.blood, h.born, h.kin, h.neutral)
+}
+
+/// Declared build mechanics do not grant the separate first-observed trait fact.
+pub fn condition_effect(w: When) -> String {
+    match w {
+        When::Hurt => format!("Below {HURT_PCT}% HP"),
+        When::Crowded => "At least 2 adjacent foes".into(),
+        When::Boss => "Boss in sight".into(),
+        When::Quiet => "No foes in sight".into(),
+        When::Deep => format!("D{DEEP_FROM} or deeper"),
+        When::First => format!("First {FIRST_TURNS} turns of each floor"),
+        When::Always => "Always active".into(),
+        When::Kin => "Last killer's kind in sight".into(),
+    }
+}
+pub fn gift_effect(s: Shape) -> String {
+    let step=s.step();
+    match s.gift {
+        Gift::Fury => format!("Attack damage +{step} while active"),
+        Gift::Guard => format!("Damage reduction +{step} per hit while active"),
+        Gift::Quick => format!("Speed +{} while active",quick_speed(step)),
+        Gift::Mend => format!("Restore {} HP per hero action while active",mend_hp(step)),
+        Gift::Rested => format!("Rest restores +{} HP while active",rest_extra(step)),
+        Gift::Sure => format!("Retreat, kite, corridor and home steps return {}% action energy while active",sure_refund(step)),
+        Gift::IronGut => "Poison from a drink: halve strength and duration; confusion duration −50%".into(),
+        Gift::LightHands => "Successful item pickups return 100% action energy".into(),
+    }
+}
+pub fn cost_effect(c: Cost) -> String {
+    match c {
+        Cost::None => "No lasting penalty".into(),
+        Cost::Frail => format!("Max HP −{FRAIL_PCT}% (at least 1 HP)"),
+        Cost::Slow => "Speed −1".into(),
+        Cost::Thin => format!("Healing potions restore {THIN_PCT}% of their normal amount"),
+        Cost::Dim => format!("Sight −{DIM_SIGHT} in the Deep"),
+    }
+}
+
+#[cfg(test)]
+mod descriptor_tests {
+    use super::*;
+    #[test]
+    fn declared_numeric_effects_do_not_mark_unknown_gifts_as_observed() {
+        let facts=std::collections::BTreeSet::new();
+        let s=Shape::new(When::Hurt,Gift::Mend,Cost::Thin);
+        let c=card(s,"commitment",&facts);
+        assert!(!c.learned);assert!(c.formula.contains('?'));
+        assert_eq!(c.condition_effect,"Below 50% HP");
+        assert_eq!(c.gift_effect,format!("Restore {} HP per hero action while active",mend_hp(s.step())));
+        assert_eq!(c.cost_effect,"Healing potions restore 67% of their normal amount");
+        assert!(facts.is_empty());
+        let rare=Shape::new(When::First,Gift::Quick,Cost::Frail).at(Tier::Rare);
+        let c=card(rare,"commitment",&facts);
+        assert_eq!(c.condition_effect,"First 20 turns of each floor");
+        assert_eq!(c.gift_effect,format!("Speed +{} while active",quick_speed(rare.step())));
+        assert_eq!(c.cost_effect,"Max HP −10% (at least 1 HP)");
+        assert_eq!(cost_effect(Cost::Slow),"Speed −1");assert_eq!(cost_effect(Cost::Dim),"Sight −2 in the Deep");
+    }
 }

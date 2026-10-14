@@ -872,7 +872,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
       returned: "returned",
       secured: "secured",
       salvage: "salvage",
-      wake: "next heir",
+      wake: "purse",
       spent: "spent",
     };
     const piece = (n: number, sign: string, word: string, cls: string): void => {
@@ -2338,7 +2338,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
   if (clear.tile) cons.setTiles([clear.tile, ...consTiles]);
   if (!clear.shown) autoDismiss(gemEl, { ms: AUTO.report, yieldToSheets: true }); // docs/UI.md §7: on to the town
   // owner 2026-10-10 ("juice up while you were gone"): the return's reveal (report-juice.ts); `data-settled` marks its end state
-  const juice = absence ? reportJuice(el, sheet, { net: ledger?.net, gold: L.gold }) : null;
+  const juice = absence ? reportJuice(el, sheet) : null;
   if (!juice) el.dataset.settled = "1";
   const restore = requestAnimationFrame(() => {
     if (reportWell.isConnected) reportWell.scrollTop = reading.scroll;

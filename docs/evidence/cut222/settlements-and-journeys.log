@@ -1,0 +1,10 @@
+client suite: targeted (3 selected; 158 current full; 200 exhaustive groups)
+FAIL debug-export    8.4s (7.3s)  Node.js v26.5.0
+     page.evaluate: Error: Build the Forge
+         at worker.onmessage (http://localhost:37481/src/engine/proxy.ts:157:10)
+         at /home/g/p/riddle/web/tests/debug-export.mjs:20:31 {
+ok   first-plot      22.2s (21.1s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+FAIL gold-settlements 41.5s (40.4s)              finds:
+     AssertionError [ERR_ASSERTION]: actual WASM settlement matches native replay
+         at file:///home/g/p/riddle/web/tests/gold-settlements.mjs:108:16 {
+FAIL: 1/3 client gates in 41.6s

@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 // Cut 118 (b) — the client shows and uses the Cut 118 core (docs/CUT118_IDLE_LESSONS.md, both owner amendments); headless,
 // tools/browser.mjs, the fake engine and the ui modules direct. No added required tap: every chip has its default.
-//   death   — the memorial leads (`+3 Legacy · Mother try 4 · +8%`), then the cause; the epitaph; `other heirs` a closed fold whose card
-//             swaps by `setTrait(chip)` — never a prompt.
+//   death   — memorial, cause and epitaph remain; historical offered cards expose no retired heir fold or setTrait calls (Cut219).
 //   yard    — the town's graveyard: a stone per fallen heir (the newest few), the epitaph on hover, a tap opens every stone and the titles.
 //   siege   — `Mother · 4 tries · best 22%` on the wall preview and the report; the grave on the chart (`Ada's pack · $1240`); the ledger
 //             tip glosses `recovered` and `sinks`.
 //   seek    — `seek Queen ×2` on the camp, the sheet priced by seekForecast, `in order` the default; a tap sets seekBoss.
 //   trial   — one quiet camp card: the rule, its answers, `opt in` (setTrial(week)), a second tap opts out (setTrial(-1)).
 //   finds   — one reveal in the report (best first; the sealed count its data and its tip, never the head), the set log in a fold.
-//   sinks   — the run setup: the apprentice's sink order and one sink by hand (two taps), the heir order chip; the wish chip (two taps).
+//   sinks   — the run setup: sink order/paid tithe and temperament order; retired wish has no chip/API/reward.
 //   core    — the core's fields replace the client's estimates: king_eta_h / king_pct, News.day and the feats in the diary, the roster
-//             (affix · guard), the pick's default, the heirs rung lit_by, the swift floors folded; the retired wall order shows nowhere.
+//             (affix · guard), the pick's default, the canonical temperament rung, the swift floors folded; the retired wall order shows nowhere.
 //   taps    — a routine return with every Cut 118 field present is ≤ 2 taps from the report to the watch, no Cut 118 call made.
 //   node web/tests/cut118b.mjs [--part=death,yard,siege,seek,trial,finds,sinks,core,taps]
 import { execFileSync } from "node:child_process";
@@ -57,6 +56,65 @@ const fresh = async (tag) => {
       ...extra,
     });
     window.__fx = {
+      // Synthetic UI-only snapshot. It does not certify Rust survivor gates.
+      hero: (progression = {}) => {
+        const gate = {
+          available: false,
+          label: "survivor stage",
+          blocked: "stage locked",
+          required_completed: 0,
+          completed: 0,
+          completed_remaining: 0,
+          required_depth: 0,
+          depth_remaining: 0,
+        };
+        const service = (id) => ({ id, name: id, available: false, body: "unavailable" });
+        return {
+          id: "synthetic-cut118b",
+          name: "Fixture hero",
+          incarnation: 1,
+          rebirths: 0,
+          state: "ready",
+          recovery_s: 0,
+          rest_s: 0,
+          need: "none",
+          attributes: [],
+          guild: service("guild"),
+          pool: service("pool"),
+          device: service("device"),
+          rebirth: {
+            available: false,
+            blocked: "unavailable",
+            token: "synthetic",
+            refund: 0,
+            points_after: 0,
+            required_depth: 0,
+            delves_remaining: 0,
+            seconds_remaining: 0,
+            resets: [],
+            retains: [],
+          },
+          progression: {
+            temperament: gate,
+            inherited: gate,
+            family: gate,
+            actual_temperament: null,
+            next_temperament: null,
+            temperament_choices: [],
+            inherited_offer: [],
+            inherited_chosen: null,
+            actual_inherited: null,
+            family_contexts: [],
+            family_chosen: null,
+            actual_family: null,
+            commitment_blocked: null,
+            leash_available: false,
+            leash_blocked: "Build the Forge",
+            temperament_order_available: false,
+            ...progression,
+          },
+        };
+      },
       feats: (x = {}) => ({
         tokens: [],
         trials: [],
@@ -238,12 +296,12 @@ try {
       `the siege on the lead, the stone and its pack (${r.leadTip} · ${r.epi})`,
     );
     check(
-      r.closed && r.cards.join("|") === "stout · slow|guarded · bosses*!|swift · frail",
-      `other heirs: a closed fold, the order's pick lit, the answer named (${r.cards.join(" | ")})`,
+      !r.closed && r.cards.length === 0,
+      `retired heir fold remains absent even with historical offered cards (${r.cards.join(" | ")})`,
     );
     check(
-      r.swaps.join() === "swift · frail" && r.after.join() === "swift · frail",
-      `a card swaps by setTrait(chip) (${r.swaps} → ${r.after})`,
+      r.swaps.length === 0 && r.after.length === 0,
+      `retired cards make zero setTrait calls (${r.swaps} → ${r.after})`,
     );
     check(
       !r.stall && !r.keptFold,
@@ -691,13 +749,14 @@ try {
         }),
         forge: "half",
         sink: "both",
-        heir: "answer",
+        temperament: "keep",
         wall: "bank",
       };
       a.lineage = fx.home({
         ...a.lineage,
         gold: 5000,
         orders,
+        persistent_hero: fx.hero({ temperament_order_available: true }),
         tree: { ...(a.lineage.tree ?? { waits: false, sent: false, ledger: 0 }), nodes },
         systems: [
           ...(a.lineage.systems ?? []),
@@ -710,7 +769,7 @@ try {
       });
       const calls = [];
       a.engine.setOrders = async (o) => {
-        calls.push(`orders:${o.heir}/${o.sink}`);
+        calls.push(`orders:${o.temperament}/${o.sink}`);
         a.lineage = { ...a.lineage, orders: o };
         return a.lineage;
       };
@@ -718,33 +777,24 @@ try {
         calls.push(`tithe:${n}`);
         return a.lineage;
       };
-      a.engine.grantWish = async () => {
-        calls.push("wish");
-        a.lineage = { ...a.lineage, feats: { ...a.lineage.feats, wish: undefined } };
-        return a.lineage;
-      };
+      const retiredWishMethod = typeof a.engine.grantWish;
+      const wishBefore = { gold: a.lineage.gold, legacy: a.lineage.bloodline?.points };
       a.go({ kind: "camp" });
       await new Promise((res) => setTimeout(res, 400));
       const tab = document.querySelector(".camp .orders-tab");
       const sum0 = tab?.textContent;
-      // the wish: one chip, two taps
+      // A stale literal wish field cannot revive the retired paid offer.
       const wish = () => document.querySelector(".camp .wish-chip");
       const w0 = wish()?.textContent;
-      wish().click();
-      const wArmed = wish()?.textContent,
-        wCalls = calls.length;
-      wish().click();
-      await new Promise((res) => setTimeout(res, 300));
       const wGone = !wish();
+      const wishAfter = { gold: a.lineage.gold, legacy: a.lineage.bloodline?.points };
       tab.click();
       await new Promise((res) => setTimeout(res, 400));
       const rows = [...document.querySelectorAll(".orders-sheet .order-row")].map(
         (x) => x.textContent,
       );
-      const heir = [...document.querySelectorAll(".orders-sheet .order-row")].find((x) =>
-        /next heir/.test(x.textContent),
-      );
-      heir.querySelector("button:nth-of-type(2)").click();
+      const temperament = document.querySelector('[data-order="temperament"]');
+      temperament.querySelector('[data-temperament-order="adapt"]').click();
       await new Promise((res) => setTimeout(res, 300));
       const hand = document.querySelector(".orders-sheet .sink-hand");
       const h0 = hand?.textContent;
@@ -758,9 +808,10 @@ try {
       return {
         sum0,
         w0,
-        wArmed,
-        wCalls,
         wGone,
+        retiredWishMethod,
+        wishBefore,
+        wishAfter,
         rows,
         h0,
         hArmed,
@@ -769,24 +820,23 @@ try {
       };
     });
     check(
-      r.w0 === "✧ a lantern · +2" &&
-        r.wArmed === "ok $45" &&
-        r.wCalls === 0 &&
-        r.calls.includes("wish") &&
-        r.wGone,
-      `the wish: one chip, armed then granted, gone (${r.w0} → ${r.wArmed})`,
+      r.w0 === undefined &&
+        r.wGone &&
+        r.retiredWishMethod === "undefined" &&
+        JSON.stringify(r.wishBefore) === JSON.stringify(r.wishAfter),
+      "retired wish: no chip or grant API, stale literal field grants no Gold/Legacy",
     );
     check(
-      r.rows.some((x) => x.replace(/\s+/g, "") === "nextheiranswerstrongestsurprise") &&
+      r.rows.some((x) => x.replace(/\s+/g, "") === "temperamentorderKeepselectedAdaptVariety") &&
         r.rows.some((x) => x.startsWith("apprentice sinks")) &&
         !r.rows.some((x) => /at walls|bank before/.test(x)),
-      `run setup: the heir order and the sinks; no wall order (${r.rows.join(" | ")})`,
+      `run setup: the temperament order and the sinks; no wall order (${r.rows.join(" | ")})`,
     );
     check(
-      r.calls.includes("orders:strongest/both") &&
-        /heirs strongest/.test(r.sum1 ?? "") &&
-        !/heirs/.test(r.sum0 ?? "x"),
-      `the heir order chip sets it; the summary names it off its default (${r.sum1})`,
+      r.calls.includes("orders:adapt/both") &&
+        /temperament adapt/.test(r.sum1 ?? "") &&
+        !/temperament/.test(r.sum0 ?? "x"),
+      `the temperament order chip sets it; the summary names it off its default (${r.sum1})`,
     );
     check(
       r.h0 === "tithe · 1 Legacy / $900" && r.hArmed === "ok $900" && r.calls.includes("tithe:1"),
@@ -867,6 +917,9 @@ try {
         ...a.lineage,
         best_depth: 4,
         systems: sys,
+        persistent_hero: fx.hero({
+          temperament: { available: true, label: "survivor stage", blocked: null },
+        }),
         tree: undefined,
         packages: {
           ...a.lineage.packages,
@@ -881,11 +934,8 @@ try {
       const rungs = ladderRungs(base, () => false).map(
         (x) => `${x.id}${x.lit ? "+" : "-"}${x.litBy ? `(${x.litBy})` : ""}`,
       );
-      const heirs = ladderRungs(base, () => false).find((x) => x.id === "heirs");
-      const noHeirs = ladderRungs(
-        { ...base, systems: sys.filter((s) => s.id !== "heirs") },
-        () => false,
-      )
+      const heirs = ladderRungs(base, () => false).find((x) => x.id === "temperament");
+      const noHeirs = ladderRungs({ ...base, persistent_hero: undefined }, () => false)
         .map((x) => x.id)
         .join(",");
       // the retired wall order is never named
@@ -896,7 +946,7 @@ try {
         repeat: true,
         insure: true,
         wall: "bank",
-        heir: "surprise",
+        temperament: "variety",
         sink: "off",
       });
       return {
@@ -934,14 +984,15 @@ try {
       `the pick's default is the core's (${JSON.stringify(r.pick)})`,
     );
     check(
-      r.rungs.join(" ") === "weights+(feat: trial) orders- heirs+(first death) workers- pen-" &&
-        r.retires === "picking heirs" &&
+      r.rungs.join(" ") ===
+        "weights+(feat: trial) orders- temperament+(survivor stage) workers- pen-" &&
+        r.retires === "manual adaptation" &&
         r.noHeirs === "weights,orders,workers,pen",
-      `the heirs rung lit by lit_by; the core's lit_by on every rung (${r.rungs.join(" ")})`,
+      `the temperament rung uses its canonical survivor gate; other rungs use core lit_by (${r.rungs.join(" ")})`,
     );
     check(
-      r.orders.join("|") === "keep weapon|restock on|insure on|heirs surprise|sinks off",
-      `the carried orders: heir and sink named, the retired wall order not (${r.orders.join(" | ")})`,
+      r.orders.join("|") === "keep weapon|restock on|insure on|temperament variety|sinks off",
+      `the carried orders: temperament and sink named, the retired wall order not (${r.orders.join(" | ")})`,
     );
     await page.close();
     // the swift floors: a send whose snapshot is swift folds them under one line marked `swift` — the boss's own floor never
@@ -1046,7 +1097,7 @@ try {
           start: 1,
           repeat: true,
           insure: false,
-          heir: "answer",
+          temperament: "keep",
           sink: "both",
         },
       });
@@ -1070,15 +1121,7 @@ try {
         a.lineage = { ...a.lineage, return_pick: undefined };
         return a.lineage;
       };
-      for (const m of [
-        "seekBoss",
-        "setTrial",
-        "grantWish",
-        "tithe",
-        "buySurvey",
-        "setTrait",
-        "setOrders",
-      ]) {
+      for (const m of ["seekBoss", "setTrial", "tithe", "buySurvey", "setTrait", "setOrders"]) {
         const f = a.engine[m];
         a.engine[m] = async (...x) => {
           calls.push(m);

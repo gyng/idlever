@@ -1,0 +1,7 @@
+client suite: targeted (2 selected; 158 current full; 200 exhaustive groups)
+FAIL debug-export    3.0s (2.6s)  Node.js v26.5.0
+     page.evaluate: Error: Build the Forge
+         at worker.onmessage (http://localhost:37369/src/engine/proxy.ts:157:10)
+         at /home/g/p/riddle/web/tests/debug-export.mjs:20:31 {
+ok   gold-settlements 93.7s (93.4s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6688669,"sha256":"a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"},{"bytes":6688669,"sha256":"a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"},{"bytes":6688669,"sha256":"a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"},{"bytes":6688669,"sha256":"a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"}]}
+FAIL: 1/2 client gates in 93.7s

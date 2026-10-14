@@ -2490,6 +2490,13 @@ pub struct Lineage {
     pub sets: Vec<RuleSet>,
     pub active_set: usize,
     pub ended: bool,
+    /// Frozen departure abilities plus current living allies' measured HP.
+    #[serde(default)]
+    pub actual_party: Vec<Companion>,
+    #[serde(default, skip_serializing_if="Option::is_none")]
+    pub actual_packages: Option<PackagesWire>,
+    #[serde(default)]
+    pub actual_packages_note: String,
     pub party: Vec<Companion>,
     pub kennel: Vec<Companion>,
     pub eggs: Vec<Egg>,
@@ -3365,7 +3372,7 @@ pub struct StandingSwitches {
     /// Cut 118 (owner amendment 2): the heir order — which offered heir succeeds a death (`feats::HEIR_ORDERS`:
     /// `answer` the killer, `strongest`, `surprise`). Set once; nobody is prompted.
     #[serde(default = "heir_answer")]
-    pub heir: String,
+    pub temperament: String,
     /// Cut 119 §4: the kennel keeper's order (`pets::KENNEL_ORDERS`: `breed` for the wall, `best`, `off`).
     #[serde(default = "kennel_breed")]
     pub kennel: String,
@@ -3396,7 +3403,7 @@ fn kennel_breed() -> String {
 }
 
 fn heir_answer() -> String {
-    crate::feats::HEIR_ORDERS[0].into()
+    "keep".into()
 }
 
 fn sink_both() -> String {
@@ -3418,7 +3425,7 @@ fn forge_half() -> String {
 
 impl Default for StandingSwitches {
     fn default() -> Self {
-        StandingSwitches { insure: true, forge: forge_half(), wall: wall_bank(), sink: sink_both(), heir: heir_answer(), kennel: kennel_breed(), legacy: order_off(), ranks: order_off(), ascend: order_off(), shared: BTreeSet::new(), announced: BTreeSet::new() }
+        StandingSwitches { insure: true, forge: forge_half(), wall: wall_bank(), sink: sink_both(), temperament: heir_answer(), kennel: kennel_breed(), legacy: order_off(), ranks: order_off(), ascend: order_off(), shared: BTreeSet::new(), announced: BTreeSet::new() }
     }
 }
 
@@ -3481,7 +3488,7 @@ pub struct StandingOrders {
     pub sink: Option<String>,
     /// Cut 118 (owner amendment 2): the heir order (`answer · strongest · surprise`); absent: it stands.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub heir: Option<String>,
+    pub temperament: Option<String>,
     /// Cut 119 §4: the kennel keeper's order (`breed · best · off`); absent: it stands.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub kennel: Option<String>,
@@ -3502,7 +3509,7 @@ pub struct StandingOrders {
 
 impl Default for StandingOrders {
     fn default() -> Self {
-        StandingOrders { keep: "best_armour".into(), cage: "weapon".into(), start: 1, repeat: true, insure: true, forge: forge_half(), wall: Some(wall_bank()), sink: Some(sink_both()), heir: Some(heir_answer()), kennel: Some(kennel_breed()), legacy: Some(order_off()), ranks: Some(order_off()), ascend: Some(order_off()), shared: None }
+        StandingOrders { keep: "best_armour".into(), cage: "weapon".into(), start: 1, repeat: true, insure: true, forge: forge_half(), wall: Some(wall_bank()), sink: Some(sink_both()), temperament: Some(heir_answer()), kennel: Some(kennel_breed()), legacy: Some(order_off()), ranks: Some(order_off()), ascend: Some(order_off()), shared: None }
     }
 }
 

@@ -64,7 +64,11 @@ try {
     });
     for (const cls of ["fighter", "gunner"]) {
       await p.locator(".hero-details:visible").first().click();
-      await p.locator(".hero-class").click();
+      await p.locator('[data-hub-tab="skills"]').click();
+      await p
+        .locator('[data-hub-panel="skills"] button')
+        .filter({ hasText: /^Change class$/ })
+        .click();
       await p
         .locator(".sheet-wrap .class-row>button")
         .filter({ hasText: new RegExp(`^${cls} L`) })

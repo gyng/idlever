@@ -29,7 +29,7 @@ import { lastRun, replayable } from "./runlog";
 import { siegeText } from "./feats";
 import { fetchedLine } from "./pets"; // Cut 119: `Rook brought $47` — the pet that carried the pack home
 import { openReplay } from "./replay";
-import { h, copyText, items, replace } from "./dom";
+import { h, copyText, items } from "./dom";
 import { clearStrip } from "./runclear"; // run-clear: the death's header strip
 import { lowOf, share } from "./forecast";
 import { openGoldSheet } from "./gold";
@@ -125,12 +125,12 @@ export function deathAction(d: Death): string {
 }
 
 /** QA 23ed91f (K: "`died $0` and `keeps 0%` say the same thing twice"): a death's line drops its `keeps 0%` (the lead says it). */
-/** QA 1a2a4a9 (O, P, and many before: "`+$40 wake` — no source"): the core's wake pay tops the next heir's purse up to $40 — it reads
- *  as whose it is (`heir purse +$40`), here, on the gold sheet and in the report. */
+/** QA 1a2a4a9 (O, P, and many before: "`+$40 wake` — no source"): the core's named wake pay tops the hero purse up to $40 — it reads
+ *  as the credited purse amount (`purse +$40`), here, on the gold sheet and in the report. */
 export const wakeShown = (t: string): string =>
   t
-    .replace(/\+\$(\d+) wake\b/g, /* copy:callout */ "next heir +$$$1")
-    .replace(/\bwake pay\b/g, /* copy:callout */ "next heir")
+    .replace(/\+\$(\d+) wake\b/g, /* copy:callout */ "purse +$$$1")
+    .replace(/\bwake pay\b/g, /* copy:callout */ "purse")
     .replace(/\bpurse full\b/g, /* copy:callout */ "no top-up");
 /** QA 0c6e126 (qaZ: `died $0 · $61 lost` — "I read `died $0` as died carrying $0"): the kept and the carried are named apart —
  *  `died · kept $0 · $61 lost`. */
@@ -203,7 +203,7 @@ export const exitExtras = (
           : /* copy:callout */ ` · swapped · paid $${x.swapped}`
       : "") +
     (x.wake && x.wake > 0 && !/\bwake\b|heir purse/.test(x.text)
-      ? /* copy:callout */ ` · next heir +$${x.wake}`
+      ? /* copy:callout */ ` · purse +$${x.wake}`
       : "") +
     // QA 912e135 (qaW: `no top-up` on every line — "the top-up it refers to is never shown"); QA 0c6e126 (qaY: `heir purse ≥$40` — "the
     // `≥` has no source", twelve of them against one `+$20 heir purse` in the ledger): only a top-up the ledger carries is named (`wake`)
@@ -1133,7 +1133,6 @@ export function renderDeath(
           : "",
       )
     : null;
-  const heirs = kept || from ? null : heirsFold(app);
   const fetched = stalled ? null : fetchedLine(d, app.lastAbsence?.report);
   const well = h(
     "div",
@@ -1182,8 +1181,8 @@ export function renderDeath(
     // run-clear: the death screen is a death's card — its header carries the floor, a new best, the finds left in the bones
     kept || from ? null : clearStrip(d.line),
     ...(prePen
-      ? [whyEl, trainingBlock(d.line?.packages, training), now, heirs, earlyDetails]
-      : [whyEl, trainingBlock(d.line?.packages, training), details, now, heirs, more, tail]),
+      ? [whyEl, trainingBlock(d.line?.packages, training), now, earlyDetails]
+      : [whyEl, trainingBlock(d.line?.packages, training), details, now, more, tail]),
   );
   const wide = wideCols(app, null); // desktop: the rules left, the shaft right (wide.css); the fight is under details
   const el = h(
@@ -2005,68 +2004,4 @@ function replacesTag(app: App, l: Lever): HTMLElement | "" {
   return out
     ? h("small", { class: "lever-replaces", "data-replaces": out }, /* copy:callout */ ` ← ${out}`)
     : "";
-}
-
-/** Owner amendment 2: the heirs the wake offered (`Lineage.heir_traits.offer`) — the heir order already chose one (the worn card); an
- *  optional fold (`other heirs`, never a prompt) swaps to another before the next send (`setTrait(chip)`, one tap). The card that answers
- *  the killer says so. Null with fewer than two cards or no `setTrait`. */
-export function heirsFold(app: App): HTMLElement | null {
-  const T = app.lineage.heir_traits;
-  const offer = T?.offer ?? [];
-  if (offer.length < 2 || !app.engine.setTrait) return null;
-  const el = h("details", { class: "heirs-fold", "data-heirs": offer.length });
-  const paint = (): void => {
-    const born = app.lineage.heir_traits?.born;
-    const cards = app.lineage.heir_traits?.offer ?? offer;
-    // Cut 119 real-wasm check: a worn temperament package can stand in for the order's card (`light hands`, not on offer) — the fold
-    // shows the worn one lit first so it never reads as nobody chosen; a tap on an offered card still swaps (`setTrait`)
-    const worn =
-      born && !cards.some((c) => c.chip === born.chip)
-        ? h(
-            "span",
-            {
-              class: "chip heir-card worn on num",
-              "data-chip": born.chip,
-              "aria-pressed": "true",
-              title: born.formula,
-            },
-            born.chip,
-            h("small", { class: "dim" }, /* copy:callout */ " · worn"),
-          )
-        : "";
-    replace(
-      el,
-      h("summary", { class: "dim num" }, /* copy:button */ "other heirs"),
-      h(
-        "div",
-        { class: "chips" },
-        worn,
-        ...cards.map((c) =>
-          h(
-            "button",
-            {
-              class: `chip heir-card num${c.chip === born?.chip ? " on" : ""}${c.source === "answer" ? " answers" : ""}`,
-              "data-chip": c.chip,
-              "aria-pressed": c.chip === born?.chip ? "true" : "false",
-              title: c.formula,
-              onclick: () => {
-                if (c.chip === born?.chip) return;
-                void app
-                  .mutate(() => app.engine.setTrait!(c.chip), /* copy:callout */ "heir")
-                  .then((ok) => {
-                    if (ok && el.isConnected) paint();
-                  });
-              },
-            },
-            c.chip,
-            c.source === "answer"
-              ? h("small", { class: "dim" }, /* copy:callout */ " · answers")
-              : "",
-          ),
-        ),
-      ),
-    );
-  };
-  paint();
-  return el;
 }

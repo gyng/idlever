@@ -24,12 +24,14 @@ fn town_from(source: &LineageState, dest: &mut LineageState) {
     dest.gold=source.gold;
     dest.gold_tally.clone_from(&source.gold_tally);
     if dest.gold_ledger.len()!=source.gold_ledger.len()||dest.gold_ledger.last()!=source.gold_ledger.last(){dest.gold_ledger=source.gold_ledger.clone();}
+    let forge=dest.town.forge_eligible||source.town.forge_eligible||crate::town::forge_qualified(source);
+    let kennel=dest.town.kennel_eligible||source.town.kennel_eligible||crate::town::kennel_qualified(source);
     let mut owned=dest.town.owned_shapes.clone();
     owned.extend(source.town.owned_shapes.iter().cloned());
     let mut victories=dest.town.piece_victories.clone();
     for (k,n) in &source.town.piece_victories {let entry=victories.entry(k.clone()).or_default();*entry=(*entry).max(*n);}
     dest.town.clone_from(&source.town);
-    dest.town.owned_shapes=owned;
+    dest.town.owned_shapes=owned;dest.town.forge_eligible=forge;dest.town.kennel_eligible=kennel;
     dest.town.piece_victories=victories;
     dest.tree.hired.clone_from(&source.tree.hired);
     dest.tree.done.clone_from(&source.tree.done);
@@ -46,7 +48,7 @@ pub fn copy_order(from: &crate::wire::StandingSwitches, to: &mut crate::wire::St
         "forge" => to.forge.clone_from(&from.forge),
         "wall" => to.wall.clone_from(&from.wall),
         "sink" => to.sink.clone_from(&from.sink),
-        "heir" => to.heir.clone_from(&from.heir),
+        "temperament" => to.temperament.clone_from(&from.temperament),
         "kennel" => to.kennel.clone_from(&from.kennel),
         "legacy" => to.legacy.clone_from(&from.legacy),
         "ranks" => to.ranks.clone_from(&from.ranks),
@@ -62,6 +64,32 @@ fn shared_from(source: &crate::wire::StandingSwitches, dest: &mut crate::wire::S
     dest.shared.clone_from(&source.shared);
 }
 impl Session {
+    /// A personal build pick keeps this hero's choice and unlinks shared automation.
+    /// Other heroes keep their actual automation policy and build.
+    fn detach_temperament_order(&mut self) {
+        self.active.lineage.orders.shared.remove("temperament");
+        for game in self.others.values_mut() {
+            game.lineage.orders.shared.remove("temperament");
+        }
+    }
+    pub fn pick_temperament(&mut self, id: &str) -> Result<(), String> {
+        self.active.pick_temperament(id)?;
+        self.detach_temperament_order();
+        Ok(())
+    }
+    pub fn equip_package(&mut self, id: &str, slot: usize) -> Result<(), String> {
+        self.active.equip_package(id, slot)?;
+        if crate::packages::def(id).is_some_and(|p| p.kind == crate::packages::Kind::Temperament) {
+            self.detach_temperament_order();
+        }
+        Ok(())
+    }
+    pub fn unequip_package(&mut self, id: &str) -> Result<(), String> {
+        let temperament = id == "temperament" || self.active.lineage.pkg.temperament.as_deref() == Some(id);
+        self.active.unequip_package(id)?;
+        if temperament { self.detach_temperament_order(); }
+        Ok(())
+    }
     pub fn new(seed:u64)->Self {
         // (Cut 120, owner option B: a new lineage's Legacy and ranks orders are `off`, as the harness's — `tree::NEW_LEGACY`)
         let active=Game::new(seed);
@@ -192,7 +220,12 @@ impl Session {
         while remaining>0 {
             // Once every manual hero is home, skip idle time in one operation.
             let waiting=self.active.waits()&&self.others.values().all(Game::waits);
-            let quantum=if waiting {remaining}else{100};
+            let quantum=if waiting {
+                // Waiting skips no combat, but each real day must close separately.
+                // Otherwise a whole absence prices oaths from a different day than slices.
+                let day_ticks=(crate::engine::DAY_S-self.active.lineage.clock_s%crate::engine::DAY_S)*10-self.active.advance_rem.1;
+                remaining.min(day_ticks*100)
+            }else{100};
             for id in &ids {
                 if *id==self.selected {let r=self.active.advance(quantum);out.ended.extend(r.ended);}
                 else {let g=self.others.get_mut(id).expect("slot");town_from(&self.active.lineage,&mut g.lineage);g.advance(quantum);town_from(&g.lineage,&mut self.active.lineage);}
@@ -483,9 +516,26 @@ mod tests {
         // Both heroes must come home for class XP (deaths feed none). Cut 109's floors kill
         // seed 1's fighter to a goblin; seed 2 returns both, as seed 1 did before.
         let mut s=Session::new(2);s.active.build_town("house").unwrap();s.active.lineage.gold_move(1000,"test income");
+        // Controlled XP attribution fixture keeps both heroes' original legal
+        // starting leash; progression eligibility is covered independently.
+        s.active.lineage.town.built.push(("blacksmith".into(),0));
+        s.active.lineage.kennel_leash();
         s.add_bloodline().unwrap();
-        s.select_bloodline(2).unwrap();s.lineage.class=crate::hero::Class::Rogue;s.send();
-        s.select_bloodline(1).unwrap();if selected_runs {s.send();}
+        s.select_bloodline(2).unwrap();
+        // Owned class is a controlled prerequisite; the public setter must
+        // refit an already prepared actor as well as the lineage label.
+        s.lineage.unlocks.insert("rogue".into());
+        s.set_class("rogue").unwrap();
+        // The subject is report attribution, not either class's survival balance.
+        // An explicitly authored short return gives a real alive completion.
+        s.lineage.pkg.pen_open=true;
+        s.set_rules(crate::RuleSet { rows:vec![crate::Row::new(vec![],crate::Verb::new("return"))],..Default::default() }).unwrap();
+        s.send();
+        s.select_bloodline(1).unwrap();if selected_runs {
+            s.lineage.pkg.pen_open=true;
+            s.set_rules(crate::RuleSet { rows:vec![crate::Row::new(vec![],crate::Verb::new("return"))],..Default::default() }).unwrap();
+            s.send();
+        }
         let r=s.run_offline_mode(3600,false,true);
         let selected=r.bloodlines.iter().find(|b|b.id==1).unwrap();
         let other=r.bloodlines.iter().find(|b|b.id==2).unwrap();

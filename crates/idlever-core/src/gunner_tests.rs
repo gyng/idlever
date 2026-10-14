@@ -55,6 +55,7 @@ fn gun_restore_keeps_paid_backup_in_full_pack_and_retains_found_weapon_drop_rule
 fn paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends() {
     let mut g=home();let before=g.save();assert!(crate::kit::buy(&mut g,crate::firearm::SIDEARM_SLOT).is_err());assert_eq!(g.save(),before);
     let mut g=unlocked();
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     let before=g.save();assert!(crate::kit::buy(&mut g,crate::firearm::SIDEARM_SLOT).is_err());assert_eq!(g.save(),before);
     g.lineage.gold=10000;g.lineage.kit.insert("weapon".into(),3);
     let price=crate::kit::unit_of(&g.lineage);let gold=g.lineage.gold;
@@ -204,6 +205,7 @@ fn paid_historical_unlock_keeps_missing_xp_absent_and_refuses_exactly() {
 #[test]
 fn owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps() {
     let mut g=unlocked();g.lineage.gold=1000;g.lineage.kit_unit=Some(100);g.lineage.kit.insert("weapon".into(),4);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     crate::kit::buy(&mut g,"short_gun").unwrap();assert_eq!(g.lineage.gold,900);
     assert_eq!(crate::firearm::starting_kind(&g.lineage),"short_gun");
     assert_eq!(g.lineage().guns[1].price,0);assert!(g.lineage().guns[1].selected);

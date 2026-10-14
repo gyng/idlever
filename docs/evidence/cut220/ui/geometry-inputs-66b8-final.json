@@ -1,0 +1,63 @@
+{
+  "wasm": {
+    "bytes": 6698072,
+    "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+  },
+  "source": "docs/evidence/cut220/core/source-final.json",
+  "entries": [
+    {
+      "id": "earned-delving-queued",
+      "home": "docs/evidence/cut220/core/fixtures/earned-delving-queued.game.json.gz",
+      "state": "away",
+      "geometry": true,
+      "critical": true,
+      "earned": true,
+      "sha256": "c809b90dee6ab95e5c6222690e12b5a8205610d2832caec54625ac92d5a1599b",
+      "rawSha256": "baabde5fd1e134cc3ce2613d0305933eabc9cfda5f8f5b52aa4cf63f994a155e",
+      "provenance": {
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-family-committed-home.game.json.gz",
+        "inputSha256": "7e037a1e0ef1882f07c00874fbef257fae0e5f1353609d48da9e2f75ae1f445f",
+        "method": "Public actions in crates/idlever-core/examples/hero_hub_fixtures.rs; no grants.",
+        "canonicalWire": "docs/evidence/cut220/core/fixtures/earned-delving-queued.lineage.json"
+      }
+    },
+    {
+      "id": "earned-ready",
+      "home": "docs/evidence/cut220/core/fixtures/earned-ready.game.json.gz",
+      "state": "ready",
+      "geometry": true,
+      "critical": true,
+      "earned": true,
+      "sha256": "c50d5d711d565a43afdf6912497dea35b48ec4cb39be268c30db9ea029ada329",
+      "rawSha256": "0033b501da097364bd563729ef9e9fe321d75cd87fa8568afca9057ff7b35d71",
+      "provenance": {
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-family-committed-home.game.json.gz",
+        "inputSha256": "7e037a1e0ef1882f07c00874fbef257fae0e5f1353609d48da9e2f75ae1f445f",
+        "method": "Public actions in crates/idlever-core/examples/hero_hub_fixtures.rs; no grants.",
+        "canonicalWire": "docs/evidence/cut220/core/fixtures/earned-ready.lineage.json"
+      }
+    },
+    {
+      "id": "earned-recovering-rebirth",
+      "home": "docs/evidence/cut220/core/fixtures/earned-recovering-rebirth.game.json.gz",
+      "state": "recovering",
+      "geometry": true,
+      "critical": true,
+      "earned": true,
+      "sha256": "dee6946037c7bedcfecd2a7a827ed6b03856dbff7f0640319d63fd779453ad91",
+      "rawSha256": "f7bc025edbce5fbeba7f10a336f3759e1bb0724f9ea5040188f7078de45e9d5d",
+      "provenance": {
+        "input": "docs/evidence/cut219/ui-inputs-final/earned-family-committed-home.game.json.gz",
+        "inputSha256": "7e037a1e0ef1882f07c00874fbef257fae0e5f1353609d48da9e2f75ae1f445f",
+        "method": "Public actions in crates/idlever-core/examples/hero_hub_fixtures.rs; no grants.",
+        "canonicalWire": "docs/evidence/cut220/core/fixtures/earned-recovering-rebirth.lineage.json"
+      }
+    }
+  ],
+  "historical_export_package": {
+    "bytes": 6696816,
+    "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511",
+    "note": "Historical package at fixture export; Root/UI must pin final Cut220 build before browser acceptance."
+  },
+  "scope": "CSS-only follow-up: all three geometry states and30 compact views; seven-case functional acceptance retained in compact-66b8-refined. Normal default manifest remains all seven."
+}

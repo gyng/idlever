@@ -1,0 +1,58 @@
+{
+  "result": "PASS",
+  "error": null,
+  "records": [
+    {
+      "case": "section-changed-while-real-selection-pending",
+      "selected": 2,
+      "section": "behaviour",
+      "goldEqual": true
+    },
+    {
+      "case": "late-return-cannot-replace-newer-hero-route",
+      "selected": 2,
+      "section": "skills",
+      "saveEqual": true
+    },
+    {
+      "case": "closed-before-selection-does-not-reopen",
+      "selected": 2,
+      "goldEqual": true
+    }
+  ],
+  "deliveries": [
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  ],
+  "errors": [],
+  "input": {
+    "id": "earned-three-residents",
+    "home": "docs/evidence/cut220/core/fixtures/earned-three-residents.game.json.gz",
+    "state": "ready",
+    "geometry": false,
+    "critical": false,
+    "earned": true,
+    "sha256": "9a5c7438063f922605cdba841b8113a4f7f7ec3a355e34d3133346377931c63b",
+    "rawSha256": "6959540bead8b2a6298313d9037d7e39266c347fb17d2b410fc599bdc271dc71",
+    "provenance": {
+      "input": "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz",
+      "inputSha256": "c0e02be29790d3d8b57e7675a1f63ddee70b1888e174bc47b435a2fd6545adbf",
+      "method": "Public actions in crates/idlever-core/examples/hero_hub_fixtures.rs; no grants.",
+      "canonicalWire": "docs/evidence/cut220/core/fixtures/paid-resident-1.lineage.json"
+    }
+  }
+}

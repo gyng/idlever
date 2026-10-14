@@ -1,5 +1,5 @@
 import { responsiveWidths } from "./lib/viewport-cases.mjs";
-// Real earned first-ascension clear, paid216-point build; no granted state.
+// Real earned first-ascension clear; no granted state or easy stat refund.
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
@@ -69,9 +69,14 @@ try {
     assert.match(await p.locator(".gem.send").textContent(), /Next descent/);
     assert.equal(await p.locator(".gem.send").isDisabled(), false);
     await p.locator("button.stat.legacy").click();
+    await p.waitForSelector('[data-hub-tab="attributes"][aria-selected="true"]');
     await p.waitForSelector(".legacy-panel");
     await unchanged();
-    assert.equal(await p.locator(".legacy-respec").isDisabled(), false);
+    assert.equal(await p.locator(".legacy-respec").count(), 0, "easy stat refund is retired");
+    await p.locator(".legacy-rebirth").click();
+    await unchanged();
+    await p.keyboard.press("Escape");
+    await unchanged();
     await p.keyboard.press("Escape");
     await p.locator(".gem.send").click();
     await p.waitForSelector(".ending-town");
@@ -94,23 +99,28 @@ try {
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     if (width === 400) {
       await p.locator("button.stat.legacy").click();
+      await p.waitForSelector('[data-hub-tab="attributes"][aria-selected="true"]');
       const old = await p.evaluate(() => ({ ...window.__idlever.lineage.bloodline }));
-      await p.locator(".legacy-respec").click();
-      await p.locator(".legacy-respec-confirm").click();
-      await p.waitForFunction(() => window.__idlever.lineage.bloodline.spent === 0);
+      const offer = await p.evaluate(() =>
+        window.__idlever.lineage.legacy_upgrades.find(
+          (u) => u.affordable && u.price > 0 && u.rank < u.cap,
+        ),
+      );
+      assert.ok(offer, "earned cleared hero has a canonical affordable lasting rank");
+      const { price, id } = offer;
+      const buy = p.locator(`button.legacy-buy[data-upgrade="${id}"]`);
+      await buy.evaluate((node) => {
+        for (let p = node.parentElement; p; p = p.parentElement)
+          if (p.tagName === "DETAILS") p.open = true;
+      });
+      await buy.click();
+      await p.waitForFunction(
+        (n) => window.__idlever.lineage.bloodline.spent === n,
+        old.spent + price,
+      );
       assert.equal(
         await p.evaluate(() => window.__idlever.lineage.bloodline.points),
-        old.points + old.spent,
-      );
-      // Cut 121: Legacy ranks are priced on a curve; the first health rank's price is read off the offer, not assumed
-      const price = await p.evaluate(
-        () => window.__idlever.lineage.legacy_upgrades.find((u) => u.id === "health").price,
-      );
-      await p.locator('button.legacy-buy[data-upgrade="health"]').click();
-      await p.waitForFunction((n) => window.__idlever.lineage.bloodline.spent === n, price);
-      assert.equal(
-        await p.evaluate(() => window.__idlever.lineage.bloodline.points),
-        old.points + old.spent - price,
+        old.points - price,
       );
       assert.equal(await p.evaluate(() => window.__idlever.lineage.ended), true);
       assert.equal(await p.evaluate(() => window.__idlever.lineage.live ?? null), null);
@@ -124,7 +134,10 @@ try {
       await p.waitForSelector(".ending-town");
       await p.locator(".ending-town").click();
       await p.waitForSelector(".camp");
-      assert.equal(await p.evaluate(() => window.__idlever.lineage.bloodline.spent), price);
+      assert.equal(
+        await p.evaluate(() => window.__idlever.lineage.bloodline.spent),
+        old.spent + price,
+      );
     }
     if (width === 1440) {
       const multi = await p.evaluate(async () => {
@@ -155,7 +168,7 @@ try {
     assert.deepEqual(errors, []);
     console.log(
       width,
-      "earned clear Town/Legacy/Next descent/mouth/watch guard, exact navigation save and paid home respec PASS",
+      "earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS",
     );
     await p.close();
   }

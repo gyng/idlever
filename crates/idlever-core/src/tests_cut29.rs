@@ -62,7 +62,7 @@ fn systems_open_one_at_a_time() {
     g.lineage.reveal_left = 1;
     let opened = crate::systems::update(&mut g.lineage, false);
     // (Cut 118 amendment 2: the heir order's rung opens with the death screen, one unit)
-    assert_eq!(opened, vec!["death", "heirs"]);
+    assert_eq!(opened, vec!["death"]); // Survivor build stage does not open on death.
     assert!(g.lineage().systems.iter().any(|s| s.id == "death" && s.open && s.new));
     g.seen_systems();
     assert!(g.lineage().systems.iter().all(|s| !s.new));

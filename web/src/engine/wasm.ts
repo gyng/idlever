@@ -281,7 +281,7 @@ export class WasmEngine implements Engine {
   takeReturnPick(id: string): Lineage {
     return this.call("takeReturnPick", id);
   } // Cut 113 §3
-  // Cut 118: throw `wasm: <name>` on a build without them (the camp then shows no seek / trial / sink / wish chip)
+  // Cut 118: throw `wasm: <name>` on a build without them (no seek / trial / sink controls).
   seekBoss(boss: string): Lineage {
     return this.call("seekBoss", boss);
   }
@@ -300,9 +300,6 @@ export class WasmEngine implements Engine {
   buyRation(): Lineage {
     return this.call("buyRation");
   } // Cut 122 §5: throws `wasm: buyRation` on a build without it
-  grantWish(): Lineage {
-    return this.call("grantWish");
-  }
   kitDeltas(): KitLadder[] {
     return this.call("kitDeltas");
   }
@@ -354,6 +351,12 @@ export class WasmEngine implements Engine {
   }
   pickTemperament(id: string): Lineage {
     return this.call("pickTemperament", id);
+  }
+  setInheritedTrait(name: string): Lineage {
+    return this.call("setInheritedTrait", name);
+  }
+  setFamilyLean(when: string): Lineage {
+    return this.call("setFamilyLean", when);
   }
   spendLevel(id: string): Lineage {
     return this.call("spendLevel", id);

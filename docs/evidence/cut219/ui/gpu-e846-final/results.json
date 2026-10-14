@@ -1,0 +1,93 @@
+{
+  "result": "PASS",
+  "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "performanceClaim": false,
+  "records": [
+    {
+      "width": 400,
+      "id": "actual-first-away-inherited",
+      "view": "hero",
+      "input": "docs/evidence/cut219/ui/compact-e846-second/results.json.gz",
+      "inputSHA": "026ade89db0a3b930f1dc36c5b99882feb09f5e2adf9ac5a3c742da8a5c39d8d",
+      "filename": "actual-first-away-inherited-hero-400.png",
+      "readOnly": true
+    },
+    {
+      "width": 1440,
+      "id": "actual-first-away-family",
+      "view": "hero",
+      "input": "docs/evidence/cut219/ui/compact-e846-second/results.json.gz",
+      "inputSHA": "026ade89db0a3b930f1dc36c5b99882feb09f5e2adf9ac5a3c742da8a5c39d8d",
+      "filename": "actual-first-away-family-hero-1440.png",
+      "readOnly": true
+    }
+  ],
+  "deliveries": [
+    {
+      "bytes": 6696816,
+      "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511"
+    },
+    {
+      "bytes": 6696816,
+      "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511"
+    },
+    {
+      "bytes": 6696816,
+      "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511"
+    },
+    {
+      "bytes": 6696816,
+      "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511"
+    }
+  ],
+  "source": {
+    "src/app.ts": {
+      "bytes": 296030,
+      "sha256": "1200cf7b4fe921605f29880a0ff74ec1e5789af2947e86ad779f11e91fbb31c4"
+    },
+    "src/ui/frame.ts": {
+      "bytes": 78963,
+      "sha256": "8713e5b8a21f930795f9fe3269a273d01eaa3466e0bb15386ef75e8e65ddbc7c"
+    },
+    "src/ui/watch.ts": {
+      "bytes": 668609,
+      "sha256": "e52c2aac4630ba46bde24fb099b5afdb3d9f80f6de0722c85d8b645a1ba7a51f"
+    },
+    "src/ui/report.ts": {
+      "bytes": 321404,
+      "sha256": "a002a2c44085b767e3fd4ab4e578134a20f2c91d378cd00656060dffa83149b4"
+    },
+    "src/ui/gold-transfers.ts": {
+      "bytes": 23917,
+      "sha256": "b738323bae4a71c755290ae34c30e9673034b3da85453a28e9e8f490904296ee"
+    },
+    "src/ui/hero-progression.ts": {
+      "bytes": 27426,
+      "sha256": "c67cd7e3a0acaa7acc5503a7ec4e1a60549ed25d690fece0a8909eeb4165d51f"
+    },
+    "src/hero-progression.css": {
+      "bytes": 1876,
+      "sha256": "40815eaf01756f85a8a319a33396f43963ac17427f8413614ce4c16694ae6d46"
+    },
+    "src/ui/hero-life.ts": {
+      "bytes": 52805,
+      "sha256": "da74354cadc155dab06d1945c512bbec855ea24c627c93cea488d280a2347031"
+    },
+    "src/ui/bloodline-loadouts.ts": {
+      "bytes": 17232,
+      "sha256": "0d0c3000a415ceecb4400fa98f1e7962a9bb71f6b880bd47d5ba81ff68a5175b"
+    },
+    "src/ui/orders.ts": {
+      "bytes": 11645,
+      "sha256": "fbffcc93d3cc670468b26539d14cf660508e98e26de4982cd8a0ef60050a3af4"
+    },
+    "src/ui/town.ts": {
+      "bytes": 163830,
+      "sha256": "9fd155f584946b60101754543359d753ea305a9282dad2860a65516585d49dd1"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6696816,
+      "sha256": "e84657b5783b9792bc8bb44b5b5d75444510139f2e216b5385915186e91f2511"
+    }
+  }
+}

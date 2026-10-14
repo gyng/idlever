@@ -1,0 +1,544 @@
+error[E0585]: found a documentation comment that doesn't document anything
+    --> crates/idlever-core/src/wire.rs:1447:5
+     |
+1325 | pub struct Death {
+     |            ----- while parsing this struct
+...
+1447 |     /// is the cause.
+     |     ^^^^^^^^^^^^^^^^^
+     |
+     = help: doc comments must come before what they document, if a comment was intended use `//`
+
+error: unexpected end of input, expected identifier
+    --> crates/idlever-core/src/wire.rs:1448:1
+     |
+1448 | }
+     | ^
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/engine.rs:2836:24
+     |
+2836 | #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+     |                        ^^^^^^^^^ unsatisfied trait bound
+2837 | pub struct DeathRec {
+2838 |     pub death: Death,
+     |     --- required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 449 others
+note: required by a bound in `balance::_::_serde::ser::SerializeStruct::serialize_field`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/ser/mod.rs:1917:21
+     |
+1915 |     fn serialize_field<T>(&mut self, key: &'static str, value: &T) -> Result<(), Self::Error>
+     |        --------------- required by a bound in this associated function
+1916 |     where
+1917 |         T: ?Sized + Serialize;
+     |                     ^^^^^^^^^ required by this bound in `SerializeStruct::serialize_field`
+     = note: this error originates in the derive macro `Serialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0277]: the trait bound `wire::Death: serde::Deserialize<'de>` is not satisfied
+    --> crates/idlever-core/src/engine.rs:2838:16
+     |
+2838 |     pub death: Death,
+     |                ^^^^^ unsatisfied trait bound
+     |
+help: the trait `Deserialize<'_>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 484 others
+note: required by a bound in `next_element`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1771:12
+     |
+1769 |     fn next_element<T>(&mut self) -> Result<Option<T>, Self::Error>
+     |        ------------ required by a bound in this associated function
+1770 |     where
+1771 |         T: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `SeqAccess::next_element`
+
+error[E0277]: the trait bound `wire::Death: serde::Deserialize<'de>` is not satisfied
+    --> crates/idlever-core/src/engine.rs:2838:16
+     |
+2838 |     pub death: Death,
+     |                ^^^^^ unsatisfied trait bound
+     |
+help: the trait `Deserialize<'_>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 484 others
+note: required by a bound in `next_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1916:12
+     |
+1914 |     fn next_value<V>(&mut self) -> Result<V, Self::Error>
+     |        ---------- required by a bound in this associated function
+1915 |     where
+1916 |         V: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `MapAccess::next_value`
+
+error[E0277]: the trait bound `wire::Death: serde::Deserialize<'de>` is not satisfied
+    --> crates/idlever-core/src/engine.rs:2836:35
+     |
+2836 | #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+     |                                   ^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `Deserialize<'_>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 484 others
+note: required by a bound in `balance::_::_serde::__private229::de::missing_field`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.229/src/private/de.rs:26:8
+     |
+  24 | pub fn missing_field<'de, V, E>(field: &'static str) -> Result<V, E>
+     |        ------------- required by a bound in this function
+  25 | where
+  26 |     V: Deserialize<'de>,
+     |        ^^^^^^^^^^^^^^^^ required by this bound in `missing_field`
+     = note: this error originates in the derive macro `Deserialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0689]: can't call method `max` on ambiguous numeric type `{float}`
+    --> crates/idlever-core/src/trace.rs:1936:35
+     |
+1936 |     let odds = (1.0 - d.baseline).max(0.0);
+     |                                   ^^^
+
+error[E0689]: can't call method `round` on ambiguous numeric type `{float}`
+    --> crates/idlever-core/src/trace.rs:1937:48
+     |
+1937 |     let one_in = if odds > 1e-9 { (1.0 / odds).round().max(1.0) as u32 } else { REPLAYS };
+     |                                                ^^^^^
+
+error[E0308]: mismatched types
+    --> crates/idlever-core/src/trace.rs:2802:41
+     |
+2802 |             rec.pick_price = Some((key, id, wall_price(&base_n, &panel, wall)));
+     |                                         ^^ expected `String`, found `str`
+     |
+help: try using a conversion method
+     |
+2802 |             rec.pick_price = Some((key, id.to_string(), wall_price(&base_n, &panel, wall)));
+     |                                           ++++++++++++
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/wire.rs:1534:24
+     |
+1534 | #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
+     |                        ^^^^^^^^^ unsatisfied trait bound
+...
+1581 |     #[serde(default, skip_serializing_if = "Option::is_none")]
+     |     - required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+     = note: required for `std::option::Option<wire::Death>` to implement `Serialize`
+note: required by a bound in `balance::_::_serde::ser::SerializeStruct::serialize_field`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/ser/mod.rs:1917:21
+     |
+1915 |     fn serialize_field<T>(&mut self, key: &'static str, value: &T) -> Result<(), Self::Error>
+     |        --------------- required by a bound in this associated function
+1916 |     where
+1917 |         T: ?Sized + Serialize;
+     |                     ^^^^^^^^^ required by this bound in `SerializeStruct::serialize_field`
+     = note: this error originates in the derive macro `Serialize` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0277]: the trait bound `wire::Death: serde::Deserialize<'de>` is not satisfied
+    --> crates/idlever-core/src/wire.rs:1582:22
+     |
+1582 |     pub worst_death: Option<Death>,
+     |                      ^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `Deserialize<'_>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 638 others
+     = note: required for `std::option::Option<wire::Death>` to implement `Deserialize<'_>`
+note: required by a bound in `next_element`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1771:12
+     |
+1769 |     fn next_element<T>(&mut self) -> Result<Option<T>, Self::Error>
+     |        ------------ required by a bound in this associated function
+1770 |     where
+1771 |         T: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `SeqAccess::next_element`
+
+error[E0277]: the trait bound `wire::Death: serde::Deserialize<'de>` is not satisfied
+    --> crates/idlever-core/src/wire.rs:1582:22
+     |
+1582 |     pub worst_death: Option<Death>,
+     |                      ^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `Deserialize<'_>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Deserialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 638 others
+     = note: required for `std::option::Option<wire::Death>` to implement `Deserialize<'_>`
+note: required by a bound in `next_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_core-1.0.229/src/de/mod.rs:1916:12
+     |
+1914 |     fn next_value<V>(&mut self) -> Result<V, Self::Error>
+     |        ---------- required by a bound in this associated function
+1915 |     where
+1916 |         V: Deserialize<'de>,
+     |            ^^^^^^^^^^^^^^^^ required by this bound in `MapAccess::next_value`
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/tests.rs:6850:38
+     |
+6850 |     let json = serde_json::to_string(&d).unwrap();
+     |                --------------------- ^^ unsatisfied trait bound
+     |                |
+     |                required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+note: required by a bound in `serde_json::to_string`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2247:17
+     |
+2245 | pub fn to_string<T>(value: &T) -> Result<String>
+     |        --------- required by a bound in this function
+2246 | where
+2247 |     T: ?Sized + Serialize,
+     |                 ^^^^^^^^^ required by this bound in `to_string`
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/tests.rs:6956:35
+     |
+6956 |     let s = serde_json::to_string(&d).unwrap();
+     |             --------------------- ^^ unsatisfied trait bound
+     |             |
+     |             required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+note: required by a bound in `serde_json::to_string`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/ser.rs:2247:17
+     |
+2245 | pub fn to_string<T>(value: &T) -> Result<String>
+     |        --------- required by a bound in this function
+2246 | where
+2247 |     T: ?Sized + Serialize,
+     |                 ^^^^^^^^^ required by this bound in `to_string`
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:719:37
+     |
+ 719 |     let raw = serde_json::to_value(&recorded).unwrap();
+     |               --------------------  ^^^^^^^^ unsatisfied trait bound
+     |               |
+     |               required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+     = note: required for `&wire::Death` to implement `Serialize`
+note: required by a bound in `to_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:997:8
+     |
+ 995 | pub fn to_value<T>(value: T) -> Result<Value, Error>
+     |        -------- required by a bound in this function
+ 996 | where
+ 997 |     T: Serialize,
+     |        ^^^^^^^^^ required by this bound in `to_value`
+
+error[E0277]: the trait bound `wire::Death: serde::de::DeserializeOwned` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:720:40
+     |
+ 720 |     let restored: crate::wire::Death = serde_json::from_value(raw.clone()).unwrap();
+     |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `for<'de> Deserialize<'de>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 458 others
+     = note: required for `wire::Death` to implement `DeserializeOwned`
+note: required by a bound in `from_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:1039:8
+     |
+1037 | pub fn from_value<T>(value: Value) -> Result<T, Error>
+     |        ---------- required by a bound in this function
+1038 | where
+1039 |     T: DeserializeOwned,
+     |        ^^^^^^^^^^^^^^^^ required by this bound in `from_value`
+
+error[E0277]: the trait bound `wire::Death: serde::de::DeserializeOwned` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:725:38
+     |
+ 725 |     let loaded: crate::wire::Death = serde_json::from_value(old).unwrap();
+     |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `for<'de> Deserialize<'de>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 458 others
+     = note: required for `wire::Death` to implement `DeserializeOwned`
+note: required by a bound in `from_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:1039:8
+     |
+1037 | pub fn from_value<T>(value: Value) -> Result<T, Error>
+     |        ---------- required by a bound in this function
+1038 | where
+1039 |     T: DeserializeOwned,
+     |        ^^^^^^^^^^^^^^^^ required by this bound in `from_value`
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:727:34
+     |
+ 727 |     assert!(serde_json::to_value(loaded).unwrap().get("hero").is_none());
+     |             -------------------- ^^^^^^ unsatisfied trait bound
+     |             |
+     |             required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+note: required by a bound in `to_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:997:8
+     |
+ 995 | pub fn to_value<T>(value: T) -> Result<Value, Error>
+     |        -------- required by a bound in this function
+ 996 | where
+ 997 |     T: Serialize,
+     |        ^^^^^^^^^ required by this bound in `to_value`
+
+error[E0277]: the trait bound `wire::Death: serde::Serialize` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:794:38
+     |
+ 794 |     let mut old=serde_json::to_value(death).unwrap();old["hero"]["name"]=serde_json::json!("Wren");
+     |                 -------------------- ^^^^^ unsatisfied trait bound
+     |                 |
+     |                 required by a bound introduced by this call
+     |
+help: the trait `Serialize` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = note: for local types consider adding `#[derive(serde::Serialize)]` to your `wire::Death` type
+     = note: for types from other crates check whether the crate offers a `serde` feature flag
+     = help: the following other types implement trait `Serialize`:
+               &'a T
+               &'a mut T
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+               (T0, T1, T2, T3, T4)
+             and 448 others
+note: required by a bound in `to_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:997:8
+     |
+ 995 | pub fn to_value<T>(value: T) -> Result<Value, Error>
+     |        -------- required by a bound in this function
+ 996 | where
+ 997 |     T: Serialize,
+     |        ^^^^^^^^^ required by this bound in `to_value`
+
+error[E0277]: the trait bound `wire::Death: serde::de::DeserializeOwned` is not satisfied
+    --> crates/idlever-core/src/tests_cut305.rs:795:33
+     |
+ 795 |     let kept:crate::wire::Death=serde_json::from_value(old).unwrap();assert_eq!(kept.hero.unwrap().name,"Wren");
+     |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ unsatisfied trait bound
+     |
+help: the trait `for<'de> Deserialize<'de>` is not implemented for `wire::Death`
+    --> crates/idlever-core/src/wire.rs:1325:1
+     |
+1325 | pub struct Death {
+     | ^^^^^^^^^^^^^^^^
+     = help: the following other types implement trait `Deserialize<'de>`:
+               &'a Path
+               &'a [u8]
+               &'a str
+               ()
+               (T,)
+               (T0, T1)
+               (T0, T1, T2)
+               (T0, T1, T2, T3)
+             and 458 others
+     = note: required for `wire::Death` to implement `DeserializeOwned`
+note: required by a bound in `from_value`
+    --> /home/g/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_json-1.0.151/src/value/mod.rs:1039:8
+     |
+1037 | pub fn from_value<T>(value: Value) -> Result<T, Error>
+     |        ---------- required by a bound in this function
+1038 | where
+1039 |     T: DeserializeOwned,
+     |        ^^^^^^^^^^^^^^^^ required by this bound in `from_value`
+
+Some errors have detailed explanations: E0277, E0308, E0585, E0689.
+For more information about an error, try `rustc --explain E0277`.
+error: could not compile `idlever-core` (lib) due to 12 previous errors
+error: could not compile `idlever-core` (lib test) due to 20 previous errors

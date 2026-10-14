@@ -1,0 +1,8 @@
+client suite: targeted (1 selected; 156 current full; 198 exhaustive groups)
+FAIL hero-hub        134.7s (134.3s)  Node.js v26.5.0
+       - waiting for locator('.sheet-wrap:not(.under)').locator('[data-hub-tab="gear"]')
+       name: 'TimeoutError'
+         at section (/home/g/p/riddle/web/tests/hero-hub.mjs:124:54)
+         at async staleResidents (/home/g/p/riddle/web/tests/hero-hub.mjs:485:9)
+         at async file:///home/g/p/riddle/web/tests/hero-hub.mjs:614:5 {
+FAIL: 0/1 client gates in 134.7s

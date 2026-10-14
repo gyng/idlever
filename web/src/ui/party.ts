@@ -17,7 +17,10 @@ import { petMeta, petTip, roleBadge, xpBar } from "./pets"; // Cut 119: the role
 
 const nice = (s: string): string => s.replace(/_/g, " ");
 
-export function renderParty(app: App): { el: HTMLElement; refresh(): void } {
+export function renderParty(
+  app: App,
+  scope: { current?: () => boolean } = {},
+): { el: HTMLElement; refresh(): void } {
   const head = h("div", { class: "label row-label" });
   const cards = h("div", { class: "cards party-cards" });
   const eggs = h("div", { class: "chips eggs" });
@@ -193,7 +196,7 @@ export function renderParty(app: App): { el: HTMLElement; refresh(): void } {
         {
           class: "grip game-control",
           "aria-label": `${c.name} rules`,
-          onclick: () => openRules(app, c),
+          onclick: () => openRules(app, c, scope.current),
         },
         "≡",
       ),
@@ -217,16 +220,31 @@ function petFace(kind: string): HTMLElement {
   return h("span", { class: "pet-face", "aria-hidden": "true" }, face);
 }
 
-function openRules(app: App, c: Companion): void {
+function openRules(app: App, c: Companion, current?: () => boolean): void {
+  if (current && !current()) return;
   const local: RuleSet = cloneSet(c.rules);
   void app.engine
     .companionVocabulary(c.id)
-    .then((vocab) =>
+    .then((vocab) => {
+      if (current && !current()) return;
       openSheet(() => {
         const ed = renderEditor({
           rules: () => local,
           vocab: () => vocab,
           changed: () => {
+            if (current && !current()) return;
+            if (current) {
+              const rules = cloneSet(local);
+              void app.engine
+                .setCompanionRules(c.id, local)
+                .then(() => {
+                  if (!current()) return;
+                  c.rules = rules;
+                  void app.persist();
+                })
+                .catch((e) => console.warn("companion rules", e));
+              return;
+            }
             void app.engine
               .setCompanionRules(c.id, local)
               .catch((e) => console.warn("companion rules", e));
@@ -249,8 +267,8 @@ function openRules(app: App, c: Companion): void {
           ),
           ed.el,
         );
-      }),
-    )
+      });
+    })
     .catch((e) => console.warn("companion vocabulary", e));
 }
 

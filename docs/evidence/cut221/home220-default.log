@@ -1,0 +1,7 @@
+client suite: targeted (2 selected; 156 current full; 198 exhaustive groups)
+ok   home-resident-phases 8.3s (7.6s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+FAIL home-residents  38.7s (38.1s)  Node.js v26.5.0
+       - waiting for locator('.hero-sheet') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/home-residents.mjs:281:44 {
+FAIL: 1/2 client gates in 38.7s

@@ -1,5 +1,5 @@
 // Cut 30 §2 — the packages panel (docs/CUT30.md): pre-written rule bundles that level from runs. Three kinds of slot — the stance ×1
-// (never empty), the tactic ×1 (×2 at its stage), the temperament ×1 (from heir 3) — each its chip `<name> L<n>` with the level's
+// (never empty), the tactic ×1 (×2 at its stage), the temperament ×1 (from its survivor stage) — each its chip `<name> L<n>` with the level's
 // progress; the owned others under it, each priced on the camp's paired panel in one line (`Guarded · death −8`, `packageOptions()` on a
 // background lane, `…` until it lands); a tap equips (free, instant). The compiled rows fold under `rows`: a row a same-role row above it
 // always pre-empts is greyed with the winner (`Guarded wins`). Drills (`drill · Warlord`, revocable) and scars (`scarred ×3`) sit under
@@ -16,6 +16,7 @@ import { lowOf, NOISE_PTS, share } from "./forecast";
 import { rowLabel, verbLabel } from "./tokens";
 import { packageIcon, foeSrc, icon, verbIcon } from "./skin";
 import { itemIcon } from "./items";
+import { temperamentPanel } from "./hero-progression";
 import { sysOpen } from "./systems";
 import { detailHost, kw, kwHost } from "./tips";
 import { roleGlyph } from "./pets"; // Cut 119: the tame drill's glyph
@@ -342,6 +343,9 @@ export function openPackages(
           });
       };
       const paint = (): void => {
+        const focused = body.contains(document.activeElement)
+          ? (document.activeElement as HTMLElement).dataset.action
+          : undefined;
         // Native details toggles before its queued toggle event. Preserve the
         // current DOM state when forecast/lineage replies repaint in that gap.
         const prior = body.querySelector<HTMLDetailsElement>(".pkg-advanced");
@@ -690,61 +694,11 @@ export function openPackages(
             ),
           );
         }
-        // the temperament: from heir 3 — the wake's three cards while the offer stands (card 1 worn until one is picked)
-        if (P.temperament_open || P.offer?.length) {
-          const offer = (P.offer ?? []).map((id) => byId.get(id)).filter((p): p is Package => !!p);
-          const cards = offer.length ? offer : owned("temperament");
-          const personality = h(
-            "div",
-            { class: "chips pkg-alts temper" },
-            ...cards.map((p) =>
-              h(
-                "button",
-                {
-                  class: `chip pkg temper${p.id === P.temperament ? " on" : ""}`,
-                  "data-pkg": p.id,
-                  "aria-pressed": p.id === P.temperament ? "true" : "false",
-                  onclick: () => {
-                    if (p.id === P.temperament) return;
-                    void app
-                      .mutate(
-                        () =>
-                          P.offer?.includes(p.id) && app.engine.pickTemperament
-                            ? app.engine.pickTemperament(p.id)
-                            : app.engine.equipPackage!(p.id, 0),
-                        /* copy:callout */ p.name,
-                        true,
-                      )
-                      .then(() => paint());
-                  },
-                },
-                packageIcon(p.id),
-                h(
-                  "span",
-                  { class: "pkg-copy" },
-                  h("span", { class: "pkg-name" }, chipText(p)),
-                  p.description ? h("small", { class: "pkg-description" }, p.description) : "",
-                  p.id === P.temperament ? levelBar(p) : "",
-                ),
-              ),
-            ),
-          );
-          if (offer.length)
-            secs.push(section(/* copy:label */ "personality", "temperament", personality));
-          else
-            secs.push(
-              section(
-                /* copy:label */ "personality",
-                "temperament",
-                h(
-                  "div",
-                  { class: "pkg-equipped" },
-                  worn(byId.get(P.temperament ?? ""), "temperament", 0),
-                  cards.length > 1 ? changeKind("temperament") : "",
-                ),
-                choices("temperament", personality),
-              ),
-            );
+        const personality = temperamentPanel(app, paint);
+        if (personality) {
+          personality.classList.add("pkg-sec");
+          personality.dataset.kind = "temperament";
+          secs.push(personality);
         }
         // drills and scars: `drill · Warlord` (one tap revokes, it stays revoked), `scarred ×3`
         const drills = P.drills ?? [];
@@ -1016,6 +970,10 @@ export function openPackages(
           deeper,
           more,
         );
+        if (focused)
+          [...body.querySelectorAll<HTMLElement>("[data-action]")]
+            .find((node) => node.dataset.action === focused)
+            ?.focus({ preventScroll: true });
       };
       const changed = (): void => {
         compare = false;
@@ -1043,7 +1001,9 @@ export function openPackages(
             ? body.querySelector<HTMLElement>(`.pkg-drill[data-boss="${focus.boss}"]`)
             : (body.querySelector<HTMLElement>(
                 `.pkg-slot .chip.pkg.on[data-pkg="${focusPkg!.id}"]`,
-              ) ?? body.querySelector<HTMLElement>(`.chip.pkg[data-pkg="${focusPkg!.id}"]`));
+              ) ??
+              body.querySelector<HTMLElement>(`.chip.pkg[data-pkg="${focusPkg!.id}"]`) ??
+              body.querySelector<HTMLElement>(`[data-temperament-choice="${focusPkg!.id}"]`));
           if (!at) return;
           at.classList.add("pkg-focus");
           body.dataset.focus = focus?.boss ?? focusPkg!.id;

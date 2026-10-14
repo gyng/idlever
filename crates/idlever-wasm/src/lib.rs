@@ -197,6 +197,10 @@ impl Game {
 
     /// Cut 13 §2: pick the new heir's trait from `Lineage.trait_offer` (before the first
     /// send; a send without a pick keeps the first); returns the Lineage.
+    #[wasm_bindgen(js_name=setInheritedTrait)]
+    pub fn set_inherited_trait(&mut self,name:&str)->Result<String,JsError>{self.inner.set_inherited_trait(name).map_err(err)?;Ok(js(&self.inner.lineage()))}
+    #[wasm_bindgen(js_name=setFamilyLean)]
+    pub fn set_family_lean(&mut self,when:&str)->Result<String,JsError>{self.inner.set_family_lean(when).map_err(err)?;Ok(js(&self.inner.lineage()))}
     #[wasm_bindgen(js_name = setTrait)]
     pub fn set_trait(&mut self, name: &str) -> Result<String, JsError> {
         self.inner.set_trait(name).map_err(err)?;
@@ -562,13 +566,6 @@ impl Game {
     #[wasm_bindgen(js_name = buyRation)]
     pub fn buy_ration(&mut self) -> Result<String, JsError> {
         self.inner.buy_ration().map_err(err)?;
-        Ok(js(&self.inner.lineage()))
-    }
-
-    /// Cut 118 §7: grant the hero's waiting wish (`Lineage.feats.wish`); returns the Lineage.
-    #[wasm_bindgen(js_name = grantWish)]
-    pub fn grant_wish(&mut self) -> Result<String, JsError> {
-        self.inner.grant_wish().map_err(err)?;
         Ok(js(&self.inner.lineage()))
     }
 

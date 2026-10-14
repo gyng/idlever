@@ -892,6 +892,8 @@ mod session_chore_tests {
         let mut g = Game::new_resident(7);
         g.lineage.gold = 2000; // Unit fixture only.
         g.lineage.banked_depths.insert(1);
+        // Controlled eligible plot for the reserve test, not an earned opening.
+        g.lineage.town.forge_eligible = true;
         g.build_town("blacksmith").unwrap();
         let original = g.clone();
         let before = idlever_core::tree::count(&g.lineage, "apprentice");
@@ -943,6 +945,15 @@ impl Play {
         let checkins = if ask.q(Q::Cadence) > 0 { 1 } else { checkins };
         let interval = 24 * 3600 / checkins;
         let mut g = Game::new_resident(seed);
+        // Explicit controlled causal experiment, never a player/gate protocol.
+        if std::env::var_os("DP_CAUSAL_START_FORGE").is_some() {
+            assert!(verbose, "causal setup requires verbose diagnostic/no caches");
+            g.lineage.town.forge_eligible = true;
+            g.build_town("blacksmith").expect("controlled initial Forge");
+            g.lineage.kennel_leash();
+            assert!(g.lineage.supplies.iter().any(|s| s.kind == "leash" && s.free), "controlled first shelf really contains free leash");
+            eprintln!("CONTROLLED initial built Forge/free leash: not earned pacing acceptance");
+        }
         if !ask.has("quests") {
             g.lineage.town.off = true;
         }
@@ -1481,7 +1492,7 @@ fn main() {
         Err(_) => bin_key,
     };
     // (`DP_STALLS` prunes the stall records it prints: a different game, never kept)
-    let keep = !verbose && std::env::var("DP_STALLS").is_err() && std::env::var("DP_OFF").is_err();
+    let keep = !verbose && std::env::var("DP_STALLS").is_err() && std::env::var("DP_OFF").is_err() && std::env::var_os("DP_CAUSAL_START_FORGE").is_none();
     let cache_dir = std::path::PathBuf::from("target/gates/dp");
     let _ = std::fs::create_dir_all(&cache_dir);
     let cache_of = |c: &Cfg, s: u64| cache_dir.join(format!("{bin_key}-{}-s{s}-d{days}-c{checkins}.json", c.label()));
@@ -1492,7 +1503,7 @@ fn main() {
     if resume { let _ = std::fs::create_dir_all(&checkpoint_dir); }
     let executable = std::fs::read(std::env::current_exe().expect("exe")).expect("checkpoint executable");
     let identity = format!("{:016x}", fnv(&executable, 0xcbf2_9ce4_8422_2325));
-    let env = ["IDLEVER_SKIP_TWIST", "IDLEVER_BALANCE_JSON", "DP_OFF", "DP_STALLS"].iter()
+    let env = ["IDLEVER_SKIP_TWIST", "IDLEVER_BALANCE_JSON", "DP_OFF", "DP_STALLS", "DP_CAUSAL_START_FORGE"].iter()
         .map(|k| format!("{k}={}", std::env::var(k).unwrap_or_default())).collect::<Vec<_>>().join("\n");
     let checkpoint_key = format!("{identity}:{:016x}", fnv(env.as_bytes(), fnv(serde_json::to_string(&a[1..]).unwrap().as_bytes(), 0xcbf2_9ce4_8422_2325)));
     let checkpoint_of = |c: &Cfg, s: u64| checkpoint_dir.join(format!("{checkpoint_key}-{}-s{s}.json", c.label()));
@@ -2209,23 +2220,29 @@ mod patch_consumer_tests {
     }
 
     #[test]
-    fn patch_consumer_purchase_failure_applies_nothing_and_success_carries_supply() {
+    fn patch_consumer_full_preparation_applies_nothing_and_free_success_carries_supply() {
         let mut g = game();
         g.set_rules(RuleSet { rows: vec![row(10), row(20)], ..Default::default() }).unwrap();
         let mut p = patch(Row::new(vec![Cond::n("hp<", 40)], Verb::arg("drink", "heal")), 1);
         g.lineage.facts.insert(idlever_core::item::ident_fact(&g.lineage.flavours, "heal").unwrap());
         p.buys = Some(PatchBuy { kind: "heal".into(), label: "heal".into(), price: 10 });
-        let before = g.lineage.rules().clone();
         g.lineage.gold = 0;
-        assert!(!take_patch(&mut g, &p));
-        assert_eq!(g.lineage.rules(), &before);
-        g.lineage.gold = 1000;
+        let mut full = g.clone();
+        for _ in 0..full.lineage.supply_cap() {
+            full.buy_supply("heal").unwrap();
+        }
+        let before = full.save();
+        assert!(!take_patch(&mut full, &p));
+        assert_eq!(full.save(), before, "full preparation rejects the entire patch atomically");
+        let ledger = g.lineage.gold_ledger.clone();
         assert!(take_patch(&mut g, &p));
         assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal"));
+        assert_eq!(g.lineage.gold, 0, "unlocked preparation ignores the historical paid quote");
+        assert_eq!(g.lineage.gold_ledger, ledger);
         assert_eq!(g.lineage.rules().rows[1].verb, p.row.verb);
-        let purse = g.lineage.gold;
+        let prepared = g.save();
         assert!(!take_patch(&mut g, &p));
-        assert_eq!(g.lineage.gold, purse, "already-written patch buys nothing twice");
+        assert_eq!(g.save(), prepared, "already-written patch buys nothing twice");
     }
 
     #[test]

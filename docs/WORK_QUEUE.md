@@ -48,6 +48,12 @@ see HANDOFF.md for exact package identities and remaining pacing limits.
 
 ## Main fun — latest owner direction
 
+Hero configuration direction is recorded in [CUT220_HERO_HUB.md](CUT220_HERO_HUB.md):
+one hero folio for gear, skills, behaviour, companions and lasting attributes.
+The paper doll is not implemented. [CUT222_WISH_RETIREMENT.md](CUT222_WISH_RETIREMENT.md)
+records the source-audited recurring wish removal; implementation and balance
+acceptance remain pending. Cut219 survivor progression is being implemented first.
+
 The main fun should be **trying builds and seeing how far they get**. Gear,
 class branches, Legacy, tactics and pets should create distinct combinations
 that the player can prepare, run, inspect and revise. Automatic loot settlement
@@ -290,6 +296,14 @@ Petmaster is a possible specialist class; ordinary pets need not be gated
 behind selecting it. Decide pet persistence, party capacity, permanent-unlock
 costs and loss rules explicitly, while keeping unlocked item use free and
 avoiding another upkeep loop.
+
+[Cut225](CUT225_CLOWN_ENGINEER.md) records the read-only class-content audit.
+The larger cumulative-tree request also applies to all five existing classes.
+Its proposed extension preserves the current 30 nodes, adds 30 interaction
+nodes for three/four-tier branches, and stages four extra choices after D23.
+This remains open content work; deeper Clown/Engineer trees alone do not close
+it. Existing-tree extension and new-class delivery may use separate evidence
+phases while both stay in scope.
 
 Clown and Engineer are requested new classes. Their mechanics above are
 candidate directions, not chosen abilities or completed content. Concept work

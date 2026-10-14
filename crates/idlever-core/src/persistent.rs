@@ -11,6 +11,10 @@ pub const REBIRTH_SECONDS: u64 = 3600;
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 pub struct State {
+    #[serde(default)]
+    pub exit_gold_credit:bool,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub queued_temperament:Option<String>,
     pub name: String,
     pub rebirths: u32,
     pub completed: u32,
@@ -43,6 +47,7 @@ pub struct Rebirth {
 }
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Hero {
+    pub progression:crate::progression::BuildProgression,
     pub id: String,
     pub name: String,
     pub incarnation: u32,
@@ -146,9 +151,10 @@ pub fn refit_build(g: &mut Game, class_changed: bool) {
         sent.lineage.starting_config = l.starting_config.clone();
         sent.lineage.starting_selected = l.starting_selected.clone();
     }
+    crate::progression::prepared_traits(g);
     sync_preparation(g);
 }
-fn sync_preparation(g: &mut Game) {
+pub(crate) fn sync_preparation(g: &mut Game) {
     if away(g) {
         return;
     }
@@ -195,7 +201,7 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
         Some("Finish recovery".into())
     } else if legacy::deepest(l) < 8 {
         Some("Reach D8".into())
-    } else if allocation.upgrades.is_empty() {
+    } else if allocation.upgrades.is_empty() && l.heirs.blood.is_none() && l.heirs.bloodline.is_none() {
         Some("No attribute commitments".into())
     } else if delves_remaining > 0 {
         Some(format!("Complete {delves_remaining} more delves"))
@@ -207,7 +213,7 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
         None
     };
     // Bind confirmation to identity and every relevant current commitment/counter.
-    let basis = serde_json::to_string(&(l.seed, l.bloodline_id, l.heir, p, &allocation, away))
+    let basis = serde_json::to_string(&(l.seed, l.bloodline_id, l.heir, p, &allocation, &l.heirs, away))
         .expect("rebirth preview");
     Rebirth {
         available: blocked.is_none(),
@@ -221,12 +227,13 @@ pub fn preview(l: &LineageState, away: bool) -> Rebirth {
         resets: vec![
             "Legacy attributes and branches".into(),
             "Current incarnation's deeds".into(),
+            "Lasting traits and family lean".into(),
         ],
         retains: vec![
             "Name and identity".into(),
             "Refunded Legacy".into(),
             "Class XP and learned skills".into(),
-            "Traits and temperament".into(),
+            "Temperament".into(),
             "Kits and discoveries".into(),
             "Town, Gold and dungeon progress".into(),
             "Companion ownership".into(),
@@ -261,6 +268,7 @@ pub fn wire(l: &LineageState, away: bool) -> Hero {
         body: body.into(),
     };
     Hero {
+        progression:crate::progression::wire(l),
         id: format!("{}:{}", l.seed, l.bloodline_id),
         name: name(l),
         incarnation: 1u32
@@ -343,6 +351,7 @@ pub fn rename(g: &mut Game, new_name: &str) -> Result<(), String> {
     if let Some(r) = g.run.as_mut() {
         r.hero_name = n.into();
     }
+    crate::progression::prepared_traits(g);
     sync_preparation(g);
     Ok(())
 }
@@ -366,6 +375,7 @@ pub fn rebirth(g: &mut Game, token: &str) -> Result<(), String> {
     l.persistent.rebirths += 1;
     l.persistent.last_rebirth_completed = l.persistent.completed;
     l.persistent.last_rebirth_s = l.clock_s;
+    l.heirs.blood=None;l.heirs.bloodline=None;l.heirs.cut=false;
     l.new_heir();
     recover(l);
     // Keep an unbegun paid preparation. A rebuild could repeat tolls/supply ownership.
@@ -378,6 +388,7 @@ pub fn rebirth(g: &mut Game, token: &str) -> Result<(), String> {
         sent.lineage.heir = g.lineage.heir;
         sent.lineage.persistent = g.lineage.persistent.clone();
     }
+    crate::progression::prepared_traits(g);
     sync_preparation(g);
     Ok(())
 }

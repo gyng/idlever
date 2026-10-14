@@ -1,0 +1,15 @@
+client suite: targeted (1 selected; 154 current full; 196 exhaustive groups)
+FAIL cut118b:death,sinks,core 14.3s (13.0s)  cut118b: FAIL (0 assertion(s), 1 error(s))
+     walk aborted: page.evaluate: TypeError: Cannot read properties of undefined (reading 'available')
+     cut118b: FAIL (0 assertion(s), 1 error(s))
+         at http://localhost:37757/src/render/town.ts:485:43
+         at Array.filter (<anonymous>)
+         at townState (http://localhost:37757/src/render/town.ts:485:5)
+         at paint (http://localhost:37757/src/ui/town.ts:286:11)
+         at renderTown (http://localhost:37757/src/ui/town.ts:891:2)
+         at renderCamp (http://localhost:37757/src/ui/camp.ts:405:15)
+         at App.go (http://localhost:37757/src/app.ts:1654:9)
+         at eval (eval at evaluate (:311:30), <anonymous>:58:9)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+FAIL: 0/1 client gates in 14.3s

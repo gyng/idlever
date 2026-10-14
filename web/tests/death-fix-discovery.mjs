@@ -123,11 +123,12 @@ try {
     }
     check(result.calls === 1, "one shared pricing request");
     check(
-      result.buys === "silence" && result.label.includes("$39") && result.fixFirst,
-      "paid silence fix visibly precedes neutral TRY",
+      // Cut191: unlocked supplies are free to prepare, so the scroll fix is priced $0 by Rust.
+      result.buys === "silence" && result.label.includes("$0") && result.fixFirst,
+      "free silence fix visibly precedes neutral TRY",
     );
     check(
-      result.fixPrice?.past_to === 0.85 && result.pickPrice?.past_to === 0,
+      result.fixPrice?.past_to === 0.875 && result.pickPrice?.past_to === 0,
       "exact Rust wall prices",
     );
     check(JSON.stringify(result.state) === JSON.stringify(before), "no game mutation");
@@ -141,7 +142,7 @@ try {
     await page.close();
     console.log(
       width,
-      "13 comparison boundaries / actual paid fix ordering / prices / no mutation PASS",
+      "13 comparison boundaries / actual free fix ordering / prices / no mutation PASS",
     );
   }
 } finally {

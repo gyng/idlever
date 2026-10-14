@@ -1,0 +1,39 @@
+{
+  "scope": "Required original16-seed targeted row plan PASS by unchanged fail-fast bounds; not complete paired16 survey/full routine gate.",
+  "log_sha256": "dc2f72e7e11ef0bdbbec7ce915c1c7111d5a6c61c86a44cebdf7572dc3d0ea5e",
+  "picked-idle": {
+    "status": "PASS",
+    "paired_evaluated_when_settled": 14,
+    "remaining": 2,
+    "median_ratio_bounds": {
+      "D13": [
+        1.5,
+        2.0
+      ],
+      "D18": [
+        2.08,
+        2.5
+      ],
+      "D23": [
+        3.58,
+        4.29
+      ]
+    },
+    "required": 1.5
+  },
+  "outpace": {
+    "status": "PASS",
+    "observed_good_pairs": 105,
+    "observed_pairs": 105,
+    "remaining_seeds": 1,
+    "bounds_percent": [
+      94,
+      100
+    ],
+    "required_percent": 90
+  },
+  "idle-king": {
+    "status": "PASS",
+    "evaluated": 16
+  }
+}

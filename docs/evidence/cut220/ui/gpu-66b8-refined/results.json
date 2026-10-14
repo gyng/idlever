@@ -1,0 +1,176 @@
+{
+  "result": "PASS",
+  "renderer": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "records": [
+    {
+      "width": 400,
+      "section": "gear",
+      "entry": "earned-ready",
+      "input": {
+        "bytes": 152990,
+        "sha256": "c50d5d711d565a43afdf6912497dea35b48ec4cb39be268c30db9ea029ada329"
+      },
+      "prefix": "400-gear",
+      "readOnly": true
+    },
+    {
+      "width": 1440,
+      "section": "gear",
+      "entry": "earned-ready",
+      "input": {
+        "bytes": 152990,
+        "sha256": "c50d5d711d565a43afdf6912497dea35b48ec4cb39be268c30db9ea029ada329"
+      },
+      "prefix": "1440-gear",
+      "readOnly": true
+    },
+    {
+      "width": 1440,
+      "section": "skills",
+      "entry": "earned-delving-queued",
+      "input": {
+        "bytes": 170521,
+        "sha256": "c809b90dee6ab95e5c6222690e12b5a8205610d2832caec54625ac92d5a1599b"
+      },
+      "prefix": "1440-skills",
+      "readOnly": true
+    },
+    {
+      "width": 1440,
+      "section": "attributes",
+      "entry": "earned-ready",
+      "input": {
+        "bytes": 152990,
+        "sha256": "c50d5d711d565a43afdf6912497dea35b48ec4cb39be268c30db9ea029ada329"
+      },
+      "prefix": "1440-attributes",
+      "readOnly": true
+    },
+    {
+      "derivation": {
+        "actual": "skittish",
+        "next": "unbowed",
+        "gold": 12021,
+        "frozenActorEqual": true,
+        "method": "Public App.mutate/Engine.pickTemperament while genuinely away"
+      }
+    },
+    {
+      "width": 400,
+      "section": "behaviour",
+      "entry": "earned-delving-queued",
+      "input": {
+        "bytes": 170521,
+        "sha256": "c809b90dee6ab95e5c6222690e12b5a8205610d2832caec54625ac92d5a1599b"
+      },
+      "prefix": "400-behaviour",
+      "readOnly": true
+    },
+    {
+      "width": 400,
+      "entry": "earned-ready",
+      "section": "gear",
+      "missingArt": true,
+      "reducedMotion": true,
+      "motion": {
+        "scroll": "auto",
+        "animations": []
+      },
+      "readOnly": true
+    }
+  ],
+  "deliveries": [
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  ],
+  "source": {
+    "src/ui/hero-hub.ts": {
+      "bytes": 78741,
+      "sha256": "5325fc01cb53e8721b85ff80305f2ec6e30d3fe6fa4801dff4daba1c07f07d3f"
+    },
+    "src/hero-hub.css": {
+      "bytes": 6601,
+      "sha256": "2fb8376ab44f44ae3c4166ad8971b971aad5d20f8534b25e9ba5884b4807db7b"
+    },
+    "src/ui/town.ts": {
+      "bytes": 149626,
+      "sha256": "60e18ce6049dc3522578b0e80412bcb03d99a2fe746e238498639a0f609da35a"
+    },
+    "src/ui/camp.ts": {
+      "bytes": 289239,
+      "sha256": "a0b5c9c65fa541a460e3bf078b42d5268ac1922138b04bc5e01e4e4827a87795"
+    },
+    "src/ui/hero-progression.ts": {
+      "bytes": 30013,
+      "sha256": "ae4df53d1c59d82e5da032810ea646e68905f3ce4241394e0e5c960b3b8b540b"
+    },
+    "src/ui/class-tree.ts": {
+      "bytes": 28523,
+      "sha256": "d7590f0c6d25a50b6cfbb85e3f1e2299b37eb0e42d83a28ea49f5db765fba673"
+    },
+    "src/ui/class-styles.ts": {
+      "bytes": 18373,
+      "sha256": "93d2b948e79587daf0f12f8a1d652e44407a32822363ddafbb00b00813a1686c"
+    },
+    "src/ui/party.ts": {
+      "bytes": 44999,
+      "sha256": "7ffb4de9b2b92265a0b3935fbdd6d639a40d581e5446785e77d98d62baf097e1"
+    },
+    "src/ui/hero-life.ts": {
+      "bytes": 52805,
+      "sha256": "da74354cadc155dab06d1945c512bbec855ea24c627c93cea488d280a2347031"
+    },
+    "src/app.ts": {
+      "bytes": 296030,
+      "sha256": "1200cf7b4fe921605f29880a0ff74ec1e5789af2947e86ad779f11e91fbb31c4"
+    },
+    "src/ui/frame.ts": {
+      "bytes": 78963,
+      "sha256": "8713e5b8a21f930795f9fe3269a273d01eaa3466e0bb15386ef75e8e65ddbc7c"
+    },
+    "src/ui/gold-transfers.ts": {
+      "bytes": 27608,
+      "sha256": "ec933fbaf78cc8a096c3b9a40784bd739d36712b6b1431d24bc1dc6f1dd0bd2d"
+    },
+    "src/render/town.ts": {
+      "bytes": 387110,
+      "sha256": "d07e4657800cd8835392d311727e1f839fda2639989a571833bdec8363b650f3"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  },
+  "errors": [],
+  "performanceClaim": false
+}

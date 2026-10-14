@@ -33,11 +33,11 @@ const tierWord = (x: ExitLine): RegExp => {
 };
 const isExit = (g: GoldLine): boolean =>
   /^(returned|banked|died|lost|stalled|driven)\b/.test(g.why);
-/** An exit's tail: its salvage and a death's wake pay, at the exit's tick (a supply bought in camp at that tick is the next run's). */
+/** An exit's tail includes its pet fetch, historical salvage and wake pay. */
 const isTail = (g: GoldLine, exit: GoldLine): boolean =>
   g.t === exit.t &&
   (g.bloodline_id || 1) === (exit.bloodline_id || 1) &&
-  /^(salvage|wake pay)\b/.test(g.why);
+  /^(salvage|wake pay|fetched by)\b/.test(g.why);
 
 /** The ledger index range `[from, to]` of the run that ended with `x`; `skip` = how many newer matching exits to pass over
  *  (the report's i-th exit from the end). Undefined when the ledger no longer holds the exit. */

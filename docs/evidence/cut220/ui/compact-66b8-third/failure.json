@@ -1,0 +1,2917 @@
+{
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: Expected \"actual\" to be strictly unequal to:\n\n'none'\n    at interactionStates (file:///home/g/p/riddle/web/tests/hero-hub.mjs:444:12)\n    at async file:///home/g/p/riddle/web/tests/hero-hub.mjs:607:5",
+  "wasmScope": {
+    "mode": "frozen-acceptance-manifest",
+    "fixtureManifest": {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    "local": {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    "expected": {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  },
+  "inputs": {
+    "docs/evidence/cut220/core/fixtures/earned-delving-queued.game.json.gz": {
+      "bytes": 170521,
+      "sha256": "c809b90dee6ab95e5c6222690e12b5a8205610d2832caec54625ac92d5a1599b"
+    }
+  },
+  "deliveries": [
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  ],
+  "records": [
+    {
+      "entry": "earned-delving-queued",
+      "diagnostic": "lineage-read-cost",
+      "samples": [
+        4.5,
+        5.800000000745058,
+        6.100000001490116,
+        7.400000002235174,
+        5,
+        5.699999999254942,
+        7.699999999254942,
+        6.300000000745058,
+        6.199999999254942,
+        9.199999999254942,
+        8.100000001490116,
+        6.800000000745058,
+        7,
+        6.5,
+        4.599999997764826,
+        5.199999999254942,
+        4.400000002235174,
+        68.30000000074506,
+        5.5,
+        4.199999999254942,
+        4.399999998509884,
+        4.100000001490116,
+        3.699999999254942,
+        5,
+        4.300000000745058,
+        4.899999998509884,
+        5,
+        3.900000002235174,
+        6.299999997019768,
+        4.5,
+        4.100000001490116,
+        4.699999999254942,
+        4.800000000745058,
+        4.699999999254942,
+        8.300000000745058,
+        7.5,
+        12.199999999254942,
+        6.900000002235174,
+        5.899999998509884,
+        5.800000000745058,
+        7.099999997764826,
+        6.300000000745058,
+        5.099999997764826,
+        5.300000000745058,
+        5.100000001490116,
+        5.5,
+        5.199999999254942,
+        7.899999998509884,
+        7.900000002235174,
+        6.599999997764826
+      ],
+      "reads": 50,
+      "warmup": 5,
+      "includes": "WASM bridge and JSON read",
+      "gold": 12021,
+      "saveEqual": true,
+      "budget": null
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 1,
+      "section": "behaviour",
+      "readOnly": true,
+      "geometry": {
+        "width": 205,
+        "scrollWidth": 205,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Tactics",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Orders",
+            "w": 204.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "skittishRetreat when hurt and surrounded",
+            "w": 176.8125,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "unbowedFace bosses while healthy",
+            "w": 176.8125,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "light handsCollect loot after kills",
+            "w": 176.8125,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "iron gutTry unknown potions while healthy",
+            "w": 176.8125,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "None",
+            "w": 176.8125,
+            "h": 44,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 2,
+      "section": "companions",
+      "readOnly": true,
+      "geometry": {
+        "width": 205,
+        "scrollWidth": 205,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 156.8125,
+            "h": 104.78125,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 147.90625,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 156.8125,
+            "h": 104.78125,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 204.8125,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 204.8125,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 204.8125,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 204.8125,
+            "h": 104.78125,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 204.8125,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "fetcherGreth L3old hound5/5 hp · 2/4 rows",
+            "w": 52.8125,
+            "h": 837.859375,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 837.859375,
+            "disabled": false
+          },
+          {
+            "text": "×",
+            "w": 44,
+            "h": 837.859375,
+            "disabled": false
+          },
+          {
+            "text": "guardZelul L2old hound9/9 hp · 2/3 rows",
+            "w": 52.8125,
+            "h": 815.859375,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 815.859375,
+            "disabled": false
+          },
+          {
+            "text": "×",
+            "w": 44,
+            "h": 815.859375,
+            "disabled": false
+          },
+          {
+            "text": "menderThix L11 heirgas6/6 hp · 2/2 rows",
+            "w": 100.8125,
+            "h": 347.953125,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 347.953125,
+            "disabled": false
+          },
+          {
+            "text": "scoutSkul L11 heiralarm18/18 hp · 2/2 rows",
+            "w": 100.8125,
+            "h": 429.140625,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 429.140625,
+            "disabled": false
+          },
+          {
+            "text": "scoutMoreth L11 heirundead · drain16/16 hp · 2/2 rows",
+            "w": 100.8125,
+            "h": 571.71875,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 571.71875,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 1,
+      "section": "gear",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "WeaponActualswordequippedNext delveswordclass",
+            "w": 252,
+            "h": 201.09375,
+            "disabled": false
+          },
+          {
+            "text": "HelmActualNoneemptyNext delveNonepin",
+            "w": 252,
+            "h": 201.09375,
+            "disabled": false
+          },
+          {
+            "text": "BodyActualHearthglassequippedNext delveHearthglassfollow",
+            "w": 252,
+            "h": 201.09375,
+            "disabled": false
+          },
+          {
+            "text": "BootsActualHearthglass BootsequippedNext delveHearthglass Bootsfollow",
+            "w": 252,
+            "h": 201.09375,
+            "disabled": false
+          },
+          {
+            "text": "Gear effects",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Stop following",
+            "w": 252,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Find piece",
+            "w": 252,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Current gear",
+            "w": 252,
+            "h": 44
+          },
+          {
+            "text": "Next gear",
+            "w": 252,
+            "h": 44
+          },
+          {
+            "text": "Weapon",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Class default",
+            "w": 119.5625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "dagger",
+            "w": 112.703125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "sword",
+            "w": 105.34375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "axe",
+            "w": 88.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "bow",
+            "w": 91.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Crownsplitter",
+            "w": 156.15625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "spear",
+            "w": 103.34375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "mace",
+            "w": 101,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Helm",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Class default",
+            "w": 119.5625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Empty",
+            "w": 72.75,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Unpin empty",
+            "w": 115.859375,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Ironcap",
+            "w": 116.046875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass Hood",
+            "w": 184.203125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Body",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Class default",
+            "w": 119.5625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Bare",
+            "w": 64.40625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Pin empty",
+            "w": 98.15625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "leather",
+            "w": 114.046875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "mail",
+            "w": 94,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "plate",
+            "w": 99.34375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass",
+            "w": 146.453125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Frostmantle",
+            "w": 146.453125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "scale",
+            "w": 100.34375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Boots",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Class default",
+            "w": 119.5625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Empty",
+            "w": 72.75,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Pin empty",
+            "w": 98.15625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Trailboots",
+            "w": 133.09375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass Boots",
+            "w": 188.546875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 53.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Use",
+            "w": 57.0625,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Delete",
+            "w": 76.109375,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "",
+            "w": 185,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Save kit",
+            "w": 85.8125,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Use defaults",
+            "w": 116.203125,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Reuse on",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "leashFree",
+            "w": 121.15625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "daggerFree",
+            "w": 132.515625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "swordFree",
+            "w": 125.15625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "axeFree",
+            "w": 108.46875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "bowFree",
+            "w": 111.46875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "leatherFree",
+            "w": 133.859375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "mailFree",
+            "w": 113.8125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "plateFree",
+            "w": 119.15625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "heal potionFree",
+            "w": 160.265625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "strength potionFree",
+            "w": 188.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "speed potionFree",
+            "w": 171.609375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "invisibility potionFree",
+            "w": 201.0625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "poison potionFree",
+            "w": 175.96875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "caustic potionFree",
+            "w": 179.3125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "confusion potionFree",
+            "w": 197.015625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "fire potionFree",
+            "w": 155.265625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "teleport scrollFree",
+            "w": 180.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "blink scrollFree",
+            "w": 159.609375,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "fear scrollFree",
+            "w": 154.265625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "mapping scrollFree",
+            "w": 184.3125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "identify scrollFree",
+            "w": 177.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "enchant scrollFree",
+            "w": 180.3125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "darkness scrollFree",
+            "w": 188.65625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "summon ally scrollFree",
+            "w": 210.71875,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "aggravate scrollFree",
+            "w": 195.015625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "scaleFree",
+            "w": 120.15625,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "silence scrollFree",
+            "w": 174.3125,
+            "h": 46,
+            "disabled": true
+          },
+          {
+            "text": "mirror scrollFree",
+            "w": 169.96875,
+            "h": 46,
+            "disabled": true
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 1,
+      "section": "skills",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Change class",
+            "w": 280,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Learn skill",
+            "w": 98,
+            "h": 68,
+            "disabled": true
+          },
+          {
+            "text": "Learn skill",
+            "w": 98,
+            "h": 68,
+            "disabled": true
+          },
+          {
+            "text": "Full tree",
+            "w": 252,
+            "h": 44
+          },
+          {
+            "text": "Sentinel",
+            "w": 61,
+            "h": 44
+          },
+          {
+            "text": "Choose path",
+            "w": 147.40625,
+            "h": 56,
+            "disabled": true
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 1,
+      "section": "behaviour",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Tactics",
+            "w": 280,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Orders",
+            "w": 280,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "skittishRetreat when hurt and surrounded",
+            "w": 252,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "unbowedFace bosses while healthy",
+            "w": 252,
+            "h": 130.484375,
+            "disabled": false
+          },
+          {
+            "text": "light handsCollect loot after kills",
+            "w": 252,
+            "h": 130.484375,
+            "disabled": false
+          },
+          {
+            "text": "iron gutTry unknown potions while healthy",
+            "w": 252,
+            "h": 150.78125,
+            "disabled": false
+          },
+          {
+            "text": "None",
+            "w": 252,
+            "h": 44,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 1,
+      "section": "companions",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "fetcherGreth L3old hound5/5 hp · 2/4 rows",
+            "w": 128,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "×",
+            "w": 44,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "guardZelul L2old hound9/9 hp · 2/3 rows",
+            "w": 128,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "×",
+            "w": 44,
+            "h": 135.78125,
+            "disabled": false
+          },
+          {
+            "text": "menderThix L11 heirgas6/6 hp · 2/2 rows",
+            "w": 176,
+            "h": 114.984375,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 114.984375,
+            "disabled": false
+          },
+          {
+            "text": "scoutSkul L11 heiralarm18/18 hp · 2/2 rows",
+            "w": 176,
+            "h": 114.984375,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 114.984375,
+            "disabled": false
+          },
+          {
+            "text": "scoutMoreth L11 heirundead · drain16/16 hp · 2/2 rows",
+            "w": 176,
+            "h": 114.984375,
+            "disabled": false
+          },
+          {
+            "text": "≡",
+            "w": 44,
+            "h": 114.984375,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 1,
+      "section": "attributes",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 112.5,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 136,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "w": 252,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Rename",
+            "w": 87.109375,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 224,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 224,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 224,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Loadouts",
+            "w": 93.8125,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Class",
+            "w": 67.75,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Legacy",
+            "w": 79.109375,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Review",
+            "w": 80.109375,
+            "h": 44,
+            "disabled": false
+          },
+          {
+            "text": "Vitality",
+            "w": 50,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 113.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Restoration",
+            "w": 81,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 115.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Mending",
+            "w": 60,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Renewal",
+            "w": 61,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Strength",
+            "w": 62,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 113.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Control",
+            "w": 53,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 115.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Venom",
+            "w": 49,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Debilitate",
+            "w": 61.796875,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Guard",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 113.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 44
+          },
+          {
+            "text": "Clear lungs",
+            "w": 82,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 115.859375,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Fireward",
+            "w": 61.796875,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Brace",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 124.203125,
+            "h": 62.484375,
+            "disabled": true
+          },
+          {
+            "text": "Rebirth",
+            "w": 82.453125,
+            "h": 44,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 2,
+      "section": "attributes",
+      "readOnly": true,
+      "geometry": {
+        "width": 280,
+        "scrollWidth": 280,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 203,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 147.90625,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 169.609375,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 280,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 280,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 280,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 280,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 280,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "w": 228,
+            "h": 84,
+            "disabled": true
+          },
+          {
+            "text": "Rename",
+            "w": 154.203125,
+            "h": 68.390625,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 176,
+            "h": 68.390625,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 176,
+            "h": 68.390625,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 176,
+            "h": 68.390625,
+            "disabled": true
+          },
+          {
+            "text": "Loadouts",
+            "w": 170.609375,
+            "h": 68.390625,
+            "disabled": false
+          },
+          {
+            "text": "Class",
+            "w": 116.5,
+            "h": 68.390625,
+            "disabled": false
+          },
+          {
+            "text": "Legacy",
+            "w": 136.203125,
+            "h": 68.390625,
+            "disabled": false
+          },
+          {
+            "text": "Review",
+            "w": 142.203125,
+            "h": 68.390625,
+            "disabled": false
+          },
+          {
+            "text": "Vitality",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 211.703125,
+            "h": 108.984375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 88
+          },
+          {
+            "text": "Restoration",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 212,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Mending",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Renewal",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Strength",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 211.703125,
+            "h": 108.984375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 88
+          },
+          {
+            "text": "Control",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 212,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Venom",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Debilitate",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Guard",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 211.703125,
+            "h": 108.984375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 280,
+            "h": 88
+          },
+          {
+            "text": "Clear lungs",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 212,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Fireward",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Brace",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 186,
+            "h": 145.375,
+            "disabled": true
+          },
+          {
+            "text": "Rebirth",
+            "w": 147.90625,
+            "h": 88,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 1,
+      "section": "attributes",
+      "readOnly": true,
+      "geometry": {
+        "width": 836,
+        "scrollWidth": 836,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 123,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 89.8125,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 102.203125,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 160.796875,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 160.796875,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 160.796875,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 160.796875,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 160.8125,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "",
+            "w": 288,
+            "h": 47,
+            "disabled": true
+          },
+          {
+            "text": "Rename",
+            "w": 94.40625,
+            "h": 47,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 233.328125,
+            "h": 44.796875,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 233.328125,
+            "h": 44.796875,
+            "disabled": true
+          },
+          {
+            "text": "Train",
+            "w": 233.34375,
+            "h": 44.796875,
+            "disabled": true
+          },
+          {
+            "text": "Loadouts",
+            "w": 103.203125,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Class",
+            "w": 73,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Legacy",
+            "w": 85.40625,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Review",
+            "w": 87.40625,
+            "h": 44.796875,
+            "disabled": false
+          },
+          {
+            "text": "Vitality",
+            "w": 50,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 125.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 269.328125,
+            "h": 44.796875
+          },
+          {
+            "text": "Restoration",
+            "w": 81,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 127.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Mending",
+            "w": 60,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Renewal",
+            "w": 61,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Strength",
+            "w": 62,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 125.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 269.328125,
+            "h": 44.796875
+          },
+          {
+            "text": "Control",
+            "w": 53,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 127.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Venom",
+            "w": 49,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Debilitate",
+            "w": 70,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Guard",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 110Legacy",
+            "w": 125.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "More upgrades",
+            "w": 269.34375,
+            "h": 44.796875
+          },
+          {
+            "text": "Clear lungs",
+            "w": 82,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 700Legacy",
+            "w": 127.40625,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Fireward",
+            "w": 62,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Brace",
+            "w": 44,
+            "h": 44
+          },
+          {
+            "text": "Upgrade 1800Legacy",
+            "w": 136.8125,
+            "h": 65.09375,
+            "disabled": true
+          },
+          {
+            "text": "Rebirth",
+            "w": 89.8125,
+            "h": 44.796875,
+            "disabled": false
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 2,
+      "section": "gear",
+      "readOnly": true,
+      "geometry": {
+        "width": 836,
+        "scrollWidth": 836,
+        "targets": [
+          {
+            "text": "Appearance",
+            "w": 230,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Run log",
+            "w": 163.609375,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Rook Ash",
+            "w": 190.40625,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Gear",
+            "w": 268,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Skills",
+            "w": 268,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Behaviour",
+            "w": 268,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Companions",
+            "w": 268,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "Attributes",
+            "w": 268,
+            "h": 88,
+            "disabled": false
+          },
+          {
+            "text": "WeaponActualswordequippedNext delveswordclass",
+            "w": 245.328125,
+            "h": 389.5,
+            "disabled": false
+          },
+          {
+            "text": "HelmActualNoneemptyNext delveNonepin",
+            "w": 245.328125,
+            "h": 389.5,
+            "disabled": false
+          },
+          {
+            "text": "BodyActualHearthglassequippedNext delveHearthglassfollow",
+            "w": 245.328125,
+            "h": 389.5,
+            "disabled": false
+          },
+          {
+            "text": "BootsActualHearthglass BootsequippedNext delveHearthglass Bootsfollow",
+            "w": 245.328125,
+            "h": 470.6875,
+            "disabled": false
+          },
+          {
+            "text": "Gear effects",
+            "w": 836,
+            "h": 88
+          },
+          {
+            "text": "Stop following",
+            "w": 784,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Find piece",
+            "w": 784,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Current gear",
+            "w": 784,
+            "h": 88
+          },
+          {
+            "text": "Next gear",
+            "w": 784,
+            "h": 88
+          },
+          {
+            "text": "Weapon",
+            "w": 836,
+            "h": 88
+          },
+          {
+            "text": "Class default",
+            "w": 245.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "dagger",
+            "w": 193.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "sword",
+            "w": 180.796875,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "axe",
+            "w": 142.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "bow",
+            "w": 152.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Crownsplitter",
+            "w": 296.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "spear",
+            "w": 174.796875,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "mace",
+            "w": 168,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Helm",
+            "w": 836,
+            "h": 88
+          },
+          {
+            "text": "Class default",
+            "w": 245.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Empty",
+            "w": 143,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Unpin empty",
+            "w": 243.8125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Ironcap",
+            "w": 204.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass Hood",
+            "w": 361.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Body",
+            "w": 836,
+            "h": 88
+          },
+          {
+            "text": "Class default",
+            "w": 245.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Bare",
+            "w": 119.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin empty",
+            "w": 202.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "leather",
+            "w": 200.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "mail",
+            "w": 154,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "plate",
+            "w": 166.796875,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass",
+            "w": 271.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Frostmantle",
+            "w": 272.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "scale",
+            "w": 166.796875,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Boots",
+            "w": 836,
+            "h": 88
+          },
+          {
+            "text": "Class default",
+            "w": 245.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Empty",
+            "w": 143,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin empty",
+            "w": 202.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Trailboots",
+            "w": 243.796875,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Hearthglass Boots",
+            "w": 369.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Pin",
+            "w": 97.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Use",
+            "w": 104.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Delete",
+            "w": 147.8125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "",
+            "w": 185,
+            "h": 44,
+            "disabled": true
+          },
+          {
+            "text": "Save kit",
+            "w": 170.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Use defaults",
+            "w": 238.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "Reuse on",
+            "w": 189.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "leashFree",
+            "w": 209.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "daggerFree",
+            "w": 232.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "swordFree",
+            "w": 219.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "axeFree",
+            "w": 180.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "bowFree",
+            "w": 190.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "leatherFree",
+            "w": 238.8125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "mailFree",
+            "w": 192.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "plateFree",
+            "w": 205.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "heal potionFree",
+            "w": 304.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "strength potionFree",
+            "w": 367.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "speed potionFree",
+            "w": 329.8125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "invisibility potionFree",
+            "w": 397.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "poison potionFree",
+            "w": 341.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "caustic potionFree",
+            "w": 344.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "confusion potionFree",
+            "w": 387.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "fire potionFree",
+            "w": 290.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "teleport scrollFree",
+            "w": 344.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "blink scrollFree",
+            "w": 295.8125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "fear scrollFree",
+            "w": 282.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "mapping scrollFree",
+            "w": 352.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "identify scrollFree",
+            "w": 338.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "enchant scrollFree",
+            "w": 344.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "darkness scrollFree",
+            "w": 359.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "summon ally scrollFree",
+            "w": 412.609375,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "aggravate scrollFree",
+            "w": 370.015625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "scaleFree",
+            "w": 205.203125,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "silence scrollFree",
+            "w": 326.40625,
+            "h": 88,
+            "disabled": true
+          },
+          {
+            "text": "mirror scrollFree",
+            "w": 316.609375,
+            "h": 88,
+            "disabled": true
+          }
+        ]
+      }
+    },
+    {
+      "entry": "earned-delving-queued",
+      "functional": "actual-pets-vs-next-pet-choice",
+      "actual": [
+        {
+          "id": 1000900,
+          "kind": "rat",
+          "name": "Greth",
+          "level": 3,
+          "tags": [],
+          "gen": 0,
+          "rules": {
+            "rows": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "attack"
+                }
+              },
+              {
+                "conds": [
+                  {
+                    "k": "self_hp<",
+                    "n": 25
+                  }
+                ],
+                "verb": {
+                  "v": "follow"
+                }
+              }
+            ]
+          },
+          "max_rows": 4,
+          "hp": 13,
+          "max_hp": 13,
+          "life": {
+            "role": "fetcher",
+            "xp": 1500,
+            "heirs": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "runs": 124,
+            "announced": [
+              3
+            ]
+          }
+        },
+        {
+          "id": 1009000,
+          "kind": "goblin",
+          "name": "Zelul",
+          "level": 2,
+          "tags": [],
+          "gen": 0,
+          "rules": {
+            "rows": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "attack"
+                }
+              },
+              {
+                "conds": [
+                  {
+                    "k": "self_hp<",
+                    "n": 25
+                  }
+                ],
+                "verb": {
+                  "v": "follow"
+                }
+              }
+            ]
+          },
+          "max_rows": 3,
+          "hp": 13,
+          "max_hp": 13,
+          "life": {
+            "role": "guard",
+            "xp": 835,
+            "heirs": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "runs": 43
+          }
+        }
+      ],
+      "next": [
+        {
+          "id": 1009000,
+          "kind": "goblin",
+          "name": "Zelul",
+          "level": 2,
+          "tags": [],
+          "gen": 0,
+          "rules": {
+            "rows": [
+              {
+                "conds": [
+                  {
+                    "k": "adj>=",
+                    "n": 1
+                  }
+                ],
+                "verb": {
+                  "v": "attack"
+                }
+              },
+              {
+                "conds": [
+                  {
+                    "k": "self_hp<",
+                    "n": 25
+                  }
+                ],
+                "verb": {
+                  "v": "follow"
+                }
+              }
+            ]
+          },
+          "max_rows": 3,
+          "hp": 9,
+          "max_hp": 9,
+          "life": {
+            "role": "guard",
+            "xp": 835,
+            "heirs": [
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "runs": 43
+          }
+        }
+      ],
+      "gold": 12021
+    },
+    {
+      "functional": "control-states",
+      "normal": "none",
+      "hover": "none",
+      "pressed": "none",
+      "hovered": true,
+      "activePress": true
+    }
+  ],
+  "omitted": [
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 1,
+      "section": "gear"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 1,
+      "section": "skills"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 1,
+      "section": "companions"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 1,
+      "section": "attributes"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 2,
+      "section": "gear"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 2,
+      "section": "skills"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 2,
+      "section": "behaviour"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 320,
+      "scale": 2,
+      "section": "attributes"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 2,
+      "section": "gear"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 2,
+      "section": "skills"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 2,
+      "section": "behaviour"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 400,
+      "scale": 2,
+      "section": "companions"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 1,
+      "section": "gear"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 1,
+      "section": "skills"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 1,
+      "section": "behaviour"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 1,
+      "section": "companions"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 2,
+      "section": "skills"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 2,
+      "section": "behaviour"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 2,
+      "section": "companions"
+    },
+    {
+      "entry": "earned-delving-queued",
+      "state": "away",
+      "width": 1440,
+      "scale": 2,
+      "section": "attributes"
+    }
+  ],
+  "errors": []
+}

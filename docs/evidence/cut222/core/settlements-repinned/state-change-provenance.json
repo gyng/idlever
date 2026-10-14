@@ -1,0 +1,48 @@
+[
+  {
+    "id": "bank-positive",
+    "fullStateChangedPaths": [],
+    "oldRawSha256": "71f0bdf92ec48c11d98633fbcc8fe155897a4d8ea05f0d23407e49797d6e46f2",
+    "newRawSha256": "71f0bdf92ec48c11d98633fbcc8fe155897a4d8ea05f0d23407e49797d6e46f2",
+    "originalGoldLedgerExitLineExact": true
+  },
+  {
+    "id": "death-secured-lost",
+    "fullStateChangedPaths": [],
+    "oldRawSha256": "e513bf0d53356734ca9b7ecec32bcc0d1509783bca8cd6e122313975677d0a59",
+    "newRawSha256": "e513bf0d53356734ca9b7ecec32bcc0d1509783bca8cd6e122313975677d0a59",
+    "originalGoldLedgerExitLineExact": true
+  },
+  {
+    "id": "death-fetched-lost",
+    "fullStateChangedPaths": [],
+    "oldRawSha256": "28387f1bfaa61c60afe8c7079b466b141da8bf75a70b8334f04887212809871e",
+    "newRawSha256": "28387f1bfaa61c60afe8c7079b466b141da8bf75a70b8334f04887212809871e",
+    "originalGoldLedgerExitLineExact": true
+  },
+  {
+    "id": "multihero-absence",
+    "fullStateChangedPaths": [
+      ".deaths.133.t10.event_used[7][1]",
+      ".deaths.133.t10.event_recent.pass_lock[0]",
+      ".lineage.oaths[0].price",
+      ".lineage.oaths[1].price",
+      ".lineage.oaths[2].price",
+      ".lineage.last_day_net",
+      ".lineage.day",
+      ".lineage.event_recent.pass_lock[0][1]",
+      ".lineage.day_net",
+      ".floor_start[0].event_used[7][1]",
+      ".floor_start[0].event_recent.pass_lock[0]",
+      ".others.3.lineage.last_day_net",
+      ".others.3.lineage.day",
+      ".others.3.lineage.day_net",
+      ".others.2.lineage.last_day_net",
+      ".others.2.lineage.day",
+      ".others.2.lineage.day_net"
+    ],
+    "oldRawSha256": "87f66d0888486a284473dbf0675fc8cb5a86e04f4fd78923870c9ea6f5cebfc9",
+    "newRawSha256": "7404512413980ad375dff5efd18db26016071f93b8d7efdb9e112c4effc50382",
+    "originalGoldLedgerExitLineExact": true
+  }
+]

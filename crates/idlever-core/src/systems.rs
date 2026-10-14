@@ -39,9 +39,9 @@ pub const SYSTEMS: &[SystemDef] = &[
     sys("headline", ""),
     sys("death", "first death"),
     // Cut 118 (owner amendment 2): the heir order — a rung that retires picking heirs, lit with the first death
-    sys("heirs", "first death"),
+    sys("heirs", "six delves"),
     sys("exits", "first gold home"),
-    sys("forge", "first gold home"),
+    sys("forge", "four delves"),
     sys("loadout", "first gold home"),
     aged("party", "first stray", 1, 0),
     aged("kennel", "first tame", 1, 0),
@@ -51,7 +51,7 @@ pub const SYSTEMS: &[SystemDef] = &[
     aged("quests", "slay Warlord", 12, 0),
     aged("class", "second class", 16, 0),
     aged("start", "slay Warlord", 20, 0),
-    aged("temperament", "heir 3", 24, 72),
+    sys("temperament", "six delves"),
     aged("tactic2", "meet Lich", 56, 0),
     aged("pen", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
     aged("edit", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
@@ -88,8 +88,10 @@ fn triggered(l: &LineageState, id: &str, plateau: bool) -> bool {
     let pen = l.pkg.pen_open || l.pkg.literal;
     match id {
         "send" | "headline" => true,
-        "death" | "heirs" => !l.graveyard.is_empty() || l.heir > 1,
-        "exits" | "loadout" | "forge" => l.gold_ledger.iter().any(|x| x.delta > 0 && crate::engine::is_exit_why(&x.why)) || !l.banked_depths.is_empty() || crate::town::built(l, "blacksmith"),
+        "death" => !l.graveyard.is_empty() || l.heir > 1,
+        "heirs" => crate::packages::temperament_open(l),
+        "forge" => crate::town::built(l,"blacksmith") || crate::town::build_ready(l,"blacksmith"),
+        "exits" | "loadout" => l.gold_ledger.iter().any(|x| x.delta > 0 && crate::engine::is_exit_why(&x.why)) || !l.banked_depths.is_empty() || crate::town::built(l, "blacksmith"),
         "party" => l.facts.contains("stray") || l.all_companions().next().is_some(),
         "kennel" => crate::town::built(l, "kennel"),
         "stances" => warlord_met || l.facts.contains("foe:goblin_captain"),

@@ -131,10 +131,12 @@ export function renderClassTree(
   app: App,
   onChange: () => void,
   open = new Set<string>(),
+  options: { inspectAway?: boolean } = {},
 ): HTMLElement | null {
   const L = app.lineage,
-    t = L.class_tree;
-  if (!t || L.town?.home === false) return null;
+    t = L.class_tree,
+    away = L.town?.home === false;
+  if (!t || (away && !options.inspectAway)) return null;
   const roots = t.nodes.filter((n) => n.parent === null),
     first = roots[0];
   if (!first || (t.level < 2 && t.spent === 0)) return null;
@@ -188,8 +190,10 @@ export function renderClassTree(
             "button",
             {
               class: "chip class-path-choose",
-              disabled: !node.available || !app.engine.learnClassSkill,
-              onclick: () => review(app, node, onChange),
+              disabled: away || !node.available || !app.engine.learnClassSkill,
+              onclick: () => {
+                if (!away) review(app, node, onChange);
+              },
             },
             /* copy:button */ "Learn skill",
           ),
@@ -279,8 +283,10 @@ export function renderClassTree(
           "button",
           {
             class: "chip class-path-remove",
-            disabled: !t.reset_available || !app.engine.resetClassSkills,
-            onclick: () => review(app, null, onChange),
+            disabled: away || !t.reset_available || !app.engine.resetClassSkills,
+            onclick: () => {
+              if (!away) review(app, null, onChange);
+            },
           },
           /* copy:button */ "Reset skills",
         )

@@ -1,0 +1,7 @@
+client suite: targeted (2 selected; 156 current full; 198 exhaustive groups)
+ok   home-resident-phases 14.6s (13.2s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+FAIL home-residents  28.5s (27.1s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: persistent plot hint does not cover actual Hire badge
+         at eq (file:///home/g/p/riddle/web/tests/home-residents.mjs:39:12)
+         at file:///home/g/p/riddle/web/tests/home-residents.mjs:199:9 {
+FAIL: 1/2 client gates in 28.5s

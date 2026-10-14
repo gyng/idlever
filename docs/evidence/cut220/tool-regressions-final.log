@@ -1,0 +1,25 @@
+✔ tools/camp-check.test.mjs (81.100709ms)
+✔ tools/exact-json.test.mjs (77.100822ms)
+✖ tools/gold-range.test.mjs (405.631949ms)
+✔ tools/native-codegen.test.mjs (94.022682ms)
+✖ tools/native-host.test.mjs (429.065667ms)
+✔ tools/native-watch.test.mjs (250.21317ms)
+✔ tools/runtime-key.test.mjs (4975.160619ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 5
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5004.669148
+
+✖ failing tests:
+
+test at tools/gold-range.test.mjs:1:1
+✖ tools/gold-range.test.mjs (405.631949ms)
+  'test failed'
+
+test at tools/native-host.test.mjs:1:1
+✖ tools/native-host.test.mjs (429.065667ms)
+  'test failed'

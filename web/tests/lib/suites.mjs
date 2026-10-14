@@ -36,6 +36,7 @@ export const EXHAUSTIVE_ONLY = Object.freeze([
   "qaAA",
   "qaAC",
   "qaj",
+  "routine-keep",
   "runclear",
   "tips",
   "ui:cut18",
@@ -61,6 +62,8 @@ export const SMOKE_AREAS = Object.freeze({
     "pen-edit",
     "forecast-requests",
     "clarity:paint",
+    "survivor-builds",
+    "hero-hub",
   ],
   "combat, watch and recovery": [
     "fights:break",
@@ -71,7 +74,6 @@ export const SMOKE_AREAS = Object.freeze({
   ],
   "gold, supplies and gear": [
     "checkpoint-gold",
-    "routine-keep",
     "exit-keep-close",
     "report-supply-limit",
     "forge-requests",

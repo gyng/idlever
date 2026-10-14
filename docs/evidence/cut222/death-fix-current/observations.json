@@ -1,0 +1,86 @@
+[
+  {
+    "width": 400,
+    "before": {
+      "gold": 2400,
+      "heir": 221,
+      "best": 28,
+      "rules": "{\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":45}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":29}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":100}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":44}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":3},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"back_corridor\"},\"origin\":\"stance:guarded\"},{\"conds\":[],\"verb\":{\"v\":\"tactic\",\"a\":\"gas_step\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"adj>=\",\"n\":1}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:guarded\"}],\"name\":\"fighter\"}"
+    },
+    "calls": 1,
+    "buys": "silence",
+    "label": "+ silence scroll $0 · read silence vs boss",
+    "fixFirst": true,
+    "fixPrice": {
+      "depth": 28,
+      "past_from": 0,
+      "past_to": 0.875,
+      "past_pm": 0.104,
+      "death_from": 0.975,
+      "death_to": 0.875,
+      "death_pm": 0.117,
+      "sims": 40
+    },
+    "pickPrice": {
+      "depth": 28,
+      "past_from": 0,
+      "past_to": 0,
+      "past_pm": 0,
+      "death_from": 0.98,
+      "death_to": 0.98,
+      "death_pm": 0,
+      "sims": 50
+    },
+    "state": {
+      "gold": 2400,
+      "heir": 221,
+      "best": 28,
+      "rules": "{\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":45}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":29}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":100}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":44}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":3},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"back_corridor\"},\"origin\":\"stance:guarded\"},{\"conds\":[],\"verb\":{\"v\":\"tactic\",\"a\":\"gas_step\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"adj>=\",\"n\":1}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:guarded\"}],\"name\":\"fighter\"}"
+    },
+    "overflow": false,
+    "text": "ALPHA\nbuild 2026-10-14\nToren Ash\nunbowed\nGOLD\n$2400\nLEGACY\n6449\n◆\n60\nToren Ash · fighter · Bloodline 1\n+2 Legacy · Queen try 23 · +10%\nlurker · summoned by the Queen · D28 · hero at 2/54 hp\nYOU DIED\nToren · fell to lurker, summoned by the Queen, D28 · pack $142 on D28\nno silence left\nTRY\nquiet steps ← gas step\npast D28 0→0% · death 98→98%\n›\nNext run\nUpgrade hero\nBloodline 1 · 6449 Legacy\nTactics\nOwned choices\n▸ details · 3 fixes · trace\nD28\nedit\ntown\napply",
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "before": {
+      "gold": 2400,
+      "heir": 221,
+      "best": 28,
+      "rules": "{\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":45}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":29}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":100}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":44}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":3},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"back_corridor\"},\"origin\":\"stance:guarded\"},{\"conds\":[],\"verb\":{\"v\":\"tactic\",\"a\":\"gas_step\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"adj>=\",\"n\":1}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:guarded\"}],\"name\":\"fighter\"}"
+    },
+    "calls": 1,
+    "buys": "silence",
+    "label": "+ silence scroll $0 · read silence vs boss",
+    "fixFirst": true,
+    "fixPrice": {
+      "depth": 28,
+      "past_from": 0,
+      "past_to": 0.875,
+      "past_pm": 0.104,
+      "death_from": 0.975,
+      "death_to": 0.875,
+      "death_pm": 0.117,
+      "sims": 40
+    },
+    "pickPrice": {
+      "depth": 28,
+      "past_from": 0,
+      "past_to": 0,
+      "past_pm": 0,
+      "death_from": 0.98,
+      "death_to": 0.98,
+      "death_pm": 0,
+      "sims": 50
+    },
+    "state": {
+      "gold": 2400,
+      "heir": 221,
+      "best": 28,
+      "rules": "{\"rows\":[{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"reflect_melee\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"tactic\",\"a\":\"reflect_read\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"depth>=\",\"n\":19},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:buffer\"},\"origin\":\"drill:foundry_master\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"summoned\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:summoned\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"undead\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:lich\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"throw\",\"a\":\"fire,tag:boss\"},\"origin\":\"drill:bloat_mother\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":45}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"drill:goblin_warlord\"},{\"conds\":[{\"k\":\"hp<\",\"n\":45}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25},{\"k\":\"depth>=\",\"n\":29}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":25}],\"verb\":{\"v\":\"return\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"hp<\",\"n\":100}],\"verb\":{\"v\":\"rest\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"lacks\",\"t\":\"heal\"},{\"k\":\"hp<\",\"n\":44}],\"verb\":{\"v\":\"bank\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"telegraph\"},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"drink\",\"a\":\"heal\"},\"origin\":\"stance:guarded\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":3},{\"k\":\"hp<\",\"n\":60}],\"verb\":{\"v\":\"back_corridor\"},\"origin\":\"stance:guarded\"},{\"conds\":[],\"verb\":{\"v\":\"tactic\",\"a\":\"gas_step\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"gas\"},{\"k\":\"adj>=\",\"n\":1}],\"verb\":{\"v\":\"retreat\"},\"origin\":\"tactic:gas_step\"},{\"conds\":[{\"k\":\"foe_tag\",\"t\":\"boss\"},{\"k\":\"hp>\",\"n\":40}],\"verb\":{\"v\":\"attack\",\"a\":\"tag:boss\"},\"origin\":\"temper:unbowed\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"tame\",\"a\":\"open\"},\"origin\":\"drill:tame\"},{\"conds\":[{\"k\":\"foes>=\",\"n\":1}],\"verb\":{\"v\":\"attack\",\"a\":\"nearest\"},\"origin\":\"stance:guarded\"}],\"name\":\"fighter\"}"
+    },
+    "overflow": false,
+    "text": "ALPHA\nbuild 2026-10-14\nToren Ash\nunbowed\nGOLD\n$2400\nLEGACY\n6449\n◆\n60\nToren Ash · fighter · Bloodline 1\n+2 Legacy · Queen try 23 · +10%\nlurker · summoned by the Queen · D28 · hero at 2/54 hp\nYOU DIED\nToren · fell to lurker, summoned by the Queen, D28 · pack $142 on D28\nno silence left\nTRY\nquiet steps ← gas step\npast D28 0→0% · death 98→98%\n›\nNext run\nUpgrade hero\nBloodline 1 · 6449 Legacy\nTactics\nOwned choices\n▸ details · 3 fixes · trace\nD28\nedit\ntown\napply",
+    "errors": []
+  }
+]

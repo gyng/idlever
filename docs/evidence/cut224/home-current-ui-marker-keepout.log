@@ -1,0 +1,13 @@
+client suite: targeted (2 selected; 156 current full; 198 exhaustive groups)
+ok   home-resident-phases 3.9s (3.6s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+FAIL home-residents  79.6s (79.2s)  Node.js v26.5.0
+       - waiting for locator('.town-hit[data-building="staked"]:not([hidden])')
+           - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events
+           - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events
+            - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events
+         '      - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events',
+         '      - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events',
+         '       - <div tabindex="0" role="button" data-next="bank" aria-live="polite" data-detail-tip="" class="town-tag num">…</div> intercepts pointer events',
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/home-residents.mjs:278:26 {
+FAIL: 1/2 client gates in 79.6s

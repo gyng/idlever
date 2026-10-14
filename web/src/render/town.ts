@@ -14,7 +14,15 @@ import { drawTown2D } from "./view2d";
 import type { Lineage, ReturnReport } from "../engine/types";
 import { paintTownTerrain, terrainMaterialVersion, townGrassRoots } from "./town-terrain";
 import { effectsLevel } from "./fxpref";
-import { paintHomeService } from "./home-service-art";
+import { paintHomeService, isHomeServiceArt } from "./home-service-art";
+import {
+  volumeKind,
+  volumeBuilding,
+  volumeHero,
+  volumeService,
+  townWalkIds,
+  VOLUME_GLSL,
+} from "./town-volume";
 import LIGHTS from "./town_lights.json"; // a copy of art/town_lights.json (`python3 art/town_lights.py`): each sprite's painted warm emitters
 
 export const TILE = 16;
@@ -434,7 +442,11 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
           id: h.id,
           cls: h.class,
           look: h.look,
-          resting: h.state === "rests" || h.rest_s > 0 || h.life_state === "recovering",
+          resting:
+            h.rest_s > 0 ||
+            h.life_state === "recovering" ||
+            h.life_state === "reincarnating" ||
+            (h.life_state === undefined && h.state === "rests"),
           phase:
             h.life_state ?? (h.id === L.selected_bloodline ? L.persistent_hero?.state : undefined),
         })) ??
@@ -680,7 +692,8 @@ export class TownAtlas {
     this.slots.set(key, slot);
     this.lastId = id;
     if (f && this.src) this.cut(this.src.img, f, slot);
-    else if (!paintHomeService(this.ctx, id, x, y, w, h)) drawPrimitive(this.ctx, id, x, y, w, h);
+    else if (!paintHomeService(this.ctx, id, x, y, w, h, townBaseDepth()))
+      drawPrimitive(this.ctx, id, x, y, w, h);
     this.version++;
     return slot;
   }
@@ -986,6 +999,9 @@ export type Quad = {
   dim: number;
   fade: number;
   relief?: number;
+  /** Exact decoded art key, for dev-only coverage inspection. */
+  asset?: string;
+  actorId?: string;
 };
 export type Light = { x: number; y: number; r: number; c: [number, number, number] };
 export type TownFrame = {
@@ -1110,6 +1126,8 @@ export type TownStats = {
   fps: number;
   frames: number;
   cpuMs: number;
+  /** Renderer plus actor/label callbacks; existing cpuMs excludes those callbacks. */
+  cpuWithUiMs: number;
   cpuP50: number;
   cpuP95: number;
   walkers: number;
@@ -1171,10 +1189,31 @@ const IDLE_MS = 10_000,
 
 let sharedAtlas: TownAtlas | null = null;
 let sharedGl: { canvas: HTMLCanvasElement; gl: GLTown; lost: boolean } | null = null;
-let lightingInspector: (() => unknown) | null = null;
+export type TownLightingPose = {
+  asset: string;
+  flip: boolean;
+  /** Controlled old/new upgrade overlap only; never changes a building. */
+  overlayAsset?: string;
+};
+let lightingInspector: ((pose?: TownLightingPose, withImages?: boolean) => unknown) | null = null;
+let artPoseInspector: ((pose: TownLightingPose, withImage: boolean) => unknown) | null = null;
+let lightingPairInspector: ((firstOn: boolean, baseDepthOnly: boolean) => unknown) | null = null;
+let lightingPreviewOverride: boolean | undefined;
+/** Dev-only matched-workload shader toggle. Does not rebuild actors or alter game time. */
+export function setTownLightingPreview(enabled: boolean | null): void {
+  if (import.meta.env.DEV) lightingPreviewOverride = enabled ?? undefined;
+}
 /** Dev-only identical-frame readback; never runs in the animation loop. */
-export function inspectTownLighting(): unknown {
-  return import.meta.env.DEV ? lightingInspector?.() : null;
+export function inspectTownLighting(pose?: TownLightingPose, withImages = true): unknown {
+  return import.meta.env.DEV ? lightingInspector?.(pose, withImages) : null;
+}
+/** Dev-only controlled art delivery in the actual backend/preference; no unlock or save edit. */
+export function inspectTownArtPose(pose: TownLightingPose, withImage = false): unknown {
+  return import.meta.env.DEV ? artPoseInspector?.(pose, withImage) : null;
+}
+/** Dev-only same-Frame submission timer; no readback or engine/clock mutation. */
+export function inspectTownLightingTiming(firstOn = false, baseDepthOnly = false): unknown {
+  return import.meta.env.DEV ? lightingPairInspector?.(firstOn, baseDepthOnly) : null;
 }
 export function createTownView(host: HTMLElement): TownView {
   const el = host;
@@ -1232,6 +1271,7 @@ export function createTownView(host: HTMLElement): TownView {
     disposed = false;
   const fpsWin: number[] = [],
     cpu: number[] = [];
+  let cpuWithUiMs = 0;
   let lastInput = performance.now(),
     lastDraw = 0;
   let hourOverride: number | null = null;
@@ -1247,6 +1287,7 @@ export function createTownView(host: HTMLElement): TownView {
   let builtAt = new Map<string, number>(); // fresh buildings: the scene time their scaffold went up
   let hero: Walker | null = null;
   const actorLayout: (() => void)[] = [];
+  const residentAnchors = new Map<string, Pt>();
   let walkingIn: { t0: number; t1: number; done: () => void } | null = null;
   let stressN = 0;
   const arrive = new Map<string, Leg[]>(); // Cut 30.5: a worker hired on this mount walks out of the tent to his post
@@ -1267,7 +1308,135 @@ export function createTownView(host: HTMLElement): TownView {
     night: 0,
     live: 0,
   };
-  if (import.meta.env.DEV) lightingInspector = () => (gl && !glLost ? gl.compareLighting(F) : null);
+  let volumeFrame = false;
+  function controlledArtFrame(pose: TownLightingPose) {
+    const kind = volumeKind(pose.asset);
+    if (!kind) return null;
+    const decoded = atlas.has(pose.asset.replace(/^town_seated:/, ""));
+    const generated = isHomeServiceArt(pose.asset);
+    const quads = F.quads.slice(0, F.n).map((q) => ({ ...q }));
+    const q = quads.find((q) =>
+      volumeService(kind)
+        ? q.asset === pose.asset
+        : volumeBuilding(kind)
+          ? volumeBuilding(volumeKind(q.asset)) &&
+            [3, 9, 10].includes(kind) === [3, 9, 10].includes(volumeKind(q.asset))
+          : q.actorId?.startsWith("resident:"),
+    );
+    if (!q) return null;
+    const reference = { kind: q.relief, asset: q.asset, actorId: q.actorId, x: q.x, y: q.y };
+    const slot = atlas.get(pose.asset, volumeBuilding(kind) || volumeService(kind) ? q.h : 24);
+    Object.assign(q, {
+      s: slot,
+      w: slot.w,
+      h: slot.h,
+      flip: pose.flip,
+      relief:
+        (decoded || generated) && volumeFrame && (!volumeService(kind) || townBaseDepth())
+          ? kind
+          : 0,
+      asset: pose.asset,
+    });
+    if (pose.overlayAsset && volumeBuilding(kind)) {
+      const overlayKind = volumeKind(pose.overlayAsset);
+      if (!volumeBuilding(overlayKind) || !atlas.has(pose.overlayAsset)) return null;
+      const overlay = atlas.get(pose.overlayAsset, q.h);
+      q.fade = 0.5;
+      quads.push({
+        ...q,
+        s: overlay,
+        w: overlay.w,
+        h: overlay.h,
+        z: q.z + 0.00002,
+        relief: overlayKind,
+        asset: pose.overlayAsset,
+      });
+    }
+    return {
+      frame: { ...F, quads, n: quads.length },
+      specimen: { ...pose, kind, decoded, generated, reference, controlled: true },
+    };
+  }
+  if (import.meta.env.DEV) {
+    lightingInspector = (pose, withImages = true) => {
+      if (!gl || glLost) return null;
+      if (!pose) return gl.compareLighting(F, withImages);
+      const controlled = controlledArtFrame(pose);
+      if (!controlled || (!controlled.specimen.decoded && !controlled.specimen.generated))
+        return { unavailable: "painted pose or real anchor not loaded", pose };
+      const proof = gl.compareLighting(controlled.frame, withImages) as Record<string, unknown>;
+      gl.render(F);
+      return { ...proof, specimen: controlled.specimen };
+    };
+    artPoseInspector = (pose, withImage) => {
+      const controlled = controlledArtFrame(pose);
+      if (!controlled) return { unavailable: "real anchor not visible", pose };
+      const backend = gl && !glLost ? "gl" : "2d";
+      let pixels: Uint8Array | Uint8ClampedArray;
+      let image: string | undefined;
+      if (gl && !glLost) {
+        gl.render(controlled.frame);
+        pixels = gl.readScreen(controlled.frame);
+        if (withImage) image = glCanvas.toDataURL();
+        gl.render(F);
+      } else {
+        const canvas = view2d();
+        drawTown2D(canvas, controlled.frame, atlas.canvas);
+        pixels = canvas.getContext("2d")!.getImageData(0, 0, canvas.width, canvas.height).data;
+        if (withImage) image = canvas.toDataURL();
+        drawTown2D(canvas, F, atlas.canvas);
+      }
+      let checksum = 2166136261,
+        opaque = 0;
+      for (let i = 0; i < pixels.length; i++) {
+        checksum = Math.imul(checksum ^ pixels[i]!, 16777619);
+        if ((i & 3) === 3 && pixels[i]) opaque++;
+      }
+      return {
+        specimen: controlled.specimen,
+        backend,
+        effects: effectsLevel(),
+        reducedMotion: motionPreference.matches,
+        dimensionalLight: backend === "gl" && townVolumeLighting(),
+        pixelBytes: pixels.length,
+        opaquePixels: opaque,
+        checksum: checksum >>> 0,
+        image,
+      };
+    };
+  }
+  if (import.meta.env.DEV)
+    lightingPairInspector = (firstOn, baseDepthOnly) => {
+      if (!gl || glLost) return null;
+      const submission = gl.timeLightingPair(F, firstOn, baseDepthOnly);
+      const uiStart = performance.now();
+      for (const fn of actorLayout) fn();
+      const sharedUiMs = performance.now() - uiStart;
+      return {
+        ...submission,
+        comparison: baseDepthOnly
+          ? "generated service relief only; existing mapped lighting and current cached art retained"
+          : "all mapped relief",
+        sharedUiMs,
+        offWithUiMs: submission.offMs + sharedUiMs,
+        onWithUiMs: submission.onMs + sharedUiMs,
+        observedAnimatedCpuWithUiMs: cpuWithUiMs,
+        frame: {
+          id: frames,
+          x0: F.x0,
+          y0: F.y0,
+          w: F.w,
+          h: F.h,
+          night: F.night,
+          quads: F.n,
+          lights: F.lights.map((l) => ({ x: l.x, y: l.y, r: l.r, c: [...l.c] })),
+          mapped: F.quads
+            .slice(0, F.n)
+            .filter((q) => q.relief)
+            .map((q) => ({ kind: q.relief, x: q.x, y: q.y, w: q.w, h: q.h, flip: q.flip })),
+        },
+      };
+    };
   let terrainPaints = 0,
     terrainPaintMs = 0;
   let windTufts = 0,
@@ -1285,7 +1454,7 @@ export function createTownView(host: HTMLElement): TownView {
         `hero_${cls}`,
         "hero_fighter",
       ],
-      walkIds = [`walk_${cls}`, ...heroIds];
+      walkIds = townWalkIds(cls, s.hero.look, heroIds);
     let k = 0;
     const partyEnd = s.parties.length ? s.parties[s.parties.length - 1]!.at + 7 : 0;
     for (const p of s.parties) {
@@ -1350,7 +1519,7 @@ export function createTownView(host: HTMLElement): TownView {
         id: `resident:${resident.id}`,
         homeOffset: { x: (((resident.id - 1) % 3) - 1) * 12, y: 0 },
         sprite: ids,
-        walk: [`walk_${resident.cls}`, ...ids],
+        walk: townWalkIds(resident.cls, resident.look, ids),
         h: 24,
         legs: [],
         from: partyEnd,
@@ -1532,6 +1701,8 @@ export function createTownView(host: HTMLElement): TownView {
       q.dim = dim;
       q.fade = fade;
       q.relief = 0;
+      q.asset = undefined;
+      q.actorId = undefined;
     }
     F.n++;
   };
@@ -1598,20 +1769,26 @@ export function createTownView(host: HTMLElement): TownView {
     push(s, Math.round(x), Math.round(y), o.z ?? zOf(y), !!o.flip, o.dim ?? 1, o.fade ?? 0);
     // Only exact, decoded painted poses are mapped. Fallbacks and other looks
     // retain their art, including look-specific heroes that lack a walk pose.
-    const resolved = (Array.isArray(ids) ? ids : [ids]).find((key) => atlas.has(key));
+    const resolved = (Array.isArray(ids) ? ids : [ids]).find(
+      (key) =>
+        atlas.has(volumeFrame ? key.replace(/^town_seated:/, "") : key) || isHomeServiceArt(key),
+    );
+    if (import.meta.env.DEV) F.quads[F.n - 1]!.asset = resolved ?? id;
+    const mapped = volumeKind(resolved);
     F.quads[F.n - 1]!.relief =
-      resolved === "town_blacksmith_1"
+      (volumeFrame && (!volumeService(mapped) || townBaseDepth()) ? mapped : 0) ||
+      (resolved === "town_blacksmith_1"
         ? 1
         : resolved === "hero_fighter" ||
             resolved === "hero_fighter_male" ||
             resolved === "walk_fighter"
           ? 2
-          : 0;
+          : 0);
   }
   /** Terrain is independent of the sprite atlas and camera. One bitmap per construction state. */
   function ground(): void {
     const s = state!,
-      key = `${s.home}|${s.stage}|${homeSpots.length}|${(s.services ?? []).join(",")}|${s.buildings
+      key = `${townBaseDepth()}|${s.home}|${s.stage}|${homeSpots.length}|${(s.services ?? []).join(",")}|${s.buildings
         .map((b) => b.id)
         .sort()
         .join(",")}|${terrainMaterialVersion()}`;
@@ -1622,6 +1799,7 @@ export function createTownView(host: HTMLElement): TownView {
     F.terrain = paintTownTerrain({
       width: MAP_W * TILE,
       height: MAP_H * TILE,
+      depth: townBaseDepth(),
       trails: [
         ...EDGES.filter(([, b]) => !SPURS.has(b) || standing.has(b)).map(([a, b, r]) => ({
           a: NODES[a]!,
@@ -1874,6 +2052,7 @@ export function createTownView(host: HTMLElement): TownView {
     completionGlint(p, at);
   }
   function frame(): void {
+    volumeFrame = townVolumeLighting();
     const s = state!;
     if (!buildFxEnabled()) {
       builtAt.clear();
@@ -2076,14 +2255,76 @@ export function createTownView(host: HTMLElement): TownView {
       const p = PLOTS.kennel;
       sprite([k, "town_dog"], 10, p.x - 20 + j * 12, p.y + 8, { flip: j % 2 === 1, ground: true });
     });
+    // Presentation-only local avoidance: residents keep their route legs and
+    // clocks, but their expanded touch targets must remain distinct at crossings.
+    residentAnchors.clear();
+    const cssScale = F.k / (window.devicePixelRatio || 1);
+    const residents = walkers
+      .filter((w) => w.id.startsWith("resident:"))
+      .sort((a, b) => Number(a.id.slice(9)) - Number(b.id.slice(9)))
+      .slice(0, 3)
+      .flatMap((w) => {
+        const at = walkerAt(w, t);
+        if (!at || t > w.to) return [];
+        const slot = atlas.get(w.sprite, w.h);
+        const halfW = Math.max(44 / cssScale, slot.w) / 2 + 1 / cssScale;
+        const halfH = Math.max(44 / cssScale, slot.h) / 2 + 1 / cssScale;
+        return [
+          {
+            id: w.id,
+            x: at.x + (w.homeOffset?.x ?? 0),
+            y: at.y + (w.homeOffset?.y ?? 0) - slot.h / 2,
+            halfW,
+            halfH,
+            spriteH: slot.h,
+          },
+        ];
+      });
+    const contain = (a: (typeof residents)[number]): void => {
+      a.x = Math.max(F.x0 + a.halfW, Math.min(F.x0 + F.w - a.halfW, a.x));
+      a.y = Math.max(F.y0 + a.halfH, Math.min(F.y0 + F.h - a.halfH, a.y));
+    };
+    for (const a of residents) contain(a);
+    // Three actors need only three pairs. The bounded relaxation also handles
+    // simultaneous coincidence without moving their simulation or consuming RNG.
+    for (let pass = 0; pass < 16; pass++) {
+      let changed = false;
+      for (let i = 0; i < residents.length; i++)
+        for (let j = i + 1; j < residents.length; j++) {
+          const a = residents[i]!,
+            b = residents[j]!;
+          const dx = b.x - a.x,
+            dy = b.y - a.y;
+          const ox = a.halfW + b.halfW - Math.abs(dx);
+          const oy = a.halfH + b.halfH - Math.abs(dy);
+          if (ox <= 0 || oy <= 0) continue;
+          if (ox <= oy) {
+            const push = ox / 2 + 0.01,
+              direction = dx < 0 ? -1 : 1;
+            a.x -= push * direction;
+            b.x += push * direction;
+          } else {
+            const push = oy / 2 + 0.01,
+              direction = dy < 0 ? -1 : 1;
+            a.y -= push * direction;
+            b.y += push * direction;
+          }
+          contain(a);
+          contain(b);
+          changed = true;
+        }
+      if (!changed) break;
+    }
+    for (const a of residents) residentAnchors.set(a.id, { x: a.x, y: a.y + a.spriteH / 2 });
     // walkers
     let live = 0;
     for (const w of walkers) {
       const at = w.follow ? walkerAt(w.follow, t - w.lag) : walkerAt(w, t);
       if (!at || (w.follow && t < w.from) || t > w.to) continue;
       const offset = (w.follow ?? w).homeOffset;
-      let x = at.x + (offset?.x ?? 0),
-        y = at.y + (offset?.y ?? 0);
+      const anchor = residentAnchors.get(w.id);
+      let x = anchor?.x ?? at.x + (offset?.x ?? 0),
+        y = anchor?.y ?? at.y + (offset?.y ?? 0);
       if (w.follow && at.moving) {
         x -= Math.sign(at.dx) * 4;
         y += 2;
@@ -2109,14 +2350,20 @@ export function createTownView(host: HTMLElement): TownView {
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
       const ids = step ? w.walk : w.sprite;
       const previousQuads = F.n;
-      const mappedHero = w.sprite[0] === "hero_fighter" || w.sprite[0] === "hero_fighter_male";
+      const mappedHero =
+        w.sprite[0] === "hero_fighter" ||
+        w.sprite[0] === "hero_fighter_male" ||
+        (volumeFrame && volumeHero(volumeKind(w.sprite[0])));
       sprite(ids, w.h, x, y - (step ? 1 : 0), {
         flip,
         fade,
         ground: true,
-        groundY: townLightPrototype() && mappedHero ? y : undefined,
+        groundY: townDimensionalLighting() && mappedHero ? y : undefined,
       });
-      if (F.n > previousQuads && !mappedHero) F.quads[F.n - 1]!.relief = 0;
+      if (F.n > previousQuads) {
+        if (!mappedHero) F.quads[F.n - 1]!.relief = 0;
+        if (import.meta.env.DEV) F.quads[F.n - 1]!.actorId = w.id;
+      }
       if (!w.pet) lantern(x, y - (step ? 1 : 0), flip, night, fade);
       if (w.carry) {
         const back = (flip ? -1 : 1) * (w.carry === "town_chest_glow" ? 6 : 7);
@@ -2363,7 +2610,7 @@ export function createTownView(host: HTMLElement): TownView {
       fit();
       frame();
       if (gl && !glLost) {
-        gl.render(F);
+        gl.render(F, effectsLevel() === "off" ? false : lightingPreviewOverride);
         if (c2d) c2d.style.display = "none";
       } else {
         const c = view2d();
@@ -2373,6 +2620,7 @@ export function createTownView(host: HTMLElement): TownView {
       cpu.push(performance.now() - c0);
       if (cpu.length > 120) cpu.shift();
       for (const fn of actorLayout) fn();
+      cpuWithUiMs = performance.now() - c0;
       frames++;
       fpsWin.push(now);
       while (fpsWin.length && fpsWin[0]! < now - 1000) fpsWin.shift();
@@ -2422,8 +2670,9 @@ export function createTownView(host: HTMLElement): TownView {
     const at = walkerAt(actor, t);
     if (!at) return null;
     const slot = atlas.get(actor.sprite, actor.h);
-    const x = at.x + (actor.homeOffset?.x ?? 0),
-      y = at.y + (actor.homeOffset?.y ?? 0);
+    const anchor = residentAnchors.get(actor.id);
+    const x = anchor?.x ?? at.x + (actor.homeOffset?.x ?? 0),
+      y = anchor?.y ?? at.y + (actor.homeOffset?.y ?? 0);
     const a = css(x - slot.w / 2, y - slot.h),
       b = css(x + slot.w / 2, y);
     return { x: a.x, y: a.y, w: b.x - a.x, h: b.y - a.y };
@@ -2632,6 +2881,7 @@ export function createTownView(host: HTMLElement): TownView {
         fps: fpsWin.length,
         frames,
         cpuMs: cpu[cpu.length - 1] ?? 0,
+        cpuWithUiMs,
         cpuP50: sorted[Math.floor(sorted.length * 0.5)] ?? 0,
         cpuP95: sorted[Math.floor(sorted.length * 0.95)] ?? 0,
         walkers: F.live,
@@ -2640,11 +2890,24 @@ export function createTownView(host: HTMLElement): TownView {
         k: F.k,
         night: F.night,
         characterLights: characterLights.length,
-        dimensionalLight: gl && !glLost && townLightPrototype(),
+        dimensionalLight:
+          gl &&
+          !glLost &&
+          effectsLevel() !== "off" &&
+          (lightingPreviewOverride ?? townDimensionalLighting()),
+        baseDepth: townBaseDepth(),
+        volumeLight: Boolean(gl && !glLost && townVolumeLighting()),
         mappedSprites: F.quads
           .slice(0, F.n)
           .filter((q) => q.relief)
-          .map((q) => ({ kind: q.relief, flip: q.flip, x: q.x, y: q.y })),
+          .map((q) => ({
+            kind: q.relief,
+            asset: q.asset,
+            actorId: q.actorId,
+            flip: q.flip,
+            x: q.x,
+            y: q.y,
+          })),
         lights: F.lights.length,
         idle: performance.now() - lastInput > IDLE_MS,
         running: !!raf,
@@ -2708,18 +2971,26 @@ function segDist(p: Pt, a: Pt, b: Pt): number {
 // ---- the GL view: one target of town texels, the light pass upscaling it ---------------------------------------------------------
 
 const MAX_LIGHTS = 32;
-function townLightPrototype(): boolean {
+function townBaseDepth(): boolean {
+  return !import.meta.env.DEV || new URLSearchParams(location.search).get("townDepth") !== "off";
+}
+// Mapped town lighting is the normal GL presentation. Explicit comparison
+// modes keep art review reproducible; preferences and Canvas remain authoritative.
+function townDimensionalLighting(): boolean {
   return (
-    import.meta.env.DEV &&
-    new URLSearchParams(location.search).get("townLight") === "planes" &&
-    effectsLevel() !== "off"
+    new URLSearchParams(location.search).get("townLight") !== "flat" && effectsLevel() !== "off"
   );
+}
+function townVolumeLighting(): boolean {
+  const mode = new URLSearchParams(location.search).get("townLight");
+  return mode !== "flat" && mode !== "planes" && effectsLevel() !== "off";
 }
 
 // Analytic surface masks in sprite-local coordinates: no repeated atlas reads,
 // luma-derived geometry, extra buffer, or authored-art replacement. Local X is
 // mirrored with the colour UV; normal X is then returned to world orientation.
 const TOWN_RELIEF = /* glsl */ `
+${VOLUME_GLSL}
 uniform float uReliefOn;
 uniform float uReliefNight;
 uniform vec4 uReliefL[${MAX_LIGHTS}];
@@ -2728,6 +2999,7 @@ uniform int uReliefN;
 varying vec2 vLocal;
 varying vec2 vWorld;
 vec3 townNormal(vec2 p, float kind) {
+  if (uVolumeOn > 0.5 && kind > 1.5) return volumeNormal(p,kind);
   if (kind < 1.5) {
     // Main slate roof, lower timber side, open gable/front; chimney is masonry.
     if (p.x < 0.22 && p.y > 0.53) return normalize(vec3(-0.65, 0.0, 0.8));
@@ -2755,7 +3027,7 @@ vec3 townRelief(vec3 colour) {
     vec2 d = uReliefL[i].xy - vWorld;
     float fall = max(0.0, 1.0 - length(d) / uReliefL[i].z);
     vec3 L = normalize(vec3(d.x, -d.y, 14.0));
-    response += uReliefC[i] * fall * fall * (dot(N, L) - 0.65) * 0.3;
+    response += uReliefC[i] * fall * fall * (dot(N, L) - 0.65) * 0.3 * (fall>0.0 ? volumeVisibility(vWorld,uReliefL[i].xy) : 1.0);
   }
   float ink = smoothstep(0.035, 0.12, dot(colour, vec3(0.2126, 0.7152, 0.0722)));
   return colour * (vec3(1.0) + ink * (vec3(key) + clamp(response, vec3(-0.12), vec3(0.12))));
@@ -2763,6 +3035,7 @@ vec3 townRelief(vec3 colour) {
 `;
 const BLIT_VERT = /* glsl */ `varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`;
 const BLIT_FRAG = /* glsl */ `
+${VOLUME_GLSL}
 uniform sampler2D tex;
 uniform vec2 uSize;      // the target, texels
 uniform float uK;        // device px per texel
@@ -2786,7 +3059,7 @@ void main() {
     vec2 d = px - uL[i].xy;
     float f = max(0.0, 1.0 - length(d * vec2(1.0, 1.25)) / uL[i].z);
     f = floor(f * f * 6.0 + d4) / 6.0;   // banded, dithered falloff: a pixel-art pool
-    light += uC[i] * f;
+    light += uC[i] * f * (f>0.0 ? volumeVisibility(px + uOrigin, uL[i].xy + uOrigin) : 1.0);
   }
   // moonlight in drifting patches (the art note: the grass read flat): a slow, broad value swell over the ground, banded
   vec2 w = px + uOrigin;
@@ -2820,6 +3093,7 @@ class GLTown {
   private atlasV = -1;
   private lv = Array.from({ length: MAX_LIGHTS }, () => new THREE.Vector4());
   private lc = Array.from({ length: MAX_LIGHTS }, () => new THREE.Vector3());
+  private volumeBlocks = [new THREE.Vector4(), new THREE.Vector4()];
   private canvas: HTMLCanvasElement;
   private atlas: TownAtlas;
   constructor(canvas: HTMLCanvasElement, atlas: TownAtlas) {
@@ -2875,6 +3149,8 @@ class GLTown {
         "col = townRelief(col);",
       );
     Object.assign(objectMat.uniforms, {
+      uVolumeOn: { value: 0 },
+      uVolumeBlock: { value: this.volumeBlocks },
       uReliefOn: { value: 0 },
       uReliefNight: { value: 0 },
       uReliefL: { value: this.lv },
@@ -2912,6 +3188,8 @@ class GLTown {
         uN: { value: 0 },
         uOrigin: { value: new THREE.Vector2() },
         uTime: { value: 0 },
+        uVolumeOn: { value: 0 },
+        uVolumeBlock: { value: this.volumeBlocks },
       },
     });
     this.blitScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.mat));
@@ -2926,13 +3204,26 @@ class GLTown {
   isLost(): boolean {
     return this.renderer.getContext().isContextLost();
   }
-  compareLighting(F: TownFrame): unknown {
+  readScreen(F: TownFrame): Uint8Array {
+    const pixels = new Uint8Array(F.W * F.H * 4),
+      context = this.renderer.getContext();
+    context.readPixels(0, 0, F.W, F.H, context.RGBA, context.UNSIGNED_BYTE, pixels);
+    return pixels;
+  }
+  compareLighting(F: TownFrame, withImages = true): unknown {
     const captures: Uint8Array[] = [];
+    const screenCaptures: Uint8Array[] = [];
     for (const enabled of [false, true]) {
       this.render(F, enabled, 0);
       const pixels = new Uint8Array(F.w * F.h * 4);
       this.renderer.readRenderTargetPixels(this.rt, 0, 0, F.w, F.h, pixels);
       captures.push(pixels);
+      if (townVolumeLighting()) {
+        const screen = new Uint8Array(F.W * F.H * 4);
+        const context = this.renderer.getContext();
+        context.readPixels(0, 0, F.W, F.H, context.RGBA, context.UNSIGNED_BYTE, screen);
+        screenCaptures.push(screen);
+      }
     }
     let changed = 0,
       unmapped = 0,
@@ -2965,7 +3256,7 @@ class GLTown {
         )
           unmapped++;
       }
-    const images = captures.map((pixels) => {
+    const images = (withImages ? captures : []).map((pixels) => {
       const canvas = document.createElement("canvas");
       canvas.width = F.w;
       canvas.height = F.h;
@@ -2973,6 +3264,37 @@ class GLTown {
         image = ctx.createImageData(F.w, F.h);
       for (let y = 0; y < F.h; y++)
         image.data.set(pixels.subarray(y * F.w * 4, (y + 1) * F.w * 4), (F.h - 1 - y) * F.w * 4);
+      ctx.putImageData(image, 0, 0);
+      return canvas.toDataURL();
+    });
+    let screenChanged = 0,
+      screenAlphaChanges = 0,
+      outsideMappedChanged = 0;
+    if (screenCaptures.length === 2)
+      for (let y = 0; y < F.H; y++)
+        for (let x = 0; x < F.W; x++) {
+          const i = (y * F.W + x) * 4;
+          if (screenCaptures[0]![i + 3] !== screenCaptures[1]![i + 3]) screenAlphaChanges++;
+          if (![0, 1, 2].some((c) => screenCaptures[0]![i + c] !== screenCaptures[1]![i + c]))
+            continue;
+          screenChanged++;
+          const wx = F.x0 + (x + 0.5) / F.k,
+            wy = F.y0 + (F.H - y - 0.5) / F.k;
+          if (
+            !maps.some(
+              (q) => wx >= q.x - q.w / 2 && wx <= q.x + q.w / 2 && wy <= q.y && wy >= q.y - q.h,
+            )
+          )
+            outsideMappedChanged++;
+        }
+    const screenImages = (withImages ? screenCaptures : []).map((pixels) => {
+      const canvas = document.createElement("canvas");
+      canvas.width = F.W;
+      canvas.height = F.H;
+      const ctx = canvas.getContext("2d")!,
+        image = ctx.createImageData(F.W, F.H);
+      for (let y = 0; y < F.H; y++)
+        image.data.set(pixels.subarray(y * F.W * 4, (y + 1) * F.W * 4), (F.H - 1 - y) * F.W * 4);
       ctx.putImageData(image, 0, 0);
       return canvas.toDataURL();
     });
@@ -2988,12 +3310,42 @@ class GLTown {
       maxDelta: max,
       meanChangedDelta: changed ? sum / changed : 0,
       changedByKind,
+      lightSources: F.lights.map((light) => ({ ...light, c: [...light.c] })),
       mappedPoses: maps.map((q) => ({ kind: q.relief, w: q.w, h: q.h, flip: q.flip })),
+      footprints: this.volumeBlocks.map((b, i) => ({
+        family: i === 0 ? "house" : "forge",
+        x: b.x,
+        y: b.y,
+        halfW: b.z,
+        halfH: b.w,
+      })),
       shaderPatched:
         material.fragmentShader.includes("col = townRelief(col);") &&
         material.vertexShader.includes("vLocal = vec2(u, uv.y)"),
       images,
+      screen: { changed: screenChanged, alphaChanges: screenAlphaChanges, outsideMappedChanged },
+      screenImages,
     };
+  }
+  timeLightingPair(
+    F: TownFrame,
+    firstOn: boolean,
+    baseDepthOnly = false,
+  ): { offMs: number; onMs: number; firstOn: boolean } {
+    const values = { offMs: 0, onMs: 0, firstOn };
+    const baseline = baseDepthOnly
+      ? {
+          ...F,
+          quads: F.quads.map((q) => (volumeService(q.relief ?? 0) ? { ...q, relief: 0 } : q)),
+        }
+      : F;
+    for (const enabled of [firstOn, !firstOn]) {
+      const start = performance.now();
+      this.render(enabled ? F : baseline, baseDepthOnly ? undefined : enabled, 0);
+      values[enabled ? "onMs" : "offMs"] = performance.now() - start;
+    }
+    this.render(F, lightingPreviewOverride);
+    return values;
   }
   render(F: TownFrame, reliefOverride?: boolean, timeOverride?: number): void {
     const r = this.renderer;
@@ -3018,8 +3370,18 @@ class GLTown {
       S = this.shadowL;
     O.begin();
     S.begin();
+    const volume = townVolumeLighting() && (reliefOverride ?? true);
+    for (const b of this.volumeBlocks) b.set(0, 0, 0, 0);
     for (let i = 0; i < F.n; i++) {
       const q = F.quads[i]!;
+      if (volume && volumeBuilding(q.relief ?? 0) && q.fade < 1) {
+        // Old/new tier paintings overlap during construction. Keep one coarse
+        // footprint per building family, so House never consumes Forge's slot.
+        const kind = q.relief!,
+          house = kind === 3 || kind === 9 || kind === 10;
+        const b = this.volumeBlocks[house ? 0 : 1]!;
+        b.set(q.x, q.y - 5, Math.max(b.z, q.w * 0.27), Math.max(b.w, 3, q.h * 0.07));
+      }
       // .21/.22 are reserved for ground pigment; wind stays at .1.
       const layer = q.z === 0.21 || q.z === 0.22 ? S : O;
       layer.push(
@@ -3047,7 +3409,8 @@ class GLTown {
     c.bottom = -(F.y0 + F.h);
     c.updateProjectionMatrix();
     const relief = (this.objL.mesh.material as THREE.ShaderMaterial).uniforms;
-    relief.uReliefOn!.value = (reliefOverride ?? townLightPrototype()) ? 1 : 0;
+    relief.uReliefOn!.value = (reliefOverride ?? townDimensionalLighting()) ? 1 : 0;
+    relief.uVolumeOn!.value = volume ? 1 : 0;
     relief.uReliefNight!.value = F.night;
     relief.uReliefN!.value = Math.min(MAX_LIGHTS, F.lights.length);
     for (let i = 0; i < relief.uReliefN!.value; i++) {
@@ -3060,6 +3423,7 @@ class GLTown {
     r.clear();
     r.render(this.scene, c);
     const u = this.mat.uniforms;
+    u.uVolumeOn!.value = volume ? 1 : 0;
     (u.uSize!.value as THREE.Vector2).set(F.w, F.h);
     u.uK!.value = F.k;
     u.uDevH!.value = F.H;

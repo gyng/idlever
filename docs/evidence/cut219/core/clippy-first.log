@@ -1,0 +1,123 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:34:68
+   |
+34 | pub fn prepared_traits(g:&mut Game){if persistent::away(g){return;}if let Some(r)=g.run.as_mut().filter(|r|r.turn==0&&r.over.is_none...
+   |                                                                    ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+   = note: `-D clippy::possible-missing-else` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::possible_missing_else)]`
+
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:34:187
+   |
+34 | ...er.is_none()){traits::neutralize(r);traits::wear(r,&g.lineage);}if let Some(s)=g.sent_state.as_mut(){s.lineage.heirs=g.lineage.he...
+   |                                                                    ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:36:83
+   |
+36 |  if !inherited_open(&g.lineage){return Err("Reach D8 after eight delves".into());}if g.lineage.heirs.blood.is_some(){return Err("Con...
+   |                                                                                   ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error: this looks like you are trying to use `.. *= ..`, but you really are doing `.. = (* ..)`
+  --> crates/idlever-core/src/progression.rs:41:121
+   |
+41 | fn contexts(l:&LineageState)->Vec<FamilyContext>{traits::WHENS.iter().map(|w|{let shape=l.heirs.blood.map(|mut s|{s.when=*w;s});let ...
+   |                                                                                                                         ^^
+   |
+   = note: to remove this lint, use either `*=` or `= *`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#suspicious_assignment_formatting
+   = note: `-D clippy::suspicious-assignment-formatting` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::suspicious_assignment_formatting)]`
+
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:54:84
+   |
+54 | pub fn prepare(l:&mut LineageState){if !temperament_open(l)||l.pkg.literal{return;}if l.persistent.queued_temperament.is_none()&&l.o...
+   |                                                                                    ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:54:759
+   |
+54 | ...as_ref()!=Some(&id){l.persistent.queued_temperament=Some(id);}}}if let Some(id)=l.persistent.queued_temperament.take(){let change...
+   |                                                                    ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error: this looks like an `else if` but the `else` is missing
+   --> crates/idlever-core/src/town.rs:439:47
+    |
+439 |  if built(l,id)||triggered(l,id){return None;}if !l.town.home.unwrap_or(true){return Some("Build a house".into());}
+    |                                               ^
+    |
+    = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error[E0433]: cannot find `Session` in `crate`
+   --> crates/idlever-core/src/progression.rs:100:82
+    |
+100 | ...n_paid_new_resident(){let mut s=crate::Session::new(1);s.build_town("house").unwrap();s.lineage.tree.hired.push(("scout".into(),...
+    |                                           ^^^^^^^ could not find `Session` in the crate root
+    |
+help: consider importing this struct
+    |
+100 +  use crate::bloodlines::Session;
+    |
+help: if you import `Session`, refer to it directly
+    |
+100 -  #[test]fn eligible_town_does_not_relock_on_paid_new_resident(){let mut s=crate::Session::new(1);s.build_town("house").unwrap();s.lineage.tree.hired.push(("scout".into(),0));s.lineage.persistent.completed=4;s.lineage.gold_move(750,"banked D5");let gold=s.lineage.gold;s.add_bloodline().unwrap();s.add_bloodline().unwrap();assert_eq!(s.lineage.gold,gold-500);s.select_bloodline(2).unwrap();assert_eq!(s.lineage.persistent.completed,0);assert!(crate::town::build_ready(&s.lineage,"blacksmith"));let before=s.save();let _=s.lineage();assert_eq!(before,s.save());let mut s=crate::Session::load(&before).unwrap();s.build_town("blacksmith").unwrap();s.select_bloodline(3).unwrap();assert!(crate::town::built(&s.lineage,"blacksmith"));assert_eq!(s.lineage.persistent.completed,0);assert!(s.lineage.heirs.blood.is_none());assert!(s.lineage.pkg.temperament.is_none());}
+100 +  #[test]fn eligible_town_does_not_relock_on_paid_new_resident(){let mut s=Session::new(1);s.build_town("house").unwrap();s.lineage.tree.hired.push(("scout".into(),0));s.lineage.persistent.completed=4;s.lineage.gold_move(750,"banked D5");let gold=s.lineage.gold;s.add_bloodline().unwrap();s.add_bloodline().unwrap();assert_eq!(s.lineage.gold,gold-500);s.select_bloodline(2).unwrap();assert_eq!(s.lineage.persistent.completed,0);assert!(crate::town::build_ready(&s.lineage,"blacksmith"));let before=s.save();let _=s.lineage();assert_eq!(before,s.save());let mut s=crate::Session::load(&before).unwrap();s.build_town("blacksmith").unwrap();s.select_bloodline(3).unwrap();assert!(crate::town::built(&s.lineage,"blacksmith"));assert_eq!(s.lineage.persistent.completed,0);assert!(s.lineage.heirs.blood.is_none());assert!(s.lineage.pkg.temperament.is_none());}
+    |
+
+error[E0433]: cannot find `Session` in `crate`
+   --> crates/idlever-core/src/progression.rs:100:577
+    |
+100 | ..._eq!(before,s.save());let mut s=crate::Session::load(&before).unwrap();s.build_town("blacksmith").unwrap();s.select_bloodline(3)...
+    |                                           ^^^^^^^ could not find `Session` in the crate root
+    |
+help: consider importing this struct
+    |
+100 +  use crate::bloodlines::Session;
+    |
+help: if you import `Session`, refer to it directly
+    |
+100 -  #[test]fn eligible_town_does_not_relock_on_paid_new_resident(){let mut s=crate::Session::new(1);s.build_town("house").unwrap();s.lineage.tree.hired.push(("scout".into(),0));s.lineage.persistent.completed=4;s.lineage.gold_move(750,"banked D5");let gold=s.lineage.gold;s.add_bloodline().unwrap();s.add_bloodline().unwrap();assert_eq!(s.lineage.gold,gold-500);s.select_bloodline(2).unwrap();assert_eq!(s.lineage.persistent.completed,0);assert!(crate::town::build_ready(&s.lineage,"blacksmith"));let before=s.save();let _=s.lineage();assert_eq!(before,s.save());let mut s=crate::Session::load(&before).unwrap();s.build_town("blacksmith").unwrap();s.select_bloodline(3).unwrap();assert!(crate::town::built(&s.lineage,"blacksmith"));assert_eq!(s.lineage.persistent.completed,0);assert!(s.lineage.heirs.blood.is_none());assert!(s.lineage.pkg.temperament.is_none());}
+100 +  #[test]fn eligible_town_does_not_relock_on_paid_new_resident(){let mut s=crate::Session::new(1);s.build_town("house").unwrap();s.lineage.tree.hired.push(("scout".into(),0));s.lineage.persistent.completed=4;s.lineage.gold_move(750,"banked D5");let gold=s.lineage.gold;s.add_bloodline().unwrap();s.add_bloodline().unwrap();assert_eq!(s.lineage.gold,gold-500);s.select_bloodline(2).unwrap();assert_eq!(s.lineage.persistent.completed,0);assert!(crate::town::build_ready(&s.lineage,"blacksmith"));let before=s.save();let _=s.lineage();assert_eq!(before,s.save());let mut s=Session::load(&before).unwrap();s.build_town("blacksmith").unwrap();s.select_bloodline(3).unwrap();assert!(crate::town::built(&s.lineage,"blacksmith"));assert_eq!(s.lineage.persistent.completed,0);assert!(s.lineage.heirs.blood.is_none());assert!(s.lineage.pkg.temperament.is_none());}
+    |
+
+error: this looks like an `else if` but the `else` is missing
+  --> crates/idlever-core/src/progression.rs:95:386
+   |
+95 | ...eage).is_some_and(|n|n.id=="porter"){g.hire("porter").unwrap();}if crate::tree::lit(&g.lineage).is_some_and(|n|n.id=="scout"){g.h...
+   |                                                                    ^
+   |
+   = note: to remove this lint, add the missing `else` or add a new line before the second `if`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#possible_missing_else
+
+error: redundant closure
+  --> crates/idlever-core/src/progression.rs:54:505
+   |
+54 | ...}"))).and_then(|k|traits::answer_gift(k)).map(|(gift,_)|if gift==traits::Gift::Quick{"skittish"}else if gift==traits::Gift::Mend{...
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^ help: replace the closure with the function itself: `traits::answer_gift`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#redundant_closure
+   = note: `-D clippy::redundant-closure` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::redundant_closure)]`
+
+error: could not compile `idlever-core` (lib) due to 8 previous errors
+warning: build failed, waiting for other jobs to finish...
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `idlever-core` (lib test) due to 10 previous errors

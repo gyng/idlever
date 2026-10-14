@@ -1,0 +1,20 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Actual earned terrain PNG remains byte-exact
++ actual - expected
+
++ '1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd'
+- '5bfa89ac64422a445b40c942b74fa2195ddafaa8a0f8e20e978e94244f71ea0e'
+
+    at file:///home/g/p/riddle/scratchpad/cut224/sparse-actual-hashed.mjs:2:3285 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd',
+  expected: '5bfa89ac64422a445b40c942b74fa2195ddafaa8a0f8e20e978e94244f71ea0e',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

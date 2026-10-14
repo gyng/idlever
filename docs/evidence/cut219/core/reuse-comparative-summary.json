@@ -1,0 +1,22 @@
+{
+  "scope": "Targeted original16-seed IDLE/PICKED; fail-fast stopped on settled impossible D13median. Not current-game complete balance acceptance.",
+  "log_sha256": "ef7e10179f31c62fe5bf8fb6c4c808f45e19fca5d64f22a87ddb53b283641b29",
+  "rows": {
+    "idle-king": {
+      "status": "PASS",
+      "evaluated": 16
+    },
+    "picked-idle": {
+      "status": "FAIL",
+      "paired_evaluated": 12,
+      "d13_median_lower": 1.0,
+      "d13_median_upper": 1.0,
+      "required": 1.5,
+      "remaining_pairs": 4
+    },
+    "outpace": {
+      "status": "open",
+      "reason": "fail-fast stop before all needed outcomes"
+    }
+  }
+}

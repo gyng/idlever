@@ -70,7 +70,7 @@ const fn tactic(id: &'static str, name: &'static str) -> PackageDef {
     PackageDef { id, kind: Kind::Tactic, name, card: Some(id), trigger: "slay Warlord", temperament: None }
 }
 const fn temper(id: &'static str, name: &'static str, t: crate::hero::Trait) -> PackageDef {
-    PackageDef { id, kind: Kind::Temperament, name, card: None, trigger: "heir 3", temperament: Some(t) }
+    PackageDef { id, kind: Kind::Temperament, name, card: None, trigger: "six delves", temperament: Some(t) }
 }
 
 /// The set v1 (docs/CUT30.md §2): 4 stances, 6 tactics (today's cards), 4 temperaments.
@@ -112,7 +112,7 @@ pub fn name(id: &str) -> &str {
 /// Plain-language purpose; detailed conditions remain in the compiled rules.
 pub fn description(id: &str) -> &'static str {
     match id {
-        "steady" => "Heal when hurt · fight nearest",
+        "steady" => "Heal when hurt · fight nearest · one heal, two at L5",
         "guarded" => "Heal early · recover between fights",
         "bold" => "Push deeper · fight while hurt",
         "hunter" => "Prioritise ranged enemies and bosses",
@@ -820,6 +820,7 @@ fn pending_arrivals(l: &LineageState) -> Vec<String> {
                 let due = tactics_owned + tactics_new < tactics_due;
                 (owned_card && l.kills.contains("goblin_warlord")) || due
             }
+            (Kind::Temperament,_) => temperament_open(l),
             _ => false,
         };
         if ok {
@@ -877,7 +878,7 @@ pub fn tactic_slots(l: &LineageState) -> usize {
 
 /// Whether the temperament slot is open (heir 3).
 pub fn temperament_open(l: &LineageState) -> bool {
-    l.heir >= 3
+    crate::progression::temperament_open(l)
 }
 
 /// Equip a package in its slot (a tactic in `slot` 0/1). Free and instant; refused when it has not
@@ -1312,6 +1313,10 @@ pub fn beats_n(lines: &[String], cap: usize) -> Vec<String> {
 
 /// The idle floor's pack keeps this many of the stance's kinds (the heal), bought at the send.
 pub const PACK_FILL: usize = 2;
+/// Steady learns a second prepared remedy at L5; chosen stances keep their own full pack.
+pub fn pack_fill(l: &LineageState) -> usize {
+    if l.pkg.stance == "steady" && l.pkg.level("steady") < 5 { 1 } else { PACK_FILL }
+}
 
 /// The kinds the packages' own rows drink or read (the stance's heal): the idle floor's pack is
 /// kept full of them (`Game::restock_at`), the ones the hero can name and the shelf sells. A
@@ -1336,7 +1341,7 @@ pub fn pack_kinds(l: &LineageState) -> Vec<String> {
             continue;
         }
         let Some(k) = row.verb.a.as_deref().and_then(|a| a.split(',').next()).filter(|k| !k.is_empty() && *k != "unknown") else { continue };
-        if crate::item::is_identified(&l.facts, &l.flavours, k) && !out.iter().any(|x| x == k) {
+        if (crate::item::is_identified(&l.facts, &l.flavours, k) || l.forge.get(k).is_some_and(|f| f.craftable)) && !out.iter().any(|x| x == k) {
             out.push(k.to_string());
         }
     }

@@ -118,12 +118,17 @@ function review(app: App, o: ClassStyleOffer, remove: boolean, onChange: () => v
     );
   });
 }
-export function renderClassStyles(app: App, onChange: () => void): HTMLElement | null {
+export function renderClassStyles(
+  app: App,
+  onChange: () => void,
+  options: { inspectAway?: boolean } = {},
+): HTMLElement | null {
   const L = app.lineage,
     c = L.class_styles,
     o = c?.offers.find((o) => o.parent === L.class);
   // Keep the empty-town/first-send experience small; expose later class progress.
-  if (!c || !o || L.town?.home === false || (o.level < 8 && o.deepest < 18)) return null;
+  const away = L.town?.home === false;
+  if (!c || !o || (away && !options.inspectAway) || (o.level < 8 && o.deepest < 18)) return null;
   const info = detailHost(h("span", { class: "class-style-title" }, h("b", null, o.name)), () => [
     h("div", { class: "kw-tip-head" }, icon(ICONS[o.id], "✦"), h("b", null, o.name)),
     preview(L, o),
@@ -167,8 +172,12 @@ export function renderClassStyles(app: App, onChange: () => void): HTMLElement |
         {
           class: "chip class-style-choose",
           disabled:
-            !(o.selected ? c.remove_available : o.available) || !app.engine.setSpecialization,
-          onclick: () => review(app, o, o.selected, onChange),
+            away ||
+            !(o.selected ? c.remove_available : o.available) ||
+            !app.engine.setSpecialization,
+          onclick: () => {
+            if (!away) review(app, o, o.selected, onChange);
+          },
         },
         o.selected ? /* copy:button */ "Remove path" : /* copy:button */ "Choose path",
       ),

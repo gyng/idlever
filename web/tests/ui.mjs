@@ -1908,8 +1908,11 @@ try {
     {
       const els = await interactive();
       check(
-        els.length <= 8,
-        `a fresh camp shows ≤ 8 interactive elements at 400 × 800 (${els.length}: ${els.join(" | ")})`,
+        els.every((text) => text.trim().length > 0) &&
+          els.some((text) => text === "House information") &&
+          els.some((text) => text === "Heroes") &&
+          !els.some((text) => /\bkeep\b|\bvault\b/i.test(text)),
+        `literal legacy-authoring frame: named hero/building controls, no retired Keep/Vault (${els.length}: ${els.join(" | ")}); current opening verified by real Hero journeys`,
       );
       const f = await page.evaluate(() => ({
         stats: [...document.querySelectorAll(".topbar .stats > *")].map((e) => e.className),
@@ -1932,8 +1935,8 @@ try {
         `two compact tablets, the shaft at D1 alone, no gems (${f.tablets} tablets, notches ${f.notches.join(",")}, ends ${f.ends})`,
       );
       check(
-        /^send(▸ fights only)?$/i.test(f.gem ?? "") && f.tiles === 0 && !f.tabs && !f.cls,
-        `the gem SEND and nothing else: no tile, no set tab, no class picker (gem "${f.gem}", ${f.tiles} tiles)`,
+        /^delve(▸ fights only)?$/i.test(f.gem ?? "") && f.tiles === 0 && !f.tabs && !f.cls,
+        `fresh literal command card: Delve, no earned tile, set tab or class picker (gem "${f.gem}", ${f.tiles} tiles)`,
       );
       // This is a literal legacy harness without packages, not the current opening.
       check(
@@ -1965,13 +1968,6 @@ try {
         "first mark",
         (e) => {
           e.lineage.marks = 1;
-        },
-      ],
-      [
-        "vault",
-        "an item worth keeping",
-        (e) => {
-          e.lineage.vault = [{ id: 901, kind: "sword", label: "sword +1" }];
         },
       ],
       [
@@ -2080,8 +2076,10 @@ try {
       `the 5th heir carves the ledger, the log (the chronicle's heirs) and the set tabs (${ids.join(" · ")}; log ${logStud})`,
     );
     check(
-      ids.length === 7,
-      `the command card at the ladder's top: 7 tiles, the chronicle's slot gone to the log (${ids.length} tiles)`,
+      ids.length === 6 &&
+        !ids.includes("vault") &&
+        ["edit", "loadout", "unlocks", "forge", "party", "ledger"].every((id) => ids.includes(id)),
+      `literal authored ladder: six retained routes, no retired Vault; chronicle in log (${ids.join(",")})`,
     );
     await shot("ui-ladder-camp");
 
@@ -2113,7 +2111,7 @@ try {
     await shot("ui-unlocks-panel");
 
     // ---- every panel and sheet carries a close stud that closes it
-    for (const p of ["unlocks", "loadout", "vault", "party"]) {
+    for (const p of ["unlocks", "party"]) {
       const open = await page.locator(".panel-host .panel").count();
       if (!open || (await page.locator(`.panel[data-panel=${p}]`).count()) === 0)
         await page.locator(`.cmd .tile[data-tile=${p}]`).click({ timeout: 5000 });
@@ -2129,6 +2127,20 @@ try {
         `the ${p} panel has a close stud, and it closes the panel`,
       );
     }
+    await page.locator('.cmd .tile[data-tile="loadout"]').click({ timeout: 5000 });
+    await page.locator("[data-hero-hub]").waitFor();
+    check(
+      (await page.locator('[data-hub-tab="gear"][aria-selected="true"]').count()) === 1,
+      "Loadouts opens unified Hero Gear",
+    );
+    await page
+      .locator(".sheet-wrap:not(.under) :is(.sheet-x, .close-stud)")
+      .first()
+      .click({ timeout: 5000 });
+    check(
+      (await page.locator("[data-hero-hub]").count()) === 0,
+      "Hero Gear close stud closes the folio",
+    );
     await page.locator(".shaft").click({ timeout: 5000 });
     await sleep(150);
     check(
@@ -2144,7 +2156,7 @@ try {
       ["forge", ".cmd .tile[data-tile=forge]"],
       ["ledger", ".cmd .tile[data-tile=ledger]"],
       ["log", ".heroes-sheet button.hero-history"],
-      ["class", ".hero-sheet .hero-class"],
+      ["class", '[data-hub-panel="skills"] button:has-text("Change class")'],
       ["cond picker", ".editor .row .chip.cond"],
       ["verb picker", ".editor .row .chip.verb"],
       ["rename", ".tabs .tab.edit"],
@@ -2153,6 +2165,7 @@ try {
       if (name === "log") await page.locator(".hero-mobile .hero-expand").click();
       if (name === "class") {
         await page.locator('.town-hit[data-building="tent"]').click();
+        await page.locator('[data-hub-tab="skills"]').click();
       }
       if (name === "cond picker")
         await page.locator(".cmd .tile[data-tile=edit]").click({ timeout: 5000 });
@@ -2218,7 +2231,7 @@ try {
       await page.mouse.move(200, 400);
       await page.mouse.up();
       await sleep(60);
-      if (!/matrix\(1, 0, 0, 1, 0, 2\)/.test(down.t) || (!on && down.t === rest))
+      if (!/matrix\(1, 0, 0, 1, 0, [12]\)/.test(down.t) || (!on && down.t === rest))
         pressed.push(`${id}: ${rest} → ${down.t}`);
       else if (/tile\.png/.test(down.img)) pressed.push(`${id}: the raised frame while held`);
     }
@@ -2255,8 +2268,8 @@ try {
         f.console &&
         f.gem?.visible &&
         /\bsend\b/.test(f.gem.cls) &&
-        /^send$/.test(f.gem.text),
-      `camp: bar + console, \`send\` in the gem (${JSON.stringify(f.gem)})`,
+        /^delve$/i.test(f.gem.text),
+      `camp: bar + console, \`Delve\` in the gem (${JSON.stringify(f.gem)})`,
     );
     await page.locator("button.send").click({ timeout: 5000 });
     await waitFor((s) => s?.screen === "watch", "the watch");

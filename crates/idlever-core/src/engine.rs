@@ -2110,6 +2110,7 @@ impl LineageState {
     /// Cut 8B §3: the kennel's leash — while the lineage has never tamed, a free, known leash
     /// sits on the shelf (never refunded, never rebought; one at a time).
     pub fn kennel_leash(&mut self) {
+        if !crate::progression::leash_available(self){return;}
         // (a bought leash on the shelf is the player's, not the kennel's: QA on 524827b)
         if self.kennel_declined || self.tamed_kinds() > 0 || self.supplies.iter().any(|s| s.kind == "leash" && s.free) || self.supplies.len() >= self.supply_cap() {
             return;
@@ -2152,6 +2153,8 @@ impl LineageState {
     /// `gold_move` for `n` supplies bought or refunded at once — the line counts them
     /// (`GoldLine.n`; QA on 778fa1b: `repeat heal ×1 · −$104` for four heals).
     pub fn gold_move_n(&mut self, delta: i32, why: &str, n: u32) {
+        if delta>0&&is_exit_why(why){self.persistent.exit_gold_credit=true;}
+        crate::town::refresh_eligibility(self);
         self.gold += delta;
         // Cut 117 §1: the absence ledger's term
         if delta != 0 {
@@ -2363,6 +2366,9 @@ impl LineageState {
             sets: self.sets.clone(),
             active_set: self.active_set,
             ended: self.ended,
+            actual_party: self.party.clone(),
+            actual_packages: Some(crate::packages::wire(self)),
+            actual_packages_note: "Ready behaviour.".into(),
             party: self.party.clone(),
             kennel: self.kennel.clone(),
             eggs: self.eggs.clone(),
@@ -2540,7 +2546,7 @@ impl LineageState {
     }
     /// Cut 29 §4: the standing orders, read off the lineage.
     pub fn standing_orders(&self) -> crate::wire::StandingOrders {
-        crate::wire::StandingOrders { keep: self.keep_pref.clone(), cage: self.vault_pref.clone(), start: self.start.max(1), repeat: !self.restock_off, insure: self.orders.insure, forge: self.orders.forge.clone(), wall: Some(self.orders.wall.clone()), sink: Some(self.orders.sink.clone()), heir: Some(self.orders.heir.clone()), kennel: Some(self.orders.kennel.clone()), legacy: Some(self.orders.legacy.clone()), ranks: Some(self.orders.ranks.clone()), ascend: Some(self.orders.ascend.clone()), shared: Some(self.orders.shared.iter().cloned().collect()) }
+        crate::wire::StandingOrders { keep: self.keep_pref.clone(), cage: self.vault_pref.clone(), start: self.start.max(1), repeat: !self.restock_off, insure: self.orders.insure, forge: self.orders.forge.clone(), wall: Some(self.orders.wall.clone()), sink: Some(self.orders.sink.clone()), temperament: Some(self.orders.temperament.clone()), kennel: Some(self.orders.kennel.clone()), legacy: Some(self.orders.legacy.clone()), ranks: Some(self.orders.ranks.clone()), ascend: Some(self.orders.ascend.clone()), shared: Some(self.orders.shared.iter().cloned().collect()) }
     }
     /// Storage preferences no longer perform automatic equipment changes.
     pub fn keep_auto(&self) -> Vec<String> { Vec::new() }
@@ -3514,12 +3520,41 @@ impl Game {
 
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
+        let build = crate::hero_build::equipment(self);
+        l.starting_kits.actual_weapon = build.actual.slots[0].kind.clone().unwrap_or_default();
+        l.starting_kits.actual_armour = build.actual.slots[2].kind.clone();
+        l.starting_kits.equipment = Some(build);
+        if let Some(run) = &self.run {
+            l.actual_party = run.companions.iter().filter_map(|c| {
+                let monster=run.monsters.iter().find(|m|m.ally && m.hp>0 && m.cid==Some(c.id))?;
+                let mut actual=c.clone();actual.hp=monster.hp;actual.max_hp=monster.max_hp;Some(actual)
+            }).collect();
+            // Stances and tactics compile into ctx immediately. Temperament is
+            // an actor modifier and only changes on the next departure.
+            let mut actual_lineage=self.lineage.clone();
+            actual_lineage.party=l.actual_party.clone();
+            if crate::persistent::away(self) {
+                if let Some(sent)=self.sent_state.as_ref() {
+                    actual_lineage.pkg.temperament=sent.lineage.pkg.temperament.clone();
+                    actual_lineage.pkg.temperament_chosen=sent.lineage.pkg.temperament_chosen;
+                    if let Some(id)=actual_lineage.pkg.temperament.as_ref() {
+                        match sent.lineage.pkg.runs.get(id) {
+                            Some(runs)=>{actual_lineage.pkg.runs.insert(id.clone(),*runs);},
+                            None=>{actual_lineage.pkg.runs.remove(id);},
+                        }
+                    }
+                }
+                l.actual_packages_note="Stance and tactics change now. Temperament changes next delve.".into();
+            }
+            l.actual_packages=Some(crate::packages::wire(&actual_lineage));
+        }
         l.starting_kits.armour_sets=crate::armour_sets::wire(&self.lineage,self.run.as_ref().map(|r|&r.hero));
         if self.lineage.set_focus.is_some()&&self.run.as_ref().is_some_and(|r|r.set_focus.is_none()&&r.over.is_none()) {
             for set in &mut l.starting_kits.armour_sets {if set.focus.active&&set.focus.blocked.is_none() {set.focus.status="Queued after this prepared expedition".into();}}
         }
         l.journal=Some(crate::journal::wire(&self.lineage,crate::persistent::away(self)));
         l.persistent_hero=Some(crate::persistent::wire(&self.lineage,crate::persistent::away(self)));
+        if let (Some(p),Some(r))=(l.persistent_hero.as_mut(),self.run.as_ref()){p.progression.actual_inherited=r.worn.blood.map(|s|crate::traits::card(s,"commitment",&self.lineage.facts));p.progression.actual_temperament=self.sent_state.as_ref().and_then(|s|s.lineage.pkg.temperament.clone());p.progression.actual_family=self.sent_state.as_ref().and_then(|s|s.lineage.heirs.bloodline.map(|w|w.word().into()));}
         if let Some(run)=&self.run { l.depth_landmarks=run.route.bosses().into_iter().filter(|(kind,_)|self.lineage.facts.contains(&format!("foe:{kind}"))).map(|(kind,depth)|crate::wire::DepthLandmark{depth,kind:"boss".into(),id:kind.into(),label:kind_title(kind)}).collect(); }
         if self.lineage.endgame.is_some() || self.lineage.ended { l.endgame = Some(self.descent_progress()); }
         l.return_pick = crate::returns::wire(&self.lineage);
@@ -4127,6 +4162,7 @@ impl Game {
         self.auto_keep();
         // Cut 30.5: the workers' standing orders, between real runs
         let previous_start = self.lineage.start.max(1);
+        crate::progression::prepare(&mut self.lineage);
         crate::tree::at_send(self);
         // The guide may pick a different stone during an absence. Its send needs that
         // stone's passage on the camp now, rather than the tuple priced before the workers.
@@ -6625,7 +6661,7 @@ impl Game {
 
     pub fn supply_catalogue(&self) -> Vec<SupplyInfo> {
         // Cut 191: eligibility is permanent; preparing an unlocked item never costs Gold.
-        let mut out = vec![SupplyInfo { kind: "leash".into(), price: 0, label: "leash".into() }];
+        let mut out=Vec::new();if crate::progression::leash_available(&self.lineage){out.push(SupplyInfo{kind:"leash".into(),price:0,label:"leash".into()});}
         for d in crate::defs::ITEMS {
             if crate::legendary::definition(d.kind).is_some() {continue;}
             let base = match d.cat {
@@ -6815,6 +6851,14 @@ impl Game {
         let plan = current_repeat_plan(&self.lineage, plan);
         let on_shelf: Vec<(String, bool)> = self.lineage.supplies.iter().filter(|s| !s.free).map(|s| (s.kind.clone(), s.auto_packed)).collect();
         let supplied = supplied_slots(&plan, &on_shelf);
+        // A newly automatic item can fulfil an exact authored repeat of the same
+        // kind; retain that authored ownership instead of silently changing it.
+        let shelf_indices: Vec<usize> = self.lineage.supplies.iter().enumerate().filter(|(_, item)| !item.free).map(|(i, _)| i).collect();
+        for (slot, supplied_index) in supplied_slot_assignments(&plan, &on_shelf).iter().enumerate() {
+            if !plan[slot].1 {
+                if let Some(index) = supplied_index { self.lineage.supplies[shelf_indices[*index]].auto_packed = false; }
+            }
+        }
         // Cut 13 §3: a kind the last run used to no effect is not rebought (rater R: "the
         // strength potion the trait drinks at full HP is rebought sixteen times").
         let wasted = self.lineage.last_wasted.clone();
@@ -7972,12 +8016,13 @@ fn is_zero_u32(n: &u32) -> bool {
 fn automatic_pack_plan(l: &LineageState) -> Vec<String> {
     let qm = crate::packages::quartermaster(l);
     let fill: Vec<String> = crate::packages::pack_kinds(l).into_iter().filter(|k| !qm.contains(k)).collect();
+    let pack_fill = crate::packages::pack_fill(l);
     let mut want = qm;
-    want.extend(fill.iter().cycle().take(if fill.is_empty() { 0 } else { l.supply_cap().min(crate::packages::PACK_FILL) }).cloned());
+    want.extend(fill.iter().cycle().take(if fill.is_empty() { 0 } else { l.supply_cap().min(pack_fill) }).cloned());
     // A tactic's counter must not reduce the stance's healing when the pack has
     // room. These are paid automatic entries, subject to the usual restock caps.
     if fill.iter().any(|kind| kind == "heal") {
-        let missing = crate::packages::PACK_FILL.saturating_sub(want.iter().filter(|kind| *kind == "heal").count());
+        let missing = pack_fill.saturating_sub(want.iter().filter(|kind| *kind == "heal").count());
         let room = l.supply_cap().saturating_sub(want.len());
         want.extend(std::iter::repeat_n("heal".to_string(), missing.min(room)));
     }

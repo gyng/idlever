@@ -1,0 +1,138 @@
+error[E0277]: the trait bound `usize: From<&str>` is not satisfied
+   --> crates/idlever-core/src/progression.rs:614:45
+    |
+614 |         g.lineage.tree.hired.insert("scout".into());
+    |                                             ^^^^ the trait `From<&str>` is not implemented for `usize`
+    |
+help: `usize` implements trait `From<T>`
+   --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/num.rs:47:9
+    |
+ 47 |         impl const From<bool> for $int {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<bool>`
+...
+ 68 | impl_from_bool!(u8 u16 u32 u64 u128 usize);
+    | ------------------------------------------ in this macro invocation
+...
+ 76 |         impl const From<$small> for $large {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         `From<u16>`
+    |         `From<u8>`
+...
+ 93 | impl_from!(u8 => usize, #[stable(feature = "lossless_int_conv", since = "1.5.0")]);
+    | ---------------------------------------------------------------------------------- in this macro invocation
+...
+129 | impl_from!(u16 => usize, #[stable(feature = "lossless_iusize_conv", since = "1.26.0")]);
+    | --------------------------------------------------------------------------------------- in this macro invocation
+    |
+   ::: /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/mem/alignment.rs:299:1
+    |
+299 | impl const From<Alignment> for usize {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<std::mem::Alignment>`
+    = note: required for `&str` to implement `Into<usize>`
+    = note: this error originates in the macro `impl_from_bool` which comes from the expansion of the macro `impl_from` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+    --> crates/idlever-core/src/progression.rs:614:30
+     |
+ 614 |         g.lineage.tree.hired.insert("scout".into());
+     |                              ^^^^^^---------------- argument #2 of type `(std::string::String, u32)` is missing
+     |
+note: method defined here
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:2272:12
+     |
+2272 |     pub fn insert(&mut self, index: usize, element: T) {
+     |            ^^^^^^
+help: provide the argument
+     |
+ 614 |         g.lineage.tree.hired.insert("scout".into(), /* (std::string::String, u32) */);
+     |                                                   ++++++++++++++++++++++++++++++++++
+
+error[E0599]: no method named `as_ref` found for struct `PackagesWire` in the current scope
+    --> crates/idlever-core/src/progression.rs:643:41
+     |
+ 643 |         assert_eq!(g.lineage().packages.as_ref().unwrap().drills[0].source.as_deref(), Some("Guild study"));
+     |                                         ^^^^^^ method not found in `PackagesWire`
+     |
+    ::: crates/idlever-core/src/wire.rs:1963:1
+     |
+1963 | pub struct PackagesWire {
+     | ----------------------- method `as_ref` not found for this struct
+     |
+     = help: items from traits can only be used if the trait is implemented and in scope
+     = note: the following trait defines an item `as_ref`, perhaps you need to implement it:
+             candidate #1: `AsRef`
+help: some of the expressions' fields have a method of the same name
+     |
+ 643 |         assert_eq!(g.lineage().packages.build.as_ref().unwrap().drills[0].source.as_deref(), Some("Guild study"));
+     |                                         ++++++
+ 643 |         assert_eq!(g.lineage().packages.temperament.as_ref().unwrap().drills[0].source.as_deref(), Some("Guild study"));
+     |                                         ++++++++++++
+
+error[E0308]: mismatched types
+    --> crates/idlever-core/src/progression.rs:652:37
+     |
+ 652 |         g.lineage.tree.hired.remove("scout");
+     |                              ------ ^^^^^^^ expected `usize`, found `&str`
+     |                              |
+     |                              arguments to this method are incorrect
+     |
+note: method defined here
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:2367:12
+     |
+2367 |     pub fn remove(&mut self, index: usize) -> T {
+     |            ^^^^^^
+
+error[E0277]: the trait bound `usize: From<&str>` is not satisfied
+   --> crates/idlever-core/src/progression.rs:655:45
+    |
+655 |         g.lineage.tree.hired.insert("scout".into());
+    |                                             ^^^^ the trait `From<&str>` is not implemented for `usize`
+    |
+help: `usize` implements trait `From<T>`
+   --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/convert/num.rs:47:9
+    |
+ 47 |         impl const From<bool> for $int {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<bool>`
+...
+ 68 | impl_from_bool!(u8 u16 u32 u64 u128 usize);
+    | ------------------------------------------ in this macro invocation
+...
+ 76 |         impl const From<$small> for $large {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |         |
+    |         `From<u16>`
+    |         `From<u8>`
+...
+ 93 | impl_from!(u8 => usize, #[stable(feature = "lossless_int_conv", since = "1.5.0")]);
+    | ---------------------------------------------------------------------------------- in this macro invocation
+...
+129 | impl_from!(u16 => usize, #[stable(feature = "lossless_iusize_conv", since = "1.26.0")]);
+    | --------------------------------------------------------------------------------------- in this macro invocation
+    |
+   ::: /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core/src/mem/alignment.rs:299:1
+    |
+299 | impl const From<Alignment> for usize {
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `From<std::mem::Alignment>`
+    = note: required for `&str` to implement `Into<usize>`
+    = note: this error originates in the macro `impl_from_bool` which comes from the expansion of the macro `impl_from` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error[E0061]: this method takes 2 arguments but 1 argument was supplied
+    --> crates/idlever-core/src/progression.rs:655:30
+     |
+ 655 |         g.lineage.tree.hired.insert("scout".into());
+     |                              ^^^^^^---------------- argument #2 of type `(std::string::String, u32)` is missing
+     |
+note: method defined here
+    --> /home/g/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:2272:12
+     |
+2272 |     pub fn insert(&mut self, index: usize, element: T) {
+     |            ^^^^^^
+help: provide the argument
+     |
+ 655 |         g.lineage.tree.hired.insert("scout".into(), /* (std::string::String, u32) */);
+     |                                                   ++++++++++++++++++++++++++++++++++
+
+Some errors have detailed explanations: E0061, E0277, E0308, E0599.
+For more information about an error, try `rustc --explain E0061`.
+error: could not compile `idlever-core` (lib test) due to 6 previous errors

@@ -830,7 +830,7 @@ pub fn new_legacy() -> &'static str {
     NEW_LEGACY
 }
 /// The orders `same for all` copies to every bloodline (`StandingSwitches.shared`).
-pub const SHAREABLE: [&str; 9] = ["insure", "forge", "wall", "sink", "heir", "kennel", "legacy", "ranks", "ascend"];
+pub const SHAREABLE: [&str; 9] = ["insure", "forge", "wall", "sink", "temperament", "kennel", "legacy", "ranks", "ascend"];
 
 /// The `acts` keys of the order lines (never a node's): the ranks bought (`ranks`, per worker `ranks:scout`, their
 /// gold `ranks$`); the Legacy bought (`legacy`, per upgrade `legacy:health`, the points `legacy◆`); the herald's

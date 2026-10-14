@@ -1,0 +1,2794 @@
+{
+  "checks": 494,
+  "rows": [
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 320,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 24,
+          "y": 264,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 24,
+          "y": 336,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 96,
+          "y": 336,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 219,
+          "y": 119,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 59,
+          "y": 67,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 161,
+          "y": 259,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 63,
+          "y": 203,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 23,
+          "y": 155,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 170,
+          "y": 310,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 131,
+        "y": 147,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 133.296875,
+        "y": 37,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 320,
+        "h": 457
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 6,
+        "cpuMs": 15.899999998509884,
+        "cpuWithUiMs": 16.099999997764826,
+        "cpuP50": 19.600000001490116,
+        "cpuP95": 164.80000000074506,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 119.19999999925494,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          260,
+          53,
+          320,
+          457
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 320,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 24,
+          "y": 317,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 24,
+          "y": 389,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 96,
+          "y": 389,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 188,
+          "y": 38,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 20,
+          "y": 116,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 192,
+          "y": 401,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 125,
+          "y": 308,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 30,
+          "y": 256,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 210,
+          "y": 451,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 131,
+        "y": 200,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 133.296875,
+        "y": 90,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 320,
+        "h": 576
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.199999999254942,
+        "cpuWithUiMs": 2.399999998509884,
+        "cpuP50": 22.399999998509884,
+        "cpuP95": 87.30000000074506,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 65.10000000149012,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          260,
+          0,
+          320,
+          576
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 400,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 36,
+          "y": 310,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 36,
+          "y": 400,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 126,
+          "y": 400,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 266,
+          "y": 143,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 96,
+          "y": 75,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 235,
+          "y": 289,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 150,
+          "y": 315,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 89,
+          "y": 246,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 236,
+          "y": 341,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 170,
+        "y": 172,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 213.296875,
+        "y": 39,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 400,
+        "h": 520
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.300000000745058,
+        "cpuWithUiMs": 2.400000002235174,
+        "cpuP50": 4.5,
+        "cpuP95": 85.80000000074506,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.25,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 56.30000000074506,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          260,
+          73,
+          320,
+          416
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 400,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 36,
+          "y": 337,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 36,
+          "y": 427,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 126,
+          "y": 427,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 244,
+          "y": 170,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 89,
+          "y": 97,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 185,
+          "y": 316,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 60,
+          "y": 273,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 15,
+          "y": 223,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 196,
+          "y": 368,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 170,
+        "y": 199,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 213.296875,
+        "y": 66,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 400,
+        "h": 576
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.800000000745058,
+        "cpuWithUiMs": 3,
+        "cpuP50": 4.800000000745058,
+        "cpuP95": 87.60000000149012,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.25,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 62.5,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          260,
+          51,
+          320,
+          461
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 1440,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 246,
+          "y": 250,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 246,
+          "y": 331,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 327,
+          "y": 331,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 457,
+          "y": 94,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 312,
+          "y": 32,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 418,
+          "y": 235,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 298,
+          "y": 188,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 232,
+          "y": 186,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 540,
+          "y": 166,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 366,
+        "y": 122,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 420.296875,
+        "y": 339,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 792.015625,
+        "h": 413.40625
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 2,
+        "frames": 3,
+        "cpuMs": 2.400000002235174,
+        "cpuWithUiMs": 2.5,
+        "cpuP50": 4.699999999254942,
+        "cpuP95": 93.89999999850988,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.125,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 64.69999999925494,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          68,
+          97,
+          704,
+          368
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "three-actual.game.json.gz",
+      "width": 1440,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 260,
+          "y": 216,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 260,
+          "y": 288,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 332,
+          "y": 288,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 455,
+          "y": 71,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 287,
+          "y": 15,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 534,
+          "y": 188,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 361,
+          "y": 207,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 266,
+          "y": 155,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 528,
+          "y": 136,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 367,
+        "y": 99,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 408.296875,
+        "y": 301,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 792.015625,
+        "h": 360
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 2,
+        "frames": 3,
+        "cpuMs": 2.100000001490116,
+        "cpuWithUiMs": 2.300000000745058,
+        "cpuP50": 28.300000000745058,
+        "cpuP95": 118.20000000298023,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 306,
+            "y": 347
+          },
+          {
+            "kind": 34,
+            "asset": "town_seated:hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 306,
+            "y": 419
+          },
+          {
+            "kind": 47,
+            "asset": "town_seated:hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 378,
+            "y": 419
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 73.30000000074506,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          24,
+          101,
+          792,
+          360
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 320,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 286,
+          "y": 260,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 286,
+          "y": 332,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 214,
+          "y": 332,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 207,
+          "y": 118,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 69,
+          "y": 64,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 149,
+          "y": 258,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 51,
+          "y": 202,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 11,
+          "y": 154,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 260,
+          "y": 384,
+          "w": 73,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 133,
+          "y": 357,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 119,
+        "y": 146,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 156.296875,
+        "y": 36,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 342.5625,
+        "h": 455
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 5,
+        "cpuMs": 1.5999999977648258,
+        "cpuWithUiMs": 1.800000000745058,
+        "cpuP50": 13.5,
+        "cpuP95": 86,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 348
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 420
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 419
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 62,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          272,
+          54,
+          343,
+          455
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 320,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 286,
+          "y": 314,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 286,
+          "y": 386,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 214,
+          "y": 386,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 207,
+          "y": 172,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 40,
+          "y": 116,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 190,
+          "y": 449,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 113,
+          "y": 308,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 18,
+          "y": 256,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 213,
+          "y": 38,
+          "w": 124,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 79,
+          "y": 411,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 119,
+        "y": 200,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 156.296875,
+        "y": 90,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 342.5625,
+        "h": 576
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.300000000745058,
+        "cpuWithUiMs": 2.5,
+        "cpuP50": 2.399999998509884,
+        "cpuP95": 76.40000000223517,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 347
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 419
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 419
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 56.69999999925494,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          272,
+          0,
+          343,
+          576
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 400,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 315,
+          "y": 293,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 315,
+          "y": 365,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 243,
+          "y": 365,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 236,
+          "y": 151,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 98,
+          "y": 95,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 178,
+          "y": 291,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 80,
+          "y": 235,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 14,
+          "y": 251,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 307,
+          "y": 209,
+          "w": 73,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 310,
+          "y": 159,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 148,
+        "y": 179,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 189.296875,
+        "y": 69,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 400,
+        "h": 520
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2,
+        "cpuWithUiMs": 2.100000001490116,
+        "cpuP50": 3.899999998509884,
+        "cpuP95": 78.29999999701977,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 347
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 419
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 56.5,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          243,
+          21,
+          400,
+          520
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 400,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 315,
+          "y": 314,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 315,
+          "y": 386,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 243,
+          "y": 386,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 236,
+          "y": 172,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 68,
+          "y": 116,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 219,
+          "y": 449,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 142,
+          "y": 308,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 47,
+          "y": 256,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 263,
+          "y": 38,
+          "w": 124,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 108,
+          "y": 411,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 148,
+        "y": 200,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 189.296875,
+        "y": 90,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 400,
+        "h": 576
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 1.5,
+        "cpuWithUiMs": 1.6000000014901161,
+        "cpuP50": 2.899999998509884,
+        "cpuP95": 90.40000000223517,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 347
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 419
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 62,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          243,
+          0,
+          400,
+          576
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 1440,
+      "scale": 1,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 528,
+          "y": 247,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 528,
+          "y": 328,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 447,
+          "y": 328,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 432,
+          "y": 81,
+          "w": 70,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 286,
+          "y": 32,
+          "w": 66,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 392,
+          "y": 235,
+          "w": 72,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 359,
+          "y": 284,
+          "w": 65,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 267,
+          "y": 186,
+          "w": 62,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 567,
+          "y": 183,
+          "w": 73,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 508,
+          "y": 84,
+          "w": 63,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 340,
+        "y": 122,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 394.296875,
+        "y": 133,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 792.015625,
+        "h": 413.40625
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 2,
+        "frames": 3,
+        "cpuMs": 2.300000000745058,
+        "cpuWithUiMs": 2.400000002235174,
+        "cpuP50": 4.300000000745058,
+        "cpuP95": 124.69999999925494,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.125,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 347
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 419
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 419
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 83.80000000074506,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          91,
+          97,
+          704,
+          368
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    },
+    {
+      "fixture": "controlled/three-controlled-reincarnating.game.json.gz",
+      "width": 1440,
+      "scale": 2,
+      "actualBuildingTargets": [
+        "tent",
+        "blacksmith",
+        "kennel",
+        "guild",
+        "pool",
+        "device",
+        "staked"
+      ],
+      "actors": [
+        {
+          "id": 1,
+          "x": 511,
+          "y": 213,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 2,
+          "x": 511,
+          "y": 285,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": 3,
+          "x": 439,
+          "y": 285,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "labels": [
+        {
+          "id": "tent",
+          "x": 432,
+          "y": 71,
+          "w": 115,
+          "h": 44
+        },
+        {
+          "id": "blacksmith",
+          "x": 264,
+          "y": 15,
+          "w": 108,
+          "h": 44
+        },
+        {
+          "id": "kennel",
+          "x": 503,
+          "y": 125,
+          "w": 122,
+          "h": 44
+        },
+        {
+          "id": "guild",
+          "x": 338,
+          "y": 207,
+          "w": 107,
+          "h": 44
+        },
+        {
+          "id": "pool",
+          "x": 243,
+          "y": 155,
+          "w": 98,
+          "h": 44
+        },
+        {
+          "id": "device",
+          "x": 551,
+          "y": 73,
+          "w": 124,
+          "h": 44
+        },
+        {
+          "id": "staked",
+          "x": 573,
+          "y": 174,
+          "w": 103,
+          "h": 44
+        }
+      ],
+      "hireRect": {
+        "text": "Hire $600",
+        "x": 344,
+        "y": 99,
+        "w": 54,
+        "h": 26
+      },
+      "hintRect": {
+        "text": "savings · a night's purse",
+        "x": 385.296875,
+        "y": 8,
+        "w": 179.40625,
+        "h": 44
+      },
+      "hintHireOverlaps": [],
+      "host": {
+        "w": 792.015625,
+        "h": 360
+      },
+      "overlaps": [],
+      "labelActor": [],
+      "overflow": 0,
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.400000002235174,
+        "cpuWithUiMs": 2.5,
+        "cpuP50": 14.699999999254942,
+        "cpuP95": 84.40000000223517,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 580,
+            "y": 347
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 580,
+            "y": 419
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 508,
+            "y": 420
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 59.69999999925494,
+        "windTufts": 0,
+        "windSignature": 0,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool",
+          "device"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 2,
+            "resting": true,
+            "phase": "reincarnating"
+          },
+          {
+            "id": 3,
+            "resting": true,
+            "phase": "reincarnating"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 1,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          47,
+          101,
+          792,
+          360
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      }
+    }
+  ],
+  "errors": [],
+  "expectedPackage": {
+    "bytes": 6688669,
+    "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+  },
+  "packages": [
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    }
+  ]
+}

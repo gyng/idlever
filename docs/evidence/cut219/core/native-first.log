@@ -1,0 +1,297 @@
+
+running 907 tests
+............................... 31/907
+economy_free_tests::eligible_potion_scroll_leash_and_weapon_prepare_at_zero_gold --- FAILED
+......... 41/907
+economy_free_tests::permanent_forge_upgrade_and_gunner_sidearm_still_require_gold --- FAILED
+........................................ 82/907
+bloodlines::tests::away_class_xp_belongs_to_each_reported_slot --- FAILED
+.. 85/907
+firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends --- FAILED
+firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps --- FAILED
+................................................... 138/907
+kit::starting_kit_tests::named_authored_duplicates_refill_for_three_actual_departures_at_zero_gold --- FAILED
+.................. 157/907
+legendary::tests::discoveries_union_across_real_paid_residents_and_reads_stay_pure --- FAILED
+............ 170/907
+legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning --- FAILED
+....... 178/907
+meta::tests::rogue_free_at_first_bank_and_tame_from_the_start --- FAILED
+... 182/907
+legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks --- FAILED
+.................. 201/907
+kit::starting_kit_tests::default_draws_paid_upgrades_and_selected_offline_reload_remain_exact --- FAILED
+....................................... 241/907
+tests::a_bought_leash_comes_home_from_a_return --- FAILED
+....................................................................................... 329/907
+.................i................................ 379/907
+tests::drop_supply_takes_one_line_without_refunding_a_free_preparation --- FAILED
+............................................................................. 457/907
+tests::death_notes_name_the_death --- FAILED
+....... 465/907
+tests::packed_and_brought_are_not_finds --- FAILED
+.... 470/907
+tests::death_deltas_are_the_camp_forecasts_move --- FAILED
+............................................................................... 550/907
+tests::the_forge_sells_permanent_kit_steps --- FAILED
+... 554/907
+tests::the_kennel_leash_comes_back_free --- FAILED
+... 558/907
+tests::the_first_stray_waits_on_d2_or_d3_for_the_kennel_leash --- FAILED
+....................... 582/907
+tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back --- FAILED
+............... 598/907
+tests_cut113::forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder --- FAILED
+..i.ii.................i......i........ 638/907
+tests_cut118::the_heir_order_picks_without_a_prompt --- FAILED
+........... 650/907
+tests_cut119::the_heir_line_names_the_worn_trait --- FAILED
+................................................................................ 731/907
+tests_cut29::systems_open_one_at_a_time --- FAILED
+.................................... 768/907
+tests_cut30::a_grudge_three_deep_is_a_marked_card --- FAILED
+. 770/907
+tests_cut30::blood_passes_fades_and_twists --- FAILED
+..... 776/907
+tests_cut30::the_wake_offers_three_cards_with_different_whens --- FAILED
+.... 781/907
+tests_cut30_pkg::a_new_heir_keeps_the_worn_temperament --- FAILED
+....... 789/907
+tests_cut30_pkg::an_unpicked_temperament_is_the_wakes_draw --- FAILED
+... 793/907
+tests_cut30_pkg::buildings_require_a_manual_action_and_survive_save_load --- FAILED
+.................. 812/907
+tests_cut30_pkg::one_system_a_report_and_five_beats --- FAILED
+.................................................. 863/907
+town::storage_retirement_tests::remaining_plots_are_manual_and_storage_never_blocks_the_next_plot --- FAILED
+..................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+..test legacy::tests::new_effects_keep_whole_sliced_and_reloaded_eight_hour_state_and_reports_exact has been running for over 60 seconds
+.. 886/907
+trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain --- FAILED
+...test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+..test tests::a_deaths_notes_never_say_saved_him has been running for over 60 seconds
+test tests::a_dice_death_at_a_full_base_says_nothing_beats_it has been running for over 60 seconds
+...............
+failures:
+
+---- economy_free_tests::eligible_potion_scroll_leash_and_weapon_prepare_at_zero_gold stdout ----
+
+thread 'economy_free_tests::eligible_potion_scroll_leash_and_weapon_prepare_at_zero_gold' (4603) panicked at crates/idlever-core/src/economy_free_tests.rs:19:73:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- economy_free_tests::permanent_forge_upgrade_and_gunner_sidearm_still_require_gold stdout ----
+
+thread 'economy_free_tests::permanent_forge_upgrade_and_gunner_sidearm_still_require_gold' (4727) panicked at crates/idlever-core/src/economy_free_tests.rs:152:5:
+assertion `left == right` failed
+  left: "Build the Forge"
+ right: "not enough gold"
+
+---- bloodlines::tests::away_class_xp_belongs_to_each_reported_slot stdout ----
+
+thread 'bloodlines::tests::away_class_xp_belongs_to_each_reported_slot' (4446) panicked at crates/idlever-core/src/bloodlines.rs:494:59:
+assertion failed: other.xp[0].gained > 0
+
+---- firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends stdout ----
+
+thread 'firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends' (5473) panicked at crates/idlever-core/src/gunner_tests.rs:61:58:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps stdout ----
+
+thread 'firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps' (5472) panicked at crates/idlever-core/src/gunner_tests.rs:207:41:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- kit::starting_kit_tests::named_authored_duplicates_refill_for_three_actual_departures_at_zero_gold stdout ----
+
+thread 'kit::starting_kit_tests::named_authored_duplicates_refill_for_three_actual_departures_at_zero_gold' (6089) panicked at crates/idlever-core/src/kit.rs:813:103:
+called `Result::unwrap()` on an `Err` value: "item not unlocked"
+
+---- legendary::tests::discoveries_union_across_real_paid_residents_and_reads_stay_pure stdout ----
+
+thread 'legendary::tests::discoveries_union_across_real_paid_residents_and_reads_stay_pure' (6634) panicked at crates/idlever-core/src/legendary.rs:316:49:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning stdout ----
+
+thread 'legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning' (7088) panicked at crates/idlever-core/src/legendary.rs:274:40:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- meta::tests::rogue_free_at_first_bank_and_tame_from_the_start stdout ----
+
+thread 'meta::tests::rogue_free_at_first_bank_and_tame_from_the_start' (7093) panicked at crates/idlever-core/src/meta.rs:976:9:
+assertion failed: g.lineage.supplies.iter().any(|s| s.kind == "leash" && s.known && s.free)
+
+---- legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks stdout ----
+
+thread 'legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks' (6396) panicked at crates/idlever-core/src/legendary.rs:399:42:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- kit::starting_kit_tests::default_draws_paid_upgrades_and_selected_offline_reload_remain_exact stdout ----
+
+thread 'kit::starting_kit_tests::default_draws_paid_upgrades_and_selected_offline_reload_remain_exact' (6085) panicked at crates/idlever-core/src/kit.rs:861:30:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- tests::a_bought_leash_comes_home_from_a_return stdout ----
+
+thread 'tests::a_bought_leash_comes_home_from_a_return' (9531) panicked at crates/idlever-core/src/tests.rs:11149:5:
+the kennel's leash
+
+---- tests::drop_supply_takes_one_line_without_refunding_a_free_preparation stdout ----
+
+thread 'tests::drop_supply_takes_one_line_without_refunding_a_free_preparation' (19218) panicked at crates/idlever-core/src/tests.rs:7166:27:
+called `Result::unwrap()` on an `Err` value: "not unlocked"
+
+---- tests::death_notes_name_the_death stdout ----
+
+thread 'tests::death_notes_name_the_death' (17725) panicked at crates/idlever-core/src/tests.rs:9488:5:
+["Goblin Captain: telegraph.", "Goblin Captain: summoner."]
+
+---- tests::packed_and_brought_are_not_finds stdout ----
+
+thread 'tests::packed_and_brought_are_not_finds' (26876) panicked at crates/idlever-core/src/tests.rs:10949:5:
+the kennel's leash is packed
+
+---- tests::death_deltas_are_the_camp_forecasts_move stdout ----
+
+thread 'tests::death_deltas_are_the_camp_forecasts_move' (16629) panicked at crates/idlever-core/src/tests.rs:2434:5:
+rest moves D6 by +0.18
+
+---- tests::the_forge_sells_permanent_kit_steps stdout ----
+
+thread 'tests::the_forge_sells_permanent_kit_steps' (36477) panicked at crates/idlever-core/src/tests.rs:10259:5:
+assertion `left == right` failed
+  left: "Build the Forge"
+ right: "not enough gold"
+
+---- tests::the_kennel_leash_comes_back_free stdout ----
+
+thread 'tests::the_kennel_leash_comes_back_free' (36526) panicked at crates/idlever-core/src/tests.rs:10539:95:
+the kennel's leash
+
+---- tests::the_first_stray_waits_on_d2_or_d3_for_the_kennel_leash stdout ----
+
+thread 'tests::the_first_stray_waits_on_d2_or_d3_for_the_kennel_leash' (36469) panicked at crates/idlever-core/src/tests.rs:5659:5:
+the kennel's leash is in the pack
+
+---- tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back stdout ----
+
+thread 'tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back' (39325) panicked at crates/idlever-core/src/tests.rs:2177:27:
+called `Result::unwrap()` on an `Err` value: "not unlocked"
+
+---- tests_cut113::forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder stdout ----
+
+thread 'tests_cut113::forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder' (40269) panicked at crates/idlever-core/src/tests_cut113.rs:30:43:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+
+---- tests_cut118::the_heir_order_picks_without_a_prompt stdout ----
+
+thread 'tests_cut118::the_heir_order_picks_without_a_prompt' (42047) panicked at crates/idlever-core/src/tests_cut118.rs:572:9:
+assertion `left == right` failed: answer
+  left: 0
+ right: 3
+
+---- tests_cut119::the_heir_line_names_the_worn_trait stdout ----
+
+thread 'tests_cut119::the_heir_line_names_the_worn_trait' (43876) panicked at crates/idlever-core/src/tests_cut119.rs:276:41:
+born
+
+---- tests_cut29::systems_open_one_at_a_time stdout ----
+
+thread 'tests_cut29::systems_open_one_at_a_time' (50907) panicked at crates/idlever-core/src/tests_cut29.rs:65:5:
+assertion `left == right` failed
+  left: ["death"]
+ right: ["death", "heirs"]
+
+---- tests_cut30::a_grudge_three_deep_is_a_marked_card stdout ----
+
+thread 'tests_cut30::a_grudge_three_deep_is_a_marked_card' (52774) panicked at crates/idlever-core/src/tests_cut30.rs:137:65:
+a marked card
+
+---- tests_cut30::blood_passes_fades_and_twists stdout ----
+
+thread 'tests_cut30::blood_passes_fades_and_twists' (52798) panicked at crates/idlever-core/src/tests_cut30.rs:92:5:
+assertion `left == right` failed: the empty blood slot takes the parent's born trait
+  left: None
+ right: Some(Shape { when: Hurt, gift: Fury, cost: Frail, tier: Common })
+
+---- tests_cut30::the_wake_offers_three_cards_with_different_whens stdout ----
+
+thread 'tests_cut30::the_wake_offers_three_cards_with_different_whens' (53249) panicked at crates/idlever-core/src/tests_cut30.rs:56:9:
+assertion `left == right` failed: seed 1
+  left: 0
+ right: 3
+
+---- tests_cut30_pkg::a_new_heir_keeps_the_worn_temperament stdout ----
+
+thread 'tests_cut30_pkg::a_new_heir_keeps_the_worn_temperament' (53307) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1772:54:
+heir 3 is offered cards
+
+---- tests_cut30_pkg::an_unpicked_temperament_is_the_wakes_draw stdout ----
+
+thread 'tests_cut30_pkg::an_unpicked_temperament_is_the_wakes_draw' (53543) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1818:5:
+no pick: the draws vary ({None})
+
+---- tests_cut30_pkg::buildings_require_a_manual_action_and_survive_save_load stdout ----
+
+thread 'tests_cut30_pkg::buildings_require_a_manual_action_and_survive_save_load' (53546) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1252:5:
+assertion failed: g.lineage().town.next_ready
+
+---- tests_cut30_pkg::one_system_a_report_and_five_beats stdout ----
+
+thread 'tests_cut30_pkg::one_system_a_report_and_five_beats' (53729) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:149:5:
+assertion `left == right` failed
+  left: ["death"]
+ right: ["death", "heirs"]
+
+---- town::storage_retirement_tests::remaining_plots_are_manual_and_storage_never_blocks_the_next_plot stdout ----
+
+thread 'town::storage_retirement_tests::remaining_plots_are_manual_and_storage_never_blocks_the_next_plot' (56391) panicked at crates/idlever-core/src/town.rs:486:36:
+called `Result::unwrap()` on an `Err` value: "not ready"
+
+---- trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain stdout ----
+
+thread 'trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain' (56393) panicked at crates/idlever-core/src/trace.rs:3358:9:
+assertion `left == right` failed
+  left: 0.5
+ right: 0.0
+
+
+failures:
+    bloodlines::tests::away_class_xp_belongs_to_each_reported_slot
+    economy_free_tests::eligible_potion_scroll_leash_and_weapon_prepare_at_zero_gold
+    economy_free_tests::permanent_forge_upgrade_and_gunner_sidearm_still_require_gold
+    firearm::class_tests::owned_short_gun_costs_once_switches_freely_and_inherits_forge_steps
+    firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends
+    kit::starting_kit_tests::default_draws_paid_upgrades_and_selected_offline_reload_remain_exact
+    kit::starting_kit_tests::named_authored_duplicates_refill_for_three_actual_departures_at_zero_gold
+    legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks
+    legendary::tests::discoveries_union_across_real_paid_residents_and_reads_stay_pure
+    legendary::tests::prepared_kit_refits_merged_units_without_repaying_or_respawning
+    meta::tests::rogue_free_at_first_bank_and_tame_from_the_start
+    tests::a_bought_leash_comes_home_from_a_return
+    tests::death_deltas_are_the_camp_forecasts_move
+    tests::death_notes_name_the_death
+    tests::drop_supply_takes_one_line_without_refunding_a_free_preparation
+    tests::packed_and_brought_are_not_finds
+    tests::the_first_stray_waits_on_d2_or_d3_for_the_kennel_leash
+    tests::the_forge_sells_permanent_kit_steps
+    tests::the_kennel_leash_comes_back_free
+    tests::unlocked_supplies_are_free_at_zero_gold_and_never_kept_back
+    tests_cut113::forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder
+    tests_cut118::the_heir_order_picks_without_a_prompt
+    tests_cut119::the_heir_line_names_the_worn_trait
+    tests_cut29::systems_open_one_at_a_time
+    tests_cut30::a_grudge_three_deep_is_a_marked_card
+    tests_cut30::blood_passes_fades_and_twists
+    tests_cut30::the_wake_offers_three_cards_with_different_whens
+    tests_cut30_pkg::a_new_heir_keeps_the_worn_temperament
+    tests_cut30_pkg::an_unpicked_temperament_is_the_wakes_draw
+    tests_cut30_pkg::buildings_require_a_manual_action_and_survive_save_load
+    tests_cut30_pkg::one_system_a_report_and_five_beats
+    town::storage_retirement_tests::remaining_plots_are_manual_and_storage_never_blocks_the_next_plot
+    trace::tests_causal_root::historical_theft_root_stays_beside_the_immediate_fix_without_claiming_a_gain
+
+test result: FAILED. 868 passed; 33 failed; 6 ignored; 0 measured; 0 filtered out; finished in 78.68s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

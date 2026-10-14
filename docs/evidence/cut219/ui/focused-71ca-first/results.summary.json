@@ -1,0 +1,128 @@
+{
+  "checks": 595,
+  "scope": {
+    "mode": "focused-diagnostic",
+    "cases": [
+      "survivor-family-home",
+      "earned-three-residents",
+      "earned-inherited-offer-home"
+    ],
+    "firstAwayCommitment": true,
+    "sharedManualChoice": true,
+    "widths": [
+      400,
+      1440
+    ],
+    "scales": [
+      1,
+      2
+    ],
+    "views": [
+      "loadouts",
+      "hero",
+      "journal"
+    ],
+    "layouts": 36
+  },
+  "wasmScope": {
+    "mode": "frozen-acceptance-manifest",
+    "fixtureManifest": {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    },
+    "localWasm": {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    },
+    "expected": {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    }
+  },
+  "inputs": {
+    "docs/evidence/cut219/ui-inputs-final/survivor-family-home.game.json.gz": {
+      "bytes": 27069,
+      "sha256": "e3c74f5b2199588b292b7b42a4df29511ec46779ce67590f3da6647942fa205e"
+    },
+    "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz": {
+      "bytes": 155939,
+      "sha256": "c0e02be29790d3d8b57e7675a1f63ddee70b1888e174bc47b435a2fd6545adbf"
+    },
+    "docs/evidence/cut219/ui-inputs-final/earned-inherited-offer-home.game.json.gz": {
+      "bytes": 152951,
+      "sha256": "d90f1d7f5d9e19166fdb1f57764d0378a5dbfb8995c887286f52112fd563adec"
+    }
+  },
+  "source": {
+    "src/ui/hero-progression.ts": {
+      "bytes": 27426,
+      "sha256": "c67cd7e3a0acaa7acc5503a7ec4e1a60549ed25d690fece0a8909eeb4165d51f"
+    },
+    "src/hero-progression.css": {
+      "bytes": 1876,
+      "sha256": "40815eaf01756f85a8a319a33396f43963ac17427f8413614ce4c16694ae6d46"
+    },
+    "src/ui/hero-life.ts": {
+      "bytes": 52805,
+      "sha256": "da74354cadc155dab06d1945c512bbec855ea24c627c93cea488d280a2347031"
+    },
+    "src/ui/bloodline-loadouts.ts": {
+      "bytes": 17232,
+      "sha256": "0d0c3000a415ceecb4400fa98f1e7962a9bb71f6b880bd47d5ba81ff68a5175b"
+    },
+    "src/ui/packages.ts": {
+      "bytes": 136074,
+      "sha256": "e3dfeba8184a9be20196de9ff6b18dffde3655588fec8f25a3fb24844a755fa5"
+    },
+    "src/ui/orders.ts": {
+      "bytes": 11645,
+      "sha256": "fbffcc93d3cc670468b26539d14cf660508e98e26de4982cd8a0ef60050a3af4"
+    },
+    "src/ui/camp.ts": {
+      "bytes": 284835,
+      "sha256": "b665653462287b3026595881fa0e3655c994d782927e07700e82ee5f670956a1"
+    },
+    "src/ui/ladder.ts": {
+      "bytes": 20895,
+      "sha256": "7d42b400f7ca2a13d08619d8d5c1ee4edb7e2c7203f79c2bdcfd96c3c27083f4"
+    },
+    "src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    }
+  },
+  "deliveries": [
+    {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    },
+    {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    },
+    {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    },
+    {
+      "bytes": 6692019,
+      "sha256": "71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4"
+    }
+  ],
+  "result": "PASS",
+  "fullRecordsArchive": "docs/evidence/cut219/ui/focused-71ca-first/results.json.gz",
+  "recordKinds": [
+    {
+      "id": "earned-three-residents",
+      "kind": "threePaidResidents"
+    },
+    {
+      "id": "earned-three-residents",
+      "kind": "manualSharedUnlink"
+    },
+    {
+      "id": "earned-inherited-offer-home",
+      "kind": "firstAwayCommitment"
+    }
+  ]
+}

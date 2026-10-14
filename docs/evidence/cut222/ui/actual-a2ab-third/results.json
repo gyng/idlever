@@ -1,0 +1,74 @@
+{
+  "result": "FAIL",
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(\n\n    at file:///home/g/p/riddle/web/tests/wish-retirement.mjs:182:14",
+  "checks": 53,
+  "layouts": 0,
+  "records": [
+    {
+      "entry": "wishes-0",
+      "input": {
+        "bytes": 176255,
+        "sha256": "f05753814a931fbf82c8709ae9aad6f39b3c7dd2b860a6985cf92bd6601f9c8e"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [],
+        "presentation": []
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-0.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    }
+  ],
+  "errors": []
+}

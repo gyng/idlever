@@ -1,0 +1,65 @@
+build	Test engine	﻿2026-10-13T18:48:31.4103956Z ##[group]Run cargo test -q --workspace --profile fast
+build	Test engine	2026-10-13T18:48:31.4104330Z ^[[36;1mcargo test -q --workspace --profile fast^[[0m
+build	Test engine	2026-10-13T18:48:31.4104670Z ^[[36;1mcargo test -q -p idlever-core --example dayplayer --profile fast^[[0m
+build	Test engine	2026-10-13T18:48:31.4142198Z shell: /usr/bin/bash -e {0}
+build	Test engine	2026-10-13T18:48:31.4142443Z env:
+build	Test engine	2026-10-13T18:48:31.4142689Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+build	Test engine	2026-10-13T18:48:31.4142999Z   CARGO_HOME: /home/runner/.cargo
+build	Test engine	2026-10-13T18:48:31.4143222Z   CARGO_INCREMENTAL: 0
+build	Test engine	2026-10-13T18:48:31.4143417Z   CARGO_TERM_COLOR: always
+build	Test engine	2026-10-13T18:48:31.4143623Z   CACHE_ON_FAILURE: false
+build	Test engine	2026-10-13T18:48:31.4143813Z ##[endgroup]
+build	Test engine	2026-10-13T18:55:07.8574520Z 
+build	Test engine	2026-10-13T18:55:07.8575279Z running 899 tests
+build	Test engine	2026-10-13T18:55:17.6013357Z ....................................................................................... 87/899
+build	Test engine	2026-10-13T18:55:27.8693100Z ....................................................................................... 174/899
+build	Test engine	2026-10-13T18:55:50.1377264Z ....................................................................................... 261/899
+build	Test engine	2026-10-13T18:56:33.0263845Z ....................................................................................... 348/899
+build	Test engine	2026-10-13T18:56:46.0843632Z ..................i.........................................test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+build	Test engine	2026-10-13T18:56:59.7392868Z ........................... 435/899
+build	Test engine	2026-10-13T18:57:15.6363687Z .............................................................test tests::an_attack_row_that_chased_into_the_death_is_the_row_verdict has been running for over 60 seconds
+build	Test engine	2026-10-13T18:57:27.2193175Z .......................... 522/899
+build	Test engine	2026-10-13T18:57:39.0606872Z ....................................................................................... 609/899
+build	Test engine	2026-10-13T18:57:54.0223130Z ..........iii....................i......i.............................................. 696/899
+build	Test engine	2026-10-13T18:58:41.8773044Z ....................................................................................... 783/899
+build	Test engine	2026-10-13T18:59:01.2272803Z ....................................................................................... 870/899
+build	Test engine	2026-10-13T18:59:05.8968132Z .............................
+build	Test engine	2026-10-13T18:59:05.8968763Z test result: ok. 893 passed; 0 failed; 6 ignored; 0 measured; 0 filtered out; finished in 238.04s
+build	Test engine	2026-10-13T18:59:05.8972589Z 
+build	Test engine	2026-10-13T18:59:05.9096725Z 
+build	Test engine	2026-10-13T18:59:05.9097418Z running 0 tests
+build	Test engine	2026-10-13T18:59:05.9097631Z 
+build	Test engine	2026-10-13T18:59:05.9098028Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+build	Test engine	2026-10-13T18:59:05.9098424Z 
+build	Test engine	2026-10-13T18:59:10.9194114Z 
+build	Test engine	2026-10-13T18:59:10.9194971Z running 0 tests
+build	Test engine	2026-10-13T18:59:10.9195253Z 
+build	Test engine	2026-10-13T18:59:10.9205794Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+build	Test engine	2026-10-13T18:59:10.9206128Z 
+build	Test engine	2026-10-13T18:59:11.1798905Z 
+build	Test engine	2026-10-13T18:59:11.1799707Z running 0 tests
+build	Test engine	2026-10-13T18:59:11.1799949Z 
+build	Test engine	2026-10-13T18:59:11.1800408Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+build	Test engine	2026-10-13T18:59:11.1800830Z 
+build	Test engine	2026-10-13T19:00:43.8960915Z 
+build	Test engine	2026-10-13T19:00:43.8961906Z running 17 tests
+build	Test engine	2026-10-13T19:00:43.8995663Z .......... 10/17
+build	Test engine	2026-10-13T19:00:43.9000791Z patch_consumer_tests::patch_consumer_purchase_failure_applies_nothing_and_success_carries_supply --- FAILED
+build	Test engine	2026-10-13T19:01:43.8963629Z .....test checkpoint_tests::resume_preserves_complete_bot_outputs_and_game has been running for over 60 seconds
+build	Test engine	2026-10-13T19:02:05.6098534Z .
+build	Test engine	2026-10-13T19:02:05.6100736Z failures:
+build	Test engine	2026-10-13T19:02:05.6100965Z 
+build	Test engine	2026-10-13T19:02:05.6101869Z ---- patch_consumer_tests::patch_consumer_purchase_failure_applies_nothing_and_success_carries_supply stdout ----
+build	Test engine	2026-10-13T19:02:05.6102404Z 
+build	Test engine	2026-10-13T19:02:05.6103153Z thread 'patch_consumer_tests::patch_consumer_purchase_failure_applies_nothing_and_success_carries_supply' (21309) panicked at crates/idlever-core/examples/dayplayer.rs:2220:9:
+build	Test engine	2026-10-13T19:02:05.6104525Z assertion failed: !take_patch(&mut g, &p)
+build	Test engine	2026-10-13T19:02:05.6105257Z note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+build	Test engine	2026-10-13T19:02:05.6105562Z 
+build	Test engine	2026-10-13T19:02:05.6105569Z 
+build	Test engine	2026-10-13T19:02:05.6105673Z failures:
+build	Test engine	2026-10-13T19:02:05.6106079Z     patch_consumer_tests::patch_consumer_purchase_failure_applies_nothing_and_success_carries_supply
+build	Test engine	2026-10-13T19:02:05.6106372Z 
+build	Test engine	2026-10-13T19:02:05.6106654Z test result: FAILED. 16 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 81.71s
+build	Test engine	2026-10-13T19:02:05.6106934Z 
+build	Test engine	2026-10-13T19:02:05.6110237Z ^[[1m^[[91merror^[[0m: test failed, to rerun pass `-p idlever-core --example dayplayer`
+build	Test engine	2026-10-13T19:02:05.6141969Z ##[error]Process completed with exit code 101.

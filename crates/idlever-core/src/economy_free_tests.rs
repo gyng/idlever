@@ -3,6 +3,7 @@ use crate::{engine::Game, item::Item, wire::ForgeRow};
 
 fn unlocked() -> Game {
     let mut g = Game::new_resident(191);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.clear_supplies();
     g.lineage.gold = 0;
     for kind in ["heal", "mapping", "sword"] {
@@ -149,6 +150,7 @@ fn authored_loadout_repeats_three_delves_without_payment() {
 #[test]
 fn permanent_forge_upgrade_and_gunner_sidearm_still_require_gold() {
     let mut g = unlocked();
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     assert_eq!(crate::kit::buy(&mut g, "weapon").unwrap_err(), "not enough gold");
     let price = crate::kit::price(&g.lineage, "weapon", 0) as i32;
     g.lineage.gold = price;
@@ -163,4 +165,71 @@ fn permanent_forge_upgrade_and_gunner_sidearm_still_require_gold() {
     crate::firearm::forge_sidearm(&mut g).unwrap();
     assert_eq!(g.lineage.gold, 0);
     assert_eq!(g.lineage.kit.get(crate::firearm::SIDEARM_SLOT), Some(&1));
+}
+
+#[test]
+fn automatic_recipe_only_healing_is_real_known_free_preparation() {
+    let mut g = Game::new_resident(219);
+    g.clear_supplies();
+    g.lineage.gold = 0;
+    g.lineage.forge.insert("heal".into(), ForgeRow::at(5));
+    assert!(!crate::item::is_identified(&g.lineage.facts, &g.lineage.flavours, "heal"));
+    let before = g.save();
+    assert!(crate::packages::pack_kinds(&g.lineage).contains(&"heal".into()));
+    let _ = g.lineage();
+    let _ = g.supply_catalogue();
+    assert_eq!(g.save(), before, "unlocked recipe reads do not stock or identify");
+    let ledger = g.lineage.gold_ledger.clone();
+    let mut base = g.clone();
+    base.lineage.forge.remove("heal");
+    base.try_send().unwrap();
+    g.try_send().unwrap();
+    let r = g.run.as_ref().unwrap();
+    let b = base.run.as_ref().unwrap();
+    assert_eq!((r.hero.hp, r.hero.max_hp), (b.hero.hp, b.hero.max_hp));
+    assert_eq!(r.hero.inv.iter().filter(|i| i.kind == "heal").count(), 1, "Steady early pack is one real remedy");
+    assert!(r.hero.inv.iter().filter(|i| i.kind == "heal").all(|i| i.known && i.paid == 0));
+    assert!(crate::item::is_identified(&g.lineage.facts, &g.lineage.flavours, "heal"));
+    assert_eq!(g.lineage.gold, 0);
+    assert_eq!(g.lineage.gold_ledger, ledger);
+    assert!(g.batch.spent.is_empty());
+    assert!(r.hero.inv.len() <= g.lineage.supply_cap());
+}
+
+#[test]
+fn automatic_heals_wait_for_recipe_and_preserve_explicit_full_stock() {
+    let mut g = Game::new_resident(219);
+    g.clear_supplies();
+    g.lineage.forge.insert("heal".into(), ForgeRow::at(4));
+    assert!(!crate::packages::pack_kinds(&g.lineage).contains(&"heal".into()));
+    assert!(g.buy_supply("heal").is_err());
+    g.lineage.forge.insert("heal".into(), ForgeRow::at(5));
+    g.lineage.forge.insert("mapping".into(), ForgeRow::at(5));
+    for _ in 0..g.lineage.supply_cap() { g.buy_supply("mapping").unwrap(); }
+    let stock = g.lineage.supplies.clone();
+    let ledger = g.lineage.gold_ledger.clone();
+    g.restock();
+    assert_eq!(g.lineage.supplies, stock);
+    assert_eq!(g.lineage.gold_ledger, ledger);
+    assert_eq!(g.lineage.supplies.len(), g.lineage.supply_cap());
+}
+
+#[test]
+fn steady_training_adds_second_remedy_at_220_actual_package_runs() {
+    for (runs, expected) in [(219, 1), (220, 2)] {
+        let mut g = Game::new_resident(219);
+        g.clear_supplies();
+        g.lineage.forge.insert("heal".into(), ForgeRow::at(5));
+        g.lineage.pkg.runs.insert("steady".into(), runs);
+        crate::packages::recompile(&mut g.lineage);
+        g.try_send().unwrap();
+        assert_eq!(g.run.as_ref().unwrap().hero.inv.iter().filter(|i| i.kind == "heal").count(), expected);
+    }
+    let mut g = Game::new_resident(219);
+    g.clear_supplies();
+    g.lineage.forge.insert("heal".into(), ForgeRow::at(5));
+    g.lineage.pkg.owned.insert("guarded".into()); // Controlled owned stance, not earned pacing.
+    g.equip_package("guarded", 0).unwrap();
+    g.try_send().unwrap();
+    assert_eq!(g.run.as_ref().unwrap().hero.inv.iter().filter(|i| i.kind == "heal").count(), 2);
 }

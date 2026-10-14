@@ -1,0 +1,89 @@
+import { kingSlain } from "/src/ui/king-eta.ts";
+export const LEGACY_ORDERS = [
+	"balanced",
+	"health",
+	"damage",
+	"armour",
+	"off"
+];
+/* copy:button */
+export const LEGACY_WORD = {
+	balanced: "balanced",
+	health: "health",
+	damage: "damage",
+	armour: "armour",
+	off: "off"
+};
+/* copy:tooltip */
+export const LEGACY_TIP = {
+	balanced: "health → damage → armour in turn · then effects",
+	health: "health first · then balanced",
+	damage: "damage first · then balanced",
+	armour: "armour first · then balanced",
+	off: "Legacy by hand"
+};
+export const RANKS_ORDERS = ["auto", "off"];
+/* copy:button */
+export const RANKS_WORD = {
+	auto: "auto",
+	off: "off"
+};
+export const ASCEND_ORDERS = ["off", "on"];
+/* copy:button */
+export const ASCEND_WORD = {
+	off: "off",
+	on: "on"
+};
+export const TEMPERAMENT_ORDERS = [
+	"keep",
+	"adapt",
+	"variety"
+];
+/* copy:button */
+export const TEMPERAMENT_WORD = {
+	keep: "Keep selected",
+	adapt: "Adapt",
+	variety: "Variety"
+};
+/* copy:tooltip */
+export const TEMPERAMENT_TIP = {
+	keep: "Keep the selected temperament",
+	adapt: "Choose for a known threat at departure",
+	variety: "Vary unlocked temperaments at departure"
+};
+export const temperamentOrderShown = (L) => !!L.orders?.temperament && !!L.persistent_hero?.progression?.temperament_order_available;
+/** the order keys `same for all` can carry (core `tree::SHAREABLE`) */
+export const SHAREABLE = [
+	"insure",
+	"forge",
+	"wall",
+	"sink",
+	"temperament",
+	"kennel",
+	"legacy",
+	"ranks",
+	"ascend"
+];
+/** More than one bloodline in the town: each shareable row offers `same for all`. */
+export const manyBloodlines = (L) => (L.hero_slots?.length ?? 0) > 1;
+export const isShared = (o, key) => (o.shared ?? []).includes(key);
+/** The orders with `key` toggled in `shared` (the rest of the set as it stands). */
+export function toggleShared(o, key) {
+	const cur = o.shared ?? [];
+	return { shared: cur.includes(key) ? cur.filter((k) => k !== key) : [...cur, key] };
+}
+const hiredHands = (L) => (L.tree?.nodes ?? []).filter((n) => n.kind === "worker" && n.state === "done" && n.id !== "quartermaster");
+/** The Legacy order: once the core sends it and the bloodline has Legacy to spend (or the order is already set off its default). */
+export const legacyOrderShown = (L) => !!L.orders?.legacy && (!!L.bloodline || !!L.legacy_upgrades?.length || L.orders.legacy !== "off");
+/** The ranks order: once a hand is hired. */
+export const ranksOrderShown = (L) => !!L.orders?.ranks && hiredHands(L).length > 0;
+/** The herald's ascend order: only after the King (and only on a core that sends it). */
+export const ascendOrderShown = (L) => !!L.orders?.ascend && kingSlain(L);
+/** The rank-II perk rows: each hired worker the core offers a perk chip for (`WorkNode.perks`). */
+export const perkNodes = (L) => hiredHands(L).filter((n) => (n.perks?.length ?? 0) > 1);
+/** The orders summary's Cut 120 bits — only a choice off the quiet default reads (`legacy damage`, `ascend on`). */
+export function cut120OrderBits(o) {
+	return [o.legacy && o.legacy !== "balanced" && o.legacy !== "off" ? `legacy ${LEGACY_WORD[o.legacy] ?? o.legacy}` : "", o.ascend === "on" ? "ascend on" : ""].filter(Boolean);
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJtYXBwaW5ncyI6IkFBS0EsU0FBUyxpQkFBaUI7QUFFMUIsT0FBTyxNQUFNLGdCQUFnQjtDQUFDO0NBQVk7Q0FBVTtDQUFVO0NBQVU7QUFBSzs7QUFFN0UsT0FBTyxNQUFNLGNBQXNDO0NBQ2pELFVBQVU7Q0FDVixRQUFRO0NBQ1IsUUFBUTtDQUNSLFFBQVE7Q0FDUixLQUFLO0FBQ1A7O0FBRUEsT0FBTyxNQUFNLGFBQXFDO0NBQ2hELFVBQVU7Q0FDVixRQUFRO0NBQ1IsUUFBUTtDQUNSLFFBQVE7Q0FDUixLQUFLO0FBQ1A7QUFDQSxPQUFPLE1BQU0sZUFBZSxDQUFDLFFBQVEsS0FBSzs7QUFFMUMsT0FBTyxNQUFNLGFBQXFDO0NBQUUsTUFBTTtDQUFRLEtBQUs7QUFBTTtBQUM3RSxPQUFPLE1BQU0sZ0JBQWdCLENBQUMsT0FBTyxJQUFJOztBQUV6QyxPQUFPLE1BQU0sY0FBc0M7Q0FBRSxLQUFLO0NBQU8sSUFBSTtBQUFLO0FBQzFFLE9BQU8sTUFBTSxxQkFBcUI7Q0FBQztDQUFRO0NBQVM7QUFBUzs7QUFFN0QsT0FBTyxNQUFNLG1CQUEyQztDQUN0RCxNQUFNO0NBQ04sT0FBTztDQUNQLFNBQVM7QUFDWDs7QUFFQSxPQUFPLE1BQU0sa0JBQTBDO0NBQ3JELE1BQU07Q0FDTixPQUFPO0NBQ1AsU0FBUztBQUNYO0FBQ0EsT0FBTyxNQUFNLHlCQUF5QixNQUNwQyxDQUFDLENBQUMsRUFBRSxRQUFRLGVBQWUsQ0FBQyxDQUFDLEVBQUUsaUJBQWlCLGFBQWE7O0FBRS9ELE9BQU8sTUFBTSxZQUFZO0NBQ3ZCO0NBQ0E7Q0FDQTtDQUNBO0NBQ0E7Q0FDQTtDQUNBO0NBQ0E7Q0FDQTtBQUNGOztBQUlBLE9BQU8sTUFBTSxrQkFBa0IsT0FDNUIsRUFBRSxZQUFZLFVBQVUsS0FBSztBQUNoQyxPQUFPLE1BQU0sWUFBWSxHQUFtQixTQUN6QyxFQUFFLFVBQVUsQ0FBQyxFQUFDLENBQUUsU0FBUyxHQUFHOztBQUUvQixPQUFPLFNBQVMsYUFBYSxHQUFtQixLQUF3QztDQUN0RixNQUFNLE1BQU0sRUFBRSxVQUFVLENBQUM7Q0FDekIsT0FBTyxFQUFFLFFBQVEsSUFBSSxTQUFTLEdBQUcsSUFBSSxJQUFJLFFBQVEsTUFBTSxNQUFNLEdBQUcsSUFBSSxDQUFDLEdBQUcsS0FBSyxHQUFHLEVBQUU7QUFDcEY7QUFFQSxNQUFNLGNBQWMsT0FDakIsRUFBRSxNQUFNLFNBQVMsQ0FBQyxFQUFDLENBQUUsUUFDbkIsTUFBTSxFQUFFLFNBQVMsWUFBWSxFQUFFLFVBQVUsVUFBVSxFQUFFLE9BQU8sZUFDL0Q7O0FBRUYsT0FBTyxNQUFNLG9CQUFvQixNQUMvQixDQUFDLENBQUMsRUFBRSxRQUFRLFdBQVcsQ0FBQyxDQUFDLEVBQUUsYUFBYSxDQUFDLENBQUMsRUFBRSxpQkFBaUIsVUFBVSxFQUFFLE9BQU8sV0FBVzs7QUFFN0YsT0FBTyxNQUFNLG1CQUFtQixNQUM5QixDQUFDLENBQUMsRUFBRSxRQUFRLFNBQVMsV0FBVyxDQUFDLENBQUMsQ0FBQyxTQUFTOztBQUU5QyxPQUFPLE1BQU0sb0JBQW9CLE1BQXdCLENBQUMsQ0FBQyxFQUFFLFFBQVEsVUFBVSxVQUFVLENBQUM7O0FBRTFGLE9BQU8sTUFBTSxhQUFhLE1BQ3hCLFdBQVcsQ0FBQyxDQUFDLENBQUMsUUFBUSxPQUFPLEVBQUUsT0FBTyxVQUFVLEtBQUssQ0FBQzs7QUFHeEQsT0FBTyxTQUFTLGdCQUFnQixHQUE2QjtDQUMzRCxPQUFPLENBQ0wsRUFBRSxVQUFVLEVBQUUsV0FBVyxjQUFjLEVBQUUsV0FBVyxRQUM3QixVQUFVLFlBQVksRUFBRSxXQUFXLEVBQUUsV0FDeEQsSUFDSixFQUFFLFdBQVcsT0FBMEIsY0FBYyxFQUN2RCxDQUFDLENBQUMsT0FBTyxPQUFPO0FBQ2xCIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIm9yZGVycy50cyJdLCJ2ZXJzaW9uIjozLCJzb3VyY2VzQ29udGVudCI6WyIvLyBDdXQgMTIwIMKnOCAoZG9jcy9DVVQxMjBfQVVUT01BVElPTl9GSUxMLm1kKTogdGhlIG9yZGVycyBzaGVldCdzIEN1dCAxMjAgaGFsZiDigJQgdGhlIExlZ2FjeSBvcmRlciwgdGhlIHJhbmtzIG9yZGVyLCB0aGUgcmFuay1JSSBwZXJrXG4vLyBjaGlwcyAoYHNldFBlcmtgKSwgdGhlIGhlcmFsZCdzIGFzY2VuZCBvcmRlciAoYWZ0ZXIgdGhlIEtpbmcpLCBhbmQgYHNhbWUgZm9yIGFsbGAgb24gZWFjaCBzaGFyZWFibGUgb3JkZXIgd2hlbiB0aGUgdG93biBrZWVwcyBtb3JlIHRoYW5cbi8vIG9uZSBibG9vZGxpbmUgKGBTdGFuZGluZ09yZGVycy5zaGFyZWRgOiBhIHNldCBjb3BpZXMgdGhlIG9yZGVyIHRvIGV2ZXJ5IGJsb29kbGluZSwgYW5kIGxhdGVyIGNoYW5nZXMgZm9sbG93KS4gQWxsIHRydXRoIGlzIHRoZSBjb3JlJ3M6XG4vLyB0aGUgY2xpZW50IGRyYXdzIHRoZSB3aXJlJ3Mgb3JkZXJzIGFuZCBzZW5kcyB0aGUgd2hvbGUgc2V0IGJhY2sgdGhyb3VnaCBgc2V0T3JkZXJzYC5cbmltcG9ydCB0eXBlIHsgTGluZWFnZSwgU3RhbmRpbmdPcmRlcnMsIFdvcmtOb2RlIH0gZnJvbSBcIi4uL2VuZ2luZS90eXBlc1wiO1xuaW1wb3J0IHsga2luZ1NsYWluIH0gZnJvbSBcIi4va2luZy1ldGFcIjtcblxuZXhwb3J0IGNvbnN0IExFR0FDWV9PUkRFUlMgPSBbXCJiYWxhbmNlZFwiLCBcImhlYWx0aFwiLCBcImRhbWFnZVwiLCBcImFybW91clwiLCBcIm9mZlwiXSBhcyBjb25zdDtcbi8qIGNvcHk6YnV0dG9uICovXG5leHBvcnQgY29uc3QgTEVHQUNZX1dPUkQ6IFJlY29yZDxzdHJpbmcsIHN0cmluZz4gPSB7XG4gIGJhbGFuY2VkOiBcImJhbGFuY2VkXCIsXG4gIGhlYWx0aDogXCJoZWFsdGhcIixcbiAgZGFtYWdlOiBcImRhbWFnZVwiLFxuICBhcm1vdXI6IFwiYXJtb3VyXCIsXG4gIG9mZjogXCJvZmZcIixcbn07XG4vKiBjb3B5OnRvb2x0aXAgKi9cbmV4cG9ydCBjb25zdCBMRUdBQ1lfVElQOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+ID0ge1xuICBiYWxhbmNlZDogXCJoZWFsdGgg4oaSIGRhbWFnZSDihpIgYXJtb3VyIGluIHR1cm4gwrcgdGhlbiBlZmZlY3RzXCIsXG4gIGhlYWx0aDogXCJoZWFsdGggZmlyc3QgwrcgdGhlbiBiYWxhbmNlZFwiLFxuICBkYW1hZ2U6IFwiZGFtYWdlIGZpcnN0IMK3IHRoZW4gYmFsYW5jZWRcIixcbiAgYXJtb3VyOiBcImFybW91ciBmaXJzdCDCtyB0aGVuIGJhbGFuY2VkXCIsXG4gIG9mZjogXCJMZWdhY3kgYnkgaGFuZFwiLFxufTtcbmV4cG9ydCBjb25zdCBSQU5LU19PUkRFUlMgPSBbXCJhdXRvXCIsIFwib2ZmXCJdIGFzIGNvbnN0O1xuLyogY29weTpidXR0b24gKi9cbmV4cG9ydCBjb25zdCBSQU5LU19XT1JEOiBSZWNvcmQ8c3RyaW5nLCBzdHJpbmc+ID0geyBhdXRvOiBcImF1dG9cIiwgb2ZmOiBcIm9mZlwiIH07XG5leHBvcnQgY29uc3QgQVNDRU5EX09SREVSUyA9IFtcIm9mZlwiLCBcIm9uXCJdIGFzIGNvbnN0O1xuLyogY29weTpidXR0b24gKi9cbmV4cG9ydCBjb25zdCBBU0NFTkRfV09SRDogUmVjb3JkPHN0cmluZywgc3RyaW5nPiA9IHsgb2ZmOiBcIm9mZlwiLCBvbjogXCJvblwiIH07XG5leHBvcnQgY29uc3QgVEVNUEVSQU1FTlRfT1JERVJTID0gW1wia2VlcFwiLCBcImFkYXB0XCIsIFwidmFyaWV0eVwiXSBhcyBjb25zdDtcbi8qIGNvcHk6YnV0dG9uICovXG5leHBvcnQgY29uc3QgVEVNUEVSQU1FTlRfV09SRDogUmVjb3JkPHN0cmluZywgc3RyaW5nPiA9IHtcbiAga2VlcDogXCJLZWVwIHNlbGVjdGVkXCIsXG4gIGFkYXB0OiBcIkFkYXB0XCIsXG4gIHZhcmlldHk6IFwiVmFyaWV0eVwiLFxufTtcbi8qIGNvcHk6dG9vbHRpcCAqL1xuZXhwb3J0IGNvbnN0IFRFTVBFUkFNRU5UX1RJUDogUmVjb3JkPHN0cmluZywgc3RyaW5nPiA9IHtcbiAga2VlcDogXCJLZWVwIHRoZSBzZWxlY3RlZCB0ZW1wZXJhbWVudFwiLFxuICBhZGFwdDogXCJDaG9vc2UgZm9yIGEga25vd24gdGhyZWF0IGF0IGRlcGFydHVyZVwiLFxuICB2YXJpZXR5OiBcIlZhcnkgdW5sb2NrZWQgdGVtcGVyYW1lbnRzIGF0IGRlcGFydHVyZVwiLFxufTtcbmV4cG9ydCBjb25zdCB0ZW1wZXJhbWVudE9yZGVyU2hvd24gPSAoTDogTGluZWFnZSk6IGJvb2xlYW4gPT5cbiAgISFMLm9yZGVycz8udGVtcGVyYW1lbnQgJiYgISFMLnBlcnNpc3RlbnRfaGVybz8ucHJvZ3Jlc3Npb24/LnRlbXBlcmFtZW50X29yZGVyX2F2YWlsYWJsZTtcbi8qKiB0aGUgb3JkZXIga2V5cyBgc2FtZSBmb3IgYWxsYCBjYW4gY2FycnkgKGNvcmUgYHRyZWU6OlNIQVJFQUJMRWApICovXG5leHBvcnQgY29uc3QgU0hBUkVBQkxFID0gW1xuICBcImluc3VyZVwiLFxuICBcImZvcmdlXCIsXG4gIFwid2FsbFwiLFxuICBcInNpbmtcIixcbiAgXCJ0ZW1wZXJhbWVudFwiLFxuICBcImtlbm5lbFwiLFxuICBcImxlZ2FjeVwiLFxuICBcInJhbmtzXCIsXG4gIFwiYXNjZW5kXCIsXG5dIGFzIGNvbnN0O1xuZXhwb3J0IHR5cGUgU2hhcmVLZXkgPSAodHlwZW9mIFNIQVJFQUJMRSlbbnVtYmVyXTtcblxuLyoqIE1vcmUgdGhhbiBvbmUgYmxvb2RsaW5lIGluIHRoZSB0b3duOiBlYWNoIHNoYXJlYWJsZSByb3cgb2ZmZXJzIGBzYW1lIGZvciBhbGxgLiAqL1xuZXhwb3J0IGNvbnN0IG1hbnlCbG9vZGxpbmVzID0gKEw6IFBpY2s8TGluZWFnZSwgXCJoZXJvX3Nsb3RzXCI+KTogYm9vbGVhbiA9PlxuICAoTC5oZXJvX3Nsb3RzPy5sZW5ndGggPz8gMCkgPiAxO1xuZXhwb3J0IGNvbnN0IGlzU2hhcmVkID0gKG86IFN0YW5kaW5nT3JkZXJzLCBrZXk6IFNoYXJlS2V5KTogYm9vbGVhbiA9PlxuICAoby5zaGFyZWQgPz8gW10pLmluY2x1ZGVzKGtleSk7XG4vKiogVGhlIG9yZGVycyB3aXRoIGBrZXlgIHRvZ2dsZWQgaW4gYHNoYXJlZGAgKHRoZSByZXN0IG9mIHRoZSBzZXQgYXMgaXQgc3RhbmRzKS4gKi9cbmV4cG9ydCBmdW5jdGlvbiB0b2dnbGVTaGFyZWQobzogU3RhbmRpbmdPcmRlcnMsIGtleTogU2hhcmVLZXkpOiBQYXJ0aWFsPFN0YW5kaW5nT3JkZXJzPiB7XG4gIGNvbnN0IGN1ciA9IG8uc2hhcmVkID8/IFtdO1xuICByZXR1cm4geyBzaGFyZWQ6IGN1ci5pbmNsdWRlcyhrZXkpID8gY3VyLmZpbHRlcigoaykgPT4gayAhPT0ga2V5KSA6IFsuLi5jdXIsIGtleV0gfTtcbn1cblxuY29uc3QgaGlyZWRIYW5kcyA9IChMOiBQaWNrPExpbmVhZ2UsIFwidHJlZVwiPik6IFdvcmtOb2RlW10gPT5cbiAgKEwudHJlZT8ubm9kZXMgPz8gW10pLmZpbHRlcihcbiAgICAobikgPT4gbi5raW5kID09PSBcIndvcmtlclwiICYmIG4uc3RhdGUgPT09IFwiZG9uZVwiICYmIG4uaWQgIT09IFwicXVhcnRlcm1hc3RlclwiLFxuICApO1xuLyoqIFRoZSBMZWdhY3kgb3JkZXI6IG9uY2UgdGhlIGNvcmUgc2VuZHMgaXQgYW5kIHRoZSBibG9vZGxpbmUgaGFzIExlZ2FjeSB0byBzcGVuZCAob3IgdGhlIG9yZGVyIGlzIGFscmVhZHkgc2V0IG9mZiBpdHMgZGVmYXVsdCkuICovXG5leHBvcnQgY29uc3QgbGVnYWN5T3JkZXJTaG93biA9IChMOiBMaW5lYWdlKTogYm9vbGVhbiA9PlxuICAhIUwub3JkZXJzPy5sZWdhY3kgJiYgKCEhTC5ibG9vZGxpbmUgfHwgISFMLmxlZ2FjeV91cGdyYWRlcz8ubGVuZ3RoIHx8IEwub3JkZXJzLmxlZ2FjeSAhPT0gXCJvZmZcIik7XG4vKiogVGhlIHJhbmtzIG9yZGVyOiBvbmNlIGEgaGFuZCBpcyBoaXJlZC4gKi9cbmV4cG9ydCBjb25zdCByYW5rc09yZGVyU2hvd24gPSAoTDogTGluZWFnZSk6IGJvb2xlYW4gPT5cbiAgISFMLm9yZGVycz8ucmFua3MgJiYgaGlyZWRIYW5kcyhMKS5sZW5ndGggPiAwO1xuLyoqIFRoZSBoZXJhbGQncyBhc2NlbmQgb3JkZXI6IG9ubHkgYWZ0ZXIgdGhlIEtpbmcgKGFuZCBvbmx5IG9uIGEgY29yZSB0aGF0IHNlbmRzIGl0KS4gKi9cbmV4cG9ydCBjb25zdCBhc2NlbmRPcmRlclNob3duID0gKEw6IExpbmVhZ2UpOiBib29sZWFuID0+ICEhTC5vcmRlcnM/LmFzY2VuZCAmJiBraW5nU2xhaW4oTCk7XG4vKiogVGhlIHJhbmstSUkgcGVyayByb3dzOiBlYWNoIGhpcmVkIHdvcmtlciB0aGUgY29yZSBvZmZlcnMgYSBwZXJrIGNoaXAgZm9yIChgV29ya05vZGUucGVya3NgKS4gKi9cbmV4cG9ydCBjb25zdCBwZXJrTm9kZXMgPSAoTDogUGljazxMaW5lYWdlLCBcInRyZWVcIj4pOiBXb3JrTm9kZVtdID0+XG4gIGhpcmVkSGFuZHMoTCkuZmlsdGVyKChuKSA9PiAobi5wZXJrcz8ubGVuZ3RoID8/IDApID4gMSk7XG5cbi8qKiBUaGUgb3JkZXJzIHN1bW1hcnkncyBDdXQgMTIwIGJpdHMg4oCUIG9ubHkgYSBjaG9pY2Ugb2ZmIHRoZSBxdWlldCBkZWZhdWx0IHJlYWRzIChgbGVnYWN5IGRhbWFnZWAsIGBhc2NlbmQgb25gKS4gKi9cbmV4cG9ydCBmdW5jdGlvbiBjdXQxMjBPcmRlckJpdHMobzogU3RhbmRpbmdPcmRlcnMpOiBzdHJpbmdbXSB7XG4gIHJldHVybiBbXG4gICAgby5sZWdhY3kgJiYgby5sZWdhY3kgIT09IFwiYmFsYW5jZWRcIiAmJiBvLmxlZ2FjeSAhPT0gXCJvZmZcIlxuICAgICAgPyAvKiBjb3B5OmNhbGxvdXQgKi8gYGxlZ2FjeSAke0xFR0FDWV9XT1JEW28ubGVnYWN5XSA/PyBvLmxlZ2FjeX1gXG4gICAgICA6IFwiXCIsXG4gICAgby5hc2NlbmQgPT09IFwib25cIiA/IC8qIGNvcHk6Y2FsbG91dCAqLyBcImFzY2VuZCBvblwiIDogXCJcIixcbiAgXS5maWx0ZXIoQm9vbGVhbik7XG59XG4iXX0=

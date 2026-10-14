@@ -1,0 +1,196 @@
+{
+  "state": {
+    "actors": [
+      {
+        "id": 1,
+        "x": 511,
+        "y": 213,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 2,
+        "x": 511,
+        "y": 285,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "id": 3,
+        "x": 439,
+        "y": 285,
+        "w": 44,
+        "h": 44
+      }
+    ],
+    "labels": [
+      {
+        "id": "tent",
+        "x": 432,
+        "y": 71,
+        "w": 115,
+        "h": 44
+      },
+      {
+        "id": "blacksmith",
+        "x": 264,
+        "y": 15,
+        "w": 108,
+        "h": 44
+      },
+      {
+        "id": "kennel",
+        "x": 503,
+        "y": 125,
+        "w": 122,
+        "h": 44
+      },
+      {
+        "id": "guild",
+        "x": 338,
+        "y": 207,
+        "w": 107,
+        "h": 44
+      },
+      {
+        "id": "pool",
+        "x": 243,
+        "y": 155,
+        "w": 98,
+        "h": 44
+      },
+      {
+        "id": "device",
+        "x": 551,
+        "y": 73,
+        "w": 124,
+        "h": 44
+      },
+      {
+        "id": "staked",
+        "x": 432,
+        "y": 22,
+        "w": 103,
+        "h": 44
+      }
+    ],
+    "host": {
+      "w": 792.015625,
+      "h": 360
+    },
+    "overlaps": [],
+    "labelActor": [],
+    "overflow": 0,
+    "stats": {
+      "fps": 3,
+      "frames": 3,
+      "cpuMs": 1.199999999254942,
+      "cpuWithUiMs": 1.199999999254942,
+      "cpuP50": 2.600000001490116,
+      "cpuP95": 48.30000000074506,
+      "walkers": 3,
+      "mode": "gl",
+      "glLost": false,
+      "k": 1,
+      "night": 0,
+      "characterLights": 0,
+      "dimensionalLight": true,
+      "volumeLight": true,
+      "mappedSprites": [
+        {
+          "kind": 3,
+          "asset": "town_house_2",
+          "flip": false,
+          "x": 501,
+          "y": 304
+        },
+        {
+          "kind": 4,
+          "asset": "town_blacksmith_2",
+          "flip": false,
+          "x": 374,
+          "y": 251
+        },
+        {
+          "kind": 2,
+          "asset": "walk_fighter",
+          "actorId": "resident:1",
+          "flip": false,
+          "x": 580,
+          "y": 347
+        },
+        {
+          "kind": 2,
+          "asset": "hero_fighter_female",
+          "actorId": "resident:2",
+          "flip": false,
+          "x": 580,
+          "y": 419
+        },
+        {
+          "kind": 15,
+          "asset": "hero_fighter_cat",
+          "actorId": "resident:3",
+          "flip": false,
+          "x": 508,
+          "y": 420
+        }
+      ],
+      "lights": 9,
+      "idle": false,
+      "running": true,
+      "terrainPaints": 1,
+      "terrainPaintMs": 32.900000002235174,
+      "windTufts": 0,
+      "windSignature": 0,
+      "buildings": [
+        "blacksmith",
+        "kennel"
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "residentStates": [
+        {
+          "id": 1,
+          "resting": true,
+          "phase": "reincarnating"
+        },
+        {
+          "id": 2,
+          "resting": true,
+          "phase": "reincarnating"
+        },
+        {
+          "id": 3,
+          "resting": true,
+          "phase": "reincarnating"
+        }
+      ],
+      "activeBuilds": [],
+      "buildEvents": 1,
+      "buildDust": 0,
+      "staked": "bank",
+      "markers": [
+        "rune@blacksmith",
+        "rune@kennel"
+      ],
+      "view": [
+        47,
+        101,
+        792,
+        360
+      ],
+      "workers": [
+        "quartermaster",
+        "porter",
+        "scout(off)",
+        "apprentice(lit)"
+      ],
+      "ranks": {}
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,22 @@
+
+running 6 tests
+..... 5/6
+progression::lifecycle_tests::queue_roundtrip_and_three_departures_do_not_charge --- FAILED
+
+failures:
+
+---- progression::lifecycle_tests::queue_roundtrip_and_three_departures_do_not_charge stdout ----
+
+thread 'progression::lifecycle_tests::queue_roundtrip_and_three_departures_do_not_charge' (190) panicked at crates/idlever-core/src/progression.rs:86:309:
+assertion `left == right` failed
+  left: 26
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    progression::lifecycle_tests::queue_roundtrip_and_three_departures_do_not_charge
+
+test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 899 filtered out; finished in 0.07s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

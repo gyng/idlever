@@ -1,0 +1,20 @@
+
+running 10 tests
+......... 9/10
+economy_free_tests::steady_training_adds_second_remedy_at_220_actual_package_runs --- FAILED
+
+failures:
+
+---- economy_free_tests::steady_training_adds_second_remedy_at_220_actual_package_runs stdout ----
+
+thread 'economy_free_tests::steady_training_adds_second_remedy_at_220_actual_package_runs' (256) panicked at crates/idlever-core/src/economy_free_tests.rs:231:35:
+called `Result::unwrap()` on an `Err` value: "not yet"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    economy_free_tests::steady_training_adds_second_remedy_at_220_actual_package_runs
+
+test result: FAILED. 9 passed; 1 failed; 0 ignored; 0 measured; 901 filtered out; finished in 0.10s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

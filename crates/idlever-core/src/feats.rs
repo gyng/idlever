@@ -7,9 +7,8 @@
 //! - **gold sinks after Kit complete** (a ration a send, the tithe, the survey work: adds only, never upkeep),
 //! - **swift floors** (three clears of a band boss: the floors above him play as one beat in the watch),
 //! - **feats** (a trial or a sought boss cleared lights the next waiting system early; `systems::update_with`),
-//! - **the hero's wish** (one at a time, upside only, never decaying).
 //!
-//! IDLE never spends a token, never opts into a trial, never grants a wish and hires no apprentice, so none of
+//! IDLE never spends a token, never opts into a trial, hires no apprentice, so none of
 //! those touch its games; its finds feed only the small set bonuses (rest −2 %, class xp +2 %, +1 Legacy a return).
 use crate::descent::{Affix, Route, BOSS_DEPTHS};
 use crate::engine::{ExitTier, Game, LineageState, Run, DAY_S, WAYSTONES};
@@ -31,8 +30,6 @@ pub const TRIAL_LEGACY: u32 = 10;
 pub const SECOND_TABLE_S: u64 = 6 * 3600;
 /// A set's bonus, percent (never wall-deciding).
 pub const SET_PCT: u32 = 2;
-/// The next wish waits this long after the last one granted.
-pub const WISH_EVERY_S: u64 = DAY_S;
 /// The tithe: the first Legacy point's price in forge units, and how fast the price climbs (one unit more per
 /// `TITHE_STEP` points bought: the rate falls).
 pub const TITHE_UNITS: i32 = 1;
@@ -193,7 +190,7 @@ pub struct Feats {
     pub ration: bool,
     #[serde(default, skip_serializing_if = "is_zero")]
     pub rations: u32,
-    /// Wishes granted; the clock the next wish opens at.
+    /// Retired wish purchases and their historical offer clock; inert save records.
     #[serde(default, skip_serializing_if = "is_zero")]
     pub wishes: u32,
     #[serde(default, skip_serializing_if = "is_zero_u64")]
@@ -641,8 +638,7 @@ pub fn swift_to(l: &LineageState, route: Route) -> u32 {
     BOSS_DEPTHS.iter().filter(|(k, _)| l.kill_counts.get(*k).copied().unwrap_or(0) >= SWIFT_CLEARS).filter_map(|(k, _)| boss_at(k, route)).max().unwrap_or(0)
 }
 
-/// At the return: open the sealed finds (shards pay, pieces log, sets complete), the hearth's Legacy, the wish's
-/// arrival; the report's reveal and the notable acts since the last report.
+/// At the return: open sealed finds and the hearth's Legacy; report the reveal and notable acts.
 pub fn on_report(l: &mut LineageState, r: &mut crate::wire::ReturnReport) {
     let day = day_of(l.clock_s);
     let sealed = std::mem::take(&mut l.feats.sealed);
@@ -673,9 +669,6 @@ pub fn on_report(l: &mut LineageState, r: &mut crate::wire::ReturnReport) {
         let mut finds = sealed;
         finds.sort_by(|a, b| b.rank.cmp(&a.rank).then(b.table.cmp(&a.table)).then(a.id.cmp(&b.id)));
         r.finds = Some(FindsReveal { sealed: finds.len() as u32, best: finds.first().cloned(), finds, legacy, sets });
-    }
-    if l.feats.wish_at == 0 && !l.feats.off {
-        l.feats.wish_at = l.clock_s.max(1);
     }
     r.feats = std::mem::take(&mut l.feats.news);
 }
@@ -823,36 +816,6 @@ pub fn buy_survey(l: &mut LineageState) -> Result<(), String> {
     Ok(())
 }
 
-// ---------------------------------------------------------------- the hero's wish
-
-/// The wishes: id, words, Legacy it pays.
-pub const WISHES: [(&str, &str, u32); 5] = [("lantern", "a lantern", 2), ("pet", "a pet", 2), ("rest", "a rest", 2), ("song", "a song", 2), ("map", "a map", 3)];
-
-/// The wish waiting (id, words, price, Legacy), when one has come.
-pub fn wish(l: &LineageState) -> Option<(&'static str, &'static str, i32, u32)> {
-    if l.feats.off || l.feats.wish_at == 0 || l.clock_s < l.feats.wish_at || l.heir == 0 {
-        return None;
-    }
-    let (id, text, legacy) = WISHES[(mix(l.seed, u64::from(l.feats.wishes), 0x4154) % WISHES.len() as u64) as usize];
-    Some((id, text, unit(l) / 2, legacy))
-}
-
-/// Grant the waiting wish: its small price, its Legacy; the next one comes a day on.
-pub fn grant_wish(l: &mut LineageState) -> Result<String, String> {
-    let (_, text, price, legacy) = wish(l).ok_or("no wish")?;
-    if crate::tree::purse(l) < price {
-        return Err("not enough gold".into());
-    }
-    l.gold_move(-price, "supply wish");
-    crate::legacy::ensure(l);
-    l.bloodline.as_mut().expect("bloodline").points += legacy;
-    l.feats.wishes += 1;
-    l.feats.wish_at = l.clock_s + WISH_EVERY_S;
-    let day = day_of(l.clock_s);
-    news(l, "wish", format!("granted {text} · +{legacy} Legacy"), day);
-    Ok(format!("{text} +{legacy}"))
-}
-
 // ---------------------------------------------------------------- the King's horizon
 
 /// The hours until the King may fall at the current pace (`0` slain, `None` no pace yet): the lineage's hours
@@ -946,15 +909,6 @@ pub struct Sink {
     pub n: u32,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
-pub struct WishWire {
-    pub id: String,
-    pub text: String,
-    pub price: i32,
-    pub legacy: u32,
-    pub available: bool,
-}
-
 /// `Lineage.feats`.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct FeatsWire {
@@ -973,8 +927,6 @@ pub struct FeatsWire {
     /// The sinks on offer once the kit is complete (empty before).
     pub sinks: Vec<Sink>,
     pub sink_order: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub wish: Option<WishWire>,
     pub feats: u32,
     /// The amendment: the siege per band boss (`Queen · 4 tries · best 22%`), the graves waiting on their floors,
     /// the graveyard's stones (newest last), and the heirs who wore down each fallen boss.
@@ -1057,13 +1009,12 @@ pub fn wire(l: &LineageState) -> FeatsWire {
         swift_to: swift_to(l, route),
         sinks,
         sink_order: l.orders.sink.clone(),
-        wish: wish(l).map(|(id, text, price, legacy)| WishWire { id: id.into(), text: text.into(), price, legacy, available: crate::tree::purse(l) >= price }),
         feats: l.feats.feats.saturating_sub(l.feats.feats_used),
         siege: siege_wire(l),
         graves: l.feats.graves.iter().map(|x| GraveWire { depth: x.depth, heir: x.heir, name: x.name.clone(), gold: x.gold, day: x.day }).collect(),
         graveyard: l.feats.stones.clone(),
         worn: l.feats.worn.clone(),
-        heir_order: l.orders.heir.clone(),
+        heir_order: l.orders.temperament.clone(),
         titles: l.feats.titles.iter().map(|b| title_of(b)).collect(),
         deed_legacy: l.feats.deed_legacy,
     }
@@ -1301,7 +1252,7 @@ fn siege_wire(l: &LineageState) -> Vec<SiegeWire> {
 /// The card the heir order picks among the wake's `cards` (`answer`: the card whose gift answers the last killer,
 /// else card 1; `strongest`: the highest tier, card order breaking ties; `surprise`: a draw from the seed and heir).
 pub fn heir_choice(l: &LineageState, cards: &[crate::traits::Card], answer: Option<crate::traits::Gift>) -> usize {
-    match l.orders.heir.as_str() {
+    match l.orders.temperament.as_str() {
         "strongest" => cards.iter().enumerate().max_by_key(|(i, c)| (c.shape.tier, std::cmp::Reverse(*i))).map_or(0, |(i, _)| i),
         "surprise" => (mix(l.seed, u64::from(l.heir), 0x5E1F) % cards.len().max(1) as u64) as usize,
         _ => answer.and_then(|g| cards.iter().position(|c| c.shape.gift == g)).unwrap_or(0),

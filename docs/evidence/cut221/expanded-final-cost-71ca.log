@@ -1,0 +1,30 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   packetError: 'response.body: Target page, context or browser has been closed',
++   url: 'http://localhost:5529/src/engine/pkg/idlever_wasm_bg.wasm'
+-   bytes: 6692019,
+-   sha256: '71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4'
+  }
+
+    at file:///home/g/p/riddle/scratchpad/cut221/cost.mjs:39:85 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    packetError: 'response.body: Target page, context or browser has been closed',
+    url: 'http://localhost:5529/src/engine/pkg/idlever_wasm_bg.wasm'
+  },
+  expected: {
+    bytes: 6692019,
+    sha256: '71ca7203a68464a0d9a777e119bcf0841c65f3fc2228b19d7a18880dd90d9bf4'
+  },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

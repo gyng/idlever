@@ -48,6 +48,7 @@ fn the_wake_offers_three_cards_with_different_whens() {
     for seed in 1..=30u64 {
         let mut g = Game::new_literal(seed);
         g.lineage.heir = 3;
+        crate::test_stage::traits(&mut g.lineage,6,5);
         let mut h = g.lineage.clone();
         traits::wake_from(&mut g.lineage, &p);
         traits::wake_from(&mut h, &p);
@@ -86,6 +87,7 @@ fn blood_passes_fades_and_twists() {
     let mut g = Game::new_literal(5);
     let l = &mut g.lineage;
     l.heir = 5;
+    crate::test_stage::traits(l,8,8);
     let parent = Shape::new(When::Hurt, Gift::Fury, Cost::Frail);
     l.heirs.born = Some(parent);
     traits::wake_from(l, &p);
@@ -112,6 +114,7 @@ fn blood_passes_fades_and_twists() {
     // the bloodline: heir 12; half the fresh draws take its `when`
     assert!(traits::set_bloodline(l, "deep").is_err(), "not before heir 12");
     l.heir = 12;
+    l.heirs.blood=Some(parent);crate::test_stage::traits(l,12,13);
     traits::set_bloodline(l, "deep").unwrap();
     assert!(traits::set_bloodline(l, "hurt").is_err(), "chosen once");
     let mut deep = 0;
@@ -130,6 +133,7 @@ fn a_grudge_three_deep_is_a_marked_card() {
     let mut g = Game::new_literal(6);
     let l = &mut g.lineage;
     l.heir = 4;
+    crate::test_stage::traits(l,6,5);
     for h in 1..=3 {
         l.graveyard.push(crate::wire::Grave { heir: h, depth: 4, cause: "ogre".into(), deeds: Vec::new(), death_id: None });
     }

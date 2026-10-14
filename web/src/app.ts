@@ -39,6 +39,7 @@ import { debugNote } from "./debug";
 import { applySkin } from "./ui/skin";
 import { initTips } from "./ui/tips"; // docs/TOOLTIPS.md: keyword tips
 import { mergeMeters } from "./ui/meters";
+import { goldTransfers, type GoldTransfer } from "./ui/gold-transfers";
 import {
   basesOf,
   linSum,
@@ -247,6 +248,7 @@ export class App {
       const was = L.live?.run_id;
       if (r.ended.length || !!r.live !== live || (r.live && r.live.run_id !== was)) {
         this.lineage = await this.engine.lineage(); // a run ended or began: the town, the purse, the log
+        this.queueGoldFeedback();
         this.emitChange();
       } else if (!live) this.lineage = await this.engine.lineage(); // the rest's sync: its countdown re-anchored, nothing repaints
       else
@@ -297,6 +299,7 @@ export class App {
     this.go({ kind: "camp" });
     const report = await this.runOfflineChunked(Math.floor(elapsed));
     await this.refresh();
+    this.queueGoldFeedback();
     this.adoptSets();
     this.runnerAt = Date.now();
     // Cut 30.5: before the scout an absence with no send in flight ran nothing — the hero waited at home; no empty report
@@ -340,6 +343,34 @@ export class App {
   private refineRequestKey = "";
   private fcListeners = new Set<(f: Forecast) => void>();
   private changeListeners = new Set<() => void>();
+  private goldSeen: Pick<Lineage, "gold" | "gold_ledger"> | null = null;
+  private goldPending = false;
+  /** Decoration is queued only by actual engine work, never by a state read. */
+  queueGoldFeedback(): void {
+    this.goldPending = true;
+  }
+  resetGoldFeedback(): void {
+    this.goldPending = false;
+    this.goldSeen = {
+      gold: this.lineage.gold,
+      gold_ledger: this.lineage.gold_ledger?.map((line) => ({ ...line })),
+    };
+    window.dispatchEvent(new Event("idlever:gold-reset"));
+  }
+  takeGoldFeedback(): GoldTransfer[] {
+    if (!this.goldSeen) {
+      this.resetGoldFeedback();
+      return [];
+    }
+    if (!this.goldPending) return [];
+    const movements = goldTransfers(this.goldSeen, this.lineage);
+    this.goldPending = false;
+    this.goldSeen = {
+      gold: this.lineage.gold,
+      gold_ledger: this.lineage.gold_ledger?.map((line) => ({ ...line })),
+    };
+    return movements;
+  }
   private rulesListeners = new Set<() => void>();
   private shelfListeners = new Set<() => void>();
   private shelfFull: boolean | null = null;
@@ -1037,6 +1068,7 @@ export class App {
     const sets = this.sets.map(cloneSet);
     const active = this.active;
     this.lineage = await this.engine.newLineage(randomSeed());
+    this.resetGoldFeedback();
     this.offlineIncomplete = false;
     for (let i = 0; i < sets.length; i++) {
       await this.engine.selectSet(i);
@@ -1057,6 +1089,7 @@ export class App {
 
   private async fresh(seed?: number): Promise<void> {
     this.lineage = await this.engine.newLineage(seed ?? randomSeed());
+    this.resetGoldFeedback();
     this.offlineIncomplete = false;
     this.loadout = [];
   }
@@ -1489,7 +1522,9 @@ export class App {
     if (this.view.kind === "watch") this.go({ kind: "camp" });
     this.lastForecast = null;
     this.loadout = [];
-    const ok = await this.mutate(() => this.engine.selectBloodline!(id), undefined, true);
+    const ok = await this.mutate(() => this.engine.selectBloodline!(id), undefined, true, {
+      goldFeedback: false,
+    });
     if (ok) {
       this.loadout = [...(this.lineage.selected_loadout ?? [])];
       this.persist();
@@ -1498,8 +1533,9 @@ export class App {
     }
     return ok;
   }
-  async refresh(): Promise<void> {
+  async refresh(goldFeedback = false): Promise<void> {
     this.lineage = await this.engine.lineage();
+    if (goldFeedback) this.queueGoldFeedback();
     this.vocab = await this.engine.vocabulary();
     this.emitChange();
   }
@@ -1513,7 +1549,9 @@ export class App {
   /** After an engine call that returned a new Lineage: repaint from it at once, then refresh vocab (a second repaint when it
    *  changed), persist, re-forecast. The vocabulary round-trip queues behind whatever the worker is on (a forecast is ~1.5 s),
    *  and the strip used to wait for it: the `◆` read one purchase behind on four buys in a row (QA on 50bb162). */
-  async afterLineage(): Promise<void> {
+  async afterLineage(goldFeedback = true): Promise<void> {
+    if (goldFeedback) this.queueGoldFeedback();
+    else this.resetGoldFeedback();
     this.persist();
     this.emitChange();
     const before = JSON.stringify(this.vocab);
@@ -1527,7 +1565,7 @@ export class App {
     fn: () => Promise<Lineage>,
     move?: string,
     adopt = false,
-    options?: { saveBeforePaint?: boolean },
+    options?: { saveBeforePaint?: boolean; goldFeedback?: boolean },
   ): Promise<boolean> {
     // QA 0c6e126 (qaY): a purchase, a drop, a cage or a kit step (`move`, its word) — the camp's next forecast for these rules is read
     // against the one painted before it (`lineageMove`)
@@ -1564,7 +1602,7 @@ export class App {
     // edits retain their fast paint/debounced save, without an extra save here.
     const saveBeforePaint = options?.saveBeforePaint === true;
     if (saveBeforePaint) await this.flush();
-    await this.afterLineage();
+    await this.afterLineage(options?.goldFeedback !== false);
     return true;
   }
   /** Cut 4 §9: a bought tactic card becomes a row `[card] <name>` in the active set (the card only acts as a row:
@@ -1792,6 +1830,7 @@ export class App {
       const b = JSON.parse(text) as SaveBlob;
       if (!b || typeof b.engine !== "string") return false;
       this.lineage = await this.engine.load(b.engine);
+      this.resetGoldFeedback();
       this.offlineIncomplete = false;
       this.loadout = b.loadout ?? [];
       this.runsSeen = b.runs ?? 0;

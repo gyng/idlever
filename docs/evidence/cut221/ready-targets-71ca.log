@@ -1,0 +1,82 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   [
++     'tent',
++     '2'
++   ],
++   [
++     'tent',
++     '3'
++   ],
++   [
++     'blacksmith',
++     '2'
++   ],
++   [
++     'blacksmith',
++     '3'
++   ],
++   [
++     'kennel',
++     '2'
++   ],
++   [
++     'kennel',
++     '3'
++   ],
++   [
++     'guild',
++     '2'
++   ],
++   [
++     'guild',
++     '3'
++   ],
++   [
++     'pool',
++     '2'
++   ],
++   [
++     'pool',
++     '3'
++   ],
++   [
++     'staked',
++     '2'
++   ],
++   [
++     'staked',
++     '3'
++   ]
++ ]
+- []
+
+    at file:///home/g/p/riddle/scratchpad/cut221/ready-targets.mjs:36:84 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    [ 'tent', '2' ],
+    [ 'tent', '3' ],
+    [ 'blacksmith', '2' ],
+    [ 'blacksmith', '3' ],
+    [ 'kennel', '2' ],
+    [ 'kennel', '3' ],
+    [ 'guild', '2' ],
+    [ 'guild', '3' ],
+    [ 'pool', '2' ],
+    [ 'pool', '3' ],
+    [ 'staked', '2' ],
+    [ 'staked', '3' ]
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

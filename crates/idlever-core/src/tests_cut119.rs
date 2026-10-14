@@ -267,6 +267,7 @@ fn the_heir_line_names_the_worn_trait() {
         let mut g = camp(seed);
         g.lineage.heir = 4;
         g.lineage.graveyard.push(crate::wire::Grave { heir: 4, depth: 13, cause: "bloat_mother".into(), deeds: Vec::new(), death_id: None });
+        crate::test_stage::traits(&mut g.lineage,6,5);
         crate::packages::wake(&mut g.lineage);
         let temperament=g.lineage.pkg.temperament.clone();
         let born_before=g.lineage.heirs.born;

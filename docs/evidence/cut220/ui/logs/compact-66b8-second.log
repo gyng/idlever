@@ -1,0 +1,6 @@
+client suite: targeted (1 selected; 156 current full; 198 exhaustive groups)
+FAIL hero-hub        13.9s (13.5s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+         at interactionStates (file:///home/g/p/riddle/web/tests/hero-hub.mjs:429:12)
+         at async file:///home/g/p/riddle/web/tests/hero-hub.mjs:592:5 {
+FAIL: 0/1 client gates in 13.9s

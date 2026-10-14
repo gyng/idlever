@@ -54,7 +54,11 @@ try {
         })),
       );
   });
-  await p.goto(`${url}?dev=1&fresh=1&runs=0`);
+  const entry = new URL(url);
+  for (const [key, value] of Object.entries({ dev: "1", fresh: "1", runs: "0" }))
+    entry.searchParams.set(key, value);
+  if (process.env.IDLEVER_TOWN_DEPTH === "pilot") entry.searchParams.set("townDepth", "pilot");
+  await p.goto(entry.toString());
   await p.waitForFunction(() => window.__idlever?.booted);
   for (const fixture of fixtures) {
     const raw = gunzipSync(readFileSync(resolve(root, "docs/evidence/cut218", fixture))).toString();
@@ -149,9 +153,27 @@ try {
           );
           const overlap = (a, b) =>
             a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+          const hire = document.querySelector(
+            "[data-building='worker'][data-worker] .town-marker.mk-coin",
+          );
+          const hint = document.querySelector(".town-tag:not([hidden])");
+          const hireRect =
+            hire && hire.getBoundingClientRect().width > 0
+              ? { text: hire.textContent, ...rect(hire) }
+              : null;
+          const hintRect =
+            hint && hint.getBoundingClientRect().width > 0
+              ? { text: hint.textContent, ...rect(hint) }
+              : null;
           return {
             actors,
             labels,
+            hireRect,
+            hintRect,
+            hintHireOverlaps:
+              hireRect && hintRect && overlap(hireRect, hintRect)
+                ? [[hireRect.text, hintRect.text]]
+                : [],
             host: { w: host.width, h: host.height },
             overlaps: actors.flatMap((a, i) =>
               actors
@@ -174,6 +196,7 @@ try {
         eq(state.actors.map((a) => a.id).sort(), [1, 2, 3]);
         eq(state.overlaps, [], "distinct44px actor rectangles");
         eq(state.labelActor, [], "labels do not cover actor targets");
+        eq(state.hintHireOverlaps, [], "persistent plot hint does not cover actual Hire badge");
         eq(state.overflow, 0);
         ok(
           state.actors.every(
@@ -252,7 +275,14 @@ try {
           );
           if (id === "staked" && !primary.ready) {
             const beforePreview = await p.evaluate(() => window.__idlever.engine.save());
-            await target.click();
+            // The plot's own tag is an allowed same-action surface at its centre.
+            // Click what the player actually sees rather than the covered DOM button.
+            if (primary.tag === primary.plot)
+              await p.mouse.click(
+                primary.rect.x + primary.rect.w / 2,
+                primary.rect.y + primary.rect.h / 2,
+              );
+            else await target.click();
             await p.locator(".plot-preview").waitFor({ state: "visible" });
             eq(
               await p.evaluate(() => window.__idlever.engine.save()),
@@ -278,15 +308,15 @@ try {
               await button.focus();
               await p.keyboard.press("Enter");
             }
-            await p.locator(".hero-sheet").waitFor({ state: "visible" });
+            await p.locator(".hero-hub").waitFor({ state: "visible" });
             eq(
-              await p.locator(".hero-sheet .hero-name").innerText(),
+              await p.locator(".hero-hub-identity h2").innerText(),
               slot.hero_name,
               `correct${mode} actor identity`,
             );
             eq(await p.evaluate(() => window.__idlever.lineage.selected_bloodline), slot.id);
             await p.keyboard.press("Escape");
-            await p.locator(".hero-sheet").waitFor({ state: "hidden" });
+            await p.locator(".hero-hub").waitFor({ state: "hidden" });
           }
         await p.evaluate(async () => {
           const a = window.__idlever;

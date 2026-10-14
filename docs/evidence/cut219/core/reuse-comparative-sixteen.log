@@ -1,0 +1,44 @@
+dayplayer: prior failure seeds first [1, 2] (scheduling hints only)
+dayplayer: targeted rows idle-king,picked-idle,outpace — configurations IDLE,PICKED
+dayplayer: PICKED s3 done in 69s 
+dayplayer: PICKED s9 done in 78s 
+dayplayer: IDLE s1 done in 119s 
+dayplayer: IDLE s8 done in 123s 
+dayplayer: IDLE s12 done in 124s 
+dayplayer: IDLE s2 done in 125s 
+dayplayer: IDLE s9 done in 125s 
+dayplayer: IDLE s4 done in 126s 
+dayplayer: IDLE s3 done in 131s 
+dayplayer: IDLE s11 done in 136s 
+dayplayer: IDLE s7 done in 137s 
+dayplayer: PICKED s11 done in 137s 
+dayplayer: PICKED s7 done in 138s 
+dayplayer: IDLE s13 done in 139s 
+dayplayer: IDLE s14 done in 139s 
+dayplayer: IDLE s5 done in 142s 
+dayplayer: IDLE s15 done in 142s 
+dayplayer: IDLE s10 done in 143s 
+dayplayer: PICKED s2 done in 143s 
+dayplayer: PICKED s12 done in 145s 
+dayplayer: IDLE s16 done in 146s 
+dayplayer: PICKED s10 done in 148s 
+dayplayer: PICKED s16 done in 149s 
+dayplayer: IDLE s6 done in 152s 
+dayplayer --fail-fast: idle-king settled PASS after IDLE s6 (day 14) (153s): 16/16 seeds
+dayplayer: PICKED s6 done in 153s 
+dayplayer: PICKED s4 done in 154s 
+dayplayer: PICKED s5 done in 154s 
+dayplayer: PICKED s13 done in 156s 
+fail-fast: `picked-idle` settled FAIL after PICKED s13 (day 1) (156s)
+  PICKED ≥ 1.5× IDLE at D13, D18, D23
+  D13 1.00…1.00 with 4 seeds left (s2 2.00, s3 2.00, s4 1.00, s5 2.00, s6 1.00, s7 1.00, s9 1.00, s10 1.00, s11 1.00, s12 1.00, s13 1.00, s16 1.00)
+
+bar (targeted, fail-fast)                                                     value  result
+IDLE does not slay the Mirror King                                          settled  PASS
+    16/16 seeds
+PICKED ≥ 1.5× IDLE at D13, D18, D23                                         settled  FAIL
+    D13 1.00…1.00 with 4 seeds left (s2 2.00, s3 2.00, s4 1.00, s5 2.00, s6 1.00, s7 1.00, s9 1.00, s10 1.00, s11 1.00, s12 1.00, s13 1.00, s16 1.00)
+IDLE never out-paces PICKED                                                 settled  open
+    
+dayplayer (targeted: idle-king,picked-idle,outpace, fail-fast, 156s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `picked-idle,outpace,idle-king` (fail-fast) FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

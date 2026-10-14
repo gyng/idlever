@@ -39,7 +39,11 @@ try {
     if (r.url().includes("idlever_wasm_bg.wasm"))
       deliveries.push(r.body().then((bytes) => ({ bytes: bytes.length, sha256: hash(bytes) })));
   });
-  await p.goto(`${url}?dev=1&fresh=1&runs=0`);
+  const entry = new URL(url);
+  for (const [key, value] of Object.entries({ dev: "1", fresh: "1", runs: "0" }))
+    entry.searchParams.set(key, value);
+  if (process.env.IDLEVER_TOWN_DEPTH === "pilot") entry.searchParams.set("townDepth", "pilot");
+  await p.goto(entry.toString());
   await p.waitForFunction(() => window.__idlever?.booted);
   const raw = gunzipSync(
     readFileSync(
@@ -83,6 +87,7 @@ try {
         .map((e) => Number(e.dataset.homeHero))
         .sort(),
       render: window.__town.stats().residentStates.map((h) => h.phase),
+      seated: window.__town.stats().residentStates.map((h) => h.resting),
       services: window.__town.stats().services,
       persistent: window.__idlever.lineage.persistent_hero,
       targets: [...document.querySelectorAll("[data-home-hero]")].map((e) => ({
@@ -99,6 +104,7 @@ try {
   eq(s.phase, ["reincarnating", "reincarnating", "reincarnating"]);
   eq(s.ids, [1, 2, 3]);
   eq(s.render, s.phase);
+  eq(s.seated, [true, true, true], "actual reincarnation residents stay at their stations");
   assert(s.services.includes("device"));
   checks++;
   await p.evaluate(async () => {
@@ -110,6 +116,7 @@ try {
   eq(s.phase, ["recovering", "recovering", "recovering"]);
   eq(s.ids, [1, 2, 3]);
   eq(s.render, s.phase);
+  eq(s.seated, [true, true, true], "actual recovery residents remain resting");
   await p.evaluate(async () => {
     const a = window.__idlever;
     await a.engine.advance(60000);
@@ -119,6 +126,7 @@ try {
   eq(s.phase, ["ready", "ready", "ready"]);
   eq(s.ids, [1, 2, 3]);
   eq(s.render, s.phase);
+  eq(s.seated, [false, false, false], "ready/rest0 residents leave their recovery seats");
   const sent = await p.evaluate(async () => {
     const a = window.__idlever;
     await a.engine.selectBloodline(2);
@@ -129,6 +137,7 @@ try {
   eq(sent.find((h) => h.id === 2).phase, "ready", "prepared turn0 is factually home");
   s = await state();
   eq(s.ids, [1, 2, 3]);
+  eq(s.seated, [false, false, false], "prepared turn0 remains an actual ready home resident");
   await p.evaluate(async () => {
     const a = window.__idlever;
     await a.engine.step(1);
@@ -137,6 +146,7 @@ try {
   s = await state();
   eq(s.phase[1], "away");
   eq(s.ids, [1, 3], "only actually delving resident leaves home");
+  eq(s.seated, [false, false], "remaining ready residents do not acquire fake rest");
   eq(errors, []);
   const packages = await Promise.all(deliveries);
   assert(packages.length > 0, "actual WASM response captured");

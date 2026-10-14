@@ -1,0 +1,114 @@
+
+#[cfg(test)]
+mod foundry_study_tests {
+    use super::*;
+    fn learner() -> Game {
+        let mut g = Game::new(7);
+        g.lineage.tree.hired.push(("scout".into(), 0));
+        g.lineage
+            .facts
+            .insert("foe:iron_golem:reflect_melee".into());
+        g
+    }
+    fn completed(g: &mut Game, day: u32, depth: u32) -> Vec<String> {
+        g.lineage.day = day;
+        let rules = g.lineage.rules().clone();
+        crate::packages::on_run_end(&mut g.lineage, &[], depth, &[], &rules)
+    }
+    #[test]
+    fn factual_wall_then_two_real_completion_days_study_once_without_fake_meetings() {
+        let mut g = learner();
+        completed(&mut g, 2, 18);
+        assert!(g.lineage.pkg.foundry_study_days.is_empty());
+        let before = g.save();
+        let _ = g.lineage();
+        assert_eq!(g.save(), before, "reads grant no study");
+        completed(&mut g, 2, 19);
+        assert_eq!(g.lineage.pkg.foundry_study_days.len(), 1);
+        let factual = (
+            g.lineage.pkg.meets.clone(),
+            g.lineage.pkg.met_runs.clone(),
+            g.lineage.pkg.met_day.clone(),
+        );
+        completed(&mut g, 2, 5);
+        assert_eq!(g.lineage.pkg.foundry_study_days.len(), 1);
+        completed(&mut g, 3, 5);
+        assert!(g.lineage.pkg.drills.is_empty());
+        let news = completed(&mut g, 4, 5);
+        assert!(news.contains(&"Guild study · Foundry".into()));
+        assert_eq!(g.lineage.pkg.drills.len(), 1);
+        assert_eq!(
+            g.lineage.pkg.drills[0].rows,
+            crate::packages::drill_rows("foundry_master", 30)
+        );
+        assert_eq!(
+            (
+                g.lineage.pkg.meets.clone(),
+                g.lineage.pkg.met_runs.clone(),
+                g.lineage.pkg.met_day.clone()
+            ),
+            factual
+        );
+        assert_eq!(
+            g.lineage().packages.drills[0].source.as_deref(),
+            Some("Guild study")
+        );
+        g.lineage.pkg.drills[0].revoked = true;
+        assert!(!completed(&mut g, 5, 19)
+            .iter()
+            .any(|n| n.starts_with("DRILLED")));
+        assert!(g.lineage.pkg.drills[0].revoked);
+        assert_eq!(g.lineage.pkg.drills.len(), 1);
+    }
+    #[test]
+    fn study_requires_scout_fact_and_completion_not_elapsed_or_reads() {
+        let mut g = learner();
+        g.lineage.tree.hired.retain(|(id, _)| id != "scout");
+        for day in 1..=4 {
+            completed(&mut g, day, 19);
+        }
+        assert!(g.lineage.pkg.foundry_study_days.is_empty());
+        g.lineage.tree.hired.push(("scout".into(), 0));
+        g.lineage.facts.clear();
+        completed(&mut g, 5, 19);
+        assert!(g.lineage.pkg.foundry_study_days.is_empty());
+        g.lineage
+            .facts
+            .insert("foe:iron_golem:reflect_melee".into());
+        completed(&mut g, 6, 19);
+        let drills_before = g.lineage.pkg.drills.clone();
+        g.lineage.clock_s += 86400 * 3;
+        g.lineage.day = 9;
+        for _ in 0..3 {
+            let _ = g.lineage();
+        }
+        assert_eq!(g.lineage.pkg.foundry_study_days.len(), 1);
+        assert_eq!(g.lineage.pkg.drills, drills_before);
+    }
+    #[test]
+    fn study_eight_hour_whole_split_reload_is_identical() {
+        let mut g = learner();
+        g.build_town("house").unwrap();
+        completed(&mut g, 0, 19);
+        completed(&mut g, 1, 5);
+        g.lineage.day = 2;
+        g.lineage.clock_s = 2 * 86400;
+        let before_completed = g.lineage.persistent.completed;
+        let mut whole = Game::load(&g.save()).unwrap();
+        let mut split = whole.clone();
+        crate::offline::run_offline_slice(&mut whole, 8 * 3600, true);
+        crate::offline::run_offline_slice(&mut split, 4 * 3600, false);
+        split = Game::load(&split.save()).unwrap();
+        crate::offline::run_offline_slice(&mut split, 4 * 3600, true);
+        assert_eq!(whole.save(), split.save());
+        assert!(whole.lineage.persistent.completed > before_completed);
+        assert_eq!(whole.lineage.pkg.foundry_study_days.len(), 3);
+        assert!(whole.lineage.pkg.foundry_studied);
+        assert!(whole
+            .lineage
+            .pkg
+            .drills
+            .iter()
+            .any(|d| d.boss == "foundry_master"));
+    }
+}

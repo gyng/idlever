@@ -16,6 +16,7 @@ fn hero_of(g: &Game) -> crate::hero::Hero {
 #[test]
 fn forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder() {
     let mut g = fresh(3);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.kit_unit = Some(100);
     g.lineage.gold = 100_000;
     let lads = crate::kit::ladders(&g.lineage);

@@ -129,7 +129,6 @@ import type {
 } from "../engine/types";
 import { h, clear, items, replace, spanOf } from "./dom";
 import {
-  flyCoins,
   gem,
   paintPortrait,
   paintSprite,
@@ -4870,7 +4869,7 @@ export function renderWatch(app: App): Mounted {
       // (`refresh` resolves void, so a sentinel tells a timeout from success)
       if (
         !(await bounded(
-          app.refresh().then(() => true),
+          app.refresh(true).then(() => true),
           8000,
           "refresh at exit",
         )) &&
@@ -4880,12 +4879,7 @@ export function renderWatch(app: App): Mounted {
         app.go({ kind: "camp" });
         return;
       }
-      if (!disposed) {
-        bar.paint();
-        const target = bar.el.querySelector<HTMLElement>(".gold");
-        if (target && app.lineage.town?.auto_collect && (exitLine?.kept ?? 0) > 0)
-          flyCoins(target, exitLine!.kept);
-      }
+      if (!disposed) bar.paint();
     } finally {
       /* guard cleared on every normal path below */
     }

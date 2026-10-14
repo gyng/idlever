@@ -1,0 +1,409 @@
+{
+  "result": "PASS",
+  "checks": 260,
+  "layouts": 6,
+  "cases": 6,
+  "expected": {
+    "bytes": 6688669,
+    "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+  },
+  "fixtureHistoricalPackage": {
+    "bytes": 6698072,
+    "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+  },
+  "records": [
+    {
+      "entry": "wishes-0",
+      "input": {
+        "bytes": 176255,
+        "sha256": "f05753814a931fbf82c8709ae9aad6f39b3c7dd2b860a6985cf92bd6601f9c8e"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [],
+        "presentation": []
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299345,
+            "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+          },
+          "wishNews": [],
+          "gold": 11596
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-0.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "a6be4b53665de9345a2670e989dcc1e359d95adba4a8c95d4ae0ed0c22cd326a"
+      }
+    },
+    {
+      "entry": "wishes-1-pending-news",
+      "input": {
+        "bytes": 176305,
+        "sha256": "3bc0e80c450b9b261087a36a02d7828faf7fa55d11cf485f0e49c8606053fc2d"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [
+          {
+            "day": 4,
+            "k": "wish",
+            "text": "granted a map · +3 Legacy"
+          }
+        ],
+        "presentation": [
+          "Legacy purchase · a map · +3 Legacy"
+        ]
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299452,
+            "sha256": "03bdd83b1590180aae0e05f719076b0b613c8fb3e4badfcbb8a9f30d9a9dbaf0"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a map · +3 Legacy",
+              "day": 4
+            }
+          ],
+          "gold": 11496
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299452,
+            "sha256": "03bdd83b1590180aae0e05f719076b0b613c8fb3e4badfcbb8a9f30d9a9dbaf0"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a map · +3 Legacy",
+              "day": 4
+            }
+          ],
+          "gold": 11496
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299452,
+            "sha256": "03bdd83b1590180aae0e05f719076b0b613c8fb3e4badfcbb8a9f30d9a9dbaf0"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a map · +3 Legacy",
+              "day": 4
+            }
+          ],
+          "gold": 11496
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-1-pending-news.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "03bdd83b1590180aae0e05f719076b0b613c8fb3e4badfcbb8a9f30d9a9dbaf0"
+      }
+    },
+    {
+      "entry": "wishes-1",
+      "input": {
+        "bytes": 175980,
+        "sha256": "a6b6c653d38d7321984268e311048c4df486ef7fa12967550fd501abb21038c8"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [],
+        "presentation": []
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299499,
+            "sha256": "e77f9a8198ac289a0c303fe4175df4bc57fa389ef204a3acffec59d68f8481d1"
+          },
+          "wishNews": [],
+          "gold": 11496
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299499,
+            "sha256": "e77f9a8198ac289a0c303fe4175df4bc57fa389ef204a3acffec59d68f8481d1"
+          },
+          "wishNews": [],
+          "gold": 11496
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299499,
+            "sha256": "e77f9a8198ac289a0c303fe4175df4bc57fa389ef204a3acffec59d68f8481d1"
+          },
+          "wishNews": [],
+          "gold": 11496
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-1.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "e77f9a8198ac289a0c303fe4175df4bc57fa389ef204a3acffec59d68f8481d1"
+      }
+    },
+    {
+      "entry": "wishes-5-pending-news",
+      "input": {
+        "bytes": 176022,
+        "sha256": "9bc4f0c1af7a4279d82ea429b9cdeef75dd1865b2d17088c4e6b6bf0de63c43e"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [
+          {
+            "day": 8,
+            "k": "wish",
+            "text": "granted a pet · +2 Legacy"
+          }
+        ],
+        "presentation": [
+          "Legacy purchase · a pet · +2 Legacy"
+        ]
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299943,
+            "sha256": "22b64791fb2e349e75055e4b052be56c2345b11a777a1a0b162714667e93ce71"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a pet · +2 Legacy",
+              "day": 8
+            }
+          ],
+          "gold": 11096
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299943,
+            "sha256": "22b64791fb2e349e75055e4b052be56c2345b11a777a1a0b162714667e93ce71"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a pet · +2 Legacy",
+              "day": 8
+            }
+          ],
+          "gold": 11096
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299943,
+            "sha256": "22b64791fb2e349e75055e4b052be56c2345b11a777a1a0b162714667e93ce71"
+          },
+          "wishNews": [
+            {
+              "k": "wish",
+              "text": "granted a pet · +2 Legacy",
+              "day": 8
+            }
+          ],
+          "gold": 11096
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-5-pending-news.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "22b64791fb2e349e75055e4b052be56c2345b11a777a1a0b162714667e93ce71"
+      }
+    },
+    {
+      "entry": "wishes-5",
+      "input": {
+        "bytes": 176085,
+        "sha256": "3fa3d8a273966f3d9d24d4c7f5da70932a133757336cd15255f3e6bad58df036"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [],
+        "presentation": []
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1299873,
+            "sha256": "a83d0d3fcf29a778279831d7caa1ebcf8276d92fa96262924db6d8f2133d6fea"
+          },
+          "wishNews": [],
+          "gold": 11096
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1299873,
+            "sha256": "a83d0d3fcf29a778279831d7caa1ebcf8276d92fa96262924db6d8f2133d6fea"
+          },
+          "wishNews": [],
+          "gold": 11096
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1299873,
+            "sha256": "a83d0d3fcf29a778279831d7caa1ebcf8276d92fa96262924db6d8f2133d6fea"
+          },
+          "wishNews": [],
+          "gold": 11096
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/wishes-5.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "a83d0d3fcf29a778279831d7caa1ebcf8276d92fa96262924db6d8f2133d6fea"
+      }
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 320,
+        "scale": 1,
+        "scrollWidth": 320,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 320,
+        "scale": 2,
+        "scrollWidth": 320,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 400,
+        "scale": 1,
+        "scrollWidth": 400,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 400,
+        "scale": 2,
+        "scrollWidth": 400,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 1440,
+        "scale": 1,
+        "scrollWidth": 1440,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "layout": {
+        "width": 1440,
+        "scale": 2,
+        "scrollWidth": 1440,
+        "emptyWishPlaceholder": false
+      },
+      "saveEqual": true
+    },
+    {
+      "entry": "waiting-song",
+      "input": {
+        "bytes": 176170,
+        "sha256": "c070053458fbaba958335590d1d2d7571b903a37688272931381a3cf5c0b10a0"
+      },
+      "repeatedReads": 20,
+      "histories": {
+        "sourceNews": [],
+        "presentation": []
+      },
+      "modes": {
+        "whole": {
+          "save": {
+            "bytes": 1300144,
+            "sha256": "f493691220ebb31482e62936ac909cb2455a551c8bc0b37d76767375597119e5"
+          },
+          "wishNews": [],
+          "gold": 10796
+        },
+        "sliced": {
+          "save": {
+            "bytes": 1300144,
+            "sha256": "f493691220ebb31482e62936ac909cb2455a551c8bc0b37d76767375597119e5"
+          },
+          "wishNews": [],
+          "gold": 10796
+        },
+        "reloaded": {
+          "save": {
+            "bytes": 1300144,
+            "sha256": "f493691220ebb31482e62936ac909cb2455a551c8bc0b37d76767375597119e5"
+          },
+          "wishNews": [],
+          "gold": 10796
+        }
+      },
+      "native": {
+        "after24h": "docs/evidence/cut222/core/retired-after24h-gz/waiting-song.after24h.session.json.gz",
+        "exactSettledSave": true,
+        "sha256": "f493691220ebb31482e62936ac909cb2455a551c8bc0b37d76767375597119e5"
+      }
+    }
+  ],
+  "deliveries": [
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    },
+    {
+      "bytes": 6688669,
+      "sha256": "a2ab9963be34bb7bf3dfa23f5acb82d625fe24804ce68c76c996997939cafffb"
+    }
+  ],
+  "errors": []
+}

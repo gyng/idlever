@@ -410,18 +410,6 @@
 .town-hit.hit-worker .town-marker {
   animation: none;
 }
-.coin-fly {
-  position: fixed;
-  z-index: 50;
-  width: 14px;
-  height: 14px;
-  margin: -7px 0 0 -7px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: radial-gradient(circle at 38% 32%, #fff3c0, #f0c24a 45%, #a8781e 80%);
-  box-shadow: 0 0 6px rgba(255, 210, 110, 0.8);
-}
-
 /* the report: the workers' acts, one compact line */
 .works-acts {
   display: flex;

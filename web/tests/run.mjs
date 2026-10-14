@@ -78,6 +78,9 @@ if (!process.env.IDLEVER_PORT) {
 // longest first (`OWN`: each test's own seconds in a quiet suite, 2026-09-26 — cut25's real-wasm watch
 // started last and ended the suite alone), sharing the remaining slots (`TEST_JOBS` overrides the width).
 const TIMING = [
+  "survivor-builds",
+  "hero-hub",
+  "wish-retirement",
   "fights:break",
   "fights",
   "cut13",
@@ -113,6 +116,11 @@ const OWN = {
 // Measured Cut181 headless costs order the complete current inventory longest
 // first. These are scheduling estimates, never test limits; new groups use20s.
 const CURRENT_OWN = {
+  "survivor-builds": 120,
+  "hero-hub": 120,
+  "wish-retirement": 90,
+  "gold-settlements": 60,
+  "gold-transfers": 60,
   "ambient-motes": 25,
   "ascension-refusal": 19,
   audio: 34,
@@ -295,6 +303,9 @@ const printResult = (r) => {
 // have warmed (first on a cold one its refine read 3.4 s where it reads 1.9 s warm). (The deep fixture's timings are
 // notes unless IDLEVER_DEEP_GATE=1, which wants a quiet headed machine: `clarity:deep` runs as a heavy.)
 const HEAVY = [
+    "survivor-builds",
+    "hero-hub",
+    "wish-retirement",
     "fights:break",
     "clarity:card",
     "clarity:deep",

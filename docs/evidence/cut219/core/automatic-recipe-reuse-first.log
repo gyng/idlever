@@ -1,0 +1,20 @@
+
+running 18 tests
+. 1/18
+economy_free_tests::automatic_and_authored_repeat_ignore_away_income_and_stale_quotes --- FAILED
+................
+failures:
+
+---- economy_free_tests::automatic_and_authored_repeat_ignore_away_income_and_stale_quotes stdout ----
+
+thread 'economy_free_tests::automatic_and_authored_repeat_ignore_away_income_and_stale_quotes' (243) panicked at crates/idlever-core/src/economy_free_tests.rs:102:5:
+authored repeat ownership survives alongside automatic packing
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    economy_free_tests::automatic_and_authored_repeat_ignore_away_income_and_stale_quotes
+
+test result: FAILED. 17 passed; 1 failed; 0 ignored; 0 measured; 895 filtered out; finished in 4.46s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

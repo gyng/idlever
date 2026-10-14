@@ -83,6 +83,7 @@ import {
 } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
 import { openJournal } from "./journal-window";
+import { openHeroLife } from "./hero-life";
 import { openChronicle } from "./chronicle";
 import { openWorks, sendMark } from "./works";
 import { itemIcon, itemName, itemChip } from "./items"; // run-clear: items in their rarity rims
@@ -106,19 +107,14 @@ import {
   RANKS_WORD,
   ranksOrderShown,
   toggleShared,
+  temperamentOrderShown,
+  TEMPERAMENT_ORDERS,
+  TEMPERAMENT_WORD,
+  TEMPERAMENT_TIP,
   type ShareKey,
 } from "./orders"; // Cut 120: one orders sheet   // Cut 119: the kennel keeper's order
 import { orderOffer } from "./order-offer"; // Cut 120 option B: Legacy and ranks offered once
-import {
-  campFeats,
-  featOrderBits,
-  heirOrderShown,
-  HEIR_ORDERS,
-  HEIR_WORD,
-  SINK_ORDERS,
-  SINK_WORD,
-  sinkHandChip,
-} from "./feats"; // Cut 118: seek · trial · wish; the heir and sink orders
+import { campFeats, featOrderBits, SINK_ORDERS, SINK_WORD, sinkHandChip } from "./feats"; // Boss targeting, trials and standing orders; paid wishes retired.
 
 const SET_NAME_MAX = 12;
 /** QA 524827b (qaAA): a supply whose name does not say its use — its use under the shop chip (≤ 3 words). */
@@ -260,6 +256,12 @@ export function simKey(app: Pick<App, "lineage" | "loadout">): string {
  *  (`invisibility`); the shop's chip keeps the full name. */
 export const shelfLabel = (label: string): string =>
   label.length > 14 ? label.replace(/ (potion|scroll)$/, "") : label;
+const orderRoutes = new WeakMap<App, (anchor?: HTMLElement) => boolean>();
+/** Reuse the mounted camp controller; disposed or replaced camps cannot route. */
+export function openCampOrders(app: App, anchor?: HTMLElement): boolean {
+  return orderRoutes.get(app)?.(anchor) ?? false;
+}
+
 export function renderCamp(app: App, highlight?: number, sendNow = false): Mounted {
   setRefRows(() => app.rules.rows);
   // Cut 17: the frame — the bar (the strip: heir, `$`, `◆`, `★`, best, the stud; the wake's offers under it), the well (the
@@ -460,6 +462,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         "orders",
         "companions",
         "chronicle",
+        "hero",
+        "rebirth",
       ].includes(target)
     )
       return false;
@@ -480,6 +484,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     else if (target === "orders") openOrders();
     else if (target === "companions") togglePanel("party");
     else if (target === "chronicle") openChronicle(app);
+    else if (target === "hero" || target === "rebirth") openHeroLife(app, undefined, target);
     else return false;
     return true;
   };
@@ -936,8 +941,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       xp: 0,
     };
     bar.paint();
-    // Legacy trait offers remain here; class offers belong to Hero Details.
-    // Cut 30 §2: on packages the old two-trait chips leave the wake (the temperaments, from heir 3, are the packages panel's cards)
+    // Only literal/historical harnesses use these old trait chips. Normal
+    // package play uses canonical survivor temperament and lasting Hero choices.
     const traits =
       (L.trait_offer?.length ?? 0) >= 2 && !onPackages(L)
         ? // QA 524827b (qaAA: a bare `✓` over the first chip, "the trait is picked for you"): the row says what it picks (`trait`) — the ✓ is
@@ -1421,7 +1426,22 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       ),
     );
   }
-  function openOrders(): void {
+  function openOrders(anchor?: HTMLElement): void {
+    const engine = app.engine;
+    const owner = JSON.stringify([
+      app.lineage.selected_bloodline,
+      app.lineage.persistent_hero?.id,
+      app.lineage.persistent_hero?.incarnation,
+    ]);
+    const sameOwner = (): boolean =>
+      el.isConnected &&
+      app.engine === engine &&
+      owner ===
+        JSON.stringify([
+          app.lineage.selected_bloodline,
+          app.lineage.persistent_hero?.id,
+          app.lineage.persistent_hero?.incarnation,
+        ]);
     openSheet(
       (close) => {
         const body = h(
@@ -1476,6 +1496,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
               text,
             );
           const act = (p: Partial<StandingOrders>, move: string) => (): void => {
+            if (!sameOwner() || !body.isConnected) return;
             void setOrder(p, move).then(() => {
               if (body.isConnected) {
                 replace(rows, ...build());
@@ -1573,14 +1594,21 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
                     return c ? row(/* copy:label */ "by hand", c) : null;
                   })()
                 : null,
-              // Cut 118 (owner amendment 2): which offered heir succeeds — set once, nobody prompted (`answer the killer` the default)
-              heirOrderShown(app.lineage)
+              temperamentOrderShown(app.lineage)
                 ? srow(
-                    "heir",
-                    /* copy:label */ "next heir",
-                    ...HEIR_ORDERS.map((x) =>
-                      pick(o.heir, x, HEIR_WORD[x], act({ heir: x }, /* copy:callout */ "heirs")),
-                    ),
+                    "temperament",
+                    /* copy:label */ "temperament order",
+                    ...TEMPERAMENT_ORDERS.map((x) => {
+                      const button = pick(
+                        o.temperament,
+                        x,
+                        TEMPERAMENT_WORD[x],
+                        act({ temperament: x }, /* copy:callout */ "temperament"),
+                      );
+                      button.title = TEMPERAMENT_TIP[x];
+                      button.dataset.temperamentOrder = x;
+                      return button;
+                    }),
                   )
                 : null,
               // Cut 119 §4: the kennel keeper's order — breed (default) · best · off; set once, nobody prompted
@@ -1646,6 +1674,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
                           p,
                           p,
                           () =>
+                            sameOwner() &&
+                            body.isConnected &&
                             void app
                               .mutate(() => app.engine.setPerk!(n.id, p), /* copy:callout */ "perk")
                               .then(() => {
@@ -1683,9 +1713,16 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           body.appendChild(rows);
         };
         paint();
+        for (const node of body.querySelectorAll<HTMLElement>("button,input,select")) {
+          const handler = node.onclick;
+          if (handler)
+            node.onclick = function (event) {
+              if (sameOwner() && body.isConnected) return handler.call(this, event);
+            };
+        }
         return body;
       },
-      { anchor: ordersTab, center: true },
+      { anchor: anchor ?? ordersTab, center: true },
     );
   }
   /** Cut 26 §2: the lane a start sits in for this set — the core's lit pair on this set's route (`onRoute`), the option's own biome, else
@@ -2442,9 +2479,16 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     paintRest();
     if (String(isLive() ? 1 : 0) !== send.dataset.live) paintSend();
   });
+  const orderRoute = (anchor?: HTMLElement): boolean => {
+    if (!el.isConnected || !ordersOn() || (anchor && !anchor.isConnected)) return false;
+    openOrders(anchor);
+    return true;
+  };
+  orderRoutes.set(app, orderRoute);
   return {
     el,
     dispose: () => {
+      if (orderRoutes.get(app) === orderRoute) orderRoutes.delete(app);
       pick.dispose();
       batch.dispose();
       ladder.dispose();

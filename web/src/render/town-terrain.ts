@@ -7,6 +7,7 @@ export type TerrainPlan = {
   trails: Trail[];
   fire: Point;
   plaza: boolean;
+  depth?: boolean;
   aprons: Point[];
   shadows: Point[];
   hillFoot: (x: number) => number;
@@ -59,8 +60,57 @@ const mirror = (v: number, n: number): number => {
   const a = ((v % (n * 2)) + n * 2) % (n * 2);
   return a < n ? a : 2 * n - 1 - a;
 };
-const materialIndex = (m: Material | undefined, x: number, y: number): number =>
-  m ? (mirror(y, m.height) * m.width + mirror(x, m.width)) * 4 : 0;
+// Mirror coordinates are separable: cache each exact integer contribution once
+// per paint, retaining the original sample index and channel arithmetic.
+function materialIndices(
+  m: Material | undefined,
+  width: number,
+  height: number,
+  dx = 0,
+  dy = 0,
+): { x: Uint32Array; y: Uint32Array } {
+  const x = new Uint32Array(width),
+    y = new Uint32Array(height);
+  if (m) {
+    for (let i = 0; i < width; i++) x[i] = mirror(i + dx, m.width) * 4;
+    for (let i = 0; i < height; i++) y[i] = mirror(i + dy, m.height) * m.width * 4;
+  }
+  return { x, y };
+}
+/** Exact sparse cue flags; all preparation remains within the paint timer.
+ * Existing unrounded pigment is evaluated once by the dense pass. */
+function terrainCueMask(
+  p: TerrainPlan,
+  wear: Float32Array,
+  edges: Float64Array,
+  edgeWidth: number,
+  streams: Float64Array,
+): Uint8Array {
+  const flags = new Uint8Array(wear.length);
+  // Cached edge perturbation is ±1.05; the coarse wear domain includes every
+  // relevant boundary without trig, material samples or pigment recomputation.
+  for (let i = p.width; i < wear.length - p.width; i++) {
+    const value = wear[i]!;
+    if (value <= -3.5 || value >= 3.2) continue;
+    const x = i % p.width,
+      y = Math.floor(i / p.width);
+    const d = value + edges[(y >> 2) * edgeWidth + (x >> 2)]!;
+    if (d <= -2.4 || d >= 2.1) continue;
+    const slope = wear[i - p.width]! - wear[i + p.width]!;
+    if (slope > 0.8) flags[i] = 1;
+    else if (slope < -0.8) flags[i] = 2;
+  }
+  for (let y = 0; y < p.height; y++)
+    for (
+      let x = Math.max(0, Math.floor(streams[y]! + 10));
+      x <= Math.min(p.width - 1, Math.ceil(streams[y]! + 12));
+      x++
+    ) {
+      const bank = x - streams[y]!;
+      if (bank > 10 && bank < 12) flags[y * p.width + x]! |= 4;
+    }
+  return flags;
+}
 export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   const c = document.createElement("canvas");
   c.width = p.width;
@@ -108,11 +158,24 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
   const grass0 = materials.grass_0,
     grass3 = materials.grass_3,
     water = materials.water;
+  const grass0Indices = materialIndices(grass0, p.width, p.height),
+    grass3Indices = materialIndices(grass3, p.width, p.height, 43, 61),
+    dirtIndices = materialIndices(materials.dirt_0, p.width, p.height, 17, 29),
+    plazaIndices = materialIndices(materials.plaza_0, p.width, p.height, 17, 29),
+    waterIndices = materialIndices(water, p.width, p.height, 33, 17);
+  // The soil noise uses x>>2/y>>2. Compute the same scalar once per4×4 block.
+  const edgeWidth = Math.ceil(p.width / 4),
+    edgeHeight = Math.ceil(p.height / 4);
+  const edges = new Float64Array(edgeWidth * edgeHeight);
+  for (let y = 0; y < edgeHeight; y++)
+    for (let x = 0; x < edgeWidth; x++) edges[y * edgeWidth + x] = ((hash(x, y, 7) % 7) - 3) * 0.35;
+  const cues = p.depth ? terrainCueMask(p, wear, edges, edgeWidth, streams) : null;
   for (let y = 0; y < p.height; y++)
     for (let x = 0; x < p.width; x++) {
       const i = y * p.width + x;
-      const ai = materialIndex(grass0, x, y),
-        bi = materialIndex(grass3, x + 43, y + 61);
+      const cue = cues?.[i] ?? 0;
+      const ai = grass0Indices.x[x]! + grass0Indices.y[y]!,
+        bi = grass3Indices.x[x]! + grass3Indices.y[y]!;
       const wash =
         0.5 + 0.25 * Math.sin(x * 0.021 + y * 0.008) + 0.2 * Math.sin(y * 0.029 - x * 0.007);
       let red =
@@ -131,26 +194,36 @@ export function paintTownTerrain(p: TerrainPlan): HTMLCanvasElement {
         green = value * 0.98;
         blue = value * 1.08;
       } else {
-        const edge = ((hash(x >> 2, y >> 2, 7) % 7) - 3) * 0.35;
+        const edge = edges[(y >> 2) * edgeWidth + (x >> 2)]!;
         const d = wear[i]! + edge;
         const blend = Math.max(0, Math.min(1, (d + 2.4) / 4.2));
         if (blend) {
-          const soil =
-            materials[
-              p.plaza && Math.hypot(x - p.fire.x, y - p.fire.y) < 28 ? "plaza_0" : "dirt_0"
-            ];
-          const si = materialIndex(soil, x + 17, y + 29);
+          const plaza = p.plaza && Math.hypot(x - p.fire.x, y - p.fire.y) < 28;
+          const soil = materials[plaza ? "plaza_0" : "dirt_0"];
+          const indices = plaza ? plazaIndices : dirtIndices;
+          const si = indices.x[x]! + indices.y[y]!;
           red = red * (1 - blend) + (soil?.data[si] ?? SOIL_FALLBACK[0]!) * blend;
           green = green * (1 - blend) + (soil?.data[si + 1] ?? SOIL_FALLBACK[1]!) * blend;
           blue = blue * (1 - blend) + (soil?.data[si + 2] ?? SOIL_FALLBACK[2]!) * blend;
         }
+        if (cue & 3) {
+          const shade = cue & 1 ? 0.95 : 1.035;
+          red *= shade;
+          green *= shade;
+          blue *= shade;
+        }
         const bank = Math.abs(x - streams[y]!);
         if (bank < 8) {
-          const wi = materialIndex(water, x + 33, y + 17);
+          const wi = waterIndices.x[x]! + waterIndices.y[y]!;
           red = (water?.data[wi] ?? WATER_FALLBACK[0]!) * 0.72;
           green = (water?.data[wi + 1] ?? WATER_FALLBACK[1]!) * 0.72;
           blue = (water?.data[wi + 2] ?? WATER_FALLBACK[2]!) * 0.72;
         } else if (bank < 12) {
+          if (cue & 4) {
+            red *= 1.035;
+            green *= 1.035;
+            blue *= 1.035;
+          }
           red *= 0.75;
           green *= 0.75;
           blue *= 0.75;

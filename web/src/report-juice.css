@@ -74,44 +74,6 @@
     }
   }
 
-  /* the coins: a few from the gold tile to the purse (a fixed layer over everything; pointer-transparent) */
-  .rj-coins {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 60;
-    overflow: hidden;
-  }
-  .rj-coin {
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    will-change: transform, opacity;
-    opacity: 0;
-    filter: drop-shadow(0 1px 0 rgba(13, 12, 20, 0.7))
-      drop-shadow(0 0 4px rgba(246, 214, 140, 0.55));
-  }
-  .rj-coin .ico {
-    display: block;
-    width: 22px;
-    height: 22px;
-    image-rendering: pixelated;
-  }
-  .rj-coin .ico.glyph::before {
-    content: "";
-    display: block;
-    width: 12px;
-    height: 12px;
-    margin: 3px;
-    border-radius: 50%;
-    background: #e4c385;
-    box-shadow: inset -2px -2px 0 #9a7a36;
-  }
-  /* the purse waits on the old sum until the first coin lands (juice.css's count, its delay ours) */
-  html[data-juice="on"] .stat.gold .jn.count.rj-purse::after {
-    animation-delay: var(--rj-land, 0ms);
-  }
-
   /* the highlights arrive one at a time (their space held from the first frame) */
   html[data-juice="on"] .report-sheet > .report-hl.rj-wait {
     opacity: 0;

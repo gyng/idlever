@@ -6,13 +6,44 @@ Owner request, 2026-10-12: aim for 20% of validation time while retaining the mo
 
 Run `tools/verify.sh --quick` for core tests, types and copy checks. Run `(cd web && pnpm -s test)` for the critical client journeys. For a local feature, also run its relevant existing client group: `cd web && node tests/run.mjs <name>`.
 
-The routine client selection has 37 existing groups across ten areas: menu/save startup, town/workers, multiple heroes, packages/pen/forecasts, combat/watch/recovery, gold/supplies/gear, death/advice, reports/accounting, classes/endgame, and responsive UI/lighting. Exact names live in `web/tests/lib/suites.mjs`; `node tests/run.mjs --smoke --list` prints them without launching a browser. Assertions and timing limits are unchanged. Timing-sensitive groups retain isolated execution.
+The routine client selection spans ten areas: menu/save startup, town/workers, multiple heroes, packages/pen/forecasts, combat/watch/recovery, gold/supplies/gear, death/advice, reports/accounting, classes/endgame, and responsive UI/lighting. Exact names live in `web/tests/lib/suites.mjs`; `node tests/run.mjs --smoke --list` prints the current count and names without launching a browser. Assertions and timing limits are unchanged. Timing-sensitive groups retain isolated execution.
 
 The current full audit adds detailed feature checks. Historical whole walks and repeated viewport cases remain in the exhaustive suite. Run the specific omitted group when changing that feature. This selection does not replace visual GPU checks or native balance validation.
 
 ## Complete acceptance
 
-`pnpm -s test:full` runs 124 current feature groups. The no-argument `node tests/run.mjs` uses the same current full scope. `pnpm -s test:exhaustive` retains all 166 original groups and every original viewport variant. Future top-level test files join both automatically unless explicitly classified as historical. The 44 historical whole walks moved or replaced are mapped in `docs/evidence/cut181/final-scope/current-mapping.json`; extra-case limitations are explicit. Works retains its unique sheet/rank parts. In current full, 34 state-focused groups run at 400px; 33 responsive triples retain 320px and 1440px. Other matrices keep their original widths. Exhaustive, smoke and targeted runs retain original widths. Explicit test names are always labelled targeted, even with `--full`.
+`pnpm -s test:full` runs the current feature groups. The no-argument `node tests/run.mjs` uses the same current full scope. `pnpm -s test:exhaustive` retains the original inventory and original viewport variants. Counts grow as regressions are added; each command prints its exact selected count, and `--list` prints the complete inventory. Future top-level test files join both automatically unless explicitly classified as historical. The 44 historical whole walks moved or replaced are mapped in `docs/evidence/cut181/final-scope/current-mapping.json`; extra-case limitations are explicit. Works retains its unique sheet/rank parts. At the Cut181 checkpoint, full had124 groups:34 state-focused groups at400px and33 responsive triples retaining320px and1440px. Exhaustive retained166 groups. Later feature matrices document their own reductions below. Explicit test names are always labelled targeted, even with `--full`.
+
+Cut219 survivor builds retains all ten genuine fixture cases and all functional
+choices, refusals, Gold, private residents, stale controls, actual departures and
+confirmed Rebirth checks in full. Geometry reuses mandatory Loadouts/Hero reads,
+then adds Journal and six longest-stage boundary pairs:36 views across320/400/
+1440px and normal/200% text. Critical mode covers fresh, temperament and queued
+stages in nine views. Exhaustive retains the original180-view Cartesian matrix;
+`IDLEVER_PROGRESS_GEOMETRY=exhaustive` requests it explicitly. Result JSON lists
+the144 geometry combinations omitted from compact full; no functional full case
+is omitted. Explicit width/scale/case overrides remain diagnostic and record
+their actual scope.
+
+The isolated compact measurement passes664 assertions/36 views in105.3 seconds,
+versus the recorded562.2-second180-view phase on the same host:18.7% of that
+harness's time. This meets its120-second target. The earlier phase used5ae WASM;
+the compact phase uses frozen71ca and also includes proved shared/away fixes, so
+this is a recorded phase comparison, not an identical-binary A/B or a measured
+runtime for the whole client suite. Evidence:
+`docs/evidence/cut219/ui/compact-71ca-first/`. Critical mode passes144 assertions/
+nine views in25.1 seconds; Core work had resumed, so this is a descriptive
+timing. Full records remain in lossless `results.json.gz` archives with byte/
+SHA manifests and small summaries. Survivor builds uses the runner's heavy/timing lane (one worker in
+routine/full; existing three-worker heavy cap in exhaustive), rather than
+joining twelve ordinary CPU browsers.
+
+The final integrated e846 package subsequently passes805 checks/all ten cases/
+36 views in85.6 seconds, including explicit quiet import feedback assertions.
+Its preceding116.9-second Game/Gold pass is preserved with an unaccepted fixture
+import FX scope; transient reset handling was corrected before the final pass.
+These remain measurements of this single group, not the complete155-group full
+suite. See `docs/evidence/cut219/ui/compact-e846-second/`.
 
 Use the full client suite before release, a fresh blind rating, and changes spanning several game systems. Use `tools/verify.sh --full` for the existing full native/build acceptance. Content iteration uses targeted `tools/tune.sh <rows>` rather than replaying the entire statistical audit after every edit. The exhaustive audit stays available explicitly; neither this tier nor routine full acceptance certifies omitted exhaustive cases.
 

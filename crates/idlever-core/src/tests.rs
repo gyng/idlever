@@ -2159,6 +2159,7 @@ fn counters_scale_damage_and_are_learned() {
 #[test]
 fn unlocked_supplies_are_free_at_zero_gold_and_never_kept_back() {
     let mut g = Game::new_literal(1);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     no_kennel_leash(&mut g);
     assert_eq!(g.lineage.gold, 0);
     assert!(g.buy_supply("heal").is_err(), "unidentified even at zero gold");
@@ -2397,6 +2398,10 @@ fn death_deltas_are_the_camp_forecasts_move() {
     // short, 49 vs 50): 1031's.
     // Blind b8dd77c (the corridor hold's clock: 1031's rest patch now moves D5 by +0.20, under the bar): 1035's.
     let mut g = Game::new_literal(1035);
+    // Controlled causal fixture: retain the original legal starting leash and
+    // its combat path. Fresh-town Forge/leash staging is tested separately.
+    g.lineage.town.built.push(("blacksmith".into(), 0));
+    g.lineage.kennel_leash();
     // (Cut 116: the patch arithmetic on the descent this seed was chosen for — no heir affix, no guest; with
     // them the rest patch moves D7 by +0.10, under the bar)
     g.lineage.affix_pin = Some(Vec::new());
@@ -5638,6 +5643,7 @@ fn the_first_stray_waits_on_d2_or_d3_for_the_kennel_leash() {
     assert!((1..=40u64).all(|s| Game::new_literal(s).lineage.first_stray().is_some()));
     let off = |s: u64| {
         let mut g = Game::new_literal(s);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
         crate::pets::pin_off(&mut g.lineage);
         g
     };
@@ -7158,6 +7164,7 @@ fn forecast_ends_name_how_a_send_ends() {
 #[test]
 fn drop_supply_takes_one_line_without_refunding_a_free_preparation() {
     let mut g = Game::new_literal(5);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.gold = 200;
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
     let cat = g.supply_catalogue();
@@ -9473,6 +9480,10 @@ fn death_notes_name_the_death() {
     assert!(!death_note_names("Gambled: confusion potion.", "poison"));
     // The walk's death (seed 1815, run 1: an archer on D6, the run's last note a D5 captain's).
     let mut g = Game::new_literal(1815);
+    // This regression needs the original archer/goblin encounter sequence,
+    // including its legal leash; it is not a new-town progression test.
+    g.lineage.town.built.push(("blacksmith".into(), 0));
+    g.lineage.kennel_leash();
     g.send();
     loop {
         let r = g.step(200);
@@ -10244,6 +10255,7 @@ fn cards_carry_outside_the_vocabulary() {
 #[test]
 fn the_forge_sells_permanent_kit_steps() {
     let mut g = Game::new_literal(4);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.best_depth = 8;
     let lad = g.lineage().kit;
     assert_eq!(lad.iter().map(|l| l.slot.as_str()).collect::<Vec<_>>(), vec!["weapon", "armour", "pack"]);
@@ -10536,6 +10548,7 @@ fn the_heir_purse_is_no_income() {
 #[test]
 fn the_kennel_leash_comes_back_free() {
     let mut g = Game::new_literal(5);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     let leash = g.lineage.supplies.iter().find(|s| s.kind == "leash" && s.free).map(|s| s.id).expect("the kennel's leash");
     g.drop_supply(leash).unwrap();
     assert_eq!(g.supply_catalogue().iter().find(|s| s.kind == "leash").map(|s| s.price), Some(0));
@@ -10937,6 +10950,7 @@ fn an_heir_who_fell_above_his_best_reads_best() {
 #[test]
 fn packed_and_brought_are_not_finds() {
     let mut g = Game::new_literal(11);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.found_kinds.insert("sword".into());
     let mut mail = crate::item::Item::new(g.lineage.next_vault_id, "mail");
     g.lineage.next_vault_id += 1;
@@ -11145,6 +11159,7 @@ fn whole_run_move_judges_a_patch() {
 #[test]
 fn a_bought_leash_comes_home_from_a_return() {
     let mut g = Game::new_literal(2602);
+    crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.gold = 500;
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "leash" && s.free), "the kennel's leash");
     g.buy_supply("leash").unwrap();

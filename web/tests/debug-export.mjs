@@ -30,6 +30,8 @@ try {
       // A rich fixture through the real loader, without spending test time earning gold.
       const fixture = JSON.parse(await app.engine.save());
       fixture.lineage.gold = 1000;
+      // Cut219 stages Forge purchases behind a built Forge.
+      fixture.lineage.town.built.push(["blacksmith", 0]);
       app.lineage = await app.engine.load(JSON.stringify(fixture));
       app.lineage = await app.engine.addBloodline();
       app.lineage = await app.engine.selectBloodline(2);

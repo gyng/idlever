@@ -6,7 +6,7 @@
 //     stolen items (`stolen scroll, $3`), a stolen flavour by its name now; a death's trace chip names its floor
 //   · the repeat badge: `repeat short` (`repeat_unpaid`), `+heal at send` (`repeat_due`), else `repeat on · ≤$N`
 //   · the death screen's first pass never moves the lit tablet; a flat reach reads `≈` alone; an exit patch says `return early`
-//   · the vault tile under an open sheet leaves one surface up
+//   · historical Vault does not return; reusable Loadouts opens one surface after a modal close
 //
 //   node web/tests/qa778.mjs [--shots dir]        (part of `pnpm test` in web/)
 import { execFileSync } from "node:child_process";
@@ -180,7 +180,7 @@ try {
     b2 = await badge({ repeat_due: ["heal"] }),
     b3 = await badge({});
   check(
-    b1 === "Restock limited" && b2 === "+heal at send" && b3 === "Restock on · held ≤$26",
+    b1 === "Restock limited" && b2 === "+heal on delve" && b3 === "Reuse kit",
     `the restock badge: unpaid \`${b1}\`, due \`${b2}\`, else \`${b3}\``,
   );
 
@@ -284,13 +284,13 @@ try {
   );
   // QA 0c6e126 (qaY: `heir purse ≥$40 ×12` with no ledger line behind it): only a top-up the ledger holds is named — `+$40 heir purse`
   check(
-    /next heir \+\$40/.test(all) && !/≥\$40|purse full|no top-up/.test(all + rep.gold),
-    `the purse reads \`next heir +$40\` where it was paid, never \`≥$40\` or \`purse full\` (${all})`,
+    /purse \+\$40/.test(all) && !/next heir|≥\$40|purse full|no top-up/.test(all + rep.gold),
+    `the purse reads \`purse +$40\` where it was paid, never \`≥$40\` or \`purse full\` (${all})`,
   );
   // QA 0c6e126 (qaZ: `−$7 swapped` summed into the headline, off the balance by 7): the swaps are the lines', not a term of the gold line
   check(
     !/swapped/.test(rep.gold ?? "") &&
-      /\+\$40 next heir/.test(rep.gold ?? "") &&
+      /\+\$40 purse/.test(rep.gold ?? "") &&
       !/≥/.test(rep.gold ?? ""),
     `the gold line holds only the ledger's terms — the top-up it paid, no swaps ("${rep.gold}")`,
   );
@@ -392,28 +392,30 @@ try {
     r.go({ kind: "camp" });
   });
   await sleep(250);
-  const hasVault = await page.locator(".cmd .tile[data-tile=vault]").count();
-  if (hasVault) {
-    await page
-      .locator(".camp .strip button.gold, .camp .bar button.gold")
-      .first()
-      .click({ timeout: 5000 })
-      .catch(() => {});
-    await sleep(200);
-    const sheet0 = await page.locator(".sheet-wrap").count();
-    // Chunky windows are modal: close the visible window before changing panels.
-    await page.keyboard.press("Escape");
-    await page.locator(".cmd .tile[data-tile=vault]").click({ timeout: 5000 });
-    await sleep(200);
-    const after = await page.evaluate(() => ({
-      sheets: document.querySelectorAll(".sheet-wrap").length,
-      panel: document.querySelector(".panel")?.dataset.panel ?? null,
-    }));
-    check(
-      sheet0 === 1 && after.sheets === 0 && after.panel === "vault",
-      `a tile under an open sheet takes the tap and closes it (sheets ${sheet0} → ${after.sheets}, panel ${after.panel})`,
-    );
-  } else check(false, "the vault tile is carved (a kept item)");
+  check(
+    (await page.locator(".cmd .tile[data-tile=vault]").count()) === 0,
+    "historical kept items do not resurrect the retired Vault tile",
+  );
+  // Cut196 retired Vault. Preserve this check's one-surface intent through
+  // the current reusable Loadouts destination, with an actual modal close.
+  await page.evaluate(async () => {
+    (await import("/src/ui/gold.ts")).openGoldSheet(window.__idlever);
+  });
+  await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+  const sheet0 = await page.locator(".sheet-wrap:not(.under)").count();
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+  await page.locator('.cmd .tile[data-tile="loadout"]').click();
+  await page.waitForFunction(() => !document.querySelector(".sheet-ghost"));
+  const after = await page.evaluate(() => ({
+    sheets: document.querySelectorAll(".sheet-wrap:not(.under)").length,
+    loadouts: document.querySelectorAll('[data-bloodline-tab="loadouts"][aria-selected="true"]')
+      .length,
+  }));
+  check(
+    sheet0 === 1 && after.sheets === 1 && after.loadouts === 1,
+    `the current Loadouts tile opens one surface after a modal close (${sheet0} → ${after.sheets})`,
+  );
 } catch (e) {
   errors.push(`walk aborted: ${e.message}`);
 } finally {

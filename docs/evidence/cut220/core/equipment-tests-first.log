@@ -1,0 +1,11 @@
+error[E0609]: no field `party` on type `&Run`
+    --> crates/idlever-core/src/engine.rs:3528:34
+     |
+3528 |             l.actual_party = run.party.iter().filter_map(|c| {
+     |                                  ^^^^^ unknown field
+     |
+     = note: available fields are: `hero_name`, `gun_reload`, `gun_skills`, `id`, `heir` ... and 95 others
+
+For more information about this error, try `rustc --explain E0609`.
+error: could not compile `idlever-core` (lib) due to 1 previous error
+error: could not compile `idlever-core` (lib test) due to 1 previous error

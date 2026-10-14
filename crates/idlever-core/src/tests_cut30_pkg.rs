@@ -9,6 +9,9 @@ use crate::rules::{Cond, Row, RuleSet, Verb};
 fn a_counter_tactic_keeps_two_heals_when_space_and_funds_allow() {
     for pack in [0, 2] {
         let mut g = Game::new_resident(163);
+        // Controlled trained Steady: this arithmetic fixture exercises the two-remedy rung.
+        g.lineage.pkg.runs.insert("steady".into(), 220);
+        packages::recompile(&mut g.lineage);
         g.lineage.supplies.clear();
         g.lineage.gold_move(1000 - g.lineage.gold, "fixture");
         g.lineage.kit.insert("pack".into(), pack);
@@ -146,7 +149,7 @@ fn one_system_a_report_and_five_beats() {
     g.lineage.reveal_left = 1;
     let opened = crate::systems::update(&mut g.lineage, false);
     // (Cut 118 amendment 2: the heir order's rung opens with the death screen, one unit)
-    assert_eq!(opened, vec!["death", "heirs"]);
+    assert_eq!(opened, vec!["death"]); // Survivor build stage does not open on death.
     assert!(g.lineage.reveal_queue.len() >= 2, "{:?}", g.lineage.reveal_queue);
     assert_eq!(g.lineage().reveal_next.map(|n| n.id), g.lineage.reveal_queue.first().cloned());
     let lines: Vec<String> = ["STEADY L2", "STEADY L3", "+Guarded", "DRILLED · Warlord", "built bank", "the pen", "QUEST DONE · reach D9"].iter().map(|s| s.to_string()).collect();
@@ -433,6 +436,9 @@ fn every_package_level_produces_valid_rules() {
 fn automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items() {
     let setup = || {
         let mut g = Game::new_resident(13);
+        // Controlled trained Steady: this arithmetic fixture exercises the two-remedy rung.
+        g.lineage.pkg.runs.insert("steady".into(), 220);
+        packages::recompile(&mut g.lineage);
         g.lineage.supplies.clear();
         g.lineage.gold_move(10_000 - g.lineage.gold, "test");
         for kind in ["heal", "fire", "silence"] {
@@ -1247,6 +1253,7 @@ fn buildings_require_a_manual_action_and_survive_save_load() {
     assert!(g.lineage.town.built.is_empty());
     assert!(g.build_town("blacksmith").is_err());
     g.lineage.banked_depths.insert(1);
+    crate::test_stage::traits(&mut g.lineage,4,1);g.lineage.gold_move(1,"banked D1");
     assert!(crate::town::update(&mut g.lineage).is_empty());
     assert!(!crate::town::built(&g.lineage, "blacksmith"));
     assert!(g.lineage().town.next_ready);
@@ -1345,6 +1352,9 @@ fn selected_package_prices_match_full_choices() {
 #[test]
 fn automatic_pack_is_free_with_no_away_income_or_budget_warning() {
     let mut g=Game::new_resident(17);
+        // Controlled trained Steady: this arithmetic fixture exercises the two-remedy rung.
+        g.lineage.pkg.runs.insert("steady".into(), 220);
+        packages::recompile(&mut g.lineage);
     crate::tree::grant(&mut g.lineage,&crate::tree::LEGACY);
     g.lineage.supplies.clear();g.lineage.gold=0;g.lineage.restock_off=true;
     g.lineage.forge.entry("heal".into()).or_default().craftable=true;
@@ -1766,22 +1776,10 @@ fn package_death_patches_are_measured_where_they_apply() {
 /// the wake still wears its card 1.
 #[test]
 fn a_new_heir_keeps_the_worn_temperament() {
-    let mut g = Game::new_resident(11);
-    g.lineage.heir = 3;
-    packages::wake(&mut g.lineage);
-    let first = g.lineage.pkg.offer.first().cloned().expect("heir 3 is offered cards");
-    assert_eq!(g.lineage.pkg.temperament.as_ref(), Some(&first), "no pick yet: card 1 is worn");
-    let other = g.lineage.pkg.offer[1].clone();
-    packages::pick(&mut g.lineage, &other).unwrap();
-    for heir in 4..24 {
-        g.lineage.heir = heir;
-        packages::wake(&mut g.lineage);
-        let o = &g.lineage.pkg.offer;
-        assert_eq!(o.len(), 3, "heir {heir}: three cards");
-        assert_eq!(o[0], other, "heir {heir}: the worn personality is card 1 ({o:?})");
-        assert_eq!(o.iter().filter(|c| **c == other).count(), 1, "heir {heir}: once ({o:?})");
-        assert_eq!(g.lineage.pkg.temperament.as_ref(), Some(&other), "heir {heir}: still worn");
-    }
+    let mut g=Game::new_resident(11);crate::test_stage::traits(&mut g.lineage,6,5);
+    g.lineage.new_heir();assert_eq!(g.lineage.pkg.offer.len(),4);assert!(g.lineage.pkg.temperament.is_none(),"opening never auto-picks a personality");
+    g.pick_temperament("skittish").unwrap();let born=g.lineage.heirs.born;
+    for _ in 4..24 {g.lineage.new_heir();assert_eq!(g.lineage.pkg.temperament.as_deref(),Some("skittish"));assert_eq!(g.lineage.heirs.born,born);assert_eq!(g.lineage.pkg.offer.len(),4);}
 }
 
 /// Blind 77030eb (B): a level's why — corridor fighting's L3 brings its crowd row; L2 and L4 bring none.
@@ -1806,14 +1804,8 @@ fn a_level_names_the_rows_it_brings() {
 /// Blind 77030eb, IDLE's bars: a lineage that never picked a personality keeps the wake's draw for each heir (the
 /// keep without a pick walled IDLE at D23); only the player's pick is kept.
 #[test]
-fn an_unpicked_temperament_is_the_wakes_draw() {
-    let mut g = Game::new_resident(11);
-    let mut seen = std::collections::BTreeSet::new();
-    for heir in 3..24 {
-        g.lineage.heir = heir;
-        packages::wake(&mut g.lineage);
-        assert_eq!(g.lineage.pkg.temperament.as_ref(), g.lineage.pkg.offer.first(), "card 1 worn");
-        seen.insert(g.lineage.pkg.temperament.clone());
-    }
-    assert!(!g.lineage.pkg.temperament_chosen && seen.len() > 1, "no pick: the draws vary ({seen:?})");
+fn an_unpicked_temperament_stays_optional_across_incarnations() {
+    let mut g=Game::new_resident(11);crate::test_stage::traits(&mut g.lineage,6,5);
+    for _ in 3..24 {g.lineage.new_heir();assert!(g.lineage.pkg.temperament.is_none());assert!(g.lineage.heirs.born.is_none());assert_eq!(g.lineage.pkg.offer.len(),4);}
+    assert!(!g.lineage.pkg.temperament_chosen,"no silent random personality selection");
 }

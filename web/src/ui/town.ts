@@ -1,6 +1,6 @@
 import { classIcon } from "./class-icons";
-import { bloodlineTabs, type BloodlineTab } from "./bloodline-tabs";
-import { renderBloodlineLoadouts } from "./bloodline-loadouts";
+import type { BloodlineTab } from "./bloodline-tabs";
+import { openHeroHub, heroHubOwner, type HeroHubSection } from "./hero-hub";
 import { heroPresence, heroAway } from "./hero-presence";
 // Cut 30 §3 — the town on the camp (docs/TOWN.md): the scene (render/town.ts) in the well, a DOM hit target over everything one can
 // tap (≥ 44 px, a hidden label for tests and screen readers), the markers (≤ 3: a sword over the forge when a kit step is affordable,
@@ -30,16 +30,11 @@ import { questShown } from "./quest";
 import { nextPill, nodeIcon, openWorks } from "./works";
 import { townGraveyard } from "./feats"; // Cut 118 (owner amendment §4): the graveyard's stones
 import { townCrier } from "./crier"; // Cut 118 §8: the town crier   // Cut 30.5: the `next` pill, the works sheet
-import { openChronicle } from "./chronicle";
-import { openRuns } from "./runs";
-import { openLooks } from "./look";
 import { openHeroLife } from "./hero-life";
+import { openCampOrders } from "./camp";
 import { classList, classUnlockReason } from "./unlocks";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
-import { renderClassTree } from "./class-tree";
-import { renderClassStyles, classStyleName } from "./class-styles";
-import { legacyBar, legacyNext, legacyNextText, renderLegacy } from "./legacy";
 import { kwHost, detailHost, openTip, closeTip } from "./tips";
 import { HOME_BUILDINGS, buildingDetails, buildingName, type HomeBuilding } from "./building-help";
 import type { Term } from "./concepts";
@@ -632,8 +627,16 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         mk.push({
           at: "chest",
           kind: "coin",
-          label: lit.price ? `$${lit.price}` : /* copy:label */ "free",
+          label: lit.price ? /* copy:label */ `Hire $${lit.price}` : /* copy:label */ "Hire free",
         });
+      if (lit) {
+        const worker = app.lineage.tree?.nodes.find((node) => node.id === lit.id);
+        const role = buildingId(lit.post);
+        const hiring = /* copy:tooltip */ `Hire ${worker?.name ?? lit.id} · ${role ? buildingName(role) : lit.post} · ${lit.price ? `$${lit.price}` : "free"}`;
+        b.setAttribute("aria-label", hiring);
+        b.title = hiring;
+        b.querySelector(".vh")!.textContent = hiring;
+      }
       b.dataset.worker = lit?.id ?? "";
       const holder =
         b.querySelector(".town-markers") ?? b.appendChild(h("span", { class: "town-markers" }));
@@ -881,26 +884,47 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     const defaultBottom = ready ? cy + size.h / 2 + 12 + height : r.y - 6;
     const clampBottom = (bottom: number): number =>
       Math.max(height + 8, Math.min(el.clientHeight - 8, bottom));
-    // A ready plot label must not cover another building's tap target. Scene
-    // geometry stays fixed; try the nearby space above/below the plot first.
+    // Keep construction copy clear of action centres and their full resource
+    // badges. Price text can extend beyond the central44px worker target.
+    const targets = [...btns.entries()]
+      .filter(([id, b]) => id !== "staked" && !b.hidden)
+      .map(([, b]) => ({
+        x: Number.parseFloat(b.style.left) + b.offsetWidth / 2 - 22,
+        y: Number.parseFloat(b.style.top) + b.offsetHeight / 2 - 22,
+        w: 44,
+        h: 44,
+      }));
+    const origin = el.getBoundingClientRect();
+    for (const marker of el.querySelectorAll<HTMLElement>(".town-marker")) {
+      const box = marker.getBoundingClientRect();
+      if (!box.width || !box.height) continue;
+      targets.push({
+        x: box.left - origin.left,
+        y: box.top - origin.top,
+        w: box.width,
+        h: box.height,
+      });
+    }
+    targets.push(...actorReservations.values());
     const candidates = [
       ...new Set([
         clampBottom(defaultBottom),
         clampBottom(cy - size.h / 2 - 12),
+        ...targets.flatMap((p) => [clampBottom(p.y - 8), clampBottom(p.y + p.h + height + 8)]),
         clampBottom(height + 8),
         clampBottom(el.clientHeight - 8),
       ]),
     ];
-    const targets = [...btns.entries()]
-      .filter(([id, b]) => id !== "staked" && !b.hidden)
-      .map(([, b]) => ({
-        x: Number.parseFloat(b.style.left) + b.offsetWidth / 2,
-        y: Number.parseFloat(b.style.top) + b.offsetHeight / 2,
-      }));
     const score = (bottom: number): number =>
       targets.reduce((n, p) => {
-        const dx = Math.max(0, Math.min(tagCx + half, p.x + 22) - Math.max(tagCx - half, p.x - 22));
-        const dy = Math.max(0, Math.min(bottom, p.y + 22) - Math.max(bottom - height, p.y - 22));
+        const dx = Math.max(
+          0,
+          Math.min(tagCx + half + 4, p.x + p.w + 4) - Math.max(tagCx - half, p.x),
+        );
+        const dy = Math.max(
+          0,
+          Math.min(bottom + 4, p.y + p.h + 4) - Math.max(bottom - height, p.y),
+        );
         return n + dx * dy;
       }, 0);
     const bottom = candidates.reduce(
@@ -931,7 +955,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       return;
     }
     if (id === "chest") {
-      void openChest(b);
+      void openChest();
       return;
     }
     if (id === "worker") {
@@ -990,10 +1014,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   }
   /** Cut 30.5: the chest's tap — the lid flips, the coins arc to the purse (quick: ~0.5 s), the purse counts up (juice.ts), the porter's
    *  count moves (the core's `openChest`; the porter's chore). */
-  async function openChest(b: HTMLElement): Promise<void> {
+  async function openChest(): Promise<void> {
     if (!app.engine.openChest || (app.lineage.tree?.chest ?? 0) <= 0) return;
-    const gold = app.lineage.tree!.chest;
-    const flew = coinsFly(b, gold); // (from the chest's box before the repaint takes its target away)
     chestOpenUntil = performance.now() + 1500;
     paint();
     clearTimeout(chestTimer);
@@ -1001,7 +1023,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       if (el.isConnected) paint();
     }, 1550);
     audio.cue("exit_bank");
-    if (flew) await new Promise((r) => setTimeout(r, 380)); // the purse ticks as the first coins land
     await app.mutate(() => app.engine.openChest!()); // (no forecast move to name: the purse is the sims' either way)
   }
   function send(after: () => void): void {
@@ -1034,43 +1055,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       view.dispose();
     },
   };
-}
-
-/** Cut 30.5: coins arc from `from` to the top bar's purse (juice on; a handful by the sum, staggered, ~0.5 s each); false when juice is off. */
-export function coinsFly(from: HTMLElement, gold: number): boolean {
-  if (
-    document.documentElement.dataset.juice !== "on" ||
-    typeof Element.prototype.animate !== "function"
-  )
-    return false;
-  const to = document.querySelector<HTMLElement>(".topbar .stat.gold");
-  if (!to) return false;
-  const a = from.getBoundingClientRect(),
-    z = to.getBoundingClientRect();
-  const x0 = a.left + a.width / 2,
-    y0 = a.top + a.height * 0.45,
-    x1 = z.left + 12,
-    y1 = z.top + z.height / 2;
-  const n = Math.max(4, Math.min(12, Math.round(Math.log2(Math.max(2, gold)) * 1.6)));
-  for (let i = 0; i < n; i++) {
-    const c = h("span", { class: "coin-fly", "aria-hidden": "true" });
-    c.style.left = `${x0}px`;
-    c.style.top = `${y0}px`;
-    document.body.appendChild(c);
-    const sx = (Math.random() - 0.5) * 70,
-      up = 50 + Math.random() * 40;
-    const anim = c.animate(
-      [
-        { transform: "translate(0, 0) scale(.6)", opacity: 0 },
-        { transform: `translate(${sx}px, ${-up}px) scale(1.1)`, opacity: 1, offset: 0.3 },
-        { transform: `translate(${x1 - x0}px, ${y1 - y0}px) scale(.7)`, opacity: 1 },
-      ],
-      { duration: 640 + i * 14, delay: i * 35, easing: "cubic-bezier(.3,.1,.5,1)", fill: "both" },
-    );
-    anim.onfinish = () => c.remove();
-    setTimeout(() => c.remove(), 1600);
-  }
-  return true;
 }
 
 /** The building bar's tile for a standing building (`forge` · `kennel` · `bank`): the same panel as the building. */
@@ -1171,307 +1155,103 @@ export function openBank(app: App, anchor?: HTMLElement | null): void {
   );
 }
 
+const heroRouteIntents = new WeakMap<App, number>();
+
 /** The tent: the hero — the class, its level and xp (the class picker once classes can be had: the camp's). */
 export function openHero(
   app: App,
   anchor?: HTMLElement | null,
   initialTab: BloodlineTab = "loadouts",
 ): void {
-  let off = (): void => {};
-  let offLive = (): void => {};
-  openSheet(
-    () => {
-      const body = h("div", { class: "sheet-body hero-sheet" });
-      const tabs = bloodlineTabs(initialTab);
-      const identity = (): string => {
-        const L = app.lineage,
-          slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
-        return JSON.stringify([
-          L.selected_bloodline,
-          L.heir,
-          L.class,
-          L.look,
-          slot?.hero_name,
-          slot?.level,
-          slot?.xp,
-          slot?.next,
-          slot ? heroPresence(slot) : null,
-          L.bloodline,
-          L.class_styles,
-          L.class_tree,
-          L.legacy_upgrades,
-          L.legacy_respec,
-          L.persistent_hero,
-          L.supplies,
-          L.starting_kits,
-          L.supply_cap,
-          L.repeat,
-          L.facts,
-          L.forge,
-          L.town?.home,
-          !!L.live,
-          L.classes?.[L.class],
-          L.hero_legacy?.find((h) => h.heir === L.heir),
-          L.runs?.length,
-          L.runs?.at(-1)?.id,
-        ]);
-      };
-      let painted = "";
-      const paint = (): void => {
-        tabs.capture();
-        painted = identity();
-        const historyOpen = body.querySelector<HTMLDetailsElement>(".hero-history")?.open ?? false;
-        const paths = body.querySelector(".legacy-tree")
-          ? new Set(
-              [...body.querySelectorAll<HTMLDetailsElement>(".legacy-path[open]")].map(
-                (el) => el.dataset.branch!,
-              ),
-            )
-          : undefined;
-        const classTreeOpen = new Set(
-          [...body.querySelectorAll<HTMLDetailsElement>("[data-class-tree-fold][open]")].map(
-            (el) => el.dataset.classTreeFold!,
-          ),
-        );
-        const startingGearOpen = new Set(
-          [...body.querySelectorAll<HTMLDetailsElement>("[data-starting-gear][open]")].map(
-            (el) => el.dataset.startingGear!,
-          ),
-        );
-        const L = app.lineage,
-          lvl = L.classes?.[L.class] ?? { level: 1, xp: 0, next: undefined as number | undefined };
-        const slot = L.hero_slots?.find((s) => s.id === L.selected_bloodline);
-        const presence = slot ? heroPresence(slot) : null;
-        const p = lvl.next === 0 ? 1 : Math.max(0, Math.min(1, lvl.next ? lvl.xp / lvl.next : 0));
-        const legacy = L.hero_legacy?.find((x) => x.heir === L.heir);
-        const face = h("span", { class: "hero-window-face" });
-        paintFace(face, L.class, 72, L.look ?? "");
-        replace(
-          body,
-          h(
-            "div",
-            { class: "label row-label" },
-            /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1}`,
-          ),
-          h(
-            "div",
-            { class: "hero-line num" },
-            face,
-            h(
-              "div",
-              { class: "hero-identity" },
-              h(
-                "b",
-                { class: "hero-name" },
-                L.hero_slots?.find((s) => s.id === L.selected_bloodline)?.hero_name || L.class,
-              ),
-              h(
-                "div",
-                { class: "hero-class-meta" },
-                classIcon(L.class, L.class_styles?.selected),
-                L.hero_slots?.find((s) => s.id === L.selected_bloodline)?.hero_name
-                  ? h("span", null, L.class)
-                  : null,
-                slot ? null : h("span", null, /* copy:label */ `Class L${lvl.level}`),
-                L.class_styles?.selected
-                  ? h("span", { class: "hero-class-path" }, classStyleName(L.class_styles.selected))
-                  : null,
-              ),
-            ),
-          ),
-          slot
-            ? h(
-                "div",
-                { class: "hero-progress num" },
-                /* copy:label */ `Hero L${slot.level}`,
-                h(
-                  "span",
-                  { class: "dim" },
-                  slot.next === 0
-                    ? /* copy:label */ "MAX"
-                    : /* copy:label */ `XP ${slot.xp}/${slot.next ?? "—"}`,
-                ),
-              )
-            : null,
-          presence
-            ? h(
-                "div",
-                {
-                  class: "hero-action hero-menu-presence",
-                  "data-activity": presence.activity,
-                  title: presence.detail,
-                },
-                presence.text,
-              )
-            : null,
-          !slot && L.live ? h("div", { class: "dim" }, /* copy:callout */ "Hero away") : null,
-          h(
-            "div",
-            { class: "hero-actions" },
-            h(
-              "button",
-              {
-                class: "chip hero-appearance",
-                onclick: () => openLooks(app),
-                disabled: !app.engine.setLook,
-              },
-              /* copy:button */ "Appearance",
-            ),
-            (L.runs ?? []).some((r) => r.id > 0)
-              ? h(
-                  "button",
-                  { class: "chip hero-runs", onclick: () => openRuns(app) },
-                  /* copy:button */ "Run log",
-                )
-              : null,
-            L.persistent_hero
-              ? h(
-                  "button",
-                  {
-                    class: "chip hero-life-open",
-                    onclick: () => {
-                      closeAllSheets();
-                      openHeroLife(app);
-                    },
-                  },
-                  /* copy:button */ "Hero",
-                )
-              : null,
-          ),
-          tabs.el,
-          tabs.panel(
-            "loadouts",
-            JSON.stringify([
-              L.selected_bloodline,
-              L.supplies,
-              L.starting_kits,
-              L.supply_cap,
-              L.repeat,
-              L.facts,
-              L.forge,
-              !!L.live,
-              L.town?.home,
-            ]),
-            renderBloodlineLoadouts(app, startingGearOpen),
-          ),
-          tabs.panel(
-            "class",
-            JSON.stringify([
-              L.selected_bloodline,
-              L.class,
-              L.class_tree,
-              L.class_styles,
-              !!L.live,
-              L.town?.home,
-            ]),
-            h(
-              "button",
-              { class: "chip hero-class", onclick: () => openHeroClass(app), disabled: !!L.live },
-              classIcon(L.class),
-              /* copy:button */ "Change class",
-            ),
-            renderClassTree(
-              app,
-              () => {
-                if (body.isConnected) paint();
-              },
-              classTreeOpen,
-            ),
-            renderClassStyles(app, () => {
-              if (body.isConnected) paint();
-            }),
-            !L.class_tree || (L.class_tree.level < 2 && L.class_tree.spent === 0)
-              ? h(
-                  "div",
-                  { class: "class-tree-soon num" },
-                  /* copy:label */ "Class skills",
-                  L.class_tree?.nodes[0]
-                    ? /* copy:label */ `L${L.class_tree.nodes[0].required_level} · D${L.class_tree.nodes[0].required_depth}`
-                    : /* copy:label */ "Skills unavailable",
-                )
-              : null,
-          ),
-          tabs.panel(
-            "legacy",
-            JSON.stringify([
-              L.selected_bloodline,
-              L.bloodline,
-              L.legacy_upgrades,
-              L.legacy_respec,
-              !!L.live,
-              L.heir,
-            ]),
-            h(
-              "div",
-              { class: "hero-legacy num" },
-              h("b", null, /* copy:label */ "Legacy"),
-              ` ${L.bloodline?.points ?? legacy?.points ?? 0}`,
-            ),
-            // Cut 122 §9: how far to the next rank (`388 / 600 → Health III`) and its bar
-            ((n) =>
-              n
-                ? h(
-                    "div",
-                    { class: "legacy-next num", "data-price": n.price },
-                    h("small", { class: "legacy-next-text" }, legacyNextText(n)),
-                    legacyBar(n),
-                  )
-                : null)(legacyNext(L)),
-            renderLegacy(
-              app,
-              () => {
-                if (body.isConnected) paint();
-              },
-              paths,
-            ),
-          ),
-          h(
-            "details",
-            { class: "hero-history", open: historyOpen },
-            h("summary", null, /* copy:button */ "Details"),
-            h(
-              "div",
-              { class: "dim num" },
-              `${legacy?.runs ?? 0} runs · deepest ${legacy?.best_depth ?? 0}`,
-            ),
-            h(
-              "div",
-              { class: "dim num" },
-              /* copy:label */ `Class L${lvl.level}`,
-              " · ",
-              /* copy:label */ "Class XP",
-              ` ${lvl.xp}${lvl.next ? ` / ${lvl.next}` : lvl.next === 0 ? " · MAX" : ""}`,
-            ),
-            h(
-              "div",
-              { class: "bank-bar xp-bar", "aria-hidden": "true" },
-              h("span", { class: "fill", style: `width:${Math.round(p * 100)}%` }),
-            ),
-            h(
-              "button",
-              { class: "chip hero-chronicle", onclick: () => openChronicle(app) },
-              /* copy:button */ "Chronicle",
-            ),
-          ),
-        );
-        tabs.restore();
-      };
-      paint();
-      const refresh = (): void => {
-        if (body.isConnected && identity() !== painted) paint();
-      };
-      off = app.onChange(refresh);
-      offLive = app.onLive(refresh);
-      return body;
-    },
-    {
-      anchor,
-      onClose: () => {
-        off();
-        offLive();
+  const root = heroHubOwner(app);
+  if (!root) return;
+  const routeIntent = (heroRouteIntents.get(root) ?? 0) + 1;
+  heroRouteIntents.set(root, routeIntent);
+  const section: HeroHubSection =
+    initialTab === "class" ? "skills" : initialTab === "legacy" ? "attributes" : "gear";
+  let choosing = 0;
+  let latestSection: HeroHubSection = section;
+  const engine = root.engine;
+  const owner = (): string =>
+    JSON.stringify([
+      root.lineage.selected_bloodline,
+      root.lineage.persistent_hero?.id,
+      root.lineage.persistent_hero?.incarnation,
+    ]);
+  const folio = (section: HeroHubSection, anchor?: HTMLElement | null): void => {
+    if (root.engine !== engine) return;
+    latestSection = section;
+    let closePending = (): void => {};
+    let pendingResident: number | undefined;
+    openHeroHub(root, anchor, section, {
+      closed: () => {
+        if (pendingResident !== undefined && root.lineage.selected_bloodline !== pendingResident)
+          choosing++;
+        closePending();
       },
-    },
-  );
+      sectionChanged: (next) => {
+        latestSection = next;
+      },
+      selectResident: (id) => {
+        if (id === (root.lineage.selected_bloodline ?? 1)) return;
+        const request = ++choosing;
+        pendingResident = id;
+        let selectedOwner: string | undefined;
+        const off = root.onChange(() => {
+          if (request !== choosing) return;
+          if (root.lineage.selected_bloodline === id && !selectedOwner) selectedOwner = owner();
+          else if (selectedOwner && owner() !== selectedOwner) choosing++;
+        });
+        const changedIntent = (event: Event): void => {
+          if (request !== choosing) return;
+          if (event instanceof KeyboardEvent && event.key === "Escape") {
+            choosing++;
+            return;
+          }
+          const target = event.target instanceof Element ? event.target : null;
+          if (target?.closest("[data-hub-tab],[data-hub-resident]")) return;
+          if (event instanceof KeyboardEvent && event.key !== "Enter" && event.key !== " ") return;
+          choosing++;
+        };
+        const cleanup = (): void => {
+          off();
+          window.removeEventListener(/* copy:none */ "pointerdown", changedIntent, true);
+          window.removeEventListener(/* copy:none */ "keydown", changedIntent, true);
+        };
+        closePending();
+        closePending = cleanup;
+        window.addEventListener(/* copy:none */ "pointerdown", changedIntent, true);
+        window.addEventListener(/* copy:none */ "keydown", changedIntent, true);
+        void root
+          .selectBloodline(id)
+          .then((selected) => {
+            if (
+              !selected ||
+              request !== choosing ||
+              root.engine !== engine ||
+              root.lineage.selected_bloodline !== id ||
+              root.view.kind !== "camp" ||
+              heroRouteIntents.get(root) !== routeIntent ||
+              document.querySelector(".sheet-wrap:not(.under)") ||
+              (selectedOwner && owner() !== selectedOwner)
+            )
+              return;
+            // App returns to camp; restore the latest section for the selected owner.
+            folio(latestSection);
+          })
+          .finally(cleanup);
+      },
+      changeClass: () => {
+        choosing++;
+        openHeroClass(root);
+      },
+      orders: (anchor) => {
+        choosing++;
+        openCampOrders(root, anchor);
+      },
+    });
+  };
+  folio(section, anchor);
 }
 
 /** A camp panel opened from a building stands over it (its foot on the building's top), or under it when the room above is short. */
@@ -1533,8 +1313,22 @@ export function exposeTown(ui: TownUi | null): void {
 
 /** Class controls belong to the selected hero's menu. */
 export function openHeroClass(app: App): void {
+  const root = heroHubOwner(app);
+  if (!root) return;
+  app = root;
+  heroRouteIntents.set(root, (heroRouteIntents.get(root) ?? 0) + 1);
+  const engine = app.engine;
+  const identity = (): string =>
+    JSON.stringify([
+      app.lineage.selected_bloodline,
+      app.lineage.persistent_hero?.id,
+      app.lineage.persistent_hero?.incarnation,
+    ]);
+  const owner = identity();
   openSheet((close) => {
     const grid = h("div", { class: "classes" });
+    const current = (): boolean =>
+      grid.isConnected && app.engine === engine && identity() === owner;
     const paint = (cat?: Awaited<ReturnType<typeof app.engine.unlocks>>): void => {
       replace(
         grid,
@@ -1550,7 +1344,9 @@ export function openHeroClass(app: App): void {
                 disabled: !(owned || u?.available) || !!app.lineage.live,
                 onclick: () =>
                   void (async () => {
+                    if (!current() || app.lineage.live) return;
                     if (u && !(await app.buy(cls))) return;
+                    if (!current() || app.lineage.live) return;
                     await app.setClass(cls);
                     close();
                   })(),
@@ -1567,7 +1363,9 @@ export function openHeroClass(app: App): void {
       );
     };
     paint();
-    void app.engine.unlocks().then(paint);
+    void app.engine.unlocks().then((catalogue) => {
+      if (current()) paint(catalogue);
+    });
     return h(
       "div",
       { class: "sheet-body" },

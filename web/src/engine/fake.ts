@@ -73,7 +73,6 @@ import type {
   BossToken,
   TrialWire,
   Sink,
-  WishWire,
   SiegeWire,
   GraveWire,
   Stone,
@@ -3583,23 +3582,24 @@ export class FakeEngine implements Engine {
     return this.lineage();
   }
   // Addendum B — supplies
+  // Cut 191 (mirrors engine.rs supply_catalogue): preparing an unlocked item never costs Gold.
   supplyCatalogue(): SupplyEntry[] {
-    const out: SupplyEntry[] = [{ kind: "leash", price: 30, label: "leash" }];
+    const out: SupplyEntry[] = [{ kind: "leash", price: 0, label: "leash" }];
     const ided = new Set<string>();
     for (const f of this.s.lineage.facts) {
       const m = /^item:[A-Za-z]+=([a-z_]+)$/.exec(f);
       if (!m) continue;
       const k = m[1];
       ided.add(k);
-      if (POTIONS.includes(k)) out.push({ kind: k, price: 40, label: `${k} potion` });
-      else if (SCROLLS.includes(k)) out.push({ kind: k, price: 60, label: `scroll ${k}` });
+      if (POTIONS.includes(k)) out.push({ kind: k, price: 0, label: `${k} potion` });
+      else if (SCROLLS.includes(k)) out.push({ kind: k, price: 0, label: `scroll ${k}` });
     }
     for (const [kind, f] of Object.entries(this.s.lineage.forge ?? {})) {
       if (!f.craftable || out.some((o) => o.kind === kind)) continue;
       if ((POTIONS.includes(kind) || SCROLLS.includes(kind)) && !ided.has(kind)) continue;
       out.push({
         kind,
-        price: 2 * salvageOf(kind),
+        price: 0,
         label: POTIONS.includes(kind)
           ? `${kind} potion`
           : SCROLLS.includes(kind)
@@ -3612,33 +3612,21 @@ export class FakeEngine implements Engine {
   buySupply(kind: string): Lineage {
     const L = this.s.lineage;
     const e = this.supplyCatalogue().find((x) => x.kind === kind);
-    if (e && L.supplies.length < this.supplyCap() && L.gold >= e.price) {
-      this.gold(-e.price, e.label, 1);
+    if (e && L.supplies.length < this.supplyCap()) {
       L.supplies.push({ id: this.s.nextItem++, kind: e.kind, known: true, label: e.label });
     }
     return this.lineage();
   }
   clearSupplies(): Lineage {
     const L = this.s.lineage;
-    for (const s of L.supplies)
-      if (!s.free)
-        this.gold(
-          this.supplyCatalogue().find((x) => x.kind === s.kind)?.price ?? 0,
-          `refund ${s.label}`,
-        );
     L.supplies = [];
     return this.lineage();
   }
-  /** Cut 12 §6: one line off the shelf, refunded unless it was free. */
+  /** Cut 12 §6: one line off the shelf (Cut 191: preparation is free, so nothing to refund). */
   dropSupply(id: number): Lineage {
     const L = this.s.lineage;
     const s = L.supplies.find((x) => x.id === id);
     if (!s) return this.lineage();
-    if (!s.free)
-      this.gold(
-        this.supplyCatalogue().find((x) => x.kind === s.kind)?.price ?? 0,
-        `refund ${s.label}`,
-      );
     L.supplies = L.supplies.filter((x) => x !== s);
     return this.lineage();
   }
@@ -7293,6 +7281,7 @@ type St118 = {
   marks: number;
   sinkOrder: string;
   heirOrder: string;
+  temperamentOrder?: string;
   tithed: number;
   rations: number;
   surveyed: boolean;
@@ -7350,11 +7339,6 @@ const SETS118: [string, string, string[], string][] = [
   ["sleeper", "Sleeper's rest", ["quilt", "pillow", "candle"], "rest −2%"],
   ["scholar", "Scholar's", ["quill", "ink", "lens"], "class xp +2%"],
   ["hearth", "Hearth", ["kettle", "rug", "bell"], "+1 Legacy a return"],
-];
-const WISH118: [string, string][] = [
-  ["lantern", "a lantern"],
-  ["pet", "a pet"],
-  ["boots", "new boots"],
 ];
 const day118 = (L: Lineage): number => Math.floor((L.age_h ?? (L.clock_s ?? 0) / 3600) / 24) + 1;
 const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
@@ -7433,17 +7417,6 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
               ]),
         ]
       : [];
-    const w = WISH118[st.wishes % WISH118.length];
-    const wish: WishWire | undefined =
-      (L.runs?.length ?? 0) > 0 && day118(L) >= st.wishAt
-        ? {
-            id: w[0],
-            text: w[1],
-            price: Math.round(unit / 2),
-            legacy: 2 + (st.wishes % 2),
-            available: purse >= Math.round(unit / 2),
-          }
-        : undefined;
     const siege: SiegeWire[] = Object.entries(st.siege).map(([k, s]) => {
       const b = BOSS118.find((x) => x[0] === k)!;
       return {
@@ -7474,7 +7447,6 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
       swift_to: L.best_depth > 8 && (L.runs?.length ?? 0) >= 3 ? 7 : 0,
       sinks,
       sink_order: st.sinkOrder,
-      ...(wish ? { wish } : {}),
       feats: 0,
       siege,
       graves: [...st.graves],
@@ -7493,7 +7465,11 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
       return b ? { ...x, affix: b[3], affix_counter: b[4], guard: b[5], guard_counter: b[6] } : x;
     });
     if (L.orders)
-      L.orders = { ...L.orders, heir: st.heirOrder, ...(kitDone(L) ? { sink: st.sinkOrder } : {}) };
+      L.orders = {
+        ...L.orders,
+        temperament: st.temperamentOrder ?? "keep",
+        ...(kitDone(L) ? { sink: st.sinkOrder } : {}),
+      };
     // owner amendment 2: the heirs rung (lit by the first death); `lit_by` names each open system's trigger
     if (L.systems) {
       L.systems = [
@@ -7514,6 +7490,19 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
         chip,
         head: chip.split(" · ")[0],
         formula: `[${when}] → ${gift} +1`,
+        condition_effect:
+          when === "crowded"
+            ? "At least 2 adjacent foes"
+            : when === "boss"
+              ? "Boss in sight"
+              : "First 20 turns of each floor",
+        gift_effect:
+          gift === "quick" ? "Speed +3 while active" : "Damage reduction +1 per hit while active",
+        cost_effect: chip.includes("frail")
+          ? "Max HP −10% (at least 1 HP)"
+          : chip.includes("slow")
+            ? "Speed −1"
+            : "No lasting penalty",
         when,
         gift,
         tier,
@@ -7777,32 +7766,85 @@ const week118 = (L: Lineage): number => 40 + Math.floor(day118(L) / 7);
         : f;
     };
   }
-  P.grantWish = function (this: Fk118): Lineage {
-    const L = this.lineage(),
-      w = L.feats?.wish;
-    if (!w) throw new Error("no wish");
-    if (L.gold < w.price) throw new Error("not enough gold");
-    const st = st118(this);
-    this.gold(-w.price, `wish ${w.text}`);
-    st.wishes++;
-    st.wishAt = day118(L) + 1;
-    if (L.bloodline)
-      this.s.lineage.bloodline = { ...L.bloodline, points: L.bloodline.points + w.legacy };
-    return this.lineage();
-  };
   const setOrders = P.setOrders;
   P.setOrders = function (this: Fk118, o: unknown): Lineage {
     const x = o as StandingOrders,
       st = st118(this);
-    if (x.heir !== undefined && !["answer", "strongest", "surprise"].includes(x.heir))
-      throw new Error("unknown heir order");
+    if (x.temperament !== undefined && !["keep", "adapt", "variety"].includes(x.temperament))
+      throw new Error("unknown temperament order");
     if (x.sink !== undefined && !["both", "ration", "tithe", "off"].includes(x.sink))
       throw new Error("unknown sink order");
-    if (x.heir) {
-      if (x.heir !== st.heirOrder) delete (this.s as { born118?: string }).born118;
-      st.heirOrder = x.heir;
-    }
+    if (x.temperament) st.temperamentOrder = x.temperament;
     if (x.sink) st.sinkOrder = x.sink;
     return setOrders.call(this, o) as Lineage;
+  };
+}
+
+// UI-only Cut220 sample read. This mock does not resolve production builds.
+{
+  const proto = FakeEngine.prototype;
+  const previous = proto.lineage;
+  proto.lineage = function (): Lineage {
+    const L = structuredClone(previous.call(this));
+    const weapon =
+      (
+        {
+          fighter: "sword",
+          rogue: "dagger",
+          ranger: "bow",
+          caster: "staff",
+          gunner: "rifle",
+        } as Record<string, string>
+      )[L.class] ?? "sword";
+    const slots: import("./types").EquipmentSlot[] = ["weapon", "helm", "armour", "boots"].map(
+      (slot) => ({
+        slot: slot as import("./types").EquipmentSlot["slot"],
+        kind: slot === "weapon" ? weapon : null,
+        label: slot === "weapon" ? weapon : "None",
+        origin: "mock",
+        damage: slot === "weapon" ? [3, 5] : [0, 0],
+        defence: 0,
+        speed: 0,
+        ranged: ["bow", "rifle"].includes(weapon),
+        legendary: false,
+        effect: null,
+        tradeoff: null,
+      }),
+    );
+    const view: import("./types").EquipmentView = {
+      label: "Mock build",
+      note: "UI development sample",
+      slots,
+      stats: {
+        hp: 30,
+        max_hp: 30,
+        damage: [3, 5],
+        defence: 0,
+        speed: 10,
+        level: L.classes?.[L.class]?.level ?? 1,
+        class: L.class,
+      },
+    };
+    L.starting_kits ??= {
+      current: null,
+      selected: null,
+      saved: [],
+      weapons: [],
+      armours: [],
+      helms: [],
+      boots: [],
+      armour_sets: [],
+      actual_weapon: weapon,
+      actual_armour: null,
+    };
+    L.starting_kits.equipment = {
+      actual: structuredClone(view),
+      next: structuredClone(view),
+      queued: false,
+    };
+    L.actual_party = structuredClone(L.party);
+    L.actual_packages = L.packages ? structuredClone(L.packages) : undefined;
+    L.actual_packages_note = "UI development behaviour.";
+    return L;
   };
 }

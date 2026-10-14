@@ -1,0 +1,17 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+error: called `expect` on `g.run` after checking its variant with `is_some`
+   --> crates/idlever-core/src/hero_build.rs:116:18
+    |
+115 |     let next = if !crate::persistent::away(g) && g.run.is_some() {
+    |                                                  --------------- the check is happening here
+116 |         view(g, &g.run.as_ref().expect("prepared actor").hero, true)
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: try using `match`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#unnecessary_unwrap
+    = note: `-D clippy::unnecessary-unwrap` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::unnecessary_unwrap)]`
+
+error: could not compile `idlever-core` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `idlever-core` (lib test) due to 1 previous error

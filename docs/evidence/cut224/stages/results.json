@@ -1,0 +1,2405 @@
+{
+  "scope": "Diagnostic-only stage timings from equally marked baseline/dense/sparse clones. Whole outer paint timer unchanged and includes all prep/corrections/marks. No gate acceptance, GPU execution or FPS claim.",
+  "rows": [
+    {
+      "leg": "baseline",
+      "index": 0,
+      "terrainSha256": "91ebe378940c7bd8c351b0b3c379893fc143cade1a7e6029e5cc705656369762",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 137.39999999850988,
+        "cpuWithUiMs": 137.79999999701977,
+        "cpuP50": 137.39999999850988,
+        "cpuP95": 137.39999999850988,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 63.099999997764826,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.10000000149011612
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 3
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 11.399999998509884
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 1.6000000014901161
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 43.79999999701977
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.8000000007450581
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.5
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 1.6000000014901161
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.3999999985098839
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.10000000149011612
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 694846460,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "dense",
+      "index": 0,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 2.300000000745058,
+        "cpuWithUiMs": 2.400000002235174,
+        "cpuP50": 9.800000000745058,
+        "cpuP95": 127.5,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 255
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 48.20000000298023,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.19999999925494194
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 1.800000000745058
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 3.600000001490116
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 1.7999999970197678
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 38.600000001490116
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.6000000014901161
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.8999999985098839
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 0.6000000014901161
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.7000000029802322
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.5
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 1797915393,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "sparse",
+      "index": 0,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 2,
+        "frames": 2,
+        "cpuMs": 10.800000000745058,
+        "cpuWithUiMs": 11,
+        "cpuP50": 170.39999999850988,
+        "cpuP95": 170.39999999850988,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 255
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 311
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 61.599999997764826,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.19999999925494194
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 3.800000000745058
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 3.399999998509884
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 3.100000001490116
+          },
+          {
+            "name": "dense pigment",
+            "ms": 35.599999997764826
+          },
+          {
+            "name": "sparse correction",
+            "ms": 12.200000002980232
+          },
+          {
+            "name": "canvas upload",
+            "ms": 1.3999999985098839
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.6000000014901161
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 0.7999999970197678
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.5999999977648258
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.5
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 3129214593,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "baseline",
+      "index": 1,
+      "terrainSha256": "91ebe378940c7bd8c351b0b3c379893fc143cade1a7e6029e5cc705656369762",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 187.29999999701977,
+        "cpuWithUiMs": 187.69999999925494,
+        "cpuP50": 187.29999999701977,
+        "cpuP95": 187.29999999701977,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 49.30000000074506,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.09999999776482582
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 1.4000000022351742
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 2.699999999254942
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 1.8999999985098839
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 41.5
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.6000000014901161
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.10000000149011612
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 0.8999999985098839
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.3999999985098839
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.19999999925494194
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 694846460,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "dense",
+      "index": 1,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 185.09999999776483,
+        "cpuWithUiMs": 185.59999999776483,
+        "cpuP50": 185.09999999776483,
+        "cpuP95": 185.09999999776483,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 67.69999999925494,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.10000000149011612
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 1.5
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 2.600000001490116
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 2.5
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 59.399999998509884
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.6000000014901161
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.19999999925494194
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 0.6999999992549419
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.6999999992549419
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.4000000022351742
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 694846460,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "sparse",
+      "index": 1,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 218.10000000149012,
+        "cpuWithUiMs": 218.5,
+        "cpuP50": 218.10000000149012,
+        "cpuP95": 218.10000000149012,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 86.40000000223517,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.19999999925494194
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 2.800000000745058
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 2.800000000745058
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 2.399999998509884
+          },
+          {
+            "name": "dense pigment",
+            "ms": 68.69999999925494
+          },
+          {
+            "name": "sparse correction",
+            "ms": 7.300000000745058
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.6000000014901161
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.09999999776482582
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 1.1000000014901161
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.6999999992549419
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.5
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 694846460,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "baseline",
+      "index": 2,
+      "terrainSha256": "91ebe378940c7bd8c351b0b3c379893fc143cade1a7e6029e5cc705656369762",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 163.80000000074506,
+        "cpuWithUiMs": 164.19999999925494,
+        "cpuP50": 163.80000000074506,
+        "cpuP95": 163.80000000074506,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 319
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 51.5,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.29999999701976776
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 2.400000002235174
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 6.899999998509884
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 1.9000000022351742
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 37.79999999701977
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.8000000007450581
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.4000000022351742
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 0.6999999992549419
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 0.19999999925494194
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.10000000149011612
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 405673178,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "dense",
+      "index": 2,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 1,
+        "frames": 1,
+        "cpuMs": 380.6000000014901,
+        "cpuWithUiMs": 381.3999999985099,
+        "cpuP50": 380.6000000014901,
+        "cpuP95": 380.6000000014901,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_male",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 256
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 310
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 130.60000000149012,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.3999999985098839
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 6.699999999254942
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 4.900000002235174
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 8.899999998509884
+          },
+          {
+            "name": "dense pigment including cues",
+            "ms": 103.60000000149012
+          },
+          {
+            "name": "canvas upload",
+            "ms": 2.199999999254942
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.8999999985098839
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 2.600000001490116
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 2.100000001490116
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 1
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 694846460,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    },
+    {
+      "leg": "sparse",
+      "index": 2,
+      "terrainSha256": "1a2132358304f21eba5f64658bb55dc26c1cfc5394950d8d8753b1b7b71247dd",
+      "stats": {
+        "fps": 3,
+        "frames": 3,
+        "cpuMs": 21.300000000745058,
+        "cpuWithUiMs": 21.5,
+        "cpuP50": 21.300000000745058,
+        "cpuP95": 172.39999999850988,
+        "walkers": 3,
+        "mode": "gl",
+        "glLost": false,
+        "k": 1.375,
+        "night": 0,
+        "characterLights": 0,
+        "dimensionalLight": true,
+        "baseDepth": true,
+        "volumeLight": true,
+        "mappedSprites": [
+          {
+            "kind": 3,
+            "asset": "town_house_2",
+            "flip": false,
+            "x": 501,
+            "y": 304
+          },
+          {
+            "kind": 20,
+            "asset": "town_service_guild",
+            "flip": false,
+            "x": 386,
+            "y": 402
+          },
+          {
+            "kind": 21,
+            "asset": "town_service_pool",
+            "flip": false,
+            "x": 356,
+            "y": 338
+          },
+          {
+            "kind": 4,
+            "asset": "town_blacksmith_2",
+            "flip": false,
+            "x": 374,
+            "y": 251
+          },
+          {
+            "kind": 2,
+            "asset": "walk_fighter",
+            "actorId": "resident:1",
+            "flip": false,
+            "x": 366,
+            "y": 255
+          },
+          {
+            "kind": 2,
+            "asset": "hero_fighter_female",
+            "actorId": "resident:2",
+            "flip": false,
+            "x": 424,
+            "y": 318
+          },
+          {
+            "kind": 15,
+            "asset": "hero_fighter_cat",
+            "actorId": "resident:3",
+            "flip": false,
+            "x": 499,
+            "y": 311
+          }
+        ],
+        "lights": 9,
+        "idle": false,
+        "running": true,
+        "terrainPaints": 1,
+        "terrainPaintMs": 63,
+        "terrainStageProfile": [
+          {
+            "name": "canvas/image setup",
+            "ms": 0.20000000298023224
+          },
+          {
+            "name": "wear/axes/stream prep",
+            "ms": 4.799999997019768
+          },
+          {
+            "name": "trail/apron stamps",
+            "ms": 3.100000001490116
+          },
+          {
+            "name": "material indices/hash prep",
+            "ms": 2.399999998509884
+          },
+          {
+            "name": "dense pigment",
+            "ms": 39.80000000074506
+          },
+          {
+            "name": "sparse correction",
+            "ms": 9.600000001490116
+          },
+          {
+            "name": "canvas upload",
+            "ms": 0.8000000007450581
+          },
+          {
+            "name": "grass root generation",
+            "ms": 0.7999999970197678
+          },
+          {
+            "name": "dressing/contact/root filtering",
+            "ms": 1.1000000014901161
+          }
+        ],
+        "serviceArtProfile": [
+          {
+            "id": "town_service_guild",
+            "generated": true,
+            "ms": 1
+          },
+          {
+            "id": "town_service_pool",
+            "generated": true,
+            "ms": 0.6000000014901161
+          }
+        ],
+        "windTufts": 369,
+        "windSignature": 840069180,
+        "buildings": [
+          "blacksmith",
+          "kennel"
+        ],
+        "services": [
+          "guild",
+          "pool"
+        ],
+        "residentStates": [
+          {
+            "id": 1,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 2,
+            "resting": false,
+            "phase": "ready"
+          },
+          {
+            "id": 3,
+            "resting": false,
+            "phase": "ready"
+          }
+        ],
+        "activeBuilds": [],
+        "buildEvents": 0,
+        "buildDust": 0,
+        "staked": "bank",
+        "markers": [
+          "rune@blacksmith",
+          "rune@kennel"
+        ],
+        "view": [
+          129,
+          99,
+          582,
+          364
+        ],
+        "workers": [
+          "quartermaster",
+          "porter",
+          "scout(off)",
+          "apprentice(lit)"
+        ],
+        "ranks": {}
+      },
+      "slots": [
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "male",
+          "hero_name": "Rook Ash",
+          "id": 1,
+          "name": "Bloodline 1",
+          "heir": 1,
+          "class": "fighter",
+          "level": 4,
+          "xp": 839,
+          "next": 1600,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 55,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": true,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "female",
+          "hero_name": "Galen Thorn",
+          "id": 2,
+          "name": "Bloodline 2",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 36,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 5,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        },
+        {
+          "life_state": "ready",
+          "recovery_s": 0,
+          "look": "cat",
+          "hero_name": "Sable Flint",
+          "id": 3,
+          "name": "Bloodline 3",
+          "heir": 1,
+          "class": "fighter",
+          "level": 1,
+          "xp": 25,
+          "next": 60,
+          "state": "waits",
+          "live": null,
+          "rest_s": 0,
+          "legacy": {
+            "points": 4,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "notice": false,
+          "chronicle": []
+        }
+      ],
+      "delivery": {
+        "started": 4,
+        "responses": 4,
+        "records": 4,
+        "activeRequests": 0,
+        "pendingReaders": 0,
+        "failures": []
+      }
+    }
+  ],
+  "packages": [
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    },
+    {
+      "bytes": 6698072,
+      "sha256": "66b8a12ef9b314138d82125bd2f944583fb56d40f85ba4bc8186e7f0425b3171"
+    }
+  ],
+  "errors": []
+}

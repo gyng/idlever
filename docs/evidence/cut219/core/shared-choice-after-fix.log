@@ -1,0 +1,16 @@
+error: this file contains an unclosed delimiter
+   --> crates/idlever-core/src/bloodlines.rs:679:3
+    |
+ 66 | impl Session {
+    |              - unclosed delimiter
+...
+ 87 |     pub fn unequip_package(&mut self, id: &str) -> Result<(), String> {
+    |                                                                       - this delimiter might not be properly closed...
+...
+310 | }
+    | - ...as it matches this but it has different indentation
+...
+679 | }
+    |  ^
+
+error: could not compile `idlever-core` (lib) due to 1 previous error

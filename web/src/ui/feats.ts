@@ -1,8 +1,8 @@
 // Cut 118 (docs/CUT118_IDLE_LESSONS.md): the client half of the core's `feats.rs` — boss tokens (a seek chip), the weekly trials (one
-// quiet card), the hero's wish (one chip), the sinks after Kit complete and the heir order (rows of the run setup), the siege
+// quiet card), historical Legacy purchases, the sinks after Kit complete and the temperament order (rows of the run setup), the siege
 // (`Queen · 4 tries · best 22%`), the graves on their floors (`Ada's pack · $1240`), the finds' one reveal and the set log, and the
 // report's feat lines. All truth is the core's (`Lineage.feats`, `ReturnReport.finds`, `ReturnReport.feats`); nothing here is required:
-// every chip has a default the core keeps (`in order`, not opted, the sink order `both`, the heir order `answer`), and no chip waits on a
+// every chip has a default the core keeps (`in order`, not opted, the sink order `both`, the temperament order `keep`), and no chip waits on a
 // tap. Quiet: short words on the face, the rest on hover (`title` / `detailHost`).
 import "../feats.css";
 import type { App } from "../app";
@@ -46,7 +46,7 @@ export function graveMark(L: Pick<Lineage, "feats">, depth: number, cls = ""): H
     {
       class: `grave-mark num ${cls}`.trim(),
       "data-grave": depth,
-      title: /* copy:tooltip */ "carry lost here · next heir brings it home",
+      title: /* copy:tooltip */ "pack lost here",
     },
     h("span", { class: "grave-glyph", "aria-hidden": "true" }, "✝"),
     " ",
@@ -56,7 +56,7 @@ export function graveMark(L: Pick<Lineage, "feats">, depth: number, cls = ""): H
   return el;
 }
 
-// ---------------------------------------------------------------- the camp: seek · trial · wish (one quiet row; each hidden without its core field)
+// ---------------------------------------------------------------- the camp: seek · trial (each hidden without its core field)
 
 /** The seek chip: `seek Queen ×2` (the deepest banked token; dim, the default `in order` stands) or `seeking Queen` (lit). A tap opens the
  *  tokens priced by `seekForecast()` (reach his floor · pass him, from his stone) and `in order` (the default), one tap each. */
@@ -268,34 +268,7 @@ function trialCard(app: App, pickWeek: { w?: number }, repaint: () => void): HTM
   return card;
 }
 
-/** The hero's wish, one at a time: `a lantern` → `ok $40` (the house rule for gold); pays a little Legacy. Never decays. */
-function wishChip(app: App): HTMLElement | null {
-  const w = app.lineage.feats?.wish;
-  if (!w || !app.engine.grantWish) return null;
-  const b = twoTap(
-    [
-      h("span", { class: "wish-glyph", "aria-hidden": "true" }, "✧"),
-      document.createTextNode(` ${w.text}`),
-      h("small", { class: "dim" }, ` · +${w.legacy}`),
-    ],
-    /* copy:button */ `ok $${w.price}`,
-    () =>
-      void app
-        .mutate(() => app.engine.grantWish!(), /* copy:callout */ "wish")
-        .then((ok) => {
-          if (ok) {
-            audio.cue("unlock");
-            toast(/* copy:callout */ "wish granted");
-          }
-        }),
-    { class: "chip feat-chip wish-chip num", key: `wish:${w.id}`, disabled: !w.available },
-  );
-  b.dataset.wish = w.id;
-  b.title = /* copy:tooltip */ `hero's wish · $${w.price} · +${w.legacy} Legacy`;
-  return b;
-}
-
-/** The camp's Cut 118 row: the seek chip and the wish chip on one line, the trial card under them. Hidden when none has anything. */
+/** Optional boss targeting and trials; recurring paid wishes are retired. */
 export function campFeats(app: App): { el: HTMLElement; dispose: () => void } {
   const el = h("div", { class: "camp-feats", "data-feats": "" });
   const pickWeek: { w?: number } = {};
@@ -304,17 +277,14 @@ export function campFeats(app: App): { el: HTMLElement; dispose: () => void } {
     const L = app.lineage,
       F = L.feats;
     const home = !L.live && !L.ended && L.town?.home !== false;
-    const key = JSON.stringify([home, F?.tokens, F?.seek, openTrials(F), F?.wish, pickWeek.w]);
+    const key = JSON.stringify([home, F?.tokens, F?.seek, openTrials(F), pickWeek.w]);
     if (key === last) return;
     last = key;
     const seek = home ? seekChip(app) : null,
-      wish = home ? wishChip(app) : null,
       trial = home ? trialCard(app, pickWeek, paint) : null;
-    el.hidden = !seek && !wish && !trial;
-    el.dataset.feats = [seek ? "seek" : "", wish ? "wish" : "", trial ? "trial" : ""]
-      .filter(Boolean)
-      .join(",");
-    replace(el, seek || wish ? h("div", { class: "chips feat-chips" }, seek, wish) : "", trial);
+    el.hidden = !seek && !trial;
+    el.dataset.feats = [seek ? "seek" : "", trial ? "trial" : ""].filter(Boolean).join(",");
+    replace(el, seek ? h("div", { class: "chips feat-chips" }, seek) : "", trial);
   };
   paint();
   const off = app.onChange(paint),
@@ -328,14 +298,8 @@ export function campFeats(app: App): { el: HTMLElement; dispose: () => void } {
   };
 }
 
-// ---------------------------------------------------------------- the run setup: the heir order and the apprentice's sinks
+// ---------------------------------------------------------------- run setup: temperament and apprentice sinks
 
-/* copy:button */
-export const HEIR_WORD: Record<string, string> = {
-  answer: "answer",
-  strongest: "strongest",
-  surprise: "surprise",
-};
 /* copy:button */
 export const SINK_WORD: Record<string, string> = {
   both: "both",
@@ -343,13 +307,14 @@ export const SINK_WORD: Record<string, string> = {
   tithe: "tithe",
   off: "off",
 };
-export const HEIR_ORDERS = ["answer", "strongest", "surprise"] as const;
 export const SINK_ORDERS = ["both", "ration", "tithe", "off"] as const;
 
-/** The orders summary's Cut 118 bits — only an order off its default reads (`heirs strongest`, `sinks off`). */
+/** The orders summary's Cut 118 bits — only an order off its default reads (`temperament adapt`, `sinks off`). */
 export function featOrderBits(o: StandingOrders): string[] {
   return [
-    o.heir && o.heir !== "answer" ? /* copy:callout */ `heirs ${HEIR_WORD[o.heir] ?? o.heir}` : "",
+    o.temperament && o.temperament !== "keep"
+      ? /* copy:callout */ `temperament ${o.temperament}`
+      : "",
     o.sink && o.sink !== "both" ? /* copy:callout */ `sinks ${SINK_WORD[o.sink] ?? o.sink}` : "",
     o.kennel && o.kennel !== "breed"
       ? /* copy:callout */ `kennel ${KENNEL_WORD[o.kennel] ?? o.kennel}`
@@ -357,13 +322,6 @@ export function featOrderBits(o: StandingOrders): string[] {
     ...cut120OrderBits(o),
   ].filter(Boolean);
 }
-
-/** The heir order is shown once a heir has died (the `heirs` rung lit), or as soon as the core sends a non-default one. */
-export const heirOrderShown = (L: Lineage): boolean =>
-  !!L.orders?.heir &&
-  (L.systems?.some((s) => s.id === "heirs" && s.open) ||
-    (L.graveyard?.length ?? 0) > 0 ||
-    L.orders.heir !== "answer");
 
 /** One sink by hand on this screen (round 2 §4): the survey while it is offered (once), else the tithe at its rate — two taps each. */
 export function sinkHandChip(app: App, after: () => void): HTMLElement | null {
@@ -603,7 +561,14 @@ export function featLines(r: ReturnReport, L: Pick<Lineage, "feats">): FeatFold 
       lines.push({ k: "siege", text: s ? siegeText(s) : f.text, day: f.day });
       continue;
     }
-    lines.push({ k: f.k, text: f.text, day: f.day });
+    lines.push({
+      k: f.k,
+      text:
+        f.k === "wish"
+          ? /* copy:diary_line */ `Legacy purchase · ${f.text.replace(/^granted /, "")}`
+          : f.text,
+      day: f.day,
+    });
   }
   const none = { progress: null, pet: null, rest: { way: null, finds: null, pets: null } };
   if (!lines.length && !pets.length) return none;

@@ -1,0 +1,57 @@
+
+running 911 tests
+....................................................................................... 87/911
+....................................................................................... 174/911
+....................................................................................... 261/911
+....................................................................................... 348/911
+..i.................................................................................... 435/911
+....................................................................................... 522/911
+....................................................................................iii 609/911
+....................i...i.............................................................. 696/911
+....................................................................................... 783/911
+. 784/911
+tests_cut30_pkg::a_counter_tactic_keeps_two_heals_when_space_and_funds_allow --- FAILED
+............ 797/911
+tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items --- FAILED
+tests_cut30_pkg::automatic_pack_is_free_with_no_away_income_or_budget_warning --- FAILED
+....................................................................................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+..test legacy::tests::new_effects_keep_whole_sliced_and_reloaded_eight_hour_state_and_reports_exact has been running for over 60 seconds
+. 886/911
+.....test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+.test tests::a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor has been running for over 60 seconds
+test tests::a_deaths_notes_never_say_saved_him has been running for over 60 seconds
+test tests::a_dice_death_at_a_full_base_says_nothing_beats_it has been running for over 60 seconds
+...................
+failures:
+
+---- tests_cut30_pkg::a_counter_tactic_keeps_two_heals_when_space_and_funds_allow stdout ----
+
+thread 'tests_cut30_pkg::a_counter_tactic_keeps_two_heals_when_space_and_funds_allow' (54281) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:26:9:
+assertion `left == right` failed
+  left: 1
+ right: 2
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items stdout ----
+
+thread 'tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items' (54511) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:452:5:
+assertion `left == right` failed
+  left: 1
+ right: 2
+
+---- tests_cut30_pkg::automatic_pack_is_free_with_no_away_income_or_budget_warning stdout ----
+
+thread 'tests_cut30_pkg::automatic_pack_is_free_with_no_away_income_or_budget_warning' (54510) panicked at crates/idlever-core/src/tests_cut30_pkg.rs:1354:5:
+assertion `left == right` failed
+  left: ["heal"]
+ right: ["heal", "heal"]
+
+
+failures:
+    tests_cut30_pkg::a_counter_tactic_keeps_two_heals_when_space_and_funds_allow
+    tests_cut30_pkg::automatic_pack_is_free_with_no_away_income_or_budget_warning
+    tests_cut30_pkg::automatic_surplus_supplies_make_room_for_sustain_without_touching_owned_items
+
+test result: FAILED. 902 passed; 3 failed; 6 ignored; 0 measured; 0 filtered out; finished in 84.30s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

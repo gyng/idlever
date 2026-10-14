@@ -1,0 +1,17 @@
+dayplayer: prior failure seeds first [8] (scheduling hints only)
+dayplayer: targeted rows idle-d23,idle-stall,idle-gold — configurations IDLE
+dayplayer: IDLE s15 done in 94s 
+dayplayer: IDLE s7 done in 94s 
+fail-fast: `idle-stall` settled FAIL after IDLE s7 (day 14) (94s)
+  IDLE longest best-depth stall
+  seed 7: stall 11 d
+
+bar (targeted, fail-fast)                                                     value  result
+IDLE reaches D23 by day 12                                                  settled  open
+    
+IDLE longest best-depth stall                                               settled  FAIL
+    seed 7: stall 11 d
+IDLE net gold > 0 every day                                                 settled  open
+    
+dayplayer (targeted: idle-d23,idle-stall,idle-gold, fail-fast, 94s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `idle-d23,idle-stall,idle-gold` (fail-fast) FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

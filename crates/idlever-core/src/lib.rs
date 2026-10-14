@@ -19,6 +19,7 @@ pub mod hero;
 pub mod item;
 pub mod journal;
 pub mod kit;
+pub mod hero_build;
 pub mod armour_sets;
 pub mod legacy;
 pub mod legendary;
@@ -32,6 +33,7 @@ pub mod packages;
 pub mod petstats;
 pub mod pets;
 pub mod persistent;
+pub mod progression;
 pub mod offline;
 pub mod probes;
 pub mod provenance;
@@ -199,11 +201,11 @@ impl Game {
             }
             self.lineage.orders.sink = k.clone();
         }
-        if let Some(k) = &o.heir {
-            if !crate::feats::HEIR_ORDERS.contains(&k.as_str()) {
-                return Err("unknown heir order".into());
+        if let Some(k) = &o.temperament {
+            if !crate::progression::TEMPERAMENT_ORDERS.contains(&k.as_str()) {
+                return Err("unknown temperament order".into());
             }
-            self.lineage.orders.heir = k.clone();
+            self.lineage.orders.temperament = k.clone();
         }
         if let Some(k) = &o.kennel {
             if !crate::pets::KENNEL_ORDERS.contains(&k.as_str()) {
@@ -256,15 +258,19 @@ impl Game {
     }
     /// Cut 30 §2: equip a package (a stance, a tactic in `slot`, a temperament) — free, instant.
     pub fn equip_package(&mut self, id: &str, slot: usize) -> Result<(), String> {
+        if packages::def(id).is_some_and(|p|p.kind==packages::Kind::Temperament){return progression::set_temperament(self,Some(id));}
         packages::equip(&mut self.lineage, id, slot)
     }
     /// Cut 30 §2: empty a tactic or temperament slot.
     pub fn unequip_package(&mut self, id: &str) -> Result<(), String> {
+        if id=="temperament"||self.lineage.pkg.temperament.as_deref()==Some(id){return progression::set_temperament(self,None);}
         packages::unequip(&mut self.lineage, id)
     }
     /// Cut 30 §2: take a wake card (the temperament slot, heir 3 on).
+    pub fn set_inherited_trait(&mut self,name:&str)->Result<(),String>{progression::set_inherited(self,name)}
+    pub fn set_family_lean(&mut self,when:&str)->Result<(),String>{progression::set_family(self,when)}
     pub fn pick_temperament(&mut self, id: &str) -> Result<(), String> {
-        packages::pick(&mut self.lineage, id)
+        progression::set_temperament(self,Some(id))
     }
     /// Cut 30 §2: spend marks on a package's next level; the level reached.
     pub fn spend_level(&mut self, id: &str) -> Result<u32, String> {
@@ -299,10 +305,6 @@ impl Game {
     /// Cut 122 §5: buy the next send's ration by hand (the hunger bites a quarter as often); the price paid.
     pub fn buy_ration(&mut self) -> Result<i32, String> {
         feats::buy_ration(&mut self.lineage)
-    }
-    /// Cut 118 §7: grant the hero's waiting wish.
-    pub fn grant_wish(&mut self) -> Result<String, String> {
-        feats::grant_wish(&mut self.lineage)
     }
     /// Cut 111: pick a tactic's L3 row (0 the first variant, 1 the second).
     pub fn set_tactic_variant(&mut self, id: &str, variant: u32) -> Result<(), String> {
@@ -435,3 +437,6 @@ mod economy_free_tests;
 
 #[cfg(test)]
 mod economy_conversion_tests;
+
+#[cfg(test)]
+mod test_stage;

@@ -3,7 +3,7 @@
 //   real   — real wasm (the earned fixture, 16 h away): the kennel cards lead with the role (glyph + word), the core's name (a bred pup's
 //            generation `Ashak II`), the level and an XP bar, `lame N`, the old hound, the grudge; the signatures in the tip; the report's
 //            one pet line on the card and the `fetched` ledger gloss; the kennel keeper's order chip (setOrders) and the tame drill
-//            (revokeTame) on the real engine; a watched death's `other heirs` fold where `heir_traits.offer` fills (one card lit, a swap).
+//            (revokeTame) on the real engine; a real death keeps the persistent actor and exposes no retired heir-card swap.
 //   fake   — fixtures through the ui modules: the death's `Rook brought $47`, a fallen pet `lamed`, the report's condensed pet lines
 //            (one fetch line a pet, one old-hound line), the crier's pet cries, the build's pet synergy with its effect on hover.
 //   node web/tests/cut119.mjs [--part=real,fake]
@@ -271,12 +271,16 @@ try {
       `the ledger tip glosses fetched (${r.hasFetchedTerm})`,
     );
 
-    // a watched death: `other heirs` where heir_traits.offer fills
+    // Cut219 retires the death-card swap. This real fixture still proves the
+    // death view and retained actor; lasting-choice journeys have their own gate.
     const d = await page.evaluate(async () => {
       const a = window.__idlever,
         sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+      a.runnerOn = false;
       let L = await a.engine.lineage();
-      for (let s = 0; s < 6; s++) {
+      const actor = L.persistent_hero?.id;
+      let dead = L.graveyard.at(-1);
+      for (let s = 0; dead?.death_id === undefined && s < 6; s++) {
         if (!L.live) await a.engine.send();
         let res,
           n = 0;
@@ -285,47 +289,39 @@ try {
           n++;
         } while (!res.run_over && n < 200);
         L = await a.engine.lineage();
-        if ((L.heir_traits?.offer?.length ?? 0) >= 2) break;
+        dead = L.graveyard.at(-1);
       }
+      if (dead?.death_id === undefined) throw Error("actual retained death required");
       await a.refresh();
-      const offer = a.lineage.heir_traits?.offer ?? [],
-        dead = a.lineage.graveyard.at(-1);
-      if (offer.length < 2 || dead?.death_id === undefined) return { offer: offer.length };
-      const death = await a.engine.death(dead.death_id);
+      const death = await a.engine.death(dead.death_id),
+        before = await a.engine.save(),
+        trait = a.engine.setTrait;
+      let calls = 0;
+      a.engine.setTrait = (...args) => {
+        calls++;
+        return trait.apply(a.engine, args);
+      };
       a.go({ kind: "death", death, lost: [] });
       await sleep(800);
-      const fold = document.querySelector(".death .heirs-fold");
-      const lit = [...(fold?.querySelectorAll(".heir-card.on") ?? [])].map((b) => b.dataset.chip);
-      const other = [...(fold?.querySelectorAll("button.heir-card:not(.on)") ?? [])][0];
-      other?.click();
-      await sleep(800);
-      const born = (await a.engine.lineage()).heir_traits?.born?.chip;
-      const litAfter = [...document.querySelectorAll(".death .heirs-fold .heir-card.on")].map(
-        (b) => b.dataset.chip,
-      );
-      return {
-        offer: offer.length,
-        fold: !!fold,
-        closed: fold && !fold.open,
-        cards: fold?.querySelectorAll("button.heir-card").length ?? 0,
-        lit,
-        picked: other?.dataset.chip,
-        born,
-        litAfter,
-        wornShown: !!fold?.querySelector(".heir-card.worn"),
+      const result = {
+        actor,
+        afterActor: (await a.engine.lineage()).persistent_hero?.id,
+        fold: !!document.querySelector(".death .heirs-fold"),
+        cards: document.querySelectorAll(".death .heir-card").length,
+        calls,
+        unchanged: before === (await a.engine.save()),
       };
+      a.engine.setTrait = trait;
+      return result;
     });
+    check(!d.fold && d.cards === 0, "actual death exposes no retired heir-card choices");
     check(
-      d.offer >= 2 && d.fold && d.closed && d.cards === d.offer,
-      `the death's other heirs fold on a real offer (${d.cards}/${d.offer} cards, closed)`,
+      d.calls === 0 && d.unchanged,
+      "reading actual death makes zero trait calls and preserves exact save",
     );
     check(
-      d.lit?.length === 1,
-      `one heir lit, never none (${d.lit?.join(",")}${d.wornShown ? " · worn temperament" : ""})`,
-    );
-    check(
-      !!d.picked && d.born === d.picked && d.litAfter?.length === 1 && d.litAfter[0] === d.picked,
-      `a swap sets the heir (setTrait → ${d.born})`,
+      !!d.actor && d.actor === d.afterActor,
+      "the same persistent actor remains after actual death",
     );
     await page.close();
   }

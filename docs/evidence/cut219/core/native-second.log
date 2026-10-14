@@ -1,0 +1,31 @@
+
+running 908 tests
+.................................................................................... 84/908
+firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends --- FAILED
+....................................................................................... 172/908
+....................................................................................... 259/908
+....................................................................................... 346/908
+.i..................................................................................... 433/908
+....................................................................................... 520/908
+.................................................................................iii... 607/908
+................i......i............................................................... 694/908
+....................................................................................... 781/908
+....................................................................................... 868/908
+.............................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+.......test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+....
+failures:
+
+---- firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends stdout ----
+
+thread 'firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends' (4707) panicked at crates/idlever-core/src/gunner_tests.rs:62:58:
+called `Result::unwrap()` on an `Err` value: "Build the Forge"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    firearm::class_tests::paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends
+
+test result: FAILED. 901 passed; 1 failed; 6 ignored; 0 measured; 0 filtered out; finished in 65.53s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -1,0 +1,19 @@
+
+running 3 tests
+bloodlines::tests::away_class_xp_belongs_to_each_reported_slot --- FAILED
+..
+failures:
+
+---- bloodlines::tests::away_class_xp_belongs_to_each_reported_slot stdout ----
+
+thread 'bloodlines::tests::away_class_xp_belongs_to_each_reported_slot' (14) panicked at crates/idlever-core/src/bloodlines.rs:500:59:
+assertion failed: other.xp[0].gained > 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    bloodlines::tests::away_class_xp_belongs_to_each_reported_slot
+
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 905 filtered out; finished in 0.65s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

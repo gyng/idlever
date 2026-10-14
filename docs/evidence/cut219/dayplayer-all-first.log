@@ -1,0 +1,21 @@
+
+running 17 tests
+............. 13/17
+session_chore_tests::session_forge_keeps_reserve_and_respects_disabled_or_automated_work --- FAILED
+..test checkpoint_tests::resume_preserves_complete_bot_outputs_and_game has been running for over 60 seconds
+.
+failures:
+
+---- session_chore_tests::session_forge_keeps_reserve_and_respects_disabled_or_automated_work stdout ----
+
+thread 'session_chore_tests::session_forge_keeps_reserve_and_respects_disabled_or_automated_work' (111) panicked at crates/idlever-core/examples/dayplayer.rs:895:36:
+called `Result::unwrap()` on an `Err` value: "not ready"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    session_chore_tests::session_forge_keeps_reserve_and_respects_disabled_or_automated_work
+
+test result: FAILED. 16 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 121.43s
+
+error: test failed, to rerun pass `-p idlever-core --example dayplayer`

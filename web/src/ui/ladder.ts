@@ -1,5 +1,5 @@
 // Cut 118 §7 (research/IDLE_STEAM_2026-10.md §8, Scapewatch): the control earned, read as progress — one rail of rungs, weights →
-// orders → (heirs, owner amendment 2) → workers → pen (the packages worn, the run setup, the hired hands, the rule pen). A rung is lit once the lineage has it; the
+// orders → temperament → workers → pen (the packages worn, the run setup, the hired hands, the rule pen). A rung is lit once the lineage has it; the
 // first rung still dark names what opens it. Quiet: four words and one condition; the lit orders rung is the orders sheet's door (Cut 120
 // §8), the rest no taps (each system has its own door). Hidden on a
 // fresh lineage, on a literal (harness) lineage and once every rung is lit. All truth is the core's: the systems' triggers, the tree.
@@ -12,7 +12,7 @@ import { onPackages, packagesShown, penOpen } from "./packages";
 import { choreWord, nodeState, workerNodes, worksView } from "./works";
 import { detailHost } from "./tips";
 
-export type RungId = "weights" | "orders" | "heirs" | "workers" | "pen";
+export type RungId = "weights" | "orders" | "temperament" | "workers" | "pen";
 /** round 2 §7: `retires` the chore the rung takes off the player's hands; `litBy` the feat or the time that lit it (a lit rung). */
 export type Rung = {
   id: RungId;
@@ -27,7 +27,7 @@ export type Rung = {
 const LABEL: Record<RungId, string> = {
   weights: "tactics",
   orders: "orders",
-  heirs: "heirs",
+  temperament: "temperament",
   workers: "workers",
   pen: "pen",
 };
@@ -35,7 +35,7 @@ const LABEL: Record<RungId, string> = {
 const TIP: Record<RungId, string> = {
   weights: "packages worn · how he fights",
   orders: "standing orders · run setup, Legacy, ranks",
-  heirs: "heir order · who succeeds",
+  temperament: "optional temperament orders · selected at departure",
   workers: "hired hands · chores while away",
   pen: "own rules · written by hand",
 };
@@ -43,7 +43,7 @@ const TIP: Record<RungId, string> = {
 const FALLBACK: Record<RungId, string> = {
   weights: "second stance",
   orders: "first supplies",
-  heirs: "first death",
+  temperament: "survivor stage",
   workers: "first hire",
   pen: "meet Mother",
 };
@@ -52,7 +52,7 @@ const FALLBACK: Record<RungId, string> = {
 const RETIRES: Record<RungId, string> = {
   weights: "each move",
   orders: "each send",
-  heirs: "picking heirs",
+  temperament: "manual adaptation",
   workers: "town chores",
   pen: "package limits",
 };
@@ -63,7 +63,6 @@ const litBy = (L: Pick<Lineage, "systems">, id: string): string | undefined => {
   const s = L.systems?.find((x) => x.id === id && x.open);
   return s?.lit_by ?? s?.trigger;
 };
-const sysOf = (L: Pick<Lineage, "systems">, id: string) => L.systems?.find((s) => s.id === id);
 
 /** The four rungs as the lineage stands (`has`: the client's reveal steps, for the run setup the camp shows). */
 export function ladderRungs(L: Lineage, has: (step: string) => boolean): Rung[] {
@@ -98,8 +97,7 @@ export function ladderRungs(L: Lineage, has: (step: string) => boolean): Rung[] 
     retires: retires || RETIRES[id],
     ...(lit ? { litBy: by || FALLBACK[id] } : {}),
   });
-  // owner amendment 2: the heir order's rung (`heirs` · retires picking heirs · lit by the first death) — only on a core that sends it
-  const heirs = sysOf(L, "heirs");
+  const temperament = L.persistent_hero?.progression?.temperament;
   return [
     rung("weights", packagesShown(L), trigger(L, "stances"), litBy(L, "stances")),
     rung(
@@ -108,7 +106,16 @@ export function ladderRungs(L: Lineage, has: (step: string) => boolean): Rung[] 
       trigger(L, "loadout"),
       litBy(L, "loadout"),
     ),
-    ...(heirs ? [rung("heirs", heirs.open, heirs.trigger, litBy(L, "heirs"))] : []),
+    ...(temperament
+      ? [
+          rung(
+            "temperament",
+            temperament.available,
+            temperament.blocked ?? temperament.label,
+            temperament.label,
+          ),
+        ]
+      : []),
     rung(
       "workers",
       hired,

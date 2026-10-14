@@ -1,0 +1,1135 @@
+{
+  "rows": [
+    {
+      "phase": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "reincarnating",
+        "reincarnating",
+        "reincarnating"
+      ],
+      "seated": [
+        true,
+        true,
+        true
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "id": "hurt",
+              "label": "hurt",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "crowded",
+              "label": "crowded",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "boss",
+              "label": "boss",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "quiet",
+              "label": "quiet",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "deep",
+              "label": "deep",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "first",
+              "label": "first",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "reincarnating",
+        "recovery_s": 60,
+        "rest_s": 60,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "87bfa5f430f05e77",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "recovering",
+        "recovering",
+        "recovering"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "recovering",
+        "recovering",
+        "recovering"
+      ],
+      "seated": [
+        true,
+        true,
+        true
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "id": "hurt",
+              "label": "hurt",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "crowded",
+              "label": "crowded",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "boss",
+              "label": "boss",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "quiet",
+              "label": "quiet",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "deep",
+              "label": "deep",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "first",
+              "label": "first",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "recovering",
+        "recovery_s": 58,
+        "rest_s": 58,
+        "need": "recovery",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Finish recovery",
+          "token": "87bfa5f430f05e77",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": true,
+            "label": "6 delves · D5",
+            "blocked": null,
+            "required_completed": 6,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 5,
+            "depth_remaining": 0
+          },
+          "inherited": {
+            "available": true,
+            "label": "8 delves · D8",
+            "blocked": null,
+            "required_completed": 8,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 8,
+            "depth_remaining": 0
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Reach D13",
+            "required_completed": 12,
+            "completed": 44,
+            "completed_remaining": 0,
+            "required_depth": 13,
+            "depth_remaining": 2
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [
+            "skittish",
+            "unbowed",
+            "light_hands",
+            "iron_gut"
+          ],
+          "inherited_offer": [
+            {
+              "chip": "tough-blooded · thin",
+              "head": "tough-blooded",
+              "formula": "[hurt] → mend +1 · thin",
+              "when": "hurt",
+              "gift": "mend",
+              "cost": "thin",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "unbowed · frail",
+              "head": "unbowed",
+              "formula": "[boss] → guard +1 · frail",
+              "when": "boss",
+              "gift": "guard",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            },
+            {
+              "chip": "keen · frail",
+              "head": "keen",
+              "formula": "[first] → quick +3 · frail",
+              "when": "first",
+              "gift": "quick",
+              "cost": "frail",
+              "tier": "common",
+              "source": "commitment",
+              "learned": false
+            }
+          ],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "id": "hurt",
+              "label": "hurt",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "crowded",
+              "label": "crowded",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "boss",
+              "label": "boss",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "quiet",
+              "label": "quiet",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "deep",
+              "label": "deep",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "first",
+              "label": "first",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": true
+        },
+        "id": "1:1",
+        "name": "Rook Ash",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "No attribute commitments",
+          "token": "87bfa5f430f05e77",
+          "refund": 0,
+          "points_after": 56,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "ids": [
+        1,
+        2,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": false,
+            "label": "6 delves · D5",
+            "blocked": "Complete 4 more delves",
+            "required_completed": 6,
+            "completed": 2,
+            "completed_remaining": 4,
+            "required_depth": 5,
+            "depth_remaining": 1
+          },
+          "inherited": {
+            "available": false,
+            "label": "8 delves · D8",
+            "blocked": "Complete 6 more delves",
+            "required_completed": 8,
+            "completed": 2,
+            "completed_remaining": 6,
+            "required_depth": 8,
+            "depth_remaining": 4
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Complete 10 more delves",
+            "required_completed": 12,
+            "completed": 2,
+            "completed_remaining": 10,
+            "required_depth": 13,
+            "depth_remaining": 9
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [],
+          "inherited_offer": [],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "id": "hurt",
+              "label": "hurt",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "crowded",
+              "label": "crowded",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "boss",
+              "label": "boss",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "quiet",
+              "label": "quiet",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "deep",
+              "label": "deep",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "first",
+              "label": "first",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": false
+        },
+        "id": "4354685564936845355:2",
+        "name": "Galen Thorn",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "ready",
+        "recovery_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Reach D8",
+          "token": "6fc2484fe9e4868c",
+          "refund": 0,
+          "points_after": 6,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "phase": [
+        "ready",
+        "away",
+        "ready"
+      ],
+      "ids": [
+        1,
+        3
+      ],
+      "render": [
+        "ready",
+        "ready"
+      ],
+      "seated": [
+        false,
+        false
+      ],
+      "services": [
+        "guild",
+        "pool",
+        "device"
+      ],
+      "persistent": {
+        "progression": {
+          "temperament": {
+            "available": false,
+            "label": "6 delves · D5",
+            "blocked": "Complete 4 more delves",
+            "required_completed": 6,
+            "completed": 2,
+            "completed_remaining": 4,
+            "required_depth": 5,
+            "depth_remaining": 1
+          },
+          "inherited": {
+            "available": false,
+            "label": "8 delves · D8",
+            "blocked": "Complete 6 more delves",
+            "required_completed": 8,
+            "completed": 2,
+            "completed_remaining": 6,
+            "required_depth": 8,
+            "depth_remaining": 4
+          },
+          "family": {
+            "available": false,
+            "label": "12 delves · D13",
+            "blocked": "Complete 10 more delves",
+            "required_completed": 12,
+            "completed": 2,
+            "completed_remaining": 10,
+            "required_depth": 13,
+            "depth_remaining": 9
+          },
+          "actual_temperament": null,
+          "next_temperament": null,
+          "temperament_choices": [],
+          "inherited_offer": [],
+          "inherited_chosen": null,
+          "actual_inherited": null,
+          "family_contexts": [
+            {
+              "id": "hurt",
+              "label": "hurt",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "crowded",
+              "label": "crowded",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "boss",
+              "label": "boss",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "quiet",
+              "label": "quiet",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "deep",
+              "label": "deep",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            },
+            {
+              "id": "first",
+              "label": "first",
+              "effect": "Choose a lasting trait first",
+              "available": false,
+              "blocked": "Choose a lasting trait first"
+            }
+          ],
+          "family_chosen": null,
+          "actual_family": null,
+          "commitment_blocked": null,
+          "leash_available": true,
+          "leash_blocked": null,
+          "temperament_order_available": false
+        },
+        "id": "4354685564936845355:2",
+        "name": "Galen Thorn",
+        "incarnation": 2,
+        "rebirths": 0,
+        "state": "away",
+        "recovery_s": 0,
+        "rest_s": 0,
+        "need": "none",
+        "attributes": [
+          {
+            "id": "health",
+            "name": "Vitality",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "damage",
+            "name": "Strength",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          },
+          {
+            "id": "armour",
+            "name": "Guard",
+            "rank": 0,
+            "value": 0,
+            "next_price": 15
+          }
+        ],
+        "guild": {
+          "id": "guild",
+          "name": "Guild reception",
+          "available": true,
+          "body": "Hire the Scout here to schedule delves while away."
+        },
+        "pool": {
+          "id": "recovery",
+          "name": "Recovery pool",
+          "available": true,
+          "body": "Rest completes automatically. Nothing needs tending."
+        },
+        "device": {
+          "id": "reincarnation",
+          "name": "Reincarnation device",
+          "available": true,
+          "body": "Defeat returns the same hero. Attributes and builds remain."
+        },
+        "rebirth": {
+          "available": false,
+          "blocked": "Hero away",
+          "token": "4868b6e88fb26ff9",
+          "refund": 0,
+          "points_after": 6,
+          "required_depth": 8,
+          "delves_remaining": 0,
+          "seconds_remaining": 0,
+          "resets": [
+            "Legacy attributes and branches",
+            "Current incarnation's deeds",
+            "Lasting traits and family lean"
+          ],
+          "retains": [
+            "Name and identity",
+            "Refunded Legacy",
+            "Class XP and learned skills",
+            "Temperament",
+            "Kits and discoveries",
+            "Town, Gold and dungeon progress",
+            "Companion ownership"
+          ]
+        }
+      },
+      "targets": [
+        {
+          "id": "1",
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

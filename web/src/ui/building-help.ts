@@ -13,8 +13,8 @@ const PURPOSE: Record<HomeBuilding, { name: string; purpose: string; action: str
   },
   blacksmith: {
     name: "Forge",
-    purpose: /* copy:tooltip */ "Starting gear upgrades for future delves",
-    action: /* copy:tooltip */ "Inspect available upgrades and prices",
+    purpose: /* copy:tooltip */ "Permanent gear upgrades · unlocked gear is free to reuse",
+    action: /* copy:tooltip */ "Inspect gear and prices · building unlocks free leashes",
   },
   kennel: {
     name: "Kennel",

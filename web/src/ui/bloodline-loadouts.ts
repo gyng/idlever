@@ -3,6 +3,7 @@ import type { SupplyEntry } from "../engine/types";
 import { h, replace } from "./dom";
 import { itemIcon, itemName } from "./items";
 import { startingKits } from "./starting-kits";
+import { temperamentPanel } from "./hero-progression";
 
 /** Existing prepared copies only; permanent unlocks remain in Forge. */
 export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): HTMLElement {
@@ -85,6 +86,7 @@ export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): H
   const body = h(
     "section",
     { class: "bloodline-loadouts" },
+    temperamentPanel(app),
     startingKits(app, open),
     h(
       "div",
@@ -93,6 +95,15 @@ export function renderBloodlineLoadouts(app: App, open?: ReadonlySet<string>): H
       h("span", { class: "num" }, `${picks.length}/${cap ?? "—"}`),
     ),
     h("p", null, /* copy:diary_line */ "Unlocked items are free to prepare and reuse."),
+    actor?.progression && !actor.progression.leash_available
+      ? h(
+          "div",
+          { class: "dim", "data-leash-lock": "1" },
+          h("b", {}, /* copy:label */ "Leash"),
+          " · ",
+          actor.progression.leash_blocked,
+        )
+      : null,
     away ? h("div", { class: "dim", role: "status" }, /* copy:callout */ "Change at home") : null,
     h(
       "div",

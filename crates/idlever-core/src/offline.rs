@@ -926,6 +926,9 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
     game.advance_rem.1 = ticks % TICKS_PER_SECOND;
     game.lineage.clock_s += ticks / TICKS_PER_SECOND;
     let clock = game.lineage.clock_s;
+    // Close income and expire chosen oaths at the committed clock boundary,
+    // not at whichever transport call happens to follow it.
+    crate::oath::new_day(&mut game.lineage,(clock / crate::engine::DAY_S) as u32);
     if clock / 3600 > hour && game.run.as_ref().is_none_or(|r| r.turn == 0) {
         crate::tree::at_hour(game);
     }

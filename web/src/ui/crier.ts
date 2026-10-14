@@ -99,8 +99,8 @@ function featCry(f: FeatNews): Cry | null {
       return {
         k: f.k,
         day: f.day,
-        short: /* copy:callout */ "wish granted",
-        long: /* copy:diary_line */ `${f.text.replace(/^granted /, "Granted: ").split(" · ")[0]}`,
+        short: /* copy:callout */ "Legacy purchase",
+        long: /* copy:diary_line */ `Legacy purchase · ${f.text.replace(/^granted /, "")}`,
       };
     case "swift":
       return {

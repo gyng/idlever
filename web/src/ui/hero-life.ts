@@ -2,6 +2,7 @@ import type { App } from "../app";
 import type { HeroRebirth, PersistentHero, Lineage } from "../engine/types";
 import { h, replace } from "./dom";
 import { openWindow } from "./sheet";
+import { lastingChoices } from "./hero-progression";
 import "../hero-life.css";
 
 export type HeroLifeMode = "hero" | "recovery" | "rebirth";
@@ -319,6 +320,45 @@ export function heroLifePanel(
           ),
         ),
       );
+      if (hero.progression)
+        children.push(
+          lastingChoices(hero.progression, {
+            busy,
+            inherited: engine.setInheritedTrait
+              ? (chip) => {
+                  if (
+                    !same(key) ||
+                    !current()?.progression?.inherited.available ||
+                    current()?.progression?.inherited_chosen
+                  )
+                    return;
+                  void mutate(
+                    key,
+                    () => engine.setInheritedTrait!(chip),
+                    /* copy:callout */ "Trait committed",
+                    `inherited:${chip}`,
+                  );
+                }
+              : undefined,
+            family: engine.setFamilyLean
+              ? (id) => {
+                  if (
+                    !same(key) ||
+                    !current()?.progression?.family_contexts.some(
+                      (context) => context.id === id && context.available,
+                    )
+                  )
+                    return;
+                  void mutate(
+                    key,
+                    () => engine.setFamilyLean!(id),
+                    /* copy:callout */ "Context committed",
+                    `family:${id}`,
+                  );
+                }
+              : undefined,
+          }),
+        );
       children.push(
         h(
           "div",

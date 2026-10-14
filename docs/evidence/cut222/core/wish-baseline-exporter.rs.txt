@@ -1,0 +1,74 @@
+//! Cut222 baseline: genuine public purchases on an actual paid resident, no grants.
+use idlever_core::{bloodlines::Session, feats, tree};
+use serde_json::json;
+use std::{fs, path::Path};
+fn main() {
+    idlever_core::chronicle::use_shipping_words();
+    let a: Vec<_> = std::env::args().collect();
+    let input = Path::new(&a[1]);
+    let out = Path::new(&a[2]);
+    fs::create_dir_all(out).unwrap();
+    let mut s = Session::load(&fs::read_to_string(input).unwrap()).unwrap();
+    s.select_bloodline(2).unwrap();
+    assert!(tree::hired(&s.lineage, "scout"));
+    s.set_worker("scout", false).unwrap();
+    s.set_start(1).unwrap();
+    s.try_send().unwrap();
+    let first = s.run_offline_mode(3600, false, true);
+    assert!(first.runs > 0);
+    assert!(feats::wish(&s.lineage).is_some());
+    let mut entries = Vec::new();
+    let mut purchases = Vec::new();
+    for n in 0..=5 {
+        if n == 0 || n == 1 || n == 5 {
+            let id = format!("wishes-{n}");
+            let before = s.save();
+            let l = s.lineage();
+            assert_eq!(s.save(), before);
+            fs::write(out.join(format!("{id}.session.json")), before).unwrap();
+            fs::write(
+                out.join(format!("{id}.lineage.json")),
+                serde_json::to_vec_pretty(&l).unwrap(),
+            )
+            .unwrap();
+            entries.push(json!({"id":id,"home":out.join(format!("{id}.session.json")),"purchases":n,"gold":s.lineage.gold,"legacy":s.lineage.bloodline,"wish":l.feats.unwrap().wish,"wishAt":s.lineage.feats.wish_at,"historicalWishes":s.lineage.feats.wishes,"ledger":s.lineage.gold_ledger,"news":s.lineage.feats.news}));
+        }
+        if n == 5 {
+            break;
+        }
+        let old_gold = s.lineage.gold;
+        let old = s.lineage.bloodline.as_ref().unwrap().points;
+        let w = feats::wish(&s.lineage).unwrap();
+        let (id, price, reward) = (w.0.to_string(), w.2, w.3);
+        let result = s.grant_wish().unwrap();
+        assert_eq!(s.lineage.gold, old_gold - price);
+        assert_eq!(s.lineage.bloodline.as_ref().unwrap().points, old + reward);
+        purchases.push(json!({"id":id,"clock":s.lineage.clock_s,"price":price,"legacy":reward,"result":result}));
+        if n==0 || n==4 {
+            let id=format!("wishes-{}-pending-news",n+1);let saved=s.save();let l=s.lineage();assert_eq!(s.save(),saved);
+            assert!(s.lineage.feats.news.iter().any(|x|x.k=="wish"));
+            fs::write(out.join(format!("{id}.session.json")),saved).unwrap();
+            fs::write(out.join(format!("{id}.lineage.json")),serde_json::to_vec_pretty(&l).unwrap()).unwrap();
+            entries.push(json!({"id":id,"home":out.join(format!("{id}.session.json")),"purchases":n+1,"gold":s.lineage.gold,"legacy":s.lineage.bloodline,"wish":l.feats.unwrap().wish,"wishAt":s.lineage.feats.wish_at,"historicalWishes":s.lineage.feats.wishes,"ledger":s.lineage.gold_ledger,"news":s.lineage.feats.news}));
+        }
+        s.run_offline_mode(86400, false, true);
+        assert!(feats::wish(&s.lineage).is_some());
+    }
+    // Preserve a genuine waiting song, without selecting a seed or patching a counter.
+    let mut song_saved=false;
+    for _ in 0..20 {
+        let w=feats::wish(&s.lineage).unwrap();
+        if w.0=="song" {
+            let saved=s.save();let l=s.lineage();assert_eq!(s.save(),saved);
+            fs::write(out.join("waiting-song.session.json"),saved).unwrap();
+            fs::write(out.join("waiting-song.lineage.json"),serde_json::to_vec_pretty(&l).unwrap()).unwrap();
+            entries.push(json!({"id":"waiting-song","home":out.join("waiting-song.session.json"),"purchases":s.lineage.feats.wishes,"gold":s.lineage.gold,"legacy":s.lineage.bloodline,"wish":l.feats.unwrap().wish,"wishAt":s.lineage.feats.wish_at,"historicalWishes":s.lineage.feats.wishes,"ledger":s.lineage.gold_ledger,"news":s.lineage.feats.news}));
+            song_saved=true;break;
+        }
+        let (id,price,reward)=(w.0.to_string(),w.2,w.3);let result=s.grant_wish().unwrap();
+        purchases.push(json!({"id":id,"clock":s.lineage.clock_s,"price":price,"legacy":reward,"result":result}));
+        s.run_offline_mode(86400,false,true);
+    }
+    assert!(song_saved,"genuine waiting song required; no grants");
+    fs::write(out.join("manifest-raw.json"),serde_json::to_vec_pretty(&json!({"input":input,"publicSetup":["select actual paid resident2","pause hired Scout","setStart(1)","send","actual1h run/report","grantWish purchases separated by real24h absences"],"firstReport":first,"purchases":purchases,"entries":entries,"noGrants":true})).unwrap()).unwrap();
+}

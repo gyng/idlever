@@ -69,7 +69,6 @@ const METHODS: (keyof Engine)[] = [
   "setTrial",
   "tithe",
   "buySurvey",
-  "grantWish", // Cut 118: optional likewise (no seek / trial / sink / wish chip without them)
   "buyRation", // Cut 122 §5: optional likewise (no ration chip without it)
   "kitDeltas",
   "kitEstimates", // Cut 23 §1: optional likewise (the forge steps' measured moves)
@@ -89,6 +88,8 @@ const METHODS: (keyof Engine)[] = [
   "equipPackage",
   "unequipPackage",
   "pickTemperament",
+  "setInheritedTrait",
+  "setFamilyLean",
   "spendLevel",
   "setTacticVariant",
   "takeFix",

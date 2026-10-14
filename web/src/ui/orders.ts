@@ -28,13 +28,28 @@ export const RANKS_WORD: Record<string, string> = { auto: "auto", off: "off" };
 export const ASCEND_ORDERS = ["off", "on"] as const;
 /* copy:button */
 export const ASCEND_WORD: Record<string, string> = { off: "off", on: "on" };
+export const TEMPERAMENT_ORDERS = ["keep", "adapt", "variety"] as const;
+/* copy:button */
+export const TEMPERAMENT_WORD: Record<string, string> = {
+  keep: "Keep selected",
+  adapt: "Adapt",
+  variety: "Variety",
+};
+/* copy:tooltip */
+export const TEMPERAMENT_TIP: Record<string, string> = {
+  keep: "Keep the selected temperament",
+  adapt: "Choose for a known threat at departure",
+  variety: "Vary unlocked temperaments at departure",
+};
+export const temperamentOrderShown = (L: Lineage): boolean =>
+  !!L.orders?.temperament && !!L.persistent_hero?.progression?.temperament_order_available;
 /** the order keys `same for all` can carry (core `tree::SHAREABLE`) */
 export const SHAREABLE = [
   "insure",
   "forge",
   "wall",
   "sink",
-  "heir",
+  "temperament",
   "kennel",
   "legacy",
   "ranks",

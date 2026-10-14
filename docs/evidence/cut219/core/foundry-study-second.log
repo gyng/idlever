@@ -1,0 +1,37 @@
+
+running 3 tests
+progression::foundry_study_tests::factual_wall_then_two_real_completion_days_study_once_without_fake_meetings --- FAILED
+progression::foundry_study_tests::study_requires_scout_fact_and_completion_not_elapsed_or_reads --- FAILED
+progression::foundry_study_tests::study_eight_hour_whole_split_reload_is_identical --- FAILED
+
+failures:
+
+---- progression::foundry_study_tests::factual_wall_then_two_real_completion_days_study_once_without_fake_meetings stdout ----
+
+thread 'progression::foundry_study_tests::factual_wall_then_two_real_completion_days_study_once_without_fake_meetings' (129) panicked at crates/idlever-core/src/progression.rs:647:9:
+assertion `left == right` failed
+  left: [Row { conds: [Cond { k: "foe_tag", n: None, t: Some("reflect_melee") }, Cond { k: "hp>", n: Some(30), t: None }], verb: Verb { v: "tactic", a: Some("reflect_read") }, origin: None }, Row { conds: [Cond { k: "depth>=", n: Some(19), t: None }, Cond { k: "hp>", n: Some(30), t: None }], verb: Verb { v: "attack", a: Some("tag:buffer") }, origin: None }]
+ right: [Row { conds: [Cond { k: "foe_tag", n: None, t: Some("reflect_melee") }, Cond { k: "hp>", n: Some(35), t: None }], verb: Verb { v: "tactic", a: Some("reflect_read") }, origin: None }, Row { conds: [Cond { k: "depth>=", n: Some(19), t: None }, Cond { k: "hp>", n: Some(35), t: None }], verb: Verb { v: "attack", a: Some("tag:buffer") }, origin: None }]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- progression::foundry_study_tests::study_requires_scout_fact_and_completion_not_elapsed_or_reads stdout ----
+
+thread 'progression::foundry_study_tests::study_requires_scout_fact_and_completion_not_elapsed_or_reads' (131) panicked at crates/idlever-core/src/progression.rs:692:9:
+assertion failed: g.lineage.pkg.drills.is_empty()
+
+---- progression::foundry_study_tests::study_eight_hour_whole_split_reload_is_identical stdout ----
+
+thread 'progression::foundry_study_tests::study_eight_hour_whole_split_reload_is_identical' (130) panicked at crates/idlever-core/src/progression.rs:709:9:
+assertion `left == right` failed
+  left: 1
+ right: 2
+
+
+failures:
+    progression::foundry_study_tests::factual_wall_then_two_real_completion_days_study_once_without_fake_meetings
+    progression::foundry_study_tests::study_eight_hour_whole_split_reload_is_identical
+    progression::foundry_study_tests::study_requires_scout_fact_and_completion_not_elapsed_or_reads
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 908 filtered out; finished in 0.59s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

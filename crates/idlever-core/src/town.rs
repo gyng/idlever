@@ -9,7 +9,7 @@ use crate::wire::{GrewLine, QuestWire, TownWire, TrackWire};
 use serde::{Deserialize, Serialize};
 
 /// The buildings v1, in the order the plots are staked, each with its trigger (≤ 3 words).
-pub const BUILDINGS: [(&str, &str); 3] = [("blacksmith", "first gold home"), ("kennel", "first tame"), ("bank", "a night's purse")];
+pub const BUILDINGS: [(&str, &str); 3] = [("blacksmith", "four delves"), ("kennel", "tame a pet"), ("bank", "a night's purse")];
 
 /// A night's interest on the bank, in percent, and the bank's cap in nights of net income.
 pub const BANK_PCT: i32 = 2;
@@ -21,6 +21,10 @@ pub fn home_default() -> bool { true }
 /// The lineage's town (`LineageState::town`).
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 pub struct Town {
+    #[serde(default)]
+    pub forge_eligible:bool,
+    #[serde(default)]
+    pub kennel_eligible:bool,
     /// Actual legendary finds unlock their equipment shape for every resident.
     #[serde(default, skip_serializing_if="std::collections::BTreeSet::is_empty")]
     pub owned_shapes: std::collections::BTreeSet<String>,
@@ -67,10 +71,13 @@ pub struct Town {
     pub today: u32,
 }
 
+pub(crate) fn forge_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&l.persistent.completed>=4&&(l.persistent.exit_gold_credit||l.gold_ledger.iter().any(|x|x.delta>0&&crate::engine::is_exit_why(&x.why)))}
+pub(crate) fn kennel_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&(l.tamed_kinds()>0||l.all_companions().next().is_some())}
+pub(crate) fn refresh_eligibility(l:&mut LineageState){l.town.forge_eligible|=forge_qualified(l);l.town.kennel_eligible|=kennel_qualified(l);}
 fn triggered(l: &LineageState, id: &str) -> bool {
     match id {
-        "blacksmith" => !l.banked_depths.is_empty() || l.gold_ledger.iter().any(|x| x.delta > 0 && crate::engine::is_exit_why(&x.why)),
-        "kennel" => l.tamed_kinds() > 0 || l.all_companions().next().is_some(),
+        "blacksmith" => l.town.forge_eligible||forge_qualified(l),
+        "kennel" => l.town.kennel_eligible||kennel_qualified(l),
         "bank" => l.last_night_net > 0 && l.gold >= l.last_night_net,
         _ => false,
     }
@@ -199,7 +206,7 @@ pub fn stages(track: &str) -> &'static [(&'static str, &'static str)] {
             // progress a held record makes while it holds)
             ("Warlord scarred ×3", "3 days met"), ("Mother scarred ×3", "3 days met"), ("Lich scarred ×3", "3 days met"), ("Master scarred ×3", "3 days met"), ("Queen scarred ×3", "3 days met"), ("King scarred ×3", "3 days met"),
             ("Warlord scarred ×6", "6 days met"), ("Mother scarred ×6", "6 days met"), ("Lich scarred ×6", "6 days met"), ("Master scarred ×6", "6 days met"), ("Queen scarred ×6", "6 days met"), ("King scarred ×6", "6 days met")],
-        "town" => &[("camp", ""), ("blacksmith", "first gold home"), ("kennel", "first tame"), ("bank", "a night's purse")],
+        "town" => &[("camp", ""), ("blacksmith", "four delves"), ("kennel", "tame a pet"), ("bank", "a night's purse")],
         _ => &[],
     }
 }
@@ -428,8 +435,13 @@ pub fn grew(a: &Snap, b: &Snap) -> Vec<GrewLine> {
 }
 
 /// The town on the wire.
+pub fn build_blocked(l:&LineageState,id:&str)->Option<String>{
+ if built(l,id)||triggered(l,id){return None;}
+ if !l.town.home.unwrap_or(true){return Some("Build a house".into());}
+ match id {"blacksmith"=>{if !crate::tree::hired(l,"scout"){Some("Hire Scout".into())}else if l.persistent.completed<4{Some(format!("Complete {} more delves",4-l.persistent.completed))}else if !triggered(l,id){Some("Secure Gold from a delve".into())}else{None}},"kennel"=>{if !crate::tree::hired(l,"scout"){Some("Hire Scout".into())}else if !triggered(l,id){Some("Tame a pet with a leash".into())}else{None}},_=>None}
+}
 pub fn wire(l: &LineageState) -> TownWire {
-    let next = if !l.town.home.unwrap_or(true) { Some(("house".into(), String::new())) } else { BUILDINGS.iter().find(|(id, _)| !built(l, id)).map(|(id, tr)| (id.to_string(), tr.to_string())) };
+    let next = if !l.town.home.unwrap_or(true) { Some(("house".into(), String::new())) } else { BUILDINGS.iter().find(|(id, _)| !built(l, id)).map(|(id, tr)| (id.to_string(), build_blocked(l,id).unwrap_or_else(||tr.to_string()))) };
     TownWire {
         home: l.town.home.unwrap_or(true),
         auto_collect: l.town.auto_collect,
@@ -474,7 +486,8 @@ mod storage_retirement_tests {
     #[test]
     fn remaining_plots_are_manual_and_storage_never_blocks_the_next_plot() {
         let mut g = Game::new(202); g.build_town("house").unwrap();
-        // Diagnostic income supplies a construction trigger, not earned pacing evidence.
+        // Diagnostic income and survivor prerequisites supply a trigger, not earned pacing evidence.
+        crate::test_stage::traits(&mut g.lineage,4,1);
         g.lineage.gold_move(10, "returned D1");
         assert!(!built(&g.lineage, "blacksmith"));
         assert!(update(&mut g.lineage).is_empty());
