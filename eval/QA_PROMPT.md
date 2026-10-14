@@ -11,7 +11,7 @@ what a rater looks at. Do not read PLAN.md, research/, docs/CUT*.md or eval/card
 
 Setup: the game is served at `{URL}`. Play it through the browser driver, headless (you file
 lapses in text and numbers, not feel): from /home/g/p/riddle,
-`node tools/driver.mjs --dir scratchpad/{QA} --port {PORT} &` keeps one phone viewport
+`node tools/driver.mjs --dir scratchpad/{QA} --port {PORT} --checkpoint &` keeps one phone viewport
 (400×800, 2×) open for the whole session; command it with `tools/drive.sh {PORT} '{"op":"text"}'`
 (ops: goto, text, shot, click by visible label, tap, type, press, eval, js, wait, buttons, log,
 quit, and the compound `state`, `act` (click + wait for the engine + the new text), `watch`
@@ -49,5 +49,14 @@ wrong and the screen let you), `unexplained` (copy or number with no source on s
 `friction` (more taps than the action needs). End with the count per group. Do not edit any
 other file. Do not git commit.
 
+
+**Checkpoints.** After every session block (each ~10 minutes of the cold session and each
+absence/return cycle) run `node tools/rater-checkpoint.mjs save --port {PORT} --dir scratchpad/{QA}
+--minutes <active minutes> --phase <cold|20m|4h|8h> --next "<next step>" --calls <tool calls used> --images <images read>`
+and write the lapses filed so far to `scratchpad/{QA}/checkpoint/lapses.partial.md` (the final file's
+shape) plus a short `notes.md`. On start run `node tools/rater-checkpoint.mjs status --dir scratchpad/{QA}`;
+if a `save.json` exists, do not open `fresh=1`: restore it with
+`node tools/rater-checkpoint.mjs restore --port {PORT} --dir scratchpad/{QA} --url {URL}` and continue
+from `nextStep`, counting the recorded minutes and budget as spent and not re-filing recorded lapses.
 
 **Budget (hard):** at most 200 tool calls and 120 screenshot/image reads for the whole session. Look at each screenshot once; prefer the driver's text op over screenshots. When you reach the budget, stop and file what you have.

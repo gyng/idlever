@@ -106,6 +106,7 @@ cargo test -q --workspace --profile fast                     # ~36 s warm (CPU-b
 node tools/gates.mjs [--full|--fast] [--fresh] # routine: current-game metrics,10 wire seeds,18 current-player fortnight cases (--full); --exhaustive: original272 cases and30-seed statistical audit. --fresh ignores caches; GATES_THREADS=N caps parallelism. Each genuine completed leg and exact runtime/harness job is cached separately.
 node tools/gates.mjs [--full] --rows <ids|substrings> [--fail-fast] [--seeds 8 …]   # TARGETED, a tuning loop's check, never the gate: the dayplayer on the named rows alone — only the bots, seeds and days they read, each game stopped at its row's milestone; --fail-fast plays seeds lowest first and aborts on the first row settled FAIL (an every-seed row's first failing seed, a median the seeds left cannot rescue), naming the seed and value. `target/fast/examples/dayplayer --rows ?` lists the row ids (docs/ITERATION_SPEED.md §0h)
 (cd web && pnpm -s test)                                     # routine critical-journey client subset; docs/DEV_VALIDATION_TIERS.md
+(cd web && node tests/run.mjs --smoke --failed|--resume)      # rerun failed/unfinished groups, or skip identical-identity passes (HEAD+dirty+wasm sha); state in target/client-tests/; reused passes print ok*, never fresh evidence
 (cd web && pnpm -s test:full)                                # current client audit (125 groups); release / pre-blind acceptance
 (cd web && pnpm -s test:exhaustive)                          # historical full client inventory (167 groups), all original widths
 tools/wasm.sh [--ship]                                       # fast wasm (~8 s after a core edit) / wasm-pack release (~2 min)
@@ -116,6 +117,8 @@ node tools/profile-catchup.mjs SAVE --out scratchpad/profile     # headed shippi
 tools/dev.sh                                                 # ensure the Vite dev server on :5219 (never restart a running one)
 node tools/playtest.mjs [--seed N] [--absent 8h] [--out dir] # scripted walk of every screen, text + screenshots, headed on the GPU (~30 s; --headless ~65 s)
 node tools/driver.mjs --dir scratchpad/<who> --port 5347 [--headed] &   # one browser context across an agent session; tools/drive.sh 5347 '{"op":"text"}'
+node tools/rater-checkpoint.mjs save|status|restore --dir scratchpad/<who> [--port N] # rater/QA checkpoints: save export + progress; a dead rater resumes (eval/RATING.md, eval/RESUME_PROMPT.md)
+node tools/gfx-eval.mjs --out DIR --resume                   # skip moments already captured in DIR (partial.json kept after each moment)
 node tools/browser.mjs --probe                               # must print D3D12 (NVIDIA …); --headless prints SwiftShader
 python3 art/pack.py && python3 art/art-qc.py
 eval/score.sh eval/cards/<card>.json

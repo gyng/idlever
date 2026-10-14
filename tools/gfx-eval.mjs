@@ -2,7 +2,11 @@
 // Graphics / fx / animation / UI eval harness (docs/JUICE.md §10). Headed Chromium on the GPU (tools/browser.mjs launchGpu), the same
 // walk every round, against a dev server:
 //
-//   node tools/gfx-eval.mjs --out scratchpad/gfx-eval/round0 [--port 5461] [--only camp,boss] [--no-desktop] [--no-phone]
+//   node tools/gfx-eval.mjs --out scratchpad/gfx-eval/round0 [--port 5461] [--only camp,boss] [--no-desktop] [--no-phone] [--resume]
+//
+// --resume: moments already captured in --out (a `<name>.png` recorded in shots.json, or in partial.json, which is
+// rewritten atomically after every moment, so a crashed or killed round keeps what it shot) are not shot again; a phase whose
+// moments are all captured is skipped; the round's files merge as with --only.
 //
 // Per moment it writes `<name>.png` (the screen), `<name>-strip.png` (4 frames 180 ms apart, half size: the motion) and records
 //   - frame times: rAF interval p50 / p95 / p99 over ~3 s (the viewer's own cpuMs too where a run is mounted) → frames.json
@@ -12,7 +16,14 @@
 //     corners), nothing wider than the viewport → layout.json (the owner's IA check (a))
 // and a `rater/` folder: every shot and strip under a neutral name (m01.png, m01-strip.png …) with `moments.md` (what each is, for
 // the scorer — never shown to a rater) and `prompt.txt` (the blind rater's brief). Audio: tools/gfx-audio.mjs.
-import { mkdirSync, writeFileSync, readFileSync, copyFileSync } from "node:fs";
+import {
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  copyFileSync,
+  existsSync,
+  renameSync,
+} from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -26,7 +37,29 @@ const arg = (n, d) => {
 const out = resolve(arg("--out", "scratchpad/gfx-eval/round0"));
 const port = arg("--port", process.env.IDLEVER_PORT ?? "5219");
 const only = arg("--only", "")?.split(",").filter(Boolean) ?? [];
-const want = (n) => !only.length || only.some((o) => n.startsWith(o));
+const resume = process.argv.includes("--resume");
+const prevJson = (f, d) => {
+  try {
+    return JSON.parse(readFileSync(join(out, f), "utf8"));
+  } catch {
+    return d;
+  }
+};
+// (--resume: what an earlier, possibly interrupted, round in this --out already captured)
+const partial0 = resume ? prevJson("partial.json", null) : null;
+const captured = new Set(
+  resume
+    ? [...prevJson("shots.json", []), ...(partial0?.shots ?? [])]
+        .map((s) => s.name)
+        .filter((n) => existsSync(join(out, `${n}.png`)))
+    : [],
+);
+const want = (n) => !captured.has(n) && (!only.length || only.some((o) => n.startsWith(o)));
+const wantAny = (ns) => ns.some(want);
+if (resume)
+  console.log(
+    `resume: ${captured.size} moments already captured, kept: ${[...captured].join(", ")}`,
+  );
 const BASE = `http://localhost:${port}/`;
 // gfx round 7: extra dev query params for every app page (`--q "sprite=0.5&texels=66"`) and for render-demo.html (`--qdemo`)
 const XQ = arg("--q", ""),
@@ -327,7 +360,21 @@ async function shoot(
   await page.screenshot({ path: `${base}.png`, fullPage: full });
   if (lay) await checkLayout(page, name);
   shots.push({ name, what, strip });
+  savePartial();
   log("shot", name);
+}
+/** After every moment: what this round has (with an interrupted earlier round's), temp + rename, for --resume. */
+function savePartial() {
+  const p = join(out, "partial.json"),
+    keep = (a, b) => [...a, ...(b ?? []).filter((o) => !a.some((x) => x.name === o.name))];
+  const data = {
+    shots: keep(shots, partial0?.shots),
+    frames: keep(frames, partial0?.frames),
+    anims: { ...partial0?.anims, ...anims },
+    layout: { ...partial0?.layout, ...layout },
+  };
+  writeFileSync(`${p}.tmp`, JSON.stringify(data));
+  renameSync(`${p}.tmp`, p);
 }
 
 // ---- the phone walk: the real engine ---------------------------------------------------------------------------------------------
@@ -726,9 +773,11 @@ async function desktop() {
 
 const phone = !process.argv.includes("--no-phone"),
   desk = !process.argv.includes("--no-desktop");
+const REAL = ["watch-warrens", "report", "death", "camp", "scene", "edit", "forecast", "oaths"],
+  DESK = ["d-watch", "d-report", "d-death", "d-camp", "d-edit"];
 try {
   if (phone) {
-    await step("real", phoneReal);
+    if (wantAny(REAL)) await step("real", phoneReal);
     // gfx round 7: the Fens and the fight from a real save (the fake engine: `phoneFake`, kept for a fixture-less tree)
     if (want("watch-fens"))
       await step("fens", () =>
@@ -738,14 +787,33 @@ try {
       await step("fight", () =>
         phoneDeep("fight", 5, "a fight (the fight frame, highlights mode)", true),
       );
-    if (want("boss")) await step("boss", bossDemo);
+    if (want("boss") && wantAny(["boss-in", "boss-break", "boss-fall"]))
+      await step("boss", bossDemo);
   }
-  if (desk) await step("desktop", desktop);
+  if (desk && wantAny(DESK)) await step("desktop", desktop);
 } finally {
   await browser.close();
 }
 
-// strips: 4 frames side by side at half size
+// --only / --resume: merge into the round's earlier capture (moments keep their order; re-shot ones replace theirs)
+const prev = prevJson;
+if (only.length || !phone || !desk || resume) {
+  const old = prev("shots.json", []);
+  for (const o of partial0?.shots ?? []) if (!old.some((x) => x.name === o.name)) old.push(o);
+  for (const o of old)
+    if (!shots.some((s) => s.name === o.name) && existsSync(join(out, `${o.name}.png`)))
+      shots.push(o);
+  const order = old.map((o) => o.name);
+  shots.sort((a, b) => (order.indexOf(a.name) + 1 || 999) - (order.indexOf(b.name) + 1 || 999));
+  for (const f of [...prev("frames.json", []), ...(partial0?.frames ?? [])])
+    if (!frames.some((x) => x.name === f.name)) frames.push(f);
+  for (const [k, v] of Object.entries({ ...partial0?.anims, ...prev("anims.json", {}) }))
+    anims[k] ??= v;
+  for (const [k, v] of Object.entries({ ...partial0?.layout, ...prev("layout.json", {}) }))
+    layout[k] ??= v;
+}
+
+// strips: 4 frames side by side at half size (every strip moment whose frames are on disk: an interrupted round's too)
 const py = `
 import sys, json, os
 from PIL import Image
@@ -801,24 +869,6 @@ execFileSync("python3", [
 // the rater folder: neutral names, the moments key (for the scorer only) and the brief
 const rd = join(out, "rater");
 mkdirSync(rd, { recursive: true });
-// --only: merge into the round's earlier capture (moments keep their order; re-shot ones replace theirs)
-const prev = (f, d) => {
-  try {
-    return JSON.parse(readFileSync(join(out, f), "utf8"));
-  } catch {
-    return d;
-  }
-};
-if (only.length || !phone || !desk) {
-  const old = prev("shots.json", []);
-  for (const o of old) if (!shots.some((s) => s.name === o.name)) shots.push(o);
-  const order = old.map((o) => o.name);
-  shots.sort((a, b) => (order.indexOf(a.name) + 1 || 999) - (order.indexOf(b.name) + 1 || 999));
-  for (const f of prev("frames.json", []))
-    if (!frames.some((x) => x.name === f.name)) frames.push(f);
-  for (const [k, v] of Object.entries(prev("anims.json", {}))) anims[k] ??= v;
-  for (const [k, v] of Object.entries(prev("layout.json", {}))) layout[k] ??= v;
-}
 writeFileSync(join(out, "shots.json"), JSON.stringify(shots, null, 1));
 const key = [];
 shots.forEach((s, i) => {
