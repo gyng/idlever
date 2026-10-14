@@ -1,0 +1,72 @@
+dayplayer: targeted rows picked-idle,outpace,scout — configurations IDLE,PICKED,RANDOM,HANDS
+dayplayer: IDLE s2 done in 40s 
+dayplayer: IDLE s7 done in 48s 
+dayplayer: IDLE s3 done in 49s 
+dayplayer: IDLE s6 done in 51s 
+dayplayer: IDLE s1 done in 52s 
+dayplayer: IDLE s9 done in 53s 
+dayplayer: IDLE s10 done in 54s 
+dayplayer: IDLE s12 done in 54s 
+dayplayer: IDLE s4 done in 54s 
+dayplayer: RANDOM s2 done in 3s 
+dayplayer: RANDOM s1 done in 3s 
+dayplayer: IDLE s5 done in 56s 
+dayplayer: IDLE s8 done in 56s 
+dayplayer: RANDOM s3 done in 3s 
+dayplayer: IDLE s11 done in 57s 
+dayplayer: RANDOM s4 done in 3s 
+dayplayer: RANDOM s5 done in 4s 
+dayplayer: RANDOM s6 done in 3s 
+dayplayer: RANDOM s7 done in 3s 
+dayplayer: RANDOM s8 done in 3s 
+dayplayer: RANDOM s9 done in 3s 
+dayplayer: RANDOM s12 done in 3s 
+dayplayer: RANDOM s10 done in 3s 
+dayplayer: RANDOM s11 done in 4s 
+dayplayer: RANDOM s13 done in 3s 
+dayplayer: RANDOM s15 done in 3s 
+dayplayer: RANDOM s16 done in 3s 
+dayplayer: RANDOM s14 done in 3s 
+dayplayer: HANDS s2 done in 3s 
+dayplayer: HANDS s1 done in 3s 
+dayplayer: HANDS s3 done in 3s 
+dayplayer: HANDS s7 done in 3s 
+dayplayer: PICKED s2 done in 64s 
+dayplayer: HANDS s8 done in 3s 
+dayplayer: HANDS s5 done in 4s 
+dayplayer: HANDS s6 done in 4s 
+dayplayer: HANDS s4 done in 4s 
+dayplayer: HANDS s9 done in 3s 
+dayplayer: HANDS s10 done in 3s 
+dayplayer: HANDS s12 done in 3s 
+dayplayer: HANDS s13 done in 3s 
+dayplayer: HANDS s15 done in 3s 
+dayplayer: HANDS s11 done in 4s 
+dayplayer: PICKED s10 done in 68s 
+dayplayer: HANDS s16 done in 3s 
+dayplayer: HANDS s14 done in 3s 
+dayplayer: PICKED s6 done in 68s 
+dayplayer: PICKED s15 done in 80s 
+dayplayer: IDLE s14 done in 34s 
+dayplayer: PICKED s9 done in 86s 
+dayplayer: IDLE s13 done in 47s 
+dayplayer: PICKED s4 done in 87s 
+dayplayer: PICKED s7 done in 89s 
+dayplayer: IDLE s15 done in 41s 
+dayplayer: PICKED s5 done in 92s 
+dayplayer: PICKED s16 done in 94s 
+dayplayer: PICKED s11 done in 94s 
+dayplayer: IDLE s16 done in 44s 
+dayplayer: PICKED s3 done in 95s 
+dayplayer: PICKED s14 done in 96s 
+dayplayer: PICKED s12 done in 98s 
+dayplayer: PICKED s13 done in 98s 
+dayplayer: PICKED s1 done in 102s 
+dayplayer: PICKED s8 done in 103s 
+bar (targeted)                                                                value  result
+PICKED ≥ 1.5× IDLE at D13, D18, D23                              1.00 · 2.00 · 3.00  FAIL
+IDLE never out-paces PICKED (≥ 90 % of seed × milestone)                        99%  PASS
+Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot) med 8.2 · worst 19.3 min, 3 sends  FAIL
+dayplayer (targeted: picked-idle,outpace,scout, 103s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `picked-idle,outpace,scout` FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
+exit 1
