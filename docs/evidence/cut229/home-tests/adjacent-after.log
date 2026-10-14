@@ -1,0 +1,49 @@
+client suite: targeted (9 selected; 160 current full; 203 exhaustive groups)
+FAIL wall-preparation 4.8s (4.4s)  Node.js v26.5.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')
+         at eval (eval at evaluate (:311:30), <anonymous>:88:47)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/.claude/worktrees/agent-aa5287176e90009fe/web/tests/wall-preparation.mjs:14:23 {
+FAIL ready-plots     5.1s (4.7s)  Node.js v26.5.0
+     page.evaluate: TypeError: app.onLive is not a function
+         at renderTown (http://localhost:36863/src/ui/town.ts:447:27)
+         at window.fixture (eval at evaluate (:311:30), <anonymous>:29:21)
+         at eval (eval at evaluate (:311:30), <anonymous>:1:16)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/.claude/worktrees/agent-aa5287176e90009fe/web/tests/ready-plots.mjs:55:15 {
+FAIL persistent-camp 10.2s (5.1s)  Node.js v26.5.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'disabled')
+         at eval (eval at evaluate (:311:30), <anonymous>:27:51)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/.claude/worktrees/agent-aa5287176e90009fe/web/tests/persistent-camp.mjs:14:28 {
+ok   worker-first-act 17.5s (12.7s)  1440 20 worker first-act checks PASS
+FAIL legible         45.5s (45.1s)  legible: 3 failed
+       - waiting for locator('button.send:visible').first()
+           - element is not enabled
+           - element is not enabled
+            - element is not enabled
+     FAIL run 2: displayed reason equals actual Rust exit ("slain · jackal")
+     FAIL run 2: a death's beat names the killer ("died to jackal")
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+FAIL runsui          47.9s (47.5s)  runsui: 4 FAIL
+       - waiting for locator('.hero-details:visible').first()
+           - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+           - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+            - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+     FAIL the first Send is lit (Delve0/3)
+     FAIL day 0: ≤ 5 surfaces in the well and console (9: staked | send | hero-details | Forge information | House information | forge · Hire Scout | Fenn Ash · Bloodline 1 · | Heroes | tile:journal)
+     FAIL the log from run 1: one entry, the stud shown (null)
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+ok   building-fx     57.9s (57.5s)  1440 Canvas reduced: exact free construction/refusal/refresh/reload and immediate use PASS (482ms lifecycle wall; not a performance gate)
+ok   cut120          74.2s (73.8s)  cut120: ok (33 checks)
+FAIL cut305          147.2s (146.7s)  cut305: 4 failed
+       - waiting for locator('.next-pill')
+           - element is not visible
+           - element is not visible
+            - element is not visible
+     FAIL day 0: the mouth and the gem send (mouth,tent,staked · gem "Delve0/3")
+     FAIL day 0: ≤ 5 current surfaces — mouth, tent, Heroes, Send, optional Works (8: mouth | tent | staked | House information | Forge information | forge · first gold home | Heroes | Delve0/3)
+     FAIL walk 7:40: 3 chests: the pill turns gold (`porter · 0/3`); a greyed porter by the mouth (quartermaster)
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+FAIL: 3/9 client gates in 147.2s

@@ -10,6 +10,8 @@
 //   mouth    tapping the dungeon's mouth sends (the watch opens)
 //   checkin  a scripted IDLE check-in — the absence's report (harvest), one spend (the sword over the forge), send (the mouth) — ≤ 3 taps
 //   desk     the desktop frame (1440 × 900) shows the same scene in its centre, the targets over it
+// Cut 229: the storehouse is retired (Cut 201; the v1 set is forge · kennel · bank, stage 2's trigger builds nothing), the
+// staked plot is a read-only preview surface (0b39fd37), and the panel-over-building check moved to the kennel.
 //
 //   node web/tests/cut30town.mjs [--shots dir] [--part=a,b]      (part of `pnpm test` in web/)
 import { execFileSync } from "node:child_process";
@@ -180,10 +182,14 @@ const fold = (scope = "") =>
           return false;
         return shown(b);
       });
+      // (Cut 229: a building's name label (`House ⓘ`, data-building-info) and the staked plot's tag (data-next) explain the
+      // same building or plot; they count with it, one function, like a building and its bar tile)
       const keys = new Set(
         els.map(
           (b) =>
             b.dataset.building ??
+            b.dataset.buildingInfo ??
+            (b.dataset.next ? "staked" : undefined) ??
             (b.dataset.tile
               ? (SAME[b.dataset.tile] ?? `tile:${b.dataset.tile}`)
               : (b.getAttribute("aria-label") || b.textContent || b.className)
@@ -216,20 +222,23 @@ try {
     await shot("town-day0");
     const t = await town();
     const surf = await fold(":is(.well-wrap, .console)");
-    // Cut 30.5 (docs/AUTOMATION_TREE.md §3A): the `next` pill is day 0's fifth surface
+    // Cut 30.5 (docs/AUTOMATION_TREE.md §3A): the `next` pill is day 0's fifth surface.
+    // Cut 229: the staked plot is a surface since 0b39fd37 ("Explain locked town plots on tap without changing game state"):
+    // a read-only preview (stage 2 proves the save is unchanged), so day 0 counts it — the mouth, the tent, the staked plot,
+    // the Heroes roster, the gem (the old `send` text is the gem's `Delve` now) — one more than Cut 30's four.
     const pill = await page.evaluate(() => !!document.querySelector(".next-pill:not([hidden])"));
     check(
-      surf.length <= (pill ? 5 : 4) &&
-        ["mouth", "tent", "Heroes"].every((x) => surf.includes(x)) &&
-        surf.some((x) => /send/.test(x)) &&
+      surf.length <= (pill ? 6 : 5) &&
+        ["mouth", "tent", "staked", "Heroes"].every((x) => surf.includes(x)) &&
+        surf.some((x) => /send|delve/i.test(x)) &&
         !surf.includes("crate"),
-      `day 0: ≤ ${pill ? 5 : 4} interactive surfaces — the mouth, the tent, the crate, the gem${pill ? ", the pill" : ""} (${surf.length}: ${surf.join(" | ")})`,
+      `day 0: ≤ ${pill ? 6 : 5} interactive surfaces — the mouth, the tent, the staked plot, the roster, the gem${pill ? ", the pill" : ""} (${surf.length}: ${surf.join(" | ")})`,
     );
     check(
       t.staked === "blacksmith" &&
-        !t.targets.some((x) => x.id === "staked") &&
+        t.targets.some((x) => x.id === "staked") &&
         t.buildings.length === 0,
-      `day 0: the next plot staked (${t.staked}), not a surface; nothing built (${t.buildings.join(",") || "–"})`,
+      `day 0: the next plot staked (${t.staked}), a read-only preview surface; nothing built (${t.buildings.join(",") || "–"})`,
     );
     check(
       t.targets.every((x) => x.w >= 44 && x.h >= 44),
@@ -261,23 +270,26 @@ try {
 
   // ---- each trigger builds its building; the next plot always shown until the v1 set stands
   if (part("build")) {
-    const order = ["blacksmith", "storehouse", "kennel", "bank"],
-      tileOf = { blacksmith: "forge", storehouse: "vault", kennel: "party", bank: "bank" };
+    // Cut 229: Cut 201 retired the storehouse (core town.rs: no plot, no build, no system; the fake now agrees). Stage 2's
+    // trigger (first find kept) still runs and must build nothing; the v1 set is the forge, the kennel and the bank.
+    const order = ["blacksmith", null, "kennel", "bank"],
+      tileOf = { blacksmith: "forge", kennel: "party", bank: "bank" };
     for (let n = 1; n <= 4; n++) {
       await toStage(n);
       await camp();
       const t = await town();
-      const want = order.slice(0, n),
-        next = order[n];
+      const want = order.slice(0, n).filter(Boolean),
+        next = order.slice(n).find(Boolean);
       check(
         JSON.stringify(t.buildings) === JSON.stringify(want) &&
-          want.every((b) => t.targets.some((x) => x.id === b)),
-        `stage ${n}: the trigger built ${order[n - 1]} — standing ${t.buildings.join(" · ")}, targets ${t.targets.map((x) => x.id).join(",")}`,
+          want.every((b) => t.targets.some((x) => x.id === b)) &&
+          !t.targets.some((x) => x.id === "storehouse"),
+        `stage ${n}: ${order[n - 1] ? `the trigger built ${order[n - 1]}` : "the retired storehouse's trigger built nothing"} — standing ${t.buildings.join(" · ")}, targets ${t.targets.map((x) => x.id).join(",")}`,
       );
-      const bar = t.tiles.filter((x) => Object.values(tileOf).includes(x));
+      const bar = t.tiles.filter((x) => [...Object.values(tileOf), "vault"].includes(x));
       check(
         JSON.stringify(bar) === JSON.stringify(want.map((b) => tileOf[b])) &&
-          JSON.stringify(t.tiles.slice(0, n)) === JSON.stringify(bar),
+          JSON.stringify(t.tiles.slice(0, want.length)) === JSON.stringify(bar),
         `stage ${n}: the building bar leads, in build order (${t.tiles.join(" · ")})`,
       );
       check(
@@ -336,12 +348,15 @@ try {
           !!tag && tag.includes("companions") && tag.split(/\s+/).length <= 6,
           `stage 2: the staked plot names the next building and its trigger on tap ("${tag}")`,
         );
-        // a building's panel stands over it (or under it when the room above is short)
-        await page.locator('.town-hit[data-building="storehouse"]').click();
+      }
+      if (n === 3) {
+        // a building's panel stands over it (or under it when the room above is short). Cut 229: the storehouse and its
+        // vault panel are retired, so the kennel (the next panel building, built here) carries the check: its party panel.
+        await page.locator('.town-hit[data-building="kennel"]').click();
         await sleep(250);
         const pa = await page.evaluate(() => {
-          const p = document.querySelector('.panel[data-panel="vault"]'),
-            b = document.querySelector('.town-hit[data-building="storehouse"]');
+          const p = document.querySelector('.panel[data-panel="party"]'),
+            b = document.querySelector('.town-hit[data-building="kennel"]');
           if (!p || !b) return null;
           const r = p.getBoundingClientRect(),
             a = b.getBoundingClientRect();
@@ -349,7 +364,7 @@ try {
         });
         check(
           !!pa && (pa.pb <= pa.at + 2 || pa.pt >= pa.ab - 2),
-          `stage 2: the storehouse opens the vault panel over itself (${pa ? `panel ${Math.round(pa.pt)}–${Math.round(pa.pb)}, building ${Math.round(pa.at)}–${Math.round(pa.ab)}` : "no panel"})`,
+          `stage 3: the kennel opens the party panel over itself (${pa ? `panel ${Math.round(pa.pt)}–${Math.round(pa.pb)}, building ${Math.round(pa.at)}–${Math.round(pa.ab)}` : "no panel"})`,
         );
         await page.keyboard.press("Escape");
       }
@@ -435,12 +450,17 @@ try {
         h: t.height,
         x: t.x,
         mode: window.__town.stats().mode,
-        targets: window.__town.targets().length,
+        targets: window.__town.targets().map((x) => x.id),
       };
     });
     check(
-      d.w >= 600 && d.h >= 400 && d.targets >= 7,
-      `desktop: the town fills the frame's centre (${Math.round(d.w)}×${Math.round(d.h)} at x ${Math.round(d.x)}, ${d.targets} targets, ${d.mode})`,
+      // Cut 229: seven targets counted the retired storehouse; the six of the v1 set, by name, replace the count
+      d.w >= 600 &&
+        d.h >= 400 &&
+        ["mouth", "tent", "crate", "blacksmith", "kennel", "bank"].every((id) =>
+          d.targets.includes(id),
+        ),
+      `desktop: the town fills the frame's centre (${Math.round(d.w)}×${Math.round(d.h)} at x ${Math.round(d.x)}, targets ${d.targets.join(",")}, ${d.mode})`,
     );
   }
 } catch (e) {
