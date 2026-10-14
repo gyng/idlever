@@ -96,6 +96,7 @@ tools/verify.sh --quick        # tests (fast profile) ∥ format/lint + tsc + co
 tools/tune.sh <row-ids>        # content iteration: full seed counts, targeted requirements, fail-fast; --list lists rows; never a full gate pass
 node tools/camp-check.mjs SAVE... [--record DIR|--compare DIR] # saved-camp feedback: three 8h native replays ~4 s warm; --mode packages,wall for tuning searches; diagnostic, never the gate
 node tools/choice-check.mjs SAVE --choices boss_focus,kite_archers,bold --out NEW_DIR # actual next8h baseline/choice outcomes from one saved Session (~1–3s warm first-boss fixture); --balance PROFILE; diagnostic only, docs/DEV_CHOICE_CHECK.md
+node tools/save-history.mjs export --port 5347 --index 0 --out S.json   # dev save history (Shift+T panel, window.__idlever.history): ring entry ↔ native-loadable save; docs/ITERATION_SPEED.md §0i
 tools/native-dev.sh                                         # real Rust dev UI on :5367; rebuild native, no wasm packaging; docs/NATIVE_DEV.md
 # IDLEVER_BALANCE_FILE=<profile> IDLEVER_NATIVE_PORT=5368 tools/native-dev.sh: compile-free validated tuning
 # tools/tune.sh <rows> --resume: internal check-in checkpoints, exact runtime/parameters only

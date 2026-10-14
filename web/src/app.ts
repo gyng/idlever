@@ -23,6 +23,7 @@ import type {
 import { combosIn, isCardRow, isFreeSupply, isPkgRow, ownRowCount, setWhyGloss } from "./ui/tokens";
 import { selectEngine, type EngineKind } from "./engine/index";
 import { readBlob, writeBlob, clearBlob, randomSeed, type SaveBlob } from "./store";
+import type { DevHistory } from "./dev/history";
 import { renderCamp } from "./ui/camp";
 import { renderWatch } from "./ui/watch";
 import { renderDeath } from "./ui/death";
@@ -130,6 +131,9 @@ const CAUSE_WORD: Record<string, string> = {
 };
 export class App {
   engine!: AsyncEngine;
+  /** Dev builds only (`dev/history.ts`, docs/ITERATION_SPEED.md §0i): `window.__idlever.history` and its screen hook. */
+  declare history?: DevHistory;
+  declare devScreen?: (screen: Screen) => void;
   kind: EngineKind = "fake";
   version = "";
   /** RUNS_UI: the rest's countdown is anchored where the core's `rest_left_s` last moved (a re-read of the same value keeps the anchor) */
@@ -834,6 +838,9 @@ export class App {
     const dev = this.dev;
     const sel = await selectEngine();
     this.engine = sel.engine;
+    // docs/ITERATION_SPEED.md §0i: the dev save history wraps the engine (purchases, sends, run ends); tree-shaken from shipping
+    if (import.meta.env.DEV)
+      this.engine = (await import("./dev/history")).installHistory(this, sel.engine);
     this.kind = sel.kind;
     this.version = sel.version;
     if (dev?.fresh) clearBlob();
@@ -1860,6 +1867,7 @@ export class App {
     )
       screen = { kind: "ending" };
     this.view = screen;
+    if (import.meta.env.DEV) this.devScreen?.(screen); // §0i: a run's end, a check-in's settlement
     if (screen.kind === "report" && screen.absence && this.lastAbsence?.report !== screen.report)
       this.lastAbsence = { report: screen.report, played: false };
     if (screen.kind === "watch") {
