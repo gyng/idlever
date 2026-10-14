@@ -780,7 +780,9 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     // Resource badges and construction copy keep their own anchors. Help
     // labels fit around them, rather than hiding the price beneath a nameplate.
     const occupied = [
-      ...el.querySelectorAll<HTMLElement>(".town-marker,.town-tag,.next-pill,.town-delve-faces"),
+      ...el.querySelectorAll<HTMLElement>(
+        ".town-marker,.town-tag,.next-pill,.town-delve-faces,.task-tracker",
+      ),
     ]
       .filter(
         (node) =>

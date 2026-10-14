@@ -90,6 +90,7 @@ import { itemIcon, itemName, itemChip } from "./items"; // run-clear: items in t
 import { returnPick } from "./return-pick"; // Cut 113 §3: the return's pick waits on the camp
 import { checkinBatch } from "./checkin"; // Cut 117 §5: the routine buys of a return in one chip
 import { controlLadder } from "./ladder"; // Cut 118 §7: the automation earned, one rail
+import { taskTracker } from "./tasks"; // owner 2026-10-14: the ladder, the Journal's open chapters and the quest, over the town
 import { KENNEL_ORDERS, KENNEL_TIP, KENNEL_WORD, kennelShown } from "./pets";
 import { descentBits, descentLine } from "./descent"; // Cut 121 §1: the ascension under way
 import {
@@ -535,6 +536,8 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     replace(descentSlot, d ?? "");
   };
   const ladder = controlLadder(app, { orders: () => openOrders(), workers: () => openWorks(app) });
+  const tasks = taskTracker(app, ladder.el, (anchor) => journal(anchor));
+  town.el.append(tasks.el);
   const feats = campFeats(app);
   const offer = orderOffer(app);
   const earlyJournal = h(
@@ -555,7 +558,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     town.el,
     pick.el,
     batch.el,
-    ladder.el,
     feats.el,
     offer.el,
     tabs,
@@ -2492,6 +2494,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       pick.dispose();
       batch.dispose();
       ladder.dispose();
+      tasks.dispose();
       feats.dispose();
       offer.dispose();
       window.removeEventListener("idlever:focus-hero", focusHome);

@@ -1,0 +1,143 @@
+/* Owner 2026-10-14: the task tracker, an overlay over the town's top-left under the `next` pill (ui/tasks.ts). Quiet: the pill's dark
+   glass, one gold pip for the recommended step, dim pips for the rest; a finished group leaves. */
+.task-tracker {
+  position: absolute;
+  z-index: 3;
+  top: 52px;
+  left: 8px;
+  width: max-content;
+  max-width: min(13.5rem, calc(100% - 16px));
+  max-height: calc(100% - 64px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-radius: 6px;
+  background: rgba(13, 12, 20, 0.78);
+  box-shadow:
+    0 0 0 1px #3a4a68,
+    0 2px 6px rgba(0, 0, 0, 0.5);
+  color: var(--bone);
+  font-size: 12px;
+}
+.task-tracker[hidden] {
+  display: none;
+}
+.task-summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 2px 10px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.task-summary::-webkit-details-marker {
+  display: none;
+}
+.task-summary::before {
+  content: "▸";
+  font-size: 10px;
+}
+.task-fold[open] > .task-summary::before {
+  content: "▾";
+}
+.task-count {
+  margin-left: auto;
+  color: var(--acc);
+}
+.task-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 10px 8px;
+}
+.task-group:has(> .control-ladder[hidden]) {
+  display: none;
+}
+.task-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 2px;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.task-head small {
+  letter-spacing: 0;
+}
+.task-entry {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  width: 100%;
+  min-height: 24px;
+  padding: 1px 0;
+  cursor: pointer;
+  line-height: 1.2;
+}
+.task-entry:hover .task-title,
+.task-entry:focus-visible .task-title {
+  color: var(--acc);
+}
+.task-entry:focus-visible {
+  outline: 1px solid var(--acc);
+  outline-offset: 2px;
+}
+.task-pip {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--dim);
+}
+.task-entry[data-state="ready"] .task-pip {
+  border-color: var(--acc);
+}
+.task-entry[data-recommended="true"] .task-pip {
+  background: var(--acc);
+  border-color: var(--acc);
+  box-shadow: 0 0 4px var(--gilt);
+}
+.task-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.task-prog {
+  color: var(--dim);
+}
+.task-quest .quest-bar {
+  flex-basis: 100%;
+}
+/* the ladder inside its group: left-aligned, no padding of its own */
+.task-group > .control-ladder {
+  justify-content: flex-start;
+  padding: 0;
+}
+.task-group > .control-ladder .ladder-rail {
+  flex-wrap: wrap;
+}
+.task-group > .control-ladder .ladder-next {
+  text-align: left;
+}
+/* phone: folded by default, at the scene's foot-left above the graveyard (the top-left holds the pill and the forge's price); touch-sized */
+@media (max-width: 1023px) {
+  .task-tracker {
+    top: auto;
+    bottom: 56px;
+    max-height: calc(100% - 112px);
+  }
+  .task-summary {
+    min-height: 44px;
+  }
+  .task-entry {
+    min-height: 36px;
+  }
+}
