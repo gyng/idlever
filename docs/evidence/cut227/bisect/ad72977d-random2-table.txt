@@ -1,0 +1,17 @@
+
+PICKED (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1       8     16     24     32     32      -      -  [19]  stall 0 king None untried L[5]
+   2       8     16     40     48     48      -      -  [13, 28]  stall 0 king None untried L[5, 5]
+
+RANDOM (2 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1      16     16     48    160    160      -      -  [13, 19, 19, 21, 21, 21]  stall 2 king None untried L[2, 1, 4, 4, 2, 3]
+   2       8     32     64    144    144      -      -  [9, 13, 18, 18, 18, 28]  stall 2 king None untried L[3, 3, 1, 3, 4, 2]
+
+bots over 2 seeds × 14 days × 3/day (14s)
+
+bar (targeted)                                                                value  result
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 2/2 · 2/2 · median +8 · +112 h  PASS
+dayplayer (targeted: random-picked, 14s): targeted rows PASS — not a gate pass
+

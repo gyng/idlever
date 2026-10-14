@@ -1,0 +1,37 @@
+dayplayer: targeted rows random-picked — configurations PICKED,RANDOM
+dayplayer: PICKED s3 done in 27s 
+dayplayer: PICKED s10 done in 33s 
+dayplayer: PICKED s7 done in 33s 
+dayplayer: PICKED s12 done in 34s 
+dayplayer: RANDOM s3 done in 4s 
+dayplayer: RANDOM s1 done in 3s 
+dayplayer: PICKED s9 done in 37s 
+dayplayer: PICKED s6 done in 37s 
+dayplayer: RANDOM s2 done in 14s 
+dayplayer: RANDOM s6 done in 4s 
+dayplayer: RANDOM s5 done in 5s 
+dayplayer: RANDOM s7 done in 6s 
+dayplayer: PICKED s2 done in 43s 
+dayplayer: RANDOM s4 done in 9s 
+dayplayer: PICKED s11 done in 44s 
+dayplayer: RANDOM s10 done in 5s 
+dayplayer: PICKED s5 done in 47s 
+dayplayer: RANDOM s9 done in 7s 
+dayplayer: PICKED s4 done in 48s 
+dayplayer: RANDOM s15 done in 5s 
+dayplayer: RANDOM s14 done in 7s 
+dayplayer: RANDOM s12 done in 8s 
+dayplayer: PICKED s15 done in 50s 
+dayplayer: RANDOM s11 done in 9s 
+dayplayer: PICKED s13 done in 51s 
+dayplayer: PICKED s8 done in 53s 
+dayplayer: PICKED s16 done in 53s 
+dayplayer: RANDOM s13 done in 11s 
+dayplayer: RANDOM s16 done in 9s 
+dayplayer: PICKED s14 done in 55s 
+dayplayer: RANDOM s8 done in 18s 
+dayplayer: PICKED s1 done in 56s 
+bar (targeted)                                                                value  result
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 16/16 · 15/16 · median +4 · +36 h  PASS
+dayplayer (targeted: random-picked, 56s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `random-picked` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

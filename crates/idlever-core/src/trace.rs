@@ -2593,9 +2593,12 @@ pub fn patch_exits(p: &Patch) -> bool {
 
 /// QA on 778fa1b: among `patches`, one that is not a costly exit, is advice (not
 /// `below_bar`, inserts a row or cuts one) and beats `baseline` by `PATCH_MARGIN` — while
-/// one does, a costly exit neither sets the best survival nor leads.
+/// one does, a costly exit neither sets the best survival nor leads. Cut 227: an alternative
+/// measured to harm whole runs (`PatchWhole.harms`) is no alternative — it never leads
+/// (`sink_harms`), so it cannot displace the exit (qa seed 6 run 1: `HP<20% → read ?` 11/12
+/// but reach −0.08 beside `HP<40% → return`).
 pub fn exit_alternative(patches: &[Patch], baseline: f64) -> bool {
-    patches.iter().any(|p| !costly_exit(p) && !p.below_bar && p.insert_at >= 0 && p.survive >= baseline + PATCH_MARGIN - 1e-9)
+    patches.iter().any(|p| !costly_exit(p) && !p.below_bar && p.insert_at >= 0 && p.survive >= baseline + PATCH_MARGIN - 1e-9 && !p.whole.as_ref().is_some_and(|w| w.harms))
 }
 
 /// Whether `p` counts toward the best survival the head must stay within `SURVIVE_BAND` of
@@ -2918,11 +2921,13 @@ pub fn patch_harms(p: &Patch) -> bool {
 
 /// QA on 524827b: a patch that harms whole runs never leads — the list keeps its order, those
 /// that harm after those that do not (the first patch the gem would apply is one that does
-/// not, whenever one is shown).
-pub fn sink_harms(patches: &mut Vec<Patch>) {
-    let (ok, bad): (Vec<Patch>, Vec<Patch>) = std::mem::take(patches).into_iter().partition(|p| !patch_harms(p));
-    patches.extend(ok);
-    patches.extend(bad);
+/// not, whenever one is shown). Cut 227: three tiers, stable within each — clean, then a
+/// wall-price trade-off alone (`trade_off`, e.g. an exit's floors), then a whole-run harm
+/// (`PatchWhole.harms`): a trade-off is a price the player may pick, a harm never leads it
+/// (qa seed 6 run 1: `HP<20% → read ?` reach −0.08 led `HP<40% → return`, both trade-offs).
+pub fn sink_harms(patches: &mut [Patch]) {
+    let tier = |p: &Patch| if p.whole.as_ref().is_some_and(|w| w.harms) { 2 } else { patch_harms(p) as u8 };
+    patches.sort_by_key(tier);
 }
 
 /// QA on 524827b: the patch the death screen's gem applies by default — the first shown that is

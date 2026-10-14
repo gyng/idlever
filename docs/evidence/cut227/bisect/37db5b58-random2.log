@@ -1,0 +1,9 @@
+dayplayer: targeted rows random-picked — configurations PICKED,RANDOM
+dayplayer: RANDOM s1 done in 3s 
+dayplayer: RANDOM s2 done in 4s 
+dayplayer: PICKED s2 done in 8s 
+dayplayer: PICKED s1 done in 8s 
+bar (targeted)                                                                value  result
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 2/2 · 2/2 · median +12 · +36 h  PASS
+dayplayer (targeted: random-picked, 8s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `random-picked` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

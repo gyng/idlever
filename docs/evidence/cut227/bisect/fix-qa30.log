@@ -1,0 +1,123 @@
+forecast bank ≈ real sends (good set, Σ seeds): forecast 0.600 (3600 sims) · sends 0.597 (3240) · ±0.023
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds): forecast 0.880 (3960 sims) · sends 0.880 (3564) · ±0.015
+stall leg: 32 records · forecast stall share Σ 4.30 → 1.02 with the top patch
+invariant                                                    checks  result
+PENDING's unlocks are the short list's available cards           30  PASS
+`Nothing lost to the den` never beside a theft still out         66  PASS
+`brought` == the loadout                                         30  PASS
+`nothing_beats_base` ⇔ a dice death no patch beats              119  PASS
+a DICE death has no recent own row whose cut survives more        2  PASS
+a `saved him` note names the row that fired at the low point       28  PASS
+a bought leash comes home from a run that tamed nothing          53  PASS
+a cold cache reads the same two passes                           10  PASS
+a costly exit never leads beside an alternative                 119  PASS
+a death has a verdict and a trace                                30  PASS
+a death trace ends at 0 hp (the killing blow)                    87  PASS
+a death trace's blows step the hp down to the killing blow       13  PASS
+a death's blow is the run's last hurt to the hero                30  PASS
+a death's chain link is its row's newest reason (never one the row outlived)       74  PASS
+a death's last hp falls to 0 in blow rows                       137  PASS
+a death's note names the killer or the killing harm              87  PASS
+a death's notes never say `saved him`                           119  PASS
+a died / stalled / lost-thread line kept nothing but its secured gold      360  PASS
+a drive-off with its counter in the set says `order` (the held row), else `no counter`       19  PASS
+a drive-off's line leads `driven`                               360  PASS
+a drive-off's line names the boss once                           19  PASS
+a drive-off's or a stall's reel never says `Returned with`       19  PASS
+a dropped supply's refund == its price                           30  PASS
+a floor's `pick up` chores with nothing taken ≤ 50              180  PASS
+a forecast move's parts (incl. package) sum to the whole         10  PASS
+a forecast move's parts sum to the whole                         99  PASS
+a gap or row verdict has a baseline under 100 %                 119  PASS
+a gate's `needs` never names a held fact                       2056  PASS
+a headline find is on FOUND                                       1  PASS
+a margin's unknown count never contradicts a row's `no unknown`      119  PASS
+a move with no edit has no rows part                             10  PASS
+a package move is the `package` part                             10  PASS
+a patch's `exits` ⇔ its row returns or banks                    290  PASS
+a patch's conds and verb are in the vocabulary                  267  PASS
+a patch's reach == the camp forecast's move once applied (± its bar)       10  PASS
+a patch's reach from→to agrees with its move                      3  PASS
+a patch's whole-run move is the camp's `vs sent` once applied (its floor, move, ± and death)       10  PASS
+a reel `died` line names the run's death cause                   87  PASS
+a reel drive-off names the boss who drove him off                 4  PASS
+a reel line is a story line                                      87  PASS
+a report's outcome tiles sum to its runs (stalled + driven ≤ returned)       30  PASS
+a route verdict names its fork (and only it)                    119  PASS
+a row reason is from the table                                 5367  PASS
+a row with a locked cond is marked on the wire (and only it)       90  PASS
+a row's share of the actions ≤ 1                                 60  PASS
+a row's why-not count names its unit (`acts`)                    60  PASS
+a shadowed row changes no sim                                    10  PASS
+a shadowed row never fires                                       31  PASS
+a shadowed row reads the same forecast                           10  PASS
+a shadowed row's pending line names its shadow                   31  PASS
+a stall's top patch forecasts fewer stalls (Σ records)            1  PASS
+a stamp never contradicts its replay counts (a gap most replays survive leans `dice`)      119  PASS
+a trace's hp never falls without a blow row                    1620  PASS
+a waystone start pays no toll (rich purse)                       30  PASS
+a waystone start pays no toll and is never short (empty purse)       30  PASS
+after the refine a forecast read is the refined panel            10  PASS
+an absence of deaths rested one wake per run                     11  PASS
+an available unlock buys                                          1  PASS
+an exit line leads with one tier word and names no other        360  PASS
+an exit's `bones: N items` == the pile it lists                 360  PASS
+an exit's kept finds are in the vault                           210  PASS
+an exit's shelved finds == its shelved supplies                 210  PASS
+an unknown kind for sale is learned by buying it, and its gate says `buy`     2371  PASS
+an unmeasured card never auto-inserts                            30  PASS
+camp supplies == the run's packed kinds                          30  PASS
+death()'s patches are camp_pending until death_deltas            30  PASS
+death_deltas returns death()'s patches, measured                 10  PASS
+forecast bank ≈ real sends (depth ≥ d → bank, Σ seeds)            1  PASS
+forecast bank ≈ real sends (good set, Σ seeds)                    1  PASS
+forecast bank ≤ reach at the bank row's depth                    61  PASS
+forecast death 0 ⇒ causes empty                                  60  PASS
+forecast ends sum to 1 ± 1e-9                                    60  PASS
+forecast → every sheet's reads → forecast: identical             30  PASS
+found at an exit == kept + salvaged + shelved + used + left + stolen + bones      360  PASS
+gold header == ledger sum                                       114  PASS
+meter time split == its ticks                                    60  PASS
+meter totals == the event stream's sums (dealt · taken · healed · fires · supplies · gold)       60  PASS
+night gold: earned + salvage + wake pay + recovered + fetched − spent == delta       30  PASS
+no `foes not ≥N` beside a foes column of N+                    5367  PASS
+no death screen carries a patch under its baseline (unless below_bar)      290  PASS
+no dice death's margin names an unused item                       3  PASS
+no patch already in the set                                      70  PASS
+no patch survives 0 % beside one that survives                  290  PASS
+no trace turn is a trait's (row −1)                              20  PASS
+no wire label names a flavour whose kind is identified         1837  PASS
+no wire label names an unidentified kind                       2302  PASS
+report SALVAGED rows sum to the header's salvage                 30  PASS
+report gold == the gold sheet (Σ kept == home; purse top-ups == wake == the lines')      240  PASS
+report lines == the gold sheet's exit lines (word and amount)      240  PASS
+report runs == deaths + banked + returned                        30  PASS
+report spent == the batch's                                      30  PASS
+report stolen == thefts − got back                               30  PASS
+report tiles == its lines (banked · returned · stalled · driven · died)      240  PASS
+save → load → forecast: identical                                30  PASS
+save → load → forecast: identical (refined)                      10  PASS
+save/load round-trips the lineage                                30  PASS
+the exit line's swapped ≥ the stake's last                       30  PASS
+the gem on every screen is the first shown, never harms, and is the best whole-run patch       30  PASS
+the gem's default patch never harms whole runs (death > ±, reach < −±)       10  PASS
+the heir purse: a top-up per death below the line                30  PASS
+the morgue names the killer by its title                         87  PASS
+the qaM shadow is found (R1 return over a later return)          30  PASS
+the report lists its drive-offs (by run)                         30  PASS
+the report's bones == the finds the chronicle names              26  PASS
+the report's bounty is the camp's before the absence             30  PASS
+the report's gold terms sum to the purse's move                 240  PASS
+the report's stalled lines ≤ its stalled tile ≤ its returned       30  PASS
+the rows that ran all night count the same sends                 30  PASS
+the rows' part is the edit's paired move                         10  PASS
+the stake's death keep == checkpoints + death share of carry at risk     3476  PASS
+the stake's swapped never falls within a run                   3476  PASS
+the top patch applies through set_rules                          30  PASS
+the top patch survives within 10 pts of the best shown          119  PASS
+the top patch, applied, acts in one of the next 6 sends that reach its floor       30  PASS
+the unlock short list is stable across reads                     30  PASS
+the verdict names `package · row` when a package row acted       20  PASS
+the vocabulary offers every drink / read a set holds             30  PASS
+worst death carries a verdict and a trace                        27  PASS
+qa: all PASS (30 seeds, 101.5s)
