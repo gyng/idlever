@@ -72,6 +72,16 @@ Owner amendment 2026-10-14: the routine native `node tools/gates.mjs --full` day
 
 Use the full client suite before release, a fresh blind rating, and changes spanning several game systems. Use `tools/verify.sh --full` for the existing full native/build acceptance. Content iteration uses targeted `tools/tune.sh <rows>` rather than replaying the entire statistical audit after every edit. The exhaustive audit stays available explicitly; neither this tier nor routine full acceptance certifies omitted exhaustive cases.
 
+## Pacing pack, sweeps and repins (2026-10-15)
+
+These are iteration tools. None of them is a gate pass.
+
+- `node tools/gates.mjs --pacing [--fail-fast]` is the content tier between `tools/tune.sh <rows>` and the routine full gate. It runs `--full --rows` over every dayplayer row that has broken at 16 seeds and is cached like `--rows`. Run it after a pacing or economy change, before `tools/verify.sh --full`.
+- `node tools/sweep.mjs` searches balance profiles. It is a targeted check of the named rows only. Copy the chosen profile's values into `tuning/balance.json` and `balance::DEFAULT`, then run the pacing pack and the routine full gate on the rebuilt source.
+- `node tools/repin.mjs` makes the gold-settlements browser group read the new WASM after a core change. `--settle` replays the saves natively and reports what changed. The browser proof is still `cd web && node tests/run.mjs gold-settlements`.
+
+See docs/ITERATION_SPEED.md, "Repin, pacing pack, sweep".
+
 ## Historical routine measurements (before Cut181)
 
 The prior complete client run took 1688.0 seconds (28.1 minutes), with 165/166 passing and a forecast timing failure preserved separately. The routine target is at most 337.6 seconds (5.6 minutes). The completed revalidation took 1770.4 seconds (29.5 minutes), with 163/166 passing. The routine suite passed 37/37 in 205.7 seconds (3.4 minutes): 11.6% of the revalidation runtime, or an 88.4% reduction. It also uses 12.2% of the original 1688-second baseline, meeting the target against both. This is one same-host run using the current fast WASM, not a shipping-WASM acceptance or a statistical runtime guarantee. Those historical full failures (Cut12 locator timeout, take-control availability, watch playback timing) were not cleared by the routine pass. Raw logs, JSON results and harness checks are archived in `docs/evidence/validation-tiers/`.
