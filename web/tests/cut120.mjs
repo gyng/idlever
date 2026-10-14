@@ -469,9 +469,17 @@ try {
         kinds: mk.map((m) => m.dataset.marker),
       };
     });
+    // Cut231 §5: the post marker retired (a third copy); the count rides the `next` pill (and the tracker) instead
+    const hud = await page.evaluate(() => ({
+      pill: document.querySelector(".next-pill")?.textContent ?? "",
+      tracker: [...document.querySelectorAll("[data-tasks] [data-worker]")]
+        .map((e) => e.textContent ?? "")
+        .join(" | "),
+    }));
+    const carried = (t) => /2\/3/.test(t) && /or 30h/.test(t);
     check(
-      r.text === "forge 2/3 · or 30h" && r.at === "blacksmith",
-      `the next worker's post: ${r.text} at the ${r.at}`,
+      r.text === "" && (carried(hud.pill) || carried(hud.tracker)),
+      `the next worker's count rides the pill or the tracker, not a post marker (pill: ${hud.pill}; tracker: ${hud.tracker}; marker: ${r.text || "none"})`,
     );
     check(r.n <= 3, `≤ 3 markers on the town (${r.kinds.join(",")})`);
     const k = await page.evaluate(async () => {

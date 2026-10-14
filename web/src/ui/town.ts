@@ -129,6 +129,7 @@ export function forgeFitting(L: Lineage, slot: HeroSlot | undefined): string | u
 }
 /** Cut 120 §10: the town target a worker's post stands at (`WorkerPost.post` / `WorkNode.post`). */
 const postTarget = (post?: string): string => post ?? "mouth";
+const SHOW_NEXT_MARKER = false;
 /** Cut 120 §7/§10: the next worker's mark — his chore's count by hand and the hours to his fallback (`forge 2/3 · or 30h`), from the
  *  core's `Works.next_worker` node (`progress`, `eta_h`); none once he is lit (his post carries his price) or with no count. */
 export function nextWorkerMark(
@@ -566,8 +567,10 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     // budget (≤ 3 with the scene's own); a post with no target here (its building not standing) shows it at the mouth
     const nw = nextWorkerMark(app.lineage),
       lit0 = s.workers.some((x) => x.lit);
+    // Cut231 §5 (owner clutter budget): the next worker's count now rides the `next` pill and the task tracker, so the post marker
+    // stays off (it was a third copy of `forge 2/3 · or 30h`); nextWorkerMark still feeds tests and tooling
     const nwAt =
-      nw && !lit0 && s.markers.length < 3
+      nw && !lit0 && s.markers.length < 3 && SHOW_NEXT_MARKER
         ? want.some((x) => x.id === postTarget(nw.post))
           ? postTarget(nw.post)
           : want.some((x) => x.id === "mouth")
