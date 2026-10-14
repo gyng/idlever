@@ -105,3 +105,11 @@ The pile-ups and candidate content fixes (stagger the first return's stance leve
 "four delves"; move the Legacy offer off the reveals; one beat at about 16–18 min; temperaments one per look) are in research
 doc §6a. Proposing to add `cadence30` to the routine gate once it passes (it is cheap).
 Evidence: `docs/evidence/cut231/timeline/`.
+
+## Owner order 2026-10-14 (after the measured timeline, research §6b)
+
+All four selected; run in sequence (each touches core pacing and is verified at 16 seeds before the next):
+1. **Cut232 first-session cadence** — in progress (cadence30 PASS 16/16; spread the clumps; protect picked-idle D13 1.50).
+2. **Feats for later workers** (§5b plan; time fallbacks kept for IDLE) — next.
+3. **Second hero on day 1–2** — a natural day-1/2 bloodline beat the default players use (answers the day-2 cliff).
+4. **First reset payoff** — a day-1 reset-like moment (default Legacy order or a spend at the first death; +50–200%).
