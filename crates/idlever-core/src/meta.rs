@@ -206,6 +206,56 @@ pub fn unlock_cost(id: &str) -> u32 {
     UNLOCKS.iter().find(|u| u.id == id).map(|u| u.cost).unwrap_or(0)
 }
 
+/// Cut225: the earned class gates (Scout hired, personal completed delves, personal depth).
+/// `(delves, depth)`; `None` for a purchased or free class.
+pub fn class_requirement(c: crate::hero::Class) -> Option<(u32, u32)> {
+    match c {
+        crate::hero::Class::Clown => Some((12, 13)),
+        crate::hero::Class::Engineer => Some((20, 18)),
+        _ => None,
+    }
+}
+
+/// Cut225: why an earned class is still shut (`None` when it may be chosen). A pure read of
+/// personal records: no grant, no RNG, no stored unlock. Purchased classes answer `None`
+/// here; their `Class::unlock` id is checked as before.
+pub fn class_gate(l: &LineageState, c: crate::hero::Class) -> Option<String> {
+    let (delves, depth) = class_requirement(c)?;
+    let completed = l.persistent.completed;
+    if !crate::tree::hired(l, "scout") {
+        Some("Hire Scout".into())
+    } else if completed < delves {
+        Some(format!("Complete {} more delves", delves - completed))
+    } else if crate::legacy::deepest(l) < depth {
+        Some(format!("Reach D{depth}"))
+    } else {
+        None
+    }
+}
+
+/// Cut225: the earned classes' wire rows (a pure read).
+pub fn earned_classes(l: &LineageState) -> Vec<crate::wire::EarnedClass> {
+    crate::hero::Class::EARNED
+        .iter()
+        .map(|&c| {
+            let (required_completed, required_depth) = class_requirement(c).unwrap();
+            let needs = class_gate(l, c);
+            crate::wire::EarnedClass {
+                class: c.name().into(),
+                available: needs.is_none(),
+                needs,
+                scout: crate::tree::hired(l, "scout"),
+                completed: l.persistent.completed,
+                required_completed,
+                depth: crate::legacy::deepest(l),
+                required_depth,
+                level: l.classes.get(c.name()).map_or(1, |p| p.level),
+                signature: c.signature().into(),
+            }
+        })
+        .collect()
+}
+
 /// The fact/trophy gate of an unlock: `None` when open, else the human-readable need.
 pub fn gate(l: &LineageState, id: &str) -> Option<String> {
     let need = |ok: bool, text: &str| if ok { None } else { Some(text.to_string()) };

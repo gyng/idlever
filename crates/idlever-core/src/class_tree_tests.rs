@@ -452,6 +452,7 @@ fn representative_leaf_verbs_act_for_every_class_on_real_controlled_targets() {
             Class::Ranger => assert!(r.monsters.iter().any(|m| m.marked > 0)),
             Class::Caster => assert!(r.hero.nova_cd > 0 && r.monsters.iter().any(|m| m.hp < 100)),
             Class::Gunner => assert!(r.gun_skills.as_ref().is_some_and(|s| s.aim.is_some())),
+            Class::Clown | Class::Engineer => unreachable!("original classes only"),
         }
     }
 }

@@ -357,6 +357,33 @@ fn definitions(class: Class) -> Vec<Node> {
                 ],
             ),
         ],
+        // Cut225: two three-node chains (root → middle → leaf) per earned class. Bit order:
+        // 0 root, 1 middle, 2 leaf of the first path; 3 root, 4 middle, 5 leaf of the second.
+        Class::Clown => [
+            ("bellkeeper", "Bellkeeper", "", vec![(vec![Cond::n("adj>=", 1), Cond::n("foes>=", 2)], "bell_lure", "")]),
+            ("false_exit", "False exit", "bellkeeper", vec![
+                (vec![Cond::n("adj>=", 1), Cond::n("hp<", 60)], "curtain", ""),
+                (vec![Cond::n("adj>=", 1), Cond::n("foes>=", 2)], "bell_lure", ""),
+            ]),
+            ("ringmaster", "Ringmaster", "false_exit", vec![(vec![Cond::n("foes>=", 3)], "grand_jape", "")]),
+            ("turncoat", "Turncoat", "", vec![(vec![Cond::n("adj>=", 2)], "turnabout", "")]),
+            ("cruel_joke", "Cruel joke", "turncoat", vec![
+                (vec![Cond::n("adj>=", 2)], "turnabout", ""),
+                (vec![Cond::n("adj>=", 1), Cond::n("foes>=", 2)], "false_bow", "nearest"),
+            ]),
+            ("last_laugh", "Last laugh", "cruel_joke", vec![(vec![Cond::n("adj>=", 1), Cond::n("hp<", 60)], "turnabout", "")]),
+        ],
+        Class::Engineer => [
+            ("watchmaker", "Watchmaker", "", vec![(vec![Cond::n("foes>=", 1)], "deploy", "")]),
+            ("bastion", "Bastion", "watchmaker", vec![(vec![Cond::n("foes>=", 1)], "brace_sentry", "")]),
+            ("artificer", "Artificer", "bastion", vec![(vec![Cond::n("foes>=", 2)], "overdrive", "")]),
+            ("surveyor", "Surveyor", "", vec![(vec![Cond::n("foes>=", 1)], "deploy", "")]),
+            ("mobile_works", "Mobile works", "surveyor", vec![(vec![Cond::n("foes>=", 1)], "relocate", "")]),
+            ("relay", "Relay", "mobile_works", vec![
+                (vec![Cond::n("foes>=", 1)], "deploy", ""),
+                (vec![Cond::n("foes>=", 1)], "relocate", ""),
+            ]),
+        ],
     };
     specs
         .into_iter()
@@ -397,6 +424,18 @@ fn definitions(class: Class) -> Vec<Node> {
                 "breacher" => "close burst +1 damage",
                 "smoke_screen" => "smoke blind +5 ticks",
                 "close_loader" => "fast cooldown −10 ticks",
+                "bellkeeper" => "lure lifetime +5 ticks",
+                "false_exit" => "curtain cooldown −10 ticks",
+                "ringmaster" => "grand jape +1 foe",
+                "turncoat" => "counter +1 damage",
+                "cruel_joke" => "counter window +5 ticks",
+                "last_laugh" => "counter cooldown −10 ticks",
+                "watchmaker" => "sentry +4 HP",
+                "bastion" => "brace −1 more damage",
+                "artificer" => "overdrive +5 ticks",
+                "surveyor" => "deploy range +1",
+                "mobile_works" => "relocate cooldown −10 ticks",
+                "relay" => "deploy cooldown −10 ticks",
                 _ => unreachable!("authored node summary"),
             }
             .to_string();
@@ -418,6 +457,10 @@ fn definitions(class: Class) -> Vec<Node> {
                         | "nova_guard"
                         | "quick_loader"
                         | "close_loader"
+                        | "ringmaster"
+                        | "last_laugh"
+                        | "artificer"
+                        | "relay"
                 ) {
                     7
                 } else {
@@ -437,6 +480,10 @@ fn definitions(class: Class) -> Vec<Node> {
                         | "nova_guard"
                         | "quick_loader"
                         | "close_loader"
+                        | "ringmaster"
+                        | "last_laugh"
+                        | "artificer"
+                        | "relay"
                 ) {
                     18
                 } else {
@@ -593,7 +640,7 @@ pub fn mask(l: &LineageState) -> u32 {
 pub fn label(id: &str) -> Option<String> {
     let id = id.strip_prefix("path:")?;
     static LABELS: std::sync::OnceLock<std::collections::BTreeMap<String, String>> = std::sync::OnceLock::new();
-    LABELS.get_or_init(|| Class::ALL.into_iter().flat_map(definitions)
+    LABELS.get_or_init(|| Class::EVERY.into_iter().flat_map(definitions)
         .map(|node| (node.id,node.name)).collect()).get(id).cloned()
 }
 #[cfg(test)]

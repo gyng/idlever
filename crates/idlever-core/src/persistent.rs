@@ -138,6 +138,7 @@ pub fn refit_build(g: &mut Game, class_changed: bool) {
         crate::traits::wear(run, l);
         run.gun_reload = None;
         run.gun_skills = (l.class == crate::hero::Class::Gunner).then(Default::default);
+        run.tools = l.class.earned().then(Default::default);
     }
     run.hero.specialization = crate::specialization::current(l);
     run.hero.class_skills = crate::class_tree::mask(l);

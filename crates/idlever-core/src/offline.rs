@@ -521,6 +521,7 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
         hatched: b.hatched.clone(),
         lost: b.lost.clone(),
         xp: XpReport { class: class.into(), gained: b.xp_gained, level_ups: b.level_ups },
+        tools: b.tools.clone(),
         salvaged,
         renown: RenownReport { gained: b.renown_gained, rank: game.lineage.rank, ranks_up: game.lineage.rank - rank_before },
         rested_s: b.rested / TICKS_PER_SECOND,

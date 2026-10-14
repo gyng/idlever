@@ -261,6 +261,13 @@ pub fn tick(run: &mut Run, cx: &mut Ctx) {
     if run.over.is_some() {
         return;
     }
+    // Cut225: the hero's decoy/construct (nothing at all for the five original classes).
+    if run.tools.is_some() {
+        crate::tools::tick(run, cx);
+        if run.over.is_some() {
+            return;
+        }
+    }
     tick_statuses(run, cx);
     run.monsters.retain(|m| m.hp > 0);
     let _ = acted;
@@ -1455,7 +1462,7 @@ pub fn row_loop<T: std::borrow::Borrow<TraceTurn>>(trace: &[T]) -> Option<(Strin
 const LOOP_WINDOW: usize = 12;
 const LOOP_MIN: usize = 3;
 /// The verbs that move the hero off his tile (a loop's usual half).
-const MOVING: &[&str] = &["retreat", "back_corridor", "blink", "shadowstep", "vanish", "smoke", "descend", "explore"];
+const MOVING: &[&str] = &["retreat", "back_corridor", "blink", "shadowstep", "vanish", "smoke", "curtain", "descend", "explore"];
 
 /// A trace turn's actor word: a row's verb as the callout reads it, one word (`retreat`,
 /// `corridor`, `attack`, `drink`); a chore's short (`explore`, `pick up`).
@@ -1525,6 +1532,7 @@ pub fn targets_foes(verb: &Verb) -> bool {
         verb.v.as_str(),
         "attack" | "shield_bash" | "throw" | "tame" | "cleave" | "backstab" | "ambush" | "shadowstep" | "send" | "taunt"
             | "shoot" | "volley" | "mark" | "double_shot" | "bolt" | "slow" | "drain" | "fire" | "close_burst" | "aimed_shot" | "finishing_shot" | "gunner_tactic"
+            | "bell_lure" | "false_bow" | "grand_jape" | "deploy" | "discharge" | "clown_tactic" | "engineer_tactic"
             // a tactic card acts on the foes it sees; while stuck it must yield like any targeting row
             | "tactic" | "back_corridor" | "retreat"
     )
@@ -1617,6 +1625,9 @@ pub enum Src {
     Burst,
     /// Cut 3: a blow sent back by a reflecting monster (never reflected again).
     Reflect(usize),
+    /// Cut225: the hero's own tool — a Clown counter or an Engineer sentry. Owned by the hero
+    /// (kills are his, never a monster's), named in causes, and never a hero-weapon proc.
+    Tool(crate::tools::Tool),
 }
 
 impl Src {
@@ -1628,6 +1639,7 @@ impl Src {
             Src::Fire => "fire".into(),
             Src::Poison => "poison".into(),
             Src::Burst => "burst".into(),
+            Src::Tool(t) => t.cause().into(),
         }
     }
     pub fn has_tag(&self, run: &Run, tag: &str) -> bool {
@@ -1638,6 +1650,7 @@ impl Src {
             Src::Gas | Src::Burst => tag == "gas",
             Src::Fire => tag == "fire",
             Src::Poison => tag == "poison",
+            Src::Tool(t) => t.ranged() && tag == "ranged",
         }
     }
 }
@@ -2013,7 +2026,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     // Cut 16 §4: broken, he has no wall to step behind.
     if run.monsters[mi].kind == "goblin_warlord" && !run.aimed && !run.monsters[mi].broken {
         let from_hero_side = match src {
-            Src::Hero { .. } => true,
+            Src::Hero { .. } | Src::Tool(_) => true,
             Src::Mon(j) => run.monsters[*j].ally,
             _ => false,
         };
@@ -2068,7 +2081,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     // (shoot, burn, step away) is still the better answer. Was: the whole blow back, none landed.
     if run.monsters[mi].reflects_melee() && dmg > 0 {
         let reflected = match src {
-            Src::Hero { ranged: false } => run.monsters[mi].pos.cheb(run.hero.pos) <= 2,
+            Src::Hero { ranged: false } | Src::Tool(crate::tools::Tool::Counter) => run.monsters[mi].pos.cheb(run.hero.pos) <= 2,
             Src::Mon(j) => run.monsters[*j].ally,
             _ => false,
         };
@@ -2082,7 +2095,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
             }
             let back = ((dmg + 2) / 3).max(1);
             match src {
-                Src::Hero { .. } => {
+                Src::Hero { .. } | Src::Tool(_) => {
                     cx.events.push(Ev::Attack { t: run.turn, src: id, dst: HERO_ID, dmg: back, hit: true, verb: Some("reflect".into()) });
                     damage_hero(run, cx, back, &Src::Reflect(mi));
                 }
@@ -2132,7 +2145,7 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     // QA on 23ed91f (qaL): blood on a summoned foe is no progress — a conjurer out of reach
     // sends two blades every 150 ticks, the hero cuts them down, and the guard never saw a
     // pacing (runs to the 120 000-tick cap, 3 000 blades killed).
-    if matches!(src, Src::Hero { .. }) && dmg > 0 && !run.monsters[mi].summoned {
+    if matches!(src, Src::Hero { .. } | Src::Tool(_)) && dmg > 0 && !run.monsters[mi].summoned {
         run.last_damage_action = run.actions;
         run.last_blow_action = run.actions;
         run.stuck_until = 0;
@@ -2771,6 +2784,10 @@ pub fn descend(run: &mut Run, cx: &mut Ctx) {
     if next > run.record_mark {
         run.record_mark = next;
         run.secure_carry();
+    }
+    // Cut225: a decoy or construct never follows the hero down; it expires with the floor.
+    if run.tools.is_some() {
+        crate::tools::leave_floor(run, cx);
     }
     run.floor = floor;
     run.hero.pos = run.floor.stairs_up;
