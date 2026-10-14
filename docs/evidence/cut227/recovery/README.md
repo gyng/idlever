@@ -45,5 +45,11 @@ TUNED/PICKED 1.17, workers 29.46 vs 29.21, all PASS.
 - Fixtures `fixtures/` come from `examples/recovery_fixtures.rs` at 12000.
 - Client logs: `client-routine.log` (36/38 under host load 60–190 on 32 cores; clarity:paint timing, watch-console
   passed on rerun `client-watch-console.log`), `client-targeted*.log`.
+- Targeted client groups (`client-targeted.log`, rerun with TEST_JOBS=1 `client-targeted-rerun.log`): hero-life (307 checks),
+  hero-life-camp, home-resident-phases, home-services, hero-presence, class-tree, class-styles, cut120 and gold-settlements
+  all PASS. home-heroes and home-residents FAIL, and they fail the same way on the baseline fd56 package. Baseline was
+  checked with origin/main's untouched pkg and the original cut218 fixture (`hh-fd56.log`, `hr-all-fd56.log`): home-heroes
+  times out at line 105, and home-residents' "tent centre routes to its own action" fails in the all-fixture order. So both
+  failures predate this cut. home-residents passes per part on 13e8 (`hr-rest.log`, `hr-reincarnating.log`).
 - GPU shots (private display): `shots/camp-recovering-20m.png` and `shots/hero-panel-recovering.png`
   (`shots.mjs`).
