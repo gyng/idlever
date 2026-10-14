@@ -170,6 +170,8 @@ pub const ROWS: &[RowDef] = &[
     // Cut 30.5: the works tree's rows (settled at the end, by the bar)
     RowDef { id: "porter", key: "Porter bought ≤ min 12", bots: &["PICKED"], present: &[], days: Some(1), until: Until::Never, settle: |_| Verdict::Open },
     RowDef { id: "scout", key: "Scout bought ≤ min 15", bots: &["IDLE", "PICKED", "HANDS", "RANDOM"], present: &[], days: Some(1), until: Until::Never, settle: |_| Verdict::Open },
+    // Cut231 §4: the first-30-min cadence (the first session alone: day 1 is enough; settled at the end, by the bar)
+    RowDef { id: "cadence30", key: "First-30-min cadence", bots: &["PICKED"], present: &[], days: Some(1), until: Until::Never, settle: |_| Verdict::Open },
     RowDef { id: "nodes-lit", key: "Every node whose chore exists lit by 48 h", bots: &["PICKED", "HANDS"], present: &[], days: Some(2), until: Until::Never, settle: |_| Verdict::Open },
     RowDef { id: "nodes-bought", key: "Every node whose chore exists bought by 72 h", bots: &["PICKED"], present: &[], days: Some(3), until: Until::Never, settle: |_| Verdict::Open },
     RowDef { id: "conserved", key: "Gold conserved", bots: &["IDLE", "PICKED", "HANDS"], present: &[], days: None, until: Until::Never, settle: |_| Verdict::Open },

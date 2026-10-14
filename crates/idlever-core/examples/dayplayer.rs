@@ -6,6 +6,8 @@
 //! TUNED's leave-one-outs (TUNED less one system: packages, pen, forge, pets, bank, quests). Prints the
 //! per-seed milestones and the idle gates; `--gate` exits non-zero on a failed bar (never weaken a bar).
 //!   cargo run -q --profile fast -p idlever-core --example dayplayer -- [--seeds 8] [--days 14] [--checkins 3] [--gate] [--bots idle,picked,tuned,random] [--loo] [--verbose]
+//! `--timeline FILE` (Cut231 §4): each configuration × seed's unlock timeline (read-only beats) as JSON; summarize with
+//! `node tools/timeline-summary.mjs FILE`.
 use idlever_core::rules::{Row, RuleSet};
 use idlever_core::rng::Rng;
 use idlever_core::Game;
@@ -148,6 +150,11 @@ struct SeedOut {
     /// Cut 121 §1: the Legacy upgrades bought by hand (PICKED+L) and the points spent.
     #[serde(default)]
     legacy_buys: u32,
+    /// Cut231 §4: the unlock timeline (`note_beats`, read-only) and the first session's length in player minutes.
+    #[serde(default)]
+    timeline: Vec<Beat>,
+    #[serde(default)]
+    session_m: f64,
 }
 
 /// Cut 121 §2: the town's gold income so far (the hauls and the porter's, fetched and recovered gold).
@@ -468,6 +475,8 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
     let mut t = 0.0;
     for _ in 0..60 {
         let hired = g.lineage.tree.hired.len();
+        // (Cut231 §4: what the player sees arriving at camp, before the taps — the first look is the baseline)
+        note_beats(g, out, t / 60.0);
         camp_taps(g, ask, arm, out, t / 3600.0);
         if arm == 3 || arm == 2 {
             // (the session's chores by hand: the find worn)
@@ -488,6 +497,7 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
             t += HIRE_S * first_session_chores(g, ask) as f64;
         }
         note_nodes(g, out, t / 3600.0);
+        note_beats(g, out, t / 60.0);
         if idlever_core::tree::auto_send(&g.lineage) && t >= stay {
             break;
         }
@@ -501,6 +511,7 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
             eprintln!("scout-trace seed {} arm {arm} t {:.0}s death {} ticks {} best D{} gold {} sends {} price {}", g.lineage.seed, t, out.deaths > before.0, g.lineage.total_turns - before.1, g.lineage.best_depth, g.lineage.gold, idlever_core::tree::count(&g.lineage, "scout"), idlever_core::tree::price(&g.lineage, idlever_core::tree::def("scout").unwrap()));
         }
     }
+    out.session_m = t / 60.0;
     t as u64
 }
 
@@ -698,6 +709,165 @@ fn note_nodes(g: &Game, out: &mut SeedOut, h: f64) {
             first(&mut out.node_hired_h);
         }
     }
+}
+
+/// Cut231 §4 (the unlock timeline): one observed beat — the player minute it was first seen (the first session's
+/// own clock; a check-in's return after an absence), its key (`kind:id`), whether it puts a new decision in front
+/// of the player, and whether it is a minor beat (continuous progress: a new record floor, a class level — never
+/// counted by the cadence row). `m` < 0: the state the game began in (a baseline, never a beat).
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+struct Beat {
+    m: f64,
+    k: String,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    d: bool,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    minor: bool,
+}
+
+/// Cut231 §4: the beats the state shows now (`kind:id`, decision, minor). Reads the game only — never a tap, never a
+/// call that moves the game — so the timeline cannot change an outcome (the invariance proof diffs the job cache).
+///   decisions: `lit:<worker>` (its hire offered), `rankable:<worker>:<n>` (the one rank on offer), `plot:<building>` (its construction offered), `pkg:<id>` (a
+///   package to wear), `levelable:<stance>:<n>` (a stance level the marks pay), `system:<trigger>` (a reveal: one unit
+///   per trigger, as `max_systems` counts them), `chest:first` (the first chest to open by hand), `legacy:offer` (a
+///   Legacy upgrade the points pay);
+///   beats: `hire:<worker>`, `rank:<worker>:<n>`, `built:<building>`, `level:<stance>:<n>`, `boss:<kind>` (first kill), `record:D<m>`
+///   (a `MILESTONES` depth), `legacy:spent`, `reclone`, `king:try`, `king:slain`, `death:first`;
+///   minor: `depth:D<n>` (each new record floor), `class:<n>`, `bloodline2:affordable` (house up, purse ≥ the slot
+///   price — the dayplayer plays one bloodline and never founds a second).
+fn beats_now(g: &Game) -> Vec<(String, bool, bool)> {
+    use idlever_core::{packages, town, tree};
+    let l = &g.lineage;
+    let mut v: Vec<(String, bool, bool)> = Vec::new();
+    for n in tree::NODES {
+        if tree::hired(l, n.id) {
+            v.push((format!("hire:{}", n.id), false, false));
+        } else if tree::ready(l, n) {
+            v.push((format!("lit:{}", n.id), true, false));
+        }
+    }
+    for n in tree::NODES {
+        for r in 2..=tree::rank(l, n.id) {
+            v.push((format!("rank:{}:{r}", n.id), false, false));
+        }
+    }
+    if let Some(n) = tree::lit_rank(l) {
+        v.push((format!("rankable:{}:{}", n.id, tree::rank(l, n.id) + 1), true, false));
+    }
+    for b in ["house", "blacksmith", "kennel", "bank"] {
+        if town::build_ready(l, b) {
+            v.push((format!("plot:{b}"), true, false));
+        }
+        if town::built(l, b) || (b == "house" && l.town.home == Some(true)) {
+            v.push((format!("built:{b}"), false, false));
+        }
+    }
+    for id in l.pkg.owned.iter() {
+        v.push((format!("pkg:{id}"), true, false));
+    }
+    let stance = &l.pkg.stance;
+    let lv = l.pkg.level(stance);
+    for n in 2..=lv {
+        v.push((format!("level:{stance}:{n}"), false, false));
+    }
+    if packages::level_price(l, stance).is_some_and(|p| p <= l.marks) {
+        v.push((format!("levelable:{stance}:{}", lv + 1), true, false));
+    }
+    for id in l.systems.iter() {
+        if let Some(d) = idlever_core::systems::SYSTEMS.iter().find(|d| d.id == id.as_str()) {
+            let key = if d.trigger.is_empty() { format!("system:{id}") } else { format!("system:{}", d.trigger) };
+            if !v.iter().any(|(k, _, _)| *k == key) {
+                v.push((key, true, false));
+            }
+        }
+    }
+    if l.tree.chest > 0 || tree::count(l, "porter") > 0 {
+        v.push(("chest:first".into(), true, false));
+    }
+    if idlever_core::legacy::offers(l, false).iter().any(|u| u.affordable) {
+        v.push(("legacy:offer".into(), true, false));
+    }
+    if idlever_core::legacy::current(l).is_some_and(|b| b.spent > 0 || !b.upgrades.is_empty()) {
+        v.push(("legacy:spent".into(), false, false));
+    }
+    if l.persistent.rebirths > 0 {
+        v.push(("reclone".into(), false, false));
+    }
+    for k in l.kills.iter() {
+        if idlever_core::defs::monster_def(k).boss {
+            v.push((format!("boss:{k}"), false, false));
+        }
+    }
+    for m in MILESTONES {
+        if l.best_depth >= m {
+            v.push((format!("record:D{m}"), false, false));
+        }
+    }
+    if l.feats.siege.get("mirror_king").is_some_and(|s| s.tries > 0) || l.kills.contains("mirror_king") {
+        v.push(("king:try".into(), false, false));
+    }
+    if l.kills.contains("mirror_king") {
+        v.push(("king:slain".into(), false, false));
+    }
+    if l.systems.contains("death") {
+        v.push(("death:first".into(), false, false));
+    }
+    for d in 1..=l.best_depth {
+        v.push((format!("depth:D{d}"), false, true));
+    }
+    for n in 2..=l.class_level() {
+        v.push((format!("class:{n}"), false, true));
+    }
+    if l.town.home != Some(false) && l.gold >= idlever_core::bloodlines::SLOT_PRICE {
+        v.push(("bloodline2:affordable".into(), false, true));
+    }
+    v
+}
+
+/// Cut231 §4: the beats new since the last look, stamped at player minute `m` (the first look is the baseline).
+fn note_beats(g: &Game, out: &mut SeedOut, m: f64) {
+    let base = out.timeline.is_empty();
+    for (k, d, minor) in beats_now(g) {
+        if !out.timeline.iter().any(|b| b.k == k) {
+            out.timeline.push(Beat { m: if base { -1.0 } else { m }, k, d, minor });
+        }
+    }
+}
+
+/// Cut231 §4: a decision's unit — each worker's hire, each building's plot and each reveal (by trigger) is its own
+/// decision; the packages that arrive together are one pick (one shelf), as are the stance's levels, the chest and the
+/// Legacy offers.
+fn decision_unit(k: &str) -> &str {
+    let kind = k.split(':').next().unwrap_or(k);
+    if matches!(kind, "lit" | "plot" | "system") { k } else { kind }
+}
+
+/// Cut231 §4: the first-30-min cadence of one seed — the longest gap between major beats over the player's first
+/// `win` minutes (from minute 0 to the first beat, between beats, and from the last to the window's end when the
+/// session reaches it, else to the session's end), and the most new decisions one look brought (a look = one
+/// minute stamp). `None` when the seed recorded no timeline.
+fn cadence(o: &SeedOut, win: f64, session_m: f64) -> Option<(f64, usize)> {
+    if o.timeline.is_empty() {
+        return None;
+    }
+    let end = win.min(session_m.max(0.0));
+    let mut times: Vec<f64> = o.timeline.iter().filter(|b| !b.minor && b.m >= 0.0 && b.m <= end).map(|b| b.m).collect();
+    times.sort_by(|a, b| a.total_cmp(b));
+    times.dedup();
+    let mut gap = 0.0f64;
+    let mut last = 0.0;
+    for t in times.iter().chain(std::iter::once(&end)) {
+        gap = gap.max(t - last);
+        last = *t;
+    }
+    let mut most = 0usize;
+    for t in &times {
+        let mut units: Vec<&str> = o.timeline.iter().filter(|b| b.d && !b.minor && b.m == *t).map(|b| decision_unit(&b.k)).collect();
+        units.sort_unstable();
+        units.dedup();
+        most = most.max(units.len());
+    }
+    Some((gap, most))
 }
 
 thread_local! {
@@ -1073,6 +1243,10 @@ impl Play {
             // (Cut 30.5, the owner: the away player looks in every 2–3 days — between, the absence runs on alone)
             let present = ask.q(Q::Cadence) != 2 || away_checkin(day);
             let arm = if present { ask.q(Q::Arm) } else { 99 };
+            // (Cut231 §4: the return as the player finds it, before the camp's taps; an away check-in unseen)
+            if present {
+                note_beats(g, out, hours_now * 60.0);
+            }
             // Cut 30.5: the camp's taps of the works tree (the chest, the hires) before the bot's own
             if present {
                 camp_taps(g, ask, arm, out, hours_now);
@@ -1213,6 +1387,9 @@ impl Play {
                 g.loadout(ids);
             }
             note_nodes(g, out, hours_now);
+            if present {
+                note_beats(g, out, hours_now * 60.0);
+            }
         }
         self.ci += 1;
         if self.ci == checkins {
@@ -1920,8 +2097,43 @@ fn main() {
             bars.push(("Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot)".into(), format!("med {med:.1} · worst {worst_min:.1} min, {worst_sends} sends"), worst_min <= 15.0 && worst_sends <= 5));
         }
     }
+    // Cut231 §4 (docs/CUT231_PROGRESSION.md): the first-30-min cadence — PICKED (the engaged first session, which
+    // stays `STAY_S`): the longest gap between major beats ≤ 6 min and never two new decisions in one look, every seed
+    if !picked.is_empty() {
+        let c: Vec<(f64, usize)> = picked.iter().filter_map(|o| cadence(o, 30.0, o.session_m)).collect();
+        if !c.is_empty() {
+            let gaps: Vec<f64> = c.iter().map(|x| x.0).collect();
+            let worst_gap = gaps.iter().cloned().fold(0.0f64, f64::max);
+            let worst_dec = c.iter().map(|x| x.1).max().unwrap_or(0);
+            let ok_n = c.iter().filter(|x| x.0 <= 6.0 && x.1 <= 1).count();
+            let (name, value) = ("First-30-min cadence: beat gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed)".to_string(), format!("gap med {:.1} · worst {worst_gap:.1} min · dec {worst_dec} · {ok_n}/{}", median(gaps), c.len()));
+            // (a targeted row only — `--rows cadence30`; the routine table shows it as info until it passes)
+            if plan.is_some() {
+                bars.push((name, value, ok_n == c.len() && c.len() == picked.len()));
+            } else {
+                infos.push((name, value));
+            }
+        }
+    }
+    if !idle.is_empty() {
+        // (IDLE leaves at the scout: its cadence reads its own short session, never the absence)
+        let c: Vec<(f64, usize)> = idle.iter().filter_map(|o| cadence(o, 30.0, o.session_m)).collect();
+        if !c.is_empty() {
+            infos.push(("IDLE first-session cadence (its own session): gap med · worst min · most decisions".into(), format!("{:.1} · {:.1} · {}", median(c.iter().map(|x| x.0).collect()), c.iter().map(|x| x.0).fold(0.0f64, f64::max), c.iter().map(|x| x.1).max().unwrap_or(0))));
+        }
+    }
+    // `--timeline FILE`: every configuration × seed's unlock timeline (read-only beats; tools/timeline-summary.mjs)
+    if let Some(path) = a.iter().position(|x| x == "--timeline").and_then(|i| a.get(i + 1)) {
+        let rows: Vec<serde_json::Value> = res.iter().map(|(c, o)| serde_json::json!({
+            "bot": cfgs[*c].label(), "seed": o.seed, "session_m": o.session_m, "porter_min": o.porter_min, "scout_min": o.scout_min,
+            "scout_sends": o.scout_sends, "hours": o.hours, "milestones": MILESTONES, "best_day": o.best_day, "king_day": o.king_day,
+            "checkins_per_day": checkins, "days": days, "timeline": o.timeline,
+        })).collect();
+        std::fs::write(path, serde_json::to_string(&serde_json::json!({ "seeds": seeds, "days": days, "checkins": checkins, "runs": rows })).unwrap()).expect("write --timeline");
+        eprintln!("dayplayer: timeline → {path}");
+    }
     let at = |v: &[(String, f64)], id: &str| v.iter().find(|(x, _)| x == id).map(|x| x.1);
-    let unlit = |o: &SeedOut, by_h: f64| o.node_open_h.iter().filter(|(id, h)| *h <= by_h && at(&o.node_ready_h, id).is_none_or(|r| r > by_h)).count() as f64;
+    let unlit =|o: &SeedOut, by_h: f64| o.node_open_h.iter().filter(|(id, h)| *h <= by_h && at(&o.node_ready_h, id).is_none_or(|r| r > by_h)).count() as f64;
     let unbought = |o: &SeedOut, by_h: f64| o.node_open_h.iter().filter(|(id, h)| *h <= by_h && at(&o.node_hired_h, id).is_none_or(|r| r > by_h)).count() as f64;
     if !picked.is_empty() && !hands.is_empty() {
         let (p, h) = (median(picked.iter().map(|o| unlit(o, 48.0)).collect()), median(hands.iter().map(|o| unlit(o, 48.0)).collect()));

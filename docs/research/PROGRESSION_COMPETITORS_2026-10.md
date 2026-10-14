@@ -328,23 +328,170 @@ IDLE taps only until the scout.
       complaint; Melvor's exact offline is praised.
     - *Measure:* none new. The existing catch-up parity tests cover it.
 
-## 6. Idlever measured timeline (to fill after Cut230)
+## 6. Idlever measured timeline (main 3ee50b3e, after Cut230; measured 2026-10-15)
 
-*Placeholder for the lead. Fill with measured medians and worst seeds on the
-same 16 seeds, in the shape of §1's columns:*
+**Source.** `dayplayer --bots idle,picked,daily,away --seeds 16 --days 14 --timeline FILE`, summarized by
+`node tools/timeline-summary.mjs FILE`. Evidence: `docs/evidence/cut231/timeline/` (`timeline-16x14.json`,
+`summary-16x14.md`). The timeline only reads the game: all 48 IDLE, IDLE30 and PICKED jobs are byte-identical to the
+base binary once the timeline fields are removed (`invariance.log`).
 
-| Milestone | Idlever median | Worst seed | Comparable band (from §1) | Gap |
-|---|---|---|---|---|
-| First automation (porter) | _tbd_ | _tbd_ | minutes (Trimps, AdCap, AFK) | |
-| Automatic send (scout) / offline unlocked | _tbd_ | _tbd_ | minute one to under 1 h | |
-| Core loop fully automated (trunk through apprentice) | _tbd_ | _tbd_ | first session to week 1 | |
-| All lit nodes bought | _tbd_ | _tbd_ | — | |
-| First death and recovery time | _tbd_ | _tbd_ | seconds to minutes (NGU, IdleOn, Trimps) | |
-| Runs completed in the first 30 min | _tbd_ | _tbd_ | — | |
-| First new mechanic (building, kennel, forge) | _tbd_ | _tbd_ | under 30 min | |
-| First Legacy / reset-like beat | _tbd_ | _tbd_ | 30 min to hours (NGU, Clicker Heroes, AdCap) | |
-| Max unlock gap, first 30 min / days 2–7 | _tbd_ | _tbd_ | 3–5 min (heuristic) | |
-| D8 / D13 / D23 (IDLE, PICKED) | _tbd_ | _tbd_ | — | |
+**Clock.** Times are *player time* under the dayplayer's check-in model. The first session runs on its own clock:
+each send's run at the 4× watch, plus 25 s of camp taps per send and 5 s per hire. After that the player is away,
+and an unlock that happens during an absence is stamped at the return that shows it. IDLE and PICKED check in 3
+times a day (8 h, 16 h, 24 h…), so a time of `8.0h` means "found at the first return". DAILY checks in once a day.
+AWAY checks in every 2–3 days. IDLE leaves once the Scout is hired (about 5 min). PICKED, DAILY and AWAY stay
+45 min in the first session. All three share PICKED's first session, so their first-hour rows match.
+
+**Bots.** IDLE makes no picks and hires only the Scout (plus the Porter once collection is automatic). PICKED
+takes the forecast's package moves, hires every lit worker it can pay for, builds, forges and deposits. DAILY is
+PICKED with one check-in a day. AWAY is PICKED looking in every 2–3 days. No bot spends Legacy by hand, founds a
+second bloodline or reclones. PICKED+L spends Legacy and is not in this table.
+
+| Milestone | IDLE median · worst | PICKED median (p10–p90) · worst | DAILY · AWAY median | Comparable band (§1) | Gap |
+|---|---|---|---|---|---|
+| First automation (the Scout: auto send) | 4.9m · 7.2m | 5.2m (4.4–6.9) · 7.5m | 5.2m · 5.2m | Trimps AutoFight <10 min; AdCap managers in minutes; heuristic 3 min | **at par** |
+| Porter (auto haul) | 8.0h · 8.0h | 9.1m (7.1–10.6) · 11.2m | 9.1m · 9.1m | minutes | at par (PICKED) |
+| Offline unlocked and uncapped (= the Scout) | 4.9m · 7.2m | 5.2m · 7.5m | same | Melvor/Trimps from minute one (Melvor capped at 24 h); Cookie Clicker after its first ascension | **ahead**: uncapped and exact from 5 min |
+| Core loop automated (Porter + Scout + Apprentice; the Quartermaster starts hired) | never (IDLE hires no Apprentice) | 16.0h (8.0h–16.0h) · 16.0h | 2.0d · 4.0d | AdCap first session; NGU/IdleOn days; Trimps/Idle Champions weeks | within the band |
+| Drillmaster (auto level) | — | 22.0m (19.6–32.7) · 33.4m | 22m · 22m | — | — |
+| Clerk · Kennel hand · Herald | — | 40.0h each | 2.0d · 2–4.0d | — | — |
+| Guide · Kennel keeper (last hires) | — | 2.0d | 4.0d · 4.0d | — | — |
+| All workers hired | never | 2.0d · 2.0d | 4.0d (worst 5.0d) · 4.0d (worst 6.0d) | Trimps' late QoL: hundreds of hours | early: the tree ends on day 2 |
+| First worker rank (week-2 upgrades) | — | 4.7d | 6.0d · 6.0d | — | the only new beat on days 3–7 |
+| First death (recovery 60 s through D14) | 16.0h · 24.0h | 40.6m (6.4m–8.0h) · 16.0h | 40.6m | NGU/IdleOn/Trimps: seconds to minutes of time lost | at par since Cut230 |
+| First new mechanic: the Forge (plot and build) | 8.0h (plot) · never built | 12.5m (9.5–15.7) · 17.3m | 12.5m | under 30 min | **at par** |
+| Kennel built | never | 12.0m (8.0–23.2) · 26.0m | 12.0m | — | — |
+| Temperament ("six delves") | 20.0h · 24.0h | 21.5m (15.9–28.8) · 29.6m | 21.5m | — | — |
+| Stances system ("meet Captain") | 40.0h | 34.8m (31.2–39.4) · 39.9m | 34.8m | — | — |
+| First new package beyond Steady | 8.0h | 8.7m (4.5–15.7) · 19.8m | 8.7m | VS/Brotato: several unlocks per run | at par |
+| Tactics/quests/start ("slay Warlord") | 2.0d | 8.0h (8.0–16.0h) · 16.0h | 24h · 24h | — | — |
+| Pen ("meet Mother") | 12.0h · 24.0h | 8.0h (41.9m–16.0h) · 16.0h | 24h · 24h | — | — |
+| Orders/automations, tactic 2 ("meet Lich") | 3.3d | 2.3d | 5.0d · 6.0d | — | — |
+| Second bloodline affordable (house + $250) | 8.0h | 13.6m (10.9–16.6) · 17.1m | 13.6m | IdleOn's second character, first session | **affordable at 14 min but never founded**: the dayplayer plays one bloodline |
+| First Legacy upgrade affordable | 8.0h | 22.8m (19.8–31.2) · 31.2m | 22.8m | — | — |
+| First Legacy spend / reclone (reset-like beat) | never · never | never · never | never | NGU rebirth 30 min; Increlution first life <30 min; AdCap/Clicker Heroes hours | **gap**: no reset-like beat lands without a manual Legacy order |
+| First boss slain | 8.0h · 16.0h | 37.5m (28.8–45.0) · 51.0m | 37.5m | — | — |
+| D8 · D13 | 8.0h · 12.0h (worst 8.0h · 24.0h) | 19.8m · 47.9m (worst 31.2m · 8.0h) | D13: 47.9m · 47.9m | — | — |
+| D18 · D23 | 44.0h · 4.3d (worst 3.0d · 6.3d) | 16.0h · 24.0h (worst 32h · 40h) | 2.0d · 2.0d / 4.0d · 4.0d | — | — |
+| D28 · D33 | 5.5d · reached 6/16 | 32.0h · 2.0d (worst 40h · 3.0d) | 3.0d · 4.0d / 4.0d · 9.0d | — | — |
+| King attempted · slain | 4/16 · 0/16 | 2.0d (40h–2.7d) · 0/16 | 4.0d · 9.0d; never slain | — | by design (the King guard) |
+| Max major-beat gap, first 30 min (§6a) | 3.0m · 4.7m (its own 5 min session) | 6.4m (p90 8.0) · 9.1m; ≤ 6 min on 8/16 | same as PICKED | 3–5 min (heuristic) | **fails on 8/16 seeds** |
+| Most new decisions in one look, first 30 min | 3 · 4 | 3.5 · 5 (0/16 ≤ 1) | same | "one decision at a time" | **fails on every seed** |
+| Max major-beat gap, days 2–7 | 40h · 56h | 48h · 48h | 24h (= its check-in) · 72h (= its check-in) | Dark Hunting Ground "unlocks every step"; day-2 slowdown punished | **gap**: after D33 and the King's first try (about day 2) only worker ranks arrive |
+
+**Highlights against §1.**
+
+- **First automation and offline.** These are now at or ahead of the comparables. The Scout comes at 5.2 min on
+  the median PICKED seed and 7.5 min on the worst. Offline is uncapped and exact from then on. That beats Melvor's
+  24 h cap and Cookie Clicker's post-ascension gate, and it matches Trimps and AdCap's minutes. Cut230 closed the
+  §4 gap (19.3 min, FAIL).
+- **The first 45 minutes are dense, but bunched.** Mechanics arrive inside the "under 30 min" band: the Forge at
+  12.5 min, the Kennel at 12 min, temperaments at 21.5 min, stances at 35 min, the first boss at 37.5 min and D13 at
+  48 min. But they arrive in clumps. The first return brings the chest, a stance level and a reveal together. "Four
+  delves" brings the Forge plot, often the Kennel plot, a package and a level together. A 6–9 min hole usually sits
+  between the Porter or Forge (8–15 min) and temperaments or the first stray (19–29 min). See §6a.
+- **Content runs out early for the engaged player.** PICKED hires every worker by day 2. It reaches D33 and first
+  tries the King at a median 2.0 days (worst 3.0). After that the only new things are worker ranks at 4.7 and 5.7
+  days. Days 3–14 are the "day 2 slows down" pattern (§3 pattern 6), and the King guard holds it there on purpose.
+  The DAILY player reaches the same wall around day 4, and AWAY around day 9.
+- **The reset-like beat never lands.** A Legacy upgrade is affordable at 23 min and a second bloodline at 14 min.
+  No default bot ever spends either: Legacy waits for a manual order, and the bloodline for a manual founding. The
+  §1 comparables put the first reset at 30 min (NGU) to a few hours (AdCap, Clicker Heroes).
+- **IDLE gets its whole first day's content at the 8 h return.** The Forge plot, the first package, the first boss,
+  D8 and the Legacy offer all appear at 8.0 h. That is by design: IDLE is away after the Scout. It also means IDLE's
+  first return is one large report.
+
+## 6a. First-30-min cadence (Cut231 item 4)
+
+Row `cadence30` (`node tools/gates.mjs --full --rows cadence30`, 62 s, PICKED 16 seeds, first session only).
+
+- **Beat.** A beat is a new major entry in the state at a look. A look is the camp before and after its taps in the
+  first session, and the return at each check-in. Major beats are: a worker lit (hire offered) or hired; a worker's
+  rank offered or bought; a building plot offered or built; a stance level affordable or bought; a package owned;
+  a system revealed (one per trigger); the first chest; a Legacy offer or the first spend; a reclone; a first boss
+  kill; a `MILESTONES` record (D8, D13, …); a King try or kill; the first death. Minor beats are excluded from the
+  gap: each new record floor, each class level, and the second bloodline becoming affordable.
+- **Decision.** A decision is a major beat that asks the player to act: a worker lit, a rank on offer, a plot, a
+  package, a stance level affordable, a system reveal, the first chest, or a Legacy offer. Units: each hire, each
+  plot and each reveal counts as one. The packages that arrive together count as one pick, as do the stance levels,
+  the chest and the Legacy offers.
+- **Bar.** On every PICKED seed, the longest gap between major beats over the first 30 player-minutes is ≤ 6 min.
+  The gap counts from minute 0 to the first beat, between beats, and from the last beat to minute 30. Also on every
+  seed, no look brings more than 1 new decision. The row is targeted only. The routine table shows it as `info`
+  until it passes.
+
+**Current values: FAIL.** The gap has median 6.4 min, p90 8.0 and worst 9.1 (seed 13); it is ≤ 6 min on 8/16
+seeds. The most decisions in one look have median 3.5 and worst 5; ≤ 1 holds on 0/16 seeds. The summarizer also
+reports a looser count that merges each reveal with its own offer: the Forge plot with "four delves",
+temperaments with "six delves", the Kennel plot with "first tame", the bank plot with "a night's purse", and the
+first chest with "first gold home". Even then the median is 3 and the worst 5, and 0/16 seeds pass.
+
+Where it fails (16 seeds, `summary-16x14.md`):
+
+| Pile-up (one look) | Seeds | Units |
+|---|---|---|
+| First return, about 1.3–4.5 min | 16/16 | chest + stance level affordable + a reveal ("first gold home"; "first death" on seed 6) |
+| "Four delves", about 9.5–15.7 min | 16/16 | Forge plot + "four delves", often with the Kennel plot, a package or a level (5-unit looks on seeds 1, 13 and 14) |
+| "Six delves", about 15.6–29.6 min | 16/16 | temperament packages + their reveal |
+| The first Legacy offer | 12/16 | arrives in the same look as "six delves" or "first stray" |
+| A worker lit (Scout, Porter or Drillmaster) | 13/16 | arrives in the same look as a plot, a package or a level |
+
+The longest gaps fall between the Porter or the Forge (8–15 min) and "six delves" or "first stray" (19–29 min).
+
+**Candidate content fixes. Not tuned in this task; the lead decides.**
+
+1. **Stagger the first return.** Make the stance's L2 cost what two runs earn, not one. The chest and "first gold
+   home" stay together, since the chest is how the first gold reaches home. This removes one unit on 16/16 seeds.
+2. **Split "four delves".** Open the Forge plot at four delves and leave its system reveal as is. Have the Kennel
+   plot wait for its own pet. It already needs a tame, but that tame sometimes lands in the same look (seeds 1, 13
+   and 14). Defer the package the forecast offers in that look to the next look.
+3. **Move the Legacy offer off the reveals.** Show the first affordable Legacy offer at the first death or the first
+   boss instead. The first death comes at a median 40 min, and the first boss at 37.5 min.
+4. **Fill the 12–22 min hole with one beat.** For example, price the Drillmaster so PICKED hires him near 12–16
+   min (he is lit at 4–6 min but paid only at about 20–22 min). Or move temperaments to five delves. Either puts a
+   beat near 16–18 min.
+5. **One package at a time.** Arrive temperaments one per look (4–6 arrive at once today) so packages spread across
+   the 20–40 min window.
+
+Fixes 1–3 address the decision bar. Fixes 4–5 address the gap. Every fix touches `systems::SYSTEMS` triggers,
+`town::triggered`, `packages` arrival or `tree::NODES` prices. Each needs the `scout`, `porter`, `picked-idle`,
+`idle-d8`, `idle-delta` and `picked-stages` rows at 16 seeds. The decision bar of ≤ 1 may be stricter than the
+owner intends for a reveal and its own offer. If the lead accepts the merged ("coupled") count, the bar still
+fails (worst 5), so fixes 1–3 are needed either way.
+
+## 6b. Proposals re-ranked against the measured timeline
+
+§5's original order is kept above. This ranking weighs the gaps that §6 measured.
+
+1. **§5 #4: the unlock cadence. Was 4th; now the top.** It is the one row that fails, and on every seed (decisions
+   ≤ 1: 0/16; gap ≤ 6 min: 8/16). The fixes are small content moves (§6a 1–5). The row is cheap (62 s for 16 seeds)
+   and ready to gate.
+2. **§5 #6: a second delegate on day 1–2. Was 6th; now 2nd.** PICKED runs out of new content at about day 2: every
+   worker hired by 2.0 d, D33 and the King's first try at 2.0 d. After that only ranks arrive. A second bloodline is
+   affordable at 13.6 min ($250, every seed) but nothing points the player at it. IdleOn's second character answers
+   exactly this.
+   - Measure: a DAILY/PICKED bot that founds slot 2 when affordable, with "PICKED major-beat gap, days 2–7 ≤ 24 h"
+     (now 48 h).
+3. **§5 #10: the first reset-like payoff. Was 10th; now 3rd.** Legacy is affordable at 22.8 min, yet no default bot
+   spends any by day 14, and there are no reclones. The comparables' first reset lands at 30 min to a few hours.
+   - Change: a default Legacy order (or a one-tap "spend" beat at the first death) that lands on day 1, with
+     Pecorella's +50–200% preview.
+4. **§5 #5: feats for later rungs. Unchanged at 4th–5th.** The count triggers are not slow for PICKED (all hires by
+   day 2). The case for feats is now about adding beats on days 1–2, not speed: a feat lights a worker on a
+   memorable run instead of a check-in.
+5. **§5 #7: the away forecast names the stall. Unchanged.** IDLE first sees D18 at a median 44 h, and AWAY reaches
+   D33 at day 9. Naming the wall before an absence still matters most to these players.
+6. **§5 #8: faster replays after a death. Was 8th; lower.** The first death comes at 40.6 min (PICKED) and recovery
+   is 60 s through D14 since Cut230, so early deaths cost little. Deep deaths (20 min from D28) remain, and the King
+   guard holds there on purpose.
+7. **§5 #9: the "never sold" audit. Low.** Every worker is hired by gold PICKED has by day 2. The open question is
+   IDLE, which never hires past the Porter and the Scout; that is the bot's rule, not a price.
+8. **§5 #2: a pre-Scout absence pays. Was 2nd; now low.** The Scout comes at 5.2 min (worst 7.5), so a pre-Scout
+   absence is a window of a few minutes. It costs little to build but buys little.
+9. **§5 #1 and #3. Done (Cut230), measured at par:** the Scout at 5.2 / 7.5 min, the Porter at 9.1 / 11.2 min, and
+   60 s recovery through D14. One residual: the Porter's §5 aim of ≤ 5 min is not met (it is 9.1 min, and the row's
+   bar is ≤ 12 min).
+10. **§5 #11: the offline rationale line. A doc change; unchanged.**
 
 ## 7. Gaps
 
