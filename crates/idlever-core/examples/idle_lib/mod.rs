@@ -10,7 +10,7 @@ use idlever_core::Game;
 pub const WALLS: [u32; 5] = [8, 13, 18, 23, 28];
 pub const STANCES: [&str; 4] = ["steady", "guarded", "bold", "hunter"];
 /// A death weighed against a send past the wall: nothing — the idle gates are time to a milestone, and a
-/// death's 20-minute wake costs the time a bank's rest does (`WAKE_TICKS` = `REST_MIN_TICKS`); `DW=` probes others.
+/// death's 17.5-minute recovery costs about the time a bank's rest does (`WAKE_TICKS` ≈ `REST_MIN_TICKS`); `DW=` probes others.
 pub const DEATH_WEIGHT: f64 = 0.0;
 /// From D1 a death on the walk costs the carry (70 % of it) and the heir: a quarter of a pass.
 pub const WALK_DEATH: f64 = 0.25;

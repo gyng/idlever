@@ -1,0 +1,87 @@
+
+running 942 tests
+....................................................................................... 87/942
+....................................................................................... 174/942
+................... 193/942
+legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks --- FAILED
+.. 196/942
+persistent::tests::home_services_follow_actual_milestones_and_keep_normal_rest_visible --- FAILED
+.. 199/942
+persistent::tests::recovery_journal_and_reset_entrypoints_cannot_bypass_readiness --- FAILED
+.. 202/942
+persistent::tests::real_offline_recovery_and_multihero_identity_survive_sliced_reload --- FAILED
+.................................. 237/942
+persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock --- FAILED
+....................................................................................... 325/942
+...............................i................. 374/942
+tests::death_keeps_nothing_and_leaves_bones --- FAILED
+....................................................................................... 462/942
+....................................................................................... 549/942
+............................................................iii....................i... 636/942
+...i................................................................................... 723/942
+....................................................................................... 810/942
+....................................................................................... 897/942
+....... 904/942
+tests::dice_death_names_an_alternative_below_the_bar --- FAILED
+...............................test class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds has been running for over 60 seconds
+.....test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+.
+failures:
+
+---- legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks stdout ----
+
+thread 'legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks' (2381084) panicked at crates/idlever-core/src/legendary.rs:396:27:
+assertion `left == right` failed
+  left: 9900
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- persistent::tests::home_services_follow_actual_milestones_and_keep_normal_rest_visible stdout ----
+
+thread 'persistent::tests::home_services_follow_actual_milestones_and_keep_normal_rest_visible' (2381692) panicked at crates/idlever-core/src/persistent.rs:695:9:
+assertion `left == right` failed
+  left: 1050
+ right: 60
+
+---- persistent::tests::recovery_journal_and_reset_entrypoints_cannot_bypass_readiness stdout ----
+
+thread 'persistent::tests::recovery_journal_and_reset_entrypoints_cannot_bypass_readiness' (2381736) panicked at crates/idlever-core/src/persistent.rs:788:9:
+assertion failed: e.reason.contains("60 seconds")
+
+---- persistent::tests::real_offline_recovery_and_multihero_identity_survive_sliced_reload stdout ----
+
+thread 'persistent::tests::real_offline_recovery_and_multihero_identity_survive_sliced_reload' (2381734) panicked at crates/idlever-core/src/persistent.rs:574:9:
+assertion `left == right` failed
+  left: Some(("reincarnating", 1050))
+ right: Some(("reincarnating", 60))
+
+---- persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock stdout ----
+
+thread 'persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock' (2381691) panicked at crates/idlever-core/src/persistent.rs:735:9:
+assertion `left == right` failed
+  left: 4500
+ right: 0
+
+---- tests::death_keeps_nothing_and_leaves_bones stdout ----
+
+thread 'tests::death_keeps_nothing_and_leaves_bones' (2390006) panicked at crates/idlever-core/src/tests.rs:1130:5:
+defeat starts automatic 60-second recovery
+
+---- tests::dice_death_names_an_alternative_below_the_bar stdout ----
+
+thread 'tests::dice_death_names_an_alternative_below_the_bar' (2392454) panicked at crates/idlever-core/src/tests.rs:6846:38:
+a telegraphed dice death in 24 seeds
+
+
+failures:
+    legendary::tests::actual_confirmed_stat_rebirth_and_world_reset_retain_patterns_with_honest_ranks
+    persistent::tests::first_unscouted_defeat_recovers_through_actual_session_wall_clock
+    persistent::tests::home_services_follow_actual_milestones_and_keep_normal_rest_visible
+    persistent::tests::real_offline_recovery_and_multihero_identity_survive_sliced_reload
+    persistent::tests::recovery_journal_and_reset_entrypoints_cannot_bypass_readiness
+    tests::death_keeps_nothing_and_leaves_bones
+    tests::dice_death_names_an_alternative_below_the_bar
+
+test result: FAILED. 929 passed; 7 failed; 6 ignored; 0 measured; 0 filtered out; finished in 67.25s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

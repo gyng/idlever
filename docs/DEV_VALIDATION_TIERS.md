@@ -45,6 +45,8 @@ import FX scope; transient reset handling was corrected before the final pass.
 These remain measurements of this single group, not the complete155-group full
 suite. See `docs/evidence/cut219/ui/compact-e846-second/`.
 
+Owner amendment 2026-10-14: the routine native `node tools/gates.mjs --full` dayplayer plays two seeds per bot except the RANDOM-vs-PICKED row, which plays RANDOM and PICKED on 16 seeds (`--random-seeds 16`; its ≥ 14/16 bar no longer demands 2/2). Every other row still reads the first two seeds.
+
 Use the full client suite before release, a fresh blind rating, and changes spanning several game systems. Use `tools/verify.sh --full` for the existing full native/build acceptance. Content iteration uses targeted `tools/tune.sh <rows>` rather than replaying the entire statistical audit after every edit. The exhaustive audit stays available explicitly; neither this tier nor routine full acceptance certifies omitted exhaustive cases.
 
 ## Historical routine measurements (before Cut181)

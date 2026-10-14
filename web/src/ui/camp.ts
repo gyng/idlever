@@ -2402,7 +2402,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     replace(
       send,
       recovering
-        ? /* copy:callout */ `Recovering ${recovery}s`
+        ? /* copy:callout */ `Recovering ${spanOf(recovery)}`
         : cleared
           ? h("span", { class: "send-l" }, /* copy:button */ "Next descent")
           : arriving

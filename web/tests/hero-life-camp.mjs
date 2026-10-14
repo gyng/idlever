@@ -9,7 +9,7 @@ const raw = JSON.parse(
   gunzipSync(
     readFileSync(
       new URL(
-        "../../docs/evidence/cut211/fixtures/controlled-reincarnating-600.game.json.gz",
+        "../../docs/evidence/cut227/recovery/fixtures/controlled-reincarnating-10500.game.json.gz",
         import.meta.url,
       ),
     ),
@@ -56,9 +56,9 @@ try {
         seconds: a.lineage.persistent_hero.recovery_s,
       };
     });
-    assert.equal(proof.seconds, 60);
+    assert.equal(proof.seconds, 1050);
     assert.equal(proof.disabled, true);
-    assert.match(proof.text, /Recovering 60s/);
+    assert.match(proof.text, /Recovering 18m/);
     assert.equal(proof.pulse, false);
     assert.match(proof.error, /recover/i);
     assert.equal(proof.unchanged, true);

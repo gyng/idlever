@@ -187,11 +187,15 @@ const runtimeInputs = [
 const seeds = exhaustive ? 16 : 2;
 const looSeeds = exhaustive ? 16 : full ? 2 : 1;
 const tunedSeeds = exhaustive ? 16 : 2;
+// Owner 2026-10-14: the routine full gate plays RANDOM and PICKED on 16 seeds for the RANDOM-vs-PICKED row alone
+// (its ≥ 14/16 bar demanded 2/2 on two seeds); every other row keeps the routine's two (dayplayer `--random-seeds`).
+const randomSeeds = full && !exhaustive ? 16 : 0;
 const dpArgs = [
   "--gate",
   ...(!exhaustive ? ["--routine", "--no-share"] : []),
   "--seeds",
   String(seeds),
+  ...(randomSeeds ? ["--random-seeds", String(randomSeeds)] : []),
   ...(fast
     ? ["--bots", "idle", "--loo-seeds", "0"]
     : ["--resume", "--loo-seeds", String(looSeeds), "--tuned-seeds", String(tunedSeeds)]),

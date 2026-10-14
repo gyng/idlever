@@ -1127,8 +1127,9 @@ fn death_keeps_nothing_and_leaves_bones() {
     assert_eq!(b.items.len(), 5, "sword, heals, scroll, the uninsured plate; not the starting sword");
     assert!(g.lineage.facts.contains("bones:1"));
     assert!(g.events.iter().any(|e| matches!(e, Ev::Bones { heir: 1, items: 5, .. })));
-    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds: 60, .. })), "defeat starts automatic 60-second recovery");
-    assert_eq!(g.lineage().rest_left_s, 60);
+    let recovery_s = crate::persistent::RECOVERY_TICKS / 10;
+    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds, .. } if u64::from(*seconds) == recovery_s)), "defeat starts automatic recovery (owner amendment 2026-10-14: RECOVERY_TICKS)");
+    assert_eq!(u64::from(g.lineage().rest_left_s), recovery_s);
     assert_eq!(g.lineage().bones[0].items, 5);
     // The next heir finds them on D1 and recovers them.
     g.auto_keep();

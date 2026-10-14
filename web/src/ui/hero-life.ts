@@ -1,6 +1,6 @@
 import type { App } from "../app";
 import type { HeroRebirth, PersistentHero, Lineage } from "../engine/types";
-import { h, replace } from "./dom";
+import { h, replace, spanOf } from "./dom";
 import { openWindow } from "./sheet";
 import { lastingChoices } from "./hero-progression";
 import "../hero-life.css";
@@ -154,7 +154,7 @@ export function heroLifePanel(
           ? h(
               "span",
               { class: "num", "data-recovery-seconds": hero.recovery_s },
-              `${hero.recovery_s}s`,
+              spanOf(hero.recovery_s),
             )
           : null,
         hero.need === "rest" && hero.rest_s > 0

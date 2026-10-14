@@ -5,7 +5,7 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 
-pub const RECOVERY_TICKS: u64 = 600;
+pub const RECOVERY_TICKS: u64 = 12000;
 pub const REBIRTH_DELVES: u32 = 8;
 pub const REBIRTH_SECONDS: u64 = 3600;
 
@@ -431,11 +431,11 @@ mod tests {
             g.lineage.bloodline.as_ref().unwrap().upgrades,
             stats.unwrap().upgrades
         );
-        assert_eq!(remaining(&g.lineage), 600);
+        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
         let save = g.save();
         assert!(g.try_send().is_err());
         assert_eq!(g.save(), save);
-        g.rest_tick(599);
+        g.rest_tick(RECOVERY_TICKS as u32 - 1);
         assert_eq!(remaining(&g.lineage), 1);
         assert!(g.try_send().is_err());
         g.rest_tick(1);
@@ -474,8 +474,8 @@ mod tests {
         assert_eq!(g.lineage.gold, gold);
         assert_eq!(g.lineage.classes, classes);
         assert_eq!(g.lineage.persistent.rebirths, 1);
-        assert_eq!(remaining(&g.lineage), 600);
-        g.rest_tick(600);
+        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
+        g.rest_tick(RECOVERY_TICKS as u32);
         g.lineage
             .bloodline
             .as_mut()
@@ -504,10 +504,10 @@ mod tests {
         assert_eq!(g.save(), saved);
         let mut whole = Game::load(&saved).unwrap();
         let mut sliced = whole.clone();
-        whole.rest_tick(600);
+        whole.rest_tick(RECOVERY_TICKS as u32);
         sliced.rest_tick(177);
         sliced = Game::load(&sliced.save()).unwrap();
-        sliced.rest_tick(423);
+        sliced.rest_tick(RECOVERY_TICKS as u32 - 177);
         assert_eq!(whole.save(), sliced.save());
         assert_eq!(remaining(&whole.lineage), 0);
     }
@@ -549,7 +549,7 @@ mod tests {
         r.death_cause = Some("goblin".into());
         g.finish_run();
         let first = g.lineage.bloodline.as_ref().unwrap().points;
-        g.rest_tick(600);
+        g.rest_tick(RECOVERY_TICKS as u32);
         g.start_run(None);
         let r = g.run.as_mut().unwrap();
         r.max_depth = 8;
@@ -571,15 +571,15 @@ mod tests {
         session.select_bloodline(1).unwrap();
         let saved = session.save();
         let slots=session.lineage().hero_slots;
-        assert_eq!(slots.iter().find(|h|h.id==1).map(|h|(&*h.life_state,h.recovery_s)),Some(("reincarnating",60)));
+        assert_eq!(slots.iter().find(|h|h.id==1).map(|h|(&*h.life_state,h.recovery_s)),Some(("reincarnating",RECOVERY_TICKS/10)));
         assert_eq!(slots.iter().find(|h|h.id==2).map(|h|(&*h.life_state,h.recovery_s)),Some(("ready",0)));
         assert_eq!(session.save(),saved,"slot readiness reads cannot mutate any hero");
         let mut whole = crate::bloodlines::Session::load(&saved).unwrap();
         let mut sliced = whole.clone();
-        whole.run_offline_mode(60, false, false);
+        whole.run_offline_mode(RECOVERY_TICKS / 10, false, false);
         sliced.run_offline_mode(17, false, false);
         sliced = crate::bloodlines::Session::load(&sliced.save()).unwrap();
-        sliced.run_offline_mode(43, false, false);
+        sliced.run_offline_mode(RECOVERY_TICKS / 10 - 17, false, false);
         assert_eq!(remaining(&whole.active.lineage), 0);
         assert_eq!(
             whole.active.lineage.persistent,
@@ -692,7 +692,7 @@ mod tests {
         let h = wire(&g.lineage, false);
         assert!(h.device.available && h.pool.available);
         assert_eq!(h.need, "recovery");
-        assert_eq!(h.recovery_s, 60);
+        assert_eq!(h.recovery_s, RECOVERY_TICKS / 10);
     }
     #[test]
     fn first_unscouted_defeat_recovers_through_actual_session_wall_clock() {
@@ -705,14 +705,14 @@ mod tests {
         }
         g.finish_run();
         assert!(!crate::tree::hired(&g.lineage, "scout"));
-        assert_eq!(remaining(&g.lineage), 600);
+        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
         let mut whole = crate::bloodlines::Session::load(&g.save()).unwrap();
         let mut sliced = whole.clone();
         let next = whole.active.lineage.next_run_id;
-        whole.advance(60000);
+        whole.advance(RECOVERY_TICKS * 100);
         sliced.advance(17000);
         sliced = crate::bloodlines::Session::load(&sliced.save()).unwrap();
-        sliced.advance(43000);
+        sliced.advance(RECOVERY_TICKS * 100 - 17000);
         assert_eq!(remaining(&whole.active.lineage), 0);
         assert_eq!(remaining(&sliced.active.lineage), 0);
         assert_eq!(
@@ -731,7 +731,7 @@ mod tests {
         assert!(whole.active.run.is_none());
         assert!(whole.try_send().is_ok());
         let mut counts = Game::load(&g.save()).unwrap();
-        crate::offline::run_offline_counts(&mut counts, 60);
+        crate::offline::run_offline_counts(&mut counts, RECOVERY_TICKS / 10);
         assert_eq!(remaining(&counts.lineage), 0);
         assert_eq!(counts.lineage.next_run_id, next);
         assert!(counts.run.is_none());
@@ -785,14 +785,14 @@ mod tests {
             .unwrap();
         assert_eq!(e.state, "active");
         assert!(!e.action.as_ref().unwrap().enabled);
-        assert!(e.reason.contains("60 seconds"));
+        assert!(e.reason.contains(&format!("{} minutes", (RECOVERY_TICKS / 10).div_ceil(60))));
         let saved = g.save();
         assert!(g.ascend("no_rest").is_err());
         assert_eq!(g.save(), saved);
         assert!(g.begin_descent(0).is_err());
         assert_eq!(g.save(), saved);
         let mut s = crate::bloodlines::Session::load(&saved).unwrap();
-        s.advance(60000);
+        s.advance(RECOVERY_TICKS * 100);
         assert_eq!(remaining(&s.active.lineage), 0);
         let j = s.lineage().journal.unwrap();
         let e = j

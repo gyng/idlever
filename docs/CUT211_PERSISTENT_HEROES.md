@@ -11,6 +11,22 @@ rank), damage (+1 per rank) and armour (+1 per rank), with escalating earned
 Legacy prices; the whole allocation can currently be refunded at every visit.
 Dungeon ascension is a separate bottom-of-dungeon reset of gold/progression.
 
+## Owner amendment 2026-10-14 — death recovery 600 → 10500 ticks
+
+Death (and rebirth) recovery is now **10500 ticks (17.5 game minutes)**,
+`persistent::RECOVERY_TICKS` (also `engine::WAKE_TICKS`). The 600-tick (60 s)
+recovery below let PICKED brute-force deep walls by dying repeatedly, and the
+hard Cut30 invariant "TUNED beats PICKED by ≥15% at D33" fell to 1.00 (Cut227
+bisect: a327b8dd). The owner chose a longer recovery over weakening the gate.
+Shortest-passing search on 16 seeds (`gates.mjs --full --rows tuned-picked`):
+3000 FAIL (settled ≤1.07), 6000 FAIL (≤1.07), 7500 1.10 FAIL, 9000 1.15 (no
+margin), **10500 1.18 PASS**, 12000 1.17 PASS. Evidence:
+`docs/evidence/cut227/recovery/`. Recovery copy now reads minutes (`Recovering
+18m`). The text below keeps the original 600-tick contract as history; every
+"60 seconds"/"600 ticks" in it now means `RECOVERY_TICKS`. Acceptance item 2
+reads: Send refuses at RECOVERY_TICKS−1 elapsed; one remaining tick enables it.
+Controlled client fixtures at the new value: `docs/evidence/cut227/recovery/fixtures/`.
+
 ## Ownership and ordinary defeat
 
 One persistent hero belongs to each existing bloodline slot. Stable actor identity
