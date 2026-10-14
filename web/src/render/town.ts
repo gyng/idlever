@@ -207,6 +207,10 @@ const PROPS: Prop[] = [
 ];
 /** Cut 109: townsfolk by stage (docs/TOWN.md §3: "townsfolk multiply with the houses") — cosmetic, seeded, never read back */
 const FOLK_AT = { smith: T(CX - 6.0, 11.35), merchant: T(CX + 4.75, 22.75) };
+/** Cut 228: the anvil before the smith, the spot a hero stands to be fitted, and one hammer stroke (s) */
+const ANVIL_AT: Pt = { x: FOLK_AT.smith.x + 11, y: FOLK_AT.smith.y + 1 };
+const FIT_AT: Pt = { x: FOLK_AT.smith.x + 27, y: FOLK_AT.smith.y - 1 };
+const HAMMER_S = 0.8;
 export const workerAt = (w: { id: string; post: string }): Pt | null =>
   WORKER_AT[w.id] ?? (PLOTS as Record<string, Pt | undefined>)[w.post] ?? null;
 /** a worker's frames (art/town-ids.md: `town_worker_<id>`, `_1` the idle beat) */
@@ -246,6 +250,8 @@ export type TownState = {
   depth: number; // the best depth (the mouth's plaque)
   chest?: ChestState; // Cut 30.5: the haul chest (none once the porter carries the hauls)
   workers: WorkerSpot[]; // Cut 30.5: hired workers at their posts; the lit node's greyed
+  /** Cut 228: the Forge's present work (Rust `Town.forge_work`): the step, the hero it was forged for, seconds left */
+  forge?: { step: string; hero: number; left: number };
 };
 export type HomeResidentSpot = { id: number; pool: Pt; device: Pt };
 /** Stable grounds allocated to actual roster IDs, unaffected by selected/away state. */
@@ -461,6 +467,14 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
     board: !!o.board,
     chest: town?.home === false || town?.auto_collect ? undefined : chest,
     workers: town?.home === false ? [] : workers,
+    forge:
+      town?.home !== false && has("blacksmith") && town?.forge_work
+        ? {
+            step: town.forge_work.step,
+            hero: town.forge_work.hero,
+            left: Math.max(0, town.forge_work.left_s),
+          }
+        : undefined,
   };
 }
 
@@ -507,6 +521,8 @@ const ASPECT: [RegExp, number][] = [
   [/^town_scaffold/, 0.9],
   [/^(hero_|walk_|town_(smith|merchant|carter|child))/, 0.7],
   [/^town_(sack|chest)/, 0.95],
+  [/^town_anvil$/, 1.75],
+  [/^town_hammer_down$/, 1.6],
   [/^town_worker_(porter|apprentice|drillmaster|kennel_hand)/, 1.2],
   [/^town_worker_/, 0.75],
   [/^town_haul_chest/, 1.5],
@@ -972,6 +988,19 @@ function drawPrimitive(
     R("#2b3350", w * 0.08, 0, w * 0.84, h * 0.16);
     R("#0d0c14", w * 0.1, h * 0.6, Math.max(1, w * 0.12), h * 0.4);
     R("#0d0c14", w * 0.78, h * 0.6, Math.max(1, w * 0.12), h * 0.4);
+  } else if (id === "town_anvil") {
+    // Cut 228: the Forge's anvil (code-native; its own fallback): ink face, iron horn, a stem and a block
+    R("#0d0c14", 0, 0, w, 2);
+    R("#5a5f6a", 1, 0, w - 2, 1);
+    R("#2a2c33", 0, 1, 2, 1);
+    R("#2a2c33", Math.floor(w * 0.35), 2, Math.max(1, Math.ceil(w * 0.3)), h - 4);
+    R("#3a2a1e", 1, h - 2, w - 2, 2);
+  } else if (id === "town_hammer_down") {
+    // Cut 228: the smith's hammer struck on the anvil (head down, haft toward his hands)
+    R("#0d0c14", 0, 0, 4, h);
+    R("#5a5f6a", 1, 1, 2, h - 2);
+    R("#9aa0aa", 1, 0, 2, 1);
+    R("#6b4a2a", 4, Math.floor(h / 2) - 1, w - 4, 2);
   } else if (id.startsWith("fx_dot_")) R(`#${id.slice(7)}`, 0, 0, w, h);
   else if (/^(hero_|walk_)/.test(id)) {
     const body = /rogue/.test(id)
@@ -1072,6 +1101,23 @@ type Walker = {
   extend?: (w: Walker) => void;
   pet?: boolean;
   reincarnating?: boolean;
+  /** the wander's next stop (an index into its stops) */
+  stop?: number;
+  /** Cut 228: standing still and facing left over [t0, t1) (a hero turned to the smith) */
+  faceLeft?: [number, number];
+  /** Cut 228: seated from `from` on (a resting hero back on the pool's bench) */
+  seat?: { from: number; ids: string[] };
+  /** Cut 228: a resident who may be fitted at the Forge: its standing frames, its wander, its bench */
+  fit?: {
+    sprite: string[];
+    walk: string[];
+    wander: (w: Walker) => void;
+    smithStop: number;
+    bench?: Pt;
+  };
+  /** Cut 228: the forge work this resident answered (`hero:step@from`), and when the fitting ends */
+  fitKey?: string;
+  fitEnd?: number;
 };
 const SPEED = 40;
 function legsAlong(pts: Pt[], t0: number, speed = SPEED, out: Leg[] = []): number {
@@ -1165,6 +1211,17 @@ export type TownStats = {
   markers: string[];
   view: [number, number, number, number];
   chest?: string;
+  /** Cut 228: the Forge's present work as drawn (null: the smith idles, no sparks) */
+  forge: {
+    step: string;
+    hero: number;
+    left: number;
+    still: boolean;
+    sparks: number;
+    /** spark bursts emitted by real strokes since this view mounted */
+    bursts: number;
+    fitting: number[];
+  } | null;
   workers: string[];
   ranks: Record<string, number>;
 };
@@ -1293,6 +1350,14 @@ export function createTownView(host: HTMLElement): TownView {
     effectsLevel() !== "off" &&
     document.documentElement.dataset.juice !== "off";
   let builtAt = new Map<string, number>(); // fresh buildings: the scene time their scaffold went up
+  // Cut 228: the Forge's present work in scene time (from Rust's `forge_work.left_s`), its identity and first stroke
+  let forgeUntil = -Infinity,
+    forgeFrom = 0,
+    forgeKey = "",
+    strikeN = -1,
+    sparkBursts = 0;
+  const forging = (): boolean => !!state?.forge && t < forgeUntil;
+  const stillForge = (): boolean => motionPreference.matches || effectsLevel() === "off";
   let hero: Walker | null = null;
   const actorLayout: (() => void)[] = [];
   const residentAnchors = new Map<string, Pt>();
@@ -1516,8 +1581,8 @@ export function createTownView(host: HTMLElement): TownView {
       { id: s.selectedHero ?? 1, cls: s.hero.cls, look: s.hero.look },
     ];
     for (const resident of residents) {
-      let i = homeArrival ? 0 : (Math.floor(rng(resident.id * 31) * 3) + resident.id) % 3,
-        n = 0;
+      const i0 = homeArrival ? 0 : (Math.floor(rng(resident.id * 31) * 3) + resident.id) % 3;
+      let n = 0;
       const ids = [
         ...(resident.look ? [`hero_${resident.cls}_${resident.look}`] : []),
         `hero_${resident.cls}`,
@@ -1533,12 +1598,14 @@ export function createTownView(host: HTMLElement): TownView {
         from: partyEnd,
         to: Infinity,
         lag: resident.id * 0.1,
+        stop: i0,
         extend: (w) => {
           let tt = w.legs.length ? w.legs[w.legs.length - 1]!.t1 : partyEnd;
           for (let j = 0; j < 6; j++) {
+            const i = w.stop ?? 0;
             const a = stops[i % 3]!,
               b = stops[(i + 1) % 3]!;
-            i++;
+            w.stop = i + 1;
             const pause = 2 + rng(100 + resident.id * 101 + n++) * 4;
             const at = NODES[a]!;
             w.legs.push({ t0: tt, t1: tt + pause, a: at, b: at });
@@ -1547,6 +1614,14 @@ export function createTownView(host: HTMLElement): TownView {
           }
         },
       };
+      // Cut 228: a hero neither recovering nor cloning may answer the Forge's real work (refit)
+      if (resident.phase !== "reincarnating" && resident.phase !== "recovering")
+        actor.fit = {
+          sprite: actor.sprite,
+          walk: actor.walk,
+          wander: actor.extend!,
+          smithStop: stops.indexOf("smith"),
+        };
       if (resident.phase === "reincarnating" && s.services?.includes("device")) {
         actor.homeOffset = { x: 0, y: 0 };
         actor.reincarnating = true;
@@ -1560,6 +1635,7 @@ export function createTownView(host: HTMLElement): TownView {
         const p = homeSpots.find((p) => p.id === resident.id)!.pool;
         actor.legs = [{ t0: partyEnd, t1: Infinity, a: p, b: p }];
         actor.extend = undefined;
+        if (actor.fit) actor.fit.bench = p;
       } else actor.extend!(actor);
       walkers.push(actor);
       if (resident.id === (s.selectedHero ?? 1)) hero = actor;
@@ -1988,6 +2064,95 @@ export function createTownView(host: HTMLElement): TownView {
     const a = strength * 0.85;
     characterLights.push({ x: lx, y: ly, r: 23, c: [a, a * 0.64, a * 0.3] });
   }
+  /** Cut 228: stop a walker where it stands now (its later legs dropped) */
+  function cutAt(w: Walker): Pt {
+    const at = walkerAt(w, t);
+    const p = at ? { x: at.x, y: at.y } : (w.legs[0]?.a ?? NODES.tent!);
+    w.legs = w.legs.filter((l) => l.t1 <= t);
+    w.legs.push({ t0: t, t1: t, a: p, b: p });
+    w.faceLeft = undefined;
+    return p;
+  }
+  /** Cut 228: from `p` at `t0` back to the bench (seated again) or to the forge's path node (the wander resumes there) */
+  function sendBack(w: Walker, p: Pt, t0: number): void {
+    const fit = w.fit!;
+    if (fit.bench) {
+      const tt = legsAlong(
+        [p, ...route(nearestNode(p), "pool"), fit.bench],
+        t0,
+        SPEED * 0.8,
+        w.legs,
+      );
+      w.legs.push({ t0: tt, t1: Infinity, a: fit.bench, b: fit.bench });
+      w.seat = { from: tt, ids: fit.sprite.map((id) => `town_seated:${id}`) };
+      w.extend = undefined;
+    } else {
+      legsAlong([p, NODES.smith!], t0, SPEED * 0.8, w.legs);
+      w.stop = Math.max(0, fit.smithStop);
+      w.extend = fit.wander;
+    }
+  }
+  /** Cut 228: the hero whose kit the Forge actually worked walks to the anvil and stands to be fitted while the work lasts;
+   *  when it ends (or another hero's begins) he goes back. Presentation only: nothing is read back. */
+  function refit(): void {
+    const s = state;
+    if (!s) return;
+    const key = forging() ? `${forgeKey}@${forgeFrom}` : "";
+    for (const w of walkers) {
+      if (!w.fit || !w.id.startsWith("resident:")) continue;
+      const mine = key !== "" && Number(w.id.slice(9)) === s.forge!.hero;
+      if (mine && w.fitKey !== key) {
+        const p = cutAt(w);
+        w.sprite = w.fit.sprite;
+        w.walk = w.fit.walk;
+        w.seat = undefined;
+        w.extend = undefined;
+        const tt = legsAlong(
+          [p, ...route(nearestNode(p), "smith"), FIT_AT],
+          t,
+          SPEED * 0.8,
+          w.legs,
+        );
+        const end = Math.max(tt + 1.5, forgeUntil);
+        w.legs.push({ t0: tt, t1: end, a: FIT_AT, b: FIT_AT });
+        w.faceLeft = [tt, end];
+        w.fitKey = key;
+        w.fitEnd = end;
+        sendBack(w, FIT_AT, end);
+      } else if (!mine && w.fitKey && w.fitEnd !== undefined && t < w.fitEnd) {
+        w.fitKey = undefined;
+        w.fitEnd = undefined;
+        sendBack(w, cutAt(w), t);
+      }
+    }
+  }
+  /** Cut 228: the smith at the anvil, striking only while Rust's forge work lasts (his painted hammer is raised on
+   *  his shoulder; the stroke dips him and lays a hammer on the anvil); a still struck pose under reduced motion or
+   *  effects Off; the hot work glows */
+  function smithAtWork(p: Pt, night: number): void {
+    const ph = stillForge()
+      ? 0.5
+      : ((((t - forgeFrom) % HAMMER_S) + HAMMER_S) % HAMMER_S) / HAMMER_S;
+    const down = ph >= 0.42 && ph < 0.66;
+    const y = p.y + (down ? 1 : -1);
+    sprite("town_smith", 23, p.x + (down ? 1 : 0), y, { flip: false });
+    lantern(p.x, y, false, night);
+    if (down)
+      sprite("town_hammer_down", 5, ANVIL_AT.x - 1, ANVIL_AT.y - 7, {
+        z: zOf(ANVIL_AT.y) + 0.0004,
+      });
+    // the work on the anvil: a hot bar (ember) whose light swells on the stroke
+    sprite("fx_dot_ff9a3a", 2, ANVIL_AT.x + 3, ANVIL_AT.y - 8, { z: zOf(ANVIL_AT.y) + 0.0003 });
+    const glow = (down ? 0.6 : 0.4) * night;
+    // (a light pass by day reads as a grey patch; the forge's own glow is a night light, as the sparks' are)
+    if (night > 0.35 && F.lights.length < MAX_LIGHTS)
+      F.lights.push({
+        x: ANVIL_AT.x + 3,
+        y: ANVIL_AT.y - 8,
+        r: 14,
+        c: [glow, glow * 0.6, glow * 0.25],
+      });
+  }
   /** Cut 109: the townsfolk — the smith at the forge's door from the first building, a child about the fire and the well from the
    *  second, the merchant at the stall from the third, the carter up and down the south road when all facilities stand; a step bob, no walk frames */
   function folk(s: TownState, night: number): void {
@@ -1995,8 +2160,12 @@ export function createTownView(host: HTMLElement): TownView {
     const bob = (ph: number, rate = 1.3): number => Math.floor(t * rate + ph) & 1;
     if (s.buildings.some((b) => b.id === "blacksmith")) {
       const p = FOLK_AT.smith;
-      sprite("town_smith", 23, p.x, p.y - bob(0.3, 2.2), { flip: false });
-      lantern(p.x, p.y - bob(0.3, 2.2), false, night);
+      sprite("town_anvil", 8, ANVIL_AT.x, ANVIL_AT.y, { ground: true });
+      if (forging()) smithAtWork(p, night);
+      else {
+        sprite("town_smith", 23, p.x, p.y - bob(0.3, 2.2), { flip: false });
+        lantern(p.x, p.y - bob(0.3, 2.2), false, night);
+      }
     }
     if (s.stage >= 3) {
       const p = FOLK_AT.merchant;
@@ -2337,7 +2506,8 @@ export function createTownView(host: HTMLElement): TownView {
         x -= Math.sign(at.dx) * 4;
         y += 2;
       }
-      const flip = at.dx < -0.01;
+      const flip =
+        at.dx < -0.01 || (!at.moving && !!w.faceLeft && t >= w.faceLeft[0] && t < w.faceLeft[1]);
       let fade = 0;
       if (w.emerge) {
         const age = t - w.from;
@@ -2356,7 +2526,7 @@ export function createTownView(host: HTMLElement): TownView {
             : 0.3 + Math.sin(t * 2) * 0.12,
         );
       const step = at.moving && (Math.floor(t * 6.5 + w.lag * 3) & 1) === 1;
-      const ids = step ? w.walk : w.sprite;
+      const ids = w.seat && t >= w.seat.from ? w.seat.ids : step ? w.walk : w.sprite;
       const previousQuads = F.n;
       const mappedHero =
         w.sprite[0] === "hero_fighter" ||
@@ -2402,7 +2572,6 @@ export function createTownView(host: HTMLElement): TownView {
     F.lights.length = Math.min(F.lights.length, MAX_LIGHTS);
   }
   let emitT = 0,
-    sparkT = 0,
     chimT = 0;
   function tickParts(night: number): void {
     void night;
@@ -2440,12 +2609,16 @@ export function createTownView(host: HTMLElement): TownView {
     );
     if (smith) {
       const p = PLOTS.blacksmith;
-      if (t - sparkT > 1.5 + (hashN(Math.floor(t)) % 10) / 10) {
-        sparkT = t;
-        for (let i = 0; i < 7; i++)
+      // Cut 228: sparks fly only from a real stroke (Rust's forge work), never on a guessed beat; none under reduced
+      // motion or effects Off, fewer at Low
+      const n = forging() && !stillForge() ? Math.floor((t - forgeFrom) / HAMMER_S + 0.58) : -1;
+      if (n !== strikeN && n >= 0) {
+        strikeN = n;
+        sparkBursts++;
+        for (let i = 0; i < (effectsLevel() === "low" ? 3 : 6); i++)
           parts.push({
-            x: p.x - 14,
-            y: p.y - 8,
+            x: ANVIL_AT.x,
+            y: ANVIL_AT.y - 6,
             vx: (rand() - 0.5) * 40,
             vy: -20 - rand() * 25,
             age: 0,
@@ -2691,6 +2864,16 @@ export function createTownView(host: HTMLElement): TownView {
       const prev = state;
       state = s;
       homeSpots = homeResidentSpots(s);
+      // Cut 228: Rust's forge work → a scene-time deadline (a new step or hero starts a new first stroke)
+      const fk = s.forge ? `${s.forge.hero}:${s.forge.step}` : "";
+      if (s.forge) {
+        if (fk !== forgeKey || !(t < forgeUntil)) {
+          forgeFrom = t;
+          strikeN = -1;
+        }
+        forgeUntil = t + s.forge.left;
+      } else forgeUntil = -Infinity;
+      forgeKey = fk;
       if (prev)
         for (const id of builtAt.keys()) {
           const oldLook =
@@ -2765,6 +2948,7 @@ export function createTownView(host: HTMLElement): TownView {
           hero.legs,
         );
       }
+      refit();
       fit();
       layoutDirty = true;
       start();
@@ -2934,6 +3118,19 @@ export function createTownView(host: HTMLElement): TownView {
         markers: s?.markers.map((m) => `${m.kind}@${m.at}`) ?? [],
         view: [F.x0, F.y0, F.w, F.h],
         chest: s?.chest?.state,
+        forge: forging()
+          ? {
+              step: s!.forge!.step,
+              hero: s!.forge!.hero,
+              left: Math.max(0, forgeUntil - t),
+              still: stillForge(),
+              sparks: parts.filter((p) => p.kind === "spark").length,
+              bursts: sparkBursts,
+              fitting: walkers
+                .filter((w) => w.fitEnd !== undefined && t < w.fitEnd)
+                .map((w) => Number(w.id.slice(9))),
+            }
+          : null,
         workers: s?.workers.map((w) => `${w.id}${w.lit ? "(lit)" : w.paused ? "(off)" : ""}`) ?? [],
         ranks: Object.fromEntries(
           (s?.workers ?? []).filter((w) => !w.lit && w.rank > 1).map((w) => [w.id, w.rank]),

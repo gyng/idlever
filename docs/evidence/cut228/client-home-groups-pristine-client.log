@@ -1,0 +1,12 @@
+client suite: targeted (3 selected; 158 current full; 201 exhaustive groups)
+FAIL home-building-help 22.6s (21.2s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/home-building-help.mjs:107:12 {
+FAIL home-heroes     63.2s (61.7s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/home-heroes.mjs:105:15 {
+FAIL home-residents  126.5s (125.0s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: actual tent centre routes to its own action beside residents
+         at ok (file:///home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/home-residents.mjs:35:12)
+         at file:///home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/home-residents.mjs:272:11 {
+FAIL: 0/3 client gates in 126.5s

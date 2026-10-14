@@ -10,7 +10,7 @@ import { heroPresence, heroAway } from "./hero-presence";
 import "../town.css";
 import "../legible.css";
 import type { App } from "../app";
-import type { HeroService, Lineage, ReturnReport } from "../engine/types";
+import type { HeroService, HeroSlot, Lineage, ReturnReport } from "../engine/types";
 import {
   createTownView,
   townState,
@@ -119,6 +119,14 @@ function save(L: Lineage, s: Store): void {
   }
 }
 /** a building's panel opened (its `!` rune goes) */
+/** Cut 228: the step the Forge is fitting on this home hero (Rust `Town.forge_work`), or none — never a delving,
+ *  recovering or cloning hero. */
+export function forgeFitting(L: Lineage, slot: HeroSlot | undefined): string | undefined {
+  const work = L.town?.forge_work;
+  if (!work || !slot || work.hero !== slot.id || heroAway(slot)) return undefined;
+  if (slot.life_state === "recovering" || slot.life_state === "reincarnating") return undefined;
+  return work.step;
+}
 /** Cut 120 §10: the town target a worker's post stands at (`WorkerPost.post` / `WorkNode.post`). */
 const postTarget = (post?: string): string => post ?? "mouth";
 /** Cut 120 §7/§10: the next worker's mark — his chore's count by hand and the hours to his fallback (`forge 2/3 · or 30h`), from the
@@ -413,11 +421,20 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       });
       detailHost(button, () => {
         const current = app.lineage.hero_slots?.find((s) => s.id === slot.id);
+        // Cut 228: why he stands at the anvil — the step Rust says the Forge just made for him
+        const fitting = forgeFitting(app.lineage, current);
         return current
           ? [
               h("div", { class: "kw-tip-head" }, current.hero_name || current.name),
               h("div", { class: "kw-tip-gloss" }, heroPresence(current).text),
-            ]
+              fitting
+                ? h(
+                    "div",
+                    { class: "kw-tip-gloss", "data-routine": "forge" },
+                    /* copy:callout */ `At Forge · ${fitting}`,
+                  )
+                : null,
+            ].filter((n): n is HTMLDivElement => !!n)
           : [];
       });
       if (away) {

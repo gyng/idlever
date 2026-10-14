@@ -3530,6 +3530,7 @@ impl Game {
 
     pub fn lineage(&self) -> Lineage {
         let mut l = self.lineage.to_wire();
+        l.town.forge_work = crate::town::forge_work([self]);
         let build = crate::hero_build::equipment(self);
         l.starting_kits.actual_weapon = build.actual.slots[0].kind.clone().unwrap_or_default();
         l.starting_kits.actual_armour = build.actual.slots[2].kind.clone();

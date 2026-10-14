@@ -53,6 +53,14 @@ export function buildingDetails(L: Lineage, id: HomeBuilding): Node[] {
     requirement
       ? h("div", { class: "kw-tip-gloss" }, /* copy:tooltip */ `Requires: ${requirement}`)
       : null,
+    // Cut 228: the Forge's present work, read from Rust (`Town.forge_work`)
+    id === "blacksmith" && standing && town?.forge_work
+      ? h(
+          "div",
+          { class: "kw-tip-gloss", "data-forge-work": town.forge_work.step },
+          /* copy:callout */ `Forging ${town.forge_work.step}`,
+        )
+      : null,
     h(
       "div",
       { class: "kw-tip-gloss" },

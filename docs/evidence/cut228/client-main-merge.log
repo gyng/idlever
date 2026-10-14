@@ -1,0 +1,9 @@
+client suite: targeted (7 selected; 160 current full; 203 exhaustive groups)
+ok   hero-life-camp  23.3s (6.6s)  14 actual camp recovery checks PASS; cleared-world flag controlled, no earned win claim
+ok   home-resident-phases 27.7s (11.0s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+ok   home-services   29.7s (13.0s)  home-services: 38 checks PASS (real WASM; earned + labelled recovery fixtures)
+ok   town-clock      36.0s (19.3s)  town-clock: PASS (36 checks)
+ok   home-forge-work 60.7s (44.0s)  home-forge-work: 31 checks PASS (real WASM, public actions, Full and reduced motion)
+ok   hero-life       100.8s (84.1s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-12000","recovering-11990","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+ok   gold-settlements 149.5s (132.8s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6849966,"sha256":"8b48aa498f40f40de735ce6ca2fa3daab17bb048fabfa0a5c012f51a2f1af707"},{"bytes":6849966,"sha256":"8b48aa498f40f40de735ce6ca2fa3daab17bb048fabfa0a5c012f51a2f1af707"},{"bytes":6849966,"sha256":"8b48aa498f40f40de735ce6ca2fa3daab17bb048fabfa0a5c012f51a2f1af707"},{"bytes":6849966,"sha256":"8b48aa498f40f40de735ce6ca2fa3daab17bb048fabfa0a5c012f51a2f1af707"}]}
+ok: 7/7 client gates in 149.5s

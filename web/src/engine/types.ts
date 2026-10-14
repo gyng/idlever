@@ -874,7 +874,12 @@ export type Town = {
   quest?: Quest;
   quests_done?: number;
   workers?: WorkerPost[];
+  forge_work?: ForgeWork;
 }; // Cut 30.5 (core): the workers at their posts (hired; the lit node's greyed with its price)
+/** Cut 228 (core, read model): the Forge's present work — a step it actually forged (`sword +3`) for hero `hero` within the
+ *  last `FORGE_WORK_TICKS` of that hero's live clock; `left_s` until it ends. Absent when nothing was forged lately, or when
+ *  that hero's clock is not moving. Never read by a sim. */
+export type ForgeWork = { step: string; hero: number; left_s: number };
 /** Cut 30 §2 (core) — a package (`Guarded L3`): `kind` stance · tactic · temperament; `level` 1–5 from `runs` (the runs one of its rows
  *  fired in; `next_at` the runs the next level wants); `slot` when equipped; `owned` once its stage came (`trigger` until then);
  *  `level_price` the marks a level spend costs (`spendLevel`). */

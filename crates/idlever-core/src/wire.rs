@@ -1836,6 +1836,18 @@ pub struct TownWire {
     /// Cut 30.5: the workers at their posts (hired; the lit node's greyed with its price).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub workers: Vec<crate::tree::WorkerPost>,
+    /// Cut 228 (read model): the Forge's present work (`town::forge_work`); absent when idle.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub forge_work: Option<ForgeWork>,
+}
+
+/// Cut 228: a step the Forge actually forged (`sword +3`, a ledger `forge …` debit) for hero `hero` within the last
+/// `town::FORGE_WORK_TICKS` of that hero's own moving clock; `left_s` until it ends. Never read by a sim or a bot.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct ForgeWork {
+    pub step: String,
+    pub hero: u32,
+    pub left_s: u32,
 }
 
 /// Each hero's lifetime achievements, independent of XP and package marks.

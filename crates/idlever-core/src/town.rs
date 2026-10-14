@@ -455,7 +455,40 @@ pub fn wire(l: &LineageState) -> TownWire {
         quest: l.town.quest.as_ref().map(|q| quest_wire(l, q)),
         quests_done: l.town.quests_done,
         workers: if l.pkg.literal { Vec::new() } else { crate::tree::posts(l) },
+        forge_work: None,
     }
+}
+
+/// Cut 228: how long (ticks of the hero's clock) a forged step keeps the smith at the anvil: 45 s.
+pub const FORGE_WORK_TICKS: u64 = 450;
+
+/// Cut 228 (read model, no mutation): the Forge's present work among `games` (each hero's own game). A hero's own
+/// ledger lines carry its own clock (`GoldLine.t` is its `total_turns`), so each line is aged against the clock of
+/// the hero who paid it, and only while that clock moves (resting or delving): a waiting hero's clock stands, and a
+/// stale line must not read as present work. The newest such step wins (one anvil).
+pub fn forge_work<'a>(games: impl IntoIterator<Item = &'a crate::Game>) -> Option<crate::wire::ForgeWork> {
+    let mut best: Option<(u64, crate::wire::ForgeWork)> = None;
+    for g in games {
+        let l = &g.lineage;
+        if l.pkg.literal || !built(l, "blacksmith") || !l.town.home.unwrap_or(true) {
+            continue;
+        }
+        let moving = l.rest_left > 0 || g.run.as_ref().is_some_and(|r| r.over.is_none());
+        if !moving {
+            continue;
+        }
+        let Some(line) = l.gold_ledger.iter().rev().find(|x| x.bloodline_id == l.bloodline_id && x.delta < 0 && x.why.starts_with("forge ")) else { continue };
+        let age = l.total_turns.saturating_sub(line.t);
+        if line.t > l.total_turns || age >= FORGE_WORK_TICKS {
+            continue;
+        }
+        let left = FORGE_WORK_TICKS - age;
+        if best.as_ref().is_none_or(|(a, _)| age < *a) {
+            let step = line.why.trim_start_matches("forge ").trim_start_matches("commission ").to_string();
+            best = Some((age, crate::wire::ForgeWork { step, hero: l.bloodline_id, left_s: left.div_ceil(crate::offline::TICKS_PER_SECOND) as u32 }));
+        }
+    }
+    best.map(|b| b.1)
 }
 
 #[cfg(test)]
@@ -499,6 +532,37 @@ mod storage_retirement_tests {
         assert!(g.build_town("kennel").is_err());
         assert!(stages("items").iter().chain(stages("town")).all(|(id, _)| *id != "storehouse"));
         assert!(["quartermaster", "scout", "apprentice"].iter().all(|id| tree::def(id).is_some()));
+    }
+
+    #[test]
+    fn forge_work_is_a_read_model_of_a_real_recent_step_on_a_moving_clock() {
+        let mut g = Game::new(204); g.build_town("house").unwrap();
+        // Diagnostic trigger/income (as above): this tests the read model, not pacing.
+        crate::test_stage::traits(&mut g.lineage,4,1);
+        g.lineage.gold_move(10, "returned D1");
+        g.build_town("blacksmith").unwrap();
+        g.lineage.rest_left = 1000;
+        assert_eq!(g.lineage().town.forge_work, None, "an owned Forge is no proof of work");
+        g.lineage.gold_move(100_000, "returned D2");
+        crate::kit::buy_step(&mut g.lineage, "weapon").unwrap();
+        let before = g.save();
+        let w = g.lineage().town.forge_work.expect("the step just forged");
+        assert_eq!(before, g.save(), "reading the town never mutates");
+        assert_eq!((w.hero, w.left_s), (1, 45));
+        assert!(w.step.ends_with("+1"), "{}", w.step);
+        // the same clock moves: 449 ticks on it still lasts; the 450th ends it
+        assert_eq!(g.rest_tick(449), 449);
+        assert_eq!(g.lineage().town.forge_work.map(|w| w.left_s), Some(1));
+        g.rest_tick(1);
+        assert_eq!(g.lineage().town.forge_work, None);
+        // a standing clock (a hero waiting, no run) never shows stale work as present
+        crate::kit::buy_step(&mut g.lineage, "weapon").unwrap();
+        assert!(g.lineage().town.forge_work.is_some());
+        g.lineage.rest_left = 0;
+        assert!(g.run.is_none());
+        assert_eq!(g.lineage().town.forge_work, None);
+        let json = serde_json::to_string(&g.lineage().town).unwrap();
+        assert!(!json.contains("forge_work"), "absent when idle: old wires and goldens unchanged");
     }
 
     #[test]
