@@ -194,9 +194,17 @@ Owner decisions 2026-10-14:
 1. **Longer death recovery** to restore tuned-picked ≥1.15 (shortest passing value;
    amend CUT211; re-verify all IDLE/PICKED rows and full gate).
 2. **Routine random-picked evaluated on 16 seeds** (stricter).
-In flight at park: an agent on branch `worktree-agent-ab3974be498ebcc2b`
-(worktree .claude/worktrees/agent-ab3974be498ebcc2b) implementing both; see its
-docs/evidence/cut227/recovery/README.md for the search table and next steps.
+WIP pushed as branch **origin/cut227-recovery-wip** (764b2b97, on 1b43a78c; NOT
+merged): RECOVERY_TICKS 12000 (20 min; only tested value passing tuned-picked 1.17,
+automation-pays and qa bank rows), offline.rs bug fix (REST_CARRY cap no longer
+trims owed death recovery; latent above 10 min), minutes copy, dayplayer
+`--random-seeds 16` for random-picked (16/16·16/16 PASS). Read
+docs/evidence/cut227/recovery/README.md on that branch. Remaining, in order:
+CUT211 amendment text + fixtures/settlement after-saves still at 10500 → regen at
+12000; web tests hero-life (1200), hero-life-camp ("Recovering 20m"),
+home-resident-phases (1200000); fix tests::dice_death_names_an_alternative_below_
+the_bar (widen seeds/window, not assertions); cargo test fast + clippy; full
+routine gate; tools/wasm.sh + new settlements manifest/default; pnpm test + groups.
 Tests/copy pinning 60 s: web/tests/hero-life.mjs (recovering-600), cut120,
 collect-send.ts "Recovering 60s". A new WASM needs a new gold-settlements manifest
 (and picks up 8f48b3f1's patch order, not yet in pkg).
