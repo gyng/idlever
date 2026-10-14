@@ -1,0 +1,71 @@
+You are painting TOWN PROP SPRITE masters for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
+top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
+else in the repository): /home/g/p/riddle/art/ui/targets/style/town.png, /home/g/p/riddle/art/generated/town_blacksmith_1.png, /home/g/p/riddle/art/generated/town_storehouse_1.png, /home/g/p/riddle/art/generated/town_lamppost.png, /home/g/p/riddle/art/generated/town_well.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
+Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix / file copy; do NOT
+touch anything outside /home/g/p/riddle/art/staging/town_props/. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+
+For each asset: generate at the stated size and save the final PNG (sRGB) to the exact path. BACKGROUND: a TRANSPARENT
+background (PNG alpha) is best; if the tool returns an opaque image, the background must be ONE flat uniform pure MAGENTA
+#FF00FF (255,0,255) edge to edge (the pipeline keys it) — never paper, never a floor, never a gradient. Self-check each
+output: the four corners transparent or magenta, no magenta/pink-violet inside the subject, the subject not cropped;
+regenerate that asset once if not.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+=== SPRITE RULES (on top of the style) ===
+- ONE object, seen from the high three-quarter town camera, centred with ~10 % margin, nothing cropped.
+- INK: one closed blue-black INK #0d0c14 contour around the whole silhouette, 12-16 px thick at 1024 px (it must survive a
+  downscale to 40-96 px tall), thicker on the lower/right shadow side; a few interior ink lines on the big forms only.
+- LIGHT: cold MOONLIGHT from ABOVE: MIST #a4bcd6 rims on the top edges, the lower half falling into DUSK/UMBRA. The lit side
+  must stay clearly lighter than a dark stone floor; keep one pale element high on the subject so it pops at game size.
+- WASH on the GRID at sprite scale: chunky clusters (~12 px at 1024), washes with granulation inside them; no hairline
+  detail, no smooth airbrushed gradients, no noisy speckle. Paper grain only faintly inside the lightest washes.
+- COLOUR: only the palette above. BLOOD only where the brief puts it; EMBER only for a real flame.
+- NOTHING but the subject: NO floor, NO contact shadow, NO cast-shadow pool, NO scenery, NO paper sheet, NO frame, NO glow
+  halo, NO text or letters.
+
+=== READABILITY (these props are shown TINY: 5-8 px tall in a 1x town view, 10-16 device px) ===
+One bold readable mass and ONE tag; no small detail survives. Judge each output shrunk to 16 px tall before accepting it.
+Keep the materials and palette of the town family (open town_blacksmith_1.png, town_storehouse_1.png, town_lamppost.png and town_well.png).
+
+=== ASSETS ===
+--- 1. id: town_bench
+Output path: /home/g/p/riddle/art/staging/town_props/town_bench.png
+Size: exactly 1536x1024 px (width x height), PNG; the bench fills a ~3:1 box centred in the canvas.
+Shown in game at about 8 px tall (16 device px), beside the recovery pool; judge readability at that size.
+Brief: a plain village BENCH where a resting hero sits by the recovery pool: one thick weathered wooden PLANK seat on two squat fieldstone or timber legs, no back rest, wide and low (about 3:1), the seat top a broad pale MIST-lit plank so it reads as a flat seat from above, the legs and front edge in UMBRA/DUSK; seen from the town's high three-quarter camera (the top and the front both visible, the front facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. The long flat lit seat is the tag. No person on it, no cushion, no BLOOD, no EMBER.
+
+--- 2. id: town_lantern
+Output path: /home/g/p/riddle/art/staging/town_props/town_lantern.png
+Size: exactly 1024x1024 px (width x height), PNG.
+Shown in game at about 5-8 px tall (10-16 device px), carried by night workers and hung by the pool; judge readability at that size.
+Brief: a small hand-carried iron LANTERN: a square INK iron cage with a MOON top cap and a ring handle on top, four dark glass panes and a warm EMBER flame inside (a BONE core, the only warm colour), a GILT base plate; upright and slightly taller than wide; seen from the town's high three-quarter camera (the top and the front both visible, the front facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. The glowing pane in the dark cage is the tag. No post, no hand, no glow halo outside the cage (the game adds the light pool).
+
+When both are saved, list the final paths and sizes. Do nothing else.
+
+PENDING (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, then python3 art/pack.py && python3 art/art-qc.py. Packed frames win over the primitives automatically (TownAtlas cuts a packed frame before falling back); render/town.ts draws town_bench at h 8 (grounded) and town_lantern at h 5 (carried) / 8 (pool), and render/town.ts drawPrimitive stays the fallback (it has a town_lantern branch; town_bench has no branch yet and falls to the generic final shape). Manifest entries to add:
+  {"id": "town_bench", "kind": "town", "bg": "keyed", "gen": "1536x1024", "master_h": 32, "texel_h": 16, "description": "a plain village bench by the recovery pool: one thick lit plank seat on two squat legs, wide and low. (Cut225, art/prompts/town_props_bench_lantern.txt.)"}
+  {"id": "town_lantern", "kind": "town", "bg": "keyed", "gen": "1024x1024", "master_h": 32, "texel_h": 16, "description": "a small hand-carried iron lantern: square ink cage, ring handle, one warm ember flame inside. (Cut225, art/prompts/town_props_bench_lantern.txt.)"}

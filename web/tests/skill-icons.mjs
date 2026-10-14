@@ -14,12 +14,12 @@ const shots = process.env.IDLEVER_SKILL_ICON_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const nodes = [];
 for (const group of source.matchAll(
-  /Class::(Fighter|Rogue|Ranger|Caster|Gunner) => \[([\s\S]*?)(?=\n        Class::|\n    };)/g,
+  /Class::(Fighter|Rogue|Ranger|Caster|Gunner|Clown|Engineer) => \[([\s\S]*?)(?=\n        Class::|\n    };)/g,
 ))
   for (const row of group[2].matchAll(/\(\s*"([a-z_]+)",\s*"([^"]+)",/g))
     nodes.push({ id: `${group[1].toLowerCase()}_${row[1]}`, name: row[2], cls: group[1] });
-assert.equal(nodes.length, 30);
-assert.equal(new Set(nodes.map((x) => x.id)).size, 30);
+assert.equal(nodes.length, 42);
+assert.equal(new Set(nodes.map((x) => x.id)).size, 42);
 const b = await launchBrowser({ gpu: process.env.IDLEVER_ICON_GPU === "1" });
 const errors = [];
 try {
@@ -118,8 +118,8 @@ try {
     }
     return { cells, unique: unique.size, ids: inventories, fallback: fallback.outerHTML };
   }, nodes);
-  assert.equal(checks.cells, 270);
-  assert.equal(checks.unique, 30);
+  assert.equal(checks.cells, 378);
+  assert.equal(checks.unique, 42);
   assert.equal(errors.length, 0);
   if (shots) {
     await p.screenshot({ path: `${shots}/1440-skill-board.png`, fullPage: true });

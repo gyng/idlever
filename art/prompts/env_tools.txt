@@ -1,0 +1,61 @@
+You are painting PIXEL DUNGEON PROP SPRITES for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
+top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
+else in the repository): /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/targets/style/watch_fens.png, /home/g/p/riddle/art/generated/env_torch.png, /home/g/p/riddle/art/generated/env_brazier.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
+Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix / file copy; do NOT
+touch anything outside /home/g/p/riddle/art/staging/env_tools/. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+
+Save each final PNG (sRGB) to the exact path at the exact size; resample with PIL (Lanczos) if needed, keeping the aspect (crop the long side, never stretch). When done, look at each output once and regenerate it once if it breaks a rule below.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+=== HOW THESE ARE USED (critical) ===
+Each asset is a TINY dungeon prop: art/make_env.py box-downscales the 1024 px image to a 16x16 pixel grid and the game draws it on
+the dungeon floor at 8-16 screen px, next to the hero sprite (open env_torch.png and env_brazier.png: the same family). Paint it AS
+that tiny 16x16 tile enlarged (each cell a ~64 px square, stepped edges, washes inside the cells), BOLD simple shapes, an INK contour
+one cell thick, light from above, a three-quarter top-down view (the object's top and front both visible). It keeps its own colours
+(a HUE prop: not recoloured per biome). The object only, centred and bottom-centred with ~6 % margin, on a TRANSPARENT background
+(or, if the tool gives an opaque image, a flat uniform pure MAGENTA #FF00FF edge to edge); no floor, no cast shadow, no glow halo, no
+text, no magenta on the object. The two props are friendly CONSTRUCTS the hero places; they must read as two DIFFERENT silhouettes at
+8 px: the decoy TALL and THIN with a flag, the sentry SQUAT and WIDE on splayed legs. Both are ink-and-metal mechanisms, never
+creatures.
+
+=== ASSETS ===
+1) /home/g/p/riddle/art/staging/env_tools/env_tool_decoy.png — 1024x1024 — the CLOWN's BELL LURE: a thin dark INK iron POST (a
+   shepherd's-crook top bending right) planted in a small three-stone footing, a dull GILT BELL hanging from the crook with a BONE
+   highlight and an INK clapper showing under its mouth, and a small split swallowtail BLOOD #c01530 PENNANT flying from the post top
+   (the only red; CLOT in its fold). Tall, thin, asymmetric: the bell and the pennant are the tag. Fills ~70 % of the height.
+2) /home/g/p/riddle/art/staging/env_tools/env_tool_sentry.png — 1024x1024 — the ENGINEER's SENTRY: a squat riveted iron TURRET head (a
+   rounded box in DUSK/MOON steel washes with MIST rims on its top edge) on a splayed iron TRIPOD (three thick INK legs spreading wide
+   to the floor), a short thick BARREL pointing RIGHT, one round cold MIST LENS on the turret front, a thin GILT collar where the head
+   meets the tripod. Squat and wide, symmetric legs: the tripod and barrel are the tag. Fills ~75 % of the width.
+When both are saved, list the final paths and sizes. Do nothing else.
+
+PENDING (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, add "tool_decoy"
+and "tool_sentry" to the HUE set in art/make_env.py (so they keep their colours and write art/tiles/env_tool_<kind>.png, loaded as
+`tile:env_tool_<kind>`), then python3 art/make_env.py && python3 art/pack.py && python3 art/art-qc.py. Until then render/atlas.ts
+`tool()` draws the 8x8 primitives in web/src/render/tool-sprites.ts (which stay the fallback). Manifest entries to add:
+  {"id": "env_tool_decoy", "kind": "env_prop", "bg": "env_keyed", "gen": "1024x1024", "texels": "16x16", "description": "Cut225 Clown bell lure: a thin iron crook post on a stone footing, a dull gilt bell hanging from the crook, a small split blood-red pennant at the top. Tall and thin. art/prompts/env_tools.txt."}
+  {"id": "env_tool_sentry", "kind": "env_prop", "bg": "env_keyed", "gen": "1024x1024", "texels": "16x16", "description": "Cut225 Engineer sentry: a squat riveted iron turret on a splayed tripod, a short barrel pointing right, one cold lens, a gilt collar. Squat and wide. art/prompts/env_tools.txt."}

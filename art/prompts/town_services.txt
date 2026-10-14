@@ -1,0 +1,78 @@
+You are painting TOWN SERVICE BUILDING SPRITE masters for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
+top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
+else in the repository): /home/g/p/riddle/art/ui/targets/style/town.png, /home/g/p/riddle/art/generated/town_blacksmith_1.png, /home/g/p/riddle/art/generated/town_storehouse_1.png, /home/g/p/riddle/art/generated/town_well.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
+Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix / file copy; do NOT
+touch anything outside /home/g/p/riddle/art/staging/town_services/. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+
+For each asset: generate at the stated size and save the final PNG (sRGB) to the exact path. BACKGROUND: a TRANSPARENT
+background (PNG alpha) is best; if the tool returns an opaque image, the background must be ONE flat uniform pure MAGENTA
+#FF00FF (255,0,255) edge to edge (the pipeline keys it) — never paper, never a floor, never a gradient. Self-check each
+output: the four corners transparent or magenta, no magenta/pink-violet inside the subject, the subject not cropped;
+regenerate that asset once if not.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+=== SPRITE RULES (on top of the style) ===
+- ONE object, seen from the high three-quarter town camera, centred, nothing cropped; it fills the stated box with ~8 % margin.
+- INK: one closed blue-black INK #0d0c14 contour around the whole silhouette, 12-16 px thick at 1024 px (it must survive a
+  downscale to 40-96 px tall), thicker on the lower/right shadow side; a few interior ink lines on the big forms only.
+- LIGHT: cold MOONLIGHT from ABOVE: MIST #a4bcd6 rims on the top edges, the lower half falling into DUSK/UMBRA. The lit side
+  must stay clearly lighter than a dark stone floor; keep one pale element high on the subject so it pops at game size.
+- WASH on the GRID at sprite scale: chunky clusters (~12 px at 1024), washes with granulation inside them; no hairline
+  detail, no smooth airbrushed gradients, no noisy speckle. Paper grain only faintly inside the lightest washes.
+- COLOUR: only the palette above. BLOOD only where the brief puts it; EMBER only for a real flame.
+- NOTHING but the subject: NO floor, NO contact shadow, NO cast-shadow pool, NO scenery, NO paper sheet, NO frame, NO glow
+  halo, NO text or letters.
+
+=== READABILITY (the services are shown small: the Guild ~42 px tall, the pool ~22 px, the station ~6 px) ===
+One bold readable mass, 3-4 signature details. The tag must be visible in the SILHOUETTE alone. Judge each output shrunk to its game size before accepting it.
+OPTIONAL UPGRADE (Cut224 accepted the code-painted versions; these replace them only if they read better). Match the existing code-native look in web/src/render/home-service-art.ts (you may not open it; it is described here): dark slate roof planes with MIST ridges, timber-framed warm-grey plaster, a stone foundation, one warm EMBER window; the pool a ring of interlocking wedge stones around dark stepped water. Keep the materials of the town family (open town_blacksmith_1.png, town_storehouse_1.png, town_well.png).
+
+=== ASSETS ===
+--- 1. id: town_service_guild
+Output path: /home/g/p/riddle/art/staging/town_services/town_service_guild.png
+Size: exactly 1536x1024 px (width x height), PNG; the building fills the canvas width with ~8 % margin (the game draws it at 1.5:1).
+Shown in game at about 42 px tall; judge readability at that size.
+Brief: the GUILD HALL (where the scout and the workers are hired), a medieval guildhouse: a tall STEEP gable of dark overlapping SLATE courses (the gable end facing the viewer, the long roof receding to the upper-right, MIST moonlit ridge), timber-framed walls of warm grey plaster held by dark timber posts and diagonal braces, a fieldstone foundation course; a recessed ARCHED wooden door on the gable front, a small notice board with two pinned BONE papers (blank, no writing) beside it, a small hanging square signboard on an iron bracket (blank, no letters, no symbol), one side window with a warm EMBER glow and a small EMBER lamp at the corner; seen from the town's high three-quarter camera (the top and the front both visible, the front facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. The steep slate gable over the timber frame is the tag: it must read 'guild hall', not a church, not a house with a chimney, no steeple, no cross.
+
+--- 2. id: town_service_pool
+Output path: /home/g/p/riddle/art/staging/town_services/town_service_pool.png
+Size: exactly 1536x1024 px (width x height), PNG; the pool fills a wide ~2.64:1 box centred in the canvas (the game draws it at that aspect), transparent above and below.
+Shown in game at about 22 px tall; judge readability at that size.
+Brief: the RECOVERY POOL (where returned heroes rest): a wide shallow OVAL pool rimmed by about fourteen interlocking wedge-shaped fieldstone blocks (each block a separate lit-topped stone with dark seams, a SEGMENTED ring, not a smooth ring), dark still water inside stepping down in two or three bands from MOON at the near edge to DUSK/UMBRA at the far side, two small MIST ripple glints, a few low stone steps on the near rim, small tufts of moss between stones; seen from the town's high three-quarter camera (the top and the front both visible, the front facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. The segmented stone oval around dark water is the tag. No fountain, no statue, no spout, no steam, no bathers.
+
+--- 3. id: town_service_station
+Output path: /home/g/p/riddle/art/staging/town_services/town_service_station.png
+Size: exactly 1536x1024 px (width x height), PNG; the pad fills a very wide ~3.33:1 box centred in the canvas, transparent above and below.
+Shown in game at about 6 px tall (one per resident, beside the clone vat); judge readability at that size.
+Brief: a resident's STATION by the clone vat: a low flat round iron-rimmed STONE PAD set into the ground, a dark DUSK disc inside a thick grey iron ring with a single MIST rim highlight along its top edge and one thin MIST line across it (a seam), nearly flat, seen from above at the town camera (a wide ellipse); seen from the town's high three-quarter camera (the top and the front both visible, the front facing the viewer and slightly to the lower-left, exactly like town_blacksmith_1.png and town_storehouse_1.png), INK line and washes on the pixel grid, standing on nothing. It must read as a flat round pad, nothing standing on it, no glyphs, no light.
+
+When all are saved, list the final paths and sizes. Do nothing else.
+
+PENDING (Cut225, optional upgrade of the Cut224 code-native services): not generated. After review and a side-by-side against the code-painted versions at 400/1440 (Root decides), copy the accepted PNGs into art/generated/, add the manifest entries below, then python3 art/pack.py && python3 art/art-qc.py. TownAtlas cuts a packed frame before calling paintHomeService, so packed art wins; web/src/render/home-service-art.ts stays the fallback, and render/town.ts ASPECT (guild 1.5, pool 2.636, station 3.333) only governs that fallback. Check the Cut224 depth/relief mapping (town-volume.ts) still targets the packed frames. Manifest entries to add:
+  {"id": "town_service_guild", "kind": "town", "bg": "keyed", "gen": "1536x1024", "master_h": 168, "texel_h": 84, "description": "the Guild hall: steep slate gable over a timber-framed plaster front, arched door, notice board, ember window. (Cut225 optional upgrade, art/prompts/town_services.txt.)"}
+  {"id": "town_service_pool", "kind": "town", "bg": "keyed", "gen": "1536x1024", "master_h": 88, "texel_h": 44, "description": "the recovery pool: a segmented ring of wedge stones around dark stepped water. (Cut225 optional upgrade, art/prompts/town_services.txt.)"}
+  {"id": "town_service_station", "kind": "town", "bg": "keyed", "gen": "1536x1024", "master_h": 24, "texel_h": 12, "description": "a resident station by the clone vat: a flat round iron-rimmed stone pad. (Cut225 optional upgrade, art/prompts/town_services.txt.)"}

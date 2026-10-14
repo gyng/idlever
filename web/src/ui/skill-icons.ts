@@ -128,6 +128,84 @@ const art: Record<string, Mark[]> = {
     { d: /* copy:none */ "M4 3H10V19H4ZM16 14H29V19H23L20 29H14L17 19H16Z" },
     line(/* copy:none */ "M13 4L23 6L22 10", "mist"),
   ],
+  // Cut225 earned classes: the Clown's bell, curtain and masks; the Engineer's gears, sentries and masts.
+  clown_bellkeeper: [
+    { d: /* copy:none */ "M16 3Q9 3 9 13V20L5 25H27L23 20V13Q23 3 16 3Z" },
+    line(/* copy:none */ "M10 19H22", "ink"),
+    { d: /* copy:none */ "M13.5 28A2.5 2.5 0 1 0 18.5 28A2.5 2.5 0 1 0 13.5 28", tone: "mist" },
+    line(/* copy:none */ "M3 8Q0 13 3 18M29 8Q32 13 29 18", "mist"),
+  ],
+  clown_false_exit: [
+    { d: /* copy:none */ "M4 30V12Q4 2 16 2Q28 2 28 12V30ZM9 30V13Q9 7 16 7Q23 7 23 13V30Z" },
+    { d: /* copy:none */ "M9 13Q9 7 16 7Q13 15 18 30H9Z", tone: "mist" },
+    line(/* copy:none */ "M10 20L14 19", "ink"),
+  ],
+  clown_ringmaster: [
+    { d: /* copy:none */ "M9 22L10 5H22L23 22Z" },
+    { d: /* copy:none */ "M2 23Q16 19 30 23Q16 28 2 23Z" },
+    line(/* copy:none */ "M10 17H22", "ink"),
+    { d: /* copy:none */ "M27 2L28 5L31 6L28 7L27 10L26 7L23 6L26 5Z", tone: "mist" },
+  ],
+  clown_turncoat: [
+    {
+      d: /* copy:none */ "M4 9Q16 3 28 9Q28 22 16 27Q4 22 4 9ZM8.5 12L11.5 9L14.5 12L11.5 15Z",
+    },
+    { d: /* copy:none */ "M16 5Q22 5.5 28 9Q28 22 16 27Z", tone: "ink" },
+    { d: /* copy:none */ "M17.5 12L20.5 9L23.5 12L20.5 15Z", tone: "mist" },
+  ],
+  clown_cruel_joke: [
+    { d: /* copy:none */ "M15.5 13.5L18.5 16.5L6 27L2 30L5 26Z", tone: "mist" },
+    line(/* copy:none */ "M12.5 15.5L16.5 19.5", "ink"),
+    {
+      d: /* copy:none */ "M21 3Q25 3 24 7Q29 7 28 11Q29 15 25 15Q25 19 21 18Q17 19 17 15Q13 15 14 11Q13 7 18 7Q17 3 21 3ZM19 11A2 2 0 1 0 23 11A2 2 0 1 0 19 11",
+    },
+  ],
+  clown_last_laugh: [
+    {
+      d: /* copy:none */ "M5 8Q16 2 27 8Q29 20 16 29Q3 20 5 8ZM8.5 13Q11.5 8 14.5 13Q11.5 11.5 8.5 13ZM17.5 13Q20.5 8 23.5 13Q20.5 11.5 17.5 13ZM11 20Q16 26 21 20Q16 23 11 20Z",
+    },
+    { d: /* copy:none */ "M9.5 14Q11.5 17 9.5 18.5Q7.5 17 9.5 14Z", tone: "mist" },
+  ],
+  engineer_watchmaker: [
+    {
+      d: /* copy:none */ "M26.7 13.6L29.9 14.1L29.9 17.9L26.7 18.4L25.3 21.9L27.2 24.4L24.4 27.2L21.9 25.3L18.4 26.7L17.9 29.9L14.1 29.9L13.6 26.7L10.1 25.3L7.6 27.2L4.8 24.4L6.7 21.9L5.3 18.4L2.1 17.9L2.1 14.1L5.3 13.6L6.7 10.1L4.8 7.6L7.6 4.8L10.1 6.7L13.6 5.3L14.1 2.1L17.9 2.1L18.4 5.3L21.9 6.7L24.4 4.8L27.2 7.6L25.3 10.1ZM9.5 16A6.5 6.5 0 1 0 22.5 16A6.5 6.5 0 1 0 9.5 16",
+    },
+    line(/* copy:none */ "M16 11V16L19.5 18", "mist"),
+  ],
+  engineer_bastion: [
+    { d: /* copy:none */ "M7 5H19Q22 5 22 8V13H7Z" },
+    { d: /* copy:none */ "M22 7H29V10H22Z", tone: "mist" },
+    line(/* copy:none */ "M14 13L8 23M14 13L21 23M14 13V23"),
+    { d: /* copy:none */ "M3 23H29V30H3Z", tone: "mist" },
+    line(/* copy:none */ "M3 26.5H29M10 23V26.5M21 23V26.5M15.5 26.5V30", "ink"),
+  ],
+  engineer_artificer: [
+    {
+      d: /* copy:none */ "M21.8 17.1L24.4 17.4L24.4 20.6L21.8 20.9L20.6 23.9L22.2 25.9L19.9 28.2L17.9 26.6L14.9 27.8L14.6 30.4L11.4 30.4L11.1 27.8L8.1 26.6L6.1 28.2L3.8 25.9L5.4 23.9L4.2 20.9L1.6 20.6L1.6 17.4L4.2 17.1L5.4 14.1L3.8 12.1L6.1 9.8L8.1 11.4L11.1 10.2L11.4 7.6L14.6 7.6L14.9 10.2L17.9 11.4L19.9 9.8L22.2 12.1L20.6 14.1ZM9.5 19A3.5 3.5 0 1 0 16.5 19A3.5 3.5 0 1 0 9.5 19",
+    },
+    { d: /* copy:none */ "M25 1L18 12H23L20 21L29 9H24Z", tone: "mist" },
+  ],
+  engineer_surveyor: [
+    line(/* copy:none */ "M13 11L7 29M13 11L19 29M13 11V28"),
+    { d: /* copy:none */ "M4 9L19 4L20.5 8.5L5.5 13.5Z" },
+    line(/* copy:none */ "M23 13Q27 18 23 23M26 9Q31 18 26 27", "mist"),
+  ],
+  engineer_mobile_works: [
+    { d: /* copy:none */ "M8 6H18Q20 6 20 8V17H8Z" },
+    { d: /* copy:none */ "M20 9H28V12H20Z", tone: "mist" },
+    { d: /* copy:none */ "M5 17H24V21H5Z" },
+    {
+      d: /* copy:none */ "M6 25A3.5 3.5 0 1 0 13 25A3.5 3.5 0 1 0 6 25M16 25A3.5 3.5 0 1 0 23 25A3.5 3.5 0 1 0 16 25",
+      tone: "mist",
+    },
+    line(/* copy:none */ "M1 9H5M1 13H5", "mist"),
+  ],
+  engineer_relay: [
+    { d: /* copy:none */ "M11 30L16 9L21 30Z" },
+    line(/* copy:none */ "M13.5 25L18 17M18.5 25L14 17", "ink"),
+    { d: /* copy:none */ "M13 7A3 3 0 1 0 19 7A3 3 0 1 0 13 7", tone: "mist" },
+    line(/* copy:none */ "M9 3Q6 7 9 11M23 3Q26 7 23 11M5 1Q1 7 5 13M27 1Q31 7 27 13", "mist"),
+  ],
 };
 export const SKILL_ICON_IDS = Object.freeze(Object.keys(art));
 const fallback: Mark[] = marks(/* copy:none */ "M16 3L20 11L29 16L20 21L16 29L12 21L3 16L12 11Z");

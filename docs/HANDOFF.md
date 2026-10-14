@@ -219,29 +219,34 @@ then key/review/pack/qc (`python3 art/pack.py && python3 art/art-qc.py`) and add
 ids to art/manifest.json. The agent classifier blocks Claude from launching codex;
 the owner launches it.
 
-**Prompt written, generation pending (owner launch):**
+**Prompt written, generation pending (owner launch):** each prompt writes to
+art/staging/<group>/ and ends with a PENDING note naming the manifest entries
+to add (the manifest has no pending-id convention, so none were added; pack/qc
+stay byte-identical).
 - `town_service_device`, `town_service_device_active_0/1` (Clone vat, Cut226):
   art/prompts/town_clone_vat.txt → art/staging/clone_vat/. Code primitive today:
   web/src/render/home-service-art.ts.
-
-**Need a prompt + codex generation (primitive today):**
-- Clown/Engineer hero sprites: `hero_clown`, `hero_engineer` (+ `_male/_female/_cat`
-  variants like the other five classes) — atlas has none; the watch draws a
-  primitive hero.
-- Clown/Engineer portraits: web/public/ui/portraits/hero_clown*.webp,
-  hero_engineer*.webp (Hub/roster fall back).
-- Class verb icons `v_clown`, `v_engineer` (web/public/ui/icons; class-icons.ts falls
-  back to ♧ / ⚙ glyphs).
-- Tool sprites `env_tool_decoy`, `env_tool_sentry` (render/atlas.ts; 8×8
-  primitives in render/tool-sprites.ts).
-- Town services `town_service_guild`, `town_service_pool`, `town_service_station`
-  (code-painted ink/wash in home-service-art.ts; Cut224 accepted them as
-  primitives, upgrade optional).
-- Town props `town_bench`, `town_lantern` (primitive branches in render/town.ts).
+- Clown/Engineer hero sprites `hero_{clown,engineer}_{male,female,cat}` +
+  default aliases (copies of `_male`), 1024×1536 keyed:
+  art/prompts/hero_clown_engineer.txt → art/staging/hero_clown_engineer/.
+- Portraits `hero_clown*`, `hero_engineer*` (1024 opaque masters → art/ui/portraits,
+  tools/ui-skin.py → 256 px webp): art/prompts/portraits_clown_engineer.txt.
+- Class insignia `v_clown`, `v_engineer` (256 RGBA → art/ui/icons, ui-skin → 96 px):
+  art/prompts/icons_class_clown_engineer.txt. class-icons.ts glyphs ♧ / ⚙ until then.
+- Tool props `env_tool_decoy`, `env_tool_sentry` (env register, 16×16 HUE props;
+  add both to make_env.py HUE): art/prompts/env_tools.txt. Primitives:
+  render/tool-sprites.ts.
+- Town props `town_bench`, `town_lantern`: art/prompts/town_props_bench_lantern.txt.
+  town.ts drawPrimitive has a lantern branch; `town_bench` has none and falls to
+  the generic final branch (a beast-shaped block) until art or a primitive lands.
+- Optional service upgrades `town_service_guild`, `town_service_pool`,
+  `town_service_station`: art/prompts/town_services.txt (code-painted
+  home-service-art.ts remains accepted and the fallback).
 
 **Code-drawn by design (not codex):**
-- Class skill icons are SVG marks in web/src/ui/skill-icons.ts: 30 exist (6 × five
-  classes); **Clown and Engineer have none (12 pending)** for their six-node trees.
+- Class skill icons are SVG marks in web/src/ui/skill-icons.ts: 42 exist (6 × seven
+  classes, Clown/Engineer added 2026-10-14; web/tests/skill-icons.mjs checks 42;
+  contact sheet docs/evidence/cut225/skill-icons/).
 - `town_ground_shadow_*`, `town_wind_grass_*` are procedural effects.
 - Paper doll uses class art + four anchors, not layered equipment (open).
 

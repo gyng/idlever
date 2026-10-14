@@ -1,0 +1,53 @@
+You are painting HERO PORTRAITS for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
+top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
+else in the repository): /home/g/p/riddle/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/portraits/hero_rogue_male.png, /home/g/p/riddle/art/ui/portraits/hero_caster_female.png, /home/g/p/riddle/art/ui/portraits/hero_ranger_cat.png, /home/g/p/riddle/art/ui/portraits/hero_gunner.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
+Use your built-in image_gen tool, one call per asset below. Do NOT write code beyond a PIL resample / alpha fix / file copy; do NOT
+touch anything outside /home/g/p/riddle/art/staging/portraits_clown_engineer/. Do not leave _inspection_*.png or any other scratch file behind. OVERWRITE existing files.
+
+Save each final PNG (sRGB) to the exact path at the exact size; resample with PIL (Lanczos) if needed, keeping the aspect (crop the long side, never stretch). When done, look at each output once and regenerate it once if it breaks a rule below.
+
+=== STYLE (docs/ART_DIRECTION.md, approved — the FIRST and loudest rule) ===
+STYLE: gothic moonlit dark fantasy, a HYBRID of pixel art and painted illustration, leaning PAINTED. It looks
+like a late-1980s anime-magazine watercolour illustration printed on paper, painted over a coarse visible pixel
+grid: forms are blocked in chunky square pixel clusters with stepped edges (the pixel grid is visible at a
+glance), but the fills inside them are transparent watercolour WASHES: soft granulation, pigment pooling darker
+at the edge of each wash, slight colour bleed across a boundary, warm cream PAPER GRAIN showing through the
+lightest areas, a fine HALFTONE dot screen only inside the deepest shadows (like offset print). Contours are
+HAND-INKED: one confident blue-black ink line around every silhouette (thick on the shadow side, thin on the lit
+side), a few fine ink hatching lines in the shadows, nothing feathered. Silhouettes are ELEGANT and LONG: tall
+figures, long flowing cloaks and coats that trail and flare, sharp shapes, dramatic gesture, but each figure is
+ONE bold readable mass with a clear shape against the ground (legible at 48 px tall).
+PALETTE (stark and limited; name the colours, use nothing outside them except the biome tint):
+  INK #0d0c14 (blue-black: outlines, the deepest shadow), UMBRA #1c1b2b (shadow), DUSK #2b3350 (mid shadow),
+  MOON #4d6c99 (moonlit mid-tone), MIST #a4bcd6 (moonlit highlight), BONE #eadfc5 (paper, skin highlight, bone,
+  moon), BLOOD #c01530 (THE signature accent), CLOT #5c0b1c (dark blood), EMBER #e8923a (torch flame and its
+  small warm pool ONLY), GILT #b89448 (worn gold on metal trims, used sparingly).
+  Per-place tint: the mid-tones (DUSK and MOON) shift toward the place's tint colour; INK, BONE and BLOOD never
+  change.
+VALUES: high contrast. About 60 % of the frame sits in INK/UMBRA shadow; light comes from a cold MOONLIGHT from
+above (blue-white rims on the top edges of forms) and small warm EMBER torch pools. BLOOD red covers at most
+~8 % of any frame and only marks what matters: the hero's cloak, blood, danger, the one primary button.
+NEVER: text other than the few words asked for, logos, signatures, watermarks, photorealism, glossy 3D render,
+smooth airbrushed digital gradients, lens flares, a warm brown/amber overall cast, rainbow saturation, noisy
+dense detail, clean vector flat design, chibi proportions.
+
+=== PORTRAIT RULES (hero_sheet.png's circular portrait is the model) ===
+A head-and-shoulders BUST filling a 1024x1024 OPAQUE square (the game masks it to a circle, so keep the face inside the central
+70 % circle): the face in three-quarter view looking right, cold moonlight from above-left, a HALFTONE screen in the shadows, the
+paper showing through the highlights, loose ink hatching in a dark INK/DUSK washed background. Sharp gothic-anime features (narrow
+eyes, a few confident ink strokes), a clear pale BONE face. Heroes wear the BLOOD-red cloak collar. No text, no frame, no ring.
+Match the four accepted hero portraits listed above exactly (same painter, same bust framing and 3/4 turn to the right, same
+moonlight, washes and background). Each portrait is the SAME character as its game sprite in /home/g/p/riddle/art/staging/hero_clown_engineer/<id>.png when that file exists (open it: match its hair, kit and colours); otherwise follow
+the brief alone.
+
+=== ASSETS ===
+1) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_clown_male.png — 1024x1024 OPAQUE — the CLOWN (a worn gothic court fool, not a circus clown, no face paint, no red nose): an angular two-pointed split FOOL'S CAP in INK and DUSK halves with a small GILT bell at each tip, a short ruffled BONE collar ruff over a dark INK/DUSK harlequin doublet with ONE BLOOD diamond on the chest, a BLOOD cloak collar, a small dull GILT hand-bell on a cord held up beside the face; a sly, quiet, unsettling half-smile; a young MAN, short dark hair (nothing past the collar).
+2) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_clown_female.png — 1024x1024 OPAQUE — the CLOWN (a worn gothic court fool, not a circus clown, no face paint, no red nose): an angular two-pointed split FOOL'S CAP in INK and DUSK halves with a small GILT bell at each tip, a short ruffled BONE collar ruff over a dark INK/DUSK harlequin doublet with ONE BLOOD diamond on the chest, a BLOOD cloak collar, a small dull GILT hand-bell on a cord held up beside the face; a sly, quiet, unsettling half-smile; a young WOMAN, a long dark braid falling over one shoulder.
+3) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_clown_cat.png — 1024x1024 OPAQUE — the CLOWN (a worn gothic court fool, not a circus clown, no face paint, no red nose): an angular two-pointed split FOOL'S CAP in INK and DUSK halves with a small GILT bell at each tip, a short ruffled BONE collar ruff over a dark INK/DUSK harlequin doublet with ONE BLOOD diamond on the chest, a BLOOD cloak collar, a small dull GILT hand-bell on a cord held up beside the face; a sly, quiet, unsettling half-smile; a cat-folk hero: a human face with yellow eyes, wild dark hair and two LARGE upright black CAT EARS on top of the head.
+4) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_engineer_male.png — 1024x1024 OPAQUE — the ENGINEER (a gothic tinkerer, not steampunk-cute): brass-rimmed round GOGGLES pushed up on the brow (MIST lens glints), a dark leather work-coat collar over a leather apron strap with GILT buckles, a BLOOD cloak collar, the flanged head of an iron mace and the top of an iron wrench over the shoulder; focused, practical, a smudge of soot; a young MAN, short dark hair (nothing past the collar).
+5) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_engineer_female.png — 1024x1024 OPAQUE — the ENGINEER (a gothic tinkerer, not steampunk-cute): brass-rimmed round GOGGLES pushed up on the brow (MIST lens glints), a dark leather work-coat collar over a leather apron strap with GILT buckles, a BLOOD cloak collar, the flanged head of an iron mace and the top of an iron wrench over the shoulder; focused, practical, a smudge of soot; a young WOMAN, a long dark braid falling over one shoulder.
+6) /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_engineer_cat.png — 1024x1024 OPAQUE — the ENGINEER (a gothic tinkerer, not steampunk-cute): brass-rimmed round GOGGLES pushed up on the brow (MIST lens glints), a dark leather work-coat collar over a leather apron strap with GILT buckles, a BLOOD cloak collar, the flanged head of an iron mace and the top of an iron wrench over the shoulder; focused, practical, a smudge of soot; a cat-folk hero: a human face with yellow eyes, wild dark hair and two LARGE upright black CAT EARS on top of the head.
+ALIASES: save a byte-identical copy of hero_clown_male.png as /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_clown.png and of hero_engineer_male.png as /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_engineer.png (the default look, like hero_rogue.png / hero_fighter.png).
+When all are saved, list the final paths and sizes. Do nothing else.
+
+PENDING (Cut225): not generated. After review, copy the eight PNGs into art/ui/portraits/ (1024x1024 opaque masters, like hero_rogue*.png) and run python3 tools/ui-skin.py: it writes web/public/ui/portraits/hero_clown*.webp and hero_engineer*.webp (256x256, quality 88) and lists them in web/src/ui/skin.json. No art/manifest.json entry (portraits are not atlas sprites). Until then the Hub/roster fall back to the class glyph.
