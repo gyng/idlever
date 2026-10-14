@@ -173,6 +173,8 @@ impl Session {
             }
         }
         l.selected_loadout=self.active.loadout.clone();
+        // Cut 228: the Forge's present work across every hero's own clock (read model)
+        if self.active.lineage.town.home!=Some(false) { l.town.forge_work=crate::town::forge_work(std::iter::once(&self.active).chain(self.others.values())); }
         let slot=|id:u32,g:&Game| {
             // (a run the rest clock readied but has not begun is no delve: the hero still rests)
             let live=g.run.as_ref().filter(|r|r.over.is_none()&&(r.turn>0||g.lineage.rest_left==0));

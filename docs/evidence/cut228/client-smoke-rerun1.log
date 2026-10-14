@@ -1,0 +1,19 @@
+client suite: targeted (9 selected; 158 current full; 201 exhaustive groups)
+FAIL hero-hub        1248.1s (1247.1s)  Node.js v26.5.0
+       - waiting for locator('.sheet-wrap:not(.under)').locator('[data-hub-tab="companions"]')
+       name: 'TimeoutError'
+         at section (/home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/hero-hub.mjs:124:54)
+         at async staleResidents (/home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/hero-hub.mjs:857:9)
+         at async file:///home/g/p/riddle/.claude/worktrees/agent-a2a59d9560106d354/web/tests/hero-hub.mjs:987:5 {
+ok   fights:break    1390.7s (142.6s)  fights: ok (6 checks)
+ok   ui:frame        1437.1s (46.2s)  ui: ok (60 checks · 44.6s)
+ok   ctxloss         1452.6s (61.9s)  ctxloss: ok (19 checks)
+ok   screens         1464.3s (73.4s)  screens: ok (59 checks · 9 screens linted · 35 buttons clicked · 71.9s)
+ok   watch-console   1500.1s (63.0s)  1440 labels/touch/geometry/speed/pause/Town PASS
+ok   death-fix-discovery 1512.9s (60.3s)  1440 13 comparison boundaries / actual free fix ordering / prices / no mutation PASS
+FAIL clarity:paint   1652.8s (139.9s)  clarity paint: FAIL (2 assertion(s), 0 error(s))
+     clarity paint: FAIL (2 assertion(s), 0 error(s))
+     FAIL an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (1957 ms) [retried once: load 61.1 on 32 cores; first reading: an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (1965 ms)]
+     FAIL real wasm: the refine lands ≤ 3 s (quiet 5391/5362/4764 ms; after a burst NaN; slow measures in flight 3085)
+ok   watch-live-edge 1692.1s (39.3s)  watch-live-edge: ok (10 checks)
+FAIL: 7/9 client gates in 1692.1s
