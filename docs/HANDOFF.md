@@ -9,9 +9,8 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-origin/main 1b43a78c (2026-10-14; WASM still fd56…, 6813853 bytes, fast build, untracked pkg):
-Cut219–226 work, desktop layout, task tracker, Hero Hub polish, Cut225 client and
-Cut227 test/qa fixes are committed and pushed. **PARKED 2026-10-14 (owner quota).**
+origin/main a8935ddf (2026-10-14; WASM 8b48aa49…, 6849966 bytes, fast build, untracked pkg;
+gold-settlements default docs/evidence/cut228/settlements-inputs-main.json). Un-parked; work continues.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
 ## Current engine and checks
@@ -190,64 +189,25 @@ dayplayer tuned-picked 1.00 FAIL and 2-seed random-picked 1/2 FAIL; qa gem FAIL
 3753532a (1.18→1.08) and a327b8dd (Cut211 60 s death recovery →1.00); HEAD with
 RECOVERY_TICKS 12000 measures 1.17.
 
-Owner decisions 2026-10-14:
-1. **Longer death recovery** to restore tuned-picked ≥1.15 (shortest passing value;
-   amend CUT211; re-verify all IDLE/PICKED rows and full gate).
-2. **Routine random-picked evaluated on 16 seeds** (stricter).
-WIP pushed as branch **origin/cut227-recovery-wip** (764b2b97, on 1b43a78c; NOT
-merged): RECOVERY_TICKS 12000 (20 min; only tested value passing tuned-picked 1.17,
-automation-pays and qa bank rows), offline.rs bug fix (REST_CARRY cap no longer
-trims owed death recovery; latent above 10 min), minutes copy, dayplayer
-`--random-seeds 16` for random-picked (16/16·16/16 PASS). Read
-docs/evidence/cut227/recovery/README.md on that branch. Remaining, in order:
-CUT211 amendment text + fixtures/settlement after-saves still at 10500 → regen at
-12000; web tests hero-life (1200), hero-life-camp ("Recovering 20m"),
-home-resident-phases (1200000); fix tests::dice_death_names_an_alternative_below_
-the_bar (widen seeds/window, not assertions); cargo test fast + clippy; full
-routine gate; tools/wasm.sh + new settlements manifest/default; pnpm test + groups.
-Tests/copy pinning 60 s: web/tests/hero-life.mjs (recovering-600), cut120,
-collect-send.ts "Recovering 60s". A new WASM needs a new gold-settlements manifest
-(and picks up 8f48b3f1's patch order, not yet in pkg).
+Owner decisions 2026-10-14 — LANDED:
+1. Death recovery 20 min (RECOVERY_TICKS 12000; eecd8b46): only tested value passing
+   tuned-picked (1.17), automation-pays and qa rows; offline.rs fix (rest cap no longer
+   trims owed recovery); stance L5 at 200 runs (was 220) for "Stance L5 by day 7".
+   Routine full gate all PASS (evidence/cut227/recovery/README.md). Copy "Recovering 20m".
+2. Routine random-picked on 16 seeds (`--random-seeds 16`): 16/16·16/16 PASS.
+3. Clown: median between current and Rogue, skilled play meets/beats Rogue; Engineer:
+   weaker mace, stronger turret near Fighter pace — tuning agent in flight (rebasing on main).
 
-## Sprite art status (audited 2026-10-14)
-
-All 417 art/manifest.json ids have generated PNGs in art/generated/ and are packed
-(web/public/art/atlas.json, 502 frames). The gaps are ids the game requests that are
-not in the manifest: they render as code primitives (art never blocks). Codex
-generation: art/README.md recipe (`codex exec … < art/prompts/<file>.txt`, detached),
-then key/review/pack/qc (`python3 art/pack.py && python3 art/art-qc.py`) and add the
-ids to art/manifest.json. The agent classifier blocks Claude from launching codex;
-the owner launches it.
-
-**Prompt written, generation pending (owner launch):** each prompt writes to
-art/staging/<group>/ and ends with a PENDING note naming the manifest entries
-to add (the manifest has no pending-id convention, so none were added; pack/qc
-stay byte-identical).
-- `town_service_device`, `town_service_device_active_0/1` (Clone vat, Cut226):
-  art/prompts/town_clone_vat.txt → art/staging/clone_vat/. Code primitive today:
-  web/src/render/home-service-art.ts.
-- Clown/Engineer hero sprites `hero_{clown,engineer}_{male,female,cat}` +
-  default aliases (copies of `_male`), 1024×1536 keyed:
-  art/prompts/hero_clown_engineer.txt → art/staging/hero_clown_engineer/.
-- Portraits `hero_clown*`, `hero_engineer*` (1024 opaque masters → art/ui/portraits,
-  tools/ui-skin.py → 256 px webp): art/prompts/portraits_clown_engineer.txt.
-- Class insignia `v_clown`, `v_engineer` (256 RGBA → art/ui/icons, ui-skin → 96 px):
-  art/prompts/icons_class_clown_engineer.txt. class-icons.ts glyphs ♧ / ⚙ until then.
-- Tool props `env_tool_decoy`, `env_tool_sentry` (env register, 16×16 HUE props;
-  add both to make_env.py HUE): art/prompts/env_tools.txt. Primitives:
-  render/tool-sprites.ts.
-- Town props `town_bench`, `town_lantern`: art/prompts/town_props_bench_lantern.txt.
-  town.ts drawPrimitive draws both (bench primitive added 2026-10-14).
-- Optional service upgrades `town_service_guild`, `town_service_pool`,
-  `town_service_station`: art/prompts/town_services.txt (code-painted
-  home-service-art.ts remains accepted and the fallback).
-
-**Code-drawn by design (not codex):**
-- Class skill icons are SVG marks in web/src/ui/skill-icons.ts: 42 exist (6 × seven
-  classes, Clown/Engineer added 2026-10-14; web/tests/skill-icons.mjs checks 42;
-  contact sheet docs/evidence/cut225/skill-icons/).
-- `town_ground_shadow_*`, `town_wind_grass_*` are procedural effects.
-- Paper doll uses class art + four anchors, not layered equipment (open).
+Also landed today: Cut228 ant farm (a8935ddf; docs/CUT228_ANT_FARM.md): wire
+`forge_work` read model, smith hammers at an anvil only during real forge work, the
+fitted hero visits; IDLE/PICKED 16×14 byte-identical. Tracker as an MMO quest list on the
+town's right edge + party-frame roster + narrower camp left column (da9a53c7/bc01e955).
+Dev save history (Shift+T, web/src/dev/history.ts, tools/save-history.mjs; dev only).
+Client runner `--failed/--resume` (target/client-tests/), rater checkpoints
+(tools/rater-checkpoint.mjs, eval/RESUME_PROMPT.md), gfx-eval `--resume`.
+Pre-existing client failures being fixed by an agent: home-heroes (:105),
+home-residents (fixture leakage), home-building-help (:107), cut30town (storehouse).
+clarity:paint is load-sensitive (1.2 s budget); retime on a quiet machine.
 
 Open owner items: Clown candidate numbers (D19–23 vs Rogue D28), Engineer mace
 4–8 vs sword 3–7, clone-vat art (codex run blocked by permission classifier;
