@@ -297,7 +297,9 @@ try {
       `day 0: the mouth and the gem send (${s.targets.join(",")} · gem "${s.gem.trim()}")`,
     );
     check(
-      !!s.pill && s.pill === s.next?.text && ["send", "count"].includes(s.next?.kind),
+      !!s.pill &&
+        s.pill.startsWith(s.next?.text ?? "\0") && // Cut231 §5: the worker count rides after the goal
+        ["send", "count"].includes(s.next?.kind),
       `day 0: the pill reads the wire's next goal (${s.pill} · ${s.next?.kind}; the contract's order: \`send\` while the hero waits before the scout, else \`porter · n/3\`)`,
     );
     check(
@@ -340,7 +342,7 @@ try {
     let s = await S();
     step(
       "0:00",
-      s.pill === "send" &&
+      /^send( · scout 0\/\d+)?$/.test(s.pill ?? "") && // Cut231 §5: the scout's count beside the send
         s.gold === 0 &&
         JSON.stringify(s.workers) === JSON.stringify(["quartermaster"]),
       `camp, $${s.gold}, pill \`${s.pill}\`; on the scene only the given quartermaster by the crate (${s.workers.join(",")})`,

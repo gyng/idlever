@@ -7073,6 +7073,9 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       price,
       affordable: purse + st.chest >= price,
       ...(fb ? { fallback_h: fb } : {}),
+      // Cut 120 §7 (core `tree::eta_h`): an unhired worker's count and the hours until its fallback lights it (absent once ready)
+      ...(chore && !st.hired.includes(id) ? { progress: `${Math.min(count, need)}/${need}` } : {}),
+      ...(chore && fb && open && !ready && !st.hired.includes(id) ? { eta_h: fb - age } : {}),
       ...(!open && gate ? { trigger: `${gate} built` } : {}),
       tip,
       ...(beat ? { beat } : {}),

@@ -11,6 +11,15 @@ import { questBar } from "./quest";
 import { ladderRungs } from "./ladder";
 import { revealed } from "./reveal";
 import { onPackages } from "./packages";
+import {
+  nextWorkerNode,
+  openWorks,
+  progressBar,
+  progressText,
+  workerProgress,
+  worksView,
+  type WorkerProgress,
+} from "./works";
 
 const KEY = "idlever.tasks.open";
 /** shown entries per chapter (clutter budget); the rest wait in the Journal, counted in the head */
@@ -110,7 +119,24 @@ export function taskTracker(
           .filter((r) => r.lit && doors[r.id])
           .map((r) => ({ id: r.id, label: r.label }))
       : [];
-    const key = JSON.stringify([home, chapters, quest, J?.recommended, control, lit]);
+    // Cut231 §5: live progress toward the next worker on its trigger (`2/3 sends`, a thin bar, `or 6h` quietly). The dark workers
+    // rung carries its focus's; once that rung is lit the next counting worker rides the Town group as one more line — never
+    // twice (a Town entry for the same worker, which carries its own count, wins).
+    const ctlProg =
+      control?.id === "workers" && L.tree ? workerProgress(worksView(L.tree).focus) : null;
+    const townShown = chapters.find((c) => c.id === "town")?.open[0]?.id;
+    const nwProg = workerProgress(nextWorkerNode(L.tree));
+    const worker = nwProg && control?.id !== "workers" && townShown !== nwProg.id ? nwProg : null;
+    const key = JSON.stringify([
+      home,
+      chapters,
+      quest,
+      J?.recommended,
+      control,
+      lit,
+      ctlProg,
+      worker,
+    ]);
     if (key !== last) {
       last = key;
       const entry = (e: JournalEntry): HTMLElement =>
@@ -135,6 +161,23 @@ export function taskTracker(
               ? h("small", { class: "task-obj" }, e.requirements[0] || e.reason)
               : "",
         );
+      const eta = (p: WorkerProgress | null): HTMLElement | string =>
+        p?.eta ? h("small", { class: "task-eta" }, ` · ${p.eta}`) : "";
+      const workerEntry = (p: WorkerProgress): HTMLElement =>
+        h(
+          "button",
+          {
+            class: "task-entry task-worker",
+            "data-worker": p.id,
+            "data-state": "active",
+            onclick: (ev: Event) => openWorks(app, p.id, ev.currentTarget as HTMLElement),
+          },
+          h("span", { class: "task-pip", "aria-hidden": "true" }),
+          h("span", { class: "task-title" }, p.name.charAt(0).toUpperCase() + p.name.slice(1)),
+          h("small", { class: "task-obj num" }, progressText(p), eta(p)),
+          progressBar("task-bar", p.frac),
+        );
+      const town = chapters.some((c) => c.id === "town");
       replace(
         groups,
         control
@@ -156,7 +199,13 @@ export function taskTracker(
                   { class: "task-title" },
                   control.label.charAt(0).toUpperCase() + control.label.slice(1),
                 ),
-                h("small", { class: "task-obj" }, control.cond),
+                h(
+                  "small",
+                  { class: `task-obj${ctlProg ? " num" : ""}`, "data-worker": ctlProg?.id ?? "" },
+                  control.cond,
+                  eta(ctlProg),
+                ),
+                ctlProg ? progressBar("task-bar", ctlProg.frac) : "",
               ),
               lit.length
                 ? h(
@@ -196,8 +245,17 @@ export function taskTracker(
               ),
             ),
             ...c.open.slice(0, PER_GROUP).map(entry),
+            c.id === "town" && worker ? workerEntry(worker) : "",
           ),
         ),
+        worker && !town
+          ? h(
+              "section",
+              { class: "task-group", "data-task-group": "town" },
+              h("h4", { class: "task-head" }, /* copy:label */ "Town"),
+              workerEntry(worker),
+            )
+          : "",
         quest
           ? h(
               "section",
@@ -216,7 +274,10 @@ export function taskTracker(
           : "",
       );
       const n =
-        chapters.reduce((s, c) => s + c.open.length, 0) + (quest ? 1 : 0) + (control ? 1 : 0);
+        chapters.reduce((s, c) => s + c.open.length, 0) +
+        (quest ? 1 : 0) +
+        (control ? 1 : 0) +
+        (worker ? 1 : 0);
       count.textContent = n ? String(n) : "";
       el.hidden = !home || !n;
     }

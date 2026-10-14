@@ -76,6 +76,50 @@ export function nodeState(n: WorkNode): string {
   if (n.need) return `${n.count ?? 0}/${n.need} ${choreWord(n.chore)}`;
   return n.trigger ?? "";
 }
+/** Cut231 §5: a counting worker's progress toward its trigger, from the wire's own count (`count`/`need`, the core's `progress`) and the
+ *  hours to its time fallback (`eta_h`, absent once ready or with no fallback). None for a hired, lit or shut node, or one with no count. */
+export type WorkerProgress = {
+  id: string;
+  name: string;
+  have: number;
+  need: number;
+  unit: string;
+  frac: number;
+  eta?: string;
+};
+/** the quiet time fallback (`or 6h`, `or 3d` from two days) */
+export const etaText = (h?: number): string =>
+  h && h > 0 ? /* copy:callout */ `or ${h >= 48 ? `${Math.round(h / 24)}d` : `${h}h`}` : "";
+export function workerProgress(n?: WorkNode): WorkerProgress | null {
+  if (!n || n.kind !== "worker" || !n.need || !["open", "ready"].includes(n.state)) return null;
+  const have = Math.max(0, Math.min(n.count ?? 0, n.need));
+  const eta = etaText(n.eta_h);
+  return {
+    id: n.id,
+    name: n.name,
+    have,
+    need: n.need,
+    unit: choreWord(n.chore),
+    frac: have / n.need,
+    ...(eta ? { eta } : {}),
+  };
+}
+/** `2/3 sends` */
+export const progressText = (p: WorkerProgress): string => `${p.have}/${p.need} ${p.unit}`.trim();
+/** The next worker the town works toward: the core's `next_worker` (the lit one, else the first counting), else the sheet's focus. */
+export const nextWorkerNode = (W?: Works): WorkNode | undefined =>
+  !W ? undefined : W.next_worker ? W.nodes.find((n) => n.id === W.next_worker) : worksView(W).focus;
+/** the thin progress bar a worker's count draws (`cls` the host's bar class) */
+export const progressBar = (cls: string, frac: number): HTMLElement =>
+  h(
+    "span",
+    { class: cls, "aria-hidden": "true" },
+    h("span", {
+      class: "fill",
+      style: `width:${Math.round(Math.max(0, Math.min(1, frac)) * 100)}%`,
+    }),
+  );
+
 /** A silhouette's line: what lights it and its price (`3 sends · $96`; shut: `bank built`). */
 const silLine = (n: WorkNode): string =>
   n.state === "shut"
@@ -124,17 +168,29 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
     const hired = workerNodes(W).filter((n) => n.state === "done").length;
     // This shortcut opens Workers; an unrelated curriculum goal is not its gate.
     const management = hired > 0 && !node && (p.kind === "system" || p.kind === "none");
+    // Cut231 §5: the goal's worker counting toward its trigger — a count goal names its chore (`scout · 2/3 sends`), a send or a
+    // chest (each advances the worker) carries the count quietly beside it (`scout 1/3`); the time fallback rides quietly (`or 6h`)
+    const prog = management ? null : workerProgress(node);
     const text = management
       ? /* copy:label */ `Workers · ${hired} hired`
-      : p.text || /* copy:label */ "workers";
+      : p.kind === "count" && prog
+        ? `${prog.name} · ${progressText(prog)}`
+        : p.text || /* copy:label */ "workers";
+    const side =
+      prog && (p.kind === "send" || p.kind === "chest")
+        ? `${prog.name} ${prog.have}/${prog.need}`
+        : "";
+    const eta = prog && (p.kind === "count" || side) ? (prog.eta ?? "") : "";
     const frac = management
       ? undefined
       : p.kind === "buy" || p.kind === "chest"
         ? 1
         : p.have !== undefined && p.need
           ? Math.max(0, Math.min(1, p.have / p.need))
-          : undefined;
-    const key = JSON.stringify([p, text]);
+          : p.kind === "send" && prog
+            ? prog.frac
+            : undefined;
+    const key = JSON.stringify([p, text, side, eta, frac]);
     el.hidden = false;
     el.dataset.kind = management ? "management" : p.kind;
     el.dataset.node = management ? "" : (p.node ?? "");
@@ -157,17 +213,19 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
       h(
         "span",
         { class: "pill-main" },
-        h("span", { class: "pill-t num" }, text),
-        frac !== undefined
-          ? h(
-              "span",
-              { class: "pill-bar", "aria-hidden": "true" },
-              h("span", { class: "fill", style: `width:${Math.round(frac * 100)}%` }),
-            )
-          : "",
+        h(
+          "span",
+          { class: "pill-t num" },
+          text,
+          side
+            ? h("small", { class: "pill-prog", "data-worker": prog?.id ?? "" }, ` · ${side}`)
+            : "",
+          eta ? h("small", { class: "pill-eta" }, ` · ${eta}`) : "",
+        ),
+        frac !== undefined ? progressBar("pill-bar", frac) : "",
       ),
     );
-    el.setAttribute("aria-label", text);
+    el.setAttribute("aria-label", [text, side, eta].filter(Boolean).join(" · "));
     if (moved) {
       el.classList.remove("bump");
       void el.offsetWidth;
@@ -222,15 +280,17 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
                 "div",
                 { class: "wn-head" },
                 h("b", { class: "wn-name" }, n.name),
-                h("span", { class: "wn-state num" }, nodeState(n)),
+                h(
+                  "span",
+                  { class: "wn-state num" },
+                  nodeState(n),
+                  // Cut231 §5: the time fallback that lights it without the count, quietly (`or 30h`)
+                  !lit && workerProgress(n)?.eta
+                    ? h("small", { class: "wn-eta" }, ` · ${workerProgress(n)!.eta}`)
+                    : "",
+                ),
               ),
-              n.need || lit
-                ? h(
-                    "span",
-                    { class: "wn-bar", "aria-hidden": "true" },
-                    h("span", { class: "fill", style: `width:${Math.round(frac * 100)}%` }),
-                  )
-                : "",
+              n.need || lit ? progressBar("wn-bar", frac) : "",
               blurb(n.id) ? h("small", { class: "wn-tip" }, blurb(n.id)) : "",
             ),
             hire,

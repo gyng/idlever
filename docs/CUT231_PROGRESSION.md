@@ -10,7 +10,7 @@ routine 2-seed gate.
 |---|------|----------------|--------|
 | 1 | First automation ≤5 min; Scout ≤8 min every seed (Cut230) | `scout` worst ≤8 min 16/16; `porter` ≤5 min | in progress (Cut230) |
 | 3 | Depth-scaled death recovery; short early waits (Cut230) | runs in first 30 min ≥4 every seed; tuned-picked ≥1.15; picked-idle; idle-* | in progress (Cut230) |
-| 5 | Next-worker progress on its trigger ("2/3 sends"); later rungs from counts to feats (time fallback for IDLE kept) | worker-first-act/journal journeys show live progress; `nodes-lit` ≤48 h | queued — client part started now |
+| 5 | Next-worker progress on its trigger ("2/3 sends"); later rungs from counts to feats (time fallback for IDLE kept) | worker-first-act/journal journeys show live progress; `nodes-lit` ≤48 h | client part landed (below); feats proposed (5b) |
 | 2 | Pre-Scout absence pays: a small capped camp chest (≤2 h of first-floor gold), no sends; cap vanishes with the Scout | new row "IDLE absent pre-Scout returns gold > 0"; `conserved`; return-pick journey shows the line | queued after Cut230 |
 | 4 | Explicit unlock cadence: a beat every 3–5 min for 30 min, then ~1 h, 3 h, 8 h, d1, d2, d4, d7; never two decisions at once | dayplayer unlock-timestamp dump; row: max gap in first 30 min ≤6 min, simultaneous decisions ≤1; `picked-stages`/`idle-stages` | queued after Cut230 |
 | 6 | A second hero on day 1–2 (IdleOn's idle lever) | bloodline founding median ≤ day 2 on IDLE/PICKED; no pacing regressions | queued |
@@ -22,3 +22,60 @@ routine 2-seed gate.
 
 After Cut230 lands: measure Idlever's own timeline (first automation, core loop fully automated, first reset,
 first new mechanic, offline unlock) from dayplayer/client runs, fill §6 of the research doc, and re-rank.
+
+## Item 5 — next-worker progress (client part, landed)
+
+The wire already carries everything the count needs; no core change was required. Each unhired worker node
+(`Lineage.tree.nodes[]`, `WorkNode`) has `count` / `need` (chores by hand / trigger), `progress` (`"2/3"`, the core's own
+string), `fallback_h` and `eta_h` (hours until the fallback lights it; absent once ready or with no fallback), and
+`Works.next_worker` names the worker the town works toward. The client draws them read-only, no new taps:
+
+- **`next` pill** (`ui/works.ts nextPill`): a `count` goal names its chore — `apprentice · 2/3 steps · or 20h`; a `send` or
+  `chest` goal (each advances a worker) carries the count quietly beside it — `send · scout 1/3` — and the send's bar is the
+  scout's share. The fallback is dim (`.pill-eta`), `or 3d` from 48 h.
+- **Works sheet** focus card: `2/3 steps · or 20h` beside the bar (`.wn-eta`).
+- **Task tracker** (`ui/tasks.ts`): the dark `workers` rung under Control gets the focus's bar and fallback; once that rung is
+  lit the next counting worker rides the Town group as one line (`Apprentice — 2/3 steps · or 20h`, thin bar; tap opens the
+  works on it). Never twice: a Town journal entry for the same worker wins.
+- Journey: `web/tests/worker-first-act.mjs` second leg — real engine, fresh seed 3: the send pill shows the scout's wire count,
+  the tracker's Town line the porter's; a real send moves the scout to `1/3` on the wire and in the pill; a wire-shaped
+  fixture checks the count pill, tracker line, works card and the lit state at 400 and 1440.
+
+Evidence: `docs/evidence/cut231/` (GPU, 400 and 1440).
+
+## Item 5b — later rungs from counts to feats (proposal, not implemented)
+
+Round 2 and the comparables (Increlution counts punished; AD challenges, Trimps void maps praised): "automation rewards a
+feat, not a repetition count". The Porter and the Scout keep counts — they teach the chore itself (the Scout moves to 2
+sends in Cut230). From the Apprentice on, a count of the same tap is arbitrary; each worker's trigger becomes one feat that
+shows the chore mattering, and **the time fallback stays exactly as it is** so IDLE (no picks) still lights every node, and
+`nodes-lit` stays ≤ 48 h (the largest fallback is the kennel keeper's 48 h).
+
+Current values from `crates/idlever-core/src/tree.rs NODES` (chore counted by `tree::did`):
+
+| Worker | Gate (chore opens) | Current trigger | Fallback | Candidate feat trigger (≤ 3 words on the wire) | Feat check (core) |
+|---|---|---|---|---|---|
+| apprentice | blacksmith built | 3 forge steps by hand | 30 h | `forged kit wins` — a run with a hand-bought forge step reaches a new best depth | a new best on a run whose kit holds a step `did("forge")` bought |
+| clerk | bank built | 3 deposits by hand | 36 h | `interest paid` — a hand deposit earns its first nightly interest | first night with bank interest > 0 after a hand deposit |
+| drillmaster | — | 2 stance levels by hand | 36 h | `levelled wall falls` — a wall the hero died at is cleared after a hand level | a `walls[]` entry slain after a `did("level")` |
+| kennel_hand | kennel built | 2 pets fielded by hand | 40 h | `pet lands kill` — a hand-fielded pet kills on a run | first run kill credited to a pet fielded by hand |
+| herald | quest board | 2 quest swaps by hand | 40 h | `swapped quest done` — a quest taken by a hand swap completes | quest completion whose quest came from `did("swap")` |
+| guide | waystones | 3 waystone starts by hand | 44 h | `deep start pays` — a waystone start reaches a new best depth | a new best on a run started below D1 by hand |
+| kennel_keeper | kennel built | 2 breedings by hand | 48 h | `bred pet fields` — a pup bred by hand is fielded on a run | a run whose party holds a pet from `did("breed")` |
+
+Rules kept: a feat lights the node exactly as the count does now (`ready()`), one lit at a time in the tree's order; the
+fallback lights it untouched; a hired worker's feat is never re-asked. Each feat is a real outcome of the chore, never a
+new chore or tap.
+
+Wire the client would need for feats (core adds after Cut230; the client then shows `forged kit wins · or 30h`):
+
+| Field | Type | Meaning |
+|---|---|---|
+| `WorkNode.goal` | `"count" \| "feat"` | which trigger the node uses (absent = `count`, today's) |
+| `WorkNode.feat` | `string` (≤ 3 words) | the feat's name, drawn where `2/3 steps` is drawn now |
+| `WorkNode.feat_done` | `boolean` | the feat is met (the node is then `ready`/`lit` as with a count) |
+| `NextPill.kind` | add `"feat"` | the pill's goal is a feat (`text` = `<worker> · <feat>`, no `have`/`need`, no bar) |
+
+Gates for 5b when built: `nodes-lit` ≤ 48 h (16 seeds); IDLE unchanged within a check-in (it reaches every node by the
+fallback); PICKED reaches each feat-triggered hire no later than its current count median on ≥ 14/16 seeds; the
+worker-first-act journey shows the feat text and its flip to the hire.

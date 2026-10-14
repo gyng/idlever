@@ -126,6 +126,163 @@ try {
     console.log(width, n, "worker first-act checks PASS");
     await p.close();
   }
+  // Cut231 §5: live progress toward the next worker on its trigger — the pill, the tracker and the works card draw the wire's own count
+  // (`count`/`need`, the core's `progress`) and its time fallback (`eta_h`), on the real engine; a send moves the count.
+  for (const width of stateWidths([400, 1440])) {
+    const p = await b.newPage({ viewport: { width, height: 900 } });
+    await p.goto(`${url}?fresh=1&seed=3&runs=0`);
+    await p.waitForFunction(() => window.__idlever?.booted);
+    await p.waitForTimeout(300);
+    const n = await p.evaluate(async () => {
+      const a = window.__idlever;
+      let n = 0;
+      const check = (ok, message) => {
+        if (!ok) throw Error(message);
+        n++;
+      };
+      check(a.kind === "wasm", `real engine (${a.kind})`);
+      const W0 = a.lineage.tree,
+        node0 = (id) => W0.nodes.find((x) => x.id === id);
+      const scout0 = node0("scout"),
+        porter0 = node0("porter");
+      check(
+        W0.next?.kind === "send" &&
+          scout0.state === "open" &&
+          scout0.progress === `0/${scout0.need}`,
+        `fresh wire: a send goal, the scout counting (${JSON.stringify(W0.next)} ${scout0.progress})`,
+      );
+      const pillEl = document.querySelector(".next-pill");
+      check(
+        pillEl.querySelector(".pill-prog[data-worker=scout]")?.textContent ===
+          ` · scout ${scout0.progress}` && !!pillEl.querySelector(".pill-bar"),
+        `send pill carries the scout's wire count: ${pillEl.textContent}`,
+      );
+      const { choreWord } = await import("/src/ui/works.ts");
+      const town = document.querySelector('.task-tracker [data-worker="porter"]');
+      check(
+        W0.next_worker === "porter" &&
+          town?.querySelector(".task-obj")?.textContent ===
+            `${porter0.progress} ${choreWord(porter0.chore)}` &&
+          town.closest('[data-task-group="town"]') &&
+          !!town.querySelector(".task-bar .fill"),
+        `tracker's Town line is the next worker's wire count: ${town?.textContent}`,
+      );
+      // a real send: the scout's count moves on the wire and in the pill
+      a.engine.buildTown("house");
+      a.engine.send();
+      // (the run plays out; home again, the hero waits for the next send)
+      let L1 = await a.engine.lineage();
+      for (let k = 0; k < 200 && L1.tree.next?.kind !== "send"; k++) {
+        a.engine.step(1000);
+        L1 = await a.engine.lineage();
+      }
+      check(L1.tree.next?.kind === "send", `home again: ${JSON.stringify(L1.tree.next)}`);
+      const scout1 = L1.tree.nodes.find((x) => x.id === "scout");
+      check(scout1.count === (scout0.count ?? 0) + 1, `a send counts (${scout1.progress})`);
+      const { nextPill, workerProgress, progressText, etaText } = await import("/src/ui/works.ts");
+      const stub = { lineage: L1 },
+        pill = nextPill(stub, () => {});
+      document.body.append(pill.el);
+      check(
+        pill.el.querySelector(".pill-prog")?.textContent === ` · scout ${scout1.progress}` &&
+          pill.el.querySelector(".pill-bar .fill")?.style.width ===
+            `${Math.round((scout1.count / scout1.need) * 100)}%`,
+        `pill moves after a send: ${pill.el.textContent} ${pill.el.querySelector(".pill-bar .fill")?.style.width}`,
+      );
+      pill.el.remove();
+      check(
+        etaText(30) === "or 30h" &&
+          etaText(60) === "or 3d" &&
+          etaText(0) === "" &&
+          etaText() === "",
+        "time fallback words",
+      );
+      // a later worker counting with a time fallback (the wire's shape: count/need/progress/eta_h on `next_worker`)
+      const L = await a.engine.lineage();
+      a.engine.lineage = async () => a.lineage;
+      const fixture = (count, eta) => {
+        const nodes = L.tree.nodes.map((x) =>
+          ["porter", "scout"].includes(x.id)
+            ? { ...x, state: "done", progress: undefined }
+            : x.id === "apprentice"
+              ? {
+                  ...x,
+                  state: count >= 3 ? "lit" : "open",
+                  count,
+                  need: 3,
+                  chore: "forge",
+                  progress: `${count}/3`,
+                  fallback_h: 30,
+                  ...(eta ? { eta_h: eta } : { eta_h: undefined }),
+                  trigger: undefined,
+                }
+              : x,
+        );
+        a.lineage = {
+          ...L,
+          live: undefined,
+          town: { ...L.town, home: true },
+          tree: {
+            ...L.tree,
+            nodes,
+            next_worker: "apprentice",
+            lit: count >= 3 ? "apprentice" : undefined,
+            lit_rank: undefined,
+            waits: false,
+            next:
+              count >= 3
+                ? { kind: "buy", node: "apprentice", text: "apprentice · $30" }
+                : {
+                    kind: "count",
+                    node: "apprentice",
+                    text: `apprentice · ${count}/3`,
+                    have: count,
+                    need: 3,
+                  },
+          },
+        };
+        a.go({ kind: "camp" });
+        return nodes.find((x) => x.id === "apprentice");
+      };
+      const ap = fixture(2, 20);
+      await new Promise((r) => setTimeout(r, 400));
+      const prog = workerProgress(ap);
+      check(progressText(prog) === "2/3 steps" && prog.eta === "or 20h", "progress from the wire");
+      const pl = document.querySelector(".next-pill");
+      check(
+        pl.querySelector(".pill-t").textContent === "apprentice · 2/3 steps · or 20h" &&
+          pl.querySelector(".pill-bar .fill").style.width === "67%",
+        `count pill: chore word, bar and quiet fallback: ${pl.textContent}`,
+      );
+      const tw = document.querySelector('.task-tracker [data-worker="apprentice"]');
+      check(
+        tw?.querySelector(".task-obj")?.textContent === "2/3 steps · or 20h" &&
+          tw.querySelector(".task-bar .fill").style.width === "67%",
+        `tracker line: ${tw?.textContent}`,
+      );
+      const { openWorks } = await import("/src/ui/works.ts");
+      openWorks(a, "apprentice", pl);
+      await new Promise((r) => setTimeout(r, 200));
+      const card = document.querySelector('.works-sheet .wnode.cur[data-node="apprentice"]');
+      check(
+        card?.querySelector(".wn-state")?.textContent === "2/3 steps · or 20h",
+        `works card: ${card?.querySelector(".wn-state")?.textContent}`,
+      );
+      const { closeAllSheets } = await import("/src/ui/sheet.ts");
+      closeAllSheets();
+      fixture(3);
+      await new Promise((r) => setTimeout(r, 300));
+      check(
+        !document.querySelector('.task-tracker [data-worker="apprentice"]') &&
+          !document.querySelector(".next-pill .pill-eta"),
+        "lit worker: no count line, its price on the pill",
+      );
+      check(document.documentElement.scrollWidth <= innerWidth, "no horizontal overflow");
+      return n;
+    });
+    console.log(width, n, "next-worker progress checks PASS");
+    await p.close();
+  }
 } finally {
   await b.close();
 }

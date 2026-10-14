@@ -58,6 +58,12 @@
   text-overflow: ellipsis;
   line-height: 1.2;
 }
+/* Cut231 §5: the worker's count beside a send/chest goal and the time fallback — quiet, never the goal itself */
+.next-pill .pill-prog,
+.next-pill .pill-eta {
+  font-size: 12px;
+  color: var(--dim);
+}
 .next-pill .pill-bar {
   display: block;
   min-width: 72px;
@@ -159,6 +165,11 @@
 .wnode .wn-state {
   font-size: 12px;
   color: var(--dim);
+}
+/* Cut231 §5: the time fallback beside the count (`2/3 steps · or 30h`), quieter still */
+.wnode .wn-eta {
+  font-size: 11px;
+  opacity: 0.8;
 }
 .wnode .wn-tip {
   display: block;

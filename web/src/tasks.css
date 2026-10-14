@@ -174,6 +174,24 @@ html body .task-tracker.game-control:active {
 .task-obj::before {
   content: "- ";
 }
+/* Cut231 §5: the next worker's count toward its trigger — a thin bar under it, the time fallback quieter (`- 2/3 sends · or 6h`) */
+.task-eta {
+  color: var(--dim);
+}
+.task-bar {
+  display: block;
+  max-width: 120px;
+  height: 3px;
+  margin: 2px 0 1px;
+  border-radius: 2px;
+  background: rgba(77, 108, 153, 0.4);
+  overflow: hidden;
+}
+.task-bar .fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--gilt), var(--acc));
+}
 .task-quest .quest-bar {
   margin-top: 2px;
 }
