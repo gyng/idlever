@@ -120,21 +120,13 @@ bodies verified. Earlier late-response failure and five-control/five-fixed
 causal reader proof remain. Cost measures CPU submission/UI, not GPU FPS.
 Fresh66b8 default128 graphics states,482 home assertions and25 phases pass.
 
-Cut224 adds opt-in townDepth=pilot Guild/pool relief and cached path/stream cues.
-Medieval refinement adds gable/slate/timber/plaster/stone and segmented pool rim/
-shallow water. Root reviewed day1440/night400 pairs positively for this scope.
-96 scene/64 fallback/48 surface and482+25 home/phase proofs pass on immutable
-completed-art source; no gameplay/routines changed. Final paired cost95973
-failed genuinely: warm deltas pass, cold median+25.4ms exceeds+5ms. Sparse
-terrain correction removed cue checks from the dense RGB kernel;16 exact
-pixel/root pairs and exact cost-protocol town PNG/roots/save pass. Its new
-quiet cost82815 still fails cold median+47.2ms; warm service deltas pass.
-Diagnostic9 triples retain all samples: correction costs7.3–12.2ms, while the
-dense pigment varies widely. Next causal optimization precomputes cue bits and
-applies factors to existing unrounded RGB, avoiding second pigment evaluation.
-All correction work stays inside the existing paint timer; no default rollout.
-Current-UI integration adds actual Hire/hint rectangle keepouts.
-Pilot/default rollout, whole landscape mapping and lived-in routines remain open.
+Cut224 Guild/pool relief, medieval refinement and cached path/stream cues now
+load by default (townDepth=off remains a dev comparison). The cue-bit mask
+painter passes quiet cost: warm increments <=0.10ms, cold median -18.8ms
+(limit +5ms; one cold sample 100.9ms is slower, so no general speedup claim),
+measured on 66b8. Normal-load integration passes on a2ab: 128 graphics states,
+494 home checks, 25 phases. Exactness: cut224/mask-pixels, mask-cost-protocol.
+Whole landscape mapping and lived-in routines remain open.
 Evidence/immutable baselines: evidence/cut221/, evidence/cut224/.
 
 ## Next content and remaining acceptance

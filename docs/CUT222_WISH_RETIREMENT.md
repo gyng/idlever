@@ -198,5 +198,7 @@ an autoKeep call Cut206 retired) moved to exhaustive-only beside `ui:keep`;
 `death-fix-discovery` pins updated to current Rust ($0 free scroll fix,
 past_to0.875). Both failed identically before Cut222 (`cut220/critical-pre222`).
 
-Still open: acceptance item4's engaging-policy comparison and a settled
-private-GPU camp screenshot for item5.
+Item5 settled private-GPU captures pass on the genuine waiting-song save at
+320/400/1440 × normal/200% text: no wish control, no overflow, read-stable
+save, every served body `a2ab…`: `docs/evidence/cut222/ui/gpu-camp-a2ab/`.
+Still open: acceptance item4's engaging-policy comparison.

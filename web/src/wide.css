@@ -227,8 +227,26 @@
   /* --- the camp: the well's wrappers dissolve into the frame's grid (rules left, vista + scene centre, shaft right) --- */
   /* (the meters' slot has a track of its own under the shaft, spanning the vs / scene / rest lines' rows without growing them) */
   main.camp.frame {
-    grid-template-rows: auto auto minmax(0, 1fr) 150px auto auto auto auto;
-    grid-template-areas: "bar bar bar" "tabs well side" "rules well side" "rules well meters" "rules vs meters" "rules sline meters" "rules rest meters" "con con con";
+    grid-template-rows: auto auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
+    grid-template-areas: "bar bar bar" "tabs well side" "rules well side" "rules well meters" "rules vs meters" "rules sline meters" "rules rest meters" "rules feats meters" "rules offer meters" "con con con";
+  }
+  /* seek/trial chips and the one-time order offer: own centre rows (auto-placement spilled them under the console) */
+  main.camp .camp-well > .return-pick {
+    grid-area: vs;
+  }
+  main.camp .camp-well > .checkin-batch {
+    grid-area: sline;
+  }
+  main.camp .camp-well > .control-ladder {
+    grid-area: rest;
+  }
+  main.camp .camp-well > .camp-feats {
+    grid-area: feats;
+    justify-self: center;
+    margin: 4px 14px;
+  }
+  main.camp .camp-well > .camp-feats.order-offer {
+    grid-area: offer;
   }
   main.camp > .well-wrap,
   main.camp .camp-well,
