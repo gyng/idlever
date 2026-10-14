@@ -1,0 +1,8 @@
+client suite: targeted (4 selected; 159 current full; 202 exhaustive groups)
+ok   save-history    14.2s (7.5s)  save-history: 18 checks PASS
+ok   watch-console   47.7s (41.0s)  1440 labels/touch/geometry/speed/pause/Town PASS
+FAIL clarity:paint   103.1s (55.4s)  clarity paint: FAIL (1 assertion(s), 0 error(s))
+     clarity paint: FAIL (1 assertion(s), 0 error(s))
+     FAIL an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (1412 ms) [retried once: load 37.4 on 32 cores; first reading: an edit's first forecast paints ≤ 1.2 s with the refine and the unlock deltas in flight (1809 ms)]
+ok   watch-live-edge 137.3s (34.2s)  watch-live-edge: ok (10 checks)
+FAIL: 3/4 client gates in 137.3s
