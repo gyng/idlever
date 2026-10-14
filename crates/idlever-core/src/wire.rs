@@ -144,6 +144,10 @@ pub struct Snapshot {
     /// absent on a floor without one (D1–2, a boss's cave floor, the bottom).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub floor_twist: Option<String>,
+    /// Cut225: the Clown/Engineer tool view — abilities with canonical cooldowns, the live
+    /// decoy/construct and its current target. Absent for every other class.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tools: Option<crate::tools::ToolsView>,
     /// Cut 26 §2: this floor's down stairs are a fork's (D4's, on the base order): the stair the
     /// run's route takes is the floor's own down stairs (`taken`, its biome); the other stair
     /// (`other`) is drawn at (`x`, `y`) beside it. The hero never takes it — the set's route
@@ -644,6 +648,11 @@ pub enum Ev {
     Heal { t: u32, id: u32, amount: i32, src: String },
     /// Actual hostile recovery, distinct from hero/pet healing meters.
     Recover { t:u32, id:u32, amount:i32, hp:i32, src:RecoverySource },
+    /// Cut225: the hero's temporary tool changed — `kind` `decoy` | `sentry`, `state` one of
+    /// `placed` · `moved` · `braced` · `overdrive` · `expired` · `destroyed` · `discharged`,
+    /// at its tile; `until` is its absolute expiry tick, `hp` the construct's remaining HP
+    /// (0 for a decoy). Only Clown/Engineer runs emit it; the replay cue reads this, never rows.
+    Tool { t: u32, id: u32, kind: String, state: String, x: i32, y: i32, until: u32, #[serde(default, skip_serializing_if = "is_zero_i32")] hp: i32 },
 }
 
 impl Ev {
@@ -681,7 +690,8 @@ impl Ev {
             | Ev::Drain { t, .. }
             | Ev::Oath { t, .. }
             | Ev::Heal { t, .. }
-            | Ev::Recover { t, .. } => *t,
+            | Ev::Recover { t, .. }
+            | Ev::Tool { t, .. } => *t,
         }
     }
     /// Renderable, non-movement events (the "events per 60 turns" gate).
@@ -1590,6 +1600,9 @@ pub struct ReturnReport {
     pub hatched: Vec<String>,
     pub lost: Vec<String>,
     pub xp: XpReport,
+    /// Cut225: the tools' receipts over this report's runs (Clown/Engineer only).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tools: Option<crate::tools::ToolStats>,
     pub salvaged: Vec<SalvageRow>,
     pub renown: RenownReport,
     /// Cut 2 §1: camp rest and wake consumed by this absence (seconds).
@@ -2558,6 +2571,10 @@ pub struct Lineage {
     /// picks (it sticks to every run until changed).
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub class_offer: Vec<ClassChip>,
+    /// Cut225: the earned classes' canonical availability (Clown, Engineer): `available`
+    /// when the class may be chosen at home now, else `needs` (Rust's reason) and progress.
+    #[serde(default)]
+    pub earned_classes: Vec<EarnedClass>,
     /// Cut 19 §3: the loadout repeats — `true` unless the player cleared it
     /// (`setRestock(false)`); the kinds the next send re-packs (the last send's, less the ones
     /// it wasted) and their price on the shelf today (`repeat · $120`).
@@ -2916,6 +2933,22 @@ pub struct ClassChip {
     pub signature: String,
     pub level: u32,
     pub opens: u32,
+}
+
+/// Cut225: one earned class as the class picker shows it (no client threshold derivation).
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+pub struct EarnedClass {
+    pub class: String,
+    pub available: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub needs: Option<String>,
+    pub scout: bool,
+    pub completed: u32,
+    pub required_completed: u32,
+    pub depth: u32,
+    pub required_depth: u32,
+    pub level: u32,
+    pub signature: String,
 }
 
 /// Cut 3: `{level, variant}`; `variant` is one of `no_rest short_list bones_only hunted`.

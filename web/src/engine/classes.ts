@@ -25,6 +25,21 @@ export const CLASS_VERBS: Record<string, Record<number, string[]>> = {
     7: ["fast_reload"],
     9: ["finishing_shot"],
   },
+  // Cut225: earned classes; availability comes only from `Lineage.earned_classes`.
+  clown: {
+    1: ["bell_lure"],
+    3: ["turnabout"],
+    5: ["false_bow"],
+    7: ["curtain"],
+    9: ["grand_jape"],
+  },
+  engineer: {
+    1: ["deploy"],
+    3: ["brace_sentry"],
+    5: ["discharge"],
+    7: ["relocate"],
+    9: ["overdrive"],
+  },
 };
 export function verbsUpTo(cls: string, level: number): string[] {
   const t = CLASS_VERBS[cls] ?? {};

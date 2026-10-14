@@ -3434,6 +3434,25 @@ export class FakeEngine implements Engine {
           opens: SIG[c]?.[1] ?? 1,
         }));
       else delete L.class_offer;
+      // Cut225 DEVELOPMENT DATA: the fake engine has no personal delve counter; it opens the earned
+      // classes on its best depth alone so the picker can be exercised. The real gate is Rust's.
+      L.earned_classes = (
+        [
+          ["clown", 12, 13, "bell_lure"],
+          ["engineer", 20, 18, "deploy"],
+        ] as const
+      ).map(([c, delves, depth, signature]) => ({
+        class: c,
+        available: L.best_depth >= depth,
+        ...(L.best_depth >= depth ? {} : { needs: `Reach D${depth}` }),
+        scout: true,
+        completed: delves,
+        required_completed: delves,
+        depth: L.best_depth,
+        required_depth: depth,
+        level: L.classes[c]?.level ?? 1,
+        signature,
+      }));
     }
     // Cut 9 §10: the forge ladder's next rung per kind (`3/5 → craftable`, `6/15 → +1`, `20/40 → +2`; none at the top)
     for (const f of Object.values(this.s.lineage.forge ?? {})) {
@@ -5489,6 +5508,14 @@ export class FakeEngine implements Engine {
     });
   }
   setClass(cls: string): Lineage {
+    const earned = this.s.lineage.earned_classes?.find((e) => e.class === cls);
+    if (earned) {
+      if (!earned.available) throw new Error(earned.needs ?? "locked");
+      this.s.lineage.classes[cls] ??= { level: 1, xp: 0, next: xpToNext(1) };
+      this.s.lineage.class = cls;
+      this.dropIdleRun();
+      return this.lineage();
+    }
     if (!(CLASSES as readonly string[]).includes(cls)) throw new Error("unknown class");
     if (!isFreeClass(cls) && !this.s.lineage.unlocks.includes(cls))
       throw new Error(`${cls} not unlocked`);

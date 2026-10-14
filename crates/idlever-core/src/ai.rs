@@ -457,6 +457,7 @@ pub fn block_reason(run: &Run, cx: &Ctx, verb: &Verb, v: &View) -> &'static str 
         }
 
         "retreat" | "back_corridor" | "blink" | "shadowstep" | "vanish" | "smoke" => "no path",
+        x if crate::tools::is_verb(x) => crate::tools::refusal(run, verb, v),
         "drink" | "read" => {
             let a = verb.a.as_deref().unwrap_or("");
             let cat = if verb.v == "drink" { Cat::Potion } else { Cat::Scroll };
@@ -780,6 +781,8 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         "fast_reload" => crate::firearm::reload_fast(run,cx),
         "finishing_shot" => class_has_verb(run.hero.class,run.hero.level,"finishing_shot")&&fire_gun_mode(run,cx,&a,v,false,true),
         "gunner_tactic" => gunner_tactic(run,cx,v),
+        // Cut225: Clown/Engineer verbs (refused without change for every other class).
+        "bell_lure" | "turnabout" | "false_bow" | "curtain" | "grand_jape" | "deploy" | "brace_sentry" | "discharge" | "relocate" | "overdrive" | "clown_tactic" | "engineer_tactic" => crate::tools::act(run, cx, verb, v),
         "shield_bash" => class_has_verb(run.hero.class, run.hero.level, "shield_bash") && run.hero.bash_cd == 0 && verb_attack(run, cx, "nearest", v, true),
         "riposte" => {
             if crate::specialization::has(&run.hero,crate::specialization::Style::Sentinel)&&run.hero.special_cd==0&&v.adj>0 {
@@ -2831,7 +2834,7 @@ fn verb_tactic(run: &mut Run, cx: &mut Ctx, card: &str, v: &View) -> bool {
 
 // ---------------------------------------------------------------- monsters
 
-fn move_monster(run: &mut Run, cx: &mut Ctx, mi: usize, q: Pos) {
+pub(crate) fn move_monster(run: &mut Run, cx: &mut Ctx, mi: usize, q: Pos) {
     let from = run.monsters[mi].pos;
     let was_visible = run.floor.map.is_visible(from);
     run.monsters[mi].pos = q;
@@ -3090,6 +3093,10 @@ fn monster_attack(run: &mut Run, cx: &mut Ctx, mi: usize, mult: i32, verb: &str)
     let kind = run.monsters[mi].kind.clone();
     cx.events.push(Ev::Attack { t: run.turn, src: id, dst: HERO_ID, dmg, hit, verb: Some(verb.into()) });
     if !hit {
+        // Cut225: a real adjacent melee miss feeds an armed Turnabout.
+        if run.tools.is_some() && !matches!(verb, "shoot" | "bolt") {
+            crate::tools::on_miss(run, cx, mi);
+        }
         return;
     }
     let cause = kind.clone();
@@ -3833,6 +3840,10 @@ pub fn monster_act(run: &mut Run, cx: &mut Ctx, mi: usize) {
 
 /// Approach the hero if seen, else walk to the last known position, else forget.
 fn chase(run: &mut Run, cx: &mut Ctx, mi: usize, sees: bool) {
+    // Cut225: a pause, the construct in the way, or the decoy's pull spends this move.
+    if run.tools.is_some() && crate::tools::chase_override(run, cx, mi) {
+        return;
+    }
     if sees {
         approach(run, cx, mi);
         return;
@@ -4225,6 +4236,12 @@ fn try_companion_verb(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &Verb, v: &V
                     let (src, dst, tp) = (run.monsters[mi].id, run.monsters[ti].id, run.monsters[ti].pos);
                     projectile(run, cx, src, dst, mp, tp);
                     companion_melee(run, cx, mi, ti, if run.hero.class == Class::Caster { "bolt" } else { "shoot" }, 2);
+                    true
+                }
+                // Cut225: no tool is copied — a mirror beside a Clown/Engineer strikes plainly.
+                Class::Clown | Class::Engineer => {
+                    let Some(ti) = adj_target else { return false };
+                    companion_melee(run, cx, mi, ti, "attack", 2);
                     true
                 }
                 Class::Fighter => {

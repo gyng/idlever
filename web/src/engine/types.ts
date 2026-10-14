@@ -150,6 +150,7 @@ export type Snapshot = {
   vault_choice?: VaultChoice; // Cut 5 §4: an opened vault waiting for `choose(itemId)` (50-tick grace, then `vault_pref` picks)
   room?: { id: number; hostiles: number }; // Cut 7 §4: the room the hero is in (0 = corridor); awake hostiles in it (optional)
   rooms?: number; // Cut 7 §4: rooms on this floor, for `D3 · 4 rooms` (optional)
+  tools?: ToolsView; // Cut225: Clown/Engineer abilities, decoy and construct (absent for other classes)
   floor_twist?: string; // Cut 12 §4: the floor's one situation, one word (`nest`), for `D4 · 9 rooms · a nest` (optional; absent on D1–D2)
   fork?: SnapFork; // Cut 26 §2 (core): this floor's down stairs are a fork's (D4 on the base order) — draw a second stair at (x, y); the real stairs are `taken`'s
   meters?: SnapMeters;
@@ -463,7 +464,20 @@ export type Ev =
   /** Cut 29 §3 (core): hp the hero (`id` 0) or a pet regained this tick, by source (`potion` · `rest` · `regen` · `skill` · `pet`) — the meters'
    *  read, not a beat (never renderable; the watch may ignore it). */
   | { t: number; k: "heal"; id: number; amount: number; src: string }
-  | { t: number; k: "recover"; id: number; amount: number; hp: number; src: "leeching" };
+  | { t: number; k: "recover"; id: number; amount: number; hp: number; src: "leeching" }
+  /** Cut225 (core): the hero's temporary tool changed — `kind` decoy|sentry; `state` placed · moved · braced · overdrive ·
+   *  expired · destroyed · discharged; `until` its absolute expiry tick; `hp` a construct's remaining HP. Replay cues read this. */
+  | {
+      t: number;
+      k: "tool";
+      id: number;
+      kind: "decoy" | "sentry";
+      state: string;
+      x: number;
+      y: number;
+      until: number;
+      hp?: number;
+    };
 
 export type StepResult = {
   events: Ev[];
@@ -1265,6 +1279,7 @@ export type ReturnReport = {
   hatched: string[];
   lost: string[]; // Addendum A
   xp: { class: string; gained: number; level_ups: number }; // Addendum C
+  tools?: ToolStats; // Cut225: Clown/Engineer tool receipts over the report's runs
   new_finds?: string[]; // QA 0c6e126 (qaY; core): the kinds an absence found for the first time, every one (the header's `new find` lines) — FOUND; union across slices
   kept?: string[]; // Cut 24 §5 (client, the watched report): what the keep sheet put in the vault, by its vault label (`strength potion`)
   driven?: number; // Cut 24 §1 (core): sends a boss drove off (`no counter`; among `returned`) — count them apart like `stalled`; sum across slices
@@ -1672,6 +1687,7 @@ export type Lineage = {
   counters?: Counter[]; // Cut 6 §5: bosses whose counter row is known
   combos?: ComboHit[]; // Cut 8B §1: the active set's combos, in row order (recomputed on setRules)
   picked?: number[]; // Cut 16 §1: depths picked clean now (as ReturnReport.picked)
+  earned_classes?: EarnedClass[]; // Cut225: Clown/Engineer availability and Rust's remaining reason
   class_offer?: ClassChip[]; // Cut 16 §2: the wake's class chips — owned classes, current first; present while trait_offer is and ≥ 2 are owned; `setClass(name)` picks (sticks until changed)
   shadowed_by?: (number | null)[]; // QA 92eb880: the active set's shadowed rows, as Forecast.shadowed_by (absent when none)
   repeat?: boolean;
@@ -1706,6 +1722,41 @@ export type Lineage = {
  *  §4 (no new wire): the Warlord's break is a callout `warlord breaks` + a note `The Warlord breaks.` (visible only), once, at ≤ 50 % hp.
  *  §3 (no new wire): D5–8 are biome `burrows` (Snapshot.biome, descend.biome, fact `biome:burrows`). */
 export type ClassChip = { class: string; signature: string; level: number; opens: number };
+/** Cut225: an earned class's canonical availability (Rust's gate; the client derives no threshold). */
+export type EarnedClass = {
+  class: string;
+  available: boolean;
+  needs?: string;
+  scout: boolean;
+  completed: number;
+  required_completed: number;
+  depth: number;
+  required_depth: number;
+  level: number;
+  signature: string;
+};
+/** Cut225: receipts of what the Clown/Engineer tools actually did. */
+export type ToolStats = Record<string, number>;
+/** Cut225: the live tool view on a Clown/Engineer snapshot. */
+export type ToolsView = {
+  abilities: { verb: string; level: number; owned: boolean; cooldown: number }[];
+  decoy?: { id: number; x: number; y: number; ttl: number };
+  sentry?: {
+    id: number;
+    x: number;
+    y: number;
+    hp: number;
+    max_hp: number;
+    ttl: number;
+    range: number;
+    next_shot: number;
+    braced: boolean;
+    overdrive: boolean;
+    target?: number;
+  };
+  counter: number;
+  stats: ToolStats;
+};
 /** Cut 23 §1 — the forge: one slot of the heir's starting kit, bought with gold, permanent for the lineage (every heir starts
  *  with every owned step; a death loses none). `owned` = steps bought (0..steps.length); `steps[i].label` the kit at that step
  *  (`sword +1`, `mail`, `pack 4`), `price` its gold. `next` = the next step (absent at the top): `affordable` now; `nights` the

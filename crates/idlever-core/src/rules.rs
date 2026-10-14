@@ -179,6 +179,9 @@ pub const VERB_KEYS: &[&str] = &[
     "riposte", "hex",
     "fire", "reload", "close_burst",
     "aimed_shot", "smoke_retreat", "fast_reload", "finishing_shot", "gunner_tactic",
+    // Cut225: Clown and Engineer ladders and their default class policies
+    "bell_lure", "turnabout", "false_bow", "curtain", "grand_jape", "clown_tactic",
+    "deploy", "brace_sentry", "discharge", "relocate", "overdrive", "engineer_tactic",
     // hold position (always executes; not offered by the editor)
     "hold",
     // Cut 5 §4: the shrine (`pray row` / `pray trait`)
@@ -274,6 +277,12 @@ impl Verb {
             "fast_reload" => "fast reload".into(),
             "finishing_shot" => "finishing shot".into(),
             "gunner_tactic" => "Gunner".into(),
+            "bell_lure" => "bell lure".into(),
+            "false_bow" => "false bow".into(),
+            "grand_jape" => "grand jape".into(),
+            "brace_sentry" => "brace".into(),
+            "clown_tactic" => "Clown".into(),
+            "engineer_tactic" => "Engineer".into(),
             "tactic" => a.replace('_', " "),
             "pray" => format!("pray {a}").trim().to_string(),
             other => other.to_string(),

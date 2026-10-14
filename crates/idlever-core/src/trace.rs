@@ -599,7 +599,7 @@ pub fn family(row: &Row) -> &'static str {
     let gas = row.conds.iter().any(|c| c.k == "foe_tag" && c.t.as_deref() == Some("gas"));
     match row.verb.v.as_str() {
         "retreat" | "back_corridor" if gas => "terrain",
-        "retreat" | "back_corridor" | "vanish" | "smoke" | "shadowstep" => "retreat",
+        "retreat" | "back_corridor" | "vanish" | "smoke" | "shadowstep" | "curtain" => "retreat",
         "drink" if a == "unknown" => "id",
         "read" if a == "unknown" => "id",
         "read" if matches!(a, "teleport" | "blink") => "escape",

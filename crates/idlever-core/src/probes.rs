@@ -22,6 +22,15 @@ fn preset_rows(class: Class) -> RuleSet {
                 Row::new(vec![Cond::n("foes>=",1)],Verb::arg("fire","nearest")),
             ],
         },
+        Class::Clown | Class::Engineer => RuleSet {
+            name: Some(class.name().into()),
+            rows: vec![
+                Row::new(vec![Cond::n("hp<", 30)], Verb::arg("drink", "heal")),
+                Row::new(vec![], Verb::new(if class == Class::Clown { "clown_tactic" } else { "engineer_tactic" })),
+                Row::new(vec![Cond::n("foes>=", 1)], Verb::arg("attack", "nearest")),
+            ],
+            route: Vec::new(),
+        },
         Class::Fighter => RuleSet {
             name: Some("fighter".into()),
             rows: vec![

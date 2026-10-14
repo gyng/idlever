@@ -75,6 +75,22 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
       ("family_context","Choose family context","hero",crate::progression::family_gate(l),l.heirs.bloodline.is_some(),"Commit a compatible context for the lasting trait, preserving its gift and cost.")
     ] {let mut e=entry(id,title,"Completed delves unlock optional hero choices.",effect,if chosen {"complete"}else if g.available {"ready"}else{"later"});if let Some(blocked)=g.blocked{e.requirements.push(blocked);}e.progress=Some(JournalProgress{current:g.completed.min(g.required_completed),required:g.required_completed,unit:"completed delves".into()});e.action=action("open",target,title,(!home).then(||"Build a house".into()));builds.push(e);}
     builds.push(more_classes);
+    // Cut225: one milestone per earned class; a pure read of personal records.
+    for c in crate::hero::Class::EARNED {
+        let (delves, depth) = crate::meta::class_requirement(c).unwrap();
+        let (title, reason, effect) = match c {
+            crate::hero::Class::Clown => ("Clown", "Earned by delving: a frail class that redirects danger.", "Lures, counters, pauses and a curtain step. Choosing the class at home is free."),
+            _ => ("Engineer", "Earned by delving: a class that fights beside one temporary sentry.", "Deploys, braces, relocates and overdrives one sentry. Choosing the class at home is free."),
+        };
+        let blocked = crate::meta::class_gate(l, c);
+        let chosen = l.classes.contains_key(c.name());
+        let mut e = entry(&format!("class_{}", c.name()), title, reason, effect, if chosen {"complete"} else if blocked.is_none() {"ready"} else {"later"});
+        if let Some(b) = &blocked {e.requirements.push(b.clone());}
+        e.requirements.push(format!("Scout; {delves} completed delves; D{depth}"));
+        e.progress = Some(JournalProgress {current:l.persistent.completed.min(delves),required:delves,unit:"completed delves".into()});
+        e.action = action("open","class",title,if !home {Some("Build a house".into())} else if away {Some("hero away".into())} else {blocked});
+        builds.push(e);
+    }
     let all_owned=class.nodes.iter().all(|n|n.owned);
     let mut e=entry("class_tree","Class builds","Class policies add optional branches to your build.","Learn cumulative class policies; changing a build does not erase earned class XP.",if all_owned {"complete"} else if class.nodes.iter().any(|n|n.available) {"ready"} else {"later"});
     if let Some(n)=node {e.requirements=vec![format!("Level{}; historical depth{}; a class point",n.required_level,n.required_depth)];}

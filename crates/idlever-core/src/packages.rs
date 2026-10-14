@@ -668,6 +668,8 @@ pub fn compile(l: &LineageState) -> RuleSet {
     }
     // Chosen policy acts before automatic gun handling; generic stance attacks follow.
     if let Some(row)=crate::firearm::row(l) {rows.push(row);}
+    // Cut225: the earned classes' default policy, in the same place (absent for the others).
+    if let Some(row)=crate::tools::row(l) {rows.push(row);}
     rows.extend(tagged(fallback, &origin));
     // one row per card (the pen's own card row wins), and never the same row twice
     let mut out: Vec<Row> = Vec::new();
@@ -1391,6 +1393,8 @@ pub fn row_label(row: &Row) -> Option<String> {
         "style" => crate::specialization::Style::parse(id).map(|s|s.name().into()),
         "class" if id.starts_with("path:") => crate::class_tree::label(id),
         "class" if id=="gunner" => Some("Gunner".into()),
+        "class" if id=="clown" => Some("Clown".into()),
+        "class" if id=="engineer" => Some("Engineer".into()),
         _ => None,
     }
 }

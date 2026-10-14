@@ -345,6 +345,10 @@ pub struct Run {
     pub gun_reload: Option<crate::firearm::Reload>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gun_skills: Option<crate::firearm::Skills>,
+    /// Cut225: Clown/Engineer cooldowns, the one decoy and the one construct. `None` for
+    /// every other class, so their runs serialize, tick and draw RNG exactly as before.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tools: Option<crate::tools::Tools>,
     pub id: u32,
     pub heir: u32,
     pub started_turn: u64,
@@ -1159,7 +1163,7 @@ impl Run {
         self.monsters.iter().position(|m| m.hp > 0 && m.pos == p)
     }
     pub fn occupied(&self, p: Pos) -> bool {
-        self.hero.pos == p || self.monster_at(p).is_some()
+        self.hero.pos == p || self.monster_at(p).is_some() || self.tools.as_ref().is_some_and(|t| t.blocks(p))
     }
     pub fn item_at(&self, p: Pos) -> Option<usize> {
         self.items.iter().position(|i| i.pos == p)
@@ -2400,6 +2404,7 @@ impl LineageState {
             combos: self.rules().combos(),
             picked: self.picked_clean(),
             class_offer: self.class_offer(),
+            earned_classes: crate::meta::earned_classes(self),
             shadowed_by: self.shadowed_by(self.rules()),
             repeat: !self.restock_off,
             look: self.look.clone().unwrap_or_else(|| self.class.default_look().into()),
@@ -2513,6 +2518,8 @@ impl LineageState {
     pub fn class_offer(&self) -> Vec<crate::wire::ClassChip> {
         // Owned build choices belong to the persistent hero, not a one-use death offer.
         let mut owned: Vec<Class> = Class::ALL.iter().copied().filter(|c|(*c!=Class::Gunner||crate::firearm::UI_READY)&&c.unlock().is_none_or(|u| self.unlocks.contains(u))).collect();
+        // Cut225: an earned class joins only once its canonical gate is open (pure read).
+        owned.extend(Class::EARNED.iter().copied().filter(|c| crate::meta::class_gate(self, *c).is_none()));
         if owned.len() < 2 {
             return Vec::new();
         }
@@ -3088,6 +3095,9 @@ pub struct Batch {
     pub lost: Vec<String>,
     pub xp_gained: u32,
     pub level_ups: u32,
+    /// Cut225: what the Clown/Engineer tools actually did in this batch's runs.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub tools: Option<crate::tools::ToolStats>,
     pub salvaged: BTreeMap<String, (u32, i32)>,
     /// QA on 92eb880: per kind, the coins the ledger paid for `salvaged` (the report's rows).
     #[serde(default)]
@@ -3784,6 +3794,12 @@ impl Game {
                 return Err(format!("{u} not unlocked"));
             }
         }
+        if c.earned() {
+            if let Some(reason) = crate::meta::class_gate(&self.lineage, c) {
+                return Err(reason);
+            }
+        }
+        let was_tools=self.lineage.class.earned();
         let was_gunner=self.lineage.class==Class::Gunner;
         self.lineage.class = c;
         if !crate::kit::starting_weapon_compatible(&self.lineage) {
@@ -3791,7 +3807,9 @@ impl Game {
             self.lineage.starting_selected = None;
         }
         if c==Class::Gunner {self.lineage.classes.entry("gunner".into()).or_insert(ClassProg{level:1,xp:0,next:0});}
-        if was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty()||!self.lineage.class_paths.is_empty() {crate::packages::recompile(&mut self.lineage);}
+        // Cut225: lazy XP record for an earned class, created only when it is chosen.
+        if c.earned() {self.lineage.classes.entry(c.name().into()).or_insert(ClassProg{level:1,xp:0,next:0});}
+        if was_tools||c.earned()||was_gunner||c==Class::Gunner||!self.lineage.specializations.is_empty()||!self.lineage.class_paths.is_empty() {crate::packages::recompile(&mut self.lineage);}
         crate::persistent::refit_build(self,true);
         Ok(())
     }
@@ -4309,6 +4327,7 @@ impl Game {
             hero_name: crate::persistent::name(&self.lineage),
             gun_reload: None,
             gun_skills: (hero.class==Class::Gunner).then(Default::default),
+            tools: hero.class.earned().then(Default::default),
             id,
             heir: self.lineage.heir,
             started_turn: self.lineage.total_turns,
@@ -4992,6 +5011,8 @@ impl Game {
         if let Some(reload) = run.gun_reload {
             quiet = quiet.min(reload.at.saturating_sub(run.turn.saturating_add(1)));
         }
+        // Cut225: a live decoy/construct acts or expires on exact ticks; cooldowns are absolute.
+        if run.tools.as_ref().is_some_and(|t| t.live()) {quiet=0;}
         if quiet == 0 { self.tick(); return 1; }
         let before_action = |bound: u32, energy: i32, speed: i32| -> u32 {
             if speed <= 0 || energy >= ACT_ENERGY - speed { return 0; }
@@ -5137,6 +5158,7 @@ impl Game {
             meters: (!run.meters.is_empty()).then(|| crate::wire::SnapMeters { run: crate::meters::wire(&run.meters.run), fight: (run.meters.fight.ticks > 0).then(|| crate::meters::wire(&run.meters.fight)), fighting: run.meters.quiet < crate::meters::FIGHT_GAP && run.meters.run.fights > 0 }),
             floor_twist: run.floor_twist.as_deref().map(|t| crate::situations::twist_word(t).to_string()),
             fork: run.fork_snap(),
+            tools: crate::tools::view(run),
         }
     }
 
@@ -5591,10 +5613,11 @@ impl Game {
                 self.lineage.trophies.push(tr.clone());
                 marks += 2;
                 bests.push(format!("trophy: {}", trophy_label(&tr)));
-                self.lineage.unlocks.insert(mastery_card(class).into());
+                if !mastery_card(class).is_empty() { self.lineage.unlocks.insert(mastery_card(class).into()); }
             }
         }
         self.batch.xp_gained += xp;
+        if let Some(t) = &run.tools { self.batch.tools.get_or_insert_with(Default::default).add(&t.stats); }
         self.batch.level_ups += level_ups;
         // Companions (Addendum A): survivors return, level on bank; the dead are eggs.
         let eggs_before: Vec<u32> = self.lineage.eggs.iter().map(|e| e.id).collect();

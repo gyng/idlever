@@ -49,6 +49,7 @@ pub mod wall;
 pub mod meters;
 pub mod tiles;
 pub mod tokens;
+pub mod tools;
 pub mod town;
 pub mod tree;
 pub mod trace;

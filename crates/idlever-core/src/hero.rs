@@ -14,10 +14,22 @@ pub enum Class {
     Ranger,
     Caster,
     Gunner,
+    /// Cut225: earned misdirection class (Scout + 12 completed delves + D13).
+    Clown,
+    /// Cut225: earned temporary-construct class (Scout + 20 completed delves + D18).
+    Engineer,
 }
 
 impl Class {
+    /// The five original classes, in their original order. Every legacy initial map, offer,
+    /// random population and label loop keeps reading exactly these (Cut225 invariance).
     pub const ALL: [Class; 5] = [Class::Fighter, Class::Rogue, Class::Ranger, Class::Caster, Class::Gunner];
+    /// Cut225: the earned classes, opened by personal records rather than a purchase.
+    pub const EARNED: [Class; 2] = [Class::Clown, Class::Engineer];
+    /// Every class, original order first (labels, parsing, descriptors).
+    pub const EVERY: [Class; 7] = [Class::Fighter, Class::Rogue, Class::Ranger, Class::Caster, Class::Gunner, Class::Clown, Class::Engineer];
+    /// Cut225: an earned class (no unlock purchase; `meta::class_gate`).
+    pub fn earned(self) -> bool { matches!(self, Class::Clown | Class::Engineer) }
     pub fn name(self) -> &'static str {
         match self {
             Class::Fighter => "fighter",
@@ -25,6 +37,8 @@ impl Class {
             Class::Ranger => "ranger",
             Class::Caster => "caster",
             Class::Gunner => "gunner",
+            Class::Clown => "clown",
+            Class::Engineer => "engineer",
         }
     }
     /// Hero looks: the cosmetic looks a heir may wear (`Game::set_look`); never read by a run.
@@ -32,8 +46,8 @@ impl Class {
     /// Hero looks: the look a lineage that never picked one wears (the class's first painting).
     pub fn default_look(self) -> &'static str {
         match self {
-            Class::Fighter | Class::Caster | Class::Gunner => "male",
-            Class::Rogue | Class::Ranger => "female",
+            Class::Fighter | Class::Caster | Class::Gunner | Class::Engineer => "male",
+            Class::Rogue | Class::Ranger | Class::Clown => "female",
         }
     }
     pub fn parse(s: &str) -> Option<Class> {
@@ -43,13 +57,16 @@ impl Class {
             "ranger" => Some(Class::Ranger),
             "caster" => Some(Class::Caster),
             "gunner" => Some(Class::Gunner),
+            "clown" => Some(Class::Clown),
+            "engineer" => Some(Class::Engineer),
             _ => None,
         }
     }
-    /// The unlock that opens the class (the fighter is free).
+    /// The unlock that opens the class (the fighter is free). Earned classes have no
+    /// purchased unlock id; their gate is a pure read of personal records (`meta::class_gate`).
     pub fn unlock(self) -> Option<&'static str> {
         match self {
-            Class::Fighter => None,
+            Class::Fighter | Class::Clown | Class::Engineer => None,
             Class::Rogue => Some("rogue"),
             Class::Ranger => Some("ranger"),
             Class::Caster => Some("caster"),
@@ -64,6 +81,8 @@ impl Class {
             Class::Ranger => "mark",
             Class::Caster => "slow",
             Class::Gunner => "aimed_shot",
+            Class::Clown => "bell_lure",
+            Class::Engineer => "deploy",
         }
     }
     /// Cut 16 §2: the class level the signature opens at (`class_ladder`).
@@ -74,9 +93,10 @@ impl Class {
     pub fn starting_weapon(self) -> &'static str {
         match self {
             Class::Fighter => "sword",
-            Class::Rogue | Class::Caster => "dagger",
+            Class::Rogue | Class::Caster | Class::Clown => "dagger",
             Class::Ranger => "bow",
             Class::Gunner => "long_gun",
+            Class::Engineer => "mace",
         }
     }
     pub fn base_hp(self) -> i32 {
@@ -86,6 +106,8 @@ impl Class {
             Class::Ranger => 30,
             Class::Caster => 24,
             Class::Gunner => 30,
+            Class::Clown => 28,
+            Class::Engineer => 30,
         }
     }
 }
@@ -98,6 +120,8 @@ pub fn class_ladder(class: Class) -> &'static [(&'static str, u32)] {
         Class::Ranger => &[("shoot", 1), ("kite", 1), ("volley", 3), ("trap", 5), ("mark", 7), ("double_shot", 9)],
         Class::Caster => &[("bolt", 1), ("ward", 1), ("blink", 3), ("slow", 5), ("nova", 7), ("drain", 9)],
         Class::Gunner => &[("fire",1),("reload",1),("aimed_shot",3),("close_burst",3),("smoke_retreat",5),("fast_reload",7),("finishing_shot",9)],
+        Class::Clown => &[("bell_lure", 1), ("turnabout", 3), ("false_bow", 5), ("curtain", 7), ("grand_jape", 9)],
+        Class::Engineer => &[("deploy", 1), ("brace_sentry", 3), ("discharge", 5), ("relocate", 7), ("overdrive", 9)],
     }
 }
 
@@ -115,6 +139,8 @@ pub fn xp_to_next(level: u32) -> u32 {
     }
 }
 
+/// The class's L10 mastery card. Cut225's earned classes have none yet (no new card is
+/// invented): their entry is empty and `Game` grants nothing for it.
 pub fn mastery_card(class: Class) -> &'static str {
     match class {
         Class::Fighter => "phalanx",
@@ -122,6 +148,7 @@ pub fn mastery_card(class: Class) -> &'static str {
         Class::Ranger => "hawkeye",
         Class::Caster => "archmage",
         Class::Gunner => "gunslinger",
+        Class::Clown | Class::Engineer => "",
     }
 }
 
