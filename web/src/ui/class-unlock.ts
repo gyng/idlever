@@ -1,5 +1,5 @@
 // Cut225: a class earned (Clown, Engineer — `Lineage.earned_classes[].available`, Rust's own gate) is announced once on the camp:
-// a herald plate with the class's symbol, `Clown unlocked`, for a few seconds. One class at a time, the next on a paint after its plate is gone, never
+// a herald plate with the class's symbol, `Clown unlocked`, for a few seconds. One class at a time, the next when its plate is gone (if the camp is still up), never
 // the same class twice for one lineage (per lineage seed, browser storage, as the reveal ladder keeps its steps). Without storage
 // it still says each class only once in this session. The plate is a status, not a control: the class is chosen in the picker.
 import type { App } from "../app";
@@ -59,6 +59,10 @@ export function announceClassUnlock(app: App): HTMLElement | null {
     h("span", {}, /* copy:callout */ `${name} unlocked`),
   );
   document.body.appendChild(plate);
-  setTimeout(() => plate.remove(), SHOW_MS);
+  setTimeout(() => {
+    plate.remove();
+    // a second class earned at once follows its plate while the camp is still up (the camp's dispose clears a plate it leaves behind)
+    if (document.querySelector("main.camp")) announceClassUnlock(app);
+  }, SHOW_MS);
   return plate;
 }
