@@ -1,0 +1,9 @@
+client suite: targeted (7 selected; 160 current full; 203 exhaustive groups)
+ok   hero-life-camp  123.3s (12.7s)  28 actual camp recovery checks PASS (shallow 1m, older-save 20m); cleared-world flag controlled, no earned win claim
+ok   first-plot      134.6s (23.9s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   worker-first-act 142.5s (31.8s)  1440 14 next-worker progress checks PASS
+ok   home-forge-work 160.6s (50.0s)  home-forge-work: 31 checks PASS (real WASM, public actions, Full and reduced motion)
+ok   cut120          188.8s (78.3s)  cut120: ok (33 checks)
+ok   hero-life       192.3s (81.7s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-600","recovering-590","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+ok   gold-settlements 221.7s (111.1s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"}]}
+ok: 7/7 client gates in 221.7s
