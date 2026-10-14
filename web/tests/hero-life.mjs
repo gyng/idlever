@@ -11,8 +11,8 @@ const url =
 const evidence = process.env.IDLEVER_HERO_SHOTS;
 if (evidence) mkdirSync(evidence, { recursive: true });
 const fixtures = new URL("../../docs/evidence/cut211/fixtures/", import.meta.url);
-// Owner amendment 2026-10-14: the controlled recovery fixtures at the 12000-tick recovery.
-const controlled = new URL("../../docs/evidence/cut227/recovery/fixtures/", import.meta.url);
+// Cut230: the controlled recovery fixtures at a first-floor death's recovery (600 ticks, the depth ramp's shallow end).
+const controlled = new URL("../../docs/evidence/cut230/fixtures/", import.meta.url);
 const inputs = {};
 function input(name) {
   const bytes = readFileSync(
@@ -319,7 +319,7 @@ try {
     checks++;
   }
   // Damage was controlled only to reach death; these are real saved state/recovery API boundaries.
-  const states = ["reincarnating-12000", "recovering-11990", "recovering-1", "ready-0", "away"];
+  const states = ["reincarnating-600", "recovering-590", "recovering-1", "ready-0", "away"];
   for (const name of states) {
     for (const width of [320, 400, 1440]) {
       await page.setViewportSize({ width, height: 900 });
@@ -367,7 +367,7 @@ try {
           seconds: hero.recovery_s,
           geometry,
         });
-        if (evidence && width === 400 && scale === 1 && name === "recovering-11990")
+        if (evidence && width === 400 && scale === 1 && name === "recovering-590")
           await page.screenshot({ path: `${evidence}/hero-recovery-400.png` });
       }
     }

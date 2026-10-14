@@ -1127,8 +1127,9 @@ fn death_keeps_nothing_and_leaves_bones() {
     assert_eq!(b.items.len(), 5, "sword, heals, scroll, the uninsured plate; not the starting sword");
     assert!(g.lineage.facts.contains("bones:1"));
     assert!(g.events.iter().any(|e| matches!(e, Ev::Bones { heir: 1, items: 5, .. })));
-    let recovery_s = crate::persistent::RECOVERY_TICKS / 10;
-    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds, .. } if u64::from(*seconds) == recovery_s)), "defeat starts automatic recovery (owner amendment 2026-10-14: RECOVERY_TICKS)");
+    // (Cut230: a first-floor death's recovery is the depth ramp's shallow end)
+    let recovery_s = crate::persistent::recovery_ticks(1) / 10;
+    assert!(g.events.iter().any(|e| matches!(e, Ev::Rest { seconds, .. } if u64::from(*seconds) == recovery_s)), "defeat starts automatic recovery (Cut230: recovery_ticks by depth)");
     assert_eq!(u64::from(g.lineage().rest_left_s), recovery_s);
     assert_eq!(g.lineage().bones[0].items, 5);
     // The next heir finds them on D1 and recovers them.
@@ -3592,7 +3593,7 @@ fn no_rest_removes_the_verb_and_halves_camp_rest() {
     g.ascend("no_rest").unwrap();
     assert!(!g.vocabulary().verbs.iter().any(|v| v.v == "rest"));
     assert_eq!(g.rest_after(6000, ExitTier::Return), crate::offline::rest_after(6000, ExitTier::Return) / 2);
-    assert_eq!(g.rest_after(6000, ExitTier::Death), crate::engine::WAKE_TICKS,"death recovery cannot be skipped or halved");
+    assert_eq!(g.rest_after(6000, ExitTier::Death), crate::persistent::recovery_ticks(g.lineage.best_depth) as u32,"death recovery cannot be skipped or halved");
     g.start_run(Some(9));
     g.run.as_mut().unwrap().monsters.clear();
     g.run.as_mut().unwrap().hero.hp = 10;
@@ -9135,7 +9136,10 @@ fn rested_is_the_rest_the_absences_runs_earned() {
     g.lineage.rest_left = crate::engine::WAKE_TICKS;
     let r = g.run_offline(2 * 3600);
     assert!(!r.sampled && r.runs > 0 && r.banked == 0 && r.returned == 0, "{} runs · {} banked · {} returned", r.runs, r.banked, r.returned);
-    assert_eq!(r.rested_s, r.runs as u64 * crate::engine::WAKE_TICKS as u64 / crate::offline::TICKS_PER_SECOND);
+    // (Cut230: each death's recovery by its floor — the graveyard's last `runs` graves)
+    let graves = &g.lineage.graveyard[g.lineage.graveyard.len() - r.runs as usize..];
+    let want: u64 = graves.iter().map(|x| crate::persistent::recovery_ticks(x.depth)).sum();
+    assert_eq!(r.rested_s, want / crate::offline::TICKS_PER_SECOND);
 }
 
 /// QA on e75ec29 (qaQ: `bounty D10 · missed`, no bounty on the camp before the absence): a

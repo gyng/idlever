@@ -5,7 +5,23 @@ use crate::{
 };
 use serde::{Deserialize, Serialize};
 
+/// The full death recovery (20 game minutes; owner amendment 2026-10-14), from `balance.recovery[2]` down.
 pub const RECOVERY_TICKS: u64 = 12000;
+/// Cut230 (owner 2026-10-14, docs/CUT230_EARLY_PACING.md): a death's recovery scales with the run's deepest floor
+/// (`Run::max_depth`, the floor he fell on or below it): `balance.recovery[0]` ticks to the last shallow floor,
+/// `RECOVERY_TICKS` from the first full floor, a ramp (`(d−lo)/(hi−lo)` to the exponent) between.
+pub fn recovery_ticks(depth: u32) -> u64 {
+    let [shallow, lo, hi, exp] = crate::balance::get().recovery;
+    let shallow = u64::from(shallow);
+    if depth <= lo {
+        return shallow;
+    }
+    if depth >= hi {
+        return RECOVERY_TICKS;
+    }
+    let (num, den) = (u64::from(depth - lo).pow(exp), u64::from(hi - lo).pow(exp));
+    shallow + (RECOVERY_TICKS - shallow) * num / den
+}
 pub const REBIRTH_DELVES: u32 = 8;
 pub const REBIRTH_SECONDS: u64 = 3600;
 
@@ -23,6 +39,13 @@ pub struct State {
     pub last_rebirth_completed: u32,
     pub last_rebirth_s: u64,
     pub recovery_until_tick: u64,
+    /// Cut230: the length of the recovery under way (its first ticks read `reincarnating`); 0 on an older save
+    /// (the full `RECOVERY_TICKS`).
+    #[serde(default, skip_serializing_if = "is_zero")]
+    pub recovery_ticks: u64,
+}
+fn is_zero(n: &u64) -> bool {
+    *n == 0
 }
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct Attribute {
@@ -174,11 +197,21 @@ pub fn remaining(l: &LineageState) -> u64 {
         .saturating_sub(l.total_turns)
 }
 pub fn life_state(l:&LineageState,away:bool)->&'static str {
-    if away {"away"}else if remaining(l)>RECOVERY_TICKS-10 {"reincarnating"}else if remaining(l)>0 {"recovering"}else{"ready"}
+    let total=if l.persistent.recovery_ticks==0 {RECOVERY_TICKS} else {l.persistent.recovery_ticks};
+    if away {"away"}else if remaining(l)>total.saturating_sub(10) {"reincarnating"}else if remaining(l)>0 {"recovering"}else{"ready"}
 }
+/// The full recovery (a confirmed reclone).
 pub fn recover(l: &mut LineageState) {
-    l.persistent.recovery_until_tick = l.total_turns.saturating_add(RECOVERY_TICKS);
-    l.rest_left = RECOVERY_TICKS as u32;
+    recover_for(l, RECOVERY_TICKS);
+}
+/// Cut230: a death on (or past) `depth` — its depth-scaled recovery (`recovery_ticks`).
+pub fn recover_at(l: &mut LineageState, depth: u32) {
+    recover_for(l, recovery_ticks(depth));
+}
+fn recover_for(l: &mut LineageState, ticks: u64) {
+    l.persistent.recovery_until_tick = l.total_turns.saturating_add(ticks);
+    l.persistent.recovery_ticks = ticks;
+    l.rest_left = ticks as u32;
 }
 pub fn preview(l: &LineageState, away: bool) -> Rebirth {
     let p = &l.persistent;
@@ -431,11 +464,13 @@ mod tests {
             g.lineage.bloodline.as_ref().unwrap().upgrades,
             stats.unwrap().upgrades
         );
-        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
+        // (Cut230: a first-floor death's recovery, the shallow end of the ramp)
+        let r = recovery_ticks(1);
+        assert_eq!(remaining(&g.lineage), r);
         let save = g.save();
         assert!(g.try_send().is_err());
         assert_eq!(g.save(), save);
-        g.rest_tick(RECOVERY_TICKS as u32 - 1);
+        g.rest_tick(r as u32 - 1);
         assert_eq!(remaining(&g.lineage), 1);
         assert!(g.try_send().is_err());
         g.rest_tick(1);
@@ -444,6 +479,53 @@ mod tests {
         assert!(g.lineage.chronicle.last().unwrap().contains("goblin"));
     }
 
+    #[test]
+    fn cut230_recovery_scales_with_the_deepest_floor() {
+        let [shallow, lo, hi, _] = crate::balance::get().recovery;
+        assert_eq!(recovery_ticks(1), u64::from(shallow));
+        assert_eq!(recovery_ticks(lo), u64::from(shallow));
+        assert_eq!(recovery_ticks(hi), RECOVERY_TICKS);
+        assert_eq!(recovery_ticks(40), RECOVERY_TICKS);
+        let ramp: Vec<u64> = (1..=40).map(recovery_ticks).collect();
+        assert!(ramp.windows(2).all(|w| w[0] <= w[1]), "never shorter deeper: {ramp:?}");
+        assert!(recovery_ticks(lo + 1) > u64::from(shallow) && recovery_ticks(hi - 1) < RECOVERY_TICKS);
+        // a deep death owes the full recovery, read as reincarnating, then recovering
+        let mut g = home();
+        g.start_run(None);
+        let r = g.run.as_mut().unwrap();
+        r.max_depth = hi;
+        r.over = Some(crate::engine::ExitTier::Death);
+        r.death_cause = Some("goblin".into());
+        g.finish_run();
+        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
+        assert_eq!(g.lineage.persistent.recovery_ticks, RECOVERY_TICKS);
+        assert_eq!(g.lineage.rest_left as u64, RECOVERY_TICKS);
+        assert_eq!(life_state(&g.lineage, false), "reincarnating");
+        g.rest_tick(10);
+        assert_eq!(life_state(&g.lineage, false), "recovering");
+        // a shallow death's short recovery reads the same phases on its own length
+        let mut g = home();
+        g.start_run(None);
+        let r = g.run.as_mut().unwrap();
+        r.over = Some(crate::engine::ExitTier::Death);
+        r.death_cause = Some("goblin".into());
+        g.finish_run();
+        assert_eq!(remaining(&g.lineage), u64::from(shallow));
+        assert_eq!(life_state(&g.lineage, false), "reincarnating");
+        g.rest_tick(10);
+        assert_eq!(life_state(&g.lineage, false), "recovering");
+        // an older save (no recorded length) keeps the full recovery's phases
+        g.lineage.persistent.recovery_ticks = 0;
+        assert_eq!(life_state(&g.lineage, false), "recovering");
+        // a reclone's recovery stays the full one
+        let mut g = home();
+        g.lineage.best_depth = 8;
+        g.lineage.bloodline.as_mut().unwrap().points = 34;
+        g.upgrade_hero("damage").unwrap();
+        let p = preview(&g.lineage, false);
+        rebirth(&mut g, &p.token).unwrap();
+        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
+    }
     #[test]
     fn confirmed_rebirth_conserves_budget_and_refuses_stale_or_rapid_repeat() {
         let mut g = home();
@@ -692,7 +774,7 @@ mod tests {
         let h = wire(&g.lineage, false);
         assert!(h.device.available && h.pool.available);
         assert_eq!(h.need, "recovery");
-        assert_eq!(h.recovery_s, RECOVERY_TICKS / 10);
+        assert_eq!(h.recovery_s, recovery_ticks(g.lineage.best_depth.max(1)) / 10);
     }
     #[test]
     fn first_unscouted_defeat_recovers_through_actual_session_wall_clock() {
@@ -705,14 +787,15 @@ mod tests {
         }
         g.finish_run();
         assert!(!crate::tree::hired(&g.lineage, "scout"));
-        assert_eq!(remaining(&g.lineage), RECOVERY_TICKS);
+        let r = recovery_ticks(1);
+        assert_eq!(remaining(&g.lineage), r);
         let mut whole = crate::bloodlines::Session::load(&g.save()).unwrap();
         let mut sliced = whole.clone();
         let next = whole.active.lineage.next_run_id;
-        whole.advance(RECOVERY_TICKS * 100);
+        whole.advance(r * 100);
         sliced.advance(17000);
         sliced = crate::bloodlines::Session::load(&sliced.save()).unwrap();
-        sliced.advance(RECOVERY_TICKS * 100 - 17000);
+        sliced.advance(r * 100 - 17000);
         assert_eq!(remaining(&whole.active.lineage), 0);
         assert_eq!(remaining(&sliced.active.lineage), 0);
         assert_eq!(
@@ -731,7 +814,7 @@ mod tests {
         assert!(whole.active.run.is_none());
         assert!(whole.try_send().is_ok());
         let mut counts = Game::load(&g.save()).unwrap();
-        crate::offline::run_offline_counts(&mut counts, RECOVERY_TICKS / 10);
+        crate::offline::run_offline_counts(&mut counts, r / 10);
         assert_eq!(remaining(&counts.lineage), 0);
         assert_eq!(counts.lineage.next_run_id, next);
         assert!(counts.run.is_none());

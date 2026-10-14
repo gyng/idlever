@@ -11,6 +11,17 @@ rank), damage (+1 per rank) and armour (+1 per rank), with escalating earned
 Legacy prices; the whole allocation can currently be refunded at every visit.
 Dungeon ascension is a separate bottom-of-dungeon reset of gold/progression.
 
+## Owner amendment 2026-10-14 (Cut230) — death recovery by depth
+
+A death's recovery now scales with the run's deepest floor (`Run::max_depth`), `persistent::recovery_ticks`. It is
+600 ticks (60 s) to D14, then rises linearly to the full `RECOVERY_TICKS` (12000 ticks, 20 minutes) at D28 and
+below (`balance.recovery = [600, 14, 28, 1]`). Each death stores its length (`persistent.recovery_ticks`), and
+`reincarnating` covers that recovery's first 10 ticks. An older save without the field keeps the full 20 minutes.
+A confirmed reclone keeps the full recovery. The carried-rest fix below is unchanged. Search and evidence:
+docs/CUT230_EARLY_PACING.md, `docs/evidence/cut230/`. Controlled client fixtures for a first-floor death
+(600 ticks): `docs/evidence/cut230/fixtures/`. The Cut227 fixtures remain as older-save, full-recovery
+coverage. Acceptance item 2 now reads against the recovery owed by that death.
+
 ## Owner amendment 2026-10-14 — death recovery 600 → 12000 ticks
 
 Death (and rebirth) recovery is now **12000 ticks (20 game minutes, the old

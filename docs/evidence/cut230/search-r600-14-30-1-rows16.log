@@ -1,0 +1,55 @@
+dayplayer: targeted rows picked-idle,outpace,tuned-picked — configurations IDLE,PICKED,TUNED
+dayplayer: IDLE s7 done in 74s 
+dayplayer: IDLE s5 done in 81s 
+dayplayer: IDLE s1 done in 85s 
+dayplayer: IDLE s3 done in 101s 
+dayplayer: IDLE s9 done in 102s 
+dayplayer: TUNED s16 done in 105s 
+dayplayer: IDLE s6 done in 108s 
+dayplayer: IDLE s2 done in 109s 
+dayplayer: IDLE s4 done in 109s 
+dayplayer: TUNED s3 done in 116s 
+dayplayer: TUNED s13 done in 136s 
+dayplayer: TUNED s10 done in 137s 
+dayplayer: TUNED s12 done in 140s 
+dayplayer: TUNED s7 done in 140s 
+dayplayer: PICKED s3 done in 70s 
+dayplayer: TUNED s8 done in 154s 
+dayplayer: TUNED s11 done in 155s 
+dayplayer: PICKED s16 done in 86s 
+dayplayer: TUNED s6 done in 172s 
+dayplayer: TUNED s14 done in 181s 
+dayplayer: TUNED s15 done in 183s 
+dayplayer: TUNED s4 done in 191s 
+dayplayer: TUNED s9 done in 192s 
+dayplayer: PICKED s15 done in 117s 
+dayplayer: PICKED s10 done in 82s 
+dayplayer: TUNED s2 done in 200s 
+dayplayer: TUNED s5 done in 208s 
+dayplayer: PICKED s9 done in 136s 
+dayplayer: PICKED s7 done in 106s 
+dayplayer: PICKED s6 done in 126s 
+dayplayer: PICKED s8 done in 170s 
+dayplayer: IDLE s10 done in 121s 
+dayplayer: TUNED s1 done in 279s 
+dayplayer: PICKED s11 done in 142s 
+dayplayer: PICKED s13 done in 143s 
+dayplayer: PICKED s4 done in 174s 
+dayplayer: IDLE s14 done in 93s 
+dayplayer: PICKED s14 done in 177s 
+dayplayer: PICKED s1 done in 176s 
+dayplayer: PICKED s5 done in 189s 
+dayplayer: PICKED s12 done in 141s 
+dayplayer: IDLE s12 done in 114s 
+dayplayer: IDLE s8 done in 128s 
+dayplayer: PICKED s2 done in 154s 
+dayplayer: IDLE s11 done in 129s 
+dayplayer: IDLE s13 done in 121s 
+dayplayer: IDLE s15 done in 116s 
+dayplayer: IDLE s16 done in 114s 
+bar (targeted)                                                                value  result
+PICKED ≥ 1.5× IDLE at D13, D18, D23                              1.50 · 2.50 · 3.71  PASS
+IDLE never out-paces PICKED (≥ 90 % of seed × milestone)                        99%  PASS
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.07  FAIL
+dayplayer (targeted: picked-idle,outpace,tuned-picked, 312s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `tuned-picked,picked-idle,outpace` FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

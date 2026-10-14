@@ -19,13 +19,19 @@ pub struct Balance {
     pub steady_rest: [i32; 2],
     pub guarded_home: [i32; 2],
     pub guarded_dry: [i32; 2],
+    /// Cut230 (owner 2026-10-14): death recovery by the run's deepest floor — [shallow ticks, last shallow
+    /// floor, first full floor, ramp exponent]; `persistent::recovery_ticks`. The full value is `RECOVERY_TICKS`.
+    #[serde(default = "default_recovery")]
+    pub recovery: [u32; 4],
 }
+fn default_recovery() -> [u32; 4] { DEFAULT.recovery }
 pub const DEFAULT: Balance = Balance {
     level_runs: [10, 40, 120, 200], scar_pct: 5, scar_cap: 30,
     drill_meeting: 2, drill_days: 3, deep_drill_days: 6,
     steady_heal: [30,35], hunter_heal: [30,35], guarded_heal: [40,45], bold_heal: 25,
     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
     guarded_home: [30,25], guarded_dry: [45,44],
+    recovery: [600, 14, 28, 1],
 };
 pub fn parse(text: &str) -> Result<Balance, String> {
     let b: Balance = serde_json::from_str(text).map_err(|e| e.to_string())?;
@@ -35,7 +41,9 @@ pub fn parse(text: &str) -> Result<Balance, String> {
         || b.deep_drill_days < b.drill_days
         || b.steady_heal.iter().chain(&b.hunter_heal).chain(&b.guarded_heal).chain(&b.steady_dry)
             .chain(&b.steady_rest).chain(&b.guarded_home).chain(&b.guarded_dry)
-            .chain([b.bold_heal,b.steady_home].iter()).any(|n| !(1..=100).contains(n)) {
+            .chain([b.bold_heal,b.steady_home].iter()).any(|n| !(1..=100).contains(n))
+        || b.recovery[0] == 0 || u64::from(b.recovery[0]) > crate::persistent::RECOVERY_TICKS
+        || b.recovery[1] >= b.recovery[2] || b.recovery[2] > 40 || !(1..=4).contains(&b.recovery[3]) {
         return Err("invalid balance bounds or progression ordering".into());
     }
     Ok(b)

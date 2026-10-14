@@ -1,0 +1,12 @@
+client suite: targeted (9 selected; 160 current full; 203 exhaustive groups)
+failed: 5 to run, 4 passes reused from /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/target/client-tests/last-targeted.json (947cbeb7c7+dirty:43045bc1 wasm:b0d10d68c9ff)
+ok* hero-life-camp  reused: passed 2026-10-14T16:50:56.100Z (26.9s), identical identity; not rerun
+ok* home-resident-phases reused: passed 2026-10-14T16:51:00.894Z (31.7s), identical identity; not rerun
+ok* first-plot      reused: passed 2026-10-14T16:52:16.328Z (80.2s), identical identity; not rerun
+ok* worker-purchases reused: passed 2026-10-14T16:51:36.573Z (35.7s), identical identity; not rerun
+ok   bloodline-founding 293.0s (287.7s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+ok   gold-settlements 549.6s (544.4s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"},{"bytes":6849963,"sha256":"b0d10d68c9fffc22fef818ea721b7cf18f945aaad3bf128b23337a205b76cbb4"}]}
+ok   hero-life       731.5s (438.5s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-600","recovering-590","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+ok   journal-earned  867.7s (318.1s)  journal-earned: 326 checks passed, earned seed1/13 and actual boundary actions; no grants
+ok   home-residents  1013.0s (281.6s)  home-residents: 506 checks PASS; actual paid3rest and/or labelled controlled Core3reincarnation, perfixture6layouts/36mouse-keyboard inspections, unchanged restored save
+ok: 9/9 client gates in 1013.0s — ran fresh 5 (5 ok, 0 failed); reused 4 earlier passes (identical identity, labelled ok*, not fresh evidence)

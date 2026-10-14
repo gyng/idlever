@@ -7,7 +7,7 @@
 //             never caps (a second haul adds up)
 //   porter    3 chests opened → the porter lit and free (the pill gold, his greyed figure in the town) → hired from the pill's works sheet
 //             (`PORTER HIRED`, ≤ 2 words; he stands at his post) → he opens chests: the next haul lands in the purse, no chest
-//   scout     the manual sends fill the gem's counter toward the scout (`1/3` …); before him an absence yields ≤ 1 run (the run in
+//   scout     the manual sends fill the gem's counter toward the scout (`1/2` …); before him an absence yields ≤ 1 run (the run in
 //             flight); hired, the gem reads `auto` and an absence sends again and again
 //   sheet     the works sheet: the done nodes dimmed, the lit node with its hire and price, two silhouettes, never more; ≤ 1 hire; copy
 //             caps (node names ≤ 2 words, state lines ≤ 3 words + a number); mid-game (the trunk done) the four branches (the tracks'
@@ -305,7 +305,7 @@ try {
         ["mouth", "tent", "Heroes"].every((x) => surf.includes(x)) &&
         surf.some((x) => /send/.test(x)) &&
         surf.every(
-          (x) => ["mouth", "tent", "Heroes", "works"].includes(x) || /^send\s*0\/3$/i.test(x),
+          (x) => ["mouth", "tent", "Heroes", "works"].includes(x) || /^send\s*0\/2$/i.test(x),
         ),
       `day 0: ≤ 5 current surfaces — mouth, tent, Heroes, Send, optional Works (${surf.length}: ${surf.join(" | ")})`,
     );
@@ -314,7 +314,7 @@ try {
       all.length <= 12,
       `day 0: ≤ 12 elements above the fold (${all.length}: ${all.join(" | ")})`,
     );
-    check(/0\/3/.test(s.gem), `day 0: the gem counts the sends toward the scout (${s.gem.trim()})`);
+    check(/0\/2/.test(s.gem), `day 0: the gem counts the sends toward the scout (${s.gem.trim()})`);
     const saveBeforeHeroes = await page.evaluate(() => window.__idlever.engine.save());
     await page.locator(".hero-expand:visible").click({ timeout: 5000 });
     await until(() => !!document.querySelector(".heroes-sheet"), "active Heroes sheet", 5000);
@@ -621,7 +621,7 @@ try {
       g.push(s.gem.match(/\d\/\d/)?.[0] ?? (s.lit === "scout" ? "lit" : "?"));
     }
     check(
-      JSON.stringify(g.slice(0, 3)) === JSON.stringify(["0/3", "1/3", "2/3"]) && s.scout.count >= 3,
+      JSON.stringify(g.slice(0, 2)) === JSON.stringify(["0/2", "1/2"]) && s.scout.count >= 2,
       `each manual send fills the scout's counter on the gem (${g.join(" → ")}; count ${s.scout.count})`,
     );
     // before the scout: an absence yields at most the run in flight (none here: the hero waits at home)

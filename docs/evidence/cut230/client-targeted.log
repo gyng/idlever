@@ -1,0 +1,19 @@
+client suite: targeted (9 selected; 160 current full; 203 exhaustive groups)
+ok   hero-life-camp  29.6s (26.9s)  28 actual camp recovery checks PASS (shallow 1m, older-save 20m); cleared-world flag controlled, no earned win claim
+ok   home-resident-phases 34.4s (31.7s)  home-resident-phases: 25 PASS; controlled real Core deaths/recovery and actual prepared/away transition; no fake phase injection
+ok   worker-purchases 70.1s (35.7s)  1440 7 worker purchase checks PASS
+ok   first-plot      109.8s (80.2s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+FAIL gold-settlements 385.7s (383.1s)  Node.js v26.5.0
+         at /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/gold-settlements.mjs:78:22 {
+FAIL journal-earned  385.7s (383.0s)  Node.js v26.5.0
+         at open (/home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/journal-earned.mjs:80:18)
+         at async file:///home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/journal-earned.mjs:207:7 {
+FAIL home-residents  385.7s (383.0s)  Node.js v26.5.0
+       - waiting for locator('.plot-preview') to be hidden
+         at /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/home-residents.mjs:319:46 {
+FAIL bloodline-founding 385.8s (383.2s)  Node.js v26.5.0
+       - waiting for locator('.bloodline-founding').locator('.bloodline-confirm')
+         at /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/bloodline-founding.mjs:114:50 {
+FAIL hero-life       386.1s (383.4s)  Node.js v26.5.0
+         at /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/web/tests/hero-life.mjs:328:20 {
+FAIL: 4/9 client gates in 386.1s

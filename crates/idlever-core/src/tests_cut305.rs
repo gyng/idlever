@@ -116,18 +116,18 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     assert!(tree::hired(&g.lineage, "quartermaster") && !tree::hired(&g.lineage, "porter"));
     assert_eq!(tree::lit(&g.lineage).map(|n| n.id), None, "nothing lit at 0:00");
     assert_eq!(g.lineage().tree.unwrap().next.unwrap().kind, "send", "the pill says send");
-    // three sends by hand, the chest never opened: the scout lights (the porter is not ready)
-    for _ in 0..3 {
+    // two sends by hand (Cut230; was three), the chest never opened: the scout lights (the porter is not ready)
+    for _ in 0..2 {
         let r = send_by_hand(&mut g);
         assert_eq!(r.runs, 1);
         assert!(conserved(&g));
     }
     assert!(g.lineage.tree.chest > 0, "the hauls wait in the chest");
-    assert_eq!(tree::count(&g.lineage, "scout"), 3);
+    assert_eq!(tree::count(&g.lineage, "scout"), 2);
     assert_eq!(tree::lit(&g.lineage).map(|n| n.id), Some("scout"));
-    // the price is in forge units
+    // the price is in forge units (Cut230: 0.4, affordable from the two runs)
     let p = tree::price(&g.lineage, tree::def("scout").unwrap());
-    assert_eq!(p, ((crate::kit::unit_of(&g.lineage) * 5 + 5) / 10) as i32);
+    assert_eq!(p, ((crate::kit::unit_of(&g.lineage) * 4 + 5) / 10) as i32);
     // opening the chest three times lights the porter ahead of the scout (the tree's order): one lit
     let mut h = g.clone();
     tree::open_chest(&mut h.lineage).unwrap();
@@ -190,7 +190,7 @@ fn manual_send_before_the_scout_yields_the_run_in_flight() {
     }
     assert_eq!(g.lineage.next_run_id, n, "the hero waits at camp");
     g.auto_keep();
-    // the scout lifts it: three sends by hand, then hired; offline is uncapped again
+    // the scout lifts it: two sends by hand (Cut230), then hired; offline is uncapped again
     send_by_hand(&mut g);
     assert_eq!(tree::lit(&g.lineage).map(|n| n.id), Some("scout"));
     if g.lineage.gold < tree::price(&g.lineage, tree::def("scout").unwrap()) {

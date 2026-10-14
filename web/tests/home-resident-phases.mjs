@@ -48,7 +48,7 @@ try {
   const raw = gunzipSync(
     readFileSync(
       new URL(
-        "../../docs/evidence/cut227/recovery/fixtures/three-controlled-reincarnating.game.json.gz",
+        "../../docs/evidence/cut230/fixtures/three-controlled-reincarnating.game.json.gz",
         import.meta.url,
       ),
     ),
@@ -119,7 +119,7 @@ try {
   eq(s.seated, [true, true, true], "actual recovery residents remain resting");
   await p.evaluate(async () => {
     const a = window.__idlever;
-    await a.engine.advance(1200000); // the 2026-10-14 recovery: 12000 ticks
+    await a.engine.advance(60000); // Cut230: a first-floor death's recovery, 600 ticks
     await a.refresh();
   });
   s = await state();

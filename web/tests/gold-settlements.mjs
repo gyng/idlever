@@ -11,9 +11,9 @@ const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const manifest = JSON.parse(
   read(
-    // Current package: Cut225 owner tuning (Clown/Engineer numbers) on main. Earlier manifests stay as history: cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48.
+    // Current package: Cut230 early pacing (Scout after 2 sends; depth-scaled recovery). Earlier manifests stay as history: cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48, cut225 5844.
     process.env.IDLEVER_GOLD_SETTLEMENT_INPUTS ??
-      "docs/evidence/cut225/clown-tuning/settlements-inputs-5844.json",
+      "docs/evidence/cut230/settlements-inputs-b0d1.json",
   ),
 );
 const binary = read("web/src/engine/pkg/idlever_wasm_bg.wasm");
