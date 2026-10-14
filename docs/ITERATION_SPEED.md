@@ -1,3 +1,280 @@
+## Repin, pacing pack, sweep — 2026-10-15
+
+The owner asked for faster iteration. Three tools came out of it. They change no `.rs` file and none of them is a gate
+pass. Self-tests: `node tools/sweep.test.mjs` (also run by `tools/verify.sh --quick`), and the end-to-end repin runs
+below.
+
+### `tools/repin.mjs`: one command after a core change
+
+```sh
+node tools/repin.mjs --dir docs/evidence/cutNNN --note "CutNNN: what changed" [--settle [--regen]] [--no-build] [--ship]
+node tools/repin.mjs --check        # hash the pkg against the default manifest; changes nothing (exit 1 if they differ)
+```
+
+1. Runs `tools/wasm.sh` (fast). `--ship` builds the release package instead, and `--no-build` uses the pkg as it is.
+2. Reads the bytes and sha256 of `web/src/engine/pkg/idlever_wasm_bg.wasm`.
+3. Finds the default manifest. It is the literal after `IDLEVER_GOLD_SETTLEMENT_INPUTS ??` in
+   `web/tests/gold-settlements.mjs`. If that manifest already pins this WASM, nothing is written; `--force` writes one
+   anyway.
+4. Otherwise it writes `<dir>/settlements-inputs-<sha 4>.json`, a copy with these changes:
+   - `wasm` updated;
+   - `repinnedFrom` set to the old manifest;
+   - `note_<dir basename>` (or `--note-key`) set to `--note`.
+
+   It then switches the test's default and adds the old manifest to the comment's history list. Edit the "Current
+   package:" wording in that comment by hand.
+5. `--settle` replays the saves natively, exactly as Cut227 and Cut230 did:
+   - It gunzips each entry's immutable pre-exit `home` and checks both hashes.
+   - It runs `cargo run --profile fast -p idlever-core --example gold_settlement_repin -- IN OUT`. The example asserts
+     the original Gold, ledger and ExitLine, and exports the current after-saves.
+   - It reports:
+     - whether the assertions held;
+     - whether each entry's `expected` is unchanged;
+     - which after-saves differ, with the JSON path kinds that differ.
+   - `--regen` writes the differing after-saves to `<dir>/settlements/<id>.after.session.json.gz` and updates
+     `afterHome`, `afterRawSha256` and `afterHomeSha256` in the new manifest. It also updates `expected` if that
+     changed.
+6. The browser proof is still `cd web && node tests/run.mjs gold-settlements`. The tool prints that command.
+
+Measured on 3823eb8b (no core change since Cut230):
+- A fresh worktree's `tools/wasm.sh` gave 6849963 bytes, sha256 `b0d10d68…`. That is byte-identical to the Cut230 pin.
+- `--check` printed UNCHANGED.
+- `node tools/repin.mjs --settle` took 6.2 s wall: a 4.2 s rebuild plus a 1.8 s native replay. It wrote nothing and
+  reported Gold, ledger and ExitLine unchanged on 4/4 entries, and `expected` and the after-save unchanged on all 4.
+
+The changed path was tested against a scratch manifest whose `death-fetched-lost` after-save pointed at another save.
+`--force --dir target/repin-test --settle --regen` did the following:
+- reported that one after-save differs (1174 path kinds);
+- regenerated it;
+- restored the true raw hash;
+- set `repinnedFrom` and the note;
+- switched the default.
+
+The test file was restored afterwards.
+
+### Pacing pack: `node tools/gates.mjs --pacing [--fail-fast] [--balance P]`
+
+`--pacing` is `--full --rows <PACING>`. PACING (in `tools/gates.mjs`) holds the rows that have broken at 16 seeds:
+- picked-idle, scout, porter, tuned-picked, random-picked, outpace, reach;
+- every `idle-*` row and every `stalls-*` row;
+- picked-stages, cadence30, nothing-required, hands-idle;
+- the worker rows automation-pays and workers-daily.
+
+The list is resolved against `dayplayer --rows ?`. A prefix entry (`idle-`) takes every listed row with that prefix,
+and an exact id that the binary lacks is skipped and named. Today it resolves to 24 rows. It is cached like `--rows`:
+the printout goes to `target/gates/dayplayer-rows-<hash>.txt` and the fortnights go to the job cache. Its last line
+says `TARGETED … not a gate pass`. Run it after a pacing or economy edit, before the routine full gate.
+
+**First real run.** The run was 3823eb8b, `GATES_THREADS=24`, fresh job cache, host load 60–100 on 32 cores.
+- It played 16 configurations, from IDLE to TUNED-quests.
+- It took 3053 s (51 min) of dayplayer wall.
+- **23/24 rows PASS.** The values match Cut230's final rows.
+- **cadence30 FAILs**: gap median 6.4 · worst 9.1 min · dec 5 · 0/16. It is the new Cut231 row, and it fails
+  identically in `docs/evidence/cut231/timeline/gates-rows-cadence30-16.log`. It is the core agent's current target,
+  not a regression.
+
+The log is `docs/evidence/iteration-tools/pacing-3823eb8b.log` (the bar lines only). `--fail-fast` would have stopped
+at cadence30's first failing seed.
+
+### `tools/sweep.mjs`: parallel balance sweep, no recompile
+
+```sh
+node tools/sweep.mjs --name ramp --grid grid.json --rows tuned-picked,picked-idle [--seeds 16] \
+     [--objective tuned-picked[@i][:min]] [--refine K] [--threads N] [--jobs K] [--base tuning/balance.json] \
+     [--no-fail-fast] [--fresh] [--fresh-jobs] [--list]
+```
+
+**The grid.** `--grid` is a file or inline JSON:
+- `{"grid": {"recovery.1": [12, 14, 16], "recovery.2": [26, 27, 28]}}` gives the Cartesian product;
+- `{"candidates": [{"name": "…", "set": {"scar_pct": 6}}]}` gives explicit candidates.
+
+A path such as `key`, `key.1` or `key[1]` must exist in the base. The Rust parser validates each profile and the sweep
+records a rejected one as INVALID.
+
+**How it runs.**
+- It builds the dayplayer once with `--features dev-balance` and snapshots it to
+  `target/sweep/<name>/dayplayer-<sha>`, so another build cannot swap it mid-sweep.
+- Each candidate runs with `IDLEVER_BALANCE_JSON`, at the full tier: `--seeds`, `--loo-seeds` and `--tuned-seeds`
+  all set to N.
+- It sets the same `IDLEVER_SRC_KEY` as `gates.mjs --balance`, so kept fortnights in `target/gates/dp` are shared
+  with targeted gate runs of the same profile.
+
+**Parallelism.**
+- The total is `--threads`, else `GATES_THREADS`, else the cores.
+- `--jobs` candidates run at once. The default is at most threads/4, spread evenly so the last batch is not one
+  candidate running alone.
+- Each candidate gets threads/jobs dayplayer threads. Within a candidate the dayplayer queues seeds lowest first.
+
+**Fail-fast.** Each candidate runs the dayplayer's own `--fail-fast`. It aborts on the first row settled FAIL. It also
+stops once every row has settled, so a passing median row reads as a range such as `1.15…1.20 with 3 seeds left`.
+The sweep ranks by the range's midpoint and marks it `~`. `--refine K` replays the K best PASS candidates without
+fail-fast, in `<candidate>/exact/`, and ranks them by their exact values. `--no-fail-fast` plays every candidate to
+exact values.
+
+**Output.**
+- Each candidate gets `target/sweep/<name>/<candidate>/{profile.json,out.txt,err.txt,time.txt,result.json}`. The
+  printouts stream, so `tail -f …/err.txt` shows the games.
+- The sweep writes `target/sweep/<name>/results.{md,json}`. It ranks PASS first, then by the objective (default: the
+  first row's first number, maximised), then FAIL, then INVALID and ERROR.
+- The header gives the wall time, the sum of candidate walls, the CPU and a sequential estimate. The estimate is the
+  sum over candidates of max(CPU / cap, longest game): each candidate alone on the whole cap.
+- The header covers the latest invocation only. `runs.jsonl` keeps the timing of every invocation (the screening run,
+  the `--refine` run, …).
+
+**Resume.** A candidate is skipped when its `result.json` matches its profile hash, its arguments and the binary key.
+A resumed result reads its rows again from its kept `out.txt`. Ctrl-C kills each run's process group. `--fresh` reruns
+the candidates. `--fresh-jobs` also replays the job cache, for timing.
+
+**Demo: the recovery ramp knees.** The demo swept `recovery[1]` ∈ {12, 14, 16} × `recovery[2]` ∈ {26, 27, 28} on
+`tuned-picked,picked-idle` at 16 seeds. The run had 32 threads, 5 candidates × 6 threads. The host was shared with
+other agents' gates at load 50–100 on 32 cores.
+
+Screening run, fail-fast, 9 candidates:
+
+| Measure | Value |
+|---|---|
+| Wall | 1998 s (33 min) |
+| Σ candidate wall | 9142 s |
+| Σ CPU | 29070 s |
+| Sequential estimate | 2922 s, so about **1.46×** faster |
+
+The sequential estimate is each candidate alone on the 32-thread cap: Σ max(CPU/32, longest game). It assumes an idle
+host, so it flatters the sequential side. Running the same 9 one after another at 6 threads would take the Σ candidate
+wall of 9142 s.
+
+`--refine 3` then replayed the three best PASS candidates without fail-fast: 1329 s wall, 10287 CPU-s. The exact values
+agree with the Cut230 table: 12-28 reads 1.18 here and 1.18 there.
+
+| # | candidate (knees lo-hi) | verdict | TUNED/PICKED D33 | PICKED/IDLE D13 · D18 · D23 |
+|---|---|---|---|---|
+| 1 | 12-28 | PASS exact | 1.18 | 1.50 · 2.50 · 3.50 |
+| 2 | 12-27 | PASS exact | 1.17 | 1.50 · 2.50 · 3.50 |
+| 3 | 14-27 | PASS exact | 1.17 | 1.50 · 2.50 · 3.71 |
+| 4 | 14-28 (shipping) | PASS | ~1.15…1.18 | ~1.50 · 2.50 · 3.71 |
+| 5 | 12-26 | PASS | ~1.15…1.17 | ~1.50 · 2.50 · 3.50 |
+| 6 | 16-26 | PASS | ~1.15…1.17 | ~1.50 · 2.50 · 3.71 |
+| 7 | 16-27 | PASS | ~1.15…1.17 | ~1.50 · 2.50 · 3.71 |
+| 8 | 16-28 | PASS | ~1.15…1.17 | ~1.50 · 2.50 · 3.71 |
+| 9 | 14-26 | FAIL at s16 | ~1.00…1.07 | ~1.50…2.00 |
+
+14-26 fails while 12-26 and 16-26 pass. TUNED/PICKED is not monotone in the knees, so a grid search beats bisection
+here.
+
+**Lessons from the run:**
+- With a passing median row, fail-fast saves little. The rows settled only with 1–4 seeds left. It pays off on failing
+  candidates and on every-seed rows.
+- `--refine` is the way to get exact numbers for the top few.
+- The parallel gain is bounded by the longest TUNED fortnight. One game ran 1400 s under load, against about 135 s on a
+  quieter box. The gain is also bounded by the host's spare cores, not by the sweep.
+
+### Content tunables not yet in `tuning/balance.json` (for the lead, after the core agent finishes)
+
+balance.json holds:
+- `level_runs`, scars, drills;
+- the stance heal, home, dry and rest bars;
+- the recovery ramp.
+
+Everything below is a `const` or literal in `crates/idlever-core/src`. Line numbers are approximate (an Explore pass on
+3823eb8b). Entries marked **[P]** feed the pacing rows most directly.
+
+**Workers, the hire triggers and prices**
+- **[P]** `tree.rs` `NODES` (≈:42–53) gives need / price in tenths of a forge unit / fallback hours:
+  - porter 3 chests / free / none; scout 2 sends / 0.4 / none;
+  - apprentice 3 / 3.0 / 30 h; clerk 3 / 4.0 / 36 h; drillmaster 2 / 3.0 / 36 h; kennel_hand 2 / 3.0 / 40 h;
+  - herald 2 / 2.0 / 40 h; guide 3 / 4.0 / 44 h; kennel_keeper 2 / 3.0 / 48 h.
+- **[P]** The hire price is `unit × price_tenths / 10`. The unit is `kit.rs` `unit(best) = 100 + 25 × best`, fixed by
+  `lock_unit`.
+- `tree.rs` also holds:
+  - RESERVE_UNITS 3; GUIDE_GAP 4; RANK_DAYS [4, 8, 12]; MAX_RANK 4; the rank price `unit × (rank − 1)`;
+  - perks: SCOUT_REST_OFF_PCT 5, SAFER_START_PCT 5, PORTER_BONUS_PCT 2, APPRENTICE_OFF_PCT 5,
+    CLERK_BONUS_PERMILLE 25; the drillmaster rank II discount of 1 mark;
+  - WALL_DEATHS 2, WALL_NEAR 2, WALL_RETRY 3, STONE_MEMORY 12.
+
+**Rest and the idle clock**
+- **[P]** `engine.rs` REST_CAP_TICKS 18000, REST_MIN_TICKS 12000. `offline::rest_after` sets the rest to `turns / 2`,
+  clamped to those bounds.
+- **[P]** `persistent.rs` RECOVERY_TICKS 12000 (the ramp's top). `engine.rs` WAKE_TICKS equals it. Checked: the game
+  path (`Game::rest_after` and the exit settle) uses `recovery_ticks(max_depth)` for deaths. WAKE_TICKS reaches only the
+  free `offline::rest_after` and its test.
+- `offline.rs` stall detection: STALL_RUNS 20, SAMPLE_RUNS 20, STALL_MIN_RUNS 4, STALL_DELTA 0.02, QUICK_STALL_SIMS 12,
+  REST_CARRY_TICKS 6000.
+- `engine.rs` STALL_FIRES 3, MAX_TURNS_PER_RUN 120000, NIGHT_RUNS 16.
+- `persistent.rs` REBIRTH_DELVES 8, REBIRTH_SECONDS 3600.
+
+**Gold and exits**
+- **[P]** `engine.rs` exit keep %: Bank 100, Return 60, Death 0. The same % scales class XP.
+- **[P]** GOLD_DIVISOR 4. The floor coin piles are `6 × rng(3..7) × depth / 4`; nest gold is
+  `(12 × depth + rng(4..12)) / 4`.
+- **[P]** PICKED_CAP 7; FRESHNESS permille [1000, 800, 640, 512, 410, 328, 262, 250]; PICKED_SHOWN 3.
+- BOUNTY_BELOW 2, BOUNTY_GOLD_MULT 2, WAKE_PAY 40, PRAY_COST_PCT 20.
+- `town.rs` BANK_PCT 2, BANK_NIGHTS 3, bank cap floor $100.
+
+**Forge, kit and rows**
+- **[P]** `kit.rs` price multipliers:
+  - WEAPON_MULT [1, 4, 9, 16, 25, 36];
+  - ARMOUR_MULT [1, 4, 8, 14, 22, 32, 45];
+  - PACK_MULT [2, 5, 10, 16];
+  - ROW_MULT [2, 5, 10, 16, 22, 30].
+- `kit.rs` step effects: AIM_STEPS 3, DMG_PER_STEP 2, AIM_PER_STEP 4, AIM_PER_LATE_STEP 3, EARLY_EDGE 1,
+  PACE_TENTHS [8, 7, 6, 5, 5, 4, 4].
+- `kit.rs` supplies and commissions: SUPPLY_CAP_MAX 8, COMMISSION_UNITS 10, COMMISSION_FLOOR 5.
+- Elsewhere: `engine.rs` SUPPLY_PRICE_CAP 26, `town.rs` FORGE_WORK_TICKS 450, `wire.rs` FORGE_LADDER
+  [(5, craftable), (15, tier 1), (40, tier 2)].
+
+**Unlocks and gates**
+- **[P]** `town.rs`: the blacksmith needs a hired scout, 4 completed delves and gold at home. The kennel needs a scout
+  and a tame. The bank needs a positive net last night.
+- `systems.rs` minimum hours: party 1, kennel 1, stances 1, tactics 4, bank 8, quests 12, class 16, start 20,
+  tactic2 56, automations 96.
+- `systems.rs` PEN_FALLBACK_H 120. The six-delve gate (heirs, temperament) is a literal in the code.
+
+**Stances and packages outside balance (`packages.rs`)**
+- MAX_LEVEL 5. A level costs lv + 1 marks.
+- HUNTER_HOME 20 (15 at L5); the hunter's out-of-heals bar is 35.
+- STEADY_REST_L3 50, used as a cap while best < 18.
+- GUARDED_RETURN 25, DEEP_FROM 28, FOUNDRY_WALL 19.
+- Synergies: BULWARK 1, DUELIST 2, MARKSMAN 3, GHOST_COVER 2, GHOST_HURT 35, SCAVENGER 2, IRON_LUNGS 2, WARDEN 2.
+
+**Marks, XP, legacy and returns**
+- **[P]** A renown rank at `100 × r²` grants 1 mark. A new trophy gives +2 marks.
+- **[P]** XP to the next level is 60 × L² for L1–3 and 100 × L² after. The raw XP formula is in `engine.rs`. A watched
+  bank gives ×1.5. MAX_LEVEL is 10.
+- `meta.rs` GOLD_PER_MARK 150. `legacy.rs` ROOT_PRICES [15 … 12000], EFFECT_PRICES [700, 1800].
+- `returns.rs` MIN_S 600, SIZE_MINUTES, DRILL_RUNS, LEGACY_POINTS, FORGE_OFF.
+- `class_tree.rs`: a root node needs class level 3; the node budget is level − 2, at most 6.
+- `bloodlines.rs` SLOT_CAP 3, SLOT_PRICE 250. OATH_DRAW_COST 2, REFUND_PCT 50.
+
+**Monsters and floors**
+- **[P]** `defs.rs` depth HP bonus = tier_depth (cap 16) / 2; attack bonus = the same / 6.
+- `descent.rs` tier_depth folding; ENDING_DEPTH 34, LIEUTENANT_DEPTH 5; boss depths 8/13/18/23/28/33; FORKS;
+  SITUATION_DEPTHS.
+- `descent.rs` affixes: BREAK_DEALT 250, BREAK_TAKEN 65, WARD 20, FURY 20, AFFIX_HP, BROOD_GUARD 75, GUEST_PCT 50.
+- `gen.rs` room layouts. `engine.rs` WAYSTONES [5, 9, 14, 19, 24, 29], WAYSTONE_TOLL 0.
+
+**Endgame, feats and sinks**
+- `endgame.rs` HP_PERCENT 5, ATTACK_PERCENT 2, ASCENT_BAND 15, ASCENT_MIN 9.
+- `feats.rs` King ETA: `king_pct = best / 33`, shown from best ≥ 5.
+- `feats.rs` limits and trials: TOKEN_CAP 3, SWIFT_CLEARS 3, TRIAL_WEEKS_OPEN 4, TRIAL_LEGACY 10, SECOND_TABLE_S 6 h,
+  SET_PCT 2.
+- `feats.rs` tithe: TITHE_UNITS 1, TITHE_STEP 6, TITHE_RESERVE_UNITS 20, TITHE_PER_HOUR 3.
+- `feats.rs` ration: RATION_UNITS 1, RATION_PCT 10, RATION_MIN_HP 2, RATION_SLOW 4.
+- `feats.rs` survey, siege and titles: SURVEY_UNITS 20, SIEGE_PCT 2 (cap 10), TITLE_PCT 3.
+
+**Class tools (combat feel; little pacing effect)**
+- `tools.rs` cooldowns: lure 40, counter 40 (10 damage, 3 charges), bow 60, curtain 80, jape 100; brace 50,
+  discharge 60, overdrive 100.
+- `tools.rs` sentry: 16 HP, 4 damage every 10 ticks, range 4, lasts 60.
+- `firearm.rs` smoke 90, fast 100, finish 60.
+
+Suggested first moves, which the pacing rows read most directly:
+- the scout and porter `need` and `price_tenths` and the unit formula;
+- REST_MIN/CAP and the `turns / 2` literal;
+- FRESHNESS and PICKED_CAP;
+- the kit multipliers;
+- the 60 % return share;
+- the gold-pile formulas;
+- the depth HP and attack bonuses.
+
 **TARGETED BOSS-BREAK WATCH CHECK — 2026-10-07:**
 
 Run `(cd web && node tests/run.mjs fights:break)` when diagnosing the held

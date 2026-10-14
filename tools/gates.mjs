@@ -21,17 +21,45 @@
 //                                 only the configurations, seeds and days the named rows read (`dayplayer --rows`);
 //                                 `--fail-fast` aborts on the first row settled FAIL. Seeds as the tier's (quick 2, --full
 //                                 16) unless `--seeds N` etc. follow. Cached like the legs; never a gate pass.
+//   node tools/gates.mjs --pacing [--fail-fast] [dayplayer args]
+//                                 the PACING PACK: `--full --rows` of every row that has broken at 16 seeds (PACING below,
+//                                 resolved against `dayplayer --rows ?`, so a row not yet in the binary is skipped and
+//                                 named). Cached like `--rows`; never a gate pass (docs/ITERATION_SPEED.md "Pacing pack").
 import { spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import { runtimeKey } from "./runtime-key.mjs";
 const exhaustive = process.argv.includes("--exhaustive");
-const full = process.argv.includes("--full") || exhaustive;
+const pacing = process.argv.includes("--pacing");
+const full = process.argv.includes("--full") || exhaustive || pacing;
 const fast = process.argv.includes("--fast");
 const fresh = process.argv.includes("--fresh");
 const rowsAt = process.argv.indexOf("--rows");
-const rows = rowsAt >= 0 ? process.argv[rowsAt + 1] : null;
+// The rows that have broken at 16 seeds (owner 2026-10-15). An entry ending in `-` takes every listed row with that
+// prefix (`idle-` → idle-d8 … idle-delta); the others must match a row id exactly, and a missing one is skipped.
+const PACING = [
+  "picked-idle",
+  "scout",
+  "porter",
+  "tuned-picked",
+  "random-picked",
+  "outpace",
+  "reach",
+  "idle-",
+  "picked-stages",
+  "cadence30",
+  "stalls-",
+  "nothing-required",
+  "hands-idle",
+  "automation-pays",
+  "workers-daily",
+];
+if (pacing && rowsAt >= 0) {
+  console.error("gates --pacing names its own rows; use --full --rows for a custom set");
+  process.exit(2);
+}
+let rows = rowsAt >= 0 ? process.argv[rowsAt + 1] : pacing ? "(pacing)" : null;
 const failFast = process.argv.includes("--fail-fast");
 const extra = process.argv
   .slice(2)
@@ -42,6 +70,7 @@ const extra = process.argv
       a !== "--fresh" &&
       a !== "--fast" &&
       a !== "--fail-fast" &&
+      a !== "--pacing" &&
       !(rowsAt >= 0 && (i + 2 === rowsAt || i + 2 === rowsAt + 1)),
   );
 if (rowsAt >= 0 && !rows) {
@@ -127,6 +156,26 @@ const writeResult = (file, result) => {
 // TARGETED (`--rows`): the dayplayer leg alone on the named rows — its printout kept like a leg's (the binary, the
 // arguments), its full-length jobs kept and read like the gate's (`IDLEVER_SRC_KEY`). Never a gate pass: it prints
 // no `gates: all PASS` and says so.
+if (pacing) {
+  const listing = spawnSync("target/fast/examples/dayplayer", ["--rows", "?"], {
+    encoding: "utf8",
+  });
+  const ids = [...(listing.stderr ?? "").matchAll(/^ {2}(\S+) +\S/gm)].map((m) => m[1]);
+  if (!ids.length) throw new Error("gates --pacing: `dayplayer --rows ?` listed no rows");
+  const picked = [];
+  const missing = [];
+  for (const want of PACING) {
+    const hits = want.endsWith("-")
+      ? ids.filter((id) => id.startsWith(want))
+      : ids.filter((id) => id === want);
+    if (!hits.length) missing.push(want);
+    for (const id of hits) if (!picked.includes(id)) picked.push(id);
+  }
+  rows = picked.join(",");
+  console.error(
+    `gates: PACING pack, ${picked.length} rows at 16 seeds: ${rows}${missing.length ? ` (not in this dayplayer: ${missing.join(", ")})` : ""}`,
+  );
+}
 if (rows) {
   const tier = full
     ? ["--seeds", "16", "--loo-seeds", "16", "--tuned-seeds", "16"]

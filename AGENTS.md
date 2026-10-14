@@ -94,6 +94,9 @@ is still `/home/g/p/riddle`. See docs/CUT190_IDLEVER_RENAME.md.
 ```sh
 tools/verify.sh --quick        # tests (fast profile) ∥ format/lint + tsc + copy-lint
 tools/tune.sh <row-ids>        # content iteration: full seed counts, targeted requirements, fail-fast; --list lists rows; never a full gate pass
+node tools/gates.mjs --pacing [--fail-fast] [--balance P]   # pacing pack: --full --rows of every row that has broken at 16 seeds (picked-idle, scout, porter, tuned-picked, idle-*, stalls-*, …); cached; never the gate
+node tools/sweep.mjs --name N --grid G.json --rows a,b [--objective row[@i][:min]] [--threads 32]   # parallel balance sweep: candidate profiles via IDLEVER_BALANCE_JSON (no recompile), fail-fast, resumable; ranked target/sweep/N/results.md
+node tools/repin.mjs --dir docs/evidence/cutN --note "…" [--settle [--regen]]   # after a core change: wasm.sh, hash, new gold-settlements manifest + default; --settle replays the saved settlements natively; --check only hashes
 node tools/camp-check.mjs SAVE... [--record DIR|--compare DIR] # saved-camp feedback: three 8h native replays ~4 s warm; --mode packages,wall for tuning searches; diagnostic, never the gate
 node tools/choice-check.mjs SAVE --choices boss_focus,kite_archers,bold --out NEW_DIR # actual next8h baseline/choice outcomes from one saved Session (~1–3s warm first-boss fixture); --balance PROFILE; diagnostic only, docs/DEV_CHOICE_CHECK.md
 node tools/save-history.mjs export --port 5347 --index 0 --out S.json   # dev save history (Shift+T panel, window.__idlever.history): ring entry ↔ native-loadable save; docs/ITERATION_SPEED.md §0i
