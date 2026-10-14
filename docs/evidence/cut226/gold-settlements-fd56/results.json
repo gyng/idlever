@@ -1,0 +1,1135 @@
+{
+  "checks": 564,
+  "cases": [
+    {
+      "id": "bank-positive",
+      "width": 320,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 320,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 320,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 320,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "bank-positive",
+      "width": 320,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 320,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 320,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 320,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "bank-positive",
+      "width": 400,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 400,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 400,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 400,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "bank-positive",
+      "width": 400,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 400,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 400,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 400,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "bank-positive",
+      "width": 1440,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 1440,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 1440,
+      "scale": 1,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 1440,
+      "scale": 1,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "bank-positive",
+      "width": 1440,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12022,
+      "receipts": [
+        {
+          "delta": 1,
+          "t": 3267834,
+          "why": "banked D1"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 1,
+          "why": "banked D1",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-secured-lost",
+      "width": 1440,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11596,
+      "receipts": [
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "width": 1440,
+      "scale": 2,
+      "goldBefore": 12021,
+      "goldAfter": 12030,
+      "receipts": [
+        {
+          "delta": 0,
+          "lost": 40,
+          "t": 3269838,
+          "why": "died D1"
+        },
+        {
+          "delta": 9,
+          "t": 3269838,
+          "why": "fetched by Greth"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        },
+        {
+          "delta": 9,
+          "why": "fetched by Greth",
+          "bloodlineId": 1
+        }
+      ],
+      "exactNativeReplay": true
+    },
+    {
+      "id": "multihero-absence",
+      "width": 1440,
+      "scale": 2,
+      "goldBefore": 11521,
+      "goldAfter": 11621,
+      "receipts": [
+        {
+          "bloodline_id": 3,
+          "delta": 25,
+          "t": 2770,
+          "why": "banked D3"
+        },
+        {
+          "bloodline_id": 2,
+          "delta": 75,
+          "lost": 23,
+          "t": 4350,
+          "why": "died D4"
+        },
+        {
+          "delta": 0,
+          "lost": 1206,
+          "t": 3316777,
+          "why": "died D28"
+        }
+      ],
+      "coins": [
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 25,
+          "why": "banked D3",
+          "bloodlineId": 3
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        },
+        {
+          "delta": 75,
+          "why": "died D4",
+          "bloodlineId": 2
+        }
+      ],
+      "exactNativeReplay": true
+    }
+  ],
+  "packages": [
+    {
+      "bytes": 6813853,
+      "sha256": "fd56ad4d1cdb49d8a1bd188aa9cfe83590434bd77a6ca0f64e8f18c709538f8c"
+    },
+    {
+      "bytes": 6813853,
+      "sha256": "fd56ad4d1cdb49d8a1bd188aa9cfe83590434bd77a6ca0f64e8f18c709538f8c"
+    },
+    {
+      "bytes": 6813853,
+      "sha256": "fd56ad4d1cdb49d8a1bd188aa9cfe83590434bd77a6ca0f64e8f18c709538f8c"
+    },
+    {
+      "bytes": 6813853,
+      "sha256": "fd56ad4d1cdb49d8a1bd188aa9cfe83590434bd77a6ca0f64e8f18c709538f8c"
+    }
+  ],
+  "errors": [],
+  "result": "PASS"
+}

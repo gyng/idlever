@@ -44,7 +44,7 @@ try {
   assert.equal(result.offer.refund, 0);
   assert.deepEqual(errors, []);
   console.log(
-    "real WASM obsolete respec refuses toward Rebirth preview; complete save unchanged PASS",
+    "real WASM obsolete respec refuses toward Reclone preview; complete save unchanged PASS",
   );
 } finally {
   await browser.close();
