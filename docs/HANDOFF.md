@@ -9,7 +9,7 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-origin/main cd927da0 (2026-10-14): all Cut219–224 work, the desktop layout pass,
+origin/main 5e38c8a8 (2026-10-14; WASM fd56…, 6813853 bytes, fast build): all Cut219–224 work, the desktop layout pass,
 the town task tracker and Hero Hub polish are committed and pushed.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
@@ -146,14 +146,24 @@ heroes column runs beside the one-row dock, watch hand toggle floats; the
 control ladder moved into a grouped task tracker over the town (ui/tasks.ts:
 ladder, open Journal chapters, quest; finished groups leave). Routine client
 38/38. Exhaustive-only cut118/cut120 still target the old ladder row and
-cut120 failed on order chips before the tracker; unrevised. Pending owner asks:
-Revival reframed as cloning (agent in worktree); 320px tile labels truncate.
+cut120 failed on order chips before the tracker; unrevised. Pending: 320px
+console tile labels truncate.
 
-Cut225 contracts Clown/Engineer and larger trees for all five existing classes.
-Current30 nodes are six per class with only two-tier paths. New roles and old
-six→twelve-node interaction/capstone extension remain OPEN. Keep cumulative
-unlocks/free build reset, stage later choices and preserve existing IDs/bits.
-No production class/tree extension has landed. See CUT225_CLOWN_ENGINEER.md.
+Cut225 phases1–3 merged (bda3a479/ff4a4fe5/9b1b1d0c): Clown and Engineer in
+Rust (tools.rs, Run.tools only for them), record-only unlock gate, six-node
+trees, minimal client. Routine IDLE/PICKED16×14 byte-identical vs b497aa59.
+Native936/6 ignored; merged settlements564/24 and client38/38 on fd56.
+Diagnostic72h: Engineer keeps Fighter pace (D28); Clown D19–23 vs Rogue D28
+with the contract's candidate numbers (owner/contract decision needed).
+Engineer mace4–8 may exceed the sword. Open: per-class real-WASM journey,
+renderer cues for decoy/sentry, all art, unlock announcement, Hub abilities,
+--rows runs, and the five existing classes' larger trees. class-tree and
+class-styles fail identically on pristine b497 (pre-existing).
+
+Cut226 cloning copy merged (1ed309b0): Clone vat / Cloning / Clone N /
+Reclone; ids and saves unchanged. Art prompt art/prompts/town_clone_vat.txt
+pending generation (device still code-drawn). hero-life.mjs:306 waits for old
+bloodline tabs (stale since the Hub; not in current suites).
 
 Full changed-game native/client/current18-case regression, relevant exhaustive
 invariants, replay/offline parity, broader legendary build causality/pacing and
