@@ -18,6 +18,16 @@
   color: var(--bone);
   font-size: 12px;
 }
+/* the panel, not a button: none of the shared control's padding or press nudge */
+html body .task-tracker.game-control {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+}
+html body .task-tracker.game-control:active {
+  transform: none;
+  filter: none;
+}
 .task-tracker[hidden] {
   display: none;
 }
@@ -123,6 +133,20 @@
 }
 .task-group > .control-ladder .ladder-rail {
   flex-wrap: wrap;
+  gap: 2px;
+}
+/* compact rail: the rungs fold to their pips (label and story in the tip); a lit rung's door keeps its word; the next rung is named
+   once, by the condition line below */
+.task-group > .control-ladder .ladder-step {
+  display: none;
+}
+.task-group > .control-ladder .ladder-rung:not(:has(.ladder-door)) {
+  font-size: 0;
+  gap: 0;
+  padding: 4px 3px;
+}
+.task-group > .control-ladder .ladder-door {
+  font-size: 11px;
 }
 .task-group > .control-ladder .ladder-next {
   text-align: left;
@@ -131,8 +155,8 @@
 @media (max-width: 1023px) {
   .task-tracker {
     top: auto;
-    bottom: 56px;
-    max-height: calc(100% - 112px);
+    bottom: calc(100% - var(--task-floor, 100%) + 56px);
+    max-height: calc(var(--task-floor, 100%) - 112px);
   }
   .task-summary {
     min-height: 44px;

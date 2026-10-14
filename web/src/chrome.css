@@ -1175,3 +1175,20 @@ html body .topbar button.stat.gold {
   min-height: 44px;
   height: auto;
 }
+/* 320px (owner 2026-10-14 audit): beside the gem the dock's tiles are ~45px wide, too narrow for a word at the menu size (`Jour…`,
+   `com…`); under 360px the painted icon carries the tile and the word stays the button's accessible name (the tip still names it) */
+@media (max-width: 359px) {
+  html body main.frame > .console .cmd:not(.cmd-compact) .tile .tl {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  html body .camp .console .cmd .tile .ico {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+}

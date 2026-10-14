@@ -1,0 +1,55 @@
+dayplayer: targeted rows tuned-picked,random-picked — configurations PICKED,TUNED,RANDOM
+dayplayer: RANDOM s1 done in 6s 
+dayplayer: RANDOM s6 done in 8s 
+dayplayer: RANDOM s15 done in 8s 
+dayplayer: RANDOM s3 done in 9s 
+dayplayer: RANDOM s10 done in 11s 
+dayplayer: RANDOM s5 done in 11s 
+dayplayer: RANDOM s7 done in 12s 
+dayplayer: RANDOM s9 done in 12s 
+dayplayer: RANDOM s14 done in 14s 
+dayplayer: RANDOM s12 done in 15s 
+dayplayer: RANDOM s4 done in 18s 
+dayplayer: RANDOM s16 done in 20s 
+dayplayer: RANDOM s11 done in 21s 
+dayplayer: RANDOM s13 done in 23s 
+dayplayer: RANDOM s2 done in 26s 
+dayplayer: RANDOM s8 done in 33s 
+dayplayer: PICKED s3 done in 47s 
+dayplayer: PICKED s9 done in 45s 
+dayplayer: TUNED s3 done in 91s 
+dayplayer: PICKED s7 done in 69s 
+dayplayer: TUNED s11 done in 94s 
+dayplayer: PICKED s16 done in 70s 
+dayplayer: TUNED s13 done in 98s 
+dayplayer: TUNED s12 done in 99s 
+dayplayer: TUNED s9 done in 99s 
+dayplayer: PICKED s15 done in 79s 
+dayplayer: TUNED s7 done in 105s 
+dayplayer: PICKED s11 done in 69s 
+dayplayer: PICKED s5 done in 62s 
+dayplayer: TUNED s15 done in 107s 
+dayplayer: TUNED s10 done in 108s 
+dayplayer: TUNED s5 done in 110s 
+dayplayer: PICKED s2 done in 75s 
+dayplayer: PICKED s4 done in 94s 
+dayplayer: PICKED s10 done in 65s 
+dayplayer: TUNED s4 done in 113s 
+dayplayer: PICKED s6 done in 95s 
+dayplayer: TUNED s2 done in 114s 
+dayplayer: PICKED s12 done in 66s 
+dayplayer: TUNED s8 done in 116s 
+dayplayer: PICKED s14 done in 91s 
+dayplayer: PICKED s13 done in 76s 
+dayplayer: TUNED s14 done in 119s 
+dayplayer: PICKED s8 done in 73s 
+dayplayer: TUNED s16 done in 119s 
+dayplayer: TUNED s6 done in 120s 
+dayplayer: PICKED s1 done in 91s 
+dayplayer: TUNED s1 done in 125s 
+bar (targeted)                                                                value  result
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.00  FAIL
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 16/16 · 15/16 · median +4 · +36 h  PASS
+dayplayer (targeted: tuned-picked,random-picked, 125s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `tuned-picked,random-picked` FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
+exit 1

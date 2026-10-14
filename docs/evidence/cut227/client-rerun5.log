@@ -1,0 +1,15 @@
+client suite: targeted (5 selected; 157 current full; 200 exhaustive groups)
+FAIL hero-hub        137.7s (137.0s)  Node.js v26.5.0
+       - waiting for locator('.sheet-wrap:not(.under)').locator('[data-hub-tab="attributes"]')
+       name: 'TimeoutError'
+         at section (/home/g/p/riddle/web/tests/hero-hub.mjs:124:54)
+         at async rebirthBoundary (/home/g/p/riddle/web/tests/hero-hub.mjs:738:5)
+         at async file:///home/g/p/riddle/web/tests/hero-hub.mjs:989:5 {
+FAIL debug-export    172.9s (35.1s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/debug-export.mjs:18:16 {
+FAIL bloodline-training 172.9s (35.1s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/bloodline-training.mjs:12:13 {
+FAIL checkpoint-gold 172.9s (35.1s)  Node.js v26.5.0
+         at /home/g/p/riddle/web/tests/checkpoint-gold.mjs:14:13 {
+ok   game-menu       191.1s (53.4s)  81 game menu checks PASS
+FAIL: 1/5 client gates in 191.1s

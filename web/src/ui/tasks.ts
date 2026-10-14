@@ -135,5 +135,25 @@ export function taskTracker(
   paint();
   // the ladder paints itself on change; read its hidden state after it has
   const off = app.onChange(() => queueMicrotask(paint));
-  return { el, dispose: off };
+  // phone: the town is taller than the well that scrolls it, so the chip's foot follows the well's visible floor (`--task-floor`)
+  let well: HTMLElement | null = null;
+  const floor = (): void => {
+    if (well) el.style.setProperty("--task-floor", `${well.scrollTop + well.clientHeight}px`);
+  };
+  const ro = new ResizeObserver(floor);
+  queueMicrotask(() => {
+    well = el.closest<HTMLElement>(".camp-well");
+    if (!well) return;
+    ro.observe(well);
+    well.addEventListener("scroll", floor, { passive: true });
+    floor();
+  });
+  return {
+    el,
+    dispose: () => {
+      off();
+      ro.disconnect();
+      well?.removeEventListener("scroll", floor);
+    },
+  };
 }
