@@ -116,6 +116,7 @@ import {
 } from "./orders"; // Cut 120: one orders sheet   // Cut 119: the kennel keeper's order
 import { orderOffer } from "./order-offer"; // Cut 120 option B: Legacy and ranks offered once
 import { campFeats, featOrderBits, SINK_ORDERS, SINK_WORD, sinkHandChip } from "./feats"; // Boss targeting, trials and standing orders; paid wishes retired.
+import { announceClassUnlock } from "./class-unlock"; // Cut225: an earned class said once
 
 const SET_NAME_MAX = 12;
 /** QA 524827b (qaAA): a supply whose name does not say its use — its use under the shop chip (≤ 3 words). */
@@ -2454,6 +2455,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       paintSend();
     });
     audio.drone(biomeOf(app.lineage.best_depth + 1));
+    announceClassUnlock(app);
   }
   paintAll();
   // Cut 118 §6: the report's `collect & send` lands here and sends (the hero walks to the mouth as from the gem)

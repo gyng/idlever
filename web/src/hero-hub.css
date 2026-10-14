@@ -415,3 +415,23 @@ html.skin-button .sheet-body.hero-hub .class-style-panel button.chip.class-style
     max-width: none;
   }
 }
+/* Cut225: the class's abilities in Skills, every rung (reached lit) */
+.hero-hub-abilities {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0;
+}
+.hero-hub-abilities h4 {
+  margin: 0;
+}
+.hero-hub-abilities .ladder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+/* a rung not yet reached stays readable on the Hub's dark material (the parchment's ink would not) */
+.hero-hub .hero-hub-abilities .chip.rung:not(.on) {
+  color: #cfc5b0;
+  border-color: #4a4f66;
+  background: rgba(23, 22, 34, 0.6);
+}

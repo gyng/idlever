@@ -8,6 +8,8 @@ import { heroBase } from "./look";
 import type { CombatCues, CueBody } from "./combat-cues";
 import { reducedMotion } from "./quality";
 import { effectsLevel } from "./fxpref";
+import { TOOL_COLOURS, TOOL_SPRITE } from "./tool-sprites";
+import { toolCuePixels, toolFade } from "./tool-cues";
 
 type Frame = { x: number; y: number; w: number; h: number };
 type Sheet = {
@@ -253,6 +255,32 @@ export class View2D {
         g.fillRect(px + T * 0.3, py + T * 0.3, T * 0.4, T * 0.4);
       }
     }
+    // Cut225: the decoy / sentry — `env_tool_<kind>` art, else their primitive rows; dissolving as they end, dim out of view
+    for (const t of st.tools.values()) {
+      const i = t.y * st.w + t.x;
+      if (!st.visible[i] && !st.seen[i]) continue;
+      const px = ox + t.px * T,
+        py = oy + t.py * T;
+      g.globalAlpha = (st.visible[i] ? 1 : 0.5) * (1 - toolFade(t, st.clock));
+      if (!blit(`env_tool_${t.kind}`, px, py, T, T)) {
+        const rows = TOOL_SPRITE[t.kind],
+          q = T / 8;
+        rows.forEach((row, y) => {
+          for (let x = 0; x < row.length; x++) {
+            const col = TOOL_COLOURS[row[x]!];
+            if (!col) continue;
+            g.fillStyle = col;
+            g.fillRect(Math.round(px + x * q), Math.round(py + y * q), Math.ceil(q), Math.ceil(q));
+          }
+        });
+      }
+      if (t.flashUntil > st.clock) {
+        g.fillStyle = "rgba(250,242,230,0.55)";
+        g.fillRect(px, py, T, T);
+      }
+      g.globalAlpha = 1;
+      this.cueBodies.set(t.id, { x: t.px * 8 + 4, y: -(t.py + 1) * 8, w: 8, h: 8 });
+    }
     // entities: sprite texel = T/16 (a tile is 8 env texels, a sprite texel half of one); feet at the tile's bottom centre, lower rows in front
     const ents = [...st.ents.values()].filter(
       (e) =>
@@ -274,13 +302,13 @@ export class View2D {
       g.fillStyle = grad;
       g.fillRect(0, 0, W, H);
     }
-    if (cues) {
-      const pixels = cues.draw(
-        st.clock,
-        (id) => this.cueBodies.get(id) ?? null,
-        effectsLevel(),
-        !matchMedia("(prefers-reduced-motion: reduce)").matches,
-      );
+    {
+      const motion = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const body = (id: number) => this.cueBodies.get(id) ?? null;
+      const pixels = [
+        ...(cues ? cues.draw(st.clock, body, effectsLevel(), motion) : []),
+        ...toolCuePixels(st, body, effectsLevel(), motion),
+      ];
       for (const p of pixels) {
         g.globalAlpha = p.a;
         g.fillStyle = css(p.c);

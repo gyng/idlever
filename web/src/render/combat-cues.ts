@@ -7,6 +7,8 @@ type Kind =
   | "ranger"
   | "caster"
   | "gunner"
+  | "clown"
+  | "engineer"
   | "hit"
   | "blocked"
   | "miss"
@@ -27,12 +29,22 @@ const glyphs: Record<Kind, string[]> = {
   ranger: ["00100", "00010", "11111", "00010", "00100"],
   caster: ["00100", "01110", "10101", "01110", "00100"],
   gunner: ["11111", "11110", "00110", "00110", "01100"],
+  clown: ["10001", "11011", "01110", "00100", "00100"], // Cut225: the split cap over a bell
+  engineer: ["01110", "11011", "01110", "00100", "01010"], // Cut225: a cog on a tripod
   hit: ["00010", "00100", "01000", "10000", "00000"],
   blocked: ["11111", "10001", "10001", "10001", "01110"],
   miss: ["10001", "01010", "00100", "01010", "10001"],
   heal: ["00100", "00100", "11111", "00100", "00100"],
 };
-const sourceKinds = new Set<Kind>(["fighter", "rogue", "ranger", "caster", "gunner"]);
+const sourceKinds = new Set<Kind>([
+  "fighter",
+  "rogue",
+  "ranger",
+  "caster",
+  "gunner",
+  "clown",
+  "engineer",
+]);
 const BONE: [number, number, number] = [0.918, 0.875, 0.773];
 const MIST: [number, number, number] = [0.643, 0.737, 0.839];
 const HEAL: [number, number, number] = [0.5, 0.77, 0.58];

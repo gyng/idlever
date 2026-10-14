@@ -14,6 +14,8 @@ import { openRuns } from "./runs";
 import { openWindow } from "./sheet";
 import { icon, portraitSrc } from "./skin";
 import { rowLabel } from "./tokens";
+import { CLASS_VERBS } from "../engine/classes";
+import { classSkillChip } from "./class-skills";
 import "../hero-hub.css";
 
 export type HeroHubSection = "gear" | "skills" | "behaviour" | "companions" | "attributes";
@@ -299,7 +301,15 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
             !!L.live,
           ]
         : section === "skills"
-          ? [owner, L.class, L.class_tree, L.class_styles, L.town?.home, !!L.live]
+          ? [
+              owner,
+              L.class,
+              L.classes?.[L.class.toLowerCase()]?.level,
+              L.class_tree,
+              L.class_styles,
+              L.town?.home,
+              !!L.live,
+            ]
           : section === "behaviour"
             ? [
                 owner,
@@ -379,6 +389,8 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
           /* copy:button */ "Change class",
         ),
       );
+      const abilities = classAbilities(L.class, L.classes?.[L.class.toLowerCase()]?.level ?? 1);
+      if (abilities) host.append(abilities);
       const tree = renderClassTree(context, refreshHub, new Set(), { inspectAway: true });
       const styles = renderClassStyles(context, refreshHub, { inspectAway: true });
       host.append(tree ?? h("p", {}, /* copy:label */ "Skills unavailable"));
@@ -712,6 +724,27 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       panels.clear();
     },
   };
+}
+
+/** Cut225: the class's own abilities, every rung at once (reached lit), for any class with a ladder, the earned ones included.
+ *  The ladder is the client's mirror of Rust's (`classes.ts`); a rung is reached at the class level Rust reports. */
+export function classAbilities(cls: string, level: number): HTMLElement | null {
+  const key = cls.toLowerCase(),
+    ladder = CLASS_VERBS[key];
+  if (!ladder || !Object.keys(ladder).length) return null;
+  const rungs = Object.entries(ladder)
+    .map(([at, verbs]) => ({ at: Number(at), verbs }))
+    .sort((a, b) => a.at - b.at);
+  return h(
+    "section",
+    { class: "hero-hub-abilities", "data-hub-abilities": key },
+    h("h4", {}, /* copy:label */ "Abilities"),
+    h(
+      "div",
+      { class: "chips ladder" },
+      ...rungs.flatMap((r) => r.verbs.map((v) => classSkillChip(v, r.at, r.at <= level))),
+    ),
+  );
 }
 
 export function openHeroHub(
