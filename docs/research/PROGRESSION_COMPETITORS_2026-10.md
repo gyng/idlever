@@ -500,6 +500,36 @@ fails (worst 5), so fixes 1–3 are needed either way.
 [PACKAGE_REPORT_2026-10.md](PACKAGE_REPORT_2026-10.md). The long-arc pacing gap measured in §6 is the
 one load-bearing gate Idlever fails there.
 
+## 6d. After Cut232: one new decision a report (measured 2026-10-15)
+
+Same harness and clock as §6 (`docs/evidence/cut232/timeline-16x14.json`, `summary-16x14.md`; core at the Cut232
+commit). Cut232 (`docs/CUT232_CADENCE.md`) holds every run report to one new decision: what comes by itself shows,
+the rest (a hire offer, the marks, a plot, the packages, a reveal) waits for a quiet report, one at a time.
+
+| Milestone (PICKED median · worst unless noted) | §6 (main 3ee50b3e) | Cut232 |
+|---|---|---|
+| Most new decisions in one look, first 30 min | 3.5 · 5 (0/16 ≤ 1) | **1 · 1 (16/16)** |
+| Max major-beat gap, first 30 min | 6.4 · 9.1 (8/16 ≤ 6) | 6.0 · 7.4 (8/16) — each failure is one watched run > 6 min |
+| Scout · Porter | 5.2 · 9.1 min | 5.0 · 8.7 min (worst 7.3 · 11.0) |
+| Drillmaster hired | 22.0 min | 16.1 min (0.4 unit; levels his acts after) |
+| Forge plot · Kennel built | 12.5 · 12.0 min | 18.1 · 27.8 min (one at a time) |
+| First package beyond Steady | 8.7 min | 31.5 min (waits behind hires, marks and plots) |
+| Temperaments ("six delves") | 21.5 min | 41.8 min |
+| First Legacy offer · first boss · D8 · D13 | 22.8 · 37.5 · 19.8 · 47.9 min | 22.5 · 39.1 · 18.3 · 45.6 min |
+| Stances reveal ("meet Captain") | 34.8 min | 8.0 h (owed; drains at the first return) |
+| All workers hired · D33 · King's first try | 2.0 d · 2.0 d · 2.0 d | 2.0 d · 2.3 d · 2.3 d |
+| DAILY · AWAY all workers | 4.0 d · 4.0 d | 4.0 d · 4.0 d |
+| Max major-beat gap, days 2–7 (PICKED · DAILY) | 48 h · 24 h | 48 h · 24 h |
+| IDLE: Scout · first-session cadence | 4.9 min · gap 3.0 / dec 3 | 4.9 min · gap 3.0 / **dec 1** |
+
+**Reading.** The decision bar now holds on every seed; the first session reads as one thing at a time (chest → Scout →
+Drillmaster → Porter → a level → the Forge plot → …). The price is spread: the Forge, the Kennel, the first package
+and the temperaments each arrive 6–20 min later in the session, and the stance reveal moves to the first return.
+PICKED/IDLE stays 1.50 · 2.50 · 3.79 and TUNED/PICKED 1.27, so the late arrivals do not cost the pacing rows. The gap
+is unchanged in count (8/16): its remaining failures are single frontier or wall runs (D1 → D8, 13–17k ticks) that
+the dayplayer charges at a flat 4× watch; the client folds solved floors (Cut 27), which the clock does not model.
+Options for the lead are in CUT232 ("The gap").
+
 ## 7. Gaps
 
 - There are no Reddit quotes; every Reddit route was blocked.

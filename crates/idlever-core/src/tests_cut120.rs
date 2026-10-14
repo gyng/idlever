@@ -341,6 +341,9 @@ fn the_next_worker_shows_progress_and_eta() {
     assert!(p.progress.is_none() && p.eta_h.is_none(), "hired: none");
     // the fallback reached: lit, no eta; its post carries the count and the fallback
     g.lineage.clock_s = 30 * 3600;
+    // (Cut232: a met trigger is offered at the next quiet report)
+    assert_eq!(tree::wire(&g.lineage, false).lit, None);
+    assert_eq!(tree::offer_next(&mut g.lineage), Some("apprentice"));
     let w = tree::wire(&g.lineage, false);
     assert_eq!(w.lit.as_deref(), Some("apprentice"));
     assert!(w.nodes.iter().find(|n| n.id == "apprentice").unwrap().eta_h.is_none());

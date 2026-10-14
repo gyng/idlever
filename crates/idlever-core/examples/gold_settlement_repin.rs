@@ -14,7 +14,14 @@ fn main(){
   if operation["method"]=="step" {
    let result=s.step(1);assert!(result.run_over);
    let line=result.events.iter().find_map(|e|match e{Ev::Exit{line:Some(l),..}=>Some(l.as_ref()),_=>None}).unwrap();
-   assert_eq!(serde_json::to_value(line).unwrap(),expected["exitLine"]);
+   // (Cut232 `news`: a report brings one new decision — a package arrival may wait for a quieter report, so the
+   // exit's `packages` beats are re-pinned; every other field, the Gold and the ledger stay exact)
+   let mut actual=serde_json::to_value(line).unwrap();
+   let strip=|v:&mut Value|{v.as_object_mut().unwrap().remove("packages");};
+   let mut want=expected["exitLine"].clone();strip(&mut want);let mut got=actual.clone();strip(&mut got);
+   assert_eq!(got,want);
+   if actual.get("packages")!=expected["exitLine"].get("packages") { println!("NOTE {id}: exit packages {:?} → {:?}",expected["exitLine"].get("packages"),actual.get("packages")); }
+   expected["exitLine"]=std::mem::take(&mut actual);
   }else{
    assert_eq!(operation["method"],"runOfflineQuick");let report=s.run_offline_mode(operation["args"][0].as_u64().unwrap(),false,true);
    expected["report"]=serde_json::to_value(report).unwrap();

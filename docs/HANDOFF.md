@@ -13,6 +13,15 @@ origin/main a8935ddf (2026-10-14; WASM 8b48aa49…, 6849966 bytes, fast build, u
 gold-settlements default docs/evidence/cut228/settlements-inputs-main.json). Un-parked; work continues.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
+## Cut232 — one new decision a report (2026-10-15, worktree branch, not pushed)
+
+[CUT232_CADENCE.md](CUT232_CADENCE.md): core `news.rs` holds each run report to one new decision (hire offers,
+marks, plots, arrivals, reveals wait for a quiet report; held reveals owed; stance levels with the Scout; Drillmaster
+0.4 unit). `cadence30` decisions ≤ 1 on 16/16 (was 0/16); gap ≤ 6 min still 8/16 — each failure is one watched run
+> 6 min; bar/clock options await the lead. All other 16-seed rows, `--pacing` (bar cadence30) and the routine full
+gate PASS; WASM `05744d70…`; gold-settlements default `docs/evidence/cut232/settlements-inputs-0574.json`; client
+routine 38/38. Evidence: evidence/cut232/README.md.
+
 ## Current engine and checks
 
 Real directory web/src/engine/pkg,6688669bytes, SHA256

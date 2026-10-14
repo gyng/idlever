@@ -448,6 +448,9 @@ mod lifecycle_tests {
         g.lineage.persistent.completed = 4;
         g.lineage.gold_move(-10, "forge test");
         assert_eq!(g.lineage.gold, 0);
+        // (Cut232: the qualified plot is offered at a quiet report)
+        assert!(!crate::town::build_ready(&g.lineage, "blacksmith"));
+        assert_eq!(crate::town::open_plot(&mut g.lineage), Some("blacksmith"));
         assert!(crate::town::build_ready(&g.lineage, "blacksmith"));
         assert!(!crate::town::built(&g.lineage, "blacksmith"));
         assert!(!leash_available(&g.lineage));

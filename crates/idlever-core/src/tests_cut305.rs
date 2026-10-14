@@ -157,6 +157,9 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     crate::tree::grant(&mut f.lineage, &["porter", "scout"]);
     f.lineage.systems.insert("forge".into());
     f.lineage.clock_s = 30 * 3600;
+    // (Cut232: a met trigger is offered at the next quiet report, one at a time)
+    assert_eq!(tree::lit(&f.lineage).map(|n| n.id), None);
+    assert_eq!(tree::offer_next(&mut f.lineage), Some("apprentice"));
     assert_eq!(tree::lit(&f.lineage).map(|n| n.id), Some("apprentice"));
 }
 

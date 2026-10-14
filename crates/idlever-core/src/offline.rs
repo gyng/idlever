@@ -324,6 +324,7 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
     // Cut 118: the finds opened, the notable acts since the last report
     crate::feats::on_report(&mut game.lineage, &mut r);
     crate::pets::on_report(&game.lineage, &mut r);
+    settle_due(game, &mut r);
     // (a system's reveal is a beat of the five)
     if !r.systems_opened.is_empty() {
         r.packages = crate::packages::beats_n(&game.batch.pkg_lines, crate::packages::BEATS - 1);
@@ -441,6 +442,21 @@ pub(crate) fn report(game: &mut Game, elapsed_s: u64, facts_before: &std::collec
     report_with(game, elapsed_s, facts_before, class, rank_before, sampled, full, true)
 }
 
+/// Cut232 (`news`): the last run's report settles once everything the return brings is on the lineage — the one
+/// decision it may bring joins the report.
+pub(crate) fn settle_due(game: &mut Game, r: &mut ReturnReport) {
+    let Some((before, id)) = game.news_due.take() else { return };
+    let lines = game.batch.pkg_lines.len();
+    let systems = game.batch.systems_opened.len();
+    let mut news = crate::news::settle(game, before, id);
+    let opened = crate::systems::update_report_end(&mut game.lineage, false, &mut news);
+    game.batch.systems_opened.extend(opened);
+    r.systems_opened.extend(game.batch.systems_opened[systems..].iter().cloned());
+    if game.batch.pkg_lines.len() != lines {
+        r.packages = crate::packages::beats(&game.batch.pkg_lines);
+    }
+}
+
 #[allow(clippy::too_many_arguments)]
 pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::collections::BTreeSet<String>, class: &str, rank_before: u32, sampled: bool, full: bool, with_stall: bool) -> ReturnReport {
     let t = game.run.as_ref().map(|r| r.turn).unwrap_or(0);
@@ -455,7 +471,13 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
     // Cut 28b: the lineage's first plateau (the stall's window, verdict or not) opens the oath board
     game.lineage.oath_open |= game.stall.runs >= STALL_MIN_RUNS;
     // Cut 29 §2: the first plateau opens the order and the vs line (and the oaths).
-    let opened = crate::systems::update(&mut game.lineage, game.stall.runs >= STALL_MIN_RUNS);
+    // (Cut232: under the last run's news budget — a report that already brought a decision holds the reveal)
+    let mut news = game.news_left.take();
+    // (a run whose report settles at the return's end holds it — its decision comes there; reload-safe)
+    if game.news_due.is_some() {
+        news = Some(0);
+    }
+    let opened = crate::systems::update_news(&mut game.lineage, game.stall.runs >= STALL_MIN_RUNS, &mut news);
     game.batch.systems_opened.extend(opened);
     // Cut 12: no run is started here — an idle run at turn 0 would have packed the supplies
     // before the player bought them at camp (`start_run` packs). `live` is the run in
@@ -1016,7 +1038,9 @@ mod slice_tests {
             .filter(|id|!crate::systems::DAY0.contains(&id.as_str())&&!crate::systems::pen_due(&actual.lineage,id))
             .map(|id|crate::systems::SYSTEMS.iter().find(|s|s.id==id).unwrap())
             .map(|s|(s.trigger,s.min_age_h)).collect();
-        assert!(reveal_units.len()<=1,"the curriculum budgets trigger groups, such as forge/loadout/exits, as one reveal");
+        // (Cut232: a reveal a busy run report held is owed and opens at the next quiet report without the budget again)
+        let owed=base.lineage.reveal_owed.len();
+        assert!(reveal_units.len()<=1+owed,"the curriculum budgets trigger groups, such as forge/loadout/exits, as one reveal (+{owed} owed): {reveal_units:?}");
         assert!(!report.slice_pending && !actual.offline && actual.offline_absence.is_none());
     }
     #[test]

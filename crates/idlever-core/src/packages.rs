@@ -835,6 +835,23 @@ fn pending_arrivals(l: &LineageState) -> Vec<String> {
     new
 }
 
+/// Cut232: a quiet report's arrivals (every package whose stage has come: one shelf, one decision) — the report's
+/// lines (`+Guarded`), the set recompiled.
+pub fn arrive_report(l: &mut LineageState) -> Vec<String> {
+    if l.pkg.literal {
+        return Vec::new();
+    }
+    let lines: Vec<String> = arrive(l).iter().map(|id| format!("+{}", name(id))).collect();
+    if !lines.is_empty() {
+        recompile(l);
+        l.pkg.news.extend(lines.iter().cloned());
+        while l.pkg.news.len() > 24 {
+            l.pkg.news.remove(0);
+        }
+    }
+    lines
+}
+
 pub fn arrive(l: &mut LineageState) -> Vec<String> {
     let new = pending_arrivals(l);
     if !l.pkg.arrived.contains_key("tactics") && new.iter().any(|id| drip(id) && def(id).is_some_and(|d| d.kind == Kind::Tactic)) {
@@ -1053,7 +1070,13 @@ pub fn pick(l: &mut LineageState, id: &str) -> Result<(), String> {
 /// Marks a level spend costs (the next level's number): ◆2 for L2 … ◆5 for L5.
 pub fn level_price(l: &LineageState, id: &str) -> Option<u32> {
     let lv = l.pkg.level(id);
-    (lv < MAX_LEVEL).then_some(lv + 1)
+    (lv < MAX_LEVEL && level_open(l)).then_some(lv + 1)
+}
+
+/// Cut232 (docs/CUT232_CADENCE.md): a level bought with marks comes with the Scout — the sends by hand before him
+/// bring the chest and the Scout alone, one decision at a time (a harness's lineage, as before).
+pub fn level_open(l: &LineageState) -> bool {
+    l.pkg.literal || crate::tree::hired(l, "scout")
 }
 
 /// Blind 77030eb (B: "levelling corridor fighting L1→L5 dropped D33 75%→25% with no reason"): the rows
@@ -1116,6 +1139,9 @@ pub fn spend_level(l: &mut LineageState, id: &str) -> Result<u32, String> {
     if !l.pkg.owned.contains(id) || def(id).is_none() {
         return Err("not yet".into());
     }
+    if !level_open(l) {
+        return Err("Hire the Scout".into());
+    }
     let price = level_price(l, id).ok_or("top level")?;
     if l.marks < price {
         return Err("not enough marks".into());
@@ -1156,6 +1182,11 @@ pub fn mother_met(l: &LineageState) -> bool {
 /// A run ended: its meetings (drills at the second, scars), its packages' runs (levels), the stages
 /// that came, the pen; recompiled. Returns the lines for the report (`STEADY L3`, `DRILLED …`).
 pub fn on_run_end(l: &mut LineageState, bosses_met: &[String], max_depth: u32, fired: &[u32], rules: &RuleSet) -> Vec<String> {
+    on_run_end_held(l, bosses_met, max_depth, fired, rules, false)
+}
+
+/// `on_run_end`; `hold`: the arrivals wait for the report's news budget (Cut232, `arrive_report`).
+pub fn on_run_end_held(l: &mut LineageState, bosses_met: &[String], max_depth: u32, fired: &[u32], rules: &RuleSet, hold: bool) -> Vec<String> {
     if l.pkg.literal {
         return Vec::new();
     }
@@ -1231,8 +1262,10 @@ pub fn on_run_end(l: &mut LineageState, bosses_met: &[String], max_depth: u32, f
             lines.push(format!("{} L{after}", name(&id).to_uppercase()));
         }
     }
-    for id in arrive(l) {
-        lines.push(format!("+{}", name(&id)));
+    if !hold {
+        for id in arrive(l) {
+            lines.push(format!("+{}", name(&id)));
+        }
     }
     if update_pen(l) {
         lines.push("the pen".into());

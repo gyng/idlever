@@ -1423,6 +1423,9 @@ pub struct LineageState {
     pub class: Class,
     pub best_depth: u32,
     pub marks: u32,
+    /// Cut232 (`news`): marks a run brought home, landing at a quiet report (a level they pay is one decision).
+    #[serde(default, skip_serializing_if = "is_zero_u32")]
+    pub marks_due: u32,
     pub facts: crate::shared::Shared<BTreeSet<String>>,
     pub unlocks: BTreeSet<String>,
     pub vault: Vec<Item>,
@@ -1802,6 +1805,10 @@ pub struct LineageState {
     pub reveal_left: u32,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub reveal_queue: Vec<String>,
+    /// Cut232 (`news`): reveals a busy report held — each opens at the next quiet report without the one-a-report
+    /// budget again (unit heads).
+    #[serde(default, skip_serializing_if = "BTreeSet::is_empty")]
+    pub reveal_owed: BTreeSet<String>,
     /// PROGRESSION_V2 §2 (reserved for Cut 31: the expedition and the era; saved, unread): glory, the
     /// expeditions taken, the era's gate.
     #[serde(default)]
@@ -1953,6 +1960,7 @@ impl LineageState {
             class: Class::Fighter,
             best_depth: 0,
             marks: 0,
+            marks_due: 0,
             facts: BTreeSet::new().into(),
             unlocks: BTreeSet::new(),
             vault: Vec::new(),
@@ -2081,6 +2089,7 @@ impl LineageState {
             town: crate::town::Town { manual: true, home: Some(false), auto_collect: true, gold_v: 1, ..Default::default() }.into(),
             reveal_left: 0,
             reveal_queue: Vec::new(),
+            reveal_owed: BTreeSet::new(),
             glory: 0,
             expeditions: 0,
             era_gate: 0,
@@ -3389,6 +3398,14 @@ pub struct Game {
     // background bloodlines saved between 100 ms scheduler steps.
     #[serde(default, skip_serializing_if = "advance_remainder_empty")]
     pub advance_rem: (u64, u64),
+    /// Cut232 (`news`): the reveals the last run's report may still bring (`Some(0)`: it already brought a
+    /// decision) — read by the report's last reveal pass, cleared at the next run's start.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub news_left: Option<u32>,
+    /// Cut232 (`news`): an absence's run whose report settles later — at the next run's start inside the absence,
+    /// else at the return's end (`offline`), once everything the return brings is on the lineage.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub news_due: Option<(u64, u32)>,
 }
 
 fn advance_remainder_empty(value: &(u64,u64)) -> bool { *value == (0,0) }
@@ -3461,6 +3478,8 @@ impl Game {
             tap: None,
             clock_at: None,
             advance_rem: (0, 0),
+            news_left: None,
+            news_due: None,
         };
         // Cut 28 §1: the oath board is drawn with the lineage.
         crate::oath::refresh(&mut g.lineage);
@@ -3525,6 +3544,8 @@ impl Game {
             tap: None,
             clock_at: None,
             advance_rem: (0, 0),
+            news_left: None,
+            news_due: None,
         }
     }
 
@@ -4111,9 +4132,9 @@ impl Game {
         }
         self.bounty_seen = self.lineage.bounty;
         // Cut 30.5 (the owner: manual send first): before the scout a send by hand is one run — counted
-        // toward him when it sends a hero who was home
+        // toward him when it sends a hero who was home (Cut232: counted as the delve comes home, at its report —
+        // the Scout's hire is that report's news, never a decision met mid-run)
         if !crate::tree::auto_send(&self.lineage) && !self.lineage.tree.sent && self.run.as_ref().is_none_or(|r| r.turn == 0) {
-            crate::tree::did(&mut self.lineage, "send");
             self.lineage.tree.sent = true;
         }
         // Cut 30: a watched send is a check-in of its own — one system may open by its report
@@ -4184,6 +4205,13 @@ impl Game {
         let previous_start = self.lineage.start.max(1);
         crate::progression::prepare(&mut self.lineage);
         crate::tree::at_send(self);
+        self.news_left = None;
+        // Cut232: inside an absence, the run before this one settles its report now
+        if let Some((before, id)) = self.news_due.take().filter(|_| crate::news::gated(self)) {
+            let mut news = crate::news::settle(self, before, id);
+            let opened = crate::systems::update_news(&mut self.lineage, false, &mut news);
+            self.batch.systems_opened.extend(opened);
+        }
         // The guide may pick a different stone during an absence. Its send needs that
         // stone's passage on the camp now, rather than the tuple priced before the workers.
         // Unchanged starts keep their quote; sims never run workers or recursively price it.
@@ -5280,6 +5308,12 @@ impl Game {
             self.capsules.keep_kill(run.id);
         }
         let tier = run.over.unwrap_or(ExitTier::Return);
+        // Cut232 (`news`): the decisions the camp this send left already showed; until the report's end every
+        // waiting decision (a plot, an arrival, a reveal) is held
+        let news_before = crate::news::gated(self).then(|| match self.sent_state.as_ref() {
+            Some(s) => crate::news::offered(&s.lineage, 0),
+            None => crate::news::offered(&self.lineage, crate::news::pending_marks(self)),
+        });
         if !self.sim {crate::armour_sets::finish(self,&run);}
         if !self.sim { self.lineage.persistent.completed=self.lineage.persistent.completed.saturating_add(1); }
         let legacy_earned = if !self.sim {
@@ -5299,7 +5333,9 @@ impl Game {
         // Cut 30.5: a send by hand is spent — the hero is home and waits (before the scout); the guide's record of
         // the stone it started from
         if !self.sim {
-            self.lineage.tree.sent = false;
+            if std::mem::take(&mut self.lineage.tree.sent) {
+                crate::tree::did_on_report(&mut self.lineage, "send");
+            }
             // Passage was already paid at the send; a checkpoint can pay even on death.
             // Count actual income, not survival or a carry that rounds down to nothing.
             crate::tree::note_start(&mut self.lineage, run.start, run.passage > 0 || run.kept(tier) > 0, tier == ExitTier::Death);
@@ -5431,7 +5467,8 @@ impl Game {
         // Cut 29: the free vocabulary its gates opened; the systems the run's end triggered.
         crate::meta::grant_free(&mut self.lineage);
         if !self.sim {
-            let opened = crate::systems::update(&mut self.lineage, false);
+            let mut hold = news_before.map(|_| 0);
+            let opened = crate::systems::update_news(&mut self.lineage, false, &mut hold);
             self.batch.systems_opened.extend(opened);
         }
         self.batch.stalls += stalled as u32;
@@ -5809,7 +5846,12 @@ impl Game {
         }
         self.reel.sort_by(|a, b| b.score.cmp(&a.score).then(a.run_id.cmp(&b.run_id)).then(a.t.cmp(&b.t)));
         self.reel.truncate(50);
-        self.lineage.marks += marks;
+        // (Cut232: a player's marks land at the report's settle — `news::settle`)
+        if news_before.is_some() {
+            self.lineage.marks_due += marks;
+        } else {
+            self.lineage.marks += marks;
+        }
         self.batch.marks += marks;
         outcome.new_best = !bests.is_empty();
         self.batch.bests.extend(bests);
@@ -5831,7 +5873,7 @@ impl Game {
         };
         self.lineage.gold_move(loot_kept, &exit_why);
         if self.lineage.town.auto_collect && loot_kept > 0 && !crate::tree::hired(&self.lineage, "porter") {
-            crate::tree::did(&mut self.lineage, "chest");
+            crate::tree::did_on_report(&mut self.lineage, "chest");
         }
         // QA on 912e135 (qaW): the exit's ledger line names what it did not keep.
         if let Some(g) = self.lineage.gold_ledger.last_mut().filter(|g| g.why == exit_why) {
@@ -6267,7 +6309,7 @@ impl Game {
             // Cut 30 §1–2: the run's meetings (drills, scars), its packages' runs (levels), the stages
             // that came, the pen — the set recompiled for the next send.
             let set = self.lineage.rules().clone();
-            let lines = crate::packages::on_run_end(&mut self.lineage, &run.bosses_met, run.max_depth, &run.row_fired, &set);
+            let lines = crate::packages::on_run_end_held(&mut self.lineage, &run.bosses_met, run.max_depth, &run.row_fired, &set, news_before.is_some());
             let beats = crate::packages::beats(&lines);
             if let Some(line) = self.last_exit.as_mut() { line.packages = beats.clone(); }
             if let Some(line) = self.batch.exits.last_mut() { line.packages = beats.clone(); }
@@ -6288,7 +6330,17 @@ impl Game {
             crate::feats::on_run_end(self, &run, tier, legacy_earned);
             // blind 77030eb (A, B: the Mother slain, the pen's `edit` a run later): the systems read again once this run's
             // kills and meetings are on the lineage (the update above ran before them) — same one-a-report budget
-            let opened = crate::systems::update(&mut self.lineage, false);
+            // Cut232: one new decision a report (`news::settle`: what came by itself, else one waiting decision)
+            let mut news = match news_before {
+                Some(b) if self.offline => {
+                    self.news_due = Some((b, run.id));
+                    Some(0)
+                }
+                Some(b) => crate::news::settle(self, b, run.id),
+                None => None,
+            };
+            let opened = if self.offline { crate::systems::update_news(&mut self.lineage, false, &mut news) } else { crate::systems::update_report_end(&mut self.lineage, false, &mut news) };
+            self.news_left = news;
             self.batch.systems_opened.extend(opened);
         }
         Some(outcome)

@@ -44,7 +44,7 @@ pub const NODES: &[NodeDef] = &[
     node("scout", "scout", "trunk", "send", 2, 4, 0, "", "fire", "AUTO SEND", "sends him · each rest"),
     node("apprentice", "apprentice", "trunk", "forge", 3, 30, 30, "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
     node("clerk", "clerk", "town", "deposit", 3, 40, 36, "bank", "bank", "AUTO BANK", "banks spare gold"),
-    node("drillmaster", "drillmaster", "character", "level", 2, 30, 36, "", "tent", "AUTO LEVEL", "levels the stance"),
+    node("drillmaster", "drillmaster", "character", "level", 2, 4, 36, "", "tent", "AUTO LEVEL", "levels the stance"),
     node("kennel_hand", "kennel-hand", "town", "field", 2, 30, 40, "kennel", "kennel", "AUTO PETS", "fields best pets"),
     node("herald", "herald", "town", "swap", 2, 20, 40, "quests", "board", "AUTO QUEST", "swaps stale quests"),
     node("guide", "guide", "scale", "start", 3, 40, 44, "start", "mouth", "AUTO START", "starts deeper"),
@@ -82,6 +82,10 @@ pub struct Tree {
     /// Hired workers switched off.
     #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
     pub paused: crate::shared::Shared<BTreeSet<String>>,
+    /// Cut232 (`news`; a tree of `v` ≥ 2): the workers whose hire has been offered — a met trigger is offered at a
+    /// quiet run report, one decision at a time (`offer_next`).
+    #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
+    pub shown: crate::shared::Shared<BTreeSet<String>>,
     /// Cut 111: the wall tactics the drillmaster has put on (once each: a tactic the player takes off stays off).
     #[serde(default, skip_serializing_if = "BTreeSet::is_empty")]
     pub walls_worn: BTreeSet<String>,
@@ -281,7 +285,7 @@ pub fn guide_pick(l: &LineageState, by_hand: bool) -> u32 {
 impl Tree {
     /// A new lineage's tree: the quartermaster given, nothing else.
     pub fn fresh() -> Tree {
-        Tree { v: 1, hired: vec![("quartermaster".into(), 0)].into(), ..Default::default() }
+        Tree { v: 2, hired: vec![("quartermaster".into(), 0)].into(), ..Default::default() }
     }
 }
 
@@ -470,12 +474,28 @@ pub fn count(l: &LineageState, id: &str) -> u32 {
     l.tree.done.get(id).copied().unwrap_or(0)
 }
 
-/// Its trigger is met: the count, or the fallback age with its chore open.
+/// Its trigger is met and its hire offered (Cut232: a tree of `v` ≥ 2 offers a met trigger at a quiet report).
 pub fn ready(l: &LineageState, n: &NodeDef) -> bool {
+    trigger_met(l, n) && (n.chore.is_empty() || l.tree.v < 2 || l.pkg.literal || l.tree.shown.contains(n.id))
+}
+
+/// Its trigger is met: the count, or the fallback age with its chore open.
+pub fn trigger_met(l: &LineageState, n: &NodeDef) -> bool {
     if n.chore.is_empty() {
         return true;
     }
     chore_open(l, n) && (count(l, n.id) >= n.need || (n.fallback_h > 0 && l.age_h() >= n.fallback_h))
+}
+
+/// Cut232 (`news`): the first unhired worker in the tree's order whose trigger is met and whose hire is not yet
+/// offered, offered now; its id.
+pub(crate) fn offer_next(l: &mut LineageState) -> Option<&'static str> {
+    if l.tree.v < 2 || l.pkg.literal {
+        return None;
+    }
+    let n = NODES.iter().find(|n| !n.chore.is_empty() && !hired(l, n.id) && !l.tree.shown.contains(n.id) && trigger_met(l, n))?;
+    l.tree.shown.insert(n.id.to_string());
+    Some(n.id)
 }
 
 /// The one node to buy: the first ready, unhired node in the tree's order.
@@ -576,15 +596,31 @@ pub fn price(l: &LineageState, n: &NodeDef) -> i32 {
 }
 
 /// A chore done by hand: its node's count (until its worker is hired).
+/// Cut232: a chore done at camp offers its worker at once — the look that tap makes shows it.
 pub fn did(l: &mut LineageState, chore: &str) {
-    if l.pkg.literal {
-        return;
-    }
-    if let Some(n) = NODES.iter().find(|n| n.chore == chore) {
-        if !hired(l, n.id) && chore_open(l, n) {
-            *l.tree.done.entry(n.id.to_string()).or_insert(0) += 1;
+    if let Some(n) = count_chore(l, chore) {
+        if l.tree.v >= 2 && trigger_met(l, n) {
+            l.tree.shown.insert(n.id.to_string());
         }
     }
+}
+
+/// Cut232: a chore a run's report counts (the send by hand, the haul home) — its worker waits for a quiet report
+/// (`offer_next`).
+pub fn did_on_report(l: &mut LineageState, chore: &str) {
+    count_chore(l, chore);
+}
+
+fn count_chore(l: &mut LineageState, chore: &str) -> Option<&'static NodeDef> {
+    if l.pkg.literal {
+        return None;
+    }
+    let n = NODES.iter().find(|n| n.chore == chore)?;
+    if hired(l, n.id) || !chore_open(l, n) {
+        return None;
+    }
+    *l.tree.done.entry(n.id.to_string()).or_insert(0) += 1;
+    Some(n)
 }
 
 /// Hire the lit node's worker: its price from the purse, then the chest.
@@ -693,39 +729,7 @@ fn workers_act(game: &mut Game, send: bool) {
             act(game, "herald", 1);
         }
     }
-    // the drillmaster: marks into the worn stance's next level, then the tactics'
-    if on(&game.lineage, "drillmaster") {
-        let mut n = 0;
-        let ids: Vec<String> = std::iter::once(game.lineage.pkg.stance.clone()).chain(game.lineage.pkg.tactics.iter().cloned()).collect();
-        for id in ids {
-            while crate::packages::level_price(&game.lineage, &id).is_some_and(|m| m <= game.lineage.marks) {
-                let price = crate::packages::level_price(&game.lineage, &id).unwrap_or(0);
-                if crate::packages::spend_level(&mut game.lineage, &id).is_err() {
-                    break;
-                }
-                // (week 2: from rank II the drillmaster's level costs a mark less, never under one)
-                if bonus_rank(&game.lineage, "drillmaster") > 0 && price > 1 {
-                    game.lineage.marks += 1;
-                }
-                n += 1;
-            }
-        }
-        // Cut 111: a wall's counter arrived while the slots stand open — the drillmaster puts it on (never over a
-        // tactic the player wears; revocable as any tactic; counted as his act on the return)
-        let slots = crate::packages::tactic_slots(&game.lineage);
-        for id in crate::packages::WALL_TACTICS {
-            let l = &game.lineage;
-            if l.pkg.tactics.len() >= slots || !l.pkg.owned.contains(id) || l.tree.walls_worn.contains(id) || l.pkg.tactics.iter().any(|t| t == id) {
-                continue;
-            }
-            let slot = l.pkg.tactics.len();
-            if crate::packages::equip(&mut game.lineage, id, slot).is_ok() {
-                game.lineage.tree.walls_worn.insert(id.to_string());
-                n += 1;
-            }
-        }
-        act(game, "drillmaster", n);
-    }
+    drill_act(game);
     // the apprentice: the cheapest next step the purse pays with the reserve kept — under his forge order
     // (blind 1fb7786: `all` the spare purse; `half` half of each haul home, the rest the player's; `off` none)
     if on(&game.lineage, "apprentice") && forge_share(&game.lineage) != Some(0) {
@@ -804,6 +808,47 @@ fn workers_act(game: &mut Game, send: bool) {
         if pick != game.lineage.start.max(1) && game.lineage.set_start(pick).is_ok() {
             act(game, "guide", 1);
         }
+    }
+}
+
+/// The drillmaster: marks into the worn stance's next level, then the tactics'. At a send, at each hour of an
+/// absence, and (Cut232) at a run's report — the marks a run brings home are spent before the player looks, so a
+/// level his worker buys is never a decision put in front of the player.
+pub(crate) fn drill_act(game: &mut Game) {
+    if game.sim || game.lineage.pkg.literal {
+        return;
+    }
+    if on(&game.lineage, "drillmaster") {
+        let mut n = 0;
+        let ids: Vec<String> = std::iter::once(game.lineage.pkg.stance.clone()).chain(game.lineage.pkg.tactics.iter().cloned()).collect();
+        for id in ids {
+            while crate::packages::level_price(&game.lineage, &id).is_some_and(|m| m <= game.lineage.marks) {
+                let price = crate::packages::level_price(&game.lineage, &id).unwrap_or(0);
+                if crate::packages::spend_level(&mut game.lineage, &id).is_err() {
+                    break;
+                }
+                // (week 2: from rank II the drillmaster's level costs a mark less, never under one)
+                if bonus_rank(&game.lineage, "drillmaster") > 0 && price > 1 {
+                    game.lineage.marks += 1;
+                }
+                n += 1;
+            }
+        }
+        // Cut 111: a wall's counter arrived while the slots stand open — the drillmaster puts it on (never over a
+        // tactic the player wears; revocable as any tactic; counted as his act on the return)
+        let slots = crate::packages::tactic_slots(&game.lineage);
+        for id in crate::packages::WALL_TACTICS {
+            let l = &game.lineage;
+            if l.pkg.tactics.len() >= slots || !l.pkg.owned.contains(id) || l.tree.walls_worn.contains(id) || l.pkg.tactics.iter().any(|t| t == id) {
+                continue;
+            }
+            let slot = l.pkg.tactics.len();
+            if crate::packages::equip(&mut game.lineage, id, slot).is_ok() {
+                game.lineage.tree.walls_worn.insert(id.to_string());
+                n += 1;
+            }
+        }
+        act(game, "drillmaster", n);
     }
 }
 

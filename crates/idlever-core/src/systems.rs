@@ -111,9 +111,24 @@ fn triggered(l: &LineageState, id: &str, plateau: bool) -> bool {
 /// Open every system whose trigger has happened; the ids opened now (in curriculum order), also
 /// queued on `systems_new` for the camp's glint.
 pub fn update(l: &mut LineageState, plateau: bool) -> Vec<String> {
+    update_news(l, plateau, &mut None)
+}
+
+/// `update` under a run report's news budget (Cut232, `news`): `Some(n)` — at most `n` more reveals this report
+/// (each one spends one; `Some(0)` holds every gated reveal for a later report); `None` — no budget beyond the
+/// one-a-report `reveal_left`.
+pub fn update_news(l: &mut LineageState, plateau: bool, news: &mut Option<u32>) -> Vec<String> {
     // (a harness's lineage opens on the trigger alone, as before Cut 30)
     let gate = !l.pkg.literal;
-    update_with(l, plateau, gate)
+    update_inner(l, plateau, gate, news, false)
+}
+
+/// `update_news` at the end of a report the player looks at (a watched run's, an absence's last): a reveal this
+/// report holds is owed (`LineageState::reveal_owed`) — it opens at the next quiet report without waiting for the
+/// one-a-report budget again, so a busy session never leaves a backlog trailing the absences a reveal a day.
+pub fn update_report_end(l: &mut LineageState, plateau: bool, news: &mut Option<u32>) -> Vec<String> {
+    let gate = !l.pkg.literal;
+    update_inner(l, plateau, gate, news, true)
 }
 
 /// The next system to come (the first closed one in order, the queue's head first).
@@ -176,6 +191,10 @@ pub fn pen_due(l: &LineageState, id: &str) -> bool {
 /// run of systems that share a trigger (the blacksmith's three, the pen's group) — the rest wait in
 /// `reveal_queue` in curriculum order.
 pub fn update_with(l: &mut LineageState, plateau: bool, gate: bool) -> Vec<String> {
+    update_inner(l, plateau, gate, &mut None, false)
+}
+
+fn update_inner(l: &mut LineageState, plateau: bool, gate: bool, news: &mut Option<u32>, owe: bool) -> Vec<String> {
     let mut out = Vec::new();
     let mut queue = Vec::new();
     let mut i = 0;
@@ -187,10 +206,16 @@ pub fn update_with(l: &mut LineageState, plateau: bool, gate: bool) -> Vec<Strin
             j += 1;
         }
         let mut unit: Vec<&SystemDef> = SYSTEMS[i..j].iter().filter(|u| !l.systems.contains(u.id) && ready(l, u, plateau, gate)).collect();
+        // (Cut232: under a report's news budget one reveal is one trigger — `first gold home` brings the exits and the
+        // loadout, `six delves` the heirs and the temperaments, though the curriculum lists them apart)
+        if news.is_some() && !unit.is_empty() && !s.trigger.is_empty() {
+            unit.extend(SYSTEMS[j..].iter().filter(|u| u.trigger == s.trigger && u.min_age_h == s.min_age_h && !l.systems.contains(u.id) && ready(l, u, plateau, gate)));
+        }
         // Cut 118 §6: a feat (a trial cleared, a sought boss slain) lights a unit whose trigger has come before its
         // age — the time fallback stands for everyone else
         let mut by_feat = false;
-        if unit.is_empty() && gate && !l.feats.off && l.feats.feats > l.feats.feats_used {
+        let quiet = *news != Some(0);
+        if unit.is_empty() && gate && quiet && !l.feats.off && l.feats.feats > l.feats.feats_used {
             unit = SYSTEMS[i..j].iter().filter(|u| !l.systems.contains(u.id) && triggered(l, u.id, plateau)).collect();
             by_feat = !unit.is_empty();
         }
@@ -201,12 +226,26 @@ pub fn update_with(l: &mut LineageState, plateau: bool, gate: bool) -> Vec<Strin
         // (blind 1fb7786, A: the Mother slain, the pen `locked · Upcoming reports` for the session's last 20 min —
         // owner: the pen opens at the Mother met; its group never waits in the one-a-report queue)
         let free = unit.iter().all(|u| DAY0.contains(&u.id) || pen_due(l, u.id));
-        if gate && !free && !by_feat && l.reveal_left == 0 {
+        // (Cut232: a report that already brought a decision holds the reveal for a later one — owed: it opens at the
+        // next quiet report, inside an absence too, without waiting for the one-a-report budget again)
+        let owed = unit.iter().any(|u| l.reveal_owed.contains(u.id));
+        if gate && !free && (!quiet || !by_feat && !owed && l.reveal_left == 0) {
+            if owe && !quiet && (by_feat || owed || l.reveal_left > 0) {
+                l.reveal_owed.insert(unit[0].id.to_string());
+            }
             queue.push(unit[0].id.to_string());
             continue;
         }
-        if gate && !free && !by_feat {
+        if gate && !free && !by_feat && !owed {
             l.reveal_left -= 1;
+        }
+        for u in &unit {
+            l.reveal_owed.remove(u.id);
+        }
+        if gate && !free {
+            if let Some(n) = news.as_mut() {
+                *n -= 1;
+            }
         }
         if by_feat {
             l.feats.feats_used += 1;

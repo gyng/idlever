@@ -283,6 +283,7 @@ impl Session {
             let before=g.offline_absence.take().expect("absence initialized");
             g.offline=false;
             let mut r=crate::offline::report_with(g,before.elapsed_s,&before.facts_before,&before.class,before.rank_before,false,full,with_stall);
+            crate::offline::settle_due(g,&mut r);
             r.grew=crate::town::grew(&before.grew_before,&crate::town::snap(&g.lineage));
             r.workers=crate::tree::report_acts(&g.lineage,&before.acts_before,&g.lineage.tree.acts);
             crate::offline::supply_reason(&mut r);

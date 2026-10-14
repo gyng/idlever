@@ -456,13 +456,29 @@ fn away_checkin(day: usize) -> bool {
 /// One send by hand, played out as the client's unwatched slice: the run in flight, home. Its game seconds.
 fn send_once(g: &mut Game, out: &mut SeedOut) -> f64 {
     g.send();
+    // (`DP_WATCH_FOLD=1`, Cut232 proposal — a diagnostic, never in a gate run: the watch folds the floors the camp's
+    // panel clears ≥ 95 % (`Game::fold`, Cut 27), so they cost `FOLD_FLOOR_S` of screen time each, not their ticks;
+    // measured on a clone, the game itself unchanged)
+    let folded = std::env::var_os("DP_WATCH_FOLD").map(|_| {
+        let mut c = g.clone();
+        let line = c.fold();
+        let floors = (line.to + 1).saturating_sub(line.from);
+        (c.run.as_ref().map_or(0, |r| r.turn) as f64 / 10.0, floors as f64)
+    });
     let before = g.lineage.total_turns;
     let rep = idlever_core::offline::run_offline_counts(g, 1);
     out.sends += rep.runs;
     out.stalled += rep.stalled;
     out.deaths += rep.deaths.iter().map(|d| d.n).sum::<u32>();
-    (g.lineage.total_turns - before) as f64 / 10.0
+    let game_s = (g.lineage.total_turns - before) as f64 / 10.0;
+    match folded {
+        Some((fold_s, floors)) => (game_s - fold_s).max(0.0) + floors * FOLD_FLOOR_S * WATCH_X,
+        None => game_s,
+    }
 }
+
+/// `DP_WATCH_FOLD`: a folded floor's screen time (the fold line's beat).
+const FOLD_FLOOR_S: f64 = 2.0;
 
 /// The first session: SEND, the run, the camp's taps (the bot's), until the scout (IDLE, HANDS, RANDOM) or the
 /// engaged stay (PICKED, TUNED). Its seconds.
@@ -477,6 +493,8 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
         let hired = g.lineage.tree.hired.len();
         // (Cut231 §4: what the player sees arriving at camp, before the taps — the first look is the baseline)
         note_beats(g, out, t / 60.0);
+        // (`DP_LOOK_TRACE`: each first-session look — minute, record, the last run (start, depth, exit, ticks); a diagnostic, never in a gate run)
+        if std::env::var_os("DP_LOOK_TRACE").is_some() { let r = g.lineage.run_log.last(); eprintln!("look seed {} m {:.2} best D{} last {:?}", g.lineage.seed, t / 60.0, g.lineage.best_depth, r.map(|r| (r.start, r.depth, r.tier.clone(), r.turns))); }
         camp_taps(g, ask, arm, out, t / 3600.0);
         if arm == 3 || arm == 2 {
             // (the session's chores by hand: the find worn)
@@ -1064,6 +1082,8 @@ mod session_chore_tests {
     fn session_levels_are_paid_and_disabled_packages_do_nothing() {
         let cfg = Cfg { bot: Bot::Picked, without: Some("forge") };
         let mut g = Game::new_resident(7);
+        // (Cut232: a level bought with marks comes with the Scout — the session's chores follow his hire)
+        idlever_core::tree::grant(&mut g.lineage, &["porter", "scout"]);
         g.lineage.marks = 14; // Unit fixture, not an earned evaluation.
         let taps = first_session_chores(&mut g, &Ask::new(&cfg));
         assert_eq!(taps, 4);
@@ -1183,6 +1203,11 @@ impl Play {
             // stay); a check-in before the scout sends by hand until he is hired
             if *k == 1 {
                 *session_s = first_session(g, out, ask);
+                // (`DP_SESSION_ONLY=1`: the first session alone, for a cadence tuning loop — never in a gate run)
+                if std::env::var_os("DP_SESSION_ONLY").is_some() {
+                    self.day = self.days;
+                    return;
+                }
             } else if !idlever_core::tree::auto_send(&g.lineage) {
                 let h = ((*k - 1) * interval) as f64 / 3600.0;
                 by_hand_until_scout(g, out, ask, h);
@@ -1695,7 +1720,7 @@ fn main() {
         Err(_) => bin_key,
     };
     // (`DP_STALLS` prunes the stall records it prints: a different game, never kept)
-    let keep = !verbose && std::env::var("DP_STALLS").is_err() && std::env::var("DP_OFF").is_err() && std::env::var_os("DP_CAUSAL_START_FORGE").is_none();
+    let keep = !verbose && std::env::var("DP_STALLS").is_err() && std::env::var("DP_OFF").is_err() && std::env::var_os("DP_CAUSAL_START_FORGE").is_none() && std::env::var_os("DP_SESSION_ONLY").is_none();
     let cache_dir = std::path::PathBuf::from("target/gates/dp");
     let _ = std::fs::create_dir_all(&cache_dir);
     let cache_of = |c: &Cfg, s: u64| cache_dir.join(format!("{bin_key}-{}-s{s}-d{days}-c{checkins}.json", c.label()));

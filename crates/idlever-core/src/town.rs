@@ -73,11 +73,21 @@ pub struct Town {
 
 pub(crate) fn forge_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&l.persistent.completed>=4&&(l.persistent.exit_gold_credit||l.gold_ledger.iter().any(|x|x.delta>0&&crate::engine::is_exit_why(&x.why)))}
 pub(crate) fn kennel_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&(l.tamed_kinds()>0||l.all_companions().next().is_some())}
-pub(crate) fn refresh_eligibility(l:&mut LineageState){l.town.forge_eligible|=forge_qualified(l);l.town.kennel_eligible|=kennel_qualified(l);}
+/// A harness's literal lineage offers a plot the moment it qualifies; a player's lineage gets its plots one at a
+/// time at a run's report (Cut232, `news`: one new decision a report — `open_plot`).
+pub(crate) fn refresh_eligibility(l:&mut LineageState){if l.pkg.literal {l.town.forge_eligible|=forge_qualified(l);l.town.kennel_eligible|=kennel_qualified(l);}}
+/// Cut232 (docs/CUT232_CADENCE.md): the first qualified plot not yet offered, offered now (the forge's, then the
+/// kennel's); its id. A run's report calls it when nothing else is new there.
+pub(crate) fn open_plot(l:&mut LineageState)->Option<&'static str>{
+    if !l.town.forge_eligible&&forge_qualified(l){l.town.forge_eligible=true;return Some("blacksmith");}
+    if !l.town.kennel_eligible&&kennel_qualified(l){l.town.kennel_eligible=true;return Some("kennel");}
+    None
+}
 fn triggered(l: &LineageState, id: &str) -> bool {
+    let literal = l.pkg.literal;
     match id {
-        "blacksmith" => l.town.forge_eligible||forge_qualified(l),
-        "kennel" => l.town.kennel_eligible||kennel_qualified(l),
+        "blacksmith" => l.town.forge_eligible||literal&&forge_qualified(l),
+        "kennel" => l.town.kennel_eligible||literal&&kennel_qualified(l),
         "bank" => l.last_night_net > 0 && l.gold >= l.last_night_net,
         _ => false,
     }
@@ -522,6 +532,8 @@ mod storage_retirement_tests {
         // Diagnostic income and survivor prerequisites supply a trigger, not earned pacing evidence.
         crate::test_stage::traits(&mut g.lineage,4,1);
         g.lineage.gold_move(10, "returned D1");
+        // (Cut232: the qualified plot is offered at a quiet report)
+        assert_eq!(open_plot(&mut g.lineage), Some("blacksmith"));
         assert!(!built(&g.lineage, "blacksmith"));
         assert!(update(&mut g.lineage).is_empty());
         assert_eq!(wire(&g.lineage).next.as_deref(), Some("blacksmith"));
@@ -540,6 +552,7 @@ mod storage_retirement_tests {
         // Diagnostic trigger/income (as above): this tests the read model, not pacing.
         crate::test_stage::traits(&mut g.lineage,4,1);
         g.lineage.gold_move(10, "returned D1");
+        open_plot(&mut g.lineage);
         g.build_town("blacksmith").unwrap();
         g.lineage.rest_left = 1000;
         assert_eq!(g.lineage().town.forge_work, None, "an owned Forge is no proof of work");

@@ -27,6 +27,7 @@ pub mod specialization;
 pub mod class_tree;
 pub mod bloodlines;
 pub mod meta;
+pub mod news;
 pub mod monster;
 pub mod oath;
 pub mod packages;

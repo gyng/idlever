@@ -1256,6 +1256,8 @@ fn buildings_require_a_manual_action_and_survive_save_load() {
     crate::test_stage::traits(&mut g.lineage,4,1);g.lineage.gold_move(1,"banked D1");
     assert!(crate::town::update(&mut g.lineage).is_empty());
     assert!(!crate::town::built(&g.lineage, "blacksmith"));
+    // (Cut232: a qualified plot is offered at a quiet report)
+    assert_eq!(crate::town::open_plot(&mut g.lineage), Some("blacksmith"));
     assert!(g.lineage().town.next_ready);
     g.build_town("blacksmith").unwrap();
     assert!(g.build_town("blacksmith").is_err());
@@ -1267,6 +1269,8 @@ fn buildings_require_a_manual_action_and_survive_save_load() {
 #[test]
 fn equivalent_package_prices_keep_each_slot_and_purchase() {
     let mut g = Game::new_resident(7);
+    // (Cut232: a level bought with marks comes with the Scout)
+    crate::tree::grant(&mut g.lineage, &["porter", "scout"]);
     g.lineage.pkg.owned.insert("boss_focus".into());
     g.lineage.pkg.meets.insert("lich".into(), 1);
     g.lineage.marks = 10;
@@ -1291,7 +1295,10 @@ fn equivalent_package_prices_keep_each_slot_and_purchase() {
 
 #[test]
 fn package_query_key_tracks_prices_and_simulation_inputs() {
-    let g = Game::new_resident(7);
+    let mut g = Game::new_resident(7);
+    // (Cut232: a level bought with marks comes with the Scout — the marks then price one)
+    crate::tree::grant(&mut g.lineage, &["porter", "scout"]);
+    let g = g;
     let saved = g.save();
     let key = packages::options_key(&g, 24);
     assert_eq!(g.save(), saved, "key calculation is read-only");
@@ -1567,6 +1574,8 @@ fn package_prices_carry_their_paired_sends() {
     // Blind c4705f9 (A, B: `compare outcomes` read `all similar`): every price carries the paired read
     // the client judges it by — the sends both panels ran on the same seeds, better and worse.
     let mut g = Game::new_resident(21);
+    // (Cut232: a level bought with marks comes with the Scout)
+    crate::tree::grant(&mut g.lineage, &["porter", "scout"]);
     for id in ["guarded", "boss_focus", "kite_archers"] { g.lineage.pkg.owned.insert(id.into()); }
     g.lineage.pkg.meets.insert("lich".into(), 1);
     g.lineage.marks = 10;
