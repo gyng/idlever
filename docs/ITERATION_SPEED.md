@@ -1621,6 +1621,54 @@ the flags win). Its printout is kept as `target/gates/dayplayer-rows-<hash>.txt`
 arguments and the core's sources, and its full-length fortnights go to the gate's job cache (`IDLEVER_SRC_KEY`). It
 never prints `gates: all PASS` or `dayplayer: all bars pass`; it ends with `gates: TARGETED — … not a gate pass`.
 
+## 0i. Dev save history (time travel), 2026-10-14
+
+*Client and tooling only; no Rust change. Dev builds only: `app.ts` reaches `web/src/dev/history.ts` through
+`import.meta.env.DEV` branches, and a production `pnpm --dir web build` contains none of it (grep the bundle for
+`idlever.dev-history`, `dev-history`, `installHistory`: no match).*
+
+**What it keeps.** A ring of the last 30 full saved Sessions per lineage seed (the client blob: the fresh engine
+save, loadout, row origins, watch mode), in IndexedDB `idlever.dev-history` (memory only when IndexedDB is
+unavailable; `?history_idb=0` forces that). Each entry carries its time, a label, gold, best depth, screen and size.
+A capture whose engine save equals the previous entry's is skipped (a manual snapshot always records).
+
+**When it captures.** After each engine call that buys, builds, hires, sends or spends (`send`, `beginDescent`,
+`buildTown`, `hire`, `promote`, `buy*`, `buyKit`, `buySupply`, `upgradeHero`, `learnClassSkill`, `equipPackage`,
+`takeFix`, `takeReturnPick`, `ascend`, and similar: labels like `hire scout`, `build house`); at a run's end on the
+watch (`D12 death`, `D9 bank`, `D7 return`); when the open app's clock ends runs (`D14 run end ×2`); at a check-in's
+settlement (`check-in 8.0h · 31 runs`); and on `snapshot`. The save is read on the engine's ordered lane right after
+the call that asked, so it is the state that call left. Automatic capture is on in dev builds, off under
+automation (`navigator.webdriver`, like `?runs=`) unless `?history=1`; `?history=0` turns it off anywhere.
+
+**Using it.**
+- **Panel:** Shift+T (or `?dev=history` at boot). Each row: `restore` (confirm, load, drop the later entries),
+  `branch` (confirm, load, keep them), `save` (downloads `idlever-history-<seed>-<id>-<label>.json`). The header has
+  `snapshot`, `import` (any save file below), `auto on/off` and `clear`.
+- **Scripts and drivers:** `window.__idlever.history`: `list()` (newest first; the index the others take),
+  `entry(i)`, `snapshot(label)`, `restore(i)`, `branch(i)`, `add(save, label)`, `clear()`, `idle()` (every queued
+  capture written), `auto`. Restoring goes through the app's own `importSave` (engine load, sets, loadout, flush,
+  camp).
+- **Command line:** `tools/save-history.mjs`. `list --port P` and `export --port P --index I --out S.json` read a
+  running `tools/driver.mjs` session; `export idlever-history-….json --out S.json` converts a file the panel saved.
+  `export` writes the raw engine save, which `camp-check.mjs`, `choice-check.mjs`, `sim_perf` and `cli` load
+  directly (`--blob` writes the client blob instead). `import S.json --port P [--label L]` adds a raw engine save, a
+  client blob, a history file or an `idlever-debug` bundle as the newest entry. It never overwrites a file.
+
+A bug seen in the browser: Shift+T → `save` on the entry before it →
+`node tools/save-history.mjs export ~/Downloads/idlever-history-….json --out scratchpad/bug.json` →
+`node tools/choice-check.mjs scratchpad/bug.json --choices … --out scratchpad/bug-choice` (or camp-check).
+
+**Determinism check.** `web/tests/save-history.mjs` (full suite, not routine; headless, real WASM): a gold
+fixture is snapshotted, a house built (captured automatically) and half an hour run offline; restoring the base,
+then the same build and the same half hour, gives a byte-identical engine save. It also checks that the restored
+state equals the entry exactly, branch keeps later entries, the 30-entry cap, persistence across a reload, the
+Shift+T panel's confirmed restore, and the command line's export/import against the shipping engine's
+`Game.fromSave`. 18 checks, 18.8 s alone (`node tests/run.mjs save-history`, a loaded box).
+
+Limits: dev builds only (`?dev=1` on a shipping build gives `__idlever` without history); a ring entry restores
+engine and client save state, not the screen that was up or an open sheet; a run in flight restores as the save
+held it and continues from the camp.
+
 ## 1. The evaluation loop (the afternoon)
 
 Today: QA round (2 players, parallel, ~55 min) → triage + fixes → reship → QA round 2 →
