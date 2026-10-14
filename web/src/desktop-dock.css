@@ -27,8 +27,8 @@ html body .topbar .gold > .resource-label {
     grid-template-columns: minmax(0, 1fr) 5rem;
   }
   html body main.frame > .console .cmd {
-    max-inline-size: none;
-    inline-size: min(74vw, calc(var(--dock-count, 8) * 5.25rem));
+    max-inline-size: 100%;
+    inline-size: min(74vw, calc(var(--dock-count, 8) * 5.25rem + (var(--dock-count, 8) - 1) * 6px));
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 5.25rem));
     grid-auto-rows: minmax(4.5rem, auto);
     gap: 6px;
@@ -95,5 +95,20 @@ html body .topbar .gold > .resource-label {
   }
   html body main.frame.watch.floating-controls .watch-messages {
     bottom: calc(var(--watch-dock-h, 0px) + 20px);
+  }
+}
+
+/* owner 2026-10-14 (more live view, less chrome): with the dock floating, the hand toggle floats too, in the stage's bottom-left corner,
+   instead of holding a full-width row under the stage; the messages rise above the pad while the hand is on */
+@media (min-width: 1024px) {
+  html body main.frame.watch.floating-controls > .ctl.ctl-slab {
+    grid-area: well;
+    align-self: end;
+    justify-self: start;
+    margin: 0 0 8px 8px;
+    z-index: 12;
+  }
+  html body main.frame.watch.floating-controls:has(> .ctl[data-on="1"]) .watch-messages {
+    bottom: calc(max(var(--watch-dock-h, 0px), 11rem) + 20px);
   }
 }

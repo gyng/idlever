@@ -990,8 +990,77 @@ button.re-body {
   .hero-desktop {
     display: block;
   }
+  /* owner 2026-10-14 (more live view, less chrome): the centre's pick, batch, ladder and offer share one row instead of four stacked
+     strips, and the heroes column runs down beside the console instead of stopping above a full-width dock row */
   main.camp.frame {
-    grid-template-areas: "bar bar bar" "rules well side" "rules well side" "rules well meters" "rules vs meters" "rules sline meters" "rules rest meters" "rules feats meters" "rules offer meters" "con con con";
+    grid-template-columns: var(--wide-l) auto auto minmax(0, 1fr) auto var(--wide-r);
+    grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto;
+    grid-template-areas:
+      "bar bar bar bar bar bar"
+      "rules well well well well side"
+      "rules well well well well meters"
+      "rules vs vs vs vs meters"
+      "rules sline sline sline sline meters"
+      "rules rest rest rest rest meters"
+      "rules pick batch ladder offer meters"
+      "rules feats feats feats feats meters"
+      "rules con con con con con";
+  }
+  main.camp .camp-well > .return-pick {
+    grid-area: pick;
+    align-self: center;
+  }
+  main.camp .camp-well > .checkin-batch {
+    grid-area: batch;
+    align-self: center;
+  }
+  main.camp .camp-well > .control-ladder {
+    grid-area: ladder;
+    align-self: center;
+    min-width: 0;
+  }
+  main.camp .camp-well > .control-ladder .ladder-rail {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  main.camp .camp-well > .camp-feats.order-offer {
+    grid-area: offer;
+    align-self: center;
+  }
+  html body main.frame.camp > .console {
+    margin-block: 6px;
+  }
+  @media (max-width: 1359px) {
+    main.camp.frame {
+      grid-template-rows: auto minmax(0, 1fr) 150px auto auto auto auto auto auto auto;
+      grid-template-areas:
+        "bar bar bar bar bar bar"
+        "rules well well well well side"
+        "rules well well well well meters"
+        "rules vs vs vs vs meters"
+        "rules sline sline sline sline meters"
+        "rules rest rest rest rest meters"
+        "rules pick batch offer offer meters"
+        "rules ladder ladder ladder ladder meters"
+        "rules feats feats feats feats meters"
+        "rules con con con con con";
+    }
+  }
+  /* below 1200 px the one-row dock no longer fits beside the heroes column: it spans the frame again */
+  @media (max-width: 1199px) {
+    main.camp.frame {
+      grid-template-areas:
+        "bar bar bar bar bar bar"
+        "rules well well well well side"
+        "rules well well well well meters"
+        "rules vs vs vs vs meters"
+        "rules sline sline sline sline meters"
+        "rules rest rest rest rest meters"
+        "rules pick batch offer offer meters"
+        "rules ladder ladder ladder ladder meters"
+        "rules feats feats feats feats meters"
+        "con con con con con con";
+    }
   }
   main.camp .well-wrap > .heroes-col {
     grid-area: rules;
