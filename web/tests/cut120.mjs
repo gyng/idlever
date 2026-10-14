@@ -2,7 +2,7 @@
 // Cut 120 — automation fill and chore reduction, the client half (docs/CUT120_AUTOMATION_FILL.md §8–11); headless, tools/browser.mjs.
 //   sheet  — real wasm (the earned fixture, three bloodlines): one orders sheet holds every standing order — insure, the apprentice's
 //            forge and sinks, heir, kennel, Legacy, ranks, the rank-II perk chips (setPerk) — each shareable row with `same for all`;
-//            no ascend row before the King; the ladder's orders rung and the run setup tablet both open it.
+//            no ascend row before the King; the ladder's orders rung (task tracker) and the run setup tablet both open it.
 //   audit  — the chore audit (§11), taps counted on the real engine, before and after:
 //              buying a rank       before 2 a rank (works · promote)          after 0 (`ranks auto`: the report's `ranks` line)
 //              spending Legacy     before 1 + 1 an upgrade (panel · buy)       after 0 (`balanced`: the report's `legacy` line)
@@ -87,6 +87,30 @@ const allOrders = (page) =>
     return o;
   });
 
+/** Persistent heroes (a327b8dd): a death late in the absence leaves the hero recovering, and neither the camp's gem nor the report's
+ *  action may send him. Check the report offers no delve while he recovers, then let the recovery pass (engine time) so the
+ *  check-in measured is the routine one. Returns the recovery seconds waited (0: he came home ready). */
+async function recoverThenCheckIn(page, tag) {
+  const r = await page.evaluate(async () => {
+    const a = window.__idlever,
+      s = a.lineage.persistent_hero?.recovery_s ?? 0,
+      offered = !!document.querySelector(".report .collect-go");
+    if (s > 0) {
+      await a.engine.runOfflineQuick(s);
+      await a.refresh();
+      for (let i = 0; i < 30 && !document.querySelector(".report .collect-go"); i++)
+        await new Promise((res) => setTimeout(res, 100));
+    }
+    return { s, offered, after: a.lineage.persistent_hero?.recovery_s ?? 0, screen: a.screen };
+  });
+  if (r.s > 0)
+    check(
+      !r.offered && r.after === 0 && r.screen === "report",
+      `${tag}: a recovering hero (${r.s}s) is offered no delve; recovered (${r.after}s) on the report`,
+    );
+  return r.s;
+}
+
 try {
   if (parts.includes("sheet") || parts.includes("audit") || parts.includes("ledger")) {
     const { page, slots } = await earned("sheet");
@@ -132,9 +156,12 @@ try {
     await closeSheets(page);
     await page.waitForTimeout(200);
 
-    // ---- the sheet: from the ladder's orders rung (when the ladder shows), else the run setup tablet
+    // ---- the sheet: from the ladder's orders rung (when the ladder shows), else the run setup tablet. The ladder now lives
+    // in the town task tracker's Control group (tasks.ts, owner 2026-10-14), folded by default below 1024px.
     let sheetTaps = 0;
-    const door = page.locator('.control-ladder:not([hidden]) .ladder-door[data-door="orders"]');
+    const door = page.locator(
+      '[data-tasks] .task-fold[open] .control-ladder:not([hidden]) .ladder-door[data-door="orders"]',
+    );
     const viaLadder = (await door.count()) > 0 && (await door.isVisible());
     if (viaLadder) await door.click();
     else await page.locator(".orders-tab:visible").click();
@@ -154,23 +181,29 @@ try {
     const byOrder = Object.fromEntries(rows.filter((r) => r.order).map((r) => [r.order, r]));
     const shown = await page.evaluate(async () => {
       const { kennelShown } = await import("/src/ui/pets.ts"),
-        { kingSlain } = await import("/src/ui/king-eta.ts");
+        { kingSlain } = await import("/src/ui/king-eta.ts"),
+        { temperamentOrderShown } = await import("/src/ui/orders.ts");
       return {
         kennel: kennelShown(window.__idlever.lineage),
+        temperament: temperamentOrderShown(window.__idlever.lineage),
         king: kingSlain(window.__idlever.lineage),
       };
     });
     check(
+      // Retired since Cut120: insure (Cut201 storage/insurance retirement) and the heir order (Cut219/220: the
+      // temperament order took its place, shown once temperaments are earned). Neither may come back.
       [
-        "insure",
         "forge",
         "sink",
-        "heir",
         "legacy",
         "ranks",
         ...(shown.kennel ? ["kennel"] : []),
-      ].every((k) => byOrder[k]) && !byOrder.wall,
-      `one sheet: every standing order a chip row, the retired wall order none (${rows.map((r) => r.order || r.perkOf || r.label).join(", ")})`,
+        ...(shown.temperament ? ["temperament"] : []),
+      ].every((k) => byOrder[k]) &&
+        !byOrder.wall &&
+        !byOrder.insure &&
+        !byOrder.heir,
+      `one sheet: every standing order a chip row, the retired wall, insure and heir orders none (${rows.map((r) => r.order || r.perkOf || r.label).join(", ")})`,
     );
     check(
       byOrder.legacy?.chips.join(",") === "balanced,health,damage,armour,off*" &&
@@ -353,6 +386,7 @@ try {
     );
 
     // the routine return, three bloodlines, same for all set: report → watch
+    const waited = await recoverThenCheckIn(page, "the 3-bloodline check-in");
     const back = await page.evaluate(async () => {
       const a = window.__idlever,
         btn = () => document.querySelector(".report .collect-go");
@@ -369,7 +403,7 @@ try {
     });
     check(
       back.taps <= 2 && back.screen === "watch" && back.slots === 3,
-      `a routine 3-bloodline check-in: ${back.taps} taps report → watch, no order or rank touched (${back.screen})`,
+      `a routine 3-bloodline check-in: ${back.taps} taps report → watch, no order or rank touched (${back.screen}${waited ? ` · after ${waited}s recovery` : ""})`,
     );
     out.push(
       `     audit: rank ${2}→0 · Legacy ${1 + (legacyLine?.n ?? 0)}→0 · one order for all ${3 * 3}→${allTaps} · check-in ${back.taps}`,
@@ -649,7 +683,7 @@ try {
       for (const k of Object.keys(localStorage))
         if (k.startsWith("idlever.offers.")) localStorage.removeItem(k);
     });
-    const back = await p2.evaluate(async () => {
+    const pending = await p2.evaluate(async () => {
       const a = window.__idlever,
         { pendingOffer } = await import("/src/ui/order-offer.ts");
       const rep = await a.engine.runOfflineQuick(8 * 3600);
@@ -657,6 +691,11 @@ try {
       const pending = pendingOffer(a.lineage);
       a.go({ kind: "report", report: rep, absence: true });
       await new Promise((res) => setTimeout(res, 700));
+      return pending;
+    });
+    const waited2 = await recoverThenCheckIn(p2, "the offer return");
+    const back = await p2.evaluate(async (pending) => {
+      const a = window.__idlever;
       const btn = () => document.querySelector(".report .collect-go");
       let taps = 0;
       for (let i = 0; i < 3 && a.screen !== "watch" && btn(); i++) {
@@ -673,13 +712,13 @@ try {
         pending,
         orders: [a.lineage.orders?.legacy, a.lineage.orders?.ranks],
       };
-    });
+    }, pending);
     check(
       !!back.pending &&
         back.taps <= 2 &&
         back.screen === "watch" &&
         back.orders.join() === "off,off",
-      `a routine return with the ${back.pending ?? "no"} offer pending: ${back.taps} taps report → watch, the orders untouched (${back.orders.join(" · ")})`,
+      `a routine return with the ${back.pending ?? "no"} offer pending: ${back.taps} taps report → watch, the orders untouched (${back.orders.join(" · ")}${waited2 ? ` · after ${waited2}s recovery` : ""})`,
     );
     await page.close();
   }

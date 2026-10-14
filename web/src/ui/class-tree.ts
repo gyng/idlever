@@ -126,6 +126,22 @@ function review(app: App, node: ClassPathNode | null, onChange: () => void): voi
   });
 }
 
+function classTreeSoon(first: ClassPathNode): HTMLElement {
+  return h(
+    "section",
+    { class: "class-tree-soon num" },
+    h("b", null, /* copy:label */ "Class skills"),
+    h("small", null, /* copy:label */ `L${first.required_level} · D${first.required_depth}`),
+  );
+}
+
+/** Before any skill can be taken (L1, nothing spent), the truthful first milestone (Cut197 §4). */
+export function renderClassTreeMilestone(app: App): HTMLElement | null {
+  const t = app.lineage.class_tree,
+    first = t?.nodes.find((n) => n.parent === null);
+  return t && first && t.spent === 0 ? classTreeSoon(first) : null;
+}
+
 /** Class levels fund cumulative skills; reveal only learned nodes and the next frontier. */
 export function renderClassTree(
   app: App,
@@ -140,13 +156,7 @@ export function renderClassTree(
   const roots = t.nodes.filter((n) => n.parent === null),
     first = roots[0];
   if (!first || (t.level < 2 && t.spent === 0)) return null;
-  if (t.level < first.required_level && t.spent === 0)
-    return h(
-      "section",
-      { class: "class-tree-soon num" },
-      h("b", null, /* copy:label */ "Class skills"),
-      h("small", null, /* copy:label */ `L${first.required_level} · D${first.required_depth}`),
-    );
+  if (t.level < first.required_level && t.spent === 0) return classTreeSoon(first);
   const owned = new Set(t.nodes.filter((n) => n.owned).map((n) => n.id));
   const card = (node: ClassPathNode): HTMLElement => {
     return h(

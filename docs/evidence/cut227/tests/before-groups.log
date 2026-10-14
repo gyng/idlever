@@ -1,0 +1,20 @@
+client suite: targeted (5 selected; 157 current full; 200 exhaustive groups)
+FAIL class-tree      5.8s (4.9s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+         at file:///home/g/p/riddle/.claude/worktrees/agent-a2781f65bb1032a6f/web/tests/class-tree.mjs:46:12 {
+FAIL cut118          22.2s (21.3s)  cut118: FAIL (1 assertion(s), 0 error(s))
+     cut118: FAIL (1 assertion(s), 0 error(s))
+     FAIL nothing to collect: one tap sends (delve → watch)
+FAIL class-styles    40.2s (39.3s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/.claude/worktrees/agent-a2781f65bb1032a6f/web/tests/class-styles.mjs:91:16 {
+FAIL hero-life       51.3s (50.5s)  Node.js v26.5.0
+       - waiting for locator('[data-bloodline-tab="loadouts"][aria-selected="true"]') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/.claude/worktrees/agent-a2781f65bb1032a6f/web/tests/hero-life.mjs:306:79 {
+FAIL cut120          73.4s (72.5s)  cut120: FAIL (3 assertion(s), 0 error(s))
+     cut120: FAIL (3 assertion(s), 0 error(s))
+     FAIL one sheet: every standing order a chip row, the retired wall order none (descent, start, Auto restock, forge, sink, by hand, legacy, ranks, scout, apprentice, ascend)
+     FAIL a routine 3-bloodline check-in: 1 taps report → watch, no order or rank touched (camp)
+     FAIL a routine return with the legacy offer pending: 1 taps report → watch, the orders untouched (off · off)
+FAIL: 0/5 client gates in 73.4s

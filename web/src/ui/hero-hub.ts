@@ -2,7 +2,7 @@ import type { App } from "../app";
 import { h, replace } from "./dom";
 import { heroPresence } from "./hero-presence";
 import { renderBloodlineLoadouts } from "./bloodline-loadouts";
-import { renderClassTree } from "./class-tree";
+import { renderClassTree, renderClassTreeMilestone } from "./class-tree";
 import { renderClassStyles, classStyleName } from "./class-styles";
 import { heroLifePanel } from "./hero-life";
 import { renderLegacy } from "./legacy";
@@ -381,7 +381,11 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       );
       const tree = renderClassTree(context, refreshHub, new Set(), { inspectAway: true });
       const styles = renderClassStyles(context, refreshHub, { inspectAway: true });
-      host.append(tree ?? h("p", {}, /* copy:label */ "Skills unavailable"));
+      host.append(
+        tree ??
+          renderClassTreeMilestone(context) ??
+          h("p", {}, /* copy:label */ "Skills unavailable"),
+      );
       if (styles) host.append(styles);
     } else if (section === "behaviour") {
       const actual = L.actual_packages;
