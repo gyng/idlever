@@ -48,7 +48,7 @@ test("routine list runs existing groups and declares partial coverage", () => {
   assert.ok(s.names.length < all.length / 3);
   assert.ok(
     s.names.includes("game-menu") &&
-      s.names.includes("routine-keep") &&
+      s.names.includes("exit-keep-close") &&
       s.names.includes("clarity:paint"),
   );
 });
