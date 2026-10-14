@@ -1,0 +1,45 @@
+
+PICKED (16 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1       8      8     16     24     32     40     48  [24, 33]  stall 0 king None left 100% ×1 L[5, 5]
+   2       8     16     16     40     40     64     64  [22, 28]  stall 0 king None left 93% ×3 L[5, 5]
+   3       8     16     16     48     56     64     80  [18, 26, 30]  stall 0 king None left 98% ×3 L[5, 5, 5]
+   4       8     16     16     16     40     80     88  [23, 28, 28]  stall 0 king None left 98% ×3 L[5, 5, 5]
+   5       8      8     40     48     48     72     72  [15, 28, 33]  stall 0 king None left 100% ×1 L[5, 5, 5]
+   6       8     16     24     32     32     48     48  [22, 33]  stall 0 king None left 100% ×1 L[5, 5]
+   7       8     16     24     24     40     48     72  [23, 32, 33]  stall 0 king None left 98% ×3 L[5, 5, 5]
+   8       8      8     16     16     16     72     72  [28, 28, 33]  stall 0 king None left 97% ×3 L[5, 5, 5]
+   9       8     16     16     24     24     40     40  [28]  stall 0 king None left 98% ×1 L[5]
+  10       8     16     40     48     48     88     88  [13, 28, 28]  stall 0 king None left 96% ×3 L[5, 5, 5]
+  11       8     16     24     40     40     48     56  [18, 32]  stall 0 king None left 98% ×4 L[5, 5]
+  12       8     16     24     24     40     48     48  [23, 33]  stall 0 king None left 100% ×1 L[5, 5]
+  13       8     16     40     48     48     72     80  [14, 28, 29]  stall 0 king None left 94% ×10 L[5, 5, 5]
+  14       8      8     40     40     48     56     56  [16, 28]  stall 0 king None left 97% ×1 L[5, 5]
+  15       8      8     40     40     48     80     88  [13, 28, 28]  stall 0 king None left 100% ×4 L[5, 5, 5]
+  16       8     24     48     48     56     64     80  [13, 23, 29]  stall 0 king None left 98% ×1 L[5, 5, 5]
+
+TUNED (16 seeds)
+seed    h→D8  h→D13  h→D18  h→D23  h→D28  h→D29  h→D33  best by day
+   1       8      8     16     24     32     40     48  [24, 33]  stall 0 king None left 100% ×3 L[5, 5]
+   2       8     16     16     40     40     48     48  [22, 33]  stall 0 king None untried L[5, 5]
+   3       8     16     16     48     56     64     64  [18, 26]  stall 0 king None untried L[5, 5]
+   4       8     16     16     16     40     48     56  [23, 32]  stall 0 king None left 99% ×2 L[5, 5]
+   5       8      8     40     48     48     64     64  [15, 28]  stall 0 king None left 100% ×2 L[5, 5]
+   6       8     16     24     32     32     48     48  [22, 33]  stall 0 king None left 98% ×5 L[5, 5]
+   7       8     16     24     24     40     48     48  [23, 33]  stall 0 king None left 100% ×4 L[5, 5]
+   8       8      8     16     16     16     40     48  [28, 33]  stall 0 king None left 98% ×3 L[5, 5]
+   9       8     16     16     24     24     32     40  [28]  stall 0 king None left 96% ×3 L[5]
+  10       8     16     40     48     48     56     72  [13, 28, 33]  stall 0 king None left 94% ×6 L[5, 5, 1]
+  11       8     16     24     40     40     48     48  [18, 33]  stall 0 king None left 98% ×2 L[5, 5]
+  12       8     16     24     24     40     48     48  [23, 33]  stall 0 king None left 98% ×3 L[5, 5]
+  13       8     16     40     48     48     56     56  [14, 28]  stall 0 king None left 97% ×4 L[5, 5]
+  14       8      8     40     40     48     56     56  [16, 28]  stall 0 king None left 96% ×3 L[5, 5]
+  15       8      8     24     32     40     56     56  [19, 28]  stall 0 king None left 98% ×4 L[5, 5]
+  16       8     24     48     48     56     64     64  [13, 23]  stall 0 king None untried L[5, 5]
+
+bots over 16 seeds × 14 days × 3/day (240s)
+
+bar (targeted)                                                                value  result
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.24  PASS
+dayplayer (targeted: tuned-picked, 240s): targeted rows PASS — not a gate pass
+

@@ -1374,10 +1374,12 @@ fn a_set_that_always_returns_gets_a_stall_verdict_with_patches() {
     assert!(stall.patches.iter().all(|p| p.forecast_delta > crate::offline::STALL_DELTA), "{:?}", stall.patches);
     // Cut122 safety pricing deliberately sinks harmful whole-run moves below safe advice.
     // Retain descending gain within each safety tier, and never put a harmful move first.
+    // Cut227: tiers are clean, trade-off alone, then whole-run harm.
+    let tier=|p:&Patch| if p.whole.as_ref().is_some_and(|w|w.harms) {2} else {crate::trace::patch_harms(p) as u8};
     assert!(stall.patches.windows(2).all(|w| {
-        let a=crate::trace::patch_harms(&w[0]);let b=crate::trace::patch_harms(&w[1]);
-        if a==b {w[0].forecast_delta>=w[1].forecast_delta} else {!a&&b}
-    }),"{:?}",stall.patches.iter().map(|p|(p.forecast_delta,crate::trace::patch_harms(p))).collect::<Vec<_>>());
+        let (a,b)=(tier(&w[0]),tier(&w[1]));
+        if a==b {w[0].forecast_delta>=w[1].forecast_delta} else {a<b}
+    }),"{:?}",stall.patches.iter().map(|p|(p.forecast_delta,tier(p))).collect::<Vec<_>>());
     // Cut 9 §5: the verdict carries the last-5 trace of the latest run the row ended.
     let tr = stall.trace.as_ref().expect("the stall carries a trace");
     assert!(!tr.turns.is_empty() && tr.turns.len() <= crate::engine::EXIT_TRACE_LEN);
@@ -11151,6 +11153,15 @@ fn whole_run_move_judges_a_patch() {
     crate::trace::sink_harms(&mut ps);
     assert_eq!(ps.iter().map(|p| p.row.verb.v.as_str()).collect::<Vec<_>>(), ["retreat", "descend", "rest"]);
     assert_eq!(crate::trace::gem_patch(&ps).map(|p| p.row.verb.v.as_str()), Some("retreat"));
+    // Cut227: a wall-price trade-off alone (an exit's floors) sorts above a whole-run harm,
+    // even when the harm also carries a trade-off; neither is the gem.
+    let mut harm = w.clone();
+    harm.trade_off = true;
+    let priced = PatchWhole { trade_off: true, ..same.clone() };
+    let mut ps = vec![mk("rest", Some(harm)), mk("return", Some(priced))];
+    crate::trace::sink_harms(&mut ps);
+    assert_eq!(ps.iter().map(|p| p.row.verb.v.as_str()).collect::<Vec<_>>(), ["return", "rest"]);
+    assert!(crate::trace::gem_patch(&ps).is_none());
 }
 
 /// QA on 524827b (qaAB: a bought 2nd leash, $30, gone after a returned run — the pack merged it

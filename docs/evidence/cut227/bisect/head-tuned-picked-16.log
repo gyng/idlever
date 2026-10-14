@@ -1,0 +1,37 @@
+dayplayer: targeted rows tuned-picked — configurations PICKED,TUNED
+dayplayer: TUNED s3 done in 88s 
+dayplayer: TUNED s11 done in 95s 
+dayplayer: TUNED s9 done in 97s 
+dayplayer: TUNED s13 done in 100s 
+dayplayer: TUNED s12 done in 100s 
+dayplayer: TUNED s7 done in 108s 
+dayplayer: TUNED s15 done in 109s 
+dayplayer: TUNED s10 done in 114s 
+dayplayer: TUNED s5 done in 114s 
+dayplayer: TUNED s4 done in 120s 
+dayplayer: TUNED s2 done in 121s 
+dayplayer: TUNED s8 done in 125s 
+dayplayer: PICKED s3 done in 40s 
+dayplayer: TUNED s16 done in 135s 
+dayplayer: TUNED s14 done in 136s 
+dayplayer: TUNED s6 done in 140s 
+dayplayer: PICKED s9 done in 35s 
+dayplayer: PICKED s7 done in 53s 
+dayplayer: TUNED s1 done in 156s 
+dayplayer: PICKED s15 done in 59s 
+dayplayer: PICKED s16 done in 52s 
+dayplayer: PICKED s4 done in 71s 
+dayplayer: PICKED s11 done in 47s 
+dayplayer: PICKED s5 done in 40s 
+dayplayer: PICKED s6 done in 72s 
+dayplayer: PICKED s2 done in 50s 
+dayplayer: PICKED s10 done in 38s 
+dayplayer: PICKED s12 done in 35s 
+dayplayer: PICKED s14 done in 62s 
+dayplayer: PICKED s13 done in 50s 
+dayplayer: PICKED s1 done in 63s 
+dayplayer: PICKED s8 done in 45s 
+bar (targeted)                                                                value  result
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.00  FAIL
+dayplayer (targeted: tuned-picked, 180s): FAIL — not a gate pass
+gates: TARGETED — dayplayer rows `tuned-picked` FAIL; not a gate pass (the gate is `node tools/gates.mjs [--full]`)
