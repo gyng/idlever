@@ -1,0 +1,296 @@
+{
+  "game": "Antimatter Dimensions",
+  "build": "Reality update (Steam 2022-12-18; 2-year anniversary update 2024-12-18; Android build updated 2026-10-09)",
+  "genre": "idler",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-C",
+  "package": {
+    "preset": "incremental-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store/appdetails, 490 English Steam reviews via the review API, Steam news, the Google Play listing, and the Antimatter Dimensions fandom wiki (Shop, Offline Progress, Autobuyers, How to Play); not played.",
+    "fun": {
+      "score": 68,
+      "confidence": "low",
+      "source": "desk estimate: widely called 'the best idle game' with distinct prestige layers and a real ending (91.4% of 3,413 English reviews positive; 4.8 stars of 35.9K on Google Play), but a spartan, silent presentation; below Cookie Clicker 75.5 on feel/aesthetic, above Melvor 65.4 on progression and decisions; promising band, near fun."
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198303683157/recommended/1399720/",
+            "quote": "Antimatter Dimensions feels oddly spartan and ascetic."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199817855802/recommended/1399720/",
+            "quote": "I think the presentation is its weakest area."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199177876945/recommended/1399720/",
+            "quote": "The art and sound design are nonexistent."
+          }
+        ],
+        "note": "Text and buttons, with themes; minimal but consistent."
+      },
+      {
+        "id": "motion",
+        "score": 30,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198303683157/recommended/1399720/",
+            "quote": "There are no elaborate animations demonstrating one's antimatter production"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198047357238/recommended/1399720/",
+            "quote": "Despite most of animations can be disabled in animation options, there is one very big one"
+          }
+        ],
+        "note": "A few big prestige animations exist (one drew a photosensitivity complaint); otherwise static."
+      },
+      {
+        "id": "ui",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198367471798/recommended/1399720/",
+            "quote": "Visually, the game remains extremely minimalistic, but that simplicity works perfectly for its design philosophy."
+          },
+          {
+            "source": "https://antimatter-dimensions.fandom.com/wiki/How_to_Play",
+            "quote": "opening this modal will instead place you on the How to Play entry most relevant to ... your currently visible tab"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198050523437/recommended/1399720/",
+            "quote": "some of the later challenges can be slightly-very confusing and you'll need some frame of reference"
+          }
+        ],
+        "note": "Rubric anchor (~80). Contextual help and clean tabs; lapse: late challenges send players to guides (\"get stuck on EC11\")."
+      },
+      {
+        "id": "audio",
+        "score": 15,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561199177876945/recommended/1399720/",
+            "quote": "The art and sound design are nonexistent."
+          }
+        ],
+        "note": "From review consensus; not listened."
+      },
+      {
+        "id": "onboarding",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://antimatter-dimensions.fandom.com/wiki/Autobuyers",
+            "quote": "They are first unlocked with 1e40 antimatter."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199232211796/recommended/1399720/",
+            "quote": "maybe a bit slow at the beginning but it gets VERYYY addictive"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198367471798/recommended/1399720/",
+            "quote": "The basic gameplay loop starts deceptively simple."
+          }
+        ],
+        "note": "Rubric anchor (~80): first autobuyers before the first Infinity (under 1 h est.); one \"slow at the beginning\" lapse."
+      },
+      {
+        "id": "pacing",
+        "score": 80,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198058892610/recommended/1399720/",
+            "quote": "each prestige tier feels different and has unique mechanics"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199876283850/recommended/1399720/",
+            "quote": "yes there are walls, but they are frontloaded and don't appear much post-reality"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198367471798/recommended/1399720/",
+            "quote": "avoids this problem remarkably well by continually introducing mean[ingful mechanics]"
+          }
+        ],
+        "note": "Rubric anchor (~80). Lapse: \"many timewalls are present\". Ending for a casual player: ~50 days (a third run) to 3 years (one reviewer: Dec 2022 to Dec 2025)."
+      },
+      {
+        "id": "depth",
+        "score": 78,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198014882667/recommended/1399720/",
+            "quote": "The game becomes somewhat of a puzzle game, trying to figure out what setup you need for challenges"
+          },
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1399720",
+            "quote": "An obscene amount of automation, including a custom scripting language."
+          }
+        ],
+        "note": "Time-study trees, glyphs, challenge setups and the Automator scripting layer; guides converge many players on one route."
+      },
+      {
+        "id": "respect",
+        "score": 68,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://antimatter-dimensions.fandom.com/wiki/Shop",
+            "quote": "Get 6 hours worth of offline production. ... Get 24 hours worth of offline production."
+          },
+          {
+            "source": "https://antimatter-dimensions.fandom.com/wiki/Offline_Progress",
+            "quote": "The simulation behavior is only somewhat accurate"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198367471798/recommended/1399720/",
+            "quote": "never pressures players into spending money simply to continue progressing"
+          },
+          {
+            "source": "https://play.google.com/store/apps/details?id=kajfosz.antimatterdimensions",
+            "quote": "Contains ads · In-app purchases"
+          }
+        ],
+        "note": "Free, uncapped offline catch-up, no energy. Lapses: STD coins (real money) buy permanent multipliers and 6 h/24 h time skips; the mobile build contains ads. Borderline for the paid-skip kill; not set because the game creates no wait to sell (see killNote)."
+      },
+      {
+        "id": "juice",
+        "score": 30,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198303683157/recommended/1399720/",
+            "quote": "The progression is largely communicated through text and UI rather than spectacle"
+          }
+        ],
+        "note": "Prestige moments are animated; routine purchases are silent."
+      },
+      {
+        "id": "polish",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561199086602782/recommended/1399720/",
+            "quote": "i only had a few performance issues with the stellar background (maybe like 5 crashes)"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198220640897/recommended/1399720/",
+            "quote": "I ended up losing my save file somehow"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1399720",
+            "quote": "2 Year Anniversary Update (2024-12-18); Android build updated Oct 9, 2026"
+          }
+        ],
+        "note": "Rubric anchor (~80); one save-loss and a few crash reports keep it under 80."
+      },
+      {
+        "id": "content",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198058892610/recommended/1399720/",
+            "quote": "easily 1000 hours of gameplay from start to finish"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198014882667/recommended/1399720/",
+            "quote": "It has months of content"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198009009011/recommended/1399720/",
+            "quote": "And it actually has a clear ending!"
+          }
+        ],
+        "note": "Rubric anchor (~80). Four prestige layers, Celestials, an ending."
+      },
+      {
+        "id": "hook",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1399720",
+            "quote": "Earn antimatter through dimensions! Gain Infinite antimatter to collapse the universe!"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198420573469/recommended/1399720/",
+            "quote": "I never expected this game to have such a beautiful ending."
+          }
+        ],
+        "note": "Strong reputation and an ending, but the first screenshot is a column of buttons."
+      },
+      {
+        "id": "access",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1399720",
+            "quote": "platforms: Windows and Mac; supported_languages: 'English'"
+          },
+          {
+            "source": "https://play.google.com/store/apps/details?id=kajfosz.antimatterdimensions",
+            "quote": "Google Play: 4.8 stars, 35.9K reviews, 1M+ downloads"
+          },
+          {
+            "source": "https://antimatter-dimensions.fandom.com/wiki/How_to_Play",
+            "quote": "You can transfer your save between places by using the export function"
+          }
+        ],
+        "note": "Web, Steam, Android and iOS with save export and an animation toggle; English only; no Steam Cloud (saves in the install folder)."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Give each prestige layer its own new mechanic, not a bigger multiplier: the long arc stays fresh because every reset changes what the player decides.",
+        "evidence": "https://steamcommunity.com/profiles/76561198058892610/recommended/1399720/ \"each prestige tier feels different and has unique mechanics\"",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Front-load the walls and make late play wall-light; a player tolerates an early wait when they can see the game opening up after it.",
+        "evidence": "https://steamcommunity.com/profiles/76561199876283850/recommended/1399720/ \"yes there are walls, but they are frontloaded\"",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Make the automation ladder the reward (autobuyers from challenges, then a scripting language): a model for Idlever's opt-in pen as the expert layer.",
+        "evidence": "https://antimatter-dimensions.fandom.com/wiki/Autobuyers \"The 12 autobuyers obtained from normal challenges have a starting delay\"",
+        "dimension": "depth"
+      },
+      {
+        "practice": "Context-sensitive help that opens on the entry for the current tab replaces a tutorial wall.",
+        "evidence": "https://antimatter-dimensions.fandom.com/wiki/How_to_Play \"place you on the How to Play entry most relevant to the game content on your currently visible tab\"",
+        "dimension": "onboarding"
+      }
+    ],
+    "killNote": "paidSkipOfCreatedWait left false by judgment: the Shop sells 6 h/24 h of offline production for STD coins bought with real money (wiki Shop page), but offline progress itself is free and uncapped, so the game does not create a wait in order to sell its skip. A stricter reader may set it true."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$comment": "Desk grade (not hands-on). Steam review quotes from the English review JSON (filter=all, 82 unique reviews sampled, 77% up); review ids given.",
+  "game": "AFK Journey",
+  "build": "Steam app 4195600 (Steam launch 2026-04-27; mobile since 2024-03-27); seasonal build as of 2026-10-15",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-B",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "desk: Steam store data and review API (403 English reviews, 75% positive, Mostly Positive), the AFK Journey fandom wiki AFK Stage page (wikitext), Wikipedia (awards, reception), a vaporlens review aggregate and guide search results; not played.",
+    "fun": { "score": 52, "source": "desk estimate: strong presentation and an easy, generous first week, then gacha walls, timed level gates and guild obligations; above the mediocre idle RPG composite (30.8), below Melvor (65.4, eval/calibration/melvor-idle.scorecard.json) and well below Loop Hero (74.0)", "confidence": "low" },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": true,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      { "id": "art", "score": 85, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://en.wikipedia.org/wiki/AFK_Journey", "quote": "inspired by 'the intricate look of church stained-glass,' with bold color blocks and distinct outlines; Pocket Gamer: 'enthralling storybook-style graphics'" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 236298825)", "quote": "Super stunning art style, story, VA, and most especially, the music!" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 231982886)", "quote": "Visual art style and animations are top notch but the gacha, the endless menus" }
+      ], "note": "Matches Loop Hero's 80 benchmark on coherence and distinctiveness; praised even in negative reviews. Lapse check: no register clash reported in reviews read." },
+      { "id": "motion", "score": 72, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 231982886)", "quote": "Visual art style and animations are top notch" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 235756440)", "quote": "Auto pathing making me walk through walls." }
+      ], "note": "Full 3D-ish animated skills and an open world; some reports of floaty movement and pathing glitches." },
+      { "id": "ui", "score": 45, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 231982886)", "quote": "the endless menus, the resources and the usual typical f2p gacha stuff are just overwhelming" },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "very small text that cannot be resized" }
+      ], "note": "Polished screens but gacha-style menu sprawl and many resources." },
+      { "id": "audio", "score": 80, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://en.wikipedia.org/wiki/AFK_Journey", "quote": "16th Hollywood Music in Media Awards (2025): Song/Score, Mobile Video Game (won)" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 231001368)", "quote": "the story (which is lovely and has great voice acting too)" },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "charming art and soundtrack" }
+      ], "note": "Graded from an award and review consensus, not listened. Music cited unprompted; SFX quality not evidenced." },
+      { "id": "onboarding", "score": 68, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 233281652)", "quote": "The game was fun at the start with good characters and i enjoyed it quite a bit" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 232568388)", "quote": "you get a lot of recruitment letters starting out" },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "broken tutorial locks player" }
+      ], "note": "Story-led first hours with AFK rewards from the start and generous early pulls; some tutorial lock reports." },
+      { "id": "pacing", "score": 32, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 233281652)", "quote": "around level 90 they started introducing wait times. It started at 6h ... now not even 20 levels later it's up to 14h wait" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 230546173)", "quote": "there's literally no gameplay remaining in this game, especially if you're not at least a mid level spender" },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "slow progression without spending" }
+      ], "note": "Timed level gates and spend walls after the first weeks; seasons (every four months) reset the climb." },
+      { "id": "depth", "score": 50, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 234471318)", "quote": "Frieren who is, frankly, absurdly overpowered compared to the rest of the roster" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 232568388)", "quote": "mainly only building the ones that will outlive meta shifts" }
+      ], "note": "Team comps and positioning, but a tier list and banner power dominate. Matches the 50 anchor." },
+      { "id": "respect", "score": 12, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://afk-journey.fandom.com/wiki/AFK_Stage", "quote": "Basic Duration 2h48; further +6h steps require 'Reach VIP Level 1 ... 20 to unlock'" },
+        { "source": "https://afk-journey.fandom.com/wiki/AFK_Stage", "quote": "purchase Instant AFK Attempts that grant 2 hours worth of AFK rewards instantly ... Diamond x50 / x100 / x200 / x300" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 234471318)", "quote": "most guilds worth being in expect you to be online and active on a daily basis" }
+      ], "note": "Offline cap starts under 3 h and grows with VIP (spend) level; diamond-bought instant AFK time; limited banners. Below the rubric's 50 anchor; the kill criterion applies." },
+      { "id": "juice", "score": 60, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 231982886)", "quote": "Visual art style and animations are top notch" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 235259512)", "quote": "This is a 'login, collect rewards, progress repeated each season' type of game" }
+      ], "note": "High-production pulls and skills, but daily reward claims blur big and small moments. Inferred." },
+      { "id": "polish", "score": 55, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "runs smoothly, is well-optimized ... Stuttering and lagging" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 235756440)", "quote": "I have to restart my game at least 3 times a day because of game breaking bugs." },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 230649949)", "quote": "Now it keeps crashing during the loading screen." }
+      ], "note": "Mobile build mature; the 2026 PC port has crash and pathing reports." },
+      { "id": "content", "score": 72, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://en.wikipedia.org/wiki/AFK_Journey", "quote": "A new season arrives every four months ... Eight seasons are listed" },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "Seasonal content with new mechanics ... some events recycled and tedious" }
+      ], "note": "Open world, story chapters, seasons with new mechanics; much of it gated by time and spend." },
+      { "id": "hook", "score": 55, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/4195600", "quote": "explore a beautifully illustrated storybook world ... strategic card battles" },
+        { "source": "https://store.steampowered.com/appreviews/4195600?json=1&filter=all&language=english (review 237299211)", "quote": "my previous AFK Arena obsession ... Honestly, I think this is an improvement." }
+      ], "note": "The storybook look sells it in one screenshot, but the pitch is an AFK Arena sequel in a crowded gacha genre." },
+      { "id": "access", "score": 70, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/4195600", "quote": "Windows; 15 languages, 5 with full audio" },
+        { "source": "https://en.wikipedia.org/wiki/AFK_Journey", "quote": "Platforms: Windows, Android, and iOS." },
+        { "source": "https://vaporlens.app/app/4195600/afk_journey", "quote": "very small text that cannot be resized" }
+      ], "note": "Broad platforms and localisation; unresizable small text on Steam Deck; cross-save not verified." }
+    ],
+    "learn": [
+      { "practice": "One distinctive art direction (stained-glass storybook) that reads in a single screenshot and earns praise even from detractors.", "evidence": "https://en.wikipedia.org/wiki/AFK_Journey — art inspired by 'the intricate look of church stained-glass,' with bold color blocks and distinct outlines", "dimension": "art" },
+      { "practice": "Show the offline reward limit and what is accumulating in an overview before the player returns (but never tie the cap to spend).", "evidence": "https://afk-journey.fandom.com/wiki/AFK_Stage — 'Passive AFK Reward limits ... can be previewed via either the AFK Rewards overview or Mystic Collection overview.'", "dimension": "ui" },
+      { "practice": "Score and music as identity: a soundtrack players cite unprompted lifts the whole package.", "evidence": "https://store.steampowered.com/appreviews/4195600 (review 236298825) — 'Super stunning art style, story, VA, and most especially, the music!'", "dimension": "audio" },
+      { "practice": "Anti-pattern: timed level gates layered on a short offline cap make an 'AFK' game demand attendance.", "evidence": "https://store.steampowered.com/appreviews/4195600 (review 234471318) — 'The irony of the title itself is almost false advertising at this point.'", "dimension": "pacing" }
+    ]
+  }
+}

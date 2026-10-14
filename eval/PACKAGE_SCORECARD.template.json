@@ -1,0 +1,35 @@
+{
+  "$comment": "Copy me per game, build and rater (eval/package/<game>.<build>.<rater>.json). Rubric: eval/PACKAGE_EVAL.md. Scores 0-100 on anchors 20/50/80; null = unassessed (audio for agent raters). mode: hands-on|telemetry|desk|mixed. confidence: high|medium|low. Every evidence item names a source (a URL, a file path, or 'observed: <what>'). Fun stays its own score: either keep the fun card's axes in this file (the scorer runs eval-fun on them) or set package.fun to {score, source}. Existing fun cards stay valid without a package block.",
+  "game": "Game name",
+  "build": "commit, version or date",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "who",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "hands-on | desk | mixed — one sentence on what was played or read",
+    "fun": { "score": null, "source": "fun card path, calibration card, or 'desk estimate'", "confidence": "low" },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      { "id": "art", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "motion", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "ui", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "audio", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "null = unassessed (agents cannot listen)" },
+      { "id": "onboarding", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "pacing", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "depth", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "respect", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "juice", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "polish", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "content", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "hook", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" },
+      { "id": "access", "score": null, "mode": "desk", "confidence": "low", "evidence": [], "note": "" }
+    ],
+    "learn": []
+  }
+}

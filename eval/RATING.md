@@ -1,5 +1,8 @@
 # Rating protocol — how a Idlever build gets a fun score that counts
 
+*Package layer (optional, same session and horizon): `eval/PACKAGE_EVAL.md`. Raters may add a `package`
+block to their card. Audio stays unassessed unless a human listened.*
+
 The coordinator's own card is a baseline, never a decision (`../eval-fun/docs/FRAMEWORK.md`
 §4: two independent raters on the same immutable build and horizon, Krippendorff α ≥ 0.67
 tentative, ≥ 0.80 decision). This file is the precommitted contract for a rating cohort.

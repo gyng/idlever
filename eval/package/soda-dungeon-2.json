@@ -1,0 +1,299 @@
+{
+  "game": "Soda Dungeon 2",
+  "build": "iOS 1.2.2 (2022-09-20); Steam store page read 2026-10-15 (released 2020-07-09)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-A",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only, not played: Steam store page and review API (English 3,130 reviews, 93% positive; 300 sampled), a Steam discussion thread on idling, the iOS App Store listing (IAP list), and one press review.",
+    "fun": {
+      "score": 52,
+      "source": "desk estimate: well below Loop Hero (74.0) and Melvor Idle (65.4) because it neither idles truly (no auto-restart, no real offline) nor offers deep active play, and late dimensions read as grind; clearly above the mediocre idle RPG card (30.8) on charm, party building and Soda Scripts",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 62,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 219826955] The pixel art is bright, expressive, and full of personality."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 193323001] Cluttered visuals"
+          }
+        ],
+        "note": "Charming, consistent pixel style; busy screens and clutter in the tavern/town."
+      },
+      {
+        "id": "motion",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 219826955] Animations and sound effects reinforce the game's playful tone"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 193323001] Busy animations"
+          }
+        ],
+        "note": "Rubric ~50 anchor (bouncy sprite attacks); hits register but read alike."
+      },
+      {
+        "id": "ui",
+        "score": 42,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 195495825] Menu controls suck, its like pulling teeth trying to buy upgrades or sodas. Feels like a mobile port"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 193323001] crushed under the weight of monotonous menus, excessive quests, and needless filler."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 73584624] many parts of the game that aren't properly explained and are confusing unless you look up a guide"
+          }
+        ],
+        "note": "Mobile-first menus feel clumsy on PC; guide dependence for systems."
+      },
+      {
+        "id": "audio",
+        "score": 58,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 217135061] super catchy music, and just so much charm"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 191059932] the default tavern music in this game isn't on the same planet as the original game's beat."
+          }
+        ],
+        "note": "Mixed review mentions; not listened to."
+      },
+      {
+        "id": "onboarding",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/946050/Soda_Dungeon_2/",
+            "quote": "Optional Auto-Combat"
+          },
+          {
+            "source": "https://mobilesyrup.com/2020/07/05/soda-dunegon-2-review/",
+            "quote": "accessible on-the-go game with turn-based combat and an auto-mode (search summary)"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 208903025] It went to the mobile tutorial"
+          }
+        ],
+        "note": "Core act (hire a party, descend) and the auto-combat toggle are available immediately; the first hour is clear but the tavern/town systems pile up. Thin evidence."
+      },
+      {
+        "id": "pacing",
+        "score": 40,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 191727146] the grind I did through the 8 later dimensions far out weight the fun of discovery I had in the first two"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 237080736] both times I get to around Dimension 3 and I'm like... done."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 218456075] late game is just a boring endless grind for items that takes from a few hrs up to days to spawn"
+          }
+        ],
+        "note": "Strong first one or two dimensions, then repetitive grind; the speed item (Magic Clock) gated behind ~30 h or money flattens the early arc."
+      },
+      {
+        "id": "depth",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 218004655] the soda scripts really take it to the next level."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 218456075] most of items and skills are useless"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 208203838] If you expect any sort of mechanical depth, look elsewhere."
+          }
+        ],
+        "note": "Party composition plus Soda Scripts is a real configuration layer (rubric anchor 80), but reviewers report many useless items/skills and a shallow core. Graded below anchor."
+      },
+      {
+        "id": "respect",
+        "score": 40,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://apps.apple.com/us/app/soda-dungeon-2/id1454882086",
+            "quote": "No Ads Bundle: $5.99 ... Magic Clock Bundle: $4.99 ... 1100 Caps: $9.99"
+          },
+          {
+            "source": "https://steamcommunity.com/app/946050/discussions/0/3463848715776669640/",
+            "quote": "The credits will only let you re-run cleared levels."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 191059932] you would have to pay or cheat to get the magic clock within the first 30 something hours of playing"
+          }
+        ],
+        "note": "Free with ads, caps packs and a paid Magic Clock speed-up; no true offline (battle credits replay cleared floors only), no auto-restart, a party wipe ends the idle run (prior research). Store says everything is earnable in-game, so the clock is acceleration earnable later rather than a strict paid skip of a created wait; kill flag left false but this is borderline."
+      },
+      {
+        "id": "juice",
+        "score": 58,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 219826955] making even routine fights and item pickups feel lively"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 198597278] auto-battle dopamine"
+          }
+        ],
+        "note": "Lively but uniform feedback; big and small moments look similar. Inference."
+      },
+      {
+        "id": "polish",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 191727146] If the game closed unexpectedly while running, your save is wiped. Everything."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 205088666] Yeah lets release an update that ruins your save file!"
+          },
+          {
+            "source": "https://apps.apple.com/us/app/soda-dungeon-2/id1454882086",
+            "quote": "Latest version: 1.2.2, released 09/20/2022"
+          }
+        ],
+        "note": "Generally stable and praised as polished by fans, but save-wipe reports on crash/update and no update since 2022. Reports are individual, not shown systemic, so the kill flag stays false."
+      },
+      {
+        "id": "content",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 191727146] the grind I did through the 8 later dimensions"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 199605714] A decent idler, but very lacking in endgame content."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 196312143] 267 hours in the game"
+          }
+        ],
+        "note": "Rubric ~50 anchor: about ten dimensions, many classes, town/crafting; long but repetitive, thin endgame."
+      },
+      {
+        "id": "hook",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/946050/Soda_Dungeon_2/",
+            "quote": "laid-back dungeon crawler"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 231302636] It's incredibly similar to the first one"
+          }
+        ],
+        "note": "Clear genre pitch (soda-fuelled party dungeon crawl with optional auto-combat) with charm, but not distinctive from its own predecessor."
+      },
+      {
+        "id": "access",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/946050/Soda_Dungeon_2/",
+            "quote": "Play on your mobile phone, tablet, or Steam ... shared save file"
+          },
+          {
+            "source": "https://store.steampowered.com/app/946050/Soda_Dungeon_2/",
+            "quote": "9 supported languages"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 192184609] Lied about controller support"
+          }
+        ],
+        "note": "iOS, Android, Windows, Mac with cross-device save; 9 languages on Steam but iOS listing English only; no documented accessibility settings."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Without automatic restart an idle dungeon becomes a chore; Soda Dungeon 2's top idle complaint. Auto-resend after death/return must be the default once earned.",
+        "evidence": "https://steamcommunity.com/app/946050/discussions/0/3463848715776669640/ This game needs attention every few minutes. ... If the dungeons don't restart then this is not idle.",
+        "dimension": "respect"
+      },
+      {
+        "practice": "Party AI scripts give a configuration ceiling players love even in a light game; expose rule bundles as editable scripts late, with clear teaching.",
+        "evidence": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100 [rec 217593504] While it's confusing to figure out at first, the power of scripts in this game should not be underestimated",
+        "dimension": "depth"
+      },
+      {
+        "practice": "Never sell the speed the game deliberately withholds; the paid Magic Clock is the most cited reason for distrust.",
+        "evidence": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100 [rec 195587680] I'd rather pay for a quality game, then have gameplay \"purposely be slow\", to promote microtansaction skips",
+        "dimension": "respect"
+      },
+      {
+        "practice": "Save robustly: write-then-swap with backups; a save wipe on unexpected close ends an idle game's relationship with the player.",
+        "evidence": "https://store.steampowered.com/appreviews/946050?json=1&filter=all&language=english&num_per_page=100 [rec 191727146] If the game closed unexpectedly while running, your save is wiped. Everything.",
+        "dimension": "polish"
+      }
+    ]
+  }
+}

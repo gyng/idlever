@@ -1,0 +1,312 @@
+{
+  "$comment": "Desk grade (store pages, Steam review API quotes, press, aggregators). NOT hands-on play; no claim of having played or listened.",
+  "game": "Rusty's Retirement",
+  "build": "1.1.6 (Steam, 2025-10-06)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-D",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store page/appdetails, Steam review API (352 English reviews sampled, negative-heavy by design; all-language 14415/14907 positive), Steam news, Wikipedia (Metacritic 81, sales), Siliconera review and vaporlens aggregate; not played.",
+    "fun": {
+      "score": 55,
+      "source": "desk estimate: superb aesthetic and identity, but thin decisions and a waiting-heavy late game ('end game in 2 days'); the fun eval rewards decisions/expression so it lands below Melvor (65.4) and far below Cookie Clicker (75.5) despite 97% positive.",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 80,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/",
+            "quote": "Everything on the farm is colorful, distinct, and full of character."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 234003134; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "The pixel art is wonderful, and the animations are really nice on top of it."
+          },
+          {
+            "source": "https://vaporlens.app/app/2666510/rustys_retirement.md",
+            "quote": "The pixel art style is well-executed and fits the game's theme."
+          }
+        ],
+        "note": "Rubric anchor (~80) confirmed; no register clash reported."
+      },
+      {
+        "id": "motion",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 234003134; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "the animations are really nice"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 237543417; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "Watching your little farmers tend to their crops, harvest produce"
+          }
+        ],
+        "note": "Characterful bot loops; no combat to stress-test."
+      },
+      {
+        "id": "ui",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://vaporlens.app/app/2666510/rustys_retirement.md",
+            "quote": "there is no grid display when placing buildings"
+          },
+          {
+            "source": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/",
+            "quote": "the game is near unplayable once zoomed out"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 214315064; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "No tutorial. Drops you into game with almost no details what anything does"
+          }
+        ],
+        "note": "Glanceable strip works, but placement/move UX and missing help criticised. 15 below its ~80 anchor: flag the anchor text for review."
+      },
+      {
+        "id": "audio",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/",
+            "quote": "really chill, ambient music"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 236293367; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "the art is lovely, so's the music + sfx"
+          },
+          {
+            "source": "https://vaporlens.app/app/2666510/rustys_retirement.md",
+            "quote": "Some reviewers found the soundtrack repetitive during extended play sessions."
+          }
+        ],
+        "note": "From review consensus only; never listened."
+      },
+      {
+        "id": "onboarding",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 163885525; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "you are greeted with nothing. No tutorial"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 237011511; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "Game needs a bit more attention at the beginning, but once you get auto-planting and robots the game plays itself"
+          },
+          {
+            "source": "https://www.ofzenandcomputing.com/rustys-retirement-guide",
+            "quote": "first bot inside the first hour (cited in docs/research/PROGRESSION_COMPETITORS_2026-10.md)"
+          }
+        ],
+        "note": "Core act in a minute and first bot within the hour, but no guidance."
+      },
+      {
+        "id": "pacing",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 198830747; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "how did i get to \"end game\" progression in 2 days, now im just waiting for crops"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 197826880; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "A vast majority of the time is just waiting for the next crop to unlock."
+          },
+          {
+            "source": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/",
+            "quote": "I couldn't help but get just a bit bored once I unlocked everything."
+          }
+        ],
+        "note": "Rubric anchor (~20) confirmed."
+      },
+      {
+        "id": "depth",
+        "score": 35,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 204599728; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "there is too little content. No depth at all."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 237543417; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "there's actually a respectable amount of depth hiding underneath all that charm"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 218817343; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "Playing on new maps will not go any faster, or easier"
+          }
+        ],
+        "note": "Layout and crop-efficiency choices; no meta progression."
+      },
+      {
+        "id": "respect",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2666510/",
+            "quote": "$6.99 one price; optional Supporter Pack $3.99"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 186066057; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "No offline progression at all."
+          },
+          {
+            "source": "https://store.steampowered.com/app/2666510/",
+            "quote": "turn on 'Focus Mode' which slows down crop production"
+          }
+        ],
+        "note": "Fair price, nothing nags or sold; but zero offline progress (runs only while open)."
+      },
+      {
+        "id": "juice",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 232015902; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "The art is cute, and the growth is satisfying"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 236690049; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "how satisfying the progression feels"
+          }
+        ],
+        "note": "Quiet by design; satisfaction from watching growth."
+      },
+      {
+        "id": "polish",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 165018163; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "save corrupted after a crash, 25 hours of progress lost"
+          },
+          {
+            "source": "https://vaporlens.app/app/2666510/rustys_retirement.md",
+            "quote": "high CPU and GPU usage, even when the game is running in the background"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 231545949; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "Pros: Bug free.  Cons: CPU usage."
+          }
+        ],
+        "note": "Several save-loss reports and resource-use complaints; kill not set (anecdotal, not reproduced)."
+      },
+      {
+        "id": "content",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 166818660; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "over a couple of days and 4 or 5 hours of active playtime at most, you've done everything"
+          },
+          {
+            "source": "https://gg.deals/game/rustys-retirement/",
+            "quote": "On average it takes 30 hours to finish the main story."
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2666510",
+            "quote": "Autumn mini-update: new autumn-themed map; Balatro and Vampire Survivors maps in 2025"
+          }
+        ],
+        "note": "Rubric anchor (~50); new farms offer little unique content."
+      },
+      {
+        "id": "hook",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2666510/",
+            "quote": "A relaxing idle-farming simulator that sits at the bottom of your screen while you do other things."
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Rusty%27s_Retirement",
+            "quote": "Rock Paper Shotgun said the desktop overlay 'made the game addictive'; 550,000 sold by July 2025"
+          },
+          {
+            "source": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/",
+            "quote": "runs at the bottom or side of the screen while you work"
+          }
+        ],
+        "note": "Above 80: matches the Loop Hero hook benchmark; lapse check: no review disputes the pitch, only its depth."
+      },
+      {
+        "id": "access",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2666510/",
+            "quote": "Windows and macOS; 11 languages"
+          },
+          {
+            "source": "https://store.steampowered.com/app/2666510/",
+            "quote": "Vertical mode ... Zoom in or out ... Twitch Integration"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2666510/reviews (recommendation 224265278; via store.steampowered.com/appreviews/2666510?json=1)",
+            "quote": "Linux and Steam Deck users beware: requires special Wine/Proton configuration"
+          }
+        ],
+        "note": "Two desktop platforms, good localisation, no phone/web, no controller."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Design for the glance: a persistent, low-attention view (bottom strip / vertical mode, Focus Mode) that rewards a two-second look; Idlever's watch screen could offer a compact always-on strip.",
+        "evidence": "https://store.steampowered.com/app/2666510/ — 'sits at the bottom of your screen while you do other things'",
+        "dimension": "hook"
+      },
+      {
+        "practice": "Make the automation itself visible and cute: named little workers doing the chores on screen sells delegation better than a number.",
+        "evidence": "https://www.siliconera.com/review-rustys-retirement-offers-a-calming-and-simplistic-respite/ — 'Everything on the farm is colorful, distinct, and full of character.'",
+        "dimension": "art"
+      },
+      {
+        "practice": "Avoid Rusty's lapse: once everything is unlocked there is only waiting; keep a named next goal past day 2.",
+        "evidence": "https://steamcommunity.com/app/2666510/reviews (recommendation 198830747; via store.steampowered.com/appreviews/2666510?json=1) — 'end game progression in 2 days, now im just waiting'",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Free seasonal/crossover map drops that re-skin the familiar loop bring players back cheaply.",
+        "evidence": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2666510 — 'Rusty's Retirement x Vampire Survivors!' and 'x Balatro!' updates",
+        "dimension": "content"
+      }
+    ]
+  }
+}

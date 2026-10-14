@@ -1,0 +1,303 @@
+{
+  "$comment": "Desk grade (store pages, Steam review API quotes, press, aggregators). NOT hands-on play; no claim of having played or listened.",
+  "game": "Dark Hunting Ground",
+  "build": "1.6.8 (Steam, 2026-07-01); 1.0 on 2025-09-06",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-D",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store page/appdetails and DLC listings, Steam review API (165 English reviews sampled, all-language 767/830 positive), Steam news, vaporlens aggregate and a TrendingNow review via search snippet; not played.",
+    "fun": {
+      "score": 52,
+      "source": "desk estimate: a compact action ARPG that turns idle only mid-late (5-10 h); strong build-making but a reported wall after level 50 and a cluttered UI; below Melvor (65.4), well above a mediocre idle RPG (30.8). Median positive reviewer ~25 h.",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 178630900; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "The pixel art is pretty good while being minimalist"
+          },
+          {
+            "source": "https://vaporlens.app/app/2494810/dark_hunting_ground.md",
+            "quote": "The game's pixel art style is noted as simple, novel, and charming"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 204452407; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "While the graphics may not be groundbreaking"
+          }
+        ],
+        "note": "Coherent minimalist pixel art on a grey platform; readable, not a screenshot-seller."
+      },
+      {
+        "id": "motion",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 204452407; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "The clear, crisp animations make combat easy to follow, even during hectic moments"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 178732421; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "a black void surrounding a grey platform and alot of bright flashing for skills"
+          }
+        ],
+        "note": "Real-time action animation; some eye-strain reports."
+      },
+      {
+        "id": "ui",
+        "score": 40,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://vaporlens.app/app/2494810/dark_hunting_ground.md",
+            "quote": "The user interface is described as horrible, cluttered, and not user-friendly"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 228207061; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "There are a lot of missing tooltips like that."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 188329424; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "the translation is sometimes really bad and leaves you completely unable to figure out what something does"
+          }
+        ],
+        "note": "Loot filter and build presets praised, but stats hidden and translation poor."
+      },
+      {
+        "id": "audio",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 222275265; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "the lobby music is super chill and i love it"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 178630900; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "I do wish there was more/different music."
+          },
+          {
+            "source": "https://store.steampowered.com/app/3327050/",
+            "quote": "All background music of Dark Hunting Ground, a total of 8 songs."
+          }
+        ],
+        "note": "From review consensus only; never listened."
+      },
+      {
+        "id": "onboarding",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 184802325; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "The tutorial is pretty well done, it may seem daunting at first"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 232799178; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Game is really front heavy with the mechanics and a lot of reading"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 233837364; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "an rpg that you can automate later on (like 5-10h deep"
+          }
+        ],
+        "note": "Core act instant and auto-pickup from the start, but idle automation arrives hours in."
+      },
+      {
+        "id": "pacing",
+        "score": 40,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 203816508; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "It starts off really strong ... then it slogs down to an absolute standstill crawl"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 228207061; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Eventually that all comes crashing to a halt when you hit level 50."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 234243250; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Things unlock basically every step of the way until endgame"
+          }
+        ],
+        "note": "Consistent 'strong start, grind wall at level 50 / third tier' across reviews and aggregator."
+      },
+      {
+        "id": "depth",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "Every skill can be socketed with 7 Slates, drastically reshaping its form and effect."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 190657922; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Build-making is extremely satisfying."
+          },
+          {
+            "source": "https://vaporlens.app/app/2494810/dark_hunting_ground.md",
+            "quote": "Players are restricted by the ability to only set three skills"
+          }
+        ],
+        "note": "Six archetypes, slates, relics, Abyssal Eyes, custom hunting grounds; '3 skills' cap and stat-stacking late."
+      },
+      {
+        "id": "respect",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "$12.99; DLC: Druid Class Pack $4.99, Skin Supporter Pack $4.99, Soundtrack $1.99"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 234243250; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "You can also afk farm mats for crafting if you want to"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 203953199; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "my PC save from the Demo ... does not sync in the cloud like it says"
+          }
+        ],
+        "note": "No paid skips; AFK farming only while running (no offline sim found); a paid class DLC."
+      },
+      {
+        "id": "juice",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 178732421; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "alot of bright flashing for skills"
+          },
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "skip reward screens, and adjust skill effect transparency"
+          }
+        ],
+        "note": "Loot rain and skill flash; inferred from store and reviews."
+      },
+      {
+        "id": "polish",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://vaporlens.app/app/2494810/dark_hunting_ground.md",
+            "quote": "The game suffers from significant lag, especially in the late game"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 214680298; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "cant have a single session without atleast 1 blue screen crash"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2494810",
+            "quote": "BUG FIX 1.6.4: Fixed a bug that could cause save files to malfunction"
+          }
+        ],
+        "note": "Lag, crashes and a save bug patched; kill not set (reports not a reproduced pattern)."
+      },
+      {
+        "id": "content",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 234243250; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Theres only 5 bosses, but they also get more attacks the more you progress"
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 178765680; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "if you played the Demo you've seen all of the game"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=2494810",
+            "quote": "1.6.5 UPDATES: Torment Difficulty and Druid DLC"
+          }
+        ],
+        "note": "Endless Abyss and difficulty tiers; small boss roster, repeating arenas."
+      },
+      {
+        "id": "hook",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "A minimalist pixel-action RPG built around loot and power."
+          },
+          {
+            "source": "https://steamcommunity.com/app/2494810/reviews (recommendation 187864731; via store.steampowered.com/appreviews/2494810?json=1)",
+            "quote": "Incremental/idle POE? with Torchlight infinite corruption mechanics?"
+          }
+        ],
+        "note": "Rubric anchor (~50): 'pocket PoE that automates'."
+      },
+      {
+        "id": "access",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "Windows and macOS; 9 languages incl. Simplified Chinese, English, French, Japanese, Korean"
+          },
+          {
+            "source": "https://store.steampowered.com/app/2494810/",
+            "quote": "Customize keybinds, skip reward screens, and adjust skill effect transparency"
+          },
+          {
+            "source": "https://vaporlens.app/app/2494810/dark_hunting_ground.md",
+            "quote": "The game currently lacks proper controller support"
+          }
+        ],
+        "note": "Two platforms, many (poorly translated) languages, some options."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Make automation a build component (an auto-cast Slate socketed into a skill), so going idle is itself a build decision.",
+        "evidence": "https://store.steampowered.com/app/2494810/ — 'Go from hands-on farming to fully automated looting as you refine your systems'",
+        "dimension": "depth"
+      },
+      {
+        "practice": "Unlock a new system at each difficulty tier (talents, Dark Tree, Chaos Atlas) and name it, then avoid DHG's lapse of letting unlocks stop at the wall.",
+        "evidence": "https://steamcommunity.com/app/2494810/reviews (recommendation 234243250; via store.steampowered.com/appreviews/2494810?json=1) — 'Things unlock basically every step of the way until endgame'",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Offer build presets and a training dummy so players can test a rule set safely before a run.",
+        "evidence": "https://steamcommunity.com/app/2494810/reviews (recommendation 234243250; via store.steampowered.com/appreviews/2494810?json=1) — 'free respecs, build presets, solid lootfilter, training dummy'",
+        "dimension": "ui"
+      }
+    ]
+  }
+}

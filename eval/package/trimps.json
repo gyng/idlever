@@ -1,0 +1,290 @@
+{
+  "game": "Trimps",
+  "build": "Patch 5.10.0 (2025-02-09; latest Steam announcement seen)",
+  "genre": "idler",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-C",
+  "package": {
+    "preset": "incremental-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store/appdetails, 458 English Steam reviews via the review API, Steam news, the Trimps fandom wiki (Settings, Bone Trader) and prior repo research; not played.",
+    "fun": {
+      "score": 55,
+      "confidence": "low",
+      "source": "desk estimate: a deep, beloved text incremental (90.4% of 1,282 English reviews positive) but reviews stress \"suuuper slow\" arithmetic progress and a bare text presentation; below NGU (58) and well below Cookie Clicker 75.5 on feel/aesthetic, above Progress Quest 28.5 on decisions."
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 15,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "Trimps is a text-based idle/incremental game"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197993175089/recommended/1877960/",
+            "quote": "Graphics suck."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199817855802/recommended/1877960/",
+            "quote": "It is definitely not something we would play for the graphics."
+          }
+        ],
+        "note": "Rubric anchor (~20)."
+      },
+      {
+        "id": "motion",
+        "score": 15,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://trimps.fandom.com/wiki/Settings",
+            "quote": "Toggle on or off the building queue blue color animation."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199185425347/recommended/1877960/",
+            "quote": "The text-based presentation is functional but visually bare"
+          }
+        ],
+        "note": "Coloured grid cells and a queue tint are the only motion."
+      },
+      {
+        "id": "ui",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198280545970/recommended/1877960/",
+            "quote": "if the ui looks intimidating, trust me that everything is tutorialised super well and introduced gradually"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199461581032/recommended/1877960/",
+            "quote": "looks very boring and confusing, but its actually easy to learn"
+          },
+          {
+            "source": "https://trimps.fandom.com/wiki/Settings",
+            "quote": "Swap between Standard Formatting (12.7M, 540B), Engineering Notation ... Scientific Notation"
+          }
+        ],
+        "note": "Dense but progressively revealed; many display settings."
+      },
+      {
+        "id": "audio",
+        "score": 15,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1877960?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "No review among 458 English reviews mentions music or sound (inference from a text game; not listened)"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "id": "onboarding",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "Brand new tutorial! After researching your first point of Science, ADVISOR will help guide you"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199185425347/recommended/1877960/",
+            "quote": "the lack of a proper tutorial means new players must decipher the systems on their own"
+          },
+          {
+            "source": "https://trimps.fandom.com/wiki/NewPlayerGuide(Truth)",
+            "quote": "AutoFight from the Bloodlust drop at Z1 cell 10 (prior research: under 10 min)"
+          }
+        ],
+        "note": "Rubric anchor (~50): AutoFight in minutes, but terse; reviewers disagree on the tutorial."
+      },
+      {
+        "id": "pacing",
+        "score": 48,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198045411208/recommended/1877960/",
+            "quote": "the grind takes FOREVER"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198084234062/recommended/1877960/",
+            "quote": "Game progress is suuuper slow."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198011743867/recommended/1877960/",
+            "quote": "Progression each loop is relatively minimal at first, but I promise there are plenty of surprises"
+          }
+        ],
+        "note": "Surprises over months, but each portal is a small step and early automation is slow to arrive. No ending for a casual player."
+      },
+      {
+        "id": "depth",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "Over 50 different Challenges that tweak the Universe in different ways"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199185425347/recommended/1877960/",
+            "quote": "the real strategic weight sits in how you allocate your population"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198011743867/recommended/1877960/",
+            "quote": "others set up scripts to autoreset many times per day"
+          }
+        ],
+        "note": "Challenges change the best build; heirlooms/perks/universes; an expert layer via fan scripts. Lapse: perk/challenge gains feel \"10-20%\" arithmetic to one reviewer."
+      },
+      {
+        "id": "respect",
+        "score": 78,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198014670624/recommended/1877960/",
+            "quote": "It's free, and it STAYS free, like not one of the \"oh it's free but pay money to get ahead\" games"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198157452747/recommended/1877960/",
+            "quote": "a slight advantage to going offline … not enough that being actively online feels like a waste"
+          },
+          {
+            "source": "https://trimps.fandom.com/wiki/Bone_Trader",
+            "quote": "'''Bone Trader''' is a premium shop ... Portal: Automatically gain Helium ... equal to ... your best run"
+          }
+        ],
+        "note": "Rubric anchor (~80). Time Warp simulates offline (24 h full, resources beyond). Lapse: Bones are also sold, and the Bone Portal buys a whole run of Helium; bones also drop free in zones, and reviewers call it tipping."
+      },
+      {
+        "id": "juice",
+        "score": 15,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198367471798/recommended/1877960/",
+            "quote": "Instead of relying on flashy graphics or constant manual interaction, the game focuses on resource management"
+          }
+        ],
+        "note": ""
+      },
+      {
+        "id": "polish",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561197981137189/recommended/1877960/",
+            "quote": "glad it made it to steam with more stable save system"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198014670624/recommended/1877960/",
+            "quote": "I only closed it when it crashes randomly sometimes out of the blue"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1877960",
+            "quote": "Patch 5.10.0 (2025-02-09) after ~7 years of updates"
+          }
+        ],
+        "note": "Long-lived, saves port across web and Steam; occasional crash reports."
+      },
+      {
+        "id": "content",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "Nearly 400 achievements ... Two different Universes to explore, mini games, a \"pet\" to level up"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198045411208/recommended/1877960/",
+            "quote": "It's going to take years."
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1877960",
+            "quote": "Universe 2: There is now a 1000 cell Mega-Spire at Z300"
+          }
+        ],
+        "note": "Years of distinct systems; no ending."
+      },
+      {
+        "id": "hook",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "everything you love about your favorite games, distilled to their purest form"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198014670624/recommended/1877960/",
+            "quote": "basically a living and evolving excel spread sheet"
+          }
+        ],
+        "note": "Clear \"text incremental with lots of automation\" pitch; not distinctive from a screenshot."
+      },
+      {
+        "id": "access",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1877960",
+            "quote": "platforms: Windows only on Steam; supported_languages: 'English'; categories include Steam Cloud"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199556109102/recommended/1877960/",
+            "quote": "I used to play Trimps in a browser at work ... I exported my game"
+          },
+          {
+            "source": "https://trimps.fandom.com/wiki/Settings",
+            "quote": "Switches between the default Trimps theme, a custom dark theme ... a gradient theme"
+          }
+        ],
+        "note": "Web plus Steam, save export, themes and notations; English only; no mobile app."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Tie automation unlocks to feats the player performs (AutoStorage from clearing a void map at Z20+), so automation feels earned and teaches the system it automates.",
+        "evidence": "https://trimps.fandom.com/wiki/NewPlayerGuide(Truth) (prior research: \"AutoStorage when you clear a void map at Z20 or above\")",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Make offline slightly better than babysitting but never punishing, and say so: Time Warp simulates absence fully.",
+        "evidence": "https://steamcommunity.com/profiles/76561198157452747/recommended/1877960/ \"a slight advantage to going offline … not enough that being actively online feels like a waste\"",
+        "dimension": "respect"
+      },
+      {
+        "practice": "Use challenges that each twist one rule of the universe to make the best build change wall to wall (a model for stance/tactic restrictions per dungeon depth).",
+        "evidence": "https://store.steampowered.com/api/appdetails?appids=1877960 \"Over 50 different Challenges that tweak the Universe in different ways\"",
+        "dimension": "depth"
+      }
+    ]
+  }
+}

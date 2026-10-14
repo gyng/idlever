@@ -1,0 +1,275 @@
+{
+  "game": "Increlution",
+  "build": "Early Access; last update \"Small maintenance update\" 2023-07-06 (chapters 10-11 on 2023-01-20)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-C",
+  "package": {
+    "preset": "incremental-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store/appdetails, 441 English Steam reviews via the review API, Steam news, a Steam discussion thread and prior repo research; not played.",
+    "fun": {
+      "score": 62,
+      "confidence": "low",
+      "source": "desk estimate: praised pacing and clean queue planning (85.1% of 1,043 English reviews positive), but negative reviews cite repetition, few decisions and 20-30 min check-ins; below Loop Hero 74.0 and near Melvor 65.4 on idle-hybrid; promising band."
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1593350",
+            "quote": "Increlution is a minimalistic incremental game about time management"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198042171166/recommended/1593350/",
+            "quote": "The graphics are very clean and the story is captivating"
+          }
+        ],
+        "note": "Clean text-and-icon UI; no illustrations (one reviewer asks for them)."
+      },
+      {
+        "id": "motion",
+        "score": 20,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198934151557/recommended/1593350/",
+            "quote": "watching bars fill up and repeat"
+          }
+        ],
+        "note": "Progress bars only."
+      },
+      {
+        "id": "ui",
+        "score": 72,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198003437154/recommended/1593350/",
+            "quote": "the user interface is extremely clean and surprisingly powerful"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561199229640282/recommended/1593350/",
+            "quote": "Balanced, clear UI"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197968355365/recommended/1593350/",
+            "quote": "Simple intuitive user interface and automation system."
+          }
+        ],
+        "note": "Three agreeing reviews; the post-death screen shows progress clearly."
+      },
+      {
+        "id": "audio",
+        "score": 20,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198019119286/recommended/1593350/",
+            "quote": "the game has the option to make a sound to tell you to come back when it needs you"
+          }
+        ],
+        "note": "Only a notification sound is mentioned; not listened."
+      },
+      {
+        "id": "onboarding",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1593350",
+            "quote": "Using the step-by-step queue system, you can plan exactly what you want to happen and the game will automatically follow your orders."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1593350/discussions/0/3182361055553674146",
+            "quote": "players asked for automation \"after 1 or 2 completions rather than 10\" (prior research)"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198137309709/recommended/1593350/",
+            "quote": "Start a run, wait a bit (15m+) - Click a button or two, wait a minute"
+          }
+        ],
+        "note": "Core act in minute one and a death/reset within ~30 min, but per-action automation takes 10 completions (later lowered for some)."
+      },
+      {
+        "id": "pacing",
+        "score": 68,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198328597080/recommended/1593350/",
+            "quote": "the pacing is perfect. There was never a run where I didn't feel like the tension was absolutely dialed in."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197970776980/recommended/1593350/",
+            "quote": "Beyond the first chapter, the game is pure repetition with increasingly longer time increments"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197982404789/recommended/1593350/",
+            "quote": "Do this 500 times before it can be automated"
+          }
+        ],
+        "note": "Rubric anchor is ~80; desk evidence is split, so 68 (within the 15-point tolerance). No ending: the story stops at chapter 11 for a ~220-250 h playthrough."
+      },
+      {
+        "id": "depth",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198023131329/recommended/1593350/",
+            "quote": "you also get to decide the order of doing things in depth opening up for a lot of min maxing"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198030816293/recommended/1593350/",
+            "quote": "There is a tiny sprinkle of strategy and 'builds' as you get near the end"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197970776980/recommended/1593350/",
+            "quote": "There are few, if any, real decisions to make."
+          }
+        ],
+        "note": "Queue order is the build; one optimal route per chapter."
+      },
+      {
+        "id": "respect",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1593350",
+            "quote": "price S$4.25 (one purchase); no DLC; not free to play"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198046192861/recommended/1593350/",
+            "quote": "There are no microtransactions or any of the other nonsense that plagues the genre"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198934151557/recommended/1593350/",
+            "quote": "There is basically no offline progress since you need to come back every 20-30 minutes"
+          }
+        ],
+        "note": "One fair price, no IAP; but the queue pauses when empty, so absence earns nothing after a life ends."
+      },
+      {
+        "id": "juice",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198351855286/recommended/1593350/",
+            "quote": "You get to slowly watch as things that originally take 20 minutes slowly take less and less time"
+          }
+        ],
+        "note": "Speed-up across lives is the payoff; little audiovisual feedback."
+      },
+      {
+        "id": "polish",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561197968355365/recommended/1593350/",
+            "quote": "Zero bugs."
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1593350",
+            "quote": "Small maintenance update (2023-07-06): render-buffer fix after minimizing on some Windows systems"
+          }
+        ],
+        "note": "Stable; but an Early Access build without updates since 2023."
+      },
+      {
+        "id": "content",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198030816293/recommended/1593350/",
+            "quote": "near the end of the 220-250 hour game"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198005869901/recommended/1593350/",
+            "quote": "Game is terminally in EA ... the story is incomplete and probably will never be finished."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198402002856/recommended/1593350/",
+            "quote": "4+ years since update, it's obvious it is no longer being worked on"
+          }
+        ],
+        "note": "A long but repetitive 11-chapter story without an ending; development stalled."
+      },
+      {
+        "id": "hook",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1593350",
+            "quote": "takes inspiration from roguelite games ... Every generation has a better chance at survival"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197972308098/recommended/1593350/",
+            "quote": "an actually unique one versus the cookie cutter ones"
+          }
+        ],
+        "note": "A legible, distinctive pitch (life-as-a-run incremental); the screenshot is text."
+      },
+      {
+        "id": "access",
+        "score": 40,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1593350",
+            "quote": "platforms: Windows, Mac, Linux; supported_languages: 'English'; categories: Steam Cloud"
+          }
+        ],
+        "note": "Steam only (three desktop OSes, cloud save); no web or mobile; English only."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Show per-run improvement against the previous life at each stage, so every death reads as progress.",
+        "evidence": "https://steamcommunity.com/profiles/76561198023131329/recommended/1593350/ \"you get to see howmuch seconds you were faster then last run at each stage\"",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "A post-death screen plus an exploration tracker that make cross-run progress undeniable (maps directly to Idlever's death screen and report).",
+        "evidence": "https://steamcommunity.com/profiles/76561198042171166/recommended/1593350/ \"The post-death screen and exploration tracker provide clear evidence that you continue to progress each iteration\"",
+        "dimension": "ui"
+      },
+      {
+        "practice": "Do not make offline stop at an unautomated chore: Increlution's pause-when-empty queue is the most-cited respect complaint; keep offline uncapped after the scout.",
+        "evidence": "https://steamcommunity.com/profiles/76561198934151557/recommended/1593350/ \"There is basically no offline progress since you need to come back every 20-30 minutes\"",
+        "dimension": "respect"
+      },
+      {
+        "practice": "Ship an ending, or the long tail sours: abandoned Early Access with an unfinished story is the core of the negative reviews.",
+        "evidence": "https://steamcommunity.com/profiles/76561198005869901/recommended/1593350/ \"the story is incomplete and probably will never be finished\"",
+        "dimension": "content"
+      }
+    ]
+  }
+}

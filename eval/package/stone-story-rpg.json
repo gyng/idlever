@@ -1,0 +1,315 @@
+{
+  "game": "Stone Story RPG",
+  "build": "Steam full release 1.x (2023-07-26), store page read 2026-10-15; iOS 4.33.0",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-A",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only, not played: Steam store page and review API (English 397 reviews, 91% positive; 300 sampled), official FAQ, Wikipedia, iOS App Store listing.",
+    "fun": {
+      "score": 66,
+      "source": "desk estimate: below Loop Hero (74.0; similar auto-walk hero, stronger feel/aesthetic, but slow opening, waiting-heavy late game and scripting gated at 6-8 h) and at or slightly above Melvor Idle (65.4) for a deeper expert layer; well above the mediocre idle RPG card (30.8)",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 231020016] The ASCII art is beautiful and super lively"
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Stone_Story_RPG",
+            "quote": "nominated for Excellence in Visual Art at the Independent Games Festival in 2020."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 113009868] Great ascii style game"
+          }
+        ],
+        "note": "Benchmark Loop Hero matched: one register (animated ASCII for world, UI and portraits), recognisable from one screenshot. No register clash noted in reviews."
+      },
+      {
+        "id": "motion",
+        "score": 82,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://en.wikipedia.org/wiki/Stone_Story_RPG",
+            "quote": "the ASCII art was created frame-by-frame as text and rendered in-engine using custom shaders."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 128235244] makes the most of its art style with little animation flourishes"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 90885090] like disabling lots of animations you have to s[it through]"
+          }
+        ],
+        "note": "Rubric ~80 anchor; hand-animated frames praised by independent reviewers. Lapse: some long, unskippable animations (chest opening) read as time-wasting."
+      },
+      {
+        "id": "ui",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 78690372] The UI is also pointlessly time-wasting and frustrating. The number of clicks you need to do to re-forge"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 158324972] the game throws a whole scripting language at you once you unlock it, without much of a tutorial"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 150652435] All of its art and menus are made from ascii art"
+          }
+        ],
+        "note": "Charming and coherent ASCII menus, but crafting/forging is click-heavy and Stonescript relies on external docs."
+      },
+      {
+        "id": "audio",
+        "score": 80,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 102802421] a banger of a soundtrack"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 151747053] Bosses and areas hold absolute bangers every single time!"
+          },
+          {
+            "source": "https://store.steampowered.com/app/603390/Stone_Story_RPG/",
+            "quote": "Stunning ASCII animation and gorgeous music."
+          }
+        ],
+        "note": "Review consensus and the store's own claim; not listened to. Rubric ~80 anchor."
+      },
+      {
+        "id": "onboarding",
+        "score": 35,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "Stonescript is an optional, late-game addition that unlocks when you find the Mind Stone."
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "The main storyline takes about 6-8 hours."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 117479646] Frustrating at times when I want it to just hurry up"
+          }
+        ],
+        "note": "Hero walks on his own from minute one and choices are few (loadout, location), so the core act is immediate; but the defining automation layer arrives after the 6-8 h story and the early loop is slow. Rubric anchors it at ~20 on the scripting gate alone; graded 35 because the auto-walk core is clear at once."
+      },
+      {
+        "id": "pacing",
+        "score": 48,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 231020016] a lot of the game is actually about waiting for a long time to get your rewards"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 129464427] Gameplay loop is quite simple at the beginning and very slowly things get complex."
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "It takes a few days to play through all the Legend quests."
+          }
+        ],
+        "note": "Story ends at 6-8 h for a casual player, Legend quests run a few days, then an open-ended scripting/farming late game with dailies and time-gated actions. Long walls of waiting are the main complaint."
+      },
+      {
+        "id": "depth",
+        "score": 82,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 83076293] once you reach the point of being able to automate the farming process with StoneScript, the game changes from frustrating, to enlightening."
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Stone_Story_RPG",
+            "quote": "an in-game scripting system that allows players to write simple scripts to automate character behavior"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 79711301] an actually incredible lack of meaningful content"
+          }
+        ],
+        "note": "Benchmark (rubric anchor 80): Stonescript is a true expert layer that also mods UI and cosmetics. Lapse: before the Mind Stone the build space is loadout swaps only."
+      },
+      {
+        "id": "respect",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "If you see a red cross † in the location selection screen, that means the game calculates you will die"
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "Un-opened treasures are limited by your character level, up to 400 treasures."
+          },
+          {
+            "source": "https://apps.apple.com/us/app/stone-story-rpg/id1076120218",
+            "quote": "Premium Rewards: $9.99 ... Titanic Deal!: $14.99 (mobile is Free with In-App Purchases)"
+          }
+        ],
+        "note": "PC is one premium price with no IAP. Offline farming exists, bounded by demonstrated performance and a 400-treasure cap, with an honest † death forecast. Lapses: dailies and time-gated actions (rec 231020016); mobile is free-to-play with crystal packs, paid weapons and an 'Advertising' age-rating flag."
+      },
+      {
+        "id": "juice",
+        "score": 62,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 102427385] waiting for 10 minutes for your 200 chests to open"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 128235244] little animation flourishes and such"
+          }
+        ],
+        "note": "Loot and boss moments are animated, but reward reveals are slow rather than proportionate; inference from reviews."
+      },
+      {
+        "id": "polish",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 177437976] It is polished, bugless, and beautiful."
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "saves are stored in a file named primary_save.txt, with a backup.txt and historical_# files used for recovery"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 166349037] 54 hours in and my save just wiped?"
+          }
+        ],
+        "note": "Long-running solo project (2014-) with save backups and export; rare save-loss reports exist but appear isolated, so no kill."
+      },
+      {
+        "id": "content",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/603390/Stone_Story_RPG/",
+            "quote": "8 locations with boss fights ... 8+ hours of main story content plus procedurally generated content"
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "Some players have clocked more than 5,000 hours in the dark world."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 79711301] an actually incredible lack of meaningful content"
+          }
+        ],
+        "note": "Short story, then quests, events and an endless scripted farm; longevity is real for scripters, thinner for others."
+      },
+      {
+        "id": "hook",
+        "score": 80,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/603390/Stone_Story_RPG/",
+            "quote": "an auto-RPG with strategic combat, crafting, and programming elements, presented entirely in ASCII art"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 105331834] coding game in disguise 10/10"
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Stone_Story_RPG",
+            "quote": "received the TIGA Award for Best Role-Playing Game in 2019."
+          }
+        ],
+        "note": "An ASCII auto-RPG you program is visible in one screenshot; nobody else owns it."
+      },
+      {
+        "id": "access",
+        "score": 68,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/603390/Stone_Story_RPG/",
+            "quote": "15 supported languages ... Windows, macOS, and SteamOS + Linux"
+          },
+          {
+            "source": "https://stonestoryrpg.com/faq.html",
+            "quote": "iOS & Android: On mobile your saved data is stored on iCloud/Google Drive"
+          },
+          {
+            "source": "https://apps.apple.com/us/app/stone-story-rpg/id1076120218",
+            "quote": "Languages: English only"
+          }
+        ],
+        "note": "Five platforms, save export and cloud save on mobile, 15 languages on PC; mobile is English-only and no accessibility settings are documented."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Forecast the absence before it starts: a † on the location screen says the hero would die before collecting everything, and the offline haul is bounded by demonstrated performance, so offline is honest rather than capped by a timer.",
+        "evidence": "https://stonestoryrpg.com/faq.html a red cross † in the location selection screen, that means the game calculates you will die",
+        "dimension": "respect"
+      },
+      {
+        "practice": "An optional expert automation language (Stonescript) gives a ceiling for writers without forcing it on everyone; but it arrives after 6-8 h with little in-game teaching, so a pen should open with worked examples in place.",
+        "evidence": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100 [rec 158324972] throws a whole scripting language at you once you unlock it, without much of a tutorial",
+        "dimension": "depth"
+      },
+      {
+        "practice": "One coherent register for everything (ASCII world, UI and portraits) with hand-animated frames makes a tiny-budget game recognisable and lively.",
+        "evidence": "https://en.wikipedia.org/wiki/Stone_Story_RPG the ASCII art was created frame-by-frame as text and rendered in-engine using custom shaders.",
+        "dimension": "art"
+      },
+      {
+        "practice": "Do not make reward reveals slow; long chest-opening animations read as waiting, not juice.",
+        "evidence": "https://store.steampowered.com/appreviews/603390?json=1&filter=all&language=english&num_per_page=100 [rec 102427385] waiting for 10 minutes for your 200 chests to open",
+        "dimension": "juice"
+      }
+    ]
+  }
+}

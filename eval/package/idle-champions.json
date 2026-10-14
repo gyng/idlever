@@ -1,0 +1,85 @@
+{
+  "$comment": "Desk grade (not hands-on). Steam review quotes from the English review JSON (filter=all, 70 unique reviews sampled, 59% up); review ids given.",
+  "game": "Idle Champions of the Forgotten Realms",
+  "build": "Steam app 627690 as of 2026-10-15 (latest Steam news 2026-10-08 'Liar's Night is here with Kitiara!'; 140+ Champions)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-B",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "desk: Steam store data and review API (9,570 English reviews, 76% positive, Mostly Positive), the Idle Champions fandom wiki (Familiars, Modron Core), Steam discussions, platform listings and prior repo research; not played.",
+    "fun": { "score": 48, "source": "desk estimate: formation strategy and the D&D cast give real decisions, but reviews describe resets as work ('you've successfully made work') and offline as weak; placed between the mediocre idle RPG composite (30.8) and Melvor (65.4, eval/calibration/melvor-idle.scorecard.json)", "confidence": "low" },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      { "id": "art", "score": 50, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/627690", "quote": "unites iconic Champions from D&D TRPG campaigns, video games, novels, actual plays, comic books, and shows" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233072793)", "quote": "a huge cast of well-known Dungeons & Dragons characters" }
+      ], "note": "Licensed cast drawn in one cartoon register, small sprites on busy backgrounds; reviews praise the cast more than the art. Matches the 50 anchor." },
+      { "id": "motion", "score": 45, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233072793)", "quote": "Even with all graphical features turned off, this relatively simple 2D idle game can become surprisingly resource-hungry" }
+      ], "note": "Sprite attack loops and ultimates; few review comments on animation. Low confidence." },
+      { "id": "ui", "score": 38, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 234657011)", "quote": "the user interface is mediocre on a large monitor" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233072793)", "quote": "Too many things interrupt the gameplay." },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235153369)", "quote": "When I open it I am bombarded with at least 5 pop-ups asking for money." }
+      ], "note": "Store pop-ups and modal interruptions on top of dense formation/specialization screens." },
+      { "id": "audio", "score": 52, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235101834)", "quote": "The highlight of the game is the in-game juke box. The music is D&D themed and a lot of fun." },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 237307404)", "quote": "listening to the same song over and over gets boring over time" }
+      ], "note": "Graded from review quotes, not listened. Pleasant themed music with repetition fatigue." },
+      { "id": "onboarding", "score": 45, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235486737)", "quote": "the brand new Bastion hub to show all the features. I tried onboarding without it and it was rather confusing." },
+        { "source": "https://idlechampions.fandom.com/wiki/Familiars", "quote": "They get unlocked after having reached area 66 in any campaign." },
+        { "source": "https://idlechampions.fandom.com/wiki/Modron_Core", "quote": "a total of three Modron Cores through the completion of the Split The Party adventures" }
+      ], "note": "Core act (level champions, place formation) is immediate; automation is gated (familiars at area 66, Modron after Split the Party, a week or more per prior research). A new hub helps." },
+      { "id": "pacing", "score": 40, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235127312)", "quote": "Eventually, leveling up takes hours, so you have to restart, get a little more money the next time" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 231953911)", "quote": "Every week there's a lot you have to do" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 234103075)", "quote": "Difficulty creep over time isn't fun or engaging." }
+      ], "note": "Adventure resets feel alike; events every few weeks add champions but also obligations. No ending." },
+      { "id": "depth", "score": 58, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 236483082)", "quote": "There's a ton of nuance when it comes to building teams in different formations and what abilities to use." },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235342878)", "quote": "it can be hard to keep up with the meta" },
+        { "source": "https://store.steampowered.com/app/627690", "quote": "Optimize formations using over 140 Champions, each with unique abilities" }
+      ], "note": "Positional synergy and per-adventure restrictions change the best formation (above the 50 anchor), but a community meta per variant rules." },
+      { "id": "respect", "score": 20, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://idlechampions.fandom.com/wiki/Familiars", "quote": "can be purchased with either real money, gems, Patron shops, and Seasons rewards that allow the player to automate clicking and leveling up Champions" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 234346407)", "quote": "An idle game that demands to be running 24/7 because offline resource gains are abyssmal" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233072793)", "quote": "There are an enormous number of ways to spend money on very small additions or conveniences." }
+      ], "note": "Paid automation (familiars ~$6 each per review 235884423), weak offline (background parties cut, steamcommunity.com/app/627690/discussions/0/3770112515482301845 via prior research). Matches the ~20 anchor. No direct real-money purchase of a created timer found (time gate pieces come from patron currency), so the kill is not set." },
+      { "id": "juice", "score": 48, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233659293)", "quote": "to watch my group of heroes either struggle to survive or finally be[at]" },
+        { "source": "eval/PACKAGE_EVAL.md §1.9 anchor", "quote": "Idle Champions (gold rain, ultimates)" }
+      ], "note": "Gold rain and ultimates; chest opening called work (review 231953911: 'Somehow even opening chests is work'). Low confidence." },
+      { "id": "polish", "score": 35, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 232749248)", "quote": "it is notoriously buggy and the framerates at times can be abysmal" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233072793)", "quote": "Over longer sessions, it seems to consume more and more resources and can eventually crash." },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 235342878)", "quote": "it tends to crash my computer" }
+      ], "note": "Six years of weekly patches; resource leaks and bugs are a recurring cluster." },
+      { "id": "content", "score": 75, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/627690", "quote": "over 140 Champions ... countless monsters across hundreds of adventures" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 233492452)", "quote": "new champions coming out every other week or so on rotation with events" }
+      ], "note": "Huge roster and adventure list; many adventures are variants of the same campaign maps." },
+      { "id": "hook", "score": 55, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://idlechampions.fandom.com/wiki/Idle_Champions_of_the_Forgotten_Realms", "quote": "an official Dungeons & Dragons® idle clicker game" },
+        { "source": "https://store.steampowered.com/appreviews/627690?json=1&filter=all&language=english (review 236483082)", "quote": "This game is like gardening. You tend the adventure party" }
+      ], "note": "The license is the twist; mechanically a Crusaders-of-the-Lost-Idols-style formation clicker." },
+      { "id": "access", "score": 62, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://www.gamepressure.com/games/idle-champions-of-the-forgotten-realms/ze5b6a", "quote": "PC Windows, PlayStation 4, Xbox One, Android, Apple iOS listed" },
+        { "source": "https://store.steampowered.com/app/627690", "quote": "Windows, Mac; 7 languages; Remote Play on Tablet" },
+        { "source": "https://steamcommunity.com/app/627690/discussions/0/3079873787837053714", "quote": "Not possible to transfer between platforms (player thread, 2021)" }
+      ], "note": "Wide platform reach (also Switch, destructoid.com/?p=257847) but no cross-progress found; no text/motion settings evidence." }
+    ],
+    "learn": [
+      { "practice": "Positional formation synergy: where a unit stands changes what its abilities do, so one roster gives many builds per restriction.", "evidence": "https://idlechampions.fandom.com/wiki/Idle_Champions_of_the_Forgotten_Realms — 'Mastering the position of each Champion to maximize their special abilities is the key to completing each adventure.'", "dimension": "depth" },
+      { "practice": "An earned automation core that saves a formation and runs resets for the player (the Modron), unlocked by play rather than sold.", "evidence": "https://idlechampions.fandom.com/wiki/Modron_Core — 'Modron Core is required to use the Modron Automation ... through the completion of the Split The Party adventures'", "dimension": "onboarding" },
+      { "practice": "A jukebox the player controls: letting players pick tracks counters loop fatigue cheaply.", "evidence": "https://store.steampowered.com/appreviews/627690 (review 235101834) — 'The highlight of the game is the in-game juke box.'", "dimension": "audio" },
+      { "practice": "Anti-pattern: paid automation plus weak offline turns an idler into a job; keep automation earned and absence rewarded.", "evidence": "https://store.steampowered.com/appreviews/627690 (review 231953911) — 'For the developers, you've successfully made work.'", "dimension": "respect" }
+    ]
+  }
+}

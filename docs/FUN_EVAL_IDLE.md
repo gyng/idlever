@@ -131,6 +131,15 @@ above, Progress Quest and the composite in *not yet*, Cookie Clicker where eval-
 (fun, low 70s). If Loop Hero is gated, the axis or weight is wrong. Re-anchor on Loop Hero
 in the same sitting whenever the rubric is used after a gap.
 
+## 6a. The package layer (2026-10-15)
+
+Fun is not the whole game. `eval/PACKAGE_EVAL.md` adds an optional `package` block to the same card:
+13 craft dimensions (art, motion, ui, audio, onboarding, long-arc pacing, depth, respect, juice,
+polish, content, hook, access), each scored 0–100 with evidence and confidence, and scored by
+`node eval/package-score.mjs`. Fun is reported beside the package score and never mixed into it. This
+file's axes, weights and the fun ≥ 80 goal are unchanged. First use:
+`docs/research/PACKAGE_REPORT_2026-10.md`.
+
 ## 7. Using it on Idlever
 
 1. `cp eval/SCORECARD.template.json eval/cards/<build>.<rater>.json`, fill the horizon

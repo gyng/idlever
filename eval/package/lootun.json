@@ -1,0 +1,300 @@
+{
+  "$comment": "Desk grade (store pages, Steam review API quotes, press, aggregators). NOT hands-on play; no claim of having played or listened.",
+  "game": "Lootun",
+  "build": "1.3.0.14 (Steam, 2026-05-22)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-D",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store page/appdetails, Steam review API (229 English reviews sampled, all-language 995/1062 positive), Steam news patch notes and the vaporlens review aggregate; not played.",
+    "fun": {
+      "score": 56,
+      "source": "desk estimate: below Melvor Idle (65.4) — similar spreadsheet-idle loop with a stronger loot/party build layer but weaker presence (bars, no SFX) and a reported post-level-100 slowdown; well above a mediocre idle RPG (30.8). 94% positive, median positive reviewer ~150 h.",
+      "confidence": "low"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 30,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 165870216; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "This has a 1980s interface, but all the mechanics are incredibly solid."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 225803195; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "style is, as per usual, nothing to write home about with these kinds of games"
+          }
+        ],
+        "note": "Portraits, item icons and progress bars; functional, no visual identity."
+      },
+      {
+        "id": "motion",
+        "score": 20,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 165870216; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "it's still about bars moving left to right or visa versa"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 172074404; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "watching lifebars and skill timers go down"
+          }
+        ],
+        "note": "Combat is shown as bars and timers."
+      },
+      {
+        "id": "ui",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 132871793; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "Everything is documented. Everything has a tooltip."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 172167952; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "UI is just awful, way too much clicking all the time, unintuitive."
+          },
+          {
+            "source": "https://vaporlens.app/app/1960270/lootun.md",
+            "quote": "The game is praised for its easy-to-use, clean, and fluid UI."
+          }
+        ],
+        "note": "Split opinion; in-game Glossary and filters praised, click volume and menu jank criticised."
+      },
+      {
+        "id": "audio",
+        "score": 35,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 202919576; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "The music is very generic and gets boring fast and surprisingly the game is missing sound effects"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 217659944; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "The catchy 'heroic' music loop sets the stage"
+          }
+        ],
+        "note": "From review consensus only; never listened."
+      },
+      {
+        "id": "onboarding",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 122647822; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "It starts off a little slow, the tutorial guides you through the basics"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 231953439; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "the first few hours of the game felt a tad monotonous and repetitive"
+          },
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "Steam Demo allowing you to play the game up to level 50"
+          }
+        ],
+        "note": "Auto-salvage/auto-restart early; clear but repetitive first hours."
+      },
+      {
+        "id": "pacing",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 213729206; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "once you hit 100 and it's time to grind towards 150 the game slows down considerably"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 187979801; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "as soon as you beat the campaign, progression completely breaks down and grinds to a halt"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 123349104; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "The layered end game content made the amount I could play exponentially larger."
+          }
+        ],
+        "note": "Good to level 100 (~40-50 h), then a contested wall."
+      },
+      {
+        "id": "depth",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "Each skill has 8 different passives to choose from allowing for a wide variety of builds."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 214796344; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "still basically no interesting options. classes feel super limited."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 123349104; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "requires you to actually enchant & plan skills and character combos"
+          }
+        ],
+        "note": "4 classes x 3 ascendancies, parties of 3, enchants, raids; some call early choices irrelevant."
+      },
+      {
+        "id": "respect",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "$5.49 one price; no DLC listed"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 152083749; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "limited to 24h but you only get resources from gathering but no items or xp"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 232859400; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "While offline your characters won't be fighting"
+          }
+        ],
+        "note": "Fair single price, no MTX; but offline is gathering-only (24 h), so combat needs the app running."
+      },
+      {
+        "id": "juice",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 202919576; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "missing sound effects, which would be an easy way to make the snappy and fast UI feel great"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 203218287; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "This is super micro intensive and not in a fun way."
+          }
+        ],
+        "note": "Loot flood is the only reward signal."
+      },
+      {
+        "id": "polish",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1960270",
+            "quote": "1.3.0.8 to 1.3.0.14 bug-fix patches April-May 2026"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 132038271; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "442 hours played. Saved game just vanished."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 225803195; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "I don't think I've ever encountered any bugs"
+          }
+        ],
+        "note": "Active solo dev; isolated save-loss reports (not counted as kill: anecdotal, not a pattern)."
+      },
+      {
+        "id": "content",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "500+ Equipment Items ... 100+ Monsters and 50+ Bosses"
+          },
+          {
+            "source": "https://vaporlens.app/app/1960270/lootun.md",
+            "quote": "Estimated playtime to finish all content is around 300 hours."
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 164019663; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "infinite loop of same content regurgitated forever with just higher hp/dmg"
+          }
+        ],
+        "note": "Long, but scaling reskins past the campaign."
+      },
+      {
+        "id": "hook",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "a Semi-Idle RPG with a strong focus on Character/Skill Progression, Item Hunting, and Inventory Management"
+          },
+          {
+            "source": "https://steamcommunity.com/app/1960270/reviews (recommendation 231953439; via store.steampowered.com/appreviews/1960270?json=1)",
+            "quote": "It's build-crafting like you find in games like Diablo, poe etc but no pesky grind"
+          }
+        ],
+        "note": "Rubric anchor (~50): clear 'idle ARPG loot' pitch, one twist."
+      },
+      {
+        "id": "access",
+        "score": 25,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1960270/Lootun/",
+            "quote": "Platforms: Windows only; languages: English"
+          },
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1960270",
+            "quote": "controller_support: none listed"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1960270",
+            "quote": "Added additional keybind options for Pause Mission, Restart Mission"
+          }
+        ],
+        "note": "One platform, one language; keybinds exist."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Ship an in-game glossary/codex that unlocks per monster, item and stat as discovered, so the build space never needs a wiki.",
+        "evidence": "https://steamcommunity.com/app/1960270/reviews (recommendation 225803195; via store.steampowered.com/appreviews/1960270?json=1) — 'the game has a built in wiki in the form of the Glossary'",
+        "dimension": "ui"
+      },
+      {
+        "practice": "Run several parties in parallel as a mid-game unlock, so the second team is a fresh beat rather than more grind.",
+        "evidence": "https://steamcommunity.com/app/1960270/reviews (recommendation 165333085; via store.steampowered.com/appreviews/1960270?json=1) — 'the game throws you AN ENTIRE SECOND TEAM TO GEAR'",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Loot filters plus auto-salvage early, so a high item rate stays a reward and not a chore.",
+        "evidence": "https://steamcommunity.com/app/1960270/reviews (recommendation 174433057; via store.steampowered.com/appreviews/1960270?json=1) — 'not using the filters and auto-scrapping settings correctly'",
+        "dimension": "depth"
+      },
+      {
+        "practice": "Avoid Lootun's lapse: offline that grants only gathering forces players to leave the app open; Idlever's uncapped full-sim offline is the differentiator to advertise.",
+        "evidence": "https://steamcommunity.com/app/1960270/reviews (recommendation 152083749; via store.steampowered.com/appreviews/1960270?json=1) — 'forced to let the game running in the background'",
+        "dimension": "respect"
+      }
+    ]
+  }
+}

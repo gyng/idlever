@@ -1,0 +1,88 @@
+{
+  "$comment": "Desk grade (not hands-on). Steam review quotes come from the English review JSON (filter=all, 4 pages, 124 unique reviews sampled, 80% up); review ids given.",
+  "game": "Melvor Idle",
+  "build": "Steam app 1267910 as of 2026-10-15 (base + 3 expansions; latest Steam news 2025-04-23 'Melvor Idle 2 - Coming Soon to Steam Early Access'; Offline Client beta 2024-11-19)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-B",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "desk: Steam store data and review API (9,398 English reviews, 92% positive, Very Positive), the Melvor wiki Offline Progression page, Steam news, a vaporlens review aggregate and prior repo research; not played.",
+    "fun": { "score": 65, "source": "eval/calibration/melvor-idle.scorecard.json (65.4 on idle-rpg preset, gated on surprise); carried over to idle-hybrid unchanged", "confidence": "medium" },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      { "id": "art", "score": 45, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "Master Melvor's many RuneScape-style skills with just a click or a tap." },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 234094925)", "quote": "it's basically OSRS without the 3d graphics" },
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "visually bland, with minimal animations" }
+      ], "note": "RuneScape-style item icons on a dense web dashboard; readable, not distinctive. Slightly under the rubric's 50 anchor because reviews call it bland." },
+      { "id": "motion", "score": 18, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 235836530)", "quote": "it's literally OSRS with no animations" },
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "minimal animations" }
+      ], "note": "Progress bars and combat HP bars; matches the rubric's ~20 anchor." },
+      { "id": "ui", "score": 52, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 232814657)", "quote": "Well laid out and intuitive." },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 230694173)", "quote": "the UI is horrible, it bombards you with like 30 mechanics right at the get go" },
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "a spreadsheet-like interface" }
+      ], "note": "Split opinion: clean once learned, dense sidebar at the start. Wiki leaned on (review 237564083: 'read the wiki page for each skill')." },
+      { "id": "audio", "score": 15, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 234707979)", "quote": "The lack of music or other sounds make it less useful as a study tool" },
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "no sound effects" }
+      ], "note": "Graded from review consensus, not listened. Reviews describe it as essentially silent; the rubric's 50 anchor for Melvor audio looks wrong (it misses by >15 points, so per §5 the anchor text should be revised)." },
+      { "id": "onboarding", "score": 50, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 231280051)", "quote": "it has a great tutorial to understand the basics" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 233338031)", "quote": "Quick start, many simultaneous characters ... Lots of information to take in at first though." },
+        { "source": "https://wiki.melvoridle.com/w/Combat", "quote": "Auto Eat I costs 1M GP; 'upgrading this as quickly as possible is critical' (via docs/research/PROGRESSION_COMPETITORS_2026-10.md §1)" }
+      ], "note": "Core act (pick a skill) in seconds; first real combat automation (Auto Eat) is a large gold sink hours in. Matches the 50 anchor." },
+      { "id": "pacing", "score": 58, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 234707979)", "quote": "even after a few weeks, I'm nowhere near to unlocking them" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 232099987)", "quote": "tons of easter eggs and new things to find after hundreds of hours" },
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "Excessively slow progression" }
+      ], "note": "Many skills give parallel goals so there is always a next level; long, mostly visible grinds (level 99 curves). No ending; completion log is a months-long target." },
+      { "id": "depth", "score": 62, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "Every skill in this game serves a purpose, interacting with the others in interesting ways." },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 235583475)", "quote": "It's got a TON of depth to it." },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 234707979)", "quote": "there doesn't seem to be a wrong way to go about it" }
+      ], "note": "Gear sets, combat styles, prayers, summoning synergies and skill interplay; but few forks matter (no wrong way), and no scripting layer." },
+      { "id": "respect", "score": 76, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://wiki.melvoridle.com/w/Offline_Progression", "quote": "progress while closed as if the player had remained online ... (up to a maximum of 24 hours)" },
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "$9.99, three paid expansion DLCs, no In-App Purchases category" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 237393303)", "quote": "if I don't have an internet connection the game won't launch" }
+      ], "note": "Exact offline sim and one-price model; lapses: 24 h cap and an online requirement (an Offline Client has been in beta since 2024-11). No paid time skips found." },
+      { "id": "juice", "score": 35, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://vaporlens.app/app/1267910/melvor_idle.md", "quote": "visually bland, with minimal animations" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 237722284)", "quote": "if you get dopamine hits from seein[g numbers go up]" }
+      ], "note": "Toasts and level-up notices; reward is the number itself. Below the 50 anchor given no sound and few effects." },
+      { "id": "polish", "score": 68, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 237722284)", "quote": "it's well-made, well-designed, and runs well" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 235511695)", "quote": "having a bug that prevents the game from closing" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 236126801)", "quote": "Cloud saves being broken ruined all progression" }
+      ], "note": "Long-lived and generally stable; recent negatives cluster on cloud/server outages and Steam client close/startup bugs. Under the rubric's 80 anchor for that reason." },
+      { "id": "content", "score": 84, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "over 20 skills ... face off against 100+ monsters; three expansion DLCs listed" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 237370408)", "quote": "Great idle game with a ton of content and expansions" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 236301489)", "quote": "only buy TOH DLC, other 2 are ... copy&paste content" }
+      ], "note": "Matches the rubric's 80 benchmark (itself); lapse: later expansions called reskins by some." },
+      { "id": "hook", "score": 55, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "Inspired by RuneScape ... Maxing 20+ skills has never been more zen." },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 236582499)", "quote": "it's like Runescape except I don't have to actually sit at my PC for 12 hours" }
+      ], "note": "Instantly legible pitch, but borrowed from RuneScape; screenshot shows a dashboard." },
+      { "id": "access", "score": 80, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/app/1267910", "quote": "Windows, Mac, Linux; 13 interface languages incl. Japanese, Korean, Russian, Chinese" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 231131734)", "quote": "a version on steam, a phone app, and browser with cloud syncing" },
+        { "source": "https://store.steampowered.com/appreviews/1267910?json=1&filter=all&language=english (review 233471558)", "quote": "Single player idle game that requires connection to server." }
+      ], "note": "Web, Steam, iOS/Android with cross-save; no evidence found either way on text scaling or reduced-motion settings." }
+    ],
+    "learn": [
+      { "practice": "Simulate absence exactly as if online and say so plainly; players trust offline only when it matches online.", "evidence": "https://wiki.melvoridle.com/w/Offline_Progression — 'There is no actual difference between being Online and being Offline when it comes to getting items/experience'", "dimension": "respect" },
+      { "practice": "One save everywhere: the same run on browser and phone with cloud sync lets a player glance from either device.", "evidence": "https://store.steampowered.com/appreviews/1267910 (review 231131734) — 'a version on steam, a phone app, and browser with cloud syncing'", "dimension": "access" },
+      { "practice": "Make every system feed another (town buildings feed the climb, the climb feeds the town) so no upgrade is a dead end.", "evidence": "https://store.steampowered.com/app/1267910 — 'Every skill in this game serves a purpose, interacting with the others in interesting ways.'", "dimension": "depth" },
+      { "practice": "Never require a connection for a single-player idler; the online requirement is Melvor's most cited recent complaint.", "evidence": "https://store.steampowered.com/appreviews/1267910 (review 237393303) — 'if I don't have an internet connection the game won't launch'", "dimension": "polish" }
+    ]
+  }
+}

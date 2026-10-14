@@ -471,6 +471,39 @@ explicitly open. No new unlock delays have been selected from the baseline alone
 5. **Cold town rendering cost.** Current terrain proof measured initial bitmap paints around120–140ms separately from warm frames. Profile image decode, bitmap paint and GPU upload before optimizing the largest measured part. Reuse the existing shared GL/Canvas bitmap and asset-settlement publication; target at least25% improvement in median initial-paint time across five matched cold launches, without weakening current image quality, cache, context recovery or warm-frame gates. Report absolute timings and hardware; retain the baseline and failures.
 6. **Existing progression finish.** Inspect earned class training, Legacy choices, companion use and post-clear returns before proposing more systems. Repair any real dead end, hidden reward or unaffordable advertised action. Worker ranks and late economy deviations already recorded in acceptance need measured saved-camp/choice checks before changing prices or timing. No inference of whole-game balance from a handful of diagnostic builds.
 
+## Package-eval proposals (2026-10-15, not implemented)
+
+These come from the whole-package grades ([PACKAGE_REPORT](research/PACKAGE_REPORT_2026-10.md),
+[PACKAGE_GRADES §4](research/PACKAGE_GRADES_2026-10.md); rubric `eval/PACKAGE_EVAL.md`).
+On main `3823eb8b` Idlever scores package 62.0 (genre par, 4th of 15) and fun 75.2 (first in the table).
+The verdict is *early access*: the pacing gate is at 45, and fun is under 80. These are proposals for
+the owner to order. Each one names the dimension it moves and its measure. Items 1–3 and 5 are already
+Cut231 items; this list ranks them against the field.
+
+1. **New mechanic per segment after day 2** (pacing gate, content): the second hero, the first reset payoff, and
+   one named mechanic per band wall from D23. Measure: PICKED days 2–7 max major-beat gap ≤ 24 h (now
+   48 h), DAILY ≤ 48 h; the King guard holds.
+2. **Feats with visible progress for later workers** (pacing, onboarding): Cut231 §5b. Measure: `nodes-lit`
+   ≤ 48 h; feat hire ≤ the count median on ≥ 14/16 seeds.
+3. **One decision per look, first 30 min** (onboarding): the Cut232 fixes. Measure: `cadence30` 16/16.
+4. **A codex sheet one tap from any term, number or unit, filled as facts are learned** (ui). No
+   tutorial text; copy budgets hold. Measure: blind clarity ≥ 0.8 on both cards; QA misreads ≤ 1 per
+   session.
+5. **The away forecast names the stall floor** (respect, ui): Cut231 #7. Measure: within one floor of
+   the 8 h replay on ≥ 80 % of saves.
+6. **UI defects and a cleaner watch** (ui, art, juice). Fix the camp pills that overlap after the Scout
+   hire ("porter · 2/3 hauls" over "… 2 more delves") and the toast over DELVE
+   (`docs/evidence/package-eval/walk-seed7/08-camp.webp`). Keep the depth rail at or under 10 % of the
+   map area during fights at 400 px. Lift actor/ground value separation and rate-limit routine bubbles.
+   Measure: an overlap lint at 320/400/1440; `art-qc` contrast; blind feel ≥ 0.8.
+7. **Workers visibly act in town when their chore fires** (art, juice, hook). Measure: a GPU capture
+   shows each act within 10 s; the `worker-first-act` journey asserts the cue.
+8. **The owner's audio pass, then a theme per place** (audio). Measure: `eval/AUDIO.md` filled; audio
+   scored.
+9. Later: a compact strip view (hook, access); the first screen shows the hero and his stance (hook); per-run
+   improvement on the death screen (pacing, juice); profile the 8 h return wait on the shipping build
+   (polish).
+
 ## Later content, after played evidence
 
 - One additional elite or boss modifier, only in unlocked ascension tiers. Start with one readable counter and one corresponding loot/preparation choice; keep tier0 behavior intact. Existing ascensions, Legacy tree, Sentinel/Hexbinder styles, Leeching and Gunner are delivered and must not be queued again as missing features. Follow `ENDGAME_ASCENSIONS.md` for deterministic modifiers, cause/trace, replay snapshots, save/load and equal-work overhead.

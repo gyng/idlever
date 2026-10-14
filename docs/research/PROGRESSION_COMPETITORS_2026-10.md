@@ -493,6 +493,13 @@ fails (worst 5), so fixes 1–3 are needed either way.
    bar is ≤ 12 min).
 10. **§5 #11: the offline rationale line. A doc change; unchanged.**
 
+## 6c. Whole-package grades (2026-10-15)
+
+14 of these games are graded on all 13 package dimensions (art through access) beside Idlever, in
+[PACKAGE_GRADES_2026-10.md](PACKAGE_GRADES_2026-10.md). The summary is in
+[PACKAGE_REPORT_2026-10.md](PACKAGE_REPORT_2026-10.md). The long-arc pacing gap measured in §6 is the
+one load-bearing gate Idlever fails there.
+
 ## 7. Gaps
 
 - There are no Reddit quotes; every Reddit route was blocked.

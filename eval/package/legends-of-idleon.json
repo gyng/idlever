@@ -1,0 +1,87 @@
+{
+  "$comment": "Desk grade (not hands-on). Steam review quotes from the English review JSON (filter=all, 4 pages, 243 unique reviews sampled, 60% up); review ids given.",
+  "game": "Legends of IdleOn (IdleOn - The Incremental MMO)",
+  "build": "Steam app 1476970 as of 2026-10-15 (World 7 era; latest Steam news 2026-09-19 'JELLY OPERATOR [new content]')",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-B",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "desk: Steam store data and review API (21,851 English reviews, 76% positive, Mostly Positive), idleon.wiki AFK and Gem Shop pages, a vaporlens review aggregate and prior repo research; not played.",
+    "fun": { "score": 58, "source": "desk estimate: below Melvor (65.4, eval/calibration/melvor-idle.scorecard.json) because reviews describe overload, chores and FOMO; well above the mediocre idle RPG composite (30.8) because of parallel characters and a steady stream of new systems", "confidence": "low" },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": true,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      { "id": "art", "score": 55, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://vaporlens.app/app/1476970/idle_on.md", "quote": "the game is praised for its creativity, art style" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 235672237)", "quote": "too bad the characters look like ... and arent cute" },
+        { "source": "https://www.notebookcheck.net/New-free-to-play-MMORPG-is-now-trending-on-Steam-and-it-features-offline-progression-with-Very-Positive-reviews.1191930.0.html", "quote": "described as a 2D pixel-art idle MMORPG" }
+      ], "note": "Coherent cartoon-pixel MMO look, crowded late screens; competent, mildly distinctive." },
+      { "id": "motion", "score": 45, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 231301547)", "quote": "no video controls whatsoever. its just a mobile game." },
+        { "source": "eval/PACKAGE_EVAL.md §1.2 anchor", "quote": "IdleOn (light MapleStory-like loops)" }
+      ], "note": "Little review comment on animation; inferred from genre and anchor. Low confidence." },
+      { "id": "ui", "score": 22, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 230564662)", "quote": "HUD is confusing and the controls are janky." },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 232336216)", "quote": "without wiki its easy to soft lock some areas of progression" },
+        { "source": "https://vaporlens.app/app/1476970/idle_on.md", "quote": "the user interface has readability problems" }
+      ], "note": "Matches the rubric's ~20 anchor: many currencies and screens, wiki needed (review 236412314: 'do not go into this game blind')." },
+      { "id": "audio", "score": 40, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "English, French, German, Japanese, Korean, Simplified Chinese — 'languages with full audio support'" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english", "quote": "only 2 of 243 sampled reviews mention music or sound at all" }
+      ], "note": "Not listened. Silence in reviews suggests unremarkable audio; below the rubric's 50 anchor only by inference." },
+      { "id": "onboarding", "score": 52, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://idleon.wiki/wiki/Game_Mechanics_AFK", "quote": "20% - Basic AFK gains (every Character)" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 237194939)", "quote": "It starts off slow with no minigames, but more mechanics and hard decisions on where to focus your effort unlock quickly." },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 230564662)", "quote": "Piles on way too many mechanics way too early on." }
+      ], "note": "AFK fighting from minute one and a second character at level 10 (idleon.wiki/wiki/Character_Creation via prior research); then a flood of systems." },
+      { "id": "pacing", "score": 60, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 236244523)", "quote": "the game throws another system at me and I immediately get addicted all over again" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 233779758)", "quote": "an ever-growing pile of systems that demand your attention" },
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "5 Years of IdleOn Content Updates!" }
+      ], "note": "New worlds and systems keep arriving for months; cost is accumulating daily chores. No ending." },
+      { "id": "depth", "score": 75, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "Create 11 unique Classes ... optimizing skill-tree builds, min-maxing your stats" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 237194939)", "quote": "hard decisions on where to focus your effort" }
+      ], "note": "11-character account with roles, skill trees, many interlocking systems; guides publish priority orders, so some choices collapse to a known best." },
+      { "id": "respect", "score": 30, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://idleon.wiki/wiki/Gem_Shop", "quote": "Time candy gives you instant AFK progress on a single character!" },
+        { "source": "https://idleon.wiki/wiki/Gem_Shop", "quote": "Auto Loot Pack: 900 gems for $4.99, includes 'Auto-Loot Toggle'" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 233708498)", "quote": "a 'chance draw' from a paid currency. Guaranteed after 60 attempts ... around $250" }
+      ], "note": "AFK at a 20% base rate, gem-bought time skips (Time Candy, Sand of Time, Stamina Battery) and paid auto-loot. Below the rubric's 50 anchor: the gem time skips trip the kill criterion." },
+      { "id": "juice", "score": 50, "mode": "desk", "confidence": "low", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 236244523)", "quote": "It's incredibly satisfying watching your account slowly turn into an absolute monster." },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 235340051)", "quote": "A lot of what would be considered repetitive ends up being very satisfying." }
+      ], "note": "Satisfaction quoted is mostly progression, not moment-to-moment feedback; low confidence." },
+      { "id": "polish", "score": 35, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 232870429)", "quote": "The 'white screen' problem has never been addressed for years" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 234018819)", "quote": "updates have bugs that delete progress, crash the game" },
+        { "source": "https://vaporlens.app/app/1476970/idle_on.md", "quote": "freezing, stuttering, and frame rate drops" }
+      ], "note": "Frequent content patches with recurring bugs; progress-loss reports exist (not counted as a session kill on desk evidence)." },
+      { "id": "content", "score": 85, "mode": "desk", "confidence": "high", "evidence": [
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 236244523)", "quote": "The amount of content is insane" },
+        { "source": "https://vaporlens.app/app/1476970/idle_on.md", "quote": "immense amount of content" },
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "11 unique Classes ... level 20 unique skills like Farming, Sailing, and Construction" }
+      ], "note": "Matches Melvor/NGU at the 80 benchmark; seven worlds. Lapse: late-game complexity rather than shortage." },
+      { "id": "hook", "score": 62, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "The power fantasy of an MMO, with the automation of an incremental game" },
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "The incremental idle MMO where your heroes keep fighting while you're gone!" }
+      ], "note": "Idle MMO with an 11-character family is a pitch few others own; screenshot reads as a generic 2D MMO." },
+      { "id": "access", "score": 58, "mode": "desk", "confidence": "medium", "evidence": [
+        { "source": "https://store.steampowered.com/app/1476970", "quote": "Windows only on Steam; 6 languages" },
+        { "source": "https://store.steampowered.com/appreviews/1476970?json=1&filter=all&language=english (review 235632917)", "quote": "I started on mobile and was able to link my progress to steam." },
+        { "source": "https://vaporlens.app/app/1476970/idle_on.md", "quote": "the user interface has readability problems" }
+      ], "note": "PC + mobile with linked progress; always online; no evidence of text scaling or motion settings." }
+    ],
+    "learn": [
+      { "practice": "Parallelism as the first idle lever: a second hero early (IdleOn's second character at level 10) doubles what runs while away and gives a new decision.", "evidence": "https://store.steampowered.com/app/1476970 — 'IdleOn lets you create 11 characters, so you'll have one of each class - each one plays a unique role in your account!'", "dimension": "depth" },
+      { "practice": "Unlock systems on a steady drip so each return brings a new mechanic, but cap the chores each one adds.", "evidence": "https://store.steampowered.com/appreviews/1476970 (review 236244523) — 'the game throws another system at me and I immediately get addicted all over again'", "dimension": "pacing" },
+      { "practice": "The return loop: come back, spend what was earned away, buy more upgrades, send again.", "evidence": "https://store.steampowered.com/app/1476970 — 'Load up IdleOn the next day, spend your AFK gains earned while you were away, and buy MORE upgrades!'", "dimension": "hook" },
+      { "practice": "Anti-pattern: never sell time skips or automation toggles; IdleOn's Time Candy and $4.99 auto-loot are its most resented choices.", "evidence": "https://idleon.wiki/wiki/Gem_Shop — 'Time candy gives you instant AFK progress on a single character!'", "dimension": "respect" }
+    ]
+  }
+}

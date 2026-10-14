@@ -1,0 +1,135 @@
+{
+  "game": "Idlever",
+  "build": "3823eb8b (origin/main 2026-10-15; fast wasm, Vite dev server :5391)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "package-eval coordinator (not blind; a baseline, not a decision)",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "mixed: hands-on scripted walk (seed 7, 8 h absence, headless) and a private-display GPU capture on 3823eb8b; telemetry from the Cut231 dayplayer timeline (16 seeds x 14 days) and cadence30; the two latest blind rater cards (d34605e, 2026-10-11, an older build). Audio not heard.",
+    "fun": {
+      "cards": ["../cards/d34605e.blind-a.json", "../cards/d34605e.blind-b.json"],
+      "source": "the latest blind cohort (d34605e, idle-hybrid); older than 3823eb8b; no blind fun card exists for the current build",
+      "confidence": "medium"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art", "score": 70, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "docs/evidence/package-eval/walk-seed7/10-death.webp", "quote": "observed: torn BLOOD death banner, wax 'YOU DIED' seal, painted backdrop; one coherent moonlit ink-and-wash register (docs/ART_DIRECTION.md)" },
+          { "source": "docs/evidence/package-eval/walk-seed7/08-camp.webp", "quote": "observed: painted pixel town map at night with lit cave mouth; matches the frame chrome" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'packed grey figures and oversized control panels sometimes obscured the scene' (aesthetic 0.8 with this named lapse; blind-a the same)" }
+        ],
+        "note": "Distinctive and coherent; the lapse is actor readability at phone size: grey sprites on grey stone, ~48 px heroes, the depth rail covering a quarter of the watch (docs/evidence/package-eval/gpu/deep-watch-2.webp). Not yet at Loop Hero's 'a screenshot sells it'."
+      },
+      {
+        "id": "motion", "score": 52, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "'Visible sword arcs, spark hits and BLOCKED amplified fights ... routine targeting was sometimes crowded' (feel 0.6)" },
+          { "source": "docs/evidence/package-eval/gpu/gpu-capture.json", "quote": "viewer cpuMs 5.7 (p95 11.8), gpuMs 2.3; rAF 23-36 fps in the last window, host load average ~60 on 32 cores, so fps is not a cost claim" }
+        ],
+        "note": "Tile-step movement and short hit FX; a death or boss kill has a scene, ordinary fights read alike. No clean frame-rate measurement in this session (host saturated); docs/RENDER_PERF.md measured 59-60 fps at 400x800@3 earlier."
+      },
+      {
+        "id": "ui", "score": 52, "mode": "mixed", "confidence": "high",
+        "evidence": [
+          { "source": "docs/evidence/package-eval/walk-seed7/08-camp.webp", "quote": "observed: 'porter · 2/3 hauls' pill overlaps a second pill ('... 2 more delves', clipped); the scout toast covers the DELVE button" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'I initially mistook the ration button's ok $650 for a completed purchase' (clarity 0.6)" },
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "'King · slain 100% contradicted two King death screens' (clarity 0.6); 'long editors and modal purchasing added friction'" }
+        ],
+        "note": "Works at 400x800 and 1280x800, contrast audited (weakest 5.76:1, docs/HANDOFF.md), no tutorial text by design. Both blind raters land clarity at 0.6; the walk shows an overlapping-pill defect on the camp; the watch's depth rail hides a quarter of the map. Just above the gate."
+      },
+      {
+        "id": "audio", "score": null, "mode": "hands-on", "confidence": "low",
+        "evidence": [ { "source": "eval/AUDIO.md", "quote": "the owner's listening table is unfilled; agents cannot listen" } ],
+        "note": "Unassessed. Cues, per-biome beds and boss stingers ship (window.__audio); no human verdict exists."
+      },
+      {
+        "id": "onboarding", "score": 62, "mode": "mixed", "confidence": "high",
+        "evidence": [
+          { "source": "docs/evidence/package-eval/walk-seed7/01-camp.txt", "quote": "observed: first screen 'Empty town · Build house · Free'; first delve within ~20 s of boot" },
+          { "source": "docs/research/PROGRESSION_COMPETITORS_2026-10.md §6", "quote": "Scout (first automation) 5.2 min median, 7.5 worst; Forge 12.5 min; first boss 37.5 min" },
+          { "source": "docs/evidence/cut231/timeline/gates-rows-cadence30-16.log", "quote": "cadence30 FAIL: gap median 6.4 / worst 9.1 min (8/16); decisions per look median 3.5, worst 5 (0/16)" }
+        ],
+        "note": "Core act in the first minute and automation at par with Trimps/AdCap; the first 30 minutes arrive in clumps of 3-5 decisions per look. Raters: 'the early editor lock delayed independent row practice'."
+      },
+      {
+        "id": "pacing", "score": 45, "mode": "telemetry", "confidence": "high",
+        "evidence": [
+          { "source": "docs/research/PROGRESSION_COMPETITORS_2026-10.md §6", "quote": "PICKED hires every worker by 2.0 d, first King try 2.0 d; 'after that the only new things are worker ranks at 4.7 and 5.7 days'" },
+          { "source": "docs/evidence/cut231/timeline/summary-16x14.md", "quote": "max major-beat gap days 2-7: PICKED 48 h, IDLE 40 h; first Legacy spend / reclone: never on any default bot" },
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "'queued forge spending of $9000 outweighed one absence's earnings without a clear advance budget' (progression 0.8)" }
+        ],
+        "note": "Days 0-2 are dense and well measured; days 3-14 are the 'day 2 slows down' pattern (the King guard holds it on purpose, but no new mechanic arrives). No reset-like beat lands. GATE: under 50."
+      },
+      {
+        "id": "depth", "score": 72, "mode": "mixed", "confidence": "high",
+        "evidence": [
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "'My five custom rules included depth≥28→read silence and hp<30%→read recall rather than an untouched default' (expression 0.8, decisions 0.8)" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'Early custom rows were locked; most of the eventual priority list remained supplied packages or automatic lessons'" },
+          { "source": "AGENTS.md hard invariants / gate table", "quote": "TUNED beats PICKED by >= 15 % at D33; RANDOM slower than PICKED on >= 14/16 seeds" }
+        ],
+        "note": "Stances x tactics x temperaments x gear x pets x the pen (authored rows) is the deepest build space in the table bar Stone Story's script; the gap between configurations is gated. Lapse: package rows swamp the authored part and priorities cannot be freely reordered."
+      },
+      {
+        "id": "respect", "score": 86, "mode": "mixed", "confidence": "high",
+        "evidence": [
+          { "source": "AGENTS.md hard invariants", "quote": "'Offline is uncapped after the scout ... Nothing punishes absence; chest gold does not decay'" },
+          { "source": "docs/evidence/package-eval/walk-seed7/09-report.txt", "quote": "observed: 'While away 8h · 15 RUNS · 2 died · D9 NEW BEST · +$1944 GROSS GOLD · LEGENDARY FOUND'" },
+          { "source": "docs/research/PROGRESSION_COMPETITORS_2026-10.md §6", "quote": "offline uncapped and exact from 5 min; death recovery 60 s through D14" }
+        ],
+        "note": "No monetization, no caps, no dailies, no decay; exact simulation. Lapses: before the Scout an absence finishes only the run in flight (a few minutes' window); deep deaths cost ~20 min recovery."
+      },
+      {
+        "id": "juice", "score": 58, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "docs/evidence/package-eval/gpu/deep-watch-2.webp", "quote": "observed: 'COLLECTED $63 · no heals · collected' banner over the map; floating damage numbers ('10')" },
+          { "source": "docs/evidence/package-eval/walk-seed7/09-report.webp", "quote": "observed: 'LEGENDARY FOUND Crownsplitter' card, 'Boss defeated Goblin Warlord ▶ watch kill'" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'repeated REST ✗ NOT SAFE bubbles kept drawing my eye away from the actual blows' (feel 0.6)" }
+        ],
+        "note": "Big moments (death stamp, legendary, boss kill replay) are proportionate; routine callouts compete with the fight. Audio half unassessed."
+      },
+      {
+        "id": "polish", "score": 60, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "docs/evidence/package-eval/walk-seed7/walk.log", "quote": "'ok: no console errors, no page errors'; 8 h offline catch-up in 26.8 s (headless, dev build, loaded host)" },
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "'One D28 Live watch stopped changing until pause/resume'; 'King slain 100%' contradiction" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'Collected set pieces were announced while the report still said set log 0/3'" }
+        ],
+        "note": "Deep automated checks (native tests, client journeys, wire invariants) and no crash or save loss in any recent card; but each blind cohort still finds contradictory labels, and the build is labelled ALPHA. The 26.8 s catch-up wait on return is long for a phone."
+      },
+      {
+        "id": "content", "score": 60, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "eval/AUDIO.md / docs/ART_DIRECTION.md", "quote": "seven places (Warrens, Burrows, Fens, Crypt, Foundry, Deep, Sanctum) plus the town; bosses Warlord, Mother, Lich, Queen, Master, King" },
+          { "source": "docs/research/PROGRESSION_COMPETITORS_2026-10.md §6", "quote": "'Content runs out early for the engaged player': D33 and first King try at a median 2.0 days" },
+          { "source": "eval/cards/d34605e.blind-b.json", "quote": "'Conjurers, their blades and familiar goblin encounters repeated extensively between the new walls' (surprise 0.8 lapse)" }
+        ],
+        "note": "A complete arc with an ending (the King at D34) and a fortnight of play for IDLE; for an engaged player the new content is spent by day 2-4 and the rest is the King wall."
+      },
+      {
+        "id": "hook", "score": 66, "mode": "mixed", "confidence": "low",
+        "evidence": [
+          { "source": "eval/cards/d34605e.blind-a.json", "quote": "same-day retelling: 'My emergency scroll first enchanted her weapon and then recalled her instead of letting the gas finish her'" },
+          { "source": "docs/evidence/package-eval/walk-seed7/01-camp.webp", "quote": "observed: the first screen is an empty town with 'Build house'; the hero and the dungeon are not on it" }
+        ],
+        "note": "'A real roguelike whose hero you never drive' is an unowned pitch, and raters retell runs with turns in them; but no store page or capsule exists and the first screen does not show the pitch."
+      },
+      {
+        "id": "access", "score": 64, "mode": "mixed", "confidence": "medium",
+        "evidence": [
+          { "source": "docs/HANDOFF.md", "quote": "320px/200% compact checks; actual-material contrast weakest 5.76:1; reduced-motion frames pass" },
+          { "source": "AGENTS.md", "quote": "web PWA (GitHub Pages), phone and desktop widths; save export (Settings → export); mute in settings" }
+        ],
+        "note": "Free in any browser, phone and desktop, reduced motion, contrast, save export. English only, no cloud sync, no store presence, pointer-first."
+      }
+    ],
+    "learn": "see docs/research/PACKAGE_GRADES_2026-10.md §4"
+  }
+}

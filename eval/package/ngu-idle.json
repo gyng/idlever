@@ -1,0 +1,270 @@
+{
+  "game": "NGU Idle",
+  "build": "Build 1.260 \"Lore's End\" (2021-06-27; last Steam announcement seen)",
+  "genre": "idler",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-C",
+  "package": {
+    "preset": "incremental-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only: Steam store/appdetails, 561 English Steam reviews via the review API, Steam news, and the NGU Idle fandom wiki; not played.",
+    "fun": {
+      "score": 58,
+      "confidence": "low",
+      "source": "desk estimate: below Cookie Clicker 75.5 (idler) because reviews pair the humour and depth with a guide-dependent UI and week-long walls; well above the mediocre idle RPG 30.8; 95.7% positive of 10,922 English reviews keeps it in the promising band."
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 35,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198173127898/recommended/1147690/",
+            "quote": "elementary level MS Paint 1995 drawings"
+          },
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1147690",
+            "quote": "Loot over 350 hand-drawn and unique equipment ... Over 300 bosses, each with their own hand-drawn art!"
+          }
+        ],
+        "note": "Deliberately crude joke art; consistent in its crudeness and recognisable, but not craft."
+      },
+      {
+        "id": "motion",
+        "score": 20,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561199817855802/recommended/1147690/",
+            "quote": "The presentation is also very basic. The graphics are simple"
+          }
+        ],
+        "note": "Progress bars and static portraits; no review praises animation."
+      },
+      {
+        "id": "ui",
+        "score": 45,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198844163569/recommended/1147690/",
+            "quote": "The interface is HELL."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198050929765/recommended/1147690/",
+            "quote": "Absolutely needs a guide to follow to get through"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198061584862/recommended/1147690/",
+            "quote": "then I heavily recommend joining their discord to read what to focus on"
+          }
+        ],
+        "note": "Rubric anchor (~50). Functional but joke-dense and guide-dependent; three independent complaints."
+      },
+      {
+        "id": "audio",
+        "score": 20,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1147690?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "No mention of music or sound in 561 English reviews read via the API (inference, not listened)"
+          }
+        ],
+        "note": "Inferred from silence in reviews; treat as weak."
+      },
+      {
+        "id": "onboarding",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198689620084/recommended/1147690/",
+            "quote": "progression is slow in the beginning but trust the process"
+          },
+          {
+            "source": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth)",
+            "quote": "For early game, do 30 minute runs."
+          }
+        ],
+        "note": "Adventure idle from the start and rebirths in the first hour, but a terse start that pushes players to guides."
+      },
+      {
+        "id": "pacing",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198023652905/recommended/1147690/",
+            "quote": "the game gets a lot more idle after the first 3 titans"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198844163569/recommended/1147690/",
+            "quote": "you see a new one oppening quite slow"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561197993577211/recommended/1147690/",
+            "quote": "Expect a week or more between goals"
+          }
+        ],
+        "note": "Rubric anchor (~50). Great early unfolding, then week-scale walls. Ending exists (Build 1.260 added the final titans); reviewers took ~2-5.5 years."
+      },
+      {
+        "id": "depth",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth)",
+            "quote": "The best ratio is 1:37.5k:1."
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198041121723/recommended/1147690/",
+            "quote": "putting off some additional growth for now for the massive exponential growth you'll achieve later"
+          }
+        ],
+        "note": "Many interacting systems (energy/magic, NGUs, titans, gear, challenges) but optimal allocations are solved by guides; one meta per stage."
+      },
+      {
+        "id": "respect",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198041121723/recommended/1147690/",
+            "quote": "the offline mode keeps making your stats better for up to a year after you last played"
+          },
+          {
+            "source": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth)",
+            "quote": "Works offline, but no items drop while you are offline."
+          },
+          {
+            "source": "https://ngu-idle.fandom.com/wiki/4G%27s_Sellout_Shop",
+            "quote": "where Arbitrary Points (AP) and Kongregate's currency Kreds can be spent"
+          }
+        ],
+        "note": "Free; AP is earned in play and also sold (Steam IAP / Kreds) for timed potions and boosts. Reviewers call purchases fair; offline loses item drops; some content needs days of running."
+      },
+      {
+        "id": "juice",
+        "score": 30,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198190552159/recommended/1147690/",
+            "quote": "the silly graphics give dopamine!"
+          }
+        ],
+        "note": "Humour and bosses carry the feedback; little evidence of layered audiovisual payoff."
+      },
+      {
+        "id": "polish",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://steamcommunity.com/profiles/76561198776164168/recommended/1147690/",
+            "quote": "Bugs: [checked] Never heard of"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198165840038/recommended/1147690/",
+            "quote": "my computer has crashed when the only thing I am running is this game"
+          },
+          {
+            "source": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1147690",
+            "quote": "Build 1.260: Lore's End (2021-06-27), latest announcement"
+          }
+        ],
+        "note": "Stable and light; one crash report; development effectively finished in 2021."
+      },
+      {
+        "id": "content",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1147690",
+            "quote": "hundreds of hours of content"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198105492478/recommended/1147690/",
+            "quote": "5 years and a half it took me to finish this game"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198123474624/recommended/1147690/",
+            "quote": "I'm about 3-6 months away from beating the game completely"
+          }
+        ],
+        "note": "Rubric anchor (~80). 300 bosses, 350+ items, multiple difficulties, an ending. Lapse: \"endgame is barebones\" and half the bosses are placeholder text (negative review)."
+      },
+      {
+        "id": "hook",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1147690",
+            "quote": "experience the joy of Numbers Going Up!"
+          },
+          {
+            "source": "https://steamcommunity.com/profiles/76561198043996231/recommended/1147690/",
+            "quote": "Very fun and funny idler."
+          }
+        ],
+        "note": "Identity is the humour, not a mechanical pitch nobody else owns."
+      },
+      {
+        "id": "access",
+        "score": 35,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/api/appdetails?appids=1147690",
+            "quote": "platforms: Windows only on Steam; supported_languages: 'English'; categories include Steam Cloud"
+          },
+          {
+            "source": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth)",
+            "quote": "[Kartridge] The game will make a local backup every 30 minutes."
+          }
+        ],
+        "note": "Steam (Windows) plus web portals (Kongregate/Kartridge); English only; no mobile."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Gate automation on stat thresholds the player can see coming (AutoKill a titan once Power/Toughness clear a named bar), so the next automation is a visible goal rather than a purchase.",
+        "evidence": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth) \"can be AutoKilled once you have 3K power and 2.5K toughness\"",
+        "dimension": "pacing"
+      },
+      {
+        "practice": "Let personality carry a numbers-heavy game: named, joke bosses and item flavour make each new floor/biome memorable even with cheap art.",
+        "evidence": "https://steamcommunity.com/profiles/76561198041100695/recommended/1147690/ \"Humor on the good side of crude and you do feel a sense of progression\"",
+        "dimension": "hook"
+      },
+      {
+        "practice": "Avoid the guide-dependence trap: NGU players are told to follow Discord/wiki ratios; expose the right allocation in place (tooltips that turn green when a skill is capped, which NGU itself does for Basic Training).",
+        "evidence": "https://ngu-idle.fandom.com/wiki/New_Player_Guide_(Truth) \"the hover text (\\\"On rebirth, your new cap will be ...\\\") will turn green\"",
+        "dimension": "ui"
+      }
+    ]
+  }
+}

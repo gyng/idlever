@@ -1,0 +1,115 @@
+{
+  "$comment": "Package layer weights (eval/PACKAGE_EVAL.md). 0-3 per dimension, renormalised to 100 by eval/package-score.mjs over the assessed dimensions. Gate: weight >= 2.5 and score < 50 blocks ship-ready. Fun is NOT a dimension here; it is reported beside the package score from the card's fun axes (eval-fun) or package.fun.",
+  "dims": [
+    {
+      "id": "art",
+      "name": "Visual art and style"
+    },
+    {
+      "id": "motion",
+      "name": "Animation and FX"
+    },
+    {
+      "id": "ui",
+      "name": "UI/UX and readability"
+    },
+    {
+      "id": "audio",
+      "name": "Audio"
+    },
+    {
+      "id": "onboarding",
+      "name": "Onboarding and first session"
+    },
+    {
+      "id": "pacing",
+      "name": "Progression pacing (long arc)"
+    },
+    {
+      "id": "depth",
+      "name": "Build depth and agency"
+    },
+    {
+      "id": "respect",
+      "name": "Idle/offline respect and fairness"
+    },
+    {
+      "id": "juice",
+      "name": "Juice and feedback"
+    },
+    {
+      "id": "polish",
+      "name": "Performance, stability, polish"
+    },
+    {
+      "id": "content",
+      "name": "Content breadth and longevity"
+    },
+    {
+      "id": "hook",
+      "name": "Hook and identity"
+    },
+    {
+      "id": "access",
+      "name": "Accessibility and reach"
+    }
+  ],
+  "presets": {
+    "idle-package": {
+      "$comment": "Default: auto-played idle games (Idlever, Loop Hero, Melvor, Soda Dungeon 2).",
+      "weights": {
+        "art": 2,
+        "motion": 1.5,
+        "ui": 3,
+        "audio": 1,
+        "onboarding": 3,
+        "pacing": 3,
+        "depth": 3,
+        "respect": 2.5,
+        "juice": 2,
+        "polish": 2,
+        "content": 2.5,
+        "hook": 1.5,
+        "access": 1
+      }
+    },
+    "incremental-package": {
+      "$comment": "Pure number/queue incrementals (Antimatter Dimensions, NGU, Trimps, Increlution): art, motion and juice matter less; depth slightly less load-bearing.",
+      "weights": {
+        "art": 1,
+        "motion": 1,
+        "ui": 3,
+        "audio": 1,
+        "onboarding": 3,
+        "pacing": 3,
+        "depth": 2.5,
+        "respect": 2.5,
+        "juice": 1.5,
+        "polish": 2,
+        "content": 2.5,
+        "hook": 1.5,
+        "access": 1
+      }
+    }
+  },
+  "bands": {
+    "$comment": "Set by the first calibration (eval/PACKAGE_EVAL.md \u00a75): the strongest comparables land 63-68, loved small-scope titles 53-55, the weakest 47. An 80 is a per-dimension benchmark; no game averages it.",
+    "shipReady": 68,
+    "shippable": 60,
+    "rough": 50
+  },
+  "gate": {
+    "minWeight": 2.5,
+    "minScore": 50
+  },
+  "ship": {
+    "funShip": 80,
+    "packageShip": 65,
+    "funEarlyAccess": 72,
+    "packageEarlyAccess": 55
+  },
+  "overall": {
+    "fun": 0.4,
+    "package": 0.6
+  }
+}

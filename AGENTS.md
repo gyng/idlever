@@ -67,12 +67,12 @@ Read docs/HANDOFF.md before resuming work. It records passing checks, failed
 runs and remaining limits. The alpha has routine mechanical acceptance; the
 separate exhaustive audits and fun-rating goal remain unfinished.
 
-| Area         | References                                   |
-| ------------ | -------------------------------------------- |
-| Design       | PLAN.md, docs/CUT30_5.md                     |
-| Current work | docs/HANDOFF.md, docs/WORK_QUEUE.md          |
-| Art          | art/ART.md, docs/ART_DIRECTION.md            |
-| Validation   | docs/DEV_VALIDATION_TIERS.md, eval/RATING.md |
+| Area         | References                                                         |
+| ------------ | ------------------------------------------------------------------ |
+| Design       | PLAN.md, docs/CUT30_5.md                                           |
+| Current work | docs/HANDOFF.md, docs/WORK_QUEUE.md                                |
+| Art          | art/ART.md, docs/ART_DIRECTION.md                                  |
+| Validation   | docs/DEV_VALIDATION_TIERS.md, eval/RATING.md, eval/PACKAGE_EVAL.md |
 
 ## GitHub Pages releases
 
@@ -123,6 +123,7 @@ node tools/gfx-eval.mjs --out DIR --resume                   # skip moments alre
 node tools/browser.mjs --probe                               # must print D3D12 (NVIDIA …); --headless prints SwiftShader
 python3 art/pack.py && python3 art/art-qc.py
 eval/score.sh eval/cards/<card>.json
+node eval/package-score.mjs eval/package/<card>.json          # package layer (13 craft dims) beside fun; --table eval/package/*.json --md; --drop=audio; --self-test; eval/PACKAGE_EVAL.md
 ```
 
 Dev URL params (dev build only): `?seed=N&fresh=1`, `?absent=8h`, `?rules=<text>`, `?speed=4`,

@@ -1,0 +1,311 @@
+{
+  "game": "Loop Hero",
+  "build": "Steam store page read 2026-10-15 (PC 2021-03-04; Switch 2021-12; Xbox 2023-04; iOS/Android 2024-04-30)",
+  "genre": "idle-hybrid",
+  "presets": "../riddle/eval/presets.json",
+  "evaluator": "desk-researcher-A",
+  "package": {
+    "preset": "idle-package",
+    "gradedOn": "2026-10-15",
+    "basis": "Desk only, not played: Steam store page and review API (English, ~17.4k reviews, 91% positive; 359 reviews sampled), Wikipedia reception, mobile launch coverage, and this repo's prior competitor research.",
+    "fun": {
+      "score": 74.0,
+      "source": "eval/calibration/loop-hero.d34605e.reanchor.json (project re-anchor card on idle-hybrid)",
+      "confidence": "medium"
+    },
+    "killCriteria": {
+      "crashOrDataLoss": false,
+      "paidSkipOfCreatedWait": false,
+      "coreActImpossibleAtTargetViewport": false
+    },
+    "dims": [
+      {
+        "id": "art",
+        "score": 80,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 212419336] the art style and mechanics are incredibly unique and high quality"
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Loop_Hero",
+            "quote": "Critics praised ... \"the 80's aesthetic of the game.\""
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 213914175] Looks bland and uninspiring with its disgusting gamma."
+          }
+        ],
+        "note": "Rubric ~80 anchor; limited-palette pixel art and card tiles praised across reviews and critics. Lapse: a minority dislike the dark, washed palette; some turn the CRT filter off."
+      },
+      {
+        "id": "motion",
+        "score": 62,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 193003808] I would expect a bit less randomness and a bit more depth regarding items combinations, builds and also animations"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 231074292] The interface (although I did turn the CRT effect off after a while"
+          }
+        ],
+        "note": "Rubric lists the battle panel near 80, but desk evidence shows sparse, small-sprite battle animation; hits read but are simple. Graded below the anchor; thin evidence."
+      },
+      {
+        "id": "ui",
+        "score": 55,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 220057592] Tooltips and english is not super clear to make effect interactions clear."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 227992603] I find I have to keep googling mechanics because they're not explained in-game."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 224307863] there is an ingame wiki"
+          }
+        ],
+        "note": "Board is readable at a glance, but card interactions need a wiki; a 'needs guides' cluster exists. Mobile got a revamped interface (2024)."
+      },
+      {
+        "id": "audio",
+        "score": 82,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 226693694] Fantastic soundtrack - Retro oldschool artstyle"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 206657314] the presentation is fantastic, and the soundtrack is also great."
+          },
+          {
+            "source": "https://store.steampowered.com/app/1282730/Loop_Hero/",
+            "quote": "Loop Hero Soundtrack: S$4.25 (50% off S$8.50) (OST sold as DLC and in bundles)"
+          }
+        ],
+        "note": "Review consensus only (even negative reviews praise the music); not listened to. Above 80 rests on many independent reviewers plus a sold OST."
+      },
+      {
+        "id": "onboarding",
+        "score": 48,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 128797350] The tutorial is so weak that the developers apologize for it instead of fixing it."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 226693694] The biggest downside is the slow start. You'll replay the early loops many times"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 227887026] I also STRONGLY recommend to watch some tutorials on the game."
+          }
+        ],
+        "note": "Core act (place a card; hero walks) in the first minute, but terse explanations and a slow early unlock curve; repeated 'watch a video first' advice."
+      },
+      {
+        "id": "pacing",
+        "score": 50,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 212419336] The progression is EXTREMELY slow, even using optimal farming methods."
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Loop_Hero",
+            "quote": "Evan Lahti ... felt that \"the lack of new ones hurt the later game,\""
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 224307863] the game has a very satisfying feel of progress with almost every loop."
+          }
+        ],
+        "note": "Rubric ~50 anchor. Four chapters with an ending (casual campaign of a few dozen hours; HLTB was not reachable); resource-grind walls between chapters are the main complaint."
+      },
+      {
+        "id": "depth",
+        "score": 75,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 225394202] very satisfying once you figured out a proper setup your character"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 213818006] Once you have found your \"building placement,\" it's a rather brainl[ess]"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 206657314] It just doesn't offer any interesting decision making for me."
+          }
+        ],
+        "note": "Deck x road x class x camp is a real build space (rubric anchor 80), but several reviewers report a dominant placement once found; no expert scripting layer. Graded just under the anchor."
+      },
+      {
+        "id": "respect",
+        "score": 70,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1282730/Loop_Hero/",
+            "quote": "Base game: S$14.50 (one price; the only DLC is the soundtrack)"
+          },
+          {
+            "source": "https://toucharcade.com/2024/04/30/loop-hero-mobile-free-download-out-now-iphone-android-ipad-unlock-iap/",
+            "quote": "free to start release with one time unlock priced at $6.99"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 228522036] the fact that they won't give you the full resources for losing is kind of the opposite that I look for"
+          }
+        ],
+        "note": "One price on every platform, no dailies or timers. But no offline progress at all (the loop runs only while the game is open) and death keeps only 30% of loot (100% on retreat at camp, 60% elsewhere; prior research). Fair, but not an idle-respect game."
+      },
+      {
+        "id": "juice",
+        "score": 60,
+        "mode": "desk",
+        "confidence": "low",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 226693694] Risk vs. reward balance feels satisfying"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 224307863] a very satisfying feel of progress with almost every loop"
+          }
+        ],
+        "note": "Satisfaction quotes are about the loop, not feedback production; tile placement and boss arrival read clearly but feedback is understated. Inference."
+      },
+      {
+        "id": "polish",
+        "score": 62,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 235663961] It crashes no matter what. The \"run with rosetta\" fix no longer works."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 196127148] since it is no longer supported, it crashes every 30 seconds."
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 227837889] The game feels like it's been abandoned by the developers."
+          }
+        ],
+        "note": "Generally stable on Windows with a 91% rating, but macOS crash reports (store page: Apple M1 officially unsupported) and no recent patches. Isolated crash reports, not systemic data loss, so no kill."
+      },
+      {
+        "id": "content",
+        "score": 65,
+        "mode": "desk",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "source": "https://en.wikipedia.org/wiki/Loop_Hero",
+            "quote": "Metacritic ... 82/100 on PC and 84/100 on Switch"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 229469012] It wouldn't be too bad if there was more variety between the runs"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 227861273] I didn't feel like there is enough tiles combinations and interac[tions]"
+          }
+        ],
+        "note": "Complete campaign with an ending, four chapters, several classes and a camp tree; variety thins in later chapters. Above the 50 anchor as a finished, varied campaign; below 80 for repetition."
+      },
+      {
+        "id": "hook",
+        "score": 85,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 226693694] - Fresh concept"
+          },
+          {
+            "source": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100",
+            "quote": "[rec 227887026] It is really one of a kind"
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Loop_Hero",
+            "quote": "nominated for \"Best Independent Game\" at The Game Awards 2021"
+          }
+        ],
+        "note": "Rubric ~80 anchor ('you build the world the hero walks'). Above 80: independent reviewers and an award nomination state the novelty; no lapse seen in the store capsule."
+      },
+      {
+        "id": "access",
+        "score": 62,
+        "mode": "desk",
+        "confidence": "high",
+        "evidence": [
+          {
+            "source": "https://store.steampowered.com/app/1282730/Loop_Hero/",
+            "quote": "English and 12 more ... with interface, full audio, and subtitle support"
+          },
+          {
+            "source": "https://en.wikipedia.org/wiki/Loop_Hero",
+            "quote": "Later versions followed for Switch, Xbox One and Xbox Series X/S, and Android and iOS."
+          },
+          {
+            "source": "https://www.gematsu.com/2024/02/loop-hero-coming-to-ios-android-on-april-30",
+            "quote": "cloud save support ... a revamped interface for mobile"
+          }
+        ],
+        "note": "Rubric anchored it at 50 when PC/Switch only; now on PC, consoles and phones with mobile cloud save and 13 languages. No reduced-motion or text-scale options listed (the store links only Steam's generic accessibility page)."
+      }
+    ],
+    "learn": [
+      {
+        "practice": "Sell the pitch in one image: the player authors the world the hero auto-walks, and every screenshot shows both the hero and the player's choices on one board. An auto-played dungeon should show the configured stance/tactic acting on screen, not only in a menu.",
+        "evidence": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100 [rec 225111707] an auto-battler where you build the world around your hero using cards",
+        "dimension": "hook"
+      },
+      {
+        "practice": "Graded exit stakes (100% at camp, 60% retreat, 30% death) make every leave decision legible; but players resent the death cut as grind, so keep losses in time, not wealth, unless the player chose the stake.",
+        "evidence": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100 [rec 228522036] they won't give you the full resources for losing",
+        "dimension": "respect"
+      },
+      {
+        "practice": "Explain interactions in place; Loop Hero's biggest onboarding complaint is having to google mechanics. Put a codex entry one tap from the thing itself.",
+        "evidence": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100 [rec 227992603] I have to keep googling mechanics because they're not explained in-game",
+        "dimension": "ui"
+      },
+      {
+        "practice": "A memorable soundtrack carries long passive sessions; even negative reviews cite it.",
+        "evidence": "https://store.steampowered.com/appreviews/1282730?json=1&filter=all&language=english&num_per_page=100 [rec 218364520] the music is quite memorable and yet the crushing grind is unbearable",
+        "dimension": "audio"
+      }
+    ]
+  }
+}

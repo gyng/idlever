@@ -113,3 +113,14 @@ All four selected; run in sequence (each touches core pacing and is verified at 
 2. **Feats for later workers** (§5b plan; time fallbacks kept for IDLE) — next.
 3. **Second hero on day 1–2** — a natural day-1/2 bloodline beat the default players use (answers the day-2 cliff).
 4. **First reset payoff** — a day-1 reset-like moment (default Legacy order or a spend at the first death; +50–200%).
+
+## Package-eval cross-check (2026-10-15)
+
+The whole-package grades ([research/PACKAGE_REPORT_2026-10.md](research/PACKAGE_REPORT_2026-10.md),
+[research/PACKAGE_GRADES_2026-10.md](research/PACKAGE_GRADES_2026-10.md)) cover 14 competitors and
+Idlever. They put Idlever's long-arc **pacing at 45, the only load-bearing gate it fails**. The field
+median is 48; Antimatter Dimensions scores 80 and Increlution 68. This supports the owner order above:
+the second hero (3) and the first reset payoff (4) are package-eval learning #1, the feats (2) are #2,
+and the cadence (1) is #3. A new numeric target follows from the comparison: PICKED's day 2–7 max
+major-beat gap must fall to ≤ 24 h (now 48 h). The other proposals (a codex, UI defects, worker
+scenes, an audio pass) are in docs/WORK_QUEUE.md under "Package-eval proposals".
