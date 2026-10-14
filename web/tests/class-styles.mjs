@@ -3,6 +3,20 @@ import { stateWidths } from "./lib/viewport-cases.mjs";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
+/** Sheets open (and re-open when a review closes) with an overshooting j-sheet animation; under a loaded suite Playwright's
+ *  two-frame stability check can pass at the apex and the tap lands beside the control (Cut227, the class-tree flake). Tap
+ *  only once the control's window has settled. */
+async function settledClick(locator) {
+  await locator.evaluate((el) =>
+    Promise.all(
+      (el.closest(".sheet-wrap") ?? document.body)
+        .getAnimations({ subtree: true })
+        .filter((a) => a.effect?.getComputedTiming().iterations !== Infinity)
+        .map((a) => a.finished.catch(() => {})),
+    ),
+  );
+  await locator.click();
+}
 const url = execFileSync("bash", ["tools/dev.sh"], {
     cwd: new URL("../../", import.meta.url),
     encoding: "utf8",
@@ -67,32 +81,37 @@ try {
       await window.showStyle();
     });
     const ready = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".class-style-choose").click();
+    await settledClick(page.locator(".class-style-choose"));
     assert.equal(await page.evaluate(() => window.__idlever.engine.save()), ready);
     assert.match(await page.locator(".class-style-review").textContent(), /Automatic tactic/);
-    await page.locator(".class-style-review button").first().click();
+    await settledClick(page.locator(".class-style-review button").first());
     assert.equal(await page.evaluate(() => window.__idlever.engine.save()), ready);
     // Stale review checks the actual updated parent choice; no engine mutation by confirmation.
-    await page.locator(".class-style-choose").click();
+    await settledClick(page.locator(".class-style-choose"));
     await page.evaluate(async () => {
       await window.__idlever.setClass("caster");
     });
     const switched = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".class-style-confirm").click();
+    await settledClick(page.locator(".class-style-confirm"));
     assert.equal(await page.locator(".class-style-feedback").textContent(), "Review changed");
     assert.equal(await page.evaluate(() => window.__idlever.engine.save()), switched);
-    await page.locator(".class-style-review button").first().click();
+    await settledClick(page.locator(".class-style-review button").first());
     await page.evaluate(async () => window.showStyle());
     // Real worker refusal: run starts after review without changing the UI's cached review.
-    await page.locator(".class-style-choose").click();
-    await page.evaluate(async () => window.__idlever.engine.send());
+    await settledClick(page.locator(".class-style-choose"));
+    // Persistent heroes (a327b8dd): a sent run is still home until its first turn; step one so the hero is away.
+    await page.evaluate(async () => {
+      const e = window.__idlever.engine;
+      await e.send();
+      await e.step(1);
+    });
     const away = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".class-style-confirm").click();
+    await settledClick(page.locator(".class-style-confirm"));
     await page.waitForFunction(() =>
       document.querySelector(".class-style-feedback")?.textContent.includes("hero away"),
     );
     assert.equal(await page.evaluate(() => window.__idlever.engine.save()), away);
-    await page.locator(".class-style-review button").first().click();
+    await settledClick(page.locator(".class-style-review button").first());
     await page.evaluate(async () => window.showStyle());
     // Double activation is one actual worker call; adopting the compiled set exposes the named row.
     await page.evaluate(() => {
@@ -104,7 +123,7 @@ try {
         return call(id);
       };
     });
-    await page.locator(".class-style-choose").click();
+    await settledClick(page.locator(".class-style-choose"));
     await page.locator(".class-style-confirm").evaluate((el) => {
       el.click();
       el.click();
@@ -131,9 +150,9 @@ try {
       openHero(a, undefined, "class");
     });
     assert.match(await page.locator(".class-style-choose").textContent(), /Remove path/);
-    await page.locator(".class-style-choose").click();
+    await settledClick(page.locator(".class-style-choose"));
     assert.match(await page.locator(".class-style-review").textContent(), /Tactic removed/);
-    await page.locator(".class-style-confirm").click();
+    await settledClick(page.locator(".class-style-confirm"));
     await page.waitForFunction(() => window.__idlever.lineage.class_styles.selected === null);
     assert.ok(
       await page.evaluate(
@@ -147,7 +166,10 @@ try {
     );
     assert.ok(
       await page.evaluate(() => {
-        const h = document.querySelector(".hero-line");
+        // Hero Hub (Cut220): the Skills heading carries class + style, as the retired `.hero-line` did.
+        const h = document.querySelector(
+          '.sheet-wrap:not([hidden]) [data-hub-panel="skills"] .hero-hub-heading',
+        );
         return (
           h.scrollWidth <= h.clientWidth &&
           [...h.children].every(

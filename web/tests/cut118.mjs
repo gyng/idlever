@@ -183,7 +183,8 @@ try {
       return { label, screen: app.screen };
     }, REPORT);
     check(
-      one.label === "send" && one.screen === "watch",
+      // 5f31e378 renamed the action "send" → "delve" (the paying case's "collect & delve" above).
+      one.label === "delve" && one.screen === "watch",
       `nothing to collect: one tap sends (${one.label} → ${one.screen})`,
     );
     await page.close();

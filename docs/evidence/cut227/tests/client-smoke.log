@@ -1,0 +1,40 @@
+client suite: smoke (38 selected; 157 current full; 200 exhaustive groups); critical journeys, not full acceptance
+ok   survivor-builds 31.4s (31.0s)  {"checks":171,"layouts":9,"result":"PASS"}
+ok   hero-hub        104.1s (72.8s)  {"result":"PASS","checks":4910,"views":15,"cases":3}
+ok   fights:break    111.2s (7.1s)  fights: ok (6 checks)
+ok   exit-keep-close 123.8s (12.6s)  {"contract":"Cut206 controlled actual pickup/exit","outcomes":[{"tier":"bank","screen":"report","gold":512,"keepCalls":0},{"tier":"return","screen":"report","gold":512,"keepCalls":0},{"tier":"death","screen":"death","gold":508,"keepCalls":0}]}
+ok   bloodline-founding 131.0s (19.8s)  1440 real-WASM cancel/exact save/Scout controls/off Ready/confirmed price/cap PASS
+ok   post-clear-town 144.4s (13.4s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+ok   ui:frame        148.3s (24.5s)  ui: ok (60 checks · 24.0s)
+ok   screens         148.8s (37.6s)  screens: ok (59 checks · 9 screens linted · 35 buttons clicked · 37.1s)
+ok   ctxloss         157.0s (45.7s)  ctxloss: ok (19 checks)
+ok   town-save       157.4s (13.0s)  39 manual construction persistence checks PASS
+ok   watch-console   166.6s (18.2s)  1440 labels/touch/geometry/speed/pause/Town PASS
+ok   pen-edit        167.5s (10.5s)  pen-edit: all ok
+ok   death-fix-discovery 173.8s (25.0s)  1440 13 comparison boundaries / actual free fix ordering / prices / no mutation PASS
+ok   town-clock      181.0s (13.5s)  town-clock: PASS (36 checks)
+ok   report-supply-limit 185.4s (11.6s)  1440 supply notice and earned gold/sales/grants/spend/old-wire/zero/tooltip/pointer/keyboard/save PASS
+ok   watch-log       189.0s (31.6s)  1440 1 ordered floor attribution and80-entry bound PASS
+ok   king-advice-scope 189.5s (23.0s)  1440 King replay scope/count/price/eligibility checks PASS
+ok   numbered-descents 193.4s (8.1s)  1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS
+ok   first-plot      196.5s (6.9s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+ok   death-actions   197.7s (8.6s)  1440 recorded boss tooltip PASS
+ok   class-switch    200.3s (19.3s)  1440 owned class reply/first paint/no stale gun row/player+drills/one-call/refusal/exact reload PASS
+ok   debug-export    205.5s (7.8s)  1440 shipping debug export, restore, live watch and recovery PASS
+ok   checkpoint-gold 206.0s (9.6s)  1440 9 checkpoint gold/omitted zero/swap/theft/mixed pickup/old wire PASS
+ok   bloodline-training 206.6s (6.3s)  1440 22 bloodline training attribution checks PASS
+ok   numbers-agree   209.6s (3.1s)  11 numbers agree: vs pinned to the bar · pending vs meter · purse fall named PASS
+ok   gunner-observer 211.3s (5.3s)  1440 21 gun picture-clock/seek/HUD checks PASS
+ok   game-menu       211.7s (18.3s)  81 game menu checks PASS
+ok   package-selection 211.7s (6.2s)  1440 20 selected Tactics checks PASS
+ok   report-reading  215.8s (6.1s)  1440 two verdict/back cycles/scroll/absence/collapse/new report/exact save PASS
+ok   forge-requests  216.6s (4.9s)  1440 34 Forge request checks PASS
+ok   worker-first-act 217.1s (5.8s)  1440 20 worker first-act checks PASS
+ok   forecast-requests 218.1s (6.4s)  1440 16 forecast lifecycle checks PASS
+ok   worker-purchases 219.8s (4.0s)  1440 7 worker purchase checks PASS
+ok   legacy-wire     220.0s (1.9s)  real WASM obsolete respec refuses toward Reclone preview; complete save unchanged PASS
+ok   package-paired  220.3s (3.7s)  package-paired: 52 checks PASS
+ok   report-class-xp 220.4s (3.3s)  1440 20 class XP/visible rewards/slot identity/slice merges/old wire PASS
+ok   clarity:paint   246.1s (25.7s)  clarity paint: ok (5 checks)
+ok   watch-live-edge 272.3s (26.2s)  watch-live-edge: ok (10 checks)
+ok: 38/38 client gates in 272.3s

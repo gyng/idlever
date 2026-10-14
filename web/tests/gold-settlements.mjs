@@ -11,7 +11,9 @@ const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const manifest = JSON.parse(
   read(
-    process.env.IDLEVER_GOLD_SETTLEMENT_INPUTS ?? "docs/evidence/cut222/settlements-inputs.json",
+    // Current package fd56 (Cut226). Earlier manifests stay as history: cut222 (a2ab), cut226 1b93.
+    process.env.IDLEVER_GOLD_SETTLEMENT_INPUTS ??
+      "docs/evidence/cut226/settlements-inputs-fd56.json",
   ),
 );
 const binary = read("web/src/engine/pkg/idlever_wasm_bg.wasm");

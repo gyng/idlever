@@ -298,12 +298,18 @@ try {
   assert.equal(owners.afterGold, owners.gold - owners.price);
   checks += 3;
   // Existing build menus remain free read-only routes, using the actual selected resident.
+  // The Hero Hub (Cut220) replaced the bloodline tabs: Loadouts → Gear, Class → Skills, Legacy → Attributes.
+  const hubSection = { loadouts: "gear", class: "skills", legacy: "attributes" };
   for (const tab of ["loadouts", "class", "legacy"]) {
     await load("earned-seed-1-balanced");
     await open();
     const before = await save();
     await button(`route:${tab}`).click();
-    await page.locator(`[data-bloodline-tab="${tab}"][aria-selected="true"]`).waitFor();
+    await page
+      .locator(
+        `.sheet-wrap:not([hidden]) [data-hub-tab="${hubSection[tab]}"][aria-selected="true"]`,
+      )
+      .waitFor();
     await settled();
     assert.equal(await save(), before, `${tab} route is free/read-only`);
     checks++;

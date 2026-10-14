@@ -2,7 +2,7 @@ import type { App } from "../app";
 import { h, replace } from "./dom";
 import { heroPresence } from "./hero-presence";
 import { renderBloodlineLoadouts } from "./bloodline-loadouts";
-import { renderClassTree } from "./class-tree";
+import { renderClassTree, renderClassTreeMilestone } from "./class-tree";
 import { renderClassStyles, classStyleName } from "./class-styles";
 import { heroLifePanel } from "./hero-life";
 import { renderLegacy } from "./legacy";
@@ -393,18 +393,10 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       if (abilities) host.append(abilities);
       const tree = renderClassTree(context, refreshHub, new Set(), { inspectAway: true });
       const styles = renderClassStyles(context, refreshHub, { inspectAway: true });
-      // the tree opens at L2 (class-tree.ts); before then the abilities above stand alone, and the tree's first door is named
-      const firstNode = L.class_tree?.nodes.find((n) => n.parent === null);
       host.append(
         tree ??
-          (firstNode
-            ? h(
-                "section",
-                { class: "class-tree-soon num" },
-                h("b", null, /* copy:label */ "Class skills"),
-                h("small", null, `L${Math.max(2, firstNode.required_level)}`),
-              )
-            : h("p", {}, /* copy:label */ "Skills unavailable")),
+          renderClassTreeMilestone(context) ??
+          h("p", {}, /* copy:label */ "Skills unavailable"),
       );
       if (styles) host.append(styles);
     } else if (section === "behaviour") {

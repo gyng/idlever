@@ -33,6 +33,22 @@ async function installFixture(page) {
     };
   });
 }
+/** The review window opens with an overshooting j-sheet animation; under a loaded suite Playwright's two-frame stability check can
+ *  pass at the overshoot apex and the tap lands beside `Learn skill` (Cut227: review open, confirm enabled, no feedback, nothing
+ *  spent). Tap only once the window has settled, as a player's eye would. */
+async function confirmReview(page) {
+  const confirm = page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm");
+  await confirm.evaluate((el) =>
+    Promise.all(
+      el
+        .closest(".sheet-wrap")
+        .getAnimations({ subtree: true })
+        .filter((a) => a.effect?.getComputedTiming().iterations !== Infinity)
+        .map((a) => a.finished.catch(() => {})),
+    ),
+  );
+  await confirm.click();
+}
 const browser = await launchBrowser();
 try {
   for (const width of [320, 400, 1440]) {
@@ -64,7 +80,11 @@ try {
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-tree-soon").textContent(),
       /L3.*D8/,
     );
-    await page.locator(".sheet-wrap:not([hidden])").locator(".hero-class").click();
+    // Hero Hub (Cut220) replaced the Class tab's `.hero-class` chip with the Skills section's button.
+    await page
+      .locator('.sheet-wrap:not([hidden]) [data-hub-panel="skills"] button')
+      .filter({ hasText: /^Change class$/ })
+      .click();
     const fighter = page
       .locator(".sheet-wrap:not([hidden])")
       .locator(".class-row")
@@ -108,7 +128,7 @@ try {
     await choose.click();
     await page.evaluate(async () => window.__idlever.setClass("rogue"));
     const switched = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
+    await confirmReview(page);
     assert.equal(
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-feedback").textContent(),
       "Review changed",
@@ -121,9 +141,14 @@ try {
       .click();
     await page.evaluate(() => window.showSkill(3, 8));
     await choose.click();
-    await page.evaluate(async () => window.__idlever.engine.send());
+    // Persistent heroes (a327b8dd): a sent run is still home until its first turn; step one so the hero is away.
+    await page.evaluate(async () => {
+      const e = window.__idlever.engine;
+      await e.send();
+      await e.step(1);
+    });
     const away = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
+    await confirmReview(page);
     await page.waitForFunction(() =>
       document.querySelector(".class-path-feedback")?.textContent.includes("hero away"),
     );
@@ -197,7 +222,7 @@ try {
       await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-review").textContent(),
       /Refund 1/,
     );
-    await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
+    await confirmReview(page);
     await page.waitForFunction(() => window.__idlever.lineage.class_tree.spent === 0);
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .class-path-review"),
@@ -224,7 +249,7 @@ try {
           .locator(".sheet-wrap:not([hidden])")
           .locator(`[data-class-path="${node.id}"] .class-path-choose`)
           .click();
-        await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
+        await confirmReview(page);
         await page.waitForFunction(
           (spent) => window.__idlever.lineage.class_tree.spent === spent,
           i + 1,
@@ -257,7 +282,7 @@ try {
     // Early middle tier shows one child and one later milestone; full map exposes all future nodes.
     await page.evaluate(() => window.showSkill(5, 13));
     await choose.click();
-    await page.locator(".sheet-wrap:not([hidden])").locator(".class-path-confirm").click();
+    await confirmReview(page);
     await page.waitForFunction(() => window.__idlever.lineage.class_tree.spent === 1);
     await page.waitForFunction(
       () => !document.querySelector(".sheet-wrap:not([hidden]) .class-path-review"),
