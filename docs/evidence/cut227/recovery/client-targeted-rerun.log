@@ -1,0 +1,13 @@
+client suite: targeted (4 selected; 158 current full; 201 exhaustive groups)
+FAIL home-heroes     48.8s (46.9s)  Node.js v26.5.0
+       name: 'TimeoutError'
+         at /home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-heroes.mjs:105:15 {
+FAIL home-residents  127.9s (79.2s)  Node.js v26.5.0
+     AssertionError [ERR_ASSERTION]: actual tent centre routes to its own action beside residents
+         at ok (file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-residents.mjs:38:12)
+         at file:///home/g/p/riddle/.claude/worktrees/agent-ab3974be498ebcc2b/web/tests/home-residents.mjs:275:11
+         at runNextTicks (node:internal/process/task_queues:65:5)
+         at process.processImmediate (node:internal/timers:502:9) {
+ok   class-tree      284.7s (156.7s)  1440 cumulative skills/all classes/pick budget/staged disclosure/cancel/stale/refusal/single transaction/exact reload/free reset/resources PASS
+ok   hero-life       391.9s (107.2s)  {"checks":307,"earnedSeeds":[1,13],"controlledStates":["reincarnating-12000","recovering-11990","recovering-1","ready-0","away"],"layoutCases":36,"result":"PASS"}
+FAIL: 2/4 client gates in 391.9s
