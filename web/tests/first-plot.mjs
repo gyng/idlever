@@ -105,7 +105,7 @@ try {
         displayedId: e.dataset.currentHero,
         oneLine: range.getClientRects().length === 1,
         tooltip: e.title,
-        expectedTooltip: `${hero.name} · Life ${hero.incarnation}`,
+        expectedTooltip: `${hero.name} · Clone ${hero.incarnation}`,
         overflow: document.documentElement.scrollWidth > innerWidth,
       };
     });

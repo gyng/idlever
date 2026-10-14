@@ -62,7 +62,7 @@ export type TownHooks = {
 const LABEL: Record<string, string> = {
   guild: "Guild reception",
   pool: "Recovery pool",
-  device: "Reincarnation device",
+  device: "Clone vat",
   mouth: "Delve",
   tent: "hero",
   crate: "Loadouts",
@@ -75,7 +75,7 @@ const LABEL: Record<string, string> = {
   worker: "next worker",
 };
 /* copy:label */
-const SERVICE_LABEL: Record<string, string> = { guild: "Guild", pool: "Pool", device: "Revival" };
+const SERVICE_LABEL: Record<string, string> = { guild: "Guild", pool: "Pool", device: "Clone vat" };
 /* copy:label */
 const BUILD_NAME: Record<string, string> = {
   house: "house",

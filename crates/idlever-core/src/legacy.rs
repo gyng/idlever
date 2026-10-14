@@ -170,10 +170,10 @@ fn purchase(g: &mut Game, id: &str) -> Result<(), String> {
 pub fn respec_offer(l:&LineageState,away:bool)->crate::wire::LegacyRespec {
     let offer=crate::persistent::preview(l,away);
     crate::wire::LegacyRespec{refund:offer.refund,available:false,
-        points_after:offer.points_after,blocked:Some(offer.blocked.unwrap_or_else(||"Confirm hero rebirth".into()))}
+        points_after:offer.points_after,blocked:Some(offer.blocked.unwrap_or_else(||"Confirm hero reclone".into()))}
 }
 pub fn respec(_g:&mut Game)->Result<(),String> {
-    Err("Preview and confirm hero rebirth to reset attributes".into())
+    Err("Preview and confirm a reclone to reset attributes".into())
 }
 pub fn apply(l: &LineageState, hero: &mut Hero) {
     if let Some(h) = current(l) {

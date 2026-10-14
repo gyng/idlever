@@ -217,7 +217,7 @@ export function renderLegacy(app: App, onChange: () => void, opened?: Set<string
       disabled: !L.persistent_hero || !app.engine.rebirthHero,
       onclick: () => openHeroLife(app, null, "rebirth"),
     },
-    /* copy:button */ "Rebirth",
+    /* copy:button */ "Reclone",
   );
   return h(
     "div",
