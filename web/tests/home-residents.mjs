@@ -19,10 +19,10 @@ const fixtures =
   part === "rest"
     ? ["three-actual.game.json.gz"]
     : part === "reincarnating"
-      ? ["../cut227/recovery/fixtures/three-controlled-reincarnating.game.json.gz"]
+      ? ["../cut230/fixtures/three-controlled-reincarnating.game.json.gz"]
       : [
           "three-actual.game.json.gz",
-          "../cut227/recovery/fixtures/three-controlled-reincarnating.game.json.gz",
+          "../cut230/fixtures/three-controlled-reincarnating.game.json.gz",
         ];
 const browser = await launchBrowser({ gpu: process.env.IDLEVER_RESIDENT_GPU === "1" });
 const rows = [],

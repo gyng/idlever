@@ -1,11 +1,11 @@
-//! Owner amendment 2026-10-14 (Cut227): controlled recovery fixtures at the current
-//! `persistent::RECOVERY_TICKS`. The same protocols as Cut211's `persistent_probe` (one hero)
+//! Owner amendment 2026-10-14 (Cut227; Cut230 depth ramp): controlled recovery fixtures at the current
+//! recovery of a first-floor death (`persistent::recovery_ticks(1)`; Cut227's were the flat `RECOVERY_TICKS`). The same protocols as Cut211's `persistent_probe` (one hero)
 //! and Cut218's `controlled/source.rs` (the paid three-hero roster): a public Send, controlled
 //! 999 Gas damage, an actual Core `finish_run`, then actual `Session::advance`. No grants.
 //! `cargo run -q --profile fast -p idlever-core --example recovery_fixtures -- THREE_ACTUAL.game.json OUT_DIR`
 use idlever_core::{
     bloodlines::Session,
-    persistent::RECOVERY_TICKS,
+    persistent::recovery_ticks,
     turn::{self, Src},
     Game,
 };
@@ -20,7 +20,7 @@ fn main() {
     let input = PathBuf::from(args.next().expect("three-actual save"));
     let out = PathBuf::from(args.next().expect("output directory"));
     fs::create_dir_all(&out).unwrap();
-    let r = RECOVERY_TICKS;
+    let r = recovery_ticks(1);
     let secs = r / 10;
     // One hero (Cut211 protocol): R → R-10 → 1 → 0 ticks, then away.
     let mut g = Game::new(91);
@@ -33,6 +33,7 @@ fn main() {
     }
     g.finish_run();
     assert_eq!(g.lineage().persistent_hero.as_ref().unwrap().state, "reincarnating");
+    assert_eq!(idlever_core::persistent::remaining(&g.lineage), r, "a first-floor death's recovery");
     save(&out, &format!("controlled-reincarnating-{r}"), &g);
     let mut s = Session::load(&g.save()).unwrap();
     s.advance(1000);
@@ -79,7 +80,7 @@ fn main() {
     fs::write(out.join("three-controlled-ready.game.json"), s.save()).unwrap();
     fs::write(out.join("manifest.json"), serde_json::to_vec_pretty(&json!({
         "recovery_ticks": r, "controlled": true, "earned_death": false,
-        "input": input, "protocol": "Cut211 persistent_probe and Cut218 controlled/source.rs at the 2026-10-14 recovery: public Send + controlled 999 Gas damage + Core finish_run; actual Session.advance",
+        "input": input, "protocol": "Cut211 persistent_probe and Cut218 controlled/source.rs at the Cut230 first-floor recovery: public Send + controlled 999 Gas damage + Core finish_run; actual Session.advance",
         "before_gold": before.gold, "ready_gold": ready.gold, "after_gold": l.gold, "actions": actions,
     })).unwrap()).unwrap();
     println!("PASS controlled recovery fixtures at {r} ticks");

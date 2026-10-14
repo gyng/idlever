@@ -1,0 +1,102 @@
+dayplayer: targeted rows idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,random-picked,porter,scout,hands-idle,idle-delta — configurations IDLE,PICKED,RANDOM,HANDS,IDLE30
+dayplayer: IDLE s7 done in 153s 
+dayplayer: IDLE s6 done in 159s 
+dayplayer: IDLE s4 done in 164s 
+dayplayer: IDLE s2 done in 165s 
+dayplayer: IDLE s3 done in 167s 
+dayplayer: IDLE s8 done in 171s 
+dayplayer: IDLE s5 done in 172s 
+dayplayer: IDLE s1 done in 173s 
+dayplayer: IDLE s9 done in 580s 
+dayplayer: IDLE s10 done in 578s 
+dayplayer: IDLE s12 done in 573s 
+dayplayer: RANDOM s1 done in 3s 
+dayplayer: IDLE s11 done in 578s 
+dayplayer: RANDOM s2 done in 9s 
+dayplayer: IDLE s13 done in 577s 
+dayplayer: IDLE s16 done in 571s 
+dayplayer: IDLE s14 done in 574s 
+dayplayer: RANDOM s3 done in 7s 
+dayplayer: IDLE s15 done in 574s 
+dayplayer: RANDOM s5 done in 5s 
+dayplayer: RANDOM s6 done in 4s 
+dayplayer: RANDOM s4 done in 7s 
+dayplayer: RANDOM s7 done in 5s 
+dayplayer: RANDOM s8 done in 5s 
+dayplayer: RANDOM s10 done in 5s 
+dayplayer: RANDOM s11 done in 5s 
+dayplayer: RANDOM s9 done in 7s 
+dayplayer: RANDOM s12 done in 8s 
+dayplayer: RANDOM s15 done in 6s 
+dayplayer: RANDOM s14 done in 9s 
+dayplayer: HANDS s2 done in 6s 
+dayplayer: HANDS s3 done in 5s 
+dayplayer: RANDOM s13 done in 11s 
+dayplayer: HANDS s1 done in 8s 
+dayplayer: RANDOM s16 done in 11s 
+dayplayer: HANDS s8 done in 3s 
+dayplayer: HANDS s4 done in 7s 
+dayplayer: HANDS s5 done in 8s 
+dayplayer: HANDS s6 done in 7s 
+dayplayer: HANDS s7 done in 7s 
+dayplayer: HANDS s10 done in 6s 
+dayplayer: HANDS s9 done in 7s 
+dayplayer: IDLE30 s2 done in 1s 
+dayplayer: HANDS s13 done in 5s 
+dayplayer: IDLE30 s1 done in 1s 
+dayplayer: IDLE30 s3 done in 1s 
+dayplayer: HANDS s12 done in 7s 
+dayplayer: HANDS s11 done in 7s 
+dayplayer: IDLE30 s5 done in 1s 
+dayplayer: IDLE30 s4 done in 1s 
+dayplayer: HANDS s14 done in 5s 
+dayplayer: IDLE30 s9 done in 0s 
+dayplayer: IDLE30 s8 done in 1s 
+dayplayer: IDLE30 s6 done in 1s 
+dayplayer: HANDS s15 done in 5s 
+dayplayer: HANDS s16 done in 5s 
+dayplayer: IDLE30 s11 done in 1s 
+dayplayer: IDLE30 s13 done in 1s 
+dayplayer: IDLE30 s14 done in 1s 
+dayplayer: IDLE30 s7 done in 2s 
+dayplayer: IDLE30 s10 done in 1s 
+dayplayer: IDLE30 s15 done in 1s 
+dayplayer: IDLE30 s16 done in 1s 
+dayplayer: IDLE30 s12 done in 1s 
+dayplayer: PICKED s1 done in 868s 
+dayplayer: PICKED s3 done in 871s 
+dayplayer: PICKED s8 done in 912s 
+dayplayer: PICKED s4 done in 921s 
+dayplayer: PICKED s16 done in 926s 
+dayplayer: PICKED s9 done in 926s 
+dayplayer: PICKED s11 done in 930s 
+dayplayer: PICKED s2 done in 932s 
+dayplayer: PICKED s6 done in 933s 
+dayplayer: PICKED s13 done in 945s 
+dayplayer: PICKED s7 done in 982s 
+dayplayer: PICKED s14 done in 988s 
+dayplayer: PICKED s12 done in 992s 
+dayplayer: PICKED s15 done in 997s 
+dayplayer: PICKED s5 done in 1008s 
+dayplayer: PICKED s10 done in 1013s 
+bar (targeted)                                                                value  result
+IDLE reaches D8 by the end of day 1 (every seed)                              16/16  PASS
+IDLE reaches D13 by day 4 (median day)                                          0.5  PASS
+IDLE reaches D23 by day 12 (≥ 6/8 seeds, median)                        16/16 · 4.0  PASS
+IDLE longest best-depth stall before D23 ≤ 4 d                                    2  PASS
+IDLE net gold > 0 every day (14/14, every seed)                                  14  PASS
+IDLE does not slay the Mirror King within 14 days                              0/16  PASS
+Days with a stage opened: IDLE ≥ 8/14 (median)                                 10.0  PASS
+PICKED ≥ 1.5× IDLE at D13, D18, D23                              1.50 · 2.50 · 3.50  PASS
+IDLE never out-paces PICKED (≥ 90 % of seed × milestone)                        99%  PASS
+Days with a stage opened: PICKED ≥ 10/14 (median)                              12.0  PASS
+Content reach: PICKED ≥ D14 by day 2 (≥ 50 %)                                 16/16  PASS
+Stalls ≤ 1 % of sends, every IDLE seed                                        0.00%  PASS
+Stalls ≤ 1 % of sends, every PICKED seed                                      0.00%  PASS
+RANDOM slower than PICKED at D13, D23 (median seed, ≥ 14/16 seeds) 16/16 · 15/16 · median +4 · +36 h  PASS
+Porter bought ≤ min 12 (PICKED median), every seed ≤ min 15        9.1 · worst 11.1  PASS
+Scout bought ≤ min 15, ≤ 5 sends by hand (every seed, every bot) med 4.9 · worst 7.2 min, 2 sends  PASS
+HANDS never slower than IDLE at D13, D18, D23 (median lag ± a check-in)      +0 · -4 · -40  PASS
+IDLE within a bounded delta of Cut 30's: median h→D13 moves ≤ a check-in               +0 h  PASS
+dayplayer (targeted: idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,picked-idle,outpace,picked-stages,reach,stalls-idle,stalls-picked,random-picked,porter,scout,hands-idle,idle-delta, 1013s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `picked-idle,outpace,scout,porter,reach,picked-stages,idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,idle-delta,stalls-idle,stalls-picked,hands-idle,random-picked` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

@@ -1,0 +1,42 @@
+$ node tests/run.mjs --smoke --failed
+client suite: smoke (38 selected; 160 current full; 203 exhaustive groups); critical journeys, not full acceptance
+failed: 5 to run, 33 passes reused from /home/g/p/riddle/.claude/worktrees/agent-a6c7d94e1c2197103/target/client-tests/last-smoke.json (947cbeb7c7+dirty:3a3bcb41 wasm:b0d10d68c9ff)
+ok* game-menu       reused: passed 2026-10-14T17:32:19.246Z (71.1s), identical identity; not rerun
+ok* debug-export    reused: passed 2026-10-14T17:31:59.719Z (25.0s), identical identity; not rerun
+ok* first-plot      reused: passed 2026-10-14T17:31:33.933Z (40.2s), identical identity; not rerun
+ok* town-save       reused: passed 2026-10-14T17:27:37.037Z (74.7s), identical identity; not rerun
+ok* worker-purchases reused: passed 2026-10-14T17:32:51.452Z (13.0s), identical identity; not rerun
+ok* worker-first-act reused: passed 2026-10-14T17:32:40.157Z (18.7s), identical identity; not rerun
+ok* bloodline-founding reused: passed 2026-10-14T17:28:09.533Z (196.7s), identical identity; not rerun
+ok* bloodline-training reused: passed 2026-10-14T17:32:20.042Z (20.3s), identical identity; not rerun
+ok* package-selection reused: passed 2026-10-14T17:32:22.914Z (20.7s), identical identity; not rerun
+ok* package-paired  reused: passed 2026-10-14T17:32:53.955Z (13.8s), identical identity; not rerun
+ok* pen-edit        reused: passed 2026-10-14T17:29:12.493Z (63.0s), identical identity; not rerun
+ok* forecast-requests reused: passed 2026-10-14T17:32:38.492Z (15.6s), identical identity; not rerun
+ok* survivor-builds reused: passed 2026-10-14T17:16:33.843Z (107.2s), identical identity; not rerun
+ok* hero-hub        reused: passed 2026-10-14T17:24:35.059Z (481.2s), identical identity; not rerun
+ok* watch-live-edge reused: passed 2026-10-14T17:34:56.223Z (34.8s), identical identity; not rerun
+ok* watch-log       reused: passed 2026-10-14T17:30:53.693Z (138.1s), identical identity; not rerun
+ok* ctxloss         reused: passed 2026-10-14T17:26:11.510Z (78.6s), identical identity; not rerun
+ok* checkpoint-gold reused: passed 2026-10-14T17:32:02.218Z (28.3s), identical identity; not rerun
+ok* exit-keep-close reused: passed 2026-10-14T17:25:26.106Z (33.4s), identical identity; not rerun
+ok* report-supply-limit reused: passed 2026-10-14T17:30:10.489Z (58.0s), identical identity; not rerun
+ok* forge-requests  reused: passed 2026-10-14T17:32:46.538Z (19.4s), identical identity; not rerun
+ok* death-actions   reused: passed 2026-10-14T17:31:34.690Z (44.5s), identical identity; not rerun
+ok* report-reading  reused: passed 2026-10-14T17:32:43.448Z (23.4s), identical identity; not rerun
+ok* report-class-xp reused: passed 2026-10-14T17:32:54.827Z (11.4s), identical identity; not rerun
+ok* numbers-agree   reused: passed 2026-10-14T17:32:27.135Z (7.9s), identical identity; not rerun
+ok* class-switch    reused: passed 2026-10-14T17:32:03.662Z (138.7s), identical identity; not rerun
+ok* gunner-observer reused: passed 2026-10-14T17:32:21.461Z (17.8s), identical identity; not rerun
+ok* legacy-wire     reused: passed 2026-10-14T17:32:52.138Z (5.6s), identical identity; not rerun
+ok* numbered-descents reused: passed 2026-10-14T17:31:08.165Z (57.7s), identical identity; not rerun
+ok* post-clear-town reused: passed 2026-10-14T17:28:35.634Z (144.1s), identical identity; not rerun
+ok* screens         reused: passed 2026-10-14T17:27:21.762Z (148.9s), identical identity; not rerun
+ok* ui:frame        reused: passed 2026-10-14T17:26:22.302Z (56.2s), identical identity; not rerun
+ok* town-clock      reused: passed 2026-10-14T17:29:44.952Z (37.9s), identical identity; not rerun
+ok   fights:break    17.8s (15.9s)  fights: ok (6 checks)
+ok   watch-console   73.4s (55.6s)  1440 labels/touch/geometry/speed/pause/Town PASS
+ok   death-fix-discovery 129.9s (56.5s)  1440 13 comparison boundaries / actual free fix ordering / prices / no mutation PASS
+ok   king-advice-scope 153.6s (23.6s)  1440 King replay scope/count/price/eligibility checks PASS
+ok   clarity:paint   180.0s (26.4s)  clarity paint: ok (5 checks)
+ok: 38/38 client gates in 180.0s — ran fresh 5 (5 ok, 0 failed); reused 33 earlier passes (identical identity, labelled ok*, not fresh evidence)

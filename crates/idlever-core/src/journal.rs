@@ -148,7 +148,7 @@ mod tests {
         assert_eq!(before,g.save());
         assert!(g.hire("scout").is_err());assert_eq!(before,g.save());
         g.build_town("house").unwrap();let j=g.lineage().journal.unwrap();assert_eq!(j.recommended.as_deref(),Some("delve"));
-        assert_eq!(find(&j,"scout").progress.as_ref().unwrap().required,3);
+        assert_eq!(find(&j,"scout").progress.as_ref().unwrap().required,2);
         g.send();g.step(1);let j=g.lineage().journal.unwrap();assert_eq!(find(&j,"delve").action.as_ref().unwrap().target,"watch");
     }
     #[test]

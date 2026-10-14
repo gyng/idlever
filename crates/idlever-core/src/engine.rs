@@ -249,7 +249,7 @@ pub const GOLD_DIVISOR: i32 = 4;
 /// Cut 2 §1: camp rest after an expedition lasts half as long as it did (Cut 12 §5; Cut 2: as
 /// long), capped at 30 min and never shorter than the wake (a two-minute `hp<50 → return`
 /// sortie would otherwise farm hundreds of runs a day); a death is followed by a fixed
-/// recovery (`persistent::RECOVERY_TICKS`: 17.5 minutes, owner amendment 2026-10-14). Ticks (10/s).
+/// recovery (`persistent::recovery_ticks`: 60 s shallow to `RECOVERY_TICKS`, 20 minutes, deep; Cut230). Ticks (10/s).
 pub const REST_CAP_TICKS: u32 = 30 * 60 * 10;
 pub const REST_MIN_TICKS: u32 = 20 * 60 * 10;
 pub const WAKE_TICKS: u32 = crate::persistent::RECOVERY_TICKS as u32;
@@ -4080,7 +4080,8 @@ impl Game {
 
     /// Cut 3: camp rest after a run (`no_rest` halves it).
     pub fn rest_after(&self, turns: u32, tier: ExitTier) -> u32 {
-        if tier == ExitTier::Death { return crate::persistent::RECOVERY_TICKS as u32; }
+        // (Cut230: a death's recovery by the run's deepest floor — the run in hand, else the record)
+        if tier == ExitTier::Death { return crate::persistent::recovery_ticks(self.run.as_ref().map_or(self.lineage.best_depth, |r| r.max_depth)) as u32; }
         let r = crate::tree::rest_scaled(&self.lineage, crate::offline::rest_after(turns, tier));
         // Cut 118 §3: the Sleeper's set
         let r = r - r * crate::feats::bonus_pct(&self.lineage, "rest") / 100;
@@ -5505,7 +5506,7 @@ impl Game {
         let tally = std::mem::take(&mut self.row_tally);
         self.lineage.fold_row_tally(&tally);
         // Camp rest (Cut 2 §1): as long as the expedition, capped; a death is a fixed wake.
-        let rest = self.rest_after(run.turn, tier);
+        let rest = if tier == ExitTier::Death { crate::persistent::recovery_ticks(run.max_depth) as u32 } else { self.rest_after(run.turn, tier) };
         self.lineage.rest_left = rest;
         self.lineage.rest_watched = self.watched && !self.sim && !self.offline;
         self.events.push(Ev::Rest { t, seconds: rest.div_ceil(crate::offline::TICKS_PER_SECOND as u32) });
@@ -5990,7 +5991,7 @@ impl Game {
             // Cut 13 §2: the next heir wakes with two traits on offer.
             self.lineage.new_heir();
             self.lineage.persistent.defeats=self.lineage.persistent.defeats.saturating_add(1);
-            crate::persistent::recover(&mut self.lineage);
+            crate::persistent::recover_at(&mut self.lineage, run.max_depth);
             // Wake pay: a new heir arrives with enough for one cheap supply, so a lineage that has
             // never banked is not gold-locked out of the shop after a death (cohort 5, rater J:
             // "$0 after death, seven identical deaths overnight"). Bounded: tops the purse up to

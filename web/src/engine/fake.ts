@@ -6909,7 +6909,7 @@ const NODES305: [
     "hauls home · while away",
     "",
   ],
-  ["scout", "scout", "trunk", "send", 3, 5, 0, "fire", "AUTO SEND", "sends him · each rest", ""],
+  ["scout", "scout", "trunk", "send", 2, 4, 0, "fire", "AUTO SEND", "sends him · each rest", ""],
   [
     "armourer",
     "armourer",

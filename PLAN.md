@@ -8,7 +8,8 @@
 ## One-liner
 
 Owner persistent-hero direction, implemented in Cut211 (2026-10-13): ordinary
-death returns the same named hero after60seconds of automatic recovery.
+death returns the same named hero after automatic recovery: 60 seconds to D14,
+rising to 20 minutes from D28 (Cut230 depth ramp; docs/CUT230_EARLY_PACING.md).
 Names, traits, class progress, builds and lasting Legacy attributes remain.
 Stat rebirth requires an explicit review and confirmation; it refunds spent
 Legacy and retains the hero's identity and class skills. This replaces the

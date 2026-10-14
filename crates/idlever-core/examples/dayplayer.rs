@@ -491,7 +491,15 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
         if idlever_core::tree::auto_send(&g.lineage) && t >= stay {
             break;
         }
+        let before = (out.deaths, g.lineage.total_turns);
+        // Cut230: before the scout the client refuses SEND while the hero recovers (`try_send`): the player waits the
+        // recovery out at camp (charged whole), then sends — a send by hand during recovery is no send by hand
+        t += wait_recovery(g);
         t += send_once(g, out) / WATCH_X + CAMP_S;
+        // (`DP_SCOUT_TRACE`: a diagnostic line per first-session send — never in a gate run's output)
+        if std::env::var("DP_SCOUT_TRACE").is_ok() && out.scout_min.is_none() {
+            eprintln!("scout-trace seed {} arm {arm} t {:.0}s death {} ticks {} best D{} gold {} sends {} price {}", g.lineage.seed, t, out.deaths > before.0, g.lineage.total_turns - before.1, g.lineage.best_depth, g.lineage.gold, idlever_core::tree::count(&g.lineage, "scout"), idlever_core::tree::price(&g.lineage, idlever_core::tree::def("scout").unwrap()));
+        }
     }
     t as u64
 }
@@ -504,8 +512,21 @@ fn by_hand_until_scout(g: &mut Game, out: &mut SeedOut, ask: &Ask, h: f64) {
         if idlever_core::tree::auto_send(&g.lineage) {
             break;
         }
+        wait_recovery(g);
         send_once(g, out);
     }
+}
+
+/// Cut230: before the scout, the death recovery still owed waited out at camp (`Game::try_send` refuses until it
+/// ends). Its seconds; 0 once the scout sends (his sends wait for it themselves).
+fn wait_recovery(g: &mut Game) -> f64 {
+    let owed = idlever_core::persistent::remaining(&g.lineage);
+    if owed == 0 || idlever_core::tree::auto_send(&g.lineage) || g.run.as_ref().is_some_and(|r| r.turn > 0 && r.over.is_none()) {
+        return 0.0;
+    }
+    g.lineage.rest_left = g.lineage.rest_left.max(owed as u32);
+    g.rest_tick(owed as u32);
+    owed as f64 / 10.0
 }
 
 /// The works tree's taps at camp, by arm: every bot hires the scout the moment he lights (IDLE's one engagement);

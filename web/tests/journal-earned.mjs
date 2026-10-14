@@ -89,14 +89,15 @@ try {
   };
   const state = () => page.evaluate(() => window.__idlever.lineage);
   for (const seed of [1, 13]) {
-    await load(seed, "manual2");
+    // Cut230: the Scout lights after two sends by hand — one in, one to go
+    await load(seed, "manual1");
     await open();
     let l = await state();
     const scout = l.journal.chapters.flatMap((c) => c.entries).find((e) => e.id === "scout");
-    assert.equal(scout.progress.current, 2);
-    assert.equal(scout.progress.required, 3);
+    assert.equal(scout.progress.current, 1);
+    assert.equal(scout.progress.required, 2);
     assert.equal(scout.action.enabled, false);
-    assert.ok(scout.requirements.some((r) => /3 manual delves/.test(r)));
+    assert.ok(scout.requirements.some((r) => /2 manual delves/.test(r)));
     assert.equal(await page.locator('[data-journal-focus="action:scout"]').isDisabled(), true);
     checks += 5;
     await load(seed, "manual3");
