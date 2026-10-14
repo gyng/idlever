@@ -198,6 +198,11 @@ Owner decisions 2026-10-14 — LANDED:
 3. Clown: median between current and Rogue, skilled play meets/beats Rogue; Engineer:
    weaker mace, stronger turret near Fighter pace — tuning agent in flight (rebasing on main).
 
+Progression improvements queued (owner 2026-10-14): docs/CUT231_PROGRESSION.md from
+docs/research/PROGRESSION_COMPETITORS_2026-10.md. Cut230 (agent in flight: Scout after 2
+sends, depth-scaled recovery, 16-seed rows) lands first; then items 2, 4, 6–11 and filling
+the research doc's §6 measured timeline. Item 5's client part started in parallel.
+
 Also landed today: Cut228 ant farm (a8935ddf; docs/CUT228_ANT_FARM.md): wire
 `forge_work` read model, smith hammers at an anvil only during real forge work, the
 fitted hero visits; IDLE/PICKED 16×14 byte-identical. Tracker as an MMO quest list on the
