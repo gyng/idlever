@@ -9,8 +9,9 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-origin/main 5e38c8a8 (2026-10-14; WASM fd56…, 6813853 bytes, fast build): all Cut219–224 work, the desktop layout pass,
-the town task tracker and Hero Hub polish are committed and pushed.
+origin/main 1b43a78c (2026-10-14; WASM still fd56…, 6813853 bytes, fast build, untracked pkg):
+Cut219–226 work, desktop layout, task tracker, Hero Hub polish, Cut225 client and
+Cut227 test/qa fixes are committed and pushed. **PARKED 2026-10-14 (owner quota).**
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
 ## Current engine and checks
@@ -165,20 +166,46 @@ Reclone; ids and saves unchanged. Art prompt art/prompts/town_clone_vat.txt
 pending generation (device still code-drawn). hero-life.mjs:306 waits for old
 bloodline tabs (stale since the Hub; not in current suites).
 
-Cut227 (4f34d2e7): tracker ladder folds to pips (66→30px), phone chip follows
-the well's visible floor, <360px dock icon-only (36px icons, words kept as names).
-Routine full gate on HEAD (evidence/cut227/gates-full.log): metrics PASS; dayplayer
-tuned-picked 1.00 FAIL (identical on b497 → pre-Cut225; passed 1.17 at cut187),
-routine 2-seed random-picked 1/2 FAIL (16-seed row PASS 16/16·15/16), qa gem-patch
-seed6 FAIL. Bisect (evidence/cut227/bisect/README.md): qa gem fixed in core
-(8f48b3f1, patch order tiers only; TUNED table byte-identical). tuned-picked
-1.00: 3753532a 1.18→1.08, a327b8dd (Cut211 60s death recovery) →1.00; HEAD with
-RECOVERY_TICKS 12000 measures 1.17. OWNER DECISION: (a) longer recovery,
-(b) harder D29–D33, (c) re-scope row to King (TUNED 1/16 kills, PICKED 0/16),
-(d) finer check-in resolution. Routine 2-seed random-picked demands 2/2; seed1
-is the 16-seed row's only D23 exception: OWNER DECISION to run it at 16 seeds.
-WASM not yet rebuilt for 8f48b3f1 (death-screen patch order). Clone-vat art:
-codex run needs owner launch.
+## Cut227 — parked state (resume here)
+
+Landed and pushed:
+- 4f34d2e7 tracker ladder folds to pips (66→30px); phone Tasks chip follows the
+  scrolling well's visible floor (was hidden at 320/390); <360px dock icon-only.
+- 3212b807 Cut225 client: decoy/sentry replay cues (render/tool-cues.ts,
+  tool-sprites.ts, state.ts), one-time "Clown unlocked" plate (ui/class-unlock.ts),
+  Hub Abilities; web/tests/class-tools.mjs (43, full suite). 75b111b1: class title
+  case, plate removed when camp disposes.
+- 8f48b3f1 core qa fix: sink_harms tiers clean < trade-off < whole-run harm;
+  exit_alternative ignores harming patches (display order only).
+- 60272b8f (merged 39a36140) stale tests: class-tree, class-styles, hero-life,
+  cut118, cut120 PASS; product fixes: Hub L1 milestone (renderClassTreeMilestone),
+  report delve withheld while recovering (collect-send canSend);
+  gold-settlements defaults to cut226 fd56 manifest.
+- Checks on 1b43a78c: native 936/6 ignored, clippy clean, routine client 38/38,
+  class-tree/class-styles/hero-life/class-tools/gold-settlements 5/5.
+
+Routine full gate (evidence/cut227/gates-full.log, pre-fix): metrics PASS;
+dayplayer tuned-picked 1.00 FAIL and 2-seed random-picked 1/2 FAIL; qa gem FAIL
+(now fixed). Bisect: evidence/cut227/bisect/README.md. tuned-picked fell at
+3753532a (1.18→1.08) and a327b8dd (Cut211 60 s death recovery →1.00); HEAD with
+RECOVERY_TICKS 12000 measures 1.17.
+
+Owner decisions 2026-10-14:
+1. **Longer death recovery** to restore tuned-picked ≥1.15 (shortest passing value;
+   amend CUT211; re-verify all IDLE/PICKED rows and full gate).
+2. **Routine random-picked evaluated on 16 seeds** (stricter).
+In flight at park: an agent on branch `worktree-agent-ab3974be498ebcc2b`
+(worktree .claude/worktrees/agent-ab3974be498ebcc2b) implementing both; see its
+docs/evidence/cut227/recovery/README.md for the search table and next steps.
+Tests/copy pinning 60 s: web/tests/hero-life.mjs (recovering-600), cut120,
+collect-send.ts "Recovering 60s". A new WASM needs a new gold-settlements manifest
+(and picks up 8f48b3f1's patch order, not yet in pkg).
+
+Open owner items: Clown candidate numbers (D19–23 vs Rogue D28), Engineer mace
+4–8 vs sword 3–7, clone-vat art (codex run blocked by permission classifier;
+owner runs `codex exec … < art/prompts/town_clone_vat.txt`, then key/pack/wire).
+Visible follow-ups: sentry often hidden behind hero sprite; a second earned
+class is announced only on a later camp repaint; Hub shows no live cooldowns.
 
 Full changed-game native/client/current18-case regression, relevant exhaustive
 invariants, replay/offline parity, broader legendary build causality/pacing and
