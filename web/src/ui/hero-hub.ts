@@ -373,7 +373,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         h(
           "div",
           { class: "hero-hub-heading" },
-          h("h3", {}, L.class),
+          h("h3", { class: "hero-hub-class" }, L.class),
           h("small", {}, classStyleName(L.class_styles?.selected ?? undefined)),
         ),
         h(
@@ -393,7 +393,19 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       if (abilities) host.append(abilities);
       const tree = renderClassTree(context, refreshHub, new Set(), { inspectAway: true });
       const styles = renderClassStyles(context, refreshHub, { inspectAway: true });
-      host.append(tree ?? h("p", {}, /* copy:label */ "Skills unavailable"));
+      // the tree opens at L2 (class-tree.ts); before then the abilities above stand alone, and the tree's first door is named
+      const firstNode = L.class_tree?.nodes.find((n) => n.parent === null);
+      host.append(
+        tree ??
+          (firstNode
+            ? h(
+                "section",
+                { class: "class-tree-soon num" },
+                h("b", null, /* copy:label */ "Class skills"),
+                h("small", null, `L${Math.max(2, firstNode.required_level)}`),
+              )
+            : h("p", {}, /* copy:label */ "Skills unavailable")),
+      );
       if (styles) host.append(styles);
     } else if (section === "behaviour") {
       const actual = L.actual_packages;

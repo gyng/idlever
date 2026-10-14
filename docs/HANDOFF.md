@@ -165,6 +165,13 @@ Reclone; ids and saves unchanged. Art prompt art/prompts/town_clone_vat.txt
 pending generation (device still code-drawn). hero-life.mjs:306 waits for old
 bloodline tabs (stale since the Hub; not in current suites).
 
+Cut227 (4f34d2e7): tracker ladder folds to pips (66→30px), phone chip follows
+the well's visible floor, <360px dock icon-only (36px icons, words kept as names).
+Routine full gate on HEAD (evidence/cut227/gates-full.log): metrics PASS; dayplayer
+tuned-picked 1.00 FAIL (identical on b497 → pre-Cut225; passed 1.17 at cut187),
+routine 2-seed random-picked 1/2 FAIL (16-seed row PASS 16/16·15/16), qa gem-patch
+seed6 FAIL. Bisect agent running. Clone-vat art: codex run needs owner launch.
+
 Full changed-game native/client/current18-case regression, relevant exhaustive
 invariants, replay/offline parity, broader legendary build causality/pacing and
 independent final fun review remain open. Do not mark the full goal complete.

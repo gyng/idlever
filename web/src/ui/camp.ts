@@ -2498,6 +2498,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       ladder.dispose();
       tasks.dispose();
       feats.dispose();
+      document.querySelector(".class-unlock")?.remove(); // the plate belongs to the camp: it never rides into the watch
       offer.dispose();
       window.removeEventListener("idlever:focus-hero", focusHome);
       offLive();
