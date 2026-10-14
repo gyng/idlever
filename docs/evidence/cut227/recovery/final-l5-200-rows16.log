@@ -1,0 +1,87 @@
+dayplayer: targeted rows stance,tuned-picked,automation-pays — configurations IDLE,PICKED,TUNED,AWAY,AWAY-nodes
+dayplayer: IDLE s7 done in 20s 
+dayplayer: IDLE s3 done in 29s 
+dayplayer: IDLE s9 done in 29s 
+dayplayer: IDLE s2 done in 31s 
+dayplayer: IDLE s6 done in 33s 
+dayplayer: IDLE s4 done in 34s 
+dayplayer: IDLE s1 done in 42s 
+dayplayer: IDLE s5 done in 43s 
+dayplayer: TUNED s10 done in 127s 
+dayplayer: TUNED s16 done in 135s 
+dayplayer: TUNED s15 done in 153s 
+dayplayer: TUNED s6 done in 153s 
+dayplayer: TUNED s5 done in 163s 
+dayplayer: TUNED s2 done in 164s 
+dayplayer: TUNED s14 done in 168s 
+dayplayer: TUNED s1 done in 172s 
+dayplayer: TUNED s12 done in 177s 
+dayplayer: TUNED s4 done in 181s 
+dayplayer: PICKED s4 done in 162s 
+dayplayer: PICKED s7 done in 160s 
+dayplayer: PICKED s5 done in 153s 
+dayplayer: TUNED s9 done in 207s 
+dayplayer: TUNED s11 done in 212s 
+dayplayer: PICKED s3 done in 185s 
+dayplayer: PICKED s16 done in 181s 
+dayplayer: PICKED s11 done in 184s 
+dayplayer: IDLE s12 done in 34s 
+dayplayer: IDLE s8 done in 41s 
+dayplayer: IDLE s10 done in 30s 
+dayplayer: PICKED s14 done in 184s 
+dayplayer: TUNED s7 done in 228s 
+dayplayer: IDLE s13 done in 39s 
+dayplayer: TUNED s3 done in 230s 
+dayplayer: IDLE s15 done in 18s 
+dayplayer: IDLE s11 done in 54s 
+dayplayer: PICKED s2 done in 104s 
+dayplayer: TUNED s8 done in 240s 
+dayplayer: PICKED s10 done in 82s 
+dayplayer: PICKED s6 done in 74s 
+dayplayer: IDLE s14 done in 40s 
+dayplayer: PICKED s9 done in 125s 
+dayplayer: IDLE s16 done in 40s 
+dayplayer: PICKED s8 done in 231s 
+dayplayer: TUNED s13 done in 273s 
+dayplayer: PICKED s15 done in 128s 
+dayplayer: PICKED s13 done in 185s 
+dayplayer: PICKED s12 done in 198s 
+dayplayer: PICKED s1 done in 234s 
+dayplayer: AWAY s3 done in 210s 
+dayplayer: AWAY s7 done in 254s 
+dayplayer: AWAY s6 done in 257s 
+dayplayer: AWAY s4 done in 277s 
+dayplayer: AWAY s2 done in 280s 
+dayplayer: AWAY s5 done in 276s 
+dayplayer: AWAY s9 done in 272s 
+dayplayer: AWAY s1 done in 298s 
+dayplayer: AWAY s16 done in 271s 
+dayplayer: AWAY s8 done in 298s 
+dayplayer: AWAY-nodes s6 done in 256s 
+dayplayer: AWAY-nodes s5 done in 256s 
+dayplayer: AWAY s13 done in 312s 
+dayplayer: AWAY s12 done in 320s 
+dayplayer: AWAY s14 done in 312s 
+dayplayer: AWAY s10 done in 325s 
+dayplayer: AWAY-nodes s3 done in 329s 
+dayplayer: AWAY-nodes s2 done in 322s 
+dayplayer: AWAY s11 done in 369s 
+dayplayer: AWAY s15 done in 367s 
+dayplayer: AWAY-nodes s1 done in 291s 
+dayplayer: AWAY-nodes s4 done in 380s 
+dayplayer: AWAY-nodes s9 done in 235s 
+dayplayer: AWAY-nodes s7 done in 292s 
+dayplayer: AWAY-nodes s11 done in 341s 
+dayplayer: AWAY-nodes s15 done in 229s 
+dayplayer: AWAY-nodes s12 done in 222s 
+dayplayer: AWAY-nodes s10 done in 219s 
+dayplayer: AWAY-nodes s8 done in 238s 
+dayplayer: AWAY-nodes s16 done in 219s 
+dayplayer: AWAY-nodes s13 done in 244s 
+dayplayer: AWAY-nodes s14 done in 245s 
+bar (targeted)                                                                value  result
+Stance L3 by day 2, L5 by day 7 (IDLE median)                                 2 · 7  PASS
+TUNED beats PICKED by ≥ 15 % at D33 (median hours)                             1.17  PASS
+Workers pay the away player (in every 2–3 days): D18 sooner or a deeper mean best D18 48 vs 48 h · mean best 29.46 vs 29.21  PASS
+dayplayer (targeted: stance,tuned-picked,automation-pays, 746s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `tuned-picked,stance,automation-pays` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

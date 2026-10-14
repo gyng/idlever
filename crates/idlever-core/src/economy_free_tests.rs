@@ -215,8 +215,10 @@ fn automatic_heals_wait_for_recipe_and_preserve_explicit_full_stock() {
 }
 
 #[test]
-fn steady_training_adds_second_remedy_at_220_actual_package_runs() {
-    for (runs, expected) in [(219, 1), (220, 2)] {
+fn steady_training_adds_second_remedy_at_l5_actual_package_runs() {
+    // (L5 is `LEVEL_RUNS[3]`: 220 → 200 runs with the 2026-10-14 recovery amendment)
+    let l5 = crate::packages::LEVEL_RUNS[3];
+    for (runs, expected) in [(l5 - 1, 1), (l5, 2)] {
         let mut g = Game::new_resident(219);
         g.clear_supplies();
         g.lineage.forge.insert("heal".into(), ForgeRow::at(5));

@@ -136,7 +136,7 @@ pub fn description(id: &str) -> &'static str {
 }
 
 /// Runs a package needs for L2 · L3 · L4 · L5 (tunable; the gate is the felt pace).
-pub const LEVEL_RUNS: [u32; 4] = [10, 40, 120, 220];
+pub const LEVEL_RUNS: [u32; 4] = [10, 40, 120, 200];
 pub const MAX_LEVEL: u32 = 5;
 
 pub fn level_of(runs: u32) -> u32 {

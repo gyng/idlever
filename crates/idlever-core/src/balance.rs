@@ -21,7 +21,7 @@ pub struct Balance {
     pub guarded_dry: [i32; 2],
 }
 pub const DEFAULT: Balance = Balance {
-    level_runs: [10, 40, 120, 220], scar_pct: 5, scar_cap: 30,
+    level_runs: [10, 40, 120, 200], scar_pct: 5, scar_cap: 30,
     drill_meeting: 2, drill_days: 3, deep_drill_days: 6,
     steady_heal: [30,35], hunter_heal: [30,35], guarded_heal: [40,45], bold_heal: 25,
     steady_home: 25, steady_dry: [40,35], steady_rest: [40,60],
@@ -66,7 +66,7 @@ mod tests {
         let text = include_str!("../../../tuning/balance.json");
         assert_eq!(parse(text).unwrap(), DEFAULT);
         assert!(parse(&text.replace("\"scar_pct\": 5", "\"scar_pct\": 0")).is_err());
-        assert!(parse(&text.replace("10, 40, 120, 220", "10, 10, 120, 220")).is_err());
+        assert!(parse(&text.replace("10, 40, 120, 200", "10, 10, 120, 200")).is_err());
         assert!(parse(&text.replace("\"scar_pct\"", "\"typo\"")).is_err());
     }
 }

@@ -11,7 +11,7 @@ const url =
 const evidence = process.env.IDLEVER_HERO_SHOTS;
 if (evidence) mkdirSync(evidence, { recursive: true });
 const fixtures = new URL("../../docs/evidence/cut211/fixtures/", import.meta.url);
-// Owner amendment 2026-10-14: the controlled recovery fixtures at the 10500-tick recovery.
+// Owner amendment 2026-10-14: the controlled recovery fixtures at the 12000-tick recovery.
 const controlled = new URL("../../docs/evidence/cut227/recovery/fixtures/", import.meta.url);
 const inputs = {};
 function input(name) {
@@ -227,9 +227,9 @@ try {
     assert.equal(after.bloodline.spent, 0);
     assert.deepEqual(after.bloodline.upgrades, {});
     assert.equal(after.gold, before.gold);
-    assert.equal(after.persistent_hero.recovery_s, 1050);
+    assert.equal(after.persistent_hero.recovery_s, 1200);
     assert.equal(after.persistent_hero.rebirth.available, false);
-    assert.equal(await page.locator('[data-recovery-seconds="1050"]').count(), 1);
+    assert.equal(await page.locator('[data-recovery-seconds="1200"]').count(), 1);
     checks += 10;
     const reborn = JSON.parse(await save()).lineage;
     for (const field of [
@@ -319,7 +319,7 @@ try {
     checks++;
   }
   // Damage was controlled only to reach death; these are real saved state/recovery API boundaries.
-  const states = ["reincarnating-10500", "recovering-10490", "recovering-1", "ready-0", "away"];
+  const states = ["reincarnating-12000", "recovering-11990", "recovering-1", "ready-0", "away"];
   for (const name of states) {
     for (const width of [320, 400, 1440]) {
       await page.setViewportSize({ width, height: 900 });
@@ -367,7 +367,7 @@ try {
           seconds: hero.recovery_s,
           geometry,
         });
-        if (evidence && width === 400 && scale === 1 && name === "recovering-10490")
+        if (evidence && width === 400 && scale === 1 && name === "recovering-11990")
           await page.screenshot({ path: `${evidence}/hero-recovery-400.png` });
       }
     }

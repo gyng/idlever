@@ -149,8 +149,8 @@ XP/renown remain60%. Physical loss/recovery never subtracts or pays the same
 converted value again. No new Keep decision or exit salvage payment is created.
 Storehouse/worker retirement, saved kits and pacing validation remain pending.
 
-Owner amendment2026-10-14 (Cut227): death recovery is10500 ticks (17.5 min;
-was600) so TUNED keeps its D33 lead. Routine `--full` plays RANDOM and PICKED
+Owner amendment2026-10-14 (Cut227): death recovery is12000 ticks (20 min;
+was600) so TUNED keeps its D33 lead; package L5 needs200 runs (was220). Routine `--full` plays RANDOM and PICKED
 on16 seeds for the RANDOM-vs-PICKED row alone (`--random-seeds16`).
 
 Owner amendment2026-10-04: routine full checks use18 current-player cases;

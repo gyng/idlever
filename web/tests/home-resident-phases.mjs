@@ -119,7 +119,7 @@ try {
   eq(s.seated, [true, true, true], "actual recovery residents remain resting");
   await p.evaluate(async () => {
     const a = window.__idlever;
-    await a.engine.advance(1050000); // the 2026-10-14 recovery: 10500 ticks
+    await a.engine.advance(1200000); // the 2026-10-14 recovery: 12000 ticks
     await a.refresh();
   });
   s = await state();

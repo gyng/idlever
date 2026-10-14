@@ -6837,14 +6837,16 @@ fn lock_root_offers_the_unlock_pseudo_patch() {
 #[test]
 fn dice_death_names_an_alternative_below_the_bar() {
     // Eight seeds at a time; the first seed (in order) with a telegraphed dice death is the one.
+    // (owner amendment 2026-10-14: the 20-minute death recovery leaves far fewer deaths in each seed's
+    // window, so the search reads up to 64 seeds — was 24; the assertions are unchanged)
     let mut found = None;
-    for chunk in [1..=8u64, 9..=16, 17..=24] {
-        found = par_seeds(chunk, dice_seed).into_iter().flatten().next();
+    for k in 0..8u64 {
+        found = par_seeds(k * 8 + 1..=k * 8 + 8, dice_seed).into_iter().flatten().next();
         if found.is_some() {
             break;
         }
     }
-    let (seed, id, d, cands) = found.expect("a telegraphed dice death in 24 seeds");
+    let (seed, id, d, cands) = found.expect("a telegraphed dice death in 64 seeds");
     let tele = Row::new(vec![Cond::t("foe_tag", "telegraph")], Verb::new("retreat"));
     // The telegraph retreat is among the measured candidates of a telegraphed death; it is
     // shown (first) when it fires in the replays — a `retreat` at range often cannot.
