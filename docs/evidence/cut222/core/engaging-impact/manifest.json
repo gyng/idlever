@@ -1,0 +1,20 @@
+{
+ "purpose": "Cut222 acceptance item 4: engaging-policy impact of retiring wishes (max-wish policy vs none), paired, preserved baseline runtime",
+ "runtime_source": "docs/evidence/cut222/core/source-baseline.tar.gz (all 89 crates/idlever-core/src/*.rs verified against source-baseline.json) on current Cargo.toml/presets; dayplayer.rs = baseline + dayplayer-wish-probe.diff",
+ "reconstruction_check": "IDLE seed 1 fortnight on this binary is bit-identical to idle-baseline-results/src8a178f09639f4521-IDLE-s1-d14-c3.json (only the probe's new fields added)",
+ "binary_sha256": "f8780bef35e4336c67a4d29f1643e36a41bbf9ea274aee98b980d4b78fe14415",
+ "commands": [
+  "IDLEVER_SRC_KEY=x IDLEVER_CACHE_FRESH=1 target/fast/examples/dayplayer --bots picked,picked+l --routine --seeds 16 --threads 8  (nowish)",
+  "same with DP_WISH=1 (wish)",
+  "python3 compare.py nowish wish summary.json"
+ ],
+ "policy": "DP_WISH=1: at every present PICKED/PICKED+L check-in, grant the waiting wish if the purse pays (before PICKED+L's Legacy spend and the forge step); 3 check-ins/day, 14 days, one resident",
+ "not_covered": [
+  "TUNED/DAILY/AWAY not run (TUNED and DAILY/AWAY never spend Legacy by hand, like PICKED)",
+  "multi-resident (dayplayer is single-resident; x3 is analytic)",
+  "current retired runtime PICKED not re-run; comparison is within the baseline runtime"
+ ],
+ "wall_time_s": {
+  "nowish": 2563, "wish": 2500
+ }
+}

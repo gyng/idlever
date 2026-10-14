@@ -201,4 +201,44 @@ past_to0.875). Both failed identically before Cut222 (`cut220/critical-pre222`).
 Item5 settled private-GPU captures pass on the genuine waiting-song save at
 320/400/1440 × normal/200% text: no wish control, no overflow, read-stable
 save, every served body `a2ab…`: `docs/evidence/cut222/ui/gpu-camp-a2ab/`.
-Still open: acceptance item4's engaging-policy comparison.
+Acceptance item4 is closed below.
+
+## Engaging-policy impact (acceptance item 4, 2026-10-14)
+
+Method: paired fortnights on the preserved baseline runtime that still has
+`grant_wish`. All89 archived core sources match `source-baseline.json`; IDLE
+seed1 on this rebuilt binary is bit-identical to the preserved baseline result.
+A scratch-only `DP_WISH=1` probe grants each waiting wish at every PICKED and
+PICKED+L check-in when the purse pays. Without it the bots run unchanged. There
+are16 seeds, 14 days, 3 check-ins a day and one resident. Core source and the
+shipped dayplayer are unchanged; the probe diff is retained.
+
+Measured maximum per resident: 14 wishes (every day; never unaffordable),
+median31 Legacy (max32), median6156 Gold (max6309). This is about1.4% of
+PICKED's median2205 Legacy earned and1.8% of PICKED+L's1695. The three-resident
+bound (~93 Legacy, ~18.6k Gold) is analytic and was not simulated.
+
+- PICKED never spends Legacy (0 spent in both arms; TUNED, DAILY and AWAY have
+  no hand Legacy spending either). For it, wishes were a pure Gold sink: median
+  net fortnight Gold 28984 without wishes and 25893 with them. Milestones
+  D8–D33 match on at least 14 of 16 seeds per milestone. The few changes are single
+  8h check-ins, mostly earlier with wishes. No King kills occur in either arm.
+  Day14 depth is unchanged on every seed.
+- PICKED+L buys the same 12 upgrades (median1395 points: roots ranks1–4).
+  The next prices are700/800, so31 points buy no further rank. They only move
+  early ranks by a check-in at most. D8–D28 medians are unchanged. D29/D33
+  arrive one check-in sooner on 4 seeds and later on 1. King with/without wishes:
+  12/14 slain, median day11.0/12.5. Paired, wishes were sooner on5 seeds, later
+  on10 and the same on1 (sign test p≈0.3). Both arms pass the King bar (median ≥7,
+  never <4). The spread comes from trajectory divergence (end-of-fortnight Legacy
+  differs by hundreds of points between arms). It is not a systematic wish effect.
+
+Verdict: removing wishes takes away at most ~31 Legacy and avoids ~6.2k Gold of
+spending per resident each fortnight. At the 16-seed, 8h check-in resolution there
+is no systematic change to engaging milestones or King timing. The scope is PICKED
+and PICKED+L on the baseline runtime. TUNED/DAILY/AWAY are inferred from PICKED,
+because none spends Legacy by hand. Multi-resident is analytic. The retired
+runtime's PICKED was not re-run. No compensation is proposed. Pre-existing
+routine row "Scout bought ≤ min15" fails identically in both arms (worst15.6 min).
+Evidence: `docs/evidence/cut222/core/engaging-impact/` (manifest, probe diff,
+raw 64 results, logs, `summary.json`, `compare.py`).

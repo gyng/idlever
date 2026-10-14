@@ -1,0 +1,66 @@
+--- /tmp/claude-1000/-home-g-p-riddle/8431418f-0a53-43c9-a6cc-9af78464dfd9/scratchpad/dayplayer.orig.rs	2026-10-14 12:22:17.540971672 +0800
++++ crates/idlever-core/examples/dayplayer.rs	2026-10-14 10:47:11.456336825 +0800
+@@ -148,6 +148,24 @@
+     /// Cut 121 §1: the Legacy upgrades bought by hand (PICKED+L) and the points spent.
+     #[serde(default)]
+     legacy_buys: u32,
++    /// Cut222 engaging-impact probe (`DP_WISH=1`): wishes granted, their Legacy, their Gold, check-ins a waiting
++    /// wish was unaffordable, cumulative wishes/Legacy per day, Legacy points/spent at the fortnight's end.
++    #[serde(default)]
++    wishes: u32,
++    #[serde(default)]
++    wish_legacy: u32,
++    #[serde(default)]
++    wish_gold: i64,
++    #[serde(default)]
++    wish_blocked: u32,
++    #[serde(default)]
++    wish_day: Vec<u32>,
++    #[serde(default)]
++    wish_legacy_day: Vec<u32>,
++    #[serde(default)]
++    legacy_points_day: Vec<u32>,
++    #[serde(default)]
++    legacy_spent_day: Vec<u32>,
+ }
+ 
+ /// Cut 121 §2: the town's gold income so far (the hauls and the porter's, fetched and recovered gold).
+@@ -1096,6 +1114,18 @@
+                     }
+                     // Cut 121 §1: PICKED+L spends its Legacy `balanced` by hand at each check-in (asked only when the
+                     // points buy an upgrade: PICKED and PICKED+L share a game until then)
++                    // Cut222 engaging-impact probe: the maximum wish policy — every waiting wish granted when the purse pays
++                    if std::env::var_os("DP_WISH").is_some() {
++                        if let Some((_, _, price, legacy)) = idlever_core::feats::wish(&g.lineage) {
++                            if g.grant_wish().is_ok() {
++                                out.wishes += 1;
++                                out.wish_legacy += legacy;
++                                out.wish_gold += price as i64;
++                            } else {
++                                out.wish_blocked += 1;
++                            }
++                        }
++                    }
+                     if legacy_balanced_pick(g).is_some() && ask.q(Q::Legacy) == 1 {
+                         spend_legacy(g, out);
+                     }
+@@ -1223,6 +1253,10 @@
+             }
+         }
+         out.stance_level_day.push(g.lineage.pkg.level(&g.lineage.pkg.stance));
++        out.wish_day.push(out.wishes);
++        out.wish_legacy_day.push(out.wish_legacy);
++        out.legacy_points_day.push(idlever_core::legacy::current(&g.lineage).map_or(0, |b| b.points));
++        out.legacy_spent_day.push(idlever_core::legacy::current(&g.lineage).map_or(0, |b| b.spent));
+         self.opened |= idlever_core::town::stage_set(&g.lineage).len() > self.stages0.len();
+         // `DP_STAGES=1`: each day's new stages
+         if std::env::var_os("DP_STAGES").is_some() {
+@@ -1503,7 +1537,7 @@
+     if resume { let _ = std::fs::create_dir_all(&checkpoint_dir); }
+     let executable = std::fs::read(std::env::current_exe().expect("exe")).expect("checkpoint executable");
+     let identity = format!("{:016x}", fnv(&executable, 0xcbf2_9ce4_8422_2325));
+-    let env = ["IDLEVER_SKIP_TWIST", "IDLEVER_BALANCE_JSON", "DP_OFF", "DP_STALLS", "DP_CAUSAL_START_FORGE"].iter()
++    let env = ["IDLEVER_SKIP_TWIST", "IDLEVER_BALANCE_JSON", "DP_OFF", "DP_STALLS", "DP_CAUSAL_START_FORGE", "DP_WISH"].iter()
+         .map(|k| format!("{k}={}", std::env::var(k).unwrap_or_default())).collect::<Vec<_>>().join("\n");
+     let checkpoint_key = format!("{identity}:{:016x}", fnv(env.as_bytes(), fnv(serde_json::to_string(&a[1..]).unwrap().as_bytes(), 0xcbf2_9ce4_8422_2325)));
+     let checkpoint_of = |c: &Cfg, s: u64| checkpoint_dir.join(format!("{checkpoint_key}-{}-s{s}.json", c.label()));
