@@ -11,8 +11,9 @@
 import { MovementTrail } from "./movement-trail";
 import { heroKind } from "./look";
 import { nameRefs } from "../ui/tokens"; // docs/COPY.md: a rule by its words on the canvas too
-import type { Ev, GunSnap, Overlay, Snapshot, Tile, FloorItem, Entity } from "./types";
+import type { Ev, GunSnap, Overlay, Snapshot, Tile, FloorItem, Entity, ToolsView } from "./types";
 import { KNOWN_ENTITY_KINDS } from "./palette";
+import type { ToolKind } from "./tool-sprites";
 
 export const TICKS_PER_S = 10;
 export const VISION_R = 7; // default sight radius; a snapshot's `vision` (Cut 3: the Deep is 4) overrides per floor
@@ -100,6 +101,30 @@ const INTERESTING = new Set<string>(["attack", "die", "telegraph", "use", "exit"
 export const EXIT_DIM = 0.3;
 export const PROPS = new Set<string>(["shrine", "vault", "vault_open", "nest"]); // Cut 5 §4: floor-standing props in `tiles`
 
+/** Cut225: a Clown decoy or Engineer sentry as the replay knows it — placed, moved, flagged and ended only by the core's `tool`
+ *  events (or a loaded snapshot's `tools`); its shots and blows are the core's `attack` / `projectile` events. Never game truth. */
+export type { ToolKind };
+export type ToolState = {
+  id: number;
+  kind: ToolKind;
+  x: number;
+  y: number;
+  px: number;
+  py: number; // render tile pos (a relocation tweens over TOOL_MOVE_T)
+  move: { fx: number; fy: number; t0: number } | null;
+  until: number; // its absolute expiry tick (the event's `until`)
+  span: number; // ticks from when this view first held it to `until` (the life bar's whole)
+  placed: number; // the tick it was placed (−∞ when it stood in the loaded snapshot: no setup cue)
+  ended: { t0: number; how: string } | null; // expired · destroyed · discharged: fades over TOOL_END_T
+  flashUntil: number; // struck (an `attack` whose `dst` it is, hit)
+  aims: { t: number; dst: number }[]; // its own acts (an `attack` from it: a shot, a discharge, a grand jape) and their targets, newest last, ≤ 4
+  mode: { state: string; t0: number } | null; // braced · overdrive · moved: a brief cue
+};
+export const TOOL_SETUP_T = 5,
+  TOOL_END_T = 6,
+  TOOL_MODE_T = 10,
+  TOOL_MOVE_T = 4;
+
 /** Cut 26 §2: a fork floor's down stair and the lane it opens (`fens`), `taken` on the stair the set's route takes. */
 export type StairInfo = { x: number; y: number; biome?: string; taken?: boolean };
 export class ReplayState {
@@ -116,6 +141,8 @@ export class ReplayState {
   overlays: Overlay[] = [];
   items: FloorItem[] = [];
   ents = new Map<number, EntState>();
+  /** Cut225: the hero's live decoy / sentry (at most one of each), keyed by id */
+  tools = new Map<number, ToolState>();
   gun: GunSnap | null = null;
   heroId = -1;
   clock = 0; // ticks (float)
@@ -205,6 +232,8 @@ export class ReplayState {
     this.lastT = -Infinity;
     this.addEntity(s.hero, true);
     for (const e of s.entities) this.addEntity(e, false);
+    this.tools.clear();
+    this.loadTools(s.tools, s.turn);
     this.fade = this.fadeTarget = 0;
     this.bossFlashUntil = -Infinity;
     this.callout = null;
@@ -251,6 +280,42 @@ export class ReplayState {
     // a title the floor knew (dead or out of sight) or a word the renderer cannot place: the verb alone when a foe word ends it
     if (named) return tail.slice(0, tail.length - named).trim();
     return tail;
+  }
+  /** Cut225: the snapshot's standing decoy / sentry (no setup cue: they were placed before this view began). */
+  private loadTools(v: ToolsView | undefined, turn: number): void {
+    if (v?.decoy) this.tools.set(v.decoy.id, newTool("decoy", v.decoy, turn, turn + v.decoy.ttl));
+    if (v?.sentry)
+      this.tools.set(v.sentry.id, newTool("sentry", v.sentry, turn, turn + v.sentry.ttl));
+    for (const tool of this.tools.values()) tool.placed = -Infinity;
+  }
+  private toolEvent(ev: Extract<Ev, { k: "tool" }>): void {
+    const t = ev.t;
+    let tool = this.tools.get(ev.id);
+    if (ev.state === "placed" || !tool) {
+      // one of each kind: a new placement replaces an older one still fading
+      for (const [id, o] of this.tools)
+        if (o.kind === ev.kind && id !== ev.id) this.tools.delete(id);
+      tool = newTool(ev.kind, ev, t, ev.until);
+      if (ev.state !== "placed") tool.placed = -Infinity;
+      this.tools.set(ev.id, tool);
+    }
+    tool.until = ev.until;
+    switch (ev.state) {
+      case "placed":
+        break;
+      case "moved":
+        tool.move = { fx: tool.px, fy: tool.py, t0: t };
+        tool.x = ev.x;
+        tool.y = ev.y;
+        tool.mode = { state: ev.state, t0: t };
+        break;
+      case "braced":
+      case "overdrive":
+        tool.mode = { state: ev.state, t0: t };
+        break;
+      default: // expired · destroyed · discharged
+        tool.ended = { t0: t, how: ev.state };
+    }
   }
   private addEntity(e: Entity, hero: boolean): EntState {
     const st: EntState = {
@@ -510,8 +575,16 @@ export class ReplayState {
           this.heroAttack = { t, dst: ev.dst };
           if (this.tacticTick === t) this.tacticTarget = { t, id: ev.dst };
         }
+        // Cut225: a construct's own shot (or the bell's grand jape) and a blow that lands on it are the core's attack events
+        const ts = this.tools.get(ev.src),
+          td = this.tools.get(ev.dst);
+        if (ts && !ts.ended) {
+          ts.aims.push({ t, dst: ev.dst });
+          if (ts.aims.length > 4) ts.aims.shift();
+        }
+        if (td && !td.ended && ev.hit) td.flashUntil = t + (this.fight ? FIGHT_HURT_T : HURT_T) + 1;
         const s = this.ents.get(ev.src),
-          d = this.ents.get(ev.dst);
+          d = this.ents.get(ev.dst) ?? td;
         if (!s) break;
         const dx = d ? Math.sign(d.x - s.x) : 0,
           dy = d ? Math.sign(d.y - s.y) : 0;
@@ -682,6 +755,9 @@ export class ReplayState {
         } // (the core clamps the hp with no hp event)
         break;
       }
+      case "tool":
+        this.toolEvent(ev);
+        break;
       case "hatch":
         this.callout = {
           text: ev.kind.replace(/_/g, " ").slice(0, 24),
@@ -731,6 +807,14 @@ export class ReplayState {
         if (e.hero) e.fade = HERO_FALLEN_FADE;
         else this.ents.delete(id);
       }
+    for (const [id, tool] of this.tools) {
+      if (tool.ended) this.tools.delete(id);
+      else {
+        tool.move = null;
+        tool.px = tool.x;
+        tool.py = tool.y;
+      }
+    }
     this.projectiles = [];
     this.leash = null;
     this.screenShake = null;
@@ -773,6 +857,15 @@ export class ReplayState {
           e.fade = 0;
         }
       }
+    }
+    for (const [id, tool] of this.tools) {
+      if (tool.move) {
+        const p = Math.min(1, Math.floor(c - tool.move.t0) / TOOL_MOVE_T);
+        tool.px = tool.move.fx + (tool.x - tool.move.fx) * p;
+        tool.py = tool.move.fy + (tool.y - tool.move.fy) * p;
+        if (p >= 1) tool.move = null;
+      }
+      if (tool.ended && c - tool.ended.t0 >= TOOL_END_T) this.tools.delete(id);
     }
     this.projectiles = this.projectiles.filter((p) => c < p.t0 + p.path.length);
     if (this.leash && c - this.leash.t0 >= LEASH_T + SHAKE_T) this.leash = null;
@@ -885,6 +978,31 @@ export class ReplayState {
       }
     }
   }
+}
+
+/** A tool first held at tick `t`: placed then unless the caller says otherwise. */
+function newTool(
+  kind: ToolKind,
+  at: { id: number; x: number; y: number },
+  t: number,
+  until: number,
+): ToolState {
+  return {
+    id: at.id,
+    kind,
+    x: at.x,
+    y: at.y,
+    px: at.x,
+    py: at.y,
+    move: null,
+    until,
+    span: Math.max(1, until - t),
+    placed: t,
+    ended: null,
+    flashUntil: -Infinity,
+    aims: [],
+    mode: null,
+  };
 }
 
 /** The first `n` words of a caption's verb (`pack break goblin` → `pack break`). */

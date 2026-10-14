@@ -65,7 +65,8 @@ import { Bloom, EMISSIVE_TAG } from "./bloom";
 import { SpriteNormals } from "./normals";
 import { Juice, TintLayer } from "./fx";
 import { View2D } from "./view2d";
-import { CombatCues, type CueBody } from "./combat-cues";
+import { CombatCues, type CueBody, type CuePixel } from "./combat-cues";
+import { toolCuePixels, toolFade, toolFeet } from "./tool-cues";
 import { effectsLevel } from "./fxpref";
 export { createFallbackViewer } from "./fallback";
 import type { Ev, GunSnap, Snapshot } from "./types";
@@ -146,6 +147,7 @@ export type DebugLabel = { text: string; x: number; y: number; id: number; w?: n
 export type ViewerStats = {
   movementTrail?: { steps: number; quads: number };
   combatCues?: { active: number; quads: number; events: number };
+  tools?: { live: string[]; cues: number }; // Cut225: the decoy / sentry drawn (`sentry@4,7`) and their cue pixels this frame
   heroCrowd?: boolean;
   lead?: [number, number]; // Cut 121 §3: + the map camera's lead (world units)   // Cut 121 §3: two or more hostiles within two tiles of the hero this frame (his chevron drawn)
   calls: number;
@@ -385,7 +387,8 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   normals.add(L.ents.twin(normals.material));
   scene.add(juice.emit.mesh, juice.matte.mesh, juice.nums.mesh, juice.decals.mesh);
   const combatCues = new CombatCues();
-  const cueLayer = new TintLayer(env, 140, 0.5, false, 8);
+  const cueLayer = new TintLayer(env, 340, 0.5, false, 8); // combat cues and trail (140) + Cut225's tool cues (≤ 192)
+  const toolPixels: CuePixel[] = [];
   const cueBodies = new Map<number, CueBody>();
   scene.add(cueLayer.mesh);
   st.onEvent = (ev) => {
@@ -1286,6 +1289,28 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
         s.v1,
       );
     }
+    // Cut225: the hero's decoy / sentry stand on their tile (hue kept, over the items, under the bodies); a seen one out of view is
+    // drawn dim like the floor's memory, a struck one flashes, an ending one dissolves
+    for (const t of st.tools.values()) {
+      const i = t.y * st.w + t.x;
+      if (!st.visible[i] && !st.seen[i]) continue;
+      const s = atlas.tool(t.kind),
+        [fx, fy] = toolFeet(t);
+      L.overlays.push(
+        fx,
+        fy,
+        1.2,
+        TILE,
+        TILE,
+        s.u0,
+        s.v0,
+        s.u1,
+        s.v1,
+        light(i),
+        t.flashUntil > st.clock ? 1 : 0,
+        toolFade(t, st.clock),
+      );
+    }
     L.overlays.end();
 
     // bones piles (Cut 2 §2) arrive as item kind or entity kind `bones`: env density, 2 frames at 1 fps
@@ -1878,6 +1903,10 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     L.ghosts.end();
     L.glyphs.end();
     L.hud.end();
+    for (const t of st.tools.values()) {
+      const [fx, fy] = toolFeet(t);
+      cueBodies.set(t.id, { x: fx, y: fy, w: TILE, h: TILE }); // a blow on the sentry cues on it like on a body
+    }
     cueLayer.begin();
     const cueSlot = atlas.solid("#ffffff");
     for (const pixel of combatCues.draw(
@@ -1887,6 +1916,14 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
       quality.motion,
     ))
       cueLayer.push(pixel.x, pixel.y, 8.5, pixel.w, pixel.h, cueSlot, ...pixel.c, pixel.a);
+    for (const pixel of toolCuePixels(
+      st,
+      (id) => cueBodies.get(id) ?? null,
+      effectsLevel(),
+      quality.motion,
+      toolPixels,
+    ))
+      cueLayer.push(pixel.x, pixel.y, 8.4, pixel.w, pixel.h, cueSlot, ...pixel.c, pixel.a);
     for (const pixel of st.trail.draw(
       st.clock,
       (x, y) => !!st.visible[y * st.w + x] && st.tiles[y * st.w + x] !== "wall",
@@ -1897,6 +1934,12 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     cueLayer.end();
     stats.movementTrail = st.trail.stats();
     stats.combatCues = combatCues.stats();
+    stats.tools = {
+      live: [...st.tools.values()].map(
+        (t) => `${t.kind}@${t.x},${t.y}${t.ended ? `:${t.ended.how}` : ""}`,
+      ),
+      cues: toolPixels.length,
+    };
     // juice: particles, numbers and this frame's events (fx.ts); nothing at `low`
     fires.length = 0;
     gases.length = 0;

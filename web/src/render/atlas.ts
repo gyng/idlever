@@ -32,6 +32,7 @@ import {
   type Rgb,
 } from "./palette";
 import { FONT_CELL_H, FONT_CELL_W, FONT_H, FONT_W, glyphBits } from "./font";
+import { TOOL_COLOURS, TOOL_SPRITE, type ToolKind } from "./tool-sprites";
 
 export type Rect = { x: number; y: number; w: number; h: number };
 type AtlasJson = {
@@ -197,6 +198,10 @@ export class Atlas {
       this.envSlot(`prop:${id}`)
     );
   }
+  /** Cut225: a Clown decoy / Engineer sentry — `env_tool_<kind>` art when packed, else its primitive (tool-sprites.ts). */
+  tool(kind: ToolKind): Slot {
+    return this.env.get(`tile:env_tool_${kind}`) ?? this.envSlot(`tool:${kind}`);
+  }
   // ---- register 3 (art pass): 16-texel env art, optional -------------------------------------
   envTile(biome: string, name: string): Slot | undefined {
     return this.env.get(`tile:${biome}_env_${name}`);
@@ -301,6 +306,17 @@ export class Atlas {
       const i = rest.lastIndexOf("_");
       const slot = g.alloc(id, 8, 8);
       drawOverlay(g.ctx, slot, rest.slice(0, i), Number(rest.slice(i + 1)));
+      return slot;
+    }
+    if (cat === "tool") {
+      const slot = g.alloc(id, 8, 8);
+      const rows = TOOL_SPRITE[rest as ToolKind] ?? [];
+      rows.forEach((row, y) => {
+        for (let x = 0; x < row.length; x++) {
+          const col = TOOL_COLOURS[row[x]!];
+          if (col) px(g.ctx, slot, x, y, col);
+        }
+      });
       return slot;
     }
     if (cat === "glyph") {

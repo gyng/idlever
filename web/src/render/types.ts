@@ -11,5 +11,6 @@ export type {
   Overlay,
   Snapshot,
   Tile,
+  ToolsView,
   Verb,
 } from "../engine/types";
