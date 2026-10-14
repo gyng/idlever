@@ -209,6 +209,42 @@ Tests/copy pinning 60 s: web/tests/hero-life.mjs (recovering-600), cut120,
 collect-send.ts "Recovering 60s". A new WASM needs a new gold-settlements manifest
 (and picks up 8f48b3f1's patch order, not yet in pkg).
 
+## Sprite art status (audited 2026-10-14)
+
+All 417 art/manifest.json ids have generated PNGs in art/generated/ and are packed
+(web/public/art/atlas.json, 502 frames). The gaps are ids the game requests that are
+not in the manifest: they render as code primitives (art never blocks). Codex
+generation: art/README.md recipe (`codex exec … < art/prompts/<file>.txt`, detached),
+then key/review/pack/qc (`python3 art/pack.py && python3 art/art-qc.py`) and add the
+ids to art/manifest.json. The agent classifier blocks Claude from launching codex;
+the owner launches it.
+
+**Prompt written, generation pending (owner launch):**
+- `town_service_device`, `town_service_device_active_0/1` (Clone vat, Cut226):
+  art/prompts/town_clone_vat.txt → art/staging/clone_vat/. Code primitive today:
+  web/src/render/home-service-art.ts.
+
+**Need a prompt + codex generation (primitive today):**
+- Clown/Engineer hero sprites: `hero_clown`, `hero_engineer` (+ `_male/_female/_cat`
+  variants like the other five classes) — atlas has none; the watch draws a
+  primitive hero.
+- Clown/Engineer portraits: web/public/ui/portraits/hero_clown*.webp,
+  hero_engineer*.webp (Hub/roster fall back).
+- Class verb icons `v_clown`, `v_engineer` (web/public/ui/icons; class-icons.ts falls
+  back to ♧ / ⚙ glyphs).
+- Tool sprites `env_tool_decoy`, `env_tool_sentry` (render/atlas.ts; 8×8
+  primitives in render/tool-sprites.ts).
+- Town services `town_service_guild`, `town_service_pool`, `town_service_station`
+  (code-painted ink/wash in home-service-art.ts; Cut224 accepted them as
+  primitives, upgrade optional).
+- Town props `town_bench`, `town_lantern` (primitive branches in render/town.ts).
+
+**Code-drawn by design (not codex):**
+- Class skill icons are SVG marks in web/src/ui/skill-icons.ts: 30 exist (6 × five
+  classes); **Clown and Engineer have none (12 pending)** for their six-node trees.
+- `town_ground_shadow_*`, `town_wind_grass_*` are procedural effects.
+- Paper doll uses class art + four anchors, not layered equipment (open).
+
 Open owner items: Clown candidate numbers (D19–23 vs Rogue D28), Engineer mace
 4–8 vs sword 3–7, clone-vat art (codex run blocked by permission classifier;
 owner runs `codex exec … < art/prompts/town_clone_vat.txt`, then key/pack/wire).
