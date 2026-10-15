@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-15T20:03:32.431811+00:00",
+  "scope": "Exact live child8092 environment whitelist. Only listed task keys retained/exported; raw environment not retained. No tuning/skip/probe/cache-fresh overrides. Gates assigns runtime key from actual compiled production rlib/toolchain.",
+  "pidNamespace": "pid:[4026532214]",
+  "pid": 8092,
+  "environment": {
+    "IDLEVER_SRC_KEY": "155fde9257274b5d",
+    "IDLEVER_SKIP_TWIST": null,
+    "IDLEVER_BALANCE_JSON": null,
+    "IDLEVER_BALANCE_FILE": null,
+    "DP_OFF": null,
+    "DP_STALLS": null,
+    "DP_CAUSAL_START_FORGE": null,
+    "DP_SESSION_ONLY": null,
+    "IDLEVER_CACHE_FRESH": null,
+    "GATES_THREADS": "8",
+    "CARGO_BUILD_JOBS": "8",
+    "RUST_BACKTRACE": "1"
+  },
+  "rustcVersion": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+  "cargoVersion": "cargo 1.96.0 (30a34c682 2026-05-25)\n",
+  "nodeVersion": "v22.18.0"
+}

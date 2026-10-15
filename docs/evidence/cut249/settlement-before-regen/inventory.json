@@ -1,0 +1,38 @@
+{
+  "utc": "2026-10-15T19:52:09.976367+00:00",
+  "scope": "Independent repeat export after strict --settle/no regen: immutable inputs and all4 full expected packets exact. Tool cleans its own temporary output, so current native helper explicitly exports raw proof before regeneration.",
+  "entries": [
+    {
+      "id": "bank-positive",
+      "oldAfter": "docs/evidence/cut244/followup/settlements/bank-positive.after.session.json.gz",
+      "oldRawSha256": "da2f218d57baa44fe0d08d8cb8c9ffdbc1d4da3e6ba0179587270fd5eedc6aeb",
+      "currentAfter": "docs/evidence/cut249/settlement-before-regen/bank-positive.after.session.json.gz",
+      "currentRawSha256": "da2f218d57baa44fe0d08d8cb8c9ffdbc1d4da3e6ba0179587270fd5eedc6aeb",
+      "fullExpectedPacketUnchanged": true
+    },
+    {
+      "id": "death-secured-lost",
+      "oldAfter": "docs/evidence/cut244/followup/settlements/death-secured-lost.after.session.json.gz",
+      "oldRawSha256": "d9f0013cb0d3c46f3452bbd67b0a2a1a9ad300d85d34f74da2c6e4ca34625452",
+      "currentAfter": "docs/evidence/cut249/settlement-before-regen/death-secured-lost.after.session.json.gz",
+      "currentRawSha256": "d9f0013cb0d3c46f3452bbd67b0a2a1a9ad300d85d34f74da2c6e4ca34625452",
+      "fullExpectedPacketUnchanged": true
+    },
+    {
+      "id": "death-fetched-lost",
+      "oldAfter": "docs/evidence/cut244/followup/settlements/death-fetched-lost.after.session.json.gz",
+      "oldRawSha256": "97a1202ef08a81e5b850e3fa76bc0e60f32f6385fbe02512d5bbe788a70df5ff",
+      "currentAfter": "docs/evidence/cut249/settlement-before-regen/death-fetched-lost.after.session.json.gz",
+      "currentRawSha256": "97a1202ef08a81e5b850e3fa76bc0e60f32f6385fbe02512d5bbe788a70df5ff",
+      "fullExpectedPacketUnchanged": true
+    },
+    {
+      "id": "multihero-absence",
+      "oldAfter": "docs/evidence/cut244/followup/settlements/multihero-absence.after.session.json.gz",
+      "oldRawSha256": "df453a59840d849aa6fb6260912cfb62612c1d25d5e665192fadfcbe6f263bd7",
+      "currentAfter": "docs/evidence/cut249/settlement-before-regen/multihero-absence.after.session.json.gz",
+      "currentRawSha256": "55341095437a2e8631c3438828433445fe22add951a7435d3e10fe111f42177f",
+      "fullExpectedPacketUnchanged": true
+    }
+  ]
+}

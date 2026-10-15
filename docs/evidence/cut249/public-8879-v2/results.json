@@ -1,0 +1,417 @@
+{
+  "utc": "2026-10-15T19:50:55.390Z",
+  "scope": "Immutable earned paid/unpaid one-resident and three-resident Sessions; exact public whole/sliced/reloaded8h reports/saves. Paid case also checks tick10energy88, complete watched RunRec and full held replay. No progression-policy, canonical pacing or fun claim.",
+  "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "scriptSha256": "6cccdce447fe550f73716a0136b7dea0f143249328e42a34b170046166bc4338",
+  "cases": [
+    {
+      "id": "paid-pace",
+      "path": "docs/evidence/cut248/earned-paid-pace.sent.session.json",
+      "residents": 1,
+      "checks": {
+        "tenTicks": true,
+        "firstLoss7201": true,
+        "sliced": true,
+        "reloaded": true,
+        "actualReplay": true,
+        "actualWatched": true,
+        "completeReplay": true,
+        "inputUnchanged": true
+      },
+      "artifacts": {
+        "single10": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.single10.json.gz",
+          "rawSha256": "c8493689b71a9a61eed77fcdc3297e0aa132421f3aa0e9df369ab01396f926ed"
+        },
+        "batch10": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.batch10.json.gz",
+          "rawSha256": "c28a9ecd38df8e9657db8f11680df6270891b926985add117e611e4c6bd60df8"
+        },
+        "checkpoint7200": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.checkpoint7200.json.gz",
+          "rawSha256": "2118663fa765fdf9d76e8d7cea15995588c4e8fdc8967805df824204f4c73d39"
+        },
+        "live7201": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.live7201.json.gz",
+          "rawSha256": "c35389f92436342d0f3e050d78d21cb41a00a6c04e237ae980e3ba21dbface6e"
+        },
+        "reloaded7201": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded7201.json.gz",
+          "rawSha256": "c35389f92436342d0f3e050d78d21cb41a00a6c04e237ae980e3ba21dbface6e"
+        },
+        "report": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.report.json.gz",
+          "rawSha256": "1b9056cb2c801c7de6a30f1de11657a32a1c2c461a73e0863cfcb00797bafab9"
+        },
+        "after": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.after.json.gz",
+          "rawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.sliced.json.gz",
+          "rawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33"
+        },
+        "sliced-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.sliced-report.json.gz",
+          "rawSha256": "1b9056cb2c801c7de6a30f1de11657a32a1c2c461a73e0863cfcb00797bafab9"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded.json.gz",
+          "rawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33"
+        },
+        "reloaded-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded-report.json.gz",
+          "rawSha256": "1b9056cb2c801c7de6a30f1de11657a32a1c2c461a73e0863cfcb00797bafab9"
+        },
+        "replay": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.replay.json.gz",
+          "rawSha256": "c0647f74dcb41cfd17ead9f363c0de1419b51f0110b832fb27b2cf483cbe81c6"
+        },
+        "watched": {
+          "path": "docs/evidence/cut249/public-8879-v2/paid-pace.watched.json.gz",
+          "rawSha256": "f7ebcfe0bae9f5043caf7cbc9b1d911509593008a407ca293c0c2e65c979c76f"
+        }
+      },
+      "inputRawSha256": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 328345,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 21,
+        "turns": 43450,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 50,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 457,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 67,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 78,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 21,
+        "turns": 43450,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 50,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 457,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 67,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 78,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "earned-one",
+      "path": "docs/evidence/cut247/earned-fighter-sword.sent.session.json",
+      "residents": 1,
+      "checks": {
+        "sliced": true,
+        "reloaded": true,
+        "actualReplay": true,
+        "actualWatched": true,
+        "completeReplay": true,
+        "inputUnchanged": true
+      },
+      "artifacts": {
+        "report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        "after": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.after.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.sliced.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "sliced-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.sliced-report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.reloaded.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "reloaded-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.reloaded-report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        "replay": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.replay.json.gz",
+          "rawSha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec"
+        },
+        "watched": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-one.watched.json.gz",
+          "rawSha256": "0fa022d5929e8d2714b5e13dadf969162b9500a026332fae12ce887f6221d43a"
+        }
+      },
+      "inputRawSha256": "53da44b79731d6ac1788d42a3376c994fd8ae00d1e25e9c022068a798fb9de91",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 327334,
+        "start": 1,
+        "depth": 22,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 828,
+        "found": 28,
+        "turns": 33345,
+        "finds": [
+          {
+            "id": 255,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 175,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 296,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          }
+        ]
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 22,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 828,
+        "found": 28,
+        "turns": 33345,
+        "finds": [
+          {
+            "id": 255,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 175,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 296,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "earned-three",
+      "path": "docs/evidence/cut249/earned-three.loaded.session.json",
+      "residents": 3,
+      "origin": "docs/evidence/cut249/earned-three-load-provenance.json",
+      "checks": {
+        "sliced": true,
+        "reloaded": true,
+        "inputUnchanged": true
+      },
+      "artifacts": {
+        "report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.report.json.gz",
+          "rawSha256": "72c151ddec4c033429476e704decf0f7a8f9b7309ca626795ed1da95bd2f5e98"
+        },
+        "after": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.after.json.gz",
+          "rawSha256": "4f25064951f09c505ade37103bd17b8fd189253a0e9854709d5bd5b86d75adcc"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.sliced.json.gz",
+          "rawSha256": "4f25064951f09c505ade37103bd17b8fd189253a0e9854709d5bd5b86d75adcc"
+        },
+        "sliced-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.sliced-report.json.gz",
+          "rawSha256": "72c151ddec4c033429476e704decf0f7a8f9b7309ca626795ed1da95bd2f5e98"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.reloaded.json.gz",
+          "rawSha256": "4f25064951f09c505ade37103bd17b8fd189253a0e9854709d5bd5b86d75adcc"
+        },
+        "reloaded-report": {
+          "path": "docs/evidence/cut249/public-8879-v2/earned-three.reloaded-report.json.gz",
+          "rawSha256": "72c151ddec4c033429476e704decf0f7a8f9b7309ca626795ed1da95bd2f5e98"
+        }
+      },
+      "inputRawSha256": "147136c35c0249f83909d4ecb720b6cee77219727680ebd8edfd662eefb2f1e8",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "finishedUtc": "2026-10-15T19:51:12.859Z"
+}

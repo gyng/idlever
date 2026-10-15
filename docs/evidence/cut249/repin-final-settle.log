@@ -1,0 +1,11 @@
+repin: native gold_settlement_repin (cargo --profile fast) …
+repin:
+  wasm 6774306 bytes sha256 8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff
+  default manifest docs/evidence/cut249/final/settlements-inputs-8879.json pins 8879ed11650a… → UNCHANGED
+  no new manifest: the default already pins this WASM (--force to write one)
+  settle: Gold, ledger, ExitLine unchanged on 4/4 entries (0.8s)
+    bank-positive: expected unchanged; after-save unchanged
+    death-secured-lost: expected unchanged; after-save unchanged
+    death-fetched-lost: expected unchanged; after-save unchanged
+    multihero-absence: expected unchanged; after-save unchanged
+    (report only; --regen writes the differing after-saves)

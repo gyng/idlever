@@ -1,0 +1,33 @@
+   Compiling idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+warning: unused import: `Game`
+ --> crates/idlever-core/src/tests_cut249.rs:2:34
+  |
+2 | use crate::{bloodlines::Session, Game};
+  |                                  ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `idlever-core` (lib test) generated 1 warning (run `cargo fix --lib -p idlever-core --tests` to apply 1 suggestion)
+    Finished `fast` profile [optimized] target(s) in 49.16s
+     Running unittests src/lib.rs (target/fast/deps/idlever_core-4cfe31a505304478)
+
+running 1 test
+test tests_cut249::actual_paid_checkpoint_keeps_next_tick_last_seen_provenance ... FAILED
+
+failures:
+
+---- tests_cut249::actual_paid_checkpoint_keeps_next_tick_last_seen_provenance stdout ----
+
+thread 'tests_cut249::actual_paid_checkpoint_keeps_next_tick_last_seen_provenance' (186) panicked at crates/idlever-core/src/tests_cut249.rs:20:5:
+assertion `left == right` failed: next-tick sight-loss history must survive loading
+  left: [Prov { t: 190, depth: 1, kind: Found, key: "item:dagger", text: "found dagger +2 on D1" }, Prov { t: 360, depth: 1, kind: Found, key: "item:summon_ally", text: "found gilded scroll? on D1" }, Prov { t: 932, depth: 1, kind: Found, key: "item:heal", text: "found heal on D1" }, Prov { t: 955, depth: 1, kind: Found, key: "item:enchant", text: "found inked scroll? on D1" }, Prov { t: 978, depth: 1, kind: Found, key: "item:dagger", text: "found dagger +2 on D1" }, Prov { t: 1340, depth: 2, kind: Found, key: "item:teleport", text: "found waxen scroll? on D2" }, Prov { t: 1421, depth: 2, kind: Found, key: "item:bow", text: "found bow +1 on D2" }, Prov { t: 1580, depth: 2, kind: Found, key: "item:caustic", text: "found clear potion? on D2" }, Prov { t: 3591, depth: 3, kind: Found, key: "item:axe", text: "found axe +1 on D3" }, Prov { t: 3670, depth: 3, kind: Spent, key: "item:caustic", text: "swapped for the fire" }, Prov { t: 3670, depth: 3, kind: Found, key: "item:fire", text: "found fire on D3" }, Prov { t: 4420, depth: 4, kind: Spent, key: "item:teleport", text: "swapped for the strength" }, Prov { t: 6091, depth: 4, kind: Path, key: "path", text: "chase given up" }, Prov { t: 6171, depth: 4, kind: Seen, key: "seen:monkey", text: "monkey last seen D4" }, Prov { t: 6440, depth: 5, kind: Spent, key: "item:teleport", text: "swapped for the strength" }, Prov { t: 6440, depth: 5, kind: Found, key: "item:strength", text: "found amber potion? on D5" }, Prov { t: 6489, depth: 5, kind: Found, key: "item:sword", text: "found sword +1 on D5" }, Prov { t: 6761, depth: 5, kind: Seen, key: "seen:goblin", text: "goblin last seen D5" }, Prov { t: 6932, depth: 6, kind: Seen, key: "seen:jackal", text: "jackal last seen D6" }]
+ right: [Prov { t: 190, depth: 1, kind: Found, key: "item:dagger", text: "found dagger +2 on D1" }, Prov { t: 360, depth: 1, kind: Found, key: "item:summon_ally", text: "found gilded scroll? on D1" }, Prov { t: 932, depth: 1, kind: Found, key: "item:heal", text: "found heal on D1" }, Prov { t: 955, depth: 1, kind: Found, key: "item:enchant", text: "found inked scroll? on D1" }, Prov { t: 978, depth: 1, kind: Found, key: "item:dagger", text: "found dagger +2 on D1" }, Prov { t: 1340, depth: 2, kind: Found, key: "item:teleport", text: "found waxen scroll? on D2" }, Prov { t: 1421, depth: 2, kind: Found, key: "item:bow", text: "found bow +1 on D2" }, Prov { t: 1580, depth: 2, kind: Found, key: "item:caustic", text: "found clear potion? on D2" }, Prov { t: 3591, depth: 3, kind: Found, key: "item:axe", text: "found axe +1 on D3" }, Prov { t: 3670, depth: 3, kind: Spent, key: "item:caustic", text: "swapped for the fire" }, Prov { t: 3670, depth: 3, kind: Found, key: "item:fire", text: "found fire on D3" }, Prov { t: 4420, depth: 4, kind: Spent, key: "item:teleport", text: "swapped for the strength" }, Prov { t: 6091, depth: 4, kind: Path, key: "path", text: "chase given up" }, Prov { t: 6171, depth: 4, kind: Seen, key: "seen:monkey", text: "monkey last seen D4" }, Prov { t: 6440, depth: 5, kind: Spent, key: "item:teleport", text: "swapped for the strength" }, Prov { t: 6440, depth: 5, kind: Found, key: "item:strength", text: "found amber potion? on D5" }, Prov { t: 6489, depth: 5, kind: Found, key: "item:sword", text: "found sword +1 on D5" }, Prov { t: 6761, depth: 5, kind: Seen, key: "seen:goblin", text: "goblin last seen D5" }, Prov { t: 6932, depth: 6, kind: Seen, key: "seen:jackal", text: "jackal last seen D6" }, Prov { t: 7201, depth: 6, kind: Seen, key: "seen:goblin_archer", text: "goblin archer last seen D6" }]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests_cut249::actual_paid_checkpoint_keeps_next_tick_last_seen_provenance
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 980 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

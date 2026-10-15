@@ -11,9 +11,9 @@ const read = (path) => readFileSync(new URL(`../../${path}`, import.meta.url));
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const manifest = JSON.parse(
   read(
-    // Current package: Cut247/248 quiet armour and fractional pace equivalence (c9fa); real Gold and settlement semantics preserved. Earlier manifests stay as history: followup e62c, cut244 97e8, final 87de, settled 6214, cut235 6214, cut233 d161, cut232 0574, cut230 b0d1, cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48, cut225 5844.
+    // Current package: Cut249 previous-visibility persistence (8879); complete receipts unchanged, typed saved IDs documented. Earlier manifests stay as history: cut249 8879, cut248 c9fa, followup e62c, cut244 97e8, final 87de, settled 6214, cut235 6214, cut233 d161, cut232 0574, cut230 b0d1, cut222 (a2ab), cut226 1b93, fd56, cut227 13e8, cut228 c2f0, cut228 main 8b48, cut225 5844.
     process.env.IDLEVER_GOLD_SETTLEMENT_INPUTS ??
-      "docs/evidence/cut248/settlements-inputs-c9fa.json",
+      "docs/evidence/cut249/final/settlements-inputs-8879.json",
   ),
 );
 const binary = read("web/src/engine/pkg/idlever_wasm_bg.wasm");

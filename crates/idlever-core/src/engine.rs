@@ -648,8 +648,10 @@ pub struct Run {
     pub hero_flood: Vec<u32>,
     #[serde(skip)]
     pub hero_flood_head: usize,
-    /// Ids visible at the last vision pass (to skip unchanged passes).
-    #[serde(skip)]
+    /// Ordered ids from the previous vision pass. Sight-loss provenance consumes this
+    /// history before the next pass replaces it, so saves must preserve it. Older saves
+    /// without it retain their empty previous-vision history until a normal pass runs.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub last_visible: Vec<u32>,
     #[serde(default)]
     pub idle_actions: u32,

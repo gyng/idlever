@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-15T19:52:23.436124+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut244/followup/settlements/death-fetched-lost.after.session.json.gz",
+    "rawSha256": "97a1202ef08a81e5b850e3fa76bc0e60f32f6385fbe02512d5bbe788a70df5ff"
+  },
+  "after": {
+    "path": "docs/evidence/cut249/settlement-before-regen/death-fetched-lost.after.session.json.gz",
+    "rawSha256": "97a1202ef08a81e5b850e3fa76bc0e60f32f6385fbe02512d5bbe788a70df5ff"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": []
+}

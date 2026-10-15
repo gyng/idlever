@@ -1,0 +1,508 @@
+{
+  "scope": "Proposed local Cut249 source/curated correctness checkpoint; no staging/commit performed. Live pacing/full output/status excluded until terminal. Redundant byte-identical historical public captures remain local and are represented by SHA inventory. Root-owned UI paths excluded.",
+  "paths": {
+    "crates/idlever-core/src/engine.rs": {
+      "sha256": "4716c4af6323984f6a7a228ff070f962be5af7e278099d409c11bae3f93f099b",
+      "bytes": 390332
+    },
+    "crates/idlever-core/src/lib.rs": {
+      "sha256": "07196980e01d9b6d13348554d9feb352b4ec6d3d108e897ec147a5e98f882808",
+      "bytes": 18444
+    },
+    "crates/idlever-core/src/tests_cut249.rs": {
+      "sha256": "a0bef5c4b5778e491fc2ea2b6d8168048912e9c6e76ea66b7bd18e2487a2474d",
+      "bytes": 6119
+    },
+    "docs/CUT249_VISIBILITY_PROVENANCE_SAVE.md": {
+      "sha256": "d88239fe7dbc99a2746c5251f779664dd8d7923cb22dff1a78bbf66e822b727e",
+      "bytes": 3095
+    },
+    "docs/evidence/cut249/README.md": {
+      "sha256": "93775ea6727b9680ed4c711999b986d593286f39e73cbfeeb2cd77e29d391ebb",
+      "bytes": 4689
+    },
+    "docs/evidence/cut249/baseline/c9fa-source-package.tar.gz": {
+      "sha256": "d7fe2b699cb21989ecb2ba99be00596b8f41a5941b4d0564ff8f52f9ffd5b13b",
+      "bytes": 3508744
+    },
+    "docs/evidence/cut249/baseline/focused-first-cache-comparison.log": {
+      "sha256": "6b5bc451ef2b0a48321df001c1445af666a0ec9f1eb469083a045ba05a104461",
+      "bytes": 143317
+    },
+    "docs/evidence/cut249/baseline/focused-red.log": {
+      "sha256": "7dac990c5402d46ead652dd86431e62c282749fdd7530bbb4406c7df043296b9",
+      "bytes": 4950
+    },
+    "docs/evidence/cut249/baseline/identity.json": {
+      "sha256": "b2d9db04d4aae96ceb3381ceeb421575853b4d9c75e7c72f96867cf36d76b3b7",
+      "bytes": 25275
+    },
+    "docs/evidence/cut249/baseline/public-parity-first.mjs": {
+      "sha256": "47b31ee5768f8a7f089a4ca46cb081726385cc393a0946cdddc963d1845a6ef0",
+      "bytes": 5510
+    },
+    "docs/evidence/cut249/clippy.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut249/clippy.log": {
+      "sha256": "d6377465987cc6cace75b018804f751222ec5b9a102b3de34bdff5d5bb30607a",
+      "bytes": 217
+    },
+    "docs/evidence/cut249/compare-visibility-additions.py": {
+      "sha256": "44119d5fff08c01958b34dcaabab305f75b3862fc425db10b7ec153df752609d",
+      "bytes": 2736
+    },
+    "docs/evidence/cut249/earned-three-load-provenance.json": {
+      "sha256": "863ae4b5b8a87019b0d143993024901958834823d26a5b7e5822e515b9436b8f",
+      "bytes": 718
+    },
+    "docs/evidence/cut249/earned-three.loaded.session.json": {
+      "sha256": "147136c35c0249f83909d4ecb720b6cee77219727680ebd8edfd662eefb2f1e8",
+      "bytes": 1501420
+    },
+    "docs/evidence/cut249/final/settlements/multihero-absence.after.session.json.gz": {
+      "sha256": "4c52bbd980596708c2035515588f8c204c6948739bf715201555c9851bc74f58",
+      "bytes": 200326
+    },
+    "docs/evidence/cut249/final/settlements-inputs-8879.json": {
+      "sha256": "ea84b1e91baa709e445448d2661760c534200f7fbc5f976b00a385b8b8aa52c8",
+      "bytes": 127809
+    },
+    "docs/evidence/cut249/focused-after-v2.log": {
+      "sha256": "5dc6bec7296f86f3fd8fe474f70472b8effb69e10a761eea3b8da867a025b11e",
+      "bytes": 1607
+    },
+    "docs/evidence/cut249/focused-after.log": {
+      "sha256": "05d1992d135b9778633c00d20310463a5d795501affa8a1b5dd181c031cf4d78",
+      "bytes": 2170
+    },
+    "docs/evidence/cut249/focused-first-capsule-fixture.log": {
+      "sha256": "05d1992d135b9778633c00d20310463a5d795501affa8a1b5dd181c031cf4d78",
+      "bytes": 2170
+    },
+    "docs/evidence/cut249/gates-identity.json": {
+      "sha256": "9d800272c10ed85579a5deef49c46134e7730e3a4e10b2062e928a9402127a7c",
+      "bytes": 50171
+    },
+    "docs/evidence/cut249/load-earned-three.mjs": {
+      "sha256": "a99c943ee8c21002ac655aa270a84bcb6e5bac4a44b37e60ccc5e662f6724581",
+      "bytes": 1511
+    },
+    "docs/evidence/cut249/load-path-audit.md": {
+      "sha256": "d3bf066c16a8976d6132fe2f21a86bcb485ba04aede4e2666e7b6b079c39cdc5",
+      "bytes": 2412
+    },
+    "docs/evidence/cut249/native-check-identity.json": {
+      "sha256": "6be65d05518b00cdfc5827c86874fb580644d7564d9935124e8211eca5774ddb",
+      "bytes": 24553
+    },
+    "docs/evidence/cut249/native-checks.finished": {
+      "sha256": "8492362d542875a244695cd110847daf6ee3050d06139551dbfbb02e1c491e43",
+      "bytes": 21
+    },
+    "docs/evidence/cut249/native-checks.pid": {
+      "sha256": "49b9d83afcf2552d28ac3ac4615edf2ed30eccee08ee7aa45440f8c22c615d1f",
+      "bytes": 8
+    },
+    "docs/evidence/cut249/native-checks.started": {
+      "sha256": "5fdb02e6b1a76e9fb898191d1e6daa294c3e399592118e0b585f3ffdb713c0f9",
+      "bytes": 21
+    },
+    "docs/evidence/cut249/native-earned-one.log": {
+      "sha256": "62d5ca08f44fbcce6da830173629368b77d1716bad5fae08ce4635d594664df9",
+      "bytes": 57
+    },
+    "docs/evidence/cut249/native-earned-paid.log": {
+      "sha256": "62d5ca08f44fbcce6da830173629368b77d1716bad5fae08ce4635d594664df9",
+      "bytes": 57
+    },
+    "docs/evidence/cut249/native-earned-three.log": {
+      "sha256": "7db643f285dab21918da7342e350f5601a07ecf6d03c2c6cbb4af54628cfe263",
+      "bytes": 57
+    },
+    "docs/evidence/cut249/native-parity/earned-one/loaded.session.json.gz": {
+      "sha256": "fddda340cc2121b4e0a3d4258e8aba9796b9d2bb15cae5bd2c1e7ea6f7354a98",
+      "bytes": 170964
+    },
+    "docs/evidence/cut249/native-parity/earned-one/prepared.session.json.gz": {
+      "sha256": "fddda340cc2121b4e0a3d4258e8aba9796b9d2bb15cae5bd2c1e7ea6f7354a98",
+      "bytes": 170964
+    },
+    "docs/evidence/cut249/native-parity/earned-one/reloaded.report.json.gz": {
+      "sha256": "c5014a4248d81be89e4516570bbb4d05393f4040ecef0442f098262d036354aa",
+      "bytes": 4770
+    },
+    "docs/evidence/cut249/native-parity/earned-one/reloaded.session.json.gz": {
+      "sha256": "d57119f4cb59268e1db613eaaf6bc4341add6bc47658eff778a2ff25e695d60f",
+      "bytes": 153090
+    },
+    "docs/evidence/cut249/native-parity/earned-one/sliced.report.json.gz": {
+      "sha256": "c5014a4248d81be89e4516570bbb4d05393f4040ecef0442f098262d036354aa",
+      "bytes": 4770
+    },
+    "docs/evidence/cut249/native-parity/earned-one/sliced.session.json.gz": {
+      "sha256": "d57119f4cb59268e1db613eaaf6bc4341add6bc47658eff778a2ff25e695d60f",
+      "bytes": 153090
+    },
+    "docs/evidence/cut249/native-parity/earned-one/summary.json.gz": {
+      "sha256": "c36677ac9bef9e35665a0dec4780bf5bd21668da6c2cbd95b818247e1eb2284a",
+      "bytes": 220
+    },
+    "docs/evidence/cut249/native-parity/earned-one/whole.report.json.gz": {
+      "sha256": "c5014a4248d81be89e4516570bbb4d05393f4040ecef0442f098262d036354aa",
+      "bytes": 4770
+    },
+    "docs/evidence/cut249/native-parity/earned-one/whole.session.json.gz": {
+      "sha256": "d57119f4cb59268e1db613eaaf6bc4341add6bc47658eff778a2ff25e695d60f",
+      "bytes": 153090
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/loaded.session.json.gz": {
+      "sha256": "03a27cab0f0636c6963dad769e4f5cb8f0bff4251a11da632f33949ea5320ca6",
+      "bytes": 171057
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/prepared.session.json.gz": {
+      "sha256": "03a27cab0f0636c6963dad769e4f5cb8f0bff4251a11da632f33949ea5320ca6",
+      "bytes": 171057
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/reloaded.report.json.gz": {
+      "sha256": "28daaf3a941bb12725ef2add4865b9a4ef34562377e9e3c20f00c32391aa17c6",
+      "bytes": 4234
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/reloaded.session.json.gz": {
+      "sha256": "63b184db7adb1a0c165d0c76d1c68c921e53c05765b876a414c0cf02e930bc32",
+      "bytes": 169026
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/sliced.report.json.gz": {
+      "sha256": "28daaf3a941bb12725ef2add4865b9a4ef34562377e9e3c20f00c32391aa17c6",
+      "bytes": 4234
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/sliced.session.json.gz": {
+      "sha256": "63b184db7adb1a0c165d0c76d1c68c921e53c05765b876a414c0cf02e930bc32",
+      "bytes": 169026
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/summary.json.gz": {
+      "sha256": "77f249b03d25c0c1c0737bc659edf09c52c70f2a5230d383bb24d330d41abfa4",
+      "bytes": 215
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/whole.report.json.gz": {
+      "sha256": "28daaf3a941bb12725ef2add4865b9a4ef34562377e9e3c20f00c32391aa17c6",
+      "bytes": 4234
+    },
+    "docs/evidence/cut249/native-parity/earned-paid/whole.session.json.gz": {
+      "sha256": "63b184db7adb1a0c165d0c76d1c68c921e53c05765b876a414c0cf02e930bc32",
+      "bytes": 169026
+    },
+    "docs/evidence/cut249/native-parity/earned-three/loaded.session.json.gz": {
+      "sha256": "b2c1f8c212b7cc7da40d23c61d0f889dd25993ce6aeccbd4e64824ff597c3eb6",
+      "bytes": 194626
+    },
+    "docs/evidence/cut249/native-parity/earned-three/prepared.session.json.gz": {
+      "sha256": "b2c1f8c212b7cc7da40d23c61d0f889dd25993ce6aeccbd4e64824ff597c3eb6",
+      "bytes": 194626
+    },
+    "docs/evidence/cut249/native-parity/earned-three/reloaded.report.json.gz": {
+      "sha256": "a200d3b4077468ca2e56f206f7ad531813c66065c7c51e800edb4b93f7db81ec",
+      "bytes": 4881
+    },
+    "docs/evidence/cut249/native-parity/earned-three/reloaded.session.json.gz": {
+      "sha256": "3b3f8836cbe1c7902b91f28aee300bc80d132f9cc11256b6a3b2c70eb4886968",
+      "bytes": 199973
+    },
+    "docs/evidence/cut249/native-parity/earned-three/sliced.report.json.gz": {
+      "sha256": "a200d3b4077468ca2e56f206f7ad531813c66065c7c51e800edb4b93f7db81ec",
+      "bytes": 4881
+    },
+    "docs/evidence/cut249/native-parity/earned-three/sliced.session.json.gz": {
+      "sha256": "3b3f8836cbe1c7902b91f28aee300bc80d132f9cc11256b6a3b2c70eb4886968",
+      "bytes": 199973
+    },
+    "docs/evidence/cut249/native-parity/earned-three/summary.json.gz": {
+      "sha256": "749d42b409d34cb8857aaa90fbd539ccb313a2f24c4a0d0d33b622be207ca05b",
+      "bytes": 234
+    },
+    "docs/evidence/cut249/native-parity/earned-three/whole.report.json.gz": {
+      "sha256": "a200d3b4077468ca2e56f206f7ad531813c66065c7c51e800edb4b93f7db81ec",
+      "bytes": 4881
+    },
+    "docs/evidence/cut249/native-parity/earned-three/whole.session.json.gz": {
+      "sha256": "3b3f8836cbe1c7902b91f28aee300bc80d132f9cc11256b6a3b2c70eb4886968",
+      "bytes": 199973
+    },
+    "docs/evidence/cut249/native-parity/inventory.json": {
+      "sha256": "cf9e9abe0f612a9dbad37d6a7b283a4dabce83bacf34dcbfa2c25413fa76f809",
+      "bytes": 7581
+    },
+    "docs/evidence/cut249/observations.json": {
+      "sha256": "cda9b39abb2949a86ad52bf440013ef9ae66261c4220e384f27d15fa58dfb30a",
+      "bytes": 4413
+    },
+    "docs/evidence/cut249/package-8879.tar.gz": {
+      "sha256": "eb3e1db64de256b80377014161f173f8fe0782902e7a6fda17f44502d951d63b",
+      "bytes": 2131873
+    },
+    "docs/evidence/cut249/package-after-identity.json": {
+      "sha256": "dccab9ff6ba8998631eca181ab71a30d46ab2f3259568e5561856dd79c81733a",
+      "bytes": 1455
+    },
+    "docs/evidence/cut249/public-8879/results.json": {
+      "sha256": "35fcc72ac41ee4d3f44712591298deddf7f8a3d95efe6957c8569aa1eb76675f",
+      "bytes": 35809
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.after.json.gz": {
+      "sha256": "e12dfb34ff6a6ead2a4a6ddb715ca71dcd7b0ccb7ebce967eab135881be674bf",
+      "bytes": 155103
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.reloaded-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.reloaded.json.gz": {
+      "sha256": "e12dfb34ff6a6ead2a4a6ddb715ca71dcd7b0ccb7ebce967eab135881be674bf",
+      "bytes": 155103
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.replay.json.gz": {
+      "sha256": "5dc9facdb61b3aeb889d0bd8589a24fb193b30ad4a05f085e4f9ceef6da902a0",
+      "bytes": 101155
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.sliced-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.sliced.json.gz": {
+      "sha256": "e12dfb34ff6a6ead2a4a6ddb715ca71dcd7b0ccb7ebce967eab135881be674bf",
+      "bytes": 155103
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-one.watched.json.gz": {
+      "sha256": "9752827d195500028576bd4901e5f1fcc70c9f240ffefc546d6622c3de7f9418",
+      "bytes": 155419
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.after.json.gz": {
+      "sha256": "1cc27e5062258d0c78114f951331f589d85e391b6d84e67a69be6223fbd217b3",
+      "bytes": 202391
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.reloaded-report.json.gz": {
+      "sha256": "23823f7f7f7d37b8d140b38f8b43b9d519f551914b4306c2e57aca1fbe559db2",
+      "bytes": 3882
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.reloaded.json.gz": {
+      "sha256": "1cc27e5062258d0c78114f951331f589d85e391b6d84e67a69be6223fbd217b3",
+      "bytes": 202391
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.report.json.gz": {
+      "sha256": "23823f7f7f7d37b8d140b38f8b43b9d519f551914b4306c2e57aca1fbe559db2",
+      "bytes": 3882
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.sliced-report.json.gz": {
+      "sha256": "23823f7f7f7d37b8d140b38f8b43b9d519f551914b4306c2e57aca1fbe559db2",
+      "bytes": 3882
+    },
+    "docs/evidence/cut249/public-8879-v2/earned-three.sliced.json.gz": {
+      "sha256": "1cc27e5062258d0c78114f951331f589d85e391b6d84e67a69be6223fbd217b3",
+      "bytes": 202391
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.after.json.gz": {
+      "sha256": "186fc489ab40598a1db56440dee276945fc49011ead4cb2a6f079a1be4518821",
+      "bytes": 171170
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.batch10.json.gz": {
+      "sha256": "7af3183de5486b253652a4f370e761f898300a0716b07243bd96b9972c12fd20",
+      "bytes": 173364
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.checkpoint7200.json.gz": {
+      "sha256": "d62833f2dd7fd12b815d3ba3191833f1de6fa1da3e1da2f54c8769e425a0f72f",
+      "bytes": 369850
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.live7201.json.gz": {
+      "sha256": "4194d9fcc391b9e93c7218430ea61a5f624889a58fd3cc87aa0191b3321abef7",
+      "bytes": 370669
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded-report.json.gz": {
+      "sha256": "3ebf0f2de09a54f88f64933956c3d29bc3093f22c2beb3feec42c696fd33f638",
+      "bytes": 3311
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded.json.gz": {
+      "sha256": "186fc489ab40598a1db56440dee276945fc49011ead4cb2a6f079a1be4518821",
+      "bytes": 171170
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.reloaded7201.json.gz": {
+      "sha256": "4194d9fcc391b9e93c7218430ea61a5f624889a58fd3cc87aa0191b3321abef7",
+      "bytes": 370669
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.replay.json.gz": {
+      "sha256": "3c859413ba34547de367943f3902394c74d7408292c9195bec9a7fd9723abf20",
+      "bytes": 140044
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.report.json.gz": {
+      "sha256": "3ebf0f2de09a54f88f64933956c3d29bc3093f22c2beb3feec42c696fd33f638",
+      "bytes": 3311
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.single10.json.gz": {
+      "sha256": "cf198f8f1e85aa8c2e8c581e1c5faeced200396c90ae74f6c26960cde5ab82d0",
+      "bytes": 172882
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.sliced-report.json.gz": {
+      "sha256": "3ebf0f2de09a54f88f64933956c3d29bc3093f22c2beb3feec42c696fd33f638",
+      "bytes": 3311
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.sliced.json.gz": {
+      "sha256": "186fc489ab40598a1db56440dee276945fc49011ead4cb2a6f079a1be4518821",
+      "bytes": 171170
+    },
+    "docs/evidence/cut249/public-8879-v2/paid-pace.watched.json.gz": {
+      "sha256": "8cdcb15f1d90673604f0be233f295c0ae36f7b1f253134034f0d2d3de475603d",
+      "bytes": 171722
+    },
+    "docs/evidence/cut249/public-8879-v2/results.json": {
+      "sha256": "317e9f8490afc382285fca87eb379b87a22586cc3ee5cec88de24c3a91c2dce4",
+      "bytes": 13580
+    },
+    "docs/evidence/cut249/public-8879-v2.log": {
+      "sha256": "d00a5d79edf938b4a606207f984e1ff0f8a84864aa7f34d041730b87fd8d9d2e",
+      "bytes": 461
+    },
+    "docs/evidence/cut249/public-8879.log": {
+      "sha256": "e4f74f6e1687df1cbf19084c548bbffdd7837c66115bc5ece0b81459aee95b4a",
+      "bytes": 24130
+    },
+    "docs/evidence/cut249/public-parity.mjs": {
+      "sha256": "6cccdce447fe550f73716a0136b7dea0f143249328e42a34b170046166bc4338",
+      "bytes": 5572
+    },
+    "docs/evidence/cut249/redundant-public-artifacts.json": {
+      "sha256": "eef8397a447d786392307c0c3e24fd06524188093b151e6dafc729038b80a8a4",
+      "bytes": 6564
+    },
+    "docs/evidence/cut249/repin-final-check.log": {
+      "sha256": "818626eb800628f04e2ffac0cfa2d2eec48d6fb5d5933032b8711a8f8386b1f2",
+      "bytes": 199
+    },
+    "docs/evidence/cut249/repin-final-settle.log": {
+      "sha256": "55ec98e4271e09e9c9574c77cbd44147c90d11ebf3313b6773a5667fd8d5b8ef",
+      "bytes": 729
+    },
+    "docs/evidence/cut249/repin-no-regen.log": {
+      "sha256": "607ba93e95442a9fb76e345de85d6bd24fa39d80248d8c0632122d4c636ba6e6",
+      "bytes": 1090
+    },
+    "docs/evidence/cut249/repin-typed-regen.log": {
+      "sha256": "4b54af419e7430cfba8e0ec72043de5a7cd2eb2b635aa9910c2a81b8f4f3c33f",
+      "bytes": 1146
+    },
+    "docs/evidence/cut249/run-native-checks.sh": {
+      "sha256": "61e2df5c8036593d6250cd81e1265992e1ae625d0cac45ba60d6b2184d067f35",
+      "bytes": 790
+    },
+    "docs/evidence/cut249/run-native-gates.sh": {
+      "sha256": "358d809f42488fe2e53be91af8561a56767cb0abe7abb2be557fe47e4ecbfdba",
+      "bytes": 904
+    },
+    "docs/evidence/cut249/runtime-identity.json": {
+      "sha256": "613873f99c74e02c99a4d4c3003b934ce5cbdc132ae6ade5352383a224cf062e",
+      "bytes": 1712
+    },
+    "docs/evidence/cut249/settlement-before-regen/bank-positive.after.session.json.gz": {
+      "sha256": "7b9a411d4703176877a0d37fb09c3e46188ce117d543941ae0cd9360ed3d60f7",
+      "bytes": 144514
+    },
+    "docs/evidence/cut249/settlement-before-regen/bank-positive.expected.json": {
+      "sha256": "f1ec96b9e5c79ee7dfc533df118ebb585067be164988d386a467806c3b128dc7",
+      "bytes": 10704
+    },
+    "docs/evidence/cut249/settlement-before-regen/death-fetched-lost.after.session.json.gz": {
+      "sha256": "c5e57564b8de0eff0639cd44ff6cf00115acf987719cf92ebfb036c56c96f77b",
+      "bytes": 153427
+    },
+    "docs/evidence/cut249/settlement-before-regen/death-fetched-lost.expected.json": {
+      "sha256": "7040e230fb2bdf5e5f4afbfa68d1d4923469ab159d766ea663446bd098201294",
+      "bytes": 11164
+    },
+    "docs/evidence/cut249/settlement-before-regen/death-secured-lost.after.session.json.gz": {
+      "sha256": "06ff490c479dc8cbe86ed7871ab42fc08352df2d8ffb1a8275bed0c02b58b6b8",
+      "bytes": 176321
+    },
+    "docs/evidence/cut249/settlement-before-regen/death-secured-lost.expected.json": {
+      "sha256": "48a978ee71a13de595e8c3264c42e694e29c8c38aff2a9af6c2b4dc7a2733000",
+      "bytes": 12070
+    },
+    "docs/evidence/cut249/settlement-before-regen/inventory.json": {
+      "sha256": "e02a3f9dff29e08190218a815ea27c5bff723156529412ab1ad392f237577b21",
+      "bytes": 2241
+    },
+    "docs/evidence/cut249/settlement-before-regen/multihero-absence.after.session.json.gz": {
+      "sha256": "faae7f4e4135340a79a320e42618d0b22f8fc2929ae7aac8f7969b943932ea6f",
+      "bytes": 200068
+    },
+    "docs/evidence/cut249/settlement-before-regen/multihero-absence.expected.json": {
+      "sha256": "99f91a34fc6ae69b20e0b8e394aefc3107f3c04650f421b4f817c4d430deb6cf",
+      "bytes": 54485
+    },
+    "docs/evidence/cut249/settlement-export-before-regen.log": {
+      "sha256": "a9f4bd9790dfe670e8cd05f2ed1e0120d89b00f6e00832ac5e12ddfc9b1ccda7",
+      "bytes": 585
+    },
+    "docs/evidence/cut249/settlements-inputs-8879.json": {
+      "sha256": "fd26c8e7c70dd108498c14b87b996d5c5270f9215b637ad6adda711abca8ca29",
+      "bytes": 127668
+    },
+    "docs/evidence/cut249/three-input-load-differences.json": {
+      "sha256": "fb5cb4ef9735c3db64e55d177eaf1c1b080d189f400098561771d746c2b558f1",
+      "bytes": 734
+    },
+    "docs/evidence/cut249/typed-native-earned-one.json": {
+      "sha256": "5c0e46b9af00e4caac8139fc7aa155ed22c0d41022acca0b199ea1bd70c335df",
+      "bytes": 751
+    },
+    "docs/evidence/cut249/typed-native-earned-paid.json": {
+      "sha256": "aa3c5908d62b1ee521a3378809ea57a5f4b00cab89d989cca262f578c1b9b5c5",
+      "bytes": 953
+    },
+    "docs/evidence/cut249/typed-native-earned-three.json": {
+      "sha256": "538d216be72afd41369ae5fbe66ef842c6a181a7321dfb20b9023791fbf0e97c",
+      "bytes": 1135
+    },
+    "docs/evidence/cut249/typed-settlement-bank-positive.json": {
+      "sha256": "137aa868c14bb586a65831e7fc7ae7a2025662f0f3cd39a8bbba27b647cd8554",
+      "bytes": 769
+    },
+    "docs/evidence/cut249/typed-settlement-death-fetched-lost.json": {
+      "sha256": "800a769e55c4decc1555ec1a41b05a175a64ec3397a9fcdd377d99916be16566",
+      "bytes": 779
+    },
+    "docs/evidence/cut249/typed-settlement-death-secured-lost.json": {
+      "sha256": "cbb32a01336549d183747a7c1edb7b22cd1a5a24e2f87cf11e7f6ea41efe1859",
+      "bytes": 779
+    },
+    "docs/evidence/cut249/typed-settlement-multihero-absence.json": {
+      "sha256": "2779c625d0e518a2cfe2367a25e7519370f3f7bcd413f51db24a6e4b330c7ea7",
+      "bytes": 1157
+    },
+    "docs/evidence/cut249/typed-three-loaded-c9fa-vs-8879.json": {
+      "sha256": "d5cb5bf189756c457dc0529eb4bcf9040ad3ebf10c29ac6e9e90c718a5ec397b",
+      "bytes": 757
+    },
+    "docs/evidence/cut249/wasm-build.log": {
+      "sha256": "ae3a5e0a5c323805d7c88618cab588f00b54c55f6fac7d1b365c20bf3bf98531",
+      "bytes": 56
+    },
+    "docs/evidence/cut249/workspace-fast.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut249/workspace-fast.log": {
+      "sha256": "cfc206eaae0d7b65d9a0948ed5ad496cee4eac637d1330ae0570e21cbb006aab",
+      "bytes": 1540
+    },
+    "web/tests/gold-settlements.mjs": {
+      "sha256": "8be4286139564f6072a77d7eb4b6f1d807a07cf6941d8d85b89c255f779d0257",
+      "bytes": 8829
+    }
+  },
+  "totalBytes": 15502760,
+  "excludedDuplicateCount": 21,
+  "liveGatesExcluded": true
+}

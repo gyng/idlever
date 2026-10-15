@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-15T20:06:43.535211+00:00",
+  "scope": "Complete current-native versus actual8879public-WASM outputs from immutable earned inputs; no saved-state/report fields omitted. Report formatting (pretty vs compact JSON) parsed only; raw Session equality checked separately.",
+  "cases": [
+    {
+      "case": "earned-one",
+      "nativeAfter": "docs/evidence/cut249/native-parity/earned-one/whole.session.json.gz",
+      "publicWasmAfter": "docs/evidence/cut249/public-8879-v2/earned-one.after.json.gz",
+      "byteExactSavedSession": true,
+      "fullSavedValuesExact": true,
+      "fullReportValuesExact": true,
+      "nativeAfterRawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287",
+      "wasmAfterRawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+    },
+    {
+      "case": "earned-three",
+      "nativeAfter": "docs/evidence/cut249/native-parity/earned-three/whole.session.json.gz",
+      "publicWasmAfter": "docs/evidence/cut249/public-8879-v2/earned-three.after.json.gz",
+      "byteExactSavedSession": true,
+      "fullSavedValuesExact": true,
+      "fullReportValuesExact": true,
+      "nativeAfterRawSha256": "4f25064951f09c505ade37103bd17b8fd189253a0e9854709d5bd5b86d75adcc",
+      "wasmAfterRawSha256": "4f25064951f09c505ade37103bd17b8fd189253a0e9854709d5bd5b86d75adcc"
+    },
+    {
+      "case": "earned-paid",
+      "nativeAfter": "docs/evidence/cut249/native-parity/earned-paid/whole.session.json.gz",
+      "publicWasmAfter": "docs/evidence/cut249/public-8879-v2/paid-pace.after.json.gz",
+      "byteExactSavedSession": true,
+      "fullSavedValuesExact": true,
+      "fullReportValuesExact": true,
+      "nativeAfterRawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33",
+      "wasmAfterRawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-15T19:52:23.486728+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut244/followup/settlements/multihero-absence.after.session.json.gz",
+    "rawSha256": "df453a59840d849aa6fb6260912cfb62612c1d25d5e665192fadfcbe6f263bd7"
+  },
+  "after": {
+    "path": "docs/evidence/cut249/settlement-before-regen/multihero-absence.after.session.json.gz",
+    "rawSha256": "55341095437a2e8631c3438828433445fe22add951a7435d3e10fe111f42177f"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/deaths/133/t10/last_visible",
+      "ids": [
+        391,
+        393,
+        394,
+        395,
+        397,
+        398,
+        399,
+        400
+      ]
+    },
+    {
+      "path": "/floor_start/0/last_visible",
+      "ids": [
+        386
+      ]
+    },
+    {
+      "path": "/others/2/deaths/1/t10/last_visible",
+      "ids": [
+        17
+      ]
+    }
+  ]
+}

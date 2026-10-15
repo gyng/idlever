@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-15T19:52:23.429631+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut244/followup/settlements/bank-positive.after.session.json.gz",
+    "rawSha256": "da2f218d57baa44fe0d08d8cb8c9ffdbc1d4da3e6ba0179587270fd5eedc6aeb"
+  },
+  "after": {
+    "path": "docs/evidence/cut249/settlement-before-regen/bank-positive.after.session.json.gz",
+    "rawSha256": "da2f218d57baa44fe0d08d8cb8c9ffdbc1d4da3e6ba0179587270fd5eedc6aeb"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": []
+}

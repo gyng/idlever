@@ -1,0 +1,22 @@
+   Compiling idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+    Finished `fast` profile [optimized] target(s) in 43.41s
+     Running unittests src/lib.rs (target/fast/deps/idlever_core-4cfe31a505304478)
+
+running 14 tests
+test tests_cut247::quiet_span_clears_bonuses_after_pieces_are_removed ... ok
+test tests_cut248::actual_paid_earned_pace_has_all_eight_bonuses_in_first_ten_ticks ... ok
+test tests_cut248::complete_paid_earned_pace_run_and_replay_match_single_ticks ... ok
+test tests_cut247::armour_timers_heals_and_piece_loss_match_at_quiet_boundaries ... ok
+test tests_cut248::periodic_prefix_matches_all_signed_phases_and_quiet_spans ... ok
+test tests_cut248::speed_expiry_and_monster_bounds_truncate_the_final_fractional_sum ... ok
+test tests_cut249::actual_paid_checkpoint_keeps_next_tick_last_seen_provenance ... ok
+test tests_cut247::actual_earned_send_matches_single_ticks_batches_and_held_replay ... ok
+test tests_cut249::floor_transition_replaces_previous_floor_ids_after_roundtrip ... ok
+test tests_cut249::legacy_empty_history_and_real_loss_keep_hostility_and_simulation_semantics ... ok
+test tests_cut249::ordered_ids_sentinel_capsule_history_and_floor_start_roundtrip_exactly ... ok
+test tests_cut249::actual_paid_eight_hour_report_and_complete_save_survive_slice_reloads ... ok
+test tests_cut247::earned_one_and_three_residents_match_whole_sliced_and_reloaded_absence ... ok
+test tests_cut248::every_signed_remainder_phase_and_near_action_threshold_has_exact_action_ticks ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 971 filtered out; finished in 4.51s
+

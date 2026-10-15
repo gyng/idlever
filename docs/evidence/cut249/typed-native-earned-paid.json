@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-15T19:48:12.882151+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut248/native-parity-c9fa/earned-paid/whole.session.json.gz",
+    "rawSha256": "0d79764070017e61d53bae8d749bc6b56f1076005016d7e601f0bc6738a27248"
+  },
+  "after": {
+    "path": "docs/evidence/cut249/native-parity/earned-paid/whole.session.json.gz",
+    "rawSha256": "eee0b4baf80a740ac8bad70bc0fd770ee7add6375e67a810fd05cb77c59d2a33"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/deaths/133/t10/last_visible",
+      "ids": [
+        359,
+        365,
+        367,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389
+      ]
+    }
+  ]
+}

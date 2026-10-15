@@ -1,0 +1,7 @@
+2026-10-15T20:00:09Z
+pid:[4026532214]
+pid:[4026532214]
+    PID    PPID     ELAPSED %CPU NLWP STAT COMMAND
+   7816       1       05:57  0.0    1 Ss   bash docs/evidence/cut249/run-native-gates.sh
+   7843    7816       05:57  0.0    7 Sl   node tools/gates.mjs --pacing
+   8092    7843       05:56  797    9 Sl   target/fast/examples/dayplayer --seeds 16 --loo-seeds 16 --tuned-seeds 16 --rows picked-idle,scout,porter,tuned-picked,random-picked,outpace,reach,idle-d8,idle-d13,idle-d23,idle-stall,idle-gold,idle-king,idle-stages,idle-delta,picked-stages,cadence30,stalls-idle,stalls-picked,stalls-tuned,nothing-required,hands-idle,automation-pays,workers-daily --threads 8
