@@ -180,6 +180,15 @@ export function ownSheetFocus(
       if (preserveModeless) return;
       if (top() !== parent || document.body.classList.contains("menu-open")) return;
       if (parent?.panel.contains(document.activeElement)) return;
+      // An onClose callback can choose a different live control after ownership was released.
+      const active = document.activeElement;
+      if (
+        active instanceof HTMLElement &&
+        active !== document.body &&
+        visible(active) &&
+        !panel.contains(active)
+      )
+        return;
       if (opener && visible(opener) && (!parent || parent.panel.contains(opener)))
         opener.focus({ preventScroll: true });
       else if (parent && !parent.modeless) parent.focus();

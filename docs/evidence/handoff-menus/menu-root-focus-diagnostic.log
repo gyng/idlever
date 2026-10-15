@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: onClose can synchronously focus a released control: {"inert":false,"focused":false,"active":"<button class=\"stud close-stud ad-host ad-paused\" aria-label=\"close\"><svg class=\"ad-ring\" aria-hidden=\"true\" style=\"display: none;\"><rect class=\"ad-track\"></rect><rect class=\"ad-arc\" pathLength=\"100\"></rect><text class=\"ad-num num\"></text></svg></button>","targetConnected":true,"targetRects":1}
+    at check (file:///home/g/p/riddle/web/tests/menu-materials.mjs:17:10)
+    at file:///home/g/p/riddle/web/tests/menu-materials.mjs:325:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v26.5.0

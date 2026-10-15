@@ -116,7 +116,6 @@ export function openSheet(
     const i = stack.indexOf(wrap);
     if (i < 0) return;
     stack.splice(i, 1);
-    opts.onClose?.();
     sheetGhost(wrap);
     wrap.remove();
     ro?.disconnect();
@@ -129,6 +128,9 @@ export function openSheet(
       parent.classList.remove("under");
     }
     releaseFocus?.();
+    // Callers may synchronously focus their restored controls or open another window.
+    // Release this sheet's inertness and keyboard ownership before those requests.
+    opts.onClose?.();
   };
   /** The `×` of a sheet that replaced another closes the chain (this one and every one it replaced). */
   const closeChain = (): void => {

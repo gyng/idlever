@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = process.env.IDLEVER_TEST_URL ?? "http://127.0.0.1:5382";
+const url = (process.env.IDLEVER_TEST_URL ?? "http://127.0.0.1:5382").replace(/\/+$/, "");
 const out = process.env.IDLEVER_MENU_OUT ?? "target/client-tests/menu-materials";
 mkdirSync(new URL(`../../${out}/`, import.meta.url), { recursive: true });
 const raw = gunzipSync(
@@ -301,6 +301,49 @@ try {
         .first()
         .evaluate((el) => el === document.activeElement),
       "modeless dismissal preserves chosen underlying focus",
+    );
+    await p.evaluate(async () => {
+      const { openSheet, closeAllSheets } = await import("/src/ui/sheet.ts");
+      // This case restores the root; the earlier anchored parent has its own valid focus trap.
+      closeAllSheets();
+      const [one, two] = document.querySelectorAll("#sheet-focus-fixture button");
+      window.__sheetBeforeCloseFixture = [...document.querySelectorAll(".sheet-wrap")].map(
+        (el) => ({ classes: el.className, hidden: el.hidden, text: el.textContent.slice(0, 100) }),
+      );
+      one.focus();
+      openSheet(() => document.createElement("button"), {
+        onClose: () => {
+          two.focus();
+          window.__sheetCloseFocus = {
+            inert: document.getElementById("app").inert,
+            focused: document.activeElement === two,
+            active: document.activeElement?.outerHTML,
+            targetConnected: two.isConnected,
+            targetRects: two.getClientRects().length,
+            before: window.__sheetBeforeCloseFixture,
+            remaining: [...document.querySelectorAll(".sheet-wrap")].map((el) => ({
+              classes: el.className,
+              hidden: el.hidden,
+              text: el.textContent.slice(0, 100),
+            })),
+          };
+        },
+      });
+    });
+    await settle();
+    await p.keyboard.press("Escape");
+    const restored = await p.evaluate(() => window.__sheetCloseFocus);
+    check(
+      !restored.inert && restored.focused,
+      `onClose can synchronously focus a released control: ${JSON.stringify(restored)}`,
+    );
+    await settle();
+    check(
+      await p
+        .locator("#sheet-focus-fixture button")
+        .nth(1)
+        .evaluate((el) => el === document.activeElement),
+      "generic restoration preserves the callback's explicit choice",
     );
     await p.locator("#sheet-focus-fixture").evaluate((el) => el.remove());
     for (const [route, material] of [
