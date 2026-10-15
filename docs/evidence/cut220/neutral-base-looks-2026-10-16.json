@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-16",
+  "tool": "built-in image_gen",
+  "poseReference": "art/generated/hero_equipment_base_male_v2.png",
+  "identityReferences": [
+    "art/generated/hero_fighter_female.png",
+    "art/generated/hero_fighter_cat.png"
+  ],
+  "scope": "Generated neutral female/cat equipment bases. Actual PNG alpha preserved. Not integrated/accepted until registration and canonical UI/owner/fallback visual checks.",
+  "outputs": [
+    {
+      "look": "female",
+      "path": "art/generated/hero_equipment_base_female_v1.png",
+      "sha256": "ea4712cdd0f87241c98bdbd8b4216e92f6aea0800d1e05dbba3c377857fa939c",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        33,
+        51,
+        996,
+        1518
+      ],
+      "prompt": "art/prompts/hero_equipment_base_female_v1.txt"
+    },
+    {
+      "look": "cat",
+      "path": "art/generated/hero_equipment_base_cat_v1.png",
+      "sha256": "cacfa038b35182e38b56ff0e32509fca5f8597187b7a8a0b5e586d4ea5e72595",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        0,
+        2,
+        994,
+        1483
+      ],
+      "prompt": "art/prompts/hero_equipment_base_cat_v1.txt"
+    }
+  ]
+}
