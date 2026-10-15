@@ -56,28 +56,55 @@ passes8layout/phase cases,15owned shapes, actual3resident/stale-callback guards,
 missing-image fallback and preference/save checks. Actual keyboard-focus contrast
 passes4cases (minimum6.887:1). Raw rejected pixel/focus protocols remain retained.
 Treat those captures as functional prototype proofs, not final painted art.
-Painted integration is now WIP: artwork checkpoint926a0c68 saves three neutral looks and seven missing wearable
-masters are saved in art/generated/ with exact built-in imagegen prompts in
+Painted integration checkpoint85980886 now passes scoped current-source
+acceptance. Artwork checkpoint926a0c68 saves three neutral looks and seven
+missing wearable masters in art/generated/ with exact built-in prompts in
 art/prompts/. `python3 art/export_equipment.py` exports ten full-canvas RGBA
 WebP layers (684536bytes); art/equipment.json pins source/output hashes and
 alpha bounds. Generator placement varies: renderer mounts require explicit
 uniform scale/translation rather than assuming every layer fits the base.
-Agent acceptance_audit owns visual fit and subsequent canonical phase/owner/
-fallback checks; final painted acceptance is pending, and prior prototype
-passes must not be relabelled onto this source. Fit-v1 exposed floating old
-weapon icons; fit-v2 corrects Sword/Bow/Crownsplitter grips, while ordinary body
-armour mounting remains under review. Root inspected these actual composed
-captures; they are engineering observations, not player feedback.
+`evidence/cut220/painted-8879/` retains8layout/phase cases,64canonical slot
+comparisons,800switches/800refreshes,32legal routes and exact saves. A separate
+strict8case/16phase supplement proves each nonnull slot/base painted with exact
+image href and whole-body scroll reachability; the first matrix's weaker image
+wait is not relabelled. Three actual residents/stale callbacks, blocked base+
+Hearthglass primitive fallbacks and6effects/motion preferences pass. All19known
+gear shapes were inspected:15public owned preparations,4explicit isolated
+unowned art-fit previews (no grants/save patches). RejectedV1/V2mounts and new
+V3approval remain. Root inspected composed views, including phone200%body and
+desktop; these are engineering observations, not player feedback.
+Owner's latest refinement permits a more abstract paper doll to simplify the
+work: readable gear at the intended slots and correct Actual/Next/owner truth
+take precedence over anatomical tailoring or exact grips. Current artwork and
+approved mounts satisfy that style; do not start further fit-polish loops.
+Scoped functional acceptance is now closed. This does not remove class-tree
+or dungeon weapon-identity requirements.
 
-Agent feat_review owns Cut251 paused-worker presentation: the real renderer
+Cut251 paused-worker presentation checkpoint019d0bf9 fixes the real renderer:
 requested alternating Scout work frames even when the canonical worker was
-paused (83draw red proof, exactsave unchanged). A scoped client correction and
-focused browser verification are underway, not yet accepted. Do not infer new
-recent-action receipts or resurrect retired storage hauling. Both agents may
-have browser work active: positively confirm them terminal before the exclusive
-R6 GPU control/candidate lane. Native gates are already terminal.
+paused (83draw red proof, exactsave unchanged). Paused/reduced/Off workers now
+use stationary base poses; active Full/Low retains ambient idle animation.
+32observations/184runtime assertions/800refreshes pass with exact saves. The
+original command exited1only on an incorrect exactly8WASMresponse expectation
+(worker pool legitimately fetched32); raw failure retained, independent raw
+verification passes all32hashes. No fresh whole-script pass is claimed. Arrival
+cancellation is source-order proof, not a filmed-route claim. Other routines/
+wholeR5 remain open; no new receipts or retired hauling are inferred. Both
+agents' figure/worker browser jobs are positively terminal.
 
-R6 single-context cost method is prepared, not measured: cut245/cost-single*
+R6 single-context cost method has its first measured A/A control:
+`evidence/cut245/single-control-crypt1440-2026-10-16/` is terminalPASS,
+3repetitions, signed median-of-three p95 difference+0.04096ms (absolute≤0.20).
+This certifies only that scene's measurement control, not candidate cost.
+The first shell launch exited127before any process (unquoted PATH containing
+spaces); quoted Node22PATH then launched25364, which is terminal0.
+Agent feat_review owns the other five A/A controls, current-source six-pair
+off-equivalence and conditional six-scene candidate measurement. Detached
+wrapper222318→costnode222340→privateXvfb222473 is positively live on Crypt400
+A/A; remaining four Fens/Foundry controls run only if it passes. No candidate
+or new equivalence launched yet. Confirm these actual handles before restarting;
+keep the GPU lane exclusive. Both figure/worker agents' earlier jobs are closed.
+cut245/cost-single*
 contains issue-tagged delayed GPU-query/ring/disjoint mock proof and strict
 per-frame geometry/painted-atlas/process-view guards. Fixed-clock landmark-off
 comparison against hash-verified archived baseline is terminalPASS6/6 with0
