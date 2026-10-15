@@ -8,7 +8,7 @@ const catalogue = JSON.parse(
   readFileSync(new URL("./fixtures/class-path-catalogue.json", import.meta.url), "utf8"),
 );
 const paintedManifest = JSON.parse(
-  readFileSync(new URL("../../art/advanced-skills.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../../art/class-skills.json", import.meta.url), "utf8"),
 );
 const wantedPaint = new Map(
   paintedManifest.assets.map((asset) => [
@@ -16,7 +16,7 @@ const wantedPaint = new Map(
     asset.output_sha256,
   ]),
 );
-assert.equal(wantedPaint.size, 30);
+assert.equal(wantedPaint.size, 72);
 const servedPaint = [];
 const pendingPaint = [];
 for (const [path, expected] of Object.entries(catalogue.sourceHashes))
@@ -160,13 +160,13 @@ try {
     ),
   );
   const paintings = await p.locator('.skill-icon[data-art="painted"]').count();
-  assert.equal(paintings, 270);
+  assert.equal(paintings, 648);
   const mappedPaints = await p
     .locator('.skill-icon[data-size="32"][data-state="available"] .skill-paint')
     .evaluateAll((images) => images.map((i) => i.src));
-  assert.equal(new Set(mappedPaints).size, 30);
+  assert.equal(new Set(mappedPaints).size, 72);
   await Promise.all(pendingPaint);
-  assert.equal(new Set(servedPaint.map((p) => p.path)).size, 30);
+  assert.equal(new Set(servedPaint.map((p) => p.path)).size, 72);
   assert.equal(errors.length, 0);
   if (shots) {
     await p.screenshot({ path: `${shots}/1440-skill-board.png`, fullPage: true });
@@ -198,7 +198,7 @@ try {
     document.body.append(root);
     return root.childElementCount;
   }, nodes);
-  assert.equal(failed, 30);
+  assert.equal(failed, 72);
   await failedPage.waitForFunction(() =>
     [...document.querySelectorAll("#failed-icons .skill-icon")].every(
       (i) =>
@@ -220,7 +220,7 @@ try {
           checks,
           nodes,
           paintings,
-          distinctPaints: 30,
+          distinctPaints: 72,
           servedPaint,
           failedImages: failed,
           errors,
