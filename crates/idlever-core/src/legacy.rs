@@ -24,13 +24,19 @@ pub fn hero_identity(seed: u64, heir: u32, bloodline_id: u32) -> String {
 /// Cut 122 §1 (blind 9621b19, A and B: rank 1 cost 15, rank 2 600 — 388 ◆ sat unusable): a smooth curve, each rank
 /// 2–3× the last, more ranks; a rank's effect is `root_effect`'s.
 pub const CAP: u32 = 8;
-pub const ROOT_PRICES: [u32; CAP as usize] = [15, 40, 110, 300, 800, 2000, 5000, 12000];
+/// (Cut233: `balance` `marks.legacy_root`.)
+pub fn root_prices() -> &'static [u32; CAP as usize] {
+    &crate::balance::get().marks.legacy_root
+}
 /// The effects' prices by their tier: the D8 ones, the D18 ones.
-pub const EFFECT_PRICES: [u32; 2] = [700, 1800];
+/// (Cut233: `balance` `marks.legacy_effect` — the D8 effects', then the D18 effects'.)
+pub fn effect_prices() -> [u32; 2] {
+    crate::balance::get().marks.legacy_effect
+}
 
 /// A root's price at `rank` (the rank owned; the next one's price), saturating past the cap.
 pub fn root_price(rank: u32) -> u32 {
-    ROOT_PRICES.get(rank as usize).copied().unwrap_or(u32::MAX)
+    root_prices().get(rank as usize).copied().unwrap_or(u32::MAX)
 }
 /// Cut 122 §1: what a root's `rank` gives the hero — max hp (`health`), damage (`damage`), armour (`armour`).
 pub fn root_effect(id: &str, rank: u32) -> i32 {
@@ -53,21 +59,23 @@ pub const FIREWARD:u16=128;
 pub const BRACE:u16=256;
 struct Node {
     id:&'static str,name:&'static str,branch:&'static str,effect:&'static str,
-    parent:Option<&'static str>,depth:u32,other:Option<&'static str>,mask:u16,price:u32,
+    parent:Option<&'static str>,depth:u32,other:Option<&'static str>,mask:u16,
+    /// An effect's price tier (`effect_prices`); a root's is its rank's (`root_price`).
+    price:u32,
 }
 const NODES:[Node;12]=[
     Node{id:"health",name:"Vitality",branch:"Recovery",effect:"+3 HP",parent:None,depth:0,other:None,mask:0,price:0},
     Node{id:"damage",name:"Strength",branch:"Control",effect:"+1 damage",parent:None,depth:0,other:None,mask:0,price:0},
     Node{id:"armour",name:"Guard",branch:"Warding",effect:"+1 armour",parent:None,depth:0,other:None,mask:0,price:0},
-    Node{id:"restoration",name:"Restoration",branch:"Recovery",effect:"+1 HP per safe rest",parent:Some("health"),depth:8,other:None,mask:RESTORATION,price:EFFECT_PRICES[0]},
-    Node{id:"control",name:"Control",branch:"Control",effect:"Stun and Slow +5 ticks",parent:Some("damage"),depth:8,other:None,mask:CONTROL,price:EFFECT_PRICES[0]},
-    Node{id:"clear_lungs",name:"Clear lungs",branch:"Warding",effect:"Gas and poison damage −2",parent:Some("armour"),depth:8,other:None,mask:CLEAR_LUNGS,price:EFFECT_PRICES[0]},
-    Node{id:"mending",name:"Mending",branch:"Recovery",effect:"Heal potions +25% HP",parent:Some("restoration"),depth:18,other:Some("renewal"),mask:MENDING,price:EFFECT_PRICES[1]},
-    Node{id:"renewal",name:"Renewal",branch:"Recovery",effect:"Natural enemy kills +1 HP",parent:Some("restoration"),depth:18,other:Some("mending"),mask:RENEWAL,price:EFFECT_PRICES[1]},
-    Node{id:"venom",name:"Venom",branch:"Control",effect:"Thrown poison +1 damage per pulse",parent:Some("control"),depth:18,other:Some("debilitate"),mask:VENOM,price:EFFECT_PRICES[1]},
-    Node{id:"debilitate",name:"Debilitate",branch:"Control",effect:"Slow +15 further ticks",parent:Some("control"),depth:18,other:Some("venom"),mask:DEBILITATE,price:EFFECT_PRICES[1]},
-    Node{id:"fireward",name:"Fireward",branch:"Warding",effect:"Fire damage halved",parent:Some("clear_lungs"),depth:18,other:Some("brace"),mask:FIREWARD,price:EFFECT_PRICES[1]},
-    Node{id:"brace",name:"Brace",branch:"Warding",effect:"Below 25% HP: damage −2",parent:Some("clear_lungs"),depth:18,other:Some("fireward"),mask:BRACE,price:EFFECT_PRICES[1]},
+    Node{id:"restoration",name:"Restoration",branch:"Recovery",effect:"+1 HP per safe rest",parent:Some("health"),depth:8,other:None,mask:RESTORATION,price:0},
+    Node{id:"control",name:"Control",branch:"Control",effect:"Stun and Slow +5 ticks",parent:Some("damage"),depth:8,other:None,mask:CONTROL,price:0},
+    Node{id:"clear_lungs",name:"Clear lungs",branch:"Warding",effect:"Gas and poison damage −2",parent:Some("armour"),depth:8,other:None,mask:CLEAR_LUNGS,price:0},
+    Node{id:"mending",name:"Mending",branch:"Recovery",effect:"Heal potions +25% HP",parent:Some("restoration"),depth:18,other:Some("renewal"),mask:MENDING,price:1},
+    Node{id:"renewal",name:"Renewal",branch:"Recovery",effect:"Natural enemy kills +1 HP",parent:Some("restoration"),depth:18,other:Some("mending"),mask:RENEWAL,price:1},
+    Node{id:"venom",name:"Venom",branch:"Control",effect:"Thrown poison +1 damage per pulse",parent:Some("control"),depth:18,other:Some("debilitate"),mask:VENOM,price:1},
+    Node{id:"debilitate",name:"Debilitate",branch:"Control",effect:"Slow +15 further ticks",parent:Some("control"),depth:18,other:Some("venom"),mask:DEBILITATE,price:1},
+    Node{id:"fireward",name:"Fireward",branch:"Warding",effect:"Fire damage halved",parent:Some("clear_lungs"),depth:18,other:Some("brace"),mask:FIREWARD,price:1},
+    Node{id:"brace",name:"Brace",branch:"Warding",effect:"Below 25% HP: damage −2",parent:Some("clear_lungs"),depth:18,other:Some("fireward"),mask:BRACE,price:1},
 ];
 pub fn has(hero:&Hero,mask:u16)->bool {hero.legacy_effects&mask!=0}
 pub fn empty_effects(mask:&u16)->bool {*mask==0}
@@ -95,7 +103,7 @@ pub fn offers(l: &LineageState, away: bool) -> Vec<LegacyUpgrade> {
     let depth=deepest(l);
     NODES.iter().map(|node| {
         let rank=rank_of(node.id);let cap=if node.mask==0 {CAP}else{1};
-        let price=if node.mask==0 {root_price(rank.min(CAP-1))}else{node.price};
+        let price=if node.mask==0 {root_price(rank.min(CAP-1))}else{effect_prices()[node.price as usize]};
         let blocked=if rank>=cap {Some("Complete".into())}
             else if !l.town.home.unwrap_or(true) {Some("Build a house".into())}
             else if depth<node.depth {Some(format!("Reach D{}",node.depth))}

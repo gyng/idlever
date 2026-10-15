@@ -1181,7 +1181,7 @@ mod session_chore_tests {
         assert_eq!(first_session_chores(&mut g, &Ask::new(&cfg)), 1);
         assert!(g.lineage.town.bank > 0);
         assert!(g.lineage.gold >= next + 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32);
-        assert_eq!(g.lineage.town.bank, idlever_core::town::BANK_NIGHTS * g.lineage.last_night_net);
+        assert_eq!(g.lineage.town.bank, idlever_core::town::bank_nights() * g.lineage.last_night_net);
         assert_eq!(g.lineage.gold + g.lineage.town.bank, wealth);
         let off = Cfg { bot: Bot::Tuned, without: Some("bank") };
         let mut disabled = original;

@@ -1,7 +1,7 @@
 //! Offline batch: consumes ticks at 10/s across consecutive expeditions and the camp rests
 //! between them (Cut 2 §1). Historical literal tools retain stall sampling;
 //! current-game transport slices simulate exact ticks and settle one report.
-use crate::engine::{Batch, ExitTier, Game, StallTally, REST_CAP_TICKS, REST_MIN_TICKS, WAKE_TICKS};
+use crate::engine::{Batch, ExitTier, Game, StallTally, WAKE_TICKS};
 use crate::item::to_inv;
 use crate::rules::{Cond, Row, RuleSet, Verb};
 use crate::wire::*;
@@ -119,7 +119,10 @@ pub fn run_offline_counts(game: &mut Game, elapsed_s: u64) -> ReturnReport {
 pub fn rest_after(turns: u32, tier: ExitTier) -> u32 {
     match tier {
         ExitTier::Death => WAKE_TICKS,
-        _ => (turns / 2).clamp(REST_MIN_TICKS, REST_CAP_TICKS),
+        _ => {
+            let r = &crate::balance::get().rest;
+            (turns / r.turns_div).clamp(r.min_ticks, r.cap_ticks)
+        }
     }
 }
 
@@ -580,7 +583,7 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
         stalled: b.stalls,
         driven: b.driven_off,
         spent: b.spent.iter().map(|(k, (n, g))| SalvageRow { kind: game.lineage.wire_name(k).replace('_', " "), n: *n, gold: *g }).filter(|r| r.gold > 0).collect(),
-        gold: Some(crate::wire::GoldSummary { home: b.gold_earned, salvage: b.salvage_gold, wake: b.wake_pay, spent: b.spent.values().map(|(_, g)| *g).sum(), wake_cap: crate::engine::WAKE_PAY, wake_n: b.wake_n, lost: b.gold_lost, unkept: b.gold_unkept, passage: b.passage, recovered: b.recovered_gold, fetched: b.fetched_gold, net: None, ledger: None, earned: None, spent_by_workers: None }),
+        gold: Some(crate::wire::GoldSummary { home: b.gold_earned, salvage: b.salvage_gold, wake: b.wake_pay, spent: b.spent.values().map(|(_, g)| *g).sum(), wake_cap: crate::engine::wake_pay(), wake_n: b.wake_n, lost: b.gold_lost, unkept: b.gold_unkept, passage: b.passage, recovered: b.recovered_gold, fetched: b.fetched_gold, net: None, ledger: None, earned: None, spent_by_workers: None }),
         exits: b.exits.clone(),
         picked: game.lineage.picked_clean(),
         restock_capped: b.restock_capped,
@@ -1037,7 +1040,7 @@ mod slice_tests {
             // (blind 1fb7786: the pen's group, the Mother met, opens outside the budget as the day-0 systems do)
             .filter(|id|!crate::systems::DAY0.contains(&id.as_str())&&!crate::systems::pen_due(&actual.lineage,id))
             .map(|id|crate::systems::SYSTEMS.iter().find(|s|s.id==id).unwrap())
-            .map(|s|(s.trigger,s.min_age_h)).collect();
+            .map(|s|(s.trigger,s.min_age_h())).collect();
         // (Cut232: a reveal a busy run report held is owed and opens at the next quiet report without the budget again)
         let owed=base.lineage.reveal_owed.len();
         assert!(reveal_units.len()<=1+owed,"the curriculum budgets trigger groups, such as forge/loadout/exits, as one reveal (+{owed} owed): {reveal_units:?}");
@@ -1071,7 +1074,7 @@ mod slice_tests {
         crate::tree::grant(&mut base.lineage,&["clerk"]);
         base.lineage.town.built.push(("bank".into(),0));
         base.lineage.orders.legacy="balanced".into();base.lineage.orders.ranks="auto".into();
-        base.lineage.day=crate::tree::RANK_DAYS[0];
+        base.lineage.day=crate::tree::rank_days()[0];
         crate::legacy::ensure(&mut base.lineage);base.lineage.bloodline.as_mut().unwrap().points=40;
         base.lineage.gold_move(10000,"fixture income");
         base.lineage.clock_s=3590;base.lineage.rest_left=6000;

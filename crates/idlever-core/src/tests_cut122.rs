@@ -21,7 +21,7 @@ fn first_death(seed: u64, max: u32, prep: impl Fn(&mut Game)) -> Option<(Game, u
 /// §1: each rank costs 2–3× the last; a rank's effect grows with it; the next rank is never a cliff.
 #[test]
 fn the_legacy_curve_is_smooth() {
-    let p = crate::legacy::ROOT_PRICES;
+    let p = *crate::legacy::root_prices();
     for w in p.windows(2) {
         let r = w[1] as f64 / w[0] as f64;
         assert!((2.0..=3.0).contains(&r), "rank {} → {}: ×{r:.2}", w[0], w[1]);

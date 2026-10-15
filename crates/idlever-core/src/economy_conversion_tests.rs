@@ -1,6 +1,6 @@
 //! Cut196: independent accounting regressions through actual pickup and exit paths.
 use crate::{
-    engine::{ExitTier, FloorItem, Game, GOLD_DIVISOR},
+    engine::{gold_divisor, ExitTier, FloorItem, Game},
     item::Item,
 };
 
@@ -61,8 +61,8 @@ fn checkpoint_rounding_conserves_value_and_is_idempotent() {
         let r = g.run.as_mut().unwrap();
         r.loot_add(raw);
         r.secure_carry();
-        assert_eq!(r.secured * GOLD_DIVISOR + r.loot_raw, raw);
-        assert!((0..GOLD_DIVISOR).contains(&r.loot_raw));
+        assert_eq!(r.secured * gold_divisor() + r.loot_raw, raw);
+        assert!((0..gold_divisor()).contains(&r.loot_raw));
         let once = (r.secured, r.loot_raw, r.loot);
         assert_eq!(r.secure_carry(), 0);
         assert_eq!((r.secured, r.loot_raw, r.loot), once);
@@ -159,7 +159,7 @@ fn twelve_real_pickup_exit_cases_convert_once_without_keep_or_salvage_income() {
             let old_discovery = g.lineage.forge.get(kind).map_or(0, |f| f.salvaged);
             g.run.as_mut().unwrap().secured = 8;
             pickup(&mut g, item);
-            let expected = 8 + if tier == ExitTier::Death { 0 } else { raw / GOLD_DIVISOR };
+            let expected = 8 + if tier == ExitTier::Death { 0 } else { raw / gold_divisor() };
             let before = g.lineage.gold;
             finish(&mut g, tier);
             assert!(g.pending_exit.is_none(), "{kind} {tier:?}: no Keep decision");
@@ -205,7 +205,7 @@ fn a_real_found_leash_stack_only_values_its_genuine_units() {
     assert_eq!(r.found_left(owned, "leash"), 3);
     let before = g.lineage.gold;
     finish(&mut g, ExitTier::Return);
-    assert_eq!(g.lineage.gold - before, 18 / GOLD_DIVISOR);
+    assert_eq!(g.lineage.gold - before, 18 / gold_divisor());
     assert_eq!(g.lineage.supplies.iter().filter(|i| i.kind == "leash").map(|i| i.amount).sum::<i32>(), 2);
     assert!(g.pending_exit.is_none());
     assert_eq!(g.lineage.forge.get("leash").unwrap().salvaged, 3);

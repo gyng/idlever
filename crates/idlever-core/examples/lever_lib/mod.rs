@@ -69,7 +69,7 @@ pub fn fill_shelf(g: &mut Game) {
             let _ = g.buy_supply(k);
         }
     }
-    for _ in 0..idlever_core::kit::SUPPLY_CAP_MAX {
+    for _ in 0..idlever_core::kit::supply_cap_max() {
         if g.buy_supply("heal").is_err() {
             break;
         }

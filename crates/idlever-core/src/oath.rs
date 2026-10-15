@@ -763,7 +763,7 @@ pub fn walls(l: &LineageState) -> Vec<BossWall> {
 pub fn bounty_wire(l: &LineageState, depth: u32) -> Bounty {
     let boss = l.rules().route().boss(depth).map(str::to_string);
     let fact = boss.as_deref().map(|b| counter_fact(l, b));
-    Bounty { depth, pays: format!("$×{} · item", crate::engine::BOUNTY_GOLD_MULT), needs: "reach".into(), boss, fact }
+    Bounty { depth, pays: format!("$×{} · item", crate::engine::bounty_gold_mult()), needs: "reach".into(), boss, fact }
 }
 
 /// The sworn oath priced on a panel's sims (`SimResult.oath`).

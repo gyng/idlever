@@ -39,14 +39,24 @@ pub fn gate(l: &LineageState, n: u32, d: u32, scout: bool) -> Gate {
         depth_remaining: depth,
     }
 }
+/// Cut233: the stages' [completed delves, depth] are `balance` `unlocks.temperament` · `inherited` · `family`.
+fn stage_gate(nd: [u32; 2], scout: bool, l: &LineageState) -> Gate {
+    gate(l, nd[0], nd[1], scout)
+}
+pub fn temperament_gate(l: &LineageState) -> Gate {
+    stage_gate(crate::balance::get().unlocks.temperament, true, l)
+}
+pub fn inherited_gate(l: &LineageState) -> Gate {
+    stage_gate(crate::balance::get().unlocks.inherited, false, l)
+}
 pub fn temperament_open(l: &LineageState) -> bool {
-    gate(l, 6, 5, true).available
+    temperament_gate(l).available
 }
 pub fn inherited_open(l: &LineageState) -> bool {
-    !l.heirs.neutral && gate(l, 8, 8, false).available
+    !l.heirs.neutral && inherited_gate(l).available
 }
 pub fn family_gate(l: &LineageState) -> Gate {
-    let mut g = gate(l, 12, 13, false);
+    let mut g = stage_gate(crate::balance::get().unlocks.family, false, l);
     if g.available && l.heirs.blood.is_none() {
         g.available = false;
         g.blocked = Some("Choose a lasting trait first".into());
@@ -116,8 +126,8 @@ pub fn wire(l: &LineageState) -> BuildProgression {
     };
     let leash = leash_available(l);
     BuildProgression {
-        temperament: gate(l, 6, 5, true),
-        inherited: gate(l, 8, 8, false),
+        temperament: temperament_gate(l),
+        inherited: inherited_gate(l),
         family: family_gate(l),
         actual_temperament: l.pkg.temperament.clone(),
         next_temperament: l

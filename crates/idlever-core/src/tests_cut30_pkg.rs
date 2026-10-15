@@ -129,7 +129,7 @@ fn the_pen_writes_nothing_until_it_opens() {
     assert!(g.lineage.pkg.pen_open, "the Mother met");
     assert_eq!(g.lineage.rules().rows[0].verb.v, "rest");
     let mut h = Game::new_resident(8);
-    h.lineage.clock_s = crate::systems::PEN_FALLBACK_H as u64 * 3600;
+    h.lineage.clock_s = crate::balance::get().unlocks.pen_fallback_h as u64 * 3600;
     for _ in 0..crate::systems::SYSTEMS.len() {
         h.lineage.reveal_left = 1;
         crate::systems::update(&mut h.lineage, false);
@@ -300,7 +300,7 @@ fn the_bank_is_capped_and_pays_interest() {
     assert_eq!(moved, crate::town::bank_cap(&g.lineage));
     assert_eq!(g.lineage.gold, 1000 - moved);
     let i = crate::town::night(&mut g.lineage);
-    assert_eq!(i, moved * crate::town::BANK_PCT / 100);
+    assert_eq!(i, moved * crate::town::bank_pct() / 100);
     assert!(i >= 0);
     let before = g.lineage.gold;
     g.bank_withdraw(50).unwrap();

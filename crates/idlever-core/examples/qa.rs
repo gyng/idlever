@@ -7,7 +7,7 @@
 //! cache) to the pool on copies of the game — the checks and their counts are the sequential
 //! order's. `METRICS_PHASES=1` prints each job's wall and each leg's thread-seconds.
 //!   cargo run --profile fast --example qa [-- --seeds 30 --threads 24]
-use idlever_core::engine::{salvage_coins, salvage_value, without_history, GOLD_DIVISOR, GOLD_LEDGER_CAP};
+use idlever_core::engine::{gold_divisor, salvage_coins, salvage_value, without_history, GOLD_LEDGER_CAP};
 use idlever_core::item::{is_identified, to_inv};
 use idlever_core::engine::ExitTier;
 use idlever_core::rules::{Cond, Row, Verb};
@@ -1412,7 +1412,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
                 // `ExitPending.worth` is the engine's salvage arithmetic, item by item: the
                 // whole's coins (`(carry + Σ cents) ÷ 100`) apportioned by largest remainder.
                 let want = salvage_coins(&p.items, p.pct, g.lineage.gold_carry);
-                let cents: i32 = p.items.iter().map(|i| salvage_value(&i.kind) * p.pct / GOLD_DIVISOR).sum();
+                let cents: i32 = p.items.iter().map(|i| salvage_value(&i.kind) * p.pct / gold_divisor()).sum();
                 t.check("`ExitPending.worth` == the salvage arithmetic", pe.worth == want && want.iter().sum::<i32>() == (g.lineage.gold_carry + cents).max(0) / 100, || format!("seed {seed}: worth {:?} vs {want:?}", pe.worth));
                 check_labels(t, &g, seed, &p.items, "exit sheet");
                 check_names(t, &g, seed, pe.items.iter().map(|i| i.label.as_str()), "exit sheet");
@@ -1656,7 +1656,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
     // either topped the purse up or found it full.
     if let Some(gs) = &r.gold {
         let deaths: u32 = r.deaths.iter().map(|d| d.n).sum();
-        t.check("the heir purse: a top-up per death below the line", gs.wake_cap == idlever_core::engine::WAKE_PAY && gs.wake_n <= deaths && (gs.wake_n == 0) == (gs.wake == 0), || format!("seed {seed}: wake ${} over {} of {deaths} deaths, cap ${}", gs.wake, gs.wake_n, gs.wake_cap));
+        t.check("the heir purse: a top-up per death below the line", gs.wake_cap == idlever_core::engine::wake_pay() && gs.wake_n <= deaths && (gs.wake_n == 0) == (gs.wake == 0), || format!("seed {seed}: wake ${} over {} of {deaths} deaths, cap ${}", gs.wake, gs.wake_n, gs.wake_cap));
     }
     // QA on e75ec29 (qaQ: `rested 333m` beside 16 runs × `rest 20m`): an absence of deaths
     // rested one wake per run.

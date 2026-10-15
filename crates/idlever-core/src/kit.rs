@@ -263,12 +263,12 @@ fn refit_starting(game:&mut Game) {
 /// The ladders, in the camp's order.
 pub const KIT_SLOTS: [&str; 3] = ["weapon", "armour", "pack"];
 
-/// Weapon steps: the class's starting arm, +1 per step, to +3. (Deviation from the contract's
-/// 4–5 steps: a fourth, +4, doubled the fighter's blow at depth and broke the D33 wall without
-/// its counter — the kitted FULL−D33 passed on 3–5 of 30 seeds, bar 3.)
-/// Cut 30 (the idle-first pivot retired the "not engaging fails" rows that capped it: the blacksmith
-/// is a multiplier the idle floor lacks): three more steps, each a harder blow (+1 damage).
-pub const WEAPON_MULT: [u32; 6] = [1, 4, 9, 16, 25, 36];
+// Weapon steps: the class's starting arm, +1 per step, to +3. (Deviation from the contract's
+// 4–5 steps: a fourth, +4, doubled the fighter's blow at depth and broke the D33 wall without
+// its counter — the kitted FULL−D33 passed on 3–5 of 30 seeds, bar 3.)
+// Cut 30 (the idle-first pivot retired the "not engaging fails" rows that capped it: the blacksmith
+// is a multiplier the idle floor lacks): three more steps, each a harder blow (+1 damage).
+// (Cut233: their price multiples are `balance` `kit.weapon_mult`.)
 /// Weapon steps past this many are damage, not aim.
 pub const AIM_STEPS: i32 = 3;
 /// Each weapon step past the aim adds this much to the blow.
@@ -281,7 +281,7 @@ pub const AIM_PER_STEP: u32 = 4;
 /// the kitted FULL−D28 passed the Queen's wall on 11 of 30 seeds without her counter.
 /// Cut 30: three more steps (mail +2, plate, plate +1), the forge a multiplier the idle floor lacks.
 pub const ARMOUR_STEPS: [(&str, i32); 7] = [("leather", 0), ("leather", 1), ("mail", 0), ("mail", 1), ("mail", 2), ("plate", 0), ("plate", 1)];
-pub const ARMOUR_MULT: [u32; 7] = [1, 4, 8, 14, 22, 32, 45];
+// (Cut233: their price multiples are `balance` `kit.armour_mult`, one per step.)
 /// Cut 113 §2 (blind cohorts: "forge/upgrades were strictly ordered"): each weapon and armour tier
 /// offers two steps, priced alike — weapon `aim` (the to-hit) · `edge` (the blow), armour `plate`
 /// (the next piece) · `pace` (speed). The ladder's own order is each tier's default (aim to +3,
@@ -292,13 +292,12 @@ pub const AIM_PER_LATE_STEP: u32 = 3;
 /// An edge taken in the aim's tiers (the first three) adds this much to the blow (the measured
 /// branch panel: a full `DMG_PER_STEP` there out-reached the aim at every wall).
 pub const EARLY_EDGE: i32 = 1;
-/// Each pace step's speed, in tenths of a point (base 10: `pace +8%` is 0.8), the first pace step
-/// first — falling, since a full point a step out-reached plate at every wall from the fifth.
-pub const PACE_TENTHS: [i32; 7] = [8, 7, 6, 5, 5, 4, 4];
+// (Cut233: each pace step's speed, in tenths of a point (base 10: `pace +8%` is 0.8), the first pace step first —
+// falling, since a full point a step out-reached plate at every wall from the fifth: `balance` `kit.pace_tenths`.)
 
 /// The speed in tenths of `q` pace steps.
 pub fn pace_tenths(q: usize) -> i32 {
-    PACE_TENTHS.iter().take(q).sum()
+    crate::balance::get().kit.pace_tenths.iter().take(q).sum()
 }
 
 /// A tick's share of a fractional pace (`Hero::pace` in tenths): one more energy on this many ticks of ten.
@@ -376,17 +375,19 @@ pub fn branch_label(l: &LineageState, slot: &str, branch: &str) -> String {
         }
         "edge" => format!("edge +{}", if n < AIM_STEPS as usize { EARLY_EDGE } else { DMG_PER_STEP }),
         "plate" => plate_piece(branch_counts(l, slot)[0] as usize + 1).map(piece_label).unwrap_or_else(|| step_label(l, slot, n)),
-        _ => format!("pace +{}%", PACE_TENTHS.get(branch_counts(l, slot)[1] as usize).copied().unwrap_or(0)),
+        _ => format!("pace +{}%", crate::balance::get().kit.pace_tenths.get(branch_counts(l, slot)[1] as usize).copied().unwrap_or(0)),
     }
 }
 
-/// Pack steps: one more supply on the shelf each (`LineageState::supply_cap`).
-pub const PACK_MULT: [u32; 4] = [2, 5, 10, 16];
+// (Cut233: pack steps — one more supply on the shelf each, `LineageState::supply_cap` — priced by `balance`
+// `kit.pack_mult`.)
 /// The shelf never holds more than this many supplies (the pack's ten slots less the kit and
-/// room for what a run finds).
-pub const SUPPLY_CAP_MAX: usize = 8;
-/// Cut 23 §1: the row slots on the forge's ladder (`row5` … `row10`), multiples of `unit`.
-pub const ROW_MULT: [(&str, u32); 6] = [("row5", 2), ("row6", 5), ("row7", 10), ("row8", 16), ("row9", 22), ("row10", 30)];
+/// room for what a run finds; `balance` `kit.supply_cap_max`).
+pub fn supply_cap_max() -> usize {
+    crate::balance::get().kit.supply_cap_max as usize
+}
+/// Cut 23 §1: the row slots on the forge's ladder (`row5` … `row10`), multiples of `unit` (`balance` `kit.row_mult`).
+pub const ROW_SLOTS: [&str; 6] = ["row5", "row6", "row7", "row8", "row9", "row10"];
 
 /// The kit's item ids (never loot: an exit neither salvages nor keeps them).
 pub const WEAPON_ID: u32 = 1;
@@ -403,7 +404,8 @@ pub fn is_kit_id(id: u32) -> bool {
 /// mostly-home cohort set at D8 nets ~$1000–3700, so the first step of each ladder is under a
 /// night and the top steps are two or three.
 pub fn unit(best_depth: u32) -> u32 {
-    100 + 25 * best_depth
+    let k = &crate::balance::get().kit;
+    k.unit_base + k.unit_per_depth * best_depth
 }
 
 /// Cut 24 §3 (AL: leather +1 $1000 → $1100 → $1400, mail $2800 → $3600 as the best deepened —
@@ -435,9 +437,9 @@ pub fn lock_unit(l: &mut LineageState) {
 
 pub fn mults(slot: &str) -> &'static [u32] {
     match slot {
-        "weapon" => &WEAPON_MULT,
-        "armour" => &ARMOUR_MULT,
-        "pack" => &PACK_MULT,
+        "weapon" => &crate::balance::get().kit.weapon_mult,
+        "armour" => &crate::balance::get().kit.armour_mult,
+        "pack" => &crate::balance::get().kit.pack_mult,
         _ => &[],
     }
 }
@@ -485,7 +487,7 @@ pub fn price(l: &LineageState, slot: &str, i: usize) -> u32 {
 
 /// Cut 23 §1: a row slot's gold price on the forge's ladder (`None` for any other unlock).
 pub fn row_gold(l: &LineageState, id: &str) -> Option<u32> {
-    ROW_MULT.iter().find(|(r, _)| *r == id).map(|(_, m)| l.row_unit.unwrap_or_else(|| unit_of(l)) * m)
+    ROW_SLOTS.iter().position(|r| *r == id).map(|i| l.row_unit.unwrap_or_else(|| unit_of(l)) * crate::balance::get().kit.row_mult[i])
 }
 
 /// The night's net `nights` divides by (the last full night's, or tonight's when larger).
@@ -733,8 +735,7 @@ fn deltas_with(game: &Game, sims: u32, outcomes: bool) -> Vec<KitLadder> {
     out
 }
 
-/// Cut 29 §5: a commission's price in forge units, before the climb (`commission_price`).
-pub const COMMISSION_UNITS: u32 = 10;
+// (Cut 29 §5: a commission's price in forge units, before the climb — `balance` `kit.commission_units`.)
 
 /// The works a lineage commissions, in order (then numbered): no sim reads them.
 pub const WORKS: [&str; 8] = ["heir's statue", "camp hall", "chronicle wall", "boss trophies", "the forge's bell", "a banner", "the long table", "a lantern tower"];
@@ -747,13 +748,12 @@ pub const WORKS: [&str; 8] = ["heir's statue", "camp hall", "chronicle wall", "b
 /// a $2020 work, a $930 oath).
 pub fn commission_price(l: &LineageState) -> i32 {
     let unit = unit_of(l) as f64;
-    let climb = COMMISSION_UNITS as f64 * unit * 1.25f64.powi(l.works.len() as i32);
-    let income = (l.last_day_net.max(0) as f64 / 2.0).max(COMMISSION_FLOOR as f64 * unit);
+    let climb = crate::balance::get().kit.commission_units as f64 * unit * 1.25f64.powi(l.works.len() as i32);
+    let income = (l.last_day_net.max(0) as f64 / 2.0).max(crate::balance::get().kit.commission_floor as f64 * unit);
     (climb.min(income) / 10.0).round() as i32 * 10
 }
 
-/// The fewest forge units a commission costs (its price against a day's net: `commission_price`).
-pub const COMMISSION_FLOOR: u32 = 5;
+// (The fewest forge units a commission costs, its price against a day's net — `balance` `kit.commission_floor`.)
 
 fn work_label(n: usize) -> String {
     match WORKS.get(n) {

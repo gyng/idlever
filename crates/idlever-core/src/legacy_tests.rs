@@ -52,15 +52,15 @@ fn same_save(g:&Game,expected:&str) {
 #[test]
 fn twelve_offers_price_ranks_on_the_curve_and_require_earned_depth_and_parents() {
     // (Cut 121 §1: the ranks' prices rise on the Legacy curve — each rank dearer than the last, bought in order)
-    assert!(ROOT_PRICES.windows(2).all(|w|w[1]>w[0]),"a rank costs more than the one before");
-    assert!(EFFECT_PRICES[1]>EFFECT_PRICES[0]);
+    assert!((*crate::legacy::root_prices()).windows(2).all(|w|w[1]>w[0]),"a rank costs more than the one before");
+    assert!(crate::legacy::effect_prices()[1]>crate::legacy::effect_prices()[0]);
     let mut g=rich();let o=offers(&g.lineage,false);assert_eq!(o.len(),12);
     assert_eq!(o.iter().filter(|u|u.cap==CAP).count(),3);
-    for id in IDS {for (rank,price) in ROOT_PRICES.iter().enumerate() {
+    for id in IDS {for (rank,price) in (*crate::legacy::root_prices()).iter().enumerate() {
         let u=offers(&g.lineage,false).into_iter().find(|u|u.id==id).unwrap();
         assert_eq!((u.rank,u.price),(rank as u32,*price));buy(&mut g,id).unwrap();
     }}
-    let all:u32=3*ROOT_PRICES.iter().sum::<u32>();
+    let all:u32=3*(*crate::legacy::root_prices()).iter().sum::<u32>();
     assert_eq!((current(&g.lineage).unwrap().points,current(&g.lineage).unwrap().spent),(RICH-all,all));
     let before=g.save();assert!(buy(&mut g,"health").is_err());assert_eq!(g.save(),before);
     let mut g=rich();let before=g.save();assert!(buy(&mut g,"restoration").is_err());assert_eq!(g.save(),before);
@@ -89,7 +89,7 @@ fn respec_preview_uses_the_same_checked_eligibility_and_actual_refund_as_purchas
     assert!(!offer.available);assert_eq!(offer.points_after,Some(RICH));same_save(&g,&before);
     purchase(&mut g,"mending");
     let before=g.save();let offer=crate::persistent::preview(&g.lineage,false);
-    assert_eq!((offer.refund,offer.points_after,offer.available),(root_price(0)+EFFECT_PRICES[0]+EFFECT_PRICES[1],Some(RICH),true));
+    assert_eq!((offer.refund,offer.points_after,offer.available),(root_price(0)+crate::legacy::effect_prices()[0]+crate::legacy::effect_prices()[1],Some(RICH),true));
     assert!(!g.lineage().legacy_respec.unwrap().available,"unconfirmed respec cannot bypass rebirth");same_save(&g,&before);
     assert!(!crate::persistent::preview(&g.lineage,true).available);
     g.lineage.bloodline.as_mut().unwrap().points=u32::MAX;

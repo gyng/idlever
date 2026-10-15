@@ -1453,7 +1453,7 @@ fn cut30_rows(rows: &mut Vec<(String, String, bool)>, seeds: u64, threads: usize
         idlever_core::offline::run_offline_counts(&mut g, 8 * 3600).runs
     });
     let e8_d13: Vec<u32> = pool(&d13, threads, |g| idlever_core::offline::run_offline_counts(&mut load(g), 8 * 3600).runs);
-    let cap = (8 * 3600 * idlever_core::offline::TICKS_PER_SECOND) as f64 / idlever_core::engine::REST_MIN_TICKS as f64;
+    let cap = (8 * 3600 * idlever_core::offline::TICKS_PER_SECOND) as f64 / idlever_core::engine::rest_min_ticks() as f64;
     let mean = |v: &[u32]| v.iter().sum::<u32>() as f64 / v.len().max(1) as f64;
     let (a, b) = (mean(&e8), mean(&e8_d13));
     rows.push((format!("Expeditions per 8 h, IDLE (fresh · D13) in 6–{cap:.0}"), format!("{a:.1} · {b:.1}"), [a, b].iter().all(|x| (6.0..=cap).contains(x)) && !e8_d13.is_empty()));

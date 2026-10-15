@@ -355,7 +355,7 @@ fn a_commission_costs_at_most_a_days_net() {
     g.lineage.last_day_net = 2400;
     assert_eq!(price(&g), 1200, "half a day's net caps it");
     g.lineage.last_day_net = 0;
-    assert_eq!(price(&g), 100 * crate::kit::COMMISSION_FLOOR as i32, "the floor");
+    assert_eq!(price(&g), 100 * crate::balance::get().kit.commission_floor as i32, "the floor");
 }
 
 /// Cut 29 core (item 3, marks at the deepest wall): with the pool spent and every title of the day

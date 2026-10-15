@@ -662,7 +662,7 @@ fn carried_gold_never_goes_below_zero() {
     add_monster(&mut g, "monkey", 5, 5);
     ticks(&mut g, 60);
     assert!(hero(&g).inv.is_empty());
-    assert_eq!(g.run.as_ref().unwrap().loot, v / crate::engine::GOLD_DIVISOR + 2, "physical theft cannot deduct converted currency");
+    assert_eq!(g.run.as_ref().unwrap().loot, v / crate::engine::gold_divisor() + 2, "physical theft cannot deduct converted currency");
     // Any `loot_add`, however large the take: floored at 0.
     let run = g.run.as_mut().unwrap();
     run.loot_add(-1_000_000);
@@ -981,8 +981,8 @@ fn gold_adds_loot_and_unknown_items_hint() {
     rules(&mut g, vec![]);
     ticks(&mut g, 40);
     // A pile's amount is coins and is added whole; an item adds its value before the divisor.
-    assert_eq!(g.run.as_ref().unwrap().loot_raw, 25 * crate::engine::GOLD_DIVISOR + 14);
-    assert_eq!(g.run.as_ref().unwrap().loot, 25 + 14 / crate::engine::GOLD_DIVISOR, "loot is counted in gold at pickup (Cut 4); a pile of $25 is $25");
+    assert_eq!(g.run.as_ref().unwrap().loot_raw, 25 * crate::engine::gold_divisor() + 14);
+    assert_eq!(g.run.as_ref().unwrap().loot, 25 + 14 / crate::engine::gold_divisor(), "loot is counted in gold at pickup (Cut 4); a pile of $25 is $25");
     let snap = g.snapshot();
     let inv = &snap.hero.inv[0];
     assert!(!inv.known);
@@ -1082,7 +1082,7 @@ fn bank_keeps_all_loot_and_gold() {
     give(&mut g, "sword");
     give(&mut g, "heal");
     finish_with(&mut g, ExitTier::Bank);
-    assert_eq!(g.lineage.gold, 100 / crate::engine::GOLD_DIVISOR);
+    assert_eq!(g.lineage.gold, 100 / crate::engine::gold_divisor());
     assert!(g.pending_exit.is_none());
     assert!(g.lineage.vault.is_empty());
     assert_eq!(g.batch.salvage_gold, 0);
@@ -1117,7 +1117,7 @@ fn death_keeps_nothing_and_leaves_bones() {
     // (a new heir's one potion), which is its own ledger line, never loot.
     let died = g.lineage.gold_ledger.iter().find(|l| l.why.starts_with("died")).expect("death line");
     assert_eq!(died.delta, 0, "Cut 2 §2: death yields nothing");
-    assert_eq!(g.lineage.gold, crate::engine::WAKE_PAY.min(g.lineage.gold.max(crate::engine::WAKE_PAY)), "wake pay tops the purse up, never beyond");
+    assert_eq!(g.lineage.gold, crate::engine::wake_pay().min(g.lineage.gold.max(crate::engine::wake_pay())), "wake pay tops the purse up, never beyond");
     assert!(g.pending_exit.is_none());
     assert_eq!(g.lineage.heir, 2);
     assert_eq!(g.lineage.graveyard.len(), 1);
@@ -1530,7 +1530,7 @@ fn a_dice_death_the_replays_reproduce_is_not_luck() {
 #[test]
 fn episodes_close_on_a_low_a_recovery_and_the_exit() {
     let mut g = arena();
-    g.run.as_mut().unwrap().loot_add(58 * crate::engine::GOLD_DIVISOR);
+    g.run.as_mut().unwrap().loot_add(58 * crate::engine::gold_divisor());
     let a = add_monster(&mut g, "jackal", 5, 5);
     let _b = add_monster(&mut g, "jackal", 5, 6);
     attack_rules(&mut g);
@@ -2276,7 +2276,7 @@ fn first_conversion_feeds_forge_discovery_and_tiers_apply() {
     assert_eq!(f.salvaged, 15);
     assert!(f.craftable);
     assert_eq!(f.tier, 1);
-    assert!(g.lineage.gold >= 15 * 8 / crate::engine::GOLD_DIVISOR);
+    assert!(g.lineage.gold >= 15 * 8 / crate::engine::gold_divisor());
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
     g.lineage.gold = 100;
     no_kennel_leash(&mut g);
@@ -3710,7 +3710,7 @@ fn loot_is_one_unit_from_pickup_to_the_bank() {
         let snap = g.snapshot();
         let run = g.run.as_ref().unwrap();
         assert!(run.loot_raw >= 28, "seed {seed}: nothing picked up");
-        assert_eq!(run.loot, run.loot_raw / crate::engine::GOLD_DIVISOR);
+        assert_eq!(run.loot, run.loot_raw / crate::engine::gold_divisor());
         assert_eq!(snap.stake.loot, run.loot, "the HUD stake is the run's gold");
         assert_eq!(snap.loot, run.loot);
         let gold_before = g.lineage.gold;
@@ -6105,7 +6105,7 @@ fn forge_rows_carry_the_next_rung() {
 /// with the hero must not be locked out of the shop; each heir wakes with one potion's worth.
 #[test]
 fn a_new_heir_wakes_with_enough_for_one_supply() {
-    use crate::engine::WAKE_PAY;
+    use crate::engine::wake_pay;
     let mut g = Game::new_literal(9);
     g.lineage.gold = 0;
     let before = g.lineage.heir;
@@ -6113,7 +6113,7 @@ fn a_new_heir_wakes_with_enough_for_one_supply() {
     assert!(g.lineage.heir > before, "no heir change in 3 h");
     // whatever the runs yielded, the purse after any death is at least the wake pay minus what
     // auto-supply may have spent (a fresh lineage owns no automations)
-    assert!(g.lineage.gold >= WAKE_PAY || g.lineage.gold_ledger.iter().any(|l| l.why == "wake pay"), "gold {} ledger {:?}", g.lineage.gold, g.lineage.gold_ledger);
+    assert!(g.lineage.gold >= wake_pay() || g.lineage.gold_ledger.iter().any(|l| l.why == "wake pay"), "gold {} ledger {:?}", g.lineage.gold, g.lineage.gold_ledger);
 }
 
 // ---------------------------------------------------------------- Cut 10 (the wall as a ramp, clarity)
@@ -6285,7 +6285,7 @@ fn theft_carries_its_amount() {
     g.run.as_mut().unwrap().loot_add(160);
     let before = g.run.as_ref().unwrap().loot;
     assert_eq!(before, 40);
-    let value = before - (160 - hero(&g).inv[0].value()) / crate::engine::GOLD_DIVISOR;
+    let value = before - (160 - hero(&g).inv[0].value()) / crate::engine::gold_divisor();
     assert!(value > 0);
     let m = add_monster(&mut g, "monkey", 5, 5);
     let evs = ticks(&mut g, 60);
@@ -7062,12 +7062,12 @@ fn swap_chores_never_take_what_a_row_needs() {
 /// stays 20 minutes; the online exit and the offline batch use the same function.
 #[test]
 fn rest_after_a_return_is_half_the_run() {
-    use crate::engine::{REST_CAP_TICKS, REST_MIN_TICKS, WAKE_TICKS};
+    use crate::engine::{rest_cap_ticks, WAKE_TICKS};
     use crate::offline::rest_after;
     assert_eq!(rest_after(60 * 60 * 10, ExitTier::Return), 30 * 60 * 10, "an hour's run rests thirty minutes");
     assert_eq!(rest_after(50 * 60 * 10, ExitTier::Bank), 25 * 60 * 10);
-    assert_eq!(rest_after(80 * 60 * 10, ExitTier::Return), REST_CAP_TICKS, "capped");
-    assert_eq!(rest_after(10 * 60 * 10, ExitTier::Return), REST_MIN_TICKS, "never under the floor");
+    assert_eq!(rest_after(80 * 60 * 10, ExitTier::Return), rest_cap_ticks(), "capped");
+    assert_eq!(rest_after(10 * 60 * 10, ExitTier::Return), crate::engine::rest_min_ticks(), "never under the floor");
     assert_eq!(rest_after(50 * 60 * 10, ExitTier::Death), WAKE_TICKS, "the death wake is unchanged");
     let g = Game::new_literal(1);
     assert_eq!(g.rest_after(50 * 60 * 10, ExitTier::Return), 25 * 60 * 10, "the exit's rest is the same function");
@@ -7558,7 +7558,7 @@ fn floor_value(g: &Game) -> i32 {
     run.items
         .iter()
         .filter(|fi| fi.item.kind != "leash" && fi.item.kind != "bones")
-        .map(|fi| if fi.item.kind == "gold" { fi.item.amount * crate::engine::GOLD_DIVISOR } else { fi.item.value() })
+        .map(|fi| if fi.item.kind == "gold" { fi.item.amount * crate::engine::gold_divisor() } else { fi.item.value() })
         .sum()
 }
 
@@ -7583,7 +7583,7 @@ fn a_picked_depth_pays_less_and_recovers_night_over_night() {
     for _ in 0..10 {
         g.lineage.night_run(3, 3, true);
     }
-    assert_eq!(g.lineage.picked.get(&3), Some(&crate::engine::PICKED_CAP));
+    assert_eq!(g.lineage.picked.get(&3), Some(&crate::engine::picked_cap()));
     assert_eq!(g.lineage.freshness(3), 250);
     assert_eq!(g.lineage.picked_clean(), vec![3]);
     let (mut fresh, mut picked) = (0, 0);
@@ -10048,8 +10048,8 @@ fn a_physical_pack_swap_never_refunds_existing_currency() {
 /// `PURSE_FULL_BAND`); a richer death says nothing of it; a top-up is `wake`.
 #[test]
 fn purse_full_only_near_the_top_up_line() {
-    use crate::engine::{PURSE_FULL_BAND, WAKE_PAY};
-    for (gold, full, wake) in [(0, false, WAKE_PAY), (WAKE_PAY + 10, true, 0), (PURSE_FULL_BAND, false, 0), (1434, false, 0)] {
+    use crate::engine::{purse_full_band, wake_pay};
+    for (gold, full, wake) in [(0, false, wake_pay()), (wake_pay() + 10, true, 0), (purse_full_band(), false, 0), (1434, false, 0)] {
         let mut g = arena();
         g.lineage.gold = gold;
         g.run.as_mut().unwrap().hero.hp = 0;
@@ -11671,12 +11671,12 @@ fn a_short_break_yields_a_run() {
     // An offline exit's rest carries into the next absence; one that ends on its last tick sends.
     let mut b = Game::load(&text).unwrap();
     b.lineage.rest_watched = false;
-    b.lineage.rest_left = crate::engine::REST_MIN_TICKS;
-    assert!(b.run_offline(crate::engine::REST_MIN_TICKS as u64 / crate::offline::TICKS_PER_SECOND).runs >= 1);
+    b.lineage.rest_left = crate::engine::rest_min_ticks();
+    assert!(b.run_offline(crate::engine::rest_min_ticks() as u64 / crate::offline::TICKS_PER_SECOND).runs >= 1);
     let mut c = Game::load(&text).unwrap();
     c.lineage.rest_watched = false;
-    c.lineage.rest_left = crate::engine::REST_MIN_TICKS + 10;
-    assert_eq!(c.run_offline(crate::engine::REST_MIN_TICKS as u64 / crate::offline::TICKS_PER_SECOND).runs, 0, "still resting");
+    c.lineage.rest_left = crate::engine::rest_min_ticks() + 10;
+    assert_eq!(c.run_offline(crate::engine::rest_min_ticks() as u64 / crate::offline::TICKS_PER_SECOND).runs, 0, "still resting");
 }
 
 /// Cut 26 (risks: attribution): a death on the far lane the near stair would have carried past

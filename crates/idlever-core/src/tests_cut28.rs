@@ -391,7 +391,7 @@ fn a_caged_item_converts_once_and_settles_without_a_keep_sheet() {
         run.hero.inv.push(it);
     }
     let carry = run.carried();
-    assert_eq!(carry, raw_value / crate::engine::GOLD_DIVISOR);
+    assert_eq!(carry, raw_value / crate::engine::gold_divisor());
     run.caged.push(950);
     run.over = Some(ExitTier::Return);
     let before = g.lineage.gold;
