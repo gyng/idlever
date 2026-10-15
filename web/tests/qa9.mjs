@@ -112,7 +112,9 @@ const setLineage = (chronicle, grave) =>
   );
 /** Current active roster keeps past heroes in Chronicle. */
 const openLogHeirs = async () => {
-  await page.locator(".hero-expand:visible").click({ timeout: 5000 });
+  await page
+    .locator('.camp .console [data-tile="heroes"]:visible, .hero-mobile .hero-expand:visible')
+    .click({ timeout: 5000 });
   await page.locator(".heroes-sheet .hero-history").click({ timeout: 5000 });
   await page.waitForSelector(".sheet-wrap .chronicle", { timeout: 1500, state: "attached" });
 };

@@ -84,3 +84,28 @@ and explicit revalidation triggers. The old CasterbowBankD19/831Gold and
 Rangerbow332Gold observations are historical and cannot guide current builds.
 The originalfiveclass levels remain unequal; class mechanisms/visual review,
 additional biome causal forks and fullR4/fun acceptance remain open.
+
+## Current8879 successor — 2026-10-16
+
+`revalidation-8879-1/` and `-2/` finish10/10 each on the visibility-provenance
+fix package. `revalidation-8879-repeat.json` verifies90complete raw artifacts
+repeat exactly, including actual/watched/replay outcomes and whole/sliced/reload
+reports/saves. The original preparation bytes and paused Scout remain unchanged.
+The paid pace8/7200→7201 case is separately covered by Cut249, not inferred here.
+
+`actions-8879.json` inventories actual first hero attacks, every rule/attack verb,
+firearm state/reload events, native accounting and complete before/after ledgers.
+Bow/firearm attack modes are directly observed. Preserved package choices do not
+fire Fighter or Caster class-specific verbs; these branches cannot establish
+those class identities. Fighter level8 versus other classes level1 also forbids
+cross-class superiority claims. Losing branches and all lost Gold are retained.
+
+`weapon-frames-8879/` has40first-attack captures; many victims already die on the
+attack tick, so these are weak action-recognition views. The successor
+`weapon-surviving-targets-8879/` captures40first landed attacks whose target does
+not die on that tick, at402×681/1440×900 in GL/Canvas. These use standalone
+production viewers, not the complete live Watch UI. Source/served/replay/image
+hashes and actual target events are retained. A phone Gunner frame still has an
+offscreen ranged target; individual captures are not proof of a readable complete
+exchange. Full action recognition, skilled class comparisons and R4 acceptance
+remain open. No GPU performance claim under concurrent native pacing work.

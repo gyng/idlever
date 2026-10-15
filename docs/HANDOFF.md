@@ -10,12 +10,57 @@ Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
 Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
-Current development package is fast WASMc9fad470… (6773905bytes); settlement default
-`docs/evidence/cut248/settlements-inputs-c9fa.json`. Combined247/248 native974tests
-and Clippy, strict4settlements,20earned public continuations/90exact repeated
-artifacts and3fresh accounting/item browser groups pass. A separate paid pace8
-reload loses previous-vision provenance; Cut249 is in progress, so complete
-current-game parity/pacing/full/exhaustive/fun acceptance remains open.
+Current development package is fast WASM8879ed11… (6774306bytes); settlement
+ default `docs/evidence/cut249/final/settlements-inputs-8879.json`. Cut249 persists
+previous-vision IDs needed for exact reload provenance. Combined247–249 native
+979tests/6ignored and Clippy pass; strict4settlements and paid/unpaid public
+partition/reload proofs pass. Cut249 pacing→routine-full wrapper is live; check
+its exact process/log identity before restarting. Broader full/exhaustive/fun
+acceptance remains open. Latest native checkpoint7104eaf3 commits249source/closed correctness proofs;
+8caef551 preserves247/248 and prior UI. Compact UI/R7/method work follows.
+
+Cut250 owner UI feedback is implemented: Heroes moves into the bottom dock,
+phone Home/Watch primary header is one row (62px), resource pills have8px side
+padding/6px gaps, and keyboard focus scrolls complete pills into view. Owner's
+stretched-map screenshot exposed stale canvas backing dimensions after layout
+resize; actual size changes now bypass the idle frame cap for the next draw.
+Fresh8879 proof passes4GL and4Canvas captures,2context loss/restores, plus4
+header/route views and20resource focus checks at402×681/1440×900 normal/200%.
+Raw diagnostic and initial keyboard failure remain preserved. See
+`evidence/cut250/observations-2026-10-16.md`; this is presentation/functional
+proof, not GPU performance, real Safari, full menu or fun acceptance.
+
+Subsequent current8879browser accounting is terminalPASS3/3 in122.5s
+(`evidence/cut249/browser-current*`): Gold564checks/24cases,loot104,item-icons129
+per retained original width. Cut2468879revalidation passes20/20 earned public
+continuations and90complete raw artifacts repeat exactly. Actual action/rule/
+ledger inventory is in cut246/actions-8879.json. Forty surviving-target GL/Canvas
+frames are diagnostic; some ranged targets remain offscreen and preserved
+packages fire no Fighter/Caster class-specific verbs. No fullR4 claim.
+
+The broader existing Heroes journey is stillFAIL: stale Hero-sheet and old
+controlled life-state assumptions were corrected while preserving owner/name/
+Legacy assertions. Mature three-resident Home has18physical controls,16legacy
+function keys or15after correcting the selected-resident duplicate, exceeding
+its retained≤12 gate at320/400 and the primary402×681. No budget increase,
+hidden actor or broader pass is inferred; see cut250/heroes-density-direct-8879/.
+Bloodline founding itself passes. Cut220 now has two genuine public Actual/Next
+fixtures (Sword→Bow, Ironcap→none), and an implemented neutral composited figure
+passes8layout/phase cases,15owned shapes, actual3resident/stale-callback guards,
+missing-image fallback and preference/save checks. Actual keyboard-focus contrast
+passes4cases (minimum6.887:1). Raw rejected pixel/focus protocols remain retained.
+Treat it as a functional prototype, not final painted paper-doll art. Two new
+neutral male masters and exact imagegen prompts are staged in art/generated/ and
+art/prompts/; they are not integrated or part of those successful UI proofs.
+
+R6 single-context cost method is prepared, not measured: cut245/cost-single*
+contains issue-tagged delayed GPU-query/ring/disjoint mock proof and strict
+per-frame geometry/painted-atlas/process-view guards. Fixed-clock landmark-off
+comparison against hash-verified archived baseline is terminalPASS6/6 with0
+changed RGBA pixels in off-equivalence-2026-10-16/. This functional comparison
+ran during native work and proves no GPU timing. Positive same-view quiet
+confirmation is required before A/A controls and candidate cost measurements;
+all previous failed controls/margins remain authoritative.
 The preceding e62c retirement proof below remains historical at its own runtime.
  Follow-up native Gold/
 ledger/ExitLine4/4 and five public catalogue/Lineage cases exactly match97e8;

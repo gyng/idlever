@@ -1,0 +1,35 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "8caef5510898258974facfb3909917a5fcaa9200",
+    "dirty": true,
+    "dirtyHash": "2caac577b5ca45c5782e5c13162c961008e462d3b18741ada5e88c97d4108ddd",
+    "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  },
+  "startedAt": "2026-10-15T20:04:54.161Z",
+  "finished": true,
+  "selected": [
+    "runsui:heroes"
+  ],
+  "results": {
+    "runsui:heroes": {
+      "name": "runsui:heroes",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 24.952,
+      "endedAtSeconds": 30.839,
+      "firstFailure": "FAIL 320: three bloodlines retain ≤12 above-fold functions (16: Gold$48036 | Hero Legacy 0 | settings | send | hero-details | blacksmith | bank | guild | pool | device | Vale Ash · Hero details | Bryn Thorn · Hero detail | Corin Flint · Hero detai | Bryn Thorn · Bloodline 2 | tile:heroes | tile:jour",
+      "finishedAt": "2026-10-15T20:05:25.001Z",
+      "identity": {
+        "head": "8caef5510898258974facfb3909917a5fcaa9200",
+        "dirty": true,
+        "dirtyHash": "2caac577b5ca45c5782e5c13162c961008e462d3b18741ada5e88c97d4108ddd",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T20:05:25.002Z"
+}

@@ -37,7 +37,16 @@ import { heroBinding, renderEditor } from "./editor";
 import { renderParty } from "./party";
 import { lowOf, renderForecast, renderShaft, share } from "./forecast";
 import { renderScene } from "./divergence";
-import { gem, metersSlot, portrait, renderBar, renderConsole, stud, tile } from "./frame";
+import {
+  gem,
+  metersSlot,
+  paintFace,
+  portrait,
+  renderBar,
+  renderConsole,
+  stud,
+  tile,
+} from "./frame";
 import { revealed, type Step } from "./reveal";
 import { openLedger } from "./party";
 import { goldSink, kitAffordable, openForge } from "./forge";
@@ -583,6 +592,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
   // the rest line sits under the well, outside the scroll (the well-wrap's third row), always whole
   // RUNS_UI (docs/RUNS_UI.md §2): the run lanes take the rest line's place — one row per hero (live · rests · waits), the log at its end
   const lanes = heroRoster(app, {
+    externalOpen: true,
     focus: () => {
       town.el.scrollIntoView({ block: "nearest" });
       town.view.focusHero();
@@ -738,9 +748,27 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         on,
         fresh: R.fresh(STEP_OF[id]) || (id === "forge" && R.fresh("forge")),
       });
+    const heroes = tile({
+      id: "heroes",
+      label: /* copy:button */ "Heroes",
+      icon: "hero",
+      glyph: "♟",
+      cls: "home-heroes-command",
+      onclick: (e: Event) => {
+        closeAllSheets();
+        lanes.open(e.currentTarget as HTMLElement);
+      },
+    });
+    const heroFace = h("span", { class: "ico heroes-command-face", "aria-hidden": "true" });
+    const heroPainting = h("span", { class: "heroes-command-portrait" });
+    heroFace.append(heroPainting);
+    paintFace(heroPainting, app.lineage.class, 32, app.lineage.look);
+    heroes.querySelector(".ico")?.replaceWith(heroFace);
+    heroes.setAttribute("aria-label", /* copy:label */ "Heroes");
     const built = townBuilt(app.lineage);
     if (built) {
       cons.setTiles([
+        heroes,
         app.lineage.journal &&
           tile({
             id: "journal",
@@ -809,6 +837,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       return;
     }
     cons.setTiles([
+      heroes,
       // QA 92eb880 (N: "the `edit` tile toggles: tapping it while editing closes the editor (I lost the next tap twice)"): it turns
       // editing on and stays lit; a second tap closes the open panel, never the editor
       R.has("edit") &&

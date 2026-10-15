@@ -1,0 +1,52 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "8caef5510898258974facfb3909917a5fcaa9200",
+    "dirty": true,
+    "dirtyHash": "455616226e375fd408f60ad4bdf92eabb92a928345ee8f787a824a73169907f4",
+    "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  },
+  "startedAt": "2026-10-15T19:59:54.991Z",
+  "finished": true,
+  "selected": [
+    "runsui:heroes",
+    "bloodline-founding"
+  ],
+  "results": {
+    "bloodline-founding": {
+      "name": "bloodline-founding",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 25.023,
+      "endedAtSeconds": 39.348,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:00:34.339Z",
+      "identity": {
+        "head": "8caef5510898258974facfb3909917a5fcaa9200",
+        "dirty": true,
+        "dirtyHash": "455616226e375fd408f60ad4bdf92eabb92a928345ee8f787a824a73169907f4",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "runsui:heroes": {
+      "name": "runsui:heroes",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 25.551,
+      "endedAtSeconds": 64.899,
+      "firstFailure": "FAIL threw: timeout waiting for Details selects the requested bloodline",
+      "finishedAt": "2026-10-15T20:00:59.890Z",
+      "identity": {
+        "head": "8caef5510898258974facfb3909917a5fcaa9200",
+        "dirty": true,
+        "dirtyHash": "455616226e375fd408f60ad4bdf92eabb92a928345ee8f787a824a73169907f4",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T20:00:59.891Z"
+}

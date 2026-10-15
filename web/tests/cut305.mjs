@@ -318,7 +318,9 @@ try {
     );
     check(/0\/2/.test(s.gem), `day 0: the gem counts the sends toward the scout (${s.gem.trim()})`);
     const saveBeforeHeroes = await page.evaluate(() => window.__idlever.engine.save());
-    await page.locator(".hero-expand:visible").click({ timeout: 5000 });
+    await page
+      .locator('.camp .console [data-tile="heroes"]:visible, .hero-mobile .hero-expand:visible')
+      .click({ timeout: 5000 });
     await until(() => !!document.querySelector(".heroes-sheet"), "active Heroes sheet", 5000);
     check(
       (await page.locator(".heroes-sheet .label").textContent()) === "Active heroes",

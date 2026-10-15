@@ -293,3 +293,38 @@ split cards keep Actual before Next. The doll stacks below30rem (font-relative),
 so200% text never squeezes side cards; desktop centres Helm and Boots. Hub tabs
 and header buttons keep44px targets without the material's font-scaled2.75rem
 minimum, reducing a400px/200% tab from65.6px to about57px tall.
+
+## R7 functional equipment composition — owner amendment2026-10-16
+
+This delivery replaces the baked class figure with one neutral composited body,
+not an additional surrounding card/icon inventory. Existing wearable-shaped
+item paintings may supply a layer; deliberate per-kind primitives cover missing
+art. It is functional paper-doll progress, not final painted quality or fullR7.
+
+1. Read only canonical `starting_kits.equipment.actual/next` for four slot kinds.
+   Actual is default; two44pxphase controls change presentation only. Label Next
+   delve explicitly. Preserve existing slot anchors/legal choices/effects/totals.
+   No extra equipment rule, drag/drop, implicit spend or readiness inference.
+2. Body is neutral and has0baked weapons/armour. Four semantically keyed layers
+   reflect exact native kind, with0gear at null slots. Existing sword/bow/armour
+   bitmap silhouettes may be fitted into the figure; helm/boots and unavailable
+   bitmap kinds have distinct role primitives. No generic sword masquerades as
+   Crownsplitter, and no second weapon remains under a different selected arm.
+3. Use both genuine8879public fixtures in evidence/cut220/actual-next-8879:
+   ActualSword→NextBow and actualironcap→Nextempty. Rendered kinds must match
+   canonical slots8/8percase across both phases, queuedtrue retained, Gold/owner/
+   actualrun unchanged. Missing image/atlas errors must leave visible primitives;
+   allowned current shapes map to exact art or deliberate fallback.
+4. Primary402×681CSSviewport +1440desktop,normal/200%: all phase/slot targets≥44px,
+   0document/panel horizontal overflow; scroll reaches both phase controls and
+   four slot routes. Inspect matched settled phase screenshots. Read-only phase
+   switching100times and refresh100times preserve exact save; no stale detached
+   control or async image completion changes a new resident/incarnation.
+5. Full/Low/Off/reduced motion have identical static equipment semantics; native
+   stats/effect descriptions remain unchanged. Ordinary essential text≥4.5:1,
+   actualkeyboard focus visible and retained through refresh. Other sizes are
+   targeted only for an observed defect, per current owner viewport direction.
+6. Date observations with earned input/source/package/capture identities; keep
+   prototype quality judgment separate from player feedback. Retain failures.
+   Revalidate after equipment wire, preparation/lifecycle, art/atlas, phase/layout
+   or runtime changes. Existing Hub journeys and broader gates remain separate.

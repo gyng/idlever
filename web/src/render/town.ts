@@ -1316,11 +1316,13 @@ export function createTownView(host: HTMLElement): TownView {
   const onLost = (e: Event): void => {
     e.preventDefault();
     glLost = true;
+    sizeDirty = true;
     layoutDirty = true;
   };
   const onRestored = (): void => {
     glLost = false;
     gl?.restored();
+    sizeDirty = true;
     layoutDirty = true;
   };
   glCanvas.addEventListener("webglcontextlost", onLost);
@@ -1342,6 +1344,8 @@ export function createTownView(host: HTMLElement): TownView {
     lastDraw = 0;
   let hourOverride: number | null = null;
   let layoutDirty = true;
+  // A changed camera/host must repaint on the next frame even under idle/test caps.
+  let sizeDirty = true;
   const layoutFns: (() => void)[] = [];
   const upgradeFrom = new Map<string, number>();
   let buildEvents = 0;
@@ -2758,6 +2762,7 @@ export function createTownView(host: HTMLElement): TownView {
       F.k = k;
       F.W = W;
       F.H = H;
+      sizeDirty = true;
       layoutDirty = true;
       for (const fn of actorLayout) fn();
     }
@@ -2779,7 +2784,7 @@ export function createTownView(host: HTMLElement): TownView {
     // the frame cap: none while input arrives, IDLE_FPS after 10 s without; a software GL under automation (juice off: the headless
     // suites, seven browsers on the CPU) draws at SOFT_FPS — the scene is cosmetic and its frames were the suite's load
     const cap = document.documentElement.dataset.juice === "off" ? SOFT_FPS : idle ? IDLE_FPS : 0;
-    if (cap && now - lastDraw < 1000 / cap - 2) {
+    if (cap && !sizeDirty && now - lastDraw < 1000 / cap - 2) {
       raf = requestAnimationFrame(loop);
       return;
     }
@@ -2799,6 +2804,7 @@ export function createTownView(host: HTMLElement): TownView {
         c.style.display = "block";
         drawTown2D(c, F, atlas.canvas);
       }
+      sizeDirty = false;
       cpu.push(performance.now() - c0);
       if (cpu.length > 120) cpu.shift();
       for (const fn of actorLayout) fn();

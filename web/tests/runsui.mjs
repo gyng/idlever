@@ -182,17 +182,36 @@ const fold = (scope = "") =>
                 (b.matches(".lane[data-state=live]") &&
                   b === document.querySelector(".lanes .lane")))
             ? "watch"
-            : b.classList.contains("hero-details") || b.dataset.building === "tent"
-              ? "hero-details" // The house and Details open the same hero menu.
-              : b.classList.contains("next-pill") || b.dataset.building === "worker"
-                ? "works"
-                : (b.dataset.building ??
-                  (b.dataset.tile
-                    ? (SAME[b.dataset.tile] ?? `tile:${b.dataset.tile}`)
-                    : (b.getAttribute("aria-label") || b.textContent || b.className)
-                        .replace(/\s+/g, " ")
-                        .trim()
-                        .slice(0, 24)));
+            : b.dataset.homeHero
+              ? `hero-details:${b.dataset.homeHero}`
+              : b.classList.contains("hero-details") || b.dataset.building === "tent"
+                ? `hero-details:${window.__idlever.lineage.selected_bloodline ?? 1}` // Same owner's house, sprite and Details route to the same Hub.
+                : b.classList.contains("next-pill") || b.dataset.building === "worker"
+                  ? "works"
+                  : (b.dataset.building ??
+                    (b.dataset.tile
+                      ? (SAME[b.dataset.tile] ?? `tile:${b.dataset.tile}`)
+                      : (b.getAttribute("aria-label") || b.textContent || b.className)
+                          .replace(/\s+/g, " ")
+                          .trim()
+                          .slice(0, 24)));
+      window.__runsuiFoldDiagnostic = {
+        viewport: { width: innerWidth, height: innerHeight },
+        controls: els.map((b) => {
+          const r = b.getBoundingClientRect();
+          return {
+            key: key(b),
+            tag: b.tagName,
+            class: b.className,
+            label: b.getAttribute("aria-label"),
+            text: b.textContent?.trim(),
+            type: b.getAttribute("type"),
+            disabled: b.matches(":disabled"),
+            dataset: { ...b.dataset },
+            rect: { x: r.x, y: r.y, w: r.width, h: r.height },
+          };
+        }),
+      };
       return [...new Set(els.map(key))];
     },
     [SAME, scope],
@@ -766,7 +785,7 @@ try {
       const lab = await page.evaluate(() =>
         [
           ...document.querySelectorAll(
-            ".hero-mobile .hero-action, .hero-mobile .hero-details, .hero-mobile .hero-expand",
+            ".hero-mobile .hero-action, .hero-mobile .hero-details, .hero-mobile .hero-expand, .camp .console [data-tile=heroes]",
           ),
         ].map((x) => x.textContent),
       );
@@ -806,7 +825,10 @@ try {
       await camp();
       let s = await lanes();
       check(s.n === 1 && s.rows.length === 1, `${width}: one active bloodline renders one hero`);
-      if (width < 1024) await page.locator(".hero-mobile .hero-expand").click();
+      if (width < 1024)
+        await page
+          .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
+          .click();
       const root = width < 1024 ? ".sheet-wrap:not([hidden]) .heroes-sheet" : ".hero-desktop";
       for (const expected of [2, 3]) {
         const before = await page.evaluate(() => ({
@@ -883,6 +905,7 @@ try {
           const slots = a.lineage.hero_slots;
           // Controlled presentation only: Rust state/save is never edited.
           slots[0].state = "live";
+          slots[0].life_state = "away"; // Current canonical phase; presentation-only diagnostic.
           slots[0].live = {
             run_id: 7,
             heir: slots[0].heir,
@@ -918,7 +941,9 @@ try {
       if (width < 1024) {
         await page.locator(".sheet-wrap:has(.heroes-sheet) .close-stud:visible").click();
         await page.locator(".sheet-wrap:has(.heroes-sheet)").waitFor({ state: "detached" });
-        await page.locator(".hero-mobile .hero-expand").click();
+        await page
+          .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
+          .click();
         await page
           .locator('.sheet-wrap:not([hidden]) .heroes-sheet [data-slot="3"] .hero-jump')
           .click();
@@ -937,22 +962,38 @@ try {
         ),
         `${width}: jump selects bloodline 3 with its actual ${selected.state} state and Ready action`,
       );
-      if (width < 1024) await page.locator(".hero-mobile .hero-expand").click();
+      if (width < 1024)
+        await page
+          .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
+          .click();
       await page.locator(`${root} [data-slot="2"] .hero-details`).click();
       await until(
         () =>
-          !!document.querySelector(".hero-sheet") &&
+          !!document.querySelector("[data-hero-hub]") &&
           window.__idlever.lineage.selected_bloodline === 2,
         "Details selects the requested bloodline",
         15000,
       );
+      const detailsIdentity = await page.evaluate(() => {
+        const a = window.__idlever;
+        const hub = document.querySelector("[data-hero-hub]");
+        const slot = a.lineage.hero_slots.find((s) => s.id === 2);
+        return {
+          bloodline: hub.querySelector(".hero-hub-identity small")?.textContent,
+          name: hub.querySelector(".hero-hub-identity h2")?.textContent,
+          expectedName: a.lineage.persistent_hero?.name ?? slot?.hero_name,
+          owner: a.lineage.selected_bloodline,
+        };
+      });
       check(
-        (await page.locator(".sheet-wrap:not([hidden]) .hero-sheet .row-label").textContent()) ===
-          "Bloodline 2",
-        `${width}: Details opens the correct bloodline menu`,
+        detailsIdentity.bloodline === "Bloodline 2" &&
+          detailsIdentity.owner === 2 &&
+          !!detailsIdentity.expectedName &&
+          detailsIdentity.name === detailsIdentity.expectedName,
+        `${width}: Details opens the correct bloodline and current named hero (${JSON.stringify(detailsIdentity)})`,
       );
-      await page.locator(".sheet-wrap:has(.hero-sheet) .close-stud:visible").click();
-      await page.locator(".sheet-wrap:has(.hero-sheet)").waitFor({ state: "detached" });
+      await page.locator(".sheet-wrap:has([data-hero-hub]) .close-stud:visible").click();
+      await page.locator(".sheet-wrap:has([data-hero-hub])").waitFor({ state: "detached" });
       check(
         await page.evaluate(
           (expected) =>
@@ -977,6 +1018,20 @@ try {
       );
       if (width < 1024) {
         const all = await fold();
+        console.log(
+          "FOLD_DIAGNOSTIC " +
+            JSON.stringify(await page.evaluate(() => window.__runsuiFoldDiagnostic)),
+        );
+        if (width === 400) {
+          await page.setViewportSize({ width: 402, height: 681 });
+          await sleep(300);
+          await fold();
+          console.log(
+            "PRIMARY_FOLD_DIAGNOSTIC " +
+              JSON.stringify(await page.evaluate(() => window.__runsuiFoldDiagnostic)),
+          );
+          await page.setViewportSize({ width, height: 900 });
+        }
         check(
           all.length <= 12,
           `${width}: three bloodlines retain ≤12 above-fold functions (${all.length}: ${all.join(" | ")})`,

@@ -45,7 +45,7 @@ const result = {
   })),
   expectedWasm,
   packageAtStart,
-  viewportPresets: phoneReviewViewports(),
+  viewportPresets: [...phoneReviewViewports(), {id:"desktop",width:1440,height:900}],
   rows: [],
   served: [],
   errors: [],
@@ -84,7 +84,7 @@ try {
   }
   browser = await launchBrowser({ gpu: true });
 
-  for (const {id: preset,width,height} of phoneReviewViewports()) for (const scale of [1,2]) {
+  for (const {id: preset,width,height} of result.viewportPresets) for (const scale of [1,2]) {
     const page=await browser.newPage({viewport:{width,height},reducedMotion:"reduce"});
     page.on("pageerror",e=>result.errors.push(String(e)));
     page.on("response",r=>{const path=new URL(r.url()).pathname;if(path.startsWith("/src/")||path.endsWith(".wasm"))pending.push(r.body().then(b=>result.served.push({path,bytes:b.length,sha256:hash(b)})).catch(()=>{}));});
@@ -96,7 +96,7 @@ try {
     const measure=()=>page.evaluate(()=>{
       const h=document.querySelector('header.topbar'),R=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width,h:r.height}};
       const texts=[...h.querySelectorAll('.heir,.trait,.stat')].map(e=>({selector:e.className,text:e.textContent,rect:R(e),font:getComputedStyle(e).fontSize,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}));
-      return{view:window.__idlever.view,kind:window.__idlever.kind,live:window.__idlever.lineage.live,header:R(h),settings:R(h.querySelector('.gear')),texts,docOverflow:document.documentElement.scrollWidth-innerWidth};
+      const stats=h.querySelector(".stats");return{view:window.__idlever.view,kind:window.__idlever.kind,live:window.__idlever.lineage.live,header:R(h),settings:R(h.querySelector('.gear')),stats:{...R(stats),scrollWidth:stats.scrollWidth,clientWidth:stats.clientWidth,scrollLeft:stats.scrollLeft,gap:getComputedStyle(stats).gap},texts,docOverflow:document.documentElement.scrollWidth-innerWidth};
     });
     // Home routes are actual public controls. Escape cannot spend or change save.
     for(const [label,selector]of[['gold','button.stat.gold'],['legacy','button.stat.legacy'],['settings','button.gear']]){
@@ -104,7 +104,25 @@ try {
       const title=await page.locator('.sheet-wrap:not(.under) > .sheet').last().innerText();await page.keyboard.press('Escape');
       const exact=before===await page.evaluate(()=>window.__idlever.engine.save());row.home[label]={title,exact};if(!exact)throw Error('Home route mutated save '+label);
     }
+    const rosterBefore=await page.evaluate(()=>window.__idlever.engine.save());
+    const heroes=page.locator('.camp .console [data-tile="heroes"]');
+    if(await heroes.count()!==1||await page.locator('.camp .hero-expand').count()!==0)throw Error('Heroes must appear once in dock');
+    await heroes.click();await page.locator('.heroes-sheet').waitFor();
+    await page.evaluate(async()=>{for(let i=0;i<100;i++)await window.__idlever.refresh();});
+    await page.keyboard.press('Escape');
+    row.home.heroes={exact:rosterBefore===await page.evaluate(()=>window.__idlever.engine.save()),focus:await heroes.evaluate(e=>e===document.activeElement),rect:await heroes.boundingBox(),refreshes:100};
+    if(!row.home.heroes.exact||!row.home.heroes.focus)throw Error('Heroes save/focus changed');
     row.home.layout=await measure();
+    const resourceCount=await page.locator('.topbar .stat').count();
+    await page.locator('button.gear').focus();row.home.resourceFocus=[];
+    for(let i=0;i<resourceCount;i++){
+      await page.keyboard.press('Shift+Tab');
+      const sample=await page.evaluate(()=>{const e=document.activeElement,r=e.getBoundingClientRect(),s=e.closest('.stats'),b=s?.getBoundingClientRect();return{class:e.className,text:e.textContent,x:r.x,right:r.right,w:r.width,h:r.height,left:b?.left,edge:b?.right,scroll:s?.scrollLeft};});
+      row.home.resourceFocus.push(sample);
+      if(!String(sample.class).includes('stat')||sample.x<sample.left-1||sample.right>sample.edge+1||sample.h<44)throw Error('Resource focus/clipping '+JSON.stringify(sample));
+    }
+    await page.evaluate(()=>{document.querySelector('.topbar .stats').scrollLeft=0;document.activeElement?.blur();});
+
     await page.screenshot({path:`${out}/home-${preset}-${width}x${height}-${scale}x.png`,fullPage:false});
     // Enter real Watch; its init performs the actual public engine.send on earned state.
     await page.evaluate(()=>window.__idlever.go({kind:'watch'}));
@@ -120,7 +138,7 @@ try {
     await page.screenshot({path:`${out}/settings-${preset}-${width}x${height}-${scale}x.png`,fullPage:false});
     await page.keyboard.press('Escape');row.watch.exact=before===await page.evaluate(()=>window.__idlever.engine.save());await page.clock.runFor(17);row.watch.exactAfterRaf=before===await page.evaluate(()=>window.__idlever.engine.save());row.watch.returned=await page.locator('button.gear').evaluate(e=>e===document.activeElement);
     result.rows.push(row);save();
-    for(const x of [row.home.layout,row.watch.layout])if(x.docOverflow>1||x.settings.w<44||x.settings.h<44||(scale===1&&x.header.h>112))throw Error('Header geometry failure');
+    for(const x of [row.home.layout,row.watch.layout])if(x.docOverflow>1||x.settings.w<44||x.settings.h<44||(width<=600&&scale===1&&x.header.h>68))throw Error('Header geometry failure');
     if(!row.watch.exact||!row.watch.returned)throw Error('Watch settings changed save/focus');
     await page.close();
   }

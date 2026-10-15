@@ -2071,7 +2071,7 @@ try {
     await settle();
     const ids = await tileIds();
     // RUNS_UI: the chronicle is the runs log's `heirs` (the lane's log stud, shown from the 5th heir as from the first run)
-    await page.locator(".hero-mobile .hero-expand").click();
+    await page.locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand').click();
     const logStud = await page.locator(".heroes-sheet button.hero-history").isVisible();
     await page.keyboard.press("Escape");
     check(
@@ -2167,7 +2167,10 @@ try {
       ["rename", ".tabs .tab.edit"],
     ];
     for (const [name, sel] of sheets) {
-      if (name === "log") await page.locator(".hero-mobile .hero-expand").click();
+      if (name === "log")
+        await page
+          .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
+          .click();
       if (name === "class") {
         await page.locator('.town-hit[data-building="tent"]').click();
         await page.locator('[data-hub-tab="skills"]').click();

@@ -1,0 +1,504 @@
+{
+  "recordedAtUtc": "2026-10-15T20:14:21.093Z",
+  "scope": "Archived pre-landmark vs current landmark-off functional pixels, fixed paused presentation clock. Native work may be concurrent: no GPU/CPU/cold performance inference.",
+  "scriptSha256": "f2ee1d3cf9331ed2f29d395ae7c585e732dba1a282f34d4eb1a6a70d2b9937c1",
+  "instrumentationSha256": "5546d0510396fafae60eb75e17952d99dc566505117a714280c1da3e7ad5f862",
+  "archiveSha256": "d46505100f51105a27d2a1a1f76acfa86656bc7a43f0ab8106aa2b2cdec23fc0",
+  "replaySha256": "fba06d490019133aa4b24005fe67eec3f30e2d78cd35ef436e2b45019fd66272",
+  "source": {
+    "baseline": {
+      "index.ts": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa",
+      "atlas.ts": "d6618c368d37b01f3e6ba929d650d73364ff809e49b3bd813bda83a40e056545",
+      "state.ts": "e8bd86a1a89e7a1fdfc757b3e9dddb223c906c7fc88d025e4e3d4ce7bec5e5ed",
+      "view2d.ts": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+      "types.ts": "37966fcd39b8e3bc1a3d1cc73c7b9d93acc42e239601b6e1c3870fd52223a93a",
+      "fallback.ts": "29b1aabbdf1b554cf95a39561b2e554e3e0e164a6378c3913693b9dd3376519b"
+    },
+    "candidate": {
+      "index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+      "state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+      "view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+      "types.ts": "37966fcd39b8e3bc1a3d1cc73c7b9d93acc42e239601b6e1c3870fd52223a93a",
+      "fallback.ts": "37dab19e7981e49a79647539a55985118f88fd4e093f0d670664cb0afee06218"
+    }
+  },
+  "served": [
+    {
+      "leg": "baseline",
+      "width": 400,
+      "id": "fens",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 400,
+      "id": "fens",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    },
+    {
+      "leg": "baseline",
+      "width": 400,
+      "id": "crypt",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 400,
+      "id": "crypt",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    },
+    {
+      "leg": "baseline",
+      "width": 400,
+      "id": "foundry",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 400,
+      "id": "foundry",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    },
+    {
+      "leg": "baseline",
+      "width": 1440,
+      "id": "fens",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 1440,
+      "id": "fens",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    },
+    {
+      "leg": "baseline",
+      "width": 1440,
+      "id": "crypt",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 1440,
+      "id": "crypt",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    },
+    {
+      "leg": "baseline",
+      "width": 1440,
+      "id": "foundry",
+      "originalSha256": "7f988e9ffa8edf932a073e6e6ea04f8f34803939277413fbc1223d4660e92ba0",
+      "instrumentedSha256": "5a4d95c32a24d7d859714645622b8043e83761d70d8a7651d53a18e649e92f7e"
+    },
+    {
+      "leg": "candidate",
+      "width": 1440,
+      "id": "foundry",
+      "originalSha256": "73fd1a5c8ebd2cdbbb15e320332ea8ccecf5b52d4a5bb1a53f8ed9451ded224c",
+      "instrumentedSha256": "ac5c91a92a7956528d61f6c57b5bd7297160f2a1f7d2c13d0f2a6b19fad01217"
+    }
+  ],
+  "rows": [
+    {
+      "width": 400,
+      "id": "fens",
+      "leg": "baseline",
+      "file": "fens-400-baseline.png",
+      "frameSha256": "96541e754ce5e5d091a3e17812580968248794b08b82ec704f70da6f89cf799f",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          188,
+          -109.38009049773756
+        ],
+        "fx": "high",
+        "tick": 10682
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 400,
+      "id": "fens",
+      "leg": "candidate",
+      "file": "fens-400-candidate.png",
+      "frameSha256": "96541e754ce5e5d091a3e17812580968248794b08b82ec704f70da6f89cf799f",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          188,
+          -109.38009049773756
+        ],
+        "fx": "high",
+        "tick": 10682
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 400,
+      "id": "crypt",
+      "leg": "baseline",
+      "file": "crypt-400-baseline.png",
+      "frameSha256": "362e92a7494d8c212cb21f50173ee506503d5745baaabc3efa375ffb03c7c347",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          188.1505376344086,
+          -66.2
+        ],
+        "fx": "high",
+        "tick": 16622
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 400,
+      "id": "crypt",
+      "leg": "candidate",
+      "file": "crypt-400-candidate.png",
+      "frameSha256": "362e92a7494d8c212cb21f50173ee506503d5745baaabc3efa375ffb03c7c347",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          188.1505376344086,
+          -66.2
+        ],
+        "fx": "high",
+        "tick": 16622
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 400,
+      "id": "foundry",
+      "leg": "baseline",
+      "file": "foundry-400-baseline.png",
+      "frameSha256": "3d42616b11c41f6dfe5073a6faa92dc236e2c5801191ef79924ca1d4b90c9e1a",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          70.82926829268293,
+          -72.2
+        ],
+        "fx": "high",
+        "tick": 23085
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 400,
+      "id": "foundry",
+      "leg": "candidate",
+      "file": "foundry-400-candidate.png",
+      "frameSha256": "3d42616b11c41f6dfe5073a6faa92dc236e2c5801191ef79924ca1d4b90c9e1a",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          600,
+          960
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "camera": [
+          70.82926829268293,
+          -72.2
+        ],
+        "fx": "high",
+        "tick": 23085
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "fens",
+      "leg": "baseline",
+      "file": "fens-1440-baseline.png",
+      "frameSha256": "a1b65e52a7f453e6a33cb5b2e442a4047fd03a8c0f563bf9a8d6ab65a938cd79",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          140,
+          -109.38009049773756
+        ],
+        "fx": "high",
+        "tick": 10682
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "fens",
+      "leg": "candidate",
+      "file": "fens-1440-candidate.png",
+      "frameSha256": "a1b65e52a7f453e6a33cb5b2e442a4047fd03a8c0f563bf9a8d6ab65a938cd79",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          140,
+          -109.38009049773756
+        ],
+        "fx": "high",
+        "tick": 10682
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "crypt",
+      "leg": "baseline",
+      "file": "crypt-1440-baseline.png",
+      "frameSha256": "24561ae3b85a00a6d154f78bf1591e81fe83829bd1c62277f3d71897fb153daf",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          153.4,
+          -50
+        ],
+        "fx": "high",
+        "tick": 16622
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "crypt",
+      "leg": "candidate",
+      "file": "crypt-1440-candidate.png",
+      "frameSha256": "24561ae3b85a00a6d154f78bf1591e81fe83829bd1c62277f3d71897fb153daf",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          153.4,
+          -50
+        ],
+        "fx": "high",
+        "tick": 16622
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "foundry",
+      "leg": "baseline",
+      "file": "foundry-1440-baseline.png",
+      "frameSha256": "40ea991e30865a1bad8c084faa0dd78894fd2e478526d3ef0ea22598b2a758b4",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          108,
+          -56
+        ],
+        "fx": "high",
+        "tick": 23085
+      },
+      "landmarks": 0,
+      "calls": 13
+    },
+    {
+      "width": 1440,
+      "id": "foundry",
+      "leg": "candidate",
+      "file": "foundry-1440-candidate.png",
+      "frameSha256": "40ea991e30865a1bad8c084faa0dd78894fd2e478526d3ef0ea22598b2a758b4",
+      "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+      "exactInput": true,
+      "geometry": {
+        "device": [
+          2160,
+          1200
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "camera": [
+          108,
+          -56
+        ],
+        "fx": "high",
+        "tick": 23085
+      },
+      "landmarks": 0,
+      "calls": 13
+    }
+  ],
+  "errors": [],
+  "browserVersion": "151.0.7922.34",
+  "comparisons": [
+    {
+      "width": 400,
+      "id": "fens",
+      "size": [
+        600,
+        960
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    },
+    {
+      "width": 400,
+      "id": "crypt",
+      "size": [
+        600,
+        960
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    },
+    {
+      "width": 400,
+      "id": "foundry",
+      "size": [
+        600,
+        960
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    },
+    {
+      "width": 1440,
+      "id": "fens",
+      "size": [
+        2160,
+        1200
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    },
+    {
+      "width": 1440,
+      "id": "crypt",
+      "size": [
+        2160,
+        1200
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    },
+    {
+      "width": 1440,
+      "id": "foundry",
+      "size": [
+        2160,
+        1200
+      ],
+      "differentPixels": 0,
+      "maxChannelDifference": 0
+    }
+  ],
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-15T20:15:25.513Z"
+}

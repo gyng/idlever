@@ -1,0 +1,2017 @@
+{
+  "recordedAtUtc": "2026-10-15T20:04:59.483Z",
+  "input": "docs/evidence/cut246/actions-8879.json",
+  "inputSha256": "65a2db3b08e958b2829b6cefcc65e7666540ca457257f81f3f476b29280d7185",
+  "wasmUsedToGenerateReplay": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "scriptSha256": "0f85c3379917fb657b8aec8324e33f2931013746a33a93a2f263265af6846226",
+  "scope": "First actual landed hero weapon attack per branch whose target does not die on that tick, in production paused replay viewers. Earlier first-attack captures retain mostly dead targets. No live UI, progression, performance, broad class identity or fun verdict.",
+  "source": {
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/fallback.ts": "37dab19e7981e49a79647539a55985118f88fd4e093f0d670664cb0afee06218",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "e82871560e2344f440d1cc350a0645d8e53137c1cf405303e6d9f50bd40e9f2e"
+  },
+  "served": [
+    {
+      "path": "/src/render/index.ts",
+      "sha256": "a20d9f0a7811d750528fbd5fdf22f6b673ec3861203ad5773855df5681c9f974"
+    },
+    {
+      "path": "/src/render/atlas.ts",
+      "sha256": "f691ffc480d317cbf5fa9bfdc4aeed1639517aa6a3e2aa4f44c6613e6a364ce4"
+    },
+    {
+      "path": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "path": "/src/render/tags.ts",
+      "sha256": "9715f90a2bc5b07b66f00c392e4c725fbf98c233759d20dcd41f9b820b4dced4"
+    },
+    {
+      "path": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "path": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "path": "/src/render/palette.ts",
+      "sha256": "1110dbc8d540d5ba144ad50e7ab9092e507c0acc260b5635823d46e2ac944eea"
+    },
+    {
+      "path": "/src/render/state.ts",
+      "sha256": "c2a6a45ae096de231ae6a45d293a3b96542c0f40f204d2e5a70a69cfdcb5eb25"
+    },
+    {
+      "path": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "path": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "path": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "path": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "path": "/src/render/view2d.ts",
+      "sha256": "96a24990fb9f26f8e23d613825af560da7e7b1b7bad57add9842d21ef53db250"
+    },
+    {
+      "path": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "path": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "path": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "path": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "path": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "path": "/src/render/landmarks.ts",
+      "sha256": "1d037b6d78b954eb126c8ca0f1ef698ace44baa99bc5542b4cc2c58d97b2fba7"
+    },
+    {
+      "path": "/src/render/fallback.ts",
+      "sha256": "fb82a6570ba549c7eef48c067ebfdb4b3b5b2f83e9c8855e1d43d955eee1ef6c"
+    },
+    {
+      "path": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "path": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "path": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "path": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    },
+    {
+      "path": "/src/render/index.ts",
+      "sha256": "a20d9f0a7811d750528fbd5fdf22f6b673ec3861203ad5773855df5681c9f974"
+    },
+    {
+      "path": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "path": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "path": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "path": "/src/render/atlas.ts",
+      "sha256": "f691ffc480d317cbf5fa9bfdc4aeed1639517aa6a3e2aa4f44c6613e6a364ce4"
+    },
+    {
+      "path": "/src/render/palette.ts",
+      "sha256": "1110dbc8d540d5ba144ad50e7ab9092e507c0acc260b5635823d46e2ac944eea"
+    },
+    {
+      "path": "/src/render/tags.ts",
+      "sha256": "9715f90a2bc5b07b66f00c392e4c725fbf98c233759d20dcd41f9b820b4dced4"
+    },
+    {
+      "path": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "path": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "path": "/src/render/state.ts",
+      "sha256": "c2a6a45ae096de231ae6a45d293a3b96542c0f40f204d2e5a70a69cfdcb5eb25"
+    },
+    {
+      "path": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "path": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "path": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "path": "/src/render/view2d.ts",
+      "sha256": "96a24990fb9f26f8e23d613825af560da7e7b1b7bad57add9842d21ef53db250"
+    },
+    {
+      "path": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "path": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "path": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "path": "/src/render/landmarks.ts",
+      "sha256": "1d037b6d78b954eb126c8ca0f1ef698ace44baa99bc5542b4cc2c58d97b2fba7"
+    },
+    {
+      "path": "/src/render/fallback.ts",
+      "sha256": "fb82a6570ba549c7eef48c067ebfdb4b3b5b2f83e9c8855e1d43d955eee1ef6c"
+    },
+    {
+      "path": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "path": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "path": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "path": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "path": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    }
+  ],
+  "rows": [
+    {
+      "id": "fighter-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec",
+      "stats": {
+        "tick": 9240,
+        "hero": [
+          23,
+          26
+        ],
+        "camera": [
+          181,
+          -215
+        ],
+        "ents": 9,
+        "drawn": 9,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "fighter-sword-gl-402.png",
+      "frameSha256": "7212c5d438007b92950a95f1c74d14e2df116289ed8ba0ace0005beb874e4dc4"
+    },
+    {
+      "id": "fighter-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b",
+      "stats": {
+        "tick": 6388,
+        "hero": [
+          5,
+          12
+        ],
+        "camera": [
+          44,
+          -87
+        ],
+        "ents": 5,
+        "drawn": 5,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "fighter-crownsplitter-gl-402.png",
+      "frameSha256": "f5788e304ffb86c81b19eece3b6e4d3650544699145b5ca75444f4961c1e5e89"
+    },
+    {
+      "id": "rogue-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          48,
+          -101.5
+        ],
+        "ents": 13,
+        "drawn": 5,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "rogue-dagger-gl-402.png",
+      "frameSha256": "de54569927818c9ddc9ef28a46440ed04f2bafa58152b83788871ae963e51365"
+    },
+    {
+      "id": "rogue-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7",
+      "stats": {
+        "tick": 5831,
+        "hero": [
+          18,
+          18
+        ],
+        "camera": [
+          166.75,
+          -143
+        ],
+        "ents": 10,
+        "drawn": 5,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "rogue-crownsplitter-gl-402.png",
+      "frameSha256": "cee1570af4e7b0fcd6abe4d03302fe40cee6cc282a1b32c1977a57abfcb8a57d"
+    },
+    {
+      "id": "ranger-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          164,
+          -47
+        ],
+        "ents": 5,
+        "drawn": 2,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "ranger-bow-gl-402.png",
+      "frameSha256": "00fcf3922783f0a656ffbb4434ba19a91b1f3f0e9451fee0bf844c8d663c8756"
+    },
+    {
+      "id": "ranger-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8",
+      "stats": {
+        "tick": 5090,
+        "hero": [
+          4,
+          17
+        ],
+        "camera": [
+          54.75,
+          -111
+        ],
+        "ents": 6,
+        "drawn": 4,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "ranger-sword-gl-402.png",
+      "frameSha256": "bd704dd389f12341a5e5509f0a5c8c7df5c6893c2d7da24e2a65e8d8b4937223"
+    },
+    {
+      "id": "caster-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          48,
+          -101.5
+        ],
+        "ents": 13,
+        "drawn": 5,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "caster-dagger-gl-402.png",
+      "frameSha256": "905c9a64bce78f53508be434dc83468193d546731531c0455dad161f8e3d4372"
+    },
+    {
+      "id": "caster-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          164,
+          -47
+        ],
+        "ents": 5,
+        "drawn": 2,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "caster-bow-gl-402.png",
+      "frameSha256": "ae40f4ef83158788ffdb057f97307dd3a281c733367c139a150b83247583a98a"
+    },
+    {
+      "id": "gunner-long_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911",
+      "stats": {
+        "tick": 9940,
+        "hero": [
+          20,
+          4
+        ],
+        "camera": [
+          164,
+          -31
+        ],
+        "ents": 9,
+        "drawn": 1,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "gunner-long_gun-gl-402.png",
+      "frameSha256": "38359c92cdbb54e1baa612f99dcb95d0f427d742e04d475dbcfb1b4e4123ef27"
+    },
+    {
+      "id": "gunner-short_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4",
+      "stats": {
+        "tick": 6402,
+        "hero": [
+          26,
+          12
+        ],
+        "camera": [
+          212,
+          -95
+        ],
+        "ents": 10,
+        "drawn": 3,
+        "device": [
+          603,
+          1022
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "gunner-short_gun-gl-402.png",
+      "frameSha256": "3c83e76eb66f7024a27177632dfda40e2d13971ae6b13589413fd95b57bda8ae"
+    },
+    {
+      "id": "fighter-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec",
+      "stats": {
+        "tick": 9240,
+        "hero": [
+          23,
+          26
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "fighter-sword-canvas-402.png",
+      "frameSha256": "1d1ada78a20ae53513d39a21330e02835ab01c1f326dd16fa8ea282965d61c0f"
+    },
+    {
+      "id": "fighter-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b",
+      "stats": {
+        "tick": 6388,
+        "hero": [
+          5,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "fighter-crownsplitter-canvas-402.png",
+      "frameSha256": "3d181b358c9c8d2996037ca315a22ddb15bb75f3a028d90d0728abe714aeff1b"
+    },
+    {
+      "id": "rogue-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "rogue-dagger-canvas-402.png",
+      "frameSha256": "ad5f7cffade41ef67ff995bbd76c52f0e7ec50b6b2c117e94e4b6b7a88270b7d"
+    },
+    {
+      "id": "rogue-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7",
+      "stats": {
+        "tick": 5831,
+        "hero": [
+          18,
+          18
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 10,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "rogue-crownsplitter-canvas-402.png",
+      "frameSha256": "5442135fffb1946bf2c8da7036acb4b8c265753f79dce713d8129532e0f246a6"
+    },
+    {
+      "id": "ranger-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "ranger-bow-canvas-402.png",
+      "frameSha256": "a668f431aacb2bc98c588286cf9e1ec844f6ccb82ec6670bc417915576e6243d"
+    },
+    {
+      "id": "ranger-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8",
+      "stats": {
+        "tick": 5090,
+        "hero": [
+          4,
+          17
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 6,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "ranger-sword-canvas-402.png",
+      "frameSha256": "8767c9e60978c18efd905eaca6006439998ccf30fde8eab99a458d2d3e0b663c"
+    },
+    {
+      "id": "caster-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "caster-dagger-canvas-402.png",
+      "frameSha256": "004b0e6929310d314ce919cfab01dfdfa1703fff6db17855baed0616eda1f57c"
+    },
+    {
+      "id": "caster-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "caster-bow-canvas-402.png",
+      "frameSha256": "59083314d82cf29680a3ddb5449b1ecd9c03d003f94d7ed5dea74d67e3282c48"
+    },
+    {
+      "id": "gunner-long_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911",
+      "stats": {
+        "tick": 9940,
+        "hero": [
+          20,
+          4
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "gunner-long_gun-canvas-402.png",
+      "frameSha256": "e5b2a826035eb9040d3c3279b8bba854ebf0b89c3da6b368d56913ef85896841"
+    },
+    {
+      "id": "gunner-short_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4",
+      "stats": {
+        "tick": 6402,
+        "hero": [
+          26,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 10,
+        "drawn": 0,
+        "device": [
+          603,
+          1021
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "gunner-short_gun-canvas-402.png",
+      "frameSha256": "6c5b80900461d18bc5368820a325feab097dbf00f7615807b46b9198d781b666"
+    },
+    {
+      "id": "fighter-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec",
+      "stats": {
+        "tick": 9240,
+        "hero": [
+          23,
+          26
+        ],
+        "camera": [
+          181,
+          -215
+        ],
+        "ents": 9,
+        "drawn": 9,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "fighter-sword-gl-1440.png",
+      "frameSha256": "e6f422b5d18b1dca4f72f6c27a45930874f708de7f5dbfd32f7bd987ccd4bbd3"
+    },
+    {
+      "id": "fighter-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b",
+      "stats": {
+        "tick": 6388,
+        "hero": [
+          5,
+          12
+        ],
+        "camera": [
+          44,
+          -87
+        ],
+        "ents": 5,
+        "drawn": 5,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "fighter-crownsplitter-gl-1440.png",
+      "frameSha256": "dc5ef7e513e35874776bfdfa32992e3068cd09cf51b8cb0763d440f4528f2bc4"
+    },
+    {
+      "id": "rogue-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          48,
+          -101.5
+        ],
+        "ents": 13,
+        "drawn": 5,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "rogue-dagger-gl-1440.png",
+      "frameSha256": "ceab2480a3053a591e91435699a935d2eb75d5e94330234ac9b3c1ffc63d7c0d"
+    },
+    {
+      "id": "rogue-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7",
+      "stats": {
+        "tick": 5831,
+        "hero": [
+          18,
+          18
+        ],
+        "camera": [
+          176,
+          -143
+        ],
+        "ents": 10,
+        "drawn": 5,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "rogue-crownsplitter-gl-1440.png",
+      "frameSha256": "f611fdd59a2db0c3c39113d4bc4679a68f50437be47c3d3be5ed78adc77d0f22"
+    },
+    {
+      "id": "ranger-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          164,
+          -47
+        ],
+        "ents": 5,
+        "drawn": 2,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "ranger-bow-gl-1440.png",
+      "frameSha256": "aba68d109105aac867f13c8ef6f08f8a807c57e21e10e65312a92e7424b26607"
+    },
+    {
+      "id": "ranger-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8",
+      "stats": {
+        "tick": 5090,
+        "hero": [
+          4,
+          17
+        ],
+        "camera": [
+          69.75,
+          -114
+        ],
+        "ents": 6,
+        "drawn": 4,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "ranger-sword-gl-1440.png",
+      "frameSha256": "2d165afc88545a20b7d0108fbbc01cf260ac48b5e50dd52c75a3fab1a2e46d5f"
+    },
+    {
+      "id": "caster-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          48,
+          -101.5
+        ],
+        "ents": 13,
+        "drawn": 5,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "caster-dagger-gl-1440.png",
+      "frameSha256": "81750fc5b3da09ff04a6d121e9717e4a7578193be119ee798936442bfe4510db"
+    },
+    {
+      "id": "caster-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          164,
+          -47
+        ],
+        "ents": 5,
+        "drawn": 2,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "caster-bow-gl-1440.png",
+      "frameSha256": "82985bdc8d829a4804b0fd30d5c6671a90a0a21d365fb4e97cd63cb1ac5adf2f"
+    },
+    {
+      "id": "gunner-long_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911",
+      "stats": {
+        "tick": 9940,
+        "hero": [
+          20,
+          4
+        ],
+        "camera": [
+          164,
+          -31
+        ],
+        "ents": 9,
+        "drawn": 1,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "gunner-long_gun-gl-1440.png",
+      "frameSha256": "dc3819e06e4f7de8b82d8b00d856744f3b97f69b56d168f58fead83f9333dbbc"
+    },
+    {
+      "id": "gunner-short_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4",
+      "stats": {
+        "tick": 6402,
+        "hero": [
+          26,
+          12
+        ],
+        "camera": [
+          212,
+          -95
+        ],
+        "ents": 10,
+        "drawn": 3,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      },
+      "file": "gunner-short_gun-gl-1440.png",
+      "frameSha256": "83fe162c900b239ee45b8b2581f8b85da1493d163c82edf8943b3af60b746e3e"
+    },
+    {
+      "id": "fighter-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 9240,
+      "event": {
+        "k": "attack",
+        "t": 9238,
+        "src": 1,
+        "dst": 69,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec",
+      "stats": {
+        "tick": 9240,
+        "hero": [
+          23,
+          26
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "fighter-sword-canvas-1440.png",
+      "frameSha256": "5566e141cf262ce8ecc68da65bb86645b1c8d24007f6c5f9a8423d8b1c036102"
+    },
+    {
+      "id": "fighter-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 6388,
+      "event": {
+        "k": "attack",
+        "t": 6386,
+        "src": 1,
+        "dst": 37,
+        "dmg": 11,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b",
+      "stats": {
+        "tick": 6388,
+        "hero": [
+          5,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "fighter-crownsplitter-canvas-1440.png",
+      "frameSha256": "ee9d8d83aceca11b733a7d7727e1d987e093f545e01d909ae44ec0608480a0ff"
+    },
+    {
+      "id": "rogue-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "rogue-dagger-canvas-1440.png",
+      "frameSha256": "137aa0b07fa27b90bb536be5bb66be601a45426d3f676ae2fc8fa57ef786f14d"
+    },
+    {
+      "id": "rogue-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5831,
+      "event": {
+        "k": "attack",
+        "t": 5829,
+        "src": 1,
+        "dst": 33,
+        "dmg": 9,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7",
+      "stats": {
+        "tick": 5831,
+        "hero": [
+          18,
+          18
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 10,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "rogue-crownsplitter-canvas-1440.png",
+      "frameSha256": "4e94ba7752c5d8c52217a820a066e4c0512393a84ab4639769f49f543ccf176c"
+    },
+    {
+      "id": "ranger-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "ranger-bow-canvas-1440.png",
+      "frameSha256": "b48f29827ed12f5500695aec844911a97a21b597eee2bb8090a0a3779df482ef"
+    },
+    {
+      "id": "ranger-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5090,
+      "event": {
+        "k": "attack",
+        "t": 5088,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8",
+      "stats": {
+        "tick": 5090,
+        "hero": [
+          4,
+          17
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 6,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "ranger-sword-canvas-1440.png",
+      "frameSha256": "d3ffe0fb55372df104d51a86e1375c61b84d98488a615f3a53ab335b8c63d02f"
+    },
+    {
+      "id": "caster-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 2815,
+      "event": {
+        "k": "attack",
+        "t": 2813,
+        "src": 1,
+        "dst": 19,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack"
+      },
+      "replaySha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e",
+      "stats": {
+        "tick": 2815,
+        "hero": [
+          5,
+          11
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "caster-dagger-canvas-1440.png",
+      "frameSha256": "349fc5b93982e1027bf2c2d467d2e611e64e0db98baf421e4e404e6f6157e48d"
+    },
+    {
+      "id": "caster-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 5052,
+      "event": {
+        "k": "attack",
+        "t": 5050,
+        "src": 1,
+        "dst": 35,
+        "dmg": 11,
+        "hit": true,
+        "verb": "shoot"
+      },
+      "replaySha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321",
+      "stats": {
+        "tick": 5052,
+        "hero": [
+          20,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 5,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "caster-bow-canvas-1440.png",
+      "frameSha256": "56a9e83c5230746b6d27c85f31f8c0b54d362f18e009d0cb29b70f8d6b2aa7b5"
+    },
+    {
+      "id": "gunner-long_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 9940,
+      "event": {
+        "k": "attack",
+        "t": 9938,
+        "src": 1,
+        "dst": 65,
+        "dmg": 15,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911",
+      "stats": {
+        "tick": 9940,
+        "hero": [
+          20,
+          4
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "gunner-long_gun-canvas-1440.png",
+      "frameSha256": "4f56363dd77315dbaa7f13ce0205a7947e748a98a2b17e9b4740328d35ca5c3a"
+    },
+    {
+      "id": "gunner-short_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": 6402,
+      "event": {
+        "k": "attack",
+        "t": 6400,
+        "src": 1,
+        "dst": 33,
+        "dmg": 12,
+        "hit": true,
+        "verb": "fire"
+      },
+      "replaySha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4",
+      "stats": {
+        "tick": 6402,
+        "hero": [
+          26,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 10,
+        "drawn": 0,
+        "device": [
+          2160,
+          1350
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      },
+      "file": "gunner-short_gun-canvas-1440.png",
+      "frameSha256": "1888140330e2059ff8864d93530b0719fbcc6af7eeb4538d210aa201255e6a30"
+    }
+  ],
+  "errors": [],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-15T20:05:56.044Z"
+}

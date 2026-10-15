@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-16",
+  "tool": "built-in image_gen",
+  "skill": "/home/g/.codex/skills/.system/imagegen/SKILL.md",
+  "sourceReference": "art/generated/hero_fighter.png",
+  "scope": "Painted neutral male base candidates, original master retained; not integrated, no wearable registration/all-look/final R7 acceptance.",
+  "observation": "Emptyhands/plaincloth/barefeet remove baked equipment. Output previews expose RGB outside silhouette, but sampled background alpha is zero in both original PNGs. v2 requested stricter transparency; actual alpha retained. Review on intended UI backing before registration.",
+  "freshness": "Recheck pose anchors, body and weapon/armour occlusion, class/look identity, alpha/size and phone200% after integration. Other character looks and wearable art remain.",
+  "outputs": [
+    {
+      "path": "art/generated/hero_equipment_base_male_v1.png",
+      "sha256": "1dae3dfa05705447090a9666399be21a87bb83775bc56d786877df113cd4a02e",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        33,
+        33,
+        1008,
+        1466
+      ],
+      "outsideAlpha0Samples": [
+        {
+          "xy": [
+            150,
+            700
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            200,
+            700
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            512,
+            1400
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            512,
+            10
+          ],
+          "alpha": 0
+        }
+      ],
+      "prompt": "art/prompts/hero_equipment_base_male_v1.txt"
+    },
+    {
+      "path": "art/generated/hero_equipment_base_male_v2.png",
+      "sha256": "5039a73e44425c87a702c0b70901499dcbff531d338a48989dccaac39b8bb284",
+      "mode": "RGBA",
+      "size": [
+        1024,
+        1536
+      ],
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaBounds": [
+        35,
+        35,
+        984,
+        1512
+      ],
+      "outsideAlpha0Samples": [
+        {
+          "xy": [
+            150,
+            700
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            200,
+            700
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            512,
+            1400
+          ],
+          "alpha": 0
+        },
+        {
+          "xy": [
+            512,
+            10
+          ],
+          "alpha": 0
+        }
+      ],
+      "prompt": "art/prompts/hero_equipment_base_male_v2.txt"
+    }
+  ]
+}

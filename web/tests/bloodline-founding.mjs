@@ -21,7 +21,10 @@ try {
       );
     }, engine);
     const openRoster = async () => {
-      if (width < 1024) await page.locator(".hero-mobile .hero-expand").click();
+      if (width < 1024)
+        await page
+          .locator('.camp .console [data-tile="heroes"], .hero-mobile .hero-expand')
+          .click();
     };
     const roster = width < 1024 ? ".sheet-wrap:not([hidden]) .heroes-sheet" : ".hero-desktop";
     await openRoster();

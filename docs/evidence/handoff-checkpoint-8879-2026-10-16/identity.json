@@ -1,0 +1,2086 @@
+{
+  "scope": "Compact Home/map resize correction and functional R7 prototype with closed scoped evidence; current R4 repeated public runs and R6 method/pixel equivalence preparation; staged art candidates. Native pacing/full live outputs excluded; density15>12 and final painted/broader/full/exhaustive/fun acceptance remain open.",
+  "parent": "7104eaf3ee18c9f16f2a3c37f580fef934f0b48e",
+  "files": {
+    "art/generated/hero_equipment_base_male_v1.png": {
+      "sha256": "1dae3dfa05705447090a9666399be21a87bb83775bc56d786877df113cd4a02e",
+      "bytes": 1762358
+    },
+    "art/generated/hero_equipment_base_male_v2.png": {
+      "sha256": "5039a73e44425c87a702c0b70901499dcbff531d338a48989dccaac39b8bb284",
+      "bytes": 1748171
+    },
+    "art/prompts/hero_equipment_base_male_v1.txt": {
+      "sha256": "18fc4b21968ba79c08b863ce73548125c5542330294a14db4c7ba23115acd300",
+      "bytes": 1985
+    },
+    "art/prompts/hero_equipment_base_male_v2.txt": {
+      "sha256": "459f071a83cab89d10f9f15250b3b8f1aa8a7d9acff3ef291d3802cfd34e417f",
+      "bytes": 745
+    },
+    "docs/CUT220_HERO_HUB.md": {
+      "sha256": "1494cbfe359ba722ce39db684b11f855ee431b46ef236fa3f7311752a1e27054",
+      "bytes": 20858
+    },
+    "docs/CUT250_COMPACT_HOME_CHROME.md": {
+      "sha256": "b13362812071493ad3f52b6321e242caa94934aec59de773b128dc7eabab35d4",
+      "bytes": 4444
+    },
+    "docs/HANDOFF.md": {
+      "sha256": "4831e66b5a77f26b5247f6d09ba67cf1ec2fe078725fc11e0e0c71730d62c52e",
+      "bytes": 58852
+    },
+    "docs/QUEUE_ACCEPTANCE.md": {
+      "sha256": "8884cb4d9c74c097b1eb8b4a63c4dc6d78733c50ed048fd699cc2a2083f63b9c",
+      "bytes": 24503
+    },
+    "docs/evidence/cut220/actual-next-8879/README.md": {
+      "sha256": "859b09d8128ea24c30369d405f19a1734bdaa64ff4bfd6612dd59c02c94f305c",
+      "bytes": 1525
+    },
+    "docs/evidence/cut220/actual-next-8879/actual-away.lineage.json.gz": {
+      "sha256": "cd0bfcedd49f6e91628572dd70bdeed2cae7c756b90f30b1b7ba5e122e9b50b2",
+      "bytes": 27577
+    },
+    "docs/evidence/cut220/actual-next-8879/actual-away.session.json.gz": {
+      "sha256": "4969e8f1cc63d5323837a7a5856f10f2027f13dcfe5be36939a8ec2bd16cff69",
+      "bytes": 172796
+    },
+    "docs/evidence/cut220/actual-next-8879/actual-sent.session.json.gz": {
+      "sha256": "f7e62d4bc4c1a9c9c0c90242bcb813a42fe695966c16af6527b20bcff4faf0fb",
+      "bytes": 173345
+    },
+    "docs/evidence/cut220/actual-next-8879/actual-sent.snapshot.json.gz": {
+      "sha256": "b2fd7b66fd7112fbd9c97e595071280e17f245f374e63fdd2ffd1f92da4d292e",
+      "bytes": 1017
+    },
+    "docs/evidence/cut220/actual-next-8879/canonical-parent.lineage.json.gz": {
+      "sha256": "fb495967b9cb33c5bf9358241868ab8150b32f38359bc0c7c3b78b8841bb0edd",
+      "bytes": 27304
+    },
+    "docs/evidence/cut220/actual-next-8879/canonical-parent.session.json.gz": {
+      "sha256": "eb9c4af1db4a19e1ac1c25195ecdd309c441d2c84fe2ba9c51fe3906b8cd4ee1",
+      "bytes": 154812
+    },
+    "docs/evidence/cut220/actual-next-8879/helm-empty.lineage.json.gz": {
+      "sha256": "51365cba1accf8bf8752a9dbffcd9bdda8aa309f0532359475332a8e87b0ee61",
+      "bytes": 27568
+    },
+    "docs/evidence/cut220/actual-next-8879/helm-empty.session.json.gz": {
+      "sha256": "5955ddef9bc5bcee341670a979b02e5960998c9da524038f6dcfe586262ddc4f",
+      "bytes": 172778
+    },
+    "docs/evidence/cut220/actual-next-8879/prepare.log": {
+      "sha256": "b2074e52c129acfc2a0d1011f8b898de503d1a51a4fbd190d30b2fab5daba0c2",
+      "bytes": 153
+    },
+    "docs/evidence/cut220/actual-next-8879/prepare.mjs": {
+      "sha256": "e6043d6adedd01e52875fde46f9d9b542d8ee95f108f631ed210643b0a06000f",
+      "bytes": 4747
+    },
+    "docs/evidence/cut220/actual-next-8879/ready-sword.lineage.json.gz": {
+      "sha256": "d95616cd2af0566cd3e484515619db08de5f7c76615d78896f051818f0114e02",
+      "bytes": 27302
+    },
+    "docs/evidence/cut220/actual-next-8879/ready-sword.session.json.gz": {
+      "sha256": "bb32de0e78b540fa6c6669b0139432ac2587de6f2c42a7440482b49b73a9f17f",
+      "bytes": 154845
+    },
+    "docs/evidence/cut220/actual-next-8879/results.json": {
+      "sha256": "ed582cdcaa2c60188731f843850149119e2c2762c2c044f6cbe7df4d1612ec07",
+      "bytes": 14685
+    },
+    "docs/evidence/cut220/actual-next-8879/weapon-bow.lineage.json.gz": {
+      "sha256": "b4e3cc3acb3f6f6c2f997692e4cd47a8c03baae5829cba4fd4d594848903441d",
+      "bytes": 27576
+    },
+    "docs/evidence/cut220/actual-next-8879/weapon-bow.session.json.gz": {
+      "sha256": "eee2537d10c70a36467d5a0db96d0a5643965362a77569fb849de6162b5c9658",
+      "bytes": 172772
+    },
+    "docs/evidence/cut220/neutral-base-art-2026-10-16.json": {
+      "sha256": "fa988a1fbe5619f14d0325730bdb09ccca6d918e86ef03e030b7ec4b9efce21b",
+      "bytes": 2619
+    },
+    "docs/evidence/cut220/neutral-base-male-v1.json": {
+      "sha256": "571ce28927df114a8dab557be6def018c4d435bb23b668229aec0997a573d7d7",
+      "bytes": 503
+    },
+    "docs/evidence/cut220/paper-doll-8879/README.md": {
+      "sha256": "88967f1e4b869a390bccfafe428a1814fd925c4d4bc1ae8b34add3bf5dc68cf7",
+      "bytes": 5734
+    },
+    "docs/evidence/cut220/paper-doll-8879/check-v1.mjs": {
+      "sha256": "780085525cabc2d193251d346a8a953d9c0adb210152181c8123a97a14462e1c",
+      "bytes": 7423
+    },
+    "docs/evidence/cut220/paper-doll-8879/check.mjs": {
+      "sha256": "6b58a0b16f655fbcca53d02335c3fe09a50e03a0544d3479d2b32deb63ad117e",
+      "bytes": 7464
+    },
+    "docs/evidence/cut220/paper-doll-8879/checkpoint-files.txt": {
+      "sha256": "2a374592c013c4904a4cc4486e9f177546928bcdb1778df2252a73d7d8fe150d",
+      "bytes": 7105
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage.mjs": {
+      "sha256": "d7baba529591dc27669567cf930e50a3500fc23971020987b31c85fb54a7d078",
+      "bytes": 10768
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/missing-sword-primitive.png": {
+      "sha256": "cd93f6b35ceef66090d75296e62ba65a91c48ce8ced5e36caf680d1cdf1856c8",
+      "bytes": 219998
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-frostmantle.png": {
+      "sha256": "faa4191384a7986d8088607352d82d95c9173129daf4312e42b7d07dd510ad70",
+      "bytes": 218874
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-hearthglass.png": {
+      "sha256": "c3fd8ac98e66415daed529da228ead66e7d27b934bef263e9f78bd1457891741",
+      "bytes": 218722
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-leather.png": {
+      "sha256": "10b75b94ff3eaedc369446e376f7c43a348fb9bc39760f7afae2e4e58eb03779",
+      "bytes": 221562
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-mail.png": {
+      "sha256": "5b760142c630d05ddd81e536e32bc4e42dedd4eaef0687dc5687089962290284",
+      "bytes": 221314
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-plate.png": {
+      "sha256": "863abefec4aad203fec399ba6f618fed40137639e72812d7edff33c736044880",
+      "bytes": 221806
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-armour-scale.png": {
+      "sha256": "116864304098de358881033553bbbdcfb447584345b35bb16d98f0ea4046cd39",
+      "bytes": 221660
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-boots-hearthglass_boots.png": {
+      "sha256": "0c30483367de1547f0334c30fdcfff801475b62d214a39a32c436ee487f92bd8",
+      "bytes": 218729
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-boots-trailboots.png": {
+      "sha256": "4de7955624f546de9da44578c09944c679630714fd82b873d003a87ec0580651",
+      "bytes": 218619
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-helm-hearthglass_hood.png": {
+      "sha256": "6476e15bbba07c846aff8a8a2f335b2d7ed751b1ccf8c6b93ec6fe71eef7231d",
+      "bytes": 219016
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-helm-ironcap.png": {
+      "sha256": "c08073dca47ad7b92e20d5b281fa8413fa4007e55dbfb092d6aa93a392b61721",
+      "bytes": 218702
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-weapon-axe.png": {
+      "sha256": "b6d5b32a4dbb3b761de95091ac3d3ca56dadae3593429bee79f67e646d8d02e2",
+      "bytes": 218780
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-weapon-bow.png": {
+      "sha256": "cfeaca0d8ba2ee2c24aba0c68da4ab9a1bf289dc4341e95617df6ef6aed340d3",
+      "bytes": 218438
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-weapon-crownsplitter.png": {
+      "sha256": "31ae73b104b8c559b1f9f4aa4e66c9e0dfc85c37f44d71fd611c09e7f5460098",
+      "bytes": 220170
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-weapon-dagger.png": {
+      "sha256": "55e3248ea7b5e640c83084a187cb1fa1609ab0aaee9171ae9d5c3fae60c64475",
+      "bytes": 219240
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/owned-weapon-sword.png": {
+      "sha256": "be67b7a7617c1ee3427fa0b2be64226ce9bac5c905eeb4f3e1ec591c5166ccb7",
+      "bytes": 218698
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/results.json.gz": {
+      "sha256": "6d6e39b9f3f235d99cd80d76a4802cdad6346be7193a7a267f5f0ea717e8c2a8",
+      "bytes": 33991
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-1440-1x-actual.png": {
+      "sha256": "527f1084935b1ec6c1886c4df275b4e0f73b2e9ec44bd8d9dda42d958c68818e",
+      "bytes": 777802
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-1440-1x-next.png": {
+      "sha256": "eb17632ede9e472fcf7d4c5be01d6e6cefdddbc6b34ebc707fac3f86e2269fdd",
+      "bytes": 777467
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-1440-2x-actual.png": {
+      "sha256": "4dcb8a7d9328bf67118ff7b9c77014fed4fef8e555d28ec81ffd353602f22cbe",
+      "bytes": 782785
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-1440-2x-next.png": {
+      "sha256": "9c7f55d6c53bedbee2a837922b7b172d52c98c69ec383aacb3e0427f7ddcf422",
+      "bytes": 782590
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-402-1x-actual.png": {
+      "sha256": "fa86e8383a53636c4756a07f751935a87cf7edb6de78c5757b15bda3d4081399",
+      "bytes": 219142
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-402-1x-next.png": {
+      "sha256": "609a586de5f011cb067102fbe893db724b5b2ffed051ed9dc7c4e196ebeb598e",
+      "bytes": 218703
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-402-2x-actual.png": {
+      "sha256": "d58f226b9525457340361631b03d85137ef1e5e7be5e1ea909aaa18b2fb46a95",
+      "bytes": 208509
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-helm-empty-402-2x-next.png": {
+      "sha256": "c68a06441f462bb9538590ff92835bfec200481f74120b319bf48ad322219b89",
+      "bytes": 208268
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-1440-1x-actual.png": {
+      "sha256": "c5e496215f72f005a52cb3b28e23bd0b8934bbc2e846f87198627a35fbbf8d71",
+      "bytes": 778846
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-1440-1x-next.png": {
+      "sha256": "3f918f65e7891cbc1f8841b3692924641ef7e9eac0d0778d14661aac82b7811b",
+      "bytes": 778359
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-1440-2x-actual.png": {
+      "sha256": "e9794bbb34a714b2091cd94e8f9ed48db894d056c15bf1b7993db15be86ad49e",
+      "bytes": 783484
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-1440-2x-next.png": {
+      "sha256": "6ee0f40bac9c0d74b7e07e1e594acd6fdcdec549e5b237d52d8e069b5668a789",
+      "bytes": 783550
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-402-1x-actual.png": {
+      "sha256": "032937d7aef9fc3fdbd4c2d8af67ed575372d9598c41d0341ae9c4b2074c9a77",
+      "bytes": 219106
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-402-1x-next.png": {
+      "sha256": "fc812b64692591a33d81b2af1b0649b03c391fb468a9d8caac210f9b85d39ba4",
+      "bytes": 218745
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-402-2x-actual.png": {
+      "sha256": "2e04cbbcab7a33e6c46bea247d6950d2893899d1c428c4a9e243f2b9d465f670",
+      "bytes": 208556
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/settled-weapon-bow-402-2x-next.png": {
+      "sha256": "7317534a4c2b6fe4480a030e49c8b4a125ec484659d17a618e12d23f931b2b09",
+      "bytes": 208509
+    },
+    "docs/evidence/cut220/paper-doll-8879/coverage/vite.log": {
+      "sha256": "a08bac2567b7bbf41bb46b4aaeb69a8a09f43e9953d3b59c8294ff7120ccc1f1",
+      "bytes": 450
+    },
+    "docs/evidence/cut220/paper-doll-8879/curation.json": {
+      "sha256": "bc7d500848dba15b0aed6982157e4046ca478eb02bb307a166453f040ca70acc",
+      "bytes": 35078
+    },
+    "docs/evidence/cut220/paper-doll-8879/first.log": {
+      "sha256": "5bcd12cd8f7353da1f5e3f3615af6ca579bc2751070432de2a7016f60d044202",
+      "bytes": 772
+    },
+    "docs/evidence/cut220/paper-doll-8879/first/results.json.gz": {
+      "sha256": "1b69c872ab8781a0252d87f0b73c5e7d3b8ac0e08cc71c4dd12368ef051ed00f",
+      "bytes": 10515
+    },
+    "docs/evidence/cut220/paper-doll-8879/focus.mjs": {
+      "sha256": "344d843d1e212d841c38a507a31a3283f4a31e9b60f3b3c6ebe7b7288e997d0d",
+      "bytes": 6445
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus-metrics.json.gz": {
+      "sha256": "8530859cee4b67ab92aa407a8d9ca8f30ea2728e1fcbceb440a5c653765ce414",
+      "bytes": 74
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-helm-empty-1x-background.png": {
+      "sha256": "b683f4a004ceeab4d7ff5991b635172c6f31cfa7265f1ce1c65c4b6d55ae9c37",
+      "bytes": 218861
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-helm-empty-1x-focused.png": {
+      "sha256": "bda45c8b1636f88344d0f9d8de13e872160b5446c04107f4be342b6774919a72",
+      "bytes": 219534
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-helm-empty-2x-background.png": {
+      "sha256": "0654efa4950349e0972be2621199faaf30508660ada7222b749485bf6063074c",
+      "bytes": 207706
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-helm-empty-2x-focused.png": {
+      "sha256": "a87959974f3e4301dc43ea16809e6357a7ef8beb179f8454f016c8d019f3ce2e",
+      "bytes": 208509
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-side-contrast.json.gz": {
+      "sha256": "f360021107951052d001b97402f3563ae7bc93cf448057865b84681dcc8c6efe",
+      "bytes": 8966
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-weapon-bow-1x-background.png": {
+      "sha256": "c419b2210306bdf6c1bae063011898a9ed61f19378559cf0059deed491e82dde",
+      "bytes": 218963
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-weapon-bow-1x-focused.png": {
+      "sha256": "d2c52977956292e61545dc250ebb8039389c4d2820eee404508bb4484070d787",
+      "bytes": 218666
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-weapon-bow-2x-background.png": {
+      "sha256": "e3b7806599f3bd91bb48ec6f176cda562471f2cdbff63bf6d4d2a61c9044c4a8",
+      "bytes": 207805
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/focus-weapon-bow-2x-focused.png": {
+      "sha256": "ee7cd4055b5b14b0ee816f8842b7f733ed57057afb6d24116a8ed0446af5048f",
+      "bytes": 208610
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/results.json.gz": {
+      "sha256": "84f183a4b3cdd79388d231d26cdf9c02543d781d489cc833b127a8ac981c0b49",
+      "bytes": 30200
+    },
+    "docs/evidence/cut220/paper-doll-8879/keyboard-focus/vite.log": {
+      "sha256": "0600f037124006032b2f40a8520a00373ba1a3f410ce02014c61dc1dc824d6cd",
+      "bytes": 450
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixel-focus-metrics.json.gz": {
+      "sha256": "a70cb6b72a3bbb21051f2c931a5d323e052294bd81574d3ccf5026a885957c0f",
+      "bytes": 123
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixel-text-metrics.json.gz": {
+      "sha256": "ff48ed2cb34cd8cf3bccbccacb58c11738a6b1e256d010b76960388425e2a1b5",
+      "bytes": 89
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels.mjs": {
+      "sha256": "007c1824b94d33d02884d5ebadd5865637cb2794af3c268223d97a74720a8510",
+      "bytes": 6348
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/contrast-summary.json.gz": {
+      "sha256": "8bb2ff289f2309ecfe6837a7a976b7edf58f198fd09c837f1844961fa0154575",
+      "bytes": 756
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-helm-empty-1x-background.png": {
+      "sha256": "87c3964d0bffe484b426db5d44de338dba48231efc6517bc29f24f62add0671a",
+      "bytes": 218876
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-helm-empty-1x-focused.png": {
+      "sha256": "0a0420872645cb3e504bd1ef05860ce558e301edc5902384e5778b64e854f7c7",
+      "bytes": 218679
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-helm-empty-2x-background.png": {
+      "sha256": "aeb6f4f27bf9545130676a8a32abcfeb38ef3266edf3cdd2c55283f0186cb55b",
+      "bytes": 207716
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-helm-empty-2x-focused.png": {
+      "sha256": "38d9c6cf2845fa8a3aa7f7c02ffce809ebc4cd8326f832c28d779eccedabcd81",
+      "bytes": 207625
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-side-contrast.json.gz": {
+      "sha256": "6566d45e2e82378a200818978ed4335e261cfc021308d5bfba12c362d95c8938",
+      "bytes": 10028
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-weapon-bow-1x-background.png": {
+      "sha256": "c4e85a5a61e73c6a7acc9de1d8df41aeba4332af7d8d106d9567b874f246fc53",
+      "bytes": 218964
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-weapon-bow-1x-focused.png": {
+      "sha256": "9dc76533bce548819d9d9794507160596a266464e9670b64d76a48e3f3db2354",
+      "bytes": 218762
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-weapon-bow-2x-background.png": {
+      "sha256": "01bf4804d4fa9f203029e394e6ecd9496537734bc09839cd04a81168c67fbb42",
+      "bytes": 207806
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/focus-weapon-bow-2x-focused.png": {
+      "sha256": "600f29ad3aaa35039885a3070cc568f4a94e70c0b0e334b3b4de66b7618a874a",
+      "bytes": 207729
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/results.json.gz": {
+      "sha256": "902f1bcb429a570cfadb368667ed0a00b63130b2ac04d7d0942ec7746eba4f58",
+      "bytes": 30197
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-helm-empty-1x-background.png": {
+      "sha256": "ad366d95bc0d517c76e3ff446135205178472c60447f10886c6735ce83927364",
+      "bytes": 210714
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-helm-empty-1x-contrast.json.gz": {
+      "sha256": "43c79e2c62ce1d5560024c5eb048cf89f0c91acae1584aaf466a7521f8b9f38e",
+      "bytes": 2126
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-helm-empty-2x-background.png": {
+      "sha256": "3cdb20efa780e53eb33523b06a7cb62a456eda6a4e83470ca9d03067c209f20a",
+      "bytes": 202261
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-helm-empty-2x-contrast.json.gz": {
+      "sha256": "05000f967c84944a67284da60f35f03dab4a3e09ad3b1074d20cde83f5d7d6ee",
+      "bytes": 1854
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-weapon-bow-1x-background.png": {
+      "sha256": "f0d18ee48b143463d0262913f90d3930aa38d5ed811ec59f42db782166c735cd",
+      "bytes": 209821
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-weapon-bow-1x-contrast.json.gz": {
+      "sha256": "3046211664539fcfb3ce07e2f38c2515244a9eaafea52cb12ad2ab7797fd6bf6",
+      "bytes": 2131
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-weapon-bow-2x-background.png": {
+      "sha256": "e643ac340cbe1352f9627b6682ba40e6b9334c346cf7256cdf7ee808e8b4a09c",
+      "bytes": 202337
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/text-weapon-bow-2x-contrast.json.gz": {
+      "sha256": "0a195fbd6ccd06efc1cb73c642e2f43c1881f235b08e4d66749ac6560078acee",
+      "bytes": 1850
+    },
+    "docs/evidence/cut220/paper-doll-8879/pixels/vite.log": {
+      "sha256": "aa8de2ec9551eb70b838a8f9cccb263348c79fe1dc769a8f7a71c31197d63606",
+      "bytes": 450
+    },
+    "docs/evidence/cut220/paper-doll-8879/second.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut220/paper-doll-8879/second/results.json.gz": {
+      "sha256": "8120fffde49c89a98f460e25fd74694c5d68ba81d5ad9232086bcb6e3ce1be15",
+      "bytes": 40494
+    },
+    "docs/evidence/cut220/paper-doll-8879/second/vite.log": {
+      "sha256": "acdf737146ccb2dcbeefa93a15f70cc66688098b31f2ccd5693b99871ff002b1",
+      "bytes": 450
+    },
+    "docs/evidence/cut220/paper-doll-audit-2026-10-16.md": {
+      "sha256": "fd0c4b0e90c9fb3a21b07ced05a417a0faf8be78c24f924697d48389b7605a07",
+      "bytes": 7555
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879.log": {
+      "sha256": "1273dc6bacc09bb8335278bfd540a1280478a4b01427a5f9347ba79128817834",
+      "bytes": 385
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879/home-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "9ee4c2f1a241ff879d6a89a77d0332f7af585a0cb5d130261c3e63ea159822ee",
+      "bytes": 384963
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879/results.json": {
+      "sha256": "d0d69f8bef92f6ec97090936def9302976fd2e57f2b15a424eb263a065364dd8",
+      "bytes": 75929
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879/settings-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "19f5cca8968b09e86b07acf626b90659e826f103bd3641559c3717b04f666177",
+      "bytes": 181700
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879/vite.log": {
+      "sha256": "8e91bc77d24aa97183b8c88e94a8b3f917e60d3455dc7247ab0f9c525c8a60b7",
+      "bytes": 450
+    },
+    "docs/evidence/cut243-mobileheader/compact-final-8879/watch-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "c51a51c74d5dac7ea4087702db8555570a9ab39f55d05b76a3df62726856c143",
+      "bytes": 319895
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/home-desktop-1440x900-1x.png": {
+      "sha256": "80e6e58e94d69d0666c5334afcb1a079960946da2bf1cc9955dc956b72a4f531",
+      "bytes": 1172514
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/home-desktop-1440x900-2x.png": {
+      "sha256": "bb156a35ca57d4c76c923626e8ba608d9c24f41583acfdb1315cbac5dfd15efd",
+      "bytes": 1295064
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/home-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "fd425ab3d97e2473289441d069a83021b645fed75605bcd9384207bf7e5e42fe",
+      "bytes": 386305
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/home-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "788e1c41a501c38415de0813acd7191b3040fc17def8aa9e29d10341b01688af",
+      "bytes": 369741
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/results.json": {
+      "sha256": "61d32487d8f09d2e271382c35d5e6fa65123bf000c083a795af46bae7b460c12",
+      "bytes": 179004
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/settings-desktop-1440x900-1x.png": {
+      "sha256": "b409e5d0e26cc2c048ec6cab5621171f1ff033181bd56165af22428453087053",
+      "bytes": 834175
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/settings-desktop-1440x900-2x.png": {
+      "sha256": "f91eb957f520ce5410326b2a40fa7863a325dc6f5956c8b9d5f5d10992fbaa52",
+      "bytes": 775680
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/settings-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "a9dbd3e4add87aa47f363a4d7ea3ff9df7e9d5cefb22217497d0e0aa9be55f9e",
+      "bytes": 181699
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/settings-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "ee84689ff0ae99ae0fc20e9bda1a952f0e47fbbc8af80268a99bdfff974ec0ec",
+      "bytes": 182851
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/vite.log": {
+      "sha256": "0fc17bf280ac2554e0ff31fe702785db752e826dfacc77c92a4b2d1f2af191b8",
+      "bytes": 450
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/watch-desktop-1440x900-1x.png": {
+      "sha256": "a714f99832435aa6280ced32c870ebe75c9deadcb439abb62af4ad3e14362d93",
+      "bytes": 1364449
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/watch-desktop-1440x900-2x.png": {
+      "sha256": "4a7ef87776b3007acace5d5e3845da6b8e6423ed52f91dc96a939ef545def519",
+      "bytes": 1211468
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/watch-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "0723c53f538f181205ef1ca275d6bf4e416c84ec7ad3d7a05927defd4a02c69e",
+      "bytes": 319873
+    },
+    "docs/evidence/cut243-mobileheader/compact-focus-fixed-8879/watch-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "8b3d18034890a6a81b73337c743eb0129122c85d7834dbc4b8da5aec98178cb4",
+      "bytes": 321689
+    },
+    "docs/evidence/cut243-mobileheader/header-check.mjs": {
+      "sha256": "b9a6beb69642a8b923137ea5d9317daeff1365072eac07e8d993be655fac8c05",
+      "bytes": 10551
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/home-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "1773ba357c83929af8e8e9297bf6d3518ba3afb498ab408c75261ab0562314b9",
+      "bytes": 391825
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/home-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "cd3e6a0fb8d5b78f3ab126a3618435ded22ddececea8b9da21b808c5e9fe2ff9",
+      "bytes": 370392
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/results.json": {
+      "sha256": "064d06caa0c38d2c228e786da65cfe71e88f0c98b14ca7390a7bc12d03da80a4",
+      "bytes": 86203
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/settings-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "4ad39d265eb0d010c209e795b62d45077fdb23970fb7aa87e7fc74be02c373ef",
+      "bytes": 181775
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/settings-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "e6461314620319573bd4cb983cfb9a6a6070b14b9b8612243b4f65d54b7bb716",
+      "bytes": 183040
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/vite.log": {
+      "sha256": "18ee8c71c2bd64be1aaa1230837471f5190e3915e16b4596ac55eb6bf9ac031d",
+      "bytes": 450
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/watch-iphone-pro-browser-402x681-1x.png": {
+      "sha256": "2e0eb24f4c7e9950a718c0afa91a5c7a69f96d7491b75cdfe6e44ccb45970974",
+      "bytes": 318413
+    },
+    "docs/evidence/cut243-mobileheader/one-row-heroes-c9fa/watch-iphone-pro-browser-402x681-2x.png": {
+      "sha256": "a2e7a93d82178458ecca71022f0fa4679b040ad99aeb3441e0313c6481e1a799",
+      "bytes": 321298
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/forge-hover-1440.png": {
+      "sha256": "8062d633a4294b2e71396ddc87dcef024a1baf0bb3973e0cbecca3e399205185",
+      "bytes": 1261708
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/forge-hover-402.png": {
+      "sha256": "c76ff749e7545a3f777f8e3198b9df6ec5482a954133d9b5d8bf9c5607fdab2d",
+      "bytes": 359748
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/home-1440-1x.png": {
+      "sha256": "d69b09656ce81f120d3304e34d1f704eabc6560f5c36fa8ab21941c3876eec95",
+      "bytes": 1182505
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/home-1440-2x.png": {
+      "sha256": "f638ea04979b8f4899b72ba01c3c246ac210c504ced21db6aca5bd185b365747",
+      "bytes": 1296702
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/home-402-1x.png": {
+      "sha256": "376924e2df06ff54a35ac8987ddf756e3f73d83ee30f6418ff0123e5c6ba0cbe",
+      "bytes": 393341
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/home-402-2x.png": {
+      "sha256": "8d264142d7c327234224d05650c711a0b84d965be7eff15ca12e1c4b34db5234",
+      "bytes": 370665
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/missing-art-1440.png": {
+      "sha256": "9e9aa3e968a4a97959c842b7f8ad1b41094c8352966c0a883537fed55ad5a490",
+      "bytes": 1185426
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/missing-art-402.png": {
+      "sha256": "2daf62254ada8c122d9f77c7617bec96ffbc9aff2c12164d64c3a1efb570f914",
+      "bytes": 391492
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/results.json": {
+      "sha256": "ae5e49ff83e625fa7788b19de296a0b0f997e0ceeb748ef293f1cf49c4438cab",
+      "bytes": 180201
+    },
+    "docs/evidence/cut243/aspect-diagnostic-8879/vite.log": {
+      "sha256": "2d0c7828964f8dbb192195b6a4082427a03c8d42730e20d7583bffad691c45f2",
+      "bytes": 450
+    },
+    "docs/evidence/cut243/aspect-fixed-8879.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/canvas-1440-1x.png": {
+      "sha256": "1e9c095b67b8f9c7d90583baeb4e2fdf00dbcd4af7019ec6fd47b7a61bbf89fd",
+      "bytes": 1162070
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/canvas-1440-2x.png": {
+      "sha256": "fec300ccc1851419c13627789d9bdefd5aa08ab10aa93e44c02de315457c1f3b",
+      "bytes": 1268205
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/canvas-402-1x.png": {
+      "sha256": "4931a0511d7cce73dc5809be2a258854fa2950c0946672efc952029e1bc91cc7",
+      "bytes": 376596
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/canvas-402-2x.png": {
+      "sha256": "33163045a21b790c71f7e08ec2a4cbd73ac12c0e4c56b2de3a144fd97f2a0973",
+      "bytes": 360640
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/forge-hover-1440.png": {
+      "sha256": "6666c9c9d0d464a7b1f813558af5d20a428d712ca9177c09cae8e234e7c33130",
+      "bytes": 1261746
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/forge-hover-402.png": {
+      "sha256": "70b98b591f270725ef0d94ed6666edd513bf5fbe3e40eb5719b09b86c8d39e9e",
+      "bytes": 360221
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/home-1440-1x.png": {
+      "sha256": "20fa648535761f43a11509ed5a5b7f480c31ff1831ccc91d995412a4b037ddd1",
+      "bytes": 1182328
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/home-1440-2x.png": {
+      "sha256": "aa8b0f95249346309bd84ca210013ed4b567644244547aadbb3fb636488da5c0",
+      "bytes": 1297844
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/home-402-1x.png": {
+      "sha256": "d708f015aa3e0628e725f57cd57d226d04cb4408bd84b99b3504bb205b45b574",
+      "bytes": 389561
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/home-402-2x.png": {
+      "sha256": "9d6640b2462b4e19d5f1a14f8f9bacdfea27dd4ae3db97e263723f38a7bf2661",
+      "bytes": 373125
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/missing-art-1440.png": {
+      "sha256": "07a29855b2c0ea98f3e71e38acd8f6444c82390a88bdb0599fbd0cf6ff0f47e9",
+      "bytes": 1188199
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/missing-art-402.png": {
+      "sha256": "7a32414bffe7df205faf95926ad4e7213122bcc062f5f126d409d59c3cdd5df5",
+      "bytes": 390717
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/results.json": {
+      "sha256": "2f01f753a792b9f22b38a2f4b5f8c0c57eb6e12b96316cc6c8fb57f508b4c4af",
+      "bytes": 186691
+    },
+    "docs/evidence/cut243/aspect-fixed-8879/vite.log": {
+      "sha256": "14039da1c2539e5439b0dfc3904bead26b98cb864fd96a5ddef4d7a0c8691e05",
+      "bytes": 450
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/forge-hover-1440.png": {
+      "sha256": "880d1d8d6b32aa98a6567a566c5d656a313ca5271d377668cdaf767ab3c5e222",
+      "bytes": 1265692
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/forge-hover-402.png": {
+      "sha256": "bbf7b668221896039ca25fa23775963657ed2fbe67fa3702dddccaeedf297734",
+      "bytes": 360644
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/home-1440-1x.png": {
+      "sha256": "738f90b925882bee8979554533582ea8cb536042cb84e638f692395b3b81cabd",
+      "bytes": 1184138
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/home-1440-2x.png": {
+      "sha256": "8a787c128d2ab062ded3cd86ea6871073ed725cd7da825a932b641253633a572",
+      "bytes": 1293370
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/home-402-1x.png": {
+      "sha256": "231e5188558acc6beda089b5b10c444a1bf44fd281dd1bc856cbb4f5db588866",
+      "bytes": 390383
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/home-402-2x.png": {
+      "sha256": "016f3d1df0eac3c978e889ba9abe047e7f9291acb62bee0feed70da0fe68444b",
+      "bytes": 339229
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/missing-art-1440.png": {
+      "sha256": "338d713a0282a0b1a470dfec71fd97ac0620902d391df995b636cb0b1927e62d",
+      "bytes": 1186953
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/missing-art-402.png": {
+      "sha256": "33ed8bc3982ac5bf5df7719ca82c78a9097cc6b01dd823cdaf2d486750087348",
+      "bytes": 391387
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/results.json": {
+      "sha256": "83c07735e07b7e8d353f63d406e2aa3be506db02629fadd8eae5bf6e748bca27",
+      "bytes": 143001
+    },
+    "docs/evidence/cut243/one-row-heroes-c9fa/vite.log": {
+      "sha256": "048345608c03ae45e0e85d5385651f5140ff30bed2a8f1ce88480771c8908007",
+      "bytes": 450
+    },
+    "docs/evidence/cut243/sprite-home.mjs": {
+      "sha256": "9ebc987c847306377d5a7746a38a6ddbe001f505e52c427de6d1325f7d46aaeb",
+      "bytes": 17389
+    },
+    "docs/evidence/cut245/README.md": {
+      "sha256": "1da7620f3d5b28e28d0e25b9ac5cd9d884c910c435c4463ccd2887a873709bc1",
+      "bytes": 9671
+    },
+    "docs/evidence/cut245/cost-off-equivalence.mjs": {
+      "sha256": "f2ee1d3cf9331ed2f29d395ae7c585e732dba1a282f34d4eb1a6a70d2b9937c1",
+      "bytes": 8062
+    },
+    "docs/evidence/cut245/cost-single-instrumentation.mjs": {
+      "sha256": "e6cec8fb0e4e45cdc2a4adcf0ee0ddc879c85d96b6470218a99fa4f5e6c1af63",
+      "bytes": 2161
+    },
+    "docs/evidence/cut245/cost-single-instrumentation.pre-projection.mjs": {
+      "sha256": "5546d0510396fafae60eb75e17952d99dc566505117a714280c1da3e7ad5f862",
+      "bytes": 1856
+    },
+    "docs/evidence/cut245/cost-single-preflight-2026-10-16.json": {
+      "sha256": "fc43c1dde858f86449e757e6802ddab6a8a1b843651c6d0311bf2586a4469e1c",
+      "bytes": 1187
+    },
+    "docs/evidence/cut245/cost-single-preflight-projection-2026-10-16.json": {
+      "sha256": "bca132cfea8862a4ead609f4645dcb3e4177811c369505c4b87cdd28ef87ba14",
+      "bytes": 1187
+    },
+    "docs/evidence/cut245/cost-single-preflight.mjs": {
+      "sha256": "5ddd50eba2b0b09488e24e43b04a2f0afa54f0cb800652d993cf37aad64d4880",
+      "bytes": 4005
+    },
+    "docs/evidence/cut245/cost-single-protocol.md": {
+      "sha256": "64bf299ec232e0f1962fe5e24419c56a0c88d9f56bce9066b0512c21dc5dd5f5",
+      "bytes": 3817
+    },
+    "docs/evidence/cut245/cost-single.mjs": {
+      "sha256": "c3ab5a37d5ca616c3304cccc863c9b68d7026cc0e453a03db379667946f44738",
+      "bytes": 12379
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16.log": {
+      "sha256": "fe0f3992090d6dfaaaffe0607e674e5e83bd8beb479d854c928bde487be37d25",
+      "bytes": 1449
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/baseline-vite.log": {
+      "sha256": "c891b61a2ce6889dab366bc0979c8635b365071a3e722c55f01c185286d5f2cf",
+      "bytes": 251
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/candidate-vite.log": {
+      "sha256": "9a3ccf951319993d2e59441aed1de6e313e760da3d91b43e920738c95a2b87ef",
+      "bytes": 251
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/crypt-1440-baseline.png": {
+      "sha256": "24561ae3b85a00a6d154f78bf1591e81fe83829bd1c62277f3d71897fb153daf",
+      "bytes": 1501074
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/crypt-1440-candidate.png": {
+      "sha256": "24561ae3b85a00a6d154f78bf1591e81fe83829bd1c62277f3d71897fb153daf",
+      "bytes": 1501074
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/crypt-400-baseline.png": {
+      "sha256": "362e92a7494d8c212cb21f50173ee506503d5745baaabc3efa375ffb03c7c347",
+      "bytes": 433163
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/crypt-400-candidate.png": {
+      "sha256": "362e92a7494d8c212cb21f50173ee506503d5745baaabc3efa375ffb03c7c347",
+      "bytes": 433163
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/fens-1440-baseline.png": {
+      "sha256": "a1b65e52a7f453e6a33cb5b2e442a4047fd03a8c0f563bf9a8d6ab65a938cd79",
+      "bytes": 1602735
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/fens-1440-candidate.png": {
+      "sha256": "a1b65e52a7f453e6a33cb5b2e442a4047fd03a8c0f563bf9a8d6ab65a938cd79",
+      "bytes": 1602735
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/fens-400-baseline.png": {
+      "sha256": "96541e754ce5e5d091a3e17812580968248794b08b82ec704f70da6f89cf799f",
+      "bytes": 619547
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/fens-400-candidate.png": {
+      "sha256": "96541e754ce5e5d091a3e17812580968248794b08b82ec704f70da6f89cf799f",
+      "bytes": 619547
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/foundry-1440-baseline.png": {
+      "sha256": "40ea991e30865a1bad8c084faa0dd78894fd2e478526d3ef0ea22598b2a758b4",
+      "bytes": 1213050
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/foundry-1440-candidate.png": {
+      "sha256": "40ea991e30865a1bad8c084faa0dd78894fd2e478526d3ef0ea22598b2a758b4",
+      "bytes": 1213050
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/foundry-400-baseline.png": {
+      "sha256": "3d42616b11c41f6dfe5073a6faa92dc236e2c5801191ef79924ca1d4b90c9e1a",
+      "bytes": 519197
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/foundry-400-candidate.png": {
+      "sha256": "3d42616b11c41f6dfe5073a6faa92dc236e2c5801191ef79924ca1d4b90c9e1a",
+      "bytes": 519197
+    },
+    "docs/evidence/cut245/off-equivalence-2026-10-16/results.json": {
+      "sha256": "c58e1325948efb182e55b8c1f179e98687ebe08225dd320d7b2e9d887c23aba7",
+      "bytes": 13665
+    },
+    "docs/evidence/cut246/README.md": {
+      "sha256": "b0806feaae71572e69555135971444f961e0610b670e3941ea217500c94fcf33",
+      "bytes": 6997
+    },
+    "docs/evidence/cut246/action-review.mjs": {
+      "sha256": "b5134b2a098c2e28991fcb32fe31573dc9779c176af0515d7d1219eb80627cd5",
+      "bytes": 4307
+    },
+    "docs/evidence/cut246/actions-8879.json": {
+      "sha256": "65a2db3b08e958b2829b6cefcc65e7666540ca457257f81f3f476b29280d7185",
+      "bytes": 551541
+    },
+    "docs/evidence/cut246/capture-actions.mjs": {
+      "sha256": "0f85c3379917fb657b8aec8324e33f2931013746a33a93a2f263265af6846226",
+      "bytes": 6389
+    },
+    "docs/evidence/cut246/revalidation-8879-1.log": {
+      "sha256": "d2877742f825f4cd4c8d68ce601e117faa433c6e74dccac49302d5ed31359bd9",
+      "bytes": 9167
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.after-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.reloaded-report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.reloaded-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.replay.json.gz": {
+      "sha256": "2894a0b049f4b5636cc2fbb8038da7f85d440a48996829acee89b2e0e586f9ff",
+      "bytes": 58899
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.sent-session.json.gz": {
+      "sha256": "55202920028efb5cf8d9fbbbbad1c4faf5021662c502e4d358a4823468a15adb",
+      "bytes": 173355
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.sliced-report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.sliced-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-bow.watched-session.json.gz": {
+      "sha256": "8e52062de82a1f80f0b85701c966f344ab9213a46fc1ff8e8601f32a82fe4043",
+      "bytes": 163615
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.after-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.reloaded-report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.reloaded-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.replay.json.gz": {
+      "sha256": "7303aedc2599ab5b458d663a8f3d3027e83cc1dc32a62a19d014f4cc04653251",
+      "bytes": 60789
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.sent-session.json.gz": {
+      "sha256": "54ad226f0ea932908392925118c113a2a1c69cde6b8e128de69e7127b79a81ef",
+      "bytes": 173362
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.sliced-report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.sliced-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-1/caster-dagger.watched-session.json.gz": {
+      "sha256": "3fb1edc7aa9d95d6b978bab081645b19f8769d1a8e84592f262ab17dbd8d6dd2",
+      "bytes": 165521
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.after-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.reloaded-report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.reloaded-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.replay.json.gz": {
+      "sha256": "63c05aa62c4d49e75969bea7dd4e7e2641be6eb5e54a72017d33894fee58998a",
+      "bytes": 149601
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.sent-session.json.gz": {
+      "sha256": "4d85f6bdf786896463c40d7151d08b8d21668a13e7fa87c01f368c9a6cfaaaca",
+      "bytes": 173359
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.sliced-report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.sliced-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.watched-session.json.gz": {
+      "sha256": "3eec0a0087e466cc6677a39e717583da9ba60a6bd760093404dc34b9c9e7ffab",
+      "bytes": 172166
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.after-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.reloaded-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.reloaded-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.replay.json.gz": {
+      "sha256": "5dc9facdb61b3aeb889d0bd8589a24fb193b30ad4a05f085e4f9ceef6da902a0",
+      "bytes": 101155
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.sent-session.json.gz": {
+      "sha256": "f7e62d4bc4c1a9c9c0c90242bcb813a42fe695966c16af6527b20bcff4faf0fb",
+      "bytes": 173345
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.sliced-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.sliced-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-1/fighter-sword.watched-session.json.gz": {
+      "sha256": "47ed4a2816b763ac66b8fae5c31732626bbb3cb648e09efc5816587fc9cb17ff",
+      "bytes": 155424
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.after-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.reloaded-report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.reloaded-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.replay.json.gz": {
+      "sha256": "4d38309d304b3d3ec6bc75be293f6f651a834a929acafd148f5154d79a540e78",
+      "bytes": 97705
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.sent-session.json.gz": {
+      "sha256": "c2ccd2a18a307bcf538a19e046b2878f9d75c9963e0c33a5a3d32f5da8ea1756",
+      "bytes": 173658
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.sliced-report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.sliced-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-long_gun.watched-session.json.gz": {
+      "sha256": "dd9c6f9b070865e01b7ae560c9598161b4e4245ba5147a280c0d11fda515a674",
+      "bytes": 166699
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.after-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.reloaded-report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.reloaded-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.replay.json.gz": {
+      "sha256": "3ae4ec20e7028d515fe358084ef4768448e3a38f545c106ee62156e934530ef3",
+      "bytes": 85945
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.sent-session.json.gz": {
+      "sha256": "3b1b103f70616f0ce256fb5a53ec290295c9523e05cfbd68f85c0fe14b23ee34",
+      "bytes": 173678
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.sliced-report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.sliced-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.watched-session.json.gz": {
+      "sha256": "beb8170ebcf8579f55fd449bce5fa64d19d6abe529b413a08c1a6631b50443a2",
+      "bytes": 166534
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.after-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.reloaded-report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.reloaded-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.replay.json.gz": {
+      "sha256": "1616c8f525e14fe525ab3f756454cb115d0121329e020b26daa5d3d006d0902e",
+      "bytes": 59541
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.sent-session.json.gz": {
+      "sha256": "7168db8fdfe9681d775a8c54930621e7f02c8c94c389586766aa94e32fd63074",
+      "bytes": 173373
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.sliced-report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.sliced-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-bow.watched-session.json.gz": {
+      "sha256": "a2ac00d29ae3c9ce9f8e00050f32337dba0ff72ade989277c47b8f611a2c373c",
+      "bytes": 152655
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.after-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.reloaded-report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.reloaded-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.replay.json.gz": {
+      "sha256": "c7ef70dd2346c9474c2110fb02b53e45b18390e562656e6005200698b691542c",
+      "bytes": 121216
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.sent-session.json.gz": {
+      "sha256": "f7c58641a6f941eb9a0e63b4c4ec45f65d9d81038dd51d29c267a32b66f7d1bc",
+      "bytes": 173374
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.sliced-report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.sliced-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-1/ranger-sword.watched-session.json.gz": {
+      "sha256": "2eed8f9d5a6b9f8a376b43f1969130fc809d745ac1c5bc7e451d92c6388a3e5a",
+      "bytes": 155650
+    },
+    "docs/evidence/cut246/revalidation-8879-1/results.json": {
+      "sha256": "dc8cee029612554be165bdf322e9f2a9114523a185b36be3ce91bc0943b5f170",
+      "bytes": 66247
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.after-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.reloaded-report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.reloaded-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.replay.json.gz": {
+      "sha256": "50756c1599f589a7c9ea78ad7313443de2ae42e37fec5119415122d5cb84ea05",
+      "bytes": 61900
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.sent-session.json.gz": {
+      "sha256": "484e369759e26077abee0953614db2751e50af3188902fc878789262cd82c0da",
+      "bytes": 173385
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.sliced-report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.sliced-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-crownsplitter.watched-session.json.gz": {
+      "sha256": "f24b29a7410a021b694610e59f7f45652d5233e438d413db018b0336e44eeb15",
+      "bytes": 163778
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.after-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.reloaded-report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.reloaded-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.replay.json.gz": {
+      "sha256": "3854d892d0e81fc1f1cbfbb9f53c17b106486a5a91572df5fd29614916c7c8aa",
+      "bytes": 55758
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.sent-session.json.gz": {
+      "sha256": "91b13e922222e5cffb3f0e8998bb340fe5f62d5303a71280e1bd7956129a8ac0",
+      "bytes": 173377
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.sliced-report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.sliced-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.watched-session.json.gz": {
+      "sha256": "496742c046c6b412e50811e491d1b333351389f2e432fe86882a140f53e89868",
+      "bytes": 164630
+    },
+    "docs/evidence/cut246/revalidation-8879-2.log": {
+      "sha256": "d2877742f825f4cd4c8d68ce601e117faa433c6e74dccac49302d5ed31359bd9",
+      "bytes": 9167
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.after-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.reloaded-report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.reloaded-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.replay.json.gz": {
+      "sha256": "2894a0b049f4b5636cc2fbb8038da7f85d440a48996829acee89b2e0e586f9ff",
+      "bytes": 58899
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.sent-session.json.gz": {
+      "sha256": "55202920028efb5cf8d9fbbbbad1c4faf5021662c502e4d358a4823468a15adb",
+      "bytes": 173355
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.sliced-report.json.gz": {
+      "sha256": "76ffd521946ab04fbb37f355992449b08ad3dcb1140e8e33ec129b0f9ba70ecf",
+      "bytes": 2773
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.sliced-session.json.gz": {
+      "sha256": "a996a411b14825df79b62c6dfeb070bda6e033d0860d02c30cbb0ec3e312b03a",
+      "bytes": 163192
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-bow.watched-session.json.gz": {
+      "sha256": "8e52062de82a1f80f0b85701c966f344ab9213a46fc1ff8e8601f32a82fe4043",
+      "bytes": 163615
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.after-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.reloaded-report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.reloaded-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.replay.json.gz": {
+      "sha256": "7303aedc2599ab5b458d663a8f3d3027e83cc1dc32a62a19d014f4cc04653251",
+      "bytes": 60789
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.sent-session.json.gz": {
+      "sha256": "54ad226f0ea932908392925118c113a2a1c69cde6b8e128de69e7127b79a81ef",
+      "bytes": 173362
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.sliced-report.json.gz": {
+      "sha256": "e73665e7d2aefbdfc95388c4c0e94cf2a9b10112e7eb15891f9ac2b52950b2fa",
+      "bytes": 3055
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.sliced-session.json.gz": {
+      "sha256": "d3cdce1676c161b15eb1acef5a9a85a8cee482862118af61661ec87c2f4aea99",
+      "bytes": 164986
+    },
+    "docs/evidence/cut246/revalidation-8879-2/caster-dagger.watched-session.json.gz": {
+      "sha256": "3fb1edc7aa9d95d6b978bab081645b19f8769d1a8e84592f262ab17dbd8d6dd2",
+      "bytes": 165521
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.after-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.reloaded-report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.reloaded-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.replay.json.gz": {
+      "sha256": "63c05aa62c4d49e75969bea7dd4e7e2641be6eb5e54a72017d33894fee58998a",
+      "bytes": 149601
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.sent-session.json.gz": {
+      "sha256": "4d85f6bdf786896463c40d7151d08b8d21668a13e7fa87c01f368c9a6cfaaaca",
+      "bytes": 173359
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.sliced-report.json.gz": {
+      "sha256": "a7f5b7390bd71059f4d5729f59266ce9b15f6accbda4e716142d8616f3ecdcdb",
+      "bytes": 3466
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.sliced-session.json.gz": {
+      "sha256": "53cc0fb500b2093039a8c7cca8682456c212f7ca1eaacc87ed77a181974a18c8",
+      "bytes": 171582
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-crownsplitter.watched-session.json.gz": {
+      "sha256": "3eec0a0087e466cc6677a39e717583da9ba60a6bd760093404dc34b9c9e7ffab",
+      "bytes": 172166
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.after-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.reloaded-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.reloaded-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.replay.json.gz": {
+      "sha256": "5dc9facdb61b3aeb889d0bd8589a24fb193b30ad4a05f085e4f9ceef6da902a0",
+      "bytes": 101155
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.sent-session.json.gz": {
+      "sha256": "f7e62d4bc4c1a9c9c0c90242bcb813a42fe695966c16af6527b20bcff4faf0fb",
+      "bytes": 173345
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.sliced-report.json.gz": {
+      "sha256": "b832240b40508b7154e8ec59357fb47be50fbaa225669cc25d4db9ecb3f13b9d",
+      "bytes": 3172
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.sliced-session.json.gz": {
+      "sha256": "48eea54252efc1f27ffcd246f41686ee1c40a00e76cdef1f3d7d1fb592863c93",
+      "bytes": 155108
+    },
+    "docs/evidence/cut246/revalidation-8879-2/fighter-sword.watched-session.json.gz": {
+      "sha256": "47ed4a2816b763ac66b8fae5c31732626bbb3cb648e09efc5816587fc9cb17ff",
+      "bytes": 155424
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.after-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.reloaded-report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.reloaded-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.replay.json.gz": {
+      "sha256": "4d38309d304b3d3ec6bc75be293f6f651a834a929acafd148f5154d79a540e78",
+      "bytes": 97705
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.sent-session.json.gz": {
+      "sha256": "c2ccd2a18a307bcf538a19e046b2878f9d75c9963e0c33a5a3d32f5da8ea1756",
+      "bytes": 173658
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.sliced-report.json.gz": {
+      "sha256": "b889fd4737ac7bfeb3c2e02a1002406c691730dae870d71dae400cb150b1366d",
+      "bytes": 3025
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.sliced-session.json.gz": {
+      "sha256": "5e70e31b5c7aec9248988a8fa020a8b5e8131b65040b389354b835819231b3a1",
+      "bytes": 166438
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-long_gun.watched-session.json.gz": {
+      "sha256": "dd9c6f9b070865e01b7ae560c9598161b4e4245ba5147a280c0d11fda515a674",
+      "bytes": 166699
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.after-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.reloaded-report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.reloaded-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.replay.json.gz": {
+      "sha256": "3ae4ec20e7028d515fe358084ef4768448e3a38f545c106ee62156e934530ef3",
+      "bytes": 85945
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.sent-session.json.gz": {
+      "sha256": "3b1b103f70616f0ce256fb5a53ec290295c9523e05cfbd68f85c0fe14b23ee34",
+      "bytes": 173678
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.sliced-report.json.gz": {
+      "sha256": "fb0dba70e31b00c4fcf37b4d76c9e46b44e374750f9c0f70fa0265cfefd92ccc",
+      "bytes": 3171
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.sliced-session.json.gz": {
+      "sha256": "ded4c9ce6419ce96bffd67805afcd859cb406de4f9008e8caf95e314f4a17d5f",
+      "bytes": 166388
+    },
+    "docs/evidence/cut246/revalidation-8879-2/gunner-short_gun.watched-session.json.gz": {
+      "sha256": "beb8170ebcf8579f55fd449bce5fa64d19d6abe529b413a08c1a6631b50443a2",
+      "bytes": 166534
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.after-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.reloaded-report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.reloaded-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.replay.json.gz": {
+      "sha256": "1616c8f525e14fe525ab3f756454cb115d0121329e020b26daa5d3d006d0902e",
+      "bytes": 59541
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.sent-session.json.gz": {
+      "sha256": "7168db8fdfe9681d775a8c54930621e7f02c8c94c389586766aa94e32fd63074",
+      "bytes": 173373
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.sliced-report.json.gz": {
+      "sha256": "54092e99b9d1c7e9f8675226929b48c0c2ed045c29c10a65820a92cfe759e07a",
+      "bytes": 2945
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.sliced-session.json.gz": {
+      "sha256": "feec38112a46c228b98297640be83fc05eaaa4190275373a962afab606688a7b",
+      "bytes": 152400
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-bow.watched-session.json.gz": {
+      "sha256": "a2ac00d29ae3c9ce9f8e00050f32337dba0ff72ade989277c47b8f611a2c373c",
+      "bytes": 152655
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.after-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.reloaded-report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.reloaded-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.replay.json.gz": {
+      "sha256": "c7ef70dd2346c9474c2110fb02b53e45b18390e562656e6005200698b691542c",
+      "bytes": 121216
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.sent-session.json.gz": {
+      "sha256": "f7c58641a6f941eb9a0e63b4c4ec45f65d9d81038dd51d29c267a32b66f7d1bc",
+      "bytes": 173374
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.sliced-report.json.gz": {
+      "sha256": "ec2cd1e51b722e8024deab58d0fac3aba5919ba181787507fa6eb0f10aaed627",
+      "bytes": 3416
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.sliced-session.json.gz": {
+      "sha256": "a916e0daa45180f7c7ed02c5a65fb3f5976d1e658799c7431d4c01832c6b8944",
+      "bytes": 155374
+    },
+    "docs/evidence/cut246/revalidation-8879-2/ranger-sword.watched-session.json.gz": {
+      "sha256": "2eed8f9d5a6b9f8a376b43f1969130fc809d745ac1c5bc7e451d92c6388a3e5a",
+      "bytes": 155650
+    },
+    "docs/evidence/cut246/revalidation-8879-2/results.json": {
+      "sha256": "a40c69041017a48d201452dc71c141baa14e16a5917e5744af4a3ce4b24041b0",
+      "bytes": 66247
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.after-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.reloaded-report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.reloaded-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.replay.json.gz": {
+      "sha256": "50756c1599f589a7c9ea78ad7313443de2ae42e37fec5119415122d5cb84ea05",
+      "bytes": 61900
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.sent-session.json.gz": {
+      "sha256": "484e369759e26077abee0953614db2751e50af3188902fc878789262cd82c0da",
+      "bytes": 173385
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.sliced-report.json.gz": {
+      "sha256": "43c4f4b7af84640397a24538105dc2901437ae23260994884f77bba954ed824c",
+      "bytes": 2788
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.sliced-session.json.gz": {
+      "sha256": "a0416e09fbb02bdb03fa75039d9ea6367b84d729ce69319fb302d52ff21fd682",
+      "bytes": 163396
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-crownsplitter.watched-session.json.gz": {
+      "sha256": "f24b29a7410a021b694610e59f7f45652d5233e438d413db018b0336e44eeb15",
+      "bytes": 163778
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.after-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.reloaded-report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.reloaded-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.replay.json.gz": {
+      "sha256": "3854d892d0e81fc1f1cbfbb9f53c17b106486a5a91572df5fd29614916c7c8aa",
+      "bytes": 55758
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.sent-session.json.gz": {
+      "sha256": "91b13e922222e5cffb3f0e8998bb340fe5f62d5303a71280e1bd7956129a8ac0",
+      "bytes": 173377
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.sliced-report.json.gz": {
+      "sha256": "ab3e42b06a77ba90a9bdb41c99c1accc3fb340235eb543f504f485e9ee21a1ca",
+      "bytes": 2981
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.sliced-session.json.gz": {
+      "sha256": "3a21af8203d7d092b26de34543d3e2c1d78f215101ee2abfccf3c164fe74598b",
+      "bytes": 164293
+    },
+    "docs/evidence/cut246/revalidation-8879-2/rogue-dagger.watched-session.json.gz": {
+      "sha256": "496742c046c6b412e50811e491d1b333351389f2e432fe86882a140f53e89868",
+      "bytes": 164630
+    },
+    "docs/evidence/cut246/revalidation-8879-repeat.json": {
+      "sha256": "991f352de56dd17fe6c8d9710bd28908b285a8cd4e9233fb3200a413e2bd7092",
+      "bytes": 17650
+    },
+    "docs/evidence/cut246/weapon-frames-8879.log": {
+      "sha256": "ec555bd1e61040c43eaffc961e73f78ddbc2343649c844b0cb693bcd2ccc0968",
+      "bytes": 80
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-bow-canvas-1440.png": {
+      "sha256": "ad7979327b610aaccaa472b0d394edbbc0fdfa84c938cda786f0cca25dce49c8",
+      "bytes": 532602
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-bow-canvas-402.png": {
+      "sha256": "a9be39a0807d7f139622e7a61cb178850005fc9cf4aa6d8c645f84e002ae6bb9",
+      "bytes": 219473
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-bow-gl-1440.png": {
+      "sha256": "b316cb4ee8a5e548fb236625f88952f4589259989b155309acd36c50f16a794d",
+      "bytes": 1128081
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-bow-gl-402.png": {
+      "sha256": "a539117ab38e3dea85f04c3a862e5d8aa8b6a7e43d7ecc7339b1dc8f912ed877",
+      "bytes": 361513
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-dagger-canvas-1440.png": {
+      "sha256": "6f64748ed65297946dbad9c831badc14851a83deea802a3dc39a0fea8fc832a4",
+      "bytes": 579340
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-dagger-canvas-402.png": {
+      "sha256": "a3142a950fdc8f2fe8ccb2c67ff98d9a2f10430cfd3e40c916ee2b9d4b57a445",
+      "bytes": 237868
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-dagger-gl-1440.png": {
+      "sha256": "167f9e644c3b262aa4cdfa54c85bb33544f6a86ea7efbafd436d2794c7f6d30d",
+      "bytes": 1086569
+    },
+    "docs/evidence/cut246/weapon-frames-8879/caster-dagger-gl-402.png": {
+      "sha256": "215454669170eb8592d6fd35e51441482a170ba18f32f6e38292846dc6e0b12d",
+      "bytes": 369228
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-crownsplitter-canvas-1440.png": {
+      "sha256": "02d6e0cccdc629d99ada2b1278e3fb67ea0d7a3491b9c874d9c8ab8fde802839",
+      "bytes": 506231
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-crownsplitter-canvas-402.png": {
+      "sha256": "1756948f84c5ab495dfec84907704fc79488a8a7edfecee6e000e27c347c38c5",
+      "bytes": 198131
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-crownsplitter-gl-1440.png": {
+      "sha256": "a179abe3f1364009de74e126cd843bda51ebe7f85a217645ab9c167ff223c75f",
+      "bytes": 1076885
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-crownsplitter-gl-402.png": {
+      "sha256": "65d2998ca9c51b869ffdeda39fab36c6f7dd9f8ca0b4c5a363804b33cc0f5fc9",
+      "bytes": 350174
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-sword-canvas-1440.png": {
+      "sha256": "a71fd1bbb796af00a3946e392f76782f26868d4ca9f2005cb927b37fafd3e509",
+      "bytes": 580297
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-sword-canvas-402.png": {
+      "sha256": "1294a78794f2d8cf730245bd7131ccddaf3ce71b5184b4cd973ad25b212e81f3",
+      "bytes": 238093
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-sword-gl-1440.png": {
+      "sha256": "bb62f0f28a8ddb08b2dfe391b2d88a25a22009b7264e9dee4454d206b411f99e",
+      "bytes": 1086356
+    },
+    "docs/evidence/cut246/weapon-frames-8879/fighter-sword-gl-402.png": {
+      "sha256": "5245f6cfa515450fc1618e52042f2aa8ca7a323d86b055553e79103a059b196a",
+      "bytes": 369180
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-long_gun-canvas-1440.png": {
+      "sha256": "22f3f8dfebf225950d65a947c75fbb9d1be8b6ab6b87dd24629d48459a06bd9c",
+      "bytes": 533459
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-long_gun-canvas-402.png": {
+      "sha256": "6d41ad50d5c3e7128119a2a49238b772be69d8982955091b053641d6f9567e19",
+      "bytes": 219774
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-long_gun-gl-1440.png": {
+      "sha256": "d9dc9ff36a1ce8b4af1da0a26e0702bdbac981d84713aabbce3b8fd701b36177",
+      "bytes": 1125706
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-long_gun-gl-402.png": {
+      "sha256": "da81093aa10680560dfdbd4d7a1c6a89751353fe47199f39d3d11e53da4206c6",
+      "bytes": 362346
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-short_gun-canvas-1440.png": {
+      "sha256": "e7135af27e16bedd0d7f52dc1b638de875f577974870160f178c477a692f2079",
+      "bytes": 555350
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-short_gun-canvas-402.png": {
+      "sha256": "97f8ebec692df1cfbfc5390c177d5e80e9a9f3a2d5ee9865cb5b3d9235ccf44e",
+      "bytes": 228765
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-short_gun-gl-1440.png": {
+      "sha256": "01461802b4e0f45495a5e1f25c8e1d796b958aff60e9c5f9407597fd1f4d2868",
+      "bytes": 1103151
+    },
+    "docs/evidence/cut246/weapon-frames-8879/gunner-short_gun-gl-402.png": {
+      "sha256": "dec7466481f53880a67e94b87f9690c5006628ba6bf317f81d435100ffc1bd3e",
+      "bytes": 363213
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-bow-canvas-1440.png": {
+      "sha256": "6db6a1ba3de16858dac9c276541898759379cd12f275b056d9b880e084e3f094",
+      "bytes": 532516
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-bow-canvas-402.png": {
+      "sha256": "0695dd8938c828052593c18d5788e4758acec12ad63847d9b33aea6a4557e82c",
+      "bytes": 219563
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-bow-gl-1440.png": {
+      "sha256": "e79d5cbf044d6d6997362eb7459532a8cf0f7c03d5d27e014a9816726357d153",
+      "bytes": 1128747
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-bow-gl-402.png": {
+      "sha256": "f5f593ad285727843bb15ae510289682898607db83067481b107f2f03ad592f9",
+      "bytes": 361500
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-sword-canvas-1440.png": {
+      "sha256": "b8f52065d84532c423c01abad99cb4f809e0e37a8a065357c17e3bc87e392f7a",
+      "bytes": 579512
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-sword-canvas-402.png": {
+      "sha256": "0433f9b65abf8cefb35b3f158128c42f63d0acb30d86f7081e967b49aa2a217b",
+      "bytes": 237852
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-sword-gl-1440.png": {
+      "sha256": "a85e28cffe75aa362313e91db02a08e86174fc7e74bbf64490c9571b92933773",
+      "bytes": 1083247
+    },
+    "docs/evidence/cut246/weapon-frames-8879/ranger-sword-gl-402.png": {
+      "sha256": "46346cb827c978819902129788d3e894a8c518fd3d0a0a2f06404540739ecaff",
+      "bytes": 369876
+    },
+    "docs/evidence/cut246/weapon-frames-8879/results.json": {
+      "sha256": "368ef73a54ffc24915c447d2fae87c7bdb858ad3591c92df8d31995f264c84d6",
+      "bytes": 46435
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-crownsplitter-canvas-1440.png": {
+      "sha256": "029b4fdf760f884895c6be521aadbe7b116d706c5fe82667938effa31e1025e9",
+      "bytes": 508687
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-crownsplitter-canvas-402.png": {
+      "sha256": "8a1fe4d1ff88bb13f36b723a16184ef9c78bdd1483f86c55d80727668c465d1b",
+      "bytes": 198920
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-crownsplitter-gl-1440.png": {
+      "sha256": "414e938cebafe23eea48d8a419c1079b021cab649c9a18d28104f5dc392250ea",
+      "bytes": 1079694
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-crownsplitter-gl-402.png": {
+      "sha256": "a70dc9e604d5da2128b36fe5e2da486bf0b7e56e0b1454cb6cece6fa3861e05e",
+      "bytes": 351410
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-dagger-canvas-1440.png": {
+      "sha256": "7586c775b742fe739c37c06d88297db91a1c8498ff71928facf58fd55c723cc6",
+      "bytes": 582536
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-dagger-canvas-402.png": {
+      "sha256": "958d67ade25e5e2b3ab19393d8580cd1af7f8856c743846ddd32fa1ad74b114a",
+      "bytes": 239069
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-dagger-gl-1440.png": {
+      "sha256": "d83ccb9b8c673973e67e872e25c77eb45c993cc8db4e74098bf155902e085653",
+      "bytes": 1091104
+    },
+    "docs/evidence/cut246/weapon-frames-8879/rogue-dagger-gl-402.png": {
+      "sha256": "7a1cbad0bc0aada06faf2b51244f747c6f9a80c2501d6b12176af4bc586d4bdd",
+      "bytes": 370740
+    },
+    "docs/evidence/cut246/weapon-frames-8879/vite.log": {
+      "sha256": "a1e5749402dffa750dad030891851fef60c8f0c43c52bf5520c8db4346820b85",
+      "bytes": 450
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879.log": {
+      "sha256": "ec555bd1e61040c43eaffc961e73f78ddbc2343649c844b0cb693bcd2ccc0968",
+      "bytes": 80
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-canvas-1440.png": {
+      "sha256": "56a9e83c5230746b6d27c85f31f8c0b54d362f18e009d0cb29b70f8d6b2aa7b5",
+      "bytes": 528847
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-canvas-402.png": {
+      "sha256": "59083314d82cf29680a3ddb5449b1ecd9c03d003f94d7ed5dea74d67e3282c48",
+      "bytes": 217304
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-gl-1440.png": {
+      "sha256": "82985bdc8d829a4804b0fd30d5c6671a90a0a21d365fb4e97cd63cb1ac5adf2f",
+      "bytes": 1487264
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-gl-402.png": {
+      "sha256": "ae40f4ef83158788ffdb057f97307dd3a281c733367c139a150b83247583a98a",
+      "bytes": 457448
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-canvas-1440.png": {
+      "sha256": "349fc5b93982e1027bf2c2d467d2e611e64e0db98baf421e4e404e6f6157e48d",
+      "bytes": 534704
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-canvas-402.png": {
+      "sha256": "004b0e6929310d314ce919cfab01dfdfa1703fff6db17855baed0616eda1f57c",
+      "bytes": 224416
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-gl-1440.png": {
+      "sha256": "81750fc5b3da09ff04a6d121e9717e4a7578193be119ee798936442bfe4510db",
+      "bytes": 1184858
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-gl-402.png": {
+      "sha256": "905c9a64bce78f53508be434dc83468193d546731531c0455dad161f8e3d4372",
+      "bytes": 378280
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-canvas-1440.png": {
+      "sha256": "ee9d8d83aceca11b733a7d7727e1d987e093f545e01d909ae44ec0608480a0ff",
+      "bytes": 558404
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-canvas-402.png": {
+      "sha256": "3d181b358c9c8d2996037ca315a22ddb15bb75f3a028d90d0728abe714aeff1b",
+      "bytes": 222431
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-gl-1440.png": {
+      "sha256": "dc5ef7e513e35874776bfdfa32992e3068cd09cf51b8cb0763d440f4528f2bc4",
+      "bytes": 1415542
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-gl-402.png": {
+      "sha256": "f5788e304ffb86c81b19eece3b6e4d3650544699145b5ca75444f4961c1e5e89",
+      "bytes": 457491
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-canvas-1440.png": {
+      "sha256": "5566e141cf262ce8ecc68da65bb86645b1c8d24007f6c5f9a8423d8b1c036102",
+      "bytes": 544903
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-canvas-402.png": {
+      "sha256": "1d1ada78a20ae53513d39a21330e02835ab01c1f326dd16fa8ea282965d61c0f",
+      "bytes": 212406
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-gl-1440.png": {
+      "sha256": "e6f422b5d18b1dca4f72f6c27a45930874f708de7f5dbfd32f7bd987ccd4bbd3",
+      "bytes": 1456922
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-gl-402.png": {
+      "sha256": "7212c5d438007b92950a95f1c74d14e2df116289ed8ba0ace0005beb874e4dc4",
+      "bytes": 444912
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-canvas-1440.png": {
+      "sha256": "4f56363dd77315dbaa7f13ce0205a7947e748a98a2b17e9b4740328d35ca5c3a",
+      "bytes": 504832
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-canvas-402.png": {
+      "sha256": "e5b2a826035eb9040d3c3279b8bba854ebf0b89c3da6b368d56913ef85896841",
+      "bytes": 205206
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-gl-1440.png": {
+      "sha256": "dc3819e06e4f7de8b82d8b00d856744f3b97f69b56d168f58fead83f9333dbbc",
+      "bytes": 1449759
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-gl-402.png": {
+      "sha256": "38359c92cdbb54e1baa612f99dcb95d0f427d742e04d475dbcfb1b4e4123ef27",
+      "bytes": 432873
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-canvas-1440.png": {
+      "sha256": "1888140330e2059ff8864d93530b0719fbcc6af7eeb4538d210aa201255e6a30",
+      "bytes": 558816
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-canvas-402.png": {
+      "sha256": "6c5b80900461d18bc5368820a325feab097dbf00f7615807b46b9198d781b666",
+      "bytes": 247544
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-gl-1440.png": {
+      "sha256": "83fe162c900b239ee45b8b2581f8b85da1493d163c82edf8943b3af60b746e3e",
+      "bytes": 1468737
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-gl-402.png": {
+      "sha256": "3c83e76eb66f7024a27177632dfda40e2d13971ae6b13589413fd95b57bda8ae",
+      "bytes": 509254
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-canvas-1440.png": {
+      "sha256": "b48f29827ed12f5500695aec844911a97a21b597eee2bb8090a0a3779df482ef",
+      "bytes": 528673
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-canvas-402.png": {
+      "sha256": "a668f431aacb2bc98c588286cf9e1ec844f6ccb82ec6670bc417915576e6243d",
+      "bytes": 217125
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-gl-1440.png": {
+      "sha256": "aba68d109105aac867f13c8ef6f08f8a807c57e21e10e65312a92e7424b26607",
+      "bytes": 1494863
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-gl-402.png": {
+      "sha256": "00fcf3922783f0a656ffbb4434ba19a91b1f3f0e9451fee0bf844c8d663c8756",
+      "bytes": 457071
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-canvas-1440.png": {
+      "sha256": "d3ffe0fb55372df104d51a86e1375c61b84d98488a615f3a53ab335b8c63d02f",
+      "bytes": 548711
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-canvas-402.png": {
+      "sha256": "8767c9e60978c18efd905eaca6006439998ccf30fde8eab99a458d2d3e0b663c",
+      "bytes": 227987
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-gl-1440.png": {
+      "sha256": "2d165afc88545a20b7d0108fbbc01cf260ac48b5e50dd52c75a3fab1a2e46d5f",
+      "bytes": 1287121
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-gl-402.png": {
+      "sha256": "bd704dd389f12341a5e5509f0a5c8c7df5c6893c2d7da24e2a65e8d8b4937223",
+      "bytes": 473417
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/results.json": {
+      "sha256": "f654025514e254a9c5293328890e183c99883056de6e1afaeaf442e5d9180932",
+      "bytes": 46753
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-canvas-1440.png": {
+      "sha256": "4e94ba7752c5d8c52217a820a066e4c0512393a84ab4639769f49f543ccf176c",
+      "bytes": 674881
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-canvas-402.png": {
+      "sha256": "5442135fffb1946bf2c8da7036acb4b8c265753f79dce713d8129532e0f246a6",
+      "bytes": 308122
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-gl-1440.png": {
+      "sha256": "f611fdd59a2db0c3c39113d4bc4679a68f50437be47c3d3be5ed78adc77d0f22",
+      "bytes": 1443001
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-gl-402.png": {
+      "sha256": "cee1570af4e7b0fcd6abe4d03302fe40cee6cc282a1b32c1977a57abfcb8a57d",
+      "bytes": 497238
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-canvas-1440.png": {
+      "sha256": "137aa0b07fa27b90bb536be5bb66be601a45426d3f676ae2fc8fa57ef786f14d",
+      "bytes": 538072
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-canvas-402.png": {
+      "sha256": "ad5f7cffade41ef67ff995bbd76c52f0e7ec50b6b2c117e94e4b6b7a88270b7d",
+      "bytes": 225527
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-gl-1440.png": {
+      "sha256": "ceab2480a3053a591e91435699a935d2eb75d5e94330234ac9b3c1ffc63d7c0d",
+      "bytes": 1187740
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-gl-402.png": {
+      "sha256": "de54569927818c9ddc9ef28a46440ed04f2bafa58152b83788871ae963e51365",
+      "bytes": 378120
+    },
+    "docs/evidence/cut246/weapon-surviving-targets-8879/vite.log": {
+      "sha256": "23f890c2e88ee40347d80cb112533988fcc605f0ecdcbc84f0d5842464e958e0",
+      "bytes": 450
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/DIAGNOSIS.md": {
+      "sha256": "393dab815709ba263610ede3ac30193aa925c880b1e1f56cf04898fda70b8350",
+      "bytes": 2615
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/fold-controls.json": {
+      "sha256": "38958d24032bece56f0cf414ecdf3a37e3871f5eef1bf6f765cc1e15e2335933",
+      "bytes": 23891
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/identity.json": {
+      "sha256": "636ea525255db5a0506909c08f70efccc37af81eefa4e5bcf236c8e2ed7dac7b",
+      "bytes": 88569
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/run.log": {
+      "sha256": "6e2e9b94c530ee8d963930f53eaaed38b77cb137bcc2f8c30178a217c88222e4",
+      "bytes": 16261
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/run.mjs": {
+      "sha256": "c4c6e2f5fa4cf91c8d06cbd517b940e323888478f6b897a0f3c1aec80ee65d4a",
+      "bytes": 2931
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/semantic-accounting.json": {
+      "sha256": "c6f2bfc8356a0a6d759ba99e3d1e45238c37397d57347ee542a8b1062f8d5051",
+      "bytes": 2053
+    },
+    "docs/evidence/cut250/heroes-density-direct-8879/wrapper.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut250/heroes-r7-followup-inventory.json": {
+      "sha256": "b83d46f89a94a21312d27b02a2707f0aab894896c9192b8e1c879d43376f9985",
+      "bytes": 7897
+    },
+    "docs/evidence/cut250/heroes-regression-8879-density/identity.json": {
+      "sha256": "45e1a44d40b4ecba101d45729248eb199125a73cd0c4db7495f82fb2ec792c9c",
+      "bytes": 88569
+    },
+    "docs/evidence/cut250/heroes-regression-8879-density/run.log": {
+      "sha256": "ae49cc903737fd5a6c080ace1cf8348442631098bfe6970afecc217801b5415c",
+      "bytes": 792
+    },
+    "docs/evidence/cut250/heroes-regression-8879-density/run.mjs": {
+      "sha256": "a91eaa736c12c80b43557ebffe4fad95d793f28f32b5a86561454d14d0e38288",
+      "bytes": 2933
+    },
+    "docs/evidence/cut250/heroes-regression-8879-density/state/last-targeted.json": {
+      "sha256": "0c66b830274f3d7548aee332d4aeaa06c66747baa1c45cb95e7fc3d112e12385",
+      "bytes": 1359
+    },
+    "docs/evidence/cut250/heroes-regression-8879-density/wrapper.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/README.md": {
+      "sha256": "e7af723bad9c497eee040a8c721de24b826cdb2067a5e5f3fe66d371f8be6598",
+      "bytes": 1284
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/identity.json": {
+      "sha256": "e3e8b0d94163588a701c22702129c091901c02012e820407aefc7abfa34c970f",
+      "bytes": 88569
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/run.log": {
+      "sha256": "d060c10a67f6ede5fcb5cc2caf12a0846139c5c772b4e6542d21eb89a4263e2c",
+      "bytes": 972
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/run.mjs": {
+      "sha256": "4f7da36e6c72465d5499579449d2394758fa16fe46b35cb886cc0a4605d959b4",
+      "bytes": 2929
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/state/last-targeted.json": {
+      "sha256": "8bccf033e1712553b88471c0660f6702f2e6f5ab63c2e3b8b17e8a0034959461",
+      "bytes": 1359
+    },
+    "docs/evidence/cut250/heroes-regression-8879-hub/wrapper.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut250/heroes-regression-8879/identity.json": {
+      "sha256": "383022fcf85e1c6b5260b8ee4ca0488a2252b52e35993d2ed02e93ca972222c4",
+      "bytes": 88522
+    },
+    "docs/evidence/cut250/heroes-regression-8879/run.log": {
+      "sha256": "ed9592ba4b9d3b81f436a3d0e7bc0eba2ab72faae0de06791b9c706857759f3a",
+      "bytes": 359
+    },
+    "docs/evidence/cut250/heroes-regression-8879/run.mjs": {
+      "sha256": "8ee49c984fbba005d6aaeced436f7718803c243751538416a0c000d3f5460685",
+      "bytes": 2873
+    },
+    "docs/evidence/cut250/heroes-regression-8879/state/last-targeted.json": {
+      "sha256": "60f09238e88ae117ff090dc0603568d8ebbd43947871da17bb86f82f497f79c5",
+      "bytes": 1705
+    },
+    "docs/evidence/cut250/heroes-regression-8879/wrapper.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut250/observations-2026-10-16.md": {
+      "sha256": "aa11f97d2bac318d11bf4aa3f25db73193903a0f997311841df09c9cb93a7917",
+      "bytes": 4389
+    },
+    "web/src/desktop-dock.css": {
+      "sha256": "9a8e0d061ed18089c6519d46850690eb82e0ca959e4975d86a81d334f1ea69d7",
+      "bytes": 5991
+    },
+    "web/src/hero-hub.css": {
+      "sha256": "fb080b10a6e4342302491bcffa16db6b1a70d1280f3694e265c28eeac20c80a7",
+      "bytes": 11168
+    },
+    "web/src/heroes-compact.css": {
+      "sha256": "e6e3d82317644e23348e9fd9c188a5bf16ce0cd949d6aeb5d348cf993aab8447",
+      "bytes": 3129
+    },
+    "web/src/render/town.ts": {
+      "sha256": "6ff7b7e2c82b517a0be24fb7b9b87c6696ee5a45b3238c3411347d75238c82f1",
+      "bytes": 135844
+    },
+    "web/src/ui/camp.ts": {
+      "sha256": "a89637251bcb5eefbdce8ced29d3bdde7cfe81c8da67b109ef8095f2d693ab1b",
+      "bytes": 107897
+    },
+    "web/src/ui/frame.ts": {
+      "sha256": "9528e2490e8c4b54d32bd03c3a21086a1574c746c1f66a2b8faae6cbe0f29829",
+      "bytes": 29244
+    },
+    "web/src/ui/hero-equipment-figure.ts": {
+      "sha256": "05d1707805dcddbeb313bc97dbd4c46d27a5af3847d6d8238ce329cf5d3417ef",
+      "bytes": 9204
+    },
+    "web/src/ui/hero-hub.ts": {
+      "sha256": "731a013230debf66bdaf125e1be77153417bfedd63fdd91368c0f463dd687091",
+      "bytes": 27104
+    },
+    "web/src/ui/heroes.ts": {
+      "sha256": "88fb056f30673c3520980dcf700ec0bf08679ae5e7eef0bd38906f9957391c25",
+      "bytes": 10216
+    },
+    "web/tests/bloodline-founding.mjs": {
+      "sha256": "31303f5147251010122ea651bbc3d0a2b5b49a010b0c23f575f2bbebb95173f3",
+      "bytes": 5962
+    },
+    "web/tests/cut305.mjs": {
+      "sha256": "a32bc9c791b34362c5063b3cd9106b4886c7236497f9e098080fc710c5428985",
+      "bytes": 41103
+    },
+    "web/tests/qa9.mjs": {
+      "sha256": "f5b24d20d86336e4d9236287f4f1fe0c1eaf1292a3c0a112a5e24416dd535b84",
+      "bytes": 37806
+    },
+    "web/tests/runsui.mjs": {
+      "sha256": "bb5bc3efd24da57b8238ede97dd4c10556f84399fca5f5d45cb4340f03eba4cf",
+      "bytes": 42417
+    },
+    "web/tests/screens.mjs": {
+      "sha256": "0e15d64f590add2b53b27713510cf369c8a81db63c5649e7fceeb344d0ece8a6",
+      "bytes": 30195
+    },
+    "web/tests/ui.mjs": {
+      "sha256": "d88a72457b083b1f13f81a19f3d13175638ec1f982e1e8be69cda6dfbe5faddb",
+      "bytes": 96266
+    }
+  }
+}

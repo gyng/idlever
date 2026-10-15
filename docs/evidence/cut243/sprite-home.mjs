@@ -103,6 +103,24 @@ try {
     }
     for (const scale of [1, 2]) {
       await page.evaluate((s) => (document.documentElement.style.fontSize = `${16 * s}px`), scale);
+      if (process.argv.includes("--aspect-check")) {
+        const measureTown = () => page.evaluate(() => {
+          const town=document.querySelector(".town"),r=town.getBoundingClientRect();
+          return {host:{width:r.width,height:r.height},dpr:devicePixelRatio,stats:window.__town?.stats(),canvases:[...town.querySelectorAll("canvas")].map(c=>{const q=c.getBoundingClientRect();return{class:c.className,width:c.width,height:c.height,cssWidth:q.width,cssHeight:q.height,display:getComputedStyle(c).display,scaleX:q.width/c.width,scaleY:q.height/c.height};})};
+        });
+        const samples=[await measureTown()];
+        await page.waitForTimeout(250);samples.push(await measureTown());
+        await page.waitForTimeout(250);samples.push(await measureTown());
+        (result.aspectRows??=[]).push({width,height,scale,samples});save();
+      }
+
+      // Capture only after the actual backing buffer matches its displayed box;
+      // a layout/font resize can otherwise stretch the previous frame.
+      await page.waitForFunction(() => {
+        const c=document.querySelector(window.__town?.stats().mode==='2d'?'.town-2d':'.town-gl');
+        if(!c)return false;const r=c.getBoundingClientRect();
+        return Math.abs(c.width-Math.round(r.width*devicePixelRatio))<=1&&Math.abs(c.height-Math.round(r.height*devicePixelRatio))<=1;
+      });
       await page.mouse.move(width - 1, height - 1);
       await page.keyboard.press("Escape");
       await page.evaluate(() => document.activeElement?.blur());
@@ -113,6 +131,8 @@ try {
       );
       const before = await page.evaluate(() => window.__idlever.engine.save());
       const geometry = await page.evaluate(() => ({
+        townCanvas: [...document.querySelectorAll(".town > canvas")].map(c=>{const r=c.getBoundingClientRect();return{class:c.className,width:c.width,height:c.height,cssWidth:r.width,cssHeight:r.height,display:getComputedStyle(c).display,scaleX:r.width/c.width,scaleY:r.height/c.height};}),
+        townRender: window.__town?.stats(),
         duplicates: document.querySelectorAll(
           ".console .tile[data-tile=forge],.console .tile[data-tile=party],.console .tile[data-tile=bank]",
         ).length,
@@ -270,6 +290,21 @@ try {
       if (!exactSave) throw Error("fallback changed save");
       (result.artFallback ??= []).push({ width, ...fallback, exactSave });
       save();
+    }
+    if (process.argv.includes("--aspect-check")) {
+      const before=await page.evaluate(()=>window.__idlever.engine.save());
+      await page.evaluate(()=>{const c=document.querySelector('.town-gl'),gl=c.getContext('webgl2');window.__aspectLoss=gl.getExtension('WEBGL_lose_context');if(!window.__aspectLoss)throw Error('Real context loss unavailable');window.__aspectLoss.loseContext();});
+      await page.waitForFunction(()=>window.__town?.stats().mode==='2d');
+      for(const scale of [1,2]) {
+        await page.evaluate(s=>document.documentElement.style.fontSize=`${16*s}px`,scale);
+        await page.waitForFunction(()=>{const c=document.querySelector('.town-2d');if(!c)return false;const r=c.getBoundingClientRect();return c.width===Math.round(r.width*devicePixelRatio)&&c.height===Math.round(r.height*devicePixelRatio);});
+        const sample=await page.evaluate(()=>{const c=document.querySelector('.town-2d'),r=c.getBoundingClientRect();return{width:c.width,height:c.height,cssWidth:r.width,cssHeight:r.height,stats:window.__town.stats()};});
+        await page.screenshot({path:`${out}/canvas-${width}-${scale}x.png`});
+        (result.canvasAspect??=[]).push({viewportWidth:width,viewportHeight:height,scale,...sample,exactSave:before===await page.evaluate(()=>window.__idlever.engine.save())});save();
+      }
+      await page.evaluate(()=>window.__aspectLoss.restoreContext());
+      await page.waitForFunction(()=>window.__town?.stats().mode==='gl');
+      if(before!==await page.evaluate(()=>window.__idlever.engine.save()))throw Error('Aspect/context changed save');
     }
     await page.close();
   }

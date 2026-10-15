@@ -171,7 +171,7 @@ export function renderBar(
       cls: string,
       ico: string,
       glyph: string,
-      n: string | number,
+      n: Node | string | number,
       on = true,
       term?: Term,
     ): HTMLElement | "" =>
@@ -182,7 +182,7 @@ export function renderBar(
               { class: `num stat ${cls}` },
               icon(ico),
               glyph ? h("span", { class: "g" }, glyph) : "",
-              String(n),
+              typeof n === "object" ? n : String(n),
             ),
             term,
           )
@@ -203,7 +203,12 @@ export function renderBar(
         ? h("span", { class: "heir dim" }, /* copy:label */ "Empty town")
         : h(
             "span",
-            { class: "num heir" },
+            {
+              class: "num heir",
+              title: [shownName ?? heirOrd(opts.heir ?? L.heir), opts.trait ?? L.trait]
+                .filter(Boolean)
+                .join(" · "),
+            },
             mini.el,
             h(
               "span",
@@ -255,7 +260,14 @@ export function renderBar(
         : "",
       h(
         "div",
-        { class: "stats" },
+        {
+          class: "stats",
+          onfocusin: (e: Event) => {
+            const stat =
+              e.target instanceof HTMLElement ? e.target.closest<HTMLElement>(".stat") : null;
+            stat?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "instant" });
+          },
+        },
         // QA 0c6e126 (qaY: `♟14 cowardly` beside `$40 · ◆23 · D8` — "I took $40 as ♟14's purse"): a past heir's bar marks the totals as
         // the lineage's now
         // QA 524827b (qaAA: `♟13 curious · now · $40 ◆21 D8` — "I read ◆21 as that hero's"): the word says whose (`lineage`), and the
@@ -292,6 +304,7 @@ export function renderBar(
                   : undefined,
                 "aria-label": /* copy:label */ `Hero Legacy ${L.bloodline?.points ?? L.hero_legacy.find((x) => x.heir === (opts.heir ?? L.heir))?.points ?? 0}`,
               },
+              h("span", { class: "legacy-sigil", "aria-hidden": "true" }),
               h("small", { class: "resource-label" }, /* copy:label */ "Legacy"),
               String(
                 L.bloodline?.points ??
@@ -321,7 +334,12 @@ export function renderBar(
           "best",
           "depth",
           "",
-          /* copy:callout */ `best D${L.best_depth}`,
+          h(
+            "span",
+            { class: "stat-value" },
+            h("span", { class: "best-label" }, /* copy:label */ "best"),
+            ` D${L.best_depth}`,
+          ),
           !opts.watch && R.has("depth") && !past,
           "best",
         ), // docs/COPY.md pass 2 (`D8` read as "current depth")

@@ -1,0 +1,1079 @@
+[
+  {
+    "viewport": {
+      "width": 320,
+      "height": 900
+    },
+    "controls": [
+      {
+        "key": "Gold$48036",
+        "tag": "BUTTON",
+        "class": "num stat gold",
+        "label": null,
+        "text": "Gold$48036",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "kwh": "gold"
+        },
+        "rect": {
+          "x": 116.515625,
+          "y": 9,
+          "w": 76.109375,
+          "h": 44
+        }
+      },
+      {
+        "key": "Hero Legacy 0",
+        "tag": "BUTTON",
+        "class": "num stat legacy",
+        "label": "Hero Legacy 0",
+        "text": "Legacy0",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 198.625,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "settings",
+        "tag": "BUTTON",
+        "class": "gear stud",
+        "label": "settings",
+        "text": "",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 268,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "town-hit hit-mouth",
+        "label": "Delve",
+        "text": "Delve",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "mouth",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 135,
+          "y": 203,
+          "w": 61,
+          "h": 45
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "town-hit hit-tent",
+        "label": "hero",
+        "text": "hero",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "tent",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 186,
+          "y": 321,
+          "w": 64,
+          "h": 45
+        }
+      },
+      {
+        "key": "blacksmith",
+        "tag": "BUTTON",
+        "class": "town-hit hit-blacksmith",
+        "label": "forge \u00b7 Upgrade $100",
+        "text": "forge",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "blacksmith",
+          "kwh": "forge",
+          "detailTip": "",
+          "worker": "",
+          "markers": "sword"
+        },
+        "rect": {
+          "x": 56,
+          "y": 262,
+          "w": 71,
+          "h": 51
+        }
+      },
+      {
+        "key": "bank",
+        "tag": "BUTTON",
+        "class": "town-hit hit-bank",
+        "label": "savings",
+        "text": "savings",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "bank",
+          "kwh": "bank",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 197,
+          "y": 262,
+          "w": 83,
+          "h": 51
+        }
+      },
+      {
+        "key": "guild",
+        "tag": "BUTTON",
+        "class": "town-hit hit-guild",
+        "label": "Guild reception",
+        "text": "Guild reception",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "guild",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 81,
+          "y": 421,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "pool",
+        "tag": "BUTTON",
+        "class": "town-hit hit-pool",
+        "label": "Recovery pool",
+        "text": "Recovery pool",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "pool",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 51,
+          "y": 367,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "device",
+        "tag": "BUTTON",
+        "class": "town-hit hit-device",
+        "label": "Clone vat",
+        "text": "Clone vat",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "device",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 262,
+          "y": 340,
+          "w": 46,
+          "h": 44
+        }
+      },
+      {
+        "key": "Vale Ash \u00b7 Hero details",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Vale Ash \u00b7 Hero details",
+        "text": "Vale Ash",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "1",
+          "heir": "66",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 4,
+          "y": 376,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Hero detail",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Bryn Thorn \u00b7 Hero details",
+        "text": "Bryn Thorn",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "2",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 119,
+          "y": 347,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Corin Flint \u00b7 Hero detai",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Corin Flint \u00b7 Hero details",
+        "text": "Corin Flint",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "3",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 85,
+          "y": 284,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Bloodline 2",
+        "tag": "BUTTON",
+        "class": "hero-jump",
+        "label": "Bryn Thorn \u00b7 Bloodline 2 \u00b7 1st heir \u00b7 Ready",
+        "text": "Bryn ThornBloodline 2 \u00b7 fighterL1 \u00b7 XP 0/60Ready",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "hero": "2",
+          "kwh": "bloodline"
+        },
+        "rect": {
+          "x": 22,
+          "y": 663.265625,
+          "w": 196.546875,
+          "h": 76.734375
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "hero-details",
+        "label": "Bloodline 2 details",
+        "text": "Details",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 222.546875,
+          "y": 679.625,
+          "w": 75.453125,
+          "h": 44
+        }
+      },
+      {
+        "key": "tile:heroes",
+        "tag": "BUTTON",
+        "class": "tile home-heroes-command home-icon-command",
+        "label": "Heroes",
+        "text": "Heroes",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "heroes",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 18,
+          "y": 774,
+          "w": 44.5,
+          "h": 54
+        }
+      },
+      {
+        "key": "tile:journal",
+        "tag": "BUTTON",
+        "class": "tile home-icon-command",
+        "label": "Journal",
+        "text": "Journal",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "journal",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 66.5,
+          "y": 774,
+          "w": 44.5,
+          "h": 54
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "gem pulse send",
+        "label": null,
+        "text": "Delveauto",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "mode": "fights",
+          "live": "0"
+        },
+        "rect": {
+          "x": 215,
+          "y": 787,
+          "w": 86,
+          "h": 86
+        }
+      }
+    ],
+    "kind": "FOLD_DIAGNOSTIC"
+  },
+  {
+    "viewport": {
+      "width": 400,
+      "height": 900
+    },
+    "controls": [
+      {
+        "key": "Gold$48036",
+        "tag": "BUTTON",
+        "class": "num stat gold",
+        "label": null,
+        "text": "Gold$48036",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "kwh": "gold"
+        },
+        "rect": {
+          "x": 116.515625,
+          "y": 9,
+          "w": 76.109375,
+          "h": 44
+        }
+      },
+      {
+        "key": "Hero Legacy 0",
+        "tag": "BUTTON",
+        "class": "num stat legacy",
+        "label": "Hero Legacy 0",
+        "text": "Legacy0",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 198.625,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "settings",
+        "tag": "BUTTON",
+        "class": "gear stud",
+        "label": "settings",
+        "text": "",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 348,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "town-hit hit-mouth",
+        "label": "Delve",
+        "text": "Delve",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "mouth",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 175,
+          "y": 203,
+          "w": 61,
+          "h": 45
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "town-hit hit-tent",
+        "label": "hero",
+        "text": "hero",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "tent",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 226,
+          "y": 321,
+          "w": 64,
+          "h": 45
+        }
+      },
+      {
+        "key": "blacksmith",
+        "tag": "BUTTON",
+        "class": "town-hit hit-blacksmith",
+        "label": "forge \u00b7 Upgrade $100",
+        "text": "forge",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "blacksmith",
+          "kwh": "forge",
+          "detailTip": "",
+          "worker": "",
+          "markers": "sword"
+        },
+        "rect": {
+          "x": 96,
+          "y": 262,
+          "w": 71,
+          "h": 51
+        }
+      },
+      {
+        "key": "bank",
+        "tag": "BUTTON",
+        "class": "town-hit hit-bank",
+        "label": "savings",
+        "text": "savings",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "bank",
+          "kwh": "bank",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 237,
+          "y": 262,
+          "w": 83,
+          "h": 51
+        }
+      },
+      {
+        "key": "guild",
+        "tag": "BUTTON",
+        "class": "town-hit hit-guild",
+        "label": "Guild reception",
+        "text": "Guild reception",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "guild",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 121,
+          "y": 421,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "pool",
+        "tag": "BUTTON",
+        "class": "town-hit hit-pool",
+        "label": "Recovery pool",
+        "text": "Recovery pool",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "pool",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 91,
+          "y": 367,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "device",
+        "tag": "BUTTON",
+        "class": "town-hit hit-device",
+        "label": "Clone vat",
+        "text": "Clone vat",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "device",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 302,
+          "y": 340,
+          "w": 46,
+          "h": 44
+        }
+      },
+      {
+        "key": "Vale Ash \u00b7 Hero details",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Vale Ash \u00b7 Hero details",
+        "text": "Vale Ash",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "1",
+          "heir": "66",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 43,
+          "y": 376,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Hero detail",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Bryn Thorn \u00b7 Hero details",
+        "text": "Bryn Thorn",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "2",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 159,
+          "y": 347,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Corin Flint \u00b7 Hero detai",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Corin Flint \u00b7 Hero details",
+        "text": "Corin Flint",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "3",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 125,
+          "y": 284,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Bloodline 2",
+        "tag": "BUTTON",
+        "class": "hero-jump",
+        "label": "Bryn Thorn \u00b7 Bloodline 2 \u00b7 1st heir \u00b7 Ready",
+        "text": "Bryn ThornBloodline 2 \u00b7 fighterL1 \u00b7 XP 0/60Ready",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "hero": "2",
+          "kwh": "bloodline"
+        },
+        "rect": {
+          "x": 22,
+          "y": 663.265625,
+          "w": 276.546875,
+          "h": 76.734375
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "hero-details",
+        "label": "Bloodline 2 details",
+        "text": "Details",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 302.546875,
+          "y": 679.625,
+          "w": 75.453125,
+          "h": 44
+        }
+      },
+      {
+        "key": "tile:heroes",
+        "tag": "BUTTON",
+        "class": "tile home-heroes-command home-icon-command",
+        "label": "Heroes",
+        "text": "Heroes",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "heroes",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 18,
+          "y": 774,
+          "w": 64.5,
+          "h": 54
+        }
+      },
+      {
+        "key": "tile:journal",
+        "tag": "BUTTON",
+        "class": "tile home-icon-command",
+        "label": "Journal",
+        "text": "Journal",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "journal",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 86.5,
+          "y": 774,
+          "w": 64.5,
+          "h": 54
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "gem pulse send",
+        "label": null,
+        "text": "Delveauto",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "mode": "fights",
+          "live": "0"
+        },
+        "rect": {
+          "x": 295,
+          "y": 787,
+          "w": 86,
+          "h": 86
+        }
+      }
+    ],
+    "kind": "FOLD_DIAGNOSTIC"
+  },
+  {
+    "viewport": {
+      "width": 402,
+      "height": 681
+    },
+    "controls": [
+      {
+        "key": "Gold$48036",
+        "tag": "BUTTON",
+        "class": "num stat gold",
+        "label": null,
+        "text": "Gold$48036",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "kwh": "gold"
+        },
+        "rect": {
+          "x": 116.515625,
+          "y": 9,
+          "w": 76.109375,
+          "h": 44
+        }
+      },
+      {
+        "key": "Hero Legacy 0",
+        "tag": "BUTTON",
+        "class": "num stat legacy",
+        "label": "Hero Legacy 0",
+        "text": "Legacy0",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 198.625,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "settings",
+        "tag": "BUTTON",
+        "class": "gear stud",
+        "label": "settings",
+        "text": "",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 350,
+          "y": 9,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "town-hit hit-mouth",
+        "label": "Delve",
+        "text": "Delve",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "mouth",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 176,
+          "y": 106,
+          "w": 61,
+          "h": 45
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "town-hit hit-tent",
+        "label": "hero",
+        "text": "hero",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "tent",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 227,
+          "y": 224,
+          "w": 64,
+          "h": 45
+        }
+      },
+      {
+        "key": "blacksmith",
+        "tag": "BUTTON",
+        "class": "town-hit hit-blacksmith",
+        "label": "forge \u00b7 Upgrade $100",
+        "text": "forge",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "blacksmith",
+          "kwh": "forge",
+          "detailTip": "",
+          "worker": "",
+          "markers": "sword"
+        },
+        "rect": {
+          "x": 97,
+          "y": 165,
+          "w": 71,
+          "h": 51
+        }
+      },
+      {
+        "key": "bank",
+        "tag": "BUTTON",
+        "class": "town-hit hit-bank",
+        "label": "savings",
+        "text": "savings",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "bank",
+          "kwh": "bank",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 238,
+          "y": 165,
+          "w": 83,
+          "h": 51
+        }
+      },
+      {
+        "key": "guild",
+        "tag": "BUTTON",
+        "class": "town-hit hit-guild",
+        "label": "Guild reception",
+        "text": "Guild reception",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "guild",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 122,
+          "y": 324,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "pool",
+        "tag": "BUTTON",
+        "class": "town-hit hit-pool",
+        "label": "Recovery pool",
+        "text": "Recovery pool",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "pool",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 92,
+          "y": 270,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "device",
+        "tag": "BUTTON",
+        "class": "town-hit hit-device",
+        "label": "Clone vat",
+        "text": "Clone vat",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "building": "device",
+          "detailTip": "",
+          "worker": "",
+          "markers": ""
+        },
+        "rect": {
+          "x": 303,
+          "y": 243,
+          "w": 46,
+          "h": 44
+        }
+      },
+      {
+        "key": "Vale Ash \u00b7 Hero details",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Vale Ash \u00b7 Hero details",
+        "text": "Vale Ash",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "1",
+          "heir": "66",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 47,
+          "y": 280,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Hero detail",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Bryn Thorn \u00b7 Hero details",
+        "text": "Bryn Thorn",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "2",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 160,
+          "y": 250,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Corin Flint \u00b7 Hero detai",
+        "tag": "BUTTON",
+        "class": "town-home-hero",
+        "label": "Corin Flint \u00b7 Hero details",
+        "text": "Corin Flint",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "homeHero": "3",
+          "heir": "1",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 126,
+          "y": 187,
+          "w": 44,
+          "h": 44
+        }
+      },
+      {
+        "key": "Bryn Thorn \u00b7 Bloodline 2",
+        "tag": "BUTTON",
+        "class": "hero-jump",
+        "label": "Bryn Thorn \u00b7 Bloodline 2 \u00b7 1st heir \u00b7 Ready",
+        "text": "Bryn ThornBloodline 2 \u00b7 fighterL1 \u00b7 XP 0/60Ready",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "hero": "2",
+          "kwh": "bloodline"
+        },
+        "rect": {
+          "x": 22,
+          "y": 444.265625,
+          "w": 278.546875,
+          "h": 76.734375
+        }
+      },
+      {
+        "key": "hero-details",
+        "tag": "BUTTON",
+        "class": "hero-details",
+        "label": "Bloodline 2 details",
+        "text": "Details",
+        "type": null,
+        "disabled": false,
+        "dataset": {},
+        "rect": {
+          "x": 304.546875,
+          "y": 460.625,
+          "w": 75.453125,
+          "h": 44
+        }
+      },
+      {
+        "key": "tile:heroes",
+        "tag": "BUTTON",
+        "class": "tile home-heroes-command home-icon-command",
+        "label": "Heroes",
+        "text": "Heroes",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "heroes",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 18,
+          "y": 555,
+          "w": 65,
+          "h": 54
+        }
+      },
+      {
+        "key": "tile:journal",
+        "tag": "BUTTON",
+        "class": "tile home-icon-command",
+        "label": "Journal",
+        "text": "Journal",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "tile": "journal",
+          "detailTip": ""
+        },
+        "rect": {
+          "x": 87,
+          "y": 555,
+          "w": 65,
+          "h": 54
+        }
+      },
+      {
+        "key": "send",
+        "tag": "BUTTON",
+        "class": "gem pulse send",
+        "label": null,
+        "text": "Delveauto",
+        "type": null,
+        "disabled": false,
+        "dataset": {
+          "mode": "fights",
+          "live": "0"
+        },
+        "rect": {
+          "x": 297,
+          "y": 568,
+          "w": 86,
+          "h": 86
+        }
+      }
+    ],
+    "kind": "PRIMARY_FOLD_DIAGNOSTIC"
+  }
+]

@@ -17,6 +17,7 @@ import { rowLabel } from "./tokens";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillChip } from "./class-skills";
 import "../hero-hub.css";
+import { equipmentFigure, type EquipmentPhase } from "./hero-equipment-figure";
 
 export type HeroHubSection = "gear" | "skills" | "behaviour" | "companions" | "attributes";
 export type HeroHubHooks = {
@@ -70,6 +71,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
     disposed = false,
     owner = "",
     headerFingerprint = "";
+  let equipmentPhase: EquipmentPhase = "actual";
   const identity = (): string =>
     JSON.stringify([
       app.lineage.selected_bloodline,
@@ -123,43 +125,16 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
 
   function gear(host: HTMLElement, context: App): void {
     const kits = app.lineage.starting_kits;
-    const figure = h(
-      "div",
-      { class: "hero-hub-figure", "aria-hidden": "true" },
-      h("span", { class: "hero-hub-silhouette" }, icon("hero", "♟")),
-    );
-    // Full frame, no invented equipment layers; primitive remains if art fails.
-    const cls = app.lineage.class.toLowerCase(),
-      look = app.lineage.look;
-    void fetch(`${import.meta.env.BASE_URL}art/atlas.json`)
-      .then((r) => r.json())
-      .then(async (atlas) => {
-        const atlasImage = new Image();
-        atlasImage.src = `${import.meta.env.BASE_URL}art/atlas.png`;
-        await atlasImage.decode();
-        if (!figure.isConnected || !current()) return;
-        const ids = [...(look ? [`hero_${cls}_${look}`] : []), `hero_${cls}`];
-        const frame = ids.map((id) => atlas.frames[id]).find(Boolean);
-        if (!frame) return;
-        const sprite = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        sprite.classList.add("hero-hub-sprite");
-        sprite.setAttribute("viewBox", `${frame.x} ${frame.y} ${frame.w} ${frame.h}`);
-        sprite.setAttribute("width", String(frame.w));
-        sprite.setAttribute("height", String(frame.h));
-        const image = document.createElementNS("http://www.w3.org/2000/svg", "image");
-        image.setAttribute("href", `${import.meta.env.BASE_URL}art/atlas.png`);
-        image.setAttribute("width", String(atlas.meta.atlas.w));
-        image.setAttribute("height", String(atlas.meta.atlas.h));
-        sprite.append(image);
-        const scale = 200 / Math.max(frame.w, frame.h);
-        Object.assign(sprite.style, {
-          width: `${frame.w * scale}px`,
-          height: "auto",
-        });
-        replace(figure, sprite);
-      })
-      .catch(() => {});
+    const asked = identity();
     const equipment = kits?.equipment;
+    const figure = equipmentFigure(
+      equipment,
+      equipmentPhase,
+      (phase) => {
+        equipmentPhase = phase;
+      },
+      () => current() && asked === identity() && host.isConnected,
+    );
     const doll = h(
       "section",
       { class: "hero-hub-doll", "data-hub-build-readiness": equipment ? "canonical" : "partial" },
@@ -596,6 +571,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
       : null;
     const previousOwner = owner;
     if (owner !== identity()) {
+      equipmentPhase = "actual";
       for (const panel of panels.values()) panel.dispose?.();
       panels.clear();
       replace(content);

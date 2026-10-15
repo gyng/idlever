@@ -1,0 +1,6 @@
+client suite: targeted (1 selected; 164 current full; 207 exhaustive groups)
+FAIL runsui:heroes   36.5s (28.7s)  runsui: 3 FAIL
+     FAIL 320: three bloodlines retain ≤12 above-fold functions (16: Gold$48036 | Hero Legacy 0 | settings | send | hero-details | blacksmith | bank | guild | pool | device | Vale Ash · Hero details | Bryn Thorn · Hero detail | Corin Flint · Hero detai | Bryn Thorn · Bloodline 2 | tile:heroes | tile:journal)
+     FAIL open Heroes tracks live/rest/ready wire changes without gameplay mutation: {"rowStates":["live","rests","waits"],"text":["Ready","Departs 10m","Ready"],"unchanged":true}
+     FAIL 400: three bloodlines retain ≤12 above-fold functions (16: Gold$48036 | Hero Legacy 0 | settings | send | hero-details | blacksmith | bank | guild | pool | device | Vale Ash · Hero details | Bryn Thorn · Hero detail | Corin Flint · Hero detai | Bryn Thorn · Bloodline 2 | tile:heroes | tile:journal)
+FAIL: 0/1 client gates in 36.5s

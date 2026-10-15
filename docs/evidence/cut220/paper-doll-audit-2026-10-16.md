@@ -102,8 +102,9 @@ null slots0phantom layers. Two genuine differing cases (weapon, empty armour slo
 and same-kind/different-origin control must render correctly. All three paid
 resident IDs, Ready/Away/Recovering, refresh/switch/close and missing atlas/layer
 errors preserve exact read-only saves and reject stale callbacks. Existing slot
-routes stay≥44px with keyboard/focus/touch access. Inspect typical320×568,
-360×640,390×844,412×915 plus1440desktop atnormal/200%, viewport captures, no
+routes stay≥44px with keyboard/focus/touch access. Owner viewport amendment2026-10-16 supersedes the earlier preset matrix: inspect
+one402×681CSS iPhone Pro browser-content primary plus1440desktop atnormal/200%,
+viewport captures; smaller/Max/landscape are targeted only for a concrete need. No
 horizontal overflow; actual target/item names remain readable. Full/Low/Off/
 reduced motion show identical static gear, ordinary essential text≥4.5:1.
 Verify both hero looks and all owned weapon/body kinds; do not certify every

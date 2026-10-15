@@ -82,3 +82,34 @@
 html body .game-window[data-material="bloodlines"] .bloodline-founding > .gold {
   color: var(--gilt);
 }
+
+/* Home's roster opener lives once in the stable command dock at every width. */
+html body .camp .console .home-heroes-command {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+}
+html body .camp[data-first="1"] .console .cmd:has([data-tile="heroes"]) {
+  display: grid;
+}
+
+@media (max-width: 1023px) {
+  html body .camp .hero-mobile:not(:has(.hero-expand)) {
+    display: block;
+  }
+  html body .camp .hero-mobile:not(:has(.hero-expand)) > .hero-row {
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+}
+html body .camp .console .heroes-command-face {
+  position: relative;
+  overflow: hidden;
+}
+html body .camp .console .heroes-command-face::before {
+  content: "♟";
+}
+html body .camp .console .heroes-command-portrait {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+}

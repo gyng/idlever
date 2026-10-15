@@ -357,7 +357,10 @@ try {
     [".unlocks .card", "unlock card"],
     [".tabs .tab.edit", "rename"],
   ]) {
-    if (label === "chronicle") await page.locator(".hero-expand:visible").click({ timeout: 5000 });
+    if (label === "chronicle")
+      await page
+        .locator('.camp .console [data-tile="heroes"]:visible, .hero-mobile .hero-expand:visible')
+        .click({ timeout: 5000 });
     if (label === "class") {
       if (await page.locator(".hero-return:visible").count())
         await page.locator(".hero-return:visible").click({ timeout: 5000 });

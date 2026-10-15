@@ -1,0 +1,20 @@
+node:internal/child_process:1076
+      throw new ERR_INVALID_ARG_VALUE('stdio', stdio);
+            ^
+
+TypeError [ERR_INVALID_ARG_VALUE]: The argument 'stdio' is invalid. Received WriteStream {
+  fd: null,
+  path: '/home/g/p/riddle/docs/evidence/cut220/paper-doll-8879/first/vite.log',
+  flags: 'w',
+  mode: ...
+    at node:internal/child_process:1076:13
+    at Array.reduce (<anonymous>)
+    at getValidStdio (node:internal/child_process:1003:11)
+    at ChildProcess.spawn (node:internal/child_process:362:11)
+    at spawn (node:child_process:786:9)
+    at file:///home/g/p/riddle/docs/evidence/cut220/paper-doll-8879/check.mjs:17:57
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+  code: 'ERR_INVALID_ARG_VALUE'
+}
+
+Node.js v22.18.0

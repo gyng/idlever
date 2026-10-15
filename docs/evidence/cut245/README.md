@@ -121,3 +121,23 @@ not validate its tolerance for Crypt. This does not erase or fully explain the
 larger candidate failure. No new candidate rerun is justified merely to seek
 green; R6 GPU cost remains open pending a reliable measurement or demonstrated
 implementation improvement.
+
+
+Single-context follow-up prepared2026-10-16: `cost-single.mjs` uses one ordinary
+viewer/context and an ABBA/BAAB driver; delayed query tags bind actual issuing
+branch/frame. `cost-single-preflight-projection-2026-10-16.json` passes transformed
+module conformance and97delayed mock samples with ring reuse/disjoint invalidation.
+Every measured issuing frame must retain actual snapped projection/UV/scale,
+viewport/DPR/effects/tick/context/timer and painted-art state; raw atlas response
+bytes/decode are checked. Process namespace must match a positively observed
+live job record before absent handles can support quiet. No actual single-
+context GPU run has been launched while current native gates are live.
+
+Functional `off-equivalence-2026-10-16/` compares12fixed-clock images from the
+hash-verified archive baseline and new off branch: all6Fens/Crypt/Foundry×400/1440
+pairs have0different RGBA pixels and exact camera/device/effects/tick geometry.
+Root inspected the Crypt desktop frame for actual painted scene content. This
+uses the saved pre-projection instrumentation snapshot; the later accessor adds
+read-only CPU metadata and leaves on/off draw rules unchanged. It is not a
+performance or A/A control result. Follow cost-single-protocol.md next; preserve
+all original failures and unchanged0.20ms/10ms budgets.

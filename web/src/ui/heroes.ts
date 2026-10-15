@@ -15,7 +15,10 @@ import { heirOrd } from "./tokens";
 import { openSettings } from "./settings";
 import { heroPresence, heroAway, type ObservedPresence } from "./hero-presence";
 export { heroPresence } from "./hero-presence";
-export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } = {}) {
+export function heroRoster(
+  app: App,
+  hooks: { focus?(): void; rules?(): void; externalOpen?: boolean } = {},
+) {
   const el = h("section", { class: "hero-roster", "aria-label": /* copy:label */ "Active heroes" });
   let key = "";
   let sheetBody: HTMLElement | undefined;
@@ -206,7 +209,9 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
     h("div", { class: "label row-label" }, /* copy:label */ "Active heroes"),
     full(),
   ];
-  const openHeroes = (): void => {
+  const openHeroes = (anchor?: HTMLElement): void => {
+    const home = anchor?.closest(".camp");
+    anchor?.focus({ preventScroll: true });
     openWindow(
       () => {
         sheetBody = h("div", { class: "sheet-body heroes-sheet" }, ...sheetContents());
@@ -215,6 +220,9 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
       {
         onClose: () => {
           sheetBody = undefined;
+          // Refresh can replace the dock tile while the roster remains open.
+          if (anchor && !anchor.isConnected && home?.isConnected)
+            home.querySelector<HTMLElement>('[data-tile="heroes"]')?.focus({ preventScroll: true });
         },
       },
     );
@@ -263,11 +271,13 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
         "div",
         { class: "hero-mobile" },
         current ? row(current) : "",
-        h(
-          "button",
-          { class: "hero-expand game-control", onclick: openHeroes },
-          /* copy:button */ "Heroes",
-        ),
+        hooks.externalOpen
+          ? ""
+          : h(
+              "button",
+              { class: "hero-expand game-control", onclick: () => openHeroes() },
+              /* copy:button */ "Heroes",
+            ),
       ),
     );
     if (sheetBody?.isConnected) replace(sheetBody, ...sheetContents());
@@ -279,6 +289,7 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
   return {
     el,
     paint,
+    open: openHeroes,
     setPresence: (live: LiveRun, ended = false) => {
       if (
         observed &&

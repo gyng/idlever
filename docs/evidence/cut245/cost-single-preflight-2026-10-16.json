@@ -1,0 +1,23 @@
+{
+  "recordedAtUtc": "2026-10-15T20:10:37.083Z",
+  "scope": "Static transformed-module conformance and100 delayed mock GPU query/ring/issue-tag checks plus disjoint invalidation. No actual GPU, A/A, cost acceptance or baseline visual-equivalence result.",
+  "scriptSha256": "5ddd50eba2b0b09488e24e43b04a2f0afa54f0cb800652d993cf37aad64d4880",
+  "instrumentationSha256": "5546d0510396fafae60eb75e17952d99dc566505117a714280c1da3e7ad5f862",
+  "rows": [
+    {
+      "path": "web/src/render/index.ts",
+      "sourceSha256": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "originalSha256": "2e2dafec9b946ca1176b1b8ea9106774d065ef733d2621a6070a26f553354375",
+      "instrumentedSha256": "798db528dc29ad797498f927adbcfb6bab6aa126efe061984a4d2e18b5a2f419"
+    },
+    {
+      "path": "web/src/render/gputimer.ts",
+      "sourceSha256": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4",
+      "originalSha256": "390210536678d8625efafdd548513e0db65c12d0ae3035b57394aa8944e47c0d",
+      "instrumentedSha256": "87857fa73bb1ce4927d466f58eb94f978ce81052f35c8b5cc7779eff75eab648"
+    }
+  ],
+  "resolvedBeforeDisjoint": 97,
+  "dropped": 4,
+  "status": "PASS"
+}
