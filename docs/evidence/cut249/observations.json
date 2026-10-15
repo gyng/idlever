@@ -59,6 +59,18 @@
         "Terminal pacing/full results",
         "Different legacy missing-field provenance"
       ]
+    },
+    {
+      "origin": "Frozen8879 native pacing followed by routine full, terminal2026-10-15T20:53:32Z",
+      "measurement": "24targeted pacing rows PASS across256configuration/seed pairs in3353s; routine full18current-player cases PASS, metrics178.8s/QA71.5s/dayplayer204.9s,16RANDOM seeds. Exactsource/native/package hashes unchanged throughout.",
+      "interpretation": "The combined247\u2013249 correctness changes satisfy current pacing and routine mechanical acceptance without authored value/policy changes.",
+      "confidence": "High within exact runtime/harness/fixture identity",
+      "scope": "Current routine mechanical and targeted pacing only; exhaustive historical/balance audit, GPU cost, fun and whole-handoff acceptance remain open.",
+      "revalidationTriggers": [
+        "Any engine/tuning/runtime-input or gate harness change",
+        "Different package/native identity",
+        "New failed current-player or exhaustive evidence"
+      ]
     }
   ]
 }

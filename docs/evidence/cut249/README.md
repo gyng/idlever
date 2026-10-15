@@ -38,7 +38,7 @@ reloaded byte equality. `public-parity.mjs` records actual paid/unpaid1/3residen
 continuations on an explicitly pinned package, with immutable source saves and
 unnormalized full reports.
 
-## Successor8879 integration (in progress)
+## Successor8879 integration
 
 Actual fast WASM8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff
 is6,774,306bytes, archived with pkg identities. Native earned paid/unpaid1/3resident
@@ -64,9 +64,18 @@ settle recheck passes4/4 complete packets and all current raw hashes. The
 original strict manifest/log/raw exports remain historical. --check verifies
 only package pinning; repin-final-settle.log is the actual receipt recheck.
 
-24row/16seed pacing→routine-full is live via detached wrapper7816/node7843,
-bounded8threads and no tuning environment. gates-identity.json pins source,
-presets/cards, native binaries and current package/default before launch. No
-pacing/full result is claimed until terminal; failures stop the sequence and
-remain evidence. Separate root-owned8879client and weapon-fork successors are
-not claimed here. Exhaustive/fun/whole-handoff acceptance remains open.
+24row/16seed pacing is terminalPASS across256configuration/seed pairs in3353s.
+The subsequent routine FULL is terminalPASS: QA71.5s, metrics178.8s and
+dayplayer204.9s,18current-player fortnight cases and16RANDOM seeds. Neither leg
+used a completed-leg cache hit at launch; routine dayplayer may reuse exact
+per-job results from the preceding pacing run and uses its documented --resume.
+Pacing remains a targeted pack; routine FULL is the current mechanical gate.
+
+Both exit markers are0; final timestamp2026-10-15T20:53:32Z. Positive matching
+process-view checks confirm wrapper and all children absent. Every pinned source,
+all6native binaries and actual8879WASM remain exact. gates-terminal.json records
+all24numeric pacing bars and terminal identities; raw logs, four leg receipts,
+146runtime-prefixed dayplayer records and eight associated idle snapshots are
+SHA-inventoried and archived in gates-terminal-cache.tar.gz. No tuning was made.
+Exhaustive/fun/GPU-cost/whole-handoff acceptance remains open. Separate root-owned
+client and weapon-fork proofs retain their own exact identities and scopes.

@@ -26,6 +26,15 @@ hidden future plots, and unclipped Pets labels. Six current normal/200% phone/
 desktop views/gesture cases preserve exact saves. This does not complete broader
 menu-state, progression, content, exhaustive or independent fun requirements.
 
+Current Cut249 runtime8879 follow-up: native979tests/6ignored, Clippy, strict
+four settlements and public partition/reload parity pass. Targeted24-row pacing
+(256configuration/seed pairs) and routine full are now terminal PASS, with
+18current-player cases/16RANDOM seeds; exact source and binary identities are
+retained in evidence/cut249/gates-terminal.json. This does not certify the
+exhaustive balance/migration audit, all client states or independent fun rating.
+Painted Hub equipment integration is in progress with three neutral looks and
+seven newly generated wearable layers; visual mounting/acceptance is pending.
+
 ## Current product requirements
 
 | ID | Requirement | State | Evidence / next proof |
