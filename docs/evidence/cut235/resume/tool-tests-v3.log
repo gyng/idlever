@@ -1,0 +1,74 @@
+✔ saved-camp checks reject incomplete or ambiguous requests (3.03253ms)
+✔ references bind exact inputs and workloads and require uncorrupted full bytes (7.444781ms)
+✔ plan: failed refuses without earlier state; resume runs everything (11.090943ms)
+✖ --failed and --resume rerun only what needs it, and identity changes invalidate (18249.24837ms)
+✖ a hard kill mid-run leaves a valid state; --failed runs only the unfinished (314.204211ms)
+✔ save comparison detects adjacent integers that Number rounds together (2.627141ms)
+✔ comparison preserves safe counters, floats, arrays and quoted seed-like text (0.46966ms)
+✔ shared wallet matches equal-valued exits by bloodline and retains intervening movements (2.93187ms)
+✔ pet-fetched Gold remains with its death after later shared-wallet exits (0.33963ms)
+✔ native bridge covers every client method and rejects unsupported bindings (44.855775ms)
+✔ checkpoint memento accounts for every serde-skipped engine field (14.249882ms)
+✔ native sessions isolate, order calls, recover from request errors and preserve state across rebuild (394.617398ms)
+✔ native transport rejects remote connections and cross-origin requests (609.106249ms)
+✔ native edits coalesce, serialize and rebuild edits that arrive during a build (89.038777ms)
+✔ failed builds surface errors, recover on an edit and stop after close (65.222596ms)
+✔ only compilation inputs trigger builds, not generated outputs or browser assets (4.973801ms)
+✔ test-only edits skip rebuilds only with current cfg declaration and compiler proof (65.374916ms)
+✔ real compiler separates unit tests from runtime and included inputs (7068.089598ms)
+sweep.test: all PASS
+✔ tools/sweep.test.mjs (3698.857422ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 17
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18829.35617
+
+✖ failing tests:
+
+test at tools/client-resume.test.mjs:66:1
+✖ --failed and --resume rerun only what needs it, and identity changes invalidate (18249.24837ms)
+  AssertionError [ERR_ASSERTION]: client suite: targeted (2 selected; 3 current full; 3 exhaustive groups)
+  
+  !!! --failed REFUSED: identity changed since the last run (dirtyHash); pass --force to rerun the failed groups anyway
+  !!! last run: 9e906a8ad5+dirty:845994d7 wasm:309b25d32a00; now: 9e906a8ad5+dirty:4bb238fa wasm:309b25d32a00
+  
+  
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (file:///home/g/p/riddle/tools/client-resume.test.mjs:80:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools/client-resume.test.mjs:119:1
+✖ a hard kill mid-run leaves a valid state; --failed runs only the unfinished (314.204211ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///home/g/p/riddle/tools/client-resume.test.mjs:141:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

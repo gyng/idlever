@@ -1,0 +1,28 @@
+✔ saved-camp checks reject incomplete or ambiguous requests (2.82031ms)
+✔ references bind exact inputs and workloads and require uncorrupted full bytes (1.89792ms)
+✔ plan: failed refuses without earlier state; resume runs everything (6.872112ms)
+✔ --failed and --resume rerun only what needs it, and identity changes invalidate (1891.996878ms)
+✔ a hard kill mid-run leaves a valid state; --failed runs only the unfinished (597.154051ms)
+✔ save comparison detects adjacent integers that Number rounds together (2.42318ms)
+✔ comparison preserves safe counters, floats, arrays and quoted seed-like text (0.48435ms)
+✔ shared wallet matches equal-valued exits by bloodline and retains intervening movements (2.74462ms)
+✔ pet-fetched Gold remains with its death after later shared-wallet exits (0.328581ms)
+✔ native bridge covers every client method and rejects unsupported bindings (18.814838ms)
+✔ checkpoint memento accounts for every serde-skipped engine field (12.216905ms)
+✔ native sessions isolate, order calls, recover from request errors and preserve state across rebuild (351.68128ms)
+✔ native transport rejects remote connections and cross-origin requests (390.159967ms)
+✔ native edits coalesce, serialize and rebuild edits that arrive during a build (86.482021ms)
+✔ failed builds surface errors, recover on an edit and stop after close (66.169842ms)
+✔ only compilation inputs trigger builds, not generated outputs or browser assets (3.823921ms)
+✔ test-only edits skip rebuilds only with current cfg declaration and compiler proof (57.429693ms)
+✔ real compiler separates unit tests from runtime and included inputs (7358.015191ms)
+sweep.test: all PASS
+✔ tools/sweep.test.mjs (3770.677066ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7661.139744

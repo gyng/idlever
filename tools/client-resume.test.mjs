@@ -4,13 +4,50 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawn, spawnSync } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { plan } from "../web/tests/lib/run-state.mjs";
 
-const WEB = new URL("../web/", import.meta.url).pathname;
 const dir = mkdtempSync(join(tmpdir(), "idlever-client-resume-"));
+// Exercise the real Git identity without allowing ongoing development (or this test's
+// own evidence files) to change it between successive runner invocations.
+const repo = join(dir, "repo"),
+  WEB = join(repo, "web");
+mkdirSync(join(WEB, "tests/lib"), { recursive: true });
+for (const file of [
+  "run.mjs",
+  "lib/failure-output.mjs",
+  "lib/suites.mjs",
+  "lib/ui-parts.mjs",
+  "lib/run-state.mjs",
+])
+  copyFileSync(new URL(`../web/tests/${file}`, import.meta.url), join(WEB, "tests", file));
+const source = join(repo, "source.txt");
+writeFileSync(source, "source v1");
+const fixtureGit = (...args) => {
+  const r = spawnSync("git", args, { cwd: repo, encoding: "utf8" });
+  assert.equal(r.status, 0, r.stderr);
+};
+fixtureGit("init", "-q");
+fixtureGit("add", ".");
+fixtureGit(
+  "-c",
+  "user.name=Runner fixture",
+  "-c",
+  "user.email=runner@example.invalid",
+  "commit",
+  "-qm",
+  "Fixture baseline",
+);
 const groups = join(dir, "groups"),
   stateDir = join(dir, "state"),
   wasm = join(dir, "engine.wasm"),
@@ -74,7 +111,8 @@ test("--failed and --resume rerun only what needs it, and identity changes inval
   assert.equal(s.results.beta.ok, false);
   assert.match(s.results.beta.firstFailure, /beta broke at step 3/);
   assert.match(s.identity.wasmSha256, /^[0-9a-f]{64}$/);
-  assert.equal(typeof s.identity.head, "string");
+  assert.match(s.identity.head, /^[0-9a-f]{40,64}$/);
+  assert.equal(s.identity.dirty, false);
 
   r = run("alpha", "beta", "--failed");
   assert.equal(r.code, 1, r.out);
@@ -94,6 +132,15 @@ test("--failed and --resume rerun only what needs it, and identity changes inval
   assert.equal(r.code, 0);
   assert.deepEqual(r.ran, [], "everything reused");
   assert.match(r.out, /ok: 2\/2 .*ran fresh 0 .*reused 2/);
+
+  // Source edits invalidate passes independently of engine edits. Restore the
+  // committed bytes afterward so the following checks isolate the WASM identity.
+  writeFileSync(source, "source v2");
+  r = run("alpha", "beta", "--failed");
+  assert.equal(r.code, 2, r.out);
+  assert.deepEqual(r.ran, []);
+  assert.match(r.out, /REFUSED: identity changed since the last run \(dirty, dirtyHash\)/);
+  writeFileSync(source, "source v1");
 
   // a different engine: no pass is reused and --failed refuses
   writeFileSync(wasm, "engine v2");
@@ -118,6 +165,8 @@ test("--failed and --resume rerun only what needs it, and identity changes inval
 
 test("a hard kill mid-run leaves a valid state; --failed runs only the unfinished", async () => {
   rmSync(failFlag, { force: true });
+  rmSync(join(stateDir, "last-targeted.json"), { force: true });
+  ran();
   writeFileSync(hangFlag, "");
   const child = spawn(process.execPath, ["tests/run.mjs", "alpha", "hang"], {
     cwd: WEB,
@@ -128,13 +177,12 @@ test("a hard kill mid-run leaves a valid state; --failed runs only the unfinishe
   const deadline = Date.now() + 20000;
   while (Date.now() < deadline) {
     try {
-      if (state().results.alpha?.ok) break;
+      if (state().results.alpha?.ok && readFileSync(ranLog, "utf8").includes("hang\n")) break;
     } catch {
       // not written yet
     }
     await new Promise((r) => setTimeout(r, 50));
   }
-  await new Promise((r) => setTimeout(r, 300));
   process.kill(-child.pid, "SIGKILL"); // the runner and its groups, no handler runs
   await new Promise((r) => child.on("exit", r));
   const s = state();
