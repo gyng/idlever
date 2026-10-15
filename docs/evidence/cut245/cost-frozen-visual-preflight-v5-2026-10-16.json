@@ -1,0 +1,43 @@
+{
+  "recordedAtUtc": "2026-10-15T21:38:18.867Z",
+  "status": "PASS CPU-only preparation",
+  "rows": [
+    {
+      "path": "web/src/render/index.ts",
+      "sourceSha256": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "originalSha256": "2e2dafec9b946ca1176b1b8ea9106774d065ef733d2621a6070a26f553354375",
+      "instrumentedSha256": "c2fe0a5f467c20dcb63f88fd367e10b929fef5207b3a46b88f6ea570d46e680b"
+    },
+    {
+      "path": "web/src/render/gputimer.ts",
+      "sourceSha256": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4",
+      "originalSha256": "390210536678d8625efafdd548513e0db65c12d0ae3035b57394aa8944e47c0d",
+      "instrumentedSha256": "fb678018674352e639d8876936055a3ec72bd7e7d4d41f320a4a33be8bf8ee06"
+    },
+    {
+      "path": "archived pre-landmark index.ts",
+      "sourceSha256": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa",
+      "originalSha256": "f310038282247df48e8658cd3305b6cfcd944006b74835c986ce17b618fba1b8",
+      "instrumentedSha256": "c10bb6baf350f1fa74d0f2b8fd9bc1dce17130971b75801d16df7a94709b1560"
+    }
+  ],
+  "delayedSamples": 97,
+  "disjointDropped": 4,
+  "contentMock": [
+    "two actual submitted groups with distinct material uniforms",
+    "unsupported input rejects and restores callbacks",
+    "full active instance/vertex arrays",
+    "uniform change rejected",
+    "texture byte change rejected",
+    "original render/clear/callback restored",
+    "InstancedMesh/custom object/material callbacks fail closed",
+    "duplicate/missing off-equivalence pairs rejected"
+  ],
+  "sources": {
+    "cost-frozen-visual-instrumentation.mjs": "0a30406aead9e1249c534a205e52353578520c35d2d0e54dc87e1782d549ff38",
+    "cost-content-audit.mjs": "1047240693f82691acdd69157464333726555c14950c871a624a7dfee3f07336",
+    "cost-frozen-visual-preflight.mjs": "516f2ceb73924f291eb08afc27fc3fcc9f2cbfda7d430abca103b77b8882c4e0",
+    "cost-pair-coverage.mjs": "ac4508fc7844fee3b36ed1514079f0db3f9e5b3d95ebede03df2748fe8e0bc1d"
+  },
+  "scope": "No actual GPU/content/framebuffer/control/candidate result"
+}

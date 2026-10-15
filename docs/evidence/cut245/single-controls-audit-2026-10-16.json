@@ -1,0 +1,680 @@
+{
+  "recordedAtUtc": "2026-10-15T21:22:11.437643+00:00",
+  "scope": "Read-only frozen-source validity audit; no additional GPU run/candidate attribution",
+  "overallControlStatus": "FAIL",
+  "scenesPassed": 5,
+  "scenesTotal": 6,
+  "budgets": [
+    {
+      "width": 1440,
+      "id": "crypt",
+      "medians": {
+        "baseline": 3.369984,
+        "candidate": 3.410944
+      },
+      "delta": 0.04096000000000011,
+      "limitMs": 0.2,
+      "withinBudget": true
+    },
+    {
+      "width": 400,
+      "id": "crypt",
+      "medians": {
+        "baseline": 2.279424,
+        "candidate": 2.238464
+      },
+      "delta": -0.04096000000000011,
+      "limitMs": 0.2,
+      "withinBudget": true
+    },
+    {
+      "width": 400,
+      "id": "fens",
+      "medians": {
+        "baseline": 0.50688,
+        "candidate": 0.509952
+      },
+      "delta": 0.0030719999999999636,
+      "limitMs": 0.2,
+      "withinBudget": true
+    },
+    {
+      "width": 400,
+      "id": "foundry",
+      "medians": {
+        "baseline": 2.57024,
+        "candidate": 2.320384
+      },
+      "delta": -0.2498560000000003,
+      "limitMs": 0.2,
+      "withinBudget": false
+    },
+    {
+      "width": 1440,
+      "id": "fens",
+      "medians": {
+        "baseline": 2.548736,
+        "candidate": 2.547712
+      },
+      "delta": -0.0010239999999996918,
+      "limitMs": 0.2,
+      "withinBudget": true
+    },
+    {
+      "width": 1440,
+      "id": "foundry",
+      "medians": {
+        "baseline": 3.31264,
+        "candidate": 3.239936
+      },
+      "delta": -0.07270399999999988,
+      "limitMs": 0.2,
+      "withinBudget": true
+    }
+  ],
+  "repetitions": 18,
+  "resolvedQuerySamples": 8640,
+  "queryMillisecondsGreatestCommonQuantizationStep": 3.2e-05,
+  "sameSourceHarnessInstrumentationBrowser": true,
+  "sourceStillExact": true,
+  "allSampleIssueTagsAndGeometryValid": true,
+  "rows": [
+    {
+      "artifact": "single-control-crypt1440-2026-10-16",
+      "id": "crypt",
+      "width": 1440,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.519488,
+        "candidate": 3.410944
+      },
+      "p95Delta": -0.10854399999999975,
+      "p50": {
+        "baseline": 2.04288,
+        "candidate": 2.086912
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-crypt1440-2026-10-16",
+      "id": "crypt",
+      "width": 1440,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.319808,
+        "candidate": 3.202048
+      },
+      "p95Delta": -0.11776000000000009,
+      "p50": {
+        "baseline": 2.014208,
+        "candidate": 2.077696
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-crypt1440-2026-10-16",
+      "id": "crypt",
+      "width": 1440,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.369984,
+        "candidate": 3.787776
+      },
+      "p95Delta": 0.41779199999999994,
+      "p50": {
+        "baseline": 2.143232,
+        "candidate": 2.234368
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-crypt400-2026-10-16",
+      "id": "crypt",
+      "width": 400,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 0.418816,
+        "candidate": 0.421888
+      },
+      "p95Delta": 0.0030719999999999636,
+      "p50": {
+        "baseline": 0.277504,
+        "candidate": 0.277504
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-crypt400-2026-10-16",
+      "id": "crypt",
+      "width": 400,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.79552,
+        "candidate": 2.238464
+      },
+      "p95Delta": -0.5570559999999998,
+      "p50": {
+        "baseline": 1.267712,
+        "candidate": 1.265664
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-crypt400-2026-10-16",
+      "id": "crypt",
+      "width": 400,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.279424,
+        "candidate": 2.335744
+      },
+      "p95Delta": 0.056319999999999926,
+      "p50": {
+        "baseline": 1.082368,
+        "candidate": 1.09568
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1088,
+      "finalClock": 16622,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 400,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 0.38912,
+        "candidate": 0.38912
+      },
+      "p95Delta": 0.0,
+      "p50": {
+        "baseline": 0.3072,
+        "candidate": 0.308224
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 400,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 0.50688,
+        "candidate": 0.509952
+      },
+      "p95Delta": 0.0030719999999999636,
+      "p50": {
+        "baseline": 0.39424,
+        "candidate": 0.395264
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 400,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 0.705536,
+        "candidate": 0.72192
+      },
+      "p95Delta": 0.016383999999999954,
+      "p50": {
+        "baseline": 0.508928,
+        "candidate": 0.508928
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 400,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.192384,
+        "candidate": 2.320384
+      },
+      "p95Delta": 0.12799999999999967,
+      "p50": {
+        "baseline": 1.219488,
+        "candidate": 1.19808
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 400,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.920448,
+        "candidate": 3.510272
+      },
+      "p95Delta": 0.5898240000000001,
+      "p50": {
+        "baseline": 1.415168,
+        "candidate": 1.3568
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 400,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.57024,
+        "candidate": 2.16064
+      },
+      "p95Delta": -0.4096000000000002,
+      "p50": {
+        "baseline": 1.257472,
+        "candidate": 1.275904
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 1440,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.680832,
+        "candidate": 2.547712
+      },
+      "p95Delta": -0.1331199999999999,
+      "p50": {
+        "baseline": 1.178624,
+        "candidate": 1.175552
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 1440,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.473984,
+        "candidate": 2.506752
+      },
+      "p95Delta": 0.03276799999999991,
+      "p50": {
+        "baseline": 1.13152,
+        "candidate": 1.128448
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "fens",
+      "width": 1440,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 2.548736,
+        "candidate": 2.768896
+      },
+      "p95Delta": 0.2201599999999999,
+      "p50": {
+        "baseline": 1.165312,
+        "candidate": 1.159168
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1602,
+      "finalClock": 10682,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 1440,
+      "rep": 0,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.656704,
+        "candidate": 3.406848
+      },
+      "p95Delta": -0.24985599999999986,
+      "p50": {
+        "baseline": 2.039808,
+        "candidate": 2.111488
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 1440,
+      "rep": 1,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.31264,
+        "candidate": 3.239936
+      },
+      "p95Delta": -0.07270399999999988,
+      "p50": {
+        "baseline": 1.878016,
+        "candidate": 1.854464
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          1,
+          2
+        ],
+        "candidate": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "artifact": "single-control-fens-foundry-2026-10-16",
+      "id": "foundry",
+      "width": 1440,
+      "rep": 2,
+      "queryCounts": {
+        "baseline": 240,
+        "candidate": 240
+      },
+      "p95": {
+        "baseline": 3.311616,
+        "candidate": 3.18976
+      },
+      "p95Delta": -0.12185599999999974,
+      "p50": {
+        "baseline": 2.10432,
+        "candidate": 2.146304
+      },
+      "finalCalls": 13,
+      "finalTriangles": 1210,
+      "finalClock": 23085,
+      "branchFrameResidues": {
+        "baseline": [
+          0,
+          3
+        ],
+        "candidate": [
+          1,
+          2
+        ]
+      }
+    }
+  ],
+  "concreteContentMatchingGap": "Real RAFnow still changes build prop/torch/overlay/bones/ghost frames, light flicker and blit uTime while only replaytick/geometry are asserted. No per-issue RAFstamp or actual draw-content/texture/light/uniform digest retained, so exact timed imagery cannot be established. This gap is not demonstrated as the cause of failed variance.",
+  "notChanged": [
+    "Authored.20ms budget",
+    "Difference of branch medianp95 aggregation",
+    "Production renderer/art/native",
+    "No control retry/candidate/equivalence after failure"
+  ],
+  "rawArtifacts": {
+    "single-control-crypt1440-2026-10-16": {
+      "sha256": "ec272274932b30312f035264d348ac5013e60a53a2603dc8c40545005d1b0f2a",
+      "bytes": 2571643
+    },
+    "single-control-crypt400-2026-10-16": {
+      "sha256": "2fbea3f35258299feae0651b88543412ae0c6ed98af6630a3e2cb8106e93abae",
+      "bytes": 2587642
+    },
+    "single-control-fens-foundry-2026-10-16": {
+      "sha256": "2c7cbe338449025f6b0690de7dfc4b231221a84f676ac53cd476c3ac57f0d2f4",
+      "bytes": 10326649
+    }
+  }
+}

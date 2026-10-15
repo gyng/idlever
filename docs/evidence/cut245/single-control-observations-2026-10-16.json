@@ -1,0 +1,15 @@
+{
+  "recordedAtUtc": "2026-10-15T21:34:56.229292+00:00",
+  "origin": "Quiet private NVIDIA GPU current-source identical-branch controls and subsequent read-only source/raw-query audit",
+  "measurement": "5/6scene controls PASS. Foundry400 difference of medianp95s\u22120.249856ms (abs>0.20);18reps/8640resolvedquerysamples valid,0disjoint/errors, matching source/art/browser/device/projection. No candidate run.",
+  "interpretation": "Current method fails its required noise-control bar. Paused tick does not freeze cosmetic visual inputs; this is an established matching gap, not proven cause of the observed variance.",
+  "confidence": "High for recorded numeric failure and identified source consumers; unknown causal contribution to variance.",
+  "scope": "GPU method control only, not feature cost/CPU/cold/fun or whole R6 acceptance. Frozen-visual successor is CPU-preflight preparation only.",
+  "shelfLife": "Historical measurements stay immutable. Revalidate method suitability on each changed source/browser/device/camera/clock/instrumentation and before new cost recommendations.",
+  "revalidationTriggers": [
+    "Explicit visual-clock-isolated content/framebuffer proof",
+    "New method conformance/actual A/A controls",
+    "Any render/art/harness/browser/device/camera/quality change",
+    "Owned workload/process-view changes"
+  ]
+}

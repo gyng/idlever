@@ -1,0 +1,33 @@
+{
+  "recordedAtUtc": "2026-10-15T21:27:19.332Z",
+  "status": "PASS CPU-only preparation",
+  "rows": [
+    {
+      "path": "web/src/render/index.ts",
+      "sourceSha256": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "originalSha256": "2e2dafec9b946ca1176b1b8ea9106774d065ef733d2621a6070a26f553354375",
+      "instrumentedSha256": "5cc3f53f85a242887004959d9b07d4f11565a498ca851c7980e8fe0f6e33fb57"
+    },
+    {
+      "path": "web/src/render/gputimer.ts",
+      "sourceSha256": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4",
+      "originalSha256": "390210536678d8625efafdd548513e0db65c12d0ae3035b57394aa8944e47c0d",
+      "instrumentedSha256": "fb678018674352e639d8876936055a3ec72bd7e7d4d41f320a4a33be8bf8ee06"
+    }
+  ],
+  "delayedSamples": 97,
+  "disjointDropped": 4,
+  "contentMock": [
+    "two actual submitted groups",
+    "full active instance/vertex arrays",
+    "uniform change rejected",
+    "texture byte change rejected",
+    "original render/clear/callback restored"
+  ],
+  "sources": {
+    "cost-frozen-visual-instrumentation.mjs": "0a30406aead9e1249c534a205e52353578520c35d2d0e54dc87e1782d549ff38",
+    "cost-content-audit.mjs": "45829dadd1f44171b2c610e4d9c1c242835d4c862a90f7838b986d61046c7193",
+    "cost-frozen-visual-preflight.mjs": "297e107e82b8d9b3b56f78d5a01a50f1bdf504da0b8b4dc15a3e7b31f871d434"
+  },
+  "scope": "No actual GPU/content/framebuffer/control/candidate result"
+}
