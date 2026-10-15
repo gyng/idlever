@@ -9,7 +9,7 @@ const SYMBOLS: Record<string, [string, string]> = {
   ranger: ["it_bow", "➶"],
   caster: ["v_magic", "✦"],
   gunner: ["v_gun_aim", "⌁"],
-  // Cut225: no painted insignia yet — the sprite ids fall back to these primitive glyphs.
+  // Painted class insignias retain primitive glyphs when the skin is unavailable.
   clown: ["v_clown", "♧"],
   engineer: ["v_engineer", "⚙"],
   sentinel: ["style_sentinel", "⬟"],

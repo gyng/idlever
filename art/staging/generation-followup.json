@@ -1,0 +1,52 @@
+{
+  "tool": "built-in image_gen",
+  "vat_idle_prompt": "Use case: stylized-concept. Production Idlever CLONE VAT sprite, gothic moonlit ink and watercolour on coarse stepped pixel clusters, hand-ink outline, cold moonlight above. Genuine transparent background. LANDSCAPE 1536x1024 image, 10% transparent margins. Crucial object bounding box WIDTH 1100 pixels, HEIGHT 900 pixels: overall silhouette wider than tall, width/height 1.22. A large broad octagonal fieldstone machinery platform spanning the FULL 1100px width; centered on it an upright cylindrical glass tank 500px wide with a domed riveted iron cap. Large hoses sweep outward LEFT AND RIGHT and curl back into the wide platform, small iron control wheel in front. All belong to ONE connected machine. Dark INK #0d0c14 UMBRA #1c1b2b DUSK #2b3350 MOON #4d6c99; MIST #a4bcd6 rim highlights, pale BONE #eadfc5 barely visible curled human silhouette inside murky fluid. Sparse worn GILT rivets. High three-quarter top-down camera facing slightly lower-left. No anatomy detail, no gore, no floor, scenery, shadow pool, glow halo, lettering, gradient or glossy 3D. Must read at 36px tall as tank with wide stone base. Do not draw a narrow freestanding column.",
+  "jobs": [
+    {
+      "id": "hero_gunner_female",
+      "ref": "/home/g/p/riddle/art/generated/hero_gunner_male.png",
+      "dest": "art/staging/gunner_looks/hero_gunner_female.png",
+      "prompt": "Create matching Idlever Gunner full-body game sprite, 1024x1536, genuine transparent background. Use reference as style and kit guide: same dark broad hunter hat, long wood-and-steel flintlock aimed RIGHT in both hands, dark leather coat, flowing tattered BLOOD cloak, MIST rim on rifle, clear pale BONE face patch. Same elegant adult 1:6.5 proportions, crisp ink and watercolor on coarse visible pixel grid, cold moonlight. Center with 10% margin, no floor, shadow, halo or text. Change look to young WOMAN with long dark BRAID visibly swinging behind head and below shoulder, slimmer frame, practical identical clothing."
+    },
+    {
+      "id": "hero_gunner_cat",
+      "ref": "/home/g/p/riddle/art/generated/hero_gunner_male.png",
+      "dest": "art/staging/gunner_looks/hero_gunner_cat.png",
+      "prompt": "Create matching Idlever Gunner full-body game sprite, 1024x1536, genuine transparent background. Use reference as style and kit guide: same dark broad hunter hat, long wood-and-steel flintlock aimed RIGHT in both hands, dark leather coat, flowing tattered BLOOD cloak, MIST rim on rifle, clear pale BONE face patch. Same elegant adult 1:6.5 proportions, crisp ink and watercolor on coarse visible pixel grid, cold moonlight. Center with 10% margin, no floor, shadow, halo or text. Change look to CAT-FOLK with human face, yellow eyes, large upright dark CAT EARS visibly poking through hat, MIST ear rims and a long black tail curling clear of cloak."
+    },
+    {
+      "id": "portrait_gunner_female",
+      "ref": "/home/g/p/riddle/art/staging/gunner_looks/hero_gunner_female.png",
+      "dest": "art/staging/gunner_portraits/hero_gunner_female.png",
+      "prompt": "Create ONE square 1024x1024 OPAQUE head-and-shoulders portrait of this exact Gunner character for Idlever. Preserve the young woman's long dark BRAID visibly draped over shoulder, feminine face and broad dark hunter hat, dark leather coat, BLOOD cloak collar, small antique rifle detail beside shoulder. Face turned three-quarter RIGHT, pale BONE face, cold moonlight, sharp gothic anime ink line with watercolor wash paper grain and coarse pixel clusters. Dark INK/DUSK quiet background, no frame, ring, lettering or logo."
+    },
+    {
+      "id": "portrait_gunner_cat",
+      "ref": "/home/g/p/riddle/art/staging/gunner_looks/hero_gunner_cat.png",
+      "dest": "art/staging/gunner_portraits/hero_gunner_cat.png",
+      "prompt": "Create ONE square 1024x1024 OPAQUE head-and-shoulders portrait of this exact Gunner character for Idlever. Preserve the human face, yellow eyes, tall CAT EARS poking through hat and broad dark hunter hat, dark leather coat, BLOOD cloak collar, small antique rifle detail beside shoulder. Face turned three-quarter RIGHT, pale BONE face, cold moonlight, sharp gothic anime ink line with watercolor wash paper grain and coarse pixel clusters. Dark INK/DUSK quiet background, no frame, ring, lettering or logo."
+    },
+    {
+      "id": "walk_gunner",
+      "ref": "/home/g/p/riddle/art/generated/hero_gunner_male.png",
+      "dest": "art/staging/walk_classes/walk_gunner.png",
+      "prompt": "Edit this exact Idlever character into a full-body WALKING pose moving RIGHT mid-stride, one leg clearly forward and the other behind, relaxed upright torso, weapon carried low at rest, not aiming or fighting. Preserve same young man, short dark hair, all class kit broad dark hunter hat and long antique flintlock rifle, dark clothing, tattered BLOOD cloak swinging behind. Elegant adult long proportions, gothic moonlit ink and watercolour on coarse pixel clusters. Genuine transparent background, 1024x1536 portrait, centered whole body with 10% margin, no floor, shadow, halo, lettering or new objects. A single town walk sprite matching the reference."
+    },
+    {
+      "id": "walk_clown",
+      "ref": "/home/g/p/riddle/art/generated/hero_clown_male.png",
+      "dest": "art/staging/walk_classes/walk_clown.png",
+      "prompt": "Edit this exact Idlever character into a full-body WALKING pose moving RIGHT mid-stride, one leg clearly forward and the other behind, relaxed upright torso, weapon carried low at rest, not aiming or fighting. Preserve same young man, short dark hair, all class kit two-pointed belled fool cap, BONE ruff, reversed dagger and hand bell, dark clothing, tattered BLOOD cloak swinging behind. Elegant adult long proportions, gothic moonlit ink and watercolour on coarse pixel clusters. Genuine transparent background, 1024x1536 portrait, centered whole body with 10% margin, no floor, shadow, halo, lettering or new objects. A single town walk sprite matching the reference."
+    },
+    {
+      "id": "walk_engineer",
+      "ref": "/home/g/p/riddle/art/generated/hero_engineer_male.png",
+      "dest": "art/staging/walk_classes/walk_engineer.png",
+      "prompt": "Edit this exact Idlever character into a full-body WALKING pose moving RIGHT mid-stride, one leg clearly forward and the other behind, relaxed upright torso, weapon carried low at rest, not aiming or fighting. Preserve same young man, short dark hair, all class kit goggles above brow, mace low, wrench belt, folded sentry tripod on back, dark clothing, tattered BLOOD cloak swinging behind. Elegant adult long proportions, gothic moonlit ink and watercolour on coarse pixel clusters. Genuine transparent background, 1024x1536 portrait, centered whole body with 10% margin, no floor, shadow, halo, lettering or new objects. A single town walk sprite matching the reference."
+    }
+  ],
+  "vat_active_prompts": [
+    "Edit this exact Idlever clone-vat sprite into CLONING active frame A. Preserve exact canvas size, object footprint, outer silhouette, all cap, bands, platform, hoses and valve positions, transparent background. Change ONLY fluid inside glass: brighten with a cold pale MIST inner glow, a clearer upright BONE human silhouette without anatomical detail, one thin BLOOD red vein of light, three bubbles near bottom. No exterior glow, no ground, no new props.",
+    "Edit this exact Idlever clone-vat sprite into CLONING active frame B. Preserve exact canvas size, object footprint, outer silhouette, all cap, bands, platform, hoses and valve positions, transparent background. Change ONLY fluid inside glass: brighten with a cold pale MIST inner glow, a clearer upright BONE human silhouette without anatomical detail, one thin BLOOD red vein of light, three bubbles near top and glow slightly brighter. No exterior glow, no ground, no new props."
+  ]
+}

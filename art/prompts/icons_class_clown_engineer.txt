@@ -1,3 +1,5 @@
+Generated and integrated 2026-10-15 with built-in imagegen; see docs/HANDOFF.md.
+
 You are painting CLASS INSIGNIA ICONS for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
 top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
 else in the repository): /home/g/p/riddle/art/ui/targets/style/ui_sheet.png, /home/g/p/riddle/art/ui/icons/v_gun_aim.png, /home/g/p/riddle/art/ui/icons/v_shield.png, /home/g/p/riddle/art/ui/icons/v_shadow.png, /home/g/p/riddle/art/ui/icons/v_magic.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
@@ -25,6 +27,6 @@ Every icon:
    one or two GILT rivets on the wrench. Broad masses, not a clock, not a steampunk badge.
 When both are saved, list the final paths and sizes. Do nothing else.
 
-PENDING (Cut225): not generated. After review, copy both PNGs into art/ui/icons/ and run python3 tools/ui-skin.py: it writes the
+ORIGINAL INTEGRATION BRIEF (Cut225): not generated. After review, copy both PNGs into art/ui/icons/ and run python3 tools/ui-skin.py: it writes the
 96x96 web/public/ui/icons/v_clown.png and v_engineer.png and lists them in web/src/ui/skin.json. No art/manifest.json entry (UI
 icons are not atlas sprites). Until then web/src/ui/class-icons.ts falls back to the ♧ / ⚙ glyphs.

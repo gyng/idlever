@@ -981,7 +981,7 @@ function drawPrimitive(
     R("#e8923a", 2, 1, 1, 3);
     R("#b89448", 1, 4, 3, 1);
   } else if (id === "town_bench") {
-    // A plank seat on two legs with a low back rail (art pending: art/prompts/town_props_bench_lantern.txt).
+    // Primitive plank-seat fallback; the packed bench comes from art/prompts/town_props_bench_lantern.txt.
     R("#0d0c14", 0, h * 0.3, w, h * 0.32);
     R("#7a5a3a", 1, h * 0.35, w - 2, h * 0.2);
     R("#4d6c99", 1, h * 0.35, w - 2, 1);

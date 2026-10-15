@@ -70,8 +70,8 @@ RAMP: dict[str, tuple[list[int], list[float]]] = {
     "nest": ([0, 1, 2, 3, 4, 5, 6], [0.12, 0.25, 0.42, 0.62, 0.82, 0.95]),
 }
 HUE = {"blood_0", "blood_1", "torch", "banner", "shrine", "item_potion", "item_scroll", "item_weapon", "item_armour", "item_gold",
-       "brazier", "candles"}   # gfx round 10: fire keeps its colour
-PROPS = {"barrel", "crate", "pot", "skulls", "chest", "rack", "statue", "brazier", "candles", "bones", "torch", "banner", "shrine", "vault", "vault_open", "nest", "item_gold"}   # bottom-anchored, 1-texel dark rim
+       "brazier", "candles", "tool_decoy", "tool_sentry"}   # fire and deployed tools keep their colour
+PROPS = {"barrel", "crate", "pot", "skulls", "chest", "rack", "statue", "brazier", "candles", "bones", "torch", "banner", "shrine", "vault", "vault_open", "nest", "item_gold", "tool_decoy", "tool_sentry"}   # bottom-anchored, 1-texel dark rim
 # a biome whose ramp roles differ from the warrens' shape: ramp index -> this biome's index
 BIOME_REMAP: dict[str, dict[int, int]] = {
     # pale dressed stone: slate mortar, pale field (the old sanctum floor's field was 5)

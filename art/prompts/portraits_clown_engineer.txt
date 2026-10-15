@@ -1,3 +1,5 @@
+Generated and integrated 2026-10-15 with built-in imagegen; see docs/HANDOFF.md.
+
 You are painting HERO PORTRAITS for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
 top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
 else in the repository): /home/g/p/riddle/art/ui/targets/style/hero_sheet.png, /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/portraits/hero_rogue_male.png, /home/g/p/riddle/art/ui/portraits/hero_caster_female.png, /home/g/p/riddle/art/ui/portraits/hero_ranger_cat.png, /home/g/p/riddle/art/ui/portraits/hero_gunner.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
@@ -50,4 +52,4 @@ the brief alone.
 ALIASES: save a byte-identical copy of hero_clown_male.png as /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_clown.png and of hero_engineer_male.png as /home/g/p/riddle/art/staging/portraits_clown_engineer/hero_engineer.png (the default look, like hero_rogue.png / hero_fighter.png).
 When all are saved, list the final paths and sizes. Do nothing else.
 
-PENDING (Cut225): not generated. After review, copy the eight PNGs into art/ui/portraits/ (1024x1024 opaque masters, like hero_rogue*.png) and run python3 tools/ui-skin.py: it writes web/public/ui/portraits/hero_clown*.webp and hero_engineer*.webp (256x256, quality 88) and lists them in web/src/ui/skin.json. No art/manifest.json entry (portraits are not atlas sprites). Until then the Hub/roster fall back to the class glyph.
+ORIGINAL INTEGRATION BRIEF (Cut225): not generated. After review, copy the eight PNGs into art/ui/portraits/ (1024x1024 opaque masters, like hero_rogue*.png) and run python3 tools/ui-skin.py: it writes web/public/ui/portraits/hero_clown*.webp and hero_engineer*.webp (256x256, quality 88) and lists them in web/src/ui/skin.json. No art/manifest.json entry (portraits are not atlas sprites). Until then the Hub/roster fall back to the class glyph.

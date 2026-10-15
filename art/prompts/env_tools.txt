@@ -1,3 +1,5 @@
+Generated and integrated 2026-10-15 with built-in imagegen; see docs/HANDOFF.md.
+
 You are painting PIXEL DUNGEON PROP SPRITES for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
 top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
 else in the repository): /home/g/p/riddle/art/ui/targets/style/watch_warrens.png, /home/g/p/riddle/art/ui/targets/style/watch_fens.png, /home/g/p/riddle/art/generated/env_torch.png, /home/g/p/riddle/art/generated/env_brazier.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
@@ -53,7 +55,7 @@ creatures.
    meets the tripod. Squat and wide, symmetric legs: the tripod and barrel are the tag. Fills ~75 % of the width.
 When both are saved, list the final paths and sizes. Do nothing else.
 
-PENDING (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, add "tool_decoy"
+ORIGINAL INTEGRATION BRIEF (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, add "tool_decoy"
 and "tool_sentry" to the HUE set in art/make_env.py (so they keep their colours and write art/tiles/env_tool_<kind>.png, loaded as
 `tile:env_tool_<kind>`), then python3 art/make_env.py && python3 art/pack.py && python3 art/art-qc.py. Until then render/atlas.ts
 `tool()` draws the 8x8 primitives in web/src/render/tool-sprites.ts (which stay the fallback). Manifest entries to add:

@@ -1,3 +1,5 @@
+Generated and integrated 2026-10-15 with built-in imagegen; see docs/HANDOFF.md.
+
 You are painting TOWN PROP SPRITE masters for the game "Idlever" (a gothic dark-fantasy roguelike on a phone, seen
 top-down at a high three-quarter angle). FIRST look at these approved STYLE TARGETS (you may open these images and nothing
 else in the repository): /home/g/p/riddle/art/ui/targets/style/town.png, /home/g/p/riddle/art/generated/town_blacksmith_1.png, /home/g/p/riddle/art/generated/town_storehouse_1.png, /home/g/p/riddle/art/generated/town_lamppost.png, /home/g/p/riddle/art/generated/town_well.png. They show the target look: moonlit ink and wash on a visible pixel grid, one BLOOD accent.
@@ -66,6 +68,6 @@ Brief: a small hand-carried iron LANTERN: a square INK iron cage with a MOON top
 
 When both are saved, list the final paths and sizes. Do nothing else.
 
-PENDING (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, then python3 art/pack.py && python3 art/art-qc.py. Packed frames win over the primitives automatically (TownAtlas cuts a packed frame before falling back); render/town.ts draws town_bench at h 8 (grounded) and town_lantern at h 5 (carried) / 8 (pool), and render/town.ts drawPrimitive stays the fallback (it has a town_lantern branch; town_bench has no branch yet and falls to the generic final shape). Manifest entries to add:
+ORIGINAL INTEGRATION BRIEF (Cut225): not generated. After review, copy both PNGs into art/generated/, add the manifest entries below, then python3 art/pack.py && python3 art/art-qc.py. Packed frames win over the primitives automatically (TownAtlas cuts a packed frame before falling back); render/town.ts draws town_bench at h 8 (grounded) and town_lantern at h 5 (carried) / 8 (pool), and render/town.ts drawPrimitive stays the fallback (it has a town_lantern branch; town_bench has no branch yet and falls to the generic final shape). Manifest entries to add:
   {"id": "town_bench", "kind": "town", "bg": "keyed", "gen": "1536x1024", "master_h": 32, "texel_h": 16, "description": "a plain village bench by the recovery pool: one thick lit plank seat on two squat legs, wide and low. (Cut225, art/prompts/town_props_bench_lantern.txt.)"}
   {"id": "town_lantern", "kind": "town", "bg": "keyed", "gen": "1024x1024", "master_h": 32, "texel_h": 16, "description": "a small hand-carried iron lantern: square ink cage, ring handle, one warm ember flame inside. (Cut225, art/prompts/town_props_bench_lantern.txt.)"}

@@ -49,9 +49,23 @@ sweep.mjs; research: PROGRESSION_COMPETITORS + PACKAGE_EVAL/GRADES/REPORT (Idlev
 client routine 40 groups (38 + depth-rail, glossary) PASS — clarity:paint and watch-live-edge only pass on a quiet
 host (load ≲20); gold-settlements 564/24.
 
-**Owner-only items:** run codex for art (prompts: art/prompts/town_clone_vat.txt, hero_clown_engineer.txt,
-portraits_clown_engineer.txt, icons_class_clown_engineer.txt, env_tools.txt, town_props_bench_lantern.txt,
-town_services.txt — the agent classifier blocks Claude launching codex); audio listening pass (eval/AUDIO.md).
+**Art generation update (2026-10-15):** built-in imagegen completed the seven pending prompt sets,
+then filled Gunner female/cat sprites + portraits and default Gunner/Clown/Engineer walk poses (31 unique final assets,
+plus 4 default aliases; three earlier narrow-vat candidates retained separately). All final assets are integrated.
+All seven classes now have all three look sprites and portraits, a default town walk pose, and a class insignia;
+all manifest sources exist. Cosmetics without a dedicated walk pose still use their matching idle art by design.
+Masters: art/generated/ and art/ui/{portraits,icons}/; atlas and UI skin rebuilt (525 frames).
+Clone-vat v2, Guild/pool/station now packed; retained primitives still work. Vat frames share 215x144 packed dimensions
+and 54x36 drawn dimensions. Their wider plinth is accepted after the 400/1440 comparison; aspect deviations from the
+original brief and exact scope: docs/CUT236_ART_GAPS.md. No gameplay or Rust changes.
+Prompt specs: art/prompts/; generation briefs/metadata: art/staging/generation-{jobs,followup}.json.
+Previews: art/staging/{review,followup-review}.png; comparison gallery/captures/results: art/staging/service-review/.
+Checks: art QC 525 frames, 0 warnings/failures; source/runtime composite review; 20 private-GPU comparison rows
+(phone/desktop, Full/Low/Off/reduced, retained fallbacks, Guild/pool relief, context-loss 2D and exact save equality).
+Final targeted suite 3/3 PASS (152.0s): class-tools 43 checks, home-services 38 checks,
+home-heroes three actors/selection/details/delves/portraits/watch/offline reconciliation.
+TypeScript, formatting and lint PASS. No release.
+Audio listening remains owner-only (eval/AUDIO.md).
 Recovery ramp alt: 16-28 also passes but at exactly 1.15 (shipping 14-28 keeps 0.02 margin).
 
 **Known limits:** routine 2-seed gate cannot see picked-idle/scout → use `--pacing`; picked-idle D13 sits at
@@ -225,7 +239,7 @@ class-styles fail identically on pristine b497 (pre-existing).
 
 Cut226 cloning copy merged (1ed309b0): Clone vat / Cloning / Clone N /
 Reclone; ids and saves unchanged. Art prompt art/prompts/town_clone_vat.txt
-pending generation (device still code-drawn). hero-life.mjs:306 waits for old
+generated and packed 2026-10-15 (see Art generation update above). hero-life.mjs:306 waits for old
 bloodline tabs (stale since the Hub; not in current suites).
 
 ## Cut227 — parked state (resume here)
