@@ -245,8 +245,12 @@ button.lane:active {
   overflow-y: auto;
   overscroll-behavior: contain;
 }
+.runs-sheet .runs-list > * {
+  flex-shrink: 0;
+}
 .runs-fold {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 2px;
   width: 100%;
@@ -259,6 +263,9 @@ button.lane:active {
   color: var(--bone);
   font: 15px/1.2 var(--sans);
   text-align: left;
+}
+.runs-fold > * {
+  flex-shrink: 0;
 }
 .runs-fold .rf-car {
   width: 16px;
@@ -305,10 +312,11 @@ button.re-body {
 }
 .run-entry .re-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 9px;
   font-size: 15px;
-  white-space: nowrap;
+  white-space: normal;
 }
 .run-entry .re-id {
   min-width: 34px;
@@ -338,9 +346,8 @@ button.re-body {
 }
 .run-entry .re-sub {
   font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .run-entry[data-tier="death"] .re-sub {
   color: #c98a93;
@@ -417,11 +424,13 @@ button.re-body {
 /* the log's two tabs: runs · heirs (the chronicle) */
 .runs-sheet .log-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 4px;
   margin-top: 4px;
 }
 .runs-sheet .log-tab {
+  flex-shrink: 0;
   min-height: 32px;
   padding: 4px 10px;
   border: 0;

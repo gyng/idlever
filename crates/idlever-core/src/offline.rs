@@ -2,7 +2,6 @@
 //! between them (Cut 2 §1). Historical literal tools retain stall sampling;
 //! current-game transport slices simulate exact ticks and settle one report.
 use crate::engine::{Batch, ExitTier, Game, StallTally, WAKE_TICKS};
-use crate::item::to_inv;
 use crate::rules::{Cond, Row, RuleSet, Verb};
 use crate::wire::*;
 use std::collections::BTreeMap;
@@ -219,7 +218,6 @@ fn run_offline_partition(game: &mut Game, elapsed_s: u64, full: bool, with_stall
                     }
                     game.lineage.town.today = ((game.lineage.clock_s + (consumed + ticks) / TICKS_PER_SECOND) / crate::engine::DAY_S) as u32;
                     game.finish_run();
-                    game.auto_keep();
                     game.events.clear();
                 }
                 consumed += ticks + rested;
@@ -406,7 +404,6 @@ fn settle_completed_run(game: &mut Game, consumed: u64, stall: &mut u32) {
     let outcome = game.finish_run().unwrap_or_default();
     game.clock_at = None;
     game.batch.rested += u64::from(game.lineage.rest_left);
-    game.auto_keep();
     game.events.clear();
     if outcome.new_facts == 0 && !outcome.new_best { *stall += 1; } else { *stall = 0; }
 }
@@ -531,7 +528,6 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
         sampled,
         learned,
         bests: b.bests.clone(),
-        found: b.found.iter().map(|i| to_inv(i, &game.lineage.facts, &game.lineage.flavours)).collect(),
         new_finds: b.new_finds.clone(),
         deaths,
         pending,
@@ -937,7 +933,6 @@ pub fn advance(game: &mut Game, elapsed_ms: u64) -> Advance {
             let id = game.run.as_ref().map_or(0, |r| r.id);
             let outcome = game.finish_run().unwrap_or_default();
             game.clock_at = None;
-            game.auto_keep();
             game.events.clear();
             out.ended.push(id);
             if matches!(outcome.tier, Some(ExitTier::Bank) | Some(ExitTier::Return)) {

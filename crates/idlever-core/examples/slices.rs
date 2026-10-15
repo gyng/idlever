@@ -6,8 +6,8 @@ fn main() {
     let _ = g.send();
     let mut n = 0;
     while g.run.as_ref().is_some_and(|r| r.over.is_none()) && n < 100_000 { let _ = g.step(10); n += 10; }
-    println!("watched run: over {:?} after {n} ticks, pending_exit {}", g.run.as_ref().and_then(|r| r.over), g.pending_exit.is_some());
-    let _ = g.keep(vec![]);
+    println!("watched run: over {:?} after {n} ticks, automatically settled", g.run.as_ref().and_then(|r| r.over));
+
     let save = g.save();
     let mut b = idlever_core::Game::load(&save).expect("load");
     println!("after load: run {:?} rest_left {}", b.run.as_ref().map(|r| (r.turn, r.over)), b.lineage.rest_left);

@@ -1,0 +1,1195 @@
+{
+  "scope": "Current pre-Cut244 production source/package identity before client/core retirement edits. Baseline only; gameplay policy/tuning unchanged. Two immediate reads identical. Earned Session/settlement parity baseline follows before core removal.",
+  "at": "2026-10-15T15:21:45.214050+00:00",
+  "head": "5af865e781ed44b0d9ffdfdead3dcceb34e5ae33",
+  "source": {
+    "crates/idlever-core/src/ai.rs": {
+      "bytes": 203804,
+      "sha256": "27e736b03e5999803b09240b6d3f9aadf0e80be9668cdae8f4fdd588871532b0"
+    },
+    "crates/idlever-core/src/armour_sets.rs": {
+      "bytes": 28780,
+      "sha256": "7fb19c74bd478d597e3be66ca6505ab7877d8922daebfe2d59f11ef90ae950af"
+    },
+    "crates/idlever-core/src/balance.rs": {
+      "bytes": 21053,
+      "sha256": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99"
+    },
+    "crates/idlever-core/src/bloodlines.rs": {
+      "bytes": 47201,
+      "sha256": "9cb22ab980305779be1e8f9d573a4a9ef520b51b1a1f3351e049509f026bfaec"
+    },
+    "crates/idlever-core/src/chronicle.rs": {
+      "bytes": 7768,
+      "sha256": "18356482ec2da983b774075135a68f56d69460aebe08b4dced6c32e0d341f0bd"
+    },
+    "crates/idlever-core/src/class_skill_effect_tests.rs": {
+      "bytes": 9851,
+      "sha256": "964ad3967795d411116276484f519b482f838370eca1da2719f209dd6a799992"
+    },
+    "crates/idlever-core/src/class_tree.rs": {
+      "bytes": 23070,
+      "sha256": "c29ce3c737599e6f92e8b9ba9356beefcd793b9fdeda119b41d1d717dc7da38f"
+    },
+    "crates/idlever-core/src/class_tree_tests.rs": {
+      "bytes": 17445,
+      "sha256": "a56714b3f861bebb8db4beea6b399a9901935111762d29696fecb03c324ead13"
+    },
+    "crates/idlever-core/src/defs.rs": {
+      "bytes": 27649,
+      "sha256": "89853cd749d810620c6373559641d1edd4c7c0f81dfc9174b9c16fcf239e66fa"
+    },
+    "crates/idlever-core/src/descent.rs": {
+      "bytes": 26459,
+      "sha256": "e57e0c0e72d24203fa25f7b43a576cf901d2c394382052aba7abcbcb7a34f16b"
+    },
+    "crates/idlever-core/src/divergence.rs": {
+      "bytes": 14817,
+      "sha256": "fd3c73c6548d0b4dbfb06ee6b7cf732f0e56cee570d0df3b087050b3a5457eb2"
+    },
+    "crates/idlever-core/src/economy_conversion_tests.rs": {
+      "bytes": 8223,
+      "sha256": "4422f9a01a23cb189742fb0ac41c07cb0fde1932d4f0f06397e553bc426ef626"
+    },
+    "crates/idlever-core/src/economy_free_tests.rs": {
+      "bytes": 10299,
+      "sha256": "a1e5bac83748ef7bafc87ed2aa54ebcad4a0b5005a3f8cd8ef3ae7c96dc5f0a1"
+    },
+    "crates/idlever-core/src/endgame.rs": {
+      "bytes": 24117,
+      "sha256": "496fa9bf2ef5c2f00e96e13811b4030e89a47f28b2283ed685431fc22074b044"
+    },
+    "crates/idlever-core/src/endgame_tests.rs": {
+      "bytes": 28774,
+      "sha256": "922aad1b03f84bbde140c4ed832afd145b98635c117593bd5832a698c7e10a44"
+    },
+    "crates/idlever-core/src/engine.rs": {
+      "bytes": 414698,
+      "sha256": "da3e030a78ca1c88b63dfc766b2728888247662ef84c57e1ae4cadadc2ae3194"
+    },
+    "crates/idlever-core/src/facts.rs": {
+      "bytes": 15967,
+      "sha256": "59a3f70cc1d9ead74a89929982fc376cb89ff097e8f59516bcc1f205d3bf5dd5"
+    },
+    "crates/idlever-core/src/feats.rs": {
+      "bytes": 52839,
+      "sha256": "04990cca12bf876c53418f1361f8b684330a9b03b66c0bc3f39d09f0e82df2b8"
+    },
+    "crates/idlever-core/src/firearm.rs": {
+      "bytes": 21825,
+      "sha256": "27ea946b0487a6885bd877783252fdde05742e6bc6f2068fc8e5ae6c94eb4e4d"
+    },
+    "crates/idlever-core/src/firearm_combat_tests.rs": {
+      "bytes": 11972,
+      "sha256": "2d245109a74696c6a41392ea1819a46dc6e202c50850b5c2caa2b7050a8041b1"
+    },
+    "crates/idlever-core/src/fixtures/save_307dbed.json": {
+      "bytes": 223210,
+      "sha256": "1f3c8e84fdd9d6abb1221220c47e97015f6051f267513fa9557180cb114af4d1"
+    },
+    "crates/idlever-core/src/fold.rs": {
+      "bytes": 17313,
+      "sha256": "8870977fe0678f4ec89e336c5f1b605fc4c91ed1cb16fc0ef2acbec3543f08f0"
+    },
+    "crates/idlever-core/src/forecast.rs": {
+      "bytes": 89330,
+      "sha256": "6f8613447f6ae996812a23d09b2b160f24664b62bc3ae4ad3d03cd25beccdfec"
+    },
+    "crates/idlever-core/src/gen.rs": {
+      "bytes": 22006,
+      "sha256": "087fba3a98b74f4a76384d1db1bb50e726cd13ea96de3130f1d1b5709cf88304"
+    },
+    "crates/idlever-core/src/geom.rs": {
+      "bytes": 2215,
+      "sha256": "13288dac1b289271f927478195a4a0a1dcd65f7004444d2f1058f2e8a2b2f3c8"
+    },
+    "crates/idlever-core/src/gunner_tests.rs": {
+      "bytes": 28551,
+      "sha256": "789e94efa8102d446f05bbe39ea86d67142fa5a2bcdb3c8b3bd6a68473f03bef"
+    },
+    "crates/idlever-core/src/hero.rs": {
+      "bytes": 26582,
+      "sha256": "9652426bfe71bcc46e732006ae0c7e748454369704c9c92a1471b3c94e8d5bc6"
+    },
+    "crates/idlever-core/src/hero_build.rs": {
+      "bytes": 11569,
+      "sha256": "f67f5b7fb1d9f8b8e2bcd855790bdffd47b0416f1b518e93c27305ff597e5343"
+    },
+    "crates/idlever-core/src/item.rs": {
+      "bytes": 14802,
+      "sha256": "a7654b56db4758e06604454d3affc6a0495a21ff63c06c35f2a70d2cc996a77c"
+    },
+    "crates/idlever-core/src/journal.rs": {
+      "bytes": 24224,
+      "sha256": "93bfc04ece4aa392b586f206d04ea6b08c9f6578c6520521bbbec47dc1b16632"
+    },
+    "crates/idlever-core/src/kit.rs": {
+      "bytes": 50833,
+      "sha256": "28f70b39c4092adb07a4efa5fde40c4a2dc0754f852e305e2d0a6590d8463a9c"
+    },
+    "crates/idlever-core/src/legacy.rs": {
+      "bytes": 11856,
+      "sha256": "8c9405909c59a4f053b226f1e727a50a7bd2978baec934deea96419b432d44e8"
+    },
+    "crates/idlever-core/src/legacy_tests.rs": {
+      "bytes": 20963,
+      "sha256": "5ee1da8147da840bd793c6984321b520133de3feac3a79695858ecb8417fc3e1"
+    },
+    "crates/idlever-core/src/legendary.rs": {
+      "bytes": 27271,
+      "sha256": "2b3066b7a1e2d8f5d49125401eb4d49a7cc066645a5b7bb54ba4477ae43e29b9"
+    },
+    "crates/idlever-core/src/lib.rs": {
+      "bytes": 18477,
+      "sha256": "7277aa2f3eddda495f3a5bbc884ebff8c7741a4af407fb455a69132f6161a535"
+    },
+    "crates/idlever-core/src/meta.rs": {
+      "bytes": 56797,
+      "sha256": "7037fa5bcb0d9a0c7049dd3d4503332b58044d9a3a90b0a7133ae0768ba40cdd"
+    },
+    "crates/idlever-core/src/meters.rs": {
+      "bytes": 16424,
+      "sha256": "c05146609f8bb1df214a8aa5de4039db4ce5d75c58f7704ded14f0b25b68f5e4"
+    },
+    "crates/idlever-core/src/monster.rs": {
+      "bytes": 12201,
+      "sha256": "9231bb772b9334eac7b09138224d86d07347e9e401a163c277aaa94c40d1b8a0"
+    },
+    "crates/idlever-core/src/news.rs": {
+      "bytes": 4491,
+      "sha256": "8756bf51aa08db88164c04787622abd23bb078889781e139a26eab46c732fb32"
+    },
+    "crates/idlever-core/src/oath.rs": {
+      "bytes": 34899,
+      "sha256": "6756fde5017b5d92e1f70ea022db5c062d399c4ded6026ed255aac165b7e5d9d"
+    },
+    "crates/idlever-core/src/offline.rs": {
+      "bytes": 64448,
+      "sha256": "ab12a2e1b91a24b96edc7cfe66059c24cffa22f103ff30bcbe2b3786a8e77e2b"
+    },
+    "crates/idlever-core/src/packages.rs": {
+      "bytes": 102037,
+      "sha256": "3a7f212221942816f5ca7c431bcbe96dcf5681c600246fea2b979a2d6dc188f5"
+    },
+    "crates/idlever-core/src/persistent.rs": {
+      "bytes": 33945,
+      "sha256": "3ac986a30cba11d71d16d639a7ec5ac90ab2aa9c9fa60c727f795ca301ecc5a6"
+    },
+    "crates/idlever-core/src/pets.rs": {
+      "bytes": 31612,
+      "sha256": "943f8eae0759c4a30df3f235d21b9477851e6fd7ed39c623b819a9e10a73cf81"
+    },
+    "crates/idlever-core/src/petstats.rs": {
+      "bytes": 2441,
+      "sha256": "489da1114e2bbad95fbe95ef05885a8dcb52d3a7e23977cf9f7da37623bf2bea"
+    },
+    "crates/idlever-core/src/probes.rs": {
+      "bytes": 20525,
+      "sha256": "90753b347883f6ed57a546643b7069ac4f0c7e15d597b8dec625b6f73774c81b"
+    },
+    "crates/idlever-core/src/progression.rs": {
+      "bytes": 23918,
+      "sha256": "b7d146c7717f67b89ce1a7aa5f387f947e0a6fde66badb4c7d7a03fe205c8c65"
+    },
+    "crates/idlever-core/src/provenance.rs": {
+      "bytes": 17506,
+      "sha256": "66c20068121fbcd9c60e7328c0aabe977ea93de199620c5d1ded36ee2f7a8fa0"
+    },
+    "crates/idlever-core/src/returns.rs": {
+      "bytes": 7235,
+      "sha256": "08203d865abba514ea2ad2bbf69fba09967f83b2646db01174e5fe264956cbba"
+    },
+    "crates/idlever-core/src/rng.rs": {
+      "bytes": 3746,
+      "sha256": "177d3208e9ffa962bdcc21f367b33e1f8c2129a8b76eef3a989b1793fc6f09d4"
+    },
+    "crates/idlever-core/src/rules.rs": {
+      "bytes": 25300,
+      "sha256": "edda0a1614bbd05255b70c550aef49c9d831fb945c3bf6ed4511da9de7092ae2"
+    },
+    "crates/idlever-core/src/save.rs": {
+      "bytes": 3538,
+      "sha256": "8a201c4f325978a42e85c51a1f407ef8408262377ca3e2e970ccb8252fcd5022"
+    },
+    "crates/idlever-core/src/shared.rs": {
+      "bytes": 3881,
+      "sha256": "2eafeae644e071d241edeb0af20897c743d6b34dc988997fdb99f879d4d7821f"
+    },
+    "crates/idlever-core/src/sifter.rs": {
+      "bytes": 58346,
+      "sha256": "46b474045646535fe72cb9ce1f733cf9528f49f5552d2248161233210c9fbc8b"
+    },
+    "crates/idlever-core/src/situations.rs": {
+      "bytes": 39273,
+      "sha256": "2d12714d015cbf5905b5d33ef2de1cdde410cfdb246d4cc087cc58a6b87887b6"
+    },
+    "crates/idlever-core/src/specialization.rs": {
+      "bytes": 4993,
+      "sha256": "969fcb04b162460a4a06b89673b46f8b6d296723499dd5486c156e7ffec96f84"
+    },
+    "crates/idlever-core/src/specialization_tests.rs": {
+      "bytes": 18135,
+      "sha256": "0714d11a1de315564b1ea011d7ca142183b7dd8720350433c1a7ed148344a49f"
+    },
+    "crates/idlever-core/src/systems.rs": {
+      "bytes": 16374,
+      "sha256": "3be5059e19fd70fc4a46c861f6950aca3c0c05f8dacf015ee6ef16f6b3302c2a"
+    },
+    "crates/idlever-core/src/test_stage.rs": {
+      "bytes": 470,
+      "sha256": "18fa03776aa40c615e99c1fc55a0e1d499cc6aff12f86741b1056d8a04963010"
+    },
+    "crates/idlever-core/src/tests.rs": {
+      "bytes": 602422,
+      "sha256": "20e85a91289800743443998a7b395f1f2b2a0292139ed99a5499cc700899c188"
+    },
+    "crates/idlever-core/src/tests_cut113.rs": {
+      "bytes": 5032,
+      "sha256": "e24d04c8a7cb9a633ff96a18562ee6a0448f400b997aec309705c307469d7e1f"
+    },
+    "crates/idlever-core/src/tests_cut114.rs": {
+      "bytes": 8164,
+      "sha256": "6024b4ba113ad6ce1d662213a86c3f6b47043824e8d05dc7a2f9331288e012a2"
+    },
+    "crates/idlever-core/src/tests_cut115.rs": {
+      "bytes": 9578,
+      "sha256": "d8ab0c68ee0e04dcfe543f9cff515d86e85bd7e0d99aced6bcae163bdea5fd9d"
+    },
+    "crates/idlever-core/src/tests_cut116.rs": {
+      "bytes": 8708,
+      "sha256": "29b7f6b746775a397ffaa308bd34d56e45c7dc0993fd6891bf372b9a72c94758"
+    },
+    "crates/idlever-core/src/tests_cut117.rs": {
+      "bytes": 14538,
+      "sha256": "5bb49438824222c406e0723831d5d8b9e156261d04bdf803863d0fb80fe77b82"
+    },
+    "crates/idlever-core/src/tests_cut118.rs": {
+      "bytes": 34783,
+      "sha256": "1a26a3b0e6ed6bf43d9538a52cfd22a914bb92f864ab732ae962ea2f6f03b85a"
+    },
+    "crates/idlever-core/src/tests_cut119.rs": {
+      "bytes": 13670,
+      "sha256": "8d5da3352655bbbfff38f67a20de0c05dde82b774f33b0e1c32d780a882eadd1"
+    },
+    "crates/idlever-core/src/tests_cut120.rs": {
+      "bytes": 20541,
+      "sha256": "1fc552682438448b252de57db12c08cec3afeddd952a936815d5d95781d6e4c6"
+    },
+    "crates/idlever-core/src/tests_cut121.rs": {
+      "bytes": 9294,
+      "sha256": "dc64c6aa1c69215a0acf1e4bef73e0e0f8a396b5274303e2c5075f7f3c94b1b4"
+    },
+    "crates/idlever-core/src/tests_cut122.rs": {
+      "bytes": 10769,
+      "sha256": "fd920d1248d872bff79914643c1a209bba6ec74635688d550096cdebb0770d3f"
+    },
+    "crates/idlever-core/src/tests_cut156.rs": {
+      "bytes": 5028,
+      "sha256": "c33c4294430e7206f1d8eb1c2f5d3bf97f209a2a991c98c71cdc88524662380b"
+    },
+    "crates/idlever-core/src/tests_cut157.rs": {
+      "bytes": 3521,
+      "sha256": "3c6c104e0bfbec320734a476e407ef4abef16b50e07ca2a604287b50a0a44dbe"
+    },
+    "crates/idlever-core/src/tests_cut159.rs": {
+      "bytes": 4164,
+      "sha256": "2d1ccd763b7548499870feeb6bae52f1460f26dab9a81752d13ec397587a544c"
+    },
+    "crates/idlever-core/src/tests_cut235.rs": {
+      "bytes": 30806,
+      "sha256": "61ee14d244243d3aaeda120b51b2b9e75e51cfb0962c9511a319f69dd191862a"
+    },
+    "crates/idlever-core/src/tests_cut27.rs": {
+      "bytes": 20653,
+      "sha256": "2e6b2bb0daa6f6c3100c7e6532272f82630d0d583aa0b2af83acad33911271a0"
+    },
+    "crates/idlever-core/src/tests_cut27_seams.rs": {
+      "bytes": 16459,
+      "sha256": "b7aff4da32c4ae49b9b76139f1474c5692f0538be482db7db13e9d7a91e45a79"
+    },
+    "crates/idlever-core/src/tests_cut28.rs": {
+      "bytes": 30799,
+      "sha256": "949cb46acc80c19233ef1abd47bea2f99dcf54696ec4d4ad5fc3031c63c02369"
+    },
+    "crates/idlever-core/src/tests_cut29.rs": {
+      "bytes": 20831,
+      "sha256": "1697ebc484c8c94c996c6bb3094e5cc67b798607f5ec9ae5c8e22dbbffdc1752"
+    },
+    "crates/idlever-core/src/tests_cut30.rs": {
+      "bytes": 15656,
+      "sha256": "3996ed9c2cca29e2522416cb58a1891a93616dd7b2ed8748be805e38217a2cc7"
+    },
+    "crates/idlever-core/src/tests_cut305.rs": {
+      "bytes": 46600,
+      "sha256": "eb36664ed21c779c44e852c2edbeb993d915a1888f0685014f87051fc7fd22d7"
+    },
+    "crates/idlever-core/src/tests_cut30_pkg.rs": {
+      "bytes": 103716,
+      "sha256": "447db6fb92f88bda47d55cedf83f43a17fc36997f1b32fd23cb8174784327144"
+    },
+    "crates/idlever-core/src/tests_runclear.rs": {
+      "bytes": 6310,
+      "sha256": "1bb8b2f3e85123cf642e99d8b7076d7ce51bd6ef298ae2948794df03a8ab512a"
+    },
+    "crates/idlever-core/src/tests_runsui.rs": {
+      "bytes": 13784,
+      "sha256": "dd9c8a9008bde2857b7e611aef09075463b74189d7c79133efa3432edae34675"
+    },
+    "crates/idlever-core/src/tiles.rs": {
+      "bytes": 25692,
+      "sha256": "0cd54df0eaaae151265314d5880aa6a2554d6a21fc9f82dbb30551e76e76cd3f"
+    },
+    "crates/idlever-core/src/tokens.rs": {
+      "bytes": 15801,
+      "sha256": "55a93873680ce2d28928e59fc52ad42a95687ffed4a22fda9890b7df13e35ddf"
+    },
+    "crates/idlever-core/src/tools.rs": {
+      "bytes": 43345,
+      "sha256": "2fc10af027f3ce86d434ef8ee22be97dd81337a366f2b46c5f56089127b77407"
+    },
+    "crates/idlever-core/src/tools_tests.rs": {
+      "bytes": 28653,
+      "sha256": "d601ec234e7eb569cd3f23af43bba26d2434321b22a2b45567a15ca308bcb19d"
+    },
+    "crates/idlever-core/src/town.rs": {
+      "bytes": 36722,
+      "sha256": "8f232a04ba84098f01c745846162ea60f863fe882c00f565ff132e62c63e1561"
+    },
+    "crates/idlever-core/src/trace.rs": {
+      "bytes": 186793,
+      "sha256": "5160a4f50e06d74f9bfef3e2ae349fb44471d1ad389d5612e1bab3021cca1ccb"
+    },
+    "crates/idlever-core/src/traits.json": {
+      "bytes": 1263,
+      "sha256": "c0fa1e294bc9f131bc665a37bd7216d286f6f9deb1160886c0ba38505b35b73f"
+    },
+    "crates/idlever-core/src/traits.rs": {
+      "bytes": 46273,
+      "sha256": "f248204678e0cc229f912c721c58c2ffbf71b1d2ef5665e9c87fe904174ea74f"
+    },
+    "crates/idlever-core/src/tree.rs": {
+      "bytes": 75825,
+      "sha256": "59330947b8edc011c21c530a4464701c9d4e0311f0ffe5b5fc485def8e8e2f54"
+    },
+    "crates/idlever-core/src/turn.rs": {
+      "bytes": 178056,
+      "sha256": "60d0df59d9fa8b872fc02df67cb6afecbcb2d8848a9c7ee4db1bfb31a5059032"
+    },
+    "crates/idlever-core/src/wall.rs": {
+      "bytes": 16430,
+      "sha256": "aa74b76d24779062722e0542c22685f3a6787a869ceeef7f8f291e87fac32557"
+    },
+    "crates/idlever-core/src/wire.rs": {
+      "bytes": 177251,
+      "sha256": "b696cdae84be8e56dbf01fd8770596ef1f2df78ae1f2762fed46524a33c109e1"
+    },
+    "crates/idlever-wasm/src/lib.rs": {
+      "bytes": 34721,
+      "sha256": "506094d2c3323e0cbc0555f0eb650005556450fa8b104a293096f4b7638f2fa4"
+    },
+    "web/src/ambient-motes.ts": {
+      "bytes": 5492,
+      "sha256": "f7cf8a485fd2bfec473bde1b70fb600ea63077a5ff484402e48ea7d5793b21db"
+    },
+    "web/src/app.ts": {
+      "bytes": 105346,
+      "sha256": "a4b2a8821c6b6cd7d8ec7518fb22a7fc71df91551498d5bcaaee5ba8cad17cf3"
+    },
+    "web/src/audio.ts": {
+      "bytes": 38410,
+      "sha256": "5fe265c0121111f649982b6f8e4d567e11b7fc86ed526e22b8d6cf38e0ec0657"
+    },
+    "web/src/autodismiss.css": {
+      "bytes": 824,
+      "sha256": "90ec02bdbd384f9978653ad576e8273a98db5ef7dd059f1ff38a07ceb7f2ad1f"
+    },
+    "web/src/bloodline-tabs.css": {
+      "bytes": 2049,
+      "sha256": "da6e02efbbe11696602116ffd80459a4bf1a1ed7dc2bfefeaa3fb5c0bf09f030"
+    },
+    "web/src/chrome.css": {
+      "bytes": 29058,
+      "sha256": "d6485f2c71273933794d3da0a5a494030ef951bf2a5731357acfe7300d6ae4c6"
+    },
+    "web/src/class-icons.css": {
+      "bytes": 2777,
+      "sha256": "ab04d80803e9874a71e97b11c79d70921f3b7e3cf958fde769d9003a94d87abf"
+    },
+    "web/src/class-styles.css": {
+      "bytes": 2039,
+      "sha256": "04d03f9434cb940833392689b0e0297adc699f7bfcaa7a77d304f835e0fc371b"
+    },
+    "web/src/class-tree.css": {
+      "bytes": 4678,
+      "sha256": "c08c2d9d56ffe1773e321310d7c72f12343452a1406f8ffacd86d235b7534db5"
+    },
+    "web/src/collect.css": {
+      "bytes": 4360,
+      "sha256": "3363e5dbad68160c7cd8d12781f1079b5325790d3fe219b2bad5630ea720a98e"
+    },
+    "web/src/crier.css": {
+      "bytes": 1774,
+      "sha256": "3405a04d9a83853dcaa53f3471db3668b81691d0eccc3bfab2a4e4525974eba4"
+    },
+    "web/src/cut29.css": {
+      "bytes": 11016,
+      "sha256": "33e1d2eedd50332f4c68bd1577d794e2af3b12ab5dacd46bc5389fb993da50c8"
+    },
+    "web/src/cut30.css": {
+      "bytes": 16303,
+      "sha256": "191cc361efb6694d217ef0383d9d98fff84d90d1a5328af82df062b8c04d6214"
+    },
+    "web/src/death.css": {
+      "bytes": 4826,
+      "sha256": "a165ca0221e7b95ffff4bba9d8abe50a96c60b82acd05636eda820dfa2b9c520"
+    },
+    "web/src/debug.ts": {
+      "bytes": 4986,
+      "sha256": "e706328169da50c77982dcf00bb0da52b223d72521faba27660ee7706ced5a78"
+    },
+    "web/src/depth-map.css": {
+      "bytes": 5461,
+      "sha256": "8d8777b114d2db9197136c643af0c98802ad72cbfaa7d7ce09c66765387291fd"
+    },
+    "web/src/desktop-dock.css": {
+      "bytes": 3478,
+      "sha256": "1b389cf3fcc6644f43fbd5a438b967be8c83c8bea541d2ed173728609cdfc15d"
+    },
+    "web/src/dev/history.ts": {
+      "bytes": 17186,
+      "sha256": "b8f8ef9b782687fd75a942d7d9d46cebbecf8d62c9a51afb70ca54a2aa5e951b"
+    },
+    "web/src/engine/classes.ts": {
+      "bytes": 2063,
+      "sha256": "2c44b26df30467f17c4a730e5aab258b702fbcee091f42334020c8530b05473e"
+    },
+    "web/src/engine/fake.ts": {
+      "bytes": 282051,
+      "sha256": "5de4a90c59fece040fe1f3d7286701bf5d4445bc6778d933e07bdc9ac7e7ae49"
+    },
+    "web/src/engine/index.ts": {
+      "bytes": 2513,
+      "sha256": "b76740d848e8bc80e3764e5139ebc1a2a6004833376f6062224d58c4378e090f"
+    },
+    "web/src/engine/lanes.ts": {
+      "bytes": 14942,
+      "sha256": "1ca2adb0602dd83e820789b19859353e8e4728fc6b29df9aa689f0fbc374a29b"
+    },
+    "web/src/engine/native-api.json": {
+      "bytes": 9808,
+      "sha256": "4ba1d97c59b6bafb213996435b217d8d4da2bb62235511579a388036873684bb"
+    },
+    "web/src/engine/native.ts": {
+      "bytes": 3242,
+      "sha256": "77bacacd4182e3b72501942f92f21cb110f92f73eb78ed6e6629fb9bdbbab240"
+    },
+    "web/src/engine/proxy.ts": {
+      "bytes": 6654,
+      "sha256": "abd0927d21589309352719f1658be5b54d8fb779287b53fb06cca530043ffc98"
+    },
+    "web/src/engine/types.ts": {
+      "bytes": 135892,
+      "sha256": "5a2da7f3a1d26edad5a761f3e21806f1cc3088da2d9e9ff1d96a38d7f3ab6f11"
+    },
+    "web/src/engine/wasm.ts": {
+      "bytes": 15349,
+      "sha256": "744519b71cb25439924c4ad0de76c773889c999ac830c5a5974dfa36cdf320a2"
+    },
+    "web/src/engine/worker.ts": {
+      "bytes": 1335,
+      "sha256": "c001d1bcbcef8cb89563fb872205daeb73683871ccbdec4b59a2f2a3cade3f8f"
+    },
+    "web/src/feats.css": {
+      "bytes": 3238,
+      "sha256": "d339f90152c5cc5ca6390aeb8ab5310db007398d055597f822800f798b0cd112"
+    },
+    "web/src/forge-branches.css": {
+      "bytes": 486,
+      "sha256": "1d935439079f910cbd2e7daff28e61dfa3b5aca8a2abc1adbd8f43aaa836f4fc"
+    },
+    "web/src/game-menu.css": {
+      "bytes": 7883,
+      "sha256": "308f09f9841926795b76d96e4b366e159cb311da877f030ee57348d1a6d6ceb2"
+    },
+    "web/src/hero-hub.css": {
+      "bytes": 10399,
+      "sha256": "572f19a94b1084e3a9b97723ef79b96e008abe2f6150109f5a40dcc9eac3c70e"
+    },
+    "web/src/hero-life.css": {
+      "bytes": 2666,
+      "sha256": "b49d91de5763f03dcbc80eedbe1088f77d8db947dac7dcde740ead865b74f89d"
+    },
+    "web/src/hero-progression.css": {
+      "bytes": 1345,
+      "sha256": "10d38cfbc47782acc93f07864c937a942bc7479e5b3d7b3cbb704a3911908e8a"
+    },
+    "web/src/heroes-compact.css": {
+      "bytes": 2146,
+      "sha256": "63092f960ce907c8be7d805c478d2161961bb5dd75a4db489c0f61a9c8b58c69"
+    },
+    "web/src/items.css": {
+      "bytes": 4240,
+      "sha256": "4f01f78344da3c3f8ab84e223cca60e6e2b70eeec416edcd9a432759d79ee0ac"
+    },
+    "web/src/journal.css": {
+      "bytes": 3008,
+      "sha256": "3b8405bddddeaebe6f434738c72d800bc1f39c604d1cdf419f372cb25465ecf7"
+    },
+    "web/src/juice.css": {
+      "bytes": 35911,
+      "sha256": "e21632df9b8dfde09717e79242e1d271aef6dabb21d141fcd0d352c78026b37d"
+    },
+    "web/src/juice.ts": {
+      "bytes": 9081,
+      "sha256": "cc305952381b4c0e218a02c121a85f22f1b593cf507f5f86ca83b5e2afac1c5f"
+    },
+    "web/src/ladder.css": {
+      "bytes": 1625,
+      "sha256": "ffcb9ef0a3f82a522099b40ea804fb238d97771f66b61f458db37c245dcc478b"
+    },
+    "web/src/legacy.css": {
+      "bytes": 3444,
+      "sha256": "9e095b1482d96651095c7217d2b4b40f2df5c2407db130edb671c413c177863b"
+    },
+    "web/src/legendary-discovery.css": {
+      "bytes": 1036,
+      "sha256": "75e5489933b05238b42e16076d83ae8bac076ea1f8a465abdecb630441b662b9"
+    },
+    "web/src/legendary-gear.css": {
+      "bytes": 1019,
+      "sha256": "5bb3a2854ff0039e15f07916b37d2263cd7df6dc04daf28afa442dfb83421769"
+    },
+    "web/src/legible.css": {
+      "bytes": 1618,
+      "sha256": "d297c6f61c45ae473ce6e7fbc18bdb1ebd6989c7d45bb7cd6e167d315d2a6eec"
+    },
+    "web/src/main.ts": {
+      "bytes": 3248,
+      "sha256": "43709f0b4b8c363dc49bd3f78fdbde2fb93de21e0a8d492d55ed9b6a757b7991"
+    },
+    "web/src/pets.css": {
+      "bytes": 2270,
+      "sha256": "c086145d6b3dd0d6758695955f36636fa9264a7649f4846bedfaea4fcb328f60"
+    },
+    "web/src/render/atlas.ts": {
+      "bytes": 36650,
+      "sha256": "d6618c368d37b01f3e6ba929d650d73364ff809e49b3bd813bda83a40e056545"
+    },
+    "web/src/render/blit.ts": {
+      "bytes": 21343,
+      "sha256": "d70a195a122accf891685b12705fb43aab30d7cd079358542a17c751ec13a46d"
+    },
+    "web/src/render/bloom.ts": {
+      "bytes": 4312,
+      "sha256": "ab1b21053cc734998edd953f7e18112c68019a320ec8b60e170bba07db600bcf"
+    },
+    "web/src/render/combat-cues.ts": {
+      "bytes": 4223,
+      "sha256": "f3cca506b68d4ebc6369d196936a3745874e7c4118e57f8daec18c75d64d4670"
+    },
+    "web/src/render/demo.ts": {
+      "bytes": 26989,
+      "sha256": "cbce8f8b146c8988dac0b4aead7f4fd649f4cb0c5b74d42c4ec4ea00a3517d3b"
+    },
+    "web/src/render/fallback.ts": {
+      "bytes": 3901,
+      "sha256": "29b1aabbdf1b554cf95a39561b2e554e3e0e164a6378c3913693b9dd3376519b"
+    },
+    "web/src/render/font.ts": {
+      "bytes": 2288,
+      "sha256": "a6e3842e5aa949eadb959614170d2ae17565b058a079bfd3054b9a06a9fa2452"
+    },
+    "web/src/render/fx.ts": {
+      "bytes": 70612,
+      "sha256": "b6bcbedc6394f9e7993afca3e00e650ea5b9a4e2e65d32b5cd59244bf39d4a06"
+    },
+    "web/src/render/fxpref.ts": {
+      "bytes": 2096,
+      "sha256": "25c0e9330e8ba8aefe717e7961dea563fe07ad4319cd6ba5d3e6987d4234fca2"
+    },
+    "web/src/render/gputimer.ts": {
+      "bytes": 4664,
+      "sha256": "0f0387db0022700e71e7fd1ebd5d213abc25854cd668a06ecaec162ef324a0f4"
+    },
+    "web/src/render/home-service-art.ts": {
+      "bytes": 12376,
+      "sha256": "2805dd205d50a6933724b073f95b7cf079e71a69424a566175181211336583b9"
+    },
+    "web/src/render/index.ts": {
+      "bytes": 104135,
+      "sha256": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa"
+    },
+    "web/src/render/layers.ts": {
+      "bytes": 7911,
+      "sha256": "5ff43ac8117cf1cb766dbefcc481996b2c8b99e96e751378eff3152af679e8b2"
+    },
+    "web/src/render/light.ts": {
+      "bytes": 6822,
+      "sha256": "ae521ca7b8745a72b188d53716b031501fee29ec0ca5a199e972e7e50b021fa4"
+    },
+    "web/src/render/look.ts": {
+      "bytes": 1158,
+      "sha256": "ffc89a9b3b1d361ec8f1364497c9d065fb956d76ffa1105c62e34e45ed409b6d"
+    },
+    "web/src/render/movement-trail.ts": {
+      "bytes": 1665,
+      "sha256": "d173bd9be6c0ba77ad3e13a984694280f85b63772d0c4162ab3c5deb4dfa169f"
+    },
+    "web/src/render/normals.ts": {
+      "bytes": 7622,
+      "sha256": "8d0af1e5b6c0c0785e95a060eb903889a14e0635e499cd3a921644b7005dba98"
+    },
+    "web/src/render/palette.ts": {
+      "bytes": 5716,
+      "sha256": "1e15f69411becd18afe7616c19334dffc6bc8b6b3d2b0ddc2e1023077ea65f32"
+    },
+    "web/src/render/quality.ts": {
+      "bytes": 3571,
+      "sha256": "3b8adc201fed807dd0bddf729e757bfe0f03a26d23e09bf3c22572ce7fcac87f"
+    },
+    "web/src/render/state.ts": {
+      "bytes": 39458,
+      "sha256": "e8bd86a1a89e7a1fdfc757b3e9dddb223c906c7fc88d025e4e3d4ce7bec5e5ed"
+    },
+    "web/src/render/tags.ts": {
+      "bytes": 22577,
+      "sha256": "ddf82333c1f2591c29e273c8d84fa92321456d12839fcbcf9b04592bf5cb7fd0"
+    },
+    "web/src/render/tool-cues.ts": {
+      "bytes": 5861,
+      "sha256": "1c2d926e44dbd8909398624db160d614ecc9db3bb40e69e0ab42789486fbbc02"
+    },
+    "web/src/render/tool-sprites.ts": {
+      "bytes": 1154,
+      "sha256": "14627c106ce221d6f115ae76c9c363d6109c87dfa8b7b578ebe33412a912010e"
+    },
+    "web/src/render/town-terrain.ts": {
+      "bytes": 12116,
+      "sha256": "1483b72e1a72c7a5ba79399e39d14a2c9d10589ab019e9b1e13a6404d4fd6f2d"
+    },
+    "web/src/render/town-volume.ts": {
+      "bytes": 5311,
+      "sha256": "53c8b389d5f55dbdf8f06ef38f277062ceec7333e596a58e58f1549ef4ac47c0"
+    },
+    "web/src/render/town.ts": {
+      "bytes": 135632,
+      "sha256": "d4e9b95fe37545894e7c506e1b52c17ba8851f808e6ef4d30bfc25f36426fca1"
+    },
+    "web/src/render/town_lights.json": {
+      "bytes": 2418,
+      "sha256": "82f37f7e019f032a6fe471971662a0f2432024e02fd120935fcb2ab8a02203e5"
+    },
+    "web/src/render/types.ts": {
+      "bytes": 442,
+      "sha256": "37966fcd39b8e3bc1a3d1cc73c7b9d93acc42e239601b6e1c3870fd52223a93a"
+    },
+    "web/src/render/view2d.ts": {
+      "bytes": 18086,
+      "sha256": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0"
+    },
+    "web/src/render/wash.ts": {
+      "bytes": 11215,
+      "sha256": "1a953391302dc008ac59a1af57bf0fe1c15ca830768b884025725eeaa9bc5b97"
+    },
+    "web/src/report-juice.css": {
+      "bytes": 4454,
+      "sha256": "f702df915b5343675ad5abe0bd9e53ce3e3eb511ff8368192821b824bdfe4909"
+    },
+    "web/src/return-pick.css": {
+      "bytes": 1570,
+      "sha256": "cbd9846c32549b2c8e2acb27561b3f8c588616bfe9fefc3eb264f531fa092e05"
+    },
+    "web/src/runclear.css": {
+      "bytes": 7592,
+      "sha256": "6d95f332ecee0c5ac7d00fd61959595384aa48f42a9c4515327276f00bdd6bfa"
+    },
+    "web/src/runs.css": {
+      "bytes": 39389,
+      "sha256": "1c76d042cf3740f781172c8e006658024044edfef1b5b5dfa17930b2566e4dd3"
+    },
+    "web/src/set-equipment.css": {
+      "bytes": 2161,
+      "sha256": "f903bd9cdf7368a013f1ddda7a51d654e4de22a747c3d2c560a1c58e945e59ff"
+    },
+    "web/src/skill-icons.css": {
+      "bytes": 2084,
+      "sha256": "85948e5877292d1de7aac9029a73d86fda5009b2bb18ecfea191606ef82ca478"
+    },
+    "web/src/store.ts": {
+      "bytes": 1426,
+      "sha256": "eece24729700c3757da4fbacbefc8829c8af192466b2332782c3ff3634dd1b77"
+    },
+    "web/src/styles.css": {
+      "bytes": 184408,
+      "sha256": "272cbd0c5f228210525d69fea5d623d526bd6ad61f7a7bf00a9e746b18c7c9a8"
+    },
+    "web/src/tasks.css": {
+      "bytes": 5931,
+      "sha256": "95842967085f2aca299b9d7b754f1afe08bd8ab17a714a858fe6a02f29efb271"
+    },
+    "web/src/tips.css": {
+      "bytes": 4208,
+      "sha256": "eb1b633b778266893583e0000e3097761898d6dd7fbc4da36373561a8fcbfef2"
+    },
+    "web/src/town.css": {
+      "bytes": 8589,
+      "sha256": "922df5d608a2a20581cc4401a7e923d68486fb9dca76417fed5ed17b5f45b217"
+    },
+    "web/src/ui-foundations.css": {
+      "bytes": 16390,
+      "sha256": "cff7fd251a38299c3e9ff1f162c168b33cc850f0136962ccbfa67be1be4c74fb"
+    },
+    "web/src/ui/attrib.ts": {
+      "bytes": 6933,
+      "sha256": "862e6a2b8e22194f528f25bb285355df81b5080009549105ee628da3c05e8b3b"
+    },
+    "web/src/ui/autodismiss.ts": {
+      "bytes": 8506,
+      "sha256": "259c764993968797300e75e37979d521290bd98be5c9e0d3da3254e39b3a7e01"
+    },
+    "web/src/ui/bloodline-loadouts.ts": {
+      "bytes": 6006,
+      "sha256": "d94fcba6b762671916f440394fcef45ef497bc1e80b7863d47f0d58129d9de0f"
+    },
+    "web/src/ui/bloodline-tabs.ts": {
+      "bytes": 4854,
+      "sha256": "e747b6234885a033c93c40064e5e4d413e935209f68dfe2b1a375b14b8cb5d6d"
+    },
+    "web/src/ui/building-help.ts": {
+      "bytes": 2888,
+      "sha256": "0882a6a275eac4aed736df495e023ee2c3bc7784e7609a288e6ab2876b1592d7"
+    },
+    "web/src/ui/camp.ts": {
+      "bytes": 107404,
+      "sha256": "d8ebf1b33a6947d64065cab6638ec98716bff8e275dca64614dfeca44122c786"
+    },
+    "web/src/ui/chain.ts": {
+      "bytes": 16770,
+      "sha256": "a42c7c6cd4e948481bc7aab6f03a1ec33267df265351e32bbc1102649df865df"
+    },
+    "web/src/ui/checkin.ts": {
+      "bytes": 3666,
+      "sha256": "a7ccba0e31f837cc8a6c269e2451ccc8af557c21005dcc9f5c0b0d5bd5c9e160"
+    },
+    "web/src/ui/chronicle.ts": {
+      "bytes": 4983,
+      "sha256": "c324000b2e335e35ef5666a12ed872e70efa8597e17b355d0e2dbd09f1af8cbb"
+    },
+    "web/src/ui/class-icons.ts": {
+      "bytes": 912,
+      "sha256": "f017c787e4b4d5ac597c1d1ed0b3c0ade0dbd0f42b7c23d556da3d12bfadad31"
+    },
+    "web/src/ui/class-skills.ts": {
+      "bytes": 1619,
+      "sha256": "14bfcdede8d3d82b0f5c1ccb96c8adbd9858d0ff137d60f1e8ce87c1bf14ddff"
+    },
+    "web/src/ui/class-styles.ts": {
+      "bytes": 6227,
+      "sha256": "d17fc83e41d78317df7a167b5e30226600c80291d6b034ec62fca5c57cddec8c"
+    },
+    "web/src/ui/class-tree.ts": {
+      "bytes": 10161,
+      "sha256": "840c31c93344ccbd0ffb94be5ab56a9ea33340e440055ff2f9737781e03e6f95"
+    },
+    "web/src/ui/class-unlock.ts": {
+      "bytes": 2836,
+      "sha256": "5d5d4d0fd1157037bf896df292814176b94874927ade6c533358e2d99cf8b334"
+    },
+    "web/src/ui/class-xp.ts": {
+      "bytes": 4563,
+      "sha256": "8a05d0920b0633316c5eb8043085f9f698d307b8e584886b5a64fab3de9ed997"
+    },
+    "web/src/ui/collect-send.ts": {
+      "bytes": 5840,
+      "sha256": "bee438cf0b4ea3bd68456663d3559da6bdd2342baa1a49fe5b0e5b6900d44df4"
+    },
+    "web/src/ui/combat-log.ts": {
+      "bytes": 2838,
+      "sha256": "66f364c5169f4a8f9525ac602960f873eb517dc3152884c6c8bd1e7703a2bb4e"
+    },
+    "web/src/ui/concepts.ts": {
+      "bytes": 16795,
+      "sha256": "93f455181509ce2a15589fa132c3a5a884180fabe5b961e22551b1ab116d4d98"
+    },
+    "web/src/ui/control.ts": {
+      "bytes": 28418,
+      "sha256": "22e448ea6caf6d5da8536c0e8a747ff593e004e9b6e2e02950b67ae118da13a8"
+    },
+    "web/src/ui/counter-name.ts": {
+      "bytes": 1192,
+      "sha256": "6819265fb1e2626e6d85109b7499aafc245f8ad77540bde67025e5922ced6bac"
+    },
+    "web/src/ui/crier.ts": {
+      "bytes": 14248,
+      "sha256": "3e1bb234ce13159d2fc980d75367517b4c8e7661738c3cae4f5e038d35a60af3"
+    },
+    "web/src/ui/death.ts": {
+      "bytes": 89195,
+      "sha256": "8898fa0ed2483aefcb5c946ee02452553c8776d850ce7d3b91e9acca1410fa3c"
+    },
+    "web/src/ui/depth-map.ts": {
+      "bytes": 8772,
+      "sha256": "406304f11a4cfea93b3abe37de5f4c692b5a37c0983e09decffcd5269ae162c2"
+    },
+    "web/src/ui/descent.ts": {
+      "bytes": 2730,
+      "sha256": "ce9b554cae21e648eeda23a0faf9c0a7a86ed5e41f64050ef93f7a82a840a39f"
+    },
+    "web/src/ui/design-system-board.ts": {
+      "bytes": 2306,
+      "sha256": "bc2114340f9d0e8898bf6c537d4de4d7f2dd90b210a5bec210f36fec45e7ce92"
+    },
+    "web/src/ui/divergence.ts": {
+      "bytes": 15520,
+      "sha256": "d1caeceb0c0fdb2ea73e1c1b65c09ed35157a3d91e7c3fd0859f3e802fb13e76"
+    },
+    "web/src/ui/dom.ts": {
+      "bytes": 5389,
+      "sha256": "cae19b8c134fe3cf5e9f73437119c5964d15d566a0606d29c90c40d7f8aad8b9"
+    },
+    "web/src/ui/editor.ts": {
+      "bytes": 48385,
+      "sha256": "c3d4773bb3f1ce4c08edbd8b6ea3beba0d588dc11846e2dd83803b41bd16b915"
+    },
+    "web/src/ui/encounter-modifiers.ts": {
+      "bytes": 1099,
+      "sha256": "90b9d058d21cc07124b3449b06ef5be7d4b5177748bfc8b341e8c8e2d4eb2bea"
+    },
+    "web/src/ui/ending.ts": {
+      "bytes": 15444,
+      "sha256": "f7ef86f522c0bdebe5a694d5d4d2115de7af4fb08514dd32180d3be5b3bf3eb9"
+    },
+    "web/src/ui/enemy-tips.ts": {
+      "bytes": 2992,
+      "sha256": "c7f1d21f3e2f9490c9dd7f143aecddda7c6f971d78c8f72d6a8eb4d0a4a98238"
+    },
+    "web/src/ui/exit-kind.ts": {
+      "bytes": 557,
+      "sha256": "71cb5f4025800597af0d2e51eeaa20a028c77c882ee315e5d20a8aa4d27b3c1b"
+    },
+    "web/src/ui/feats.ts": {
+      "bytes": 26852,
+      "sha256": "9a44a2fd73ca0de589e79beb93fc9e4de50e13f2a602b6917f1cc9ea2b415d7a"
+    },
+    "web/src/ui/fold.ts": {
+      "bytes": 10902,
+      "sha256": "97b2cb6663e611595c27094e099a5e3808dccf49bfff0a4d783f0961f67032ab"
+    },
+    "web/src/ui/forecast.ts": {
+      "bytes": 71146,
+      "sha256": "becd5a052891c898804e7343b9266ea46d361a9dd3c8941e5c8cb5fc50aeacb0"
+    },
+    "web/src/ui/forge.ts": {
+      "bytes": 22114,
+      "sha256": "58b8089db27200e2f086e8e27ed6d2114907626b561394830af785163e25b51d"
+    },
+    "web/src/ui/frame.ts": {
+      "bytes": 28535,
+      "sha256": "03d66103c49b5d421b18fcbe6beba81c717417784147abf8e11947d10ff42512"
+    },
+    "web/src/ui/game-menu.ts": {
+      "bytes": 9450,
+      "sha256": "26b1fcfda911a364805469fd0e1e152f6b41b9c7d9ef471d6b357b34d5d39953"
+    },
+    "web/src/ui/gold-transfers.ts": {
+      "bytes": 9241,
+      "sha256": "d2388c5ecfd2d5dbc7d9fb45b2d6110088833b3610732bce0a11cbec1088cb28"
+    },
+    "web/src/ui/gold-words.ts": {
+      "bytes": 879,
+      "sha256": "4e9668dcedf2b81ed614afbf4978628fb40253d52bd3ce6957658e151356af65"
+    },
+    "web/src/ui/gold.ts": {
+      "bytes": 9170,
+      "sha256": "af92d41896a3a325a756248fc0b6224ec407ac85417d6ad56a180b4dfe3d6c54"
+    },
+    "web/src/ui/gun-names.ts": {
+      "bytes": 293,
+      "sha256": "f2dac61db768be56caf371b78ae053e08d268c9eece47a4bb2b51d10f7d6efc4"
+    },
+    "web/src/ui/gun-status.ts": {
+      "bytes": 1562,
+      "sha256": "a99ffe45db0d456dff8c529966899fb490f96de9ce368f0b80eeadcb1be4333f"
+    },
+    "web/src/ui/hero-hub.ts": {
+      "bytes": 28322,
+      "sha256": "2beec822ef688b9bf9bd75d6f7de8f24f1fc167ea30e9617c8d4f8126d8ea9aa"
+    },
+    "web/src/ui/hero-life.ts": {
+      "bytes": 19406,
+      "sha256": "1e5c76b0613f9a1a3a43db1f2359cd6a0e043f8b37818944b6f5685d7c5d8b0d"
+    },
+    "web/src/ui/hero-presence.ts": {
+      "bytes": 2499,
+      "sha256": "62135eb4a83ca1218dbe0d00fabf31b72cba0edf7456a0b98433b7069842f177"
+    },
+    "web/src/ui/hero-progression.ts": {
+      "bytes": 10391,
+      "sha256": "b518fafaeeefa2f28f8ea5618b4791f142b915c6fb425a07b06f656cf64e570e"
+    },
+    "web/src/ui/heroes.ts": {
+      "bytes": 9751,
+      "sha256": "462c7e76a86effeefeb1d37f0f6e1a2fdaa41bfc540d1476f0a8a78a98fbb54f"
+    },
+    "web/src/ui/items.ts": {
+      "bytes": 6865,
+      "sha256": "a46f47ea716b0f2e9a5f41d2cfeaf100d8bc5767f0fbf5523dd6083ba07daebe"
+    },
+    "web/src/ui/journal-window.ts": {
+      "bytes": 3036,
+      "sha256": "1bcbbf9f10bb4b9f9f50ef3c03d6c6e1ba92be59ddc96cf357da17ac4fe136bc"
+    },
+    "web/src/ui/journal.ts": {
+      "bytes": 11372,
+      "sha256": "55db17a7842005bfcd08e3b78fee5c914cf1ce04add5b1c80cb16f17be8a4de4"
+    },
+    "web/src/ui/king-eta.ts": {
+      "bytes": 6120,
+      "sha256": "84e61cd47b97ab1d1e045aa8d0cbb0c3935061b5ac069d3e4021e035bbfcfe00"
+    },
+    "web/src/ui/ladder.ts": {
+      "bytes": 7574,
+      "sha256": "6ce3f299bc0aa19f429b0fe81171b95c61366d3f360071ef876e13cf01792ccf"
+    },
+    "web/src/ui/legacy-earned.ts": {
+      "bytes": 1218,
+      "sha256": "5115d39c8eb88ac4921f81ce0820727ae46fbc980c2ac121a4c1845a8fe66220"
+    },
+    "web/src/ui/legacy.ts": {
+      "bytes": 8662,
+      "sha256": "53dd967f5665dabb667842b80f3afa5a62f6b1f12088f29797508e4441dfd380"
+    },
+    "web/src/ui/legendary-discovery.ts": {
+      "bytes": 2740,
+      "sha256": "d96fdc13688985ee7b80ca488674eade150258fbe81a14cdff1e1789095ddd3e"
+    },
+    "web/src/ui/legendary-gear.ts": {
+      "bytes": 4151,
+      "sha256": "590ecccd9f97be6ae2eda134dfe5e801354e010d90ecee5c06283e2bdfa60eea"
+    },
+    "web/src/ui/look.ts": {
+      "bytes": 2497,
+      "sha256": "7ee549145fdafa33b4537fa056002a69825d2899aa07ed9c3c55959b00ff2a67"
+    },
+    "web/src/ui/menu-material.ts": {
+      "bytes": 1929,
+      "sha256": "200118446970f9a957ef3f785e3625749c8526cb3cef0834a79d71027d6c1cef"
+    },
+    "web/src/ui/meters.ts": {
+      "bytes": 11592,
+      "sha256": "3567181f3461e1212998983f5d956186a10934379ca80b1ddd7b9d245b6ce672"
+    },
+    "web/src/ui/oaths.ts": {
+      "bytes": 20601,
+      "sha256": "1e61da235e98b7dcd989b8dff2485ea886d1702fe67b73a2fdb164f94c098a7a"
+    },
+    "web/src/ui/order-offer.ts": {
+      "bytes": 5142,
+      "sha256": "39ac56aa46ffbdbc72c7fc71d6a8f726557a38c5b1f0dd96d4428550f12f6f0a"
+    },
+    "web/src/ui/orders.ts": {
+      "bytes": 4392,
+      "sha256": "4ee35886ca7319a3482e83abb99d8ac4ac95aa366b1a57fdbc9d24ea6ef02970"
+    },
+    "web/src/ui/packages.ts": {
+      "bytes": 49686,
+      "sha256": "a5a5c0b881646c805c48248109407b35c200cb1d39a4e9bc3e9ca0431b744eeb"
+    },
+    "web/src/ui/party.ts": {
+      "bytes": 14972,
+      "sha256": "be2afd07bc9385d89be3c86617e36f09a984c55e22964ecc81f15f8f30ef42f3"
+    },
+    "web/src/ui/patches.ts": {
+      "bytes": 44696,
+      "sha256": "9452302b41f9796fd3f63792b72019626677487c6f82e30da1aa4d7c5b472aac"
+    },
+    "web/src/ui/pets.ts": {
+      "bytes": 16565,
+      "sha256": "4d0c2cc08dbe1e21abb527f97a22f948c3375ded94bfb5e238db914521bd44c4"
+    },
+    "web/src/ui/placeholder-view.ts": {
+      "bytes": 7038,
+      "sha256": "984a9b88d28ccce1aefb207f9115f147827c403ff1067ddc271cc88454048218"
+    },
+    "web/src/ui/preparation.ts": {
+      "bytes": 9484,
+      "sha256": "10f8ee526740472019cbbf390e09d0ab243cbe58f0d1a16a5a2d80b82e104b0b"
+    },
+    "web/src/ui/progress-goal.ts": {
+      "bytes": 1213,
+      "sha256": "96d6a6108fde43331f997a38caff60221f47b0d63f8f1b6c021cded1b3753f47"
+    },
+    "web/src/ui/progress.ts": {
+      "bytes": 1836,
+      "sha256": "62db8c83d97217153ede9a63dfdcd49300c7d4509a70c1ec4d0446eb8b23863e"
+    },
+    "web/src/ui/quest.ts": {
+      "bytes": 4984,
+      "sha256": "2ea1851eb20d01725fc74ef6357569d8631037e123bb3e8b183ccb3c3cd4e110"
+    },
+    "web/src/ui/replay.ts": {
+      "bytes": 7997,
+      "sha256": "f18de44a934488b63890678fdcfd8083c315e2824d7a93712194f866d5c62efc"
+    },
+    "web/src/ui/report-bosses.ts": {
+      "bytes": 3654,
+      "sha256": "0ef7a03db51db98da8e4e62c9946348a1682c785b12af81d197c484925601e21"
+    },
+    "web/src/ui/report-choices.ts": {
+      "bytes": 3308,
+      "sha256": "638be78f158bc89f9ad17dddc01b95e28b26782aade63f1954c079b6c2c144ec"
+    },
+    "web/src/ui/report-juice.ts": {
+      "bytes": 6883,
+      "sha256": "d3af921177fb7f64d7c69c7843886530afc005878c2c6c29ef67bd5f8e41d995"
+    },
+    "web/src/ui/report-supplies.ts": {
+      "bytes": 2897,
+      "sha256": "7f7cba48cf01498fef946550647c1de06a293df22e2e912eecc266a2a598f867"
+    },
+    "web/src/ui/report.ts": {
+      "bytes": 115066,
+      "sha256": "dcf28b85f0d42fbf64552c5dbd0fbe508f3dc46266f629c9876323c5c7e450ed"
+    },
+    "web/src/ui/return-pick.ts": {
+      "bytes": 4887,
+      "sha256": "0a552a366639942d2c14c9f80d2cc50c0f8cf47e2ebf33fb2b6c6cfaaccd629c"
+    },
+    "web/src/ui/reveal.ts": {
+      "bytes": 6432,
+      "sha256": "34b00da513dc1e18f67d45ebd37f04daf102ce02d182aa9757b23b9c9d8b9e98"
+    },
+    "web/src/ui/route.ts": {
+      "bytes": 6534,
+      "sha256": "6936ecb63e893b42479ca0654bf2efd225d101907cc1a10b8a7fec2b30b59e92"
+    },
+    "web/src/ui/runclear.ts": {
+      "bytes": 11309,
+      "sha256": "381f8e7ce440e18671351ba6af5fb3a65e09d849ac3fa682a64a91857c74655d"
+    },
+    "web/src/ui/runlane.ts": {
+      "bytes": 10934,
+      "sha256": "d33ba490728d2ab1b1d727282d06a312d64a9e8b71b6d3e33d51583d91997574"
+    },
+    "web/src/ui/runlog.ts": {
+      "bytes": 5983,
+      "sha256": "036590292b61598a324d9c8be8bacc1eb8e95e5c8f494aeaa1e340ddd7a1befd"
+    },
+    "web/src/ui/runs.ts": {
+      "bytes": 20726,
+      "sha256": "bbaa3e4da8a5fb3e0cb4fdead5cc9579383afd6aa77fbfb6835d7f29faeb9713"
+    },
+    "web/src/ui/salvage.ts": {
+      "bytes": 715,
+      "sha256": "68d8924b79e5ba033eb27efa38e697c4bada4f12f25b97979b1b31712c3e8b06"
+    },
+    "web/src/ui/set-equipment.ts": {
+      "bytes": 7946,
+      "sha256": "a69c026f7ce84ea85cb5b9d61d6483d12e36ebb04a5b60b553a8372ba7a6528b"
+    },
+    "web/src/ui/settings.ts": {
+      "bytes": 11546,
+      "sha256": "29c8031e68f9591964d97d8461c3016414093369470b040925a61925df01cd27"
+    },
+    "web/src/ui/sheet-focus.ts": {
+      "bytes": 7541,
+      "sha256": "6d7e406f3a7fe53f024a278d3d80193d5095f61871a5a15c2cb8381102a69135"
+    },
+    "web/src/ui/sheet.ts": {
+      "bytes": 15294,
+      "sha256": "8103b6ebc98a54d2d92888ee8c8dbed5f49fcdb71868a0fb5330465c04221a05"
+    },
+    "web/src/ui/skill-icons.ts": {
+      "bytes": 11285,
+      "sha256": "35e760985766755552cba9bd6eddb23ddf5f091f009ce08466e1212b1c065eab"
+    },
+    "web/src/ui/skin.json": {
+      "bytes": 5322,
+      "sha256": "3760affcfd385213c58a7717011b841c55ede9ba9a8df8725c999446f25b447b"
+    },
+    "web/src/ui/skin.ts": {
+      "bytes": 6040,
+      "sha256": "789032cf799a7bef4243167d52264fda316e3eb228c6fffbeb129e42f8eb5479"
+    },
+    "web/src/ui/starting-kits.ts": {
+      "bytes": 10746,
+      "sha256": "55480b2725b4e148e3e8cd6d45c0cde0553462bd5e2fc347375ff9052758f922"
+    },
+    "web/src/ui/systems.ts": {
+      "bytes": 3657,
+      "sha256": "9844dbd820de8377c3d1d533fdd0ae8e9a5bdeaf46e31756884ad44058ed8d14"
+    },
+    "web/src/ui/tactic-observer.ts": {
+      "bytes": 4923,
+      "sha256": "4993c3e832eca5af20875ad5b0d2b8e3b13766d9f6e4e3106131cba877b6af5c"
+    },
+    "web/src/ui/tasks.ts": {
+      "bytes": 11940,
+      "sha256": "a64afb8b2b04b1d1f9cf1d36be6443d110edb731cb62d662ec2491257520b762"
+    },
+    "web/src/ui/tips.ts": {
+      "bytes": 24746,
+      "sha256": "1502e24b7badf9e0f3a8c0104b515e2e1b82f5aa4ee5bfd6f7ec0670fb660a57"
+    },
+    "web/src/ui/tokens.ts": {
+      "bytes": 16470,
+      "sha256": "35c95adf8695c6cfe4381118e760c6fd48ef803bef4ddc6a56ffb0635b5fba9e"
+    },
+    "web/src/ui/town.ts": {
+      "bytes": 52450,
+      "sha256": "1b16f27d5d22715d6eba0d35f120350a8a7a818ada1266f3202610820fcf3814"
+    },
+    "web/src/ui/trace.ts": {
+      "bytes": 14413,
+      "sha256": "97e8ab00f3de28e37a5e339fc7b988779412d556e78a84dc519463e61a58864c"
+    },
+    "web/src/ui/tracks.ts": {
+      "bytes": 9214,
+      "sha256": "b62fa137400a3cb22f4671bcbc3ef7b7c0ce65d162bbca6ed0b10e47190f370e"
+    },
+    "web/src/ui/unit-icon.ts": {
+      "bytes": 1735,
+      "sha256": "520b3b5333c40575b3ba6a54ec6ba8515b3f7b17974ec7a28b6ff0cc6f0ec03e"
+    },
+    "web/src/ui/unlocks.ts": {
+      "bytes": 25238,
+      "sha256": "5eec45d44d2bbc14a42112702d7933d68a7b7ba6313801c7e62265715ea40949"
+    },
+    "web/src/ui/viewer.ts": {
+      "bytes": 4157,
+      "sha256": "89fa802c0d9d348548960688c79e63c327e6a68ff72091cca86ca9541c23abaf"
+    },
+    "web/src/ui/wall-preview.ts": {
+      "bytes": 2517,
+      "sha256": "3bf77af4d403474f58c92105d3438b31f327501f9eeb234c2fdd8ea8798c9374"
+    },
+    "web/src/ui/wall.ts": {
+      "bytes": 2889,
+      "sha256": "e846a5346ca14123de8fe38b208680677bba06e0bb071f1ab52b3acbdf0b7902"
+    },
+    "web/src/ui/watch.ts": {
+      "bytes": 245118,
+      "sha256": "a525fb71eb64949058170f719995e5f317a5f062ecfc92dd02a8e39f90d3ec45"
+    },
+    "web/src/ui/works.ts": {
+      "bytes": 25709,
+      "sha256": "2ea23e03b51803a42860f27628dfac109e277924239dd1fd96a747ee7d99f706"
+    },
+    "web/src/wide.css": {
+      "bytes": 18729,
+      "sha256": "cf01a7d0e3a46de2f356f4299575dcf4b0aa84dabdfc93768e60d62c012b708b"
+    },
+    "web/src/works.css": {
+      "bytes": 10030,
+      "sha256": "e9241b780f6baf48b6066e8e07ed4b96265c4f44bc77be17a8aebfe0aacef2b9"
+    },
+    "tuning/balance.json": {
+      "bytes": 3326,
+      "sha256": "c6df92386d54856dd4c13e88e2a4db42002bdfc65f490534456cc115e23a142a"
+    },
+    "web/src/engine/pkg/idlever_wasm_bg.wasm": {
+      "bytes": 6912832,
+      "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+    }
+  }
+}

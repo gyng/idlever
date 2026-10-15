@@ -4,10 +4,12 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const shots = process.env.IDLEVER_HOME_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const browser = await launchBrowser({ gpu: process.env.IDLEVER_HOME_GPU === "1" });
@@ -32,10 +34,61 @@ try {
         return build(...args);
       };
     });
+    await page.evaluate(() => {
+      window.homePointerEvents = [];
+      for (const type of ["pointerover", "pointerout", "focusin", "focusout"])
+        document.addEventListener(
+          type,
+          (e) => {
+            const t = e.target;
+            window.homePointerEvents.push({
+              type,
+              at: performance.now(),
+              target: t?.outerHTML?.slice(0, 250),
+            });
+            if (window.homePointerEvents.length > 40) window.homePointerEvents.shift();
+          },
+          true,
+        );
+    });
+    const waitTip = async (stage) => {
+      try {
+        await page.locator("#kw-tip:not([hidden])").waitFor();
+      } catch (error) {
+        console.log(
+          JSON.stringify(
+            await page.evaluate(
+              (stage) => ({
+                stage,
+                events: window.homePointerEvents,
+                active: document.activeElement?.outerHTML,
+                tip: document.querySelector("#kw-tip")?.outerHTML,
+                hits: [...document.querySelectorAll(".town-hit")].map((e) => {
+                  const r = e.getBoundingClientRect();
+                  return {
+                    html: e.outerHTML,
+                    x: r.x,
+                    y: r.y,
+                    w: r.width,
+                    h: r.height,
+                    point: document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2)
+                      ?.outerHTML,
+                  };
+                }),
+              }),
+              stage,
+            ),
+          ),
+        );
+        if (shots) await page.screenshot({ path: `${shots}/${width}-failure.png` });
+        throw error;
+      }
+    };
     const saved = await page.evaluate(() => window.__idlever.engine.save());
-    const ready = page.locator('[data-building-info="staked"]');
-    await ready.click();
-    await page.locator("#kw-tip:not([hidden])").waitFor();
+    assert.equal(await page.locator("[data-building-info]").count(), 0);
+    const ready = page.locator('.town-hit[data-building="staked"]');
+    await ready.hover();
+    await waitTip("ready hover/focus");
     assert.match(await page.locator("#kw-tip").textContent(), /House.*Ready to build.*Free/s);
     assert.equal(await page.evaluate(() => window.homeBuildCalls), 0);
     assert.equal(await page.evaluate(() => window.__idlever.engine.save()), saved);
@@ -44,19 +97,39 @@ try {
     if (shots) await page.screenshot({ path: `${shots}/${width}-ready-house.png` });
     await page.keyboard.press("Escape");
     assert.equal(await page.locator("#kw-tip").isVisible(), false);
+    await page.mouse.move(1, 1);
+    // Before House construction, the mouth is intentionally absent. Establish keyboard
+    // modality on the actual ready plot without activating its Build action.
     await ready.focus();
-    await page.keyboard.press("Enter");
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Shift+Tab");
+    await ready.focus();
+    await waitTip("ready hover/focus");
     assert.equal(await page.locator("#kw-tip").isVisible(), true);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), saved);
     assert.equal(await page.evaluate(() => window.homeBuildCalls), 0);
     await page.keyboard.press("Escape");
     await page.locator(".town-tag").click();
     await page.waitForFunction(() => window.__idlever.lineage.town.home);
     assert.equal(await page.evaluate(() => window.homeBuildCalls), 1);
-    const locked = page.locator('[data-building-info="staked"]');
-    await locked.click();
-    assert.match(await page.locator("#kw-tip").textContent(), /Forge.*Locked.*Requires:/s);
+    await page.waitForFunction(() => !window.__town.stats().staked);
+    const builtHouseSave = await page.evaluate(() => window.__idlever.engine.save());
+    const locked = await page.evaluate(() => ({
+      wire: window.__idlever.lineage.town,
+      scene: window.__town.stats().staked,
+      hits: document.querySelectorAll('.town-hit[data-building="staked"]').length,
+      help: document.querySelectorAll('[data-building-info="staked"]').length,
+      tag: !!document.querySelector(".town-tag:not([hidden])"),
+    }));
+    assert.equal(locked.wire.next, "blacksmith");
+    assert.equal(locked.wire.next_ready, false);
+    assert.equal(locked.wire.next_trigger, "Hire Scout");
+    assert.equal(locked.scene, undefined);
+    assert.equal(locked.hits, 0);
+    assert.equal(locked.help, 0);
+    assert.equal(locked.tag, false);
+    assert.equal(await page.evaluate(() => window.__idlever.engine.save()), builtHouseSave);
     assert.equal(await page.evaluate(() => window.homeBuildCalls), 1);
-    await page.keyboard.press("Escape");
     // Install all supported buildings through the real worker load boundary.
     await page.evaluate(async () => {
       const a = window.__idlever,
@@ -65,7 +138,16 @@ try {
       a.lineage = await a.engine.load(JSON.stringify(save));
       a.go({ kind: "camp" });
     });
-    await page.waitForSelector('[data-building-info="bank"]');
+    await page.waitForSelector('.town-hit[data-building="bank"]');
+    assert.equal(await page.locator("[data-building-info]").count(), 0);
+    assert.equal(
+      await page
+        .locator(
+          '.console [data-tile="forge"], .console [data-tile="party"], .console [data-tile="bank"]',
+        )
+        .count(),
+      0,
+    );
     assert.equal(await page.locator('[data-building-info="storehouse"]').count(), 0);
     assert.equal(await page.locator('.town-hit[data-building="storehouse"]').count(), 0);
     assert.equal(await page.locator('[data-panel="vault"]').count(), 0);
@@ -86,21 +168,39 @@ try {
       ["kennel", "Kennel"],
       ["bank", "Bank"],
     ]) {
-      const info = page.locator(`[data-building-info="${id}"]`);
-      await info.click();
+      const sprite = page.locator(`.town-hit[data-building="${id}"]`);
+      const beforeDetails = await page.evaluate(() => window.__idlever.engine.save());
+      await sprite.hover();
+      await waitTip("ready hover/focus");
       assert.match(await page.locator("#kw-tip").textContent(), new RegExp(`${name}.*Built`, "s"));
+      const box = await sprite.boundingBox();
+      assert.ok(box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= width);
+      await page.keyboard.press("Escape");
+      await page.mouse.move(1, 1);
+      await sprite.focus();
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Shift+Tab");
+      await sprite.focus();
+      await waitTip("ready hover/focus");
+      assert.match(await page.locator("#kw-tip").textContent(), new RegExp(`${name}.*Built`, "s"));
+      assert.equal(await page.evaluate(() => window.__idlever.engine.save()), beforeDetails);
       assert.equal(await page.evaluate(() => window.homeBuildCalls), 1);
-      const box = await info.boundingBox();
-      assert.ok(box.height >= 44 && box.x >= 0 && box.x + box.width <= width);
+      if (shots && id === "blacksmith")
+        await page.screenshot({ path: `${shots}/${width}-forge-info.png` });
       await page.keyboard.press("Escape");
-      await page.locator(`.town-hit[data-building="${id}"]`).hover();
-      await page.locator("#kw-tip:not([hidden])").waitFor();
-      assert.match(await page.locator("#kw-tip").textContent(), new RegExp(name));
+      // Enter follows the sprite's actual action; help inspection itself remains read-only.
+      await page.keyboard.press("Enter");
+      const destination = {
+        tent: "[data-hero-hub] .hero-hub-face",
+        blacksmith: ".simple-kit",
+        kennel: '.panel[data-panel="party"]',
+        bank: ".bank-sheet",
+      }[id];
+      await page.locator(destination).waitFor({ state: "visible" });
+      assert.equal(await page.evaluate(() => window.__idlever.engine.save()), beforeDetails);
+      assert.equal(await page.evaluate(() => window.homeBuildCalls), 1);
       await page.keyboard.press("Escape");
-    }
-    if (shots) {
-      await page.locator('[data-building-info="blacksmith"]').click();
-      await page.screenshot({ path: `${shots}/${width}-forge-info.png` });
+      await page.locator(destination).waitFor({ state: "hidden" });
     }
     await page.keyboard.press("Escape");
     await page.locator('.town-hit[data-building="tent"]').click();
@@ -180,13 +280,13 @@ try {
         "Gear",
         "Skills",
         "Behaviour",
-        "Companions",
+        "Pets",
         "Attributes",
       ]);
     }
     assert.deepEqual(errors, []);
     console.log(
-      `${width}: real WASM ready/locked/built four-building help, no accidental build, viewport, hover and hero details PASS`,
+      `${width}: real WASM ready/hidden-unready/built four-building help, no accidental build, viewport, hover and hero details PASS`,
     );
     await page.close();
   }

@@ -31,7 +31,7 @@ const SECTIONS: HeroHubSection[] = ["gear", "skills", "behaviour", "companions",
   gear: "Gear",
   skills: "Skills",
   behaviour: "Behaviour",
-  companions: "Companions",
+  companions: "Pets",
   attributes: "Attributes",
 };
 /* copy:label */ const SLOT_NAMES = {
@@ -553,6 +553,8 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         id: `${prefix}-${section}-tab`,
         "aria-controls": `${prefix}-${section}-panel`,
         "data-hub-tab": section,
+        "aria-label":
+          section === "companions" ? /* copy:tooltip */ "Pets and companions" : NAMES[section],
         onclick: () => select(section),
         onkeydown: (event: Event) => {
           const e = event as KeyboardEvent;

@@ -92,9 +92,6 @@ export class WasmEngine implements Engine {
   setRules(set: RuleSet): void {
     this.game.setRules(JSON.stringify(set));
   }
-  loadout(itemIds: number[]): void {
-    this.game.loadout(JSON.stringify(itemIds));
-  }
   forecast(): Forecast {
     return this.call("forecast");
   }
@@ -166,24 +163,8 @@ export class WasmEngine implements Engine {
   supplyCatalogue(): SupplyEntry[] {
     return this.call("supplyCatalogue");
   }
-  // Addendum D
-  keep(ids: number[]): Lineage {
-    return this.call("keep", JSON.stringify(ids));
-  }
-  autoKeep(): Lineage {
-    return this.call("autoKeep");
-  }
-  setKeepPref(pref: string): Lineage {
-    return this.call("setKeepPref", pref);
-  }
   setLook(look: string): Lineage {
     return this.call("setLook", look);
-  } // hero looks
-  insure(id: number): Lineage {
-    return this.call("insure", id);
-  }
-  sellVault(id: number): Lineage {
-    return this.call("sellVault", id);
   } // QA 308f045: an item out of the vault, salvaged
   // core additions
   unlocks(): UnlockInfo[] {

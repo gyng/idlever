@@ -1,0 +1,11 @@
+client suite: targeted (2 selected; 164 current full; 207 exhaustive groups)
+FAIL ready-plots     19.0s (8.0s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: {"id":"kennel","width":1440,"rects":[{"x":806,"y":504,"width":164,"height":108,"top":504,"right":970,"bottom":612,"left":806},{"x":782.1640625,"y":568,"width":211.671875,"height":64,"top":568,"right":993.8359375,"bottom":632,"left":782.1640625},{"x":0,"y":0,"width":1440,"height":640,"top":0,"right":1440,"bottom":640,"left":0}],"inside":true,"separate":false,"hit":true,"min":true,"label":"Build kennelFree","hidden":false,"painted":true,"svg":"hidden","overflow":false,"calls":0}
+         at file:///home/g/p/riddle/web/tests/ready-plots.mjs:105:16 {
+FAIL wall-preparation 22.0s (2.9s)  Node.js v22.18.0
+     page.evaluate: Error: hero opening is read-only
+         at check (eval at evaluate (:311:30), <anonymous>:11:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:87:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/wall-preparation.mjs:16:23 {
+FAIL: 0/2 client gates in 22.0s

@@ -130,6 +130,7 @@ try {
       engine: window.__idlever.kind,
       slots: window.__idlever.lineage.hero_slots,
       services: window.__idlever.lineage.persistent_hero,
+      town: window.__idlever.lineage.town,
       saved: await window.__idlever.engine.save(),
     }));
     eq(initial.engine, "wasm");
@@ -243,7 +244,7 @@ try {
           "kennel",
           "guild",
           "pool",
-          "staked",
+          ...(initial.town.next_ready ? ["staked"] : []),
           ...(initial.services.device.available ? ["device"] : []),
         ])
           eq(
@@ -255,6 +256,31 @@ try {
           await p.locator('.town-hit[data-building="device"]:not([hidden])').count(),
           initial.services.device.available ? 1 : 0,
           "Device presence matches actual published availability",
+        );
+        const disclosureSave = await p.evaluate(() => window.__idlever.engine.save());
+        eq(
+          await p.evaluate(() => ({
+            next: window.__idlever.lineage.town.next,
+            ready: window.__idlever.lineage.town.next_ready,
+            trigger: window.__idlever.lineage.town.next_trigger,
+          })),
+          {
+            next: initial.town.next,
+            ready: initial.town.next_ready,
+            trigger: initial.town.next_trigger,
+          },
+          "Home retains exact native next-building condition",
+        );
+        if (!initial.town.next_ready) {
+          eq(await p.evaluate(() => window.__town.stats().staked), undefined);
+          eq(await p.locator('.town-hit[data-building="staked"]').count(), 0);
+          eq(await p.locator('[data-building-info="staked"]').count(), 0);
+          eq(await p.locator(".town-tag:not([hidden])").count(), 0);
+        }
+        eq(
+          await p.evaluate(() => window.__idlever.engine.save()),
+          disclosureSave,
+          "inspecting future-plot disclosure preserves exact save",
         );
         for (const id of [
           "tent",
@@ -299,25 +325,6 @@ try {
             primary.hit === id || (id === "staked" && primary.tag === primary.plot),
             `actual ${id} centre routes to its own action beside residents`,
           );
-          if (id === "staked" && !primary.ready) {
-            const beforePreview = await p.evaluate(() => window.__idlever.engine.save());
-            // The plot's own tag is an allowed same-action surface at its centre.
-            // Click what the player actually sees rather than the covered DOM button.
-            if (primary.tag === primary.plot)
-              await p.mouse.click(
-                primary.rect.x + primary.rect.w / 2,
-                primary.rect.y + primary.rect.h / 2,
-              );
-            else await target.click();
-            await p.locator(".plot-preview").waitFor({ state: "visible" });
-            eq(
-              await p.evaluate(() => window.__idlever.engine.save()),
-              beforePreview,
-              "locked plot preview is strictly read-only",
-            );
-            await p.keyboard.press("Escape");
-            await p.locator(".plot-preview").waitFor({ state: "hidden" });
-          }
         }
         for (const mode of ["mouse", "keyboard"])
           for (const slot of initial.slots) {

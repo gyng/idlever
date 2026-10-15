@@ -71,19 +71,10 @@ import { setBusyHost } from "./progress";
 import { icon } from "./skin";
 import { biomeAt, routeChips, routeForks, seenForks, withFork } from "./route";
 import { openOathBoard, paintOathTab } from "./oaths";
-import {
-  anchorPanel,
-  buildingTile,
-  exposeTown,
-  markOpened,
-  openBank,
-  openHero,
-  renderTown,
-  townBuilt,
-} from "./town";
+import { anchorPanel, exposeTown, openHero, renderTown, townBuilt } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
 import { openGlossary, openJournal } from "./journal-window";
-import { glossaryOpener, setGlossaryOpener } from "./tips";
+import { detailHost, glossaryOpener, setGlossaryOpener } from "./tips";
 import { openHeroLife } from "./hero-life";
 import { openChronicle } from "./chronicle";
 import { openWorks, sendMark } from "./works";
@@ -236,7 +227,7 @@ export function keptAs(facts: string[], it: { kind: string; known: boolean }): s
 }
 /** QA 0c6e126 (qaY): the lineage state a forecast's sims start from (the core's `lineage_key`, as the wire shows it) — a memo of a
  *  measure keyed without it survives a purchase, a drop or a cage change and paints a stale number. */
-export function simKey(app: Pick<App, "lineage" | "loadout">): string {
+export function simKey(app: Pick<App, "lineage">): string {
   const L = app.lineage;
   return JSON.stringify([
     L.heir,
@@ -246,10 +237,8 @@ export function simKey(app: Pick<App, "lineage" | "loadout">): string {
     L.facts?.length,
     L.unlocks,
     (L.supplies ?? []).map((s) => s.id),
-    [...(app.loadout ?? [])].sort(),
     L.kit,
     L.party,
-    L.keep_pref,
     L.vault_pref,
     L.start,
   ]);
@@ -751,48 +740,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       });
     const built = townBuilt(app.lineage);
     if (built) {
-      // a sheet opened from a tile stands over its building only while the building is on screen (the well may be scrolled to its rows)
-      const anchor = (id: string): HTMLElement | null => {
-        const x = town.anchorOf(id);
-        if (!x || x.hidden) return null;
-        const r = x.getBoundingClientRect(),
-          w = well.getBoundingClientRect();
-        return r.bottom > w.top + 8 && r.top < w.bottom - 8 ? x : null;
-      };
-      const bt: Record<string, () => HTMLElement> = {
-        blacksmith: () =>
-          withBadge(
-            buildingTile("blacksmith", {
-              fresh: R.fresh("forge") || R.fresh("kit"),
-              onclick: () => {
-                closeAllSheets();
-                closePanel();
-                markOpened(app.lineage, "blacksmith");
-                openForge(app, anchor("blacksmith"));
-              },
-            }),
-            kitBadge(),
-          ),
-        kennel: () =>
-          buildingTile("kennel", {
-            on: open === "party",
-            fresh: R.fresh("party"),
-            onclick: () => {
-              closeAllSheets();
-              markOpened(app.lineage, "kennel");
-              togglePanel("party");
-            },
-          }),
-        bank: () =>
-          buildingTile("bank", {
-            onclick: () => {
-              closeAllSheets();
-              closePanel();
-              markOpened(app.lineage, "bank");
-              openBank(app, anchor("bank"));
-            },
-          }),
-      };
       cons.setTiles([
         app.lineage.journal &&
           tile({
@@ -802,7 +749,6 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
             glyph: "▤",
             onclick: () => journal(),
           }),
-        ...built.map((b) => bt[b]?.()),
         // Cut 30 §2/§5: the packages and the quest board (the board by the mouth opens it too)
         packagesShown(app.lineage) &&
           tile({
@@ -858,6 +804,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           t("ledger", /* copy:button */ "enemy guide", "ledger", () => openLedger(app)),
         // RUNS_UI: the chronicle is the log's `heirs` (the lane's log stud) — its tile gave its place to the run lanes' log
       ]);
+      describeHomeCommands();
       shaft.el.classList.toggle("on", open === "forecast");
       return;
     }
@@ -910,13 +857,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           kitBadge(),
         ),
       R.has("party") &&
-        t(
-          "party",
-          /* copy:button */ "companions",
-          "party",
-          () => togglePanel("party"),
-          open === "party",
-        ),
+        t("party", /* copy:button */ "Pets", "party", () => togglePanel("party"), open === "party"),
       // Cut 30 §2/§5: the packages (from the second stance) and the quest board (from the Warlord slain), each glinting once as it comes
       packagesShown(app.lineage) &&
         tile({
@@ -942,7 +883,37 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
         t("ledger", /* copy:button */ "enemy guide", "ledger", () => openLedger(app)),
       // RUNS_UI: the chronicle is the log's `heirs` (the lane's log stud)
     ]);
+    describeHomeCommands();
     shaft.el.classList.toggle("on", open === "forecast");
+  }
+  function describeHomeCommands(): void {
+    for (const control of cons.el.querySelectorAll<HTMLElement>(".cmd .tile")) {
+      const name =
+        control.dataset.tile === "party"
+          ? /* copy:tooltip */ "Pets and companions"
+          : (control.querySelector(".tl")?.textContent?.trim() ?? "");
+      if (!name) continue;
+      control.classList.add("home-icon-command");
+      control.setAttribute("aria-label", control.getAttribute("aria-label") ?? name);
+      control.title ||= name;
+      let lock = control.querySelector<HTMLElement>(":scope > .home-control-lock");
+      if (!lock) {
+        lock = h("span", { class: "town-lock home-control-lock", "aria-hidden": "true" });
+        control.append(lock);
+      }
+      lock.hidden = !control.matches(":disabled,[aria-disabled=true],.locked");
+      if (!control.hasAttribute("data-kwh"))
+        detailHost(control, () => {
+          const reason =
+            control.getAttribute("aria-description") ??
+            control.getAttribute("data-reason") ??
+            (control.title !== name ? control.title : "");
+          return [
+            h("div", { class: "kw-tip-head" }, name),
+            ...(reason ? [h("div", { class: "kw-tip-gloss" }, reason)] : []),
+          ];
+        });
+    }
   }
 
   function paintStrip(): void {
@@ -1126,6 +1097,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           "button",
           {
             class: `tab num game-control${i === app.active ? " on" : ""}`,
+            "aria-pressed": String(i === app.active),
             onclick: () => app.selectSet(i),
           },
           named ? setName(s, i) : /* copy:label */ `set ${i + 1}`,

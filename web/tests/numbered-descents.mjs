@@ -1,10 +1,12 @@
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-    cwd: new URL("../../", import.meta.url),
-    encoding: "utf8",
-  }).trim(),
+const url =
+    process.env.IDLEVER_TEST_URL ??
+    execFileSync("bash", ["tools/dev.sh"], {
+      cwd: new URL("../../", import.meta.url),
+      encoding: "utf8",
+    }).trim(),
   b = await launchBrowser();
 try {
   for (const [width, height] of [
@@ -23,7 +25,6 @@ try {
       window.__descentCalls = [];
       window.__refuse = true;
       a.lineage = { ...a.lineage, ended: true, endgame: { tier: 0, unlocked: 1, cleared: 0 } };
-      a.loadout = [1, 2];
       a.runsSeen = 23;
       a.engine.descentOffer = async (tier) => {
         if (tier === 1) await new Promise((r) => setTimeout(r, 80));
@@ -63,7 +64,6 @@ try {
           ...(await a.engine.lineage()),
           ended: false,
           endgame: { tier, unlocked: 1, cleared: 0 },
-          selected_loadout: [1, 2],
         };
       };
       a.go({ kind: "ending" });
@@ -117,11 +117,10 @@ try {
     assert.equal(await p.evaluate(() => window.__idlever.engine.save()), before);
     assert.deepEqual(
       await p.evaluate(() => ({
-        loadout: window.__idlever.loadout,
         runs: window.__idlever.runsSeen,
         calls: window.__descentCalls,
       })),
-      { loadout: [1, 2], runs: 23, calls: [1] },
+      { runs: 23, calls: [1] },
     );
     await p.evaluate(() => {
       window.__refuse = false;
@@ -136,16 +135,15 @@ try {
     await p.waitForFunction(() => window.__idlever.screen === "camp");
     assert.deepEqual(
       await p.evaluate(() => ({
-        loadout: window.__idlever.loadout,
         runs: window.__idlever.runsSeen,
         calls: window.__descentCalls,
       })),
-      { loadout: [1, 2], runs: 23, calls: [1, 1] },
+      { runs: 23, calls: [1, 1] },
     );
     assert.equal(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     assert.deepEqual(errors, []);
     console.log(
-      `${width} preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS`,
+      `${width} preview/cancel/stale/locked/refusal/success/client-state/no-repeat/viewport PASS`,
     );
     await p.close();
   }

@@ -1,0 +1,5112 @@
+{
+  "pick": {
+    "minutes": 480,
+    "size": 4,
+    "offers": [
+      {
+        "id": "drill",
+        "title": "Steady",
+        "line": "+16 runs",
+        "available": true,
+        "target": "steady"
+      },
+      {
+        "id": "legacy",
+        "title": "Legacy",
+        "line": "+9",
+        "available": true
+      },
+      {
+        "id": "marks",
+        "title": "Marks",
+        "line": "+◆2",
+        "available": true
+      }
+    ],
+    "default": "legacy"
+  },
+  "legacy_earned": 17,
+  "elapsed_s": 28800,
+  "runs": 14,
+  "sampled": false,
+  "learned": [
+    "bones:10",
+    "bones:8",
+    "foe:eel:studied",
+    "foe:goblin_warlord:studied",
+    "foe:wraith:drain",
+    "foe:wraith:studied",
+    "tamed:goblin"
+  ],
+  "bests": [
+    "home:D13",
+    "waystone D9",
+    "trophy: studied all fens",
+    "trophy: 500 slain",
+    "home:D10",
+    "fighter L4",
+    "home:D7",
+    "home:D9",
+    "trophy: first bones",
+    "trophy: 1000 slain",
+    "rank 4"
+  ],
+  "found": [],
+  "new_finds": [
+    "mossy scroll?"
+  ],
+  "deaths": [
+    {
+      "cause": "goblin_archer",
+      "n": 1
+    },
+    {
+      "cause": "goblin_warlord",
+      "n": 1
+    },
+    {
+      "cause": "ogre",
+      "n": 1
+    }
+  ],
+  "pending": [
+    "unlock throw (3)",
+    "unlock corridor_fighting (4)",
+    "forge sword +1 · $200",
+    "forge leather · $200",
+    "forge pack 4 · $400",
+    "R1 fired 10 of 14 runs: boss · HP>35% → hit boss",
+    "R2 fired 14 of 14 runs: HP<35% → drink heal",
+    "R3 fired 0 of 14 runs: HP<25% · D14+ → bank",
+    "R4 fired 3 of 14 runs: HP<25% → return",
+    "R5 fired 12 of 14 runs: no heal · HP<40% → bank",
+    "R6 fired 6 of 14 runs: foes 1+ → tame",
+    "R7 fired 14 of 14 runs: foes 1+ → attack",
+    "R8 fired 8 of 14 runs: HP<40% → rest",
+    "bones on D10 · D13"
+  ],
+  "reel": [
+    {
+      "pattern": "episode",
+      "score": 9,
+      "t": 16324,
+      "run_id": 14,
+      "text": "A bloat took him to 9 HP; R5 banked; banked $378.",
+      "arc": {
+        "low_hp": 9,
+        "row": 4,
+        "threat": "bloat",
+        "resolution": "banked $378"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 25,
+      "t": 15073,
+      "run_id": 25,
+      "text": "An ogre took him down; R7 attacked; died on D10.",
+      "arc": {
+        "low_hp": 0,
+        "row": 6,
+        "threat": "ogre",
+        "resolution": "died to an ogre"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 20,
+      "t": 9920,
+      "run_id": 15,
+      "text": "An archer took him to 2 HP; R4 returned; died to archer.",
+      "arc": {
+        "low_hp": 2,
+        "row": 3,
+        "threat": "goblin_archer",
+        "resolution": "died to a goblin archer"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 20,
+      "t": 9317,
+      "run_id": 21,
+      "text": "Warlord cornered him to 2 HP; R7 attacked; died to the Warlord.",
+      "arc": {
+        "low_hp": 2,
+        "row": 6,
+        "threat": "goblin_warlord",
+        "resolution": "died to the Warlord"
+      }
+    }
+  ],
+  "marks_earned": 14,
+  "meters": {
+    "seconds": 16945.3,
+    "dealt": {
+      "hero": 8609,
+      "pets": 189,
+      "foes": 1331
+    },
+    "taken": {
+      "hero": 1586,
+      "pets": 82,
+      "foes": 8902
+    },
+    "dps_dealt": {
+      "hero": 0.508,
+      "pets": 0.011,
+      "foes": 0.079
+    },
+    "dps_taken": {
+      "hero": 0.094,
+      "pets": 0.005,
+      "foes": 0.525
+    },
+    "healed": [
+      {
+        "src": "pet",
+        "total": 12,
+        "per_s": 0.001
+      },
+      {
+        "src": "regen",
+        "total": 1035,
+        "per_s": 0.061
+      },
+      {
+        "src": "rest",
+        "total": 88,
+        "per_s": 0.005
+      }
+    ],
+    "hps": 0.067,
+    "time": {
+      "fight": 33999,
+      "travel": 134970,
+      "chores": 480,
+      "rest": 4
+    },
+    "time_s": {
+      "fight": 3399.9,
+      "travel": 13497.0,
+      "chores": 48.0,
+      "rest": 0.4
+    },
+    "rows": [
+      {
+        "row": -2,
+        "fires": 12593,
+        "share": 0.783
+      },
+      {
+        "row": 0,
+        "fires": 102,
+        "share": 0.006
+      },
+      {
+        "row": 1,
+        "fires": 41,
+        "share": 0.003
+      },
+      {
+        "row": 3,
+        "fires": 44,
+        "share": 0.003
+      },
+      {
+        "row": 4,
+        "fires": 176,
+        "share": 0.011
+      },
+      {
+        "row": 5,
+        "fires": 8,
+        "share": 0.0
+      },
+      {
+        "row": 6,
+        "fires": 3109,
+        "share": 0.193
+      },
+      {
+        "row": 7,
+        "fires": 12,
+        "share": 0.001
+      }
+    ],
+    "actions": 16173,
+    "supplies": {
+      "heal potion": 41
+    },
+    "gold": 2821,
+    "gold_per_min": 9.989,
+    "hits_hero": 815,
+    "hits_pets": 59,
+    "fights": 537,
+    "credit": [
+      {
+        "credit": "taught",
+        "fires": 102,
+        "share": 0.006
+      },
+      {
+        "credit": "default",
+        "fires": 3390,
+        "share": 0.211
+      },
+      {
+        "credit": "chores",
+        "fires": 12593,
+        "share": 0.783
+      }
+    ]
+  },
+  "systems_opened": [
+    "death",
+    "party",
+    "stances",
+    "tactics",
+    "quests"
+  ],
+  "worst_death_id": 25,
+  "tamed": [
+    "goblin",
+    "goblin",
+    "goblin",
+    "goblin"
+  ],
+  "hatched": [],
+  "lost": [],
+  "xp": {
+    "class": "fighter",
+    "gained": 1004,
+    "level_ups": 1
+  },
+  "salvaged": [],
+  "renown": {
+    "gained": 551,
+    "rank": 4,
+    "ranks_up": 1
+  },
+  "rested_s": 13380,
+  "banked": 9,
+  "returned": 2,
+  "bones_found": [
+    "heir 3 · D8 · 9 items",
+    "heir 2 · D8 · 8 items"
+  ],
+  "stolen": [
+    {
+      "label": "clear potion?",
+      "n": 2
+    },
+    {
+      "label": "heal",
+      "n": 2
+    },
+    {
+      "label": "fire",
+      "n": 1
+    },
+    {
+      "label": "waxen scroll?",
+      "n": 1
+    }
+  ],
+  "stalled": 0,
+  "gold": {
+    "home": 2821,
+    "salvage": 0,
+    "wake": 0,
+    "spent": 0,
+    "wake_cap": 40,
+    "wake_n": 0,
+    "lost": 757,
+    "recovered": 502,
+    "net": 3323,
+    "ledger": {
+      "earned": 4080,
+      "spent": 757,
+      "net": 3323,
+      "terms": [
+        {
+          "label": "carried",
+          "amount": 3578
+        },
+        {
+          "label": "lost",
+          "amount": -757
+        },
+        {
+          "label": "recovered",
+          "amount": 502
+        }
+      ]
+    },
+    "earned": 4080,
+    "spent_by_workers": 0
+  },
+  "deepest": 13,
+  "exits": [
+    {
+      "tier": "bank",
+      "carried": 415,
+      "keep_pct": 100,
+      "kept": 415,
+      "spent": 0,
+      "spent_on": [
+        "heal"
+      ],
+      "text": "banked $415 · $415 carried · keeps 100% · ◆+2",
+      "trace": {
+        "turns": [
+          {
+            "t": 15149,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 15161,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 15174,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 36
+          },
+          {
+            "t": 15186,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15199,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15211,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15224,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15236,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15249,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          },
+          {
+            "t": 15261,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 12,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11711,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 10/42 hp",
+                  "t": 12261,
+                  "depth": 9
+                }
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 35
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found folded scroll? on D1",
+            "t": 460,
+            "depth": 1
+          },
+          {
+            "text": "found red potion? on D1",
+            "t": 470,
+            "depth": 1
+          },
+          {
+            "text": "found burnt scroll? on D1",
+            "t": 730,
+            "depth": 1
+          },
+          {
+            "text": "found clear potion? on D2",
+            "t": 1630,
+            "depth": 2
+          },
+          {
+            "text": "rat last seen D2",
+            "t": 1700,
+            "depth": 2
+          },
+          {
+            "text": "found sword +1 on D2",
+            "t": 2830,
+            "depth": 2
+          },
+          {
+            "text": "swapped for the fear",
+            "t": 2927,
+            "depth": 3
+          },
+          {
+            "text": "found ashen scroll? on D3",
+            "t": 2927,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the invisibility",
+            "t": 3054,
+            "depth": 3
+          },
+          {
+            "text": "found pearly potion? on D3",
+            "t": 3054,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 3560,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the blink",
+            "t": 3640,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the strength",
+            "t": 3720,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the blink",
+            "t": 3750,
+            "depth": 3
+          },
+          {
+            "text": "found brittle scroll? on D3",
+            "t": 3750,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 4087,
+            "depth": 4
+          },
+          {
+            "text": "found heal on D4",
+            "t": 4087,
+            "depth": 4
+          },
+          {
+            "text": "found waxen scroll? on D4",
+            "t": 4220,
+            "depth": 4
+          },
+          {
+            "text": "R2 drank heal at 14/42 hp",
+            "t": 4550,
+            "depth": 4
+          },
+          {
+            "text": "found folded scroll? on D4",
+            "t": 4834,
+            "depth": 4
+          },
+          {
+            "text": "found leather on D5",
+            "t": 5834,
+            "depth": 5
+          },
+          {
+            "text": "goblin last seen D5",
+            "t": 6170,
+            "depth": 5
+          },
+          {
+            "text": "swapped for the strength",
+            "t": 6445,
+            "depth": 6
+          },
+          {
+            "text": "monkey took the clear potion?, D6",
+            "t": 6608,
+            "depth": 6
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 7087,
+            "depth": 6
+          },
+          {
+            "text": "R2 drank heal at 11/42 hp",
+            "t": 7289,
+            "depth": 6
+          },
+          {
+            "text": "jackal last seen D7",
+            "t": 8078,
+            "depth": 7
+          },
+          {
+            "text": "monkey last seen D7",
+            "t": 9045,
+            "depth": 7
+          },
+          {
+            "text": "found mail on D8",
+            "t": 9112,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 9124,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 9449,
+            "depth": 8
+          },
+          {
+            "text": "found blue potion? on D8",
+            "t": 9449,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the strength",
+            "t": 9924,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the strength",
+            "t": 9936,
+            "depth": 8
+          },
+          {
+            "text": "found amber potion? on D8",
+            "t": 9936,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the fire",
+            "t": 9961,
+            "depth": 8
+          },
+          {
+            "text": "found fire on D8",
+            "t": 9961,
+            "depth": 8
+          },
+          {
+            "text": "goblin conjurer last seen D8",
+            "t": 10211,
+            "depth": 8
+          },
+          {
+            "text": "found axe +1 on D8",
+            "t": 10786,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the strength",
+            "t": 11299,
+            "depth": 8
+          },
+          {
+            "text": "found amber potion? on D8",
+            "t": 11299,
+            "depth": 8
+          },
+          {
+            "text": "R2 drank heal at 10/42 hp",
+            "t": 12261,
+            "depth": 9
+          },
+          {
+            "text": "chase given up",
+            "t": 12299,
+            "depth": 9
+          },
+          {
+            "text": "goblin archer last seen D9",
+            "t": 12499,
+            "depth": 9
+          },
+          {
+            "text": "found bow on D9",
+            "t": 12536,
+            "depth": 9
+          },
+          {
+            "text": "swapped for the enchant",
+            "t": 14736,
+            "depth": 10
+          },
+          {
+            "text": "found inked scroll? on D10",
+            "t": 14736,
+            "depth": 10
+          },
+          {
+            "text": "found leash on D10",
+            "t": 14836,
+            "depth": 10
+          },
+          {
+            "text": "bloat last seen D10",
+            "t": 15099,
+            "depth": 10
+          }
+        ],
+        "max_steps": [
+          {
+            "t": 15061,
+            "max": 36,
+            "delta": -6,
+            "cause": "hunger"
+          },
+          {
+            "t": 15181,
+            "max": 35,
+            "delta": -1,
+            "cause": "hunger"
+          }
+        ]
+      },
+      "run_id": 22,
+      "xp": 127,
+      "legacy_earned": 1,
+      "stolen": [
+        "clear potion?"
+      ],
+      "start": 1,
+      "reason": "no heals · banked",
+      "found": [
+        {
+          "kind": "pearly potion?",
+          "n": 3,
+          "fate": "left"
+        },
+        {
+          "kind": "sword",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 3,
+          "fate": "left"
+        },
+        {
+          "kind": "folded scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "red potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "burnt scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1,
+          "fate": "stolen"
+        },
+        {
+          "kind": "leash",
+          "n": 3,
+          "fate": "converted"
+        },
+        {
+          "kind": "leash",
+          "n": 1,
+          "fate": "used"
+        },
+        {
+          "kind": "ashen scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "heal",
+          "n": 2,
+          "fate": "used"
+        },
+        {
+          "kind": "amber potion?",
+          "n": 3,
+          "fate": "converted"
+        },
+        {
+          "kind": "axe",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "leather",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "blue potion?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "bow",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "mail",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "blue potion?",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "axe",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "amber potion?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "fire",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "inked scroll?",
+          "n": 2,
+          "fate": "converted"
+        }
+      ],
+      "found_n": 40,
+      "news": [
+        {
+          "k": "differ",
+          "text": "deeper: D10, last D8",
+          "day": 1
+        }
+      ],
+      "meters": {
+        "seconds": 1526.1,
+        "dealt": {
+          "hero": 828,
+          "pets": 24,
+          "foes": 116
+        },
+        "taken": {
+          "hero": 144,
+          "pets": 7,
+          "foes": 856
+        },
+        "dps_dealt": {
+          "hero": 0.543,
+          "pets": 0.016,
+          "foes": 0.076
+        },
+        "dps_taken": {
+          "hero": 0.094,
+          "pets": 0.005,
+          "foes": 0.561
+        },
+        "healed": [
+          {
+            "src": "pet",
+            "total": 2,
+            "per_s": 0.001
+          },
+          {
+            "src": "regen",
+            "total": 90,
+            "per_s": 0.059
+          },
+          {
+            "src": "rest",
+            "total": 24,
+            "per_s": 0.016
+          }
+        ],
+        "hps": 0.076,
+        "time": {
+          "fight": 3297,
+          "travel": 11907,
+          "chores": 57,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 329.7,
+          "travel": 1190.7,
+          "chores": 5.7,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 1067,
+            "share": 0.779
+          },
+          {
+            "row": 0,
+            "fires": 9,
+            "share": 0.007
+          },
+          {
+            "row": 1,
+            "fires": 3,
+            "share": 0.002
+          },
+          {
+            "row": 4,
+            "fires": 16,
+            "share": 0.012
+          },
+          {
+            "row": 5,
+            "fires": 1,
+            "share": 0.001
+          },
+          {
+            "row": 6,
+            "fires": 271,
+            "share": 0.198
+          },
+          {
+            "row": 7,
+            "fires": 2,
+            "share": 0.001
+          }
+        ],
+        "actions": 1379,
+        "supplies": {
+          "heal potion": 3
+        },
+        "gold": 415,
+        "gold_per_min": 16.316,
+        "hits_hero": 68,
+        "hits_pets": 5,
+        "fights": 49,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 9,
+            "share": 0.007
+          },
+          {
+            "credit": "default",
+            "fires": 293,
+            "share": 0.214
+          },
+          {
+            "credit": "chores",
+            "fires": 1067,
+            "share": 0.779
+          }
+        ]
+      },
+      "end": "bank",
+      "reached": 10,
+      "finds": [
+        {
+          "id": 56,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 120,
+          "kind": "mail",
+          "known": true,
+          "label": "mail",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 92,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 136,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 42,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 47,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "free": false
+        }
+      ]
+    },
+    {
+      "tier": "return",
+      "carried": 172,
+      "keep_pct": 100,
+      "kept": 172,
+      "spent": 0,
+      "spent_on": [
+        "heal"
+      ],
+      "text": "returned $172 · $172 carried · keeps 100%",
+      "trace": {
+        "turns": [
+          {
+            "t": 8360,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8370,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8380,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8390,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8400,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8410,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8420,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8430,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8440,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 8450,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 2,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord last seen D8",
+                  "t": 8200,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 14/42 hp",
+                  "t": 7930,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 42
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found bow +1 on D1",
+            "t": 130,
+            "depth": 1
+          },
+          {
+            "text": "found dagger +1 on D1",
+            "t": 187,
+            "depth": 1
+          },
+          {
+            "text": "found sealed scroll? on D1",
+            "t": 474,
+            "depth": 1
+          },
+          {
+            "text": "rat last seen D2",
+            "t": 1370,
+            "depth": 2
+          },
+          {
+            "text": "found folded scroll? on D3",
+            "t": 1927,
+            "depth": 3
+          },
+          {
+            "text": "found pearly potion? on D3",
+            "t": 2240,
+            "depth": 3
+          },
+          {
+            "text": "found leather on D4",
+            "t": 3370,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the enchant",
+            "t": 3970,
+            "depth": 4
+          },
+          {
+            "text": "found inked scroll? on D4",
+            "t": 3970,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the blink",
+            "t": 4900,
+            "depth": 6
+          },
+          {
+            "text": "found brittle scroll? on D6",
+            "t": 4900,
+            "depth": 6
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 5110,
+            "depth": 6
+          },
+          {
+            "text": "found blue potion? on D6",
+            "t": 5110,
+            "depth": 6
+          },
+          {
+            "text": "found heal on D7",
+            "t": 5440,
+            "depth": 7
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 5730,
+            "depth": 7
+          },
+          {
+            "text": "found waxen scroll? on D7",
+            "t": 5730,
+            "depth": 7
+          },
+          {
+            "text": "monkey last seen D7",
+            "t": 6244,
+            "depth": 7
+          },
+          {
+            "text": "bloat last seen D7",
+            "t": 6290,
+            "depth": 7
+          },
+          {
+            "text": "R2 drank heal at 12/42 hp",
+            "t": 6340,
+            "depth": 7
+          },
+          {
+            "text": "found pearly potion? on D8",
+            "t": 6890,
+            "depth": 8
+          },
+          {
+            "text": "jackal last seen D8",
+            "t": 7740,
+            "depth": 8
+          },
+          {
+            "text": "R2 drank heal at 14/42 hp",
+            "t": 7930,
+            "depth": 8
+          },
+          {
+            "text": "foes hold the way",
+            "t": 8030,
+            "depth": 8
+          },
+          {
+            "text": "ogre last seen D8",
+            "t": 8170,
+            "depth": 8
+          },
+          {
+            "text": "goblin warlord last seen D8",
+            "t": 8200,
+            "depth": 8
+          },
+          {
+            "text": "goblin last seen D8",
+            "t": 8200,
+            "depth": 8
+          },
+          {
+            "text": "found sword +1 on D8",
+            "t": 8260,
+            "depth": 8
+          },
+          {
+            "text": "goblin archer last seen D8",
+            "t": 8290,
+            "depth": 8
+          },
+          {
+            "text": "goblin conjurer last seen D8",
+            "t": 8430,
+            "depth": 8
+          }
+        ]
+      },
+      "run_id": 23,
+      "xp": 37,
+      "legacy_earned": 1,
+      "start": 1,
+      "reason": "hurt · went home",
+      "found": [
+        {
+          "kind": "folded scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "bow",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "sword",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "dagger",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "sealed scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "pearly potion?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "folded scroll?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "leather",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "inked scroll?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "blue potion?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "heal",
+          "n": 1,
+          "fate": "used"
+        },
+        {
+          "kind": "pearly potion?",
+          "n": 1,
+          "fate": "converted"
+        }
+      ],
+      "found_n": 18,
+      "news": [
+        {
+          "k": "differ",
+          "text": "shallower: D8, last D10",
+          "day": 1
+        }
+      ],
+      "meters": {
+        "seconds": 845.0,
+        "dealt": {
+          "hero": 429,
+          "pets": 7,
+          "foes": 71
+        },
+        "taken": {
+          "hero": 91,
+          "pets": 5,
+          "foes": 438
+        },
+        "dps_dealt": {
+          "hero": 0.508,
+          "pets": 0.008,
+          "foes": 0.084
+        },
+        "dps_taken": {
+          "hero": 0.108,
+          "pets": 0.006,
+          "foes": 0.518
+        },
+        "healed": [
+          {
+            "src": "regen",
+            "total": 51,
+            "per_s": 0.06
+          }
+        ],
+        "hps": 0.06,
+        "time": {
+          "fight": 1760,
+          "travel": 6663,
+          "chores": 27,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 176.0,
+          "travel": 666.3,
+          "chores": 2.7,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 658,
+            "share": 0.779
+          },
+          {
+            "row": 0,
+            "fires": 14,
+            "share": 0.017
+          },
+          {
+            "row": 1,
+            "fires": 2,
+            "share": 0.002
+          },
+          {
+            "row": 3,
+            "fires": 27,
+            "share": 0.032
+          },
+          {
+            "row": 4,
+            "fires": 4,
+            "share": 0.005
+          },
+          {
+            "row": 6,
+            "fires": 140,
+            "share": 0.166
+          }
+        ],
+        "actions": 851,
+        "supplies": {
+          "heal potion": 2
+        },
+        "gold": 172,
+        "gold_per_min": 12.213,
+        "hits_hero": 54,
+        "hits_pets": 3,
+        "fights": 25,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 14,
+            "share": 0.017
+          },
+          {
+            "credit": "default",
+            "fires": 173,
+            "share": 0.205
+          },
+          {
+            "credit": "chores",
+            "fires": 658,
+            "share": 0.779
+          }
+        ]
+      },
+      "end": "return",
+      "reached": 8,
+      "finds": [
+        {
+          "id": 12,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 25,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 120,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "dagger",
+          "known": true,
+          "label": "dagger +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 61,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "free": false
+        },
+        {
+          "id": 92,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "hint": "malevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "tier": "return",
+      "carried": 456,
+      "keep_pct": 100,
+      "kept": 456,
+      "spent": 0,
+      "spent_on": [
+        "heal"
+      ],
+      "text": "returned $456 · $456 carried · keeps 100%",
+      "trace": {
+        "turns": [
+          {
+            "t": 18043,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 23,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <40%"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18056,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 23,
+            "foes": 2,
+            "rule_foes": 2,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <40%"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18068,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 20,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <40%"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 18060,
+                "by": "gas",
+                "dmg": 3,
+                "hp": 20
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18081,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 14,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [
+              "ogre winds up"
+            ],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <40%"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 18070,
+                "by": "gas",
+                "dmg": 3,
+                "hp": 17
+              },
+              {
+                "t": 18080,
+                "by": "gas",
+                "dmg": 3,
+                "hp": 14
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18093,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 11,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [
+              "ogre winds up"
+            ],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <40%"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 18090,
+                "by": "gas",
+                "dmg": 3,
+                "hp": 11
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18106,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 4,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 8/23 hp",
+                  "t": 17506,
+                  "depth": 13
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "blows": [
+              {
+                "t": 18093,
+                "by": "ogre",
+                "dmg": 7,
+                "hp": 4
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18118,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 4,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 8/23 hp",
+                  "t": 17506,
+                  "depth": 13
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18131,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 4,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 8/23 hp",
+                  "t": 17506,
+                  "depth": 13
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18143,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 4,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 8/23 hp",
+                  "t": 17506,
+                  "depth": 13
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 23
+          },
+          {
+            "t": 18156,
+            "row": 3,
+            "verb": {
+              "v": "return"
+            },
+            "hp": 4,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R2 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11218,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "no item",
+                "because": {
+                  "text": "R2 drank heal at 8/23 hp",
+                  "t": 17506,
+                  "depth": 13
+                }
+              },
+              {
+                "row": 2,
+                "why": "depth not ≥14"
+              }
+            ],
+            "max_hp": 23
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found sword +1 on D1",
+            "t": 430,
+            "depth": 1
+          },
+          {
+            "text": "found dagger +1 on D1",
+            "t": 450,
+            "depth": 1
+          },
+          {
+            "text": "found brittle scroll? on D1",
+            "t": 480,
+            "depth": 1
+          },
+          {
+            "text": "found red potion? on D2",
+            "t": 527,
+            "depth": 2
+          },
+          {
+            "text": "found oily potion? on D2",
+            "t": 590,
+            "depth": 2
+          },
+          {
+            "text": "found leather on D3",
+            "t": 854,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 867,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 1730,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 1800,
+            "depth": 3
+          },
+          {
+            "text": "found waxen scroll? on D3",
+            "t": 1800,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the identify",
+            "t": 2120,
+            "depth": 4
+          },
+          {
+            "text": "found sealed scroll? on D4",
+            "t": 2120,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the caustic",
+            "t": 2534,
+            "depth": 4
+          },
+          {
+            "text": "found clear potion? on D4",
+            "t": 2534,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the bow",
+            "t": 2600,
+            "depth": 4
+          },
+          {
+            "text": "found bow on D4",
+            "t": 2600,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the fire",
+            "t": 2750,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 3100,
+            "depth": 5
+          },
+          {
+            "text": "found heal on D5",
+            "t": 3100,
+            "depth": 5
+          },
+          {
+            "text": "goblin conjurer last seen D5",
+            "t": 3920,
+            "depth": 5
+          },
+          {
+            "text": "found axe +1 on D6",
+            "t": 4650,
+            "depth": 6
+          },
+          {
+            "text": "found mail on D6",
+            "t": 6106,
+            "depth": 6
+          },
+          {
+            "text": "jackal last seen D6",
+            "t": 6254,
+            "depth": 6
+          },
+          {
+            "text": "R2 drank heal at 14/42 hp",
+            "t": 6806,
+            "depth": 7
+          },
+          {
+            "text": "goblin last seen D7",
+            "t": 6968,
+            "depth": 7
+          },
+          {
+            "text": "found amber potion? on D7",
+            "t": 7343,
+            "depth": 7
+          },
+          {
+            "text": "goblin archer last seen D8",
+            "t": 10701,
+            "depth": 8
+          },
+          {
+            "text": "found Crownsplitter on D8",
+            "t": 11218,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the enchant",
+            "t": 11881,
+            "depth": 9
+          },
+          {
+            "text": "found inked scroll? on D9",
+            "t": 11881,
+            "depth": 9
+          },
+          {
+            "text": "R2 drank heal at 14/42 hp",
+            "t": 12018,
+            "depth": 9
+          },
+          {
+            "text": "found burnt scroll? on D9",
+            "t": 12118,
+            "depth": 9
+          },
+          {
+            "text": "swapped for the recall",
+            "t": 12168,
+            "depth": 9
+          },
+          {
+            "text": "found crimson scroll? on D9",
+            "t": 12168,
+            "depth": 9
+          },
+          {
+            "text": "den took the clear potion?, D9",
+            "t": 12393,
+            "depth": 9
+          },
+          {
+            "text": "monkey last seen D9",
+            "t": 12468,
+            "depth": 9
+          },
+          {
+            "text": "found gilded scroll? on D10",
+            "t": 12606,
+            "depth": 10
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 12781,
+            "depth": 10
+          },
+          {
+            "text": "found fire on D11",
+            "t": 14481,
+            "depth": 11
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 14706,
+            "depth": 11
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 15981,
+            "depth": 12
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 16506,
+            "depth": 12
+          },
+          {
+            "text": "found blue potion? on D12",
+            "t": 16506,
+            "depth": 12
+          },
+          {
+            "text": "gas cloud, this room",
+            "t": 16606,
+            "depth": 12
+          },
+          {
+            "text": "found heal on D12",
+            "t": 16681,
+            "depth": 12
+          },
+          {
+            "text": "R2 drank heal at 4/25 hp",
+            "t": 16693,
+            "depth": 12
+          },
+          {
+            "text": "ogre last seen D12",
+            "t": 17043,
+            "depth": 12
+          },
+          {
+            "text": "R2 drank heal at 8/23 hp",
+            "t": 17506,
+            "depth": 13
+          },
+          {
+            "text": "found blue potion? on D13",
+            "t": 17731,
+            "depth": 13
+          },
+          {
+            "text": "bloat last seen D13",
+            "t": 17993,
+            "depth": 13
+          }
+        ],
+        "max_steps": [
+          {
+            "t": 17493,
+            "max": 23,
+            "delta": -19,
+            "cause": "recovery"
+          }
+        ]
+      },
+      "run_id": 24,
+      "xp": 104,
+      "legacy_earned": 1,
+      "stolen": [
+        "clear potion?"
+      ],
+      "start": 1,
+      "reason": "hurt · went home",
+      "found": [
+        {
+          "kind": "dagger",
+          "n": 3,
+          "fate": "left"
+        },
+        {
+          "kind": "sword",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "red potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1,
+          "fate": "stolen"
+        },
+        {
+          "kind": "oily potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "leather",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "heal",
+          "n": 4,
+          "fate": "used"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "sealed scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "bow",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "fire",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "axe",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "mail",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "amber potion?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "crownsplitter",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "inked scroll?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "burnt scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "crimson scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "gilded scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "blue potion?",
+          "n": 5,
+          "fate": "converted"
+        }
+      ],
+      "found_n": 34,
+      "news": [
+        {
+          "k": "differ",
+          "text": "deeper: D13, last D8",
+          "day": 1
+        }
+      ],
+      "meters": {
+        "seconds": 1816.8,
+        "dealt": {
+          "hero": 1021,
+          "pets": 24,
+          "foes": 92
+        },
+        "taken": {
+          "hero": 167,
+          "pets": 5,
+          "foes": 1078
+        },
+        "dps_dealt": {
+          "hero": 0.562,
+          "pets": 0.013,
+          "foes": 0.051
+        },
+        "dps_taken": {
+          "hero": 0.092,
+          "pets": 0.003,
+          "foes": 0.593
+        },
+        "healed": [
+          {
+            "src": "regen",
+            "total": 117,
+            "per_s": 0.064
+          },
+          {
+            "src": "rest",
+            "total": 12,
+            "per_s": 0.007
+          }
+        ],
+        "hps": 0.071,
+        "time": {
+          "fight": 3890,
+          "travel": 14232,
+          "chores": 46,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 389.0,
+          "travel": 1423.2,
+          "chores": 4.6,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 1231,
+            "share": 0.789
+          },
+          {
+            "row": 0,
+            "fires": 7,
+            "share": 0.004
+          },
+          {
+            "row": 1,
+            "fires": 5,
+            "share": 0.003
+          },
+          {
+            "row": 3,
+            "fires": 5,
+            "share": 0.003
+          },
+          {
+            "row": 6,
+            "fires": 311,
+            "share": 0.199
+          },
+          {
+            "row": 7,
+            "fires": 1,
+            "share": 0.001
+          }
+        ],
+        "actions": 1567,
+        "supplies": {
+          "heal potion": 5
+        },
+        "gold": 456,
+        "gold_per_min": 15.059,
+        "hits_hero": 68,
+        "hits_pets": 5,
+        "fights": 62,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 7,
+            "share": 0.004
+          },
+          {
+            "credit": "default",
+            "fires": 322,
+            "share": 0.206
+          },
+          {
+            "credit": "chores",
+            "fires": 1231,
+            "share": 0.789
+          }
+        ]
+      },
+      "end": "return",
+      "reached": 13,
+      "finds": [
+        {
+          "id": 132,
+          "kind": "crownsplitter",
+          "known": true,
+          "label": "Crownsplitter",
+          "free": false,
+          "rarity": "legendary"
+        },
+        {
+          "id": 100,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 92,
+          "kind": "mail",
+          "known": true,
+          "label": "mail",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 63,
+          "kind": "bow",
+          "known": true,
+          "label": "bow",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 64,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 178,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        }
+      ]
+    },
+    {
+      "tier": "death",
+      "carried": 281,
+      "keep_pct": 0,
+      "kept": 0,
+      "spent": 0,
+      "spent_on": [
+        "heal"
+      ],
+      "text": "died $0 · $281 lost · bones: 12 items on D10",
+      "trace": {
+        "turns": [
+          {
+            "t": 14980,
+            "row": -2,
+            "verb": {
+              "v": "explore"
+            },
+            "hp": 10,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 6,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 7,
+                "why": "hp not <40%"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 14990,
+            "row": -2,
+            "verb": {
+              "v": "pick_up"
+            },
+            "hp": 10,
+            "foes": 0,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 6,
+                "why": "foes not ≥1"
+              },
+              {
+                "row": 7,
+                "why": "hp not <40%"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15000,
+            "row": -2,
+            "verb": {
+              "v": "pick_up"
+            },
+            "hp": 10,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "foes appeared after"
+              },
+              {
+                "row": 6,
+                "why": "foes appeared after"
+              },
+              {
+                "row": 7,
+                "why": "hp not <40%"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15010,
+            "row": -2,
+            "verb": {
+              "v": "pick_up"
+            },
+            "hp": 10,
+            "foes": 1,
+            "rule_foes": 0,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "foes appeared after"
+              },
+              {
+                "row": 6,
+                "why": "foes appeared after"
+              },
+              {
+                "row": 7,
+                "why": "hp not <40%"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15020,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 10,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15030,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 10,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15040,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 10,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [
+              "ogre winds up"
+            ],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15050,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 8,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 15045,
+                "by": "ogre",
+                "dmg": 2,
+                "hp": 8
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15060,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 8,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [
+              "ogre winds up"
+            ],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 14
+          },
+          {
+            "t": 15070,
+            "row": 6,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 8,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [
+              "ogre winds up"
+            ],
+            "blocked": "R6 tame ✗ no leash",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11420,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "has heal"
+              },
+              {
+                "row": 5,
+                "why": "no leash"
+              }
+            ],
+            "max_hp": 13
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found pearly potion? on D1",
+            "t": 370,
+            "depth": 1
+          },
+          {
+            "text": "found burnt scroll? on D1",
+            "t": 434,
+            "depth": 1
+          },
+          {
+            "text": "found amber potion? on D1",
+            "t": 640,
+            "depth": 1
+          },
+          {
+            "text": "found red potion? on D1",
+            "t": 700,
+            "depth": 1
+          },
+          {
+            "text": "found fire on D1",
+            "t": 820,
+            "depth": 1
+          },
+          {
+            "text": "found ashen scroll? on D1",
+            "t": 1074,
+            "depth": 1
+          },
+          {
+            "text": "found sword +2 on D2",
+            "t": 2100,
+            "depth": 2
+          },
+          {
+            "text": "found clear potion? on D2",
+            "t": 2114,
+            "depth": 2
+          },
+          {
+            "text": "found leash on D2",
+            "t": 2607,
+            "depth": 2
+          },
+          {
+            "text": "rat last seen D2",
+            "t": 2900,
+            "depth": 2
+          },
+          {
+            "text": "swapped for the summon ally",
+            "t": 3700,
+            "depth": 3
+          },
+          {
+            "text": "found gilded scroll? on D3",
+            "t": 3700,
+            "depth": 3
+          },
+          {
+            "text": "found leather +1 on D3",
+            "t": 4150,
+            "depth": 3
+          },
+          {
+            "text": "found brittle scroll? on D3",
+            "t": 4820,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 5000,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 5060,
+            "depth": 3
+          },
+          {
+            "text": "leash spent on tame",
+            "t": 5580,
+            "depth": 4
+          },
+          {
+            "text": "found heal on D5",
+            "t": 6140,
+            "depth": 5
+          },
+          {
+            "text": "goblin last seen D5",
+            "t": 7620,
+            "depth": 5
+          },
+          {
+            "text": "monkey last seen D6",
+            "t": 7847,
+            "depth": 6
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 8730,
+            "depth": 6
+          },
+          {
+            "text": "found waxen scroll? on D6",
+            "t": 8730,
+            "depth": 6
+          },
+          {
+            "text": "R2 drank heal at 14/42 hp",
+            "t": 11400,
+            "depth": 8
+          },
+          {
+            "text": "found ashen scroll? on D9",
+            "t": 11610,
+            "depth": 9
+          },
+          {
+            "text": "swapped for the fire",
+            "t": 11830,
+            "depth": 9
+          },
+          {
+            "text": "R2 drank heal at 12/38 hp",
+            "t": 12560,
+            "depth": 10
+          },
+          {
+            "text": "chase given up",
+            "t": 12730,
+            "depth": 10
+          },
+          {
+            "text": "found crimson scroll? on D10",
+            "t": 12750,
+            "depth": 10
+          },
+          {
+            "text": "found fire on D10",
+            "t": 13900,
+            "depth": 10
+          },
+          {
+            "text": "jackal last seen D10",
+            "t": 14660,
+            "depth": 10
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 14870,
+            "depth": 10
+          },
+          {
+            "text": "found heal on D10",
+            "t": 14870,
+            "depth": 10
+          },
+          {
+            "text": "ogre last seen D10",
+            "t": 15002,
+            "depth": 10
+          }
+        ],
+        "blow": {
+          "t": 15073,
+          "by": "ogre",
+          "dmg": 8,
+          "hp": 0
+        },
+        "hp_lost": [
+          {
+            "by": "ogre",
+            "dmg": 18
+          },
+          {
+            "by": "jackal",
+            "dmg": 1
+          }
+        ],
+        "max_steps": [
+          {
+            "t": 14950,
+            "max": 14,
+            "delta": -28,
+            "cause": "hunger"
+          },
+          {
+            "t": 15070,
+            "max": 13,
+            "delta": -1,
+            "cause": "hunger"
+          }
+        ]
+      },
+      "run_id": 25,
+      "legacy_earned": 1,
+      "stolen": [
+        "fire"
+      ],
+      "start": 1,
+      "cause": "an ogre",
+      "reason": "slain · ogre",
+      "found": [
+        {
+          "kind": "heal",
+          "n": 2,
+          "fate": "used"
+        },
+        {
+          "kind": "pearly potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "burnt scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "amber potion?",
+          "n": 1,
+          "fate": "bones"
+        },
+        {
+          "kind": "red potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "fire",
+          "n": 1,
+          "fate": "stolen"
+        },
+        {
+          "kind": "ashen scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "sword",
+          "n": 1,
+          "fate": "bones"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1,
+          "fate": "bones"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "leash",
+          "n": 1,
+          "fate": "used"
+        },
+        {
+          "kind": "gilded scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "leather",
+          "n": 1,
+          "fate": "bones"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "bones"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "heal",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "fire",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "crimson scroll?",
+          "n": 1,
+          "fate": "bones"
+        }
+      ],
+      "found_n": 23,
+      "bones": [
+        {
+          "kind": "amber potion?",
+          "n": 1
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 2
+        },
+        {
+          "kind": "heal",
+          "n": 2
+        },
+        {
+          "kind": "fire",
+          "n": 2
+        },
+        {
+          "kind": "crimson scroll?",
+          "n": 1
+        },
+        {
+          "kind": "sword",
+          "n": 1
+        },
+        {
+          "kind": "leather",
+          "n": 1
+        }
+      ],
+      "news": [
+        {
+          "k": "named",
+          "text": "grudge: Ashog the ogre",
+          "day": 1
+        },
+        {
+          "k": "differ",
+          "text": "shallower: D10, last D13",
+          "day": 1
+        }
+      ],
+      "meters": {
+        "seconds": 1507.3,
+        "dealt": {
+          "hero": 907,
+          "pets": 8,
+          "foes": 105
+        },
+        "taken": {
+          "hero": 129,
+          "pets": 6,
+          "foes": 927
+        },
+        "dps_dealt": {
+          "hero": 0.602,
+          "pets": 0.005,
+          "foes": 0.07
+        },
+        "dps_taken": {
+          "hero": 0.086,
+          "pets": 0.004,
+          "foes": 0.615
+        },
+        "healed": [
+          {
+            "src": "pet",
+            "total": 1,
+            "per_s": 0.001
+          },
+          {
+            "src": "regen",
+            "total": 78,
+            "per_s": 0.052
+          },
+          {
+            "src": "rest",
+            "total": 12,
+            "per_s": 0.008
+          }
+        ],
+        "hps": 0.06,
+        "time": {
+          "fight": 2956,
+          "travel": 12080,
+          "chores": 36,
+          "rest": 1
+        },
+        "time_s": {
+          "fight": 295.6,
+          "travel": 1208.0,
+          "chores": 3.6,
+          "rest": 0.1
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 1181,
+            "share": 0.783
+          },
+          {
+            "row": 0,
+            "fires": 10,
+            "share": 0.007
+          },
+          {
+            "row": 1,
+            "fires": 3,
+            "share": 0.002
+          },
+          {
+            "row": 5,
+            "fires": 1,
+            "share": 0.001
+          },
+          {
+            "row": 6,
+            "fires": 312,
+            "share": 0.207
+          },
+          {
+            "row": 7,
+            "fires": 1,
+            "share": 0.001
+          }
+        ],
+        "actions": 1511,
+        "supplies": {
+          "heal potion": 3
+        },
+        "gold": 0,
+        "gold_per_min": 0.0,
+        "hits_hero": 54,
+        "hits_pets": 5,
+        "fights": 50,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 10,
+            "share": 0.007
+          },
+          {
+            "credit": "default",
+            "fires": 317,
+            "share": 0.21
+          },
+          {
+            "credit": "chores",
+            "fires": 1181,
+            "share": 0.783
+          }
+        ]
+      },
+      "end": "death",
+      "reached": 10,
+      "finds": [
+        {
+          "id": 29,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +2",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 42,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 140,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 159,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 156,
+          "kind": "heal",
+          "known": true,
+          "label": "heal potion",
+          "free": false
+        },
+        {
+          "id": 18,
+          "kind": "potion",
+          "known": false,
+          "label": "amber potion?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    },
+    {
+      "tier": "bank",
+      "carried": 249,
+      "keep_pct": 100,
+      "kept": 249,
+      "spent": 0,
+      "spent_on": [
+        "heal"
+      ],
+      "text": "banked $249 · $249 carried · keeps 100% · ◆+2",
+      "trace": {
+        "turns": [
+          {
+            "t": 12440,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12450,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12460,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12470,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12480,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12490,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12500,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12510,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12520,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          },
+          {
+            "t": 12530,
+            "row": 4,
+            "verb": {
+              "v": "bank"
+            },
+            "hp": 15,
+            "foes": 1,
+            "rule_foes": 1,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "goblin warlord slain D8",
+                  "t": 11690,
+                  "depth": 8
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not <35%"
+              },
+              {
+                "row": 2,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              }
+            ],
+            "max_hp": 42
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found bow +1 on D1",
+            "t": 120,
+            "depth": 1
+          },
+          {
+            "text": "found pearly potion? on D1",
+            "t": 360,
+            "depth": 1
+          },
+          {
+            "text": "found bow +1 on D1",
+            "t": 1010,
+            "depth": 1
+          },
+          {
+            "text": "found leather +1 on D1",
+            "t": 1100,
+            "depth": 1
+          },
+          {
+            "text": "found red potion? on D2",
+            "t": 2310,
+            "depth": 2
+          },
+          {
+            "text": "found gilded scroll? on D2",
+            "t": 2467,
+            "depth": 2
+          },
+          {
+            "text": "rat last seen D2",
+            "t": 2520,
+            "depth": 2
+          },
+          {
+            "text": "swapped for the caustic",
+            "t": 2770,
+            "depth": 3
+          },
+          {
+            "text": "found clear potion? on D3",
+            "t": 2770,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the fire",
+            "t": 3110,
+            "depth": 3
+          },
+          {
+            "text": "found fire on D3",
+            "t": 3110,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the blink",
+            "t": 3210,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the blink",
+            "t": 3800,
+            "depth": 4
+          },
+          {
+            "text": "found brittle scroll? on D4",
+            "t": 3800,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 3940,
+            "depth": 4
+          },
+          {
+            "text": "goblin conjurer last seen D5",
+            "t": 5410,
+            "depth": 5
+          },
+          {
+            "text": "found sword +2 on D5",
+            "t": 5840,
+            "depth": 5
+          },
+          {
+            "text": "jackal last seen D5",
+            "t": 6270,
+            "depth": 5
+          },
+          {
+            "text": "ogre last seen D7",
+            "t": 7636,
+            "depth": 7
+          },
+          {
+            "text": "swapped for the poison",
+            "t": 8000,
+            "depth": 7
+          },
+          {
+            "text": "found blue potion? on D7",
+            "t": 8000,
+            "depth": 7
+          },
+          {
+            "text": "goblin last seen D7",
+            "t": 8790,
+            "depth": 7
+          },
+          {
+            "text": "monkey last seen D7",
+            "t": 9144,
+            "depth": 7
+          },
+          {
+            "text": "R2 drank heal at 13/42 hp",
+            "t": 9290,
+            "depth": 7
+          },
+          {
+            "text": "chase given up",
+            "t": 10090,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 10240,
+            "depth": 8
+          },
+          {
+            "text": "found waxen scroll? on D8",
+            "t": 10240,
+            "depth": 8
+          },
+          {
+            "text": "goblin archer last seen D8",
+            "t": 10580,
+            "depth": 8
+          }
+        ]
+      },
+      "run_id": 26,
+      "xp": 74,
+      "legacy_earned": 1,
+      "start": 1,
+      "reason": "no heals · banked",
+      "found": [
+        {
+          "kind": "bow",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "fire",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "waxen scroll?",
+          "n": 3,
+          "fate": "converted"
+        },
+        {
+          "kind": "pearly potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "leather",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "gilded scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "red potion?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "sword",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "converted"
+        },
+        {
+          "kind": "blue potion?",
+          "n": 2,
+          "fate": "converted"
+        },
+        {
+          "kind": "sword",
+          "n": 1,
+          "fate": "converted"
+        }
+      ],
+      "found_n": 20,
+      "news": [
+        {
+          "k": "differ",
+          "text": "shallower: D9, last D10",
+          "day": 1
+        }
+      ],
+      "meters": {
+        "seconds": 1253.0,
+        "dealt": {
+          "hero": 465,
+          "pets": 7,
+          "foes": 50
+        },
+        "taken": {
+          "hero": 56,
+          "pets": 6,
+          "foes": 469
+        },
+        "dps_dealt": {
+          "hero": 0.371,
+          "pets": 0.006,
+          "foes": 0.04
+        },
+        "dps_taken": {
+          "hero": 0.045,
+          "pets": 0.005,
+          "foes": 0.374
+        },
+        "healed": [
+          {
+            "src": "pet",
+            "total": 1,
+            "per_s": 0.001
+          },
+          {
+            "src": "regen",
+            "total": 29,
+            "per_s": 0.023
+          }
+        ],
+        "hps": 0.024,
+        "time": {
+          "fight": 1920,
+          "travel": 10577,
+          "chores": 33,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 192.0,
+          "travel": 1057.7,
+          "chores": 3.3,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 1071,
+            "share": 0.855
+          },
+          {
+            "row": 0,
+            "fires": 7,
+            "share": 0.006
+          },
+          {
+            "row": 1,
+            "fires": 1,
+            "share": 0.001
+          },
+          {
+            "row": 4,
+            "fires": 13,
+            "share": 0.01
+          },
+          {
+            "row": 6,
+            "fires": 161,
+            "share": 0.128
+          }
+        ],
+        "actions": 1257,
+        "supplies": {
+          "heal potion": 1
+        },
+        "gold": 249,
+        "gold_per_min": 11.923,
+        "hits_hero": 27,
+        "hits_pets": 3,
+        "fights": 32,
+        "credit": [
+          {
+            "credit": "taught",
+            "fires": 7,
+            "share": 0.006
+          },
+          {
+            "credit": "default",
+            "fires": 175,
+            "share": 0.14
+          },
+          {
+            "credit": "chores",
+            "fires": 1071,
+            "share": 0.855
+          }
+        ]
+      },
+      "end": "bank",
+      "reached": 9,
+      "finds": [
+        {
+          "id": 79,
+          "kind": "sword",
+          "known": true,
+          "label": "sword +2",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 25,
+          "kind": "bow",
+          "known": true,
+          "label": "bow +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 15,
+          "kind": "leather",
+          "known": true,
+          "label": "leather +1",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 14,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 52,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 62,
+          "kind": "potion",
+          "known": false,
+          "label": "blue potion?",
+          "free": false
+        }
+      ]
+    }
+  ],
+  "picked": [
+    5,
+    8
+  ],
+  "lanes": [
+    "D5–8 · the Burrows",
+    "D9–13 · the Fens"
+  ],
+  "heirs": [
+    2,
+    5
+  ],
+  "lead": [
+    {
+      "k": "death",
+      "text": "1 death · goblin archer"
+    },
+    {
+      "k": "pending",
+      "text": "unlock throw (3)"
+    }
+  ],
+  "grew": [
+    {
+      "track": "character",
+      "what": "L4"
+    },
+    {
+      "track": "items",
+      "what": "+$3323"
+    },
+    {
+      "track": "items",
+      "what": "a find"
+    },
+    {
+      "track": "scale",
+      "what": "a companion"
+    }
+  ],
+  "packages": [
+    "QUEST DONE · home from D5"
+  ],
+  "workers": [
+    {
+      "id": "scout",
+      "what": "sent 14",
+      "n": 14,
+      "first": false
+    }
+  ],
+  "finds": {
+    "sealed": 14,
+    "best": {
+      "id": "candle",
+      "kind": "piece",
+      "name": "sleeper's candle",
+      "rank": 4,
+      "set": "sleeper",
+      "table": 2
+    },
+    "finds": [
+      {
+        "id": "candle",
+        "kind": "piece",
+        "name": "sleeper's candle",
+        "rank": 4,
+        "set": "sleeper",
+        "table": 2
+      },
+      {
+        "id": "lens",
+        "kind": "piece",
+        "name": "scholar's lens",
+        "rank": 4,
+        "set": "scholar",
+        "table": 2
+      },
+      {
+        "id": "tome",
+        "kind": "piece",
+        "name": "scholar's tome",
+        "rank": 4,
+        "set": "scholar",
+        "table": 2
+      },
+      {
+        "id": "bright",
+        "kind": "shard",
+        "name": "bright shard",
+        "rank": 3,
+        "table": 2
+      },
+      {
+        "id": "pillow",
+        "kind": "piece",
+        "name": "sleeper's pillow",
+        "rank": 3,
+        "set": "sleeper",
+        "table": 1
+      },
+      {
+        "id": "quill",
+        "kind": "piece",
+        "name": "scholar's quill",
+        "rank": 3,
+        "set": "scholar",
+        "table": 1
+      },
+      {
+        "id": "quill",
+        "kind": "piece",
+        "name": "scholar's quill",
+        "rank": 3,
+        "set": "scholar",
+        "table": 1
+      },
+      {
+        "id": "quill",
+        "kind": "piece",
+        "name": "scholar's quill",
+        "rank": 3,
+        "set": "scholar",
+        "table": 1
+      },
+      {
+        "id": "stone",
+        "kind": "piece",
+        "name": "hearth stone",
+        "rank": 3,
+        "set": "hearth",
+        "table": 1
+      },
+      {
+        "id": "banner",
+        "kind": "cosmetic",
+        "name": "crooked banner",
+        "rank": 1,
+        "table": 1
+      },
+      {
+        "id": "banner",
+        "kind": "cosmetic",
+        "name": "crooked banner",
+        "rank": 1,
+        "table": 1
+      },
+      {
+        "id": "moth",
+        "kind": "cosmetic",
+        "name": "moth lantern",
+        "rank": 1,
+        "table": 1
+      },
+      {
+        "id": "moth",
+        "kind": "cosmetic",
+        "name": "moth lantern",
+        "rank": 1,
+        "table": 1
+      },
+      {
+        "id": "pebble",
+        "kind": "cosmetic",
+        "name": "painted pebble",
+        "rank": 1,
+        "table": 1
+      }
+    ],
+    "legacy": 2,
+    "sets": [
+      "Scholar's set"
+    ]
+  },
+  "feats": [
+    {
+      "k": "siege",
+      "text": "Mother · try 1 · +2%",
+      "day": 1
+    },
+    {
+      "k": "recovered",
+      "text": "Rook's pack · $26 · D13",
+      "day": 1
+    },
+    {
+      "k": "swift",
+      "text": "D1–7 swift",
+      "day": 1
+    },
+    {
+      "k": "old_hound",
+      "text": "Grusk · old hound · served Rook, Sable, Toren",
+      "day": 1
+    },
+    {
+      "k": "recovered",
+      "text": "Sable's pack · $249 · D8",
+      "day": 1
+    },
+    {
+      "k": "siege",
+      "text": "Warlord · try 1 · +2%",
+      "day": 1
+    },
+    {
+      "k": "released",
+      "text": "Thim released",
+      "day": 1
+    },
+    {
+      "k": "recovered",
+      "text": "Toren's pack · $227 · D8",
+      "day": 1
+    },
+    {
+      "k": "siege_won",
+      "text": "Warlord fell · 2 tries",
+      "day": 1
+    },
+    {
+      "k": "title",
+      "text": "the line is Warlordbane",
+      "day": 1
+    },
+    {
+      "k": "released",
+      "text": "Thar released",
+      "day": 1
+    },
+    {
+      "k": "set",
+      "text": "Scholar's set · class xp +2%",
+      "day": 1
+    },
+    {
+      "k": "pet",
+      "text": "Grusk · fetcher L1",
+      "day": 1
+    }
+  ]
+}

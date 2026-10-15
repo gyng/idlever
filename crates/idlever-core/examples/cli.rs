@@ -71,10 +71,6 @@ fn main() {
             events.extend(r.events);
             last_hero = Some(r.snapshot.hero.clone());
             if r.run_over {
-                if let Some(p) = &r.exit_pending {
-                    println!("  exit {}: {} items offered", p.tier, p.items.len());
-                }
-                game.auto_keep();
                 break;
             }
         }
@@ -113,7 +109,7 @@ fn main() {
             deaths.push(game.lineage.next_run_id - 1);
         }
         let l = game.lineage();
-        println!("  lineage: best D{} · marks {} · gold {} · facts {} · vault {} · renown {} (rank {})", l.best_depth, l.marks, l.gold, l.facts.len(), l.vault.len(), l.renown, l.rank);
+        println!("  lineage: best D{} · marks {} · gold {} · facts {} · renown {} (rank {})", l.best_depth, l.marks, l.gold, l.facts.len(), l.renown, l.rank);
     }
     let all = args.iter().any(|a| a == "--all-deaths");
     let to_show: Vec<u32> = if all { deaths } else { last_death.into_iter().collect() };

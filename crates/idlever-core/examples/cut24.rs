@@ -140,8 +140,7 @@ fn runs(seed: u64, n: u32, kit: (u32, u32), set: &RuleSet, verbose: bool) {
             r.driven_off
         );
         g.finish_run();
-        g.auto_keep();
-    }
+        }
 }
 
 /// The moments a stretch passes 60: the set's sends one by one, the last 16 actions and the
@@ -173,8 +172,7 @@ fn why(seed: u64, n: u32, set: &RuleSet, at: u32) {
             }
         }
         g.finish_run();
-        g.auto_keep();
-    }
+        }
 }
 
 /// The FULL bot (every unlock and fact, fighter L10 mastered, every kit step): each boss
@@ -240,8 +238,7 @@ fn boss(seeds: u64, n: u32, drop: Option<&str>) {
                 stats.entry(kind).or_default().push((n, killed));
             }
             g.finish_run();
-            g.auto_keep();
-        }
+            }
     }
     for (k, v) in &stats {
         let ns: Vec<u32> = v.iter().map(|x| x.0).collect();
@@ -286,7 +283,6 @@ fn reel(seeds: u64, runs_n: usize, sets: &[(String, RuleSet)]) {
                     news.extend(exit_news(&l));
                 }
                 g.events.clear();
-                g.auto_keep();
                 let n = notes.len();
                 if std::env::var("SHOW").is_ok() {
                     println!("  news {:?} · notes {:?}", news, &notes[n.saturating_sub(5)..]);

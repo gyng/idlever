@@ -133,11 +133,7 @@ export function inertOf(app: App, r: Row): string | undefined {
   if (!a || a === "unknown" || !["drink", "read", "throw"].includes(r.verb.v)) return undefined;
   if (!(app.vocab?.locked ?? []).some((l) => l.cond.k === "item" && l.cond.t === a))
     return undefined;
-  if (
-    (app.lineage?.supplies ?? []).some((s) => s.kind === a) ||
-    (app.lineage?.vault ?? []).some((v) => v.kind === a && app.loadout.includes(v.id))
-  )
-    return undefined;
+  if ((app.lineage?.supplies ?? []).some((s) => s.kind === a)) return undefined;
   return /* copy:callout */ `identify ${a.replace(/_/g, " ")}`;
 }
 /** Cut 26 §6 (AP: `on see hunger → descend` went into a row with no mark, found only as `R3 descend · locked cond` in a trace): a cond the

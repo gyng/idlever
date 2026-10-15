@@ -2,10 +2,12 @@
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const b = await launchBrowser();
 let checks = 0;
 try {
@@ -23,7 +25,8 @@ try {
       window.fixture = (id, ready) => {
         window.ui?.dispose();
         document.body.replaceChildren();
-        const order = ["blacksmith", "storehouse", "kennel", "bank"],
+        // Cut201: retired Storehouse has no current plot or construction action.
+        const order = ["blacksmith", "kennel", "bank"],
           lineage = structuredClone(base);
         lineage.town = {
           ...lineage.town,
@@ -33,10 +36,14 @@ try {
           next_ready: ready,
           next_trigger: "first tame",
         };
+        window.fixtureTown = lineage.town;
         window.calls = 0;
         const app = {
           lineage,
           lastAbsence: null,
+          // Controlled static renderer fixture: no live/check-in events occur.
+          onLive: () => () => {},
+          onChange: () => () => {},
           engine: {
             buildTown: async () => {
               window.calls++;
@@ -51,7 +58,7 @@ try {
         window.ui.paint();
       };
     });
-    for (const id of ["blacksmith", "storehouse", "kennel", "bank"]) {
+    for (const id of ["blacksmith", "kennel", "bank"]) {
       await p.evaluate((id) => window.fixture(id, true), id);
       if (!fallback)
         await p.waitForFunction(() =>
@@ -95,7 +102,7 @@ try {
           };
         });
         assert.ok(d.inside, JSON.stringify({ id, width, ...d }));
-        assert.ok(d.separate);
+        assert.ok(d.separate, JSON.stringify({ id, width, ...d }));
         assert.ok(d.hit, JSON.stringify({ id, width, ...d }));
         assert.ok(d.min);
         assert.equal(d.hidden, false);
@@ -109,12 +116,23 @@ try {
         checks++;
       }
     }
+    const beforeUnready = await p.evaluate(() => window.__idlever.engine.save());
     await p.evaluate(() => window.fixture("kennel", false));
     await p.waitForTimeout(150);
     assert.equal(await p.locator(".town-foundation").evaluate((e) => e.hidden), true);
-    assert.match(await p.locator(".town-tag").textContent(), /first tame/);
-    assert.equal(await p.locator(".town-tag").getAttribute("role"), null);
-    await p.locator(".town-tag").click();
+    assert.equal(await p.locator(".town-tag:not([hidden])").count(), 0);
+    assert.equal(await p.locator('.town-hit[data-building="staked"]').count(), 0);
+    assert.equal(await p.locator('[data-building-info="staked"]').count(), 0);
+    assert.equal(await p.evaluate(() => window.ui.view.stats().staked), undefined);
+    assert.deepEqual(
+      await p.evaluate(() => ({
+        next: window.fixtureTown.next,
+        ready: window.fixtureTown.next_ready,
+        trigger: window.fixtureTown.next_trigger,
+      })),
+      { next: "kennel", ready: false, trigger: "first tame" },
+    );
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), beforeUnready);
     assert.equal(await p.evaluate(() => window.calls), 0);
     assert.deepEqual(errors, []);
     await p.evaluate(() => window.ui.dispose());

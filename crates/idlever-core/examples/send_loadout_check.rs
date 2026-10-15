@@ -10,7 +10,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     idlever_core::chronicle::use_shipping_words();
     let text = std::fs::read_to_string(&args[1])?;
     let source = Game::load(&text)?;
-    if source.run.is_some() || source.pending_exit.is_some() { return Err("settled camp required".into()); }
+    if source.run.is_some() { return Err("settled camp required".into()); }
     let tag: u64 = 158;
     let seed = splitmix(source.lineage.seed ^ splitmix(tag ^ 0xA24B_AED4_963E_E407));
     let simulation = forecast::sim_game(&source, source.lineage.rules(), tag, 0, None);

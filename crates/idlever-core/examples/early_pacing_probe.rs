@@ -30,7 +30,7 @@ fn main() {
             loop {
                 let r = g.step(256);
                 exits.extend(r.events.into_iter().filter(|e|matches!(e,Ev::Exit {..})));
-                if r.run_over {g.auto_keep();break;}
+                if r.run_over {break;}
             }
             observations.push(json!({"at":format!("manual{manual}"),"state":state(&g),"exits":exits}));
             if tree::lit(&g.lineage).is_some_and(|n|n.id=="porter") {

@@ -1,0 +1,16 @@
+client suite: targeted (3 selected; 163 current full; 206 exhaustive groups)
+FAIL runsui          58.0s (44.8s)  runsui: 4 FAIL
+       - waiting for locator('.hero-details:visible').first()
+         - <div aria-hidden="true" class="hero-hub-figure">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+         - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+           - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+            - <div data-hero-hub="1" class="sheet-body hero-hub">…</div> from <div class="sheet-wrap centered">…</div> subtree intercepts pointer events
+     FAIL the first Send is lit (Delve0/2)
+     FAIL day 0: ≤ 5 surfaces in the well and console (9: staked | send | hero-details | Forge information | House information | forge · Hire Scout | Fenn Ash · Bloodline 1 · | Heroes | tile:journal)
+     FAIL the log from run 1: one entry, the stud shown (null)
+     FAIL threw: locator.click: Timeout 30000ms exceeded.
+FAIL menu-materials  65.0s (7.0s)  Node.js v22.18.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/menu-materials.mjs:147:13 {
+ok   home-residents  133.6s (68.6s)  home-residents: 506 checks PASS; actual paid3rest and/or labelled controlled Core3reincarnation, perfixture6layouts/36mouse-keyboard inspections, unchanged restored save
+FAIL: 1/3 client gates in 133.6s

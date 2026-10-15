@@ -118,7 +118,6 @@ pub fn equipment(g: &Game) -> EquipmentBuild {
         // The isolated sim suppresses purchases and uses canonical preparation.
         let mut preview = g.sim_clone();
         preview.run = None;
-        preview.pending_exit = None;
         preview.start_run(Some(0x220));
         view(
             g,

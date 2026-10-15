@@ -14,8 +14,6 @@ export function readDebug(text) {
     ![1, 2].includes(s.v) ||
     typeof s.engine !== "string" ||
     !s.engine ||
-    !Array.isArray(s.loadout) ||
-    !s.loadout.every(Number.isSafeInteger) ||
     !Number.isFinite(s.last_seen)
   )
     throw Error("Invalid save envelope");

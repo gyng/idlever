@@ -1,9 +1,11 @@
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   for (const [width, height] of [
@@ -33,7 +35,7 @@ try {
       const settle = () => new Promise((r) => setTimeout(r, 20));
       const save = await a.engine.save(),
         lineage = a.lineage;
-      a.loadout = [1, 2];
+      const rulesBefore = JSON.stringify(a.rules);
       a.runsSeen = 23;
       a.engine.ascend = async () => {
         calls++;
@@ -41,8 +43,8 @@ try {
       };
       a.go({ kind: "ending" });
       check(
-        document.querySelectorAll(".ascension-description").length === 4,
-        "all four challenges explained",
+        document.querySelectorAll(".ascension-description").length === 3,
+        "all three current challenges explained",
       );
       check(
         document.querySelector(".ending-body").getBoundingClientRect().top >= 0 &&
@@ -93,8 +95,8 @@ try {
       await settle();
       check(resets === 0 && calls === 1, "refusal never creates a new town");
       check(
-        a.lineage === lineage && a.runsSeen === 23 && a.loadout.join() === "1,2",
-        "refusal keeps client progression and loadout",
+        a.lineage === lineage && a.runsSeen === 23 && JSON.stringify(a.rules) === rulesBefore,
+        "refusal keeps client progression and authored rules",
       );
       check((await a.engine.save()) === save, "refusal keeps complete engine save");
       check(
@@ -136,7 +138,7 @@ try {
         "successful core result reaches camp",
       );
       check(
-        a.runsSeen === 0 && a.loadout.length === 0 && resets === 0,
+        a.runsSeen === 0 && !("loadout" in a) && resets === 0,
         "success performs ascension cleanup exactly",
       );
       check(document.documentElement.scrollWidth <= innerWidth, "success has no overflow");

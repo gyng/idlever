@@ -1,0 +1,12 @@
+repin: native gold_settlement_repin (cargo --profile fast) …
+repin:
+  wasm 6775918 bytes sha256 97e8511557eeba9731fd09208db9e1e013ff407519a67f6276edf605e643911f
+  default manifest docs/evidence/cut235/final/settlements-inputs-87de.json pins 87de61e9fbf7… → CHANGED
+  new manifest docs/evidence/cut244/settlements-inputs-97e8.json (repinnedFrom docs/evidence/cut235/final/settlements-inputs-87de.json; note_cut244); default switched (edit its "Current package:" comment by hand)
+  settle: Gold, ledger, ExitLine unchanged on 4/4 entries (0.8s)
+    bank-positive: expected unchanged; after-save DIFFERS in 23 path kinds: $.lineage.orders.insure, $.lineage.tree.sends, $.lineage.vault, $.lineage.keep_pref, $.lineage.insured, $.last_snapshot.stake.brought, $.batch.found, $.sent_state.lineage.orders.insure, … → regenerated
+    death-secured-lost: expected unchanged; after-save DIFFERS in 38 path kinds: $.lineage.orders.insure, $.lineage.tree.sends, $.lineage.vault, $.lineage.keep_pref, $.lineage.insured, $.last_snapshot.stake.brought, $.batch.found, $.sent_state.lineage.orders.insure, … → regenerated
+    death-fetched-lost: expected unchanged; after-save DIFFERS in 23 path kinds: $.lineage.orders.insure, $.lineage.tree.sends, $.lineage.vault, $.lineage.keep_pref, $.lineage.insured, $.last_snapshot.stake.brought, $.batch.found, $.sent_state.lineage.orders.insure, … → regenerated
+    multihero-absence: expected DIFFERS ($.report.found); after-save DIFFERS in 38 path kinds: $.lineage.orders.insure, $.lineage.tree.sends, $.lineage.vault, $.lineage.keep_pref, $.lineage.insured, $.last_snapshot.stake.brought, $.batch.found, $.sent_state.lineage.orders.insure, … → regenerated
+    4 entries regenerated into docs/evidence/cut244/settlements-inputs-97e8.json
+next: cd web && node tests/run.mjs gold-settlements   # browser proof against docs/evidence/cut244/settlements-inputs-97e8.json

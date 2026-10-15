@@ -1,0 +1,6 @@
+client suite: targeted (1 selected; 164 current full; 207 exhaustive groups)
+FAIL home-building-help 41.6s (35.3s)  Node.js v22.18.0
+       - waiting for locator('#kw-tip:not([hidden])') to be visible
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/home-building-help.mjs:132:51 {
+FAIL: 0/1 client gates in 41.6s

@@ -13,6 +13,23 @@ use crate::wire::*;
 
 // ---------------------------------------------------------------- harness
 
+/// Cut244: automatic outcomes expose neither saved storage nor hidden storage orders.
+fn assert_storage_retired(g: &Game) {
+    let saved: serde_json::Value = serde_json::from_str(&g.save()).unwrap();
+    for field in ["pending_exit", "loadout"] {
+        assert!(saved.get(field).is_none(), "retired game field {field}");
+    }
+    let wire = serde_json::to_value(g.lineage()).unwrap();
+    for field in ["vault", "insured", "keep_pref", "keep_auto", "keep_salvaged", "selected_loadout"] {
+        assert!(saved["lineage"].get(field).is_none(), "retired saved field {field}");
+        assert!(wire.get(field).is_none(), "retired wire field {field}");
+    }
+    for field in ["keep", "insure"] {
+        assert!(wire["orders"].get(field).is_none(), "retired standing order {field}");
+    }
+}
+
+
 /// `f` for each seed on its own thread, the results in seed order: the long seed loops are
 /// the suite's critical path (docs/ITERATION_SPEED.md §3.4); every seed is its own game, so
 /// what each asserts is unchanged. A panicking seed fails the test with its own message.
@@ -1083,10 +1100,9 @@ fn bank_keeps_all_loot_and_gold() {
     give(&mut g, "heal");
     finish_with(&mut g, ExitTier::Bank);
     assert_eq!(g.lineage.gold, 100 / crate::engine::gold_divisor());
-    assert!(g.pending_exit.is_none());
-    assert!(g.lineage.vault.is_empty());
+    assert_storage_retired(&g);
     assert_eq!(g.batch.salvage_gold, 0);
-    let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved, "no duplicate payment");
+    let saved = g.save(); assert_eq!(g.save(), saved, "no duplicate payment");
 }
 #[test]
 fn return_keeps_all_currency_without_a_second_payment() {
@@ -1097,8 +1113,7 @@ fn return_keeps_all_currency_without_a_second_payment() {
     }
     finish_with(&mut g, ExitTier::Return);
     assert_eq!(g.lineage.gold, 25, "full existing carry, no second item payment");
-    assert!(g.pending_exit.is_none());
-    assert!(g.lineage.vault.is_empty());
+    assert_storage_retired(&g);
     assert_eq!(g.batch.salvage_gold, 0);
     assert_eq!(g.last_exit.as_ref().unwrap().tier, "return");
 }
@@ -1118,7 +1133,7 @@ fn death_keeps_nothing_and_leaves_bones() {
     let died = g.lineage.gold_ledger.iter().find(|l| l.why.starts_with("died")).expect("death line");
     assert_eq!(died.delta, 0, "Cut 2 §2: death yields nothing");
     assert_eq!(g.lineage.gold, crate::engine::wake_pay().min(g.lineage.gold.max(crate::engine::wake_pay())), "wake pay tops the purse up, never beyond");
-    assert!(g.pending_exit.is_none());
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.heir, 2);
     assert_eq!(g.lineage.graveyard.len(), 1);
     assert_eq!(g.lineage.bones.len(), 1, "the kit waits on the floor");
@@ -1133,7 +1148,6 @@ fn death_keeps_nothing_and_leaves_bones() {
     assert_eq!(u64::from(g.lineage().rest_left_s), recovery_s);
     assert_eq!(g.lineage().bones[0].items, 5);
     // The next heir finds them on D1 and recovers them.
-    g.auto_keep();
     g.start_run(None);
     let run = g.run.as_mut().unwrap();
     let bi = run.items.iter().position(|i| i.item.kind == "bones").expect("bones placed on D1");
@@ -1167,7 +1181,6 @@ fn bones_piles_cap_at_bones_max_and_bone_sense_paths_to_them() {
     assert_eq!(g.lineage.bones.iter().map(|b| b.heir).collect::<Vec<_>>(), want);
     // bone_sense: the chores walk to unseen bones.
     g.lineage.unlocks.insert("bone_sense".into());
-    g.auto_keep();
     g.start_run(None);
     assert!(g.run.as_ref().unwrap().items.iter().filter(|i| i.item.kind == "bones").count() == cap as usize);
     g.set_rules(RuleSet::default()).unwrap();
@@ -1805,7 +1818,6 @@ fn story_lines_over_a_hundred_runs_follow_the_grammar() {
                 lines += hs.len();
                 runs += 1;
                 g.finish_run();
-                g.auto_keep();
                 g.events.clear();
             }
         }
@@ -1845,7 +1857,6 @@ fn marks_are_earned_on_new_bests_only() {
     assert_eq!(g.lineage.marks, 4, "D1..D3 (3) + first bank from D3 (Cut 4); no frontier mark (Cut 29 §1); first kills no longer mark (Cut 2 §2)");
     assert!(g.batch.bests.iter().any(|b| b == "first kill: rat"), "but stay in bests");
     assert!(g.batch.bests.iter().any(|b| b == "home:D3"));
-    g.auto_keep();
     let mut g2 = arena();
     g2.lineage = g.lineage.clone();
     g2.run.as_mut().unwrap().max_depth = 3;
@@ -1931,7 +1942,7 @@ fn snapshot_wire_shape() {
     assert_eq!(v["run"]["id"], 1);
     assert_eq!(v["tiles"].as_array().unwrap().len(), (s.w * s.h) as usize);
     let l = serde_json::to_value(g.lineage()).unwrap();
-    for k in ["seed", "heir", "trait", "class", "best_depth", "marks", "facts", "unlocks", "vault", "graveyard", "trophies", "sets", "active_set", "ended", "party", "kennel", "eggs", "party_slots", "ledger", "gold", "supplies", "classes", "forge", "renown", "rank", "keep_pref"] {
+    for k in ["seed", "heir", "trait", "class", "best_depth", "marks", "facts", "unlocks", "graveyard", "trophies", "sets", "active_set", "ended", "party", "kennel", "eggs", "party_slots", "ledger", "gold", "supplies", "classes", "forge", "renown", "rank"] {
         assert!(l.get(k).is_some(), "lineage missing {k}");
     }
     let r = g.step(5);
@@ -2005,7 +2016,6 @@ fn tamed_companion_joins_the_party_and_levels_on_bank() {
     assert_eq!(g.lineage.party[0].max_rows, 3);
     assert!(g.lineage.ledger().iter().any(|l| l.kind == "rat" && l.tamed));
     // Next run: it spawns beside the hero with a cid.
-    g.auto_keep();
     g.start_run(None);
     let snap = g.snapshot();
     assert!(snap.entities.iter().any(|e| e.ally == Some(true) && e.cid.is_some() && e.kind == "rat"));
@@ -2017,7 +2027,6 @@ fn companion_death_leaves_an_egg_that_hatches_after_three_rests() {
     // (the pre-Cut 119 path: a fall is an egg; with Cut 119 on it is lamed — tests_cut119)
     crate::pets::pin_off(&mut g.lineage);
     g.lineage.party = vec![crate::probes::pets_party()[0].clone()];
-    g.auto_keep();
     g.start_run(None);
     // Kill the companion outright.
     let mi = g.run.as_ref().unwrap().monsters.iter().position(|m| m.is_companion()).unwrap();
@@ -2034,7 +2043,6 @@ fn companion_death_leaves_an_egg_that_hatches_after_three_rests() {
     assert!(g.batch.lost.contains(&"Skix".to_string()));
     for i in 0..3 {
         assert_eq!(g.lineage.eggs.len(), 1, "still an egg before rest {}", i + 1);
-        g.auto_keep();
         g.start_run(None);
         finish_with(&mut g, ExitTier::Return);
     }
@@ -2082,7 +2090,6 @@ fn companion_rules_shoot_and_burst() {
     let mut c = crate::probes::pets_party()[0].clone();
     c.rules = RuleSet { rows: vec![Row::new(vec![Cond::n("foes>=", 1)], Verb::new("shoot"))], name: None, route: Vec::new() };
     g.lineage.party = vec![c];
-    g.auto_keep();
     g.start_run(None);
     let run = g.run.as_mut().unwrap();
     run.floor = arena().run.take().unwrap().floor;
@@ -2116,7 +2123,6 @@ fn companion_rules_shoot_and_burst() {
 fn hero_party_scope_recall_is_a_free_action() {
     let mut g = arena();
     g.lineage.party = vec![crate::probes::pets_party()[1].clone()];
-    g.auto_keep();
     g.start_run(None);
     {
         let run = g.run.as_mut().unwrap();
@@ -2200,7 +2206,7 @@ fn unlocked_supplies_are_free_at_zero_gold_and_never_kept_back() {
     let sid = g.run.as_ref().unwrap().supplies[0];
     g.run.as_mut().unwrap().hero.inv.retain(|i| i.kind != "dagger");
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none());
+    assert_storage_retired(&g);
     assert!(g.lineage.supplies.iter().any(|i| i.kind == "heal"), "unused prepared supply returns");
     assert!(sid > 0);
 }
@@ -2223,7 +2229,6 @@ fn xp_levels_the_class_and_gates_verbs() {
     assert!(!g.vocabulary().verbs.iter().any(|v| v.v == "cleave"));
     g.lineage.classes.insert("fighter".into(), ClassProg { level: 3, xp: 0, next: 0 });
     assert!(g.vocabulary().verbs.iter().any(|v| v.v == "cleave"));
-    g.auto_keep();
     g.start_run(None);
     let h = hero(&g);
     assert_eq!(h.max_hp, 36 + 4);
@@ -2268,9 +2273,8 @@ fn first_conversion_feeds_forge_discovery_and_tiers_apply() {
             take_find(&mut a, "heal");
         }
         finish_with(&mut a, ExitTier::Bank);
-        assert!(a.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    a.auto_keep();
-        g.lineage = a.lineage.clone();
+        assert_storage_retired(&a);
+    g.lineage = a.lineage.clone();
     }
     let f = &g.lineage.forge["heal"];
     assert_eq!(f.salvaged, 15);
@@ -2294,98 +2298,31 @@ fn first_conversion_feeds_forge_discovery_and_tiers_apply() {
 }
 
 #[test]
-fn actual_outcomes_settle_without_pending_keep_or_preferences() {
-    let mut g = Game::new_literal(8); g.send();
+fn actual_outcomes_settle_without_storage_choices() {
+    let mut g = Game::new_literal(8);
+    g.send();
     let ended = (0..200).find_map(|_| { let r = g.step(50); r.run_over.then_some(r) }).expect("run ended");
-    assert!(ended.exit_pending.is_none() && g.pending_exit.is_none());
-    let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved);
-    assert!(g.keep(vec![]).is_err());
-    for pref in ["best_armour", "best_weapon", "none"] {
-        let mut a = arena(); a.set_keep_pref(pref).unwrap();
-        take_find(&mut a, "sword"); take_find(&mut a, "plate");
-        let expected = a.run.as_ref().unwrap().carried();
-        finish_with(&mut a, ExitTier::Bank); a.auto_keep();
-        assert!(a.lineage.vault.is_empty() && a.pending_exit.is_none());
-        assert_eq!(a.lineage.gold, expected);
-    }
-}
-/// QA on 23ed91f: `keep armour` with `mail · summon ally scroll` vaulted woke to `sword +2 ·
-/// bow +1` — the fallback weapon keep evicted by value. The chip's category wins; a keep
-/// replaces only a weaker vault item of its own category; brought vault items go back first.
-#[test]
-fn automatic_conversion_preserves_existing_gear_for_every_old_preference() {
-    let vaulted = |g: &mut Game, kinds: &[&str]| {
-        g.lineage.unlocks.insert("vault2".into());
-        g.lineage.vault = kinds.iter().enumerate().map(|(i, k)| { let mut it = Item::new(100_000 + i as u32, k); it.known = true; it }).collect();
-        g.lineage.next_vault_id = 100_100;
-    };
-    let kinds = |g: &Game| { let mut v: Vec<String> = g.lineage.vault.iter().map(|i| format!("{}+{}", i.kind, i.enchant)).collect(); v.sort(); v };
-    // K's night: armour chip, weapons found, no armour — the vault is untouched.
-    let mut a = arena();
-    vaulted(&mut a, &["mail", "summon_ally"]);
-    a.set_keep_pref("best_armour").unwrap();
-    let s = give(&mut a, "sword");
-    let b = give(&mut a, "bow");
-    { let run = a.run.as_mut().unwrap(); run.hero.inv.iter_mut().for_each(|i| if i.id == s { i.enchant = 2 } else if i.id == b { i.enchant = 1 }); }
-    finish_with(&mut a, ExitTier::Bank);
-    a.auto_keep();
-    assert_eq!(kinds(&a), ["mail+0", "summon_ally+0"]);
-    // (Cut 29 §4: the quartermaster's keep is the default — the chip's category, then the other)
-    assert!(a.lineage.to_wire().keep_auto.is_empty(), "retired storage orders promise no equipment changes");
-    // A better armour replaces the weaker armour, never the scroll.
-    let mut a = arena();
-    vaulted(&mut a, &["leather", "summon_ally"]);
-    a.set_keep_pref("best_armour").unwrap();
-    give(&mut a, "mail");
-    give(&mut a, "sword");
-    finish_with(&mut a, ExitTier::Bank);
-    a.auto_keep();
-    assert_eq!(kinds(&a), ["leather+0", "summon_ally+0"]);
-    // A free slot takes the fallback category when no armour came home.
-    let mut a = arena();
-    vaulted(&mut a, &["summon_ally"]);
-    a.set_keep_pref("best_armour").unwrap();
-    give(&mut a, "sword");
-    finish_with(&mut a, ExitTier::Bank);
-    a.auto_keep();
-    assert_eq!(kinds(&a), ["summon_ally+0"]);
-    // A brought vault item comes home to the vault whatever the chip says (was: salvaged
-    // unless it was the chip's best).
-    for pref in ["best_weapon", "none"] {
+    assert!(serde_json::to_value(ended).unwrap().get("exit_pending").is_none());
+    assert_storage_retired(&g);
+    let saved = g.save();
+    assert_eq!(g.save(), saved);
+    for tier in [ExitTier::Bank, ExitTier::Return, ExitTier::Death] {
         let mut a = arena();
-        vaulted(&mut a, &[]);
-        a.set_keep_pref(pref).unwrap();
-        let mut m = Item::new(100_050, "mail");
-        m.known = true;
-        { let run = a.run.as_mut().unwrap(); run.hero.inv.push(m); run.brought.push(100_050); }
-        give(&mut a, "sword");
-        finish_with(&mut a, ExitTier::Bank);
-        a.auto_keep();
-        let want: &[&str] = &["mail+0"];
-        assert_eq!(kinds(&a), want, "{pref}");
+        take_find(&mut a, "sword");
+        take_find(&mut a, "plate");
+        let carry = a.run.as_ref().unwrap().carried();
+        let gold = a.lineage.gold;
+        finish_with(&mut a, tier);
+        assert_storage_retired(&a);
+        let exit = a.last_exit.as_ref().unwrap();
+        assert_eq!(exit.kept, if tier == ExitTier::Death { 0 } else { carry });
+        assert_eq!(a.lineage.gold, gold + exit.kept + exit.wake);
+        assert_eq!(exit.wake, if tier == ExitTier::Death { 40 } else { 0 });
+        assert!(exit.found.iter().all(|f| f.fate != "sheet" && f.fate != "kept"));
     }
-    // `none` wins over the quartermaster; with it, weapon and armour each upgrade their own.
-    let mut a = arena();
-    vaulted(&mut a, &["dagger", "leather"]);
-    a.lineage.unlocks.insert("quartermaster".into());
-    a.set_keep_pref("none").unwrap();
-    give(&mut a, "sword");
-    give(&mut a, "mail");
-    finish_with(&mut a, ExitTier::Bank);
-    a.auto_keep();
-    assert_eq!(kinds(&a), ["dagger+0", "leather+0"]);
-    assert!(a.lineage.to_wire().keep_auto.is_empty());
-    let mut a = arena();
-    vaulted(&mut a, &["dagger", "leather"]);
-    a.lineage.unlocks.insert("quartermaster".into());
-    a.set_keep_pref("best_armour").unwrap();
-    give(&mut a, "sword");
-    give(&mut a, "mail");
-    finish_with(&mut a, ExitTier::Bank);
-    a.auto_keep();
-    assert_eq!(kinds(&a), ["dagger+0", "leather+0"]);
-    assert!(a.lineage.to_wire().keep_auto.is_empty(), "retired storage orders promise no equipment changes");
 }
+// Historical vault preference preservation test retired; see Cut244 tests-rs-disposition.json.
+
 
 /// QA on 23ed91f (seed 1015's walk): `hp < 20% → rest · reach +8%`, then the camp's D6 read
 /// 34 % → 64 %. `death()` answers with the verdict's numbers flagged `camp_pending`;
@@ -2423,8 +2360,7 @@ fn death_deltas_are_the_camp_forecasts_move() {
         }
     }
     let id = died.expect("seed 1035's first heir dies");
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     let d = g.death(id).unwrap();
     assert!(!d.patches.is_empty() && d.patches.iter().all(|p| p.camp_pending && p.forecast_depth == 0), "{:?}", d.patches);
     let ps = g.death_deltas(id).unwrap();
@@ -2470,7 +2406,9 @@ fn a_full_lineage_plays_through_many_runs_without_panics() {
     assert!(r.runs >= 1);
     assert!(r.live.is_none() && g.run.is_none(), "an absence ends at camp");
     let v = serde_json::to_value(&r).unwrap();
-    for k in ["elapsed_s", "runs", "sampled", "learned", "bests", "found", "deaths", "pending", "reel", "marks_earned", "tamed", "hatched", "lost", "xp", "salvaged", "renown"] {
+    assert!(v.get("found").is_none(), "retired storage report field");
+    assert_eq!(v.get("exits").unwrap(), &serde_json::to_value(&r.exits).unwrap());
+    for k in ["elapsed_s", "runs", "sampled", "learned", "bests", "deaths", "pending", "reel", "marks_earned", "tamed", "hatched", "lost", "xp", "salvaged", "renown"] {
         assert!(v.get(k).is_some(), "report missing {k}");
     }
 }
@@ -2720,22 +2658,11 @@ fn resting_raises_the_alert_and_calls_a_pack() {
 }
 
 #[test]
-fn insurance_keeps_a_brought_item_on_death() {
-    let mut g = Game::new_literal(1);
-    g.lineage.vault.push(Item::new(100_001, "plate"));
-    assert!(g.insure(100_001).is_err(), "no gold");
-    g.lineage.gold = 1000;
-    g.insure(100_001).unwrap();
-    assert_eq!(g.lineage.gold, 1000 - crate::engine::insure_cost("plate"));
-    assert!(g.insure(100_001).is_err(), "already insured");
-    assert_eq!(g.lineage().insured, vec![100_001]);
-    g.loadout(vec![100_001]);
-    g.start_run(None);
-    assert!(hero(&g).armour.as_ref().is_some_and(|a| a.kind == "plate"));
-    g.run.as_mut().unwrap().hero.hp = 0;
-    finish_with(&mut g, ExitTier::Death);
-    assert!(g.lineage.vault.iter().any(|v| v.id == 100_001), "the insured plate came home");
-    assert!(g.lineage.insured.is_empty(), "the policy is spent");
+fn retired_insurance_is_absent_from_new_state_and_orders() {
+    let g = Game::new_literal(1);
+    assert_storage_retired(&g);
+    let saved = g.save();
+    assert_eq!(Game::load(&saved).unwrap().save(), saved);
 }
 
 /// Cut 14 §2: `heal unused` is on the margin when the heal-drinking row survives ≥ half the
@@ -3382,20 +3309,20 @@ fn found_tools_are_facts_and_tokens() {
 }
 
 #[test]
-fn mirror_shard_breeds_the_mirror_tag() {
+fn a_mirror_parent_preserves_the_mirror_breeding_tag() {
     let mut g = Game::new_literal(1);
     let mut a = crate::probes::pets_party()[0].clone();
     let mut b = crate::probes::pets_party()[1].clone();
     a.level = 2;
     b.level = 2;
+    a.tags = vec!["mirror".into(), "fast".into()];
     g.lineage.kennel.push(a.clone());
     g.lineage.kennel.push(b.clone());
-    g.lineage.vault.push(Item::new(100_001, "mirror_shard"));
     g.breed(a.id, b.id).unwrap();
     let egg = g.lineage.eggs.last().unwrap();
     assert!(egg.tags.iter().any(|t| t == "mirror"), "{:?}", egg.tags);
-    assert!(!g.lineage.vault.iter().any(|i| i.kind == "mirror_shard"), "the shard is spent");
     assert_eq!(crate::defs::tag_verb("mirror"), Some("mimic"));
+    assert_storage_retired(&g);
 }
 
 // ---------------------------------------------------------------- Cut 3: unlocks and cards
@@ -3545,7 +3472,6 @@ fn finished_lineage() -> Game {
     g.lineage.classes.insert("fighter".into(), ClassProg { level: 7, xp: 10, next: 0 });
     g.lineage.kennel.push(crate::probes::pets_party()[0].clone());
     g.lineage.party.push(crate::probes::pets_party()[1].clone());
-    g.lineage.vault.push(Item::new(100_001, "plate"));
     g.lineage.facts.insert("foe:lich:boss".into());
     g.lineage.forge.insert("sword".into(), ForgeRow::at(20));
     g.lineage.grudges.push(crate::descent::Grudge { kind: "ogre".into(), name: "Grak".into(), depth: 7, heir: 3, avenged: false, tamed: false, biome: None });
@@ -3569,7 +3495,6 @@ fn ascension_keeps_the_meta_and_restarts_the_descent() {
     assert_eq!(l.classes["fighter"].level, 7, "classes carry");
     assert_eq!(l.kennel.len(), 2, "kennel carries (the party home in it)");
     assert!(l.party.is_empty());
-    assert_eq!(l.vault.len(), 1, "vault carries");
     assert!(l.facts.contains("foe:lich:boss"), "facts carry");
     assert_eq!(l.forge["sword"].tier, 1, "forge carries");
     assert!(l.graveyard.is_empty() && l.grudges.is_empty());
@@ -3722,9 +3647,8 @@ fn loot_is_one_unit_from_pickup_to_the_bank() {
             (kept, note)
         };
         g.finish_run();
-        assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
-        assert_eq!(note, format!("Banked ${kept}."), "seed {seed}");
+        assert_storage_retired(&g);
+    assert_eq!(note, format!("Banked ${kept}."), "seed {seed}");
         assert_eq!(kept, snap.stake.loot, "seed {seed}: the exit keeps what the HUD showed");
         // Salvage of the starting kit is nil (the dagger is not loot): the delta is the loot.
         assert_eq!(g.lineage.gold - gold_before, kept, "seed {seed}: gold delta on bank");
@@ -3741,8 +3665,7 @@ fn first_bank_at_each_depth_is_a_mark() {
     g.lineage.best_depth = 6; // already reached: no depth mark (and D3 is not the frontier: Cut 15 §1)
     let marks = g.lineage.marks;
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.marks, marks + 1);
     assert!(g.batch.bests.contains(&"home:D3".to_string()), "{:?}", g.batch.bests);
     // Again from D3: nothing. From D3 as a return: nothing.
@@ -3750,16 +3673,14 @@ fn first_bank_at_each_depth_is_a_mark() {
     g.run.as_mut().unwrap().depth = 3;
     g.run.as_mut().unwrap().max_depth = 3;
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.marks, marks + 1);
     g.start_run(Some(10));
     g.run.as_mut().unwrap().depth = 4;
     g.run.as_mut().unwrap().max_depth = 4;
     g.lineage.best_depth = 4;
     finish_with(&mut g, ExitTier::Return);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.marks, marks + 1, "a return is not a bank");
     assert!(!g.batch.bests.iter().any(|b| b == "home:D4"));
 }
@@ -3778,8 +3699,7 @@ fn no_mark_for_the_frontier_and_one_a_night() {
     g.run.as_mut().unwrap().max_depth = 7;
     let marks = g.lineage.marks;
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.marks, marks, "D7 against a best of D8 pays nothing now");
     assert_eq!(g.batch.frontier_banks, 0);
     assert!(!exit_text(&g).contains('◆'), "{}", exit_text(&g));
@@ -3788,8 +3708,7 @@ fn no_mark_for_the_frontier_and_one_a_night() {
     g.run.as_mut().unwrap().depth = 10;
     g.run.as_mut().unwrap().max_depth = 10;
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.marks, marks + 2 + 1);
     assert!(exit_text(&g).ends_with(" · ◆+3"), "{}", exit_text(&g));
     // The night's mark: an absence whose sends came home pays ◆1 for its day, once.
@@ -4145,8 +4064,7 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
     let repeat: i32 = g.lineage.gold_ledger.iter().filter(|l| l.why == "repeat heal").map(|l| -l.delta).sum();
     assert_eq!(repeat, price, "preparation and repeated usage both cost zero");
     assert_eq!(g.supply_catalogue().iter().find(|e| e.kind == "heal").unwrap().price, 0, "depth never adds a reuse charge");
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.supplies.len(), 2, "no double restock after the vault decision");
     g.start_run(None);
     assert_eq!(g.run.as_ref().unwrap().supplies.len(), 2, "the restocked shelf goes out again");
@@ -4157,8 +4075,7 @@ fn auto_supply_restocks_the_shelf_when_the_hero_comes_home() {
         crate::turn::end_run(run, &mut cx, ExitTier::Bank);
     }
     g.finish_run();
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.supplies.len(), 2);
     g.clear_supplies();
     g.start_run(None);
@@ -4714,7 +4631,6 @@ fn ledger_line_reconciles_on_every_exit() {
             let before = g.lineage.gold;
             let lines_before = g.lineage.gold_ledger.len();
             g.finish_run();
-            g.auto_keep();
             let after = g.lineage.gold;
             let line = g.batch.exits.last().cloned().expect("an exit line");
             // (Cut 24 §1: a drive-off with no way home written keeps nothing, as a stall)
@@ -4825,7 +4741,7 @@ fn exit_event_stake_and_report_carry_the_ledger() {
     assert!(line.text.starts_with(&format!("returned ${} · ", line.kept)) && line.text.contains("keeps 100%"), "{}", line.text);
     assert_eq!(g.batch.exits.last().map(|l| ExitLine { trace: None, ..l.clone() }), Some(*line.clone()));
     assert!(g.batch.exits.last().unwrap().trace.is_some(), "the report's exit line carries the trace");
-    // Purchases, insurance, a refund and a hatch are ledger lines with ≤ 3-word reasons.
+    // Free preparation and clearing cannot create spending or refund ledger entries.
     g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
     let before = g.lineage.gold;
     let ledger_before = g.lineage.gold_ledger.clone();
@@ -4835,12 +4751,6 @@ fn exit_event_stake_and_report_carry_the_ledger() {
     g.clear_supplies();
     assert_eq!(g.lineage.gold_ledger, ledger_before, "clearing cannot mint a refund");
     assert_eq!(g.lineage.gold, before);
-    g.lineage.vault.push(Item::new(100_001, "sword"));
-    g.lineage.gold_move(500, "gift");
-    g.insure(100_001).unwrap();
-    let last = g.lineage.gold_ledger.last().unwrap();
-    assert_eq!(last.why, "insure sword");
-    assert_eq!(last.delta, -crate::engine::insure_cost("sword"));
     // The report carries the exits of its batch (≤ 5, oldest first).
     let rep = g.run_offline(3600);
     assert!(!rep.exits.is_empty() && rep.exits.len() <= 5, "{:?}", rep.exits);
@@ -4860,14 +4770,14 @@ fn bought_heal_is_drunk_by_name() {
             g.lineage.facts.insert(ident_fact(&g.lineage.flavours, "heal").unwrap());
             g.buy_supply("heal").unwrap();
         } else {
-            // Unidentified: the shop will not list it, so it is a vaulted (kept) potion.
+            // A physically known specimen can be used by name before its flavour is learned.
             assert!(g.buy_supply("heal").is_err());
             let mut it = Item::new(100_010, "heal");
             it.known = true;
-            g.lineage.vault.push(it);
+            g.run.as_mut().unwrap().hero.auto_equip(it);
         }
-        let supplies: Vec<Item> = if identified { std::mem::take(&mut g.lineage.supplies) } else { g.lineage.vault.clone() };
-        assert!(supplies.iter().all(|s| s.known), "bought/vaulted items are known by name");
+        let supplies: Vec<Item> = if identified { std::mem::take(&mut g.lineage.supplies) } else { Vec::new() };
+        assert!(supplies.iter().all(|s| s.known), "prepared items are known by name");
         // The potion goes into the live run's pack as `start_run` would place it.
         for it in supplies {
             g.run.as_mut().unwrap().hero.auto_equip(it);
@@ -6094,8 +6004,7 @@ fn forge_rows_carry_the_next_rung() {
         take_find(&mut g, "sword");
     }
     finish_with(&mut g, ExitTier::Bank);
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     let f = &g.lineage.forge["sword"];
     assert!(f.salvaged >= 5 && f.craftable, "{f:?}");
     assert_eq!(f.next.as_ref().map(|x| x.need), Some(15));
@@ -7212,8 +7121,7 @@ fn an_unused_supply_comes_back_to_the_shelf() {
         crate::turn::end_run(run, &mut cx, ExitTier::Return);
     }
     g.finish_run();
-    assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
+    assert_storage_retired(&g);
     assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 1, "the unused heal is back");
     assert_eq!(g.lineage.gold, gold + g.batch.gold_earned + g.batch.salvage_gold, "nothing bought, nothing salvaged for it: {:?}", g.lineage.gold_ledger);
     assert!(g.batch.exits.last().is_some_and(|l| l.text.contains("1 supply back")), "{:?}", g.batch.exits.last().map(|l| l.text.clone()));
@@ -7789,8 +7697,7 @@ fn a_summoner_out_of_reach_is_a_stall_not_a_loop() {
                 worst = (r.turn, r.summoned_kills);
             }
             g.finish_run();
-            g.auto_keep();
-        }
+            }
         worst
     });
     for (seed, (turns, blades)) in [1001, 1004, 1005].iter().zip(worst) {
@@ -7841,26 +7748,17 @@ fn the_forge_does_not_name_an_unknown_kind() {
     assert!(g.lineage().forge.contains_key("heal"));
 }
 
-/// QA on 23ed91f (qaL: `auto: keep weapon+armour` owned, vault `1/1 leather`, a watched bank
-/// found mail · axe · sword and salvaged all three — the skipped sheet called `keep([])`): the
-/// exit carries the preference's picks (`ExitPending.auto_keep`), and `auto_keep` (wasm
-/// `autoKeep`) keeps the mail over the leather.
+/// Current watched finds convert once; no storage choice or automation is needed.
 #[test]
-fn a_watched_exit_carries_the_automations_picks() {
+fn a_watched_exit_converts_finds_without_storage_automation() {
     let mut a = arena();
-    a.lineage.unlocks.insert("quartermaster".into());
-    let mut l = Item::new(100_000, "leather");
-    l.known = true;
-    a.lineage.vault = vec![l];
-    a.lineage.next_vault_id = 100_001;
-    let mail = give(&mut a, "mail");
-    give(&mut a, "axe");
-    give(&mut a, "sword");
+    for kind in ["mail", "axe", "sword"] { take_find(&mut a, kind); }
+    let carry = a.run.as_ref().unwrap().carried();
+    let gold = a.lineage.gold;
     finish_with(&mut a, ExitTier::Bank);
-    assert!(a.exit_pending_wire().is_none());
-    assert!(mail > 0);
-    a.auto_keep();
-    assert_eq!(a.lineage.vault.iter().map(|v| v.kind.as_str()).collect::<Vec<_>>(), ["leather"]);
+    assert_storage_retired(&a);
+    assert_eq!(a.lineage.gold, gold + carry);
+    assert_eq!(a.last_exit.as_ref().unwrap().found.iter().filter(|f| f.fate == "converted").map(|f| f.n).sum::<u32>(), 3);
 }
 
 
@@ -8049,9 +7947,7 @@ fn qam_first_death() -> (Game, u32) {
         let r = g.step(50);
         if r.run_over {
             let died = r.events.iter().any(|e| matches!(e, Ev::Exit { tier, .. } if tier == "death"));
-            if g.pending_exit.is_some() {
-                g.keep(vec![]).unwrap();
-            }
+            assert_storage_retired(&g);
             assert!(died, "seed 1215's first send dies (the QA's D6 jackal)");
             return (g, r.snapshot.run.id);
         }
@@ -8080,8 +7976,7 @@ fn forecast_is_the_same_across_the_camps_sheet_reads() {
         let _ = g.death(id);
         let r = g.lineage.rules().clone();
         g.set_rules(r).unwrap();
-        let l = g.loadout.clone();
-        g.loadout(l);
+        let _ = crate::kit::starting_wire(&g.lineage);
     };
     reads(&mut g);
     assert_eq!(g.forecast(), first, "a sheet read moved the first pass");
@@ -8186,12 +8081,12 @@ fn automatic_outcomes_credit_one_value_and_report_no_second_receipt() {
             let tally: i64 = g.lineage.gold_tally.values().sum();
             let expected = g.run.as_ref().unwrap().kept(g.run.as_ref().unwrap().over.unwrap());
             g.finish_run();
-            assert!(g.pending_exit.is_none());
+            assert_storage_retired(&g);
             assert_eq!(g.last_exit.as_ref().unwrap().kept, expected);
             assert!(g.last_exit.as_ref().unwrap().salvaged.is_empty());
             assert_eq!(g.batch.salvage_gold, 0);
             assert_eq!(i64::from(g.lineage.gold - before), g.lineage.gold_tally.values().sum::<i64>() - tally);
-            let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved, "no deferred or duplicate settlement");
+            let saved = g.save(); assert_eq!(g.save(), saved, "no deferred or duplicate settlement");
         }
         let report = g.run_offline(0);
         assert!(report.salvaged.is_empty());
@@ -8609,7 +8504,7 @@ fn the_loadout_repeats_unless_cleared() {
     g.set_restock(false);
     assert!(g.lineage.supplies.iter().all(|s| s.free) && g.lineage.gold == gold + 2 * p, "cleared: refunded");
     assert!(!g.lineage().repeat);
-    g.keep(vec![]).ok();
+    assert_storage_retired(&g);
     g.start_run(None);
     assert!(g.run.as_ref().unwrap().supplies.is_empty(), "a cleared repeat packs nothing");
     {
@@ -9075,9 +8970,8 @@ fn a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor() {
             }
         }
         let Some(id) = died else { continue };
-        assert!(g.pending_exit.is_none(), "automatic outcomes have no Keep decision");
-    g.auto_keep();
-        let d = g.death(id).unwrap();
+        assert_storage_retired(&g);
+    let d = g.death(id).unwrap();
         if (d.baseline - 1.0).abs() > 1e-9 {
             continue;
         }
@@ -9265,7 +9159,6 @@ fn waystones_light_on_a_bank_and_the_start_round_trips() {
             crate::turn::end_run(run, &mut cx, tier);
         }
         g.finish_run();
-        g.auto_keep();
         assert!(g.lineage.waystones.is_empty(), "{tier:?} lit a waystone");
         g.start_run(None);
     }
@@ -9362,7 +9255,7 @@ fn found_supplies_convert_while_the_free_repeat_only_prepares_used_kinds() {
         let expected = g.run.as_ref().unwrap().carried();
         finish_with(&mut g, tier);
         assert_eq!(g.lineage.gold, 1000 + expected);
-        assert!(g.pending_exit.is_none());
+        assert_storage_retired(&g);
         assert_eq!(g.lineage.supplies.iter().map(|s| (s.kind.as_str(), s.found, s.paid)).collect::<Vec<_>>(), [("heal", false, 0)]);
         let line = g.last_exit.as_ref().unwrap();
         assert!(line.shelved.is_empty() && line.salvaged.is_empty());
@@ -9617,7 +9510,6 @@ fn a_shadowed_row_never_acts_and_reads_the_same_panel() {
             let r = g.step(50);
             assert!(!r.events.iter().any(|e| matches!(e, Ev::Rule { row, .. } if *row == last as i32)), "the shadowed row acted");
             if r.run_over {
-                g.auto_keep();
                 break;
             }
         }
@@ -9670,7 +9562,6 @@ fn the_repeat_remembers_and_restores_a_kind_at_zero_gold() {
     }
     g.lineage.gold = 0;
     g.finish_run();
-    g.auto_keep();
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && s.paid == 0), "the remembered unlocked kind returns at zero gold");
     assert!(g.lineage.repeat_short.is_empty());
     assert_eq!(g.lineage.gold, 0);
@@ -9685,7 +9576,8 @@ fn the_repeat_remembers_and_restores_a_kind_at_zero_gold() {
     }
     g.finish_run();
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal" && !s.found && s.paid == 0), "{:?}", g.lineage.supplies);
-    assert!(!g.pending_exit.as_ref().is_some_and(|p| p.items.iter().any(|i| i.id == found)));
+    assert_storage_retired(&g);
+    assert!(!g.lineage.supplies.iter().any(|i| i.id == found), "converted found instance never becomes a prepared item");
     assert!(!g.batch.salvaged.contains_key("heal"));
     assert!(g.last_exit.as_ref().unwrap().found.iter().any(|f| f.kind == "heal" && f.fate == "converted"));
 }
@@ -9714,7 +9606,6 @@ fn stolen_rows_carry_their_gold_and_exit_lines_their_toll() {
     g.finish_run();
     let line = g.last_exit.clone().unwrap();
     assert_eq!((line.toll, line.start, line.start_short), (0, 5, None), "a waystone start is free (QA on 778fa1b)");
-    g.auto_keep();
     g.lineage.night();
     g.lineage.gold = 0;
     g.start_run(None);
@@ -9725,7 +9616,6 @@ fn stolen_rows_carry_their_gold_and_exit_lines_their_toll() {
     g.finish_run();
     let line = g.last_exit.clone().unwrap();
     assert_eq!((line.toll, line.start, line.start_short), (0, 5, None), "an empty purse starts there too");
-    g.auto_keep();
     g.lineage.waystones.clear();
     g.start_run(None);
     {
@@ -9866,8 +9756,7 @@ fn a_stolen_supply_is_replaced_once_a_night_without_spend_or_refund() {
         let (run, mut cx) = g.ctx();
         crate::turn::end_run(run, &mut cx, ExitTier::Return);
         g.finish_run();
-        g.auto_keep();
-    };
+        };
     steal(&mut g);
     assert!(g.lineage.supplies.iter().any(|s| s.kind == "heal"), "the night's one re-buy");
     assert!(g.lineage.night_theft_rebought);
@@ -10298,10 +10187,10 @@ fn the_forge_sells_permanent_kit_steps() {
         let (run, mut cx) = g.ctx();
         crate::turn::end_run(run, &mut cx, ExitTier::Death);
         g.finish_run();
-        g.auto_keep();
-    }
+        }
     assert_eq!(crate::kit::owned(&g.lineage, "weapon"), 1, "a death loses no step");
-    assert!(!g.lineage.vault.iter().any(|v| crate::kit::is_kit_id(v.id)), "the kit is never kept as loot");
+    assert_storage_retired(&g);
+    assert!(!g.lineage.supplies.iter().any(|v| crate::kit::is_kit_id(v.id)), "permanent equipment never becomes a prepared consumable");
     // The save keeps the kit.
     let back = Game::load(&g.save()).unwrap();
     assert_eq!(back.lineage.kit, g.lineage.kit);
@@ -10397,7 +10286,6 @@ fn every_row_says_why_not() {
     let (run, mut cx) = g.ctx();
     crate::turn::end_run(run, &mut cx, ExitTier::Return);
     g.finish_run();
-    g.auto_keep();
     let why = g.lineage().row_why;
     assert_eq!(why.len(), 3);
     let r1 = why[0].clone().expect("R1 tallied");
@@ -10615,7 +10503,6 @@ fn a_boss_that_cannot_be_hurt_drives_the_hero_off() {
             assert!(r.notes.iter().any(|(_, n)| n.starts_with("Driven off")), "{:?}", r.notes);
         }
         g.finish_run();
-        g.auto_keep();
         if off.is_some() {
             driven = Some((g.batch.exits.last().cloned().unwrap(), carried, pct));
             break;
@@ -10666,8 +10553,7 @@ fn a_fight_that_moves_is_never_driven_off() {
             // (the Queen's floor: FULL's hero may yet meet a queen he cannot silence in time)
             assert!(r.driven_off.as_deref().is_none_or(|k| k == "lurker_queen" || k == "foundry_master"), "seed {seed}: driven off by {:?} at D{}", r.driven_off, r.depth);
             g.finish_run();
-            g.auto_keep();
-        }
+            }
         n
     })
     .into_iter()
@@ -10708,8 +10594,7 @@ fn a_named_foe_rotates() {
         let r = g.run.as_mut().unwrap();
         r.over = Some(ExitTier::Return);
         g.finish_run();
-        g.auto_keep();
-    }
+        }
     assert!(met.iter().any(|m| *m), "{met:?}");
     for w in met.windows(3) {
         assert!(w.iter().filter(|m| **m).count() <= 1, "met twice within three runs: {met:?}");
@@ -10729,8 +10614,7 @@ fn a_floor_event_line_never_repeats_within_three_runs() {
         shown.push(crate::chronicle::variant(r, "shrine"));
         r.over = Some(ExitTier::Return);
         g.finish_run();
-        g.auto_keep();
-    }
+        }
     for w in shown.windows(3) {
         assert!(w[0] != w[1] && w[1] != w[2] && w[0] != w[2], "{shown:?}");
     }
@@ -10869,7 +10753,6 @@ fn a_death_trace_ends_on_the_killing_blow() {
             }
         }
         if r.run_over {
-            g.auto_keep();
             break;
         }
     }
@@ -10899,7 +10782,6 @@ fn a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all() {
         loop {
             let r = g.step(200);
             if r.run_over {
-                g.auto_keep();
                 break;
             }
         }
@@ -10961,12 +10843,6 @@ fn packed_and_brought_are_not_finds() {
     let mut g = Game::new_literal(11);
     crate::test_stage::forge(&mut g); // Explicit built-facility unit fixture, not a fresh-town gate.
     g.lineage.found_kinds.insert("sword".into());
-    let mut mail = crate::item::Item::new(g.lineage.next_vault_id, "mail");
-    g.lineage.next_vault_id += 1;
-    mail.enchant = 1;
-    let mail_id = mail.id;
-    g.lineage.vault.push(mail);
-    g.loadout(vec![mail_id]);
     g.lineage.rest_left = 0;
     g.start_run(None);
     assert!(g.run.as_ref().unwrap().packed.iter().any(|k| k == "leash") || g.lineage.kennel_declined, "the kennel's leash is packed");
@@ -10979,9 +10855,7 @@ fn packed_and_brought_are_not_finds() {
     assert!(!news.iter().any(|n| n.text.contains("leash")), "{news:?}");
     g.finish_run();
     assert!(!g.batch.new_finds.iter().any(|k| k == "leash"), "{:?}", g.batch.new_finds);
-    g.auto_keep();
-    assert!(g.lineage.vault.iter().any(|v| v.kind == "mail"), "the mail went back to the vault");
-    assert!(!g.batch.found.iter().any(|v| v.kind == "mail"), "the brought mail is no find: {:?}", g.batch.found.iter().map(|v| v.kind.clone()).collect::<Vec<_>>());
+    assert_storage_retired(&g);
 }
 
 /// Cut 25 §2 (AM: `hp < 30% → return` under `foes ≥ 1 → attack nearest` all run, never fired —
@@ -11663,7 +11537,7 @@ fn a_short_break_yields_a_run() {
             break;
         }
     }
-    let _ = g.keep(Vec::new());
+    assert_storage_retired(&g);
     assert!(g.lineage.rest_left > 0 && g.lineage.rest_watched, "a watched exit rests the heir at camp");
     let text = g.save();
     let mut a = Game::load(&text).unwrap();

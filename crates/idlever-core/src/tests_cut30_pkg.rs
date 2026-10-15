@@ -1043,8 +1043,6 @@ fn prospective_projection_death_deltas_measure_current_indices_and_recache_after
         }
     }
     let id = id.expect("the first heir dies");
-    assert!(g.pending_exit.is_none(), "death settlement needs no Keep transaction");
-    assert!(g.keep(vec![]).is_err(), "no stale post-settlement Keep remains");
     let recorded = g.deaths[&id].rules.clone();
     let archived = g.deaths[&id].t10.clone();
     let current = RuleSet { rows: vec![Row::new(vec![], Verb::new("bank")), Row::new(vec![], Verb::new("return"))], ..Default::default() };
@@ -1324,8 +1322,6 @@ fn package_query_key_tracks_prices_and_simulation_inputs() {
         let mut c = g.sim_clone(); change(&mut c);
         assert_ne!(packages::options_key(&c, 24), key, "changed query input {i}");
     }
-    let mut c = g.sim_clone(); c.loadout.push(123);
-    assert_ne!(packages::options_key(&c, 24), key, "loadout belongs to the query");
 }
 
 #[test]
@@ -1774,7 +1770,6 @@ fn package_death_patches_are_measured_where_they_apply() {
                 if pen_end < rules.rows.len() && !d.patches.is_empty() { seen += 1; }
                 if seen >= 3 { break 'seeds; }
             }
-            let _ = g.keep(vec![]);
         }
     }
     assert!(seen > 0, "no package death with patches to check");

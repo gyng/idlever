@@ -1,0 +1,9 @@
+client suite: targeted (4 selected; 164 current full; 207 exhaustive groups)
+ok   ready-plots     17.6s (11.5s)  18 ready-plot geometry/resize/fallback cases and locked construction PASS
+FAIL home-building-help 50.5s (32.9s)  Node.js v22.18.0
+       - waiting for locator('.town-hit[data-building="mouth"]')
+       name: 'TimeoutError'
+         at /home/g/p/riddle/web/tests/home-building-help.mjs:51:60 {
+ok   cut30town       65.2s (14.8s)  cut30town: all passed
+ok   wall-preparation 71.4s (6.2s)  1440 39 wall preparation/read-only/manual/stale/lifecycle PASS
+FAIL: 3/4 client gates in 71.4s

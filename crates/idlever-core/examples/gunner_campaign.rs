@@ -39,8 +39,6 @@ fn play(original:&Session,kind:&str,dir:&Path,upkeep:bool,hours:u32,tactic:Optio
     let seed=original.active.lineage.seed;
     let mut s=original.clone();s.buy("gunner").expect("earned D13/eight marks unlock");s.set_class("gunner").unwrap();
     if kind=="short_gun" {kit::buy(&mut s.active,kind).expect("existing gold pays one short-gun unit");}
-    let ids=s.active.loadout.iter().copied().filter(|id|!s.active.lineage.vault.iter().any(|i|i.id==*id&&i.cat()==idlever_core::defs::Cat::Weapon)).collect();
-    s.loadout(ids);
     if let Some(id)=tactic {s.equip_package(id,0).expect("explicit owned tactic choice at home");}
     if let Some(id)=temperament {
         if id=="none" {if let Some(worn)=s.active.lineage.pkg.temperament.clone() {s.unequip_package(&worn).expect("explicitly remove the worn temperament");}}

@@ -9,7 +9,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     idlever_core::chronicle::use_shipping_words();
     let source = std::fs::read_to_string(&a[1])?;
     let original = Game::load(&source)?;
-    if original.run.is_some() || original.pending_exit.is_some() { return Err("settled camp required".into()); }
+    if original.run.is_some() { return Err("settled camp required".into()); }
     let hours: u64 = a[2].parse()?;
     if !(1..=72).contains(&hours) { return Err("hours1..72 required".into()); }
     let mut cases = Vec::new();

@@ -176,11 +176,8 @@ impl Game {
     pub fn seen_systems(&mut self) {
         self.lineage.systems_new.clear();
     }
-    /// Cut 29 §4: the standing orders at once (`keep`, `cage`, `start`, `repeat`, `insure`, `forge`); each
-    /// through its own setter, so each keeps its rules (an unknown keep is refused; the repeat
-    /// off refunds the shelf).
+    /// Apply current standing orders through their own validation and preparation setters.
     pub fn set_orders(&mut self, o: &crate::wire::StandingOrders) -> Result<(), String> {
-        self.set_keep_pref(&o.keep)?;
         self.set_vault_pref(&o.cage)?;
         if o.start != self.lineage.start.max(1) {
             self.set_start(o.start)?;
@@ -189,7 +186,6 @@ impl Game {
             return Err("unknown forge order".into());
         }
         self.set_restock(o.repeat);
-        self.lineage.orders.insure = o.insure;
         self.lineage.orders.forge = o.forge.clone();
         if let Some(w) = &o.wall {
             if !crate::wire::WALL_ORDERS.contains(&w.as_str()) {
@@ -431,8 +427,8 @@ mod tests_cut121;
 mod tests_cut122;
 #[cfg(test)]
 mod tests_cut156;
-#[cfg(test)]
-mod tests_cut157;
+// Cut244: manual Keep receipts retired; byte-exact Cut157 source is archived
+// in docs/evidence/cut244/native-wasm-before.tar.gz.
 #[cfg(test)]
 mod tests_cut159;
 

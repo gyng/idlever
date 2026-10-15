@@ -6568,13 +6568,13 @@ body:has(.sheet-wrap:not(.modeless)) .panel-host.open {
 /* gfx round 2 (raters: "trait chips, tabs, route, rules and reach all shout equally"): the set tabs and the route step back */
 .camp-well .tabs .tab:not(.on) {
   font-size: 13px;
-  min-height: 30px;
+  min-height: 44px;
   opacity: 0.72;
   border-color: #222439;
 }
 .camp-well .tabs .tab.on {
   font-size: 14px;
-  min-height: 32px;
+  min-height: 44px;
 }
 /* gfx round 2: the why sheet carries its rule's action plaque, large, beside the rule */
 .row-why .why-row {
@@ -7868,4 +7868,24 @@ main.report > .well {
   margin: 0;
   white-space: normal;
   overflow-wrap: anywhere;
+}
+/* Home's command pictures retain their full names through accessible labels and
+   hover/focus/long-press details; the primary Delve action keeps its word. */
+.camp .console .cmd .home-icon-command .tl {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.camp .console .cmd .home-icon-command > .ico {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+
+/* Keep the Drop action name intact beside its rule and Close control. */
+.drop-sheet .drop-title {
+  flex-shrink: 0;
+  white-space: nowrap;
 }

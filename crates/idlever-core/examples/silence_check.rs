@@ -9,7 +9,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     idlever_core::chronicle::use_shipping_words();
     let text = std::fs::read_to_string(&args[1])?;
     let source = Session::load(&text)?;
-    if source.run.is_some() || source.pending_exit.is_some() { return Err("idle settled camp required".into()); }
+    if source.run.is_some() { return Err("idle settled camp required".into()); }
     let id = args[2].parse()?;
     let hours: u64 = args[3].parse()?;
     if !(1..=336).contains(&hours) { return Err("hours must be 1..336".into()); }

@@ -50,8 +50,7 @@ fn main() {
             }
         };
         exits.push(json!({"snapshot":result.snapshot,"events":result.events}));
-        g.auto_keep();
-    }
+        }
     fs::write(
         out.join("actual-exit-traces.json"),
         serde_json::to_string_pretty(&exits).unwrap(),

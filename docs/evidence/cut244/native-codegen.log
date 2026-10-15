@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: native bridge covers every client method and rejects unsupported bindings
+ok 1 - native bridge covers every client method and rejects unsupported bindings
+  ---
+  duration_ms: 13.022094
+  type: 'test'
+  ...
+# Subtest: checkpoint memento accounts for every serde-skipped engine field
+ok 2 - checkpoint memento accounts for every serde-skipped engine field
+  ---
+  duration_ms: 4.986381
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 29.228136

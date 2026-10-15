@@ -9,8 +9,8 @@
   align-items: center;
   gap: 7px;
   max-width: calc(100% - 16px);
-  min-height: 36px;
-  padding: 4px 14px 4px 5px;
+  min-height: 44px;
+  padding: 6px 8px;
   border-radius: 17px;
   border: 0;
   cursor: pointer;
@@ -25,6 +25,9 @@
 .next-pill[hidden] {
   display: none;
 }
+html body .camp .town > .next-pill.game-control {
+  padding: 2px 6px;
+}
 .next-pill .pill-main {
   display: flex;
   flex-direction: column;
@@ -35,8 +38,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--umbra);
   box-shadow: 0 0 0 1px #39496d;
@@ -53,10 +56,15 @@
   color: var(--acc);
 }
 .next-pill .pill-t {
-  white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
+  clip-path: inset(50%);
+}
+.next-pill .pill-price {
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
 /* Cut231 §5: the worker's count beside a send/chest goal and the time fallback — quiet, never the goal itself */
 .next-pill .pill-prog,
@@ -66,7 +74,7 @@
 }
 .next-pill .pill-bar {
   display: block;
-  min-width: 72px;
+  min-width: 40px;
   height: 3px;
   margin-top: 2px;
   border-radius: 2px;

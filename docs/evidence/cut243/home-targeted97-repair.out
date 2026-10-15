@@ -1,0 +1,10 @@
+client suite: targeted (2 selected; 164 current full; 207 exhaustive groups)
+FAIL ready-plots     17.0s (8.5s)  Node.js v22.18.0
+     AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+         at file:///home/g/p/riddle/web/tests/ready-plots.mjs:105:16 {
+FAIL wall-preparation 21.2s (4.2s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')
+         at eval (eval at evaluate (:311:30), <anonymous>:88:47)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/wall-preparation.mjs:16:23 {
+FAIL: 0/2 client gates in 21.2s

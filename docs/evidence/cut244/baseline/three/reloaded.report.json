@@ -1,0 +1,1840 @@
+{
+  "pick": {
+    "minutes": 5820,
+    "size": 5,
+    "offers": [
+      {
+        "id": "drill",
+        "title": "skittish",
+        "line": "+24 runs",
+        "available": true,
+        "target": "skittish"
+      },
+      {
+        "id": "legacy",
+        "title": "Legacy",
+        "line": "+12",
+        "available": true
+      },
+      {
+        "id": "forge",
+        "title": "plate +1",
+        "line": "−50%",
+        "price": 4500,
+        "available": true,
+        "target": "armour"
+      }
+    ],
+    "default": "legacy"
+  },
+  "legacy_earned": 12,
+  "bloodlines": [
+    {
+      "legacy_earned": 3,
+      "id": 1,
+      "name": "Bloodline 1",
+      "runs": 1,
+      "deepest": 28,
+      "gold": 0,
+      "xp": [
+        {
+          "class": "fighter",
+          "gained": 0,
+          "level_ups": 0
+        }
+      ],
+      "packages": [
+        "+unbowed",
+        "+light hands",
+        "+iron gut"
+      ],
+      "bests": []
+    },
+    {
+      "legacy_earned": 5,
+      "id": 2,
+      "name": "Bloodline 2",
+      "runs": 1,
+      "deepest": 4,
+      "gold": 75,
+      "xp": [
+        {
+          "class": "fighter",
+          "gained": 0,
+          "level_ups": 0
+        }
+      ],
+      "packages": [
+        "TAMES STRAYS"
+      ],
+      "bests": [
+        "D4",
+        "first kill: monkey",
+        "first kill: rat",
+        "first kill: goblin",
+        "first kill: goblin_archer",
+        "first kill: jackal"
+      ]
+    },
+    {
+      "legacy_earned": 4,
+      "id": 3,
+      "name": "Bloodline 3",
+      "runs": 1,
+      "deepest": 3,
+      "gold": 25,
+      "xp": [
+        {
+          "class": "fighter",
+          "gained": 17,
+          "level_ups": 0
+        }
+      ],
+      "packages": [
+        "TAMES STRAYS"
+      ],
+      "bests": [
+        "D3",
+        "home:D3",
+        "first kill: goblin",
+        "first kill: rat",
+        "first kill: jackal"
+      ]
+    }
+  ],
+  "elapsed_s": 28800,
+  "runs": 3,
+  "sampled": false,
+  "learned": [
+    "trait:tough-blooded"
+  ],
+  "bests": [],
+  "found": [],
+  "deaths": [
+    {
+      "cause": "lurker",
+      "n": 1
+    },
+    {
+      "cause": "jackal",
+      "n": 1
+    }
+  ],
+  "pending": [
+    "unlock supply_cap_5 (0)",
+    "unlock bone_sense (0)",
+    "forge sword +6 · $7200",
+    "forge plate +1 · $9000",
+    "R1 fired 0 of 1 runs: gas · HP>35% → throw fire",
+    "R2 fired 1 of 1 runs: boss · HP>35% → hit boss",
+    "R3 fired 1 of 1 runs: HP<35% → drink heal",
+    "R4 fired 0 of 1 runs: HP<25% · D29+ → bank",
+    "R5 fired 0 of 1 runs: HP<25% → return",
+    "R6 fired 0 of 1 runs: no heal · HP<35% → bank",
+    "R7 fired 1 of 1 runs: HP<35% · adj 2+ → retreat",
+    "R8 fired 0 of 1 runs: foes 1+ → tame",
+    "R9 fired 1 of 1 runs: foes 1+ → attack",
+    "R10 fired 1 of 1 runs: HP<60% → rest",
+    "bones on D28"
+  ],
+  "reel": [
+    {
+      "pattern": "episode",
+      "score": 4,
+      "t": 48999,
+      "run_id": 133,
+      "text": "The Queen cornered him to 12 HP; R3 drank; lived.",
+      "arc": {
+        "low_hp": 12,
+        "row": 2,
+        "threat": "lurker_queen",
+        "resolution": "lived"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 6,
+      "t": 23678,
+      "run_id": 133,
+      "text": "Two ghouls cornered him to 15 HP; R9 attacked; reached D28.",
+      "arc": {
+        "low_hp": 15,
+        "row": 8,
+        "threat": "ghoul",
+        "resolution": "reached D28"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 6,
+      "t": 43275,
+      "run_id": 133,
+      "text": "A cave troll cornered him to 27 HP; R9 attacked; reached D28.",
+      "arc": {
+        "low_hp": 27,
+        "row": 8,
+        "threat": "cave_troll",
+        "resolution": "reached D28"
+      }
+    },
+    {
+      "pattern": "episode",
+      "score": 4,
+      "t": 12445,
+      "run_id": 133,
+      "text": "Untouched by the Warlord; R9 attacked; boss slain.",
+      "arc": {
+        "low_hp": 56,
+        "row": 8,
+        "threat": "goblin_warlord",
+        "resolution": "boss slain"
+      }
+    }
+  ],
+  "marks_earned": 0,
+  "meters": {
+    "seconds": 4899.9,
+    "dealt": {
+      "hero": 6630,
+      "pets": 27,
+      "foes": 640
+    },
+    "taken": {
+      "hero": 1033,
+      "pets": 33,
+      "foes": 6533
+    },
+    "dps_dealt": {
+      "hero": 1.353,
+      "pets": 0.006,
+      "foes": 0.131
+    },
+    "dps_taken": {
+      "hero": 0.211,
+      "pets": 0.007,
+      "foes": 1.333
+    },
+    "healed": [
+      {
+        "src": "hearthglass",
+        "total": 362,
+        "per_s": 0.074
+      },
+      {
+        "src": "hearthglass_embers",
+        "total": 413,
+        "per_s": 0.084
+      },
+      {
+        "src": "pet",
+        "total": 9,
+        "per_s": 0.002
+      },
+      {
+        "src": "regen",
+        "total": 945,
+        "per_s": 0.193
+      },
+      {
+        "src": "rest",
+        "total": 60,
+        "per_s": 0.012
+      }
+    ],
+    "hps": 0.365,
+    "time": {
+      "fight": 12202,
+      "travel": 36736,
+      "chores": 61,
+      "rest": 0
+    },
+    "time_s": {
+      "fight": 1220.2,
+      "travel": 3673.6,
+      "chores": 6.1,
+      "rest": 0.0
+    },
+    "rows": [
+      {
+        "row": -2,
+        "fires": 3195,
+        "share": 0.722
+      },
+      {
+        "row": 1,
+        "fires": 51,
+        "share": 0.012
+      },
+      {
+        "row": 2,
+        "fires": 4,
+        "share": 0.001
+      },
+      {
+        "row": 6,
+        "fires": 2,
+        "share": 0.0
+      },
+      {
+        "row": 8,
+        "fires": 1157,
+        "share": 0.262
+      },
+      {
+        "row": 9,
+        "fires": 14,
+        "share": 0.003
+      }
+    ],
+    "actions": 4430,
+    "supplies": {
+      "Glassward": 145,
+      "heal potion": 4
+    },
+    "gold": 0,
+    "gold_per_min": 0.0,
+    "hits_hero": 479,
+    "hits_pets": 19,
+    "fights": 193,
+    "credit": [
+      {
+        "credit": "picked",
+        "fires": 2,
+        "share": 0.0
+      },
+      {
+        "credit": "taught",
+        "fires": 51,
+        "share": 0.012
+      },
+      {
+        "credit": "default",
+        "fires": 1175,
+        "share": 0.266
+      },
+      {
+        "credit": "chores",
+        "fires": 3195,
+        "share": 0.722
+      }
+    ]
+  },
+  "worst_death_id": 133,
+  "tamed": [],
+  "hatched": [],
+  "lost": [],
+  "xp": {
+    "class": "fighter",
+    "gained": 0,
+    "level_ups": 0
+  },
+  "salvaged": [],
+  "renown": {
+    "gained": 0,
+    "rank": 8,
+    "ranks_up": 0
+  },
+  "rested_s": 0,
+  "banked": 1,
+  "returned": 0,
+  "bones_found": [],
+  "stolen": [
+    {
+      "label": "brittle scroll?",
+      "n": 1
+    }
+  ],
+  "stalled": 0,
+  "gold": {
+    "home": 100,
+    "salvage": 0,
+    "wake": 0,
+    "spent": 0,
+    "wake_cap": 40,
+    "wake_n": 0,
+    "lost": 1229,
+    "unkept": 23,
+    "net": 100,
+    "ledger": {
+      "earned": 1306,
+      "spent": 1206,
+      "net": 100,
+      "terms": [
+        {
+          "label": "carried",
+          "amount": 1306
+        },
+        {
+          "label": "lost",
+          "amount": -1206
+        }
+      ]
+    },
+    "earned": 1306,
+    "spent_by_workers": 0
+  },
+  "deepest": 28,
+  "exits": [
+    {
+      "tier": "death",
+      "carried": 1206,
+      "keep_pct": 0,
+      "kept": 0,
+      "spent": 0,
+      "spent_on": [
+        "fire",
+        "heal"
+      ],
+      "text": "died $0 · $1206 lost · bones: 8 items on D28",
+      "trace": {
+        "turns": [
+          {
+            "t": 48914,
+            "row": 2,
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "hp": 13,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48906,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 18
+              },
+              {
+                "t": 48906,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 16
+              },
+              {
+                "t": 48907,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 14
+              },
+              {
+                "t": 48911,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 12
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48922,
+            "row": 1,
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "hp": 27,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              }
+            ],
+            "blows": [
+              {
+                "t": 48914,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 39
+              },
+              {
+                "t": 48914,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 37
+              },
+              {
+                "t": 48916,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 35
+              },
+              {
+                "t": 48916,
+                "by": "lurker",
+                "dmg": 3,
+                "hp": 32
+              },
+              {
+                "t": 48917,
+                "by": "lurker_queen",
+                "dmg": 4,
+                "hp": 28
+              },
+              {
+                "t": 48919,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 26
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48930,
+            "row": 2,
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "hp": 16,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48922,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 25
+              },
+              {
+                "t": 48922,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 23
+              },
+              {
+                "t": 48924,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 21
+              },
+              {
+                "t": 48924,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 19
+              },
+              {
+                "t": 48927,
+                "by": "lurker_queen",
+                "dmg": 2,
+                "hp": 17
+              },
+              {
+                "t": 48927,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 15
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48939,
+            "row": 1,
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "hp": 34,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              }
+            ],
+            "blows": [
+              {
+                "t": 48931,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 42
+              },
+              {
+                "t": 48931,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 40
+              },
+              {
+                "t": 48932,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 38
+              },
+              {
+                "t": 48936,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 36
+              },
+              {
+                "t": 48937,
+                "by": "lurker_queen",
+                "dmg": 2,
+                "hp": 34
+              }
+            ],
+            "max_hp": 56
+          },
+          {
+            "t": 48950,
+            "row": 6,
+            "verb": {
+              "v": "retreat"
+            },
+            "hp": 17,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "lurker holds the way",
+                  "t": 48950,
+                  "depth": 28
+                }
+              }
+            ],
+            "blows": [
+              {
+                "t": 48939,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 32
+              },
+              {
+                "t": 48941,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 30
+              },
+              {
+                "t": 48941,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 28
+              },
+              {
+                "t": 48944,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 26
+              },
+              {
+                "t": 48947,
+                "by": "lurker_queen",
+                "dmg": 2,
+                "hp": 24
+              },
+              {
+                "t": 48947,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 22
+              },
+              {
+                "t": 48947,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 20
+              },
+              {
+                "t": 48949,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 18
+              },
+              {
+                "t": 48949,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 16
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48958,
+            "row": 6,
+            "verb": {
+              "v": "retreat"
+            },
+            "hp": 14,
+            "foes": 12,
+            "rule_foes": 12,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 4,
+                "why": "hp not <25%"
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "lurker holds the way",
+                  "t": 48950,
+                  "depth": 28
+                }
+              }
+            ],
+            "blows": [
+              {
+                "t": 48956,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 15
+              },
+              {
+                "t": 48957,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 13
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48967,
+            "row": 8,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 12,
+            "foes": 10,
+            "rule_foes": 10,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "depth not ≥29"
+              },
+              {
+                "row": 4,
+                "why": "no way",
+                "because": {
+                  "text": "lurker holds the way",
+                  "t": 48950,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "lurker holds the way",
+                  "t": 48950,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 6,
+                "why": "no path",
+                "because": {
+                  "text": "foes hold the way",
+                  "t": 48967,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 7,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48966,
+                "by": "lurker",
+                "dmg": 3,
+                "hp": 11
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48975,
+            "row": 8,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 9,
+            "foes": 10,
+            "rule_foes": 10,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "depth not ≥29"
+              },
+              {
+                "row": 4,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 6,
+                "why": "no path",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 7,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48969,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 10
+              },
+              {
+                "t": 48974,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 8
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48983,
+            "row": 8,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 6,
+            "foes": 10,
+            "rule_foes": 10,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "depth not ≥29"
+              },
+              {
+                "row": 4,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 6,
+                "why": "no path",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 7,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48977,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 7
+              },
+              {
+                "t": 48982,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 5
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          },
+          {
+            "t": 48992,
+            "row": 8,
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "hp": 3,
+            "foes": 10,
+            "rule_foes": 10,
+            "telegraphs": [],
+            "blocked": "R3 drink heal ✗ no item",
+            "rows": [
+              {
+                "row": 0,
+                "why": "not in view",
+                "because": {
+                  "text": "bloat slain D20",
+                  "t": 34693,
+                  "depth": 20
+                }
+              },
+              {
+                "row": 1,
+                "why": "hp not >35%"
+              },
+              {
+                "row": 2,
+                "why": "no item",
+                "because": {
+                  "text": "R3 drank heal at 16/56 hp",
+                  "t": 48930,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 3,
+                "why": "depth not ≥29"
+              },
+              {
+                "row": 4,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 5,
+                "why": "no way",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 6,
+                "why": "no path",
+                "because": {
+                  "text": "foes on every side",
+                  "t": 48975,
+                  "depth": 28
+                }
+              },
+              {
+                "row": 7,
+                "why": "no leash"
+              }
+            ],
+            "blows": [
+              {
+                "t": 48986,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 4
+              },
+              {
+                "t": 48991,
+                "by": "lurker",
+                "dmg": 2,
+                "hp": 2
+              }
+            ],
+            "max_hp": 56,
+            "gift": "mend +1 · quick +3"
+          }
+        ],
+        "provenance": [
+          {
+            "text": "found dagger +2 on D1",
+            "t": 180,
+            "depth": 1
+          },
+          {
+            "text": "found brittle scroll? on D2",
+            "t": 1070,
+            "depth": 2
+          },
+          {
+            "text": "monkey took the brittle scroll?, D2",
+            "t": 2603,
+            "depth": 2
+          },
+          {
+            "text": "rat last seen D3",
+            "t": 3208,
+            "depth": 3
+          },
+          {
+            "text": "found pearly potion? on D3",
+            "t": 3212,
+            "depth": 3
+          },
+          {
+            "text": "found clear potion? on D3",
+            "t": 3390,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 3700,
+            "depth": 3
+          },
+          {
+            "text": "swapped for the teleport",
+            "t": 4790,
+            "depth": 4
+          },
+          {
+            "text": "found waxen scroll? on D4",
+            "t": 4790,
+            "depth": 4
+          },
+          {
+            "text": "swapped for the heal",
+            "t": 6970,
+            "depth": 5
+          },
+          {
+            "text": "found heal on D5",
+            "t": 6970,
+            "depth": 5
+          },
+          {
+            "text": "swapped for the summon ally",
+            "t": 11434,
+            "depth": 7
+          },
+          {
+            "text": "found gilded scroll? on D7",
+            "t": 11434,
+            "depth": 7
+          },
+          {
+            "text": "goblin warlord last seen D8",
+            "t": 12300,
+            "depth": 8
+          },
+          {
+            "text": "swapped for the fire",
+            "t": 13234,
+            "depth": 9
+          },
+          {
+            "text": "eel last seen D11",
+            "t": 15134,
+            "depth": 11
+          },
+          {
+            "text": "goblin last seen D11",
+            "t": 15137,
+            "depth": 11
+          },
+          {
+            "text": "bloat last seen D13",
+            "t": 19056,
+            "depth": 13
+          },
+          {
+            "text": "goblin archer last seen D13",
+            "t": 20761,
+            "depth": 13
+          },
+          {
+            "text": "swapped for the enchant",
+            "t": 22478,
+            "depth": 14
+          },
+          {
+            "text": "found inked scroll? on D14",
+            "t": 22478,
+            "depth": 14
+          },
+          {
+            "text": "monkey last seen D14",
+            "t": 23678,
+            "depth": 14
+          },
+          {
+            "text": "goblin conjurer last seen D16",
+            "t": 27423,
+            "depth": 16
+          },
+          {
+            "text": "ghoul last seen D18",
+            "t": 31800,
+            "depth": 18
+          },
+          {
+            "text": "R3 drank heal at 19/56 hp",
+            "t": 35384,
+            "depth": 21
+          },
+          {
+            "text": "found fire on D22",
+            "t": 35603,
+            "depth": 22
+          },
+          {
+            "text": "skeleton last seen D22",
+            "t": 36551,
+            "depth": 22
+          },
+          {
+            "text": "slag crawler last seen D22",
+            "t": 37553,
+            "depth": 22
+          },
+          {
+            "text": "bell sentinel last seen D22",
+            "t": 37881,
+            "depth": 22
+          },
+          {
+            "text": "smith last seen D23",
+            "t": 38435,
+            "depth": 23
+          },
+          {
+            "text": "forge imp last seen D23",
+            "t": 38879,
+            "depth": 23
+          },
+          {
+            "text": "found scale +1 on D23",
+            "t": 39292,
+            "depth": 23
+          },
+          {
+            "text": "foundry master last seen D23",
+            "t": 39913,
+            "depth": 23
+          },
+          {
+            "text": "swapped for the silence",
+            "t": 41264,
+            "depth": 24
+          },
+          {
+            "text": "swapped for the silence",
+            "t": 43208,
+            "depth": 24
+          },
+          {
+            "text": "found silence on D24",
+            "t": 43208,
+            "depth": 24
+          },
+          {
+            "text": "found sword +1 on D25",
+            "t": 43397,
+            "depth": 25
+          },
+          {
+            "text": "R3 drank heal at 17/56 hp",
+            "t": 44825,
+            "depth": 26
+          },
+          {
+            "text": "found axe +2 on D26",
+            "t": 44967,
+            "depth": 26
+          },
+          {
+            "text": "jackal last seen D27",
+            "t": 48286,
+            "depth": 27
+          },
+          {
+            "text": "R3 drank heal at 13/56 hp",
+            "t": 48914,
+            "depth": 28
+          },
+          {
+            "text": "R3 drank heal at 16/56 hp",
+            "t": 48930,
+            "depth": 28
+          },
+          {
+            "text": "lurker last seen D28",
+            "t": 48958,
+            "depth": 28
+          },
+          {
+            "text": "foes on every side",
+            "t": 48975,
+            "depth": 28
+          },
+          {
+            "text": "foes on every side",
+            "t": 48975,
+            "depth": 28
+          }
+        ],
+        "blow": {
+          "t": 48999,
+          "by": "lurker",
+          "dmg": 2,
+          "hp": 0
+        },
+        "blows": [
+          {
+            "t": 48994,
+            "by": "lurker",
+            "dmg": 2,
+            "hp": 1
+          },
+          {
+            "t": 48999,
+            "by": "lurker",
+            "dmg": 2,
+            "hp": 0
+          }
+        ],
+        "hp_lost": [
+          {
+            "by": "lurker",
+            "dmg": 106
+          },
+          {
+            "by": "lurker_queen",
+            "dmg": 16
+          },
+          {
+            "by": "mirror_shade",
+            "dmg": 14
+          },
+          {
+            "by": "deep_eel",
+            "dmg": 11
+          }
+        ],
+        "hp_healed": 91,
+        "max_steps": [
+          {
+            "t": 44594,
+            "max": 56,
+            "delta": 0,
+            "cause": "recovery"
+          }
+        ]
+      },
+      "run_id": 133,
+      "legacy_earned": 1,
+      "stolen": [
+        "brittle scroll?"
+      ],
+      "start": 1,
+      "cause": "a lurker",
+      "reason": "slain · lurker",
+      "found": [
+        {
+          "kind": "waxen scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "dagger",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "gilded scroll?",
+          "n": 2,
+          "fate": "left"
+        },
+        {
+          "kind": "heal",
+          "n": 3,
+          "fate": "used"
+        },
+        {
+          "kind": "inked scroll?",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "brittle scroll?",
+          "n": 1,
+          "fate": "stolen"
+        },
+        {
+          "kind": "pearly potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "clear potion?",
+          "n": 1,
+          "fate": "left"
+        },
+        {
+          "kind": "fire",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "sword",
+          "n": 3,
+          "fate": "left"
+        },
+        {
+          "kind": "scale",
+          "n": 1,
+          "fate": "lost"
+        },
+        {
+          "kind": "silence",
+          "n": 2,
+          "fate": "bones"
+        },
+        {
+          "kind": "axe",
+          "n": 1,
+          "fate": "bones"
+        }
+      ],
+      "found_n": 23,
+      "bones": [
+        {
+          "kind": "fire",
+          "n": 3
+        },
+        {
+          "kind": "inked scroll?",
+          "n": 2
+        },
+        {
+          "kind": "silence",
+          "n": 2
+        },
+        {
+          "kind": "axe",
+          "n": 1
+        }
+      ],
+      "news": [
+        {
+          "k": "named",
+          "text": "slew Skar",
+          "day": 4
+        },
+        {
+          "k": "named",
+          "text": "slew Krim",
+          "day": 4
+        }
+      ],
+      "meters": {
+        "seconds": 4899.9,
+        "dealt": {
+          "hero": 6630,
+          "pets": 27,
+          "foes": 640
+        },
+        "taken": {
+          "hero": 1033,
+          "pets": 33,
+          "foes": 6533
+        },
+        "dps_dealt": {
+          "hero": 1.353,
+          "pets": 0.006,
+          "foes": 0.131
+        },
+        "dps_taken": {
+          "hero": 0.211,
+          "pets": 0.007,
+          "foes": 1.333
+        },
+        "healed": [
+          {
+            "src": "hearthglass",
+            "total": 362,
+            "per_s": 0.074
+          },
+          {
+            "src": "hearthglass_embers",
+            "total": 413,
+            "per_s": 0.084
+          },
+          {
+            "src": "pet",
+            "total": 9,
+            "per_s": 0.002
+          },
+          {
+            "src": "regen",
+            "total": 945,
+            "per_s": 0.193
+          },
+          {
+            "src": "rest",
+            "total": 60,
+            "per_s": 0.012
+          }
+        ],
+        "hps": 0.365,
+        "time": {
+          "fight": 12202,
+          "travel": 36736,
+          "chores": 61,
+          "rest": 0
+        },
+        "time_s": {
+          "fight": 1220.2,
+          "travel": 3673.6,
+          "chores": 6.1,
+          "rest": 0.0
+        },
+        "rows": [
+          {
+            "row": -2,
+            "fires": 3195,
+            "share": 0.722
+          },
+          {
+            "row": 1,
+            "fires": 51,
+            "share": 0.012
+          },
+          {
+            "row": 2,
+            "fires": 4,
+            "share": 0.001
+          },
+          {
+            "row": 6,
+            "fires": 2,
+            "share": 0.0
+          },
+          {
+            "row": 8,
+            "fires": 1157,
+            "share": 0.262
+          },
+          {
+            "row": 9,
+            "fires": 14,
+            "share": 0.003
+          }
+        ],
+        "actions": 4430,
+        "supplies": {
+          "Glassward": 145,
+          "heal potion": 4
+        },
+        "gold": 0,
+        "gold_per_min": 0.0,
+        "hits_hero": 479,
+        "hits_pets": 19,
+        "fights": 193,
+        "credit": [
+          {
+            "credit": "picked",
+            "fires": 2,
+            "share": 0.0
+          },
+          {
+            "credit": "taught",
+            "fires": 51,
+            "share": 0.012
+          },
+          {
+            "credit": "default",
+            "fires": 1175,
+            "share": 0.266
+          },
+          {
+            "credit": "chores",
+            "fires": 3195,
+            "share": 0.722
+          }
+        ]
+      },
+      "end": "death",
+      "reached": 28,
+      "finds": [
+        {
+          "id": 496,
+          "kind": "axe",
+          "known": true,
+          "label": "axe +2",
+          "free": false,
+          "rarity": "rare"
+        },
+        {
+          "id": 143,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 405,
+          "kind": "fire",
+          "known": true,
+          "label": "fire potion",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 445,
+          "kind": "silence",
+          "known": true,
+          "label": "silence scroll",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 455,
+          "kind": "silence",
+          "known": true,
+          "label": "silence scroll",
+          "free": false,
+          "rarity": "uncommon"
+        },
+        {
+          "id": 15,
+          "kind": "scroll",
+          "known": false,
+          "label": "inked scroll?",
+          "hint": "benevolent",
+          "free": false
+        }
+      ]
+    }
+  ],
+  "picked": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    18,
+    19,
+    23
+  ],
+  "bounty": {
+    "depth": 28,
+    "taken": false,
+    "gold": 0
+  },
+  "lanes": [
+    "D5–8 · the Burrows",
+    "D9–13 · the Fens",
+    "D14–18 · the Crypt",
+    "D19–23 · the Foundry",
+    "D24–28 · the Deep"
+  ],
+  "heirs": [
+    8,
+    8
+  ],
+  "lead": [
+    {
+      "k": "death",
+      "text": "1 death · lurker"
+    },
+    {
+      "k": "bounty",
+      "text": "bounty D28 · missed · reach"
+    },
+    {
+      "k": "pending",
+      "text": "unlock supply_cap_5 (0)"
+    }
+  ],
+  "grew": [
+    {
+      "track": "character",
+      "what": "+iron gut"
+    },
+    {
+      "track": "character",
+      "what": "+light hands"
+    },
+    {
+      "track": "character",
+      "what": "+unbowed"
+    },
+    {
+      "track": "items",
+      "what": "+$100"
+    }
+  ],
+  "packages": [
+    "+unbowed",
+    "+light hands",
+    "+iron gut"
+  ],
+  "workers": [
+    {
+      "id": "porter",
+      "what": "hauled $100",
+      "n": 100,
+      "first": false,
+      "gold": 100
+    }
+  ],
+  "finds": {
+    "sealed": 1,
+    "best": {
+      "id": "moth",
+      "kind": "cosmetic",
+      "name": "moth lantern",
+      "rank": 1,
+      "table": 1
+    },
+    "finds": [
+      {
+        "id": "moth",
+        "kind": "cosmetic",
+        "name": "moth lantern",
+        "rank": 1,
+        "table": 1
+      }
+    ],
+    "legacy": 1
+  },
+  "feats": [
+    {
+      "k": "recovery",
+      "text": "Rook Ash · skittish · slow · answers the lurker",
+      "day": 4
+    },
+    {
+      "k": "siege",
+      "text": "Queen · try 2 · +4%",
+      "day": 4
+    },
+    {
+      "k": "pet",
+      "text": "Greth · fetcher L3",
+      "day": 5
+    }
+  ]
+}

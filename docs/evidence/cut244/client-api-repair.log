@@ -1,0 +1,15 @@
+client suite: targeted (4 selected; 163 current full; 206 exhaustive groups)
+FAIL free-preparation 12.0s (4.1s)  Node.js v22.18.0
+     page.evaluate: Error: automatic sustain refills both slots
+         at check (eval at evaluate (:311:30), <anonymous>:8:22)
+         at eval (eval at evaluate (:311:30), <anonymous>:94:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/free-preparation.mjs:18:29 {
+FAIL ascension-refusal 17.8s (9.9s)  Node.js v22.18.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/ascension-refusal.mjs:18:23 {
+FAIL debug-export    17.9s (5.9s)  Node.js v22.18.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/debug-export.mjs:240:16 {
+ok   package-requests 25.0s (7.2s)  package-requests: 88 checks PASS
+FAIL: 1/4 client gates in 25.0s

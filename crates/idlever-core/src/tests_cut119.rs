@@ -58,8 +58,7 @@ fn the_tame_row_compiles_for_everyone_and_is_revocable() {
         g.start_run(None);
         g.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
         g.finish_run();
-        g.auto_keep();
-    }
+        }
     assert_eq!(g.batch.pkg_lines.iter().filter(|l| l.as_str() == "TAMES STRAYS").count(), 1, "announced once");
     let mut h = Game::new_resident(3);
     crate::pets::pin_off(&mut h.lineage);
@@ -77,7 +76,6 @@ fn pets_come_to_everyone() {
             g.start_run(None);
             g.run_to_end(crate::engine::MAX_TURNS_PER_RUN);
             g.finish_run();
-            g.auto_keep();
             if !g.lineage.party.is_empty() || !g.lineage.kennel.is_empty() {
                 owned += 1;
                 break;

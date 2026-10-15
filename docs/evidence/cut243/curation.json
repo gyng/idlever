@@ -1,0 +1,2353 @@
+{
+  "scope": "Curated Cut243 only; SHA inventory retains all originals/failures locally. JSON gzip files are lossless copies; raw JSON and unselected image duplicates are deliberately not in this commit. No local originals deleted.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 9412,
+      "sha256": "34bf2a6091aaadc757445bcebe60c1058de090b36d88ad5e867e3ea9ed613405",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-dom/results.json",
+      "bytes": 2171524,
+      "sha256": "e5ffe442de044fc9dbd90f27445050fc32c334221991837941a9345f1117aa97",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-dom/results.json.gz",
+      "bytes": 73927,
+      "sha256": "f47a882208325f22c245337ac0a0eb130d48ff75f96273b87a26e0b056bd6a9a",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-dom/vite.log",
+      "bytes": 451,
+      "sha256": "560ff195f4396a292df7877bd1b241cf00f1a0239ce5201e5dc1ed61c6f55d58",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-1440-1x.png",
+      "bytes": 2076731,
+      "sha256": "cfc9e993b56f87a984b7ca5f8a1cc32f0cb93ae5b7a8bf8ff7416ce8d1b144cb",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-gpu/camp-1440-2x.png",
+      "bytes": 2338476,
+      "sha256": "39cf1bcc10cf92e0633604399c6f790afefd1dc362bc4f548cf9a25e71b0bb2b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-2560-1x.png",
+      "bytes": 2616958,
+      "sha256": "7db4f1cb7ec2a4c4c75fc0077f10de427f725f21bcd8616017c6668d46c87751",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-2560-2x.png",
+      "bytes": 2804132,
+      "sha256": "12255388deafa139d796adeeebb38fb4e1434783d140681a9c843dd9d25e8651",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-320-1x.png",
+      "bytes": 759889,
+      "sha256": "b5ee282ec869326aef69a223ef125901b0242449cf2da4cfb8600858855ddde6",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-gpu/camp-320-2x.png",
+      "bytes": 724795,
+      "sha256": "982aed9721550af4159b79cc5c97c2b679791090c7677fb841f9cc71b322b3e6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-400-1x.png",
+      "bytes": 815697,
+      "sha256": "13fed1abb73ca957e44d02620de19da7cb155ccad049deeec4a06337f5515f5a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/camp-400-2x.png",
+      "bytes": 820759,
+      "sha256": "0e65b18f2e7640d26c4ef2a3d18d1403eef7a891a3178ff2baf5576c7fae9b53",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/results.json",
+      "bytes": 721379,
+      "sha256": "7ddcacb9295168c5ea071e611425a109be38362a83861cf8546be4622a900e57",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu/results.json.gz",
+      "bytes": 46244,
+      "sha256": "fcb1589763252827d6f9d97cded26c1e877d9b714362416614de986892263c3e",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "de94a8cd958b4fdd63f3217eb9b8902c1588b6a94633ac460bd7248c27287f7e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-gpu.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-gpu.out",
+      "bytes": 22,
+      "sha256": "dcd5b65ede727c4196f5015cf3f57039676c42d7f17a643267c58e317f15dfeb",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-runs-gpu/results.json",
+      "bytes": 1377648,
+      "sha256": "e080226cb964a43cf61c983c06d71c5fa00d1022cbc006cd275dfb4336dcb928",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/results.json.gz",
+      "bytes": 40544,
+      "sha256": "303826bf1ebfb2fcd99cad186c2b6c2c603b818981ea46d0e7fdc16dfcff8fba",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-1440-1x.png",
+      "bytes": 1780072,
+      "sha256": "d157c1bc324edaa5298f5ada5ea68a1fec895a319b6c9995cf9317b75a6fdfec",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-1440-2x.png",
+      "bytes": 1693867,
+      "sha256": "f7116c076bbf6b1794ce34e80f2bc38f60660dff517b397707b7283f7c3b902a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-2560-1x.png",
+      "bytes": 2379946,
+      "sha256": "2f5458cceca7847605ffd84ccb48967fda9da3017a9603662cd917352b7bb3e4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-2560-2x.png",
+      "bytes": 2460462,
+      "sha256": "1a17a2e927e6d7e638208b6eabe161d8ee126b08cb40fc79233eb8bcd61d184e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-320-1x.png",
+      "bytes": 590823,
+      "sha256": "400ff341772b00c824bc0281cb526b89efad5ad29556bd317f59b12f8075e051",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-320-2x.png",
+      "bytes": 515020,
+      "sha256": "f6c3192d2dd7988285ee20509d3c1c334fc5656c302e8c908640aeac1ec2e36a",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-400-1x.png",
+      "bytes": 648117,
+      "sha256": "e3b25ce3bf25fc11c48a8f1ac6e0d3c538fbef2ece3dd993d621cd2e0468148f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/runs-400-2x.png",
+      "bytes": 639527,
+      "sha256": "02653030717c29833027aa45a867dd4a37dee03c0c2bf104074acdec55c8e925",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "b7f9195bf2bbd1d42cded63d0b78675f9d98e6b7aea16360dd35ab057740d3e4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "baseline-runs-gpu.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "baseline-runs-gpu.out",
+      "bytes": 22,
+      "sha256": "dcd5b65ede727c4196f5015cf3f57039676c42d7f17a643267c58e317f15dfeb",
+      "scope": "include"
+    },
+    {
+      "path": "build.err",
+      "bytes": 897,
+      "sha256": "406f044a8f2269df40e806047594b82cbf5442d2506834b7b3de1b184bac7182",
+      "scope": "include"
+    },
+    {
+      "path": "build.out",
+      "bytes": 646,
+      "sha256": "f8fafff1da180d7194c1bac02e945434e2878d0254fbbb25cee99aafd905fdee",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-desktop-dom/results.json",
+      "bytes": 1085736,
+      "sha256": "89b2b5bb97c0da7c2e21648532df394685b68b242088d8c532a8d1dd92f7c16e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-desktop-dom/results.json.gz",
+      "bytes": 45888,
+      "sha256": "846d6ae2eef583b11a73fe78900429a10a52587b29b6f821e40e7dd4f9c754c4",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-desktop-dom/vite.log",
+      "bytes": 450,
+      "sha256": "70ba0171550ebf494538a431cc8ca140735f125dbb923f67109e8fdb437243e3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-desktop.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-desktop.out",
+      "bytes": 23,
+      "sha256": "c4237b1500852bec3ca206aae8c8c971593473b441494e155393580cdd33b6cc",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-dom/results.json",
+      "bytes": 1102761,
+      "sha256": "b46f7f124efde6dd8459204efd36d3e5dd02f4c568046eb712d95271aa8214e4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-dom/results.json.gz",
+      "bytes": 46943,
+      "sha256": "0d8522cab573fb6d879877a418c51590d0a2132233b448c5f1d32cb62eebf9bc",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-dom/vite.log",
+      "bytes": 450,
+      "sha256": "0817887bd7edabe928765611f0fc846ac7841012729b03891ae8289c90ac1db4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-dom.err",
+      "bytes": 213,
+      "sha256": "f045a6e395346148d31b6b5f2cdabafb99c369ffc20ffbe7fe61b078c9cb1652",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-dom.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-gpu/camp-1440-1x.png",
+      "bytes": 2061401,
+      "sha256": "7921b9b9d670d8814c087595d25c37f18c7ffd97a442fd6b8af8889dafb05475",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-1440-2x.png",
+      "bytes": 2368327,
+      "sha256": "65cf632651135e25aeb61248edbf84a7704378a92082f5ad85ecc4a8242f7476",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-2560-1x.png",
+      "bytes": 2628689,
+      "sha256": "4c1f2914b2c00b9a098f31083fbe2d56c7ce9ea5c1152637a0f0398117b11921",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-2560-2x.png",
+      "bytes": 2803360,
+      "sha256": "d1e76ac143231829d95b2c2e9b91654c7684b79b63ebee0283b4dd9060ad5b37",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-320-1x.png",
+      "bytes": 759861,
+      "sha256": "0ab5321e916d75ab1d9571eb048646bb7935224c84417d294c2fca2e33c95bd5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-320-2x.png",
+      "bytes": 723005,
+      "sha256": "5e6cb8df296e828eaf37d21d8f62c1da54fe1439da4b3b2d5b0f6674bb2a9012",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-400-1x.png",
+      "bytes": 810328,
+      "sha256": "68cc78c6d19ac5d39c626b97f1e890ce2a5a50eb38022fb65ec11770a10412f8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/camp-400-2x.png",
+      "bytes": 816356,
+      "sha256": "e488882375ff8ad4ea9ff037f599f3c7e593fcb46532d263e002d57c0d753a0c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/results.json",
+      "bytes": 1989550,
+      "sha256": "b53479bef16d8c72eb1cc6bb23d325543f9783aee713d65c942068f771086c5d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/results.json.gz",
+      "bytes": 76613,
+      "sha256": "e3439a6b673a09270a75c556f89a150e67520935b0c8955e010c7798eada9b82",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-gpu/runs-1440-1x.png",
+      "bytes": 1788137,
+      "sha256": "c01c28c87ef39a2d9608980324841794268dd419320e639e9ae872867a45b2f6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-1440-2x.png",
+      "bytes": 1717665,
+      "sha256": "f7314608efc4a33b47ff6d59d13202c52684cb1b26e92cdc305fc1645be292a6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-2560-1x.png",
+      "bytes": 2387124,
+      "sha256": "09eb94a24d194885575dddb3eac1edd393c002e0236e7271dc5bdf02a532eb5f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-2560-2x.png",
+      "bytes": 2493215,
+      "sha256": "23fb125ff3145aa1478131dd08d24f88492fd0ede4b33a6a13c4d19c5e90fcc5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-320-1x.png",
+      "bytes": 556859,
+      "sha256": "0bc0546aae245c74bff2d907ad4e8f3694390c8be055a3553be9edfdbb91f9ca",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-320-2x.png",
+      "bytes": 508247,
+      "sha256": "99148758b5d9e9c4057a4df779d0bace7037f69ada37ae3c67075bed50647ec8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-400-1x.png",
+      "bytes": 650454,
+      "sha256": "6c88cf20666b55b6aa765f965ea58b08c5eaf2980edc521af301c7990c2a82e4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/runs-400-2x.png",
+      "bytes": 630125,
+      "sha256": "af59a47f47c8b41410e843cbeb580331e1d09d9584be9fbb49d1de09a6c200d2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "f0fe82da32f8af1c84482a5d754fc32bcb726c7a118799cb2a593ea00e71fe67",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "candidate-gpu.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "candidate-gpu.out",
+      "bytes": 23,
+      "sha256": "a4530518c8c94a0037ee631c90cd164e3b9f1bf0f1c1adca00121601ea666f14",
+      "scope": "include"
+    },
+    {
+      "path": "checkpoint-evidence-files.txt",
+      "bytes": 8446,
+      "sha256": "13e331426feaf0be8e46a7fd2dc3cc076e374c4ba49e26a5b5aadfefafb97137",
+      "scope": "include"
+    },
+    {
+      "path": "child-after97-coordination-cancel.json",
+      "bytes": 232,
+      "sha256": "6c58e422b12a621407ad22cfe8752b7de7cda438bd063d7a5feb821040870980",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97-coordination-cancel.json.gz",
+      "bytes": 184,
+      "sha256": "e440befbb084eb0afefc5d0ac2b46ef44dbef489264e62cb43578f98d3d77293",
+      "scope": "include"
+    },
+    {
+      "path": "child-after97-gpu/drop-diagnostic-1440-1x.png",
+      "bytes": 1591117,
+      "sha256": "96a3c67229fb6acff0c7d0361eac8f68b33d17b62825f6b7049852c5367bcb1c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97-gpu/drop-diagnostic-1440-2x.png",
+      "bytes": 1817114,
+      "sha256": "df63bfb128e6e7dfc5004c05f2752cd2de8adc9d193b7de60dba6e6c9648cfa5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97-gpu/results.json",
+      "bytes": 71445,
+      "sha256": "a7d78fa658ce5d870347f8fe9bf0063b93ddd8b641f4d39072c4eb081a898c74",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97-gpu/results.json.gz",
+      "bytes": 12392,
+      "sha256": "f2684ad131f88b98d09ca7f29a4b8f5c392aa58ef7315ef68cc1d1bd5d65c6aa",
+      "scope": "include"
+    },
+    {
+      "path": "child-after97-gpu/return-pick-1440-1x.png",
+      "bytes": 1421844,
+      "sha256": "4df3ec57fc307a9b604370d0b550b1cff17b8ab6c65a7d61b39bc2299f636252",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97-gpu/return-pick-1440-2x.png",
+      "bytes": 1480245,
+      "sha256": "b62434cfb6eadcaca08a347d261f48198c998894786ea908b3ac311580e1f307",
+      "scope": "include"
+    },
+    {
+      "path": "child-after97-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "058596799ef85da93355617962aeed2b42019f107be954c10593e8ffd6c32bf5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-after97.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "child-after97.out",
+      "bytes": 22,
+      "sha256": "8a8919889f3feec86bb52ac2d6bc30a58236db4a6a2bf005b749f385363c0edb",
+      "scope": "include"
+    },
+    {
+      "path": "child-before-gpu/drop-diagnostic-1440-1x.png",
+      "bytes": 1602910,
+      "sha256": "a18a7419cf035dbb1814ea5926ebe791abce90494767725ea67dd365e85fc54b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before-gpu/drop-diagnostic-320-1x.png",
+      "bytes": 601108,
+      "sha256": "cf9aaa72698b3b2da54ef8247ffd093ac3796a14318200e1a2002a3732e0e8c7",
+      "scope": "include"
+    },
+    {
+      "path": "child-before-gpu/quest-1440-1x.png",
+      "bytes": 1623475,
+      "sha256": "18dcea78ed92714a59a98ffff7e29c4badc224b69114a823d45b4b0c7add204a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before-gpu/quest-320-1x.png",
+      "bytes": 560607,
+      "sha256": "edbc41bfd3f7b790c52a23a9b7272dd61d3fe66db6416c9a8166ace66f4d212d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before-gpu/results.json",
+      "bytes": 55892,
+      "sha256": "0558fd1d5f11d93654403e2aaa1e8b9f19c8087cada66ccb7cfdee98b3ba86ee",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before-gpu/results.json.gz",
+      "bytes": 11602,
+      "sha256": "6d8bc89c4ebb8c7617253288d73249c8d6178d30c36b61b0b38172c40c5bde53",
+      "scope": "include"
+    },
+    {
+      "path": "child-before-gpu/return-pick-1440-1x.png",
+      "bytes": 1601947,
+      "sha256": "7d9059632965c7d45a1958373ce4236745a06e79c22b7e9d082100848f34380f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before-gpu/return-pick-320-1x.png",
+      "bytes": 529410,
+      "sha256": "d76294f9e9615b850ee46014ea344c4355566ebb0a8e18d5275cf485c8538a1e",
+      "scope": "include"
+    },
+    {
+      "path": "child-before-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "3cf8118db0aab6b9c4572a249dbb4c5853d74bd8a01415c66774f77716461799",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-before.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "child-before.out",
+      "bytes": 22,
+      "sha256": "2e1fbc5f93d5a43ec89c5d07a3734ac9354caeac4b29593fddcafa92d2018bd8",
+      "scope": "include"
+    },
+    {
+      "path": "copy.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "copy.out",
+      "bytes": 57,
+      "sha256": "86f19536246552b7041e4c79a54e16b0116f0895e901079d24ffac678acc416f",
+      "scope": "include"
+    },
+    {
+      "path": "curate.py",
+      "bytes": 2521,
+      "sha256": "82e18ca399e58cc46f19a6e45939e8a4cd1815f250e6c000da4eeaebfe3f43bb",
+      "scope": "include"
+    },
+    {
+      "path": "drop-final-gpu/drop-diagnostic-1440-1x.png",
+      "bytes": 1377236,
+      "sha256": "ea6a03bbdac4deec21d81ebef18842aaaded59f022303d4851c6ef4d3a652086",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final-gpu/drop-diagnostic-1440-2x.png",
+      "bytes": 1440318,
+      "sha256": "7b57082d2685434a849397f6419737b14fe6af7634e31e134f77ea577f638274",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final-gpu/drop-diagnostic-320-1x.png",
+      "bytes": 474055,
+      "sha256": "249405870b9fc6605e16e1c405dd42092d7eb571e9077d15ee2422f41af69548",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final-gpu/drop-diagnostic-320-2x.png",
+      "bytes": 385921,
+      "sha256": "ced485fd93289ca682b1ff308de9993d8b4181d9985915bd8c5ff3d7dae7f509",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final-gpu/results.json",
+      "bytes": 51657,
+      "sha256": "6afcd772e329b04f6f7e4c7506e6be86b0c0dd49a77f837578d7b9f0beae3b4d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final-gpu/results.json.gz",
+      "bytes": 11640,
+      "sha256": "344e04b931d30f9ec349daa3bc82ee61d215eb41ef16c8e5eb6d5eb5f19b20e2",
+      "scope": "include"
+    },
+    {
+      "path": "drop-final-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "de983a77c7f57af260bd7972d644b95f56e81f51235c9dd1c93608626e3fb55e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-final.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "drop-final.out",
+      "bytes": 22,
+      "sha256": "8a8919889f3feec86bb52ac2d6bc30a58236db4a6a2bf005b749f385363c0edb",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/drop-diagnostic-1440-1x.png",
+      "bytes": 1373766,
+      "sha256": "be8d01e7c84be83538f9b20a0a5de5d9e8be2f54a4411c643d69a06b707e5ba1",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/drop-diagnostic-1440-2x.png",
+      "bytes": 1459754,
+      "sha256": "7cfe7bca3e13c7ecf542e3143bf29f2aa489bf30ba9a1a933192bfc4f69d83ab",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/drop-diagnostic-320-1x.png",
+      "bytes": 477751,
+      "sha256": "99282ea1b517ef923900ededbc5d04bb05a45ea28d5fa538b118a23fb1d42e5c",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/drop-diagnostic-320-2x.png",
+      "bytes": 362667,
+      "sha256": "43e5d5a0723719745771a974f4a3ea800cbb70e75d23e9b464cdf136d8952c00",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/results.json",
+      "bytes": 51641,
+      "sha256": "f0c546facd4a60464b9ad4642459f111a3f5fe3a409c2269b23ba3232db91e53",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-title-final-gpu/results.json.gz",
+      "bytes": 11651,
+      "sha256": "ba50e8bd594151526e7347ddd8bf82efb7d1c7a4b4f61de51a463b619ba5fe42",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "ad26559a23c2d4c80343f899f4af6643f9ad3f93960d5272738f3d5109061d57",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "drop-title-final.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "drop-title-final.out",
+      "bytes": 22,
+      "sha256": "8a8919889f3feec86bb52ac2d6bc30a58236db4a6a2bf005b749f385363c0edb",
+      "scope": "include"
+    },
+    {
+      "path": "final-desktop-dom/results.json",
+      "bytes": 781106,
+      "sha256": "945651ce3f06b0b9d2bed88ffdcb96243c4e8637d1c5dab57edfbf6485c8b80f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-desktop-dom/results.json.gz",
+      "bytes": 36107,
+      "sha256": "6bf5b1a97428305c86105388d346a1314a061742d72dfcbc5dfa09b7209d8227",
+      "scope": "include"
+    },
+    {
+      "path": "final-desktop-dom/vite.log",
+      "bytes": 450,
+      "sha256": "f691b961a9f0323c681d89ab6b53431da861f708ec60ca880c581529a5700101",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-desktop.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "final-desktop.out",
+      "bytes": 23,
+      "sha256": "c4237b1500852bec3ca206aae8c8c971593473b441494e155393580cdd33b6cc",
+      "scope": "include"
+    },
+    {
+      "path": "final-gpu/camp-1440-1x.png",
+      "bytes": 2056673,
+      "sha256": "696bf389d5073986a7c42358c0263e61e1e23119b06ab2c16272f27c8802a1e9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-1440-2x.png",
+      "bytes": 2384894,
+      "sha256": "76aa9f6e599c3950fb83401a2c5d5492849fed427c46d28659acc42a66b95859",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-2560-1x.png",
+      "bytes": 2619758,
+      "sha256": "1e24e1fbd4b2166bcb2a27b1a4ad7d5f3bb94baecc59c3ec4b362d791411cefe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-2560-2x.png",
+      "bytes": 2799727,
+      "sha256": "43e946e9cc249f2516dcbea59a57defd3c19f8fcdc058ec9dc8994b7edbc2ffa",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-320-1x.png",
+      "bytes": 759861,
+      "sha256": "34e890e3d6ec04c9537106882a9ee8e251cc65799945e0104161eb35d6ce679c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-320-2x.png",
+      "bytes": 691752,
+      "sha256": "93c9c54b962b7c2483f9534919412547694cd0f93291dfe4cb6a956a02196c08",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-400-1x.png",
+      "bytes": 812565,
+      "sha256": "ccc429ca4b41a979d25e663a6549cdbaf02c13a179aaaf64215e62d6948b46a6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/camp-400-2x.png",
+      "bytes": 819696,
+      "sha256": "d3207bce2a0e5f2f7e6899f6286c365174170ecada98ba3b8168341c9277a3c5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/results.json",
+      "bytes": 1982839,
+      "sha256": "919497267124783d72e9b5e4dc7cf3331669e7002d1393869e7a0603ae36f092",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/results.json.gz",
+      "bytes": 75714,
+      "sha256": "c20a79471c5dfe91dd96a8e44e13a73c2df93896fe0aa1ba167a5f63fd6db559",
+      "scope": "include"
+    },
+    {
+      "path": "final-gpu/runs-1440-1x.png",
+      "bytes": 1792626,
+      "sha256": "1524cc4e4424695e38a21aea34315f065fc6e5b0143262ff4ab12f11b8d3584c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/runs-1440-2x.png",
+      "bytes": 1717587,
+      "sha256": "de4a74f4fea9bb15f854a8b2e2528bec71ee28cdf0a58588cab9697f7fcb64aa",
+      "scope": "include"
+    },
+    {
+      "path": "final-gpu/runs-2560-1x.png",
+      "bytes": 2393782,
+      "sha256": "3aa956edf19c285191a185b970e5cde194bf1e987f28895c329887752331258d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/runs-2560-2x.png",
+      "bytes": 2487052,
+      "sha256": "a78e65e95ad2245e5e5f0c3d622830f39239b6f9daf5b82c1e811783a68d06b6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/runs-320-1x.png",
+      "bytes": 553997,
+      "sha256": "1e8e15dc4bf657bd5e1c88a23ddd11732cb50382d7b271675518184ab71f7e0a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/runs-320-2x.png",
+      "bytes": 511756,
+      "sha256": "b41d9bf28d1821c3de10e0a21d17019b916bbb67b48def9ac6205c3f2dc980cb",
+      "scope": "include"
+    },
+    {
+      "path": "final-gpu/runs-400-1x.png",
+      "bytes": 647443,
+      "sha256": "8f3416d483c7cc9403ff38f59ac0f2c537d9d79fec3b20dcf79178efd3257680",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/runs-400-2x.png",
+      "bytes": 623929,
+      "sha256": "9ee06401e721540745b55962d94ab17b806dacac370afd591a933a60f61376d8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "1056ff3e76419cc2df5df50cc9aac6163f8ee750b12b67af982bcc63eab87cf9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-gpu.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "final-gpu.out",
+      "bytes": 23,
+      "sha256": "a4530518c8c94a0037ee631c90cd164e3b9f1bf0f1c1adca00121601ea666f14",
+      "scope": "include"
+    },
+    {
+      "path": "final-phone-dom/results.json",
+      "bytes": 778894,
+      "sha256": "395cbad80cc4f1fb001e385d3729ec2dcb2490883ca18261ae969a96e121f46e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-phone-dom/results.json.gz",
+      "bytes": 36334,
+      "sha256": "ec2dd271cea93a8581ce2eacdc300e5ff0a0007440ffb3675b562a49f1eb6e29",
+      "scope": "include"
+    },
+    {
+      "path": "final-phone-dom/vite.log",
+      "bytes": 450,
+      "sha256": "f5c1cea0701d621f1f2a6cfc6a28bad62aa95dae920a1c7b3d83575a447a15ed",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "final-phone.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "final-phone.out",
+      "bytes": 23,
+      "sha256": "c4237b1500852bec3ca206aae8c8c971593473b441494e155393580cdd33b6cc",
+      "scope": "include"
+    },
+    {
+      "path": "format.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "format.out",
+      "bytes": 112,
+      "sha256": "2b19d869212a4b8fe98324abc43ed34afdf331dd55936bf3ae7f7a56d53d55d5",
+      "scope": "include"
+    },
+    {
+      "path": "home-build-v2.err",
+      "bytes": 897,
+      "sha256": "406f044a8f2269df40e806047594b82cbf5442d2506834b7b3de1b184bac7182",
+      "scope": "include"
+    },
+    {
+      "path": "home-build-v2.out",
+      "bytes": 646,
+      "sha256": "8a4f28311480b0afc53044bd6edb7e7802760b60ad71244b3fc3f84b46a9d58e",
+      "scope": "include"
+    },
+    {
+      "path": "home-build-v3.err",
+      "bytes": 897,
+      "sha256": "406f044a8f2269df40e806047594b82cbf5442d2506834b7b3de1b184bac7182",
+      "scope": "include"
+    },
+    {
+      "path": "home-build-v3.out",
+      "bytes": 646,
+      "sha256": "87d043ae4df9aca736b395200e00856b4045b6cb1fdce866f96b190e2a5f3187",
+      "scope": "include"
+    },
+    {
+      "path": "home-build.err",
+      "bytes": 897,
+      "sha256": "406f044a8f2269df40e806047594b82cbf5442d2506834b7b3de1b184bac7182",
+      "scope": "include"
+    },
+    {
+      "path": "home-build.out",
+      "bytes": 646,
+      "sha256": "e02e33b05282f4f0430f03ad4b81a041dbc217b8b810bd6465e54074c77920e4",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320/results.json",
+      "bytes": 7775,
+      "sha256": "d5b93bccedb4c295fee05b4d65ba0e1eb58d7d5db8b979f007d217c943533754",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320/results.json.gz",
+      "bytes": 2980,
+      "sha256": "3139f4f3cffbb1a2df10745b85e67bee31bf9a429a1b63352c8e6fbac0d9260b",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320/server.log",
+      "bytes": 40,
+      "sha256": "cde95ca718e0797324d18d4a21a870644ead56a91a910ed8b7ab20766d15a3e9",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320-tmpdir/home-320-1x.png",
+      "bytes": 754555,
+      "sha256": "db10d6e730b7cbbb8e1d1893fcca409ef255fac767590513fb0b0986432a78a7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/home-320-2x.png",
+      "bytes": 635978,
+      "sha256": "b2d1b02d10b8e0dd75df3b9633a9fb887a11731678b814a129af68de57791cb8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/hover-savings-320-1x.png",
+      "bytes": 770694,
+      "sha256": "34ce90cae930236d87fd6f3d6e9cd53581a9b1d3f250d22d4a312362832cd19d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/orders-320-1x.png",
+      "bytes": 416477,
+      "sha256": "010da3235d9939d8c862dc6da1107d2c984f30a778e3d2a72f71394137331656",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/orders-320-2x.png",
+      "bytes": 373982,
+      "sha256": "4e6f3891f400b8498f5e72441bea0868636b62972e42c9896c1a4bf05b7cefab",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/pets-320-1x.png",
+      "bytes": 444017,
+      "sha256": "df7089dc95313e9f5f565b0aaf07fea144f0939428c1345a73e6dd3d99880b48",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/pets-320-2x.png",
+      "bytes": 420093,
+      "sha256": "d8bed0fd5bce6a1a92e77ca6d781b7d5176d9ec9bc0de1673624ddc4a3913b9c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/results.json",
+      "bytes": 146183,
+      "sha256": "08ec30ada510e6d4584bee66a59d129ceb755dfdf00f2412b10f32d07a6cb5c1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/results.json.gz",
+      "bytes": 11208,
+      "sha256": "a7f4a5d012e4e8c4054d0c1e931485fa470e73913179a24f18cfa7e4db2f38f7",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320-tmpdir/savings-320-1x.png",
+      "bytes": 456133,
+      "sha256": "2bdf4dc43c7dac0cb4099172d9da14ab335d62c76c8c2c1dda1cb382ac781298",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/savings-320-2x.png",
+      "bytes": 416032,
+      "sha256": "1f48247abca77bf9ee32c7ed2c4884f5494d47974516330267f4332d9fd25981",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-built-320-tmpdir/server.log",
+      "bytes": 40,
+      "sha256": "0a052f486cdd285743b01cc74742836890f41de02ca1a7da604921f3516068ad",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320-tmpdir.err",
+      "bytes": 303,
+      "sha256": "a94cac3cf7cc13aaf0055bcfddf405b4241a21c8f74a4949e3ccd79b4513bcbc",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320-tmpdir.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320.err",
+      "bytes": 3217,
+      "sha256": "4f71c0ee793c4fb4858e18040d52ac5bca06070250653f105be99537889f5380",
+      "scope": "include"
+    },
+    {
+      "path": "home-built-320.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-copy.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-copy.out",
+      "bytes": 57,
+      "sha256": "2041ddcbfd75024ab65e2b435d7719e31f66936a416428e42cf3dba3ccc00ef4",
+      "scope": "include"
+    },
+    {
+      "path": "home-final-built/first-house-1440.png",
+      "bytes": 1225423,
+      "sha256": "de84709b8cf2b9ebb432a052eedc35d8040fe1f3b195ff7725960dd45812358d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/first-house-320.png",
+      "bytes": 511374,
+      "sha256": "ac4ec8e2fdc021a7e21bf6a1c705fcb6c267249697fe4409ad1c24e05b2c1e3f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/first-house-400.png",
+      "bytes": 599102,
+      "sha256": "f6ba5dd91ed6c82209785b580bb5a82b6180486d7f5ff2c80c6b231750b2655b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/fresh-town-1440.png",
+      "bytes": 937627,
+      "sha256": "c1723b49ebfb989be65bba32fd7e2d7be7aeffc26189a405eab30a98d9a5c2f2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/fresh-town-320.png",
+      "bytes": 413319,
+      "sha256": "b389c8120e7c4485dd2e28e8077c1207f49da2737b7578201864c1fd464e8bdd",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/fresh-town-400.png",
+      "bytes": 449225,
+      "sha256": "bac19807207536e4bd8444cf4b70a798b990cc4328870ef3879a7e508765f0b1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-1440-1x.png",
+      "bytes": 2091029,
+      "sha256": "144b201ba2fb991d4657caf780401d48aaaa8f19750363006bca8932ec7e5929",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-1440-2x.png",
+      "bytes": 2361555,
+      "sha256": "a295fcca992746a651c8c3faa57a02f91c0d383a622cb960f9791dca6b717d87",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-320-1x.png",
+      "bytes": 761175,
+      "sha256": "4bd9e89e9b0bdd544157faaaea3a29b3243c7165fae2817f9fb7c0c69f0258f8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-320-2x.png",
+      "bytes": 755816,
+      "sha256": "a7ce96fa2e6cd2bd9787c909831e5632f727c52d201fa96263c1de4d9b543cc3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-400-1x.png",
+      "bytes": 817076,
+      "sha256": "bf75c3dd45bbdf2589ee89a1b2dcc227b2751e84c760f7441ec8c0006ae6ef3e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/home-400-2x.png",
+      "bytes": 838899,
+      "sha256": "72d666102f3cb92260103d013ea6566ed23671d0b1fc83bb644391973a7ee445",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-forge-1440-1x.png",
+      "bytes": 2100094,
+      "sha256": "f9c6a5a0200d6eccd761af4dd2dfb2141121260b98271e7caefce512c97fce80",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-forge-320-1x.png",
+      "bytes": 791392,
+      "sha256": "bfb7cc30b115342a562f9c92a6e421a3eb7d51fb14cb5d3d2729486d70b6547d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-forge-400-1x.png",
+      "bytes": 845156,
+      "sha256": "453c3bc48b2d19912983997f998be79c04b7ece38d80e6e03a363532cf3fb40a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-savings-1440-1x.png",
+      "bytes": 2063167,
+      "sha256": "a44de9dd355aeb8bbe159cca926bf4bfa2fc10700c1b504e1ee97eaedb553754",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-savings-320-1x.png",
+      "bytes": 776073,
+      "sha256": "9da7ae66a08e848f7db9247dceab8cc0f8531053a2c593e093291e686ff30809",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-savings-400-1x.png",
+      "bytes": 851912,
+      "sha256": "87940abc7a93651de7b4e8ddca13edf1ee90a79db35b8994595445c5dd6c4303",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-worker-1440-1x.png",
+      "bytes": 2069134,
+      "sha256": "f3518dfca677e8cbe6183ee9fbd1e24460c0137c93bd1a3bc0c66d1baf1b532f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-worker-320-1x.png",
+      "bytes": 774762,
+      "sha256": "88a5b3df707eb5c0921f05306772b8c9522dcfbaf13bfecbfa1238b08e18cdaa",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/hover-worker-400-1x.png",
+      "bytes": 826462,
+      "sha256": "b44cb5988bb61ce9a45b593f692122689d5e60596dd345278737122c65349364",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/orders-320-1x.png",
+      "bytes": 416477,
+      "sha256": "010da3235d9939d8c862dc6da1107d2c984f30a778e3d2a72f71394137331656",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/orders-320-2x.png",
+      "bytes": 375733,
+      "sha256": "555d2ffb78d5a61b7798a599fc2679343d807f80750d14364ef60f5bb02339b0",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/orders-400-1x.png",
+      "bytes": 481246,
+      "sha256": "4cba40a821bef23c701958350aa35e592a946bff1c0a5735637bb00c8e288c7d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/orders-400-2x.png",
+      "bytes": 470366,
+      "sha256": "5092afd28a8c072fc2d591af83e6cd8ad1c40505f3b09d025315623c6fdf7943",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-1440-1x.png",
+      "bytes": 1413286,
+      "sha256": "5974dc4cc36cd1022841b689ce264adedd83e17c3e8eed60510e04ff54de0634",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-1440-2x.png",
+      "bytes": 1453143,
+      "sha256": "dfd632893f3b1a56208c0677fd5df5b033f9ed3d79b6899bf3a7d7a312dfa3d4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-320-1x.png",
+      "bytes": 444055,
+      "sha256": "f9420b3bdf90f5d2f7f39c52e75a4cd0007a4a3c9910098b981f30cd93911a9a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-320-2x.png",
+      "bytes": 419506,
+      "sha256": "978605b73adb805bf6c24c114c4b4d41c1774d4b4346c8fc13dbd781b549ae9e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-400-1x.png",
+      "bytes": 492808,
+      "sha256": "670250a4b84b828f21f31735ae486812b2834da5ea0a5dec92cba432c6a6ea87",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/pets-400-2x.png",
+      "bytes": 492388,
+      "sha256": "454d6ac6521bb4b1b29c73e938670c683437e1182513bbf87b3533cdc0724f2b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/results.json",
+      "bytes": 554028,
+      "sha256": "5ad7a7b39770596ace1b890c11e88d6d7eae4e61a4ad1adc1ef461ac7dd8bf65",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/results.json.gz",
+      "bytes": 29945,
+      "sha256": "75c9ff9ac30df7265cf31d93218a0a7e17c6fcd1ca55dc875c02ae4a2ce4953a",
+      "scope": "include"
+    },
+    {
+      "path": "home-final-built/savings-1440-1x.png",
+      "bytes": 1423446,
+      "sha256": "61d34f30ad35b50a2577108b22d4c04b5d07ccb13110abe67aa4acb8595354de",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/savings-1440-2x.png",
+      "bytes": 1492063,
+      "sha256": "a75d39311776bf96c0c3ff7d7a103009b9501e8f1c4052e85078a0d2a6fe8d9a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/savings-320-1x.png",
+      "bytes": 456133,
+      "sha256": "2bdf4dc43c7dac0cb4099172d9da14ab335d62c76c8c2c1dda1cb382ac781298",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/savings-320-2x.png",
+      "bytes": 416660,
+      "sha256": "1d07c3a179329c79215922b7bfd32752a5fe7fff38f8c9cc15f2570fcad7dd88",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/savings-400-1x.png",
+      "bytes": 508108,
+      "sha256": "31733cd029dc96c4f823d2a73192aa7c3d13e790ccfe748c37c6e8b8ad6901c7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/savings-400-2x.png",
+      "bytes": 490186,
+      "sha256": "3ca9cf83cb20f4f4484504913d764e604413f6b6936ef30e8a96d54e0e0c35ae",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-final-built/server.log",
+      "bytes": 40,
+      "sha256": "694a8cc2d3f288dc27a1b10f562168ab6514571425783848649803ccee70d3f4",
+      "scope": "include"
+    },
+    {
+      "path": "home-final-built.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-final-built.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-icon-failure/first-house-320.png",
+      "bytes": 511241,
+      "sha256": "b62725c57cb1b52ee45f2ffabe0af69599fcb9d5704be175e1a661cbc3953e02",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-icon-failure/fresh-town-320.png",
+      "bytes": 410997,
+      "sha256": "0da0096312a97071548536c1a09318379cf320ee7a021eb0b9abf42e7b19176a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-icon-failure/home-320-1x.png",
+      "bytes": 732472,
+      "sha256": "1f6c2f584c90578060996ffd175341a06329f52c59cfddca5d4c60e390b3f094",
+      "scope": "include"
+    },
+    {
+      "path": "home-icon-failure/results.json",
+      "bytes": 50408,
+      "sha256": "2bb4c9a906fd125150ff7126edd442b6166e2decac31dd1cc7127a26c10ee065",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-icon-failure/results.json.gz",
+      "bytes": 5821,
+      "sha256": "0037af0b24c706dc5292b17668dff901995eb88832ecb1c8524f62fa6ceb672f",
+      "scope": "include"
+    },
+    {
+      "path": "home-icon-failure/server.log",
+      "bytes": 40,
+      "sha256": "616f807e3ac4ff62e7fe59aa01cfd3676d570a73e2f85c271d30b97df250282f",
+      "scope": "include"
+    },
+    {
+      "path": "home-icon-failure.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-icon-failure.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-lint.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-lint.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone-gpu/results.json",
+      "bytes": 26130,
+      "sha256": "60bc8f1bb15e9ec11652c1ae6575df88b320422f95cdf61fd91f1eeedc4a4dc7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-gpu/results.json.gz",
+      "bytes": 9115,
+      "sha256": "d578dbc9e05d7f024f1df034fbbc7107a3343d87fe540053676320079f025418",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "748358988791ebc6b86250bf8fd31440df79c861a8f8d3b799336305a312ab22",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/bank-320-1x.png",
+      "bytes": 449576,
+      "sha256": "4fe8271de3d58a4b11efcd959d3b3586c21653376de419caff46bd8be34b9d6d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/bank-320-2x.png",
+      "bytes": 414585,
+      "sha256": "064066b2fec0b0b71b3612e44cd900c451332ff7cf11aa64666eb842cd1948c8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/bank-400-1x.png",
+      "bytes": 515845,
+      "sha256": "4873577c9ca5555cf141494b63ce6d274254566da8b444b5c1714698f8ffcdb2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/bank-400-2x.png",
+      "bytes": 465980,
+      "sha256": "90d6b619954d117eb622f5809c6324952e70e3d7dc3d828d0a9ae8f38fc407f9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/camp-320-1x.png",
+      "bytes": 737955,
+      "sha256": "c8317f2b2aff4d3e53ab257ef5e8886aa51541d4295cb7f2d49ea95bdef0ee1c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/camp-320-2x.png",
+      "bytes": 731215,
+      "sha256": "4831a8f08d057c013f12842c34e2ec38f12391e28a5e900607309c5b490349b6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/camp-400-1x.png",
+      "bytes": 812267,
+      "sha256": "0c3927e0b52a00633f613a635b71c10d27ea0f6fcc91323be59e740c9b674cec",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/camp-400-2x.png",
+      "bytes": 796067,
+      "sha256": "5a15e97d1fe1936aebbffbff7805d2cae550b0da171cd83cba5efaa28f4511fe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/hero-companions-320-1x.png",
+      "bytes": 427372,
+      "sha256": "285cb3f45554a6116f2721d6fb062cd64f9c92544612bcd79d73746385f52b9f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/hero-companions-320-2x.png",
+      "bytes": 372365,
+      "sha256": "4191a1f4102812093ba5952d2182392a077226508afbbeebcd9726cb26c56f08",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/hero-companions-400-1x.png",
+      "bytes": 494917,
+      "sha256": "f0d283c0089924f934ffdf3915348573519849c1277e62e071dc9b50f0f2e2a4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/hero-companions-400-2x.png",
+      "bytes": 453790,
+      "sha256": "6ae2de68bc52ae2068bb4d8d1f161b26e56956415520ae85b1df5c7bf2f5536b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/orders-320-1x.png",
+      "bytes": 407707,
+      "sha256": "fbf4d28c135c2973ebff02caca77e1646896b764b63a599c9cd4e4374c48219b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/orders-320-2x.png",
+      "bytes": 372437,
+      "sha256": "293d52897b2365c2e7d3631152443f6aead3407c9866008864f8ec28f3608e78",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/orders-400-1x.png",
+      "bytes": 480390,
+      "sha256": "e2b8a5a7b227ed8144958d8adccb76c845d8208afe7df9273ae65a4dc73d2f8b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/orders-400-2x.png",
+      "bytes": 457841,
+      "sha256": "585ca202da14b1307ef534d4a56fbd8ab6594038fdc230b883b721d9b8146fd3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/results.json",
+      "bytes": 683803,
+      "sha256": "3faa5d58fc82f60b9a4cad8ad64e2e1eba9a8dfb08881741f85e800b9607567d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2-gpu/results.json.gz",
+      "bytes": 44128,
+      "sha256": "bac3930acaa6aaaf978ce806099cc5f840f1806bc114277d3fadc96b511b39c3",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone-v2-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "75571e30787a61b568da1766defff507d75d0360fb941e4e775c500b6103251a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-milestone-v2.err",
+      "bytes": 6206,
+      "sha256": "01e8ec7b18c9ae97309f592fd63683c3345862790b18d4ea3ad7438bbf7219f1",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone-v2.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone.err",
+      "bytes": 238,
+      "sha256": "5a36b041dc22b8331c5e7878785886482e3205094233eafecfacf0574ea0dbf6",
+      "scope": "include"
+    },
+    {
+      "path": "home-milestone.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/earned-apprentice-owned-320.game.json.gz",
+      "bytes": 154315,
+      "sha256": "0f3aeee3e20677b7c1e7e7a6b626fb421d2df475bf51177cdc5aaa0fca196bbf",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/earned-apprentice-owned-400.game.json.gz",
+      "bytes": 154315,
+      "sha256": "0f3aeee3e20677b7c1e7e7a6b626fb421d2df475bf51177cdc5aaa0fca196bbf",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/first-house-320.png",
+      "bytes": 511136,
+      "sha256": "508a4ee1028e1cbd2c4172e611208ba1c641a2cb30903b49c7043ad8fd1db57b",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/first-house-400.png",
+      "bytes": 603389,
+      "sha256": "b10d04983e0f5947ab781337463d33e5d03da31946163f4002dbc77ad8b69777",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/fresh-town-320.png",
+      "bytes": 413018,
+      "sha256": "465a479784da4cb54ed46ab48418786e3d73d760f1200a7ee3d07c63ba8c1981",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/fresh-town-400.png",
+      "bytes": 444346,
+      "sha256": "d2a743915dee65ec0491691b6c91d216f2790f82dc5c0800f27dace1a40d5005",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/home-320-1x.png",
+      "bytes": 765499,
+      "sha256": "26b6eef736643ed521214f75d9b41a1b24b69bef6e51af2f068fb182cfb4b776",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/home-400-1x.png",
+      "bytes": 840337,
+      "sha256": "599c07fd166ff82a28ae1935ed37b706e83fb06641595ca9d8cdcb8c6655ee7b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/owned-apprentice-orders-320-1x.png",
+      "bytes": 419196,
+      "sha256": "e272b0e9fe40408a946bbfb392d92adf41e706b3e6ebd72534c0834de3819c61",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/owned-apprentice-orders-320-2x.png",
+      "bytes": 377952,
+      "sha256": "286eb7b59a748cd1f3d69fa1f931ccd3153408a6be9c5028364a41554dfedb08",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/owned-apprentice-orders-400-1x.png",
+      "bytes": 500503,
+      "sha256": "179d9e1a9846ae7efdcf8152df9f770b4f36b347fd54342cf607532a3944967f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/owned-apprentice-orders-400-2x.png",
+      "bytes": 471969,
+      "sha256": "0241decfebecdcd488d9a2e66a0adfb953800782627c3161924cc096fd69cee8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/results.json",
+      "bytes": 130895,
+      "sha256": "3606313d7799a42cd534f50c0fae2d4d7911861199213984ca8a23f263368d25",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-owned-orders/results.json.gz",
+      "bytes": 11093,
+      "sha256": "790e38ffc6d25c0e4e25920410f3d3dd60b73a69cd215cf8c82a8e97c9e68e4f",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders/server.log",
+      "bytes": 40,
+      "sha256": "0c91bc3c4845d01cf87012bdb06091097ff208b8f249e63c496a6226ba6a58c5",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-owned-orders.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-settled-final/first-house-1440.png",
+      "bytes": 1225313,
+      "sha256": "f8ba5d796f6701fae5ff5bc75a68fbecf4dd54d0b8b83cfdf8f0afa576582eb9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/first-house-320.png",
+      "bytes": 513214,
+      "sha256": "f21ab8660370e5cba45b04b898f1a565c1535644332e2fef15e51843db884cae",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/first-house-400.png",
+      "bytes": 599191,
+      "sha256": "6f3a6179b0a61dcd21124231e90ed573688aae9eecf0076d1e37c37903cbbc3c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/fresh-town-1440.png",
+      "bytes": 937692,
+      "sha256": "69bb5d9598233450a55531d0812b90f58fb1f6602ab24c154401c8a5f582144b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/fresh-town-320.png",
+      "bytes": 413175,
+      "sha256": "8211a7205daa0dd7ad3494412dc4e391cb4c1d4aeda937c55d31fbdf7d810240",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/fresh-town-400.png",
+      "bytes": 449646,
+      "sha256": "76dfd0e4f0fd9b675e4346326e7c1b29656a9fd13efa9a892422b6ce2c31508a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-1440-1x.png",
+      "bytes": 2091725,
+      "sha256": "d545b6ea106d4e87c3b2d76ea9fa878911214a72ea88338f6d320b9bc2f50a6d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-1440-2x.png",
+      "bytes": 2337605,
+      "sha256": "b958e79841f3e37be960bc419412f09e06323f31b5b18b30fb3d2596bc7d7f71",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-320-1x.png",
+      "bytes": 761090,
+      "sha256": "c2ef6d490c2014374dd83ca71f1ac923d89accd741a7fb7685ea9660cc0a6b4f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-320-2x.png",
+      "bytes": 734732,
+      "sha256": "6bd8b9eace100cd36676825a55750a1783fafc4f8364184fcd45a4a253f70651",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-400-1x.png",
+      "bytes": 827116,
+      "sha256": "fc60db492335f70e111bdb38f15dbbd3058f36c72b16da18cc08b1cb255bab96",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/home-400-2x.png",
+      "bytes": 815603,
+      "sha256": "803fd0cd8400192ca61442ff282a752cd3be93fd640529882dc553cdff1516aa",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/results.json",
+      "bytes": 159326,
+      "sha256": "5d5a985bc2ae36e3228a44b4ce7812030ebb5aaaa39da003a17a8d216938017a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-settled-final/results.json.gz",
+      "bytes": 9110,
+      "sha256": "3b835d8d86e6acde9e19e43698e6fb5764d81e55d650440290578f32971a6646",
+      "scope": "include"
+    },
+    {
+      "path": "home-settled-final/server.log",
+      "bytes": 40,
+      "sha256": "4c8fc153951fa0cad84ad2faf89709b988c5823f868c4509cd3f04eceb237e1f",
+      "scope": "include"
+    },
+    {
+      "path": "home-settled-final.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-settled-final.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97-repair-state.json",
+      "bytes": 1772,
+      "sha256": "84b4b0c37c1fb574ba8f159241291cc102350df38d7e5565e292a2e638d2e57b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "home-targeted97-repair-state.json.gz",
+      "bytes": 607,
+      "sha256": "26877ee797993a38e6f11eb4c2f976c4fa14e9dcad8bdd1e254147e635cde7c9",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97-repair-v2.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97-repair-v2.out",
+      "bytes": 1092,
+      "sha256": "7b8d1c3c46d910b40320db82afb80fae9fcf39636ec74941d184a087311ff84c",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97-repair.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97-repair.out",
+      "bytes": 621,
+      "sha256": "96006856f18e37139602055edaa69f230a16eee839b4cea3a30680e3271ad845",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-targeted97.out",
+      "bytes": 1457,
+      "sha256": "3ee79d7b0f1f5759fe82fd4f60aefdd4fa61b6a5da31b7e9f659d544b3410952",
+      "scope": "include"
+    },
+    {
+      "path": "home-tsc.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home-tsc.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "home.mjs",
+      "bytes": 20552,
+      "sha256": "038559a7fcc899206215479850d3e4c8c2105e372099af6b4249aad7aa868c29",
+      "scope": "include"
+    },
+    {
+      "path": "initial-unsettled-dom/results.json",
+      "bytes": 2175356,
+      "sha256": "1da2eb76a16e18b3af3be9282685df021226752a491bea4a98ef7c4d3b9de0fa",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "initial-unsettled-dom/results.json.gz",
+      "bytes": 75147,
+      "sha256": "fd85188aada2fa8d2147897d5f2ee85b5d476e6a179561554b35c0f189ddc009",
+      "scope": "include"
+    },
+    {
+      "path": "initial-unsettled-dom/vite.log",
+      "bytes": 450,
+      "sha256": "68b624ae37d97e6e2339b718c9e36a96d014ea37b8aa6690d8f61525062c8e06",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "inventory.mjs",
+      "bytes": 6969,
+      "sha256": "a887978b7fefa6b89db418b3d915700e7ed8969adc9436e35e6b6b17890d70b2",
+      "scope": "include"
+    },
+    {
+      "path": "lint.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "lint.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "menu-materials-failure.json",
+      "bytes": 157,
+      "sha256": "36430af6cdd45a390c9ff23f9ce15d097f2f23bda3c18d57cbfced082774e089",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "menu-materials-failure.json.gz",
+      "bytes": 146,
+      "sha256": "37b7ec7707506f93f0c8892a6488c10c964f70116e47fcd6c54c15bbdfbd3aca",
+      "scope": "include"
+    },
+    {
+      "path": "probe-settled.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "probe-settled.out",
+      "bytes": 23,
+      "sha256": "cd59808a75ffd0240016b920afa1a470b17b2f59024bd8e95bae2483d7e64f1a",
+      "scope": "include"
+    },
+    {
+      "path": "probe.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "probe.mjs",
+      "bytes": 15226,
+      "sha256": "56bc760390f8142bb0501eda4216034a5f2904e5bba540c84c9fead459d3418a",
+      "scope": "include"
+    },
+    {
+      "path": "probe.out",
+      "bytes": 23,
+      "sha256": "cd59808a75ffd0240016b920afa1a470b17b2f59024bd8e95bae2483d7e64f1a",
+      "scope": "include"
+    },
+    {
+      "path": "remaining.md",
+      "bytes": 10231,
+      "sha256": "f322264554821ecbcaaff00bb7469eac944442a19c68e843dd3b2ed5240d9f30",
+      "scope": "include"
+    },
+    {
+      "path": "return-pick-after/first-house-1440.png",
+      "bytes": 1236426,
+      "sha256": "9cbf38f5a90b6dc6b59f0b2a5a206cdcc5c153e7734a6e512afda9feb689cf87",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/first-house-320.png",
+      "bytes": 518979,
+      "sha256": "0fcf1e91ec6004809d9cbfeb7941bea603164568e457fa87fd0c6db0e3904fe3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/fresh-town-1440.png",
+      "bytes": 938668,
+      "sha256": "5016e4799ecd0edd1ce27b4a5865d5d1d005dc5a326047cde0115bfbb135f325",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/fresh-town-320.png",
+      "bytes": 411728,
+      "sha256": "25787df238009a5f408254619cfcc6ff6d6808e30071e98fb4cf16ec77d2b0bd",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/results.json",
+      "bytes": 38854,
+      "sha256": "4d3707d70112ecdfacf303cb1b33c5c514fd48adddea05d4d83e37579740343d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/results.json.gz",
+      "bytes": 4827,
+      "sha256": "f0bc567e9d7cd192f69eead35e30825acc1863472198b1d6fba5c92ca13093f6",
+      "scope": "include"
+    },
+    {
+      "path": "return-pick-after/return-pick-1440-1x.png",
+      "bytes": 1436102,
+      "sha256": "4bba02653ae47abe1e27a5962fafd65d36abe23483b882d12877c9ddd19ad0eb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/return-pick-320-1x.png",
+      "bytes": 439901,
+      "sha256": "cbea7da25fa254c9c865df5fecea5d7da449615f305aac24f7cb8b37e21af1e9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/return-pick-320-2x.png",
+      "bytes": 391151,
+      "sha256": "3913cd8e0c4738262e49305bd9bd0d0915ae1f7f2bf529136e44d448c6c2fb5f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "return-pick-after/server.log",
+      "bytes": 40,
+      "sha256": "64819ddd1524a87a3377a28f04fe7421e6ffc0aa8bec9ce23f00eb2a1b33d976",
+      "scope": "include"
+    },
+    {
+      "path": "return-pick-after.err",
+      "bytes": 2919,
+      "sha256": "48f7753b9c7482d65f42e32a52df7554b99e0cf7fd082bc04544190c029279b2",
+      "scope": "include"
+    },
+    {
+      "path": "return-pick-after.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "source-ownership.md",
+      "bytes": 1011,
+      "sha256": "0fc64382335a16138dde62e491df0769bd0f33de8c2a23978dbaa2e86ffa67cf",
+      "scope": "include"
+    },
+    {
+      "path": "source-routes-before-children.json",
+      "bytes": 101963,
+      "sha256": "92fbdd946c90fb0cfbc838fd286ac0992bfb74ceb19198d6bd0c361bae9adb57",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "source-routes-before-children.json.gz",
+      "bytes": 11507,
+      "sha256": "d6046649cd441662623af17fc63027f9f15955b09509c86b942cd2d23b746bef",
+      "scope": "include"
+    },
+    {
+      "path": "source-routes.json",
+      "bytes": 103360,
+      "sha256": "5bfffecaeef0549699c7a922af0fffebe51f8ac00940600cb509b7fcb059bec7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "source-routes.json.gz",
+      "bytes": 11444,
+      "sha256": "63dffaacc79d65837d78d03046e8d3017a285d6e8660aa06c599eea03abb1f20",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-help-diagnostic/1440-forge-info.png",
+      "bytes": 828353,
+      "sha256": "412c2c200212272636087f627db17ba97de54757ad4897f6d7b620be106f838f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-help-diagnostic/1440-ready-house.png",
+      "bytes": 518108,
+      "sha256": "ea5efa2c4f0e6ba2e22371e817af19b0f0596a980454aa00b3e58d3b53a14030",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-help-diagnostic/400-forge-info.png",
+      "bytes": 422608,
+      "sha256": "ea82b311aa09e809cec12d1f4a1ca33777ac6a84b9e510af232fa3127f6fcd77",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-help-diagnostic/400-ready-house.png",
+      "bytes": 308485,
+      "sha256": "a01c619f15bd5ae23a44668a96d67e66fdca7bc332a6f5def56a2b3efe24e79a",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-help-diagnostic-state.json",
+      "bytes": 1069,
+      "sha256": "b5cbb28685ac933ee227fe4733ef7a233fa3a9b95c85f5b99670c40ee3f3b566",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-help-diagnostic-state.json.gz",
+      "bytes": 452,
+      "sha256": "8f01696d76e6707addf032342f3ae2ae2fb593a7e15763392ed7f66e54570cb1",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-help-diagnostic.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-help-diagnostic.out",
+      "bytes": 268,
+      "sha256": "1c0398cd9951444eaa813cd7673a18dc54228e8b68dc3de843f06bd962d1af18",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-home.mjs",
+      "bytes": 7277,
+      "sha256": "4c5ee7dd5cd1a267098f5795e48131d8221b5488b1216a22be4321aa9126cadc",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary/forge-hover-1440.png",
+      "bytes": 1321973,
+      "sha256": "a5b40fe0ba05a43bf30a5886237bba4f6f8460b44a3cfd07340b65c14dd4c0b5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/forge-hover-320.png",
+      "bytes": 418018,
+      "sha256": "8e32c841dafed3cd95156952b635370127ade62ae52d13b6f47d91e6f8ab31dc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/forge-hover-400.png",
+      "bytes": 520537,
+      "sha256": "90cfc7bdde60f14f1371501ec30e7a9b55d41efa6184337812078f1abdf13e57",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-1440-1x.png",
+      "bytes": 1184394,
+      "sha256": "96ea2bb620b1e6f7d7c743fa6a58929a837c2493b6cf589d342bfe89566852cb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-1440-2x.png",
+      "bytes": 1345291,
+      "sha256": "5fd1464a5dec41702920d2635029dfbd52749eb99375f58b5022c2f7b48161e5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-320-1x.png",
+      "bytes": 446379,
+      "sha256": "5c1e37de761555022f5653a7cadb634b6aa550595ca04e15ca91a2d6643ef239",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-320-2x.png",
+      "bytes": 438061,
+      "sha256": "e037c8735639b30c721729fe44b39efcd9aa5acf097a2b34b641630d4c83a6e7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-400-1x.png",
+      "bytes": 520841,
+      "sha256": "1b03dee373604a3b0ae3a878cd588d74934d5a3b904377be0a6404c7d19b52e5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/home-400-2x.png",
+      "bytes": 520383,
+      "sha256": "2227871a6b5f9c155570e20a5f60ebb62027e29a86e14bc36a87db304e1106e7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/results.json",
+      "bytes": 107672,
+      "sha256": "e1a0bb02398b184705754a639ed67888f33428365073d3c9336b5d74e626de75",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary/results.json.gz",
+      "bytes": 13283,
+      "sha256": "35885df60ddad06f56553c2b3a7c988751960b843ede1065e243b0b05823ad42",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary/vite.log",
+      "bytes": 450,
+      "sha256": "805e3db8083a9220fdbf307ef608e95dec94c662db0ba0afd131076543e4d059",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary-final/forge-hover-1440.png",
+      "bytes": 1316314,
+      "sha256": "582189b53d1606c0e23a803898c2e7e7bb14bc12aae06fb5d645b3b438cb851e",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/forge-hover-320.png",
+      "bytes": 417710,
+      "sha256": "95b7998c94e8391d697d710b99fb1d4fbc6ca8d330f062ed1b9241d95de6d82d",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/forge-hover-400.png",
+      "bytes": 519337,
+      "sha256": "964438f9c5556cf1520cf3b6b2ff5d435bb9914b0c4e453d04ddea5542154b9f",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-1440-1x.png",
+      "bytes": 1179348,
+      "sha256": "3e78050ce47b7fd22d426b5dd2229e2ed5fbec180131ece5fc9abd10abd32884",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-1440-2x.png",
+      "bytes": 1264790,
+      "sha256": "fb91e77459bfd1e89be0355839de2d87e4480cf1d01b47ce8725dd0db8556864",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-320-1x.png",
+      "bytes": 448303,
+      "sha256": "1d7df1e9d1ad51a0e117fe1afb04caa81d36c0b8ec81f7cecf33ada2f71b43a5",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-320-2x.png",
+      "bytes": 432204,
+      "sha256": "d3a981196d793d310880e49cfafbb19ca64adbff5d32de4c6d10a5eb49ef8917",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-400-1x.png",
+      "bytes": 519448,
+      "sha256": "fbd1d085a8229e9784359d2406a59165275f7b159d1f36323a19a6bbc1b187d9",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/home-400-2x.png",
+      "bytes": 518930,
+      "sha256": "248995bb65e9f6e89cedd25b94faf677633db58fd1685627c2babbc85cc2046e",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/results.json",
+      "bytes": 108152,
+      "sha256": "cfb52a634ad37e859fb7df8938ecbc4a7f6992e997ce711d80da3d3e8b32391f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary-final/results.json.gz",
+      "bytes": 13485,
+      "sha256": "30b6b471f086c29749ff9aab0cd65a27813a74e570d29d4e3bc28a15fcda113b",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final/vite.log",
+      "bytes": 450,
+      "sha256": "ec3ece1bcf08aecb93218c0f5d8389e11fd4f02c0dc7ca9f36f7ada65a8d207a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-primary-final.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-final.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-retry.err",
+      "bytes": 762,
+      "sha256": "c8106067fca3c1c0f6637353b5b8d382d7268be953ff785b2eb0b265f7f91282",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-retry.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-run.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary-run.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary.err",
+      "bytes": 597,
+      "sha256": "ab6cd02a9591585dc4da8182179f563191a5d7da30c6547a5d20a14048e62b81",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-primary.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair-state.json",
+      "bytes": 1128,
+      "sha256": "3e716aa3f5ef32a4e34c8dfe912386557ad4f60d300d0d656711ffbdcf28ea04",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-targeted-repair-state.json.gz",
+      "bytes": 501,
+      "sha256": "7ae2b244d6bf96c3e8dc1d0f638d731914e64f818254cd3a455443001736e185",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair-v2-state.json",
+      "bytes": 1128,
+      "sha256": "6623c08d5c6acd9b37887c4ee72ed405a67433ac7b029cdf9700402f29223dc5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-targeted-repair-v2-state.json.gz",
+      "bytes": 503,
+      "sha256": "cce7ebe8a730a1a3fc6ed7dbd561a5d17343bdbb24e867f6d75d459809203535",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair-v2.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair-v2.out",
+      "bytes": 331,
+      "sha256": "98e0e9f34113d86b973789e234b837dc381ace4d93606f4a256e34d201314487",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-repair.out",
+      "bytes": 332,
+      "sha256": "51d51159b0b6a0794c48a10bf910994d27df81e652852efcca2e8652971b373c",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted-state.json",
+      "bytes": 2814,
+      "sha256": "d3af53f480ef9290bcc925e9fb1cffa9d2b6ea824ad1188da990a07458e95639",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "sprite-targeted-state.json.gz",
+      "bytes": 645,
+      "sha256": "13f688933735c7d88efe5ac412900e3827404c67a3bb6d0ce7da040e54098675",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "sprite-targeted.out",
+      "bytes": 595,
+      "sha256": "fd35c3da856611ea01f4078ae5200c89fdead24e1719809b1dac53fd0721dcda",
+      "scope": "include"
+    },
+    {
+      "path": "targeted-v2-state.json",
+      "bytes": 2232,
+      "sha256": "1c319f5a88963de177f81f3badfd7a521d1e66420656038aaa1b5f39fbe58a65",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "targeted-v2-state.json.gz",
+      "bytes": 604,
+      "sha256": "6529e2126dae0119f608644d7cc5881dbd3535ea615904cebb5bee517cf0f07d",
+      "scope": "include"
+    },
+    {
+      "path": "targeted-v2.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "targeted-v2.out",
+      "bytes": 1557,
+      "sha256": "62d9e902c0ce1e5150e8b11e19a8b94b372130f55f64adb8f53451293afba88b",
+      "scope": "include"
+    },
+    {
+      "path": "targeted.err",
+      "bytes": 554,
+      "sha256": "63e891a7cec9db823951c850d27110ba7ec92f639f89f35be79e7741900a1d5c",
+      "scope": "include"
+    },
+    {
+      "path": "targeted.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "tasks-expanded-gpu/camp-1440-1x.png",
+      "bytes": 2056850,
+      "sha256": "26a7e1bc7544159bbdcf877b4f9c85cde84b91871878dfcc93f164502c2bda92",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "tasks-expanded-gpu/camp-1440-2x.png",
+      "bytes": 2381615,
+      "sha256": "6c942dffd80f54df2f0e2ec2cec3ea5816f8c73a1ff2a2cf56b01657cd2b132e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "tasks-expanded-gpu/camp-320-1x.png",
+      "bytes": 653831,
+      "sha256": "190161a6b1aedc748c1810e582a6cf4bd67a10d532bf6104bc497bbd2b30964d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "tasks-expanded-gpu/camp-320-2x.png",
+      "bytes": 673889,
+      "sha256": "e873ba401ca466771f15bb7c2246a75392dadaa67b5c78005b7264e2803da37e",
+      "scope": "include"
+    },
+    {
+      "path": "tasks-expanded-gpu/results.json",
+      "bytes": 374668,
+      "sha256": "1f294753afcdd2472f7ee2f6802cb4737625fff3151c1c86959849a330d09b58",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "tasks-expanded-gpu/results.json.gz",
+      "bytes": 28307,
+      "sha256": "f411f29b96fe2cfdbc17798c17960f4fceaee4309737ed72f54b4e199f5c1f3e",
+      "scope": "include"
+    },
+    {
+      "path": "tasks-expanded-gpu/vite.log",
+      "bytes": 450,
+      "sha256": "a97e297fb067b7289813d2853dcf739f9696d3a022df013b7446ff4f3dc4da9f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "tasks-expanded.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "tasks-expanded.out",
+      "bytes": 22,
+      "sha256": "8a8919889f3feec86bb52ac2d6bc30a58236db4a6a2bf005b749f385363c0edb",
+      "scope": "include"
+    },
+    {
+      "path": "tsc.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "tsc.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    }
+  ],
+  "includedBytes": 23665495,
+  "localBytes": 201902424
+}

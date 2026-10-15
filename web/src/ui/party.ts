@@ -36,16 +36,12 @@ export function renderParty(
     const all = [...L.party, ...L.kennel];
     // Cut 17: `ledger` and `chronicle` are console tiles now (the reveal ladder's 5th heir)
     if (!all.length && !L.eggs.length) {
-      head.append(
-        /* copy:label */ "companions",
-        " ",
-        h("span", { class: "num dim" }, `0/${slots}`),
-      );
+      head.append(/* copy:label */ "Pets", " ", h("span", { class: "num dim" }, `0/${slots}`));
       return;
     }
     const canBreed = L.kennel.filter((c) => c.level >= 2).length >= 2;
     head.append(
-      /* copy:label */ "companions",
+      /* copy:label */ "Pets",
       " ",
       h("span", { class: "num dim" }, `${L.party.length}/${slots}`),
       canBreed

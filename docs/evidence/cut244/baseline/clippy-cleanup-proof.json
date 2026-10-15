@@ -1,0 +1,65 @@
+{
+  "scope": "Remove three empty branches containing only pure bool/string comparisons, plus orphaned retired comments. No action, assignment, condition result or game behavior changes.",
+  "files": [
+    {
+      "file": "crates/idlever-core/src/engine.rs",
+      "beforeSha256": "036cb5cdba4edc342aae92b0e431c1ceb94ba6a03b2e03298e689575a604ad40",
+      "afterSha256": "137a8efa4fb0b8545afc889c5f67a5e722f866bc0d7c6a6cf99e5a26f68edcb8",
+      "beforeArchive": "docs/evidence/cut244/baseline/engine-before-clippy.rs.gz",
+      "diff": [
+        "--- \n",
+        "+++ \n",
+        "@@ -5971,6 +5971,4 @@\n",
+        "             self.settle_renown(t);",
+        "         }",
+        "-        if self.sim {",
+        "-            }",
+        "         // Cut 13 \u00a73: what this run used to no effect is not rebought for the next.",
+        "         self.lineage.last_wasted = run.wasted_kinds.clone();",
+        "@@ -7042,6 +7040,4 @@\n",
+        " }",
+        " ",
+        "-/// Insurance premium: 25% of salvage value \u00d710 (Melvor style).",
+        "-",
+        " /// Renown value of a kill (Addendum D): scaled by the monster's toughness.",
+        " pub fn kill_value(kind: &str) -> u32 {"
+      ]
+    },
+    {
+      "file": "crates/idlever-core/src/forecast.rs",
+      "beforeSha256": "fe632bc5f63e197536cb64e660fcb89adef13d805e770aa6d6aaaf8f1df0e143",
+      "afterSha256": "472b0b4baf97d1fee9c99041615825f1d89e1d8139526a8b647c90748e3327a2",
+      "beforeArchive": "docs/evidence/cut244/baseline/forecast-before-clippy.rs.gz",
+      "diff": [
+        "--- \n",
+        "+++ \n",
+        "@@ -1458,6 +1458,4 @@\n",
+        "         let before = g.lineage.clone();",
+        "         take_part(kind, &mut g.lineage, now);",
+        "-        if kind == \"kit\" || kind == \"heir\" {",
+        "-        }",
+        "         if lineage_key(&g) == key0 {",
+        "             continue;"
+      ]
+    },
+    {
+      "file": "crates/idlever-core/examples/dayplayer.rs",
+      "beforeSha256": "c1353aab2f1f9f3844c47506a102788a32c1748c3d1f92518d1193b76355b825",
+      "afterSha256": "668257306b68671420601f61988de91e9947c8324296bad4ec56e37549ad1497",
+      "beforeArchive": "docs/evidence/cut244/baseline/dayplayer-before-clippy.rs.gz",
+      "diff": [
+        "--- \n",
+        "+++ \n",
+        "@@ -1447,8 +1447,4 @@\n",
+        "                 }",
+        "             }",
+        "-            // a vault brought along (a human sends the heir out with what it has; every bot)",
+        "-            if present {",
+        "-",
+        "-            }",
+        "             note_nodes(g, out, hours_now);",
+        "             if present {"
+      ]
+    }
+  ]
+}

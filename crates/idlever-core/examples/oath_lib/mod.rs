@@ -58,7 +58,6 @@ pub fn lineage(set: &RuleSet, seed: u64) -> Game {
     crate::lever::fill_shelf(&mut g);
     let _ = idlever_core::offline::run_offline_counts(&mut g, OATH_HOURS * 3600);
     g.run = None;
-    g.pending_exit = None;
     g.deaths.clear();
     g.lineage.gold = 0;
     crate::lever::fill_shelf(&mut g);

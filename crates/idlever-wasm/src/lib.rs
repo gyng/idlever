@@ -66,13 +66,6 @@ impl Game {
         self.inner.set_rules(set).map_err(err)
     }
 
-    /// `itemIds`: JSON array of vault item ids to bring.
-    pub fn loadout(&mut self, item_ids: &str) -> Result<(), JsError> {
-        let v = ids(item_ids)?;
-        self.inner.loadout(v);
-        Ok(())
-    }
-
     pub fn forecast(&self) -> String {
         js(&self.inner.forecast())
     }
@@ -260,45 +253,6 @@ impl Game {
     #[wasm_bindgen(js_name = supplyCatalogue)]
     pub fn supply_catalogue(&self) -> String {
         js(&self.inner.supply_catalogue())
-    }
-
-    // ---- Addendum D: vault keep at exit
-
-    /// `ids`: JSON array of item ids from `StepResult.exit_pending.items` to vault.
-    /// QA on 23ed91f: resolve the pending exit by the keep preference and owned automations
-    /// (`ExitPending.auto_keep`, replacing a weaker vault item of the same category when the
-    /// vault is full) — the skipped keep sheet's call (`keep([])` keeps nothing).
-    #[wasm_bindgen(js_name = autoKeep)]
-    pub fn auto_keep(&mut self) -> String {
-        self.inner.auto_keep();
-        js(&self.inner.lineage())
-    }
-
-    pub fn keep(&mut self, ids_json: &str) -> Result<String, JsError> {
-        let v = ids(ids_json)?;
-        let receipt = self.inner.keep_with_receipt(v).map_err(err)?;
-        let mut lineage = self.inner.lineage();
-        lineage.keep_salvaged = Some(receipt);
-        Ok(js(&lineage))
-    }
-
-    /// QA on 308f045: take an item out of the vault — salvaged at a bank's share (the lineage).
-    #[wasm_bindgen(js_name = sellVault)]
-    pub fn sell_vault(&mut self, id: u32) -> Result<String, JsError> {
-        self.inner.sell_vault(id).map_err(err)?;
-        Ok(js(&self.inner.lineage()))
-    }
-
-    /// Insure a vault item against loss on death (25% of salvage value ×10).
-    pub fn insure(&mut self, id: u32) -> Result<String, JsError> {
-        self.inner.insure(id).map_err(err)?;
-        Ok(js(&self.inner.lineage()))
-    }
-
-    #[wasm_bindgen(js_name = setKeepPref)]
-    pub fn set_keep_pref(&mut self, pref: &str) -> Result<String, JsError> {
-        self.inner.set_keep_pref(pref).map_err(err)?;
-        Ok(js(&self.inner.lineage()))
     }
 
     /// Hero looks: the heirs' cosmetic look (`male | female | cat`); returns the Lineage.

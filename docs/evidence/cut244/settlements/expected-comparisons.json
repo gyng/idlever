@@ -1,0 +1,31 @@
+[
+  {
+    "id": "bank-positive",
+    "exactExceptDeclaredTypedRemovals": true,
+    "removals": [],
+    "failures": []
+  },
+  {
+    "id": "death-secured-lost",
+    "exactExceptDeclaredTypedRemovals": true,
+    "removals": [],
+    "failures": []
+  },
+  {
+    "id": "death-fetched-lost",
+    "exactExceptDeclaredTypedRemovals": true,
+    "removals": [],
+    "failures": []
+  },
+  {
+    "id": "multihero-absence",
+    "exactExceptDeclaredTypedRemovals": true,
+    "removals": [
+      {
+        "path": "/report/found",
+        "before": []
+      }
+    ],
+    "failures": []
+  }
+]

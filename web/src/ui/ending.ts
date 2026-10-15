@@ -10,7 +10,6 @@ import { ascentStartOf } from "./descent"; // Cut 121 §1: an ascension starts m
 const CHALLENGES: Record<string, { name: string; detail: string }> = /* copy:ending */ {
   no_rest: { name: "No rest", detail: "No dungeon rest · half camp recovery" },
   short_list: { name: "Six rules", detail: "Up to six rules · tactic cards kept" },
-  bones_only: { name: "No vault", detail: "Saved gear cleared · vault unavailable" },
   hunted: { name: "Hunted", detail: "Previous nemesis · if still hostile · floor 3+" },
 };
 

@@ -25,7 +25,7 @@ fn main() {
                         break;
                     }
                 }
-                let _ = g.keep(Vec::new());
+
                 let text = g.save();
                 let mut h = Game::load(&text).unwrap();
                 runs.push(h.run_offline(secs).runs);

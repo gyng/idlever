@@ -1,0 +1,150 @@
+{
+  "scope": "Exact unchanged native baseline; client edits are independent. No production core/WASM edits.",
+  "sourcePin": "docs/evidence/cut244/source-before-retirement.json",
+  "sourceArchive": {
+    "path": "docs/evidence/cut244/native-wasm-before.tar.gz",
+    "sha256": "e6ae69b2a65e30b81db6654eeb5bae200b0e4bb37202f848157bccfcc7ee1325"
+  },
+  "binary": {
+    "retained": "target/cut244/storage_retirement_baseline-before",
+    "sha256": "25454109c09eef00477ef1cd3f9533f14c1951a8b6ad1cebf12f68ce2c2705e8"
+  },
+  "harness": {
+    "path": "crates/idlever-core/examples/storage_retirement_baseline.rs",
+    "sha256": "2f5dcecc0d51761603deb75075f859e1f8456b78b3ed367c2627b5b05d6c0172"
+  },
+  "inputs": {
+    "one": "Cut238 actual earned first-home-after-death seed1",
+    "three": "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz; current native load normalization retained"
+  },
+  "artifacts": [
+    {
+      "path": "docs/evidence/cut244/baseline/one/sliced.report.json",
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawSha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawBytes": 115087
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/summary.json",
+      "sha256": "a186d7be84c1ec8a688196af0b7744f3126dddbecca12d31273ccd71c851111e",
+      "rawSha256": "a186d7be84c1ec8a688196af0b7744f3126dddbecca12d31273ccd71c851111e",
+      "rawBytes": 330
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/sliced.session.json.gz",
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "rawSha256": "789f6d92d687e14c2226e79da048e98ecbd211f7b4dadeaa4cc31f18e51cf452",
+      "rawBytes": 717194
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/loaded.session.json.gz",
+      "sha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "rawSha256": "12186d1184bdf27e27c798d296dda219c8001d725230d7a5e793d138f8edecf3",
+      "rawBytes": 352675
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/whole.session.json.gz",
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "rawSha256": "789f6d92d687e14c2226e79da048e98ecbd211f7b4dadeaa4cc31f18e51cf452",
+      "rawBytes": 717194
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/prepared.session.json.gz",
+      "sha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "rawSha256": "12186d1184bdf27e27c798d296dda219c8001d725230d7a5e793d138f8edecf3",
+      "rawBytes": 352675
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/reloaded.report.json",
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawSha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawBytes": 115087
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/reloaded.session.json.gz",
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "rawSha256": "789f6d92d687e14c2226e79da048e98ecbd211f7b4dadeaa4cc31f18e51cf452",
+      "rawBytes": 717194
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/whole.report.json",
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawSha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "rawBytes": 115087
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/sliced.report.json",
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawSha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawBytes": 40743
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/summary.json",
+      "sha256": "8e383e189d112da613d98e18e72bbccbd9b996bd555738994d17d6c4a9e9bed6",
+      "rawSha256": "8e383e189d112da613d98e18e72bbccbd9b996bd555738994d17d6c4a9e9bed6",
+      "rawBytes": 184669
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/sliced.session.json.gz",
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "rawSha256": "263bd683e8e34aa520f65efd0c3905c721baab39ed7b197b852a09c68c3e756a",
+      "rawBytes": 1512790
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/loaded.session.json.gz",
+      "sha256": "ec024bc5496c67cfe6886de0c32134f47fd2eaac6cf9961241ce38d4a30e3ea8",
+      "rawSha256": "4c7b477e525c5219a60cab73ea74625cfc5f415638f00922e7734887b6252593",
+      "rawBytes": 1145849
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/whole.session.json.gz",
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "rawSha256": "263bd683e8e34aa520f65efd0c3905c721baab39ed7b197b852a09c68c3e756a",
+      "rawBytes": 1512790
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/prepared.session.json.gz",
+      "sha256": "ab5c47b9c3838e51ea402abe7041b5ccb68332499e76436618067a6fe4b7a855",
+      "rawSha256": "42de08da99d4e84abb73e02c7429020287cb592bb10409768cb52c408aaadbb0",
+      "rawBytes": 1502812
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/reloaded.report.json",
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawSha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawBytes": 40743
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/reloaded.session.json.gz",
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "rawSha256": "263bd683e8e34aa520f65efd0c3905c721baab39ed7b197b852a09c68c3e756a",
+      "rawBytes": 1512790
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/whole.report.json",
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawSha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "rawBytes": 40743
+    }
+  ],
+  "inputDetails": {
+    "one": {
+      "original": "docs/evidence/cut238/continuous-idle-16/seed-1/first-home-eligible-after-death.game.json.gz",
+      "originalGzipSha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "rawSha256": "12186d1184bdf27e27c798d296dda219c8001d725230d7a5e793d138f8edecf3",
+      "rawBytes": 352675,
+      "archive": "docs/evidence/cut244/baseline/one/input.session.json.gz",
+      "archiveGzipSha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "publicPreparation": "Current Session::load, select each actual resident, try_send only when run=None; exact public results in summary. No forced run clearing, grants or direct state edits."
+    },
+    "three": {
+      "original": "docs/evidence/cut219/ui-inputs-final/earned-three-residents.game.json.gz",
+      "originalGzipSha256": "c0e02be29790d3d8b57e7675a1f63ddee70b1888e174bc47b435a2fd6545adbf",
+      "rawSha256": "6959540bead8b2a6298313d9037d7e39266c347fb17d2b410fc599bdc271dc71",
+      "rawBytes": 1145780,
+      "archive": "docs/evidence/cut244/baseline/three/input.session.json.gz",
+      "archiveGzipSha256": "a0951292c6bbc3e99b6654015a6405c11f7f662e27f0f8273bf2d37a7cee59d0",
+      "publicPreparation": "Current Session::load, select each actual resident, try_send only when run=None; exact public results in summary. No forced run clearing, grants or direct state edits."
+    }
+  }
+}

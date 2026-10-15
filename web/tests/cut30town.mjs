@@ -1,17 +1,14 @@
 #!/usr/bin/env node
 // Cut 30 §3 client gates — the town hub (docs/CUT30.md Gates; docs/TOWN.md), on the fake engine (its Cut 30 stand-ins: blacksmith at the
 // first gold home, storehouse at the first find kept, kennel at the first tame, bank at a night's purse), headless at 400 × 800:
-//   day0     a fresh lineage's camp: ≤ 4 interactive surfaces in the well and the console (the mouth, the tent, the crate, the gem; Cut 30.5:
-//            + the `next` pill, 5); the
-//            next plot staked (shown, not a surface on day 0); every target ≥ 44 px with a hidden label
-//   build    each trigger builds its building (a target over it, its tile on the building bar, in build order), the next plot staked until
-//            the v1 set stands, then none; ≤ 3 markers; ≤ 12 elements above the fold at every stage; the staked plot's trigger on tap;
-//            a building's panel stands over it
+//   day0     sparse Home retains mouth, tent, roster and send; no unready future plot surfaces;
+//            every actual target ≥44px with a hidden label
+//   build    fake legacy milestone fixtures retain built-building targets/bar order; unready next goals remain on
+//            the engine wire without scaffold, tag, hit or help; ≤3 markers and ≤12 above-fold elements
 //   mouth    tapping the dungeon's mouth sends (the watch opens)
-//   checkin  a scripted IDLE check-in — the absence's report (harvest), one spend (the sword over the forge), send (the mouth) — ≤ 3 taps
-//   desk     the desktop frame (1440 × 900) shows the same scene in its centre, the targets over it
-// Cut 229: the storehouse is retired (Cut 201; the v1 set is forge · kennel · bank, stage 2's trigger builds nothing), the
-// staked plot is a read-only preview surface (0b39fd37), and the panel-over-building check moved to the kennel.
+//   checkin  owner Cut243 explicitly supersedes direct-marker purchase: report, Forge, purchase, Close, send — five actions
+//   desk     desktop shows the same scene and targets
+// Cut201 retires Storehouse. Cut243 progressive disclosure hides unready plots without changing their wire milestones.
 //
 //   node web/tests/cut30town.mjs [--shots dir] [--part=a,b]      (part of `pnpm test` in web/)
 import { execFileSync } from "node:child_process";
@@ -21,7 +18,9 @@ import { mkdirSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const shotsArg = process.argv.indexOf("--shots"),
   shots = shotsArg > 0 ? process.argv[shotsArg + 1] : null;
 const partArg = process.argv.find((a) => a.startsWith("--part="));
@@ -210,6 +209,11 @@ const town = () =>
       (t) => t.dataset.tile,
     ),
     next: window.__idlever.lineage.town?.next,
+    nextReady: window.__idlever.lineage.town?.next_ready,
+    nextTrigger: window.__idlever.lineage.town?.next_trigger,
+    lockedSurfaces: document.querySelectorAll(
+      '.town-hit[data-building="staked"], [data-building-info="staked"], .town-tag:not([hidden])',
+    ).length,
   }));
 
 try {
@@ -222,23 +226,25 @@ try {
     await shot("town-day0");
     const t = await town();
     const surf = await fold(":is(.well-wrap, .console)");
-    // Cut 30.5 (docs/AUTOMATION_TREE.md §3A): the `next` pill is day 0's fifth surface.
-    // Cut 229: the staked plot is a surface since 0b39fd37 ("Explain locked town plots on tap without changing game state"):
-    // a read-only preview (stage 2 proves the save is unchanged), so day 0 counts it — the mouth, the tent, the staked plot,
-    // the Heroes roster, the gem (the old `send` text is the gem's `Delve` now) — one more than Cut 30's four.
+    // Cut243: the fake-engine future milestone remains, but its unready plot has no Home surface.
     const pill = await page.evaluate(() => !!document.querySelector(".next-pill:not([hidden])"));
     check(
-      surf.length <= (pill ? 6 : 5) &&
-        ["mouth", "tent", "staked", "Heroes"].every((x) => surf.includes(x)) &&
+      surf.length <= (pill ? 5 : 4) &&
+        ["mouth", "tent", "Heroes"].every((x) => surf.includes(x)) &&
         surf.some((x) => /send|delve/i.test(x)) &&
-        !surf.includes("crate"),
-      `day 0: ≤ ${pill ? 6 : 5} interactive surfaces — the mouth, the tent, the staked plot, the roster, the gem${pill ? ", the pill" : ""} (${surf.length}: ${surf.join(" | ")})`,
+        !surf.includes("crate") &&
+        !surf.includes("staked"),
+      `day 0: sparse Home retains mouth, tent, roster and send (${surf.join(" | ")})`,
     );
     check(
-      t.staked === "blacksmith" &&
-        t.targets.some((x) => x.id === "staked") &&
+      t.next === "blacksmith" &&
+        !t.nextReady &&
+        t.nextTrigger === "first gold home" &&
+        !t.staked &&
+        !t.targets.some((x) => x.id === "staked") &&
+        t.lockedSurfaces === 0 &&
         t.buildings.length === 0,
-      `day 0: the next plot staked (${t.staked}), a read-only preview surface; nothing built (${t.buildings.join(",") || "–"})`,
+      "day 0: future Forge remains on engine wire without scaffold, tag, help or hit target",
     );
     check(
       t.targets.every((x) => x.w >= 44 && x.h >= 44),
@@ -268,7 +274,7 @@ try {
     );
   }
 
-  // ---- each trigger builds its building; the next plot always shown until the v1 set stands
+  // ---- fake legacy build fixtures; unready next goals have no Home plot
   if (part("build")) {
     // Cut 229: Cut 201 retired the storehouse (core town.rs: no plot, no build, no system; the fake now agrees). Stage 2's
     // trigger (first find kept) still runs and must build nothing; the v1 set is the forge, the kennel and the bank.
@@ -288,13 +294,12 @@ try {
       );
       const bar = t.tiles.filter((x) => [...Object.values(tileOf), "vault"].includes(x));
       check(
-        JSON.stringify(bar) === JSON.stringify(want.map((b) => tileOf[b])) &&
-          JSON.stringify(t.tiles.slice(0, want.length)) === JSON.stringify(bar),
-        `stage ${n}: the building bar leads, in build order (${t.tiles.join(" · ")})`,
+        bar.length === 0 && want.every((b) => t.targets.some((x) => x.id === b)),
+        `stage ${n}: built sprites retain actions without duplicate Forge/Pets/Savings console tiles (${t.tiles.join(" · ")})`,
       );
       check(
-        next ? t.staked === next && t.next === next : !t.staked,
-        `stage ${n}: the next plot ${next ? `staked (${t.staked})` : `none once the v1 set stands (${t.staked ?? "none"})`}`,
+        next ? t.next === next && !t.nextReady && !t.staked && t.lockedSurfaces === 0 : !t.staked,
+        `stage ${n}: fake-engine next ${next ?? "none"} has no unready Home plot`,
       );
       check(t.markers.length <= 3, `stage ${n}: ≤ 3 markers (${t.markers.join(", ") || "–"})`);
       check(
@@ -308,45 +313,26 @@ try {
       );
       if (n === 1) await shot("town-blacksmith");
       if (n === 2) {
-        // the staked plot's trigger, on tap
         const lockedBefore = await page.evaluate(() => window.__idlever.engine.save());
-        await page.locator('.town-hit[data-building="staked"]').click();
-        const plotDialog = await page.evaluate(
-          () => document.querySelector(".sheet-wrap .plot-preview")?.textContent ?? "",
-        );
         check(
-          plotDialog.includes("companions") && plotDialog.includes("first tame"),
-          `stage 2: locked plot opens its building and unlock condition ("${plotDialog}")`,
+          t.next === "kennel" &&
+            t.nextTrigger === "first tame" &&
+            !t.nextReady &&
+            !t.staked &&
+            t.lockedSurfaces === 0,
+          "stage 2: fake-engine first-tame goal retained without future plot surfaces",
         );
-        const lockedAfter = await page.evaluate(() => window.__idlever.engine.save());
-        check(
-          lockedBefore === lockedAfter,
-          "stage 2: inspecting the locked plot leaves exact game state unchanged",
-        );
-        await shot("town-locked-plot-mobile");
+        await shot("town-hidden-future-mobile");
         if (shots) {
           await page.setViewportSize({ width: 1280, height: 800 });
           await sleep(400);
-          await shot("town-locked-plot-desktop");
+          await shot("town-hidden-future-desktop");
           await page.setViewportSize({ width: 400, height: 800 });
           await sleep(400);
         }
-        await page.keyboard.press("Escape");
         check(
-          !(await page.locator(".sheet-wrap .plot-preview").count()),
-          "stage 2: Escape closes plot details",
-        );
-        const tag = await until(
-          () => {
-            const e = document.querySelector(".town-tag:not([hidden])");
-            return e ? e.textContent : null;
-          },
-          "the staked plot's tag",
-          3000,
-        ).catch(() => null);
-        check(
-          !!tag && tag.includes("companions") && tag.split(/\s+/).length <= 6,
-          `stage 2: the staked plot names the next building and its trigger on tap ("${tag}")`,
+          lockedBefore === (await page.evaluate(() => window.__idlever.engine.save())),
+          "stage 2: inspecting sparse Home preserves exact save",
         );
       }
       if (n === 3) {
@@ -386,7 +372,7 @@ try {
     check(ok, `a tap on the dungeon's mouth sends (the watch in ${Date.now() - t0} ms)`);
   }
 
-  // ---- a scripted IDLE check-in: harvest (the report), one spend, send — ≤ 3 taps
+  // ---- owner Cut243: explicit Forge review/purchase replaces the old direct-marker three-tap route
   if (part("checkin")) {
     await boot(3014);
     await toStage(1);
@@ -407,31 +393,42 @@ try {
     taps++; // 1. harvest: the report read, home
     await camp();
     const mk = await town();
-    const sword = page.locator(
-      '.town-hit[data-building="blacksmith"] .town-marker[data-marker="sword"]',
+    await page.evaluate((owned) => {
+      window.__checkinKitBefore = owned;
+    }, before.kit);
+    const forge = page.locator('.town-hit[data-building="blacksmith"]');
+    const beforeOpen = await page.evaluate(() => window.__idlever.engine.save());
+    await forge.click();
+    taps++; // Owner Cut243: availability marker opens Forge; it never purchases directly.
+    await page.locator(".simple-kit").waitFor({ state: "visible" });
+    check(
+      beforeOpen === (await page.evaluate(() => window.__idlever.engine.save())),
+      "opening actual Forge sprite is read-only",
     );
-    const hasSword = await sword.count();
-    if (hasSword) {
-      await sword.click();
-      taps++;
-    } // 2. one spend: the forge's next step
+    const purchase = page.locator(".simple-kit .forge-buy[data-slot]:not(:disabled)").first();
+    check((await purchase.count()) > 0, "actual Forge offers an affordable kit purchase");
+    await purchase.click();
+    taps++;
     const bought = await until(
       () => {
         const L = window.__idlever.lineage;
-        return (L.kit ?? []).reduce((a, k) => a + k.owned, 0);
+        const owned = (L.kit ?? []).reduce((a, k) => a + k.owned, 0);
+        return owned > window.__checkinKitBefore ? owned : null;
       },
-      "the kit step",
+      "the explicit kit purchase",
       5000,
     ).catch(() => 0);
+    await page.keyboard.press("Escape");
+    taps++; // Close Forge before sending from the scene.
     await page.locator('.town-hit[data-building="mouth"]').click();
-    taps++; // 3. send
+    taps++; // Send after deliberately purchasing and closing Forge.
     const sent = await until(() => window.__idlever.screen === "watch", "the watch", 8000).then(
       () => true,
       () => false,
     );
     check(
-      hasSword > 0 && bought > before.kit && sent && taps <= 3,
-      `a scripted IDLE check-in takes ${taps} taps — report → sword marker (kit ${before.kit} → ${bought}; markers ${mk.markers.join(",")}) → mouth (sent: ${sent})`,
+      bought > before.kit && sent && taps === 5,
+      `owner Cut243 supersedes direct-marker 3-tap route: ${taps} actions — report → Forge → purchase → Close → mouth (kit ${before.kit} → ${bought}; markers ${mk.markers.join(",")}; sent: ${sent})`,
     );
   }
 

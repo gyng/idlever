@@ -120,7 +120,6 @@ import type {
   ExitLine,
   FoldLine,
   Highlight,
-  InvItem,
   ReturnReport,
   Snapshot,
   SnapMeters,
@@ -1283,7 +1282,6 @@ export function renderWatch(app: App): Mounted {
     rank: app.lineage.rank ?? 0,
   };
   const learned: string[] = [],
-    found: InvItem[] = [],
     notes: Highlight[] = [],
     tamed: string[] = [],
     lost: string[] = [];
@@ -2416,8 +2414,6 @@ export function renderWatch(app: App): Mounted {
           const gold = /^gold\b\D*(\d+)/.exec(ev.item); // Cut 7 §4: `+$47` on a gold pickup (`gold (47)` core, `gold 47` fake)
           // QA 92eb880 (M: "FOUND gold `$1 · $2 ×3 · …` = $27 but `$38 carried`"): gold is the ledger line's, not a find — FOUND lists items;
           // the ambient line is a gain (`+$3`, N: "a bare `$3` line")
-          if (ev.id === heroId && !gold)
-            found.push({ id: ev.id, kind: ev.item, known: true, label: ev.item });
           if (gold) at(ev.t, () => ambient(`+$${gold[1]}`));
           break;
         }
@@ -4940,29 +4936,12 @@ export function renderWatch(app: App): Mounted {
     const L = app.lineage;
     const bests: string[] = [];
     for (let d = before.best + 1; d <= L.best_depth; d++) bests.push(`D${d}`);
-    // a find labelled at pickup by its flavour (`red potion?`) reads by its kind once the same send learned it
-    // (`item:red=confusion` in `learned`; QA on 952e306: "LEARNED confusion red, FOUND still red potion?")
-    const idents = new Map(
-      learned
-        .map((f) => /^item:([a-z_]+)=([a-z_]+)$/.exec(f))
-        .filter((m): m is RegExpExecArray => !!m)
-        .map((m) => [m[1], m[2]]),
-    );
-    for (const it of found) {
-      const m = /^([a-z_]+) (potion|scroll)\?$/.exec(it.label);
-      const kind = m && idents.get(m[1]);
-      if (kind) {
-        it.label = `${kind.replace(/_/g, " ")} ${m![2]}`;
-        it.kind = kind;
-      }
-    }
     const report: ReturnReport = {
       elapsed_s: Math.round((engineTick - startTick) / 10),
       runs: 1,
       sampled: false,
       learned,
       bests,
-      found,
       pending: [],
       packages: exitLine?.packages,
       deaths:

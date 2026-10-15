@@ -1,0 +1,19 @@
+client suite: targeted (6 selected; 163 current full; 206 exhaustive groups)
+FAIL ready-plots     13.8s (4.6s)  Node.js v22.18.0
+     page.evaluate: TypeError: app.onLive is not a function
+         at renderTown (http://localhost:37683/src/ui/town.ts:454:27)
+         at window.fixture (eval at evaluate (:311:30), <anonymous>:31:21)
+         at eval (eval at evaluate (:311:30), <anonymous>:1:16)
+         at UtilityScript.evaluate (<anonymous>:313:16)
+         at UtilityScript.<anonymous> (<anonymous>:1:44)
+         at /home/g/p/riddle/web/tests/ready-plots.mjs:59:15 {
+ok   home-building-help 68.2s (54.4s)  1440: real WASM ready/hidden-unready/built four-building help, no accidental build, viewport, hover and hero details PASS
+ok   home-residents  174.9s (106.7s)  home-residents: 542 checks PASS; actual paid3rest and/or labelled controlled Core3reincarnation, perfixture6layouts/36mouse-keyboard inspections, unchanged restored save
+ok   cut30town       195.0s (20.0s)  cut30town: all passed
+ok   first-plot      204.0s (9.0s)  1440 first plot visibility, controls, busy dedup and real construction PASS
+FAIL wall-preparation 207.0s (3.0s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of null (reading 'textContent')
+         at eval (eval at evaluate (:311:30), <anonymous>:88:47)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/wall-preparation.mjs:16:23 {
+FAIL: 4/6 client gates in 207.0s

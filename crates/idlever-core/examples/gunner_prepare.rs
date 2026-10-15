@@ -18,12 +18,7 @@ fn main() {
         s.buy("gunner").expect("legal historical depth/earned marks unlock");
         s.set_class("gunner").expect("select unlocked class at home");
         if kind=="short_gun" {idlever_core::kit::buy(&mut s.active,kind).expect("pay existing gold for short gun");}
-        // This inherited camp explicitly selected a bow. Choose the class kit
-        // through the same public loadout action, keeping non-weapon finds.
-        let removed_weapons:Vec<_>=s.active.loadout.iter().copied().filter(|id|
-            s.active.lineage.vault.iter().any(|i|i.id==*id&&i.cat()==idlever_core::defs::Cat::Weapon)).collect();
-        let loadout=s.active.loadout.iter().copied().filter(|id|!removed_weapons.contains(id)).collect();
-        s.loadout(loadout);
+        // Current class selection owns permanent starting-weapon compatibility.
         let renewal_brace=args.iter().any(|a|a=="--renewal-brace");
         let steady=args.iter().any(|a|a=="--steady");
         if renewal_brace {
@@ -65,7 +60,7 @@ fn main() {
         std::fs::write(dir.join(format!("{kind}-after.json")),s.save()).unwrap();
         results.push(serde_json::json!({"weapon":kind,"no_grants":true,
             "renewal_brace":renewal_brace,"steady":steady,
-            "deselected_weapon_ids":removed_weapons,"verified_first_gun":gun.kind,
+            "preparation":"current permanent class kit","verified_first_gun":gun.kind,
             "first_send_shots":shots,"first_send_reload_completions":loaded,
             "authored_policy_preserved":true,"d13_hours":d13,"mastery_hours":mastery,"checks":checks}));
     }

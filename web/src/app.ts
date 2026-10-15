@@ -325,7 +325,6 @@ export class App {
   /** Editing copies of the engine's saved sets; `setRules` pushes the active one to the engine. */
   sets: RuleSet[] = [];
   active = 0;
-  loadout: number[] = [];
   view: Screen = { kind: "camp" };
   /** Cut 30 §3: the last absence's report — the town walks its runs out of the mouth once, on the camp after it (ui/town.ts) */
   lastAbsence: { report: ReturnReport; played: boolean } | null = null;
@@ -851,7 +850,6 @@ export class App {
     if (blob) {
       try {
         this.lineage = await this.engine.load(blob.engine);
-        this.loadout = blob.loadout;
         this.runsSeen = blob.runs ?? 0;
         this.watchMode = blob.watch === "fast" || blob.watch === "one" ? blob.watch : "fights";
         this.savedOrigins = blob.origins ?? null;
@@ -873,7 +871,6 @@ export class App {
         console.warn("dev rules rejected", e);
       }
     }
-    await this.engine.loadout(this.loadout);
     this.vocab = await this.engine.vocabulary();
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
@@ -1024,7 +1021,6 @@ export class App {
         console.warn("descent refused", e);
         return false;
       }
-      this.loadout = [...(this.lineage.selected_loadout ?? [])];
       this.adoptSets();
       try {
         this.vocab = await this.engine.vocabulary();
@@ -1052,11 +1048,9 @@ export class App {
         console.warn("ascension refused", e);
         return false;
       }
-      this.loadout = [];
       this.runsSeen = 0;
       this.adoptSets();
       try {
-        await this.engine.loadout([]);
         this.vocab = await this.engine.vocabulary();
       } catch (e) {
         console.warn("ascension metadata unavailable", e);
@@ -1086,10 +1080,8 @@ export class App {
     }
     await this.engine.selectSet(active);
     this.lineage = await this.engine.lineage();
-    this.loadout = [];
     this.runsSeen = 0;
     this.adoptSets();
-    await this.engine.loadout([]);
     this.vocab = await this.engine.vocabulary();
     await this.flush();
     this.go({ kind: "camp" });
@@ -1099,7 +1091,6 @@ export class App {
     this.lineage = await this.engine.newLineage(seed ?? randomSeed());
     this.resetGoldFeedback();
     this.offlineIncomplete = false;
-    this.loadout = [];
   }
   /** Take the editing copies from the engine's lineage (the engine is the source of truth).
    *  Cut 7 §2: the engine's rows carry no origin (unless the core tags them), so each adopted row inherits the origin of
@@ -1529,12 +1520,10 @@ export class App {
     if (!this.engine.selectBloodline) return false;
     if (this.view.kind === "watch") this.go({ kind: "camp" });
     this.lastForecast = null;
-    this.loadout = [];
     const ok = await this.mutate(() => this.engine.selectBloodline!(id), undefined, true, {
       goldFeedback: false,
     });
     if (ok) {
-      this.loadout = [...(this.lineage.selected_loadout ?? [])];
       this.persist();
       this.runnerAt = Date.now();
       this.go({ kind: "camp" });
@@ -1777,12 +1766,6 @@ export class App {
     const e = this.engine;
     return e.setLook ? this.mutate(() => e.setLook!(look)) : Promise.resolve(false);
   }
-  setLoadout(ids: number[]): void {
-    this.loadout = ids;
-    void this.engine.loadout(ids);
-    this.persist();
-    this.emitChange();
-  }
   async resetLineage(): Promise<void> {
     clearBlob();
     await this.fresh();
@@ -1823,7 +1806,6 @@ export class App {
     return {
       v: 2,
       engine: this.lastSave,
-      loadout: this.loadout,
       last_seen: Date.now(),
       runs: this.runsSeen,
       origins: this.sets.map((s) => s.rows.map((r) => r.origin ?? "player")),
@@ -1840,14 +1822,12 @@ export class App {
       this.lineage = await this.engine.load(b.engine);
       this.resetGoldFeedback();
       this.offlineIncomplete = false;
-      this.loadout = b.loadout ?? [];
       this.runsSeen = b.runs ?? 0;
       this.watchMode = b.watch === "fast" || b.watch === "one" ? b.watch : "fights";
       this.savedOrigins = b.origins ?? null;
       this.sets = []; // Cut 7 §2: the imported blob's origins, not the old sets'
       this.adoptSets();
       await this.engine.setRules(this.rules);
-      await this.engine.loadout(this.loadout);
       this.vocab = await this.engine.vocabulary();
       await this.flush();
       this.go({ kind: "camp" });
@@ -2167,7 +2147,6 @@ export function mergeReports(a: ReturnReport, b: ReturnReport): ReturnReport {
         : undefined, // QA 912e135
     learned: union(a.learned, b.learned),
     bests: collapseBests(union(a.bests, b.bests)),
-    found: [...a.found, ...b.found],
     deaths: [...deaths].map(([cause, n]) => ({ cause, n })).sort((x, y) => y.n - x.n),
     pending: mergePending(a.pending, b.pending), // state lines from the last slice; `R1 fired n of m runs` summed across slices
     stall: b.stall, // likewise: the window is on the game, the last slice knows

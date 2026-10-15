@@ -365,7 +365,7 @@ pub fn snap(l: &LineageState) -> Snap {
         pkg_level: l.pkg.runs.keys().map(|k| (k.clone(), l.pkg.level(k))).collect(),
         gold: l.gold as i64 + l.town.bank as i64,
         kit: crate::kit::KIT_SLOTS.iter().map(|s| crate::kit::owned(l, s)).sum(),
-        finds: l.vault.len() + l.found_kinds.len(),
+        finds: l.found_kinds.len(),
         best: l.best_depth,
         party: l.all_companions().count(),
         buildings: l.town.built.len(),
@@ -595,7 +595,6 @@ mod storage_retirement_tests {
         assert!(wire.town.buildings.iter().all(|b| b.id != "storehouse"));
         assert!(wire.tree.unwrap().nodes.iter().all(|n| !matches!(n.id.as_str(), "keeper" | "armourer")));
         assert!(wire.town.workers.iter().all(|w| !matches!(w.id.as_str(), "keeper" | "armourer")));
-        assert!(wire.keep_auto.is_empty());
     }
 }
 

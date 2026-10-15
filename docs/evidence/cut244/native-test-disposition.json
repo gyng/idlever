@@ -1,0 +1,61 @@
+{
+  "reason": "Owner Cut201/Cut244 retires home storage without compatibility requirement. No current Gold/privacy/replay/provenance/absence gate bar was reduced. Monolithic tests.rs disposition is separately owned by root.",
+  "modules": [
+    {
+      "file": "crates/idlever-core/src/tests_cut156.rs",
+      "removedOrRenamedTests": [
+        "automatic_salvage_preserves_known_and_hidden_item_names",
+        "saved_routine_keep_sheet_preserves_one_and_three_hero_eight_hour_absences",
+        "storage_still_offers_distinct_and_per_instance_choices"
+      ],
+      "currentAddedOrRenamedTests": [
+        "current_preparation_preserves_one_and_three_hero_eight_hour_absences",
+        "current_saves_and_lineage_wire_have_no_retired_storage_choices"
+      ],
+      "originalSourceArchive": "docs/evidence/cut244/native-wasm-before.tar.gz"
+    },
+    {
+      "file": "crates/idlever-core/src/tests_cut157.rs",
+      "removedOrRenamedTests": [
+        "manual_receipt_matches_existing_settlement_complete_save"
+      ],
+      "currentAddedOrRenamedTests": [],
+      "originalSourceArchive": "docs/evidence/cut244/native-wasm-before.tar.gz"
+    },
+    {
+      "file": "crates/idlever-core/src/tests_cut159.rs",
+      "removedOrRenamedTests": [
+        "forecast_equipment_matches_real_existing_armourer_order"
+      ],
+      "currentAddedOrRenamedTests": [
+        "forecast_equipment_matches_real_current_permanent_preparation"
+      ],
+      "originalSourceArchive": "docs/evidence/cut244/native-wasm-before.tar.gz"
+    },
+    {
+      "file": "crates/idlever-core/src/tests_cut29.rs",
+      "removedOrRenamedTests": [
+        "best_orders_upgrade_ordinary_brought_gear_without_evicting_a_missing_vault_item"
+      ],
+      "currentAddedOrRenamedTests": [],
+      "originalSourceArchive": "docs/evidence/cut244/native-wasm-before.tar.gz"
+    }
+  ],
+  "currentReplacementCoverage": [
+    "tests_cut156 current serialized Game/Lineage/orders absence, permanent allocator and dungeon cage preservation",
+    "tests_cut156 exact one/three whole/sliced/reloaded8h Session/replay equality",
+    "tests_cut159 six current permanent-gear forecast vs actual send hero equal, Gold unchanged, cache invalidation and exact ordered/resumed/threaded panels",
+    "tests_cut29 real cage/order acceptance/refusal and unchanged public repeat/add-kind checks",
+    "economy_conversion_tests once-only pickup value, quantities, known/unknown names, Bank/Return/Death, secured checkpoints, physical loss/bones",
+    "QA current actual ExitLine finds/privacy/fate reconciliation replaces unreachable storage report lists"
+  ],
+  "historicalOnlyExamples": [
+    "armourer_check",
+    "armourer_trace",
+    "brought_upgrade_check",
+    "keep_check",
+    "keep_walk",
+    "loadout_check"
+  ],
+  "exampleArchive": "docs/evidence/cut244/historical-native-examples.tar.gz"
+}

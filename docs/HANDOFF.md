@@ -10,11 +10,93 @@ Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
 Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
-Current package is fast WASM87de61e9… (6912832bytes); settlement default
-`docs/evidence/cut235/final/settlements-inputs-87de.json`. Native replay4/4 exact, including after-saves.
+Current development package is fast WASM97e85115… (6775918bytes); settlement default
+`docs/evidence/cut244/settlements-inputs-97e8.json`. Native Gold/ledger/ExitLine4/4
+are unchanged; full-save/report comparison22/22 permits only typed retired empty/
+default storage-field deletions. Original87de inputs and after-saves remain intact.
+Cut243 Home screenshots use their separately pinned87de web/dist preview.
 Earlier d161/3975f10b evidence below is historical, not the current source/package identity.
 **ACTIVE 2026-10-15 (owner: finish handoff).** The pause is revoked; see the current resume update below.
 Do not stage unrelated mine.bars or scratchpad wholesale.
+
+## Latest implementation work — Cut243/244 (in progress)
+
+Owner Home amendment: reduce persistent text with icons, tooltips and real locked
+state overlays; align mobile Savings/Apprentice boxes and shorten clipped labels
+(including Companions→Pets). Cut243 owns Home/menu files and actual mobile review.
+Owner follow-up: avoid overwhelming new players; distant locked buildings should
+remain unrevealed until their existing native availability condition is met.
+The Hindsight/fox/caption messages were explicitly for another session and are
+out of scope.
+No progression policy or game truth changes are authorized by this UI request.
+
+Cut244 completes Cut201’s already-authorized inactive storage/API retirement.
+The native source is now changed: the965-test/16-seed acceptance below belongs
+to the pinned pre-retirement source, not a blanket pass for this WIP. Development
+WASM has been rebuilt/repinned to97e8; Home's fixed web/dist preview remains87de.
+Old native exports, numeric vault-ID loadouts, Keep preferences, insurance and
+storage-only save/wire state are removed in source; cage choices, physical
+bones/provenance, permanent kits and numeric kept Gold remain. Client boot/import/
+reset, adapters, debug envelope and fake-engine automatic settlement are updated.
+A real lingering No-vault challenge offer is removed. New source API inventory
+passes; native tests+all examples compile, but full new acceptance is pending.
+
+Pinned earned one-/three-resident eight-hour baselines preserve whole/sliced/
+reloaded reports and complete Sessions. Candidate native comparison passes except
+explicit typed empty/default storage-field deletions; Gold, progression, actors,
+workers and replay data are unchanged. Evidence/maps: evidence/cut244/. Historical
+native source/WASM and storage-only examples are archived rather than erased.
+Controlled old vault-mail probes now use the actual permanent mail+1 equivalent;
+sent combat stats/RNG/Gold match except item ID, while cache fingerprint/sample
+changes remain explicitly recorded. No gate bar is weakened.
+
+Client TypeScript/source API checks pass. Partial browser runs retain actual
+stale free-preparation fixtures and debug-envelope failure (both repaired), plus
+unexplained Chromium Target-crashed errors. Isolated100-refresh menu diagnostic
+also crashes; no new cgroup OOM counter increment was observed. No passing full
+browser claim is inferred. A later unchanged headless menu test with browser
+temporary files on workspace storage passes118checks at320/400/1440 with exact
+saves; original crashes remain separately recorded. One later GPU font-service
+failure explicitly reported full /tmp, without establishing older crash causes.
+Native corrected workspace now passes961tests/6ignored; default all-target
+Clippy passes after archived pure no-op cleanup. New97e8 package/prototype,
+strict native settlement and earned1/3-resident comparisons pass. Source-bound
+native pacing→routine full is running detached; check actual process/status.
+Seven cleanup client groups pass their original journeys, but their legacy
+tools/dev.sh URL fallback bypassed the suite's fresh port. The URL protocol is
+repaired without dropping assertions; eight groups including Gold settlement
+are rerunning against the fresh97e8 server. Final client integration/gates are
+still required before Cut244 acceptance.
+An explicit follow-up inventory retains unreachable worker-unlock descriptors,
+obsolete comments and insurance-reason classifiers needing producer review;
+these are not counted as fully retired merely because current catalogues hide
+them. Keep the frozen native gate run intact, then finish the recorded cleanup.
+Use actual process handles, not this narrative, to determine live jobs.
+
+Cut243 owner's final interaction amendment: actual building sprites are primary.
+Built Forge/Pets/Savings bottom duplicates and persistent square help buttons
+are removed. Sprite hover/focus/long-press gives details; availability uses quiet
+dots; tapping opens the existing panel without spending. Future plots stay
+hidden until ready, and decorative empty command slots are invisible. Current
+97e8 phone/desktop normal/200% six-frame/six-gesture proof has exact saves and
+zero errors. Relevant geometry/routes pass with original failures retained;
+broader56-route/state acceptance remains open and is being exercised separately.
+
+Cut245 renderer work is a separate uncommitted R6 draft: actual-layout fishing
+banks, burial alcoves and work bays reuse existing art in GL/Canvas.28 actual
+replay floor geometries pass682 layout/knowledge checks. Paired12before/12after
+views expose a weak first Foundry/Crypt treatment; independent review prompted
+larger declared centerpiece footprints with full-cell visibility/occupancy
+checks. This is not full landmark acceptance. Missing-art/context-loss/cost
+proof and stronger final visual acceptance remain; do not stage this renderer
+draft as part of the Cut243/244 checkpoint.
+
+Cut238 read-only diagnostic is committed fa74a8f3/ada0b6e5:16fresh Sessions,
+64arms,48paid first-rank purchases,579unsampled exits; all finite endpoints.
+Damage/armour descriptive median ratios1.883/1.753 coexist with substantial seed
+harms. This continuous-clock strict-IDLE-actions diagnostic is not canonical
+PICKED/default adoption or a chosen policy. Report: evidence/cut238/README.md.
+Second-hero acquisition policy remains unresolved; fixed progression order holds.
 
 ## Current resume — 2026-10-15
 

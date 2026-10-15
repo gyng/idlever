@@ -120,7 +120,6 @@ pub fn drill_packed(seed: u64, sends: u32) -> (u32, u32) {
         carried += g.run.as_ref().is_some_and(|r| r.hero.inv.iter().any(|i| i.kind == "fire")) as u32;
         g.run_to_end(idlever_core::engine::MAX_TURNS_PER_RUN);
         g.finish_run();
-        g.auto_keep();
         g.events.clear();
         g.lineage.gold = g.lineage.gold.max(20_000);
         g.lineage.best_depth = 12;

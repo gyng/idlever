@@ -48,8 +48,7 @@ fn main() {
             s.set_class(class.name()).expect("choose unlocked class at home");
             if let Some(id)=tactic {s.equip_package(id,0).expect("explicitly choose owned tactic");}
             // Start with the chosen class's real weapon, not an inherited Fighter sword.
-            let loadout=s.active.loadout.iter().copied().filter(|id|!s.active.lineage.vault.iter().any(|i|i.id==*id&&i.cat()==idlever_core::defs::Cat::Weapon)).collect();
-            s.loadout(loadout);
+
             let prefix=format!("seed{seed}-{}",class.name());
             std::fs::write(out.join(format!("{prefix}-start.json")),s.save()).unwrap();
             let mut d13=None;let mut clear=None;let mut mastery=None;let mut checks=vec![];

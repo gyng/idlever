@@ -1,0 +1,43 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+error: empty line after doc comment
+    --> crates/idlever-core/src/engine.rs:7044:1
+     |
+7044 | / /// Insurance premium: 25% of salvage value ×10 (Melvor style).
+7045 | |
+     | |_^
+7046 |   /// Renown value of a kill (Addendum D): scaled by the monster's toughness.
+7047 |   pub fn kill_value(kind: &str) -> u32 {
+     |   ----------------- the comment documents this function
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#empty_line_after_doc_comments
+     = note: `-D clippy::empty-line-after-doc-comments` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::empty_line_after_doc_comments)]`
+     = help: if the empty line is unintentional, remove it
+help: if the documentation should include the empty line include it in the comment
+     |
+7045 | ///
+     |
+
+error: this `if` branch is empty
+    --> crates/idlever-core/src/engine.rs:5973:9
+     |
+5973 | /         if self.sim {
+5974 | |             }
+     | |_____________^ help: you can remove it
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_ifs
+     = note: `-D clippy::needless-ifs` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_ifs)]`
+
+error: this `if` branch is empty
+    --> crates/idlever-core/src/forecast.rs:1460:9
+     |
+1460 | /         if kind == "kit" || kind == "heir" {
+1461 | |         }
+     | |_________^ help: you can remove it
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_ifs
+
+error: could not compile `idlever-core` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `idlever-core` (lib test) due to 3 previous errors

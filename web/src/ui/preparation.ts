@@ -255,7 +255,7 @@ export function preparationActions(
               face,
               /* copy:button */ "Upgrade hero",
               /* copy:label */ `Bloodline ${L.selected_bloodline ?? 1} · ${points} Legacy`,
-              (anchor) => openHero(app, anchor),
+              (anchor) => openHero(app, anchor, "legacy"),
             ),
           ]
         : []),

@@ -170,7 +170,6 @@ pub fn edited_game(game: &Game, rules: &RuleSet) -> Game {
 pub fn sim_game(game: &Game, rules: &RuleSet, tag: u64, i: u32, passage: Option<(u32, i32)>) -> Game {
     let mut g = game.sim_clone();
     g.run = None;
-    g.pending_exit = None;
     g.history.clear();
     g.passage = passage;
     let _ = g.set_rules(rules.clone());
@@ -1274,15 +1273,12 @@ fn take_part(kind: &str, l: &mut crate::engine::LineageState, now: &crate::engin
             l.next_comp_id = now.next_comp_id;
         }
         "kit" => {
-            l.vault = now.vault.clone();
             l.supplies = now.supplies.clone();
             l.last_supplies = now.last_supplies.clone();
             l.last_supply_origins = now.last_supply_origins.clone();
             l.forge = now.forge.clone();
             l.kit = now.kit.clone();
             l.starting_config = now.starting_config.clone();
-            l.insured = now.insured.clone();
-            l.keep_pref = now.keep_pref.clone();
             l.vault_pref = now.vault_pref.clone();
             l.unlocks = now.unlocks.clone();
             l.restock_off = now.restock_off;
@@ -1361,9 +1357,6 @@ fn part_text(kind: &str, was: &crate::engine::LineageState, now: &crate::engine:
             let mut w: Vec<&str> = Vec::new();
             if was.kit != now.kit || was.forge != now.forge || was.starting_config != now.starting_config {
                 w.push("forge");
-            }
-            if was.vault != now.vault {
-                w.push("vault");
             }
             if was.supplies != now.supplies || was.last_supplies != now.last_supplies || was.last_supply_origins != now.last_supply_origins {
                 w.push("pack");
@@ -1446,7 +1439,6 @@ pub fn forecast_move(game: &Game, prev: &RuleSet) -> Option<crate::wire::Forecas
     was.active_set = now.active_set;
     let mut g = game.sim_clone();
     g.lineage = was.clone();
-    g.loadout = sent.loadout.clone();
     let panel_of = |g: &Game, set: &RuleSet| -> Vec<SimResult> {
         let key = format!("move:{}:{n}:{tag}:{}", lineage_key(g), played_key(g, set));
         if let Some(v) = game.panel_cache.borrow().get(&key) {
@@ -1465,9 +1457,6 @@ pub fn forecast_move(game: &Game, prev: &RuleSet) -> Option<crate::wire::Forecas
         let key0 = lineage_key(&g);
         let before = g.lineage.clone();
         take_part(kind, &mut g.lineage, now);
-        if kind == "kit" || kind == "heir" {
-            g.loadout = game.loadout.clone();
-        }
         if lineage_key(&g) == key0 {
             continue;
         }
@@ -1479,7 +1468,6 @@ pub fn forecast_move(game: &Game, prev: &RuleSet) -> Option<crate::wire::Forecas
     if lineage_key(&g) != lineage_key(game) {
         let before = g.lineage.clone();
         g.lineage = now.clone();
-        g.loadout = game.loadout.clone();
         let next = today_prev.clone();
         parts.push(crate::wire::MovePart { kind: "heir".into(), text: part_text("heir", &before, now), move_: vs_between(game, &next, &last, refined) });
         last = next;
@@ -1666,12 +1654,6 @@ pub fn lineage_key(game: &Game) -> u64 {
     feed(&format!("{:?}", l.unlocks));
     // Cut 30 §1: the scars the sends carry (a boss met is weaker until he falls)
     feed(&format!("{:?}", crate::descent::BOSS_DEPTHS.iter().map(|(k, _)| l.pkg.scar(k, &l.kills)).collect::<Vec<_>>()));
-    feed(&serde_json::to_string(&l.vault).unwrap_or_default());
-    // (the send sorts and de-duplicates the loadout: `[5, 3]` and `[3, 5]` pack the same)
-    let mut loadout = game.loadout.clone();
-    loadout.sort();
-    loadout.dedup();
-    feed(&format!("{loadout:?}"));
     feed(&serde_json::to_string(&l.party).unwrap_or_default());
     feed(&serde_json::to_string(&l.supplies).unwrap_or_default());
     // Automatic supplies read the effective package and pen as well as the compiled rows.
@@ -1683,8 +1665,6 @@ pub fn lineage_key(game: &Game) -> u64 {
     feed(&serde_json::to_string(&l.forge).unwrap_or_default());
     feed(&serde_json::to_string(&l.grudges).unwrap_or_default());
     feed(&serde_json::to_string(&l.bones).unwrap_or_default());
-    feed(&format!("{:?}", l.insured));
-    feed(&l.keep_pref);
     // What a floor generated in a sim reads besides (`CheckpointLineage`).
     feed(&l.vault_pref);
     feed(&serde_json::to_string(&l.lost).unwrap_or_default());

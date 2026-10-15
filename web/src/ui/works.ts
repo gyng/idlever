@@ -11,7 +11,7 @@ import { closeEverything, openWindow as openSheet } from "./sheet";
 import { icon } from "./skin";
 import { audio } from "../audio";
 import { heroFace, trackIcon, trackName, TRACK_IDS } from "./tracks";
-import { kw, kwHost } from "./tips";
+import { detailHost, kw, kwHost } from "./tips";
 import { supplyReason } from "./report-supplies";
 
 export const hasWorks = (L: Pick<Lineage, "tree"> | undefined): boolean => !!L?.tree;
@@ -180,6 +180,7 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
       anchorOpen(el.dataset.node || undefined, el);
     },
   });
+  detailHost(el, () => [h("div", { class: "kw-tip-head" }, el.getAttribute("aria-label") ?? "")]);
   let last = "";
   const paint = (): void => {
     const W = app.lineage.tree;
@@ -252,6 +253,11 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
         ),
         frac !== undefined ? progressBar("pill-bar", frac) : "",
       ),
+      p.kind === "buy" && node?.price !== undefined
+        ? h("span", { class: "pill-price num", "aria-hidden": "true" }, `$${node.price}`)
+        : management
+          ? h("span", { class: "pill-price num", "aria-hidden": "true" }, String(hired))
+          : "",
     );
     el.setAttribute("aria-label", [text, side, eta].filter(Boolean).join(" · "));
     if (moved) {

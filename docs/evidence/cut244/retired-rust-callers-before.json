@@ -1,0 +1,1016 @@
+[
+  {
+    "file": "crates/idlever-core/examples/absence.rs",
+    "line": 28,
+    "function": "main",
+    "source": "let _ = g.keep(Vec::new());"
+  },
+  {
+    "file": "crates/idlever-core/examples/armourer_trace.rs",
+    "line": 37,
+    "function": "main",
+    "source": "exit.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/brought_upgrade_check.rs",
+    "line": 21,
+    "function": "main",
+    "source": "let mut manual = g.clone(); manual.keep(vec![100004])?;"
+  },
+  {
+    "file": "crates/idlever-core/examples/brought_upgrade_check.rs",
+    "line": 24,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/brought_upgrade_check.rs",
+    "line": 26,
+    "function": "main",
+    "source": "let mut restored = Game::load(&before)?; restored.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/brought_upgrade_check.rs",
+    "line": 28,
+    "function": "main",
+    "source": "g.auto_keep(); assert_eq!(after, g.save());"
+  },
+  {
+    "file": "crates/idlever-core/examples/class_campaign.rs",
+    "line": 52,
+    "function": "main",
+    "source": "s.loadout(loadout);"
+  },
+  {
+    "file": "crates/idlever-core/examples/cli.rs",
+    "line": 77,
+    "function": "main",
+    "source": "game.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut20.rs",
+    "line": 88,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut20.rs",
+    "line": 105,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut225_classes.rs",
+    "line": 145,
+    "function": "play",
+    "source": "s.loadout(loadout);"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut24.rs",
+    "line": 143,
+    "function": "runs",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut24.rs",
+    "line": 176,
+    "function": "why",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut24.rs",
+    "line": 243,
+    "function": "boss",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/cut24.rs",
+    "line": 289,
+    "function": "reel",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/dayplayer.rs",
+    "line": 508,
+    "function": "first_session",
+    "source": "g.loadout(ids);"
+  },
+  {
+    "file": "crates/idlever-core/examples/dayplayer.rs",
+    "line": 1453,
+    "function": "step",
+    "source": "g.loadout(ids);"
+  },
+  {
+    "file": "crates/idlever-core/examples/early_pacing_probe.rs",
+    "line": 33,
+    "function": "main",
+    "source": "if r.run_over {g.auto_keep();break;}"
+  },
+  {
+    "file": "crates/idlever-core/examples/exits_lib/mod.rs",
+    "line": 97,
+    "function": "run",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/gunner_campaign.rs",
+    "line": 43,
+    "function": "play",
+    "source": "s.loadout(ids);"
+  },
+  {
+    "file": "crates/idlever-core/examples/gunner_prepare.rs",
+    "line": 26,
+    "function": "main",
+    "source": "s.loadout(loadout);"
+  },
+  {
+    "file": "crates/idlever-core/examples/idle_lib/mod.rs",
+    "line": 123,
+    "function": "drill_packed",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/keep_check.rs",
+    "line": 60,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/keep_check.rs",
+    "line": 62,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/keep_check.rs",
+    "line": 65,
+    "function": "main",
+    "source": "restored.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/keep_walk.rs",
+    "line": 27,
+    "function": "main",
+    "source": "game.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/loadout_check.rs",
+    "line": 15,
+    "function": "main",
+    "source": "if mode == 1 { game.loadout(Vec::new()); }"
+  },
+  {
+    "file": "crates/idlever-core/examples/loadout_check.rs",
+    "line": 16,
+    "function": "main",
+    "source": "if mode == 2 { game.loadout(source.lineage.vault.iter().map(|item| item.id).collect()); }"
+  },
+  {
+    "file": "crates/idlever-core/examples/metrics.rs",
+    "line": 284,
+    "function": "first_fork",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/metrics.rs",
+    "line": 521,
+    "function": "gold_sends",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/metrics.rs",
+    "line": 1652,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 64,
+    "function": "loadout",
+    "source": "self.inner.loadout(v);"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 223,
+    "function": "auto_keep",
+    "source": "self.inner.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 237,
+    "function": "sell_vault",
+    "source": "self.inner.sell_vault(id).map_err(err)?;"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 243,
+    "function": "insure",
+    "source": "self.inner.insure(id).map_err(err)?;"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 247,
+    "function": "set_keep_pref",
+    "source": "self.inner.set_keep_pref(pref).map_err(err)?;"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 707,
+    "function": "dispatch",
+    "source": "\"loadout\" => { g.loadout(arg(args, 0)?).map_err(|e| e.to_string())?; Ok(Value::Null) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 742,
+    "function": "dispatch",
+    "source": "\"autoKeep\" => { Ok(Value::String(g.auto_keep())) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 743,
+    "function": "dispatch",
+    "source": "\"keep\" => { Ok(Value::String(g.keep(arg(args, 0)?).map_err(|e| e.to_string())?)) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 744,
+    "function": "dispatch",
+    "source": "\"sellVault\" => { Ok(Value::String(g.sell_vault(arg(args, 0)?).map_err(|e| e.to_string())?)) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 745,
+    "function": "dispatch",
+    "source": "\"insure\" => { Ok(Value::String(g.insure(arg(args, 0)?).map_err(|e| e.to_string())?)) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/native_dev/generated.rs",
+    "line": 746,
+    "function": "dispatch",
+    "source": "\"setKeepPref\" => { Ok(Value::String(g.set_keep_pref(arg(args, 0)?).map_err(|e| e.to_string())?)) },"
+  },
+  {
+    "file": "crates/idlever-core/examples/progression_cause_probe.rs",
+    "line": 53,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/progression_lib/mod.rs",
+    "line": 454,
+    "function": "field",
+    "source": "g.loadout(ids);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 437,
+    "function": "check_forecast_reads",
+    "source": "g.loadout(l);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 446,
+    "function": "check_forecast_reads",
+    "source": "let _ = g.set_keep_pref(&kp);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 451,
+    "function": "check_forecast_reads",
+    "source": "g.loadout(l);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 685,
+    "function": "check_den_chore_leg",
+    "source": "let _ = h.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 722,
+    "function": "check_leash_leg",
+    "source": "let _ = h.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 751,
+    "function": "check_saved_leg",
+    "source": "let _ = h.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 864,
+    "function": "check_found_supply_leg",
+    "source": "let _ = h.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 972,
+    "function": "check_meters_leg",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 1420,
+    "function": "play",
+    "source": "g.keep(vec![]).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/examples/qa.rs",
+    "line": 1564,
+    "function": "play",
+    "source": "let _ = h.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/slices.rs",
+    "line": 10,
+    "function": "main",
+    "source": "let _ = g.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/examples/watch.rs",
+    "line": 106,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/examples/watch.rs",
+    "line": 111,
+    "function": "main",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/economy_free_tests.rs",
+    "line": 141,
+    "function": "authored_loadout_repeats_three_delves_without_payment",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 4207,
+    "function": "ensure_run",
+    "source": "self.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 4227,
+    "function": "start_run",
+    "source": "self.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 4305,
+    "function": "start_run",
+    "source": "if self.insure(id).is_ok() {"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 4884,
+    "function": "exit_pending_wire",
+    "source": "settled.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 6121,
+    "function": "finish_run",
+    "source": "self.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/engine.rs",
+    "line": 6456,
+    "function": "keep_with_receipt",
+    "source": "self.keep(ids)?;"
+  },
+  {
+    "file": "crates/idlever-core/src/lib.rs",
+    "line": 183,
+    "function": "set_orders",
+    "source": "self.set_keep_pref(&o.keep)?;"
+  },
+  {
+    "file": "crates/idlever-core/src/offline.rs",
+    "line": 222,
+    "function": "run_offline_partition",
+    "source": "game.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/offline.rs",
+    "line": 409,
+    "function": "settle_completed_run",
+    "source": "game.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/offline.rs",
+    "line": 940,
+    "function": "advance",
+    "source": "game.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/probes.rs",
+    "line": 332,
+    "function": "floor_trial_with",
+    "source": "g.loadout(vec![id]);"
+  },
+  {
+    "file": "crates/idlever-core/src/probes.rs",
+    "line": 409,
+    "function": "warlord_lineage",
+    "source": "g.loadout(vec![id]);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 1089,
+    "function": "bank_keeps_all_loot_and_gold",
+    "source": "let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved, \"no duplicate payment\");"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 1136,
+    "function": "death_keeps_nothing_and_leaves_bones",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 1170,
+    "function": "bones_piles_cap_at_bones_max_and_bone_sense_paths_to_them",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 1808,
+    "function": "story_lines_over_a_hundred_runs_follow_the_grammar",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 1848,
+    "function": "marks_are_earned_on_new_bests_only",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2008,
+    "function": "tamed_companion_joins_the_party_and_levels_on_bank",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2020,
+    "function": "companion_death_leaves_an_egg_that_hatches_after_three_rests",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2037,
+    "function": "companion_death_leaves_an_egg_that_hatches_after_three_rests",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2085,
+    "function": "companion_rules_shoot_and_burst",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2119,
+    "function": "hero_party_scope_recall_is_a_free_action",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2226,
+    "function": "xp_levels_the_class_and_gates_verbs",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2272,
+    "function": "first_conversion_feeds_forge_discovery_and_tiers_apply",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2301,
+    "function": "actual_outcomes_settle_without_pending_keep_or_preferences",
+    "source": "let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2302,
+    "function": "actual_outcomes_settle_without_pending_keep_or_preferences",
+    "source": "assert!(g.keep(vec![]).is_err());"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2304,
+    "function": "actual_outcomes_settle_without_pending_keep_or_preferences",
+    "source": "let mut a = arena(); a.set_keep_pref(pref).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2307,
+    "function": "actual_outcomes_settle_without_pending_keep_or_preferences",
+    "source": "finish_with(&mut a, ExitTier::Bank); a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2326,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(\"best_armour\").unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2331,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2338,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(\"best_armour\").unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2342,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2347,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(\"best_armour\").unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2350,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2357,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(pref).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2363,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2371,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(\"none\").unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2375,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2381,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.set_keep_pref(\"best_armour\").unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2385,
+    "function": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2427,
+    "function": "death_deltas_are_the_camp_forecasts_move",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2726,
+    "function": "insurance_keeps_a_brought_item_on_death",
+    "source": "assert!(g.insure(100_001).is_err(), \"no gold\");"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2728,
+    "function": "insurance_keeps_a_brought_item_on_death",
+    "source": "g.insure(100_001).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2730,
+    "function": "insurance_keeps_a_brought_item_on_death",
+    "source": "assert!(g.insure(100_001).is_err(), \"already insured\");"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 2732,
+    "function": "insurance_keeps_a_brought_item_on_death",
+    "source": "g.loadout(vec![100_001]);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3726,
+    "function": "loot_is_one_unit_from_pickup_to_the_bank",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3745,
+    "function": "first_bank_at_each_depth_is_a_mark",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3754,
+    "function": "first_bank_at_each_depth_is_a_mark",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3762,
+    "function": "first_bank_at_each_depth_is_a_mark",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3782,
+    "function": "no_mark_for_the_frontier_and_one_a_night",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 3792,
+    "function": "no_mark_for_the_frontier_and_one_a_night",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 4149,
+    "function": "auto_supply_restocks_the_shelf_when_the_hero_comes_home",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 4161,
+    "function": "auto_supply_restocks_the_shelf_when_the_hero_comes_home",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 4717,
+    "function": "ledger_line_reconciles_on_every_exit",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 4840,
+    "function": "exit_event_stake_and_report_carry_the_ledger",
+    "source": "g.insure(100_001).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 6098,
+    "function": "forge_rows_carry_the_next_rung",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 7216,
+    "function": "an_unused_supply_comes_back_to_the_shelf",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 7792,
+    "function": "a_summoner_out_of_reach_is_a_stall_not_a_loop",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 7862,
+    "function": "a_watched_exit_carries_the_automations_picks",
+    "source": "a.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 8053,
+    "function": "qam_first_death",
+    "source": "g.keep(vec![]).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 8084,
+    "function": "forecast_is_the_same_across_the_camps_sheet_reads",
+    "source": "g.loadout(l);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 8194,
+    "function": "automatic_outcomes_credit_one_value_and_report_no_second_receipt",
+    "source": "let saved = g.save(); g.auto_keep(); assert_eq!(g.save(), saved, \"no deferred or duplicate settlement\");"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 8612,
+    "function": "the_loadout_repeats_unless_cleared",
+    "source": "g.keep(vec![]).ok();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9079,
+    "function": "a_death_the_replays_all_survive_is_dice_and_its_patches_act_on_the_floor",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9268,
+    "function": "waystones_light_on_a_bank_and_the_start_round_trips",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9620,
+    "function": "a_shadowed_row_never_acts_and_reads_the_same_panel",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9673,
+    "function": "the_repeat_remembers_and_restores_a_kind_at_zero_gold",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9717,
+    "function": "stolen_rows_carry_their_gold_and_exit_lines_their_toll",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9728,
+    "function": "stolen_rows_carry_their_gold_and_exit_lines_their_toll",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 9869,
+    "function": "a_stolen_supply_is_replaced_once_a_night_without_spend_or_refund",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10301,
+    "function": "the_forge_sells_permanent_kit_steps",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10400,
+    "function": "every_row_says_why_not",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10618,
+    "function": "a_boss_that_cannot_be_hurt_drives_the_hero_off",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10669,
+    "function": "a_fight_that_moves_is_never_driven_off",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10711,
+    "function": "a_named_foe_rotates",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10732,
+    "function": "a_floor_event_line_never_repeats_within_three_runs",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10872,
+    "function": "a_death_trace_ends_on_the_killing_blow",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10902,
+    "function": "a_patch_needing_an_item_comes_with_its_purchase_or_not_at_all",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10969,
+    "function": "packed_and_brought_are_not_finds",
+    "source": "g.loadout(vec![mail_id]);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 10982,
+    "function": "packed_and_brought_are_not_finds",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests.rs",
+    "line": 11666,
+    "function": "a_short_break_yields_a_run",
+    "source": "let _ = g.keep(Vec::new());"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut119.rs",
+    "line": 61,
+    "function": "the_tame_row_compiles_for_everyone_and_is_revocable",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut119.rs",
+    "line": 80,
+    "function": "pets_come_to_everyone",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut156.rs",
+    "line": 46,
+    "function": "automatic_salvage_preserves_known_and_hidden_item_names",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut157.rs",
+    "line": 31,
+    "function": "manual_receipt_matches_existing_settlement_complete_save",
+    "source": "let mut old = g.clone(); old.keep(picks.clone()).unwrap();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 72,
+    "function": "the_forged_new_best_lights_the_apprentice_and_the_count_does_not",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 91,
+    "function": "the_apprentice_requires_a_hand_forged_kit_at_send",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 312,
+    "function": "session_shares_town_worker_feats_without_sharing_hero_provenance",
+    "source": "s.active.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 410,
+    "function": "the_drillmaster_needs_a_hand_levelled_worn_package_to_clear_a_floor",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 416,
+    "function": "the_drillmaster_needs_a_hand_levelled_worn_package_to_clear_a_floor",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 437,
+    "function": "the_drillmaster_does_not_credit_an_in_run_level_purchase",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 497,
+    "function": "hand_fielding_after_departure_cannot_retroactively_earn_the_kennel_hand",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 535,
+    "function": "a_manually_bred_pup_earns_the_keeper_on_its_later_departure",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 568,
+    "function": "the_kennel_hand_requires_the_actual_successfully_hand_selected_pet",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut235.rs",
+    "line": 632,
+    "function": "hand_bred_identity_follows_the_actual_loss_egg_and_recovered_pet",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut30.rs",
+    "line": 291,
+    "function": "every_exit_names_its_reason",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut305.rs",
+    "line": 195,
+    "function": "manual_send_before_the_scout_yields_the_run_in_flight",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut305.rs",
+    "line": 328,
+    "function": "chores_by_hand_count_toward_their_worker",
+    "source": "g.loadout(ids.clone());"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut305.rs",
+    "line": 329,
+    "function": "chores_by_hand_count_toward_their_worker",
+    "source": "g.loadout(ids.clone());"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut30_pkg.rs",
+    "line": 1047,
+    "function": "prospective_projection_death_deltas_measure_current_indices_and_recache_after_edits",
+    "source": "assert!(g.keep(vec![]).is_err(), \"no stale post-settlement Keep remains\");"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_cut30_pkg.rs",
+    "line": 1777,
+    "function": "package_death_patches_are_measured_where_they_apply",
+    "source": "let _ = g.keep(vec![]);"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_runclear.rs",
+    "line": 109,
+    "function": "every_exit_line_carries_the_card",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_runclear.rs",
+    "line": 110,
+    "function": "every_exit_line_carries_the_card",
+    "source": "h.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_runsui.rs",
+    "line": 70,
+    "function": "a_watched_run_replays_to_the_same_events",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/tests_runsui.rs",
+    "line": 188,
+    "function": "the_log_folds_by_absence_and_keeps_sixty",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-core/src/trace.rs",
+    "line": 2723,
+    "function": "camp_state",
+    "source": "g.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-wasm/src/lib.rs",
+    "line": 72,
+    "function": "loadout",
+    "source": "self.inner.loadout(v);"
+  },
+  {
+    "file": "crates/idlever-wasm/src/lib.rs",
+    "line": 273,
+    "function": "auto_keep",
+    "source": "self.inner.auto_keep();"
+  },
+  {
+    "file": "crates/idlever-wasm/src/lib.rs",
+    "line": 288,
+    "function": "sell_vault",
+    "source": "self.inner.sell_vault(id).map_err(err)?;"
+  },
+  {
+    "file": "crates/idlever-wasm/src/lib.rs",
+    "line": 294,
+    "function": "insure",
+    "source": "self.inner.insure(id).map_err(err)?;"
+  },
+  {
+    "file": "crates/idlever-wasm/src/lib.rs",
+    "line": 300,
+    "function": "set_keep_pref",
+    "source": "self.inner.set_keep_pref(pref).map_err(err)?;"
+  }
+]

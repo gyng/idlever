@@ -94,7 +94,6 @@ pub fn run(set: &RuleSet, seed: u64, hours: u64) -> ExitTally {
         };
         t.ticks += turns as u64 + g.rest_after(turns, tier) as u64;
         g.finish_run();
-        g.auto_keep();
         g.events.clear();
         t.sends += 1;
         t.deaths += (tier == ExitTier::Death) as u32;

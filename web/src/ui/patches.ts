@@ -11,7 +11,7 @@
 import type { App } from "../app";
 import type { Patch, Row, Trace, WallPrice } from "../engine/types";
 import { h, pct } from "./dom";
-import { closeX, openSheet } from "./sheet";
+import { closeX, openWindow as openSheet } from "./sheet";
 import {
   condLabel,
   verbLabel,
@@ -840,7 +840,7 @@ export function openDropSheet(app: App, p: Patch, trace?: Trace): void {
       h(
         "div",
         { class: "label row-label" },
-        /* copy:label */ "drop",
+        h("span", { class: "drop-title" }, /* copy:label */ "drop"),
         " ",
         h("small", { class: "dim" }, rowLabel(p.row)),
         closeX(close),

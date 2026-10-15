@@ -2,10 +2,12 @@ import { stateWidths } from "./lib/viewport-cases.mjs";
 // Controlled delayed replies exercise the real package sheet's request lifecycle.
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 let total = 0;
 const errors = [];
@@ -35,7 +37,6 @@ try {
       const app = {
         lineage: L,
         rules: structuredClone(real.rules),
-        loadout: [],
         lastForecast: null,
       };
       const query = (sims) => {
@@ -143,9 +144,9 @@ try {
       check(pending.length === 4, "rules edit must remeasure");
       pending[3].resolve(answer());
       await tick();
-      app.loadout.push(123);
+      app.lineage.starting_kits = { current: { weapon: "sword" } };
       await open();
-      check(pending.length === 5, "loadout edit must remeasure");
+      check(pending.length === 5, "reusable starting kit edit must remeasure");
       pending[4].resolve(answer());
       await tick();
       const other = { ...app };

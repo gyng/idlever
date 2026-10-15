@@ -1,0 +1,43 @@
+{
+  "original": "native-wasm-before.tar.gz:crates/idlever-core/src/tests.rs",
+  "scope": "Monolithic tests.rs only; source/API absence assertions replace removed private storage fields, with current economy/privacy/replay assertions retained",
+  "cases": [
+    {
+      "test": "actual_outcomes_settle_without_pending_keep_or_preferences",
+      "disposition": "Replaces obsolete set_keep_pref/Keep refusal calls with genuine automatic endings and full saved/wire/order absence. Exact Bank/Return carry credit and zero Death carry credit are checked separately from the existing named40-Gold death wake; actual balance equals original Gold plus explicit credit and wake.",
+      "replacement": "actual_outcomes_settle_without_storage_choices"
+    },
+    {
+      "test": "automatic_conversion_preserves_existing_gear_for_every_old_preference",
+      "disposition": "Superseded: only asserts retained old vault instances/preferences. Cut201 owner explicitly requires complete removal and no compatibility. Original byte-exact source archived; current value conversion/privacy/prepared-item assertions remain elsewhere."
+    },
+    {
+      "test": "insurance_keeps_a_brought_item_on_death",
+      "disposition": "Insurance purchase/refund/death policy retired by Cut201. Replaced with absent-state/order and exact current-save roundtrip; public export absence verified separately."
+    },
+    {
+      "test": "mirror_shard_breeds_the_mirror_tag",
+      "disposition": "Vault mirror-shard consumption retired. Existing controlled parent-tag inheritance and actual breed/mimic behavior retained; not an earned mirror acquisition claim."
+    },
+    {
+      "test": "exit_receipts_and_gold_ledger",
+      "disposition": "Removed insurance-only payment tail; retains free-preparation/clear Gold and ledger assertions plus real exit report/copy bounds."
+    },
+    {
+      "test": "bought_heal_is_drunk_by_name",
+      "disposition": "Unknown-flavour but known physical potion injected into controlled live pack, replacing vault transport only; retains vocabulary refusal, wire identity, named action, actual consumption/heal and no-gamble assertions."
+    },
+    {
+      "test": "a_watched_exit_carries_the_automations_picks",
+      "disposition": "Watched autoKeep picks are retired; retains watched actual multi-item conversion quantity/value with zero storage state."
+    },
+    {
+      "test": "packed_and_brought_are_not_finds",
+      "disposition": "Retains actual packed leash and new-find/news exclusion; old brought-mail vault return and Batch.found storage assertions retired. Real internal Run.brought accounting remains tested by economy conversion suite."
+    },
+    {
+      "test": "a_full_lineage_plays_through_many_runs_without_panics",
+      "disposition": "Drops retired ReturnReport.found requirement and explicitly checks its absence; retains every other required report field, actual run/camp assertions, and exact serialization of current ExitLine records. Original stale assertion and real failing run are retained."
+    }
+  ]
+}

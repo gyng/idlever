@@ -233,9 +233,6 @@ pub fn reveal(g: &Game) -> Vec<&'static str> {
     if l.marks > 0 || l.unlocks.iter().any(|u| u != "tame") || l.rank > 0 {
         out.push("unlocks");
     }
-    if !l.vault.is_empty() || !g.loadout.is_empty() || l.unlocks.iter().any(|u| u.starts_with("vault")) {
-        out.push("vault");
-    }
     if !l.forge.is_empty() {
         out.push("forge");
     }
@@ -401,15 +398,13 @@ pub fn r3(x: f64) -> f64 {
 }
 
 /// The lineage without unlock `id` (leave-one-out): the card's row gone, the rows fitted to the
-/// cap, the vault loadout and the party trimmed to their slots.
+/// cap and the party trimmed to its slots.
 pub fn without(g: &Game, id: &str) -> Game {
     let mut s = g.sim_clone();
     s.lineage.unlocks.remove(id);
     let mut rules = s.lineage.rules().clone();
     rules.rows.retain(|r| r.card() != Some(id));
     let _ = s.set_rules_raw(rules);
-    let slots = s.lineage.vault_slots();
-    s.loadout.truncate(slots);
     let ps = s.lineage.party_slots() as usize;
     while s.lineage.party.len() > ps {
         let c = s.lineage.party.pop().unwrap();
@@ -450,8 +445,7 @@ pub fn respond(g: &mut Game, id: &str, mode: &Mode) {
 }
 
 pub fn field(g: &mut Game) {
-    let ids: Vec<u32> = g.lineage.vault.iter().map(|i| i.id).collect();
-    g.loadout(ids);
+
     let slots = g.lineage.party_slots() as usize;
     if g.lineage.party.len() < slots && !g.lineage.kennel.is_empty() {
         let mut ids: Vec<u32> = g.lineage.party.iter().map(|c| c.id).collect();

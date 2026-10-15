@@ -1,0 +1,36 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.setViewportSize: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/g/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --ignore-gpu-blocklist --use-gl=angle --use-angle=gl --enable-gpu-rasterization --force-device-scale-factor=1.5 --hide-scrollbars --mute-audio --ozone-platform=x11 --display=:99 --user-data-dir=/tmp/playwright_chromiumdev_profile-zimg9s --remote-debugging-pipe --no-startup-window
+<launched> pid=3294738
+[pid=3294738][err] [3294738:3294738:1015/235458.985410:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
+[pid=3294738][err] [3294791:3294791:1015/235508.632349:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:254] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[pid=3294738][err] [3294791:3294791:1015/235508.635639:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:254] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[pid=3294738][err] [3294791:3294791:1015/235508.643208:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:254] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[pid=3294738][err] [3294791:3294791:1015/235508.646842:ERROR:gpu/command_buffer/service/shared_image/shared_image_manager.cc:254] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[pid=3294738][err] [3294738:3294756:1015/235531.672681:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[pid=3294738][err] [3294738:3294756:1015/235531.674497:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[pid=3294738][err] [3294738:3294756:1015/235531.678962:ERROR:google_apis/gcm/engine/registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[pid=3294738][err] [3294738:3294756:1015/235531.997648:ERROR:google_apis/gcm/engine/mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret
+[pid=3294738][err] [3294738:3294756:1015/235531.997699:ERROR:google_apis/gcm/engine/mcs_client.cc:704] Failed to log in to GCM, resetting connection.
+[pid=3294738][err] [3294738:3294751:1015/235539.719250:ERROR:mojo/public/cpp/bindings/lib/validation_errors.cc:136] Invalid message: VALIDATION_ERROR_DESERIALIZATION_FAILED
+[pid=3294738][err] [1015/235539.748585:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3294738][err] [1015/235539.748895:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3294738][err] [1015/235539.816879:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[pid=3294738][err] [1015/235539.816956:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+[pid=3294738][err] [3294738:3294751:1015/235539.864337:ERROR:mojo/public/cpp/bindings/lib/interface_endpoint_client.cc:748] Message 828367088 rejected by interface viz.mojom.CopyOutputResultSender
+[pid=3294738][err] [3294738:3294738:1015/235540.070093:ERROR:content/browser/gpu/gpu_process_host.cc:1035] GPU process exited unexpectedly: exit_code=9
+[pid=3294738][err] [3294738:3294738:1015/235552.053855:ERROR:gpu/command_buffer/client/cmd_buffer_helper.cc:143] ContextResult::kFatalFailure: CommandBufferHelper::AllocateRingBuffer() failed
+[pid=3294738][err] [1015/235552.123512:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3294738][err] [1015/235552.123772:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3294738][err] [1015/235552.208145:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[pid=3294738][err] [1015/235552.208567:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+    at /home/g/p/riddle/docs/evidence/cut243/probe.mjs:156:16 {
+  log: []
+}
+
+Node.js v22.18.0

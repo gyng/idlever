@@ -162,9 +162,7 @@ fn twelve_real_pickup_exit_cases_convert_once_without_keep_or_salvage_income() {
             let expected = 8 + if tier == ExitTier::Death { 0 } else { raw / gold_divisor() };
             let before = g.lineage.gold;
             finish(&mut g, tier);
-            assert!(g.pending_exit.is_none(), "{kind} {tier:?}: no Keep decision");
             assert_eq!(g.lineage.gold - before, expected, "{kind} {tier:?}: one income value");
-            assert!(g.lineage.vault.is_empty(), "found objects do not become stored gear");
             assert!(g.lineage.supplies.is_empty(), "found potions are converted, not shelf stock");
             assert_eq!(g.lineage.forge.get(kind).unwrap().salvaged - old_discovery, units);
             let line = g.last_exit.as_ref().unwrap();
@@ -177,7 +175,6 @@ fn twelve_real_pickup_exit_cases_convert_once_without_keep_or_salvage_income() {
             let saved = g.save();
             let loaded = Game::load(&saved).unwrap();
             assert_eq!(loaded.lineage.gold, g.lineage.gold);
-            assert!(loaded.pending_exit.is_none());
             assert!(g.finish_run().is_none());
             assert_eq!(g.lineage.gold, before + expected, "repeated settlement pays nothing");
         }
@@ -207,7 +204,6 @@ fn a_real_found_leash_stack_only_values_its_genuine_units() {
     finish(&mut g, ExitTier::Return);
     assert_eq!(g.lineage.gold - before, 18 / gold_divisor());
     assert_eq!(g.lineage.supplies.iter().filter(|i| i.kind == "leash").map(|i| i.amount).sum::<i32>(), 2);
-    assert!(g.pending_exit.is_none());
     assert_eq!(g.lineage.forge.get("leash").unwrap().salvaged, 3);
     let card = g.last_exit.as_ref().unwrap().finds.iter().find(|i| i.kind == "leash").unwrap();
     assert_eq!(card.label, "leash (3)", "find cards exclude the two prepared units");

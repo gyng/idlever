@@ -92,7 +92,7 @@ try {
     );
   const legacyOffer = p0?.offers?.find((o) => o.id === "legacy");
   const before = await page.evaluate(async () => JSON.parse(await window.__idlever.engine.save()));
-  await page.locator('.return-pick.sheet .tile[data-offer="legacy"]').click();
+  await page.locator('.return-pick[data-return-pick="sheet"] .tile[data-offer="legacy"]').click();
   await page.waitForFunction(() => !window.__idlever.lineage.return_pick, null, {
     timeout: 15_000,
   });

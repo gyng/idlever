@@ -1,0 +1,1827 @@
+{
+  "utc": "2026-10-15T16:50:21.403197+00:00",
+  "scope": "Native Cut244 coherent checkpoint proposal only; no staging. Main agent combines its owned client/source/static proof. Excludes live gate output/status, package generated ignored binaries, __pycache__, unfinished Cut245 renderer, and parent-owned menu/client evidence. tests.rs is parent-owned but intentionally included in coherent native diff.",
+  "trackedRustPaths": 65,
+  "sourcePaths": [
+    "crates/idlever-core/examples/absence.rs",
+    "crates/idlever-core/examples/armourer_check.rs",
+    "crates/idlever-core/examples/armourer_trace.rs",
+    "crates/idlever-core/examples/brought_upgrade_check.rs",
+    "crates/idlever-core/examples/class_campaign.rs",
+    "crates/idlever-core/examples/cli.rs",
+    "crates/idlever-core/examples/cut20.rs",
+    "crates/idlever-core/examples/cut206_fixtures.rs",
+    "crates/idlever-core/examples/cut225_classes.rs",
+    "crates/idlever-core/examples/cut24.rs",
+    "crates/idlever-core/examples/dayplayer.rs",
+    "crates/idlever-core/examples/early_pacing_probe.rs",
+    "crates/idlever-core/examples/exits_lib/mod.rs",
+    "crates/idlever-core/examples/gunner_campaign.rs",
+    "crates/idlever-core/examples/gunner_prepare.rs",
+    "crates/idlever-core/examples/gunner_trace.rs",
+    "crates/idlever-core/examples/idle_lib/mod.rs",
+    "crates/idlever-core/examples/keep_check.rs",
+    "crates/idlever-core/examples/keep_walk.rs",
+    "crates/idlever-core/examples/lever_lib/mod.rs",
+    "crates/idlever-core/examples/loadout_check.rs",
+    "crates/idlever-core/examples/metrics.rs",
+    "crates/idlever-core/examples/native_dev/generated.rs",
+    "crates/idlever-core/examples/oath_lib/mod.rs",
+    "crates/idlever-core/examples/progression_cause_probe.rs",
+    "crates/idlever-core/examples/progression_lib/mod.rs",
+    "crates/idlever-core/examples/qa.rs",
+    "crates/idlever-core/examples/send_loadout_check.rs",
+    "crates/idlever-core/examples/silence_check.rs",
+    "crates/idlever-core/examples/slices.rs",
+    "crates/idlever-core/examples/start_check.rs",
+    "crates/idlever-core/examples/supply_check.rs",
+    "crates/idlever-core/examples/watch.rs",
+    "crates/idlever-core/src/bloodlines.rs",
+    "crates/idlever-core/src/economy_conversion_tests.rs",
+    "crates/idlever-core/src/economy_free_tests.rs",
+    "crates/idlever-core/src/endgame.rs",
+    "crates/idlever-core/src/engine.rs",
+    "crates/idlever-core/src/fold.rs",
+    "crates/idlever-core/src/forecast.rs",
+    "crates/idlever-core/src/gunner_tests.rs",
+    "crates/idlever-core/src/hero_build.rs",
+    "crates/idlever-core/src/journal.rs",
+    "crates/idlever-core/src/lib.rs",
+    "crates/idlever-core/src/meta.rs",
+    "crates/idlever-core/src/offline.rs",
+    "crates/idlever-core/src/probes.rs",
+    "crates/idlever-core/src/tests.rs",
+    "crates/idlever-core/src/tests_cut119.rs",
+    "crates/idlever-core/src/tests_cut156.rs",
+    "crates/idlever-core/src/tests_cut157.rs",
+    "crates/idlever-core/src/tests_cut159.rs",
+    "crates/idlever-core/src/tests_cut235.rs",
+    "crates/idlever-core/src/tests_cut28.rs",
+    "crates/idlever-core/src/tests_cut29.rs",
+    "crates/idlever-core/src/tests_cut30.rs",
+    "crates/idlever-core/src/tests_cut305.rs",
+    "crates/idlever-core/src/tests_cut30_pkg.rs",
+    "crates/idlever-core/src/tests_runclear.rs",
+    "crates/idlever-core/src/tests_runsui.rs",
+    "crates/idlever-core/src/town.rs",
+    "crates/idlever-core/src/trace.rs",
+    "crates/idlever-core/src/tree.rs",
+    "crates/idlever-core/src/wire.rs",
+    "crates/idlever-wasm/src/lib.rs",
+    "crates/idlever-core/examples/storage_retirement_baseline.rs",
+    "web/src/engine/native-api.json",
+    "web/tests/gold-settlements.mjs",
+    "docs/CUT244_STORAGE_API_RETIREMENT.md"
+  ],
+  "proofPaths": [
+    "docs/evidence/cut244/README.md",
+    "docs/evidence/cut244/clippy-first-failure.log",
+    "docs/evidence/cut244/clippy-second-failure.log",
+    "docs/evidence/cut244/clippy.log",
+    "docs/evidence/cut244/compare-retirement.py",
+    "docs/evidence/cut244/dependency-map.md",
+    "docs/evidence/cut244/final-parity-identity.json",
+    "docs/evidence/cut244/focused-v2-outcomes.log",
+    "docs/evidence/cut244/focused-v2-report.log",
+    "docs/evidence/cut244/gates-source-before.json",
+    "docs/evidence/cut244/generated-package-api.json",
+    "docs/evidence/cut244/historical-native-examples.tar.gz",
+    "docs/evidence/cut244/native-api-inventory.json",
+    "docs/evidence/cut244/native-codegen-file-runner.log",
+    "docs/evidence/cut244/native-codegen-node26.log",
+    "docs/evidence/cut244/native-codegen.log",
+    "docs/evidence/cut244/native-examples-build.log",
+    "docs/evidence/cut244/native-final-identity.json",
+    "docs/evidence/cut244/native-test-disposition.json",
+    "docs/evidence/cut244/native-v2-identity.json",
+    "docs/evidence/cut244/native-wasm-before.tar.gz",
+    "docs/evidence/cut244/package-after-identity.json",
+    "docs/evidence/cut244/package-before-87de.tar.gz",
+    "docs/evidence/cut244/package-before-identity.json",
+    "docs/evidence/cut244/repin-check.log",
+    "docs/evidence/cut244/repin.log",
+    "docs/evidence/cut244/retired-rust-callers-before.json",
+    "docs/evidence/cut244/run-native-gates.sh",
+    "docs/evidence/cut244/settlement-before-final-integrity.json",
+    "docs/evidence/cut244/settlement-before-identity.json",
+    "docs/evidence/cut244/settlements-before-87de.json",
+    "docs/evidence/cut244/settlements-inputs-97e8.json",
+    "docs/evidence/cut244/source-before-retirement.json",
+    "docs/evidence/cut244/tests-rs-disposition.json",
+    "docs/evidence/cut244/wasm-build.log",
+    "docs/evidence/cut244/workspace-fast-v2.log",
+    "docs/evidence/cut244/workspace-fast.log",
+    "docs/evidence/cut244/baseline/all-comparisons.json",
+    "docs/evidence/cut244/baseline/build-candidate.log",
+    "docs/evidence/cut244/baseline/build.log",
+    "docs/evidence/cut244/baseline/candidate-one.log",
+    "docs/evidence/cut244/baseline/candidate-three.log",
+    "docs/evidence/cut244/baseline/clippy-cleanup-proof.json",
+    "docs/evidence/cut244/baseline/dayplayer-before-clippy.rs.gz",
+    "docs/evidence/cut244/baseline/engine-before-clippy.rs.gz",
+    "docs/evidence/cut244/baseline/final-candidate-one.log",
+    "docs/evidence/cut244/baseline/final-candidate-three.log",
+    "docs/evidence/cut244/baseline/final-comparisons.json",
+    "docs/evidence/cut244/baseline/final-one/loaded.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/loaded.session.json.gz",
+    "docs/evidence/cut244/baseline/final-one/prepared.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/prepared.session.json.gz",
+    "docs/evidence/cut244/baseline/final-one/reloaded.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/reloaded.report.json.gz",
+    "docs/evidence/cut244/baseline/final-one/reloaded.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/reloaded.session.json.gz",
+    "docs/evidence/cut244/baseline/final-one/sliced.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/sliced.report.json.gz",
+    "docs/evidence/cut244/baseline/final-one/sliced.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/sliced.session.json.gz",
+    "docs/evidence/cut244/baseline/final-one/summary.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/summary.json.gz",
+    "docs/evidence/cut244/baseline/final-one/whole.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/whole.report.json.gz",
+    "docs/evidence/cut244/baseline/final-one/whole.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-one/whole.session.json.gz",
+    "docs/evidence/cut244/baseline/final-three/loaded.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/loaded.session.json.gz",
+    "docs/evidence/cut244/baseline/final-three/prepared.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/prepared.session.json.gz",
+    "docs/evidence/cut244/baseline/final-three/reloaded.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/reloaded.report.json.gz",
+    "docs/evidence/cut244/baseline/final-three/reloaded.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/reloaded.session.json.gz",
+    "docs/evidence/cut244/baseline/final-three/sliced.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/sliced.report.json.gz",
+    "docs/evidence/cut244/baseline/final-three/sliced.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/sliced.session.json.gz",
+    "docs/evidence/cut244/baseline/final-three/summary.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/summary.json.gz",
+    "docs/evidence/cut244/baseline/final-three/whole.report.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/whole.report.json.gz",
+    "docs/evidence/cut244/baseline/final-three/whole.session.comparison.json",
+    "docs/evidence/cut244/baseline/final-three/whole.session.json.gz",
+    "docs/evidence/cut244/baseline/focused-retirement.log",
+    "docs/evidence/cut244/baseline/forecast-before-clippy.rs.gz",
+    "docs/evidence/cut244/baseline/identity.json",
+    "docs/evidence/cut244/baseline/one/input.session.json.gz",
+    "docs/evidence/cut244/baseline/one/loaded.session.json.gz",
+    "docs/evidence/cut244/baseline/one/prepared.session.json.gz",
+    "docs/evidence/cut244/baseline/one/reloaded.report.json",
+    "docs/evidence/cut244/baseline/one/reloaded.session.json.gz",
+    "docs/evidence/cut244/baseline/one/sliced.report.json",
+    "docs/evidence/cut244/baseline/one/sliced.session.json.gz",
+    "docs/evidence/cut244/baseline/one/summary.json",
+    "docs/evidence/cut244/baseline/one/whole.report.json",
+    "docs/evidence/cut244/baseline/one/whole.session.json.gz",
+    "docs/evidence/cut244/baseline/one-candidate-comparison.json",
+    "docs/evidence/cut244/baseline/one-comparator-optional-stake-key-error.json",
+    "docs/evidence/cut244/baseline/one-loaded.session-comparison.json",
+    "docs/evidence/cut244/baseline/one-prepared.session-comparison.json",
+    "docs/evidence/cut244/baseline/one-reloaded.report-comparison.json",
+    "docs/evidence/cut244/baseline/one-reloaded.session-comparison.json",
+    "docs/evidence/cut244/baseline/one-sliced.report-comparison.json",
+    "docs/evidence/cut244/baseline/one-sliced.session-comparison.json",
+    "docs/evidence/cut244/baseline/one-summary-comparison.json",
+    "docs/evidence/cut244/baseline/one-whole.report-comparison.json",
+    "docs/evidence/cut244/baseline/one-whole.session-comparison.json",
+    "docs/evidence/cut244/baseline/one.log",
+    "docs/evidence/cut244/baseline/probe-seed1-d6.game.json",
+    "docs/evidence/cut244/baseline/probe-seed1-d8.game.json",
+    "docs/evidence/cut244/baseline/probe-seed3-d6.game.json",
+    "docs/evidence/cut244/baseline/probe-seed3-d8.game.json",
+    "docs/evidence/cut244/baseline/probe-sent-comparison.json",
+    "docs/evidence/cut244/baseline/probes-before.log",
+    "docs/evidence/cut244/baseline/probes-candidate.log",
+    "docs/evidence/cut244/baseline/probes-original-diagnostic-error.log",
+    "docs/evidence/cut244/baseline/qa-pre-whitespace.rs.gz",
+    "docs/evidence/cut244/baseline/qa-whitespace-proof.json",
+    "docs/evidence/cut244/baseline/three/input.session.json.gz",
+    "docs/evidence/cut244/baseline/three/loaded.session.json.gz",
+    "docs/evidence/cut244/baseline/three/prepared.session.json.gz",
+    "docs/evidence/cut244/baseline/three/reloaded.report.json",
+    "docs/evidence/cut244/baseline/three/reloaded.session.json.gz",
+    "docs/evidence/cut244/baseline/three/sliced.report.json",
+    "docs/evidence/cut244/baseline/three/sliced.session.json.gz",
+    "docs/evidence/cut244/baseline/three/summary.json",
+    "docs/evidence/cut244/baseline/three/whole.report.json",
+    "docs/evidence/cut244/baseline/three/whole.session.json.gz",
+    "docs/evidence/cut244/baseline/three-candidate-comparison.json",
+    "docs/evidence/cut244/baseline/three-loaded.session-comparison.json",
+    "docs/evidence/cut244/baseline/three-prepared.session-comparison.json",
+    "docs/evidence/cut244/baseline/three-reloaded.report-comparison.json",
+    "docs/evidence/cut244/baseline/three-reloaded.session-comparison.json",
+    "docs/evidence/cut244/baseline/three-sliced.report-comparison.json",
+    "docs/evidence/cut244/baseline/three-sliced.session-comparison.json",
+    "docs/evidence/cut244/baseline/three-summary-comparison.json",
+    "docs/evidence/cut244/baseline/three-whole.report-comparison.json",
+    "docs/evidence/cut244/baseline/three-whole.session-comparison.json",
+    "docs/evidence/cut244/baseline/three.log",
+    "docs/evidence/cut244/baseline/warlord-before.game.json",
+    "docs/evidence/cut244/settlement-before/bank-positive.after.session.json.gz",
+    "docs/evidence/cut244/settlement-before/bank-positive.input.session.json.gz",
+    "docs/evidence/cut244/settlement-before/death-fetched-lost.after.session.json.gz",
+    "docs/evidence/cut244/settlement-before/death-fetched-lost.input.session.json.gz",
+    "docs/evidence/cut244/settlement-before/death-secured-lost.after.session.json.gz",
+    "docs/evidence/cut244/settlement-before/death-secured-lost.input.session.json.gz",
+    "docs/evidence/cut244/settlement-before/multihero-absence.after.session.json.gz",
+    "docs/evidence/cut244/settlement-before/multihero-absence.input.session.json.gz",
+    "docs/evidence/cut244/settlements/bank-positive.after.session.json.gz",
+    "docs/evidence/cut244/settlements/bank-positive.comparison.json",
+    "docs/evidence/cut244/settlements/death-fetched-lost.after.session.json.gz",
+    "docs/evidence/cut244/settlements/death-fetched-lost.comparison.json",
+    "docs/evidence/cut244/settlements/death-secured-lost.after.session.json.gz",
+    "docs/evidence/cut244/settlements/death-secured-lost.comparison.json",
+    "docs/evidence/cut244/settlements/expected-comparisons.json",
+    "docs/evidence/cut244/settlements/multihero-absence.after.session.json.gz",
+    "docs/evidence/cut244/settlements/multihero-absence.comparison.json"
+  ],
+  "files": [
+    {
+      "path": "crates/idlever-core/examples/absence.rs",
+      "exists": true,
+      "bytes": 1717,
+      "sha256": "b209085da0428e886ab2e55abcabcb38f20b80f378495b2f7cb853a96f93a355",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/armourer_check.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/armourer_trace.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/brought_upgrade_check.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/class_campaign.rs",
+      "exists": true,
+      "bytes": 5552,
+      "sha256": "b910b7ae8ef341c5fe878fd820d9082488c695f7093a5a9439a9b21c1d151479",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/cli.rs",
+      "exists": true,
+      "bytes": 7974,
+      "sha256": "7422c73590fb3fded4e0531cefc22c6f96cb199f2697ab2299023b8185ded096",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/cut20.rs",
+      "exists": true,
+      "bytes": 5093,
+      "sha256": "3d840c8e460f48e7fa1ae9c512d2d8362fa3074b894cabfeedb8ef70b609f531",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/cut206_fixtures.rs",
+      "exists": true,
+      "bytes": 5091,
+      "sha256": "39d6e56d2e14585429e1ab6d8b47d09eaebe92fa9124498cd47d4c7b15a48a4c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/cut225_classes.rs",
+      "exists": true,
+      "bytes": 13257,
+      "sha256": "a55e65421060ac5eb0e305e83834efa3e217740431aee179e7285a09028b9355",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/cut24.rs",
+      "exists": true,
+      "bytes": 20952,
+      "sha256": "1a170867dcabbaee0d8ac23461e395cdcb356188c2a5185f9fbdcc1be58e55bd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/dayplayer.rs",
+      "exists": true,
+      "bytes": 144383,
+      "sha256": "668257306b68671420601f61988de91e9947c8324296bad4ec56e37549ad1497",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/early_pacing_probe.rs",
+      "exists": true,
+      "bytes": 2992,
+      "sha256": "69c4f4a0c1afc5dcc63899be7c7fcaf94b825931449a9494896717f476eacaed",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/exits_lib/mod.rs",
+      "exists": true,
+      "bytes": 6954,
+      "sha256": "b135886eb68641a57ecca355395e6febd1e004808dd36ae3cabfb365e5a1e467",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/gunner_campaign.rs",
+      "exists": true,
+      "bytes": 9364,
+      "sha256": "33a2ed8a2f4c9b3f9cd9dd2a7c227950b0db189c8016c8edb1012a38b6e11031",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/gunner_prepare.rs",
+      "exists": true,
+      "bytes": 4679,
+      "sha256": "63188ae71fef9701598b9efae36ef34fc868abf05661fc5f04bf8141cb219f47",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/gunner_trace.rs",
+      "exists": true,
+      "bytes": 1902,
+      "sha256": "0970045e4453b7557f1d760ffde606718b31aee68c1c1358fbe8475f02b1884d",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/idle_lib/mod.rs",
+      "exists": true,
+      "bytes": 8188,
+      "sha256": "21584fb2aea7d44675ee4511f869c21560e1b216ab8cd1f5f73d450628d8eecc",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/keep_check.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/keep_walk.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/lever_lib/mod.rs",
+      "exists": true,
+      "bytes": 13141,
+      "sha256": "2944846579cab754b444ac70c2c36e35cc5c3ee1cbf804b898af6f66a7053553",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/loadout_check.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/examples/metrics.rs",
+      "exists": true,
+      "bytes": 160578,
+      "sha256": "0e225204b5baec149b632310e08255183a30a36cc7a45d702d1aaa8b5b7e8652",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/native_dev/generated.rs",
+      "exists": true,
+      "bytes": 40574,
+      "sha256": "cfa62bba998ff04677992e1e7fce1ea3a707a3e73f6f1f0528fa851e09eef402",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/oath_lib/mod.rs",
+      "exists": true,
+      "bytes": 12803,
+      "sha256": "14dc04ad6ec80422f3e6bfe7f91fe1a2858e2358babe34c7e05f00e24d85936e",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/progression_cause_probe.rs",
+      "exists": true,
+      "bytes": 2765,
+      "sha256": "b95f138af0c738bfcaa26b9d328623aab936f574791d812137c30c582517d6c3",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/progression_lib/mod.rs",
+      "exists": true,
+      "bytes": 56491,
+      "sha256": "be6dbcd739821a7bbc0f35901b1b038d43245e5ac5e845cc459757918f698b01",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/qa.rs",
+      "exists": true,
+      "bytes": 117843,
+      "sha256": "505c675cf59c58170283631482a9db85faef86f28cac7e0df3173d4f25bfce6f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/send_loadout_check.rs",
+      "exists": true,
+      "bytes": 1757,
+      "sha256": "ea360b13dd1e3dac1c32d8c2986177757eb15829ef61ac407d0b66b54da68a2b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/silence_check.rs",
+      "exists": true,
+      "bytes": 2089,
+      "sha256": "254a92b926698c0bb34553386ed918226f7ccfe9932180bcd30620f5b84c6d3f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/slices.rs",
+      "exists": true,
+      "bytes": 1537,
+      "sha256": "f19d4a98d5430d389b5d66efb26f9996ec3bfa91a65d6d854185e82d407f7b95",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/start_check.rs",
+      "exists": true,
+      "bytes": 1575,
+      "sha256": "65ef8bff986e10e7b31ef4fed2e71e57e71f81364192b79c07103cd24b2d475b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/supply_check.rs",
+      "exists": true,
+      "bytes": 1628,
+      "sha256": "6b1a2da1b48f67d48444935b99b92e2bfbd15867681ecf19620801547f07a767",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/watch.rs",
+      "exists": true,
+      "bytes": 6526,
+      "sha256": "fa1dbf2155b1e1b8e057169ad3dd77ccada40820e6412a06c55ffbd0bc52d1dd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/bloodlines.rs",
+      "exists": true,
+      "bytes": 46940,
+      "sha256": "44874dae444237b37d3dfdf2db66eb8de645562609ef4920cfd4a8600781004e",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/economy_conversion_tests.rs",
+      "exists": true,
+      "bytes": 7956,
+      "sha256": "af8dc207b59adb193765218a3e9e36e8a598646f70751725d2d23f9740ac05a2",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/economy_free_tests.rs",
+      "exists": true,
+      "bytes": 10276,
+      "sha256": "e5fe2ca06516e0465253bde9ec9595a4c44b17f4a611025bbf6bd85342c85454",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/endgame.rs",
+      "exists": true,
+      "bytes": 23863,
+      "sha256": "a82408a7e6fb65b2b79ec046998bab098b53ca832ee97456e9cb075542eed0b4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "exists": true,
+      "bytes": 390681,
+      "sha256": "137a8efa4fb0b8545afc889c5f67a5e722f866bc0d7c6a6cf99e5a26f68edcb8",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/fold.rs",
+      "exists": true,
+      "bytes": 17293,
+      "sha256": "215dfa58b4437aee4d1b935f9d4aa36d3c07e17bc6eb8421f10fcc0501fa8fd6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/forecast.rs",
+      "exists": true,
+      "bytes": 88562,
+      "sha256": "472b0b4baf97d1fee9c99041615825f1d89e1d8139526a8b647c90748e3327a2",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/gunner_tests.rs",
+      "exists": true,
+      "bytes": 28472,
+      "sha256": "486bbe9e85330a4fb47ea771b000455d5555b05e5d6f422c1ba0276c761393e4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/hero_build.rs",
+      "exists": true,
+      "bytes": 11532,
+      "sha256": "cde2d6c1f0cad8c1ece11cd908bbee9b82f072521bb1b208c706c1b7cc8627bc",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/journal.rs",
+      "exists": true,
+      "bytes": 24184,
+      "sha256": "67bff40ac24ddae938e86c0474fefef2683863dfcb20709c6861ddfa7b1ba2ab",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/lib.rs",
+      "exists": true,
+      "bytes": 18348,
+      "sha256": "0fe0a26e31e17076f124a74a8c4d7c0a514c528a432c4762971d74499c028b65",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/meta.rs",
+      "exists": true,
+      "bytes": 56683,
+      "sha256": "325c81f11ae42cccff8da0020866c5d1c03ce2275672a70cf19b869e97a5fe9c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/offline.rs",
+      "exists": true,
+      "bytes": 64228,
+      "sha256": "3c638456f55b18d852be20b8fb560063ed0b7b5659959b4c16bb40b2d08fd018",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/probes.rs",
+      "exists": true,
+      "bytes": 20521,
+      "sha256": "c30bcde709f6b9d7a5a4748b98af289d376d47ea65f4a9c7c862c8e4e3553608",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests.rs",
+      "exists": true,
+      "bytes": 596456,
+      "sha256": "eacd6a8dc2b88be6d50a7907434200ce4aafc459b0034d422f7eef7fb79e3da7",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut119.rs",
+      "exists": true,
+      "bytes": 13624,
+      "sha256": "632d0ae996f414d6d24c1474f5468a2e199392b1b44be57da8d40dd7faff219b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut156.rs",
+      "exists": true,
+      "bytes": 3799,
+      "sha256": "f7d5e27212f2be64535f95e88c3e6a446d5c8a6f1d59582b3c98bbd2b03b6921",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut157.rs",
+      "exists": false,
+      "bytes": null,
+      "sha256": null,
+      "action": "delete"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut159.rs",
+      "exists": true,
+      "bytes": 2621,
+      "sha256": "47cdb90fcb8259e01709d59a9a52e414932c7f6b5046839f64df233430866b12",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut235.rs",
+      "exists": true,
+      "bytes": 30609,
+      "sha256": "79f50baba4c88598376c7e89e1b18a4ba126c633aa59fafcc9a35451821635c1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut28.rs",
+      "exists": true,
+      "bytes": 30609,
+      "sha256": "6c0feec37a75657a199a5978d7eb45853d1987fe0ab6546c2a42cc289e0da92a",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut29.rs",
+      "exists": true,
+      "bytes": 17146,
+      "sha256": "49242a12ba2242a1c918adae1bc93d87eb6b15e4da36d25cad3e4b67b22c0cfd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut30.rs",
+      "exists": true,
+      "bytes": 15629,
+      "sha256": "66570093ae2c125e75e02e3a956e028eda8a18760a83de9d4032cc000b6e0639",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut305.rs",
+      "exists": true,
+      "bytes": 46372,
+      "sha256": "307931359cca8b6d0c876ef1db7c61285608441716c0e053b6626c7168823d00",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_cut30_pkg.rs",
+      "exists": true,
+      "bytes": 103380,
+      "sha256": "ba8d17051d28b4f0cd8bedd999c94dfa7512c7cf95c1c2c885cc0d109df4db57",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_runclear.rs",
+      "exists": true,
+      "bytes": 6256,
+      "sha256": "88733412cd6e351bd01b06ed588e59afd0ff7eb7b793fbb3e9a4c8b63777c4e1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tests_runsui.rs",
+      "exists": true,
+      "bytes": 13742,
+      "sha256": "72e01d3bab750bd96e0b3e26be1d1a21bc98a4ee8bc355f17ca727bb5eecb352",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/town.rs",
+      "exists": true,
+      "bytes": 36662,
+      "sha256": "d6325837cd47b4e92e8ba3a037a3209d986cb94ae686ddff352775e454636aa5",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/trace.rs",
+      "exists": true,
+      "bytes": 186565,
+      "sha256": "b788ad7fedd6cbec7f0595c51f120b77ba05b32268d5c60cbde37e13fe90dc37",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/tree.rs",
+      "exists": true,
+      "bytes": 75521,
+      "sha256": "252eeb5f5738f2b4d411a26d81556ace3ac071847dc9b77af299c115e65c8c5c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/src/wire.rs",
+      "exists": true,
+      "bytes": 174278,
+      "sha256": "7eb368750fb1a141f622825db51fd7daebc0b39bebd95103b84e137acd83c416",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-wasm/src/lib.rs",
+      "exists": true,
+      "bytes": 32889,
+      "sha256": "f3a0f2a176af8cd746857c2ca9aa7b1fb25f07a6ae28bc54959d7d9b157e4406",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "crates/idlever-core/examples/storage_retirement_baseline.rs",
+      "exists": true,
+      "bytes": 2986,
+      "sha256": "2f5dcecc0d51761603deb75075f859e1f8456b78b3ed367c2627b5b05d6c0172",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "web/src/engine/native-api.json",
+      "exists": true,
+      "bytes": 9335,
+      "sha256": "3c9664e29eedbd86ea247127c05dd4547ff4e1fda6c443bc36c64e493a7841ab",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "web/tests/gold-settlements.mjs",
+      "exists": true,
+      "bytes": 8763,
+      "sha256": "994c96b046e6d52ae953a7d0af127346757913e46309c153fc4e94429dc2a46b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/CUT244_STORAGE_API_RETIREMENT.md",
+      "exists": true,
+      "bytes": 5303,
+      "sha256": "2545e15b46087f3baf525948b3930de36035cf332f300d355ad80fe42077c3ed",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/README.md",
+      "exists": true,
+      "bytes": 6866,
+      "sha256": "afccb3402c0ee245f649a22bcf8bfbfdda515a4d916c27621200f84aca1cdb54",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/clippy-first-failure.log",
+      "exists": true,
+      "bytes": 1936,
+      "sha256": "65c2a38558247b297a7f721909cc909a51462549ff1d8d7322c25896bc98888d",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/clippy-second-failure.log",
+      "exists": true,
+      "bytes": 767,
+      "sha256": "21ba3af8c8f1a86f915e51db51d8db18552bd5b4ee4fa016e07830aa5223a1d4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/clippy.log",
+      "exists": true,
+      "bytes": 144,
+      "sha256": "da622649b6cf7d94aed718ece9cc8805c68cec86542b83e55e4979880ac914b0",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/compare-retirement.py",
+      "exists": true,
+      "bytes": 3462,
+      "sha256": "bfe81cce9d7ed5ad433c6e357ec1e09918e2683623399dc9ff9a96d8ebfedbd8",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/dependency-map.md",
+      "exists": true,
+      "bytes": 7687,
+      "sha256": "0d0276b26bfd2c71ada33c3c0820d70cac748dd57e9a08b3e7e0e512f309266b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/final-parity-identity.json",
+      "exists": true,
+      "bytes": 8789,
+      "sha256": "3dc79bd1f650050ea65218d503b0cc451dd3be678c194611a22fa4fd02000a28",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/focused-v2-outcomes.log",
+      "exists": true,
+      "bytes": 395,
+      "sha256": "9928102993f5f105b48f4fb68047a609abc25cf4daa012082c5b2669e20b2f22",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/focused-v2-report.log",
+      "exists": true,
+      "bytes": 329,
+      "sha256": "540801d6d9fc4982081c0202895686eeb99f026f9ed5b6f3aba6c16988a14189",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/gates-source-before.json",
+      "exists": true,
+      "bytes": 24656,
+      "sha256": "8eedf876d78927f0be3b3bef15a185180e1dcae6ae3801de45d12bf1dace3b2c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/generated-package-api.json",
+      "exists": true,
+      "bytes": 2223,
+      "sha256": "863e3200179a6c1c921e3945b56954c84b955d06056919722c7d89f5cc8ac8ce",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/historical-native-examples.tar.gz",
+      "exists": true,
+      "bytes": 5345,
+      "sha256": "f781eb3c13339f260576afdb349308b8ba110a6ce9e239d22fe56bd1ecd6c8bd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-api-inventory.json",
+      "exists": true,
+      "bytes": 489,
+      "sha256": "49f099b19f6a1af6fe1ee9f9c1eeebe44dfbbcf99186fe6b68c9ef9ba41fd537",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-codegen-file-runner.log",
+      "exists": true,
+      "bytes": 248,
+      "sha256": "560dc88f73f5ae82d1ad98046f2188f6c1a2d975d7e3ba6cebff379e6178e3b3",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-codegen-node26.log",
+      "exists": true,
+      "bytes": 163,
+      "sha256": "b8dda320aad076952a3d22c4b665ed9b548dc1875b2bc321b51568539b1be39f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-codegen.log",
+      "exists": true,
+      "bytes": 535,
+      "sha256": "4f3ff918529295190fca5428c1003d829418670af6d7411772b2ae26ad3a6610",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-examples-build.log",
+      "exists": true,
+      "bytes": 132,
+      "sha256": "631b7cefd95546f101fdf6b27357b411c9e30bd3f0026a07b3e173378631c952",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-final-identity.json",
+      "exists": true,
+      "bytes": 23747,
+      "sha256": "73cb16df8424d2d0468fd3a66a60b0a43dc9f77d2d3be2b228616beda755e9d4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-test-disposition.json",
+      "exists": true,
+      "bytes": 2850,
+      "sha256": "e607281ee0bc87e96306bd5e943e7dca33da97dae2833bbb282509f3f97bb60e",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-v2-identity.json",
+      "exists": true,
+      "bytes": 69466,
+      "sha256": "f89a723f2790d8602f946db5e2b982492a5419d6232d321346273e7ab68eddf7",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/native-wasm-before.tar.gz",
+      "exists": true,
+      "bytes": 3240447,
+      "sha256": "e6ae69b2a65e30b81db6654eeb5bae200b0e4bb37202f848157bccfcc7ee1325",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/package-after-identity.json",
+      "exists": true,
+      "bytes": 987,
+      "sha256": "36a2b5ffe2b83befb766deaf7abcfefcff22d2a8e51456bde04af13a4bcba20b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/package-before-87de.tar.gz",
+      "exists": true,
+      "bytes": 2162939,
+      "sha256": "d294b0048cdddba2bcc761d5d276704832def1803167804a6203f73adcee4fc4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/package-before-identity.json",
+      "exists": true,
+      "bytes": 1496,
+      "sha256": "f17dfe309f4a6f0885dfff254211babc8ec979ef033b4d894293a6c65dc23679",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/repin-check.log",
+      "exists": true,
+      "bytes": 193,
+      "sha256": "7a09a871434b2ea279c7f8f7c7dbeb83fc8768f0f80024d5a734c1561ed77e2b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/repin.log",
+      "exists": true,
+      "bytes": 1915,
+      "sha256": "057d33dceeafd35b29951da70c6cf58cb87b4f73573297e7ff0f62ed06efbb55",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/retired-rust-callers-before.json",
+      "exists": true,
+      "bytes": 29095,
+      "sha256": "1d2b0d65175b9899c2ba5ae2e7f383665e225bb094f0ecc84ba44b04f4d7322b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/run-native-gates.sh",
+      "exists": true,
+      "bytes": 1152,
+      "sha256": "a672bb00e9e578cd9f88d5fad7f4b839e8a39a7bf7253165f9bf754884d652eb",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before-final-integrity.json",
+      "exists": true,
+      "bytes": 1881,
+      "sha256": "83813f93ab615adae72e8b6562a1036772d1c44e770ed9cee40b3d19d392ac40",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before-identity.json",
+      "exists": true,
+      "bytes": 3837,
+      "sha256": "5c4f4d641b9097d21592cab082b725faa5f8ab4165c08db5815c52bdb30080d3",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements-before-87de.json",
+      "exists": true,
+      "bytes": 126968,
+      "sha256": "ff6740b4d3505dc02bb7fcb0dfb26a96e7fa06fa6ee7a3f6d623c238527af9cb",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements-inputs-97e8.json",
+      "exists": true,
+      "bytes": 127120,
+      "sha256": "5b91356dbc4dbb760575253c0167a8b0cfb384d58e1d93fa153bf32f38add3ed",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/source-before-retirement.json",
+      "exists": true,
+      "bytes": 44453,
+      "sha256": "f546a0f329bf640f37e38b89abf744b380549039d5dea6927acc35ab15e9c1ec",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/tests-rs-disposition.json",
+      "exists": true,
+      "bytes": 3043,
+      "sha256": "ed78f71e89438bc14e97238d212fd3064adbfcfafa48f3cb9f73ed6cf03b0207",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/wasm-build.log",
+      "exists": true,
+      "bytes": 56,
+      "sha256": "56ba57742e051c0a29604980e5ebc186423345a3f77cc77b7e12978c26a3831b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/workspace-fast-v2.log",
+      "exists": true,
+      "bytes": 1667,
+      "sha256": "98095d7bcc1d126509fba4ac78739e63eeac4ec910ffe955d0822945bb677117",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/workspace-fast.log",
+      "exists": true,
+      "bytes": 2241,
+      "sha256": "6239dca6375e575a62b69b84fc9729f52a6847bfe1b39a979dc7f305e9d5e9f1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/all-comparisons.json",
+      "exists": true,
+      "bytes": 2748,
+      "sha256": "f03f6c800642d2e98d9990240eb90d468e79ff82b168aec1e13e650deee8e11a",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/build-candidate.log",
+      "exists": true,
+      "bytes": 132,
+      "sha256": "3914a4b5ce8d1b402eeb07ef8db030ed0a0277434b66434282849501be62ea39",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/build.log",
+      "exists": true,
+      "bytes": 131,
+      "sha256": "6d2442110bc181375fd908f0bbd9a98a61c3b8cff2da0c867609eef982347b8f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/candidate-one.log",
+      "exists": true,
+      "bytes": 58,
+      "sha256": "7ba21bfb31589fde005f17f257b8f559213a50296afb544be3abafb067a7a03f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/candidate-three.log",
+      "exists": true,
+      "bytes": 57,
+      "sha256": "7db643f285dab21918da7342e350f5601a07ecf6d03c2c6cbb4af54628cfe263",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/clippy-cleanup-proof.json",
+      "exists": true,
+      "bytes": 2685,
+      "sha256": "1fc9d7d657433d63903611371d15aa7469a6247b08ec1cceca550cd0339d3b9c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/dayplayer-before-clippy.rs.gz",
+      "exists": true,
+      "bytes": 40692,
+      "sha256": "10f8c3812a80f57523ef5e03bfacd9b8bfae39b9184bd2434a90dbc00c99e5b6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/engine-before-clippy.rs.gz",
+      "exists": true,
+      "bytes": 111630,
+      "sha256": "9dc037ec31a748efa56f1c7b0acb40f730b894f1ce5d2b1aa0d6c408fd1688e6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-candidate-one.log",
+      "exists": true,
+      "bytes": 58,
+      "sha256": "7ba21bfb31589fde005f17f257b8f559213a50296afb544be3abafb067a7a03f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-candidate-three.log",
+      "exists": true,
+      "bytes": 57,
+      "sha256": "7db643f285dab21918da7342e350f5601a07ecf6d03c2c6cbb4af54628cfe263",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-comparisons.json",
+      "exists": true,
+      "bytes": 4293,
+      "sha256": "bdd2d10ca148f5de980e167b60464fd00f65d8678abdde18a1513211ceec5986",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/loaded.session.comparison.json",
+      "exists": true,
+      "bytes": 2005,
+      "sha256": "989a712d8a6764d0ff4a45af5dfc0e9d3b677d255448ff4952b70b05037d29e1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/loaded.session.json.gz",
+      "exists": true,
+      "bytes": 45078,
+      "sha256": "b9d0452851e3c8d49cdd0c465216a2f8b71fb75cd4cfe3dc2c12be449382d534",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/prepared.session.comparison.json",
+      "exists": true,
+      "bytes": 2005,
+      "sha256": "989a712d8a6764d0ff4a45af5dfc0e9d3b677d255448ff4952b70b05037d29e1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/prepared.session.json.gz",
+      "exists": true,
+      "bytes": 45078,
+      "sha256": "b9d0452851e3c8d49cdd0c465216a2f8b71fb75cd4cfe3dc2c12be449382d534",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/reloaded.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/reloaded.report.json.gz",
+      "exists": true,
+      "bytes": 8787,
+      "sha256": "eef236fa6fa6e7144f2bebbe0c9af9c4a0a958605c49b57010f1a8c62e369134",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/reloaded.session.comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/reloaded.session.json.gz",
+      "exists": true,
+      "bytes": 97618,
+      "sha256": "cd34b227e50785a5eb5a812c0adfbccf3f8855cfe24f4606f8a8a29d4a2c3f0c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/sliced.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/sliced.report.json.gz",
+      "exists": true,
+      "bytes": 8787,
+      "sha256": "eef236fa6fa6e7144f2bebbe0c9af9c4a0a958605c49b57010f1a8c62e369134",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/sliced.session.comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/sliced.session.json.gz",
+      "exists": true,
+      "bytes": 97618,
+      "sha256": "cd34b227e50785a5eb5a812c0adfbccf3f8855cfe24f4606f8a8a29d4a2c3f0c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/summary.comparison.json",
+      "exists": true,
+      "bytes": 83,
+      "sha256": "ccc766b2518d4e8b41d9b94d1ce7aa06660514192aadd2c4340fff4024063eae",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/summary.json.gz",
+      "exists": true,
+      "bytes": 234,
+      "sha256": "0bc0b94ce7d5974475d8f5a54514ec1476b446b3feabfb95757e5501216008ef",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/whole.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/whole.report.json.gz",
+      "exists": true,
+      "bytes": 8787,
+      "sha256": "eef236fa6fa6e7144f2bebbe0c9af9c4a0a958605c49b57010f1a8c62e369134",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/whole.session.comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-one/whole.session.json.gz",
+      "exists": true,
+      "bytes": 97618,
+      "sha256": "cd34b227e50785a5eb5a812c0adfbccf3f8855cfe24f4606f8a8a29d4a2c3f0c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/loaded.session.comparison.json",
+      "exists": true,
+      "bytes": 4052,
+      "sha256": "75bdbeb874416c821b2c47dee0f6ba740773853881c9f9aea3328ca027a17d87",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/loaded.session.json.gz",
+      "exists": true,
+      "bytes": 155750,
+      "sha256": "cb474603cb65a68d78e12a1ebf3ac42afe6196fde2a3c9da02edff760688b616",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/prepared.session.comparison.json",
+      "exists": true,
+      "bytes": 7653,
+      "sha256": "a9281ad97e0532c543d91583168057cf951704c9cded99ac0ce76a5086651fb4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/prepared.session.json.gz",
+      "exists": true,
+      "bytes": 194668,
+      "sha256": "e50aab30e6c24ac2dd9152b21d2106a3857bc5f4fb38ab0cb448417f99ebd9aa",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/reloaded.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/reloaded.report.json.gz",
+      "exists": true,
+      "bytes": 4881,
+      "sha256": "e0fc5853cc86e191a8cceab527da52c0eb01b8998dcda04ff9413e3077d722cd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/reloaded.session.comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/reloaded.session.json.gz",
+      "exists": true,
+      "bytes": 199969,
+      "sha256": "4adf02068b1cfbf264f9bbf42e22e2f37578a519a02737ca9a6c14edcf87f75c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/sliced.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/sliced.report.json.gz",
+      "exists": true,
+      "bytes": 4881,
+      "sha256": "e0fc5853cc86e191a8cceab527da52c0eb01b8998dcda04ff9413e3077d722cd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/sliced.session.comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/sliced.session.json.gz",
+      "exists": true,
+      "bytes": 199969,
+      "sha256": "4adf02068b1cfbf264f9bbf42e22e2f37578a519a02737ca9a6c14edcf87f75c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/summary.comparison.json",
+      "exists": true,
+      "bytes": 340,
+      "sha256": "ef3ac9a5c9cdd74e97289028d5d7f2f47d06b70a738c0c0abb7bcb606ed6b9c3",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/summary.json.gz",
+      "exists": true,
+      "bytes": 2954,
+      "sha256": "526854a9353c3d771e3eb58613b1ebf8e78de830097311261be8f725cb983304",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/whole.report.comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/whole.report.json.gz",
+      "exists": true,
+      "bytes": 4881,
+      "sha256": "e0fc5853cc86e191a8cceab527da52c0eb01b8998dcda04ff9413e3077d722cd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/whole.session.comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/final-three/whole.session.json.gz",
+      "exists": true,
+      "bytes": 199969,
+      "sha256": "4adf02068b1cfbf264f9bbf42e22e2f37578a519a02737ca9a6c14edcf87f75c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/focused-retirement.log",
+      "exists": true,
+      "bytes": 604,
+      "sha256": "93459fe7357dfd5691759c17c129977c094e0ae01b864aece2cef1539db2595d",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/forecast-before-clippy.rs.gz",
+      "exists": true,
+      "bytes": 26454,
+      "sha256": "3d39fc8236c2ddf88a3ebf5182cc1a415487f2d3a557fa81d244b6238a59ca64",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/identity.json",
+      "exists": true,
+      "bytes": 7434,
+      "sha256": "854434e3035c63dc110daf9e8bb9ba7487c729a1edf79ba45e38fb20386a34ba",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/input.session.json.gz",
+      "exists": true,
+      "bytes": 45693,
+      "sha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/loaded.session.json.gz",
+      "exists": true,
+      "bytes": 45693,
+      "sha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/prepared.session.json.gz",
+      "exists": true,
+      "bytes": 45693,
+      "sha256": "ec02b2730c325681c3354f39410fbb086204894032fdb041d36a231cbb70f593",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/reloaded.report.json",
+      "exists": true,
+      "bytes": 115087,
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/reloaded.session.json.gz",
+      "exists": true,
+      "bytes": 99212,
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/sliced.report.json",
+      "exists": true,
+      "bytes": 115087,
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/sliced.session.json.gz",
+      "exists": true,
+      "bytes": 99212,
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/summary.json",
+      "exists": true,
+      "bytes": 330,
+      "sha256": "a186d7be84c1ec8a688196af0b7744f3126dddbecca12d31273ccd71c851111e",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/whole.report.json",
+      "exists": true,
+      "bytes": 115087,
+      "sha256": "c2d73e132c80cf0c7a42450c8e8cd71a3a2c780de9a6a2ef7c43e87e71044c0b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one/whole.session.json.gz",
+      "exists": true,
+      "bytes": 99212,
+      "sha256": "2e9d55c6e5e1e42d5342a4d46cbc1384b46fb8e025ed549b0af998ae9582801f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-candidate-comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-comparator-optional-stake-key-error.json",
+      "exists": true,
+      "bytes": 2831,
+      "sha256": "0e3eae005b2be4faa8b4dc859f7265affb75883b59b5927e4c623e59611b5f0d",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-loaded.session-comparison.json",
+      "exists": true,
+      "bytes": 2005,
+      "sha256": "989a712d8a6764d0ff4a45af5dfc0e9d3b677d255448ff4952b70b05037d29e1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-prepared.session-comparison.json",
+      "exists": true,
+      "bytes": 2005,
+      "sha256": "989a712d8a6764d0ff4a45af5dfc0e9d3b677d255448ff4952b70b05037d29e1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-reloaded.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-reloaded.session-comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-sliced.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-sliced.session-comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-summary-comparison.json",
+      "exists": true,
+      "bytes": 83,
+      "sha256": "ccc766b2518d4e8b41d9b94d1ce7aa06660514192aadd2c4340fff4024063eae",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-whole.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one-whole.session-comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/one.log",
+      "exists": true,
+      "bytes": 58,
+      "sha256": "7ba21bfb31589fde005f17f257b8f559213a50296afb544be3abafb067a7a03f",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probe-seed1-d6.game.json",
+      "exists": true,
+      "bytes": 50226,
+      "sha256": "4cdb5c38e92151d622b73c0962a031feb7548e280d4d37e4d2a255edf41a4741",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probe-seed1-d8.game.json",
+      "exists": true,
+      "bytes": 44946,
+      "sha256": "7fd199cbb7e5a4d78adb7c7f157bba857d494f91147175db61388c1c04c577ef",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probe-seed3-d6.game.json",
+      "exists": true,
+      "bytes": 47984,
+      "sha256": "e7fa67a9bf2f2440994222522617de28ca841bf3581de53f31db7adab76f08ea",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probe-seed3-d8.game.json",
+      "exists": true,
+      "bytes": 42994,
+      "sha256": "ed28bfcf477aefa4a71aa06cfa283ed47e9cd3b7f19c2b8c1707dfae2acbf3cf",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probe-sent-comparison.json",
+      "exists": true,
+      "bytes": 821,
+      "sha256": "a5e4d4a42a0c2f5aa8296674b17d308d44c3cc7f3897270828bf1d4159094c05",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probes-before.log",
+      "exists": true,
+      "bytes": 2034,
+      "sha256": "c1343fc12d22de9d6eac40866be5c40624ba738fc5f1082050b2b216ec92edfd",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probes-candidate.log",
+      "exists": true,
+      "bytes": 2014,
+      "sha256": "a9a783417bac876be76c4e3d68d188d74fef107e8dab0a74fde135ef1b389e38",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/probes-original-diagnostic-error.log",
+      "exists": true,
+      "bytes": 1176,
+      "sha256": "e82cc2ff615aae79d9e7c68a7374e4fb8af3ad38301ba125d65a5ccf534780c1",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/qa-pre-whitespace.rs.gz",
+      "exists": true,
+      "bytes": 35911,
+      "sha256": "e6b4b93006f9c4b92499f5c38c61d22890f52bf90bee34159e22ce003f10c39d",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/qa-whitespace-proof.json",
+      "exists": true,
+      "bytes": 866,
+      "sha256": "3153f488c7fa327bb3b92c5b02d20f8a01435a58c5151dffc1be3525ed749d31",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/input.session.json.gz",
+      "exists": true,
+      "bytes": 158148,
+      "sha256": "a0951292c6bbc3e99b6654015a6405c11f7f662e27f0f8273bf2d37a7cee59d0",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/loaded.session.json.gz",
+      "exists": true,
+      "bytes": 158159,
+      "sha256": "ec024bc5496c67cfe6886de0c32134f47fd2eaac6cf9961241ce38d4a30e3ea8",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/prepared.session.json.gz",
+      "exists": true,
+      "bytes": 198113,
+      "sha256": "ab5c47b9c3838e51ea402abe7041b5ccb68332499e76436618067a6fe4b7a855",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/reloaded.report.json",
+      "exists": true,
+      "bytes": 40743,
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/reloaded.session.json.gz",
+      "exists": true,
+      "bytes": 203021,
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/sliced.report.json",
+      "exists": true,
+      "bytes": 40743,
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/sliced.session.json.gz",
+      "exists": true,
+      "bytes": 203021,
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/summary.json",
+      "exists": true,
+      "bytes": 184669,
+      "sha256": "8e383e189d112da613d98e18e72bbccbd9b996bd555738994d17d6c4a9e9bed6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/whole.report.json",
+      "exists": true,
+      "bytes": 40743,
+      "sha256": "4e25b139be20b96253253767abe74956ca7663573aca97d042c4b06d24c67f62",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three/whole.session.json.gz",
+      "exists": true,
+      "bytes": 203021,
+      "sha256": "be66db8925a1634e253ffbefa28b27ea659527ca489f303509bbf71418da06d6",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-candidate-comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-loaded.session-comparison.json",
+      "exists": true,
+      "bytes": 4052,
+      "sha256": "75bdbeb874416c821b2c47dee0f6ba740773853881c9f9aea3328ca027a17d87",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-prepared.session-comparison.json",
+      "exists": true,
+      "bytes": 7653,
+      "sha256": "a9281ad97e0532c543d91583168057cf951704c9cded99ac0ce76a5086651fb4",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-reloaded.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-reloaded.session-comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-sliced.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-sliced.session-comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-summary-comparison.json",
+      "exists": true,
+      "bytes": 340,
+      "sha256": "ef3ac9a5c9cdd74e97289028d5d7f2f47d06b70a738c0c0abb7bcb606ed6b9c3",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-whole.report-comparison.json",
+      "exists": true,
+      "bytes": 141,
+      "sha256": "99d0a1874e0d01317714d13fe37a0c350194da45b5e24a9beb5c3dbc38709eff",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three-whole.session-comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/three.log",
+      "exists": true,
+      "bytes": 57,
+      "sha256": "7db643f285dab21918da7342e350f5601a07ecf6d03c2c6cbb4af54628cfe263",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/baseline/warlord-before.game.json",
+      "exists": true,
+      "bytes": 42209,
+      "sha256": "d568036ce7b7d5f70fc2a7d096b86a72467cf4a54acb941a1568eb0e5757dc8b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/bank-positive.after.session.json.gz",
+      "exists": true,
+      "bytes": 145019,
+      "sha256": "db40045e59cc44e9e380a5f6613291fc1463bad6c967e057a03f6b1e4b7c3732",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/bank-positive.input.session.json.gz",
+      "exists": true,
+      "bytes": 193099,
+      "sha256": "de6a7d9ebd38ff54612c9b9f4aab35c11c18271ba69ae60ebd0a44812dd7b45b",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/death-fetched-lost.after.session.json.gz",
+      "exists": true,
+      "bytes": 153844,
+      "sha256": "00bd9d8339df373f1058fcbcb863ceaacf82276fb518b2aa38fb5baa4ec18fea",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/death-fetched-lost.input.session.json.gz",
+      "exists": true,
+      "bytes": 315903,
+      "sha256": "05f5e5c1fb6681d7768d9eef84cdf1bb52bd543af220e2a1ad3bc6006d92551a",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/death-secured-lost.after.session.json.gz",
+      "exists": true,
+      "bytes": 176841,
+      "sha256": "96af9ad046162eb65d9146fe7e4f925bb5dfcfa8e9dcab82ac8f1ce213931fb7",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/death-secured-lost.input.session.json.gz",
+      "exists": true,
+      "bytes": 314439,
+      "sha256": "a5bb596a5d95d5b0068a78d8a2e531b23c4874959ede396fe47f4dec1b1a8f59",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/multihero-absence.after.session.json.gz",
+      "exists": true,
+      "bytes": 200633,
+      "sha256": "745fea95b1b3c47e79da562beb47e9eeb3789fecb8be7e97633f93b9952399ee",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlement-before/multihero-absence.input.session.json.gz",
+      "exists": true,
+      "bytes": 195186,
+      "sha256": "05a452c0499bb06b7954415044f0a302b0efb26a61970ff7978e6ae50becb3a9",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/bank-positive.after.session.json.gz",
+      "exists": true,
+      "bytes": 144832,
+      "sha256": "e85984f4271670e4af1d56f603acb41163822ab24f3ffdee65251c531d6e9258",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/bank-positive.comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/death-fetched-lost.after.session.json.gz",
+      "exists": true,
+      "bytes": 153660,
+      "sha256": "8f666a29df227ab7b8d583ed94ecf3f7bf45387eb81d0403a846a91c8b525736",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/death-fetched-lost.comparison.json",
+      "exists": true,
+      "bytes": 2778,
+      "sha256": "45896ae571a2b3e2134f3602a34e665ec7b6d5938552d6acb69d6c62ea38dd23",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/death-secured-lost.after.session.json.gz",
+      "exists": true,
+      "bytes": 176577,
+      "sha256": "33d41c0147bbf1845d287adc91ee35874708db7e2568c9e62d5e9b867bc14142",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/death-secured-lost.comparison.json",
+      "exists": true,
+      "bytes": 4841,
+      "sha256": "68f56562c07e42dfd276798fce82d1a8d71d6937863996502bcc557a2c716100",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/expected-comparisons.json",
+      "exists": true,
+      "bytes": 576,
+      "sha256": "aa54bab566cef305936900ae62384ce67c7517b6f0d28a6263ac38a66e9b080c",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/multihero-absence.after.session.json.gz",
+      "exists": true,
+      "bytes": 200324,
+      "sha256": "4a44529c85dcb66d0c42809ae92f9f9514e8c75ee91eaeca0c4797297f6adc58",
+      "action": "add-or-modify"
+    },
+    {
+      "path": "docs/evidence/cut244/settlements/multihero-absence.comparison.json",
+      "exists": true,
+      "bytes": 5342,
+      "sha256": "77ad7c1404209cd1add259376bf842e215de19066cf7f4c537296365944f5d33",
+      "action": "add-or-modify"
+    }
+  ]
+}

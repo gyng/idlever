@@ -77,7 +77,6 @@ fn paid_backup_is_optional_home_only_and_remains_kit_on_actual_sends() {
     assert!(crate::kit::buy(&mut g,"gun_sidearm:stow").is_err());assert_eq!(g.save(),before);
     let paid_balance = g.lineage.gold;
     g.bail();let ended = g.step(20);assert!(ended.run_over);
-    assert!(g.pending_exit.is_none(), "returns settle without a Keep choice");
     let exit = ended.events.iter().find_map(|e| if let Ev::Exit { line, .. } = e { line.as_ref() } else { None }).expect("actual settled exit event");
     assert!(!exit.finds.iter().any(|i| i.id == crate::kit::SIDEARM_ID), "starting sidearm is not a find");
     assert!(!exit.found.iter().any(|f| f.kind == "sword" && f.fate == "converted"), "paid-once sidearm never creates Gold");

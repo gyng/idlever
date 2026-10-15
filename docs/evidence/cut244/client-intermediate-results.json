@@ -1,0 +1,45 @@
+{
+  "scope": "Intermediate client API retirement checks; not final source/package acceptance",
+  "runs": [
+    {
+      "report": "client-api-removal.json",
+      "passed": [
+        "forge-requests",
+        "numbered-descents",
+        "post-clear-town"
+      ],
+      "failed": {
+        "package-requests": "Target crashed; cause unknown",
+        "ascension-refusal": "Target crashed; cause unknown",
+        "free-preparation": "Controlled fixture lacked built Forge required by current leash unlock",
+        "debug-export": "Debug CLI validator still required retired SaveBlob.loadout"
+      }
+    },
+    {
+      "report": "client-api-repair.json",
+      "passed": [
+        "package-requests"
+      ],
+      "failed": {
+        "ascension-refusal": "Target crashed; cause unknown",
+        "debug-export": "Target crashed; cause unknown",
+        "free-preparation": "Stale L1 sustain expectation of two heals; current contract gives one until L5"
+      }
+    },
+    {
+      "report": "menu-refresh-isolated.json",
+      "passed": [],
+      "failed": {
+        "menu-materials": "Headless Target crashed after unchanged100refresh loop; parent browser exited0, no observed cgroupOOM counter increment"
+      }
+    },
+    {
+      "report": "menu-refresh-private-gpu.json",
+      "passed": [
+        "menu-materials118checks; all320/400/1440 unchanged100refresh checks"
+      ],
+      "failed": {}
+    }
+  ],
+  "repairs": "Controlled free-preparation fixture explicitly contains built Forge and now covers L1one/L5two heals. Debug-envelope validator accepts current metadata without old numeric loadout. Old storage API/prototype/source fields removed; Runtime/served WASM retirement and full browser checks still pending."
+}

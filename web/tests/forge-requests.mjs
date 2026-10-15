@@ -2,10 +2,12 @@ import { stateWidths } from "./lib/viewport-cases.mjs";
 // Delayed Forge requests exercise actual cache and sheet ownership, without simulation noise.
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   for (const width of stateWidths([400, 1440])) {
@@ -53,7 +55,6 @@ try {
         ...app,
         lineage: structuredClone(app.lineage),
         rules: structuredClone(app.rules),
-        loadout: [...app.loadout],
       };
       const other = measureKit(clone);
       await tick();
@@ -69,7 +70,6 @@ try {
       const saved = {
         lineage: structuredClone(app.lineage),
         rules: structuredClone(app.rules),
-        loadout: [...app.loadout],
       };
       const edits = [
         ["hero", () => (app.lineage.selected_bloodline = 2)],
@@ -90,7 +90,10 @@ try {
               },
             ]),
         ],
-        ["loadout", () => (app.loadout = [71])],
+        [
+          "reusable starting kit",
+          () => (app.lineage.starting_kits = { current: { weapon: "sword" } }),
+        ],
         ["rules metadata", () => (app.rules.name = "changed")],
         ["route", () => (app.rules.route = [2])],
         ["kit", () => (app.lineage.kit[0].owned = 1)],
@@ -100,7 +103,6 @@ try {
       for (const [name, edit] of edits) {
         app.lineage = structuredClone(saved.lineage);
         app.sets[app.active] = structuredClone(saved.rules);
-        app.loadout = [...saved.loadout];
         edit();
         const before = calls,
           ask = measureKit(app);
@@ -112,7 +114,6 @@ try {
       // Only four completed camps retained: the original has been evicted.
       app.lineage = structuredClone(saved.lineage);
       app.sets[app.active] = structuredClone(saved.rules);
-      app.loadout = [...saved.loadout];
       let before = calls,
         ask = measureKit(app);
       await tick();

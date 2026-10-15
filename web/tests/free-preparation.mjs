@@ -4,10 +4,12 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   const page = await browser.newPage({ viewport: { width: 400, height: 900 } });
@@ -39,6 +41,7 @@ try {
     await engine.newLineage(193);
     const fixture = await saved();
     fixture.lineage.town.home = true;
+    fixture.lineage.town.built = [["blacksmith", 0]]; // The current permanent leash is unlocked by the built Forge.
     fixture.lineage.gold = 0;
     fixture.lineage.supplies = [];
     fixture.lineage.last_supplies = [];
@@ -99,29 +102,36 @@ try {
       "clear creates no ledger transaction",
     );
 
-    automaticFixture.lineage.restock_off = true;
-    automaticFixture.lineage.repeat_quote = { heal: 1000000 };
-    await engine.load(JSON.stringify(automaticFixture));
-    await engine.buySupply("heal");
-    await engine.clearSupplies(); // preparing by name teaches the kind to the stance
-    for (let refill = 0; refill < 3; refill++) {
-      await engine.setRestock(true);
-      const automatic = await saved();
-      check(
-        automatic.lineage.supplies.filter((item) => item.kind === "heal").length === 2,
-        "automatic sustain refills both slots",
-      );
-      check(
-        automatic.lineage.supplies
-          .filter((item) => item.kind === "heal")
-          .every((item) => item.auto_packed && !item.free),
-        "automatic refill retains ownership",
-      );
-      check(
-        automatic.lineage.gold === 0 && !Object.keys(automatic.batch.spent).length,
-        "automatic refill is free with a stale quote",
-      );
-      await engine.setRestock(false);
+    for (const [level, heals] of [
+      [1, 1],
+      [5, 2],
+    ]) {
+      const prepared = structuredClone(automaticFixture);
+      prepared.lineage.restock_off = true;
+      prepared.lineage.repeat_quote = { heal: 1000000 };
+      prepared.lineage.pkg.runs.steady = level === 5 ? 200 : 0;
+      await engine.load(JSON.stringify(prepared));
+      await engine.buySupply("heal");
+      await engine.clearSupplies(); // Preparing by name teaches the kind to the stance.
+      for (let refill = 0; refill < 3; refill++) {
+        await engine.setRestock(true);
+        const automatic = await saved();
+        check(
+          automatic.lineage.supplies.filter((item) => item.kind === "heal").length === heals,
+          `Steady L${level}: automatic sustain refills ${heals} unlocked slots`,
+        );
+        check(
+          automatic.lineage.supplies
+            .filter((item) => item.kind === "heal")
+            .every((item) => item.auto_packed && !item.free),
+          "automatic refill retains ownership",
+        );
+        check(
+          automatic.lineage.gold === 0 && !Object.keys(automatic.batch.spent).length,
+          "automatic refill is free with a stale quote",
+        );
+        await engine.setRestock(false);
+      }
     }
     await engine.load(JSON.stringify(fixture));
 
@@ -155,7 +165,7 @@ try {
       await engine.bail();
       const ended = await engine.step(64);
       check(ended.run_over, "delve finishes through actual retreat");
-      await engine.autoKeep();
+      check(!ended.exit_pending, "retreat settles without a Keep decision or follow-up action");
       const returned = await saved();
       check(
         returned.lineage.supplies.filter((item) => item.kind === "heal").length === 1,

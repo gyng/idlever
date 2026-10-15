@@ -911,9 +911,6 @@ pub fn pending(game: &Game) -> Vec<String> {
             }
         }
     }
-    if !game.batch.found.is_empty() {
-        out.push(format!("vault: {} found", game.batch.found.len()));
-    }
     if l.party.len() < l.party_slots() as usize && !l.kennel.is_empty() {
         out.push("party: choose".into());
     }

@@ -214,7 +214,7 @@ mod tests {
         let before=watched.save();assert!(watched.choose(900).is_err());assert_eq!(watched.save(),before);
         watched.step(3);assert_eq!(watched.run.as_ref().unwrap().loot_raw,30);
         let (r,mut cx)=watched.ctx();crate::turn::end_run(r,&mut cx,crate::engine::ExitTier::Return);watched.finish_run();
-        assert_eq!(watched.lineage.gold,507);assert!(watched.pending_exit.is_none());assert_eq!(watched.lineage.forge["mail"].salvaged,1);
+        assert_eq!(watched.lineage.gold,507);assert_eq!(watched.lineage.forge["mail"].salvaged,1);
     }
     #[test]
     fn saved_pending_cache_settles_on_next_tick_with_saved_preference_and_privacy() {

@@ -45,7 +45,6 @@ export const temperamentOrderShown = (L: Lineage): boolean =>
   !!L.orders?.temperament && !!L.persistent_hero?.progression?.temperament_order_available;
 /** the order keys `same for all` can carry (core `tree::SHAREABLE`) */
 export const SHAREABLE = [
-  "insure",
   "forge",
   "wall",
   "sink",

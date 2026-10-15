@@ -333,6 +333,7 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
   const has = (id: string): boolean => buildings.some((b) => b.id === id);
   const next =
     town?.next &&
+    town.next_ready === true &&
     (town.next === "house" || (BUILDINGS as readonly string[]).includes(town.next)) &&
     !has(town.next)
       ? {
@@ -369,7 +370,7 @@ export function townState(L: Lineage, absence?: ReturnReport | null, o: TownOpts
       .sort((a, b) => b.g - a.g || a.i - b.i)
       .slice(0, PARTIES_MAX)
       .sort((a, b) => a.i - b.i);
-    const finds = (absence.found?.length ?? 0) > 0 || (absence.new_finds?.length ?? 0) > 0;
+    const finds = (absence.new_finds?.length ?? 0) > 0;
     const tame = absence.tamed?.[0];
     const big = Math.max(60, ...home) * 0.5;
     order.forEach(({ g }, k) => {

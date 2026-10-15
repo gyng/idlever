@@ -67,8 +67,7 @@ fn a_watched_run_replays_to_the_same_events() {
             cache |= evs.iter().any(|e|matches!(e,Ev::Note {text,..} if text.starts_with("Found the ")&&text.contains(" in the cache")));
             assert!(g.capsules.0.iter().all(|c|c.inputs.iter().all(|(_,input)|!matches!(input,crate::engine::Input::Choose(_)))));
             assert_eq!(g.lineage.run_log.last().unwrap().via, "watched");
-            g.auto_keep();
-        }
+            }
     }
     assert!(cache, "an automatic cache pickup was replayed with no manual choice input");
 }
@@ -185,7 +184,6 @@ fn the_log_folds_by_absence_and_keeps_sixty() {
     assert!(first.iter().all(|r| r.absence == Some(1)));
     let n1 = first.len();
     watched(&mut g, None);
-    g.auto_keep();
     run_offline_quick(&mut g, 3600);
     let log = &g.lineage.run_log;
     assert_eq!(log[n1].via, "watched");

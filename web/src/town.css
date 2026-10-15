@@ -34,6 +34,7 @@
   position: absolute;
   inset: 0;
   z-index: 2;
+  pointer-events: none;
 }
 .town-hit {
   position: absolute;
@@ -42,6 +43,7 @@
   border: 0;
   background: transparent;
   cursor: pointer;
+  pointer-events: auto;
   border-radius: 6px;
   -webkit-tap-highlight-color: transparent;
 }
@@ -71,39 +73,23 @@
   gap: 4px;
   pointer-events: none;
 }
+/* Availability belongs to the sprite target, not a second purchase surface. */
 .town-marker {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  min-width: 26px;
-  height: 26px;
-  padding: 0 5px;
-  border-radius: 13px;
-  background: radial-gradient(circle at 50% 35%, #3a2a1a, #14100c);
-  box-shadow:
-    0 0 0 1px #8a6a2a,
-    0 0 10px rgba(255, 196, 90, 0.45);
-  color: #f3d192;
-  font-size: 12px;
-  animation: town-bob 1.6s ease-in-out infinite;
-}
-.town-marker .ico {
-  width: 18px;
-  height: 18px;
-}
-.town-marker .ico.glyph::before {
-  content: attr(data-glyph);
-  font-size: 14px;
-  line-height: 18px;
+  pointer-events: none;
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e3c183;
+  box-shadow: 0 0 0 2px #211b17;
 }
 .town-marker.mk-rune {
-  box-shadow:
-    0 0 0 1px #4f8fa8,
-    0 0 10px rgba(110, 200, 230, 0.5);
+  background: #8bb8c7;
 }
-.town-marker.mk-sword {
-  min-height: 30px;
+.town-hit:hover,
+.town-hit:focus-visible {
+  background: rgba(227, 193, 131, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(227, 193, 131, 0.32);
 }
 @keyframes town-bob {
   0%,
@@ -277,63 +263,31 @@
   flex-shrink: 0;
 }
 
-/* Home help is a separate action: inspecting a ready plot never constructs it. */
-.town-building-labels {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-}
-.town-building-info {
-  position: absolute;
-  width: max-content;
-  max-width: calc(100% - 12px);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  padding: 4px 8px;
-  border: 1px solid #79644b;
-  border-radius: 4px;
-  color: #e6d6b9;
-  background: rgba(21, 19, 23, 0.88);
-  box-shadow:
-    inset 0 1px #bda17433,
-    0 2px 3px #0008;
-  font-size: 0.75rem;
-  pointer-events: auto;
-  cursor: help;
-}
-.town-building-info[hidden] {
+.town-lock {
   display: none;
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 13px;
+  height: 12px;
+  border: 2px solid #171723;
+  border-radius: 2px;
+  background: #e6c581;
+  box-shadow: 0 0 0 1px #e6c581;
 }
-.town-info-glyph {
-  display: inline-grid;
-  place-items: center;
-  width: 1.0625rem;
-  height: 1.0625rem;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  font:
-    bold 0.75rem Georgia,
-    serif;
+.town-lock::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -8px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid #e6c581;
+  border-bottom: 0;
+  border-radius: 7px 7px 0 0;
 }
-.town-building-info[data-state="locked"] {
-  border-style: dashed;
-  color: #cabfae;
-}
-.town-building-info:hover,
-.town-building-info.kw-open {
-  border-color: #e3c183;
-  background: #342b24;
-  color: #fff0d3;
-}
-.town-building-info:focus-visible {
-  outline: 2px solid #e3c183;
-  outline-offset: 2px;
-}
-.town-building-info:active {
-  box-shadow: inset 0 2px 4px #0009;
+.home-control-lock:not([hidden]) {
+  display: block;
 }
 @media (hover: hover) {
   .town-hit:hover {
@@ -419,4 +373,9 @@
 }
 .town-delving-hero:active {
   box-shadow: inset 0 2px 4px #0009;
+}
+
+/* Decorative vacancies stay in the stable Home grid without advertising future controls. */
+main.camp .console .cmd .tile.empty {
+  visibility: hidden;
 }

@@ -1,0 +1,20 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /home/g/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,Translate,AutoDeElevate,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --ignore-gpu-blocklist --use-gl=angle --use-angle=gl --enable-gpu-rasterization --force-device-scale-factor=1.5 --hide-scrollbars --mute-audio --ozone-platform=x11 --display=:99 --user-data-dir=/tmp/playwright_chromiumdev_profile-YXXDJz --remote-debugging-pipe --no-startup-window
+<launched> pid=3370363
+[pid=3370363][err] [3370363:3370363:1015/235958.104274:ERROR:dbus/object_proxy.cc:572] Failed to call method: org.freedesktop.DBus.Properties.GetAll: object_path= /org/freedesktop/UPower/devices/DisplayDevice: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.UPower was not provided by any .service files
+[pid=3370363][err] [3370363:3370386:1016/000001.862273:FATAL:components/services/font_data/font_data_service_impl.cc:379] Check failed: . : No space left on device (28)
+[pid=3370363][err] [1016/000001.883962:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3370363][err] [1016/000001.884348:ERROR:third_party/crashpad/crashpad/snapshot/elf/elf_dynamic_array_reader.h:64] tag not found
+[pid=3370363][err] [1016/000001.897370:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq: No such file or directory (2)
+[pid=3370363][err] [1016/000001.897436:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:145] open /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq: No such file or directory (2)
+    at /home/g/p/riddle/docs/evidence/cut243/home.mjs:133:16 {
+  log: []
+}
+
+Node.js v22.18.0

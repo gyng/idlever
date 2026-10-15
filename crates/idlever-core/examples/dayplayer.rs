@@ -504,8 +504,7 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
         camp_taps(g, ask, arm, out, t / 3600.0);
         if arm == 3 || arm == 2 {
             // (the session's chores by hand: the find worn)
-            let ids: Vec<u32> = g.lineage.vault.iter().map(|i| i.id).collect();
-            g.loadout(ids);
+
         }
         t += HIRE_S * (g.lineage.tree.hired.len() - hired) as f64;
         if idlever_core::tree::hired(&g.lineage, "porter") && out.porter_min.is_none() {
@@ -1446,11 +1445,6 @@ impl Play {
                         }
                     }
                 }
-            }
-            // a vault brought along (a human sends the heir out with what it has; every bot)
-            if present {
-                let ids: Vec<u32> = g.lineage.vault.iter().map(|i| i.id).collect();
-                g.loadout(ids);
             }
             note_nodes(g, out, hours_now);
             if present {

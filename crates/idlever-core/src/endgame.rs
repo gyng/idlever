@@ -212,7 +212,7 @@ impl Game {
     pub fn begin_descent(&mut self, tier: u32) -> Result<(), String> {
         if crate::persistent::remaining(&self.lineage)>0 {return Err("Finish recovery".into());}
         if !self.lineage.ended { return Err("clear the dungeon first".into()); }
-        if self.pending_exit.is_some() || self.offline_absence.is_some() || self.offline {
+        if self.offline_absence.is_some() || self.offline {
             return Err("finish the return first".into());
         }
         if self.run.as_ref().is_some_and(|r| r.over.is_none()) {
@@ -226,7 +226,6 @@ impl Game {
         self.lineage.endgame = Some(p);
         descent_lineage(&mut self.lineage);
         self.run = None;
-        self.pending_exit = None;
         self.history.clear();
         self.floor_start = None;
         self.sent_state = None;
@@ -406,14 +405,12 @@ mod tests {
             l.bloodline.as_mut().unwrap().points=42;
             let before = serde_json::to_value(&s.active.lineage).unwrap();
             let others = s.others.clone();
-            let loadout = s.active.loadout.clone();
             s.begin_descent(1).unwrap();
             let after = serde_json::to_value(&s.active.lineage).unwrap();
             for field in ["gold","gold_ledger","town","tree","bloodline_id","bloodline", "hero_legacy", "heir", "class", "classes", "kit", "supplies", "facts", "sets", "pkg", "forge", "unlocks", "clock_s", "rng", "vault", "party", "kennel"] {
                 assert_eq!(after.get(field),before.get(field),"slot {selected}: {field}");
             }
             assert_eq!(s.others,others);
-            assert_eq!(s.active.loadout,loadout);
             assert_eq!((s.active.lineage.best_depth,s.active.lineage.start),(0,1));
             assert!(s.active.lineage.picked.is_empty());
             let save = s.save();let loaded = Session::load(&save).unwrap();
@@ -478,7 +475,6 @@ mod tests {
         let mut settled = Game::new_resident(3);settled.send();
         settled.run.as_mut().unwrap().over=Some(crate::engine::ExitTier::Bank);
         settled.finish_run();
-        assert!(settled.pending_exit.is_none(), "ordinary returns settle atomically");
         assert!(!settled.lineage.ended, "a settled return is not a dungeon clear");
         let mut ready = settled.clone();
         ready.lineage.ended = true;

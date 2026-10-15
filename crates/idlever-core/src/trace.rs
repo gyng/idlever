@@ -2149,7 +2149,6 @@ pub fn row_item(row: &Row) -> Option<&str> {
 pub fn next_pack_kinds(camp: &Game) -> BTreeSet<String> {
     let l = &camp.lineage;
     let mut out: BTreeSet<String> = l.supplies.iter().map(|s| s.kind.clone()).collect();
-    out.extend(camp.loadout.iter().filter_map(|id| l.vault.iter().find(|v| v.id == *id)).map(|v| v.kind.clone()));
     if !l.restock_off {
         out.extend(l.last_supplies.iter().filter(|k| !l.last_wasted.contains(k)).cloned());
     }
@@ -2718,10 +2717,6 @@ fn camp_key(game: &Game) -> u64 {
 pub fn camp_state(game: &Game) -> Game {
     let mut g = game.sim_clone();
     g.run = None;
-    if let Some(p) = &game.pending_exit {
-        g.pending_exit = Some(p.clone());
-        g.auto_keep();
-    }
     g
 }
 

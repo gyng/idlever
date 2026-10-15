@@ -141,8 +141,7 @@ fn play(original: &Session, class: Class, path: &[&str], checkins: u32, dir: &Pa
     s.set_class(class.name()).expect("legal free class choice at home");
     assert_eq!(s.active.lineage.gold, gold0, "class choice is free");
     // Start with the chosen class's own weapon, not an inherited Fighter sword.
-    let loadout = s.active.loadout.iter().copied().filter(|id| !s.active.lineage.vault.iter().any(|i| i.id == *id && i.cat() == idlever_core::defs::Cat::Weapon)).collect();
-    s.loadout(loadout);
+
     std::fs::write(dir.join(format!("seed{seed}-{label}-start.json")), s.save()).unwrap();
     let best0 = s.active.lineage.best_depth;
     let (mut runs, mut deaths, mut stalls) = (0u32, 0u32, 0u32);

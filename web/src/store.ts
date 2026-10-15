@@ -1,4 +1,4 @@
-// localStorage persistence: engine save string + loadout + last_seen. (v1 blobs also carried client-side
+// localStorage persistence: engine save string + last_seen. (v1 blobs also carried client-side
 // set tabs; the engine's saved sets are the truth now, so v1 is read but its sets are ignored.)
 // Cut 7 §2: `origins` = each saved set's row origins (`preset | patch | card | player`, by row index), a client-side
 // tag the engine save does not carry.
@@ -7,7 +7,6 @@
 export type SaveBlob = {
   v: 1 | 2;
   engine: string;
-  loadout: number[];
   last_seen: number;
   runs?: number;
   origins?: string[][];

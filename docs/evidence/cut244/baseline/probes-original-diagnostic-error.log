@@ -1,0 +1,6 @@
+counter 1: (true, 0.0, 1.0, 0.0)
+wall 1: [(ForecastDepth { depth: 8, reach: 1.0, pm: Some(0.0), try_: None, wall: None, bounty: false, boss: Some("goblin_warlord"), affix: Some("brood"), biome: None, clear: Some(0.0) }, ForecastDepth { depth: 9, reach: 0.0, pm: Some(0.0), try_: Some(ForecastTry { boss: "goblin_warlord", row: Row { conds: [Cond { k: "foe_tag", n: None, t: Some("boss") }], verb: Verb { v: "attack", a: Some("tag:boss") }, origin: None }, text: "attack boss", met: 8, owned: true, refusal: None, wear: None, price: None, trade_off: false }), wall: Some("goblin_warlord"), bounty: false, boss: None, affix: None, biome: None, clear: None }), (ForecastDepth { depth: 8, reach: 1.0, pm: Some(0.0), try_: None, wall: None, bounty: false, boss: Some("goblin_warlord"), affix: Some("brood"), biome: None, clear: Some(1.0) }, ForecastDepth { depth: 9, reach: 1.0, pm: Some(0.0), try_: None, wall: None, bounty: false, boss: None, affix: None, biome: None, clear: Some(1.0) })]
+
+thread 'main' (44) panicked at crates/idlever-core/src/probes.rs:318:22:
+trial rules: "8 own rows, 4 allowed"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

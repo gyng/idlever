@@ -4,10 +4,12 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const source = readFileSync(
     new URL("./fixtures/earned-first-ascension-clear.json", import.meta.url),
     "utf8",

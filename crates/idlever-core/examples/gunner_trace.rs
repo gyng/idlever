@@ -28,6 +28,6 @@ fn main() {
             *counts.entry(key).or_default()+=1;
         }
         println!("{}",serde_json::json!({"run":n,"ended":ended,"last_run":s.active.lineage.last_run,"events":events.len(),"counts":counts}));
-        if !ended||s.active.pending_exit.is_some()||s.active.lineage.ended {break;}
+        if !ended||s.active.lineage.ended {break;}
     }
 }

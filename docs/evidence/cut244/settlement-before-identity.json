@@ -1,0 +1,74 @@
+{
+  "manifest": "docs/evidence/cut235/final/settlements-inputs-87de.json",
+  "manifestSha256": "ff6740b4d3505dc02bb7fcb0dfb26a96e7fa06fa6ee7a3f6d623c238527af9cb",
+  "wasm": {
+    "bytes": 6912832,
+    "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+  },
+  "files": [
+    {
+      "case": "bank-positive",
+      "phase": "home",
+      "original": "docs/evidence/cut223/core/fixtures-final/bank-positive.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/bank-positive.input.session.json.gz",
+      "gzipSha256": "de6a7d9ebd38ff54612c9b9f4aab35c11c18271ba69ae60ebd0a44812dd7b45b",
+      "rawSha256": "4a5df878097cb91eca4ea62b885145708e7b908adfefc51e8333857132e55254"
+    },
+    {
+      "case": "bank-positive",
+      "phase": "afterHome",
+      "original": "docs/evidence/cut232/settlements/bank-positive.after.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/bank-positive.after.session.json.gz",
+      "gzipSha256": "db40045e59cc44e9e380a5f6613291fc1463bad6c967e057a03f6b1e4b7c3732",
+      "rawSha256": "f76cbb65bb3b3d76092f0bb354db9481e473eea5e078583365264de9a0878662"
+    },
+    {
+      "case": "death-secured-lost",
+      "phase": "home",
+      "original": "docs/evidence/cut223/core/fixtures-final/death-secured-lost.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/death-secured-lost.input.session.json.gz",
+      "gzipSha256": "a5bb596a5d95d5b0068a78d8a2e531b23c4874959ede396fe47f4dec1b1a8f59",
+      "rawSha256": "b3f3c2fb71dab2611a84b02e064e530a9f435cb95fab7dd3ee8aff41c11f0108"
+    },
+    {
+      "case": "death-secured-lost",
+      "phase": "afterHome",
+      "original": "docs/evidence/cut235/settled/settlements/death-secured-lost.after.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/death-secured-lost.after.session.json.gz",
+      "gzipSha256": "96af9ad046162eb65d9146fe7e4f925bb5dfcfa8e9dcab82ac8f1ce213931fb7",
+      "rawSha256": "e8fe4e8f9f95d974e67408602a310c0062b80327665ae0bc09a111f695bc3075"
+    },
+    {
+      "case": "death-fetched-lost",
+      "phase": "home",
+      "original": "docs/evidence/cut223/core/fixtures-final/death-fetched-lost.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/death-fetched-lost.input.session.json.gz",
+      "gzipSha256": "05f5e5c1fb6681d7768d9eef84cdf1bb52bd543af220e2a1ad3bc6006d92551a",
+      "rawSha256": "2650aa5df3dcd1af9bc8077af82fe4f4eb269a4049ede81e50883238e5538d06"
+    },
+    {
+      "case": "death-fetched-lost",
+      "phase": "afterHome",
+      "original": "docs/evidence/cut232/settlements/death-fetched-lost.after.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/death-fetched-lost.after.session.json.gz",
+      "gzipSha256": "00bd9d8339df373f1058fcbcb863ceaacf82276fb518b2aa38fb5baa4ec18fea",
+      "rawSha256": "8b2a06bf7fa5fa9b62c0d83e82d9074ed495a99a6f6a49b90961d6f851834543"
+    },
+    {
+      "case": "multihero-absence",
+      "phase": "home",
+      "original": "docs/evidence/cut223/core/fixtures-final/multihero-absence.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/multihero-absence.input.session.json.gz",
+      "gzipSha256": "05a452c0499bb06b7954415044f0a302b0efb26a61970ff7978e6ae50becb3a9",
+      "rawSha256": "8cf530744a6d048aab874846912f7000dfe9ccf85e8ae22c262002d09ee5d463"
+    },
+    {
+      "case": "multihero-absence",
+      "phase": "afterHome",
+      "original": "docs/evidence/cut235/settled/settlements/multihero-absence.after.session.json.gz",
+      "archive": "docs/evidence/cut244/settlement-before/multihero-absence.after.session.json.gz",
+      "gzipSha256": "745fea95b1b3c47e79da562beb47e9eeb3789fecb8be7e97633f93b9952399ee",
+      "rawSha256": "2cbadc5df7cdf137e1a4cc113eeb194fb58367e82ec259e91b0b05808460912b"
+    }
+  ]
+}

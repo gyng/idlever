@@ -14,7 +14,7 @@ import { legendaryCollection } from "./legendary-gear";
 import { armourSets } from "./set-equipment";
 
 /** Conservative wire snapshot: simulation inputs and displayed prices belong to this camp. */
-const kitKey = (app: App): string => JSON.stringify([app.lineage, app.rules, app.loadout]);
+const kitKey = (app: App): string => JSON.stringify([app.lineage, app.rules]);
 type KitCache = {
   engine: App["engine"];
   done: Map<string, KitLadder[]>;

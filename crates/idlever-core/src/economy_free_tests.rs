@@ -138,7 +138,6 @@ fn authored_loadout_repeats_three_delves_without_payment() {
         assert!(!g.run.as_ref().unwrap().hero.inv.iter().any(|i| i.kind == "heal"), "the actual healing action consumes the chosen item");
         g.bail();
         g.finish_run().unwrap();
-        g.auto_keep();
         assert_eq!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").count(), 1);
         assert!(g.lineage.supplies.iter().filter(|s| s.kind == "heal").all(|s| !s.auto_packed && !s.free), "the authored healing slot is distinct from the kennel's automatic leash grant");
         assert_eq!(g.lineage.gold, 0);

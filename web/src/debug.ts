@@ -45,7 +45,6 @@ export async function captureDebug(app: App): Promise<DebugBundle> {
       app.lineage.selected_bloodline,
       app.active,
       app.sets,
-      app.loadout,
       app.view.kind,
       app.watchMode,
     ]);
@@ -59,7 +58,6 @@ export async function captureDebug(app: App): Promise<DebugBundle> {
       bloodline: app.lineage.selected_bloodline ?? 1,
       active_set: app.active,
       editing_sets: app.sets,
-      loadout: app.loadout,
       over_budget: app.overBudget,
       live_at_request: app.lineage.live ?? null,
       watch_mode: app.watchMode,

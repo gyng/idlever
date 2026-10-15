@@ -5,7 +5,11 @@ const windows: ReadonlyArray<readonly [string, MenuMaterial, string]> = [
   [".works-sheet", "forge", "works"],
   [".settings,.watch-options", "forge", "settings"],
   [".bank-sheet,.plot-preview", "forge", "town"],
-  [".pkg-panel,.pkg-pen-needs,.companion-rules,.row-sheet,.card-rows", "bloodlines", "build"],
+  [
+    ".pkg-panel,.pkg-pen-needs,.companion-rules,.row-sheet,.card-rows,.drop-sheet",
+    "bloodlines",
+    "build",
+  ],
   [
     ".look-sheet,.heroes-sheet,.bloodline-founding,.hero-life-panel,.class-picker",
     "bloodlines",

@@ -1,0 +1,23 @@
+{
+  "scope": "Build export from actual Git index, excluding unfinished Cut245 renderer, with real copied97e8 WASM directory and linked unchanged dependencies",
+  "export": "/home/g/p/riddle/scratchpad/cut243244-index",
+  "wasmSha256": "97e8511557eeba9731fd09208db9e1e013ff407519a67f6276edf605e643911f",
+  "files": {
+    "web/src/render/index.ts": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa",
+    "web/src/render/state.ts": "e8bd86a1a89e7a1fdfc757b3e9dddb223c906c7fc88d025e4e3d4ce7bec5e5ed",
+    "web/src/render/atlas.ts": "d6618c368d37b01f3e6ba929d650d73364ff809e49b3bd813bda83a40e056545",
+    "web/src/render/view2d.ts": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+    "web/src/render/fallback.ts": "29b1aabbdf1b554cf95a39561b2e554e3e0e164a6378c3913693b9dd3376519b",
+    "web/src/ui/camp.ts": "8aab6f6fd497998d0439046dbcab9de3e10b680c2b94db8f8bdc8c0445b1008f",
+    "web/src/engine/types.ts": "6e886cc628b06e446ab2180b7a6ccfe3099ee954743636d3911e082189639f60",
+    "web/src/engine/wasm.ts": "d2627c9060ea3e48d9985195dc644f335fa4a550651c3e7d808b01cd472b5c5d"
+  },
+  "result": "PASS (TypeScript + production Vite build; existing chunk/dynamic-import warnings retained)",
+  "wasmOutputs": [
+    {
+      "file": "web/dist/assets/idlever_wasm_bg-CtK2pvDR.wasm",
+      "bytes": 6775918,
+      "sha256": "97e8511557eeba9731fd09208db9e1e013ff407519a67f6276edf605e643911f"
+    }
+  ]
+}

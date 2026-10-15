@@ -27,12 +27,12 @@ import type { App, Mounted } from "../app";
 import type {
   Counter,
   ExitLine,
-  InvItem,
   Lineage,
   MeterWire,
   News,
   Patch,
   ReturnReport,
+  InvItem,
   Row,
 } from "../engine/types";
 import { h, replace, items, spanOf } from "./dom";
@@ -1432,12 +1432,6 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     tiles: consTiles,
     compact: true,
   });
-  // QA 524827b (qaAA: KEPT `axe +7 → vault` after the cage's `took axe +1`): an item enchant scrolls raised says by how many
-  const keptItems: { label: string; enchanted?: number }[] = r.kept
-    ? r.kept.map((label) => ({ label }))
-    : r.new_finds
-      ? r.found
-      : [];
   // Cut 28 §2 (AU: "the report is a wall of salvage/found lines before anything to decide"): the first screen is what changed and what
   // to do — the news, the tiles, the oath's progress, the plateau, a boss's counter (driven off, or newly learned), the bounty, pending;
   // the ledger (exits, gold, salvage, bones, finds, the reel) folds under one `details` tap
@@ -1483,9 +1477,9 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
     h("span", { class: "fold-mark", "aria-hidden": "true" }, "▸ "),
     /* copy:button */ "details",
   );
-  // run-clear: a find or a kept item in its rarity rim — the rarity is the core's (the exit lines' finds, the vault), matched by label
+  // Actual exit finds retain Rust-provided rarity and private labels; no home-storage fallback.
   const rarityOf = new Map<string, InvItem>(
-    [...(r.exits ?? []).flatMap((x) => x.finds ?? []), ...L.vault].map((it) => [it.label, it]),
+    (r.exits ?? []).flatMap((x) => x.finds ?? []).map((it) => [it.label, it]),
   );
   const withRim = (label: string, text: string): (HTMLElement | string)[] => {
     const it = rarityOf.get(label);
@@ -1494,7 +1488,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
       : [itemChip({ kind: label, label: text })];
   };
   const foundChips = (): HTMLElement | null => {
-    const names = r.found.map((i) => i.label);
+    const names = (r.exits ?? []).flatMap((x) => x.finds ?? []).map((i) => i.label);
     if (!names.length) return null;
     const seen = new Map<string, number>();
     for (const n of names) seen.set(n, (seen.get(n) ?? 0) + 1);
@@ -2203,33 +2197,6 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
               )
             : null,
         ),
-        // Cut 24 §5 (AK, AL: the tapped chip read as salvaged — a twin or the return's cut sold, the kept one renamed by the vault): what
-        // the keep sheet sent to the vault leads the sell-off
-        section(
-          /* copy:label */ "kept",
-          keptItems.length
-            ? h(
-                "div",
-                { class: "chips kept" },
-                ...keptItems.map((x) =>
-                  h(
-                    "span",
-                    { class: "chip kept" },
-                    ...withRim(x.label, named(x.label)),
-                    flavourTag(L, x.label),
-                    /* copy:callout */ " → storage",
-                    x.enchanted && x.enchanted > 0
-                      ? h(
-                          "small",
-                          { class: "num dim enchanted" },
-                          /* copy:callout */ ` · enchanted ×${x.enchanted}`,
-                        )
-                      : "",
-                  ),
-                ),
-              )
-            : null,
-        ),
         // Cut 21 §2: found supplies the exits put on the shelf (the next send packs them free), before what was sold
         section(
           /* copy:label */ "shelved",
@@ -2420,17 +2387,6 @@ function opened(r: ReturnReport): HTMLElement | null {
       );
     }),
   );
-}
-
-/** QA 524827b (qaAB: kept `crimson scroll?`, the report's KEPT `summon ally scroll → vault` — "no line that it was identified"): a kept
- *  potion or scroll names the flavour it was known by, as LEARNED does (`summon ally scroll (crimson)`); nothing for gear. */
-function flavourTag(L: Pick<Lineage, "vault" | "facts">, label: string): HTMLElement | "" {
-  const v = (L.vault ?? []).find((x) => x.label === label);
-  if (!v) return "";
-  const f = (L.facts ?? []).find((x) => x.startsWith("item:") && x.endsWith(`=${v.kind}`));
-  return f
-    ? h("small", { class: "dim flavour" }, ` (${f.slice(5, f.indexOf("=")).replace(/_/g, " ")})`)
-    : "";
 }
 
 /** QA 92eb880 (N: "plateau patches … `reach 17%` — reach of which floor?"): the floor past the plateau (`none past D6` → 7). */

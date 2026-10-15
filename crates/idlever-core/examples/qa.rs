@@ -7,7 +7,7 @@
 //! cache) to the pool on copies of the game — the checks and their counts are the sequential
 //! order's. `METRICS_PHASES=1` prints each job's wall and each leg's thread-seconds.
 //!   cargo run --profile fast --example qa [-- --seeds 30 --threads 24]
-use idlever_core::engine::{gold_divisor, salvage_coins, salvage_value, without_history, GOLD_LEDGER_CAP};
+use idlever_core::engine::{without_history, GOLD_LEDGER_CAP};
 use idlever_core::item::{is_identified, to_inv};
 use idlever_core::engine::ExitTier;
 use idlever_core::rules::{Cond, Row, Verb};
@@ -95,10 +95,11 @@ fn check_names<'a>(t: &mut Tally, g: &Game, seed: u64, names: impl IntoIterator<
 
 /// The exit lines' and the report's item labels (`check_names`).
 fn check_report_names(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::ReturnReport, at: &str) {
+    check_labels(t, g, seed, &g.lineage.supplies, at);
     let mut names: Vec<&str> = Vec::new();
     names.extend(r.salvaged.iter().map(|x| x.kind.as_str()));
     names.extend(r.spent.iter().map(|x| x.kind.as_str()));
-    names.extend(r.found.iter().map(|x| x.label.as_str()));
+    names.extend(r.exits.iter().flat_map(|x| x.finds.iter().map(|i| i.label.as_str())));
     for x in &r.exits {
         names.extend(x.salvaged.iter().map(|s| s.kind.as_str()));
         names.extend(x.spent_on.iter().map(|s| s.as_str()));
@@ -119,7 +120,6 @@ fn check_report_names(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::Retu
     let mut now: Vec<&str> = Vec::new();
     now.extend(r.salvaged.iter().map(|x| x.kind.as_str()));
     now.extend(r.spent.iter().map(|x| x.kind.as_str()));
-    now.extend(r.found.iter().map(|x| x.label.as_str()));
     now.extend(r.stolen.iter().map(|x| x.label.as_str()));
     now.extend(r.shelved.iter().map(|x| x.kind.as_str()));
     now.extend(forge.iter().map(|s| s.as_str()));
@@ -433,23 +433,17 @@ fn check_forecast_reads(t: &mut Tally, lp: &mut Laps, pool: &Pool, g: &mut Game,
         lp.lap("reads: supplies, death");
         let r = g.lineage.rules().clone();
         let _ = g.set_rules(r.clone());
-        let l = g.loadout.clone();
-        g.loadout(l);
-        lp.lap("reads: set_rules, loadout");
+        lp.lap("reads: set_rules");
         // QA on 1a2a4a9 (qaO: `death 17% ↔ 13%`, `D4 68%±13 ↔ 67%±9` on opening the vault,
         // `D5 82%±11 → 85%±7` on opening `edit`): what the camp's panels send when opened or
         // re-applied — the cage picker's panels, the same preferences and repeat again, the
         // loadout in another order, the same rows re-tagged by the editor.
         let _ = g.cage_forecast();
-        let (vp, kp, rep) = (g.lineage.vault_pref.clone(), g.lineage.keep_pref.clone(), g.lineage().repeat);
+        let (vp, rep) = (g.lineage.vault_pref.clone(), g.lineage().repeat);
         let _ = g.set_vault_pref(&vp);
-        let _ = g.set_keep_pref(&kp);
         lp.lap("reads: cage_forecast");
         g.set_restock(rep);
-        let mut l = g.loadout.clone();
-        l.reverse();
-        g.loadout(l);
-        lp.lap("reads: prefs, reversed loadout");
+        lp.lap("reads: cage preference and repeat");
         // (each pass re-tags every row the other way: `player` ↔ `patch`)
         let mut tagged = r;
         for row in tagged.rows.iter_mut() {
@@ -627,13 +621,7 @@ fn check_report_headers(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::Re
         let named = h.text.contains(&format!("driven off by the {boss}")) || h.text.contains(&format!("fled the {boss}")) || h.text.starts_with(boss) || h.text.starts_with(&format!("The {boss}"));
         t.check("a reel drive-off names the boss who drove him off", named, || format!("seed {seed} run {}: `{}` · {}", h.run_id, h.text, arc.resolution));
     }
-    for it in &g.batch.found {
-        let gear = matches!(idlever_core::defs::item_def(&it.kind).cat, idlever_core::defs::Cat::Weapon | idlever_core::defs::Cat::Armour);
-        if gear {
-            let base = it.enchant - it.enchanted;
-            t.check("a kept item's `+N` is its forge base plus the enchants read on it", it.enchanted >= 0 && base >= 0 && base <= g.lineage.forge_tier(&it.kind) + 1, || format!("seed {seed}: {} +{} · enchanted {} · forge {}", it.kind, it.enchant, it.enchanted, g.lineage.forge_tier(&it.kind)));
-        }
-    }
+
 }
 
 /// QA on a946e04 (qaS: `A den of thieves. Nothing lost to the den.` in the run whose report
@@ -681,9 +669,7 @@ fn check_den_chore_leg(t: &mut Tally, g: &Game, seed: u64) {
             }
         }
         t.check("a floor's `pick up` chores with nothing taken ≤ 50", worst.0 <= CHORE_STREAK, || format!("seed {seed}: {} on D{}", worst.0, worst.1));
-        if h.pending_exit.is_some() {
-            let _ = h.keep(vec![]);
-        }
+
     }
 }
 
@@ -718,9 +704,7 @@ fn check_leash_leg(t: &mut Tally, g: &Game, seed: u64) {
                 break;
             }
         }
-        if h.pending_exit.is_some() {
-            let _ = h.keep(vec![]);
-        }
+
         if !died && !tamed && !stolen {
             t.check("a bought leash comes home from a run that tamed nothing", bought(&h) >= before, || format!("seed {seed}: {before} bought leashes → {}", bought(&h)));
         }
@@ -747,9 +731,7 @@ fn check_leash_leg(t: &mut Tally, g: &Game, seed: u64) {
 fn check_saved_leg(t: &mut Tally, g: &Game, seed: u64) {
     let mut h = g.clone();
     for _ in 0..6 {
-        if h.pending_exit.is_some() {
-            let _ = h.keep(vec![]);
-        }
+
         h.send();
         h.events.clear();
         let mut fired: Vec<(i32, i32)> = Vec::new();
@@ -842,28 +824,14 @@ fn check_found_supply_leg(t: &mut Tally, g: &Game, seed: u64) {
     for _ in 0..6 {
         h.send();
         let vid = h.lineage.next_vault_id;
-        let vault_before: Vec<u32> = h.lineage.vault.iter().map(|v| v.id).collect();
         for _ in 0..4000 {
             let r = h.step(50);
             if r.run_over {
                 break;
             }
         }
-        if let Some(p) = h.pending_exit.clone() {
-            if p.tier != ExitTier::Death {
-                let l = &h.lineage;
-                let cap = l.supply_cap();
-                let cat = h.supply_catalogue();
-                for it in p.items.iter().filter(|i| i.is_consumable() && i.kind == heal && !p.brought.contains(&i.id) && i.is_known(&l.facts, &l.flavours)) {
-                    let on_shelf = l.supplies.iter().filter(|s| s.kind == heal).count();
-                    let plan = l.last_supplies.iter().filter(|k| *k == heal).count();
-                    let room = l.supplies.len() < cap && on_shelf < plan && cat.iter().any(|e| e.kind == heal);
-                    t.check("a found packed-kind potion is shelved, not salvaged, while the shelf has room", !room, || format!("seed {seed}: {} on the keep sheet · shelf {}/{cap} · {heal} {on_shelf} of {plan}", it.kind, l.supplies.len()));
-                }
-            }
-            let _ = h.keep(vec![]);
-        }
-        check_exit_found(t, &h, seed, &vault_before, "found supply leg");
+
+        check_exit_found(t, &h, seed, "found supply leg");
         check_repeat_lines(t, &h, seed, vid);
         if h.lineage.gold < 100 {
             h.lineage.gold_move(100, "qa purse");
@@ -875,17 +843,16 @@ fn check_found_supply_leg(t: &mut Tally, g: &Game, seed: u64) {
 /// place): every find of the last exit (settled by `keep`) ends in a named place — Σ
 /// `found[].n` == `found_n`, none `lost` or still on the `sheet`, the `shelved` finds are the
 /// line's shelved supplies, the `kept` ones are in the vault.
-fn check_exit_found(t: &mut Tally, g: &Game, seed: u64, vault_before: &[u32], at: &str) {
+fn check_exit_found(t: &mut Tally, g: &Game, seed: u64, at: &str) {
     // (the batch's copy: `step` hands `last_exit` to the exit event; `keep` settles both)
     let Some(line) = g.batch.exits.last() else { return };
     check_exit_line(t, seed, line, at);
     let sum: u32 = line.found.iter().map(|r| r.n).sum();
     let by = |f: &str| line.found.iter().filter(|r| r.fate == f).map(|r| r.n).sum::<u32>();
-    t.check("found at an exit == kept + salvaged + shelved + used + left + stolen + bones", sum == line.found_n && by("lost") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {sum} placed of {} found · {:?}", line.run_id, line.found_n, line.found));
+    t.check("found at an exit has one named fate including converted, used, left, stolen or bones", sum == line.found_n && by("lost") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {sum} placed of {} found · {:?}", line.run_id, line.found_n, line.found));
     let shelved: u32 = line.shelved.iter().map(|k| k.n).sum();
     t.check("an exit's shelved finds == its shelved supplies", by("shelved") == shelved, || format!("seed {seed} {at} run {}: found shelved {} · line shelved {shelved}", line.run_id, by("shelved")));
-    let added = g.lineage.vault.iter().filter(|v| !vault_before.contains(&v.id)).count() as u32;
-    t.check("an exit's kept finds are in the vault", by("kept") <= added, || format!("seed {seed} {at} run {}: kept {} · vault +{added}", line.run_id, by("kept")));
+    t.check("no converted finds require home storage", by("kept") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {:?}", line.run_id,line.found));
 }
 
 /// QA on 0c6e126 (qaY: `0 RETURNED · 3 DRIVEN` over three `returned` lines and a gold sheet of
@@ -969,7 +936,6 @@ fn check_meters_leg(t: &mut Tally, g: &Game, seed: u64) {
         t.check("meter time split == its ticks", (split as f64 - m.seconds * 10.0).abs() < 0.5, || format!("seed {seed}: split {split} vs {:.1} s", m.seconds));
         t.check("a row's share of the actions ≤ 1", m.rows.iter().all(|r| r.share <= 1.0 + 1e-9), || format!("seed {seed}: {:?}", m.rows));
         let _ = g.finish_run();
-        g.auto_keep();
         g.lineage.rest_left = 0;
     }
 }
@@ -1053,9 +1019,7 @@ fn check_salvage_leg(t: &mut Tally, g: &Game, seed: u64) {
     for _ in 0..4000 {
         let s = h.step(50);
         if s.run_over {
-            if let Some(pe) = &s.exit_pending {
-                check_names(t, &h, seed, pe.items.iter().map(|i| i.label.as_str()), "return leg sheet");
-            }
+
             if let Some(x) = h.last_exit.clone() {
                 check_names(t, &h, seed, x.salvaged.iter().map(|s| s.kind.as_str()), "return leg cut");
             }
@@ -1376,7 +1340,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
         packed.sort();
         want.sort();
         t.check("camp supplies == the run's packed kinds", packed == want, || format!("seed {seed}: shelf {want:?} packed {packed:?}"));
-        t.check("`brought` == the loadout", g.snapshot().stake.brought.len() == run.brought.len(), || format!("seed {seed}"));
+        t.check("new sends carry no retired vault instances", run.brought.is_empty(), || format!("seed {seed}"));
     }
     // Run to the exit.
     let mut swapped_seen = 0;
@@ -1408,20 +1372,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
             if r.events.iter().any(|e| matches!(e, Ev::Exit { tier, .. } if tier == "death")) {
                 died = Some(r.snapshot.run.id);
             }
-            if let (Some(p), Some(pe)) = (g.pending_exit.clone(), r.exit_pending.as_ref()) {
-                // `ExitPending.worth` is the engine's salvage arithmetic, item by item: the
-                // whole's coins (`(carry + Σ cents) ÷ 100`) apportioned by largest remainder.
-                let want = salvage_coins(&p.items, p.pct, g.lineage.gold_carry);
-                let cents: i32 = p.items.iter().map(|i| salvage_value(&i.kind) * p.pct / gold_divisor()).sum();
-                t.check("`ExitPending.worth` == the salvage arithmetic", pe.worth == want && want.iter().sum::<i32>() == (g.lineage.gold_carry + cents).max(0) / 100, || format!("seed {seed}: worth {:?} vs {want:?}", pe.worth));
-                check_labels(t, &g, seed, &p.items, "exit sheet");
-                check_names(t, &g, seed, pe.items.iter().map(|i| i.label.as_str()), "exit sheet");
-                let (gold, head) = (g.lineage.gold, g.batch.salvage_gold);
-                g.keep(vec![]).unwrap();
-                let sum: i32 = want.iter().sum();
-                // QA on 92eb880 (qaM: the sheet's `aggravate $2`, the report's `$1`): exact.
-                t.check("keep-nothing salvages Σ worth exactly", g.lineage.gold - gold == sum && g.batch.salvage_gold - head == sum, || format!("seed {seed}: salvaged ${} vs Σ worth ${sum}", g.lineage.gold - gold));
-            }
+
             break;
         }
         if n > 4000 {
@@ -1433,7 +1384,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
     if seed.is_multiple_of(3) {
         check_forecast_move(t, &g, seed);
     }
-    check_exit_found(t, &g, seed, &[], "first run");
+    check_exit_found(t, &g, seed, "first run");
     // (the exit's line is the batch's once the run is settled)
     if let Some(line) = g.batch.exits.last() {
         t.check("the exit line's swapped ≥ the stake's last", line.swapped >= swapped_seen, || format!("seed {seed}: line ${} · stake ${swapped_seen}", line.swapped));
@@ -1560,9 +1511,7 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
                     }
                     let deep = h.run.as_ref().map_or(0, |r| r.max_depth).max(h.batch.run_outcomes.last().map_or(0, |o| o.0));
                     reached += (deep >= d.depth || runs_fired) as u32;
-                    if h.pending_exit.is_some() {
-                        let _ = h.keep(vec![]);
-                    }
+
                     fired += runs_fired as u32;
                 }
                 t.check("the top patch, applied, acts in one of the next 6 sends that reach its floor", fired > 0, || format!("seed {seed} run {id}: {} at R{} · {} · fired in 0 of {sends} ({reached} reached D{})", p.row.describe(), pos + 1, d.verdict, d.depth));
@@ -1698,11 +1647,10 @@ fn play(o: &mut Out, pool: &Pool, seed: u64) {
         }
         let sum: u32 = x.found.iter().map(|f| f.n).sum();
         let bad: u32 = x.found.iter().filter(|f| f.fate == "lost" || f.fate == "sheet").map(|f| f.n).sum();
-        t.check("found at an exit == kept + salvaged + shelved + used + left + stolen + bones", sum == x.found_n && bad == 0, || format!("seed {seed} night run {}: {sum} placed of {} · {:?}", x.run_id, x.found_n, x.found));
+        t.check("found at an exit has one named fate including converted, used, left, stolen or bones", sum == x.found_n && bad == 0, || format!("seed {seed} night run {}: {sum} placed of {} · {:?}", x.run_id, x.found_n, x.found));
     }
-    check_labels(t, &g, seed, &g.batch.found.clone(), "report found");
-    for f in &r.found {
-        t.check("report `found` never labels `?` when known", !f.known || !f.label.contains('?'), || format!("seed {seed}: {f:?}"));
+    for find in r.exits.iter().flat_map(|line| &line.finds) {
+        t.check("actual exit finds never label ? when known", !find.known || !find.label.contains('?'), || format!("seed {seed}: {find:?}"));
     }
     check_gold(t, &g, seed, "after the night");
     // The night's legs, longest first, each on a copy of the game as it is now (none of them

@@ -255,9 +255,8 @@ const UNLOCK_ROWS: Record<string, Row[]> = {
     },
   ],
   // automations: one row-like entry, the core's shape (`{conds: [], verb: {v: "auto", a: "keeps best weapon+armour"}}`)
-  quartermaster: [{ conds: [], verb: { v: "auto", a: "keeps best weapon+armour" } }],
+  quartermaster: [{ conds: [], verb: { v: "auto", a: "prepares unlocked supplies" } }],
   auto_supply: [{ conds: [], verb: { v: "auto", a: "restocks supplies" } }],
-  auto_insure: [{ conds: [], verb: { v: "auto", a: "insures brought items" } }],
   incubator: [{ conds: [], verb: { v: "auto", a: "hatches eggs at rest" } }],
   bone_sense: [{ conds: [], verb: { v: "auto", a: "paths to bones" } }],
 };
@@ -353,9 +352,6 @@ export const UNLOCKS: Record<string, UnlockDef> = {
     needs: "tamed ≥ 3",
     gate: (L) => L.ledger.filter((r) => r.tamed).length >= 3,
   },
-  vault2: { cost: 3 },
-  vault3: { cost: 6 },
-  vault4: { cost: 9 },
   // Cut 8B §2–3: the rogue is free at the first bank; `tame` costs nothing and is owned from the start
   rogue: {
     cost: 0,
@@ -382,7 +378,6 @@ export const UNLOCKS: Record<string, UnlockDef> = {
   last_stand: { cost: 3, needs: "D5", gate: (L) => L.best_depth >= 5 },
   quartermaster: { cost: 5 },
   auto_supply: { cost: 4 },
-  auto_insure: { cost: 6 },
   incubator: { cost: 4, needs: "egg ≥ 1", gate: (L) => L.eggs.length >= 1 },
   supply_cap_5: { cost: 3 },
   bone_sense: { cost: 3, needs: "bones", gate: hasFact(/^bones:/) },
@@ -395,8 +390,6 @@ const UNLOCK_PREREQ: Record<string, string> = {
   row6: "row5",
   row7: "row6",
   row8: "row7",
-  vault3: "vault2",
-  vault4: "vault3",
   party_slot_3: "party_slot_2",
 };
 const FORGE_LADDER = [
@@ -670,7 +663,6 @@ type Run = {
   bonesFound: BonesPile[];
   bonesPiles: BonesPile[];
   rest_s: number;
-  insured: Set<number>;
   broughtItems: InvItem[];
   gold: number;
   spent: { label: string; price: number; kind: string }[];
@@ -1098,7 +1090,6 @@ type SimCtx = {
   kindOfFlav: (f: string) => string | undefined;
   tier: (kind: string) => number;
   bones: BonesPile[];
-  insured: Set<number>;
   gold: number;
   spent: { label: string; price: number; kind: string }[];
 };
@@ -1196,7 +1187,6 @@ function makeRun(
     bonesFound: [],
     bonesPiles: ctx.bones,
     rest_s: 0,
-    insured: ctx.insured,
     broughtItems: brought.map((b) => ({ ...b })),
     gold: ctx.gold,
     spent: ctx.spent,
@@ -2914,12 +2904,12 @@ function die(run: Run, ev: Ev[]): void {
   if (kit.length) ev.push({ t: run.turn, k: "bones", heir: run.heir, items: kit.length });
   endRun(run, "death", ev);
 }
-/** What a death leaves on the floor: everything carried plus the equipped kit (insured brought items excepted). */
+/** What a death leaves on the floor: everything carried plus the equipped kit. */
 function bonesKit(run: Run): InvItem[] {
   const out = [...run.gear, ...run.hero.inv, ...run.broughtItems].filter(
     (i, k, a) => a.findIndex((x) => x.id === i.id) === k,
   );
-  return out.filter((i) => !(run.brought.includes(i.id) && run.insured.has(i.id)));
+  return out;
 }
 function snapshot(run: Run, rules?: RuleSet): Snapshot {
   const h = run.hero;
@@ -2993,15 +2983,13 @@ function roomOf(run: Run): Snapshot["room"] {
     ).length,
   };
 }
-/** Cut 2 §7: loot on the hero, brought items (insured = safe), the first row that would bank or return. */
+/** Cut 2 §7: loot on the hero and the first row that would bank or return. */
 function stakeOf(run: Run, rules?: RuleSet): Snapshot["stake"] {
-  const brought = run.broughtItems.map((i) => ({ label: i.label, insured: run.insured.has(i.id) }));
   const rows = rules?.rows ?? [];
   const ri = rows.findIndex((r) => r.verb.v === "return" || r.verb.v === "bank");
   // Cut 6 §1: what that row would bring home now (the kept number, not the carried one)
   return {
     loot: run.loot,
-    brought,
     return_row: ri >= 0 ? ri : undefined,
     kept: ri >= 0 ? Math.round(run.loot * (rows[ri].verb.v === "bank" ? 1 : 0.6)) : undefined,
     stalling: run.stuckFires > 0,
@@ -3017,7 +3005,6 @@ function runToEnd(run: Run, ctx: SimCtx, maxTurns = 3000): void {
 type State = {
   lineage: Lineage;
   rules: RuleSet;
-  loadout: number[];
   killed: string[];
   runCounter: number;
   logs: Record<number, RunLog>;
@@ -3212,7 +3199,6 @@ export class FakeEngine implements Engine {
       kindOfFlav: (f) => inv.get(f),
       tier: (k) => this.s.lineage.forge?.[k]?.tier ?? 0,
       bones: this.s.lineage.bones ?? [],
-      insured: new Set(this.s.lineage.insured ?? []),
       gold: this.s.lineage.gold,
       spent: (this.s.lineage.supplies ?? [])
         .filter((it) => !it.free)
@@ -3240,11 +3226,6 @@ export class FakeEngine implements Engine {
     const i = this.s.rules.rows.findIndex((r) => r.verb.v === "attack" || r.verb.v === "shoot");
     return i < 0 ? this.s.rules.rows.length : i;
   }
-  private vaultSlots(): number {
-    return (
-      1 + ["vault2", "vault3", "vault4"].filter((u) => this.s.lineage.unlocks.includes(u)).length
-    );
-  }
 
   newLineage(seed: number): Lineage {
     const trait = TRAITS[(seed >>> 3) % TRAITS.length];
@@ -3271,7 +3252,6 @@ export class FakeEngine implements Engine {
         marks: 0,
         facts: ["item:leash"],
         unlocks: ["tame"],
-        vault: [],
         graveyard: [],
         trophies: [],
         sets: [copy(), copy(), copy()],
@@ -3291,7 +3271,6 @@ export class FakeEngine implements Engine {
         forge: { dagger: { salvaged: 6, craftable: true, tier: 0 } },
         renown: 0,
         rank: 0,
-        keep_pref: "best_weapon",
         vault_pref: "weapon",
         rest_left_s: 0,
         bones: [],
@@ -3300,7 +3279,6 @@ export class FakeEngine implements Engine {
         ),
       },
       rules: copy(),
-      loadout: [],
       killed: [],
       runCounter: 0,
       logs: {},
@@ -3327,7 +3305,17 @@ export class FakeEngine implements Engine {
     this.s = p;
     this.live = null;
     this.lastDeath = {};
-    const L = p.lineage; // older fake saves: fill addendum fields
+    const L = p.lineage; // older fake saves: fill active addendum fields
+    for (const key of [
+      "vault",
+      "insured",
+      "keep_pref",
+      "keep_auto",
+      "selected_loadout",
+      "keep_salvaged",
+    ])
+      delete (L as unknown as Record<string, unknown>)[key];
+    delete (p as unknown as Record<string, unknown>).loadout;
     L.party ??= [];
     L.kennel ??= [];
     L.eggs ??= [];
@@ -3339,7 +3327,6 @@ export class FakeEngine implements Engine {
     L.forge ??= {};
     L.renown ??= 0;
     L.rank ??= 0;
-    L.keep_pref ??= "best_weapon";
     L.vault_pref ??= "weapon";
     L.rest_left_s ??= 0;
     L.bones ??= [];
@@ -3355,7 +3342,6 @@ export class FakeEngine implements Engine {
     return JSON.stringify(this.s);
   }
   lineage(): Lineage {
-    this.s.lineage.vault = this.s.lineage.vault.map(withRarity);
     this.s.lineage.supplies = (this.s.lineage.supplies ?? []).map(withRarity); // run-clear stand-in
     for (const c of Object.values(this.s.lineage.classes ?? {}))
       c.next = c.level < XP_LEVEL_CAP ? xpToNext(c.level) : 0; // QA 92eb880: the ladder is the engine's (`ClassProg.next`)
@@ -3402,20 +3388,7 @@ export class FakeEngine implements Engine {
       L.start_payable =
         st <= 1 || ((L.waystones ?? []).includes(st) && L.gold >= WAYSTONE_TOLL * st);
     }
-    {
-      const L = this.s.lineage;
-      const qm = L.unlocks.includes("quartermaster"); // QA 23ed91f: what an unwatched exit keeps
-      L.keep_auto =
-        L.keep_pref === "best_armour"
-          ? qm
-            ? ["armour", "weapon"]
-            : ["armour"]
-          : L.keep_pref === "best_weapon"
-            ? qm
-              ? ["weapon", "armour"]
-              : ["weapon"]
-            : [];
-    }
+
     // Cut 16 §2: the wake's class chips (owned classes, the current first) while the trait offer stands
     {
       const L = this.s.lineage;
@@ -3800,24 +3773,16 @@ export class FakeEngine implements Engine {
       JSON.stringify(this.s.rules),
     ) as RuleSet;
   }
-  loadout(itemIds: number[]): void {
-    this.s.loadout = itemIds.filter((id) => this.s.lineage.vault.some((v) => v.id === id));
-    this.dropIdleRun();
-  }
   /** A live run that has not taken a turn yet (the report's `live` peek) is rebuilt on the next send, so loadout/class/party changes land. */
   private dropIdleRun(): void {
-    if (this.live && !this.live.over && this.live.turn === 0 && this.live !== this.pending)
-      this.live = null;
+    if (this.live && !this.live.over && this.live.turn === 0) this.live = null;
   }
 
   private known(): Set<string> {
     return new Set(this.s.lineage.facts);
   }
   private brought(): InvItem[] {
-    return [
-      ...this.s.lineage.vault.filter((v) => this.s.loadout.includes(v.id)),
-      ...this.s.lineage.supplies,
-    ].map((v) => ({ ...v }));
+    return this.s.lineage.supplies.map((v) => ({ ...v }));
   }
   private simOne(
     seed: number,
@@ -4337,24 +4302,17 @@ export class FakeEngine implements Engine {
       events.push(...simTurn(this.live, ctx));
       this.s.totalTurns += 10;
     }
-    let exit_pending: StepResult["exit_pending"];
-    if (this.live.over && !this.pending && !this.settled.has(this.live.id)) {
-      const items = this.live.exit === "death" ? [] : this.carried(this.live); // Cut 2 §2: a death leaves bones, nothing to keep
-      if (items.length) {
-        this.pending = this.live;
-        exit_pending = { items, tier: this.live.exit ?? "death" };
-      } else {
-        const r = this.settle(this.live, true);
-        for (const level of r.levels)
-          events.push({ t: this.live.turn, k: "level", class: this.live.cls, level });
-        for (const rank of r.ranks) events.push({ t: this.live.turn, k: "rank", rank });
-      }
+    if (this.live.over && !this.settled.has(this.live.id)) {
+      const r = this.settle(this.live, true);
+      for (const level of r.levels)
+        events.push({ t: this.live.turn, k: "level", class: this.live.cls, level });
+      for (const rank of r.ranks) events.push({ t: this.live.turn, k: "rank", rank });
       this.settled.add(this.live.id);
     }
     for (const e of events) e.t *= 10;
     const snap = snapshot(this.live, ctx.rules);
     snap.turn *= 10;
-    return { events, snapshot: snap, run_over: this.live.over, exit_pending };
+    return { events, snapshot: snap, run_over: this.live.over };
   }
   // apply a finished run to the lineage; returns [newFacts, newBests, marks]
   private carried(run: Run): InvItem[] {
@@ -4367,21 +4325,9 @@ export class FakeEngine implements Engine {
       ),
     ];
   }
-  private prefPick(run: Run): number[] {
-    const items = this.carried(run);
-    const pref = this.s.lineage.keep_pref;
-    const pickBest = (score: (i: InvItem) => number): number[] => {
-      const c = items.filter((i) => score(i) > 0).sort((a, b) => score(b) - score(a))[0];
-      return c ? [c.id] : [];
-    };
-    if (pref === "best_weapon") return pickBest((i) => WEAPONS[i.kind]?.[1] ?? 0);
-    if (pref === "best_armour") return pickBest((i) => ARMOUR[i.kind] ?? 0);
-    return [];
-  }
   private settle(
     run: Run,
     real: boolean,
-    keepIds: number[] = [],
   ): {
     facts: string[];
     bests: string[];
@@ -4635,9 +4581,6 @@ export class FakeEngine implements Engine {
         ),
       );
       while (L.chronicle.length > CHRONICLE_CAP) L.chronicle.shift();
-      L.vault = L.vault.filter((v) => !run.brought.includes(v.id) || run.insured.has(v.id));
-      L.insured = (L.insured ?? []).filter((id) => !run.brought.includes(id));
-      this.s.loadout = [];
       // Cut 13 §2: the new heir wakes with two traits on offer (never the last one); the first is the default until `setTrait`
       const last = L.trait;
       const pool = TRAITS.filter((t) => t !== last);
@@ -4653,10 +4596,6 @@ export class FakeEngine implements Engine {
     const sells = new Set(this.supplyCatalogue().map((c) => c.kind));
     const shelf: Record<string, number> = {};
     for (const it of run.exit === "death" ? [] : this.carried(run)) {
-      if (keepIds.includes(it.id) && L.vault.length < this.vaultSlots()) {
-        L.vault.push({ ...it, id: this.s.nextItem++ });
-        continue;
-      }
       if (it.known && sells.has(it.kind) && L.supplies.length < this.supplyCap()) {
         L.supplies.push({ ...it, id: this.s.nextItem++, found: true });
         shelf[it.kind] = (shelf[it.kind] ?? 0) + 1;
@@ -4690,28 +4629,10 @@ export class FakeEngine implements Engine {
     }
     return { facts, bests, marks, tamed, lost, hatched, xp, levels, salvaged, score, ranks, spent };
   }
-  private pending: Run | null = null;
-  keep(ids: number[]): Lineage {
-    const run = this.pending;
-    if (!run) return this.lineage();
-    this.pending = null;
-    this.settle(run, true, ids);
-    return this.lineage();
-  }
-  /** QA 23ed91f: the skipped sheet's call — the fake's preference pick (`autoKeep`). */
-  autoKeep(): Lineage {
-    const run = this.pending;
-    if (!run) return this.lineage();
-    return this.keep(this.prefPick(run));
-  }
   // hero looks: cosmetic; the class's own until set (`look` rides the save)
   setLook(look: string): Lineage {
     if (!["male", "female", "cat"].includes(look)) throw new Error(`unknown look ${look}`);
     (this.s as { look?: string }).look = look;
-    return this.lineage();
-  }
-  setKeepPref(pref: string): Lineage {
-    if (["best_weapon", "best_armour", "none"].includes(pref)) this.s.lineage.keep_pref = pref;
     return this.lineage();
   }
   // Cut 5 stand-ins: the fake places no vaults, so `choose` only answers with the live snapshot; `bail` ends the run on the next step
@@ -4868,28 +4789,6 @@ export class FakeEngine implements Engine {
     if (!on) return this.clearSupplies();
     return this.lineage();
   }
-  insure(id: number): Lineage {
-    const L = this.s.lineage;
-    const it = L.vault.find((v) => v.id === id);
-    if (!it || (L.insured ?? []).includes(id)) return this.lineage();
-    const price = Math.ceil((salvageOf(it.kind) * 10) / 4);
-    if (L.gold < price) return this.lineage(); // the camp's own price (ui/salvage.ts)
-    this.gold(-price, `insure ${it.label}`);
-    L.insured = [...(L.insured ?? []), id];
-    return this.lineage();
-  }
-
-  /** QA 308f045 stand-in: an item out of the vault, salvaged at a bank's share (the client table ÷ 4, the core's divisor). */
-  sellVault(id: number): Lineage {
-    const L = this.s.lineage;
-    const i = L.vault.findIndex((v) => v.id === id);
-    if (i < 0) return this.lineage();
-    const [it] = L.vault.splice(i, 1);
-    L.insured = (L.insured ?? []).filter((x) => x !== id);
-    const coins = Math.floor(salvageOf(it.kind) / 4);
-    if (coins > 0) this.gold(coins, `salvage ${it.label}`);
-    return this.lineage();
-  }
   runOfflineQuick(elapsedS: number): ReturnReport {
     const r = this.runOffline(elapsedS);
     return { ...r, worst_death_id: r.worst_death?.run_id, worst_death: undefined };
@@ -4954,7 +4853,6 @@ export class FakeEngine implements Engine {
     }
     const learned: string[] = [],
       bests: string[] = [],
-      found: InvItem[] = [],
       deaths: Record<string, number> = {};
     let marks = 0;
     let reel: Highlight[] = [];
@@ -4996,12 +4894,7 @@ export class FakeEngine implements Engine {
         m.gold += s.gold;
       } // Cut 13 §3
     };
-    if (this.pending) {
-      const run = this.pending;
-      this.pending = null;
-      take(this.settle(run, true, this.prefPick(run)));
-      this.live = null;
-    }
+
     let worst: { id: number; depth: number } | null = null;
     let stalledRun: number | null = null; // Cut 13 §1: a stall's verdict opens from the report when no death does
     let deepest = 0; // the send's deepest floor (the report's `deepest` tile)
@@ -5013,7 +4906,7 @@ export class FakeEngine implements Engine {
         this.s.totalTurns += 10;
       }
       if (this.live.over) {
-        const r = this.settle(this.live, true, this.prefPick(this.live));
+        const r = this.settle(this.live, true);
         this.settled.add(this.live.id);
         take(r);
         learned.push(...r.facts);
@@ -5044,7 +4937,7 @@ export class FakeEngine implements Engine {
       runs++;
       turnsTotal += run.turn;
       deepest = Math.max(deepest, run.depth);
-      const r = this.settle(run, true, this.prefPick(run));
+      const r = this.settle(run, true);
       this.settled.add(run.id);
       take(r);
       learned.push(...r.facts);
@@ -5052,12 +4945,6 @@ export class FakeEngine implements Engine {
       marks += r.marks;
       stall = r.facts.length || r.bests.length ? 0 : stall + 1;
       this.home = run.exit === "death" || r.bests.some((b) => /^D\d+$/.test(b)) ? 0 : this.home + 1;
-      for (const p of run.picked)
-        if (
-          (WEAPONS[p.kind] || ARMOUR[p.kind] !== undefined) &&
-          !found.some((f) => f.kind === p.kind)
-        )
-          found.push(p);
       if (run.exit === "death") {
         deaths[run.cause ?? "?"] = (deaths[run.cause ?? "?"] ?? 0) + 1;
         if (!worst || run.depth < worst.depth) worst = { id: run.id, depth: run.depth };
@@ -5097,7 +4984,6 @@ export class FakeEngine implements Engine {
       sampled,
       learned,
       bests,
-      found,
       deaths: Object.entries(deaths)
         .map(([cause, n]) => ({ cause, n }))
         .sort((a, b) => b.n - a.n),
@@ -5532,14 +5418,13 @@ export class FakeEngine implements Engine {
   /** Cut 3: a new lineage under `variant`, keeping classes, kennel (party goes home), vault, facts, forge, trophies, rules.
    *  The core insists on the ending first; the UI fake does not, so the ending screen can be exercised from any state. */
   ascend(variant: string): Lineage {
-    if (!["no_rest", "short_list", "bones_only", "hunted"].includes(variant))
+    if (!["no_rest", "short_list", "hunted"].includes(variant))
       throw new Error(`unknown variant ${variant}`);
     const old = this.s.lineage;
     const level = (old.ascension?.level ?? 0) + 1;
     const keep = {
       classes: old.classes,
       kennel: [...old.party, ...old.kennel],
-      vault: old.vault,
       facts: old.facts,
       forge: old.forge,
       trophies: old.trophies,
@@ -6099,7 +5984,6 @@ type Fk29 = {
       plateau: boolean;
       works: string[];
       meters: MeterWire[];
-      insure: boolean;
       forge?: string;
     };
   };
@@ -6193,7 +6077,6 @@ function sys29(e: Fk29): {
   plateau: boolean;
   works: string[];
   meters: MeterWire[];
-  insure: boolean;
   forge?: string;
 } {
   const st = (e.s.sys29 ??= {
@@ -6202,7 +6085,6 @@ function sys29(e: Fk29): {
     plateau: false,
     works: [],
     meters: [],
-    insure: true,
   }); // Cut 30: the dial comes with the pen
   const L = e.s.lineage;
   const met = (d: number): boolean => L.best_depth >= d;
@@ -6279,11 +6161,9 @@ function sys29(e: Fk29): {
       available: L.gold >= price,
     };
     L.orders = {
-      keep: L.keep_pref,
       cage: L.vault_pref ?? "weapon",
       start: L.start ?? 1,
       repeat: L.repeat ?? true,
-      insure: st.insure,
       forge: st.forge ?? "half",
     } as StandingOrders;
     L.supply_cap = Math.min(
@@ -6316,17 +6196,7 @@ function sys29(e: Fk29): {
       st.meters.push(run);
       if (st.meters.length > 2) st.meters.shift();
     }
-    if (r.exit_pending) {
-      const vault = this.s.lineage.vault;
-      const beats = r.exit_pending.items.some((i) =>
-        vault.some((v) => v.kind === i.kind && (i.label ?? "") > (v.label ?? "")),
-      );
-      out.exit_pending = {
-        ...r.exit_pending,
-        decide: beats || r.exit_pending.items.length > 2,
-        ...(r.exit_pending.items[0] ? { note: `kept ${r.exit_pending.items[0].label}` } : {}),
-      };
-    }
+
     return out;
   };
   const off = P.runOffline;
@@ -6374,15 +6244,11 @@ function sys29(e: Fk29): {
   P.setOrders = function (this: Fk29, o: unknown): Lineage {
     const x = o as StandingOrders;
     const L = this.s.lineage;
-    if (!["best_weapon", "best_armour", "none"].includes(x.keep))
-      throw new Error("unknown keep_pref");
     if (x.forge !== undefined && !["half", "all", "off"].includes(x.forge))
       throw new Error("unknown forge order");
-    L.keep_pref = x.keep;
     L.vault_pref = x.cage;
     L.start = x.start;
     L.repeat = x.repeat;
-    sys29(this).insure = x.insure;
     if (x.forge) sys29(this).forge = x.forge;
     return this.lineage();
   };
@@ -6921,19 +6787,6 @@ const NODES305: [
   ],
   ["scout", "scout", "trunk", "send", 2, 4, 0, "fire", "AUTO SEND", "sends him · each rest", ""],
   [
-    "armourer",
-    "armourer",
-    "trunk",
-    "wear",
-    2,
-    10,
-    24,
-    "storehouse",
-    "AUTO EQUIP",
-    "wears better finds",
-    "storehouse",
-  ],
-  [
     "apprentice",
     "apprentice",
     "trunk",
@@ -6945,19 +6798,6 @@ const NODES305: [
     "AUTO FORGE",
     "buys forge steps",
     "forge",
-  ],
-  [
-    "keeper",
-    "keeper",
-    "items",
-    "keep",
-    2,
-    20,
-    30,
-    "storehouse",
-    "AUTO KEEP",
-    "sorts finds · never asks",
-    "storehouse",
   ],
   ["clerk", "clerk", "town", "deposit", 3, 40, 36, "bank", "AUTO BANK", "banks spare gold", "bank"],
   [
@@ -7056,7 +6896,6 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
               clerk: `${20 + 2.5 * (r - 1)}‰ interest`,
               guide: r === 2 ? "half toll" : "no toll",
               drillmaster: "levels −◆1",
-              armourer: "insures its finds",
             } as Record<string, string>
           )[id];
     // (the core waits days of service between a worker's ranks; the stand-in offers the lowest-ranked worker first, in the tree's order)
@@ -7290,7 +7129,6 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
     ["setStart", "guide"],
     ["setParty", "kennel_hand"],
     ["hatch", "kennel_hand"],
-    ["sellVault", "keeper"],
   ] as const) {
     const f = P[m];
     if (!f) continue;
@@ -7300,18 +7138,6 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       return r;
     };
   }
-  const keep = P.keep;
-  P.keep = function (this: Fk305, ...a: unknown[]): unknown {
-    const r = keep.apply(this, a);
-    count(this, "keeper");
-    return r;
-  };
-  const lo = P.loadout;
-  P.loadout = function (this: Fk305, ids: unknown): unknown {
-    const r = lo.call(this, ids);
-    if ((ids as number[]).length) count(this, "armourer");
-    return r;
-  };
 }
 
 // ---- Cut 118 stand-ins (the core's `feats.rs`): boss tokens, the weekly trials, away finds, the sinks after Kit complete, the hero's

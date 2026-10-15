@@ -1,0 +1,98 @@
+{
+  "scope": "Excluded follow-up inventory after current Cut244 checkpoint list froze. No production edits. Current retirement is reviewable progress; inactive descriptors/comments remain for post-gate cleanup with separate source/proof.",
+  "sourceSha256": {
+    "crates/idlever-core/src/meta.rs": "325c81f11ae42cccff8da0020866c5d1c03ce2275672a70cf19b869e97a5fe9c",
+    "crates/idlever-core/src/engine.rs": "137a8efa4fb0b8545afc889c5f67a5e722f866bc0d7c6a6cf99e5a26f68edcb8",
+    "crates/idlever-core/src/wire.rs": "7eb368750fb1a141f622825db51fd7daebc0b39bebd95103b84e137acd83c416"
+  },
+  "items": [
+    {
+      "path": "crates/idlever-core/src/meta.rs",
+      "lines": [
+        451,
+        453
+      ],
+      "kind": "inactive descriptor match arms",
+      "symbols": [
+        "unlock_rows(\"quartermaster\")",
+        "unlock_rows(\"auto_insure\")"
+      ],
+      "currentBehavior": "Direct internal calls still return descriptive auto rows (keeps best weapon+armour / insures brought items); these arms have NOT been removed.",
+      "callerGraph": [
+        "Game::unlocks / unlock_deltas (lib.rs126/132) \u2192 meta::catalogue_with_deltas \u2192 catalogue (meta.rs351) \u2192 unlock_rows(u.id) (370); catalogue iterates current UNLOCKS, which lacks both IDs.",
+        "unlock_rows_any (415\u2013420) precomputes UNLOCKS + MASTERY_CARDS, and falls back to direct lookup for another supplied card ID.",
+        "Other live internal consumers: engine.rs2821 (expanded rules), packages.rs938/1373 (card-row interpretation), trace.rs342 (card attribution), turn.rs3522 \u2192 unlock_rows_any. These callers must be considered before proving removal; do not assume the helper itself is unreachable."
+      ],
+      "currentAbsenceProof": [
+        "meta::def (138\u2013140) searches UNLOCKS; meta.rs969 explicitly asserts both def results None in existing full-workspace-passing catalogue regression.",
+        "Public buy / buy_unlock_gold delegate to meta::buy (761)/buy_gold (821), which directly validate current UNLOCKS membership; current catalogue and selectors do not offer these IDs.",
+        "generated-package-api.json proves the six retired operations absent from actual97e8 bindings. This is narrower than proving all inactive metadata removed."
+      ],
+      "nextAction": "After healthy gate terminal, remove both descriptor arms and obsolete automation-description example; add focused assertions that direct lookup returns None plus existing catalogue/purchase absence checks. Prove all current catalogue/card expansions unchanged; no policy/tuning edits."
+    },
+    {
+      "path": "crates/idlever-core/src/meta.rs",
+      "lines": [
+        49,
+        50,
+        410,
+        411,
+        935
+      ],
+      "kind": "obsolete commentary",
+      "currentBehavior": "Comments still describe default keep_auto/insure and old Keep automation row example/count history.",
+      "nextAction": "Update current-facing comments without erasing historical source archives. Pure comment diff proof; no behavior claim inferred."
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "lines": [
+        3961,
+        3964
+      ],
+      "kind": "obsolete ascension commentary",
+      "currentBehavior": "Comment says ascension retains vault and offers bones_only(no vault). Actual VARIANTS at246 contains only no_rest/short_list/hunted; ascend validates membership at3971.",
+      "currentAbsenceProof": [
+        "tests.rs3543 redundant_bones_only_variant_is_not_offered verifies actual refusal and absence; town.rs529 independently checks absence. Both run in passing workspace."
+      ],
+      "nextAction": "Correct comment to current retained preparation and three actual variants."
+    },
+    {
+      "path": "crates/idlever-core/src/wire.rs",
+      "lines": [
+        2917
+      ],
+      "kind": "obsolete Ascension variant comment",
+      "currentBehavior": "Documentation still names bones_only despite actual three-variant constant/refusal.",
+      "nextAction": "Correct comment to current three variants."
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "lines": [
+        2563,
+        2567
+      ],
+      "kind": "historical wire-name comment",
+      "currentBehavior": "Example still cites Keep sheet and insure sword; function itself remains essential for genuine unknown-name/privacy wire behavior.",
+      "nextAction": "Replace obsolete examples with actual current salvage/spent examples; preserve wire_name logic and privacy assertions."
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "lines": [
+        2204,
+        6867,
+        6892
+      ],
+      "kind": "additional inactive insurance reason classifiers; classify before removal",
+      "currentBehavior": "Gold net exclusion and ledger category still recognize insure prefix. No current insurance action exists after API removal; these are not purchases or rewards. Its gold_term documentation at6867 also still lists insurance.",
+      "callerGraph": [
+        "LineageState::gold_move \u2192 net exclusions (2204) and gold_term (6870) \u2192 supplies-category reason matching (6892). gold_move is also callable from controlled native diagnostics/tests."
+      ],
+      "nextAction": "Inventory all remaining reason producers and distinguish legacy/injected ledger strings before editing. Exact current public action/settlement packets must remain identical; do not remove broad classifier branches or change real supplies behavior by substring."
+    }
+  ],
+  "validationPlan": [
+    "Keep current source/package and gate identity frozen until terminal.",
+    "Record exact post-gate source delta; comment-only and inactive-descriptor removals need separate explicit nonbehavior proof and focused catalogue/schema/privacy checks, Clippy/package identity handling as required.",
+    "Do not relabel current97e8 native/browser/gate results as proof of later changed source."
+  ]
+}

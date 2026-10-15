@@ -7,10 +7,12 @@ import { mkdirSync, writeFileSync } from "node:fs";
 const shotsIndex = process.argv.indexOf("--shots"),
   shots = shotsIndex >= 0 ? process.argv[shotsIndex + 1] : process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   for (const width of stateWidths([400, 1440])) {

@@ -166,7 +166,6 @@ pub fn measure(set: &RuleSet, seed: u64, hours: u64, sims: u32) -> Lever {
     fill_shelf(&mut g);
     let _ = idlever_core::offline::run_offline_counts(&mut g, hours * 3600);
     g.run = None;
-    g.pending_exit = None;
     g.lineage.gold = 0;
     fill_shelf(&mut g);
     let rules = g.lineage.rules().clone();
@@ -258,7 +257,6 @@ pub fn gate_with(set: &RuleSet, seed: u64, hours: u64, sims: u32, margin: f64, p
     fill_shelf(&mut g);
     let _ = idlever_core::offline::run_offline_counts(&mut g, hours * 3600);
     g.run = None;
-    g.pending_exit = None;
     g.lineage.gold = 0;
     fill_shelf(&mut g);
     let rules = g.lineage.rules().clone();

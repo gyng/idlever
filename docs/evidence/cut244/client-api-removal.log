@@ -1,0 +1,22 @@
+client suite: targeted (7 selected; 163 current full; 206 exhaustive groups)
+FAIL package-requests 14.0s (5.5s)  Node.js v22.18.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/package-requests.mjs:18:31 {
+FAIL ascension-refusal 14.1s (5.6s)  Node.js v22.18.0
+       name: 'Error'
+         at /home/g/p/riddle/web/tests/ascension-refusal.mjs:18:23 {
+FAIL free-preparation 14.1s (5.6s)  Node.js v22.18.0
+     page.evaluate: Error: leash: free catalogue
+         at check (eval at evaluate (:311:30), <anonymous>:8:22)
+         at eval (eval at evaluate (:311:30), <anonymous>:46:7)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/free-preparation.mjs:18:29 {
+FAIL debug-export    14.9s (6.5s)  Node.js v22.18.0
+         throw Error("Invalid save envelope");
+     Error: Invalid save envelope
+         at readDebug (file:///home/g/p/riddle/tools/debug-export.mjs:21:11)
+         at file:///home/g/p/riddle/web/tests/debug-export.mjs:173:5
+ok   forge-requests  18.6s (10.2s)  1440 34 Forge request checks PASS
+ok   numbered-descents 22.1s (13.7s)  1440 preview/cancel/stale/locked/refusal/success/loadout/no-repeat/viewport PASS
+ok   post-clear-town 31.2s (22.7s)  1440 earned clear Town/Attributes/Next descent/mouth/watch guard, readonly Rebirth review and actual paid Legacy rank PASS
+FAIL: 3/7 client gates in 31.2s

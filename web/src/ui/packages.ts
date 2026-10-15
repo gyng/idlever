@@ -241,7 +241,8 @@ type OptionsRead = {
   promise: Promise<PkgOption[]>;
 };
 const optionReads = new WeakMap<App, OptionsRead>();
-const optionInputs = (app: App): string => JSON.stringify([app.rules, app.loadout]);
+const optionInputs = (app: App): string =>
+  JSON.stringify([app.rules, app.lineage.starting_kits?.current]);
 const selectionKey = (app: App, choices: [string, number][]): string =>
   app.engine.packageOptionsFor ? JSON.stringify(choices) : "all";
 const currentRead = (

@@ -1,0 +1,16 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+    Checking idlever-wasm v0.1.0 (/home/g/p/riddle/crates/idlever-wasm)
+error: this `if` branch is empty
+    --> crates/idlever-core/examples/dayplayer.rs:1450:13
+     |
+1450 | /             if present {
+1451 | |
+1452 | |             }
+     | |_____________^ help: you can remove it
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_ifs
+     = note: `-D clippy::needless-ifs` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::needless_ifs)]`
+
+error: could not compile `idlever-core` (example "dayplayer") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

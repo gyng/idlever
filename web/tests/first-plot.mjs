@@ -3,10 +3,12 @@ import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
 import { mkdirSync } from "node:fs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-    cwd: new URL("../../", import.meta.url),
-    encoding: "utf8",
-  }).trim(),
+const url =
+    process.env.IDLEVER_TEST_URL ??
+    execFileSync("bash", ["tools/dev.sh"], {
+      cwd: new URL("../../", import.meta.url),
+      encoding: "utf8",
+    }).trim(),
   shots = process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
 const b = await launchBrowser();

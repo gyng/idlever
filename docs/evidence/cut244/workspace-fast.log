@@ -1,0 +1,41 @@
+
+running 967 tests
+....................................................................................... 87/967
+....................................................................................... 174/967
+....................................................................................... 261/967
+............................... 292/967
+tests::a_full_lineage_plays_through_many_runs_without_panics --- FAILED
+...................................................... 347/967
+tests::actual_outcomes_settle_without_storage_choices --- FAILED
+.................................i..................................................... 435/967
+....................................................................................... 522/967
+....................................................................................... 609/967
+........................iii....................i......i................................ 696/967
+.........................................................test specialization::tests::styled_eight_hour_absences_match_whole_sliced_reloaded_for_one_and_three_slots has been running for over 60 seconds
+.............................. 783/967
+....................................................................................... 870/967
+....................................................................................... 957/967
+..........
+failures:
+
+---- tests::a_full_lineage_plays_through_many_runs_without_panics stdout ----
+
+thread 'tests::a_full_lineage_plays_through_many_runs_without_panics' (21798) panicked at crates/idlever-core/src/tests.rs:2407:9:
+report missing found
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- tests::actual_outcomes_settle_without_storage_choices stdout ----
+
+thread 'tests::actual_outcomes_settle_without_storage_choices' (27637) panicked at crates/idlever-core/src/tests.rs:2317:9:
+assertion `left == right` failed
+  left: 40
+ right: 0
+
+
+failures:
+    tests::a_full_lineage_plays_through_many_runs_without_panics
+    tests::actual_outcomes_settle_without_storage_choices
+
+test result: FAILED. 959 passed; 2 failed; 6 ignored; 0 measured; 0 filtered out; finished in 100.65s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

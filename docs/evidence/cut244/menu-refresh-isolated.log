@@ -1,0 +1,10 @@
+client suite: targeted (1 selected; 163 current full; 206 exhaustive groups)
+FAIL menu-materials  60.3s (52.4s)  Node.js v22.18.0
+     2026-10-15T15:44:40.657Z pw:browser [pid=3268908][err] [1015/234440.656403:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x1b1c00159400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     2026-10-15T15:44:40.848Z pw:browser [pid=3268908][err] [1015/234440.841574:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x1b1c00159400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     2026-10-15T15:44:41.866Z pw:browser [pid=3268908][err] [1015/234441.866115:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x1b1c00159400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+     2026-10-15T15:44:42.017Z pw:browser [pid=3268908][err] [1015/234442.016464:ERROR:gpu/command_buffer/service/gl_utils.cc:430] [.WebGL-0x1b1c00159400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+       name: 'Error'
+         at settle (/home/g/p/riddle/web/tests/menu-materials.mjs:38:15)
+         at async file:///home/g/p/riddle/web/tests/menu-materials.mjs:158:5 {
+FAIL: 0/1 client gates in 60.3s

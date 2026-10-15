@@ -288,7 +288,6 @@ fn every_exit_names_its_reason() {
                     break;
                 }
             }
-            g.auto_keep();
             let l = line.expect("an exit line");
             let why = l.reason.clone().expect("a reason");
             assert!(why.split_whitespace().filter(|w| *w != "·").count() <= 3, "{why}");

@@ -53,6 +53,7 @@ function offerTile(
   const [ico, glyph] = ICON[o.id] ?? ["mark", "◆"];
   const t = tile({
     id: `pick-${o.id}`,
+    cls: "game-control",
     label: WORD[o.id] ?? o.id,
     icon: ico,
     glyph,
@@ -136,7 +137,7 @@ export function returnPick(
           (close) =>
             h(
               "div",
-              { class: "sheet-body return-pick sheet", "data-return-pick": "sheet" },
+              { class: "sheet-body return-pick", "data-return-pick": "sheet" },
               head(p.size),
               three(close),
             ),

@@ -68,7 +68,6 @@ fn town_from(source: &LineageState, dest: &mut LineageState) {
 /// Cut 120 §3: copy one order (a `tree::SHAREABLE` key) between bloodlines' switches.
 pub fn copy_order(from: &crate::wire::StandingSwitches, to: &mut crate::wire::StandingSwitches, key: &str) {
     match key {
-        "insure" => to.insure = from.insure,
         "forge" => to.forge.clone_from(&from.forge),
         "wall" => to.wall.clone_from(&from.wall),
         "sink" => to.sink.clone_from(&from.sink),
@@ -200,7 +199,6 @@ impl Session {
                 hero.device.available |= device;
             }
         }
-        l.selected_loadout=self.active.loadout.clone();
         // Cut 228: the Forge's present work across every hero's own clock (read model)
         if self.active.lineage.town.home!=Some(false) { l.town.forge_work=crate::town::forge_work(std::iter::once(&self.active).chain(self.others.values())); }
         let slot=|id:u32,g:&Game| {
@@ -400,7 +398,6 @@ mod tests {
                     l.classes.insert("fighter".into(),crate::wire::ClassProg{level:7,xp:10,next:0});
                     l.forge.insert("sword".into(),crate::wire::ForgeRow::at(20));
                     l.kit.insert("sword".into(),2);
-                    l.vault.push(crate::item::Item::new(100_001,"plate"));
                     l.unlocks.insert("cadence".into());
                     if id!=selected {s.send();}
                 }
@@ -421,7 +418,6 @@ mod tests {
                 assert_eq!(s.others,others,"unselected games, including live runs, untouched");
                 assert_eq!((s.active.lineage.gold,s.active.lineage.best_depth,s.active.lineage.heir),(0,0,1));
                 assert!(s.active.lineage.kit.is_empty());
-                assert_eq!(s.active.lineage.vault.is_empty(),variant=="bones_only");
                 assert_eq!(s.active.lineage.unlocks.contains("cadence"),variant=="short_list");
                 for (id,old) in others {
                     s.select_bloodline(id).unwrap();

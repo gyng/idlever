@@ -281,7 +281,6 @@ fn first_fork(seed: u64, cap: u32) -> Option<u32> {
         let died = g.run.as_ref().is_some_and(|r| r.over == Some(ExitTier::Death));
         let id = g.run.as_ref().map(|r| r.id).unwrap_or(0);
         g.finish_run();
-        g.auto_keep();
         g.events.clear();
         if g.lineage.facts.contains("fork:5") {
             return Some(send);
@@ -518,7 +517,6 @@ fn gold_sends(g: &mut Game, t: &mut GoldTally, consumed: &mut u64, budget: u64, 
         *consumed += turns as u64 + g.rest_after(turns, tier) as u64;
         t.ticks += turns as u64 + g.rest_after(turns, tier) as u64;
         g.finish_run();
-        g.auto_keep();
         g.events.clear();
         t.sends += 1;
         if tier != ExitTier::Death {
@@ -1649,8 +1647,7 @@ fn main() {
                     ticks += 1;
                 }
                 g.finish_run();
-                g.auto_keep();
-            }
+                }
             (b.name(), t.secs() * 1e6 / ticks.max(1) as f64)
         })
         .collect();

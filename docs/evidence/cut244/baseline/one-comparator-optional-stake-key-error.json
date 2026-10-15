@@ -1,0 +1,144 @@
+{
+  "exactExceptDeclaredTypedRemovals": false,
+  "removals": [
+    {
+      "path": "/loadout",
+      "before": []
+    },
+    {
+      "path": "/pending_exit",
+      "before": null
+    },
+    {
+      "path": "/batch/found",
+      "before": []
+    },
+    {
+      "path": "/lineage/insured",
+      "before": []
+    },
+    {
+      "path": "/lineage/keep_pref",
+      "before": "best_weapon"
+    },
+    {
+      "path": "/lineage/vault",
+      "before": []
+    },
+    {
+      "path": "/lineage/orders/insure",
+      "before": true
+    },
+    {
+      "path": "/lineage/tree/sends",
+      "before": [
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/live_capsule/kills/0/game/loadout",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/0/game/pending_exit",
+      "before": null
+    },
+    {
+      "path": "/live_capsule/kills/0/game/batch/found",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/0/game/lineage/insured",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/0/game/lineage/keep_pref",
+      "before": "best_weapon"
+    },
+    {
+      "path": "/live_capsule/kills/0/game/lineage/vault",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/0/game/lineage/orders/insure",
+      "before": true
+    },
+    {
+      "path": "/live_capsule/kills/0/game/lineage/tree/sends",
+      "before": [
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/live_capsule/kills/1/game/loadout",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/1/game/pending_exit",
+      "before": null
+    },
+    {
+      "path": "/live_capsule/kills/1/game/batch/found",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/1/game/lineage/insured",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/1/game/lineage/keep_pref",
+      "before": "best_weapon"
+    },
+    {
+      "path": "/live_capsule/kills/1/game/lineage/vault",
+      "before": []
+    },
+    {
+      "path": "/live_capsule/kills/1/game/lineage/orders/insure",
+      "before": true
+    },
+    {
+      "path": "/live_capsule/kills/1/game/lineage/tree/sends",
+      "before": [
+        0,
+        0
+      ]
+    },
+    {
+      "path": "/sent_state/loadout",
+      "before": []
+    },
+    {
+      "path": "/sent_state/lineage/insured",
+      "before": []
+    },
+    {
+      "path": "/sent_state/lineage/keep_pref",
+      "before": "best_weapon"
+    },
+    {
+      "path": "/sent_state/lineage/vault",
+      "before": []
+    },
+    {
+      "path": "/sent_state/lineage/orders/insure",
+      "before": true
+    },
+    {
+      "path": "/sent_state/lineage/tree/sends",
+      "before": [
+        0,
+        0
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "path": "/last_snapshot/stake/brought",
+      "reason": "undeclared or nonempty removal",
+      "before": []
+    }
+  ]
+}

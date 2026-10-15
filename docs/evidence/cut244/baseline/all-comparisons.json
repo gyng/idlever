@@ -1,0 +1,152 @@
+{
+  "cases": [
+    {
+      "case": "one",
+      "mode": "loaded.session",
+      "pass": true,
+      "deletions": 23,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "prepared.session",
+      "pass": true,
+      "deletions": 23,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "whole.session",
+      "pass": true,
+      "deletions": 31,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "sliced.session",
+      "pass": true,
+      "deletions": 31,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "reloaded.session",
+      "pass": true,
+      "deletions": 31,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "whole.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "sliced.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "reloaded.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "one",
+      "mode": "summary",
+      "pass": true,
+      "deletions": 0,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "loaded.session",
+      "pass": true,
+      "deletions": 47,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "prepared.session",
+      "pass": true,
+      "deletions": 85,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "whole.session",
+      "pass": true,
+      "deletions": 61,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "sliced.session",
+      "pass": true,
+      "deletions": 61,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "reloaded.session",
+      "pass": true,
+      "deletions": 61,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "whole.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "sliced.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "reloaded.report",
+      "pass": true,
+      "deletions": 1,
+      "failures": 0
+    },
+    {
+      "case": "three",
+      "mode": "summary",
+      "pass": true,
+      "deletions": 3,
+      "failures": 0
+    }
+  ],
+  "corruptionRefusals": [
+    {
+      "corruption": "Gold",
+      "refused": true
+    },
+    {
+      "corruption": "lineage RNG",
+      "refused": true
+    },
+    {
+      "corruption": "selected resident",
+      "refused": true
+    },
+    {
+      "corruption": "actual retained item unit count",
+      "refused": true
+    },
+    {
+      "corruption": "new undeclared field",
+      "refused": true
+    }
+  ]
+}

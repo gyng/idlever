@@ -11,19 +11,10 @@ import { defaultOffer } from "./return-pick";
 import { featOrderBits } from "./feats";
 import { audio } from "../audio";
 
-/* copy:callout */
-const KEEP: Record<string, string> = {
-  best_weapon: "keep weapon",
-  best_armour: "keep armour",
-  none: "keep none",
-};
-
 /** The standing orders as the fold reads them (≤ 3 words each). */
 export function ordersLine(o: NonNullable<App["lineage"]["orders"]>): string[] {
   return [
-    KEEP[o.keep] ?? /* copy:callout */ `keep ${o.keep}`,
     o.repeat ? /* copy:callout */ "restock on" : /* copy:callout */ "restock off",
-    o.insure ? /* copy:callout */ "insure on" : /* copy:callout */ "insure off",
     o.start > 1 ? /* copy:callout */ `start D${o.start}` : "",
     // Cut 118: the heir and sink orders off their defaults (the scout's retired wall order is never named)
     ...featOrderBits(o),

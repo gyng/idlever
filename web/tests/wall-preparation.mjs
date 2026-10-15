@@ -1,10 +1,12 @@
 import { responsiveWidths } from "./lib/viewport-cases.mjs";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   for (const width of responsiveWidths([320, 400, 1440])) {
@@ -98,7 +100,10 @@ try {
       check(document.querySelectorAll(".preparation-action").length <= 3, "bounded choices");
       action("report-upgrade").click();
       check(
-        document.querySelector(".hero-legacy").textContent.includes("54") && spends === 0,
+        document.querySelector('.hero-hub [data-hub-tab="attributes"][aria-selected="true"]') &&
+          document.querySelector('.hero-hub [data-upgrade="health"]') &&
+          a.lineage.bloodline.points === 54 &&
+          spends === 0,
         "hero opening is read-only",
       );
       closeAllSheets();

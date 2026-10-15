@@ -141,9 +141,6 @@ pub struct Tree {
     /// A send by hand is under way (before the scout).
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub sent: bool,
-    /// Inactive storage metadata; retained only until the coordinated API cleanup.
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub worn: Vec<u32>,
     /// Every gold movement summed (interest in, bank moves out): purse + chest + bank = ledger.
     #[serde(default)]
     pub ledger: i64,
@@ -162,9 +159,6 @@ pub struct Tree {
     /// The record the stones' ledger was kept under (a new record forgets it: a stronger hero tries again).
     #[serde(default)]
     pub stones_best: u32,
-    /// Inactive storage metadata; no worker reads or updates this counter.
-    #[serde(default)]
-    pub sends: (u32, u32),
     /// Blind 1fb7786: under the `half` forge order, the purse the apprentice may still spend — half of each
     /// haul home since he was hired, less what he spent (never above the purse).
     #[serde(default, skip_serializing_if = "is_zero")]
@@ -1014,7 +1008,7 @@ pub fn new_legacy() -> &'static str {
     NEW_LEGACY
 }
 /// The orders `same for all` copies to every bloodline (`StandingSwitches.shared`).
-pub const SHAREABLE: [&str; 9] = ["insure", "forge", "wall", "sink", "temperament", "kennel", "legacy", "ranks", "ascend"];
+pub const SHAREABLE: [&str; 8] = ["forge", "wall", "sink", "temperament", "kennel", "legacy", "ranks", "ascend"];
 
 /// The `acts` keys of the order lines (never a node's): the ranks bought (`ranks`, per worker `ranks:scout`, their
 /// gold `ranks$`); the Legacy bought (`legacy`, per upgrade `legacy:health`, the points `legacy◆`); the herald's

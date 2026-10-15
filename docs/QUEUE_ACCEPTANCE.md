@@ -9,12 +9,22 @@ This audit reconciles source and preserved evidence through Cuts222–236 on
 the original audit snapshot `781b148f`. Subsequent local checkpoints are art
 `ddcac657`, integrated Cut235 WIP `c6f4ec4a` and the Journal wrapping fix
 `cdde0cf3`. Cut235 scoped provenance/timing acceptance now passes;
-current corrected native source now passes965tests, Clippy, full16-seed hire/cadence,
+that corrected Cut235 native snapshot passes965tests, Clippy, full16-seed hire/cadence,
 24-row pacing and bounded routine full gate; fresh current routine client41/41 and final targeted5/5 pass after
 the Cut240/241 and strict fixture/focus refinements. This ledger does not certify the
 current dirty tree. Historical test counts below retain their
 original source/runtime scope. Full requirement inventory and prioritized missing
 proofs: [acceptance-audit.json](evidence/handoff-resume/acceptance-audit.json).
+
+Subsequent Cut243/244 checkpoint: current961native tests/6ignored and default
+Clippy pass; rebuilt97e8 removes retired storage APIs/wire fields. Typed paired
+full-state comparisons22/22 and fresh relevant client8/8 including564Gold checks
+pass. Native pacing/full and broader client integration remain pending. Home now
+uses actual building sprites as primary controls, with quiet availability dots,
+no duplicated built-building toolbar buttons, no persistent square help icons,
+hidden future plots, and unclipped Pets labels. Six current normal/200% phone/
+desktop views/gesture cases preserve exact saves. This does not complete broader
+menu-state, progression, content, exhaustive or independent fun requirements.
 
 ## Current product requirements
 

@@ -69,7 +69,6 @@ fn the_forged_new_best_lights_the_apprentice_and_the_count_does_not() {
     g.start_run(None);
     finish_at(&mut g, 6);
     assert!(!met(&g, "apprentice"), "forged kit without a record is no feat");
-    g.auto_keep();
     g.start_run(None);
     finish_at(&mut g, 7);
     assert!(met(&g, "apprentice"));
@@ -88,7 +87,6 @@ fn the_apprentice_requires_a_hand_forged_kit_at_send() {
     crate::kit::buy(&mut g, "weapon").unwrap();
     finish_at(&mut g, 7);
     assert!(!met(&g, "apprentice"), "the record's kit was sent before the hand purchase");
-    g.auto_keep();
     g.start_run(None);
     finish_at(&mut g, 8);
     assert!(met(&g, "apprentice"));
@@ -309,7 +307,6 @@ fn session_shares_town_worker_feats_without_sharing_hero_provenance() {
     finish_at(&mut s.active, 7);
     assert!(!tree::feat_done(&s.active.lineage, "guide"), "another hero's hand selection cannot earn this run's guide feat");
     assert!(!tree::feat_done(&s.active.lineage, "apprentice"), "another hero's hand purchase cannot earn this run's forge feat");
-    s.active.auto_keep();
     assert!(crate::town::night(&mut s.active.lineage) > 0);
     assert!(met(&s.active, "clerk"));
     s.select_bloodline(1).unwrap();
@@ -407,13 +404,11 @@ fn the_drillmaster_needs_a_hand_levelled_worn_package_to_clear_a_floor() {
     assert_eq!(g.sent_state.as_ref().unwrap().lineage.pkg.stance, "steady");
     finish_at(&mut g, 2);
     assert!(!met(&g, "drillmaster"), "levelling an unworn package cannot credit another package's clear");
-    g.auto_keep();
     g.equip_package("guarded", 0).unwrap();
     g.start_run(None);
     let start = g.run.as_ref().unwrap().start;
     finish_at(&mut g, start);
     assert!(!met(&g, "drillmaster"), "departure alone clears no floor");
-    g.auto_keep();
     g.start_run(None);
     let start = g.run.as_ref().unwrap().start;
     finish_at(&mut g, start + 1);
@@ -434,7 +429,6 @@ fn the_drillmaster_does_not_credit_an_in_run_level_purchase() {
     g.spend_level("steady").unwrap();
     finish_at(&mut g, 2);
     assert!(!met(&g, "drillmaster"), "the hand spend happened after departure");
-    g.auto_keep();
     g.start_run(None);
     finish_at(&mut g, 2);
     assert!(met(&g, "drillmaster"), "the next departure wore the manually bought level");
@@ -494,7 +488,6 @@ fn hand_fielding_after_departure_cannot_retroactively_earn_the_kennel_hand() {
     finish_at(&mut g, 7);
     assert!(g.lineage.all_companions().any(|c| c.id == 1901 && c.level == 2));
     assert!(!met(&g, "kennel_hand"), "the growth belonged to a run sent before hand fielding");
-    g.auto_keep();
     g.lineage.party.iter_mut().find(|c| c.id == 1901).unwrap().life.xp = crate::pets::LEVEL_XP[2] - 7;
     g.start_run(None);
     finish_at(&mut g, 7);
@@ -532,8 +525,7 @@ fn a_manually_bred_pup_earns_the_keeper_on_its_later_departure() {
         g.start_run(None);
         finish_at(&mut g, 1);
         assert!(!met(&g, "kennel_keeper"), "an egg is not a fielded pup");
-        g.auto_keep();
-    }
+        }
     let child = g.lineage.kennel.iter().find(|c| c.gen == 1).unwrap().id;
     assert_ne!(child, egg);
     assert!(!g.lineage.tree.bred_by_hand.contains(&egg));
@@ -565,7 +557,6 @@ fn the_kennel_hand_requires_the_actual_successfully_hand_selected_pet() {
     finish_at(&mut g, 7);
     assert!(g.lineage.all_companions().any(|c| c.id == 2102 && c.level == 2));
     assert!(!met(&g, "kennel_hand"), "an unrelated pet's growth cannot borrow the selected pet's identity");
-    g.auto_keep();
     g.set_party(vec![2101]).unwrap();
     g.lineage.party[0].life.xp = crate::pets::LEVEL_XP[1] - 7;
     let mut loaded = Game::load(&g.save()).unwrap();
@@ -629,8 +620,7 @@ fn hand_bred_identity_follows_the_actual_loss_egg_and_recovered_pet() {
     for _ in 0..g.lineage.egg_rests() {
         g.start_run(None);
         finish_at(&mut g, 1);
-        g.auto_keep();
-    }
+        }
     let child = g.lineage.kennel.iter().find(|c| c.gen == 1).unwrap().id;
     assert!(g.lineage.tree.bred_by_hand.contains(&child));
     g.set_party(vec![child]).unwrap();

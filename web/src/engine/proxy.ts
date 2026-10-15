@@ -10,7 +10,6 @@ const METHODS: (keyof Engine)[] = [
   "save",
   "vocabulary",
   "setRules",
-  "loadout",
   "forecast",
   "forecastEstimate",
   "send",
@@ -29,10 +28,6 @@ const METHODS: (keyof Engine)[] = [
   "buySupply",
   "clearSupplies",
   "supplyCatalogue",
-  "keep",
-  "setKeepPref",
-  "insure",
-  "sellVault",
   "runOfflineQuick",
   "unlocks",
   "unlockDeltas",
@@ -49,7 +44,6 @@ const METHODS: (keyof Engine)[] = [
   "setTrait", // Cut 13 §2: optional likewise (no offer without it)
   "setLook", // hero looks: optional likewise (the class's own look without it)
   "buyUnlockGold", // Cut 15 §2: optional likewise (the sheet's `$ buy` is off without a gold price)
-  "autoKeep", // QA 23ed91f: optional likewise (the skipped keep sheet's preference keep)
   "deathDeltas", // QA 23ed91f: optional likewise (the camp's reach for a death's patches, after `death`)
   "cageForecast", // Cut 19 §1: optional likewise (the cage tablet's per-option deltas)
   "setRestock", // Cut 19 §3: optional likewise (the loadout's repeat toggle)

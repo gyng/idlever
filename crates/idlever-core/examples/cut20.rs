@@ -85,7 +85,6 @@ fn main() {
                 depth_sum += r.depth;
                 deaths += (r.over == Some(idlever_core::engine::ExitTier::Death)) as u32;
                 g.finish_run();
-                g.auto_keep();
                 g.events.clear();
                 n += 1;
             }
@@ -102,7 +101,6 @@ fn main() {
                 pet_deaths += lost;
                 pet_runs_lost += (lost > 0) as u32;
                 g.finish_run();
-                g.auto_keep();
                 g.events.clear();
                 pet_n += 1;
             }

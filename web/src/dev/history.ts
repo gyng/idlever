@@ -159,15 +159,14 @@ export function toBlob(save: unknown): SaveBlob {
     const parsed = JSON.parse(s);
     // a raw engine save is an object without the blob's `engine` string
     if (parsed && typeof parsed === "object" && typeof parsed.engine !== "string" && !parsed.format)
-      return { v: 2, engine: s, loadout: [], last_seen: Date.now() };
+      return { v: 2, engine: s, last_seen: Date.now() };
     s = parsed;
   }
   const o = s as Record<string, unknown>;
   if (o?.format === "idlever-history") return (o.entry as HistoryEntry).blob;
   if (o?.format === "idlever-debug") return o.save as SaveBlob;
   if (o && typeof o.engine === "string") return o as unknown as SaveBlob;
-  if (o && typeof o === "object")
-    return { v: 2, engine: JSON.stringify(o), loadout: [], last_seen: Date.now() };
+  if (o && typeof o === "object") return { v: 2, engine: JSON.stringify(o), last_seen: Date.now() };
   throw new Error("unrecognized save");
 }
 

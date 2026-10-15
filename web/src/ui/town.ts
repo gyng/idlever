@@ -2,11 +2,9 @@ import { classIcon } from "./class-icons";
 import type { BloodlineTab } from "./bloodline-tabs";
 import { openHeroHub, heroHubOwner, type HeroHubSection } from "./hero-hub";
 import { heroPresence, heroAway } from "./hero-presence";
-// Cut 30 §3 — the town on the camp (docs/TOWN.md): the scene (render/town.ts) in the well, a DOM hit target over everything one can
-// tap (≥ 44 px, a hidden label for tests and screen readers), the markers (≤ 3: a sword over the forge when a kit step is affordable,
-// a coin over the bank when a night's interest came in, a `!` rune over a building not yet opened), the staked plot's trigger on tap,
-// and the building bar (the console's command card: one tile per building standing, in build order; tile and building open the same
-// panel and share the badge). Day 0 is a camp — the mouth (tap = send), the tent (the hero), the crate (the pack); nothing else taps.
+// Home's actual sprites are the primary surfaces (≥44px, full accessible names).
+// Existing native availability produces quiet dots; hover/focus/long-press shows
+// details and a normal tap opens the existing panel. Purchases remain inside it.
 import "../town.css";
 import "../legible.css";
 import type { App } from "../app";
@@ -35,7 +33,7 @@ import { openCampOrders } from "./camp";
 import { classList, classUnlockReason } from "./unlocks";
 import { CLASS_VERBS } from "../engine/classes";
 import { classSkillLadder } from "./class-skills";
-import { kwHost, detailHost, openTip, closeTip } from "./tips";
+import { kwHost, detailHost, closeTip } from "./tips";
 import { HOME_BUILDINGS, buildingDetails, buildingName, type HomeBuilding } from "./building-help";
 import type { Term } from "./concepts";
 /** docs/TOOLTIPS.md: a building's tip (long-press / hover; its tap stays its panel) */
@@ -67,15 +65,13 @@ const LABEL: Record<string, string> = {
   tent: "hero",
   crate: "Loadouts",
   blacksmith: "forge",
-  kennel: "companions",
+  kennel: "Pets",
   bank: "savings",
   staked: "next plot",
   board: "quest board",
   chest: "chest",
   worker: "next worker",
 };
-/* copy:label */
-const SERVICE_LABEL: Record<string, string> = { guild: "Guild", pool: "Pool", device: "Clone vat" };
 /* copy:label */
 const BUILD_NAME: Record<string, string> = {
   house: "house",
@@ -90,7 +86,7 @@ export const BUILDING_TILE: Record<
   { id: string; icon: string; label: string; glyph: string }
 > = {
   blacksmith: { id: "forge", icon: "forge", label: "forge", glyph: "⚒" },
-  kennel: { id: "party", icon: "party", label: "companions", glyph: "🐾" },
+  kennel: { id: "party", icon: "party", label: "Pets", glyph: "🐾" },
   bank: { id: "bank", icon: "gold", label: "savings", glyph: "$" },
 };
 /** the buildings standing, in build order (null: a lineage with no town on the wire — the old console reveal stands) */
@@ -167,7 +163,6 @@ export type TownUi = {
 export function renderTown(app: App, hooks: TownHooks): TownUi {
   const el = h("div", { class: "town" });
   const hits = h("div", { class: "town-hits" });
-  const helpLabels = h("div", { class: "town-building-labels" });
   const actorHits = h("div", { class: "town-actor-hits" });
   const delveFaces = h("div", {
     class: "town-delve-faces",
@@ -189,7 +184,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     if (watch && heroAway(slot)) app.go({ kind: "watch" });
     else openHero(app, anchor.isConnected ? anchor : null);
   };
-  const helpButtons = new Map<string, HTMLElement>();
   const buildingId = (id: string): HomeBuilding | null => {
     const actual = id === "tent" ? "house" : id === "staked" ? state?.staked?.id : id;
     return HOME_BUILDINGS.includes(actual as HomeBuilding) ? (actual as HomeBuilding) : null;
@@ -288,18 +282,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
   const crier = townCrier(app);
   // Cut 118 (owner amendment §4): the graveyard at the scene's foot, left — a stone per fallen heir (the newest few), epitaphs on hover
   const yard = townGraveyard(app);
-  el.append(
-    hits,
-    helpLabels,
-    actorHits,
-    delveFaces,
-    foundation,
-    tag,
-    arrival,
-    pill.el,
-    crier.el,
-    yard.el,
-  );
+  el.append(hits, actorHits, delveFaces, foundation, tag, arrival, pill.el, crier.el, yard.el);
   let arrivalTimer = 0;
   const view = createTownView(el);
   let chestOpenUntil = 0,
@@ -489,7 +472,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         height: `${r.h}px`,
       });
     }
-    if (reservationsChanged && el.isConnected) placeHelpLabels();
+    if (reservationsChanged && el.isConnected && !tag.hidden) placeTag();
     const cave = view.rectOf("mouth");
     if (cave)
       Object.assign(delveFaces.style, {
@@ -557,12 +540,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     for (const [id, b] of btns)
       if (!want.some((w) => w.id === id)) {
         b.remove();
-        const help = helpButtons.get(id);
-        if (help) {
-          labelResize?.unobserve(help);
-          help.remove();
-        }
-        helpButtons.delete(id);
         btns.delete(id);
       }
     // Cut 120 §10: the next worker's count and fallback on his post (`forge 2/3 · or 30h`) while no hire is lit — one marker, inside the
@@ -594,49 +571,21 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
             class: `town-hit hit-${w.id}`,
             "data-building": w.id,
             "aria-label": label,
-            onclick: (e: Event) => tap(w.id, e),
+            onclick: () => tap(w.id),
           },
           h("span", { class: "vh" }, label),
         );
         if (service(w.id)) detailHost(b, () => serviceDetails(w.id));
         else if (buildingId(w.id))
-          detailHost(b, () => buildingDetails(app.lineage, buildingId(w.id)!));
+          detailHost(b, () => [
+            ...buildingDetails(app.lineage, buildingId(w.id)!),
+            ...(state?.markers ?? [])
+              .filter((m) => m.at === w.id && m.label)
+              .map((m) => h("div", { class: "kw-tip-gloss" }, m.label!)),
+          ]);
         else if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         btns.set(w.id, b);
         hits.appendChild(b);
-      }
-      const homeId = buildingId(w.id);
-      const actualService = service(w.id);
-      if (homeId || actualService) {
-        let help = helpButtons.get(w.id);
-        if (!help) {
-          help = h("button", {
-            class: "town-building-info",
-            "data-building-info": w.id,
-            onclick: (e: Event) => {
-              e.stopPropagation();
-              openTip(e.currentTarget as HTMLElement);
-            },
-          });
-          detailHost(help, () =>
-            service(w.id) ? serviceDetails(w.id) : buildingDetails(app.lineage, buildingId(w.id)!),
-          );
-          helpLabels.append(help);
-          helpButtons.set(w.id, help);
-          labelResize?.observe(help);
-        }
-        const name = actualService?.name ?? buildingName(homeId!);
-        const helpId = homeId ?? w.id;
-        help.setAttribute("aria-label", `${name} information`);
-        if (help.dataset.homeId !== helpId) {
-          help.dataset.homeId = helpId;
-          replace(
-            help,
-            h("span", { class: "town-building-name" }, SERVICE_LABEL[w.id] ?? name),
-            h("span", { class: "town-info-glyph", "aria-hidden": "true" }, "i"),
-          );
-        }
-        help.dataset.state = w.id === "staked" ? (s.staked?.ready ? "ready" : "locked") : "built";
       }
       b.setAttribute("aria-label", label);
       b.title = label;
@@ -659,21 +608,27 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         b.title = hiring;
         b.querySelector(".vh")!.textContent = hiring;
       }
+      const actionNames = mk
+        .map((m) => m.label)
+        .filter(Boolean)
+        .join(" · ");
+      if (actionNames && !lit) {
+        b.setAttribute("aria-label", `${label} · ${actionNames}`);
+        b.title = `${label} · ${actionNames}`;
+      }
+      if (w.id === "worker")
+        detailHost(b, () => [h("strong", null, b.getAttribute("aria-label") ?? label)]);
       b.dataset.worker = lit?.id ?? "";
       const holder =
         b.querySelector(".town-markers") ?? b.appendChild(h("span", { class: "town-markers" }));
       replace(
         holder,
         ...mk.map((m) =>
-          h(
-            "span",
-            { class: `town-marker mk-${m.kind}`, "data-marker": m.kind },
-            icon(
-              m.kind === "sword" ? "v_attack" : m.kind === "coin" ? "gold" : "alert",
-              m.kind === "sword" ? "⚔" : m.kind === "coin" ? "$" : "!",
-            ),
-            m.label ? h("b", { class: "num" }, m.label) : "",
-          ),
+          h("span", {
+            class: `town-marker mk-${m.kind}`,
+            "data-marker": m.kind,
+            "aria-hidden": "true",
+          }),
         ),
       );
       if (nw && nwAt === w.id)
@@ -755,15 +710,10 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
               : (id as PlotId),
       );
       if (!r) {
-        if (helpButtons.get(id)) helpButtons.get(id)!.hidden = true;
         b.hidden = true;
         continue;
       }
       b.hidden = false;
-      const help = helpButtons.get(id);
-      if (help) {
-        help.hidden = false;
-      }
       // ≥ 44 px each way, centred on the sprite (a building's box trimmed to its body: the roof's sky is not the building)
       const readyPlot = id === "staked" && s.staked?.ready === true;
       const cx = r.x + r.w / 2,
@@ -789,93 +739,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       });
     }
     if (!tag.hidden) placeTag();
-    placeHelpLabels();
     foundation.hidden = state?.staked?.ready !== true;
-  }
-  function placeHelpLabels(): void {
-    const origin = el.getBoundingClientRect();
-    type Box = { x: number; y: number; w: number; h: number; owner?: string };
-    const box = (node: HTMLElement): Box => {
-      const r = node.getBoundingClientRect();
-      return { x: r.left - origin.left, y: r.top - origin.top, w: r.width, h: r.height };
-    };
-    // Resource badges and construction copy keep their own anchors. Help
-    // labels fit around them, rather than hiding the price beneath a nameplate.
-    const occupied = [
-      ...el.querySelectorAll<HTMLElement>(
-        ".town-marker,.town-tag,.next-pill,.town-delve-faces,.task-tracker",
-      ),
-    ]
-      .filter(
-        (node) =>
-          !node.hidden &&
-          node.getBoundingClientRect().width > 0 &&
-          node.getBoundingClientRect().height > 0,
-      )
-      .map(box);
-    occupied.push(...actorReservations.values());
-    // Keep every scene action's central44px accessible, including its own
-    // information label. The label stays near the body without intercepting it.
-    for (const [id, node] of btns) {
-      if (node.hidden) continue;
-      const r = box(node);
-      occupied.push({ x: r.x + r.w / 2 - 22, y: r.y + r.h / 2 - 22, w: 44, h: 44, owner: id });
-    }
-    const overlap = (a: Box, b: Box): number =>
-      Math.max(0, Math.min(a.x + a.w + 4, b.x + b.w + 4) - Math.max(a.x, b.x)) *
-      Math.max(0, Math.min(a.y + a.h + 4, b.y + b.h + 4) - Math.max(a.y, b.y));
-    for (const [id, help] of helpButtons) {
-      if (help.hidden) continue;
-      const r = view.rectOf(id === "staked" ? "staked" : (id as PlotId));
-      if (!r) continue;
-      const w = help.offsetWidth,
-        h = help.offsetHeight;
-      const preferredX = Math.max(6, Math.min(el.clientWidth - w - 6, r.x + r.w / 2 - w / 2));
-      const preferredY = Math.max(
-        6,
-        Math.min(
-          el.clientHeight - h - 6,
-          id === "staked" && !state?.staked?.ready ? r.y + r.h + 8 : r.y - h,
-        ),
-      );
-      const xs = [
-        ...new Set(
-          [
-            preferredX,
-            r.x - w - 8,
-            r.x + r.w + 8,
-            6,
-            el.clientWidth - w - 6,
-            ...occupied.flatMap((other) => [other.x - w - 8, other.x + other.w + 8]),
-          ].map((x) => Math.max(6, Math.min(el.clientWidth - w - 6, x))),
-        ),
-      ];
-      let best = { x: preferredX, y: preferredY, w, h },
-        bestScore = Infinity;
-      const ys = [
-        preferredY,
-        ...occupied.flatMap((other) => [other.y - h - 8, other.y + other.h + 8]),
-      ];
-      for (let offset = 8; offset < el.clientHeight; offset += 8)
-        ys.push(preferredY - offset, preferredY + offset);
-      for (const y of ys) {
-        if (y < 6 || y + h > el.clientHeight - 6) continue;
-        for (const x of xs) {
-          const candidate = { x, y, w, h };
-          const collisions = occupied.reduce((sum, other) => sum + overlap(candidate, other), 0);
-          const score = collisions * 1_000_000 + (x - preferredX) ** 2 + (y - preferredY) ** 2;
-          if (score < bestScore) {
-            best = candidate;
-            bestScore = score;
-          }
-        }
-      }
-      Object.assign(help.style, {
-        left: `${Math.round(best.x)}px`,
-        top: `${Math.round(best.y)}px`,
-      });
-      occupied.push(best);
-    }
   }
   view.onLayout(() => {
     layout();
@@ -918,6 +782,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
         w: 44,
         h: 44,
       }));
+    if (ready) targets.push({ x: cx - size.w / 2, y: cy - size.h / 2, w: size.w, h: size.h });
     const origin = el.getBoundingClientRect();
     // the next-worker pill (it grew a count and bar, Cut231 §5) and the task tracker are overlays the tag must clear too
     for (const marker of el.querySelectorAll<HTMLElement>(
@@ -966,7 +831,7 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       top: `${Math.round(bottom)}px`,
     });
   }
-  function tap(id: string, e: Event): void {
+  function tap(id: string): void {
     view.poke();
     const b = btns.get(id)!;
     const L = app.lineage;
@@ -1013,13 +878,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       inspectPlot();
       return;
     }
-    const marker = (e.target as HTMLElement | null)?.closest?.(
-      ".town-marker",
-    ) as HTMLElement | null;
-    if (marker?.dataset.marker === "sword" && id === "blacksmith") {
-      void buyKit();
-      return;
-    }
     if ((BUILDINGS as readonly string[]).includes(id)) {
       markOpened(L, id);
       paint();
@@ -1030,15 +888,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
     else if (id === "blacksmith") hooks.forge(b);
     else if (id === "bank") openBank(app, b);
     else if (id === "board") hooks.quest(b);
-  }
-  /** the sword marker: one tap buys the cheapest kit step the purse can pay (the check-in's spend) */
-  async function buyKit(): Promise<void> {
-    const lad = (app.lineage.kit ?? [])
-      .filter((k) => k.next?.affordable)
-      .sort((a, b) => a.next!.price - b.next!.price)[0];
-    if (!lad || !app.engine.buyKit) return;
-    const ok = await app.mutate(() => app.engine.buyKit!(lad.slot), /* copy:callout */ "kit");
-    if (ok) audio.cue("unlock");
   }
   /** Cut 30.5: the chest's tap — the lid flips, the coins arc to the purse (quick: ~0.5 s), the purse counts up (juice.ts), the porter's
    *  count moves (the core's `openChest`; the porter's chore). */

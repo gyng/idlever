@@ -106,8 +106,6 @@ fn every_exit_line_carries_the_card() {
                     break;
                 }
             }
-            g.auto_keep();
-            h.auto_keep();
             let (l, tier) = line.expect("an exit line");
             assert_eq!(l.end, tier, "the line's kind is the event's");
             assert!(l.reached >= 1);

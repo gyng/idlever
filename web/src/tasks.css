@@ -50,7 +50,7 @@ html body .task-tracker.game-control:active {
   display: flex;
   align-items: center;
   gap: 6px;
-  min-height: 28px;
+  min-height: 44px;
   padding: 0 2px;
   border-bottom: 1px solid rgba(184, 148, 72, 0.55);
   cursor: pointer;
@@ -102,7 +102,7 @@ html body .task-tracker.game-control:active {
   grid-template-columns: 12px minmax(0, 1fr);
   column-gap: 4px;
   width: 100%;
-  min-height: 24px;
+  min-height: 44px;
   padding: 1px 0;
   cursor: pointer;
   line-height: 1.25;
@@ -113,6 +113,7 @@ html body .task-tracker.game-control:active {
 .task-title {
   color: var(--acc);
   font-weight: 600;
+  font-size: 1rem;
 }
 .task-entry:hover .task-title,
 .task-entry:focus-visible .task-title {
@@ -226,6 +227,6 @@ html body .task-tracker.game-control:active {
     padding: 0 10px 8px;
   }
   .task-entry {
-    min-height: 36px;
+    min-height: 44px;
   }
 }

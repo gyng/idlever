@@ -46,7 +46,7 @@ fn main() {
     write(&out,"cage-contract.json",json!({"fixture":"controlled world: seed206,500Gold,hold row,cleared monsters/items,three authored cage items; opening/pickup/return/timeout are actual core actions",
         "apis":{"choose":"choose(901)","preference":"setVaultPref('potion')","timeout":"step(50) from turn1 active save","grace_ticks":idlever_core::engine::VAULT_GRACE},
         "pickup":pickup,"return_gold":selected.lineage.gold,"return_financial_pct":100,"unknown_potion_label":opened.snapshot().vault_choice.unwrap().items[2].label,
-        "timeout":{"pick":902,"raw":r.loot_raw,"carry":r.loot},"no_keep_prompt":selected.pending_exit.is_none()}));
+        "timeout":{"pick":902,"raw":r.loot_raw,"carry":r.loot},"no_keep_prompt":serde_json::to_value(&selected).unwrap().get("pending_exit").is_none()}));
 
     let mut g=Game::new_resident(203);
     idlever_core::legacy::ensure(&mut g.lineage);

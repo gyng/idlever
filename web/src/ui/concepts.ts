@@ -300,7 +300,7 @@ export const TITLE: Partial<Record<Term, string>> = /* copy:label */ {
   reach: "floor chance",
   pack: "supplies",
   works: "workers",
-  kennel: "companions",
+  kennel: "Pets",
 };
 export const termTitle = (t: Term): string => TITLE[t] ?? t;
 /** The term's icon (a concept's, else the packed one named here). */

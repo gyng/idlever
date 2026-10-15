@@ -103,12 +103,10 @@ fn main() {
                 uses.join(",")
             );
             g.finish_run();
-            g.auto_keep();
             continue;
         }
         println!("attempt {attempt}: D{} {:?} cause {:?} ticks {} ({:.2} µs/tick)", r.max_depth, r.over, r.death_cause, r.turn, dt.as_secs_f64() * 1e6 / n.max(1) as f64);
         g.finish_run();
-        g.auto_keep();
         if watching {
             break;
         }

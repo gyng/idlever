@@ -324,12 +324,9 @@ pub fn floor_trial_with(seed: u64, depth: u32, set: RuleSet, twist: Option<&str>
     };
     g.lineage.classes.insert("fighter".into(), crate::wire::ClassProg { level, xp: 0, next: 0 });
     if depth >= 6 {
-        let id = g.lineage.next_vault_id;
-        g.lineage.next_vault_id += 1;
-        let mut it = crate::item::Item::new(id, "mail");
-        it.enchant = 1;
-        g.lineage.vault.push(it);
-        g.loadout(vec![id]);
+        // Cut244: a controlled current permanent-kit fixture, not earned pacing.
+        // Four plate steps select the same mail +1 without a retired vault instance.
+        g.lineage.kit.insert("armour".into(), 4);
     }
     g.sim = true;
     g.start_run(Some(seed ^ 0x51));
@@ -401,12 +398,9 @@ fn warlord_lineage(seed: u64) -> (crate::engine::Game, RuleSet) {
     if let Some(f) = crate::item::ident_fact(&g.lineage.flavours, "heal") {
         g.lineage.facts.insert(f);
     }
-    let id = g.lineage.next_vault_id;
-    g.lineage.next_vault_id += 1;
-    let mut it = crate::item::Item::new(id, "mail");
-    it.enchant = 1;
-    g.lineage.vault.push(it);
-    g.loadout(vec![id]);
+    // Cut244: current permanent-kit equivalent of the retired mail +1 instance.
+    // This deliberately changes the diagnostic fixture/cache fingerprint.
+    g.lineage.kit.insert("armour".into(), 4);
     let mut set = good();
     set.rows.retain(|r| !matches!(r.verb.a.as_deref(), Some("tag:boss") | Some("fire,tag:boss")));
     (g, set)

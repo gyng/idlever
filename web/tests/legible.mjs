@@ -4,8 +4,8 @@
 //   ends    real engine, a fresh lineage, three watched runs (▶▶| as a player would): every run's end shows a reason beat under its sum
 //           (the core's `ExitLine.reason`, ≤ 3 words — the first run's `hurt · banked`), and the report's end tile carries it
 //   build   real engine diagnostic milestone fixtures, each trigger in turn: every building's arrival names its cause (`first gold home → blacksmith`, ≤ 4 words + the
-//           arrow) and draws the eye (its target glows); the staked plot's tag is always visible — the next building and its trigger
-//           (`storehouse · first find kept`), from day 0 until the v1 set stands
+//           arrow) and draws the eye (its target glows); unready next milestones stay on the native wire without Home plot surfaces.
+//           Ready plots retain their explicit free manual Build action.
 //
 //   node web/tests/legible.mjs [--shots dir] [--part=ends,build]      (part of `pnpm test` in web/)
 import { execFileSync } from "node:child_process";
@@ -16,7 +16,9 @@ import { launchBrowser } from "../../tools/browser.mjs";
 import { pressWatchControl } from "../../tools/watch-control.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const url = execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", [resolve(ROOT, "tools/dev.sh")], { encoding: "utf8" }).trim();
 const shotsArg = process.argv.indexOf("--shots"),
   shots = shotsArg > 0 ? process.argv[shotsArg + 1] : null;
 const partArg = process.argv.find((a) => a.startsWith("--part="));
@@ -205,44 +207,42 @@ try {
         !document.querySelector("main.camp")?.classList.contains("awaiting-home"),
       "house",
     );
-    const order = ["blacksmith", "storehouse", "kennel", "bank"];
-    const labels = ["forge", "stored gear", "companions", "savings"];
-    const triggers = ["first gold home", "first find kept", "first tame", "a night's purse"];
+    // Cut201 retires Storehouse; the canonical manually built set is Forge, Kennel, Bank.
+    const order = ["blacksmith", "kennel", "bank"];
+    const triggers = ["four delves", "tame a pet", "a night's purse"];
+    // These historical diagnostic milestones do not hire Scout. Current wire explains that prerequisite.
+    const blockedTriggers = ["Hire Scout", "Hire Scout", "a night's purse"];
     for (let n = 0; n < order.length; n++) {
       const id = order[n];
-      const locked = await page.evaluate(() => {
-        const t = document.querySelector(".town-tag"),
-          r = t?.getBoundingClientRect();
-        return {
-          text: t?.textContent,
-          visible: !t?.hidden && r.width > 0 && r.top >= 0 && r.bottom <= innerHeight,
-          ready: window.__idlever.lineage.town.next_ready,
-          next: window.__idlever.lineage.town.next,
-          trigger: window.__idlever.lineage.town.next_trigger,
-        };
-      });
-      if (n === 0)
-        check(
-          !locked.visible && !locked.ready && locked.next === id && locked.trigger === triggers[n],
-          "before first gold, the home prioritises hero and Send; Rust retains the locked forge milestone",
-        );
-      else
-        check(
-          locked.visible &&
-            !locked.ready &&
-            locked.text.includes(labels[n]) &&
-            locked.text.includes(triggers[n]) &&
-            words(locked.text) <= 5,
-          `stage ${n}: locked plot visibly names ${id} and its trigger ("${locked.text}")`,
-        );
+      const beforeInspection = await page.evaluate(() => window.__idlever.engine.save());
+      const locked = await page.evaluate(() => ({
+        next: window.__idlever.lineage.town.next,
+        ready: window.__idlever.lineage.town.next_ready,
+        trigger: window.__idlever.lineage.town.next_trigger,
+        staked: window.__town.stats().staked,
+        surfaces: document.querySelectorAll(
+          '.town-hit[data-building="staked"], [data-building-info="staked"], .town-tag:not([hidden])',
+        ).length,
+      }));
+      check(
+        !locked.ready &&
+          locked.next === id &&
+          locked.trigger === blockedTriggers[n] &&
+          !locked.staked &&
+          locked.surfaces === 0,
+        `stage ${n}: native ${id} goal retained without future scaffold, tag, hit or help`,
+      );
+      check(
+        beforeInspection === (await page.evaluate(() => window.__idlever.engine.save())),
+        `stage ${n}: inspecting sparse Home preserves exact save`,
+      );
       await page.evaluate(async (n) => {
         const a = window.__idlever,
           s = JSON.parse(await a.engine.save()),
           L = s.lineage;
         if (n === 0) L.banked_depths = [3];
-        if (n === 1) L.facts.push("vault");
-        if (n === 2) L.facts.push("tamed:jackal");
-        if (n === 3) {
+        if (n === 1) L.facts.push("tamed:jackal");
+        if (n === 2) {
           L.gold = 900;
           L.last_night_net = 500;
         }
@@ -288,7 +288,7 @@ try {
     }
     check(
       await page.locator(".town-tag").evaluate((e) => e.hidden),
-      "no next tag once all four buildings stand",
+      "no next tag once all three canonical buildings stand",
     );
   }
 } catch (e) {

@@ -220,12 +220,11 @@ fn default_vision() -> i32 {
     crate::descent::VISION_LIT
 }
 
-/// Cut 2 §7: loot on the hero, brought vault items (insured = kept on death), and the row
+/// Carried Gold on the hero and the exit row
 /// that would bank or return if any.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct Stake {
     pub loot: i32,
-    pub brought: Vec<StakeItem>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub return_row: Option<usize>,
     /// Cut 6 §1: the gold the `return_row` would bring home right now (`$84 · keeps $50`).
@@ -553,12 +552,6 @@ pub struct Because {
     pub depth: u32,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-pub struct StakeItem {
-    pub label: String,
-    pub insured: bool,
-}
-
 /// Bounded hostile recovery labels; avoids allocating a String per hit.
 #[derive(Clone,Copy,Debug,Serialize,Deserialize,PartialEq,Eq)]
 #[serde(rename_all="snake_case")]
@@ -701,38 +694,10 @@ impl Ev {
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-pub struct ExitPending {
-    /// Exact automatic settlement's per-kind salvage, including evicted stored gear.
-    /// Computed on a clone; the real pending exit remains untouched.
-    #[serde(default)]
-    pub auto_salvaged: Vec<SalvageRow>,
-    pub items: Vec<InvItem>,
-    pub tier: String,
-    /// What each item (by position) salvages at this exit, in coins — the engine's own
-    /// arithmetic (`salvage_value × pct ÷ GOLD_DIVISOR`; the client's old table read 4× it).
-    #[serde(default)]
-    pub worth: Vec<i32>,
-    /// QA on 23ed91f (qaL: `auto: keep weapon+armour` owned, a full vault, mail · axe · sword
-    /// all salvaged): the ids the preference and owned automations keep (`Game::auto_keep`'s
-    /// plan, brought vault items first) — what `autoKeep()` does, and the sheet's pre-ticks.
-    #[serde(default)]
-    pub auto_keep: Vec<u32>,
-    /// Cut 29 §4: the sheet is a decision — a find beats something in the full vault (or finds
-    /// outnumber its free slots). False: the client settles it (`autoKeep()`) and shows `note`.
-    #[serde(default)]
-    pub decide: bool,
-    /// Cut 29 §4: the settled exit's one line (`kept leather +1`); absent when nothing new is kept.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub note: Option<String>,
-}
-
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct StepResult {
     pub events: Vec<Ev>,
     pub snapshot: Snapshot,
     pub run_over: bool,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub exit_pending: Option<ExitPending>,
     /// Cut 28 §3 (AU: ~50 s of `pick up ×N` at 1×): the step's calm stretches — `[from, to]` run
     /// ticks (inclusive, `Ev::t`) with no decision and no threat (`fold::calm_tick`): the watch plays
     /// them at the travel rate in every mode. Empty when the step had none.
@@ -1563,7 +1528,6 @@ pub struct ReturnReport {
     pub sampled: bool,
     pub learned: Vec<String>,
     pub bests: Vec<String>,
-    pub found: Vec<InvItem>,
     /// QA on 0c6e126 (qaY): the kinds this absence found for the first time (wire names, in
     /// order) — the header's `new find` lines, all of them; FOUND lists them beside the vaulted.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -2333,8 +2297,6 @@ pub struct RunRec {
     pub reason: Option<String>,
     pub gold: i32,
     pub found: u32,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub kept: Vec<String>,
     pub turns: u32,
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub best: bool,
@@ -2402,8 +2364,6 @@ pub struct Lineage {
     #[serde(default,skip_serializing_if="Option::is_none")]
     pub class_tree:Option<crate::class_tree::Tree>,
     /// Actual manual keep receipt; populated only on the settlement response.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub keep_salvaged: Option<Vec<SalvageRow>>,
     /// Cut 118: boss tokens, trials, the find log, swift floors, the sinks, the hero's wish (`feats::wire`).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub feats: Option<crate::feats::FeatsWire>,
@@ -2421,8 +2381,6 @@ pub struct Lineage {
     /// gain (percent) and the modifiers at work (`endgame::ascension_wire`). Absent at tier 0.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub descent: Option<AscensionWire>,
-    #[serde(default)]
-    pub selected_loadout: Vec<u32>,
     #[serde(default)]
     pub hero_slots: Vec<HeroSlot>,
     #[serde(default)]
@@ -2510,7 +2468,6 @@ pub struct Lineage {
     pub marks: u32,
     pub facts: Vec<String>,
     pub unlocks: Vec<String>,
-    pub vault: Vec<InvItem>,
     pub graveyard: Vec<Grave>,
     pub trophies: Vec<String>,
     pub sets: Vec<RuleSet>,
@@ -2537,13 +2494,6 @@ pub struct Lineage {
     pub forge: std::collections::BTreeMap<String, ForgeRow>,
     pub renown: u32,
     pub rank: u32,
-    pub keep_pref: String,
-    /// What an unwatched exit keeps, in precedence order after the brought vault items (QA
-    /// on 23ed91f): `["armour"]` for `best_armour`, `["armour", "weapon"]` with `quartermaster`,
-    /// `[]` for `none`. Each keep may replace only a weaker vault item of its own category.
-    #[serde(default)]
-    pub keep_auto: Vec<String>,
-    pub insured: Vec<u32>,
     /// Cut 2 §1: camp rest remaining (seconds) before the next expedition; `send` skips it.
     #[serde(default)]
     pub rest_left_s: u32,
@@ -3393,12 +3343,9 @@ mod tests {
     }
 }
 
-/// Cut 29 §4: the standing orders' switches kept on the lineage (`LineageState::orders`): `insure`
-/// — the brought vault items are insured at each send the purse covers (on by default).
+/// Worker standing-order switches kept on the lineage (`LineageState::orders`).
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct StandingSwitches {
-    #[serde(default = "yes")]
-    pub insure: bool,
     /// Blind 1fb7786 (A, B: `forge −$20925 · purse +$823`, "losses I didn't choose"): what the apprentice may
     /// forge with (`FORGE_ORDERS`): `all` the spare purse, `half` half of each haul home (the rest is the
     /// player's to decide with), `off` nothing.
@@ -3471,7 +3418,7 @@ fn forge_half() -> String {
 
 impl Default for StandingSwitches {
     fn default() -> Self {
-        StandingSwitches { insure: true, forge: forge_half(), wall: wall_bank(), sink: sink_both(), temperament: heir_answer(), kennel: kennel_breed(), legacy: order_off(), ranks: order_off(), ascend: order_off(), shared: BTreeSet::new(), announced: BTreeSet::new() }
+        StandingSwitches { forge: forge_half(), wall: wall_bank(), sink: sink_both(), temperament: heir_answer(), kennel: kennel_breed(), legacy: order_off(), ranks: order_off(), ascend: order_off(), shared: BTreeSet::new(), announced: BTreeSet::new() }
     }
 }
 
@@ -3511,17 +3458,12 @@ pub struct Commission {
     pub available: bool,
 }
 
-/// Cut 29 §4: the standing orders (`Lineage.orders`, `setOrders`): what an exit keeps (`keep`:
-/// `best_weapon | best_armour | none`), what an unwatched cage takes (`cage`: `weapon | armour |
-/// potion | scroll`), the floor a send starts on, the loadout's repeat, insuring the brought
-/// items at each send the purse covers, and the apprentice's forge (`all · half · off`).
+/// Current cage, departure, repeat and worker standing orders.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct StandingOrders {
-    pub keep: String,
     pub cage: String,
     pub start: u32,
     pub repeat: bool,
-    pub insure: bool,
     /// Blind 1fb7786: the apprentice's forge order (`all · half · off`; `FORGE_ORDERS`).
     #[serde(default = "forge_half")]
     pub forge: String,
@@ -3555,7 +3497,7 @@ pub struct StandingOrders {
 
 impl Default for StandingOrders {
     fn default() -> Self {
-        StandingOrders { keep: "best_armour".into(), cage: "weapon".into(), start: 1, repeat: true, insure: true, forge: forge_half(), wall: Some(wall_bank()), sink: Some(sink_both()), temperament: Some(heir_answer()), kennel: Some(kennel_breed()), legacy: Some(order_off()), ranks: Some(order_off()), ascend: Some(order_off()), shared: None }
+        StandingOrders { cage: "weapon".into(), start: 1, repeat: true, forge: forge_half(), wall: Some(wall_bank()), sink: Some(sink_both()), temperament: Some(heir_answer()), kennel: Some(kennel_breed()), legacy: Some(order_off()), ranks: Some(order_off()), ascend: Some(order_off()), shared: None }
     }
 }
 

@@ -58,14 +58,29 @@ export function applySkin(): void {
 
 /** An icon: the packed PNG, or a CSS-drawn glyph (no text node, so `textContent` is the caller's label alone). */
 export function icon(name: string, glyph = ""): HTMLElement {
-  if (hasIcon(name))
-    return h("img", {
+  if (hasIcon(name)) {
+    const image = h("img", {
       class: `ico ico-${name}`,
       src: `${import.meta.env.BASE_URL}ui/icons/${name}.png`,
       alt: "",
       draggable: "false",
       "aria-hidden": "true",
     });
+    image.addEventListener(
+      "error",
+      () => {
+        const fallback = document.createElement("span");
+        for (const attribute of image.attributes)
+          if (!["src", "alt", "draggable"].includes(attribute.name))
+            fallback.setAttribute(attribute.name, attribute.value);
+        fallback.classList.add("glyph");
+        fallback.dataset.glyph = glyph || "◇";
+        image.replaceWith(fallback);
+      },
+      { once: true },
+    );
+    return image;
+  }
   return h("span", { class: `ico glyph ico-${name}`, "data-glyph": glyph, "aria-hidden": "true" });
 }
 

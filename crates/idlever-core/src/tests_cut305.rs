@@ -192,7 +192,6 @@ fn manual_send_before_the_scout_yields_the_run_in_flight() {
         assert!(g.step(500).run_over);
     }
     assert_eq!(g.lineage.next_run_id, n, "the hero waits at camp");
-    g.auto_keep();
     // the scout lifts it: two sends by hand (Cut230), then hired; offline is uncapped again
     send_by_hand(&mut g);
     assert_eq!(tree::lit(&g.lineage).map(|n| n.id), Some("scout"));
@@ -304,7 +303,7 @@ fn workers_keep_their_standing_orders() {
     let mut ended = false;
     for _ in 0..4000 {
         let r = k.step(50);
-        if r.run_over { assert!(r.exit_pending.is_none()); ended = true; break; }
+        if r.run_over { ended = true; break; }
     }
     assert!(ended, "the actual watched outcome settles without hiring a storage worker");
     // a literal lineage: no worker acts
@@ -323,12 +322,7 @@ fn chores_by_hand_count_toward_their_worker() {
     }
     g.build_town("blacksmith").unwrap();
     assert!(g.build_town("storehouse").is_err());
-    let ids: Vec<u32> = g.lineage.vault.iter().map(|v| v.id).collect();
-    if !ids.is_empty() {
-        g.loadout(ids.clone());
-        g.loadout(ids.clone());
-        assert_eq!(tree::count(&g.lineage, "armourer"), 0, "retired chores count toward no worker");
-    }
+    assert_eq!(tree::count(&g.lineage, "armourer"), 0, "retired worker has no manual chore");
     g.lineage.gold += 100_000;
     g.lineage.tree.ledger += 100_000;
     if crate::kit::buy(&mut g, "weapon").is_ok() {

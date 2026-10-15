@@ -245,11 +245,10 @@ export type StartOption = {
   passage?: number; // Cut 27 §1 (core): the passage a send from here is paid (`+$84 passage`, into the purse at the send; `gold`/`net` count it; 0 from D1 or when the set does not clear the floors above ≥ 95 %)
   low?: number;
 }; // Cut 23 §2 (core): as Forecast.low — a `death` of 0 prints `<{low}%`
-/** Cut 2 §7 — loot on the hero, brought items (insured = kept on death), the row that would bank/return if any.
+/** Cut 2 §7 — loot on the hero and the row that would bank/return if any.
  *  Cut 6 §1: `kept` = what that row would bring home now (`$84 · keeps $50`). */
 export type Stake = {
   loot: number;
-  brought: { label: string; insured: boolean }[];
   return_row?: number;
   kept?: number;
   stalling?: boolean; // Cut 13 §1: the guard has fired this floor — a stall pays nothing (`keeps $0 · stalling`)
@@ -488,15 +487,6 @@ export type StepResult = {
    *  telegraph, a theft, a death, a callout, a level, a tame, a new find). Play them at the travel rate in every mode, 1× included
    *  (1× keeps fights and beats at 1×). Absent when the step had none. */
   calm?: [number, number][];
-  exit_pending?: {
-    items: InvItem[];
-    tier: string;
-    worth?: number[];
-    auto_keep?: number[];
-    auto_salvaged?: { kind: string; n: number; gold: number }[];
-    decide?: boolean; // Cut 29 §4 (core): the sheet is a decision — a find beats something in the full vault (or finds outnumber its free slots); false → settle it (`autoKeep()`) without a sheet and show `note`
-    note?: string;
-  };
 }; // Cut 29 §4 (core): the settled exit's one line (`kept leather +1`); absent when it keeps nothing new                     // Addendum D; `worth`: each item's salvage at this exit, in coins
 
 /** Cut 20 §5: `bounty` — tonight's bounty floor (the lineage best + 2: gold ×2 and a guaranteed item), the shaft's `D12 ×2`. */
@@ -1089,7 +1079,6 @@ export type RunRec = {
   reason?: string;
   gold: number;
   found: number;
-  kept?: string[];
   turns: number;
   best?: boolean;
   death_id?: number;
@@ -1275,7 +1264,6 @@ export type ReturnReport = {
   // Cut 13 §3: the absence's movements to the coin (home + salvage + wake − spent = the header's delta)
   learned: string[];
   bests: string[];
-  found: InvItem[];
   deaths: { cause: string; n: number }[];
   pending: string[];
   reel: Highlight[];
@@ -1289,7 +1277,6 @@ export type ReturnReport = {
   xp: { class: string; gained: number; level_ups: number }; // Addendum C
   tools?: ToolStats; // Cut225: Clown/Engineer tool receipts over the report's runs
   new_finds?: string[]; // QA 0c6e126 (qaY; core): the kinds an absence found for the first time, every one (the header's `new find` lines) — FOUND; union across slices
-  kept?: string[]; // Cut 24 §5 (client, the watched report): what the keep sheet put in the vault, by its vault label (`strength potion`)
   driven?: number; // Cut 24 §1 (core): sends a boss drove off (`no counter`; among `returned`) — count them apart like `stalled`; sum across slices
   salvaged: { kind: string; n: number; gold: number }[]; // Addendum D; `kind` an unidentified kind's flavour (`brittle scroll?`) until identified (QA 1a2a4a9)
   renown: { gained: number; rank: number; ranks_up: number }; // Addendum D
@@ -1550,8 +1537,7 @@ export type Lineage = {
   journal?: Journal;
   starting_kits?: StartingKits;
   legendaries?: LegendaryShape[];
-  bloodline?: BloodlineLegacy;
-  keep_salvaged?: { kind: string; n: number; gold: number }[]; // Rust receipt, only on manual keep response
+  bloodline?: BloodlineLegacy; // Rust receipt, only on manual keep response
   feats?: FeatsWire; // Boss tokens, trials, find log, swift floors and sinks; historical purchases stay in report news.
   king_eta_h?: number; // Cut 118 §8 (core): hours until the King may fall at the current pace (0: slain; absent: no pace yet)
   king_pct?: number; // Cut 118 §8 (core): the record's share of the way to the King (percent)
@@ -1569,7 +1555,6 @@ export type Lineage = {
     armour_piercing: number;
     reload_ticks: number;
   }[];
-  selected_loadout?: number[];
   hero_slots?: HeroSlot[];
   selected_bloodline?: number;
   bloodline_price?: number;
@@ -1646,7 +1631,6 @@ export type Lineage = {
   marks: number; // Cut 13 §2: `trait_offer` — two traits a new heir may wake with; `setTrait(name)` picks
   facts: string[];
   unlocks: string[];
-  vault: InvItem[];
   graveyard: { heir: number; depth: number; cause: string; deeds: string[]; death_id?: number }[]; // death_id: Cut 9 §7, a kept death (`death(id)` answers)
   trophies: string[];
   sets: RuleSet[];
@@ -1662,8 +1646,7 @@ export type Lineage = {
   pets?: PetsWire;
   ledger: LedgerRow[]; // Addendum A · Cut 119 (core): `pets`
   gold: number;
-  supplies: InvItem[];
-  insured?: number[]; // Addendum B
+  supplies: InvItem[]; // Addendum B
   classes: { [cls: string]: { level: number; xp: number; next?: number } }; // Addendum C; next: QA 92eb880, the XP the next level costs (core's ladder; 0 at the top)
   forge: {
     [kind: string]: {
@@ -1674,9 +1657,7 @@ export type Lineage = {
     };
   }; // Addendum D; next: Cut 9 §10, the ladder's next rung (`3/5 → craftable`)
   renown: number;
-  rank: number;
-  keep_pref: string; // Addendum D
-  keep_auto?: string[]; // QA 23ed91f: what an unwatched exit keeps, in order, after the brought vault items (`["armour"]`, `["armour","weapon"]` with quartermaster, `[]` for none); a keep replaces only a weaker vault item of its own category
+  rank: number; // QA 23ed91f: what an unwatched exit keeps, in order, after the brought vault items (`["armour"]`, `["armour","weapon"]` with quartermaster, `[]` for none); a keep replaces only a weaker vault item of its own category
   rest_left_s?: number;
   bones?: BonesPile[]; // Cut 2 §1–2
   endgame?: DescentProgress;
@@ -1830,7 +1811,7 @@ export type RowWhy = {
 }; // Cut 121 §4 (core): a foe-tag row's fires by the foe kind it acted on, and whether each is a band boss (`also matches: siren`)
 /** Cut 3: times the lineage ascended and the variant it plays under (`""` at level 0). */
 export type Ascension = { level: number; variant: string };
-export const VARIANTS = ["no_rest", "short_list", "bones_only", "hunted"] as const;
+export const VARIANTS = ["no_rest", "short_list", "hunted"] as const;
 /** Cut 2 §2 — a dead heir's kit on the floor (per lineage, max 3; oldest expires). */
 export type BonesPile = { depth: number; heir: number; items: number };
 
@@ -1982,14 +1963,11 @@ export type SystemInfo = {
 export type OathDraw = { cost: number; available: boolean; needs?: string };
 /** Cut 29 §5 (core) — the next commission: its price, the work it builds, the purse covers it. */
 export type Commission = { price: number; label: string; available: boolean };
-/** Cut 29 §4 (core) — the standing orders: exit keep (`best_weapon|best_armour|none`), an unwatched cage's pick (`weapon|armour|potion|scroll`),
- *  the start floor, the repeat, insuring the brought items when the purse covers it (on by default). */
+/** Standing orders for dungeon cages, starting depth, reusable preparation and named workers. */
 export type StandingOrders = {
-  keep: string;
   cage: string;
   start: number;
   repeat: boolean;
-  insure: boolean;
   forge?: string;
   wall?: string;
   sink?: string;
@@ -1999,7 +1977,7 @@ export type StandingOrders = {
   ranks?: string;
   ascend?: string;
   shared?: string[];
-}; // Cut 120 (core): `legacy` the Legacy order — balanced · health · damage · armour · off (a save off; a new lineage balanced); `ranks` auto · off (a save off; a new lineage auto); `ascend` off (default) · on (the herald carries the next descent after the clear); `shared` the order keys set `same for all` (insure · forge · wall · sink · heir · kennel · legacy · ranks · ascend) — a set copies each to every bloodline, now and on later changes   // Cut 119 (core): `kennel` the kennel keeper's order — breed (default) · best · off   // owner amendment 2 (core): `heir` the heir order — answer (default) · strongest · surprise   // Cut 118 §4 (core): `sink` the apprentice's sinks after Kit complete — both (default) · ration · tithe · off   // Cut 114 §3 (core): `wall` the scout's order at a wall — bank (default) · carry · push   // blind 1fb7786 (core): `forge` the apprentice's order — half (default) · all · off
+}; // Cut 120 (core): `legacy` the Legacy order — balanced · health · damage · armour · off (a save off; a new lineage balanced); `ranks` auto · off (a save off; a new lineage auto); `ascend` off (default) · on (the herald carries the next descent after the clear); `shared` the order keys set `same for all` (forge · wall · sink · heir · kennel · legacy · ranks · ascend) — a set copies each to every bloodline, now and on later changes   // Cut 119 (core): `kennel` the kennel keeper's order — breed (default) · best · off   // owner amendment 2 (core): `heir` the heir order — answer (default) · strongest · surprise   // Cut 118 §4 (core): `sink` the apprentice's sinks after Kit complete — both (default) · ration · tithe · off   // Cut 114 §3 (core): `wall` the scout's order at a wall — bank (default) · carry · push   // blind 1fb7786 (core): `forge` the apprentice's order — half (default) · all · off
 /** Cut 29 §4 (core) — a kind the next send adds to the repeat, and the row's verb that wants it (`throw fire`). */
 export type RepeatAdd = { kind: string; row: string };
 /** Cut 29 §1 (core; E1) — a wall's edit: the floor, the edit labels (`drop R6`, `R1 → hp < 90% → rest`), the whole set with them, the share of
@@ -2114,7 +2092,6 @@ export interface Engine {
   save(): string;
   vocabulary(): Vocabulary;
   setRules(set: RuleSet): void;
-  loadout(itemIds: number[]): void;
   forecast(): Forecast;
   forecastVsEstimate?(prev: RuleSet): ForecastVs;
   forecastEstimate?(): Forecast; // small, explicitly rough UI preview
@@ -2145,18 +2122,8 @@ export interface Engine {
   clearSupplies(): Lineage;
   supplyCatalogue(): SupplyEntry[];
   dropSupply?(id: number): Lineage; // Cut 12 §6 (client-proposed, core item): the supplies `×` removes one line; absent → the client clears and rebuys the rest
-  setTrait?(name: string): Lineage; // Cut 13 §2: pick one of `Lineage.trait_offer` for the new heir (optional; an older core has no offer)
-  // Addendum D
-  keep(ids: number[]): Lineage;
-  /** QA 23ed91f (L: `auto: keep weapon+armour` owned, vault full → the skipped sheet's `keep([])` salvaged mail · axe · sword):
-   *  resolve the pending exit by the keep preference and owned automations — `exit_pending.auto_keep` (brought vault items
-   *  first; a keep replaces only a weaker vault item of its own category). The skipped sheet's call; `keep([])` keeps nothing.
-   *  Optional on old builds. */
-  autoKeep?(): Lineage;
-  setLook?(look: string): Lineage; // hero looks: the heirs' cosmetic look (`male | female | cat`; optional: an older core has none)
-  setKeepPref(pref: string): Lineage; // core addition (README): keep preference for offline exits
-  sellVault?(id: number): Lineage; // QA 308f045 (core; qaAC: `vault full · axe stays`, no way to take it out): the item out of the vault, salvaged at a bank's share
-  insure(id: number): Lineage; // core addition: gold bet that keeps a brought vault item on death
+  setTrait?(name: string): Lineage;
+  setLook?(look: string): Lineage; // core addition: gold bet that keeps a brought vault item on death
   // core additions (crates/idlever-core/README.md)
   unlocks(): UnlockInfo[]; // the catalogue; `available` = prereq + fact gate + affordable
   unlockDeltas(): UnlockInfo[]; // Cut 4: same catalogue with forecast `delta` computed (0.3–2 s); call after paint
