@@ -51,5 +51,7 @@ for (const [name, f] of base) {
     diff++;
   }
 }
-console.log(`${all ? "job invariance (every field)" : "timeline invariance"}: ${same} identical, ${diff} differ (${baseKey} vs ${newKey})`);
+console.log(
+  `${all ? "job invariance (every field)" : "timeline invariance"}: ${same} identical, ${diff} differ (${baseKey} vs ${newKey})`,
+);
 process.exit(diff ? 1 : 0);

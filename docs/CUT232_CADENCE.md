@@ -47,7 +47,8 @@ pile-up can recur by chance (a per-trigger retune would not survive the next con
 - A harness's literal lineage, a sim and an old (`v` 1) tree are never held.
 
 Not taken (measured): `GUIDE_GAP` 4→3 (starts at the D5 stone from a D8 record) raised the gap to 11/16 at 16 seeds
-with every targeted row PASS, but the routine 2-seed TUNED/PICKED fell to 1.10 (FAIL; 1.35 with 4). Reverted.
+with every targeted row PASS, but the routine 2-seed TUNED/PICKED fell to 1.10 (FAIL; 1.35 with 4). Reverted. (Cut233: now
+`tree.guide_gap` in `tuning/balance.json`, sweepable without a rebuild.)
 
 ## Gates (16 seeds; `docs/evidence/cut232/rows16-final.log`)
 
