@@ -217,7 +217,7 @@ on the actor so reload/replay cannot refresh them.
 | Fighter | Oathguard ← Boss guard | A successful boss bash arms one extra 2-damage melee reduction for 10 ticks; the next actual qualifying hit consumes it. |
 | Fighter | Opening cut ← Crowd breaker | A cleave that actually hits at least two foes reduces bash cooldown by 10 ticks once, encouraging bash/cleave control rather than repeated single-target cleave. |
 | Fighter | Siege rhythm ← Boss breaker | A successful boss bash arms one follow-up ordinary melee attack with +2 damage for 10 ticks, consumed by the attack rather than every hit in the window. |
-| Rogue | Afterimage ← Ambusher | A successful ambush permits one follow-up shadowstep to reduce its remaining cooldown by 20 ticks; charge lasts 10 ticks and expires if unused. |
+| Rogue | Afterimage ← Ambusher | A successful ambush arms one legal shadowstep within 10 ticks to reduce actual remaining vanish cooldown by 20 ticks once. Shadowstep has no cooldown; learning this node adds none. |
 | Rogue | Tell thief ← Boss stalker | A successful backstab against an observed boss's active windup reduces vanish cooldown by 10 ticks once. It does not erase the committed boss attack. |
 | Rogue | Veiled route ← Escape artist | After actual smoke blinds a foe, the next legal shadowstep within 10 ticks returns 50% action energy once. |
 | Rogue | Patient ambush ← Counter ambush | A missed ambush preserves at most 3 ticks of the pre-attack vanish window for another tactical decision; no restored cooldown, hit reroll or extended full vanish. |
@@ -242,8 +242,8 @@ solver is introduced.
 | --- | --- | --- |
 | Fighter | Holdfast ← Rally | A successful second wind under adjacent threat arms two melee block charges of 2 damage each for 20 ticks. Charges do not stack on another cast. |
 | Fighter | Execution arc ← Siege rhythm | Killing with the charged follow-up attack permits one bash cooldown reduction of 20 ticks within 10 ticks. At most one trigger per 40 ticks. |
-| Rogue | Ghostwalk ← Veiled route | A successful shadowstep after qualifying smoke arms one additional shadowstep cooldown reduction of 20 ticks; no HP heal or invisibility refresh. |
-| Rogue | Silent finish ← Afterimage | A successful ambush against a target below 25% pre-hit HP reduces shadowstep cooldown by 20 ticks once, rewarding a planned finishing escape. |
+| Rogue | Ghostwalk ← Veiled route | A successful shadowstep after qualifying smoke arms one actual backstab with +2 damage for 10 ticks, consumed on one real damaging hit; no HP heal or invisibility refresh. |
+| Rogue | Silent finish ← Afterimage | A successful ambush against a target below 25% pre-hit HP arms one legal shadowstep within 10 ticks to return 50% of its actual action-energy debit once, rewarding a planned finishing escape. Combined returns never exceed the debit and still consume time. |
 | Ranger | Patient snare ← Spotter | A real trap trigger on a marked foe reduces double-shot cooldown by 20 ticks once per trap. |
 | Ranger | Moving line ← Split mark | After a qualifying mark-splitting volley, one legal kite step within 10 ticks returns 50% action energy. |
 | Caster | Conduct ← Chilling charge | The qualifying bolt copies at most 10 ticks of actual slow to one visible adjacent foe, once per original slow cast; no recursive spread. |
@@ -251,6 +251,9 @@ solver is introduced.
 | Gunner | Long watch ← Chamber chain | The charged aimed shot, if it actually kills, reduces the next aim settling time by 1 tick once within 10 ticks; no duplicated bullet recovery. |
 | Gunner | Breach route ← Cycling breach | After the qualifying close-burst kill, one legal smoke retreat within 10 ticks returns 50% action energy, without restoring HP, ammunition or smoke cooldown. |
 
+Source inspection amendment2026-10-16: Shadowstep has no cooldown. The three
+Rogue candidates above use actual Vanish cooldown, a bounded follow-up hit or
+actual energy debit; no new selected-path cooldown penalty is introduced.
 These interactions are proposed, not shipped numerical claims. Implementation
 must check actual cooldown/status semantics before freezing each candidate.
 Energy returns combine with Sure/other existing returns only up to the action's

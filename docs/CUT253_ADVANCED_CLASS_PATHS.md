@@ -5,7 +5,8 @@ in WORK_QUEUE.md and the full extension specified in
 [Cut225](CUT225_CLOWN_ENGINEER.md#larger-trees-for-the-five-existing-classes).
 It does not replace that extension with the completed painted equipment figure,
 the existing new classes, or a recursive tree renderer. Those are separate work.
-Status: contract only; no new native effects, points or earned-play claims yet.
+Status: native source implementation in progress, uncompiled; no new runtime,
+earned-play or acceptance claims yet.
 
 Owner art refinement: the flat SVG draft sheets are too basic for final skill
 art. Finished icons need original painted ability moments with personality,
@@ -61,6 +62,16 @@ advanced-tree milestone for the selected class, with a Journal→Skills route.
 Do not announce20nodes or five classes simultaneously.
 
 ## Actual interactions and frozen state
+
+Source inspection amendment2026-10-16: Shadowstep has no cooldown, so learning
+an advanced node must not invent one. Afterimage's successful ambush arms one
+legal Shadowstep within10ticks to reduce actual remaining Vanish cooldown by20.
+Ghostwalk's qualifying smoke→Shadowstep arms one actual Backstab with+2damage
+for10ticks, consumed on a real damaging hit. Silent Finish's successful Ambush
+against<25%pre-hit HP arms one legal Shadowstep within10ticks to return50%of its
+actual energy debit once. Combined refunds are capped at the actual debit and
+still consume time. These corrections supersede the original impossible
+Shadowstep-cooldown candidates; all30nodes remain required.
 
 Implement all30Cut225 interactions with their actual qualifying actions and
 tradeoffs. A refused verb, miss, selected row or unobserved boss does not count

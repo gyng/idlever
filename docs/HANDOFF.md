@@ -16,8 +16,8 @@ previous-vision IDs needed for exact reload provenance. Combined247–249 native
 979tests/6ignored and Clippy pass; strict4settlements and paid/unpaid public
 partition/reload proofs pass. Cut249 pacing and routine full are terminal PASS:
 24targeted rows/256configuration-seed pairs, then QA/metrics/dayplayer with
-18current-player cases and16RANDOM seeds. Exact source/six binaries/package
-remain unchanged. Wrapper7816 and all four child PIDs are positively terminal
+18current-player cases and16RANDOM seeds. That baseline source/six binaries/package identity is recorded; current Cut253
+native source is now work in progress, so those passes do not certify it. Wrapper7816 and all four child PIDs are positively terminal
 in their launch process view; do not restart them. See
 `evidence/cut249/gates-terminal.json` and retained logs/cache receipts.
 Exhaustive balance/migration, broader client and independent fun acceptance
@@ -92,26 +92,50 @@ cancellation is source-order proof, not a filmed-route claim. Other routines/
 wholeR5 remain open; no new receipts or retired hauling are inferred. Both
 agents' figure/worker browser jobs are positively terminal.
 
-R6 single-context cost method has its first measured A/A control:
-`evidence/cut245/single-control-crypt1440-2026-10-16/` is terminalPASS,
-3repetitions, signed median-of-three p95 difference+0.04096ms (absolute≤0.20).
-This certifies only that scene's measurement control, not candidate cost.
-The first shell launch exited127before any process (unquoted PATH containing
-spaces); quoted Node22PATH then launched25364, which is terminal0.
-Agent feat_review owns the other five A/A controls, current-source six-pair
-off-equivalence and conditional six-scene candidate measurement. Detached
-wrapper222318→costnode222340→privateXvfb222473 is positively live on Crypt400
-A/A; remaining four Fens/Foundry controls run only if it passes. No candidate
-or new equivalence launched yet. Confirm these actual handles before restarting;
-keep the GPU lane exclusive. Both figure/worker agents' earlier jobs are closed.
-cut245/cost-single*
-contains issue-tagged delayed GPU-query/ring/disjoint mock proof and strict
-per-frame geometry/painted-atlas/process-view guards. Fixed-clock landmark-off
-comparison against hash-verified archived baseline is terminalPASS6/6 with0
-changed RGBA pixels in off-equivalence-2026-10-16/. This functional comparison
-ran during native work and proves no GPU timing. Positive same-view quiet
-confirmation is required before A/A controls and candidate cost measurements;
-all previous failed controls/margins remain authoritative.
+Cut252 recursive tree presentation is committed adf83a0e. Both current and Full
+tree views now follow actual parent depth rather than truncating at two tiers.
+Genuine public Clown/Engineer L7 journeys and four separately earned leaves
+prove third-tier access; four-tier rendering is explicitly controlled component
+proof. Final8native layouts/16states/96cards/64edges, phone200% keyboard/fold/
+refresh and existing320/400/1440 tree regression pass. Original harness and CSS
+failures remain in evidence/cut252/. This does not implement the old five
+classes' six-to-twelve extension or close broader R7.
+
+Cut253 native extension is source work in progress, owned by acceptance_audit:
+all five old classes,30actual sequence interactions, staged earned budget and
+frozen bounded charges remain required (CUT253_ADVANCED_CLASS_PATHS.md).
+Do not rebuild/overwrite runtime8879 or claim baseline gates certify dirty code.
+Owner rejected the flat30SVG insignias as too basic for final art and requested
+more personality, citing WC3 ability paintings. Thirty painted candidates are
+now saved/exported in99436ce4 (1662290bytes), with35masters/exact built-in prompts including
+fiveV2revisions. Actual24/32/48/96 review passes150sized image cells; engineering
+review still flags realism, dark Gunner values and Caster similarity. Patient
+AmbushV2 is the stronger expressive paint reference. All remain candidates. SVGs are draft/
+fallback material, not final art. No new icons are registered live; review at
+actual24/32/48px and eventual72catalogue cohesion remains. See art/ADVANCED_SKILLS.md.
+
+R6 advancing-clock single-context A/A controls are terminal5/6PASS; Foundry400
+fails absolute0.249856ms against unchanged0.20ms limit. No retry-to-green or
+candidate cost acceptance is inferred. Successor freezes only visual time,
+preserving real timing clocks and verifying actual ordered draws, geometry,
+materials, uniforms, texture pixels and exact framebuffer content. Content-only
+proof passes18repetitions/72captures across six scene-width pairs; independent
+verification checks54nontrivial comparisons and PNG/raw-GL hashes. Curated
+65path checkpoint368c64b4 preserves original failures, method and content proof.
+All content jobs are terminal. Successor A/A timing is now also terminalFAIL:
+18repetitions/0errors, fivepairs pass but Crypt1440fails+0.292864ms against the
+unchanged0.20limit. Visual content/source checks pass; this still cannot certify
+all-scene measurement stability or landmark cost. Wrapper317341/node317353/
+privateXvfb317504 are positively terminal. Near-launch foreign heavy browser
+families were observed/left untouched, then a stable visibleLinux window and
+in-run observations were retained; no host/Windows-wide quiet claim follows.
+No retry/off-equivalence/candidate follows. feat_review curates terminal proof.
+Root's30icon export/headless review is terminal0with awaited cleanup; local
+compute is released to acceptance_audit for first native checks, still no WASM
+rebuild. Current source is unaccepted until actual checks finish. First native compile
+exited101on a controlled-test argument order; corrected test is compiling in
+session89113(native-actual-actions-v2.log), not yet a pass. No WASM rebuild.
+
 Latest scoped UI checkpoint400ade46 includes compact Home, resize correction,
 functional equipment figure and curated R4/R6 preparation. Subsequent routine
 41groups is terminal40/41 in578.0s: onlyui:frame fails on the moved Heroes
