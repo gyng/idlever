@@ -1,0 +1,1828 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 251,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 793,
+      "gold_after": 29,
+      "gold_before": 99
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 8257,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            17869,
+            17870
+          ],
+          "elapsed_from_fork_s_bracket": [
+            8256,
+            8257
+          ],
+          "run_id": 10
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17870,
+          "gold": 1248,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 21780
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 178700
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 11845,
+          "depth": 8,
+          "gold": 199,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10336
+        },
+        {
+          "clock_s": 14492,
+          "depth": 9,
+          "gold": 235,
+          "id": 9,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 218,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14462
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17870,
+          "gold": 1248,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 21780
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 178700
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Orin Ash",
+          "observed_clock_s": 10813,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 14
+          },
+          "start": 1,
+          "started_total_tick": 108122,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10813,
+          "gold": 814,
+          "legacy": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 8
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 108130
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13213,
+          "gold": 1013,
+          "legacy": {
+            "points": 16,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 1672
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 132130
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 16813,
+          "gold": 1248,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 8,
+            "id": 10,
+            "max_depth": 8,
+            "turn": 11210
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 168130
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 8248,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            17860,
+            17861
+          ],
+          "elapsed_from_fork_s_bracket": [
+            8247,
+            8248
+          ],
+          "run_id": 10
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17861,
+          "gold": 1289,
+          "legacy": {
+            "points": 4,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 21566
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 178610
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 11774,
+          "depth": 8,
+          "gold": 197,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9625
+        },
+        {
+          "clock_s": 14504,
+          "depth": 10,
+          "gold": 278,
+          "id": 9,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 278,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15297
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17861,
+          "gold": 1289,
+          "legacy": {
+            "points": 4,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 21566
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 178610
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 41,
+          "name": "Orin Ash",
+          "observed_clock_s": 10813,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 14
+          },
+          "start": 1,
+          "started_total_tick": 108122,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10813,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 8
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 108130
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13213,
+          "gold": 1011,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 2383
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 132130
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 16813,
+          "gold": 1289,
+          "legacy": {
+            "points": 4,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 10,
+            "max_depth": 8,
+            "turn": 11086
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 168130
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9613,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 96130
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 4280,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            13892,
+            13893
+          ],
+          "elapsed_from_fork_s_bracket": [
+            4279,
+            4280
+          ],
+          "run_id": 9
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13893,
+          "gold": 814,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 9,
+            "max_depth": 13,
+            "turn": 19715
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 138930
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 11861,
+          "depth": 8,
+          "gold": 0,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10493
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13893,
+          "gold": 814,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 9,
+            "max_depth": 13,
+            "turn": 19715
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 138930
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Orin Ash",
+          "observed_clock_s": 10813,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 14
+          },
+          "start": 1,
+          "started_total_tick": 108122,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10813,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 8
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 108130
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13213,
+          "gold": 814,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 9,
+            "id": 9,
+            "max_depth": 9,
+            "turn": 12915
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 132130
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9613,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 96130
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 10565,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            20177,
+            20178
+          ],
+          "elapsed_from_fork_s_bracket": [
+            10564,
+            10565
+          ],
+          "run_id": 11
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 20178,
+          "gold": 1654,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 11,
+            "max_depth": 13,
+            "turn": 17621
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 201780
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 11861,
+          "depth": 8,
+          "gold": 223,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10492
+        },
+        {
+          "clock_s": 14850,
+          "depth": 12,
+          "gold": 414,
+          "id": 9,
+          "legacy_earned_receipt": 5,
+          "sampled": null,
+          "secured": 414,
+          "start": 1,
+          "tier": "bank",
+          "turns": 17891
+        },
+        {
+          "clock_s": 17215,
+          "depth": 8,
+          "gold": 203,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 11654
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 20178,
+          "gold": 1654,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 11,
+            "max_depth": 13,
+            "turn": 17621
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 201780
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Orin Ash",
+          "observed_clock_s": 10813,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 14
+          },
+          "start": 1,
+          "started_total_tick": 108122,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10813,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 8
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 108130
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13213,
+          "gold": 1037,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 1516
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 132130
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 16813,
+          "gold": 1451,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 6,
+            "id": 10,
+            "max_depth": 6,
+            "turn": 7625
+          },
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 168130
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 9613,
+            "gold": 814,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Orin Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 14,
+            "selected": 1,
+            "total_ticks": 96130
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9613,
+          "gold": 814,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Orin Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 14,
+          "selected": 1,
+          "total_ticks": 96130
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 251,
+      "depth": 3,
+      "gold": 44,
+      "id": 1,
+      "legacy_earned_receipt": 4,
+      "sampled": null,
+      "secured": 37,
+      "start": 1,
+      "tier": "bank",
+      "turns": 2510
+    },
+    {
+      "clock_s": 792,
+      "depth": 4,
+      "gold": 55,
+      "id": 2,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 55,
+      "start": 1,
+      "tier": "death",
+      "turns": 5414
+    },
+    {
+      "clock_s": 1686,
+      "depth": 6,
+      "gold": 117,
+      "id": 3,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 106,
+      "start": 1,
+      "tier": "bank",
+      "turns": 8340
+    },
+    {
+      "clock_s": 3446,
+      "depth": 5,
+      "gold": 160,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 5596
+    },
+    {
+      "clock_s": 5345,
+      "depth": 5,
+      "gold": 99,
+      "id": 5,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 6990
+    },
+    {
+      "clock_s": 7254,
+      "depth": 5,
+      "gold": 113,
+      "id": 6,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 7090
+    },
+    {
+      "clock_s": 9612,
+      "depth": 8,
+      "gold": 267,
+      "id": 7,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 221,
+      "start": 1,
+      "tier": "return",
+      "turns": 11582
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 9613,
+      "gold": 814,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 96130
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 9613,
+      "gold": 814,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 96130
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 792,
+        "depth": 4,
+        "gold": 55,
+        "id": 2,
+        "legacy_earned_receipt": 2,
+        "sampled": null,
+        "secured": 55,
+        "start": 1,
+        "tier": "death",
+        "turns": 5414
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 4,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 793,
+      "gold": 99,
+      "legacy": {
+        "points": 6,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 594,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 7930
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 9613,
+      "gold": 814,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 96130
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 9613,
+      "gold": 814,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 96130
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Orin Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 14,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 1.5202687099999999,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 4,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 793,
+    "gold": 29,
+    "legacy": {
+      "points": 6,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Orin Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 594,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 14,
+    "selected": 1,
+    "total_ticks": 7930
+  },
+  "seed": 14,
+  "unreached_checkpoint": false
+}

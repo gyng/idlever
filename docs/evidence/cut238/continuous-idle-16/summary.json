@@ -1,0 +1,1353 @@
+{
+  "diagnosticOnly": true,
+  "identity": {
+    "diagnosticOnly": true,
+    "protocol": "IDLE actions; continuous public Session.advance1000ms; no canonical dayplayer/cadence, PICKED, default policy or acceptance claim",
+    "startedAt": "2026-10-15T15:14:29.414Z",
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "threads": 4,
+    "sourceBefore": {
+      "crates/idlever-core/src/ai.rs": "27e736b03e5999803b09240b6d3f9aadf0e80be9668cdae8f4fdd588871532b0",
+      "crates/idlever-core/src/armour_sets.rs": "7fb19c74bd478d597e3be66ca6505ab7877d8922daebfe2d59f11ef90ae950af",
+      "crates/idlever-core/src/balance.rs": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99",
+      "crates/idlever-core/src/bloodlines.rs": "9cb22ab980305779be1e8f9d573a4a9ef520b51b1a1f3351e049509f026bfaec",
+      "crates/idlever-core/src/chronicle.rs": "18356482ec2da983b774075135a68f56d69460aebe08b4dced6c32e0d341f0bd",
+      "crates/idlever-core/src/class_skill_effect_tests.rs": "964ad3967795d411116276484f519b482f838370eca1da2719f209dd6a799992",
+      "crates/idlever-core/src/class_tree.rs": "c29ce3c737599e6f92e8b9ba9356beefcd793b9fdeda119b41d1d717dc7da38f",
+      "crates/idlever-core/src/class_tree_tests.rs": "a56714b3f861bebb8db4beea6b399a9901935111762d29696fecb03c324ead13",
+      "crates/idlever-core/src/defs.rs": "89853cd749d810620c6373559641d1edd4c7c0f81dfc9174b9c16fcf239e66fa",
+      "crates/idlever-core/src/descent.rs": "e57e0c0e72d24203fa25f7b43a576cf901d2c394382052aba7abcbcb7a34f16b",
+      "crates/idlever-core/src/divergence.rs": "fd3c73c6548d0b4dbfb06ee6b7cf732f0e56cee570d0df3b087050b3a5457eb2",
+      "crates/idlever-core/src/economy_conversion_tests.rs": "4422f9a01a23cb189742fb0ac41c07cb0fde1932d4f0f06397e553bc426ef626",
+      "crates/idlever-core/src/economy_free_tests.rs": "a1e5bac83748ef7bafc87ed2aa54ebcad4a0b5005a3f8cd8ef3ae7c96dc5f0a1",
+      "crates/idlever-core/src/endgame.rs": "496fa9bf2ef5c2f00e96e13811b4030e89a47f28b2283ed685431fc22074b044",
+      "crates/idlever-core/src/endgame_tests.rs": "922aad1b03f84bbde140c4ed832afd145b98635c117593bd5832a698c7e10a44",
+      "crates/idlever-core/src/engine.rs": "da3e030a78ca1c88b63dfc766b2728888247662ef84c57e1ae4cadadc2ae3194",
+      "crates/idlever-core/src/facts.rs": "59a3f70cc1d9ead74a89929982fc376cb89ff097e8f59516bcc1f205d3bf5dd5",
+      "crates/idlever-core/src/feats.rs": "04990cca12bf876c53418f1361f8b684330a9b03b66c0bc3f39d09f0e82df2b8",
+      "crates/idlever-core/src/firearm.rs": "27ea946b0487a6885bd877783252fdde05742e6bc6f2068fc8e5ae6c94eb4e4d",
+      "crates/idlever-core/src/firearm_combat_tests.rs": "2d245109a74696c6a41392ea1819a46dc6e202c50850b5c2caa2b7050a8041b1",
+      "crates/idlever-core/src/fixtures/save_307dbed.json": "1f3c8e84fdd9d6abb1221220c47e97015f6051f267513fa9557180cb114af4d1",
+      "crates/idlever-core/src/fixtures/sends_307dbed.txt": "bb1e6b914360f5ecc47d1440ce4bc5b4041935588f1cf99f5d083c169129152a",
+      "crates/idlever-core/src/fold.rs": "8870977fe0678f4ec89e336c5f1b605fc4c91ed1cb16fc0ef2acbec3543f08f0",
+      "crates/idlever-core/src/forecast.rs": "6f8613447f6ae996812a23d09b2b160f24664b62bc3ae4ad3d03cd25beccdfec",
+      "crates/idlever-core/src/gen.rs": "087fba3a98b74f4a76384d1db1bb50e726cd13ea96de3130f1d1b5709cf88304",
+      "crates/idlever-core/src/geom.rs": "13288dac1b289271f927478195a4a0a1dcd65f7004444d2f1058f2e8a2b2f3c8",
+      "crates/idlever-core/src/gunner_tests.rs": "789e94efa8102d446f05bbe39ea86d67142fa5a2bcdb3c8b3bd6a68473f03bef",
+      "crates/idlever-core/src/hero.rs": "9652426bfe71bcc46e732006ae0c7e748454369704c9c92a1471b3c94e8d5bc6",
+      "crates/idlever-core/src/hero_build.rs": "f67f5b7fb1d9f8b8e2bcd855790bdffd47b0416f1b518e93c27305ff597e5343",
+      "crates/idlever-core/src/item.rs": "a7654b56db4758e06604454d3affc6a0495a21ff63c06c35f2a70d2cc996a77c",
+      "crates/idlever-core/src/journal.rs": "93bfc04ece4aa392b586f206d04ea6b08c9f6578c6520521bbbec47dc1b16632",
+      "crates/idlever-core/src/kit.rs": "28f70b39c4092adb07a4efa5fde40c4a2dc0754f852e305e2d0a6590d8463a9c",
+      "crates/idlever-core/src/legacy.rs": "8c9405909c59a4f053b226f1e727a50a7bd2978baec934deea96419b432d44e8",
+      "crates/idlever-core/src/legacy_tests.rs": "5ee1da8147da840bd793c6984321b520133de3feac3a79695858ecb8417fc3e1",
+      "crates/idlever-core/src/legendary.rs": "2b3066b7a1e2d8f5d49125401eb4d49a7cc066645a5b7bb54ba4477ae43e29b9",
+      "crates/idlever-core/src/lib.rs": "7277aa2f3eddda495f3a5bbc884ebff8c7741a4af407fb455a69132f6161a535",
+      "crates/idlever-core/src/meta.rs": "7037fa5bcb0d9a0c7049dd3d4503332b58044d9a3a90b0a7133ae0768ba40cdd",
+      "crates/idlever-core/src/meters.rs": "c05146609f8bb1df214a8aa5de4039db4ce5d75c58f7704ded14f0b25b68f5e4",
+      "crates/idlever-core/src/monster.rs": "9231bb772b9334eac7b09138224d86d07347e9e401a163c277aaa94c40d1b8a0",
+      "crates/idlever-core/src/news.rs": "8756bf51aa08db88164c04787622abd23bb078889781e139a26eab46c732fb32",
+      "crates/idlever-core/src/oath.rs": "6756fde5017b5d92e1f70ea022db5c062d399c4ded6026ed255aac165b7e5d9d",
+      "crates/idlever-core/src/offline.rs": "ab12a2e1b91a24b96edc7cfe66059c24cffa22f103ff30bcbe2b3786a8e77e2b",
+      "crates/idlever-core/src/packages.rs": "3a7f212221942816f5ca7c431bcbe96dcf5681c600246fea2b979a2d6dc188f5",
+      "crates/idlever-core/src/persistent.rs": "3ac986a30cba11d71d16d639a7ec5ac90ab2aa9c9fa60c727f795ca301ecc5a6",
+      "crates/idlever-core/src/pets.rs": "943f8eae0759c4a30df3f235d21b9477851e6fd7ed39c623b819a9e10a73cf81",
+      "crates/idlever-core/src/petstats.rs": "489da1114e2bbad95fbe95ef05885a8dcb52d3a7e23977cf9f7da37623bf2bea",
+      "crates/idlever-core/src/probes.rs": "90753b347883f6ed57a546643b7069ac4f0c7e15d597b8dec625b6f73774c81b",
+      "crates/idlever-core/src/progression.rs": "b7d146c7717f67b89ce1a7aa5f387f947e0a6fde66badb4c7d7a03fe205c8c65",
+      "crates/idlever-core/src/provenance.rs": "66c20068121fbcd9c60e7328c0aabe977ea93de199620c5d1ded36ee2f7a8fa0",
+      "crates/idlever-core/src/returns.rs": "08203d865abba514ea2ad2bbf69fba09967f83b2646db01174e5fe264956cbba",
+      "crates/idlever-core/src/rng.rs": "177d3208e9ffa962bdcc21f367b33e1f8c2129a8b76eef3a989b1793fc6f09d4",
+      "crates/idlever-core/src/rules.rs": "edda0a1614bbd05255b70c550aef49c9d831fb945c3bf6ed4511da9de7092ae2",
+      "crates/idlever-core/src/save.rs": "8a201c4f325978a42e85c51a1f407ef8408262377ca3e2e970ccb8252fcd5022",
+      "crates/idlever-core/src/shared.rs": "2eafeae644e071d241edeb0af20897c743d6b34dc988997fdb99f879d4d7821f",
+      "crates/idlever-core/src/sifter.rs": "46b474045646535fe72cb9ce1f733cf9528f49f5552d2248161233210c9fbc8b",
+      "crates/idlever-core/src/situations.rs": "2d12714d015cbf5905b5d33ef2de1cdde410cfdb246d4cc087cc58a6b87887b6",
+      "crates/idlever-core/src/specialization.rs": "969fcb04b162460a4a06b89673b46f8b6d296723499dd5486c156e7ffec96f84",
+      "crates/idlever-core/src/specialization_tests.rs": "0714d11a1de315564b1ea011d7ca142183b7dd8720350433c1a7ed148344a49f",
+      "crates/idlever-core/src/systems.rs": "3be5059e19fd70fc4a46c861f6950aca3c0c05f8dacf015ee6ef16f6b3302c2a",
+      "crates/idlever-core/src/test_stage.rs": "18fa03776aa40c615e99c1fc55a0e1d499cc6aff12f86741b1056d8a04963010",
+      "crates/idlever-core/src/tests.rs": "20e85a91289800743443998a7b395f1f2b2a0292139ed99a5499cc700899c188",
+      "crates/idlever-core/src/tests_cut113.rs": "e24d04c8a7cb9a633ff96a18562ee6a0448f400b997aec309705c307469d7e1f",
+      "crates/idlever-core/src/tests_cut114.rs": "6024b4ba113ad6ce1d662213a86c3f6b47043824e8d05dc7a2f9331288e012a2",
+      "crates/idlever-core/src/tests_cut115.rs": "d8ab0c68ee0e04dcfe543f9cff515d86e85bd7e0d99aced6bcae163bdea5fd9d",
+      "crates/idlever-core/src/tests_cut116.rs": "29b7f6b746775a397ffaa308bd34d56e45c7dc0993fd6891bf372b9a72c94758",
+      "crates/idlever-core/src/tests_cut117.rs": "5bb49438824222c406e0723831d5d8b9e156261d04bdf803863d0fb80fe77b82",
+      "crates/idlever-core/src/tests_cut118.rs": "1a26a3b0e6ed6bf43d9538a52cfd22a914bb92f864ab732ae962ea2f6f03b85a",
+      "crates/idlever-core/src/tests_cut119.rs": "8d5da3352655bbbfff38f67a20de0c05dde82b774f33b0e1c32d780a882eadd1",
+      "crates/idlever-core/src/tests_cut120.rs": "1fc552682438448b252de57db12c08cec3afeddd952a936815d5d95781d6e4c6",
+      "crates/idlever-core/src/tests_cut121.rs": "dc64c6aa1c69215a0acf1e4bef73e0e0f8a396b5274303e2c5075f7f3c94b1b4",
+      "crates/idlever-core/src/tests_cut122.rs": "fd920d1248d872bff79914643c1a209bba6ec74635688d550096cdebb0770d3f",
+      "crates/idlever-core/src/tests_cut156.rs": "c33c4294430e7206f1d8eb1c2f5d3bf97f209a2a991c98c71cdc88524662380b",
+      "crates/idlever-core/src/tests_cut157.rs": "3c6c104e0bfbec320734a476e407ef4abef16b50e07ca2a604287b50a0a44dbe",
+      "crates/idlever-core/src/tests_cut159.rs": "2d1ccd763b7548499870feeb6bae52f1460f26dab9a81752d13ec397587a544c",
+      "crates/idlever-core/src/tests_cut235.rs": "61ee14d244243d3aaeda120b51b2b9e75e51cfb0962c9511a319f69dd191862a",
+      "crates/idlever-core/src/tests_cut27.rs": "2e6b2bb0daa6f6c3100c7e6532272f82630d0d583aa0b2af83acad33911271a0",
+      "crates/idlever-core/src/tests_cut27_seams.rs": "b7aff4da32c4ae49b9b76139f1474c5692f0538be482db7db13e9d7a91e45a79",
+      "crates/idlever-core/src/tests_cut28.rs": "949cb46acc80c19233ef1abd47bea2f99dcf54696ec4d4ad5fc3031c63c02369",
+      "crates/idlever-core/src/tests_cut29.rs": "1697ebc484c8c94c996c6bb3094e5cc67b798607f5ec9ae5c8e22dbbffdc1752",
+      "crates/idlever-core/src/tests_cut30.rs": "3996ed9c2cca29e2522416cb58a1891a93616dd7b2ed8748be805e38217a2cc7",
+      "crates/idlever-core/src/tests_cut305.rs": "eb36664ed21c779c44e852c2edbeb993d915a1888f0685014f87051fc7fd22d7",
+      "crates/idlever-core/src/tests_cut30_pkg.rs": "447db6fb92f88bda47d55cedf83f43a17fc36997f1b32fd23cb8174784327144",
+      "crates/idlever-core/src/tests_runclear.rs": "1bb8b2f3e85123cf642e99d8b7076d7ce51bd6ef298ae2948794df03a8ab512a",
+      "crates/idlever-core/src/tests_runsui.rs": "dd9c8a9008bde2857b7e611aef09075463b74189d7c79133efa3432edae34675",
+      "crates/idlever-core/src/tiles.rs": "0cd54df0eaaae151265314d5880aa6a2554d6a21fc9f82dbb30551e76e76cd3f",
+      "crates/idlever-core/src/tokens.rs": "55a93873680ce2d28928e59fc52ad42a95687ffed4a22fda9890b7df13e35ddf",
+      "crates/idlever-core/src/tools.rs": "2fc10af027f3ce86d434ef8ee22be97dd81337a366f2b46c5f56089127b77407",
+      "crates/idlever-core/src/tools_tests.rs": "d601ec234e7eb569cd3f23af43bba26d2434321b22a2b45567a15ca308bcb19d",
+      "crates/idlever-core/src/town.rs": "8f232a04ba84098f01c745846162ea60f863fe882c00f565ff132e62c63e1561",
+      "crates/idlever-core/src/trace.rs": "5160a4f50e06d74f9bfef3e2ae349fb44471d1ad389d5612e1bab3021cca1ccb",
+      "crates/idlever-core/src/traits.json": "c0fa1e294bc9f131bc665a37bd7216d286f6f9deb1160886c0ba38505b35b73f",
+      "crates/idlever-core/src/traits.rs": "f248204678e0cc229f912c721c58c2ffbf71b1d2ef5665e9c87fe904174ea74f",
+      "crates/idlever-core/src/tree.rs": "59330947b8edc011c21c530a4464701c9d4e0311f0ffe5b5fc485def8e8e2f54",
+      "crates/idlever-core/src/turn.rs": "60d0df59d9fa8b872fc02df67cb6afecbcb2d8848a9c7ee4db1bfb31a5059032",
+      "crates/idlever-core/src/wall.rs": "aa74b76d24779062722e0542c22685f3a6787a869ceeef7f8f291e87fac32557",
+      "crates/idlever-core/src/wire.rs": "b696cdae84be8e56dbf01fd8770596ef1f2df78ae1f2762fed46524a33c109e1",
+      "crates/idlever-core/examples/legacy_first_rank.rs": "35f8e3da916963fb61570aff2e04a1e0b1cf0532caeba83025dd0c1657cb019c",
+      "tuning/balance.json": "c6df92386d54856dd4c13e88e2a4db42002bdfc65f490534456cc115e23a142a",
+      "docs/evidence/cut238/run-idle-first-rank.mjs": "e10f016c0e68ee3caa3b0128d96f0ce0ef5e09f06a5fa4adc1966b9f2cc112c3",
+      "docs/evidence/cut238/IDLE_FIRST_RANK_PROTOCOL.md": "d720d3458137de93c162e6242624b2067bde3ec5fcadd0430bb781ebdc28eaa6"
+    },
+    "binary": {
+      "path": "/home/g/p/riddle/target/fast/examples/legacy_first_rank",
+      "sha256": "12f2eb9d5a9c63e4f90ecc182d133879e4e21ae9d6bcd372f9d18cf3279405e9"
+    },
+    "parameters": {
+      "acquisitionHours": 48,
+      "postForkHours": 48,
+      "arms": [
+        "no-spend",
+        "health1",
+        "damage1",
+        "armour1"
+      ],
+      "oneRankPrice": 15,
+      "publicHomePurchaseOnly": true
+    },
+    "finishedAt": "2026-10-15T15:14:38.980Z",
+    "sourceAfter": {
+      "crates/idlever-core/src/ai.rs": "27e736b03e5999803b09240b6d3f9aadf0e80be9668cdae8f4fdd588871532b0",
+      "crates/idlever-core/src/armour_sets.rs": "7fb19c74bd478d597e3be66ca6505ab7877d8922daebfe2d59f11ef90ae950af",
+      "crates/idlever-core/src/balance.rs": "2bd7942badc55dfb2cdaf20f90ff24486a82ca21f0311c2f4c4f16d35f3f9a99",
+      "crates/idlever-core/src/bloodlines.rs": "9cb22ab980305779be1e8f9d573a4a9ef520b51b1a1f3351e049509f026bfaec",
+      "crates/idlever-core/src/chronicle.rs": "18356482ec2da983b774075135a68f56d69460aebe08b4dced6c32e0d341f0bd",
+      "crates/idlever-core/src/class_skill_effect_tests.rs": "964ad3967795d411116276484f519b482f838370eca1da2719f209dd6a799992",
+      "crates/idlever-core/src/class_tree.rs": "c29ce3c737599e6f92e8b9ba9356beefcd793b9fdeda119b41d1d717dc7da38f",
+      "crates/idlever-core/src/class_tree_tests.rs": "a56714b3f861bebb8db4beea6b399a9901935111762d29696fecb03c324ead13",
+      "crates/idlever-core/src/defs.rs": "89853cd749d810620c6373559641d1edd4c7c0f81dfc9174b9c16fcf239e66fa",
+      "crates/idlever-core/src/descent.rs": "e57e0c0e72d24203fa25f7b43a576cf901d2c394382052aba7abcbcb7a34f16b",
+      "crates/idlever-core/src/divergence.rs": "fd3c73c6548d0b4dbfb06ee6b7cf732f0e56cee570d0df3b087050b3a5457eb2",
+      "crates/idlever-core/src/economy_conversion_tests.rs": "4422f9a01a23cb189742fb0ac41c07cb0fde1932d4f0f06397e553bc426ef626",
+      "crates/idlever-core/src/economy_free_tests.rs": "a1e5bac83748ef7bafc87ed2aa54ebcad4a0b5005a3f8cd8ef3ae7c96dc5f0a1",
+      "crates/idlever-core/src/endgame.rs": "496fa9bf2ef5c2f00e96e13811b4030e89a47f28b2283ed685431fc22074b044",
+      "crates/idlever-core/src/endgame_tests.rs": "922aad1b03f84bbde140c4ed832afd145b98635c117593bd5832a698c7e10a44",
+      "crates/idlever-core/src/engine.rs": "da3e030a78ca1c88b63dfc766b2728888247662ef84c57e1ae4cadadc2ae3194",
+      "crates/idlever-core/src/facts.rs": "59a3f70cc1d9ead74a89929982fc376cb89ff097e8f59516bcc1f205d3bf5dd5",
+      "crates/idlever-core/src/feats.rs": "04990cca12bf876c53418f1361f8b684330a9b03b66c0bc3f39d09f0e82df2b8",
+      "crates/idlever-core/src/firearm.rs": "27ea946b0487a6885bd877783252fdde05742e6bc6f2068fc8e5ae6c94eb4e4d",
+      "crates/idlever-core/src/firearm_combat_tests.rs": "2d245109a74696c6a41392ea1819a46dc6e202c50850b5c2caa2b7050a8041b1",
+      "crates/idlever-core/src/fixtures/save_307dbed.json": "1f3c8e84fdd9d6abb1221220c47e97015f6051f267513fa9557180cb114af4d1",
+      "crates/idlever-core/src/fixtures/sends_307dbed.txt": "bb1e6b914360f5ecc47d1440ce4bc5b4041935588f1cf99f5d083c169129152a",
+      "crates/idlever-core/src/fold.rs": "8870977fe0678f4ec89e336c5f1b605fc4c91ed1cb16fc0ef2acbec3543f08f0",
+      "crates/idlever-core/src/forecast.rs": "6f8613447f6ae996812a23d09b2b160f24664b62bc3ae4ad3d03cd25beccdfec",
+      "crates/idlever-core/src/gen.rs": "087fba3a98b74f4a76384d1db1bb50e726cd13ea96de3130f1d1b5709cf88304",
+      "crates/idlever-core/src/geom.rs": "13288dac1b289271f927478195a4a0a1dcd65f7004444d2f1058f2e8a2b2f3c8",
+      "crates/idlever-core/src/gunner_tests.rs": "789e94efa8102d446f05bbe39ea86d67142fa5a2bcdb3c8b3bd6a68473f03bef",
+      "crates/idlever-core/src/hero.rs": "9652426bfe71bcc46e732006ae0c7e748454369704c9c92a1471b3c94e8d5bc6",
+      "crates/idlever-core/src/hero_build.rs": "f67f5b7fb1d9f8b8e2bcd855790bdffd47b0416f1b518e93c27305ff597e5343",
+      "crates/idlever-core/src/item.rs": "a7654b56db4758e06604454d3affc6a0495a21ff63c06c35f2a70d2cc996a77c",
+      "crates/idlever-core/src/journal.rs": "93bfc04ece4aa392b586f206d04ea6b08c9f6578c6520521bbbec47dc1b16632",
+      "crates/idlever-core/src/kit.rs": "28f70b39c4092adb07a4efa5fde40c4a2dc0754f852e305e2d0a6590d8463a9c",
+      "crates/idlever-core/src/legacy.rs": "8c9405909c59a4f053b226f1e727a50a7bd2978baec934deea96419b432d44e8",
+      "crates/idlever-core/src/legacy_tests.rs": "5ee1da8147da840bd793c6984321b520133de3feac3a79695858ecb8417fc3e1",
+      "crates/idlever-core/src/legendary.rs": "2b3066b7a1e2d8f5d49125401eb4d49a7cc066645a5b7bb54ba4477ae43e29b9",
+      "crates/idlever-core/src/lib.rs": "7277aa2f3eddda495f3a5bbc884ebff8c7741a4af407fb455a69132f6161a535",
+      "crates/idlever-core/src/meta.rs": "7037fa5bcb0d9a0c7049dd3d4503332b58044d9a3a90b0a7133ae0768ba40cdd",
+      "crates/idlever-core/src/meters.rs": "c05146609f8bb1df214a8aa5de4039db4ce5d75c58f7704ded14f0b25b68f5e4",
+      "crates/idlever-core/src/monster.rs": "9231bb772b9334eac7b09138224d86d07347e9e401a163c277aaa94c40d1b8a0",
+      "crates/idlever-core/src/news.rs": "8756bf51aa08db88164c04787622abd23bb078889781e139a26eab46c732fb32",
+      "crates/idlever-core/src/oath.rs": "6756fde5017b5d92e1f70ea022db5c062d399c4ded6026ed255aac165b7e5d9d",
+      "crates/idlever-core/src/offline.rs": "ab12a2e1b91a24b96edc7cfe66059c24cffa22f103ff30bcbe2b3786a8e77e2b",
+      "crates/idlever-core/src/packages.rs": "3a7f212221942816f5ca7c431bcbe96dcf5681c600246fea2b979a2d6dc188f5",
+      "crates/idlever-core/src/persistent.rs": "3ac986a30cba11d71d16d639a7ec5ac90ab2aa9c9fa60c727f795ca301ecc5a6",
+      "crates/idlever-core/src/pets.rs": "943f8eae0759c4a30df3f235d21b9477851e6fd7ed39c623b819a9e10a73cf81",
+      "crates/idlever-core/src/petstats.rs": "489da1114e2bbad95fbe95ef05885a8dcb52d3a7e23977cf9f7da37623bf2bea",
+      "crates/idlever-core/src/probes.rs": "90753b347883f6ed57a546643b7069ac4f0c7e15d597b8dec625b6f73774c81b",
+      "crates/idlever-core/src/progression.rs": "b7d146c7717f67b89ce1a7aa5f387f947e0a6fde66badb4c7d7a03fe205c8c65",
+      "crates/idlever-core/src/provenance.rs": "66c20068121fbcd9c60e7328c0aabe977ea93de199620c5d1ded36ee2f7a8fa0",
+      "crates/idlever-core/src/returns.rs": "08203d865abba514ea2ad2bbf69fba09967f83b2646db01174e5fe264956cbba",
+      "crates/idlever-core/src/rng.rs": "177d3208e9ffa962bdcc21f367b33e1f8c2129a8b76eef3a989b1793fc6f09d4",
+      "crates/idlever-core/src/rules.rs": "edda0a1614bbd05255b70c550aef49c9d831fb945c3bf6ed4511da9de7092ae2",
+      "crates/idlever-core/src/save.rs": "8a201c4f325978a42e85c51a1f407ef8408262377ca3e2e970ccb8252fcd5022",
+      "crates/idlever-core/src/shared.rs": "2eafeae644e071d241edeb0af20897c743d6b34dc988997fdb99f879d4d7821f",
+      "crates/idlever-core/src/sifter.rs": "46b474045646535fe72cb9ce1f733cf9528f49f5552d2248161233210c9fbc8b",
+      "crates/idlever-core/src/situations.rs": "2d12714d015cbf5905b5d33ef2de1cdde410cfdb246d4cc087cc58a6b87887b6",
+      "crates/idlever-core/src/specialization.rs": "969fcb04b162460a4a06b89673b46f8b6d296723499dd5486c156e7ffec96f84",
+      "crates/idlever-core/src/specialization_tests.rs": "0714d11a1de315564b1ea011d7ca142183b7dd8720350433c1a7ed148344a49f",
+      "crates/idlever-core/src/systems.rs": "3be5059e19fd70fc4a46c861f6950aca3c0c05f8dacf015ee6ef16f6b3302c2a",
+      "crates/idlever-core/src/test_stage.rs": "18fa03776aa40c615e99c1fc55a0e1d499cc6aff12f86741b1056d8a04963010",
+      "crates/idlever-core/src/tests.rs": "20e85a91289800743443998a7b395f1f2b2a0292139ed99a5499cc700899c188",
+      "crates/idlever-core/src/tests_cut113.rs": "e24d04c8a7cb9a633ff96a18562ee6a0448f400b997aec309705c307469d7e1f",
+      "crates/idlever-core/src/tests_cut114.rs": "6024b4ba113ad6ce1d662213a86c3f6b47043824e8d05dc7a2f9331288e012a2",
+      "crates/idlever-core/src/tests_cut115.rs": "d8ab0c68ee0e04dcfe543f9cff515d86e85bd7e0d99aced6bcae163bdea5fd9d",
+      "crates/idlever-core/src/tests_cut116.rs": "29b7f6b746775a397ffaa308bd34d56e45c7dc0993fd6891bf372b9a72c94758",
+      "crates/idlever-core/src/tests_cut117.rs": "5bb49438824222c406e0723831d5d8b9e156261d04bdf803863d0fb80fe77b82",
+      "crates/idlever-core/src/tests_cut118.rs": "1a26a3b0e6ed6bf43d9538a52cfd22a914bb92f864ab732ae962ea2f6f03b85a",
+      "crates/idlever-core/src/tests_cut119.rs": "8d5da3352655bbbfff38f67a20de0c05dde82b774f33b0e1c32d780a882eadd1",
+      "crates/idlever-core/src/tests_cut120.rs": "1fc552682438448b252de57db12c08cec3afeddd952a936815d5d95781d6e4c6",
+      "crates/idlever-core/src/tests_cut121.rs": "dc64c6aa1c69215a0acf1e4bef73e0e0f8a396b5274303e2c5075f7f3c94b1b4",
+      "crates/idlever-core/src/tests_cut122.rs": "fd920d1248d872bff79914643c1a209bba6ec74635688d550096cdebb0770d3f",
+      "crates/idlever-core/src/tests_cut156.rs": "c33c4294430e7206f1d8eb1c2f5d3bf97f209a2a991c98c71cdc88524662380b",
+      "crates/idlever-core/src/tests_cut157.rs": "3c6c104e0bfbec320734a476e407ef4abef16b50e07ca2a604287b50a0a44dbe",
+      "crates/idlever-core/src/tests_cut159.rs": "2d1ccd763b7548499870feeb6bae52f1460f26dab9a81752d13ec397587a544c",
+      "crates/idlever-core/src/tests_cut235.rs": "61ee14d244243d3aaeda120b51b2b9e75e51cfb0962c9511a319f69dd191862a",
+      "crates/idlever-core/src/tests_cut27.rs": "2e6b2bb0daa6f6c3100c7e6532272f82630d0d583aa0b2af83acad33911271a0",
+      "crates/idlever-core/src/tests_cut27_seams.rs": "b7aff4da32c4ae49b9b76139f1474c5692f0538be482db7db13e9d7a91e45a79",
+      "crates/idlever-core/src/tests_cut28.rs": "949cb46acc80c19233ef1abd47bea2f99dcf54696ec4d4ad5fc3031c63c02369",
+      "crates/idlever-core/src/tests_cut29.rs": "1697ebc484c8c94c996c6bb3094e5cc67b798607f5ec9ae5c8e22dbbffdc1752",
+      "crates/idlever-core/src/tests_cut30.rs": "3996ed9c2cca29e2522416cb58a1891a93616dd7b2ed8748be805e38217a2cc7",
+      "crates/idlever-core/src/tests_cut305.rs": "eb36664ed21c779c44e852c2edbeb993d915a1888f0685014f87051fc7fd22d7",
+      "crates/idlever-core/src/tests_cut30_pkg.rs": "447db6fb92f88bda47d55cedf83f43a17fc36997f1b32fd23cb8174784327144",
+      "crates/idlever-core/src/tests_runclear.rs": "1bb8b2f3e85123cf642e99d8b7076d7ce51bd6ef298ae2948794df03a8ab512a",
+      "crates/idlever-core/src/tests_runsui.rs": "dd9c8a9008bde2857b7e611aef09075463b74189d7c79133efa3432edae34675",
+      "crates/idlever-core/src/tiles.rs": "0cd54df0eaaae151265314d5880aa6a2554d6a21fc9f82dbb30551e76e76cd3f",
+      "crates/idlever-core/src/tokens.rs": "55a93873680ce2d28928e59fc52ad42a95687ffed4a22fda9890b7df13e35ddf",
+      "crates/idlever-core/src/tools.rs": "2fc10af027f3ce86d434ef8ee22be97dd81337a366f2b46c5f56089127b77407",
+      "crates/idlever-core/src/tools_tests.rs": "d601ec234e7eb569cd3f23af43bba26d2434321b22a2b45567a15ca308bcb19d",
+      "crates/idlever-core/src/town.rs": "8f232a04ba84098f01c745846162ea60f863fe882c00f565ff132e62c63e1561",
+      "crates/idlever-core/src/trace.rs": "5160a4f50e06d74f9bfef3e2ae349fb44471d1ad389d5612e1bab3021cca1ccb",
+      "crates/idlever-core/src/traits.json": "c0fa1e294bc9f131bc665a37bd7216d286f6f9deb1160886c0ba38505b35b73f",
+      "crates/idlever-core/src/traits.rs": "f248204678e0cc229f912c721c58c2ffbf71b1d2ef5665e9c87fe904174ea74f",
+      "crates/idlever-core/src/tree.rs": "59330947b8edc011c21c530a4464701c9d4e0311f0ffe5b5fc485def8e8e2f54",
+      "crates/idlever-core/src/turn.rs": "60d0df59d9fa8b872fc02df67cb6afecbcb2d8848a9c7ee4db1bfb31a5059032",
+      "crates/idlever-core/src/wall.rs": "aa74b76d24779062722e0542c22685f3a6787a869ceeef7f8f291e87fac32557",
+      "crates/idlever-core/src/wire.rs": "b696cdae84be8e56dbf01fd8770596ef1f2df78ae1f2762fed46524a33c109e1",
+      "crates/idlever-core/examples/legacy_first_rank.rs": "35f8e3da916963fb61570aff2e04a1e0b1cf0532caeba83025dd0c1657cb019c",
+      "tuning/balance.json": "c6df92386d54856dd4c13e88e2a4db42002bdfc65f490534456cc115e23a142a",
+      "docs/evidence/cut238/run-idle-first-rank.mjs": "e10f016c0e68ee3caa3b0128d96f0ce0ef5e09f06a5fa4adc1966b9f2cc112c3",
+      "docs/evidence/cut238/IDLE_FIRST_RANK_PROTOCOL.md": "d720d3458137de93c162e6242624b2067bde3ec5fcadd0430bb781ebdc28eaa6"
+    },
+    "sourceUnchanged": true,
+    "binaryUnchanged": true,
+    "complete": true
+  },
+  "completedSeeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "observations": [
+    {
+      "seed": 1,
+      "manualSends": 2,
+      "scout": 744,
+      "firstDeathActualExitS": 22531,
+      "firstDeathObservedS": 22532,
+      "first15ObservedS": 10338,
+      "first15Away": false,
+      "firstHomeObservedS": 22532,
+      "forkObservedS": 22532,
+      "unreached": false
+    },
+    {
+      "seed": 2,
+      "manualSends": 2,
+      "scout": 936,
+      "firstDeathActualExitS": 12196,
+      "firstDeathObservedS": 12197,
+      "first15ObservedS": 9830,
+      "first15Away": false,
+      "firstHomeObservedS": 12197,
+      "forkObservedS": 12197,
+      "unreached": false
+    },
+    {
+      "seed": 3,
+      "manualSends": 2,
+      "scout": 831,
+      "firstDeathActualExitS": 7529,
+      "firstDeathObservedS": 7529,
+      "first15ObservedS": 8175,
+      "first15Away": false,
+      "firstHomeObservedS": 8175,
+      "forkObservedS": 8175,
+      "unreached": false
+    },
+    {
+      "seed": 4,
+      "manualSends": 2,
+      "scout": 1100,
+      "firstDeathActualExitS": 2877,
+      "firstDeathObservedS": 2878,
+      "first15ObservedS": 7532,
+      "first15Away": false,
+      "firstHomeObservedS": 7532,
+      "forkObservedS": 7532,
+      "unreached": false
+    },
+    {
+      "seed": 5,
+      "manualSends": 2,
+      "scout": 1257,
+      "firstDeathActualExitS": 5474,
+      "firstDeathObservedS": 5475,
+      "first15ObservedS": 9367,
+      "first15Away": false,
+      "firstHomeObservedS": 9367,
+      "forkObservedS": 9367,
+      "unreached": false
+    },
+    {
+      "seed": 6,
+      "manualSends": 2,
+      "scout": 969,
+      "firstDeathActualExitS": 403,
+      "firstDeathObservedS": 403,
+      "first15ObservedS": 8366,
+      "first15Away": false,
+      "firstHomeObservedS": 8366,
+      "forkObservedS": 8366,
+      "unreached": false
+    },
+    {
+      "seed": 7,
+      "manualSends": 2,
+      "scout": 960,
+      "firstDeathActualExitS": 2589,
+      "firstDeathObservedS": 2590,
+      "first15ObservedS": 8796,
+      "first15Away": false,
+      "firstHomeObservedS": 8796,
+      "forkObservedS": 8796,
+      "unreached": false
+    },
+    {
+      "seed": 8,
+      "manualSends": 2,
+      "scout": 1355,
+      "firstDeathActualExitS": 6956,
+      "firstDeathObservedS": 6957,
+      "first15ObservedS": 9571,
+      "first15Away": false,
+      "firstHomeObservedS": 9571,
+      "forkObservedS": 9571,
+      "unreached": false
+    },
+    {
+      "seed": 9,
+      "manualSends": 2,
+      "scout": 866,
+      "firstDeathActualExitS": 6061,
+      "firstDeathObservedS": 6061,
+      "first15ObservedS": 14047,
+      "first15Away": false,
+      "firstHomeObservedS": 14047,
+      "forkObservedS": 14047,
+      "unreached": false
+    },
+    {
+      "seed": 10,
+      "manualSends": 2,
+      "scout": 1240,
+      "firstDeathActualExitS": 2893,
+      "firstDeathObservedS": 2893,
+      "first15ObservedS": 9540,
+      "first15Away": false,
+      "firstHomeObservedS": 9540,
+      "forkObservedS": 9540,
+      "unreached": false
+    },
+    {
+      "seed": 11,
+      "manualSends": 2,
+      "scout": 971,
+      "firstDeathActualExitS": 34257,
+      "firstDeathObservedS": 34258,
+      "first15ObservedS": 13241,
+      "first15Away": false,
+      "firstHomeObservedS": 34258,
+      "forkObservedS": 34258,
+      "unreached": false
+    },
+    {
+      "seed": 12,
+      "manualSends": 2,
+      "scout": 1518,
+      "firstDeathActualExitS": 5290,
+      "firstDeathObservedS": 5291,
+      "first15ObservedS": 13609,
+      "first15Away": false,
+      "firstHomeObservedS": 13609,
+      "forkObservedS": 13609,
+      "unreached": false
+    },
+    {
+      "seed": 13,
+      "manualSends": 2,
+      "scout": 944,
+      "firstDeathActualExitS": 15661,
+      "firstDeathObservedS": 15662,
+      "first15ObservedS": 11246,
+      "first15Away": false,
+      "firstHomeObservedS": 15662,
+      "forkObservedS": 15662,
+      "unreached": false
+    },
+    {
+      "seed": 14,
+      "manualSends": 2,
+      "scout": 793,
+      "firstDeathActualExitS": 792,
+      "firstDeathObservedS": 793,
+      "first15ObservedS": 9613,
+      "first15Away": false,
+      "firstHomeObservedS": 9613,
+      "forkObservedS": 9613,
+      "unreached": false
+    },
+    {
+      "seed": 15,
+      "manualSends": 2,
+      "scout": 882,
+      "firstDeathActualExitS": 2473,
+      "firstDeathObservedS": 2474,
+      "first15ObservedS": 8245,
+      "first15Away": false,
+      "firstHomeObservedS": 8245,
+      "forkObservedS": 8245,
+      "unreached": false
+    },
+    {
+      "seed": 16,
+      "manualSends": 2,
+      "scout": 1084,
+      "firstDeathActualExitS": 2850,
+      "firstDeathObservedS": 2851,
+      "first15ObservedS": 10215,
+      "first15Away": false,
+      "firstHomeObservedS": 10215,
+      "forkObservedS": 10215,
+      "unreached": false
+    }
+  ],
+  "comparisons": {
+    "health": {
+      "pairs": [
+        {
+          "seed": 1,
+          "baselineElapsedBracket": [
+            3607,
+            3608
+          ],
+          "treatmentElapsedBracket": [
+            16147,
+            16148
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.22343324250681199,
+          "ratioInterval": [
+            0.2233713153331682,
+            0.22344707995293242
+          ]
+        },
+        {
+          "seed": 2,
+          "baselineElapsedBracket": [
+            30789,
+            30790
+          ],
+          "treatmentElapsedBracket": [
+            30420,
+            30421
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0121297787712435,
+          "ratioInterval": [
+            1.012096906742053,
+            1.0121630506245891
+          ]
+        },
+        {
+          "seed": 3,
+          "baselineElapsedBracket": [
+            7480,
+            7481
+          ],
+          "treatmentElapsedBracket": [
+            7180,
+            7181
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0417769112936917,
+          "ratioInterval": [
+            1.0416376549227127,
+            1.0419220055710305
+          ]
+        },
+        {
+          "seed": 4,
+          "baselineElapsedBracket": [
+            26830,
+            26831
+          ],
+          "treatmentElapsedBracket": [
+            27090,
+            27091
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.9904027167694068,
+          "ratioInterval": [
+            0.9903658041415968,
+            0.9904392764857881
+          ]
+        },
+        {
+          "seed": 5,
+          "baselineElapsedBracket": [
+            19252,
+            19253
+          ],
+          "treatmentElapsedBracket": [
+            7141,
+            7142
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.695743489218706,
+          "ratioInterval": [
+            2.69560347241669,
+            2.696120991457779
+          ]
+        },
+        {
+          "seed": 6,
+          "baselineElapsedBracket": [
+            37816,
+            37817
+          ],
+          "treatmentElapsedBracket": [
+            16018,
+            16019
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.3607590985704476,
+          "ratioInterval": [
+            2.3606966727011676,
+            2.360906480209764
+          ]
+        },
+        {
+          "seed": 7,
+          "baselineElapsedBracket": [
+            53050,
+            53051
+          ],
+          "treatmentElapsedBracket": [
+            54202,
+            54203
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.9787465638433297,
+          "ratioInterval": [
+            0.9787281146799993,
+            0.9787646212316888
+          ]
+        },
+        {
+          "seed": 8,
+          "baselineElapsedBracket": [
+            16344,
+            16345
+          ],
+          "treatmentElapsedBracket": [
+            33406,
+            33407
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.48926871613733647,
+          "ratioInterval": [
+            0.4892387822911366,
+            0.4892833622702509
+          ]
+        },
+        {
+          "seed": 9,
+          "baselineElapsedBracket": [
+            9835,
+            9836
+          ],
+          "treatmentElapsedBracket": [
+            13314,
+            13315
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.7387157341344348,
+          "ratioInterval": [
+            0.7386406308674427,
+            0.7387712182664864
+          ]
+        },
+        {
+          "seed": 10,
+          "baselineElapsedBracket": [
+            30106,
+            30107
+          ],
+          "treatmentElapsedBracket": [
+            28574,
+            28575
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0536132983377078,
+          "ratioInterval": [
+            1.053578302712161,
+            1.0536501714845663
+          ]
+        },
+        {
+          "seed": 11,
+          "baselineElapsedBracket": [
+            30061,
+            30062
+          ],
+          "treatmentElapsedBracket": [
+            4479,
+            4480
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 6.710267857142857,
+          "ratioInterval": [
+            6.7100446428571425,
+            6.711766019200715
+          ]
+        },
+        {
+          "seed": 12,
+          "baselineElapsedBracket": [
+            46214,
+            46215
+          ],
+          "treatmentElapsedBracket": [
+            6010,
+            6011
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 7.688404591582099,
+          "ratioInterval": [
+            7.688238229911828,
+            7.689683860232945
+          ]
+        },
+        {
+          "seed": 13,
+          "baselineElapsedBracket": [
+            13187,
+            13188
+          ],
+          "treatmentElapsedBracket": [
+            12419,
+            12420
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0618357487922705,
+          "ratioInterval": [
+            1.0617552334943638,
+            1.0619212496980432
+          ]
+        },
+        {
+          "seed": 14,
+          "baselineElapsedBracket": [
+            8256,
+            8257
+          ],
+          "treatmentElapsedBracket": [
+            8247,
+            8248
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0010911736178467,
+          "ratioInterval": [
+            1.0009699321047527,
+            1.00121256214381
+          ]
+        },
+        {
+          "seed": 15,
+          "baselineElapsedBracket": [
+            26636,
+            26637
+          ],
+          "treatmentElapsedBracket": [
+            11987,
+            11988
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.221971971971972,
+          "ratioInterval": [
+            2.2218885552218888,
+            2.2221573371152084
+          ]
+        },
+        {
+          "seed": 16,
+          "baselineElapsedBracket": [
+            35737,
+            35738
+          ],
+          "treatmentElapsedBracket": [
+            17829,
+            17830
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.00437464946719,
+          "ratioInterval": [
+            2.004318564217611,
+            2.004487071624881
+          ]
+        }
+      ],
+      "finitePairs": 16,
+      "all16FiniteMedian": 1.0476951048156997,
+      "finiteSubsetMedianDescriptiveOnly": 1.0476951048156997,
+      "note": "Missing/censored endpoints are null, never an infinite successful speedup. No policy/whole-contract gate claim."
+    },
+    "damage": {
+      "pairs": [
+        {
+          "seed": 1,
+          "baselineElapsedBracket": [
+            3607,
+            3608
+          ],
+          "treatmentElapsedBracket": [
+            11743,
+            11744
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.3072207084468665,
+          "ratioInterval": [
+            0.30713555858310626,
+            0.3072468704760283
+          ]
+        },
+        {
+          "seed": 2,
+          "baselineElapsedBracket": [
+            30789,
+            30790
+          ],
+          "treatmentElapsedBracket": [
+            7966,
+            7967
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 3.8646918538973263,
+          "ratioInterval": [
+            3.8645663361365634,
+            3.8651770022596033
+          ]
+        },
+        {
+          "seed": 3,
+          "baselineElapsedBracket": [
+            7480,
+            7481
+          ],
+          "treatmentElapsedBracket": [
+            6936,
+            6937
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.0784200663110854,
+          "ratioInterval": [
+            1.0782759117774254,
+            1.0785755478662054
+          ]
+        },
+        {
+          "seed": 4,
+          "baselineElapsedBracket": [
+            26830,
+            26831
+          ],
+          "treatmentElapsedBracket": [
+            29452,
+            29453
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.9109768105116627,
+          "ratioInterval": [
+            0.9109428581129256,
+            0.9110077414097515
+          ]
+        },
+        {
+          "seed": 5,
+          "baselineElapsedBracket": [
+            19252,
+            19253
+          ],
+          "treatmentElapsedBracket": [
+            8124,
+            8125
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.3696,
+          "ratioInterval": [
+            2.369476923076923,
+            2.369891678975874
+          ]
+        },
+        {
+          "seed": 6,
+          "baselineElapsedBracket": [
+            37816,
+            37817
+          ],
+          "treatmentElapsedBracket": [
+            25682,
+            25683
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.4724525951018184,
+          "ratioInterval": [
+            1.4724136588404781,
+            1.472509929133245
+          ]
+        },
+        {
+          "seed": 7,
+          "baselineElapsedBracket": [
+            53050,
+            53051
+          ],
+          "treatmentElapsedBracket": [
+            14019,
+            14020
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 3.7839514978602,
+          "ratioInterval": [
+            3.783880171184023,
+            3.784221413795563
+          ]
+        },
+        {
+          "seed": 8,
+          "baselineElapsedBracket": [
+            16344,
+            16345
+          ],
+          "treatmentElapsedBracket": [
+            35835,
+            35836
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.45610559214198015,
+          "ratioInterval": [
+            0.4560776872418797,
+            0.4561183200781359
+          ]
+        },
+        {
+          "seed": 9,
+          "baselineElapsedBracket": [
+            9835,
+            9836
+          ],
+          "treatmentElapsedBracket": [
+            17274,
+            17275
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.5693777134587554,
+          "ratioInterval": [
+            0.5693198263386396,
+            0.5694106750028946
+          ]
+        },
+        {
+          "seed": 10,
+          "baselineElapsedBracket": [
+            30106,
+            30107
+          ],
+          "treatmentElapsedBracket": [
+            16392,
+            16393
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.8365765875678643,
+          "ratioInterval": [
+            1.8365155859208198,
+            1.8366886285993167
+          ]
+        },
+        {
+          "seed": 11,
+          "baselineElapsedBracket": [
+            30061,
+            30062
+          ],
+          "treatmentElapsedBracket": [
+            8275,
+            8276
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 3.6324311261478974,
+          "ratioInterval": [
+            3.6323102948284194,
+            3.632870090634441
+          ]
+        },
+        {
+          "seed": 12,
+          "baselineElapsedBracket": [
+            46214,
+            46215
+          ],
+          "treatmentElapsedBracket": [
+            7883,
+            7884
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 5.8618721461187215,
+          "ratioInterval": [
+            5.8617453069507865,
+            5.862615755423063
+          ]
+        },
+        {
+          "seed": 13,
+          "baselineElapsedBracket": [
+            13187,
+            13188
+          ],
+          "treatmentElapsedBracket": [
+            2047,
+            2048
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 6.439453125,
+          "ratioInterval": [
+            6.43896484375,
+            6.442598925256473
+          ]
+        },
+        {
+          "seed": 14,
+          "baselineElapsedBracket": [
+            8256,
+            8257
+          ],
+          "treatmentElapsedBracket": [
+            4279,
+            4280
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.9292056074766355,
+          "ratioInterval": [
+            1.9289719626168225,
+            1.929656461790138
+          ]
+        },
+        {
+          "seed": 15,
+          "baselineElapsedBracket": [
+            26636,
+            26637
+          ],
+          "treatmentElapsedBracket": [
+            7957,
+            7958
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 3.3471977883890425,
+          "ratioInterval": [
+            3.3470721286755465,
+            3.347618449164258
+          ]
+        },
+        {
+          "seed": 16,
+          "baselineElapsedBracket": [
+            35737,
+            35738
+          ],
+          "treatmentElapsedBracket": [
+            28064,
+            28065
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.2734010333155175,
+          "ratioInterval": [
+            1.2733654017459468,
+            1.2734464082098063
+          ]
+        }
+      ],
+      "finitePairs": 16,
+      "all16FiniteMedian": 1.88289109752225,
+      "finiteSubsetMedianDescriptiveOnly": 1.88289109752225,
+      "note": "Missing/censored endpoints are null, never an infinite successful speedup. No policy/whole-contract gate claim."
+    },
+    "armour": {
+      "pairs": [
+        {
+          "seed": 1,
+          "baselineElapsedBracket": [
+            3607,
+            3608
+          ],
+          "treatmentElapsedBracket": [
+            9216,
+            9217
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.39145058044917,
+          "ratioInterval": [
+            0.39134208527720515,
+            0.3914930555555556
+          ]
+        },
+        {
+          "seed": 2,
+          "baselineElapsedBracket": [
+            30789,
+            30790
+          ],
+          "treatmentElapsedBracket": [
+            10428,
+            10429
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.952344424201745,
+          "ratioInterval": [
+            2.952248537731326,
+            2.9526275412351364
+          ]
+        },
+        {
+          "seed": 3,
+          "baselineElapsedBracket": [
+            7480,
+            7481
+          ],
+          "treatmentElapsedBracket": [
+            1846,
+            1847
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 4.050351922035734,
+          "ratioInterval": [
+            4.04981050351922,
+            4.052546045503792
+          ]
+        },
+        {
+          "seed": 4,
+          "baselineElapsedBracket": [
+            26830,
+            26831
+          ],
+          "treatmentElapsedBracket": [
+            18185,
+            18186
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.4753656658968437,
+          "ratioInterval": [
+            1.475310678543935,
+            1.4754467968105582
+          ]
+        },
+        {
+          "seed": 5,
+          "baselineElapsedBracket": [
+            19252,
+            19253
+          ],
+          "treatmentElapsedBracket": [
+            23189,
+            23190
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.8302285467874083,
+          "ratioInterval": [
+            0.8301854247520483,
+            0.8302643494760447
+          ]
+        },
+        {
+          "seed": 6,
+          "baselineElapsedBracket": [
+            37816,
+            37817
+          ],
+          "treatmentElapsedBracket": [
+            15808,
+            15809
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.392118413561895,
+          "ratioInterval": [
+            2.392055158454045,
+            2.3922697368421053
+          ]
+        },
+        {
+          "seed": 7,
+          "baselineElapsedBracket": [
+            53050,
+            53051
+          ],
+          "treatmentElapsedBracket": [
+            24637,
+            24638
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 2.153218605406283,
+          "ratioInterval": [
+            2.1531780176962414,
+            2.15330600316597
+          ]
+        },
+        {
+          "seed": 8,
+          "baselineElapsedBracket": [
+            16344,
+            16345
+          ],
+          "treatmentElapsedBracket": [
+            18024,
+            18025
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.9067961165048544,
+          "ratioInterval": [
+            0.9067406380027739,
+            0.9068464269862405
+          ]
+        },
+        {
+          "seed": 9,
+          "baselineElapsedBracket": [
+            9835,
+            9836
+          ],
+          "treatmentElapsedBracket": [
+            12183,
+            12184
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.8072882468811556,
+          "ratioInterval": [
+            0.8072061720288903,
+            0.8073545103833211
+          ]
+        },
+        {
+          "seed": 10,
+          "baselineElapsedBracket": [
+            30106,
+            30107
+          ],
+          "treatmentElapsedBracket": [
+            16337,
+            16338
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.8427592116538132,
+          "ratioInterval": [
+            1.842698004651732,
+            1.842872008324662
+          ]
+        },
+        {
+          "seed": 11,
+          "baselineElapsedBracket": [
+            30061,
+            30062
+          ],
+          "treatmentElapsedBracket": [
+            4375,
+            4376
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 6.869744058500914,
+          "ratioInterval": [
+            6.869515539305302,
+            6.871314285714286
+          ]
+        },
+        {
+          "seed": 12,
+          "baselineElapsedBracket": [
+            46214,
+            46215
+          ],
+          "treatmentElapsedBracket": [
+            4629,
+            4630
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 9.981641468682506,
+          "ratioInterval": [
+            9.981425485961124,
+            9.983797796500324
+          ]
+        },
+        {
+          "seed": 13,
+          "baselineElapsedBracket": [
+            13187,
+            13188
+          ],
+          "treatmentElapsedBracket": [
+            9911,
+            9912
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.3305084745762712,
+          "ratioInterval": [
+            1.330407586763519,
+            1.3306427202098678
+          ]
+        },
+        {
+          "seed": 14,
+          "baselineElapsedBracket": [
+            8256,
+            8257
+          ],
+          "treatmentElapsedBracket": [
+            10564,
+            10565
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 0.7815428300993847,
+          "ratioInterval": [
+            0.7814481779460483,
+            0.7816168118137069
+          ]
+        },
+        {
+          "seed": 15,
+          "baselineElapsedBracket": [
+            26636,
+            26637
+          ],
+          "treatmentElapsedBracket": [
+            8098,
+            8099
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 3.28892455858748,
+          "ratioInterval": [
+            3.2888010865538955,
+            3.2893306989380093
+          ]
+        },
+        {
+          "seed": 16,
+          "baselineElapsedBracket": [
+            35737,
+            35738
+          ],
+          "treatmentElapsedBracket": [
+            21485,
+            21486
+          ],
+          "baselineCensored": false,
+          "treatmentCensored": false,
+          "ratio": 1.663315647398306,
+          "ratioInterval": [
+            1.6632691054640232,
+            1.6633930649290203
+          ]
+        }
+      ],
+      "finitePairs": 16,
+      "all16FiniteMedian": 1.7530374295260596,
+      "finiteSubsetMedianDescriptiveOnly": 1.7530374295260596,
+      "note": "Missing/censored endpoints are null, never an infinite successful speedup. No policy/whole-contract gate claim."
+    }
+  }
+}

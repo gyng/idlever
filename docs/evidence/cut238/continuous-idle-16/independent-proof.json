@@ -1,0 +1,1180 @@
+{
+  "scope": "Independent read-only raw-save checks, not a canonical dayplayer/PICKED/policy acceptance.",
+  "seeds": 16,
+  "arms": 64,
+  "paidPurchases": 48,
+  "completedExitRecordsChecked": 579,
+  "sampledExitOrEndpointFailures": [],
+  "failures": [],
+  "rows": [
+    {
+      "seed": 1,
+      "firstDeathActualExitS": 22531,
+      "first15ActualCreditExitS": 10338,
+      "first15ObservedS": 10338,
+      "firstHomeOpportunityObservedS": 22532,
+      "actualForkAndPurchaseS": 22532,
+      "historicalBestAtFork": 13,
+      "mandatoryRecoverySAtFork": 59.6,
+      "totalRestSAtFork": 59.6,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            3607,
+            3608
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            3547,
+            3549
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            16147,
+            16148
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            16087,
+            16089
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            11743,
+            11744
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            11683,
+            11685
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            9216,
+            9217
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            9156,
+            9158
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "firstDeathActualExitS": 12196,
+      "first15ActualCreditExitS": 9830,
+      "first15ObservedS": 9830,
+      "firstHomeOpportunityObservedS": 12197,
+      "actualForkAndPurchaseS": 12197,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 59.5,
+      "totalRestSAtFork": 59.5,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            30789,
+            30790
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            30729,
+            30731
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            30420,
+            30421
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            30360,
+            30362
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            7966,
+            7967
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7906,
+            7908
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            10428,
+            10429
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            10368,
+            10370
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 3,
+      "firstDeathActualExitS": 7529,
+      "first15ActualCreditExitS": 8175,
+      "first15ObservedS": 8175,
+      "firstHomeOpportunityObservedS": 8175,
+      "actualForkAndPurchaseS": 8175,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 60.0,
+      "totalRestSAtFork": 60.0,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            60,
+            61
+          ],
+          "nextD13ElapsedSBracket": [
+            7480,
+            7481
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7419,
+            7421
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            60,
+            61
+          ],
+          "nextD13ElapsedSBracket": [
+            7180,
+            7181
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7119,
+            7121
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            60,
+            61
+          ],
+          "nextD13ElapsedSBracket": [
+            6936,
+            6937
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            6875,
+            6877
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            60,
+            61
+          ],
+          "nextD13ElapsedSBracket": [
+            1846,
+            1847
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            1785,
+            1787
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 4,
+      "firstDeathActualExitS": 2877,
+      "first15ActualCreditExitS": 7531,
+      "first15ObservedS": 7532,
+      "firstHomeOpportunityObservedS": 7532,
+      "actualForkAndPurchaseS": 7532,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.8,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            26830,
+            26831
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            25630,
+            25632
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            27090,
+            27091
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            25890,
+            25892
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            29452,
+            29453
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            28252,
+            28254
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            18185,
+            18186
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            16985,
+            16987
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 5,
+      "firstDeathActualExitS": 5474,
+      "first15ActualCreditExitS": 9366,
+      "first15ObservedS": 9367,
+      "firstHomeOpportunityObservedS": 9367,
+      "actualForkAndPurchaseS": 9367,
+      "historicalBestAtFork": 11,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.4,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            19252,
+            19253
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            18052,
+            18054
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            7141,
+            7142
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            5941,
+            5943
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            8124,
+            8125
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            6924,
+            6926
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            23189,
+            23190
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            21989,
+            21991
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 6,
+      "firstDeathActualExitS": 403,
+      "first15ActualCreditExitS": 8366,
+      "first15ObservedS": 8366,
+      "firstHomeOpportunityObservedS": 8366,
+      "actualForkAndPurchaseS": 8366,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1200.0,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            37816,
+            37817
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            36615,
+            36617
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            16018,
+            16019
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            14817,
+            14819
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            25682,
+            25683
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            24481,
+            24483
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            15808,
+            15809
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            14607,
+            14609
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "firstDeathActualExitS": 2589,
+      "first15ActualCreditExitS": 8795,
+      "first15ObservedS": 8796,
+      "firstHomeOpportunityObservedS": 8796,
+      "actualForkAndPurchaseS": 8796,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.3,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            53050,
+            53051
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            51850,
+            51852
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            54202,
+            54203
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            53002,
+            53004
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            14019,
+            14020
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            12819,
+            12821
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            24637,
+            24638
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            23437,
+            23439
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 8,
+      "firstDeathActualExitS": 6956,
+      "first15ActualCreditExitS": 9570,
+      "first15ObservedS": 9571,
+      "firstHomeOpportunityObservedS": 9571,
+      "actualForkAndPurchaseS": 9571,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.4,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            16344,
+            16345
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            15144,
+            15146
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            33406,
+            33407
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            32206,
+            32208
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            35835,
+            35836
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            34635,
+            34637
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            18024,
+            18025
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            16824,
+            16826
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 9,
+      "firstDeathActualExitS": 6061,
+      "first15ActualCreditExitS": 14047,
+      "first15ObservedS": 14047,
+      "firstHomeOpportunityObservedS": 14047,
+      "actualForkAndPurchaseS": 14047,
+      "historicalBestAtFork": 6,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1200.0,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            9835,
+            9836
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            8634,
+            8636
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            13314,
+            13315
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            12113,
+            12115
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            17274,
+            17275
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            16073,
+            16075
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1200,
+            1201
+          ],
+          "nextD13ElapsedSBracket": [
+            12183,
+            12184
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            10982,
+            10984
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 10,
+      "firstDeathActualExitS": 2893,
+      "first15ActualCreditExitS": 9539,
+      "first15ObservedS": 9540,
+      "firstHomeOpportunityObservedS": 9540,
+      "actualForkAndPurchaseS": 9540,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.1,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            30106,
+            30107
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            28906,
+            28908
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            28574,
+            28575
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            27374,
+            27376
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            16392,
+            16393
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            15192,
+            15194
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            16337,
+            16338
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            15137,
+            15139
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 11,
+      "firstDeathActualExitS": 34257,
+      "first15ActualCreditExitS": 13241,
+      "first15ObservedS": 13241,
+      "firstHomeOpportunityObservedS": 34258,
+      "actualForkAndPurchaseS": 34258,
+      "historicalBestAtFork": 13,
+      "mandatoryRecoverySAtFork": 59.5,
+      "totalRestSAtFork": 59.5,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            30061,
+            30062
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            30001,
+            30003
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            4479,
+            4480
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            4419,
+            4421
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            8275,
+            8276
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            8215,
+            8217
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            4375,
+            4376
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            4315,
+            4317
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 12,
+      "firstDeathActualExitS": 5290,
+      "first15ActualCreditExitS": 13608,
+      "first15ObservedS": 13609,
+      "firstHomeOpportunityObservedS": 13609,
+      "actualForkAndPurchaseS": 13609,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.6,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            46214,
+            46215
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            45014,
+            45016
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            6010,
+            6011
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            4810,
+            4812
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            7883,
+            7884
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            6683,
+            6685
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            4629,
+            4630
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            3429,
+            3431
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 13,
+      "firstDeathActualExitS": 15661,
+      "first15ActualCreditExitS": 11245,
+      "first15ObservedS": 11246,
+      "firstHomeOpportunityObservedS": 15662,
+      "actualForkAndPurchaseS": 15662,
+      "historicalBestAtFork": 9,
+      "mandatoryRecoverySAtFork": 59.6,
+      "totalRestSAtFork": 59.6,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            13187,
+            13188
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            13127,
+            13129
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            12419,
+            12420
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            12359,
+            12361
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            2047,
+            2048
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            1987,
+            1989
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            9911,
+            9912
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            9851,
+            9853
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 14,
+      "firstDeathActualExitS": 792,
+      "first15ActualCreditExitS": 9612,
+      "first15ObservedS": 9613,
+      "firstHomeOpportunityObservedS": 9613,
+      "actualForkAndPurchaseS": 9613,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.2,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            8256,
+            8257
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7056,
+            7058
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            8247,
+            8248
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7047,
+            7049
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            4279,
+            4280
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            3079,
+            3081
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            10564,
+            10565
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            9364,
+            9366
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 15,
+      "firstDeathActualExitS": 2473,
+      "first15ActualCreditExitS": 8244,
+      "first15ObservedS": 8245,
+      "firstHomeOpportunityObservedS": 8245,
+      "actualForkAndPurchaseS": 8245,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 59.7,
+      "totalRestSAtFork": 59.7,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            26636,
+            26637
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            26576,
+            26578
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            11987,
+            11988
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            11927,
+            11929
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            7957,
+            7958
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            7897,
+            7899
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            59,
+            60
+          ],
+          "nextD13ElapsedSBracket": [
+            8098,
+            8099
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            8038,
+            8040
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 16,
+      "firstDeathActualExitS": 2850,
+      "first15ActualCreditExitS": 10214,
+      "first15ObservedS": 10215,
+      "firstHomeOpportunityObservedS": 10215,
+      "actualForkAndPurchaseS": 10215,
+      "historicalBestAtFork": 8,
+      "mandatoryRecoverySAtFork": 0.0,
+      "totalRestSAtFork": 1199.6,
+      "components": [
+        {
+          "arm": "no-spend",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            35737,
+            35738
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            34537,
+            34539
+          ]
+        },
+        {
+          "arm": "health",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            17829,
+            17830
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            16629,
+            16631
+          ]
+        },
+        {
+          "arm": "damage",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            28064,
+            28065
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            26864,
+            26866
+          ]
+        },
+        {
+          "arm": "armour",
+          "firstDepartureWaitSBracket": [
+            1199,
+            1200
+          ],
+          "nextD13ElapsedSBracket": [
+            21485,
+            21486
+          ],
+          "climbAfterDepartureSConservativeBracket": [
+            20285,
+            20287
+          ]
+        }
+      ]
+    }
+  ],
+  "replayScope": "Serialized genuine turn0 departure capsules and sent ownership verified64/64; entire historical/replay/session state unchanged at all48 home purchases. No claim of executing replay animation or event-hash comparison."
+}

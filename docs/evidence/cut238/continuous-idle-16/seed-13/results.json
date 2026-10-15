@@ -1,0 +1,1939 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 561,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 944,
+      "gold_after": 45,
+      "gold_before": 135
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 13188,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            28849,
+            28850
+          ],
+          "elapsed_from_fork_s_bracket": [
+            13187,
+            13188
+          ],
+          "run_id": 15
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28850,
+          "gold": 2037,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 18628
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 288500
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 16827,
+          "depth": 8,
+          "gold": 240,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11058
+        },
+        {
+          "clock_s": 19060,
+          "depth": 8,
+          "gold": 176,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 10330
+        },
+        {
+          "clock_s": 21251,
+          "depth": 8,
+          "gold": 233,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 9910
+        },
+        {
+          "clock_s": 23345,
+          "depth": 6,
+          "gold": 132,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8940
+        },
+        {
+          "clock_s": 25787,
+          "depth": 9,
+          "gold": 236,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12418
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28850,
+          "gold": 2037,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 18628
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 288500
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 40,
+          "name": "Hale Ash",
+          "observed_clock_s": 15722,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 10,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 18,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 13
+          },
+          "start": 1,
+          "started_total_tick": 157216,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15722,
+          "gold": 1017,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 10,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 157220
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19262,
+          "gold": 1433,
+          "legacy": {
+            "points": 20,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 192620
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22862,
+          "gold": 1666,
+          "legacy": {
+            "points": 21,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 13,
+            "max_depth": 4,
+            "turn": 4106
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 228620
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26462,
+          "gold": 2037,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 264620
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 12420,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            28081,
+            28082
+          ],
+          "elapsed_from_fork_s_bracket": [
+            12419,
+            12420
+          ],
+          "run_id": 15
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28082,
+          "gold": 2102,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 18245
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 280820
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 17275,
+          "depth": 11,
+          "gold": 338,
+          "id": 10,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 329,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15541
+        },
+        {
+          "clock_s": 19423,
+          "depth": 8,
+          "gold": 180,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9480
+        },
+        {
+          "clock_s": 21744,
+          "depth": 8,
+          "gold": 0,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 11208
+        },
+        {
+          "clock_s": 22740,
+          "depth": 7,
+          "gold": 191,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9360
+        },
+        {
+          "clock_s": 25057,
+          "depth": 8,
+          "gold": 155,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 11170
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28082,
+          "gold": 2102,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 18245
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 280820
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 43,
+          "name": "Hale Ash",
+          "observed_clock_s": 15722,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 10,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 13
+          },
+          "start": 1,
+          "started_total_tick": 157216,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15722,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 10,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 157220
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19262,
+          "gold": 1358,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 7,
+            "id": 11,
+            "max_depth": 7,
+            "turn": 7863
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 192620
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22862,
+          "gold": 1729,
+          "legacy": {
+            "points": 10,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 228620
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26462,
+          "gold": 2102,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 15,
+            "max_depth": 3,
+            "turn": 2045
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 264620
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "before": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 18,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15662,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 596,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 156620
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 2048,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            17709,
+            17710
+          ],
+          "elapsed_from_fork_s_bracket": [
+            2047,
+            2048
+          ],
+          "run_id": 10
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17710,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 19884
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 177100
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17710,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 10,
+            "max_depth": 13,
+            "turn": 19884
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 177100
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 40,
+          "name": "Hale Ash",
+          "observed_clock_s": 15722,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 10,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 13
+          },
+          "start": 1,
+          "started_total_tick": 157216,
+          "str_bonus": 2
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15722,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 10,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 157220
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "before": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 18,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15662,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 596,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 156620
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 9912,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            25573,
+            25574
+          ],
+          "elapsed_from_fork_s_bracket": [
+            9911,
+            9912
+          ],
+          "run_id": 14
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25574,
+          "gold": 1760,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 17176
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 255740
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 16989,
+          "depth": 8,
+          "gold": 257,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 12680
+        },
+        {
+          "clock_s": 19035,
+          "depth": 8,
+          "gold": 176,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 8460
+        },
+        {
+          "clock_s": 21538,
+          "depth": 10,
+          "gold": 307,
+          "id": 12,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 289,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13028
+        },
+        {
+          "clock_s": 23796,
+          "depth": 8,
+          "gold": 0,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10580
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25574,
+          "gold": 1760,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 17176
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 255740
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 40,
+          "name": "Hale Ash",
+          "observed_clock_s": 15722,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 10,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 13
+          },
+          "start": 1,
+          "started_total_tick": 157216,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15722,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 10,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 157220
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19262,
+          "gold": 1450,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 192620
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22862,
+          "gold": 1760,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 2,
+            "id": 13,
+            "max_depth": 2,
+            "turn": 1236
+          },
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 228620
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 3,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "before": {
+            "bank": 0,
+            "best": 9,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 15662,
+            "gold": 1017,
+            "legacy": {
+              "points": 18,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Hale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 596,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 13,
+            "selected": 1,
+            "total_ticks": 156620
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15662,
+          "gold": 1017,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Hale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 596,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 13,
+          "selected": 1,
+          "total_ticks": 156620
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 561,
+      "depth": 5,
+      "gold": 98,
+      "id": 1,
+      "legacy_earned_receipt": 6,
+      "sampled": null,
+      "secured": 90,
+      "start": 1,
+      "tier": "bank",
+      "turns": 5610
+    },
+    {
+      "clock_s": 944,
+      "depth": 3,
+      "gold": 37,
+      "id": 2,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 3830
+    },
+    {
+      "clock_s": 2487,
+      "depth": 4,
+      "gold": 26,
+      "id": 3,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 3430
+    },
+    {
+      "clock_s": 4550,
+      "depth": 6,
+      "gold": 86,
+      "id": 4,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 83,
+      "start": 1,
+      "tier": "bank",
+      "turns": 8630
+    },
+    {
+      "clock_s": 6294,
+      "depth": 5,
+      "gold": 99,
+      "id": 5,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 5440
+    },
+    {
+      "clock_s": 8828,
+      "depth": 8,
+      "gold": 164,
+      "id": 6,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 124,
+      "start": 1,
+      "tier": "return",
+      "turns": 13343
+    },
+    {
+      "clock_s": 11245,
+      "depth": 8,
+      "gold": 260,
+      "id": 7,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 12170
+    },
+    {
+      "clock_s": 13377,
+      "depth": 6,
+      "gold": 143,
+      "id": 8,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 9318
+    },
+    {
+      "clock_s": 15661,
+      "depth": 9,
+      "gold": 194,
+      "id": 9,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 194,
+      "start": 1,
+      "tier": "death",
+      "turns": 10845
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 9,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 15662,
+      "gold": 1017,
+      "legacy": {
+        "points": 18,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 596,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 156620
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 11246,
+      "gold": 680,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 112460
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 15661,
+        "depth": 9,
+        "gold": 194,
+        "id": 9,
+        "legacy_earned_receipt": 2,
+        "sampled": null,
+        "secured": 194,
+        "start": 1,
+        "tier": "death",
+        "turns": 10845
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 9,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 15662,
+      "gold": 1017,
+      "legacy": {
+        "points": 18,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 596,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 156620
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 9,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 15662,
+      "gold": 1017,
+      "legacy": {
+        "points": 18,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 596,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 156620
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 9,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 15662,
+      "gold": 1017,
+      "legacy": {
+        "points": 18,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 596,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 156620
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Hale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 13,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 1.9358328729999998,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 5,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 944,
+    "gold": 45,
+    "legacy": {
+      "points": 7,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Hale Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 0,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 13,
+    "selected": 1,
+    "total_ticks": 9440
+  },
+  "seed": 13,
+  "unreached_checkpoint": false
+}

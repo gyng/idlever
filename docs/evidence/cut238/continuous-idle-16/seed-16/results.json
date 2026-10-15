@@ -1,0 +1,2869 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 691,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 1084,
+      "gold_after": 36,
+      "gold_before": 116
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 35738,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            45952,
+            45953
+          ],
+          "elapsed_from_fork_s_bracket": [
+            35737,
+            35738
+          ],
+          "run_id": 23
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 45953,
+          "gold": 3650,
+          "legacy": {
+            "points": 33,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 17158
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 459530
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 12259,
+          "depth": 6,
+          "gold": 106,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8450
+        },
+        {
+          "clock_s": 13952,
+          "depth": 6,
+          "gold": 197,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4926
+        },
+        {
+          "clock_s": 15745,
+          "depth": 5,
+          "gold": 111,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 5930
+        },
+        {
+          "clock_s": 17844,
+          "depth": 6,
+          "gold": 121,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8990
+        },
+        {
+          "clock_s": 19489,
+          "depth": 5,
+          "gold": 133,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 4450
+        },
+        {
+          "clock_s": 21743,
+          "depth": 8,
+          "gold": 178,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10547
+        },
+        {
+          "clock_s": 24611,
+          "depth": 10,
+          "gold": 302,
+          "id": 14,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 302,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16675
+        },
+        {
+          "clock_s": 26613,
+          "depth": 6,
+          "gold": 124,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8020
+        },
+        {
+          "clock_s": 28689,
+          "depth": 7,
+          "gold": 197,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 8760
+        },
+        {
+          "clock_s": 30677,
+          "depth": 6,
+          "gold": 107,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7877
+        },
+        {
+          "clock_s": 32574,
+          "depth": 6,
+          "gold": 138,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6970
+        },
+        {
+          "clock_s": 35334,
+          "depth": 10,
+          "gold": 237,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15604
+        },
+        {
+          "clock_s": 38194,
+          "depth": 11,
+          "gold": 441,
+          "id": 20,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 352,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16604
+        },
+        {
+          "clock_s": 40857,
+          "depth": 11,
+          "gold": 340,
+          "id": 21,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14623
+        },
+        {
+          "clock_s": 43037,
+          "depth": 8,
+          "gold": 192,
+          "id": 22,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 9800
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 45953,
+          "gold": 3650,
+          "legacy": {
+            "points": 33,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 17158
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 459530
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Yara Ash",
+          "observed_clock_s": 11415,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 16
+          },
+          "start": 1,
+          "started_total_tick": 114146,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11415,
+          "gold": 726,
+          "legacy": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 114150
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13815,
+          "gold": 832,
+          "legacy": {
+            "points": 16,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 5,
+            "id": 9,
+            "max_depth": 5,
+            "turn": 3554
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 138150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17415,
+          "gold": 1140,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 11,
+            "max_depth": 3,
+            "turn": 4698
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 174150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21015,
+          "gold": 1394,
+          "legacy": {
+            "points": 20,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 13,
+            "max_depth": 4,
+            "turn": 3258
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 210150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24615,
+          "gold": 1874,
+          "legacy": {
+            "points": 24,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 246150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28215,
+          "gold": 1998,
+          "legacy": {
+            "points": 25,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 16,
+            "max_depth": 4,
+            "turn": 4016
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 282150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 31815,
+          "gold": 2302,
+          "legacy": {
+            "points": 27,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 318150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 35415,
+          "gold": 2677,
+          "legacy": {
+            "points": 29,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 354150
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 39015,
+          "gold": 3118,
+          "legacy": {
+            "points": 31,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 390150
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42615,
+          "gold": 3458,
+          "legacy": {
+            "points": 32,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 6,
+            "id": 22,
+            "max_depth": 6,
+            "turn": 5578
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 426150
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 17830,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            28044,
+            28045
+          ],
+          "elapsed_from_fork_s_bracket": [
+            17829,
+            17830
+          ],
+          "run_id": 15
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28045,
+          "gold": 1911,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 17017
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 280450
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 12334,
+          "depth": 7,
+          "gold": 116,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9200
+        },
+        {
+          "clock_s": 14250,
+          "depth": 6,
+          "gold": 195,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7160
+        },
+        {
+          "clock_s": 16044,
+          "depth": 5,
+          "gold": 111,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5940
+        },
+        {
+          "clock_s": 18183,
+          "depth": 6,
+          "gold": 141,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9390
+        },
+        {
+          "clock_s": 19986,
+          "depth": 7,
+          "gold": 162,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6030
+        },
+        {
+          "clock_s": 22245,
+          "depth": 8,
+          "gold": 207,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10592
+        },
+        {
+          "clock_s": 25143,
+          "depth": 8,
+          "gold": 253,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16975
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28045,
+          "gold": 1911,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 17017
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 280450
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 41,
+          "name": "Yara Ash",
+          "observed_clock_s": 11415,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 16
+          },
+          "start": 1,
+          "started_total_tick": 114146,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11415,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 114150
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13815,
+          "gold": 842,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 4,
+            "id": 9,
+            "max_depth": 4,
+            "turn": 2804
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 138150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17415,
+          "gold": 1148,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 11,
+            "max_depth": 1,
+            "turn": 1704
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 174150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21015,
+          "gold": 1451,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 210150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24615,
+          "gold": 1658,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 7,
+            "id": 14,
+            "max_depth": 7,
+            "turn": 11692
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 246150
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10215,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 102150
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 28065,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            38279,
+            38280
+          ],
+          "elapsed_from_fork_s_bracket": [
+            28064,
+            28065
+          ],
+          "run_id": 20
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38280,
+          "gold": 2732,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 17568
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 382800
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 12283,
+          "depth": 6,
+          "gold": 96,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8690
+        },
+        {
+          "clock_s": 14317,
+          "depth": 7,
+          "gold": 178,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 8340
+        },
+        {
+          "clock_s": 16121,
+          "depth": 6,
+          "gold": 140,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6040
+        },
+        {
+          "clock_s": 18195,
+          "depth": 5,
+          "gold": 102,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8740
+        },
+        {
+          "clock_s": 20164,
+          "depth": 8,
+          "gold": 206,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7690
+        },
+        {
+          "clock_s": 21956,
+          "depth": 7,
+          "gold": 152,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5917
+        },
+        {
+          "clock_s": 24164,
+          "depth": 7,
+          "gold": 213,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10085
+        },
+        {
+          "clock_s": 26283,
+          "depth": 7,
+          "gold": 125,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9190
+        },
+        {
+          "clock_s": 28396,
+          "depth": 8,
+          "gold": 190,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9130
+        },
+        {
+          "clock_s": 30716,
+          "depth": 8,
+          "gold": 165,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 11192
+        },
+        {
+          "clock_s": 33036,
+          "depth": 10,
+          "gold": 276,
+          "id": 18,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 263,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11202
+        },
+        {
+          "clock_s": 35323,
+          "depth": 9,
+          "gold": 163,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10870
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38280,
+          "gold": 2732,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 17568
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 382800
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Yara Ash",
+          "observed_clock_s": 11415,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 16
+          },
+          "start": 1,
+          "started_total_tick": 114146,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11415,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 114150
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13815,
+          "gold": 822,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 3314
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 138150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17415,
+          "gold": 1140,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 11,
+            "max_depth": 1,
+            "turn": 934
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 174150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21015,
+          "gold": 1448,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 210150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24615,
+          "gold": 1813,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 246150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28215,
+          "gold": 1938,
+          "legacy": {
+            "points": 8,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 16,
+            "max_depth": 8,
+            "turn": 7312
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 282150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 31815,
+          "gold": 2293,
+          "legacy": {
+            "points": 10,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 318150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 35415,
+          "gold": 2732,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 354150
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10215,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 102150
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 21486,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            31700,
+            31701
+          ],
+          "elapsed_from_fork_s_bracket": [
+            21485,
+            21486
+          ],
+          "run_id": 16
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 31701,
+          "gold": 2276,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 16,
+            "max_depth": 13,
+            "turn": 16649
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 317010
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 12433,
+          "depth": 7,
+          "gold": 116,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10190
+        },
+        {
+          "clock_s": 14318,
+          "depth": 6,
+          "gold": 204,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6845
+        },
+        {
+          "clock_s": 16417,
+          "depth": 8,
+          "gold": 147,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8990
+        },
+        {
+          "clock_s": 18931,
+          "depth": 8,
+          "gold": 194,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13140
+        },
+        {
+          "clock_s": 20747,
+          "depth": 8,
+          "gold": 178,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6160
+        },
+        {
+          "clock_s": 23107,
+          "depth": 10,
+          "gold": 242,
+          "id": 13,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 242,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11603
+        },
+        {
+          "clock_s": 26360,
+          "depth": 12,
+          "gold": 268,
+          "id": 14,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 233,
+          "start": 1,
+          "tier": "bank",
+          "turns": 20531
+        },
+        {
+          "clock_s": 28836,
+          "depth": 9,
+          "gold": 201,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12756
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 31701,
+          "gold": 2276,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 16,
+            "max_depth": 13,
+            "turn": 16649
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 317010
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Yara Ash",
+          "observed_clock_s": 11415,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 16
+          },
+          "start": 1,
+          "started_total_tick": 114146,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11415,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 4
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 114150
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 13815,
+          "gold": 842,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 1814
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 138150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 17415,
+          "gold": 1193,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 174150
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21015,
+          "gold": 1565,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 210150
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24615,
+          "gold": 1807,
+          "legacy": {
+            "points": 8,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 14,
+            "max_depth": 3,
+            "turn": 3076
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 246150
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 28215,
+          "gold": 2075,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 6,
+            "id": 15,
+            "max_depth": 6,
+            "turn": 6545
+          },
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 282150
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 10215,
+            "gold": 726,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Yara Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 16,
+            "selected": 1,
+            "total_ticks": 102150
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 10215,
+          "gold": 726,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Yara Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 16,
+          "selected": 1,
+          "total_ticks": 102150
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 691,
+      "depth": 4,
+      "gold": 63,
+      "id": 1,
+      "legacy_earned_receipt": 5,
+      "sampled": null,
+      "secured": 47,
+      "start": 1,
+      "tier": "bank",
+      "turns": 6910
+    },
+    {
+      "clock_s": 1084,
+      "depth": 3,
+      "gold": 53,
+      "id": 2,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 3930
+    },
+    {
+      "clock_s": 2850,
+      "depth": 5,
+      "gold": 100,
+      "id": 3,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 100,
+      "start": 1,
+      "tier": "death",
+      "turns": 5667
+    },
+    {
+      "clock_s": 3526,
+      "depth": 5,
+      "gold": 105,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 6156
+    },
+    {
+      "clock_s": 5421,
+      "depth": 5,
+      "gold": 140,
+      "id": 5,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 6950
+    },
+    {
+      "clock_s": 7662,
+      "depth": 7,
+      "gold": 129,
+      "id": 6,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 129,
+      "start": 1,
+      "tier": "bank",
+      "turns": 10416
+    },
+    {
+      "clock_s": 10214,
+      "depth": 8,
+      "gold": 196,
+      "id": 7,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 116,
+      "start": 1,
+      "tier": "bank",
+      "turns": 13517
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 10215,
+      "gold": 726,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 102150
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 10215,
+      "gold": 726,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 102150
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 2850,
+        "depth": 5,
+        "gold": 100,
+        "id": 3,
+        "legacy_earned_receipt": 2,
+        "sampled": null,
+        "secured": 100,
+        "start": 1,
+        "tier": "death",
+        "turns": 5667
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 5,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 2851,
+      "gold": 136,
+      "legacy": {
+        "points": 8,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 597,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 28510
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 10215,
+      "gold": 726,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 102150
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 10215,
+      "gold": 726,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 102150
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Yara Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 16,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 2.393997892,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 4,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 1084,
+    "gold": 36,
+    "legacy": {
+      "points": 6,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Yara Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 0,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 16,
+    "selected": 1,
+    "total_ticks": 10840
+  },
+  "seed": 16,
+  "unreached_checkpoint": false
+}

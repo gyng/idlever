@@ -1,0 +1,2970 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 466,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 1100,
+      "gold_after": 133,
+      "gold_before": 213
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 26831,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            34362,
+            34363
+          ],
+          "elapsed_from_fork_s_bracket": [
+            26830,
+            26831
+          ],
+          "run_id": 19
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34363,
+          "gold": 1983,
+          "legacy": {
+            "points": 27,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 19136
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 343630
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 9566,
+          "depth": 7,
+          "gold": 131,
+          "id": 7,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8350
+        },
+        {
+          "clock_s": 11242,
+          "depth": 5,
+          "gold": 62,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4760
+        },
+        {
+          "clock_s": 13179,
+          "depth": 6,
+          "gold": 95,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7370
+        },
+        {
+          "clock_s": 15709,
+          "depth": 8,
+          "gold": 206,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13298
+        },
+        {
+          "clock_s": 17562,
+          "depth": 6,
+          "gold": 92,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6526
+        },
+        {
+          "clock_s": 19456,
+          "depth": 8,
+          "gold": 119,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6944
+        },
+        {
+          "clock_s": 21943,
+          "depth": 8,
+          "gold": 165,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 12866
+        },
+        {
+          "clock_s": 23708,
+          "depth": 5,
+          "gold": 71,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5650
+        },
+        {
+          "clock_s": 25621,
+          "depth": 7,
+          "gold": 71,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7130
+        },
+        {
+          "clock_s": 27639,
+          "depth": 8,
+          "gold": 132,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8179
+        },
+        {
+          "clock_s": 29497,
+          "depth": 6,
+          "gold": 110,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6583
+        },
+        {
+          "clock_s": 31249,
+          "depth": 7,
+          "gold": 103,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5520
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34363,
+          "gold": 1983,
+          "legacy": {
+            "points": 27,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 19136
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 343630
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Kael Ash",
+          "observed_clock_s": 8732,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 7,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 4
+          },
+          "start": 1,
+          "started_total_tick": 87318,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8732,
+          "gold": 626,
+          "legacy": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 7,
+            "max_depth": 1,
+            "turn": 2
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 87320
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11132,
+          "gold": 757,
+          "legacy": {
+            "points": 16,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 8,
+            "max_depth": 4,
+            "turn": 3652
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 111320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 14732,
+          "gold": 914,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 10,
+            "max_depth": 3,
+            "turn": 3522
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 147320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 18332,
+          "gold": 1212,
+          "legacy": {
+            "points": 20,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 183320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21932,
+          "gold": 1331,
+          "legacy": {
+            "points": 21,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 8,
+            "id": 13,
+            "max_depth": 8,
+            "turn": 12754
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 219320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25532,
+          "gold": 1567,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 7,
+            "id": 15,
+            "max_depth": 7,
+            "turn": 6238
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 255320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 29132,
+          "gold": 1770,
+          "legacy": {
+            "points": 25,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 17,
+            "max_depth": 3,
+            "turn": 2929
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 291320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 32732,
+          "gold": 1983,
+          "legacy": {
+            "points": 27,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 19,
+            "max_depth": 3,
+            "turn": 2826
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 327320
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 27091,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            34622,
+            34623
+          ],
+          "elapsed_from_fork_s_bracket": [
+            27090,
+            27091
+          ],
+          "run_id": 19
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34623,
+          "gold": 2351,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 16908
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 346230
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 9525,
+          "depth": 8,
+          "gold": 138,
+          "id": 7,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7940
+        },
+        {
+          "clock_s": 11201,
+          "depth": 5,
+          "gold": 62,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4760
+        },
+        {
+          "clock_s": 13928,
+          "depth": 10,
+          "gold": 218,
+          "id": 9,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 204,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15268
+        },
+        {
+          "clock_s": 16228,
+          "depth": 8,
+          "gold": 0,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10998
+        },
+        {
+          "clock_s": 16968,
+          "depth": 6,
+          "gold": 106,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6804
+        },
+        {
+          "clock_s": 18808,
+          "depth": 6,
+          "gold": 103,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6399
+        },
+        {
+          "clock_s": 21336,
+          "depth": 10,
+          "gold": 191,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13277
+        },
+        {
+          "clock_s": 23095,
+          "depth": 5,
+          "gold": 73,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5590
+        },
+        {
+          "clock_s": 24974,
+          "depth": 7,
+          "gold": 71,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6790
+        },
+        {
+          "clock_s": 26920,
+          "depth": 8,
+          "gold": 131,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7457
+        },
+        {
+          "clock_s": 28838,
+          "depth": 6,
+          "gold": 107,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7186
+        },
+        {
+          "clock_s": 31732,
+          "depth": 10,
+          "gold": 383,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16935
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34623,
+          "gold": 2351,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 16908
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 346230
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 41,
+          "name": "Kael Ash",
+          "observed_clock_s": 8732,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 7,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 4
+          },
+          "start": 1,
+          "started_total_tick": 87318,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8732,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 7,
+            "max_depth": 1,
+            "turn": 2
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 87320
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11132,
+          "gold": 764,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 4,
+            "id": 8,
+            "max_depth": 4,
+            "turn": 4062
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 111320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 14732,
+          "gold": 1044,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 147320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 18332,
+          "gold": 1178,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 12,
+            "max_depth": 3,
+            "turn": 1632
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 183320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21932,
+          "gold": 1586,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 219320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25532,
+          "gold": 1730,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 255320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 29132,
+          "gold": 1968,
+          "legacy": {
+            "points": 13,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 291320
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 32732,
+          "gold": 2351,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 327320
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 7532,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 75320
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 29453,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            36984,
+            36985
+          ],
+          "elapsed_from_fork_s_bracket": [
+            29452,
+            29453
+          ],
+          "run_id": 20
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 36985,
+          "gold": 2814,
+          "legacy": {
+            "points": 18,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 16713
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 369850
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 9200,
+          "depth": 5,
+          "gold": 91,
+          "id": 7,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 4690
+        },
+        {
+          "clock_s": 10970,
+          "depth": 6,
+          "gold": 100,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5700
+        },
+        {
+          "clock_s": 12871,
+          "depth": 6,
+          "gold": 91,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7010
+        },
+        {
+          "clock_s": 15281,
+          "depth": 8,
+          "gold": 0,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 12093
+        },
+        {
+          "clock_s": 16055,
+          "depth": 5,
+          "gold": 76,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7140
+        },
+        {
+          "clock_s": 17975,
+          "depth": 6,
+          "gold": 112,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7200
+        },
+        {
+          "clock_s": 20558,
+          "depth": 12,
+          "gold": 412,
+          "id": 13,
+          "legacy_earned_receipt": 5,
+          "sampled": null,
+          "secured": 386,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13836
+        },
+        {
+          "clock_s": 22627,
+          "depth": 8,
+          "gold": 119,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8690
+        },
+        {
+          "clock_s": 25501,
+          "depth": 12,
+          "gold": 289,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16739
+        },
+        {
+          "clock_s": 27558,
+          "depth": 8,
+          "gold": 140,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 8568
+        },
+        {
+          "clock_s": 29555,
+          "depth": 6,
+          "gold": 86,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7967
+        },
+        {
+          "clock_s": 31794,
+          "depth": 8,
+          "gold": 211,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10390
+        },
+        {
+          "clock_s": 34113,
+          "depth": 10,
+          "gold": 270,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11196
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 36985,
+          "gold": 2814,
+          "legacy": {
+            "points": 18,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 16713
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 369850
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Kael Ash",
+          "observed_clock_s": 8732,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 7,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 4
+          },
+          "start": 1,
+          "started_total_tick": 87318,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8732,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 7,
+            "max_depth": 1,
+            "turn": 2
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 87320
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11132,
+          "gold": 817,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 111320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 14732,
+          "gold": 908,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 5,
+            "id": 10,
+            "max_depth": 5,
+            "turn": 6602
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 147320
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 18332,
+          "gold": 1096,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 183320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21932,
+          "gold": 1699,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 2,
+            "id": 14,
+            "max_depth": 2,
+            "turn": 1733
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 219320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25532,
+          "gold": 2107,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 255320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 29132,
+          "gold": 2247,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 4,
+            "id": 17,
+            "max_depth": 4,
+            "turn": 3736
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 291320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 32732,
+          "gold": 2544,
+          "legacy": {
+            "points": 17,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 327320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 36332,
+          "gold": 2814,
+          "legacy": {
+            "points": 18,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 20,
+            "max_depth": 8,
+            "turn": 10183
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 363320
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 7532,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 75320
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 18186,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            25717,
+            25718
+          ],
+          "elapsed_from_fork_s_bracket": [
+            18185,
+            18186
+          ],
+          "run_id": 15
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25718,
+          "gold": 2172,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 13458
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 257180
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 9795,
+          "depth": 8,
+          "gold": 0,
+          "id": 7,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10633
+        },
+        {
+          "clock_s": 10399,
+          "depth": 5,
+          "gold": 76,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5440
+        },
+        {
+          "clock_s": 12962,
+          "depth": 11,
+          "gold": 259,
+          "id": 9,
+          "legacy_earned_receipt": 4,
+          "sampled": null,
+          "secured": 212,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13635
+        },
+        {
+          "clock_s": 16056,
+          "depth": 12,
+          "gold": 383,
+          "id": 10,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 321,
+          "start": 1,
+          "tier": "bank",
+          "turns": 18934
+        },
+        {
+          "clock_s": 18083,
+          "depth": 8,
+          "gold": 0,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 8274
+        },
+        {
+          "clock_s": 18808,
+          "depth": 6,
+          "gold": 118,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6655
+        },
+        {
+          "clock_s": 21362,
+          "depth": 11,
+          "gold": 222,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13533
+        },
+        {
+          "clock_s": 23172,
+          "depth": 6,
+          "gold": 79,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6100
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25718,
+          "gold": 2172,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 15,
+            "max_depth": 13,
+            "turn": 13458
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 257180
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Kael Ash",
+          "observed_clock_s": 8732,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 7,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 4
+          },
+          "start": 1,
+          "started_total_tick": 87318,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8732,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 7,
+            "max_depth": 1,
+            "turn": 2
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 87320
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11132,
+          "gold": 702,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 111320
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 14732,
+          "gold": 1226,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 5,
+            "id": 10,
+            "max_depth": 5,
+            "turn": 5694
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 147320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 18332,
+          "gold": 1609,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 12,
+            "max_depth": 3,
+            "turn": 1886
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 183320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 21932,
+          "gold": 2093,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 219320
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 25532,
+          "gold": 2172,
+          "legacy": {
+            "points": 12,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 12,
+            "id": 15,
+            "max_depth": 12,
+            "turn": 11598
+          },
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 255320
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 7532,
+            "gold": 626,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Kael Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 4,
+            "selected": 1,
+            "total_ticks": 75320
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 7532,
+          "gold": 626,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Kael Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 4,
+          "selected": 1,
+          "total_ticks": 75320
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 466,
+      "depth": 4,
+      "gold": 99,
+      "id": 1,
+      "legacy_earned_receipt": 5,
+      "sampled": null,
+      "secured": 55,
+      "start": 1,
+      "tier": "bank",
+      "turns": 4660
+    },
+    {
+      "clock_s": 1099,
+      "depth": 6,
+      "gold": 114,
+      "id": 2,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 111,
+      "start": 1,
+      "tier": "bank",
+      "turns": 6338
+    },
+    {
+      "clock_s": 2877,
+      "depth": 5,
+      "gold": 0,
+      "id": 3,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "death",
+      "turns": 5777
+    },
+    {
+      "clock_s": 3759,
+      "depth": 6,
+      "gold": 125,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 8217
+    },
+    {
+      "clock_s": 6033,
+      "depth": 8,
+      "gold": 135,
+      "id": 5,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 135,
+      "start": 1,
+      "tier": "death",
+      "turns": 10741
+    },
+    {
+      "clock_s": 7531,
+      "depth": 8,
+      "gold": 166,
+      "id": 6,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 14385
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 7532,
+      "gold": 626,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 75320
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 7532,
+      "gold": 626,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 75320
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 2877,
+        "depth": 5,
+        "gold": 0,
+        "id": 3,
+        "legacy_earned_receipt": 1,
+        "sampled": null,
+        "secured": 0,
+        "start": 1,
+        "tier": "death",
+        "turns": 5777
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 6,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 2878,
+      "gold": 146,
+      "legacy": {
+        "points": 9,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 28780
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 7532,
+      "gold": 626,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 75320
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 7532,
+      "gold": 626,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 75320
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Kael Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 4,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 2.786915694,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 6,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 1100,
+    "gold": 133,
+    "legacy": {
+      "points": 8,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Kael Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 0,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 4,
+    "selected": 1,
+    "total_ticks": 11000
+  },
+  "seed": 4,
+  "unreached_checkpoint": false
+}

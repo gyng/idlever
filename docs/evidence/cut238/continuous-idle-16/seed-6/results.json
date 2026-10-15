@@ -1,0 +1,2838 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 463,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 969,
+      "gold_after": 79,
+      "gold_before": 149
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 37817,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            46182,
+            46183
+          ],
+          "elapsed_from_fork_s_bracket": [
+            37816,
+            37817
+          ],
+          "run_id": 24
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 46183,
+          "gold": 3094,
+          "legacy": {
+            "points": 34,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 24,
+            "max_depth": 13,
+            "turn": 18039
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 461830
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 10411,
+          "depth": 8,
+          "gold": 138,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8452
+        },
+        {
+          "clock_s": 12328,
+          "depth": 5,
+          "gold": 81,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7170
+        },
+        {
+          "clock_s": 14569,
+          "depth": 7,
+          "gold": 136,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10413
+        },
+        {
+          "clock_s": 16410,
+          "depth": 5,
+          "gold": 102,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6410
+        },
+        {
+          "clock_s": 18321,
+          "depth": 6,
+          "gold": 108,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7110
+        },
+        {
+          "clock_s": 20296,
+          "depth": 6,
+          "gold": 85,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7750
+        },
+        {
+          "clock_s": 23036,
+          "depth": 8,
+          "gold": 257,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 15398
+        },
+        {
+          "clock_s": 25531,
+          "depth": 8,
+          "gold": 255,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12950
+        },
+        {
+          "clock_s": 28096,
+          "depth": 9,
+          "gold": 246,
+          "id": 16,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 226,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13648
+        },
+        {
+          "clock_s": 30353,
+          "depth": 7,
+          "gold": 173,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10570
+        },
+        {
+          "clock_s": 32100,
+          "depth": 4,
+          "gold": 61,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 5470
+        },
+        {
+          "clock_s": 34292,
+          "depth": 7,
+          "gold": 133,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 9920
+        },
+        {
+          "clock_s": 36650,
+          "depth": 7,
+          "gold": 121,
+          "id": 20,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11585
+        },
+        {
+          "clock_s": 38356,
+          "depth": 5,
+          "gold": 56,
+          "id": 21,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5060
+        },
+        {
+          "clock_s": 41061,
+          "depth": 11,
+          "gold": 300,
+          "id": 22,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 270,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15045
+        },
+        {
+          "clock_s": 43179,
+          "depth": 8,
+          "gold": 146,
+          "id": 23,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9180
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 46183,
+          "gold": 3094,
+          "legacy": {
+            "points": 34,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 24,
+            "max_depth": 13,
+            "turn": 18039
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 461830
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Iris Ash",
+          "observed_clock_s": 9567,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 6
+          },
+          "start": 1,
+          "started_total_tick": 95660,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9567,
+          "gold": 696,
+          "legacy": {
+            "points": 15,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 10
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 95670
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11966,
+          "gold": 834,
+          "legacy": {
+            "points": 16,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 3548
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 119660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15566,
+          "gold": 1051,
+          "legacy": {
+            "points": 18,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 155660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19166,
+          "gold": 1261,
+          "legacy": {
+            "points": 20,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 191660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22766,
+          "gold": 1346,
+          "legacy": {
+            "points": 21,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 8,
+            "id": 14,
+            "max_depth": 8,
+            "turn": 12695
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 227660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26366,
+          "gold": 1858,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 263660
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 29966,
+          "gold": 2104,
+          "legacy": {
+            "points": 25,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 5,
+            "id": 17,
+            "max_depth": 5,
+            "turn": 6699
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 299660
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 33566,
+          "gold": 2338,
+          "legacy": {
+            "points": 27,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 3,
+            "id": 19,
+            "max_depth": 3,
+            "turn": 2659
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 335660
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37166,
+          "gold": 2592,
+          "legacy": {
+            "points": 29,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 371660
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 40766,
+          "gold": 2648,
+          "legacy": {
+            "points": 30,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 10,
+            "id": 22,
+            "max_depth": 10,
+            "turn": 12094
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 407660
+        },
+        {
+          "bank": 0,
+          "best": 11,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 44366,
+          "gold": 3094,
+          "legacy": {
+            "points": 34,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 443660
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 16019,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            24384,
+            24385
+          ],
+          "elapsed_from_fork_s_bracket": [
+            16018,
+            16019
+          ],
+          "run_id": 14
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24385,
+          "gold": 1483,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 20953
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 243850
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 10391,
+          "depth": 7,
+          "gold": 136,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8254
+        },
+        {
+          "clock_s": 12366,
+          "depth": 5,
+          "gold": 73,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7750
+        },
+        {
+          "clock_s": 15005,
+          "depth": 8,
+          "gold": 222,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14388
+        },
+        {
+          "clock_s": 17138,
+          "depth": 6,
+          "gold": 117,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9330
+        },
+        {
+          "clock_s": 18969,
+          "depth": 5,
+          "gold": 115,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6308
+        },
+        {
+          "clock_s": 21089,
+          "depth": 6,
+          "gold": 124,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9207
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24385,
+          "gold": 1483,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 20953
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 243850
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 41,
+          "name": "Iris Ash",
+          "observed_clock_s": 9567,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 6
+          },
+          "start": 1,
+          "started_total_tick": 95660,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9567,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 10
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 95670
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11966,
+          "gold": 832,
+          "legacy": {
+            "points": 1,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 9,
+            "max_depth": 3,
+            "turn": 3746
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 119660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15566,
+          "gold": 1127,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 155660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19166,
+          "gold": 1359,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 191660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22766,
+          "gold": 1483,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 3,
+            "id": 14,
+            "max_depth": 3,
+            "turn": 4763
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 227660
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8366,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 83660
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 25683,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            34048,
+            34049
+          ],
+          "elapsed_from_fork_s_bracket": [
+            25682,
+            25683
+          ],
+          "run_id": 20
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34049,
+          "gold": 2374,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 19340
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 340490
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 10637,
+          "depth": 8,
+          "gold": 0,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10715
+        },
+        {
+          "clock_s": 11316,
+          "depth": 6,
+          "gold": 87,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6190
+        },
+        {
+          "clock_s": 13659,
+          "depth": 8,
+          "gold": 197,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11430
+        },
+        {
+          "clock_s": 15450,
+          "depth": 4,
+          "gold": 84,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5910
+        },
+        {
+          "clock_s": 17464,
+          "depth": 6,
+          "gold": 120,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8140
+        },
+        {
+          "clock_s": 19827,
+          "depth": 8,
+          "gold": 0,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 11632
+        },
+        {
+          "clock_s": 20555,
+          "depth": 6,
+          "gold": 110,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 6674
+        },
+        {
+          "clock_s": 23041,
+          "depth": 10,
+          "gold": 218,
+          "id": 15,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 207,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12862
+        },
+        {
+          "clock_s": 25020,
+          "depth": 6,
+          "gold": 98,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7794
+        },
+        {
+          "clock_s": 27449,
+          "depth": 9,
+          "gold": 216,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12283
+        },
+        {
+          "clock_s": 29181,
+          "depth": 4,
+          "gold": 60,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 5320
+        },
+        {
+          "clock_s": 30915,
+          "depth": 6,
+          "gold": 67,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 5340
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34049,
+          "gold": 2374,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 20,
+            "max_depth": 13,
+            "turn": 19340
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 340490
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Iris Ash",
+          "observed_clock_s": 9567,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 6
+          },
+          "start": 1,
+          "started_total_tick": 95660,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9567,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 10
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 95670
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11966,
+          "gold": 815,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 119660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15566,
+          "gold": 1227,
+          "legacy": {
+            "points": 5,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 155660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19166,
+          "gold": 1347,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 5,
+            "id": 13,
+            "max_depth": 5,
+            "turn": 5015
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 191660
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22766,
+          "gold": 1508,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 15,
+            "max_depth": 8,
+            "turn": 10109
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 227660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26366,
+          "gold": 2031,
+          "legacy": {
+            "points": 13,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 2,
+            "id": 17,
+            "max_depth": 2,
+            "turn": 1453
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 263660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 29966,
+          "gold": 2307,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 299660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 33566,
+          "gold": 2374,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 10,
+            "id": 20,
+            "max_depth": 10,
+            "turn": 14510
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 335660
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8366,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 83660
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 15809,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            24174,
+            24175
+          ],
+          "elapsed_from_fork_s_bracket": [
+            15808,
+            15809
+          ],
+          "run_id": 14
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24175,
+          "gold": 1766,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 23614
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 241750
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 10641,
+          "depth": 8,
+          "gold": 0,
+          "id": 8,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 10754
+        },
+        {
+          "clock_s": 11491,
+          "depth": 5,
+          "gold": 100,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7898
+        },
+        {
+          "clock_s": 14094,
+          "depth": 10,
+          "gold": 372,
+          "id": 10,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 303,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14034
+        },
+        {
+          "clock_s": 16181,
+          "depth": 6,
+          "gold": 103,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8870
+        },
+        {
+          "clock_s": 18119,
+          "depth": 6,
+          "gold": 132,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7380
+        },
+        {
+          "clock_s": 20613,
+          "depth": 8,
+          "gold": 225,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12940
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 24175,
+          "gold": 1766,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 14,
+            "max_depth": 13,
+            "turn": 23614
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 241750
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Iris Ash",
+          "observed_clock_s": 9567,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 8,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 6
+          },
+          "start": 1,
+          "started_total_tick": 95660,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 9567,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 8,
+            "max_depth": 1,
+            "turn": 10
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 95670
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 11966,
+          "gold": 823,
+          "legacy": {
+            "points": 3,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 119660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15566,
+          "gold": 1306,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 2,
+            "id": 11,
+            "max_depth": 2,
+            "turn": 2714
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 155660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19166,
+          "gold": 1541,
+          "legacy": {
+            "points": 8,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 191660
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22766,
+          "gold": 1766,
+          "legacy": {
+            "points": 9,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 6,
+            "id": 14,
+            "max_depth": 6,
+            "turn": 9524
+          },
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 227660
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 0,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 8366,
+            "gold": 696,
+            "legacy": {
+              "points": 15,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Iris Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 0,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 6,
+            "selected": 1,
+            "total_ticks": 83660
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 8366,
+          "gold": 696,
+          "legacy": {
+            "points": 0,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Iris Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 6,
+          "selected": 1,
+          "total_ticks": 83660
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 403,
+      "depth": 3,
+      "gold": 45,
+      "id": 1,
+      "legacy_earned_receipt": 4,
+      "sampled": null,
+      "secured": 45,
+      "start": 1,
+      "tier": "death",
+      "turns": 4030
+    },
+    {
+      "clock_s": 968,
+      "depth": 5,
+      "gold": 80,
+      "id": 2,
+      "legacy_earned_receipt": 3,
+      "sampled": null,
+      "secured": 80,
+      "start": 1,
+      "tier": "death",
+      "turns": 5057
+    },
+    {
+      "clock_s": 1668,
+      "depth": 5,
+      "gold": 102,
+      "id": 3,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 6400
+    },
+    {
+      "clock_s": 3564,
+      "depth": 5,
+      "gold": 113,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 6960
+    },
+    {
+      "clock_s": 5717,
+      "depth": 8,
+      "gold": 143,
+      "id": 5,
+      "legacy_earned_receipt": 4,
+      "sampled": null,
+      "secured": 129,
+      "start": 1,
+      "tier": "bank",
+      "turns": 9523
+    },
+    {
+      "clock_s": 7699,
+      "depth": 6,
+      "gold": 0,
+      "id": 6,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "death",
+      "turns": 7820
+    },
+    {
+      "clock_s": 8366,
+      "depth": 6,
+      "gold": 120,
+      "id": 7,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 6070
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 8366,
+      "gold": 696,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 83660
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 8366,
+      "gold": 696,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 83660
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 403,
+        "depth": 3,
+        "gold": 45,
+        "id": 1,
+        "legacy_earned_receipt": 4,
+        "sampled": null,
+        "secured": 45,
+        "start": 1,
+        "tier": "death",
+        "turns": 4030
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 3,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 403,
+      "gold": 45,
+      "legacy": {
+        "points": 4,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 600,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 4030
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 8366,
+      "gold": 696,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 83660
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 8366,
+      "gold": 696,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 83660
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Iris Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 6,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 2.088493106,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 5,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 969,
+    "gold": 79,
+    "legacy": {
+      "points": 7,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Iris Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 597,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 6,
+    "selected": 1,
+    "total_ticks": 9690
+  },
+  "seed": 6,
+  "unreached_checkpoint": false
+}

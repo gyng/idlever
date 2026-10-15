@@ -1,0 +1,2589 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 506,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 936,
+      "gold_after": 102,
+      "gold_before": 182
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 30790,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            42986,
+            42987
+          ],
+          "elapsed_from_fork_s_bracket": [
+            30789,
+            30790
+          ],
+          "run_id": 23
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42987,
+          "gold": 2264,
+          "legacy": {
+            "points": 35,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 24519
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 429870
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 12793,
+          "depth": 6,
+          "gold": 69,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 5370
+        },
+        {
+          "clock_s": 14718,
+          "depth": 6,
+          "gold": 86,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 7252
+        },
+        {
+          "clock_s": 16397,
+          "depth": 6,
+          "gold": 82,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4792
+        },
+        {
+          "clock_s": 18419,
+          "depth": 6,
+          "gold": 89,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8220
+        },
+        {
+          "clock_s": 20381,
+          "depth": 5,
+          "gold": 113,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7620
+        },
+        {
+          "clock_s": 22258,
+          "depth": 5,
+          "gold": 71,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6770
+        },
+        {
+          "clock_s": 24650,
+          "depth": 8,
+          "gold": 120,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11912
+        },
+        {
+          "clock_s": 26473,
+          "depth": 5,
+          "gold": 63,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6230
+        },
+        {
+          "clock_s": 28378,
+          "depth": 5,
+          "gold": 89,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7058
+        },
+        {
+          "clock_s": 30636,
+          "depth": 6,
+          "gold": 117,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10580
+        },
+        {
+          "clock_s": 33295,
+          "depth": 12,
+          "gold": 309,
+          "id": 19,
+          "legacy_earned_receipt": 5,
+          "sampled": null,
+          "secured": 291,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14582
+        },
+        {
+          "clock_s": 35288,
+          "depth": 6,
+          "gold": 74,
+          "id": 20,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7930
+        },
+        {
+          "clock_s": 37223,
+          "depth": 7,
+          "gold": 114,
+          "id": 21,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7350
+        },
+        {
+          "clock_s": 39335,
+          "depth": 6,
+          "gold": 132,
+          "id": 22,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9120
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42987,
+          "gold": 2264,
+          "legacy": {
+            "points": 35,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 24519
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 429870
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Wren Ash",
+          "observed_clock_s": 12257,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 17,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 9,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 17,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 2
+          },
+          "start": 1,
+          "started_total_tick": 122565,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12257,
+          "gold": 562,
+          "legacy": {
+            "points": 17,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 9,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 122570
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15797,
+          "gold": 717,
+          "legacy": {
+            "points": 19,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 157970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19397,
+          "gold": 888,
+          "legacy": {
+            "points": 21,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 193970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22997,
+          "gold": 1072,
+          "legacy": {
+            "points": 23,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 229970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26597,
+          "gold": 1429,
+          "legacy": {
+            "points": 25,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 265970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 30197,
+          "gold": 1518,
+          "legacy": {
+            "points": 26,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 18,
+            "max_depth": 4,
+            "turn": 6181
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 301970
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 33797,
+          "gold": 1944,
+          "legacy": {
+            "points": 32,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 337970
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37397,
+          "gold": 2132,
+          "legacy": {
+            "points": 34,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 373970
+        },
+        {
+          "bank": 0,
+          "best": 12,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 40997,
+          "gold": 2264,
+          "legacy": {
+            "points": 35,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 4,
+            "id": 23,
+            "max_depth": 4,
+            "turn": 4619
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 409970
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 30421,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            42617,
+            42618
+          ],
+          "elapsed_from_fork_s_bracket": [
+            30420,
+            30421
+          ],
+          "run_id": 23
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42618,
+          "gold": 2670,
+          "legacy": {
+            "points": 17,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 17733
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 426180
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 13211,
+          "depth": 7,
+          "gold": 172,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9550
+        },
+        {
+          "clock_s": 15346,
+          "depth": 7,
+          "gold": 142,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9349
+        },
+        {
+          "clock_s": 16955,
+          "depth": 5,
+          "gold": 68,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4092
+        },
+        {
+          "clock_s": 18831,
+          "depth": 6,
+          "gold": 75,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6760
+        },
+        {
+          "clock_s": 20867,
+          "depth": 5,
+          "gold": 0,
+          "id": 13,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 8359
+        },
+        {
+          "clock_s": 21623,
+          "depth": 5,
+          "gold": 64,
+          "id": 14,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6960
+        },
+        {
+          "clock_s": 24268,
+          "depth": 8,
+          "gold": 175,
+          "id": 15,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14445
+        },
+        {
+          "clock_s": 26102,
+          "depth": 5,
+          "gold": 71,
+          "id": 16,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 6340
+        },
+        {
+          "clock_s": 28099,
+          "depth": 5,
+          "gold": 118,
+          "id": 17,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7970
+        },
+        {
+          "clock_s": 30256,
+          "depth": 6,
+          "gold": 127,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9570
+        },
+        {
+          "clock_s": 32628,
+          "depth": 9,
+          "gold": 255,
+          "id": 19,
+          "legacy_earned_receipt": 2,
+          "sampled": null,
+          "secured": 227,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11727
+        },
+        {
+          "clock_s": 35131,
+          "depth": 9,
+          "gold": 214,
+          "id": 20,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13030
+        },
+        {
+          "clock_s": 37247,
+          "depth": 8,
+          "gold": 178,
+          "id": 21,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 9160
+        },
+        {
+          "clock_s": 39644,
+          "depth": 7,
+          "gold": 152,
+          "id": 22,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 11970
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42618,
+          "gold": 2670,
+          "legacy": {
+            "points": 17,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 23,
+            "max_depth": 13,
+            "turn": 17733
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 426180
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 41,
+          "name": "Wren Ash",
+          "observed_clock_s": 12257,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 9,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 2
+          },
+          "start": 1,
+          "started_total_tick": 122565,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12257,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 9,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 122570
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15797,
+          "gold": 876,
+          "legacy": {
+            "points": 4,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 157970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19397,
+          "gold": 1019,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 193970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22997,
+          "gold": 1206,
+          "legacy": {
+            "points": 8,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 2,
+            "id": 15,
+            "max_depth": 2,
+            "turn": 1735
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 229970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 26597,
+          "gold": 1626,
+          "legacy": {
+            "points": 10,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 265970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 30197,
+          "gold": 1744,
+          "legacy": {
+            "points": 11,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 5,
+            "id": 18,
+            "max_depth": 5,
+            "turn": 8980
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 301970
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 33797,
+          "gold": 2126,
+          "legacy": {
+            "points": 14,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 337970
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37397,
+          "gold": 2518,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 373970
+        },
+        {
+          "bank": 0,
+          "best": 9,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 40997,
+          "gold": 2670,
+          "legacy": {
+            "points": 17,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 23,
+            "max_depth": 1,
+            "turn": 1523
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 409970
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 17,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12197,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 121970
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 7967,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            20163,
+            20164
+          ],
+          "elapsed_from_fork_s_bracket": [
+            7966,
+            7967
+          ],
+          "run_id": 12
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 20164,
+          "gold": 1144,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 12,
+            "max_depth": 13,
+            "turn": 17062
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 201640
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 13113,
+          "depth": 6,
+          "gold": 90,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8573
+        },
+        {
+          "clock_s": 15296,
+          "depth": 10,
+          "gold": 216,
+          "id": 10,
+          "legacy_earned_receipt": 3,
+          "sampled": null,
+          "secured": 213,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9830
+        },
+        {
+          "clock_s": 17257,
+          "depth": 7,
+          "gold": 102,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 7610
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 20164,
+          "gold": 1144,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 12,
+            "max_depth": 13,
+            "turn": 17062
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 201640
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Wren Ash",
+          "observed_clock_s": 12257,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 9,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 2
+          },
+          "start": 1,
+          "started_total_tick": 122565,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12257,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 9,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 122570
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15797,
+          "gold": 1042,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 157970
+        },
+        {
+          "bank": 0,
+          "best": 10,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19397,
+          "gold": 1144,
+          "legacy": {
+            "points": 7,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 12,
+            "max_depth": 8,
+            "turn": 9392
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 193970
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 17,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12197,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 121970
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 10429,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            22625,
+            22626
+          ],
+          "elapsed_from_fork_s_bracket": [
+            10428,
+            10429
+          ],
+          "run_id": 13
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22626,
+          "gold": 1333,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 13,
+            "max_depth": 13,
+            "turn": 20682
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 226260
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 13198,
+          "depth": 7,
+          "gold": 181,
+          "id": 9,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9420
+        },
+        {
+          "clock_s": 15601,
+          "depth": 8,
+          "gold": 233,
+          "id": 10,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 12029
+        },
+        {
+          "clock_s": 17292,
+          "depth": 6,
+          "gold": 77,
+          "id": 11,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 4914
+        },
+        {
+          "clock_s": 19357,
+          "depth": 7,
+          "gold": 106,
+          "id": 12,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 8650
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 22626,
+          "gold": 1333,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 13,
+            "max_depth": 13,
+            "turn": 20682
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 226260
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 38,
+          "name": "Wren Ash",
+          "observed_clock_s": 12257,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 9,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 2
+          },
+          "start": 1,
+          "started_total_tick": 122565,
+          "str_bonus": 0
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12257,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 9,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 122570
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 15797,
+          "gold": 1150,
+          "legacy": {
+            "points": 4,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 157970
+        },
+        {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 19397,
+          "gold": 1333,
+          "legacy": {
+            "points": 6,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 193970
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 2,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "before": {
+            "bank": 0,
+            "best": 8,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 12197,
+            "gold": 562,
+            "legacy": {
+              "points": 17,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Wren Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 2,
+            "selected": 1,
+            "total_ticks": 121970
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 8,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 12197,
+          "gold": 562,
+          "legacy": {
+            "points": 2,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Wren Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 2,
+          "selected": 1,
+          "total_ticks": 121970
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 506,
+      "depth": 4,
+      "gold": 97,
+      "id": 1,
+      "legacy_earned_receipt": 5,
+      "sampled": null,
+      "secured": 78,
+      "start": 1,
+      "tier": "bank",
+      "turns": 5060
+    },
+    {
+      "clock_s": 936,
+      "depth": 5,
+      "gold": 85,
+      "id": 2,
+      "legacy_earned_receipt": 2,
+      "sampled": null,
+      "secured": 72,
+      "start": 1,
+      "tier": "bank",
+      "turns": 4300
+    },
+    {
+      "clock_s": 2514,
+      "depth": 4,
+      "gold": 67,
+      "id": 3,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 3780
+    },
+    {
+      "clock_s": 4093,
+      "depth": 5,
+      "gold": 60,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 3790
+    },
+    {
+      "clock_s": 5739,
+      "depth": 3,
+      "gold": 87,
+      "id": 5,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 4460
+    },
+    {
+      "clock_s": 7503,
+      "depth": 5,
+      "gold": 95,
+      "id": 6,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 5640
+    },
+    {
+      "clock_s": 9830,
+      "depth": 8,
+      "gold": 151,
+      "id": 7,
+      "legacy_earned_receipt": 4,
+      "sampled": null,
+      "secured": 145,
+      "start": 1,
+      "tier": "bank",
+      "turns": 11270
+    },
+    {
+      "clock_s": 12196,
+      "depth": 8,
+      "gold": 0,
+      "id": 8,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "death",
+      "turns": 11665
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 12197,
+      "gold": 562,
+      "legacy": {
+        "points": 17,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 121970
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 9830,
+      "gold": 562,
+      "legacy": {
+        "points": 15,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 98300
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 12196,
+        "depth": 8,
+        "gold": 0,
+        "id": 8,
+        "legacy_earned_receipt": 1,
+        "sampled": null,
+        "secured": 0,
+        "start": 1,
+        "tier": "death",
+        "turns": 11665
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 12197,
+      "gold": 562,
+      "legacy": {
+        "points": 17,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 121970
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 12197,
+      "gold": 562,
+      "legacy": {
+        "points": 17,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 121970
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 12197,
+      "gold": 562,
+      "legacy": {
+        "points": 17,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 121970
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Wren Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 2,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 1.983309975,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 5,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 936,
+    "gold": 102,
+    "legacy": {
+      "points": 7,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Wren Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 0,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 2,
+    "selected": 1,
+    "total_ticks": 9360
+  },
+  "seed": 2,
+  "unreached_checkpoint": false
+}

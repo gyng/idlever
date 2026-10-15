@@ -1,0 +1,2217 @@
+{
+  "acquisition_window_s": 172800,
+  "actions": [
+    {
+      "action": "build house",
+      "clock_s": 0,
+      "gold": 0
+    },
+    {
+      "action": "manual send",
+      "clock_s": 0,
+      "number": 1,
+      "run_id": 1
+    },
+    {
+      "action": "manual send",
+      "clock_s": 640,
+      "number": 2,
+      "run_id": 2
+    },
+    {
+      "action": "hire earned Scout",
+      "clock_s": 971,
+      "gold_after": 128,
+      "gold_before": 218
+    }
+  ],
+  "arms": [
+    {
+      "arm": "no-spend",
+      "censored": false,
+      "elapsed_s": 30062,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            64319,
+            64320
+          ],
+          "elapsed_from_fork_s_bracket": [
+            30061,
+            30062
+          ],
+          "run_id": 29
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 64320,
+          "gold": 6204,
+          "legacy": {
+            "points": 41,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 29,
+            "max_depth": 13,
+            "turn": 14109
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 643200
+        },
+        "save": "no-spend-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 35325,
+          "depth": 10,
+          "gold": 226,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 10078
+        },
+        {
+          "clock_s": 38035,
+          "depth": 11,
+          "gold": 304,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 15105
+        },
+        {
+          "clock_s": 40843,
+          "depth": 10,
+          "gold": 271,
+          "id": 20,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 16079
+        },
+        {
+          "clock_s": 43197,
+          "depth": 8,
+          "gold": 143,
+          "id": 21,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 11540
+        },
+        {
+          "clock_s": 46191,
+          "depth": 12,
+          "gold": 296,
+          "id": 22,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 17937
+        },
+        {
+          "clock_s": 49090,
+          "depth": 12,
+          "gold": 439,
+          "id": 23,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 16988
+        },
+        {
+          "clock_s": 51601,
+          "depth": 9,
+          "gold": 273,
+          "id": 24,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 13113
+        },
+        {
+          "clock_s": 54207,
+          "depth": 11,
+          "gold": 233,
+          "id": 25,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14064
+        },
+        {
+          "clock_s": 56807,
+          "depth": 12,
+          "gold": 254,
+          "id": 26,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 14000
+        },
+        {
+          "clock_s": 59585,
+          "depth": 12,
+          "gold": 354,
+          "id": 27,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "return",
+          "turns": 15780
+        },
+        {
+          "clock_s": 61709,
+          "depth": 7,
+          "gold": 204,
+          "id": 28,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9232
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 64320,
+          "gold": 6204,
+          "legacy": {
+            "points": 41,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 13,
+            "id": 29,
+            "max_depth": 13,
+            "turn": 14109
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 643200
+        },
+        "save": "no-spend-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 42,
+          "name": "Vale Ash",
+          "observed_clock_s": 34318,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 30,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "run_id": 18,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 30,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "seed": 11
+          },
+          "start": 1,
+          "started_total_tick": 343175,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34318,
+          "gold": 2898,
+          "legacy": {
+            "points": 30,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 1,
+            "id": 18,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 343180
+        },
+        "save": "no-spend-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37858,
+          "gold": 3124,
+          "legacy": {
+            "points": 31,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 10,
+            "id": 19,
+            "max_depth": 10,
+            "turn": 13327
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 378580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 41458,
+          "gold": 4008,
+          "legacy": {
+            "points": 33,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 414580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 45058,
+          "gold": 4151,
+          "legacy": {
+            "points": 34,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 5,
+            "id": 22,
+            "max_depth": 5,
+            "turn": 6603
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 450580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 48658,
+          "gold": 4447,
+          "legacy": {
+            "points": 35,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 9,
+            "id": 23,
+            "max_depth": 9,
+            "turn": 12666
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 486580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 52258,
+          "gold": 5159,
+          "legacy": {
+            "points": 37,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": null,
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 522580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 55858,
+          "gold": 5392,
+          "legacy": {
+            "points": 38,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 5,
+            "id": 26,
+            "max_depth": 5,
+            "turn": 4501
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 558580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 59458,
+          "gold": 5646,
+          "legacy": {
+            "points": 39,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 11,
+            "id": 27,
+            "max_depth": 11,
+            "turn": 14501
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 594580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 63058,
+          "gold": 6204,
+          "legacy": {
+            "points": 41,
+            "spent": 0,
+            "upgrades": {}
+          },
+          "live": {
+            "depth": 2,
+            "id": 29,
+            "max_depth": 2,
+            "turn": 1489
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 630580
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": null
+    },
+    {
+      "arm": "health",
+      "censored": false,
+      "elapsed_s": 4480,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            38737,
+            38738
+          ],
+          "elapsed_from_fork_s_bracket": [
+            4479,
+            4480
+          ],
+          "run_id": 19
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38738,
+          "gold": 3123,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 22338
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 387380
+        },
+        "save": "health-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 35304,
+          "depth": 9,
+          "gold": 225,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 9867
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38738,
+          "gold": 3123,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 22338
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 387380
+        },
+        "save": "health-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 45,
+          "name": "Vale Ash",
+          "observed_clock_s": 34318,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "run_id": 18,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "seed": 11
+          },
+          "start": 1,
+          "started_total_tick": 343175,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34318,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 18,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 343180
+        },
+        "save": "health-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37858,
+          "gold": 3123,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 19,
+            "max_depth": 8,
+            "turn": 13538
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 378580
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "health": 1
+              }
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "before": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 30,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "health"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34258,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "health": 1
+            }
+          },
+          "live": null,
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 342580
+        },
+        "save": "health-purchase.game.json"
+      }
+    },
+    {
+      "arm": "damage",
+      "censored": false,
+      "elapsed_s": 8276,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            42533,
+            42534
+          ],
+          "elapsed_from_fork_s_bracket": [
+            8275,
+            8276
+          ],
+          "run_id": 21
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42534,
+          "gold": 3573,
+          "legacy": {
+            "points": 19,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 21,
+            "max_depth": 13,
+            "turn": 16299
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 425340
+        },
+        "save": "damage-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 35746,
+          "depth": 10,
+          "gold": 194,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14285
+        },
+        {
+          "clock_s": 38190,
+          "depth": 8,
+          "gold": 0,
+          "id": 19,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "death",
+          "turns": 12445
+        },
+        {
+          "clock_s": 39704,
+          "depth": 10,
+          "gold": 291,
+          "id": 20,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 14536
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 42534,
+          "gold": 3573,
+          "legacy": {
+            "points": 19,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 21,
+            "max_depth": 13,
+            "turn": 16299
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 425340
+        },
+        "save": "damage-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 0,
+          "legacy_effects": 0,
+          "max_hp": 42,
+          "name": "Vale Ash",
+          "observed_clock_s": 34318,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "run_id": 18,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "seed": 11
+          },
+          "start": 1,
+          "started_total_tick": 343175,
+          "str_bonus": 2
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34318,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 18,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 343180
+        },
+        "save": "damage-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37858,
+          "gold": 3092,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 6,
+            "id": 19,
+            "max_depth": 6,
+            "turn": 9120
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 378580
+        },
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 41458,
+          "gold": 3573,
+          "legacy": {
+            "points": 19,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": {
+            "depth": 4,
+            "id": 21,
+            "max_depth": 4,
+            "turn": 5539
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 414580
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "damage": 1
+              }
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "before": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 30,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "damage"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34258,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "damage": 1
+            }
+          },
+          "live": null,
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 342580
+        },
+        "save": "damage-purchase.game.json"
+      }
+    },
+    {
+      "arm": "armour",
+      "censored": false,
+      "elapsed_s": 4376,
+      "endpoint": {
+        "detail": {
+          "actual_run_max_depth": 13,
+          "crossing_clock_s_bracket": [
+            38633,
+            38634
+          ],
+          "elapsed_from_fork_s_bracket": [
+            4375,
+            4376
+          ],
+          "run_id": 19
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38634,
+          "gold": 3099,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 18328
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 386340
+        },
+        "save": "armour-next-d13.game.json"
+      },
+      "exits": [
+        {
+          "clock_s": 35601,
+          "depth": 8,
+          "gold": 201,
+          "id": 18,
+          "legacy_earned_receipt": 1,
+          "sampled": null,
+          "secured": 0,
+          "start": 1,
+          "tier": "bank",
+          "turns": 12837
+        }
+      ],
+      "final": {
+        "detail": {
+          "no_further_legacy_spends": true
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 38634,
+          "gold": 3099,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 13,
+            "id": 19,
+            "max_depth": 13,
+            "turn": 18328
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 386340
+        },
+        "save": "armour-final.game.json"
+      },
+      "first_departure": {
+        "detail": {
+          "base_atk": [
+            1,
+            2
+          ],
+          "class": "fighter",
+          "legacy_armour": 1,
+          "legacy_effects": 0,
+          "max_hp": 42,
+          "name": "Vale Ash",
+          "observed_clock_s": 34318,
+          "observed_within_s": 1,
+          "owned_at_send": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "run_id": 18,
+          "sent_snapshot": {
+            "bloodline_id": 1,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "seed": 11
+          },
+          "start": 1,
+          "started_total_tick": 343175,
+          "str_bonus": 1
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34318,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 1,
+            "id": 18,
+            "max_depth": 1,
+            "turn": 5
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 343180
+        },
+        "save": "armour-first-departure.game.json"
+      },
+      "hour_samples": [
+        {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 37858,
+          "gold": 3099,
+          "legacy": {
+            "points": 16,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": {
+            "depth": 8,
+            "id": 19,
+            "max_depth": 8,
+            "turn": 10568
+          },
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 0,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 378580
+        }
+      ],
+      "observation_window_s": 172800,
+      "purchase": {
+        "detail": {
+          "after": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 15,
+              "spent": 15,
+              "upgrades": {
+                "armour": 1
+              }
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "before": {
+            "bank": 0,
+            "best": 13,
+            "bloodline_id": 1,
+            "chest": 0,
+            "clock_s": 34258,
+            "gold": 2898,
+            "legacy": {
+              "points": 30,
+              "spent": 0,
+              "upgrades": {}
+            },
+            "live": null,
+            "name": "Vale Ash",
+            "orders": {
+              "ascend": "off",
+              "forge": "half",
+              "insure": true,
+              "kennel": "breed",
+              "legacy": "off",
+              "ranks": "off",
+              "sink": "both",
+              "temperament": "keep",
+              "wall": "bank"
+            },
+            "recovery_ticks": 595,
+            "resident_count": 1,
+            "scout": true,
+            "seed": 11,
+            "selected": 1,
+            "total_ticks": 342580
+          },
+          "historical_runs_unchanged": true,
+          "price": 15,
+          "shared_gold_unchanged": true,
+          "upgrade": "armour"
+        },
+        "observed": {
+          "bank": 0,
+          "best": 13,
+          "bloodline_id": 1,
+          "chest": 0,
+          "clock_s": 34258,
+          "gold": 2898,
+          "legacy": {
+            "points": 15,
+            "spent": 15,
+            "upgrades": {
+              "armour": 1
+            }
+          },
+          "live": null,
+          "name": "Vale Ash",
+          "orders": {
+            "ascend": "off",
+            "forge": "half",
+            "insure": true,
+            "kennel": "breed",
+            "legacy": "off",
+            "ranks": "off",
+            "sink": "both",
+            "temperament": "keep",
+            "wall": "bank"
+          },
+          "recovery_ticks": 595,
+          "resident_count": 1,
+          "scout": true,
+          "seed": 11,
+          "selected": 1,
+          "total_ticks": 342580
+        },
+        "save": "armour-purchase.game.json"
+      }
+    }
+  ],
+  "baseline_prefix_exits": [
+    {
+      "clock_s": 640,
+      "depth": 5,
+      "gold": 131,
+      "id": 1,
+      "legacy_earned_receipt": 6,
+      "sampled": null,
+      "secured": 89,
+      "start": 1,
+      "tier": "bank",
+      "turns": 6400
+    },
+    {
+      "clock_s": 971,
+      "depth": 3,
+      "gold": 87,
+      "id": 2,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 3310
+    },
+    {
+      "clock_s": 2520,
+      "depth": 3,
+      "gold": 41,
+      "id": 3,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 3490
+    },
+    {
+      "clock_s": 4392,
+      "depth": 5,
+      "gold": 171,
+      "id": 4,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 6720
+    },
+    {
+      "clock_s": 6025,
+      "depth": 4,
+      "gold": 95,
+      "id": 5,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 4330
+    },
+    {
+      "clock_s": 7634,
+      "depth": 5,
+      "gold": 59,
+      "id": 6,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 4090
+    },
+    {
+      "clock_s": 9320,
+      "depth": 5,
+      "gold": 162,
+      "id": 7,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 4860
+    },
+    {
+      "clock_s": 10954,
+      "depth": 5,
+      "gold": 91,
+      "id": 8,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 4340
+    },
+    {
+      "clock_s": 13241,
+      "depth": 8,
+      "gold": 156,
+      "id": 9,
+      "legacy_earned_receipt": 4,
+      "sampled": null,
+      "secured": 142,
+      "start": 1,
+      "tier": "bank",
+      "turns": 10870
+    },
+    {
+      "clock_s": 15730,
+      "depth": 8,
+      "gold": 168,
+      "id": 10,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 12894
+    },
+    {
+      "clock_s": 17692,
+      "depth": 6,
+      "gold": 95,
+      "id": 11,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 7620
+    },
+    {
+      "clock_s": 20296,
+      "depth": 8,
+      "gold": 191,
+      "id": 12,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 14040
+    },
+    {
+      "clock_s": 22731,
+      "depth": 8,
+      "gold": 209,
+      "id": 13,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 12352
+    },
+    {
+      "clock_s": 25904,
+      "depth": 13,
+      "gold": 571,
+      "id": 14,
+      "legacy_earned_receipt": 6,
+      "sampled": null,
+      "secured": 492,
+      "start": 1,
+      "tier": "bank",
+      "turns": 19733
+    },
+    {
+      "clock_s": 28841,
+      "depth": 10,
+      "gold": 458,
+      "id": 15,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "bank",
+      "turns": 17368
+    },
+    {
+      "clock_s": 31686,
+      "depth": 13,
+      "gold": 303,
+      "id": 16,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "return",
+      "turns": 16448
+    },
+    {
+      "clock_s": 34257,
+      "depth": 11,
+      "gold": 0,
+      "id": 17,
+      "legacy_earned_receipt": 1,
+      "sampled": null,
+      "secured": 0,
+      "start": 1,
+      "tier": "death",
+      "turns": 13710
+    }
+  ],
+  "baseline_prefix_terminal": {
+    "detail": {
+      "window_s": 172800
+    },
+    "observed": {
+      "bank": 0,
+      "best": 13,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 34258,
+      "gold": 2898,
+      "legacy": {
+        "points": 30,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 342580
+    },
+    "save": "baseline-prefix-terminal.game.json"
+  },
+  "diagnostic_only": true,
+  "first_affordable_15": {
+    "detail": {
+      "away": false,
+      "observation_quantum_s": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 8,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 13241,
+      "gold": 903,
+      "legacy": {
+        "points": 17,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 132410
+    },
+    "save": "first-affordable-15.game.json"
+  },
+  "first_death": {
+    "detail": {
+      "actual_exit": {
+        "clock_s": 34257,
+        "depth": 11,
+        "gold": 0,
+        "id": 17,
+        "legacy_earned_receipt": 1,
+        "sampled": null,
+        "secured": 0,
+        "start": 1,
+        "tier": "death",
+        "turns": 13710
+      },
+      "observation_lag_s_max": 1
+    },
+    "observed": {
+      "bank": 0,
+      "best": 13,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 34258,
+      "gold": 2898,
+      "legacy": {
+        "points": 30,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 342580
+    },
+    "save": "first-death.game.json"
+  },
+  "first_eligible_post_intro_home_purchase": {
+    "detail": {
+      "actual_home_purchase_opportunity": true,
+      "manual_sends": 2,
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 13,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 34258,
+      "gold": 2898,
+      "legacy": {
+        "points": 30,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 342580
+    },
+    "save": "common-fork.game.json"
+  },
+  "first_home_eligible_after_death": {
+    "detail": {
+      "note": "Diagnostic fork waits for the identical Scout introduction in every arm",
+      "scout_hired": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 13,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 34258,
+      "gold": 2898,
+      "legacy": {
+        "points": 30,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 595,
+      "resident_count": 1,
+      "scout": true,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 342580
+    },
+    "save": "first-home-eligible-after-death.game.json"
+  },
+  "initial": {
+    "detail": {
+      "free_house": true
+    },
+    "observed": {
+      "bank": 0,
+      "best": 0,
+      "bloodline_id": 1,
+      "chest": 0,
+      "clock_s": 0,
+      "gold": 0,
+      "legacy": {
+        "points": 0,
+        "spent": 0,
+        "upgrades": {}
+      },
+      "live": null,
+      "name": "Vale Ash",
+      "orders": {
+        "ascend": "off",
+        "forge": "half",
+        "insure": true,
+        "kennel": "breed",
+        "legacy": "off",
+        "ranks": "off",
+        "sink": "both",
+        "temperament": "keep",
+        "wall": "bank"
+      },
+      "recovery_ticks": 0,
+      "resident_count": 1,
+      "scout": false,
+      "seed": 11,
+      "selected": 1,
+      "total_ticks": 0
+    },
+    "save": "initial.game.json"
+  },
+  "manual_sends": 2,
+  "native_runtime_s": 2.635868295,
+  "no_grants_or_direct_state_edits": true,
+  "observation_quantum_ms": 1000,
+  "post_fork_window_s": 172800,
+  "protocol": "strict IDLE choices; continuous public Session.advance1000ms; not canonical dayplayer/check-in/WATCH_X acceptance",
+  "scout": {
+    "bank": 0,
+    "best": 5,
+    "bloodline_id": 1,
+    "chest": 0,
+    "clock_s": 971,
+    "gold": 128,
+    "legacy": {
+      "points": 7,
+      "spent": 0,
+      "upgrades": {}
+    },
+    "live": null,
+    "name": "Vale Ash",
+    "orders": {
+      "ascend": "off",
+      "forge": "half",
+      "insure": true,
+      "kennel": "breed",
+      "legacy": "off",
+      "ranks": "off",
+      "sink": "both",
+      "temperament": "keep",
+      "wall": "bank"
+    },
+    "recovery_ticks": 0,
+    "resident_count": 1,
+    "scout": true,
+    "seed": 11,
+    "selected": 1,
+    "total_ticks": 9710
+  },
+  "seed": 11,
+  "unreached_checkpoint": false
+}
