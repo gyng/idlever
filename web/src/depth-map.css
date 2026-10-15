@@ -234,6 +234,12 @@
 .watch-depth-map[open] + .depth-map-fold {
   display: none;
 }
+/* the visible tab stays 28px; its touch target reaches 44px into the scene on the left */
+.depth-map-fold::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 -16px;
+}
 .depth-map-fold:hover {
   filter: brightness(1.2);
 }
