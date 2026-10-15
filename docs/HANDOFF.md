@@ -14,9 +14,15 @@ Current development package is fast WASM8879ed11… (6774306bytes); settlement
  default `docs/evidence/cut249/final/settlements-inputs-8879.json`. Cut249 persists
 previous-vision IDs needed for exact reload provenance. Combined247–249 native
 979tests/6ignored and Clippy pass; strict4settlements and paid/unpaid public
-partition/reload proofs pass. Cut249 pacing→routine-full wrapper is live; check
-its exact process/log identity before restarting. Broader full/exhaustive/fun
-acceptance remains open. Latest native checkpoint7104eaf3 commits249source/closed correctness proofs;
+partition/reload proofs pass. Cut249 pacing and routine full are terminal PASS:
+24targeted rows/256configuration-seed pairs, then QA/metrics/dayplayer with
+18current-player cases and16RANDOM seeds. Exact source/six binaries/package
+remain unchanged. Wrapper7816 and all four child PIDs are positively terminal
+in their launch process view; do not restart them. See
+`evidence/cut249/gates-terminal.json` and retained logs/cache receipts.
+Exhaustive balance/migration, broader client and independent fun acceptance
+remain open. Terminal gate checkpoint is aa557ffc. Latest native source
+checkpoint7104eaf3 commits249source/closed correctness proofs;
 8caef551 preserves247/248 and prior UI. Compact UI/R7/method work follows.
 
 Cut250 owner UI feedback is implemented: Heroes moves into the bottom dock,
@@ -49,9 +55,27 @@ fixtures (Sword→Bow, Ironcap→none), and an implemented neutral composited fi
 passes8layout/phase cases,15owned shapes, actual3resident/stale-callback guards,
 missing-image fallback and preference/save checks. Actual keyboard-focus contrast
 passes4cases (minimum6.887:1). Raw rejected pixel/focus protocols remain retained.
-Treat it as a functional prototype, not final painted paper-doll art. Two new
-neutral male masters and exact imagegen prompts are staged in art/generated/ and
-art/prompts/; they are not integrated or part of those successful UI proofs.
+Treat those captures as functional prototype proofs, not final painted art.
+Painted integration is now WIP: artwork checkpoint926a0c68 saves three neutral looks and seven missing wearable
+masters are saved in art/generated/ with exact built-in imagegen prompts in
+art/prompts/. `python3 art/export_equipment.py` exports ten full-canvas RGBA
+WebP layers (684536bytes); art/equipment.json pins source/output hashes and
+alpha bounds. Generator placement varies: renderer mounts require explicit
+uniform scale/translation rather than assuming every layer fits the base.
+Agent acceptance_audit owns visual fit and subsequent canonical phase/owner/
+fallback checks; final painted acceptance is pending, and prior prototype
+passes must not be relabelled onto this source. Fit-v1 exposed floating old
+weapon icons; fit-v2 corrects Sword/Bow/Crownsplitter grips, while ordinary body
+armour mounting remains under review. Root inspected these actual composed
+captures; they are engineering observations, not player feedback.
+
+Agent feat_review owns Cut251 paused-worker presentation: the real renderer
+requested alternating Scout work frames even when the canonical worker was
+paused (83draw red proof, exactsave unchanged). A scoped client correction and
+focused browser verification are underway, not yet accepted. Do not infer new
+recent-action receipts or resurrect retired storage hauling. Both agents may
+have browser work active: positively confirm them terminal before the exclusive
+R6 GPU control/candidate lane. Native gates are already terminal.
 
 R6 single-context cost method is prepared, not measured: cut245/cost-single*
 contains issue-tagged delayed GPU-query/ring/disjoint mock proof and strict
