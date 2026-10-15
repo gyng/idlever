@@ -1,0 +1,156 @@
+{
+  "width": 400,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "bloodlines",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "look game-control on",
+      "text": "male",
+      "width": 104,
+      "height": 117.5,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "look game-control",
+      "text": "female",
+      "width": 104,
+      "height": 117.5,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "look game-control",
+      "text": "cat",
+      "width": 104,
+      "height": 117.5,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body look-sheet",
+      "overflow": 0
+    },
+    {
+      "cls": "looks",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Appearance",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "Appearance",
+          "width": 111.62367248535156,
+          "ascent": 15,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 425.94793701171875,
+        "w": 147.36459350585938,
+        "h": 32
+      }
+    },
+    {
+      "text": "male",
+      "color": "rgb(242, 214, 160)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "male",
+          "width": 28.29388427734375,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 73.14583587646484,
+        "y": 581.75,
+        "w": 29.697914123535156,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "female",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "female",
+          "width": 39.731842041015625,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 179.08334350585938,
+        "y": 581.75,
+        "w": 41.83332824707031,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "cat",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "cat",
+          "width": 17.737930297851562,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 302.60418701171875,
+        "y": 581.75,
+        "w": 18.791656494140625,
+        "h": 17.3333740234375
+      }
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "width": 2560,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "forge",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Current gear",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Next gear",
+      "width": 532,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "aim +3% $7200",
+      "width": 270,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "edge +2 $7200",
+      "width": 270,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "plate +1 $9000",
+      "width": 270,
+      "height": 118.1875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "pace +8% $9000",
+      "width": 270,
+      "height": 118.1875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Details",
+      "width": 584,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Forecast",
+      "width": 176.61459350585938,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body forge",
+      "overflow": 0
+    },
+    {
+      "cls": "salvage ledger",
+      "overflow": 8
+    }
+  ],
+  "samples": [
+    {
+      "text": "Forge",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "60px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "Forge",
+          "width": 132.4198455810547,
+          "ascent": 37,
+          "descent": 12
+        }
+      ],
+      "rect": {
+        "x": 988,
+        "y": 126.66667175292969,
+        "w": 177.4896240234375,
+        "h": 78.66667175292969
+      }
+    },
+    {
+      "text": "Discovered gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "42.12px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Discovered",
+          "width": 211.1784210205078,
+          "ascent": 34,
+          "descent": 1
+        },
+        {
+          "word": "gear",
+          "width": 84.59764099121094,
+          "ascent": 26,
+          "descent": 10
+        }
+      ],
+      "rect": {
+        "x": 988,
+        "y": 289.1145935058594,
+        "w": 306.09375,
+        "h": 50.666656494140625
+      }
+    },
+    {
+      "text": "Uses this hero's Forge upgrades.",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "28px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Uses",
+          "width": 59.80824279785156,
+          "ascent": 20,
+          "descent": 1
+        },
+        {
+          "word": "this",
+          "width": 47.488189697265625,
+          "ascent": 22,
+          "descent": 1
+        },
+        {
+          "word": "hero's",
+          "width": 76.63632202148438,
+          "ascent": 21,
+          "descent": 1
+        },
+        {
+          "word": "Forge",
+          "width": 68.88031005859375,
+          "ascent": 20,
+          "descent": 6
+        },
+        {
+          "word": "upgrades.",
+          "width": 124.34852600097656,
+          "ascent": 21,
+          "descent": 6
+        }
+      ],
+      "rect": {
+        "x": 988,
+        "y": 415.75,
+        "w": 406.84375,
+        "h": 33.333343505859375
+      }
+    },
+    {
+      "text": "Crownsplitter",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Crownsplitter",
+          "width": 222.2281036376953,
+          "ascent": 29,
+          "descent": 8
+        }
+      ],
+      "rect": {
+        "x": 1036,
+        "y": 508.34375,
+        "w": 222.229248046875,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "Effect",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Effect",
+          "width": 93.92404174804688,
+          "ascent": 28,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1014,
+        "y": 578.34375,
+        "w": 93.9271240234375,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 1107.9271240234375,
+        "y": 578.34375,
+        "w": 27.7291259765625,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "Deal +2 melee damage to stunned or slowed foes.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Deal",
+          "width": 72.21603393554688,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "melee",
+          "width": 100.08004760742188,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "damage",
+          "width": 128.95205688476562,
+          "ascent": 27,
+          "descent": 8
+        },
+        {
+          "word": "stunned",
+          "width": 134.10006713867188,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "slowed",
+          "width": 115.1640625,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "foes.",
+          "width": 77.7960205078125,
+          "ascent": 27,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1135.65625,
+        "y": 578.34375,
+        "w": 406.479248046875,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "Deal +2 melee damage to stunned or slowed foes.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Deal",
+          "width": 72.21603393554688,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "melee",
+          "width": 100.08004760742188,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "damage",
+          "width": 128.95205688476562,
+          "ascent": 27,
+          "descent": 8
+        },
+        {
+          "word": "stunned",
+          "width": 134.10006713867188,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "slowed",
+          "width": 115.1640625,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "foes.",
+          "width": 77.7960205078125,
+          "ascent": 27,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1014,
+        "y": 632.34375,
+        "w": 390.604248046875,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "Tradeoff",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Tradeoff",
+          "width": 138.56405639648438,
+          "ascent": 28,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1014,
+        "y": 702.34375,
+        "w": 138.572998046875,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 1152.572998046875,
+        "y": 702.34375,
+        "w": 27.7291259765625,
+        "h": 42.66668701171875
+      }
+    },
+    {
+      "text": "Slower than a sword. Control must be active.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "36px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Slower",
+          "width": 110.34005737304688,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "than",
+          "width": 74.77203369140625,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "sword.",
+          "width": 106.38005065917969,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "Control",
+          "width": 118.94403076171875,
+          "ascent": 27,
+          "descent": 1
+        },
+        {
+          "word": "must",
+          "width": 81.61203002929688,
+          "ascent": 24,
+          "descent": 1
+        },
+        {
+          "word": "active.",
+          "width": 105.40805053710938,
+          "ascent": 29,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1180.3021240234375,
+        "y": 702.34375,
+        "w": 339.6978759765625,
+        "h": 42.66668701171875
+      }
+    }
+  ]
+}

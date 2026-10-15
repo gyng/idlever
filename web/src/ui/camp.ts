@@ -1084,7 +1084,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
           });
       return h(
         "div",
-        { class: "sheet-body" },
+        { class: "sheet-body class-picker" },
         h("div", { class: "label row-label" }, /* copy:label */ "class"),
         grid,
       );
@@ -1170,7 +1170,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       setTimeout(() => input.focus(), 0);
       return h(
         "div",
-        { class: "sheet-body" },
+        { class: "sheet-body saved-setup-name" },
         h("div", { class: "label row-label" }, /* copy:label */ "name"),
         input,
         h("button", { class: "btn primary wide", onclick: commit }, /* copy:button */ "ok"),

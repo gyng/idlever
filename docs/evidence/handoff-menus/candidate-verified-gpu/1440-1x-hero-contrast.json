@@ -1,0 +1,1648 @@
+{
+  "width": 1440,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "bloodlines",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Appearance",
+      "width": 121.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Run log",
+      "width": 89.6875,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Rook Ash",
+      "width": 102.35417175292969,
+      "height": 44,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Gear",
+      "width": 173.33334350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Skills",
+      "width": 173.33334350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Behaviour",
+      "width": 173.33334350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Companions",
+      "width": 173.33334350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Attributes",
+      "width": 173.33334350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-gear-anchor",
+      "text": "WeaponswordActual · next delve",
+      "width": 168.65625,
+      "height": 96.22917175292969,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-gear-anchor",
+      "text": "HelmIroncapActual · next delve",
+      "width": 272,
+      "height": 96.22917175292969,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-gear-anchor",
+      "text": "BodyHearthglassActual · next delve",
+      "width": 168.6666717529297,
+      "height": 96.22917175292969,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-gear-anchor",
+      "text": "BootsHearthglass BootsActual · next delve",
+      "width": 272,
+      "height": 96.22917175292969,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Gear effects",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip set-follow-choice",
+      "text": "Stop following",
+      "width": 508,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Find piece",
+      "width": 508,
+      "height": 44.79166793823242,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Current gear",
+      "width": 508,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Next gear",
+      "width": 508,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Weapon",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Class default",
+      "width": 130.9375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "dagger",
+      "width": 118.22917175292969,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "sword",
+      "width": 111.59375,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "axe",
+      "width": 92.05208587646484,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "bow",
+      "width": 97.33333587646484,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Crownsplitter",
+      "width": 169.36459350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "spear",
+      "width": 108.36458587646484,
+      "height": 46,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "mace",
+      "width": 105.46875,
+      "height": 46,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Helm",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Class default",
+      "width": 130.9375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Empty",
+      "width": 79.59375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin empty",
+      "width": 108.91667175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Ironcap",
+      "width": 123.15625,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Unpin",
+      "width": 77.04167175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Hearthglass Hood",
+      "width": 201.6354217529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Body",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Class default",
+      "width": 130.9375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Bare",
+      "width": 66.88542175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin empty",
+      "width": 108.91667175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "leather",
+      "width": 120.78125,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "mail",
+      "width": 98.57292175292969,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "plate",
+      "width": 104.96875,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Hearthglass",
+      "width": 156.7604217529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Frostmantle",
+      "width": 156.98959350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "scale",
+      "width": 104.61458587646484,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Boots",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Class default",
+      "width": 130.9375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Empty",
+      "width": 79.59375,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin empty",
+      "width": 108.91667175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Trailboots",
+      "width": 143.2291717529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Hearthglass Boots",
+      "width": 205.33334350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Pin",
+      "width": 56.5,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Use",
+      "width": 60.07291793823242,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Delete",
+      "width": 81.71875,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "INPUT",
+      "cls": "",
+      "text": "Kit name",
+      "width": 184.6666717529297,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(255, 255, 255)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Save kit",
+      "width": 92.76042175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Use defaults",
+      "width": 127.63542175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-reuse",
+      "text": "Reuse on",
+      "width": 101.78125,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "leashFree",
+      "width": 123.34375,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "daggerFree",
+      "width": 135.34375,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "swordFree",
+      "width": 128.70834350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "axeFree",
+      "width": 109.16667175292969,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "bowFree",
+      "width": 114.44792175292969,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "leatherFree",
+      "width": 137.89584350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "mailFree",
+      "width": 115.6875,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "plateFree",
+      "width": 122.08333587646484,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "heal potionFree",
+      "width": 170.14584350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "strength potionFree",
+      "width": 202.23959350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "speed potionFree",
+      "width": 183.71875,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "invisibility potionFree",
+      "width": 218.08334350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "poison potionFree",
+      "width": 189.36459350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "caustic potionFree",
+      "width": 191.42709350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "confusion potionFree",
+      "width": 212.4166717529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "fire potionFree",
+      "width": 163.71875,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "teleport scrollFree",
+      "width": 191.8229217529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "blink scrollFree",
+      "width": 167.9375,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "fear scrollFree",
+      "width": 160.03125,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "mapping scrollFree",
+      "width": 195.89584350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "identify scrollFree",
+      "width": 189,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "enchant scrollFree",
+      "width": 191.1041717529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "darkness scrollFree",
+      "width": 199.0625,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "summon ally scrollFree",
+      "width": 226.20834350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "aggravate scrollFree",
+      "width": 204.30209350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "scaleFree",
+      "width": 121.72917175292969,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "silence scrollFree",
+      "width": 183.0729217529297,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn bloodline-prepare",
+      "text": "mirror scrollFree",
+      "width": 177.61459350585938,
+      "height": 46,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body hero-hub",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Rook Ash",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "27px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Rook",
+          "width": 62.3428955078125,
+          "ascent": 21,
+          "descent": 1
+        },
+        {
+          "word": "Ash",
+          "width": 44.38792419433594,
+          "ascent": 21,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 524,
+        "y": 141.33334350585938,
+        "w": 113.32293701171875,
+        "h": 32.666656494140625
+      }
+    },
+    {
+      "text": "fighter",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "fighter",
+          "width": 53.24363708496094,
+          "ascent": 14,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 524,
+        "y": 185.1666717529297,
+        "w": 53.25,
+        "h": 21.333328247070312
+      }
+    },
+    {
+      "text": "Ready",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Ready",
+          "width": 50.363677978515625,
+          "ascent": 14,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 524,
+        "y": 216.1666717529297,
+        "w": 50.3646240234375,
+        "h": 21.333328247070312
+      }
+    },
+    {
+      "text": "Bloodline 1",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Bloodline",
+          "width": 61.15174865722656,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 524,
+        "y": 245.83334350585938,
+        "w": 70.9271240234375,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Appearance",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Appearance",
+          "width": 85.80819702148438,
+          "ascent": 12,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 456,
+        "y": 287.6875,
+        "w": 89.8125,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Run log",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Run",
+          "width": 28.272064208984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "log",
+          "width": 22.704055786132812,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 585.8125,
+        "y": 287.6875,
+        "w": 57.6875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Rook Ash",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": true,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Rook",
+          "width": 36.94407653808594,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "Ash",
+          "width": 26.304061889648438,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 456,
+        "y": 343.6875,
+        "w": 70.35418701171875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Gear",
+          "width": 34.016082763671875,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 496.85418701171875,
+        "y": 417.6875,
+        "w": 35.625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Skills",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Skills",
+          "width": 39.360076904296875,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 675.1146240234375,
+        "y": 417.6875,
+        "w": 41.7603759765625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Behaviour",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Behaviour",
+          "width": 73.95217895507812,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 838.5521240234375,
+        "y": 417.6875,
+        "w": 77.55206298828125,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Companions",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Companions",
+          "width": 89.90419006347656,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 467.7083435058594,
+        "y": 469.6875,
+        "w": 93.90628051757812,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Attributes",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Attributes",
+          "width": 73.40818786621094,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 657.2916870117188,
+        "y": 469.6875,
+        "w": 77.41668701171875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Weapon",
+      "color": "rgb(219, 186, 124)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Weapon",
+          "width": 51.50579833984375,
+          "ascent": 10,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 458,
+        "y": 714.90625,
+        "w": 59.78125,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "sword",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "sword",
+          "width": 38.66786193847656,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 458,
+        "y": 744.6875,
+        "w": 40.677093505859375,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Actual · next delve",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Actual",
+          "width": 39.49385070800781,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 27.551895141601562,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "delve",
+          "width": 34.425872802734375,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 458,
+        "y": 768.1771240234375,
+        "w": 123.5625,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Helm",
+      "color": "rgb(219, 186, 124)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Helm",
+          "width": 33.09587097167969,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 575.9896240234375,
+        "y": 544.7916870117188,
+        "w": 38.08331298828125,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Ironcap",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Ironcap",
+          "width": 48.089813232421875,
+          "ascent": 10,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 575.9896240234375,
+        "y": 574.5729370117188,
+        "w": 50.89581298828125,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Actual · next delve",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Actual",
+          "width": 39.49385070800781,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 27.551895141601562,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "delve",
+          "width": 34.425872802734375,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 575.9896240234375,
+        "y": 598.0625,
+        "w": 123.5625,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Body",
+      "color": "rgb(219, 186, 124)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Body",
+          "width": 32.339874267578125,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 797.3229370117188,
+        "y": 714.90625,
+        "w": 38.41668701171875,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Hearthglass",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Hearthglass",
+          "width": 76.0897216796875,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 797.3229370117188,
+        "y": 744.6875,
+        "w": 80.5,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Actual · next delve",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Actual",
+          "width": 39.49385070800781,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 27.551895141601562,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "delve",
+          "width": 34.425872802734375,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 797.3229370117188,
+        "y": 768.1771240234375,
+        "w": 123.5625,
+        "h": 17.33331298828125
+      }
+    }
+  ]
+}

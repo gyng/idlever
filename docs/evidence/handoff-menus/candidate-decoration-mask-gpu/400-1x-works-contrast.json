@@ -1,0 +1,405 @@
+{
+  "width": 400,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "forge",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn primary hire-btn",
+      "text": "hire · $600",
+      "width": 113.44792175292969,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body works-sheet",
+      "overflow": 0
+    },
+    {
+      "cls": "works-trunk",
+      "overflow": 0
+    },
+    {
+      "cls": "wnode sil",
+      "overflow": 0
+    },
+    {
+      "cls": "wnode sil",
+      "overflow": 0
+    },
+    {
+      "cls": "wnode cur lit",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "workers",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "WORKERS",
+          "width": 102.33570861816406,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 375.19793701171875,
+        "w": 109.0625,
+        "h": 32
+      }
+    },
+    {
+      "text": "drillmaster",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "drillmaster",
+          "width": 64.83103942871094,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 458,
+        "w": 65.4375,
+        "h": 15.333343505859375
+      }
+    },
+    {
+      "text": "levelled floor clears · $80",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "levelled",
+          "width": 46.3258056640625,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "floor",
+          "width": 27.9158935546875,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "clears",
+          "width": 34.67784118652344,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "$80",
+          "width": 21.769912719726562,
+          "ascent": 12,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 478,
+        "w": 145.3125,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "clerk",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "clerk",
+          "width": 28.717025756835938,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 536.2916870117188,
+        "w": 29.65625,
+        "h": 15.33331298828125
+      }
+    },
+    {
+      "text": "interest paid · $800",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "interest",
+          "width": 45.30381774902344,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "paid",
+          "width": 25.60589599609375,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "$800",
+          "width": 29.315887451171875,
+          "ascent": 12,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 556.2916870117188,
+        "w": 111.34375,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "apprentice",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "15px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "APPRENTICE",
+          "width": 82.69558715820312,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 611.25,
+        "w": 88.69792175292969,
+        "h": 18
+      }
+    },
+    {
+      "text": "$600",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "12px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "$600",
+          "width": 25.056182861328125,
+          "ascent": 10,
+          "descent": 2
+        }
+      ],
+      "rect": {
+        "x": 196.6979217529297,
+        "y": 613.9166870117188,
+        "w": 24.197921752929688,
+        "h": 14.66668701171875
+      }
+    },
+    {
+      "text": "buys forge steps",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "buys",
+          "width": 29.7918701171875,
+          "ascent": 11,
+          "descent": 3
+        },
+        {
+          "word": "forge",
+          "width": 32.605865478515625,
+          "ascent": 11,
+          "descent": 3
+        },
+        {
+          "word": "steps",
+          "width": 33.865875244140625,
+          "ascent": 10,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 100,
+        "y": 644.0833740234375,
+        "w": 103.6875,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "hire · $600",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "17px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "hire",
+          "width": 26.02691650390625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "$600",
+          "width": 34.79890441894531,
+          "ascent": 12,
+          "descent": 2
+        }
+      ],
+      "rect": {
+        "x": 252.55209350585938,
+        "y": 624.9791870117188,
+        "w": 81.44790649414062,
+        "h": 22
+      }
+    },
+    {
+      "text": "✓",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "12px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 44,
+        "y": 689.5208740234375,
+        "w": 10.0625,
+        "h": 14.6666259765625
+      }
+    },
+    {
+      "text": "quartermaster",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "quartermaster",
+          "width": 91.30763244628906,
+          "ascent": 10,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 83.0625,
+        "y": 688.375,
+        "w": 91.3125,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "given",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "given",
+          "width": 33.89385986328125,
+          "ascent": 11,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 177.375,
+        "y": 688.375,
+        "w": 33.895843505859375,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "porter",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "porter",
+          "width": 39.773834228515625,
+          "ascent": 10,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 240.27084350585938,
+        "y": 688.375,
+        "w": 39.78125,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "scout",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": true,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "scout",
+          "width": 34.32786560058594,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 309.0520935058594,
+        "y": 688.375,
+        "w": 34.333343505859375,
+        "h": 17.3333740234375
+      }
+    }
+  ]
+}

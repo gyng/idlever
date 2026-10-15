@@ -254,7 +254,7 @@ function openRules(app: App, c: Companion, current?: () => boolean): void {
         });
         return h(
           "div",
-          { class: "sheet-body" },
+          { class: "sheet-body companion-rules" },
           h("div", { class: "label row-label" }, /* copy:label */ "rules"),
           h(
             "div",

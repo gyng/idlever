@@ -1,0 +1,631 @@
+{
+  "width": 400,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "bloodlines",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Appearance",
+      "width": 110.58333587646484,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Run log",
+      "width": 82.47917175292969,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Rook Ash",
+      "width": 93.5625,
+      "height": 44,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Gear",
+      "width": 137,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Skills",
+      "width": 137,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Behaviour",
+      "width": 137,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Companions",
+      "width": 137,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-hub-tab",
+      "text": "Attributes",
+      "width": 137,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "comp-main game-control",
+      "text": "fetcherGreth L3old hound5/5 hp · 2/4 rows",
+      "width": 128,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "grip game-control",
+      "text": "Greth rules",
+      "width": 44,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "x drop-pet game-control",
+      "text": "×",
+      "width": 44,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "comp-main game-control",
+      "text": "guardZelul L2old hound9/9 hp · 2/3 rows",
+      "width": 128,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "grip game-control",
+      "text": "Zelul rules",
+      "width": 44,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "x drop-pet game-control",
+      "text": "×",
+      "width": 44,
+      "height": 135.7604217529297,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "comp-main game-control",
+      "text": "menderThix L11 heirgas6/6 hp · 2/2 rows",
+      "width": 176,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "grip game-control",
+      "text": "Thix rules",
+      "width": 44,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "comp-main game-control",
+      "text": "scoutSkul L11 heiralarm18/18 hp · 2/2 rows",
+      "width": 176,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "grip game-control",
+      "text": "Skul rules",
+      "width": 44,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "comp-main game-control",
+      "text": "scoutMoreth L11 heirundead · drain16/16 hp · 2/2 rows",
+      "width": 176,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "grip game-control",
+      "text": "Moreth rules",
+      "width": 44,
+      "height": 114.96875,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body hero-hub",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Rook Ash",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Rook",
+          "width": 55.41584777832031,
+          "ascent": 19,
+          "descent": 1
+        },
+        {
+          "word": "Ash",
+          "width": 39.455902099609375,
+          "ascent": 19,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 132,
+        "y": 230.33334350585938,
+        "w": 100.72917175292969,
+        "h": 29.333343505859375
+      }
+    },
+    {
+      "text": "fighter",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "fighter",
+          "width": 47.328094482421875,
+          "ascent": 12,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 132,
+        "y": 269.66668701171875,
+        "w": 47.333343505859375,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "Ready",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Ready",
+          "width": 44.76808166503906,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 132,
+        "y": 297.66668701171875,
+        "w": 44.770843505859375,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "Bloodline 1",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Bloodline",
+          "width": 61.15174865722656,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 132,
+        "y": 324.3333435058594,
+        "w": 70.92709350585938,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Appearance",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Appearance",
+          "width": 75.08171081542969,
+          "ascent": 10,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 64,
+        "y": 366.72918701171875,
+        "w": 78.58334350585938,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Run log",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Run",
+          "width": 24.737899780273438,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "log",
+          "width": 19.86590576171875,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 182.58334350585938,
+        "y": 366.72918701171875,
+        "w": 50.479156494140625,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Rook Ash",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": true,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Rook",
+          "width": 32.32585144042969,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "Ash",
+          "width": 23.015914916992188,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 64,
+        "y": 422.72918701171875,
+        "w": 61.5625,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Gear",
+          "width": 29.763900756835938,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 88.91667175292969,
+        "y": 496.72918701171875,
+        "w": 31.166664123535156,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Skills",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Skills",
+          "width": 34.43986511230469,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 229.2291717529297,
+        "y": 496.72918701171875,
+        "w": 36.54167175292969,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Behaviour",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Behaviour",
+          "width": 64.70774841308594,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 70.5625,
+        "y": 546.7291870117188,
+        "w": 67.86459350585938,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Companions",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Companions",
+          "width": 78.66569519042969,
+          "ascent": 12,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 206.4166717529297,
+        "y": 546.7291870117188,
+        "w": 82.16667175292969,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Attributes",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Attributes",
+          "width": 64.23173522949219,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 70.625,
+        "y": 596.7291870117188,
+        "w": 67.73959350585938,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Actual",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18.72px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Actual",
+          "width": 53.32281494140625,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 48.66666793823242,
+        "y": 660.625,
+        "w": 53.343753814697266,
+        "h": 22
+      }
+    },
+    {
+      "text": "Greth",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Greth",
+          "width": 40.288116455078125,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 48.66666793823242,
+        "y": 721.96875,
+        "w": 40.29166793823242,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "rat L3",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "rat",
+          "width": 20.096054077148438,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 48.66666793823242,
+        "y": 772.8333740234375,
+        "w": 40.29166793823242,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "5 / 5",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 48.66666793823242,
+        "y": 801.09375,
+        "w": 28.729167938232422,
+        "h": 17.3333740234375
+      }
+    }
+  ]
+}

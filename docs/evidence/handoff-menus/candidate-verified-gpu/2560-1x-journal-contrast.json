@@ -1,0 +1,924 @@
+{
+  "width": 2560,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "journal",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(43, 51, 80)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Workers",
+      "width": 94.91667175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Town",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Bloodlines",
+      "width": 113.76042175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Builds",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 102.73958587646484,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Tactics",
+      "width": 84.85417175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Orders",
+      "width": 83.54167175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Legacy",
+      "width": 83.90625,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Choose temperament",
+      "width": 195.33334350585938,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Choose lasting trait",
+      "width": 181.90625,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Choose family context",
+      "width": 201,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Clown",
+      "width": 78.10417175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Engineer",
+      "width": 99.21875,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Class tree",
+      "width": 106.91667175292969,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Companions",
+      "width": 125.90625,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Later",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "More classes",
+      "width": 129.86459350585938,
+      "height": 44.79166793823242,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Delving",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Delve",
+      "width": 74.625,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Later",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Chronicle",
+      "width": 103.95833587646484,
+      "height": 44.79166793823242,
+      "disabled": true,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Glossary",
+      "width": 536,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(13, 12, 20)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body journal-panel",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Journal",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "30px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "Journal",
+          "width": 87.35992431640625,
+          "ascent": 20,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 988,
+        "y": 126,
+        "w": 87.3646240234375,
+        "h": 39.333343505859375
+      }
+    },
+    {
+      "text": "Next",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Next",
+          "width": 28.909896850585938,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 197.33334350585938,
+        "w": 28.91668701171875,
+        "h": 17.333328247070312
+      }
+    },
+    {
+      "text": "Hire the Scout",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Hire",
+          "width": 33.64179992675781,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 27.179824829101562,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Scout",
+          "width": 46.09770202636719,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 226.95834350585938,
+        "w": 115.70831298828125,
+        "h": 21.333328247070312
+      }
+    },
+    {
+      "text": "Until the Scout is hired, each departure needs your tap.",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Until",
+          "width": 39.31175231933594,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 26.855819702148438,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Scout",
+          "width": 45.539703369140625,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "hired,",
+          "width": 46.92570495605469,
+          "ascent": 15,
+          "descent": 3
+        },
+        {
+          "word": "each",
+          "width": 38.573760986328125,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "departure",
+          "width": 81.01750183105469,
+          "ascent": 14,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 261.9583435058594,
+        "w": 451.69793701171875,
+        "h": 21.333343505859375
+      }
+    },
+    {
+      "text": "When enabled, the Scout sends the hero after each rest. Pausing the worker stops automatic departure",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "When",
+          "width": 45.77369689941406,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "enabled,",
+          "width": 70.91957092285156,
+          "ascent": 14,
+          "descent": 3
+        },
+        {
+          "word": "the",
+          "width": 26.855819702148438,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Scout",
+          "width": 45.539703369140625,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "sends",
+          "width": 47.933685302734375,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 26.855819702148438,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 296.9583435058594,
+        "w": 456.98956298828125,
+        "h": 21.333343505859375
+      }
+    },
+    {
+      "text": "When enabled, the Scout sends the hero after each rest. Pausing the worker stops automatic departure",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "When",
+          "width": 45.77369689941406,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "enabled,",
+          "width": 70.91957092285156,
+          "ascent": 14,
+          "descent": 3
+        },
+        {
+          "word": "the",
+          "width": 26.855819702148438,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Scout",
+          "width": 45.539703369140625,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "sends",
+          "width": 47.933685302734375,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 26.855819702148438,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 323.9583435058594,
+        "w": 390.40631103515625,
+        "h": 21.333343505859375
+      }
+    },
+    {
+      "text": "2/2 manual delves",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "2/2",
+          "width": 18.84393310546875,
+          "ascent": 12,
+          "descent": 2
+        },
+        {
+          "word": "manual",
+          "width": 42.867828369140625,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "delves",
+          "width": 37.86985778808594,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 388.625,
+        "w": 107.42706298828125,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Enable the Scout in Workers",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Enable",
+          "width": 43.1478271484375,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 20.887924194335938,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "Scout",
+          "width": 35.41986083984375,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "Workers",
+          "width": 51.40777587890625,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.6666870117188,
+        "y": 419.625,
+        "w": 177.86456298828125,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Workers",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Workers",
+          "width": 60.112152099609375,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1018.6666870117188,
+        "y": 459.25,
+        "w": 62.91668701171875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Town",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Town",
+          "width": 34.67205810546875,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.8125,
+        "y": 536.7083740234375,
+        "w": 34.6771240234375,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Builds",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Builds",
+          "width": 41.26408386230469,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1002.8125,
+        "y": 599.5,
+        "w": 41.2708740234375,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Delving",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Delving",
+          "width": 49.53608703613281,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1002.8125,
+        "y": 662.2916870117188,
+        "w": 49.541748046875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "reach D20",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "20.25px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "reach",
+          "width": 50.868194580078125,
+          "ascent": 16,
+          "descent": 1
+        },
+        {
+          "word": "D20",
+          "width": 34.74913024902344,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 1260,
+        "y": 724.4166870117188,
+        "w": 90.5208740234375,
+        "h": 24
+      }
+    },
+    {
+      "text": "Advances Steady to its next package training threshold, if one remains. The reward was applied autom",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Advances",
+          "width": 76.44551086425781,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Steady",
+          "width": 55.07965087890625,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "its",
+          "width": 19.979873657226562,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 35.42376708984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "package",
+          "width": 66.34761047363281,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "training",
+          "width": 63.21559143066406,
+          "ascent": 15,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1260,
+        "y": 757.375,
+        "w": 76.447998046875,
+        "h": 21.3333740234375
+      }
+    },
+    {
+      "text": "Advances Steady to its next package training threshold, if one remains. The reward was applied autom",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Advances",
+          "width": 76.44551086425781,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Steady",
+          "width": 55.07965087890625,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "its",
+          "width": 19.979873657226562,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 35.42376708984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "package",
+          "width": 66.34761047363281,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "training",
+          "width": 63.21559143066406,
+          "ascent": 15,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1260,
+        "y": 784.375,
+        "w": 101.34375,
+        "h": 21.3333740234375
+      }
+    },
+    {
+      "text": "Advances Steady to its next package training threshold, if one remains. The reward was applied autom",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Advances",
+          "width": 76.44551086425781,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Steady",
+          "width": 55.07965087890625,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "its",
+          "width": 19.979873657226562,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 35.42376708984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "package",
+          "width": 66.34761047363281,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "training",
+          "width": 63.21559143066406,
+          "ascent": 15,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1260,
+        "y": 811.375,
+        "w": 106.5521240234375,
+        "h": 21.3333740234375
+      }
+    },
+    {
+      "text": "Advances Steady to its next package training threshold, if one remains. The reward was applied autom",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Advances",
+          "width": 76.44551086425781,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "Steady",
+          "width": 55.07965087890625,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "its",
+          "width": 19.979873657226562,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "next",
+          "width": 35.42376708984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "package",
+          "width": 66.34761047363281,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "training",
+          "width": 63.21559143066406,
+          "ascent": 15,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 1260,
+        "y": 838.375,
+        "w": 63.21875,
+        "h": 21.3333740234375
+      }
+    }
+  ]
+}

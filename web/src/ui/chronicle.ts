@@ -82,7 +82,7 @@ export function openChronicle(app: App): void {
     const lines = [...(L.chronicle ?? [])].reverse();
     return h(
       "div",
-      { class: "sheet-body" },
+      { class: "sheet-body chronicle-sheet" },
       h("div", { class: "label" }, /* copy:label */ "chronicle"),
       h(
         "div",

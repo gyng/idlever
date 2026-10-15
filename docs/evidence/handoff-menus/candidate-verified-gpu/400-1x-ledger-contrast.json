@@ -1,0 +1,1311 @@
+{
+  "width": 400,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "journal",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(43, 51, 80)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip verb counter",
+      "text": "[counter] attack boss",
+      "width": 176.05209350585938,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip verb counter",
+      "text": "[counter] throw fire, boss",
+      "width": 203.17709350585938,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip verb counter",
+      "text": "[counter] attack summoned",
+      "width": 218.5,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip verb counter locked-card",
+      "text": "[counter] reflect read wear mirror read",
+      "width": 295.0208435058594,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip verb counter",
+      "text": "[counter] read silence",
+      "width": 179.92709350585938,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body ledger",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "enemy guide",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "enemy",
+          "width": 60.83982849121094,
+          "ascent": 12,
+          "descent": 5
+        },
+        {
+          "word": "guide",
+          "width": 51.071868896484375,
+          "ascent": 16,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 225.1979217529297,
+        "w": 152.7916717529297,
+        "h": 32.00001525878906
+      }
+    },
+    {
+      "text": "seen",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "8px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "seen",
+          "width": 17.143768310546875,
+          "ascent": 5,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 211.125,
+        "y": 300,
+        "w": 17.75,
+        "h": 9.333343505859375
+      }
+    },
+    {
+      "text": "known",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "8px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "known",
+          "width": 23.87969970703125,
+          "ascent": 6,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 238.5,
+        "y": 300,
+        "w": 26.989593505859375,
+        "h": 9.333343505859375
+      }
+    },
+    {
+      "text": "studied",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "8px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "studied",
+          "width": 27.463638305664062,
+          "ascent": 7,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 269.2708435058594,
+        "y": 300,
+        "w": 29.447906494140625,
+        "h": 9.333343505859375
+      }
+    },
+    {
+      "text": "tamed",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "8px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "tamed",
+          "width": 23.183700561523438,
+          "ascent": 6,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 304.40625,
+        "y": 300,
+        "w": 23.177093505859375,
+        "h": 9.333343505859375
+      }
+    },
+    {
+      "text": "bred",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "8px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "bred",
+          "width": 16.7437744140625,
+          "ascent": 6,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 338.75,
+        "y": 300,
+        "w": 18.5,
+        "h": 9.333343505859375
+      }
+    },
+    {
+      "text": "rat",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "rat",
+          "width": 20.096054077148438,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 335.66668701171875,
+        "w": 20.104171752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 335.66668701171875,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 335.66668701171875,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 335.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 335.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 335.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "jackal",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "jackal",
+          "width": 42.016082763671875,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 380.3333435058594,
+        "w": 42.020835876464844,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 380.3333435058594,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 380.3333435058594,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 380.3333435058594,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 380.3333435058594,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 380.3333435058594,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "goblin",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "goblin",
+          "width": 45.48809814453125,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 425,
+        "w": 45.489585876464844,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 425,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 425,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 425,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 425,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 425,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "goblin archer",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "goblin",
+          "width": 45.48809814453125,
+          "ascent": 13,
+          "descent": 4
+        },
+        {
+          "word": "archer",
+          "width": 46.320098876953125,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 469.66668701171875,
+        "w": 96.05209350585938,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 469.66668701171875,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 469.66668701171875,
+        "w": 9.666671752929688,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 469.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 469.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 469.66668701171875,
+        "w": 9.666656494140625,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "goblin conjurer",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "goblin",
+          "width": 45.48809814453125,
+          "ascent": 13,
+          "descent": 4
+        },
+        {
+          "word": "conjurer",
+          "width": 60.43211364746094,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 514.3333740234375,
+        "w": 110.16667175292969,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 514.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 514.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 514.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 514.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 514.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "monkey",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "monkey",
+          "width": 57.00811767578125,
+          "ascent": 12,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 559,
+        "w": 57.01042175292969,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 559,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 559,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 559,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 559,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 559,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "ogre",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "ogre",
+          "width": 32.080078125,
+          "ascent": 10,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 603.6666870117188,
+        "w": 32.083335876464844,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 603.6666870117188,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 603.6666870117188,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 603.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 603.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 603.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "bloat",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "bloat",
+          "width": 37.77607727050781,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 648.3333740234375,
+        "w": 37.78125,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 648.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 648.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 648.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 648.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 648.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "pink jelly",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "pink",
+          "width": 31.584060668945312,
+          "ascent": 13,
+          "descent": 4
+        },
+        {
+          "word": "jelly",
+          "width": 30.288040161132812,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 693,
+        "w": 66.11459350585938,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 693,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 693,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 693,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 693,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 693,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "eel",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "eel",
+          "width": 22.128036499023438,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 737.6666870117188,
+        "w": 22.135421752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 737.6666870117188,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 737.6666870117188,
+        "w": 9.666671752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 737.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 737.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 737.6666870117188,
+        "w": 9.666656494140625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "skeleton",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "skeleton",
+          "width": 61.824127197265625,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 78,
+        "y": 782.3333740234375,
+        "w": 61.833343505859375,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 215.1666717529297,
+        "y": 782.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 247.1666717529297,
+        "y": 782.3333740234375,
+        "w": 9.666671752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "●",
+      "color": "rgb(13, 12, 20)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 279.16668701171875,
+        "y": 782.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 311.16668701171875,
+        "y": 782.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "○",
+      "color": "rgb(65, 68, 90)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 343.16668701171875,
+        "y": 782.3333740234375,
+        "w": 9.666656494140625,
+        "h": 18.6666259765625
+      }
+    }
+  ]
+}

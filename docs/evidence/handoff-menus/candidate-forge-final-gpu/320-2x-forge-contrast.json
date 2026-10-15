@@ -1,0 +1,392 @@
+{
+  "width": 320,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "forge",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Current gear",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Next gear",
+      "width": 200.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "aim +3% $7200",
+      "width": 224.8125,
+      "height": 112.98958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "edge +2 $7200",
+      "width": 224.8125,
+      "height": 112.98958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "plate +1 $9000",
+      "width": 224.8125,
+      "height": 112.98958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "pace +8% $9000",
+      "width": 224.8125,
+      "height": 112.98958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Details",
+      "width": 252.8125,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Forecast",
+      "width": 160.5416717529297,
+      "height": 88,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body forge",
+      "overflow": 0
+    },
+    {
+      "cls": "salvage ledger",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Forge",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "48px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "FORGE",
+          "width": 132.38427734375,
+          "ascent": 30,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 253.42709350585938,
+        "w": 141.98959350585938,
+        "h": 63.333343505859375
+      }
+    },
+    {
+      "text": "Discovered gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "37.44px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Discovered",
+          "width": 187.67054748535156,
+          "ascent": 31,
+          "descent": 1
+        },
+        {
+          "word": "gear",
+          "width": 75.18045043945312,
+          "ascent": 23,
+          "descent": 9
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 396.0625,
+        "w": 187.6979217529297,
+        "h": 45.333343505859375
+      }
+    },
+    {
+      "text": "Discovered gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "37.44px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Discovered",
+          "width": 187.67054748535156,
+          "ascent": 31,
+          "descent": 1
+        },
+        {
+          "word": "gear",
+          "width": 75.18045043945312,
+          "ascent": 23,
+          "descent": 9
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 452.21875,
+        "w": 75.19792175292969,
+        "h": 45.333343505859375
+      }
+    },
+    {
+      "text": "Uses this hero's Forge upgrades.",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "28px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Uses",
+          "width": 59.80824279785156,
+          "ascent": 20,
+          "descent": 1
+        },
+        {
+          "word": "this",
+          "width": 47.488189697265625,
+          "ascent": 22,
+          "descent": 1
+        },
+        {
+          "word": "hero's",
+          "width": 76.63632202148438,
+          "ascent": 21,
+          "descent": 1
+        },
+        {
+          "word": "Forge",
+          "width": 68.88031005859375,
+          "ascent": 20,
+          "descent": 6
+        },
+        {
+          "word": "upgrades.",
+          "width": 124.34852600097656,
+          "ascent": 21,
+          "descent": 6
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 567.8125,
+        "w": 198.78125,
+        "h": 33.3333740234375
+      }
+    },
+    {
+      "text": "Uses this hero's Forge upgrades.",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "28px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Uses",
+          "width": 59.80824279785156,
+          "ascent": 20,
+          "descent": 1
+        },
+        {
+          "word": "this",
+          "width": 47.488189697265625,
+          "ascent": 22,
+          "descent": 1
+        },
+        {
+          "word": "hero's",
+          "width": 76.63632202148438,
+          "ascent": 21,
+          "descent": 1
+        },
+        {
+          "word": "Forge",
+          "width": 68.88031005859375,
+          "ascent": 20,
+          "descent": 6
+        },
+        {
+          "word": "upgrades.",
+          "width": 124.34852600097656,
+          "ascent": 21,
+          "descent": 6
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 608.40625,
+        "w": 200.65625,
+        "h": 33.3333740234375
+      }
+    },
+    {
+      "text": "Crownsplitter",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "32px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Crownsplitter",
+          "width": 197.53636169433594,
+          "ascent": 26,
+          "descent": 8
+        }
+      ],
+      "rect": {
+        "x": 59.59375,
+        "y": 748.3333740234375,
+        "w": 197.54168701171875,
+        "h": 38.6666259765625
+      }
+    }
+  ]
+}

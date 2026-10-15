@@ -1,0 +1,675 @@
+{
+  "width": 400,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "bloodlines",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-level",
+      "text": "◆5 L5",
+      "width": 69.67708587646484,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "change",
+      "width": 79.71875,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "choose tactic",
+      "width": 328,
+      "height": 52,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "choose tactic",
+      "width": 328,
+      "height": 52,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament on",
+      "text": "skittishRetreat when hurt and surrounded",
+      "width": 324,
+      "height": 130.48959350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "unbowedFace bosses while healthy",
+      "width": 324,
+      "height": 130.48959350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "light handsCollect loot after kills",
+      "width": 324,
+      "height": 130.48959350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "iron gutTry unknown potions while healthy",
+      "width": 324,
+      "height": 130.48959350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "None",
+      "width": 324,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip pkg-compare",
+      "text": "compare outcomes",
+      "width": 158.36459350585938,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "details",
+      "width": 328,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill on",
+      "text": "Disable Warlord tactic",
+      "width": 50.34375,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill on",
+      "text": "Disable Bloat mother tactic",
+      "width": 50.34375,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill tame on",
+      "text": "Disable taming",
+      "width": 50.34375,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "details-fold pkg-rows-btn num",
+      "text": "▸ rules · 10",
+      "width": 328,
+      "height": 44.29166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body pkg-panel",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "tactics",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "TACTICS",
+          "width": 82.4349365234375,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 56,
+        "y": 273.3333435058594,
+        "w": 89.15625,
+        "h": 32
+      }
+    },
+    {
+      "text": "floor 29 <13%",
+      "color": "rgb(232, 202, 135)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "floor",
+          "width": 25.922012329101562,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "<13%",
+          "width": 27.482025146484375,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 186.52084350585938,
+        "y": 285.3333435058594,
+        "w": 73.47915649414062,
+        "h": 15.333343505859375
+      }
+    },
+    {
+      "text": "Steady runner",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Steady",
+          "width": 39.85783386230469,
+          "ascent": 11,
+          "descent": 4
+        },
+        {
+          "word": "runner",
+          "width": 39.143829345703125,
+          "ascent": 8,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 336,
+        "w": 82.02083587646484,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "combat style",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "COMBAT",
+          "width": 47.10981750488281,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "STYLE",
+          "width": 34.21586608886719,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 379.53125,
+        "w": 99.45834350585938,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Steady L4",
+      "color": "rgb(219, 186, 124)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Steady",
+          "width": 39.85783386230469,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 102,
+        "y": 416.32293701171875,
+        "w": 56.03125,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Heal when hurt · fight nearest · one heal, two at L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Heal",
+          "width": 26.5460205078125,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 31.642044067382812,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "hurt",
+          "width": 24.895034790039062,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "fight",
+          "width": 26.546035766601562,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "nearest",
+          "width": 44.122039794921875,
+          "ascent": 9,
+          "descent": 1
+        },
+        {
+          "word": "one",
+          "width": 22.295028686523438,
+          "ascent": 7,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 102,
+        "y": 438.44793701171875,
+        "w": 126.53125,
+        "h": 15.33331298828125
+      }
+    },
+    {
+      "text": "Heal when hurt · fight nearest · one heal, two at L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Heal",
+          "width": 26.5460205078125,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 31.642044067382812,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "hurt",
+          "width": 24.895034790039062,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "fight",
+          "width": 26.546035766601562,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "nearest",
+          "width": 44.122039794921875,
+          "ascent": 9,
+          "descent": 1
+        },
+        {
+          "word": "one",
+          "width": 22.295028686523438,
+          "ascent": 7,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 102,
+        "y": 455.9895935058594,
+        "w": 148.6354217529297,
+        "h": 15.333343505859375
+      }
+    },
+    {
+      "text": "Heal when hurt · fight nearest · one heal, two at L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Heal",
+          "width": 26.5460205078125,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 31.642044067382812,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "hurt",
+          "width": 24.895034790039062,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "fight",
+          "width": 26.546035766601562,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "nearest",
+          "width": 44.122039794921875,
+          "ascent": 9,
+          "descent": 1
+        },
+        {
+          "word": "one",
+          "width": 22.295028686523438,
+          "ascent": 7,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 102,
+        "y": 473.53125,
+        "w": 12.864585876464844,
+        "h": 15.333343505859375
+      }
+    },
+    {
+      "text": "◆5 L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 222.6041717529297,
+        "y": 536.3021240234375,
+        "w": 37.67707824707031,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "L5 + foe: telegraph · hp < 35% → retreat",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "foe:",
+          "width": 22.077926635742188,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "telegraph",
+          "width": 55.84576416015625,
+          "ascent": 11,
+          "descent": 4
+        },
+        {
+          "word": "35%",
+          "width": 23.953903198242188,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "retreat",
+          "width": 39.997833251953125,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 576.7396240234375,
+        "w": 228.76043701171875,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "change",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "change",
+          "width": 45.61183166503906,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 300.28125,
+        "y": 490.2395935058594,
+        "w": 47.71875,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "extra tactics",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "EXTRA",
+          "width": 36.07786560058594,
+          "ascent": 10,
+          "descent": 0
+        },
+        {
+          "word": "TACTICS",
+          "width": 45.55583190917969,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 36,
+        "y": 629.6979370117188,
+        "w": 101.03125,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "choose tactic",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "choose",
+          "width": 45.56982421875,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "tactic",
+          "width": 35.47584533691406,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 52,
+        "y": 670.0521240234375,
+        "w": 89.02084350585938,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "choose tactic",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "choose",
+          "width": 45.56982421875,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "tactic",
+          "width": 35.47584533691406,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 52,
+        "y": 732.0521240234375,
+        "w": 89.02084350585938,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Temperament",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18.72px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Temperament",
+          "width": 117.68009948730469,
+          "ascent": 13,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 38,
+        "y": 802.4896240234375,
+        "w": 117.71875,
+        "h": 22
+      }
+    }
+  ]
+}

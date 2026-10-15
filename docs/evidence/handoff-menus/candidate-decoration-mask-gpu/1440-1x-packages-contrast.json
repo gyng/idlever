@@ -1,0 +1,874 @@
+{
+  "width": 1440,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "bloodlines",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-level",
+      "text": "◆5 L5",
+      "width": 75.0625,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "change",
+      "width": 86.53125,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "choose tactic",
+      "width": 584,
+      "height": 52,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini pkg-change",
+      "text": "choose tactic",
+      "width": 584,
+      "height": 52,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament on",
+      "text": "skittishRetreat when hurt and surrounded",
+      "width": 286,
+      "height": 133.08334350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "unbowedFace bosses while healthy",
+      "width": 286,
+      "height": 133.08334350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "light handsCollect loot after kills",
+      "width": 286,
+      "height": 133.08334350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn hero-temperament",
+      "text": "iron gutTry unknown potions while healthy",
+      "width": 286,
+      "height": 133.08334350585938,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "None",
+      "width": 286,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip pkg-compare",
+      "text": "compare outcomes",
+      "width": 176.4166717529297,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "details",
+      "width": 584,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill on",
+      "text": "Disable Warlord tactic",
+      "width": 52.96875,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill on",
+      "text": "Disable Bloat mother tactic",
+      "width": 52.96875,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip mini drill tame on",
+      "text": "Disable taming",
+      "width": 52.96875,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(184, 148, 72)",
+        "width": "2px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "details-fold pkg-rows-btn num",
+      "text": "▸ rules · 10",
+      "width": 584,
+      "height": 44.79166793823242,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body pkg-panel",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "tactics",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "TACTICS",
+          "width": 82.4349365234375,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 448,
+        "y": 137.33334350585938,
+        "w": 89.15625,
+        "h": 32
+      }
+    },
+    {
+      "text": "floor 29 <13%",
+      "color": "rgb(232, 202, 135)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "17px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "floor",
+          "width": 33.89790344238281,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "<13%",
+          "width": 35.93791198730469,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 811.90625,
+        "y": 144.6666717529297,
+        "w": 96.09375,
+        "h": 20.666671752929688
+      }
+    },
+    {
+      "text": "Steady runner",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Steady",
+          "width": 39.85783386230469,
+          "ascent": 11,
+          "descent": 4
+        },
+        {
+          "word": "runner",
+          "width": 39.143829345703125,
+          "ascent": 8,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 428,
+        "y": 200,
+        "w": 82.02084350585938,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "combat style",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "COMBAT",
+          "width": 47.10981750488281,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "STYLE",
+          "width": 34.21586608886719,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 428,
+        "y": 247.53125,
+        "w": 99.4583740234375,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Steady L4",
+      "color": "rgb(219, 186, 124)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "Steady",
+          "width": 39.85783386230469,
+          "ascent": 11,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 506,
+        "y": 285.65625,
+        "w": 56.03125,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Heal when hurt · fight nearest · one heal, two at L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "13px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Heal",
+          "width": 26.5460205078125,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 31.642044067382812,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "hurt",
+          "width": 24.895034790039062,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "fight",
+          "width": 26.546035766601562,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "nearest",
+          "width": 44.122039794921875,
+          "ascent": 9,
+          "descent": 1
+        },
+        {
+          "word": "one",
+          "width": 22.295028686523438,
+          "ascent": 7,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 506,
+        "y": 307.78125,
+        "w": 294.90625,
+        "h": 15.333343505859375
+      }
+    },
+    {
+      "text": "◆5 L5",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 617.6458740234375,
+        "y": 371.65625,
+        "w": 43.0625,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "L5 + foe: telegraph · hp < 35% → retreat",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", \"Fira Sans Extra Condensed\", \"Arial Narrow\", sans-serif",
+      "words": [
+        {
+          "word": "foe:",
+          "width": 22.077926635742188,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "telegraph",
+          "width": 55.84576416015625,
+          "ascent": 11,
+          "descent": 4
+        },
+        {
+          "word": "35%",
+          "width": 23.953903198242188,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "retreat",
+          "width": 39.997833251953125,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 684.7083740234375,
+        "y": 372.57293701171875,
+        "w": 228.7603759765625,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "change",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "change",
+          "width": 52.12811279296875,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 941.46875,
+        "y": 327.65625,
+        "w": 54.53125,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "extra tactics",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Idlever Num\", sans-serif",
+      "words": [
+        {
+          "word": "EXTRA",
+          "width": 36.07786560058594,
+          "ascent": 10,
+          "descent": 0
+        },
+        {
+          "word": "TACTICS",
+          "width": 45.55583190917969,
+          "ascent": 10,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 428,
+        "y": 447.78125,
+        "w": 101.03125,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "choose tactic",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "choose",
+          "width": 52.08012390136719,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "tactic",
+          "width": 40.54408264160156,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 444,
+        "y": 487.51043701171875,
+        "w": 101.72918701171875,
+        "h": 18.666656494140625
+      }
+    },
+    {
+      "text": "choose tactic",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "choose",
+          "width": 52.08012390136719,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "tactic",
+          "width": 40.54408264160156,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 444,
+        "y": 549.5104370117188,
+        "w": 101.72918701171875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Temperament",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "21.06px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Temperament",
+          "width": 132.42576599121094,
+          "ascent": 15,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 630.5729370117188,
+        "w": 132.46875,
+        "h": 25.33331298828125
+      }
+    },
+    {
+      "text": "Actual",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Actual",
+          "width": 50.77769470214844,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 670.1666870117188,
+        "w": 50.78125,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 480.78125,
+        "y": 670.1666870117188,
+        "w": 13.864593505859375,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "skittish",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "skittish",
+          "width": 59.72361755371094,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 494.6458435058594,
+        "y": 670.1666870117188,
+        "w": 59.729156494140625,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "Next delve",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Next",
+          "width": 37.169769287109375,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "delve",
+          "width": 44.26171875,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 562.375,
+        "y": 670.1666870117188,
+        "w": 86.2083740234375,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 648.5833740234375,
+        "y": 670.1666870117188,
+        "w": 13.86456298828125,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "skittish",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "skittish",
+          "width": 59.72361755371094,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 662.4479370117188,
+        "y": 670.1666870117188,
+        "w": 59.72918701171875,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "6 delves · D5",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "delves",
+          "width": 40.96385192871094,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 703.8333740234375,
+        "w": 78.94793701171875,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Free to change. Applies next delve.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Free",
+          "width": 34.23577880859375,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "change.",
+          "width": 62.51361083984375,
+          "ascent": 14,
+          "descent": 4
+        },
+        {
+          "word": "Applies",
+          "width": 60.263641357421875,
+          "ascent": 15,
+          "descent": 4
+        },
+        {
+          "word": "next",
+          "width": 35.42376708984375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "delve.",
+          "width": 48.401702880859375,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 733.4583740234375,
+        "w": 281.4375,
+        "h": 21.33331298828125
+      }
+    },
+    {
+      "text": "Order",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Order",
+          "width": 36.077850341796875,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 767.125,
+        "w": 36.083343505859375,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 466.0833435058594,
+        "y": 767.125,
+        "w": 10.78125,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Keep selected",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Keep",
+          "width": 31.625885009765625,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "selected",
+          "width": 53.3677978515625,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 476.8645935058594,
+        "y": 767.125,
+        "w": 88.70834350585938,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Manual choices use Keep selected.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Manual",
+          "width": 59.70564270019531,
+          "ascent": 14,
+          "descent": 1
+        },
+        {
+          "word": "choices",
+          "width": 61.19960021972656,
+          "ascent": 15,
+          "descent": 1
+        },
+        {
+          "word": "use",
+          "width": 28.691818237304688,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "Keep",
+          "width": 40.6617431640625,
+          "ascent": 13,
+          "descent": 4
+        },
+        {
+          "word": "selected.",
+          "width": 72.93553161621094,
+          "ascent": 14,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 430,
+        "y": 796.75,
+        "w": 282.28125,
+        "h": 21.3333740234375
+      }
+    }
+  ]
+}

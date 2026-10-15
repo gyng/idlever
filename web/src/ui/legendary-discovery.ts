@@ -48,7 +48,7 @@ export function openDiscovery(app: App, find: LegendaryDiscovery, anchor?: HTMLE
     (close) =>
       h(
         "div",
-        { class: "sheet-body" },
+        { class: "sheet-body discovery-sheet" },
         h(
           "h2",
           {},

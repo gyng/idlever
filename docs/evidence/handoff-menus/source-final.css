@@ -1,0 +1,575 @@
+/* Idlever-owned roles. Materials share behavior; no vendor theme or animated sheen. */
+:root {
+  --ui-space-1: 0.25rem;
+  --ui-space-2: 0.5rem;
+  --ui-space-3: 0.75rem;
+  --ui-space-4: 1rem;
+  --ui-space-6: 1.5rem;
+  --ui-space-8: 2rem;
+  --ui-body: 1rem;
+  --ui-control: 0.875rem;
+  --ui-detail: 0.875rem;
+  --ui-title: 1.5rem;
+  --ui-target: 2.75rem;
+}
+@media (min-width: 1024px) {
+  :root {
+    --ui-body: 1.125rem;
+    --ui-control: 1rem;
+    --ui-title: 1.875rem;
+  }
+}
+.game-window[data-material],
+.ui-material {
+  --ui-surface: var(--bone);
+  --ui-inset: #ded2b8;
+  --ui-text: var(--ink);
+  --ui-muted: #41445a;
+  --ui-edge: var(--gilt);
+  --ui-focus: var(--dusk);
+  --ui-button: var(--dusk);
+  --ui-button-text: var(--bone);
+  --ui-button-edge: var(--mist);
+  --ui-selected: var(--gilt);
+  --ui-control-size: var(--ui-control);
+  --ui-body-size: var(--ui-body);
+  --ui-detail-size: var(--ui-detail);
+}
+.game-window[data-material="forge"],
+.ui-material[data-material="forge"] {
+  --ui-surface: var(--umbra);
+  --ui-inset: var(--ink);
+  --ui-text: var(--bone);
+  --ui-muted: var(--mist);
+  --ui-edge: var(--moon);
+  --ui-focus: var(--mist);
+  --ui-selected: var(--gilt);
+}
+.game-window[data-material="bloodlines"],
+.ui-material[data-material="bloodlines"] {
+  --ui-surface: var(--ink);
+  --ui-inset: var(--umbra);
+  --ui-text: var(--bone);
+  --ui-muted: var(--mist);
+  --ui-edge: var(--gilt);
+  --ui-focus: var(--mist);
+  --ui-selected: var(--gilt);
+}
+html body .sheet-wrap.centered > .game-window[data-material] {
+  border: 0.25rem solid var(--ui-edge);
+  border-image: none;
+  padding: var(--ui-space-4);
+  background: var(--ui-surface);
+  color: var(--ui-text);
+  box-shadow:
+    inset 0 2px var(--mist),
+    inset 0 -4px var(--ink),
+    0 0 0 3px var(--ink),
+    0 18px 40px #05060ecc;
+}
+html body .game-window[data-material] .sheet-body,
+.ui-material {
+  color: var(--ui-text);
+  font: 400 var(--ui-body-size)/1.5 var(--body-font);
+}
+html body .game-window[data-material] .sheet-body > .label:first-child {
+  color: var(--ui-text);
+  font-size: var(--ui-title);
+  margin-bottom: var(--ui-space-4);
+}
+html
+  body
+  .game-window[data-material]
+  :is(.dim, small, .why, .class-node-help, .class-node-blocked, .class-map-locked) {
+  color: var(--ui-muted);
+  font-size: var(--ui-detail-size);
+  line-height: 1.45;
+  opacity: 1;
+}
+html
+  body
+  .game-window[data-material]
+  :is(.kit-slot, .legacy-upgrade, .game-inset, .quest-card, .class-node, .class-style-card) {
+  border-color: var(--ui-edge);
+  border-image: none;
+  background: var(--ui-inset);
+  color: var(--ui-text);
+}
+html
+  body
+  .game-window[data-material]
+  :is(.kit-head b, .legacy-upgrade b, .hero-name, .hero-line b, .quest-goal) {
+  color: var(--ui-text);
+}
+html body .game-window[data-material] :is(button, summary),
+.ui-material .ui-action {
+  min-width: var(--ui-target);
+  min-height: var(--ui-target);
+  font-size: var(--ui-control-size);
+}
+html body .game-window[data-material] button:where(:not(.stud):not(.sheet-back):not(.sheet-x)),
+.ui-material .ui-action {
+  border: 2px solid var(--ui-button-edge);
+  border-image: none;
+  border-radius: 2px;
+  padding: var(--ui-space-2) var(--ui-space-3);
+  background: var(--ui-button);
+  color: var(--ui-button-text);
+  box-shadow:
+    inset 0 2px #a4bcd633,
+    inset 0 -3px var(--ink);
+  text-shadow: none;
+  filter: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-family: var(--body-font);
+  line-height: 1.3;
+  cursor: pointer;
+}
+html body .game-window[data-material] button.primary {
+  background: var(--clot);
+  border-color: var(--blood);
+}
+html body .game-window[data-material] button:is(.on, [aria-selected="true"], [aria-pressed="true"]),
+.ui-material .ui-action[data-state="selected"] {
+  border-color: var(--ui-selected);
+  box-shadow:
+    inset 0 -3px var(--ui-selected),
+    inset 0 2px #a4bcd633;
+}
+html body .game-window[data-material] button:hover:not(:disabled),
+.ui-material .ui-action[data-state="hover"] {
+  background: #35405e;
+  border-color: var(--bone);
+  filter: none;
+}
+html body .game-window[data-material] button:active:not(:disabled),
+.ui-material .ui-action[data-state="pressed"] {
+  background: var(--ink);
+  box-shadow: inset 0 3px var(--umbra);
+  transform: none;
+}
+html body .game-window[data-material] :is(button, summary, [tabindex]):focus-visible,
+.ui-material .ui-action[data-state="focus"] {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 3px;
+}
+html body .game-window[data-material] button:disabled,
+.ui-material .ui-action:disabled {
+  opacity: 1;
+  filter: none;
+  background: var(--umbra);
+  border-color: var(--moon);
+  color: var(--mist);
+  box-shadow: none;
+  cursor: default;
+}
+html body .game-window[data-material] :is(.bloodline-tab, .class-path-choose, .legacy-buy) {
+  min-height: 3rem;
+}
+html body .game-window[data-material] .bloodline-panel {
+  padding: var(--ui-space-2);
+}
+html body .game-window[data-material] :is(.bloodline-tabs, .forge-branches) {
+  gap: var(--ui-space-2);
+}
+html body .game-window[data-material] :is(.hero-sheet, .forge, .quest-panel) {
+  min-width: 0;
+}
+html
+  body
+  .game-window[data-material]
+  :is(.forge-item, .hero-line, .quest-main, .kit-head, .legacy-head) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (prefers-reduced-motion: reduce) {
+  .game-window[data-material] *,
+  .ui-material * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.foundation-board {
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--ui-space-4);
+  color: var(--bone);
+  font-family: var(--body-font);
+}
+.foundation-board h1,
+.foundation-board h2 {
+  font-family: var(--display);
+}
+.foundation-material {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ui-space-3);
+  padding: var(--ui-space-4);
+  margin-block: var(--ui-space-4);
+  background: var(--ui-surface);
+  border: 4px solid var(--ui-edge);
+}
+.foundation-material h2 {
+  grid-column: 1/-1;
+  margin: 0;
+}
+.foundation-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ui-space-2);
+  padding: var(--ui-space-3);
+  background: var(--ui-inset);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.foundation-cell small {
+  font-size: var(--ui-detail);
+  line-height: 1.45;
+  color: var(--ui-muted);
+}
+@media (max-width: 600px) {
+  .foundation-material {
+    grid-template-columns: 1fr;
+  }
+}
+/* Keep painted pixel bevels at the boundary; solid text plates ensure contrast. */
+html.skin-tablet body .sheet-wrap.centered > .game-window[data-material] {
+  border: 12px solid transparent;
+  border-image: url("/ui/frames/tablet.png") 24 / 12px stretch;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 6px,
+    #a4bcd607 6px 7px,
+    transparent 7px 13px
+  );
+}
+html.skin-tablet
+  body
+  .game-window[data-material]
+  button:where(:not(.stud):not(.sheet-back):not(.sheet-x)) {
+  border: 8px solid transparent;
+  border-image: url("/ui/frames/tablet.png") 24 / 8px stretch;
+  padding: 0.25rem 0.5rem;
+}
+html.skin-tablet
+  body
+  .game-window[data-material]
+  button:is(.on, [aria-selected="true"], [aria-pressed="true"]) {
+  outline: 2px solid var(--ui-selected);
+  outline-offset: -3px;
+}
+html.skin-tablet body .game-window[data-material] button:focus-visible {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 3px;
+}
+
+html body .game-window[data-material] .sheet-body > .label:first-child {
+  border-image: none;
+  border: 0;
+  border-bottom: 2px solid var(--ui-edge);
+  background: none;
+  text-shadow: none;
+  padding-inline: 0;
+}
+html body .game-window[data-material] button :is(small, .dim, .num) {
+  color: inherit;
+  opacity: 1;
+}
+html body .game-window[data-material] :is(.label, summary, .item-name, .hero-menu-presence) {
+  color: var(--ui-text);
+}
+html body .game-window[data-material] .quest-stamp {
+  background: var(--clot);
+  color: var(--bone);
+}
+html body .game-window[data-material] .sheet-back {
+  background: var(--ink);
+  color: var(--bone);
+  text-shadow: none;
+}
+html body .game-window[data-material] :is(.close-stud, .sheet-x) {
+  background-color: var(--ink);
+  color: var(--bone);
+  text-shadow: none;
+}
+html body .game-window[data-material] .hero-name {
+  font-size: 1.125em;
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(
+    .class-tree-panel,
+    .class-path-node,
+    .class-tree-future,
+    .class-style-panel,
+    .legacy-upgrade.locked:not(.owned)
+  ) {
+  background: var(--ui-inset);
+  border-color: var(--ui-edge);
+  color: var(--ui-text);
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(.class-path-node.chosen, .class-style-panel.chosen, .legacy-tree .chosen) {
+  border-color: var(--ui-selected);
+  box-shadow: inset 0 0 0 1px var(--ui-selected);
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(
+    .class-path-owned,
+    .class-path-blocked,
+    .class-tree-next,
+    .class-path-rules,
+    .class-style-preview
+  ) {
+  color: var(--ui-muted);
+  font-size: var(--ui-detail);
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(.class-tree-header, .class-path-heading, .class-style-title, .legacy-branch h3) {
+  color: var(--ui-text);
+  font-size: 1.125em;
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(.class-path-feedback, .class-style-feedback) {
+  color: var(--ui-text);
+  border-color: var(--blood);
+}
+html
+  body
+  .game-window[data-material="bloodlines"]
+  :is(.class-tree-connector, .legacy-path .legacy-upgrade::before) {
+  background: var(--ui-edge);
+}
+html body .game-window[data-material="bloodlines"] .hero-legacy {
+  color: var(--ui-text);
+}
+html
+  body
+  .game-window[data-material]
+  :is(.hero-progress, .hero-menu-presence, .hero-legacy, .quest-stamp) {
+  font-size: var(--ui-detail);
+}
+html body .game-window[data-material] .quest-goal {
+  font-size: 1.125em;
+}
+/* Three tabs keep their grid width when text scales; the physical targets remain >=44px. */
+html body .game-window[data-material] .bloodline-tab {
+  min-width: 0;
+}
+html body .game-window[data-material="bloodlines"] .class-tree-fork {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+}
+html body .game-window[data-material="journal"] .quest-card {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+}
+html body .game-window[data-material="journal"] .quest-reward {
+  max-width: 100%;
+  margin-inline: auto;
+}
+/* Text scaling must not spend the narrow viewport on doubled frame padding/icons. */
+html body .sheet-wrap.centered > .game-window[data-material] {
+  padding: clamp(8px, 3vw, 16px);
+}
+html body .game-window[data-material] :is(.close-stud, .sheet-back, .sheet-x) {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 0 0 44px;
+}
+html body .game-window[data-material] .sheet-body > .label:first-child {
+  overflow-wrap: anywhere;
+}
+html body .game-window[data-material] :is(.hero-actions, .forge-action, .kit-head) {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+html body .game-window[data-material] button:where(:not(.stud):not(.sheet-back):not(.sheet-x)) {
+  max-width: 100%;
+}
+html body .game-window[data-material="forge"] .forge-branches {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+}
+html body .game-window[data-material="forge"] .forge-branch {
+  flex-wrap: wrap;
+}
+html body .game-window[data-material="forge"] .forge-branch small {
+  white-space: nowrap;
+}
+
+/* Cut241 secondary windows: use the established families, with purpose-specific static construction.
+   Scope token repair to newly adopted windows; established Forge/Hub/Journal/full-screen frames retain their identity. */
+html body .game-window[data-menu-purpose] {
+  --fg: var(--ui-text);
+  --dim: var(--ui-muted);
+  --line: var(--ui-edge);
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(.sheet-head, h2, h3, label, .wn-name, .wn-state, .wn-tip, .wb-name, .wb-now, .wb-next) {
+  color: var(--ui-text);
+}
+html body .game-window[data-menu-purpose] :is(input, textarea, select) {
+  min-height: var(--ui-target);
+  max-width: 100%;
+  min-width: 0;
+  background: var(--ui-inset);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-edge);
+  font: inherit;
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 3px;
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(.settings, .works-sheet, .pkg-panel, .ledger, .gold-sheet, .runs-sheet) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+html body .game-window[data-menu-purpose="works"] .wnode,
+html body .game-window[data-menu-purpose="settings"] .srow,
+html body .game-window[data-menu-purpose="town"] .bank-line {
+  background: var(--ui-inset);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-edge);
+  padding: var(--ui-space-3);
+  box-shadow:
+    inset 0 2px var(--dusk),
+    inset 0 -2px var(--ink);
+}
+html body .game-window[data-menu-purpose="works"] .wnode.lit {
+  border-color: var(--gilt);
+}
+html body .game-window[data-menu-purpose="works"] .wnode.sil {
+  opacity: 1;
+}
+html body .game-window[data-menu-purpose="works"] .wnode.sil :is(.wn-name, .wn-state, .wn-tip) {
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="works"] .sheet-body > .label:first-child {
+  border-bottom-style: double;
+  border-bottom-width: 4px;
+  padding-bottom: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="settings"] .srow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-2);
+  margin-block: var(--ui-space-2);
+  box-shadow: inset 4px 0 var(--gilt);
+}
+html body .game-window[data-menu-purpose="settings"] .srow > .label {
+  flex: 1 1 8rem;
+}
+html
+  body
+  .game-window:is(
+    [data-menu-purpose="build"],
+    [data-menu-purpose="hero"],
+    [data-menu-purpose="choices"],
+    [data-menu-purpose="setup"]
+  )
+  .sheet-body
+  > :is(h2, h3, .label):first-child {
+  border-bottom: 3px double var(--gilt);
+  padding-block: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="records"] .sheet-body > :is(h2, h3, .label):first-child,
+html body .game-window[data-menu-purpose="evidence"] .sheet-body > :is(h2, h3, .label):first-child {
+  border-bottom: 3px double var(--dusk);
+  padding-block: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="replay"] .replay {
+  color: var(--ui-text);
+}
+
+/* Cut241 observed current-route defects: retain the scroll/forge identities while
+   giving ordinary copy a stable local surface and allowing enlarged column labels to wrap. */
+html body .forge .salvage .dot-h {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+html body .report-sheet .report-summary h2 {
+  background: var(--bone);
+  color: var(--ink);
+  padding: 0.25rem;
+}
+html body .report-sheet .report-away {
+  color: var(--ink);
+}
+html body .report-sheet .collect-send summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  background: var(--bone);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding-inline: 0.5rem;
+}
+html body .report-sheet .pick-head {
+  background: var(--bone);
+  color: var(--ink);
+}
+html body .report-sheet .pick-default-tag {
+  background: var(--ink);
+  color: var(--bone);
+  opacity: 1;
+}
+/* Readability census: secondary rows must use the color roles of their actual inset,
+   rather than retain the old paper colors when their controls are dark. */
+html body .game-window[data-menu-purpose] .label {
+  color: var(--ui-text);
+}
+html body .game-window[data-menu-purpose] .label .kw {
+  color: inherit;
+}
+html body .game-window[data-menu-purpose="works"] .works-done {
+  opacity: 1;
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="works"] .wd-mark {
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="records"] .gold-sheet .lrow .k,
+html body .game-window[data-menu-purpose="records"] .ledger .dot.on {
+  color: var(--ink);
+}
+html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry {
+  --ink-dim: var(--mist);
+}
+html
+  body
+  .game-window[data-menu-purpose="records"]
+  .runs-sheet
+  .run-entry
+  :is(.re-id, .re-tier, .re-d.best, .re-best, .gold) {
+  color: var(--bone);
+}
+html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry .re-gem {
+  color: var(--r-lit, var(--mist));
+}
+html body .report-sheet .pick-head .dim {
+  color: var(--ink);
+}
+html body .forge .salvage .lrow {
+  grid-template-columns: minmax(0, 1fr) max(28px, 2ch) max(28px, 3ch);
+}

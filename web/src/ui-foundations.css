@@ -407,3 +407,169 @@ html body .game-window[data-material="forge"] .forge-branch {
 html body .game-window[data-material="forge"] .forge-branch small {
   white-space: nowrap;
 }
+
+/* Cut241 secondary windows: use the established families, with purpose-specific static construction.
+   Scope token repair to newly adopted windows; established Forge/Hub/Journal/full-screen frames retain their identity. */
+html body .game-window[data-menu-purpose] {
+  --fg: var(--ui-text);
+  --dim: var(--ui-muted);
+  --line: var(--ui-edge);
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(.sheet-head, h2, h3, label, .wn-name, .wn-state, .wn-tip, .wb-name, .wb-now, .wb-next) {
+  color: var(--ui-text);
+}
+html body .game-window[data-menu-purpose] :is(input, textarea, select) {
+  min-height: var(--ui-target);
+  max-width: 100%;
+  min-width: 0;
+  background: var(--ui-inset);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-edge);
+  font: inherit;
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 3px;
+}
+html
+  body
+  .game-window[data-menu-purpose]
+  :is(.settings, .works-sheet, .pkg-panel, .ledger, .gold-sheet, .runs-sheet) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+html body .game-window[data-menu-purpose="works"] .wnode,
+html body .game-window[data-menu-purpose="settings"] .srow,
+html body .game-window[data-menu-purpose="town"] .bank-line {
+  background: var(--ui-inset);
+  color: var(--ui-text);
+  border: 2px solid var(--ui-edge);
+  padding: var(--ui-space-3);
+  box-shadow:
+    inset 0 2px var(--dusk),
+    inset 0 -2px var(--ink);
+}
+html body .game-window[data-menu-purpose="works"] .wnode.lit {
+  border-color: var(--gilt);
+}
+html body .game-window[data-menu-purpose="works"] .wnode.sil {
+  opacity: 1;
+}
+html body .game-window[data-menu-purpose="works"] .wnode.sil :is(.wn-name, .wn-state, .wn-tip) {
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="works"] .sheet-body > .label:first-child {
+  border-bottom-style: double;
+  border-bottom-width: 4px;
+  padding-bottom: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="settings"] .srow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ui-space-2);
+  margin-block: var(--ui-space-2);
+  box-shadow: inset 4px 0 var(--gilt);
+}
+html body .game-window[data-menu-purpose="settings"] .srow > .label {
+  flex: 1 1 8rem;
+}
+html
+  body
+  .game-window:is(
+    [data-menu-purpose="build"],
+    [data-menu-purpose="hero"],
+    [data-menu-purpose="choices"],
+    [data-menu-purpose="setup"]
+  )
+  .sheet-body
+  > :is(h2, h3, .label):first-child {
+  border-bottom: 3px double var(--gilt);
+  padding-block: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="records"] .sheet-body > :is(h2, h3, .label):first-child,
+html body .game-window[data-menu-purpose="evidence"] .sheet-body > :is(h2, h3, .label):first-child {
+  border-bottom: 3px double var(--dusk);
+  padding-block: var(--ui-space-2);
+}
+html body .game-window[data-menu-purpose="replay"] .replay {
+  color: var(--ui-text);
+}
+
+/* Cut241 observed current-route defects: retain the scroll/forge identities while
+   giving ordinary copy a stable local surface and allowing enlarged column labels to wrap. */
+html body .forge .salvage .dot-h {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+html body .report-sheet .report-summary h2 {
+  background: var(--bone);
+  color: var(--ink);
+  padding: 0.25rem;
+}
+html body .report-sheet .report-away {
+  color: var(--ink);
+}
+html body .report-sheet .collect-send summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  background: var(--bone);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding-inline: 0.5rem;
+}
+html body .report-sheet .pick-head {
+  background: var(--bone);
+  color: var(--ink);
+}
+html body .report-sheet .pick-default-tag {
+  background: var(--ink);
+  color: var(--bone);
+  opacity: 1;
+}
+/* Readability census: secondary rows must use the color roles of their actual inset,
+   rather than retain the old paper colors when their controls are dark. */
+html body .game-window[data-menu-purpose] .label {
+  color: var(--ui-text);
+}
+html body .game-window[data-menu-purpose] .label .kw {
+  color: inherit;
+}
+html body .game-window[data-menu-purpose="works"] .works-done {
+  opacity: 1;
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="works"] .wd-mark {
+  color: var(--ui-muted);
+}
+html body .game-window[data-menu-purpose="records"] .gold-sheet .lrow .k,
+html body .game-window[data-menu-purpose="records"] .ledger .dot.on {
+  color: var(--ink);
+}
+html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry {
+  --ink-dim: var(--mist);
+}
+html
+  body
+  .game-window[data-menu-purpose="records"]
+  .runs-sheet
+  .run-entry
+  :is(.re-id, .re-tier, .re-d.best, .re-best, .gold) {
+  color: var(--bone);
+}
+html body .game-window[data-menu-purpose="records"] .runs-sheet .run-entry .re-gem {
+  color: var(--r-lit, var(--mist));
+}
+html body .report-sheet .pick-head .dim {
+  color: var(--ink);
+}
+html body .forge .salvage .lrow {
+  grid-template-columns: minmax(0, 1fr) max(28px, 2ch) max(28px, 3ch);
+}

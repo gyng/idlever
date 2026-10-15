@@ -4,6 +4,8 @@
 // falls through to `onEscapeIdle` (the app: a kept death back to the camp).
 import "../ui-foundations.css";
 import { h } from "./dom";
+import { menuMaterial } from "./menu-material";
+import { ownSheetFocus } from "./sheet-focus";
 import { stud } from "./frame";
 import { AUTO, autoDismiss } from "./autodismiss";
 import { sheetGhost } from "../juice"; // juice pass 2: the close eases out (a ghost of the panel; the sheet itself goes at once)
@@ -64,6 +66,8 @@ export function openSheet(
   } = {},
 ): void {
   const panel = h("div", { class: "sheet", role: "dialog" });
+  const focusOpener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  let releaseFocus: (() => void) | undefined;
   // Cut 24 §5 (AK: "the chip tap didn't open the verb sheet a second time"): a tap on another chip of the anchor's own row (the verb
   // while the cond sheet is up) closes this sheet and opens that one — the row being edited stays live; anywhere else a tap only closes
   const opener =
@@ -124,6 +128,7 @@ export function openSheet(
       parent.hidden = false;
       parent.classList.remove("under");
     }
+    releaseFocus?.();
   };
   /** The `×` of a sheet that replaced another closes the chain (this one and every one it replaced). */
   const closeChain = (): void => {
@@ -144,6 +149,7 @@ export function openSheet(
   const content = build(close);
   panel.appendChild(content);
   // Management materials are presentation only; all choices remain engine-owned.
+  const semantic = content instanceof Element ? menuMaterial(content) : undefined;
   const material =
     opts.material ??
     (content instanceof Element
@@ -153,9 +159,10 @@ export function openSheet(
           ? "bloodlines"
           : content.matches(".quest-panel")
             ? "journal"
-            : undefined
+            : semantic?.material
       : undefined);
   if (material) panel.dataset.material = material;
+  if (semantic && !opts.material) panel.dataset.menuPurpose = semantic.purpose;
   // Cut 17 §2: every sheet is a panel with a close stud (×) top-right — its own `closeX` when the body carries one
   if (!panel.querySelector(".sheet-x")) panel.prepend(stud(close));
   if (parent) {
@@ -249,6 +256,7 @@ export function openSheet(
     };
     requestAnimationFrame(follow);
   }
+  releaseFocus = ownSheetFocus(wrap, panel, opts, focusOpener);
 }
 /** The wide frame (wide.css): a tap's control, kept so a sheet it opens can stand beside it. */
 let lastTap: HTMLElement | null = null;
@@ -322,8 +330,11 @@ function placeBeside(wrap: HTMLElement, panel: HTMLElement, anchor: HTMLElement)
 }
 window.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
-  if (stack.length) closeSheet();
-  else if (!panelEscape?.()) idle?.();
+  if (stack.length) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeSheet();
+  } else if (!panelEscape?.()) idle?.();
 });
 
 /** Full game windows center in the playable area; token pickers keep openSheet's anchor behavior. */

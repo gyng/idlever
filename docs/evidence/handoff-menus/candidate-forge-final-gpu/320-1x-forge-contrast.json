@@ -1,0 +1,988 @@
+{
+  "width": 320,
+  "height": 1000,
+  "dpr": 1.0000000298023224,
+  "material": "forge",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "cls": "stud close-stud ad-host ad-paused",
+      "text": "close",
+      "width": 44,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(164, 188, 214)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "btn",
+      "text": "Loadouts",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Current gear",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Next gear",
+      "width": 224.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "aim +3% $7200",
+      "width": 108.40625,
+      "height": 66.48958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "edge +2 $7200",
+      "width": 108.40625,
+      "height": 66.48958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch default",
+      "text": "plate +1 $9000",
+      "width": 108.40625,
+      "height": 66.48958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip forge-buy forge-branch",
+      "text": "pace +8% $9000",
+      "width": 108.40625,
+      "height": 66.48958587646484,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "SUMMARY",
+      "cls": "",
+      "text": "Details",
+      "width": 252.8125,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    },
+    {
+      "tag": "BUTTON",
+      "cls": "chip",
+      "text": "Forecast",
+      "width": 88.27083587646484,
+      "height": 44,
+      "disabled": false,
+      "outline": {
+        "color": "rgb(234, 223, 197)",
+        "width": "2.66667px"
+      }
+    }
+  ],
+  "containers": [
+    {
+      "cls": "sheet-body forge",
+      "overflow": 0
+    },
+    {
+      "cls": "salvage ledger",
+      "overflow": 0
+    }
+  ],
+  "samples": [
+    {
+      "text": "Forge",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "24px",
+      "font": "Grenze, Georgia, \"Times New Roman\", serif",
+      "words": [
+        {
+          "word": "FORGE",
+          "width": 66.19180297851562,
+          "ascent": 15,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 207.125,
+        "w": 71,
+        "h": 32
+      }
+    },
+    {
+      "text": "Discovered gear",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "18.72px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Discovered",
+          "width": 93.79624938964844,
+          "ascent": 16,
+          "descent": 1
+        },
+        {
+          "word": "gear",
+          "width": 37.5745849609375,
+          "ascent": 12,
+          "descent": 5
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 289.97918701171875,
+        "w": 135.9791717529297,
+        "h": 22
+      }
+    },
+    {
+      "text": "Uses this hero's Forge upgrades.",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Uses",
+          "width": 29.903884887695312,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "this",
+          "width": 23.743911743164062,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "hero's",
+          "width": 38.31785583496094,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "Forge",
+          "width": 34.439849853515625,
+          "ascent": 10,
+          "descent": 3
+        },
+        {
+          "word": "upgrades.",
+          "width": 62.173736572265625,
+          "ascent": 11,
+          "descent": 3
+        }
+      ],
+      "rect": {
+        "x": 33.59375,
+        "y": 347.4375,
+        "w": 203.42709350585938,
+        "h": 17.333343505859375
+      }
+    },
+    {
+      "text": "Crownsplitter",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Crownsplitter",
+          "width": 98.76824951171875,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 69.59375,
+        "y": 395.0625,
+        "w": 98.77084350585938,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Effect",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Effect",
+          "width": 41.74407958984375,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 427.0625,
+        "w": 41.75,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 89.34375,
+        "y": 427.0625,
+        "w": 12.322921752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Deal +2 melee damage to stunned or slowed foes.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Deal",
+          "width": 32.09605407714844,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "melee",
+          "width": 44.480072021484375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "damage",
+          "width": 57.3121337890625,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "stunned",
+          "width": 59.600128173828125,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "slowed",
+          "width": 51.184112548828125,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "foes.",
+          "width": 34.576080322265625,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 101.66667175292969,
+        "y": 427.0625,
+        "w": 161.5416717529297,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Deal +2 melee damage to stunned or slowed foes.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Deal",
+          "width": 32.09605407714844,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "melee",
+          "width": 44.480072021484375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "damage",
+          "width": 57.3121337890625,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "stunned",
+          "width": 59.600128173828125,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "slowed",
+          "width": 51.184112548828125,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "foes.",
+          "width": 34.576080322265625,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 451.0625,
+        "w": 192.7291717529297,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Tradeoff",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Tradeoff",
+          "width": 61.58415222167969,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 483.0625,
+        "w": 61.59375,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 109.1875,
+        "y": 483.0625,
+        "w": 12.322921752929688,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Slower than a sword. Control must be active.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Slower",
+          "width": 49.04010009765625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "than",
+          "width": 33.232086181640625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "sword.",
+          "width": 47.280120849609375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "Control",
+          "width": 52.86412048339844,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "must",
+          "width": 36.272064208984375,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "active.",
+          "width": 46.84809875488281,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 121.51042175292969,
+        "y": 483.0625,
+        "w": 99.45832824707031,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Slower than a sword. Control must be active.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Slower",
+          "width": 49.04010009765625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "than",
+          "width": 33.232086181640625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "sword.",
+          "width": 47.280120849609375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "Control",
+          "width": 52.86412048339844,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "must",
+          "width": 36.272064208984375,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "active.",
+          "width": 46.84809875488281,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 507.0625,
+        "w": 218.44793701171875,
+        "h": 18.66668701171875
+      }
+    },
+    {
+      "text": "Free use",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Free",
+          "width": 26.627899169921875,
+          "ascent": 10,
+          "descent": 1
+        },
+        {
+          "word": "use",
+          "width": 22.31591796875,
+          "ascent": 8,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 537.7291870117188,
+        "w": 52.65625,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Defeat the Warlord.",
+      "color": "rgb(164, 188, 214)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Defeat",
+          "width": 41.35585021972656,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "the",
+          "width": 20.887924194335938,
+          "ascent": 11,
+          "descent": 1
+        },
+        {
+          "word": "Warlord.",
+          "width": 53.0877685546875,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 566.0208740234375,
+        "w": 122.76042175292969,
+        "h": 17.33331298828125
+      }
+    },
+    {
+      "text": "Loadouts",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "14px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Loadouts",
+          "width": 59.09376525878906,
+          "ascent": 11,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 129.05209350585938,
+        "y": 605.875,
+        "w": 61.89582824707031,
+        "h": 17.3333740234375
+      }
+    },
+    {
+      "text": "Hearthglass",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Hearthglass",
+          "width": 86.96018981933594,
+          "ascent": 13,
+          "descent": 4
+        }
+      ],
+      "rect": {
+        "x": 69.59375,
+        "y": 679.6458740234375,
+        "w": 86.96875,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Effect",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Effect",
+          "width": 41.74407958984375,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 711.6458740234375,
+        "w": 41.75,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 89.34375,
+        "y": 711.6458740234375,
+        "w": 12.322921752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Recover",
+          "width": 57.47210693359375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 38.944091796875,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "direct",
+          "width": 41.92008972167969,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "attack",
+          "width": 44.6881103515625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "slays",
+          "width": 35.77606201171875,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "natural",
+          "width": 52.01611328125,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 101.66667175292969,
+        "y": 711.6458740234375,
+        "w": 150.1770782470703,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Recover",
+          "width": 57.47210693359375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 38.944091796875,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "direct",
+          "width": 41.92008972167969,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "attack",
+          "width": 44.6881103515625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "slays",
+          "width": 35.77606201171875,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "natural",
+          "width": 52.01611328125,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 735.6458740234375,
+        "w": 200.0729217529297,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Recover",
+          "width": 57.47210693359375,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "when",
+          "width": 38.944091796875,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "direct",
+          "width": 41.92008972167969,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "attack",
+          "width": 44.6881103515625,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "slays",
+          "width": 35.77606201171875,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "natural",
+          "width": 52.01611328125,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 759.6458740234375,
+        "w": 81,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Tradeoff",
+      "color": "rgb(184, 148, 72)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Tradeoff",
+          "width": 61.58415222167969,
+          "ascent": 13,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 47.59375,
+        "y": 791.6458740234375,
+        "w": 61.59375,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "·",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [],
+      "rect": {
+        "x": 109.1875,
+        "y": 791.6458740234375,
+        "w": 12.322921752929688,
+        "h": 18.6666259765625
+      }
+    },
+    {
+      "text": "Only 1 base guard. Summons, allies and hazards give no healing.",
+      "color": "rgb(234, 223, 197)",
+      "opacity": 1,
+      "inactive": false,
+      "cssSize": "16px",
+      "font": "\"Fira Sans\", sans-serif",
+      "words": [
+        {
+          "word": "Only",
+          "width": 32.848052978515625,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "base",
+          "width": 34.08006286621094,
+          "ascent": 12,
+          "descent": 1
+        },
+        {
+          "word": "guard.",
+          "width": 45.28010559082031,
+          "ascent": 12,
+          "descent": 4
+        },
+        {
+          "word": "Summons,",
+          "width": 75.48814392089844,
+          "ascent": 12,
+          "descent": 3
+        },
+        {
+          "word": "allies",
+          "width": 38.62406921386719,
+          "ascent": 13,
+          "descent": 1
+        },
+        {
+          "word": "and",
+          "width": 27.6480712890625,
+          "ascent": 12,
+          "descent": 1
+        }
+      ],
+      "rect": {
+        "x": 121.51042175292969,
+        "y": 791.6458740234375,
+        "w": 131.8645782470703,
+        "h": 18.6666259765625
+      }
+    }
+  ]
+}
