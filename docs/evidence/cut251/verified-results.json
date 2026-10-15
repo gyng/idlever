@@ -1,0 +1,24 @@
+{
+  "recordedAtUtc": "2026-10-15T21:11:26.762282+00:00",
+  "status": "PASS scoped raw-evidence verification",
+  "liveChecksPassedBeforeMetadataFailure": 184,
+  "observations": 32,
+  "readOnlyRefreshes": 800,
+  "actualServedWasmResponses": 32,
+  "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "allExistingRuntimeAssertionsPassed": true,
+  "offlineChecks": [
+    "all32pause/active/motion/viewport states and40minimumdraws",
+    "all32exactsavehashpairs and original livebytecomparisons",
+    "all32actualservedWASMresponses match8879/6774306bytes",
+    "zero page errors and own source unchanged"
+  ],
+  "originalMatrixCommandExit": 1,
+  "originalFailure": "Only expected exactly8WASMresponses; workerpool legitimately fetched32. Original source/results/log retained.",
+  "currentHarnessChange": "Only response cardinality ===8 changed to >=8 and explanatory assertion label; no renderer/save/motion assertion weakened.",
+  "freshWholeScriptPassClaimed": false,
+  "rawResultsSha256": "4a647f711511565212463e7b52a868001d3b2b09e0749964951de6a29bccd14e",
+  "testBeforeSha256": "b57a8bd01b8e81a24d2eaff4cae6a911711ef3394849317d3c4fb646fd7afc62",
+  "testAfterSha256": "fd138012a10c610f37d78397675dfa046e2be78221059728c54a14575c13692d",
+  "productionSourceUnchangedSinceMatrix": true
+}

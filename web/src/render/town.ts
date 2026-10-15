@@ -2390,7 +2390,8 @@ export function createTownView(host: HTMLElement): TownView {
       }
     }
     // Cut 30.5: the workers at their posts — an idle beat (two frames, desynchronised); the lit node's worker greyed, still; a new hire
-    // walks out of the tent to his post
+    // walks out of the tent to his post. Paused workers rest; reduced/Off keeps every worker still.
+    // The active beat is ambient inspection, never a recent-action receipt.
     for (const w of s.workers) {
       const p = workerAt(w);
       if (!p) continue;
@@ -2398,6 +2399,8 @@ export function createTownView(host: HTMLElement): TownView {
         y = p.y,
         moving = false,
         flip = false;
+      const still = w.lit || w.paused || motionPreference.matches || effectsLevel() === "off";
+      if (still) arrive.delete(w.id);
       const legs = arrive.get(w.id);
       if (legs?.length) {
         const at = walkerAt({ legs, from: legs[0]!.t0, to: Infinity } as Walker, t);
@@ -2412,7 +2415,7 @@ export function createTownView(host: HTMLElement): TownView {
       const beat = 0.9 + (k % 50) / 100,
         phase = (k % 97) / 31;
       const step = moving && (Math.floor(t * 6.5) & 1) === 1;
-      const frameN = w.lit || moving ? 0 : Math.floor((t + phase) / beat) & 1;
+      const frameN = still || moving ? 0 : Math.floor((t + phase) / beat) & 1;
       if (w.lit) {
         const g = atlas.grey(workerIds(w.id), 24);
         if (inView(x, y, g.w, g.h)) {

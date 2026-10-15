@@ -1,0 +1,33 @@
+{
+  "recordedAtUtc": "2026-10-15T21:03:20.448Z",
+  "sourceBefore": {
+    "web/src/render/town.ts": "6ff7b7e2c82b517a0be24fb7b9b87c6696ee5a45b3238c3411347d75238c82f1",
+    "web/tests/worker-pause.mjs": "887c624372b101a1546362bb78558dd4a3512f45b183c39710bdc5a8a9d51b4f"
+  },
+  "sourceAfter": {
+    "web/src/render/town.ts": "6ff7b7e2c82b517a0be24fb7b9b87c6696ee5a45b3238c3411347d75238c82f1",
+    "web/tests/worker-pause.mjs": "887c624372b101a1546362bb78558dd4a3512f45b183c39710bdc5a8a9d51b4f"
+  },
+  "sourceUnchanged": true,
+  "wasmSha": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "input": "docs/evidence/cut248/earned-paid-pace.sent.session.json",
+  "inputSha": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+  "checks": 6,
+  "results": [
+    {
+      "width": 402,
+      "height": 681,
+      "mode": "full",
+      "paused": true,
+      "frames": [
+        "town_worker_scout_1",
+        "town_worker_scout"
+      ],
+      "samples": 83,
+      "saveBeforeSha": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+      "saveAfterSha": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196"
+    }
+  ],
+  "errors": [],
+  "scope": "Headless real-renderer atlas-request/public-WASM state proof; no painted quality or GPU performance claim"
+}

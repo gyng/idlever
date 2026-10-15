@@ -1,0 +1,43 @@
+{
+  "recordedAtUtc": "2026-10-15T21:04:40.102Z",
+  "sourceBefore": {
+    "web/src/render/town.ts": "96f80676fe960bcbc55d6740090ed0a1f3fa0831760cfbf423e0a0182dd8cde7",
+    "web/tests/worker-pause.mjs": "b57a8bd01b8e81a24d2eaff4cae6a911711ef3394849317d3c4fb646fd7afc62"
+  },
+  "sourceAfter": {
+    "web/src/render/town.ts": "96f80676fe960bcbc55d6740090ed0a1f3fa0831760cfbf423e0a0182dd8cde7",
+    "web/tests/worker-pause.mjs": "b57a8bd01b8e81a24d2eaff4cae6a911711ef3394849317d3c4fb646fd7afc62"
+  },
+  "sourceUnchanged": true,
+  "servedWasm": [
+    {
+      "url": "http://localhost:5397/src/engine/pkg/idlever_wasm_bg.wasm",
+      "sha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+      "bytes": 6774306
+    },
+    {
+      "url": "http://localhost:5397/src/engine/pkg/idlever_wasm_bg.wasm",
+      "sha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+      "bytes": 6774306
+    },
+    {
+      "url": "http://localhost:5397/src/engine/pkg/idlever_wasm_bg.wasm",
+      "sha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+      "bytes": 6774306
+    },
+    {
+      "url": "http://localhost:5397/src/engine/pkg/idlever_wasm_bg.wasm",
+      "sha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+      "bytes": 6774306
+    }
+  ],
+  "wasmSha": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "input": "docs/evidence/cut248/earned-paid-pace.sent.session.json",
+  "inputSha": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+  "checks": 3,
+  "results": [],
+  "errors": [
+    "Cannot read properties of undefined (reading 'length')"
+  ],
+  "scope": "Headless real-renderer atlas-request/public-WASM state proof; no painted quality or GPU performance claim"
+}

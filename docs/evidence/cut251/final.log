@@ -1,0 +1,15 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: eight actual served WASM responses match pinned package
+    at check (file:///home/g/p/riddle/web/tests/worker-pause.mjs:23:10)
+    at file:///home/g/p/riddle/web/tests/worker-pause.mjs:146:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.18.0
