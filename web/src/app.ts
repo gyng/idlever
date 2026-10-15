@@ -38,7 +38,8 @@ import { toast } from "./ui/dom";
 import { audio } from "./audio";
 import { debugNote } from "./debug";
 import { applySkin } from "./ui/skin";
-import { initTips } from "./ui/tips"; // docs/TOOLTIPS.md: keyword tips
+import { initTips, setGlossaryOpener } from "./ui/tips"; // docs/TOOLTIPS.md: keyword tips
+import { openGlossary } from "./ui/journal-window"; // Cut234: a plate head opens its glossary entry
 import { mergeMeters } from "./ui/meters";
 import { goldTransfers, type GoldTransfer } from "./ui/gold-transfers";
 import {
@@ -2372,6 +2373,7 @@ export function start(dev: DevOptions | null = null): App {
   applySkin(); // Cut 17: the frames packed in web/public/ui (tools/ui-skin.py); absent ones keep the flat CSS
   const app = new App(root, dev);
   initTips(app);
+  setGlossaryOpener((t) => openGlossary(app, t));
   audio.arm(); // Cut 10 §4: the WebAudio context opens on the first gesture
   if (dev) (window as unknown as { __idlever: App }).__idlever = app;
   // Cut 14 §4: the cue log is readable on every build (a rater assesses sound on the cohort build); the App stays dev-only

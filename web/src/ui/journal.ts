@@ -1,6 +1,8 @@
 import type { Journal, JournalAction, JournalEntry } from "../engine/types";
 import { h, replace } from "./dom";
 import { questBar, rewardPicture } from "./quest";
+import { TIP, termIcon, termTitle, type Term } from "./concepts";
+import { glossaryTerms } from "./tips";
 import "../journal.css";
 
 export type JournalSnapshot = { identity: string; journal: Journal };
@@ -8,7 +10,41 @@ export type JournalOptions = {
   read: () => JournalSnapshot | Promise<JournalSnapshot>;
   action: (action: JournalAction, entryId: string) => Promise<boolean>;
   swapQuest?: () => Promise<boolean>;
+  /** Cut234: a plate's head opened the journal on this term's glossary entry. */
+  focusTerm?: Term;
 };
+
+/** Cut234 (package report #4): the glossary — every term this viewer has met, its plate's gloss,
+ *  in title order. Per viewer (the tips' memory); the save never holds it. */
+export function glossaryEntries(terms: Term[] = glossaryTerms()): HTMLElement[] {
+  return terms
+    .map((t) => ({ t, title: termTitle(t) }))
+    .sort((a, b) => a.title.localeCompare(b.title))
+    .map(({ t, title }) =>
+      h(
+        "article",
+        {
+          class: "journal-term",
+          id: `glossary-${t}`,
+          "data-term": t,
+          tabindex: -1,
+        },
+        h("strong", {}, termIcon(t) ?? "", title),
+        h("p", {}, TIP[t]),
+      ),
+    );
+}
+/** Opens the glossary fold, scrolls the term's entry into view and focuses it (a brief gilt rim). */
+export function revealTerm(root: HTMLElement, t: Term): boolean {
+  const entry = root.querySelector<HTMLElement>(`.journal-term[data-term="${t}"]`);
+  if (!entry) return false;
+  for (let d = entry.closest("details"); d; d = d.parentElement?.closest("details") ?? null)
+    d.open = true;
+  entry.scrollIntoView({ block: "center" });
+  entry.focus({ preventScroll: true });
+  entry.classList.add("journal-term-hit");
+  return true;
+}
 
 /** Completed milestones may still open an earned system; completion never repeats a purchase. */
 export const journalActionAllowed = (entry: JournalEntry): boolean =>
@@ -29,6 +65,7 @@ export function createJournal(options: JournalOptions) {
   let busy = false;
   let fingerprint = "";
   const open = new Map<string, boolean>();
+  let focusTerm = options.focusTerm;
 
   const run = async (
     key: string,
@@ -156,7 +193,8 @@ export function createJournal(options: JournalOptions) {
     const snapshot = await options.read();
     if (disposed || ticket !== revision) return;
     const model = snapshot.journal;
-    const next = JSON.stringify(snapshot);
+    const terms = glossaryTerms();
+    const next = JSON.stringify([snapshot, terms]);
     if (!force && next === fingerprint) return;
     const same = identity === snapshot.identity;
     const scrollNode = el.closest<HTMLElement>(".game-window, .sheet") ?? el;
@@ -258,8 +296,11 @@ export function createJournal(options: JournalOptions) {
           ),
         ),
       );
+    if (terms.length)
+      children.push(fold("glossary", /* copy:label */ "Glossary", glossaryEntries(terms)));
     replace(el, ...children, status);
     scrollNode.scrollTop = scroll;
+    if (focusTerm && revealTerm(el, focusTerm)) focusTerm = undefined;
     if (focused)
       [...el.querySelectorAll<HTMLElement>("[data-journal-focus]")]
         .find((node) => node.dataset.journalFocus === focused)

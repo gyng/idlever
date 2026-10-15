@@ -17,7 +17,7 @@ import { heroRoster } from "./heroes";
 // Cut 16 §2: beside them, while `Lineage.class_offer` stands, a chip per owned class with its signature verb (`rogue · vanish`;
 // one not yet open reads `ranger · mark L7`); the chosen one `on`; a tap is `setClass(name)` (it sticks until changed). The chip
 // row stands in for the class button while it is up.
-import { conceptCap, conceptIcon } from "./concepts";
+import { conceptCap, conceptIcon, type Term } from "./concepts";
 import { wallTablet } from "./wall";
 import { meterCompare, meterPanel, secs } from "./meters";
 import { anyNew, hasCurriculum, sysOpen } from "./systems";
@@ -82,7 +82,8 @@ import {
   townBuilt,
 } from "./town";
 import { onPackages, openPackages, packagesShown, packagesStrip, penOpen } from "./packages"; // Cut 30 §2: the packages, the pen gated late
-import { openJournal } from "./journal-window";
+import { openGlossary, openJournal } from "./journal-window";
+import { glossaryOpener, setGlossaryOpener } from "./tips";
 import { openHeroLife } from "./hero-life";
 import { openChronicle } from "./chronicle";
 import { openWorks, sendMark } from "./works";
@@ -493,6 +494,12 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     closePanel();
     openJournal(app, journalRoute, anchor);
   };
+  // Cut234: on the camp a plate's head opens the full journal (its actions routed) on the term
+  const campGlossary = (t: Term): void => {
+    closePanel();
+    openJournal(app, journalRoute, null, t);
+  };
+  setGlossaryOpener(campGlossary);
   // Cut 30 §3: the town (the camp, then the buildings as the core raises them) is the well's first screen, where the vista stood;
   // every building opens the panel its tile opens, standing over it
   const town = renderTown(app, {
@@ -2494,6 +2501,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     el,
     dispose: () => {
       if (orderRoutes.get(app) === orderRoute) orderRoutes.delete(app);
+      if (glossaryOpener() === campGlossary) setGlossaryOpener((t) => openGlossary(app, t));
       pick.dispose();
       batch.dispose();
       tasks.dispose();

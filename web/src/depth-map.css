@@ -177,3 +177,75 @@
 .depth-map-details > b {
   line-height: 1.25;
 }
+
+/* Cut234 (package report #6): the slim strip below the desk width — floor ticks, the hero's dot,
+   the next boss; a tap widens it (per viewer). The wide rail carries a slim tab on its left. */
+.depth-map-slim .depth-map-rail .depth-map-next {
+  color: var(--gilt, #d8b25a);
+}
+.watch-depth-map.depth-map-slim {
+  right: 6px;
+  width: max(28px, 1.75rem);
+}
+.depth-map-slim > summary {
+  padding: 6px 2px;
+  text-align: center;
+}
+.depth-map-slim .depth-map-current {
+  font-size: 0.625rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.depth-map-slim .depth-map-lane,
+.depth-map-slim .depth-map-notch > small {
+  display: none;
+}
+.depth-map-slim .depth-map-rail {
+  height: 112px;
+  margin: 10px auto 6px;
+}
+.depth-map-slim .depth-map-rail .depth-map-notch {
+  left: 0;
+  transform: translate(-50%, -50%);
+  font-size: 0.625rem;
+}
+.depth-map-slim .depth-map-rail .depth-map-position {
+  left: -6px;
+  font-size: 0.75rem;
+  transform: translate(-50%, -50%);
+}
+.depth-map-fold {
+  position: absolute;
+  right: 90px;
+  top: 122px;
+  z-index: 7;
+  width: 28px;
+  height: 44px;
+  padding: 0;
+  color: #a4bcd6;
+  font: 1rem/1 var(--sans);
+  background: linear-gradient(100deg, #1c1b2bdd, #2b3350d8);
+  border: 1px solid #55647f;
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+  cursor: pointer;
+}
+.depth-map-fold[hidden],
+.watch-depth-map[open] + .depth-map-fold {
+  display: none;
+}
+.depth-map-fold:hover {
+  filter: brightness(1.2);
+}
+.depth-map-fold:focus-visible {
+  outline: 2px solid #eadfc5;
+  outline-offset: 2px;
+}
+@media (max-width: 359px) {
+  .depth-map-fold {
+    right: 86px;
+  }
+}
+.watch-depth-map.depth-map-slim[open] .depth-map-details {
+  right: 34px;
+}

@@ -13,7 +13,18 @@
 import "../tips.css";
 import type { App } from "../app";
 import { h } from "./dom";
-import { ALIAS_RE, LIVE, TERMS, TIP, termIcon, termOf, termTitle, type Term } from "./concepts";
+import {
+  ALIAS_RE,
+  LIVE,
+  TERMS,
+  TIP,
+  conceptSeen,
+  termIcon,
+  termOf,
+  termTitle,
+  type Concept,
+  type Term,
+} from "./concepts";
 
 const HOVER_MS = 350,
   CLOSE_MS = 150,
@@ -37,7 +48,8 @@ export function initTips(a: App): void {
 }
 
 // ---- learned state (per viewer) ----
-type Rec = { o: number; s: number; t: number };
+/** o: tip opens, s: marked sightings, t: last sighting (wall ms), e: met on screen (marked or plain) — Cut234's glossary. */
+type Rec = { o: number; s: number; t: number; e?: 1 };
 let store: Record<string, Rec> | null = null;
 const load = (): Record<string, Rec> => {
   if (store) return store;
@@ -63,6 +75,34 @@ export const learned = (t: string): boolean => {
   const r = load()[t];
   return !!r && (r.o >= LEARN_OPENS || r.s >= LEARN_SIGHTS);
 };
+
+/** Cut234 (package report #4): the glossary holds the terms this viewer has met — on screen in any
+ *  form, a tip opened, or a concept's caption seen. The screens show a term only once its system is
+ *  revealed, so the glossary never names what the game has not. */
+const CONCEPT_TERMS: Record<Concept, 1> = {
+  marks: 1,
+  renown: 1,
+  cage: 1,
+  bones: 1,
+  oaths: 1,
+  bounty: 1,
+  waystone: 1,
+  fork: 1,
+  grudge: 1,
+};
+export const termMet = (t: Term): boolean => {
+  const r = load()[t];
+  if (r && (r.e || r.o > 0 || r.s > 0)) return true;
+  return t in CONCEPT_TERMS && conceptSeen(t as Concept);
+};
+/** The glossary's entries: every met term, in the plate's own words. */
+export const glossaryTerms = (): Term[] => TERMS.filter(termMet);
+let glossaryOpen: ((t: Term) => void) | null = null;
+/** The screen that can show the glossary routes a plate's head there (null: the head stays plain). */
+export const glossaryOpener = (): ((t: Term) => void) | null => glossaryOpen;
+export function setGlossaryOpener(f: ((t: Term) => void) | null): void {
+  glossaryOpen = f;
+}
 
 // ---- marking ----
 /** One keyword, marked: `kw("stance")`, `kw("v_luck", "luck")` (the words shown default to the term's). */
@@ -152,8 +192,28 @@ function body(t: Term): Node[] {
     return n && n !== t ? h("span", { class: "kw-n", "data-kwn": n, tabindex: "0" }, part) : part;
   });
   const ic = termIcon(t);
+  const open = glossaryOpen;
+  const head = open
+    ? h(
+        "button",
+        {
+          type: "button",
+          class: "kw-tip-head kw-tip-link",
+          "data-gloss": t,
+          "aria-description": /* copy:label */ "Glossary",
+          title: /* copy:label */ "Glossary",
+          onclick: (e: Event) => {
+            e.stopPropagation();
+            closeTip();
+            open(t);
+          },
+        },
+        ic ?? "",
+        h("b", null, termTitle(t)),
+      )
+    : h("div", { class: "kw-tip-head" }, ic ?? "", h("b", null, termTitle(t)));
   return [
-    h("div", { class: "kw-tip-head" }, ic ?? "", h("b", null, termTitle(t))),
+    head,
     h(
       "div",
       { class: "kw-tip-gloss" },
@@ -534,6 +594,7 @@ export function pass(): HTMLElement[] {
     onAt.clear();
     return [];
   }
+  meet();
   const all = [...document.querySelectorAll<HTMLElement>(".kw")].filter(
     (k) => !k.closest(".kw-tip"),
   );
@@ -609,6 +670,19 @@ export function pass(): HTMLElement[] {
   if (dirty) save();
   return on.map((o) => o.el);
 }
+/** Every term on screen now (marked or plain, a keyword or a host) is met: the glossary gains it. */
+function meet(): void {
+  let dirty = false;
+  for (const el of document.querySelectorAll<HTMLElement>(".kw, [data-kwh]")) {
+    const t = termAt(el);
+    if (!t || !(t in TIP) || termMet(t) || el.closest(".kw-tip")) continue;
+    const r = el.getBoundingClientRect();
+    if (!shown(el) || !visibleIn(r) || !onTop(el, r)) continue;
+    rec(t).e = 1;
+    dirty = true;
+  }
+  if (dirty) save();
+}
 const ids = new WeakMap<Element, number>();
 let nextId = 1;
 const scopeId = (el: Element): number => {
@@ -633,6 +707,7 @@ if (typeof window !== "undefined")
     pass: () => pass().map((e) => e.dataset.kw),
     words: visibleWords,
     state: () => ({ ...load() }),
+    glossary: () => glossaryTerms(),
     reset: () => {
       store = {};
       save();

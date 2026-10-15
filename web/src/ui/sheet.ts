@@ -201,7 +201,8 @@ export function openSheet(
       wrap.style.setProperty("--window-top", `${Math.max(0, bar?.bottom ?? 0)}px`);
       wrap.style.setProperty(
         "--window-bottom",
-        `${Math.max(0, console ? innerHeight - console.top : 0)}px`,
+        // (a hidden console — the homeless camp's — measures 0 × 0 at the top: it reserves nothing)
+        `${Math.max(0, console?.height ? innerHeight - console.top : 0)}px`,
       );
     };
     place();

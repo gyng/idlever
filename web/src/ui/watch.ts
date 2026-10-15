@@ -1026,7 +1026,7 @@ export function renderWatch(app: App): Mounted {
   const ctl = controlPanel(app.engine as unknown as Parameters<typeof controlPanel>[0], () => {
     manualKick = true;
   });
-  const depthMap = createDepthMap();
+  const depthMap = createDepthMap(() => mapKeepOut());
   let mapLineage = app.lineage;
   const releasedBossMarks = new Map<string, DepthMark>();
   const mapKeepOut = () => {
@@ -1043,6 +1043,7 @@ export function renderWatch(app: App): Mounted {
       { class: "stage" },
       canvas,
       depthMap.el,
+      depthMap.fold,
       card,
       foldLine,
       speedWhy,
@@ -3160,7 +3161,13 @@ export function renderWatch(app: App): Mounted {
     if (!viewer?.setKeepOut || (!force && now - keepAt < KEEP_MS)) return;
     keepAt = now;
     const c = canvas.getBoundingClientRect();
-    const els: Element[] = [...el.querySelectorAll(".hud.top"), combatLog, tactics.el, depthMap.el];
+    const els: Element[] = [
+      ...el.querySelectorAll(".hud.top"),
+      combatLog,
+      tactics.el,
+      depthMap.el,
+      depthMap.fold,
+    ];
     if (depthMap.el.open) {
       const inspector = depthMap.el.querySelector(".depth-map-details");
       if (inspector) els.push(inspector);

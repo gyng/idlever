@@ -100,3 +100,34 @@ html body .game-window[data-material="journal"] .journal-panel :is(button, summa
   min-block-size: 44px;
   box-sizing: border-box;
 }
+/* Cut234: the glossary — met terms only, each its plate's gloss; the entry a plate opened wears a gilt rim. */
+.journal-term {
+  display: grid;
+  gap: var(--ui-space-1);
+  padding: var(--ui-space-1) var(--ui-space-2);
+  border-left: 3px solid transparent;
+  scroll-margin: var(--ui-space-4);
+}
+.journal-term strong {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-1);
+  font-size: var(--ui-body);
+}
+.journal-term strong .ico {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.journal-term p {
+  color: var(--ui-muted);
+  font-size: var(--ui-detail);
+}
+.journal-term-hit {
+  border-left-color: var(--gilt);
+  background: var(--ui-inset);
+}
+.journal-term:focus-visible {
+  outline: 3px solid var(--ui-focus);
+  outline-offset: 2px;
+}

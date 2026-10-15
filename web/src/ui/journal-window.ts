@@ -1,6 +1,7 @@
 import type { App } from "../app";
 import type { JournalAction } from "../engine/types";
-import { createJournal, journalActionAllowed } from "./journal";
+import { createJournal, glossaryEntries, journalActionAllowed, revealTerm } from "./journal";
+import type { Term } from "./concepts";
 import { h } from "./dom";
 import { openWindow } from "./sheet";
 
@@ -9,6 +10,7 @@ export function openJournal(
   app: App,
   route: (target: string) => boolean | Promise<boolean>,
   anchor?: HTMLElement | null,
+  focusTerm?: Term,
 ): void {
   const owner = app.engine;
   let off = (): void => {};
@@ -23,10 +25,20 @@ export function openJournal(
   };
   openWindow(
     () => {
-      if (!app.lineage.journal)
-        return h("div", { class: "sheet-body" }, /* copy:callout */ "Journal unavailable");
+      if (!app.lineage.journal) {
+        // the glossary is the viewer's own: it stands even without the core's journal
+        const body = h(
+          "div",
+          { class: "sheet-body journal-panel" },
+          h("h2", { class: "journal-heading" }, /* copy:label */ "Glossary"),
+          ...glossaryEntries(),
+        );
+        if (focusTerm) requestAnimationFrame(() => revealTerm(body, focusTerm));
+        return body;
+      }
       panel = createJournal({
         read,
+        focusTerm,
         action: async (action: JournalAction, entryId: string) => {
           if (app.engine !== owner) return false;
           const current = read()
@@ -65,4 +77,10 @@ export function openJournal(
       },
     },
   );
+}
+
+/** Cut234: a plate's head off the camp — the journal on that term's glossary entry; journal actions
+ *  route nowhere here (the camp's own opener routes them). */
+export function openGlossary(app: App, t: Term): void {
+  openJournal(app, () => false, null, t);
 }

@@ -82,6 +82,32 @@
   color: var(--bone);
   letter-spacing: 0.02em;
 }
+/* Cut234: a pinned plate's head opens the term's glossary entry — a quiet gilt chevron, no new words */
+.kw-tip-link {
+  width: 100%;
+  min-height: 28px;
+  margin: -4px 0 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.kw-tip-link::after {
+  content: "›";
+  margin-left: auto;
+  padding-left: 8px;
+  color: var(--gilt);
+}
+.kw-tip-link:hover b,
+.kw-tip-link:focus-visible b {
+  text-decoration: underline 1px var(--gilt);
+  text-underline-offset: 0.2em;
+}
+.kw-tip-link:focus-visible {
+  outline: 1px dotted var(--gilt);
+  outline-offset: 2px;
+}
 .kw-tip-head .ico {
   width: 16px;
   height: 16px;

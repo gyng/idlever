@@ -1,0 +1,16 @@
+{
+  "what": "Watch canvas area not covered by the live depth rail (real WASM, seed 212, first run, viewport height 800, GPU headed private Xvfb). mapPct = rail box ∩ canvas / canvas; widthPct = rail width plus right gutter / canvas width.",
+  "before": {
+    "320": { "canvas": [320, 446], "map": [80, 215], "mapPct": 12.1, "unobscuredPct": 87.9, "widthPct": 26.9 },
+    "400": { "canvas": [400, 456], "map": [80, 215], "mapPct": 9.4, "unobscuredPct": 90.6, "widthPct": 22.5 },
+    "768": { "canvas": [760, 502], "map": [80, 215], "mapPct": 4.5, "unobscuredPct": 95.5, "widthPct": 11.8 },
+    "1440": { "canvas": [922, 718], "map": [80, 215], "mapPct": 2.6, "unobscuredPct": 97.4, "widthPct": 9.8 }
+  },
+  "after": {
+    "320": { "canvas": [320, 446], "map": [30, 154], "mapPct": 3.2, "unobscuredPct": 96.8, "widthPct": 11.2 },
+    "400": { "canvas": [400, 456], "map": [30, 154], "mapPct": 2.5, "unobscuredPct": 97.5, "widthPct": 8.9 },
+    "768": { "canvas": [760, 502], "map": [30, 154], "mapPct": 1.2, "unobscuredPct": 98.8, "widthPct": 4.7 },
+    "1440": { "canvas": [922, 718], "map": [80, 215], "mapPct": 2.6, "unobscuredPct": 97.4, "widthPct": 9.8 }
+  },
+  "widened_by_choice_at_phone": "80 px rail plus a 28 × 44 slim tab on its left (same footprint as before plus the tab)"
+}

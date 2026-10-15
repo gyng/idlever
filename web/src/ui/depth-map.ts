@@ -38,8 +38,30 @@ const icons: Record<DepthMark["kind"], string> = {
   start: "⌂",
   record: "─",
 };
-/** Root supplies the released replay HUD depth, never the engine-ahead snapshot. */
-export function createDepthMap() {
+/** Cut234 (package report #6): below the desk width the rail starts slim — a thin strip of floor
+ *  ticks, the hero's dot and the next boss — and a tap widens it. The choice is per viewer. */
+const RAIL_KEY = "idlever.depthRail";
+const SLIM_MEDIA = "(max-width: 1023px)";
+/** this session's choice, when the browser refuses storage */
+let railMemo: string | null = null;
+const railPref = (): string | null => {
+  try {
+    return localStorage.getItem(RAIL_KEY) ?? railMemo;
+  } catch {
+    return railMemo;
+  }
+};
+const setRailPref = (v: "full" | "slim"): void => {
+  railMemo = v;
+  try {
+    localStorage.setItem(RAIL_KEY, v);
+  } catch {
+    /* a per-viewer convenience */
+  }
+};
+/** Root supplies the released replay HUD depth, never the engine-ahead snapshot. `onLayout`: the
+ *  map's footprint changed (slim ↔ full), so the watch re-reserves its keep-out. */
+export function createDepthMap(onLayout: () => void = () => {}) {
   const current = h("strong", { class: "depth-map-current num" }),
     lane = h("small", { class: "depth-map-lane" });
   const rail = h("span", { class: "depth-map-rail", "aria-hidden": "true" });
@@ -64,6 +86,48 @@ export function createDepthMap() {
       selected,
     ),
   );
+  // the wide rail's slim tab lives beside the details (a closed details hides its other children)
+  const fold = h(
+    "button",
+    {
+      type: "button",
+      class: "depth-map-fold",
+      "aria-label": /* copy:label */ "Slim map",
+      title: /* copy:label */ "Slim map",
+    },
+    h("span", { "aria-hidden": "true" }, "›"),
+  );
+  const media = typeof matchMedia === "function" ? matchMedia(SLIM_MEDIA) : null;
+  const isSlim = (): boolean => !!media?.matches && railPref() !== "full";
+  const paintSlim = (): void => {
+    const slim = isSlim(),
+      was = el.classList.contains("depth-map-slim");
+    if (slim && el.open) el.open = false;
+    el.classList.toggle("depth-map-slim", slim);
+    fold.hidden = slim || !media?.matches;
+    summary.setAttribute("aria-expanded", String(!slim && el.open));
+    if (slim !== was && painted) onLayout();
+    painted = true;
+  };
+  let painted = false;
+  // a tap on the slim strip widens it (the inspection list waits for the wide rail)
+  const widen = (e: Event): void => {
+    if (!el.classList.contains("depth-map-slim")) return;
+    e.preventDefault();
+    setRailPref("full");
+    paintSlim();
+  };
+  summary.onclick = widen;
+  fold.onclick = () => {
+    setRailPref("slim");
+    el.open = false;
+    paintSlim();
+    summary.focus({ preventScroll: true });
+  };
+  const opened = (): void => summary.setAttribute("aria-expanded", String(el.open));
+  el.addEventListener("toggle", opened);
+  media?.addEventListener("change", paintSlim);
+  paintSlim();
   let key = "",
     markerKey = "";
   const escape = (e: KeyboardEvent) => {
@@ -76,6 +140,7 @@ export function createDepthMap() {
   el.addEventListener("keydown", escape);
   return {
     el,
+    fold,
     update(data: DepthMapData) {
       const next = JSON.stringify(data);
       if (next === key) return;
@@ -95,12 +160,21 @@ export function createDepthMap() {
       }
       // A physical shaft keeps true depth spacing; dense labels yield to
       // nearby boss/goal marks. Every known stop remains in the inspection list.
+      // the next boss below the hero always keeps its notch (the slim strip's one goal mark)
+      const nextBoss = Math.min(
+        Infinity,
+        ...data.markers
+          .filter((m) => m.kind === "boss" && m.depth > data.depth)
+          .map((m) => m.depth),
+      );
       const priority = (ms: DepthMark[]) =>
-        Math.min(
-          ...ms.map(
-            (m) => ({ boss: 0, bounty: 1, fork: 2, waystone: 2, start: 3, record: 4 })[m.kind],
-          ),
-        );
+        ms[0]!.depth === nextBoss
+          ? -1
+          : Math.min(
+              ...ms.map(
+                (m) => ({ boss: 0, bounty: 1, fork: 2, waystone: 2, start: 3, record: 4 })[m.kind],
+              ),
+            );
       const selectedDepths: number[] = [];
       const positions: number[] = [];
       for (const [d] of [...groups].sort(
@@ -123,7 +197,7 @@ export function createDepthMap() {
           return h(
             "i",
             {
-              class: `depth-map-notch depth-map-${m.kind}`,
+              class: `depth-map-notch depth-map-${m.kind}${depth === nextBoss ? " depth-map-next" : ""}`,
               style: `--at:${((depth - 1) / Math.max(1, extent - 1)) * 100}`,
               title: marks.map((x) => `D${depth} ${x.label}`).join(" · "),
             },
@@ -168,7 +242,10 @@ export function createDepthMap() {
     },
     dispose() {
       el.removeEventListener("keydown", escape);
+      el.removeEventListener("toggle", opened);
+      media?.removeEventListener("change", paintSlim);
       el.remove();
+      fold.remove();
     },
   };
 }
