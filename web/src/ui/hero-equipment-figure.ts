@@ -18,6 +18,34 @@ const BITMAPS: Record<string, string> = {
   plate: "it_plate",
   scale: "it_scale",
 };
+// These are aligned full-canvas layers, never item-icon crops.
+type Mount = { x: number; y: number; width: number; height: number };
+// Uniform scale/translation from the full-canvas masters; registration varies by item.
+const WEARABLES: Record<string, Mount> = {
+  crownsplitter: { x: 88.2, y: 29.6, width: 73.5, height: 110 },
+  hearthglass: { x: 28.55, y: 15, width: 102.9, height: 154 },
+  frostmantle: { x: 38.94, y: 24.75, width: 80.85, height: 121 },
+  ironcap: { x: 6.5, y: -7, width: 147, height: 220 },
+  hearthglass_hood: { x: 32.13, y: -2, width: 95.55, height: 143 },
+  trailboots: { x: 6.5, y: 0, width: 147, height: 220 },
+  hearthglass_boots: { x: 24.4, y: 60.2, width: 107.31, height: 160.6 },
+};
+// Anchor each icon's painted grip, not its padded image rectangle, to the right hand.
+const ICON_MOUNTS: Record<string, Mount> = {
+  leather: { x: 39.2, y: 34, width: 76.8, height: 76.8 },
+  mail: { x: 42.17, y: 28.52, width: 74.88, height: 74.88 },
+  plate: { x: 41.2, y: 29, width: 76.8, height: 76.8 },
+  scale: { x: 41.28, y: 36.08, width: 84.48, height: 84.48 },
+  dagger: { x: 103, y: 40, width: 62, height: 102 },
+  sword: { x: 103, y: 40, width: 62, height: 102 },
+  axe: { x: 80, y: 48, width: 62, height: 102 },
+  bow: { x: 80, y: 59, width: 62, height: 102 },
+  spear: { x: 106, y: 38, width: 62, height: 102 },
+  mace: { x: 106, y: 38, width: 62, height: 102 },
+  long_gun: { x: 96, y: 54, width: 62, height: 102 },
+  short_gun: { x: 101, y: 47, width: 62, height: 102 },
+};
+const BASE_BOX = { x: 6.5, y: 0, width: 147, height: 220 };
 function svg<K extends keyof SVGElementTagNameMap>(
   tag: K,
   attrs: Record<string, string | number> = {},
@@ -59,11 +87,15 @@ function primitive(row: EquipmentSlot): SVGGElement {
     }
   } else if (row.slot === "boots") {
     const colour = kind === "hearthglass_boots" ? "#557d78" : "#70533e";
-    g.append(path(/* copy:none */ "M58 179 L74 179 L74 204 L50 204 L50 196 L58 192 Z", colour));
-    g.append(path(/* copy:none */ "M86 179 L102 179 L103 192 L111 196 L111 204 L86 204 Z", colour));
+    g.append(
+      path(/* copy:none */ "M49 179 L66 179 L66 202 L62 212 L40 212 L40 202 L49 195 Z", colour),
+    );
+    g.append(
+      path(/* copy:none */ "M94 179 L111 179 L111 195 L122 202 L122 212 L97 212 L94 202 Z", colour),
+    );
     if (kind === "hearthglass_boots")
       g.append(
-        path(/* copy:none */ "M59 185 L73 185 M87 185 L101 185", "none", { stroke: "#d2ad65" }),
+        path(/* copy:none */ "M50 185 L65 185 M95 185 L110 185", "none", { stroke: "#d2ad65" }),
       );
   } else if (row.slot === "armour") {
     const colour =
@@ -154,29 +186,40 @@ function layer(row: EquipmentSlot, valid: () => boolean): SVGGElement {
   const fallback = primitive(row);
   node.append(fallback);
   const bitmap = BITMAPS[row.kind];
-  if (bitmap && hasIcon(bitmap)) {
-    const box =
-      row.slot === "armour"
-        ? { x: 43, y: 43, width: 74, height: 89 }
-        : row.kind === "bow"
-          ? { x: 85, y: 64, width: 62, height: 102 }
-          : { x: 112, y: 44, width: 62, height: 102 };
-    const image = svg("image", { ...box, preserveAspectRatio: /* copy:none */ "xMidYMid meet" });
-    image.addEventListener("load", () => {
-      if (!valid() || !node.isConnected) return;
-      fallback.setAttribute("display", "none");
-      node.setAttribute("data-doll-art", "painted");
-    });
-    image.addEventListener("error", () => {
-      if (!valid() || !node.isConnected) return;
-      fallback.removeAttribute("display");
-      image.remove();
-      node.setAttribute("data-doll-art", "primitive");
-    });
-    image.setAttribute("href", `${import.meta.env.BASE_URL}ui/icons/${bitmap}.png`);
-    node.append(image);
+  const wearable = WEARABLES[row.kind];
+  if (wearable || (bitmap && hasIcon(bitmap))) {
+    const box = wearable ?? ICON_MOUNTS[row.kind] ?? { x: 103, y: 40, width: 62, height: 102 };
+    mountedImage(
+      node,
+      fallback,
+      wearable ? `ui/equipment/${row.kind}.webp` : `ui/icons/${bitmap}.png`,
+      box,
+      valid,
+    );
   }
   return node;
+}
+function mountedImage(
+  node: SVGGElement,
+  fallback: SVGGElement,
+  source: string,
+  box: { x: number; y: number; width: number; height: number },
+  valid: () => boolean,
+): void {
+  const image = svg("image", { ...box, preserveAspectRatio: /* copy:none */ "xMidYMid meet" });
+  image.addEventListener("load", () => {
+    if (!valid() || !node.isConnected) return;
+    fallback.setAttribute("display", "none");
+    node.setAttribute("data-doll-art", "painted");
+  });
+  image.addEventListener("error", () => {
+    if (!valid() || !node.isConnected) return;
+    fallback.removeAttribute("display");
+    image.remove();
+    node.setAttribute("data-doll-art", "primitive");
+  });
+  image.setAttribute("href", `${import.meta.env.BASE_URL}${source}`);
+  node.append(image);
 }
 /** One static equipped body, not baked class art underneath an incompatible weapon. */
 export function equipmentFigure(
@@ -184,9 +227,12 @@ export function equipmentFigure(
   initial: EquipmentPhase,
   changed: (phase: EquipmentPhase) => void,
   valid: () => boolean,
+  look = "male",
 ): HTMLElement {
   const figure = h("div", { class: "hero-hub-figure hero-equipment-figure" });
   let phase = initial;
+  const bodyLook = look === "female" || look === "cat" ? look : "male";
+  figure.dataset.dollLook = bodyLook;
   const controls = h("div", {
     class: "hero-equipment-phases",
     role: "group",
@@ -202,7 +248,14 @@ export function equipmentFigure(
       class: "hero-equipment-body",
       "aria-hidden": "true",
     });
-    const neutral = svg("g", { "data-doll-base": "neutral" });
+    const drawingPhase = phase;
+    const frameValid = () => valid() && figure.isConnected && phase === drawingPhase;
+    const base = svg("g", {
+      "data-doll-base": "neutral",
+      "data-doll-look": bodyLook,
+      "data-doll-art": "primitive",
+    });
+    const neutral = svg("g", { "data-doll-base-primitive": bodyLook });
     neutral.append(
       svg("ellipse", { cx: 80, cy: 210, rx: 43, ry: 6, fill: "#0d1019", opacity: 0.6 }),
     );
@@ -235,12 +288,14 @@ export function equipmentFigure(
         stroke: "#4c413d",
       }),
     );
-    body.append(neutral);
+    base.append(neutral);
+    mountedImage(base, neutral, `ui/equipment/base-${bodyLook}.webp`, BASE_BOX, frameValid);
+    body.append(base);
     const view = build?.[phase];
     // Explicit order: footwear, fitted body, headwear, then held arm.
     for (const slot of ["boots", "armour", "helm", "weapon"] as const) {
       const row = view?.slots.find((s) => s.slot === slot);
-      if (row) body.append(layer(row, valid));
+      if (row) body.append(layer(row, frameValid));
     }
     replace(painting, body);
   };

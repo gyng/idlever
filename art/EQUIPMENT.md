@@ -22,15 +22,26 @@ and writes lossless WebP with alpha and hidden RGB preserved. There is no
 automatic crop, background removal, colour key or semantic image alteration.
 The manifest records source/output SHA256, bytes and visible alpha bounds.
 Repeated export is byte-exact with the current Pillow/WebP environment.
+Some raw-image previews expose coloured RGB stored under zero alpha; inspect
+the alpha channel or the actual composed Hub before diagnosing a background
+halo. Do not regenerate or colour-key a valid transparent master based only on
+that preview appearance.
 
 Generated wearables vary in scale and position despite registration prompts.
 `web/src/ui/hero-equipment-figure.ts` therefore mounts each with an explicit
 uniform scale and translation. Inspect their fit on all three looks at actual
-Hub size: grip meets hand, boots cover toes, helm leaves the face visible, body
-gear covers the shirt without floating, and no second baked weapon appears.
+Hub size: each piece reads at its intended slot, the face remains visible,
+and no second baked weapon appears. Owner refinement2026-10-16 explicitly
+permits a more abstract paper doll to simplify implementation. Stylized
+placement is sufficient; anatomically precise grips, tailored garment fit and
+additional identity-specific armour variants are not required. Keep the
+existing painted assets, while treating the composition as an equipment diagram.
 Null slots paint no equipment. Missing/failed images retain primitive fallbacks.
 The UI reads equipment kinds and Actual/Next from Rust; the art registry must
 never decide eligibility, ownership, effects, spending or phase boundaries.
 
-Current status: masters/export complete; final mounting and UI acceptance are
-in progress. Prior primitive-figure proofs do not certify these painted layers.
+Current status: masters/export and scoped painted Hub acceptance are complete.
+`docs/evidence/cut220/painted-8879/` retains the new source-specific layout,
+paint-adoption, ownership, fallback and preference proofs. Prior primitive
+proofs remain historical. Expanded class trees, dungeon weapon artwork and
+broader R7 acceptance remain separate open work.

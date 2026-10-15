@@ -1,0 +1,734 @@
+{
+  "scope": "Painted equipment integration only; root owns final staging/commit. Artmasters/exports alreadycheckpoint926a0c68. No density/R7/fullmenu closure.",
+  "selected": [
+    {
+      "path": "art/EQUIPMENT.md",
+      "bytes": 3017,
+      "sha256": "7d5ccda543cd2f71fb0d3f38270d28d7436e97c769d1a8cc03dba1e93ca1d618"
+    },
+    {
+      "path": "docs/CUT220_HERO_HUB.md",
+      "bytes": 23838,
+      "sha256": "20e4a74407d576102b40da8dbc51e56daf0cd53c2b4f2d917c97a4074945d179"
+    },
+    {
+      "path": "docs/evidence/cut220/equipment-export-alpha-2026-10-16.json",
+      "bytes": 2507,
+      "sha256": "73834f4ec5443434c2b7b090eca25f9abf4d219c5e8698fdf421b8dc75a937f7"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/README.md",
+      "bytes": 3437,
+      "sha256": "a627f9a3bf69fbf4930c142fde81a371b488b1179229e5d9224a0d11e8d00b91"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/results.json.gz",
+      "bytes": 43689,
+      "sha256": "a47a49fce64d53cb71c2d27cdb7d221ef243e3115c00a6050b771d5265b463d3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/copy-final.log",
+      "bytes": 57,
+      "sha256": "f594e625467cdc48c77da9134c5eea5da117c8bb8753d611ce3372225ee9217f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/cat-actual.png",
+      "bytes": 33682,
+      "sha256": "3ea590024b8548d792b777d81254a1501791b22dce7453eec75ab8eb03bd7eba"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/cat-next.png",
+      "bytes": 33248,
+      "sha256": "fb9b3767f12602d1a27852ac8e3caac1aa31889e412d6496599c740a6aaba1cb"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/female-actual.png",
+      "bytes": 32286,
+      "sha256": "734215e8537d87ec91cf38e38903da8c5c607efd0992ae76ab98e51518af9e5c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/female-next.png",
+      "bytes": 31936,
+      "sha256": "e2b444bd02add6a13a57238e6fec85d793e32c0f02cb817297f643200a618908"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/male-actual.png",
+      "bytes": 32407,
+      "sha256": "a99084f232bfa87b7954305460317feb1b22f4cf6c1fb6bf178363a57d1f293c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/male-next.png",
+      "bytes": 32009,
+      "sha256": "71f94c074a65ee5e4f3d6aaa077268d8e1a852954325a4439155b0a6c16b002b"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/results.json.gz",
+      "bytes": 11867,
+      "sha256": "86c337d76c914a95cea42794ecfb60424fafd1a014a857eda500c40b97eb9537"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/cat-actual.png",
+      "bytes": 33680,
+      "sha256": "9b986bec677b9696d8cea75f496c73e0e2fb6949a026a309830ffbe5c1256830"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/cat-next.png",
+      "bytes": 33283,
+      "sha256": "383dc0309819a84c03edad3c70e4125b0409b3b9ec7f3a66b695aa35353e3556"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/female-actual.png",
+      "bytes": 32319,
+      "sha256": "8d6cd25e92b83f5d53f31f5ce4f65b1ad34c7f0713901f7043d0297fa589f53f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/female-next.png",
+      "bytes": 31973,
+      "sha256": "a7d4eb14df330d1a0f5828412e2c4f018ca1f0eac99dab96acca1f9d357f62e9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/male-actual.png",
+      "bytes": 32401,
+      "sha256": "09471ab876e2a21986042ae2780f81087e19d458ef5206d24640af051c856674"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/male-next.png",
+      "bytes": 32001,
+      "sha256": "b7a3d516a7e7ff65041d5485575c94b2719412f8092a3c11df3fe46e942017c6"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-frostmantle.png",
+      "bytes": 32403,
+      "sha256": "02a2ccaf02ead6a260c5af610c530b5713397a763490fa878154cfd4722a6750"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-hearthglass.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-leather.png",
+      "bytes": 32497,
+      "sha256": "c0d328aea01f6b77de46b2dd7d7bf9edb03853ef298a29d50cbffc2d2f539539"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-mail.png",
+      "bytes": 32662,
+      "sha256": "9f93bcd20b2d2b4ef9636b3596404742904f404a7d027f8b3d293e10722fdc71"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-plate.png",
+      "bytes": 32848,
+      "sha256": "2e5f1057de899ffa7fba67b8518be8170c5bed4d4945354ba820c5f565fab8d4"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-armour-scale.png",
+      "bytes": 33067,
+      "sha256": "356b758e2a5315c1f680d4f52494ad5541384b2bab347916e850ea04511fa4d3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-boots-hearthglass_boots.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-boots-trailboots.png",
+      "bytes": 33131,
+      "sha256": "63a6ca2bc9c43c8329a36abb94dd54aa69e08ba588dab102fbbd5822bd6795f8"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-helm-hearthglass_hood.png",
+      "bytes": 32422,
+      "sha256": "f94bc790c0829f9b35d7e155b09ed8e140396de88a45c88683beba3294a06abf"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-helm-ironcap.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-weapon-axe.png",
+      "bytes": 32249,
+      "sha256": "f3a82875d28a6dff813557b70c3b1829add64c1a557d559b3f2cde323fcd4f73"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-weapon-bow.png",
+      "bytes": 32259,
+      "sha256": "a4e228cfb99ddf5062b6a7803f6615a6f676de1917343b487c5e5be3cbf86064"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-weapon-crownsplitter.png",
+      "bytes": 33123,
+      "sha256": "2480a77d6196863e7f71429816603228d1236d361e07b05ed9c0a6da58b02b4f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-weapon-dagger.png",
+      "bytes": 32906,
+      "sha256": "f9cc4f17c7d723172024a079bd5e39a05ca080307b28f9b4f5f38d8bb5580641"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/owned-weapon-sword.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/results.json.gz",
+      "bytes": 15334,
+      "sha256": "a31654b4cc4077ed918e7e8202621f5ea0f1eb8f86f1bdb899a2bdf7ead9db5a"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/cat-actual.png",
+      "bytes": 33680,
+      "sha256": "9b986bec677b9696d8cea75f496c73e0e2fb6949a026a309830ffbe5c1256830"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/cat-next.png",
+      "bytes": 33283,
+      "sha256": "383dc0309819a84c03edad3c70e4125b0409b3b9ec7f3a66b695aa35353e3556"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/female-actual.png",
+      "bytes": 32319,
+      "sha256": "8d6cd25e92b83f5d53f31f5ce4f65b1ad34c7f0713901f7043d0297fa589f53f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/female-next.png",
+      "bytes": 31973,
+      "sha256": "a7d4eb14df330d1a0f5828412e2c4f018ca1f0eac99dab96acca1f9d357f62e9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/isolated-unowned-long_gun.png",
+      "bytes": 33218,
+      "sha256": "a2090beedc3403aad2b60e9795a4019e741ea2579b7e294f27506bc263b68000"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/isolated-unowned-mace.png",
+      "bytes": 34019,
+      "sha256": "b628d2b0c753b4892b7223eac087025f632da52039c888f492c88cc85b4b43ea"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/isolated-unowned-short_gun.png",
+      "bytes": 34456,
+      "sha256": "c092e0dc0e075c8dd124aa217c1c738d6363223c558804b091ab888595087976"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/isolated-unowned-spear.png",
+      "bytes": 33287,
+      "sha256": "3228a7f8d92715799bed46252a1522932cab9f860925d2e085f1ab974aa26081"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/male-actual.png",
+      "bytes": 32401,
+      "sha256": "09471ab876e2a21986042ae2780f81087e19d458ef5206d24640af051c856674"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/male-next.png",
+      "bytes": 32001,
+      "sha256": "b7a3d516a7e7ff65041d5485575c94b2719412f8092a3c11df3fe46e942017c6"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-frostmantle.png",
+      "bytes": 32403,
+      "sha256": "02a2ccaf02ead6a260c5af610c530b5713397a763490fa878154cfd4722a6750"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-hearthglass.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-leather.png",
+      "bytes": 32539,
+      "sha256": "84711fd4006aa2dcfd4c6377016950ee2c3c7984ae7a7776f8d3b6413fbdb114"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-mail.png",
+      "bytes": 32405,
+      "sha256": "260ad45dfb75c56322443aae820fc47e83e09e45b8981a4606f07c0138ee0bb3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-plate.png",
+      "bytes": 32737,
+      "sha256": "9c117041b59630cd9bb147ef56a0d1ca8b855fa8c9096b82601759d96debb982"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-armour-scale.png",
+      "bytes": 33232,
+      "sha256": "95e825ebaf7ba33d72f29aa2db30b7656d76dde41cc176fd6520397952f69d2a"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-boots-hearthglass_boots.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-boots-trailboots.png",
+      "bytes": 33131,
+      "sha256": "63a6ca2bc9c43c8329a36abb94dd54aa69e08ba588dab102fbbd5822bd6795f8"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-helm-hearthglass_hood.png",
+      "bytes": 32422,
+      "sha256": "f94bc790c0829f9b35d7e155b09ed8e140396de88a45c88683beba3294a06abf"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-helm-ironcap.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-weapon-axe.png",
+      "bytes": 32249,
+      "sha256": "f3a82875d28a6dff813557b70c3b1829add64c1a557d559b3f2cde323fcd4f73"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-weapon-bow.png",
+      "bytes": 32259,
+      "sha256": "a4e228cfb99ddf5062b6a7803f6615a6f676de1917343b487c5e5be3cbf86064"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-weapon-crownsplitter.png",
+      "bytes": 33123,
+      "sha256": "2480a77d6196863e7f71429816603228d1236d361e07b05ed9c0a6da58b02b4f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-weapon-dagger.png",
+      "bytes": 32906,
+      "sha256": "f9cc4f17c7d723172024a079bd5e39a05ca080307b28f9b4f5f38d8bb5580641"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/owned-weapon-sword.png",
+      "bytes": 32654,
+      "sha256": "a1652ae363b6233e12382375e2b16bdcf24afd5ba4000f0559945c8661c41bcd"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/results.json.gz",
+      "bytes": 16125,
+      "sha256": "98ba7a7c590df59126651fc3a8955877537c07a2cf2e9a054a5e386fc525f686"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/format-final.log",
+      "bytes": 112,
+      "sha256": "2e986759751921f9337a2d3b022d7e9e5204da26f6f0a34dce81cdf7ef20c743"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards.mjs",
+      "bytes": 8982,
+      "sha256": "3067a52db57614f16dc7090e5559bc91917e19534c4cdd3161502040399d0ae7"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards/missing-base-hearthglass-primitives.png",
+      "bytes": 223572,
+      "sha256": "8bece41567ea132e17dbdd84e0dbc6c7fce98de0a9b23700f94980e4ea209dc7"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards/results.json.gz",
+      "bytes": 33245,
+      "sha256": "7eed1141ae0060480458c37cb5646b3f5feb3158d268b49f677d0163f8a1ca8b"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/matrix.mjs",
+      "bytes": 8051,
+      "sha256": "5cfeb957e118331d9fb6dd4ffdcd62142593ade2d3354e31c9a48a01b87672f9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/observations-2026-10-16.md",
+      "bytes": 4990,
+      "sha256": "a38068c3b19cfe0f8789a4f45a3d15b4d18e2bd12f102da48b8d4bc87fcfcc1d"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/paint-adoption.mjs",
+      "bytes": 8436,
+      "sha256": "91c97e71a0935dde84cac2c50995b4691e7c4dcf3d205a425f1693bf4c47259c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-1x-actual-body.png",
+      "bytes": 798033,
+      "sha256": "e6da260bb22d00927c5ce7e54c8b1be5ec5cf25b2dcd9fa2e85a15f521d38ead"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-1x-next-body.png",
+      "bytes": 795523,
+      "sha256": "c1037a4a7ff32dea21575c9809c169687c0d5a5bcdd558fdec3ebba89a2ff3ee"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-2x-actual-body.png",
+      "bytes": 802883,
+      "sha256": "1dda28edbbb3c76038b82d10bf16126e9490823d8f75b1f215b7f9a6fd5e1edc"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-2x-next-body.png",
+      "bytes": 799109,
+      "sha256": "9ed7fd854ce86acd71ef44f34982c4162db85e57eb59918324523d11875d9b3a"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-1x-actual-body.png",
+      "bytes": 232128,
+      "sha256": "6be5fa5abbdb4d9c774328baeba31cbd7d18d15fb91239482ba43342fa302cb5"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-1x-next-body.png",
+      "bytes": 231226,
+      "sha256": "d1e0910b42e68bc5cbe0e6344e7672f63cfbabfb99c507f495952b8f218c741e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-1x-next-controls.png",
+      "bytes": 231313,
+      "sha256": "a1eab4df172a80477460b82d2f43eb24710a959071251946e65c4fb7c8621644"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-2x-actual-body.png",
+      "bytes": 222193,
+      "sha256": "98802259196076c1ba2a2029a1871b8b8301b6bceb4a1ef79e156f3b7583a194"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-2x-next-body.png",
+      "bytes": 221534,
+      "sha256": "f96032467351d795334a1bf741bb187cb6aa1e1ed1d28882f3e6da2f81f93f26"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-2x-next-controls.png",
+      "bytes": 221963,
+      "sha256": "b1037fa3145343ed92c2779f524e9eae60cb15ac14d475981c68cfbdf3bf8b1e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/results.json.gz",
+      "bytes": 42705,
+      "sha256": "12770630224f41eaa6e20e774ff49c17dc919515eb6c958471e86513e045ae6e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-1x-actual-body.png",
+      "bytes": 798206,
+      "sha256": "c83dd3f38ae217254b3e8a2c1f36466bf1157760cab46f13b0c26c1d7e52d74e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-1x-next-body.png",
+      "bytes": 796053,
+      "sha256": "bb5eb852a685e8e5cba58d17ef9868806acaa23213aecf2702f25a7dd30e894f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-2x-actual-body.png",
+      "bytes": 803099,
+      "sha256": "f2a497f659ba150d90134000dbcbed3d1420b8f028ddc0bb5eb57743d670bc6c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-2x-next-body.png",
+      "bytes": 799764,
+      "sha256": "d86120eae43ea49847250f4f04f36e60a48ead2d6021576e7e1c1146c32fd402"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-1x-actual-body.png",
+      "bytes": 232093,
+      "sha256": "a76881547289ad1d7dc88b0c1c1c02b489182d5afadd7b4b6d6d413b1ec77840"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-1x-next-body.png",
+      "bytes": 231384,
+      "sha256": "7e7898a453c1ac592fbdeec6e046284f2ebcd78cf7934b466e151ce9a6dd9dc3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-1x-next-controls.png",
+      "bytes": 231477,
+      "sha256": "a91588a9f5bec818b1ec641fe3da167697a9fd4be2212f448fd8979d8932b597"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-2x-actual-body.png",
+      "bytes": 222130,
+      "sha256": "966a59daa3c381a50077efec8b8caf3080b0b0951faa76ae4c31fea6331fea30"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-2x-next-body.png",
+      "bytes": 221852,
+      "sha256": "725688d07ec8c22c12457ddd3e61342a913ac31e4a563752cd7e2e74f7c71f96"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-2x-next-controls.png",
+      "bytes": 222276,
+      "sha256": "2d7f7e2d1ee2c602d83ee290a82b0126a9c2cbd49a47461eec26ad5dc8855171"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/preview-v1.mjs",
+      "bytes": 4864,
+      "sha256": "2e2637d7128e73c8422e4bd259d6fec394cba0462712fad0e03986f8588fbcc1"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/preview-v2.mjs",
+      "bytes": 7127,
+      "sha256": "20a72dc56295f38760581a7a0d13b9bafea41a1798aa31e36fc324999d871e01"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/preview.mjs",
+      "bytes": 8670,
+      "sha256": "689815a0a08fcb4694319a743b9ed06470a7173fe7e337c1620dd431db01486b"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/root-final-freeze.json",
+      "bytes": 1764,
+      "sha256": "6cd76f62a3132410505f2adb59043daaaeea9ae977ea49c6e590daee6c7d4a8d"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/root-fit-review-2026-10-16.json",
+      "bytes": 6116,
+      "sha256": "54a883d03a9eff4b75fb6f594bdcc7f315899c6f93fbd1849d7310c4cae3dfc0"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/tsc-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "web/src/ui/hero-equipment-figure.ts",
+      "bytes": 11544,
+      "sha256": "45d4600187208930ecd0e6182207fa5f161d51776108a58a095e5b9491019d01"
+    },
+    {
+      "path": "web/src/ui/hero-hub.ts",
+      "bytes": 27128,
+      "sha256": "f140b7372edaef068f47926157fca7e26dfe09bf0668928251b7c57b191f209e"
+    }
+  ],
+  "localOnlyPreservedNotInCheckpoint": [
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-1440-1x-actual.png",
+      "bytes": 758316,
+      "sha256": "e3a1f398cb1d282c1b1ead52c5725359352173d49898e7fa6d62e5674991319c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-1440-1x-next.png",
+      "bytes": 756393,
+      "sha256": "4e67c57b07df722279eba052bd97dd069eba33a63b707aca4b3a402e9e2f84c3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-1440-2x-actual.png",
+      "bytes": 801419,
+      "sha256": "657994001a37baa1fac457c216ea92b93ca41d3770055ab79a7c124a1b73b856"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-1440-2x-next.png",
+      "bytes": 797286,
+      "sha256": "5e5e865fb34da99da22062b7263bf0c21c696230f96b94870cc7cd2d28733a76"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-402-1x-actual.png",
+      "bytes": 232134,
+      "sha256": "67c0f10e9eba5dee1a3bd1243598edfe67b23606131d4866c5e4a065e533ab94"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-402-1x-next.png",
+      "bytes": 230328,
+      "sha256": "601352caf58820c837302c357f83334c79b368aa3065e836dad78b8a66945182"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-402-2x-actual.png",
+      "bytes": 215695,
+      "sha256": "dd20bb83b9b37351b536860d4ebafbcc828a565a9d34ded683531a4376e71ac7"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/helm-empty-402-2x-next.png",
+      "bytes": 214863,
+      "sha256": "e3679525ece9cd7c2e657206535fa302b02b0fea12ef25c76c9b85cb23795a07"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/results.json",
+      "bytes": 440470,
+      "sha256": "42445f3dc85918f02f308fe0f95633406092b643c769116be55c3492234dfa41"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/vite.log",
+      "bytes": 450,
+      "sha256": "1bd6fec2267b8e972fba28ca4a57183834954dab858c4794ec6dae3f55456ead"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-1440-1x-actual.png",
+      "bytes": 758650,
+      "sha256": "daa198adfb3225df01854cb11acb548ad1a11d2d425211e14a0e1f732d0d1af9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-1440-1x-next.png",
+      "bytes": 757048,
+      "sha256": "c2abd0b76d04c6b4e016369f88ba83dd3fa8536840b324a62c5acf578dd7aa6c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-1440-2x-actual.png",
+      "bytes": 801262,
+      "sha256": "0f4f5f417986021eda9dee53033b57fc320d12834da6a43218411d9f6876e4d3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-1440-2x-next.png",
+      "bytes": 797823,
+      "sha256": "153dd90249970b3a4e20dc7e8a71eb13fa5c671263646e4bd667a15b3146b8a5"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-402-1x-actual.png",
+      "bytes": 228412,
+      "sha256": "fec28084ed4df0ee82b57b706baddcc41250d178953b70bc00210491d721dfb6"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-402-1x-next.png",
+      "bytes": 228676,
+      "sha256": "e6dc13fbc6b6f7b36cd2e22839dcccf924818d6820f36bc3ee2e5e440b233bd1"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-402-2x-actual.png",
+      "bytes": 215696,
+      "sha256": "1d37c81d0eb3b4b0e801eb1f2884f2ce9c6e7fdb2c0f177ded54a221139703b3"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/acceptance/weapon-bow-402-2x-next.png",
+      "bytes": 214646,
+      "sha256": "3c18e8db93ca85a1b14827b25e73df2d3fd31aa47e7bc3023b197f18783d281c"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/results.json",
+      "bytes": 42784,
+      "sha256": "10ceffcb195746fbcf2e2b56f2cd2b9c4c66af108998b4d009eb3e47e1646e51"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v1/vite.log",
+      "bytes": 450,
+      "sha256": "951f0b6d42f6378d5f7328617efb9f1b436af4522f68366e5eaf0b2cdeaadc22"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/results.json",
+      "bytes": 129172,
+      "sha256": "386a9990617c953d42e35f92d91bb602a02a5bbe4c3ed7c4ad81193f32b29be9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v2/vite.log",
+      "bytes": 450,
+      "sha256": "52320f6c523d3096a1f025842537ffb45ca5b18f8b1d52c87da7bb6c8212a013"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/results.json",
+      "bytes": 152701,
+      "sha256": "69509c2e5af7933b1dcd51f74423b8650951ea3f4540f55815e7813598df5272"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/fit-v3/vite.log",
+      "bytes": 450,
+      "sha256": "9b98e3b55734d0d6635faff35503ec2eb0dfe8e8735e4646ea6f7e04da49a513"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards/results.json",
+      "bytes": 114528,
+      "sha256": "31b264fe0417672860f9818e3a3424afa57be64ff5017507090872f792215fa1"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/guards/vite.log",
+      "bytes": 450,
+      "sha256": "8d916f75a7d7437dd6cea25fe5782363e8775fd3897a6e3338f19274d6098d55"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-1x-actual-controls.png",
+      "bytes": 758253,
+      "sha256": "1071e298e73f2aff11a624529840e6660d8ac8cba64a354fecb08a2c3df0e8d9"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-1x-next-controls.png",
+      "bytes": 797230,
+      "sha256": "09a183f5f50191df8e65c3dc476a2bfb652045ca027de2f5cb13e453ca9d4f5e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-2x-actual-controls.png",
+      "bytes": 801370,
+      "sha256": "b49fb82c9051cc6d161fc96aceb39dc61cd1bb7c75c8d7ef611d8d3f98b9035a"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-1440-2x-next-controls.png",
+      "bytes": 799615,
+      "sha256": "67e6fe22018d603b40ee8ba0bb65c8ae57c27ee94942cecdccae4059f43d855f"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-1x-actual-controls.png",
+      "bytes": 232209,
+      "sha256": "7cd0bca4a7891aa3054bbcdbd19cc24c278f44b28fc17f59b9a95fcd7900fc69"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/helm-empty-402-2x-actual-controls.png",
+      "bytes": 215803,
+      "sha256": "8753084c20b95f5e278de410ef3fd92a54ff05baf499a39a1d18e94c5d9d1a93"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/results.json",
+      "bytes": 375413,
+      "sha256": "56d0bbc213b590062e196fa7a92af433df654b57ff8f1bca57fad91409bc2f50"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/vite.log",
+      "bytes": 450,
+      "sha256": "308acd6cf859103af43fe32084fb009f964f4315f342639afc1f767c405615c1"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-1x-actual-controls.png",
+      "bytes": 758467,
+      "sha256": "6e0a35a59e30c7b326607f3994670ba038a4aade11865c91a19c23ab66a49e9e"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-1x-next-controls.png",
+      "bytes": 796001,
+      "sha256": "8f6628e8b5f6836852bee0a6defec810681addf24f995d85137e3b3c5607a970"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-2x-actual-controls.png",
+      "bytes": 801198,
+      "sha256": "af26db5c75c717d770365c37ed36ccb7e33e2441fb6ba6db9d2b381dff77bd02"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-1440-2x-next-controls.png",
+      "bytes": 803412,
+      "sha256": "8f9aee7752fb260a21c0918f5839747ca33d1842386d92721e96cd18e2790463"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-1x-actual-controls.png",
+      "bytes": 231267,
+      "sha256": "2b7a22281e8a55d6acfe5fd9350775ff81ddd1fc77de15dca5d4f29e94f7dabc"
+    },
+    {
+      "path": "docs/evidence/cut220/painted-8879/painted-adoption/weapon-bow-402-2x-actual-controls.png",
+      "bytes": 215785,
+      "sha256": "8983ea369eca7c9dd1e25fd287848085c6aa404459f4ded6a48d2af48fa54575"
+    }
+  ],
+  "compression": "Each selected results.json.gz is verified lossless; raw originals remain local. Restore with gzip -cd.",
+  "rootAdditionalOwnedIncluded": [
+    "art/EQUIPMENT.md",
+    "docs/evidence/cut220/equipment-export-alpha-2026-10-16.json",
+    "docs/evidence/cut220/painted-8879/root-fit-review-2026-10-16.json",
+    "docs/evidence/cut220/painted-8879/root-final-freeze.json"
+  ]
+}

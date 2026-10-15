@@ -134,6 +134,7 @@ export function heroHubPanel(app: App, initial: HeroHubSection = "gear", hooks: 
         equipmentPhase = phase;
       },
       () => current() && asked === identity() && host.isConnected,
+      app.lineage.look,
     );
     const doll = h(
       "section",

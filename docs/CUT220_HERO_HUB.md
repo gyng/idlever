@@ -328,3 +328,45 @@ art. It is functional paper-doll progress, not final painted quality or fullR7.
    prototype quality judgment separate from player feedback. Retain failures.
    Revalidate after equipment wire, preparation/lifecycle, art/atlas, phase/layout
    or runtime changes. Existing Hub journeys and broader gates remain separate.
+
+## R7 painted composition refinement — 2026-10-16
+
+This refines the functional prototype with aligned neutral male/female/cat body
+paintings and exact wearable art. It does not certify final painted quality,
+dungeon weapon silhouettes, all class looks, wholeR7 or fun acceptance.
+
+1. Read canonical `Lineage.look` only (`male`, `female`, `cat`; unknown/missing
+   uses male) and the same Actual/Next native four-slot rows. One neutral body
+   image,0baked weapons/armour and at most1selected weapon layer. No new controls,
+   cards, equipment inference, game rules or purchases. Retain existing12item
+   art paths; exact7wearable registry entries add no generic substitution.
+2. Full-canvas base mounts at147×220CSSfigure units,x6.5,y0. Wearables use
+   explicit uniform scale/translation: generation did not reliably honor base
+   registration. Item icons also anchor their painted grip rather than padded
+   rectangle. Fit each per-kind wearable against the actual paintings: head centre near80, shoulders51–107,
+   hands near42/119 at105–117, toes within42–120 at194–210. Boots must cover both
+   bare toes without clipping. Null slot has0image/primitive children. Inspect
+   all3looks with head/body/weapon/boots; retain observed fit limits explicitly.
+3. Each base/wearable load/error callback checks current owner/incarnation,
+   connected node and retained phase. Missing body or selected item has1visible
+   role-specific primitive fallback, never an invisible figure or second weapon.
+   Exercise failed base+failed selected wearable and late callbacks after actual
+   owner change/phase replacement; exact save and canonical gear unchanged.
+4. Reuse the2genuine8879Actual/Next fixtures at402×681/1440×900 normal/200%
+   (8cases, both phases;64canonical slot comparisons),100phase switches and
+   100refreshes percase;4legal slot routes unchanged. Retain the existing15owned
+   shape coverage, add3look fit review and exact mounted-art identity checks.
+   Phase/slot targets≥44px,0document/panel horizontal overflow, scroll reaches
+   whole figure/controls. No performance claim while native work is live.
+5. Pin exact final asset SHA/dimensions/alpha provenance before full matrix.
+   Inspect actual composed phone/desktop frames; dated engineering observations
+   are not player feedback. Full/Low/Off/reduced motion retain identical static
+   slot meaning. Revalidate after body/item export, mounts, look/wire/lifecycle,
+   phase/layout or runtime changes. Preserve prototype/failure evidence.
+
+Owner clarification2026-10-16: the paper doll may be more abstract to simplify
+implementation. Recognisable gear, clear slots and correct Actual/Next semantics
+are the priorities; anatomical/clothing/grip perfection is not a gate. Retain
+approved assets/mounts and primitive fallbacks; no further generation or fit
+polish is required for this functional refinement. This does not close broader
+R7 progression/tree expansion or imply a final art/fun rating.
