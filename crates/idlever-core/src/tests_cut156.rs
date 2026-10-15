@@ -72,3 +72,52 @@ fn current_saves_and_lineage_wire_have_no_retired_storage_choices() {
     assert!(wire.get("vault_pref").is_some(), "dungeon cage preference remains current");
     assert!(saved["lineage"].get("next_vault_id").is_some(), "prepared supply allocator remains current");
 }
+
+#[test]
+fn retired_storage_fates_do_not_create_current_find_chips() {
+    use std::collections::{BTreeMap, BTreeSet};
+    let items: Vec<_> = (1..=4).map(|id| crate::item::Item::new(id, "heal")).collect();
+    let fates = BTreeMap::from([
+        ((1, "heal".to_string()), "converted"),
+        ((2, "heal".to_string()), "bones"),
+        ((3, "heal".to_string()), "sheet"),
+        ((4, "heal".to_string()), "shelved"),
+    ]);
+    let game = Game::new(244);
+    let found = crate::engine::exit_finds(&items, &fates, &BTreeSet::new(), &game.lineage.flavours);
+    assert_eq!(found.iter().map(|i| i.id).collect::<Vec<_>>(), vec![1, 2]);
+    assert!(found.iter().all(|i| i.kind != "heal"), "unknown potion identity remains private");
+}
+
+#[test]
+fn obsolete_insurance_reason_is_an_ordinary_unclassified_gold_movement() {
+    let mut game = Game::new(244);
+    let before = (game.lineage.gold, game.lineage.day_net, game.lineage.night_net);
+    game.lineage.gold_move(-8, "insure sword");
+    assert_eq!(crate::engine::gold_term("insure sword"), "other");
+    assert_eq!((game.lineage.gold, game.lineage.day_net, game.lineage.night_net),
+        (before.0 - 8, before.1 - 8, before.2 - 8));
+    assert_eq!(game.lineage.gold_ledger.last().unwrap().why, "insure sword");
+}
+
+#[test]
+fn legacy_shelf_reports_load_without_credit_or_prepared_item_creation() {
+    let mut game = Game::new(244);
+    game.build_town("house").unwrap();
+    game.try_send().unwrap();
+    game.run.as_mut().unwrap().over = Some(crate::engine::ExitTier::Bank);
+    game.finish_run();
+    let gold = game.lineage.gold;
+    let supplies = game.lineage.supplies.clone();
+    let mut saved: serde_json::Value = serde_json::from_str(&game.save()).unwrap();
+    saved["batch"]["shelved"] = serde_json::json!({"heal": [3, 24]});
+    saved["last_exit"]["shelved"] = serde_json::json!([{"kind": "heal", "n": 3}]);
+    saved["batch"]["exits"][0]["shelved"] = serde_json::json!([{"kind": "heal", "n": 3}]);
+    let loaded = Game::load(&saved.to_string()).unwrap();
+    assert_eq!(loaded.lineage.gold, gold);
+    assert_eq!(loaded.lineage.supplies, supplies);
+    let current: serde_json::Value = serde_json::from_str(&loaded.save()).unwrap();
+    assert!(current["batch"].get("shelved").is_none());
+    assert!(current["last_exit"].get("shelved").is_none());
+    assert!(current["batch"]["exits"][0].get("shelved").is_none());
+}

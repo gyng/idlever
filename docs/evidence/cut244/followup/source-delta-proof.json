@@ -1,0 +1,101 @@
+{
+  "files": [
+    {
+      "path": "crates/idlever-core/src/meta.rs",
+      "beforeSha256": "325c81f11ae42cccff8da0020866c5d1c03ce2275672a70cf19b869e97a5fe9c",
+      "afterSha256": "5260a102df17f1cf446977ec4dac31330678efc8be262840b3a5118d7baf6763",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": false
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "beforeSha256": "137a8efa4fb0b8545afc889c5f67a5e722f866bc0d7c6a6cf99e5a26f68edcb8",
+      "afterSha256": "a0fcaa247a778f1686bd99a2bb2297991609b81829b0d826513ca19b17c224a3",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": false
+    },
+    {
+      "path": "crates/idlever-core/src/wire.rs",
+      "beforeSha256": "7eb368750fb1a141f622825db51fd7daebc0b39bebd95103b84e137acd83c416",
+      "afterSha256": "867a8cecd41a49619bffaeb19c4be9524d36a351c7653c1610dab1cf27104074",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": false
+    },
+    {
+      "path": "crates/idlever-core/src/forecast.rs",
+      "beforeSha256": "472b0b4baf97d1fee9c99041615825f1d89e1d8139526a8b647c90748e3327a2",
+      "afterSha256": "dfd39647c0482780568f15cb36a44b989085c7ec6c87aac95117d428666dd6b9",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": true
+    },
+    {
+      "path": "crates/idlever-core/src/trace.rs",
+      "beforeSha256": "b788ad7fedd6cbec7f0595c51f120b77ba05b32268d5c60cbde37e13fe90dc37",
+      "afterSha256": "2034c087a4ac022ac6ac25fb820a72b8cf5ca6831a9b653798b6e872ef4aa87f",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": true
+    },
+    {
+      "path": "crates/idlever-core/src/provenance.rs",
+      "beforeSha256": "66c20068121fbcd9c60e7328c0aabe977ea93de199620c5d1ded36ee2f7a8fa0",
+      "afterSha256": "f567e9c0ab9b57bed1c4591d2c5d53370567eeb5232fd3f12bcf1d588926ae30",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": true
+    },
+    {
+      "path": "crates/idlever-core/src/offline.rs",
+      "beforeSha256": "3c638456f55b18d852be20b8fb560063ed0b7b5659959b4c16bb40b2d08fd018",
+      "afterSha256": "b41251823c8e55ee3e266cf23f7aa72d8c86c5825974375a348500d14f49c0cb",
+      "productionDeltaExactlyDeclared": true,
+      "commentOnly": false
+    }
+  ],
+  "currentCatalogueIds": [
+    "cond_alert",
+    "cond_turns",
+    "cond_loot",
+    "cond_on_kill",
+    "cond_on_see",
+    "cond_party_hp",
+    "tame",
+    "rogue",
+    "kite_archers",
+    "stair_dance",
+    "noise_discipline",
+    "deep_march",
+    "row5",
+    "throw",
+    "row6",
+    "corridor_fighting",
+    "pack_break",
+    "thief_guard",
+    "row7",
+    "ranger",
+    "gunner",
+    "boss_focus",
+    "oath_slot_2",
+    "row8",
+    "caster",
+    "reflect_read",
+    "row9",
+    "cadence",
+    "lantern_rig",
+    "recall_sense",
+    "row10",
+    "oath_slot_3",
+    "supply_cap_5",
+    "bone_sense",
+    "incubator",
+    "third_tag",
+    "party_slot_2",
+    "hold",
+    "gas_step",
+    "party_slot_3",
+    "route2",
+    "last_stand",
+    "heir_pick",
+    "party_slot_4"
+  ],
+  "catalogueInitializerByteIdentical": true,
+  "scope": "Production changes are exactly3inactive descriptor arms,2insurance reason-prefix exceptions,2storage-only accepted exit fates,3shelved fields plus their dead loop/empty initializer/report reader; all other production deltas are comments. This proves no undeclared code delta. Current output equality remains a separate runtime check; arbitrary injected or nonempty historical inputs intentionally differ."
+}

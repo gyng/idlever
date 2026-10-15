@@ -595,7 +595,6 @@ pub(crate) fn report_with(game: &mut Game, elapsed_s: u64, facts_before: &std::c
             let reason = if b.repeat_short { "purse_short" } else if income <= 0 { "no_income" } else { "income_spent" };
             crate::wire::SupplyBudget { income, spent, left: (income - spent).max(0), reason: reason.into() }
         }),
-        shelved: b.shelved.iter().map(|(k, (n, g))| SalvageRow { kind: game.lineage.wire_name(k).replace('_', " "), n: *n, gold: *g }).collect(),
         heirs: b.heirs.map(|(lo, hi)| vec![lo, hi]).unwrap_or_default(),
     };
     r.lead = lead_of(game, &r);

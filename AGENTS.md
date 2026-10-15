@@ -148,6 +148,15 @@ third of it the chores' floods).
 4. Fun-verdict playtest on the `idle-hybrid` preset (`docs/FUN_EVAL_IDLE.md`); the gaps
    become the next contract.
 
+Owner amendment2026-10-16: playtests also record observations and feedback,
+not only passing checks. Save dated notes beside the evidence, with build/source
+identity, save/seed, viewport/input method, what actually happened, interpretation
+and confidence. Separate owner/player feedback from automated measurements and
+the agent's visual review. These findings have limited shelf life: revalidate
+them before using them to justify new work or acceptance when relevant UI,
+rules, content, pacing or player context has changed. Preserve old notes as
+historical/superseded evidence; never carry their conclusions forward silently.
+
 ## Hard invariants
 
 Owner economy amendment2026-10-13 (Cut196): accepted found-item pickups convert

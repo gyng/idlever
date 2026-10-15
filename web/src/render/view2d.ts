@@ -10,6 +10,7 @@ import { reducedMotion } from "./quality";
 import { effectsLevel } from "./fxpref";
 import { TOOL_COLOURS, TOOL_SPRITE } from "./tool-sprites";
 import { toolCuePixels, toolFade } from "./tool-cues";
+import { paintLandmarkPrimitive, visibleLandmarkPieces, type LandmarkDraw } from "./landmarks";
 
 type Frame = { x: number; y: number; w: number; h: number };
 type Sheet = {
@@ -53,6 +54,7 @@ const hash2 = (x: number, y: number, s: number): number => {
 
 export class View2D {
   readonly canvas: HTMLCanvasElement;
+  readonly landmarkDraws: LandmarkDraw[] = [];
   private ctx: CanvasRenderingContext2D | null;
   private host: HTMLCanvasElement | null; // the GL canvas an overlay sits on (null: `canvas` is the view itself)
   private box = "";
@@ -118,9 +120,10 @@ export class View2D {
 
   draw(st: ReplayState, cues?: CombatCues): void {
     this.cueBodies.clear();
+    this.landmarkDraws.length = 0;
     const g = this.ctx;
     if (!g || !this.shown) return;
-    const [W, H] = this.fit();
+    const [W, H, dpr] = this.fit();
     const pal = paletteFor(st.biome);
     g.imageSmoothingEnabled = false;
     g.fillStyle = "#07080a";
@@ -210,6 +213,35 @@ export class View2D {
           g.fillRect(px, py, T, T);
         }
       }
+    for (const piece of visibleLandmarkPieces(
+      st.landmarks,
+      st.w,
+      st.tiles,
+      st.seen,
+      st.items,
+      st.overlays,
+      st.visible,
+    )) {
+      if (piece.x + piece.w <= x0 || piece.x > x1 || piece.y + piece.h <= y0 || piece.y > y1)
+        continue;
+      const px = ox + piece.x * T,
+        py = oy + piece.y * T;
+      g.globalAlpha = st.visible[piece.y * st.w + piece.x] ? 1 : 0.62;
+      const painted = blit(`${b}_env_${piece.asset}`, px, py, piece.w * T, piece.h * T);
+      if (!painted) {
+        g.save();
+        g.translate(px, py);
+        g.scale((piece.w * T) / 8, (piece.h * T) / 8);
+        paintLandmarkPrimitive(g, piece.role, b, 0, 0);
+        g.restore();
+      }
+      this.landmarkDraws.push({
+        ...piece,
+        painted,
+        rect: { x: px / dpr, y: py / dpr, w: (piece.w * T) / dpr, h: (piece.h * T) / dpr },
+      });
+    }
+    g.globalAlpha = 1;
     // Tiny ground footsteps from actual vacated hero tiles, below all actors.
     for (const p of st.trail.draw(
       st.clock,

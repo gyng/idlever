@@ -1,0 +1,27 @@
+{
+  "scope": "Static Vite Oxc transformed-module instrumentation conformance only; no GPU/cold performance result or control acceptance",
+  "harnessSha256": "b5262e5990f325a47d873a50ddb7ce1b3a9e222b872a60574591ed7723c8f105",
+  "instrumentationSha256": "1fe1486646c82c57fdb1da4670f278a08c37ceddf06466e919d9821e5c37fe76",
+  "rows": [
+    {
+      "leg": "baseline",
+      "path": "web/src/render/index.ts",
+      "sourceSha256": "9e84e8f136200ce2d74f112a95b8929c8fb6145410446ceef7d0bb3b9975daaa",
+      "originalSha256": "f310038282247df48e8658cd3305b6cfcd944006b74835c986ce17b618fba1b8",
+      "instrumentedSha256": "2e2ed73b0df4928eee56b38ad7c9ac65cb973bffc44b3e6ec49c219560455fc4",
+      "rafSitesRemoved": 2,
+      "frameRegistrations": 1,
+      "preRenderGates": 1
+    },
+    {
+      "leg": "candidate",
+      "path": "web/src/render/index.ts",
+      "sourceSha256": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "originalSha256": "2e2dafec9b946ca1176b1b8ea9106774d065ef733d2621a6070a26f553354375",
+      "instrumentedSha256": "39b675bc4d2faf48f13ac14463e2350c0c4b7a634b48bcc0f5d3b4fb47ee53ab",
+      "rafSitesRemoved": 2,
+      "frameRegistrations": 1,
+      "preRenderGates": 1
+    }
+  ]
+}

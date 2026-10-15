@@ -1,0 +1,99 @@
+{
+  "scope": "Retained active prepared-item/provenance consumers, distinct from removed home-storage APIs and shelf reports. These fields are not classified dead; no removal is authorized in this follow-up. A separate migration contract would be needed to alter accepted prepared/leash semantics.",
+  "files": {
+    "crates/idlever-core/src/item.rs": {
+      "sha256": "a7654b56db4758e06604454d3affc6a0495a21ff63c06c35f2a70d2cc996a77c",
+      "archive": "docs/evidence/cut244/followup/item.rs.retained-consumers.before.gz"
+    },
+    "crates/idlever-core/src/kit.rs": {
+      "sha256": "28f70b39c4092adb07a4efa5fde40c4a2dc0754f852e305e2d0a6590d8463a9c",
+      "archive": "docs/evidence/cut244/followup/kit.rs.retained-consumers.before.gz"
+    }
+  },
+  "currentProductionWriters": {
+    "Item.found": "Item::new initializes false; no current true writer found. Old/input-supplied true values remain actively consumed.",
+    "Item.paid": "Item::new initializes0; buy_supply explicitly writes0. start_run and kit rebuild push its values into Run.bought_leashes; actual consumers use vector length for prepared nonfree leash ownership."
+  },
+  "consumers": [
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "lines": [
+        3833,
+        3856,
+        3860,
+        4230,
+        4233,
+        6564
+      ],
+      "behavior": "found distinguishes accepted prepared supplies from repeat/automatic preparation; set_restock may retain them."
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "lines": [
+        4531,
+        5832
+      ],
+      "behavior": "paid values are carried into bought_leashes; surviving prepared nonfree leashes return by count, with no extra Gold."
+    },
+    {
+      "path": "crates/idlever-core/src/kit.rs",
+      "lines": [
+        209,
+        252
+      ],
+      "behavior": "kit rebuild preserves free versus nonfree leash quantities using bought_leashes length and prepared item metadata."
+    },
+    {
+      "path": "crates/idlever-core/src/item.rs",
+      "lines": [
+        309
+      ],
+      "behavior": "InvItem exposes found provenance on current wire; retained accepted field."
+    }
+  ],
+  "validationDisposition": "Do not drop Item.found/paid, prepared supplies, Run.bought_leashes, next_vault_id or cage/vault_pref. Existing earned save/settlement comparisons remain exact except declared retired empties. Stale comments will be corrected separately after full gate terminal, proving non-comment code unchanged.",
+  "exactSourceExcerpts": [
+    {
+      "path": "crates/idlever-core/src/item.rs",
+      "firstLine": 24,
+      "lastLine": 41,
+      "text": "    /// Cut 6 \u00a72: bought, crafted or vaulted by name \u2014 usable by its kind (`drink heal`) even\n    /// while the flavour is unidentified. Found items are known only through their flavour.\n    #[serde(default, skip_serializing_if = \"std::ops::Not::not\")]\n    pub known: bool,\n    /// Cut 8B \u00a73: the kennel's leash \u2014 on the shelf for nothing while the lineage has never\n    /// tamed; clearing the shelf refunds nothing for it and `auto_supply` never rebuys it.\n    #[serde(default, skip_serializing_if = \"std::ops::Not::not\")]\n    pub free: bool,\n    /// Cut 21 \u00a72: a supply the hero found and brought home to the shelf (`found heal \u2192 shelf`)\n    /// \u2014 packed like a bought one, but never the repeat's (the repeat buys the kinds the\n    /// player packed) and a drop salvages it rather than refunding a price never paid.\n    #[serde(default, skip_serializing_if = \"std::ops::Not::not\")]\n    pub found: bool,\n    /// Cut 22 \u00a71: what the shelf charged for a bought supply \u2014 the price moves with the\n    /// lineage's best depth, and a refund pays back what was paid (0: not bought, or bought\n    /// before the price moved; the refund then pays today's price).\n    #[serde(default, skip_serializing_if = \"is_zero\")]\n    pub paid: i32,"
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "firstLine": 3829,
+      "lastLine": 3834,
+      "text": "        if on {\n            self.restock_at(false);\n            return;\n        }\n        self.lineage.supplies.retain(|s| s.free || s.found);\n    }"
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "firstLine": 3854,
+      "lastLine": 3866,
+      "text": "        let cat = self.supply_catalogue();\n        let used = self.lineage.row_kinds();\n        let shelf: Vec<String> = self.lineage.supplies.iter().filter(|s| !s.free && !s.found).map(|s| s.kind.clone()).collect();\n        let kinds: Vec<String> = if !shelf.is_empty() {\n            shelf\n        } else {\n            let mut found: Vec<&str> = self.lineage.supplies.iter().filter(|s| s.found).map(|s| s.kind.as_str()).collect();\n            self.lineage\n                .last_supplies\n                .iter()\n                .filter(|k| !self.lineage.last_wasted.contains(k))\n                .filter(|k| match found.iter().position(|f| f == k) {\n                    Some(i) => {"
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "firstLine": 4526,
+      "lastLine": 4533,
+      "text": "            run.prepared_supplies.push(it.clone());\n            run.supplies.push(it.id);\n            run.packed.push(it.kind.clone());\n            if it.kind == \"leash\" {\n                if !it.free {\n                    run.bought_leashes.push(it.paid);\n                }\n                match run.hero.inv.iter_mut().find(|i| i.kind == \"leash\") {"
+    },
+    {
+      "path": "crates/idlever-core/src/engine.rs",
+      "firstLine": 5829,
+      "lastLine": 5839,
+      "text": "                    if it.kind == \"leash\" {\n                        let found = (run.found_left(it.id, \"leash\") as i32).min(it.amount.max(0));\n                        let prepared_left = (it.amount - found).max(0) as usize;\n                        for _ in 0..prepared_left.min(run.bought_leashes.len()) {\n                            if self.lineage.supplies.len() >= self.lineage.supply_cap() { break; }\n                            let mut prepared = Item::new(self.lineage.next_vault_id, \"leash\");\n                            self.lineage.next_vault_id += 1;\n                            prepared.amount = 1;\n                            prepared.known = true;\n                            prepared.value_claimed = true;\n                            self.lineage.supplies.push(prepared);"
+    },
+    {
+      "path": "crates/idlever-core/src/kit.rs",
+      "firstLine": 208,
+      "lastLine": 211,
+      "text": "    let mut used=std::collections::BTreeSet::new();\n    let mut free_leashes=run.packed.iter().filter(|k|k.as_str()==\"leash\").count().saturating_sub(run.bought_leashes.len());\n    let all:Vec<_>=run.hero.inv.iter().chain(run.hero.weapon.iter()).chain(run.hero.armour.iter()).chain(run.hero.helm.iter()).chain(run.hero.boots.iter()).collect();\n    for (n,kind) in run.packed.iter().enumerate() {"
+    },
+    {
+      "path": "crates/idlever-core/src/kit.rs",
+      "firstLine": 249,
+      "lastLine": 254,
+      "text": "        run.supplies.push(it.id);run.packed.push(it.kind.clone());\n        run.prepared_supplies.push(it.clone());\n        if it.kind==\"leash\" {\n            if !it.free {run.bought_leashes.push(it.paid);}\n            match run.hero.inv.iter_mut().find(|i|i.kind==\"leash\") {\n                Some(stack)=>stack.amount+=it.amount.max(1),"
+    }
+  ]
+}

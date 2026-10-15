@@ -1625,8 +1625,8 @@ pub fn reach_key(game: &Game, rules: &RuleSet, depth: u32, sims: u32, tag: u64, 
 }
 
 /// A fingerprint of what a sim starts from: the lineage fields a fresh run reads (facts,
-/// unlocks, class and level, vault and loadout, party, supplies, gold, forge, grudges, bones,
-/// insurance, keep preference, trait, heir, variant, hunter, freshness, the other sets, trophies) — not marks, renown or the rest
+/// unlocks, class and level, permanent kit, party, supplies, gold, forge, grudges, bones,
+/// trait, heir, variant, hunter, freshness, the other sets, trophies) — not marks, renown or the rest
 /// clock, so a purchase or a rank does not spill the cache.
 pub fn lineage_key(game: &Game) -> u64 {
     let l = &game.lineage;

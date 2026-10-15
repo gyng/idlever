@@ -1,0 +1,37 @@
+{
+  "recordedAtUtc": "2026-10-15T18:56:37.162874+00:00",
+  "scope": "Agent-run deterministic current-loadout diagnostics, not a human fun verdict or five fresh class cohorts. No external player feedback was collected in this experiment.",
+  "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "inputContext": "One previously earned camp, class purchases at actual6/8/8marks, new class levels1, pausedScout retained, one public manual send per branch. Within-class weapon-only comparisons.",
+  "observations": [
+    {
+      "origin": "actual engine reports and agent interpretation",
+      "observed": "Ranger/bow banks332Gold atD14; Ranger/sword dies atD28with0creditedGold. Caster/bow banks831Gold atD19; Caster/dagger dies to gas atD13with0Gold.",
+      "interpretation": "Depth alone would miss the living bank payoff in these samples. This does not establish the weapon-specific tactical cause or a general recommendation.",
+      "confidence": "Actual reports repeat exactly; interpretation limited to this earned state and affected pre-fix simulation.",
+      "evidence": [
+        "docs/evidence/cut246/audit.json"
+      ]
+    },
+    {
+      "origin": "stricter current-runtime equivalence audit",
+      "observed": "All10actualrun/replayturncounts differ and5depths differ despite same package and newly captured sends. All20executions reproduce their respective outputs exactly.",
+      "interpretation": "Deterministic outputs can still embody an incorrect batch fast path; a replay availability check was insufficient.",
+      "confidence": "High; first divergence/full public continuation isolates skipped hearth_regen decrement.",
+      "evidence": [
+        "docs/evidence/cut246/replay-equivalence-first.json",
+        "docs/evidence/cut246/replay-audit/first-divergence.json",
+        "docs/evidence/cut246/replay-audit/full-public-continuations.json"
+      ]
+    }
+  ],
+  "freshness": {
+    "status": "pre-fix; outcome and tactical conclusions require revalidation",
+    "triggers": [
+      "Hearthglass/batch timer fix",
+      "Other combat, gear, package, class or progression changes",
+      "Different earned state, class training, activeScout policy or viewing mode"
+    ],
+    "preserve": "Keep original mismatches/repeats as historical evidence; link corrected experiments rather than overwrite."
+  }
+}

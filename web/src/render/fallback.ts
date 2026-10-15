@@ -140,6 +140,9 @@ export function createFallbackViewer(canvas: HTMLCanvasElement): Viewer {
     debugBiome() {
       return st.biome;
     },
+    debugLandmarks() {
+      return view.landmarkDraws.map((piece) => ({ ...piece, rect: { ...piece.rect } }));
+    },
     debugRects() {
       return [];
     },

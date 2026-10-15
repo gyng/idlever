@@ -2116,9 +2116,7 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
               ),
             )
           : null,
-        // QA 0c6e126 (qaY: the header's `new find: bow, leather` beside FOUND `mail +1` — the item the send brought from the vault): an
-        // absence's FOUND is its first finds (`ReturnReport.new_finds`, the core's, every one the header's `new find` names); what went to
-        // the vault is KEPT (`→ vault`)
+        // First finds are current discovery names; converted pickups create no home storage section.
         section(
           /* copy:label */ "found",
           r.new_finds ? chips(r.new_finds.map(named)) : foundChips(),
@@ -2192,26 +2190,6 @@ export function renderReport(app: App, r: ReturnReport, absence = false): Mounte
                     d.cause.replace(/_/g, " "),
                     " ",
                     h("b", { class: "num" }, `×${d.n}`),
-                  ),
-                ),
-              )
-            : null,
-        ),
-        // Cut 21 §2: found supplies the exits put on the shelf (the next send packs them free), before what was sold
-        section(
-          /* copy:label */ "shelved",
-          r.shelved?.length
-            ? h(
-                "div",
-                { class: "chips shelved" },
-                ...r.shelved.map((x) =>
-                  h(
-                    "span",
-                    { class: "chip shelf" },
-                    /* copy:callout */ "found ",
-                    itemChip({ kind: x.kind, label: x.kind.replace(/_/g, " ") }),
-                    x.n > 1 ? h("b", { class: "num" }, ` ×${x.n}`) : "",
-                    /* copy:callout */ " → supplies",
                   ),
                 ),
               )

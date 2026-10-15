@@ -1,0 +1,38 @@
+{
+  "path": "web/src/engine/types.ts",
+  "beforeSha256": "a97da5f03b3c68185b7c4ba8fcc79db92f0d5bd4286bb45b6af9e01a9e299a7a",
+  "afterSha256": "a66a10be5cef926c2628c22241e3c0c01d6734e6fd4bab27a30ad7a9f2625918",
+  "sameLineCount": true,
+  "allChangedLineCodePrefixesIdentical": true,
+  "replacements": [
+    {
+      "before": "what the exit salvaged before the keep sheet (a return's 40 % cut), per kind in coins;",
+      "after": "retained legacy salvage rows; current found-item conversion creates no exit salvage payment;"
+    },
+    {
+      "before": "`+$50 returned D5`, `\u2212$40 heal`, `\u2212$8 insure sword`.",
+      "after": "`+$50 returned D5`, `\u2212$40 forge sword`, `+$20 chest`."
+    },
+    {
+      "before": "Cut 12 \u00a76: a supply the camp gave (the kennel's leash) reads `leash \u00b7 kennel`; the core always sends it",
+      "after": "The kennel's free prepared leash reads `leash \u00b7 kennel`; the core supplies this provenance"
+    },
+    {
+      "before": "Cut 21 \u00a72: a shelf line an exit put there (found in the dungeon, packed free) \u2014 `heal \u00b7 found`",
+      "after": "Retained legacy found-supply provenance on accepted prepared items; current dungeon finds convert to Gold"
+    },
+    {
+      "before": "QA 524827b (core): the `+N` enchant scrolls read on it added (KEPT `axe +7 \u2192 vault \u00b7 enchanted \u00d76`)",
+      "after": "The `+N` enchant scrolls added to this physical item"
+    },
+    {
+      "before": "send (before the scout) \u00b7 loadout (wear a find) \u00b7 buyKit \u00b7 keep (a keep sheet) / sellVault \u00b7 bankDeposit \u00b7 spendLevel \u00b7 setParty / hatch \u00b7",
+      "after": "send (before the scout) \u00b7 starting-kit preparation \u00b7 buyKit \u00b7 forgeStep \u00b7 bankDeposit \u00b7 spendLevel \u00b7 setParty / hatch \u00b7"
+    },
+    {
+      "before": "swapQuest \u00b7 setStart \u2014 each fills its node's count (`WorkNode.count`) until its worker is hired.",
+      "after": "swapQuest \u00b7 setStart \u2014 successful chores feed count fallbacks or the worker's configured feat until hired."
+    }
+  ],
+  "scope": "Comment-only source boundary after all retirement client tests; no semantic code or generated package changes. Original tests remain bound to their recorded source."
+}

@@ -1,0 +1,35 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+    "dirty": true,
+    "dirtyHash": "107fd5f8b43b8f94500ef87ffcf14ca09ae417503d01e4a5d15092a97044ac38",
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+  },
+  "startedAt": "2026-10-15T18:18:43.824Z",
+  "finished": true,
+  "selected": [
+    "item-icons"
+  ],
+  "results": {
+    "item-icons": {
+      "name": "item-icons",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 3.452,
+      "endedAtSeconds": 11.401,
+      "firstFailure": "page.evaluate: Error: report found item icons",
+      "finishedAt": "2026-10-15T18:18:55.226Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "107fd5f8b43b8f94500ef87ffcf14ca09ae417503d01e4a5d15092a97044ac38",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T18:18:55.227Z"
+}

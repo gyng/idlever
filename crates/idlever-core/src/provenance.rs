@@ -123,8 +123,7 @@ pub fn stuck(run: &Run, cx: &mut Ctx) {
 }
 
 /// A find: `found heal on D2` (replaces the slot's last find). `label` is what the hero
-/// can call it (`smoky potion?` while the flavour is unknown — QA on 56f2a1d: the trace named
-/// a `heal` the keep sheet still called `smoky potion?`).
+/// can call it (`smoky potion?` while the flavour is unknown); the trace must preserve that privacy.
 pub fn found(run: &Run, cx: &mut Ctx, kind: &str, label: &str) {
     let text = format!("found {} on D{}", short_label(label), run.depth);
     log(run, cx, ProvKind::Found, format!("item:{kind}"), text, true);

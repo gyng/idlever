@@ -957,10 +957,16 @@ try {
       const target = page.locator(`[data-building="worker"][data-worker="${lit.id}"]`);
       const name = l.tree?.nodes.find((node) => node.id === lit.id)?.name ?? lit.id;
       assert.ok((await target.getAttribute("aria-label")).includes(name));
-      assert.ok(
-        (await target.innerText()).includes(lit.price ? `Hire $${lit.price}` : "Hire free"),
-      );
-      checks += 2;
+      const beforeHover = await page.evaluate(() => window.__idlever.engine.save());
+      await target.hover();
+      const details = page.locator("#kw-tip:not([hidden])");
+      await details.waitFor();
+      const text = await details.innerText();
+      assert.ok(text.includes(name) && text.includes("Hire"));
+      assert.ok(text.includes(lit.price ? `$${lit.price}` : "free"));
+      await page.keyboard.press("Escape");
+      assert.equal(await page.evaluate(() => window.__idlever.engine.save()), beforeHover);
+      checks += 4;
     }
 
     const readCost = await page.evaluate(async () => {

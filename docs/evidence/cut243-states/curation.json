@@ -1,0 +1,2449 @@
+{
+  "scope": "Cut243-state phase only; original failures and originals remain local with SHA inventory. LosslessgzipJSON is included; rawJSON and redundant unselected frames are deliberately excluded from commit. Representative selected focus pairs accompany all16actual probes pixel metrics; no missing PNG promoted to in-commit. No Git action.",
+  "productionPaths": [
+    "web/src/ui/camp.ts",
+    "web/src/ui/heroes.ts",
+    "web/src/heroes-compact.css"
+  ],
+  "referencedInputs": [
+    "docs/evidence/handoff-menus/input.game.json.gz",
+    "docs/evidence/cut208/earned-final/seed-1-1x8h.game.json.gz",
+    "docs/evidence/cut208/earned-final/seed-13-4x8h.game.json.gz",
+    "docs/evidence/cut220/core/fixtures/earned-three-residents.game.json.gz",
+    "docs/evidence/cut153/earned-d28.json.gz"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5748,
+      "sha256": "bee38f3879a92e0a5e437a971bd9919cb82e390af3df6ca6295caff40b5770f5",
+      "scope": "include"
+    },
+    {
+      "path": "REPAIR_CONTRACT.md",
+      "bytes": 2565,
+      "sha256": "febf765455e50a7fcd01719512104644e0810e5cab3fc507761ce209a50db1ef",
+      "scope": "include"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 6920,
+      "sha256": "237df7d29f4a190032dcce9a41ea84e8f4b68990c54a5090e574d715c9460e3c",
+      "scope": "include"
+    },
+    {
+      "path": "acquisition-inputs.json",
+      "bytes": 1715,
+      "sha256": "c853d2cd8faa6f0cdf9a5e91ac43aecd05dbae4b48489c79b27f80031084b02a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "acquisition-inputs.json.gz",
+      "bytes": 625,
+      "sha256": "dba6ae2538333e178b10cf6f3e563c9578c43f32a03b460de28501738e5be355",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-check.mjs",
+      "bytes": 13621,
+      "sha256": "32c0960e3cc0c3c7429432e2e48332b69088baec80011c432bd89aeec34687c6",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/focus-contrast.json",
+      "bytes": 11300,
+      "sha256": "50dbcd6f5b632061a4a939e852bfcaa7522112a7b35d7394e31396a1ff545864",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/focus-contrast.json.gz",
+      "bytes": 1127,
+      "sha256": "3bc6b38bd310c4fb3b7a4122122e60d811c67d412faf111632cc4e5a85d6ffa1",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/focus-side-contrast.json",
+      "bytes": 996973,
+      "sha256": "1782e45844de444fa7a7feccf33ad2d8fa5c583f1f3f96042a906f2f60b2afaf",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/focus-side-contrast.json.gz",
+      "bytes": 26621,
+      "sha256": "f871365dab21658ca99d66eb3eb78d0053e25446a34439e4756a4dcda6a08d22",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/results.json",
+      "bytes": 413082,
+      "sha256": "a98c68a8b3e06442f63fa2a534e3f6b5745a9879a8535f314d2c50985614dac8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/results.json.gz",
+      "bytes": 27749,
+      "sha256": "a9666c227c8477f78b8b63dc11fd90e5c8d91801a50cbad13ba840920045fb44",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/skill-cancel-1440-1x-background.png",
+      "bytes": 797544,
+      "sha256": "2bab05794c60cbdb1fe67c4450ac9b18a124d24eb8f4a237b201f75291e55e1d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-1440-1x-focused.png",
+      "bytes": 796066,
+      "sha256": "6aa97cd735600b58804321f269be406fc356c2aeebede89fbabe4b8d975e30af",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-1440-2x-background.png",
+      "bytes": 815948,
+      "sha256": "d4ab2fa180f86073e9a70b3ad1ff68910baff55044c6d3aa08ae91ab71896524",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-1440-2x-focused.png",
+      "bytes": 820244,
+      "sha256": "2b1909ca546826e6be0286ca5c05dd8b65ad8718c6db124743d3b76fce693643",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-320-1x-background.png",
+      "bytes": 257236,
+      "sha256": "f194aee6268f4b7b84403cdbfb368c04c48be1b01bc8f0c049172b9662623390",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-320-1x-focused.png",
+      "bytes": 258881,
+      "sha256": "51505bf6dcf8288dc311129cef5ca9f0e4b985d626eee45ab1b46a23de12f0b2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-cancel-320-2x-background.png",
+      "bytes": 233961,
+      "sha256": "18850768bcfb556f8ad34080b96a68d7ba93e9f776806296eeba4fa0f774397a",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/skill-cancel-320-2x-focused.png",
+      "bytes": 234155,
+      "sha256": "512ba1232b4ff7c795fbd629f6246428968fc413557e5891a44179b46f72a85e",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/skill-confirm-1440-1x-background.png",
+      "bytes": 794729,
+      "sha256": "e4e6dee4d3f6f584aed5aa4d30dc4ccd3c8fdf7d6cae5951a51cdb0e5ebd75c9",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/skill-confirm-1440-1x-focused.png",
+      "bytes": 796264,
+      "sha256": "c1c9713c45ae6d4957d0595496c73c189dd7995fdb8fdf94fde68248a28961d8",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/skill-confirm-1440-2x-background.png",
+      "bytes": 816008,
+      "sha256": "7615cb22c04b2269e6fbb403e0d8bda2cee4acf0be4d9a215bff69e3164ca76a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-confirm-1440-2x-focused.png",
+      "bytes": 820351,
+      "sha256": "a91c4ba7e5a2b2b7b5c3373c2d0ff64efa43317e1433c11821a9e70d8571dce4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-confirm-320-1x-background.png",
+      "bytes": 257354,
+      "sha256": "372624abadc4742f32e8a4e9ae6f9bd74d535aa9470fc2ff5c00c346b5c8e25d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-confirm-320-1x-focused.png",
+      "bytes": 258447,
+      "sha256": "2442cc2bcaf72d1f5decb3362fd86d6e4a898d10b69f7e8aebc4bc682ac5ab09",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-confirm-320-2x-background.png",
+      "bytes": 233971,
+      "sha256": "8f3c5242c03d4fb2f7432ff7fc6c94aa342731218606a130f77a98cd4dcb74c5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/skill-confirm-320-2x-focused.png",
+      "bytes": 234918,
+      "sha256": "90675a17594a6ec534a6e3639ebc2178250a213304c4a03dc00a44491b9ed2f3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-1440-1x-background.png",
+      "bytes": 799982,
+      "sha256": "145531d7aa6840e5f9735861567232d60b6921e40acd15e21d9d2d12958ccfbc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-1440-1x-focused.png",
+      "bytes": 803310,
+      "sha256": "7a7c99c4d807dec5b5070abe661cbb7682249d08522506ded075d364cf321222",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-1440-2x-background.png",
+      "bytes": 825549,
+      "sha256": "281debc139c3cfbb672b2fc44cdc240555dbb771f77713ed31209c913edf52bd",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/style-cancel-1440-2x-focused.png",
+      "bytes": 823035,
+      "sha256": "ab7b2853cbc9ef2224e758e6e61ff53f7862c461b245122babd52a82bf525771",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/style-cancel-320-1x-background.png",
+      "bytes": 245473,
+      "sha256": "447b517aebc4e74e88844f728a04b2f644e8f6139c4243b533526506a8ce0635",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-320-1x-focused.png",
+      "bytes": 245314,
+      "sha256": "b9b0dcaf426bc9109e0239cab71ed4d956c09408532b31842f91ccd8604d3a33",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-320-2x-background.png",
+      "bytes": 231167,
+      "sha256": "c81e4ff3844ee0b64684cb2ca0a7c9169d9a552e525c9a0a830f81255752ed44",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-cancel-320-2x-focused.png",
+      "bytes": 232107,
+      "sha256": "13ad382899919b24d351014e1c093e660564d17cd4e05b7ad1a5015a0e157da6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-1440-1x-background.png",
+      "bytes": 802390,
+      "sha256": "795ba7f337f0f8664d19b6531c2868c8900473f678fd737851554cfb9a1510e3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-1440-1x-focused.png",
+      "bytes": 803499,
+      "sha256": "09a32c687d4a319e3da3cbb5562b5b936ebe3edc1e2921613a80d982efc1ac06",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-1440-2x-background.png",
+      "bytes": 822409,
+      "sha256": "23f535f3f557ae2b9eb30aee8309dbbe23df42961eeca7b2a2ae364612a8acb3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-1440-2x-focused.png",
+      "bytes": 826574,
+      "sha256": "d70654e265ea1aafe0ff11a69e94330eaa5f418f15070505fe5ed21928bf0b30",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-320-1x-background.png",
+      "bytes": 245484,
+      "sha256": "877f5bb500191a690f408355036987d319317c77fdc78065c64c49402bf9afce",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-320-1x-focused.png",
+      "bytes": 246518,
+      "sha256": "f128daa817273b3e3a10baaba7eb4f132f3bcbc898d503af2fa62587577e69cd",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current/style-confirm-320-2x-background.png",
+      "bytes": 232032,
+      "sha256": "f0a30b5a798b0c5a88cd8a0a5b915872af867d60b1e8783c61c07265adc7dd69",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/style-confirm-320-2x-focused.png",
+      "bytes": 233090,
+      "sha256": "df7c59f889a8c6d8611e1de37d6f725dfe3b5c8d009dbbc9d18d06650a3f9e37",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current/vite.log",
+      "bytes": 450,
+      "sha256": "aba3eacbe8b1fd3ff05fee98bd5c308cf8a33ab864964e9835143be55061a418",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current-metrics.json",
+      "bytes": 55,
+      "sha256": "ce0d41a37e8d973520b5dfd35b71f8530c3aa6f448adf40a7a27b3459db50084",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "boundary-current-metrics.json.gz",
+      "bytes": 63,
+      "sha256": "6d4da89f2d1f314bddab61141f09270387e6c6cbac3e66f549610e80748b36ff",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "boundary-current.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "checkpoint-files.txt",
+      "bytes": 10686,
+      "sha256": "7fe90d574fcfdf7a3a47d6492cfbe7ee3ce109ef31ac4b7f4ce542c9527d3ec4",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-1x-background.png",
+      "bytes": 839527,
+      "sha256": "37fb7a6a04b2db7d5c2e86a5d51d21f1063aa9ea5cb7be80cfe2951518724f16",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-1x-contrast.json",
+      "bytes": 3938,
+      "sha256": "b6211bb02bd9a33cf702876ecf0567e25cd7d1b1d64092ac0d96cb0d05769be6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-1x-contrast.json.gz",
+      "bytes": 865,
+      "sha256": "62d69d7c3a88dfdab39549638ad8502882cf734d445554fd80a75d2bcb38aca1",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-1x.png",
+      "bytes": 850071,
+      "sha256": "dac0ccd143ae5608baaf225c379853adeefc6893b712a4f583e49b00a52d9d72",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-2x-background.png",
+      "bytes": 887774,
+      "sha256": "747e63f0e966478b3188844c7ad58bb7aba9fe99bc8f1a0d569d14bef0a4a5c0",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-2x-contrast.json",
+      "bytes": 3990,
+      "sha256": "2054e41b13da26de34d0614e0d4544fb4580fd350c19422303de27512d01f02b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-2x-contrast.json.gz",
+      "bytes": 860,
+      "sha256": "fa28b4b01d885319f876112d3d4ec501282e08f04b95f7175902038faed5024a",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-1440-2x.png",
+      "bytes": 902133,
+      "sha256": "82237166a08fd14c53f882d5161a5cc6e31eef60750c8458e3b48f3292061fce",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-1x-background.png",
+      "bytes": 287898,
+      "sha256": "7f059444c18b468393a3ea64837088f689fc146e69b5e66ce547f87c9c0db805",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-1x-contrast.json",
+      "bytes": 3937,
+      "sha256": "c07eef846195c06769413a0d79edb014feaba3f38e44f836a4fcd1f9b9afe183",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-1x-contrast.json.gz",
+      "bytes": 877,
+      "sha256": "a057c83188fdd35ec1d6ab50281d1387683a2ab24a97b32c7e061ecb8894c43d",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-1x.png",
+      "bytes": 291847,
+      "sha256": "423f269caa7d27b41df006f5ca97aaf33dc993414143f452b6345ad2583e97a7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-2x-background.png",
+      "bytes": 250199,
+      "sha256": "6af79715db53ecd36fb74edc5b619bd3b43a0bfae8fb5fa7230a68d1470d3c54",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-2x-contrast.json",
+      "bytes": 5401,
+      "sha256": "28c331e0ea159716ac565eae6b7b2407b1d732c583bff0d6a3f5028783703698",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-2x-contrast.json.gz",
+      "bytes": 939,
+      "sha256": "67ab1d7e20b964fbba83f1a950a8f3cb20ebd2dbb6a3269aed228463ae27a9d9",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/appearance-selected-320-2x.png",
+      "bytes": 266868,
+      "sha256": "9c18b35acff0e61857a4f9489ea8b5b3d5821ca6e0f246e4cdd094db158bc8ed",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/contrast-summary.json",
+      "bytes": 17328,
+      "sha256": "14b47ce1bddb6461cfd1b97df94504724d592d44baca20be84e6453d238af677",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/contrast-summary.json.gz",
+      "bytes": 1702,
+      "sha256": "fb691377099f2e16e98b245f584a76481a2602e9af9ec448dceb61d55242f1ab",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/glyph-core-summary.json",
+      "bytes": 22573,
+      "sha256": "e9979702bd22e22be99228a4c552b4291e1f5e927b2e8d3717cefcf9535d2b22",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/glyph-core-summary.json.gz",
+      "bytes": 1889,
+      "sha256": "415f54cfd35aca89789b5da286258979e242983b855d2bb15ed2f0e2cf636e95",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/range-failure-investigation.json",
+      "bytes": 1082,
+      "sha256": "605b6df78970e1bad6ade0cdf2dcfd345b067af2fd657efa086d806560a7223d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/range-failure-investigation.json.gz",
+      "bytes": 597,
+      "sha256": "88d5f17452cda4a76f46cbccc2a028687f233ae8e74f3784670a40bc84781a4b",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-1x-background.png",
+      "bytes": 239322,
+      "sha256": "73e4a3b699574ddab25814fb3171ce6c504588f331f3c5cb2f49cd76c19a4e57",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-1x-contrast.json",
+      "bytes": 1849,
+      "sha256": "e07f1c5a8722553f0e7c88fbff2f0323f172921f07ab41ec1796ce0e0016bb97",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-1x-contrast.json.gz",
+      "bytes": 605,
+      "sha256": "ad8509406c31d01cc97c1c48e62024dfb5ad5bae83bfb6fd7c68d1a0909eaba6",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-1x.png",
+      "bytes": 248930,
+      "sha256": "072d4cf8227e477b6bbdd833211daf2ccb2a336474aa270ce38ca161552237fe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-2x-background.png",
+      "bytes": 220589,
+      "sha256": "51cc9496f0499a9aeac05cf4ee97f34459c3693df098cb4d806f4a1a899b9a3e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-2x-contrast.json",
+      "bytes": 1865,
+      "sha256": "f67cbdc64f6f74d31fc6d6dce4394db76c77f88eaaecdf556057c9cb3a78f9c3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-2x-contrast.json.gz",
+      "bytes": 612,
+      "sha256": "89c605e6c12748a2c9c19c263c92d6f190f803541a053a5a9e6c6e81fe27333d",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/rename-current-320-2x.png",
+      "bytes": 228092,
+      "sha256": "1f68d8baa0fdd7e53e81d564ddda22a1839e9223d34b0175c826be20a8f29911",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/results.json",
+      "bytes": 148850,
+      "sha256": "8eeb41c4205ec7d1824bc60ab323cec3ad9bdb1992dd337eb984a1f8b0291a31",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/results.json.gz",
+      "bytes": 14687,
+      "sha256": "a82283a684d86c4e786b4bf96db3930c907f4dbde2c4fb1a9609cae0512b0b03",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-1x-background.png",
+      "bytes": 765629,
+      "sha256": "4a1f24f2d7a2b2dc561f97cdc7ad23023a25bbdd0e935b08e02dbbae59d84c7f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-1x-contrast.json",
+      "bytes": 7927,
+      "sha256": "7ab1277494733d33d82e21a5c3b2623049b91c4a4f3b26f2e6d813c5979e6d9a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-1x-contrast.json.gz",
+      "bytes": 1400,
+      "sha256": "41674828b721fa4e4d2af1171dbd3af21b6372886b5fce3c4196f9639e6f0999",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-1x.png",
+      "bytes": 798804,
+      "sha256": "5a18a057bd4d4984992d7ed3240dbc04fc991b93a5fa7a70956fc993d7ed3ffe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-2x-background.png",
+      "bytes": 760788,
+      "sha256": "bce6bde0a918904e5a101351dbffe86739b674459e00c04d5bde62e71051901f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-2x-contrast.json",
+      "bytes": 6303,
+      "sha256": "61f222dd6c19dcd739a9f5a65a27f3658aee380a1b7fbe6771e0ebb19f136324",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-2x-contrast.json.gz",
+      "bytes": 1248,
+      "sha256": "4619e4b3af16254bb7ea0e66ba7ab546cd78cce56dc982bd807004440cfe6db8",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-1440-2x.png",
+      "bytes": 813542,
+      "sha256": "6cb5bb0a9049d2d1a93a86e1d0de8a87fc0b10fbeea99a5946c9b19d0cf374f1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-1x-background.png",
+      "bytes": 242537,
+      "sha256": "df319a38ef6aa4d151455e2c28328a0a827e199352b20201f1496b23be6f0f03",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-1x-contrast.json",
+      "bytes": 7940,
+      "sha256": "fd1fac1bcb3e47556d27a5b92320d0e3c51ab601105c58e4752e62f6801ef1ee",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-1x-contrast.json.gz",
+      "bytes": 1384,
+      "sha256": "4e5e4d79df9a9f6ade3deae6d96789c22e565b8b98bacf2ee2fcb0d2fe21dade",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-1x.png",
+      "bytes": 261080,
+      "sha256": "f20651fba6eba64178d548d93cb7a2781406ca206bdac51510a79378c2ca192b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-2x-background.png",
+      "bytes": 175582,
+      "sha256": "e98e1b5d3beb62df6bdf12c35388ac4a9c7d2857a026fb4f55963ccd6e82b83f",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-2x-contrast.json",
+      "bytes": 8550,
+      "sha256": "fec757f709c67eb7197421efd6ca13a4dbf2c1d4b8edcaca4bcfe72e9b106cae",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-2x-contrast.json.gz",
+      "bytes": 1310,
+      "sha256": "7ef0b9d8e95a058a8e5c721d15f3dba799dea7269f0a2f60ffdd488efcb509a8",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/skill-review-320-2x.png",
+      "bytes": 214024,
+      "sha256": "671a6a578e083d5bc67eff99e452bea59237efcc6c3831604b32964a53ad8765",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after/vite.log",
+      "bytes": 450,
+      "sha256": "f7934776b22d948eb99fcd9f575ec7a4d7ddbac0af48db6dded14bdf30f8a8e5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after-metrics.json",
+      "bytes": 251,
+      "sha256": "d8db036fdc0363a9b470bdeb6136d4ac798b4937f0390de86a2091a41806424a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "child-contrast-after-metrics.json.gz",
+      "bytes": 180,
+      "sha256": "fff05ac02114c9cf5b38704b81a786cd7bf383e58e57b4cf0a8760662d8f2ad5",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "child-contrast-after.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "contrast.mjs",
+      "bytes": 5132,
+      "sha256": "db5e15ca34565a4ad2d1744366b4fc99f67499f6d017bd46135ccc132d7b4973",
+      "scope": "include"
+    },
+    {
+      "path": "curate.py",
+      "bytes": 3630,
+      "sha256": "eb28155a5bdeee1177255a0b6fcfdde64b880d85470139992d4f467436a2949c",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-focus100/results.json",
+      "bytes": 159321,
+      "sha256": "808c7e8f4831fca9f77aac38d7801ba82245d834f98e2b2361afff42e6b1d600",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100/results.json.gz",
+      "bytes": 13694,
+      "sha256": "50c9d72c979984794d29995aeec9aa4336079d14df4f3957790fbc22f576ad82",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-focus100/skill-review-keyboard-1440-1x.png",
+      "bytes": 760873,
+      "sha256": "abaa15195caf49360337715986bf2de91e03a5044e12b2869042996fb4f2b266",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100/skill-review-keyboard-320-1x.png",
+      "bytes": 248726,
+      "sha256": "e25c9bbbcfe6c1bfa0f36c3510b2aa7ae3e60ea9f318002c7e100e073878796b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100/style-review-keyboard-1440-1x.png",
+      "bytes": 762813,
+      "sha256": "ae8cfb8d3e155454ecf42be80c6805fc7f6393292516ff9e12b3972368cc53cd",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100/style-review-keyboard-320-1x.png",
+      "bytes": 235755,
+      "sha256": "475b4f210e3b3f8460eaf04b49f47ea89943c092190072d6ef9d0f37c916a1e9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100/vite.log",
+      "bytes": 450,
+      "sha256": "3c6fc3787e9af4df467c9fa28be8948ba1397d079e68620f5e8728f8688280a2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-focus100.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-focus100.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/contrast-summary.json",
+      "bytes": 15363,
+      "sha256": "d13583fe54f11a5e3f5ef6dfc0548463f9b128a2940a3ecd02cd554cffaee332",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/contrast-summary.json.gz",
+      "bytes": 1641,
+      "sha256": "f4ecfed2da68090d1fa3fb63265d05ff4815e3074b8298b0608a9c3a2e72a62e",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/results.json",
+      "bytes": 173152,
+      "sha256": "4d74632f47981867e5ab338e8f61cc9426700b535454618c16403c55451ddc18",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/results.json.gz",
+      "bytes": 15746,
+      "sha256": "354cf5c3eb517cc3fa6def1fe018f2cd4c1c228a80369d0e145daabff07f4cbb",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-1440-2x-background.png",
+      "bytes": 777610,
+      "sha256": "32c19b83b0f205c0883417bc91a4050413060e680913365dbd88b6443446acd9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-1440-2x-contrast.json",
+      "bytes": 7300,
+      "sha256": "3123d0c8588f0e5869248069d6056834e3b968cd3db335e7f81649ae29126e25",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-1440-2x-contrast.json.gz",
+      "bytes": 1296,
+      "sha256": "83140a69bfea073baee3c8935dc7ae3ccbc9d6e5176875b93c95ff1e15e6be19",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-1440-2x.png",
+      "bytes": 815975,
+      "sha256": "af2bd7cd53508806ff0d2bdf779643e5eeb12cacd1dca3066542bf766debc562",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-320-2x-background.png",
+      "bytes": 198650,
+      "sha256": "0ccb408e56bca6eabb96b14f7119f5641be587e5508eafbf4601488f878fb3c8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-320-2x-contrast.json",
+      "bytes": 8450,
+      "sha256": "2af9f0d868d49a14039743adceef4329188d0dda003c30f29a97f176a7246f0f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-320-2x-contrast.json.gz",
+      "bytes": 1281,
+      "sha256": "05281170a995ceb02c17b3290b8d8230a2cb7cf7d92de99253af68809689fcbf",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/skill-review-scroll-0-0-320-2x.png",
+      "bytes": 233111,
+      "sha256": "4b85fde01c46bf0615946818d8ea12955ce658dc8870993819071eb3fa4ef449",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-1440-2x-background.png",
+      "bytes": 781974,
+      "sha256": "b6bc60627054ab49c641b9098bb238da775a6f44ccc0592b9999708d3a65a5f2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-1440-2x-contrast.json",
+      "bytes": 8233,
+      "sha256": "fd7e2a3549c7e02cb0691944e40926c077d3ff7cc343539fdcaa221a6c652431",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-1440-2x-contrast.json.gz",
+      "bytes": 1361,
+      "sha256": "6574f7f83be907eb1d2dd715f5c96232fc4fb11090fd47e25d87ecd2d9578df9",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-1440-2x.png",
+      "bytes": 825479,
+      "sha256": "a42b31c34119900c7d4a88c62399f605e839a62f0c5229785de450fb82067856",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-320-2x-background.png",
+      "bytes": 200444,
+      "sha256": "38520e8854208beb22628dd75396c9bcfab81e4ab164aa675bf1dd1982d83447",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-320-2x-contrast.json",
+      "bytes": 7903,
+      "sha256": "9329ccdf2ace26263f47e22944005b101a1382486ad185754acbf09479050884",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-320-2x-contrast.json.gz",
+      "bytes": 1272,
+      "sha256": "e46703ae21b62b8ac0d06870c2c0af21e58b7f5c6f77c403fc8c2fb8182d728c",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/style-review-scroll-0-0-320-2x.png",
+      "bytes": 232014,
+      "sha256": "fbc6d3ffa45a0f29e5b75214423e1d3a2313f187b2ab2dec62dc95ddec1b3d53",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll/vite.log",
+      "bytes": 450,
+      "sha256": "160f031df77ea2df288234703dde87090d814217e3d2a92910a77056ceff8fa1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll-metrics.json",
+      "bytes": 96,
+      "sha256": "99dd249e062e36782a60edfe970cfd47f62cfb356711f4031426512fd125c78a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-scroll-metrics.json.gz",
+      "bytes": 90,
+      "sha256": "402ddfaba5a73faebd3fdfa210c987a674ead7aee9a3e5cd708fd518955bc13a",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-scroll.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/contrast-summary.json",
+      "bytes": 23233,
+      "sha256": "a446d4bdda8f9db34b91d3f2def97aff680db46352dbbb532ac32dfb139c1016",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/contrast-summary.json.gz",
+      "bytes": 2054,
+      "sha256": "7279aff467877a47917ea7c910ab4ac62cfbbe41b6acdc44bffeeed4b22edff0",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/glyph-core-summary.json",
+      "bytes": 30269,
+      "sha256": "5f8b725a70715b3224bbd627a43749a99d8d6a8a47a8e465fd4b3773b9051083",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/glyph-core-summary.json.gz",
+      "bytes": 2199,
+      "sha256": "e089c9d99b0dc9e395f3146193ff55d74642b18dcc9164376cf5e6f9a6989684",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/results.json",
+      "bytes": 141096,
+      "sha256": "797431ee1e288dcf242a4c12826bdc7a3a87813300929750022968e55ceee8d2",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/results.json.gz",
+      "bytes": 14114,
+      "sha256": "1ac5f278e116edac800d63db7e377204edaeb51fbbd49c9e7ca7f692193141ba",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-1x-background.png",
+      "bytes": 771533,
+      "sha256": "da12ad1894e348219ae7c9de15f6e334250262875fba579b690c17e8a7b2c177",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-1x-contrast.json",
+      "bytes": 7927,
+      "sha256": "7ab1277494733d33d82e21a5c3b2623049b91c4a4f3b26f2e6d813c5979e6d9a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-1x-contrast.json.gz",
+      "bytes": 1400,
+      "sha256": "41674828b721fa4e4d2af1171dbd3af21b6372886b5fce3c4196f9639e6f0999",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-1x.png",
+      "bytes": 797171,
+      "sha256": "c91efa32ec0ae5e8b735aa174129e6935ea5a2a7a06763768cc56ec190164c3a",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-2x-background.png",
+      "bytes": 762895,
+      "sha256": "2fdf39bc241c3e9ced5303a66ac885935831786e570c85484deb9305a8c21541",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-2x-contrast.json",
+      "bytes": 6303,
+      "sha256": "61f222dd6c19dcd739a9f5a65a27f3658aee380a1b7fbe6771e0ebb19f136324",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-2x-contrast.json.gz",
+      "bytes": 1248,
+      "sha256": "4619e4b3af16254bb7ea0e66ba7ab546cd78cce56dc982bd807004440cfe6db8",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-1440-2x.png",
+      "bytes": 807540,
+      "sha256": "ff1b5c85eaa8902d053db5ea32b22015631be94e7e9c43749676c1ed3bd14b9c",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-1x-background.png",
+      "bytes": 236923,
+      "sha256": "7e935a0a2ce5aa7d1b1cc68d4277bf5720522266527a2cb3a53eec2bd65d5eda",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-1x-contrast.json",
+      "bytes": 7940,
+      "sha256": "e3efee64b64e4b229afff19df1201654f8f3480f4d0f42b7c3b7e301f886943a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-1x-contrast.json.gz",
+      "bytes": 1382,
+      "sha256": "97aa62c5167009aea6640ad342e2a07e0b134b2aedbfc0a7a6f0453e3177a0e0",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-1x.png",
+      "bytes": 256609,
+      "sha256": "54c019e78242ad6741f73f4261007a9d07ef4d7b5ce4378628e9e0b9a1688828",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-2x-background.png",
+      "bytes": 180408,
+      "sha256": "45a391780f87a95c47919aeb1fe359eb15cfd95fd84f768cfdd5b1f372e36770",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-2x-contrast.json",
+      "bytes": 8550,
+      "sha256": "fec757f709c67eb7197421efd6ca13a4dbf2c1d4b8edcaca4bcfe72e9b106cae",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-2x-contrast.json.gz",
+      "bytes": 1310,
+      "sha256": "7ef0b9d8e95a058a8e5c721d15f3dba799dea7269f0a2f60ffdd488efcb509a8",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/skill-review-320-2x.png",
+      "bytes": 218682,
+      "sha256": "65d4efb07f9cd74d8ff70af137260ed85bd346b7b627401bc11c5a5df137d413",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-1x-background.png",
+      "bytes": 773420,
+      "sha256": "7b9f111a64e9f6ec2c42abf9c1e10ddaacb5385f39183762179d8be1a9f37ed3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-1x-contrast.json",
+      "bytes": 8827,
+      "sha256": "5db4b980fdab8a2a33d0cd130f5f5721e0f09effe4cf5da25f66f749c7af048c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-1x-contrast.json.gz",
+      "bytes": 1467,
+      "sha256": "a4bb6e80a2b5212f667879a7fb7f434ffe1344df1fb8dbef812c04196f33a2fc",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-1x.png",
+      "bytes": 800107,
+      "sha256": "f821043180449c765abe737287d133a4bb781516060531889e0e1f8969320342",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-2x-background.png",
+      "bytes": 761222,
+      "sha256": "18be7a72916a3310fb5d22fa214ddf27d1009d1124d724e0eb8bfc8919b7cf6f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-2x-contrast.json",
+      "bytes": 7797,
+      "sha256": "ecc9395deb80e74d0b32a6a2fe41aa8c8e776b8188310d9decdd531169beabaf",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-2x-contrast.json.gz",
+      "bytes": 1360,
+      "sha256": "c16190e8312006b462f6c9a1f0490f347f25e699fdf39554c435257bffcd82ac",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-1440-2x.png",
+      "bytes": 813632,
+      "sha256": "ca0c9f2301a9223a9ddc52b8ec2c3b9807b78c0826ef03efe1b842cb81f3ba84",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-1x-background.png",
+      "bytes": 222846,
+      "sha256": "c581ffb2d1dd232e7e7e29ae03c66061c2f121e5765847c7a47be8334ef08e32",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-1x-contrast.json",
+      "bytes": 8875,
+      "sha256": "f97e251818bbd420e12c7ed05ad3ce978e69e2e1f2879a594c8edf3ef2722fec",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-1x-contrast.json.gz",
+      "bytes": 1472,
+      "sha256": "82e403c8b033282a3e7353673f31b2fcfd7e74b01776a45977bea247b1244b80",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-1x.png",
+      "bytes": 245503,
+      "sha256": "5217f279e76202f62d73444a39eaefcea65c64d3623aa94942f18bfcbc114385",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-2x-background.png",
+      "bytes": 180804,
+      "sha256": "6fce8b983515658615254dcf33ffd02a0bb5d178a01c9a0fc024d3b4f9794c2b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-2x-contrast.json",
+      "bytes": 8849,
+      "sha256": "98f21fef71639a92abcd3cd8decafb4447e13bc54d4facd2e52f4930fc93458a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-2x-contrast.json.gz",
+      "bytes": 1287,
+      "sha256": "b421c0f1e3059232636f746344e379c8341d4e2cf43b9b0bed3c75aa5bca13ae",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/style-review-320-2x.png",
+      "bytes": 217065,
+      "sha256": "53b7f31b30e3a9d2eaf007bccd39ac22d4ed8b2ec5194ce9b8a4fe42ed1075f6",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style/vite.log",
+      "bytes": 450,
+      "sha256": "4eea275f6e52aa16128fc94d49569b9434b3ac1e6337bd3b921e76de8fd1a7b6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style-glyph-metrics.json",
+      "bytes": 411,
+      "sha256": "79ece854ece81aaef6ddc5b8aba5d363f55059ea7ac2cf7144fa6410b73c2e98",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style-glyph-metrics.json.gz",
+      "bytes": 283,
+      "sha256": "781a868acaab61a84d91662930956542828f436bb6d8856352fbfead06f87c8e",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style-metrics.json",
+      "bytes": 251,
+      "sha256": "462019b41e86fe7f0e1dc6552feb2cdc17949a47e199020e4259da0402de46c3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "earned-l10-style-metrics.json.gz",
+      "bytes": 180,
+      "sha256": "804e4d88c19b1d039738f93a35e88414d211c26566bea7b2cf418f0b03ed6ca6",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "earned-l10-style.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "focus-contrast.py",
+      "bytes": 3118,
+      "sha256": "ad53f10bff91490dc388768da18ef29c545b85f749bd7948f73e28b9b6303a56",
+      "scope": "include"
+    },
+    {
+      "path": "focus-side-contrast.py",
+      "bytes": 3104,
+      "sha256": "5106c30be8af2857deb5119bb92df1e322530d20de1f23c4cd5f0cba1c330efe",
+      "scope": "include"
+    },
+    {
+      "path": "founding-auto-earned/appearance-current-click-1440-1x.png",
+      "bytes": 756069,
+      "sha256": "e20b2d04eef3fa70ecc56dbabc6fa6ed144a205b697477d43d30ce909fa6f676",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-current-click-1440-2x.png",
+      "bytes": 744559,
+      "sha256": "1fdf8b523ecbff6fd45814dfb02fcbe40ffd6632f6071b9ac0893d6d1fcd3455",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-current-click-320-1x.png",
+      "bytes": 233438,
+      "sha256": "c727fb8ad3c8d5636c156a198e4bccabf48bc57be0c08187169847ed492fa281",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-current-click-320-2x.png",
+      "bytes": 198867,
+      "sha256": "931b3e43e46f5aea71a1dc7927945e992b293123ba6b756e745a6afc4c5e0fcc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-keyboard-1440-1x.png",
+      "bytes": 746649,
+      "sha256": "2ef22fb70462fc04f69bab522aabde1008d9a3e458c21435b18155a1360d71f5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-keyboard-1440-2x.png",
+      "bytes": 789235,
+      "sha256": "9ce4b4e492922b4e0b7758796896c0d1f3b8c7e86da49028d7da91aa057b1c36",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-keyboard-320-1x.png",
+      "bytes": 274954,
+      "sha256": "f676c932b3681e96b077a80bbdba8ebbef80c64c08c58ac73c861ab98f7574b6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-keyboard-320-2x.png",
+      "bytes": 236368,
+      "sha256": "d14490ecc9e69b68369e42a6b3be5894c1150c3ffd226cd09a54d5acf374d9be",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-selected-1440-1x.png",
+      "bytes": 745791,
+      "sha256": "3d5baba45bb2578bc75ecae3c29b50295106b57cd086353d5ba707095c832ccc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-selected-1440-2x.png",
+      "bytes": 783743,
+      "sha256": "563de9d73f909f6744c0e095076d32aecf0462bcfc35b0f5872688279925ce2e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-selected-320-1x.png",
+      "bytes": 274094,
+      "sha256": "7f948d25467d5fd870bb8c5e7a0f1b0875768c2b44d798a3415dc9df7e7afde8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/appearance-selected-320-2x.png",
+      "bytes": 234374,
+      "sha256": "63f169af868bf61b30a321cc0e75e60a155d2c281b024af4a84438eb6ed4b8ce",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-confirmation-1440-1x.png",
+      "bytes": 688049,
+      "sha256": "ad8c785918ee38a86fa1ea23fa673a204cfbf968aa350b5c523ee1716441a448",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-confirmation-1440-2x.png",
+      "bytes": 715172,
+      "sha256": "50bb5d6efc3530bfc7dee11fd81f6e8f48fefd306cf9d67dd3a2800221785c52",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-confirmation-320-1x.png",
+      "bytes": 237574,
+      "sha256": "8eba04a46baa37087030630c8912fe43e91ac1577d79709a31b53347fc7676e1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-confirmation-320-2x.png",
+      "bytes": 199084,
+      "sha256": "d13cbb0d61d898538324e78cee70469987b94cb95c8f310bc575b7c1f11d70ad",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-keyboard-1440-1x.png",
+      "bytes": 690071,
+      "sha256": "001e1cae2c07408cd3c43b209a8463fcde6b56dae514298fd65334ebe2d5c8bd",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-keyboard-1440-2x.png",
+      "bytes": 714567,
+      "sha256": "4836fe02303bfbca3bb2bad1bbad30863cd502d870d28a5f9188c836788d85d3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-keyboard-320-1x.png",
+      "bytes": 238960,
+      "sha256": "f65b565c82e1397730a93a7d8ca8ea4497118865ccca53ac973544776e599f5b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-keyboard-320-2x.png",
+      "bytes": 204817,
+      "sha256": "241a33beb7ee4c86000286a0061958d9562b9fde3dc7acfd5e28db7ff7e3dc20",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-scout-settings-1440-1x.png",
+      "bytes": 649058,
+      "sha256": "f0a52af40ced3360dc0096b4f399fcf09982ae668543916660443e65ae2e749a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-scout-settings-1440-2x.png",
+      "bytes": 692366,
+      "sha256": "38702bb17e9965ed8aa15e80b32992d114b2494f0b1fa1a4dc55a36bc60f1b3c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-scout-settings-320-1x.png",
+      "bytes": 201298,
+      "sha256": "b7a2828302079d3fde083b1de3858d733afe4c6a708d30c227edcf88a38c8755",
+      "scope": "include"
+    },
+    {
+      "path": "founding-auto-earned/founding-scout-settings-320-2x.png",
+      "bytes": 203631,
+      "sha256": "9d97a572cc4f88506fb1c70732fcfcd95bfdf1f7ce16e94a9aa76d1c7e88dc91",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-settings-return-1440-1x.png",
+      "bytes": 691145,
+      "sha256": "c9b61ed2ce7a4c2a28a4cf3301a919dabb8d1efb769e38782e5c5d6cd397fb90",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-settings-return-1440-2x.png",
+      "bytes": 718176,
+      "sha256": "be66802eac4a5ef8be6b157e814a64fba658bcc5f5ee128f47bad711b970812a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-settings-return-320-1x.png",
+      "bytes": 247947,
+      "sha256": "a2c6e0c883ae8563b645d800fa04f2217982064f307ee0374d9504fb92a8400f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/founding-settings-return-320-2x.png",
+      "bytes": 199230,
+      "sha256": "b231dfbb0c787d6158d28477b5982bd142a3340f8b4486159b8457fa3b36da93",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/results.json",
+      "bytes": 584185,
+      "sha256": "d4c59d7540f8082e61d1cdc23a8c919b45743d5f1c1c8d7fbb5caca35c6880b3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/results.json.gz",
+      "bytes": 60412,
+      "sha256": "39db3a6f9542b6322d8998a4e04d98c4cef1b11426516bab4c4fd9050fdc17ac",
+      "scope": "include"
+    },
+    {
+      "path": "founding-auto-earned/roster-native-acquisition-1440-1x.png",
+      "bytes": 1022506,
+      "sha256": "904b8b480a7525c0b8bb2d18030e78fb186b5be292ebc7edd12d0b9b9a09c5ef",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/roster-native-acquisition-1440-2x.png",
+      "bytes": 1133926,
+      "sha256": "f1deb17dba57a66b112f4dca8d24d9d9e3fe8e1167964afb1a5002729646191d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/roster-native-acquisition-320-1x.png",
+      "bytes": 343464,
+      "sha256": "9b56ad9a9f325cb3f9a517ec64dca519a4fffcee1a61c61b88984b4bf9c42c74",
+      "scope": "include"
+    },
+    {
+      "path": "founding-auto-earned/roster-native-acquisition-320-2x.png",
+      "bytes": 327380,
+      "sha256": "2f063fff78e85a35920f34e6a4bf3ae9f05102b0118bf5662f663e16137ebbf9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/skills-actual-native-offers-1440-1x.png",
+      "bytes": 714338,
+      "sha256": "6b2352f9777d123ab7c85148e442df96ef060dd98d44204cfae53166086578a9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/skills-actual-native-offers-1440-2x.png",
+      "bytes": 742864,
+      "sha256": "87ad5861e42d343128ee3a1329a424c02d1dc10d6a7f4b836853e6f3875975dc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/skills-actual-native-offers-320-1x.png",
+      "bytes": 232447,
+      "sha256": "cee24c55bf11d3a09197e5664e1b3f502b6eaa3b6c45f6281d7b5efc4d2372c5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/skills-actual-native-offers-320-2x.png",
+      "bytes": 221244,
+      "sha256": "f109ae8d714064d01f78dd9fd13ab9f147cac90f0504259e2ca5e3aa5cd1ec8a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned/vite.log",
+      "bytes": 450,
+      "sha256": "8003dea829cc56efd52d12b45d40f1fd82bb90dd9903eabba8dfcfa41c612494",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-auto-earned.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-auto-earned.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-cap-earned/results.json",
+      "bytes": 339760,
+      "sha256": "52c514cf4dbf66bde30190755f1f9e2959300a06d654d0bb2db06e49fa834c03",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-cap-earned/results.json.gz",
+      "bytes": 41744,
+      "sha256": "e1519ac0a0f8008e257d688bbc96fa90f96855b0b8feb3fbe2624c3bc2cb0520",
+      "scope": "include"
+    },
+    {
+      "path": "founding-cap-earned/roster-native-acquisition-1440-1x.png",
+      "bytes": 1193549,
+      "sha256": "0981ab1f8174619284c2dd1888ec224014e3dffeccd00ac61edc4ce3dee61820",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-cap-earned/roster-native-acquisition-1440-2x.png",
+      "bytes": 1355285,
+      "sha256": "08f84990de724be0c866fad08df5a150536fa8253a54457be187d30b31d810a8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-cap-earned/roster-native-acquisition-320-1x.png",
+      "bytes": 344480,
+      "sha256": "32df7b959a51ce7474a8bc5acbbf606bb1ce0ad5e059a59e537da873bf707fc0",
+      "scope": "include"
+    },
+    {
+      "path": "founding-cap-earned/roster-native-acquisition-320-2x.png",
+      "bytes": 344299,
+      "sha256": "630b06b9c08d32fbcc75f01ff77a3aeac9d9c6a6137ff0b2f58d55fe16d8a930",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-cap-earned/vite.log",
+      "bytes": 450,
+      "sha256": "38e394f8db8e0ca00c133a38439f151f5baf417ca44d49e37c20f710a2fe1355",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-cap-earned.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-cap-earned.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-insufficient-earned/results.json",
+      "bytes": 305738,
+      "sha256": "347db1068cf24fdb8a896fe2cc49523c8e61af2b76d3973787a01531cf78e5c7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-insufficient-earned/results.json.gz",
+      "bytes": 38325,
+      "sha256": "b80ed7aaf99bf1c4765d7b5c632e73ae4046e6f6dfa2ad93f541bc51afff6c0d",
+      "scope": "include"
+    },
+    {
+      "path": "founding-insufficient-earned/roster-native-acquisition-1440-1x.png",
+      "bytes": 1052415,
+      "sha256": "6efa010284c4a2741985cab7de7a91e87e70b726ed675e22fac52de3c0fe3351",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-insufficient-earned/roster-native-acquisition-1440-2x.png",
+      "bytes": 1288422,
+      "sha256": "ace737d9708e0c53b6ee29d1c94d394ca4c47883f914f7c9df136ca18ffb10b9",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-insufficient-earned/roster-native-acquisition-320-1x.png",
+      "bytes": 345695,
+      "sha256": "13d599cd05c42127d57abedd48a758a3a335f2f4323325ec8089ab43cb476df9",
+      "scope": "include"
+    },
+    {
+      "path": "founding-insufficient-earned/roster-native-acquisition-320-2x.png",
+      "bytes": 331507,
+      "sha256": "c0d52f3da3c9ea35410dfb7f72d4aec2a7fa0a90ef90b1499f7e3bb2e5b0efd3",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-insufficient-earned/vite.log",
+      "bytes": 450,
+      "sha256": "9e22772f3b5359c63472d014a3a65a2d9ac9fee46ec316aca57628eccad638fe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-insufficient-earned.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-insufficient-earned.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/contrast-summary.json",
+      "bytes": 17247,
+      "sha256": "82717caf40c60d4f1f8af10d219a1a9d2628e09292b8cc22d6f83191bb4658eb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/contrast-summary.json.gz",
+      "bytes": 1529,
+      "sha256": "4422a0f35872ffd85040d5c4ef5e881b90ffb424dbe9c346620e82c1d6b3a772",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-1x-background.png",
+      "bytes": 710894,
+      "sha256": "2c6d460045f32968ebede38eb763a82c0113c0f4c4600805ef441aaef63dfd40",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-1x-contrast.json",
+      "bytes": 4090,
+      "sha256": "9ce99abfb56a341e05a122863879b296bda9adc691f271ed2d0622c632943e93",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-1x-contrast.json.gz",
+      "bytes": 900,
+      "sha256": "20bf39c2cddafadc783c801781272644609eadd41fa348483624f4ba7eb54626",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-1x.png",
+      "bytes": 724072,
+      "sha256": "db45f29b42ab9619cdec7105c25afb773900c7764f044ad2896f814458ee3f98",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-2x-background.png",
+      "bytes": 710816,
+      "sha256": "04af432ecec3d4c8764a21640227184c22213f66f116660c74e0ccdd79394a36",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-2x-contrast.json",
+      "bytes": 4029,
+      "sha256": "4ced258d0183bcb34f4f03f28e8b8ec1cdd7a8802fcb5a9cb33b44ff0996c4a5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-2x-contrast.json.gz",
+      "bytes": 899,
+      "sha256": "5e703bfec0dd4d72fd8f67ed9a48e41a23bbfeb672aa59aca7b7428fce6a75fd",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-1440-2x.png",
+      "bytes": 748034,
+      "sha256": "f4806573df0905316476105e68dee674aab6c95aeed98cc311e3f6cee7f03343",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-1x-background.png",
+      "bytes": 235153,
+      "sha256": "ddd19f2dde32822f1dd9c3d1a8a3186d004e369b771ad5117b866214a33dfcbb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-1x-contrast.json",
+      "bytes": 5318,
+      "sha256": "ceecf242186f6af448521c9f744cb5d13cfdb13d3039e1ae9ea513a387f68b4e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-1x-contrast.json.gz",
+      "bytes": 986,
+      "sha256": "d95fc007e000b627402395fc789b3be1ee9cdf97327353ed43f22698f680d318",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-1x.png",
+      "bytes": 247666,
+      "sha256": "785a04610c5d1bcab6b0027379067403174a90e8678cbcd8d48cc9354042cb2a",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-2x-background.png",
+      "bytes": 180620,
+      "sha256": "4fde2d41140082c581ca6514a4c9c23fa28c4edc8c9a27779b7a7d12e20242ca",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-2x-contrast.json",
+      "bytes": 5634,
+      "sha256": "e2a84b1e9459da8cb0f9786236df55990e34cab65396d39118f5a8067e3edcb7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-2x-contrast.json.gz",
+      "bytes": 986,
+      "sha256": "c909d3e1b956a051a9efbd63aa069cc151971e97d5e99980f9a47732c598885c",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/founding-confirmation-320-2x.png",
+      "bytes": 207513,
+      "sha256": "82792c468fe9837e9ef03e7d2188f74a05ce2bdaa6df4b06ab79265d267b6fd1",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/results.json",
+      "bytes": 276518,
+      "sha256": "f4279706655b93fc0ed31697c6e2452f9a8aa3e58268459065774fe45de456a4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/results.json.gz",
+      "bytes": 33786,
+      "sha256": "dd9a2544d5b88529dcfd9ce03aa9aea8c3a58e0d24462fac80bb2554e5edcac2",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-1440-1x.png",
+      "bytes": 1052219,
+      "sha256": "45425f04d7413d5aacca327aa0bdf93c91dfda2fd34138a2ced571c6d1921097",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-1440-2x.png",
+      "bytes": 1181542,
+      "sha256": "91c51f3525152c9c7b0dc84546b3f47c7a740a21cef3090621a6783c0139fc1a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-1x-background.png",
+      "bytes": 220663,
+      "sha256": "b29b967e1c2dc053fe053e45a521ea52615093db2d351db44ef15ae1ff589c75",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-1x-contrast.json",
+      "bytes": 17686,
+      "sha256": "22ebec45b19c2066695b41b18b838f5a3d2f7de02dab045b1151098df8b034bb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-1x-contrast.json.gz",
+      "bytes": 1563,
+      "sha256": "10db2d106dc33b2b11e77cd445ed76178c5098e53a5029140aea48534888edb2",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-1x.png",
+      "bytes": 235946,
+      "sha256": "d01e3423b11478c56c7fe25b1de7175e443c77c692956670f736a0859793f775",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-2x-background.png",
+      "bytes": 217611,
+      "sha256": "ff294c3584ff50feb73172c511abfad62f6bdaf3315d800d52dd03ab33f193fc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-2x-contrast.json",
+      "bytes": 13823,
+      "sha256": "5bad9e998eeed4e02818192b706827de43db6a9f1c9f5b67648c687a11d12654",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-2x-contrast.json.gz",
+      "bytes": 1177,
+      "sha256": "7ca620fa4168e20e5759bd9636f5e759166a7075726e0924432e5b1db5f21433",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/roster-native-acquisition-320-2x.png",
+      "bytes": 229600,
+      "sha256": "31595a602ca366d676fc55a291e661002501181e510f36e8e0e66a2d2fc9efd1",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after/vite.log",
+      "bytes": 450,
+      "sha256": "3cb7ad84a331850255703517e46c156be0db51e1ebc91e125ffe549424811df8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after-metrics.json",
+      "bytes": 96,
+      "sha256": "6775c1ef9fa27efd2f27f6d0650b5b042c8dc3707c5a05d15dec42bea1e946dc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-price-after-metrics.json.gz",
+      "bytes": 90,
+      "sha256": "a2283f396c434147930ba02527f02c224b74655b93f891e271be77cfb2591e36",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-price-after.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-top-focus/founding-keyboard-1440-1x.png",
+      "bytes": 692222,
+      "sha256": "f5e6cc09ab1b60cd9932f5045badfd52ffaa83135b4f01b2579394da0e8ca007",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-top-focus/founding-keyboard-320-1x.png",
+      "bytes": 239632,
+      "sha256": "9b65d41c0a951767ac30c718d2ffd3a27329b145247369554d81c15c5c7532e1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-top-focus/results.json",
+      "bytes": 69204,
+      "sha256": "1b93a9e2f4eec37d4359264f07f69ee064c71174e7d1857984d39a393552905e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-top-focus/results.json.gz",
+      "bytes": 11648,
+      "sha256": "4f1ed253cfd05182aced7eaa098e75dad2a0205f065195126e6a39e8ef17df18",
+      "scope": "include"
+    },
+    {
+      "path": "founding-top-focus/vite.log",
+      "bytes": 450,
+      "sha256": "7195dde3201c8c3f5473948be744153df9704516c3b50f4799819ccb9621789b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "founding-top-focus.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "founding-top-focus.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "glyph-contrast.py",
+      "bytes": 2594,
+      "sha256": "16a9ccf290b9cfc95bbdd5195eb00a4abea5b063e645bd2da97d4b5330cbdafc",
+      "scope": "include"
+    },
+    {
+      "path": "inventory.py",
+      "bytes": 9030,
+      "sha256": "c505eef41d8f8bd17131c778b1ff59696431889fb31fe2acb93e58d1f785c917",
+      "scope": "include"
+    },
+    {
+      "path": "phase-status.json",
+      "bytes": 20531,
+      "sha256": "92d4190c4e3d6bc239afc0c5f812062d2cedebf66229aef650239b17faadc84c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "phase-status.json.gz",
+      "bytes": 2143,
+      "sha256": "473f63c76e1af581a620a9bcbd92009b9b7b5732e6e747177533ebc221f28e78",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/contrast-summary.json",
+      "bytes": 15890,
+      "sha256": "861117a4f9c83c54d4ff741789032bea11b39ce0c6a2803b11e3c3b0eb930cde",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/contrast-summary.json.gz",
+      "bytes": 1499,
+      "sha256": "c16c71a2de1738ca39e24a8ece83000d23e3dbf799fc73d712cbdebafa1a05d8",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-1x-background.png",
+      "bytes": 233981,
+      "sha256": "f52a81b63c1d275f2fc31e8034712ab403d0747c6baf41083d32ed5d1c9eeaea",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-1x-contrast.json",
+      "bytes": 5316,
+      "sha256": "9462544dc395d5057c5288258dc0f5044909e3eccb0f0e03ea3b55f2f05851b1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-1x-contrast.json.gz",
+      "bytes": 984,
+      "sha256": "25218c0f417742b6c109b215929e2a14e528abaf870b531dddf1c56298dcb3d1",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-1x.png",
+      "bytes": 246651,
+      "sha256": "bfa605bc222bbee6001ff354c9dc1aa53987ee9c765683739586514e0598c171",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-2x-background.png",
+      "bytes": 179738,
+      "sha256": "4a0991c6160e9338dc49657da215532c3149a69d56f5175f3246272febe51d5b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-2x-contrast.json",
+      "bytes": 5632,
+      "sha256": "a5b8e075e7c287f8e66063aeab1d441e9bdf5cec3f66a1ea829cd2161e8a1367",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-2x-contrast.json.gz",
+      "bytes": 985,
+      "sha256": "3efdb59deb6fffd7bad645e60edd48c3e53ba04d714481d5b3c758ce3454cc8a",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/founding-confirmation-320-2x.png",
+      "bytes": 206115,
+      "sha256": "4317d8f731097ea644f67a8bd68649f5f24cea311823ee9de6be007b4e6cf282",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/glyph-core-summary.json",
+      "bytes": 20326,
+      "sha256": "2ae232e39accafe066a9546da319686b0113b5a20ac246f81b0248978d84a738",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/glyph-core-summary.json.gz",
+      "bytes": 1564,
+      "sha256": "c05f4d81f5dbef4db471bc7914678c021c2fba91f46afd527b67c5132d2da40d",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/results.json",
+      "bytes": 172669,
+      "sha256": "132d46c406545a8662833f43eab1db1c1a6228a2c3f616544a9260c7c72c2e23",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/results.json.gz",
+      "bytes": 24876,
+      "sha256": "621379af5f01709fdf87c81dabd777aefd608fb16e580394eee5b886a1af175a",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-1440-1x.png",
+      "bytes": 1050850,
+      "sha256": "245829c574a53fece4fc386b2455cb162de674953b4c00d213a1ad1eba7c858e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-1x-background.png",
+      "bytes": 220643,
+      "sha256": "407d282bf19c7f10616b4e42121b3ab531beb2acae941a7361d649f81b869f48",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-1x-contrast.json",
+      "bytes": 17686,
+      "sha256": "22ebec45b19c2066695b41b18b838f5a3d2f7de02dab045b1151098df8b034bb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-1x-contrast.json.gz",
+      "bytes": 1563,
+      "sha256": "10db2d106dc33b2b11e77cd445ed76178c5098e53a5029140aea48534888edb2",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-1x.png",
+      "bytes": 235180,
+      "sha256": "b636a2db7d773e4ab805fa8ce2f9dd0239f8897187151c64e49a5d9f03381317",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-2x-background.png",
+      "bytes": 217626,
+      "sha256": "bc16b5cc44f235802273a7fd09bfeea3082607f178a40ab61e9df373bee6f59b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-2x-contrast.json",
+      "bytes": 13823,
+      "sha256": "5bad9e998eeed4e02818192b706827de43db6a9f1c9f5b67648c687a11d12654",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-2x-contrast.json.gz",
+      "bytes": 1177,
+      "sha256": "7ca620fa4168e20e5759bd9636f5e759166a7075726e0924432e5b1db5f21433",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto/roster-native-acquisition-320-2x.png",
+      "bytes": 230563,
+      "sha256": "c6a46ff1ef4d2d0ddf9c1d83525615ba80ab0104a253309b0928f2f4f0ece709",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto/vite.log",
+      "bytes": 450,
+      "sha256": "62ad212d811b7cc140ae0938f61ef8d09a1ded825adbb87f7d2a10513bba4037",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto-glyph-metrics.json",
+      "bytes": 1081,
+      "sha256": "30e3fb1ba19e0df25b033820efb6dff05e207eae4f8e7247e7d77e7057fb38a7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto-glyph-metrics.json.gz",
+      "bytes": 465,
+      "sha256": "8788e540c6c7c4a86fec1c93bcb3c20f70b99f1cbdf8eb06c4c00108a685de0a",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto-metrics.json",
+      "bytes": 418,
+      "sha256": "2d53fb79199f6cc3ff0fbc8cb53e3b43a569038473d10fae9e5fe871f10fa193",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-auto-metrics.json.gz",
+      "bytes": 195,
+      "sha256": "c0fe269d73e8f8671deb83aef2fb0d3f58e171fbb3ba0f4730b8d30f938869b8",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto.err",
+      "bytes": 609,
+      "sha256": "518fb8c694c3d8410da2903df29c5048c559fb1b55fcba6297d721b8f2fedc9d",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-auto.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/contrast-summary.json",
+      "bytes": 4333,
+      "sha256": "e4bedcb840c1f243785f09031db228bcc31da352676e89253ac115222292e0c7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/contrast-summary.json.gz",
+      "bytes": 823,
+      "sha256": "cd27efbed040dd602a8286e9aa69876e88463748939fd357c9123eaec5e2ab6d",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-1x-background.png",
+      "bytes": 709042,
+      "sha256": "3fe491d91ae6310e691e7b9fb2ec39bb0d54bfe8fe72e9d3e6d091bf907605fb",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-1x-contrast.json",
+      "bytes": 4088,
+      "sha256": "a8fcf7571f16724a19fdf8cff216d9c4128b80c36c7490a464f379e5c9fa870b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-1x-contrast.json.gz",
+      "bytes": 898,
+      "sha256": "f1bf7eb97f72c0976d9b60b6632c8dbe84f10a547e40001e77a53c84e04f3c9d",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-1x.png",
+      "bytes": 723738,
+      "sha256": "cf92d570d9746242d6d046fbd37fdfbf61f43c7de4bee6acf4382352fd3d4152",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-2x-background.png",
+      "bytes": 710817,
+      "sha256": "08b5d06d2b2040b6915b7a0c12b45e45c62c50acb047e59e5fa4cf364dba91fa",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-2x-contrast.json",
+      "bytes": 4027,
+      "sha256": "7428f2ebba66609c30094175a6c0693d2a59da0d45d48aa34799dd286daa5320",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-2x-contrast.json.gz",
+      "bytes": 897,
+      "sha256": "d5be1d7f1ba1f313242a525e8ab733d3e33ad170af69d236c2d233a54dbb4bd3",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/founding-confirmation-1440-2x.png",
+      "bytes": 747127,
+      "sha256": "86848b822bec56340f76150901fc0e2a4f95523b9d8c8c367df9f7f5d575b2e7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/glyph-core-summary.json",
+      "bytes": 4546,
+      "sha256": "f4c06075db7b63381d3e304e4d4ca01babad1bbe75f5279f0836fff4dfcc9bab",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/glyph-core-summary.json.gz",
+      "bytes": 733,
+      "sha256": "2b2b4a3728978da438b14b67e19808dc1fd38b61f875a02710852d5d1f480eb4",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/results.json",
+      "bytes": 203919,
+      "sha256": "3ea211868e8d3e376b97718d83acb3b3637419d9b584c17db7c4218a7d17087e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/results.json.gz",
+      "bytes": 31660,
+      "sha256": "645c26f8ce7fc6badb0d1ce47afc5029e6d1ecbe1e69c6b54f44510d78ea1f07",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop/roster-native-acquisition-1440-1x.png",
+      "bytes": 1047031,
+      "sha256": "5c08f39982f290918fbac4d4e4986933335ef24103e4cda2cb34442941a92696",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/roster-native-acquisition-1440-2x.png",
+      "bytes": 1181631,
+      "sha256": "6b32b18c6b060ba4c102c01a2ff8137691b3b31e0249f7cf4bfc8394157448b0",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop/vite.log",
+      "bytes": 450,
+      "sha256": "8af5f86cf4bf4f71f65a42e54201ed4de20945113bd3a98d72957d587d7fd409",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop-glyph-metrics.json",
+      "bytes": 1085,
+      "sha256": "5a7d5fb4cdb99bc75d92fdb4da5232eefc03e69994edcb463539dca34ef297f6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop-glyph-metrics.json.gz",
+      "bytes": 464,
+      "sha256": "c19e44c29697bcaca02d6538052f2e495bc042e2134a30cbc790751fd9ca5837",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop-metrics.json",
+      "bytes": 419,
+      "sha256": "2283a9aee7bacd029f52913d7a7a205f0082735ecfc3c6b2ca46bf6070c4cb68",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "roster-after-desktop-metrics.json.gz",
+      "bytes": 194,
+      "sha256": "10d21c9befe6ff8da7ea99c761c7e7fd55bb9f46046a1d85787c647b9644c55a",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "roster-after-desktop.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry/appearance-current-click-1440-1x.png",
+      "bytes": 828056,
+      "sha256": "f6338f65a8c854a354c95533145c2fb24fa6aa73ab2dbecc773e006079245066",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-current-click-1440-2x.png",
+      "bytes": 808579,
+      "sha256": "531f0ff0daa7a8a17ba5d9244116aaaa1aac224391d4002a6753a1f7a1501b28",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-current-click-320-1x.png",
+      "bytes": 241498,
+      "sha256": "21d8b7411cc6a5d1a2a33e78c35aff5e65ed165f5ae6a2651de2e54fc82329da",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-current-click-320-2x.png",
+      "bytes": 208810,
+      "sha256": "6ff75c882de97142265f9fb8805dc0dc9ef039b4c2214dcc30308dd227bee2e8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-keyboard-1440-1x.png",
+      "bytes": 822693,
+      "sha256": "79e47a03ff145f284d268a066cc8c64b22fdbfddc7a63118cee20e1850436c28",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-keyboard-1440-2x.png",
+      "bytes": 880771,
+      "sha256": "74b092c04f3b8c6908856f8e98812882544713785128bdf0dc4afff55ea5fd40",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-keyboard-320-1x.png",
+      "bytes": 286373,
+      "sha256": "5a477c2fb5556c6a76dc54ee7d942b462c107e100be76da3fc5a7b5bd57d823f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-keyboard-320-2x.png",
+      "bytes": 259578,
+      "sha256": "7ce813776c6ee8d0dc9e22279debd106d767d44606deea15230b2912af7ec948",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-selected-1440-1x.png",
+      "bytes": 823180,
+      "sha256": "a28cfd720d7d1f19ae4aac89fa885a5e439412c3fe19b04d46a47708c41591dc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-selected-1440-2x.png",
+      "bytes": 881353,
+      "sha256": "f8f5479388a77af70bc76dd79ca33b735f4426f353d2bc9462935106dab651c7",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-selected-320-1x.png",
+      "bytes": 285071,
+      "sha256": "184e8ec96db9ea4c18d6b406cb02389c7bc0696afc0dad587b5abe442f52e23e",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/appearance-selected-320-2x.png",
+      "bytes": 257259,
+      "sha256": "a1424965f0975dcbf6ca4375a72063350c03f9989de302b9f8373406c0489b03",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-cancel-320-1x.png",
+      "bytes": 353032,
+      "sha256": "5071c96e9a1e504a0faa703ec77a441496019599348f524fe927491513dce7e6",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-cancel-320-2x.png",
+      "bytes": 342693,
+      "sha256": "7aadfd1e733e02f1c706a061ed5eb35f91b461bd4f52c38af5e5516833a347de",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-current-320-1x.png",
+      "bytes": 234946,
+      "sha256": "0a69e6f4b02d4876d90854b9745bf465e56f44bf5b6a0699a3f56eb5e25c3712",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry/rename-current-320-2x.png",
+      "bytes": 221701,
+      "sha256": "566ebf44ba95b5efa786036e20882936a69773a678bb7d9d3014dba7e3adee61",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-keyboard-320-1x.png",
+      "bytes": 235538,
+      "sha256": "93639d7ca39542290fe52cb270d417a4cebe57efce7f227816430400c31bc331",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-keyboard-320-2x.png",
+      "bytes": 225479,
+      "sha256": "0148f0d7d163078b24a18efbf2cffdd8a90c69033870fb17ae3cee8b5523f452",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-max12-320-1x.png",
+      "bytes": 236272,
+      "sha256": "cdc0f8b3c481aee14fe736d7770e5deb6bff98e5ca46f518fb7e4f57417aa26b",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/rename-max12-320-2x.png",
+      "bytes": 224833,
+      "sha256": "f708e5f9106ff60d29f8980f695f472014264611e925113e3875a6047d8138cc",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/results.json",
+      "bytes": 1351214,
+      "sha256": "44485ad7c45619003f3b84be6054c45e8066a95e90513d54ba0c42f4d6a6ec0a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/results.json.gz",
+      "bytes": 153732,
+      "sha256": "4efe26d23f9963ed44298ea0e3b681adf00b196ed8f855fcdd11da05a893d970",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry/skill-review-1440-1x.png",
+      "bytes": 755742,
+      "sha256": "05ae301663c30de951b624cdb5d5cec38462ad64ba673f0bbda003d0d325408f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-1440-2x.png",
+      "bytes": 781525,
+      "sha256": "b5f595fee7be0b8ef1f842488491e8f85ca6818aa866a9e8a14d4ef700981433",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-320-1x.png",
+      "bytes": 252265,
+      "sha256": "fe2cfe98a143dcb7ef8f3b8e7b5c400d62fe487aeacaacccb28a6b8db3b8271a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-320-2x.png",
+      "bytes": 206009,
+      "sha256": "3dc0d10f57f2f14bb1757b60335dd7809fb74dae61e84ef2d260325e1307905c",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-cancel-1440-1x.png",
+      "bytes": 772958,
+      "sha256": "294646b1818ccba31d8e2773630a65950e7ca8b9cdd4741dbcf8d09b31dab9ae",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-cancel-1440-2x.png",
+      "bytes": 816453,
+      "sha256": "4ba6550130c17d04b0faf7841e0b11a852e4cc30038809305416eca7c2f20c91",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-cancel-320-1x.png",
+      "bytes": 227963,
+      "sha256": "479ebeb1e8876c0339f4348f0d488dfb2fbc3d66f5f9f6d9e1fbccc655d3a6e1",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-cancel-320-2x.png",
+      "bytes": 222112,
+      "sha256": "8147ec461d1f11f62e1d2c40141fd5594c03fac54e0121b10c4ab015f3621629",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-keyboard-1440-1x.png",
+      "bytes": 758070,
+      "sha256": "b0d39f4fe83bbb0d3d0f648511c8c7ed0c2a0f370e924ae37b2c9fe120b7ad16",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-keyboard-1440-2x.png",
+      "bytes": 789316,
+      "sha256": "de7d7c5be667457c96648cdf309acc68a96b8463a82346aafbb01b04025a301f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-keyboard-320-1x.png",
+      "bytes": 253987,
+      "sha256": "0b4665f38c2667d435bb30c871402368c6d26bb90ea030799cec750e99eddc74",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skill-review-keyboard-320-2x.png",
+      "bytes": 219379,
+      "sha256": "359347ee432d43cedeefe9087e02c4214956dca3c7df6d4606b3dfe0abfef918",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skills-actual-native-offers-1440-1x.png",
+      "bytes": 776846,
+      "sha256": "b836f2635528c79183e1af899065b5dba11d9657f6e3ddd3ca9b256d45936ca5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skills-actual-native-offers-1440-2x.png",
+      "bytes": 820266,
+      "sha256": "53dbeae5ee7128d5c7431a6f663ec57085b964dd7cd3170bc1a96daae3b74ad4",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skills-actual-native-offers-320-1x.png",
+      "bytes": 236143,
+      "sha256": "2d6920c30eafba15972e9673286246b2f2458fe9197a625a841327ea575a530d",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/skills-actual-native-offers-320-2x.png",
+      "bytes": 230557,
+      "sha256": "4a237c321031066167575d428cbeba1bdb8dc1303f5016377e72704749ede690",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry/vite.log",
+      "bytes": 450,
+      "sha256": "b557cdd3f9bd6475c322d82fa4a3a4970687d4c527bbfd43c0dd2393e009671a",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "safe-entry-v1.mjs",
+      "bytes": 11534,
+      "sha256": "ac904d0e204c82ab744ef6e3ed3bdfa187831464babb816de04ab9722ea7295c",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry-v2.mjs",
+      "bytes": 11865,
+      "sha256": "3e7516b1d3c1caa0ca85dee6377566a17e9d02890ab28a937e21ba415106243f",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry.mjs",
+      "bytes": 19704,
+      "sha256": "93e0dee97bb3b766579a18f26e0a8949a2e511b8f557c8c44436e51e15ff5844",
+      "scope": "include"
+    },
+    {
+      "path": "safe-entry.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "setup-name-current/rename-cancel-320-1x.png",
+      "bytes": 352197,
+      "sha256": "94bfa391a4b355d84f3d9b3ad45335c1592ac75b73750e2f3fb3a375280b3e26",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-cancel-320-2x.png",
+      "bytes": 341987,
+      "sha256": "3c481960b3474178440aa72a47400232547e3130676a8ff5a78293b862b2d74f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-current-320-1x.png",
+      "bytes": 234946,
+      "sha256": "0a69e6f4b02d4876d90854b9745bf465e56f44bf5b6a0699a3f56eb5e25c3712",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-current-320-2x.png",
+      "bytes": 216510,
+      "sha256": "8559fa1bc5c141ed26d5189f2ec3105ad0f18b23039313737b9f21d619084c61",
+      "scope": "include"
+    },
+    {
+      "path": "setup-name-current/rename-keyboard-320-1x.png",
+      "bytes": 232546,
+      "sha256": "1be88be7493ff051e4d693ef432867986cd7e6dc0f900981b6be4a98fce991ec",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-keyboard-320-2x.png",
+      "bytes": 221315,
+      "sha256": "097b25a59bbfa6e7d3cf87fd1f5e34cce9a3f64f751f227a4b1a54560b7396b5",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-max12-320-1x.png",
+      "bytes": 231509,
+      "sha256": "edfe16d727032fb6d0ea0a08c85928803e7a7fb391d192cd54bf08294051b64f",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/rename-max12-320-2x.png",
+      "bytes": 218839,
+      "sha256": "37c317c394e0425f36ac5ad7ae359596c140db2819934f8adf6a812f7dd0a614",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/results.json",
+      "bytes": 137033,
+      "sha256": "a62fc09051a6753ee8a5e7959688990deab38203336d7e2c077f14ba20dfa1c8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current/results.json.gz",
+      "bytes": 18781,
+      "sha256": "ff077e77b6f5312f3d48d4cf5e13f7bd9a054baf68e55985e1ecea4418963286",
+      "scope": "include"
+    },
+    {
+      "path": "setup-name-current/vite.log",
+      "bytes": 450,
+      "sha256": "b647586abff77fb39232d70c1d00d849b278a1044cf697310e269f38eecf6bbe",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "setup-name-current.err",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "setup-name-current.out",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "include"
+    },
+    {
+      "path": "state-obligations.json",
+      "bytes": 70882,
+      "sha256": "5850654f4b8fa139cc4ce3c183aac0a6ab25748dced4d5c725d1fb76f76a9b54",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "state-obligations.json.gz",
+      "bytes": 9487,
+      "sha256": "ecca498c81e4d514c1f06095618caf202e1e38df1a27bfba0efb23b64550ff28",
+      "scope": "include"
+    },
+    {
+      "path": "style-input.json",
+      "bytes": 616,
+      "sha256": "436ec8295a793ccdd191ff63ee5202b38851ea7c05d4db9432445a8641911ad8",
+      "scope": "preserved-local-not-in-commit"
+    },
+    {
+      "path": "style-input.json.gz",
+      "bytes": 447,
+      "sha256": "109853a529e8489e005be0b68d9de4ace89f8949d9cac9ad4b55bf47a7684261",
+      "scope": "include"
+    }
+  ],
+  "includedBytes": 15835071,
+  "localBytes": 106133394
+}

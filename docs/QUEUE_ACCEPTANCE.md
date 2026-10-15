@@ -20,7 +20,7 @@ Subsequent Cut243/244 checkpoint: current961native tests/6ignored and default
 Clippy pass; rebuilt97e8 removes retired storage APIs/wire fields. Typed paired
 full-state comparisons22/22 and fresh relevant client8/8 including564Gold checks
 pass. Native pacing/full and broader client integration remain pending. Home now
-uses actual building sprites as primary controls, with quiet availability dots,
+uses actual building sprites as primary controls, with small lit eave lanterns,
 no duplicated built-building toolbar buttons, no persistent square help icons,
 hidden future plots, and unclipped Pets labels. Six current normal/200% phone/
 desktop views/gesture cases preserve exact saves. This does not complete broader
@@ -75,7 +75,7 @@ menu-state, progression, content, exhaustive or independent fun requirements.
 | R3 | Biome encounter variety | Open | Current catalogue:6 original earned checkpoints, exact kits/maps/traces; one read-only87de capsule reconstruction with24GL/Canvas400/1440stills and exact parent save. Actual gas/pack, drain/summon and reflect/armours/bell events identified; historical ticks33697→30689 mismatch explicit. Causal counter superiority, six legal paired compositions and broader balance remain missing; evidence/handoff-content/README.md |
 | R4 | Class and loot identity | Open | Evidence/handoff-content pins historical actual package/kit ownership and current reconstructed action cues; no copying final-camp upgrades into historical send builds. Earned affordable class-build causality and broader identity acceptance remain missing |
 | R5 | Lived-in home base | Partial | Cut228 real Forge vignette and fitted-hero visit delivered with31 real-WASM checks, actual-work-only/reduced-motion/save proof and private-GPU400/1440 day/night captures (evidence/cut228/README.md). Other building/worker routines and earned settled-town review remain; retired Storehouse hauling must not be reintroduced |
-| R6 | Dungeon visual landmarks | Open | Actual24replay stills and9pixel-exact prop crops expose6thematic-art gaps despite no missing files. Cut242f62d31c2 integrates6versioned masters and opt-in source/refinement repair; all6 naturally visible at400/1440, other368tiles unchanged, artQC525/0 and ctxloss19 pass. These decorative substitutions do not certify semantic landmarks; evidence/handoff-content/remaining-requirements.json |
+| R6 | Dungeon visual landmarks | Partial | Cut242 thematic art is retained. Cut245 fits recognizable fishing banks/burial alcoves/work bays to actual terrain, with bounded shared GL/Canvas plans;988 actual-layout/knowledge checks,12matched final views,12missing-art views and6seek/floor/reload cases including3forced context losses pass. Earlier rejected visual revisions remain. Nearby combat inspection, critical client integration and quiet cold/actualGPU cost proof remain; evidence/cut245/README.md |
 
 ## Retained work beyond numbered additions
 

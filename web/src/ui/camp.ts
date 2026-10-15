@@ -1122,6 +1122,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     openWindow((close) => {
       const input = h("input", {
         class: "name-input",
+        "aria-label": /* copy:label */ "Setup name",
         type: "text",
         maxlength: SET_NAME_MAX,
         autocomplete: "off",

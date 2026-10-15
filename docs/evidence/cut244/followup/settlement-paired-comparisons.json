@@ -1,0 +1,102 @@
+[
+  {
+    "id": "bank-positive",
+    "comparison": {
+      "exactExceptDeclaredTypedRemovals": true,
+      "removals": [
+        {
+          "path": "/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/0/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/1/game/batch/shelved",
+          "before": {}
+        }
+      ],
+      "failures": []
+    }
+  },
+  {
+    "id": "death-secured-lost",
+    "comparison": {
+      "exactExceptDeclaredTypedRemovals": true,
+      "removals": [
+        {
+          "path": "/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/1/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/1/live_capsule/kills/0/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/1/live_capsule/kills/1/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/3/batch/shelved",
+          "before": {}
+        }
+      ],
+      "failures": []
+    }
+  },
+  {
+    "id": "death-fetched-lost",
+    "comparison": {
+      "exactExceptDeclaredTypedRemovals": true,
+      "removals": [
+        {
+          "path": "/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/0/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/1/game/batch/shelved",
+          "before": {}
+        }
+      ],
+      "failures": []
+    }
+  },
+  {
+    "id": "multihero-absence",
+    "comparison": {
+      "exactExceptDeclaredTypedRemovals": true,
+      "removals": [
+        {
+          "path": "/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/0/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/live_capsule/kills/1/game/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/2/batch/shelved",
+          "before": {}
+        },
+        {
+          "path": "/others/3/batch/shelved",
+          "before": {}
+        }
+      ],
+      "failures": []
+    }
+  }
+]

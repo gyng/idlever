@@ -1,0 +1,15 @@
+client suite: targeted (2 selected; 164 current full; 207 exhaustive groups)
+ok   loot-economy    14.1s (4.9s)  {"checks":104,"outcomes":[{"tier":"bank","kept":12,"gold":512},{"tier":"return","kept":12,"gold":512},{"tier":"death","kept":8,"gold":508}],"version":"0.1.0"}
+FAIL item-icons      18.4s (4.4s)  Node.js v22.18.0
+     page.evaluate: TypeError: Cannot read properties of undefined (reading 'replace')
+         at wakeShown (http://localhost:36559/src/ui/death.ts:100:35)
+         at ledgerText (http://localhost:36559/src/ui/report.ts:230:13)
+         at http://localhost:36559/src/ui/report.ts:899:34
+         at Array.map (<anonymous>)
+         at paintExits (http://localhost:36559/src/ui/report.ts:890:38)
+         at renderReport (http://localhost:36559/src/ui/report.ts:931:2)
+         at App.go (http://localhost:36559/src/app.ts:1687:9)
+         at eval (eval at evaluate (:311:30), <anonymous>:135:9)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/item-icons.mjs:24:28 {
+FAIL: 1/2 client gates in 18.4s

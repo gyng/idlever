@@ -1,0 +1,15 @@
+--- crates/idlever-core/src/wire.rs:gate-source
++++ crates/idlever-core/src/wire.rs:after-comments
+@@ -255,9 +255,9 @@
+ }
+ 
+ /// Cut 6 §1: the ledger line of an exit — one arithmetic line the player can check.
+-/// `text` ≤ 14 words: `$84 carried · return keeps 60% → $50` (death: `$144 carried · death
+-/// keeps 0% → $0 · bones: 7 items on D5`). `spent` / `spent_on` are the automations' purchases
+-/// on coming home (`auto_supply`); salvage is its own ledger movement (`Lineage.gold_ledger`).
++/// `text` ≤ 14 words: `$84 carried · return keeps 100% → $84`. Death keeps secured
++/// Gold and zero of remaining carry. `spent` / `spent_on` retain named preparation costs;
++/// current free preparation and found-item conversion create no exit salvage payment.
+ fn first_bloodline()->u32 {1}
+ fn solo_bloodline(id:&u32)->bool{*id<=1}
+ 

@@ -113,6 +113,22 @@ the concurrent native workload.
 
 ## R4 class/loot boundary
 
+Current lawful preparation follow-up (e62c0867): `departure-readiness.mjs`
+loads the untouched earned Home camp and preserves its canonical Session.
+Allsix gas_step/pack_break/corridor_fighting/reflect_read/boss_focus/Hunter
+choices are legal through actual public equip calls with no time/Gold change.
+Fighter/Rogue switches are already legal; original Ranger/Caster/Gunner
+refusals are retained. `class-purchases.mjs` then forks that same earned camp
+independently: public native quotes permit paying6/8/8of its116marks to unlock
+Ranger/Caster/Gunner, followed by actual class selection. Allfive prepared
+class Sessions retain identical Legacy, clock and12021Gold; the three mark
+payments are exact. No levels, facts, gear, currency or workers are granted.
+`current-preparation-inventory.json` pins scripts, full public before/after
+states and configured Session gzip files. These are legal future-send inputs,
+not backdated historical equipment or evidence of counter superiority. Zero
+new encounters or outcome comparisons run in this preparation phase; the
+six-scene/eighteen-fork and ten-affordable-loadout requirements remain open.
+
 `hero.rs::Class::ALL` is Fighter/Rogue/Ranger/Caster/Gunner; earned Clown and
 Engineer are additional and cannot replace those five cases. Existing class
 actions, skill nodes, saved starting kits, Gear/Skills surfaces and real earned

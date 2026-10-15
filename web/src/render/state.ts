@@ -9,6 +9,7 @@
 // the actor's next queued event (default 10 ticks, clamped 3..20), progress quantised to whole
 // ticks (10 fps cadence at 1×). Callouts stay on a real-time 1 s cadence.
 import { MovementTrail } from "./movement-trail";
+import { planLandmarks, type Landmark } from "./landmarks";
 import { heroKind } from "./look";
 import { nameRefs } from "../ui/tokens"; // docs/COPY.md: a rule by its words on the canvas too
 import type { Ev, GunSnap, Overlay, Snapshot, Tile, FloorItem, Entity, ToolsView } from "./types";
@@ -136,6 +137,8 @@ export class ReplayState {
    *  other stair drawn beside it (`other`) — empty on a floor with one stair */
   stairs: StairInfo[] = [];
   tiles: Tile[] = [];
+  landmarks: readonly Landmark[] = [];
+  landmarkArea = new Set<number>();
   seen: Uint8Array = new Uint8Array(0);
   visible: Uint8Array = new Uint8Array(0);
   overlays: Overlay[] = [];
@@ -220,6 +223,12 @@ export class ReplayState {
         this.stairs.push({ x: s.fork.x, y: s.fork.y, biome: s.fork.other });
       }
     }
+    this.landmarks = planLandmarks(this.w, this.h, this.tiles, this.biome);
+    this.landmarkArea.clear();
+    for (const place of this.landmarks)
+      for (let dy = 0; dy < 2; dy++)
+        for (let dx = -2; dx <= 2; dx++)
+          this.landmarkArea.add((place.y + dy) * this.w + place.x + dx);
     this.seen = Uint8Array.from(s.seen, (b) => (b ? 1 : 0));
     this.visible = Uint8Array.from(s.visible, (b) => (b ? 1 : 0));
     this.engineVisible = Uint8Array.from(s.visible, (b) => (b ? 1 : 0));

@@ -1,0 +1,1123 @@
+{
+  "utc": "2026-10-15T18:53:59.116Z",
+  "scope": "Read-only immutable earned sent Session copies; public step(10) versus public runOfflineSlice(1,false), no grants or state edits. Diagnostic equivalence probe, not a cadence/policy acceptance.",
+  "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "input": "docs/evidence/cut246/played-1/fighter-sword.sent-session.json.gz",
+  "inputRawSha256": "53da44b79731d6ac1788d42a3376c994fd8ae00d1e25e9c022068a798fb9de91",
+  "firstDivergence": {
+    "second": 94,
+    "keys": [
+      "hero"
+    ],
+    "watched": {
+      "turn": 940,
+      "depth": 1,
+      "hero": {
+        "pos": {
+          "x": 17,
+          "y": 8
+        },
+        "hp": 56,
+        "max_hp": 56,
+        "base_atk": [
+          1,
+          2
+        ],
+        "str_bonus": 4,
+        "legacy_armour": 2,
+        "class": "fighter",
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          },
+          {
+            "id": 14,
+            "kind": "teleport",
+            "hint": "benevolent",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          },
+          {
+            "id": 19,
+            "kind": "summon_ally",
+            "hint": "benevolent",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          }
+        ],
+        "weapon": {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 5,
+          "value_claimed": true
+        },
+        "armour": {
+          "id": 2,
+          "kind": "hearthglass",
+          "amount": 0,
+          "enchant": 4,
+          "value_claimed": true
+        },
+        "helm": {
+          "id": 4294967293,
+          "kind": "ironcap",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "boots": {
+          "id": 4294967292,
+          "kind": "hearthglass_boots",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "protected_slots": [
+          "helm",
+          "armour",
+          "boots"
+        ],
+        "hearth_regen": 28,
+        "energy": 20,
+        "speed_t": 0,
+        "invis_t": 0,
+        "vanish_t": 0,
+        "paralysed": 0,
+        "confused": 0,
+        "poison": [
+          0,
+          0
+        ],
+        "bash_cd": 0,
+        "vanish_cd": 0,
+        "resting": false,
+        "level": 8,
+        "cleave_cd": 0,
+        "bulwark_t": 0,
+        "bulwark_cd": 0,
+        "second_wind_used": false,
+        "volley_cd": 0,
+        "double_cd": 0,
+        "ward_t": 0,
+        "ward_cd": 0,
+        "blink_cd": 0,
+        "nova_cd": 0,
+        "silence_t": 0,
+        "regen_t": 0,
+        "resist_fire_t": 0,
+        "clarity_t": 0,
+        "mirror_charge": 0,
+        "max_hp_base": 56,
+        "gift": {
+          "fury": 0,
+          "guard": 0,
+          "quick": 0,
+          "slow": 1
+        }
+      },
+      "monsters": [
+        {
+          "id": 2,
+          "kind": "monkey",
+          "pos": {
+            "x": 6,
+            "y": 2
+          },
+          "hp": 6,
+          "max_hp": 6,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 3,
+          "kind": "monkey",
+          "pos": {
+            "x": 1,
+            "y": 18
+          },
+          "hp": 6,
+          "max_hp": 6,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 4,
+          "kind": "jackal",
+          "pos": {
+            "x": 19,
+            "y": 24
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 5,
+          "kind": "jackal",
+          "pos": {
+            "x": 17,
+            "y": 25
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 6,
+          "kind": "jackal",
+          "pos": {
+            "x": 18,
+            "y": 24
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 7,
+          "kind": "rat",
+          "name": "Greth",
+          "pos": {
+            "x": 19,
+            "y": 6
+          },
+          "hp": 13,
+          "max_hp": 13,
+          "atk": [
+            1,
+            3
+          ],
+          "def": 0,
+          "speed": 10,
+          "energy": 0,
+          "ally": true,
+          "neutral": false,
+          "awake": true,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "cid": 1000900,
+          "extra_tags": [],
+          "level": 3,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "fetch",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 8,
+          "kind": "goblin",
+          "name": "Zelul",
+          "pos": {
+            "x": 19,
+            "y": 7
+          },
+          "hp": 13,
+          "max_hp": 13,
+          "atk": [
+            1,
+            3
+          ],
+          "def": 0,
+          "speed": 10,
+          "energy": 0,
+          "ally": true,
+          "neutral": false,
+          "awake": true,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "cid": 1009000,
+          "extra_tags": [],
+          "level": 2,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        }
+      ],
+      "rng": {
+        "s": 863419474391662000
+      },
+      "over": null
+    },
+    "offline": {
+      "turn": 940,
+      "depth": 1,
+      "hero": {
+        "pos": {
+          "x": 17,
+          "y": 8
+        },
+        "hp": 56,
+        "max_hp": 56,
+        "base_atk": [
+          1,
+          2
+        ],
+        "str_bonus": 4,
+        "legacy_armour": 2,
+        "class": "fighter",
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          },
+          {
+            "id": 14,
+            "kind": "teleport",
+            "hint": "benevolent",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          },
+          {
+            "id": 19,
+            "kind": "summon_ally",
+            "hint": "benevolent",
+            "amount": 0,
+            "enchant": 2,
+            "value_claimed": true
+          }
+        ],
+        "weapon": {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 5,
+          "value_claimed": true
+        },
+        "armour": {
+          "id": 2,
+          "kind": "hearthglass",
+          "amount": 0,
+          "enchant": 4,
+          "value_claimed": true
+        },
+        "helm": {
+          "id": 4294967293,
+          "kind": "ironcap",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "boots": {
+          "id": 4294967292,
+          "kind": "hearthglass_boots",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "protected_slots": [
+          "helm",
+          "armour",
+          "boots"
+        ],
+        "hearth_regen": 29,
+        "energy": 20,
+        "speed_t": 0,
+        "invis_t": 0,
+        "vanish_t": 0,
+        "paralysed": 0,
+        "confused": 0,
+        "poison": [
+          0,
+          0
+        ],
+        "bash_cd": 0,
+        "vanish_cd": 0,
+        "resting": false,
+        "level": 8,
+        "cleave_cd": 0,
+        "bulwark_t": 0,
+        "bulwark_cd": 0,
+        "second_wind_used": false,
+        "volley_cd": 0,
+        "double_cd": 0,
+        "ward_t": 0,
+        "ward_cd": 0,
+        "blink_cd": 0,
+        "nova_cd": 0,
+        "silence_t": 0,
+        "regen_t": 0,
+        "resist_fire_t": 0,
+        "clarity_t": 0,
+        "mirror_charge": 0,
+        "max_hp_base": 56,
+        "gift": {
+          "fury": 0,
+          "guard": 0,
+          "quick": 0,
+          "slow": 1
+        }
+      },
+      "monsters": [
+        {
+          "id": 2,
+          "kind": "monkey",
+          "pos": {
+            "x": 6,
+            "y": 2
+          },
+          "hp": 6,
+          "max_hp": 6,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 3,
+          "kind": "monkey",
+          "pos": {
+            "x": 1,
+            "y": 18
+          },
+          "hp": 6,
+          "max_hp": 6,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 4,
+          "kind": "jackal",
+          "pos": {
+            "x": 19,
+            "y": 24
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 5,
+          "kind": "jackal",
+          "pos": {
+            "x": 17,
+            "y": 25
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 6,
+          "kind": "jackal",
+          "pos": {
+            "x": 18,
+            "y": 24
+          },
+          "hp": 4,
+          "max_hp": 4,
+          "atk": [
+            1,
+            2
+          ],
+          "def": 0,
+          "speed": 15,
+          "energy": 0,
+          "ally": false,
+          "neutral": false,
+          "awake": false,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "extra_tags": [],
+          "level": 0,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": true,
+          "stray": false,
+          "dormant": true,
+          "verb_ring": []
+        },
+        {
+          "id": 7,
+          "kind": "rat",
+          "name": "Greth",
+          "pos": {
+            "x": 19,
+            "y": 6
+          },
+          "hp": 13,
+          "max_hp": 13,
+          "atk": [
+            1,
+            3
+          ],
+          "def": 0,
+          "speed": 10,
+          "energy": 0,
+          "ally": true,
+          "neutral": false,
+          "awake": true,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "cid": 1000900,
+          "extra_tags": [],
+          "level": 3,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "fetch",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        },
+        {
+          "id": 8,
+          "kind": "goblin",
+          "name": "Zelul",
+          "pos": {
+            "x": 19,
+            "y": 7
+          },
+          "hp": 13,
+          "max_hp": 13,
+          "atk": [
+            1,
+            3
+          ],
+          "def": 0,
+          "speed": 10,
+          "energy": 0,
+          "ally": true,
+          "neutral": false,
+          "awake": true,
+          "last_seen": null,
+          "telegraph": null,
+          "pending": null,
+          "stun": 0,
+          "paralysed": 0,
+          "confused": 0,
+          "fear": 0,
+          "blind": 0,
+          "poison": [
+            0,
+            0
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "ttl": null,
+          "stolen": null,
+          "fleeing": false,
+          "grudge": false,
+          "summoned": false,
+          "cid": 1009000,
+          "extra_tags": [],
+          "level": 2,
+          "sent": false,
+          "stole_from": [],
+          "hurt_since_action": false,
+          "acts_since_hero": 1,
+          "marked": 0,
+          "slow_t": 0,
+          "warden_ranged": false,
+          "introduced": false,
+          "rallies": 0,
+          "broken": false,
+          "last_verb": "",
+          "nest": false,
+          "stray": false,
+          "dormant": false,
+          "verb_ring": []
+        }
+      ],
+      "rng": {
+        "s": 863419474391662000
+      },
+      "over": null
+    }
+  }
+}

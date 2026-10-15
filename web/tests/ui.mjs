@@ -1907,9 +1907,14 @@ try {
     await shot("ui-fresh-camp");
     {
       const els = await interactive();
+      const house = page.locator('[data-building="tent"]');
+      const houseRect = await house.boundingBox();
       check(
         els.every((text) => text.trim().length > 0) &&
-          els.some((text) => text === "House information") &&
+          (await house.getAttribute("aria-label"))?.toLowerCase() === "hero" &&
+          houseRect?.width >= 44 &&
+          houseRect?.height >= 44 &&
+          (await page.locator("[data-building-info]").count()) === 0 &&
           els.some((text) => text === "Heroes") &&
           !els.some((text) => /\bkeep\b|\bvault\b/i.test(text)),
         `literal legacy-authoring frame: named hero/building controls, no retired Keep/Vault (${els.length}: ${els.join(" | ")}); current opening verified by real Hero journeys`,

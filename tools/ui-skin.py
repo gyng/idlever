@@ -32,7 +32,7 @@ FRAMES = {
 ICON_PX = 96   # 48 CSS px at 2x
 BACKDROP_W = 720   # gfx round 1: painted backdrops behind a place (death, report), 1024×1536 opaque portraits from Codex
 PORTRAIT_PX = 256   # art pass: the well's face is 56 CSS px (168 device px at 3x); square, opaque — the CSS circle masks it
-DECO_MAX_PX = {"house_plot_v2": 384}   # small in-world overlay, not a full-size column/backdrop
+DECO_MAX_PX = {"house_plot_v2": 384, "town_readiness_lantern": 96}   # small in-world overlays
 
 
 def usable(im: Image.Image) -> bool:

@@ -1,0 +1,13 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+clock.pauseAt: Error: Cannot fast-forward to the past
+    at ClockController._innerFastForwardTo (<anonymous>:202:13)
+    at ClockController.pauseAt (<anonymous>:133:16)
+    at async <anonymous>:337:30
+    at /home/g/p/riddle/docs/evidence/cut243-mobileheader/header-check.mjs:99:22 {
+  log: []
+}
+
+Node.js v22.18.0

@@ -1,0 +1,495 @@
+{
+  "scope": "Paired paused production-renderer views of the pinned87de reconstruction; original historical replay drift retained; no new gameplay or performance claim",
+  "phase": "lifecycle-v3",
+  "assets": "normal",
+  "replaySha256": "fba06d490019133aa4b24005fe67eec3f30e2d78cd35ef436e2b45019fd66272",
+  "source": {
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/landmarks.ts": "6926fd55137d553cb2bf384bbd9fdfb1220c8e687ed0b7a069453ef901d57560",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "e82871560e2344f440d1cc350a0645d8e53137c1cf405303e6d9f50bd40e9f2e"
+  },
+  "served": [
+    {
+      "path": "/src/render/index.ts",
+      "sha256": "426c766f0d506a2cdf1bb1543095944158f91ed75506888d860661583736431e"
+    },
+    {
+      "path": "/src/render/atlas.ts",
+      "sha256": "f691ffc480d317cbf5fa9bfdc4aeed1639517aa6a3e2aa4f44c6613e6a364ce4"
+    },
+    {
+      "path": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "path": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "path": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "path": "/src/render/palette.ts",
+      "sha256": "55ecf52ac4aebe5dedc9b1ae7327f201338a304d6b8080c193d5e56ed1b3218f"
+    },
+    {
+      "path": "/src/render/tags.ts",
+      "sha256": "6eaa1d6d86037ff5dee3d5aa6d8ef9364da952a1bc9ee5fdbd3b0597eb271960"
+    },
+    {
+      "path": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "path": "/src/render/state.ts",
+      "sha256": "c2a6a45ae096de231ae6a45d293a3b96542c0f40f204d2e5a70a69cfdcb5eb25"
+    },
+    {
+      "path": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "path": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "path": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "path": "/src/render/view2d.ts",
+      "sha256": "baf54bd2236c7a097a67cabf35bdea7d7474f279860b4a08cda71b99c6b34a03"
+    },
+    {
+      "path": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "path": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "path": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "path": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "path": "/src/render/landmarks.ts",
+      "sha256": "1d037b6d78b954eb126c8ca0f1ef698ace44baa99bc5542b4cc2c58d97b2fba7"
+    },
+    {
+      "path": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "path": "/src/render/fallback.ts",
+      "sha256": "fb82a6570ba549c7eef48c067ebfdb4b3b5b2f83e9c8855e1d43d955eee1ef6c"
+    },
+    {
+      "path": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "path": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "path": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "path": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    }
+  ],
+  "cases": [
+    {
+      "id": "fens",
+      "depth": 9,
+      "place": {
+        "kind": "fishing-bank",
+        "x": 23,
+        "y": 13,
+        "pieces": [
+          {
+            "x": 21,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "stump",
+            "asset": "barrel"
+          },
+          {
+            "x": 23,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "trap",
+            "asset": "crate"
+          },
+          {
+            "x": 25,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 22,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "reeds",
+            "asset": "reeds"
+          },
+          {
+            "x": 23,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "log",
+            "asset": "log"
+          },
+          {
+            "x": 25,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "reeds",
+            "asset": "reeds_1"
+          }
+        ]
+      },
+      "event": {
+        "k": "move",
+        "t": 10680,
+        "id": 1,
+        "x": 23,
+        "y": 14
+      },
+      "distance": 1,
+      "target": 10682
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "place": {
+        "kind": "burial-alcove",
+        "x": 23,
+        "y": 2,
+        "pieces": [
+          {
+            "x": 22,
+            "y": 2,
+            "w": 2,
+            "h": 2,
+            "role": "sarcophagus",
+            "asset": "barrel"
+          },
+          {
+            "x": 21,
+            "y": 2,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 25,
+            "y": 2,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 21,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "role": "coffin",
+            "asset": "crate"
+          },
+          {
+            "x": 24,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "role": "bones",
+            "asset": "skulls"
+          },
+          {
+            "x": 25,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "role": "coffin",
+            "asset": "crate"
+          }
+        ]
+      },
+      "event": {
+        "k": "move",
+        "t": 16620,
+        "id": 1,
+        "x": 24,
+        "y": 3
+      },
+      "distance": 1.4142135623730951,
+      "target": 16622
+    },
+    {
+      "id": "foundry",
+      "depth": 21,
+      "place": {
+        "kind": "work-bay",
+        "x": 7,
+        "y": 3,
+        "pieces": [
+          {
+            "x": 6,
+            "y": 3,
+            "w": 2,
+            "h": 2,
+            "role": "anvil",
+            "asset": "barrel"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "role": "coal",
+            "asset": "crate"
+          },
+          {
+            "x": 9,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "role": "coal",
+            "asset": "crate"
+          },
+          {
+            "x": 5,
+            "y": 4,
+            "w": 1,
+            "h": 1,
+            "role": "rack",
+            "asset": "rack"
+          },
+          {
+            "x": 8,
+            "y": 4,
+            "w": 1,
+            "h": 1,
+            "role": "rack",
+            "asset": "rack"
+          },
+          {
+            "x": 9,
+            "y": 4,
+            "w": 1,
+            "h": 1,
+            "role": "crucible",
+            "asset": "pot"
+          }
+        ]
+      },
+      "event": {
+        "k": "move",
+        "t": 23083,
+        "id": 1,
+        "x": 8,
+        "y": 3
+      },
+      "distance": 1,
+      "target": 23085
+    }
+  ],
+  "rows": [
+    {
+      "id": "fens",
+      "depth": 9,
+      "backend": "gl",
+      "width": 400,
+      "target": 10682,
+      "file": "fens-gl-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 13,
+        "triangles": 1610,
+        "k": 5,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 5,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          120,
+          192
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "pending": 114,
+        "tick": 10682,
+        "fade": 0,
+        "hero": [
+          22.2,
+          14.8
+        ],
+        "projectiles": 0,
+        "ents": 3,
+        "drawn": 3,
+        "camera": [
+          188,
+          -109.38009049773756
+        ],
+        "cpuMs": 40.400000005960464,
+        "cpuP95": null,
+        "buildMs": 3.0999999940395355,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 6.316121901152693,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          12,
+          12
+        ],
+        "heroCrowd": false,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 10682
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "stump",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 133.33333333333334,
+            "y": 303.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "trap",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 303.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 240,
+            "y": 303.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds",
+          "painted": true,
+          "rect": {
+            "x": 160,
+            "y": 330,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "log",
+          "asset": "log",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 330,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds_1",
+          "painted": true,
+          "rect": {
+            "x": 240,
+            "y": 330,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    }
+  ],
+  "lifecycle": [],
+  "errors": [],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "failed",
+  "error": "AssertionError [ERR_ASSERTION]: context-loss Canvas composition matches GL\n+ actual - expected\n... Skipped lines\n\n  [\n    {\n      asset: 'barrel',\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'stump',\n      w: 1,\n      x: 21,\n      y: 13\n    },\n...\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'trap',\n      w: 1,\n      x: 23,\n      y: 13\n    },\n...\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'urn',\n      w: 1,\n      x: 25,\n      y: 13\n    },\n...\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'reeds',\n      w: 1,\n      x: 22,\n      y: 14\n    },\n...\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'log',\n      w: 1,\n      x: 23,\n      y: 14\n    },\n...\n      h: 1,\n+     painted: false,\n-     painted: true,\n      role: 'reeds',\n      w: 1,\n      x: 25,\n      y: 14\n    }\n\n    at file:///home/g/p/riddle/docs/evidence/cut245/capture.mjs:184:20"
+}

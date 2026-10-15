@@ -1,0 +1,2198 @@
+{
+  "scope": "Legal earned preparation only; no outcomes/identity superiority/R4 completion claim",
+  "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "scriptSha256": "8b1a1c6f88ccb6a27318d4094a54a96b770d074e3c13756272bb4e5a984751ac",
+  "parents": [
+    {
+      "id": "fighter",
+      "input": "docs/evidence/handoff-content/class-purchases-e62c/fighter.session.json.gz",
+      "inputGzipSha256": "eb9c4af1db4a19e1ac1c25195ecdd309c441d2c84fe2ba9c51fe3906b8cd4ee1",
+      "inputRawSha256": "227c409c99b19bd74969773e5c6355556a9445ff0dba4daff8ea6c31b0cd01cb",
+      "actions": [
+        {
+          "method": "setStart",
+          "depth": 1
+        }
+      ],
+      "parentPath": "docs/evidence/cut246/prepared/fighter-common.session.json.gz",
+      "parentSaveSha256": "225ac76926d1309ff4880fe585d0db0855df8e175191924b0a9118e38961e29a",
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116
+    },
+    {
+      "id": "rogue",
+      "input": "docs/evidence/handoff-content/class-purchases-e62c/rogue.session.json.gz",
+      "inputGzipSha256": "f3fc5d9f3796ad61fec6efe0db9ce165678ff48ca6a7610c5b5e4f319e5ff903",
+      "inputRawSha256": "971a2d3988456fa7430977f5f90b024c2dade8e92ab04dab484beef3b38534f5",
+      "actions": [
+        {
+          "method": "setStart",
+          "depth": 1
+        }
+      ],
+      "parentPath": "docs/evidence/cut246/prepared/rogue-common.session.json.gz",
+      "parentSaveSha256": "48f171e91434c8af8bee7e25325e1e6af6a917e8c4e01d130a2cb654d1d9adf5",
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116
+    },
+    {
+      "id": "ranger",
+      "input": "docs/evidence/handoff-content/class-purchases-e62c/ranger.session.json.gz",
+      "inputGzipSha256": "59915f05fbf570cc885c08a40e3fa4f51c23fa7410d7ce4820a971f035da2441",
+      "inputRawSha256": "29a33c5673ea5b0aad352f6048fde01fa5ebd9289ced9a761effd7afaddc1f02",
+      "actions": [
+        {
+          "method": "setStart",
+          "depth": 1
+        }
+      ],
+      "parentPath": "docs/evidence/cut246/prepared/ranger-common.session.json.gz",
+      "parentSaveSha256": "5e49497aecdb3a5c9555d0ed90d60e0bb729cd8ba473753bf5be8f6eec3eebb7",
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 110
+    },
+    {
+      "id": "caster",
+      "input": "docs/evidence/handoff-content/class-purchases-e62c/caster.session.json.gz",
+      "inputGzipSha256": "c0a52d1b1a5984dc410c872e31ec26d3ed59e8aeeef4ea33cbe9e05bd0453430",
+      "inputRawSha256": "07c1d64a5d0f603d30b4465a0178b535668c8eab29a0dbed1cf580230541e06c",
+      "actions": [
+        {
+          "method": "setStart",
+          "depth": 1
+        }
+      ],
+      "parentPath": "docs/evidence/cut246/prepared/caster-common.session.json.gz",
+      "parentSaveSha256": "5609daa90e735beef7007009613fe29ad1d2f5c1d0a752fe5ad17609ea7023fe",
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 108
+    },
+    {
+      "id": "gunner",
+      "input": "docs/evidence/handoff-content/class-purchases-e62c/gunner.session.json.gz",
+      "inputGzipSha256": "65ed3dbf825e241ac06b4944b014a4e651e65bfe4be78753f4e85ad7e93b6690",
+      "inputRawSha256": "21753395790559e5db3357c53598ad4e719246bd48bb280c04c6c7bfa8b7b953",
+      "actions": [
+        {
+          "method": "setStart",
+          "depth": 1
+        },
+        {
+          "method": "buyKit",
+          "slot": "short_gun",
+          "quote": {
+            "kind": "short_gun",
+            "selected": false,
+            "owned": false,
+            "price": 200,
+            "available": true,
+            "blocked": null,
+            "capacity": 2,
+            "range": 3,
+            "damage": [
+              10,
+              13
+            ],
+            "armour_piercing": 0,
+            "reload_ticks": 15
+          },
+          "goldBefore": 12021,
+          "goldAfter": 11821
+        }
+      ],
+      "parentPath": "docs/evidence/cut246/prepared/gunner-common.session.json.gz",
+      "parentSaveSha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84",
+      "clock": 324000,
+      "gold": 11821,
+      "marks": 108
+    }
+  ],
+  "cases": [
+    {
+      "id": "fighter",
+      "weapon": "sword",
+      "path": "docs/evidence/cut246/prepared/fighter-sword.session.json.gz",
+      "saveSha256": "d956c2c07ac8b098e65181bbff5b632fbf3badac5032aa86d6a61e815ab2971d",
+      "parentSaveSha256": "225ac76926d1309ff4880fe585d0db0855df8e175191924b0a9118e38961e29a",
+      "choice": {
+        "kind": "sword",
+        "label": "sword",
+        "damage": [
+          7,
+          11
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "sword",
+              "label": "sword",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 56,
+            "max_hp": 56,
+            "damage": [
+              11,
+              15
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 8,
+            "class": "fighter"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "sword",
+              "label": "sword",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 56,
+            "max_hp": 56,
+            "damage": [
+              11,
+              15
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 8,
+            "class": "fighter"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "sword",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 8,
+        "xp": 3547,
+        "next": 6400
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/fighter.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "fighter",
+      "weapon": "crownsplitter",
+      "path": "docs/evidence/cut246/prepared/fighter-crownsplitter.session.json.gz",
+      "saveSha256": "4c2f372320d4c951b09244d47a01b11cc378f702b4c154945718ee7d6da3d465",
+      "parentSaveSha256": "225ac76926d1309ff4880fe585d0db0855df8e175191924b0a9118e38961e29a",
+      "choice": {
+        "kind": "crownsplitter",
+        "label": "Crownsplitter",
+        "damage": [
+          7,
+          11
+        ],
+        "armour": 0,
+        "speed": -1,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true,
+        "legendary": true,
+        "effect": "Deal +2 melee damage to stunned or slowed foes.",
+        "tradeoff": "Slower than a sword. Control must be active."
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": -1,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active."
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 56,
+            "max_hp": 56,
+            "damage": [
+              11,
+              15
+            ],
+            "defence": 9,
+            "speed": 7,
+            "level": 8,
+            "class": "fighter"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": -1,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active."
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 56,
+            "max_hp": 56,
+            "damage": [
+              11,
+              15
+            ],
+            "defence": 9,
+            "speed": 7,
+            "level": 8,
+            "class": "fighter"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "crownsplitter",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 8,
+        "xp": 3547,
+        "next": 6400
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/fighter.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "rogue",
+      "weapon": "dagger",
+      "path": "docs/evidence/cut246/prepared/rogue-dagger.session.json.gz",
+      "saveSha256": "040b3376ede3557919eb2dafe5807122cd1db580229b8d816a700d0a273afe3e",
+      "parentSaveSha256": "48f171e91434c8af8bee7e25325e1e6af6a917e8c4e01d130a2cb654d1d9adf5",
+      "choice": {
+        "kind": "dagger",
+        "label": "dagger",
+        "damage": [
+          6,
+          8
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "dagger",
+              "label": "dagger",
+              "origin": "chosen",
+              "damage": [
+                6,
+                8
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 34,
+            "max_hp": 34,
+            "damage": [
+              8,
+              10
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "rogue"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "dagger",
+              "label": "dagger",
+              "origin": "chosen",
+              "damage": [
+                6,
+                8
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 34,
+            "max_hp": 34,
+            "damage": [
+              8,
+              10
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "rogue"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "dagger",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/rogue.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "rogue",
+      "weapon": "crownsplitter",
+      "path": "docs/evidence/cut246/prepared/rogue-crownsplitter.session.json.gz",
+      "saveSha256": "add7e2c1d690b757a8f26235d61f9501512be5c31dc45eb9c72bc4e64065ebdb",
+      "parentSaveSha256": "48f171e91434c8af8bee7e25325e1e6af6a917e8c4e01d130a2cb654d1d9adf5",
+      "choice": {
+        "kind": "crownsplitter",
+        "label": "Crownsplitter",
+        "damage": [
+          7,
+          11
+        ],
+        "armour": 0,
+        "speed": -1,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true,
+        "legendary": true,
+        "effect": "Deal +2 melee damage to stunned or slowed foes.",
+        "tradeoff": "Slower than a sword. Control must be active."
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 116,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": -1,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active."
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 34,
+            "max_hp": 34,
+            "damage": [
+              9,
+              13
+            ],
+            "defence": 9,
+            "speed": 7,
+            "level": 1,
+            "class": "rogue"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "crownsplitter",
+              "label": "Crownsplitter",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": -1,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Deal +2 melee damage to stunned or slowed foes.",
+              "tradeoff": "Slower than a sword. Control must be active."
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 34,
+            "max_hp": 34,
+            "damage": [
+              9,
+              13
+            ],
+            "defence": 9,
+            "speed": 7,
+            "level": 1,
+            "class": "rogue"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "crownsplitter",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/rogue.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "ranger",
+      "weapon": "bow",
+      "path": "docs/evidence/cut246/prepared/ranger-bow.session.json.gz",
+      "saveSha256": "58cf4128fd524ad813b6ce7086ddd980523e1684495e9496a676703175fbf93e",
+      "parentSaveSha256": "5e49497aecdb3a5c9555d0ed90d60e0bb729cd8ba473753bf5be8f6eec3eebb7",
+      "choice": {
+        "kind": "bow",
+        "label": "bow",
+        "damage": [
+          6,
+          10
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": true,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 110,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "bow",
+              "label": "bow",
+              "origin": "chosen",
+              "damage": [
+                6,
+                10
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              8,
+              12
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "ranger"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "bow",
+              "label": "bow",
+              "origin": "chosen",
+              "damage": [
+                6,
+                10
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              8,
+              12
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "ranger"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "bow",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/ranger.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "ranger",
+      "weapon": "sword",
+      "path": "docs/evidence/cut246/prepared/ranger-sword.session.json.gz",
+      "saveSha256": "0cb526054c1d5f9af0a85d04ccbb254e09f75898ad74a178e63e32742686457b",
+      "parentSaveSha256": "5e49497aecdb3a5c9555d0ed90d60e0bb729cd8ba473753bf5be8f6eec3eebb7",
+      "choice": {
+        "kind": "sword",
+        "label": "sword",
+        "damage": [
+          7,
+          11
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 110,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "sword",
+              "label": "sword",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              9,
+              13
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "ranger"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "sword",
+              "label": "sword",
+              "origin": "chosen",
+              "damage": [
+                7,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              9,
+              13
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "ranger"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "sword",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/ranger.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "caster",
+      "weapon": "dagger",
+      "path": "docs/evidence/cut246/prepared/caster-dagger.session.json.gz",
+      "saveSha256": "e8b96cb98695a8979ea7d44b91f39a366636882cbf312a9c46f61e921a33f267",
+      "parentSaveSha256": "5609daa90e735beef7007009613fe29ad1d2f5c1d0a752fe5ad17609ea7023fe",
+      "choice": {
+        "kind": "dagger",
+        "label": "dagger",
+        "damage": [
+          6,
+          8
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": false,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 108,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "dagger",
+              "label": "dagger",
+              "origin": "chosen",
+              "damage": [
+                6,
+                8
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 30,
+            "max_hp": 30,
+            "damage": [
+              8,
+              10
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "caster"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "dagger",
+              "label": "dagger",
+              "origin": "chosen",
+              "damage": [
+                6,
+                8
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 30,
+            "max_hp": 30,
+            "damage": [
+              8,
+              10
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "caster"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "dagger",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/caster.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "caster",
+      "weapon": "bow",
+      "path": "docs/evidence/cut246/prepared/caster-bow.session.json.gz",
+      "saveSha256": "dd0930e85ce41c654a174f74ccec352a7cf1cfe0e0032e44b2097c99252f2f11",
+      "parentSaveSha256": "5609daa90e735beef7007009613fe29ad1d2f5c1d0a752fe5ad17609ea7023fe",
+      "choice": {
+        "kind": "bow",
+        "label": "bow",
+        "damage": [
+          6,
+          10
+        ],
+        "armour": 0,
+        "speed": 0,
+        "available": true,
+        "needs": null,
+        "ranged": true,
+        "compatible": true
+      },
+      "clock": 324000,
+      "gold": 12021,
+      "marks": 108,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "bow",
+              "label": "bow",
+              "origin": "chosen",
+              "damage": [
+                6,
+                10
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 30,
+            "max_hp": 30,
+            "damage": [
+              8,
+              12
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "caster"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "bow",
+              "label": "bow",
+              "origin": "chosen",
+              "damage": [
+                6,
+                10
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 30,
+            "max_hp": 30,
+            "damage": [
+              8,
+              12
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "caster"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": "bow",
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/caster.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "gunner",
+      "weapon": "long_gun",
+      "path": "docs/evidence/cut246/prepared/gunner-long_gun.session.json.gz",
+      "saveSha256": "45986d08dd3915fff581e2fa75a27e0b2fe3d67e6079d730435f4b4c7a7f55ca",
+      "parentSaveSha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84",
+      "choice": {
+        "kind": "long_gun",
+        "selected": false,
+        "owned": true,
+        "price": 0,
+        "available": true,
+        "blocked": null,
+        "capacity": 1,
+        "range": 8,
+        "damage": [
+          12,
+          16
+        ],
+        "armour_piercing": 2,
+        "reload_ticks": 20
+      },
+      "clock": 324000,
+      "gold": 11821,
+      "marks": 108,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "long_gun",
+              "label": "rifle",
+              "origin": "class",
+              "damage": [
+                10,
+                14
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              12,
+              16
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "gunner"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "long_gun",
+              "label": "rifle",
+              "origin": "class",
+              "damage": [
+                10,
+                14
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              12,
+              16
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "gunner"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": null,
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/gunner.session.json.gz",
+      "selectionCost": 0
+    },
+    {
+      "id": "gunner",
+      "weapon": "short_gun",
+      "path": "docs/evidence/cut246/prepared/gunner-short_gun.session.json.gz",
+      "saveSha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84",
+      "parentSaveSha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84",
+      "choice": {
+        "kind": "short_gun",
+        "selected": true,
+        "owned": true,
+        "price": 0,
+        "available": true,
+        "blocked": null,
+        "capacity": 2,
+        "range": 3,
+        "damage": [
+          10,
+          13
+        ],
+        "armour_piercing": 0,
+        "reload_ticks": 15
+      },
+      "clock": 324000,
+      "gold": 11821,
+      "marks": 108,
+      "equipment": {
+        "actual": {
+          "label": "Ready build",
+          "note": "Prepared configuration.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "short_gun",
+              "label": "scattergun",
+              "origin": "class",
+              "damage": [
+                8,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              10,
+              13
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "gunner"
+          }
+        },
+        "next": {
+          "label": "Next delve",
+          "note": "Configured departure. Workers and future finds can change preparation; conditional gifts activate during the delve.",
+          "slots": [
+            {
+              "slot": "weapon",
+              "kind": "short_gun",
+              "label": "scattergun",
+              "origin": "class",
+              "damage": [
+                8,
+                11
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": true,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "helm",
+              "kind": "ironcap",
+              "label": "Ironcap",
+              "origin": "pin",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 2,
+              "speed": -1,
+              "ranged": false,
+              "legendary": false,
+              "effect": null,
+              "tradeoff": null
+            },
+            {
+              "slot": "armour",
+              "kind": "hearthglass",
+              "label": "Hearthglass",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 5,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Recover 2 HP when a direct attack slays a natural hostile foe.",
+              "tradeoff": "Only 1 base guard. Summons, allies and hazards give no healing."
+            },
+            {
+              "slot": "boots",
+              "kind": "hearthglass_boots",
+              "label": "Hearthglass Boots",
+              "origin": "follow",
+              "damage": [
+                0,
+                0
+              ],
+              "defence": 0,
+              "speed": 0,
+              "ranged": false,
+              "legendary": true,
+              "effect": "Hearthglass family: three equipped pieces turn excess kill healing into up to 4 ward.",
+              "tradeoff": "No speed bonus. Three pieces take +1 incoming melee damage."
+            }
+          ],
+          "stats": {
+            "hp": 36,
+            "max_hp": 36,
+            "damage": [
+              10,
+              13
+            ],
+            "defence": 9,
+            "speed": 8,
+            "level": 1,
+            "class": "gunner"
+          }
+        },
+        "queued": false
+      },
+      "config": {
+        "weapon": null,
+        "armour": null,
+        "supplies": [],
+        "follow_set": "hearthglass",
+        "pins": {
+          "helm": "ironcap"
+        }
+      },
+      "classProgress": {
+        "level": 1,
+        "xp": 0,
+        "next": 60
+      },
+      "sourceInput": "docs/evidence/handoff-content/class-purchases-e62c/gunner.session.json.gz",
+      "selectionCost": 0
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

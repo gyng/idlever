@@ -143,7 +143,7 @@ export const ledgerShown = (t: string): string =>
       : t,
   );
 /** QA e75ec29 (R: a packed heal stolen on D1, nothing on the exit; `+$40 heir purse` once, then none): what the core adds to an exit
- *  line beside its text — `· stolen heal` (what thieves took and kept), the purse's word, the swaps' toll, the shelved finds.
+ *  line beside its text — `· stolen heal` (what thieves took and kept), the purse's word, the swaps' toll and physical finds.
  *  QA 778fa1b (qaU): `purse full` (read as the camp's $999 cap) is `no top-up` — the core flags it only for a purse under $80; the
  *  top-up is `ExitLine.wake` (`heir purse +$40`, when the text does not say it); a pack swap's cost (`−$37 swapped`, on the watch's
  *  strip and nowhere after) rides the line; the coins thieves kept join the stolen list (`stolen scroll, $3` — STOLEN $3 matched no
@@ -166,7 +166,6 @@ export const exitExtras = (
     | "wake"
     | "swapped"
     | "swap_left"
-    | "shelved"
     | "start"
     | "start_short"
     | "found"
@@ -197,7 +196,7 @@ export const exitExtras = (
     // cost the carry's (`carry −$1`, the strip's word: no purse movement); `left` is only the finds left behind
     (x.swapped && x.swapped > 0 && !opts.lean && !/\bswapped\b/.test(x.text)
       ? x.swap_left?.length
-        ? /* copy:callout */ ` · swapped out ${shelvedText(x.swap_left.map((b) => ({ kind: name(b.kind), n: b.n })))}${opts.lean ? "" : ` · paid $${x.swapped}`}`
+        ? /* copy:callout */ ` · swapped out ${itemCountsText(x.swap_left.map((b) => ({ kind: name(b.kind), n: b.n })))}${opts.lean ? "" : ` · paid $${x.swapped}`}`
         : opts.lean
           ? ""
           : /* copy:callout */ ` · swapped · paid $${x.swapped}`
@@ -207,17 +206,13 @@ export const exitExtras = (
       : "") +
     // QA 912e135 (qaW: `no top-up` on every line — "the top-up it refers to is never shown"); QA 0c6e126 (qaY: `heir purse ≥$40` — "the
     // `≥` has no source", twelve of them against one `+$20 heir purse` in the ledger): only a top-up the ledger carries is named (`wake`)
-    // QA 0c6e126 (qaZ: "no shelf appears anywhere"): the loadout's list is SUPPLIES
-    (x.shelved?.length && !/→ (shelf|supplies)\b/.test(x.text)
-      ? /* copy:callout */ ` · found ${shelvedText(x.shelved)} → supplies`
-      : "") +
     (opts.lean ? "" : fatesText(x.found, x.bones ? undefined : "bones", opts.brief)) +
     // QA 912e135 (qaW: `bones: 12 items on D6` listing 14 — `leash ×3` counted charges; `11 items` listing 10 — only the finds): the
     // pile the count counts, one an item (`ExitLine.bones`, the core's); an older line keeps its finds' list
     // QA 0c6e126 (qaY: `bones leash, violet potion?, …` — "`bones leash` reads as one item"): the pile's list after a colon; brief, the
     // core's own `bones: N items on DX` says it
     (x.bones?.length && !opts.brief && !opts.pileShown
-      ? /* copy:callout */ ` · bones: ${shelvedText(x.bones.map((b) => ({ kind: name(b.kind), n: b.n })))}`
+      ? /* copy:callout */ ` · bones: ${itemCountsText(x.bones.map((b) => ({ kind: name(b.kind), n: b.n })))}`
       : "")
   );
 };
@@ -231,19 +226,19 @@ const fatesText = (xs: ExitLine["found"], bones?: "bones", brief = false): strin
       if (f === "converted")
         return brief
           ? /* copy:callout */ ` · ${ys.reduce((a, y) => a + y.n, 0)} discovered`
-          : /* copy:callout */ ` · discovered: ${shelvedText(ys)}`;
+          : /* copy:callout */ ` · discovered: ${itemCountsText(ys)}`;
       // QA 524827b (qaAA: `left dagger`, `left 14` — "left" as a verb and a bare count): the finds left behind, with the unit when counted
       if (f === "left")
         return brief
           ? /* copy:callout */ ` · ${ys.reduce((a, y) => a + y.n, 0)} left behind`
-          : /* copy:callout */ ` · left behind: ${shelvedText(ys)}`;
+          : /* copy:callout */ ` · left behind: ${itemCountsText(ys)}`;
       return brief
         ? /* copy:callout */ ` · ${f} ${ys.reduce((a, y) => a + y.n, 0)}`
-        : /* copy:callout */ ` · ${f}: ${shelvedText(ys)}`;
+        : /* copy:callout */ ` · ${f}: ${itemCountsText(ys)}`;
     })
     .join("");
-/** Cut 21 §2 (AE: "sells heal potions he finds for $2 while I pay $40"): found supplies the exit put on the shelf — `heal ×2, fire`. */
-export const shelvedText = (xs: { kind: string; n: number }[]): string =>
+/** A named physical or converted item list — `heal ×2, fire`. */
+export const itemCountsText = (xs: { kind: string; n: number }[]): string =>
   xs.map((y) => `${y.kind.replace(/_/g, " ")}${y.n > 1 ? ` ×${y.n}` : ""}`).join(", ");
 export const lineShown = (
   x: ExitLine,
@@ -256,7 +251,7 @@ export const lineShown = (
   const text = m
     ? x.text.replace(
         m[0],
-        /* copy:callout */ `bones on ${m[1]}: ${shelvedText(x.bones!.map((b) => ({ kind: nm(b.kind), n: b.n })))}`,
+        /* copy:callout */ `bones on ${m[1]}: ${itemCountsText(x.bones!.map((b) => ({ kind: nm(b.kind), n: b.n })))}`,
       )
     : x.text;
   return ledgerShown(text) + exitExtras(x, name, { ...opts, pileShown: !!m });

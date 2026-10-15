@@ -4726,16 +4726,14 @@ body:not(.framed) .sheet {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-/* Cut 21 §2: a supply line no row names (the repeat skips it) and one the exit shelved */
+/* A prepared supply no current row names is skipped by repeat. */
 .chip.item.no-row {
   opacity: 0.7;
 }
 .chip.item .no-row {
   color: var(--warn);
 }
-.chips.shelved .chip.shelf {
-  border-color: #3e566c;
-}
+
 /* Cut 21 §3: `restock ≤ income` / `repeat short` open the gold sheet; each earlier tick's reason in the chain (`t812–830 R3 …`) */
 .gold-line .ledger-link {
   background: none;
@@ -6710,21 +6708,6 @@ html:not([data-juice="on"]).skin-deco-brazier .vista::after {
 .notch .dl .lane-to,
 .notch .dp .pm {
   font-size: 10px;
-}
-/* gfx round 7 (a D11 save's four purse stats ran the `best D11` pill under the gear at 400 px): four stats on a phone draw a size down */
-@media (max-width: 440px) {
-  .topbar .stats:has(.stat + .stat + .stat + .stat) .stat {
-    font-size: 15px;
-    padding: 0 6px 0 3px;
-    gap: 2px;
-  }
-  .topbar .stats:has(.stat + .stat + .stat + .stat) .stat .ico {
-    width: 16px;
-    height: 16px;
-  }
-  .topbar .stats:has(.stat + .stat + .stat + .stat) {
-    gap: 3px;
-  }
 }
 /* gfx round 7 (raters Q, R, the oath board: "wax seals clipped at the card corners", "stake buttons are muddy disabled blobs", "no clear
    first choice"): the seal sits whole inside its card's corner, the reward's icon in a recessed plaque, a short purse in warning red */

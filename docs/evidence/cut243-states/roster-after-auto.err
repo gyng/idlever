@@ -1,0 +1,15 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+page.evaluate: TypeError: Cannot read properties of null (reading 'querySelectorAll')
+    at eval (eval at evaluate (:311:30), <anonymous>:10:15)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at auditContrast (/home/g/p/riddle/docs/evidence/cut243-states/contrast.mjs:9:24)
+    at record (/home/g/p/riddle/docs/evidence/cut243-states/safe-entry.mjs:180:33)
+    at async file:///home/g/p/riddle/docs/evidence/cut243-states/safe-entry.mjs:237:25 {
+  log: []
+}
+
+Node.js v22.18.0

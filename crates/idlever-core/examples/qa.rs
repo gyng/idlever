@@ -107,7 +107,6 @@ fn check_report_names(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::Retu
     let forge: Vec<String> = g.lineage().forge.keys().cloned().collect();
     names.extend(forge.iter().map(|s| s.as_str()));
     names.extend(r.stolen.iter().map(|x| x.label.as_str()));
-    names.extend(r.shelved.iter().map(|x| x.kind.as_str()));
     for x in &r.exits {
         names.extend(x.stolen.iter().map(|s| s.as_str()));
     }
@@ -121,7 +120,6 @@ fn check_report_names(t: &mut Tally, g: &Game, seed: u64, r: &idlever_core::Retu
     now.extend(r.salvaged.iter().map(|x| x.kind.as_str()));
     now.extend(r.spent.iter().map(|x| x.kind.as_str()));
     now.extend(r.stolen.iter().map(|x| x.label.as_str()));
-    now.extend(r.shelved.iter().map(|x| x.kind.as_str()));
     now.extend(forge.iter().map(|s| s.as_str()));
     for n in now {
         t.check("no wire label names a flavour whose kind is identified", !renamed.contains_key(n), || format!("seed {seed} {at}: `{n}` is {}", renamed[n]));
@@ -839,19 +837,14 @@ fn check_found_supply_leg(t: &mut Tally, g: &Game, seed: u64) {
     }
 }
 
-/// QA on 778fa1b (qaV: FOUND `dagger ×2`, SALVAGED `dagger ×1`; a `leather +1` in no named
-/// place): every find of the last exit (settled by `keep`) ends in a named place — Σ
-/// `found[].n` == `found_n`, none `lost` or still on the `sheet`, the `shelved` finds are the
-/// line's shelved supplies, the `kept` ones are in the vault.
+/// Every found unit has one current fate; reporting never creates a storage decision.
 fn check_exit_found(t: &mut Tally, g: &Game, seed: u64, at: &str) {
-    // (the batch's copy: `step` hands `last_exit` to the exit event; `keep` settles both)
     let Some(line) = g.batch.exits.last() else { return };
     check_exit_line(t, seed, line, at);
     let sum: u32 = line.found.iter().map(|r| r.n).sum();
     let by = |f: &str| line.found.iter().filter(|r| r.fate == f).map(|r| r.n).sum::<u32>();
     t.check("found at an exit has one named fate including converted, used, left, stolen or bones", sum == line.found_n && by("lost") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {sum} placed of {} found · {:?}", line.run_id, line.found_n, line.found));
-    let shelved: u32 = line.shelved.iter().map(|k| k.n).sum();
-    t.check("an exit's shelved finds == its shelved supplies", by("shelved") == shelved, || format!("seed {seed} {at} run {}: found shelved {} · line shelved {shelved}", line.run_id, by("shelved")));
+    t.check("every reported find has a current physical or converted fate", line.found.iter().all(|r| matches!(r.fate.as_str(), "converted" | "used" | "left" | "stolen" | "bones")), || format!("seed {seed} {at} run {}: {:?}", line.run_id, line.found));
     t.check("no converted finds require home storage", by("kept") == 0 && by("sheet") == 0, || format!("seed {seed} {at} run {}: {:?}", line.run_id,line.found));
 }
 

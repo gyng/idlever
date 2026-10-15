@@ -274,7 +274,7 @@ export type ExitLine = {
   text: string;
   secured?: number; // Cut 30.5 (core; the owner: a new record is a checkpoint, never an exit): of `carried`, the gold the run's checkpoints secured — kept whole at any exit (a death keeps it alone); `keep_pct` is the share of the rest (`banked $120 · $80 secured + 100% of $40`)
   trace?: Trace; // Cut 9 §5: the exit's last-5 trace (every tier)
-  salvaged?: { kind: string; n: number; gold: number }[]; // what the exit salvaged before the keep sheet (a return's 40 % cut), per kind in coins; `kind` is a display name — an unidentified kind reads as its flavour (`brittle scroll?`, QA 1a2a4a9)
+  salvaged?: { kind: string; n: number; gold: number }[]; // retained legacy salvage rows; current found-item conversion creates no exit salvage payment; `kind` is a display name — an unidentified kind reads as its flavour (`brittle scroll?`, QA 1a2a4a9)
   run_id?: number; // the run, so a report's trace links can open its replay (QA on e0f87e7: the return sheet's had `watch`, the report's did not)
   xp?: number;
   level_ups?: number; // QA 92eb880: the XP this run earned (the part that crossed a level included) and the levels crossed — the watched report's `xp` line, never a client-side ladder (web's 40·L² was not the core's; `fighter +0 · L4 ↑1`)
@@ -291,22 +291,11 @@ export type ExitLine = {
   found?: {
     kind: string;
     n: number;
-    fate:
-      | "converted"
-      | "kept"
-      | "salvaged"
-      | "shelved"
-      | "used"
-      | "left"
-      | "stolen"
-      | "bones"
-      | "sheet"
-      | "lost";
-  }[]; // QA 778fa1b (qaV): where each find ended, per kind and place (`sheet`: on the keep sheet — the core settles it at `keep`; `lost` never); Σ n == found_n
+    fate: "converted" | "used" | "left" | "stolen" | "bones" | "lost";
+  }[]; // Each found unit has one converted or physical fate; Σ n == found_n; lost must stay zero
   found_n?: number; // QA 778fa1b (qaV): the units the run found (a leash stack counts each)
   toll?: number; // QA a946e04 (core): the toll this run's send paid (0/absent from D1 or on the night's pass) — the report's gold line counts it (qaT: `+$71 banked · −$40 spent` beside `$51 → $32`)
   bones?: { kind: string; n: number }[]; // QA 912e135 (core): a death's whole pile per kind, `n` items (a stack is one) — Σ n is the text's `bones: N items`
-  shelved?: { kind: string; n: number }[];
   driven?: DrivenOff;
   meters?: MeterWire; // Cut 29 §3 (core): the run metered (dps dealt/taken by side, hps by source, time split, row shares, supplies, gold/min, hits); absent on an old wire
   news?: News[];
@@ -339,7 +328,7 @@ export type DrivenOff = {
   max_hp?: number;
   lost?: number;
 }; // Cut 26 §6 (core; AP: a drive-off at 25/36 hp, no verdict screen): the run (open its verdict from the report), the hero's hp at the drive-off, the carry it lost
-/** Cut 6 §1 — one gold movement in the camp's `gold` sheet: `+$50 returned D5`, `−$40 heal`, `−$8 insure sword`. */
+/** Cut 6 §1 — one gold movement in the camp's `gold` sheet: `+$50 returned D5`, `−$40 forge sword`, `+$20 chest`. */
 export type GoldLine = {
   bloodline_id?: number;
   t: number;
@@ -386,9 +375,9 @@ export type InvItem = {
   known: boolean;
   label: string;
   hint?: "benevolent" | "malevolent";
-  free?: boolean; // Cut 12 §6: a supply the camp gave (the kennel's leash) reads `leash · kennel`; the core always sends it
-  found?: boolean; // Cut 21 §2: a shelf line an exit put there (found in the dungeon, packed free) — `heal · found`
-  enchanted?: number; // QA 524827b (core): the `+N` enchant scrolls read on it added (KEPT `axe +7 → vault · enchanted ×6`)
+  free?: boolean; // The kennel's free prepared leash reads `leash · kennel`; the core supplies this provenance
+  found?: boolean; // Retained legacy found-supply provenance on accepted prepared items; current dungeon finds convert to Gold
+  enchanted?: number; // The `+N` enchant scrolls added to this physical item
   rarity?: Rarity;
 }; // run-clear (core `item::rarity`): read off its kind's depth band and its +N; absent = common
 /** Run-clear (core `item::Rarity`): an item's rarity, rising — common · uncommon · rare · epic · masterwork · legendary. */
@@ -980,7 +969,7 @@ export type PkgOption = {
 };
 /** Cut 30.5 (core; docs/CUT30_5.md, docs/AUTOMATION_TREE.md §2) — a node of the works tree. A **worker** retires a chore done by hand a few
  *  times (`count`/`need`, or `fallback_h` of lineage age once its chore exists); a **stage** is one of the four tracks' stages (the tracks
- *  panel's rows, now the tree's branches). ids — workers: quartermaster · porter · scout · armourer · apprentice · keeper · clerk · drillmaster ·
+ *  panel's rows, now the tree's branches). ids — workers: quartermaster · porter · scout · apprentice · clerk · drillmaster ·
  *  kennel_hand · herald · guide · kennel_keeper (Cut 120: chore `breed`, post `kennel`) (in the tree's order); stages: `<track>:<stage>` (`town:bank`, `character:second stance`).
  *  `state` — a worker: `done` (hired) · `lit` (the one node to buy: trigger met, its turn; ≤ 1 at a time) · `ready` (trigger met, waits its
  *  turn behind the lit one) · `open` (its chore exists; counting) · `shut` (its chore not yet: `trigger` names the gate); a stage: `done` ·
@@ -991,7 +980,7 @@ export type WorkNode = {
   branch: string; // branch: trunk · character · items · scale · town
   name: string; // ≤ 2 words (`porter`, `kennel-hand`, `second stance`)
   state: string;
-  chore?: string; // worker: the act by hand — chest · send · wear · forge · keep · deposit · level · field · swap · start (none: the quartermaster, given)
+  chore?: string; // worker: the act by hand — chest · send · forge · deposit · level · field · swap · start (none: the quartermaster, given)
   count?: number;
   need?: number; // worker: chores done by hand / the trigger (`2/3`); a hired worker keeps its last count
   price?: number;
@@ -1294,7 +1283,6 @@ export type ReturnReport = {
   restock_capped?: boolean; // Cut 19 §3: the repeat skipped a supply once the absence's spending reached what it brought home — `restock capped`
   supply_budget?: SupplyBudget; // Cut 117 §4 (core): when the repeat was limited — income, spent, left and why (`no_income` · `income_spent` · `purse_short`)
   repeat_short?: boolean; // QA 1a2a4a9: a re-pack ran short of gold and bought what it could — `repeat short` (a `$0 repeat short` ledger line at that exit)
-  shelved?: { kind: string; n: number; gold?: number }[]; // (core: `gold` = their price on the shelf) Cut 21 §2: found supplies the exits put on the shelf this absence (the next send packs them free) — `heal ×3 → shelf`
   bounty?: { depth: number; taken: boolean; gold: number }; // Cut 20 §5: the night's bounty floor — `bounty D12 · taken $412` / `bounty D12 · missed`
   drives?: DrivenOff[]; // Cut 26 §6 (core): every drive-off of the absence (the last 5), each by `run_id` — open its verdict (`no counter`, defence, the counter row to insert) as a death's opens
   lanes?: string[]; // Cut 26 §2 (core): each band the absence's sends reached, with the lane the route played there (`D5–8 · the Fens`), shallowest first
@@ -1657,7 +1645,7 @@ export type Lineage = {
     };
   }; // Addendum D; next: Cut 9 §10, the ladder's next rung (`3/5 → craftable`)
   renown: number;
-  rank: number; // QA 23ed91f: what an unwatched exit keeps, in order, after the brought vault items (`["armour"]`, `["armour","weapon"]` with quartermaster, `[]` for none); a keep replaces only a weaker vault item of its own category
+  rank: number; // Current renown rank; independent of physical item retention.
   rest_left_s?: number;
   bones?: BonesPile[]; // Cut 2 §1–2
   endgame?: DescentProgress;
@@ -2034,8 +2022,8 @@ export interface Engine {
   selectStartingKit?(id: string): Lineage;
   deleteStartingKit?(id: string): Lineage;
   // Cut 30.5 (core): the works tree — each returns the Lineage (throws with a ≤ 3-word reason). The chores by hand are the existing calls:
-  // send (before the scout) · loadout (wear a find) · buyKit · keep (a keep sheet) / sellVault · bankDeposit · spendLevel · setParty / hatch ·
-  // swapQuest · setStart — each fills its node's count (`WorkNode.count`) until its worker is hired.
+  // send (before the scout) · starting-kit preparation · buyKit · forgeStep · bankDeposit · spendLevel · setParty / hatch ·
+  // swapQuest · setStart — successful chores feed count fallbacks or the worker's configured feat until hired.
   selectBloodline?(id: number): Lineage;
   addBloodline?(): Lineage;
   upgradeHero?(id: string): Lineage;

@@ -61,7 +61,7 @@ fn supplies(seeds: u64, sets: &[(String, RuleSet)]) {
     for (name, set) in sets {
         let mut by_kind: std::collections::BTreeMap<String, (u32, i64)> = Default::default();
         let (mut heal_salv_n, mut stall_n) = (0u32, 0u32);
-        let (mut spent, mut salvage, mut salvage_supply, mut home, mut runs, mut shelved, mut shelved_n) = (0i64, 0i64, 0i64, 0i64, 0u32, 0i64, 0u32);
+        let (mut spent, mut salvage, mut salvage_supply, mut home, mut runs) = (0i64, 0i64, 0i64, 0i64, 0u32);
         for seed in 1..=seeds {
             let mut g = lineage_for(set, seed);
             g.lineage.gold = 600;
@@ -81,24 +81,16 @@ fn supplies(seeds: u64, sets: &[(String, RuleSet)]) {
             salvage += r.gold.as_ref().map(|s| s.salvage as i64).unwrap_or(0);
             home += r.gold.as_ref().map(|s| s.home as i64).unwrap_or(0);
             salvage_supply += r.salvaged.iter().filter(|s| s.kind.ends_with("heal") || s.kind.ends_with("strength")).map(|s| s.gold as i64).sum::<i64>();
-            let v = serde_json::to_value(&r).unwrap();
-            if let Some(a) = v.get("shelved").and_then(|a| a.as_array()) {
-                for s in a {
-                    shelved += s.get("gold").and_then(|x| x.as_i64()).unwrap_or(0);
-                    shelved_n += s.get("n").and_then(|x| x.as_u64()).unwrap_or(0) as u32;
-                }
-            }
+
         }
         let s = seeds as f64;
         println!(
-            "{name}: {seeds} nights · {:.1} runs/night · home ${:.0} · spent ${:.0} · salvage ${:.0} (heal+strength ${:.0}) · shelved {:.1} (${:.0} at the shelf's price) per night",
+            "{name}: {seeds} nights · {:.1} runs/night · home ${:.0} · spent ${:.0} · salvage ${:.0} (heal+strength ${:.0}) per night",
             runs as f64 / s,
             home as f64 / s,
             spent as f64 / s,
             salvage as f64 / s,
-            salvage_supply as f64 / s,
-            shelved_n as f64 / s,
-            shelved as f64 / s
+            salvage_supply as f64 / s
         );
         let kinds: Vec<String> = by_kind.iter().map(|(k, (n, g))| format!("{k} ×{:.1} ${:.0}", *n as f64 / s, *g as f64 / s)).collect();
         println!("    spent per night: {} · heals salvaged {:.1}/night · stalls {stall_n}", kinds.join(" · "), heal_salv_n as f64 / s);

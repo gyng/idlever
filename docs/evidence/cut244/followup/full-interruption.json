@@ -1,0 +1,212 @@
+{
+  "sourceKey": "542909f1ec3a60f1",
+  "derivedJobKey": "src1bcb398bf3f897c9",
+  "completedJobCount": 33,
+  "completedJobs": [
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-AWAY-nodes-s1-d14-c3.json",
+      "bytes": 10239
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-AWAY-nodes-s2-d14-c3.json",
+      "bytes": 10258
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-AWAY-s1-d14-c3.json",
+      "bytes": 12702
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-AWAY-s2-d14-c3.json",
+      "bytes": 12660
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-DAILY-nodes-s1-d14-c3.json",
+      "bytes": 10068
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-DAILY-s1-d14-c3.json",
+      "bytes": 12760
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-HANDS-s1-d14-c3.json",
+      "bytes": 9419
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-HANDS-s2-d14-c3.json",
+      "bytes": 9419
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-IDLE-s1-d14-c3.json",
+      "bytes": 8870
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-IDLE-s2-d14-c3.json",
+      "bytes": 8551
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s1-d14-c3.json",
+      "bytes": 12775
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s10-d14-c3.json",
+      "bytes": 12797
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s11-d14-c3.json",
+      "bytes": 12783
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s12-d14-c3.json",
+      "bytes": 12865
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s13-d14-c3.json",
+      "bytes": 12777
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s14-d14-c3.json",
+      "bytes": 12865
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s15-d14-c3.json",
+      "bytes": 12696
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s16-d14-c3.json",
+      "bytes": 12751
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s2-d14-c3.json",
+      "bytes": 12803
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s3-d14-c3.json",
+      "bytes": 13099
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s4-d14-c3.json",
+      "bytes": 12784
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s5-d14-c3.json",
+      "bytes": 12788
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s6-d14-c3.json",
+      "bytes": 12776
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s7-d14-c3.json",
+      "bytes": 12898
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s8-d14-c3.json",
+      "bytes": 12734
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-PICKED-s9-d14-c3.json",
+      "bytes": 12827
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-RANDOM-s1-d14-c3.json",
+      "bytes": 9712
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-RANDOM-s2-d14-c3.json",
+      "bytes": 9995
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-RANDOM-s3-d14-c3.json",
+      "bytes": 10124
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-RANDOM-s4-d14-c3.json",
+      "bytes": 10030
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-RANDOM-s6-d14-c3.json",
+      "bytes": 9851
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-TUNED-s1-d14-c3.json",
+      "bytes": 13145
+    },
+    {
+      "file": "target/gates/dp/src1bcb398bf3f897c9-TUNED-s2-d14-c3.json",
+      "bytes": 12850
+    }
+  ],
+  "cacheSemantics": "gates.mjs writes only integer completed leg statuses; SIGSEGV dayplayer leg is not cached as complete. dayplayer completed per-job caches and exact executable/args checkpoints can be reused only at their existing identities.",
+  "crashCore": "kernel core_pattern=core; no core/core.* file present in repo; gdb/coredumpctl unavailable.",
+  "nextAction": "No unchanged retry started. Diagnose exact remaining jobs/checkpoints and crash cause after root quiet GPU control releases CPU lane; preserve full source/binary/runtime identity.",
+  "currentRunCheckpointFiles": [
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-DAILY-nodes-s2.json",
+      "bytes": 8490958,
+      "mtimeUtc": "2026-10-15T18:22:31.355779+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":1,\\\"ci\\\":0,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":10,\\\"da",
+      "day": 10,
+      "ci": 0,
+      "checkins": 1
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-DAILY-s2.json",
+      "bytes": 8860052,
+      "mtimeUtc": "2026-10-15T18:22:39.531853+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":1,\\\"ci\\\":0,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":11,\\\"da",
+      "day": 11,
+      "ci": 0,
+      "checkins": 1
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-RANDOM-s10.json",
+      "bytes": 10739453,
+      "mtimeUtc": "2026-10-15T18:22:45.251904+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":3,\\\"ci\\\":1,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":6,\\\"day",
+      "day": 6,
+      "ci": 1,
+      "checkins": 3
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-RANDOM-s5.json",
+      "bytes": 10588637,
+      "mtimeUtc": "2026-10-15T18:22:44.379896+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":3,\\\"ci\\\":1,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":12,\\\"da",
+      "day": 12,
+      "ci": 1,
+      "checkins": 3
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-RANDOM-s7.json",
+      "bytes": 10937086,
+      "mtimeUtc": "2026-10-15T18:22:44.747900+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":3,\\\"ci\\\":0,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":9,\\\"day",
+      "day": 9,
+      "ci": 0,
+      "checkins": 3
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-RANDOM-s8.json",
+      "bytes": 10526029,
+      "mtimeUtc": "2026-10-15T18:22:45.647908+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":3,\\\"ci\\\":0,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":8,\\\"day",
+      "day": 8,
+      "ci": 0,
+      "checkins": 3
+    },
+    {
+      "file": "target/gates/dp/checkpoints/96e1c2baf9dd0fb9:ea8baef70a975808-RANDOM-s9.json",
+      "bytes": 10955780,
+      "mtimeUtc": "2026-10-15T18:22:44.523898+00:00",
+      "prefix": "{\"f64bits\":1,\"v\":{\"body\":\"{\\\"f64bits\\\":1,\\\"v\\\":{\\\"checkins\\\":3,\\\"ci\\\":0,\\\"cool\\\":0,\\\"counter_copies\\\":[],\\\"day\\\":8,\\\"day",
+      "day": 8,
+      "ci": 0,
+      "checkins": 3
+    }
+  ],
+  "interruptedStateArchive": {
+    "path": "docs/evidence/cut244/followup/full-interrupted-jobs.tar.gz",
+    "sha256": "fb3c710145240d000fd3fa7b3199e41104b1e4ee0fe4875bb2c5c37675f58bc8",
+    "fileCount": 40
+  }
+}

@@ -14,6 +14,7 @@
 // them and the viewer draws the 8×8 register as before. `wallTop(biome, mask)` derives an edge-rimmed wall top per
 // 4-neighbour mask (N 1, E 2, S 4, W 8 = the side that meets open floor) on first request.
 import { heroBase } from "./look";
+import { paintLandmarkPrimitive, type LandmarkRole } from "./landmarks";
 /** gfx round 1: a kind drawn with another's sprite (the fake engine's summoned `blade` is the core's `spectral_blade`; its fallback read
  *  as a magenta placeholder jug) */
 const KIND_ALIAS: Record<string, string> = { blade: "spectral_blade" };
@@ -205,6 +206,16 @@ export class Atlas {
   // ---- register 3 (art pass): 16-texel env art, optional -------------------------------------
   envTile(biome: string, name: string): Slot | undefined {
     return this.env.get(`tile:${biome}_env_${name}`);
+  }
+  landmark(biome: string, role: LandmarkRole, asset: string): Slot {
+    const painted = this.envTile(biome, asset);
+    if (painted) return painted;
+    const key = `landmark:${biome}:${role}`;
+    const cached = this.env.get(key);
+    if (cached) return cached;
+    const slot = this.env.alloc(key, 16, 16);
+    paintLandmarkPrimitive(this.env.ctx, role, biome, slot.x, slot.y, 2);
+    return slot;
   }
   hue(name: string): Slot | undefined {
     return this.env.get(`tile:env_${name}`);

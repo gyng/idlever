@@ -3,10 +3,12 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 
-const url = execFileSync("bash", ["tools/dev.sh"], {
-  cwd: new URL("../../", import.meta.url),
-  encoding: "utf8",
-}).trim();
+const url =
+  process.env.IDLEVER_TEST_URL ??
+  execFileSync("bash", ["tools/dev.sh"], {
+    cwd: new URL("../../", import.meta.url),
+    encoding: "utf8",
+  }).trim();
 const browser = await launchBrowser();
 try {
   const page = await browser.newPage({ viewport: { width: 400, height: 900 } });
@@ -28,6 +30,100 @@ try {
       if (!condition) throw Error(label);
       checks++;
     };
+    // Cut244: controlled fake fixtures exercise real pickup/exit code through public step.
+    // These are accounting cases, not earned saves or fake/native pricing parity.
+    const { FakeEngine, UNLOCKS } = await import("/src/engine/fake.ts");
+    check(
+      ["quartermaster", "auto_supply", "auto_insure"].every((id) => !(id in UNLOCKS)),
+      "fake has no retired automation purchases",
+    );
+    for (const tier of ["bank", "return", "death"]) {
+      const fake = new FakeEngine();
+      fake.newLineage(244);
+      const L = fake.s.lineage;
+      L.gold = 500;
+      L.supplies = [];
+      L.party = [];
+      L.eggs = [];
+      L.repeat = true;
+      fake.s.rules = {
+        rows: [
+          { conds: [], verb: { v: "pick_up" } },
+          { conds: [{ k: "depth>=", n: 99 }], verb: { v: "tame", a: "leash" } },
+        ],
+      };
+      fake.buySupply("leash");
+      const prepared = L.supplies.map((x) => x.id);
+      check(L.gold === 500 && prepared.length === 1, `fake ${tier}: current preparation is free`);
+      fake.send();
+      const run = fake.live;
+      run.floor.mons = [];
+      run.floor.overlays = [];
+      const pick = (item) => {
+        run.floor.items = [{ ...item, x: run.hero.x, y: run.hero.y }];
+        const result = fake.step(10);
+        check(
+          result.events.some((event) => event.k === "pickup" && event.id === item.id),
+          `fake ${tier}: actual pickup ${item.id}`,
+        );
+      };
+      pick({ id: 9001, kind: "sword", known: true, label: "sword" });
+      pick({ id: 9002, kind: "heal", known: false, label: "blue potion?" });
+      pick({ id: 9003, kind: "leash", known: true, label: "leash" });
+      check(run.loot === 33, `fake ${tier}:20+8+5 enters carry once`);
+      pick({ id: 9001, kind: "sword", known: true, label: "sword" });
+      pick({ id: prepared[0], kind: "leash", known: true, label: "leash" });
+      run.bonesPiles = [{ heir: 99, depth: run.depth, items: 10 }];
+      pick({ id: 9004, kind: "bones", known: true, label: "bones ♟99" });
+      check(
+        run.loot === 33 && run.picked.length === 3,
+        `fake ${tier}: repeat/prepared/physical recovery creates no extra value`,
+      );
+      const gold = L.gold;
+      const repeat = tier !== "return";
+      fake.setRestock(repeat);
+      fake.s.rules = {
+        rows: [
+          { conds: [], verb: { v: tier === "death" ? "hold" : tier } },
+          { conds: [{ k: "depth>=", n: 99 }], verb: { v: "tame", a: "leash" } },
+        ],
+      };
+      if (tier === "death") run.hero.hp = 0;
+      const result = fake.step(10);
+      const receipt = result.events.find((event) => event.k === "exit")?.line;
+      check(
+        result.run_over && receipt?.keep_pct === (tier === "death" ? 0 : 100),
+        `fake ${tier}: actual current financial share`,
+      );
+      check(
+        receipt.kept === (tier === "death" ? 0 : 33) && L.gold === gold + receipt.kept,
+        `fake ${tier}: exit credits only remaining carry`,
+      );
+      check(
+        !receipt.salvaged?.length && !("shelved" in receipt),
+        `fake ${tier}: no salvage payment or supply-storage receipt`,
+      );
+      check(
+        L.supplies.length === (repeat ? prepared.length : 0) &&
+          L.supplies.every((item) => prepared.includes(item.id) && !item.found),
+        `fake ${tier}: found items never become prepared supplies`,
+      );
+      check(
+        ["sword", "heal", "leash"].every((kind) => L.forge[kind]?.salvaged === 1),
+        `fake ${tier}: discovery follows each conversion exactly once`,
+      );
+      const unknown = receipt.finds.find((item) => item.id === 9002);
+      check(
+        unknown?.kind === "potion" && unknown.label === "blue potion?" && !unknown.known,
+        `fake ${tier}: converted find privacy remains`,
+      );
+      const settledGold = L.gold;
+      fake.step(10);
+      check(
+        L.gold === settledGold && L.forge.sword.salvaged === 1,
+        `fake ${tier}: repeated settled step never pays or discovers again`,
+      );
+    }
     const fallback = drivenDeath(
       { boss: "warlord", title: "Warlord", depth: 8, defence: "armour", lost: 7 },
       1,
@@ -122,7 +218,7 @@ try {
       check(settled.lineage.gold === 500 + expected, `${tier}: exact spendable balance`);
       check(settled.pending_exit == null, `${tier}: no deferred settlement`);
       check(
-        !settled.lineage.vault.length && !settled.lineage.supplies.length,
+        !("vault" in settled.lineage) && !settled.lineage.supplies.length,
         `${tier}: no Keep/shelf chore`,
       );
       check(settled.lineage.forge.leash.salvaged === 3, `${tier}: once-only forge discovery`);

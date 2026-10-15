@@ -1,0 +1,10 @@
+--- offline.rs:97e8
++++ offline.rs:followup
+@@ -595,7 +595,6 @@
+             let reason = if b.repeat_short { "purse_short" } else if income <= 0 { "no_income" } else { "income_spent" };
+             crate::wire::SupplyBudget { income, spent, left: (income - spent).max(0), reason: reason.into() }
+         }),
+-        shelved: b.shelved.iter().map(|(k, (n, g))| SalvageRow { kind: game.lineage.wire_name(k).replace('_', " "), n: *n, gold: *g }).collect(),
+         heirs: b.heirs.map(|(lo, hi)| vec![lo, hi]).unwrap_or_default(),
+     };
+     r.lead = lead_of(game, &r);

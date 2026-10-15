@@ -111,7 +111,7 @@ or new performance claim. Root owns HANDOFF and acceptance ledger.
     sprite target at≥44×44CSSpx, full accessible name, keyboard focus, native
     availability and hover/focus/long-press details. A normal sprite tap opens
     its existing panel; gear/hire purchases remain explicit inside their panels.
-    Existing affordable/unseen markers become quiet anchored dots with no
+    Existing affordable/unseen markers become quiet anchored indicators with no
     separate hit target or persistent price text. The top Workers shortcut and
     obvious first free Build House remain. Use a subtle CSS footprint highlight,
     without new rendering state or art. This supersedes the prior separate
@@ -121,3 +121,34 @@ or new performance claim. Root owns HANDOFF and acceptance ledger.
     zero document overflow>1px, all sprite targets≥44px, actual hover/focus/
     trusted long-press details, normal panel entry and exact read-only saves.
     Neither Gold-tick notifications nor new progression gates are introduced.
+
+11. Owner follow-up: availability needs a diegetic/art/UI treatment. Replace
+    flat dots with one small steady ink-framed brass lantern per available
+    building/worker target, positioned within the target rather than floating
+    above it. Retain all action names/prices in details and the accessible name;
+    the lamp is noninteractive and shares the existing native readiness. No
+    new progression state, bitmap dependency, animation or tutorial copy.
+    Repeat the six viewport/font frames and real hover/hold read-only gestures.
+
+12. Owner follow-up: indicators bob and pulse in a different shade of red.
+    Retain the lantern's ink/brass frame with crimson glass,3px vertical bob
+    over2.8s and soft glow/brightness pulse over3.4s. Reduced motion keeps a
+    steady red lamp. Preserve marker DOM/animation clocks across ordinary
+    Home refreshes; the building hit target and available actions stay stable.
+    This supersedes item11's steady/no-animation treatment.
+
+13. Owner follow-up: use generated lantern art. Integrate one transparent
+    crimson iron-and-glass master through the existing UI decoration pack;
+    preserve the CSS lantern on image failure. Keep one passive lamp per
+    building, existing bob/pulse/reduced motion, and stable animation clocks.
+    Require decoded art in six phone/desktop normal/200% frames, three actual
+    network-failure fallback cases, and the existing gesture/motion checks.
+
+14. Owner follow-up: the mobile top bar takes too much vertical space. Use a
+    deliberate identity/settings row and compact resource row on phones;
+    remove the persistent build inscription and first-time floating captions
+    from phone chrome. Retain accessible resource meanings and existing routes.
+    On the actual earned fixture require header height<=112CSSpx at320/400
+    normal text, controls>=44px and no clipping/overflow atnormal/200%.
+    Verify actual Gold/Legacy/Settings routes and read-only cancellation;
+    desktop and historical identity behavior remain covered separately.

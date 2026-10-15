@@ -8,6 +8,17 @@ classification does not prove every public entry, state or pixel boundary.
 
 ## Repairs and evidence
 
+Generated readiness lantern follow-up: `painted-crimson-lanterns/results.json`
+is terminal PASS on e62c0867WASM. Six320/400/1440 normal/200% frames require
+successfully decoded painted art; six trusted hover/hold gestures and three
+motion/reduced-motion cases preserve targets, saves and150refresh animation
+clocks. Three additional real network-aborted image cases show the CSS lantern
+fallback without broken images. Root reviewed320/400normal images at actual
+size: crimson glass reads as a small hanging object and remains subordinate
+to the town. This is scoped presentation evidence, not full menu acceptance.
+`lantern-art-provenance.json` pins the built-in generator master, prompt and
+derived WebP. Master alpha is unchanged; packing uses the existing UI pipeline.
+
 - Home: observed28/30.75px desktop Tasks controls,35px resident Details,
   32px trial action and38.25–40.39px saved-set/class/rename controls now reach
   at least44CSSpx. Important Tasks/trial action text now scales in rem. Saved

@@ -7283,9 +7283,8 @@ fn the_nights_ledger_reconciles_and_a_wasted_kind_is_not_rebought() {
         let spent: i32 = b.spent.values().map(|(_, c)| *c).sum();
         assert_eq!(b.gold_earned + b.salvage_gold + b.wake_pay - spent, g.lineage.gold - before, "seed {seed}: earned {} salvage {} wake {} spent {spent}", b.gold_earned, b.salvage_gold, b.wake_pay);
         assert_eq!(r.spent.iter().map(|s| s.gold).sum::<i32>(), spent, "the report's SPENT rows are the batch's");
-        // Cut 21 §2: a found heal on the shelf stands in for a bought one — the repeat's heal
-        // is re-bought or shelved.
-        assert!(r.spent.is_empty() && r.shelved.is_empty(), "free preparation and conversion create no costs or stored finds");
+        assert!(r.spent.is_empty(), "free preparation creates no packing bill");
+        assert!(serde_json::to_value(&r).unwrap().get("shelved").is_none(), "converted finds create no shelf report");
         assert_eq!(b.salvage_gold, 0);
         r.runs > 0
     };
@@ -9239,11 +9238,7 @@ fn a_waystone_start_is_free_and_begins_on_its_floor() {
     assert_eq!(Game::new_literal(3).lineage.start, 1);
 }
 
-/// Cut 21 §2: a found supply of a kind the shelf sells, a row uses and the repeat packs goes
-/// to the shelf at a non-death exit (one per packed one) — not salvaged, marked `found`, on
-/// the exit's `shelved` — and the repeat does not buy it again; dropped from the shelf, it is
-/// salvaged, never refunded at the price. A kind no row uses is neither shelved nor re-bought
-/// (`repeat_dropped`).
+/// Found supplies convert once; free repeat prepares only the kinds current rows use.
 #[test]
 fn found_supplies_convert_while_the_free_repeat_only_prepares_used_kinds() {
     for tier in [ExitTier::Bank, ExitTier::Return] {
@@ -9258,9 +9253,11 @@ fn found_supplies_convert_while_the_free_repeat_only_prepares_used_kinds() {
         assert_storage_retired(&g);
         assert_eq!(g.lineage.supplies.iter().map(|s| (s.kind.as_str(), s.found, s.paid)).collect::<Vec<_>>(), [("heal", false, 0)]);
         let line = g.last_exit.as_ref().unwrap();
-        assert!(line.shelved.is_empty() && line.salvaged.is_empty());
+        assert!(line.salvaged.is_empty());
+        assert!(serde_json::to_value(line).unwrap().get("shelved").is_none());
         assert_eq!(line.found.iter().filter(|f| f.fate == "converted").map(|f| f.n).sum::<u32>(), 2);
-        assert!(g.batch.shelved.is_empty() && g.batch.spent.is_empty());
+        assert!(g.batch.spent.is_empty());
+        assert!(serde_json::to_value(&g.batch).unwrap().get("shelved").is_none());
         assert_eq!(g.lineage().repeat_dropped, ["strength"]);
         g.start_run(None);
         assert_eq!(g.lineage.last_supplies, ["heal"]);

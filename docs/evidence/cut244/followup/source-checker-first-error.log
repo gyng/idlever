@@ -1,0 +1,1 @@
+Initial source-only checker failed to find offline report reader because it truncated every file at its first #[cfg(test)] helper (offline.rs440), before production report_with. No game/test binary ran or changed. Fix: omit the test module only in meta.rs, whose new unit test is the sole added test inside a compared production file; compare all other files in full.

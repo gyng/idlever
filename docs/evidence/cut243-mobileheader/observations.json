@@ -1,0 +1,83 @@
+{
+  "recordedAtUtc": "2026-10-15T18:36:20Z",
+  "localDate": "2026-10-16 Asia/Singapore",
+  "scope": "Scoped UI playtest observations and owner feedback; not a blind fun verdict, natural-cadence playtest, all-menu acceptance or current-game balance rating.",
+  "context": {
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+    "input": "docs/evidence/handoff-menus/input.game.json.gz",
+    "inputGzipSha256": "c23224542c7db35def1793352a6fd49215d0ca87d047775514183f88c510b714",
+    "sourceSha256": {
+      "web/src/desktop-dock.css": "36c7da79913a691fb5ad89f9108bb4c8cd044e65b23327cf11d6fe5309b982c0",
+      "web/src/styles.css": "6a43b0e01026d0f32d008df726a70123d42988282b567c42101f03cf7b3e27eb",
+      "web/src/ui/frame.ts": "03d66103c49b5d421b18fcbe6beba81c717417784147abf8e11947d10ff42512",
+      "web/src/ui/town.ts": "a27c6fc7ffaba25e81d577112bc328782a9703e7c8d00cfa7d6f7af7870188a5",
+      "web/src/town.css": "ca52b96c4ab118bf2b70989ee5f572e65e5ebdba492f7e77658ae6b8669d38a8",
+      "web/src/ui-foundations.css": "1534b5b4f6082ab6a6da3ca5087fd41349f654064fb410c4e7679919fbc4fed4"
+    },
+    "viewports": [
+      320,
+      400,
+      1440
+    ],
+    "textSizes": [
+      "normal",
+      "200% root font"
+    ],
+    "methods": [
+      "root private-GPU read-only Home visual/interaction review",
+      "independent private-GPU actual Home/Watch route checks",
+      "existing headless frame regression"
+    ]
+  },
+  "observations": [
+    {
+      "id": "mobile-header-space",
+      "origin": "owner feedback",
+      "feedback": "ui: mobile top bar takes too much vertical space",
+      "status": "addressed in current scoped review",
+      "measured": "Home header102CSSpx at320/400normal,148px at200%; Watch102px at both text sizes. Resource numbers14\u219228px; Settings44x44.",
+      "visualReview": "Root inspected400normal and320double: identity/settings have their own row, all resource amounts remain visible and text wraps at double size. More of the town is visible above the hero panel.",
+      "interpretation": "Deliberate rows remove unstable wrapping and the build inscription consumes no phone height. This supports the specific compact-header request.",
+      "confidence": "High for tested fixture/layouts; no claim about every long name or very large balance.",
+      "evidence": [
+        "docs/evidence/cut243/compact-mobile-header-final/results.json",
+        "docs/evidence/cut243-mobileheader/final-e62c/results.json.gz"
+      ],
+      "revalidateWhen": [
+        "Header contents, identity, captions, breakpoints or font rules change",
+        "Before claiming compactness for a different viewport, multihero name or much larger balance"
+      ]
+    },
+    {
+      "id": "lantern-art-readability",
+      "origin": "owner request plus agent visual review",
+      "feedback": "And the lanterns could use generated art",
+      "status": "integrated and checked at sampled size",
+      "observed": "Painted crimson glass reads as a small hanging object on actual320/400Home views; primary interactions remain the buildings. Missing image requests restore the CSS lantern.",
+      "interpretation": "The art fits the small eave position without adding another button or label.",
+      "confidence": "Visual judgment from the agent, not independent player recognition.",
+      "evidence": [
+        "docs/evidence/cut243/painted-crimson-lanterns/results.json",
+        "docs/evidence/cut243/lantern-art-provenance.json"
+      ],
+      "revalidateWhen": [
+        "Lantern scale/palette/placement, building sprites, lighting or readiness semantics change"
+      ]
+    },
+    {
+      "id": "savings-balance",
+      "origin": "independent agent observation and pixel measurements",
+      "status": "original defect preserved; scoped repair verified",
+      "observed": "Original dark balance was hard to read on dark Forge material. Contrast2.162\u20132.164:1; balance stayed18px at double text. After scoped repair contrast6.823\u20136.828:1 and18\u219236px.",
+      "interpretation": "The balance regains the intended hierarchy relative to capacity/interest.",
+      "confidence": "High for two actual earned inputs and eight cases; transaction/refusal states and broader families remain open.",
+      "evidence": [
+        "docs/evidence/cut243-bank/STATUS.md"
+      ],
+      "revalidateWhen": [
+        "Savings material, typography, balances, capacity wrapping or transaction controls change"
+      ]
+    }
+  ],
+  "freshnessPolicy": "These notes describe the pinned version and context. Preserve historical observations; inspect relevant changes and re-play affected moments before reusing their conclusions. No arbitrary calendar TTL substitutes for revalidation."
+}

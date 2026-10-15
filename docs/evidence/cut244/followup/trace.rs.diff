@@ -1,0 +1,12 @@
+--- trace.rs:97e8
++++ trace.rs:followup
+@@ -2712,8 +2712,7 @@
+     splitmix(crate::forecast::lineage_key(&g) ^ crate::rng::hash_str(&crate::forecast::rules_key(g.lineage.rules()))).max(1)
+ }
+ 
+-/// The camp a patch is applied in: the game with its pending exit resolved as the night
+-/// resolves it (a death's is empty; a stall's keeps by `keep_pref`), no run.
++/// The camp a patch is applied in: a simulation clone of the settled game, with no active run.
+ pub fn camp_state(game: &Game) -> Game {
+     let mut g = game.sim_clone();
+     g.run = None;

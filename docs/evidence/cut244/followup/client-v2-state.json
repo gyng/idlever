@@ -1,0 +1,52 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+    "dirty": true,
+    "dirtyHash": "6e8a44dd2a7026708a357a01ff0d211aef75e58c615c5a38e06a4cdb9a558f25",
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+  },
+  "startedAt": "2026-10-15T18:17:37.041Z",
+  "finished": true,
+  "selected": [
+    "loot-economy",
+    "item-icons"
+  ],
+  "results": {
+    "loot-economy": {
+      "name": "loot-economy",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 4.867,
+      "endedAtSeconds": 14.05,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T18:17:51.091Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "6e8a44dd2a7026708a357a01ff0d211aef75e58c615c5a38e06a4cdb9a558f25",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    },
+    "item-icons": {
+      "name": "item-icons",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 4.387,
+      "endedAtSeconds": 18.437,
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'replace')",
+      "finishedAt": "2026-10-15T18:17:55.479Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "6e8a44dd2a7026708a357a01ff0d211aef75e58c615c5a38e06a4cdb9a558f25",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T18:17:55.482Z"
+}

@@ -36,10 +36,12 @@ def compare(before, after):
                 allowed.update(worn=[], sends=[0, 0])
             if path.endswith('/orders') and {'forge', 'insure'} <= old.keys():
                 allowed['insure'] = True
-            if {'runs', 'salvaged', 'gold_earned', 'found'} <= old.keys():
-                allowed['found'] = []  # Batch
-            if {'elapsed_s', 'runs', 'found', 'exits'} <= old.keys():
-                allowed['found'] = []  # ReturnReport
+            if {'runs', 'salvaged', 'gold_earned'} <= old.keys():
+                allowed.update(found=[], shelved={})  # Batch; only empty retired metadata
+            if {'elapsed_s', 'runs', 'exits'} <= old.keys():
+                allowed.update(found=[], shelved=[])  # ReturnReport
+            if {'tier', 'carried', 'keep_pct', 'kept', 'run_id'} <= old.keys():
+                allowed['shelved'] = []  # ExitLine; numeric kept and all Gold stay exact
             if {'id', 'via', 'clock_s', 'depth', 'turns', 'gold'} <= old.keys():
                 allowed['kept'] = []  # RunRec, never numeric ExitLine.kept
             if path.endswith('/stake') and {'loot', 'death_keep', 'kept'} <= old.keys():

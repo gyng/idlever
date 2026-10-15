@@ -255,9 +255,9 @@ pub struct Stake {
 }
 
 /// Cut 6 §1: the ledger line of an exit — one arithmetic line the player can check.
-/// `text` ≤ 14 words: `$84 carried · return keeps 60% → $50` (death: `$144 carried · death
-/// keeps 0% → $0 · bones: 7 items on D5`). `spent` / `spent_on` are the automations' purchases
-/// on coming home (`auto_supply`); salvage is its own ledger movement (`Lineage.gold_ledger`).
+/// `text` ≤ 14 words: `$84 carried · return keeps 100% → $84`. Death keeps secured
+/// Gold and zero of remaining carry. `spent` / `spent_on` retain named preparation costs;
+/// current free preparation and found-item conversion create no exit salvage payment.
 fn first_bloodline()->u32 {1}
 fn solo_bloodline(id:&u32)->bool{*id<=1}
 
@@ -287,9 +287,7 @@ pub struct ExitLine {
     /// a death's own `Death.trace` is longer, so its line leaves this out).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub trace: Option<Trace>,
-    /// What the exit salvaged before the keep sheet (the 40 % a return cuts), per kind in
-    /// coins — the watched report's `salvaged` lines are these plus what the sheet let go
-    /// (QA on e0f87e7: `SALVAGED $6` beside the ledger's `+$12 salvage`).
+    /// Explicit per-kind salvage accounting, if any; automatic converted pickup value is paid only once.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub salvaged: Vec<SalvageRow>,
     /// The run, so a report's trace links can open its replay (the return sheet's could; a
@@ -361,10 +359,6 @@ pub struct ExitLine {
     /// `engine::PURSE_FULL_BAND` ($80) — a richer death has nothing to say of the purse.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub purse_full: bool,
-    /// Cut 21 §2: the found supplies this exit put on the shelf, per kind (the client's `found
-    /// heal → shelf`; `text` does not carry it).
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub shelved: Vec<KindCount>,
     /// QA on 912e135 (qaW: `bones: 12 items on D6` beside a list of 14 — `leash ×3` counted
     /// charges; `11 items on D6` beside 10 — the list held only the finds): the death's whole
     /// pile per kind, `n` the items (a stack is one) — Σ `n` is the `bones: N items` of `text`.
@@ -454,19 +448,16 @@ pub struct DrivenOff {
     pub over: Option<u32>,
 }
 
-/// Cut 21 §2: a kind and how many (`ExitLine.shelved`).
+/// A visible item kind and quantity (physical bones, swaps and other counted exit details).
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct KindCount {
     pub kind: String,
     pub n: u32,
 }
 
-/// QA on 778fa1b (qaV: FOUND `leather +1`, `dagger ×2`, `aggravate scroll ×2` beside SALVAGED
-/// `dagger ×1` — neither kept, salvaged nor shelved): where the run's finds ended, per kind and
-/// place (`ExitLine.found`). `fate`: `kept` (the vault), `salvaged`, `shelved` (the supply
-/// shelf), `used` (drunk, read, thrown, spent), `left` (swapped out or put down on a floor),
-/// `stolen` (a thief kept it), `bones` (a death's pile), `sheet` (on the keep sheet, not yet
-/// decided — `keep` moves it to `kept` / `salvaged`), `lost` (nowhere: a bug; qa.rs holds it 0).
+/// Where each found unit ended (`ExitLine.found`): `converted` (value already in carry),
+/// `used` (drunk, read, thrown, spent), `left` (swapped or put down), `stolen` (taken by a thief),
+/// `bones` (physical death pile), or `lost` (unaccounted; QA requires zero).
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct FoundRow {
     pub kind: String,
@@ -478,8 +469,8 @@ fn is_zero(n: &u32) -> bool {
     *n == 0
 }
 
-/// Cut 6 §1: one gold movement (`+50 returned D5`, `−40 heal`, `−8 insure sword`, `+3
-/// salvage`, `−50 hatch`); `why` ≤ 3 words; `t` is the lineage tick.
+/// One gold movement (`+50 returned D5`, `−40 heal`, `−50 hatch`);
+/// `why` ≤ 3 words; `t` is the lineage tick.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 pub struct GoldLine {
     #[serde(default="first_bloodline", skip_serializing_if="solo_bloodline")]
@@ -1654,11 +1645,6 @@ pub struct ReturnReport {
     /// (`D5–8 · the Fens`), shallowest first.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub lanes: Vec<String>,
-    /// Cut 21 §2: found supplies the absence's exits put on the shelf instead of salvaging,
-    /// per kind — `gold` is their price on the shelf (what the repeat did not have to pay;
-    /// `found heal ×12 → shelf`).
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub shelved: Vec<SalvageRow>,
     /// QA on 912e135 (qaW: `♟18` over a report of ♟2–♟17, read as the heir who ran): the first
     /// and the last heir who ran these runs (`[2, 17]`; one heir `[5, 5]`); empty with no run.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -2914,7 +2900,7 @@ pub struct EarnedClass {
     pub signature: String,
 }
 
-/// Cut 3: `{level, variant}`; `variant` is one of `no_rest short_list bones_only hunted`.
+/// Cut 3: `{level, variant}`; `variant` is one of `no_rest short_list hunted`.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub struct Ascension {
     pub level: u32,
@@ -2952,7 +2938,7 @@ pub struct UnlockInfo {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub delta: Option<f64>,
     /// Cut 6 §6: a tactic card's rows (what the card does, as rows), or an automation's effect
-    /// as one row-like entry (`{conds: [], verb: {v: "auto", a: "keeps best weapon+armour"}}`).
+    /// as one row-like entry (`{conds: [], verb: {v: "auto", a: "paths to bones"}}`).
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub rows: Option<Vec<Row>>,
     /// Cut 12 §1: where a bought card's row goes — before the set's engagement row (the first

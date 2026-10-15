@@ -455,6 +455,10 @@ html body .game-window[data-menu-purpose="town"] .bank-line {
     inset 0 2px var(--dusk),
     inset 0 -2px var(--ink);
 }
+/* Savings amounts sit on dark workshop inset, so use its existing gilt ink. */
+html body .game-window[data-material="forge"] .bank-sheet .bank-line > .gold {
+  color: var(--gilt);
+}
 html body .game-window[data-menu-purpose="works"] .wnode.lit {
   border-color: var(--gilt);
 }

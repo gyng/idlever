@@ -1,0 +1,3 @@
+Independent assessment by feat_review after viewing only review-a/b/c, without source or map: A (Foundry) reads as scattered room props rather than a specific place; B (Fens) reads clearly as a flooded/overgrown ruin; C (Crypt) is more orderly but lacks an unmistakable centerpiece. Actor silhouettes remain readable. This first candidate does not pass the three recognizable-place requirement.
+
+Revision: give Foundry a two-by-two anvil centerpiece and Crypt a two-by-one tomb, within their existing five-by-two decoration footprint and unchanged clear aisle. Every covered cell must be seen plain floor and free of observed hazards/items. The acceptance bar is unchanged.

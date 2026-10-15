@@ -10,16 +10,36 @@ Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
 Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
-Current development package is fast WASM97e85115… (6775918bytes); settlement default
-`docs/evidence/cut244/settlements-inputs-97e8.json`. Native Gold/ledger/ExitLine4/4
-are unchanged; full-save/report comparison22/22 permits only typed retired empty/
-default storage-field deletions. Original87de inputs and after-saves remain intact.
-Cut243 Home screenshots use their separately pinned87de web/dist preview.
+Current development package is fast WASMe62c0867… (6770275bytes); settlement default
+`docs/evidence/cut244/followup/settlements-inputs-e62c.json`. Follow-up native Gold/
+ledger/ExitLine4/4 and five public catalogue/Lineage cases exactly match97e8;
+after-saves permit only typed empty shelf-field deletions. Original87de/97e8
+inputs, packages and after-saves remain intact. Follow-up workspace965tests and
+default Clippy pass; retirement browser checks pass at disclosed fixture boundaries.
+Fresh routine-full metrics/QA pass; dayplayer first crashed SIGSEGV at944s,
+then exact-runtime/checkpoint resume completed all routine bars PASS110.8s.
+Original crash remains unexplained and preserved (followup/full{,-resume}.log).
+Cut243 Home evidence pins its actual served package per capture, including older87de/97e8 states.
 Earlier d161/3975f10b evidence below is historical, not the current source/package identity.
 **ACTIVE 2026-10-15 (owner: finish handoff).** The pause is revoked; see the current resume update below.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
 ## Latest implementation work — Cut243/244 (in progress)
+
+**New current-runtime blocker found during Cut246,2026-10-16:** ten lawful
+earned weapon preparations and20actual manual-send/eight-hour executions are
+exactly reproducible, but all10immediate reconstructed replays disagree with
+their actual run turn counts (5also differ in depth). This is not historical
+version drift. From the same actual Fighter/sword send133, single-tick play
+and replay BankD22/33345ticks, while offline batches die to a lurkerD28/43260.
+The first public step/batch divergence is tick940: only `hearth_regen` differs.
+`armour_sets::tick` decrements it each tick, but `Game::tick_batch` skips the
+call/decrement during quiet spans. Exact sent states, reports, replays, repeat
+audit and first-divergence/full-continuation proofs are in evidence/cut246/.
+Prior965native/full/pacing passes do not cover this newly exposed defect.
+Cut247 will fix batch/tick equivalence without changing authored set values;
+current e62c Hearthglass outcomes must be revalidated before balance or causal
+recommendations. No source fix or new-package acceptance is claimed yet.
 
 Owner Home amendment: reduce persistent text with icons, tooltips and real locked
 state overlays; align mobile Savings/Apprentice boxes and shorten clipped labels
@@ -61,17 +81,37 @@ failure explicitly reported full /tmp, without establishing older crash causes.
 Native corrected workspace now passes961tests/6ignored; default all-target
 Clippy passes after archived pure no-op cleanup. New97e8 package/prototype,
 strict native settlement and earned1/3-resident comparisons pass. Source-bound
-native pacing→routine full is running detached; check actual process/status.
+native pacing24/24rows at16seeds passes(exit0,3780s). The automatic routine full
+leg is now running detached on the same native bytes; check actual handles.
 Seven cleanup client groups pass their original journeys, but their legacy
 tools/dev.sh URL fallback bypassed the suite's fresh port. The URL protocol is
-repaired without dropping assertions; eight groups including Gold settlement
-are rerunning against the fresh97e8 server. Final client integration/gates are
-still required before Cut244 acceptance.
+repaired without dropping assertions; eight fresh97e8 groups pass237.8s,
+including564Gold checks. Combined source checkpoint2a4bb2c5 also passes an
+isolated staged-index web build with actual97e8 WASM. The later41-group critical
+suite finishes38/41 in750.7s on its493-file source freeze, including both timing
+groups. Original log/state/freeze check are in evidence/cut245/.
+It exposed a stale Hero Hub floating-Hire-label assertion and an old House-help
+button assertion, plus a real glossary regression: rich building details had
+lost keyword encounter metadata. Root restores existing kwHost metadata
+alongside rich details, retaining the original glossary focus/refresh assertions;
+updates the other tests to real44px sprite targets/actual hover prices/exact saves;
+and shortens the new field's aria label to Setup name. Repaired copy lint,
+TSC/lint/format pass. Fresh targeted3/3 passes443.2s: Hero Hub11792checks/
+30views/8cases, frame60checks, unchanged glossary/material118checks. This is
+original38/41 plus repaired3/3, not a fresh final41/41 suite claim.
+Full final-candidate integration remains.
+Final client integration/gates are still required before Cut244 acceptance.
 An explicit follow-up inventory retains unreachable worker-unlock descriptors,
 obsolete comments and insurance-reason classifiers needing producer review;
 these are not counted as fully retired merely because current catalogues hide
 them. Keep the frozen native gate run intact, then finish the recorded cleanup.
 Use actual process handles, not this narrative, to determine live jobs.
+After both native legs pass, source-only cleanup continues separately. Audit
+also finds genuinely unwritten shelved reporting fields and a fake-engine path
+that still shelves carried finds into supplies; retire that obsolete path/fields
+while preserving actual purchased/prepared supplies. Runtime checks/repackaging
+are held during the separate quiet Cut245 cost window. Do not relabel97e8's
+earlier passing gates as acceptance of these later source changes.
 
 Cut243 owner's final interaction amendment: actual building sprites are primary.
 Built Forge/Pets/Savings bottom duplicates and persistent square help buttons
@@ -81,15 +121,88 @@ hidden until ready, and decorative empty command slots are invisible. Current
 97e8 phone/desktop normal/200% six-frame/six-gesture proof has exact saves and
 zero errors. Relevant geometry/routes pass with original failures retained;
 broader56-route/state acceptance remains open and is being exercised separately.
+Owner follow-up replaces the flat availability dots with one steady lit brass/
+ink eave lantern per building, attached inside its sprite bounds. All actual
+actions remain in the building's accessible name/details; the lantern has no
+separate interaction. Six normal/200% phone/desktop frames and six real hover/
+touch gestures pass with exact saves and zero errors in cut243/eave-lanterns/.
+These follow-up source changes are separate from checkpoint2a4bb2c5.
+Latest owner amendment gives the lamps crimson glass,3px/2.8s bob and3.4s
+soft pulse; reduced motion stays steady. Marker DOM now survives ordinary
+Home updates so the animation clock is preserved. crimson-lanterns-refresh/
+passes6layout frames/6hover-touch gestures and3motion cases/150actualrefreshes
+with stable target bounds/clocks, exact saves and zero errors, on97e8.
+Owner's generated-art follow-up is implemented: transparent painted crimson
+lantern master `art/ui/deco/town_readiness_lantern.png`, prompt in
+`art/prompts/town_readiness_lantern.txt`, packed64×96WebP (2.4KB) displayed16×24.
+`cut243/painted-crimson-lanterns/` passes6frames/6gestures/3motion cases/
+150refreshes plus3actual network-blocked primitive-fallback cases, with exact
+saves and zero page errors on currente62c0867WASM. TSC/lint/copy pass.
+No building action, availability condition or progression rule changes.
+Latest mobile-header amendment is verified: deliberate identity/settings and
+resource rows, no phone build inscription or floating introductory captions.
+Actual320/400Home headers102pxnormal/148px200%; Watch102px atbothscales.
+Resources scale14→28px; Settings44×44. Root's six Home frames/gestures and
+three actual missing-lantern fallback cases pass; independent four earned
+Watch cases plus12Home resource/settings routes preserve saves and focus.
+Existing ui:frame regression60checks passes fresh (45.3s). TSC/lint/copy pass.
+Evidence: cut243/compact-mobile-header-final/, cut243-mobileheader/.
+Owner's playtest-observation/freshness rule is added to AGENTS.md and
+FUN_EVAL_IDLE.md; dated observations distinguish feedback, measured checks,
+visual interpretation, limits and revalidation triggers. Broad acceptance and
+independent fun rating remain open.
 
-Cut245 renderer work is a separate uncommitted R6 draft: actual-layout fishing
+Cut245 renderer work remains separate uncommitted R6 work: actual-layout fishing
 banks, burial alcoves and work bays reuse existing art in GL/Canvas.28 actual
-replay floor geometries pass682 layout/knowledge checks. Paired12before/12after
-views expose a weak first Foundry/Crypt treatment; independent review prompted
-larger declared centerpiece footprints with full-cell visibility/occupancy
-checks. This is not full landmark acceptance. Missing-art/context-loss/cost
-proof and stronger final visual acceptance remain; do not stage this renderer
-draft as part of the Cut243/244 checkpoint.
+replay floor geometries pass988 layout/knowledge checks. Paired12before/12final
+views and independent review support the final2×2centerpieces; original weaker
+Foundry/Crypt candidates remain. Twelve missing-frame/atlas-failure views and
+six seek/floor/reload cases with3forced context losses pass; twelve additional
+actual nearby combat/telegraph views are captured for inspection. All inputs
+retain the explicit historical-to87de reconstructed replay drift. Current-source
+TSC/lint/format/build pass. Critical client integration and quiet cold/actualGPU
+cost proof remain; this is not full landmark or full-game acceptance.
+The first quiet paired cost run records84cold-viewer legs/8642resolved GPU
+queries, no unavailable timers/errors. All6setup medians pass10ms; GPU p95
+fails3/6scenes by+0.230/+0.496/+0.916ms against the unchanged0.20ms bar.
+An identical-source Foundry1440 control also fails(+0.223ms), establishing
+method variance above the margin, without clearing the candidate failures.
+All raw attempts remain in cut245/cost-final and cost-control-a. A closer
+temporal-pairing identical-source control also finishes failed(+0.32256ms),
+without unavailable queries/errors; its raw14cold/6GPU legs remain in
+cost-control-interleaved. Callback order/overlapping surfaces are possible
+confounders, not established explanations. No GPU-cost or R6 acceptance is
+inferred. Next method must first pass a meaningful identical-source control;
+do not repeat unchanged candidate runs hoping for green or reduce the art.
+Root adds4actual nearby-gas GL/Canvas1440 captures (CryptD16/FoundryD22), with
+both hero/overlay within8cells; original remote-fire selection is retained
+as rejected. Gas/actor separation is visible, while Canvas Crypt centerpiece
+is half-clipped at its upper viewport edge. No full-composition pass inferred.
+Measurement-only symmetric RAF/top-canvas cost revision is prepared, and
+Vite Oxc static instrumentation conformance passes for both renderer variants.
+No new GPU control has run; native/current-client checks retain priority.
+Subsequent quiet identical-source symmetric control is terminalPASS/0:
+Foundry1440,14cold/6GPU legs/1441resolved queries; absolute GPU difference
+0.177152ms and setup difference4.9ms meet unchanged0.20/10ms bars. Source/art
+inventories are exact. First-paint+42.9ms on identical sources remains a
+variability limit. This validates that sampled control only; all original
+candidate failures remain and six-scene candidate cost is still unproved.
+The full symmetric six-scene candidate now finishes exit1:84cold/36GPU legs/
+8644actual queries, all6setup medians pass, GPU5/6passes. Crypt1440 fails
++0.528384ms. Its subsequent identical-source Crypt control also fails
++0.22016ms (14cold/6GPU legs), with exact source/art and no timer/page errors.
+This leaves the method's tolerance unreliable for that case and does not
+clear the larger candidate failure. Both raw attempts remain; R6 staysPartial.
+
+Cut244 follow-up source now removes confirmed dead shelf reporting and the
+remaining inactive metadata, corrects the actual fake-engine shelf/duplicate
+salvage/Return60% divergence, and adds explicit old-input/producer/privacy/Gold
+proofs. Prepared supplies remain current. First5focused checks pass on their
+recorded subset; additional legacy-input coverage is not yet included there.
+Full workspace fast job15367 and TSC47384 are now running on separately pinned
+follow-up source. Subsequent Clippy, paired outputs, package/settlement repin
+and fresh real/fake client checks remain. All root browser/cost jobs are terminal;
+native agent owns current checks. No further quiet-cost hold delays that batch.
 
 Cut238 read-only diagnostic is committed fa74a8f3/ada0b6e5:16fresh Sessions,
 64arms,48paid first-rank purchases,579unsampled exits; all finite endpoints.

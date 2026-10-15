@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "path": "crates/idlever-core/src/item.rs",
+      "beforeSha256": "a7654b56db4758e06604454d3affc6a0495a21ff63c06c35f2a70d2cc996a77c",
+      "afterSha256": "d10d765f18cd387e551aa620feb65d21e51e86352a36b0efefaa4f8bab916a75",
+      "originalArchive": "docs/evidence/cut244/followup/item.rs.comments.before.gz",
+      "diff": "docs/evidence/cut244/followup/item.rs.comments.diff",
+      "changedLines": [
+        24,
+        28,
+        29,
+        32,
+        33,
+        34,
+        37,
+        38,
+        39,
+        49,
+        50,
+        244,
+        245,
+        248,
+        251,
+        252
+      ],
+      "sameLineCount": true,
+      "allChangesAreDocCommentText": true,
+      "nonCommentTokenSourceByteIdentical": true
+    },
+    {
+      "path": "crates/idlever-core/src/wire.rs",
+      "beforeSha256": "ba37f8d72a1f1e97bcd53360c0ba637625ec3cad4b30dbdbea1a432eff774940",
+      "afterSha256": "867a8cecd41a49619bffaeb19c4be9524d36a351c7653c1610dab1cf27104074",
+      "originalArchive": "docs/evidence/cut244/followup/wire.rs.comments.before.gz",
+      "diff": "docs/evidence/cut244/followup/wire.rs.comments.diff",
+      "changedLines": [
+        258,
+        259,
+        260
+      ],
+      "sameLineCount": true,
+      "allChangesAreDocCommentText": true,
+      "nonCommentTokenSourceByteIdentical": true
+    }
+  ],
+  "scope": "Separate comment-only boundary after terminal exact-runtime resumed FULL gate. No fields, runtime tokens, tests, binary or package changed; original source/binary/package proofs remain bound to their recorded hashes. Item.found/paid and current prepared/leash consumers are intentionally retained. No new compiler/test/package pass claimed on changed comment text."
+}

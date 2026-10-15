@@ -4,8 +4,8 @@
 //       lit waystone with its forecast move and toll (`D9 · bank +12% · $90`, `…` until `startForecast()` lands); a tap is
 //       `setStart(9)`, the tablet reads `start → D9 · $90`, the shaft starts at D9; the fake's send pays `waystone D9` and the watch's
 //       floor card names it (`D9 · the Fens · waystone`)
-//   §2  an exit that shelved a found supply says so (`found heal ×2 → shelf`) on its report line and in `shelved`; a shelf line an exit put
-//       there reads `· found`, and with the repeat on a kind no row names reads `· no row`
+//   §2  Cut244 supersedes found-supply storage: historical injected shelf fields are ignored; converted quantities remain visible.
+//       Current reusable preparation and no-row controls retain their separate assertions.
 //   §3  the `depth ≥` picker offers every depth to best + 2 (D22 on a best of D20); `picked clean` reads `thinned`, `restock capped` reads
 //       `restock ≤ income` and opens the gold sheet; the trace's chain carries the earlier ticks' reasons and their `because` links
 //
@@ -210,7 +210,7 @@ try {
     `the send pays the toll the wire named (${tolls[9] ?? 0}) (${toll ? `${toll.delta} ${toll.why}` : `$${gold0} → $${gold1}`})`,
   );
 
-  // ---- §2: found supplies to the shelf; `no row`
+  // ---- §2: retired injected shelf metadata is ignored; converted finds and preparation remain
   await page.goto(
     `${url}?dev=1&engine=fake&systems=none&fresh=1&seed=22&rules=${encodeURIComponent("hp<30 → drink heal\nfoes>=1 → attack nearest")}`,
     { waitUntil: "domcontentloaded" },
@@ -251,8 +251,14 @@ try {
     spent: [{ kind: "heal", n: 2, gold: 80 }],
     shelved: [{ kind: "heal", n: 3 }],
     exits: [
-      x("banked $106 · $106 carried · keeps 100%", 106, 100, { shelved: [{ kind: "heal", n: 2 }] }),
-      x("banked $106 · $106 carried · keeps 100%", 106, 100, { shelved: [{ kind: "heal", n: 1 }] }),
+      x("banked $106 · $106 carried · keeps 100%", 106, 100, {
+        shelved: [{ kind: "heal", n: 2 }],
+        found: [{ kind: "heal", n: 2, fate: "converted" }],
+      }),
+      x("banked $106 · $106 carried · keeps 100%", 106, 100, {
+        shelved: [{ kind: "heal", n: 1 }],
+        found: [{ kind: "heal", n: 1, fate: "converted" }],
+      }),
     ],
   };
   await go({ kind: "report", report });
@@ -264,8 +270,9 @@ try {
     ),
   );
   check(
-    lines.some((l) => l.endsWith("· found heal ×2 → supplies")),
-    `the exit line says what went to the shelf (${lines.join(" | ")})`,
+    lines.some((l) => l.includes("discovered: heal ×2")) &&
+      lines.every((l) => !l.includes("→ supplies")),
+    `current converted units remain visible without a storage claim (${lines.join(" | ")})`,
   );
   const shelf = await page.evaluate(() => {
     const s = [...document.querySelectorAll(".report .rsec")].find(
@@ -276,8 +283,8 @@ try {
       : [];
   });
   check(
-    shelf.join() === "found heal ×3 → supplies",
-    `the report's \`shelved\` (${shelf.join(" · ") || "absent"})`,
+    shelf.length === 0,
+    `retired injected shelf data creates no report section (${shelf.join(" · ") || "absent"})`,
   );
   // §3 on the same report: the words
   await page.evaluate(() =>

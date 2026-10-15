@@ -1,0 +1,66 @@
+--- crates/idlever-core/src/item.rs:gate-source
++++ crates/idlever-core/src/item.rs:after-comments
+@@ -21,22 +21,22 @@
+     pub amount: i32,
+     #[serde(default)]
+     pub enchant: i32,
+-    /// Cut 6 §2: bought, crafted or vaulted by name — usable by its kind (`drink heal`) even
++    /// Prepared or crafted by name — usable by its kind (`drink heal`) even
+     /// while the flavour is unidentified. Found items are known only through their flavour.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub known: bool,
+-    /// Cut 8B §3: the kennel's leash — on the shelf for nothing while the lineage has never
+-    /// tamed; clearing the shelf refunds nothing for it and `auto_supply` never rebuys it.
++    /// The kennel's leash is free preparation until the lineage has tamed.
++    /// Dropping it pays nothing; the next eligible preparation can offer it again.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub free: bool,
+-    /// Cut 21 §2: a supply the hero found and brought home to the shelf (`found heal → shelf`)
+-    /// — packed like a bought one, but never the repeat's (the repeat buys the kinds the
+-    /// player packed) and a drop salvages it rather than refunding a price never paid.
++    /// Legacy found-supply provenance retained on accepted prepared items.
++    /// Repeat preparation keeps these items separate from its own kinds.
++    /// Current dungeon finds convert once to Gold and are never shelved at home.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub found: bool,
+-    /// Cut 22 §1: what the shelf charged for a bought supply — the price moves with the
+-    /// lineage's best depth, and a refund pays back what was paid (0: not bought, or bought
+-    /// before the price moved; the refund then pays today's price).
++    /// Legacy paid amount retained on accepted prepared items.
++    /// Current preparation writes zero. Nonfree leash returns use the prepared
++    /// quantity, without refunding this amount or paying converted value again.
+     #[serde(default, skip_serializing_if = "is_zero")]
+     pub paid: i32,
+     /// Packed by the quartermaster: surplus automatic supplies may make room for the active package.
+@@ -46,8 +46,8 @@
+     /// theft and bones; losing the object never refunds or recreates its currency.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub value_claimed: bool,
+-    /// QA on 524827b (qaAA: KEPT `axe +7 → vault` after the cage's `took axe +1`): how many of
+-    /// its `enchant` came from enchant scrolls the heirs read on it (`InvItem.enchanted`).
++    /// How much of this physical item's `enchant` came from enchant scrolls
++    /// the heirs read on it (`InvItem.enchanted`).
+     #[serde(default, skip_serializing_if = "is_zero")]
+     pub enchanted: i32,
+     /// Chambers belong to this weapon instance, including while stowed. Ordinary
+@@ -241,15 +241,15 @@
+     pub label: String,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub hint: Option<Hint>,
+-    /// Cut 12 §6: a supply the camp gave (the kennel's leash; `leash · kennel`), never bought —
+-    /// always on the wire so a bought leash on the same shelf is not mistaken for it.
++    /// The kennel's free prepared leash (`leash · kennel`), always on the wire
++    /// so a nonfree prepared leash is not mistaken for it.
+     #[serde(default)]
+     pub free: bool,
+-    /// Cut 21 §2: found on a run and put on the shelf for free (`found`); a drop salvages it.
++    /// Retained legacy found-supply provenance on accepted prepared items.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub found: bool,
+-    /// QA on 524827b (qaAA): the `+N` of `enchant` that enchant scrolls read on it added
+-    /// (`axe +7 → vault · enchanted ×6`); absent when none.
++    /// The `+N` of `enchant` added by scrolls read on this physical item;
++    /// absent when none.
+     #[serde(default, skip_serializing_if = "is_zero")]
+     pub enchanted: i32,
+     /// Run-clear: the item's rarity (`rarity`); absent = common.

@@ -1,0 +1,69 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+    "dirty": true,
+    "dirtyHash": "647e088b7a503bad92b93dfb8279b7082c9e7b5963aeb16ee6c44cce537434a7",
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+  },
+  "startedAt": "2026-10-15T18:12:44.866Z",
+  "finished": true,
+  "selected": [
+    "loot-economy",
+    "item-icons",
+    "gold-settlements"
+  ],
+  "results": {
+    "gold-settlements": {
+      "name": "gold-settlements",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 98.025,
+      "endedAtSeconds": 162.471,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T18:15:27.337Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "647e088b7a503bad92b93dfb8279b7082c9e7b5963aeb16ee6c44cce537434a7",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    },
+    "loot-economy": {
+      "name": "loot-economy",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 3.263,
+      "endedAtSeconds": 165.735,
+      "firstFailure": "page.evaluate: TypeError: Cannot read properties of undefined (reading 'length')",
+      "finishedAt": "2026-10-15T18:15:30.602Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "647e088b7a503bad92b93dfb8279b7082c9e7b5963aeb16ee6c44cce537434a7",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    },
+    "item-icons": {
+      "name": "item-icons",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 2.325,
+      "endedAtSeconds": 168.062,
+      "firstFailure": "page.evaluate: Error: report found item icons",
+      "finishedAt": "2026-10-15T18:15:32.928Z",
+      "identity": {
+        "head": "2a4bb2c5e225e7657fe44e1b3e91bef7c883da7b",
+        "dirty": true,
+        "dirtyHash": "647e088b7a503bad92b93dfb8279b7082c9e7b5963aeb16ee6c44cce537434a7",
+        "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T18:15:32.929Z"
+}

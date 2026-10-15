@@ -77,3 +77,8 @@
     font-size: 12px;
   }
 }
+
+/* A confirmed founding quote sits on the dark bloodline folio, not parchment. */
+html body .game-window[data-material="bloodlines"] .bloodline-founding > .gold {
+  color: var(--gilt);
+}

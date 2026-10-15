@@ -1,0 +1,8 @@
+client suite: targeted (1 selected; 164 current full; 207 exhaustive groups)
+FAIL item-icons      11.4s (3.5s)  Node.js v22.18.0
+     page.evaluate: Error: report found item icons
+         at check (eval at evaluate (:311:30), <anonymous>:11:24)
+         at eval (eval at evaluate (:311:30), <anonymous>:175:9)
+         at async <anonymous>:337:30
+         at /home/g/p/riddle/web/tests/item-icons.mjs:24:28 {
+FAIL: 0/1 client gates in 11.4s

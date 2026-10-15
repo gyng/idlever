@@ -1,0 +1,65 @@
+{
+  "recordedAtUtc": "2026-10-15T18:45:50Z",
+  "scope": "Agent visual observations of stored-replay rendering, not a blind player recognition study, natural progression playtest, fun score or GPU result.",
+  "context": {
+    "source": {
+      "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+      "web/src/render/landmarks.ts": "6926fd55137d553cb2bf384bbd9fdfb1220c8e687ed0b7a069453ef901d57560",
+      "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+      "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7"
+    },
+    "input": "docs/evidence/handoff-content/run131.replay.json.gz",
+    "inputGzipSha256": "5055f916afee7bf95268c888be71b60370d66c2620cc0acc9328817727cb281c",
+    "provenance": "Actual87de replay reconstructed from an earned historical send; historical33697vsreconstructed30689ticks remain distinct."
+  },
+  "observations": [
+    {
+      "id": "composition-recognition",
+      "origin": "agent visual review",
+      "observed": "Final fishing-bank/work-bay/burial-alcove compositions use distinct grouped forms. Earlier small Foundry props and Crypt slab were harder to identify, motivating retained v2/v3 revisions.",
+      "interpretation": "Larger centerpieces help the Crypt and Foundry read as places, while Fens shoreline context supports the fishing treatment.",
+      "confidence": "Image-based judgment; does not establish spontaneous recognition by a new player.",
+      "evidence": [
+        "docs/evidence/cut245/review-v1.md",
+        "docs/evidence/cut245/review-v2.md",
+        "docs/evidence/cut245/review-v3.md"
+      ],
+      "revalidateWhen": [
+        "Art scale/composition/layout selector changes",
+        "Different generated rooms, fog, camera, lighting or combat conditions are used for a recognition claim"
+      ]
+    },
+    {
+      "id": "nearby-gas-legibility",
+      "origin": "root visual review plus measured geometry",
+      "observed": "Root inspected four actual CryptD16/FoundryD22gas GL/Canvas1440frames. Gas, hero and hostile silhouettes remain distinct from decoration in those moments. Canvas Crypt centerpiece is half-clipped at the upper viewport edge.",
+      "interpretation": "These images support scoped gas/actor separation; they do not prove a complete Canvas composition in the clipped view.",
+      "confidence": "Bounded to two replay moments and desktop. No Fens hazard within the declared proximity bound.",
+      "evidence": [
+        "docs/evidence/cut245/hazard-nearby-v3/results.json",
+        "docs/evidence/cut245/hazard-visibility.json"
+      ],
+      "revalidateWhen": [
+        "Canvas camera or map framing changes",
+        "Landmark footprint, art, fog or hazard cues change",
+        "Claiming the same readability on phone or another actual fight"
+      ]
+    },
+    {
+      "id": "remote-fire-selection",
+      "origin": "capture review finding",
+      "observed": "The first Foundry hazard selection followed a hero near the landmark but chose a fire elsewhere on the floor.",
+      "interpretation": "Hero proximity alone did not justify nearby-hazard evidence; the selector now checks actual hazard proximity too.",
+      "status": "Original attempt retained as rejected; corrected nearby-gas capture stored separately.",
+      "confidence": "High from actual event coordinates; not a gameplay defect.",
+      "evidence": [
+        "docs/evidence/cut245/hazard-v3/results.json",
+        "docs/evidence/cut245/hazard-nearby-v3/results.json"
+      ],
+      "revalidateWhen": [
+        "Capture selection/proximity logic changes"
+      ]
+    }
+  ],
+  "freshnessPolicy": "Preserve these dated findings as historical. Reinspect relevant source/context and replay the affected moments before using old conclusions for current design or acceptance."
+}

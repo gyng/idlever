@@ -6,7 +6,7 @@ import type { HeroSlot, LiveRun } from "../engine/types";
 import { h, replace, spanOf } from "./dom";
 import { paintFace } from "./frame";
 import { openHero } from "./town";
-import { openSheet, openWindow, closeAllSheets } from "./sheet";
+import { openWindow, closeAllSheets } from "./sheet";
 import { openChronicle } from "./chronicle";
 import { kwHost } from "./tips";
 import { penOpen } from "./packages";
@@ -207,7 +207,7 @@ export function heroRoster(app: App, hooks: { focus?(): void; rules?(): void } =
     full(),
   ];
   const openHeroes = (): void => {
-    openSheet(
+    openWindow(
       () => {
         sheetBody = h("div", { class: "sheet-body heroes-sheet" }, ...sheetContents());
         return sheetBody;

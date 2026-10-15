@@ -1,0 +1,2939 @@
+{
+  "scope": "Paired paused production-renderer views of the pinned87de reconstruction; original historical replay drift retained; no new gameplay or performance claim",
+  "phase": "combat-v3",
+  "assets": "normal",
+  "combat": true,
+  "replaySha256": "fba06d490019133aa4b24005fe67eec3f30e2d78cd35ef436e2b45019fd66272",
+  "source": {
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/landmarks.ts": "6926fd55137d553cb2bf384bbd9fdfb1220c8e687ed0b7a069453ef901d57560",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "e82871560e2344f440d1cc350a0645d8e53137c1cf405303e6d9f50bd40e9f2e"
+  },
+  "served": [
+    {
+      "path": "/src/render/index.ts",
+      "sha256": "426c766f0d506a2cdf1bb1543095944158f91ed75506888d860661583736431e"
+    },
+    {
+      "path": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "path": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "path": "/src/render/atlas.ts",
+      "sha256": "f691ffc480d317cbf5fa9bfdc4aeed1639517aa6a3e2aa4f44c6613e6a364ce4"
+    },
+    {
+      "path": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "path": "/src/render/palette.ts",
+      "sha256": "55ecf52ac4aebe5dedc9b1ae7327f201338a304d6b8080c193d5e56ed1b3218f"
+    },
+    {
+      "path": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "path": "/src/render/tags.ts",
+      "sha256": "6eaa1d6d86037ff5dee3d5aa6d8ef9364da952a1bc9ee5fdbd3b0597eb271960"
+    },
+    {
+      "path": "/src/render/state.ts",
+      "sha256": "c2a6a45ae096de231ae6a45d293a3b96542c0f40f204d2e5a70a69cfdcb5eb25"
+    },
+    {
+      "path": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "path": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "path": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "path": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "path": "/src/render/view2d.ts",
+      "sha256": "baf54bd2236c7a097a67cabf35bdea7d7474f279860b4a08cda71b99c6b34a03"
+    },
+    {
+      "path": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "path": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "path": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "path": "/src/render/landmarks.ts",
+      "sha256": "1d037b6d78b954eb126c8ca0f1ef698ace44baa99bc5542b4cc2c58d97b2fba7"
+    },
+    {
+      "path": "/src/render/fallback.ts",
+      "sha256": "fb82a6570ba549c7eef48c067ebfdb4b3b5b2f83e9c8855e1d43d955eee1ef6c"
+    },
+    {
+      "path": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "path": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "path": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "path": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "path": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    },
+    {
+      "path": "/src/render/index.ts",
+      "sha256": "426c766f0d506a2cdf1bb1543095944158f91ed75506888d860661583736431e"
+    },
+    {
+      "path": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "path": "/src/render/palette.ts",
+      "sha256": "55ecf52ac4aebe5dedc9b1ae7327f201338a304d6b8080c193d5e56ed1b3218f"
+    },
+    {
+      "path": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "path": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "path": "/src/render/atlas.ts",
+      "sha256": "f691ffc480d317cbf5fa9bfdc4aeed1639517aa6a3e2aa4f44c6613e6a364ce4"
+    },
+    {
+      "path": "/src/render/tags.ts",
+      "sha256": "6eaa1d6d86037ff5dee3d5aa6d8ef9364da952a1bc9ee5fdbd3b0597eb271960"
+    },
+    {
+      "path": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "path": "/src/render/state.ts",
+      "sha256": "c2a6a45ae096de231ae6a45d293a3b96542c0f40f204d2e5a70a69cfdcb5eb25"
+    },
+    {
+      "path": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "path": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "path": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "path": "/src/render/view2d.ts",
+      "sha256": "baf54bd2236c7a097a67cabf35bdea7d7474f279860b4a08cda71b99c6b34a03"
+    },
+    {
+      "path": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "path": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "path": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "path": "/src/render/landmarks.ts",
+      "sha256": "1d037b6d78b954eb126c8ca0f1ef698ace44baa99bc5542b4cc2c58d97b2fba7"
+    },
+    {
+      "path": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "path": "/src/render/fallback.ts",
+      "sha256": "fb82a6570ba549c7eef48c067ebfdb4b3b5b2f83e9c8855e1d43d955eee1ef6c"
+    },
+    {
+      "path": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "path": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "path": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "path": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "path": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    }
+  ],
+  "cases": [
+    {
+      "id": "fens",
+      "depth": 9,
+      "place": {
+        "kind": "fishing-bank",
+        "x": 23,
+        "y": 13,
+        "pieces": [
+          {
+            "x": 21,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "stump",
+            "asset": "barrel"
+          },
+          {
+            "x": 23,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "trap",
+            "asset": "crate"
+          },
+          {
+            "x": 25,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 22,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "reeds",
+            "asset": "reeds"
+          },
+          {
+            "x": 23,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "log",
+            "asset": "log"
+          },
+          {
+            "x": 25,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "reeds",
+            "asset": "reeds_1"
+          }
+        ]
+      },
+      "event": {
+        "k": "telegraph",
+        "t": 9746,
+        "id": 85,
+        "what": "winds up",
+        "x": 19,
+        "y": 11
+      },
+      "distance": 4.47213595499958,
+      "target": 9748
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "place": {
+        "kind": "burial-alcove",
+        "x": 28,
+        "y": 7,
+        "pieces": [
+          {
+            "x": 27,
+            "y": 7,
+            "w": 2,
+            "h": 2,
+            "role": "sarcophagus",
+            "asset": "barrel"
+          },
+          {
+            "x": 26,
+            "y": 7,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 30,
+            "y": 7,
+            "w": 1,
+            "h": 1,
+            "role": "urn",
+            "asset": "pot"
+          },
+          {
+            "x": 26,
+            "y": 8,
+            "w": 1,
+            "h": 1,
+            "role": "coffin",
+            "asset": "crate"
+          },
+          {
+            "x": 29,
+            "y": 8,
+            "w": 1,
+            "h": 1,
+            "role": "bones",
+            "asset": "skulls"
+          },
+          {
+            "x": 30,
+            "y": 8,
+            "w": 1,
+            "h": 1,
+            "role": "coffin",
+            "asset": "crate"
+          }
+        ]
+      },
+      "event": {
+        "k": "attack",
+        "t": 16390,
+        "src": 152,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "attack",
+        "x": 25,
+        "y": 8
+      },
+      "distance": 3.1622776601683795,
+      "target": 16392
+    },
+    {
+      "id": "foundry",
+      "depth": 22,
+      "place": {
+        "kind": "work-bay",
+        "x": 16,
+        "y": 13,
+        "pieces": [
+          {
+            "x": 15,
+            "y": 13,
+            "w": 2,
+            "h": 2,
+            "role": "anvil",
+            "asset": "barrel"
+          },
+          {
+            "x": 14,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "coal",
+            "asset": "crate"
+          },
+          {
+            "x": 18,
+            "y": 13,
+            "w": 1,
+            "h": 1,
+            "role": "coal",
+            "asset": "crate"
+          },
+          {
+            "x": 14,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "rack",
+            "asset": "rack"
+          },
+          {
+            "x": 17,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "rack",
+            "asset": "rack"
+          },
+          {
+            "x": 18,
+            "y": 14,
+            "w": 1,
+            "h": 1,
+            "role": "crucible",
+            "asset": "pot"
+          }
+        ]
+      },
+      "event": {
+        "k": "attack",
+        "t": 23913,
+        "src": 1,
+        "dst": 271,
+        "dmg": 8,
+        "hit": true,
+        "verb": "attack",
+        "x": 15,
+        "y": 14
+      },
+      "distance": 1.4142135623730951,
+      "target": 23915
+    }
+  ],
+  "rows": [
+    {
+      "id": "fens",
+      "depth": 9,
+      "backend": "gl",
+      "width": 400,
+      "target": 9748,
+      "file": "fens-gl-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 14,
+        "triangles": 1618,
+        "k": 5,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 5,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 1,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          120,
+          192
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "pending": 405,
+        "tick": 9748,
+        "fade": 0,
+        "hero": [
+          19.2,
+          11.2
+        ],
+        "projectiles": 0,
+        "ents": 5,
+        "drawn": 4,
+        "camera": [
+          141,
+          -100
+        ],
+        "cpuMs": 59.599999994039536,
+        "cpuP95": null,
+        "buildMs": 3.2999999821186066,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 6.819031097509417,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          -12,
+          12
+        ],
+        "heroCrowd": false,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 9748
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "stump",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 290,
+            "y": 333.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "trap",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 343.3333333333333,
+            "y": 333.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 396.6666666666667,
+            "y": 333.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds",
+          "painted": true,
+          "rect": {
+            "x": 316.6666666666667,
+            "y": 360,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "log",
+          "asset": "log",
+          "painted": true,
+          "rect": {
+            "x": 343.3333333333333,
+            "y": 360,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds_1",
+          "painted": true,
+          "rect": {
+            "x": 396.6666666666667,
+            "y": 360,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "backend": "gl",
+      "width": 400,
+      "target": 16392,
+      "file": "crypt-gl-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 13,
+        "triangles": 1114,
+        "k": 5,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 5,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          120,
+          192
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "pending": 441,
+        "tick": 16392,
+        "fade": 0,
+        "hero": [
+          25,
+          8.8
+        ],
+        "projectiles": 0,
+        "ents": 17,
+        "drawn": 3,
+        "camera": [
+          196,
+          -100
+        ],
+        "cpuMs": 53.400000005960464,
+        "cpuP95": null,
+        "buildMs": 2.4000000059604645,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 8.108984755108656,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          0,
+          12
+        ],
+        "heroCrowd": true,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 16392
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 106.66666666666667,
+            "y": 40,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "w": 2,
+          "h": 2,
+          "role": "sarcophagus",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 133.33333333333334,
+            "y": 40,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 213.33333333333334,
+            "y": 40,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 106.66666666666667,
+            "y": 66.66666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 66.66666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 213.33333333333334,
+            "y": 66.66666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 26,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 240,
+            "y": 173.33333333333334,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 30,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 346.6666666666667,
+            "y": 173.33333333333334,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 26,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 240,
+            "y": 200,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 29,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 320,
+            "y": 200,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 30,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 346.6666666666667,
+            "y": 200,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "foundry",
+      "depth": 22,
+      "backend": "gl",
+      "width": 400,
+      "target": 23915,
+      "file": "foundry-gl-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 13,
+        "triangles": 1108,
+        "k": 5,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 5,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          120,
+          192
+        ],
+        "target": [
+          244,
+          388
+        ],
+        "pending": 317,
+        "tick": 23915,
+        "fade": 0,
+        "hero": [
+          15,
+          14
+        ],
+        "projectiles": 0,
+        "ents": 10,
+        "drawn": 2,
+        "camera": [
+          128,
+          -115
+        ],
+        "cpuMs": 2.600000023841858,
+        "cpuP95": null,
+        "buildMs": 2.100000023841858,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 9.472687085569932,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          0,
+          0
+        ],
+        "heroCrowd": false,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 23915
+      },
+      "landmarks": [
+        {
+          "x": 14,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 146.66666666666666,
+            "y": 283.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 15,
+          "y": 13,
+          "w": 2,
+          "h": 2,
+          "role": "anvil",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 173.33333333333334,
+            "y": 283.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 253.33333333333334,
+            "y": 283.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 226.66666666666666,
+            "y": 310,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 253.33333333333334,
+            "y": 310,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 19,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 280,
+            "y": 443.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 386.6666666666667,
+            "y": 443.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 19,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 280,
+            "y": 470,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 360,
+            "y": 470,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 386.6666666666667,
+            "y": 470,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "fens",
+      "depth": 9,
+      "backend": "canvas",
+      "width": 400,
+      "target": 9748,
+      "file": "fens-canvas-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 405,
+        "tick": 9748,
+        "fade": 0,
+        "hero": [
+          19.2,
+          11.2
+        ],
+        "projectiles": 0,
+        "ents": 5,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 0.9000000059604645,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 37.20148805952241,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "stump",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 234.66666666666666,
+            "y": 354.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "trap",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 288,
+            "y": 354.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 341.3333333333333,
+            "y": 354.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds",
+          "painted": true,
+          "rect": {
+            "x": 261.3333333333333,
+            "y": 381.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "log",
+          "asset": "log",
+          "painted": true,
+          "rect": {
+            "x": 288,
+            "y": 381.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds_1",
+          "painted": true,
+          "rect": {
+            "x": 341.3333333333333,
+            "y": 381.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "backend": "canvas",
+      "width": 400,
+      "target": 16392,
+      "file": "crypt-canvas-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 441,
+        "tick": 16392,
+        "fade": 0,
+        "hero": [
+          25,
+          8.8
+        ],
+        "projectiles": 0,
+        "ents": 17,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 0.699999988079071,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 60.0048983590497,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 22,
+          "y": 2,
+          "w": 2,
+          "h": 2,
+          "role": "sarcophagus",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 106.66666666666667,
+            "y": 125.33333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 21,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 80,
+            "y": 125.33333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 125.33333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 80,
+            "y": 152,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 160,
+            "y": 152,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 25,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 152,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 26,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 213.33333333333334,
+            "y": 258.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 30,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 320,
+            "y": 258.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 26,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 213.33333333333334,
+            "y": 285.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 29,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 293.3333333333333,
+            "y": 285.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 30,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 320,
+            "y": 285.3333333333333,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "foundry",
+      "depth": 22,
+      "backend": "canvas",
+      "width": 400,
+      "target": 23915,
+      "file": "foundry-canvas-400.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          600,
+          960
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 317,
+        "tick": 23915,
+        "fade": 0,
+        "hero": [
+          15,
+          14
+        ],
+        "projectiles": 0,
+        "ents": 10,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 0.5999999940395355,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 59.99755112036238,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 15,
+          "y": 13,
+          "w": 2,
+          "h": 2,
+          "role": "anvil",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 186.66666666666666,
+            "y": 280,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 160,
+            "y": 280,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 266.6666666666667,
+            "y": 280,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 240,
+            "y": 306.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 266.6666666666667,
+            "y": 306.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 19,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 293.3333333333333,
+            "y": 440,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 400,
+            "y": 440,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 19,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 293.3333333333333,
+            "y": 466.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 373.3333333333333,
+            "y": 466.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 400,
+            "y": 466.6666666666667,
+            "w": 26.666666666666668,
+            "h": 26.666666666666668
+          }
+        }
+      ]
+    },
+    {
+      "id": "fens",
+      "depth": 9,
+      "backend": "gl",
+      "width": 1440,
+      "target": 9748,
+      "file": "fens-gl-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 14,
+        "triangles": 1618,
+        "k": 10,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 10,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 1,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          216,
+          120
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "pending": 405,
+        "tick": 9748,
+        "fade": 0,
+        "hero": [
+          19.2,
+          11.2
+        ],
+        "projectiles": 0,
+        "ents": 5,
+        "drawn": 4,
+        "camera": [
+          140,
+          -72
+        ],
+        "cpuMs": 2.800000011920929,
+        "cpuP95": null,
+        "buildMs": 1.2000000178813934,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 0.7792410192472531,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          -12,
+          12
+        ],
+        "heroCrowd": false,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 9748
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "stump",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 613.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "trap",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1013.3333333333334,
+            "y": 613.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1120,
+            "y": 613.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds",
+          "painted": true,
+          "rect": {
+            "x": 960,
+            "y": 666.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "log",
+          "asset": "log",
+          "painted": true,
+          "rect": {
+            "x": 1013.3333333333334,
+            "y": 666.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds_1",
+          "painted": true,
+          "rect": {
+            "x": 1120,
+            "y": 666.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "backend": "gl",
+      "width": 1440,
+      "target": 16392,
+      "file": "crypt-gl-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 13,
+        "triangles": 1114,
+        "k": 10,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 10,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          216,
+          120
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "pending": 441,
+        "tick": 16392,
+        "fade": 0,
+        "hero": [
+          25,
+          8.8
+        ],
+        "projectiles": 0,
+        "ents": 17,
+        "drawn": 3,
+        "camera": [
+          155.4,
+          -64
+        ],
+        "cpuMs": 32.69999998807907,
+        "cpuP95": null,
+        "buildMs": 1.4000000059604645,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 8.782201405152222,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          0,
+          12
+        ],
+        "heroCrowd": true,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 16392
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 806.6666666666666,
+            "y": 80,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 22,
+          "y": 2,
+          "w": 2,
+          "h": 2,
+          "role": "sarcophagus",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 860,
+            "y": 80,
+            "w": 106.66666666666667,
+            "h": 106.66666666666667
+          }
+        },
+        {
+          "x": 25,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1020,
+            "y": 80,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 806.6666666666666,
+            "y": 133.33333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 966.6666666666666,
+            "y": 133.33333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1020,
+            "y": 133.33333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 26,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1073.3333333333333,
+            "y": 346.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 30,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1286.6666666666667,
+            "y": 346.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 26,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1073.3333333333333,
+            "y": 400,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 29,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 1233.3333333333333,
+            "y": 400,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 30,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1286.6666666666667,
+            "y": 400,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    },
+    {
+      "id": "foundry",
+      "depth": 22,
+      "backend": "gl",
+      "width": 1440,
+      "target": 23915,
+      "file": "foundry-gl-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 13,
+        "triangles": 1108,
+        "k": 10,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 10,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          216,
+          120
+        ],
+        "target": [
+          436,
+          244
+        ],
+        "pending": 317,
+        "tick": 23915,
+        "fade": 0,
+        "hero": [
+          15,
+          14
+        ],
+        "projectiles": 0,
+        "ents": 10,
+        "drawn": 2,
+        "camera": [
+          116,
+          -115
+        ],
+        "cpuMs": 50.5,
+        "cpuP95": null,
+        "buildMs": 1.4000000059604645,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": true,
+        "fps": 5.806077027288564,
+        "fx": "high",
+        "glLost": false,
+        "lead": [
+          0,
+          0
+        ],
+        "heroCrowd": false,
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        },
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "tools": {
+          "live": [],
+          "cues": 0
+        },
+        "clock": 23915
+      },
+      "landmarks": [
+        {
+          "x": 14,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 693.3333333333334,
+            "y": 326.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 15,
+          "y": 13,
+          "w": 2,
+          "h": 2,
+          "role": "anvil",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 746.6666666666666,
+            "y": 326.6666666666667,
+            "w": 106.66666666666667,
+            "h": 106.66666666666667
+          }
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 326.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 853.3333333333334,
+            "y": 380,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 380,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 19,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 960,
+            "y": 646.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1173.3333333333333,
+            "y": 646.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 19,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 960,
+            "y": 700,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 1120,
+            "y": 700,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1173.3333333333333,
+            "y": 700,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    },
+    {
+      "id": "fens",
+      "depth": 9,
+      "backend": "canvas",
+      "width": 1440,
+      "target": 9748,
+      "file": "fens-canvas-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 405,
+        "tick": 9748,
+        "fade": 0,
+        "hero": [
+          19.2,
+          11.2
+        ],
+        "projectiles": 0,
+        "ents": 5,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 1.0999999940395355,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 53.08100623124854,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 21,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "stump",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 789.3333333333334,
+            "y": 469.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "trap",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 896,
+            "y": 469.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1002.6666666666666,
+            "y": 469.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 22,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds",
+          "painted": true,
+          "rect": {
+            "x": 842.6666666666666,
+            "y": 522.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "log",
+          "asset": "log",
+          "painted": true,
+          "rect": {
+            "x": 896,
+            "y": 522.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "reeds",
+          "asset": "reeds_1",
+          "painted": true,
+          "rect": {
+            "x": 1002.6666666666666,
+            "y": 522.6666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    },
+    {
+      "id": "crypt",
+      "depth": 15,
+      "backend": "canvas",
+      "width": 1440,
+      "target": 16392,
+      "file": "crypt-canvas-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 441,
+        "tick": 16392,
+        "fade": 0,
+        "hero": [
+          25,
+          8.8
+        ],
+        "projectiles": 0,
+        "ents": 17,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 0.9000000059604645,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 60,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 22,
+          "y": 2,
+          "w": 2,
+          "h": 2,
+          "role": "sarcophagus",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 533.3333333333334,
+            "y": 10.666666666666666,
+            "w": 106.66666666666667,
+            "h": 106.66666666666667
+          }
+        },
+        {
+          "x": 21,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 480,
+            "y": 10.666666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 2,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 693.3333333333334,
+            "y": 10.666666666666666,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 21,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 480,
+            "y": 64,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 24,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 640,
+            "y": 64,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 25,
+          "y": 3,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 693.3333333333334,
+            "y": 64,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 26,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 746.6666666666666,
+            "y": 277.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 30,
+          "y": 7,
+          "w": 1,
+          "h": 1,
+          "role": "urn",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 960,
+            "y": 277.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 26,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 746.6666666666666,
+            "y": 330.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 29,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "bones",
+          "asset": "skulls",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 330.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 30,
+          "y": 8,
+          "w": 1,
+          "h": 1,
+          "role": "coffin",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 960,
+            "y": 330.6666666666667,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    },
+    {
+      "id": "foundry",
+      "depth": 22,
+      "backend": "canvas",
+      "width": 1440,
+      "target": 23915,
+      "file": "foundry-canvas-1440.png",
+      "unchangedInput": true,
+      "stats": {
+        "calls": 0,
+        "triangles": 0,
+        "k": 1,
+        "dpr": 1.5,
+        "frame": "map",
+        "kMap": 1,
+        "shake": [
+          0,
+          0
+        ],
+        "glyphs": 0,
+        "caption": null,
+        "device": [
+          2160,
+          1200
+        ],
+        "envTexels": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          0
+        ],
+        "pending": 317,
+        "tick": 23915,
+        "fade": 0,
+        "hero": [
+          15,
+          14
+        ],
+        "projectiles": 0,
+        "ents": 10,
+        "drawn": 0,
+        "camera": [
+          0,
+          0
+        ],
+        "cpuMs": 0.7999999821186066,
+        "cpuP95": null,
+        "buildMs": null,
+        "gpuMs": null,
+        "gpuP95": null,
+        "gpuTimer": false,
+        "fps": 55.00687585948246,
+        "fx": "low",
+        "glLost": true,
+        "combatCues": {
+          "active": 0,
+          "quads": 0,
+          "events": 0
+        },
+        "movementTrail": {
+          "steps": 0,
+          "quads": 0
+        }
+      },
+      "landmarks": [
+        {
+          "x": 15,
+          "y": 13,
+          "w": 2,
+          "h": 2,
+          "role": "anvil",
+          "asset": "barrel",
+          "painted": true,
+          "rect": {
+            "x": 693.3333333333334,
+            "y": 320,
+            "w": 106.66666666666667,
+            "h": 106.66666666666667
+          }
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 640,
+            "y": 320,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 18,
+          "y": 13,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 853.3333333333334,
+            "y": 320,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 17,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 800,
+            "y": 373.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 18,
+          "y": 14,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 853.3333333333334,
+            "y": 373.3333333333333,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 19,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 640,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 19,
+          "w": 1,
+          "h": 1,
+          "role": "coal",
+          "asset": "crate",
+          "painted": true,
+          "rect": {
+            "x": 1120,
+            "y": 640,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 19,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 906.6666666666666,
+            "y": 693.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 22,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "rack",
+          "asset": "rack",
+          "painted": true,
+          "rect": {
+            "x": 1066.6666666666667,
+            "y": 693.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        },
+        {
+          "x": 23,
+          "y": 20,
+          "w": 1,
+          "h": 1,
+          "role": "crucible",
+          "asset": "pot",
+          "painted": true,
+          "rect": {
+            "x": 1120,
+            "y": 693.3333333333334,
+            "w": 53.333333333333336,
+            "h": 53.333333333333336
+          }
+        }
+      ]
+    }
+  ],
+  "lifecycle": [],
+  "errors": [],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "captured"
+}

@@ -68,6 +68,7 @@ import { View2D } from "./view2d";
 import { CombatCues, type CueBody, type CuePixel } from "./combat-cues";
 import { toolCuePixels, toolFade, toolFeet } from "./tool-cues";
 import { effectsLevel } from "./fxpref";
+import { visibleLandmarkPieces, type LandmarkDraw } from "./landmarks";
 export { createFallbackViewer } from "./fallback";
 import type { Ev, GunSnap, Snapshot } from "./types";
 
@@ -127,6 +128,7 @@ export type Viewer = {
   setTacticRows?(rows: number[], meaningful: number[]): void;
   atlasInfo?(): unknown;
   debugBiome?(): string; // Cut 16 §3: the biome the floor draws in (its palette)
+  debugLandmarks?(): unknown[];
   preload?(snap: Snapshot): void; // add unknown entities before a batch's events
 };
 
@@ -341,6 +343,7 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
   const ghostAt: [number, number][] = []; // gfx round 10: this frame's ethereal sprites (world), for their light
   const rects: DebugRect[] = [],
     labels: DebugLabel[] = []; // Cut 14 §3: what this frame drew, for the gates
+  const landmarkDraws: LandmarkDraw[] = [];
   const texts: {
     kind: "callout" | "caption";
     text: string;
@@ -1194,6 +1197,18 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
     const propFrame = Math.floor(now / 1000) & 1;
     const torchFrame = Math.floor(now / 180) & 1;
     const hd = atlas.envTile(b, "floor_0") !== undefined; // art pass: register 3 loaded for this biome
+    const places = new Map(
+      visibleLandmarkPieces(
+        st.landmarks,
+        st.w,
+        st.tiles,
+        st.seen,
+        st.items,
+        st.overlays,
+        st.visible,
+      ).map((piece) => [piece.y * st.w + piece.x, piece]),
+    );
+    landmarkDraws.length = 0;
     L.tiles.begin();
     L.decor.begin();
     L.decorHue.begin();
@@ -1241,7 +1256,31 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
             dim,
           );
         }
-        if (hd) dress(b, x, y, t, dim, torchFrame);
+        const piece = places.get(i);
+        if (piece) {
+          const f = atlas.landmark(b, piece.role, piece.asset);
+          L.decor.push(
+            x * TILE + (piece.w * TILE) / 2,
+            -(y + piece.h) * TILE,
+            0.32,
+            piece.w * TILE,
+            piece.h * TILE,
+            f.u0,
+            f.v0,
+            f.u1,
+            f.v1,
+            dim,
+          );
+          const [cx, cy] = toCss(x * TILE, -y * TILE);
+          const cw = (piece.w * TILE * k) / dpr,
+            ch = (piece.h * TILE * k) / dpr;
+          if (cx + cw > 0 && cy + ch > 0 && cx < devW / dpr && cy < devH / dpr)
+            landmarkDraws.push({
+              ...piece,
+              painted: !!atlas.envTile(b, piece.asset),
+              rect: { x: cx, y: cy, w: cw, h: ch },
+            });
+        } else if (hd && !st.landmarkArea.has(i)) dress(b, x, y, t, dim, torchFrame);
       }
     L.tiles.end();
     L.decor.end();
@@ -2414,6 +2453,10 @@ export function createViewer(canvas: HTMLCanvasElement, opts: ViewerOpts = {}): 
         };
       }
       return out;
+    },
+    debugLandmarks() {
+      const draws = glLost ? (view2d?.landmarkDraws ?? []) : landmarkDraws;
+      return draws.map((piece) => ({ ...piece, rect: { ...piece.rect } }));
     },
     debugRects() {
       return rects.map((r) => ({ ...r }));

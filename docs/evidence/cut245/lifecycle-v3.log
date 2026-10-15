@@ -1,0 +1,184 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: context-loss Canvas composition matches GL
++ actual - expected
+... Skipped lines
+
+  [
+    {
+      asset: 'barrel',
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'stump',
+      w: 1,
+      x: 21,
+      y: 13
+    },
+...
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'trap',
+      w: 1,
+      x: 23,
+      y: 13
+    },
+...
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'urn',
+      w: 1,
+      x: 25,
+      y: 13
+    },
+...
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'reeds',
+      w: 1,
+      x: 22,
+      y: 14
+    },
+...
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'log',
+      w: 1,
+      x: 23,
+      y: 14
+    },
+...
+      h: 1,
++     painted: false,
+-     painted: true,
+      role: 'reeds',
+      w: 1,
+      x: 25,
+      y: 14
+    }
+
+    at file:///home/g/p/riddle/docs/evidence/cut245/capture.mjs:184:20 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      x: 21,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'stump',
+      asset: 'barrel',
+      painted: false
+    },
+    {
+      x: 23,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'trap',
+      asset: 'crate',
+      painted: false
+    },
+    {
+      x: 25,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'urn',
+      asset: 'pot',
+      painted: false
+    },
+    {
+      x: 22,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'reeds',
+      asset: 'reeds',
+      painted: false
+    },
+    {
+      x: 23,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'log',
+      asset: 'log',
+      painted: false
+    },
+    {
+      x: 25,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'reeds',
+      asset: 'reeds_1',
+      painted: false
+    }
+  ],
+  expected: [
+    {
+      x: 21,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'stump',
+      asset: 'barrel',
+      painted: true
+    },
+    {
+      x: 23,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'trap',
+      asset: 'crate',
+      painted: true
+    },
+    {
+      x: 25,
+      y: 13,
+      w: 1,
+      h: 1,
+      role: 'urn',
+      asset: 'pot',
+      painted: true
+    },
+    {
+      x: 22,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'reeds',
+      asset: 'reeds',
+      painted: true
+    },
+    {
+      x: 23,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'log',
+      asset: 'log',
+      painted: true
+    },
+    {
+      x: 25,
+      y: 14,
+      w: 1,
+      h: 1,
+      role: 'reeds',
+      asset: 'reeds_1',
+      painted: true
+    }
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v22.18.0

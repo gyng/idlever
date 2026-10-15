@@ -163,7 +163,7 @@ try {
           sampled: false,
           learned: ["item:blue=heal"],
           bests: [],
-          found: [{ label: "mystery scroll?" }],
+          // Omit optional new_finds summary to exercise actual ExitLine.finds item icons.
           deaths: [],
           pending: [],
           marks_earned: 0,
@@ -177,14 +177,30 @@ try {
           salvaged: [{ kind: "axe", n: 2, gold: 60 }],
           spent: [{ kind: "heal", n: 3, gold: 75 }],
           stolen: [{ label: "leash", n: 1 }],
-          exits: [],
+          exits: [
+            {
+              tier: "bank",
+              kept: 0,
+              spent: 0,
+              spent_on: [],
+              text: "banked $0",
+              carried: 0,
+              keep_pct: 100,
+              run_id: 1,
+              finds: [{ id: 9001, kind: "scroll", label: "mystery scroll?", known: false }],
+            },
+          ],
         },
       });
       const sections = [...document.querySelectorAll(".report .rsec")];
-      for (const label of ["found", "kept", "shelved", "salvaged", "spent", "stolen"]) {
+      for (const label of ["found", "salvaged", "spent", "stolen"]) {
         const section = sections.find((s) => s.querySelector(".label")?.textContent === label);
         check(section?.querySelector(".item-ico"), `report ${label} item icons`);
       }
+      check(
+        !sections.some((s) => ["kept", "shelved"].includes(s.querySelector(".label")?.textContent)),
+        "retired injected storage sections stay absent",
+      );
       check(
         document
           .querySelector('.report .concept[data-concept="bones"] img')

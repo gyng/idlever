@@ -46,8 +46,7 @@ const fn oath(id: &'static str, prereq: Option<&'static str>, tier: u32) -> Unlo
 /// every price ≤ ◆8, the rows monotonic (3 · 4 · 5 · 6 · 7 · 8). The condition words and the cards a
 /// row could type are free vocabulary; the automations are gold (at the Lich); the party slots, gas
 /// step, last stand, the verb `hold`, the D9 route and the heir pick are oath rewards, never sold.
-/// Fact gates (`gate`) stand as before. (Cut 29 §4: `quartermaster` and `auto_insure` left the
-/// catalogue — both are the default now: `LineageState::keep_auto`, the standing orders' insure.)
+/// Fact gates (`gate`) stand as before; town workers own chore automation.
 pub const UNLOCKS: &[UnlockDef] = &[
     // T0 · free vocabulary (still fact-gated), the leash, the rogue (first bank).
     free("cond_alert", 0),
@@ -408,7 +407,7 @@ fn mark_short(l: &LineageState, cat: &mut [UnlockInfo]) {
 
 /// Cut 6 §6: what a tactic card does, as rows (its sub-rows in order, the vocabulary's own
 /// tokens), or an automation's effect as one row-like entry (`{conds: [], verb: {v: "auto",
-/// a: "keeps best weapon+armour"}}`). `None` for rows, vaults, slots, classes, conditions and
+/// a: "paths to bones"}}`). `None` for row slots, classes, conditions and
 /// verbs. Rows are the language: no sentences.
 /// Whether `unlock_rows(id)` holds a row `pred` accepts — read on the tick's hot paths (`turn::row_needs`
 /// per item, per pack slot), so the unlocks' and mastery cards' rows are built once, not per call.
@@ -448,9 +447,6 @@ pub fn unlock_rows(id: &str) -> Option<Vec<Row>> {
         "hawkeye" => Some(vec![row(vec![n("adj>=", 1)], "kite"), row(vec![n("foes>=", 2)], "volley"), rowa(vec![n("foes>=", 1)], "double_shot", "nearest"), rowa(vec![n("foes>=", 1)], "shoot", "nearest")]),
         "archmage" => Some(vec![row(vec![n("adj>=", 2)], "nova"), row(vec![n("adj>=", 1)], "ward"), row(vec![n("adj>=", 1), n("hp<", 50)], "blink"), rowa(vec![n("foes>=", 1)], "bolt", "nearest")]),
         "gunslinger" => Some(vec![row(vec![],"fast_reload"),rowa(vec![n("foes>=",1)],"finishing_shot","lowest"),rowa(vec![n("foes>=",1)],"aimed_shot","nearest"),rowa(vec![n("foes>=",1)],"fire","nearest")]),
-        "quartermaster" => auto("keeps best weapon+armour"),
-        "auto_supply" => auto("rebuys last supplies"),
-        "auto_insure" => auto("insures brought items"),
         "incubator" => auto("eggs hatch 1 rest"),
         "supply_cap_5" => auto("5 supplies"),
         "bone_sense" => auto("paths to bones"),
@@ -931,10 +927,24 @@ pub fn pending(game: &Game) -> Vec<String> {
 mod tests {
     use super::*;
     #[test]
+    fn retired_automation_metadata_has_no_rows_or_public_purchase() {
+        let mut game = Game::new(244);
+        game.build_town("house").unwrap();
+        let before = game.save();
+        for id in ["quartermaster", "auto_supply", "auto_insure"] {
+            assert!(def(id).is_none(), "{id}");
+            assert!(unlock_rows(id).is_none(), "{id}");
+            assert!(!unlock_rows_any(id, |_| true), "{id}");
+            assert!(game.unlocks().iter().all(|u| u.id != id), "{id}");
+            assert_eq!(game.buy(id).unwrap_err(), "unknown unlock");
+            assert_eq!(game.buy_unlock_gold(id).unwrap_err(), "unknown unlock");
+        }
+        assert_eq!(game.save(), before, "refused retired purchases change no save state");
+    }
+
+    #[test]
     fn catalogue_matches_the_contract() {
-        // Cut 29 §1 (docs/PROGRESSION.md §4): 44 − quartermaster − auto_insure (the default now)
-        // + the two oath slots + three oath rewards of their own (`hold`, `route2`, `heir_pick`).
-        // Cut 35 adds the fifth base class without changing earlier prices.
+        // Current vocabulary, card and oath rewards; retired storage purchases stay absent.
         assert_eq!(UNLOCKS.len(), 44, "Cut201 removes the four obsolete storage purchases");
         assert!(["vault2", "vault3", "vault4", "vault5"].iter().all(|id| def(id).is_none()));
         let gunner=def("gunner").unwrap();
@@ -1034,7 +1044,7 @@ mod tests {
         assert!(g.lineage.gold_ledger.is_empty());
     }
 
-    /// Cut 6 §6: every card and automation carries rows; rows, vaults, slots, classes,
+    /// Cut 6 §6: every card and automation carries rows; row slots, classes,
     /// conditions and verbs do not. Card rows use real tokens (≤ 3 conds); automations are
     /// one `auto` row with a ≤ 4-word effect.
     #[test]

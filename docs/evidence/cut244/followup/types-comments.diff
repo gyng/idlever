@@ -1,0 +1,44 @@
+--- web/src/engine/types.ts:before-comments
++++ web/src/engine/types.ts:after-comments
+@@ -274,7 +274,7 @@
+   text: string;
+   secured?: number; // Cut 30.5 (core; the owner: a new record is a checkpoint, never an exit): of `carried`, the gold the run's checkpoints secured — kept whole at any exit (a death keeps it alone); `keep_pct` is the share of the rest (`banked $120 · $80 secured + 100% of $40`)
+   trace?: Trace; // Cut 9 §5: the exit's last-5 trace (every tier)
+-  salvaged?: { kind: string; n: number; gold: number }[]; // what the exit salvaged before the keep sheet (a return's 40 % cut), per kind in coins; `kind` is a display name — an unidentified kind reads as its flavour (`brittle scroll?`, QA 1a2a4a9)
++  salvaged?: { kind: string; n: number; gold: number }[]; // retained legacy salvage rows; current found-item conversion creates no exit salvage payment; `kind` is a display name — an unidentified kind reads as its flavour (`brittle scroll?`, QA 1a2a4a9)
+   run_id?: number; // the run, so a report's trace links can open its replay (QA on e0f87e7: the return sheet's had `watch`, the report's did not)
+   xp?: number;
+   level_ups?: number; // QA 92eb880: the XP this run earned (the part that crossed a level included) and the levels crossed — the watched report's `xp` line, never a client-side ladder (web's 40·L² was not the core's; `fighter +0 · L4 ↑1`)
+@@ -328,7 +328,7 @@
+   max_hp?: number;
+   lost?: number;
+ }; // Cut 26 §6 (core; AP: a drive-off at 25/36 hp, no verdict screen): the run (open its verdict from the report), the hero's hp at the drive-off, the carry it lost
+-/** Cut 6 §1 — one gold movement in the camp's `gold` sheet: `+$50 returned D5`, `−$40 heal`, `−$8 insure sword`. */
++/** Cut 6 §1 — one gold movement in the camp's `gold` sheet: `+$50 returned D5`, `−$40 forge sword`, `+$20 chest`. */
+ export type GoldLine = {
+   bloodline_id?: number;
+   t: number;
+@@ -375,9 +375,9 @@
+   known: boolean;
+   label: string;
+   hint?: "benevolent" | "malevolent";
+-  free?: boolean; // Cut 12 §6: a supply the camp gave (the kennel's leash) reads `leash · kennel`; the core always sends it
+-  found?: boolean; // Cut 21 §2: a shelf line an exit put there (found in the dungeon, packed free) — `heal · found`
+-  enchanted?: number; // QA 524827b (core): the `+N` enchant scrolls read on it added (KEPT `axe +7 → vault · enchanted ×6`)
++  free?: boolean; // The kennel's free prepared leash reads `leash · kennel`; the core supplies this provenance
++  found?: boolean; // Retained legacy found-supply provenance on accepted prepared items; current dungeon finds convert to Gold
++  enchanted?: number; // The `+N` enchant scrolls added to this physical item
+   rarity?: Rarity;
+ }; // run-clear (core `item::rarity`): read off its kind's depth band and its +N; absent = common
+ /** Run-clear (core `item::Rarity`): an item's rarity, rising — common · uncommon · rare · epic · masterwork · legendary. */
+@@ -2022,8 +2022,8 @@
+   selectStartingKit?(id: string): Lineage;
+   deleteStartingKit?(id: string): Lineage;
+   // Cut 30.5 (core): the works tree — each returns the Lineage (throws with a ≤ 3-word reason). The chores by hand are the existing calls:
+-  // send (before the scout) · loadout (wear a find) · buyKit · keep (a keep sheet) / sellVault · bankDeposit · spendLevel · setParty / hatch ·
+-  // swapQuest · setStart — each fills its node's count (`WorkNode.count`) until its worker is hired.
++  // send (before the scout) · starting-kit preparation · buyKit · forgeStep · bankDeposit · spendLevel · setParty / hatch ·
++  // swapQuest · setStart — successful chores feed count fallbacks or the worker's configured feat until hired.
+   selectBloodline?(id: number): Lineage;
+   addBloodline?(): Lineage;
+   upgradeHero?(id: string): Lineage;

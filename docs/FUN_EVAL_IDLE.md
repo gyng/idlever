@@ -81,6 +81,17 @@ banked gains) beyond stakes the player explicitly chose.
 The universal tiers assume continuous play. For idle games the **evidence horizon must
 state the absences**, and the rater must actually take them.
 
+Keep dated observations/feedback beside each session's traces and checks. Pin
+the build/source, input save/seed, viewport and actual play/absence horizon;
+record observed behavior separately from the player's comments and the rater's
+interpretation/confidence. A passing automated journey does not replace these
+notes. Record friction, confusion and positive responses even when no gate fails.
+Treat conclusions as version- and context-bound: before using an old finding
+for a new recommendation or acceptance decision, inspect changes to the relevant
+UI, rules, content, pacing and player context and re-play the affected moment.
+Retain superseded notes with the new observation linked; do not erase failures
+or silently treat historical feedback as current evidence.
+
 - **Tier 1 — one hour plus one absence.** 40 minutes cold, then leave for ≥ 3 hours
   without the app open, then 20 minutes on return. Answer the sixteen probes after the
   return, not before. Screenshot: first minute, first agent death, the return screen, the

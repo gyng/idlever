@@ -1,0 +1,16 @@
+{
+  "scope": "V3 normal draw paths unchanged; later debugLandmarks returns active Canvas draws during context loss instead of stale GL list. Actual later lifecycle-v5 verifies that branch. This bridge is not new screenshot/cost evidence.",
+  "normalSourceSha256": "9cc1c879d3973e0e11b898ba838c2fda91967786a4d68e2e565a2797b766416b",
+  "currentSourceSha256": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+  "exactReconstructionMatches": true,
+  "otherRecordedSourceArtUnchanged": {
+    "web/src/render/atlas.ts": true,
+    "web/src/render/state.ts": true,
+    "web/src/render/view2d.ts": true,
+    "web/src/render/landmarks.ts": true,
+    "web/public/art/atlas.json": true,
+    "web/public/art/atlas.png": true
+  },
+  "oldDebugBody": "      return landmarkDraws.map((piece) => ({ ...piece, rect: { ...piece.rect } }));",
+  "newDebugBody": "      const draws = glLost ? (view2d?.landmarkDraws ?? []) : landmarkDraws;\n      return draws.map((piece) => ({ ...piece, rect: { ...piece.rect } }));"
+}

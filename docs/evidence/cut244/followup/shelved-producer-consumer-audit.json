@@ -1,0 +1,50 @@
+{
+  "scope": "Source-only producer/consumer classification, before shelved wire retirement. Native writes are inert; fake still diverges. Preserve current prepared supplies, IDs, leashes, restock and Gold. Historical nonempty reporting removals require explicit declaration, never empty normalization.",
+  "native": {
+    "Batch.shelved": "engine.rs3199: default empty BTreeMap; zero production writers; offline.rs598 reads only.",
+    "ExitLine.shelved": "wire.rs365; engine.rs5808 immutable empty Vec;6101loop is sole writer; exit_line initializer emits empty.",
+    "ReturnReport.shelved": "wire.rs1656; offline.rs598 maps Batch.shelved.",
+    "currentExitFateProducers": "finish_run constructs new local exit_fate (engine.rs5801), inserts only converted (5805/5832) or bones(5819). No deserialized fate map is used.",
+    "preparedSupplies": "Lineage.supplies/bought_leashes, supply allocator next_vault_id, free/current preparation, physical recovery and restock paths remain separate and must stay unchanged.",
+    "qaAndTests": [
+      "examples/qa.rs110/124 label checks;853\u2013854 empty shelf comparison must be replaced by current accepted fate/quantity/privacy coverage",
+      "tests.rs7288,9261,9263: replace empty obsolete field assertions with current schema absence, keeping substantive free-prep/conversion assertions",
+      "examples/cut21.rs85 historical diagnostic optional JSON shelved reporting: disposition as historical"
+    ]
+  },
+  "client": {
+    "web/src/engine/fake.ts": [
+      "4588\u20134615 actively copies carried found supplies to shelf (not native behavior); retire that path with correct once-only current economy handling",
+      "5014\u20135019 report aggregate"
+    ],
+    "web/src/engine/types.ts": [
+      "FoundRow.fate historical storage values",
+      "ExitLine.shelved",
+      "ReturnReport.shelved"
+    ],
+    "web/src/app.ts": [
+      "2109 report aggregation"
+    ],
+    "web/src/ui/report.ts": [
+      "2200 shelved chips section"
+    ],
+    "web/src/ui/death.ts": [
+      "169 Pick field",
+      "211\u2013212 shelved extras; preserve shelvedText helper used for actual swap_left/bones labels"
+    ],
+    "web/src/styles.css": [
+      "4736 chips.shelved selector; preserve current supply/found styles"
+    ]
+  },
+  "historicalTests": {
+    "web/tests/cut21.mjs": "Injects shelved report/exit data and expects the old UI; preserve original source and document supersession; retain current supply/restock/preparation checks.",
+    "web/tests/item-icons.mjs": "Injects shelf chips; remove only retired section from expected icon inventory and preserve all current section checks.",
+    "web/tests/cut28.mjs": "Requires shelved key in historical aggregate list; classify exact state and current alternative."
+  },
+  "legacyInputBoundary": {
+    "load": "save.rs15\u201316 deserializes Game; saved history/Batch/FoundRow values are not the local exit_fate map. Removing shelved fields drops previously accepted old nonempty reporting values; there is no migration guarantee. Do not claim nonbehavior for arbitrary old/injected JSON.",
+    "replay": "engine.rs3593 restores capsule Game, reapplies actual inputs and ticks. Current finish_run constructs converted/bones fate map; it never maps saved FoundRow.fate into exit_fate. Historical stored reports remain otherwise unchanged until explicit field retirement.",
+    "report": "offline::report_with reads Batch.shelved directly today; this is a real historical/injected nonempty input path and must be named in removal scope.",
+    "comparator": "Allow only exactly empty Batch.shelved={} and typed optional ExitLine/ReturnReport.shelved=[] removals in current paired evidence; reject nonempty removals. Gold/provenance and all other fields remain exact."
+  }
+}

@@ -254,9 +254,7 @@ const UNLOCK_ROWS: Record<string, Row[]> = {
       verb: { v: "attack", a: "lowest" },
     },
   ],
-  // automations: one row-like entry, the core's shape (`{conds: [], verb: {v: "auto", a: "keeps best weapon+armour"}}`)
-  quartermaster: [{ conds: [], verb: { v: "auto", a: "prepares unlocked supplies" } }],
-  auto_supply: [{ conds: [], verb: { v: "auto", a: "restocks supplies" } }],
+  // Current automations use the core's row-like descriptor shape.
   incubator: [{ conds: [], verb: { v: "auto", a: "hatches eggs at rest" } }],
   bone_sense: [{ conds: [], verb: { v: "auto", a: "paths to bones" } }],
 };
@@ -376,8 +374,6 @@ export const UNLOCKS: Record<string, UnlockDef> = {
   thief_guard: { cost: 3, needs: "foe: thief", gate: hasFact(/^foe:[a-z_]+:thief$/) },
   boss_focus: { cost: 3, needs: "boss 1", gate: (L) => bossKills(L) >= 1 },
   last_stand: { cost: 3, needs: "D5", gate: (L) => L.best_depth >= 5 },
-  quartermaster: { cost: 5 },
-  auto_supply: { cost: 4 },
   incubator: { cost: 4, needs: "egg ≥ 1", gate: (L) => L.eggs.length >= 1 },
   supply_cap_5: { cost: 3 },
   bone_sense: { cost: 3, needs: "bones", gate: hasFact(/^bones:/) },
@@ -447,7 +443,7 @@ const DEV_VISION =
   (typeof location !== "undefined" &&
     Number(new URLSearchParams(location.search).get("fake_vision"))) ||
   7;
-const SALVAGE: Record<string, number> = {
+const PICKUP_VALUE: Record<string, number> = {
   dagger: 10,
   sword: 20,
   axe: 30,
@@ -457,8 +453,8 @@ const SALVAGE: Record<string, number> = {
   plate: 40,
   leash: 5,
 };
-const salvageOf = (kind: string): number =>
-  SALVAGE[kind] ?? (POTIONS.includes(kind) ? 8 : SCROLLS.includes(kind) ? 12 : 0);
+const pickupValueOf = (kind: string): number =>
+  PICKUP_VALUE[kind] ?? (POTIONS.includes(kind) ? 8 : SCROLLS.includes(kind) ? 12 : 0);
 const TAG_VERB: Record<string, string> = {
   ranged: "shoot",
   gas: "burst",
@@ -2257,7 +2253,6 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
     const pile = run.bonesPiles.find((b) => b.heir === heir && b.depth === run.depth);
     if (!pile) return;
     run.bonesFound.push(pile);
-    run.loot += pile.items * 8;
     ev.push({ t: run.turn, k: "bones", heir, items: pile.items });
     ev.push({ t: run.turn, k: "note", text: `found the bones of ♟${heir}` });
     ev.push({ t: run.turn, k: "callout", text: `bones ♟${heir}` });
@@ -2276,7 +2271,11 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
     inv.hint = ["poison", "caustic", "fire", "confusion", "aggravate"].includes(it.kind)
       ? "malevolent"
       : "benevolent";
-  run.picked.push({ ...inv });
+  // Physical re-picks and prepared supplies never create the same value twice.
+  if (!run.brought.includes(it.id) && !run.picked.some((p) => p.id === it.id)) {
+    run.loot += pickupValueOf(it.kind);
+    run.picked.push({ ...inv });
+  }
   if (WEAPONS[it.kind] || ARMOUR[it.kind] !== undefined) run.gear.push({ ...inv });
   if (WEAPONS[it.kind]) {
     if (!run.hero.weapon || WEAPONS[it.kind][1] > run.hero.atk[1]) {
@@ -2284,7 +2283,6 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
       run.hero.atk = WEAPONS[it.kind];
       ev.push({ t: run.turn, k: "callout", text: `wields ${it.kind}` });
     }
-    run.loot += 10;
     return;
   }
   if (ARMOUR[it.kind] !== undefined) {
@@ -2293,7 +2291,6 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
       run.hero.def = ARMOUR[it.kind];
       ev.push({ t: run.turn, k: "callout", text: `wears ${it.kind}` });
     }
-    run.loot += 10;
     return;
   }
   if (run.hero.inv.length < 10) run.hero.inv.push(inv);
@@ -2301,9 +2298,9 @@ function pickUp(run: Run, it: FloorItem, ev: Ev[]): void {
 function endRun(run: Run, tier: "bank" | "return" | "death", ev: Ev[]): void {
   run.over = true;
   run.exit = tier;
-  // Cut 13 §1: a stalled run comes home as a return that keeps nothing (`returned $0 · $84 carried · keeps 0% · stalled`)
-  const keep_pct = run.stalled ? 0 : tier === "bank" ? 100 : tier === "return" ? 60 : 0;
-  run.loot_kept = Math.round((run.loot * keep_pct) / 100); // Cut 2 §2: death 0%
+  // Current remaining carry: Bank/Return100%, Death0%; converted finds need no exit salvage.
+  const keep_pct = tier === "death" ? 0 : 100;
+  run.loot_kept = Math.round((run.loot * keep_pct) / 100);
   // Cut 6 §1: one arithmetic line the player can check (supplies were paid in camp; a death names its bones instead)
   const spent = run.spent.reduce((n, x) => n + x.price, 0);
   // Cut 10 §3 (as the core): the line leads with the verb and what came home
@@ -4315,16 +4312,6 @@ export class FakeEngine implements Engine {
     return { events, snapshot: snap, run_over: this.live.over };
   }
   // apply a finished run to the lineage; returns [newFacts, newBests, marks]
-  private carried(run: Run): InvItem[] {
-    return [
-      ...run.gear.filter((g) => !run.brought.includes(g.id)),
-      ...run.hero.inv.filter(
-        (i) =>
-          !run.brought.includes(i.id) &&
-          !(this.s.lineage.supplies ?? []).some((s) => s.id === i.id),
-      ),
-    ];
-  }
   private settle(
     run: Run,
     real: boolean,
@@ -4380,20 +4367,11 @@ export class FakeEngine implements Engine {
       run.loot_kept,
       `${run.stalled ? "stalled" : run.exit === "bank" ? "banked" : run.exit === "return" ? "returned" : "died"} D${run.depth}`,
     );
-    L.supplies = [];
-    // Cut 13 §3: `auto: restock` rebuys what the run packed, at the return, when the gold allows (the report's SPENT rows)
+    // Reusable preparation stays free; found physical items never become home supply instances.
+    const named = new Set(this.s.rules.rows.flatMap((r) => (r.verb.a ?? "").split(",")));
+    L.supplies =
+      L.repeat === false ? [] : L.supplies.filter((it) => !it.found && named.has(it.kind));
     const spent: { kind: string; n: number; gold: number }[] = [];
-    if (L.unlocks.includes("auto_supply"))
-      for (const p of run.spent) {
-        if (L.gold < p.price || L.supplies.length >= this.supplyCap()) continue;
-        this.gold(-p.price, p.label, 1);
-        L.supplies.push({ id: this.s.nextItem++, kind: p.kind, known: true, label: p.label });
-        const row =
-          spent.find((x) => x.kind === p.kind) ??
-          (spent.push({ kind: p.kind, n: 0, gold: 0 }), spent[spent.length - 1]);
-        row.n++;
-        row.gold += p.price;
-      }
     L.rest_left_s = run.rest_s; // Cut 2 §1: camp rest after every expedition (send skips it)
     // RUNS_UI: the runs log, as the fake can tell it (the core's `run_log`: via, the absence's fold, the clock at the end)
     {
@@ -4503,6 +4481,18 @@ export class FakeEngine implements Engine {
       run.line.finds = run.picked
         .filter((it) => it.kind !== "gold")
         .map(withRarity)
+        .map((it) =>
+          !it.known
+            ? {
+                ...it,
+                kind: POTIONS.includes(it.kind)
+                  ? "potion"
+                  : SCROLLS.includes(it.kind)
+                    ? "scroll"
+                    : it.kind,
+              }
+            : it,
+        )
         .sort(
           (a, b) =>
             RARITY_ORDER.indexOf(b.rarity ?? "common") - RARITY_ORDER.indexOf(a.rarity ?? "common"),
@@ -4589,30 +4579,14 @@ export class FakeEngine implements Engine {
       L.trait_offer = [pool[a], pool[(a + 1 + ((L.seed >>> 5) % (pool.length - 1))) % pool.length]];
       L.trait = L.trait_offer[0];
     }
-    // Addendum D: keep into free vault slots, salvage the rest (Cut 2 §2: a death's kit is bones, not salvage)
-    const tierMul = run.exit === "bank" ? 1 : 0.6;
-    const salv: Record<string, { n: number; gold: number }> = {};
-    // Cut 21 §2 stand-in: a found supply of a kind the shelf sells goes onto the shelf (up to the cap), not to salvage
-    const sells = new Set(this.supplyCatalogue().map((c) => c.kind));
-    const shelf: Record<string, number> = {};
-    for (const it of run.exit === "death" ? [] : this.carried(run)) {
-      if (it.known && sells.has(it.kind) && L.supplies.length < this.supplyCap()) {
-        L.supplies.push({ ...it, id: this.s.nextItem++, found: true });
-        shelf[it.kind] = (shelf[it.kind] ?? 0) + 1;
-        continue;
-      }
-      const g = Math.round(salvageOf(it.kind) * tierMul);
-      this.gold(g, `salvaged ${it.kind.replace(/_/g, " ")}`);
+    // Forge knowledge follows each real conversion, including consumed or physically lost finds.
+    for (const it of run.picked) {
       const f = (L.forge[it.kind] ??= { salvaged: 0, craftable: false, tier: 0 });
       f.salvaged++;
       f.craftable = f.salvaged >= 5;
       f.tier = f.salvaged >= 40 ? 2 : f.salvaged >= 15 ? 1 : 0;
-      (salv[it.kind] ??= { n: 0, gold: 0 }).n++;
-      salv[it.kind].gold += g;
     }
-    const salvaged = Object.entries(salv).map(([kind, v]) => ({ kind, ...v }));
-    if (run.line && Object.keys(shelf).length)
-      run.line.shelved = Object.entries(shelf).map(([kind, n]) => ({ kind, n }));
+    const salvaged: { kind: string; n: number; gold: number }[] = [];
     // Cut 21 §1 stand-in: a bank lights every waystone at or above its floor
     if (run.exit === "bank") {
       const lit = WAYSTONES.filter((w) => w <= run.depth);
@@ -4783,7 +4757,7 @@ export class FakeEngine implements Engine {
       };
     });
   }
-  /** Cut 19 §3 stand-in: the fake has no repeat; the flag is kept on the lineage so the tile can toggle. */
+  /** Toggle free reusable preparation for subsequent runs. */
   setRestock(on: boolean): Lineage {
     (this.s.lineage as Lineage).repeat = on;
     if (!on) return this.clearSupplies();
@@ -5011,12 +4985,6 @@ export class FakeEngine implements Engine {
         const n = biomeOn(a, this.s.rules.route);
         return `D${a}–${b} · the ${n[0].toUpperCase()}${n.slice(1)}`;
       }), // Cut 26 §2 stand-in
-      shelved: (() => {
-        const m: Record<string, number> = {};
-        for (const x of exits) for (const y of x.shelved ?? []) m[y.kind] = (m[y.kind] ?? 0) + y.n;
-        const o = Object.entries(m).map(([kind, n]) => ({ kind, n }));
-        return o.length ? o : undefined;
-      })(), // Cut 21 §2 stand-in (the kept exits')
       bounty:
         bountyD <= 0
           ? undefined

@@ -3,7 +3,7 @@ import type { BloodlineTab } from "./bloodline-tabs";
 import { openHeroHub, heroHubOwner, type HeroHubSection } from "./hero-hub";
 import { heroPresence, heroAway } from "./hero-presence";
 // Home's actual sprites are the primary surfaces (≥44px, full accessible names).
-// Existing native availability produces quiet dots; hover/focus/long-press shows
+// Existing native availability lights eave lanterns; hover/focus/long-press shows
 // details and a normal tap opens the existing panel. Purchases remain inside it.
 import "../town.css";
 import "../legible.css";
@@ -575,6 +575,8 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
           },
           h("span", { class: "vh" }, label),
         );
+        // Rich details keep keyword encounter metadata after toolbar labels disappear.
+        if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         if (service(w.id)) detailHost(b, () => serviceDetails(w.id));
         else if (buildingId(w.id))
           detailHost(b, () => [
@@ -583,7 +585,6 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
               .filter((m) => m.at === w.id && m.label)
               .map((m) => h("div", { class: "kw-tip-gloss" }, m.label!)),
           ]);
-        else if (HIT_TERM[w.id]) kwHost(b, HIT_TERM[w.id]!);
         btns.set(w.id, b);
         hits.appendChild(b);
       }
@@ -621,30 +622,57 @@ export function renderTown(app: App, hooks: TownHooks): TownUi {
       b.dataset.worker = lit?.id ?? "";
       const holder =
         b.querySelector(".town-markers") ?? b.appendChild(h("span", { class: "town-markers" }));
-      replace(
-        holder,
-        ...mk.map((m) =>
-          h("span", {
-            class: `town-marker mk-${m.kind}`,
-            "data-marker": m.kind,
-            "aria-hidden": "true",
+      const markerState = JSON.stringify([
+        mk[0]?.kind ?? null,
+        nw && nwAt === w.id ? [nw.id, nw.name, nw.text] : null,
+      ]);
+      // Preserve the lamp and its animation clock across ordinary Home refreshes.
+      if (holder.getAttribute("data-marker-state") !== markerState) {
+        holder.setAttribute("data-marker-state", markerState);
+        replace(
+          holder,
+          // One lit lantern per building; its accessible name retains every action.
+          ...mk.slice(0, 1).map((m) => {
+            const lamp = h("span", {
+              class: `town-marker mk-${m.kind}`,
+              "data-marker": m.kind,
+              "aria-hidden": "true",
+            });
+            const src = decorationSrc("town_readiness_lantern");
+            if (src) {
+              const image = h("img", { alt: "", draggable: "false" });
+              image.addEventListener("load", () => lamp.classList.add("town-marker-painted"), {
+                once: true,
+              });
+              image.addEventListener(
+                "error",
+                () => {
+                  lamp.classList.remove("town-marker-painted");
+                  image.remove();
+                },
+                { once: true },
+              );
+              image.src = src;
+              lamp.appendChild(image);
+            }
+            return lamp;
           }),
-        ),
-      );
-      if (nw && nwAt === w.id)
-        holder.appendChild(
-          h(
-            "span",
-            {
-              class: "town-marker mk-next",
-              "data-marker": "next",
-              "data-node": nw.id,
-              title: nw.name,
-            },
-            nodeIcon(nw.id, nw.name),
-            h("b", { class: "num" }, nw.text),
-          ),
         );
+        if (nw && nwAt === w.id)
+          holder.appendChild(
+            h(
+              "span",
+              {
+                class: "town-marker mk-next",
+                "data-marker": "next",
+                "data-node": nw.id,
+                title: nw.name,
+              },
+              nodeIcon(nw.id, nw.name),
+              h("b", { class: "num" }, nw.text),
+            ),
+          );
+      }
       b.dataset.markers = [...mk.map((m) => m.kind), ...(nw && nwAt === w.id ? ["next"] : [])].join(
         " ",
       );

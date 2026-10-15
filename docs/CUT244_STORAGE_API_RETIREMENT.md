@@ -80,3 +80,17 @@ advertised as full retirement while storage metadata/behavior remains active.
 Evidence destination: docs/evidence/cut244/. This document claims no completed
 removal, parity result, gate or release. Product truth stays in Rust and all
 absence/manual-construction/checkpoint-Gold invariants remain authoritative.
+
+## Follow-up boundary: retained preparation provenance
+
+The inactive descriptor/classifier/shelf-report follow-up is documented separately
+in `docs/evidence/cut244/followup/README.md`. `Item.found` and `Item.paid` are
+retained accepted prepared-item metadata, with real repeat/free/nonfree-leash
+consumers. Current preparation writes zero paid value; leash return uses the
+prepared quantity without a refund or another converted-value payment. These
+fields and `Run.bought_leashes` are not classified as dead storage. Removing them
+would require a separate migration contract preserving those accepted consumers.
+The exact original reads/source excerpts are archived in
+`followup/retained-preparation-provenance.json`. Final item/wire/type documentation
+corrections are separately proven comment-only after the recorded native/client
+validation boundaries; they do not claim another compiler or package run.

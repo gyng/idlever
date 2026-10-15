@@ -1,0 +1,140 @@
+--- engine.rs:97e8
++++ engine.rs:followup
+@@ -537,8 +537,7 @@
+     /// Cut 29 §1: the lineage owns `route2` (an oath's reward) — the D9 fork is seen.
+     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+     pub route2: bool,
+-    /// Cut 28 §4 (AU: a one-slot vault salvaged a caged sword +1, no choice): the items taken from
+-    /// a cage this run — a return's cut never takes them; they reach the keep sheet.
++    /// Item IDs accepted from a cage this run; their pickup value converts once to carried Gold.
+     #[serde(default, skip_serializing_if = "crate::shared::vec_is_empty")]
+     pub caged: crate::shared::Shared<Vec<u32>>,
+     /// Cut 28 §1: (floor, tick) each time the run went deeper than it had been (the `swift` oath).
+@@ -2201,7 +2200,7 @@
+         // QA on 912e135 (qaW: `sword +1 · $300 · 7 nights` after a night of deaths — the purse held at $40 by the heir purse): the
+         // heir purse's top-up refills to a floor and is no income; a night of deaths nets nothing toward a step.
+         // (Cut 28 §1: an oath's price and a forswearing's refund are the player's purchase too)
+-        if !["unlock ", "forge ", "insure ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish"].iter().any(|p| why.starts_with(p)) {
++        if !["unlock ", "forge ", "hatch", "egg", "ascended", "wake pay", "oath ", "forswear ", "bank ", "hire ", "tithe", "works ", "supply wish"].iter().any(|p| why.starts_with(p)) {
+             self.night_net += delta;
+             self.day_net += delta;
+         }
+@@ -2560,11 +2559,7 @@
+         let (known, _, label) = describe(&Item::new(0, kind), &self.facts, &self.flavours);
+         if known { kind.to_string() } else { label }
+     }
+-    /// QA on 1a2a4a9 (qaO: the keep sheet's `sold blink $2 · fear ×2 $3`, the report's
+-    /// SALVAGED `teleport ×9 · identify ×4` while the forge and the cond list still said
+-    /// `brittle scroll?`): a kind on a wire line (salvage rows, the cut's `sold`, the spent
+-    /// rows) is its flavour (`brittle scroll?`) until the lineage identifies it; any other
+-    /// kind (gear, a leash, an `insure sword` line) passes through.
++    /// A kind on a wire line uses its flavour until identified; known gear and leashes keep their names.
+     pub fn wire_name(&self, kind: &str) -> String {
+         if self.flavours.flavour_of(kind).is_some() && !crate::item::is_identified(&self.facts, &self.flavours, kind) {
+             self.forge_name(kind)
+@@ -3198,10 +3193,6 @@
+     /// QA on 1a2a4a9: a re-pack of this absence ran short of gold (`repeat short`).
+     #[serde(default)]
+     pub repeat_short: bool,
+-    /// Cut 21 §2: found supplies put on the shelf at the exits, per kind — (count, their
+-    /// price on the shelf).
+-    #[serde(default)]
+-    pub shelved: BTreeMap<String, (u32, i32)>,
+     // Cut 20
+     /// §1: thefts suffered this batch (every thief's, the den's included) and the dens that
+     /// woke (pounced) — the measures behind "a thief steals once per run".
+@@ -3957,11 +3948,11 @@
+     }
+ 
+ 
+-    /// Cut 3: a new lineage after the ending that keeps classes (levels), kennel, vault, ledger,
++    /// Cut 3: a new lineage after the ending that keeps classes (levels), kennel, ledger,
+     /// forge and facts; marks, gold, heirs, the descent and the unlocks start over (the second
+     /// act re-buys them; class unlocks and mastery cards stay with the classes). The rules stay.
+     /// Variants add a system each: `no_rest` (no rest verb, camp rest halved), `short_list`
+-    /// (six rows; tactic cards carry), `bones_only` (no vault), `hunted` (a grudge from the last
++    /// (six rows; tactic cards carry), `hunted` (a grudge from the last
+     /// lineage stalks every floor from D3).
+     pub fn ascend(&mut self, variant: &str) -> Result<(), String> {
+         if crate::persistent::remaining(&self.lineage)>0 {return Err("Finish recovery".into());}
+@@ -4753,7 +4744,7 @@
+     }
+ 
+     /// The end of a `step` (and of a `fold`): the snapshot, and when the run ended the settled
+-    /// exit (its ledger line and trace on the exit event, the keep sheet pending).
++    /// exit (its ledger line and trace on the exit event; settlement is automatic).
+     pub fn step_result(&mut self, mut events: Vec<Ev>, run_over: bool) -> StepResult {
+         let snapshot = self.snapshot();
+         if run_over {
+@@ -5810,7 +5801,6 @@
+             exit_fate.insert(key,"converted");
+             if !self.sim {found_items.push(it.clone());}
+         }
+-        let shelved: Vec<String> = Vec::new();
+         let mut leash_back = 0usize;
+         // Knowledge comes from a first conversion, not retaining or selling an instance.
+         for (_, kind) in &run.converted_units {
+@@ -6101,15 +6091,6 @@
+                 None => line.bones.push(crate::wire::KindCount { kind, n: 1 }),
+             }
+         }
+-        // Cut 21 §2: the found supplies this exit shelved, per kind (the client's `found heal →
+-        // shelf`; not in `text`).
+-        for k in &shelved {
+-            let kind = self.lineage.wire_name(k).replace('_', " ");
+-            match line.shelved.iter_mut().find(|c| c.kind == kind) {
+-                Some(c) => c.n += 1,
+-                None => line.shelved.push(crate::wire::KindCount { kind, n: 1 }),
+-            }
+-        }
+         // Cut 9 §5: every exit carries its last five hero turns (read off the run's own trace
+         // ring: nothing more per tick).
+         line.found = found_rows(&run, &pack, &exit_fate, |k| self.lineage.wire_name(k).replace('_', " "));
+@@ -6641,17 +6622,12 @@
+     }
+ }
+ 
+-/// QA on 778fa1b (qaV: FOUND `dagger ×2` beside SALVAGED `dagger ×1`, a `leather +1` in no
+-/// named place): where each unit the run found ended — the ways it left the pack on the way
+-/// (`Run.found_gone`: used, left, stolen), then its item's place at the exit (`fate`, by id:
+-/// kept on the sheet, salvaged, shelved, bones); a stack's units not in it at the exit were
+-/// spent (`used`: a leash on a tame, chalk on a floor); any other unit is `lost` (none should be).
+-/// Run-clear: the finds an exit line shows — kept, on the keep sheet or shelved on a bank or a return, left
+-/// in the bones on a death (never what was salvaged) — rarest first, then dearest, ≤ `wire::FINDS_SHOWN`.
++/// Run-clear finds: converted pickups and physical bones, rarest first then dearest,
++/// bounded by `wire::FINDS_SHOWN`. Physical recovery never pays converted value again.
+ pub fn exit_finds(found: &[Item], fate: &BTreeMap<(u32, String), &'static str>, facts: &BTreeSet<String>, flavours: &Flavours) -> Vec<InvItem> {
+     let mut out: Vec<(crate::item::Rarity, i32, InvItem)> = found
+         .iter()
+-        .filter(|i| matches!(fate.get(&(i.id, i.kind.clone())).copied(), Some("converted" | "sheet" | "shelved" | "bones")))
++        .filter(|i| matches!(fate.get(&(i.id, i.kind.clone())).copied(), Some("converted" | "bones")))
+         .map(|i| {
+             let w = to_inv(i, facts, flavours);
+             (w.rarity, i.value(), w)
+@@ -6864,7 +6840,7 @@
+ /// `stalled D2`, `driven D8`): the word it leads with.
+ /// Cut 117 §1: the absence ledger's term a gold movement belongs to (`GoldSummary.ledger`): `earned` (an exit's
+ /// pay, salvage, passage coins, a porter's bonus), `heir` (the heir purse's top-up), `forge` (forge steps, the
+-/// apprentice's or the player's), `works` (a commission), `supplies` (packs, drills, refunds, insurance),
++/// apprentice's or the player's), `works` (a commission), `supplies` (packs, drills, refunds),
+ /// `tolls` (a waystone), `hires` (workers and their ranks), `bank` (deposits and withdrawals), else `other`
+ /// (unlocks, oaths, hatching, ascension, a bloodline's slot).
+ pub fn gold_term(why: &str) -> &'static str {
+@@ -6889,7 +6865,7 @@
+         "hires"
+     } else if why.starts_with("bank ") {
+         "bank"
+-    } else if ["pack ", "drill ", "refund ", "insure ", "repeat ", "bought ", "restock", "supply "].iter().any(|p| why.starts_with(p))
++    } else if ["pack ", "drill ", "refund ", "repeat ", "bought ", "restock", "supply "].iter().any(|p| why.starts_with(p))
+         || crate::defs::ITEMS.iter().any(|d| d.kind.replace('_', " ") == why)
+     {
+         "supplies"
+@@ -6931,7 +6907,7 @@
+     if unused > 0 && tier != ExitTier::Death {
+         text.push_str(&format!(" · {unused} {} back", if unused == 1 { "supply" } else { "supplies" }));
+     }
+-    ExitLine { discoveries:Vec::new(),tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, shelved: Vec::new(), toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
++    ExitLine { discoveries:Vec::new(),tier: tier.name().into(), packages:Vec::new(),bloodline_id:1,secured: 0, carried, keep_pct, kept, spent, spent_on, text, trace: None, salvaged: Vec::new(), run_id: 0, legacy_earned: 0, xp: 0, level_ups: 0, stolen: Vec::new(), purse_full: false, toll: 0, start: 1, start_short: None, stolen_gold: 0, swapped: 0, cause: None, reason: None, swap_left: Vec::new(), wake: 0, found: Vec::new(), found_n: 0, bones: Vec::new(), driven: None, news: Vec::new(), meters: None, end: String::new(), reached: 0, new_best: false, finds: Vec::new() }
+ }
+ 
+ /// Cut 30.5: an exit line's head re-worded with the secured gold — `banked $120 · $80 secured + 100% of $40`, `died

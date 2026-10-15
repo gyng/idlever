@@ -1931,16 +1931,6 @@ function sameRowShape(a: Row, b: Row): boolean {
   );
 }
 
-/** Two per-label counts summed (most first); undefined when both lack the field. */
-function mergeCounts(
-  x?: { label: string; n: number }[],
-  y?: { label: string; n: number }[],
-): { label: string; n: number }[] | undefined {
-  if (x === undefined && y === undefined) return undefined;
-  const m = new Map<string, number>();
-  for (const r of [...(x ?? []), ...(y ?? [])]) m.set(r.label, (m.get(r.label) ?? 0) + r.n);
-  return [...m].map(([label, n]) => ({ label, n })).sort((p, q) => q.n - p.n);
-}
 /** QA a946e04: stolen rows summed per label, their worth (`gold`) with them. */
 function mergeStolen(
   x?: { label: string; n: number; gold?: number }[],
@@ -2106,10 +2096,6 @@ export function mergeReports(a: ReturnReport, b: ReturnReport): ReturnReport {
               a.start_short.runs +
               (a.start_short.depth === b.start_short.depth ? b.start_short.runs : 0),
           },
-    shelved: mergeCounts(
-      a.shelved?.map((x) => ({ label: x.kind, n: x.n })),
-      b.shelved?.map((x) => ({ label: x.kind, n: x.n })),
-    )?.map((x) => ({ kind: x.label, n: x.n })), // Cut 21 §2: found supplies to the shelf, per kind
     exits: cat(a.exits, b.exits), // Cut 6 §1: one ledger line per exit
     heirs:
       a.heirs?.length && b.heirs?.length

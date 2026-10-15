@@ -66,25 +66,65 @@
 }
 .town-markers {
   position: absolute;
-  left: 50%;
-  top: -6px;
-  transform: translate(-50%, -100%);
+  right: 18%;
+  top: 5px;
   display: flex;
-  gap: 4px;
   pointer-events: none;
 }
-/* Availability belongs to the sprite target, not a second purchase surface. */
+/* A lit eave lantern belongs to the building, with no separate hit surface. */
 .town-marker {
   pointer-events: none;
   display: block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #e3c183;
-  box-shadow: 0 0 0 2px #211b17;
+  position: relative;
+  width: 10px;
+  height: 13px;
+  border: 2px solid #33291e;
+  border-radius: 2px 2px 3px 3px;
+  background: linear-gradient(90deg, #8c3542, #ffd0c1 45%, #c85b60);
+  box-shadow:
+    0 1px 0 #0d1118,
+    0 0 7px 2px rgb(213 72 87 / 28%);
+  animation:
+    town-bob 2.8s ease-in-out infinite,
+    town-lantern-pulse 3.4s ease-in-out infinite;
 }
-.town-marker.mk-rune {
-  background: #8bb8c7;
+.town-marker::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: -6px;
+  height: 5px;
+  border: 1px solid #a98451;
+  border-bottom: 0;
+  border-radius: 3px 3px 0 0;
+}
+.town-marker::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 2px solid #805d33;
+  border-bottom: 2px solid #805d33;
+}
+.town-marker > img {
+  position: absolute;
+  width: 16px;
+  height: 24px;
+  max-width: none;
+  left: -5px;
+  top: -8px;
+  visibility: hidden;
+}
+.town-marker-painted {
+  background: transparent;
+  border-color: transparent;
+}
+.town-marker-painted > img {
+  visibility: visible;
+}
+.town-marker-painted::before,
+.town-marker-painted::after {
+  content: none;
 }
 .town-hit:hover,
 .town-hit:focus-visible {
@@ -98,6 +138,21 @@
   }
   50% {
     transform: translateY(-3px);
+  }
+}
+@keyframes town-lantern-pulse {
+  0%,
+  100% {
+    filter: brightness(0.9);
+    box-shadow:
+      0 1px 0 #0d1118,
+      0 0 6px 1px rgb(213 72 87 / 20%);
+  }
+  50% {
+    filter: brightness(1.15);
+    box-shadow:
+      0 1px 0 #0d1118,
+      0 0 10px 3px rgb(237 92 105 / 42%);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -138,7 +193,7 @@
   animation: unfold 0.12s ease-out;
 }
 .bank-sheet .bank-line {
-  font-size: 18px;
+  font-size: 1.125rem;
   margin: 4px 0;
 }
 .bank-bar {

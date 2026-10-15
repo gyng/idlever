@@ -3,7 +3,7 @@
 //
 // Wasm surface (crates/idlever-wasm/src/lib.rs): `class Game { constructor(seed) }` with one method per
 // Engine member, camelCased, taking/returning JSON strings (exportRules returns plain text; setRules,
-// loadout and setCompanionRules return nothing; `load` is an instance method, `fromSave` a static).
+// setCompanionRules returns nothing; `load` is an instance method, `fromSave` a static).
 // Errors surface as thrown JsError (invalid rules, unaffordable unlocks, …).
 //
 // This synchronous engine runs inside the Web Worker (./worker.ts); the main thread talks to it
