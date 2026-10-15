@@ -28,13 +28,27 @@ an incomplete30master set. Export completion is not live integration acceptance.
 All skill names, ownership, costs, prerequisites, state and effects remain Rust
 truth; new art must not imply that unimplemented skills are already available.
 
-Current status:8of30painted candidates saved/exported. Three cross-class samples
-were viewed at actual24/32/48/96px frames in
-`docs/evidence/cut253/painted-samples/first/`. At24px the broad material/action
-masses read; faces and secondary effects need larger sizes and labels. This is
-engineering art review, not independent recognition, final approval or gameplay
-proof. Remaining Fighter additions need small-size review;22masters and live
-registration/fallback/state/accessibility acceptance remain pending.
+Current status:30of30painted candidates exported (1662290bytes); no live
+registration. Thirty first-pass masters and five version2 revisions are saved
+with exact prompts and built-in provenance. The revised Patient Ambush and four
+Ranger compositions use broader visible paint and square framing. Four rejected
+non-square Ranger originals remain untouched; the exporter refuses non-square
+selected sources rather than stretching or silently cropping them. Selected
+versions are explicit in the exporter and manifest.
+
+All30were inspected at actual24/32/48/96image pixels in
+`docs/evidence/cut253/painted-samples/all-thirty/` (150sized image cells including
+one128px overview, DPR1). The version2 Patient Ambush is the stronger style
+reference: angular expressive face, visible brushwork, blue-violet/crimson
+contrast. Many version1 paintings remain too realistic/detailed; Gunner values
+are especially dark at24px, Caster compositions need more separation and Ranger
+Split Mark/Moving Line retain excess scenery. Continue that targeted polish
+before final acceptance. Larger broad action masses read better at48px; this
+is engineering observation, not independent recognition or gameplay proof.
+Live registration/fallback/state/accessibility acceptance and cohesion with the
+existing42icons remain pending. First3sample typography's mojibake is retained;
+the new review includes explicitUTF8. Review findings expire when the selected
+paint, export, frames or displayed size changes; don't carry a pass forward.
 
 Use the existing primitive paths when paint is unavailable; a failed image must
 never hide a skill or block a purchase. Review again after paint, export, frames,
