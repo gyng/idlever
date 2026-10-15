@@ -13,6 +13,15 @@ origin/main a8935ddf (2026-10-14; WASM 8b48aa49…, 6849966 bytes, fast build, u
 gold-settlements default docs/evidence/cut228/settlements-inputs-main.json). Un-parked; work continues.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
+## Cut233 — cadence30 between looks; content tunables in balance.json (2026-10-15, worktree branch, not pushed)
+
+Owner 2026-10-15: `cadence30`'s gap counts between looks only (a watched run is not a gap; CUT232 amendment) — 16
+seeds gap 0.0 · 0.0 · dec 1 · 16/16, now a routine bar; the Cut232 unlock order is kept (review in play). Pure
+refactor: workers, tree, rest, gold/exits, kit, unlocks, stance rows, marks/XP/Legacy and monster scaling moved into
+`tuning/balance.json` (sections validated, sweepable; inventory in ITERATION_SPEED.md). IDLE/PICKED/TUNED 16 × 14
+jobs byte-identical; gold settlements exact; WASM `d161212b…`; default manifest
+`docs/evidence/cut233/settlements-inputs-d161.json`. Evidence: evidence/cut233/README.md.
+
 ## Cut232 — one new decision a report (2026-10-15, worktree branch, not pushed)
 
 [CUT232_CADENCE.md](CUT232_CADENCE.md): core `news.rs` holds each run report to one new decision (hire offers,

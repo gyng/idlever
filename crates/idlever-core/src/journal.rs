@@ -41,8 +41,8 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     let n=tree::def("scout").unwrap();let count=tree::count(l,"scout");let hired=tree::hired(l,"scout");let price=tree::price(l,n);
     let scout_ready=tree::lit(l).is_some_and(|n|n.id=="scout")&&l.gold>=price&&home;
     let mut scout=entry("scout","Hire the Scout","Until the Scout is hired, each departure needs your tap.","The Scout sends the hero after each rest. Away progress becomes uncapped.",if hired {"complete"} else if scout_ready {"ready"} else {"later"});
-    scout.progress=Some(JournalProgress {current:count.min(n.need),required:n.need,unit:"manual delves".into()});
-    if !hired {scout.requirements.push(format!("{} manual delves; {price} Gold",n.need));if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
+    scout.progress=Some(JournalProgress {current:count.min(n.need()),required:n.need(),unit:"manual delves".into()});
+    if !hired {scout.requirements.push(format!("{} manual delves; {price} Gold",n.need()));if tree::ready(l,n)&&!scout_ready {scout.requirements.push(if l.gold<price {format!("{} more Gold",price-l.gold)} else {"Hire the earlier ready worker first".into()});}}
     scout.action=action("hire","scout","Hire Scout",(!scout_ready||hired).then(||if hired {"Already hired".into()} else {"Requirements unmet".into()}));
     if hired {
         scout.action=action("open","workers","Workers",None);
@@ -51,8 +51,8 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
     }
     let p=tree::def("porter").unwrap();let porter_hired=tree::hired(l,"porter");let porter_ready=home&&tree::lit(l).is_some_and(|n|n.id=="porter");
     let mut porter=entry("porter","Hire the Porter","Workers automate chores once their milestones are ready.","Hiring costs no Gold. The Porter collects the actual haul; new towns already receive returned Gold automatically.",if porter_hired {"complete"} else if porter_ready {"ready"} else {"later"});
-    porter.progress=Some(JournalProgress {current:tree::count(l,"porter").min(p.need),required:p.need,unit:"hauls".into()});
-    if !porter_hired {porter.requirements.push(format!("{} hauls;0 Gold",p.need));}
+    porter.progress=Some(JournalProgress {current:tree::count(l,"porter").min(p.need()),required:p.need(),unit:"hauls".into()});
+    if !porter_hired {porter.requirements.push(format!("{} hauls;0 Gold",p.need()));}
     porter.action=action("hire","porter","Hire Porter",(!porter_ready||porter_hired).then(||"Requirements unmet".into()));
     let mut entries=vec![house,porter,scout];
     for (id,title,reason,effect) in [("blacksmith","Build the Forge","Permanent upgrades change every future starting kit.","Spend Gold once on upgrades. Unlocked gear and supplies are free to reuse."),("kennel","Build the Kennel","Companions can join your builds.","Manage your tamed companions and their party slots."),("bank","Build Savings","Spare Gold can earn interest.","Deposits earn2% per night before worker bonuses; withdrawals return your Gold.")] {
@@ -160,7 +160,7 @@ mod tests {
         }
         let j=g.lineage().journal.unwrap();assert_eq!(j.recommended.as_deref(),Some("scout"));
         // Controlled legacy-haul readiness verifies the real lit-worker ordering separately.
-        let mut legacy=g.clone();legacy.lineage.tree.hired.retain(|(id,_)|id!="porter");legacy.lineage.tree.done.insert("porter".into(),tree::def("porter").unwrap().need);
+        let mut legacy=g.clone();legacy.lineage.tree.hired.retain(|(id,_)|id!="porter");legacy.lineage.tree.done.insert("porter".into(),tree::def("porter").unwrap().need());
         assert_eq!(legacy.lineage().journal.unwrap().recommended.as_deref(),Some("porter"));
         legacy.hire("porter").unwrap();assert_eq!(legacy.lineage().journal.unwrap().recommended.as_deref(),Some("scout"));
         let price=tree::price(&g.lineage,tree::def("scout").unwrap());let gold=g.lineage.gold;

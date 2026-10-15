@@ -17,12 +17,6 @@ pub struct NodeDef {
     pub branch: &'static str,
     /// The act by hand that counts toward it (`""`: given).
     pub chore: &'static str,
-    /// Chores by hand that light it.
-    pub need: u32,
-    /// Its price in tenths of a forge unit (0: free).
-    pub price_tenths: u32,
-    /// The lineage age (h) that lights it without the count, once its chore exists (0: none).
-    pub fallback_h: u32,
     /// The system (systems.rs) its chore needs (`""`: from the start).
     pub gate: &'static str,
     /// Where its worker stands on the town scene.
@@ -33,33 +27,59 @@ pub struct NodeDef {
 }
 
 #[allow(clippy::too_many_arguments)]
-const fn node(id: &'static str, name: &'static str, branch: &'static str, chore: &'static str, need: u32, price_tenths: u32, fallback_h: u32, gate: &'static str, post: &'static str, beat: &'static str, tip: &'static str) -> NodeDef {
-    NodeDef { id, name, branch, chore, need, price_tenths, fallback_h, gate, post, beat, tip }
+const fn node(id: &'static str, name: &'static str, branch: &'static str, chore: &'static str, gate: &'static str, post: &'static str, beat: &'static str, tip: &'static str) -> NodeDef {
+    NodeDef { id, name, branch, chore, gate, post, beat, tip }
+}
+
+impl NodeDef {
+    /// Cut233: its hire trigger and price live in the balance profile (`balance::Workers`).
+    fn tune(&self) -> &'static crate::balance::Worker {
+        crate::balance::get().workers.of(self.id).expect("every node is a balance worker")
+    }
+    /// Chores by hand that light it.
+    pub fn need(&self) -> u32 {
+        self.tune().need
+    }
+    /// Its price in tenths of a forge unit (0: free).
+    pub fn price_tenths(&self) -> u32 {
+        self.tune().price_tenths
+    }
+    /// The lineage age (h) that lights it without the count, once its chore exists (0: none).
+    pub fn fallback_h(&self) -> u32 {
+        self.tune().fallback_h
+    }
 }
 
 /// The tree in its order (the trunk, then the branches): one node lit at a time, the first ready one.
 pub const NODES: &[NodeDef] = &[
-    node("quartermaster", "quartermaster", "trunk", "", 0, 0, 0, "", "crate", "", "packs heal · drill item"),
-    node("porter", "porter", "trunk", "chest", 3, 0, 0, "", "mouth", "AUTO HAUL", "hauls home · while away"),
-    node("scout", "scout", "trunk", "send", 2, 4, 0, "", "fire", "AUTO SEND", "sends him · each rest"),
-    node("apprentice", "apprentice", "trunk", "forge", 3, 30, 30, "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
-    node("clerk", "clerk", "town", "deposit", 3, 40, 36, "bank", "bank", "AUTO BANK", "banks spare gold"),
-    node("drillmaster", "drillmaster", "character", "level", 2, 4, 36, "", "tent", "AUTO LEVEL", "levels the stance"),
-    node("kennel_hand", "kennel-hand", "town", "field", 2, 30, 40, "kennel", "kennel", "AUTO PETS", "fields best pets"),
-    node("herald", "herald", "town", "swap", 2, 20, 40, "quests", "board", "AUTO QUEST", "swaps stale quests"),
-    node("guide", "guide", "scale", "start", 3, 40, 44, "start", "mouth", "AUTO START", "starts deeper"),
+    node("quartermaster", "quartermaster", "trunk", "", "", "crate", "", "packs heal · drill item"),
+    node("porter", "porter", "trunk", "chest", "", "mouth", "AUTO HAUL", "hauls home · while away"),
+    node("scout", "scout", "trunk", "send", "", "fire", "AUTO SEND", "sends him · each rest"),
+    node("apprentice", "apprentice", "trunk", "forge", "forge", "blacksmith", "AUTO FORGE", "buys forge steps"),
+    node("clerk", "clerk", "town", "deposit", "bank", "bank", "AUTO BANK", "banks spare gold"),
+    node("drillmaster", "drillmaster", "character", "level", "", "tent", "AUTO LEVEL", "levels the stance"),
+    node("kennel_hand", "kennel-hand", "town", "field", "kennel", "kennel", "AUTO PETS", "fields best pets"),
+    node("herald", "herald", "town", "swap", "quests", "board", "AUTO QUEST", "swaps stale quests"),
+    node("guide", "guide", "scale", "start", "start", "mouth", "AUTO START", "starts deeper"),
     // Cut 120 §5: the kennel keeper carries the Cut 119 breeding order (`StandingSwitches.kennel`); before his hire the
     // breeding is by hand (`Game::breed`), the order waits
-    node("kennel_keeper", "kennel keeper", "town", "breed", 2, 30, 48, "kennel", "kennel", "AUTO BREED", "breeds pets · by order"),
+    node("kennel_keeper", "kennel keeper", "town", "breed", "kennel", "kennel", "AUTO BREED", "breeds pets · by order"),
 ];
 
-/// The apprentice and the clerk keep this many forge units in the purse (the shelf's money).
-pub const RESERVE_UNITS: i32 = 3;
-/// The guide starts sends at the deepest lit stone this many floors under the record.
-pub const GUIDE_GAP: u32 = 4;
+/// The apprentice and the clerk keep this many forge units in the purse (the shelf's money; `balance` `tree.reserve_units`).
+pub fn reserve_units() -> i32 {
+    crate::balance::get().tree.reserve_units
+}
+/// The guide starts sends at the deepest lit stone this many floors under the record (`balance` `tree.guide_gap`).
+pub fn guide_gap() -> u32 {
+    crate::balance::get().tree.guide_gap
+}
 /// Cut 30.5, week 2 (the owner, 2026-10-02: later worker upgrades): a worker's ranks II and III come these many
-/// days of service after its hire, each bought with gold — the worker's look (and its post's) on the town scene.
-pub const RANK_DAYS: [u32; 3] = [4, 8, 12];
+/// days of service after its hire, each bought with gold — the worker's look (and its post's) on the town scene
+/// (`balance` `tree.rank_days`).
+pub fn rank_days() -> [u32; 3] {
+    crate::balance::get().tree.rank_days
+}
 pub const MAX_RANK: u32 = 4;
 /// The chores of a save from before the tree: its workers up to the scout are hired (no player regresses).
 pub const LEGACY: [&str; 3] = ["quartermaster", "porter", "scout"];
@@ -149,12 +169,9 @@ pub struct WallLedger {
     pub held: u32,
 }
 
-/// Deaths on one floor before the scout banks the sends at its stairs (order `bank`).
-pub const WALL_DEATHS: u32 = 2;
-/// A death this many floors above the record or nearer is a wall's (deeper on the walk is not).
-pub const WALL_NEAR: u32 = 2;
-/// Sends banked before an unchanged wall before the scout lets one try it again.
-pub const WALL_RETRY: u32 = 3;
+// (Cut233: `balance` `tree.wall_deaths` — deaths on one floor before the scout banks the sends at its stairs (order
+// `bank`); `tree.wall_near` — a death this many floors above the record or nearer is a wall's (deeper on the walk is
+// not); `tree.wall_retry` — sends banked before an unchanged wall before the scout lets one try it again)
 /// The `acts` keys of the sends the scout banked before a wall, of those whose haul he carried home from its
 /// stairs, and of that haul in all (never a node's).
 pub const SCOUT_HELD: &str = "scout:held";
@@ -191,9 +208,9 @@ pub fn wall_hold(l: &LineageState) -> Option<(u32, bool)> {
     if l.pkg.literal || !on(l, "scout") || l.orders.wall == "push" {
         return None;
     }
-    let w = l.tree.wall.as_ref().filter(|w| w.deaths >= WALL_DEATHS && w.depth > l.start.max(1))?;
+    let w = l.tree.wall.as_ref().filter(|w| w.deaths >= crate::balance::get().tree.wall_deaths && w.depth > l.start.max(1))?;
     // (`bank`: a send that tries the wall again has its haul carried home from the stairs as `carry`'s)
-    Some((w.depth, l.orders.wall == "bank" && w.held < WALL_RETRY && w.strength == strength(l)))
+    Some((w.depth, l.orders.wall == "bank" && w.held < crate::balance::get().tree.wall_retry && w.strength == strength(l)))
 }
 
 /// A real run home (never a sim's, never a harness's literal lineage): the scout's wall ledger.
@@ -219,7 +236,7 @@ pub fn note_wall(game: &mut Game, run: &crate::engine::Run, tier: crate::engine:
     let l = &mut game.lineage;
     if tier == crate::engine::ExitTier::Death {
         let d = run.depth;
-        if d + WALL_NEAR < l.best_depth {
+        if d + crate::balance::get().tree.wall_near < l.best_depth {
             return;
         }
         let s = strength(l);
@@ -246,8 +263,7 @@ pub fn forge_share(l: &LineageState) -> Option<i32> {
     }
 }
 
-/// The sends a stone's record remembers before it halves.
-pub const STONE_MEMORY: u32 = 12;
+// (Cut233: `balance` `tree.stone_memory` — the sends a stone's record remembers before it halves)
 
 /// A send from a waystone came home (non-sim): its start's record — whether it brought gold home.
 pub fn note_start(l: &mut LineageState, start: u32, paid: bool, _died: bool) {
@@ -261,7 +277,7 @@ pub fn note_start(l: &mut LineageState, start: u32, paid: bool, _died: bool) {
     let e = l.tree.stones.entry(start).or_insert((0, 0));
     e.0 += 1;
     e.1 += paid as u32;
-    if e.0 > STONE_MEMORY {
+    if e.0 > crate::balance::get().tree.stone_memory {
         e.0 /= 2;
         e.1 /= 2;
     }
@@ -279,7 +295,7 @@ pub fn guide_pick(l: &LineageState, by_hand: bool) -> u32 {
     if let Some((h, _)) = l.tree.start_by_hand.filter(|(h, best)| !by_hand && *h == l.start.max(1) && *best == l.best_depth && stone_pays(l, *h)) {
         return h;
     }
-    l.stones().into_iter().filter(|s| s + GUIDE_GAP <= l.best_depth && stone_pays(l, *s)).max().unwrap_or(1)
+    l.stones().into_iter().filter(|s| s + guide_gap() <= l.best_depth && stone_pays(l, *s)).max().unwrap_or(1)
 }
 
 impl Tree {
@@ -348,28 +364,23 @@ pub fn bonus_rank(l: &LineageState, id: &str) -> u32 {
     rank(l, id).saturating_sub(1)
 }
 
-/// The porter's haul bonus per rank above I, in percent (II +2 %, III +4 %, IV +6 %).
-pub const PORTER_BONUS_PCT: i32 = 2;
-/// The apprentice's discount on the steps it buys, per rank above I, in percent.
-pub const APPRENTICE_OFF_PCT: u32 = 5;
-/// The clerk's extra interest per rank above I, in tenths of a percent a night (2 % → 2.25 · 2.5 · 2.75 %).
-pub const CLERK_BONUS_PERMILLE: i32 = 25;
-/// The scout's shorter rest per rank above I, in percent.
-pub const SCOUT_REST_OFF_PCT: u32 = 5;
+// (Cut233: the rank perks are `balance` `tree.*` — `porter_bonus_pct`, the porter's haul bonus per rank above I in
+// percent (II +2 %, III +4 %, IV +6 %); `apprentice_off_pct`, the apprentice's discount on the steps it buys per rank;
+// `clerk_bonus_permille`, the clerk's extra interest per rank in tenths of a percent a night (2 % → 2.25 · 2.5 ·
+// 2.75 %); `scout_rest_off_pct`, the scout's shorter rest per rank; `safer_start_pct`, the scout's max hp at the send
+// per rank under `safer start`)
 
 /// The rest after a run, the scout's rank taken off (the dayplayer's harnesses: rank I or none, as before) — under
 /// his first perk (`shorter rest`) only.
 pub fn rest_scaled(l: &LineageState, ticks: u32) -> u32 {
     let r = if perk(l, "scout") == PERKS[1].1[0] { bonus_rank(l, "scout") } else { 0 };
-    ticks - ticks * SCOUT_REST_OFF_PCT * r / 100
+    ticks - ticks * crate::balance::get().tree.scout_rest_off_pct * r / 100
 }
 
 /// Cut 120 §2 (Cut 114 §5, "ranks you choose"): the workers whose rank II offers one of two perks, the first the old
 /// fixed bonus (the default): apprentice `cheaper steps` (−5 % steps a rank) or `keeps a reserve` (a forge unit
 /// more kept a rank); scout `shorter rest` (−5 % rest a rank) or `safer start` (+5 % max hp at the send a rank).
 pub const PERKS: [(&str, [&str; 2]); 2] = [("apprentice", ["cheaper steps", "keeps a reserve"]), ("scout", ["shorter rest", "safer start"])];
-/// The scout's `safer start`: max hp at the send per rank above I, in percent.
-pub const SAFER_START_PCT: i32 = 5;
 
 /// A worker's perk (its first when unchosen; `""` for a worker without perks).
 pub fn perk<'a>(l: &'a LineageState, id: &str) -> &'a str {
@@ -400,7 +411,7 @@ pub fn safer_start(l: &LineageState, hero: &mut crate::hero::Hero) {
         return;
     }
     let r = bonus_rank(l, "scout") as i32;
-    let add = hero.max_hp * SAFER_START_PCT * r / 100;
+    let add = hero.max_hp * crate::balance::get().tree.safer_start_pct * r / 100;
     if add > 0 {
         hero.max_hp += add;
         hero.max_hp_base += add;
@@ -410,13 +421,13 @@ pub fn safer_start(l: &LineageState, hero: &mut crate::hero::Hero) {
 
 /// The apprentice's discount on a step, in percent (his rank, under `cheaper steps`).
 pub fn apprentice_off(l: &LineageState) -> u32 {
-    if perk(l, "apprentice") == PERKS[0].1[0] { APPRENTICE_OFF_PCT * bonus_rank(l, "apprentice") } else { 0 }
+    if perk(l, "apprentice") == PERKS[0].1[0] { crate::balance::get().tree.apprentice_off_pct * bonus_rank(l, "apprentice") } else { 0 }
 }
 
 /// The purse the apprentice and the clerk keep (`RESERVE_UNITS`, a unit more a rank under `keeps a reserve`).
 pub fn reserve(l: &LineageState) -> i32 {
     let extra = if perk(l, "apprentice") == PERKS[0].1[1] { bonus_rank(l, "apprentice") as i32 } else { 0 };
-    (RESERVE_UNITS + extra) * crate::kit::unit(l.best_depth) as i32
+    (reserve_units() + extra) * crate::kit::unit(l.best_depth) as i32
 }
 
 /// A waystone's toll, the guide's rank taken off (II half, III on free).
@@ -453,7 +464,7 @@ pub fn on_gold(l: &mut LineageState, delta: i32, why: &str) {
     // (week 2: the porter's rank adds to every haul he carries)
     let r = bonus_rank(l, "porter") as i32;
     if delta > 0 && r > 0 && is_haul(why) {
-        let bonus = delta * PORTER_BONUS_PCT * r / 100;
+        let bonus = delta * crate::balance::get().tree.porter_bonus_pct * r / 100;
         if bonus > 0 {
             l.gold_move(bonus, "porter bonus");
         }
@@ -484,7 +495,7 @@ pub fn trigger_met(l: &LineageState, n: &NodeDef) -> bool {
     if n.chore.is_empty() {
         return true;
     }
-    chore_open(l, n) && (count(l, n.id) >= n.need || (n.fallback_h > 0 && l.age_h() >= n.fallback_h))
+    chore_open(l, n) && (count(l, n.id) >= n.need() || (n.fallback_h() > 0 && l.age_h() >= n.fallback_h()))
 }
 
 /// Cut232 (`news`): the first unhired worker in the tree's order whose trigger is met and whose hire is not yet
@@ -525,14 +536,14 @@ pub fn rank_wait(l: &LineageState, n: &NodeDef) -> Option<u32> {
     if r == 0 || r >= MAX_RANK || n.chore.is_empty() {
         return None;
     }
-    let due = hire_day(l, n.id)? + RANK_DAYS[(r - 1) as usize];
+    let due = hire_day(l, n.id)? + rank_days()[(r - 1) as usize];
     Some(due.saturating_sub(l.day))
 }
 
 /// A rank's price: a forge unit × the rank less one (a look, not a second hire: week 2's purse barely notices).
 pub fn rank_price(l: &LineageState, n: &NodeDef) -> i32 {
     let next = rank(l, n.id) + 1;
-    crate::kit::unit_of(l) as i32 * (next as i32 - 1)
+    crate::kit::unit_of(l) as i32 * crate::balance::get().tree.rank_price_units * (next as i32 - 1)
 }
 
 /// The one rank on offer: the first hired worker (in the tree's order) whose next rank has come — only when no
@@ -568,17 +579,16 @@ pub fn rank_bonus(id: &str, r: u32) -> Option<String> {
         return None;
     }
     Some(match id {
-        "porter" => format!("+{}% hauls", PORTER_BONUS_PCT as u32 * k),
-        "scout" => format!("−{}% rest", SCOUT_REST_OFF_PCT * k),
-        "apprentice" => format!("−{}% steps", APPRENTICE_OFF_PCT * k),
-        "clerk" => format!("{}‰ interest", BANK_PCT_PERMILLE + CLERK_BONUS_PERMILLE as u32 * k),
+        "porter" => format!("+{}% hauls", crate::balance::get().tree.porter_bonus_pct as u32 * k),
+        "scout" => format!("−{}% rest", crate::balance::get().tree.scout_rest_off_pct * k),
+        "apprentice" => format!("−{}% steps", crate::balance::get().tree.apprentice_off_pct * k),
+        "clerk" => format!("{}‰ interest", crate::balance::get().gold.bank_pct as u32 * 10 + crate::balance::get().tree.clerk_bonus_permille as u32 * k),
         "guide" => if k == 1 { "half toll".into() } else { "no toll".into() },
         "drillmaster" => "levels −◆1".into(),
         _ => return None,
     })
 }
 
-const BANK_PCT_PERMILLE: u32 = crate::town::BANK_PCT as u32 * 10;
 
 /// A rank's numeral (`II`, `III`).
 pub fn numeral(r: u32) -> &'static str {
@@ -592,7 +602,7 @@ pub fn numeral(r: u32) -> &'static str {
 
 /// A node's price in gold (forge units, fixed with the forge's).
 pub fn price(l: &LineageState, n: &NodeDef) -> i32 {
-    ((crate::kit::unit_of(l) * n.price_tenths + 5) / 10) as i32
+    ((crate::kit::unit_of(l) * n.price_tenths() + 5) / 10) as i32
 }
 
 /// A chore done by hand: its node's count (until its worker is hired).
@@ -829,7 +839,7 @@ pub(crate) fn drill_act(game: &mut Game) {
                 }
                 // (week 2: from rank II the drillmaster's level costs a mark less, never under one)
                 if bonus_rank(&game.lineage, "drillmaster") > 0 && price > 1 {
-                    game.lineage.marks += 1;
+                    game.lineage.marks += crate::balance::get().tree.drill_rank_off;
                 }
                 n += 1;
             }
@@ -1203,10 +1213,10 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 state: state.into(),
                 chore: has_chore.then(|| if n.id == "porter" && l.town.auto_collect { "hauls".into() } else { n.chore.into() }),
                 count: has_chore.then(|| count(l, n.id)),
-                need: has_chore.then_some(n.need),
+                need: has_chore.then_some(n.need()),
                 price: has_chore.then_some(p),
                 affordable: has_chore.then_some(gold >= p),
-                fallback_h: (n.fallback_h > 0).then_some(n.fallback_h),
+                fallback_h: (n.fallback_h() > 0).then_some(n.fallback_h()),
                 trigger: (!open).then(|| gate_text(n.gate)),
                 tip: Some(n.tip.into()),
                 beat: (!n.beat.is_empty()).then(|| n.beat.into()),
@@ -1217,7 +1227,7 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 rank_wait_d: rank_wait(l, n),
                 bonus: done.then(|| rank_bonus_for(l, n.id, rank(l, n.id))).flatten(),
                 rank_adds: rank_wait(l, n).and_then(|_| rank_bonus_for(l, n.id, rank(l, n.id) + 1)),
-                progress: (!done && has_chore).then(|| format!("{}/{}", count(l, n.id).min(n.need), n.need)),
+                progress: (!done && has_chore).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need())),
                 eta_h: eta_h(l, n),
                 perks: if done { PERKS.iter().find(|(w, _)| *w == n.id).map(|(_, two)| two.iter().map(|p| p.to_string()).collect()).unwrap_or_default() } else { Vec::new() },
                 perk: (done && !perk(l, n.id).is_empty()).then(|| perk(l, n.id).to_string()),
@@ -1246,7 +1256,7 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
 /// Cut 120 §7: the hours until an unhired worker's fallback lights it (its chore open, its count short; `None` when
 /// it is ready or hired, or has no fallback).
 pub fn eta_h(l: &LineageState, n: &NodeDef) -> Option<u32> {
-    (!hired(l, n.id) && !n.chore.is_empty() && n.fallback_h > 0 && chore_open(l, n) && !ready(l, n)).then(|| n.fallback_h.saturating_sub(l.age_h()))
+    (!hired(l, n.id) && !n.chore.is_empty() && n.fallback_h() > 0 && chore_open(l, n) && !ready(l, n)).then(|| n.fallback_h().saturating_sub(l.age_h()))
 }
 
 /// Cut 120 §7: the next worker — the lit one, else the first unhired whose chore is open (`None` on a harness's lineage).
@@ -1263,7 +1273,7 @@ pub fn rank_bonus_for(l: &LineageState, id: &str, r: u32) -> Option<String> {
     match (id, perk(l, id)) {
         _ if k == 0 => None,
         ("apprentice", p) if p == PERKS[0].1[1] => Some(format!("+{k} unit kept")),
-        ("scout", p) if p == PERKS[1].1[1] => Some(format!("+{}% hp", SAFER_START_PCT as u32 * k)),
+        ("scout", p) if p == PERKS[1].1[1] => Some(format!("+{}% hp", crate::balance::get().tree.safer_start_pct as u32 * k)),
         _ => rank_bonus(id, r),
     }
 }
@@ -1292,8 +1302,8 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
         return if l.gold >= p { pill("buy", Some(n.id), format!("{} {r} · ${p}", n.name), None, None) } else { pill("gold", Some(n.id), format!("{} {r} · ${}/${p}", n.name, l.gold.max(0)), Some(l.gold.max(0) as i64), Some(p as i64)) };
     }
     if let Some(n) = NODES.iter().find(|n| !hired(l, n.id) && !n.chore.is_empty() && chore_open(l, n)) {
-        let c = count(l, n.id).min(n.need);
-        return pill("count", Some(n.id), format!("{} · {c}/{}", n.name, n.need), Some(c as i64), Some(n.need as i64));
+        let c = count(l, n.id).min(n.need());
+        return pill("count", Some(n.id), format!("{} · {c}/{}", n.name, n.need()), Some(c as i64), Some(n.need() as i64));
     }
     if let Some(r) = crate::systems::next(l) {
         let text = if r.wait_h > 0 { format!("{} · in {}h", r.id, r.wait_h) } else { format!("{} · {}", r.id, r.trigger) };
@@ -1306,8 +1316,8 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
 pub fn posts(l: &LineageState) -> Vec<WorkerPost> {
     let mut v: Vec<WorkerPost> = NODES.iter().filter(|n| hired(l, n.id)).map(|n| WorkerPost { id: n.id.into(), post: n.post.into(), paused: l.tree.paused.contains(n.id), rank: rank(l, n.id), ..Default::default() }).collect();
     if let Some(n) = lit(l) {
-        let progress = (!n.chore.is_empty()).then(|| format!("{}/{}", count(l, n.id).min(n.need), n.need));
-        v.push(WorkerPost { id: n.id.into(), post: n.post.into(), lit: true, price: Some(price(l, n)), paused: false, rank: 0, progress, fallback_h: (n.fallback_h > 0).then_some(n.fallback_h), eta_h: eta_h(l, n) });
+        let progress = (!n.chore.is_empty()).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need()));
+        v.push(WorkerPost { id: n.id.into(), post: n.post.into(), lit: true, price: Some(price(l, n)), paused: false, rank: 0, progress, fallback_h: (n.fallback_h() > 0).then_some(n.fallback_h()), eta_h: eta_h(l, n) });
     }
     v
 }

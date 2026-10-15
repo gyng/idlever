@@ -23,8 +23,8 @@ fn give_points(g: &mut Game, n: u32) {
 fn the_legacy_order_spends_in_turn() {
     let mut g = Game::new_resident(3);
     g.lineage.orders.legacy = "balanced".into();
-    // (Cut 121 §1: on the Legacy curve — `legacy::ROOT_PRICES`)
-    let p = crate::legacy::ROOT_PRICES;
+    // (Cut 121 §1: on the Legacy curve — `legacy::root_prices`)
+    let p = *crate::legacy::root_prices();
     give_points(&mut g, 3 * (p[0] + p[1]) + p[2] - 1);
     tree::at_send(&mut g);
     // each first rank, then each second; the next health costs more than is left
@@ -81,9 +81,9 @@ fn the_legacy_order_takes_the_effects_after_the_base() {
     let mut g = Game::new_resident(4);
     g.lineage.orders.legacy = "balanced".into();
     g.lineage.best_depth = 8;
-    let p = crate::legacy::ROOT_PRICES;
+    let p = *crate::legacy::root_prices();
     // (Cut 122 §1: on the smooth curve a first effect sits between two ranks — the base's ranks below its price first)
-    let e = crate::legacy::EFFECT_PRICES[0];
+    let e = crate::legacy::effect_prices()[0];
     let below: Vec<u32> = p.iter().copied().take_while(|x| *x < e).collect();
     assert!(!below.is_empty() && below.len() < p.len(), "a first effect costs less than some rank");
     give_points(&mut g, 3 * below.iter().sum::<u32>() + e);
@@ -99,7 +99,7 @@ fn the_legacy_order_takes_the_effects_after_the_base() {
 fn ranked_camp(seed: u64) -> Game {
     let mut g = Game::new_resident(seed);
     tree::grant(&mut g.lineage, &["porter", "scout"]);
-    g.lineage.day = tree::RANK_DAYS[0];
+    g.lineage.day = tree::rank_days()[0];
     g.lineage.orders.ranks = "auto".into();
     g
 }
@@ -150,7 +150,7 @@ fn the_rank_two_perk_is_a_chip() {
     g.set_perk("scout", "safer start").unwrap();
     assert_eq!(tree::rest_scaled(&g.lineage, 1000), 1000, "the rest is the first perk's");
     g.start_run(None);
-    assert_eq!(g.run.as_ref().unwrap().hero.max_hp, base + base * tree::SAFER_START_PCT / 100);
+    assert_eq!(g.run.as_ref().unwrap().hero.max_hp, base + base * crate::balance::get().tree.safer_start_pct / 100);
     let w = tree::wire(&g.lineage, false);
     assert_eq!(w.nodes.iter().find(|n| n.id == "scout").unwrap().bonus.as_deref(), Some("+5% hp"));
     assert!(g.set_perk("scout", "faster").is_err());
@@ -159,7 +159,7 @@ fn the_rank_two_perk_is_a_chip() {
     tree::grant(&mut g.lineage, &["apprentice"]);
     g.lineage.tree.ranks.insert("apprentice".into(), 2);
     let r = tree::reserve(&g.lineage);
-    assert_eq!(tree::apprentice_off(&g.lineage), tree::APPRENTICE_OFF_PCT);
+    assert_eq!(tree::apprentice_off(&g.lineage), crate::balance::get().tree.apprentice_off_pct);
     g.set_perk("apprentice", "keeps a reserve").unwrap();
     assert_eq!(tree::apprentice_off(&g.lineage), 0);
     assert_eq!(tree::reserve(&g.lineage), r + crate::kit::unit(g.lineage.best_depth) as i32);
@@ -234,7 +234,7 @@ fn the_herald_ascends_only_under_the_order() {
 #[test]
 fn the_kennel_keeper_is_a_worker() {
     let n = tree::def("kennel_keeper").unwrap();
-    assert_eq!((n.chore, n.need, n.fallback_h, n.gate, n.post), ("breed", 2, 48, "kennel", "kennel"));
+    assert_eq!((n.chore, n.need(), n.fallback_h(), n.gate, n.post), ("breed", 2, 48, "kennel", "kennel"));
     let pet = |id: u32, kind: &str, level: u32| {
         let def = crate::defs::monster_def(kind);
         let tags: Vec<String> = def.tags.iter().map(|t| t.to_string()).collect();
@@ -296,7 +296,7 @@ fn the_worker_ledger_matches_the_acts_and_reconciles() {
         g.lineage.orders.forge = "all".into();
         g.lineage.orders.ranks = "auto".into();
         g.lineage.orders.legacy = "balanced".into();
-        g.lineage.day = tree::RANK_DAYS[0];
+        g.lineage.day = tree::rank_days()[0];
         let before = g.lineage.tree.acts.clone();
         let r = crate::offline::run_offline_quick(&mut g, 8 * 3600);
         let after = &g.lineage.tree.acts;

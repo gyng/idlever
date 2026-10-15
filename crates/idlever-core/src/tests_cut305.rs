@@ -105,8 +105,8 @@ fn the_node_table_lights_one_at_a_time_in_order() {
     // the order: the trunk (the quartermaster given, the porter free, the scout) then the branches; every chore names one node
     let ids: Vec<&str> = NODES.iter().map(|n| n.id).collect();
     assert_eq!(&ids[..4], &["quartermaster", "porter", "scout", "apprentice"]);
-    assert_eq!(tree::def("porter").unwrap().price_tenths, 0, "the porter is free");
-    assert!(NODES.iter().skip(2).all(|n| n.price_tenths > 0), "the rest cost gold");
+    assert_eq!(tree::def("porter").unwrap().price_tenths(), 0, "the porter is free");
+    assert!(NODES.iter().skip(2).all(|n| n.price_tenths() > 0), "the rest cost gold");
     for n in NODES.iter().filter(|n| !n.chore.is_empty()) {
         assert_eq!(NODES.iter().filter(|m| m.chore == n.chore).count(), 1, "{}", n.chore);
         assert!(n.name.split_whitespace().count() <= 2 && n.tip.split_whitespace().count() <= 10 && n.beat.split_whitespace().count() <= 2, "{}", n.id);
@@ -368,8 +368,8 @@ fn a_worker_ranks_up_with_service() {
     tree::grant(&mut g.lineage, &["porter", "scout"]);
     assert!(tree::lit_rank(&g.lineage).is_none(), "no rank on the first day");
     let porter = tree::def("porter").unwrap();
-    assert_eq!(tree::rank_wait(&g.lineage, porter), Some(tree::RANK_DAYS[0]));
-    g.lineage.day = tree::RANK_DAYS[0];
+    assert_eq!(tree::rank_wait(&g.lineage, porter), Some(tree::rank_days()[0]));
+    g.lineage.day = tree::rank_days()[0];
     assert_eq!(tree::lit_rank(&g.lineage).map(|n| n.id), Some("porter"), "the first hired worker's rank on offer");
     g.lineage.gold += 10_000;
     g.lineage.tree.ledger += 10_000;
@@ -547,7 +547,7 @@ fn legacy_purchases_change_real_stats_persist_and_follow_the_bloodline() {
     let mut g = Game::new_resident(19);
     g.lineage.orders.legacy = "off".into(); // (Cut 120 §1: purchases by hand)
     // (Cut 121 §1: three ranks of each on the Legacy curve)
-    let three: u32 = 3 * crate::legacy::ROOT_PRICES[..3].iter().sum::<u32>();
+    let three: u32 = 3 * (*crate::legacy::root_prices())[..3].iter().sum::<u32>();
     g.lineage.bloodline.as_mut().unwrap().points = three;
     let xp = g.lineage.classes.clone(); let gold = g.lineage.gold; let rules = g.lineage.rules().clone();
     let mut baseline = g.clone(); baseline.start_run(Some(991));
@@ -575,8 +575,8 @@ fn legacy_refuses_poor_unknown_capped_and_away_purchases_without_mutation() {
     let mut g = Game::new_resident(20);
     for id in ["health","unknown"] { let before=g.save(); assert!(g.upgrade_hero(id).is_err());assert_eq!(before,g.save()); }
     // (Cut 121 §1: the ranks on the Legacy curve, each dearer, bought in order to the cap)
-    g.lineage.bloodline.as_mut().unwrap().points=crate::legacy::ROOT_PRICES.iter().sum();
-    for (rank,price) in crate::legacy::ROOT_PRICES.iter().enumerate().map(|(i,p)|(i as u32+1,*p)) {
+    g.lineage.bloodline.as_mut().unwrap().points=(*crate::legacy::root_prices()).iter().sum();
+    for (rank,price) in (*crate::legacy::root_prices()).iter().enumerate().map(|(i,p)|(i as u32+1,*p)) {
         let before=g.lineage.bloodline.as_ref().unwrap().points;g.upgrade_hero("health").unwrap();
         assert_eq!(g.lineage.bloodline.as_ref().unwrap().points,before-price);assert_eq!(g.lineage.bloodline.as_ref().unwrap().upgrades["health"],rank);
     }

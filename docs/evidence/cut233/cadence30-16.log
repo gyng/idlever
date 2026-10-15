@@ -1,0 +1,21 @@
+dayplayer: targeted rows cadence30 — configurations PICKED
+dayplayer: PICKED s16 done in 6s 
+dayplayer: PICKED s8 done in 8s 
+dayplayer: PICKED s3 done in 14s 
+dayplayer: PICKED s9 done in 14s 
+dayplayer: PICKED s1 done in 14s 
+dayplayer: PICKED s7 done in 16s 
+dayplayer: PICKED s14 done in 18s 
+dayplayer: PICKED s5 done in 18s 
+dayplayer: PICKED s13 done in 20s 
+dayplayer: PICKED s2 done in 20s 
+dayplayer: PICKED s11 done in 21s 
+dayplayer: PICKED s4 done in 22s 
+dayplayer: PICKED s15 done in 23s 
+dayplayer: PICKED s12 done in 23s 
+dayplayer: PICKED s6 done in 24s 
+dayplayer: PICKED s10 done in 24s 
+bar (targeted)                                                                value  result
+First-30-min cadence: look gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed) gap med 0.0 · worst 0.0 min · dec 1 · 16/16 (run ≤ 7.5)  PASS
+dayplayer (targeted: cadence30, 24s): targeted rows PASS — not a gate pass
+gates: TARGETED — dayplayer rows `cadence30` PASS; not a gate pass (the gate is `node tools/gates.mjs [--full]`)

@@ -132,10 +132,11 @@ pub fn class_has_verb(class: Class, level: u32, verb: &str) -> bool {
 /// Cut 2 §2: `100 × level²`; XP only from banked and returned runs. Cut 7 §5: `60 × level²`
 /// for L1–3, so L2 lands in the first hour of a player who banks once (L4+ unchanged).
 pub fn xp_to_next(level: u32) -> u32 {
-    if level <= 3 {
-        60 * level * level
+    let m = &crate::balance::get().marks;
+    if level <= m.xp_early_to {
+        m.xp_early * level * level
     } else {
-        100 * level * level
+        m.xp_late * level * level
     }
 }
 

@@ -47,14 +47,15 @@ pile-up can recur by chance (a per-trigger retune would not survive the next con
 - A harness's literal lineage, a sim and an old (`v` 1) tree are never held.
 
 Not taken (measured): `GUIDE_GAP` 4→3 (starts at the D5 stone from a D8 record) raised the gap to 11/16 at 16 seeds
-with every targeted row PASS, but the routine 2-seed TUNED/PICKED fell to 1.10 (FAIL; 1.35 with 4). Reverted.
+with every targeted row PASS, but the routine 2-seed TUNED/PICKED fell to 1.10 (FAIL; 1.35 with 4). Reverted. (Cut233: now
+`tree.guide_gap` in `tuning/balance.json`, sweepable without a rebuild.)
 
 ## Gates (16 seeds; `docs/evidence/cut232/rows16-final.log`)
 
 | Row | Bar | After |
 |---|---|---|
 | cadence30 decisions | ≤ 1 a look, every seed | **1 · 16/16** (was worst 5, 0/16) |
-| cadence30 gap | ≤ 6 min, every seed | median 6.0 · worst 7.4 · **8/16** (was 6.4 · 9.1 · 8/16) — **FAIL, see below** |
+| cadence30 gap | ≤ 6 min, every seed | median 6.0 · worst 7.4 · **8/16** (was 6.4 · 9.1 · 8/16) — **FAIL, see below**; owner amendment (looks only): 0.0 · 0.0 · **16/16** |
 | scout | ≤ min 15, ≤ 5 sends | med 4.9 · worst 7.2, 2 sends PASS |
 | porter | median ≤ 12, worst ≤ 15 | 8.7 · 11.0 PASS (was 9.1 · 11.1) |
 | picked-idle | ≥ 1.5× at D13, D18, D23 | 1.50 · 2.50 · 3.79 PASS (D13 protected) |
@@ -78,6 +79,19 @@ the D8 Warlord (re-runs of cleared floors at the wall, or the first D8 push) cha
    tuned-picked; deeper starts from a D6–D7 record would be a large pacing change.
 
 `cadence30` stays a targeted row (the routine table shows it as `info`) until the gap bar is settled.
+
+### Owner amendment 2026-10-15 (Cut233): option 2 taken
+
+- **The gap counts between looks only.** A single watched run is itself watchable, so time inside one run is not a
+  gap: a stretch between two beats (or from minute 0, or to the window's end) counts only when a camp arrival with no
+  beat lies strictly inside it (`SeedOut::looks`, `dayplayer.rs` `cadence`). The ≤ 1 new decision a look bar is
+  unchanged. The longest single watched run is printed beside the value (`run ≤ …`), never gated.
+- 16 seeds (`docs/evidence/cut233/cadence30-16.log`): **gap med 0.0 · worst 0.0 min · dec 1 · 16/16 PASS**, longest
+  single run 7.5 min. Every first-30-min look of every PICKED seed brings a major beat, so no stretch spans an empty
+  look. The row is now a bar in the routine full gate too (no extra play: PICKED's first session is already played);
+  `--pacing` already lists it.
+- **Unlock order: owner: keep, review in play.** Stances reveal at the first return, then the Forge and Kennel plots,
+  then temperaments (the Cut232 order) stay as they are.
 
 ## Checks
 

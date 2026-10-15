@@ -2219,7 +2219,8 @@ pub struct ForgeNext {
 }
 
 /// Cut 9 §10: the forge ladder — (salvaged needed, rung label), in order.
-pub const FORGE_LADDER: [(u32, &str); 3] = [(5, "craftable"), (15, "tier 1"), (40, "tier 2")];
+/// Cut233: the salvage counts are `balance` `kit.forge_ladder`.
+pub const FORGE_LADDER_LABELS: [&str; 3] = ["craftable", "tier 1", "tier 2"];
 
 impl ForgeRow {
     /// The row for a salvage count, with its rung and its next rung.
@@ -2230,15 +2231,15 @@ impl ForgeRow {
     }
     /// Cut 9 §10: recompute `craftable`, `tier` and `next` from `salvaged`.
     pub fn settle(&mut self) {
-        self.craftable = self.salvaged >= FORGE_LADDER[0].0;
-        self.tier = if self.salvaged >= FORGE_LADDER[2].0 {
+        self.craftable = self.salvaged >= crate::balance::get().kit.forge_ladder[0];
+        self.tier = if self.salvaged >= crate::balance::get().kit.forge_ladder[2] {
             2
-        } else if self.salvaged >= FORGE_LADDER[1].0 {
+        } else if self.salvaged >= crate::balance::get().kit.forge_ladder[1] {
             1
         } else {
             0
         };
-        self.next = FORGE_LADDER.iter().find(|(need, _)| self.salvaged < *need).map(|(need, label)| ForgeNext { need: *need, label: (*label).into() });
+        self.next = crate::balance::get().kit.forge_ladder.iter().zip(FORGE_LADDER_LABELS).find(|(need, _)| self.salvaged < **need).map(|(need, label)| ForgeNext { need: *need, label: label.into() });
     }
 }
 

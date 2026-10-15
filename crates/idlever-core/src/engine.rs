@@ -224,10 +224,15 @@ pub const STALL_FIRES: u32 = 3;
 /// QA on 1a2a4a9: the ledger's zero line when the re-pack ran short of gold.
 pub const REPEAT_SHORT: &str = "repeat short";
 /// A new heir's purse is topped up to this (one potion) so the camp is never at $0 after a death.
-pub const WAKE_PAY: i32 = 40;
+/// (Cut233: `balance` `gold.wake_pay`.)
+pub fn wake_pay() -> i32 {
+    crate::balance::get().gold.wake_pay
+}
 /// QA on 778fa1b: a death's `purse_full` is set only while the purse holds under this (twice
 /// `WAKE_PAY`): just over the top-up line, where the missing `+$N wake` needs a word.
-pub const PURSE_FULL_BAND: i32 = 2 * WAKE_PAY;
+pub fn purse_full_band() -> i32 {
+    2 * wake_pay()
+}
 /// Cut 3: rule rows with every row unlock (`row5`–`row10`).
 pub const MAX_ROWS: usize = 10;
 /// Cut 12 §1: card rows sit outside the player's cap — one per owned card (8 tactic, 4 tier 2,
@@ -244,14 +249,21 @@ pub const ACT_ENERGY: i32 = 100;
 pub const TICKS_PER_TURN: u32 = 10;
 fn default_bloodline_id()->u32 {1}
 pub const MAX_LEVEL: u32 = 10;
-/// Gold from loot and salvage is divided by this (Addendum B/D economy pass).
-pub const GOLD_DIVISOR: i32 = 4;
+/// Gold from loot and salvage is divided by this (Addendum B/D economy pass; Cut233: `balance` `gold.divisor`).
+pub fn gold_divisor() -> i32 {
+    crate::balance::get().gold.divisor
+}
 /// Cut 2 §1: camp rest after an expedition lasts half as long as it did (Cut 12 §5; Cut 2: as
 /// long), capped at 30 min and never shorter than the wake (a two-minute `hp<50 → return`
 /// sortie would otherwise farm hundreds of runs a day); a death is followed by a fixed
 /// recovery (`persistent::recovery_ticks`: 60 s shallow to `RECOVERY_TICKS`, 20 minutes, deep; Cut230). Ticks (10/s).
-pub const REST_CAP_TICKS: u32 = 30 * 60 * 10;
-pub const REST_MIN_TICKS: u32 = 20 * 60 * 10;
+/// Cut233: `balance` `rest.cap_ticks` (30 min) and `rest.min_ticks` (20 min); the rest is `turns / rest.turns_div`.
+pub fn rest_cap_ticks() -> u32 {
+    crate::balance::get().rest.cap_ticks
+}
+pub fn rest_min_ticks() -> u32 {
+    crate::balance::get().rest.min_ticks
+}
 pub const WAKE_TICKS: u32 = crate::persistent::RECOVERY_TICKS as u32;
 /// Cut 2 §1: an egg hatches after this many rests (1 with the incubator).
 pub const EGG_RESTS: u32 = 3;
@@ -296,11 +308,13 @@ impl ExitTier {
             ExitTier::Death => "death",
         }
     }
+    /// The tier's yield share (class XP and renown; `balance` `gold.exit_pct`).
     pub fn pct(self) -> i32 {
+        let p = &crate::balance::get().gold.exit_pct;
         match self {
-            ExitTier::Bank => 100,
-            ExitTier::Return => 60,
-            ExitTier::Death => 0,
+            ExitTier::Bank => p[0],
+            ExitTier::Return => p[1],
+            ExitTier::Death => p[2],
         }
     }
 }
@@ -1129,7 +1143,7 @@ impl Run {
     /// took a brought item on D1): whatever is taken off, the stake floors at nothing.
     pub fn loot_add(&mut self, raw: i32) {
         self.loot_raw = (self.loot_raw + raw).max(0);
-        self.loot = self.loot_raw / GOLD_DIVISOR;
+        self.loot = self.loot_raw / gold_divisor();
     }
     /// Conversion is final: a physical theft or swap cannot deduct other carried Gold.
     pub fn loot_value(&self, _it: &Item) -> i32 {
@@ -1150,14 +1164,14 @@ impl Run {
     pub fn secure_carry(&mut self) -> i32 {
         let coins = self.loot.max(0);
         self.secured += coins;
-        self.loot_raw = (self.loot_raw - coins * GOLD_DIVISOR).max(0);
-        self.loot = self.loot_raw / GOLD_DIVISOR;
+        self.loot_raw = (self.loot_raw - coins * gold_divisor()).max(0);
+        self.loot = self.loot_raw / gold_divisor();
         coins
     }
     /// A gold pile's amount is coins (what the label says, what the stake rises by): it is
     /// added whole. Items add their value before `GOLD_DIVISOR` (`loot_add`).
     pub fn loot_add_gold(&mut self, coins: i32) {
-        self.loot_add(coins * GOLD_DIVISOR);
+        self.loot_add(coins * gold_divisor());
     }
     pub fn monster_at(&self, p: Pos) -> Option<usize> {
         self.monsters.iter().position(|m| m.hp > 0 && m.pos == p)
@@ -1906,21 +1920,31 @@ pub fn bounty_floor(best_depth: u32, kills: &BTreeSet<String>) -> u32 {
 
 /// `bounty_floor` on a route (Cut 26 §1: the bosses where the route puts them).
 pub fn bounty_floor_on(best_depth: u32, kills: &BTreeSet<String>, route: Route) -> u32 {
-    let want = best_depth + BOUNTY_BELOW;
+    let want = best_depth + bounty_below();
     let wall = route.bosses().into_iter().filter(|(k, d)| *d >= best_depth && !kills.contains(*k)).map(|(_, d)| d).min();
     want.min(wall.unwrap_or(u32::MAX)).clamp(1, crate::descent::ENDING_DEPTH - 1)
 }
 
 /// Cut 20 §5: the bounty floor sits this far below the lineage's best depth.
-pub const BOUNTY_BELOW: u32 = 2;
+pub fn bounty_below() -> u32 {
+    crate::balance::get().gold.bounty_below
+}
 /// Cut 20 §5: the bounty floor's gold piles pay this many times their coins.
-pub const BOUNTY_GOLD_MULT: i32 = 2;
+pub fn bounty_gold_mult() -> i32 {
+    crate::balance::get().gold.bounty_gold_mult
+}
 /// Cut 16 §1: picks past this pay the floor (`0.8^7` < a quarter).
-pub const PICKED_CAP: u32 = 7;
+pub fn picked_cap() -> u32 {
+    crate::balance::get().gold.picked_cap
+}
 /// Cut 16 §1: freshness by picks, in permille (`0.8^n`, never under 250).
-pub const FRESHNESS: [u32; 8] = [1000, 800, 640, 512, 410, 328, 262, 250];
+pub fn freshness_by_picks() -> &'static [u32; 8] {
+    &crate::balance::get().gold.freshness
+}
 /// Cut 16 §1: a depth this picked reads `D3 · picked clean` in the report.
-pub const PICKED_SHOWN: u32 = 3;
+pub fn picked_shown() -> u32 {
+    crate::balance::get().gold.picked_shown
+}
 
 /// Cut 6 §1: gold movements kept on the lineage.
 pub const GOLD_LEDGER_CAP: usize = 80;   // a night of 16 runs writes ~50 lines; 20 could not be reconciled (QA on 952e306)
@@ -2582,7 +2606,7 @@ impl LineageState {
     /// Supplies per expedition (Cut 2 §3 `supply_cap_5`).
     pub fn supply_cap(&self) -> usize {
         // Cut 23 §1: each pack step of the forge holds one more.
-        (crate::kit::base_cap(self) + crate::kit::owned(self, "pack") as usize).min(crate::kit::SUPPLY_CAP_MAX)
+        (crate::kit::base_cap(self) + crate::kit::owned(self, "pack") as usize).min(crate::kit::supply_cap_max())
     }
     /// Rests an egg needs (Cut 2 §1; `incubator`).
     pub fn egg_rests(&self) -> u32 {
@@ -2668,7 +2692,7 @@ impl LineageState {
         if depth >= self.best_depth {
             return 1000;
         }
-        FRESHNESS[self.picked.get(&depth).copied().unwrap_or(0).min(PICKED_CAP) as usize]
+        freshness_by_picks()[self.picked.get(&depth).copied().unwrap_or(0).min(picked_cap()) as usize]
     }
 
     /// Cut 16 §1: the thinned depths a run carries (`Run.thin`).
@@ -2678,7 +2702,7 @@ impl LineageState {
 
     /// Cut 16 §1: the depths the report names `picked clean` (≥ `PICKED_SHOWN` picks, not fresh).
     pub fn picked_clean(&self) -> Vec<u32> {
-        self.picked.iter().filter(|(d, p)| **p >= PICKED_SHOWN && self.freshness(**d) < 1000).map(|(d, _)| *d).collect()
+        self.picked.iter().filter(|(d, p)| **p >= picked_shown() && self.freshness(**d) < 1000).map(|(d, _)| *d).collect()
     }
 
     /// Cut 16 §1: a run ended — a bank or a return from `exit_depth` picks it; every depth the
@@ -2686,7 +2710,7 @@ impl LineageState {
     pub fn night_run(&mut self, exit_depth: u32, max_depth: u32, picks: bool) {
         if picks && exit_depth > 0 {
             let p = self.picked.entry(exit_depth).or_insert(0);
-            *p = (*p + 1).min(PICKED_CAP);
+            *p = (*p + 1).min(picked_cap());
         }
         self.night_seen.extend(1..=max_depth);
         if let Some(n)=&mut self.town.shared_night_runs {
@@ -5618,7 +5642,7 @@ impl Game {
         for tr in &run.trophies_run {
             if !self.lineage.trophies.contains(tr) {
                 self.lineage.trophies.push(tr.clone());
-                marks += 2;
+                marks += crate::balance::get().marks.trophy;
                 bests.push(format!("trophy: {}", trophy_label(tr)));
             }
         }
@@ -5650,7 +5674,7 @@ impl Game {
             let tr = format!("master:{}", class.name());
             if !self.lineage.trophies.contains(&tr) {
                 self.lineage.trophies.push(tr.clone());
-                marks += 2;
+                marks += crate::balance::get().marks.trophy;
                 bests.push(format!("trophy: {}", trophy_label(&tr)));
                 if !mastery_card(class).is_empty() { self.lineage.unlocks.insert(mastery_card(class).into()); }
             }
@@ -5797,7 +5821,7 @@ impl Game {
         for (ok, tr) in lifetime {
             if ok && !self.lineage.trophies.contains(&tr) {
                 self.lineage.trophies.push(tr.clone());
-                marks += 2;
+                marks += crate::balance::get().marks.trophy;
                 bests.push(format!("trophy: {}", trophy_label(&tr)));
             }
         }
@@ -5809,7 +5833,7 @@ impl Game {
                 && crate::defs::biome_kinds(biome).iter().all(|k| self.lineage.facts.contains(&format!("tamed:{k}")))
             {
                 self.lineage.trophies.push(tr.clone());
-                marks += 2;
+                marks += crate::balance::get().marks.trophy;
                 bests.push(format!("trophy: {}", trophy_label(&tr)));
             }
             // Cut 3: every kind of a biome studied (five kills each) — three marks.
@@ -6038,8 +6062,8 @@ impl Game {
             // never banked is not gold-locked out of the shop after a death (cohort 5, rater J:
             // "$0 after death, seven identical deaths overnight"). Bounded: tops the purse up to
             // WAKE_PAY, never adds on top of it.
-            if self.lineage.gold < WAKE_PAY {
-                let top = WAKE_PAY - self.lineage.gold;
+            if self.lineage.gold < wake_pay() {
+                let top = wake_pay() - self.lineage.gold;
                 self.lineage.gold_move(top, "wake pay");
                 self.batch.wake_pay += top;
                 self.batch.wake_n += 1;
@@ -6049,7 +6073,7 @@ impl Game {
                 // $1434 in the camp — read as a cap): the flag explains a missing top-up only
                 // where one was to be expected, a purse just over the line (under
                 // `PURSE_FULL_BAND`); a richer lineage's death says nothing of the purse.
-                purse_full = self.lineage.gold < PURSE_FULL_BAND;
+                purse_full = self.lineage.gold < purse_full_band();
             }
             if let Some(rec) = rec {
                 self.deaths.insert(run.id, rec);
@@ -6188,7 +6212,7 @@ impl Game {
             // purse tops up to $40"): the top-up names the purse it fills to.
             // QA on 524827b (qaAB: `+$40 heir purse` after ♟1's death, nothing after the rest — "no rule"): the top-up always
             // names the line it fills to (`+$40 wake → $40`), so a later death with a fuller purse reads as the same rule
-            line.text.push_str(&format!(" · +${wake_top} wake → ${WAKE_PAY}"));
+            line.text.push_str(&format!(" · +${wake_top} wake → ${}", wake_pay()));
         }
         // QA on e75ec29 (qaR: the heir purse paid after one death and not three others; packed
         // heals stolen on D1 and nothing on the exit): a death that found the purse full at
@@ -6366,7 +6390,7 @@ impl Game {
         }
         self.lineage.renown += score;
         self.batch.renown_gained += score;
-        while self.lineage.renown >= 100 * (self.lineage.rank + 1) * (self.lineage.rank + 1) {
+        while self.lineage.renown >= crate::balance::get().marks.rank_base * (self.lineage.rank + 1) * (self.lineage.rank + 1) {
             self.lineage.rank += 1;
             self.lineage.marks += 1;
             self.batch.marks += 1;
@@ -6388,7 +6412,7 @@ impl Game {
     fn salvage_paid(&mut self, items: &[Item], pct: i32, coins: &[i32]) {
         for (it, &gold) in items.iter().zip(coins) {
             // hundredths of a coin: value × tier% ÷ divisor, carried so cheap items still add up
-            let cents = salvage_value(&it.kind) * pct / GOLD_DIVISOR;
+            let cents = salvage_value(&it.kind) * pct / gold_divisor();
             self.lineage.gold_carry += cents - gold * 100;
             self.lineage.gold_move(gold, "salvage");
             self.batch.salvage_gold += gold;
@@ -7292,7 +7316,7 @@ pub fn salvage_coins(items: &[Item], pct: i32, carry: i32) -> Vec<i32> {
     if pct <= 0 {
         return vec![0; items.len()];
     }
-    let cents: Vec<i32> = items.iter().map(|i| salvage_value(&i.kind) * pct / GOLD_DIVISOR).collect();
+    let cents: Vec<i32> = items.iter().map(|i| salvage_value(&i.kind) * pct / gold_divisor()).collect();
     apportion_cents(&cents, carry)
 }
 
@@ -7349,13 +7373,11 @@ pub fn salvage_value(kind: &str) -> i32 {
 /// Cut 22 §1 (AG: "+$77 returned · −$160 spent"; AH: "a treadmill"): a potion on the shelf
 /// costs `$10 + 2 × best depth` (D8 $26, D20 $50) and a scroll 1.5× that — a D8 lineage's heal
 /// is not a D20 lineage's (was a flat $40 / $60).
-/// The most a potion costs (a scroll 1.5×).
-pub const SUPPLY_PRICE_CAP: i32 = 26;
-
+/// The most a potion costs (a scroll 1.5×) is `balance` `kit.supply_price_cap` (Cut233).
 pub fn supply_price(cat: Cat, best_depth: u32) -> i32 {
     // capped: a deep lineage starting at a waystone skips the shallow income, so a price that
     // kept climbing with depth made its sends lose money (the waystone column, Cut 22 §1)
-    let potion = (10 + 2 * best_depth as i32).min(SUPPLY_PRICE_CAP);
+    let potion = (10 + 2 * best_depth as i32).min(crate::balance::get().kit.supply_price_cap);
     match cat {
         Cat::Scroll => potion * 3 / 2,
         _ => potion,
@@ -7567,15 +7589,16 @@ pub fn populate_floor(run: &mut Run, grudges: &[Grudge], forge: &BTreeMap<String
         it.amount = 1;
         place(run, it);
     }
-    for _ in 0..6 {
+    let gb = &crate::balance::get().gold;
+    for _ in 0..gb.coin_piles {
         let iid = run.new_item_id();
         let mut it = Item::new(iid, "gold");
         // Coins (the pile reads `gold $2` and the stake rises by 2): the raw draw of
         // 3–6 × depth over `GOLD_DIVISOR`, rounded, never empty.
-        it.amount = ((run.rng.range(3, 7) * depth as i32 + GOLD_DIVISOR / 2) / GOLD_DIVISOR).max(1);
+        it.amount = ((run.rng.range(gb.coin_draw[0], gb.coin_draw[1]) * depth as i32 + gb.divisor / 2) / gb.divisor).max(1);
         // Cut 20 §5: the bounty floor pays double.
         if run.bounty == Some(depth) {
-            it.amount *= BOUNTY_GOLD_MULT;
+            it.amount *= bounty_gold_mult();
         }
         if keep() {
             place(run, it);
@@ -7884,7 +7907,8 @@ pub fn place_room_kind(run: &mut Run, rng: &mut Rng, kind: &str, near: bool, use
         _ => {
             run.floor.map.set(p, Tile::Nest);
             let mut gold = Item::new(run.new_item_id(), "gold");
-            gold.amount = (12 * depth as i32 + rng.range(4, 12) + GOLD_DIVISOR / 2) / GOLD_DIVISOR;
+            let gb = &crate::balance::get().gold;
+            gold.amount = (gb.nest[0] * depth as i32 + rng.range(gb.nest[1], gb.nest[2]) + gb.divisor / 2) / gb.divisor;
             // Cut 16 §1: a picked floor's nest holds less.
             let fresh = run.thin.get(&depth).copied().unwrap_or(1000) as i32;
             gold.amount = ((gold.amount * fresh + 500) / 1000).max(1);

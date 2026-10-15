@@ -12,18 +12,42 @@ use crate::wire::SystemInfo;
 pub struct SystemDef {
     pub id: &'static str,
     pub trigger: &'static str,
-    /// Cut 30 (docs/PROGRESSION_V2.md §4): the lineage's age (hours, offline included) the system waits
-    /// for besides its trigger, and the age that opens it without its trigger (0: none).
-    pub min_age_h: u32,
-    pub fallback_h: u32,
 }
 
 const fn sys(id: &'static str, trigger: &'static str) -> SystemDef {
-    SystemDef { id, trigger, min_age_h: 0, fallback_h: 0 }
+    SystemDef { id, trigger }
 }
 
-const fn aged(id: &'static str, trigger: &'static str, min_age_h: u32, fallback_h: u32) -> SystemDef {
-    SystemDef { id, trigger, min_age_h, fallback_h }
+/// A system with a minimum age (Cut233: the hours are `balance` `unlocks.hours`; the pen's group also has the fallback
+/// age `unlocks.pen_fallback_h`).
+const fn aged(id: &'static str, trigger: &'static str) -> SystemDef {
+    SystemDef { id, trigger }
+}
+
+impl SystemDef {
+    /// Cut 30 (docs/PROGRESSION_V2.md §4): the lineage's age (hours, offline included) the system waits for besides
+    /// its trigger (`balance` `unlocks.hours`).
+    pub fn min_age_h(&self) -> u32 {
+        let h = &crate::balance::get().unlocks.hours;
+        match self.id {
+            "party" => h.party,
+            "kennel" => h.kennel,
+            "stances" => h.stances,
+            "tactics" => h.tactics,
+            "bank" => h.bank,
+            "quests" => h.quests,
+            "class" => h.class,
+            "start" => h.start,
+            "tactic2" => h.tactic2,
+            "automations" => h.automations,
+            id if PEN.contains(&id) => h.pen,
+            _ => 0,
+        }
+    }
+    /// The age that opens it without its trigger (0: none) — the pen's group (`balance` `unlocks.pen_fallback_h`).
+    pub fn fallback_h(&self) -> u32 {
+        if PEN.contains(&self.id) { crate::balance::get().unlocks.pen_fallback_h } else { 0 }
+    }
 }
 
 /// The curriculum in order. Cut 30 (docs/CUT30.md, Reveal): day 0 is the camp — the send, the shaft's
@@ -43,36 +67,35 @@ pub const SYSTEMS: &[SystemDef] = &[
     sys("exits", "first gold home"),
     sys("forge", "four delves"),
     sys("loadout", "first gold home"),
-    aged("party", "first stray", 1, 0),
-    aged("kennel", "first tame", 1, 0),
-    aged("stances", "meet Captain", 1, 0),
-    aged("tactics", "slay Warlord", 4, 0),
-    aged("bank", "a night's purse", 8, 0),
-    aged("quests", "slay Warlord", 12, 0),
-    aged("class", "second class", 16, 0),
-    aged("start", "slay Warlord", 20, 0),
+    aged("party", "first stray"),
+    aged("kennel", "first tame"),
+    aged("stances", "meet Captain"),
+    aged("tactics", "slay Warlord"),
+    aged("bank", "a night's purse"),
+    aged("quests", "slay Warlord"),
+    aged("class", "second class"),
+    aged("start", "slay Warlord"),
     sys("temperament", "six delves"),
-    aged("tactic2", "meet Lich", 56, 0),
-    aged("pen", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("edit", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("dial", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("unlocks", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("reorder", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("vs", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("tags", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("walls", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("divergence", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("route", "meet Mother", PEN_AGE_H, PEN_FALLBACK_H),
-    aged("automations", "meet Lich", 96, 0),
+    aged("tactic2", "meet Lich"),
+    aged("pen", "meet Mother"),
+    aged("edit", "meet Mother"),
+    aged("dial", "meet Mother"),
+    aged("unlocks", "meet Mother"),
+    aged("reorder", "meet Mother"),
+    aged("vs", "meet Mother"),
+    aged("tags", "meet Mother"),
+    aged("walls", "meet Mother"),
+    aged("divergence", "meet Mother"),
+    aged("route", "meet Mother"),
+    aged("automations", "meet Lich"),
     sys("route2", "an oath kept"),
     sys("heir_pick", "an oath kept"),
 ];
 
-/// Cut 30 (PROGRESSION_V2 §4): the pen waits for the Mother met, and opens at 5 days whatever the climb.
-/// Cut 110 (owner 2026-10-08, cohort ad71e72: the pen never opened in a session, expression 0.3 on both
-/// cards): no age on top of the Mother — she is the late beat (D13, a band boss); was 72 h.
-pub const PEN_AGE_H: u32 = 0;
-pub const PEN_FALLBACK_H: u32 = 120;
+// Cut 30 (PROGRESSION_V2 §4): the pen waits for the Mother met, and opens at 5 days whatever the climb
+// (`balance` `unlocks.pen_fallback_h`, 120). Cut 110 (owner 2026-10-08, cohort ad71e72: the pen never opened in a
+// session, expression 0.3 on both cards): no age on top of the Mother — she is the late beat (D13, a band boss); was
+// 72 h (`unlocks.hours.pen`, 0).
 
 /// The systems open on day 0.
 pub const DAY0: [&str; 2] = ["send", "headline"];
@@ -136,7 +159,7 @@ pub fn next(l: &LineageState) -> Option<crate::wire::RevealNext> {
     let s = SYSTEMS.iter().find(|s| l.reveal_queue.first().map_or(!l.systems.contains(s.id), |q| q == s.id))?;
     let t = triggered(l, s.id, false);
     let age = l.age_h();
-    let wait = if t { s.min_age_h.saturating_sub(age) } else if s.fallback_h > 0 { s.fallback_h.saturating_sub(age) } else { 0 };
+    let wait = if t { s.min_age_h().saturating_sub(age) } else if s.fallback_h() > 0 { s.fallback_h().saturating_sub(age) } else { 0 };
     Some(crate::wire::RevealNext { id: s.id.into(), trigger: s.trigger.into(), triggered: t, wait_h: wait })
 }
 
@@ -150,14 +173,14 @@ fn ready(l: &LineageState, s: &SystemDef, plateau: bool, gate: bool) -> bool {
         return true;
     }
     let age = l.age_h();
-    (triggered(l, s.id, plateau) && age >= s.min_age_h) || (s.fallback_h > 0 && age >= s.fallback_h)
+    (triggered(l, s.id, plateau) && age >= s.min_age_h()) || (s.fallback_h() > 0 && age >= s.fallback_h())
 }
 
 /// Journal explanations share the actual milestone/age gate and do not open it.
 pub fn journal_gate(l: &LineageState, id: &str) -> Option<(bool, u32, u32, bool)> {
     let s = SYSTEMS.iter().find(|s| s.id == id)?;
-    Some((triggered(l, id, false), if l.pkg.literal { 0 } else { s.min_age_h },
-        if l.pkg.literal { 0 } else { s.fallback_h }, ready(l, s, false, !l.pkg.literal)))
+    Some((triggered(l, id, false), if l.pkg.literal { 0 } else { s.min_age_h() },
+        if l.pkg.literal { 0 } else { s.fallback_h() }, ready(l, s, false, !l.pkg.literal)))
 }
 
 /// Read-only explanation for the pen; shares the actual trigger and readiness checks.
@@ -173,10 +196,10 @@ pub fn pen_needs(l: &LineageState) -> Vec<String> {
     if !triggered(l, s.id, false) {
         needs.push("Meet Bloat Mother".into());
     }
-    if l.age_h() < s.min_age_h {
-        needs.push(format!("{}h elapsed", s.min_age_h));
+    if l.age_h() < s.min_age_h() {
+        needs.push(format!("{}h elapsed", s.min_age_h()));
     }
-    needs.push(format!("or {}h elapsed", s.fallback_h));
+    needs.push(format!("or {}h elapsed", s.fallback_h()));
     needs
 }
 
@@ -202,14 +225,14 @@ fn update_inner(l: &mut LineageState, plateau: bool, gate: bool, news: &mut Opti
         let s = &SYSTEMS[i];
         // the unit: this system and the next ones with its trigger and age
         let mut j = i + 1;
-        while j < SYSTEMS.len() && !s.trigger.is_empty() && SYSTEMS[j].trigger == s.trigger && SYSTEMS[j].min_age_h == s.min_age_h {
+        while j < SYSTEMS.len() && !s.trigger.is_empty() && SYSTEMS[j].trigger == s.trigger && SYSTEMS[j].min_age_h() == s.min_age_h() {
             j += 1;
         }
         let mut unit: Vec<&SystemDef> = SYSTEMS[i..j].iter().filter(|u| !l.systems.contains(u.id) && ready(l, u, plateau, gate)).collect();
         // (Cut232: under a report's news budget one reveal is one trigger — `first gold home` brings the exits and the
         // loadout, `six delves` the heirs and the temperaments, though the curriculum lists them apart)
         if news.is_some() && !unit.is_empty() && !s.trigger.is_empty() {
-            unit.extend(SYSTEMS[j..].iter().filter(|u| u.trigger == s.trigger && u.min_age_h == s.min_age_h && !l.systems.contains(u.id) && ready(l, u, plateau, gate)));
+            unit.extend(SYSTEMS[j..].iter().filter(|u| u.trigger == s.trigger && u.min_age_h() == s.min_age_h() && !l.systems.contains(u.id) && ready(l, u, plateau, gate)));
         }
         // Cut 118 §6: a feat (a trial cleared, a sought boss slain) lights a unit whose trigger has come before its
         // age — the time fallback stands for everyone else
@@ -254,7 +277,7 @@ fn update_inner(l: &mut LineageState, plateau: bool, gate: bool, news: &mut Opti
             // (Cut 118 §6: what lit it)
             let lit = if by_feat {
                 format!("feat: {}", l.feats.last_feat)
-            } else if !gate || (triggered(l, u.id, plateau) && l.age_h() >= u.min_age_h) {
+            } else if !gate || (triggered(l, u.id, plateau) && l.age_h() >= u.min_age_h()) {
                 u.trigger.to_string()
             } else {
                 "time".to_string()

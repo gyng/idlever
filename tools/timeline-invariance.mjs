@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Cut231 §4: prove the dayplayer's `--timeline` beats are read-only. Two job caches (`target/gates/dp/<key>-…json`,
 // one binary key each) must hold the same SeedOut for every configuration × seed once the timeline's own fields
-// (`timeline`, `session_m`) are dropped. Diagnostic only.
-//   node tools/timeline-invariance.mjs BASE_KEY NEW_KEY [DIR] [--labels IDLE,IDLE30,PICKED]
+// (`timeline`, `session_m`) are dropped. Diagnostic only. `--all` (Cut233, a pure refactor's proof) keeps every
+// field, the timeline too.
+//   node tools/timeline-invariance.mjs BASE_KEY NEW_KEY [DIR] [--labels IDLE,IDLE30,PICKED] [--all]
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -12,6 +13,7 @@ const [baseKey, newKey, dirArg] = process.argv
 const dir = dirArg ?? "target/gates/dp";
 const li = process.argv.indexOf("--labels");
 const labels = li >= 0 ? process.argv[li + 1].split(",") : null;
+const all = process.argv.includes("--all");
 if (!baseKey || !newKey) {
   console.error("usage: node tools/timeline-invariance.mjs BASE_KEY NEW_KEY [DIR] [--labels ...]");
   process.exit(2);
@@ -26,8 +28,11 @@ const body = (f) => {
   let v = JSON.parse(readFileSync(join(dir, f), "utf8"));
   if (typeof v?.body === "string") v = JSON.parse(v.body);
   else if (v?.v) v = v.v;
-  delete v.timeline;
-  delete v.session_m;
+  if (!all) {
+    delete v.timeline;
+    delete v.session_m;
+    delete v.looks;
+  }
   return JSON.stringify(v);
 };
 let same = 0;
@@ -46,5 +51,7 @@ for (const [name, f] of base) {
     diff++;
   }
 }
-console.log(`timeline invariance: ${same} identical, ${diff} differ (${baseKey} vs ${newKey})`);
+console.log(
+  `${all ? "job invariance (every field)" : "timeline invariance"}: ${same} identical, ${diff} differ (${baseKey} vs ${newKey})`,
+);
 process.exit(diff ? 1 : 0);

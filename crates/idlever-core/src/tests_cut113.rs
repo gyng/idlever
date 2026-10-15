@@ -58,7 +58,7 @@ fn forge_tiers_offer_two_branches_priced_alike_and_default_is_the_old_ladder() {
     crate::kit::buy(&mut p, "armour:pace").unwrap();
     let h = hero_of(&p);
     assert!(h.armour.is_none());
-    assert_eq!(h.pace, crate::kit::PACE_TENTHS[0]);
+    assert_eq!(h.pace, crate::balance::get().kit.pace_tenths[0]);
     let mut q = g.clone();
     crate::kit::buy(&mut q, "armour:plate").unwrap();
     assert!(hero_of(&q).armour.is_some() && q.lineage.kit_lean.is_empty());

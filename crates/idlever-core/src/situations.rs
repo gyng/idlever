@@ -690,7 +690,7 @@ pub fn omen(run: &mut Run, cx: &mut Ctx) {
     match biome {
         Biome::Warrens | Biome::Foundry | Biome::Deep | Biome::Sanctum => {
             let mut it = crate::item::Item::new(run.new_item_id(), "gold");
-            it.amount = ((rng.range(6, 12) * depth as i32 + crate::engine::GOLD_DIVISOR / 2) / crate::engine::GOLD_DIVISOR).max(1);
+            it.amount = ((rng.range(6, 12) * depth as i32 + crate::engine::gold_divisor() / 2) / crate::engine::gold_divisor()).max(1);
             crate::turn::drop_near(run, at, it);
         }
         Biome::Burrows => {

@@ -155,6 +155,11 @@ struct SeedOut {
     timeline: Vec<Beat>,
     #[serde(default)]
     session_m: f64,
+    /// Cut233 (owner 2026-10-15, cadence30 counts gaps between looks only): the first session's camp arrivals, in
+    /// player minutes (minute 0, then one at each run's return) — a stretch with no arrival inside it is one watched
+    /// run, never a gap.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    looks: Vec<f64>,
 }
 
 /// Cut 121 §2: the town's gold income so far (the hauls and the porter's, fetched and recovered gold).
@@ -493,6 +498,7 @@ fn first_session(g: &mut Game, out: &mut SeedOut, ask: &Ask) -> u64 {
         let hired = g.lineage.tree.hired.len();
         // (Cut231 §4: what the player sees arriving at camp, before the taps — the first look is the baseline)
         note_beats(g, out, t / 60.0);
+        out.looks.push(t / 60.0);
         // (`DP_LOOK_TRACE`: each first-session look — minute, record, the last run (start, depth, exit, ticks); a diagnostic, never in a gate run)
         if std::env::var_os("DP_LOOK_TRACE").is_some() { let r = g.lineage.run_log.last(); eprintln!("look seed {} m {:.2} best D{} last {:?}", g.lineage.seed, t / 60.0, g.lineage.best_depth, r.map(|r| (r.start, r.depth, r.tier.clone(), r.turns))); }
         camp_taps(g, ask, arm, out, t / 3600.0);
@@ -864,6 +870,9 @@ fn decision_unit(k: &str) -> &str {
 /// `win` minutes (from minute 0 to the first beat, between beats, and from the last to the window's end when the
 /// session reaches it, else to the session's end), and the most new decisions one look brought (a look = one
 /// minute stamp). `None` when the seed recorded no timeline.
+/// Cut233 (owner 2026-10-15): the gap counts between looks only — a stretch with no camp arrival (`SeedOut::looks`)
+/// strictly inside it is one watched run (the player is watching it), never a gap. A seed without looks (an old
+/// job) counts every stretch, as before.
 fn cadence(o: &SeedOut, win: f64, session_m: f64) -> Option<(f64, usize)> {
     if o.timeline.is_empty() {
         return None;
@@ -875,7 +884,10 @@ fn cadence(o: &SeedOut, win: f64, session_m: f64) -> Option<(f64, usize)> {
     let mut gap = 0.0f64;
     let mut last = 0.0;
     for t in times.iter().chain(std::iter::once(&end)) {
-        gap = gap.max(t - last);
+        let one_run = !o.looks.is_empty() && !o.looks.iter().any(|v| *v > last && *v < *t);
+        if !one_run {
+            gap = gap.max(t - last);
+        }
         last = *t;
     }
     let mut most = 0usize;
@@ -886,6 +898,12 @@ fn cadence(o: &SeedOut, win: f64, session_m: f64) -> Option<(f64, usize)> {
         most = most.max(units.len());
     }
     Some((gap, most))
+}
+
+/// Cut233: the longest stretch between two consecutive first-session looks inside the first `win` minutes (one
+/// watched run, its recovery wait and the camp after it) — reported beside the cadence gap, never gated.
+fn longest_run(o: &SeedOut, win: f64) -> f64 {
+    o.looks.windows(2).filter(|w| w[0] < win).map(|w| w[1].min(win) - w[0]).fold(0.0f64, f64::max)
 }
 
 thread_local! {
@@ -1029,6 +1047,29 @@ fn checkpoint_keep(path: &std::path::Path, key: &str, p: &Play) {
 }
 
 #[cfg(test)]
+mod cadence_tests {
+    use super::*;
+    fn beat(m: f64) -> Beat {
+        Beat { m, k: format!("b{m}"), d: false, minor: false }
+    }
+    /// Cut233 (owner 2026-10-15): a stretch with no look inside it is one watched run, never a gap; a stretch over
+    /// an empty look counts whole; an old job without looks counts every stretch.
+    #[test]
+    fn gap_counts_between_looks_only() {
+        let mut o = SeedOut { timeline: vec![beat(-1.0), beat(8.0), beat(10.0), beat(20.0)], looks: vec![0.0, 8.0, 10.0, 15.0, 20.0, 27.0], ..Default::default() };
+        // 0→8 and 8→10 are single runs; 10→20 spans the empty look at 15 (10 min); 20→30 spans the look at 27
+        assert_eq!(cadence(&o, 30.0, 40.0), Some((10.0, 0)));
+        o.looks = vec![0.0, 8.0, 10.0, 20.0, 27.0];
+        assert_eq!(cadence(&o, 30.0, 40.0), Some((10.0, 0)), "20 → 30 still spans the look at 27");
+        o.looks = vec![0.0, 8.0, 10.0, 20.0];
+        assert_eq!(cadence(&o, 30.0, 40.0), Some((0.0, 0)), "every stretch one run");
+        o.looks.clear();
+        assert_eq!(cadence(&o, 30.0, 40.0), Some((10.0, 0)), "no looks: as before");
+        assert_eq!(longest_run(&SeedOut { looks: vec![0.0, 8.0, 10.0, 20.0, 33.0], ..Default::default() }, 30.0), 10.0);
+    }
+}
+
+#[cfg(test)]
 mod checkpoint_tests {
     use super::*;
     #[test]
@@ -1140,7 +1181,7 @@ mod session_chore_tests {
         assert_eq!(first_session_chores(&mut g, &Ask::new(&cfg)), 1);
         assert!(g.lineage.town.bank > 0);
         assert!(g.lineage.gold >= next + 3 * idlever_core::kit::unit(g.lineage.best_depth) as i32);
-        assert_eq!(g.lineage.town.bank, idlever_core::town::BANK_NIGHTS * g.lineage.last_night_net);
+        assert_eq!(g.lineage.town.bank, idlever_core::town::bank_nights() * g.lineage.last_night_net);
         assert_eq!(g.lineage.gold + g.lineage.town.bank, wealth);
         let off = Cfg { bot: Bot::Tuned, without: Some("bank") };
         let mut disabled = original;
@@ -2131,13 +2172,10 @@ fn main() {
             let worst_gap = gaps.iter().cloned().fold(0.0f64, f64::max);
             let worst_dec = c.iter().map(|x| x.1).max().unwrap_or(0);
             let ok_n = c.iter().filter(|x| x.0 <= 6.0 && x.1 <= 1).count();
-            let (name, value) = ("First-30-min cadence: beat gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed)".to_string(), format!("gap med {:.1} · worst {worst_gap:.1} min · dec {worst_dec} · {ok_n}/{}", median(gaps), c.len()));
-            // (a targeted row only — `--rows cadence30`; the routine table shows it as info until it passes)
-            if plan.is_some() {
-                bars.push((name, value, ok_n == c.len() && c.len() == picked.len()));
-            } else {
-                infos.push((name, value));
-            }
+            // (Cut233: the gap counts between looks only; the longest single watched run is shown beside it, never gated)
+            let run = picked.iter().map(|o| longest_run(o, 30.0)).fold(0.0f64, f64::max);
+            let (name, value) = ("First-30-min cadence: look gap ≤ 6 min, ≤ 1 new decision a look (every PICKED seed)".to_string(), format!("gap med {:.1} · worst {worst_gap:.1} min · dec {worst_dec} · {ok_n}/{} (run ≤ {run:.1})", median(gaps), c.len()));
+            bars.push((name, value, ok_n == c.len() && c.len() == picked.len()));
         }
     }
     if !idle.is_empty() {
@@ -2152,7 +2190,7 @@ fn main() {
         let rows: Vec<serde_json::Value> = res.iter().map(|(c, o)| serde_json::json!({
             "bot": cfgs[*c].label(), "seed": o.seed, "session_m": o.session_m, "porter_min": o.porter_min, "scout_min": o.scout_min,
             "scout_sends": o.scout_sends, "hours": o.hours, "milestones": MILESTONES, "best_day": o.best_day, "king_day": o.king_day,
-            "checkins_per_day": checkins, "days": days, "timeline": o.timeline,
+            "checkins_per_day": checkins, "days": days, "timeline": o.timeline, "looks": o.looks,
         })).collect();
         std::fs::write(path, serde_json::to_string(&serde_json::json!({ "seeds": seeds, "days": days, "checkins": checkins, "runs": rows })).unwrap()).expect("write --timeline");
         eprintln!("dayplayer: timeline → {path}");

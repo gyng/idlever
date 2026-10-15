@@ -725,7 +725,7 @@ pub fn apprentice_sinks(g: &mut Game, send: bool) -> u32 {
         return 0;
     }
     let order = l.orders.sink.clone();
-    let reserve = crate::tree::RESERVE_UNITS * unit(l);
+    let reserve = crate::tree::reserve_units() * unit(l);
     let mut n = 0;
     if send && matches!(order.as_str(), "both" | "ration") && !g.lineage.feats.ration {
         let p = ration_price(&g.lineage);
@@ -742,7 +742,7 @@ pub fn apprentice_sinks(g: &mut Game, send: bool) -> u32 {
         // (the tithe reads the town's whole wealth — purse and bank — above `TITHE_RESERVE_UNITS`: the bank's
         // savings are what a complete kit leaves to pile; the purse keeps the forge's reserve)
         let keep = TITHE_RESERVE_UNITS * unit(&g.lineage);
-        let floor = crate::tree::RESERVE_UNITS * unit(&g.lineage);
+        let floor = crate::tree::reserve_units() * unit(&g.lineage);
         for _ in 0..TITHE_PER_HOUR {
             let p = tithe_price(&g.lineage);
             let purse = crate::tree::purse(&g.lineage);

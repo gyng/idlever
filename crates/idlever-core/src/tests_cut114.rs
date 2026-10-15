@@ -1,6 +1,6 @@
 //! Cut 114 §3 (blind 77030eb): the scout's order at a wall, and a floor the guard gave up carries the stall's record.
 use crate::engine::ExitTier;
-use crate::tree::{self, WallLedger, WALL_DEATHS, WALL_RETRY};
+use crate::tree::{self, WallLedger};
 use crate::Game;
 
 /// A resident lineage with the scout at work and a record at `best`, a run started (turn 0).
@@ -30,7 +30,7 @@ fn deaths_at_one_floor_near_the_record_make_a_wall_and_a_send_past_it_forgets_it
     die_at(&mut g, 28);
     assert_eq!(tree::wall_hold(&g.lineage), None, "one death is not yet a wall");
     die_at(&mut g, 28);
-    assert_eq!(g.lineage.tree.wall.as_ref().map(|w| (w.depth, w.deaths)), Some((28, WALL_DEATHS)));
+    assert_eq!(g.lineage.tree.wall.as_ref().map(|w| (w.depth, w.deaths)), Some((28, crate::balance::get().tree.wall_deaths)));
     assert_eq!(tree::wall_hold(&g.lineage), Some((28, true)), "the default order banks before it");
     // the order is the player's: `carry` carries the haul home and lets him on; `push` sends him on
     g.lineage.orders.wall = "carry".into();
@@ -56,9 +56,9 @@ fn deaths_at_one_floor_near_the_record_make_a_wall_and_a_send_past_it_forgets_it
 fn the_bank_order_tries_the_wall_again_after_retries_or_a_stronger_hero() {
     let mut g = walled(4, 28);
     let s = tree::strength(&g.lineage);
-    g.lineage.tree.wall = Some(WallLedger { depth: 28, deaths: 2, strength: s, held: WALL_RETRY - 1 });
+    g.lineage.tree.wall = Some(WallLedger { depth: 28, deaths: 2, strength: s, held: crate::balance::get().tree.wall_retry - 1 });
     assert_eq!(tree::wall_hold(&g.lineage), Some((28, true)));
-    g.lineage.tree.wall.as_mut().unwrap().held = WALL_RETRY;
+    g.lineage.tree.wall.as_mut().unwrap().held = crate::balance::get().tree.wall_retry;
     assert_eq!(tree::wall_hold(&g.lineage), Some((28, false)), "the retry tries it, its haul carried");
     g.lineage.tree.wall.as_mut().unwrap().held = 0;
     g.lineage.tree.wall.as_mut().unwrap().strength = s ^ 1;

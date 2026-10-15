@@ -302,7 +302,7 @@ pub const STEADY_HOME: i32 = 25;
 /// Out of heals, Steady goes home under this.
 pub const STEADY_DRY: i32 = 40;
 pub const GUARDED_HOME: i32 = 30;
-pub const HUNTER_HOME: i32 = 20;
+// (Cut233: Hunter's home is `balance` `stance.hunter_home` [L1–4, L5], out of heals `stance.hunter_dry`.)
 
 /// A walking stance's way home: hurt under `hurt` % — a bank once past the record (the checkpoints secured the carry
 /// before it; this banks the rest), a return before it — or out of heals under `dry` %, a bank (out of supplies).
@@ -316,7 +316,8 @@ fn home_rows(best: u32, hurt: i32, dry: i32) -> Vec<Row> {
 }
 /// Steady rests only when well hurt (`Guarded` rests at 80 %): L2 under this, L3 under the next.
 pub const STEADY_REST: i32 = 40;
-pub const STEADY_REST_L3: i32 = 50;
+// (Cut233: Steady's rest is capped at `balance` `stance.steady_rest_cap` while the record is under
+// `stance.steady_rest_cap_below`.)
 /// Guarded's way home: earlier than Steady's, never so early it cannot reach the record.
 pub const GUARDED_RETURN: i32 = 25;
 
@@ -357,7 +358,8 @@ pub fn stance_rows(id: &str, level: u32, best: u32) -> (Vec<Row>, Vec<Row>) {
             if level >= 2 {
                 // Preserve the first-session run/training cadence; deeper floors need more recovery.
                 let rest = crate::balance::get().steady_rest[usize::from(level >= 3)];
-                let rest = if best < 18 { rest.min(STEADY_REST_L3) } else { rest };
+                let st = &crate::balance::get().stance;
+                let rest = if best < st.steady_rest_cap_below { rest.min(st.steady_rest_cap) } else { rest };
                 f.push(r(vec![n("hp<", rest)], Verb::new("rest")));
             }
             (g, f)
@@ -388,13 +390,13 @@ pub fn stance_rows(id: &str, level: u32, best: u32) -> (Vec<Row>, Vec<Row>) {
             let g = vec![
                 r(vec![tag("boss"), Cond::flag("on_hurt")], Verb::arg("attack", "tag:boss")),
                 drink,
-                r(vec![n("hp<", if level >= 5 { 20 } else { 25 }), n("depth>=", bank_at(best, 0))], Verb::new("bank")),
+                r(vec![n("hp<", crate::balance::get().stance.bold_bank[usize::from(level >= 5)]), n("depth>=", bank_at(best, 0))], Verb::new("bank")),
                 r(vec![tag("boss")], Verb::arg("attack", "tag:boss")),
                 r(vec![n("hp<", 40), Cond::flag("path_stairs")], Verb::new("descend")),
             ];
             let mut f = vec![r(vec![n("foes>=", 1)], Verb::arg("attack", "lowest"))];
             if level >= 2 {
-                f.push(r(vec![n("hp<", 50)], Verb::new("rest")));
+                f.push(r(vec![n("hp<", crate::balance::get().stance.bold_rest)], Verb::new("rest")));
             }
             (g, f)
         }
@@ -402,7 +404,8 @@ pub fn stance_rows(id: &str, level: u32, best: u32) -> (Vec<Row>, Vec<Row>) {
         // 35 % and rests under 50 %, L4 the casters first, L5 home at 15 %.
         "hunter" => {
             let mut g = vec![drink];
-            g.extend(home_rows(best, if level >= 5 { 15 } else { HUNTER_HOME }, 35));
+            let st = &crate::balance::get().stance;
+            g.extend(home_rows(best, st.hunter_home[usize::from(level >= 5)], st.hunter_dry));
             // the hunter goes for what strikes from afar or raises others: archers, casters, the
             // summoned, the boss — before the nearest
             // (and never meleés a mirror of blows: from afar, fire, or a step away — the Foundry's card)
@@ -415,7 +418,7 @@ pub fn stance_rows(id: &str, level: u32, best: u32) -> (Vec<Row>, Vec<Row>) {
             }
             let mut f = vec![attack];
             if level >= 2 {
-                f.push(r(vec![n("hp<", 50)], Verb::new("rest")));
+                f.push(r(vec![n("hp<", st.hunter_rest)], Verb::new("rest")));
             }
             (g, f)
         }
@@ -1070,7 +1073,7 @@ pub fn pick(l: &mut LineageState, id: &str) -> Result<(), String> {
 /// Marks a level spend costs (the next level's number): ◆2 for L2 … ◆5 for L5.
 pub fn level_price(l: &LineageState, id: &str) -> Option<u32> {
     let lv = l.pkg.level(id);
-    (lv < MAX_LEVEL && level_open(l)).then_some(lv + 1)
+    (lv < MAX_LEVEL && level_open(l)).then_some(lv + crate::balance::get().stance.level_marks)
 }
 
 /// Cut232 (docs/CUT232_CADENCE.md): a level bought with marks comes with the Scout — the sends by hand before him

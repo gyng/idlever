@@ -167,113 +167,54 @@ here.
 - The parallel gain is bounded by the longest TUNED fortnight. One game ran 1400 s under load, against about 135 s on a
   quieter box. The gain is also bounded by the host's spare cores, not by the sweep.
 
-### Content tunables not yet in `tuning/balance.json` (for the lead, after the core agent finishes)
+### Content tunables in `tuning/balance.json` (Cut233, 2026-10-15)
 
-balance.json holds:
-- `level_runs`, scars, drills;
-- the stance heal, home, dry and rest bars;
-- the recovery ramp.
+Cut233 moved the pacing tunables out of `const`s and literals into the balance profile
+(`crates/idlever-core/src/balance.rs`, template `tuning/balance.json`). It is a pure refactor: every shipping default is
+the constant it replaced, and IDLE/PICKED/TUNED 16 × 14 dayplayer jobs are byte-identical to the base
+(`docs/evidence/cut233/README.md`). Every key below sweeps (`tools/sweep.mjs`, a path such as
+`workers.drillmaster.price_tenths` or `gold.exit_pct.1`) and loads through `--balance` / `IDLEVER_BALANCE_FILE` /
+`IDLEVER_BALANCE_JSON`. Unknown keys are refused at every level, each section's bounds are checked
+(`balance::check_sections`), and a profile may leave a whole section out (its shipping values), so a pre-Cut233
+profile still loads. A section that is given must be whole.
 
-Everything below is a `const` or literal in `crates/idlever-core/src`. Line numbers are approximate (an Explore pass on
-3823eb8b). Entries marked **[P]** feed the pacing rows most directly.
+Sweepable now:
+- top level (as before): `level_runs`, scars, drills, the stance heal/home/dry/rest bars, the `recovery` ramp.
+- `workers.<id>.{need, price_tenths, fallback_h}` for quartermaster, porter, scout, apprentice, clerk, drillmaster,
+  kennel_hand, herald, guide, kennel_keeper (`tree::NodeDef::need()` etc.; the hire price is
+  `unit × price_tenths / 10`).
+- `tree`: `reserve_units` 3, `guide_gap` 4, `rank_days` [4, 8, 12], `rank_price_units` 1 (a rank costs
+  units × (rank − 1)), the perks `porter_bonus_pct` 2, `apprentice_off_pct` 5, `clerk_bonus_permille` 25,
+  `scout_rest_off_pct` 5, `safer_start_pct` 5, `drill_rank_off` 1 (marks), the wall ledger `wall_deaths` 2,
+  `wall_near` 2, `wall_retry` 3, `stone_memory` 12.
+- `rest`: `min_ticks` 12000, `cap_ticks` 18000, `turns_div` 2 (`offline::rest_after`).
+- `gold`: `exit_pct` [100, 60, 0] (bank, return, death: the class XP / renown yield share; Gold is credited whole on a
+  living exit), `divisor` 4, the floor's coins `coin_piles` 6 × `coin_draw` [3, 7) × depth, the nest `nest`
+  [12, 4, 12] (12 × depth + [4, 12)), `picked_cap` 7, `freshness` [1000 … 250], `picked_shown` 3, `wake_pay` 40,
+  `bounty_below` 2, `bounty_gold_mult` 2, the bank `bank_pct` 2, `bank_nights` 3, `bank_floor` 100.
+- `kit`: the unit `unit_base` 100 + `unit_per_depth` 25 × best, `weapon_mult`, `armour_mult`, `pack_mult`,
+  `row_mult` (row5–row10), `pace_tenths`, `supply_cap_max` 8, `commission_units` 10, `commission_floor` 5,
+  `supply_price_cap` 26, `forge_ladder` [5, 15, 40].
+- `unlocks`: `forge_delves` 4 (the Forge plot, with the Scout and exit gold), the build stages
+  `temperament` [6 delves, D5], `inherited` [8, D8], `family` [12, D13], the reveals' minimum ages `hours.{party,
+  kennel, stances, tactics, bank, quests, class, start, tactic2, automations, pen}`, `pen_fallback_h` 120.
+- `stance`: `hunter_home` [20, 15], `hunter_dry` 35, `hunter_rest` 50, `steady_rest_cap` 50 under
+  `steady_rest_cap_below` D18, `bold_bank` [25, 20], `bold_rest` 50, `level_marks` 1 (a level costs level + 1 marks).
+- `marks`: `rank_base` 100 (a renown rank at 100 × r²), `trophy` 2, class XP `xp_early` 60 × L² to
+  `xp_early_to` 3, then `xp_late` 100 × L², `gold_per_mark` 150, `legacy_root` [15 … 12000], `legacy_effect`
+  [700, 1800].
+- `monsters`: `depth_cap` 16, `hp_div` 2, `atk_div` 6 (`defs::depth_hp_bonus`, `depth_atk_bonus`).
 
-**Workers, the hire triggers and prices**
-- **[P]** `tree.rs` `NODES` (≈:42–53) gives need / price in tenths of a forge unit / fallback hours:
-  - porter 3 chests / free / none; scout 2 sends / 0.4 / none;
-  - apprentice 3 / 3.0 / 30 h; clerk 3 / 4.0 / 36 h; drillmaster 2 / 3.0 / 36 h; kennel_hand 2 / 3.0 / 40 h;
-  - herald 2 / 2.0 / 40 h; guide 3 / 4.0 / 44 h; kennel_keeper 2 / 3.0 / 48 h.
-- **[P]** The hire price is `unit × price_tenths / 10`. The unit is `kit.rs` `unit(best) = 100 + 25 × best`, fixed by
-  `lock_unit`.
-- `tree.rs` also holds:
-  - RESERVE_UNITS 3; GUIDE_GAP 4; RANK_DAYS [4, 8, 12]; MAX_RANK 4; the rank price `unit × (rank − 1)`;
-  - perks: SCOUT_REST_OFF_PCT 5, SAFER_START_PCT 5, PORTER_BONUS_PCT 2, APPRENTICE_OFF_PCT 5,
-    CLERK_BONUS_PERMILLE 25; the drillmaster rank II discount of 1 mark;
-  - WALL_DEATHS 2, WALL_NEAR 2, WALL_RETRY 3, STONE_MEMORY 12.
-
-**Rest and the idle clock**
-- **[P]** `engine.rs` REST_CAP_TICKS 18000, REST_MIN_TICKS 12000. `offline::rest_after` sets the rest to `turns / 2`,
-  clamped to those bounds.
-- **[P]** `persistent.rs` RECOVERY_TICKS 12000 (the ramp's top). `engine.rs` WAKE_TICKS equals it. Checked: the game
-  path (`Game::rest_after` and the exit settle) uses `recovery_ticks(max_depth)` for deaths. WAKE_TICKS reaches only the
-  free `offline::rest_after` and its test.
-- `offline.rs` stall detection: STALL_RUNS 20, SAMPLE_RUNS 20, STALL_MIN_RUNS 4, STALL_DELTA 0.02, QUICK_STALL_SIMS 12,
-  REST_CARRY_TICKS 6000.
-- `engine.rs` STALL_FIRES 3, MAX_TURNS_PER_RUN 120000, NIGHT_RUNS 16.
-- `persistent.rs` REBIRTH_DELVES 8, REBIRTH_SECONDS 3600.
-
-**Gold and exits**
-- **[P]** `engine.rs` exit keep %: Bank 100, Return 60, Death 0. The same % scales class XP.
-- **[P]** GOLD_DIVISOR 4. The floor coin piles are `6 × rng(3..7) × depth / 4`; nest gold is
-  `(12 × depth + rng(4..12)) / 4`.
-- **[P]** PICKED_CAP 7; FRESHNESS permille [1000, 800, 640, 512, 410, 328, 262, 250]; PICKED_SHOWN 3.
-- BOUNTY_BELOW 2, BOUNTY_GOLD_MULT 2, WAKE_PAY 40, PRAY_COST_PCT 20.
-- `town.rs` BANK_PCT 2, BANK_NIGHTS 3, bank cap floor $100.
-
-**Forge, kit and rows**
-- **[P]** `kit.rs` price multipliers:
-  - WEAPON_MULT [1, 4, 9, 16, 25, 36];
-  - ARMOUR_MULT [1, 4, 8, 14, 22, 32, 45];
-  - PACK_MULT [2, 5, 10, 16];
-  - ROW_MULT [2, 5, 10, 16, 22, 30].
-- `kit.rs` step effects: AIM_STEPS 3, DMG_PER_STEP 2, AIM_PER_STEP 4, AIM_PER_LATE_STEP 3, EARLY_EDGE 1,
-  PACE_TENTHS [8, 7, 6, 5, 5, 4, 4].
-- `kit.rs` supplies and commissions: SUPPLY_CAP_MAX 8, COMMISSION_UNITS 10, COMMISSION_FLOOR 5.
-- Elsewhere: `engine.rs` SUPPLY_PRICE_CAP 26, `town.rs` FORGE_WORK_TICKS 450, `wire.rs` FORGE_LADDER
-  [(5, craftable), (15, tier 1), (40, tier 2)].
-
-**Unlocks and gates**
-- **[P]** `town.rs`: the blacksmith needs a hired scout, 4 completed delves and gold at home. The kennel needs a scout
-  and a tame. The bank needs a positive net last night.
-- `systems.rs` minimum hours: party 1, kennel 1, stances 1, tactics 4, bank 8, quests 12, class 16, start 20,
-  tactic2 56, automations 96.
-- `systems.rs` PEN_FALLBACK_H 120. The six-delve gate (heirs, temperament) is a literal in the code.
-
-**Stances and packages outside balance (`packages.rs`)**
-- MAX_LEVEL 5. A level costs lv + 1 marks.
-- HUNTER_HOME 20 (15 at L5); the hunter's out-of-heals bar is 35.
-- STEADY_REST_L3 50, used as a cap while best < 18.
-- GUARDED_RETURN 25, DEEP_FROM 28, FOUNDRY_WALL 19.
-- Synergies: BULWARK 1, DUELIST 2, MARKSMAN 3, GHOST_COVER 2, GHOST_HURT 35, SCAVENGER 2, IRON_LUNGS 2, WARDEN 2.
-
-**Marks, XP, legacy and returns**
-- **[P]** A renown rank at `100 × r²` grants 1 mark. A new trophy gives +2 marks.
-- **[P]** XP to the next level is 60 × L² for L1–3 and 100 × L² after. The raw XP formula is in `engine.rs`. A watched
-  bank gives ×1.5. MAX_LEVEL is 10.
-- `meta.rs` GOLD_PER_MARK 150. `legacy.rs` ROOT_PRICES [15 … 12000], EFFECT_PRICES [700, 1800].
-- `returns.rs` MIN_S 600, SIZE_MINUTES, DRILL_RUNS, LEGACY_POINTS, FORGE_OFF.
-- `class_tree.rs`: a root node needs class level 3; the node budget is level − 2, at most 6.
-- `bloodlines.rs` SLOT_CAP 3, SLOT_PRICE 250. OATH_DRAW_COST 2, REFUND_PCT 50.
-
-**Monsters and floors**
-- **[P]** `defs.rs` depth HP bonus = tier_depth (cap 16) / 2; attack bonus = the same / 6.
-- `descent.rs` tier_depth folding; ENDING_DEPTH 34, LIEUTENANT_DEPTH 5; boss depths 8/13/18/23/28/33; FORKS;
-  SITUATION_DEPTHS.
-- `descent.rs` affixes: BREAK_DEALT 250, BREAK_TAKEN 65, WARD 20, FURY 20, AFFIX_HP, BROOD_GUARD 75, GUEST_PCT 50.
-- `gen.rs` room layouts. `engine.rs` WAYSTONES [5, 9, 14, 19, 24, 29], WAYSTONE_TOLL 0.
-
-**Endgame, feats and sinks**
-- `endgame.rs` HP_PERCENT 5, ATTACK_PERCENT 2, ASCENT_BAND 15, ASCENT_MIN 9.
-- `feats.rs` King ETA: `king_pct = best / 33`, shown from best ≥ 5.
-- `feats.rs` limits and trials: TOKEN_CAP 3, SWIFT_CLEARS 3, TRIAL_WEEKS_OPEN 4, TRIAL_LEGACY 10, SECOND_TABLE_S 6 h,
-  SET_PCT 2.
-- `feats.rs` tithe: TITHE_UNITS 1, TITHE_STEP 6, TITHE_RESERVE_UNITS 20, TITHE_PER_HOUR 3.
-- `feats.rs` ration: RATION_UNITS 1, RATION_PCT 10, RATION_MIN_HP 2, RATION_SLOW 4.
-- `feats.rs` survey, siege and titles: SURVEY_UNITS 20, SIEGE_PCT 2 (cap 10), TITLE_PCT 3.
-
-**Class tools (combat feel; little pacing effect)**
-- `tools.rs` cooldowns: lure 40, counter 40 (10 damage, 3 charges), bow 60, curtain 80, jape 100; brace 50,
-  discharge 60, overdrive 100.
-- `tools.rs` sentry: 16 HP, 4 damage every 10 ticks, range 4, lasts 60.
-- `firearm.rs` smoke 90, fast 100, finish 60.
-
-Suggested first moves, which the pacing rows read most directly:
-- the scout and porter `need` and `price_tenths` and the unit formula;
-- REST_MIN/CAP and the `turns / 2` literal;
-- FRESHNESS and PICKED_CAP;
-- the kit multipliers;
-- the 60 % return share;
-- the gold-pile formulas;
-- the depth HP and attack bonuses.
+Still `const`s (left: structural, combat feel or guard rails, not pacing levers):
+- `tree.rs` MAX_RANK 4, PERKS (names), the guide's toll halving; `packages.rs` MAX_LEVEL 5, DEEP_FROM 28,
+  FOUNDRY_WALL 19, GUARDED_RETURN 25 (unused by the rows), the synergies (BULWARK … WARDEN), the stances'
+  telegraph/corridor literals; the duplicate `packages::LEVEL_RUNS`/`SCAR_*`/`DRILL_*`/`STEADY_*` consts (the
+  balance values are the ones read).
+- `engine.rs` STALL_FIRES, MAX_TURNS_PER_RUN, NIGHT_RUNS, WAYSTONES, WAYSTONE_TOLL, PRAY_COST_PCT, MAX_LEVEL 10,
+  the studied-biome trophy's 3 marks; `persistent.rs` RECOVERY_TICKS, REBIRTH_*; `offline.rs` stall detection.
+- `kit.rs` AIM_STEPS, DMG_PER_STEP, AIM_PER_STEP, AIM_PER_LATE_STEP, EARLY_EDGE; `town.rs` FORGE_WORK_TICKS.
+- `returns.rs`, `class_tree.rs`, `bloodlines.rs`, `oath.rs`, `descent.rs` (affixes, boss depths), `gen.rs`,
+  `endgame.rs`, `feats.rs`, `tools.rs`, `firearm.rs` — as listed in the Cut231 inventory (git history of this file).
 
 **TARGETED BOSS-BREAK WATCH CHECK — 2026-10-07:**
 

@@ -12,8 +12,13 @@ use serde::{Deserialize, Serialize};
 pub const BUILDINGS: [(&str, &str); 3] = [("blacksmith", "four delves"), ("kennel", "tame a pet"), ("bank", "a night's purse")];
 
 /// A night's interest on the bank, in percent, and the bank's cap in nights of net income.
-pub const BANK_PCT: i32 = 2;
-pub const BANK_NIGHTS: i32 = 3;
+/// Cut233: `balance` `gold.bank_pct` (interest, % a night), `gold.bank_nights`, `gold.bank_floor`.
+pub fn bank_pct() -> i32 {
+    crate::balance::get().gold.bank_pct
+}
+pub fn bank_nights() -> i32 {
+    crate::balance::get().gold.bank_nights
+}
 
 fn manual_default() -> bool { true }
 pub fn home_default() -> bool { true }
@@ -71,7 +76,7 @@ pub struct Town {
     pub today: u32,
 }
 
-pub(crate) fn forge_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&l.persistent.completed>=4&&(l.persistent.exit_gold_credit||l.gold_ledger.iter().any(|x|x.delta>0&&crate::engine::is_exit_why(&x.why)))}
+pub(crate) fn forge_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&l.persistent.completed>=crate::balance::get().unlocks.forge_delves&&(l.persistent.exit_gold_credit||l.gold_ledger.iter().any(|x|x.delta>0&&crate::engine::is_exit_why(&x.why)))}
 pub(crate) fn kennel_qualified(l:&LineageState)->bool{crate::tree::hired(l,"scout")&&(l.tamed_kinds()>0||l.all_companions().next().is_some())}
 /// A harness's literal lineage offers a plot the moment it qualifies; a player's lineage gets its plots one at a
 /// time at a run's report (Cut232, `news`: one new decision a report — `open_plot`).
@@ -146,7 +151,7 @@ pub fn level(l: &LineageState, id: &str) -> u32 {
 
 /// The bank holds at most `BANK_NIGHTS` nights of net income (never under 100).
 pub fn bank_cap(l: &LineageState) -> i32 {
-    (BANK_NIGHTS * l.last_night_net.max(l.last_day_net / 4)).max(100)
+    (bank_nights() * l.last_night_net.max(l.last_day_net / 4)).max(crate::balance::get().gold.bank_floor)
 }
 
 /// Deposit gold (refused before the bank is built; capped).
@@ -178,7 +183,7 @@ pub fn withdraw(l: &mut LineageState, amount: i32) -> Result<i32, String> {
 /// A night ended: the bank pays its interest (never negative; the balance may pass the cap by it).
 pub fn night(l: &mut LineageState) -> i32 {
     // (Cut 30.5, week 2: the clerk's rank adds a quarter of a percent a night each)
-    let permille = BANK_PCT * 10 + crate::tree::CLERK_BONUS_PERMILLE * crate::tree::bonus_rank(l, "clerk") as i32;
+    let permille = bank_pct() * 10 + crate::balance::get().tree.clerk_bonus_permille * crate::tree::bonus_rank(l, "clerk") as i32;
     let i = (l.town.bank.max(0) * permille / 1000).max(0);
     l.town.bank += i;
     l.town.interest += i;

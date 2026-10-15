@@ -241,11 +241,14 @@ pub fn group_budget(depth: u32) -> i32 {
 /// Small linear stat growth with depth: +1 hp per 2 floors, +1 max atk per 6 floors, both
 /// frozen from the Foundry (Cut 3: the new kinds are tuned on their own numbers). Cut 7: on
 /// the content depth.
+/// Cut233: the cap and the divisors are `balance` `monsters.depth_cap` · `hp_div` · `atk_div`.
 pub fn depth_hp_bonus(depth: u32) -> i32 {
-    (crate::descent::tier_depth(depth).min(16) as i32) / 2
+    let m = &crate::balance::get().monsters;
+    (crate::descent::tier_depth(depth).min(m.depth_cap) as i32) / m.hp_div
 }
 pub fn depth_atk_bonus(depth: u32) -> i32 {
-    (crate::descent::tier_depth(depth).min(16) as i32) / 6
+    let m = &crate::balance::get().monsters;
+    (crate::descent::tier_depth(depth).min(m.depth_cap) as i32) / m.atk_div
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

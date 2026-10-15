@@ -42,7 +42,7 @@ fn main() {
     for path in saves {
         let text = std::fs::read_to_string(path).expect("read");
         let g = Game::load(&text).expect("save");
-        let walled = g.lineage.tree.wall.as_ref().is_some_and(|w| w.deaths >= idlever_core::tree::WALL_DEATHS);
+        let walled = g.lineage.tree.wall.as_ref().is_some_and(|w| w.deaths >= idlever_core::balance::get().tree.wall_deaths);
         if walled_only && !walled {
             continue;
         }

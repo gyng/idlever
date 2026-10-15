@@ -792,14 +792,14 @@ pub fn buy(game: &mut Game, id: &str) -> Result<(), String> {
     Ok(())
 }
 
-/// Cut 15 §2: gold per mark of an unlock's cost, at the first gold buy.
-pub const GOLD_PER_MARK: u32 = 150;
+// Cut 15 §2: gold per mark of an unlock's cost, at the first gold buy.
+// (Cut233: the gold per mark is `balance` `marks.gold_per_mark`.)
 
 /// Cut 15 §2: an unlock's gold price — `GOLD_PER_MARK × cost × (1 + gold_buys / 4)`, in
 /// integers (`× (4 + gold_buys) / 4`): ◆3 is $450 at the first gold buy, $900 once four have
 /// been made. A free unlock (cost 0) has no gold price (0: not gold-buyable).
 pub fn gold_price(cost: u32, gold_buys: u32) -> u32 {
-    GOLD_PER_MARK * cost * (4 + gold_buys) / 4
+    crate::balance::get().marks.gold_per_mark * cost * (4 + gold_buys) / 4
 }
 
 /// Cut 23 §1 (both cohort-18 raters: "a $1650 row" beside nothing else to buy): an unlock's
