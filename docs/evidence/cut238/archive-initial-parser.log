@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/tmp/idlever-archive-cut238.py", line 6, in <module>
+    for folder in sorted(src.glob('seed-*'),key=lambda p:int(p.name.split('-')[1])):
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/idlever-archive-cut238.py", line 6, in <lambda>
+    for folder in sorted(src.glob('seed-*'),key=lambda p:int(p.name.split('-')[1])):
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '11.log'
