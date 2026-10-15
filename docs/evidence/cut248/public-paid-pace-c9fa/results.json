@@ -1,0 +1,318 @@
+{
+  "recordedAtUtc": "2026-10-15T19:29:44.038Z",
+  "scope": "One immutable earned, publicly paid pace8 sent Session: ten-tick energy, 8h absence, held replay, watched continuation and sliced/reloaded absence. No grants, state edits, progression-policy or canonical pacing claim.",
+  "wasmSha256": "c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d",
+  "originalPreparationWasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "preparedSha256": "011a1572f916c6983508940b56bd5d6a2c1f41dd3020ef78bbbc30081c9be083",
+  "scriptSha256": "41058c422578f349f28ab4db35924508f81624da9940511a52e542b6f30e7597",
+  "cases": [
+    {
+      "id": "fighter",
+      "weapon": "sword",
+      "input": "docs/evidence/cut248/earned-paid-pace.sent.session.json",
+      "inputRawSha256": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+      "checks": {
+        "tenTickEnergy": true,
+        "actualReplay": true,
+        "completeReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": false
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.sent-session.json.gz",
+          "rawSha256": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196"
+        },
+        "report": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.report.json.gz",
+          "rawSha256": "1b9056cb2c801c7de6a30f1de11657a32a1c2c461a73e0863cfcb00797bafab9"
+        },
+        "after": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.after-session.json.gz",
+          "rawSha256": "0d79764070017e61d53bae8d749bc6b56f1076005016d7e601f0bc6738a27248"
+        },
+        "replay": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.replay.json.gz",
+          "rawSha256": "c0647f74dcb41cfd17ead9f363c0de1419b51f0110b832fb27b2cf483cbe81c6"
+        },
+        "watched": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.watched-session.json.gz",
+          "rawSha256": "bd806638322fcd37c7e5889422e77c94338fc024275c40562abf2659a2aa991b"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.sliced-session.json.gz",
+          "rawSha256": "0d79764070017e61d53bae8d749bc6b56f1076005016d7e601f0bc6738a27248"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.sliced-report.json.gz",
+          "rawSha256": "1b9056cb2c801c7de6a30f1de11657a32a1c2c461a73e0863cfcb00797bafab9"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.reloaded-session.json.gz",
+          "rawSha256": "6b62ed7dcdc358e4e322ca8977d4571b91d8fe3f5f47028f176267d59dee864b"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut248/public-paid-pace-c9fa/fighter-sword.reloaded-report.json.gz",
+          "rawSha256": "a886265d6cb4ad02602715b1d770ec166090dade98a14b56889977fa9b68be76"
+        }
+      },
+      "at10ticks": {
+        "singleEnergy": 88,
+        "batchedEnergy": 88,
+        "expectedEnergy": 88,
+        "completeRunExact": true
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "pos": {
+          "x": 29,
+          "y": 28
+        },
+        "hp": 56,
+        "max_hp": 56,
+        "base_atk": [
+          1,
+          2
+        ],
+        "str_bonus": 4,
+        "legacy_armour": 2,
+        "pace": 8,
+        "class": "fighter",
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "amount": 0,
+            "enchant": 2,
+            "known": true,
+            "auto_packed": true,
+            "value_claimed": true
+          }
+        ],
+        "weapon": {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 5,
+          "value_claimed": true
+        },
+        "armour": {
+          "id": 2,
+          "kind": "hearthglass",
+          "amount": 0,
+          "enchant": 4,
+          "value_claimed": true
+        },
+        "helm": {
+          "id": 4294967293,
+          "kind": "ironcap",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "boots": {
+          "id": 4294967292,
+          "kind": "hearthglass_boots",
+          "amount": 0,
+          "enchant": 0,
+          "value_claimed": true
+        },
+        "protected_slots": [
+          "helm",
+          "armour",
+          "boots"
+        ],
+        "energy": 0,
+        "speed_t": 0,
+        "invis_t": 0,
+        "vanish_t": 0,
+        "paralysed": 0,
+        "confused": 0,
+        "poison": [
+          0,
+          0
+        ],
+        "bash_cd": 0,
+        "vanish_cd": 0,
+        "resting": false,
+        "level": 8,
+        "cleave_cd": 0,
+        "bulwark_t": 0,
+        "bulwark_cd": 0,
+        "second_wind_used": false,
+        "volley_cd": 0,
+        "double_cd": 0,
+        "ward_t": 0,
+        "ward_cd": 0,
+        "blink_cd": 0,
+        "nova_cd": 0,
+        "silence_t": 0,
+        "regen_t": 0,
+        "resist_fire_t": 0,
+        "clarity_t": 0,
+        "mirror_charge": 0,
+        "max_hp_base": 56,
+        "gift": {
+          "fury": 0,
+          "guard": 0,
+          "quick": 0,
+          "slow": 1
+        }
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "sword",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 328345,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 21,
+        "turns": 43450,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 50,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 457,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 67,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 78,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 43450,
+        "depth": 28,
+        "hash": "c570e0b3b1ab1364"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 21,
+        "turns": 43450,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 50,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 457,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 67,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 78,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 435,
+      "status": "FAIL"
+    }
+  ],
+  "errors": [],
+  "status": "FAIL",
+  "finishedAtUtc": "2026-10-15T19:29:47.243Z"
+}

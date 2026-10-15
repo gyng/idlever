@@ -4917,6 +4917,9 @@ impl Game {
         let mut quiet = limit
             .min(TICKS_PER_TURN - 1 - run.turn % TICKS_PER_TURN)
             .min(TICKS_PER_TURN - 1 - run.floor_turn % TICKS_PER_TURN)
+            // Armour healing runs before actions; a quiet span may age its
+            // timer but must never skip a healing boundary, even if periods change.
+            .min(crate::armour_sets::HEAL_TICKS - 1 - run.turn % crate::armour_sets::HEAL_TICKS)
             .min(MAX_TURNS_PER_RUN.saturating_sub(run.turn + 1));
         if !self.sim && !NO_HISTORY.with(|c| c.get()) {
             let rem = run.turn % HISTORY_STRIDE;
@@ -4935,7 +4938,22 @@ impl Game {
             if distance <= speed.saturating_mul(bound as i32) { bound.min((distance / speed) as u32) } else { bound }
         };
         let hero_speed = run.hero.speed();
-        quiet = before_action(quiet, run.hero.energy, hero_speed);
+        let fractional_pace = run.hero.pace.rem_euclid(10) != 0;
+        if fractional_pace {
+            // At most nine ticks: fractional bonuses can make an action due
+            // before the integer-speed bound, including at zero whole speed.
+            let mut energy = run.hero.energy;
+            for offset in 1..=quiet {
+                energy += hero_speed;
+                energy += crate::kit::pace_energy(run.hero.pace, run.turn + offset);
+                if energy >= ACT_ENERGY {
+                    quiet = offset - 1;
+                    break;
+                }
+            }
+        } else {
+            quiet = before_action(quiet, run.hero.energy, hero_speed);
+        }
         if run.hero.speed_t > 0 { quiet = quiet.min(run.hero.speed_t as u32); }
         if run.hero.special_cd>0 {quiet=quiet.min(run.hero.special_cd as u32);}
         if run.hero.riposte_t>0 {quiet=quiet.min(run.hero.riposte_t as u32);}
@@ -4949,9 +4967,12 @@ impl Game {
         }
         if quiet == 0 { self.tick(); return 1; }
         let ticks = quiet as i32;
+        crate::armour_sets::quiet_ticks(run, quiet);
+        // Later status/monster bounds may have shortened the hero's span.
+        let pace_energy = if fractional_pace { crate::kit::quiet_pace_energy(run.hero.pace, run.turn, quiet) } else { 0 };
         run.turn += quiet;
         run.floor_turn += quiet;
-        run.hero.energy += hero_speed * ticks;
+        run.hero.energy += hero_speed * ticks + pace_energy;
         if run.hero.poison.1 > 0 { run.hero.poison.1 = (run.hero.poison.1 - ticks).max(0); }
         run.hero.tick_statuses_by(ticks);
         if run.taunt_t > 0 { run.taunt_t = (run.taunt_t - ticks).max(0); }

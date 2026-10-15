@@ -60,3 +60,27 @@ are in replay-audit/. This confirms a runtime simulation mismatch, not only a
 reporting issue. All actual e62c set/loadout results are pre-fix evidence and
 need revalidation after correction. Ten legal choices and exact repeated
 execution do not override the failing replay-equivalence contract.
+
+## Corrected c9fa experiment — 2026-10-16
+
+Combined Cut247/248 corrects armour countdown and fractional energy timing.
+`revalidate.mjs` is a stricter successor, retaining all original10legal inputs:
+actual public send/8h absence, held replay, real watched step continuation and
+whole/sliced/reloaded absence. `revalidation-c9fa-1/` and `-2/` both finish
+PASS10/10 with0harness errors. `compare-revalidations.mjs` proves90complete
+raw artifacts repeat exactly. No grants, input migration, Scout switch or
+normalized gameplay differences were used. Watched-vs-absence RunRec excludes
+only actual provenance via/absence/clock_s; full original receipts remain.
+
+The original e62c red is retained in `revalidation-e62c-before/`: all10offline/
+replay and offline/watched outcomes disagree despite10/10whole/sliced/reload
+equality. The successor fixes these exact cases; it does not certify all
+possible reload boundaries. A separate real paid pace8case now exposes lost
+last-seen provenance on reload, tracked in Cut249. Preserve this c9fa boundary
+and revalidate the final package again after that correction.
+
+`corrected-c9fa-observations.json` records actual outcomes, dated interpretations
+and explicit revalidation triggers. The old CasterbowBankD19/831Gold and
+Rangerbow332Gold observations are historical and cannot guide current builds.
+The originalfiveclass levels remain unequal; class mechanisms/visual review,
+additional biome causal forks and fullR4/fun acceptance remain open.

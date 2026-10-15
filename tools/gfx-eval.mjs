@@ -28,6 +28,7 @@ import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { launchGpu } from "./browser.mjs";
+import { phoneReviewViewport } from "../web/tests/lib/viewport-cases.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const arg = (n, d) => {
@@ -357,9 +358,19 @@ async function shoot(
 ) {
   const base = join(out, name);
   if (strip && !pre) await castStrip(page, name);
-  await page.screenshot({ path: `${base}.png`, fullPage: full });
+  await page.screenshot({ path: `${base}.png` });
+  if (full) await page.screenshot({ path: `${base}-full-page.png`, fullPage: true });
   if (lay) await checkLayout(page, name);
-  shots.push({ name, what, strip });
+  shots.push({
+    name,
+    what,
+    strip,
+    viewport: page.viewportSize(),
+    captureKind: "viewport",
+    ...(full
+      ? { fullPageImage: `${name}-full-page.png`, fullPageCaptureKind: "scroll-inventory" }
+      : {}),
+  });
   savePartial();
   log("shot", name);
 }
@@ -460,7 +471,7 @@ async function measuredDeath(page) {
 }
 
 async function phoneReal() {
-  const page = await newPage(400, 800, 2);
+  const page = await newPage(phoneReviewViewport().width, phoneReviewViewport().height, 2);
   await goto(page, `fresh=1&seed=4242`);
   await waitFor(page, (s) => s?.booted && s.screen === "camp", "camp");
   await settle(page);
@@ -603,7 +614,7 @@ async function phoneReal() {
 // ---- a real save (gfx round 7): web/tests/fixtures/deep.json (a D11 lineage, waystones D5 burrows · D9 fens) — the real engine at depth,
 // where the fake engine's crowds piled on the hero. `start` the waystone the send starts from; `fight`: wait for the fight frame (highlights)
 async function phoneDeep(name, start, what, fight = false) {
-  const page = await newPage(400, 800, 2);
+  const page = await newPage(phoneReviewViewport().width, phoneReviewViewport().height, 2);
   await goto(page, `fresh=1&seed=2501`);
   await waitFor(page, (s) => s?.booted && s.screen === "camp", "camp");
   const engine = readFileSync(join(ROOT, "web/tests/fixtures/deep.json"), "utf8").trim();
@@ -668,7 +679,7 @@ async function phoneDeep(name, start, what, fight = false) {
 
 // ---- the boss moments (gfx round 7: at the phone watch's 100 env texels, was the demo's 160): the renderer's own boss script (render-demo.html?boss=1): entrance t≈12, break t=90, fall t=152 (10 ticks/s)
 async function bossDemo() {
-  const page = await newPage(400, 800, 2);
+  const page = await newPage(phoneReviewViewport().width, phoneReviewViewport().height, 2);
   await page.goto(
     `${BASE}render-demo.html?boss=1&biome=burrows&depth=8&speed=1&hud=0&texels=100${XQD ? `&${XQD}` : ""}`,
   );

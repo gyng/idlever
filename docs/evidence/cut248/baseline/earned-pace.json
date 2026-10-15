@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-15T19:08:17.244Z",
+  "scope": "Earned public buyKit(armour:pace) + manual send; immutable parent, actual paid quote, no grants/direct edits. Controlled continuation comparison is not a default policy choice or pacing claim.",
+  "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "input": "docs/evidence/cut246/prepared/fighter-sword.session.json.gz",
+  "inputRawSha256": "d956c2c07ac8b098e65181bbff5b632fbf3badac5032aa86d6a61e815ab2971d",
+  "goldBefore": 12021,
+  "quote": 9000,
+  "goldAfter": 3021,
+  "ownedBefore": 6,
+  "ownedAfter": 7,
+  "ledgerTail": [
+    {
+      "t": 3261778,
+      "delta": 1327,
+      "why": "returned D27"
+    },
+    {
+      "t": 3267778,
+      "delta": -9000,
+      "why": "forge pace +8%"
+    }
+  ],
+  "sentRawSha256": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+  "runId": 133,
+  "pace": 8,
+  "at10ticks": {
+    "independentExpectedEnergy": 88,
+    "singleEnergy": 88,
+    "batchedEnergy": 83,
+    "otherHeroDifferences": [],
+    "rngEqual": true,
+    "monstersEqual": true
+  },
+  "inputUnchanged": true
+}

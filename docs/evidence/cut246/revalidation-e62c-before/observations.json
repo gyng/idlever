@@ -1,0 +1,39 @@
+{
+  "recordedAtUtc": "2026-10-15T19:12:12.451Z",
+  "scope": "Automated public-path diagnostic; no player feedback or visual/fun review",
+  "build": {
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+    "scriptSha256": "ed3f07a0a91d3f974f0c480d6948a18dabf0ccf72cfe4ad364e8f04e85142be8"
+  },
+  "context": {
+    "inputManifestSha256": "6aa0393f97dec600626ba1f95b1670ba59e497008b404b6b508837cc0cb838a7",
+    "input": "Same10unchanged legally earned preparations as Cut246; manually sent once, pausedScout preserved",
+    "inputMethod": "Direct public real-WASM actions; no browser viewport",
+    "horizon": "28800seconds whole/sliced/reloaded offline and actual watched step(100) until run exit"
+  },
+  "observations": [
+    {
+      "kind": "measured fact",
+      "finding": "10/10complete whole/sliced/reloaded absence saves and reports agree;0/10actualoffline/replay outcomes agree;0/10offline/watched full RunRec outcomes agree after excluding only actual provenance fields via/absence/clock_s.0harness errors.",
+      "confidence": "High for these immutable10cases on this exact package",
+      "evidence": [
+        "results.json",
+        "command.json"
+      ]
+    },
+    {
+      "kind": "agent interpretation",
+      "finding": "Partition determinism is useful but insufficient: a consistently wrong quiet fast path can pass whole/sliced/reload checks. Future acceptance must also compare against actual single-tick execution, with independent timing expectations.",
+      "confidence": "High for the demonstrated failure mode; not a universal proof of all scheduler states"
+    }
+  ],
+  "freshness": {
+    "status": "Historical pre-fix red; not current balance or identity evidence",
+    "triggers": [
+      "Cut247/Cut248enginepackage replacement",
+      "Combat or scheduler changes",
+      "Different earned preparation, class level, resident policy or time horizon"
+    ],
+    "revalidate": "Run revalidate.mjs in a new unique directory with the explicit corrected WASM SHA; preserve these failures and link successors."
+  }
+}

@@ -23,6 +23,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { launchBrowser } from "./browser.mjs";
+import { phoneReviewViewport } from "../web/tests/lib/viewport-cases.mjs";
 import { pressWatchControl } from "./watch-control.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -112,13 +113,17 @@ try {
 }
 const checkpoints = new Map(),
   wasmReads = [];
-const record = (screen, base, note, page) =>
+const record = (screen, base, note, page, full = false) =>
   checkpoints.set(base, {
     screen,
     image: `${base}.png`,
     text: `${base}.txt`,
     note,
     viewport: page.viewportSize(),
+    captureKind: "viewport",
+    ...(full
+      ? { fullPageImage: `${base}-full-page.png`, fullPageCaptureKind: "scroll-inventory" }
+      : {}),
   });
 
 const errors = [],
@@ -151,7 +156,7 @@ async function attempt() {
   const page = await browser.newPage(
     opt.wide
       ? { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
-      : { viewport: { width: 400, height: 800 }, deviceScaleFactor: dpr },
+      : { viewport: phoneReviewViewport(), deviceScaleFactor: dpr },
   );
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
@@ -220,19 +225,17 @@ async function attempt() {
       navigating = false;
     }
   }
-  /** Write NN-<screen>.txt + .png and print the summary line. Full-page unless it is the run or a sheet. */
-  async function dump(
-    screen,
-    { base = name(screen), full = screen !== "watch" && screen !== "exit", note = "" } = {},
-  ) {
+  /** Write the visible viewport and full text. Optional full-page images are labelled scroll inventories. */
+  async function dump(screen, { base = name(screen), full = false, note = "" } = {}) {
     const tx = await text();
     if (screen === "watch") {
       const m = await foeRect();
       if (m) note = note ? `${note} · ${m}` : m;
     } // Cut 14 §3: the frame's tallest foe, in CSS px
     writeFileSync(`${base}.txt`, tx);
-    await page.screenshot({ path: `${base}.png`, fullPage: full });
-    record(screen, base, note, page);
+    await page.screenshot({ path: `${base}.png` });
+    if (full) await page.screenshot({ path: `${base}-full-page.png`, fullPage: true });
+    record(screen, base, note, page, full);
     log(
       `${base.slice(out.length + 1).padEnd(14)} +${secs(Date.now() - walkStart).padStart(6)}  ${String(tx.length).padStart(5)} ch  ${first(tx)}${note ? `  [${note}]` : ""}`,
     );

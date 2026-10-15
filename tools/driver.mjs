@@ -33,6 +33,7 @@ import http from "node:http";
 import fs from "node:fs";
 import { resolve } from "node:path";
 import { launchBrowser } from "./browser.mjs";
+import { phoneReviewViewport } from "../web/tests/lib/viewport-cases.mjs";
 import { pressWatchControl } from "./watch-control.mjs";
 
 const argv = process.argv.slice(2);
@@ -73,7 +74,7 @@ const isHeaded = headed ?? process.env.IDLEVER_BROWSER === "headed";
 const dpr = Number(val("--dpr", isHeaded ? "3" : "2"));
 const ctxOpts = flag("--wide")
   ? { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1 }
-  : { viewport: { width: 400, height: 800 }, deviceScaleFactor: dpr };
+  : { viewport: phoneReviewViewport(), deviceScaleFactor: dpr };
 const ctx = await browser.newContext({
   ...ctxOpts,
   ...(restored ? { storageState: restored } : {}),

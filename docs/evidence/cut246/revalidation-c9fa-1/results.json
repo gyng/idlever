@@ -1,0 +1,2289 @@
+{
+  "recordedAtUtc": "2026-10-15T19:25:47.340Z",
+  "scope": "Ten immutable earned within-class weapon forks: public send, 8h absence, held replay, watched single-step continuation, and sliced/reloaded absence. Not five fresh class cohorts or a complete R4/fun verdict.",
+  "wasmSha256": "c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d",
+  "originalPreparationWasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "preparedSha256": "6aa0393f97dec600626ba1f95b1670ba59e497008b404b6b508837cc0cb838a7",
+  "scriptSha256": "ed3f07a0a91d3f974f0c480d6948a18dabf0ccf72cfe4ad364e8f04e85142be8",
+  "cases": [
+    {
+      "id": "fighter",
+      "weapon": "sword",
+      "input": "docs/evidence/cut246/prepared/fighter-sword.session.json.gz",
+      "inputRawSha256": "d956c2c07ac8b098e65181bbff5b632fbf3badac5032aa86d6a61e815ab2971d",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.sent-session.json.gz",
+          "rawSha256": "53da44b79731d6ac1788d42a3376c994fd8ae00d1e25e9c022068a798fb9de91"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.after-session.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.replay.json.gz",
+          "rawSha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.watched-session.json.gz",
+          "rawSha256": "0fa022d5929e8d2714b5e13dadf969162b9500a026332fae12ce887f6221d43a"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.sliced-session.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.sliced-report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.reloaded-session.json.gz",
+          "rawSha256": "6dd8a352ecfa32d39581bd4a11c4bd83d48f9b3ca179252d8803599f1fea3287"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.reloaded-report.json.gz",
+          "rawSha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_fighter",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 56,
+        "max_hp": 56,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "sword",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "fighter",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "sword",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 327334,
+        "start": 1,
+        "depth": 22,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 828,
+        "found": 28,
+        "turns": 33345,
+        "finds": [
+          {
+            "id": 255,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 175,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 296,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 33345,
+        "depth": 22,
+        "hash": "34f2764d3a06931e"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 22,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 828,
+        "found": 28,
+        "turns": 33345,
+        "finds": [
+          {
+            "id": 255,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 175,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 296,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 334,
+      "status": "PASS"
+    },
+    {
+      "id": "fighter",
+      "weapon": "crownsplitter",
+      "input": "docs/evidence/cut246/prepared/fighter-crownsplitter.session.json.gz",
+      "inputRawSha256": "4c2f372320d4c951b09244d47a01b11cc378f702b4c154945718ee7d6da3d465",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.sent-session.json.gz",
+          "rawSha256": "e80e36d8978f580939312b242f15d0c15dd11756534e1d833c2277d3310aa6bd"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.report.json.gz",
+          "rawSha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.after-session.json.gz",
+          "rawSha256": "b3896470cdfe74a6ed7f4f240cc40d473fa0c8c64370570c0a3e1ffc85dc38e1"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.replay.json.gz",
+          "rawSha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.watched-session.json.gz",
+          "rawSha256": "414e0daa73e86057d229610aed5b9a0310257097054e6b1bb71752ba9c04079c"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.sliced-session.json.gz",
+          "rawSha256": "b3896470cdfe74a6ed7f4f240cc40d473fa0c8c64370570c0a3e1ffc85dc38e1"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.sliced-report.json.gz",
+          "rawSha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.reloaded-session.json.gz",
+          "rawSha256": "b3896470cdfe74a6ed7f4f240cc40d473fa0c8c64370570c0a3e1ffc85dc38e1"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.reloaded-report.json.gz",
+          "rawSha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_fighter",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 56,
+        "max_hp": 56,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "crownsplitter",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "fighter",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "crownsplitter",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 329210,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 26,
+        "turns": 52108,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 452,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 473,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (7)",
+            "free": false
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 52108,
+        "depth": 28,
+        "hash": "93d7d72ccc11c6f9"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain · lurker",
+        "gold": 0,
+        "found": 26,
+        "turns": 52108,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 452,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 473,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (7)",
+            "free": false
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 522,
+      "status": "PASS"
+    },
+    {
+      "id": "rogue",
+      "weapon": "dagger",
+      "input": "docs/evidence/cut246/prepared/rogue-dagger.session.json.gz",
+      "inputRawSha256": "040b3376ede3557919eb2dafe5807122cd1db580229b8d816a700d0a273afe3e",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.sent-session.json.gz",
+          "rawSha256": "83f0e43d6b42b8350d7927ef8380acca1dc1707333449d56fafc3229246a8249"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.report.json.gz",
+          "rawSha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.after-session.json.gz",
+          "rawSha256": "2cb677fb24a4ea44f9e827c8e118a75dbd95442ab6094641aa4a0cdf0d0de29a"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.replay.json.gz",
+          "rawSha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.watched-session.json.gz",
+          "rawSha256": "f98836a7358b2d4116b39faca4def1efebc6dac12f9ca88513c5bbdf84be82a4"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.sliced-session.json.gz",
+          "rawSha256": "2cb677fb24a4ea44f9e827c8e118a75dbd95442ab6094641aa4a0cdf0d0de29a"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.sliced-report.json.gz",
+          "rawSha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.reloaded-session.json.gz",
+          "rawSha256": "2cb677fb24a4ea44f9e827c8e118a75dbd95442ab6094641aa4a0cdf0d0de29a"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.reloaded-report.json.gz",
+          "rawSha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_rogue",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 34,
+        "max_hp": 34,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "dagger",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "rogue",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "dagger",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325769,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · jackal",
+        "gold": 0,
+        "found": 21,
+        "turns": 17691,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 193,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 17691,
+        "depth": 13,
+        "hash": "f5feb5b509150500"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · jackal",
+        "gold": 0,
+        "found": 21,
+        "turns": 17691,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 193,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 177,
+      "status": "PASS"
+    },
+    {
+      "id": "rogue",
+      "weapon": "crownsplitter",
+      "input": "docs/evidence/cut246/prepared/rogue-crownsplitter.session.json.gz",
+      "inputRawSha256": "add7e2c1d690b757a8f26235d61f9501512be5c31dc45eb9c72bc4e64065ebdb",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.sent-session.json.gz",
+          "rawSha256": "cb019881ce356e3044c24fb26942eb14348d32bcd952b0f07d8dacc99e608000"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.report.json.gz",
+          "rawSha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.after-session.json.gz",
+          "rawSha256": "136e2014930846a57be894924a429b81e6ec1e81f6902cee2a69ca37d16a1e60"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.replay.json.gz",
+          "rawSha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.watched-session.json.gz",
+          "rawSha256": "38501ae7379a76038ba0b3123312a63aff7cf1088d5c9c9dd77d7f904008d013"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.sliced-session.json.gz",
+          "rawSha256": "136e2014930846a57be894924a429b81e6ec1e81f6902cee2a69ca37d16a1e60"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.sliced-report.json.gz",
+          "rawSha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.reloaded-session.json.gz",
+          "rawSha256": "136e2014930846a57be894924a429b81e6ec1e81f6902cee2a69ca37d16a1e60"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.reloaded-report.json.gz",
+          "rawSha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_rogue",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 34,
+        "max_hp": 34,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "crownsplitter",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "rogue",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "crownsplitter",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326088,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 15,
+        "turns": 20880,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 194,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 20880,
+        "depth": 13,
+        "hash": "f468975d4624ab7a"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 15,
+        "turns": 20880,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 194,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 209,
+      "status": "PASS"
+    },
+    {
+      "id": "ranger",
+      "weapon": "bow",
+      "input": "docs/evidence/cut246/prepared/ranger-bow.session.json.gz",
+      "inputRawSha256": "58cf4128fd524ad813b6ce7086ddd980523e1684495e9496a676703175fbf93e",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.sent-session.json.gz",
+          "rawSha256": "e1f4cb64efcbe1b8d0cc732a018f55786cff322e065fd6270f54cbc024544439"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.report.json.gz",
+          "rawSha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.after-session.json.gz",
+          "rawSha256": "756e67a90b4c77a19af978e827656623787a19e348579f2e0f4197cf849b70aa"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.replay.json.gz",
+          "rawSha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.watched-session.json.gz",
+          "rawSha256": "2223787791906e22ac38d1f0d229e8b931c6258f486be9ad3d1823528d1dad8a"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.sliced-session.json.gz",
+          "rawSha256": "756e67a90b4c77a19af978e827656623787a19e348579f2e0f4197cf849b70aa"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.sliced-report.json.gz",
+          "rawSha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.reloaded-session.json.gz",
+          "rawSha256": "756e67a90b4c77a19af978e827656623787a19e348579f2e0f4197cf849b70aa"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.reloaded-report.json.gz",
+          "rawSha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_ranger",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 36,
+        "max_hp": 36,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "bow",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "ranger",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "bow",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325712,
+        "start": 1,
+        "depth": 13,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 254,
+        "found": 19,
+        "turns": 17127,
+        "best": true,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 17127,
+        "depth": 13,
+        "hash": "e95e33cbbd5d8130"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 13,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 254,
+        "found": 19,
+        "turns": 17127,
+        "best": true,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 172,
+      "status": "PASS"
+    },
+    {
+      "id": "ranger",
+      "weapon": "sword",
+      "input": "docs/evidence/cut246/prepared/ranger-sword.session.json.gz",
+      "inputRawSha256": "0cb526054c1d5f9af0a85d04ccbb254e09f75898ad74a178e63e32742686457b",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.sent-session.json.gz",
+          "rawSha256": "31da4de307262ef8751e19a9f1ac473952600207695ccb8e0d8f91c346859ad5"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.report.json.gz",
+          "rawSha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.after-session.json.gz",
+          "rawSha256": "f41accf528a3d333a8de2ce2049a2fe262eb9667aad34c773c7de8b926a21473"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.replay.json.gz",
+          "rawSha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.watched-session.json.gz",
+          "rawSha256": "9023a75af41e8a70c2ccf95614aaebb3a62ee690924662674434e74a7c3da397"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.sliced-session.json.gz",
+          "rawSha256": "f41accf528a3d333a8de2ce2049a2fe262eb9667aad34c773c7de8b926a21473"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.sliced-report.json.gz",
+          "rawSha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.reloaded-session.json.gz",
+          "rawSha256": "f41accf528a3d333a8de2ce2049a2fe262eb9667aad34c773c7de8b926a21473"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.reloaded-report.json.gz",
+          "rawSha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_ranger",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 36,
+        "max_hp": 36,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "sword",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "ranger",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "sword",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 328626,
+        "start": 1,
+        "depth": 23,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 856,
+        "found": 27,
+        "turns": 46263,
+        "best": true,
+        "finds": [
+          {
+            "id": 434,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 404,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 215,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 379,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 46263,
+        "depth": 23,
+        "hash": "48bad1033eb61185"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 23,
+        "tier": "bank",
+        "reason": "no heals · banked",
+        "gold": 856,
+        "found": 27,
+        "turns": 46263,
+        "best": true,
+        "finds": [
+          {
+            "id": 434,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 404,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 215,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 379,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 463,
+      "status": "PASS"
+    },
+    {
+      "id": "caster",
+      "weapon": "dagger",
+      "input": "docs/evidence/cut246/prepared/caster-dagger.session.json.gz",
+      "inputRawSha256": "e8b96cb98695a8979ea7d44b91f39a366636882cbf312a9c46f61e921a33f267",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.sent-session.json.gz",
+          "rawSha256": "b9cf3e63314721204572b275271bd7dc9db66744c04964df6a7084acd2a15e38"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.report.json.gz",
+          "rawSha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.after-session.json.gz",
+          "rawSha256": "634cb1bf24cf46d6d16f290105527007a2435ad9ece0cf51f97a055bd70a8efe"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.replay.json.gz",
+          "rawSha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.watched-session.json.gz",
+          "rawSha256": "f4d112d8ed745554afc443ee2b0e616f849eaa65de473d53ac86b0ec68c0faad"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.sliced-session.json.gz",
+          "rawSha256": "634cb1bf24cf46d6d16f290105527007a2435ad9ece0cf51f97a055bd70a8efe"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.sliced-report.json.gz",
+          "rawSha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.reloaded-session.json.gz",
+          "rawSha256": "634cb1bf24cf46d6d16f290105527007a2435ad9ece0cf51f97a055bd70a8efe"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.reloaded-report.json.gz",
+          "rawSha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_caster",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 30,
+        "max_hp": 30,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "dagger",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "caster",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "dagger",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326124,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 21240,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 202,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 21240,
+        "depth": 13,
+        "hash": "66e0b4fa9d8b424b"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 21240,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 202,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 213,
+      "status": "PASS"
+    },
+    {
+      "id": "caster",
+      "weapon": "bow",
+      "input": "docs/evidence/cut246/prepared/caster-bow.session.json.gz",
+      "inputRawSha256": "dd0930e85ce41c654a174f74ccec352a7cf1cfe0e0032e44b2097c99252f2f11",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.sent-session.json.gz",
+          "rawSha256": "3bbb6c962983236dfeb3ca3ae1b11c31d36b6c2c3b4555c1e415dd6132b779c1"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.report.json.gz",
+          "rawSha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.after-session.json.gz",
+          "rawSha256": "94814b683abf93f64868afa95dbc2a0e168746ed77f9bef8abd3920e664e73eb"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.replay.json.gz",
+          "rawSha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.watched-session.json.gz",
+          "rawSha256": "0bbb879af6648d62445c0037d7f9519b7ca202000aa4cbd8a802191ed7e9630f"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.sliced-session.json.gz",
+          "rawSha256": "94814b683abf93f64868afa95dbc2a0e168746ed77f9bef8abd3920e664e73eb"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.sliced-report.json.gz",
+          "rawSha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.reloaded-session.json.gz",
+          "rawSha256": "94814b683abf93f64868afa95dbc2a0e168746ed77f9bef8abd3920e664e73eb"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.reloaded-report.json.gz",
+          "rawSha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "id": 1,
+        "kind": "hero_caster",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 30,
+        "max_hp": 30,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "bow",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "caster",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "bow",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325686,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 16860,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 16860,
+        "depth": 13,
+        "hash": "1f7a0873de84a689"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain · gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 16860,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 169,
+      "status": "PASS"
+    },
+    {
+      "id": "gunner",
+      "weapon": "long_gun",
+      "input": "docs/evidence/cut246/prepared/gunner-long_gun.session.json.gz",
+      "inputRawSha256": "45986d08dd3915fff581e2fa75a27e0b2fe3d67e6079d730435f4b4c7a7f55ca",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.sent-session.json.gz",
+          "rawSha256": "b922adb4cd6fa0fbc2b6b89031b4f62801a5428b11db86aff4e865468b6d9f7c"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.report.json.gz",
+          "rawSha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.after-session.json.gz",
+          "rawSha256": "9c5c4ca85bfb342218b57e0e8c844d108399b1ca0945fb33f4c008116326adfd"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.replay.json.gz",
+          "rawSha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.watched-session.json.gz",
+          "rawSha256": "899dd65f52a4031e0216433e59dbd9700fb1a129de0561ecbfa23ee8f63d31eb"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.sliced-session.json.gz",
+          "rawSha256": "9c5c4ca85bfb342218b57e0e8c844d108399b1ca0945fb33f4c008116326adfd"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.sliced-report.json.gz",
+          "rawSha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.reloaded-session.json.gz",
+          "rawSha256": "9c5c4ca85bfb342218b57e0e8c844d108399b1ca0945fb33f4c008116326adfd"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.reloaded-report.json.gz",
+          "rawSha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "gun": {
+          "item": 1,
+          "kind": "long_gun",
+          "loaded": 1,
+          "capacity": 1,
+          "range": 8,
+          "damage": [
+            12,
+            16
+          ],
+          "armour_piercing": 2,
+          "reload_ticks": 20,
+          "reload_left": 0
+        },
+        "id": 1,
+        "kind": "hero_gunner",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 36,
+        "max_hp": 36,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "long_gun",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "gunner",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "long_gun",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true,
+        "firearm": {
+          "loaded": 1
+        }
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 327144,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain · Lich",
+        "gold": 0,
+        "found": 24,
+        "turns": 31449,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 269,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 45,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 46,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 114,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 144,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 220,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 31449,
+        "depth": 18,
+        "hash": "aa054a72008c6c5b"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain · Lich",
+        "gold": 0,
+        "found": 24,
+        "turns": 31449,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 269,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 45,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 46,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 114,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 144,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 220,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 315,
+      "status": "PASS"
+    },
+    {
+      "id": "gunner",
+      "weapon": "short_gun",
+      "input": "docs/evidence/cut246/prepared/gunner-short_gun.session.json.gz",
+      "inputRawSha256": "aeb9a79c2ecb83a5b4d2b7d8731fbac3d23ac1b554a580d6dc1507acc06a7e84",
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "artifacts": {
+        "sent": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.sent-session.json.gz",
+          "rawSha256": "9df913a58c6eea69a15d5aa7c93a2f67f5b08fee74b0fb338f1d1841bf2db020"
+        },
+        "report": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.report.json.gz",
+          "rawSha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        },
+        "after": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.after-session.json.gz",
+          "rawSha256": "c551b20f5260a16dd977bfeab616ed5431e9588c965fa34aaa9149d49750219b"
+        },
+        "replay": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.replay.json.gz",
+          "rawSha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4"
+        },
+        "watched": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.watched-session.json.gz",
+          "rawSha256": "d766e351b74805f6a8dc78a9e82e6ea0fa8c5accf882a73cefac87ec84925f5c"
+        },
+        "sliced": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.sliced-session.json.gz",
+          "rawSha256": "c551b20f5260a16dd977bfeab616ed5431e9588c965fa34aaa9149d49750219b"
+        },
+        "slicedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.sliced-report.json.gz",
+          "rawSha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        },
+        "reloaded": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.reloaded-session.json.gz",
+          "rawSha256": "c551b20f5260a16dd977bfeab616ed5431e9588c965fa34aaa9149d49750219b"
+        },
+        "reloadedReport": {
+          "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.reloaded-report.json.gz",
+          "rawSha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        }
+      },
+      "runId": 133,
+      "firstSentHero": {
+        "gun": {
+          "item": 1,
+          "kind": "short_gun",
+          "loaded": 2,
+          "capacity": 2,
+          "range": 3,
+          "damage": [
+            10,
+            13
+          ],
+          "armour_piercing": 0,
+          "reload_ticks": 15,
+          "reload_left": 0
+        },
+        "id": 1,
+        "kind": "hero_gunner",
+        "name": "Rook Ash",
+        "x": 29,
+        "y": 28,
+        "hp": 36,
+        "max_hp": 36,
+        "tags": [],
+        "inv": [
+          {
+            "id": 5011,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 5012,
+            "kind": "heal",
+            "known": true,
+            "label": "heal potion",
+            "free": false
+          }
+        ],
+        "weapon": "short_gun",
+        "armour": "hearthglass",
+        "helm": "ironcap",
+        "boots": "hearthglass_boots",
+        "class": "gunner",
+        "trait": "curious"
+      },
+      "firstSentWeapon": {
+        "id": 1,
+        "kind": "short_gun",
+        "amount": 0,
+        "enchant": 5,
+        "value_claimed": true,
+        "firearm": {
+          "loaded": 2
+        }
+      },
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326619,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain · Lich",
+        "gold": 0,
+        "found": 22,
+        "turns": 26192,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 64,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 49,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 197,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 235,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 299,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "replay": {
+        "ticks": 26192,
+        "depth": 18,
+        "hash": "5cc2e2a9e38a670a"
+      },
+      "watched": {
+        "id": 133,
+        "heir": 8,
+        "via": "watched",
+        "clock_s": 324000,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain · Lich",
+        "gold": 0,
+        "found": 22,
+        "turns": 26192,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 64,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 49,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 197,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 235,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 299,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "watchedCalls": 262,
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "status": "PASS",
+  "finishedAtUtc": "2026-10-15T19:26:37.909Z"
+}

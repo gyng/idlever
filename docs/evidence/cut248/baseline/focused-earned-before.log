@@ -1,0 +1,24 @@
+   Compiling idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+    Finished `fast` profile [optimized] target(s) in 1m 20s
+     Running unittests src/lib.rs (target/fast/deps/idlever_core-4cfe31a505304478)
+
+running 1 test
+test tests_cut248::actual_paid_earned_pace_has_all_eight_bonuses_in_first_ten_ticks ... FAILED
+
+failures:
+
+---- tests_cut248::actual_paid_earned_pace_has_all_eight_bonuses_in_first_ten_ticks stdout ----
+
+thread 'tests_cut248::actual_paid_earned_pace_has_all_eight_bonuses_in_first_ten_ticks' (81) panicked at crates/idlever-core/src/tests_cut248.rs:22:5:
+assertion `left == right` failed
+  left: 83
+ right: 88
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests_cut248::actual_paid_earned_pace_has_all_eight_bonuses_in_first_ten_ticks
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 978 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

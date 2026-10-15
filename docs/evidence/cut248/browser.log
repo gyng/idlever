@@ -1,0 +1,5 @@
+client suite: targeted (3 selected; 164 current full; 207 exhaustive groups)
+ok   loot-economy    77.9s (5.1s)  {"checks":104,"outcomes":[{"tier":"bank","kept":12,"gold":512},{"tier":"return","kept":12,"gold":512},{"tier":"death","kept":8,"gold":508}],"version":"0.1.0"}
+ok   item-icons      85.7s (7.8s)  1440 129 item icon checks PASS
+ok   gold-settlements 169.1s (96.3s)  {"result":"PASS","checks":564,"cases":24,"packages":[{"bytes":6773905,"sha256":"c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d"},{"bytes":6773905,"sha256":"c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d"},{"bytes":6773905,"sha256":"c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d"},{"bytes":6773905,"sha256":"c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d"}]}
+ok: 3/3 client gates in 169.1s

@@ -1,0 +1,61 @@
+{
+  "recordedAtUtc": "2026-10-15T19:23:46.356012+00:00",
+  "scope": "Current iPhone Pro browser-content geometry review; not physical-device/WebKit acceptance, performance, pacing or fun verdict",
+  "context": {
+    "viewport": {
+      "width": 402,
+      "height": 681,
+      "unit": "CSSpx",
+      "state": "browser bars visible; installed iPhone17Pro profile geometry approximation for current same-resolution Pro"
+    },
+    "wasmSha256": "e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+    "harnessSha256": "70e5d9be10c650e7c4d41d7944d7106d75076e58e0152d9a8473f2932a272d38",
+    "viewportHelperSha256": "451108436626518156b6fdd8df8028093b31e91ab801e55571eeff21d8c02416",
+    "input": {
+      "path": "docs/evidence/handoff-menus/input.game.json.gz",
+      "rawSha256": "81cf516f103571313aa251556417d0c50aa15b712c4d6f38398182631a176892",
+      "gzipSha256": "c23224542c7db35def1793352a6fd49215d0ca87d047775514183f88c510b714",
+      "scope": "Existing earned menu input"
+    },
+    "inputMethod": "Private-display Chromium: actual earned load, public Watch send, mouse/keyboard inspection; browser clock frozen only after Watch starts",
+    "textScale": [
+      1,
+      2
+    ],
+    "captureKind": "viewport"
+  },
+  "ownerFeedback": [
+    {
+      "feedback": "Earlier phone screenshots were too tall/narrow; keep test presets few; target latest iPhone browser dimensions.",
+      "response": "One402x681primary phone preset; edge/orientation cases targeted; viewport images primary and full-page images labelled supplementary scroll inventories."
+    }
+  ],
+  "observations": [
+    {
+      "origin": "automated measurements",
+      "finding": "Both text scales pass Home Gold/Legacy/Settings and active Watch Settings read-only save/focus checks,0horizontal overflow,44pxSettings,0page errors. Header102pxnormal; Home148pxat200% and Watch102px.",
+      "evidence": [
+        "results.json"
+      ]
+    },
+    {
+      "origin": "agent visual review",
+      "finding": "At402x681normal, Home shows the town, resident controls and bottom command dock in one browser viewport. Active Watch keeps map/messages and controls visible. The scene has materially less vertical room than prior1000px screenshots.",
+      "confidence": "Scoped to viewed Home and Watch frames at normal text; not a full menu or all-town-target accessibility audit."
+    },
+    {
+      "origin": "agent interpretation",
+      "finding": "Keep this one modern browser shape as the routine visual target. Compact320x568one-off captures expose crowding but do not justify making every routine test a four-device matrix.",
+      "confidence": "Owner preference plus scoped visual review; no external player playtest collected."
+    }
+  ],
+  "freshness": {
+    "status": "Current UI evidence on pre-fix e62c; combat outcomes are historical",
+    "triggers": [
+      "Header/dock/town/menu layout or font changes",
+      "Chosen target device/browser chrome changes",
+      "Relevant source/package state or Safari-specific behavior changes"
+    ],
+    "revalidation": "Use new output directories, record actual inner/visual viewport and package; preserve original tall and exploratory multi-shape captures."
+  }
+}

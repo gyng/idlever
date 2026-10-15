@@ -1,0 +1,304 @@
+{
+  "utc": "2026-10-15T19:31:11.219Z",
+  "scope": "Actual earned paid pace8 live-vs-loaded continuation; preserve complete provenance differences.",
+  "wasmSha256": "c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d",
+  "inputSha256": "bd658c5e567ff91df1bdb26d374625d0512b5991d0bf58a7cfb1ebe795bf5196",
+  "checkpointTick": 7200,
+  "firstDivergence": {
+    "tick": 7201,
+    "liveProv": [
+      {
+        "t": 190,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:dagger",
+        "text": "found dagger +2 on D1"
+      },
+      {
+        "t": 360,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:summon_ally",
+        "text": "found gilded scroll? on D1"
+      },
+      {
+        "t": 932,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:heal",
+        "text": "found heal on D1"
+      },
+      {
+        "t": 955,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:enchant",
+        "text": "found inked scroll? on D1"
+      },
+      {
+        "t": 978,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:dagger",
+        "text": "found dagger +2 on D1"
+      },
+      {
+        "t": 1340,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:teleport",
+        "text": "found waxen scroll? on D2"
+      },
+      {
+        "t": 1421,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:bow",
+        "text": "found bow +1 on D2"
+      },
+      {
+        "t": 1580,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:caustic",
+        "text": "found clear potion? on D2"
+      },
+      {
+        "t": 3591,
+        "depth": 3,
+        "kind": "found",
+        "key": "item:axe",
+        "text": "found axe +1 on D3"
+      },
+      {
+        "t": 3670,
+        "depth": 3,
+        "kind": "spent",
+        "key": "item:caustic",
+        "text": "swapped for the fire"
+      },
+      {
+        "t": 3670,
+        "depth": 3,
+        "kind": "found",
+        "key": "item:fire",
+        "text": "found fire on D3"
+      },
+      {
+        "t": 4420,
+        "depth": 4,
+        "kind": "spent",
+        "key": "item:teleport",
+        "text": "swapped for the strength"
+      },
+      {
+        "t": 6091,
+        "depth": 4,
+        "kind": "path",
+        "key": "path",
+        "text": "chase given up"
+      },
+      {
+        "t": 6171,
+        "depth": 4,
+        "kind": "seen",
+        "key": "seen:monkey",
+        "text": "monkey last seen D4"
+      },
+      {
+        "t": 6440,
+        "depth": 5,
+        "kind": "spent",
+        "key": "item:teleport",
+        "text": "swapped for the strength"
+      },
+      {
+        "t": 6440,
+        "depth": 5,
+        "kind": "found",
+        "key": "item:strength",
+        "text": "found amber potion? on D5"
+      },
+      {
+        "t": 6489,
+        "depth": 5,
+        "kind": "found",
+        "key": "item:sword",
+        "text": "found sword +1 on D5"
+      },
+      {
+        "t": 6761,
+        "depth": 5,
+        "kind": "seen",
+        "key": "seen:goblin",
+        "text": "goblin last seen D5"
+      },
+      {
+        "t": 6932,
+        "depth": 6,
+        "kind": "seen",
+        "key": "seen:jackal",
+        "text": "jackal last seen D6"
+      },
+      {
+        "t": 7201,
+        "depth": 6,
+        "kind": "seen",
+        "key": "seen:goblin_archer",
+        "text": "goblin archer last seen D6"
+      }
+    ],
+    "loadedProv": [
+      {
+        "t": 190,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:dagger",
+        "text": "found dagger +2 on D1"
+      },
+      {
+        "t": 360,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:summon_ally",
+        "text": "found gilded scroll? on D1"
+      },
+      {
+        "t": 932,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:heal",
+        "text": "found heal on D1"
+      },
+      {
+        "t": 955,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:enchant",
+        "text": "found inked scroll? on D1"
+      },
+      {
+        "t": 978,
+        "depth": 1,
+        "kind": "found",
+        "key": "item:dagger",
+        "text": "found dagger +2 on D1"
+      },
+      {
+        "t": 1340,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:teleport",
+        "text": "found waxen scroll? on D2"
+      },
+      {
+        "t": 1421,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:bow",
+        "text": "found bow +1 on D2"
+      },
+      {
+        "t": 1580,
+        "depth": 2,
+        "kind": "found",
+        "key": "item:caustic",
+        "text": "found clear potion? on D2"
+      },
+      {
+        "t": 3591,
+        "depth": 3,
+        "kind": "found",
+        "key": "item:axe",
+        "text": "found axe +1 on D3"
+      },
+      {
+        "t": 3670,
+        "depth": 3,
+        "kind": "spent",
+        "key": "item:caustic",
+        "text": "swapped for the fire"
+      },
+      {
+        "t": 3670,
+        "depth": 3,
+        "kind": "found",
+        "key": "item:fire",
+        "text": "found fire on D3"
+      },
+      {
+        "t": 4420,
+        "depth": 4,
+        "kind": "spent",
+        "key": "item:teleport",
+        "text": "swapped for the strength"
+      },
+      {
+        "t": 6091,
+        "depth": 4,
+        "kind": "path",
+        "key": "path",
+        "text": "chase given up"
+      },
+      {
+        "t": 6171,
+        "depth": 4,
+        "kind": "seen",
+        "key": "seen:monkey",
+        "text": "monkey last seen D4"
+      },
+      {
+        "t": 6440,
+        "depth": 5,
+        "kind": "spent",
+        "key": "item:teleport",
+        "text": "swapped for the strength"
+      },
+      {
+        "t": 6440,
+        "depth": 5,
+        "kind": "found",
+        "key": "item:strength",
+        "text": "found amber potion? on D5"
+      },
+      {
+        "t": 6489,
+        "depth": 5,
+        "kind": "found",
+        "key": "item:sword",
+        "text": "found sword +1 on D5"
+      },
+      {
+        "t": 6761,
+        "depth": 5,
+        "kind": "seen",
+        "key": "seen:goblin",
+        "text": "goblin last seen D5"
+      },
+      {
+        "t": 6932,
+        "depth": 6,
+        "kind": "seen",
+        "key": "seen:jackal",
+        "text": "jackal last seen D6"
+      }
+    ],
+    "serializedRunExact": true,
+    "eventsExact": true
+  },
+  "artifacts": {
+    "checkpoint7200": {
+      "path": "docs/evidence/cut248/reload-provenance-red/checkpoint7200.json.gz",
+      "rawSha256": "a3b74b5508f8ce50fc6f4e9a06a39bd9537213bdf1d67c14d368a5d995297da8"
+    },
+    "live-7201": {
+      "path": "docs/evidence/cut248/reload-provenance-red/live-7201.json.gz",
+      "rawSha256": "3c08dd331d56eb903147457d97b169f5d8c3aa0ca5d7f6a7cc913c1a01e33c57"
+    },
+    "loaded-7201": {
+      "path": "docs/evidence/cut248/reload-provenance-red/loaded-7201.json.gz",
+      "rawSha256": "c615f74043a74ef6b9ef0bb9ee7a44f5b0fa7ccedb928f13fef7c6883f4a007b"
+    }
+  },
+  "inputUnchanged": true
+}

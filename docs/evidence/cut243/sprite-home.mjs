@@ -1,19 +1,27 @@
 // Actual earned read-only sprite-primary Home review; fresh owned no-HMR server.
-import { readFileSync, writeFileSync, mkdirSync, createWriteStream } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, createWriteStream, existsSync } from "node:fs";
 import { gunzipSync } from "node:zlib";
 import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import net from "node:net";
 import { resolve } from "node:path";
 import { launchBrowser } from "../../../tools/browser.mjs";
+import { phoneReviewViewports } from "../../../web/tests/lib/viewport-cases.mjs";
 const phaseArg = process.argv.indexOf("--phase");
 const phase = phaseArg >= 0 ? process.argv[phaseArg + 1] : process.argv.includes("--final") ? "sprite-primary-final" : "sprite-primary";
 const out = resolve(`docs/evidence/cut243/${phase}`);
+if (existsSync(out)) throw Error("Preserve previous evidence; select a new --phase");
 mkdirSync(out, { recursive: true });
 const hash = (x) => createHash("sha256").update(x).digest("hex");
 const inputPath = "docs/evidence/handoff-menus/input.game.json.gz";
 const input = gunzipSync(readFileSync(inputPath)).toString();
+const expectedWasm = hash(readFileSync("web/src/engine/pkg/idlever_wasm_bg.wasm"));
 const result = {
+  harnessSha256: hash(readFileSync(new URL(import.meta.url))),
+  viewportHelperSha256: hash(readFileSync("web/tests/lib/viewport-cases.mjs")),
+  recordedAtUtc: new Date().toISOString(),
+  expectedWasm,
+  phoneViewports: phoneReviewViewports(),
   scope:
     "Actual earned Home sprite targets, presentation only; no performance or full menu acceptance claim",
   inputPath,
@@ -56,9 +64,10 @@ try {
     await new Promise((r) => setTimeout(r, 200));
   }
   browser = await launchBrowser({ gpu: true });
-  for (const width of [320, 400, 1440]) {
+  for (const viewport of [...phoneReviewViewports(), { id: "desktop", width: 1440, height: 900 }]) {
+    const { width, height, id: preset } = viewport;
     const page = await browser.newPage({
-      viewport: { width, height: 1000 },
+      viewport: { width, height },
       reducedMotion: "reduce",
     });
     page.on("pageerror", (e) => {
@@ -94,7 +103,7 @@ try {
     }
     for (const scale of [1, 2]) {
       await page.evaluate((s) => (document.documentElement.style.fontSize = `${16 * s}px`), scale);
-      await page.mouse.move(width - 1, 999);
+      await page.mouse.move(width - 1, height - 1);
       await page.keyboard.press("Escape");
       await page.evaluate(() => document.activeElement?.blur());
       await page.waitForFunction(
@@ -152,7 +161,7 @@ try {
       const filename = `home-${width}-${scale}x.png`;
       await page.screenshot({ path: `${out}/${filename}` });
       result.rows.push({
-        width,
+        width, height, preset, captureKind: "viewport", actualViewport: page.viewportSize(),
         scale,
         filename,
         frameSha256: hash(readFileSync(`${out}/${filename}`)),
@@ -205,7 +214,7 @@ try {
     if (!/Forge/.test(tip)) throw Error("missing Forge detail");
     await page.screenshot({ path: `${out}/forge-hover-${width}.png` });
     await page.keyboard.press("Escape");
-    await page.mouse.move(width - 1, 999);
+    await page.mouse.move(width - 1, height - 1);
     const r = await target.boundingBox();
     const cdp = await page.context().newCDPSession(page);
     await cdp.send("Input.dispatchTouchEvent", {
@@ -265,6 +274,9 @@ try {
     await page.close();
   }
   await Promise.all(pending);
+  const wasm = result.served.filter((r) => r.path.endsWith(".wasm"));
+  if (!wasm.length || wasm.some((r) => r.sha256 !== expectedWasm)) throw Error("Unexpected served WASM");
+  if (hash(readFileSync("web/src/engine/pkg/idlever_wasm_bg.wasm")) !== expectedWasm) throw Error("Package changed during capture");
   result.status = "PASS";
   save();
 } catch (e) {

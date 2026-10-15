@@ -164,12 +164,26 @@ pub fn kill_proc(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx) {
         }
     }
 }
+pub(crate) const HEAL_TICKS: u32 = 10;
+
+/// The scheduler excludes every healing boundary from a quiet span. With no
+/// actions inside it, piece counts stay fixed and only the timer can expire.
+pub(crate) fn quiet_ticks(run: &mut crate::engine::Run, ticks: u32) {
+    debug_assert!(ticks > 0 && run.turn / HEAL_TICKS == (run.turn + ticks) / HEAL_TICKS);
+    let n = count(&run.hero);
+    if n < 3 { run.hero.hearth_ward = 0; }
+    if n < 2 { run.hero.hearth_regen = 0; }
+    if run.hero.hearth_regen > 0 {
+        run.hero.hearth_regen = (run.hero.hearth_regen - ticks as i32).max(0);
+    }
+}
+
 pub fn tick(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx) {
     let n=count(&run.hero);
     if n<3 {run.hero.hearth_ward=0;}
     if n<2 {run.hero.hearth_regen=0;}
     if run.hero.hearth_regen>0 {
-        if run.turn.is_multiple_of(10)&&run.hero.hp<run.hero.max_hp {
+        if run.turn.is_multiple_of(HEAL_TICKS)&&run.hero.hp<run.hero.max_hp {
             run.hero.hp+=1;cx.events.push(crate::wire::Ev::Heal{t:run.turn,id:crate::engine::HERO_ID,amount:1,src:"hearthglass_embers".into()});
         }
         run.hero.hearth_regen-=1;

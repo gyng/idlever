@@ -10,6 +10,32 @@ The routine client selection spans ten areas: menu/save startup, town/workers, m
 
 The current full audit adds detailed feature checks. Historical whole walks and repeated viewport cases remain in the exhaustive suite. Run the specific omitted group when changing that feature. This selection does not replace visual GPU checks or native balance validation.
 
+## Mobile visual review (owner amendment2026-10-16)
+
+Use **one primary mobile browser viewport**,402×681 CSSpx, through
+`phoneReviewViewport()` / `phoneReviewViewports()` in
+`web/tests/lib/viewport-cases.mjs`. Keep normal/200% text coverage. Compact, Max,
+landscape and alternative toolbar states are targeted additions only when a
+change needs them; do not multiply every routine test into a device matrix.
+
+Provenance checked2026-10-16: the installed Playwright iPhone17Pro profile
+provides a402×681 browser viewport versus a402×874 screen at3× scale.
+[Apple's current iPhone18Pro specs](https://www.apple.com/iphone-18-pro/specs/)
+retain the2622×1206 physical display resolution. Reusing the installed profile's
+geometry is an explicit approximation; it is not a measured iPhone18/iOS27 Safari
+viewport. [WebKit's viewport guidance](https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/)
+explains that usable height changes with browser UI/scrolling. Record actual
+inner/visual viewport, DPR, text scale, input/save and source/package. Chromium
+geometry captures do not establish WebKit/device performance or Safari behavior.
+
+Primary images show the visible browser viewport. Test scrolling separately for
+offscreen content and reachable controls. Full-page/stitched images are optional
+scroll inventories, labelled with their capture kind and original viewport.
+Legacy320/400×1000 diagnostics remain historical/stress evidence; preserve them
+and link replacements instead of presenting them as realistic phone frames.
+The one-off four-shape captures made before the owner's smaller-test-matrix
+clarification retain their actual scope; they are not the routine default.
+
 ## Recovering from a failed or killed client run (2026-10-14)
 
 `web/tests/run.mjs` records every group's result as it ends (name, pass/fail, exit code, own and

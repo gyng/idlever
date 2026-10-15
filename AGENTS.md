@@ -157,6 +157,16 @@ them before using them to justify new work or acceptance when relevant UI,
 rules, content, pacing or player context has changed. Preserve old notes as
 historical/superseded evidence; never carry their conclusions forward silently.
 
+Owner amendment2026-10-16: mobile visual review uses one primary current
+iPhone Pro **browser-content** geometry,402×681 CSSpx with browser bars visible,
+from `phoneReviewViewport()` in `web/tests/lib/viewport-cases.mjs`. This is a
+viewport approximation, not full physical screen dimensions or real Safari
+acceptance. Keep routine coverage small: add compact/large/landscape or different
+bar states only for relevant targeted changes. Record actual viewport, text scale
+and capture kind. Primary screenshots show the visible viewport; supplementary
+full-page/stitched captures are labelled scroll inventories. Legacy320/400×1000
+checks remain historical/stress evidence, not representative mobile review.
+
 ## Hard invariants
 
 Owner economy amendment2026-10-13 (Cut196): accepted found-item pickups convert

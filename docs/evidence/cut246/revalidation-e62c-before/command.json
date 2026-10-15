@@ -1,0 +1,6 @@
+{
+  "command": "node docs/evidence/cut246/revalidate.mjs --out docs/evidence/cut246/revalidation-e62c-before --wasm-sha e62c0867b3b68c2546ba316f90d901e45547f9c80e229e86c7d6d145c62df71c",
+  "exitCode": 1,
+  "status": "terminal",
+  "interpretation": "Expected red on preserved pre-fix package;10 actual/replay and watched outcomes disagree, all10 whole/sliced/reloaded paths agree. Deterministic absence partitioning is insufficient evidence of single-tick correctness."
+}

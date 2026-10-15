@@ -305,6 +305,17 @@ pub fn pace_energy(pace: i32, tick: u32) -> i32 {
     ((tick % 10) < (pace.rem_euclid(10)) as u32) as i32
 }
 
+/// Fractional bonuses over the scheduler's quiet ticks (turn, turn + ticks].
+/// Whole pace points already belong to Hero::speed. Wide coordinates also
+/// handle the prefix endpoint just beyond u32::MAX without wrapping phase.
+pub(crate) fn quiet_pace_energy(pace: i32, turn: u32, ticks: u32) -> i32 {
+    debug_assert!(ticks < 10);
+    let remainder = pace.rem_euclid(10) as u64;
+    let prefix = |n: u64| (n / 10) * remainder + (n % 10).min(remainder);
+    let first = u64::from(turn) + 1;
+    (prefix(first + u64::from(ticks)) - prefix(first)) as i32
+}
+
 /// A ladder's two branches (`None`: the pack, one step a tier).
 pub fn branches(slot: &str) -> Option<[&'static str; 2]> {
     BRANCHES.iter().find(|(s, _)| *s == slot).map(|(_, b)| *b)

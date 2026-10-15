@@ -10,8 +10,14 @@ Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
 Local remote-tracking `origin/main` is `781b148f`; latest local checkpoints are Cut235 `1620a540`, menus `f4932f82` and strict Hub fixtures `021b146f`, callback focus `e771bc43` and biome props `f62d31c2`.
-Current development package is fast WASMe62c0867… (6770275bytes); settlement default
-`docs/evidence/cut244/followup/settlements-inputs-e62c.json`. Follow-up native Gold/
+Current development package is fast WASMc9fad470… (6773905bytes); settlement default
+`docs/evidence/cut248/settlements-inputs-c9fa.json`. Combined247/248 native974tests
+and Clippy, strict4settlements,20earned public continuations/90exact repeated
+artifacts and3fresh accounting/item browser groups pass. A separate paid pace8
+reload loses previous-vision provenance; Cut249 is in progress, so complete
+current-game parity/pacing/full/exhaustive/fun acceptance remains open.
+The preceding e62c retirement proof below remains historical at its own runtime.
+ Follow-up native Gold/
 ledger/ExitLine4/4 and five public catalogue/Lineage cases exactly match97e8;
 after-saves permit only typed empty shelf-field deletions. Original87de/97e8
 inputs, packages and after-saves remain intact. Follow-up workspace965tests and
@@ -24,7 +30,7 @@ Earlier d161/3975f10b evidence below is historical, not the current source/packa
 **ACTIVE 2026-10-15 (owner: finish handoff).** The pause is revoked; see the current resume update below.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
-## Latest implementation work — Cut243/244 (in progress)
+## Latest implementation work — Cut247/248 correctness and Cut243/244 integration (in progress)
 
 **New current-runtime blocker found during Cut246,2026-10-16:** ten lawful
 earned weapon preparations and20actual manual-send/eight-hour executions are
@@ -39,7 +45,90 @@ audit and first-divergence/full-continuation proofs are in evidence/cut246/.
 Prior965native/full/pacing passes do not cover this newly exposed defect.
 Cut247 will fix batch/tick equivalence without changing authored set values;
 current e62c Hearthglass outcomes must be revalidated before balance or causal
-recommendations. No source fix or new-package acceptance is claimed yet.
+recommendations. No corrected-package or changed-game acceptance is claimed yet.
+Subsequent Cut247 source candidate now corrects quiet-span armour countdown
+and lost-piece clearing, with an explicit heal-boundary limit and unchanged
+authored values. Preserved pre-fix earned regression fails; focused4/4passes
+(4.22s), including1728controlled boundaries, full earned single/batch/replay
+events/RNG/state and actual1/3resident8h whole/sliced/reload equality. Frozen
+Cut247 full fast workspace is terminal PASS969tests/6ignored (91.95s), and
+default all-target workspace Clippy is terminal PASS20.51s. Wrapper4002041 is
+gone; source manifest and raw logs remain in evidence/cut247/. These are native
+Cut247-only proofs, not a new-package or pacing acceptance. Development WASM
+remains pre-fix e62c. An adjacent audit finds fractional Hero.pace energy also
+omitted by quiet batching. Actual public e62c purchase of armour:pace costs
+9000Gold (12021→3021), owned rank6→7; the earned send has pace8. At10ticks,
+single-step energy88 agrees with the independent8×10+8 expectation, while
+batching produces83; other hero fields, monsters and RNG agree. Cut248 will
+prove and correct both action deadline and energy semantics before final
+packaging. No authored speed/balance change is intended.
+Baseline checkpoint5f081640 preserves the complete prior UI/storage/R6/R4
+source/proofs, original failed GPU controls and exact replay discrepancy.
+
+Cut248 source is now implemented and independently reviewed: chronological
+first-action eligibility includes fractional pace; exact periodic bonus applies
+over the final span after status/monster truncation. Combined247+248 focused
+9/9passes4.52s, including16500signed phase/threshold cases,2100status/monster
+boundaries and21300prefix/coordinate checks. Actual paid/unpaid earned complete
+events/RNG/replay and1/3resident8h parity pass. Preserved native red is83vs88;
+initial test-oracle type error is retained separately. Combined frozen workspace
+PASS974/6ignored119.64s and default all-target ClippyPASS22.20s. These are
+current native correctness proofs, not older247-only passes relabelled. Agent
+feat_review owns fastWASM rebuild/strict settlement repin next; check actual
+process/package before running corrected public-path experiments. No changed-
+game pacing/routine/full/exhaustive/fun acceptance is inferred.
+
+Corrected c9fa public successor is now terminalPASS: `revalidation-c9fa-1/`
+and `-2/` finish10/10cases each, all actual/replay, watched and whole/sliced/
+reloaded checks; exact repeat compares90complete raw artifacts. Strict c9fa
+settlement repin retains4/4expected packets and raw after-saves exactly. Fresh
+Gold564/24 +loot104 +item-icons129per original width pass3/3 in169.1s
+(evidence/cut248/browser*). Original e62c outcomes are superseded for current
+recommendations; corrected-c9fa-observations.json records changed payoffs.
+
+**Separate mandatory paid-case blocker:** c9fa pace8whole/sliced, watched outcome
+and replay match, but a reload at7200 loses one goblin-archer last-seen entry
+at7201. Complete run/events/RNG still match; provenance and its report/trace
+copies differ. `Run.last_visible` is serde-skipped although facts::on_vision
+uses it to emit lost-sight history. Minimal public red and source/package freeze are preserved in
+cut248/reload-provenance-red/ and cut249/baseline/. The first native red stops
+on an overly broad internal Run equality assertion (unsaved BFS caches), so it
+is retained as a test-oracle failure; its serialized-state/provenance red will
+be rerun explicitly before the249fix.
+Cut249 is authorized to persist this semantic state with explicit legacy missing-
+field behavior; no guessed historic sight reconstruction or diff normalization.
+Its test module wiring is currently WIP; do not relabel c9fa974tests onto that
+red test boundary. Broad gates wait until the final correctness candidate.
+
+Root successor `evidence/cut246/revalidate.mjs` now requires an explicit package
+SHA and unique result directory, and compares actual offline history against
+held replay plus a real watched `step(100)` continuation. It also requires exact
+whole/sliced/reloaded8h report/save equality from each same immutable earned send.
+Original e62c red `revalidation-e62c-before/` finishes10cases/0harness errors:
+actual/replay0/10 and actual/watched0/10 agree, while sliced/reloaded10/10agree.
+This proves partition determinism alone would miss the defect; corrected-runtime
+revalidation is pending. Only provenance `via`/`absence`/`clock_s` is excluded
+from watched-vs-absence RunRec comparison; full original receipts are retained.
+Dated source audit `evidence/cut247/quiet-scheduler-review.md` maps other tick
+effects to quiet bounds/advancement; it is a review, not universal state coverage.
+
+Owner2026-10-16 mobile review clarification: target modern iPhone **browser
+content**, keep preset count small. Shared helper now provides one402×681CSSpx
+Pro-browser geometry (installed Playwright profile; full screen402×874 is not
+the browser viewport). This is Chromium geometry emulation, not physical Safari
+acceptance. AGENTS/DEV_VALIDATION and driver/playtest/gfx defaults are updated;
+primary captures are viewport images, optional full-page output is labelled
+scroll inventory. Original320/400×1000captures remain historical/stress evidence.
+Fresh `cut243-mobileheader/iphone-browser-e62c/` passes both text scales with
+actual public Watch entry:6Home route checks/2Watch Settings save+focus checks,
+0overflow/errors,102pxnormal header and148pxHome200%. Root
+`cut243/iphone-browser-e62c/` passes2phone+2desktopframes,4spriteinspect/open
+checks and2real missing-lantern fallbacks. Original four-shape one-off
+`phone-aspects-e62c-v2/` passes8header/10Homeframes but is explicitly **not**
+the routine preset matrix. First sandbox launches failed EPERM before server
+startup; preserved logs, then isolated private-display runs finish exit0.
+Dated observations beside the current iPhone proof record feedback, measured
+facts, visual interpretation and revalidation limits; e62c combat remains pre-fix.
 
 Owner Home amendment: reduce persistent text with icons, tooltips and real locked
 state overlays; align mobile Savings/Apprentice boxes and shorten clipped labels

@@ -1,0 +1,24 @@
+   Compiling idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+    Finished `fast` profile [optimized] target(s) in 1m 09s
+     Running unittests src/lib.rs (target/fast/deps/idlever_core-4cfe31a505304478)
+
+running 1 test
+test tests_cut247::actual_earned_send_matches_single_ticks_batches_and_held_replay ... FAILED
+
+failures:
+
+---- tests_cut247::actual_earned_send_matches_single_ticks_batches_and_held_replay stdout ----
+
+thread 'tests_cut247::actual_earned_send_matches_single_ticks_batches_and_held_replay' (76) panicked at crates/idlever-core/src/tests_cut247.rs:17:9:
+assertion `left == right` failed: regeneration at tick 939
+  left: 30
+ right: 29
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests_cut247::actual_earned_send_matches_single_ticks_batches_and_held_replay
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 973 filtered out; finished in 0.05s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

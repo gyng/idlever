@@ -1,0 +1,1112 @@
+{
+  "recordedAtUtc": "2026-10-15T19:33:10.120061+00:00",
+  "scope": "Corrected original10earned within-class weapon forks;20complete repetitions. No new human feedback, visual/play-feel review, cross-class superiority or fullR4 acceptance.",
+  "wasmSha256": "c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d",
+  "inputManifestSha256": "6aa0393f97dec600626ba1f95b1670ba59e497008b404b6b508837cc0cb838a7",
+  "repeatEvidence": "revalidation-c9fa-repeat.json",
+  "rows": [
+    {
+      "id": "fighter",
+      "weapon": "sword",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 327334,
+        "start": 1,
+        "depth": 22,
+        "tier": "bank",
+        "reason": "no heals \u00b7 banked",
+        "gold": 828,
+        "found": 28,
+        "turns": 33345,
+        "finds": [
+          {
+            "id": 255,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 175,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 296,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.replay.json.gz",
+        "rawSha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec"
+      },
+      "eventKinds": {
+        "fact": 2,
+        "note": 60,
+        "move": 3478,
+        "rule": 2672,
+        "pickup": 63,
+        "callout": 440,
+        "spawn": 50,
+        "attack": 824,
+        "hurt": 761,
+        "die": 188,
+        "steal": 1,
+        "heal": 741,
+        "descend": 21,
+        "telegraph": 112,
+        "projectile": 80,
+        "overlay": 177,
+        "tame": 2,
+        "max_hp": 72,
+        "drain": 12,
+        "use": 2,
+        "homeward": 1,
+        "ending": 1,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "fighter",
+      "weapon": "crownsplitter",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 329210,
+        "start": 1,
+        "depth": 28,
+        "tier": "death",
+        "reason": "slain \u00b7 lurker",
+        "gold": 0,
+        "found": 26,
+        "turns": 52108,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 452,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 473,
+            "kind": "silence",
+            "known": true,
+            "label": "silence scroll",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (7)",
+            "free": false
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.replay.json.gz",
+        "rawSha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b"
+      },
+      "eventKinds": {
+        "fact": 3,
+        "note": 84,
+        "move": 6084,
+        "rule": 3656,
+        "pickup": 109,
+        "callout": 580,
+        "spawn": 133,
+        "attack": 1513,
+        "steal": 1,
+        "hurt": 1312,
+        "die": 313,
+        "heal": 1234,
+        "descend": 27,
+        "telegraph": 112,
+        "projectile": 58,
+        "overlay": 267,
+        "max_hp": 58,
+        "drain": 5,
+        "tame": 4,
+        "bones": 1,
+        "use": 2,
+        "ending": 1,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "rogue",
+      "weapon": "dagger",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325769,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain \u00b7 jackal",
+        "gold": 0,
+        "found": 21,
+        "turns": 17691,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 193,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.replay.json.gz",
+        "rawSha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d"
+      },
+      "eventKinds": {
+        "fact": 2,
+        "note": 42,
+        "move": 2233,
+        "rule": 1377,
+        "pickup": 35,
+        "callout": 213,
+        "spawn": 26,
+        "attack": 365,
+        "hurt": 323,
+        "die": 91,
+        "steal": 1,
+        "heal": 285,
+        "descend": 12,
+        "telegraph": 77,
+        "projectile": 54,
+        "overlay": 112,
+        "tame": 4,
+        "drain": 4,
+        "max_hp": 24,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "rogue",
+      "weapon": "crownsplitter",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326088,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain \u00b7 gas",
+        "gold": 0,
+        "found": 15,
+        "turns": 20880,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 15,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 63,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 194,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-crownsplitter.replay.json.gz",
+        "rawSha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7"
+      },
+      "eventKinds": {
+        "fact": 3,
+        "note": 42,
+        "move": 3227,
+        "rule": 1461,
+        "pickup": 35,
+        "callout": 225,
+        "spawn": 41,
+        "attack": 333,
+        "steal": 1,
+        "hurt": 293,
+        "die": 105,
+        "heal": 233,
+        "descend": 12,
+        "telegraph": 37,
+        "overlay": 128,
+        "max_hp": 41,
+        "drain": 6,
+        "projectile": 19,
+        "tame": 3,
+        "use": 1,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "ranger",
+      "weapon": "bow",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325712,
+        "start": 1,
+        "depth": 13,
+        "tier": "bank",
+        "reason": "no heals \u00b7 banked",
+        "gold": 254,
+        "found": 19,
+        "turns": 17127,
+        "best": true,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-bow.replay.json.gz",
+        "rawSha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20"
+      },
+      "eventKinds": {
+        "fact": 3,
+        "note": 44,
+        "move": 3032,
+        "rule": 1300,
+        "pickup": 38,
+        "callout": 197,
+        "spawn": 33,
+        "projectile": 86,
+        "attack": 293,
+        "hurt": 281,
+        "die": 99,
+        "descend": 12,
+        "heal": 247,
+        "telegraph": 31,
+        "steal": 1,
+        "overlay": 207,
+        "drain": 4,
+        "max_hp": 20,
+        "use": 2,
+        "homeward": 1,
+        "ending": 1,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "ranger",
+      "weapon": "sword",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 328626,
+        "start": 1,
+        "depth": 23,
+        "tier": "bank",
+        "reason": "no heals \u00b7 banked",
+        "gold": 856,
+        "found": 27,
+        "turns": 46263,
+        "best": true,
+        "finds": [
+          {
+            "id": 434,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 404,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 215,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 379,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.replay.json.gz",
+        "rawSha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8"
+      },
+      "eventKinds": {
+        "fact": 2,
+        "note": 59,
+        "move": 4810,
+        "rule": 3710,
+        "pickup": 64,
+        "callout": 542,
+        "spawn": 79,
+        "attack": 1079,
+        "hurt": 968,
+        "die": 233,
+        "steal": 1,
+        "heal": 845,
+        "descend": 22,
+        "telegraph": 58,
+        "projectile": 6,
+        "overlay": 230,
+        "tame": 1,
+        "max_hp": 41,
+        "drain": 2,
+        "use": 3,
+        "homeward": 1,
+        "ending": 2,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "caster",
+      "weapon": "dagger",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326124,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain \u00b7 gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 21240,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 80,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 47,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 112,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 202,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-dagger.replay.json.gz",
+        "rawSha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e"
+      },
+      "eventKinds": {
+        "fact": 2,
+        "note": 40,
+        "move": 2549,
+        "rule": 1702,
+        "pickup": 35,
+        "callout": 230,
+        "spawn": 35,
+        "attack": 423,
+        "hurt": 380,
+        "die": 105,
+        "steal": 1,
+        "heal": 283,
+        "descend": 12,
+        "telegraph": 81,
+        "projectile": 57,
+        "overlay": 123,
+        "tame": 3,
+        "max_hp": 16,
+        "drain": 1,
+        "use": 2,
+        "homeward": 1,
+        "ending": 1,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "caster",
+      "weapon": "bow",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 325686,
+        "start": 1,
+        "depth": 13,
+        "tier": "death",
+        "reason": "slain \u00b7 gas",
+        "gold": 0,
+        "found": 17,
+        "turns": 16860,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 132,
+            "kind": "axe",
+            "known": true,
+            "label": "axe +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 30,
+            "kind": "leather",
+            "known": true,
+            "label": "leather +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 41,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +1",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 17,
+            "kind": "dagger",
+            "known": true,
+            "label": "dagger +2",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 34,
+            "kind": "leash",
+            "known": true,
+            "label": "leash (6)",
+            "free": false
+          },
+          {
+            "id": 19,
+            "kind": "scroll",
+            "known": false,
+            "label": "gilded scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.replay.json.gz",
+        "rawSha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321"
+      },
+      "eventKinds": {
+        "fact": 3,
+        "note": 43,
+        "move": 2997,
+        "rule": 1280,
+        "pickup": 36,
+        "callout": 194,
+        "spawn": 33,
+        "projectile": 86,
+        "attack": 293,
+        "hurt": 272,
+        "die": 97,
+        "descend": 12,
+        "heal": 222,
+        "telegraph": 31,
+        "steal": 1,
+        "overlay": 198,
+        "drain": 4,
+        "max_hp": 20,
+        "use": 2,
+        "homeward": 1,
+        "ending": 2,
+        "exit": 1
+      },
+      "firstObservedGun": null,
+      "reloadingStates": 0
+    },
+    {
+      "id": "gunner",
+      "weapon": "long_gun",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 327144,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain \u00b7 Lich",
+        "gold": 0,
+        "found": 24,
+        "turns": 31449,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 269,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 45,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 46,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 114,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 144,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 220,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-long_gun.replay.json.gz",
+        "rawSha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911"
+      },
+      "eventKinds": {
+        "fact": 4,
+        "note": 57,
+        "move": 4091,
+        "callout": 883,
+        "rule": 2517,
+        "pickup": 62,
+        "spawn": 52,
+        "projectile": 262,
+        "attack": 425,
+        "hurt": 401,
+        "die": 159,
+        "gun": 745,
+        "descend": 17,
+        "heal": 201,
+        "telegraph": 23,
+        "overlay": 173,
+        "max_hp": 57,
+        "drain": 16,
+        "tame": 4,
+        "use": 1,
+        "exit": 1,
+        "ending": 1
+      },
+      "firstObservedGun": {
+        "k": "gun",
+        "t": 913,
+        "state": {
+          "item": 1,
+          "kind": "long_gun",
+          "loaded": 0,
+          "capacity": 1,
+          "range": 8,
+          "damage": [
+            12,
+            16
+          ],
+          "armour_piercing": 2,
+          "reload_ticks": 20,
+          "reload_left": 0
+        }
+      },
+      "reloadingStates": 248
+    },
+    {
+      "id": "gunner",
+      "weapon": "short_gun",
+      "actual": {
+        "id": 133,
+        "heir": 8,
+        "via": "away",
+        "absence": 2,
+        "clock_s": 326619,
+        "start": 1,
+        "depth": 18,
+        "tier": "death",
+        "reason": "slain \u00b7 Lich",
+        "gold": 0,
+        "found": 22,
+        "turns": 26192,
+        "best": true,
+        "death_id": 133,
+        "finds": [
+          {
+            "id": 64,
+            "kind": "bow",
+            "known": true,
+            "label": "bow +2",
+            "free": false,
+            "rarity": "rare"
+          },
+          {
+            "id": 145,
+            "kind": "fire",
+            "known": true,
+            "label": "fire potion",
+            "free": false,
+            "rarity": "uncommon"
+          },
+          {
+            "id": 49,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          },
+          {
+            "id": 197,
+            "kind": "potion",
+            "known": false,
+            "label": "amber potion?",
+            "free": false
+          },
+          {
+            "id": 235,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "free": false
+          },
+          {
+            "id": 299,
+            "kind": "scroll",
+            "known": false,
+            "label": "inked scroll?",
+            "hint": "benevolent",
+            "free": false
+          }
+        ]
+      },
+      "checks": {
+        "actualReplay": true,
+        "actualWatched": true,
+        "sliced": true,
+        "reloaded": true
+      },
+      "replayArtifact": {
+        "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.replay.json.gz",
+        "rawSha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4"
+      },
+      "eventKinds": {
+        "fact": 4,
+        "note": 55,
+        "move": 3773,
+        "callout": 514,
+        "rule": 2097,
+        "pickup": 51,
+        "spawn": 42,
+        "projectile": 238,
+        "attack": 359,
+        "hurt": 327,
+        "die": 135,
+        "gun": 393,
+        "descend": 17,
+        "heal": 168,
+        "telegraph": 33,
+        "steal": 1,
+        "overlay": 84,
+        "max_hp": 51,
+        "drain": 7,
+        "use": 3,
+        "ending": 1,
+        "exit": 1
+      },
+      "firstObservedGun": {
+        "k": "gun",
+        "t": 925,
+        "state": {
+          "item": 1,
+          "kind": "short_gun",
+          "loaded": 1,
+          "capacity": 2,
+          "range": 3,
+          "damage": [
+            10,
+            13
+          ],
+          "armour_piercing": 0,
+          "reload_ticks": 15,
+          "reload_left": 0
+        }
+      },
+      "reloadingStates": 98
+    }
+  ],
+  "observations": [
+    {
+      "origin": "measured public paths",
+      "finding": "All10actualoffline outcomes match the full watched RunRec (excluding only actual via/absence/clock provenance fields) and replayticks/depth; whole/sliced/reloaded8h reports and savedSessions match;90completeartifacts repeat exactly.",
+      "confidence": "High for these10immutable preparations and this exact package."
+    },
+    {
+      "origin": "actual receipts and agent interpretation",
+      "finding": "Fighter/sword banks828Gold atD22; Crownsplitter dies atD28for0Gold. This sample illustrates a depth-versus-living-bank tradeoff; it does not prove a general bestweapon.",
+      "confidence": "Receipts verified; interpretation limited to the specific earned parent."
+    },
+    {
+      "origin": "revalidation of historical observations",
+      "finding": "Old pre-fix apparentRanger/Caster payoffs do not carry forward. Corrected Rangerbow banks254atD13 versus sword856atD23. Both corrected Casterforks die to gasD13 rather than oldbowBankD19.",
+      "confidence": "High for the changed actual receipts. Tactical reasons and recommendations remain unproved."
+    },
+    {
+      "origin": "verified replay measurement",
+      "finding": "ActualGunnerlonggun events publish capacity1/range8/reload20/armourpiercing2; shortgun capacity2/range3/reload15/armourpiercing0. Both samples die toLichD18; time differences alone do not identify the causal contribution of each mechanic.",
+      "confidence": "High for native observed gun states; no counter superiority claim."
+    }
+  ],
+  "freshness": {
+    "status": "Scoped current c9fa evidence; separate paidpace8case exposes unresolvedreloadprovenance loss tracked inCut249",
+    "context": "One inherited earned camp; actual6/8/8mark unlocks; unequal classlevels; pausedScout; manualsend then8h; no viewport or externalplayerfeedback",
+    "triggers": [
+      "Cut249semantic visibility persistence/newpackage",
+      "Combat/gear/class/package/pacing changes",
+      "Different earned save, skilllevels or automatic-send policy"
+    ],
+    "revalidate": "Preserve originals and use newpackage SHA/newoutputdirectories; original10passingcases do not certify everyreloadboundary."
+  }
+}
