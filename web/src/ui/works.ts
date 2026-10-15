@@ -74,8 +74,11 @@ export function nodeState(n: WorkNode): string {
     return n.need ? `${Math.min(n.count ?? 0, n.need)}/${n.need} ${choreWord(n.chore)}` : price(n); // (the price is on the hire)
   if (n.state === "shut") return n.trigger ?? "";
   if (n.need) return `${n.count ?? 0}/${n.need} ${choreWord(n.chore)}`;
+  if (n.feat) return featText(n.feat, n.feat_done);
   return n.trigger ?? "";
 }
+/** Cut235: a feat goal's words, met or not (`✓ interest paid`) */
+export const featText = (feat: string, done?: boolean): string => `${done ? "✓ " : ""}${feat}`;
 /** Cut231 §5: a counting worker's progress toward its trigger, from the wire's own count (`count`/`need`, the core's `progress`) and the
  *  hours to its time fallback (`eta_h`, absent once ready or with no fallback). None for a hired, lit or shut node, or one with no count. */
 export type WorkerProgress = {
@@ -86,14 +89,32 @@ export type WorkerProgress = {
   unit: string;
   frac: number;
   eta?: string;
+  /** Cut235: a feat goal (the core's `WorkNode.feat`, ≤ 3 words) and whether it is met; then `have`/`need` are 0|1 of 1 */
+  feat?: string;
+  done?: boolean;
 };
 /** the quiet time fallback (`or 6h`, `or 3d` from two days) */
 export const etaText = (h?: number): string =>
   h && h > 0 ? /* copy:callout */ `or ${h >= 48 ? `${Math.round(h / 24)}d` : `${h}h`}` : "";
 export function workerProgress(n?: WorkNode): WorkerProgress | null {
-  if (!n || n.kind !== "worker" || !n.need || !["open", "ready"].includes(n.state)) return null;
-  const have = Math.max(0, Math.min(n.count ?? 0, n.need));
+  if (!n || n.kind !== "worker" || !["open", "ready"].includes(n.state)) return null;
   const eta = etaText(n.eta_h);
+  if (n.goal === "feat" && n.feat) {
+    const done = !!n.feat_done;
+    return {
+      id: n.id,
+      name: n.name,
+      have: done ? 1 : 0,
+      need: 1,
+      unit: "",
+      frac: done ? 1 : 0,
+      feat: n.feat,
+      done,
+      ...(eta && !done ? { eta } : {}),
+    };
+  }
+  if (!n.need) return null;
+  const have = Math.max(0, Math.min(n.count ?? 0, n.need));
   return {
     id: n.id,
     name: n.name,
@@ -105,7 +126,8 @@ export function workerProgress(n?: WorkNode): WorkerProgress | null {
   };
 }
 /** `2/3 sends` */
-export const progressText = (p: WorkerProgress): string => `${p.have}/${p.need} ${p.unit}`.trim();
+export const progressText = (p: WorkerProgress): string =>
+  p.feat ? featText(p.feat, p.done) : `${p.have}/${p.need} ${p.unit}`.trim();
 /** The next worker the town works toward: the core's `next_worker` (the lit one, else the first counting), else the sheet's focus. */
 export const nextWorkerNode = (W?: Works): WorkNode | undefined =>
   !W ? undefined : W.next_worker ? W.nodes.find((n) => n.id === W.next_worker) : worksView(W).focus;
@@ -127,7 +149,9 @@ const silLine = (n: WorkNode): string =>
     : [
         n.need
           ? `${n.count ? `${n.count}/` : ""}${n.need} ${choreWord(n.chore)}`
-          : (n.trigger ?? ""),
+          : n.feat
+            ? featText(n.feat, n.feat_done)
+            : (n.trigger ?? ""),
         n.state === "ready" ? price(n) : n.price ? `$${n.price}` : /* copy:label */ "free",
       ]
         .filter(Boolean)
@@ -171,16 +195,18 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
     // Cut231 §5: the goal's worker counting toward its trigger — a count goal names its chore (`scout · 2/3 sends`), a send or a
     // chest (each advances the worker) carries the count quietly beside it (`scout 1/3`); the time fallback rides quietly (`or 6h`)
     const prog = management ? null : workerProgress(node);
+    // Cut235: a feat goal names its feat, met or not (`apprentice · forged boss kill`, `✓` once met), no bar; its fallback quietly
+    const goal = p.kind === "count" || p.kind === "feat";
     const text = management
       ? /* copy:label */ `Workers · ${hired} hired`
-      : p.kind === "count" && prog
+      : goal && prog
         ? `${prog.name} · ${progressText(prog)}`
         : p.text || /* copy:label */ "workers";
     const side =
-      prog && (p.kind === "send" || p.kind === "chest")
+      prog && !prog.feat && (p.kind === "send" || p.kind === "chest")
         ? `${prog.name} ${prog.have}/${prog.need}`
         : "";
-    const eta = prog && (p.kind === "count" || side) ? (prog.eta ?? "") : "";
+    const eta = prog && (goal || side) ? (prog.eta ?? "") : "";
     const frac = management
       ? undefined
       : p.kind === "buy" || p.kind === "chest"
@@ -194,6 +220,8 @@ export function nextPill(app: App, anchorOpen: (node?: string, at?: HTMLElement)
     el.hidden = false;
     el.dataset.kind = management ? "management" : p.kind;
     el.dataset.node = management ? "" : (p.node ?? "");
+    if (prog?.feat) el.dataset.featDone = String(!!prog.done);
+    else delete el.dataset.featDone;
     el.classList.toggle("gold", p.kind === "buy");
     if (key === last) return;
     const moved = !!last;
@@ -271,7 +299,12 @@ export function openWorks(app: App, focus?: string, anchor?: HTMLElement | null)
             : "";
           return h(
             "div",
-            { class: `wnode cur${lit ? " lit" : ""}`, "data-node": n.id, "data-state": n.state },
+            {
+              class: `wnode cur${lit ? " lit" : ""}`,
+              "data-node": n.id,
+              "data-state": n.state,
+              ...(n.feat ? { "data-feat-done": String(!!n.feat_done) } : {}),
+            },
             h("span", { class: "wn-ico" }, nodeIcon(n.id, n.name)),
             h(
               "div",

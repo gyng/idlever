@@ -6869,6 +6869,16 @@ const BUILD30: [string, string][] = [
 // ---- Cut 30.5 stand-ins (the core's `tree.rs`): the works tree — workers that retire chores done by hand, the four tracks as branches,
 // the haul chest, the `next` pill, manual sends before the scout. Shapes only: the fake's sims are its own (a send before the scout is one
 // run: an absence then yields only the run in flight).
+// Cut235 (core `tree::feat_name`): the later workers' feats (≤ 3 words); the porter and the scout count
+const FEATS235: Record<string, string> = {
+  apprentice: "forged boss kill",
+  clerk: "full haul banked",
+  drillmaster: "levelled new best",
+  kennel_hand: "pet levels up",
+  herald: "swapped quest kept",
+  guide: "deep start record",
+  kennel_keeper: "bred pup fielded",
+};
 // (id, name, branch, chore, need, price in tenths of a forge unit, fallback age h, post, beat, tip, the chore's system)
 const NODES305: [
   string,
@@ -7025,6 +7035,8 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
   let lit: string | undefined;
   for (const [id, name, branch, chore, need, tenths, fb, post, beat, tip, gate] of NODES305) {
     const count = st.counts[id] ?? 0;
+    // Cut235 (core `tree::feat_name`): a later worker's goal is a feat — the stand-in meets it at its old count
+    const feat = FEATS235[id];
     const price = Math.round((unit * tenths) / 10);
     const open = sysOpen(gate);
     const ready = open && (count >= need || (fb > 0 && age >= fb));
@@ -7069,12 +7081,15 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
       name,
       state,
       ...(rank ? { rank, ...rankNext, ...bonusNow } : {}),
-      ...(chore ? { chore, count, need } : {}),
+      ...(chore ? (feat ? { chore } : { chore, count, need }) : {}),
+      ...(chore && feat ? { goal: "feat" as const, feat, feat_done: count >= need } : {}),
       price,
       affordable: purse + st.chest >= price,
       ...(fb ? { fallback_h: fb } : {}),
       // Cut 120 §7 (core `tree::eta_h`): an unhired worker's count and the hours until its fallback lights it (absent once ready)
-      ...(chore && !st.hired.includes(id) ? { progress: `${Math.min(count, need)}/${need}` } : {}),
+      ...(chore && !feat && !st.hired.includes(id)
+        ? { progress: `${Math.min(count, need)}/${need}` }
+        : {}),
       ...(chore && fb && open && !ready && !st.hired.includes(id) ? { eta_h: fb - age } : {}),
       ...(!open && gate ? { trigger: `${gate} built` } : {}),
       tip,
@@ -7104,7 +7119,9 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
   const auto = on305(st, "scout");
   const waits = !auto && !st.sent;
   const litN = nodes.find((n) => n.id === lit);
-  const counting = nodes.find((n) => n.kind === "worker" && n.state === "open" && n.need);
+  const counting = nodes.find(
+    (n) => n.kind === "worker" && n.state === "open" && (n.need || n.feat),
+  );
   const next: NextPill =
     litN && litN.affordable
       ? { kind: "buy", node: lit, text: `${litN.name} · ${litN.price ? `$${litN.price}` : "free"}` }
@@ -7120,15 +7137,17 @@ function works305(e: Fk305, L: Lineage, purse: number): Works {
                 have: purse + st.chest,
                 need: litN.price,
               }
-            : counting
-              ? {
-                  kind: "count",
-                  node: counting.id,
-                  text: `${counting.name} · ${counting.count}/${counting.need}`,
-                  have: counting.count,
-                  need: counting.need,
-                }
-              : { kind: "none", text: "" };
+            : counting?.feat
+              ? { kind: "feat", node: counting.id, text: `${counting.name} · ${counting.feat}` }
+              : counting
+                ? {
+                    kind: "count",
+                    node: counting.id,
+                    text: `${counting.name} · ${counting.count}/${counting.need}`,
+                    have: counting.count,
+                    need: counting.need,
+                  }
+                : { kind: "none", text: "" };
   // (the core gates each next rank by days of service, so a worker just promoted waits; the stand-in offers the lowest rank first)
   const litRank = lit
     ? undefined

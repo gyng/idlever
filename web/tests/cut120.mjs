@@ -414,15 +414,19 @@ try {
     const r = await page.evaluate(async () => {
       const a = window.__idlever,
         L = a.lineage;
-      a.engine.lineage = async () => a.lineage; // (the fixture below is the real lineage with the next worker counting)
+      a.engine.lineage = async () => a.lineage; // (the fixture below is the real lineage with the next worker toward its feat)
+      // (Cut235: the apprentice's goal is a feat — the core's shape: goal/feat/feat_done, no count)
       const nodes = L.tree.nodes.map((n) =>
         n.id === "apprentice"
           ? {
               ...n,
               state: "open",
-              progress: "2/3",
-              count: 2,
-              need: 3,
+              progress: undefined,
+              count: undefined,
+              need: undefined,
+              goal: "feat",
+              feat: "forged boss kill",
+              feat_done: false,
               chore: "forge",
               eta_h: 30,
               fallback_h: 48,
@@ -476,10 +480,10 @@ try {
         .map((e) => e.textContent ?? "")
         .join(" | "),
     }));
-    const carried = (t) => /2\/3/.test(t) && /or 30h/.test(t);
+    const carried = (t) => /forged boss kill/.test(t) && /or 30h/.test(t);
     check(
       r.text === "" && (carried(hud.pill) || carried(hud.tracker)),
-      `the next worker's count rides the pill or the tracker, not a post marker (pill: ${hud.pill}; tracker: ${hud.tracker}; marker: ${r.text || "none"})`,
+      `the next worker's feat rides the pill or the tracker, not a post marker (pill: ${hud.pill}; tracker: ${hud.tracker}; marker: ${r.text || "none"})`,
     );
     check(r.n <= 3, `≤ 3 markers on the town (${r.kinds.join(",")})`);
     const k = await page.evaluate(async () => {

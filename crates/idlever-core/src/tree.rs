@@ -48,6 +48,32 @@ impl NodeDef {
     pub fn fallback_h(&self) -> u32 {
         self.tune().fallback_h
     }
+    /// Cut235: lit by a feat (its chore's outcome), not by a count of the chore (`balance` `workers.<id>.goal`).
+    pub fn feat(&self) -> Option<&'static str> {
+        (self.tune().goal == crate::balance::Goal::Feat).then(|| feat_name(self.id)).flatten()
+    }
+}
+
+/// Cut235 (docs/CUT235_FEATS.md; Cut231 §5b): each later worker's feat (≤ 3 words) — one real outcome of its chore done
+/// by hand, never a new chore or tap. The porter and the Scout count (they teach the chore itself).
+pub fn feat_name(id: &str) -> Option<&'static str> {
+    Some(match id {
+        // a band boss falls for the first time after a forge step bought by hand
+        "apprentice" => "forged boss kill",
+        // a run comes home by a Bank exit carrying the clerk's price or more, the bank built
+        "clerk" => "full haul banked",
+        // a new record floor after a stance level bought by hand
+        "drillmaster" => "levelled new best",
+        // a pet gains a level on a run, the kennel built
+        "kennel_hand" => "pet levels up",
+        // a quest is kept after a swap by hand
+        "herald" => "swapped quest kept",
+        // a run from a waystone picked by hand sets a new record
+        "guide" => "deep start record",
+        // a pup bred by hand goes on a run
+        "kennel_keeper" => "bred pup fielded",
+        _ => return None,
+    })
 }
 
 /// The tree in its order (the trunk, then the branches): one node lit at a time, the first ready one.
@@ -152,6 +178,13 @@ pub struct Tree {
     /// Cut 120 §2 (Cut 114 §5): each worker's rank-II perk chosen (`PERKS`; absent: the first, the old bonus).
     #[serde(default, skip_serializing_if = "crate::shared::map_is_empty")]
     pub perks: crate::shared::Shared<BTreeMap<String, String>>,
+    /// Cut235: per feat worker, the measure its feat beats, taken at its chore's first time by hand (`feat_measure`) —
+    /// present once the chore was done by hand.
+    #[serde(default, skip_serializing_if = "crate::shared::map_is_empty")]
+    pub feat_base: crate::shared::Shared<BTreeMap<String, u32>>,
+    /// Cut235: the workers whose feat is met (kept once met).
+    #[serde(default, skip_serializing_if = "crate::shared::set_is_empty")]
+    pub feats: crate::shared::Shared<BTreeSet<String>>,
 }
 
 fn is_zero_u(n: &u32) -> bool {
@@ -301,7 +334,8 @@ pub fn guide_pick(l: &LineageState, by_hand: bool) -> u32 {
 impl Tree {
     /// A new lineage's tree: the quartermaster given, nothing else.
     pub fn fresh() -> Tree {
-        Tree { v: 2, hired: vec![("quartermaster".into(), 0)].into(), ..Default::default() }
+        // (Cut235: `v` 3 — a feat worker is lit by its feat alone; a tree from before keeps its count as well)
+        Tree { v: 3, hired: vec![("quartermaster".into(), 0)].into(), ..Default::default() }
     }
 }
 
@@ -490,12 +524,82 @@ pub fn ready(l: &LineageState, n: &NodeDef) -> bool {
     trigger_met(l, n) && (n.chore.is_empty() || l.tree.v < 2 || l.pkg.literal || l.tree.shown.contains(n.id))
 }
 
-/// Its trigger is met: the count, or the fallback age with its chore open.
+/// Its trigger is met: the count (Cut235: a feat worker's feat), or the fallback age with its chore open.
 pub fn trigger_met(l: &LineageState, n: &NodeDef) -> bool {
     if n.chore.is_empty() {
         return true;
     }
-    chore_open(l, n) && (count(l, n.id) >= n.need() || (n.fallback_h() > 0 && l.age_h() >= n.fallback_h()))
+    chore_open(l, n) && (goal_met(l, n) || (n.fallback_h() > 0 && l.age_h() >= n.fallback_h()))
+}
+
+/// Cut235: its goal is met — the count, or a feat worker's feat (a tree from before Cut235 still lights by the count).
+pub fn goal_met(l: &LineageState, n: &NodeDef) -> bool {
+    match n.feat() {
+        Some(_) => feat_done(l, n.id) || (l.tree.v < 3 && count(l, n.id) >= n.need()),
+        None => count(l, n.id) >= n.need(),
+    }
+}
+
+/// Cut235: a feat worker's feat is met (kept, or met now).
+pub fn feat_done(l: &LineageState, id: &str) -> bool {
+    l.tree.feats.contains(id) || feat_live(l, id)
+}
+
+/// Band bosses slain, by kind (the apprentice's feat measure).
+fn bosses_slain(l: &LineageState) -> u32 {
+    l.kills.iter().filter(|k| !k.starts_with("spectral_") && crate::defs::monster_def(k).boss).count() as u32
+}
+
+/// Cut235: the measure a feat beats, at its chore's first time by hand.
+fn feat_measure(l: &LineageState, id: &str) -> u32 {
+    match id {
+        "apprentice" => bosses_slain(l),
+        "drillmaster" => l.best_depth,
+        "herald" => l.town.quests_done,
+        _ => 0,
+    }
+}
+
+/// Cut235: the feats the lineage's state shows (the pets' feats are a run's, `note_feats`).
+fn feat_live(l: &LineageState, id: &str) -> bool {
+    let Some(base) = l.tree.feat_base.get(id).copied() else { return false };
+    match id {
+        "apprentice" => bosses_slain(l) > base,
+        "drillmaster" => l.best_depth > base,
+        "herald" => l.town.quests_done > base,
+        "guide" => l.tree.start_by_hand.is_some_and(|(s, at)| s > 1 && l.best_depth > at),
+        _ => false,
+    }
+}
+
+/// Cut235: whether a feat needs its chore done by hand first (the clerk's and the kennel-hand's are the run's alone: their
+/// chores need a building the idle player never raises, so the idle climb is untouched either way).
+fn feat_by_hand(id: &str) -> bool {
+    !matches!(id, "clerk" | "kennel_hand")
+}
+
+/// Cut235: a run's end — the feats it met are kept (a full haul banked, a pet that levelled on it, a pup bred by hand on
+/// it; the state's feats). Before the report's offer (`news::settle`), so a met feat is offered at a quiet report.
+pub(crate) fn note_feats(game: &mut Game, run: &crate::engine::Run, tier: crate::engine::ExitTier) {
+    let l = &game.lineage;
+    if l.pkg.literal || game.sim {
+        return;
+    }
+    let met: Vec<&'static str> = NODES
+        .iter()
+        .filter(|n| n.feat().is_some() && !hired(l, n.id) && !l.tree.feats.contains(n.id) && chore_open(l, n))
+        .filter(|n| !feat_by_hand(n.id) || l.tree.feat_base.contains_key(n.id))
+        .filter(|n| match n.id {
+            "clerk" => tier == crate::engine::ExitTier::Bank && !run.timed_out && run.kept(tier) >= price(l, n),
+            "kennel_hand" => run.companions.iter().any(|rec| l.all_companions().any(|c| c.id == rec.id && c.level > rec.level)),
+            "kennel_keeper" => run.companions.iter().any(|c| c.gen > 0),
+            id => feat_live(l, id),
+        })
+        .map(|n| n.id)
+        .collect();
+    for id in met {
+        game.lineage.tree.feats.insert(id.to_string());
+    }
 }
 
 /// Cut232 (`news`): the first unhired worker in the tree's order whose trigger is met and whose hire is not yet
@@ -630,6 +734,11 @@ fn count_chore(l: &mut LineageState, chore: &str) -> Option<&'static NodeDef> {
         return None;
     }
     *l.tree.done.entry(n.id.to_string()).or_insert(0) += 1;
+    // (Cut235: the chore's first time by hand sets what its feat must beat)
+    if n.feat().is_some() && !l.tree.feat_base.contains_key(n.id) {
+        let m = feat_measure(l, n.id);
+        l.tree.feat_base.insert(n.id.to_string(), m);
+    }
     Some(n)
 }
 
@@ -1091,6 +1200,14 @@ pub struct WorkNodeWire {
     pub perks: Vec<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub perk: Option<String>,
+    /// Cut235: an unhired worker's goal — `feat` (absent: `count`, its `count`/`need`), the feat's name (≤ 3 words) and
+    /// whether it is met (the node is then ready, offered at a quiet report).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub goal: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub feat: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub feat_done: Option<bool>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
@@ -1205,6 +1322,9 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
             };
             let p = price(l, n);
             let has_chore = !n.chore.is_empty();
+            // (Cut235: a feat worker's goal is its feat, never a count)
+            let feat = n.feat().filter(|_| has_chore);
+            let counts = has_chore && feat.is_none();
             WorkNodeWire {
                 id: n.id.into(),
                 kind: "worker".into(),
@@ -1212,8 +1332,8 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 name: n.name.into(),
                 state: state.into(),
                 chore: has_chore.then(|| if n.id == "porter" && l.town.auto_collect { "hauls".into() } else { n.chore.into() }),
-                count: has_chore.then(|| count(l, n.id)),
-                need: has_chore.then_some(n.need()),
+                count: counts.then(|| count(l, n.id)),
+                need: counts.then_some(n.need()),
                 price: has_chore.then_some(p),
                 affordable: has_chore.then_some(gold >= p),
                 fallback_h: (n.fallback_h() > 0).then_some(n.fallback_h()),
@@ -1227,10 +1347,13 @@ pub fn wire(l: &LineageState, waits: bool) -> WorksWire {
                 rank_wait_d: rank_wait(l, n),
                 bonus: done.then(|| rank_bonus_for(l, n.id, rank(l, n.id))).flatten(),
                 rank_adds: rank_wait(l, n).and_then(|_| rank_bonus_for(l, n.id, rank(l, n.id) + 1)),
-                progress: (!done && has_chore).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need())),
+                progress: (!done && counts).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need())),
                 eta_h: eta_h(l, n),
                 perks: if done { PERKS.iter().find(|(w, _)| *w == n.id).map(|(_, two)| two.iter().map(|p| p.to_string()).collect()).unwrap_or_default() } else { Vec::new() },
                 perk: (done && !perk(l, n.id).is_empty()).then(|| perk(l, n.id).to_string()),
+                goal: feat.map(|_| "feat".into()),
+                feat: feat.map(String::from),
+                feat_done: feat.map(|_| feat_done(l, n.id)),
             }
         })
         .collect();
@@ -1302,6 +1425,10 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
         return if l.gold >= p { pill("buy", Some(n.id), format!("{} {r} · ${p}", n.name), None, None) } else { pill("gold", Some(n.id), format!("{} {r} · ${}/${p}", n.name, l.gold.max(0)), Some(l.gold.max(0) as i64), Some(p as i64)) };
     }
     if let Some(n) = NODES.iter().find(|n| !hired(l, n.id) && !n.chore.is_empty() && chore_open(l, n)) {
+        // (Cut235: a feat worker's goal names its feat — no count, no bar)
+        if let Some(f) = n.feat() {
+            return pill("feat", Some(n.id), format!("{} · {f}", n.name), None, None);
+        }
         let c = count(l, n.id).min(n.need());
         return pill("count", Some(n.id), format!("{} · {c}/{}", n.name, n.need()), Some(c as i64), Some(n.need() as i64));
     }
@@ -1316,7 +1443,7 @@ pub fn next_pill(l: &LineageState, waits: bool) -> NextPill {
 pub fn posts(l: &LineageState) -> Vec<WorkerPost> {
     let mut v: Vec<WorkerPost> = NODES.iter().filter(|n| hired(l, n.id)).map(|n| WorkerPost { id: n.id.into(), post: n.post.into(), paused: l.tree.paused.contains(n.id), rank: rank(l, n.id), ..Default::default() }).collect();
     if let Some(n) = lit(l) {
-        let progress = (!n.chore.is_empty()).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need()));
+        let progress = (!n.chore.is_empty() && n.feat().is_none()).then(|| format!("{}/{}", count(l, n.id).min(n.need()), n.need()));
         v.push(WorkerPost { id: n.id.into(), post: n.post.into(), lit: true, price: Some(price(l, n)), paused: false, rank: 0, progress, fallback_h: (n.fallback_h() > 0).then_some(n.fallback_h()), eta_h: eta_h(l, n) });
     }
     v

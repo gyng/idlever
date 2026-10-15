@@ -197,7 +197,19 @@ try {
           etaText() === "",
         "time fallback words",
       );
-      // a later worker counting with a time fallback (the wire's shape: count/need/progress/eta_h on `next_worker`)
+      // Cut235: on the real wire a later worker's goal is a feat — its name, met or not, no count
+      const app0 = L1.tree.nodes.find((x) => x.id === "apprentice");
+      check(
+        app0.goal === "feat" &&
+          app0.feat === "forged boss kill" &&
+          app0.feat_done === false &&
+          app0.count === undefined &&
+          app0.need === undefined &&
+          app0.fallback_h > 0,
+        `real wire: the apprentice's feat (${JSON.stringify(app0)})`,
+      );
+      // a worker counting with a time fallback (the wire's shape: count/need/progress/eta_h on `next_worker`; a profile whose
+      // goal is `count`)
       const L = await a.engine.lineage();
       a.engine.lineage = async () => a.lineage;
       const fixture = (count, eta) => {
@@ -207,6 +219,9 @@ try {
             : x.id === "apprentice"
               ? {
                   ...x,
+                  goal: undefined,
+                  feat: undefined,
+                  feat_done: undefined,
                   state: count >= 3 ? "lit" : "open",
                   count,
                   need: 3,
@@ -276,6 +291,94 @@ try {
         !document.querySelector('.task-tracker [data-worker="apprentice"]') &&
           !document.querySelector(".next-pill .pill-eta"),
         "lit worker: no count line, its price on the pill",
+      );
+      // Cut235: a feat goal (the core's shape: goal/feat/feat_done, no count/need/progress) — the pill, the tracker and the
+      // works card name the feat with its quiet fallback and no bar; met, it wears a check; its hire flips it to the price
+      const feat = (state, done, eta) => {
+        const nodes = L.tree.nodes.map((x) =>
+          ["porter", "scout"].includes(x.id)
+            ? { ...x, state: "done", progress: undefined }
+            : x.id === "apprentice"
+              ? {
+                  ...x,
+                  state,
+                  count: undefined,
+                  need: undefined,
+                  progress: undefined,
+                  chore: "forge",
+                  goal: "feat",
+                  feat: "forged boss kill",
+                  feat_done: done,
+                  fallback_h: 30,
+                  ...(eta ? { eta_h: eta } : { eta_h: undefined }),
+                  trigger: undefined,
+                }
+              : x,
+        );
+        a.lineage = {
+          ...L,
+          live: undefined,
+          town: { ...L.town, home: true },
+          tree: {
+            ...L.tree,
+            nodes,
+            next_worker: "apprentice",
+            lit: state === "lit" ? "apprentice" : undefined,
+            lit_rank: undefined,
+            waits: false,
+            next:
+              state === "lit"
+                ? { kind: "buy", node: "apprentice", text: "apprentice · $30" }
+                : { kind: "feat", node: "apprentice", text: "apprentice · forged boss kill" },
+          },
+        };
+        a.go({ kind: "camp" });
+      };
+      feat("open", false, 20);
+      await new Promise((r) => setTimeout(r, 400));
+      const fp = document.querySelector(".next-pill");
+      check(
+        fp.querySelector(".pill-t").textContent === "apprentice · forged boss kill · or 20h" &&
+          !fp.querySelector(".pill-bar") &&
+          fp.dataset.kind === "feat" &&
+          fp.dataset.featDone === "false",
+        `feat pill: the feat, quiet fallback, no bar: ${fp.textContent}`,
+      );
+      const ft = document.querySelector('.task-tracker [data-worker="apprentice"]');
+      check(
+        ft?.querySelector(".task-obj")?.textContent === "forged boss kill · or 20h" &&
+          !ft.querySelector(".task-bar") &&
+          ft.dataset.featDone === "false",
+        `feat tracker line: ${ft?.textContent}`,
+      );
+      openWorks(a, "apprentice", fp);
+      await new Promise((r) => setTimeout(r, 200));
+      const fc = document.querySelector('.works-sheet .wnode.cur[data-node="apprentice"]');
+      check(
+        fc?.querySelector(".wn-state")?.textContent === "forged boss kill · or 20h" &&
+          !fc.querySelector(".wn-bar") &&
+          fc.dataset.featDone === "false",
+        `feat works card: ${fc?.querySelector(".wn-state")?.textContent}`,
+      );
+      closeAllSheets();
+      // met (ready, offered at the next quiet report): a check, no fallback
+      feat("ready", true);
+      await new Promise((r) => setTimeout(r, 300));
+      const fp2 = document.querySelector(".next-pill");
+      const ft2 = document.querySelector('.task-tracker [data-worker="apprentice"]');
+      check(
+        fp2.querySelector(".pill-t").textContent === "apprentice · ✓ forged boss kill" &&
+          fp2.dataset.featDone === "true" &&
+          ft2?.querySelector(".task-obj")?.textContent === "✓ forged boss kill",
+        `feat met: ${fp2.textContent} · ${ft2?.textContent}`,
+      );
+      // offered: the hire with its price, no feat line
+      feat("lit", true);
+      await new Promise((r) => setTimeout(r, 300));
+      check(
+        !document.querySelector('.task-tracker [data-worker="apprentice"]') &&
+          document.querySelector(".next-pill").dataset.kind === "buy",
+        "feat met and offered: the hire, its price on the pill",
       );
       check(document.documentElement.scrollWidth <= innerWidth, "no horizontal overflow");
       return n;

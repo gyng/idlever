@@ -63,6 +63,18 @@ pub struct Worker {
     pub need: u32,
     pub price_tenths: u32,
     pub fallback_h: u32,
+    /// Cut235 (docs/CUT235_FEATS.md): what lights it before the fallback — `count` (`need` chores by hand) or `feat`
+    /// (one real outcome of its chore done by hand, `tree::feat_name`). Absent in a profile from before: `count`.
+    #[serde(default)]
+    pub goal: Goal,
+}
+/// Cut235: a worker's hire goal.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum Goal {
+    #[default]
+    Count,
+    Feat,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -238,7 +250,11 @@ pub struct Monsters {
 }
 
 const fn w(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
-    Worker { need, price_tenths, fallback_h }
+    Worker { need, price_tenths, fallback_h, goal: Goal::Count }
+}
+/// Cut235: a worker lit by its feat (`need` stays for a save from before, whose count still lights it).
+const fn f(need: u32, price_tenths: u32, fallback_h: u32) -> Worker {
+    Worker { need, price_tenths, fallback_h, goal: Goal::Feat }
 }
 pub const DEFAULT: Balance = Balance {
     level_runs: [10, 40, 120, 200], scar_pct: 5, scar_cap: 30,
@@ -248,8 +264,8 @@ pub const DEFAULT: Balance = Balance {
     guarded_home: [30,25], guarded_dry: [45,44],
     recovery: [600, 14, 28, 1],
     workers: Workers {
-        quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(2, 4, 0), apprentice: w(3, 30, 30), clerk: w(3, 40, 36),
-        drillmaster: w(2, 4, 36), kennel_hand: w(2, 30, 40), herald: w(2, 20, 40), guide: w(3, 40, 44), kennel_keeper: w(2, 30, 48),
+        quartermaster: w(0, 0, 0), porter: w(3, 0, 0), scout: w(2, 4, 0), apprentice: f(3, 30, 30), clerk: f(3, 40, 36),
+        drillmaster: f(2, 4, 36), kennel_hand: f(2, 30, 40), herald: f(2, 20, 40), guide: f(3, 40, 44), kennel_keeper: f(2, 30, 48),
     },
     tree: TreeTune {
         reserve_units: 3, guide_gap: 4, rank_days: [4, 8, 12], rank_price_units: 1,
@@ -302,6 +318,8 @@ fn check_sections(b: &Balance) -> Result<(), &'static str> {
     let wk = &b.workers;
     if wk.all().iter().any(|n| n.need > 100 || n.price_tenths > 1000 || n.fallback_h > 24 * 365) { return Err("workers"); }
     if wk.all().iter().skip(1).any(|n| n.need == 0) || *wk.all()[0] != w(0, 0, 0) { return Err("workers: need ≥ 1 (the quartermaster is given)"); }
+    // (Cut235: the porter and the Scout teach the chore itself — their goal stays a count)
+    if [wk.porter, wk.scout].iter().any(|n| n.goal != Goal::Count) { return Err("workers: the porter and the scout count"); }
     let t = &b.tree;
     if !(0..=50).contains(&t.reserve_units) || !(1..=40).contains(&t.guide_gap) || t.rank_days[0] == 0 || !inc(&t.rank_days) || t.rank_days[2] > 365
         || !(0..=50).contains(&t.rank_price_units) || !(0..=50).contains(&t.porter_bonus_pct) || t.apprentice_off_pct > 30
@@ -379,5 +397,14 @@ mod tests {
         let mut d = DEFAULT;
         d.workers.drillmaster.price_tenths = 6;
         assert_eq!(parse(&serde_json::to_string(&d).unwrap()).unwrap(), d);
+        // Cut235: a worker's goal — `count` sweeps back in; the porter and the scout never take a feat; a profile
+        // without `goal` reads `count`
+        d.workers.apprentice.goal = Goal::Count;
+        assert_eq!(parse(&serde_json::to_string(&d).unwrap()).unwrap(), d);
+        let mut e = DEFAULT;
+        e.workers.scout.goal = Goal::Feat;
+        assert!(parse(&serde_json::to_string(&e).unwrap()).is_err());
+        assert!(parse(&text.replace("\"goal\": \"feat\"", "\"goal\": \"feats\"")).is_err());
+        assert_eq!(parse(&text.replace(", \"goal\": \"feat\"", "")).unwrap().workers.clerk.goal, Goal::Count);
     }
 }

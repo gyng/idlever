@@ -334,7 +334,8 @@ fn the_next_worker_shows_progress_and_eta() {
     g.lineage.clock_s = 10 * 3600;
     let w = tree::wire(&g.lineage, false);
     let a = w.nodes.iter().find(|n| n.id == "apprentice").unwrap();
-    assert_eq!(a.progress.as_deref(), Some("1/3"));
+    // (Cut235: the apprentice's goal is a feat — no count on the wire, its feat undone until a boss falls)
+    assert_eq!((a.progress.as_deref(), a.goal.as_deref(), a.feat.as_deref(), a.feat_done), (None, Some("feat"), Some("forged boss kill"), Some(false)));
     assert_eq!((a.fallback_h, a.eta_h), (Some(30), Some(20)));
     assert_eq!(w.next_worker.as_deref(), Some("apprentice"));
     let p = w.nodes.iter().find(|n| n.id == "porter").unwrap();
@@ -348,7 +349,7 @@ fn the_next_worker_shows_progress_and_eta() {
     assert_eq!(w.lit.as_deref(), Some("apprentice"));
     assert!(w.nodes.iter().find(|n| n.id == "apprentice").unwrap().eta_h.is_none());
     let post = tree::posts(&g.lineage).into_iter().find(|p| p.lit).unwrap();
-    assert_eq!((post.progress.as_deref(), post.fallback_h), (Some("1/3"), Some(30)));
+    assert_eq!((post.progress.as_deref(), post.fallback_h), (None, Some(30)));
 }
 
 /// §6 (coordinator, the client's 3-bloodline audit: `◆102` against a bloodline's spend of 54): the town's acts sum
