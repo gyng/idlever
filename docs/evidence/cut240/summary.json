@@ -1,0 +1,669 @@
+{
+  "status": "Scoped Canvas fix passes exposure/material/preference/clock/context-loss checks; see bounded diagnostic and review limits",
+  "runtime": {
+    "bytes": 6912832,
+    "sha256": "87de61e9fbf7c76e7db55f74867c8243e24f54074b6eed8089af3b05bd6cdbae"
+  },
+  "source": {
+    "web/src/render/view2d.ts": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+    "web/src/render/town.ts": "d4e9b95fe37545894e7c506e1b52c17ba8851f808e6ef4d30bfc25f36426fca1",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "660d2b5509ab3487e70e561d79b2f9677af0b028182f675682abef6088972179",
+    "web/src/render/town-volume.ts": "53c8b389d5f55dbdf8f06ef38f277062ceec7333e596a58e58f1549ef4ac47c0"
+  },
+  "sourceUnchangedSinceCapture": true,
+  "dungeonCanvasUnchanged": true,
+  "townGlSourceUnchanged": true,
+  "phaseRows": 16,
+  "pixelRows": [
+    {
+      "backend": "gl",
+      "width": 400,
+      "phase": "dawn",
+      "frame": 197,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 9,
+      "afterOverexposed": 0,
+      "beforeClipped": 691,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 400,
+      "phase": "noon",
+      "frame": 250,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 26,
+      "afterOverexposed": 0,
+      "beforeClipped": 20,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 400,
+      "phase": "dusk",
+      "frame": 299,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 10,
+      "afterOverexposed": 0,
+      "beforeClipped": 842,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 400,
+      "phase": "night",
+      "frame": 359,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 3665,
+      "afterOverexposed": 0,
+      "beforeClipped": 7292,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 1440,
+      "phase": "dawn",
+      "frame": 513,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 24,
+      "afterOverexposed": 0,
+      "beforeClipped": 1354,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 1440,
+      "phase": "noon",
+      "frame": 587,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 48,
+      "afterOverexposed": 0,
+      "beforeClipped": 32,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 1440,
+      "phase": "dusk",
+      "frame": 663,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 37,
+      "afterOverexposed": 0,
+      "beforeClipped": 1843,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 1440,
+      "phase": "night",
+      "frame": 748,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 5026,
+      "afterOverexposed": 0,
+      "beforeClipped": 10907,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 400,
+      "phase": "dawn",
+      "frame": 6,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 19,
+      "afterOverexposed": 0,
+      "beforeClipped": 869,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 400,
+      "phase": "noon",
+      "frame": 9,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 25,
+      "afterOverexposed": 0,
+      "beforeClipped": 10,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 400,
+      "phase": "dusk",
+      "frame": 12,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 6,
+      "afterOverexposed": 0,
+      "beforeClipped": 715,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 400,
+      "phase": "night",
+      "frame": 15,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 3861,
+      "afterOverexposed": 0,
+      "beforeClipped": 6810,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 1440,
+      "phase": "dawn",
+      "frame": 20,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 21,
+      "afterOverexposed": 0,
+      "beforeClipped": 1543,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 1440,
+      "phase": "noon",
+      "frame": 24,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 39,
+      "afterOverexposed": 0,
+      "beforeClipped": 29,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 1440,
+      "phase": "dusk",
+      "frame": 28,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 39,
+      "afterOverexposed": 0,
+      "beforeClipped": 1713,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 1440,
+      "phase": "night",
+      "frame": 32,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 6275,
+      "afterOverexposed": 0,
+      "beforeClipped": 11054,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    }
+  ],
+  "nightPixelRows": [
+    {
+      "backend": "gl",
+      "width": 400,
+      "phase": "night",
+      "frame": 359,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 3665,
+      "afterOverexposed": 0,
+      "beforeClipped": 7292,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "gl",
+      "width": 1440,
+      "phase": "night",
+      "frame": 748,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 5026,
+      "afterOverexposed": 0,
+      "beforeClipped": 10907,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 400,
+      "phase": "night",
+      "frame": 15,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 3861,
+      "afterOverexposed": 0,
+      "beforeClipped": 6810,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    },
+    {
+      "backend": "canvas",
+      "width": 1440,
+      "phase": "night",
+      "frame": 32,
+      "alphaChanges": 0,
+      "maxSourceExcess": 0,
+      "beforeOverexposed": 6275,
+      "afterOverexposed": 0,
+      "beforeClipped": 11054,
+      "afterClipped": 0,
+      "outsideChanged": 0
+    }
+  ],
+  "materials": {
+    "gl": {
+      "sourceSprite": {
+        "asset": "town_blacksmith_2",
+        "atlasRect": {
+          "x": 521,
+          "y": 1,
+          "w": 85,
+          "h": 64
+        },
+        "colours": [
+          [
+            21,
+            29,
+            48
+          ],
+          [
+            70,
+            59,
+            56
+          ]
+        ]
+      },
+      "rangeBefore": 10.914000000000001,
+      "rangeAfter": 29.195,
+      "rangeSource": 33.172999999999995,
+      "retainedRatio": 0.8800832001929282,
+      "orangeRgb": [
+        216,
+        138,
+        59
+      ]
+    },
+    "canvas": {
+      "sourceSprite": {
+        "asset": "town_blacksmith_2",
+        "atlasRect": {
+          "x": 515,
+          "y": 1,
+          "w": 85,
+          "h": 64
+        },
+        "colours": [
+          [
+            21,
+            29,
+            48
+          ],
+          [
+            70,
+            59,
+            56
+          ]
+        ]
+      },
+      "rangeBefore": 10.914000000000001,
+      "rangeAfter": 29.195,
+      "rangeSource": 33.172999999999995,
+      "retainedRatio": 0.8800832001929282,
+      "orangeRgb": [
+        216,
+        138,
+        59
+      ]
+    }
+  },
+  "preferenceRows": [
+    {
+      "backend": "gl",
+      "pref": "full",
+      "mode": "gl",
+      "night": 1
+    },
+    {
+      "backend": "gl",
+      "pref": "low",
+      "mode": "gl",
+      "night": 1
+    },
+    {
+      "backend": "gl",
+      "pref": "off",
+      "mode": "gl",
+      "night": 1
+    },
+    {
+      "backend": "gl",
+      "pref": "reduced",
+      "mode": "gl",
+      "night": 1
+    },
+    {
+      "backend": "canvas",
+      "pref": "full",
+      "mode": "2d",
+      "night": 1
+    },
+    {
+      "backend": "canvas",
+      "pref": "low",
+      "mode": "2d",
+      "night": 1
+    },
+    {
+      "backend": "canvas",
+      "pref": "off",
+      "mode": "2d",
+      "night": 1
+    },
+    {
+      "backend": "canvas",
+      "pref": "reduced",
+      "mode": "2d",
+      "night": 1
+    }
+  ],
+  "fade": [
+    {
+      "backend": "gl",
+      "samples": 13,
+      "observed": [
+        {
+          "sample": 5,
+          "fade": 0.2959999999999954,
+          "lightIntensity": 0.5984000000000039,
+          "expected": 0.5984000000000039,
+          "handDistance": 0.06389832344774504
+        },
+        {
+          "sample": 6,
+          "fade": 0.6479999999999961,
+          "lightIntensity": 0.2992000000000033,
+          "expected": 0.2992000000000033,
+          "handDistance": 0.13194916172372473
+        },
+        {
+          "sample": 7,
+          "fade": 0.9679999999999964,
+          "lightIntensity": 0.027200000000003045,
+          "expected": 0.027200000000003045,
+          "handDistance": 0.2607318943890675
+        }
+      ]
+    },
+    {
+      "backend": "canvas",
+      "samples": 11,
+      "observed": [
+        {
+          "sample": 3,
+          "fade": 0.08399999999999785,
+          "lightIntensity": 0.7786000000000018,
+          "expected": 0.7786000000000018,
+          "handDistance": 0.37522354402000246
+        },
+        {
+          "sample": 4,
+          "fade": 0.46599999999999664,
+          "lightIntensity": 0.45390000000000286,
+          "expected": 0.45390000000000286,
+          "handDistance": 0.29479326145545315
+        },
+        {
+          "sample": 5,
+          "fade": 0.8199999999999958,
+          "lightIntensity": 0.15300000000000352,
+          "expected": 0.15300000000000352,
+          "handDistance": 0.18377755231855986
+        }
+      ]
+    }
+  ],
+  "edge": {
+    "scope": "Diagnostic construction-arrival route, per-animation-frame capture; no gameplay purchase or earned-construction claim",
+    "samples": 242,
+    "backends": [
+      {
+        "backend": "gl",
+        "samples": 121,
+        "partiallyClippedActorFrames": [],
+        "fullyOutsideActiveActorObserved": false
+      },
+      {
+        "backend": "canvas",
+        "samples": 121,
+        "partiallyClippedActorFrames": [],
+        "fullyOutsideActiveActorObserved": false
+      }
+    ]
+  },
+  "visualReview": {
+    "rootAccepted": true,
+    "scope": "Restored painted detail and local warm lamps on phone Canvas, GL reference stays distinct",
+    "artifacts": [
+      "after/matched-night-400.jpg",
+      "after/matched-night-1440.jpg",
+      "after/canvas-review-sheet.jpg"
+    ]
+  },
+  "checks": {
+    "clock": "client-final-clock-ctxloss.log:36 PASS",
+    "ctxloss": "client-final-clock-ctxloss.log:19 PASS",
+    "typescript": "tsc-final.log:exit0",
+    "format": "format-final.log:PASS",
+    "lint": "lint-final.log:exit0"
+  },
+  "limits": [
+    "No FPS, GPU execution or quiet frame-cost claim.",
+    "Diagnostic false->true presentation scene transition is not earned construction and may refit/repaint terrain during setup; no simulation mutation.",
+    "Whole landscape relief, broad art recognition and complete retained lighting/hand-off acceptance remain outside this scoped repair.",
+    "Four wall-clock phases plus existing local-clock/resume tests are not a continuous dawn/dusk movie.",
+    "The242-frame arrival probe did not observe resident edge clipping; residents are contained. Separate diagnostic camera proof covers the earned smith NPC, not a natural resident edge walk."
+  ],
+  "edgeCamera": {
+    "status": "Proven at diagnostic scope",
+    "scope": "Actual earned smith carrier; test-only camera positions after normal fit, no production camera or resident containment change",
+    "rows": [
+      {
+        "backend": "gl",
+        "state": "visible",
+        "view": [
+          60,
+          91,
+          320,
+          380
+        ],
+        "smith": [
+          {
+            "asset": "town_smith",
+            "x": 352,
+            "y": 261,
+            "w": 14,
+            "h": 23,
+            "flip": false,
+            "fade": 0
+          }
+        ],
+        "ownLights": [
+          {
+            "x": 358,
+            "y": 252.60000000000002,
+            "r": 23,
+            "c": [
+              0.85,
+              0.544,
+              0.255
+            ]
+          }
+        ],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      },
+      {
+        "backend": "gl",
+        "state": "clipped",
+        "view": [
+          32,
+          91,
+          320,
+          380
+        ],
+        "smith": [
+          {
+            "asset": "town_smith",
+            "x": 352,
+            "y": 262,
+            "w": 14,
+            "h": 23,
+            "flip": false,
+            "fade": 0
+          }
+        ],
+        "ownLights": [
+          {
+            "x": 358,
+            "y": 253.60000000000002,
+            "r": 23,
+            "c": [
+              0.85,
+              0.544,
+              0.255
+            ]
+          }
+        ],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      },
+      {
+        "backend": "gl",
+        "state": "outside",
+        "view": [
+          -10,
+          91,
+          320,
+          380
+        ],
+        "smith": [],
+        "ownLights": [],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      },
+      {
+        "backend": "canvas",
+        "state": "visible",
+        "view": [
+          60,
+          91,
+          320,
+          380
+        ],
+        "smith": [
+          {
+            "asset": "town_smith",
+            "x": 352,
+            "y": 262,
+            "w": 14,
+            "h": 23,
+            "flip": false,
+            "fade": 0
+          }
+        ],
+        "ownLights": [
+          {
+            "x": 358,
+            "y": 253.60000000000002,
+            "r": 23,
+            "c": [
+              0.85,
+              0.544,
+              0.255
+            ]
+          }
+        ],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      },
+      {
+        "backend": "canvas",
+        "state": "clipped",
+        "view": [
+          32,
+          91,
+          320,
+          380
+        ],
+        "smith": [
+          {
+            "asset": "town_smith",
+            "x": 352,
+            "y": 262,
+            "w": 14,
+            "h": 23,
+            "flip": false,
+            "fade": 0
+          }
+        ],
+        "ownLights": [
+          {
+            "x": 358,
+            "y": 253.60000000000002,
+            "r": 23,
+            "c": [
+              0.85,
+              0.544,
+              0.255
+            ]
+          }
+        ],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      },
+      {
+        "backend": "canvas",
+        "state": "outside",
+        "view": [
+          -10,
+          91,
+          320,
+          380
+        ],
+        "smith": [],
+        "ownLights": [],
+        "exactSave": true,
+        "noTerrainRepaint": true
+      }
+    ]
+  }
+}

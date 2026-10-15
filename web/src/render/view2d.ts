@@ -401,8 +401,9 @@ export class View2D {
 import type { TownFrame, Quad } from "./town";
 const byZ = (a: Quad, b: Quad): number => a.z - b.z || a.y - b.y;
 let townSorted: Quad[] = [];
-/** Draws a town frame (`render/town.ts`): the ground, the sprites by depth, then the light — the ambient multiplied over the scene
- *  and each light's pool added (the GL view's light pass, without its dither bands). `atlas`: the town's own sprite sheet. */
+let townLight: HTMLCanvasElement | null = null;
+/** Draws the same town frame as GL. Local light multiplies painted materials through a bounded mask, preserving ink and texture.
+ *  The fallback has no mapped relief or dither bands. `atlas`: the town's own sprite sheet. */
 export function drawTown2D(c: HTMLCanvasElement, F: TownFrame, atlas: HTMLCanvasElement): void {
   if (c.width !== F.W || c.height !== F.H) {
     c.width = F.W;
@@ -439,24 +440,45 @@ export function drawTown2D(c: HTMLCanvasElement, F: TownFrame, atlas: HTMLCanvas
   for (const q of townSorted) draw(q);
   townSorted = townSorted.slice(0, 0);
   g.globalAlpha = 1;
-  const [r, gg, b] = F.amb;
-  if (r < 0.99 || gg < 0.99 || b < 0.99) {
-    g.globalCompositeOperation = "multiply";
-    g.fillStyle = `rgb(${Math.round(Math.min(1, r) * 255)},${Math.round(Math.min(1, gg) * 255)},${Math.round(Math.min(1, b) * 255)})`;
-    g.fillRect(0, 0, F.W, F.H);
+  townLight ??= document.createElement("canvas");
+  if (townLight.width !== F.W || townLight.height !== F.H) {
+    townLight.width = F.W;
+    townLight.height = F.H;
   }
-  g.globalCompositeOperation = "lighter";
+  const light = townLight.getContext("2d")!;
+  light.globalCompositeOperation = "source-over";
+  light.fillStyle = `rgb(${F.amb.map((v) => Math.round(Math.min(1, v) * 255)).join(",")})`;
+  light.fillRect(0, 0, F.W, F.H);
+  // Add illumination to its mask, never to the painted image. Overlapping pools can restore
+  // a material to its original colour but cannot turn its ink/cloth/stone into a white halo.
+  light.globalCompositeOperation = "lighter";
   for (const l of F.lights) {
     const x = (l.x - F.x0) * k,
       y = (l.y - F.y0) * k,
       rr = l.r * k;
-    const grad = g.createRadialGradient(x, y, 0, x, y, rr);
+    light.save();
+    light.translate(x, y);
+    light.scale(1, 0.8);
+    const grad = light.createRadialGradient(0, 0, 0, 0, 0, rr);
     const col = (a: number): string =>
-      `rgba(${Math.round(Math.min(1, l.c[0]) * 255)},${Math.round(Math.min(1, l.c[1]) * 255)},${Math.round(Math.min(1, l.c[2]) * 255)},${a})`;
-    grad.addColorStop(0, col(0.32 + 0.3 * F.night));
+      `rgba(${l.c.map((v) => Math.round(Math.min(1, v) * 255)).join(",")},${a})`;
+    grad.addColorStop(0, col(1));
+    grad.addColorStop(0.25, col(0.5625));
+    grad.addColorStop(0.5, col(0.25));
+    grad.addColorStop(0.75, col(0.0625));
     grad.addColorStop(1, col(0));
-    g.fillStyle = grad;
-    g.fillRect(x - rr, y - rr, rr * 2, rr * 2);
+    light.fillStyle = grad;
+    light.fillRect(-rr, -rr, rr * 2, rr * 2);
+    light.restore();
   }
+  // Keep overlapping night pools warm: clipping the mask's channels independently to white
+  // would neutralise the orange lantern colour. Ambient-only pixels remain below these caps.
+  light.globalCompositeOperation = "darken";
+  light.fillStyle = `rgb(${[0, 0.18, 0.42]
+    .map((loss, i) => Math.round(Math.max(F.amb[i]!, 1 - F.night * loss) * 255))
+    .join(",")})`;
+  light.fillRect(0, 0, F.W, F.H);
+  g.globalCompositeOperation = "multiply";
+  g.drawImage(townLight, 0, 0);
   g.globalCompositeOperation = "source-over";
 }

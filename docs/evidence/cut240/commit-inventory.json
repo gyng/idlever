@@ -1,0 +1,2712 @@
+{
+  "version": 1,
+  "scope": "Canvas town lighting repair only; no other cuts, HANDOFF/ledger root edits, tooling or art staged.",
+  "committed_paths": [
+    "docs/CUT240_CANVAS_LIGHTING.md",
+    "docs/evidence/cut240/README.md",
+    "docs/evidence/cut240/after/canvas-1440-night-same-frame-after.png",
+    "docs/evidence/cut240/after/canvas-1440-night-same-frame-ambient.png",
+    "docs/evidence/cut240/after/canvas-1440-night-same-frame-before.png",
+    "docs/evidence/cut240/after/canvas-1440-night-same-frame-unlit.png",
+    "docs/evidence/cut240/after/canvas-1440-night.png",
+    "docs/evidence/cut240/after/canvas-400-night-same-frame-after.png",
+    "docs/evidence/cut240/after/canvas-400-night-same-frame-ambient.png",
+    "docs/evidence/cut240/after/canvas-400-night-same-frame-before.png",
+    "docs/evidence/cut240/after/canvas-400-night-same-frame-unlit.png",
+    "docs/evidence/cut240/after/canvas-400-night.png",
+    "docs/evidence/cut240/after/canvas-review-sheet.jpg",
+    "docs/evidence/cut240/after/gl-1440-night.png",
+    "docs/evidence/cut240/after/gl-400-night.png",
+    "docs/evidence/cut240/after/matched-night-1440.jpg",
+    "docs/evidence/cut240/after/matched-night-400.jpg",
+    "docs/evidence/cut240/after/prepared-gl.session.json.gz",
+    "docs/evidence/cut240/after/results.json.gz",
+    "docs/evidence/cut240/analyze.mjs",
+    "docs/evidence/cut240/before/town.ts.gz",
+    "docs/evidence/cut240/before/view2d.ts.gz",
+    "docs/evidence/cut240/camera-events-first/camera-events.log",
+    "docs/evidence/cut240/camera-events-first/results.json.gz",
+    "docs/evidence/cut240/camera-events.log",
+    "docs/evidence/cut240/camera-events.mjs",
+    "docs/evidence/cut240/camera-events/canvas-camera-clipped.png",
+    "docs/evidence/cut240/camera-events/canvas-camera-outside.png",
+    "docs/evidence/cut240/camera-events/canvas-camera-visible.png",
+    "docs/evidence/cut240/camera-events/gl-camera-clipped.png",
+    "docs/evidence/cut240/camera-events/gl-camera-outside.png",
+    "docs/evidence/cut240/camera-events/gl-camera-visible.png",
+    "docs/evidence/cut240/camera-events/results.json.gz",
+    "docs/evidence/cut240/camera-events/review-sheet.jpg",
+    "docs/evidence/cut240/candidate-first/results.json.gz",
+    "docs/evidence/cut240/candidate-first/view2d.ts.gz",
+    "docs/evidence/cut240/client-final-clock-ctxloss.log",
+    "docs/evidence/cut240/commit-inventory.json",
+    "docs/evidence/cut240/curate.py",
+    "docs/evidence/cut240/diagnostics-first/diagnostics.log",
+    "docs/evidence/cut240/diagnostics-first/results.json.gz",
+    "docs/evidence/cut240/diagnostics-partial-events/results.json.gz",
+    "docs/evidence/cut240/diagnostics.log",
+    "docs/evidence/cut240/diagnostics.mjs",
+    "docs/evidence/cut240/diagnostics/canvas-diagnostic-walk-in-0.png",
+    "docs/evidence/cut240/diagnostics/canvas-diagnostic-walk-in-8.png",
+    "docs/evidence/cut240/diagnostics/canvas-material-after.png",
+    "docs/evidence/cut240/diagnostics/canvas-material-before.png",
+    "docs/evidence/cut240/diagnostics/canvas-material-source.png",
+    "docs/evidence/cut240/diagnostics/gl-diagnostic-walk-in-0.png",
+    "docs/evidence/cut240/diagnostics/gl-diagnostic-walk-in-8.png",
+    "docs/evidence/cut240/diagnostics/gl-material-after.png",
+    "docs/evidence/cut240/diagnostics/gl-material-before.png",
+    "docs/evidence/cut240/diagnostics/gl-material-source.png",
+    "docs/evidence/cut240/diagnostics/preferences-review.jpg",
+    "docs/evidence/cut240/diagnostics/results.json.gz",
+    "docs/evidence/cut240/edge-events.log",
+    "docs/evidence/cut240/edge-events.mjs",
+    "docs/evidence/cut240/edge-events/results.json.gz",
+    "docs/evidence/cut240/format-final.log",
+    "docs/evidence/cut240/gzip-reader-check.log",
+    "docs/evidence/cut240/lint-final.log",
+    "docs/evidence/cut240/probe.js",
+    "docs/evidence/cut240/review.log",
+    "docs/evidence/cut240/review.mjs",
+    "docs/evidence/cut240/summary.json",
+    "docs/evidence/cut240/tsc-final.log",
+    "web/src/render/view2d.ts"
+  ],
+  "committed_payload_bytes_excluding_manifest": 12177939,
+  "retained_local_payload_bytes": 137106747,
+  "self_note": "This manifest excludes its own digest; git records its exact bytes. All other local Cut240 files present at curation are inventoried.",
+  "records": "Lossless gzip copies preserve exact raw bytes; readers accept plain path or .gz sibling. Original uncompressed files remain local.",
+  "image_scope": "Original matched Canvas night before/after/unlit/ambient buffers at400/1440 and GL reference scenes are committed. Other phase/candidate/server-image duplicates remain local with SHA inventory; raw numeric metrics for all16phase comparisons are committed.",
+  "files": [
+    {
+      "path": "docs/CUT240_CANVAS_LIGHTING.md",
+      "bytes": 5862,
+      "sha256": "415f4bdbce9fca48cc20366b12ea470bea49d5a6e49e4298f9ff6b3580c97805",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/README.md",
+      "bytes": 7860,
+      "sha256": "302c5fcc7718fd50426ac64fbf4e8d3921ef6ffe36f917d8d2a0bb27000be222",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dawn-same-frame-after.png",
+      "bytes": 616743,
+      "sha256": "7903297cd8cb83be7d63545bc6d1d7c7330f3943bf61461f08ff8f460603c458",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dawn-same-frame-ambient.png",
+      "bytes": 578207,
+      "sha256": "881e3e55ce0d7f7b946453b7ebe79d0feb505115ecd2c4f8cca9cf1bddd5c8cd",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dawn-same-frame-before.png",
+      "bytes": 659104,
+      "sha256": "fc0fb136bea8e38e81833d983e0451027d309de646908ac152085858d04c47db",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dawn-same-frame-unlit.png",
+      "bytes": 610553,
+      "sha256": "2f385b7c9af93857bd5e7dd91ab3efa51c2c3e7774b063a68e3c3fdf71332b1f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dawn.png",
+      "bytes": 1184574,
+      "sha256": "752ad659a2cba6cd4098fc1cddfa1e17edf9c300829a03523189568b730b8d23",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dusk-same-frame-after.png",
+      "bytes": 616994,
+      "sha256": "6d4abd9c61bf8cb0b2349fccb8d3dbca14b31bad6fa9c44afb1d5cd3a33d0321",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dusk-same-frame-ambient.png",
+      "bytes": 578033,
+      "sha256": "7d53c24685552e0665626a45a8deaf8778be92a6aec93d2a815276688a219cdc",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dusk-same-frame-before.png",
+      "bytes": 660943,
+      "sha256": "65fe29f7c2bac358ecd21dad64ec3991927f655c8d3e2ff4366ecf8b44bdd6f8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dusk-same-frame-unlit.png",
+      "bytes": 610370,
+      "sha256": "4b9e2e8bc792adffc54954253b0160ee5274da56885b9f788866e6777a872a28",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-dusk.png",
+      "bytes": 1184798,
+      "sha256": "6371365bb484f1d0c0cc5cb464c70d33fefe8161022ac1869414b9e0679812ab",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-night-same-frame-after.png",
+      "bytes": 574804,
+      "sha256": "d8f59ee0cba3e14571f8b3a8525a6ec8b500ec610e38f63cd92e21cb168b4e9a",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-night-same-frame-ambient.png",
+      "bytes": 521933,
+      "sha256": "1cf032efddf69ff6bf4c71a9af8e897a6045206afaf868be6d804863279e76df",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-night-same-frame-before.png",
+      "bytes": 622175,
+      "sha256": "d2db632ce8390ecd086c0026e3ebbcfd45e84329bff68ad45a02b3138eb990d4",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-night-same-frame-unlit.png",
+      "bytes": 608911,
+      "sha256": "9ab6daaeb80323f3e8269460db93625d8563f1dead32660749fb299dc7b325e5",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-night.png",
+      "bytes": 1121324,
+      "sha256": "910e6c7fa76d3ae1f23dae155ec5aa848e87c71df8e15172ec9de93df1514594",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-noon-same-frame-after.png",
+      "bytes": 610681,
+      "sha256": "255caf25cee36a735c47e3a33e4ec38c26d3fa80392181531cafd13333e291c3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-noon-same-frame-ambient.png",
+      "bytes": 610681,
+      "sha256": "255caf25cee36a735c47e3a33e4ec38c26d3fa80392181531cafd13333e291c3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-noon-same-frame-before.png",
+      "bytes": 643991,
+      "sha256": "80baa53f099e6e3d987e2259dcddf38ee0ff9e5e6869f620efc30808b475719c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-noon-same-frame-unlit.png",
+      "bytes": 610681,
+      "sha256": "255caf25cee36a735c47e3a33e4ec38c26d3fa80392181531cafd13333e291c3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-1440-noon.png",
+      "bytes": 1230882,
+      "sha256": "5323f64806ce9f52ae0cecfb0d63c9588aa24576ef00ac17563bfbf6db5b6104",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dawn-same-frame-after.png",
+      "bytes": 338544,
+      "sha256": "d1719aa633cc13912b8d62f51357eb9fd30e401033c424db60ed2933b936339e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dawn-same-frame-ambient.png",
+      "bytes": 323387,
+      "sha256": "dd2c38a0ffed48bd6af42388a52b415dab740888e75c3fa8bbfee9730fe3e993",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dawn-same-frame-before.png",
+      "bytes": 352228,
+      "sha256": "05b0d98e768df7ab67d57744bc5c4b6630ca6607ffbf7697e7cda331056dfdae",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dawn-same-frame-unlit.png",
+      "bytes": 343325,
+      "sha256": "c67b303aab1e13f039443e1b94a81637c580d30c0f2d18f0534047393688050d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dawn.png",
+      "bytes": 473203,
+      "sha256": "4194ae805fffc69237a4421e8a7ac75aff0dd235e497c2e08b67919664db03d8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dusk-same-frame-after.png",
+      "bytes": 338139,
+      "sha256": "dcd2c93c738bbe4b030b1fdac045bf3b7613a5a87caccda81641df96ce060eae",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dusk-same-frame-ambient.png",
+      "bytes": 323304,
+      "sha256": "af7d26343a0c70a39f4e7eeb76166f8d5d2ebf53a9f10779d78c27cf63dbff27",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dusk-same-frame-before.png",
+      "bytes": 351131,
+      "sha256": "6ae279ae7f15c439c26f4584d72b9c301667169f9fed7fcde317fd9a679513da",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dusk-same-frame-unlit.png",
+      "bytes": 343264,
+      "sha256": "38c06217502fa670bcb88870d6d1addc70bbc87b068d719195651fc2d789fa4c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-dusk.png",
+      "bytes": 475448,
+      "sha256": "0db981cd6ff0ead1b283137301d1bae375bfcff98613571a8a285f3653683c1a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-night-same-frame-after.png",
+      "bytes": 312179,
+      "sha256": "191edae6b156ee1118b80abd2dfc592b878e0ff581ef703ea24a2ffde3e11fdc",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287204,
+      "sha256": "d35d8e1914a08f4a1421487261ba3ba07335bdd23077b4c2b8af38cefb1868af",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-night-same-frame-before.png",
+      "bytes": 326695,
+      "sha256": "791f12a37dc87a45a67c6b45b2fa41f2c74d9d584df6198051c5c87fc0145198",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342446,
+      "sha256": "20b28c429e68cb0d2a342515c81d30d1fe914dcf1dbaaaee55d9be1310b503f0",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-night.png",
+      "bytes": 448542,
+      "sha256": "5afc653e55160be0bb845bcf97e96a21f581b5c6d53ff6ef09395787211c6764",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-noon-same-frame-after.png",
+      "bytes": 342961,
+      "sha256": "fd56b17bc88510615dd28fa920d61192fe608382b86087c1dfb714a13cfb9f96",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-noon-same-frame-ambient.png",
+      "bytes": 342961,
+      "sha256": "fd56b17bc88510615dd28fa920d61192fe608382b86087c1dfb714a13cfb9f96",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-noon-same-frame-before.png",
+      "bytes": 354057,
+      "sha256": "814f999fa31b53aa2e868c7cea3c28f01f4f17585615a35bc5e5e632a5b36d8c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-noon-same-frame-unlit.png",
+      "bytes": 342961,
+      "sha256": "fd56b17bc88510615dd28fa920d61192fe608382b86087c1dfb714a13cfb9f96",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-400-noon.png",
+      "bytes": 491912,
+      "sha256": "4f395ba611f5551cbd1593a7573761916f5c52d61b3263842c749a8abdb489c3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/canvas-review-sheet.jpg",
+      "bytes": 169900,
+      "sha256": "d3894fbdf20198196dbc5b7ca46683ac27910c363cfe00624c3f68c3a0aae9e4",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dawn-same-frame-after.png",
+      "bytes": 614893,
+      "sha256": "30c4e09b569197c970eb4138b4479afe7aaf4fdc5f4ca6b4ebb01539c6a01786",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dawn-same-frame-ambient.png",
+      "bytes": 577607,
+      "sha256": "3be8e1114b943830188838778c41af8db08087e8236b9a2da219ee08f6ba03cd",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dawn-same-frame-before.png",
+      "bytes": 653456,
+      "sha256": "8765358327f9d362ab1fbe2bfe2dec1ac489d3e67f98ae7f6b8ee91c9423ec1e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dawn-same-frame-unlit.png",
+      "bytes": 610092,
+      "sha256": "d8b7c8e268560dd79544b56d74797235bd50d98e01e6fb003c0d98b7e97bfaf7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dawn.png",
+      "bytes": 1187646,
+      "sha256": "4e058ba166ee7933b6f75a1697385c00ce958ef4cc942bf56b0b4ef5fe3294d5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dusk-same-frame-after.png",
+      "bytes": 617544,
+      "sha256": "e9a8ba5ce8bce7e14cf078c6a90dd7814c8b53427d8b22fd1fbd617471cd538c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dusk-same-frame-ambient.png",
+      "bytes": 578431,
+      "sha256": "28d268d82e47a5ecce53a9a9fe692660ec92ebd61bd9d31c0f331bb4841c71da",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dusk-same-frame-before.png",
+      "bytes": 658534,
+      "sha256": "2b9e009a981744791a864d1f524c6887b1abff50067e017aca9264885945198b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dusk-same-frame-unlit.png",
+      "bytes": 610764,
+      "sha256": "749fdfa9e6be4bfeff92b5f4783ad5da1f0cd8b639380ff120f2e7e70ead407c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-dusk.png",
+      "bytes": 1187663,
+      "sha256": "afa4e3e81883a95812f52e80dba0cda5b54929121fb6325d2f80f194a384230a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-night-same-frame-after.png",
+      "bytes": 574482,
+      "sha256": "4d880ac6f9ca6b3e4765679b022e89be3a283bc298bcec233c77acb0a738ffe8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-night-same-frame-ambient.png",
+      "bytes": 521852,
+      "sha256": "193221b3e1d490b6c72a3e4e4443414df8f483f2acb349a4f6993f1279b23172",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-night-same-frame-before.png",
+      "bytes": 622253,
+      "sha256": "67bda7143de2fc76de6a9ca9a63a843979d10b0d71e282705f9132c87150131e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-night-same-frame-unlit.png",
+      "bytes": 608861,
+      "sha256": "f33f705e4226549bce76e522553684aeed9391bc41237bb9011b9949829cc015",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-night.png",
+      "bytes": 1135513,
+      "sha256": "09cc660658c9f2342f819fd0b76fbae3c2cc770ce0a265166f0099785ad88182",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-noon-same-frame-after.png",
+      "bytes": 610402,
+      "sha256": "5c693f7c78dd5fbabe6f057a6e9bd73dea9dba5a41e34b9f262d068153e558ce",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-noon-same-frame-ambient.png",
+      "bytes": 610402,
+      "sha256": "5c693f7c78dd5fbabe6f057a6e9bd73dea9dba5a41e34b9f262d068153e558ce",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-noon-same-frame-before.png",
+      "bytes": 644128,
+      "sha256": "76d29c45869391cfc27546b1f44848dd9933d0700737f2cc045277a0f3485b17",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-noon-same-frame-unlit.png",
+      "bytes": 610402,
+      "sha256": "5c693f7c78dd5fbabe6f057a6e9bd73dea9dba5a41e34b9f262d068153e558ce",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-1440-noon.png",
+      "bytes": 1260797,
+      "sha256": "4c4c10fdd2cb249871e371de6a8be36a9cd0546e657d9260feddb3e114a3e361",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dawn-same-frame-after.png",
+      "bytes": 337551,
+      "sha256": "b446b8b1431469d1f711ec66ac48fd018598057b674de16f3d9e2dd3bfeae6bd",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dawn-same-frame-ambient.png",
+      "bytes": 323888,
+      "sha256": "f1c8daff40ed9e02d4973a4c332a6479761002dbdab018fd97963fbf5040ec0d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dawn-same-frame-before.png",
+      "bytes": 350067,
+      "sha256": "0418dbe4640f5a3f4f387a1b337eebc495969c543bfc6a519b74d0962be24ec6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dawn-same-frame-unlit.png",
+      "bytes": 343723,
+      "sha256": "0bd406504b2e9bda426cd875a2ea5527b13b6935231ffa8485949e9f0532074d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dawn.png",
+      "bytes": 479691,
+      "sha256": "0f7da50ca773eed6e91cf2fd36cbace2b561ee75d2327d562ec113b515dfe695",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dusk-same-frame-after.png",
+      "bytes": 338935,
+      "sha256": "3ae0fb76c08af91f6995dd26b76d2516f1f1d4b7711069b5a3b670b84ff3b1ea",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dusk-same-frame-ambient.png",
+      "bytes": 324051,
+      "sha256": "847ab63510683e53dd93dc39fa89730b2a83dbcfe310e15892a6ad4ec1cb246f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dusk-same-frame-before.png",
+      "bytes": 352775,
+      "sha256": "8998f5745da22e5aeb98f7a458afbab4f463887c44a85504ae3ac42d8167e2cc",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dusk-same-frame-unlit.png",
+      "bytes": 344053,
+      "sha256": "14ed5ae7714165b558e0f5d092c9072f21fc0f6272e8cd3823aa3cd8f1e3d04b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-dusk.png",
+      "bytes": 478640,
+      "sha256": "4d521fe64279f500519a2d1e812f174a78de7a17fc857996575455537d341c00",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-night-same-frame-after.png",
+      "bytes": 312073,
+      "sha256": "1391d101f1de42016437267b4019de04f36e3de90ea737336e13aa0da4b91f14",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-night-same-frame-ambient.png",
+      "bytes": 287610,
+      "sha256": "e4161014fce372ea7513637112240f58f7dee46b56db98acae95211fec28d0fb",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-night-same-frame-before.png",
+      "bytes": 325704,
+      "sha256": "d2fb3dabff6e9079ea8b2f9a6a1cfff55bf83922c951ef13f8ea4955ac746b2a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-night-same-frame-unlit.png",
+      "bytes": 342894,
+      "sha256": "e013144e93499fd12469b155c94d820ab6234fe6cb2ffa5973ce540fb7e5dbf4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-night.png",
+      "bytes": 462886,
+      "sha256": "80f51a4c843daac9f8c96aba0f4dc2e446ad83c973ff1b4b1254cedf3d5d71a8",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-noon-same-frame-after.png",
+      "bytes": 343837,
+      "sha256": "d22332da4ce9e044337925bf8dfa97f44f76425d151eb520fb1d8cf0c09b1cc7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-noon-same-frame-ambient.png",
+      "bytes": 343837,
+      "sha256": "d22332da4ce9e044337925bf8dfa97f44f76425d151eb520fb1d8cf0c09b1cc7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-noon-same-frame-before.png",
+      "bytes": 354881,
+      "sha256": "883fd533a2d135075394521e5c820d142a7d838c7cb28e20c0d35015c11082b6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-noon-same-frame-unlit.png",
+      "bytes": 343837,
+      "sha256": "d22332da4ce9e044337925bf8dfa97f44f76425d151eb520fb1d8cf0c09b1cc7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/gl-400-noon.png",
+      "bytes": 511224,
+      "sha256": "bcd60d2416fbb1faace32a801cd08a6bec31a6d17828681aa390653bc8077d82",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/matched-night-1440.jpg",
+      "bytes": 53274,
+      "sha256": "58d67353a602ee2cfac00c8f5d069a67a9db9e07d648a2b4f36b327e3948188c",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/matched-night-400.jpg",
+      "bytes": 88563,
+      "sha256": "23ba9fab4035de418da853988cf430e37a2d216123235ea2cdebc261606c5136",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/after/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/prepared-gl.session.json.gz",
+      "bytes": 56123,
+      "sha256": "4e9da009916a0758669aae335e9991cdd8f1f0bcb4fe084dd28ca9eaefcb110c",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 461787,
+      "uncompressed_sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486"
+    },
+    {
+      "path": "docs/evidence/cut240/after/results.json",
+      "bytes": 215153,
+      "sha256": "8ce2b79a8d7ff89f63e14a036bfdd3876b37d379e9479658f79eb0d2168a964a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/results.json.gz",
+      "bytes": 22418,
+      "sha256": "eb370df4201317e193f42cc53d3a920a64e90d143483d9757751644bafcee94b",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 215153,
+      "uncompressed_sha256": "8ce2b79a8d7ff89f63e14a036bfdd3876b37d379e9479658f79eb0d2168a964a"
+    },
+    {
+      "path": "docs/evidence/cut240/after/served-town-canvas.js",
+      "bytes": 414495,
+      "sha256": "61210eaefac663388a2484ccc08ca3750b3dc4ebe21802451f7254048afdbad9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/served-town-gl.js",
+      "bytes": 414495,
+      "sha256": "61210eaefac663388a2484ccc08ca3750b3dc4ebe21802451f7254048afdbad9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/after/vite.log",
+      "bytes": 1973,
+      "sha256": "0c8e05a3c936a5e14e043a661bdc42046e27cc450bc9eac7e2fd76ade4d25fdf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/analyze.mjs",
+      "bytes": 6091,
+      "sha256": "8195f16bfa086702afb78bdafe78fa4de5af46d1cecb4832fcdc330b05792f80",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/before/town.ts",
+      "bytes": 135632,
+      "sha256": "d4e9b95fe37545894e7c506e1b52c17ba8851f808e6ef4d30bfc25f36426fca1",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/before/town.ts.gz",
+      "bytes": 41815,
+      "sha256": "a97c14ca6aeb293277102c65f7e667106e348c24c623a3cf4a1ce76bcec36e8f",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 135632,
+      "uncompressed_sha256": "d4e9b95fe37545894e7c506e1b52c17ba8851f808e6ef4d30bfc25f36426fca1"
+    },
+    {
+      "path": "docs/evidence/cut240/before/view2d.ts",
+      "bytes": 17155,
+      "sha256": "588ac6766e257f12f3ceb8bfad22e7fe8568165733a7e45a24603376b0f6461e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/before/view2d.ts.gz",
+      "bytes": 5916,
+      "sha256": "63df360677f35ac0df2a4f50c52192e64013c6e0ae8b5487f7e97129a18ad135",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 17155,
+      "uncompressed_sha256": "588ac6766e257f12f3ceb8bfad22e7fe8568165733a7e45a24603376b0f6461e"
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/camera-events.log",
+      "bytes": 372,
+      "sha256": "8acc4ba4a70c95ca615954c3c365ddba9b94015078f671d820ad1a672dbfc169",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-400-night-same-frame-after.png",
+      "bytes": 312883,
+      "sha256": "0c62d7b65733c35c2e2cec77503109678b205648a201284e92b8570532387fa2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-400-night-same-frame-ambient.png",
+      "bytes": 287764,
+      "sha256": "040eedd3fd1dc0eb0217dad0d82929c5127e56bba9060e9c8a0525ea98bd7741",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-400-night-same-frame-before.png",
+      "bytes": 327700,
+      "sha256": "5d81b00a31b71c52d0e362566b84037b17c88cc8112aeaf6f4ccf8c0e60430c2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-400-night-same-frame-unlit.png",
+      "bytes": 343094,
+      "sha256": "a8e09298ddba1b189a141e0958a592db2df0b0b9762de4929bd8840d6dbb5ce5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-400-night.png",
+      "bytes": 459728,
+      "sha256": "90091ed900d8fe216ffc1112c4b40d116c0d8eaff4313ec881a863c3f4d91171",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-camera-clipped.png",
+      "bytes": 465911,
+      "sha256": "54308b1e0004c6824977beb9aee93ac0219be91e6829c1b4316130a74460eee1",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/gl-camera-visible.png",
+      "bytes": 462432,
+      "sha256": "a329203435762f70890d7ba0af8dd86b2c765d5ee18a542ea71afe742b8a49a5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/results.json",
+      "bytes": 37325,
+      "sha256": "21183475400de10da811f10ca172e0b9adfa19cd104d98d340eda5a351cbc974",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/results.json.gz",
+      "bytes": 6775,
+      "sha256": "0dd33a5cc56cef2b4cd47b3b676f30f4aeca77f624210ade0a759fe014a5de83",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 37325,
+      "uncompressed_sha256": "21183475400de10da811f10ca172e0b9adfa19cd104d98d340eda5a351cbc974"
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/served-town-gl.js",
+      "bytes": 417399,
+      "sha256": "c48a4d00a131fa1c89433a49a703b4ccc6333ebf20d6562b6471c91ff5692ffe",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events-first/vite.log",
+      "bytes": 450,
+      "sha256": "5182fc776407c1ab4a0a68bc6bae1333d46cccb21d096d1ed0eb9c5afb87f950",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events.log",
+      "bytes": 138,
+      "sha256": "e82940d9fdcfc81c40337f7af4f40f49e87a444ee332e7b94cd867fd53f3762e",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events.mjs",
+      "bytes": 10306,
+      "sha256": "2114ac51107b773e9d5ca088670b3268d7b9f984395fce9eba87c60cb42901f0",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-400-night-same-frame-after.png",
+      "bytes": 312284,
+      "sha256": "ea4954c8d615b1113d323876fff492e782cf57a3267e803f3b511240805bcafc",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287186,
+      "sha256": "c8988a6346f22df732e1e4fdfa13a76ff97735f80c6ed26c92ee2d69eb402b91",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-400-night-same-frame-before.png",
+      "bytes": 327137,
+      "sha256": "1f21697b8b9fbe4e4d594f3d8bfb607b507db8467f3530d7b14b022435709e5d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342519,
+      "sha256": "a9f83a4ce45a88c8c3f82765c7d5923e7e3b2832b3238097523c341c656db6ca",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-400-night.png",
+      "bytes": 446876,
+      "sha256": "74f859f60dc03cfe44c519aa4793fac84a5cbb54caec171de45a380025a7162a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-camera-clipped.png",
+      "bytes": 407112,
+      "sha256": "7bd8037af41f558fb791901d81df1dbce51a332babecf79fa0790fce9aedc30a",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-camera-outside.png",
+      "bytes": 403586,
+      "sha256": "89eac26697c8ccfa858fb1cc57b990f2d885dbb419fe01261030cefc9dbcb195",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/canvas-camera-visible.png",
+      "bytes": 413284,
+      "sha256": "aa19bedffc790750e1f2b690365940beba4e1bef2c0fcb2df0b555383f1605f9",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-400-night-same-frame-after.png",
+      "bytes": 309402,
+      "sha256": "89a44cc890ff92dc00729ea0c9b8ef54d3f97f66e0bf1d609efa50c7ca8291fe",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-400-night-same-frame-ambient.png",
+      "bytes": 287802,
+      "sha256": "7a9c7d0b24530ca878fd02a832e4c3510f0df63bad64e95ecf3846a6b37f51b8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-400-night-same-frame-before.png",
+      "bytes": 323682,
+      "sha256": "a8f9e58892fd487353f003afc8c31ef8d5c1b9536f5940a538199ff9525b47a3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-400-night-same-frame-unlit.png",
+      "bytes": 342992,
+      "sha256": "c3978dc8d0b28323ac339250b229451d1d835142b048cfe59b026ff6ba7de3eb",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-400-night.png",
+      "bytes": 464104,
+      "sha256": "35f2c83fc5a44839db7a9cc567e9434546db3776f24d9238fb7eb9cd19841b38",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-camera-clipped.png",
+      "bytes": 410256,
+      "sha256": "000e88e760b74b5abe11a81dad2a415d83df70f8ea8abf89525804158ad5a525",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-camera-outside.png",
+      "bytes": 401361,
+      "sha256": "79e778540b31841858ce48a467c2c9b9691c055a3104d89f70d95fcc4291e450",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/gl-camera-visible.png",
+      "bytes": 412090,
+      "sha256": "6206e31592fbad5a8cc8a18e9edeead74ce3c6eb42f786dc63fa19a1be5aa077",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/results.json",
+      "bytes": 75514,
+      "sha256": "32de7ca8d4f9eed6a7ea73aca947ef4e25694a832c7b8d2d16d9fd111722d27b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/results.json.gz",
+      "bytes": 11381,
+      "sha256": "510ba4f309ea909e168a7d11aec7cfbdbee458cdac336148b44feff2e4ff4224",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 75514,
+      "uncompressed_sha256": "32de7ca8d4f9eed6a7ea73aca947ef4e25694a832c7b8d2d16d9fd111722d27b"
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/review-sheet.jpg",
+      "bytes": 123099,
+      "sha256": "222567305ae35fd89518a11626bce42100d0fe8711849519d872d68041d5300a",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/served-town-canvas.js",
+      "bytes": 417484,
+      "sha256": "d29512bfc27ec52d6e57d32b5872596a5d5e6883d577f9af002dea3ce1b3b09e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/served-town-gl.js",
+      "bytes": 417484,
+      "sha256": "d29512bfc27ec52d6e57d32b5872596a5d5e6883d577f9af002dea3ce1b3b09e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/camera-events/vite.log",
+      "bytes": 1977,
+      "sha256": "50e45fbfe0c52b5dbb1bfa7835230a29670f03131cd41065279ea9912787948d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dawn-same-frame-after.png",
+      "bytes": 621382,
+      "sha256": "199ad50848a36e4dfd2109bcbeec760d1d2f8a0961edef5bc7319d29cd12b76a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dawn-same-frame-ambient.png",
+      "bytes": 578095,
+      "sha256": "e1d7d210b3f43f86aa8c401bf45d8d8eda9ba80c10e9343b25df7897598508be",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dawn-same-frame-before.png",
+      "bytes": 658755,
+      "sha256": "55bf6cdb4009c7056102fd75b063f3dc398eacf6b76216020885471c2395b404",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dawn-same-frame-unlit.png",
+      "bytes": 610554,
+      "sha256": "2aa34d204970155fa2d64af87e51dfd3277969d8e784bbe85d4dbc4455534af6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dawn.png",
+      "bytes": 1182475,
+      "sha256": "cd157e0df71761b5b2515615288e537cf2259e3ff9a1dbf96870b5f3f2825bb8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dusk-same-frame-after.png",
+      "bytes": 622144,
+      "sha256": "7ef4db985d0c4ecdcf64ab715bfefff4abb4698204e2d4d7b054aba5bfad1e3d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dusk-same-frame-ambient.png",
+      "bytes": 578209,
+      "sha256": "e0a28fd1e5b90294ef302b4b141a1efd810e2a533667a9aa1e3b803995544ecf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dusk-same-frame-before.png",
+      "bytes": 660766,
+      "sha256": "dfef5cf3cf7ac4f892c8d4247d2c441f047c4d5d06ac7f5e4fbe9a099ad6abf3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dusk-same-frame-unlit.png",
+      "bytes": 610540,
+      "sha256": "a7e77142d9148e82323f6d238e914ec67f217785fd9fc61df10bc6180d1bb206",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-dusk.png",
+      "bytes": 1182125,
+      "sha256": "2f784b60d31fa8710aefaf7b86a91cd981537d06a3d885f8a68424c047893bad",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-night-same-frame-after.png",
+      "bytes": 591722,
+      "sha256": "14b7cdc23eabf413b40f701e09b556a68bf4428397554ff63ed8723020663759",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-night-same-frame-ambient.png",
+      "bytes": 521882,
+      "sha256": "e078ea59338ee2a01a4b27097bfdac37ff4d9bc25bd72cff9ee2a1a0ce1b764f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-night-same-frame-before.png",
+      "bytes": 622364,
+      "sha256": "a4e0a8293c39916e6c2f2befb726a8a1f7d55568081cf123d3ed742d3e250af9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-night-same-frame-unlit.png",
+      "bytes": 609118,
+      "sha256": "e754964a0bd343edc66091425564fbf651eb6c7d97d75589ea07ad771cb52fc5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-night.png",
+      "bytes": 1126913,
+      "sha256": "6f3acc9aba3738ac91eadeb3e55f6f23b2635b376103484b6f2c278d429bcf6a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-noon-same-frame-after.png",
+      "bytes": 610734,
+      "sha256": "9f77ee8efb103bee8d5c12d350511a8c2f5abaa85afb200416fb779446f8db7d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-noon-same-frame-ambient.png",
+      "bytes": 610734,
+      "sha256": "9f77ee8efb103bee8d5c12d350511a8c2f5abaa85afb200416fb779446f8db7d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-noon-same-frame-before.png",
+      "bytes": 644164,
+      "sha256": "92657ba22a1fb25c0459f8c67bc2499ce7e6c0f1221926852152b6a8e7af5fd2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-noon-same-frame-unlit.png",
+      "bytes": 610734,
+      "sha256": "9f77ee8efb103bee8d5c12d350511a8c2f5abaa85afb200416fb779446f8db7d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-1440-noon.png",
+      "bytes": 1227946,
+      "sha256": "a662aa0822e553192ed1c6c6d3707d4a357ed1a3599448c09c0ce8427d778e3d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dawn-same-frame-after.png",
+      "bytes": 340069,
+      "sha256": "dae8c2a0b07b49eb0325d722fc843ef4890a3507ae8e3d574aa40e7c18d042d1",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dawn-same-frame-ambient.png",
+      "bytes": 323439,
+      "sha256": "1d0bba67d093ec496fc5a3ffd80cdc2a994188a2e531d8e3cf9e17f493ba67b9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dawn-same-frame-before.png",
+      "bytes": 352819,
+      "sha256": "5359faaf36b93ae140b08079d719538aea5c022532123f0e6e9ba502387e7ed4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dawn-same-frame-unlit.png",
+      "bytes": 343436,
+      "sha256": "140071475f82ca55cce12f8c720773cf400cf35c126169d5441b7f3f3df2786d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dawn.png",
+      "bytes": 473877,
+      "sha256": "ae8e18571d01c68b5487e0a9bd63a31a42ce72f01522cc74f983173c71a0d5b5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dusk-same-frame-after.png",
+      "bytes": 339878,
+      "sha256": "4ec86ef87907789ba7d48d37e553dc1328758a00a4571e584fdae5cf81d14ba1",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dusk-same-frame-ambient.png",
+      "bytes": 323649,
+      "sha256": "4b2602568674c3b8e1cda974d675fabca0051b253b5672416f208b4c60c5af76",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dusk-same-frame-before.png",
+      "bytes": 352127,
+      "sha256": "79d0cdc9173d1ab5bd0541dab203ac823bbe1132fc2460b9df158bc44a82eed7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dusk-same-frame-unlit.png",
+      "bytes": 343534,
+      "sha256": "778d71115584c3883f6e1d26c4a7710a30ae5bc5e4a6b51c7742b36ba53a3dac",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-dusk.png",
+      "bytes": 473627,
+      "sha256": "7734959066a139c1ec2f3fcfd8c19014c5e32583e96b4005228e98c5023ea469",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-night-same-frame-after.png",
+      "bytes": 317842,
+      "sha256": "becc6ed8ab8d4ed31825e4c8a80e6dbb705a01fc852744a1d1d228a399fc63ce",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287357,
+      "sha256": "a9c6f610e9fa80785b5651bd7173880a8d8769b175b1bc31d7eacca930f35b1e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-night-same-frame-before.png",
+      "bytes": 326273,
+      "sha256": "dc56254ba5dfa2f82aa6a93d23fcdc03e0e8b10ce1d962a842175693b7bc0bb3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342571,
+      "sha256": "5451cebb035de4d093f6a0f934f0f1f1a940f339cc902f4157b1e8dae40532b4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-night.png",
+      "bytes": 451495,
+      "sha256": "854513a92be2ffb1f6fe46e106cf88e55848137b1ef5e4845b7682e8149b7cec",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-noon-same-frame-after.png",
+      "bytes": 343384,
+      "sha256": "c36017838467962adc1c3549797455c6764a74bfe659a17d9094f165eebc16bf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-noon-same-frame-ambient.png",
+      "bytes": 343384,
+      "sha256": "c36017838467962adc1c3549797455c6764a74bfe659a17d9094f165eebc16bf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-noon-same-frame-before.png",
+      "bytes": 354551,
+      "sha256": "7cff80c171671f98c32354b97cee2b01942b43fbaa21b1799358ef0698a19a28",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-noon-same-frame-unlit.png",
+      "bytes": 343384,
+      "sha256": "c36017838467962adc1c3549797455c6764a74bfe659a17d9094f165eebc16bf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/canvas-400-noon.png",
+      "bytes": 491468,
+      "sha256": "2e5a9670180dedc8cd9739152bd11c0fc101ba1b7f969a0cbcd82622c9dccff4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dawn-same-frame-after.png",
+      "bytes": 620531,
+      "sha256": "0a136241f5aef84973c4e353f43c70bf54b93b10be3d5fd8ebb34749363d614c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dawn-same-frame-ambient.png",
+      "bytes": 578522,
+      "sha256": "112c84a0fdf809de336735b3ffc4af77fadb8b8df277e090509907284b45016a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dawn-same-frame-before.png",
+      "bytes": 656402,
+      "sha256": "5e17aa7baca2d847961dba72d86e137d8e6c77727f6a5aa60d550659c06f420d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dawn-same-frame-unlit.png",
+      "bytes": 610785,
+      "sha256": "e0ac04e9c8b8461610001a8fcbb583fc6062ab586208ef7a0b6d361f28f7d777",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dawn.png",
+      "bytes": 1188095,
+      "sha256": "5f4773f2e7fb152d72f9c91b57974a5cd74c9335ddb453775971ae3394520aad",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dusk-same-frame-after.png",
+      "bytes": 621536,
+      "sha256": "7fb06930a0a98a6dae975e2ee938f5d1d08a982757b831cd3026d376c4c384b2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dusk-same-frame-ambient.png",
+      "bytes": 577995,
+      "sha256": "772dafac6bc27e675c1474e9245ca4c30b0b61bd253ed3c211b9d4997642d201",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dusk-same-frame-before.png",
+      "bytes": 658298,
+      "sha256": "7d47d3f91597e392ed141decf746f810dbb2b83d2caad6c6f2e55fda8792d385",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dusk-same-frame-unlit.png",
+      "bytes": 610397,
+      "sha256": "91cff1131586515d45a099e20f933033ce2537555da8cbaba44517ea1de6fe76",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-dusk.png",
+      "bytes": 1183662,
+      "sha256": "1035e0110187a3d95bac9339a5353772c535dd64e6664910bb11d0e9495be590",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-night-same-frame-after.png",
+      "bytes": 589460,
+      "sha256": "a4e65945b0e6ae40f73b31d399c7503f14336af387ab0d2b68ffe4efa48ef8b6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-night-same-frame-ambient.png",
+      "bytes": 521057,
+      "sha256": "e6225f87821a8ddffddaeef45a8b72f3b281f66b512bf75c72309e0f8017d12f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-night-same-frame-before.png",
+      "bytes": 618418,
+      "sha256": "edf168f743d8ed8c845b74c5086fe30d6a35d57cedaa4723753722eb849673ab",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-night-same-frame-unlit.png",
+      "bytes": 608285,
+      "sha256": "570725a56bfe31c8cbee1e2f52c5f124e5dc80cfdfd0db9d3ed6d0c4bb24ddf8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-night.png",
+      "bytes": 1131336,
+      "sha256": "7157b0548ff47778500b58e32afa5dbcf9b22bb483f5d77eb8c55a61968a1fb2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-noon-same-frame-after.png",
+      "bytes": 610672,
+      "sha256": "153131db0cfad4e97514a9d118da4a623a4578054e30578a1f4e31129f8c7ad2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-noon-same-frame-ambient.png",
+      "bytes": 610672,
+      "sha256": "153131db0cfad4e97514a9d118da4a623a4578054e30578a1f4e31129f8c7ad2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-noon-same-frame-before.png",
+      "bytes": 643273,
+      "sha256": "c6df663492dc31e64420e99c0cfddca1d2f00570d7f75e895896141786df8ead",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-noon-same-frame-unlit.png",
+      "bytes": 610672,
+      "sha256": "153131db0cfad4e97514a9d118da4a623a4578054e30578a1f4e31129f8c7ad2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-1440-noon.png",
+      "bytes": 1265459,
+      "sha256": "2dfa4ba3b895a2462be4605b426e79dfdb5378b094fd34f374dc72fb4b420c20",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dawn-same-frame-after.png",
+      "bytes": 340491,
+      "sha256": "df22f5eaa92284ee5b5864afbe00a11e52c35aad8202f0dd9fc60df45e32f24b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dawn-same-frame-ambient.png",
+      "bytes": 323656,
+      "sha256": "af6bc335e7cecbe8365c1db7e792abc7f5b90148bd0680be535e0da159ed0a51",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dawn-same-frame-before.png",
+      "bytes": 352653,
+      "sha256": "ef3ef6a258bc9ddb0a5263ef4546e6d195fba8aaa53d45c34de760e7475697bf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dawn-same-frame-unlit.png",
+      "bytes": 343642,
+      "sha256": "2ba4eea516ccca7bcc38dd2f83261ecf2ba0282d41a585643406e29120996e58",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dawn.png",
+      "bytes": 481750,
+      "sha256": "3e54cb8ce04725522e0ee76a94bd025e1c7d51325bb989da71c490c5710f5027",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dusk-same-frame-after.png",
+      "bytes": 340505,
+      "sha256": "016661eef23e7bc8a1e38f0a4c051841c0ddd81205cb6d60307a4b3a56d913ab",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dusk-same-frame-ambient.png",
+      "bytes": 323911,
+      "sha256": "e0fcbdfa335a77af4a5e67115c8e8c8011c376327813b478f2afb072197ddb41",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dusk-same-frame-before.png",
+      "bytes": 352961,
+      "sha256": "cf1081e2a29e94af5904fc11817f8f781c7341d7a2760ccf97ff86c29925a5d2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dusk-same-frame-unlit.png",
+      "bytes": 344014,
+      "sha256": "b971a5a453e9f82c1297d93f2523a644490824f47dae2391ecef54ef11278a9d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-dusk.png",
+      "bytes": 479245,
+      "sha256": "289bab0a72018845b45bb023f20784ac5fc6f3d378e625f00d90e19dfbc5c5ab",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-night-same-frame-after.png",
+      "bytes": 318496,
+      "sha256": "c88303eccf76b608da182839027907b2acca90e6c69b376b1c7719d9e4d69599",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-night-same-frame-ambient.png",
+      "bytes": 287715,
+      "sha256": "78c4564b95998fa85e719c958081abfcd8aad1e27bdb979a1f1a6bddd03d2b84",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-night-same-frame-before.png",
+      "bytes": 326902,
+      "sha256": "c4f0c47663dbecf544be570f6862080e8e8f6d1af0e020d7350f97839f19abbc",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-night-same-frame-unlit.png",
+      "bytes": 343128,
+      "sha256": "7bd5a8a4f6dd93ac5334ec170d2b0e841a89977ee33709bd5932b85c546768ad",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-night.png",
+      "bytes": 466298,
+      "sha256": "6e201fb6e9ff6a98f1379562c9acf73942e7126e161b340043533135aa6c589e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-noon-same-frame-after.png",
+      "bytes": 343556,
+      "sha256": "d03b6964f749ff42f39eda8d9720fd4f00b6171558ff572cf00d9082fe879880",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-noon-same-frame-ambient.png",
+      "bytes": 343556,
+      "sha256": "d03b6964f749ff42f39eda8d9720fd4f00b6171558ff572cf00d9082fe879880",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-noon-same-frame-before.png",
+      "bytes": 354982,
+      "sha256": "05df5f16349df0a55d75b1bae23da600057c6144101b3f239b2ae3473ed447d7",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-noon-same-frame-unlit.png",
+      "bytes": 343556,
+      "sha256": "d03b6964f749ff42f39eda8d9720fd4f00b6171558ff572cf00d9082fe879880",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/gl-400-noon.png",
+      "bytes": 511321,
+      "sha256": "ff0df7ba71d3f6571a62e348a328fec9df641ca3930203519898716766f59876",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/results.json",
+      "bytes": 214689,
+      "sha256": "6c4d56ed0045f161c7a52f8d74063d9714277d87a82f3dc5426da0db47b461f6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/results.json.gz",
+      "bytes": 22232,
+      "sha256": "38304efce10ee336b67885083076eb43011eb46e96fdfc23dbfb93b2cef4b8ef",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 214689,
+      "uncompressed_sha256": "6c4d56ed0045f161c7a52f8d74063d9714277d87a82f3dc5426da0db47b461f6"
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/served-town-canvas.js",
+      "bytes": 414495,
+      "sha256": "61210eaefac663388a2484ccc08ca3750b3dc4ebe21802451f7254048afdbad9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/served-town-gl.js",
+      "bytes": 414495,
+      "sha256": "61210eaefac663388a2484ccc08ca3750b3dc4ebe21802451f7254048afdbad9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/view2d.ts",
+      "bytes": 17678,
+      "sha256": "381113df142a050b4d30d8cc6f5153cbe63da42ef1d23b894edc57b9c21f6193",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/view2d.ts.gz",
+      "bytes": 6092,
+      "sha256": "cbe6069802afb595a8ce012d140d3a26f6a2a42a2c3ea6a69074339b51d3927f",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 17678,
+      "uncompressed_sha256": "381113df142a050b4d30d8cc6f5153cbe63da42ef1d23b894edc57b9c21f6193"
+    },
+    {
+      "path": "docs/evidence/cut240/candidate-first/vite.log",
+      "bytes": 1973,
+      "sha256": "20b610924d98fc73cf9f1cc45b01623a500a87ec44841c0b0f0c431dc6457a13",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/client-clock-ctxloss.log",
+      "bytes": 232,
+      "sha256": "93175c8c52eb31d41f986692f932b42fb6454e0dc812eb22421e154caabc4e26",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/client-final-clock-ctxloss.log",
+      "bytes": 232,
+      "sha256": "45e364eb95943be96e168153fb02dc8ffb329c07b66f062402d1b40631b4282a",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/curate.py",
+      "bytes": 4233,
+      "sha256": "1481b104f1fce560000cb583d91ae9a2e40174c1aa53b3eda8b164e03477a8c0",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/diagnostics.log",
+      "bytes": 326,
+      "sha256": "282bc72b31864c7ecb7aaf53d8a9dae931560d1c32871f82475a9864c8ef3efe",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-400-night-same-frame-after.png",
+      "bytes": 309366,
+      "sha256": "47de2ceb51a8cd5a1fae5dd627f3e76199a4886f310b065d7ba2103ee23a50bf",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-400-night-same-frame-ambient.png",
+      "bytes": 287714,
+      "sha256": "e421c5e7790f2f6732fc2a2b08e3bef7e68d19c845aad066997c29a0d0761662",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-400-night-same-frame-before.png",
+      "bytes": 323895,
+      "sha256": "80360633cfeb364df43f85ec87112e39307a0c45cf2a9393dd0477259e834939",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-400-night-same-frame-unlit.png",
+      "bytes": 342901,
+      "sha256": "91a3ff397f5be59cef4f5ccada93755d4ead6893b98f64c8210c828820d33060",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-400-night.png",
+      "bytes": 464634,
+      "sha256": "2fef02d78c2a8d34148bb5a07492f0709a195fde97d35f02c265f2134711881c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-material-after.png",
+      "bytes": 412,
+      "sha256": "487bf14faf8e0c45df6121e128ced16e602e0595fa91a60fd6111cd60443844d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-material-before.png",
+      "bytes": 1448,
+      "sha256": "ebd9b3eb67192d50daa18f9589de6817d4011ee26aabd9b9beec4d5aa3dd72ba",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-material-source.png",
+      "bytes": 412,
+      "sha256": "6f612e1d68a597abff5fb86c2b75f714b2c398754e967628dd1d4ecb7b9f6b8f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-night-full.png",
+      "bytes": 464878,
+      "sha256": "365394d4cde3fd28c32d8b8465abd4437c64249cfd508a702587a0518d7a60f9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-night-low.png",
+      "bytes": 460604,
+      "sha256": "3a66d913a3e1e6db2522e22f709ccbbfcef6654843608abc3efb7951ae4cb683",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-night-off.png",
+      "bytes": 461315,
+      "sha256": "96e42c711c2a8ff9986f8b35e402ea2586e1441361f4edbb62ac59861402372b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/gl-night-reduced.png",
+      "bytes": 463258,
+      "sha256": "4fc512c0b57c21adec439fd5281782344c308476ea20ad7ced391a7cd383161f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/results.json",
+      "bytes": 62519,
+      "sha256": "0fefc56dac489b2bc8d7c3c65f10ecf627d5230fcdf52ba4a4efd4e52f11756a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/results.json.gz",
+      "bytes": 8199,
+      "sha256": "27a7fb97b57a766908f39cbd81cc3ddebc7f0e9215b3e36d06a0c085b3e20f02",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 62519,
+      "uncompressed_sha256": "0fefc56dac489b2bc8d7c3c65f10ecf627d5230fcdf52ba4a4efd4e52f11756a"
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/served-town-gl.js",
+      "bytes": 415929,
+      "sha256": "cef842a06071f2243c599640473e758bd7caa2c0c8492878b77cabb5e5f67f78",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-first/vite.log",
+      "bytes": 451,
+      "sha256": "97a19581654fc64a9217f40c15a90216cb56aa19eb55a7022f69b17ed0a9b6dc",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-400-night-same-frame-after.png",
+      "bytes": 312335,
+      "sha256": "3b3e294f1f1c912ff32bda1c50a8734c047d936f13b1f1a99d900959ff32f879",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287089,
+      "sha256": "8bc2e1b29215d1e79188a436d3a1d0b558da8c50537871f0b0c608c48b3ab347",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-400-night-same-frame-before.png",
+      "bytes": 327245,
+      "sha256": "73b566386798b21f5d737d10c800ec028d56c214278b5b98bca4830917a55288",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342461,
+      "sha256": "0235a341d59ca1cf4b502e439d13c065e39b0e65517ede678b9df51e813d622f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-400-night.png",
+      "bytes": 446934,
+      "sha256": "9a425a3d582af9bfd893a9cc8f3cb4516bb7fd4d9b85761015918702ace0e6e6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-arrival-0.png",
+      "bytes": 447621,
+      "sha256": "70598a9d9aa8dd8335bc45e48021620d772b01e3d087f7435a60bf6791d9a959",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-arrival-16.png",
+      "bytes": 445051,
+      "sha256": "78118d54d8875449a6aa4544f281288323a26146e4f735a5fffff35e83a40bb6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-arrival-4.png",
+      "bytes": 444804,
+      "sha256": "de48d1658e388acf859647450f16424ff1421433652b1ff4d210f980251435d9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-arrival-44.png",
+      "bytes": 443442,
+      "sha256": "acaae321771fd6f096d9a22e1982ec2818f10c574de5dfe454334f0c70ca21d4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-arrival-8.png",
+      "bytes": 446634,
+      "sha256": "ea11703f1b58910e1b11a688b56d41116e8ac003ae48b21ecb2c43cd4907f0d4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-walk-in-0.png",
+      "bytes": 444239,
+      "sha256": "6ad4e25e520937316f2ec8cf98145db468897a6daf2d9c5501bcefba30ae6c65",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-walk-in-16.png",
+      "bytes": 447369,
+      "sha256": "d2316ff603cfd6a071da0b0872831125491b7308b7f551f61a3451186a623a70",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-walk-in-24.png",
+      "bytes": 448757,
+      "sha256": "7082e91cd5303a07c112797beb99740cf23cacec5d6d2c0f5b242a9f7e3beb72",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-walk-in-44.png",
+      "bytes": 449342,
+      "sha256": "0f8231744fd1fa5fd44632527f8a30e33e1793f88756d79e349c917cf864be6d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-diagnostic-walk-in-8.png",
+      "bytes": 448871,
+      "sha256": "be783e629581595a1677955603637094b51ae4e14756c659bf2fcae519966e54",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-material-after.png",
+      "bytes": 412,
+      "sha256": "487bf14faf8e0c45df6121e128ced16e602e0595fa91a60fd6111cd60443844d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-material-before.png",
+      "bytes": 1448,
+      "sha256": "ebd9b3eb67192d50daa18f9589de6817d4011ee26aabd9b9beec4d5aa3dd72ba",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-material-source.png",
+      "bytes": 412,
+      "sha256": "6f612e1d68a597abff5fb86c2b75f714b2c398754e967628dd1d4ecb7b9f6b8f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-night-full.png",
+      "bytes": 446796,
+      "sha256": "c694c4cd008a623234a81dd51b8b67be5a71286024b0fbff7c5739a54ef27cbe",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-night-low.png",
+      "bytes": 447191,
+      "sha256": "9c1673b0228ec6a34fb9acb4a3dc4ac4f53b1ed7b8c098ed8e79e59340b5fffb",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-night-off.png",
+      "bytes": 445906,
+      "sha256": "7240144488e2eb9579bdc00421a55253e28e85dc9caa3ac404f3b0fa69ada038",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/canvas-night-reduced.png",
+      "bytes": 443942,
+      "sha256": "b8e10f400a87db740c89cbb581ff8f7424006f2272792ae24ee06ac674be8fed",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/diagnostics.log",
+      "bytes": 138,
+      "sha256": "e82940d9fdcfc81c40337f7af4f40f49e87a444ee332e7b94cd867fd53f3762e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-400-night-same-frame-after.png",
+      "bytes": 312423,
+      "sha256": "340dc5f176fb800a302f79de6d51e10089de882ef3d2eab54ae9113deace76f2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-400-night-same-frame-ambient.png",
+      "bytes": 287702,
+      "sha256": "5c31a1975c83b39fc7229efb9fe519b03f4bc5664ed0a923807123e4bc5da6e5",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-400-night-same-frame-before.png",
+      "bytes": 327471,
+      "sha256": "aca6c21f37c1e57b8c92f38addd30f4ada3887d58eebf5261a30cdd9342142a4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-400-night-same-frame-unlit.png",
+      "bytes": 343032,
+      "sha256": "6134d5f5add3244485e9df0da770a6faf1175699db832339e0bfe5baa0a4352b",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-400-night.png",
+      "bytes": 461857,
+      "sha256": "69730ed379057e7ebdc474483bc2d59cb7ccdd153427f19c06a4c57e57557562",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-arrival-0.png",
+      "bytes": 462374,
+      "sha256": "90ef96affc02b3c0fab05559776d1b6c0bd45bcaafe69fda827241fd85814036",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-arrival-16.png",
+      "bytes": 460038,
+      "sha256": "0fa8ec5a57d95a7b5bdbfefb515510fb4c44f2a3d57f26f6bfb94e252518a558",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-arrival-4.png",
+      "bytes": 463261,
+      "sha256": "6d57d703f717b01601c07900ab0e073ad83d66d229777118da82e82a449fe9c9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-arrival-44.png",
+      "bytes": 463771,
+      "sha256": "0c2a98f1932bc57c40aa99e8e75bd3b45250c147b4f864c6c1919cdfdaaaa364",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-arrival-8.png",
+      "bytes": 462903,
+      "sha256": "cd91e90a088bb3d82b5c25c4fcd763ab6e350298276bc7e3921c7d8336aceb61",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-walk-in-0.png",
+      "bytes": 459121,
+      "sha256": "641f79f890f468a7011d63fb2236648122c82388e0ae97b2a3298d808c5835b4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-walk-in-16.png",
+      "bytes": 461412,
+      "sha256": "16e3dd269ae3c21013c9a27ae0a56a9c944a995394eae7c435c2fb47ab02a937",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-walk-in-24.png",
+      "bytes": 464592,
+      "sha256": "23c34dc9fb6c321d2144b2c1f1bbd47aa55ffd5483b0d8c10579829e394b665f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-walk-in-44.png",
+      "bytes": 466003,
+      "sha256": "1bcc9f5661d1ab50932bc53a523bedbe76141ce552c8855e06ef8ff336250ca3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-diagnostic-walk-in-8.png",
+      "bytes": 465888,
+      "sha256": "7599f7507a733a317d66f0b8ca2157af4a44a7ae94dadea716483447f7d09c05",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-material-after.png",
+      "bytes": 412,
+      "sha256": "487bf14faf8e0c45df6121e128ced16e602e0595fa91a60fd6111cd60443844d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-material-before.png",
+      "bytes": 1448,
+      "sha256": "ebd9b3eb67192d50daa18f9589de6817d4011ee26aabd9b9beec4d5aa3dd72ba",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-material-source.png",
+      "bytes": 412,
+      "sha256": "6f612e1d68a597abff5fb86c2b75f714b2c398754e967628dd1d4ecb7b9f6b8f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-night-full.png",
+      "bytes": 463490,
+      "sha256": "e25488b7ae892f6636698c698ae915ea9d1a7346a22a3c95c941f3d2a8d08891",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-night-low.png",
+      "bytes": 465895,
+      "sha256": "bf86cd66fd602d5ab8c78f498159e00d865a15db7be862756513dbdba07f46aa",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-night-off.png",
+      "bytes": 462885,
+      "sha256": "960e94e91c0d2fddcf776219e263b28cda95a7130900f69746b4910d5fb1d1f2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/gl-night-reduced.png",
+      "bytes": 455769,
+      "sha256": "c7059aa1cf3dae0fbebf69ce189b89d29a14fe1fbf00392ffa965a4ff0a9f243",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/results.json",
+      "bytes": 1398999,
+      "sha256": "79beb520880328de8ba1198fd8d384953832bd0d89bd2f28960bec6789788971",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/results.json.gz",
+      "bytes": 100576,
+      "sha256": "4caab660fc2fb75893a3e88dbf495af8f3a9ca9fb14e1476721bec39709cb371",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 1398999,
+      "uncompressed_sha256": "79beb520880328de8ba1198fd8d384953832bd0d89bd2f28960bec6789788971"
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/served-town-canvas.js",
+      "bytes": 416033,
+      "sha256": "6b973857a59a58c53cb3ee63136bf84b7eb0370bbd7908d55b601aeea893d4c4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/served-town-gl.js",
+      "bytes": 416033,
+      "sha256": "6b973857a59a58c53cb3ee63136bf84b7eb0370bbd7908d55b601aeea893d4c4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics-partial-events/vite.log",
+      "bytes": 1974,
+      "sha256": "c173cb04b6cf16d4232ea5bf460aab5996d01bc98cabd70eda31fd8bd30717e3",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics.log",
+      "bytes": 138,
+      "sha256": "e82940d9fdcfc81c40337f7af4f40f49e87a444ee332e7b94cd867fd53f3762e",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics.mjs",
+      "bytes": 11921,
+      "sha256": "6412e7119a01d9e7b44dfa4024bdb862b90308392a3de06c39e017e946d1dbd2",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-400-night-same-frame-after.png",
+      "bytes": 311950,
+      "sha256": "1650e5b6d1e59e1ab3877d558901f989123044845982e60c932c413fd773fc01",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287069,
+      "sha256": "65c5eb2f32852a0d2ac3d69f8161597daa311366ce0f70e7f24e6a891934be13",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-400-night-same-frame-before.png",
+      "bytes": 326714,
+      "sha256": "d5fb786d0103d5cb379b0050851f2a7378a69aa34ae54aae01d33325861d1298",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342330,
+      "sha256": "c35c5e4cd2721a207ee43be0217374874f6adcb05772cbb23af2b270d18705fe",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-400-night.png",
+      "bytes": 446443,
+      "sha256": "e4918ea4aa0e75ec161ce490e8d4345eac0125a258aa1fc5d1f09b9fa2876458",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-diagnostic-arrival-0.png",
+      "bytes": 447911,
+      "sha256": "ddc208807a2d72f778a3db8e6f13098aedbef27127db8460b7f369d7200fef66",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-diagnostic-arrival-4.png",
+      "bytes": 448354,
+      "sha256": "c6953f65178001534ab66200fb6b6be2b817c52ede49d652110bdc38f510de2c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-diagnostic-arrival-8.png",
+      "bytes": 449441,
+      "sha256": "025d435e80e5cbbd804f1bfb23c7efac19528d455f63170a7481afac34a592a8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-diagnostic-walk-in-0.png",
+      "bytes": 448890,
+      "sha256": "d09aad2f0a67eb05dc911ae775c4e5b9b69ec3ddf733cf7de84084ecfe4238bf",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-diagnostic-walk-in-8.png",
+      "bytes": 447343,
+      "sha256": "389bcfdec671056f9409220de40eb5855b68ae540ce854a54ca5810b315b2268",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-material-after.png",
+      "bytes": 409,
+      "sha256": "c049ebd1d5d87ffb72170d39836d3cadb888fc6e8111397441b3635bd7309871",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-material-before.png",
+      "bytes": 1421,
+      "sha256": "6c993b4e29eabebcce9e6faee8bb102a5a969b11283aa08f7c71542473ced7b3",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-material-source.png",
+      "bytes": 410,
+      "sha256": "aeebb698a0b80ae78f918f8e713cab3ffae11fc4fb4160babd0a71d73211c117",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-night-full.png",
+      "bytes": 448918,
+      "sha256": "f62aaf9f40b66267b5ac44cbbdb8588b11311acd4b206981607fb36dbf85ea2d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-night-low.png",
+      "bytes": 446906,
+      "sha256": "48a4dd16255036e48a9af1b2b206312f466781a11611f88e167f9ebb18fc794a",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-night-off.png",
+      "bytes": 446381,
+      "sha256": "10e7a08424511b2993da5b5c1eb64da27aefbcd1f56264bfa86ecbba7a947f53",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/canvas-night-reduced.png",
+      "bytes": 445660,
+      "sha256": "9bad9a067e6e1995c89933f24110435a7c8ff35736a978a792a6ef968dc67002",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-400-night-same-frame-after.png",
+      "bytes": 309162,
+      "sha256": "a9ede33ee01d403765d9b9b104c726dbf5952df4b022f14eb9b1d65688797874",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-400-night-same-frame-ambient.png",
+      "bytes": 287538,
+      "sha256": "75ce5636ab089867c24fe0d12634ca1cd65f7d454d4b5e3f17a033fd77a447d2",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-400-night-same-frame-before.png",
+      "bytes": 323560,
+      "sha256": "9522cc3853c5765f855a59603bc3a4692e9d8daf1652f4c70f44a517017807ed",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-400-night-same-frame-unlit.png",
+      "bytes": 342948,
+      "sha256": "9cb89cd3e24bf80dbbaf23f7e8f7d93cd2552c7ae205201bd018f71b4891c9ed",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-400-night.png",
+      "bytes": 462131,
+      "sha256": "5b17d606f4d9c7d1332e0d726b77982ce6f2c3651466e4b33e8755ceda691b0c",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-diagnostic-arrival-0.png",
+      "bytes": 458580,
+      "sha256": "7a19e421ede7edbccc38f05cffaae1257d2a502a5250700aef1fe480b88094db",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-diagnostic-arrival-4.png",
+      "bytes": 464201,
+      "sha256": "d579027d82ead5b1cb01703d7b92db58e49dbd9b1f4adbeda88c9b69c4b425d9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-diagnostic-arrival-8.png",
+      "bytes": 463998,
+      "sha256": "73b133d0d6fc12b335f88b7915f6266650e0b3a89e95fa5b59fb1b33db22fae4",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-diagnostic-walk-in-0.png",
+      "bytes": 372503,
+      "sha256": "caaa06315f8805f1ca79e8ff36779f1a62f7570a7e021d4f875e12e9f5c22dc8",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-diagnostic-walk-in-8.png",
+      "bytes": 462638,
+      "sha256": "a7eee22fd6d291201c331f6aeb4cbddb2c930a0deb6fada539e1e01bb9217997",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-material-after.png",
+      "bytes": 409,
+      "sha256": "c049ebd1d5d87ffb72170d39836d3cadb888fc6e8111397441b3635bd7309871",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-material-before.png",
+      "bytes": 1421,
+      "sha256": "6c993b4e29eabebcce9e6faee8bb102a5a969b11283aa08f7c71542473ced7b3",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-material-source.png",
+      "bytes": 410,
+      "sha256": "aeebb698a0b80ae78f918f8e713cab3ffae11fc4fb4160babd0a71d73211c117",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-night-full.png",
+      "bytes": 460925,
+      "sha256": "aa560f3a7c0336c58b51ced97d5768d79719c40697b27d1cc02acd6d19e3aeb9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-night-low.png",
+      "bytes": 462175,
+      "sha256": "80f58ade28bd623f548e5d660c6a92853fea6f56e259c9ae4c96c93699f870fe",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-night-off.png",
+      "bytes": 465421,
+      "sha256": "e46755e2c24398a431666cd9c6b127a9e97419be0ba859c00ba9d802358ca037",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/gl-night-reduced.png",
+      "bytes": 460895,
+      "sha256": "183ba4844290437c173f4afe04cfb7a585803b1816784619f181a8c3f76ba202",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/preferences-review.jpg",
+      "bytes": 181684,
+      "sha256": "6cdf4180616efd2ba1d13581a42195f26c9e05c4e6d32ece94f7da854927b350",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/results.json",
+      "bytes": 422189,
+      "sha256": "872475ccfb41a6f0c8edb02314286ed0a4a525cb6a18bbb16f978e62b2cc6541",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/results.json.gz",
+      "bytes": 45976,
+      "sha256": "baae91c42a64384eb26300c7b4be19fd8e8c28095654890d92472ce110d5b762",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 422189,
+      "uncompressed_sha256": "872475ccfb41a6f0c8edb02314286ed0a4a525cb6a18bbb16f978e62b2cc6541"
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/served-town-canvas.js",
+      "bytes": 417042,
+      "sha256": "fa42dd88f69385c0930ba01f487615c8df21346986f906c582d1e9fc00687438",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/served-town-gl.js",
+      "bytes": 417042,
+      "sha256": "fa42dd88f69385c0930ba01f487615c8df21346986f906c582d1e9fc00687438",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/diagnostics/vite.log",
+      "bytes": 1973,
+      "sha256": "12d110e02cc3d5444c202859a0c8fb88e88aff190e1f502a475d977c69640237",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events.log",
+      "bytes": 138,
+      "sha256": "e82940d9fdcfc81c40337f7af4f40f49e87a444ee332e7b94cd867fd53f3762e",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events.mjs",
+      "bytes": 10020,
+      "sha256": "d5e2e8c6851bfd4bb9353bfc2ac5def1b467bb9d3750d27a569e15193976123f",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/before-compositor.mjs",
+      "bytes": 2604,
+      "sha256": "27a7e6fd6e2e6676c4200326a54251caf1f07395ed6bddc94211092ce8cd535e",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-400-night-same-frame-after.png",
+      "bytes": 311941,
+      "sha256": "c9f6778ca8a1365634fe8a6d9f5dc2225b5055da1cf4ebef29f7a0fc2406c372",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-400-night-same-frame-ambient.png",
+      "bytes": 287070,
+      "sha256": "84e4db9427177aefbd59a32ebf0a2254cc8d5b94dc39c6cc51d60ae863ea88b8",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-400-night-same-frame-before.png",
+      "bytes": 326753,
+      "sha256": "85ae8837a0f2d2f84c809d644ef6ec1f6f2daa72f5647c28de8eab058f04f8ab",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-400-night-same-frame-unlit.png",
+      "bytes": 342405,
+      "sha256": "fe556b38efa9af2bbef8b445dd552341e1aaf15deccb1491ecce81972fa57814",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-400-night.png",
+      "bytes": 446495,
+      "sha256": "313c1d9cf434e8dfce9697f4a25a394505031ec91e4efddd56873023f2495801",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/canvas-diagnostic-arrival-completed.png",
+      "bytes": 449421,
+      "sha256": "b7ce9e465a619a2aaed86081d65fdb34928981790afa10dfef4fd95626f50b1f",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-400-night-same-frame-after.png",
+      "bytes": 311370,
+      "sha256": "cf7c598ab4ff8d213eea514c053e12e566db141e5d049fc50a6d10e410c3dbe6",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-400-night-same-frame-ambient.png",
+      "bytes": 287441,
+      "sha256": "38cd16497add63a5b1a073c62c302f80fa4b1f830c5d7b7a8f0670cf72302207",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-400-night-same-frame-before.png",
+      "bytes": 325728,
+      "sha256": "2dd0f3e45039ffe6a9e29ad6aca3d28300a2723f03d29cc352a021e3a401563d",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-400-night-same-frame-unlit.png",
+      "bytes": 342691,
+      "sha256": "1caec989caaa71237f96f777222ff1dd239b411b7adc035f298618dd9ab8d682",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-400-night.png",
+      "bytes": 463378,
+      "sha256": "e0fe7affc4937600fd1af375fc035eaff632e2676b8cf92e83e1a49cfbaf8922",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/gl-diagnostic-arrival-completed.png",
+      "bytes": 465235,
+      "sha256": "3b076c27bdf6579338459d6c51b36900985a2217781041c51bccc20b680055e9",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/prepared-canvas.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/prepared-gl.session.json",
+      "bytes": 461787,
+      "sha256": "6ba0b9aa2c5fe7a069d33c23de6f3acdb1a05e60dd8eb83e1be02b1e8f6b2486",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/results.json",
+      "bytes": 1819163,
+      "sha256": "df236818648f73295842b47c45410fc4917aca516bac63c1f7a31b0ca94cc328",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/results.json.gz",
+      "bytes": 180397,
+      "sha256": "ac7686e085287900dc44411c126873d7a6722b4d405a59d4f1cf21b3e4d37c5a",
+      "in_scoped_commit": true,
+      "uncompressed_bytes": 1819163,
+      "uncompressed_sha256": "df236818648f73295842b47c45410fc4917aca516bac63c1f7a31b0ca94cc328"
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/served-town-canvas.js",
+      "bytes": 417042,
+      "sha256": "fa42dd88f69385c0930ba01f487615c8df21346986f906c582d1e9fc00687438",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/served-town-gl.js",
+      "bytes": 417042,
+      "sha256": "fa42dd88f69385c0930ba01f487615c8df21346986f906c582d1e9fc00687438",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/edge-events/vite.log",
+      "bytes": 1973,
+      "sha256": "9f3ad8bc49421ec66b2c39de8b4fda2dfd19a6ca98b2c6bb61c222d6ad97baca",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "docs/evidence/cut240/format-final.log",
+      "bytes": 112,
+      "sha256": "b3e8c7658ce108886d173509f3e321b69f5faaf0570e3e9d6405ffb0b90a4c9c",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/gzip-reader-check.log",
+      "bytes": 337,
+      "sha256": "b9a2f85208314846395162cd8ead97ad6b4352e8a51f513411a4651169306c0c",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/probe.js",
+      "bytes": 4988,
+      "sha256": "078dd3a301a6edcb73bf153b83066906ba08dc0c681dcf6bbe3039d7478697b5",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/review.log",
+      "bytes": 139,
+      "sha256": "4aa9532cef5994d3ee85ee088e8b641513c80569f614a45958ba29f860de16a1",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/review.mjs",
+      "bytes": 8519,
+      "sha256": "cc7e62aab8a1179ed502afd188e25b80b1e5e29789cf21a83c762806d98f701e",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/summary.json",
+      "bytes": 15546,
+      "sha256": "937df59008d3c82aab06d54ef4fca5f8163d493811821d50ec2fbd5833de0b26",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/tsc-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "in_scoped_commit": true
+    },
+    {
+      "path": "docs/evidence/cut240/tsc.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "in_scoped_commit": false,
+      "retained_local_scope": "Original/duplicate screenshot, uncompressed record, server transform/log or superseded candidate; preserved locally, deliberately outside scoped commit."
+    },
+    {
+      "path": "web/src/render/view2d.ts",
+      "bytes": 18086,
+      "sha256": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+      "in_scoped_commit": true
+    }
+  ]
+}
