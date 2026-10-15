@@ -103,6 +103,8 @@ html body .game-window[data-material="journal"] .journal-panel :is(button, summa
 /* Cut234: the glossary — met terms only, each its plate's gloss; the entry a plate opened wears a gilt rim. */
 .journal-term {
   display: grid;
+  min-width: 0;
+  overflow-wrap: anywhere;
   gap: var(--ui-space-1);
   padding: var(--ui-space-1) var(--ui-space-2);
   border-left: 3px solid transparent;

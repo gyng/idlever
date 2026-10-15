@@ -245,6 +245,17 @@ try {
             documentOverflow: document.documentElement.scrollWidth - innerWidth,
             innerOverflow: sheet.scrollWidth - sheet.clientWidth,
             panelOverflow: panel.scrollWidth - panel.clientWidth,
+            overflowing: [...panel.querySelectorAll("*")]
+              .filter(
+                (node) =>
+                  node.getBoundingClientRect().right > panel.getBoundingClientRect().right + 1,
+              )
+              .map((node) => ({
+                tag: node.tagName,
+                class: node.className,
+                text: node.textContent.slice(0, 100),
+                right: node.getBoundingClientRect().right,
+              })),
             recommended: panel.querySelectorAll('[data-recommended="true"]').length,
             controls,
             claims: [...panel.querySelectorAll("button")].some((n) => /claim/i.test(n.textContent)),
@@ -252,7 +263,7 @@ try {
         });
         assert.ok(geometry.documentOverflow <= 1);
         assert.ok(geometry.innerOverflow <= 1);
-        assert.ok(geometry.panelOverflow <= 1);
+        assert.ok(geometry.panelOverflow <= 1, JSON.stringify({ width, stage, scale, geometry }));
         assert.equal(geometry.recommended, 1);
         assert.equal(geometry.claims, false);
         assert.ok(

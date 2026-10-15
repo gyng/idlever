@@ -70,10 +70,30 @@ try {
     await journalBtn.click();
     await p.waitForSelector('.journal-chapter[data-chapter="glossary"]');
     // the homeless camp hides its console: the window must still take the screen (was 48 px tall)
-    const winH = await p.evaluate(
-      () => document.querySelector(".game-window").getBoundingClientRect().height,
+    const windowGeometry = await p.evaluate(async () => {
+      const panel = document.querySelector(".game-window");
+      const before = panel.getBoundingClientRect().height;
+      await document.fonts.ready;
+      await Promise.all(
+        panel
+          .closest(".sheet-wrap")
+          .getAnimations({ subtree: true })
+          .filter((a) => Number.isFinite(a.effect.getComputedTiming().endTime))
+          .map((a) => a.finished.catch(() => {})),
+      );
+      return {
+        before,
+        height: panel.getBoundingClientRect().height,
+        maxHeight: getComputedStyle(panel).maxHeight,
+        top: panel.closest(".sheet-wrap").style.getPropertyValue("--window-top"),
+        bottom: panel.closest(".sheet-wrap").style.getPropertyValue("--window-bottom"),
+      };
+    });
+    ok(
+      windowGeometry.height >= 300,
+      `journal window geometry ${JSON.stringify({ view, ...windowGeometry })}`,
     );
-    ok(winH >= 300, `journal window height ${winH}`);
+    console.log(JSON.stringify({ checkpoint: "journal-window", view, ...windowGeometry }));
     const listed = await p.evaluate(async () => {
       const { TIP, termTitle } = await import("/src/ui/concepts.ts");
       const rows = [...document.querySelectorAll(".journal-term")];
