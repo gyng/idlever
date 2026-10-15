@@ -1,0 +1,552 @@
+{
+  "scope": "Cut253 controlled native/client checkpoint; installed8879, earned campaign/WASM/pacing pending",
+  "paths": [
+    "crates/idlever-core/examples/advanced_campaign.rs",
+    "crates/idlever-core/examples/cut253_catalogue.rs",
+    "crates/idlever-core/src/ai.rs",
+    "crates/idlever-core/src/class_advanced.rs",
+    "crates/idlever-core/src/class_advanced_tests.rs",
+    "crates/idlever-core/src/class_tree.rs",
+    "crates/idlever-core/src/class_tree_tests.rs",
+    "crates/idlever-core/src/engine.rs",
+    "crates/idlever-core/src/firearm.rs",
+    "crates/idlever-core/src/hero.rs",
+    "crates/idlever-core/src/journal.rs",
+    "crates/idlever-core/src/lib.rs",
+    "crates/idlever-core/src/monster.rs",
+    "crates/idlever-core/src/turn.rs",
+    "crates/idlever-core/src/wire.rs",
+    "docs/CUT253_ADVANCED_CLASS_PATHS.md",
+    "docs/evidence/cut253/README-native.md",
+    "docs/evidence/cut253/baseline-native-preserved.json",
+    "docs/evidence/cut253/catalogue-export.log",
+    "docs/evidence/cut253/catalogue-provenance.json",
+    "docs/evidence/cut253/catalogue.json",
+    "docs/evidence/cut253/checkpoint-native-paths.json",
+    "docs/evidence/cut253/class-advanced-tests-paired-v4.rs",
+    "docs/evidence/cut253/client-class-tree-current.exit",
+    "docs/evidence/cut253/client-class-tree-current.log",
+    "docs/evidence/cut253/client-copy-current.exit",
+    "docs/evidence/cut253/client-copy-current.log",
+    "docs/evidence/cut253/client-format-current.exit",
+    "docs/evidence/cut253/client-format-current.log",
+    "docs/evidence/cut253/client-lint-current.exit",
+    "docs/evidence/cut253/client-lint-current.log",
+    "docs/evidence/cut253/client-pick-progress-v5.exit",
+    "docs/evidence/cut253/client-pick-progress-v5.log",
+    "docs/evidence/cut253/client-pick-progress-v5/1440-1x.png",
+    "docs/evidence/cut253/client-pick-progress-v5/1440-2x.png",
+    "docs/evidence/cut253/client-pick-progress-v5/402-1x.png",
+    "docs/evidence/cut253/client-pick-progress-v5/402-2x.png",
+    "docs/evidence/cut253/client-pick-progress-v5/results.json",
+    "docs/evidence/cut253/client-pick-progress.mjs",
+    "docs/evidence/cut253/client-tsc-current.exit",
+    "docs/evidence/cut253/client-tsc-current.log",
+    "docs/evidence/cut253/client-watch-loot-skill-current.exit",
+    "docs/evidence/cut253/client-watch-loot-skill-current.log",
+    "docs/evidence/cut253/earned-preparation/protocol-v1-superseded.md",
+    "docs/evidence/cut253/earned-preparation/protocol-v2-superseded.md",
+    "docs/evidence/cut253/earned-preparation/protocol.md",
+    "docs/evidence/cut253/earned-preparation/source-inventory.json",
+    "docs/evidence/cut253/icons72-v1.log",
+    "docs/evidence/cut253/icons72-v5.exit",
+    "docs/evidence/cut253/icons72-v5.log",
+    "docs/evidence/cut253/icons72-v5/1440-skill-board.png",
+    "docs/evidence/cut253/icons72-v5/402-skill-board.png",
+    "docs/evidence/cut253/icons72-v5/caster-states.png",
+    "docs/evidence/cut253/icons72-v5/checks.json",
+    "docs/evidence/cut253/icons72-v5/clown-states.png",
+    "docs/evidence/cut253/icons72-v5/engineer-states.png",
+    "docs/evidence/cut253/icons72-v5/fighter-states.png",
+    "docs/evidence/cut253/icons72-v5/gunner-states.png",
+    "docs/evidence/cut253/icons72-v5/ranger-states.png",
+    "docs/evidence/cut253/icons72-v5/rogue-states.png",
+    "docs/evidence/cut253/interaction-case-inventory.json",
+    "docs/evidence/cut253/native-actual-actions-v2.log",
+    "docs/evidence/cut253/native-actual-actions-v3.log",
+    "docs/evidence/cut253/native-actual-actions-v4.log",
+    "docs/evidence/cut253/native-actual-actions-v5.log",
+    "docs/evidence/cut253/native-cache-checks.json",
+    "docs/evidence/cut253/native-cache-source-before.json",
+    "docs/evidence/cut253/native-cache-source-v2-before.json",
+    "docs/evidence/cut253/native-cached-causal-v2.log",
+    "docs/evidence/cut253/native-cached-causal.log",
+    "docs/evidence/cut253/native-cached-tree-v2.log",
+    "docs/evidence/cut253/native-cached-tree.log",
+    "docs/evidence/cut253/native-clippy-v1.log",
+    "docs/evidence/cut253/native-clippy-v2.log",
+    "docs/evidence/cut253/native-clippy-v3.log",
+    "docs/evidence/cut253/native-design-notes.md",
+    "docs/evidence/cut253/native-final-causal.log",
+    "docs/evidence/cut253/native-final-checks.json",
+    "docs/evidence/cut253/native-final-source-before.json",
+    "docs/evidence/cut253/native-final-source-v3-before.json",
+    "docs/evidence/cut253/native-final-tree.log",
+    "docs/evidence/cut253/native-first-compile.log",
+    "docs/evidence/cut253/native-observations-2026-10-16.json",
+    "docs/evidence/cut253/native-paired-v1.log",
+    "docs/evidence/cut253/native-paired-v2.log",
+    "docs/evidence/cut253/native-paired-v3.log",
+    "docs/evidence/cut253/native-paired-v4.log",
+    "docs/evidence/cut253/native-paired-v5.log",
+    "docs/evidence/cut253/native-source-v2.json",
+    "docs/evidence/cut253/native-tree-v1.log",
+    "docs/evidence/cut253/native-tree-v2.log",
+    "docs/evidence/cut253/native-tree-v3.log",
+    "docs/evidence/cut253/native-workspace-v1.log",
+    "docs/evidence/cut253/native-workspace-v2.log",
+    "docs/evidence/cut253/native-workspace-v3.log",
+    "web/src/class-tree.css",
+    "web/src/engine/types.ts",
+    "web/src/skill-icons.css",
+    "web/src/ui/camp.ts",
+    "web/src/ui/class-interaction.ts",
+    "web/src/ui/class-stage-notice.ts",
+    "web/src/ui/class-tree.ts",
+    "web/src/ui/combat-log.ts",
+    "web/src/ui/painted-skill-assets.ts",
+    "web/src/ui/skill-icons.ts",
+    "web/src/ui/watch.ts",
+    "web/tests/fixtures/README.md",
+    "web/tests/fixtures/class-path-catalogue.json",
+    "web/tests/skill-icons.mjs"
+  ],
+  "files": {
+    "crates/idlever-core/examples/advanced_campaign.rs": {
+      "sha256": "5eb967cb887ad24f0776c8e6f72152100782217734155b9649960f018ee8375d",
+      "bytes": 14456
+    },
+    "crates/idlever-core/examples/cut253_catalogue.rs": {
+      "sha256": "9c7006c9f93da8bdffce2fdc06b3f45c0f8a9b94919440b0037b40696c18d5eb",
+      "bytes": 627
+    },
+    "crates/idlever-core/src/ai.rs": {
+      "sha256": "f3d75bd72671bb4fa82a92fbdda57b9accc7c83a85c26a81c475e9dfe43e3f3e",
+      "bytes": 217745
+    },
+    "crates/idlever-core/src/class_advanced.rs": {
+      "sha256": "f939ca8ace43ade0d4565b55bc9c0b1543970a428eca91f18245d54dc6794db3",
+      "bytes": 24174
+    },
+    "crates/idlever-core/src/class_advanced_tests.rs": {
+      "sha256": "0bdc379a758fce15b2fa6859f03ae4a4dc84cd1c906ff6b5106b750eb12575c6",
+      "bytes": 52095
+    },
+    "crates/idlever-core/src/class_tree.rs": {
+      "sha256": "ce903da2b906f9f30c85925bcaf4fd58f351e7e5b51c637cdfe0b960d0d83d34",
+      "bytes": 34196
+    },
+    "crates/idlever-core/src/class_tree_tests.rs": {
+      "sha256": "87cbe87f0a045fc06f571ad6c04a100bee2af8ae542362b4fafbf80f10016a3a",
+      "bytes": 27200
+    },
+    "crates/idlever-core/src/engine.rs": {
+      "sha256": "f6cfd7f86aa365c4421461a4fdaca10b3f8bf07fbf7592e9247b3f989e373613",
+      "bytes": 390722
+    },
+    "crates/idlever-core/src/firearm.rs": {
+      "sha256": "c4342b7eac98cf80c9956dccdf9ecbd942df63b5b51a71a46af74cd2fc7d5310",
+      "bytes": 22229
+    },
+    "crates/idlever-core/src/hero.rs": {
+      "sha256": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369",
+      "bytes": 26834
+    },
+    "crates/idlever-core/src/journal.rs": {
+      "sha256": "fdd7dac4d7d2ac2b58f8d46043b5e0936ba3532a3cc2332560357a01afcc3be5",
+      "bytes": 24607
+    },
+    "crates/idlever-core/src/lib.rs": {
+      "sha256": "51d9bee2a1302c21c8dcf3aef02571638fb6d7edad39703486b4d0ea317cfe17",
+      "bytes": 18648
+    },
+    "crates/idlever-core/src/monster.rs": {
+      "sha256": "ec728595c562a0248bb573b24bd97519fa003b61e95fe5b430972e5a5d9019c5",
+      "bytes": 12567
+    },
+    "crates/idlever-core/src/turn.rs": {
+      "sha256": "4b23660d1e550f9d882ecd3069461af4dc22a72205af975fa38fafd3ad52502c",
+      "bytes": 179673
+    },
+    "crates/idlever-core/src/wire.rs": {
+      "sha256": "23e38990d6061baaa0a619d01a94e86ad58609ad7d7c2ca93621df0de64ebbc1",
+      "bytes": 173730
+    },
+    "docs/CUT253_ADVANCED_CLASS_PATHS.md": {
+      "sha256": "9c93e5adc53b10e5e9566cb566f86a56b5e97466983ff660a43e8beb3ed590af",
+      "bytes": 9489
+    },
+    "docs/evidence/cut253/README-native.md": {
+      "sha256": "1d9ae185ee9e3799dafadb4cd4c687021acfda38e121f25d5d4332f5d045447c",
+      "bytes": 3966
+    },
+    "docs/evidence/cut253/baseline-native-preserved.json": {
+      "sha256": "3bfba400dbeaa60a46e032d377236337c15ff4bec7598c96103fec90a825741d",
+      "bytes": 792
+    },
+    "docs/evidence/cut253/catalogue-export.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/catalogue-provenance.json": {
+      "sha256": "3e4ac1a85cffe87a35d9eb58a3f81333b7c35f3f341793d108a70e677da51696",
+      "bytes": 1479
+    },
+    "docs/evidence/cut253/catalogue.json": {
+      "sha256": "a96b311ac4cb7bdab98ebe9ea2de2f6f5fd574b7ea7a981dc3936b46b510e19d",
+      "bytes": 65553
+    },
+    "docs/evidence/cut253/checkpoint-native-paths.json": {
+      "sha256": "1d041c6c041c3065707c674efa10e917c4348ee63785185bbf3431ddf7849d20",
+      "bytes": 5042
+    },
+    "docs/evidence/cut253/class-advanced-tests-paired-v4.rs": {
+      "sha256": "d219ad519a080068791db02a5affeb79bc73a4553fd852351ef2e68a74128d06",
+      "bytes": 50674
+    },
+    "docs/evidence/cut253/client-class-tree-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-class-tree-current.log": {
+      "sha256": "15fc56535632ab3124a472f3a928eeb7359fc3c62e6ff2539cf026872a216c02",
+      "bytes": 430
+    },
+    "docs/evidence/cut253/client-copy-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-copy-current.log": {
+      "sha256": "8394e6e7ccce12aa1cad8af701fbf2b0161fcd329862989e0915845cfc0aa1b2",
+      "bytes": 57
+    },
+    "docs/evidence/cut253/client-format-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-format-current.log": {
+      "sha256": "1f4900df1b0545142d5959096dd5dabc679a4b69b17c398adb03b4f1aa28ed2a",
+      "bytes": 113
+    },
+    "docs/evidence/cut253/client-lint-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-lint-current.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/client-pick-progress-v5.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-pick-progress-v5.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/client-pick-progress-v5/1440-1x.png": {
+      "sha256": "7c4c24fa6ea8aea028b707743b91d15c0d841a928313a6fda76a040466fe5390",
+      "bytes": 541884
+    },
+    "docs/evidence/cut253/client-pick-progress-v5/1440-2x.png": {
+      "sha256": "c4afb0ec0e739d8e9b0ca19158f63e1c4c5ed95d0e88c2f2264e387794c34535",
+      "bytes": 574486
+    },
+    "docs/evidence/cut253/client-pick-progress-v5/402-1x.png": {
+      "sha256": "36ed22d796eba0356f12dfb8f5bcd3d0e6a208879f9c47deaa92bbd93ec42538",
+      "bytes": 142654
+    },
+    "docs/evidence/cut253/client-pick-progress-v5/402-2x.png": {
+      "sha256": "18c5ba7da2395f29f25648ec0aaeec0c333633793c6b131ea87cb088e15465a5",
+      "bytes": 147080
+    },
+    "docs/evidence/cut253/client-pick-progress-v5/results.json": {
+      "sha256": "1bfa675fac5e3b6a2cabc16265e6ffdc6944d60d638d84dbe0ec3b2b6507379f",
+      "bytes": 73270
+    },
+    "docs/evidence/cut253/client-pick-progress.mjs": {
+      "sha256": "dcc0f12dcc38c62d76b0ad4050278dd61f23fb1ea093381494ade43873f8997d",
+      "bytes": 13088
+    },
+    "docs/evidence/cut253/client-tsc-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-tsc-current.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "docs/evidence/cut253/client-watch-loot-skill-current.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/client-watch-loot-skill-current.log": {
+      "sha256": "1ae0f297a37894a5254c4a70e6946ca88a5c9b197824891f30f26266e7777a8f",
+      "bytes": 508
+    },
+    "docs/evidence/cut253/earned-preparation/protocol-v1-superseded.md": {
+      "sha256": "029716a09103654473ea642f36336122abe26538b7eb1009df3ec4e26c81a38c",
+      "bytes": 4133
+    },
+    "docs/evidence/cut253/earned-preparation/protocol-v2-superseded.md": {
+      "sha256": "e2d4ad3df31d7ea396b95160f22654b21387f3c22bd089f7099856e3ed123637",
+      "bytes": 4484
+    },
+    "docs/evidence/cut253/earned-preparation/protocol.md": {
+      "sha256": "9a8959376751005f3407c14c22e7cc2b4478a03abc428e36f196dd73abd4507a",
+      "bytes": 4940
+    },
+    "docs/evidence/cut253/earned-preparation/source-inventory.json": {
+      "sha256": "8ffb2f26b6de1932cad2c1d42f51e059fcbc589d41942a189f2313a895ef8a0e",
+      "bytes": 4273
+    },
+    "docs/evidence/cut253/icons72-v1.log": {
+      "sha256": "eacdf8334b4c1e3ecf651651fb8213bdf418f06a7357e5e443b278d51a07a5d1",
+      "bytes": 302
+    },
+    "docs/evidence/cut253/icons72-v5.exit": {
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    "docs/evidence/cut253/icons72-v5.log": {
+      "sha256": "682d393f808b93502bde3fff004e78fb5bea9a9aac5eace75b8c50d49b1fc985",
+      "bytes": 72
+    },
+    "docs/evidence/cut253/icons72-v5/1440-skill-board.png": {
+      "sha256": "3b7c824b9bf4f2040dbd0235a8697e6ff06fc31252942999a134989fbdf57844",
+      "bytes": 1199433
+    },
+    "docs/evidence/cut253/icons72-v5/402-skill-board.png": {
+      "sha256": "93646f45a995c98ad1a56327eb7417605f3179989dbf53be58a28ad311830b9a",
+      "bytes": 169109
+    },
+    "docs/evidence/cut253/icons72-v5/caster-states.png": {
+      "sha256": "05f5f2786a68f8076146b7c0fc63ff57e47870a225a4dafe88a5b22c5f19eaa5",
+      "bytes": 405761
+    },
+    "docs/evidence/cut253/icons72-v5/checks.json": {
+      "sha256": "0fdf637347f0a49ca79177f88763dfdb85c67d02e77af6e1347f24ce41079c0a",
+      "bytes": 14242
+    },
+    "docs/evidence/cut253/icons72-v5/clown-states.png": {
+      "sha256": "6a3be2d73414a4d0a8d3940b7bea786673e92bf961a28fb75a14f648ffcf111d",
+      "bytes": 159221
+    },
+    "docs/evidence/cut253/icons72-v5/engineer-states.png": {
+      "sha256": "a59eb530fca0374a0aa9a4a2a6593d537830c2939f736de5dc04f99f46784ad4",
+      "bytes": 168094
+    },
+    "docs/evidence/cut253/icons72-v5/fighter-states.png": {
+      "sha256": "da3433b6077411b6001616f186a14021f9d5a93a023e069241ca46c4bd2e50cd",
+      "bytes": 386251
+    },
+    "docs/evidence/cut253/icons72-v5/gunner-states.png": {
+      "sha256": "1b88cee7fbbee4fa7a37435e9993d7e746e9851471b8e51d41aae357e3027751",
+      "bytes": 372083
+    },
+    "docs/evidence/cut253/icons72-v5/ranger-states.png": {
+      "sha256": "a14137b1e5e10d357ef1a8741cd223ada0e494e072936df1b791a34fd9c91c41",
+      "bytes": 391443
+    },
+    "docs/evidence/cut253/icons72-v5/rogue-states.png": {
+      "sha256": "46e456611e86fe637edb7414ca4024703f07628c33a492e16a8203755eaa67ae",
+      "bytes": 396525
+    },
+    "docs/evidence/cut253/interaction-case-inventory.json": {
+      "sha256": "be0e8c15d35a4297cd49fbeb787366fa11e1f9c459757902ee66f7aba0ba093f",
+      "bytes": 39163
+    },
+    "docs/evidence/cut253/native-actual-actions-v2.log": {
+      "sha256": "b0ad4d80d297aeedfce9efe8a33133dcab7e69725158a50eabd0429d4f3ac265",
+      "bytes": 116
+    },
+    "docs/evidence/cut253/native-actual-actions-v3.log": {
+      "sha256": "b9b0bb6a8aa20d25338c27e2f4ac2cbe8d018f569e8223d946349a1166479a2e",
+      "bytes": 1166
+    },
+    "docs/evidence/cut253/native-actual-actions-v4.log": {
+      "sha256": "7bc1ae2d9b084c53af8638a7b10dd76a9848aa246c7be1da73ecb13513bcf125",
+      "bytes": 5854
+    },
+    "docs/evidence/cut253/native-actual-actions-v5.log": {
+      "sha256": "d7669425277effe17ca81bcb66dcbe01be34e6a6296d756db548b9feb0e753dd",
+      "bytes": 137
+    },
+    "docs/evidence/cut253/native-cache-checks.json": {
+      "sha256": "ce42acbd9e10f38d8c07e38fa863729c925c4e800e5b61a700bd76cb1fc3c662",
+      "bytes": 733
+    },
+    "docs/evidence/cut253/native-cache-source-before.json": {
+      "sha256": "d65f5297f54a53880d47428b2d453e950a5170d2f26c0f8c403a4025fd31501e",
+      "bytes": 23556
+    },
+    "docs/evidence/cut253/native-cache-source-v2-before.json": {
+      "sha256": "8db63729be549b7baa66288221ff4a7ff38ca716ddb80967394d61ddafa7af3d",
+      "bytes": 23563
+    },
+    "docs/evidence/cut253/native-cached-causal-v2.log": {
+      "sha256": "560f7bfd7971a24b03cc9339e0d9986bdf0a1879e052bf054db70a547de4cb8e",
+      "bytes": 1680
+    },
+    "docs/evidence/cut253/native-cached-causal.log": {
+      "sha256": "40684bb8ef32e84f3af27efa12696db98487466757edf68e1d1d1ee99ffd52ee",
+      "bytes": 1680
+    },
+    "docs/evidence/cut253/native-cached-tree-v2.log": {
+      "sha256": "bfa4c989e76087600e78ecdf6c9b6be26891effc720d45f1857bb795a20aa007",
+      "bytes": 6011
+    },
+    "docs/evidence/cut253/native-cached-tree.log": {
+      "sha256": "af5bf22c7d70e492be0977a30ef19ab0a6b75ec942cea688e794c87c0b149ee5",
+      "bytes": 6684
+    },
+    "docs/evidence/cut253/native-clippy-v1.log": {
+      "sha256": "6a908fbae2d40b498d04ca9335079fdae15c516bb383f1045adea2df6146eb2c",
+      "bytes": 3694
+    },
+    "docs/evidence/cut253/native-clippy-v2.log": {
+      "sha256": "61b1f7e02f12f5bfd2f8e89195d7b6c322d33e987a601333a7ec8de317bc40d0",
+      "bytes": 1489
+    },
+    "docs/evidence/cut253/native-clippy-v3.log": {
+      "sha256": "7d4a2f4275200a3430a6456aba78b967e77428021956e0801b7754030058095a",
+      "bytes": 217
+    },
+    "docs/evidence/cut253/native-design-notes.md": {
+      "sha256": "ed15cfdaa35c7c52349a978963a9c1e4ed828c012252888dc9bca49924e25e9c",
+      "bytes": 3710
+    },
+    "docs/evidence/cut253/native-final-causal.log": {
+      "sha256": "ffa640d989c6a729ac42a27e32d91e7642825d0cd6813d4b2295742d0d62c67e",
+      "bytes": 1680
+    },
+    "docs/evidence/cut253/native-final-checks.json": {
+      "sha256": "12ea916f62191a06b88073edd164dd98aee9d42fc7117bc9c25154df303778ca",
+      "bytes": 3784
+    },
+    "docs/evidence/cut253/native-final-source-before.json": {
+      "sha256": "848177804b45d2c2af6d30a3302cfb0bacf1e196deed5f74bed7f230a7baa620",
+      "bytes": 23593
+    },
+    "docs/evidence/cut253/native-final-source-v3-before.json": {
+      "sha256": "4e6958372155c0a2d8272403a0be679457ac0e8c7da3377c9e1d83c5db896971",
+      "bytes": 23580
+    },
+    "docs/evidence/cut253/native-final-tree.log": {
+      "sha256": "d3cfef47e8a3bbac8ecd1ee283a64cae91f9cd4351437ef9fca7dd09a727f9e4",
+      "bytes": 6011
+    },
+    "docs/evidence/cut253/native-first-compile.log": {
+      "sha256": "cf9af4798c6dbe2f6ab1b4deb856f4bb768f201e4dae480c1f7e2adba40f1550",
+      "bytes": 1044
+    },
+    "docs/evidence/cut253/native-observations-2026-10-16.json": {
+      "sha256": "36f7071418b84303282cfa3d416302cccf4921668c6c476f601c533b038ccb75",
+      "bytes": 3302
+    },
+    "docs/evidence/cut253/native-paired-v1.log": {
+      "sha256": "91648d09b823c2b52eb0e9ec66959aca00852f924e9fed8a053fff2a117b8bd2",
+      "bytes": 1677
+    },
+    "docs/evidence/cut253/native-paired-v2.log": {
+      "sha256": "20e77200f10ed6f9d2d11a3cd381ae12229ef50a8e29b51e017ae1beec2b0645",
+      "bytes": 2319
+    },
+    "docs/evidence/cut253/native-paired-v3.log": {
+      "sha256": "a9eb40a93074a242a4e5e27717249558514f1f2245b69ac3a023284e41d51449",
+      "bytes": 2321
+    },
+    "docs/evidence/cut253/native-paired-v4.log": {
+      "sha256": "981253818c833d858d366d8a42ee570b195b777caca0f734eedac8a917a94a21",
+      "bytes": 86824
+    },
+    "docs/evidence/cut253/native-paired-v5.log": {
+      "sha256": "a439b461379812b8e22acfb58a270344c1fd63fd63cc01599269c7ec8f33873c",
+      "bytes": 1680
+    },
+    "docs/evidence/cut253/native-source-v2.json": {
+      "sha256": "c223729975e3277462195203ceb7a0057eec15bba9547830696eec832aef3667",
+      "bytes": 1438
+    },
+    "docs/evidence/cut253/native-tree-v1.log": {
+      "sha256": "a1b861e5dbc586c135ae34927a2afcedb90fab30be267065e3ee02876b7ed0a7",
+      "bytes": 2778
+    },
+    "docs/evidence/cut253/native-tree-v2.log": {
+      "sha256": "9cdf8b517591ac39326afc0cff4135f7dc72ba481bd8aaa9acb300e39721fa85",
+      "bytes": 6553
+    },
+    "docs/evidence/cut253/native-tree-v3.log": {
+      "sha256": "aa400f5a604256cc5c1db243193a82fc3c6bf61e3bf422f5ae80ee3b1ee4e507",
+      "bytes": 6648
+    },
+    "docs/evidence/cut253/native-workspace-v1.log": {
+      "sha256": "f5c0c05de26d7ee235cc88cf31d81c38a951188c5787bbe14fdf8d676d9b0209",
+      "bytes": 1996
+    },
+    "docs/evidence/cut253/native-workspace-v2.log": {
+      "sha256": "67a417037fe33920737e275133da5f0db979c1c3f446a983dadb03b3e6a6e4cc",
+      "bytes": 1587
+    },
+    "docs/evidence/cut253/native-workspace-v3.log": {
+      "sha256": "d8f50b9a70adbabb4ed57317192e41986957683f02714ac0d68ade50df92af7e",
+      "bytes": 1587
+    },
+    "web/src/class-tree.css": {
+      "sha256": "d1a17daf9a58925f13a6634dc27eedc3edd4be9933da6276a701055d2e6a1cda",
+      "bytes": 5987
+    },
+    "web/src/engine/types.ts": {
+      "sha256": "077a66d4c26745f65a8b9840333078c00be97a4d4fb52669fc25100024d57e93",
+      "bytes": 134566
+    },
+    "web/src/skill-icons.css": {
+      "sha256": "6745e05e0d8302bf3a2e963fab217edf03b90a14a2e2dfbc239546260dec4204",
+      "bytes": 2215
+    },
+    "web/src/ui/camp.ts": {
+      "sha256": "cc8d701f2714222352171d7fc57da6eab05040504fd1ae6771dc986062ddb559",
+      "bytes": 108370
+    },
+    "web/src/ui/class-interaction.ts": {
+      "sha256": "6dbb392f42eaab0161a002a44e86a055981194576196bbd8d33650eb540dab26",
+      "bytes": 2185
+    },
+    "web/src/ui/class-stage-notice.ts": {
+      "sha256": "41c6dd301237a5330e1f79f469aae06e2b8924fcb34424bc2f69d9b8dd6c3acf",
+      "bytes": 3680
+    },
+    "web/src/ui/class-tree.ts": {
+      "sha256": "db502882a251c913c13d01ebfb1818dd2bcba8130d15f2931f5908cf61d8057b",
+      "bytes": 13857
+    },
+    "web/src/ui/combat-log.ts": {
+      "sha256": "fd2e0535080fcb5fa407bc942049f47e02d887f883fa8321ffa64924c0f2a211",
+      "bytes": 2867
+    },
+    "web/src/ui/painted-skill-assets.ts": {
+      "sha256": "f70309b7353c5272a0a150ecfcdb59d2cf1cedc23859791a785587542a0e3c4e",
+      "bytes": 2014
+    },
+    "web/src/ui/skill-icons.ts": {
+      "sha256": "97819dc39d27989fe752086c30715abeb004b628a0961366430ed102c88c861a",
+      "bytes": 11955
+    },
+    "web/src/ui/watch.ts": {
+      "sha256": "e75968793f9e8690261dfed7c500e0d03c69be6670ea037af6beb7b0690d92fc",
+      "bytes": 244842
+    },
+    "web/tests/fixtures/README.md": {
+      "sha256": "4b94e4e65917383789212211ae26f11c66a5a67c4e385656a8f3fc5de8457374",
+      "bytes": 1248
+    },
+    "web/tests/fixtures/class-path-catalogue.json": {
+      "sha256": "f881337116cb7aef4ad870dc7be94edcbc0b2d53d37397ab82cc999739832f14",
+      "bytes": 66133
+    },
+    "web/tests/skill-icons.mjs": {
+      "sha256": "2ddb3cd197fb9935147bfe951a2c59a4cceb060cb398c18e5327a33e92166114",
+      "bytes": 10909
+    }
+  }
+}

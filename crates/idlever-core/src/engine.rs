@@ -1477,6 +1477,9 @@ pub struct LineageState {
     pub specializations:BTreeMap<String,crate::specialization::Style>,
     #[serde(default,skip_serializing_if="BTreeMap::is_empty")]
     pub class_paths:BTreeMap<String,BTreeSet<String>>,
+    /// Once per actual earned personal class stage; absent on old saves.
+    #[serde(default,skip_serializing_if="BTreeMap::is_empty")]
+    pub class_stages_announced:BTreeMap<String,u8>,
     // Addendum D
     pub forge: BTreeMap<String, ForgeRow>,
     pub renown: u32,
@@ -2007,6 +2010,7 @@ impl LineageState {
             classes,
             specializations:BTreeMap::new(),
             class_paths:BTreeMap::new(),
+            class_stages_announced:BTreeMap::new(),
             forge: BTreeMap::new(),
             renown: 0,
             rank: 0,
@@ -5201,6 +5205,7 @@ impl Game {
     /// retains secured/protected Gold. Return XP and renown remain 60%; physical kit
     /// on a death stays on the floor as bones without another converted-value payment.
     pub fn finish_run(&mut self) -> Option<RunOutcome> {
+        let class_stage_before=crate::class_tree::earned_stage(&self.lineage);
         let run = self.run.take()?;
         self.capsules.1 = false;   // (its capsule stays held in memory; the save carries none but a band boss's kill)
         if !self.sim && run.kills.iter().any(|(_, k, _)| !k.starts_with("spectral_") && crate::defs::monster_def(k).boss) {
@@ -5554,6 +5559,7 @@ impl Game {
                 if !mastery_card(class).is_empty() { self.lineage.unlocks.insert(mastery_card(class).into()); }
             }
         }
+        crate::class_tree::announce_stage(self,class_stage_before,t);
         self.batch.xp_gained += xp;
         if let Some(t) = &run.tools { self.batch.tools.get_or_insert_with(Default::default).add(&t.stats); }
         self.batch.level_ups += level_ups;

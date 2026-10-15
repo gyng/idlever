@@ -1,0 +1,47 @@
+
+running 27 tests
+paired fighter_rally: enabled=-30, control=-50
+paired fighter_oathguard: enabled=999, control=997
+paired fighter_opening_cut: enabled=-40, control=-50
+paired fighter_siege_rhythm: enabled=-920, control=-922
+paired fighter_holdfast: enabled=799, control=797
+...................paired fighter_execution_arc: enabled=-30, control=-50
+....paired rogue_afterimage: enabled=-80, control=-100
+.paired rogue_tell_thief: enabled=-90, control=-100
+paired rogue_veiled_route: enabled=50, control=0
+paired rogue_patient_ambush: enabled=3, control=0
+paired rogue_ghostwalk: enabled=-917, control=-919
+.paired rogue_silent_finish: enabled=50, control=0
+
+thread 'ai::advanced_tests::every_actual_charge_preserves_complete_save_across_active_deadline_expired_whole_sliced_reload' (200) panicked at crates/idlever-core/src/class_advanced_tests.rs:1272:13:
+Oathguard complete Run at1
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+paired ranger_spotter: enabled=40, control=30
+paired ranger_quiver_thread: enabled=-20, control=-40
+ 25/27
+ai::advanced_tests::every_actual_charge_preserves_complete_save_across_active_deadline_expired_whole_sliced_reload --- FAILED
+paired ranger_corridor_volley: enabled=-964, control=-1000
+paired ranger_split_mark: enabled=20, control=0
+paired ranger_patient_snare: enabled=-20, control=-40
+paired ranger_moving_line: enabled=50, control=0
+paired caster_chilling_charge: enabled=-40, control=-50
+paired caster_storm_cell: enabled=-998, control=-1000
+paired caster_ice_lock: enabled=40, control=30
+paired caster_shatter_ward: enabled=-130, control=-150
+paired caster_conduct: enabled=10, control=0
+paired caster_last_wall: enabled=-30, control=-50
+paired gunner_rangefinder: enabled=1, control=0
+paired gunner_chamber_chain: enabled=10, control=0
+paired gunner_smoke_walk: enabled=440, control=390
+paired gunner_cycling_breach: enabled=-90, control=-100
+paired gunner_long_watch: enabled=10, control=0
+paired gunner_breach_route: enabled=50, control=0
+.
+failures:
+
+failures:
+    ai::advanced_tests::every_actual_charge_preserves_complete_save_across_active_deadline_expired_whole_sliced_reload
+
+test result: FAILED. 26 passed; 1 failed; 0 ignored; 0 measured; 991 filtered out; finished in 0.01s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

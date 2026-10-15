@@ -117,6 +117,7 @@ import {
 import { orderOffer } from "./order-offer"; // Cut 120 option B: Legacy and ranks offered once
 import { campFeats, featOrderBits, SINK_ORDERS, SINK_WORD, sinkHandChip } from "./feats"; // Boss targeting, trials and standing orders; paid wishes retired.
 import { announceClassUnlock } from "./class-unlock"; // Cut225: an earned class said once
+import { createClassStageNotice } from "./class-stage-notice";
 
 const SET_NAME_MAX = 12;
 /** QA 524827b (qaAA): a supply whose name does not say its use — its use under the shop chip (≤ 3 words). */
@@ -661,6 +662,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     cons.el,
   );
   setBusyHost(busyStrip);
+  const classStageNotice = createClassStageNotice(app, el);
   // blind 5331f40 (A: "tapping edit only showed a tooltip; the rows sat under the town and needed a scroll"): opening the editor
   // brings its rows into the well's view (after the refresh lays them out)
   function showEditor(): void {
@@ -2468,6 +2470,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     });
     audio.drone(biomeOf(app.lineage.best_depth + 1));
     announceClassUnlock(app);
+    classStageNotice.paint();
   }
   paintAll();
   // Cut 118 §6: the report's `collect & send` lands here and sends (the hero walks to the mouth as from the gem)
@@ -2510,6 +2513,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       batch.dispose();
       tasks.dispose();
       feats.dispose();
+      classStageNotice.dispose();
       document.querySelector(".class-unlock")?.remove(); // the plate belongs to the camp: it never rides into the watch
       offer.dispose();
       window.removeEventListener("idlever:focus-hero", focusHome);

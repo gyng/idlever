@@ -109,6 +109,11 @@ pub struct Monster {
     pub marked: i32,
     #[serde(default)]
     pub slow_t: i32,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub advanced_slow:Option<crate::class_advanced::SlowCast>,
+    /// Copied marks cannot seed another Split Mark. Fresh Mark clears this.
+    #[serde(default,skip_serializing_if="std::ops::Not::not")]
+    pub advanced_mark_copy:bool,
     #[serde(default,skip_serializing_if="crate::specialization::zero")]
     pub hex_t:i32,
     /// Cut 3: the warden's current face — reflecting ranged (true) or melee (false).
@@ -196,6 +201,8 @@ impl Monster {
             acts_since_hero: 0,
             marked: 0,
             slow_t: 0,
+            advanced_slow:None,
+            advanced_mark_copy:false,
             hex_t:0,
             warden_ranged: false,
             introduced: false,

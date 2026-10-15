@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-16",
+  "terminalRecordedUtc": "2026-10-15T23:26:02.790064+00:00",
+  "status": "PASS scoped native implementation checks; earned/default-baseline/WASM/pacing acceptance pending",
+  "sourceBefore": "docs/evidence/cut253/native-final-source-v3-before.json",
+  "sourceInventorySha256": "4e6958372155c0a2d8272403a0be679457ac0e8c7da3377c9e1d83c5db896971",
+  "sourceUnchangedThroughFinalTerminal": true,
+  "checkedFileCount": 202,
+  "checks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "handle": 80370,
+      "exit": 0,
+      "tests": 28,
+      "log": "docs/evidence/cut253/native-final-causal.log",
+      "sourcePhase": "native-final-source-before.json; followed only by three field-shorthand spellings",
+      "logSha256": "ffa640d989c6a729ac42a27e32d91e7642825d0cd6813d4b2295742d0d62c67e"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core class_tree -- --nocapture",
+      "handle": 58160,
+      "exit": 0,
+      "tests": 16,
+      "log": "docs/evidence/cut253/native-final-tree.log",
+      "sourcePhase": "native-final-source-before.json; followed only by three field-shorthand spellings",
+      "logSha256": "d3cfef47e8a3bbac8ecd1ee283a64cae91f9cd4351437ef9fca7dd09a727f9e4"
+    },
+    {
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "handle": 9672,
+      "exit": 0,
+      "log": "docs/evidence/cut253/native-clippy-v3.log",
+      "sourcePhase": "docs/evidence/cut253/native-final-source-v3-before.json",
+      "logSha256": "7d4a2f4275200a3430a6456aba78b967e77428021956e0801b7754030058095a"
+    },
+    {
+      "command": "cargo test -q --workspace --profile fast",
+      "handle": 67264,
+      "exit": 0,
+      "tests": 1013,
+      "ignored": 6,
+      "log": "docs/evidence/cut253/native-workspace-v3.log",
+      "sourcePhase": "docs/evidence/cut253/native-final-source-v3-before.json",
+      "scope": "Includes all28 advanced causal/persistence tests and16 class-tree/stage tests on exact final source.",
+      "logSha256": "d8f50b9a70adbabb4ed57317192e41986957683f02714ac0d68ade50df92af7e"
+    }
+  ],
+  "catalogueBindings": {
+    "crates/idlever-core/src/class_tree.rs": "ce903da2b906f9f30c85925bcaf4fd58f351e7e5b51c637cdfe0b960d0d83d34",
+    "crates/idlever-core/src/hero.rs": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369"
+  },
+  "catalogueSha256": "a96b311ac4cb7bdab98ebe9ea2de2f6f5fd574b7ea7a981dc3936b46b510e19d",
+  "historicalPhases": [
+    {
+      "workspace": "native-workspace-v1.log",
+      "handle": 17129,
+      "exit": 0,
+      "tests": 1013,
+      "ignored": 6
+    },
+    {
+      "workspace": "native-workspace-v2.log",
+      "handle": 73244,
+      "exit": 0,
+      "tests": 1013,
+      "ignored": 6
+    },
+    {
+      "clippy": "native-clippy-v1.log",
+      "handle": 64192,
+      "exit": 101,
+      "reason": "Two8-argument helpers and3test style diagnostics; repaired without lint suppression."
+    },
+    {
+      "clippy": "native-clippy-v2.log",
+      "handle": 49898,
+      "exit": 101,
+      "reason": "Three redundant target: target fields; final correction is field shorthand only."
+    }
+  ],
+  "installedWasm": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "wasmRebuilt": false,
+  "liveOwnedHandles": [],
+  "pending": [
+    "Complete all-node miss/refusal/once combinations beyond current30paired positive and14charge boundary/expiry controls",
+    "Genuine earned5classes\u00d73seeds campaigns/stages and actual next8h capstone comparator; literal zero-lifetime-defeat survivor",
+    "Unchanged-default/native8879 paired baseline",
+    "Rebuilt-WASM strict settlement/parity/current client checks",
+    "16seed pacing and routine full; exhaustive/fun separate"
+  ]
+}

@@ -5,8 +5,12 @@ in WORK_QUEUE.md and the full extension specified in
 [Cut225](CUT225_CLOWN_ENGINEER.md#larger-trees-for-the-five-existing-classes).
 It does not replace that extension with the completed painted equipment figure,
 the existing new classes, or a recursive tree renderer. Those are separate work.
-Status: native source implementation in progress, uncompiled; no new runtime,
-earned-play or acceptance claims yet.
+Status: native implementation passes scoped controlled checks:1013workspace
+tests/6ignored, default all-target Clippy,28causal/persistence and16tree/stage
+tests (native-final-checks.json). Current installed WASM remains8879; genuine
+earned campaigns, default-runtime comparison, new-WASM parity and pacing/full
+acceptance remain pending. Client catalogue/progress/notice checks are controlled
+presentation evidence, not earned advanced eligibility.
 
 Owner art refinement: the flat SVG draft sheets are too basic for final skill
 art. Finished icons need original painted ability moments with personality,

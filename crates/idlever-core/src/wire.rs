@@ -554,6 +554,11 @@ pub struct FiredSkill { pub id: String, pub name: String }
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(tag = "k", rename_all = "snake_case")]
 pub enum Ev {
+    ClassStage {t:u32,class:String,stage:String,picks:u32},
+    /// Actual selected interaction; distinct from merely selecting/firing a policy row.
+    ClassInteraction {t:u32,src:u32,#[serde(default,skip_serializing_if="Option::is_none")]dst:Option<u32>,
+        skill:Box<FiredSkill>,phase:crate::class_advanced::Phase,effect:crate::class_advanced::Effect,amount:i32,
+        #[serde(default,skip_serializing_if="Option::is_none")]expires_t:Option<u32>},
     /// Played equipment/chambers only when changed; null means the gun was stowed/lost.
     Gun { t:u32, state:Option<Box<GunSnap>> },
     Move { t: u32, id: u32, x: i32, y: i32 },
@@ -642,7 +647,9 @@ pub enum Ev {
 impl Ev {
     pub fn t(&self) -> u32 {
         match self {
-            Ev::Gun { t, .. }
+            Ev::ClassStage {t,..}
+            | Ev::ClassInteraction {t,..}
+            | Ev::Gun { t, .. }
             | Ev::Move { t, .. }
             | Ev::Attack { t, .. }
             | Ev::Hurt { t, .. }

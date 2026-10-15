@@ -1,5 +1,7 @@
 import "../skill-icons.css";
 import { h } from "./dom";
+import { ADVANCED_SKILL_MARKS } from "./advanced-skill-marks";
+import { PAINTED_CLASS_SKILLS } from "./painted-skill-assets";
 
 // Broad BONE relic silhouettes, INK cuts and restrained MIST accents. Each
 // composition describes a real class policy; labels always come from the wire.
@@ -15,7 +17,8 @@ const eye = /* copy:none */ "M3 16Q16 3 29 16Q16 29 3 16ZM12 16A4 4 0 1 0 20 16A
 const smoke = /* copy:none */ "M4 25Q-1 20 6 17Q2 9 10 10Q11 2 17 7Q25 4 25 13Q33 15 27 21L28 25Z";
 const marks = (...paths: string[]): Mark[] => paths.map((d) => ({ d }));
 const line = (d: string, tone?: "ink" | "mist"): Mark => ({ d, line: true, tone });
-const art: Record<string, Mark[]> = {
+const art: Record<string, readonly Mark[]> = {
+  ...ADVANCED_SKILL_MARKS,
   fighter_warden: [{ d: shield }, line(/* copy:none */ "M16 8V22M10 15H22", "ink")],
   fighter_recovery: [
     { d: /* copy:none */ "M5 9L13 6L20 9V17Q19 24 13 28Q6 24 5 17Z" },
@@ -240,5 +243,20 @@ export function classSkillIcon(
     svg.append(path);
   }
   el.append(svg);
+  const painted = PAINTED_CLASS_SKILLS[node.id];
+  if (painted) {
+    // The instance owns its fallback: late callbacks never alter another icon.
+    const image = h("img", { class: "skill-paint", alt: "", "aria-hidden": "true" });
+    el.dataset.art = "loading";
+    image.onload = () => {
+      el.dataset.art = "painted";
+    };
+    image.onerror = () => {
+      image.remove();
+      el.dataset.art = "primitive";
+    };
+    image.src = `${import.meta.env.BASE_URL}${painted}`;
+    el.append(image);
+  }
   return el;
 }

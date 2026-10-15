@@ -1,0 +1,704 @@
+{
+  "scope": "Controlled next-pick wire presentation, native-notice display and receipt labels; no earned native progression claim",
+  "source": {
+    "web/tests/lib/viewport-cases.mjs": "451108436626518156b6fdd8df8028093b31e91ab801e55571eeff21d8c02416",
+    "web/src/ui/class-tree.ts": "db502882a251c913c13d01ebfb1818dd2bcba8130d15f2931f5908cf61d8057b",
+    "web/src/ui/class-interaction.ts": "6dbb392f42eaab0161a002a44e86a055981194576196bbd8d33650eb540dab26",
+    "web/src/ui/class-stage-notice.ts": "41c6dd301237a5330e1f79f469aae06e2b8924fcb34424bc2f69d9b8dd6c3acf",
+    "web/src/ui/combat-log.ts": "fd2e0535080fcb5fa407bc942049f47e02d887f883fa8321ffa64924c0f2a211",
+    "web/src/ui/watch.ts": "e75968793f9e8690261dfed7c500e0d03c69be6670ea037af6beb7b0690d92fc",
+    "web/src/ui/camp.ts": "cc8d701f2714222352171d7fc57da6eab05040504fd1ae6771dc986062ddb559",
+    "web/src/class-tree.css": "d1a17daf9a58925f13a6634dc27eedc3edd4be9933da6276a701055d2e6a1cda",
+    "web/src/engine/types.ts": "077a66d4c26745f65a8b9840333078c00be97a4d4fb52669fc25100024d57e93"
+  },
+  "protocolSha256": "dcc0f12dcc38c62d76b0ad4050278dd61f23fb1ea093381494ade43873f8997d",
+  "inputMethods": [
+    "scripted DOM",
+    "keyboard"
+  ],
+  "captures": [
+    {
+      "path": "docs/evidence/cut253/client-pick-progress-v5/402-1x.png",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 1,
+      "kind": "viewport",
+      "sha256": "36ed22d796eba0356f12dfb8f5bcd3d0e6a208879f9c47deaa92bbd93ec42538"
+    },
+    {
+      "path": "docs/evidence/cut253/client-pick-progress-v5/402-2x.png",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "scale": 2,
+      "kind": "viewport",
+      "sha256": "18c5ba7da2395f29f25648ec0aaeec0c333633793c6b131ea87cb088e15465a5"
+    },
+    {
+      "path": "docs/evidence/cut253/client-pick-progress-v5/1440-1x.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 1,
+      "kind": "viewport",
+      "sha256": "7c4c24fa6ea8aea028b707743b91d15c0d841a928313a6fda76a040466fe5390"
+    },
+    {
+      "path": "docs/evidence/cut253/client-pick-progress-v5/1440-2x.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "scale": 2,
+      "kind": "viewport",
+      "sha256": "c4afb0ec0e739d8e9b0ca19158f63e1c4c5ed95d0e88c2f2264e387794c34535"
+    }
+  ],
+  "rows": [
+    {
+      "name": "legacy-early",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-max",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "canonical-early",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree1/1 learned0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "advanced",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree6/6 learned0 picksNext pickL8/9D22/2323/24 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L8/9"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D22/23"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "23/24 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "advanced_second",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree7/7 learned0 picksNext pickL9/10D27/2831/32 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D27/28"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "31/32 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "capstone",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree8/8 learned0 picksNext pickL9/10D28/2947/48 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D28/29"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "47/48 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "mastery",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree9/9 learned0 picksNext pickL9/10D32/3363/64 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D32/33"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "63/64 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "unspent",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree6/7 learned1 pickWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "max",
+      "width": 402,
+      "scale": 1,
+      "text": "Class tree10/10 learned0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-early",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-max",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "canonical-early",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree1/1 learned0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "advanced",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree6/6 learned0 picksNext pickL8/9D22/2323/24 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L8/9"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D22/23"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "23/24 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "advanced_second",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree7/7 learned0 picksNext pickL9/10D27/2831/32 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D27/28"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "31/32 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "capstone",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree8/8 learned0 picksNext pickL9/10D28/2947/48 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D28/29"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "47/48 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "mastery",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree9/9 learned0 picksNext pickL9/10D32/3363/64 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D32/33"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "63/64 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "unspent",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree6/7 learned1 pickWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "max",
+      "width": 402,
+      "scale": 2,
+      "text": "Class tree10/10 learned0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-early",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-max",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "canonical-early",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree1/1 learned0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "advanced",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree6/6 learned0 picksNext pickL8/9D22/2323/24 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L8/9"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D22/23"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "23/24 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "advanced_second",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree7/7 learned0 picksNext pickL9/10D27/2831/32 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D27/28"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "31/32 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "capstone",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree8/8 learned0 picksNext pickL9/10D28/2947/48 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D28/29"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "47/48 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "mastery",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree9/9 learned0 picksNext pickL9/10D32/3363/64 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D32/33"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "63/64 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "unspent",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree6/7 learned1 pickWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "max",
+      "width": 1440,
+      "scale": 1,
+      "text": "Class tree10/10 learned0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-early",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "legacy-max",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "canonical-early",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree1/1 learned0 picksNext pick L4WardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashNext L9 · D23Boss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashNext L9 · D23Next L9 · D23ReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashNext L9 · D23Boss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveNext L9 · D23Next L9 · D23Full treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "advanced",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree6/6 learned0 picksNext pickL8/9D22/2323/24 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L8/9"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D22/23"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "23/24 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "advanced_second",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree7/7 learned0 picksNext pickL9/10D27/2831/32 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D27/28"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "31/32 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "capstone",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree8/8 learned0 picksNext pickL9/10D28/2947/48 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D28/29"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "47/48 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "mastery",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree9/9 learned0 picksNext pickL9/10D32/3363/64 delvesScout neededWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": true,
+      "requirements": [
+        {
+          "key": "level",
+          "met": "false",
+          "text": "L9/10"
+        },
+        {
+          "key": "depth",
+          "met": "false",
+          "text": "D32/33"
+        },
+        {
+          "key": "completed",
+          "met": "false",
+          "text": "63/64 delves"
+        },
+        {
+          "key": "scout",
+          "met": "false",
+          "text": "Scout needed"
+        }
+      ]
+    },
+    {
+      "name": "unspent",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree6/7 learned1 pickWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    },
+    {
+      "name": "max",
+      "width": 1440,
+      "scale": 2,
+      "text": "Class tree10/10 learned0 picksWardenLearnedSkill rulesbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashRecoveryLearnedSkill rulessecond wind +3 HPhp < 55% → second windadjacent ≥ 1 · hp < 70% → shield bashoathguardbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss guardLearnedSkill rulesboss melee −1 damagefoe: boss · adjacent ≥ 1 → shield bashopening cutbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillrallybash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillReaverLearnedSkill rulescleave +1 damageadjacent ≥ 2 · hp > 55% → cleaveCrowd breakerLearnedSkill rulescleave cooldown −10 ticksadjacent ≥ 2 → cleaveadjacent ≥ 1 · hp > 70% → shield bashholdfastbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillBoss breakerLearnedSkill rulesboss bash +1 damagefoe: boss · adjacent ≥ 1 → shield bashadjacent ≥ 2 · hp > 55% → cleaveexecution arcbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillsiege rhythmbash stun +1 tickadjacent ≥ 1 · hp < 70% → shield bashL9 · D23Controlled requirementLearn skillFull treeWardenL3 · D8LearnedRecoveryL7 · D18LearnedoathguardL9 · D23Controlled requirementBoss guardL5 · D13Learnedopening cutL9 · D23Controlled requirementrallyL9 · D23Controlled requirementReaverL3 · D8LearnedCrowd breakerL5 · D13LearnedholdfastL9 · D23Controlled requirementBoss breakerL7 · D18Learnedexecution arcL9 · D23Controlled requirementsiege rhythmL9 · D23Controlled requirementReset skills",
+      "foldedInitially": false,
+      "requirements": []
+    }
+  ],
+  "servedWasm": [
+    "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+    "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  ],
+  "errors": [],
+  "notices": [
+    "migrated eligible read silent",
+    "100 refreshes one selected-class plate",
+    "second resident isolated",
+    "queued owner/class cancellation",
+    "original resident stage not repeated",
+    "highest recorded stage only",
+    "restored earlier stage suppressed",
+    "dispose cancels pending display"
+  ],
+  "status": "PASS",
+  "exactSave": true
+}

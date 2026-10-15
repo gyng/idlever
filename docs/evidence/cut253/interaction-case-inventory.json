@@ -1,0 +1,651 @@
+{
+  "date": "2026-10-16",
+  "status": "30controlled actual-action output pairs PASS; full negative/earned/pacing/full acceptance remains pending",
+  "count": 30,
+  "rows": [
+    {
+      "id": "fighter_rally",
+      "bit": 6,
+      "actual_trigger": "real adjacent prevented melee \u2192 successful Wind",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -30,
+        "disabled_metric": -50,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "melee damage vs miss/ranged/pet interception; Wind refusal/11t expiry",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "fighter_oathguard",
+      "bit": 7,
+      "actual_trigger": "successful boss Bash \u2192 next damaging melee",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 999,
+        "disabled_metric": 997,
+        "delta": 2,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "nonboss Bash/miss; zero damage/interception;10t expiry;one charge",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "fighter_opening_cut",
+      "bit": 8,
+      "actual_trigger": "actual Cleave damage to\u22652distinct recipients",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -40,
+        "disabled_metric": -50,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "one hit/miss/shield redirect; cooldown actual cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "fighter_siege_rhythm",
+      "bit": 9,
+      "actual_trigger": "boss Bash \u2192 next ordinary melee",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -920,
+        "disabled_metric": -922,
+        "delta": 2,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "miss/reflection;10t expiry;one consumed followup",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "fighter_holdfast",
+      "bit": 10,
+      "actual_trigger": "adjacent-threat Wind \u2192 two melee reductions",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 799,
+        "disabled_metric": 797,
+        "delta": 2,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no threat/refused Wind;20t expiry;third hit no benefit",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "fighter_execution_arc",
+      "bit": 11,
+      "actual_trigger": "charged followup kill",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -30,
+        "disabled_metric": -50,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "nonkill/uncharged kill;10t charge expiry;40t repeat cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_afterimage",
+      "bit": 6,
+      "actual_trigger": "successful Ambush \u2192 legal Shadowstep \u2192 Vanish reduction",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -80,
+        "disabled_metric": -100,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "miss/refused step;10t expiry;one benefit",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_tell_thief",
+      "bit": 7,
+      "actual_trigger": "Backstab lands on observed boss active windup",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -90,
+        "disabled_metric": -100,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "unobserved/nonboss/not winding/miss; committed pending survives",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_veiled_route",
+      "bit": 8,
+      "actual_trigger": "actual Smoke blind \u2192 legal Shadowstep real debit return",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 50,
+        "disabled_metric": 0,
+        "delta": 50,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no blind/refused step;10t expiry;actual debit cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_patient_ambush",
+      "bit": 9,
+      "actual_trigger": "actual missed Ambush retains preexisting\u22643t",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 3,
+        "disabled_metric": 0,
+        "delta": 3,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "hit/refused Ambush; preexisting1/2t never extended",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_ghostwalk",
+      "bit": 10,
+      "actual_trigger": "actual Smoke \u2192 legal Shadowstep \u2192 actual Backstab +2",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -917,
+        "disabled_metric": -919,
+        "delta": 2,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no blind/refused step; next Backstab miss;10t expiry;once",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "rogue_silent_finish",
+      "bit": 11,
+      "actual_trigger": "successful Ambush against<25%pre-hitHP \u2192 legal Shadowstep",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 50,
+        "disabled_metric": 0,
+        "delta": 50,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "exact25%/miss/refused step;10t expiry;combined debit cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_spotter",
+      "bit": 6,
+      "actual_trigger": "actual trap consumption by marked hostile",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 40,
+        "disabled_metric": 30,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "unmarked target/expired mark; consumed trap never twice;cap50",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_quiver_thread",
+      "bit": 7,
+      "actual_trigger": "shot kills target below25%pre-hitHP",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -20,
+        "disabled_metric": -40,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "exact25%/miss/nonkill; once per actual kill",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_corridor_volley",
+      "bit": 8,
+      "actual_trigger": "Volleys damage\u22652targets \u2192 next actual shot range+1",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -964,
+        "disabled_metric": -1000,
+        "delta": 36,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "one hit/miss/wall;10t expiry;one actual projectile",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_split_mark",
+      "bit": 9,
+      "actual_trigger": "Volley damages marked foe and one other hit foe",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 20,
+        "disabled_metric": 0,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no marked hit/no second hit;\u226420t copy;no recursion",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_patient_snare",
+      "bit": 10,
+      "actual_trigger": "actual marked hostile trap consumption",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -20,
+        "disabled_metric": -40,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "unmarked/expired mark;once per trap;actual cooldown cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "ranger_moving_line",
+      "bit": 11,
+      "actual_trigger": "actual mark-copying Volley \u2192 legal Kite debit return",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 50,
+        "disabled_metric": 0,
+        "delta": 50,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no copied mark/refused Kite;10t expiry;debit cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_chilling_charge",
+      "bit": 6,
+      "actual_trigger": "Bolt damages actually slowed boss",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -40,
+        "disabled_metric": -50,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "miss/reflection/nonboss/no original Slow marker;once per cast",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_storm_cell",
+      "bit": 7,
+      "actual_trigger": "Nova damages\u22652 \u2192 Bolt one further on-line foe at50%",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -998,
+        "disabled_metric": -1000,
+        "delta": 2,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "one Nova target/missed Bolt/wall/reflection;10t expiry;one extra",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_ice_lock",
+      "bit": 8,
+      "actual_trigger": "fresh successful Slow while warded",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 40,
+        "disabled_metric": 30,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "unwarded/refused repeated Slow;cap50;no refresh",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_shatter_ward",
+      "bit": 9,
+      "actual_trigger": "successful warded Nova consumes its original cast",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -130,
+        "disabled_metric": -150,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "unwarded/refused Nova;one cast;actual cooldown cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_conduct",
+      "bit": 10,
+      "actual_trigger": "qualifying slowed-boss Bolt copies Slow to one visible adjacent foe",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 10,
+        "disabled_metric": 0,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no original Slow/miss/no legal neighbor;\u226410t;no recursion/once per cast",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "caster_last_wall",
+      "bit": 11,
+      "actual_trigger": "original Ward actually prevents\u22654damage",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -30,
+        "disabled_metric": -50,
+        "delta": 20,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "<4/miss/pet interception/unwarded;zero-cooldown threshold consumed;once per cast",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_rangefinder",
+      "bit": 6,
+      "actual_trigger": "prepared observed-boss hit recovers spent physical round",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 1,
+        "disabled_metric": 0,
+        "delta": 1,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "miss/reflection/nonboss/unprepared;capacity and aim identity;once per aim",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_chamber_chain",
+      "bit": 7,
+      "actual_trigger": "actual owned fast-reload completion \u2192 legal Aim one tick sooner",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 10,
+        "disabled_metric": 0,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "partial/ordinary/refused reload/stolen gun;10t expiry;one charge",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_smoke_walk",
+      "bit": 8,
+      "actual_trigger": "actual Smoke blind \u2192 original owned reload completion",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 440,
+        "disabled_metric": 390,
+        "delta": 50,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "no blind/expired/stolen/drop/refused reload;10t window;original debit only",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_cycling_breach",
+      "bit": 9,
+      "actual_trigger": "actual adjacent Close Burst kill",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": -90,
+        "disabled_metric": -100,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "nonadjacent/miss/nonkill;once per kill;actual Fast Ready cap",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_long_watch",
+      "bit": 10,
+      "actual_trigger": "charged aimed-shot kill \u2192 next legal Aim one tick sooner",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 10,
+        "disabled_metric": 0,
+        "delta": 10,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "uncharged/missed/nonkill;10t expiry;actual Rangefinder ammo recovery, no grant",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    },
+    {
+      "id": "gunner_breach_route",
+      "bit": 11,
+      "actual_trigger": "actual adjacent Close Burst kill \u2192 legal Smoke retreat",
+      "source": [
+        "crates/idlever-core/src/class_advanced.rs",
+        "crates/idlever-core/src/ai.rs",
+        "crates/idlever-core/src/firearm.rs"
+      ],
+      "paired_enabled_disabled": {
+        "status": "PASS controlled actual-action component experiment",
+        "test": "ai::advanced_tests::all_thirty_named_interactions_have_enabled_disabled_actual_action_controls",
+        "log": "docs/evidence/cut253/native-paired-v1.log",
+        "enabled_metric": 50,
+        "disabled_metric": 0,
+        "delta": 50,
+        "scope": "Identical controlled arena input and actual chosen action sequence; tested frozen bit differs. These manually authored masks and arena state are not earned/public preparation."
+      },
+      "miss_refusal_expiry_once_requirements": "nonkill/refused Smoke;10t expiry;actual debit cap/no ammo refund",
+      "current_test_scope": "native-paired-v1 terminal0:25tests, including30paired node cases and four concrete reviewed-edge negatives. Broader all-node expiry/refusal/earned-session requirements are not yet all proven.",
+      "earned_pair": "PENDING genuine saved Session/public preparation; controlled arenas are not earned play"
+    }
+  ],
+  "current_source_revalidation": {
+    "log": "docs/evidence/cut253/native-final-causal.log",
+    "handle": 80370,
+    "exit": 0,
+    "tests": 28,
+    "source_inventory": "docs/evidence/cut253/native-final-source-before.json",
+    "scope": "Re-executes all30 original paired output assertions and four reviewed-edge negatives, all14 actual charge boundary/expired followups, and14 whole/sliced/reloaded3s public offline comparisons. Does not establish every possible miss/refusal combination or genuine earned campaigns."
+  }
+}

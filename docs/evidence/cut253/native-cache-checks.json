@@ -1,0 +1,21 @@
+{
+  "sourceBefore": "docs/evidence/cut253/native-cache-source-before.json",
+  "sourceInventorySha256": "d65f5297f54a53880d47428b2d453e950a5170d2f26c0f8c403a4025fd31501e",
+  "causalTerminalUtc": "2026-10-15T23:08:51.009395+00:00",
+  "sourceUnchangedAtCausalTerminal": true,
+  "checks": [
+    {
+      "command": "cargo test -q --profile fast -p idlever-core advanced_tests -- --nocapture",
+      "handle": 24918,
+      "exit": 0,
+      "tests": 28,
+      "log": "docs/evidence/cut253/native-cached-causal.log"
+    },
+    {
+      "command": "cargo test -q --profile fast -p idlever-core class_tree -- --nocapture",
+      "handle": 70933,
+      "status": "running",
+      "log": "docs/evidence/cut253/native-cached-tree.log"
+    }
+  ]
+}

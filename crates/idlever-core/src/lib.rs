@@ -25,6 +25,7 @@ pub mod legacy;
 pub mod legendary;
 pub mod specialization;
 pub mod class_tree;
+pub mod class_advanced;
 pub mod bloodlines;
 pub mod meta;
 pub mod news;
@@ -361,7 +362,11 @@ impl Game {
         town::construct(&mut self.lineage, id)
     }
     pub fn hire(&mut self, id: &str) -> Result<(), String> {
-        tree::hire(&mut self.lineage, id)
+        let before=class_tree::earned_stage(&self.lineage);
+        tree::hire(&mut self.lineage,id)?;
+        let t=self.run.as_ref().map_or(0,|r|r.turn);
+        class_tree::announce_stage(self,before,t);
+        Ok(())
     }
     /// Cut 30.5, week 2: promote the worker whose rank is on offer (`tree.lit_rank`); its new rank.
     pub fn promote(&mut self, id: &str) -> Result<u32, String> {

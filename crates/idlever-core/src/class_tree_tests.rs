@@ -20,11 +20,11 @@ fn qualified(class: Class) -> Game {
     g
 }
 #[test]
-fn thirty_nodes_have_real_preview_verbs_and_staged_gates() {
+fn original_thirty_nodes_keep_real_preview_verbs_and_staged_gates() {
     let mut ids = std::collections::BTreeSet::new();
     for c in Class::ALL {
         let mut g = qualified(c);
-        let defs = definitions(c);
+        let defs = definitions(c).into_iter().take(6).collect::<Vec<_>>();
         assert_eq!(defs.len(), 6);
         let roots = defs
             .iter()
@@ -272,14 +272,14 @@ fn bloodline_isolation_and_active_separate_rule_cache_keys_match() {
     assert_eq!(key(&g), before);
 }
 #[test]
-fn cumulative_whole_sliced_and_reloaded_offline_match_for_all_classes() {
+fn original_six_whole_sliced_and_reloaded_offline_match_for_all_classes() {
     for c in Class::ALL {
         let mut base = Session::new(3);
         base.active = qualified(c);
-        for n in definitions(c).iter().filter(|n| n.parent.is_none()) {
+        for n in definitions(c).iter().take(6).filter(|n| n.parent.is_none()) {
             learn(&mut base.active, &n.id).unwrap();
         }
-        for n in definitions(c).iter().filter(|n| n.parent.is_some()) {
+        for n in definitions(c).iter().take(6).filter(|n| n.parent.is_some()) {
             learn(&mut base.active, &n.id).unwrap();
         }
         crate::tree::grant(&mut base.active.lineage, &["porter", "scout"]);
@@ -352,9 +352,9 @@ fn recovery_path_fires_existing_real_heal_once_and_named_row() {
     ));
 }
 #[test]
-fn every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds() {
+fn original_six_nodes_make_bounded_real_progress_on_three_fixture_seeds() {
     for c in Class::ALL {
-        for node in definitions(c) {
+        for node in definitions(c).into_iter().take(6) {
             for seed in [3, 19, 137] {
                 let mut g = qualified(c);
                 g.lineage.seed = seed;
@@ -487,4 +487,150 @@ fn learned_ability_mask_snapshots_and_reloads_without_reading_later_camp_memory(
         .insert("fighter_warden".into());
     bad.lineage.classes.get_mut("fighter").unwrap().level = 2;
     assert_eq!(mask(&bad.lineage), 0);
+}
+
+/// Controlled threshold fixtures test rules; they are not earned-play evidence.
+fn advanced_home(class:Class)->Game {
+    let mut g=qualified(class);
+    g.lineage.classes.get_mut(class.name()).unwrap().level=10;
+    g.lineage.hero_legacy.last_mut().unwrap().best_depth=33;
+    g.lineage.runs_banked=64;
+    g.lineage.tree.hired.push(("scout".into(),0));
+    g
+}
+#[test]
+fn expanded_catalogue_has_seventy_two_stable_nodes_and_four_real_tiers() {
+    let mut ids=std::collections::BTreeSet::new();
+    for class in Class::EVERY {
+        let defs=definitions(class);
+        assert_eq!(defs.len(),if expanded(class){12}else{6});
+        for node in &defs {
+            assert!(ids.insert(node.id.clone()));
+            for row in &node.tactics {
+                assert!(row.verb.v=="attack"||crate::hero::class_has_verb(class,if class.earned(){crate::engine::MAX_LEVEL}else{node.required_level},&row.verb.v),"{} verb{}",node.id,row.verb.v);
+                assert!(row.is_pkg());
+                assert_eq!(crate::packages::row_label(row),Some(node.name.clone()));
+            }
+            let mut current=node;let mut depth=1;
+            while let Some(parent)=&current.parent {current=defs.iter().find(|n|&n.id==parent).unwrap();depth+=1;assert!(depth<=4);}
+        }
+        if expanded(class) {
+            for node in &defs[6..10] {assert_eq!((node.required_level,node.required_depth),(9,23));}
+            for node in &defs[10..12] {assert_eq!((node.required_level,node.required_depth),(10,29));}
+            assert!(defs[10..].iter().all(|n|n.parent.as_ref().is_some_and(|id|defs[6..10].iter().any(|p|&p.id==id))));
+        }
+    }
+    assert_eq!(ids.len(),72);
+}
+#[test]
+fn advanced_budget_thresholds_are_personal_cumulative_and_pause_independent() {
+    for class in Class::ALL {
+        for (stage,&(_,level,depth,runs)) in STAGES.iter().enumerate() {
+            let mut g=advanced_home(class);
+            g.lineage.classes.get_mut(class.name()).unwrap().level=level;
+            g.lineage.hero_legacy.last_mut().unwrap().best_depth=depth;
+            g.lineage.runs_banked=runs;g.lineage.runs_returned=0;g.lineage.runs_died=0;
+            assert_eq!(offers(&g.lineage,false).budget,7+stage as u32);
+            for dimension in 0..4 {
+                let mut missing=g.clone();
+                match dimension {
+                    0=>missing.lineage.classes.get_mut(class.name()).unwrap().level=level-1,
+                    1=>missing.lineage.hero_legacy.last_mut().unwrap().best_depth=depth-1,
+                    2=>missing.lineage.runs_banked=runs-1,
+                    _=>missing.lineage.tree.hired.clear(),
+                }
+                assert!(offers(&missing.lineage,false).budget<7+stage as u32,"{} stage{stage} dimension{dimension}",class.name());
+            }
+            g.lineage.tree.paused.insert("scout".into());
+            assert_eq!(offers(&g.lineage,false).budget,7+stage as u32,"hired Scout qualifies even paused");
+            let save=g.save();let _=offers(&g.lineage,false);assert_eq!(g.save(),save,"reads never award progress");
+            assert_eq!(g.lineage.gold,qualified(class).lineage.gold,"no currency requirement or free award");
+        }
+        let mut g=advanced_home(class);let tree=offers(&g.lineage,false);
+        assert_eq!(tree.budget,10);assert!(tree.next_pick.is_none());
+        g.lineage.runs_banked=0;g.lineage.runs_returned=64;
+        assert_eq!(offers(&g.lineage,false).budget,10,"nonfatal delves qualify every stage");
+        g.lineage.runs_returned=0;g.lineage.runs_died=64;
+        assert_eq!(offers(&g.lineage,false).budget,10,"death is an alternative, never required");
+    }
+}
+#[test]
+fn advanced_children_require_all_ancestors_and_compile_descendants_before_parents() {
+    for class in Class::ALL {
+        let mut g=advanced_home(class);let defs=definitions(class);
+        let leaf=&defs[10];let parent=defs.iter().find(|n|Some(&n.id)==leaf.parent.as_ref()).unwrap();
+        g.lineage.class_paths.entry(class.name().into()).or_default().insert(parent.id.clone());
+        assert_eq!(mask(&g.lineage),0,"stored invalid parent cannot enable its child");
+        refused(&mut g,&leaf.id);
+        g.lineage.class_paths.clear();
+        let mut chain=Vec::new();let mut n=leaf;
+        loop {chain.push(n.id.clone());let Some(id)=&n.parent else{break;};n=defs.iter().find(|n|&n.id==id).unwrap();}
+        for id in chain.iter().rev() {learn(&mut g,id).unwrap();}
+        let ordered=rows(&g.lineage).iter().filter_map(|r|r.origin.clone()).collect::<Vec<_>>();
+        assert_eq!(ordered.first(),Some(&format!("class:path:{}",leaf.id)));
+        assert_ne!(mask(&g.lineage)&(1<<10),0);
+        let save=g.save();let restored=Game::load(&save).unwrap();assert_eq!(restored.save(),save);
+        let history=(g.lineage.runs_banked,g.lineage.runs_returned,g.lineage.runs_died,g.lineage.classes.clone(),g.lineage.gold);
+        reset(&mut g).unwrap();
+        assert_eq!(history,(g.lineage.runs_banked,g.lineage.runs_returned,g.lineage.runs_died,g.lineage.classes.clone(),g.lineage.gold));
+        assert_eq!(offers(&g.lineage,false).budget,10);
+    }
+}
+
+#[test]
+fn actual_scout_hire_announces_one_recorded_current_class_stage_and_reads_never_replay_it() {
+    let mut g=advanced_home(Class::Fighter);g.lineage.tree.hired.retain(|(id,_)|id!="scout");
+    crate::tree::grant(&mut g.lineage,&["quartermaster","porter"]);
+    g.lineage.tree.done.insert("scout".into(),2);g.lineage.tree.shown.insert("scout".into());
+    assert_eq!(earned_stage(&g.lineage),0);
+    assert!(offers(&g.lineage,false).earned_stage.is_none());
+    let price=crate::tree::price(&g.lineage,crate::tree::def("scout").unwrap());
+    g.lineage.gold=price; // Exactly funded controlled purchase fixture, not earned Gold.
+    g.hire("scout").unwrap();assert_eq!(g.lineage.gold,0,"actual existing Scout price is paid");
+    let notices=g.events.iter().filter_map(|e|match e {crate::wire::Ev::ClassStage {class,stage,picks,..}=>Some((class.as_str(),stage.as_str(),*picks)),_=>None}).collect::<Vec<_>>();
+    assert_eq!(notices,vec![("fighter","mastery",10)],"one highest transition, not four/five-class flood");
+    let notice=offers(&g.lineage,false).earned_stage.unwrap();assert_eq!((notice.stage.as_str(),notice.picks),("mastery",10));
+    let saved=g.save();let events=g.events.clone();
+    for _ in 0..3 {let _=g.lineage();let _=crate::journal::wire(&g.lineage,false);}
+    assert_eq!(g.save(),saved);assert_eq!(g.events,events);
+    assert!(g.hire("scout").is_err());assert_eq!(g.save(),saved);
+    let mut restored=Game::load(&saved).unwrap();assert_eq!(restored.save(),saved);
+    let notices_before_switch=restored.events.iter().filter(|e|matches!(e,crate::wire::Ev::ClassStage {..})).count();
+    restored.set_class("caster").unwrap();assert!(offers(&restored.lineage,false).earned_stage.is_none());
+    restored.set_class("fighter").unwrap();assert!(offers(&restored.lineage,false).earned_stage.is_some());
+    assert_eq!(restored.events.iter().filter(|e|matches!(e,crate::wire::Ev::ClassStage {..})).count(),notices_before_switch,"switches never invent earned transitions; existing delivered events remain saved");
+    let other=advanced_home(Class::Fighter);assert!(offers(&other.lineage,false).earned_stage.is_none(),"another resident's eligible records cannot inherit an announcement");
+}
+#[test]
+fn migrated_eligible_records_do_not_announce_on_reads_and_journal_has_reachable_maximum() {
+    let mut g=advanced_home(Class::Fighter);let save=g.save();
+    assert!(offers(&g.lineage,false).earned_stage.is_none());
+    let journal=crate::journal::wire(&g.lineage,false);let entry=journal.chapters.iter().flat_map(|c|&c.entries).find(|e|e.id=="class_tree").unwrap();
+    assert_eq!(entry.progress.as_ref().unwrap().required,10);assert_eq!(entry.action.as_ref().unwrap().target,"class");
+    assert_eq!(g.save(),save);assert!(g.events.is_empty());
+    // Learn ten actual public tree policies through legal ancestors; twelve
+    // alternatives exist, but the canonical eventual allocation remains ten.
+    for index in [0,1,2,3,4,5,6,7,8,10] {let id=definitions(Class::Fighter)[index].id.clone();learn(&mut g,&id).unwrap();}
+    assert_eq!(offers(&g.lineage,false).points,0);
+    let journal=crate::journal::wire(&g.lineage,false);let entry=journal.chapters.iter().flat_map(|c|&c.entries).find(|e|e.id=="class_tree").unwrap();
+    assert_eq!(entry.state,"complete");assert_eq!(entry.progress.as_ref().unwrap().current,10);
+}
+#[test]
+fn actual_nonfatal_settlement_crosses_one_stage_once_and_saved_notice_is_personal() {
+    let mut g=advanced_home(Class::Fighter);
+    g.lineage.classes.get_mut("fighter").unwrap().level=9;
+    g.lineage.hero_legacy.last_mut().unwrap().best_depth=23;
+    g.lineage.runs_banked=23;g.lineage.runs_returned=0;g.lineage.runs_died=0;
+    crate::tree::set_worker(&mut g.lineage,"scout",false).unwrap();
+    assert_eq!(earned_stage(&g.lineage),0);
+    g.try_send().unwrap();g.bail();let result=g.step(100);
+    assert!(result.run_over);
+    assert_eq!(g.lineage.runs_died,0,"no defeat requirement");
+    assert_eq!(completed(&g.lineage),24);
+    assert_eq!(earned_stage(&g.lineage),1);
+    let notices=result.events.iter().filter_map(|e|match e {crate::wire::Ev::ClassStage {class,stage,picks,..}=>Some((class.as_str(),stage.as_str(),*picks)),_=>None}).collect::<Vec<_>>();
+    assert_eq!(notices,vec![("fighter","advanced",7)]);
+    let saved=g.save();let restored=Game::load(&saved).unwrap();assert_eq!(restored.save(),saved);
+    assert_eq!(offers(&restored.lineage,false).earned_stage.unwrap().picks,7);
+    assert!(!restored.lineage.class_stages_announced.contains_key("caster"));
 }

@@ -831,6 +831,8 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
                 run.hero.second_wind_used = true;
                 let add = run.hero.max_hp * 3 / 10 + 3 * run.hero.skill(Class::Fighter, 1);
                 run.hero.hp = (run.hero.hp + add).min(run.hero.max_hp);
+                if crate::class_advanced::has(run,Class::Fighter,6)&&run.hero.advanced.as_deref().and_then(|s|s.last_block_t).is_some_and(|t|run.turn.saturating_sub(t)<=10) {crate::class_advanced::cooldown(run,cx,6,crate::class_advanced::Effect::BashCooldown,20,None);}
+                if v.adj>0&&crate::class_advanced::has(run,Class::Fighter,10) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Holdfast, 10, crate::class_advanced::Effect::MeleeBlock, crate::class_advanced::ChargeWindow { count: 2, ticks: 20 }, None);}
                 callout(run, cx, "second wind");
                 true
             } else {
@@ -852,13 +854,17 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
         "smoke" => {
             if class_has_verb(run.hero.class, run.hero.level, "smoke") && !v.foes.is_empty() && run.hero.vanish_cd <= 90 {
                 let hp = run.hero.pos;
+                let mut blinded=false;
                 for m in run.monsters.iter_mut() {
                     if m.hostile() && m.pos.cheb(hp) <= 2 {
-                        m.blind = 30 + 5 * run.hero.skill(Class::Rogue, 4);
+                        let duration=30 + 5 * run.hero.skill(Class::Rogue, 4);
+                        blinded|=m.hp>0&&m.blind<duration;
+                        m.blind = duration;
                         m.last_seen = None;
                     }
                 }
                 run.hero.vanish_cd += 30;
+                if blinded&&crate::class_advanced::has(run,Class::Rogue,8) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::VeiledRoute, 8, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
                 callout(run, cx, "smoke");
                 true
             } else {
@@ -926,6 +932,10 @@ pub fn try_verb_scoped(run: &mut Run, cx: &mut Ctx, verb: &Verb, v: &View, scope
             if class_has_verb(run.hero.class, run.hero.level, "ward") && run.hero.ward_cd == 0 && !v.foes.is_empty() {
                 run.hero.ward_t = 30 + 5 * run.hero.skill(Class::Caster, 3);
                 run.hero.ward_cd = 100;
+                if crate::class_advanced::has(run,Class::Caster,9)||crate::class_advanced::has(run,Class::Caster,11) {
+                    let source=crate::class_advanced::source(run);
+                    run.hero.advanced.get_or_insert_with(Default::default).ward=Some(crate::class_advanced::WardCast {source,absorbed:0,shatter_used:false,last_wall_used:false});
+                }
                 callout(run, cx, "ward");
                 true
             } else {
@@ -1052,7 +1062,8 @@ fn verb_shoot(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     let Some(mi) = pick_target(run, sel, v) else { return false };
     let hp = run.hero.pos;
     let mp = run.monsters[mi].pos;
-    if mp.cheb(hp) <= BOW_RANGE && run.floor.map.los(hp, mp) {
+    let charged=crate::class_advanced::charge(run,crate::class_advanced::Combo::CorridorVolley).is_some();
+    if mp.cheb(hp) <= BOW_RANGE+i32::from(charged) && run.floor.map.los(hp, mp) {
         hero_attack(run, cx, mi, "shoot", false);
         return true;
     }
@@ -1061,6 +1072,12 @@ fn verb_shoot(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
 
 /// Keep range 3: step away from a foe closer than that, shoot one at range, else close a step.
 fn verb_kite(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
+    let before=run.hero.pos;
+    let success=verb_kite_inner(run,cx,v);
+    if success&&run.hero.pos!=before&&crate::class_advanced::consume(run,cx,crate::class_advanced::Combo::MovingLine,11,crate::class_advanced::Effect::Energy).is_some() {crate::class_advanced::queue_energy(run,11);}
+    success
+}
+fn verb_kite_inner(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     let Some(mi) = v.nearest else { return false };
     let hp = run.hero.pos;
     let d = run.monsters[mi].pos.cheb(hp);
@@ -1069,7 +1086,7 @@ fn verb_kite(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     }
     if run.hero.ranged() {
         let mp = run.monsters[mi].pos;
-        if mp.cheb(hp) <= BOW_RANGE && run.floor.map.los(hp, mp) {
+        if mp.cheb(hp) <= BOW_RANGE+i32::from(crate::class_advanced::charge(run,crate::class_advanced::Combo::CorridorVolley).is_some()) && run.floor.map.los(hp, mp) {
             hero_attack(run, cx, mi, "shoot", false);
             return true;
         }
@@ -1110,9 +1127,29 @@ fn verb_volley(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     }
     run.hero.volley_cd = 80 - 10 * run.hero.skill(Class::Ranger, 3);
     callout(run, cx, "volley");
-    for k in targets {
-        if run.monsters[k].hp > 0 {
-            hero_attack(run, cx, k, "shoot", false);
+    let before=cx.events.len();
+    let initial_hp=if crate::class_advanced::enabled(run) {targets.iter().map(|&i|(run.monsters[i].id,run.monsters[i].hp)).collect::<Vec<_>>()}else{Vec::new()};
+    for k in &targets {
+        if run.monsters[*k].hp > 0 {
+            hero_attack(run, cx, *k, "shoot", false);
+        }
+    }
+    if crate::class_advanced::enabled(run) {
+        let hits:Vec<u32>=cx.events[before..].iter().filter_map(|e|match e {Ev::Attack {src,dst,hit:true,verb:Some(verb),..} if *src==HERO_ID&&verb=="shoot"&&initial_hp.iter().any(|&(id,hp)|id==*dst&&run.monsters.iter().any(|m|m.id==id&&m.hp<hp))=>Some(*dst),_=>None}).collect();
+        if hits.len()>=2&&crate::class_advanced::has(run,Class::Ranger,8) {
+            crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::CorridorVolley, 8, crate::class_advanced::Effect::Range, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);
+        }
+        if crate::class_advanced::has(run,Class::Ranger,9) {
+            let marked=targets.iter().copied().find(|&i|hits.contains(&run.monsters[i].id)&&run.monsters[i].marked>0&&!run.monsters[i].advanced_mark_copy);
+            if let Some(from)=marked {
+                if let Some(to)=targets.iter().copied().find(|&i|i!=from&&hits.contains(&run.monsters[i].id)&&run.monsters[i].marked<run.monsters[from].marked.min(20)) {
+                    let previous=run.monsters[to].marked;
+                    run.monsters[to].marked=run.monsters[from].marked.min(20);
+                    run.monsters[to].advanced_mark_copy=true;
+                    crate::class_advanced::receipt(run, cx, 9, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Mark, run.monsters[to].marked-previous, crate::class_advanced::ReceiptTarget { target: Some(run.monsters[to].id), expires_t: None });
+                    if crate::class_advanced::has(run,Class::Ranger,11) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::MovingLine, 11, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
+                }
+            }
         }
     }
     true
@@ -1143,6 +1180,7 @@ fn verb_mark(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
         return false;
     }
     run.monsters[mi].marked = 30 + 10 * run.hero.skill(Class::Ranger, 1) * i32::from(run.monsters[mi].is_boss());
+    run.monsters[mi].advanced_mark_copy=false;
     callout(run, cx, "marked");
     true
 }
@@ -1154,14 +1192,14 @@ fn verb_double_shot(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     let Some(mi) = pick_target(run, sel, v) else { return false };
     let hp = run.hero.pos;
     let mp = run.monsters[mi].pos;
-    if mp.cheb(hp) > BOW_RANGE || !run.floor.map.los(hp, mp) {
+    if mp.cheb(hp) > BOW_RANGE+i32::from(crate::class_advanced::charge(run,crate::class_advanced::Combo::CorridorVolley).is_some()) || !run.floor.map.los(hp, mp) {
         return false;
     }
     run.hero.double_cd = 40;
     crate::provenance::cooldown(run, cx, "double_shot");
     callout(run, cx, "double shot");
     hero_attack(run, cx, mi, "shoot", false);
-    if run.monsters.get(mi).is_some_and(|m| m.hp > 0) {
+    if run.monsters.get(mi).is_some_and(|m| m.hp > 0&&m.pos.cheb(run.hero.pos)<=BOW_RANGE) {
         hero_attack(run, cx, mi, "shoot", false);
     }
     true
@@ -1188,6 +1226,8 @@ fn verb_bolt(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     let hp = run.hero.pos;
     let mp = run.monsters[mi].pos;
     if mp.cheb(hp) <= BOW_RANGE && run.floor.map.los(hp, mp) {
+        let primary_id=run.monsters[mi].id;
+        let storm=crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::StormCell,7,crate::class_advanced::Effect::Damage,Some(primary_id)).is_some();
         let def = run.monsters[mi].effective_def();
         let (hit, dmg) = roll_hit(&mut run.rng, (BOLT_ATK.0 + run.hero.str_bonus, BOLT_ATK.1 + run.hero.str_bonus), def);
         let dmg = if hit { dmg + run.hero.skill_damage("bolt", run.monsters[mi].is_boss(), run.monsters[mi].hp, run.monsters[mi].max_hp, run.monsters[mi].marked > 0) } else { dmg };
@@ -1206,7 +1246,34 @@ fn verb_bolt(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
         cx.events.push(Ev::Attack { t: run.turn, src: HERO_ID, dst: id, dmg, hit, verb: Some("bolt".into()) });
         if hit {
             let dmg = if run.monsters[mi].marked > 0 { dmg * 3 / 2 } else { dmg };
+            let primary_hp=run.monsters[mi].hp;
             damage_monster(run, cx, mi, dmg, &Src::Hero { ranged: true });
+            if run.monsters[mi].hp<primary_hp {crate::class_advanced::bolt_hit(run,cx,mi);}
+            if storm&&dmg>=2&&run.over.is_none() {
+                let (dx,dy)=(i64::from(mp.x-hp.x),i64::from(mp.y-hp.y));
+                let primary=dx*dx+dy*dy;
+                let next=(0..run.monsters.len()).filter(|&i|i!=mi).filter(|&i| {
+                    let m=&run.monsters[i];let(x,y)=(i64::from(m.pos.x-hp.x),i64::from(m.pos.y-hp.y));
+                    m.hp>0&&m.hostile()&&x*dy==y*dx&&x*dx+y*dy>primary&&m.pos.cheb(hp)<=BOW_RANGE&&run.floor.map.is_visible(m.pos)&&run.floor.map.los(hp,m.pos)
+                }).min_by_key(|&i|(run.monsters[i].pos.cheb(hp),run.monsters[i].id));
+                if let Some(next)=next {
+                    let id=run.monsters[next].id;let pos=run.monsters[next].pos;
+                    // This remains an ordinary ranged bolt: a reflecting secondary
+                    // target reflects its own half, never receives bypass damage.
+                    let extra=dmg/2;
+                    projectile(run,cx,HERO_ID,id,hp,pos);
+                    if run.monsters[next].reflects_ranged()||mirror_reflects(run,next,"bolt") {
+                        cx.events.push(Ev::Attack {t:run.turn,src:id,dst:HERO_ID,dmg:extra,hit:true,verb:Some("reflect".into())});
+                        damage_hero(run,cx,extra,&Src::Reflect(next));
+                    }else {
+                        let before=run.monsters[next].hp;
+                        cx.events.push(Ev::Attack {t:run.turn,src:HERO_ID,dst:id,dmg:extra,hit:true,verb:Some("bolt".into())});
+                        damage_monster(run,cx,next,extra,&Src::Hero {ranged:true});
+                        let applied=(before-run.monsters[next].hp.max(0)).max(0);
+                        if applied>0 {crate::class_advanced::receipt(run, cx, 7, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Damage, applied, crate::class_advanced::ReceiptTarget { target: Some(id), expires_t: None });}
+                    }
+                }
+            }
             if run.monsters.get(mi).is_some_and(|m| m.hp > 0 && !m.awake) {
                 run.monsters[mi].awake = true;
                 run.monsters[mi].last_seen = Some(run.hero.pos);
@@ -1258,6 +1325,7 @@ fn verb_slow(run: &mut Run, cx: &mut Ctx, sel: &str, v: &View) -> bool {
     run.monsters[mi].slow_t = 30 + 5*i32::from(crate::legacy::has(&run.hero,crate::legacy::CONTROL))
         + 15*i32::from(crate::legacy::has(&run.hero,crate::legacy::DEBILITATE))
         + 5 * run.hero.skill(Class::Caster, 4) + 10 * run.hero.skill(Class::Caster, 1) * i32::from(run.monsters[mi].is_boss());
+    crate::class_advanced::slowed(run,cx,mi);
     callout(run, cx, "slowed");
     true
 }
@@ -1276,12 +1344,24 @@ fn verb_nova(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
         }
     }
     // The blast lands at once on whoever stands in it.
+    let mut impacts=0;
     for q in hp.neighbours8() {
         if let Some(k) = run.monster_at(q) {
             if run.monsters[k].hostile() {
                 let dmg = 5 + run.hero.skill_damage("nova", run.monsters[k].is_boss(), run.monsters[k].hp, run.monsters[k].max_hp, run.monsters[k].marked > 0);
+                let before=run.monsters[k].hp;
                 damage_monster(run, cx, k, dmg, &Src::Fire);
+                if run.monsters[k].hp<before {impacts+=1;}
             }
+        }
+    }
+    if impacts>=2&&crate::class_advanced::has(run,Class::Caster,7) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::StormCell, 7, crate::class_advanced::Effect::Damage, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
+    if run.hero.ward_t>0&&crate::class_advanced::has(run,Class::Caster,9) {
+        if let Some(ward)=run.hero.advanced.as_deref_mut().and_then(|s|s.ward.as_mut()).filter(|w|!w.shatter_used) {
+            ward.shatter_used=true;
+            let removed=run.hero.ward_t;run.hero.ward_t=0;
+            crate::class_advanced::receipt(run, cx, 9, crate::class_advanced::Phase::Consumed, crate::class_advanced::Effect::Ward, removed, crate::class_advanced::ReceiptTarget { target: None, expires_t: None });
+            crate::class_advanced::cooldown(run,cx,9,crate::class_advanced::Effect::NovaCooldown,20,None);
         }
     }
     true
@@ -1531,8 +1611,10 @@ fn aim_gun(run:&mut Run,cx:&mut Ctx,sel:&str,v:&View)->bool {
     let Some(mut c)=w.firearm else {return false;};
     if c.fire(p,crate::firearm::ShotTarget {from:run.hero.pos,to:m.pos,hostile_alive:gun_target_alive(run,m),
         visible:run.floor.map.is_visible(m.pos),los:run.floor.map.los(run.hero.pos,m.pos)},false).is_err() {return false;}
+    let target=m.id;
     run.gun_skills.get_or_insert_with(Default::default).aim=Some(aim);
-    run.last_target=Some(m.id);callout(run,cx,"aim steady");true
+    crate::class_advanced::aimed(run,cx,aim.item,target);
+    run.last_target=Some(target);callout(run,cx,"aim steady");true
 }
 
 fn smoke_gun(run:&mut Run,cx:&mut Ctx,v:&View)->bool {
@@ -1542,9 +1624,13 @@ fn smoke_gun(run:&mut Run,cx:&mut Ctx,v:&View)->bool {
     let Some(q)=clear_step(run,mi) else {return false;};
     let Some(at)=run.turn.checked_add(crate::firearm::SMOKE_COOLDOWN) else {return false;};
     let hp=run.hero.pos;
-    for m in &mut run.monsters {if m.hp>0&&m.hostile()&&m.pos.cheb(hp)<=2 {m.blind=m.blind.max(30 + 5 * run.hero.skill(Class::Gunner, 4));m.last_seen=None;}}
+    let mut blinded=false;
+    for m in &mut run.monsters {if m.hp>0&&m.hostile()&&m.pos.cheb(hp)<=2 {let duration=30 + 5 * run.hero.skill(Class::Gunner, 4);blinded|=m.blind<duration;m.blind=m.blind.max(duration);m.last_seen=None;}}
     run.gun_skills.get_or_insert_with(Default::default).smoke_ready=at;
-    move_hero(run,cx,q);callout(run,cx,"smoke retreat");true
+    move_hero(run,cx,q);
+    if blinded&&crate::class_advanced::has(run,Class::Gunner,8) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::SmokeWalk, 8, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
+    if crate::class_advanced::consume(run,cx,crate::class_advanced::Combo::BreachRoute,11,crate::class_advanced::Effect::Energy).is_some() {crate::class_advanced::queue_energy(run,11);}
+    callout(run,cx,"smoke retreat");true
 }
 
 fn gun_sidearm(run:&mut Run,cx:&mut Ctx,mi:usize)->bool {
@@ -1648,7 +1734,12 @@ fn fire_gun_mode(run:&mut Run,cx:&mut Ctx,sel:&str,v:&View,burst:bool,finish:boo
 }
 
 fn hero_attack_roll(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &str, bash: bool, mult: i32, gun: Option<(crate::firearm::Profile,bool)>) {
+    let actual_target=run.monsters[mi].id;
     let ranged = gun.is_some() || verb == "shoot";
+    if verb=="shoot"&&crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::CorridorVolley,8,crate::class_advanced::Effect::Range,Some(actual_target)).is_some()&&run.monsters[mi].pos.cheb(run.hero.pos)>BOW_RANGE {crate::class_advanced::receipt(run, cx, 8, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Range, 1, crate::class_advanced::ReceiptTarget { target: Some(run.monsters[mi].id), expires_t: None });}
+    let siege=if !ranged&&!bash&&verb=="attack" {crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::SiegeRhythm,9,crate::class_advanced::Effect::Damage,Some(actual_target))}else{None};
+    let ghost=verb=="backstab"&&crate::class_advanced::charge(run,crate::class_advanced::Combo::Ghostwalk).is_some();
+    let pre_hp=run.monsters[mi].hp;let max_hp=run.monsters[mi].max_hp;
     let atk = run.hero.atk();
     let atk = (atk.0 * mult, atk.1 * mult);
     let prepared=gun.is_some_and(|(_,prepared)|prepared);
@@ -1711,7 +1802,19 @@ fn hero_attack_roll(run: &mut Run, cx: &mut Ctx, mi: usize, verb: &str, bash: bo
             callout(run, cx, "stunned");
         }
         let dmg = if run.monsters[mi].marked > 0 { dmg * 3 / 2 } else { dmg };
-        damage_monster(run, cx, mi, dmg, &Src::Hero { ranged });
+        crate::turn::damage_monster_with_bonus(run,cx,mi,dmg,&Src::Hero {ranged},if siege.is_some(){Some(9)}else if ghost{Some(10)}else{None});
+        if gun.is_some()&&run.monsters[mi].hp<pre_hp {let killed=run.monsters[mi].hp<=0;crate::class_advanced::gun_hit(run,cx,mi,prepared,verb=="close_burst",killed);}
+        if bash&&run.monsters[mi].is_boss() {
+            if crate::class_advanced::has(run,Class::Fighter,7) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Oathguard, 7, crate::class_advanced::Effect::MeleeBlock, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, Some(id));}
+            if crate::class_advanced::has(run,Class::Fighter,9) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::SiegeRhythm, 9, crate::class_advanced::Effect::Damage, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, Some(id));}
+        }
+        if run.monsters[mi].hp<=0 {
+            if siege.is_some()&&crate::class_advanced::has(run,Class::Fighter,11)&&run.hero.advanced.as_deref().and_then(|s|s.execution_t).is_none_or(|t|run.turn.saturating_sub(t)>=40) {
+                run.hero.advanced.get_or_insert_with(Default::default).execution_t=Some(run.turn);
+                crate::class_advanced::cooldown(run,cx,11,crate::class_advanced::Effect::BashCooldown,20,Some(id));
+            }
+            if verb=="shoot"&&pre_hp.saturating_mul(4)<max_hp&&crate::class_advanced::has(run,Class::Ranger,7) {crate::class_advanced::cooldown(run,cx,7,crate::class_advanced::Effect::DoubleShotCooldown,20,Some(id));}
+        }
         if run.monsters[mi].hp > 0 && !run.monsters[mi].awake {
             run.monsters[mi].awake = true;
             run.monsters[mi].last_seen = Some(run.hero.pos);
@@ -2854,6 +2957,7 @@ pub(crate) fn move_monster(run: &mut Run, cx: &mut Ctx, mi: usize, q: Pos) {
     if run.monsters[mi].hostile() {
         if let Some(ii) = run.item_at(q).filter(|&ii| run.items[ii].item.kind == "trap") {
             run.items.remove(ii);
+            crate::class_advanced::trap_triggered(run,cx,mi);
             run.monsters[mi].stun = 20 + 5*i32::from(crate::legacy::has(&run.hero,crate::legacy::CONTROL));
             run.monsters[mi].pending = None;
             run.monsters[mi].telegraph = None;
@@ -3160,7 +3264,12 @@ fn monster_attack(run: &mut Run, cx: &mut Ctx, mi: usize, mult: i32, verb: &str)
         learn_tag(run, cx, &kind, "heavy");
     }
     let _ = cause;
-    damage_hero(run, cx, dmg, &Src::Mon(mi));
+    let guard=if crate::class_advanced::enabled(run)&&run.monsters[mi].hostile()&&roll>0 {
+        let ranged=matches!(verb,"shoot"|"bolt");
+        let without_ward=run.hero.boss_melee_damage(run.hero.blunt_with_ward(roll,false),run.monsters[mi].is_boss(),ranged);
+        Some(crate::class_advanced::MeleeGuard {prevented:(roll-dmg).max(0),ward:(without_ward-dmg).max(0),attacker:id,melee:!ranged&&run.monsters[mi].pos.adjacent(run.hero.pos)})
+    }else{None};
+    crate::turn::damage_hero_guarded(run,cx,dmg,&Src::Mon(mi),guard);
 }
 
 fn summon_near(run: &mut Run, cx: &mut Ctx, at: Pos, kind: &str, n: usize, ttl: Option<i32>) -> usize {
@@ -4487,11 +4596,13 @@ fn verb_cleave(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
     run.hero.cleave_cd = 60 - 10 * run.hero.skill(Class::Fighter, 4);
     crate::provenance::cooldown(run, cx, "cleave");
     callout(run, cx, "cleave");
+    let before=cx.events.len();
     for mi in targets {
         if run.monsters[mi].hp > 0 {
             hero_attack(run, cx, mi, "cleave", false);
         }
     }
+    if crate::class_advanced::has(run,Class::Fighter,8)&&cx.events[before..].iter().filter_map(|e|match e {Ev::Hurt {id,dmg,cause,..} if *id!=HERO_ID&&*dmg>0&&cause=="hero"=>Some(*id),_=>None}).collect::<std::collections::BTreeSet<_>>().len()>=2 {crate::class_advanced::cooldown(run,cx,8,crate::class_advanced::Effect::BashCooldown,10,None);}
     true
 }
 
@@ -4519,10 +4630,18 @@ fn verb_backstab(run: &mut Run, cx: &mut Ctx, v: &View, mult: i32) -> bool {
         m.pos.adjacent(hp) && (!m.awake || m.stun > 0 || run.hero.vanish_t > 0)
     });
     let Some(mi) = target else { return false };
+    let before=cx.events.len();
+    let (pre_hp,max_hp,pre_vanish,id)=(run.monsters[mi].hp,run.monsters[mi].max_hp,run.hero.vanish_t,run.monsters[mi].id);
+    let observed_windup=run.monsters[mi].is_boss()&&run.monsters[mi].pending.is_some()&&run.floor.map.is_visible(run.monsters[mi].pos);
     hero_attack_mult(run, cx, mi, if mult >= 3 { "ambush" } else { "backstab" }, false, mult);
+    let hit=cx.events[before..].iter().any(|e|matches!(e,Ev::Attack {src,dst,hit:true,..} if *src==HERO_ID&&*dst==id));
     if mult >= 3 {
-        run.hero.vanish_t = 0;
+        run.hero.vanish_t=if !hit&&crate::class_advanced::has(run,Class::Rogue,9) {pre_vanish.min(3)}else{0};
+        if !hit&&run.hero.vanish_t>0 {crate::class_advanced::receipt(run, cx, 9, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Vanish, run.hero.vanish_t, crate::class_advanced::ReceiptTarget { target: Some(id), expires_t: None });}
+        if hit&&crate::class_advanced::has(run,Class::Rogue,6) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Afterimage, 6, crate::class_advanced::Effect::VanishCooldown, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, Some(id));}
+        if hit&&pre_hp.saturating_mul(4)<max_hp&&crate::class_advanced::has(run,Class::Rogue,11) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::SilentFinish, 11, crate::class_advanced::Effect::Energy, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, Some(id));}
     }
+    if mult<3&&hit&&observed_windup&&crate::class_advanced::has(run,Class::Rogue,7) {crate::class_advanced::cooldown(run,cx,7,crate::class_advanced::Effect::VanishCooldown,10,Some(id));}
     true
 }
 
@@ -4568,7 +4687,18 @@ fn verb_shadowstep(run: &mut Run, cx: &mut Ctx, v: &View) -> bool {
         .filter(|q| run.floor.map.passable(*q) && !run.occupied(*q) && q.adjacent(mp) && *q != hp)
         .collect();
     let Some(q) = cands.first().copied() else { return false };
+    let target_id=run.monsters[mi].id;
     move_hero(run, cx, q);
+    if crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::Afterimage,6,crate::class_advanced::Effect::VanishCooldown,Some(target_id)).is_some() {crate::class_advanced::cooldown(run,cx,6,crate::class_advanced::Effect::VanishCooldown,20,None);}
+    if crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::VeiledRoute,8,crate::class_advanced::Effect::Energy,Some(target_id)).is_some() {
+        crate::class_advanced::queue_energy(run,8);
+        if crate::class_advanced::has(run,Class::Rogue,10) {crate::class_advanced::arm(run, cx, crate::class_advanced::Combo::Ghostwalk, 10, crate::class_advanced::Effect::Damage, crate::class_advanced::ChargeWindow { count: 1, ticks: 10 }, None);}
+    }
+    if crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::SilentFinish,11,crate::class_advanced::Effect::Energy,Some(target_id)).is_some() {crate::class_advanced::queue_energy(run,11);}
     callout(run, cx, "shadowstep");
     true
 }
+
+#[cfg(test)]
+#[path="class_advanced_tests.rs"]
+mod advanced_tests;

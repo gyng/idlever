@@ -397,6 +397,42 @@ export type LegendaryDiscovery = {
   target: string;
 };
 export type Ev =
+  | {
+      t: number;
+      k: "class_stage";
+      class: string;
+      stage: Exclude<ClassPickMilestone["stage"], "class_level">;
+      picks: number;
+    }
+  | {
+      t: number;
+      k: "class_interaction";
+      src: number;
+      dst?: number;
+      skill: { id: string; name: string };
+      phase: "armed" | "consumed" | "applied";
+      effect:
+        | "bash_cooldown"
+        | "vanish_cooldown"
+        | "shadowstep_cooldown"
+        | "double_shot_cooldown"
+        | "ward_cooldown"
+        | "nova_cooldown"
+        | "blink_cooldown"
+        | "fast_reload_cooldown"
+        | "melee_block"
+        | "damage"
+        | "range"
+        | "mark"
+        | "slow"
+        | "ward"
+        | "vanish"
+        | "chamber"
+        | "aim_settle"
+        | "energy";
+      amount: number;
+      expires_t?: number;
+    }
   | { t: number; k: "gun"; state: GunSnap | null }
   | { t: number; k: "move"; id: number; x: number; y: number }
   | { t: number; k: "attack"; src: number; dst: number; dmg: number; hit: boolean; verb?: string }
@@ -1126,6 +1162,17 @@ export type ClassPathNode = {
   tactics: Row[];
   effect: string;
 };
+export type ClassPickMilestone = {
+  stage: "class_level" | "advanced" | "advanced_second" | "capstone" | "mastery";
+  level: number;
+  required_level: number;
+  depth: number;
+  required_depth: number;
+  completed: number;
+  required_completed: number;
+  scout: boolean;
+  requires_scout: boolean;
+};
 export type ClassTree = {
   class: string;
   level: number;
@@ -1133,6 +1180,14 @@ export type ClassTree = {
   next: number;
   points: number;
   spent: number;
+  /** Cut253; optional only while the client can still inspect the older runtime. */
+  budget?: number;
+  next_pick?: ClassPickMilestone | null;
+  /** A recorded real earned-stage transition; migrated eligible reads alone have none. */
+  earned_stage?: {
+    stage: Exclude<ClassPickMilestone["stage"], "class_level">;
+    picks: number;
+  } | null;
   available: boolean;
   blocked: string | null;
   reset_available: boolean;

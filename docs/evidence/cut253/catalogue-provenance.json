@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-16",
+  "command": "cargo run -q --profile fast -p idlever-core --example cut253_catalogue > docs/evidence/cut253/catalogue.json 2> docs/evidence/cut253/catalogue-export.log",
+  "handle": "75148",
+  "exit": 0,
+  "scope": "Pure authored native catalogue; not earned state, selected ownership, or runtime package proof. WASM remains8879.",
+  "identity_method": "Owner confirms class_tree.rs and hero.rs received no writes throughout the exporter handle. Source mtimes precede exporter log creation. Digests were captured at terminal, not falsely described as pre-recorded digests.",
+  "export_started_epoch": 1792103174.8875813,
+  "files": {
+    "crates/idlever-core/src/class_tree.rs": {
+      "sha256": "ce903da2b906f9f30c85925bcaf4fd58f351e7e5b51c637cdfe0b960d0d83d34",
+      "bytes": 34196,
+      "mtime_epoch": 1792102899.72901
+    },
+    "crates/idlever-core/src/hero.rs": {
+      "sha256": "37b036fed4a140d8500015f08e6acc439efe6fe54d165750c82e030caa127369",
+      "bytes": 26834,
+      "mtime_epoch": 1792101743.0330248
+    },
+    "crates/idlever-core/examples/cut253_catalogue.rs": {
+      "sha256": "9c7006c9f93da8bdffce2fdc06b3f45c0f8a9b94919440b0037b40696c18d5eb",
+      "bytes": 627,
+      "mtime_epoch": 1792102307.0917633
+    },
+    "docs/evidence/cut253/catalogue.json": {
+      "sha256": "a96b311ac4cb7bdab98ebe9ea2de2f6f5fd574b7ea7a981dc3936b46b510e19d",
+      "bytes": 65553,
+      "mtime_epoch": 1792103307.7087786
+    }
+  },
+  "nodes": 72
+}

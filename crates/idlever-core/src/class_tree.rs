@@ -26,11 +26,59 @@ pub struct Tree {
     pub next: u32,
     pub points: u32,
     pub spent: u32,
+    pub budget: u32,
+    pub next_pick: Option<PickMilestone>,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub earned_stage:Option<EarnedStage>,
     pub available: bool,
     pub blocked: Option<String>,
     pub reset_available: bool,
     pub reset_blocked: Option<String>,
     pub nodes: Vec<Node>,
+}
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct EarnedStage {pub stage:String,pub picks:u32}
+/// Canonical progress toward the next earned pick, never a clock or a purchase.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct PickMilestone {
+    pub stage: String,
+    pub level: u32,
+    pub required_level: u32,
+    pub depth: u32,
+    pub required_depth: u32,
+    pub completed: u32,
+    pub required_completed: u32,
+    pub scout: bool,
+    pub requires_scout: bool,
+}
+fn expanded(class: Class) -> bool {
+    matches!(class, Class::Fighter | Class::Rogue | Class::Ranger | Class::Caster | Class::Gunner)
+}
+const STAGES: [(&str,u32,u32,u32);4] = [
+    ("advanced",9,23,24), ("advanced_second",10,28,32),
+    ("capstone",10,29,48), ("mastery",10,33,64),
+];
+fn completed(l:&LineageState)->u32 {
+    l.runs_banked.saturating_add(l.runs_returned).saturating_add(l.runs_died)
+}
+fn earned_stages(l:&LineageState)->usize {
+    if !expanded(l.class) || !crate::tree::hired(l,"scout") { return 0; }
+    STAGES.iter().take_while(|(_,level,depth,runs)|
+        l.class_level()>=*level && crate::legacy::deepest(l)>=*depth && completed(l)>=*runs
+    ).count()
+}
+fn next_pick(l:&LineageState)->Option<PickMilestone> {
+    let base=l.class_level().saturating_sub(2).min(6);
+    let (stage,required_level,required_depth,required_completed,requires_scout)=if base<6 {
+        ("class_level",l.class_level().saturating_add(1).max(3),0,0,false)
+    } else {
+        if !expanded(l.class) {return None;}
+        let &(stage,level,depth,runs)=STAGES.get(earned_stages(l))?;
+        (stage,level,depth,runs,true)
+    };
+    Some(PickMilestone {stage:stage.into(),level:l.class_level(),required_level,
+        depth:crate::legacy::deepest(l),required_depth,completed:completed(l),required_completed,
+        scout:crate::tree::hired(l,"scout"),requires_scout})
 }
 fn home_block(l: &LineageState, away: bool) -> Option<String> {
     if away {
@@ -385,7 +433,7 @@ fn definitions(class: Class) -> Vec<Node> {
             ]),
         ],
     };
-    specs
+    let mut nodes = specs
         .into_iter()
         .map(|(slug, name, parent, patterns)| {
             let id = format!("{}_{slug}", class.name());
@@ -496,15 +544,86 @@ fn definitions(class: Class) -> Vec<Node> {
                 effect,
             }
         })
-        .collect()
+        .collect::<Vec<_>>();
+    nodes.extend(advanced_definitions(class));
+    nodes
 }
+fn advanced_definitions(class:Class)->Vec<Node> {
+    let specs:Vec<(&str,&str,&str,&str,Vec<Pattern>)>=match class {
+        Class::Fighter=>vec![
+            ("rally","Rally","recovery","wind after block → bash cooldown −20 ticks",vec![(vec![Cond::n("hp<",55)],"second_wind",""),(vec![Cond::n("adj>=",1)],"shield_bash","")]),
+            ("oathguard","Oathguard","boss_guard","boss bash → one melee block +2 for10ticks",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash","")]),
+            ("opening_cut","Opening cut","crowd_breaker","cleave2hits → bash cooldown −10ticks",vec![(vec![Cond::n("adj>=",2)],"cleave",""),(vec![Cond::n("adj>=",1)],"shield_bash","")]),
+            ("siege_rhythm","Siege rhythm","boss_breaker","boss bash → next melee +2 for10ticks",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash",""),(vec![Cond::n("adj>=",1)],"attack","nearest")]),
+            ("holdfast","Holdfast","rally","threatened wind → two melee blocks +2 for20ticks",vec![(vec![Cond::n("hp<",55),Cond::n("adj>=",1)],"second_wind","")]),
+            ("execution_arc","Execution arc","siege_rhythm","charged kill → bash −20ticks;40tick cap",vec![(vec![Cond::t("foe_tag","boss")],"shield_bash",""),(vec![Cond::n("adj>=",1)],"attack","lowest")]),
+        ],
+        Class::Rogue=>vec![
+            ("afterimage","Afterimage","ambusher","ambush → next shadowstep cuts vanish cooldown20ticks",vec![(vec![Cond::n("adj>=",1)],"ambush",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
+            ("tell_thief","Tell thief","boss_stalker","windup boss backstab → vanish cooldown −10ticks",vec![(vec![Cond::t("foe_tag","boss")],"backstab","")]),
+            ("veiled_route","Veiled route","escape_artist","smoke blind → next shadowstep returns50%energy",vec![(vec![Cond::n("adj>=",1)],"smoke",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
+            ("patient_ambush","Patient ambush","counter_ambush","missed ambush retains at most3vanish ticks",vec![(vec![Cond::n("adj>=",1)],"ambush","")]),
+            ("ghostwalk","Ghostwalk","veiled_route","smoke→shadowstep → next backstab +2damage",vec![(vec![Cond::n("adj>=",1)],"smoke",""),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
+            ("silent_finish","Silent finish","afterimage","ambush below25% → next shadowstep returns50%energy",vec![(vec![Cond::n("adj>=",1),Cond::n("foe_hp<",25)],"ambush","lowest"),(vec![Cond::n("foes>=",1)],"shadowstep","")]),
+        ],
+        Class::Ranger=>vec![
+            ("spotter","Spotter","boss_hunter","marked trap trigger → mark +10ticks;cap50",vec![(vec![Cond::t("foe_tag","boss")],"mark","tag:boss"),(vec![Cond::n("foes>=",1)],"trap","")]),
+            ("quiver_thread","Quiver thread","finisher","shot kills below25% → double-shot cooldown −20ticks",vec![(vec![Cond::n("foe_hp<",25)],"shoot","lowest"),(vec![Cond::n("foes>=",1)],"double_shot","nearest")]),
+            ("corridor_volley","Corridor volley","crossfire","volley2hits → next shot +1range for10ticks",vec![(vec![Cond::n("foes>=",2)],"volley",""),(vec![Cond::n("foes>=",1)],"shoot","nearest")]),
+            ("split_mark","Split mark","marked_barrage","marked volley → one hit foe mark copy≤20ticks",vec![(vec![Cond::t("foe_tag","boss")],"mark","tag:boss"),(vec![Cond::n("foes>=",2)],"volley","")]),
+            ("patient_snare","Patient snare","spotter","marked trap trigger → double-shot cooldown −20ticks",vec![(vec![Cond::t("foe_tag","boss")],"mark","tag:boss"),(vec![Cond::n("foes>=",1)],"trap","")]),
+            ("moving_line","Moving line","split_mark","split-mark volley → next kite returns50%energy",vec![(vec![Cond::n("foes>=",2)],"volley",""),(vec![Cond::n("adj>=",1)],"kite","")]),
+        ],
+        Class::Caster=>vec![
+            ("chilling_charge","Chilling charge","boss_channel","slowed boss bolt → ward cooldown −10ticks;once per slow",vec![(vec![Cond::t("foe_tag","boss")],"slow","tag:boss"),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
+            ("storm_cell","Storm cell","storm","nova2hits → next bolt one extra line foe at50%",vec![(vec![Cond::n("foes>=",2)],"nova",""),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
+            ("ice_lock","Ice lock","frost_guard","warded slow +10ticks once;cap50",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",1)],"slow","nearest")]),
+            ("shatter_ward","Shatter ward","nova_guard","warded nova consumes ward → nova cooldown −20ticks",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("foes>=",2)],"nova","")]),
+            ("conduct","Conduct","chilling_charge","qualifying bolt → one visible adjacent slow copy≤10ticks",vec![(vec![Cond::t("foe_tag","boss")],"slow","tag:boss"),(vec![Cond::n("foes>=",1)],"bolt","nearest")]),
+            ("last_wall","Last wall","ice_lock","ward absorbs4 → blink cooldown −20ticks once",vec![(vec![Cond::n("hp<",70)],"ward",""),(vec![Cond::n("hp<",45),Cond::n("foes>=",1)],"blink","")]),
+        ],
+        Class::Gunner=>vec![
+            ("rangefinder","Rangefinder","boss_marksman","fully aimed boss hit recovers one spent chamber",vec![(vec![Cond::t("foe_tag","boss")],"aimed_shot","tag:boss")]),
+            ("chamber_chain","Chamber chain","quick_loader","completed fast reload → next aim settles1tick sooner",vec![(vec![],"fast_reload",""),(vec![Cond::n("foes>=",1)],"aimed_shot","nearest")]),
+            ("smoke_walk","Smoke walk","smoke_screen","smoke blind → completed reload returns50%energy",vec![(vec![],"reload",""),(vec![Cond::n("adj>=",1)],"smoke_retreat","")]),
+            ("cycling_breach","Cycling breach","close_loader","adjacent close-burst kill → fast-reload cooldown −10ticks",vec![(vec![Cond::n("adj>=",1)],"close_burst","nearest"),(vec![],"fast_reload","")]),
+            ("long_watch","Long watch","chamber_chain","charged aim kill → next aim settles1tick sooner",vec![(vec![],"fast_reload",""),(vec![Cond::n("foes>=",1)],"aimed_shot","nearest")]),
+            ("breach_route","Breach route","cycling_breach","close-burst kill → next smoke retreat returns50%energy",vec![(vec![Cond::n("adj>=",1)],"close_burst","nearest"),(vec![Cond::n("foes>=",1)],"smoke_retreat","")]),
+        ],
+        Class::Clown|Class::Engineer=>vec![],
+    };
+    specs.into_iter().enumerate().map(|(i,(slug,name,parent,effect,patterns))| {
+        let id=format!("{}_{}",class.name(),slug);
+        let tactics=patterns.into_iter().map(|(conds,verb,target)|row(&id,conds,verb,target)).collect();
+        Node {id,name:name.into(),parent:Some(format!("{}_{}",class.name(),parent)),
+            required_level:if i>=4 {10}else{9},required_depth:if i>=4 {29}else{23},
+            owned:false,available:false,blocked:None,tactics,effect:effect.into()}
+    }).collect()
+}
+/// Authored catalogue only: no XP, unlock, pick or owned-state grants.
+pub fn catalogue(class:Class)->Vec<Node> {definitions(class)}
 fn budget(l: &LineageState) -> u32 {
-    l.class_level().saturating_sub(2).min(6)
+    l.class_level().saturating_sub(2).min(6) + earned_stages(l) as u32
 }
 fn spent(l: &LineageState) -> u32 {
     l.class_paths
         .get(l.class.name())
         .map_or(0, |s| s.len() as u32)
+}
+fn qualified(l:&LineageState,node:&Node,defs:&[Node],ancestors:&mut std::collections::BTreeSet<String>)->bool {
+    if !ancestors.insert(node.id.clone()) {return false;}
+    let owned=l.class_paths.get(l.class.name());
+    let advanced=defs.iter().position(|n|n.id==node.id).is_some_and(|i|i>=6);
+    let stage=if defs.iter().position(|n|n.id==node.id).is_some_and(|i|i>=10) {3}else{1};
+    owned.is_some_and(|s|s.contains(&node.id)) && l.class_level()>=node.required_level
+        && crate::legacy::deepest(l)>=node.required_depth && (!advanced||earned_stages(l)>=stage)
+        && node.parent.as_ref().is_none_or(|p|defs.iter().find(|n|&n.id==p)
+            .is_some_and(|parent|qualified(l,parent,defs,ancestors)))
+}
+fn parent_qualified(l:&LineageState,node:&Node)->bool {
+    let defs=definitions(l.class);
+    node.parent.as_ref().is_none_or(|p|defs.iter().find(|n|&n.id==p)
+        .is_some_and(|parent|qualified(l,parent,&defs,&mut std::collections::BTreeSet::new())))
 }
 fn node_block(l: &LineageState, away: bool, node: &Node) -> Option<String> {
     home_block(l, away).or_else(|| {
@@ -512,12 +631,11 @@ fn node_block(l: &LineageState, away: bool, node: &Node) -> Option<String> {
             Some(format!("reach class level {}", node.required_level))
         } else if crate::legacy::deepest(l) < node.required_depth {
             Some(format!("reach D{}", node.required_depth))
-        } else if node.parent.as_ref().is_some_and(|parent| {
-            l.class_paths
-                .get(l.class.name())
-                .is_none_or(|s| !s.contains(parent))
-        }) {
+        } else if !parent_qualified(l,node) {
             Some("learn parent skill".into())
+        } else if expanded(l.class) && definitions(l.class).iter().position(|n|n.id==node.id)
+            .is_some_and(|i|i>=6 && earned_stages(l)<if i>=10 {3}else{1}) {
+            Some("earn advanced stage".into())
         } else if !l
             .class_paths
             .get(l.class.name())
@@ -564,6 +682,9 @@ pub fn offers(l: &LineageState, away: bool) -> Tree {
         },
         points: budget(l).saturating_sub(spent(l)),
         spent: spent(l),
+        budget: budget(l),
+        next_pick: next_pick(l),
+        earned_stage:l.class_stages_announced.get(l.class.name()).copied().filter(|n|expanded(l.class)&&*n>0&&usize::from(*n)<=STAGES.len()).map(|n|EarnedStage {stage:STAGES[usize::from(n)-1].0.into(),picks:6+u32::from(n)}),
         available: blocked.is_none(),
         blocked,
         reset_available: learned.is_some_and(|s| !s.is_empty()) && home.is_none(),
@@ -601,42 +722,32 @@ pub fn reset(g: &mut Game) -> Result<(), String> {
     Ok(())
 }
 pub fn rows(l: &LineageState) -> Vec<Row> {
-    let Some(learned) = l.class_paths.get(l.class.name()) else {
-        return vec![];
-    };
+    if !l.class_paths.contains_key(l.class.name()) {return vec![];}
     let defs = definitions(l.class);
-    let eligible = |n: &&Node| {
-        learned.contains(&n.id)
-            && l.class_level() >= n.required_level
-            && crate::legacy::deepest(l) >= n.required_depth
-            && n.parent.as_ref().is_none_or(|p| learned.contains(p))
-    };
-    // Descendants precede parent defaults. Authored order, never learning order,
-    // settles peers; the compiled set records this exact cumulative policy.
-    defs.iter()
-        .filter(eligible)
-        .filter(|n| n.parent.is_some())
-        .chain(defs.iter().filter(eligible).filter(|n| n.parent.is_none()))
-        .flat_map(|n| n.tactics.clone())
-        .collect()
+    let mut eligible=defs.iter().enumerate().filter(|(_,n)|
+        qualified(l,n,&defs,&mut std::collections::BTreeSet::new())
+    ).collect::<Vec<_>>();
+    let depth=|node:&Node| {let mut depth=0;let mut parent=node.parent.as_ref();let mut seen=std::collections::BTreeSet::new();
+        while let Some(id)=parent {if !seen.insert(id) {break;} let Some(p)=defs.iter().find(|n|&n.id==id)else{break;};depth+=1;parent=p.parent.as_ref();}depth};
+    // Stable authored sibling order and unchanged old child-before-root policy.
+    if eligible.iter().any(|(i,_)|*i>=6) {
+        eligible.sort_by_key(|(i,n)|(std::cmp::Reverse(depth(n)),*i));
+    } else {
+        // Clown/Engineer already had three tiers. Their no-advanced compiled policy stays exact too.
+        eligible.sort_by_key(|(i,n)|(if n.parent.is_some(){0}else{1},*i));
+    }
+    eligible.into_iter().flat_map(|(_,n)|n.tactics.clone()).collect()
 }
-/// Six class-local authored node bits, derived only at send. Old/no-choice
+/// Class-local authored node bits, old0–5 retained and advanced6–11 appended, derived only at send. Old/no-choice
 /// lineages return zero; invalid or unqualified stored IDs never grant effects.
 pub fn mask(l: &LineageState) -> u32 {
-    let Some(learned) = l.class_paths.get(l.class.name()) else {
-        return 0;
-    };
-    definitions(l.class)
-        .iter()
-        .enumerate()
-        .filter(|(_, n)| {
-            learned.contains(&n.id)
-                && l.class_level() >= n.required_level
-                && crate::legacy::deepest(l) >= n.required_depth
-                && n.parent.as_ref().is_none_or(|p| learned.contains(p))
-        })
-        .fold(0, |bits, (i, _)| bits | (1 << i))
+    if !l.class_paths.contains_key(l.class.name()) {return 0;}
+    let defs=definitions(l.class);
+    defs.iter().enumerate().filter(|(_,n)|
+        qualified(l,n,&defs,&mut std::collections::BTreeSet::new())
+    ).fold(0,|bits,(i,_)|bits|(1<<i))
 }
+
 pub fn label(id: &str) -> Option<String> {
     let id = id.strip_prefix("path:")?;
     static LABELS: std::sync::OnceLock<std::collections::BTreeMap<String, String>> = std::sync::OnceLock::new();
@@ -646,3 +757,16 @@ pub fn label(id: &str) -> Option<String> {
 #[cfg(test)]
 #[path = "class_tree_tests.rs"]
 mod tests;
+
+/// Pure personal progress; announcements are committed only by actual mutations.
+pub(crate) fn earned_stage(l:&LineageState)->u8 {earned_stages(l) as u8}
+pub(crate) fn announce_stage(game:&mut Game,before:u8,t:u32) {
+    if game.sim{return;}
+    let now=earned_stage(&game.lineage);
+    if now<=before{return;}
+    let class=game.lineage.class.name();
+    if game.lineage.class_stages_announced.get(class).copied().unwrap_or(0)>=now{return;}
+    game.lineage.class_stages_announced.insert(class.into(),now);
+    let stage=STAGES[usize::from(now)-1].0.to_string();
+    game.events.push(crate::wire::Ev::ClassStage {t,class:class.into(),stage,picks:budget(&game.lineage)});
+}

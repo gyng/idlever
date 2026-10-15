@@ -237,8 +237,26 @@ html.skin-button .sheet-wrap .sheet-body.class-style-review button.chip {
   padding: 8px;
 }
 .class-tree-panel .class-tree-map > summary,
-.class-tree-panel .class-skill-rules > summary {
+.class-tree-panel .class-skill-rules > summary,
+.class-tree-panel .class-tree-pick > summary {
   min-height: 44px;
+}
+.class-tree-pick {
+  margin-bottom: 10px;
+}
+.class-tree-pick > summary {
+  cursor: pointer;
+  display: list-item;
+  align-content: center;
+}
+.class-tree-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding: 4px 0 10px;
+}
+.class-tree-requirements [data-met="false"] {
+  font-weight: 700;
 }
 @container hero-folio (max-width: 28rem) {
   html body .game-window[data-material="bloodlines"] .class-tree-panel .class-tree-fork {

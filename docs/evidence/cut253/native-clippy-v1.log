@@ -1,0 +1,81 @@
+    Checking idlever-core v0.1.0 (/home/g/p/riddle/crates/idlever-core)
+error: this function has too many arguments (8/7)
+   --> crates/idlever-core/src/class_advanced.rs:136:1
+    |
+136 | / pub fn receipt(
+137 | |     run: &Run,
+138 | |     cx: &mut Ctx,
+139 | |     bit: u32,
+...   |
+144 | |     expires_t: Option<u32>,
+145 | | ) {
+    | |_^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+    = note: `-D clippy::too-many-arguments` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::too_many_arguments)]`
+
+error: this function has too many arguments (8/7)
+   --> crates/idlever-core/src/class_advanced.rs:193:1
+    |
+193 | / pub fn arm(
+194 | |     run: &mut Run,
+195 | |     cx: &mut Ctx,
+196 | |     combo: Combo,
+...   |
+201 | |     target: Option<u32>,
+202 | | ) -> bool {
+    | |_________^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#too_many_arguments
+
+error: could not compile `idlever-core` (lib) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: this `if` can be collapsed into the outer `match`
+    --> crates/idlever-core/src/class_advanced_tests.rs:1314:29
+     |
+1314 | / ...                   if out.len() < 24 {
+1315 | | ...                       out.push(format!("{path}: {a} vs {b}"));
+1316 | | ...                   }
+     | |_______________________^
+     |
+     = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#collapsible_match
+     = note: `-D clippy::collapsible-match` implied by `-D warnings`
+     = help: to override `-D warnings` add `#[allow(clippy::collapsible_match)]`
+help: collapse nested if block
+     |
+1313 ~                         _ if a != b
+1314 ~                             && out.len() < 24 => {
+1315 |                                 out.push(format!("{path}: {a} vs {b}"));
+1316 ~                             }
+     |
+
+error: the loop variable `index` is only used to index `defs`
+   --> crates/idlever-core/src/class_tree_tests.rs:518:26
+    |
+518 |             for index in 6..10 {assert_eq!((defs[index].required_level,defs[index].required_depth),(9,23));}
+    |                          ^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_range_loop
+    = note: `-D clippy::needless-range-loop` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::needless_range_loop)]`
+help: consider using an iterator
+    |
+518 -             for index in 6..10 {assert_eq!((defs[index].required_level,defs[index].required_depth),(9,23));}
+518 +             for <item> in defs.iter().take(10).skip(6) {assert_eq!((defs[index].required_level,defs[index].required_depth),(9,23));}
+    |
+
+error: the loop variable `index` is only used to index `defs`
+   --> crates/idlever-core/src/class_tree_tests.rs:519:26
+    |
+519 |             for index in 10..12 {assert_eq!((defs[index].required_level,defs[index].required_depth),(10,29));}
+    |                          ^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#needless_range_loop
+help: consider using an iterator
+    |
+519 -             for index in 10..12 {assert_eq!((defs[index].required_level,defs[index].required_depth),(10,29));}
+519 +             for <item> in defs.iter().take(12).skip(10) {assert_eq!((defs[index].required_level,defs[index].required_depth),(10,29));}
+    |
+
+error: could not compile `idlever-core` (lib test) due to 5 previous errors

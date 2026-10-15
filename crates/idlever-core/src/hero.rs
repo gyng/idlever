@@ -227,6 +227,8 @@ pub struct Hero {
     /// Learned class ability improvements, frozen at send; legacy saves omit zero.
     #[serde(default, skip_serializing_if = "class_skills_empty")]
     pub class_skills: u32,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub advanced:Option<Box<crate::class_advanced::State>>,
     pub class: Class,
     pub inv: crate::shared::Shared<Vec<Item>>,
     pub weapon: crate::shared::Shared<Option<Item>>,
@@ -348,6 +350,7 @@ impl Hero {
             special_cd:0,
             riposte_t:0,
             class_skills: 0,
+            advanced:None,
             class,
             inv: Vec::new().into(),
             weapon: None.into(),
@@ -409,10 +412,11 @@ impl Hero {
     /// armour blunts a blow, never negates it — a third of a blow (rounded) always lands through
     /// it (mail +1 had made the D1–D10 bands' 1–3 blows harmless). Found armour subtracts as it always did
     /// (the Deep's walls are measured on it); a verb's guard (`bulwark`, `ward`) subtracts in full.
-    pub fn blunt(&self, roll: i32) -> i32 {
+    pub fn blunt(&self, roll: i32) -> i32 {self.blunt_with_ward(roll,true)}
+    pub(crate) fn blunt_with_ward(&self,roll:i32,ward:bool)->i32 {
         let armour = self.armour.as_ref().map(|a| a.def_bonus()).unwrap_or(0).max(0)+self.extra_guard();
         let forged = self.armour.iter().chain(self.helm.iter()).chain(self.boots.iter()).any(|a|crate::kit::is_kit_id(a.id));
-        let guard = if self.bulwark_t > 0 { 3 } else { 0 } + if self.ward_t > 0 { 2 } else { 0 } + self.gift.guard;
+        let guard = if self.bulwark_t > 0 { 3 } else { 0 } + if ward&&self.ward_t > 0 { 2 } else { 0 } + self.gift.guard;
         let through = if forged { (roll - armour).max((roll + 1) / 3) } else { (roll - armour).max(0) };
         let through = if self.legacy_armour > 0 { (through - self.legacy_armour).max((through + 2) / 3) } else { through };
         (through - guard).max(0)

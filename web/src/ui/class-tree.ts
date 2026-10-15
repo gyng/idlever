@@ -142,7 +142,7 @@ export function renderClassTreeMilestone(app: App): HTMLElement | null {
   return t && first && t.spent === 0 ? classTreeSoon(first) : null;
 }
 
-/** Class levels fund cumulative skills; reveal only learned nodes and the next frontier. */
+/** Rust supplies earned picks; reveal only learned nodes and the next frontier. */
 export function renderClassTree(
   app: App,
   onChange: () => void,
@@ -290,7 +290,73 @@ export function renderClassTree(
   const nextNode = t.nodes
     .filter((n) => !n.owned && (n.parent === null || owned.has(n.parent)))
     .sort((a, b) => a.required_level - b.required_level)[0];
-  const nextPick = t.points === 0 && t.spent < t.nodes.length ? t.level + 1 : undefined;
+  // Older runtimes only have six level-funded picks. Never invent an advanced
+  // level requirement when inspecting that wire; new stage progress is Rust's.
+  const budget = t.budget ?? t.spent + t.points;
+  const nextPick = t.points === 0 ? t.next_pick : undefined;
+  const legacyNextLevel =
+    t.next_pick === undefined && t.points === 0 && budget < Math.min(6, t.nodes.length)
+      ? Math.max(3, t.level + 1)
+      : undefined;
+  const pickRequirement = nextPick
+    ? nextPick.stage === "class_level"
+      ? h(
+          "small",
+          { class: "class-tree-next num" },
+          /* copy:callout */ `Next pick L${nextPick.required_level}`,
+        )
+      : h(
+          "details",
+          {
+            class: "class-tree-pick",
+            open: open.has("pick"),
+            "data-class-tree-fold": "pick",
+            "data-pick-stage": nextPick.stage,
+          },
+          h("summary", null, /* copy:button */ "Next pick"),
+          h(
+            "div",
+            { class: "class-tree-requirements num" },
+            h(
+              "small",
+              {
+                "data-pick-requirement": "level",
+                "data-met": String(nextPick.level >= nextPick.required_level),
+              },
+              /* copy:label */ `L${nextPick.level}/${nextPick.required_level}`,
+            ),
+            h(
+              "small",
+              {
+                "data-pick-requirement": "depth",
+                "data-met": String(nextPick.depth >= nextPick.required_depth),
+              },
+              /* copy:label */ `D${nextPick.depth}/${nextPick.required_depth}`,
+            ),
+            h(
+              "small",
+              {
+                "data-pick-requirement": "completed",
+                "data-met": String(nextPick.completed >= nextPick.required_completed),
+              },
+              /* copy:label */ `${nextPick.completed}/${nextPick.required_completed} delves`,
+            ),
+            nextPick.requires_scout
+              ? h(
+                  "small",
+                  { "data-pick-requirement": "scout", "data-met": String(nextPick.scout) },
+                  nextPick.scout ? /* copy:label */ "Scout hired" : /* copy:label */ "Scout needed",
+                )
+              : null,
+          ),
+        )
+    : legacyNextLevel
+      ? h(
+          "small",
+          { class: "class-tree-next num" },
+          /* copy:callout */ `Next pick L${legacyNextLevel}`,
+        )
+      : null;
   return h(
     "section",
     { class: "class-tree-panel", "data-class-tree": t.class },
@@ -298,6 +364,13 @@ export function renderClassTree(
       "div",
       { class: "class-tree-header" },
       h("b", null, /* copy:label */ "Class tree"),
+      t.budget !== undefined
+        ? h(
+            "small",
+            { class: "num", "data-class-pick-budget": budget },
+            /* copy:label */ `${t.spent}/${budget} learned`,
+          )
+        : null,
       h(
         "small",
         { class: "num" },
@@ -308,15 +381,14 @@ export function renderClassTree(
             : /* copy:label */ `${t.points} picks`,
       ),
     ),
-    nextPick
-      ? h("small", { class: "class-tree-next num" }, /* copy:callout */ `Next pick L${nextPick}`)
-      : nextNode && !nextNode.available && nextNode.required_level > t.level
+    pickRequirement ??
+      (nextNode && !nextNode.available && nextNode.required_level > t.level
         ? h(
             "small",
             { class: "class-tree-next num" },
             /* copy:callout */ `Next L${nextNode.required_level} · D${nextNode.required_depth}`,
           )
-        : null,
+        : null),
     h("div", { class: "class-tree-current class-tree-fork" }, ...branches),
     full,
     t.spent > 0

@@ -1,0 +1,45 @@
+
+running 13 tests
+
+thread 'class_tree::tests::expanded_catalogue_has_seventy_two_stable_nodes_and_four_real_tiers' (20) panicked at crates/idlever-core/src/class_tree_tests.rs:510:17:
+assertion failed: crate::hero::class_has_verb(class, node.required_level, &row.verb.v)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'class_tree::tests::cumulative_whole_sliced_and_reloaded_offline_match_for_all_classes' (18) panicked at crates/idlever-core/src/class_tree_tests.rs:283:44:
+called `Result::unwrap()` on an `Err` value: "reach class level 9"
+class_tree::tests::expanded_catalogue_has_seventy_two_stable_nodes_and_four_real_tiers --- FAILED
+class_tree::tests::cumulative_whole_sliced_and_reloaded_offline_match_for_all_classes --- FAILED
+......fighter_warden seed3: depth5 attacks77 path_fires5 endedtrue
+...fighter_warden seed19: depth6 attacks99 path_fires12 endedtrue
+fighter_warden seed137: depth5 attacks77 path_fires11 endedtrue
+fighter_recovery seed3: depth7 attacks143 path_fires19 endedfalse
+fighter_recovery seed19: depth7 attacks183 path_fires18 endedfalse
+fighter_recovery seed137: depth6 attacks91 path_fires11 endedfalse
+fighter_boss_guard seed3: depth5 attacks77 path_fires0 endedtrue
+fighter_boss_guard seed19: depth6 attacks99 path_fires0 endedtrue
+fighter_boss_guard seed137: depth5 attacks77 path_fires0 endedtrue
+fighter_reaver seed3: depth6 attacks101 path_fires2 endedtrue
+.fighter_reaver seed19: depth5 attacks82 path_fires1 endedtrue
+fighter_reaver seed137: depth5 attacks70 path_fires1 endedtrue
+fighter_crowd_breaker seed3: depth7 attacks101 path_fires24 endedtrue
+fighter_crowd_breaker seed19: depth8 attacks135 path_fires20 endedfalse
+fighter_crowd_breaker seed137: depth5 attacks69 path_fires10 endedtrue
+fighter_boss_breaker seed3: depth6 attacks101 path_fires2 endedtrue
+fighter_boss_breaker seed19: depth5 attacks82 path_fires1 endedtrue
+fighter_boss_breaker seed137: depth5 attacks70 path_fires1 endedtrue
+
+thread 'class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds' (19) panicked at crates/idlever-core/src/class_tree_tests.rs:363:43:
+called `Result::unwrap()` on an `Err` value: "learn parent skill"
+ 12/13
+class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds --- FAILED
+
+failures:
+
+failures:
+    class_tree::tests::cumulative_whole_sliced_and_reloaded_offline_match_for_all_classes
+    class_tree::tests::every_authored_node_makes_bounded_real_progress_on_three_fixture_seeds
+    class_tree::tests::expanded_catalogue_has_seventy_two_stable_nodes_and_four_real_tiers
+
+test result: FAILED. 10 passed; 3 failed; 0 ignored; 0 measured; 995 filtered out; finished in 0.92s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

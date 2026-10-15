@@ -189,6 +189,7 @@ fn reload_at_speed(run:&mut crate::engine::Run,cx:&mut crate::engine::Ctx,fast:b
     let item = weapon.id;
     run.hero.weapon.as_mut().unwrap().firearm = Some(chambers);
     run.gun_reload = Some(Reload { item, at, duration: profile.reload_ticks });
+    crate::class_advanced::reload_started(run,item,fast);
     crate::chronicle::callout(run, cx, "reloading");
     true
 }
@@ -211,7 +212,11 @@ pub fn tick(run: &mut crate::engine::Run, cx: &mut crate::engine::Ctx) {
         run.monsters.iter_mut().filter_map(|m| m.stolen.as_mut())
             .find(|w| w.id == reload.item).is_some_and(|w| complete_item(w, run.turn))
     };
-    if completed { crate::chronicle::callout(run, cx, "loaded"); }
+    if completed {
+        let owned=run.hero.weapon.as_ref().is_some_and(|w|w.id==reload.item)||run.hero.inv.iter().any(|w|w.id==reload.item)||run.bow_swap.as_ref().is_some_and(|w|w.id==reload.item);
+        crate::class_advanced::reload_completed(run,cx,reload.item,owned);
+        crate::chronicle::callout(run, cx, "loaded");
+    }else if let Some(state)=run.hero.advanced.as_deref_mut() {state.reload=None;}
 }
 
 fn complete_item(item: &mut crate::item::Item, now: u32) -> bool {

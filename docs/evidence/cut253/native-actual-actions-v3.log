@@ -1,0 +1,27 @@
+
+running 20 tests
+
+thread 'ai::advanced_tests::chilling_charge_and_conduct_share_original_slow_but_each_apply_once' (17) panicked at crates/idlever-core/src/class_advanced_tests.rs:434:5:
+assertion `left == right` failed
+  left: 50
+ right: 40
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'ai::advanced_tests::long_watch_is_reachable_through_real_rangefinder_recovery_without_free_ammo' (21) panicked at crates/idlever-core/src/class_advanced_tests.rs:700:5:
+assertion `left == right` failed
+  left: []
+ right: [1]
+.. 2/20
+ai::advanced_tests::chilling_charge_and_conduct_share_original_slow_but_each_apply_once --- FAILED
+. 4/20
+ai::advanced_tests::long_watch_is_reachable_through_real_rangefinder_recovery_without_free_ammo --- FAILED
+...............
+failures:
+
+failures:
+    ai::advanced_tests::chilling_charge_and_conduct_share_original_slow_but_each_apply_once
+    ai::advanced_tests::long_watch_is_reachable_through_real_rangefinder_recovery_without_free_ammo
+
+test result: FAILED. 18 passed; 2 failed; 0 ignored; 0 measured; 988 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p idlever-core --lib`

@@ -1,0 +1,579 @@
+{
+  "checks": {
+    "cells": 648,
+    "unique": 72,
+    "ids": [
+      "caster_boss_channel",
+      "caster_channeler",
+      "caster_chilling_charge",
+      "caster_conduct",
+      "caster_frost_guard",
+      "caster_guardian",
+      "caster_ice_lock",
+      "caster_last_wall",
+      "caster_nova_guard",
+      "caster_shatter_ward",
+      "caster_storm",
+      "caster_storm_cell",
+      "clown_bellkeeper",
+      "clown_cruel_joke",
+      "clown_false_exit",
+      "clown_last_laugh",
+      "clown_ringmaster",
+      "clown_turncoat",
+      "engineer_artificer",
+      "engineer_bastion",
+      "engineer_mobile_works",
+      "engineer_relay",
+      "engineer_surveyor",
+      "engineer_watchmaker",
+      "fighter_boss_breaker",
+      "fighter_boss_guard",
+      "fighter_crowd_breaker",
+      "fighter_execution_arc",
+      "fighter_holdfast",
+      "fighter_oathguard",
+      "fighter_opening_cut",
+      "fighter_rally",
+      "fighter_reaver",
+      "fighter_recovery",
+      "fighter_siege_rhythm",
+      "fighter_warden",
+      "gunner_boss_marksman",
+      "gunner_breach_route",
+      "gunner_breacher",
+      "gunner_chamber_chain",
+      "gunner_close_loader",
+      "gunner_cycling_breach",
+      "gunner_long_watch",
+      "gunner_marksman",
+      "gunner_quick_loader",
+      "gunner_rangefinder",
+      "gunner_smoke_screen",
+      "gunner_smoke_walk",
+      "ranger_barrage",
+      "ranger_boss_hunter",
+      "ranger_corridor_volley",
+      "ranger_crossfire",
+      "ranger_finisher",
+      "ranger_hunter",
+      "ranger_marked_barrage",
+      "ranger_moving_line",
+      "ranger_patient_snare",
+      "ranger_quiver_thread",
+      "ranger_split_mark",
+      "ranger_spotter",
+      "rogue_afterimage",
+      "rogue_ambusher",
+      "rogue_boss_stalker",
+      "rogue_counter_ambush",
+      "rogue_escape_artist",
+      "rogue_ghostwalk",
+      "rogue_patient_ambush",
+      "rogue_shade",
+      "rogue_silent_finish",
+      "rogue_stalker",
+      "rogue_tell_thief",
+      "rogue_veiled_route"
+    ],
+    "fallback": "<span class=\"skill-icon\" data-skill-icon=\"future_unknown\" data-state=\"locked\" data-size=\"32\" data-fallback=\"true\" role=\"img\" aria-label=\"Actual future name\"><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M16 3L20 11L29 16L20 21L16 29L12 21L3 16L12 11Z\" class=\"skill-mark\" fill-rule=\"evenodd\"></path></svg></span>"
+  },
+  "nodes": [
+    {
+      "id": "fighter_warden",
+      "name": "Warden",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_recovery",
+      "name": "Recovery",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_boss_guard",
+      "name": "Boss guard",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_reaver",
+      "name": "Reaver",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_crowd_breaker",
+      "name": "Crowd breaker",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_boss_breaker",
+      "name": "Boss breaker",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_rally",
+      "name": "Rally",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_oathguard",
+      "name": "Oathguard",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_opening_cut",
+      "name": "Opening cut",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_siege_rhythm",
+      "name": "Siege rhythm",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_holdfast",
+      "name": "Holdfast",
+      "cls": "fighter"
+    },
+    {
+      "id": "fighter_execution_arc",
+      "name": "Execution arc",
+      "cls": "fighter"
+    },
+    {
+      "id": "rogue_stalker",
+      "name": "Stalker",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_ambusher",
+      "name": "Ambusher",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_boss_stalker",
+      "name": "Boss stalker",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_shade",
+      "name": "Shade",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_escape_artist",
+      "name": "Escape artist",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_counter_ambush",
+      "name": "Counter ambush",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_afterimage",
+      "name": "Afterimage",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_tell_thief",
+      "name": "Tell thief",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_veiled_route",
+      "name": "Veiled route",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_patient_ambush",
+      "name": "Patient ambush",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_ghostwalk",
+      "name": "Ghostwalk",
+      "cls": "rogue"
+    },
+    {
+      "id": "rogue_silent_finish",
+      "name": "Silent finish",
+      "cls": "rogue"
+    },
+    {
+      "id": "ranger_hunter",
+      "name": "Hunter",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_boss_hunter",
+      "name": "Boss hunter",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_finisher",
+      "name": "Finisher",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_barrage",
+      "name": "Barrage",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_crossfire",
+      "name": "Crossfire",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_marked_barrage",
+      "name": "Marked barrage",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_spotter",
+      "name": "Spotter",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_quiver_thread",
+      "name": "Quiver thread",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_corridor_volley",
+      "name": "Corridor volley",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_split_mark",
+      "name": "Split mark",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_patient_snare",
+      "name": "Patient snare",
+      "cls": "ranger"
+    },
+    {
+      "id": "ranger_moving_line",
+      "name": "Moving line",
+      "cls": "ranger"
+    },
+    {
+      "id": "caster_channeler",
+      "name": "Channeler",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_boss_channel",
+      "name": "Boss channel",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_storm",
+      "name": "Storm",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_guardian",
+      "name": "Guardian",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_frost_guard",
+      "name": "Frost guard",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_nova_guard",
+      "name": "Nova guard",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_chilling_charge",
+      "name": "Chilling charge",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_storm_cell",
+      "name": "Storm cell",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_ice_lock",
+      "name": "Ice lock",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_shatter_ward",
+      "name": "Shatter ward",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_conduct",
+      "name": "Conduct",
+      "cls": "caster"
+    },
+    {
+      "id": "caster_last_wall",
+      "name": "Last wall",
+      "cls": "caster"
+    },
+    {
+      "id": "gunner_marksman",
+      "name": "Marksman",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_boss_marksman",
+      "name": "Boss marksman",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_quick_loader",
+      "name": "Quick loader",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_breacher",
+      "name": "Breacher",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_smoke_screen",
+      "name": "Smoke screen",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_close_loader",
+      "name": "Close loader",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_rangefinder",
+      "name": "Rangefinder",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_chamber_chain",
+      "name": "Chamber chain",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_smoke_walk",
+      "name": "Smoke walk",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_cycling_breach",
+      "name": "Cycling breach",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_long_watch",
+      "name": "Long watch",
+      "cls": "gunner"
+    },
+    {
+      "id": "gunner_breach_route",
+      "name": "Breach route",
+      "cls": "gunner"
+    },
+    {
+      "id": "clown_bellkeeper",
+      "name": "Bellkeeper",
+      "cls": "clown"
+    },
+    {
+      "id": "clown_false_exit",
+      "name": "False exit",
+      "cls": "clown"
+    },
+    {
+      "id": "clown_ringmaster",
+      "name": "Ringmaster",
+      "cls": "clown"
+    },
+    {
+      "id": "clown_turncoat",
+      "name": "Turncoat",
+      "cls": "clown"
+    },
+    {
+      "id": "clown_cruel_joke",
+      "name": "Cruel joke",
+      "cls": "clown"
+    },
+    {
+      "id": "clown_last_laugh",
+      "name": "Last laugh",
+      "cls": "clown"
+    },
+    {
+      "id": "engineer_watchmaker",
+      "name": "Watchmaker",
+      "cls": "engineer"
+    },
+    {
+      "id": "engineer_bastion",
+      "name": "Bastion",
+      "cls": "engineer"
+    },
+    {
+      "id": "engineer_artificer",
+      "name": "Artificer",
+      "cls": "engineer"
+    },
+    {
+      "id": "engineer_surveyor",
+      "name": "Surveyor",
+      "cls": "engineer"
+    },
+    {
+      "id": "engineer_mobile_works",
+      "name": "Mobile works",
+      "cls": "engineer"
+    },
+    {
+      "id": "engineer_relay",
+      "name": "Relay",
+      "cls": "engineer"
+    }
+  ],
+  "paintings": 270,
+  "distinctPaints": 30,
+  "servedPaint": [
+    {
+      "path": "/ui/skills/fighter_oathguard-v1.webp",
+      "sha256": "aad912185da1607623b1b79a9dd1a5a883b2aae601e17f8a6cafd32c04add2ed"
+    },
+    {
+      "path": "/ui/skills/fighter_rally-v1.webp",
+      "sha256": "3d7ee21f7d1bddf5324fb484cf21a3c5f4280d9fa54678db3df96586b7487e7d"
+    },
+    {
+      "path": "/ui/skills/fighter_opening_cut-v1.webp",
+      "sha256": "8f2fb4864752f53e0885e890b7650a624375370a9ec3ba333f1f115547fe7524"
+    },
+    {
+      "path": "/ui/skills/fighter_siege_rhythm-v1.webp",
+      "sha256": "4a453042d920c90a51d9adb9d25a5822c344a327fa5e10ce57a2bd8237640157"
+    },
+    {
+      "path": "/ui/skills/fighter_holdfast-v1.webp",
+      "sha256": "8ae6dba79382541d324304eaefff556ab1b64cd00a596b0f9bf83c2064ed4edd"
+    },
+    {
+      "path": "/ui/skills/fighter_execution_arc-v1.webp",
+      "sha256": "5ccea24c732a9f39150e271ec322187430cdecda310c49a33a3d8e241bf81b8a"
+    },
+    {
+      "path": "/ui/skills/rogue_silent_finish-v1.webp",
+      "sha256": "648e4c84e6be065971824ac6139f49e1c2417020dc4ad7dfe206346351bc5b12"
+    },
+    {
+      "path": "/ui/skills/rogue_ghostwalk-v1.webp",
+      "sha256": "947a4ecc83b5078362e1a972141b4bedc27629100da6c4b42ba1baca62961aa9"
+    },
+    {
+      "path": "/ui/skills/rogue_tell_thief-v1.webp",
+      "sha256": "a04c8204b7d22db4614c48696f4f8ff21d532f26878337c09a9cdda290fa5826"
+    },
+    {
+      "path": "/ui/skills/rogue_veiled_route-v1.webp",
+      "sha256": "4688667aa2841a80bf94e83a8eac3a2b83b7255ed48d03973f49b41a53a865d2"
+    },
+    {
+      "path": "/ui/skills/rogue_patient_ambush-v2.webp",
+      "sha256": "0ab0f190e50cb52107a886a981deaf8304b5093b8367266add32c0c2fce96d3f"
+    },
+    {
+      "path": "/ui/skills/rogue_afterimage-v1.webp",
+      "sha256": "98ecedf6fbea241638cab35d4e0b8294e96b9d22603d0af72185dd3ae7e14b16"
+    },
+    {
+      "path": "/ui/skills/ranger_quiver_thread-v2.webp",
+      "sha256": "58a8f9f1f4265521dd4a4157f1e8209a5fe27895a29fb3e805499f066eba1d79"
+    },
+    {
+      "path": "/ui/skills/ranger_corridor_volley-v2.webp",
+      "sha256": "49851223c56feccb2d873a813c23791f2a804da78de11bc0b37b1c3a0726b529"
+    },
+    {
+      "path": "/ui/skills/ranger_split_mark-v1.webp",
+      "sha256": "5d167e1f3f94d80393d1712d07e2471644cf81e3d9f0495964f06fe7c047f887"
+    },
+    {
+      "path": "/ui/skills/ranger_spotter-v2.webp",
+      "sha256": "f0d9e20e88d8188bec385ff885f01f5b9cfc7c9c573c86ab4e61461ebaffa898"
+    },
+    {
+      "path": "/ui/skills/ranger_patient_snare-v2.webp",
+      "sha256": "f271f60bea37063f577b9c1933dad983b65cb6033d977e85c97d47872f1f6e57"
+    },
+    {
+      "path": "/ui/skills/ranger_moving_line-v1.webp",
+      "sha256": "9e5d9b898cfc760efb4a8db07f3fca4b3bad61d85c50dcd76d5cc17467c42827"
+    },
+    {
+      "path": "/ui/skills/caster_chilling_charge-v1.webp",
+      "sha256": "f2347fe091dd746d6f91a799de473733318e9e50cd69f56ff35aff704cd177c8"
+    },
+    {
+      "path": "/ui/skills/caster_storm_cell-v1.webp",
+      "sha256": "8c5c86ee2e167968ee82a608e07f54edf735be2ce0574ac114396ca74d3feac7"
+    },
+    {
+      "path": "/ui/skills/caster_ice_lock-v1.webp",
+      "sha256": "657c67a8dd1de4f7179c31d9683a2b2d16daa1a7e24c9a164197ecb5affa1efa"
+    },
+    {
+      "path": "/ui/skills/caster_shatter_ward-v1.webp",
+      "sha256": "751fd3344baf9ea5ae49333b740451a509456c7fe0f3cdfd7450c3ad74a2513d"
+    },
+    {
+      "path": "/ui/skills/caster_conduct-v1.webp",
+      "sha256": "37216e636ea4e1d1811248329b2406fcc514d08c1f2da82f9fd4e2b56365d93d"
+    },
+    {
+      "path": "/ui/skills/caster_last_wall-v1.webp",
+      "sha256": "1c1b64d06dfe6495df5e2f14baa486b9073cd8cc809d4558a9a72c8d5bb1f5cf"
+    },
+    {
+      "path": "/ui/skills/gunner_rangefinder-v1.webp",
+      "sha256": "5a30b1188691899bec52ecac797139ada521abf8904b0ef1b07886587dfa7d6d"
+    },
+    {
+      "path": "/ui/skills/gunner_chamber_chain-v1.webp",
+      "sha256": "25acd03b0cc9b23f355068592117b12563ef90c872a9561076a9a5e0df9017d6"
+    },
+    {
+      "path": "/ui/skills/gunner_smoke_walk-v1.webp",
+      "sha256": "6a033be6b49ac4d831e905a533f4c1a48db82bcfbf6d84ac4803b86400111db9"
+    },
+    {
+      "path": "/ui/skills/gunner_cycling_breach-v1.webp",
+      "sha256": "b1bc9d89ca1dd5e327974c1294f28a9abf1d09cb628d2cfadcf62c9b0ec08882"
+    },
+    {
+      "path": "/ui/skills/gunner_long_watch-v1.webp",
+      "sha256": "0c9fa615f9d8ae4b77d71e2e44033847b7f900f91e28a0ac00317ce4b66d40df"
+    },
+    {
+      "path": "/ui/skills/gunner_breach_route-v1.webp",
+      "sha256": "46b60e63f667505cab9a46ab6a7443c3d5a343df6217cba545da70bb233e267a"
+    }
+  ],
+  "failedImages": 30,
+  "errors": [],
+  "phoneViewport": {
+    "width": 402,
+    "height": 681
+  },
+  "captureKinds": {
+    "desktop": "scroll inventory",
+    "phone": "viewport",
+    "classes": "component captures"
+  },
+  "protocolSha256": "2ddb3cd197fb9935147bfe951a2c59a4cceb060cb398c18e5327a33e92166114"
+}

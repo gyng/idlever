@@ -85,6 +85,7 @@ export function combatLogEvents(
         "pickup",
         "discovery",
         "rule",
+        "class_interaction",
         "descend",
         "exit",
       ].includes(ev.k)

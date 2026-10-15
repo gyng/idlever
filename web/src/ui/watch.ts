@@ -139,6 +139,7 @@ import {
 } from "./frame";
 import { icon } from "./skin";
 import { classSkillIcon } from "./skill-icons";
+import { classInteractionText } from "./class-interaction";
 import { openDiscovery } from "./legendary-discovery";
 import { syncLook } from "./look";
 import { makeViewer, type Viewer } from "./viewer";
@@ -930,11 +931,25 @@ export function renderWatch(app: App): Mounted {
           ev.find.label,
         ),
       ];
+    else if (ev.k === "class_interaction")
+      text = [
+        classSkillIcon(
+          { ...ev.skill, id: ev.skill.id.replace(/^path:/, ""), owned: true },
+          { size: 24, decorative: true },
+        ),
+        ev.skill.name,
+        " · ",
+        classInteractionText(ev),
+        ...(ev.dst === undefined ? [] : [` · ${who(ev.dst)}`]),
+      ];
     else if (ev.k === "callout") text = [ev.text];
     else if (ev.k === "rule" && ev.row >= 0)
       text = ev.skill
         ? [
-            classSkillIcon({ ...ev.skill, owned: true }, { size: 24, decorative: true }),
+            classSkillIcon(
+              { ...ev.skill, id: ev.skill.id.replace(/^path:/, ""), owned: true },
+              { size: 24, decorative: true },
+            ),
             ev.skill.name,
             " · ",
             ev.text,
@@ -2026,9 +2041,9 @@ export function renderWatch(app: App): Mounted {
       };
       capture(heroId); // A hurt-only batch still names its actual hero source.
       for (const ev of logged) {
-        if (ev.k === "attack") {
+        if (ev.k === "attack" || ev.k === "class_interaction") {
           capture(ev.src);
-          capture(ev.dst);
+          if (ev.dst !== undefined) capture(ev.dst);
         } else if ("id" in ev) capture(ev.id);
       }
       for (const ev of logged) {

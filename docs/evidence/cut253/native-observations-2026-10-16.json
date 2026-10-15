@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-16",
+  "kind": "engineer observations, not player feedback",
+  "context": "Cut253 native source/action review; installed8879 remains the prior runtime. Controlled native arenas are not earned campaigns.",
+  "observations": [
+    {
+      "finding": "Shadowstep has no original cooldown. Adding one only for learned paths would manufacture a penalty/benefit.",
+      "resolution": "Owner-approved Afterimage/Ghostwalk/Silent Finish corrections use actual Vanish cooldown, actual Backstab damage, and actual energy debit; no new cooldown.",
+      "evidence": "docs/evidence/cut253/native-design-notes.md"
+    },
+    {
+      "finding": "Bloat Mother death gas correctly supersedes the next requested Aim.",
+      "resolution": "Retain diagnostic and prove Long Watch on a non-gas observed boss with real chamber recovery.",
+      "evidence": "docs/evidence/cut253/native-actual-actions-v4.log"
+    },
+    {
+      "finding": "Native catalogue is72; actual action25-test suite includes30paired output improvements.",
+      "limit": "These are controlled component experiments; full negative, earned, package and pacing/full acceptance remain pending.",
+      "evidence": "docs/evidence/cut253/native-paired-v1.log"
+    },
+    {
+      "finding": "Receipt construction rebuilt the authored policy catalogue per trigger.",
+      "resolution": "One authoritative OnceLock caches class/bit FiredSkill identity; only the emitted receipt identity strings clone.",
+      "evidence": "crates/idlever-core/src/class_advanced.rs",
+      "confidence": "Source inspection plus28 re-executed causal/persistence tests; not a measured performance gain."
+    },
+    {
+      "finding": "The cached-tree red expected reload to discard an already saved stage event.",
+      "resolution": "Preserve saved events and assert class switches add no new stage notice; corrected16-test suite passes.",
+      "evidence": "docs/evidence/cut253/native-cached-tree.log",
+      "confidence": "Exact assertion/source review; original failure retained."
+    },
+    {
+      "finding": "Default Clippy rejected two8-argument helpers and three test style patterns.",
+      "resolution": "Named ReceiptTarget/ChargeWindow group related values without changing action semantics; collapse test match and iterate authored slices.",
+      "evidence": "docs/evidence/cut253/native-clippy-v1.log",
+      "confidence": "Static diagnostic, final revalidation recorded in native-final-checks.json."
+    },
+    {
+      "finding": "Named target grouping retained three redundant target: target initializers; default Clippy correctly rejected them.",
+      "resolution": "Use identical Rust field shorthand. Default all-target Clippy v3 passes without lint allowances.",
+      "evidence": "docs/evidence/cut253/native-clippy-v2.log",
+      "confidence": "Spelling-only source diff; exact final workspace/check receipt is native-final-checks.json."
+    }
+  ],
+  "revalidate_when": [
+    "Any authored node/parent/gate/order or combat interaction changes",
+    "Any energy scheduler, timed-speed, fractional-pace, reload, aim, damage/guard or reflection change",
+    "Any save migration, resident isolation or class-stage announcement change",
+    "Any replacement WASM; old8879 browser passes do not certify the new native runtime"
+  ]
+}

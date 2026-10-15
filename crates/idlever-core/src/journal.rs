@@ -91,11 +91,16 @@ pub fn wire(l:&LineageState,away:bool)->Journal {
         e.action = action("open","class",title,if !home {Some("Build a house".into())} else if away {Some("hero away".into())} else {blocked});
         builds.push(e);
     }
-    let all_owned=class.nodes.iter().all(|n|n.owned);
+    let all_owned=class.next_pick.is_none()&&class.points==0;
     let mut e=entry("class_tree","Class builds","Class policies add optional branches to your build.","Learn cumulative class policies; changing a build does not erase earned class XP.",if all_owned {"complete"} else if class.nodes.iter().any(|n|n.available) {"ready"} else {"later"});
     if let Some(n)=node {e.requirements=vec![format!("Level{}; historical depth{}; a class point",n.required_level,n.required_depth)];}
+    if let Some(pick)=&class.next_pick {
+        if pick.requires_scout {e.requirements.push(format!("Scout; class level{}; personal D{}; {} completed delves",pick.required_level,pick.required_depth,pick.required_completed));}
+        else {e.requirements.push(format!("Next pick: class level{}",pick.required_level));}
+    }
     if let Some(blocked)=class.blocked {e.requirements.push(blocked);}
-    e.progress=Some(JournalProgress {current:class.nodes.iter().filter(|n|n.owned).count() as u32,required:class.nodes.len() as u32,unit:"class policies learned".into()});e.action=action("open","class","Class tree",(!home).then(||"Build a house".into()));builds.push(e);
+    let eventual=if matches!(l.class,crate::hero::Class::Clown|crate::hero::Class::Engineer){6}else{10};
+    e.progress=Some(JournalProgress {current:class.nodes.iter().filter(|n|n.owned).count() as u32,required:eventual,unit:"class policies learned".into()});e.action=action("open","class","Class tree",(!home).then(||"Build a house".into()));builds.push(e);
     if let Some(e)=builds.iter_mut().find(|e|e.id=="loadout") {if home {e.state="ready".into();e.action=action("open","loadouts","Loadouts",None);e.requirements.clear();}}
     let mut pets=entry("tame","Tame with a leash","A leash can turn a suitable creature into a companion.","An unlocked Forge leash is free to prepare. Taming needs a stray or suitable weakened creature and an open party slot.",if l.tamed_kinds()>0 {"complete"} else {"active"});
     if !crate::progression::leash_available(l)&&l.tamed_kinds()==0 {pets.state="later".into();pets.requirements.push("Build the Forge to unlock a leash".into());}

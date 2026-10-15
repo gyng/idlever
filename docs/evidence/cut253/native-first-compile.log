@@ -1,0 +1,21 @@
+error[E0308]: arguments to this function are incorrect
+    --> crates/idlever-core/src/class_advanced_tests.rs:41:37
+     |
+  41 |         {let(r,mut cx)=branch.ctx();monster_attack(r,&mut cx,mi,verb,1);}
+     |                                     ^^^^^^^^^^^^^^              ---- - expected `&str`, found `{integer}`
+     |                                                                 |
+     |                                                                 expected `i32`, found `&str`
+     |
+note: function defined here
+    --> crates/idlever-core/src/ai.rs:3160:4
+     |
+3160 | fn monster_attack(run: &mut Run, cx: &mut Ctx, mi: usize, mult: i32, verb: &str) {
+     |    ^^^^^^^^^^^^^^
+help: swap these arguments
+     |
+  41 -         {let(r,mut cx)=branch.ctx();monster_attack(r,&mut cx,mi,verb,1);}
+  41 +         {let(r,mut cx)=branch.ctx();monster_attack(r, &mut cx, mi, 1, verb);}
+     |
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `idlever-core` (lib test) due to 1 previous error

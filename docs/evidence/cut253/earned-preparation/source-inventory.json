@@ -1,0 +1,149 @@
+{
+  "created_utc": "2026-10-15T22:49:06.523968+00:00",
+  "scope": "Read-only inventory for Cut253 source preparation. No native load, save patch or campaign run.",
+  "sources": [
+    {
+      "path": "docs/evidence/handoff-menus/input.game.json.gz",
+      "gzip_sha256": "c23224542c7db35def1793352a6fd49215d0ca87d047775514183f88c510b714",
+      "raw_sha256": "81cf516f103571313aa251556417d0c50aa15b712c4d6f38398182631a176892",
+      "seed": 1,
+      "class": "fighter",
+      "best_depth": 28,
+      "classes": {
+        "caster": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "fighter": {
+          "level": 8,
+          "xp": 3547,
+          "next": 0
+        },
+        "ranger": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "rogue": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        }
+      },
+      "completed": 132,
+      "lifetime_defeats": 7,
+      "runs_died": 7,
+      "clock_s": 324000,
+      "other_residents": 0,
+      "live_run": false,
+      "source_provenance": "docs/evidence/handoff-menus/input-provenance.json",
+      "limitations": [
+        "Historical saved bytes only; current candidate has not loaded/replayed this input.",
+        "All listed sources are seed1, not three independent cohort seeds.",
+        "Actual historical defeats exclude a literal never-defeated proof."
+      ]
+    },
+    {
+      "path": "docs/evidence/cut252/earned-v2/clown-unpicked-ready.session.json.gz",
+      "gzip_sha256": "6a5920369d3065be228d4a458cb1112cb4d339f33ea43f6bd4205fd0f107b4e5",
+      "raw_sha256": "b3a49a91e78dae1691158ddf0a434eea6f467b7fcf6804a68a401e0f5315f77c",
+      "seed": 1,
+      "class": "clown",
+      "best_depth": 28,
+      "classes": {
+        "caster": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "clown": {
+          "level": 7,
+          "xp": 1529,
+          "next": 0
+        },
+        "fighter": {
+          "level": 8,
+          "xp": 3547,
+          "next": 0
+        },
+        "ranger": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "rogue": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        }
+      },
+      "completed": 246,
+      "lifetime_defeats": 92,
+      "runs_died": 92,
+      "clock_s": 669600,
+      "other_residents": 0,
+      "live_run": false,
+      "source_provenance": "docs/evidence/cut252/earn.mjs + earned-v2/results.json",
+      "limitations": [
+        "Historical saved bytes only; current candidate has not loaded/replayed this input.",
+        "All listed sources are seed1, not three independent cohort seeds.",
+        "Actual historical defeats exclude a literal never-defeated proof."
+      ]
+    },
+    {
+      "path": "docs/evidence/cut252/earned-v2/engineer-unpicked-ready.session.json.gz",
+      "gzip_sha256": "50a09852323eac9443b10c0e71471809434a87b6bee317922856bdde18849c5e",
+      "raw_sha256": "8df7165d4f36928a760e0936dc463d0305e6f3dd63c7ada05892ec1248cb6398",
+      "seed": 1,
+      "class": "engineer",
+      "best_depth": 28,
+      "classes": {
+        "caster": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "engineer": {
+          "level": 7,
+          "xp": 31,
+          "next": 0
+        },
+        "fighter": {
+          "level": 8,
+          "xp": 3547,
+          "next": 0
+        },
+        "ranger": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        },
+        "rogue": {
+          "level": 1,
+          "xp": 0,
+          "next": 0
+        }
+      },
+      "completed": 190,
+      "lifetime_defeats": 50,
+      "runs_died": 50,
+      "clock_s": 640800,
+      "other_residents": 0,
+      "live_run": false,
+      "source_provenance": "docs/evidence/cut252/earn.mjs + earned-v2/results.json",
+      "limitations": [
+        "Historical saved bytes only; current candidate has not loaded/replayed this input.",
+        "All listed sources are seed1, not three independent cohort seeds.",
+        "Actual historical defeats exclude a literal never-defeated proof."
+      ]
+    }
+  ],
+  "fresh_cohort_seeds": [
+    1,
+    3,
+    5
+  ],
+  "harness": "crates/idlever-core/examples/advanced_campaign.rs",
+  "status": "PREPARED_UNCOMPILED"
+}

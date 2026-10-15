@@ -475,7 +475,9 @@ fn hero_action(run: &mut Run, cx: &mut Ctx) {
     // coin gave the floor's heals up (FULL's deaths, `dice` 19.8 → 27.4%).
     let took = inv_after > inv_before || cx.events.get(ev_before..).is_some_and(|es| es.iter().any(|e| matches!(e, Ev::Pickup { id: HERO_ID, .. })));
     // Cut 30 §1: `sure` and `light hands` act after the verb (energy back); never choose it.
+    let energy_before_traits=run.hero.energy;
     crate::traits::after_action(run, cx, &verb, took, &v.foes);
+    crate::class_advanced::after_action(run,cx,ACT_ENERGY-(run.hero.energy-energy_before_traits).max(0));
     if took {
         run.pickup_dry = 0;
     } else if verb.v == "pick_up" && row == -2 {
@@ -1833,8 +1835,11 @@ fn affix_taken(run: &Run, cx: &Ctx, dmg: i32, src: &Src) -> i32 {
     }
 }
 
-pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
-    if dmg <= 0 || run.over.is_some() {
+pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {damage_hero_guarded(run,cx,dmg,src,None)}
+pub(crate) fn damage_hero_guarded(run:&mut Run,cx:&mut Ctx,dmg:i32,src:&Src,guard:Option<crate::class_advanced::MeleeGuard>) {
+    if run.over.is_some() {return;}
+    if dmg<=0 {
+        if let Some(guard)=guard {crate::class_advanced::observed_guard(run,cx,guard);}
         return;
     }
     let cause = src.cause(run);
@@ -1848,6 +1853,7 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
     if dmg <= 0 && before > 0 {
         return;
     }
+    if let Some(guard)=guard {crate::class_advanced::observed_guard(run,cx,guard);}
     let (dmg, counter) = counter_damage(run, src, dmg, None, run.hero.pos, false);
     if let Some((a, b)) = counter {
         learn(run, cx, crate::defs::counter_fact(&a, &b));
@@ -1890,6 +1896,7 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
     let absorbed=dmg.min(run.hero.hearth_ward).max(0);run.hero.hearth_ward-=absorbed;
     if absorbed>0 {cx.events.push(Ev::Use{t:run.turn,item:"Glassward".into(),outcome:format!("absorbed {absorbed}")});}
     let dmg=dmg-absorbed;
+    let dmg=if let Some(guard)=guard.filter(|g|g.melee) {crate::class_advanced::block_damage(run,cx,dmg,guard.attacker)}else{dmg};
     let hp_before=run.hero.hp;
     run.hero.hp -= dmg;
     // Cut 24 §1: the hero's HP moved — the fight is going somewhere, unless a summon drew it
@@ -2011,7 +2018,12 @@ pub fn damage_hero(run: &mut Run, cx: &mut Ctx, dmg: i32, src: &Src) {
 }
 
 /// Monster takes damage; handles counters, splits, pops, drops, kills. Returns true if it died.
-pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src: &Src) -> bool {
+pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, dmg: i32, src: &Src) -> bool {
+    damage_monster_with_bonus(run,cx,mi,dmg,src,None)
+}
+/// The charged path's flat applied bonus joins only a real, damaging hit after
+/// ordinary defenses. Redirected hits retain the actual recipient identity.
+pub(crate) fn damage_monster_with_bonus(run:&mut Run,cx:&mut Ctx,mi:usize,mut dmg:i32,src:&Src,bonus:Option<u32>)->bool {
     if run.monsters[mi].hp <= 0 {
         return false;
     }
@@ -2166,6 +2178,14 @@ pub fn damage_monster(run: &mut Run, cx: &mut Ctx, mi: usize, mut dmg: i32, src:
     // Cut 119 (research §1: down, not gone): with the companions on, the blow from above is no kill either — the pet
     // goes down to its last hp and falls back (it dies only wounded and cornered)
     let dmg = if run.pets.on && *src != Src::Burst && dmg >= run.monsters[mi].hp && run.monsters[mi].is_companion() && !crate::ai::pet_wounded(&run.monsters[mi]) { run.monsters[mi].hp - 1 } else { dmg };
+    let bonus=bonus.filter(|_|dmg>0&&run.monsters[mi].hostile()).map(|bit| {
+        let recipient=run.monsters[mi].id;
+        if bit==10&&crate::class_advanced::consume_at(run,cx,crate::class_advanced::Combo::Ghostwalk,10,crate::class_advanced::Effect::Damage,Some(recipient)).is_none(){return 0;}
+        let add=(run.monsters[mi].hp-dmg).clamp(0,2);
+        if add>0 {crate::class_advanced::receipt(run, cx, bit, crate::class_advanced::Phase::Applied, crate::class_advanced::Effect::Damage, add, crate::class_advanced::ReceiptTarget { target: Some(run.monsters[mi].id), expires_t: None });}
+        add
+    }).unwrap_or(0);
+    let dmg=dmg+bonus;
     // (Cut 119's eval counters: write-only)
     if dmg > 0 && run.monsters[mi].hostile() {
         let landed = dmg.min(run.monsters[mi].hp).max(0) as u64;
