@@ -18,7 +18,7 @@ routine 2-seed gate.
 | 8 | Faster replays of cleared floors after a death | time to regain previous best after death ↓ ≥30%; King guard holds | queued |
 | 9 | Automation never gold-walled (earned, not bought) audit | audit table; no automation rung behind a pure price | queued |
 | 10 | Early first-Legacy payoff +50–200% (Pecorella prestige rule) | first Legacy spend measurably speeds the next D13 | queued |
-| 11 | Offline stays uncapped: add rationale line to AGENTS.md invariant | doc only | queued |
+| 11 | Offline stays uncapped: add rationale line to AGENTS.md invariant | doc only | complete: AGENTS.md hard invariant explains check-in pressure and absence safety |
 
 Cut230 landed (main 3ee50b3e); the timeline is measured: research doc §6 (table), §6a (cadence), §6b (re-ranking). Earlier
 note: after Cut230 lands, measure Idlever's own timeline (first automation, core loop fully automated, first reset,

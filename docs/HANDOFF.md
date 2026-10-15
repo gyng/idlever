@@ -443,7 +443,10 @@ landmarks remain open; decorative prop delivery does not certify those requireme
 
 ## Next work and live-state discipline
 
-Cut235 scoped acceptance passes; next fixed progression item is Cut237 second hero,
+Cut235 scoped acceptance committed `4b6bd60c` passes. Cut231 item11/P8 now
+explains uncapped-offline absence safety in AGENTS.md (documentation only).
+The64-requirement audit retains every requirement and records those scoped completions.
+Next fixed progression item is Cut237 second hero,
 whose paid acquisition/default-IDLE policy question remains unresolved. Do not silently
 choose a standing order, free arrival or bot-policy amendment. Cut238 follows Cut237;
 a read-only fresh-Session Legacy affordability/first-rank counterfactual diagnostic

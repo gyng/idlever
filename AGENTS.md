@@ -185,6 +185,9 @@ New towns and unbuilt legacy plots require manual construction.
 - Offline is uncapped after the scout; before then an absence finishes at most the run in flight.
   Nothing punishes absence; chest gold does not decay and funds restocking. IDLE taps only until
   the scout is hired, then makes no picks or edits; its early delta from Cut 30 is bounded.
+  Uncapped progress respects time away: a cap would require frequent check-ins to avoid
+  losing progress, turning absence into a penalty. The Scout is the initial automation milestone,
+  not a recurring limit on how long the player may leave.
 - Workers are named in the town and report, with their first act announced. Works replaces tracks.
   Policy rungs stay optional. Automation improves the away player without costing the daily player
   more than one floor of mean best depth (Cut 30.5).

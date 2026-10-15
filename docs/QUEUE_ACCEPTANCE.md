@@ -69,6 +69,10 @@ proofs: [acceptance-audit.json](evidence/handoff-resume/acceptance-audit.json).
 
 ## Retained work beyond numbered additions
 
+- Cut231 item11 / P8 is complete at its requested documentation scope:
+  AGENTS.md now explains that an offline cap would require frequent check-ins
+  to avoid losing progress, violating absence safety. No runtime change.
+
 - Owner dimensional-lighting addition: Cut221 House/Forge and painted-hero
   mapping is default on supported GL; its frozen expanded CPU/cold proof passes
   warm increment≤0.10ms and cold median−5ms. Cut224 Guild/pool relief and cached

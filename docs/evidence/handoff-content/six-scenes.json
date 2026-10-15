@@ -1,0 +1,8252 @@
+{
+  "scope": "Six historical earned stored checkpoints; no simulation or counter certification",
+  "scenes": [
+    {
+      "id": "F1-gas",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s1-d3-c0.json.gz",
+      "source_gzip_sha256": "f8218260c8f690b37164c807ef9846ffee6cc2e6140ed6cc477bd55b1876c914",
+      "record": "F1-gas.record.json.gz",
+      "record_gzip_sha256": "2ef673de7f4767a726b9d5efdf32397e2ab5cc3268337051a256bed5dc36312a",
+      "run_id": 79,
+      "biome": "fens",
+      "biome_evidence": [
+        [
+          13627,
+          "D13: the Fens."
+        ]
+      ],
+      "depth": 13,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 14350,
+      "death_turn": 14427,
+      "checkpoint_hp": 9,
+      "checkpoint_max_hp": 15,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 19,
+          "kind": "dagger",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 42,
+          "kind": "heal",
+          "amount": 0,
+          "enchant": 0
+        },
+        {
+          "id": 2,
+          "kind": "leather",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 66,
+          "kind": "leash",
+          "amount": 2,
+          "enchant": 0
+        },
+        {
+          "id": 101,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 122,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 123,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 140,
+          "kind": "poison",
+          "hint": "malevolent",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 142,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 137,
+          "kind": "heal",
+          "amount": 0,
+          "enchant": 2
+        }
+      ],
+      "floor_twist": "shrine",
+      "floor_situations": [
+        [
+          170,
+          "nest"
+        ],
+        [
+          3370,
+          "lock"
+        ],
+        [
+          5930,
+          "captive"
+        ],
+        [
+          7175,
+          "vault"
+        ],
+        [
+          10319,
+          "den"
+        ],
+        [
+          10539,
+          "hunger"
+        ]
+      ],
+      "room_count": 0,
+      "terrain_counts": {
+        "wall": 323,
+        "stairs_down": 1,
+        "floor": 574,
+        "water": 124,
+        "shrine": 1,
+        "stairs_up": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 13,
+          "kind": "goblin_archer",
+          "pos": {
+            "x": 20,
+            "y": 6
+          },
+          "hp": 16,
+          "awake": true,
+          "ally": true,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 100,
+          "kind": "bloat",
+          "pos": {
+            "x": 3,
+            "y": 4
+          },
+          "hp": 9,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 101,
+          "kind": "bloat",
+          "pos": {
+            "x": 6,
+            "y": 4
+          },
+          "hp": 9,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 103,
+          "kind": "bloat",
+          "pos": {
+            "x": 6,
+            "y": 12
+          },
+          "hp": 9,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 104,
+          "kind": "bloat",
+          "pos": {
+            "x": 7,
+            "y": 14
+          },
+          "hp": 9,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 106,
+          "kind": "pink_jelly",
+          "pos": {
+            "x": 3,
+            "y": 8
+          },
+          "hp": 25,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "splitter"
+          ]
+        },
+        {
+          "id": 107,
+          "kind": "goblin_archer",
+          "pos": {
+            "x": 5,
+            "y": 17
+          },
+          "hp": 12,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 108,
+          "kind": "bloat_mother",
+          "pos": {
+            "x": 13,
+            "y": 4
+          },
+          "hp": 13,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 56,
+          "current_source_tags": [
+            "boss",
+            "gas",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 109,
+          "kind": "bloat",
+          "pos": {
+            "x": 12,
+            "y": 2
+          },
+          "hp": 9,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 111,
+          "kind": "bloat",
+          "pos": {
+            "x": 13,
+            "y": 3
+          },
+          "hp": 9,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 112,
+          "kind": "bloat",
+          "pos": {
+            "x": 13,
+            "y": 5
+          },
+          "hp": 9,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 18
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "unknown_item"
+              },
+              {
+                "k": "hp>",
+                "n": 60
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "unknown"
+            },
+            "origin": "temper:iron_gut"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "foe_tag",
+            "t": "gas"
+          },
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "on_see",
+            "t": "stray"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_archer"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "attack",
+            "a": "tag:gas"
+          },
+          {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "tame",
+            "a": "tag:gas"
+          },
+          {
+            "v": "tame",
+            "a": "tag:boss"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "regen"
+            },
+            "needs": "identify regen"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "clarity"
+            },
+            "needs": "identify clarity"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "identify recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "silence"
+            },
+            "needs": "identify silence"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "identify mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "bell"
+            },
+            "needs": "find: bell"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "salt"
+            },
+            "needs": "find: salt"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "chalk"
+            },
+            "needs": "find: chalk"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          },
+          {
+            "cond": {
+              "k": "in",
+              "t": "foundry"
+            },
+            "needs": "enter foundry"
+          }
+        ],
+        "depth_max": 19
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "gas",
+      "actual_trace_blows": {
+        "gas": 12
+      },
+      "actual_trace": [
+        {
+          "t": 14298,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 15,
+          "max_hp": 15,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 14313,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 9,
+          "max_hp": 15,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14300,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 12
+            },
+            {
+              "t": 14310,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 9
+            }
+          ]
+        },
+        {
+          "t": 14327,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 6,
+          "max_hp": 15,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14320,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 6
+            }
+          ]
+        },
+        {
+          "t": 14341,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 12,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [
+            "mother swells"
+          ],
+          "blows": [
+            {
+              "t": 14340,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 12
+            }
+          ]
+        },
+        {
+          "t": 14356,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 9,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14350,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 9
+            }
+          ]
+        },
+        {
+          "t": 14370,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 6,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14360,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 6
+            }
+          ]
+        },
+        {
+          "t": 14384,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 7,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14370,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 10
+            },
+            {
+              "t": 14380,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 7
+            }
+          ]
+        },
+        {
+          "t": 14398,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 4,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14390,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 4
+            }
+          ]
+        },
+        {
+          "t": 14413,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 8,
+          "max_hp": 15,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14400,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 11
+            },
+            {
+              "t": 14410,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 8
+            }
+          ]
+        },
+        {
+          "t": 14427,
+          "verb": {
+            "v": "bank"
+          },
+          "hp": 5,
+          "max_hp": 15,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 14420,
+              "by": "gas",
+              "dmg": 3,
+              "hp": 5
+            }
+          ]
+        }
+      ],
+      "candidate_counter_not_measured": "gas_step",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    },
+    {
+      "id": "F2-water-pack",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s2-d3-c0.json.gz",
+      "source_gzip_sha256": "4f257ee1089471dc80368558f9ddb74f2fa889039d44fc5ddd75a840afe337e0",
+      "record": "F2-water-pack.record.json.gz",
+      "record_gzip_sha256": "e184fc1ef2e68f8bee3ed0086597528e7bf77940a49f6c57cb92e73889d72cbc",
+      "run_id": 84,
+      "biome": "fens",
+      "biome_evidence": [
+        [
+          4267,
+          "D13: the Fens."
+        ]
+      ],
+      "depth": 13,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 5580,
+      "death_turn": 5650,
+      "checkpoint_hp": 21,
+      "checkpoint_max_hp": 39,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 13,
+          "kind": "summon_ally",
+          "hint": "benevolent",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 44,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 42,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 43,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 65,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 56,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 63,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 102,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        }
+      ],
+      "floor_twist": "nest",
+      "floor_situations": [
+        [
+          1256,
+          "vault"
+        ],
+        [
+          1967,
+          "captive"
+        ],
+        [
+          3587,
+          "hunger"
+        ]
+      ],
+      "room_count": 0,
+      "terrain_counts": {
+        "wall": 381,
+        "floor": 604,
+        "stairs_up": 1,
+        "water": 36,
+        "nest": 1,
+        "stairs_down": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 41,
+          "kind": "eel",
+          "pos": {
+            "x": 7,
+            "y": 22
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 45,
+          "kind": "eel",
+          "pos": {
+            "x": 9,
+            "y": 21
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "water"
+          ]
+        },
+        {
+          "id": 46,
+          "kind": "goblin_archer",
+          "pos": {
+            "x": 17,
+            "y": 29
+          },
+          "hp": 2,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "ranged",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 54,
+          "kind": "jackal",
+          "pos": {
+            "x": 5,
+            "y": 20
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 55,
+          "kind": "jackal",
+          "pos": {
+            "x": 6,
+            "y": 18
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 56,
+          "kind": "jackal",
+          "pos": {
+            "x": 4,
+            "y": 19
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 57,
+          "kind": "jackal",
+          "pos": {
+            "x": 4,
+            "y": 18
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 60,
+          "kind": "jackal",
+          "pos": {
+            "x": 13,
+            "y": 21
+          },
+          "hp": 9,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 16
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "on_kill"
+              },
+              {
+                "k": "hp>",
+                "n": 50
+              }
+            ],
+            "verb": {
+              "v": "pick_up"
+            },
+            "origin": "temper:light_hands"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "pack"
+          },
+          {
+            "k": "foe_tag",
+            "t": "fast"
+          },
+          {
+            "k": "foe_tag",
+            "t": "ranged"
+          },
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "foe_tag",
+            "t": "water"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "regen"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "clarity"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "light hands"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_conjurer"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:pack"
+          },
+          {
+            "v": "attack",
+            "a": "tag:fast"
+          },
+          {
+            "v": "attack",
+            "a": "tag:ranged"
+          },
+          {
+            "v": "attack",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "attack",
+            "a": "tag:water"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "regen"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "drink",
+            "a": "clarity"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:pack"
+          },
+          {
+            "v": "tame",
+            "a": "tag:fast"
+          },
+          {
+            "v": "tame",
+            "a": "tag:ranged"
+          },
+          {
+            "v": "tame",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "tame",
+            "a": "tag:water"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "buy recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "silence"
+            },
+            "needs": "identify silence"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "buy mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "bell"
+            },
+            "needs": "find: bell"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "salt"
+            },
+            "needs": "find: salt"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "chalk"
+            },
+            "needs": "find: chalk"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          },
+          {
+            "cond": {
+              "k": "on_see",
+              "t": "stray"
+            },
+            "needs": "see: stray"
+          },
+          {
+            "cond": {
+              "k": "in",
+              "t": "foundry"
+            },
+            "needs": "enter foundry"
+          }
+        ],
+        "depth_max": 17
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "eel",
+      "actual_trace_blows": {
+        "eel": 4,
+        "jackal": 2
+      },
+      "actual_trace": [
+        {
+          "t": 5558,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 5570,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [
+            "archer draws"
+          ],
+          "blows": []
+        },
+        {
+          "t": 5581,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 5592,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [
+            "archer draws"
+          ],
+          "blows": []
+        },
+        {
+          "t": 5603,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 5614,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 21,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 5625,
+          "verb": {
+            "v": "bank"
+          },
+          "hp": 16,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [
+            "archer draws"
+          ],
+          "blows": [
+            {
+              "t": 5617,
+              "by": "eel",
+              "dmg": 5,
+              "hp": 16
+            }
+          ]
+        },
+        {
+          "t": 5634,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 16,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 5642,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 5,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 5634,
+              "by": "eel",
+              "dmg": 5,
+              "hp": 11
+            },
+            {
+              "t": 5634,
+              "by": "eel",
+              "dmg": 5,
+              "hp": 6
+            },
+            {
+              "t": 5641,
+              "by": "jackal",
+              "dmg": 1,
+              "hp": 5
+            }
+          ]
+        },
+        {
+          "t": 5650,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 1,
+          "max_hp": 39,
+          "foes": 4,
+          "telegraphs": [
+            "archer draws"
+          ],
+          "blows": [
+            {
+              "t": 5642,
+              "by": "eel",
+              "dmg": 3,
+              "hp": 2
+            },
+            {
+              "t": 5647,
+              "by": "jackal",
+              "dmg": 1,
+              "hp": 1
+            }
+          ]
+        }
+      ],
+      "candidate_counter_not_measured": "pack_break / positioning",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    },
+    {
+      "id": "C1-drain",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s2-d5-c0.json.gz",
+      "source_gzip_sha256": "c20bb018868fa93640cbb0622321e2b4b6a750fc379daf0f093db5a651639321",
+      "record": "C1-drain.record.json.gz",
+      "record_gzip_sha256": "e904497e9ad7c910aaccfae6c90adcebdd5628158f5edb952b1a9091d156c001",
+      "run_id": 167,
+      "biome": "crypt",
+      "biome_evidence": [
+        [
+          11934,
+          "D18: the Crypt."
+        ]
+      ],
+      "depth": 18,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 15800,
+      "death_turn": 15868,
+      "checkpoint_hp": 10,
+      "checkpoint_max_hp": 10,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 5011,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2,
+          "known": true,
+          "paid": 26,
+          "auto_packed": true
+        },
+        {
+          "id": 23,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 42,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 43,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 56,
+          "kind": "poison",
+          "hint": "malevolent",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 90,
+          "kind": "heal",
+          "hint": "benevolent",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 98,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 99,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 2,
+          "kind": "leather",
+          "amount": 0,
+          "enchant": 1
+        }
+      ],
+      "floor_twist": "shrine",
+      "floor_situations": [
+        [
+          912,
+          "captive"
+        ],
+        [
+          4587,
+          "hunger"
+        ],
+        [
+          8434,
+          "vault"
+        ],
+        [
+          8820,
+          "hunger"
+        ]
+      ],
+      "room_count": 22,
+      "terrain_counts": {
+        "wall": 506,
+        "floor": 420,
+        "shrine": 1,
+        "door": 94,
+        "stairs_up": 1,
+        "stairs_down": 1,
+        "chasm": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 130,
+          "kind": "wraith",
+          "pos": {
+            "x": 25,
+            "y": 22
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 136,
+          "kind": "wraith",
+          "pos": {
+            "x": 24,
+            "y": 27
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 140,
+          "kind": "lich",
+          "pos": {
+            "x": 24,
+            "y": 28
+          },
+          "hp": 1,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 50,
+          "current_source_tags": [
+            "boss",
+            "undead",
+            "reflect",
+            "summoner",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 147,
+          "kind": "ghoul",
+          "pos": {
+            "x": 17,
+            "y": 3
+          },
+          "hp": 1,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead",
+            "pack",
+            "paralyse"
+          ]
+        },
+        {
+          "id": 149,
+          "kind": "skeleton",
+          "pos": {
+            "x": 17,
+            "y": 22
+          },
+          "hp": 21,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 152,
+          "kind": "goblin_conjurer",
+          "pos": {
+            "x": 22,
+            "y": 28
+          },
+          "hp": 15,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 43,
+          "current_source_tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 153,
+          "kind": "goblin_conjurer",
+          "pos": {
+            "x": 14,
+            "y": 22
+          },
+          "hp": 15,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 174,
+          "kind": "skeleton",
+          "pos": {
+            "x": 23,
+            "y": 28
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": true,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 175,
+          "kind": "skeleton",
+          "pos": {
+            "x": 24,
+            "y": 29
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": true,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "summoned"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:summoned"
+            },
+            "origin": "drill:lich"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "undead"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:lich"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "gas"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "throw",
+              "a": "fire,tag:boss"
+            },
+            "origin": "drill:bloat_mother"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 29
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "telegraph"
+              },
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 3
+              },
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "verb": {
+              "v": "back_corridor"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 35
+              },
+              {
+                "k": "adj>=",
+                "n": 2
+              }
+            ],
+            "verb": {
+              "v": "retreat"
+            },
+            "origin": "temper:skittish"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "foe_tag",
+            "t": "caster"
+          },
+          {
+            "k": "foe_tag",
+            "t": "summoner"
+          },
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "foe_tag",
+            "t": "drain"
+          },
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "regen"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "clarity"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "item",
+            "t": "salt"
+          },
+          {
+            "k": "item",
+            "t": "chalk"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "in",
+            "t": "foundry"
+          },
+          {
+            "k": "in",
+            "t": "deep"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "light hands"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_conjurer"
+          },
+          {
+            "k": "party",
+            "t": "ogre"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "attack",
+            "a": "tag:caster"
+          },
+          {
+            "v": "attack",
+            "a": "tag:summoner"
+          },
+          {
+            "v": "attack",
+            "a": "tag:undead"
+          },
+          {
+            "v": "attack",
+            "a": "tag:drain"
+          },
+          {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "regen"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "drink",
+            "a": "clarity"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "second_wind"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tactic",
+            "a": "noise_discipline"
+          },
+          {
+            "v": "tactic",
+            "a": "deep_march"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "tame",
+            "a": "tag:caster"
+          },
+          {
+            "v": "tame",
+            "a": "tag:summoner"
+          },
+          {
+            "v": "tame",
+            "a": "tag:undead"
+          },
+          {
+            "v": "tame",
+            "a": "tag:drain"
+          },
+          {
+            "v": "tame",
+            "a": "tag:summoned"
+          },
+          {
+            "v": "tame",
+            "a": "tag:boss"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "reflect"
+            },
+            "needs": "fact: reflect"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "buy recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "silence"
+            },
+            "needs": "identify silence"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "buy mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "bell"
+            },
+            "needs": "find: bell"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          },
+          {
+            "cond": {
+              "k": "on_see",
+              "t": "stray"
+            },
+            "needs": "see: stray"
+          }
+        ],
+        "depth_max": 30
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "wraith",
+      "actual_trace_blows": {
+        "wraith": 5,
+        "skeleton": 3,
+        "lich": 3,
+        "spectral_blade": 1
+      },
+      "actual_trace": [
+        {
+          "t": 15762,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 14,
+          "max_hp": 16,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15751,
+              "by": "wraith",
+              "dmg": 1,
+              "hp": 14
+            }
+          ]
+        },
+        {
+          "t": 15775,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 11,
+          "max_hp": 14,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15768,
+              "by": "wraith",
+              "dmg": 1,
+              "hp": 13
+            },
+            {
+              "t": 15769,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 11
+            }
+          ]
+        },
+        {
+          "t": 15787,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 5,
+          "max_hp": 11,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15776,
+              "by": "wraith",
+              "dmg": 1,
+              "hp": 10
+            },
+            {
+              "t": 15779,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 8
+            },
+            {
+              "t": 15784,
+              "by": "lich",
+              "dmg": 3,
+              "hp": 5
+            }
+          ]
+        },
+        {
+          "t": 15796,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 10,
+          "max_hp": 10,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15789,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 10
+            }
+          ]
+        },
+        {
+          "t": 15809,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 7,
+          "max_hp": 9,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15801,
+              "by": "lich",
+              "dmg": 3,
+              "hp": 7
+            }
+          ]
+        },
+        {
+          "t": 15821,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 4,
+          "max_hp": 7,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15818,
+              "by": "lich",
+              "dmg": 3,
+              "hp": 4
+            }
+          ]
+        },
+        {
+          "t": 15834,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 4,
+          "max_hp": 6,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 15846,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 3,
+          "max_hp": 5,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15834,
+              "by": "wraith",
+              "dmg": 1,
+              "hp": 3
+            }
+          ]
+        },
+        {
+          "t": 15859,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 2,
+          "max_hp": 5,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15851,
+              "by": "wraith",
+              "dmg": 1,
+              "hp": 2
+            }
+          ]
+        },
+        {
+          "t": 15868,
+          "verb": {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          "hp": 4,
+          "max_hp": 5,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 15863,
+              "by": "spectral_blade",
+              "dmg": 1,
+              "hp": 4
+            }
+          ]
+        }
+      ],
+      "candidate_counter_not_measured": "light/shrine versus drain: legal choice unverified",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    },
+    {
+      "id": "C2-summoned-pack",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s1-d3-c0.json.gz",
+      "source_gzip_sha256": "f8218260c8f690b37164c807ef9846ffee6cc2e6140ed6cc477bd55b1876c914",
+      "record": "C2-summoned-pack.record.json.gz",
+      "record_gzip_sha256": "f11fe2d2b45f05947c10609e965d2108f0256299beae083a2936fd6f9fc9e28c",
+      "run_id": 92,
+      "biome": "crypt",
+      "biome_evidence": [
+        [
+          22942,
+          "D18: the Crypt."
+        ]
+      ],
+      "depth": 18,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 24740,
+      "death_turn": 24816,
+      "checkpoint_hp": 16,
+      "checkpoint_max_hp": 29,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 66,
+          "kind": "dagger",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 2,
+          "kind": "leather",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 87,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 128,
+          "kind": "leash",
+          "amount": 1,
+          "enchant": 0
+        },
+        {
+          "id": 117,
+          "kind": "poison",
+          "hint": "malevolent",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 148,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 168,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 169,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 222,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 123,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        }
+      ],
+      "floor_twist": "nest",
+      "floor_situations": [
+        [
+          889,
+          "shrine"
+        ],
+        [
+          1400,
+          "lock"
+        ],
+        [
+          4273,
+          "vault"
+        ],
+        [
+          6103,
+          "captive"
+        ],
+        [
+          9092,
+          "vault"
+        ],
+        [
+          9405,
+          "hunger"
+        ],
+        [
+          11968,
+          "hunger"
+        ],
+        [
+          14262,
+          "captive"
+        ],
+        [
+          16443,
+          "lock"
+        ],
+        [
+          22813,
+          "den"
+        ]
+      ],
+      "room_count": 12,
+      "terrain_counts": {
+        "wall": 574,
+        "floor": 402,
+        "stairs_down": 1,
+        "door": 44,
+        "chasm": 1,
+        "stairs_up": 1,
+        "nest": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 188,
+          "kind": "skeleton",
+          "pos": {
+            "x": 10,
+            "y": 7
+          },
+          "hp": 21,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 189,
+          "kind": "goblin_conjurer",
+          "pos": {
+            "x": 27,
+            "y": 22
+          },
+          "hp": 15,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "caster",
+            "summoner"
+          ]
+        },
+        {
+          "id": 195,
+          "kind": "skeleton",
+          "pos": {
+            "x": 27,
+            "y": 9
+          },
+          "hp": 21,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 196,
+          "kind": "skeleton",
+          "pos": {
+            "x": 27,
+            "y": 10
+          },
+          "hp": 21,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 197,
+          "kind": "bloat",
+          "pos": {
+            "x": 28,
+            "y": 15
+          },
+          "hp": 11,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "gas"
+          ]
+        },
+        {
+          "id": 198,
+          "kind": "wraith",
+          "pos": {
+            "x": 28,
+            "y": 6
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead",
+            "drain"
+          ]
+        },
+        {
+          "id": 203,
+          "kind": "skeleton",
+          "pos": {
+            "x": 12,
+            "y": 4
+          },
+          "hp": 21,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 205,
+          "kind": "jackal",
+          "pos": {
+            "x": 15,
+            "y": 29
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 206,
+          "kind": "jackal",
+          "pos": {
+            "x": 13,
+            "y": 27
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 207,
+          "kind": "jackal",
+          "pos": {
+            "x": 15,
+            "y": 27
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 208,
+          "kind": "jackal",
+          "pos": {
+            "x": 14,
+            "y": 29
+          },
+          "hp": 4,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "pack",
+            "fast"
+          ]
+        },
+        {
+          "id": 210,
+          "kind": "skeleton",
+          "pos": {
+            "x": 14,
+            "y": 4
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 211,
+          "kind": "skeleton",
+          "pos": {
+            "x": 13,
+            "y": 4
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 212,
+          "kind": "skeleton",
+          "pos": {
+            "x": 16,
+            "y": 4
+          },
+          "hp": 21,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 213,
+          "kind": "skeleton",
+          "pos": {
+            "x": 11,
+            "y": 4
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 214,
+          "kind": "skeleton",
+          "pos": {
+            "x": 11,
+            "y": 3
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 215,
+          "kind": "skeleton",
+          "pos": {
+            "x": 10,
+            "y": 4
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        },
+        {
+          "id": 216,
+          "kind": "skeleton",
+          "pos": {
+            "x": 14,
+            "y": 3
+          },
+          "hp": 4,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [
+            "summoned"
+          ],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "undead"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 24
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 35
+              },
+              {
+                "k": "adj>=",
+                "n": 2
+              }
+            ],
+            "verb": {
+              "v": "retreat"
+            },
+            "origin": "temper:skittish"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "foe_tag",
+            "t": "summoner"
+          },
+          {
+            "k": "foe_tag",
+            "t": "undead"
+          },
+          {
+            "k": "foe_tag",
+            "t": "summoned"
+          },
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "on_see",
+            "t": "stray"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "in",
+            "t": "foundry"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "light hands"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_archer"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "attack",
+            "a": "tag:summoner"
+          },
+          {
+            "v": "attack",
+            "a": "tag:undead"
+          },
+          {
+            "v": "attack",
+            "a": "tag:summoned"
+          },
+          {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "tame",
+            "a": "tag:summoner"
+          },
+          {
+            "v": "tame",
+            "a": "tag:undead"
+          },
+          {
+            "v": "tame",
+            "a": "tag:summoned"
+          },
+          {
+            "v": "tame",
+            "a": "tag:boss"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "reflect"
+            },
+            "needs": "fact: reflect"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "regen"
+            },
+            "needs": "identify regen"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "clarity"
+            },
+            "needs": "identify clarity"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "identify recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "silence"
+            },
+            "needs": "identify silence"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "identify mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "bell"
+            },
+            "needs": "find: bell"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "salt"
+            },
+            "needs": "find: salt"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "chalk"
+            },
+            "needs": "find: chalk"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          }
+        ],
+        "depth_max": 25
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "skeleton",
+      "actual_trace_blows": {
+        "skeleton": 18,
+        "lich": 2
+      },
+      "actual_trace": [
+        {
+          "t": 24713,
+          "verb": {
+            "v": "drink",
+            "a": "heal"
+          },
+          "hp": 13,
+          "max_hp": 32,
+          "foes": 9,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24702,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 16
+            },
+            {
+              "t": 24702,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 15
+            },
+            {
+              "t": 24712,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 14
+            },
+            {
+              "t": 24712,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 13
+            }
+          ]
+        },
+        {
+          "t": 24723,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 25,
+          "max_hp": 31,
+          "foes": 9,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24719,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 29
+            },
+            {
+              "t": 24722,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 27
+            },
+            {
+              "t": 24722,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 25
+            }
+          ]
+        },
+        {
+          "t": 24738,
+          "verb": {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          "hp": 18,
+          "max_hp": 29,
+          "foes": 9,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24726,
+              "by": "lich",
+              "dmg": 3,
+              "hp": 22
+            },
+            {
+              "t": 24732,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 20
+            },
+            {
+              "t": 24734,
+              "by": "lich",
+              "dmg": 2,
+              "hp": 18
+            }
+          ]
+        },
+        {
+          "t": 24752,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 16,
+          "max_hp": 29,
+          "foes": 8,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24739,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 16
+            }
+          ]
+        },
+        {
+          "t": 24766,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 29,
+          "foes": 8,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24752,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 15
+            },
+            {
+              "t": 24752,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 14
+            },
+            {
+              "t": 24762,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 12
+            }
+          ]
+        },
+        {
+          "t": 24776,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 9,
+          "max_hp": 29,
+          "foes": 7,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24769,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 11
+            },
+            {
+              "t": 24772,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 9
+            }
+          ]
+        },
+        {
+          "t": 24786,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 9,
+          "max_hp": 29,
+          "foes": 7,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 24796,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 7,
+          "max_hp": 29,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24789,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 7
+            }
+          ]
+        },
+        {
+          "t": 24806,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 4,
+          "max_hp": 29,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24799,
+              "by": "skeleton",
+              "dmg": 1,
+              "hp": 6
+            },
+            {
+              "t": 24802,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 4
+            }
+          ]
+        },
+        {
+          "t": 24816,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 2,
+          "max_hp": 29,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 24812,
+              "by": "skeleton",
+              "dmg": 2,
+              "hp": 2
+            }
+          ]
+        }
+      ],
+      "candidate_counter_not_measured": "summoner targeting / corridor retreat",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    },
+    {
+      "id": "W1-reflector",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s1-d4-c0.json.gz",
+      "source_gzip_sha256": "66c8be90c67d154daff754b19de2840a106d7464c5c3549a55e10297b31d6630",
+      "record": "W1-reflector.record.json.gz",
+      "record_gzip_sha256": "4a87c408bcbf779981eda7ced505d3e5a0ca5d416c422f9716059ba80adbea83",
+      "run_id": 102,
+      "biome": "foundry",
+      "biome_evidence": [
+        [
+          24979,
+          "D20: the Foundry."
+        ]
+      ],
+      "depth": 20,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 25620,
+      "death_turn": 25804,
+      "checkpoint_hp": 19,
+      "checkpoint_max_hp": 33,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 21,
+          "kind": "leash",
+          "amount": 2,
+          "enchant": 0
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 102,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 120,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 137,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 142,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 140,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 141,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 161,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 162,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 2,
+          "kind": "leather",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 260,
+          "kind": "bow",
+          "amount": 0,
+          "enchant": 1
+        }
+      ],
+      "floor_twist": "shrine",
+      "floor_situations": [
+        [
+          400,
+          "den"
+        ],
+        [
+          1350,
+          "lock"
+        ],
+        [
+          6076,
+          "captive"
+        ],
+        [
+          6752,
+          "hunger"
+        ],
+        [
+          8696,
+          "hunger"
+        ],
+        [
+          11107,
+          "hunger"
+        ],
+        [
+          12487,
+          "captive"
+        ],
+        [
+          15454,
+          "nest"
+        ],
+        [
+          16254,
+          "lock"
+        ],
+        [
+          19466,
+          "nest"
+        ],
+        [
+          22604,
+          "vault"
+        ]
+      ],
+      "room_count": 12,
+      "terrain_counts": {
+        "wall": 557,
+        "floor": 424,
+        "door": 40,
+        "shrine": 1,
+        "stairs_up": 1,
+        "stairs_down": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 242,
+          "kind": "smith",
+          "pos": {
+            "x": 16,
+            "y": 26
+          },
+          "hp": 20,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 243,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 3,
+            "y": 19
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            8
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 246,
+          "kind": "bell_sentinel",
+          "pos": {
+            "x": 14,
+            "y": 25
+          },
+          "hp": 18,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "alarm"
+          ]
+        },
+        {
+          "id": 247,
+          "kind": "iron_golem",
+          "pos": {
+            "x": 10,
+            "y": 17
+          },
+          "hp": 20,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            8
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "reflect_melee"
+          ]
+        },
+        {
+          "id": 248,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 18,
+            "y": 21
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 249,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 17,
+            "y": 23
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 250,
+          "kind": "bell_sentinel",
+          "pos": {
+            "x": 4,
+            "y": 23
+          },
+          "hp": 18,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "alarm"
+          ]
+        },
+        {
+          "id": 251,
+          "kind": "smith",
+          "pos": {
+            "x": 10,
+            "y": 13
+          },
+          "hp": 12,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            8
+          ],
+          "cooldown": 8,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 253,
+          "kind": "iron_golem",
+          "pos": {
+            "x": 2,
+            "y": 22
+          },
+          "hp": 32,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "reflect_melee"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 24
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "temper:unbowed"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "thief"
+          },
+          {
+            "k": "foe_tag",
+            "t": "buffer"
+          },
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          },
+          {
+            "k": "foe_tag",
+            "t": "fire"
+          },
+          {
+            "k": "foe_tag",
+            "t": "alarm"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "clarity"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "on_see",
+            "t": "stray"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "in",
+            "t": "foundry"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "light hands"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_archer"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:thief"
+          },
+          {
+            "v": "attack",
+            "a": "tag:buffer"
+          },
+          {
+            "v": "attack",
+            "a": "tag:reflect_melee"
+          },
+          {
+            "v": "attack",
+            "a": "tag:fire"
+          },
+          {
+            "v": "attack",
+            "a": "tag:alarm"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "drink",
+            "a": "clarity"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:thief"
+          },
+          {
+            "v": "tame",
+            "a": "tag:buffer"
+          },
+          {
+            "v": "tame",
+            "a": "tag:reflect_melee"
+          },
+          {
+            "v": "tame",
+            "a": "tag:fire"
+          },
+          {
+            "v": "tame",
+            "a": "tag:alarm"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "reflect"
+            },
+            "needs": "fact: reflect"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "regen"
+            },
+            "needs": "identify regen"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "identify recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "silence"
+            },
+            "needs": "identify silence"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "identify mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "bell"
+            },
+            "needs": "find: bell"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "salt"
+            },
+            "needs": "find: salt"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "chalk"
+            },
+            "needs": "find: chalk"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          }
+        ],
+        "depth_max": 25
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "iron_golem",
+      "actual_trace_blows": {
+        "iron_golem": 4,
+        "forge_imp": 1
+      },
+      "actual_trace": [
+        {
+          "t": 25691,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 3,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25704,
+          "verb": {
+            "v": "bank"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 3,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25716,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25729,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 4,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25741,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25754,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 12,
+          "max_hp": 33,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25766,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 7,
+          "max_hp": 33,
+          "foes": 6,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 25754,
+              "by": "iron_golem",
+              "dmg": 4,
+              "hp": 8
+            },
+            {
+              "t": 25764,
+              "by": "forge_imp",
+              "dmg": 1,
+              "hp": 7
+            }
+          ]
+        },
+        {
+          "t": 25779,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 7,
+          "max_hp": 33,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 25791,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 3,
+          "max_hp": 33,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 25779,
+              "by": "iron_golem",
+              "dmg": 3,
+              "hp": 4
+            },
+            {
+              "t": 25779,
+              "by": "iron_golem",
+              "dmg": 1,
+              "hp": 3
+            }
+          ]
+        },
+        {
+          "t": 25804,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 1,
+          "max_hp": 33,
+          "foes": 5,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 25791,
+              "by": "iron_golem",
+              "dmg": 2,
+              "hp": 1
+            }
+          ]
+        }
+      ],
+      "candidate_counter_not_measured": "reflect_read",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    },
+    {
+      "id": "W2-support-candidate",
+      "source": "docs/evidence/cut162/camps/AWAY-nodes-s1-d4-c0.json.gz",
+      "source_gzip_sha256": "66c8be90c67d154daff754b19de2840a106d7464c5c3549a55e10297b31d6630",
+      "record": "W2-support-candidate.record.json.gz",
+      "record_gzip_sha256": "0031626ec62f3500a013cce79ca3256f81ac17090af5a1fcb6bd45e11e532de0",
+      "run_id": 118,
+      "biome": "foundry",
+      "biome_evidence": [
+        [
+          31271,
+          "D23: the Foundry."
+        ]
+      ],
+      "depth": 23,
+      "route": "not serialized in this historical Run; actual entrance note used",
+      "checkpoint_turn": 32400,
+      "death_turn": 32546,
+      "checkpoint_hp": 24,
+      "checkpoint_max_hp": 44,
+      "class": "fighter",
+      "kit": [
+        {
+          "id": 2,
+          "kind": "leather",
+          "amount": 0,
+          "enchant": 1
+        },
+        {
+          "id": 1,
+          "kind": "sword",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 101,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 102,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 121,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 119,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 120,
+          "kind": "poison",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 158,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 194,
+          "kind": "poison",
+          "hint": "malevolent",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 271,
+          "kind": "fire",
+          "amount": 0,
+          "enchant": 2
+        },
+        {
+          "id": 268,
+          "kind": "bell",
+          "amount": 0,
+          "enchant": 0
+        }
+      ],
+      "floor_twist": "shrine",
+      "floor_situations": [
+        [
+          490,
+          "nest"
+        ],
+        [
+          1269,
+          "lock"
+        ],
+        [
+          2747,
+          "den"
+        ],
+        [
+          4423,
+          "hunger"
+        ],
+        [
+          5008,
+          "captive"
+        ],
+        [
+          8716,
+          "hunger"
+        ],
+        [
+          12533,
+          "lock"
+        ],
+        [
+          16896,
+          "den"
+        ],
+        [
+          16933,
+          "captive"
+        ],
+        [
+          20121,
+          "vault"
+        ],
+        [
+          20821,
+          "captive"
+        ],
+        [
+          24683,
+          "nest"
+        ],
+        [
+          28371,
+          "lock"
+        ]
+      ],
+      "room_count": 13,
+      "terrain_counts": {
+        "wall": 531,
+        "floor": 443,
+        "door": 47,
+        "stairs_up": 1,
+        "shrine": 1,
+        "stairs_down": 1
+      },
+      "living_monsters_at_checkpoint": [
+        {
+          "id": 299,
+          "kind": "slag_crawler",
+          "pos": {
+            "x": 22,
+            "y": 26
+          },
+          "hp": 34,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "heavy",
+            "fire",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 302,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 30,
+            "y": 17
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 303,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 30,
+            "y": 19
+          },
+          "hp": 17,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            10
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 304,
+          "kind": "smith",
+          "pos": {
+            "x": 21,
+            "y": 29
+          },
+          "hp": 20,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 307,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 24,
+            "y": 26
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 308,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 23,
+            "y": 27
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 309,
+          "kind": "iron_golem",
+          "pos": {
+            "x": 28,
+            "y": 18
+          },
+          "hp": 32,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            0,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "reflect_melee"
+          ]
+        },
+        {
+          "id": 311,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 21,
+            "y": 17
+          },
+          "hp": 7,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            0
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        },
+        {
+          "id": 312,
+          "kind": "foundry_master",
+          "pos": {
+            "x": 23,
+            "y": 26
+          },
+          "hp": 26,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 10,
+          "current_source_tags": [
+            "boss",
+            "reflect_melee",
+            "buffer",
+            "telegraph"
+          ]
+        },
+        {
+          "id": 313,
+          "kind": "smith",
+          "pos": {
+            "x": 29,
+            "y": 24
+          },
+          "hp": 20,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 314,
+          "kind": "smith",
+          "pos": {
+            "x": 25,
+            "y": 27
+          },
+          "hp": 20,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 20,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 315,
+          "kind": "smith",
+          "pos": {
+            "x": 28,
+            "y": 21
+          },
+          "hp": 20,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 316,
+          "kind": "smith",
+          "pos": {
+            "x": 25,
+            "y": 26
+          },
+          "hp": 20,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 317,
+          "kind": "smith",
+          "pos": {
+            "x": 27,
+            "y": 27
+          },
+          "hp": 20,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            20
+          ],
+          "cooldown": 20,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 318,
+          "kind": "smith",
+          "pos": {
+            "x": 26,
+            "y": 19
+          },
+          "hp": 20,
+          "awake": false,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            10
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "buffer"
+          ]
+        },
+        {
+          "id": 319,
+          "kind": "forge_imp",
+          "pos": {
+            "x": 26,
+            "y": 20
+          },
+          "hp": 17,
+          "awake": true,
+          "ally": false,
+          "summoned": false,
+          "telegraph": null,
+          "extra_tags": [],
+          "buff_def": [
+            3,
+            10
+          ],
+          "cooldown": 0,
+          "current_source_tags": [
+            "fire",
+            "thief"
+          ]
+        }
+      ],
+      "compiled_rows_at_record": {
+        "rows": [
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "drill:goblin_warlord"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              },
+              {
+                "k": "depth>=",
+                "n": 29
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 30
+              }
+            ],
+            "verb": {
+              "v": "return"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "hp<",
+                "n": 100
+              }
+            ],
+            "verb": {
+              "v": "rest"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "lacks",
+                "t": "heal"
+              },
+              {
+                "k": "hp<",
+                "n": 45
+              }
+            ],
+            "verb": {
+              "v": "bank"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "telegraph"
+              },
+              {
+                "k": "hp<",
+                "n": 60
+              }
+            ],
+            "verb": {
+              "v": "drink",
+              "a": "heal"
+            },
+            "origin": "stance:guarded"
+          },
+          {
+            "conds": [
+              {
+                "k": "foe_tag",
+                "t": "boss"
+              },
+              {
+                "k": "hp>",
+                "n": 40
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "tag:boss"
+            },
+            "origin": "temper:unbowed"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "tame",
+              "a": "open"
+            },
+            "origin": "drill:tame"
+          },
+          {
+            "conds": [
+              {
+                "k": "foes>=",
+                "n": 1
+              }
+            ],
+            "verb": {
+              "v": "attack",
+              "a": "nearest"
+            },
+            "origin": "stance:guarded"
+          }
+        ],
+        "name": "fighter"
+      },
+      "vocabulary_at_record": {
+        "conds": [
+          {
+            "k": "hp<",
+            "n": 30
+          },
+          {
+            "k": "hp>",
+            "n": 70
+          },
+          {
+            "k": "foes>=",
+            "n": 2
+          },
+          {
+            "k": "adj>=",
+            "n": 2
+          },
+          {
+            "k": "unknown_item"
+          },
+          {
+            "k": "floor_seen>=",
+            "n": 60
+          },
+          {
+            "k": "depth>=",
+            "n": 2
+          },
+          {
+            "k": "in_corridor"
+          },
+          {
+            "k": "path_stairs"
+          },
+          {
+            "k": "ally"
+          },
+          {
+            "k": "on_hurt"
+          },
+          {
+            "k": "foe_hp<",
+            "n": 25
+          },
+          {
+            "k": "alert>=",
+            "n": 3
+          },
+          {
+            "k": "loot>=",
+            "n": 20
+          },
+          {
+            "k": "turns>",
+            "n": 100
+          },
+          {
+            "k": "on_kill"
+          },
+          {
+            "k": "on_see"
+          },
+          {
+            "k": "foe_tag",
+            "t": "telegraph"
+          },
+          {
+            "k": "foe_tag",
+            "t": "thief"
+          },
+          {
+            "k": "foe_tag",
+            "t": "heavy"
+          },
+          {
+            "k": "foe_tag",
+            "t": "boss"
+          },
+          {
+            "k": "foe_tag",
+            "t": "buffer"
+          },
+          {
+            "k": "foe_tag",
+            "t": "reflect_melee"
+          },
+          {
+            "k": "foe_tag",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "dagger"
+          },
+          {
+            "k": "item",
+            "t": "sword"
+          },
+          {
+            "k": "item",
+            "t": "axe"
+          },
+          {
+            "k": "item",
+            "t": "bow"
+          },
+          {
+            "k": "item",
+            "t": "leather"
+          },
+          {
+            "k": "item",
+            "t": "mail"
+          },
+          {
+            "k": "item",
+            "t": "plate"
+          },
+          {
+            "k": "item",
+            "t": "heal"
+          },
+          {
+            "k": "item",
+            "t": "strength"
+          },
+          {
+            "k": "item",
+            "t": "speed"
+          },
+          {
+            "k": "item",
+            "t": "invisibility"
+          },
+          {
+            "k": "item",
+            "t": "poison"
+          },
+          {
+            "k": "item",
+            "t": "caustic"
+          },
+          {
+            "k": "item",
+            "t": "confusion"
+          },
+          {
+            "k": "item",
+            "t": "fire"
+          },
+          {
+            "k": "item",
+            "t": "spear"
+          },
+          {
+            "k": "item",
+            "t": "mace"
+          },
+          {
+            "k": "item",
+            "t": "scale"
+          },
+          {
+            "k": "item",
+            "t": "resist_fire"
+          },
+          {
+            "k": "item",
+            "t": "clarity"
+          },
+          {
+            "k": "item",
+            "t": "silence"
+          },
+          {
+            "k": "item",
+            "t": "leash"
+          },
+          {
+            "k": "item",
+            "t": "bell"
+          },
+          {
+            "k": "on_see",
+            "t": "nest"
+          },
+          {
+            "k": "on_see",
+            "t": "shrine"
+          },
+          {
+            "k": "on_see",
+            "t": "vault"
+          },
+          {
+            "k": "on_see",
+            "t": "den"
+          },
+          {
+            "k": "on_see",
+            "t": "lock"
+          },
+          {
+            "k": "on_see",
+            "t": "captive"
+          },
+          {
+            "k": "on_see",
+            "t": "hunger"
+          },
+          {
+            "k": "on_see",
+            "t": "stray"
+          },
+          {
+            "k": "in",
+            "t": "burrows"
+          },
+          {
+            "k": "in",
+            "t": "fens"
+          },
+          {
+            "k": "in",
+            "t": "crypt"
+          },
+          {
+            "k": "in",
+            "t": "foundry"
+          },
+          {
+            "k": "in",
+            "t": "deep"
+          },
+          {
+            "k": "trait",
+            "t": "iron gut"
+          },
+          {
+            "k": "trait",
+            "t": "light hands"
+          },
+          {
+            "k": "trait",
+            "t": "skittish"
+          },
+          {
+            "k": "trait",
+            "t": "unbowed"
+          },
+          {
+            "k": "gift_live"
+          },
+          {
+            "k": "party_hp<",
+            "n": 50
+          },
+          {
+            "k": "party",
+            "t": "goblin_archer"
+          },
+          {
+            "k": "party",
+            "t": "goblin"
+          }
+        ],
+        "verbs": [
+          {
+            "v": "attack",
+            "a": "nearest"
+          },
+          {
+            "v": "attack",
+            "a": "lowest"
+          },
+          {
+            "v": "attack",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "attack",
+            "a": "tag:thief"
+          },
+          {
+            "v": "attack",
+            "a": "tag:heavy"
+          },
+          {
+            "v": "attack",
+            "a": "tag:boss"
+          },
+          {
+            "v": "attack",
+            "a": "tag:buffer"
+          },
+          {
+            "v": "attack",
+            "a": "tag:reflect_melee"
+          },
+          {
+            "v": "attack",
+            "a": "tag:fire"
+          },
+          {
+            "v": "retreat"
+          },
+          {
+            "v": "back_corridor"
+          },
+          {
+            "v": "drink",
+            "a": "unknown"
+          },
+          {
+            "v": "drink",
+            "a": "heal"
+          },
+          {
+            "v": "drink",
+            "a": "strength"
+          },
+          {
+            "v": "drink",
+            "a": "speed"
+          },
+          {
+            "v": "drink",
+            "a": "invisibility"
+          },
+          {
+            "v": "drink",
+            "a": "poison"
+          },
+          {
+            "v": "drink",
+            "a": "caustic"
+          },
+          {
+            "v": "drink",
+            "a": "confusion"
+          },
+          {
+            "v": "drink",
+            "a": "fire"
+          },
+          {
+            "v": "drink",
+            "a": "resist_fire"
+          },
+          {
+            "v": "drink",
+            "a": "clarity"
+          },
+          {
+            "v": "read",
+            "a": "unknown"
+          },
+          {
+            "v": "read",
+            "a": "silence"
+          },
+          {
+            "v": "descend"
+          },
+          {
+            "v": "bank"
+          },
+          {
+            "v": "return"
+          },
+          {
+            "v": "rest"
+          },
+          {
+            "v": "pick_up"
+          },
+          {
+            "v": "shield_bash"
+          },
+          {
+            "v": "cleave"
+          },
+          {
+            "v": "taunt"
+          },
+          {
+            "v": "second_wind"
+          },
+          {
+            "v": "pray",
+            "a": "row"
+          },
+          {
+            "v": "pray",
+            "a": "trait"
+          },
+          {
+            "v": "tactic",
+            "a": "kite_archers"
+          },
+          {
+            "v": "tactic",
+            "a": "stair_dance"
+          },
+          {
+            "v": "tactic",
+            "a": "noise_discipline"
+          },
+          {
+            "v": "tactic",
+            "a": "deep_march"
+          },
+          {
+            "v": "tame",
+            "a": "nearest"
+          },
+          {
+            "v": "tame",
+            "a": "tag:telegraph"
+          },
+          {
+            "v": "tame",
+            "a": "tag:thief"
+          },
+          {
+            "v": "tame",
+            "a": "tag:heavy"
+          },
+          {
+            "v": "tame",
+            "a": "tag:boss"
+          },
+          {
+            "v": "tame",
+            "a": "tag:buffer"
+          },
+          {
+            "v": "tame",
+            "a": "tag:reflect_melee"
+          },
+          {
+            "v": "tame",
+            "a": "tag:fire"
+          },
+          {
+            "v": "recall"
+          },
+          {
+            "v": "send"
+          }
+        ],
+        "max_rows": 5,
+        "combos": [
+          {
+            "a": "shield_bash",
+            "b": "backstab",
+            "name": "opener"
+          },
+          {
+            "a": "shield_bash",
+            "b": "attack",
+            "name": "opener"
+          },
+          {
+            "a": "throw",
+            "b": "retreat",
+            "name": "hit and fade"
+          },
+          {
+            "a": "throw",
+            "b": "back_corridor",
+            "name": "hit and fade"
+          },
+          {
+            "a": "taunt",
+            "b": "cleave",
+            "name": "bait"
+          },
+          {
+            "a": "shoot",
+            "b": "kite",
+            "name": "kite"
+          },
+          {
+            "a": "shoot",
+            "b": "retreat",
+            "name": "kite"
+          },
+          {
+            "a": "vanish",
+            "b": "backstab",
+            "name": "ambush"
+          },
+          {
+            "a": "pray",
+            "b": "descend",
+            "name": "pilgrim"
+          },
+          {
+            "a": "tame",
+            "b": "send",
+            "name": "handler"
+          },
+          {
+            "a": "drink unknown",
+            "b": "attack",
+            "name": "gambler"
+          },
+          {
+            "a": "back_corridor",
+            "b": "attack",
+            "name": "chokepoint"
+          }
+        ],
+        "locked": [
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "ally"
+            },
+            "needs": "fact: ally"
+          },
+          {
+            "cond": {
+              "k": "foe_tag",
+              "t": "reflect"
+            },
+            "needs": "fact: reflect"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "teleport"
+            },
+            "needs": "buy teleport"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "blink"
+            },
+            "needs": "buy blink"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "fear"
+            },
+            "needs": "buy fear"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mapping"
+            },
+            "needs": "buy mapping"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "identify"
+            },
+            "needs": "buy identify"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "enchant"
+            },
+            "needs": "buy enchant"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "darkness"
+            },
+            "needs": "buy darkness"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "summon_ally"
+            },
+            "needs": "buy summon_ally"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "aggravate"
+            },
+            "needs": "buy aggravate"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "regen"
+            },
+            "needs": "identify regen"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "recall"
+            },
+            "needs": "buy recall"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "earthquake"
+            },
+            "needs": "identify earthquake"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror"
+            },
+            "needs": "identify mirror"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "lantern"
+            },
+            "needs": "find: lantern"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "salt"
+            },
+            "needs": "find: salt"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "chalk"
+            },
+            "needs": "find: chalk"
+          },
+          {
+            "cond": {
+              "k": "item",
+              "t": "mirror_shard"
+            },
+            "needs": "find: mirror shard"
+          }
+        ],
+        "depth_max": 30
+      },
+      "package_levels_at_send": null,
+      "unlock_state_at_send": null,
+      "package_limit": "Final-camp pkg is later state; do not retrofit its ownership/levels into this send.",
+      "death_cause": "foundry_master",
+      "actual_trace_blows": {
+        "slag_crawler": 3,
+        "foundry_master": 1
+      },
+      "actual_trace": [
+        {
+          "t": 32433,
+          "verb": {
+            "v": "bank"
+          },
+          "hp": 16,
+          "max_hp": 44,
+          "foes": 8,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 32429,
+              "by": "slag_crawler",
+              "dmg": 5,
+              "hp": 16
+            }
+          ]
+        },
+        {
+          "t": 32446,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 16,
+          "max_hp": 44,
+          "foes": 8,
+          "telegraphs": [
+            "crawler heaves"
+          ],
+          "blows": []
+        },
+        {
+          "t": 32458,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 15,
+          "max_hp": 44,
+          "foes": 9,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 32457,
+              "by": "slag_crawler",
+              "dmg": 1,
+              "hp": 15
+            }
+          ]
+        },
+        {
+          "t": 32471,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 15,
+          "max_hp": 44,
+          "foes": 9,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 32483,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 15,
+          "max_hp": 44,
+          "foes": 9,
+          "telegraphs": [
+            "crawler heaves"
+          ],
+          "blows": []
+        },
+        {
+          "t": 32496,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 8,
+          "max_hp": 44,
+          "foes": 10,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 32486,
+              "by": "slag_crawler",
+              "dmg": 7,
+              "hp": 8
+            }
+          ]
+        },
+        {
+          "t": 32508,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 8,
+          "max_hp": 44,
+          "foes": 10,
+          "telegraphs": [
+            "crawler heaves"
+          ],
+          "blows": []
+        },
+        {
+          "t": 32521,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 8,
+          "max_hp": 44,
+          "foes": 10,
+          "telegraphs": [],
+          "blows": []
+        },
+        {
+          "t": 32533,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 6,
+          "max_hp": 44,
+          "foes": 10,
+          "telegraphs": [],
+          "blows": [
+            {
+              "t": 32521,
+              "by": "foundry_master",
+              "dmg": 2,
+              "hp": 6
+            }
+          ]
+        },
+        {
+          "t": 32546,
+          "verb": {
+            "v": "attack",
+            "a": "nearest"
+          },
+          "hp": 6,
+          "max_hp": 44,
+          "foes": 10,
+          "telegraphs": [
+            "master hammers"
+          ],
+          "blows": []
+        }
+      ],
+      "candidate_counter_not_measured": "support targeting: actual buff/alarm event missing",
+      "causal_matched_comparisons": 0,
+      "current_balance_claim": false
+    }
+  ]
+}

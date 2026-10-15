@@ -1,0 +1,1115 @@
+{
+  "scope": "Current87de replay reconstruction from existing earned capsule131; historical tick mismatch retained; no new choices or progression, no performance claim",
+  "source": {
+    "web/src/render/index.ts": "39543298f90332f3e7ddb29345bb3a79d49610e37ea221ce0d0e037e8c7ae757",
+    "web/src/render/view2d.ts": "12a28085544f3351f9c8155b2ad5e5d6366b47cae0a57762c6a884928b4fd7f0",
+    "web/src/render/atlas.ts": "d6618c368d37b01f3e6ba929d650d73364ff809e49b3bd813bda83a40e056545",
+    "web/src/render/fallback.ts": "29b1aabbdf1b554cf95a39561b2e554e3e0e164a6378c3913693b9dd3376519b",
+    "web/src/render/state.ts": "e8bd86a1a89e7a1fdfc757b3e9dddb223c906c7fc88d025e4e3d4ce7bec5e5ed",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "660d2b5509ab3487e70e561d79b2f9677af0b028182f675682abef6088972179"
+  },
+  "servedModules": [
+    {
+      "url": "/src/render/index.ts",
+      "sha256": "281b31b95cfc089de38f928a57a4d3d9dd9a39247f86c70b0b3171578212d47c"
+    },
+    {
+      "url": "/src/render/atlas.ts",
+      "sha256": "ac35eab0a2061cc49163e603c3044555663cb17be418421de69169bfc936c00f"
+    },
+    {
+      "url": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "url": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "url": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "url": "/src/render/palette.ts",
+      "sha256": "d01274e5a44f94c3cc0a0de634fe4aca648d33d1822b70f6b8c6418e40125272"
+    },
+    {
+      "url": "/src/render/tags.ts",
+      "sha256": "8fa835f31194fec5ac7b1937b9bd71996700acfa5c80ddbaeecbf767554dba81"
+    },
+    {
+      "url": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "url": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "url": "/src/render/state.ts",
+      "sha256": "dbe96bf3eff8d62c33cd23124275a4770878f2d1499849f4133075578bad98b3"
+    },
+    {
+      "url": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "url": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "url": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "url": "/src/render/view2d.ts",
+      "sha256": "cf601030c7ef60a6e525bd4720b601c36628decbdd8fd667d60d036bb6c05f0c"
+    },
+    {
+      "url": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "url": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "url": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "url": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "url": "/src/render/fallback.ts",
+      "sha256": "fffca16300ac8a11294696bdcece018c010ac72d43534c07f6e5173fb27b26e3"
+    },
+    {
+      "url": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "url": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "url": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "url": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    },
+    {
+      "url": "/src/render/index.ts",
+      "sha256": "281b31b95cfc089de38f928a57a4d3d9dd9a39247f86c70b0b3171578212d47c"
+    },
+    {
+      "url": "/src/render/blit.ts",
+      "sha256": "411867a662aae6f2b582b99ed740e6cfff714f195a399058212d0741ea47d53e"
+    },
+    {
+      "url": "/src/render/atlas.ts",
+      "sha256": "ac35eab0a2061cc49163e603c3044555663cb17be418421de69169bfc936c00f"
+    },
+    {
+      "url": "/src/render/layers.ts",
+      "sha256": "7953c855cdb14f7ff8a8b7930f139d858ff2749b08403b338f5d4f84616fdb4e"
+    },
+    {
+      "url": "/src/render/gputimer.ts",
+      "sha256": "0ffc53b65c708d1470ac9c9aeb7a6f5a70c65bcac25a395e84220461a7246e95"
+    },
+    {
+      "url": "/src/render/palette.ts",
+      "sha256": "d01274e5a44f94c3cc0a0de634fe4aca648d33d1822b70f6b8c6418e40125272"
+    },
+    {
+      "url": "/src/render/tags.ts",
+      "sha256": "8fa835f31194fec5ac7b1937b9bd71996700acfa5c80ddbaeecbf767554dba81"
+    },
+    {
+      "url": "/src/render/state.ts",
+      "sha256": "dbe96bf3eff8d62c33cd23124275a4770878f2d1499849f4133075578bad98b3"
+    },
+    {
+      "url": "/src/render/quality.ts",
+      "sha256": "c68355a4bef382a0cffa253574592c4fee0adab508c06f90b3ee3550e32d083a"
+    },
+    {
+      "url": "/src/render/light.ts",
+      "sha256": "2e92a9c0be0bcd2576e9be7b5e6de3d8c901fba3f092b8422c5f8d2401c0362d"
+    },
+    {
+      "url": "/src/render/bloom.ts",
+      "sha256": "30fa5aca06556824357da869fc0206c4a1129045fe4de39680acea0fd1bf75bb"
+    },
+    {
+      "url": "/src/render/normals.ts",
+      "sha256": "da9aee4c841a3602b5839f55d120803c11eea113d0465e398b39c862fc084db7"
+    },
+    {
+      "url": "/src/render/view2d.ts",
+      "sha256": "cf601030c7ef60a6e525bd4720b601c36628decbdd8fd667d60d036bb6c05f0c"
+    },
+    {
+      "url": "/src/render/combat-cues.ts",
+      "sha256": "518d21b3641a236fcd064fa596dd7fc1f3226a417fc98636a357b7764f5894a0"
+    },
+    {
+      "url": "/src/render/tool-cues.ts",
+      "sha256": "13df83c2c7b96b7bf32f267c8a32f8c103d873ebe97abd78a8f72810c134243c"
+    },
+    {
+      "url": "/src/render/fx.ts",
+      "sha256": "d11e238208ea473bf2bedce3c83d70f1b7662742c4cb28fc6e3dfb7700396363"
+    },
+    {
+      "url": "/src/render/fxpref.ts",
+      "sha256": "aa7f189494b243db35b4772e5af1c85e63470c03721c70c3bb4c284eee005069"
+    },
+    {
+      "url": "/src/render/fallback.ts",
+      "sha256": "fffca16300ac8a11294696bdcece018c010ac72d43534c07f6e5173fb27b26e3"
+    },
+    {
+      "url": "/src/render/look.ts",
+      "sha256": "306472f6de4ead68867d4320eaff5b7a9e509d57ab2a1fee97f3738a0dd6380a"
+    },
+    {
+      "url": "/src/render/wash.ts",
+      "sha256": "21348416ca143b6a3f2a289f429f2f9f8c18f6f5b840dc5d864cbc8e468b33f1"
+    },
+    {
+      "url": "/src/render/tool-sprites.ts",
+      "sha256": "9a240a79951929c0122071ad3e094bb0ebc57b8b5111ac1ab587b6a4409c1945"
+    },
+    {
+      "url": "/src/render/font.ts",
+      "sha256": "8bd00c68da34dc4f988332696801f06cd7c211ce02ab561b5c5beae226901fe4"
+    },
+    {
+      "url": "/src/render/movement-trail.ts",
+      "sha256": "afd5c8a1b8345897e0cfb3e583f254be184c1c66fde20660d5d943d34df66b4f"
+    }
+  ],
+  "rows": [
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 400,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-gl-400.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          180,
+          -47
+        ],
+        "ents": 4,
+        "drawn": 4,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 400,
+      "target": 13326,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13324,
+        "src": 121,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "bite"
+      },
+      "file": "initial-replay-fens-water-pack-gl-400.png",
+      "stats": {
+        "tick": 13326,
+        "hero": [
+          10.4,
+          27.4
+        ],
+        "camera": [
+          81.5,
+          -212.5
+        ],
+        "ents": 13,
+        "drawn": 2,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 400,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-gl-400.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          96,
+          -43
+        ],
+        "ents": 9,
+        "drawn": 2,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 400,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-gl-400.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          144,
+          -103
+        ],
+        "ents": 19,
+        "drawn": 8,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 400,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-gl-400.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          45.5,
+          -117.5
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 400,
+      "target": 21902,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21900,
+        "text": "armours"
+      },
+      "file": "initial-replay-foundry-support-gl-400.png",
+      "stats": {
+        "tick": 21902,
+        "hero": [
+          11.8,
+          6
+        ],
+        "camera": [
+          98,
+          -47
+        ],
+        "ents": 12,
+        "drawn": 1,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 400,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-canvas-400.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 4,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 400,
+      "target": 13326,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13324,
+        "src": 121,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "bite"
+      },
+      "file": "initial-replay-fens-water-pack-canvas-400.png",
+      "stats": {
+        "tick": 13326,
+        "hero": [
+          10.4,
+          27.4
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 400,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-canvas-400.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 400,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-canvas-400.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 19,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 400,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-canvas-400.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 400,
+      "target": 21902,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21900,
+        "text": "armours"
+      },
+      "file": "initial-replay-foundry-support-canvas-400.png",
+      "stats": {
+        "tick": 21902,
+        "hero": [
+          11.8,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          400,
+          640
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 1440,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-gl-1440.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          180,
+          -47
+        ],
+        "ents": 4,
+        "drawn": 4,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "gl",
+      "width": 1440,
+      "target": 13326,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13324,
+        "src": 121,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "bite"
+      },
+      "file": "initial-replay-fens-water-pack-gl-1440.png",
+      "stats": {
+        "tick": 13326,
+        "hero": [
+          10.4,
+          27.4
+        ],
+        "camera": [
+          81.5,
+          -212.5
+        ],
+        "ents": 13,
+        "drawn": 2,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 1440,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-gl-1440.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          96,
+          -43
+        ],
+        "ents": 9,
+        "drawn": 2,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "gl",
+      "width": 1440,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-gl-1440.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          144,
+          -103
+        ],
+        "ents": 19,
+        "drawn": 8,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 1440,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-gl-1440.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          45.5,
+          -117.5
+        ],
+        "ents": 12,
+        "drawn": 3,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "gl",
+      "width": 1440,
+      "target": 21902,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21900,
+        "text": "armours"
+      },
+      "file": "initial-replay-foundry-support-gl-1440.png",
+      "stats": {
+        "tick": 21902,
+        "hero": [
+          11.8,
+          6
+        ],
+        "camera": [
+          98,
+          -47
+        ],
+        "ents": 12,
+        "drawn": 1,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": false,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-gas",
+      "depth": 10,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 11602,
+      "actualEvent": {
+        "k": "overlay",
+        "t": 11600,
+        "x": 22,
+        "y": 5,
+        "ov": "gas",
+        "ttl": 40
+      },
+      "file": "replay-fens-gas-canvas-1440.png",
+      "stats": {
+        "tick": 11602,
+        "hero": [
+          22,
+          5
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 4,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "fens-water-pack",
+      "depth": 13,
+      "biome": "fens",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 13326,
+      "actualEvent": {
+        "k": "attack",
+        "t": 13324,
+        "src": 121,
+        "dst": 1,
+        "dmg": 1,
+        "hit": true,
+        "verb": "bite"
+      },
+      "file": "initial-replay-fens-water-pack-canvas-1440.png",
+      "stats": {
+        "tick": 13326,
+        "hero": [
+          10.4,
+          27.4
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 13,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-drain",
+      "depth": 14,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 15292,
+      "actualEvent": {
+        "k": "max_hp",
+        "t": 15290,
+        "id": 1,
+        "max": 55,
+        "delta": -1,
+        "cause": "drain"
+      },
+      "file": "replay-crypt-drain-canvas-1440.png",
+      "stats": {
+        "tick": 15292,
+        "hero": [
+          11,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 9,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "crypt-summons",
+      "depth": 17,
+      "biome": "crypt",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 18722,
+      "actualEvent": {
+        "k": "spawn",
+        "t": 18720,
+        "e": {
+          "id": 198,
+          "kind": "spectral_blade",
+          "x": 17,
+          "y": 11,
+          "hp": 3,
+          "max_hp": 3,
+          "tags": [
+            "summoned"
+          ]
+        }
+      },
+      "file": "replay-crypt-summons-canvas-1440.png",
+      "stats": {
+        "tick": 18722,
+        "hero": [
+          16.8,
+          12
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 19,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-reflect",
+      "depth": 21,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 22652,
+      "actualEvent": {
+        "k": "attack",
+        "t": 22650,
+        "src": 262,
+        "dst": 1,
+        "dmg": 4,
+        "hit": true,
+        "verb": "reflect"
+      },
+      "file": "replay-foundry-reflect-canvas-1440.png",
+      "stats": {
+        "tick": 22652,
+        "hero": [
+          4,
+          16
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    },
+    {
+      "id": "foundry-support",
+      "depth": 20,
+      "biome": "foundry",
+      "backend": "canvas",
+      "width": 1440,
+      "target": 21902,
+      "actualEvent": {
+        "k": "callout",
+        "t": 21900,
+        "text": "armours"
+      },
+      "file": "initial-replay-foundry-support-canvas-1440.png",
+      "stats": {
+        "tick": 21902,
+        "hero": [
+          11.8,
+          6
+        ],
+        "camera": [
+          0,
+          0
+        ],
+        "ents": 12,
+        "drawn": 0,
+        "device": [
+          1440,
+          800
+        ],
+        "frame": "fight",
+        "glLost": true,
+        "fade": 0
+      }
+    }
+  ],
+  "gpu": "ANGLE (Microsoft Corporation, D3D12 (NVIDIA GeForce RTX 3080), OpenGL 4.6)",
+  "status": "captured",
+  "limit": "Still frames of current-runtime reconstruction; no claim of historical bit identity, counter superiority, natural choice adoption, full visibility coverage or measured cost."
+}

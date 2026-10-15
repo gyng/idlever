@@ -1,0 +1,52 @@
+{
+  "source": "docs/evidence/handoff-menus/input.game.json.gz",
+  "source_gzip_sha256": "c23224542c7db35def1793352a6fd49215d0ca87d047775514183f88c510b714",
+  "provenance": "docs/evidence/handoff-menus/input-provenance.json",
+  "source_earned_fixture": "docs/evidence/cut220/core/fixtures/earned-hybrid-saved-kit.game.json.gz",
+  "preparation": "Existing menu evidence loaded earned fixture and ran actual87de runOfflineQuick(3600); audit does not advance it.",
+  "deep_retained_deaths": [
+    {
+      "run_id": 56,
+      "depth": 8,
+      "cause": "goblin_warlord"
+    },
+    {
+      "run_id": 58,
+      "depth": 8,
+      "cause": "goblin_warlord"
+    },
+    {
+      "run_id": 79,
+      "depth": 13,
+      "cause": "gas"
+    },
+    {
+      "run_id": 93,
+      "depth": 13,
+      "cause": "gas"
+    },
+    {
+      "run_id": 98,
+      "depth": 18,
+      "cause": "skeleton"
+    },
+    {
+      "run_id": 116,
+      "depth": 23,
+      "cause": "foundry_master"
+    },
+    {
+      "run_id": 125,
+      "depth": 28,
+      "cause": "lurker"
+    }
+  ],
+  "capsule_wire_key": "live_capsule",
+  "capsules_serialized": true,
+  "saved_kill_capsule_ids": [
+    131,
+    132
+  ],
+  "history_entries": 0,
+  "limit": "Deep death checkpoints are historical records. Saved genuine departure capsules131/132 permit read-only current-runtime reconstruction; replay.mjs exports131, whose ticks differ from historical runlog. Neither current replay nor later camp choices rewrite a historical fight."
+}
