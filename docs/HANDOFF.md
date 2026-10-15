@@ -1,4 +1,4 @@
-# Idlever handoff — active queue, 2026-10-14
+# Idlever handoff — active queue, parked 2026-10-15
 
 Read this file, PLAN.md, docs/CUT30_5.md and AGENTS.md before resuming.
 The objective remains **resume and finish all queued items verified and refined**.
@@ -9,11 +9,56 @@ A targeted cut does not complete the whole goal. Fun>=80 remains unverified.
 Owner authorizes subagents, milestone screenshots, commits and pushes.
 No new release is inferred. Pages deploys published versioned releases only.
 Brand/repo: Idlever / gyng/idlever; checkout /home/g/p/riddle.
-origin/main a8935ddf (2026-10-14; WASM 8b48aa49…, 6849966 bytes, fast build, untracked pkg;
-gold-settlements default docs/evidence/cut228/settlements-inputs-main.json). Un-parked; work continues.
+origin/main 3975f10b (2026-10-15; WASM d161212b…, 6883918 bytes, fast build, untracked pkg — rebuild
+with `tools/wasm.sh`; gold-settlements default docs/evidence/cut233/settlements-inputs-d161.json).
+**PARKED 2026-10-15 (owner).** See "Parked — resume here" below.
 Do not stage unrelated mine.bars or scratchpad wholesale.
 
-## Cut233 — cadence30 between looks; content tunables in balance.json (2026-10-15, worktree branch, not pushed)
+## Parked 2026-10-15 — resume here
+
+**In flight at park:** Cut235 feats for later workers — WIP pushed as **origin/cut235-feats-wip** (be26fbef,
+on 3975f10b; NOT merged). Read docs/evidence/cut235/README.md on that branch. Built: `workers.<id>.goal`
+("count"|"feat", balance.json, sweepable), seven later workers lit by a feat or their unchanged fallback (old saves keep
+counts), wire WorkNode.goal/feat/feat_done + NextPill.kind "feat", client pill/tracker/Works card. Verified at 16
+seeds: `--pacing` 24/24, nodes-lit/nodes-bought PASS; clippy clean; worker-first-act/cut120/worker-purchases/first-plot
+PASS. NOT done: full workspace tests after the last test edits, 16×14 timeline + hire-compare (day 2–7 gap vs ≤24 h —
+feats likely move hires onto day 1 rather than fill days 3–4; `tree.rank_days` is the likely next lever), routine full
+gate, `tools/repin.mjs --dir docs/evidence/cut235 --settle`, docs/CUT235_FEATS.md. The agent saw glossary and
+journal-earned fail against the main checkout's :5219 server too (glossary PASSED on main at 3975f10b on a fresh
+runner server — :5219 is likely a stale dev server; recheck with `node tests/run.mjs glossary journal-earned`).
+
+**Owner queue (order fixed, each verified at 16 seeds via `node tools/gates.mjs --pacing` + routine full gate):**
+1. Cut235 feats for later workers (in flight; §5b of docs/CUT231_PROGRESSION.md). Target: day 2–7 beat gap ≤24 h.
+2. Second hero on day 1–2 (default players found a bloodline; answers the day-2 cliff).
+3. First reset payoff on day 1 (default Legacy order or a spend at the first death; +50–200%).
+Then: docs/research/PACKAGE_GRADES_2026-10.md learnings not yet done — #5 away forecast names the stall,
+#7 workers doing chores in town (Cut228 started with the Forge), #8 audio pass (needs owner listening);
+remaining Cut231 items 6–11; WORK_QUEUE "Package-eval proposals".
+
+**Landed this session (2026-10-14/15), all on main:** tracker as MMO quest list + party-frame roster (da9a53c7);
+Cut225 Clown/Engineer client + owner tuning (Clown median D28, Engineer turret over mace; f7c49988); Cut226
+cloning copy; Cut227 recovery + qa fix + RANDOM 16 seeds; Cut228 forge_work ant farm; Cut229 home tests; Cut230
+Scout after 2 sends (median 4.9 / worst 7.2 min) + depth-scaled recovery [600,14,28,1]; Cut231 worker progress pill
++ timeline tool + cadence30; Cut232 one decision per look (news.rs; unlock order kept, review in play); Cut233
+tunables in balance.json + cadence30 between looks (routine bar); Cut234 slim phone depth rail + Journal glossary;
+tools: dev save history (Shift+T), client runner --failed/--resume, rater checkpoints, repin.mjs, --pacing pack,
+sweep.mjs; research: PROGRESSION_COMPETITORS + PACKAGE_EVAL/GRADES/REPORT (Idlever package 62.0, fun 75.2,
+"early access"; pacing 45 is the failing heavy dimension).
+
+**Checks at 3975f10b:** native 939/6 ignored, clippy clean; `--pacing` 24/24 and routine full gate PASS (Cut233);
+client routine 40 groups (38 + depth-rail, glossary) PASS — clarity:paint and watch-live-edge only pass on a quiet
+host (load ≲20); gold-settlements 564/24.
+
+**Owner-only items:** run codex for art (prompts: art/prompts/town_clone_vat.txt, hero_clown_engineer.txt,
+portraits_clown_engineer.txt, icons_class_clown_engineer.txt, env_tools.txt, town_props_bench_lantern.txt,
+town_services.txt — the agent classifier blocks Claude launching codex); audio listening pass (eval/AUDIO.md).
+Recovery ramp alt: 16-28 also passes but at exactly 1.15 (shipping 14-28 keeps 0.02 margin).
+
+**Known limits:** routine 2-seed gate cannot see picked-idle/scout → use `--pacing`; picked-idle D13 sits at
+exactly 1.50; exhaustive cut305 walk fails (day-0 surface count, manual chest steps — not compared to main);
+heavy parallel agents (>3) make client timing checks flaky — rerun alone before trusting a failure.
+
+## Cut233 — cadence30 between looks; content tunables in balance.json (2026-10-15, merged on main)
 
 Owner 2026-10-15: `cadence30`'s gap counts between looks only (a watched run is not a gap; CUT232 amendment) — 16
 seeds gap 0.0 · 0.0 · dec 1 · 16/16, now a routine bar; the Cut232 unlock order is kept (review in play). Pure
@@ -22,7 +67,7 @@ refactor: workers, tree, rest, gold/exits, kit, unlocks, stance rows, marks/XP/L
 jobs byte-identical; gold settlements exact; WASM `d161212b…`; default manifest
 `docs/evidence/cut233/settlements-inputs-d161.json`. Evidence: evidence/cut233/README.md.
 
-## Cut232 — one new decision a report (2026-10-15, worktree branch, not pushed)
+## Cut232 — one new decision a report (2026-10-15, merged on main)
 
 [CUT232_CADENCE.md](CUT232_CADENCE.md): core `news.rs` holds each run report to one new decision (hire offers,
 marks, plots, arrivals, reveals wait for a quiet report; held reveals owed; stance levels with the Scout; Drillmaster
