@@ -2,7 +2,8 @@ import { responsiveWidths } from "./lib/viewport-cases.mjs";
 import { execFileSync } from "node:child_process";
 import { launchBrowser } from "../../tools/browser.mjs";
 import assert from "node:assert/strict";
-import { mkdirSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 const url =
     process.env.IDLEVER_TEST_URL ??
     execFileSync("bash", ["tools/dev.sh"], {
@@ -11,11 +12,20 @@ const url =
     }).trim(),
   shots = process.env.IDLEVER_SHOTS;
 if (shots) mkdirSync(shots, { recursive: true });
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+const expectedWasm = sha256(
+  readFileSync(new URL("../src/engine/pkg/idlever_wasm_bg.wasm", import.meta.url)),
+);
+const proof = [];
 const b = await launchBrowser();
 try {
   for (const width of responsiveWidths([320, 400, 1440])) {
     const p = await b.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1.5 });
+    const wasmResponse = p.waitForResponse((r) => /\.wasm(?:\?|$)/.test(r.url()));
     await p.goto(`${url}?fresh=1&seed=1&runs=0`);
+    const response = await wasmResponse;
+    const servedWasm = sha256(await response.body());
+    assert.equal(servedWasm, expectedWasm);
     await p.waitForFunction(() => window.__idlever?.booted);
     await p.locator('.town-tag[data-next="house"]').waitFor({ state: "visible" });
     await p.waitForFunction(() =>
@@ -52,6 +62,8 @@ try {
     assert.equal(before.kind, "wasm");
     assert.equal(before.home, false);
     assert.equal(before.heroes, 0);
+    assert.equal(await p.locator('.camp .console [data-tile="heroes"]').count(), 0);
+    assert.equal(await p.locator(".camp .hero-mobile .hero-expand").count(), 0);
     assert.equal(before.foundation, true);
     assert.equal(before.painted, true);
     assert.equal(before.plotW, 164);
@@ -116,6 +128,29 @@ try {
     assert.equal(identity.oneLine, true);
     assert.equal(identity.tooltip, identity.expectedTooltip);
     assert.equal(identity.overflow, false);
+    const roster = p.locator('.camp .console [data-tile="heroes"]');
+    assert.equal(await roster.count(), 1);
+    await roster.waitFor({ state: "visible" });
+    assert.equal(await p.locator(".camp .hero-mobile .hero-expand").count(), 0);
+    const rosterSave = await p.evaluate(() => window.__idlever.engine.save());
+    await roster.click();
+    await p.locator(".heroes-sheet").waitFor({ state: "visible" });
+    await p.keyboard.press("Escape");
+    await p.locator(".heroes-sheet").waitFor({ state: "detached" });
+    assert.equal(await p.evaluate(() => window.__idlever.engine.save()), rosterSave);
+    proof.push({
+      width,
+      height: 900,
+      servedWasm,
+      wasmUrl: response.url(),
+      before,
+      identity,
+      heroesBeforeBuild: 0,
+      heroesAfterArrival: 1,
+      rosterEscapeExactSave: true,
+    });
+    if (shots)
+      writeFileSync(`${shots}/first-plot-proof.json`, JSON.stringify(proof, null, 2) + "\n");
     if (shots) {
       await p.mouse.move(2, 2);
       await p.screenshot({ path: `${shots}/${width}-home.png` });

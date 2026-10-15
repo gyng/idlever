@@ -15,7 +15,16 @@ Root owns the top resource-bar section and combined browser acceptance.
    with a primitive chess-hero fallback, accessible name
    Heroes, minimum44×44CSSpx; one stable first slot avoids late unlock movement.
    No new cards, external tooltip system, purchase shortcut or inferred gate.
-   Fresh Home still exposes the command alongside the existing first Build action.
+   Opening disclosure refinement (owner uncluttered-opening principle): native
+   pre-House (`town.home=false`) keeps the manual Build entry without Heroes;
+   Heroes appears in its stable first dock slot after actual
+   House construction/hero arrival. This supersedes the earlier inferred Fresh
+   Heroes clause. The specific House gate is implementation judgment applying
+   the owner's uncluttered new-player opening principle, not a separately stated
+   owner unlock rule. Existing Journal/Settings entries are unchanged.
+   The explicit historical no-Town fixture discloses Heroes only alongside an
+   already rendered earned command; this is fallback presentation, not a new
+   native milestone or a substitute for the real Build→arrival browser proof.
 3. Actual roster opening/Escape is read-only: exact save/Gold/resident identity
    unchanged; focus returns to the command, including100actualApp.refresh calls
    replacing its DOM node. No stale click can affect a different selected owner.

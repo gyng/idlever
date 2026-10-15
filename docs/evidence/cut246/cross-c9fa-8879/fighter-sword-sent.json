@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-15T20:32:07.084016+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-sword.sent-session.json.gz",
+    "rawSha256": "53da44b79731d6ac1788d42a3376c994fd8ae00d1e25e9c022068a798fb9de91"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/fighter-sword.sent-session.json.gz",
+    "rawSha256": "20b46fc9df05627dac9650b7f0b125d870fcda5183c5844fcf06ef246ec821df"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    },
+    {
+      "path": "/live_capsule/live/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

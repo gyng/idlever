@@ -768,7 +768,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
     const built = townBuilt(app.lineage);
     if (built) {
       cons.setTiles([
-        heroes,
+        app.lineage.town?.home !== false && heroes,
         app.lineage.journal &&
           tile({
             id: "journal",
@@ -836,8 +836,7 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       shaft.el.classList.toggle("on", open === "forecast");
       return;
     }
-    cons.setTiles([
-      heroes,
+    const legacyCommands = [
       // QA 92eb880 (N: "the `edit` tile toggles: tapping it while editing closes the editor (I lost the next tap twice)"): it turns
       // editing on and stays lit; a second tap closes the open panel, never the editor
       R.has("edit") &&
@@ -911,7 +910,10 @@ export function renderCamp(app: App, highlight?: number, sendNow = false): Mount
       R.has("heirs") &&
         t("ledger", /* copy:button */ "enemy guide", "ledger", () => openLedger(app)),
       // RUNS_UI: the chronicle is the log's `heirs` (the lane's log stud)
-    ]);
+    ];
+    // Historical no-Town wire: disclose the roster alongside an already earned command.
+    // Native Home uses its actual House state above, never this fallback reveal rule.
+    cons.setTiles([legacyCommands.some(Boolean) && heroes, ...legacyCommands]);
     describeHomeCommands();
     shaft.el.classList.toggle("on", open === "forecast");
   }

@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-15T20:32:11.301643+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/rogue-dagger.watched-session.json.gz",
+    "rawSha256": "f98836a7358b2d4116b39faca4def1efebc6dac12f9ca88513c5bbdf84be82a4"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/rogue-dagger.watched-session.json.gz",
+    "rawSha256": "4ffe2333dfe2839e9545946380bb3b90af20b43603c9f33fba01db07d74569fc"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/deaths/133/t10/last_visible",
+      "ids": [
+        125,
+        127,
+        129,
+        130,
+        132,
+        133,
+        134,
+        135
+      ]
+    },
+    {
+      "path": "/live_capsule/kills/1/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

@@ -109,3 +109,15 @@ hashes and actual target events are retained. A phone Gunner frame still has an
 offscreen ranged target; individual captures are not proof of a readable complete
 exchange. Full action recognition, skilled class comparisons and R4 acceptance
 remain open. No GPU performance claim under concurrent native pacing work.
+
+
+`cross-c9fa-8879/results.json` verifies10actual outcomes,40rawreport/replay
+artifacts and50complete saved Sessions against c9fa; the only permitted schema
+addition is explicitly typed Run.last_visible, all old values exact. This is
+separate from byte-exact current-runtime repeat/partition equality. Dated
+visual-review-2026-10-16.{md,json} inspects all40surviving-target frames and
+identifies baked-weapon contradictions (Ranger Sword→Bow, Caster Dagger/Bow→Staff,
+Short Gun→long shoulder gun), weak Crownsplitter distinction and unlocated
+victims. These are engineering observations, not player feedback. Actual
+Snapshot.weapon is available; the Hub paper-doll prototype does not correct
+dungeon sprites. FullR4 remains open.

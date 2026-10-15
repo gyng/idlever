@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-15T20:32:15.629874+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/ranger-sword.sent-session.json.gz",
+    "rawSha256": "31da4de307262ef8751e19a9f1ac473952600207695ccb8e0d8f91c346859ad5"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/ranger-sword.sent-session.json.gz",
+    "rawSha256": "3506e6d4f698ec6ab7e24d7925517f6de5b8c7aaed7302fa2994a7517eaf3b1d"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    },
+    {
+      "path": "/live_capsule/live/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

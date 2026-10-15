@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-15T20:32:22.861987+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/gunner-short_gun.watched-session.json.gz",
+    "rawSha256": "d766e351b74805f6a8dc78a9e82e6ea0fa8c5accf882a73cefac87ec84925f5c"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/gunner-short_gun.watched-session.json.gz",
+    "rawSha256": "a2fee142a2e9a925a2f37943c71727be6f836925e546019140460aaf8945aacc"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/deaths/133/t10/last_visible",
+      "ids": [
+        216
+      ]
+    },
+    {
+      "path": "/live_capsule/kills/1/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

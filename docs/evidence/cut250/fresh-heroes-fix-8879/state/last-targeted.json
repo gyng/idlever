@@ -1,0 +1,52 @@
+{
+  "format": "idlever-client-run",
+  "suite": "targeted",
+  "mode": "all",
+  "identity": {
+    "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+    "dirty": true,
+    "dirtyHash": "8d2d8c157fd5826c41a5ba604e36bc5b6766c490c0f238b8203c37fb06bc7130",
+    "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  },
+  "startedAt": "2026-10-15T20:40:06.228Z",
+  "finished": true,
+  "selected": [
+    "ui:frame",
+    "first-plot"
+  ],
+  "results": {
+    "ui:frame": {
+      "name": "ui:frame",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 29.127,
+      "endedAtSeconds": 37.245,
+      "firstFailure": "ui: FAIL (1 assertion(s), 0 error(s), 28.2s)",
+      "finishedAt": "2026-10-15T20:40:43.473Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "8d2d8c157fd5826c41a5ba604e36bc5b6766c490c0f238b8203c37fb06bc7130",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "first-plot": {
+      "name": "first-plot",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 26.209,
+      "endedAtSeconds": 63.455,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:41:09.683Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "8d2d8c157fd5826c41a5ba604e36bc5b6766c490c0f238b8203c37fb06bc7130",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T20:41:09.689Z"
+}

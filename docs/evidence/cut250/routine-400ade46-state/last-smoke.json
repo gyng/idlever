@@ -1,0 +1,715 @@
+{
+  "format": "idlever-client-run",
+  "suite": "smoke",
+  "mode": "all",
+  "identity": {
+    "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+    "dirty": true,
+    "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+    "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  },
+  "startedAt": "2026-10-15T20:29:04.348Z",
+  "finished": true,
+  "selected": [
+    "game-menu",
+    "debug-export",
+    "glossary",
+    "menu-materials",
+    "first-plot",
+    "town-save",
+    "worker-purchases",
+    "worker-first-act",
+    "bloodline-founding",
+    "bloodline-training",
+    "package-selection",
+    "package-paired",
+    "pen-edit",
+    "forecast-requests",
+    "clarity:paint",
+    "survivor-builds",
+    "hero-hub",
+    "fights:break",
+    "watch-console",
+    "watch-live-edge",
+    "depth-rail",
+    "watch-log",
+    "ctxloss",
+    "checkpoint-gold",
+    "exit-keep-close",
+    "report-supply-limit",
+    "forge-requests",
+    "death-actions",
+    "death-fix-discovery",
+    "king-advice-scope",
+    "report-reading",
+    "report-class-xp",
+    "numbers-agree",
+    "class-switch",
+    "gunner-observer",
+    "legacy-wire",
+    "numbered-descents",
+    "post-clear-town",
+    "screens",
+    "ui:frame",
+    "town-clock"
+  ],
+  "results": {
+    "survivor-builds": {
+      "name": "survivor-builds",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 28.117,
+      "endedAtSeconds": 37.837,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:29:42.185Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "hero-hub": {
+      "name": "hero-hub",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 100.531,
+      "endedAtSeconds": 138.368,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:31:22.716Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "fights:break": {
+      "name": "fights:break",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.253,
+      "endedAtSeconds": 147.622,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:31:31.970Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "exit-keep-close": {
+      "name": "exit-keep-close",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.404,
+      "endedAtSeconds": 164.027,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:31:48.375Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "ctxloss": {
+      "name": "ctxloss",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 51.515,
+      "endedAtSeconds": 199.325,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:32:23.673Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "screens": {
+      "name": "screens",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 48.65,
+      "endedAtSeconds": 212.679,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:32:37.027Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "bloodline-founding": {
+      "name": "bloodline-founding",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 34.115,
+      "endedAtSeconds": 233.441,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:32:57.789Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "ui:frame": {
+      "name": "ui:frame",
+      "ok": false,
+      "status": "fail",
+      "code": 1,
+      "ownSeconds": 31.427,
+      "endedAtSeconds": 244.106,
+      "firstFailure": "ui: FAIL (3 assertion(s), 0 error(s), 30.3s)",
+      "finishedAt": "2026-10-15T20:33:08.455Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "post-clear-town": {
+      "name": "post-clear-town",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 23.281,
+      "endedAtSeconds": 256.723,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:33:21.071Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "town-save": {
+      "name": "town-save",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 24.335,
+      "endedAtSeconds": 268.443,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:33:32.791Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "watch-console": {
+      "name": "watch-console",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 27.519,
+      "endedAtSeconds": 284.243,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:33:48.591Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "pen-edit": {
+      "name": "pen-edit",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 16.536,
+      "endedAtSeconds": 300.78,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:05.128Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "death-fix-discovery": {
+      "name": "death-fix-discovery",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 36.112,
+      "endedAtSeconds": 304.556,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:08.904Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "king-advice-scope": {
+      "name": "king-advice-scope",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 35.94,
+      "endedAtSeconds": 340.497,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:44.845Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "watch-log": {
+      "name": "watch-log",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 40.928,
+      "endedAtSeconds": 341.709,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:46.057Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "report-supply-limit": {
+      "name": "report-supply-limit",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.996,
+      "endedAtSeconds": 354.706,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:59.054Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "town-clock": {
+      "name": "town-clock",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 14.99,
+      "endedAtSeconds": 355.488,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:34:59.836Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "numbered-descents": {
+      "name": "numbered-descents",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 10.832,
+      "endedAtSeconds": 366.321,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:35:10.669Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "glossary": {
+      "name": "glossary",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.037,
+      "endedAtSeconds": 379.359,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:35:23.707Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "class-switch": {
+      "name": "class-switch",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 30.243,
+      "endedAtSeconds": 384.95,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:35:29.298Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "depth-rail": {
+      "name": "depth-rail",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 28.83,
+      "endedAtSeconds": 413.781,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:35:58.129Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "death-actions": {
+      "name": "death-actions",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.117,
+      "endedAtSeconds": 426.899,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:11.247Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "first-plot": {
+      "name": "first-plot",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.307,
+      "endedAtSeconds": 439.207,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:23.555Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "menu-materials": {
+      "name": "menu-materials",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 63.423,
+      "endedAtSeconds": 442.783,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:27.131Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "checkpoint-gold": {
+      "name": "checkpoint-gold",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 13.695,
+      "endedAtSeconds": 456.479,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:40.827Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "game-menu": {
+      "name": "game-menu",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 29.144,
+      "endedAtSeconds": 468.352,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:52.700Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "debug-export": {
+      "name": "debug-export",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 12.007,
+      "endedAtSeconds": 468.486,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:36:52.834Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "bloodline-training": {
+      "name": "bloodline-training",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.184,
+      "endedAtSeconds": 477.537,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:01.885Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "package-selection": {
+      "name": "package-selection",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 9.474,
+      "endedAtSeconds": 477.961,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:02.309Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "numbers-agree": {
+      "name": "numbers-agree",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 4.614,
+      "endedAtSeconds": 482.576,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:06.924Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "gunner-observer": {
+      "name": "gunner-observer",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.927,
+      "endedAtSeconds": 485.465,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:09.813Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "report-reading": {
+      "name": "report-reading",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 8.166,
+      "endedAtSeconds": 490.743,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:15.091Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "forecast-requests": {
+      "name": "forecast-requests",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 7.175,
+      "endedAtSeconds": 497.918,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:22.266Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "forge-requests": {
+      "name": "forge-requests",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.861,
+      "endedAtSeconds": 503.779,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:28.127Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "worker-first-act": {
+      "name": "worker-first-act",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 19.626,
+      "endedAtSeconds": 505.091,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:29.439Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "worker-purchases": {
+      "name": "worker-purchases",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.289,
+      "endedAtSeconds": 509.069,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:33.417Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "package-paired": {
+      "name": "package-paired",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 6.352,
+      "endedAtSeconds": 511.444,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:35.792Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "legacy-wire": {
+      "name": "legacy-wire",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 2.586,
+      "endedAtSeconds": 514.031,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:38.379Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "report-class-xp": {
+      "name": "report-class-xp",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 5.72,
+      "endedAtSeconds": 514.789,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:37:39.138Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "clarity:paint": {
+      "name": "clarity:paint",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 33.291,
+      "endedAtSeconds": 548.082,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:38:12.430Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    },
+    "watch-live-edge": {
+      "name": "watch-live-edge",
+      "ok": true,
+      "status": "pass",
+      "code": 0,
+      "ownSeconds": 29.918,
+      "endedAtSeconds": 578.001,
+      "firstFailure": null,
+      "finishedAt": "2026-10-15T20:38:42.349Z",
+      "identity": {
+        "head": "400ade460e482fa48301df39b1ba0f5c530e7fdb",
+        "dirty": true,
+        "dirtyHash": "cce0126c5b2377e81ed9db5dc59f8b4b6c99142048bb858a5a64fc8014c15c99",
+        "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+      }
+    }
+  },
+  "updatedAt": "2026-10-15T20:38:42.349Z"
+}

@@ -1,0 +1,37 @@
+{
+  "utc": "2026-10-15T20:32:09.479783+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/fighter-crownsplitter.watched-session.json.gz",
+    "rawSha256": "414e0daa73e86057d229610aed5b9a0310257097054e6b1bb71752ba9c04079c"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/fighter-crownsplitter.watched-session.json.gz",
+    "rawSha256": "71b24215c6ba9fcfcc0f1a4c7fb93d4869494f4fa156619769bbefd66ae62d46"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/deaths/133/t10/last_visible",
+      "ids": [
+        370,
+        419,
+        421,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428
+      ]
+    },
+    {
+      "path": "/live_capsule/kills/1/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

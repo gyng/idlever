@@ -61,6 +61,30 @@ changed RGBA pixels in off-equivalence-2026-10-16/. This functional comparison
 ran during native work and proves no GPU timing. Positive same-view quiet
 confirmation is required before A/A controls and candidate cost measurements;
 all previous failed controls/margins remain authoritative.
+Latest scoped UI checkpoint400ade46 includes compact Home, resize correction,
+functional equipment figure and curated R4/R6 preparation. Subsequent routine
+41groups is terminal40/41 in578.0s: onlyui:frame fails on the moved Heroes
+command's old literal expectations. The recovery in cut250/fresh-heroes-fix-8879/
+is terminal: ui:frame60checks PASS30.9s; native first-plot all320/400/1440 passes
+actual Build→arrival→Heroes/roster/Escape/exactsave and served8879SHA. Final
+TypeScript/lint/format/copy pass. Do not relabel this as a fresh41/41run. Native
+pre-House footer was already hidden; the refined code removes its hidden Heroes
+DOM until actual House/hero arrival. The visible fresh failure belonged to the
+explicit legacy no-Town fixture, whose fallback disclosure is now consistent.
+Existing Journal/Settings remain. The House condition is implementation judgment
+following the owner's uncluttered-opening principle, not a new native milestone.
+The mature15>12function-budget failure remains separate and open.
+
+Cut246 cross-c9fa-8879/ now proves all10actual outcomes and40complete raw
+report/replay artifacts exact across runtime correction;50complete saved Sessions
+permit only explicitly typed added Run.last_visible vectors, with every old
+value unchanged. Current-runtime repeat/partition proofs independently remain
+byte-exact. Dated visual-review-2026-10-16.{md,json} inspects all40actual weapon
+frames and retains real painted-weapon mismatches: Ranger Sword still shows Bow,
+Caster Dagger/Bow still Staff, Short Gun still long shoulder gun; Crownsplitter
+is not distinct. Snapshot.weapon already contains canonical actual gear. The
+Hub prototype does not repair dungeon sprites; R4 remains open.
+
 The preceding e62c retirement proof below remains historical at its own runtime.
  Follow-up native Gold/
 ledger/ExitLine4/4 and five public catalogue/Lineage cases exactly match97e8;

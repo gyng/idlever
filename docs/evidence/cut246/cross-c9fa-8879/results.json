@@ -1,0 +1,507 @@
+{
+  "at": "2026-10-15T20:32:23.647251+00:00",
+  "scope": "Cross-schema comparison only: all10actual outcomes/watched/replay values and40complete raw report/replay artifacts exact;50complete saved Sessions allow ONLY explicitly typed added Run.last_visible vectors. Current-runtime parity/repeat is independently byte-exact, not normalized.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/results.json",
+    "sha256": "559e6fb54c4c1f85ac9d79363584d542ffd729f9a8821a670bb8c66b4e1419be",
+    "wasm": "c9fad4700566cc164e290e6d98a21555056d3e6da80ba4d0920ac3edd013107d"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/results.json",
+    "sha256": "dc8cee029612554be165bdf322e9f2a9114523a185b36be3ce91bc0943b5f170",
+    "wasm": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff"
+  },
+  "rows": [
+    {
+      "id": "fighter",
+      "weapon": "sword",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        {
+          "kind": "replay",
+          "sha256": "5bb7829821b6cef06a0f81b2b11f2a7c79feeef3094b9be24a3922c327e599ec"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "842943a25734a77a523dd0c8a24509e1129123d034f737f2cccdc2dc6dc00548"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-sword-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-sword-after.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-sword-watched.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-sword-sliced.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-sword-reloaded.json",
+          "addedVectors": 1
+        }
+      ]
+    },
+    {
+      "id": "fighter",
+      "weapon": "crownsplitter",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        },
+        {
+          "kind": "replay",
+          "sha256": "37a3b54e3c31d822102edac9d3afb2c1e8f48aeff2ebea758e1acea6b67da53b"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "b69abe51ae1f010247d823f299ec02eb9a16a5051db765d0bef5773b54f759fa"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-crownsplitter-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-crownsplitter-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-crownsplitter-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-crownsplitter-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/fighter-crownsplitter-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "rogue",
+      "weapon": "dagger",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        },
+        {
+          "kind": "replay",
+          "sha256": "8043b0047cd2f7b5ea3df52658ccafede0556ea93e74304cb792c915e548671d"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "73fd36194fbad1f422db9a8bee8a5c36e4b87cc070f7575c68ac7287f955ec58"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-dagger-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-dagger-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-dagger-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-dagger-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-dagger-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "rogue",
+      "weapon": "crownsplitter",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        },
+        {
+          "kind": "replay",
+          "sha256": "f87f1664c335c994b55e19dbab5213e84ac01d72ee69cb1f0a6eafc2179adbf7"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "f28f00f5e12c5402e50a74cc0159fe9f28e9f56559b6268808958741339ed114"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-crownsplitter-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-crownsplitter-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-crownsplitter-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-crownsplitter-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/rogue-crownsplitter-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "weapon": "bow",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        },
+        {
+          "kind": "replay",
+          "sha256": "2661d557b7ec941f63c4b6b96d46fedd29db7ed5c284520b684bda4100fb9c20"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "3ce883cb27db1986aeda9fd0d9b094d708e5f9099e7074a9f173b87363fda204"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-bow-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-bow-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-bow-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-bow-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-bow-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "weapon": "sword",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        },
+        {
+          "kind": "replay",
+          "sha256": "ce0ef38f940dbd3e5a40d01f3974c44eb05241b2810eecfdb7add135796865a8"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "e8b9d5bff36be9e0dc622d4655fee1b5774c7bf27812264cc9863f061a60725b"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-sword-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-sword-after.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-sword-watched.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-sword-sliced.json",
+          "addedVectors": 1
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/ranger-sword-reloaded.json",
+          "addedVectors": 1
+        }
+      ]
+    },
+    {
+      "id": "caster",
+      "weapon": "dagger",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        },
+        {
+          "kind": "replay",
+          "sha256": "7e8626c1ec8c422df13eadb144c03768b91b058f512b6940dcc2578a3e08072e"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "7ae187c4a53f548f72b27ffda1b0f7513777288daf3e9db39e0eea3f6d4b6ed3"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-dagger-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-dagger-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-dagger-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-dagger-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-dagger-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "caster",
+      "weapon": "bow",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        },
+        {
+          "kind": "replay",
+          "sha256": "572f57db39b944ad442aa27ecd881c6c417233d509b598cf275f631febb37321"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "a911760ab734dd5aa2230a01e0fe95235d63d406b54575acd562cc3f09979fa0"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-bow-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-bow-after.json",
+          "addedVectors": 3
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-bow-watched.json",
+          "addedVectors": 3
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-bow-sliced.json",
+          "addedVectors": 3
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/caster-bow-reloaded.json",
+          "addedVectors": 3
+        }
+      ]
+    },
+    {
+      "id": "gunner",
+      "weapon": "long_gun",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        },
+        {
+          "kind": "replay",
+          "sha256": "a305890a4f4136811e170c7aad015cf4844c84dc9012629db1577cb8e7f6d911"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "d490ff15bed9513af490ca972ae7f7b9dc0d9a44e28cb0b405d9fdb2f274bfc6"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-long_gun-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-long_gun-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-long_gun-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-long_gun-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-long_gun-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    },
+    {
+      "id": "gunner",
+      "weapon": "short_gun",
+      "exactRaw": [
+        {
+          "kind": "report",
+          "sha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        },
+        {
+          "kind": "replay",
+          "sha256": "556c31c667d349ed481d30835f7cbf8ad80adb8a942c87bc46a5e62fb904f0a4"
+        },
+        {
+          "kind": "slicedReport",
+          "sha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        },
+        {
+          "kind": "reloadedReport",
+          "sha256": "0a46f5c6784615461c790321883dcf59297648214e60e0e26561596240db93c1"
+        }
+      ],
+      "typedSessions": [
+        {
+          "kind": "sent",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-short_gun-sent.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "after",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-short_gun-after.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "watched",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-short_gun-watched.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "sliced",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-short_gun-sliced.json",
+          "addedVectors": 2
+        },
+        {
+          "kind": "reloaded",
+          "path": "docs/evidence/cut246/cross-c9fa-8879/gunner-short_gun-reloaded.json",
+          "addedVectors": 2
+        }
+      ]
+    }
+  ],
+  "status": "PASS"
+}

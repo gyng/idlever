@@ -1867,7 +1867,8 @@ async function cut18() {
 const t0 = Date.now();
 try {
   if (parts.has("frame")) {
-    // ---- a fresh lineage: heir 1, nothing earned (the fake seeds a chronicle and a free unlock; strip them)
+    // ---- legacy no-Town fixture: heir 1, nothing earned (not the native manual-House opening).
+    // The fake seeds a chronicle and a free unlock; strip them.
     await page.goto(`${url}?dev=1&engine=fake&systems=none&fresh=1&seed=7`, {
       waitUntil: "domcontentloaded",
     });
@@ -1915,7 +1916,9 @@ try {
           houseRect?.width >= 44 &&
           houseRect?.height >= 44 &&
           (await page.locator("[data-building-info]").count()) === 0 &&
-          els.some((text) => text === "Heroes") &&
+          !els.some((text) => text === "Heroes") &&
+          (await page.locator('.camp .console [data-tile="heroes"]').count()) === 0 &&
+          (await page.locator(".camp .hero-mobile .hero-expand").count()) === 0 &&
           !els.some((text) => /\bkeep\b|\bvault\b/i.test(text)),
         `literal legacy-authoring frame: named hero/building controls, no retired Keep/Vault (${els.length}: ${els.join(" | ")}); current opening verified by real Hero journeys`,
       );
@@ -2023,9 +2026,14 @@ try {
     await sleep(1700);
     await page.evaluate(() => window.__idlever.go({ kind: "camp" }));
     await settle();
+    const repaintIds = await tileIds();
     check(
-      (await tiles()).every((t) => !t.reveal) && (await tileIds()).length === seen.length,
-      `a repaint keeps the carved tiles without a glint (${(await tileIds()).join(" · ")})`,
+      (await tiles()).every((t) => !t.reveal) &&
+        (await tileIds()).length === seen.length + 1 &&
+        (await tileIds()).includes("heroes") &&
+        seen.every((id) => repaintIds.includes(id)) &&
+        (await page.locator(".camp .hero-mobile .hero-expand").count()) === 0,
+      `a repaint keeps Heroes and all earned routes without a glint or side opener (${repaintIds.join(" · ")})`,
     );
     // a 3rd row: the shaft's gems
     check(
@@ -2081,10 +2089,12 @@ try {
       `the 5th heir carves the ledger, the log (the chronicle's heirs) and the set tabs (${ids.join(" · ")}; log ${logStud})`,
     );
     check(
-      ids.length === 6 &&
+      ids.length === 7 &&
+        ids[0] === "heroes" &&
+        (await page.locator(".camp .hero-mobile .hero-expand").count()) === 0 &&
         !ids.includes("vault") &&
         ["edit", "loadout", "unlocks", "forge", "party", "ledger"].every((id) => ids.includes(id)),
-      `literal authored ladder: six retained routes, no retired Vault; chronicle in log (${ids.join(",")})`,
+      `literal authored ladder: Heroes plus six retained routes, no side opener or retired Vault; chronicle in log (${ids.join(",")})`,
     );
     await shot("ui-ladder-camp");
 

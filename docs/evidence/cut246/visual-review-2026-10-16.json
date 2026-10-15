@@ -1,0 +1,708 @@
+{
+  "reviewDate": "2026-10-16",
+  "reviewKind": "engineering visual observation; not player feedback",
+  "runtime": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "scope": "Existing40 standalone paused production-viewer frames; no new browser, gameplay, input or production source mutation",
+  "metadata": {
+    "path": "docs/evidence/cut246/weapon-surviving-targets-8879/results.json",
+    "sha256": "f654025514e254a9c5293328890e183c99883056de6e1afaeaf442e5d9180932"
+  },
+  "publicInput": {
+    "path": "docs/evidence/cut246/actions-8879.json",
+    "sha256": "65a2db3b08e958b2829b6cefcc65e7666540ca457257f81f3f476b29280d7185"
+  },
+  "publicInputMatchesCapture": true,
+  "capturedSource": {
+    "web/src/render/index.ts": "15b5fdba0ed9009973958a9b6bea5350c6bb3e8b4429a0503b8170b5ce5e3b1f",
+    "web/src/render/state.ts": "368f47a57566f7105885d8b3ed1c5d35e92b68d85d473339bc49d6c09397848e",
+    "web/src/render/view2d.ts": "440cbd1253092275345922aa25b53193c92d4b5e0a6a1abce643f6dda299971d",
+    "web/src/render/atlas.ts": "4b4ed25c74f775e547ddd374ccc36796596d0d0e509de3f31f6ed92909280bd7",
+    "web/src/render/fallback.ts": "37dab19e7981e49a79647539a55985118f88fd4e093f0d670664cb0afee06218",
+    "web/public/art/atlas.json": "fda7406eca75bc6461614cef41f9f3adfae180d41aa3bcd148dcac17485d79f8",
+    "web/public/art/atlas.png": "e82871560e2344f440d1cc350a0645d8e53137c1cf405303e6d9f50bd40e9f2e"
+  },
+  "files": [
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-gl-402.png",
+      "sha256": "7212c5d438007b92950a95f1c74d14e2df116289ed8ba0ace0005beb874e4dc4",
+      "id": "fighter-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 9238,
+      "captureTick": 9240,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-gl-402.png",
+      "sha256": "f5788e304ffb86c81b19eece3b6e4d3650544699145b5ca75444f4961c1e5e89",
+      "id": "fighter-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 6386,
+      "captureTick": 6388,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-gl-402.png",
+      "sha256": "de54569927818c9ddc9ef28a46440ed04f2bafa58152b83788871ae963e51365",
+      "id": "rogue-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-gl-402.png",
+      "sha256": "cee1570af4e7b0fcd6abe4d03302fe40cee6cc282a1b32c1977a57abfcb8a57d",
+      "id": "rogue-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5829,
+      "captureTick": 5831,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-gl-402.png",
+      "sha256": "00fcf3922783f0a656ffbb4434ba19a91b1f3f0e9451fee0bf844c8d663c8756",
+      "id": "ranger-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-gl-402.png",
+      "sha256": "bd704dd389f12341a5e5509f0a5c8c7df5c6893c2d7da24e2a65e8d8b4937223",
+      "id": "ranger-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5088,
+      "captureTick": 5090,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-gl-402.png",
+      "sha256": "905c9a64bce78f53508be434dc83468193d546731531c0455dad161f8e3d4372",
+      "id": "caster-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-gl-402.png",
+      "sha256": "ae40f4ef83158788ffdb057f97307dd3a281c733367c139a150b83247583a98a",
+      "id": "caster-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-gl-402.png",
+      "sha256": "38359c92cdbb54e1baa612f99dcb95d0f427d742e04d475dbcfb1b4e4123ef27",
+      "id": "gunner-long_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 9938,
+      "captureTick": 9940,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-gl-402.png",
+      "sha256": "3c83e76eb66f7024a27177632dfda40e2d13971ae6b13589413fd95b57bda8ae",
+      "id": "gunner-short_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 6400,
+      "captureTick": 6402,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-canvas-402.png",
+      "sha256": "1d1ada78a20ae53513d39a21330e02835ab01c1f326dd16fa8ea282965d61c0f",
+      "id": "fighter-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 9238,
+      "captureTick": 9240,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-canvas-402.png",
+      "sha256": "3d181b358c9c8d2996037ca315a22ddb15bb75f3a028d90d0728abe714aeff1b",
+      "id": "fighter-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 6386,
+      "captureTick": 6388,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-canvas-402.png",
+      "sha256": "ad5f7cffade41ef67ff995bbd76c52f0e7ec50b6b2c117e94e4b6b7a88270b7d",
+      "id": "rogue-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-canvas-402.png",
+      "sha256": "5442135fffb1946bf2c8da7036acb4b8c265753f79dce713d8129532e0f246a6",
+      "id": "rogue-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5829,
+      "captureTick": 5831,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-canvas-402.png",
+      "sha256": "a668f431aacb2bc98c588286cf9e1ec844f6ccb82ec6670bc417915576e6243d",
+      "id": "ranger-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-canvas-402.png",
+      "sha256": "8767c9e60978c18efd905eaca6006439998ccf30fde8eab99a458d2d3e0b663c",
+      "id": "ranger-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5088,
+      "captureTick": 5090,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-canvas-402.png",
+      "sha256": "004b0e6929310d314ce919cfab01dfdfa1703fff6db17855baed0616eda1f57c",
+      "id": "caster-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-canvas-402.png",
+      "sha256": "59083314d82cf29680a3ddb5449b1ecd9c03d003f94d7ed5dea74d67e3282c48",
+      "id": "caster-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-canvas-402.png",
+      "sha256": "e5b2a826035eb9040d3c3279b8bba854ebf0b89c3da6b368d56913ef85896841",
+      "id": "gunner-long_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 9938,
+      "captureTick": 9940,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-canvas-402.png",
+      "sha256": "6c5b80900461d18bc5368820a325feab097dbf00f7615807b46b9198d781b666",
+      "id": "gunner-short_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 402,
+        "height": 681
+      },
+      "actualViewport": {
+        "width": 402,
+        "height": 681
+      },
+      "attackTick": 6400,
+      "captureTick": 6402,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-gl-1440.png",
+      "sha256": "e6f422b5d18b1dca4f72f6c27a45930874f708de7f5dbfd32f7bd987ccd4bbd3",
+      "id": "fighter-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 9238,
+      "captureTick": 9240,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-gl-1440.png",
+      "sha256": "dc5ef7e513e35874776bfdfa32992e3068cd09cf51b8cb0763d440f4528f2bc4",
+      "id": "fighter-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 6386,
+      "captureTick": 6388,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-gl-1440.png",
+      "sha256": "ceab2480a3053a591e91435699a935d2eb75d5e94330234ac9b3c1ffc63d7c0d",
+      "id": "rogue-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-gl-1440.png",
+      "sha256": "f611fdd59a2db0c3c39113d4bc4679a68f50437be47c3d3be5ed78adc77d0f22",
+      "id": "rogue-crownsplitter",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5829,
+      "captureTick": 5831,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-gl-1440.png",
+      "sha256": "aba68d109105aac867f13c8ef6f08f8a807c57e21e10e65312a92e7424b26607",
+      "id": "ranger-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-gl-1440.png",
+      "sha256": "2d165afc88545a20b7d0108fbbc01cf260ac48b5e50dd52c75a3fab1a2e46d5f",
+      "id": "ranger-sword",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5088,
+      "captureTick": 5090,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-gl-1440.png",
+      "sha256": "81750fc5b3da09ff04a6d121e9717e4a7578193be119ee798936442bfe4510db",
+      "id": "caster-dagger",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-gl-1440.png",
+      "sha256": "82985bdc8d829a4804b0fd30d5c6671a90a0a21d365fb4e97cd63cb1ac5adf2f",
+      "id": "caster-bow",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-gl-1440.png",
+      "sha256": "dc3819e06e4f7de8b82d8b00d856744f3b97f69b56d168f58fead83f9333dbbc",
+      "id": "gunner-long_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 9938,
+      "captureTick": 9940,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-gl-1440.png",
+      "sha256": "83fe162c900b239ee45b8b2581f8b85da1493d163c82edf8943b3af60b746e3e",
+      "id": "gunner-short_gun",
+      "backend": "gl",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 6400,
+      "captureTick": 6402,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-sword-canvas-1440.png",
+      "sha256": "5566e141cf262ce8ecc68da65bb86645b1c8d24007f6c5f9a8423d8b1c036102",
+      "id": "fighter-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 9238,
+      "captureTick": 9240,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/fighter-crownsplitter-canvas-1440.png",
+      "sha256": "ee9d8d83aceca11b733a7d7727e1d987e093f545e01d909ae44ec0608480a0ff",
+      "id": "fighter-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 6386,
+      "captureTick": 6388,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-dagger-canvas-1440.png",
+      "sha256": "137aa0b07fa27b90bb536be5bb66be601a45426d3f676ae2fc8fa57ef786f14d",
+      "id": "rogue-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/rogue-crownsplitter-canvas-1440.png",
+      "sha256": "4e94ba7752c5d8c52217a820a066e4c0512393a84ab4639769f49f543ccf176c",
+      "id": "rogue-crownsplitter",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5829,
+      "captureTick": 5831,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-bow-canvas-1440.png",
+      "sha256": "b48f29827ed12f5500695aec844911a97a21b597eee2bb8090a0a3779df482ef",
+      "id": "ranger-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/ranger-sword-canvas-1440.png",
+      "sha256": "d3ffe0fb55372df104d51a86e1375c61b84d98488a615f3a53ab335b8c63d02f",
+      "id": "ranger-sword",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5088,
+      "captureTick": 5090,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-dagger-canvas-1440.png",
+      "sha256": "349fc5b93982e1027bf2c2d467d2e611e64e0db98baf421e4e404e6f6157e48d",
+      "id": "caster-dagger",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 2813,
+      "captureTick": 2815,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/caster-bow-canvas-1440.png",
+      "sha256": "56a9e83c5230746b6d27c85f31f8c0b54d362f18e009d0cb29b70f8d6b2aa7b5",
+      "id": "caster-bow",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 5050,
+      "captureTick": 5052,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-long_gun-canvas-1440.png",
+      "sha256": "4f56363dd77315dbaa7f13ce0205a7947e748a98a2b17e9b4740328d35ca5c3a",
+      "id": "gunner-long_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 9938,
+      "captureTick": 9940,
+      "inspected": true
+    },
+    {
+      "path": "docs/evidence/cut246/weapon-surviving-targets-8879/gunner-short_gun-canvas-1440.png",
+      "sha256": "1888140330e2059ff8864d93530b0719fbcc6af7eeb4538d210aa201255e6a30",
+      "id": "gunner-short_gun",
+      "backend": "canvas",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "actualViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "attackTick": 6400,
+      "captureTick": 6402,
+      "inspected": true
+    }
+  ],
+  "count": 40,
+  "acceptance": "Full R4 remains open; selected-weapon silhouette misreads and ranged/action visibility gaps recorded in companion Markdown"
+}

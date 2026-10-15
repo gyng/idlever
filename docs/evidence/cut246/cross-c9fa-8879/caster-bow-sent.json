@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-15T20:32:18.773697+00:00",
+  "status": "PASS",
+  "scope": "Cross-schema source-boundary inventory only. Every pre-existing value, including full provenance/report/Gold, is exact. Current continuation equality must be checked independently without normalization.",
+  "before": {
+    "path": "docs/evidence/cut246/revalidation-c9fa-1/caster-bow.sent-session.json.gz",
+    "rawSha256": "3bbb6c962983236dfeb3ca3ae1b11c31d36b6c2c3b4555c1e415dd6132b779c1"
+  },
+  "after": {
+    "path": "docs/evidence/cut246/revalidation-8879-1/caster-bow.sent-session.json.gz",
+    "rawSha256": "99de65e10a4fe99b594dd051edc7729210c2060ed71690e7c9e59453c2fc678a"
+  },
+  "onlyChange": "Added nonempty ordered u32 Run.last_visible vectors",
+  "additions": [
+    {
+      "path": "/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    },
+    {
+      "path": "/live_capsule/live/game/run/last_visible",
+      "ids": [
+        7,
+        8
+      ]
+    }
+  ]
+}

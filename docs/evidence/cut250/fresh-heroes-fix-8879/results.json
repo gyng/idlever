@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-16",
+  "kind": "engineering verification; not player feedback",
+  "status": "targeted PASS with preserved intermediate red",
+  "runtimeSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "nativeFirstPlot": {
+    "widths": [
+      320,
+      400,
+      1440
+    ],
+    "height": 900,
+    "seconds": 26.2,
+    "actualPublicConstruction": true,
+    "preHouseHeroesDOM": 0,
+    "afterArrivalHeroes": 1,
+    "rosterEscapeExactSave": true,
+    "servedWasmVerifiedEachWidth": true
+  },
+  "legacyFrame": {
+    "checks": 60,
+    "seconds": 30.9,
+    "freshCommands": 0,
+    "matureRoutes": "Heroes plus retained six; no retired Vault or side opener",
+    "rawRed": "targeted.log: first-phase1/2FAIL, stale fresh-accessibility assertion still required Heroes"
+  },
+  "static": [
+    "tsc",
+    "lint",
+    "scopedfmt",
+    "copy"
+  ],
+  "limitations": [
+    "Originalroutine400ade46 remains40/41; these two targeted proofs are not a new full routine pass.",
+    "Native pre-House footer was already hidden; this change removes hidden Heroes DOM. Visible fresh failure was historical no-Town fake fixture.",
+    "House-specific reveal is implementation judgment applying owner uncluttered-opening principle; no new native milestone.",
+    "Existing native pre-House Journal and Settings remain.",
+    "No density<=12 relaxation; mature15-function failure remains.",
+    "Original320/400/1440x900 regression geometry retained, not new typical-phone visual acceptance.",
+    "No performance, fullmenu, balance or fun claim."
+  ]
+}

@@ -66,3 +66,18 @@ as duplicate Heroes routes. Diegetic sprite hits account for ten physical
 controls; they are not ten persistent icon labels. Neither observation erases
 the numeric failure. Original reds, full control rectangles and callback audit
 remain in heroes-density-direct-8879/. No budget was raised or actors hidden.
+
+
+Final routine recovery: checkpoint400ade46's routine is terminal40/41/578.0s,
+with only ui:frame failing three moved-Heroes/literal assumptions. Refined
+native code excludes hidden Heroes DOM before House; the existing footer was
+already hidden, so this is not a previously visible native first-screen defect.
+The explicit no-Town fake fixture keeps its fresh0tiles and discloses Heroes
+alongside an already earned command. Two mature assertions retain all original
+routes and explicitly add moved Heroes/no side opener. One adjacent fresh
+accessibility assertion contradicted fresh0tiles; its failed phase is preserved
+before the final60-check ui:frame PASS. Native first-plot separately passes all
+three original widths: actual Build/busy/arrival, exactly one Heroes after
+arrival, roster/Escape and complete save unchanged, actual served8879SHA. Existing
+Journal and Settings remain before House. These are scoped recovery passes,
+not a rewritten fresh41/41routine result. Mature function count15>12 is unchanged.
