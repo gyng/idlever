@@ -1,0 +1,17 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+  assert(row.targets.every(r=>r.w>=44&&r.h>=44&&r.textLines<=r.text.split(/\s+/).length))
+
+    at file:///home/g/p/riddle/docs/evidence/cut252/check.mjs:8:1615 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v22.18.0

@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-16",
+  "kind": "engineering verification; not player feedback",
+  "wasmSha256": "8879ed11650ac52c6271527b457913a30f88ec4cf6c02f0d62e19d0ba9081dff",
+  "scope": "UI recursion prerequisite only; no native4tier/five12node/tree-expansion/fun claim",
+  "closed": {
+    "ui-v4": {
+      "status": "PASS",
+      "rows": 8,
+      "controlled": 4,
+      "actions": 2,
+      "pageErrors": 0,
+      "sourceUnchanged": true
+    },
+    "deep-focus": {
+      "status": "PASS",
+      "rows": 4,
+      "controlled": 0,
+      "actions": 0,
+      "pageErrors": 0,
+      "sourceUnchanged": true
+    },
+    "controlled-depth": {
+      "status": "PASS",
+      "rows": 0,
+      "controlled": 4,
+      "actions": 0,
+      "pageErrors": 0,
+      "sourceUnchanged": true
+    }
+  },
+  "earned": [
+    {
+      "class": "clown",
+      "new8hCheckins": 0,
+      "resume": {
+        "path": "docs/evidence/cut252/earned/clown-checkin-12.session.json.gz",
+        "rawSha256": "39ddce16c915ec26794ad6590ce947c355ed4808aaa923d399bcac957b03204e",
+        "priorActions": "../earned/results.json"
+      },
+      "level": 7,
+      "owner": 1,
+      "independentThirdTierForks": [
+        "clown_ringmaster",
+        "clown_last_laugh"
+      ]
+    },
+    {
+      "class": "engineer",
+      "new8hCheckins": 11,
+      "resume": null,
+      "level": 7,
+      "owner": 1,
+      "independentThirdTierForks": [
+        "engineer_artificer",
+        "engineer_relay"
+      ]
+    }
+  ],
+  "regression": "Unchangedclass-tree all320/400/1440 PASS73.2s onfinalCSS",
+  "static": [
+    "tsc",
+    "lint",
+    "format",
+    "copy"
+  ],
+  "source": {
+    "web/src/ui/class-tree.ts": "2134515d271b5dea4d3363ff359b327f5422f5223dc9304e82d2117512ef03b0",
+    "web/src/class-tree.css": "362b3985ff1b535044f20eb6fe9fade4535470c3c84116f01607024433d3a77b",
+    "docs/CUT252_TREE_DEPTH_PRESENTATION.md": "1f1ce3164427ea7e5d1f481ee73649a08089de5b944628b0a2569cc00b85bd9f"
+  },
+  "headAtCuration": "5c8ba32932934de4fb016e759ca4ae960a7910a9",
+  "limits": [
+    "Clown96h/Engineer88h actualearnedcontinuations arediagnostic, notpacinggates.",
+    "L7frontierhas4ownedparents/1pick;2leafpurchases areindependentforks, notall6owned.",
+    "Fourtier7nodeshape isisolatedcomponentinput, notnative/earnedcontent.",
+    "Cardsmayexceedvisiblepanelheightat200%;scrollreachability ratherthansimultaneousfullcardvisibility.",
+    "BroaderLegacy/treeexpansion/R7/menu/fun andexistingHome15>12 remainopen."
+  ]
+}

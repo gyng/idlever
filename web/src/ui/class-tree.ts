@@ -153,7 +153,13 @@ export function renderClassTree(
     t = L.class_tree,
     away = L.town?.home === false;
   if (!t || (away && !options.inspectAway)) return null;
-  const roots = t.nodes.filter((n) => n.parent === null),
+  const childrenByParent = new Map<string | null, ClassPathNode[]>();
+  for (const node of t.nodes) {
+    const siblings = childrenByParent.get(node.parent) ?? [];
+    siblings.push(node);
+    childrenByParent.set(node.parent, siblings);
+  }
+  const roots = childrenByParent.get(null) ?? [],
     first = roots[0];
   if (!first || (t.level < 2 && t.spent === 0)) return null;
   if (t.level < first.required_level && t.spent === 0) return classTreeSoon(first);
@@ -209,19 +215,63 @@ export function renderClassTree(
           ),
     );
   };
-  const branches = roots.map((root) => {
-    const children = t.nodes.filter((n) => n.parent === root.id),
-      shown = children.filter(
-        (n) => n.owned || (owned.has(root.id) && n.required_level <= t.level + 1),
-      );
-    const future = children.find((n) => !n.owned && !shown.includes(n));
+  const fullCard = (node: ClassPathNode): HTMLElement =>
+    h(
+      "div",
+      {
+        class: `class-tree-map-node${node.parent === null ? "" : " class-tree-future"}${node.owned ? " chosen" : ""}`,
+        "data-class-map-node": node.id,
+      },
+      h("b", null, classSkillIcon(node, { size: 24, decorative: true }), node.name),
+      h("small", null, /* copy:label */ `L${node.required_level} · D${node.required_depth}`),
+      node.owned
+        ? h("small", { class: "class-path-owned" }, /* copy:label */ "Learned")
+        : node.available
+          ? h("small", null, /* copy:label */ "Available")
+          : node.blocked
+            ? h("small", { class: "class-path-blocked dim" }, node.blocked)
+            : null,
+    );
+  const branch = (
+    node: ClassPathNode,
+    fullView: boolean,
+    ancestors = new Set<string>(),
+  ): HTMLElement => {
+    const path = new Set(ancestors).add(node.id);
+    const children = (childrenByParent.get(node.id) ?? []).filter((child) => !path.has(child.id));
+    const shown = fullView
+      ? children
+      : children.filter(
+          (child) => child.owned || (owned.has(node.id) && child.required_level <= t.level + 1),
+        );
+    const future = fullView
+      ? undefined
+      : children.find((child) => !child.owned && !shown.includes(child));
     return h(
       "div",
-      { class: "class-tree-branch" },
-      card(root),
-      shown.length ? h("div", { class: "class-tree-connector", "aria-hidden": "true" }) : null,
-      ...shown.map(card),
-      owned.has(root.id) && future
+      {
+        class: "class-tree-branch",
+        "data-class-tree-branch": node.id,
+      },
+      fullView ? fullCard(node) : card(node),
+      shown.length
+        ? h(
+            "div",
+            { class: "class-tree-children", "data-class-tree-parent": node.id },
+            ...shown.map((child) =>
+              h(
+                "div",
+                {
+                  class: "class-tree-edge",
+                  "data-class-tree-edge-parent": node.id,
+                  "data-class-tree-edge-child": child.id,
+                },
+                branch(child, fullView, path),
+              ),
+            ),
+          )
+        : null,
+      !fullView && owned.has(node.id) && future
         ? h(
             "small",
             { class: "class-tree-next num" },
@@ -229,32 +279,13 @@ export function renderClassTree(
           )
         : null,
     );
-  });
+  };
+  const branches = roots.map((root) => branch(root, false));
   const full = h(
     "details",
     { class: "class-tree-map", open: open.has("map"), "data-class-tree-fold": "map" },
     h("summary", null, /* copy:button */ "Full tree"),
-    h(
-      "div",
-      { class: "class-tree-fork" },
-      ...roots.map((root) =>
-        h(
-          "div",
-          { class: "class-tree-branch" },
-          h("b", null, classSkillIcon(root, { size: 24, decorative: true }), root.name),
-          ...t.nodes
-            .filter((n) => n.parent === root.id)
-            .map((n) =>
-              h(
-                "div",
-                { class: "class-tree-future num" },
-                h("b", null, classSkillIcon(n, { size: 24, decorative: true }), n.name),
-                h("small", null, /* copy:label */ `L${n.required_level} · D${n.required_depth}`),
-              ),
-            ),
-        ),
-      ),
-    ),
+    h("div", { class: "class-tree-fork" }, ...roots.map((root) => branch(root, true))),
   );
   const nextNode = t.nodes
     .filter((n) => !n.owned && (n.parent === null || owned.has(n.parent)))

@@ -201,3 +201,47 @@ html.skin-button .sheet-wrap .sheet-body.class-style-review button.chip {
     inset 0 1px 0 #fff7,
     0 2px 0 #78603e44;
 }
+
+/* Actual parent trunks continue beside their children; siblings never form a chain. */
+.class-tree-branch,
+.class-tree-edge {
+  min-width: 0;
+}
+.class-tree-children {
+  margin-left: 8px;
+  padding-left: 10px;
+  border-left: 2px solid #83643b;
+}
+.class-tree-edge {
+  position: relative;
+  padding-top: 12px;
+}
+.class-tree-edge::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: -10px;
+  width: 10px;
+  height: 2px;
+  background: #83643b;
+}
+.class-tree-map-node {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-wrap: anywhere;
+}
+.class-tree-map .class-tree-future {
+  margin: 0;
+  border-left: 0;
+  padding: 8px;
+}
+.class-tree-panel .class-tree-map > summary,
+.class-tree-panel .class-skill-rules > summary {
+  min-height: 44px;
+}
+@container hero-folio (max-width: 28rem) {
+  html body .game-window[data-material="bloodlines"] .class-tree-panel .class-tree-fork {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Error: strict mode violation: locator('.class-tree-panel') resolved to 2 elements:
+    1) <section data-class-tree="clown" class="class-tree-panel">…</section> aka locator('#hero-hub-11-skills-panel').getByText('Class tree1 pickBellkeeperLearnedSkill ruleslure lifetime +5 ticksadjacent ≥ 1')
+    2) <section data-class-tree="clown" class="class-tree-panel">…</section> aka locator('#hero-hub-12-skills-panel').getByText('Class tree1 pickBellkeeperLearnedSkill ruleslure lifetime +5 ticksadjacent ≥ 1')
+
+Call log:
+[2m  - waiting for locator('.class-tree-panel') to be visible[22m
+
+    at /home/g/p/riddle/docs/evidence/cut252/check.mjs:13:631 {
+  log: [ "  - waiting for locator('.class-tree-panel') to be visible" ]
+}
+
+Node.js v22.18.0

@@ -1,0 +1,17 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-hero-hub] .class-tree-panel') to be visible[22m
+
+    at open (/home/g/p/riddle/docs/evidence/cut252/check.mjs:4:504)
+    at async file:///home/g/p/riddle/docs/evidence/cut252/check.mjs:8:126 {
+  log: [
+    "  - waiting for locator('[data-hero-hub] .class-tree-panel') to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.18.0
