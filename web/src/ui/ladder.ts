@@ -79,9 +79,11 @@ export function ladderRungs(L: Lineage, has: (step: string) => boolean): Rung[] 
   const firstLit = first
     ? first.need
       ? `${first.need} ${choreWord(first.chore)}`
-      : first.fallback_h
-        ? `${first.fallback_h}h`
-        : undefined
+      : first.feat
+        ? first.feat
+        : first.fallback_h
+          ? `${first.fallback_h}h`
+          : undefined
     : undefined;
   const rung = (
     id: RungId,

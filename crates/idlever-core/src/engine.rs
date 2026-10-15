@@ -6347,6 +6347,8 @@ impl Game {
             if let Some(line) = crate::town::on_run(&mut self.lineage, run.max_depth, tier, run.home_return, run.depth, &slew) {
                 self.batch.pkg_lines.push(line);
             }
+            // Cut235: the feats this run met (a later worker lit by its chore's outcome), before the report's offer
+            crate::tree::note_feats(self, &run, tier);
             // Cut 118: tokens, the goal's outcome, a find sealed while away, the swift floors (before the systems read: a
             // feat may light one)
             // Cut 119: the pack fetched home on a death (before the grave takes the rest), the keeper, old hounds

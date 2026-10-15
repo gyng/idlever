@@ -27,7 +27,7 @@ import { openWindow as openSheet, closeAllSheets } from "./sheet";
 import { tile, paintFace } from "./frame";
 import { audio } from "../audio";
 import { questShown } from "./quest";
-import { nextPill, nodeIcon, openWorks } from "./works";
+import { featText, nextPill, nodeIcon, openWorks } from "./works";
 import { townGraveyard } from "./feats"; // Cut 118 (owner amendment §4): the graveyard's stones
 import { townCrier } from "./crier"; // Cut 118 §8: the town crier   // Cut 30.5: the `next` pill, the works sheet
 import { openHeroLife } from "./hero-life";
@@ -137,12 +137,14 @@ export function nextWorkerMark(
 ): { id: string; name: string; post?: string; text: string } | null {
   const W = L.tree,
     n = W?.next_worker ? W.nodes.find((x) => x.id === W.next_worker) : undefined;
-  if (!n || n.state === "done" || n.state === "lit" || !n.progress) return null;
+  if (!n || n.state === "done" || n.state === "lit" || !(n.progress || n.feat)) return null;
+  // (Cut235: a feat worker's mark is its feat, not a count)
+  const goal = n.feat ? featText(n.feat, n.feat_done) : `${n.chore ?? ""} ${n.progress}`;
   return {
     id: n.id,
     name: n.name,
     post: n.post,
-    text: /* copy:callout */ `${n.chore ?? ""} ${n.progress}${n.eta_h ? ` · or ${n.eta_h}h` : ""}`.trim(),
+    text: /* copy:callout */ `${goal}${n.eta_h ? ` · or ${n.eta_h}h` : ""}`.trim(),
   };
 }
 

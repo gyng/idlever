@@ -1021,10 +1021,13 @@ export type WorkNode = {
   perk?: string; // Cut 120 §2 (core): a hired worker's rank-II perk chip (apprentice: cheaper steps · keeps a reserve; scout: shorter rest · safer start) — the first is the default; `setPerk(id, perk)`
   bonus?: string;
   rank_adds?: string; // week 2: the rank's small real edge now (`bonus`) and what the next rank adds (`rank_adds`), ≤ 4 words (`+4% hauls`, `−10% steps`, `25‰ interest`, `−5% rest`, `half toll`, `levels −◆1`, `insures its finds`); keeper, kennel-hand and herald ranks are looks (none)
+  goal?: "count" | "feat";
+  feat?: string;
+  feat_done?: boolean; // Cut235 (core): a later worker's goal — `feat` (absent: `count`, its `count`/`need`); the feat's name ≤ 3 words (`forged boss kill`) and whether it is met (then `ready`, offered at a quiet report); a feat node carries no `count`/`need`/`progress`
 };
 /** Cut 30.5 (core) — the `next` pill: the single next goal. `kind` buy (the lit node, affordable) · chest (a haul waits, before the porter) ·
  *  send (the hero waits for a SEND, before the scout) · gold (the lit node, short: `have`/`need` in gold) · count (a node's chores by hand:
- *  `have`/`need`) · system (the next system's wait: `need` hours) · none. `text` ≤ 3 words + the number (`open chest`, `porter · 2/3`,
+ *  `have`/`need`) · feat (Cut235: a node's feat, `text` = `<worker> · <feat>`, no `have`/`need`, no bar) · system (the next system's wait: `need` hours) · none. `text` ≤ 3 words + the number (`open chest`, `porter · 2/3`,
  *  `apprentice · $96/$120`, `bank · in 3h`); tapping it opens the tree on `node`. */
 export type NextPill = { kind: string; node?: string; text: string; have?: number; need?: number };
 /** Cut 30.5 (core) — the works tree (`Lineage.tree`; the tracks panel's successor). `chest` the haul waiting uncollected (gold not in

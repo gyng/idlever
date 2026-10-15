@@ -170,12 +170,19 @@ export function taskTracker(
             class: "task-entry task-worker",
             "data-worker": p.id,
             "data-state": "active",
+            ...(p.feat ? { "data-feat-done": String(!!p.done) } : {}),
             onclick: (ev: Event) => openWorks(app, p.id, ev.currentTarget as HTMLElement),
           },
           h("span", { class: "task-pip", "aria-hidden": "true" }),
           h("span", { class: "task-title" }, p.name.charAt(0).toUpperCase() + p.name.slice(1)),
-          h("small", { class: "task-obj num" }, progressText(p), eta(p)),
-          progressBar("task-bar", p.frac),
+          h(
+            "small",
+            { class: `task-obj${p.feat ? " task-feat" : " num"}` },
+            progressText(p),
+            eta(p),
+          ),
+          // (Cut235: a feat has no count to fill — no bar)
+          p.feat ? "" : progressBar("task-bar", p.frac),
         );
       const town = chapters.some((c) => c.id === "town");
       replace(
@@ -205,7 +212,7 @@ export function taskTracker(
                   control.cond,
                   eta(ctlProg),
                 ),
-                ctlProg ? progressBar("task-bar", ctlProg.frac) : "",
+                ctlProg && !ctlProg.feat ? progressBar("task-bar", ctlProg.frac) : "",
               ),
               lit.length
                 ? h(

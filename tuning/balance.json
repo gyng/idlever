@@ -16,16 +16,16 @@
   "guarded_dry": [45, 44],
   "recovery": [600, 14, 28, 1],
   "workers": {
-    "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0 },
-    "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0 },
-    "scout": { "need": 2, "price_tenths": 4, "fallback_h": 0 },
-    "apprentice": { "need": 3, "price_tenths": 30, "fallback_h": 30 },
-    "clerk": { "need": 3, "price_tenths": 40, "fallback_h": 36 },
-    "drillmaster": { "need": 2, "price_tenths": 4, "fallback_h": 36 },
-    "kennel_hand": { "need": 2, "price_tenths": 30, "fallback_h": 40 },
-    "herald": { "need": 2, "price_tenths": 20, "fallback_h": 40 },
-    "guide": { "need": 3, "price_tenths": 40, "fallback_h": 44 },
-    "kennel_keeper": { "need": 2, "price_tenths": 30, "fallback_h": 48 }
+    "quartermaster": { "need": 0, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
+    "porter": { "need": 3, "price_tenths": 0, "fallback_h": 0, "goal": "count" },
+    "scout": { "need": 2, "price_tenths": 4, "fallback_h": 0, "goal": "count" },
+    "apprentice": { "need": 3, "price_tenths": 30, "fallback_h": 30, "goal": "feat" },
+    "clerk": { "need": 3, "price_tenths": 40, "fallback_h": 36, "goal": "feat" },
+    "drillmaster": { "need": 2, "price_tenths": 4, "fallback_h": 36, "goal": "feat" },
+    "kennel_hand": { "need": 2, "price_tenths": 30, "fallback_h": 40, "goal": "feat" },
+    "herald": { "need": 2, "price_tenths": 20, "fallback_h": 40, "goal": "feat" },
+    "guide": { "need": 3, "price_tenths": 40, "fallback_h": 44, "goal": "feat" },
+    "kennel_keeper": { "need": 2, "price_tenths": 30, "fallback_h": 48, "goal": "feat" }
   },
   "tree": {
     "reserve_units": 3,
